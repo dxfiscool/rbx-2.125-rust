@@ -9775,3 +9775,1058 @@ pub fn stub_0x289004() -> ! {
         "0x289004 RBX::Lua::WaitScriptSlot::operator()(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)"
     )
 }
+
+// 0x2a3898 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsSsELi2EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,std::string),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x2a3898() -> ! {
+    todo!(
+        "0x2a3898 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,std::string),2>::~BoundFuncDesc()"
+    )
+}
+
+// 0x2a38e0 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED1Ev
+// was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x2a38e0() -> ! {
+    todo!(
+        "0x2a38e0 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()"
+    )
+}
+
+// 0x2a39e4 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvvELi0EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(void),0>::~BoundFuncDesc()"
+)]
+pub fn stub_0x2a39e4() -> ! {
+    todo!(
+        "0x2a39e4 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(void),0>::~BoundFuncDesc()"
+    )
+}
+
+// 0x2a3a08 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviN5boost10shared_ptrINS_8InstanceEEESsELi3EED1Ev
+// was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,boost::shared_ptr<RBX::Instance>,std::string),3>::~BoundFuncDesc()
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,boost::shared_ptr<RBX::Instance>,std::string),3>::~BoundFuncDesc()"
+)]
+pub fn stub_0x2a3a08() -> ! {
+    todo!(
+        "0x2a3a08 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,boost::shared_ptr<RBX::Instance>,std::string),3>::~BoundFuncDesc()"
+    )
+}
+
+// 0x2a3b20 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvdELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(double),1>::~BoundFuncDesc()"
+)]
+pub fn stub_0x2a3b20() -> ! {
+    todo!(
+        "0x2a3b20 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(double),1>::~BoundFuncDesc()"
+    )
+}
+
+// 0x2a3b60 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKNS0_5TupleEEEbELi1EED1Ev
+// was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> ()(bool),1>::~BoundFuncDesc()
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> ()(bool),1>::~BoundFuncDesc()"
+)]
+pub fn stub_0x2a3b60() -> ! {
+    todo!(
+        "0x2a3b60 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> ()(bool),1>::~BoundFuncDesc()"
+    )
+}
+
+// 0x2a3ba0 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED1Ev
+// was: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()"
+)]
+pub fn stub_0x2a3ba0() -> ! {
+    todo!(
+        "0x2a3ba0 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()"
+    )
+}
+
+// 0x2a3bc4 — __ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::~BoundProp()")]
+pub fn stub_0x2a3bc4() -> ! {
+    todo!(
+        "0x2a3bc4 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::~BoundProp()"
+    )
+}
+
+// 0x2a3be8 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvbELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(bool),1>::~BoundFuncDesc()"
+)]
+pub fn stub_0x2a3be8() -> ! {
+    todo!(
+        "0x2a3be8 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(bool),1>::~BoundFuncDesc()"
+    )
+}
+
+// 0x2a3c28 — __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
+// was: RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()"
+)]
+pub fn stub_0x2a3c28() -> ! {
+    todo!(
+        "0x2a3c28 RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()"
+    )
+}
+
+// 0x2a46ac — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE8on_indexEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_index(lua_State *)
+#[doc(
+    alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_index(lua_State *)"
+)]
+pub fn stub_0x2a46ac() -> ! {
+    todo!(
+        "0x2a46ac RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_index(lua_State *)"
+    )
+}
+
+// 0x2a46e0 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE11on_newindexEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_newindex(lua_State *)
+#[doc(
+    alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_newindex(lua_State *)"
+)]
+pub fn stub_0x2a46e0() -> ! {
+    todo!(
+        "0x2a46e0 RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_newindex(lua_State *)"
+    )
+}
+
+// 0x2a4714 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE8on_indexEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_index(lua_State *)
+#[doc(
+    alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_index(lua_State *)"
+)]
+pub fn stub_0x2a4714() -> ! {
+    todo!(
+        "0x2a4714 RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_index(lua_State *)"
+    )
+}
+
+// 0x2a4748 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE11on_newindexEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_newindex(lua_State *)
+#[doc(
+    alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_newindex(lua_State *)"
+)]
+pub fn stub_0x2a4748() -> ! {
+    todo!(
+        "0x2a4748 RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_newindex(lua_State *)"
+    )
+}
+
+// 0x2a47b0 — __ZN3RBX3Lua15SingletonBridgeIPKNS_10Reflection14EnumDescriptorELb1EE20registerClassLibraryEP9lua_State
+#[doc(
+    alias = "RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor const*,true>::registerClassLibrary(lua_State *)"
+)]
+pub fn stub_0x2a47b0() -> ! {
+    todo!(
+        "0x2a47b0 RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor const*,true>::registerClassLibrary(lua_State *)"
+    )
+}
+
+// 0x2a47e4 — __ZN3RBX3Lua15SingletonBridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE20registerClassLibraryEP9lua_State
+#[doc(
+    alias = "RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor::Item const*,true>::registerClassLibrary(lua_State *)"
+)]
+pub fn stub_0x2a47e4() -> ! {
+    todo!(
+        "0x2a47e4 RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor::Item const*,true>::registerClassLibrary(lua_State *)"
+    )
+}
+
+// 0x2a4d18 — __ZN3rbx11make_sharedISt6vectorIN3RBX10Reflection7VariantESaIS4_EEmEEN5boost10shared_ptrIT_EERKT0_
+// was: boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,unsigned long>(unsigned long const&)
+#[doc(
+    alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,unsigned long>(unsigned long const&)"
+)]
+pub fn stub_0x2a4d18() -> ! {
+    todo!(
+        "0x2a4d18 boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,unsigned long>(unsigned long const&)"
+    )
+}
+
+// 0x2a4fd8 — __ZN3RBX3Lua12LuaArguments9pushTupleERKNS_10Reflection5TupleEP9lua_State
+#[doc(alias = "RBX::Lua::LuaArguments::pushTuple(RBX::Reflection::Tuple const&,lua_State *)")]
+pub fn stub_0x2a4fd8() -> ! {
+    todo!(
+        "0x2a4fd8 RBX::Lua::LuaArguments::pushTuple(RBX::Reflection::Tuple const&,lua_State *)"
+    )
+}
+
+// 0x2a5004 — __ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_
+// was: __ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_
+#[doc(
+    alias = "__ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_"
+)]
+pub fn stub_0x2a5004() -> ! {
+    todo!(
+        "0x2a5004 __ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_"
+    )
+}
+
+// 0x2a5104 — __ZN5boost4bindIvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEENS_3argILi1EEESB_EENS_3_bi6bind_tIT_PFSG_T0_T1_ENSE_9list_av_2IT2_T3_E4typeEEESK_SM_SN_
+// was: boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list_av_2<boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>::type> boost::bind<void,lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>(void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>)
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list_av_2<boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>::type> boost::bind<void,lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>(void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>)"
+)]
+pub fn stub_0x2a5104() -> ! {
+    todo!(
+        "0x2a5104 boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list_av_2<boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>::type> boost::bind<void,lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>(void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::arg<1>,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>)"
+    )
+}
+
+// 0x2a5550 — __ZNK5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEclES6_
+// was: boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)const
+#[doc(
+    alias = "boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)const"
+)]
+pub fn stub_0x2a5550() -> ! {
+    todo!(
+        "0x2a5550 boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)const"
+    )
+}
+
+// 0x2a8414 — __ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev"
+)]
+pub fn stub_0x2a8414() -> ! {
+    todo!(
+        "0x2a8414 __ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev"
+    )
+}
+
+// 0x2a8418 — __ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev"
+)]
+pub fn stub_0x2a8418() -> ! {
+    todo!(
+        "0x2a8418 __ZN3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev"
+    )
+}
+
+// 0x2a84b8 — __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev"
+)]
+pub fn stub_0x2a84b8() -> ! {
+    todo!(
+        "0x2a84b8 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev"
+    )
+}
+
+// 0x2a84c0 — __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev"
+)]
+pub fn stub_0x2a84c0() -> ! {
+    todo!(
+        "0x2a84c0 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev"
+    )
+}
+
+// 0x2a8564 — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev"
+)]
+pub fn stub_0x2a8564() -> ! {
+    todo!(
+        "0x2a8564 __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED1Ev"
+    )
+}
+
+// 0x2a856c — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev"
+)]
+pub fn stub_0x2a856c() -> ! {
+    todo!(
+        "0x2a856c __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting13DebuggerWatchELZNS2_14sDebuggerWatchEENS_14FactoryProductIS3_NS_8InstanceELZNS2_14sDebuggerWatchEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE2EED0Ev"
+    )
+}
+
+// 0x2a86d8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9Scripting13DebuggerWatchES7_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Scripting::DebuggerWatch,RBX::Scripting::DebuggerWatch>(boost::shared_ptr<RBX::Scripting::DebuggerWatch> const*,RBX::Scripting::DebuggerWatch *)const
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Scripting::DebuggerWatch,RBX::Scripting::DebuggerWatch>(boost::shared_ptr<RBX::Scripting::DebuggerWatch> const*,RBX::Scripting::DebuggerWatch *)const"
+)]
+pub fn stub_0x2a86d8() -> ! {
+    todo!(
+        "0x2a86d8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Scripting::DebuggerWatch,RBX::Scripting::DebuggerWatch>(boost::shared_ptr<RBX::Scripting::DebuggerWatch> const*,RBX::Scripting::DebuggerWatch *)const"
+    )
+}
+
+// 0x2a9b34 — __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EE15classDescriptorEv
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EE15classDescriptorEv"
+)]
+pub fn stub_0x2a9b34() -> ! {
+    todo!(
+        "0x2a9b34 __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EE15classDescriptorEv"
+    )
+}
+
+// 0x2a9c54 — __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev"
+)]
+pub fn stub_0x2a9c54() -> ! {
+    todo!(
+        "0x2a9c54 __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev"
+    )
+}
+
+// 0x2a9c58 — __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev"
+)]
+pub fn stub_0x2a9c58() -> ! {
+    todo!(
+        "0x2a9c58 __ZN3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev"
+    )
+}
+
+// 0x2a9cf8 — __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev"
+)]
+pub fn stub_0x2a9cf8() -> ! {
+    todo!(
+        "0x2a9cf8 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev"
+    )
+}
+
+// 0x2a9d00 — __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev"
+)]
+pub fn stub_0x2a9d00() -> ! {
+    todo!(
+        "0x2a9d00 __ZThn32_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev"
+    )
+}
+
+// 0x2a9da4 — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev"
+)]
+pub fn stub_0x2a9da4() -> ! {
+    todo!(
+        "0x2a9da4 __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED1Ev"
+    )
+}
+
+// 0x2a9dac — __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev"
+)]
+pub fn stub_0x2a9dac() -> ! {
+    todo!(
+        "0x2a9dac __ZThn36_N3RBX10Reflection9DescribedINS_9Scripting14ScriptDebuggerELZNS2_15sScriptDebuggerEENS_14FactoryProductIS3_NS_8InstanceELZNS2_15sScriptDebuggerEES5_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE2EED0Ev"
+    )
+}
+
+// 0x2a9f18 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9Scripting14ScriptDebuggerES7_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Scripting::ScriptDebugger,RBX::Scripting::ScriptDebugger>(boost::shared_ptr<RBX::Scripting::ScriptDebugger> const*,RBX::Scripting::ScriptDebugger *)const
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Scripting::ScriptDebugger,RBX::Scripting::ScriptDebugger>(boost::shared_ptr<RBX::Scripting::ScriptDebugger> const*,RBX::Scripting::ScriptDebugger *)const"
+)]
+pub fn stub_0x2a9f18() -> ! {
+    todo!(
+        "0x2a9f18 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Scripting::ScriptDebugger,RBX::Scripting::ScriptDebugger>(boost::shared_ptr<RBX::Scripting::ScriptDebugger> const*,RBX::Scripting::ScriptDebugger *)const"
+    )
+}
+
+// 0x2aa690 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11LocalScriptES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LocalScript,RBX::LocalScript>(boost::shared_ptr<RBX::LocalScript> const*,RBX::LocalScript *)const
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LocalScript,RBX::LocalScript>(boost::shared_ptr<RBX::LocalScript> const*,RBX::LocalScript *)const"
+)]
+pub fn stub_0x2aa690() -> ! {
+    todo!(
+        "0x2aa690 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LocalScript,RBX::LocalScript>(boost::shared_ptr<RBX::LocalScript> const*,RBX::LocalScript *)const"
+    )
+}
+
+// 0x2ab2d4 — __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+)]
+pub fn stub_0x2ab2d4() -> ! {
+    todo!(
+        "0x2ab2d4 __ZN3RBX10Reflection9DescribedINS_10CoreScriptELZNS_11sCoreScriptEENS_17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+    )
+}
+
+// 0x2acf24 — __ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEaSERKS8_
+// was: boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::operator=(boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)> const&)
+#[doc(
+    alias = "boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::operator=(boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)> const&)"
+)]
+pub fn stub_0x2acf24() -> ! {
+    todo!(
+        "0x2acf24 boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::operator=(boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)> const&)"
+    )
+}
+
+// 0x2ad2b8 — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE4swapERS7_
+// was: boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::swap(boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>&)
+#[doc(
+    alias = "boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::swap(boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>&)"
+)]
+pub fn stub_0x2ad2b8() -> ! {
+    todo!(
+        "0x2ad2b8 boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::swap(boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>&)"
+    )
+}
+
+// 0x2ad394 — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE11move_assignERS7_
+// was: boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::move_assign(boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>&)
+#[doc(
+    alias = "boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::move_assign(boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>&)"
+)]
+pub fn stub_0x2ad394() -> ! {
+    todo!(
+        "0x2ad394 boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::move_assign(boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>&)"
+    )
+}
+
+// 0x2ad498 — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE5clearEv
+// was: boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::clear(void)
+#[doc(
+    alias = "boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::clear(void)"
+)]
+pub fn stub_0x2ad498() -> ! {
+    todo!(
+        "0x2ad498 boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::clear(void)"
+    )
+}
+
+// 0x2ae540 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13DebugSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebugSettings,RBX::DebugSettings>(boost::shared_ptr<RBX::DebugSettings> const*,RBX::DebugSettings *)const
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebugSettings,RBX::DebugSettings>(boost::shared_ptr<RBX::DebugSettings> const*,RBX::DebugSettings *)const"
+)]
+pub fn stub_0x2ae540() -> ! {
+    todo!(
+        "0x2ae540 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebugSettings,RBX::DebugSettings>(boost::shared_ptr<RBX::DebugSettings> const*,RBX::DebugSettings *)const"
+    )
+}
+
+// 0x2af310 — __ZN5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE16shared_from_thisEv
+// was: boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::shared_from_this(void)
+#[doc(
+    alias = "boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::shared_from_this(void)"
+)]
+pub fn stub_0x2af310() -> ! {
+    todo!(
+        "0x2af310 boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::shared_from_this(void)"
+    )
+}
+
+// 0x2af4f0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10CoreScriptES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreScript,RBX::CoreScript>(boost::shared_ptr<RBX::CoreScript> const*,RBX::CoreScript *)const
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreScript,RBX::CoreScript>(boost::shared_ptr<RBX::CoreScript> const*,RBX::CoreScript *)const"
+)]
+pub fn stub_0x2af4f0() -> ! {
+    todo!(
+        "0x2af4f0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreScript,RBX::CoreScript>(boost::shared_ptr<RBX::CoreScript> const*,RBX::CoreScript *)const"
+    )
+}
+
+// 0x2af7f0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13StarterScriptES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterScript,RBX::StarterScript>(boost::shared_ptr<RBX::StarterScript> const*,RBX::StarterScript *)const
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterScript,RBX::StarterScript>(boost::shared_ptr<RBX::StarterScript> const*,RBX::StarterScript *)const"
+)]
+pub fn stub_0x2af7f0() -> ! {
+    todo!(
+        "0x2af7f0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterScript,RBX::StarterScript>(boost::shared_ptr<RBX::StarterScript> const*,RBX::StarterScript *)const"
+    )
+}
+
+// 0x2b06e0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10RunServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RunService,RBX::RunService>(boost::shared_ptr<RBX::RunService> const*,RBX::RunService *)const
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RunService,RBX::RunService>(boost::shared_ptr<RBX::RunService> const*,RBX::RunService *)const"
+)]
+pub fn stub_0x2b06e0() -> ! {
+    todo!(
+        "0x2b06e0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RunService,RBX::RunService>(boost::shared_ptr<RBX::RunService> const*,RBX::RunService *)const"
+    )
+}
+
+// 0x2b0f40 — __ZN3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+)]
+pub fn stub_0x2b0f40() -> ! {
+    todo!(
+        "0x2b0f40 __ZN3RBX10Reflection9DescribedINS_5Stats4ItemELZNS2_10sStatsItemEENS_17NonFactoryProductINS_8InstanceELZNS2_10sStatsItemEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+    )
+}
+
+// 0x2b10d0 — __ZN3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev"
+)]
+pub fn stub_0x2b10d0() -> ! {
+    todo!(
+        "0x2b10d0 __ZN3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev"
+    )
+}
+
+// 0x2b1170 — __ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev"
+)]
+pub fn stub_0x2b1170() -> ! {
+    todo!(
+        "0x2b1170 __ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED1Ev"
+    )
+}
+
+// 0x2b1178 — __ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev"
+)]
+pub fn stub_0x2b1178() -> ! {
+    todo!(
+        "0x2b1178 __ZThn32_N3RBX10Reflection9DescribedINS_5Stats12StatsServiceELZNS2_6sStatsEENS_17NonFactoryProductINS_8InstanceELZNS2_6sStatsEEEELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE2EED0Ev"
+    )
+}
+
+// 0x2b12e8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats12StatsServiceES7_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::StatsService,RBX::Stats::StatsService>(boost::shared_ptr<RBX::Stats::StatsService> const*,RBX::Stats::StatsService *)const
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::StatsService,RBX::Stats::StatsService>(boost::shared_ptr<RBX::Stats::StatsService> const*,RBX::Stats::StatsService *)const"
+)]
+pub fn stub_0x2b12e8() -> ! {
+    todo!(
+        "0x2b12e8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::StatsService,RBX::Stats::StatsService>(boost::shared_ptr<RBX::Stats::StatsService> const*,RBX::Stats::StatsService *)const"
+    )
+}
+
+// 0x2b3648 — __ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
+#[doc(
+    alias = "__ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE"
+)]
+pub fn stub_0x2b3648() -> ! {
+    todo!(
+        "0x2b3648 __ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE"
+    )
+}
+
+// 0x2b371c — __ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
+#[doc(
+    alias = "__ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE"
+)]
+pub fn stub_0x2b371c() -> ! {
+    todo!(
+        "0x2b371c __ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE"
+    )
+}
+
+// 0x2b37f0 — __ZN5boost9function1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEEvT_
+// was: void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>)
+#[doc(
+    alias = "void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>)"
+)]
+pub fn stub_0x2b37f0() -> ! {
+    todo!(
+        "0x2b37f0 void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>)"
+    )
+}
+
+// 0x2b38d4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+#[doc(
+    alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)"
+)]
+pub fn stub_0x2b38d4() -> ! {
+    todo!(
+        "0x2b38d4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)"
+    )
+}
+
+// 0x2b38f0 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEvS6_E6invokeERNS1_15function_bufferES6_
+// was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,void,lua_State *>::invoke(boost::detail::function::function_buffer &,lua_State *)
+#[doc(
+    alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,void,lua_State *>::invoke(boost::detail::function::function_buffer &,lua_State *)"
+)]
+pub fn stub_0x2b38f0() -> ! {
+    todo!(
+        "0x2b38f0 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,void,lua_State *>::invoke(boost::detail::function::function_buffer &,lua_State *)"
+    )
+}
+
+// 0x2b390c — __ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEbT_RNS1_15function_bufferE
+// was: bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &)const
+#[doc(
+    alias = "bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &)const"
+)]
+pub fn stub_0x2b390c() -> ! {
+    todo!(
+        "0x2b390c bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &)const"
+    )
+}
+
+// 0x2b39e4 — __ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// was: bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+#[doc(
+    alias = "bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const"
+)]
+pub fn stub_0x2b39e4() -> ! {
+    todo!(
+        "0x2b39e4 bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const"
+    )
+}
+
+// 0x2b3ab4 — __ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE14assign_functorINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// was: void boost::detail::function::basic_vtable1<void,lua_State *>::assign_functor<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
+#[doc(
+    alias = "void boost::detail::function::basic_vtable1<void,lua_State *>::assign_functor<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const"
+)]
+pub fn stub_0x2b3ab4() -> ! {
+    todo!(
+        "0x2b3ab4 void boost::detail::function::basic_vtable1<void,lua_State *>::assign_functor<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const"
+    )
+}
+
+// 0x2b3b78 — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueINS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEEEEclIPFvP9lua_StateSD_ENS0_5list1IRSI_EEEEvNS0_4typeIvEERT_RT0_i
+// was: void boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::operator()<void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list1<lua_State *&>>(boost::_bi::type<void>,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>) &,boost::_bi::list1<lua_State *&> &,int)
+#[doc(
+    alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::operator()<void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list1<lua_State *&>>(boost::_bi::type<void>,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>) &,boost::_bi::list1<lua_State *&> &,int)"
+)]
+pub fn stub_0x2b3b78() -> ! {
+    todo!(
+        "0x2b3b78 void boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::operator()<void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list1<lua_State *&>>(boost::_bi::type<void>,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>) &,boost::_bi::list1<lua_State *&> &,int)"
+    )
+}
+
+// 0x2b3c40 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+#[doc(
+    alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)"
+)]
+pub fn stub_0x2b3c40() -> ! {
+    todo!(
+        "0x2b3c40 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)"
+    )
+}
+
+// 0x2b3d88 — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueINS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEEEEC2ES3_SE_
+// was: boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::list2(boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)
+#[doc(
+    alias = "boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::list2(boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)"
+)]
+pub fn stub_0x2b3d88() -> ! {
+    todo!(
+        "0x2b3d88 boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>::list2(boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)"
+    )
+}
+
+// 0x2b3e50 — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE5dummy7nonnullEv
+// was: boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::dummy::nonnull(void)
+#[doc(
+    alias = "boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::dummy::nonnull(void)"
+)]
+pub fn stub_0x2b3e50() -> ! {
+    todo!(
+        "0x2b3e50 boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::dummy::nonnull(void)"
+    )
+}
+
+// 0x2b3e54 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRSt8auto_ptrIN3RBX10Reflection5TupleEEP9lua_StatemENS3_5list3INS_17reference_wrapperIS9_EENS_3argILi1EEENSI_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long),boost::_bi::list3<boost::reference_wrapper<std::auto_ptr<RBX::Reflection::Tuple>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+#[doc(
+    alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long),boost::_bi::list3<boost::reference_wrapper<std::auto_ptr<RBX::Reflection::Tuple>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)"
+)]
+pub fn stub_0x2b3e54() -> ! {
+    todo!(
+        "0x2b3e54 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long),boost::_bi::list3<boost::reference_wrapper<std::auto_ptr<RBX::Reflection::Tuple>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)"
+    )
+}
+
+// 0x2b3eb4 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvRSt8auto_ptrIN3RBX10Reflection5TupleEEP9lua_StatemENS3_5list3INS_17reference_wrapperIS9_EENS_3argILi1EEENSI_ILi2EEEEEEEvSC_mE6invokeERNS1_15function_bufferESC_m
+// was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long),boost::_bi::list3<boost::reference_wrapper<std::auto_ptr<RBX::Reflection::Tuple>>,boost::arg<1>,boost::arg<2>>>,void,lua_State *,unsigned long>::invoke(boost::detail::function::function_buffer &,lua_State *,unsigned long)
+#[doc(
+    alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long),boost::_bi::list3<boost::reference_wrapper<std::auto_ptr<RBX::Reflection::Tuple>>,boost::arg<1>,boost::arg<2>>>,void,lua_State *,unsigned long>::invoke(boost::detail::function::function_buffer &,lua_State *,unsigned long)"
+)]
+pub fn stub_0x2b3eb4() -> ! {
+    todo!(
+        "0x2b3eb4 boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long),boost::_bi::list3<boost::reference_wrapper<std::auto_ptr<RBX::Reflection::Tuple>>,boost::arg<1>,boost::arg<2>>>,void,lua_State *,unsigned long>::invoke(boost::detail::function::function_buffer &,lua_State *,unsigned long)"
+    )
+}
+
+// 0x2b3ebc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIiPFiRKN3RBX10Reflection5TupleEP9lua_StateENS3_5list2INS_17reference_wrapperIS8_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<int,int (*)(RBX::Reflection::Tuple const&,lua_State *),boost::_bi::list2<boost::reference_wrapper<RBX::Reflection::Tuple const>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+#[doc(
+    alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<int,int (*)(RBX::Reflection::Tuple const&,lua_State *),boost::_bi::list2<boost::reference_wrapper<RBX::Reflection::Tuple const>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)"
+)]
+pub fn stub_0x2b3ebc() -> ! {
+    todo!(
+        "0x2b3ebc boost::detail::function::functor_manager<boost::_bi::bind_t<int,int (*)(RBX::Reflection::Tuple const&,lua_State *),boost::_bi::list2<boost::reference_wrapper<RBX::Reflection::Tuple const>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)"
+    )
+}
+
+// 0x2b3f1c — __ZN5boost6detail8function21function_obj_invoker1INS_3_bi6bind_tIiPFiRKN3RBX10Reflection5TupleEP9lua_StateENS3_5list2INS_17reference_wrapperIS8_EENS_3argILi1EEEEEEEmSB_E6invokeERNS1_15function_bufferESB_
+// was: boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<int,int (*)(RBX::Reflection::Tuple const&,lua_State *),boost::_bi::list2<boost::reference_wrapper<RBX::Reflection::Tuple const>,boost::arg<1>>>,unsigned long,lua_State *>::invoke(boost::detail::function::function_buffer &,lua_State *)
+#[doc(
+    alias = "boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<int,int (*)(RBX::Reflection::Tuple const&,lua_State *),boost::_bi::list2<boost::reference_wrapper<RBX::Reflection::Tuple const>,boost::arg<1>>>,unsigned long,lua_State *>::invoke(boost::detail::function::function_buffer &,lua_State *)"
+)]
+pub fn stub_0x2b3f1c() -> ! {
+    todo!(
+        "0x2b3f1c boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<int,int (*)(RBX::Reflection::Tuple const&,lua_State *),boost::_bi::list2<boost::reference_wrapper<RBX::Reflection::Tuple const>,boost::arg<1>>>,unsigned long,lua_State *>::invoke(boost::detail::function::function_buffer &,lua_State *)"
+    )
+}
+
+// 0x2b3f54 — __ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE13assign_to_ownERKS7_
+// was: boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::assign_to_own(boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>> const&)
+#[doc(
+    alias = "boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::assign_to_own(boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>> const&)"
+)]
+pub fn stub_0x2b3f54() -> ! {
+    todo!(
+        "0x2b3f54 boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::assign_to_own(boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>> const&)"
+    )
+}
+
+// 0x2b4be8 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEE9singletonEv
+// was: rbx::implementation::typed_holder<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::singleton(void)
+#[doc(
+    alias = "rbx::implementation::typed_holder<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::singleton(void)"
+)]
+pub fn stub_0x2b4be8() -> ! {
+    todo!(
+        "0x2b4be8 rbx::implementation::typed_holder<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::singleton(void)"
+    )
+}
+
+// 0x2b4c58 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEE13destruct_funcEPc
+// was: rbx::implementation::typed_holder<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::destruct_func(char *)
+#[doc(
+    alias = "rbx::implementation::typed_holder<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::destruct_func(char *)"
+)]
+pub fn stub_0x2b4c58() -> ! {
+    todo!(
+        "0x2b4c58 rbx::implementation::typed_holder<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::destruct_func(char *)"
+    )
+}
+
+// 0x2b4fb8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsN3RBX10Reflection7VariantEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm
+// was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>,std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)
+#[doc(
+    alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>,std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)"
+)]
+pub fn stub_0x2b4fb8() -> ! {
+    todo!(
+        "0x2b4fb8 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>,std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>>>::create_buckets(unsigned long)"
+    )
+}
+
+// 0x2b50e4 — __ZN5boost10shared_ptrINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEC2ISE_EEPT_
+// was: boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)
+#[doc(
+    alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)"
+)]
+pub fn stub_0x2b50e4() -> ! {
+    todo!(
+        "0x2b50e4 boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)"
+    )
+}
+
+// 0x2b51b8 — __ZN5boost6detail12shared_countC2INS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEPT_
+// was: boost::detail::shared_count::shared_count<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)
+#[doc(
+    alias = "boost::detail::shared_count::shared_count<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)"
+)]
+pub fn stub_0x2b51b8() -> ! {
+    todo!(
+        "0x2b51b8 boost::detail::shared_count::shared_count<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)"
+    )
+}
+
+// 0x2b52c8 — __ZN5boost6detail17sp_counted_impl_pINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEED1Ev
+// was: boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::~sp_counted_impl_p()
+#[doc(
+    alias = "boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::~sp_counted_impl_p()"
+)]
+pub fn stub_0x2b52c8() -> ! {
+    todo!(
+        "0x2b52c8 boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::~sp_counted_impl_p()"
+    )
+}
+
+// 0x2b52d0 — __ZN5boost6detail17sp_counted_impl_pINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEE7disposeEv
+// was: boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::dispose(void)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::dispose(void)"
+)]
+pub fn stub_0x2b52d0() -> ! {
+    todo!(
+        "0x2b52d0 boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::dispose(void)"
+    )
+}
+
+// 0x2b5378 — __ZN5boost6detail17sp_counted_impl_pINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::get_untyped_deleter(void)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::get_untyped_deleter(void)"
+)]
+pub fn stub_0x2b5378() -> ! {
+    todo!(
+        "0x2b5378 boost::detail::sp_counted_impl_p<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::get_untyped_deleter(void)"
+    )
+}
+
+// 0x2b5380 — __ZN5boost11get_deleterIN3rbx6detail13sp_ms_deleterISt6vectorIN3RBX10Reflection7VariantESaIS7_EEEES9_EEPT_RKNS_10shared_ptrIT0_EE
+// was: rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> * boost::get_deleter<rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> const&)
+#[doc(
+    alias = "rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> * boost::get_deleter<rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> const&)"
+)]
+pub fn stub_0x2b5380() -> ! {
+    todo!(
+        "0x2b5380 rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> * boost::get_deleter<rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> const&)"
+    )
+}
+
+// 0x2b53e0 — __ZNSt12_Vector_baseIN3RBX10Reflection7VariantESaIS2_EE11_M_allocateEm
+#[doc(
+    alias = "std::_Vector_base<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>::_M_allocate(unsigned long)"
+)]
+pub fn stub_0x2b53e0() -> ! {
+    todo!(
+        "0x2b53e0 std::_Vector_base<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>::_M_allocate(unsigned long)"
+    )
+}
+
+// 0x2b5408 — __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS7_EEED1Ev
+// was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::~sp_counted_impl_pd()
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::~sp_counted_impl_pd()"
+)]
+pub fn stub_0x2b5408() -> ! {
+    todo!(
+        "0x2b5408 boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::~sp_counted_impl_pd()"
+    )
+}
+
+// 0x2b5438 — __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS7_EEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::get_deleter(std::type_info const&)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::get_deleter(std::type_info const&)"
+)]
+pub fn stub_0x2b5438() -> ! {
+    todo!(
+        "0x2b5438 boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::get_deleter(std::type_info const&)"
+    )
+}
+
+// 0x2b5450 — __ZN5boost6detail18sp_counted_impl_pdIPSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS7_EEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::get_untyped_deleter(void)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::get_untyped_deleter(void)"
+)]
+pub fn stub_0x2b5450() -> ! {
+    todo!(
+        "0x2b5450 boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>>::get_untyped_deleter(void)"
+    )
+}
+
+// 0x2b5458 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEE9singletonEv
+// was: rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::Tuple const>>::singleton(void)
+#[doc(
+    alias = "rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::Tuple const>>::singleton(void)"
+)]
+pub fn stub_0x2b5458() -> ! {
+    todo!(
+        "0x2b5458 rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::Tuple const>>::singleton(void)"
+    )
+}
+
+// 0x2b54c8 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEE13destruct_funcEPc
+// was: rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::Tuple const>>::destruct_func(char *)
+#[doc(
+    alias = "rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::Tuple const>>::destruct_func(char *)"
+)]
+pub fn stub_0x2b54c8() -> ! {
+    todo!(
+        "0x2b54c8 rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::Tuple const>>::destruct_func(char *)"
+    )
+}
+
+// 0x2b56c0 — __ZN5boost6detail12shared_countC2IN3RBX10Reflection5TupleEEEPT_
+// was: boost::detail::shared_count::shared_count<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)
+#[doc(
+    alias = "boost::detail::shared_count::shared_count<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)"
+)]
+pub fn stub_0x2b56c0() -> ! {
+    todo!(
+        "0x2b56c0 boost::detail::shared_count::shared_count<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)"
+    )
+}
+
+// 0x2b57d0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEED0Ev
+// was: boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::~sp_counted_impl_p()
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::~sp_counted_impl_p()")]
+pub fn stub_0x2b57d0() -> ! {
+    todo!(
+        "0x2b57d0 boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::~sp_counted_impl_p()"
+    )
+}
+
+// 0x2b57d8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Reflection5TupleEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::get_deleter(std::type_info const&)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::get_deleter(std::type_info const&)"
+)]
+pub fn stub_0x2b57d8() -> ! {
+    todo!(
+        "0x2b57d8 boost::detail::sp_counted_impl_p<RBX::Reflection::Tuple>::get_deleter(std::type_info const&)"
+    )
+}
+
+// 0x2b6be4 — __ZN3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+)]
+pub fn stub_0x2b6be4() -> ! {
+    todo!(
+        "0x2b6be4 __ZN3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+    )
+}
+
+// 0x2b6d00 — __ZN3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x2b6d00() -> ! {
+    todo!(
+        "0x2b6d00 __ZN3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x2b6d04 — __ZN3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x2b6d04() -> ! {
+    todo!(
+        "0x2b6d04 __ZN3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x2b6da4 — __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x2b6da4() -> ! {
+    todo!(
+        "0x2b6da4 __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x2b6dac — __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x2b6dac() -> ! {
+    todo!(
+        "0x2b6dac __ZThn32_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x2b6e50 — __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x2b6e50() -> ! {
+    todo!(
+        "0x2b6e50 __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x2b6e58 — __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x2b6e58() -> ! {
+    todo!(
+        "0x2b6e58 __ZThn36_N3RBX10Reflection9DescribedINS_13ScriptContextELZNS_14sScriptContextEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sScriptContextEES4_EELNS0_15ClassDescriptor13FunctionalityE1ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x2b77c0 — __ZN3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+)]
+pub fn stub_0x2b77c0() -> ! {
+    todo!(
+        "0x2b77c0 __ZN3RBX10Reflection9DescribedINS_16OverlayDataModelELZNS_17sOverlayDataModelEENS_17NonFactoryProductINS_9DataModelELZNS_17sOverlayDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+    )
+}
+
+// 0x2b78e0 — __ZN3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+)]
+pub fn stub_0x2b78e0() -> ! {
+    todo!(
+        "0x2b78e0 __ZN3RBX10Reflection9DescribedINS_9DataModelELZNS_10sDataModelEENS_17NonFactoryProductINS_15ServiceProviderELZNS_10sDataModelEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+    )
+}
+
+// 0x2b7a00 — __ZN3RBX10Reflection9DescribedINS_15ServiceProviderELZNS_16sServiceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_16sServiceProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_15ServiceProviderELZNS_16sServiceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_16sServiceProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+)]
+pub fn stub_0x2b7a00() -> ! {
+    todo!(
+        "0x2b7a00 __ZN3RBX10Reflection9DescribedINS_15ServiceProviderELZNS_16sServiceProviderEENS_17NonFactoryProductINS_8InstanceELZNS_16sServiceProviderEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+    )
+}
+
+// 0x2b7b20 — __ZN3RBX3Lua15SingletonBridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE4pushEP9lua_StateS6_
+#[doc(
+    alias = "RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor::Item const*,true>::push(lua_State *,RBX::Reflection::EnumDescriptor::Item const*)"
+)]
+pub fn stub_0x2b7b20() -> ! {
+    todo!(
+        "0x2b7b20 RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor::Item const*,true>::push(lua_State *,RBX::Reflection::EnumDescriptor::Item const*)"
+    )
+}
+
+// 0x2b7bf8 — __ZN3RBX3Lua6BridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE13pushNewObjectIS6_EEPS6_P9lua_StateT_
+#[doc(
+    alias = "RBX::Reflection::EnumDescriptor::Item const** RBX::Lua::Bridge<RBX::Reflection::EnumDescriptor::Item const*,true>::pushNewObject<RBX::Reflection::EnumDescriptor::Item const*>(lua_State *,RBX::Reflection::EnumDescriptor::Item const*)"
+)]
+pub fn stub_0x2b7bf8() -> ! {
+    todo!(
+        "0x2b7bf8 RBX::Reflection::EnumDescriptor::Item const** RBX::Lua::Bridge<RBX::Reflection::EnumDescriptor::Item const*,true>::pushNewObject<RBX::Reflection::EnumDescriptor::Item const*>(lua_State *,RBX::Reflection::EnumDescriptor::Item const*)"
+    )
+}
+
+// 0x2b7c38 — __ZN3RBX3Lua15SingletonBridgeIPKNS_10Reflection14EnumDescriptorELb1EE4pushEP9lua_StateS5_
+#[doc(
+    alias = "RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor const*,true>::push(lua_State *,RBX::Reflection::EnumDescriptor const*)"
+)]
+pub fn stub_0x2b7c38() -> ! {
+    todo!(
+        "0x2b7c38 RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor const*,true>::push(lua_State *,RBX::Reflection::EnumDescriptor const*)"
+    )
+}
+
