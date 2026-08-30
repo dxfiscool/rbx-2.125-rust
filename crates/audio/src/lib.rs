@@ -1,5 +1,5 @@
 //! audio — FMOD (FMOD::System, FMOD::Sound, Channel, etc.)
-//! Generated from ida/export.json filtered for FMOD (1882 funcs, 150 stubs here).
+//! Generated from ida/export.json filtered for FMOD (1882 funcs, 250 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
@@ -901,3 +901,603 @@ pub fn stub_72a04() -> ! {
 pub fn stub_72a28() -> ! {
     todo!("0x72a28 FMOD::ChannelReal::~ChannelReal()")
 }
+// 0x72a40 — __ZN4FMOD19ChannelRealManual3D5allocEv
+#[doc(alias = "FMOD::ChannelRealManual3D::alloc(void)")]
+pub fn stub_72a40() -> ! {
+    todo!("0x72a40 FMOD::ChannelRealManual3D::alloc(void)")
+}
+
+// 0x72a58 — __ZN4FMOD19ChannelRealManual3DC2Ev
+#[doc(alias = "FMOD::ChannelRealManual3D::ChannelRealManual3D(void)")]
+pub fn stub_72a58() -> ! {
+    todo!("0x72a58 FMOD::ChannelRealManual3D::ChannelRealManual3D(void)")
+}
+
+// 0x72a88 — __ZN4FMOD19ChannelRealManual3D23set2DFreqVolumePanFor3DEv
+#[doc(alias = "FMOD::ChannelRealManual3D::set2DFreqVolumePanFor3D(void)")]
+pub fn stub_72a88() -> ! {
+    todo!("0x72a88 FMOD::ChannelRealManual3D::set2DFreqVolumePanFor3D(void)")
+}
+
+// 0x73de4 — __ZN4FMOD19ChannelRealManual3DD0Ev
+#[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
+pub fn stub_73de4() -> ! {
+    todo!("0x73de4 FMOD::ChannelRealManual3D::~ChannelRealManual3D()")
+}
+
+// 0x73e08 — __ZN4FMOD19ChannelRealManual3DD1Ev
+#[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
+pub fn stub_73e08() -> ! {
+    todo!("0x73e08 FMOD::ChannelRealManual3D::~ChannelRealManual3D()")
+}
+
+// 0x73e20 — __ZN4FMOD15ChannelSoftware14setLowPassGainEf
+#[doc(alias = "FMOD::ChannelSoftware::setLowPassGain(float)")]
+pub fn stub_73e20() -> ! {
+    todo!("0x73e20 FMOD::ChannelSoftware::setLowPassGain(float)")
+}
+
+// 0x73e34 — __ZN4FMOD15ChannelSoftware16setDSPClockDelayEv
+#[doc(alias = "FMOD::ChannelSoftware::setDSPClockDelay(void)")]
+pub fn stub_73e34() -> ! {
+    todo!("0x73e34 FMOD::ChannelSoftware::setDSPClockDelay(void)")
+}
+
+// 0x73f0c — __ZN4FMOD15ChannelSoftware11setPositionEjj
+#[doc(alias = "FMOD::ChannelSoftware::setPosition(unsigned int,unsigned int)")]
+pub fn stub_73f0c() -> ! {
+    todo!("0x73f0c FMOD::ChannelSoftware::setPosition(unsigned int,unsigned int)")
+}
+
+// 0x741f4 — __ZN4FMOD15ChannelSoftware11getPositionEPjj
+#[doc(alias = "FMOD::ChannelSoftware::getPosition(unsigned int *,unsigned int)")]
+pub fn stub_741f4() -> ! {
+    todo!("0x741f4 FMOD::ChannelSoftware::getPosition(unsigned int *,unsigned int)")
+}
+
+// 0x74554 — __ZN4FMOD15ChannelSoftware10getDSPHeadEPPNS_4DSPIE
+#[doc(alias = "FMOD::ChannelSoftware::getDSPHead(FMOD::DSPI **)")]
+pub fn stub_74554() -> ! {
+    todo!("0x74554 FMOD::ChannelSoftware::getDSPHead(FMOD::DSPI **)")
+}
+
+// 0x74564 — __ZN4FMOD15ChannelSoftware16moveChannelGroupEPNS_13ChannelGroupIES2_b
+#[doc(alias = "FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
+pub fn stub_74564() -> ! {
+    todo!("0x74564 FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")
+}
+
+// 0x745d4 — __ZN4FMOD15ChannelSoftware19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES
+#[doc(alias = "FMOD::ChannelSoftware::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
+pub fn stub_745d4() -> ! {
+    todo!("0x745d4 FMOD::ChannelSoftware::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+}
+
+// 0x7464c — __ZN4FMOD15ChannelSoftware12addToReverbsEPNS_4DSPIE
+#[doc(alias = "FMOD::ChannelSoftware::addToReverbs(FMOD::DSPI *)")]
+pub fn stub_7464c() -> ! {
+    todo!("0x7464c FMOD::ChannelSoftware::addToReverbs(FMOD::DSPI *)")
+}
+
+// 0x748b4 — __ZN4FMOD15ChannelSoftware11getWaveDataEPfii
+#[doc(alias = "FMOD::ChannelSoftware::getWaveData(float *,int,int)")]
+pub fn stub_748b4() -> ! {
+    todo!("0x748b4 FMOD::ChannelSoftware::getWaveData(float *,int,int)")
+}
+
+// 0x749c4 — __ZN4FMOD15ChannelSoftware11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW
+#[doc(alias = "FMOD::ChannelSoftware::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")]
+pub fn stub_749c4() -> ! {
+    todo!("0x749c4 FMOD::ChannelSoftware::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")
+}
+
+// 0x74b20 — __ZN4FMOD15ChannelSoftware9isPlayingEPbb
+#[doc(alias = "FMOD::ChannelSoftware::isPlaying(bool *,bool)")]
+pub fn stub_74b20() -> ! {
+    todo!("0x74b20 FMOD::ChannelSoftware::isPlaying(bool *,bool)")
+}
+
+// 0x74bd0 — __ZN4FMOD15ChannelSoftware7setModeEj
+#[doc(alias = "FMOD::ChannelSoftware::setMode(unsigned int)")]
+pub fn stub_74bd0() -> ! {
+    todo!("0x74bd0 FMOD::ChannelSoftware::setMode(unsigned int)")
+}
+
+// 0x74c04 — __ZN4FMOD15ChannelSoftware12getLoopCountEPi
+#[doc(alias = "FMOD::ChannelSoftware::getLoopCount(int *)")]
+pub fn stub_74c04() -> ! {
+    todo!("0x74c04 FMOD::ChannelSoftware::getLoopCount(int *)")
+}
+
+// 0x74c44 — __ZN4FMOD15ChannelSoftware12setLoopCountEi
+#[doc(alias = "FMOD::ChannelSoftware::setLoopCount(int)")]
+pub fn stub_74c44() -> ! {
+    todo!("0x74c44 FMOD::ChannelSoftware::setLoopCount(int)")
+}
+
+// 0x74c90 — __ZN4FMOD15ChannelSoftware13setLoopPointsEjj
+#[doc(alias = "FMOD::ChannelSoftware::setLoopPoints(unsigned int,unsigned int)")]
+pub fn stub_74c90() -> ! {
+    todo!("0x74c90 FMOD::ChannelSoftware::setLoopPoints(unsigned int,unsigned int)")
+}
+
+// 0x74cd8 — __ZN4FMOD15ChannelSoftware6setPanEff
+#[doc(alias = "FMOD::ChannelSoftware::setPan(float,float)")]
+pub fn stub_74cd8() -> ! {
+    todo!("0x74cd8 FMOD::ChannelSoftware::setPan(float,float)")
+}
+
+// 0x74de8 — __ZN4FMOD15ChannelSoftware12setFrequencyEf
+#[doc(alias = "FMOD::ChannelSoftware::setFrequency(float)")]
+pub fn stub_74de8() -> ! {
+    todo!("0x74de8 FMOD::ChannelSoftware::setFrequency(float)")
+}
+
+// 0x74edc — __ZN4FMOD15ChannelSoftware15updateReverbMixEPNS_7ReverbIEf
+#[doc(alias = "FMOD::ChannelSoftware::updateReverbMix(FMOD::ReverbI *,float)")]
+pub fn stub_74edc() -> ! {
+    todo!("0x74edc FMOD::ChannelSoftware::updateReverbMix(FMOD::ReverbI *,float)")
+}
+
+// 0x751dc — __ZN4FMOD15ChannelSoftware15updateDirectMixEf
+#[doc(alias = "FMOD::ChannelSoftware::updateDirectMix(float)")]
+pub fn stub_751dc() -> ! {
+    todo!("0x751dc FMOD::ChannelSoftware::updateDirectMix(float)")
+}
+
+// 0x75408 — __ZN4FMOD15ChannelSoftware13setupDSPCodecEPNS_4DSPIE
+#[doc(alias = "FMOD::ChannelSoftware::setupDSPCodec(FMOD::DSPI *)")]
+pub fn stub_75408() -> ! {
+    todo!("0x75408 FMOD::ChannelSoftware::setupDSPCodec(FMOD::DSPI *)")
+}
+
+// 0x75738 — __ZN4FMOD15ChannelSoftware5closeEv
+#[doc(alias = "FMOD::ChannelSoftware::close(void)")]
+pub fn stub_75738() -> ! {
+    todo!("0x75738 FMOD::ChannelSoftware::close(void)")
+}
+
+// 0x757fc — __ZN4FMOD15ChannelSoftware4initEiPNS_7SystemIEPNS_6OutputEPNS_4DSPIE
+#[doc(alias = "FMOD::ChannelSoftware::init(int,FMOD::SystemI *,FMOD::Output *,FMOD::DSPI *)")]
+pub fn stub_757fc() -> ! {
+    todo!("0x757fc FMOD::ChannelSoftware::init(int,FMOD::SystemI *,FMOD::Output *,FMOD::DSPI *)")
+}
+
+// 0x759c0 — __ZN4FMOD15ChannelSoftwareC2Ev
+#[doc(alias = "FMOD::ChannelSoftware::ChannelSoftware(void)")]
+pub fn stub_759c0() -> ! {
+    todo!("0x759c0 FMOD::ChannelSoftware::ChannelSoftware(void)")
+}
+
+// 0x75a44 — __ZN4FMOD15ChannelSoftwareC1Ev
+#[doc(alias = "FMOD::ChannelSoftware::ChannelSoftware(void)")]
+pub fn stub_75a44() -> ! {
+    todo!("0x75a44 FMOD::ChannelSoftware::ChannelSoftware(void)")
+}
+
+// 0x75a48 — __ZN4FMOD15ChannelSoftware9setPausedEb
+#[doc(alias = "FMOD::ChannelSoftware::setPaused(bool)")]
+pub fn stub_75a48() -> ! {
+    todo!("0x75a48 FMOD::ChannelSoftware::setPaused(bool)")
+}
+
+// 0x75b50 — __ZN4FMOD15ChannelSoftware5startEv
+#[doc(alias = "FMOD::ChannelSoftware::start(void)")]
+pub fn stub_75b50() -> ! {
+    todo!("0x75b50 FMOD::ChannelSoftware::start(void)")
+}
+
+// 0x75be0 — __ZN4FMOD15ChannelSoftware5allocEv
+#[doc(alias = "FMOD::ChannelSoftware::alloc(void)")]
+pub fn stub_75be0() -> ! {
+    todo!("0x75be0 FMOD::ChannelSoftware::alloc(void)")
+}
+
+// 0x75f8c — __ZN4FMOD15ChannelSoftware4stopEv
+#[doc(alias = "FMOD::ChannelSoftware::stop(void)")]
+pub fn stub_75f8c() -> ! {
+    todo!("0x75f8c FMOD::ChannelSoftware::stop(void)")
+}
+
+// 0x762c4 — __ZN4FMOD15ChannelSoftware16setSpeakerLevelsEiPfi
+#[doc(alias = "FMOD::ChannelSoftware::setSpeakerLevels(int,float *,int)")]
+pub fn stub_762c4() -> ! {
+    todo!("0x762c4 FMOD::ChannelSoftware::setSpeakerLevels(int,float *,int)")
+}
+
+// 0x76584 — __ZN4FMOD15ChannelSoftware13setSpeakerMixEffffffff
+#[doc(alias = "FMOD::ChannelSoftware::setSpeakerMix(float,float,float,float,float,float,float,float)")]
+pub fn stub_76584() -> ! {
+    todo!("0x76584 FMOD::ChannelSoftware::setSpeakerMix(float,float,float,float,float,float,float,float)")
+}
+
+// 0x76988 — __ZN4FMOD15ChannelSoftware9setVolumeEf
+#[doc(alias = "FMOD::ChannelSoftware::setVolume(float)")]
+pub fn stub_76988() -> ! {
+    todo!("0x76988 FMOD::ChannelSoftware::setVolume(float)")
+}
+
+// 0x76a80 — __ZN4FMOD15ChannelSoftware14set3DOcclusionEff
+#[doc(alias = "FMOD::ChannelSoftware::set3DOcclusion(float,float)")]
+pub fn stub_76a80() -> ! {
+    todo!("0x76a80 FMOD::ChannelSoftware::set3DOcclusion(float,float)")
+}
+
+// 0x76b3c — __ZN4FMOD15ChannelSoftware19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES
+#[doc(alias = "FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
+pub fn stub_76b3c() -> ! {
+    todo!("0x76b3c FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+}
+
+// 0x7709c — __ZN4FMOD15ChannelSoftware9getPausedEPb
+#[doc(alias = "FMOD::ChannelSoftware::getPaused(bool *)")]
+pub fn stub_7709c() -> ! {
+    todo!("0x7709c FMOD::ChannelSoftware::getPaused(bool *)")
+}
+
+// 0x77138 — __ZN4FMOD15ChannelSoftware5allocEPNS_4DSPIE
+#[doc(alias = "FMOD::ChannelSoftware::alloc(FMOD::DSPI *)")]
+pub fn stub_77138() -> ! {
+    todo!("0x77138 FMOD::ChannelSoftware::alloc(FMOD::DSPI *)")
+}
+
+// 0x773c4 — __ZN4FMOD15ChannelSoftwareD1Ev
+#[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
+pub fn stub_773c4() -> ! {
+    todo!("0x773c4 FMOD::ChannelSoftware::~ChannelSoftware()")
+}
+
+// 0x773f0 — __ZN4FMOD15ChannelSoftwareD0Ev
+#[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
+pub fn stub_773f0() -> ! {
+    todo!("0x773f0 FMOD::ChannelSoftware::~ChannelSoftware()")
+}
+
+// 0x77428 — __ZN4FMOD13ChannelStream23set2DFreqVolumePanFor3DEv
+#[doc(alias = "FMOD::ChannelStream::set2DFreqVolumePanFor3D(void)")]
+pub fn stub_77428() -> ! {
+    todo!("0x77428 FMOD::ChannelStream::set2DFreqVolumePanFor3D(void)")
+}
+
+// 0x77474 — __ZN4FMOD13ChannelStream16moveChannelGroupEPNS_13ChannelGroupIES2_b
+#[doc(alias = "FMOD::ChannelStream::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
+pub fn stub_77474() -> ! {
+    todo!("0x77474 FMOD::ChannelStream::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")
+}
+
+// 0x774e0 — __ZN4FMOD13ChannelStream5startEv
+#[doc(alias = "FMOD::ChannelStream::start(void)")]
+pub fn stub_774e0() -> ! {
+    todo!("0x774e0 FMOD::ChannelStream::start(void)")
+}
+
+// 0x77574 — __ZN4FMOD13ChannelStream6updateEi
+#[doc(alias = "FMOD::ChannelStream::update(int)")]
+pub fn stub_77574() -> ! {
+    todo!("0x77574 FMOD::ChannelStream::update(int)")
+}
+
+// 0x775d0 — __ZN4FMOD13ChannelStream9setVolumeEf
+#[doc(alias = "FMOD::ChannelStream::setVolume(float)")]
+pub fn stub_775d0() -> ! {
+    todo!("0x775d0 FMOD::ChannelStream::setVolume(float)")
+}
+
+// 0x77718 — __ZN4FMOD13ChannelStream12setFrequencyEf
+#[doc(alias = "FMOD::ChannelStream::setFrequency(float)")]
+pub fn stub_77718() -> ! {
+    todo!("0x77718 FMOD::ChannelStream::setFrequency(float)")
+}
+
+// 0x77774 — __ZN4FMOD13ChannelStream6setPanEff
+#[doc(alias = "FMOD::ChannelStream::setPan(float,float)")]
+pub fn stub_77774() -> ! {
+    todo!("0x77774 FMOD::ChannelStream::setPan(float,float)")
+}
+
+// 0x7781c — __ZN4FMOD13ChannelStream16setDSPClockDelayEv
+#[doc(alias = "FMOD::ChannelStream::setDSPClockDelay(void)")]
+pub fn stub_7781c() -> ! {
+    todo!("0x7781c FMOD::ChannelStream::setDSPClockDelay(void)")
+}
+
+// 0x77868 — __ZN4FMOD13ChannelStream13setSpeakerMixEffffffff
+#[doc(alias = "FMOD::ChannelStream::setSpeakerMix(float,float,float,float,float,float,float,float)")]
+pub fn stub_77868() -> ! {
+    todo!("0x77868 FMOD::ChannelStream::setSpeakerMix(float,float,float,float,float,float,float,float)")
+}
+
+// 0x77904 — __ZN4FMOD13ChannelStream16setSpeakerLevelsEiPfi
+#[doc(alias = "FMOD::ChannelStream::setSpeakerLevels(int,float *,int)")]
+pub fn stub_77904() -> ! {
+    todo!("0x77904 FMOD::ChannelStream::setSpeakerLevels(int,float *,int)")
+}
+
+// 0x77970 — __ZN4FMOD13ChannelStream15set3DAttributesEv
+#[doc(alias = "FMOD::ChannelStream::set3DAttributes(void)")]
+pub fn stub_77970() -> ! {
+    todo!("0x77970 FMOD::ChannelStream::set3DAttributes(void)")
+}
+
+// 0x779bc — __ZN4FMOD13ChannelStream14setLowPassGainEf
+#[doc(alias = "FMOD::ChannelStream::setLowPassGain(float)")]
+pub fn stub_779bc() -> ! {
+    todo!("0x779bc FMOD::ChannelStream::setLowPassGain(float)")
+}
+
+// 0x77a18 — __ZN4FMOD13ChannelStream19set3DMinMaxDistanceEv
+#[doc(alias = "FMOD::ChannelStream::set3DMinMaxDistance(void)")]
+pub fn stub_77a18() -> ! {
+    todo!("0x77a18 FMOD::ChannelStream::set3DMinMaxDistance(void)")
+}
+
+// 0x77a64 — __ZN4FMOD13ChannelStream14set3DOcclusionEff
+#[doc(alias = "FMOD::ChannelStream::set3DOcclusion(float,float)")]
+pub fn stub_77a64() -> ! {
+    todo!("0x77a64 FMOD::ChannelStream::set3DOcclusion(float,float)")
+}
+
+// 0x77ac8 — __ZN4FMOD13ChannelStream19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES
+#[doc(alias = "FMOD::ChannelStream::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
+pub fn stub_77ac8() -> ! {
+    todo!("0x77ac8 FMOD::ChannelStream::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+}
+
+// 0x77b24 — __ZN4FMOD13ChannelStream19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES
+#[doc(alias = "FMOD::ChannelStream::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
+pub fn stub_77b24() -> ! {
+    todo!("0x77b24 FMOD::ChannelStream::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+}
+
+// 0x77b48 — __ZN4FMOD13ChannelStream9isPlayingEPbb
+#[doc(alias = "FMOD::ChannelStream::isPlaying(bool *,bool)")]
+pub fn stub_77b48() -> ! {
+    todo!("0x77b48 FMOD::ChannelStream::isPlaying(bool *,bool)")
+}
+
+// 0x77b5c — __ZN4FMOD13ChannelStream11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW
+#[doc(alias = "FMOD::ChannelStream::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")]
+pub fn stub_77b5c() -> ! {
+    todo!("0x77b5c FMOD::ChannelStream::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")
+}
+
+// 0x77b6c — __ZN4FMOD13ChannelStream11getWaveDataEPfii
+#[doc(alias = "FMOD::ChannelStream::getWaveData(float *,int,int)")]
+pub fn stub_77b6c() -> ! {
+    todo!("0x77b6c FMOD::ChannelStream::getWaveData(float *,int,int)")
+}
+
+// 0x77b7c — __ZN4FMOD13ChannelStream10getDSPHeadEPPNS_4DSPIE
+#[doc(alias = "FMOD::ChannelStream::getDSPHead(FMOD::DSPI **)")]
+pub fn stub_77b7c() -> ! {
+    todo!("0x77b7c FMOD::ChannelStream::getDSPHead(FMOD::DSPI **)")
+}
+
+// 0x77b8c — __ZN4FMOD13ChannelStream12setLoopCountEi
+#[doc(alias = "FMOD::ChannelStream::setLoopCount(int)")]
+pub fn stub_77b8c() -> ! {
+    todo!("0x77b8c FMOD::ChannelStream::setLoopCount(int)")
+}
+
+// 0x77bc0 — __ZN4FMOD13ChannelStream13setLoopPointsEjj
+#[doc(alias = "FMOD::ChannelStream::setLoopPoints(unsigned int,unsigned int)")]
+pub fn stub_77bc0() -> ! {
+    todo!("0x77bc0 FMOD::ChannelStream::setLoopPoints(unsigned int,unsigned int)")
+}
+
+// 0x77c14 — __ZN4FMOD13ChannelStream11getPositionEPjj
+#[doc(alias = "FMOD::ChannelStream::getPosition(unsigned int *,unsigned int)")]
+pub fn stub_77c14() -> ! {
+    todo!("0x77c14 FMOD::ChannelStream::getPosition(unsigned int *,unsigned int)")
+}
+
+// 0x77f74 — __ZN4FMOD13ChannelStream4stopEv
+#[doc(alias = "FMOD::ChannelStream::stop(void)")]
+pub fn stub_77f74() -> ! {
+    todo!("0x77f74 FMOD::ChannelStream::stop(void)")
+}
+
+// 0x78168 — __ZN4FMOD13ChannelStream7setModeEj
+#[doc(alias = "FMOD::ChannelStream::setMode(unsigned int)")]
+pub fn stub_78168() -> ! {
+    todo!("0x78168 FMOD::ChannelStream::setMode(unsigned int)")
+}
+
+// 0x781f0 — __ZN4FMOD13ChannelStreamC2Ev
+#[doc(alias = "FMOD::ChannelStream::ChannelStream(void)")]
+pub fn stub_781f0() -> ! {
+    todo!("0x781f0 FMOD::ChannelStream::ChannelStream(void)")
+}
+
+// 0x7826c — __ZN4FMOD13ChannelStreamC1Ev
+#[doc(alias = "FMOD::ChannelStream::ChannelStream(void)")]
+pub fn stub_7826c() -> ! {
+    todo!("0x7826c FMOD::ChannelStream::ChannelStream(void)")
+}
+
+// 0x78270 — __ZN4FMOD13ChannelStream5allocEv
+#[doc(alias = "FMOD::ChannelStream::alloc(void)")]
+pub fn stub_78270() -> ! {
+    todo!("0x78270 FMOD::ChannelStream::alloc(void)")
+}
+
+// 0x78540 — __ZN4FMOD13ChannelStream13setPositionExEjjb
+#[doc(alias = "FMOD::ChannelStream::setPositionEx(unsigned int,unsigned int,bool)")]
+pub fn stub_78540() -> ! {
+    todo!("0x78540 FMOD::ChannelStream::setPositionEx(unsigned int,unsigned int,bool)")
+}
+
+// 0x78af0 — __ZN4FMOD13ChannelStream9setPausedEb
+#[doc(alias = "FMOD::ChannelStream::setPaused(bool)")]
+pub fn stub_78af0() -> ! {
+    todo!("0x78af0 FMOD::ChannelStream::setPaused(bool)")
+}
+
+// 0x78b80 — __ZN4FMOD13ChannelStream12updateStreamEv
+#[doc(alias = "FMOD::ChannelStream::updateStream(void)")]
+pub fn stub_78b80() -> ! {
+    todo!("0x78b80 FMOD::ChannelStream::updateStream(void)")
+}
+
+// 0x78fac — __ZN4FMOD13ChannelStream8isStreamEv
+#[doc(alias = "FMOD::ChannelStream::isStream(void)")]
+pub fn stub_78fac() -> ! {
+    todo!("0x78fac FMOD::ChannelStream::isStream(void)")
+}
+
+// 0x78fb4 — __ZN4FMOD13ChannelStream11setPositionEjj
+#[doc(alias = "FMOD::ChannelStream::setPosition(unsigned int,unsigned int)")]
+pub fn stub_78fb4() -> ! {
+    todo!("0x78fb4 FMOD::ChannelStream::setPosition(unsigned int,unsigned int)")
+}
+
+// 0x78fc4 — __ZN4FMOD13ChannelStreamD0Ev
+#[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
+pub fn stub_78fc4() -> ! {
+    todo!("0x78fc4 FMOD::ChannelStream::~ChannelStream()")
+}
+
+// 0x78fe8 — __ZN4FMOD13ChannelStreamD1Ev
+#[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
+pub fn stub_78fe8() -> ! {
+    todo!("0x78fe8 FMOD::ChannelStream::~ChannelStream()")
+}
+
+// 0x79000 — __ZN4FMOD12ChannelGroup9setVolumeEf
+#[doc(alias = "FMOD::ChannelGroup::setVolume(float)")]
+pub fn stub_79000() -> ! {
+    todo!("0x79000 FMOD::ChannelGroup::setVolume(float)")
+}
+
+// 0x79034 — __ZN4FMOD13ChannelGroupI8validateEPNS_12ChannelGroupEPPS0_
+#[doc(alias = "FMOD::ChannelGroupI::validate(FMOD::ChannelGroup *,FMOD::ChannelGroupI**)")]
+pub fn stub_79034() -> ! {
+    todo!("0x79034 FMOD::ChannelGroupI::validate(FMOD::ChannelGroup *,FMOD::ChannelGroupI**)")
+}
+
+// 0x79054 — __ZN4FMOD13ChannelGroupI9getPausedEPb
+#[doc(alias = "FMOD::ChannelGroupI::getPaused(bool *)")]
+pub fn stub_79054() -> ! {
+    todo!("0x79054 FMOD::ChannelGroupI::getPaused(bool *)")
+}
+
+// 0x7906c — __ZN4FMOD13ChannelGroupI17getMemoryUsedImplEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::ChannelGroupI::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_7906c() -> ! {
+    todo!("0x7906c FMOD::ChannelGroupI::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+
+// 0x790fc — __ZN4FMOD13ChannelGroupI20updateChildMixTargetEPNS_4DSPIE
+#[doc(alias = "FMOD::ChannelGroupI::updateChildMixTarget(FMOD::DSPI *)")]
+pub fn stub_790fc() -> ! {
+    todo!("0x790fc FMOD::ChannelGroupI::updateChildMixTarget(FMOD::DSPI *)")
+}
+
+// 0x791e8 — __ZN4FMOD13ChannelGroupI7setMuteEbb
+#[doc(alias = "FMOD::ChannelGroupI::setMute(bool,bool)")]
+pub fn stub_791e8() -> ! {
+    todo!("0x791e8 FMOD::ChannelGroupI::setMute(bool,bool)")
+}
+
+// 0x79280 — __ZN4FMOD13ChannelGroupI9setPausedEbb
+#[doc(alias = "FMOD::ChannelGroupI::setPaused(bool,bool)")]
+pub fn stub_79280() -> ! {
+    todo!("0x79280 FMOD::ChannelGroupI::setPaused(bool,bool)")
+}
+
+// 0x79334 — __ZN4FMOD13ChannelGroupI16setPitchInternalEv
+#[doc(alias = "FMOD::ChannelGroupI::setPitchInternal(void)")]
+pub fn stub_79334() -> ! {
+    todo!("0x79334 FMOD::ChannelGroupI::setPitchInternal(void)")
+}
+
+// 0x793e4 — __ZN4FMOD13ChannelGroupI17setVolumeInternalEv
+#[doc(alias = "FMOD::ChannelGroupI::setVolumeInternal(void)")]
+pub fn stub_793e4() -> ! {
+    todo!("0x793e4 FMOD::ChannelGroupI::setVolumeInternal(void)")
+}
+
+// 0x794c4 — __ZN4FMOD13ChannelGroupI8addGroupEPS0_
+#[doc(alias = "FMOD::ChannelGroupI::addGroup(FMOD::ChannelGroupI*)")]
+pub fn stub_794c4() -> ! {
+    todo!("0x794c4 FMOD::ChannelGroupI::addGroup(FMOD::ChannelGroupI*)")
+}
+
+// 0x796a4 — __ZN4FMOD13ChannelGroupI9setVolumeEf
+#[doc(alias = "FMOD::ChannelGroupI::setVolume(float)")]
+pub fn stub_796a4() -> ! {
+    todo!("0x796a4 FMOD::ChannelGroupI::setVolume(float)")
+}
+
+// 0x796d4 — __ZN4FMOD13ChannelGroupI15releaseInternalEb
+#[doc(alias = "FMOD::ChannelGroupI::releaseInternal(bool)")]
+pub fn stub_796d4() -> ! {
+    todo!("0x796d4 FMOD::ChannelGroupI::releaseInternal(bool)")
+}
+
+// 0x7995c — __ZN4FMOD13ChannelGroupI7releaseEv
+#[doc(alias = "FMOD::ChannelGroupI::release(void)")]
+pub fn stub_7995c() -> ! {
+    todo!("0x7995c FMOD::ChannelGroupI::release(void)")
+}
+
+// 0x79980 — __ZN4FMOD20ChannelGroupSoftware17getMemoryUsedImplEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::ChannelGroupSoftware::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_79980() -> ! {
+    todo!("0x79980 FMOD::ChannelGroupSoftware::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+
+// 0x79a38 — __ZN4FMOD13ChannelGroupI13getMemoryUsedEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::ChannelGroupI::getMemoryUsed(FMOD::MemoryTracker *)")]
+pub fn stub_79a38() -> ! {
+    todo!("0x79a38 FMOD::ChannelGroupI::getMemoryUsed(FMOD::MemoryTracker *)")
+}
+
+// 0x79a90 — __ZN4FMOD20ChannelGroupSoftware13getMemoryUsedEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::ChannelGroupSoftware::getMemoryUsed(FMOD::MemoryTracker *)")]
+pub fn stub_79a90() -> ! {
+    todo!("0x79a90 FMOD::ChannelGroupSoftware::getMemoryUsed(FMOD::MemoryTracker *)")
+}
+
+// 0x79ae8 — __ZN4FMOD8ChannelI16returnToFreeListEv
+#[doc(alias = "FMOD::ChannelI::returnToFreeList(void)")]
+pub fn stub_79ae8() -> ! {
+    todo!("0x79ae8 FMOD::ChannelI::returnToFreeList(void)")
+}
+
+// 0x79b98 — __ZN4FMOD8ChannelI14referenceStampEb
+#[doc(alias = "FMOD::ChannelI::referenceStamp(bool)")]
+pub fn stub_79b98() -> ! {
+    todo!("0x79b98 FMOD::ChannelI::referenceStamp(bool)")
+}
+
+// 0x79bdc — __ZN4FMOD8ChannelI14getRealChannelEPPNS_11ChannelRealEPi
+#[doc(alias = "FMOD::ChannelI::getRealChannel(FMOD::ChannelReal **,int *)")]
+pub fn stub_79bdc() -> ! {
+    todo!("0x79bdc FMOD::ChannelI::getRealChannel(FMOD::ChannelReal **,int *)")
+}
+
+// 0x79ca8 — __ZN4FMOD8ChannelI4initEv
+#[doc(alias = "FMOD::ChannelI::init(void)")]
+pub fn stub_79ca8() -> ! {
+    todo!("0x79ca8 FMOD::ChannelI::init(void)")
+}
+
+// 0x79dd4 — __ZN4FMOD8ChannelIC2EiPNS_7SystemIE
+#[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
+pub fn stub_79dd4() -> ! {
+    todo!("0x79dd4 FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")
+}
+
+// 0x79e84 — __ZN4FMOD8ChannelIC1EiPNS_7SystemIE
+#[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
+pub fn stub_79e84() -> ! {
+    todo!("0x79e84 FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")
+}
+
+// 0x79e88 — __ZN4FMOD8ChannelIC2Ev
+#[doc(alias = "FMOD::ChannelI::ChannelI(void)")]
+pub fn stub_79e88() -> ! {
+    todo!("0x79e88 FMOD::ChannelI::ChannelI(void)")
+}
+
