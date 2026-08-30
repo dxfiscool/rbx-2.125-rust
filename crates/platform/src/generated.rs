@@ -1,6 +1,6 @@
-//! platform generated — next 200 stubs sorted by EA, from ida/export.json
+//! platform generated — next 400 stubs sorted by EA, from ida/export.json
 //! Filter: RobloxView|GameViewController|AppDelegate|EAGL2|PlaceLauncher|ControlView|UIViewController|HomeViewController|Teleporter
-//! Batch: 300 stubs (100 + 100 + 100) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 400 stubs (100 + 100 + 100 + 100) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -2086,4 +2086,720 @@ pub fn stub_4e730() -> ! {
 #[doc(alias = "___45-[GameViewController handlePromptLoginSignal]_block_invoke")]
 pub fn stub_4e780() -> ! {
     todo!("0x4e780 ___45-[GameViewController handlePromptLoginSignal]_block_invoke")
+}
+// 0x4e868 — -[GameViewController handlePromptSignupSignal]
+// type: void __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController handlePromptSignupSignal]")]
+pub fn stub_4e868() -> ! {
+    todo!("0x4e868 -[GameViewController handlePromptSignupSignal]")
+}
+
+// 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___46-[GameViewController handlePromptSignupSignal]_block_invoke")]
+pub fn stub_4e8b8() -> ! {
+    todo!("0x4e8b8 ___46-[GameViewController handlePromptSignupSignal]_block_invoke")
+}
+
+// 0x4e9a0 — -[GameViewController handleSignupNotification:]
+// type: void __cdecl(GameViewController *self, SEL, id)
+#[doc(alias = "-[GameViewController handleSignupNotification:]")]
+pub fn stub_4e9a0() -> ! {
+    todo!("0x4e9a0 -[GameViewController handleSignupNotification:]")
+}
+
+// 0x4ea30 — -[GameViewController handleLoginNotification:]
+// type: void __cdecl(GameViewController *self, SEL, id)
+#[doc(alias = "-[GameViewController handleLoginNotification:]")]
+pub fn stub_4ea30() -> ! {
+    todo!("0x4ea30 -[GameViewController handleLoginNotification:]")
+}
+
+// 0x4eac8 — ___46-[GameViewController handleLoginNotification:]_block_invoke
+// type: void __fastcall(id *)
+#[doc(alias = "___46-[GameViewController handleLoginNotification:]_block_invoke")]
+pub fn stub_4eac8() -> ! {
+    todo!("0x4eac8 ___46-[GameViewController handleLoginNotification:]_block_invoke")
+}
+
+// 0x51f80 — -[MainViewController setRobloxView:]
+// type: void __cdecl(MainViewController *self, SEL, RobloxView *)
+#[doc(alias = "-[MainViewController setRobloxView:]")]
+pub fn stub_51f80() -> ! {
+    todo!("0x51f80 -[MainViewController setRobloxView:]")
+}
+
+// 0x51f90 — -[MainViewController getRobloxView]
+// type: RobloxView *__cdecl(MainViewController *self, SEL)
+#[doc(alias = "-[MainViewController getRobloxView]")]
+pub fn stub_51f90() -> ! {
+    todo!("0x51f90 -[MainViewController getRobloxView]")
+}
+
+// 0xe844ec — __ZN4Ogre12EAGL2SupportC1Ev
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::EAGL2Support(void)")]
+pub fn stub_e844ec() -> ! {
+    todo!("0xe844ec Ogre::EAGL2Support::EAGL2Support(void)")
+}
+
+// 0xe8455c — __ZN4Ogre12EAGL2SupportD0Ev
+// type: void __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::~EAGL2Support()")]
+pub fn stub_e8455c() -> ! {
+    todo!("0xe8455c Ogre::EAGL2Support::~EAGL2Support()")
+}
+
+// 0xe84570 — __ZN4Ogre12EAGL2SupportD1Ev
+// type: void __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::~EAGL2Support()")]
+pub fn stub_e84570() -> ! {
+    todo!("0xe84570 Ogre::EAGL2Support::~EAGL2Support()")
+}
+
+// 0xe8457c — __ZN4Ogre12EAGL2Support9addConfigEv
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::addConfig(void)")]
+pub fn stub_e8457c() -> ! {
+    todo!("0xe8457c Ogre::EAGL2Support::addConfig(void)")
+}
+
+// 0xe862b0 — __ZN4Ogre12EAGL2Support14validateConfigEv
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::validateConfig(void)")]
+pub fn stub_e862b0() -> ! {
+    todo!("0xe862b0 Ogre::EAGL2Support::validateConfig(void)")
+}
+
+// 0xe862c8 — __ZN4Ogre12EAGL2Support14getDisplayNameEv
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::getDisplayName(void)")]
+pub fn stub_e862c8() -> ! {
+    todo!("0xe862c8 Ogre::EAGL2Support::getDisplayName(void)")
+}
+
+// 0xe862e4 — __ZN4Ogre12EAGL2Support12createWindowEbPNS_17GLES2RenderSystemERKSs
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this, bool, Ogre::GLES2RenderSystem *, const std::string *)
+#[doc(alias = "Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)")]
+pub fn stub_e862e4() -> ! {
+    todo!("0xe862e4 Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)")
+}
+
+// 0xe86aa0 — __ZN4Ogre12EAGL2Support9newWindowERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, Ogre::NedPoolingImpl *, int, int, int, int)
+#[doc(alias = "Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+pub fn stub_e86aa0() -> ! {
+    todo!("0xe86aa0 Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xe86b80 — __ZNK4Ogre12EAGL2Support16createNewContextERPK14__CFDictionaryP11CAEAGLLayerP14EAGLSharegroup
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this, const __CFDictionary **, CAEAGLLayer *, EAGLSharegroup *)
+#[doc(alias = "Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const")]
+pub fn stub_e86b80() -> ! {
+    todo!("0xe86b80 Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const")
+}
+
+// 0xe86d80 — __ZN4Ogre12EAGL2Support14getProcAddressERKSs
+#[doc(alias = "Ogre::EAGL2Support::getProcAddress(std::string const&)")]
+pub fn stub_e86d80() -> ! {
+    todo!("0xe86d80 Ogre::EAGL2Support::getProcAddress(std::string const&)")
+}
+
+// 0xe86d84 — __ZN4Ogre12EAGL2Support5startEv
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::start(void)")]
+pub fn stub_e86d84() -> ! {
+    todo!("0xe86d84 Ogre::EAGL2Support::start(void)")
+}
+
+// 0xe86d88 — __ZN4Ogre12EAGL2Support4stopEv
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::stop(void)")]
+pub fn stub_e86d88() -> ! {
+    todo!("0xe86d88 Ogre::EAGL2Support::stop(void)")
+}
+
+// 0xe88194 — -[EAGL2ViewController init]
+// type: EAGL2ViewController *__cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController init]")]
+pub fn stub_e88194() -> ! {
+    todo!("0xe88194 -[EAGL2ViewController init]")
+}
+
+// 0xe881c0 — -[EAGL2ViewController initWithNibName:bundle:]
+// type: EAGL2ViewController *__cdecl(EAGL2ViewController *self, SEL, id, id)
+#[doc(alias = "-[EAGL2ViewController initWithNibName:bundle:]")]
+pub fn stub_e881c0() -> ! {
+    todo!("0xe881c0 -[EAGL2ViewController initWithNibName:bundle:]")
+}
+
+// 0xe881f0 — -[EAGL2ViewController dealloc]
+// type: void __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController dealloc]")]
+pub fn stub_e881f0() -> ! {
+    todo!("0xe881f0 -[EAGL2ViewController dealloc]")
+}
+
+// 0xe8821c — -[EAGL2ViewController didReceiveMemoryWarning]
+// type: void __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController didReceiveMemoryWarning]")]
+pub fn stub_e8821c() -> ! {
+    todo!("0xe8821c -[EAGL2ViewController didReceiveMemoryWarning]")
+}
+
+// 0xe88248 — -[EAGL2ViewController loadView]
+// type: void __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController loadView]")]
+pub fn stub_e88248() -> ! {
+    todo!("0xe88248 -[EAGL2ViewController loadView]")
+}
+
+// 0xe88274 — -[EAGL2ViewController viewDidLoad]
+// type: void __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController viewDidLoad]")]
+pub fn stub_e88274() -> ! {
+    todo!("0xe88274 -[EAGL2ViewController viewDidLoad]")
+}
+
+// 0xe882a0 — -[EAGL2ViewController viewDidUnload]
+// type: void __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController viewDidUnload]")]
+pub fn stub_e882a0() -> ! {
+    todo!("0xe882a0 -[EAGL2ViewController viewDidUnload]")
+}
+
+// 0xe882cc — -[EAGL2ViewController shouldAutorotate]
+// type: char __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController shouldAutorotate]")]
+pub fn stub_e882cc() -> ! {
+    todo!("0xe882cc -[EAGL2ViewController shouldAutorotate]")
+}
+
+// 0xe88310 — -[EAGL2ViewController supportedInterfaceOrientations]
+// type: unsigned int __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController supportedInterfaceOrientations]")]
+pub fn stub_e88310() -> ! {
+    todo!("0xe88310 -[EAGL2ViewController supportedInterfaceOrientations]")
+}
+
+// 0xe88314 — -[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]
+// type: char __cdecl(EAGL2ViewController *self, SEL, int)
+#[doc(alias = "-[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]")]
+pub fn stub_e88314() -> ! {
+    todo!("0xe88314 -[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]")
+}
+
+// 0xe88328 — -[EAGL2ViewController mGLSupport]
+// type: EAGL2Support *__cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController mGLSupport]")]
+pub fn stub_e88328() -> ! {
+    todo!("0xe88328 -[EAGL2ViewController mGLSupport]")
+}
+
+// 0xe8833c — -[EAGL2ViewController setMGLSupport:]
+// type: void __cdecl(EAGL2ViewController *self, SEL, EAGL2Support *)
+#[doc(alias = "-[EAGL2ViewController setMGLSupport:]")]
+pub fn stub_e8833c() -> ! {
+    todo!("0xe8833c -[EAGL2ViewController setMGLSupport:]")
+}
+
+// 0xe88388 — __ZN4Ogre11EAGL2WindowC1EPNS_12EAGL2SupportE
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, Ogre::EAGL2Support *)
+#[doc(alias = "Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)")]
+pub fn stub_e88388() -> ! {
+    todo!("0xe88388 Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)")
+}
+
+// 0xe884e4 — __ZN4Ogre11EAGL2WindowD0Ev
+// type: void __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::~EAGL2Window()")]
+pub fn stub_e884e4() -> ! {
+    todo!("0xe884e4 Ogre::EAGL2Window::~EAGL2Window()")
+}
+
+// 0xe885b8 — __ZN4Ogre11EAGL2WindowD1Ev
+// type: void __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::~EAGL2Window()")]
+pub fn stub_e885b8() -> ! {
+    todo!("0xe885b8 Ogre::EAGL2Window::~EAGL2Window()")
+}
+
+// 0xe88680 — __ZN4Ogre11EAGL2Window7destroyEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::destroy(void)")]
+pub fn stub_e88680() -> ! {
+    todo!("0xe88680 Ogre::EAGL2Window::destroy(void)")
+}
+
+// 0xe886f8 — __ZN4Ogre11EAGL2Window13setFullscreenEbjj
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool, unsigned int, unsigned int)
+#[doc(alias = "Ogre::EAGL2Window::setFullscreen(bool,unsigned int,unsigned int)")]
+pub fn stub_e886f8() -> ! {
+    todo!("0xe886f8 Ogre::EAGL2Window::setFullscreen(bool,unsigned int,unsigned int)")
+}
+
+// 0xe886fc — __ZN4Ogre11EAGL2Window10repositionEii
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, int, int)
+#[doc(alias = "Ogre::EAGL2Window::reposition(int,int)")]
+pub fn stub_e886fc() -> ! {
+    todo!("0xe886fc Ogre::EAGL2Window::reposition(int,int)")
+}
+
+// 0xe88700 — __ZN4Ogre11EAGL2Window6resizeEjj
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, unsigned int, unsigned int)
+#[doc(alias = "Ogre::EAGL2Window::resize(unsigned int,unsigned int)")]
+pub fn stub_e88700() -> ! {
+    todo!("0xe88700 Ogre::EAGL2Window::resize(unsigned int,unsigned int)")
+}
+
+// 0xe88800 — __ZN4Ogre11EAGL2Window20windowMovedOrResizedEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::windowMovedOrResized(void)")]
+pub fn stub_e88800() -> ! {
+    todo!("0xe88800 Ogre::EAGL2Window::windowMovedOrResized(void)")
+}
+
+// 0xe88894 — __ZN4Ogre11EAGL2Window12_beginUpdateEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::_beginUpdate(void)")]
+pub fn stub_e88894() -> ! {
+    todo!("0xe88894 Ogre::EAGL2Window::_beginUpdate(void)")
+}
+
+// 0xe888bc — __ZN4Ogre11EAGL2Window23initNativeCreatedWindowEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::EAGL2Window::initNativeCreatedWindow(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+pub fn stub_e888bc() -> ! {
+    todo!("0xe888bc Ogre::EAGL2Window::initNativeCreatedWindow(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xe89488 — __ZN4Ogre11EAGL2Window6createERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::EAGL2Window::create(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+pub fn stub_e89488() -> ! {
+    todo!("0xe89488 Ogre::EAGL2Window::create(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xe89c80 — __ZN4Ogre11EAGL2Window11swapBuffersEb
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool)
+#[doc(alias = "Ogre::EAGL2Window::swapBuffers(bool)")]
+pub fn stub_e89c80() -> ! {
+    todo!("0xe89c80 Ogre::EAGL2Window::swapBuffers(bool)")
+}
+
+// 0xe89f88 — __ZN4Ogre11EAGL2Window18getCustomAttributeERKSsPv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, const std::string *, void *)
+#[doc(alias = "Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)")]
+pub fn stub_e89f88() -> ! {
+    todo!("0xe89f88 Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)")
+}
+
+// 0xe8a038 — __ZN4Ogre11EAGL2Window20copyContentsToMemoryERKNS_8PixelBoxENS_12RenderTarget11FrameBufferE
+#[doc(alias = "Ogre::EAGL2Window::copyContentsToMemory(Ogre::PixelBox const&,Ogre::RenderTarget::FrameBuffer)")]
+pub fn stub_e8a038() -> ! {
+    todo!("0xe8a038 Ogre::EAGL2Window::copyContentsToMemory(Ogre::PixelBox const&,Ogre::RenderTarget::FrameBuffer)")
+}
+
+// 0xe8a554 — __ZNK4Ogre11EAGL2Window23requiresTextureFlippingEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::requiresTextureFlipping(void)const")]
+pub fn stub_e8a554() -> ! {
+    todo!("0xe8a554 Ogre::EAGL2Window::requiresTextureFlipping(void)const")
+}
+
+// 0xe8a568 — __ZNK4Ogre11EAGL2Window9isVisibleEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::isVisible(void)const")]
+pub fn stub_e8a568() -> ! {
+    todo!("0xe8a568 Ogre::EAGL2Window::isVisible(void)const")
+}
+
+// 0xe8a570 — __ZN4Ogre11EAGL2Window10setVisibleEb
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool)
+#[doc(alias = "Ogre::EAGL2Window::setVisible(bool)")]
+pub fn stub_e8a570() -> ! {
+    todo!("0xe8a570 Ogre::EAGL2Window::setVisible(bool)")
+}
+
+// 0xe8a590 — __ZNK4Ogre11EAGL2Window8isClosedEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::isClosed(void)const")]
+pub fn stub_e8a590() -> ! {
+    todo!("0xe8a590 Ogre::EAGL2Window::isClosed(void)const")
+}
+
+// 0xf1f1c8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1f1c8() -> ! {
+    todo!("0xf1f1c8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1f270 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1f270() -> ! {
+    todo!("0xf1f270 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1f27c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1f27c() -> ! {
+    todo!("0xf1f27c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1f2f4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv$shim
+// was: __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv$shim
+#[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv$shim")]
+pub fn stub_f1f2f4() -> ! {
+    todo!("0xf1f2f4 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv$shim")
+}
+
+// 0xf1f348 — __ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim
+#[doc(alias = "__ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim")]
+pub fn stub_f1f348() -> ! {
+    todo!("0xf1f348 __ZNK10RobloxView9RenderJob14getMetricValueERKSs$shim")
+}
+
+// 0xf1f360 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim
+// was: __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim
+#[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim")]
+pub fn stub_f1f360() -> ! {
+    todo!("0xf1f360 __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i$shim")
+}
+
+// 0xf267d4 — j___ZN5boost3_bi5list2INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEC2ES5_SA_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
+// was: boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)
+#[doc(alias = "boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)")]
+pub fn stub_f267d4() -> ! {
+    todo!("0xf267d4 boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::list2(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>)")
+}
+
+// 0xf267e4 — j___ZN5boost3_bi5list2INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEEEclIPFvS4_S9_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>) &,boost::_bi::list0 &,int)
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>) &,boost::_bi::list0 &,int)")]
+pub fn stub_f267e4() -> ! {
+    todo!("0xf267e4 void boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>) &,boost::_bi::list0 &,int)")
+}
+
+// 0xf26834 — j___ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEC2ES5_SA_SD_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
+// was: boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)
+#[doc(alias = "boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")]
+pub fn stub_f26834() -> ! {
+    todo!("0xf26834 boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::list3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")
+}
+
+// 0xf26844 — j___ZN5boost3_bi5list3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEclIPFvS4_S9_SC_ENS0_5list1IRPNS7_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
+pub fn stub_f26844() -> ! {
+    todo!("0xf26844 void boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::operator()<void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *) &,boost::_bi::list1<RBX::DataModel *&> &,int)")
+}
+
+// 0xf268b4 — j___ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
+// type: int __fastcall(int, int, std::string *, int, std::string *)
+#[doc(alias = "boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::list4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
+pub fn stub_f268b4() -> ! {
+    todo!("0xf268b4 boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::list4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")
+}
+
+// 0xf268c4 — j___ZN5boost3_bi5list4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EclIPFvS4_SsSsSsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// type: int()
+#[doc(alias = "void boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::operator()<void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(PlaceLauncher *,std::string,std::string,std::string) &,boost::_bi::list0 &,int)")]
+pub fn stub_f268c4() -> ! {
+    todo!("0xf268c4 void boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::operator()<void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list0>(boost::_bi::type<void>,void (*)(PlaceLauncher *,std::string,std::string,std::string) &,boost::_bi::list0 &,int)")
+}
+
+// 0xf26904 — j___ZN5boost3_bi8storage3INS0_5valueIP10RobloxViewEENS2_INS_10shared_ptrIN3RBX4GameEEEEENS2_IPNS7_18FunctionMarshallerEEEEC2ES5_SA_SD_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
+// was: boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")]
+pub fn stub_f26904() -> ! {
+    todo!("0xf26904 boost::_bi::storage3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>::storage3(boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>)")
+}
+
+// 0xf26914 — j___ZN5boost3_bi8storage3INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_EC2ES5_S6_S6_
+// type: int __fastcall(int, int, std::string *)
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
+pub fn stub_f26914() -> ! {
+    todo!("0xf26914 boost::_bi::storage3<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage3(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")
+}
+
+// 0xf26944 — j___ZN5boost3_bi8storage4INS0_5valueIP13PlaceLauncherEENS2_ISsEES6_S6_EC2ES5_S6_S6_S6_
+// type: int __fastcall(int, int, std::string *, int, std::string *)
+#[doc(alias = "boost::_bi::storage4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")]
+pub fn stub_f26944() -> ! {
+    todo!("0xf26944 boost::_bi::storage4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>::storage4(boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>)")
+}
+
+// 0xf26974 — j___ZN5boost4bindIvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS4_18FunctionMarshallerES2_S6_S8_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_ENS9_9list_av_3IT3_T4_T5_E4typeEEESG_SI_SJ_SK_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int)
+// was: boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)")]
+pub fn stub_f26974() -> ! {
+    todo!("0xf26974 boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list_av_3<RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *,RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)")
+}
+
+// 0xf26984 — j___ZN5boost4bindIvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEES2_S6_EENS_3_bi6bind_tIT_PFS9_T0_T1_ENS7_9list_av_2IT2_T3_E4typeEEESD_SF_SG_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int)
+// was: boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_2<RobloxView *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RobloxView *,boost::shared_ptr<RBX::Game>>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),RobloxView *,boost::shared_ptr<RBX::Game>)
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_2<RobloxView *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RobloxView *,boost::shared_ptr<RBX::Game>>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),RobloxView *,boost::shared_ptr<RBX::Game>)")]
+pub fn stub_f26984() -> ! {
+    todo!("0xf26984 boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_2<RobloxView *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,RobloxView *,boost::shared_ptr<RBX::Game>,RobloxView *,boost::shared_ptr<RBX::Game>>(void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),RobloxView *,boost::shared_ptr<RBX::Game>)")
+}
+
+// 0xf26994 — j___ZN5boost4bindIvP13PlaceLauncherSsSsSsS2_SsSsSsEENS_3_bi6bind_tIT_PFS5_T0_T1_T2_T3_ENS3_9list_av_4IT4_T5_T6_T7_E4typeEEESB_SD_SE_SF_SG_
+// type: int __fastcall(int, int, int, std::string *, std::string *, std::string *)
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list_av_4<PlaceLauncher *,std::string,std::string,std::string>::type> boost::bind<void,PlaceLauncher *,std::string,std::string,std::string,PlaceLauncher *,std::string,std::string,std::string>(void (*)(PlaceLauncher *,std::string,std::string,std::string),PlaceLauncher *,std::string,std::string,std::string)")]
+pub fn stub_f26994() -> ! {
+    todo!("0xf26994 boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list_av_4<PlaceLauncher *,std::string,std::string,std::string>::type> boost::bind<void,PlaceLauncher *,std::string,std::string,std::string,PlaceLauncher *,std::string,std::string,std::string>(void (*)(PlaceLauncher *,std::string,std::string,std::string),PlaceLauncher *,std::string,std::string,std::string)")
+}
+
+// 0xf26a64 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+pub fn stub_f26a64() -> ! {
+    todo!("0xf26a64 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0xf26a74 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEPNS8_18FunctionMarshallerEENS3_5list3INS3_5valueIS6_EENSG_ISA_EENSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+pub fn stub_f26a74() -> ! {
+    todo!("0xf26a74 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0xf26a84 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEE7managerERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+pub fn stub_f26a84() -> ! {
+    todo!("0xf26a84 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0xf26af4 — j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+#[doc(alias = "j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f26af4() -> ! {
+    todo!("0xf26af4 j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS7_5list3INS7_5valueISA_EENSJ_ISD_EENSJ_ISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf26b04 — j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS4_5list2INS4_5valueIS7_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS4_5list2INS4_5valueIS7_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f26b04() -> ! {
+    todo!("0xf26b04 j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS4_5list2INS4_5valueIS7_EENSF_ISB_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf26b14 — j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE
+// type: int()
+#[doc(alias = "j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f26b14() -> ! {
+    todo!("0xf26b14 j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS4_5list4INS4_5valueIS7_EENSB_ISsEESD_SD_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISG_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf26b24 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEEvT_
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>)
+#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>)")]
+pub fn stub_f26b24() -> ! {
+    todo!("0xf26b24 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>)")
+}
+
+// 0xf26b34 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEEvT_
+// type: int()
+#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>)")]
+pub fn stub_f26b34() -> ! {
+    todo!("0xf26b34 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>)")
+}
+
+// 0xf26b84 — j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f26b84() -> ! {
+    todo!("0xf26b84 j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS3_5list2INS3_5valueIS6_EENSE_ISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf26b94 — j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE
+// type: int()
+#[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f26b94() -> ! {
+    todo!("0xf26b94 j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS3_5list4INS3_5valueIS6_EENSA_ISsEESC_SC_EEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISF_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf26be4 — j___ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEEvT_
+// type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)
+#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)")]
+pub fn stub_f26be4() -> ! {
+    todo!("0xf26be4 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>)")
+}
+
+// 0xf26bf4 — j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, struct _Unwind_Exception *lpuexcpt, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+#[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f26bf4() -> ! {
+    todo!("0xf26bf4 j___ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS1_4GameEEEPNS1_18FunctionMarshallerEENS6_5list3INS6_5valueIS9_EENSI_ISC_EENSI_ISE_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISO_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf26cb4 — j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
+#[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+pub fn stub_f26cb4() -> ! {
+    todo!("0xf26cb4 void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+// 0xf26cc4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIS8_EENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferE
+// type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &)const
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &)const")]
+pub fn stub_f26cc4() -> ! {
+    todo!("0xf26cc4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0xf26cd4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrIN3RBX4GameEEEENS5_5list2INS5_5valueIS8_EENSG_ISC_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn stub_f26cd4() -> ! {
+    todo!("0xf26cd4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>),boost::_bi::list2<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0xf26ce4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferE
+// type: int()
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
+pub fn stub_f26ce4() -> ! {
+    todo!("0xf26ce4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0xf26cf4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvP13PlaceLauncherSsSsSsENS5_5list4INS5_5valueIS8_EENSC_ISsEESE_SE_EEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int)
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn stub_f26cf4() -> ! {
+    todo!("0xf26cf4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(PlaceLauncher *,std::string,std::string,std::string),boost::_bi::list4<boost::_bi::value<PlaceLauncher *>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0xf26d84 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS3_4GameEEEPNS3_18FunctionMarshallerEENS8_5list3INS8_5valueISB_EENSK_ISE_EENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferE
+// type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &)const
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &)const")]
+pub fn stub_f26d84() -> ! {
+    todo!("0xf26d84 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0xf26d94 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvP10RobloxViewNS_10shared_ptrINS3_4GameEEEPNS3_18FunctionMarshallerEENS8_5list3INS8_5valueISB_EENSK_ISE_EENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn stub_f26d94() -> ! {
+    todo!("0xf26d94 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>>(boost::_bi::bind_t<void,void (*)(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *),boost::_bi::list3<boost::_bi::value<RobloxView *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>,boost::_bi::value<RBX::FunctionMarshaller *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0xf26dc4 — j___ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
+// type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
+// was: RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)
+#[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")]
+pub fn stub_f26dc4() -> ! {
+    todo!("0xf26dc4 RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")
+}
+
+// 0xf26ee4 — j___ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
+// type: int()
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")]
+pub fn stub_f26ee4() -> ! {
+    todo!("0xf26ee4 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")
+}
+
+// 0xf26f14 — j___ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_
+// type: int()
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")]
+pub fn stub_f26f14() -> ! {
+    todo!("0xf26f14 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")
+}
+
+// 0xf26f54 — j___ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEE5resetEv
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)
+#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")]
+pub fn stub_f26f54() -> ! {
+    todo!("0xf26f54 boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")
+}
+
+// 0xf26f64 — j___ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEC1IS2_EEPT_
+// type: int __fastcall(int, void *, int, int, int, int)
+// was: boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)
+#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
+pub fn stub_f26f64() -> ! {
+    todo!("0xf26f64 boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+}
+
+// 0xf26f74 — j___ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEaSEOS3_
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)
+#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")]
+pub fn stub_f26f74() -> ! {
+    todo!("0xf26f74 boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")
+}
+
+// 0xf26f84 — j___ZN5boost10shared_ptrIN10RobloxView9RenderJobEE5resetEv
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost::shared_ptr<RobloxView::RenderJob>::reset(void)
+#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::reset(void)")]
+pub fn stub_f26f84() -> ! {
+    todo!("0xf26f84 boost::shared_ptr<RobloxView::RenderJob>::reset(void)")
+}
+
+// 0xf26f94 — j___ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_
+// type: int __fastcall(int, void *, int, int, int, int)
+// was: boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)
+#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
+pub fn stub_f26f94() -> ! {
+    todo!("0xf26f94 boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+}
+
+// 0xf26fa4 — j___ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)
+#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")]
+pub fn stub_f26fa4() -> ! {
+    todo!("0xf26fa4 boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")
+}
+
+// 0xf27164 — j___ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// type: int()
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")]
+pub fn stub_f27164() -> ! {
+    todo!("0xf27164 void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")
+}
+
+// 0xf27174 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv
+// type: int()
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")]
+pub fn stub_f27174() -> ! {
+    todo!("0xf27174 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")
+}
+
+// 0xf27194 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1Iv10RobloxViewPKN3RBX10Reflection18PropertyDescriptorEEENS0_5list2INS0_5valueIPS4_EENS_3argILi1EEEEEEclIS9_EEvRT_
+// type: int()
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")]
+pub fn stub_f27194() -> ! {
+    todo!("0xf27194 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")
+}
+
+// 0xf271b4 — j___ZN5boost6detail12shared_countC2IN10RobloxView13ViewUpdateJobEEEPT_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
+pub fn stub_f271b4() -> ! {
+    todo!("0xf271b4 boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+}
+
+// 0xf271c4 — j___ZN5boost6detail12shared_countC2IN10RobloxView9RenderJobEEEPT_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
+pub fn stub_f271c4() -> ! {
+    todo!("0xf271c4 boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")
 }
