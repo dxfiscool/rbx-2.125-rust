@@ -1,5 +1,5 @@
 //! RakNet — mirrors RakNet/BitStream, ReplicaManager, etc.
-//! Generated from ida/export.json filtered for RakNet (944 funcs, 850 stubs here).
+//! Generated from ida/export.json filtered for RakNet (944 funcs, 944 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
@@ -5414,3 +5414,568 @@ pub fn stub_f61b84() -> ! {
 pub fn stub_f61b94() -> ! {
     todo!("0xf61b94 DataStructures::Queue<RakNet::RakPeer::RecvFromStruct *>::Push(RakNet::RakPeer::RecvFromStruct * const&,char const*,unsigned int)")
 }
+
+// 0xf61ba4 — j___ZN14DataStructures5QueueIPN6RakNet7RakPeer17SocketQueryOutputEE4PushERKS4_PKcj
+#[doc(alias = "DataStructures::Queue<RakNet::RakPeer::SocketQueryOutput *>::Push(RakNet::RakPeer::SocketQueryOutput * const&,char const*,unsigned int)")]
+pub fn stub_f61ba4() -> ! {
+    todo!("0xf61ba4 DataStructures::Queue<RakNet::RakPeer::SocketQueryOutput *>::Push(RakNet::RakPeer::SocketQueryOutput * const&,char const*,unsigned int)")
+}
+
+// 0xf61bb4 — j___ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj
+#[doc(alias = "DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push(RakNet::RakPeer::BufferedCommandStruct * const&,char const*,unsigned int)")]
+pub fn stub_f61bb4() -> ! {
+    todo!("0xf61bb4 DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push(RakNet::RakPeer::BufferedCommandStruct * const&,char const*,unsigned int)")
+}
+
+// 0xf61bc4 — j___ZN14DataStructures5QueueIPN6RakNet7RakPeer25RequestedConnectionStructEE4PushERKS4_PKcj
+#[doc(alias = "DataStructures::Queue<RakNet::RakPeer::RequestedConnectionStruct *>::Push(RakNet::RakPeer::RequestedConnectionStruct * const&,char const*,unsigned int)")]
+pub fn stub_f61bc4() -> ! {
+    todo!("0xf61bc4 DataStructures::Queue<RakNet::RakPeer::RequestedConnectionStruct *>::Push(RakNet::RakPeer::RequestedConnectionStruct * const&,char const*,unsigned int)")
+}
+
+// 0xf61bd4 — j___ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj
+#[doc(alias = "void RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> *,char const*,unsigned int)")]
+pub fn stub_f61bd4() -> ! {
+    todo!("0xf61bd4 void RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> *,char const*,unsigned int)")
+}
+
+// 0xf61be4 — j___ZN6RakNet7RakPeer18RemoteSystemStructC2Ev
+#[doc(alias = "RakNet::RakPeer::RemoteSystemStruct::RemoteSystemStruct(void)")]
+pub fn stub_f61be4() -> ! {
+    todo!("0xf61be4 RakNet::RakPeer::RemoteSystemStruct::RemoteSystemStruct(void)")
+}
+
+// 0xf61bf4 — j___ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj
+#[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacket>::Release(RakNet::InternalPacket*,char const*,unsigned int)")]
+pub fn stub_f61bf4() -> ! {
+    todo!("0xf61bf4 DataStructures::MemoryPool<RakNet::InternalPacket>::Release(RakNet::InternalPacket*,char const*,unsigned int)")
+}
+
+// 0xf61c04 — j___ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj
+#[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacket>::Allocate(char const*,unsigned int)")]
+pub fn stub_f61c04() -> ! {
+    todo!("0xf61c04 DataStructures::MemoryPool<RakNet::InternalPacket>::Allocate(char const*,unsigned int)")
+}
+
+// 0xf61c14 — j___ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj
+#[doc(alias = "DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Release(RakNet::ReliabilityLayer::MessageNumberNode*,char const*,unsigned int)")]
+pub fn stub_f61c14() -> ! {
+    todo!("0xf61c14 DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Release(RakNet::ReliabilityLayer::MessageNumberNode*,char const*,unsigned int)")
+}
+
+// 0xf61c24 — j___ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj
+#[doc(alias = "DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Allocate(char const*,unsigned int)")]
+pub fn stub_f61c24() -> ! {
+    todo!("0xf61c24 DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Allocate(char const*,unsigned int)")
+}
+
+// 0xf61c34 — j___ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj
+#[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Release(RakNet::InternalPacketRefCountedData*,char const*,unsigned int)")]
+pub fn stub_f61c34() -> ! {
+    todo!("0xf61c34 DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Release(RakNet::InternalPacketRefCountedData*,char const*,unsigned int)")
+}
+
+// 0xf61c44 — j___ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj
+#[doc(alias = "DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Allocate(char const*,unsigned int)")]
+pub fn stub_f61c44() -> ! {
+    todo!("0xf61c44 DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Allocate(char const*,unsigned int)")
+}
+
+// 0xf61c54 — j___ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E
+#[doc(alias = "DataStructures::OrderedList<unsigned short,RakNet::SplitPacketChannel *,&RakNet::SplitPacketChannelComp>::Insert(unsigned short const&,RakNet::SplitPacketChannel * const&,bool,char const*,unsigned int,int (*)(unsigned short const&,RakNet::SplitPacketChannel * const&))")]
+pub fn stub_f61c54() -> ! {
+    todo!("0xf61c54 DataStructures::OrderedList<unsigned short,RakNet::SplitPacketChannel *,&RakNet::SplitPacketChannelComp>::Insert(unsigned short const&,RakNet::SplitPacketChannel * const&,bool,char const*,unsigned int,int (*)(unsigned short const&,RakNet::SplitPacketChannel * const&))")
+}
+
+// 0xf61c64 — j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj
+#[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::PushSeries(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")]
+pub fn stub_f61c64() -> ! {
+    todo!("0xf61c64 DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::PushSeries(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")
+}
+
+// 0xf61c74 — j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj
+#[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Pop(unsigned int)")]
+pub fn stub_f61c74() -> ! {
+    todo!("0xf61c74 DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Pop(unsigned int)")
+}
+
+// 0xf61c84 — j___ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj
+#[doc(alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Push(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")]
+pub fn stub_f61c84() -> ! {
+    todo!("0xf61c84 DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Push(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")
+}
+
+// 0xf61c94 — j___ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj
+#[doc(alias = "DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,char const*,unsigned int)")]
+pub fn stub_f61c94() -> ! {
+    todo!("0xf61c94 DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,char const*,unsigned int)")
+}
+
+// 0xf61ca4 — j___ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj
+#[doc(alias = "DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,unsigned int,char const*,unsigned int)")]
+pub fn stub_f61ca4() -> ! {
+    todo!("0xf61ca4 DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,unsigned int,char const*,unsigned int)")
+}
+
+// 0xf61cb4 — j___ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj
+#[doc(alias = "DataStructures::List<RakNet::SplitPacketChannel *>::Insert(RakNet::SplitPacketChannel * const&,unsigned int,char const*,unsigned int)")]
+pub fn stub_f61cb4() -> ! {
+    todo!("0xf61cb4 DataStructures::List<RakNet::SplitPacketChannel *>::Insert(RakNet::SplitPacketChannel * const&,unsigned int,char const*,unsigned int)")
+}
+
+// 0xf61cc4 — j___ZN14DataStructures5QueueIN6RakNet10BPSTracker13TimeAndValue2EE4PushERKS3_PKcj
+#[doc(alias = "DataStructures::Queue<RakNet::BPSTracker::TimeAndValue2>::Push(RakNet::BPSTracker::TimeAndValue2 const&,char const*,unsigned int)")]
+pub fn stub_f61cc4() -> ! {
+    todo!("0xf61cc4 DataStructures::Queue<RakNet::BPSTracker::TimeAndValue2>::Push(RakNet::BPSTracker::TimeAndValue2 const&,char const*,unsigned int)")
+}
+
+// 0xf61cd4 — j___ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj
+#[doc(alias = "DataStructures::Queue<RakNet::ReliabilityLayer::DatagramHistoryNode>::Push(RakNet::ReliabilityLayer::DatagramHistoryNode const&,char const*,unsigned int)")]
+pub fn stub_f61cd4() -> ! {
+    todo!("0xf61cd4 DataStructures::Queue<RakNet::ReliabilityLayer::DatagramHistoryNode>::Push(RakNet::ReliabilityLayer::DatagramHistoryNode const&,char const*,unsigned int)")
+}
+
+// 0xf61ce4 — j___ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj
+#[doc(alias = "DataStructures::Queue<RakNet::InternalPacket *>::Push(RakNet::InternalPacket * const&,char const*,unsigned int)")]
+pub fn stub_f61ce4() -> ! {
+    todo!("0xf61ce4 DataStructures::Queue<RakNet::InternalPacket *>::Push(RakNet::InternalPacket * const&,char const*,unsigned int)")
+}
+
+// 0xf61d14 — j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE
+#[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Deserialize(RakNet::BitStream *)")]
+pub fn stub_f61d14() -> ! {
+    todo!("0xf61d14 DataStructures::RangeList<RakNet::uint24_t>::Deserialize(RakNet::BitStream *)")
+}
+
+// 0xf61d24 — j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_
+#[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Insert(RakNet::uint24_t)")]
+pub fn stub_f61d24() -> ! {
+    todo!("0xf61d24 DataStructures::RangeList<RakNet::uint24_t>::Insert(RakNet::uint24_t)")
+}
+
+// 0xf61d34 — j___ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb
+#[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)")]
+pub fn stub_f61d34() -> ! {
+    todo!("0xf61d34 DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)")
+}
+
+// 0xf61d44 — j___ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE
+#[doc(alias = "DatagramHeaderFormat::Deserialize(RakNet::BitStream *)")]
+pub fn stub_f61d44() -> ! {
+    todo!("0xf61d44 DatagramHeaderFormat::Deserialize(RakNet::BitStream *)")
+}
+
+// 0xf61d54 — j___ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE
+#[doc(alias = "DatagramHeaderFormat::Serialize(RakNet::BitStream *)")]
+pub fn stub_f61d54() -> ! {
+    todo!("0xf61d54 DatagramHeaderFormat::Serialize(RakNet::BitStream *)")
+}
+
+// 0xf61d64 — j___ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_
+#[doc(alias = "bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)")]
+pub fn stub_f61d64() -> ! {
+    todo!("0xf61d64 bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)")
+}
+
+// 0xf61d74 — j___ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_
+#[doc(alias = "void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)")]
+pub fn stub_f61d74() -> ! {
+    todo!("0xf61d74 void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)")
+}
+
+// 0xf61d84 — j___ZN14DataStructures3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S7_EEE3SetERKiRKS3_
+#[doc(alias = "DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::Set(int const&,RakNet::HuffmanEncodingTree * const&)")]
+pub fn stub_f61d84() -> ! {
+    todo!("0xf61d84 DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::Set(int const&,RakNet::HuffmanEncodingTree * const&)")
+}
+
+// 0xf61d94 — j___ZN14DataStructures4ListINS_3MapIiPN6RakNet19HuffmanEncodingTreeEXadL_ZNS_23defaultMapKeyComparisonIiEEiRKT_S8_EEE7MapNodeEE6InsertERKSA_jPKcj
+#[doc(alias = "DataStructures::List<DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode>::Insert(DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode const&,unsigned int,char const*,unsigned int)")]
+pub fn stub_f61d94() -> ! {
+    todo!("0xf61d94 DataStructures::List<DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode>::Insert(DataStructures::Map<int,RakNet::HuffmanEncodingTree *,&int DataStructures::defaultMapKeyComparison<int>>::MapNode const&,unsigned int,char const*,unsigned int)")
+}
+
+// 0xf61da4 — j___ZN6RakNet9BitStream14ReadCompressedIjEEbRT_
+#[doc(alias = "bool RakNet::BitStream::ReadCompressed<unsigned int>(unsigned int &)")]
+pub fn stub_f61da4() -> ! {
+    todo!("0xf61da4 bool RakNet::BitStream::ReadCompressed<unsigned int>(unsigned int &)")
+}
+
+// 0xf61db4 — j___ZN6RakNet9BitStream15WriteCompressedIjEEvRKT_
+#[doc(alias = "void RakNet::BitStream::WriteCompressed<unsigned int>(unsigned int const&)")]
+pub fn stub_f61db4() -> ! {
+    todo!("0xf61db4 void RakNet::BitStream::WriteCompressed<unsigned int>(unsigned int const&)")
+}
+
+// 0xf61dc4 — j___ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE7ReleaseEPS2_PKcj
+#[doc(alias = "DataStructures::MemoryPool<RakNet::Packet>::Release(RakNet::Packet*,char const*,unsigned int)")]
+pub fn stub_f61dc4() -> ! {
+    todo!("0xf61dc4 DataStructures::MemoryPool<RakNet::Packet>::Release(RakNet::Packet*,char const*,unsigned int)")
+}
+
+// 0xf61dd4 — j___ZN14DataStructures10MemoryPoolIN6RakNet6PacketEE8AllocateEPKcj
+#[doc(alias = "DataStructures::MemoryPool<RakNet::Packet>::Allocate(char const*,unsigned int)")]
+pub fn stub_f61dd4() -> ! {
+    todo!("0xf61dd4 DataStructures::MemoryPool<RakNet::Packet>::Allocate(char const*,unsigned int)")
+}
+
+// 0xf61de4 — j___ZN14DataStructures5QueueIPN6RakNet6PacketEE4PushERKS3_PKcj
+#[doc(alias = "DataStructures::Queue<RakNet::Packet *>::Push(RakNet::Packet * const&,char const*,unsigned int)")]
+pub fn stub_f61de4() -> ! {
+    todo!("0xf61de4 DataStructures::Queue<RakNet::Packet *>::Push(RakNet::Packet * const&,char const*,unsigned int)")
+}
+
+// 0xf62fc4 — j___ZN5boost11multi_index21multi_index_containerIN3RBX7Network28InterpolatingPhysicsReceiver6NuggetENS0_10indexed_byINS0_13hashed_uniqueINS0_3tagINS5_8part_tagEN4mpl_2naESB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_EENS0_6memberIS5_NS_10shared_ptrINS2_12PartInstanceEEEXadL_ZNS5_4partEEEEESB_SB_EENS0_18ordered_non_uniqueINS8_INS5_14lastUpdate_tagESB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_EENSD_IS5_yXadL_ZNS5_10lastUpdateEEEEESB_EESB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_SB_EESaIS5_EE7modify_INS_3_bi6bind_tIvNS_4_mfi3mf4IvS5_RN6RakNet9BitStreamEyPKNS2_13ModelInstanceEPS4_EENSS_5list5INS_3argILi1EEENS_17reference_wrapperISX_EENSS_5valueIyEENS19_IS11_EENS19_IS12_EEEEEEEEbRT_PNS0_6detail17hashed_index_nodeINS1H_18ordered_index_nodeINS1H_15index_node_baseIS5_SP_EEEEEE
+#[doc(alias = "bool boost::multi_index::multi_index_container<RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::multi_index::indexed_by<boost::multi_index::hashed_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::part_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::shared_ptr<RBX::PartInstance>,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::part>,mpl_::na,mpl_::na>,boost::multi_index::ordered_non_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,mpl_::na>,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>::modify_<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::InterpolatingPhysicsReceiver::Nugget,RakNet::BitStream &,unsigned long long,RBX::ModelInstance const*,RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::list5<boost::arg<1>,boost::reference_wrapper<RakNet::BitStream>,boost::_bi::value<unsigned long long>,boost::_bi::value<RBX::ModelInstance const*>,boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::InterpolatingPhysicsReceiver::Nugget,RakNet::BitStream &,unsigned long long,RBX::ModelInstance const*,RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::list5<boost::arg<1>,boost::reference_wrapper<RakNet::BitStream>,boost::_bi::value<unsigned long long>,boost::_bi::value<RBX::ModelInstance const*>,boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>>> &,boost::multi_index::detail::hashed_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::Nugget,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>>> *)")]
+pub fn stub_f62fc4() -> ! {
+    todo!("0xf62fc4 bool boost::multi_index::multi_index_container<RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::multi_index::indexed_by<boost::multi_index::hashed_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::part_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::shared_ptr<RBX::PartInstance>,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::part>,mpl_::na,mpl_::na>,boost::multi_index::ordered_non_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,mpl_::na>,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>::modify_<boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::InterpolatingPhysicsReceiver::Nugget,RakNet::BitStream &,unsigned long long,RBX::ModelInstance const*,RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::list5<boost::arg<1>,boost::reference_wrapper<RakNet::BitStream>,boost::_bi::value<unsigned long long>,boost::_bi::value<RBX::ModelInstance const*>,boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::InterpolatingPhysicsReceiver::Nugget,RakNet::BitStream &,unsigned long long,RBX::ModelInstance const*,RBX::Network::InterpolatingPhysicsReceiver*>,boost::_bi::list5<boost::arg<1>,boost::reference_wrapper<RakNet::BitStream>,boost::_bi::value<unsigned long long>,boost::_bi::value<RBX::ModelInstance const*>,boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver*>>> &,boost::multi_index::detail::hashed_index_node<boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::Nugget,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>>> *)")
+}
+
+// 0xf63304 — j___ZN3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11decodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamENS_7Network16CellUpdateFilterEEEvPS2_RT0_RT1_
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::ClusterCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")]
+pub fn stub_f63304() -> ! {
+    todo!("0xf63304 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::ClusterCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")
+}
+
+// 0xf63314 — j___ZN3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11decodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamENS_7Network16CellUpdateFilterEEEvPS2_RT0_RT1_
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")]
+pub fn stub_f63314() -> ! {
+    todo!("0xf63314 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::decodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream,RBX::Network::CellUpdateFilter>(RBX::MegaClusterInstance*,RakNet::BitStream &,RBX::Network::CellUpdateFilter &)")
+}
+
+// 0xf63324 — j___ZN3RBX7Network10Replicator12JoinDataItem13writeInstanceEPKNS_8InstanceERN6RakNet9BitStreamE
+#[doc(alias = "RBX::Network::Replicator::JoinDataItem::writeInstance(RBX::Instance const*,RakNet::BitStream &)")]
+pub fn stub_f63324() -> ! {
+    todo!("0xf63324 RBX::Network::Replicator::JoinDataItem::writeInstance(RBX::Instance const*,RakNet::BitStream &)")
+}
+
+// 0xf63334 — j___ZN3RBX7Network10Replicator12JoinDataItem14writeInstancesERN6RakNet9BitStreamE
+#[doc(alias = "RBX::Network::Replicator::JoinDataItem::writeInstances(RakNet::BitStream &)")]
+pub fn stub_f63334() -> ! {
+    todo!("0xf63334 RBX::Network::Replicator::JoinDataItem::writeInstances(RakNet::BitStream &)")
+}
+
+// 0xf633c4 — j___ZN3RBX7Network16SenderDictionaryINS_13SystemAddressEE4sendERN6RakNet9BitStreamERKS2_
+#[doc(alias = "RBX::Network::SenderDictionary<RBX::SystemAddress>::send(RakNet::BitStream &,RBX::SystemAddress const&)")]
+pub fn stub_f633c4() -> ! {
+    todo!("0xf633c4 RBX::Network::SenderDictionary<RBX::SystemAddress>::send(RakNet::BitStream &,RBX::SystemAddress const&)")
+}
+
+// 0xf633d4 — j___ZN3RBX7Network16serializeGenericINS_9ContentIdEEEvRKNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::serializeGeneric<RBX::ContentId>(RBX::Reflection::Variant const&,RakNet::BitStream &)")]
+pub fn stub_f633d4() -> ! {
+    todo!("0xf633d4 void RBX::Network::serializeGeneric<RBX::ContentId>(RBX::Reflection::Variant const&,RakNet::BitStream &)")
+}
+
+// 0xf633e4 — j___ZN3RBX7Network16serializeGenericISsEEvRKNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::serializeGeneric<std::string>(RBX::Reflection::Variant const&,RakNet::BitStream &)")]
+pub fn stub_f633e4() -> ! {
+    todo!("0xf633e4 void RBX::Network::serializeGeneric<std::string>(RBX::Reflection::Variant const&,RakNet::BitStream &)")
+}
+
+// 0xf633f4 — j___ZN3RBX7Network18DescriptorReceiverINS_10Reflection15ClassDescriptorEE5learnERN6RakNet9BitStreamE
+#[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::ClassDescriptor>::learn(RakNet::BitStream &)")]
+pub fn stub_f633f4() -> ! {
+    todo!("0xf633f4 RBX::Network::DescriptorReceiver<RBX::Reflection::ClassDescriptor>::learn(RakNet::BitStream &)")
+}
+
+// 0xf63404 — j___ZN3RBX7Network18DescriptorReceiverINS_10Reflection15EventDescriptorEE5learnERN6RakNet9BitStreamE
+#[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::EventDescriptor>::learn(RakNet::BitStream &)")]
+pub fn stub_f63404() -> ! {
+    todo!("0xf63404 RBX::Network::DescriptorReceiver<RBX::Reflection::EventDescriptor>::learn(RakNet::BitStream &)")
+}
+
+// 0xf63414 — j___ZN3RBX7Network18DescriptorReceiverINS_10Reflection18PropertyDescriptorEE5learnERN6RakNet9BitStreamE
+#[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::PropertyDescriptor>::learn(RakNet::BitStream &)")]
+pub fn stub_f63414() -> ! {
+    todo!("0xf63414 RBX::Network::DescriptorReceiver<RBX::Reflection::PropertyDescriptor>::learn(RakNet::BitStream &)")
+}
+
+// 0xf63424 — j___ZN3RBX7Network18DescriptorReceiverINS_10Reflection4TypeEE5learnERN6RakNet9BitStreamE
+#[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::Type>::learn(RakNet::BitStream &)")]
+pub fn stub_f63424() -> ! {
+    todo!("0xf63424 RBX::Network::DescriptorReceiver<RBX::Reflection::Type>::learn(RakNet::BitStream &)")
+}
+
+// 0xf63434 — j___ZN3RBX7Network18deserializeGenericIN3G3D12Vector2int16EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<G3D::Vector2int16>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f63434() -> ! {
+    todo!("0xf63434 void RBX::Network::deserializeGeneric<G3D::Vector2int16>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf63444 — j___ZN3RBX7Network18deserializeGenericIN3G3D12Vector3int16EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<G3D::Vector3int16>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f63444() -> ! {
+    todo!("0xf63444 void RBX::Network::deserializeGeneric<G3D::Vector3int16>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf63454 — j___ZN3RBX7Network18deserializeGenericIN3G3D6Color3EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<G3D::Color3>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f63454() -> ! {
+    todo!("0xf63454 void RBX::Network::deserializeGeneric<G3D::Color3>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf63464 — j___ZN3RBX7Network18deserializeGenericIN3G3D7Vector2EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<G3D::Vector2>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f63464() -> ! {
+    todo!("0xf63464 void RBX::Network::deserializeGeneric<G3D::Vector2>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf63474 — j___ZN3RBX7Network18deserializeGenericIN3G3D7Vector3EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<G3D::Vector3>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f63474() -> ! {
+    todo!("0xf63474 void RBX::Network::deserializeGeneric<G3D::Vector3>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf63484 — j___ZN3RBX7Network18deserializeGenericINS_10BrickColorEEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<RBX::BrickColor>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f63484() -> ! {
+    todo!("0xf63484 void RBX::Network::deserializeGeneric<RBX::BrickColor>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf63494 — j___ZN3RBX7Network18deserializeGenericINS_4AxesEEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<RBX::Axes>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f63494() -> ! {
+    todo!("0xf63494 void RBX::Network::deserializeGeneric<RBX::Axes>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf634a4 — j___ZN3RBX7Network18deserializeGenericINS_4UDimEEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<RBX::UDim>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f634a4() -> ! {
+    todo!("0xf634a4 void RBX::Network::deserializeGeneric<RBX::UDim>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf634b4 — j___ZN3RBX7Network18deserializeGenericINS_5FacesEEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<RBX::Faces>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f634b4() -> ! {
+    todo!("0xf634b4 void RBX::Network::deserializeGeneric<RBX::Faces>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf634c4 — j___ZN3RBX7Network18deserializeGenericINS_5UDim2EEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<RBX::UDim2>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f634c4() -> ! {
+    todo!("0xf634c4 void RBX::Network::deserializeGeneric<RBX::UDim2>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf634d4 — j___ZN3RBX7Network18deserializeGenericINS_9ContentIdEEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<RBX::ContentId>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f634d4() -> ! {
+    todo!("0xf634d4 void RBX::Network::deserializeGeneric<RBX::ContentId>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf634e4 — j___ZN3RBX7Network18deserializeGenericIbEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<bool>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f634e4() -> ! {
+    todo!("0xf634e4 void RBX::Network::deserializeGeneric<bool>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf634f4 — j___ZN3RBX7Network18deserializeGenericIdEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<double>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f634f4() -> ! {
+    todo!("0xf634f4 void RBX::Network::deserializeGeneric<double>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf63504 — j___ZN3RBX7Network18deserializeGenericIfEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<float>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f63504() -> ! {
+    todo!("0xf63504 void RBX::Network::deserializeGeneric<float>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf63514 — j___ZN3RBX7Network18deserializeGenericIiEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<int>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f63514() -> ! {
+    todo!("0xf63514 void RBX::Network::deserializeGeneric<int>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf63524 — j___ZN3RBX7Network18deserializeGenericIlEEvRNS_10Reflection7VariantERN6RakNet9BitStreamE
+#[doc(alias = "void RBX::Network::deserializeGeneric<long>(RBX::Reflection::Variant &,RakNet::BitStream &)")]
+pub fn stub_f63524() -> ! {
+    todo!("0xf63524 void RBX::Network::deserializeGeneric<long>(RBX::Reflection::Variant &,RakNet::BitStream &)")
+}
+
+// 0xf63554 — j___ZN3rbx10safe_queueINS_14implementation27timestamped_safe_queue_itemIPN6RakNet6PacketEEEEC2Ev
+#[doc(alias = "rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>::safe_queue(void)")]
+pub fn stub_f63554() -> ! {
+    todo!("0xf63554 rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>::safe_queue(void)")
+}
+
+// 0xf63594 — j___ZN3rbx22timestamped_safe_queueIPN6RakNet6PacketEE13pop_if_waitedEN3RBX4Time8IntervalERS3_
+#[doc(alias = "rbx::timestamped_safe_queue<RakNet::Packet *>::pop_if_waited(RBX::Time::Interval,RakNet::Packet *&)")]
+pub fn stub_f63594() -> ! {
+    todo!("0xf63594 rbx::timestamped_safe_queue<RakNet::Packet *>::pop_if_waited(RBX::Time::Interval,RakNet::Packet *&)")
+}
+
+// 0xf635d4 — j___ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6insertEPNSF_4slotE
+#[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::insert(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
+pub fn stub_f635d4() -> ! {
+    todo!("0xf635d4 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::insert(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")
+}
+
+// 0xf635e4 — j___ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6removeEPNSF_4slotE
+#[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
+pub fn stub_f635e4() -> ! {
+    todo!("0xf635e4 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")
+}
+
+// 0xf63644 — j___ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED2Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")]
+pub fn stub_f63644() -> ! {
+    todo!("0xf63644 rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")
+}
+
+// 0xf63754 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")]
+pub fn stub_f63754() -> ! {
+    todo!("0xf63754 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")
+}
+
+// 0xf63764 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSERKSI_
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")]
+pub fn stub_f63764() -> ! {
+    todo!("0xf63764 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")
+}
+
+// 0xf638d4 — j___ZN5boost4bindIvN3RBX7Network10ReplicatorERKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_NS8_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEENSG_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISN_T0_T1_T2_T3_T4_EENSL_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSQ_FSN_SR_SS_ST_SU_ESX_SY_SZ_S10_S11_
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list_av_5<boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&,boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Network::Replicator::*)(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&),boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")]
+pub fn stub_f638d4() -> ! {
+    todo!("0xf638d4 boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list_av_5<boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&,boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Network::Replicator::*)(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&),boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")
+}
+
+// 0xf63d94 — j___ZNK3RBX5Voxel10SerializerINS0_4GridEE11encodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::ClusterCellIterator &,RakNet::BitStream *,int)const")]
+pub fn stub_f63d94() -> ! {
+    todo!("0xf63d94 void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::ClusterCellIterator &,RakNet::BitStream *,int)const")
+}
+
+// 0xf63da4 — j___ZNK3RBX5Voxel10SerializerINS0_4GridEE11encodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *,int)const")]
+pub fn stub_f63da4() -> ! {
+    todo!("0xf63da4 void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *,int)const")
+}
+
+// 0xf63db4 — j___ZNK3RBX5Voxel10SerializerINS0_4GridEE11encodeCellsINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *,int)const")]
+pub fn stub_f63db4() -> ! {
+    todo!("0xf63db4 void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeCells<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::Voxel::Grid const*,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *,int)const")
+}
+
+// 0xf63dc4 — j___ZNK3RBX5Voxel10SerializerINS0_4GridEE18encodeFromPositionINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_5ChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeFromPosition<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::Voxel::Grid::Chunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::ClusterCellIterator &,RakNet::BitStream *)const")]
+pub fn stub_f63dc4() -> ! {
+    todo!("0xf63dc4 void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeFromPosition<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::Voxel::Grid::Chunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::ClusterCellIterator &,RakNet::BitStream *)const")
+}
+
+// 0xf63dd4 — j___ZNK3RBX5Voxel10SerializerINS0_4GridEE18encodeFromPositionINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_5ChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeFromPosition<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::Voxel::Grid::Chunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *)const")]
+pub fn stub_f63dd4() -> ! {
+    todo!("0xf63dd4 void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeFromPosition<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::Voxel::Grid const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::Voxel::Grid::Chunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *)const")
+}
+
+// 0xf63de4 — j___ZNK3RBX5Voxel10SerializerINS0_4GridEE18encodeFromPositionINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_5ChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeFromPosition<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::Voxel::Grid const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::Voxel::Grid::Chunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *)const")]
+pub fn stub_f63de4() -> ! {
+    todo!("0xf63de4 void RBX::Voxel::Serializer<RBX::Voxel::Grid>::encodeFromPosition<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::Voxel::Grid const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::Voxel::Grid::Chunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *)const")
+}
+
+// 0xf63df4 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::ClusterCellIterator &,RakNet::BitStream *,int)const")]
+pub fn stub_f63df4() -> ! {
+    todo!("0xf63df4 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::ClusterCellIterator &,RakNet::BitStream *,int)const")
+}
+
+// 0xf63e04 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *,int)const")]
+pub fn stub_f63e04() -> ! {
+    todo!("0xf63e04 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *,int)const")
+}
+
+// 0xf63e14 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *,int)const")]
+pub fn stub_f63e14() -> ! {
+    todo!("0xf63e14 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeCells<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::MegaClusterInstance const*,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *,int)const")
+}
+
+// 0xf63e24 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::ClusterCellIterator &,RakNet::BitStream *)const")]
+pub fn stub_f63e24() -> ! {
+    todo!("0xf63e24 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::ClusterCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::ClusterCellIterator &,RakNet::BitStream *)const")
+}
+
+// 0xf63e34 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *)const")]
+pub fn stub_f63e34() -> ! {
+    todo!("0xf63e34 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::OneQuarterClusterChunkCellIterator,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::OneQuarterClusterChunkCellIterator &,RakNet::BitStream *)const")
+}
+
+// 0xf63e44 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
+#[doc(alias = "void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *)const")]
+pub fn stub_f63e44() -> ! {
+    todo!("0xf63e44 void RBX::Voxel::Serializer<RBX::MegaClusterInstance>::encodeFromPosition<RBX::Network::ClusterUpdateBuffer,RakNet::BitStream>(RBX::MegaClusterInstance const*,G3D::Vector3int16 &,RBX::SpatialRegion::Id const&,RBX::Voxel::Region<RBX::MegaClusterInstance::CellChunk> const&,RBX::FixedSizeCircularBuffer<unsigned int,8> &,RBX::Network::ClusterUpdateBuffer &,RakNet::BitStream *)const")
+}
+
+// 0xf63e54 — j___ZNK3RBX7Network16DescriptorSenderINS_10Reflection15ClassDescriptorEE4sendERN6RakNet9BitStreamEPKS3_
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::send(RakNet::BitStream &,RBX::Reflection::ClassDescriptor const*)const")]
+pub fn stub_f63e54() -> ! {
+    todo!("0xf63e54 RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::send(RakNet::BitStream &,RBX::Reflection::ClassDescriptor const*)const")
+}
+
+// 0xf63e64 — j___ZNK3RBX7Network16DescriptorSenderINS_10Reflection15ClassDescriptorEE5teachERN6RakNet9BitStreamE
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::teach(RakNet::BitStream &)const")]
+pub fn stub_f63e64() -> ! {
+    todo!("0xf63e64 RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::teach(RakNet::BitStream &)const")
+}
+
+// 0xf63e74 — j___ZNK3RBX7Network16DescriptorSenderINS_10Reflection15EventDescriptorEE5teachERN6RakNet9BitStreamE
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::teach(RakNet::BitStream &)const")]
+pub fn stub_f63e74() -> ! {
+    todo!("0xf63e74 RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::teach(RakNet::BitStream &)const")
+}
+
+// 0xf63e84 — j___ZNK3RBX7Network16DescriptorSenderINS_10Reflection18PropertyDescriptorEE5teachERN6RakNet9BitStreamE
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::teach(RakNet::BitStream &)const")]
+pub fn stub_f63e84() -> ! {
+    todo!("0xf63e84 RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::teach(RakNet::BitStream &)const")
+}
+
+// 0xf63e94 — j___ZNK3RBX7Network16DescriptorSenderINS_10Reflection4TypeEE4sendERN6RakNet9BitStreamEPKS3_
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::Type>::send(RakNet::BitStream &,RBX::Reflection::Type const*)const")]
+pub fn stub_f63e94() -> ! {
+    todo!("0xf63e94 RBX::Network::DescriptorSender<RBX::Reflection::Type>::send(RakNet::BitStream &,RBX::Reflection::Type const*)const")
+}
+
+// 0xf63ea4 — j___ZNK3RBX7Network16DescriptorSenderINS_10Reflection4TypeEE5teachERN6RakNet9BitStreamE
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::Type>::teach(RakNet::BitStream &)const")]
+pub fn stub_f63ea4() -> ! {
+    todo!("0xf63ea4 RBX::Network::DescriptorSender<RBX::Reflection::Type>::teach(RakNet::BitStream &)const")
+}
+
+// 0xf63ff4 — j___ZNSt11_Deque_baseIN3rbx14implementation27timestamped_safe_queue_itemIPN6RakNet6PacketEEESaIS6_EE17_M_initialize_mapEm
+#[doc(alias = "std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>>::_M_initialize_map(unsigned long)")]
+pub fn stub_f63ff4() -> ! {
+    todo!("0xf63ff4 std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>>::_M_initialize_map(unsigned long)")
+}
+
+// 0xf64054 — j___ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIPN6RakNet6PacketEEESaIS6_EE17_M_reallocate_mapEmb
+#[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>>::_M_reallocate_map(unsigned long,bool)")]
+pub fn stub_f64054() -> ! {
+    todo!("0xf64054 std::deque<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RakNet::Packet *>>>::_M_reallocate_map(unsigned long,bool)")
+}
+
+// 0xf643f4 — j___ZN5boost10shared_ptrIN6RakNet9BitStreamEE5resetIS2_EEvPT_
+#[doc(alias = "void boost::shared_ptr<RakNet::BitStream>::reset<RakNet::BitStream>(RakNet::BitStream *)")]
+pub fn stub_f643f4() -> ! {
+    todo!("0xf643f4 void boost::shared_ptr<RakNet::BitStream>::reset<RakNet::BitStream>(RakNet::BitStream *)")
+}
+
+// 0xf647a4 — j___ZNK3RBX7Network16DescriptorSenderINS_10Reflection15EventDescriptorEE4sendERN6RakNet9BitStreamEPKS3_
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::send(RakNet::BitStream &,RBX::Reflection::EventDescriptor const*)const")]
+pub fn stub_f647a4() -> ! {
+    todo!("0xf647a4 RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::send(RakNet::BitStream &,RBX::Reflection::EventDescriptor const*)const")
+}
+
+// 0xf647b4 — j___ZN5boost6detail20sp_pointer_constructIN6RakNet9BitStreamES3_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "void boost::detail::sp_pointer_construct<RakNet::BitStream,RakNet::BitStream>(boost::shared_ptr<RakNet::BitStream> *,RakNet::BitStream *,boost::detail::shared_count &)")]
+pub fn stub_f647b4() -> ! {
+    todo!("0xf647b4 void boost::detail::sp_pointer_construct<RakNet::BitStream,RakNet::BitStream>(boost::shared_ptr<RakNet::BitStream> *,RakNet::BitStream *,boost::detail::shared_count &)")
+}
+
