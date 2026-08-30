@@ -128,28 +128,28 @@ pub fn stub_3f700() -> ! {
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
 pub fn stub_3f904() -> ! {
-    todo!("0x3f904 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
+    todo!("0x3f904 non-virtual thunk to RobloxView::RenderJob::~RenderJob()")
 }
 
 // 0x3f9c8 — __ZThn480_N10RobloxView9RenderJobD0Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
 pub fn stub_3f9c8() -> ! {
-    todo!("0x3f9c8 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
+    todo!("0x3f9c8 non-virtual thunk to RobloxView::RenderJob::~RenderJob()")
 }
 
 // 0x3fa94 — __ZThn480_NK10RobloxView9RenderJob9getMetricERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")]
 pub fn stub_3fa94() -> ! {
-    todo!("0x3fa94 `non-virtual thunk to'RobloxView::RenderJob::getMetric(std::string const&)const")
+    todo!("0x3fa94 non-virtual thunk to RobloxView::RenderJob::getMetric(std::string const&)const")
 }
 
 // 0x3faa4 — __ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")]
 pub fn stub_3faa4() -> ! {
-    todo!("0x3faa4 `non-virtual thunk to'RobloxView::RenderJob::getMetricValue(std::string const&)const")
+    todo!("0x3faa4 non-virtual thunk to RobloxView::RenderJob::getMetricValue(std::string const&)const")
 }
 
 // 0x3faac — __ZN10RobloxView9RenderJob21scheduleRenderPrepareEPS0_PN3RBX8ViewBaseE
