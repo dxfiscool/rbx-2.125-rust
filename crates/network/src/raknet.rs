@@ -1,5 +1,5 @@
 //! RakNet — mirrors RakNet/BitStream, ReplicaManager, etc.
-//! Generated from ida/export.json filtered for RakNet (944 funcs, 250 stubs here).
+//! Generated from ida/export.json filtered for RakNet (944 funcs, 350 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
@@ -1640,3 +1640,608 @@ pub fn stub_a37008() -> ! {
 pub fn stub_a371cc() -> ! {
     todo!("0xa371cc boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::list4(boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")
 }
+
+// 0xa37558 — __ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEC2ES8_S9_S9_SD_
+#[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")]
+// was: boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)
+pub fn stub_a37558() -> ! {
+    todo!("0xa37558 boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")
+}
+
+// 0xa3f9d8 — __ZN5boost6detail17sp_counted_impl_pIN6RakNet9BitStreamEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RakNet::BitStream>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<RakNet::BitStream>::~sp_counted_impl_p()
+pub fn stub_a3f9d8() -> ! {
+    todo!("0xa3f9d8 boost::detail::sp_counted_impl_p<RakNet::BitStream>::~sp_counted_impl_p()")
+}
+
+// 0xa3f9e8 — __ZN5boost6detail17sp_counted_impl_pIN6RakNet9BitStreamEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<RakNet::BitStream>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_p<RakNet::BitStream>::get_deleter(std::type_info const&)
+pub fn stub_a3f9e8() -> ! {
+    todo!("0xa3f9e8 boost::detail::sp_counted_impl_p<RakNet::BitStream>::get_deleter(std::type_info const&)")
+}
+
+// 0xa5391c — __ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE13disconnectAllEv
+#[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")]
+// was: rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)
+pub fn stub_a5391c() -> ! {
+    todo!("0xa5391c rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")
+}
+
+// 0xa5533c — __ZN6RakNet9BitStreamC1Ev
+#[doc(alias = "RakNet::BitStream::BitStream(void)")]
+pub fn stub_a5533c() -> ! {
+    todo!("0xa5533c RakNet::BitStream::BitStream(void)")
+}
+
+// 0xa55354 — __ZN6RakNet9BitStreamC1Ej
+#[doc(alias = "RakNet::BitStream::BitStream(unsigned int)")]
+pub fn stub_a55354() -> ! {
+    todo!("0xa55354 RakNet::BitStream::BitStream(unsigned int)")
+}
+
+// 0xa553a0 — __ZN6RakNet9BitStreamC1EPhjb
+#[doc(alias = "RakNet::BitStream::BitStream(unsigned char *,unsigned int,bool)")]
+pub fn stub_a553a0() -> ! {
+    todo!("0xa553a0 RakNet::BitStream::BitStream(unsigned char *,unsigned int,bool)")
+}
+
+// 0xa55408 — __ZN6RakNet9BitStreamD1Ev
+#[doc(alias = "RakNet::BitStream::~BitStream()")]
+pub fn stub_a55408() -> ! {
+    todo!("0xa55408 RakNet::BitStream::~BitStream()")
+}
+
+// 0xa55440 — __ZN6RakNet9BitStream5ResetEv
+#[doc(alias = "RakNet::BitStream::Reset(void)")]
+pub fn stub_a55440() -> ! {
+    todo!("0xa55440 RakNet::BitStream::Reset(void)")
+}
+
+// 0xa55448 — __ZN6RakNet9BitStream5WriteEPKcj
+#[doc(alias = "RakNet::BitStream::Write(char const*,unsigned int)")]
+pub fn stub_a55448() -> ! {
+    todo!("0xa55448 RakNet::BitStream::Write(char const*,unsigned int)")
+}
+
+// 0xa55534 — __ZN6RakNet9BitStream20AddBitsAndReallocateEj
+#[doc(alias = "RakNet::BitStream::AddBitsAndReallocate(unsigned int)")]
+pub fn stub_a55534() -> ! {
+    todo!("0xa55534 RakNet::BitStream::AddBitsAndReallocate(unsigned int)")
+}
+
+// 0xa555e0 — __ZN6RakNet9BitStream9WriteBitsEPKhjb
+#[doc(alias = "RakNet::BitStream::WriteBits(unsigned char const*,unsigned int,bool)")]
+pub fn stub_a555e0() -> ! {
+    todo!("0xa555e0 RakNet::BitStream::WriteBits(unsigned char const*,unsigned int,bool)")
+}
+
+// 0xa557e0 — __ZN6RakNet9BitStream5WriteEPS0_j
+#[doc(alias = "RakNet::BitStream::Write(RakNet::BitStream*,unsigned int)")]
+pub fn stub_a557e0() -> ! {
+    todo!("0xa557e0 RakNet::BitStream::Write(RakNet::BitStream*,unsigned int)")
+}
+
+// 0xa55940 — __ZN6RakNet9BitStream5WriteERS0_j
+#[doc(alias = "RakNet::BitStream::Write(RakNet::BitStream&,unsigned int)")]
+pub fn stub_a55940() -> ! {
+    todo!("0xa55940 RakNet::BitStream::Write(RakNet::BitStream&,unsigned int)")
+}
+
+// 0xa5594c — __ZN6RakNet9BitStream5WriteERS0_
+#[doc(alias = "RakNet::BitStream::Write(RakNet::BitStream&)")]
+pub fn stub_a5594c() -> ! {
+    todo!("0xa5594c RakNet::BitStream::Write(RakNet::BitStream&)")
+}
+
+// 0xa5595c — __ZN6RakNet9BitStream4ReadEPcj
+#[doc(alias = "RakNet::BitStream::Read(char *,unsigned int)")]
+pub fn stub_a5595c() -> ! {
+    todo!("0xa5595c RakNet::BitStream::Read(char *,unsigned int)")
+}
+
+// 0xa559a0 — __ZN6RakNet9BitStream8ReadBitsEPhjb
+#[doc(alias = "RakNet::BitStream::ReadBits(unsigned char *,unsigned int,bool)")]
+pub fn stub_a559a0() -> ! {
+    todo!("0xa559a0 RakNet::BitStream::ReadBits(unsigned char *,unsigned int,bool)")
+}
+
+// 0xa55a70 — __ZN6RakNet9BitStream17ResetWritePointerEv
+#[doc(alias = "RakNet::BitStream::ResetWritePointer(void)")]
+pub fn stub_a55a70() -> ! {
+    todo!("0xa55a70 RakNet::BitStream::ResetWritePointer(void)")
+}
+
+// 0xa55a78 — __ZN6RakNet9BitStream6Write0Ev
+#[doc(alias = "RakNet::BitStream::Write0(void)")]
+pub fn stub_a55a78() -> ! {
+    todo!("0xa55a78 RakNet::BitStream::Write0(void)")
+}
+
+// 0xa55b40 — __ZN6RakNet9BitStream6Write1Ev
+#[doc(alias = "RakNet::BitStream::Write1(void)")]
+pub fn stub_a55b40() -> ! {
+    todo!("0xa55b40 RakNet::BitStream::Write1(void)")
+}
+
+// 0xa55c18 — __ZN6RakNet9BitStream7ReadBitEv
+#[doc(alias = "RakNet::BitStream::ReadBit(void)")]
+pub fn stub_a55c18() -> ! {
+    todo!("0xa55c18 RakNet::BitStream::ReadBit(void)")
+}
+
+// 0xa55c38 — __ZN6RakNet9BitStream17WriteAlignedBytesEPKhj
+#[doc(alias = "RakNet::BitStream::WriteAlignedBytes(unsigned char const*,unsigned int)")]
+pub fn stub_a55c38() -> ! {
+    todo!("0xa55c38 RakNet::BitStream::WriteAlignedBytes(unsigned char const*,unsigned int)")
+}
+
+// 0xa55c58 — __ZN6RakNet9BitStream16ReadAlignedBytesEPhj
+#[doc(alias = "RakNet::BitStream::ReadAlignedBytes(unsigned char *,unsigned int)")]
+pub fn stub_a55c58() -> ! {
+    todo!("0xa55c58 RakNet::BitStream::ReadAlignedBytes(unsigned char *,unsigned int)")
+}
+
+// 0xa55c9c — __ZN6RakNet9BitStream15WriteCompressedEPKhjb
+#[doc(alias = "RakNet::BitStream::WriteCompressed(unsigned char const*,unsigned int,bool)")]
+pub fn stub_a55c9c() -> ! {
+    todo!("0xa55c9c RakNet::BitStream::WriteCompressed(unsigned char const*,unsigned int,bool)")
+}
+
+// 0xa55d2c — __ZN6RakNet9BitStream14ReadCompressedEPhjb
+#[doc(alias = "RakNet::BitStream::ReadCompressed(unsigned char *,unsigned int,bool)")]
+pub fn stub_a55d2c() -> ! {
+    todo!("0xa55d2c RakNet::BitStream::ReadCompressed(unsigned char *,unsigned int,bool)")
+}
+
+// 0xa55e08 — __ZNK6RakNet9BitStream24GetNumberOfBitsAllocatedEv
+#[doc(alias = "RakNet::BitStream::GetNumberOfBitsAllocated(void)const")]
+pub fn stub_a55e08() -> ! {
+    todo!("0xa55e08 RakNet::BitStream::GetNumberOfBitsAllocated(void)const")
+}
+
+// 0xa55e0c — __ZN6RakNet9BitStream23PadWithZeroToByteLengthEj
+#[doc(alias = "RakNet::BitStream::PadWithZeroToByteLength(unsigned int)")]
+pub fn stub_a55e0c() -> ! {
+    todo!("0xa55e0c RakNet::BitStream::PadWithZeroToByteLength(unsigned int)")
+}
+
+// 0xa55ef0 — __ZNK6RakNet9BitStream8CopyDataEPPh
+#[doc(alias = "RakNet::BitStream::CopyData(unsigned char **)const")]
+pub fn stub_a55ef0() -> ! {
+    todo!("0xa55ef0 RakNet::BitStream::CopyData(unsigned char **)const")
+}
+
+// 0xa55f30 — __ZN6RakNet9BitStream10IgnoreBitsEj
+#[doc(alias = "RakNet::BitStream::IgnoreBits(unsigned int)")]
+pub fn stub_a55f30() -> ! {
+    todo!("0xa55f30 RakNet::BitStream::IgnoreBits(unsigned int)")
+}
+
+// 0xa55f38 — __ZN6RakNet9BitStream11IgnoreBytesEj
+#[doc(alias = "RakNet::BitStream::IgnoreBytes(unsigned int)")]
+pub fn stub_a55f38() -> ! {
+    todo!("0xa55f38 RakNet::BitStream::IgnoreBytes(unsigned int)")
+}
+
+// 0xa55f44 — __ZN6RakNet9BitStream14SetWriteOffsetEj
+#[doc(alias = "RakNet::BitStream::SetWriteOffset(unsigned int)")]
+pub fn stub_a55f44() -> ! {
+    todo!("0xa55f44 RakNet::BitStream::SetWriteOffset(unsigned int)")
+}
+
+// 0xa55f48 — __ZN6RakNet9BitStream22IsNetworkOrderInternalEv
+#[doc(alias = "RakNet::BitStream::IsNetworkOrderInternal(void)")]
+pub fn stub_a55f48() -> ! {
+    todo!("0xa55f48 RakNet::BitStream::IsNetworkOrderInternal(void)")
+}
+
+// 0xa55f4c — __ZN6RakNet9BitStream12ReverseBytesEPhS1_j
+#[doc(alias = "RakNet::BitStream::ReverseBytes(unsigned char *,unsigned char *,unsigned int)")]
+pub fn stub_a55f4c() -> ! {
+    todo!("0xa55f4c RakNet::BitStream::ReverseBytes(unsigned char *,unsigned char *,unsigned int)")
+}
+
+// 0xa55f64 — __ZN6RakNet9BitStream16WriteAlignedVar8EPKc
+#[doc(alias = "RakNet::BitStream::WriteAlignedVar8(char const*)")]
+pub fn stub_a55f64() -> ! {
+    todo!("0xa55f64 RakNet::BitStream::WriteAlignedVar8(char const*)")
+}
+
+// 0xa5602c — __ZN6RakNet9BitStream15ReadAlignedVar8EPc
+#[doc(alias = "RakNet::BitStream::ReadAlignedVar8(char *)")]
+pub fn stub_a5602c() -> ! {
+    todo!("0xa5602c RakNet::BitStream::ReadAlignedVar8(char *)")
+}
+
+// 0xa56050 — __ZN6RakNet9BitStream17WriteAlignedVar16EPKc
+#[doc(alias = "RakNet::BitStream::WriteAlignedVar16(char const*)")]
+pub fn stub_a56050() -> ! {
+    todo!("0xa56050 RakNet::BitStream::WriteAlignedVar16(char const*)")
+}
+
+// 0xa5617c — __ZN6RakNet9BitStream16ReadAlignedVar16EPc
+#[doc(alias = "RakNet::BitStream::ReadAlignedVar16(char *)")]
+pub fn stub_a5617c() -> ! {
+    todo!("0xa5617c RakNet::BitStream::ReadAlignedVar16(char *)")
+}
+
+// 0xa5620c — __ZN6RakNet9BitStream17WriteAlignedVar32EPKc
+#[doc(alias = "RakNet::BitStream::WriteAlignedVar32(char const*)")]
+pub fn stub_a5620c() -> ! {
+    todo!("0xa5620c RakNet::BitStream::WriteAlignedVar32(char const*)")
+}
+
+// 0xa56378 — __ZN6RakNet9BitStream16ReadAlignedVar32EPc
+#[doc(alias = "RakNet::BitStream::ReadAlignedVar32(char *)")]
+pub fn stub_a56378() -> ! {
+    todo!("0xa56378 RakNet::BitStream::ReadAlignedVar32(char *)")
+}
+
+// 0xa56438 — __ZN6RakNet9BitStream11ReadFloat16ERfff
+#[doc(alias = "RakNet::BitStream::ReadFloat16(float &,float,float)")]
+pub fn stub_a56438() -> ! {
+    todo!("0xa56438 RakNet::BitStream::ReadFloat16(float &,float,float)")
+}
+
+// 0xa5653c — __ZN6RakNet9BitStream12WriteFloat16Efff
+#[doc(alias = "RakNet::BitStream::WriteFloat16(float,float,float)")]
+pub fn stub_a5653c() -> ! {
+    todo!("0xa5653c RakNet::BitStream::WriteFloat16(float,float,float)")
+}
+
+// 0xa57874 — __ZN6RakNet19HuffmanEncodingTreeC1Ev
+#[doc(alias = "RakNet::HuffmanEncodingTree::HuffmanEncodingTree(void)")]
+pub fn stub_a57874() -> ! {
+    todo!("0xa57874 RakNet::HuffmanEncodingTree::HuffmanEncodingTree(void)")
+}
+
+// 0xa5787c — __ZN6RakNet19HuffmanEncodingTreeD1Ev
+#[doc(alias = "RakNet::HuffmanEncodingTree::~HuffmanEncodingTree()")]
+pub fn stub_a5787c() -> ! {
+    todo!("0xa5787c RakNet::HuffmanEncodingTree::~HuffmanEncodingTree()")
+}
+
+// 0xa5788c — __ZN6RakNet19HuffmanEncodingTree10FreeMemoryEv
+#[doc(alias = "RakNet::HuffmanEncodingTree::FreeMemory(void)")]
+pub fn stub_a5788c() -> ! {
+    todo!("0xa5788c RakNet::HuffmanEncodingTree::FreeMemory(void)")
+}
+
+// 0xa57a3c — __ZN6RakNet19HuffmanEncodingTree26GenerateFromFrequencyTableEPj
+#[doc(alias = "RakNet::HuffmanEncodingTree::GenerateFromFrequencyTable(unsigned int *)")]
+pub fn stub_a57a3c() -> ! {
+    todo!("0xa57a3c RakNet::HuffmanEncodingTree::GenerateFromFrequencyTable(unsigned int *)")
+}
+
+// 0xa58090 — __ZN6RakNet19HuffmanEncodingTree11EncodeArrayEPhmPNS_9BitStreamE
+#[doc(alias = "RakNet::HuffmanEncodingTree::EncodeArray(unsigned char *,unsigned long,RakNet::BitStream *)")]
+pub fn stub_a58090() -> ! {
+    todo!("0xa58090 RakNet::HuffmanEncodingTree::EncodeArray(unsigned char *,unsigned long,RakNet::BitStream *)")
+}
+
+// 0xa580f0 — __ZN6RakNet19HuffmanEncodingTree11DecodeArrayEPNS_9BitStreamEjmPh
+#[doc(alias = "RakNet::HuffmanEncodingTree::DecodeArray(RakNet::BitStream *,unsigned int,unsigned long,unsigned char *)")]
+pub fn stub_a580f0() -> ! {
+    todo!("0xa580f0 RakNet::HuffmanEncodingTree::DecodeArray(RakNet::BitStream *,unsigned int,unsigned long,unsigned char *)")
+}
+
+// 0xa58844 — __ZN6RakNet7GetTimeEv
+#[doc(alias = "RakNet::GetTime(void)")]
+pub fn stub_a58844() -> ! {
+    todo!("0xa58844 RakNet::GetTime(void)")
+}
+
+// 0xa588c4 — __ZN6RakNet9GetTimeUSEv
+#[doc(alias = "RakNet::GetTimeUS(void)")]
+pub fn stub_a588c4() -> ! {
+    todo!("0xa588c4 RakNet::GetTimeUS(void)")
+}
+
+// 0xa58938 — __ZN6RakNet9GetTimeMSEv
+#[doc(alias = "RakNet::GetTimeMS(void)")]
+pub fn stub_a58938() -> ! {
+    todo!("0xa58938 RakNet::GetTimeMS(void)")
+}
+
+// 0xa5a2ac — __ZN6RakNet16PluginInterface2C2Ev
+#[doc(alias = "RakNet::PluginInterface2::PluginInterface2(void)")]
+pub fn stub_a5a2ac() -> ! {
+    todo!("0xa5a2ac RakNet::PluginInterface2::PluginInterface2(void)")
+}
+
+// 0xa5a2c4 — __ZN6RakNet16PluginInterface2D0Ev
+#[doc(alias = "RakNet::PluginInterface2::~PluginInterface2()")]
+pub fn stub_a5a2c4() -> ! {
+    todo!("0xa5a2c4 RakNet::PluginInterface2::~PluginInterface2()")
+}
+
+// 0xa5a2d0 — __ZN6RakNet16PluginInterface2D1Ev
+#[doc(alias = "RakNet::PluginInterface2::~PluginInterface2()")]
+pub fn stub_a5a2d0() -> ! {
+    todo!("0xa5a2d0 RakNet::PluginInterface2::~PluginInterface2()")
+}
+
+// 0xa5a2d4 — __ZN6RakNet16PluginInterface2D2Ev
+#[doc(alias = "RakNet::PluginInterface2::~PluginInterface2()")]
+pub fn stub_a5a2d4() -> ! {
+    todo!("0xa5a2d4 RakNet::PluginInterface2::~PluginInterface2()")
+}
+
+// 0xa5a2d8 — __ZN6RakNet16PluginInterface219SetRakPeerInterfaceEPNS_16RakPeerInterfaceE
+#[doc(alias = "RakNet::PluginInterface2::SetRakPeerInterface(RakNet::RakPeerInterface *)")]
+pub fn stub_a5a2d8() -> ! {
+    todo!("0xa5a2d8 RakNet::PluginInterface2::SetRakPeerInterface(RakNet::RakPeerInterface *)")
+}
+
+// 0xa5a900 — __ZN6RakNet13_RakMalloc_ExEmPKcj
+#[doc(alias = "RakNet::_RakMalloc_Ex(unsigned long,char const*,unsigned int)")]
+pub fn stub_a5a900() -> ! {
+    todo!("0xa5a900 RakNet::_RakMalloc_Ex(unsigned long,char const*,unsigned int)")
+}
+
+// 0xa5a90c — __ZN6RakNet14_RakRealloc_ExEPvmPKcj
+#[doc(alias = "RakNet::_RakRealloc_Ex(void *,unsigned long,char const*,unsigned int)")]
+pub fn stub_a5a90c() -> ! {
+    todo!("0xa5a90c RakNet::_RakRealloc_Ex(void *,unsigned long,char const*,unsigned int)")
+}
+
+// 0xa5a918 — __ZN6RakNet11_RakFree_ExEPvPKcj
+#[doc(alias = "RakNet::_RakFree_Ex(void *,char const*,unsigned int)")]
+pub fn stub_a5a918() -> ! {
+    todo!("0xa5a918 RakNet::_RakFree_Ex(void *,char const*,unsigned int)")
+}
+
+// 0xa5af38 — __ZN6RakNet12RakNetSocketC1Ev
+#[doc(alias = "RakNet::RakNetSocket::RakNetSocket(void)")]
+pub fn stub_a5af38() -> ! {
+    todo!("0xa5af38 RakNet::RakNetSocket::RakNetSocket(void)")
+}
+
+// 0xa5af50 — __ZN6RakNet12RakNetSocketD1Ev
+#[doc(alias = "RakNet::RakNetSocket::~RakNetSocket()")]
+pub fn stub_a5af50() -> ! {
+    todo!("0xa5af50 RakNet::RakNetSocket::~RakNetSocket()")
+}
+
+// 0xa5b5b0 — __ZN6RakNet18StatisticsToStringEPKNS_16RakNetStatisticsEPci
+#[doc(alias = "RakNet::StatisticsToString(RakNet::RakNetStatistics const*,char *,int)")]
+pub fn stub_a5b5b0() -> ! {
+    todo!("0xa5b5b0 RakNet::StatisticsToString(RakNet::RakNetStatistics const*,char *,int)")
+}
+
+// 0xa5bfec — __ZN6RakNet13SystemAddressC1Ev
+#[doc(alias = "RakNet::SystemAddress::SystemAddress(void)")]
+pub fn stub_a5bfec() -> ! {
+    todo!("0xa5bfec RakNet::SystemAddress::SystemAddress(void)")
+}
+
+// 0xa5c004 — __ZN6RakNet10RakNetGUIDC1Ev
+#[doc(alias = "RakNet::RakNetGUID::RakNetGUID(void)")]
+pub fn stub_a5c004() -> ! {
+    todo!("0xa5c004 RakNet::RakNetGUID::RakNetGUID(void)")
+}
+
+// 0xa5c024 — __ZN6RakNet13SystemAddressaSERKS0_
+#[doc(alias = "RakNet::SystemAddress::operator=(RakNet::SystemAddress const&)")]
+pub fn stub_a5c024() -> ! {
+    todo!("0xa5c024 RakNet::SystemAddress::operator=(RakNet::SystemAddress const&)")
+}
+
+// 0xa5c038 — __ZNK6RakNet10RakNetGUIDneERKS0_
+#[doc(alias = "RakNet::RakNetGUID::operator!=(RakNet::RakNetGUID const&)const")]
+pub fn stub_a5c038() -> ! {
+    todo!("0xa5c038 RakNet::RakNetGUID::operator!=(RakNet::RakNetGUID const&)const")
+}
+
+// 0xa5c04c — __ZN6RakNet13SystemAddress9ToIntegerERKS0_
+#[doc(alias = "RakNet::SystemAddress::ToInteger(RakNet::SystemAddress const&)")]
+pub fn stub_a5c04c() -> ! {
+    todo!("0xa5c04c RakNet::SystemAddress::ToInteger(RakNet::SystemAddress const&)")
+}
+
+// 0xa5c068 — __ZNK6RakNet13SystemAddress8ToStringEbc
+#[doc(alias = "RakNet::SystemAddress::ToString(bool,char)const")]
+pub fn stub_a5c068() -> ! {
+    todo!("0xa5c068 RakNet::SystemAddress::ToString(bool,char)const")
+}
+
+// 0xa5c0a4 — __ZNK6RakNet13SystemAddress8ToStringEbPcc
+#[doc(alias = "RakNet::SystemAddress::ToString(bool,char *,char)const")]
+pub fn stub_a5c0a4() -> ! {
+    todo!("0xa5c0a4 RakNet::SystemAddress::ToString(bool,char *,char)const")
+}
+
+// 0xa5c0b0 — __ZN6RakNet16SocketDescriptorC1EtPKc
+#[doc(alias = "RakNet::SocketDescriptor::SocketDescriptor(unsigned short,char const*)")]
+pub fn stub_a5c0b0() -> ! {
+    todo!("0xa5c0b0 RakNet::SocketDescriptor::SocketDescriptor(unsigned short,char const*)")
+}
+
+// 0xa5c0d8 — __ZNK6RakNet13SystemAddress19EqualsExcludingPortERKS0_
+#[doc(alias = "RakNet::SystemAddress::EqualsExcludingPort(RakNet::SystemAddress const&)const")]
+pub fn stub_a5c0d8() -> ! {
+    todo!("0xa5c0d8 RakNet::SystemAddress::EqualsExcludingPort(RakNet::SystemAddress const&)const")
+}
+
+// 0xa5c0f0 — __ZNK6RakNet13SystemAddress16GetBinaryAddressEv
+#[doc(alias = "RakNet::SystemAddress::GetBinaryAddress(void)const")]
+pub fn stub_a5c0f0() -> ! {
+    todo!("0xa5c0f0 RakNet::SystemAddress::GetBinaryAddress(void)const")
+}
+
+// 0xa5c0f4 — __ZNK6RakNet13SystemAddress7GetPortEv
+#[doc(alias = "RakNet::SystemAddress::GetPort(void)const")]
+pub fn stub_a5c0f4() -> ! {
+    todo!("0xa5c0f4 RakNet::SystemAddress::GetPort(void)const")
+}
+
+// 0xa5c0fc — __ZNK6RakNet13SystemAddress19GetPortNetworkOrderEv
+#[doc(alias = "RakNet::SystemAddress::GetPortNetworkOrder(void)const")]
+pub fn stub_a5c0fc() -> ! {
+    todo!("0xa5c0fc RakNet::SystemAddress::GetPortNetworkOrder(void)const")
+}
+
+// 0xa5c100 — __ZN6RakNet13SystemAddress19SetPortNetworkOrderEt
+#[doc(alias = "RakNet::SystemAddress::SetPortNetworkOrder(unsigned short)")]
+pub fn stub_a5c100() -> ! {
+    todo!("0xa5c100 RakNet::SystemAddress::SetPortNetworkOrder(unsigned short)")
+}
+
+// 0xa5c108 — __ZNK6RakNet13SystemAddresseqERKS0_
+#[doc(alias = "RakNet::SystemAddress::operator==(RakNet::SystemAddress const&)const")]
+pub fn stub_a5c108() -> ! {
+    todo!("0xa5c108 RakNet::SystemAddress::operator==(RakNet::SystemAddress const&)const")
+}
+
+// 0xa5c12c — __ZNK6RakNet13SystemAddressneERKS0_
+#[doc(alias = "RakNet::SystemAddress::operator!=(RakNet::SystemAddress const&)const")]
+pub fn stub_a5c12c() -> ! {
+    todo!("0xa5c12c RakNet::SystemAddress::operator!=(RakNet::SystemAddress const&)const")
+}
+
+// 0xa5c154 — __ZNK6RakNet13SystemAddress12GetIPVersionEv
+#[doc(alias = "RakNet::SystemAddress::GetIPVersion(void)const")]
+pub fn stub_a5c154() -> ! {
+    todo!("0xa5c154 RakNet::SystemAddress::GetIPVersion(void)const")
+}
+
+// 0xa5c160 — __ZNK6RakNet13SystemAddress10GetIPPROTOEv
+#[doc(alias = "RakNet::SystemAddress::GetIPPROTO(void)const")]
+pub fn stub_a5c160() -> ! {
+    todo!("0xa5c160 RakNet::SystemAddress::GetIPPROTO(void)const")
+}
+
+// 0xa5c164 — __ZN6RakNet13SystemAddress13SetToLoopbackEh
+#[doc(alias = "RakNet::SystemAddress::SetToLoopback(unsigned char)")]
+pub fn stub_a5c164() -> ! {
+    todo!("0xa5c164 RakNet::SystemAddress::SetToLoopback(unsigned char)")
+}
+
+// 0xa5c18c — __ZNK6RakNet13SystemAddress12ToString_OldEbPcc
+#[doc(alias = "RakNet::SystemAddress::ToString_Old(bool,char *,char)const")]
+pub fn stub_a5c18c() -> ! {
+    todo!("0xa5c18c RakNet::SystemAddress::ToString_Old(bool,char *,char)const")
+}
+
+// 0xa5c220 — __ZN6RakNet13SystemAddressC1EPKct
+#[doc(alias = "RakNet::SystemAddress::SystemAddress(char const*,unsigned short)")]
+pub fn stub_a5c220() -> ! {
+    todo!("0xa5c220 RakNet::SystemAddress::SystemAddress(char const*,unsigned short)")
+}
+
+// 0xa5c250 — __ZN6RakNet13SystemAddress22FromStringExplicitPortEPKcti
+#[doc(alias = "RakNet::SystemAddress::FromStringExplicitPort(char const*,unsigned short,int)")]
+pub fn stub_a5c250() -> ! {
+    todo!("0xa5c250 RakNet::SystemAddress::FromStringExplicitPort(char const*,unsigned short,int)")
+}
+
+// 0xa5c274 — __ZN6RakNet13SystemAddress15FixForIPVersionERKS0_
+#[doc(alias = "RakNet::SystemAddress::FixForIPVersion(RakNet::SystemAddress const&)")]
+pub fn stub_a5c274() -> ! {
+    todo!("0xa5c274 RakNet::SystemAddress::FixForIPVersion(RakNet::SystemAddress const&)")
+}
+
+// 0xa5c320 — __ZN6RakNet13SystemAddress16SetBinaryAddressEPKcc
+#[doc(alias = "RakNet::SystemAddress::SetBinaryAddress(char const*,char)")]
+pub fn stub_a5c320() -> ! {
+    todo!("0xa5c320 RakNet::SystemAddress::SetBinaryAddress(char const*,char)")
+}
+
+// 0xa5c498 — __ZN6RakNet13SystemAddress8CopyPortERKS0_
+#[doc(alias = "RakNet::SystemAddress::CopyPort(RakNet::SystemAddress const&)")]
+pub fn stub_a5c498() -> ! {
+    todo!("0xa5c498 RakNet::SystemAddress::CopyPort(RakNet::SystemAddress const&)")
+}
+
+// 0xa5c4a4 — __ZNK6RakNet10RakNetGUIDeqERKS0_
+#[doc(alias = "RakNet::RakNetGUID::operator==(RakNet::RakNetGUID const&)const")]
+pub fn stub_a5c4a4() -> ! {
+    todo!("0xa5c4a4 RakNet::RakNetGUID::operator==(RakNet::RakNetGUID const&)const")
+}
+
+// 0xa5cb00 — __ZN6RakNet7RakPeerC2Ev
+#[doc(alias = "RakNet::RakPeer::RakPeer(void)")]
+pub fn stub_a5cb00() -> ! {
+    todo!("0xa5cb00 RakNet::RakPeer::RakPeer(void)")
+}
+
+// 0xa5d8f0 — __ZN6RakNet7RakPeerD0Ev
+#[doc(alias = "RakNet::RakPeer::~RakPeer()")]
+pub fn stub_a5d8f0() -> ! {
+    todo!("0xa5d8f0 RakNet::RakPeer::~RakPeer()")
+}
+
+// 0xa5d990 — __ZN6RakNet7RakPeerD1Ev
+#[doc(alias = "RakNet::RakPeer::~RakPeer()")]
+pub fn stub_a5d990() -> ! {
+    todo!("0xa5d990 RakNet::RakPeer::~RakPeer()")
+}
+
+// 0xa5d99c — __ZN6RakNet7RakPeerD2Ev
+#[doc(alias = "RakNet::RakPeer::~RakPeer()")]
+pub fn stub_a5d99c() -> ! {
+    todo!("0xa5d99c RakNet::RakPeer::~RakPeer()")
+}
+
+// 0xa5e3c0 — __ZN6RakNet7RakPeer7StartupEtPNS_16SocketDescriptorEji
+#[doc(alias = "RakNet::RakPeer::Startup(unsigned short,RakNet::SocketDescriptor *,unsigned int,int)")]
+pub fn stub_a5e3c0() -> ! {
+    todo!("0xa5e3c0 RakNet::RakPeer::Startup(unsigned short,RakNet::SocketDescriptor *,unsigned int,int)")
+}
+
+// 0xa5eab8 — __ZN6RakNet7RakPeer15DerefAllSocketsEv
+#[doc(alias = "RakNet::RakPeer::DerefAllSockets(void)")]
+pub fn stub_a5eab8() -> ! {
+    todo!("0xa5eab8 RakNet::RakPeer::DerefAllSockets(void)")
+}
+
+// 0xa5ebd4 — __ZN6RakNet7RakPeer21ClearBufferedCommandsEv
+#[doc(alias = "RakNet::RakPeer::ClearBufferedCommands(void)")]
+pub fn stub_a5ebd4() -> ! {
+    todo!("0xa5ebd4 RakNet::RakPeer::ClearBufferedCommands(void)")
+}
+
+// 0xa5eca0 — __ZN6RakNet7RakPeer20ClearBufferedPacketsEv
+#[doc(alias = "RakNet::RakPeer::ClearBufferedPackets(void)")]
+pub fn stub_a5eca0() -> ! {
+    todo!("0xa5eca0 RakNet::RakPeer::ClearBufferedPackets(void)")
+}
+
+// 0xa5ed50 — __ZN6RakNet17UpdateNetworkLoopEPv
+#[doc(alias = "RakNet::UpdateNetworkLoop(void *)")]
+pub fn stub_a5ed50() -> ! {
+    todo!("0xa5ed50 RakNet::UpdateNetworkLoop(void *)")
+}
+
+// 0xa5ee80 — __ZN6RakNet12RecvFromLoopEPv
+#[doc(alias = "RakNet::RecvFromLoop(void *)")]
+pub fn stub_a5ee80() -> ! {
+    todo!("0xa5ee80 RakNet::RecvFromLoop(void *)")
+}
+
+// 0xa5efa0 — __ZN6RakNet7RakPeer18InitializeSecurityEPKcS2_b
+#[doc(alias = "RakNet::RakPeer::InitializeSecurity(char const*,char const*,bool)")]
+pub fn stub_a5efa0() -> ! {
+    todo!("0xa5efa0 RakNet::RakPeer::InitializeSecurity(char const*,char const*,bool)")
+}
+
+// 0xa5efa4 — __ZN6RakNet7RakPeer15DisableSecurityEv
+#[doc(alias = "RakNet::RakPeer::DisableSecurity(void)")]
+pub fn stub_a5efa4() -> ! {
+    todo!("0xa5efa4 RakNet::RakPeer::DisableSecurity(void)")
+}
+
+// 0xa5efa8 — __ZN6RakNet7RakPeer26AddToSecurityExceptionListEPKc
+#[doc(alias = "RakNet::RakPeer::AddToSecurityExceptionList(char const*)")]
+pub fn stub_a5efa8() -> ! {
+    todo!("0xa5efa8 RakNet::RakPeer::AddToSecurityExceptionList(char const*)")
+}
+
+// 0xa5f08c — __ZN6RakNet7RakPeer31RemoveFromSecurityExceptionListEPKc
+#[doc(alias = "RakNet::RakPeer::RemoveFromSecurityExceptionList(char const*)")]
+pub fn stub_a5f08c() -> ! {
+    todo!("0xa5f08c RakNet::RakPeer::RemoveFromSecurityExceptionList(char const*)")
+}
+
