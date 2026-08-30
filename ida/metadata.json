@@ -1,0 +1,12 @@
+{
+  "path": "/home/zzzzzzz/Downloads/ROBLOX 2.125.39335/Payload/robloxmobile.app/robloxmobile.i64",
+  "module": "robloxmobile",
+  "base": "0x4000",
+  "size": "0x13a8efc",
+  "md5": "b58125d0d78bcd63c97d7f2128563531",
+  "sha256": "00e764c7c99995b05048ea8840d5d2155278ee571f668386d2b3d6a253d7bebe",
+  "ipa": "/home/zzzzzzz/Downloads/ROBLOX 2.125.39335.ipa",
+  "ipa_md5": "d4a442d7eb8d7e5063c6ca62f92e6667",
+  "arch": "armv7",
+  "funcs": 85545
+}

@@ -1,0 +1,18 @@
+[package]
+name = "rbx-platform"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+thiserror.workspace = true
+parking_lot.workspace = true
+bitflags.workspace = true
+rbx-core = { path = "../core" }
+rbx-reflection = { path = "../reflection" }
+rbx-datamodel = { path = "../datamodel" }
+rbx-script = { path = "../script" }
+rbx-rendering = { path = "../rendering" }
+rbx-network = { path = "../network" }
+rbx-audio = { path = "../audio" }
