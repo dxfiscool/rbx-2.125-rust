@@ -2,7 +2,7 @@
 // Filter: demangled contains RBX:: + Instance|DataModel|Workspace | batch addresses sorted
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr
 
-#![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
+#![allow(non_snake_case, dead_code, unused_variables)]
 
 // 46 stubs in this file | batch range 0xef04..0x28838c
 

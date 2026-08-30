@@ -5,3 +5,5 @@
 pub mod instance;
 pub mod data_model;
 pub mod workspace;
+pub mod part;
+pub mod model;
