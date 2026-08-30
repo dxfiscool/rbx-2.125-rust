@@ -1,6 +1,6 @@
-//! platform generated — next 402 stubs sorted by EA, from ida/export.json
+//! platform generated — next 482 stubs sorted by EA, from ida/export.json
 //! Filter: RobloxView|GameViewController|AppDelegate|EAGL2|PlaceLauncher|ControlView|UIViewController|HomeViewController|Teleporter
-//! Batch: 402 stubs (100 + 100 + 100 + 100 + 2 final) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 482 stubs (100 + 100 + 100 + 100 + 2 + 80 final, 481 filter + 1 stray Login) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -2817,4 +2817,562 @@ pub fn stub_f27304() -> ! {
 #[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
 pub fn stub_f27314() -> ! {
     todo!("0xf27314 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")
+}
+
+// — batch 6: final 80 stubs (0x19228-0xf27274) — AppDelegate/EAGL2/RobloxView tail —
+// 0x19228 — -[AppDelegate init]
+// type: AppDelegate *__cdecl(AppDelegate *self, SEL)
+#[doc(alias = "-[AppDelegate init]")]
+pub fn stub_19228() -> ! {
+    todo!("0x19228 -[AppDelegate init]")
+}
+
+// 0x19254 — -[AppDelegate dealloc]
+// type: void __cdecl(AppDelegate *self, SEL)
+#[doc(alias = "-[AppDelegate dealloc]")]
+pub fn stub_19254() -> ! {
+    todo!("0x19254 -[AppDelegate dealloc]")
+}
+
+// 0x192b4 — -[AppDelegate application:didFinishLaunchingWithOptions:]
+// type: char __cdecl(AppDelegate *self, SEL, id, id)
+#[doc(alias = "-[AppDelegate application:didFinishLaunchingWithOptions:]")]
+pub fn stub_192b4() -> ! {
+    todo!("0x192b4 -[AppDelegate application:didFinishLaunchingWithOptions:]")
+}
+
+// 0x194ec — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")]
+pub fn stub_194ec() -> ! {
+    todo!("0x194ec ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke")
+}
+
+// 0x19514 — ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2
+// type: void __cdecl(id)
+#[doc(alias = "___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")]
+pub fn stub_19514() -> ! {
+    todo!("0x19514 ___57-[AppDelegate application:didFinishLaunchingWithOptions:]_block_invoke_2")
+}
+
+// 0x195a0 — -[AppDelegate applicationWillResignActive:]
+// type: void __cdecl(AppDelegate *self, SEL, id)
+#[doc(alias = "-[AppDelegate applicationWillResignActive:]")]
+pub fn stub_195a0() -> ! {
+    todo!("0x195a0 -[AppDelegate applicationWillResignActive:]")
+}
+
+// 0x196e4 — -[AppDelegate applicationDidEnterBackground:]
+// type: void __cdecl(AppDelegate *self, SEL, id)
+#[doc(alias = "-[AppDelegate applicationDidEnterBackground:]")]
+pub fn stub_196e4() -> ! {
+    todo!("0x196e4 -[AppDelegate applicationDidEnterBackground:]")
+}
+
+// 0x19a30 — -[AppDelegate applicationDidReceiveMemoryWarning:]
+// type: void __cdecl(AppDelegate *self, SEL, id)
+#[doc(alias = "-[AppDelegate applicationDidReceiveMemoryWarning:]")]
+pub fn stub_19a30() -> ! {
+    todo!("0x19a30 -[AppDelegate applicationDidReceiveMemoryWarning:]")
+}
+
+// 0x19b60 — -[AppDelegate applicationWillEnterForeground:]
+// type: void __cdecl(AppDelegate *self, SEL, id)
+#[doc(alias = "-[AppDelegate applicationWillEnterForeground:]")]
+pub fn stub_19b60() -> ! {
+    todo!("0x19b60 -[AppDelegate applicationWillEnterForeground:]")
+}
+
+// 0x19cdc — -[AppDelegate applicationDidBecomeActive:]
+// type: void __cdecl(AppDelegate *self, SEL, id)
+#[doc(alias = "-[AppDelegate applicationDidBecomeActive:]")]
+pub fn stub_19cdc() -> ! {
+    todo!("0x19cdc -[AppDelegate applicationDidBecomeActive:]")
+}
+
+// 0x19f34 — ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")]
+pub fn stub_19f34() -> ! {
+    todo!("0x19f34 ___42-[AppDelegate applicationDidBecomeActive:]_block_invoke")
+}
+
+// 0x19f7c — -[AppDelegate applicationWillTerminate:]
+// type: void __cdecl(AppDelegate *self, SEL, id)
+#[doc(alias = "-[AppDelegate applicationWillTerminate:]")]
+pub fn stub_19f7c() -> ! {
+    todo!("0x19f7c -[AppDelegate applicationWillTerminate:]")
+}
+
+// 0x1a098 — _topMostController(UIViewController *)
+// type: id __fastcall(id)
+#[doc(alias = "_topMostController(UIViewController *)")]
+pub fn stub_1a098() -> ! {
+    todo!("0x1a098 _topMostController(UIViewController *)")
+}
+
+// 0x1a174 — -[AppDelegate application:openURL:sourceApplication:annotation:]
+// type: char __cdecl(AppDelegate *self, SEL, id, id, id, id)
+#[doc(alias = "-[AppDelegate application:openURL:sourceApplication:annotation:]")]
+pub fn stub_1a174() -> ! {
+    todo!("0x1a174 -[AppDelegate application:openURL:sourceApplication:annotation:]")
+}
+
+// 0x1a234 — -[AppDelegate TryLaunchPlace:]
+// type: void __cdecl(AppDelegate *self, SEL, int)
+#[doc(alias = "-[AppDelegate TryLaunchPlace:]")]
+pub fn stub_1a234() -> ! {
+    todo!("0x1a234 -[AppDelegate TryLaunchPlace:]")
+}
+
+// 0x1a494 — -[AppDelegate bgTask]
+// type: unsigned int __cdecl(AppDelegate *self, SEL)
+#[doc(alias = "-[AppDelegate bgTask]")]
+pub fn stub_1a494() -> ! {
+    todo!("0x1a494 -[AppDelegate bgTask]")
+}
+
+// 0x1a4a8 — -[AppDelegate setBgTask:]
+// type: void __cdecl(AppDelegate *self, SEL, unsigned int)
+#[doc(alias = "-[AppDelegate setBgTask:]")]
+pub fn stub_1a4a8() -> ! {
+    todo!("0x1a4a8 -[AppDelegate setBgTask:]")
+}
+
+// 0x1a4c0 — -[AppDelegate window]
+// type: UIWindow *__cdecl(AppDelegate *self, SEL)
+#[doc(alias = "-[AppDelegate window]")]
+pub fn stub_1a4c0() -> ! {
+    todo!("0x1a4c0 -[AppDelegate window]")
+}
+
+// 0x1a4d0 — -[AppDelegate setWindow:]
+// type: void __cdecl(AppDelegate *self, SEL, id)
+#[doc(alias = "-[AppDelegate setWindow:]")]
+pub fn stub_1a4d0() -> ! {
+    todo!("0x1a4d0 -[AppDelegate setWindow:]")
+}
+
+// 0x1a4f4 — -[AppDelegate .cxx_destruct]
+// type: void __cdecl(AppDelegate *self, SEL)
+#[doc(alias = "-[AppDelegate .cxx_destruct]")]
+pub fn stub_1a4f4() -> ! {
+    todo!("0x1a4f4 -[AppDelegate .cxx_destruct]")
+}
+
+// 0x1a5bc — -[AppDelegate .cxx_construct]
+// type: id __cdecl(AppDelegate *self, SEL)
+#[doc(alias = "-[AppDelegate .cxx_construct]")]
+pub fn stub_1a5bc() -> ! {
+    todo!("0x1a5bc -[AppDelegate .cxx_construct]")
+}
+
+// 0x25440 — -[PlaceLauncher deleteRobloxView]
+// type: void __cdecl(PlaceLauncher *self, SEL)
+#[doc(alias = "-[PlaceLauncher deleteRobloxView]")]
+pub fn stub_25440() -> ! {
+    todo!("0x25440 -[PlaceLauncher deleteRobloxView]")
+}
+
+// 0x2643c — initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)
+// type: _DWORD __fastcall(RobloxView *, signed __int8, RBX::FunctionMarshaller *)
+#[doc(alias = "initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)")]
+pub fn stub_2643c() -> ! {
+    todo!("0x2643c initControlView(RobloxView *,signed char,RBX::FunctionMarshaller *)")
+}
+
+// 0x26768 — -[PlaceLauncher presentGameViewController]
+// type: void __cdecl(PlaceLauncher *self, SEL)
+#[doc(alias = "-[PlaceLauncher presentGameViewController]")]
+pub fn stub_26768() -> ! {
+    todo!("0x26768 -[PlaceLauncher presentGameViewController]")
+}
+
+// 0x2c224 — initControlViewHelper(RobloxView *,signed char)
+// type: _DWORD __fastcall(RobloxView *, signed __int8)
+#[doc(alias = "initControlViewHelper(RobloxView *,signed char)")]
+pub fn stub_2c224() -> ! {
+    todo!("0x2c224 initControlViewHelper(RobloxView *,signed char)")
+}
+
+// 0x37068 — RobloxView::requestStopRenderingForBackgroundMode(void)
+// type: _DWORD __fastcall(RobloxView *__hidden this)
+#[doc(alias = "RobloxView::requestStopRenderingForBackgroundMode(void)")]
+pub fn stub_37068() -> ! {
+    todo!("0x37068 RobloxView::requestStopRenderingForBackgroundMode(void)")
+}
+
+// 0x37378 — RobloxView::requestResumeRendering(void)
+// type: _DWORD __fastcall(RobloxView *__hidden this)
+#[doc(alias = "RobloxView::requestResumeRendering(void)")]
+pub fn stub_37378() -> ! {
+    todo!("0x37378 RobloxView::requestResumeRendering(void)")
+}
+
+// 0x37628 — RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)
+#[doc(alias = "RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)")]
+pub fn stub_37628() -> ! {
+    todo!("0x37628 RobloxView::RobloxView(unsigned int,unsigned int,std::string,std::string,std::string)")
+}
+
+// 0x380a0 — RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)
+// type: _DWORD __fastcall(RobloxView *__hidden this, const PropertyDescriptor *)
+#[doc(alias = "RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")]
+pub fn stub_380a0() -> ! {
+    todo!("0x380a0 RobloxView::onPlaceIDChanged(RBX::Reflection::PropertyDescriptor const*)")
+}
+
+// 0x382b0 — RobloxView::defineConcurrencyRules(void)
+// type: _DWORD __fastcall(RobloxView *__hidden this)
+#[doc(alias = "RobloxView::defineConcurrencyRules(void)")]
+pub fn stub_382b0() -> ! {
+    todo!("0x382b0 RobloxView::defineConcurrencyRules(void)")
+}
+
+// 0x386d0 — RobloxView::restartDataModel(void)
+// type: _DWORD __fastcall(RobloxView *__hidden this)
+#[doc(alias = "RobloxView::restartDataModel(void)")]
+pub fn stub_386d0() -> ! {
+    todo!("0x386d0 RobloxView::restartDataModel(void)")
+}
+
+// 0x38720 — RobloxView::newGameDidStart(void)
+// type: _DWORD __fastcall(RobloxView *__hidden this)
+#[doc(alias = "RobloxView::newGameDidStart(void)")]
+pub fn stub_38720() -> ! {
+    todo!("0x38720 RobloxView::newGameDidStart(void)")
+}
+
+// 0x38770 — ____ZN10RobloxView18doRestartDataModelEv_block_invoke
+// type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "____ZN10RobloxView18doRestartDataModelEv_block_invoke")]
+pub fn stub_38770() -> ! {
+    todo!("0x38770 ____ZN10RobloxView18doRestartDataModelEv_block_invoke")
+}
+
+// 0x38cd0 — RobloxView::setupNewDataModel(void)
+// type: _DWORD __fastcall(RobloxView *__hidden this)
+#[doc(alias = "RobloxView::setupNewDataModel(void)")]
+pub fn stub_38cd0() -> ! {
+    todo!("0x38cd0 RobloxView::setupNewDataModel(void)")
+}
+
+// 0x39018 — ____ZN10RobloxView15newGameDidStartEv_block_invoke
+#[doc(alias = "____ZN10RobloxView15newGameDidStartEv_block_invoke")]
+pub fn stub_39018() -> ! {
+    todo!("0x39018 ____ZN10RobloxView15newGameDidStartEv_block_invoke")
+}
+
+// 0x39020 — RobloxView::~RobloxView()
+// type: void __fastcall(RobloxView *__hidden this)
+#[doc(alias = "RobloxView::~RobloxView()")]
+pub fn stub_39020() -> ! {
+    todo!("0x39020 RobloxView::~RobloxView()")
+}
+
+// 0x39024 — RobloxView::~RobloxView()
+// type: void __fastcall(RobloxView *__hidden this)
+#[doc(alias = "RobloxView::~RobloxView()")]
+pub fn stub_39024() -> ! {
+    todo!("0x39024 RobloxView::~RobloxView()")
+}
+
+// 0x3ee80 — RobloxView::RenderJob::~RenderJob()
+// type: void __fastcall(RobloxView::RenderJob *__hidden this)
+#[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
+pub fn stub_3ee80() -> ! {
+    todo!("0x3ee80 RobloxView::RenderJob::~RenderJob()")
+}
+
+// 0x3ef40 — RobloxView::RenderJob::~RenderJob()
+// type: void __fastcall(RobloxView::RenderJob *__hidden this)
+#[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
+pub fn stub_3ef40() -> ! {
+    todo!("0x3ef40 RobloxView::RenderJob::~RenderJob()")
+}
+
+// 0x3f008 — RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
+#[doc(alias = "RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_3f008() -> ! {
+    todo!("0x3f008 RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x3f058 — RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
+#[doc(alias = "RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_3f058() -> ! {
+    todo!("0x3f058 RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x3f094 — RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
+#[doc(alias = "RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_3f094() -> ! {
+    todo!("0x3f094 RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x3f598 — RobloxView::RenderJob::getMetricValue(std::string const&)const
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
+#[doc(alias = "RobloxView::RenderJob::getMetricValue(std::string const&)const")]
+pub fn stub_3f598() -> ! {
+    todo!("0x3f598 RobloxView::RenderJob::getMetricValue(std::string const&)const")
+}
+
+// 0x3f700 — RobloxView::RenderJob::getMetric(std::string const&)const
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
+#[doc(alias = "RobloxView::RenderJob::getMetric(std::string const&)const")]
+pub fn stub_3f700() -> ! {
+    todo!("0x3f700 RobloxView::RenderJob::getMetric(std::string const&)const")
+}
+
+// 0x3f904 — `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()
+// type: void __fastcall(RobloxView::RenderJob *__hidden this)
+#[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
+pub fn stub_3f904() -> ! {
+    todo!("0x3f904 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
+}
+
+// 0x3f9c8 — `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()
+// type: void __fastcall(RobloxView::RenderJob *__hidden this)
+#[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
+pub fn stub_3f9c8() -> ! {
+    todo!("0x3f9c8 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
+}
+
+// 0x3fa94 — `non-virtual thunk to'RobloxView::RenderJob::getMetric(std::string const&)const
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
+#[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")]
+pub fn stub_3fa94() -> ! {
+    todo!("0x3fa94 `non-virtual thunk to'RobloxView::RenderJob::getMetric(std::string const&)const")
+}
+
+// 0x3faa4 — `non-virtual thunk to'RobloxView::RenderJob::getMetricValue(std::string const&)const
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
+#[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")]
+pub fn stub_3faa4() -> ! {
+    todo!("0x3faa4 `non-virtual thunk to'RobloxView::RenderJob::getMetricValue(std::string const&)const")
+}
+
+// 0x3faac — RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RenderJob *, ViewBase *)
+#[doc(alias = "RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")]
+pub fn stub_3faac() -> ! {
+    todo!("0x3faac RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")
+}
+
+// 0x3fac4 — RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RobloxView::RenderJob *, RBX::ViewBase *, double)
+#[doc(alias = "RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")]
+pub fn stub_3fac4() -> ! {
+    todo!("0x3fac4 RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")
+}
+
+// 0x3fb9c — RobloxView::RenderJob::wake(void)
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this)
+#[doc(alias = "RobloxView::RenderJob::wake(void)")]
+pub fn stub_3fb9c() -> ! {
+    todo!("0x3fb9c RobloxView::RenderJob::wake(void)")
+}
+
+// 0x403f0 — RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)
+// type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, RBX::ViewBase *, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")]
+pub fn stub_403f0() -> ! {
+    todo!("0x403f0 RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")
+}
+
+// 0x404f0 — RobloxView::ViewUpdateJob::~ViewUpdateJob()
+// type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
+#[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
+pub fn stub_404f0() -> ! {
+    todo!("0x404f0 RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+}
+
+// 0x4059c — RobloxView::ViewUpdateJob::~ViewUpdateJob()
+// type: void __fastcall(RobloxView::ViewUpdateJob *__hidden this)
+#[doc(alias = "RobloxView::ViewUpdateJob::~ViewUpdateJob()")]
+pub fn stub_4059c() -> ! {
+    todo!("0x4059c RobloxView::ViewUpdateJob::~ViewUpdateJob()")
+}
+
+// 0x40650 — RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)
+// type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
+#[doc(alias = "RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_40650() -> ! {
+    todo!("0x40650 RobloxView::ViewUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x40680 — RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)
+// type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
+#[doc(alias = "RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_40680() -> ! {
+    todo!("0x40680 RobloxView::ViewUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x406a8 — RobloxView::ViewUpdateJob::getPriorityFactor(void)
+// type: _DWORD __fastcall(RobloxView::ViewUpdateJob *__hidden this)
+#[doc(alias = "RobloxView::ViewUpdateJob::getPriorityFactor(void)")]
+pub fn stub_406a8() -> ! {
+    todo!("0x406a8 RobloxView::ViewUpdateJob::getPriorityFactor(void)")
+}
+
+// 0x406b4 — RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)
+#[doc(alias = "RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_406b4() -> ! {
+    todo!("0x406b4 RobloxView::ViewUpdateJob::step(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x4d70c — -[GameViewController initWithNibName:bundle:]
+// type: GameViewController *__cdecl(GameViewController *self, SEL, id, id)
+#[doc(alias = "-[GameViewController initWithNibName:bundle:]")]
+pub fn stub_4d70c() -> ! {
+    todo!("0x4d70c -[GameViewController initWithNibName:bundle:]")
+}
+
+// 0x4d8cc — -[GameViewController dealloc]
+// type: void __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController dealloc]")]
+pub fn stub_4d8cc() -> ! {
+    todo!("0x4d8cc -[GameViewController dealloc]")
+}
+
+// 0x4d978 — -[GameViewController viewWillAppear:]
+// type: void __cdecl(GameViewController *self, SEL, char)
+#[doc(alias = "-[GameViewController viewWillAppear:]")]
+pub fn stub_4d978() -> ! {
+    todo!("0x4d978 -[GameViewController viewWillAppear:]")
+}
+
+// 0x4d9d4 — -[GameViewController viewDidAppear:]
+// type: void __cdecl(GameViewController *self, SEL, char)
+#[doc(alias = "-[GameViewController viewDidAppear:]")]
+pub fn stub_4d9d4() -> ! {
+    todo!("0x4d9d4 -[GameViewController viewDidAppear:]")
+}
+
+// 0x4da00 — -[GameViewController viewDidLoad]
+// type: void __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController viewDidLoad]")]
+pub fn stub_4da00() -> ! {
+    todo!("0x4da00 -[GameViewController viewDidLoad]")
+}
+
+// 0x4dab8 — -[GameViewController didReceiveMemoryWarning]
+// type: void __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController didReceiveMemoryWarning]")]
+pub fn stub_4dab8() -> ! {
+    todo!("0x4dab8 -[GameViewController didReceiveMemoryWarning]")
+}
+
+// 0x4dae4 — -[GameViewController resizeGameView]
+// type: void __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController resizeGameView]")]
+pub fn stub_4dae4() -> ! {
+    todo!("0x4dae4 -[GameViewController resizeGameView]")
+}
+
+// 0x4db04 — -[GameViewController shouldAutorotate]
+// type: char __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController shouldAutorotate]")]
+pub fn stub_4db04() -> ! {
+    todo!("0x4db04 -[GameViewController shouldAutorotate]")
+}
+
+// 0x4db08 — -[GameViewController supportedInterfaceOrientations]
+// type: unsigned int __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController supportedInterfaceOrientations]")]
+pub fn stub_4db08() -> ! {
+    todo!("0x4db08 -[GameViewController supportedInterfaceOrientations]")
+}
+
+// 0x4db0c — -[GameViewController shouldAutorotateToInterfaceOrientation:]
+// type: char __cdecl(GameViewController *self, SEL, int)
+#[doc(alias = "-[GameViewController shouldAutorotateToInterfaceOrientation:]")]
+pub fn stub_4db0c() -> ! {
+    todo!("0x4db0c -[GameViewController shouldAutorotateToInterfaceOrientation:]")
+}
+
+// 0x4db20 — -[GameViewController getControlView]
+// type: id __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController getControlView]")]
+pub fn stub_4db20() -> ! {
+    todo!("0x4db20 -[GameViewController getControlView]")
+}
+
+// 0xe87e38 — -[EAGL2View description]
+// type: id __cdecl(EAGL2View *self, SEL)
+#[doc(alias = "-[EAGL2View description]")]
+pub fn stub_e87e38() -> ! {
+    todo!("0xe87e38 -[EAGL2View description]")
+}
+
+// 0xe87f28 — +[EAGL2View layerClass]
+// type: Class __cdecl(id, SEL)
+#[doc(alias = "+[EAGL2View layerClass]")]
+pub fn stub_e87f28() -> ! {
+    todo!("0xe87f28 +[EAGL2View layerClass]")
+}
+
+// 0xe87f4c — -[EAGL2View layoutSubviews]
+// type: void __cdecl(EAGL2View *self, SEL)
+#[doc(alias = "-[EAGL2View layoutSubviews]")]
+pub fn stub_e87f4c() -> ! {
+    todo!("0xe87f4c -[EAGL2View layoutSubviews]")
+}
+
+// 0xe880b4 — -[EAGL2View mWindowName]
+// type: basic_string<char, std::char_traits<char>, std::allocator<char> > __cdecl(EAGL2View *self, SEL)
+#[doc(alias = "-[EAGL2View mWindowName]")]
+pub fn stub_e880b4() -> ! {
+    todo!("0xe880b4 -[EAGL2View mWindowName]")
+}
+
+// 0xe880cc — -[EAGL2View setMWindowName:]
+// type: void __cdecl(EAGL2View *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
+#[doc(alias = "-[EAGL2View setMWindowName:]")]
+pub fn stub_e880cc() -> ! {
+    todo!("0xe880cc -[EAGL2View setMWindowName:]")
+}
+
+// 0xe880e8 — -[EAGL2View .cxx_destruct]
+// type: void __cdecl(EAGL2View *self, SEL)
+#[doc(alias = "-[EAGL2View .cxx_destruct]")]
+pub fn stub_e880e8() -> ! {
+    todo!("0xe880e8 -[EAGL2View .cxx_destruct]")
+}
+
+// 0xe88140 — -[EAGL2View .cxx_construct]
+// type: id __cdecl(EAGL2View *self, SEL)
+#[doc(alias = "-[EAGL2View .cxx_construct]")]
+pub fn stub_e88140() -> ! {
+    todo!("0xe88140 -[EAGL2View .cxx_construct]")
+}
+
+// 0xf26da4 — RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)
+// type: int __fastcall(RobloxView::ViewUpdateJob *this, RBX::ViewBase *, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")]
+pub fn stub_f26da4() -> ! {
+    todo!("0xf26da4 RobloxView::ViewUpdateJob::ViewUpdateJob(RBX::ViewBase *,RBX::FunctionMarshaller *)")
+}
+
+// 0xf26db4 — RobloxView::RenderJob::wake(void)
+// type: int __fastcall(RobloxView::RenderJob *this)
+#[doc(alias = "RobloxView::RenderJob::wake(void)")]
+pub fn stub_f26db4() -> ! {
+    todo!("0xf26db4 RobloxView::RenderJob::wake(void)")
+}
+
+// 0xf27264 — RobloxView::RenderJob::getMetricValue(std::string const&)const
+// type: int __fastcall(RobloxView::RenderJob *this, const std::string *)
+#[doc(alias = "RobloxView::RenderJob::getMetricValue(std::string const&)const")]
+pub fn stub_f27264() -> ! {
+    todo!("0xf27264 RobloxView::RenderJob::getMetricValue(std::string const&)const")
+}
+
+// 0xf27274 — RobloxView::RenderJob::getMetric(std::string const&)const
+// type: int __fastcall(RobloxView::RenderJob *this, const std::string *)
+#[doc(alias = "RobloxView::RenderJob::getMetric(std::string const&)const")]
+pub fn stub_f27274() -> ! {
+    todo!("0xf27274 RobloxView::RenderJob::getMetric(std::string const&)const")
 }
