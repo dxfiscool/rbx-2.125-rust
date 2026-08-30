@@ -1,5 +1,5 @@
 //! RakNet — mirrors RakNet/BitStream, ReplicaManager, etc.
-//! Generated from ida/export.json filtered for RakNet (944 funcs, 450 stubs here).
+//! Generated from ida/export.json filtered for RakNet (944 funcs, 550 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
@@ -2905,4 +2905,712 @@ pub fn stub_a68ed4() -> ! {
 )]
 pub fn stub_a6b9f8() -> ! {
     todo!("0xa6b9f8 DataStructures::List<RakNet::RakString>::Insert(RakNet::RakString const&,char const*,unsigned int)")
+}
+
+// 0xa6bc00 — __ZN14DataStructures5QueueIPN6RakNet6PacketEE10PushAtHeadERKS3_jPKcj
+#[doc(
+    alias = "DataStructures::Queue<RakNet::Packet *>::PushAtHead(RakNet::Packet * const&,unsigned int,char const*,unsigned int)"
+)]
+pub fn stub_a6bc00() -> ! {
+    todo!("0xa6bc00 DataStructures::Queue<RakNet::Packet *>::PushAtHead(RakNet::Packet * const&,unsigned int,char const*,unsigned int)")
+}
+
+// 0xa6bcac — __ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEEaSERKS5_
+#[doc(
+    alias = "DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::operator=(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> const&)"
+)]
+pub fn stub_a6bcac() -> ! {
+    todo!("0xa6bcac DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::operator=(DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>> const&)")
+}
+
+// 0xa6be48 — __ZN14DataStructures5QueueIPN6RakNet7RakPeer25RequestedConnectionStructEE4PushERKS4_PKcj
+#[doc(
+    alias = "DataStructures::Queue<RakNet::RakPeer::RequestedConnectionStruct *>::Push(RakNet::RakPeer::RequestedConnectionStruct * const&,char const*,unsigned int)"
+)]
+pub fn stub_a6be48() -> ! {
+    todo!("0xa6be48 DataStructures::Queue<RakNet::RakPeer::RequestedConnectionStruct *>::Push(RakNet::RakPeer::RequestedConnectionStruct * const&,char const*,unsigned int)")
+}
+
+// 0xa6bf1c — __ZN14DataStructures10MemoryPoolIN6RakNet17RemoteSystemIndexEE8AllocateEPKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Allocate(char const*,unsigned int)"
+)]
+pub fn stub_a6bf1c() -> ! {
+    todo!("0xa6bf1c DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Allocate(char const*,unsigned int)")
+}
+
+// 0xa6c048 — __ZN14DataStructures10MemoryPoolIN6RakNet17RemoteSystemIndexEE7ReleaseEPS2_PKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Release(RakNet::RemoteSystemIndex*,char const*,unsigned int)"
+)]
+pub fn stub_a6c048() -> ! {
+    todo!("0xa6c048 DataStructures::MemoryPool<RakNet::RemoteSystemIndex>::Release(RakNet::RemoteSystemIndex*,char const*,unsigned int)")
+}
+
+// 0xa6c11c — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEE5ClearEPKcj
+#[doc(
+    alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::Clear(char const*,unsigned int)"
+)]
+pub fn stub_a6c11c() -> ! {
+    todo!("0xa6c11c DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::Clear(char const*,unsigned int)")
+}
+
+// 0xa6c254 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEE5ClearEPKcj
+#[doc(
+    alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::Clear(char const*,unsigned int)"
+)]
+pub fn stub_a6c254() -> ! {
+    todo!("0xa6c254 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::Clear(char const*,unsigned int)")
+}
+
+// 0xa6c38c — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEE5ClearEPKcj
+#[doc(
+    alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::Clear(char const*,unsigned int)"
+)]
+pub fn stub_a6c38c() -> ! {
+    todo!("0xa6c38c DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::Clear(char const*,unsigned int)")
+}
+
+// 0xa6c4ec — __ZNK6RakNet7RakPeer8IsActiveEv
+#[doc(alias = "RakNet::RakPeer::IsActive(void)const")]
+pub fn stub_a6c4ec() -> ! {
+    todo!("0xa6c4ec RakNet::RakPeer::IsActive(void)const")
+}
+
+// 0xa6c4f8 — __ZN14DataStructures5QueueIPN6RakNet7RakPeer14RecvFromStructEE4PushERKS4_PKcj
+#[doc(
+    alias = "DataStructures::Queue<RakNet::RakPeer::RecvFromStruct *>::Push(RakNet::RakPeer::RecvFromStruct * const&,char const*,unsigned int)"
+)]
+pub fn stub_a6c4f8() -> ! {
+    todo!("0xa6c4f8 DataStructures::Queue<RakNet::RakPeer::RecvFromStruct *>::Push(RakNet::RakPeer::RecvFromStruct * const&,char const*,unsigned int)")
+}
+
+// 0xa6c5cc — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE8AllocateEPKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Allocate(char const*,unsigned int)"
+)]
+pub fn stub_a6c5cc() -> ! {
+    todo!("0xa6c5cc DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Allocate(char const*,unsigned int)")
+}
+
+// 0xa6c6fc — __ZN14DataStructures5QueueIPN6RakNet7RakPeer17SocketQueryOutputEE4PushERKS4_PKcj
+#[doc(
+    alias = "DataStructures::Queue<RakNet::RakPeer::SocketQueryOutput *>::Push(RakNet::RakPeer::SocketQueryOutput * const&,char const*,unsigned int)"
+)]
+pub fn stub_a6c6fc() -> ! {
+    todo!("0xa6c6fc DataStructures::Queue<RakNet::RakPeer::SocketQueryOutput *>::Push(RakNet::RakPeer::SocketQueryOutput * const&,char const*,unsigned int)")
+}
+
+// 0xa6c7d0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE8AllocateEPKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Allocate(char const*,unsigned int)"
+)]
+pub fn stub_a6c7d0() -> ! {
+    todo!("0xa6c7d0 DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Allocate(char const*,unsigned int)")
+}
+
+// 0xa6c8e4 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer17SocketQueryOutputEE7ReleaseEPS3_PKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Release(RakNet::RakPeer::SocketQueryOutput*,char const*,unsigned int)"
+)]
+pub fn stub_a6c8e4() -> ! {
+    todo!("0xa6c8e4 DataStructures::MemoryPool<RakNet::RakPeer::SocketQueryOutput>::Release(RakNet::RakPeer::SocketQueryOutput*,char const*,unsigned int)")
+}
+
+// 0xa6c9ac — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer14RecvFromStructEE7ReleaseEPS3_PKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Release(RakNet::RakPeer::RecvFromStruct*,char const*,unsigned int)"
+)]
+pub fn stub_a6c9ac() -> ! {
+    todo!("0xa6c9ac DataStructures::MemoryPool<RakNet::RakPeer::RecvFromStruct>::Release(RakNet::RakPeer::RecvFromStruct*,char const*,unsigned int)")
+}
+
+// 0xa6ca84 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE7ReleaseEPS3_PKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Release(RakNet::RakPeer::BufferedCommandStruct*,char const*,unsigned int)"
+)]
+pub fn stub_a6ca84() -> ! {
+    todo!("0xa6ca84 DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Release(RakNet::RakPeer::BufferedCommandStruct*,char const*,unsigned int)")
+}
+
+// 0xa6cb5c — __ZN6RakNet15OP_DELETE_ARRAYINS_14RakNetSmartPtrINS_12RakNetSocketEEEEEvPT_PKcj
+#[doc(
+    alias = "void RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> *,char const*,unsigned int)"
+)]
+pub fn stub_a6cb5c() -> ! {
+    todo!("0xa6cb5c void RakNet::OP_DELETE_ARRAY<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> *,char const*,unsigned int)")
+}
+
+// 0xa6ccdc — __ZN14DataStructures5QueueIPN6RakNet7RakPeer21BufferedCommandStructEE4PushERKS4_PKcj
+#[doc(
+    alias = "DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push(RakNet::RakPeer::BufferedCommandStruct * const&,char const*,unsigned int)"
+)]
+pub fn stub_a6ccdc() -> ! {
+    todo!("0xa6ccdc DataStructures::Queue<RakNet::RakPeer::BufferedCommandStruct *>::Push(RakNet::RakPeer::BufferedCommandStruct * const&,char const*,unsigned int)")
+}
+
+// 0xa6cdb0 — __ZN14DataStructures10MemoryPoolIN6RakNet7RakPeer21BufferedCommandStructEE8AllocateEPKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Allocate(char const*,unsigned int)"
+)]
+pub fn stub_a6cdb0() -> ! {
+    todo!("0xa6cdb0 DataStructures::MemoryPool<RakNet::RakPeer::BufferedCommandStruct>::Allocate(char const*,unsigned int)")
+}
+
+// 0xa6ced8 — __ZN14DataStructures4ListIN6RakNet10RakNetGUIDEE6InsertERKS2_PKcj
+#[doc(
+    alias = "DataStructures::List<RakNet::RakNetGUID>::Insert(RakNet::RakNetGUID const&,char const*,unsigned int)"
+)]
+pub fn stub_a6ced8() -> ! {
+    todo!("0xa6ced8 DataStructures::List<RakNet::RakNetGUID>::Insert(RakNet::RakNetGUID const&,char const*,unsigned int)")
+}
+
+// 0xa6d030 — __ZN14DataStructures4ListIN6RakNet13SystemAddressEE6InsertERKS2_PKcj
+#[doc(
+    alias = "DataStructures::List<RakNet::SystemAddress>::Insert(RakNet::SystemAddress const&,char const*,unsigned int)"
+)]
+pub fn stub_a6d030() -> ! {
+    todo!("0xa6d030 DataStructures::List<RakNet::SystemAddress>::Insert(RakNet::SystemAddress const&,char const*,unsigned int)")
+}
+
+// 0xa6d194 — __ZN6RakNet7RakPeer18RemoteSystemStructC2Ev
+#[doc(alias = "RakNet::RakPeer::RemoteSystemStruct::RemoteSystemStruct(void)")]
+pub fn stub_a6d194() -> ! {
+    todo!("0xa6d194 RakNet::RakPeer::RemoteSystemStruct::RemoteSystemStruct(void)")
+}
+
+// 0xa6d2bc — __ZN14DataStructures4ListIN6RakNet14RakNetSmartPtrINS1_12RakNetSocketEEEE6InsertERKS4_PKcj
+#[doc(
+    alias = "DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::Insert(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> const&,char const*,unsigned int)"
+)]
+pub fn stub_a6d2bc() -> ! {
+    todo!("0xa6d2bc DataStructures::List<RakNet::RakNetSmartPtr<RakNet::RakNetSocket>>::Insert(RakNet::RakNetSmartPtr<RakNet::RakNetSocket> const&,char const*,unsigned int)")
+}
+
+// 0xa6d4c0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer21BufferedCommandStructEED2Ev
+#[doc(
+    alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::~ThreadsafeAllocatingQueue()"
+)]
+pub fn stub_a6d4c0() -> ! {
+    todo!("0xa6d4c0 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::BufferedCommandStruct>::~ThreadsafeAllocatingQueue()")
+}
+
+// 0xa6d7a0 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer14RecvFromStructEED2Ev
+#[doc(
+    alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::~ThreadsafeAllocatingQueue()"
+)]
+pub fn stub_a6d7a0() -> ! {
+    todo!("0xa6d7a0 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::RecvFromStruct>::~ThreadsafeAllocatingQueue()")
+}
+
+// 0xa6da80 — __ZN14DataStructures25ThreadsafeAllocatingQueueIN6RakNet7RakPeer17SocketQueryOutputEED2Ev
+#[doc(
+    alias = "DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()"
+)]
+pub fn stub_a6da80() -> ! {
+    todo!("0xa6da80 DataStructures::ThreadsafeAllocatingQueue<RakNet::RakPeer::SocketQueryOutput>::~ThreadsafeAllocatingQueue()")
+}
+
+// 0xa6eaa4 — __ZN6RakNet9RakStringC1Ev
+#[doc(alias = "RakNet::RakString::RakString(void)")]
+pub fn stub_a6eaa4() -> ! {
+    todo!("0xa6eaa4 RakNet::RakString::RakString(void)")
+}
+
+// 0xa6eab4 — __ZN6RakNet9RakString6AssignEPKcPv
+#[doc(alias = "RakNet::RakString::Assign(char const*,void *)")]
+pub fn stub_a6eab4() -> ! {
+    todo!("0xa6eab4 RakNet::RakString::Assign(char const*,void *)")
+}
+
+// 0xa6ec58 — __ZN6RakNet9RakStringC1EPKcz
+#[doc(alias = "RakNet::RakString::RakString(char const*,...)")]
+pub fn stub_a6ec58() -> ! {
+    todo!("0xa6ec58 RakNet::RakString::RakString(char const*,...)")
+}
+
+// 0xa6ec7c — __ZN6RakNet9RakStringD1Ev
+#[doc(alias = "RakNet::RakString::~RakString()")]
+pub fn stub_a6ec7c() -> ! {
+    todo!("0xa6ec7c RakNet::RakString::~RakString()")
+}
+
+// 0xa6ec8c — __ZN6RakNet9RakString4FreeEv
+#[doc(alias = "RakNet::RakString::Free(void)")]
+pub fn stub_a6ec8c() -> ! {
+    todo!("0xa6ec8c RakNet::RakString::Free(void)")
+}
+
+// 0xa6eed4 — __ZN6RakNet9RakStringaSERKS0_
+#[doc(alias = "RakNet::RakString::operator=(RakNet::RakString const&)")]
+pub fn stub_a6eed4() -> ! {
+    todo!("0xa6eed4 RakNet::RakString::operator=(RakNet::RakString const&)")
+}
+
+// 0xa6ef14 — __ZN6RakNet9RakString8AllocateEm
+#[doc(alias = "RakNet::RakString::Allocate(unsigned long)")]
+pub fn stub_a6ef14() -> ! {
+    todo!("0xa6ef14 RakNet::RakString::Allocate(unsigned long)")
+}
+
+// 0xa6f1ac — __ZN6RakNet9RakString14IPAddressMatchEPKc
+#[doc(alias = "RakNet::RakString::IPAddressMatch(char const*)")]
+pub fn stub_a6f1ac() -> ! {
+    todo!("0xa6f1ac RakNet::RakString::IPAddressMatch(char const*)")
+}
+
+// 0xa6f210 — __ZN6RakNet9RakString17FreeMemoryNoMutexEv
+#[doc(alias = "RakNet::RakString::FreeMemoryNoMutex(void)")]
+pub fn stub_a6f210() -> ! {
+    todo!("0xa6f210 RakNet::RakString::FreeMemoryNoMutex(void)")
+}
+
+// 0xa6f328 — __ZNK6RakNet9RakString9SerializeEPNS_9BitStreamE
+#[doc(alias = "RakNet::RakString::Serialize(RakNet::BitStream *)const")]
+pub fn stub_a6f328() -> ! {
+    todo!("0xa6f328 RakNet::RakString::Serialize(RakNet::BitStream *)const")
+}
+
+// 0xa6f358 — __ZN6RakNet9RakString11DeserializeEPNS_9BitStreamE
+#[doc(alias = "RakNet::RakString::Deserialize(RakNet::BitStream *)")]
+pub fn stub_a6f358() -> ! {
+    todo!("0xa6f358 RakNet::RakString::Deserialize(RakNet::BitStream *)")
+}
+
+// 0xa6f3c0 — __ZN14DataStructures4ListIPN6RakNet9RakString12SharedStringEED1Ev
+#[doc(alias = "DataStructures::List<RakNet::RakString::SharedString *>::~List()")]
+pub fn stub_a6f3c0() -> ! {
+    todo!("0xa6f3c0 DataStructures::List<RakNet::RakString::SharedString *>::~List()")
+}
+
+// 0xa6fa3c — __ZN6RakNet9RakThread6CreateEPFPvS1_ES1_i
+#[doc(alias = "RakNet::RakThread::Create(void * (*)(void *),void *,int)")]
+pub fn stub_a6fa3c() -> ! {
+    todo!("0xa6fa3c RakNet::RakThread::Create(void * (*)(void *),void *,int)")
+}
+
+// 0xa70260 — __ZN6RakNet12RakNetRandomC1Ev
+#[doc(alias = "RakNet::RakNetRandom::RakNetRandom(void)")]
+pub fn stub_a70260() -> ! {
+    todo!("0xa70260 RakNet::RakNetRandom::RakNetRandom(void)")
+}
+
+// 0xa70270 — __ZN6RakNet12RakNetRandomD1Ev
+#[doc(alias = "RakNet::RakNetRandom::~RakNetRandom()")]
+pub fn stub_a70270() -> ! {
+    todo!("0xa70270 RakNet::RakNetRandom::~RakNetRandom()")
+}
+
+// 0xa70278 — __ZN6RakNet12RakNetRandom6SeedMTEj
+#[doc(alias = "RakNet::RakNetRandom::SeedMT(unsigned int)")]
+pub fn stub_a70278() -> ! {
+    todo!("0xa70278 RakNet::RakNetRandom::SeedMT(unsigned int)")
+}
+
+// 0xa702a4 — __ZN6RakNet12RakNetRandom8RandomMTEv
+#[doc(alias = "RakNet::RakNetRandom::RandomMT(void)")]
+pub fn stub_a702a4() -> ! {
+    todo!("0xa702a4 RakNet::RakNetRandom::RandomMT(void)")
+}
+
+// 0xa7090c — __ZN6RakNet22SplitPacketChannelCompERKtRKPNS_18SplitPacketChannelE
+#[doc(
+    alias = "RakNet::SplitPacketChannelComp(unsigned short const&,RakNet::SplitPacketChannel * const&)"
+)]
+pub fn stub_a7090c() -> ! {
+    todo!("0xa7090c RakNet::SplitPacketChannelComp(unsigned short const&,RakNet::SplitPacketChannel * const&)")
+}
+
+// 0xa7092c — __ZN6RakNet16ReliabilityLayerC1Ev
+#[doc(alias = "RakNet::ReliabilityLayer::ReliabilityLayer(void)")]
+pub fn stub_a7092c() -> ! {
+    todo!("0xa7092c RakNet::ReliabilityLayer::ReliabilityLayer(void)")
+}
+
+// 0xa70938 — __ZN6RakNet16ReliabilityLayerC2Ev
+#[doc(alias = "RakNet::ReliabilityLayer::ReliabilityLayer(void)")]
+pub fn stub_a70938() -> ! {
+    todo!("0xa70938 RakNet::ReliabilityLayer::ReliabilityLayer(void)")
+}
+
+// 0xa7142c — __ZN6RakNet16ReliabilityLayer19InitializeVariablesEv
+#[doc(alias = "RakNet::ReliabilityLayer::InitializeVariables(void)")]
+pub fn stub_a7142c() -> ! {
+    todo!("0xa7142c RakNet::ReliabilityLayer::InitializeVariables(void)")
+}
+
+// 0xa715f8 — __ZN6RakNet16ReliabilityLayerD1Ev
+#[doc(alias = "RakNet::ReliabilityLayer::~ReliabilityLayer()")]
+pub fn stub_a715f8() -> ! {
+    todo!("0xa715f8 RakNet::ReliabilityLayer::~ReliabilityLayer()")
+}
+
+// 0xa71604 — __ZN6RakNet16ReliabilityLayerD2Ev
+#[doc(alias = "RakNet::ReliabilityLayer::~ReliabilityLayer()")]
+pub fn stub_a71604() -> ! {
+    todo!("0xa71604 RakNet::ReliabilityLayer::~ReliabilityLayer()")
+}
+
+// 0xa723c0 — __ZN6RakNet16ReliabilityLayer5ResetEbib
+#[doc(alias = "RakNet::ReliabilityLayer::Reset(bool,int,bool)")]
+pub fn stub_a723c0() -> ! {
+    todo!("0xa723c0 RakNet::ReliabilityLayer::Reset(bool,int,bool)")
+}
+
+// 0xa723f8 — __ZN6RakNet16ReliabilityLayer14SetTimeoutTimeEj
+#[doc(alias = "RakNet::ReliabilityLayer::SetTimeoutTime(unsigned int)")]
+pub fn stub_a723f8() -> ! {
+    todo!("0xa723f8 RakNet::ReliabilityLayer::SetTimeoutTime(unsigned int)")
+}
+
+// 0xa72400 — __ZN6RakNet16ReliabilityLayer14GetTimeoutTimeEv
+#[doc(alias = "RakNet::ReliabilityLayer::GetTimeoutTime(void)")]
+pub fn stub_a72400() -> ! {
+    todo!("0xa72400 RakNet::ReliabilityLayer::GetTimeoutTime(void)")
+}
+
+// 0xa72408 — __ZN6RakNet16ReliabilityLayer20FreeThreadSafeMemoryEv
+#[doc(alias = "RakNet::ReliabilityLayer::FreeThreadSafeMemory(void)")]
+pub fn stub_a72408() -> ! {
+    todo!("0xa72408 RakNet::ReliabilityLayer::FreeThreadSafeMemory(void)")
+}
+
+// 0xa72d5c — __ZN6RakNet16ReliabilityLayer24ClearPacketsAndDatagramsEv
+#[doc(alias = "RakNet::ReliabilityLayer::ClearPacketsAndDatagrams(void)")]
+pub fn stub_a72d5c() -> ! {
+    todo!("0xa72d5c RakNet::ReliabilityLayer::ClearPacketsAndDatagrams(void)")
+}
+
+// 0xa72e94 — __ZN6RakNet16ReliabilityLayer38HandleSocketReceiveFromConnectedPlayerEPKcjRNS_13SystemAddressERN14DataStructures4ListIPNS_16PluginInterface2EEEiiPNS_12RakNetRandomEtjyRNS_9BitStreamE
+#[doc(
+    alias = "RakNet::ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer(char const*,unsigned int,RakNet::SystemAddress &,DataStructures::List<RakNet::PluginInterface2 *> &,int,int,RakNet::RakNetRandom *,unsigned short,unsigned int,unsigned long long,RakNet::BitStream &)"
+)]
+pub fn stub_a72e94() -> ! {
+    todo!("0xa72e94 RakNet::ReliabilityLayer::HandleSocketReceiveFromConnectedPlayer(char const*,unsigned int,RakNet::SystemAddress &,DataStructures::List<RakNet::PluginInterface2 *> &,int,int,RakNet::RakNetRandom *,unsigned short,unsigned int,unsigned long long,RakNet::BitStream &)")
+}
+
+// 0xa74514 — __ZN6RakNet16ReliabilityLayer57RemovePacketFromResendListAndDeleteOlderReliableSequencedENS_8uint24_tEyRN14DataStructures4ListIPNS_16PluginInterface2EEERKNS_13SystemAddressE
+#[doc(
+    alias = "RakNet::ReliabilityLayer::RemovePacketFromResendListAndDeleteOlderReliableSequenced(RakNet::uint24_t,unsigned long long,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::SystemAddress const&)"
+)]
+pub fn stub_a74514() -> ! {
+    todo!("0xa74514 RakNet::ReliabilityLayer::RemovePacketFromResendListAndDeleteOlderReliableSequenced(RakNet::uint24_t,unsigned long long,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::SystemAddress const&)")
+}
+
+// 0xa74750 — __ZN6RakNet16ReliabilityLayer33CreateInternalPacketFromBitStreamEPNS_9BitStreamEy
+#[doc(
+    alias = "RakNet::ReliabilityLayer::CreateInternalPacketFromBitStream(RakNet::BitStream *,unsigned long long)"
+)]
+pub fn stub_a74750() -> ! {
+    todo!("0xa74750 RakNet::ReliabilityLayer::CreateInternalPacketFromBitStream(RakNet::BitStream *,unsigned long long)")
+}
+
+// 0xa749fc — __ZN6RakNet16ReliabilityLayer25InsertIntoSplitPacketListEPNS_14InternalPacketEy
+#[doc(
+    alias = "RakNet::ReliabilityLayer::InsertIntoSplitPacketList(RakNet::InternalPacket *,unsigned long long)"
+)]
+pub fn stub_a749fc() -> ! {
+    todo!("0xa749fc RakNet::ReliabilityLayer::InsertIntoSplitPacketList(RakNet::InternalPacket *,unsigned long long)")
+}
+
+// 0xa74c88 — __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEtyiRNS_13SystemAddressEPNS_12RakNetRandomEtjRNS_9BitStreamE
+#[doc(
+    alias = "RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(unsigned short,unsigned long long,int,RakNet::SystemAddress &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)"
+)]
+pub fn stub_a74c88() -> ! {
+    todo!("0xa74c88 RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(unsigned short,unsigned long long,int,RakNet::SystemAddress &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")
+}
+
+// 0xa74d64 — __ZN6RakNet16ReliabilityLayer7ReceiveEPPh
+#[doc(alias = "RakNet::ReliabilityLayer::Receive(unsigned char **)")]
+pub fn stub_a74d64() -> ! {
+    todo!("0xa74d64 RakNet::ReliabilityLayer::Receive(unsigned char **)")
+}
+
+// 0xa74dc0 — __ZN6RakNet16ReliabilityLayer4SendEPcj14PacketPriority17PacketReliabilityhbiyj
+#[doc(
+    alias = "RakNet::ReliabilityLayer::Send(char *,unsigned int,PacketPriority,PacketReliability,unsigned char,bool,int,unsigned long long,unsigned int)"
+)]
+pub fn stub_a74dc0() -> ! {
+    todo!("0xa74dc0 RakNet::ReliabilityLayer::Send(char *,unsigned int,PacketPriority,PacketReliability,unsigned char,bool,int,unsigned long long,unsigned int)")
+}
+
+// 0xa75100 — __ZN6RakNet16ReliabilityLayer11SplitPacketEPNS_14InternalPacketE
+#[doc(alias = "RakNet::ReliabilityLayer::SplitPacket(RakNet::InternalPacket *)")]
+pub fn stub_a75100() -> ! {
+    todo!("0xa75100 RakNet::ReliabilityLayer::SplitPacket(RakNet::InternalPacket *)")
+}
+
+// 0xa75548 — __ZN6RakNet16ReliabilityLayer6UpdateEiRNS_13SystemAddressEiyjRN14DataStructures4ListIPNS_16PluginInterface2EEEPNS_12RakNetRandomEtjRNS_9BitStreamE
+#[doc(
+    alias = "RakNet::ReliabilityLayer::Update(int,RakNet::SystemAddress &,int,unsigned long long,unsigned int,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)"
+)]
+pub fn stub_a75548() -> ! {
+    todo!("0xa75548 RakNet::ReliabilityLayer::Update(int,RakNet::SystemAddress &,int,unsigned long long,unsigned int,DataStructures::List<RakNet::PluginInterface2 *> &,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")
+}
+
+// 0xa7641c — __ZN6RakNet16ReliabilityLayer10AckTimeoutEy
+#[doc(alias = "RakNet::ReliabilityLayer::AckTimeout(unsigned long long)")]
+pub fn stub_a7641c() -> ! {
+    todo!("0xa7641c RakNet::ReliabilityLayer::AckTimeout(unsigned long long)")
+}
+
+// 0xa76468 — __ZN6RakNet16ReliabilityLayer8SendACKsEiRNS_13SystemAddressEyPNS_12RakNetRandomEtjRNS_9BitStreamE
+#[doc(
+    alias = "RakNet::ReliabilityLayer::SendACKs(int,RakNet::SystemAddress &,unsigned long long,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)"
+)]
+pub fn stub_a76468() -> ! {
+    todo!("0xa76468 RakNet::ReliabilityLayer::SendACKs(int,RakNet::SystemAddress &,unsigned long long,RakNet::RakNetRandom *,unsigned short,unsigned int,RakNet::BitStream &)")
+}
+
+// 0xa765e0 — __ZN6RakNet16ReliabilityLayer24ResetPacketsAndDatagramsEv
+#[doc(alias = "RakNet::ReliabilityLayer::ResetPacketsAndDatagrams(void)")]
+pub fn stub_a765e0() -> ! {
+    todo!("0xa765e0 RakNet::ReliabilityLayer::ResetPacketsAndDatagrams(void)")
+}
+
+// 0xa766b8 — __ZN6RakNet16ReliabilityLayer12PushDatagramEv
+#[doc(alias = "RakNet::ReliabilityLayer::PushDatagram(void)")]
+pub fn stub_a766b8() -> ! {
+    todo!("0xa766b8 RakNet::ReliabilityLayer::PushDatagram(void)")
+}
+
+// 0xa76828 — __ZN6RakNet16ReliabilityLayer10PushPacketEyPNS_14InternalPacketEb
+#[doc(
+    alias = "RakNet::ReliabilityLayer::PushPacket(unsigned long long,RakNet::InternalPacket *,bool)"
+)]
+pub fn stub_a76828() -> ! {
+    todo!("0xa76828 RakNet::ReliabilityLayer::PushPacket(unsigned long long,RakNet::InternalPacket *,bool)")
+}
+
+// 0xa7696c — __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tES1_y
+#[doc(
+    alias = "RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,RakNet::uint24_t,unsigned long long)"
+)]
+pub fn stub_a7696c() -> ! {
+    todo!("0xa7696c RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,RakNet::uint24_t,unsigned long long)")
+}
+
+// 0xa76a68 — __ZN6RakNet16ReliabilityLayer34WriteToBitStreamFromInternalPacketEPNS_9BitStreamEPKNS_14InternalPacketEy
+#[doc(
+    alias = "RakNet::ReliabilityLayer::WriteToBitStreamFromInternalPacket(RakNet::BitStream *,RakNet::InternalPacket const*,unsigned long long)"
+)]
+pub fn stub_a76a68() -> ! {
+    todo!("0xa76a68 RakNet::ReliabilityLayer::WriteToBitStreamFromInternalPacket(RakNet::BitStream *,RakNet::InternalPacket const*,unsigned long long)")
+}
+
+// 0xa76b88 — __ZN6RakNet16ReliabilityLayer25AddFirstToDatagramHistoryENS_8uint24_tEy
+#[doc(
+    alias = "RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,unsigned long long)"
+)]
+pub fn stub_a76b88() -> ! {
+    todo!("0xa76b88 RakNet::ReliabilityLayer::AddFirstToDatagramHistory(RakNet::uint24_t,unsigned long long)")
+}
+
+// 0xa76c68 — __ZN6RakNet16ReliabilityLayer21IsOutgoingDataWaitingEv
+#[doc(alias = "RakNet::ReliabilityLayer::IsOutgoingDataWaiting(void)")]
+pub fn stub_a76c68() -> ! {
+    todo!("0xa76c68 RakNet::ReliabilityLayer::IsOutgoingDataWaiting(void)")
+}
+
+// 0xa76c84 — __ZN6RakNet16ReliabilityLayer14AreAcksWaitingEv
+#[doc(alias = "RakNet::ReliabilityLayer::AreAcksWaiting(void)")]
+pub fn stub_a76c84() -> ! {
+    todo!("0xa76c84 RakNet::ReliabilityLayer::AreAcksWaiting(void)")
+}
+
+// 0xa76c90 — __ZN6RakNet16ReliabilityLayer31SetSplitMessageProgressIntervalEi
+#[doc(alias = "RakNet::ReliabilityLayer::SetSplitMessageProgressInterval(int)")]
+pub fn stub_a76c90() -> ! {
+    todo!("0xa76c90 RakNet::ReliabilityLayer::SetSplitMessageProgressInterval(int)")
+}
+
+// 0xa76c94 — __ZN6RakNet16ReliabilityLayer20SetUnreliableTimeoutEj
+#[doc(alias = "RakNet::ReliabilityLayer::SetUnreliableTimeout(unsigned int)")]
+pub fn stub_a76c94() -> ! {
+    todo!("0xa76c94 RakNet::ReliabilityLayer::SetUnreliableTimeout(unsigned int)")
+}
+
+// 0xa76ca4 — __ZN6RakNet16ReliabilityLayer30BuildPacketFromSplitPacketListEPNS_18SplitPacketChannelEy
+#[doc(
+    alias = "RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(RakNet::SplitPacketChannel *,unsigned long long)"
+)]
+pub fn stub_a76ca4() -> ! {
+    todo!("0xa76ca4 RakNet::ReliabilityLayer::BuildPacketFromSplitPacketList(RakNet::SplitPacketChannel *,unsigned long long)")
+}
+
+// 0xa76e6c — __ZNK6RakNet16ReliabilityLayer16IsDeadConnectionEv
+#[doc(alias = "RakNet::ReliabilityLayer::IsDeadConnection(void)const")]
+pub fn stub_a76e6c() -> ! {
+    todo!("0xa76e6c RakNet::ReliabilityLayer::IsDeadConnection(void)const")
+}
+
+// 0xa76e74 — __ZN6RakNet16ReliabilityLayer13GetStatisticsEPNS_16RakNetStatisticsE
+#[doc(alias = "RakNet::ReliabilityLayer::GetStatistics(RakNet::RakNetStatistics *)")]
+pub fn stub_a76e74() -> ! {
+    todo!("0xa76e74 RakNet::ReliabilityLayer::GetStatistics(RakNet::RakNetStatistics *)")
+}
+
+// 0xa77058 — __ZN20DatagramHeaderFormat11DeserializeEPN6RakNet9BitStreamE
+#[doc(alias = "DatagramHeaderFormat::Deserialize(RakNet::BitStream *)")]
+pub fn stub_a77058() -> ! {
+    todo!("0xa77058 DatagramHeaderFormat::Deserialize(RakNet::BitStream *)")
+}
+
+// 0xa771e8 — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE11DeserializeEPNS1_9BitStreamE
+#[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Deserialize(RakNet::BitStream *)")]
+pub fn stub_a771e8() -> ! {
+    todo!("0xa771e8 DataStructures::RangeList<RakNet::uint24_t>::Deserialize(RakNet::BitStream *)")
+}
+
+// 0xa772b8 — __ZN14DataStructures5QueueIPN6RakNet14InternalPacketEE4PushERKS3_PKcj
+#[doc(
+    alias = "DataStructures::Queue<RakNet::InternalPacket *>::Push(RakNet::InternalPacket * const&,char const*,unsigned int)"
+)]
+pub fn stub_a772b8() -> ! {
+    todo!("0xa772b8 DataStructures::Queue<RakNet::InternalPacket *>::Push(RakNet::InternalPacket * const&,char const*,unsigned int)")
+}
+
+// 0xa7738c — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE6InsertES2_
+#[doc(alias = "DataStructures::RangeList<RakNet::uint24_t>::Insert(RakNet::uint24_t)")]
+pub fn stub_a7738c() -> ! {
+    todo!("0xa7738c DataStructures::RangeList<RakNet::uint24_t>::Insert(RakNet::uint24_t)")
+}
+
+// 0xa77784 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE3PopEj
+#[doc(
+    alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Pop(unsigned int)"
+)]
+pub fn stub_a77784() -> ! {
+    todo!("0xa77784 DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Pop(unsigned int)")
+}
+
+// 0xa77950 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE4PushERKyRKS3_PKcj
+#[doc(
+    alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Push(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)"
+)]
+pub fn stub_a77950() -> ! {
+    todo!("0xa77950 DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::Push(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")
+}
+
+// 0xa77a84 — __ZN20DatagramHeaderFormat9SerializeEPN6RakNet9BitStreamE
+#[doc(alias = "DatagramHeaderFormat::Serialize(RakNet::BitStream *)")]
+pub fn stub_a77a84() -> ! {
+    todo!("0xa77a84 DatagramHeaderFormat::Serialize(RakNet::BitStream *)")
+}
+
+// 0xa77b3c — __ZN14DataStructures9RangeListIN6RakNet8uint24_tEE9SerializeEPNS1_9BitStreamEjb
+#[doc(
+    alias = "DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)"
+)]
+pub fn stub_a77b3c() -> ! {
+    todo!("0xa77b3c DataStructures::RangeList<RakNet::uint24_t>::Serialize(RakNet::BitStream *,unsigned int,bool)")
+}
+
+// 0xa77d60 — __ZN6RakNet9BitStream5WriteINS_8uint24_tEEEvRKT_
+#[doc(alias = "void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)")]
+pub fn stub_a77d60() -> ! {
+    todo!("0xa77d60 void RakNet::BitStream::Write<RakNet::uint24_t>(RakNet::uint24_t const&)")
+}
+
+// 0xa77ea4 — __ZN6RakNet9BitStream4ReadINS_8uint24_tEEEbRT_
+#[doc(alias = "bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)")]
+pub fn stub_a77ea4() -> ! {
+    todo!("0xa77ea4 bool RakNet::BitStream::Read<RakNet::uint24_t>(RakNet::uint24_t &)")
+}
+
+// 0xa77ff4 — __ZN14DataStructures4HeapIyPN6RakNet14InternalPacketELb0EE10PushSeriesERKyRKS3_PKcj
+#[doc(
+    alias = "DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::PushSeries(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)"
+)]
+pub fn stub_a77ff4() -> ! {
+    todo!("0xa77ff4 DataStructures::Heap<unsigned long long,RakNet::InternalPacket *,false>::PushSeries(unsigned long long const&,RakNet::InternalPacket * const&,char const*,unsigned int)")
+}
+
+// 0xa781a4 — __ZN14DataStructures11OrderedListItPN6RakNet18SplitPacketChannelEXadL_ZNS1_22SplitPacketChannelCompERKtRKS3_EEE6InsertES5_S7_bPKcjPFiS5_S7_E
+#[doc(
+    alias = "DataStructures::OrderedList<unsigned short,RakNet::SplitPacketChannel *,&RakNet::SplitPacketChannelComp>::Insert(unsigned short const&,RakNet::SplitPacketChannel * const&,bool,char const*,unsigned int,int (*)(unsigned short const&,RakNet::SplitPacketChannel * const&))"
+)]
+pub fn stub_a781a4() -> ! {
+    todo!("0xa781a4 DataStructures::OrderedList<unsigned short,RakNet::SplitPacketChannel *,&RakNet::SplitPacketChannelComp>::Insert(unsigned short const&,RakNet::SplitPacketChannel * const&,bool,char const*,unsigned int,int (*)(unsigned short const&,RakNet::SplitPacketChannel * const&))")
+}
+
+// 0xa7828c — __ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE8AllocateEPKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::InternalPacket>::Allocate(char const*,unsigned int)"
+)]
+pub fn stub_a7828c() -> ! {
+    todo!("0xa7828c DataStructures::MemoryPool<RakNet::InternalPacket>::Allocate(char const*,unsigned int)")
+}
+
+// 0xa783b4 — __ZN14DataStructures10MemoryPoolIN6RakNet14InternalPacketEE7ReleaseEPS2_PKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::InternalPacket>::Release(RakNet::InternalPacket*,char const*,unsigned int)"
+)]
+pub fn stub_a783b4() -> ! {
+    todo!("0xa783b4 DataStructures::MemoryPool<RakNet::InternalPacket>::Release(RakNet::InternalPacket*,char const*,unsigned int)")
+}
+
+// 0xa7848c — __ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE7ReleaseEPS3_PKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Release(RakNet::ReliabilityLayer::MessageNumberNode*,char const*,unsigned int)"
+)]
+pub fn stub_a7848c() -> ! {
+    todo!("0xa7848c DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Release(RakNet::ReliabilityLayer::MessageNumberNode*,char const*,unsigned int)")
+}
+
+// 0xa78560 — __ZN14DataStructures5QueueIN6RakNet16ReliabilityLayer19DatagramHistoryNodeEE4PushERKS3_PKcj
+#[doc(
+    alias = "DataStructures::Queue<RakNet::ReliabilityLayer::DatagramHistoryNode>::Push(RakNet::ReliabilityLayer::DatagramHistoryNode const&,char const*,unsigned int)"
+)]
+pub fn stub_a78560() -> ! {
+    todo!("0xa78560 DataStructures::Queue<RakNet::ReliabilityLayer::DatagramHistoryNode>::Push(RakNet::ReliabilityLayer::DatagramHistoryNode const&,char const*,unsigned int)")
+}
+
+// 0xa78670 — __ZN14DataStructures10MemoryPoolIN6RakNet16ReliabilityLayer17MessageNumberNodeEE8AllocateEPKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Allocate(char const*,unsigned int)"
+)]
+pub fn stub_a78670() -> ! {
+    todo!("0xa78670 DataStructures::MemoryPool<RakNet::ReliabilityLayer::MessageNumberNode>::Allocate(char const*,unsigned int)")
+}
+
+// 0xa7879c — __ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE8AllocateEPKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Allocate(char const*,unsigned int)"
+)]
+pub fn stub_a7879c() -> ! {
+    todo!("0xa7879c DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Allocate(char const*,unsigned int)")
+}
+
+// 0xa788c8 — __ZN14DataStructures10MemoryPoolIN6RakNet28InternalPacketRefCountedDataEE7ReleaseEPS2_PKcj
+#[doc(
+    alias = "DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Release(RakNet::InternalPacketRefCountedData*,char const*,unsigned int)"
+)]
+pub fn stub_a788c8() -> ! {
+    todo!("0xa788c8 DataStructures::MemoryPool<RakNet::InternalPacketRefCountedData>::Release(RakNet::InternalPacketRefCountedData*,char const*,unsigned int)")
+}
+
+// 0xa7899c — __ZN14DataStructures4ListIPN6RakNet18SplitPacketChannelEE6InsertERKS3_jPKcj
+#[doc(
+    alias = "DataStructures::List<RakNet::SplitPacketChannel *>::Insert(RakNet::SplitPacketChannel * const&,unsigned int,char const*,unsigned int)"
+)]
+pub fn stub_a7899c() -> ! {
+    todo!("0xa7899c DataStructures::List<RakNet::SplitPacketChannel *>::Insert(RakNet::SplitPacketChannel * const&,unsigned int,char const*,unsigned int)")
+}
+
+// 0xa78a2c — __ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_jPKcj
+#[doc(
+    alias = "DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,unsigned int,char const*,unsigned int)"
+)]
+pub fn stub_a78a2c() -> ! {
+    todo!("0xa78a2c DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,unsigned int,char const*,unsigned int)")
+}
+
+// 0xa78b08 — __ZN14DataStructures4ListINS_9RangeNodeIN6RakNet8uint24_tEEEE6InsertERKS4_PKcj
+#[doc(
+    alias = "DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,char const*,unsigned int)"
+)]
+pub fn stub_a78b08() -> ! {
+    todo!("0xa78b08 DataStructures::List<DataStructures::RangeNode<RakNet::uint24_t>>::Insert(DataStructures::RangeNode<RakNet::uint24_t> const&,char const*,unsigned int)")
 }
