@@ -3216,3 +3216,603 @@ pub fn stub_0x25ee54() -> ! {
 pub fn stub_0x25ee58() -> ! {
     todo!("0x25ee58 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")
 }
+
+// 0x25ee80 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
+pub fn stub_0x25ee80() -> ! {
+    todo!("0x25ee80 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")
+}
+
+// 0x25eebc — __ZN3RBX10Reflection14PropDescriptorINS_5LightEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::PropDescriptor<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>(char const*,char const*,bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x25eebc() -> ! {
+    todo!("0x25eebc RBX::Reflection::PropDescriptor<RBX::Light,bool>::PropDescriptor<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>(char const*,char const*,bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x25efd0 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEbED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor()")]
+pub fn stub_0x25efd0() -> ! {
+    todo!("0x25efd0 RBX::Reflection::PropDescriptor<RBX::Light,bool>::~PropDescriptor()")
+}
+
+// 0x25effc — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isReadOnly(void)const")]
+pub fn stub_0x25effc() -> ! {
+    todo!("0x25effc RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isReadOnly(void)const")
+}
+
+// 0x25f000 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isWriteOnly(void)const")]
+pub fn stub_0x25f000() -> ! {
+    todo!("0x25f000 RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::isWriteOnly(void)const")
+}
+
+// 0x25f004 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25f004() -> ! {
+    todo!("0x25f004 RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x25f028 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
+pub fn stub_0x25f028() -> ! {
+    todo!("0x25f028 RBX::Reflection::PropDescriptor<RBX::Light,bool>::GetSetImpl<bool (RBX::Light::*)(void)const,void (RBX::Light::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+}
+
+// 0x25f54c — __ZN3RBX10Reflection15EventDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDescriptor::EventDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x25f54c() -> ! {
+    todo!("0x25f54c RBX::Reflection::EventDescriptor::EventDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x25f66c — __ZN3RBX10Reflection17RemoteEventCommon10Attributes10deprecatedENS1_13FunctionalityEPKNS0_16MemberDescriptorE
+#[doc(alias = "RBX::Reflection::RemoteEventCommon::Attributes::deprecated(RBX::Reflection::RemoteEventCommon::Functionality,RBX::Reflection::MemberDescriptor const*)")]
+pub fn stub_0x25f66c() -> ! {
+    todo!("0x25f66c RBX::Reflection::RemoteEventCommon::Attributes::deprecated(RBX::Reflection::RemoteEventCommon::Functionality,RBX::Reflection::MemberDescriptor const*)")
+}
+
+// 0x25f678 — __ZN3RBX10Reflection11EventSource18processRemoteEventERKNS0_15EventDescriptorERKSt6vectorINS0_7VariantESaIS6_EERKNS_13SystemAddressE
+#[doc(alias = "RBX::Reflection::EventSource::processRemoteEvent(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const&)")]
+pub fn stub_0x25f678() -> ! {
+    todo!("0x25f678 RBX::Reflection::EventSource::processRemoteEvent(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const&)")
+}
+
+// 0x25f688 — __ZN3RBX10Reflection11EventSource20raiseEventInvocationERKNS0_15EventDescriptorERKSt6vectorINS0_7VariantESaIS6_EEPKNS_13SystemAddressE
+#[doc(alias = "RBX::Reflection::EventSource::raiseEventInvocation(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const*)")]
+pub fn stub_0x25f688() -> ! {
+    todo!("0x25f688 RBX::Reflection::EventSource::raiseEventInvocation(RBX::Reflection::EventDescriptor const&,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&,RBX::SystemAddress const*)")
+}
+
+// 0x25f690 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE7declareEPS2_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::declare(RBX::Reflection::EventDescriptor*)")]
+pub fn stub_0x25f690() -> ! {
+    todo!("0x25f690 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::declare(RBX::Reflection::EventDescriptor*)")
+}
+
+// 0x25f810 — __ZN3RBX10Reflection15EventDescriptorD1Ev
+#[doc(alias = "RBX::Reflection::EventDescriptor::~EventDescriptor()")]
+pub fn stub_0x25f810() -> ! {
+    todo!("0x25f810 RBX::Reflection::EventDescriptor::~EventDescriptor()")
+}
+
+// 0x25f838 — __ZNK3RBX10Reflection15EventDescriptor12isScriptableEv
+#[doc(alias = "RBX::Reflection::EventDescriptor::isScriptable(void)const")]
+pub fn stub_0x25f838() -> ! {
+    todo!("0x25f838 RBX::Reflection::EventDescriptor::isScriptable(void)const")
+}
+
+// 0x25f840 — __ZNK3RBX10Reflection15EventDescriptor9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaIS5_EE
+#[doc(alias = "RBX::Reflection::EventDescriptor::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_0x25f840() -> ! {
+    todo!("0x25f840 RBX::Reflection::EventDescriptor::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x25f898 — __ZNSt6vectorIPN3RBX10Reflection15EventDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+#[doc(alias = "std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor **,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,RBX::Reflection::EventDescriptor * const&)")]
+pub fn stub_0x25f898() -> ! {
+    todo!("0x25f898 std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::EventDescriptor **,std::vector<RBX::Reflection::EventDescriptor *,std::allocator<RBX::Reflection::EventDescriptor *>>>,RBX::Reflection::EventDescriptor * const&)")
+}
+
+// 0x25f8d0 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10declareSubEPS2_S4_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::declareSub(RBX::Reflection::EventDescriptor*,RBX::Reflection::EventDescriptor*)")]
+pub fn stub_0x25f8d0() -> ! {
+    todo!("0x25f8d0 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::declareSub(RBX::Reflection::EventDescriptor*,RBX::Reflection::EventDescriptor*)")
+}
+
+// 0x25fa50 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10staticDataEv
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::staticData(void)")]
+pub fn stub_0x25fa50() -> ! {
+    todo!("0x25fa50 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::staticData(void)")
+}
+
+// 0x25fab8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE10CollectionD1Ev
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::Collection::~Collection()")]
+pub fn stub_0x25fab8() -> ! {
+    todo!("0x25fab8 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::Collection::~Collection()")
+}
+
+// 0x25fad0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::EventDescriptor *>>,char const*,RBX::Reflection::EventDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
+pub fn stub_0x25fad0() -> ! {
+    todo!("0x25fad0 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::EventDescriptor *>>,char const*,RBX::Reflection::EventDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")
+}
+
+// 0x260110 — __ZNSt10_List_baseIN3RBX10Reflection19SignatureDescriptor4ItemESaIS3_EE8_M_clearEv
+#[doc(alias = "std::_List_base<RBX::Reflection::SignatureDescriptor::Item,std::allocator<RBX::Reflection::SignatureDescriptor::Item>>::_M_clear(void)")]
+pub fn stub_0x260110() -> ! {
+    todo!("0x260110 std::_List_base<RBX::Reflection::SignatureDescriptor::Item,std::allocator<RBX::Reflection::SignatureDescriptor::Item>>::_M_clear(void)")
+}
+
+// 0x260140 — __ZN3RBX10Reflection16MemberDescriptorD1Ev
+#[doc(alias = "RBX::Reflection::MemberDescriptor::~MemberDescriptor()")]
+pub fn stub_0x260140() -> ! {
+    todo!("0x260140 RBX::Reflection::MemberDescriptor::~MemberDescriptor()")
+}
+
+// 0x260274 — __ZN3RBX10Reflection18FunctionDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::FunctionDescriptor::FunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x260274() -> ! {
+    todo!("0x260274 RBX::Reflection::FunctionDescriptor::FunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x260394 — __ZN3RBX10Reflection23YieldFunctionDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::YieldFunctionDescriptor::YieldFunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x260394() -> ! {
+    todo!("0x260394 RBX::Reflection::YieldFunctionDescriptor::YieldFunctionDescriptor(RBX::Reflection::ClassDescriptor &,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x2604b8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEE7declareEPS2_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>::declare(RBX::Reflection::FunctionDescriptor*)")]
+pub fn stub_0x2604b8() -> ! {
+    todo!("0x2604b8 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>::declare(RBX::Reflection::FunctionDescriptor*)")
+}
+
+// 0x260638 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE7declareEPS2_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declare(RBX::Reflection::YieldFunctionDescriptor*)")]
+pub fn stub_0x260638() -> ! {
+    todo!("0x260638 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declare(RBX::Reflection::YieldFunctionDescriptor*)")
+}
+
+// 0x2607b8 — __ZN3RBX10Reflection18FunctionDescriptorD1Ev
+#[doc(alias = "RBX::Reflection::FunctionDescriptor::~FunctionDescriptor()")]
+pub fn stub_0x2607b8() -> ! {
+    todo!("0x2607b8 RBX::Reflection::FunctionDescriptor::~FunctionDescriptor()")
+}
+
+// 0x2607e0 — __ZN3RBX10Reflection23YieldFunctionDescriptorD1Ev
+#[doc(alias = "RBX::Reflection::YieldFunctionDescriptor::~YieldFunctionDescriptor()")]
+pub fn stub_0x2607e0() -> ! {
+    todo!("0x2607e0 RBX::Reflection::YieldFunctionDescriptor::~YieldFunctionDescriptor()")
+}
+
+// 0x260808 — __ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+#[doc(alias = "std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")]
+pub fn stub_0x260808() -> ! {
+    todo!("0x260808 std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")
+}
+
+// 0x260840 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10declareSubEPS2_S4_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declareSub(RBX::Reflection::YieldFunctionDescriptor*,RBX::Reflection::YieldFunctionDescriptor*)")]
+pub fn stub_0x260840() -> ! {
+    todo!("0x260840 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declareSub(RBX::Reflection::YieldFunctionDescriptor*,RBX::Reflection::YieldFunctionDescriptor*)")
+}
+
+// 0x2609c0 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::staticData(void)")]
+pub fn stub_0x2609c0() -> ! {
+    todo!("0x2609c0 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::staticData(void)")
+}
+
+// 0x260a28 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10CollectionD1Ev
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::Collection::~Collection()")]
+pub fn stub_0x260a28() -> ! {
+    todo!("0x260a28 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::Collection::~Collection()")
+}
+
+// 0x260a40 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
+pub fn stub_0x260a40() -> ! {
+    todo!("0x260a40 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")
+}
+
+// 0x260bc8 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::FunctionDescriptor *>>,char const*,RBX::Reflection::FunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
+pub fn stub_0x260bc8() -> ! {
+    todo!("0x260bc8 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::FunctionDescriptor *>>,char const*,RBX::Reflection::FunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")
+}
+
+// 0x260d48 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18FunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::FunctionDescriptor *>>,char const*,RBX::Reflection::FunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")]
+pub fn stub_0x260d48() -> ! {
+    todo!("0x260d48 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::FunctionDescriptor *>>,char const*,RBX::Reflection::FunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")
+}
+
+// 0x260f78 — __ZN3RBX10Reflection16MemberDescriptorD0Ev
+#[doc(alias = "RBX::Reflection::MemberDescriptor::~MemberDescriptor()")]
+pub fn stub_0x260f78() -> ! {
+    todo!("0x260f78 RBX::Reflection::MemberDescriptor::~MemberDescriptor()")
+}
+
+// 0x2610ac — __ZN3RBX10Reflection15ClassDescriptor10allClassesEv
+#[doc(alias = "RBX::Reflection::ClassDescriptor::allClasses(void)")]
+pub fn stub_0x2610ac() -> ! {
+    todo!("0x2610ac RBX::Reflection::ClassDescriptor::allClasses(void)")
+}
+
+// 0x261138 — __ZN3RBX10Reflection15ClassDescriptorC1Ev
+#[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(void)")]
+pub fn stub_0x261138() -> ! {
+    todo!("0x261138 RBX::Reflection::ClassDescriptor::ClassDescriptor(void)")
+}
+
+// 0x26113c — __ZN3RBX10Reflection15ClassDescriptorC2Ev
+#[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(void)")]
+pub fn stub_0x26113c() -> ! {
+    todo!("0x26113c RBX::Reflection::ClassDescriptor::ClassDescriptor(void)")
+}
+
+// 0x261300 — __ZN3RBX10Reflection15ClassDescriptorC1ERS1_PKcNS1_10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(RBX::Reflection::ClassDescriptor&,char const*,RBX::Reflection::ClassDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x261300() -> ! {
+    todo!("0x261300 RBX::Reflection::ClassDescriptor::ClassDescriptor(RBX::Reflection::ClassDescriptor&,char const*,RBX::Reflection::ClassDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x26131c — __ZN3RBX10Reflection15ClassDescriptorC2ERS1_PKcNS1_10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::ClassDescriptor::ClassDescriptor(RBX::Reflection::ClassDescriptor&,char const*,RBX::Reflection::ClassDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x26131c() -> ! {
+    todo!("0x26131c RBX::Reflection::ClassDescriptor::ClassDescriptor(RBX::Reflection::ClassDescriptor&,char const*,RBX::Reflection::ClassDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x2616c0 — __ZNK3RBX10Reflection15ClassDescriptoreqERKS1_
+#[doc(alias = "RBX::Reflection::ClassDescriptor::operator==(RBX::Reflection::ClassDescriptor const&)const")]
+pub fn stub_0x2616c0() -> ! {
+    todo!("0x2616c0 RBX::Reflection::ClassDescriptor::operator==(RBX::Reflection::ClassDescriptor const&)const")
+}
+
+// 0x2616cc — __ZNK3RBX10Reflection15ClassDescriptorneERKS1_
+#[doc(alias = "RBX::Reflection::ClassDescriptor::operator!=(RBX::Reflection::ClassDescriptor const&)const")]
+pub fn stub_0x2616cc() -> ! {
+    todo!("0x2616cc RBX::Reflection::ClassDescriptor::operator!=(RBX::Reflection::ClassDescriptor const&)const")
+}
+
+// 0x2616d8 — __ZNK3RBX10Reflection15ClassDescriptor3isAERKS1_
+#[doc(alias = "RBX::Reflection::ClassDescriptor::isA(RBX::Reflection::ClassDescriptor const&)const")]
+pub fn stub_0x2616d8() -> ! {
+    todo!("0x2616d8 RBX::Reflection::ClassDescriptor::isA(RBX::Reflection::ClassDescriptor const&)const")
+}
+
+// 0x2616f0 — __ZNK3RBX10Reflection15ClassDescriptor3isAEPKc
+#[doc(alias = "RBX::Reflection::ClassDescriptor::isA(char const*)const")]
+pub fn stub_0x2616f0() -> ! {
+    todo!("0x2616f0 RBX::Reflection::ClassDescriptor::isA(char const*)const")
+}
+
+// 0x261718 — __ZNK3RBX10Reflection16MemberDescriptor10isMemberOfEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::MemberDescriptor::isMemberOf(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x261718() -> ! {
+    todo!("0x261718 RBX::Reflection::MemberDescriptor::isMemberOf(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x261798 — __ZN3RBX10Reflection10DescriptorC2EPKcNS1_10AttributesE
+#[doc(alias = "RBX::Reflection::Descriptor::Descriptor(char const*,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x261798() -> ! {
+    todo!("0x261798 RBX::Reflection::Descriptor::Descriptor(char const*,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x261830 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18PropertyDescriptorEEC2EPS3_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>*)")]
+pub fn stub_0x261830() -> ! {
+    todo!("0x261830 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::PropertyDescriptor>*)")
+}
+
+// 0x261948 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEEC2EPS3_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>*)")]
+pub fn stub_0x261948() -> ! {
+    todo!("0x261948 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>*)")
+}
+
+// 0x261a60 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18FunctionDescriptorEEC2EPS3_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>*)")]
+pub fn stub_0x261a60() -> ! {
+    todo!("0x261a60 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::FunctionDescriptor>*)")
+}
+
+// 0x261b78 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEEC2EPS3_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>*)")]
+pub fn stub_0x261b78() -> ! {
+    todo!("0x261b78 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>*)")
+}
+
+// 0x261c90 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEEC2EPS3_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>*)")]
+pub fn stub_0x261c90() -> ! {
+    todo!("0x261c90 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>*)")
+}
+
+// 0x261da8 — __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+#[doc(alias = "std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::ClassDescriptor **,std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>>,RBX::Reflection::ClassDescriptor * const&)")]
+pub fn stub_0x261da8() -> ! {
+    todo!("0x261da8 std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::ClassDescriptor **,std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>>,RBX::Reflection::ClassDescriptor * const&)")
+}
+
+// 0x261de0 — __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EED1Ev
+#[doc(alias = "std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::~vector()")]
+pub fn stub_0x261de0() -> ! {
+    todo!("0x261de0 std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::~vector()")
+}
+
+// 0x2623e8 — __ZN3RBX10Reflection15ClassDescriptorD2Ev
+#[doc(alias = "RBX::Reflection::ClassDescriptor::~ClassDescriptor()")]
+pub fn stub_0x2623e8() -> ! {
+    todo!("0x2623e8 RBX::Reflection::ClassDescriptor::~ClassDescriptor()")
+}
+
+// 0x2624b4 — __ZNSt6vectorIPN3RBX10Reflection15ClassDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+#[doc(alias = "std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::ClassDescriptor **,std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>>,RBX::Reflection::ClassDescriptor * const&)")]
+pub fn stub_0x2624b4() -> ! {
+    todo!("0x2624b4 std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::ClassDescriptor **,std::vector<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>>,RBX::Reflection::ClassDescriptor * const&)")
+}
+
+// 0x262594 — __ZNSt12_Vector_baseIPN3RBX10Reflection15ClassDescriptorESaIS3_EE11_M_allocateEm
+#[doc(alias = "std::_Vector_base<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::_M_allocate(unsigned long)")]
+pub fn stub_0x262594() -> ! {
+    todo!("0x262594 std::_Vector_base<RBX::Reflection::ClassDescriptor *,std::allocator<RBX::Reflection::ClassDescriptor *>>::_M_allocate(unsigned long)")
+}
+
+// 0x2625ac — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE12mergeMembersEPKS3_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> const*)")]
+pub fn stub_0x2625ac() -> ! {
+    todo!("0x2625ac RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> const*)")
+}
+
+// 0x2625d4 — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE9push_backERKS5_
+#[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> * const&)")]
+pub fn stub_0x2625d4() -> ! {
+    todo!("0x2625d4 std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> * const&)")
+}
+
+// 0x262600 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10CollectionD1Ev
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::Collection::~Collection()")]
+pub fn stub_0x262600() -> ! {
+    todo!("0x262600 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::Collection::~Collection()")
+}
+
+// 0x262618 — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
+#[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> **,std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>>,RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> * const&)")]
+pub fn stub_0x262618() -> ! {
+    todo!("0x262618 std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> **,std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>>,RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> * const&)")
+}
+
+// 0x2626f8 — __ZNSt12_Vector_baseIPN3RBX10Reflection25MemberDescriptorContainerINS1_18CallbackDescriptorEEESaIS5_EE11_M_allocateEm
+#[doc(alias = "std::_Vector_base<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>::_M_allocate(unsigned long)")]
+pub fn stub_0x2626f8() -> ! {
+    todo!("0x2626f8 std::_Vector_base<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor> *>>::_M_allocate(unsigned long)")
+}
+
+// 0x262710 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE7declareEPS2_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::declare(RBX::Reflection::CallbackDescriptor*)")]
+pub fn stub_0x262710() -> ! {
+    todo!("0x262710 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::declare(RBX::Reflection::CallbackDescriptor*)")
+}
+
+// 0x262890 — __ZNSt6vectorIPN3RBX10Reflection18CallbackDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+#[doc(alias = "std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::CallbackDescriptor **,std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>>,RBX::Reflection::CallbackDescriptor * const&)")]
+pub fn stub_0x262890() -> ! {
+    todo!("0x262890 std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::CallbackDescriptor **,std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>>,RBX::Reflection::CallbackDescriptor * const&)")
+}
+
+// 0x2628c8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10declareSubEPS2_S4_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::declareSub(RBX::Reflection::CallbackDescriptor*,RBX::Reflection::CallbackDescriptor*)")]
+pub fn stub_0x2628c8() -> ! {
+    todo!("0x2628c8 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::declareSub(RBX::Reflection::CallbackDescriptor*,RBX::Reflection::CallbackDescriptor*)")
+}
+
+// 0x262a44 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE14initStaticDataEv
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::initStaticData(void)")]
+pub fn stub_0x262a44() -> ! {
+    todo!("0x262a44 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::initStaticData(void)")
+}
+
+// 0x262a48 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_18CallbackDescriptorEE10staticDataEv
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::staticData(void)")]
+pub fn stub_0x262a48() -> ! {
+    todo!("0x262a48 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::CallbackDescriptor>::staticData(void)")
+}
+
+// 0x262ab0 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")]
+pub fn stub_0x262ab0() -> ! {
+    todo!("0x262ab0 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")
+}
+
+// 0x262c34 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")]
+pub fn stub_0x262c34() -> ! {
+    todo!("0x262c34 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")
+}
+
+// 0x262c88 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long)")]
+pub fn stub_0x262c88() -> ! {
+    todo!("0x262c88 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long)")
+}
+
+// 0x262db0 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE20min_buckets_for_sizeEm
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::min_buckets_for_size(unsigned long)const")]
+pub fn stub_0x262db0() -> ! {
+    todo!("0x262db0 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::min_buckets_for_size(unsigned long)const")
+}
+
+// 0x262e40 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::rehash_impl(unsigned long)")]
+pub fn stub_0x262e40() -> ! {
+    todo!("0x262e40 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::rehash_impl(unsigned long)")
+}
+
+// 0x262e6c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *)")]
+pub fn stub_0x262e6c() -> ! {
+    todo!("0x262e6c boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *)")
+}
+
+// 0x262ec4 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEEEEE9constructEv
+#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>>>::construct(void)")]
+pub fn stub_0x262ec4() -> ! {
+    todo!("0x262ec4 boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>>>::construct(void)")
+}
+
+// 0x262efc — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14find_node_implIS6_SF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEmRKT_RKT0_
+#[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::find_node_impl<char const*,RBX::Reflection::StringEqualPredicate>(unsigned long,char const* const&,RBX::Reflection::StringEqualPredicate const&)const")]
+pub fn stub_0x262efc() -> ! {
+    todo!("0x262efc boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::find_node_impl<char const*,RBX::Reflection::StringEqualPredicate>(unsigned long,char const* const&,RBX::Reflection::StringEqualPredicate const&)const")
+}
+
+// 0x262f6c — __ZNK3RBX10Reflection19StringHashPredicateclEPKc
+#[doc(alias = "RBX::Reflection::StringHashPredicate::operator()(char const*)const")]
+pub fn stub_0x262f6c() -> ! {
+    todo!("0x262f6c RBX::Reflection::StringHashPredicate::operator()(char const*)const")
+}
+
+// 0x262fa4 — __ZNSt6vectorIPN3RBX10Reflection18CallbackDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+#[doc(alias = "std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::CallbackDescriptor **,std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>>,RBX::Reflection::CallbackDescriptor * const&)")]
+pub fn stub_0x262fa4() -> ! {
+    todo!("0x262fa4 std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::CallbackDescriptor **,std::vector<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>>,RBX::Reflection::CallbackDescriptor * const&)")
+}
+
+// 0x263084 — __ZNSt12_Vector_baseIPN3RBX10Reflection18CallbackDescriptorESaIS3_EE11_M_allocateEm
+#[doc(alias = "std::_Vector_base<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>::_M_allocate(unsigned long)")]
+pub fn stub_0x263084() -> ! {
+    todo!("0x263084 std::_Vector_base<RBX::Reflection::CallbackDescriptor *,std::allocator<RBX::Reflection::CallbackDescriptor *>>::_M_allocate(unsigned long)")
+}
+
+// 0x26309c — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18CallbackDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEC2EmRKSE_RKSF_RKSaINS1_8ptr_nodeISC_EEE
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::table(unsigned long,RBX::Reflection::StringHashPredicate const&,RBX::Reflection::StringEqualPredicate const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>> const&)")]
+pub fn stub_0x26309c() -> ! {
+    todo!("0x26309c boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>,char const*,RBX::Reflection::CallbackDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::table(unsigned long,RBX::Reflection::StringHashPredicate const&,RBX::Reflection::StringEqualPredicate const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::CallbackDescriptor *>>> const&)")
+}
+
+// 0x263108 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE12mergeMembersEPKS3_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> const*)")]
+pub fn stub_0x263108() -> ! {
+    todo!("0x263108 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> const*)")
+}
+
+// 0x263130 — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE9push_backERKS5_
+#[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> * const&)")]
+pub fn stub_0x263130() -> ! {
+    todo!("0x263130 std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> * const&)")
+}
+
+// 0x263160 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void)")]
+pub fn stub_0x263160() -> ! {
+    todo!("0x263160 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void)")
+}
+
+// 0x2631ac — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
+#[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> **,std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>>,RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> * const&)")]
+pub fn stub_0x2631ac() -> ! {
+    todo!("0x2631ac std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> **,std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>>,RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> * const&)")
+}
+
+// 0x26328c — __ZNSt12_Vector_baseIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE11_M_allocateEm
+#[doc(alias = "std::_Vector_base<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::_M_allocate(unsigned long)")]
+pub fn stub_0x26328c() -> ! {
+    todo!("0x26328c std::_Vector_base<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> *>>::_M_allocate(unsigned long)")
+}
+
+// 0x2632a8 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE14initStaticDataEv
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::initStaticData(void)")]
+pub fn stub_0x2632a8() -> ! {
+    todo!("0x2632a8 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::initStaticData(void)")
+}
+
+// 0x2632ac — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")]
+pub fn stub_0x2632ac() -> ! {
+    todo!("0x2632ac boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")
+}
+
+// 0x263300 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long)")]
+pub fn stub_0x263300() -> ! {
+    todo!("0x263300 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long)")
+}
+
+// 0x263428 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE20min_buckets_for_sizeEm
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::min_buckets_for_size(unsigned long)const")]
+pub fn stub_0x263428() -> ! {
+    todo!("0x263428 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::min_buckets_for_size(unsigned long)const")
+}
+
+// 0x2634b8 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::rehash_impl(unsigned long)")]
+pub fn stub_0x2634b8() -> ! {
+    todo!("0x2634b8 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::rehash_impl(unsigned long)")
+}
+
+// 0x2634e4 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *)")]
+pub fn stub_0x2634e4() -> ! {
+    todo!("0x2634e4 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *)")
+}
+
+// 0x26353c — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEEEEE9constructEv
+#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>>>::construct(void)")]
+pub fn stub_0x26353c() -> ! {
+    todo!("0x26353c boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>>>::construct(void)")
+}
+
+// 0x263574 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14find_node_implIS6_SF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEmRKT_RKT0_
+#[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::find_node_impl<char const*,RBX::Reflection::StringEqualPredicate>(unsigned long,char const* const&,RBX::Reflection::StringEqualPredicate const&)const")]
+pub fn stub_0x263574() -> ! {
+    todo!("0x263574 boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::find_node_impl<char const*,RBX::Reflection::StringEqualPredicate>(unsigned long,char const* const&,RBX::Reflection::StringEqualPredicate const&)const")
+}
+
+// 0x2635e4 — __ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+#[doc(alias = "std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")]
+pub fn stub_0x2635e4() -> ! {
+    todo!("0x2635e4 std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")
+}
+
+// 0x2636c4 — __ZNSt12_Vector_baseIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE11_M_allocateEm
+#[doc(alias = "std::_Vector_base<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::_M_allocate(unsigned long)")]
+pub fn stub_0x2636c4() -> ! {
+    todo!("0x2636c4 std::_Vector_base<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::_M_allocate(unsigned long)")
+}
+
+// 0x2636dc — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEC2EmRKSE_RKSF_RKSaINS1_8ptr_nodeISC_EEE
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::table(unsigned long,RBX::Reflection::StringHashPredicate const&,RBX::Reflection::StringEqualPredicate const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> const&)")]
+pub fn stub_0x2636dc() -> ! {
+    todo!("0x2636dc boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::table(unsigned long,RBX::Reflection::StringHashPredicate const&,RBX::Reflection::StringEqualPredicate const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> const&)")
+}
+
+// 0x263748 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_15EventDescriptorEE12mergeMembersEPKS3_
+#[doc(alias = "RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> const*)")]
+pub fn stub_0x263748() -> ! {
+    todo!("0x263748 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> const*)")
+}
+
+// 0x263770 — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_15EventDescriptorEEESaIS5_EE9push_backERKS5_
+#[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *>>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> * const&)")]
+pub fn stub_0x263770() -> ! {
+    todo!("0x263770 std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *>>::push_back(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> * const&)")
+}
+
+// 0x2637a0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection15EventDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::EventDescriptor *>>,char const*,RBX::Reflection::EventDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void)")]
+pub fn stub_0x2637a0() -> ! {
+    todo!("0x2637a0 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::EventDescriptor *>>,char const*,RBX::Reflection::EventDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void)")
+}
+
+// 0x2637ec — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_15EventDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
+#[doc(alias = "std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> **,std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *>>>,RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> * const&)")]
+pub fn stub_0x2637ec() -> ! {
+    todo!("0x2637ec std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> **,std::vector<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *>>>,RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> * const&)")
+}
+
+// 0x2638cc — __ZNSt12_Vector_baseIPN3RBX10Reflection25MemberDescriptorContainerINS1_15EventDescriptorEEESaIS5_EE11_M_allocateEm
+#[doc(alias = "std::_Vector_base<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *>>::_M_allocate(unsigned long)")]
+pub fn stub_0x2638cc() -> ! {
+    todo!("0x2638cc std::_Vector_base<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *,std::allocator<RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::EventDescriptor> *>>::_M_allocate(unsigned long)")
+}
