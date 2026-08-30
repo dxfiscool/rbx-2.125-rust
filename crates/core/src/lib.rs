@@ -11,6 +11,7 @@ pub type WeakPtr<T> = Weak<T>;
 pub mod signal;
 pub mod task_scheduler;
 pub mod intrusive;
+pub mod boost_skeletons;
 
 /// Re-export for `use rbx_core::SharedPtr`
 pub use parking_lot::{Mutex as PLMutex, RwLock};
