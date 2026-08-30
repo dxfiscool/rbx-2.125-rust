@@ -1,5 +1,5 @@
 //! audio — FMOD (FMOD::System, FMOD::Sound, Channel, etc.)
-//! Generated from ida/export.json filtered for FMOD (1882 funcs, 450 stubs here).
+//! Generated from ida/export.json filtered for FMOD (1882 funcs, 550 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
@@ -2699,4 +2699,603 @@ pub fn stub_90a44() -> ! {
 #[doc(alias = "FMOD::CodecMIDITrack::process(bool)")]
 pub fn stub_91454() -> ! {
     todo!("0x91454 FMOD::CodecMIDITrack::process(bool)")
+}
+// 0x91d30 — __ZN4FMOD9CodecMIDI12openInternalEjP22FMOD_CREATESOUNDEXINFO
+#[doc(alias = "FMOD::CodecMIDI::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+pub fn stub_91d30() -> ! {
+    todo!("0x91d30 FMOD::CodecMIDI::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+}
+
+// 0x92a68 — __ZN4FMOD9CodecMIDI12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
+#[doc(alias = "FMOD::CodecMIDI::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+pub fn stub_92a68() -> ! {
+    todo!("0x92a68 FMOD::CodecMIDI::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+}
+
+// 0x92a74 — __ZN4FMOD9CodecMIDI6updateEb
+#[doc(alias = "FMOD::CodecMIDI::update(bool)")]
+pub fn stub_92a74() -> ! {
+    todo!("0x92a74 FMOD::CodecMIDI::update(bool)")
+}
+
+// 0x92b38 — __ZN4FMOD9CodecMIDI19setPositionInternalEijj
+#[doc(alias = "FMOD::CodecMIDI::setPositionInternal(int,unsigned int,unsigned int)")]
+pub fn stub_92b38() -> ! {
+    todo!("0x92b38 FMOD::CodecMIDI::setPositionInternal(int,unsigned int,unsigned int)")
+}
+
+// 0x92b94 — __ZN4FMOD9CodecMIDI19setPositionCallbackEP16FMOD_CODEC_STATEijj
+#[doc(alias = "FMOD::CodecMIDI::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+pub fn stub_92b94() -> ! {
+    todo!("0x92b94 FMOD::CodecMIDI::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+}
+
+// 0x92ba0 — __ZN4FMOD9CodecMIDI12readInternalEPvjPj
+#[doc(alias = "FMOD::CodecMIDI::readInternal(void *,unsigned int,unsigned int *)")]
+pub fn stub_92ba0() -> ! {
+    todo!("0x92ba0 FMOD::CodecMIDI::readInternal(void *,unsigned int,unsigned int *)")
+}
+
+// 0x92fac — __ZN4FMOD9CodecMIDI12readCallbackEP16FMOD_CODEC_STATEPvjPj
+#[doc(alias = "FMOD::CodecMIDI::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+pub fn stub_92fac() -> ! {
+    todo!("0x92fac FMOD::CodecMIDI::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+}
+
+// 0x9301c — __GLOBAL__I__ZN4FMOD9midicodecE
+#[doc(alias = "global constructor keyed toFMOD::midicodec")]
+pub fn stub_9301c() -> ! {
+    todo!("0x9301c `global constructor keyed to'FMOD::midicodec")
+}
+
+// 0x93028 — __ZN4FMOD15MusicChannelMOD10portamentoEv
+#[doc(alias = "FMOD::MusicChannelMOD::portamento(void)")]
+pub fn stub_93028() -> ! {
+    todo!("0x93028 FMOD::MusicChannelMOD::portamento(void)")
+}
+
+// 0x93098 — __ZN4FMOD15MusicChannelMOD7vibratoEv
+#[doc(alias = "FMOD::MusicChannelMOD::vibrato(void)")]
+pub fn stub_93098() -> ! {
+    todo!("0x93098 FMOD::MusicChannelMOD::vibrato(void)")
+}
+
+// 0x931dc — __ZN4FMOD15MusicChannelMOD7tremoloEv
+#[doc(alias = "FMOD::MusicChannelMOD::tremolo(void)")]
+pub fn stub_931dc() -> ! {
+    todo!("0x931dc FMOD::MusicChannelMOD::tremolo(void)")
+}
+
+// 0x93310 — __ZN4FMOD8CodecMOD13closeInternalEv
+#[doc(alias = "FMOD::CodecMOD::closeInternal(void)")]
+pub fn stub_93310() -> ! {
+    todo!("0x93310 FMOD::CodecMOD::closeInternal(void)")
+}
+
+// 0x935b8 — __ZN4FMOD8CodecMOD13closeCallbackEP16FMOD_CODEC_STATE
+#[doc(alias = "FMOD::CodecMOD::closeCallback(FMOD_CODEC_STATE *)")]
+pub fn stub_935b8() -> ! {
+    todo!("0x935b8 FMOD::CodecMOD::closeCallback(FMOD_CODEC_STATE *)")
+}
+
+// 0x935c4 — __ZN4FMOD8CodecMOD16getDescriptionExEv
+#[doc(alias = "FMOD::CodecMOD::getDescriptionEx(void)")]
+pub fn stub_935c4() -> ! {
+    todo!("0x935c4 FMOD::CodecMOD::getDescriptionEx(void)")
+}
+
+// 0x936dc — __ZN4FMOD8CodecMOD13updateEffectsEv
+#[doc(alias = "FMOD::CodecMOD::updateEffects(void)")]
+pub fn stub_936dc() -> ! {
+    todo!("0x936dc FMOD::CodecMOD::updateEffects(void)")
+}
+
+// 0x93de4 — __ZN4FMOD8CodecMOD10updateNoteEb
+#[doc(alias = "FMOD::CodecMOD::updateNote(bool)")]
+pub fn stub_93de4() -> ! {
+    todo!("0x93de4 FMOD::CodecMOD::updateNote(bool)")
+}
+
+// 0x94674 — __ZN4FMOD8CodecMOD6updateEb
+#[doc(alias = "FMOD::CodecMOD::update(bool)")]
+pub fn stub_94674() -> ! {
+    todo!("0x94674 FMOD::CodecMOD::update(bool)")
+}
+
+// 0x94790 — __ZN4FMOD8CodecMOD19setPositionInternalEijj
+#[doc(alias = "FMOD::CodecMOD::setPositionInternal(int,unsigned int,unsigned int)")]
+pub fn stub_94790() -> ! {
+    todo!("0x94790 FMOD::CodecMOD::setPositionInternal(int,unsigned int,unsigned int)")
+}
+
+// 0x94844 — __ZN4FMOD8CodecMOD19setPositionCallbackEP16FMOD_CODEC_STATEijj
+#[doc(alias = "FMOD::CodecMOD::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+pub fn stub_94844() -> ! {
+    todo!("0x94844 FMOD::CodecMOD::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+}
+
+// 0x94850 — __ZN4FMOD8CodecMOD15calculateLengthEv
+#[doc(alias = "FMOD::CodecMOD::calculateLength(void)")]
+pub fn stub_94850() -> ! {
+    todo!("0x94850 FMOD::CodecMOD::calculateLength(void)")
+}
+
+// 0x948b4 — __ZN4FMOD8CodecMOD12openInternalEjP22FMOD_CREATESOUNDEXINFO
+#[doc(alias = "FMOD::CodecMOD::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+pub fn stub_948b4() -> ! {
+    todo!("0x948b4 FMOD::CodecMOD::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+}
+
+// 0x95a74 — __ZN4FMOD8CodecMOD12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
+#[doc(alias = "FMOD::CodecMOD::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+pub fn stub_95a74() -> ! {
+    todo!("0x95a74 FMOD::CodecMOD::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+}
+
+// 0x95a80 — __ZN4FMOD8CodecMOD12readInternalEPvjPj
+#[doc(alias = "FMOD::CodecMOD::readInternal(void *,unsigned int,unsigned int *)")]
+pub fn stub_95a80() -> ! {
+    todo!("0x95a80 FMOD::CodecMOD::readInternal(void *,unsigned int,unsigned int *)")
+}
+
+// 0x95e64 — __ZN4FMOD8CodecMOD12readCallbackEP16FMOD_CODEC_STATEPvjPj
+#[doc(alias = "FMOD::CodecMOD::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+pub fn stub_95e64() -> ! {
+    todo!("0x95e64 FMOD::CodecMOD::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+}
+
+// 0x95ebc — __GLOBAL__I__ZN4FMOD8modcodecE
+#[doc(alias = "global constructor keyed toFMOD::modcodec")]
+pub fn stub_95ebc() -> ! {
+    todo!("0x95ebc `global constructor keyed to'FMOD::modcodec")
+}
+
+// 0x95ec8 — __ZN4FMOD9CodecMPEG13resetCallbackEP16FMOD_CODEC_STATE
+#[doc(alias = "FMOD::CodecMPEG::resetCallback(FMOD_CODEC_STATE *)")]
+pub fn stub_95ec8() -> ! {
+    todo!("0x95ec8 FMOD::CodecMPEG::resetCallback(FMOD_CODEC_STATE *)")
+}
+
+// 0x95ee0 — __ZN4FMOD9CodecMPEG19soundCreateInternalEiP10FMOD_SOUND
+#[doc(alias = "FMOD::CodecMPEG::soundCreateInternal(int,FMOD_SOUND *)")]
+pub fn stub_95ee0() -> ! {
+    todo!("0x95ee0 FMOD::CodecMPEG::soundCreateInternal(int,FMOD_SOUND *)")
+}
+
+// 0x95fe8 — __ZN4FMOD9CodecMPEG19soundCreateCallbackEP16FMOD_CODEC_STATEiP10FMOD_SOUND
+#[doc(alias = "FMOD::CodecMPEG::soundCreateCallback(FMOD_CODEC_STATE *,int,FMOD_SOUND *)")]
+pub fn stub_95fe8() -> ! {
+    todo!("0x95fe8 FMOD::CodecMPEG::soundCreateCallback(FMOD_CODEC_STATE *,int,FMOD_SOUND *)")
+}
+
+// 0x95ff4 — __ZN4FMOD9CodecMPEG13closeInternalEv
+#[doc(alias = "FMOD::CodecMPEG::closeInternal(void)")]
+pub fn stub_95ff4() -> ! {
+    todo!("0x95ff4 FMOD::CodecMPEG::closeInternal(void)")
+}
+
+// 0x96114 — __ZN4FMOD9CodecMPEG13closeCallbackEP16FMOD_CODEC_STATE
+#[doc(alias = "FMOD::CodecMPEG::closeCallback(FMOD_CODEC_STATE *)")]
+pub fn stub_96114() -> ! {
+    todo!("0x96114 FMOD::CodecMPEG::closeCallback(FMOD_CODEC_STATE *)")
+}
+
+// 0x96120 — __ZN4FMOD9CodecMPEG19setPositionInternalEijj
+#[doc(alias = "FMOD::CodecMPEG::setPositionInternal(int,unsigned int,unsigned int)")]
+pub fn stub_96120() -> ! {
+    todo!("0x96120 FMOD::CodecMPEG::setPositionInternal(int,unsigned int,unsigned int)")
+}
+
+// 0x964d8 — __ZN4FMOD9CodecMPEG19setPositionCallbackEP16FMOD_CODEC_STATEijj
+#[doc(alias = "FMOD::CodecMPEG::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+pub fn stub_964d8() -> ! {
+    todo!("0x964d8 FMOD::CodecMPEG::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+}
+
+// 0x964e4 — __ZN4FMOD9CodecMPEG16getDescriptionExEv
+#[doc(alias = "FMOD::CodecMPEG::getDescriptionEx(void)")]
+pub fn stub_964e4() -> ! {
+    todo!("0x964e4 FMOD::CodecMPEG::getDescriptionEx(void)")
+}
+
+// 0x965a4 — __ZN4FMOD9CodecMPEG12readInternalEPvjPj
+#[doc(alias = "FMOD::CodecMPEG::readInternal(void *,unsigned int,unsigned int *)")]
+pub fn stub_965a4() -> ! {
+    todo!("0x965a4 FMOD::CodecMPEG::readInternal(void *,unsigned int,unsigned int *)")
+}
+
+// 0x96854 — __ZN4FMOD9CodecMPEG12readCallbackEP16FMOD_CODEC_STATEPvjPj
+#[doc(alias = "FMOD::CodecMPEG::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+pub fn stub_96854() -> ! {
+    todo!("0x96854 FMOD::CodecMPEG::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+}
+
+// 0x96860 — __ZN4FMOD9CodecMPEG12getPCMLengthEv
+#[doc(alias = "FMOD::CodecMPEG::getPCMLength(void)")]
+pub fn stub_96860() -> ! {
+    todo!("0x96860 FMOD::CodecMPEG::getPCMLength(void)")
+}
+
+// 0x96a24 — __ZN4FMOD9CodecMPEG10makeTablesEi
+#[doc(alias = "FMOD::CodecMPEG::makeTables(int)")]
+pub fn stub_96a24() -> ! {
+    todo!("0x96a24 FMOD::CodecMPEG::makeTables(int)")
+}
+
+// 0x96c4c — __ZN4FMOD9CodecMPEG7initAllEv
+#[doc(alias = "FMOD::CodecMPEG::initAll(void)")]
+pub fn stub_96c4c() -> ! {
+    todo!("0x96c4c FMOD::CodecMPEG::initAll(void)")
+}
+
+// 0x96c9c — __ZN4FMOD9CodecMPEG12openInternalEjP22FMOD_CREATESOUNDEXINFO
+#[doc(alias = "FMOD::CodecMPEG::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+pub fn stub_96c9c() -> ! {
+    todo!("0x96c9c FMOD::CodecMPEG::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+}
+
+// 0x97670 — __ZN4FMOD9CodecMPEG12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
+#[doc(alias = "FMOD::CodecMPEG::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+pub fn stub_97670() -> ! {
+    todo!("0x97670 FMOD::CodecMPEG::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+}
+
+// 0x976c8 — __GLOBAL__I__ZN4FMOD9mpegcodecE
+#[doc(alias = "global constructor keyed toFMOD::mpegcodec")]
+pub fn stub_976c8() -> ! {
+    todo!("0x976c8 `global constructor keyed to'FMOD::mpegcodec")
+}
+
+// 0x976d4 — __ZN4FMOD9CodecMPEG7getBitsEi
+#[doc(alias = "FMOD::CodecMPEG::getBits(int)")]
+pub fn stub_976d4() -> ! {
+    todo!("0x976d4 FMOD::CodecMPEG::getBits(int)")
+}
+
+// 0x97758 — __ZN4FMOD9CodecMPEG11getBitsFastEi
+#[doc(alias = "FMOD::CodecMPEG::getBitsFast(int)")]
+pub fn stub_97758() -> ! {
+    todo!("0x97758 FMOD::CodecMPEG::getBitsFast(int)")
+}
+
+// 0x977c0 — __ZN4FMOD9CodecMPEG5dct64EPfS1_S1_
+#[doc(alias = "FMOD::CodecMPEG::dct64(float *,float *,float *)")]
+pub fn stub_977c0() -> ! {
+    todo!("0x977c0 FMOD::CodecMPEG::dct64(float *,float *,float *)")
+}
+
+// 0x981d4 — __ZN4FMOD9CodecMPEG6synthCEPfiiPs
+#[doc(alias = "FMOD::CodecMPEG::synthC(float *,int,int,short *)")]
+pub fn stub_981d4() -> ! {
+    todo!("0x981d4 FMOD::CodecMPEG::synthC(float *,int,int,short *)")
+}
+
+// 0x9854c — __ZN4FMOD9CodecMPEG5synthEPvPfii
+#[doc(alias = "FMOD::CodecMPEG::synth(void *,float *,int,int)")]
+pub fn stub_9854c() -> ! {
+    todo!("0x9854c FMOD::CodecMPEG::synth(void *,float *,int,int)")
+}
+
+// 0x986f8 — __ZN4FMOD9CodecMPEG10resetFrameEv
+#[doc(alias = "FMOD::CodecMPEG::resetFrame(void)")]
+pub fn stub_986f8() -> ! {
+    todo!("0x986f8 FMOD::CodecMPEG::resetFrame(void)")
+}
+
+// 0x987e4 — __ZN4FMOD9CodecMPEG16decodeXingHeaderEPhS1_Pj
+#[doc(alias = "FMOD::CodecMPEG::decodeXingHeader(unsigned char *,unsigned char *,unsigned int *)")]
+pub fn stub_987e4() -> ! {
+    todo!("0x987e4 FMOD::CodecMPEG::decodeXingHeader(unsigned char *,unsigned char *,unsigned int *)")
+}
+
+// 0x9891c — __ZN4FMOD9CodecMPEG12decodeHeaderEPvPiS2_S2_
+#[doc(alias = "FMOD::CodecMPEG::decodeHeader(void *,int *,int *,int *)")]
+pub fn stub_9891c() -> ! {
+    todo!("0x9891c FMOD::CodecMPEG::decodeHeader(void *,int *,int *,int *)")
+}
+
+// 0x98e9c — __ZN4FMOD9CodecMPEG11decodeFrameEPhPvPj
+#[doc(alias = "FMOD::CodecMPEG::decodeFrame(unsigned char *,void *,unsigned int *)")]
+pub fn stub_98e9c() -> ! {
+    todo!("0x98e9c FMOD::CodecMPEG::decodeFrame(unsigned char *,void *,unsigned int *)")
+}
+
+// 0x99024 — __ZN4FMOD9CodecMPEG10getIIStuffEv
+#[doc(alias = "FMOD::CodecMPEG::getIIStuff(void)")]
+pub fn stub_99024() -> ! {
+    todo!("0x99024 FMOD::CodecMPEG::getIIStuff(void)")
+}
+
+// 0x99118 — __ZN4FMOD9CodecMPEG11II_step_twoEPjPA4_A32_fPii
+#[doc(alias = "FMOD::CodecMPEG::II_step_two(unsigned int *,float (*)[4][32],int *,int)")]
+pub fn stub_99118() -> ! {
+    todo!("0x99118 FMOD::CodecMPEG::II_step_two(unsigned int *,float (*)[4][32],int *,int)")
+}
+
+// 0x99728 — __ZN4FMOD9CodecMPEG11II_step_oneEPjPi
+#[doc(alias = "FMOD::CodecMPEG::II_step_one(unsigned int *,int *)")]
+pub fn stub_99728() -> ! {
+    todo!("0x99728 FMOD::CodecMPEG::II_step_one(unsigned int *,int *)")
+}
+
+// 0x99a10 — __ZN4FMOD9CodecMPEG12decodeLayer2EPvPj
+#[doc(alias = "FMOD::CodecMPEG::decodeLayer2(void *,unsigned int *)")]
+pub fn stub_99a10() -> ! {
+    todo!("0x99a10 FMOD::CodecMPEG::decodeLayer2(void *,unsigned int *)")
+}
+
+// 0x99b08 — __ZN4FMOD9CodecMPEG10initLayer2Ev
+#[doc(alias = "FMOD::CodecMPEG::initLayer2(void)")]
+pub fn stub_99b08() -> ! {
+    todo!("0x99b08 FMOD::CodecMPEG::initLayer2(void)")
+}
+
+// 0x99d7c — __ZN4FMOD9CodecMPEG12III_i_stereoEPA32_A18_fPiPNS_9gr_info_sEiii
+#[doc(alias = "FMOD::CodecMPEG::III_i_stereo(float (*)[32][18],int *,FMOD::gr_info_s *,int,int,int)")]
+pub fn stub_99d7c() -> ! {
+    todo!("0x99d7c FMOD::CodecMPEG::III_i_stereo(float (*)[32][18],int *,FMOD::gr_info_s *,int,int,int)")
+}
+
+// 0x9a240 — __ZN4FMOD9CodecMPEG13III_antialiasEPA18_fPNS_9gr_info_sE
+#[doc(alias = "FMOD::CodecMPEG::III_antialias(float (*)[18],FMOD::gr_info_s *)")]
+pub fn stub_9a240() -> ! {
+    todo!("0x9a240 FMOD::CodecMPEG::III_antialias(float (*)[18],FMOD::gr_info_s *)")
+}
+
+// 0x9a308 — __ZN4FMOD9CodecMPEG5dct36EPfS1_S1_S1_S1_
+#[doc(alias = "FMOD::CodecMPEG::dct36(float *,float *,float *,float *,float *)")]
+pub fn stub_9a308() -> ! {
+    todo!("0x9a308 FMOD::CodecMPEG::dct36(float *,float *,float *,float *,float *)")
+}
+
+// 0x9a9e8 — __ZN4FMOD9CodecMPEG5dct12EPfS1_S1_S1_S1_
+#[doc(alias = "FMOD::CodecMPEG::dct12(float *,float *,float *,float *,float *)")]
+pub fn stub_9a9e8() -> ! {
+    todo!("0x9a9e8 FMOD::CodecMPEG::dct12(float *,float *,float *,float *,float *)")
+}
+
+// 0x9af14 — __ZN4FMOD9CodecMPEG10III_hybridEPA18_fPA32_fiPNS_9gr_info_sE
+#[doc(alias = "FMOD::CodecMPEG::III_hybrid(float (*)[18],float (*)[32],int,FMOD::gr_info_s *)")]
+pub fn stub_9af14() -> ! {
+    todo!("0x9af14 FMOD::CodecMPEG::III_hybrid(float (*)[18],float (*)[32],int,FMOD::gr_info_s *)")
+}
+
+// 0x9b1f8 — __ZN4FMOD9CodecMPEG24III_dequantize_sample_msEPA32_A18_fPiPNS_9gr_info_sEii
+#[doc(alias = "FMOD::CodecMPEG::III_dequantize_sample_ms(float (*)[32][18],int *,FMOD::gr_info_s *,int,int)")]
+pub fn stub_9b1f8() -> ! {
+    todo!("0x9b1f8 FMOD::CodecMPEG::III_dequantize_sample_ms(float (*)[32][18],int *,FMOD::gr_info_s *,int,int)")
+}
+
+// 0x9c668 — __ZN4FMOD9CodecMPEG21III_dequantize_sampleEPA18_fPiPNS_9gr_info_sEii
+#[doc(alias = "FMOD::CodecMPEG::III_dequantize_sample(float (*)[18],int *,FMOD::gr_info_s *,int,int)")]
+pub fn stub_9c668() -> ! {
+    todo!("0x9c668 FMOD::CodecMPEG::III_dequantize_sample(float (*)[18],int *,FMOD::gr_info_s *,int,int)")
+}
+
+// 0x9d78c — __ZN4FMOD9CodecMPEG23III_get_scale_factors_2EPiPNS_9gr_info_sEiS1_
+#[doc(alias = "FMOD::CodecMPEG::III_get_scale_factors_2(int *,FMOD::gr_info_s *,int,int *)")]
+pub fn stub_9d78c() -> ! {
+    todo!("0x9d78c FMOD::CodecMPEG::III_get_scale_factors_2(int *,FMOD::gr_info_s *,int,int *)")
+}
+
+// 0x9d920 — __ZN4FMOD9CodecMPEG23III_get_scale_factors_1EPiPNS_9gr_info_sES1_
+#[doc(alias = "FMOD::CodecMPEG::III_get_scale_factors_1(int *,FMOD::gr_info_s *,int *)")]
+pub fn stub_9d920() -> ! {
+    todo!("0x9d920 FMOD::CodecMPEG::III_get_scale_factors_1(int *,FMOD::gr_info_s *,int *)")
+}
+
+// 0x9dcbc — __ZN4FMOD9CodecMPEG19III_get_side_info_2EPNS_12III_sideinfoEiii
+#[doc(alias = "FMOD::CodecMPEG::III_get_side_info_2(FMOD::III_sideinfo *,int,int,int)")]
+pub fn stub_9dcbc() -> ! {
+    todo!("0x9dcbc FMOD::CodecMPEG::III_get_side_info_2(FMOD::III_sideinfo *,int,int,int)")
+}
+
+// 0x9e0e0 — __ZN4FMOD9CodecMPEG19III_get_side_info_1EPNS_12III_sideinfoEiii
+#[doc(alias = "FMOD::CodecMPEG::III_get_side_info_1(FMOD::III_sideinfo *,int,int,int)")]
+pub fn stub_9e0e0() -> ! {
+    todo!("0x9e0e0 FMOD::CodecMPEG::III_get_side_info_1(FMOD::III_sideinfo *,int,int,int)")
+}
+
+// 0x9e5ac — __ZN4FMOD9CodecMPEG12decodeLayer3EPvPj
+#[doc(alias = "FMOD::CodecMPEG::decodeLayer3(void *,unsigned int *)")]
+pub fn stub_9e5ac() -> ! {
+    todo!("0x9e5ac FMOD::CodecMPEG::decodeLayer3(void *,unsigned int *)")
+}
+
+// 0x9eb14 — __ZN4FMOD9CodecMPEG10initLayer3Ei
+#[doc(alias = "FMOD::CodecMPEG::initLayer3(int)")]
+pub fn stub_9eb14() -> ! {
+    todo!("0x9eb14 FMOD::CodecMPEG::initLayer3(int)")
+}
+
+// 0x9fa10 — __ZN4FMOD14CodecOggVorbis17getMemoryUsedImplEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::CodecOggVorbis::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_9fa10() -> ! {
+    todo!("0x9fa10 FMOD::CodecOggVorbis::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+
+// 0x9fa34 — __ZN4FMOD14CodecOggVorbis21getMemoryUsedCallbackEP16FMOD_CODEC_STATEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::CodecOggVorbis::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")]
+pub fn stub_9fa34() -> ! {
+    todo!("0x9fa34 FMOD::CodecOggVorbis::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")
+}
+
+// 0x9fa8c — __ZN4FMOD14CodecOggVorbis18readVorbisCommentsEv
+#[doc(alias = "FMOD::CodecOggVorbis::readVorbisComments(void)")]
+pub fn stub_9fa8c() -> ! {
+    todo!("0x9fa8c FMOD::CodecOggVorbis::readVorbisComments(void)")
+}
+
+// 0x9fb70 — __ZN4FMOD14CodecOggVorbis19setPositionInternalEijj
+#[doc(alias = "FMOD::CodecOggVorbis::setPositionInternal(int,unsigned int,unsigned int)")]
+pub fn stub_9fb70() -> ! {
+    todo!("0x9fb70 FMOD::CodecOggVorbis::setPositionInternal(int,unsigned int,unsigned int)")
+}
+
+// 0x9fba0 — __ZN4FMOD14CodecOggVorbis19setPositionCallbackEP16FMOD_CODEC_STATEijj
+#[doc(alias = "FMOD::CodecOggVorbis::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+pub fn stub_9fba0() -> ! {
+    todo!("0x9fba0 FMOD::CodecOggVorbis::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+}
+
+// 0x9fbac — __ZN4FMOD14CodecOggVorbis12readInternalEPvjPj
+#[doc(alias = "FMOD::CodecOggVorbis::readInternal(void *,unsigned int,unsigned int *)")]
+pub fn stub_9fbac() -> ! {
+    todo!("0x9fbac FMOD::CodecOggVorbis::readInternal(void *,unsigned int,unsigned int *)")
+}
+
+// 0x9fd24 — __ZN4FMOD14CodecOggVorbis12readCallbackEP16FMOD_CODEC_STATEPvjPj
+#[doc(alias = "FMOD::CodecOggVorbis::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+pub fn stub_9fd24() -> ! {
+    todo!("0x9fd24 FMOD::CodecOggVorbis::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+}
+
+// 0x9fd30 — __ZN4FMOD14CodecOggVorbis13closeInternalEv
+#[doc(alias = "FMOD::CodecOggVorbis::closeInternal(void)")]
+pub fn stub_9fd30() -> ! {
+    todo!("0x9fd30 FMOD::CodecOggVorbis::closeInternal(void)")
+}
+
+// 0x9fd50 — __ZN4FMOD14CodecOggVorbis13closeCallbackEP16FMOD_CODEC_STATE
+#[doc(alias = "FMOD::CodecOggVorbis::closeCallback(FMOD_CODEC_STATE *)")]
+pub fn stub_9fd50() -> ! {
+    todo!("0x9fd50 FMOD::CodecOggVorbis::closeCallback(FMOD_CODEC_STATE *)")
+}
+
+// 0x9fd5c — __ZN4FMOD27FMOD_OggVorbis_SeekCallbackEPvxi
+#[doc(alias = "FMOD::FMOD_OggVorbis_SeekCallback(void *,long long,int)")]
+pub fn stub_9fd5c() -> ! {
+    todo!("0x9fd5c FMOD::FMOD_OggVorbis_SeekCallback(void *,long long,int)")
+}
+
+// 0x9fd80 — __ZN4FMOD14CodecOggVorbis16getDescriptionExEv
+#[doc(alias = "FMOD::CodecOggVorbis::getDescriptionEx(void)")]
+pub fn stub_9fd80() -> ! {
+    todo!("0x9fd80 FMOD::CodecOggVorbis::getDescriptionEx(void)")
+}
+
+// 0x9fe30 — __ZN4FMOD27FMOD_OggVorbis_ReadCallbackEPvmmS0_
+#[doc(alias = "FMOD::FMOD_OggVorbis_ReadCallback(void *,unsigned long,unsigned long,void *)")]
+pub fn stub_9fe30() -> ! {
+    todo!("0x9fe30 FMOD::FMOD_OggVorbis_ReadCallback(void *,unsigned long,unsigned long,void *)")
+}
+
+// 0x9fe7c — _FMOD_OggVorbis_Free
+#[doc(alias = "_FMOD_OggVorbis_Free")]
+pub fn stub_9fe7c() -> ! {
+    todo!("0x9fe7c _FMOD_OggVorbis_Free")
+}
+
+// 0x9fec8 — __ZN4FMOD14CodecOggVorbis12openInternalEjP22FMOD_CREATESOUNDEXINFO
+#[doc(alias = "FMOD::CodecOggVorbis::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+pub fn stub_9fec8() -> ! {
+    todo!("0x9fec8 FMOD::CodecOggVorbis::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+}
+
+// 0xa0448 — __ZN4FMOD14CodecOggVorbis12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
+#[doc(alias = "FMOD::CodecOggVorbis::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+pub fn stub_a0448() -> ! {
+    todo!("0xa0448 FMOD::CodecOggVorbis::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+}
+
+// 0xa0454 — __ZN4FMOD27FMOD_OggVorbis_TellCallbackEPv
+#[doc(alias = "FMOD::FMOD_OggVorbis_TellCallback(void *)")]
+pub fn stub_a0454() -> ! {
+    todo!("0xa0454 FMOD::FMOD_OggVorbis_TellCallback(void *)")
+}
+
+// 0xa0474 — _FMOD_OggVorbis_ReAlloc
+#[doc(alias = "_FMOD_OggVorbis_ReAlloc")]
+pub fn stub_a0474() -> ! {
+    todo!("0xa0474 _FMOD_OggVorbis_ReAlloc")
+}
+
+// 0xa0500 — _FMOD_OggVorbis_Calloc
+#[doc(alias = "_FMOD_OggVorbis_Calloc")]
+pub fn stub_a0500() -> ! {
+    todo!("0xa0500 _FMOD_OggVorbis_Calloc")
+}
+
+// 0xa0564 — _FMOD_OggVorbis_Malloc
+#[doc(alias = "_FMOD_OggVorbis_Malloc")]
+pub fn stub_a0564() -> ! {
+    todo!("0xa0564 _FMOD_OggVorbis_Malloc")
+}
+
+// 0xa0614 — __GLOBAL__I_FMOD_OggVorbis_Malloc
+#[doc(alias = "global constructor keyed to_FMOD_OggVorbis_Malloc")]
+pub fn stub_a0614() -> ! {
+    todo!("0xa0614 `global constructor keyed to'_FMOD_OggVorbis_Malloc")
+}
+
+// 0xa0620 — __ZN4FMOD13CodecPlaylist12getQuoteDataEPKcPcPi
+#[doc(alias = "FMOD::CodecPlaylist::getQuoteData(char const*,char *,int *)")]
+pub fn stub_a0620() -> ! {
+    todo!("0xa0620 FMOD::CodecPlaylist::getQuoteData(char const*,char *,int *)")
+}
+
+// 0xa0684 — __ZN4FMOD13CodecPlaylist13closeInternalEv
+#[doc(alias = "FMOD::CodecPlaylist::closeInternal(void)")]
+pub fn stub_a0684() -> ! {
+    todo!("0xa0684 FMOD::CodecPlaylist::closeInternal(void)")
+}
+
+// 0xa068c — __ZN4FMOD13CodecPlaylist13closeCallbackEP16FMOD_CODEC_STATE
+#[doc(alias = "FMOD::CodecPlaylist::closeCallback(FMOD_CODEC_STATE *)")]
+pub fn stub_a068c() -> ! {
+    todo!("0xa068c FMOD::CodecPlaylist::closeCallback(FMOD_CODEC_STATE *)")
+}
+
+// 0xa0698 — __ZN4FMOD13CodecPlaylist12readCallbackEP16FMOD_CODEC_STATEPvjPj
+#[doc(alias = "FMOD::CodecPlaylist::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+pub fn stub_a0698() -> ! {
+    todo!("0xa0698 FMOD::CodecPlaylist::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+}
+
+// 0xa06a0 — __ZN4FMOD13CodecPlaylist19setPositionCallbackEP16FMOD_CODEC_STATEijj
+#[doc(alias = "FMOD::CodecPlaylist::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+pub fn stub_a06a0() -> ! {
+    todo!("0xa06a0 FMOD::CodecPlaylist::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+}
+
+// 0xa06a8 — __ZN4FMOD13CodecPlaylist9isNewLineEc
+#[doc(alias = "FMOD::CodecPlaylist::isNewLine(char)")]
+pub fn stub_a06a8() -> ! {
+    todo!("0xa06a8 FMOD::CodecPlaylist::isNewLine(char)")
+}
+
+// 0xa0704 — __ZN4FMOD13CodecPlaylist14skipWhiteSpaceEPi
+#[doc(alias = "FMOD::CodecPlaylist::skipWhiteSpace(int *)")]
+pub fn stub_a0704() -> ! {
+    todo!("0xa0704 FMOD::CodecPlaylist::skipWhiteSpace(int *)")
+}
+
+// 0xa0784 — __ZN4FMOD13CodecPlaylist8readLineEPciPi
+#[doc(alias = "FMOD::CodecPlaylist::readLine(char *,int,int *)")]
+pub fn stub_a0784() -> ! {
+    todo!("0xa0784 FMOD::CodecPlaylist::readLine(char *,int,int *)")
+}
+
+// 0xa0820 — __ZN4FMOD13CodecPlaylist18skipSimpleCommentsEv
+#[doc(alias = "FMOD::CodecPlaylist::skipSimpleComments(void)")]
+pub fn stub_a0820() -> ! {
+    todo!("0xa0820 FMOD::CodecPlaylist::skipSimpleComments(void)")
+}
+
+// 0xa08b8 — __ZN4FMOD13CodecPlaylist11getPLSTokenEPciPi
+#[doc(alias = "FMOD::CodecPlaylist::getPLSToken(char *,int,int *)")]
+pub fn stub_a08b8() -> ! {
+    todo!("0xa08b8 FMOD::CodecPlaylist::getPLSToken(char *,int,int *)")
+}
+
+// 0xa0a54 — __ZN4FMOD13CodecPlaylist13getNextXMLTagEPcPiS1_S2_
+#[doc(alias = "FMOD::CodecPlaylist::getNextXMLTag(char *,int *,char *,int *)")]
+pub fn stub_a0a54() -> ! {
+    todo!("0xa0a54 FMOD::CodecPlaylist::getNextXMLTag(char *,int *,char *,int *)")
+}
+
+// 0xa0bb8 — __ZN4FMOD13CodecPlaylist10readSimpleEv
+#[doc(alias = "FMOD::CodecPlaylist::readSimple(void)")]
+pub fn stub_a0bb8() -> ! {
+    todo!("0xa0bb8 FMOD::CodecPlaylist::readSimple(void)")
 }
