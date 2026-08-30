@@ -4074,3 +4074,703 @@ pub fn stub_1ca528() -> ! {
 pub fn stub_1ca7d4() -> ! {
     todo!("0x1ca7d4 __ZSt10__copy_auxISt15_Deque_iteratorIPhRKS1_PS2_ES0_IS1_RS1_PS1_EET0_T_SA_S9_")
 }
+
+#[doc(alias = "std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> std::__copy_normal<false,false>::__copy_n<std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>)")]
+// 0x1ca850 — __ZNSt13__copy_normalILb0ELb0EE8__copy_nISt15_Deque_iteratorIPhRKS3_PS4_ES2_IS3_RS3_PS3_EEET0_T_SC_SB_
+// was: std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> std::__copy_normal<false,false>::__copy_n<std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>)
+pub fn stub_1ca850() -> ! {
+    todo!("0x1ca850 __ZNSt13__copy_normalILb0ELb0EE8__copy_nISt15_Deque_iteratorIPhRKS3_PS4_ES2_IS3_RS3_PS3_EEET0_T_SC_SB_")
+}
+
+#[doc(alias = "std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> std::copy<std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>)")]
+// 0x1ca8cc — __ZSt4copyISt15_Deque_iteratorIPhRKS1_PS2_ES0_IS1_RS1_PS1_EET0_T_SA_S9_
+// was: std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> std::copy<std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>)
+pub fn stub_1ca8cc() -> ! {
+    todo!("0x1ca8cc __ZSt4copyISt15_Deque_iteratorIPhRKS1_PS2_ES0_IS1_RS1_PS1_EET0_T_SA_S9_")
+}
+
+#[doc(alias = "std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> std::__uninitialized_copy_aux<std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>,std::__true_type)")]
+// 0x1ca948 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIPhRKS1_PS2_ES0_IS1_RS1_PS1_EET0_T_SA_S9_St11__true_type
+// was: std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> std::__uninitialized_copy_aux<std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>,std::__true_type)
+pub fn stub_1ca948() -> ! {
+    todo!("0x1ca948 __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIPhRKS1_PS2_ES0_IS1_RS1_PS1_EET0_T_SA_S9_St11__true_type")
+}
+
+#[doc(alias = "std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> std::uninitialized_copy<std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>)")]
+// 0x1ca9c4 — __ZSt18uninitialized_copyISt15_Deque_iteratorIPhRKS1_PS2_ES0_IS1_RS1_PS1_EET0_T_SA_S9_
+// was: std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> std::uninitialized_copy<std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>)
+pub fn stub_1ca9c4() -> ! {
+    todo!("0x1ca9c4 __ZSt18uninitialized_copyISt15_Deque_iteratorIPhRKS1_PS2_ES0_IS1_RS1_PS1_EET0_T_SA_S9_")
+}
+
+#[doc(alias = "std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> std::__uninitialized_copy_a<std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>,unsigned char *>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>,std::allocator<unsigned char *>)")]
+// 0x1caa44 — __ZSt22__uninitialized_copy_aISt15_Deque_iteratorIPhRKS1_PS2_ES0_IS1_RS1_PS1_ES1_ET0_T_SA_S9_SaIT1_E
+// was: std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> std::__uninitialized_copy_a<std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>,unsigned char *>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>,std::allocator<unsigned char *>)
+pub fn stub_1caa44() -> ! {
+    todo!("0x1caa44 __ZSt22__uninitialized_copy_aISt15_Deque_iteratorIPhRKS1_PS2_ES0_IS1_RS1_PS1_ES1_ET0_T_SA_S9_SaIT1_E")
+}
+
+#[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::_M_reallocate_map(unsigned long,bool)")]
+// 0x1caac0 — __ZNSt5dequeIPhSaIS0_EE17_M_reallocate_mapEmb
+// was: std::deque<unsigned char *,std::allocator<unsigned char *>>::_M_reallocate_map(unsigned long,bool)
+pub fn stub_1caac0() -> ! {
+    todo!("0x1caac0 __ZNSt5dequeIPhSaIS0_EE17_M_reallocate_mapEmb")
+}
+
+#[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::_M_reserve_map_at_back(unsigned long)")]
+// 0x1cabe8 — __ZNSt5dequeIPhSaIS0_EE22_M_reserve_map_at_backEm
+// was: std::deque<unsigned char *,std::allocator<unsigned char *>>::_M_reserve_map_at_back(unsigned long)
+pub fn stub_1cabe8() -> ! {
+    todo!("0x1cabe8 __ZNSt5dequeIPhSaIS0_EE22_M_reserve_map_at_backEm")
+}
+
+#[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::_M_push_back_aux(unsigned char * const&)")]
+// 0x1cac1c — __ZNSt5dequeIPhSaIS0_EE16_M_push_back_auxERKS0_
+// was: std::deque<unsigned char *,std::allocator<unsigned char *>>::_M_push_back_aux(unsigned char * const&)
+pub fn stub_1cac1c() -> ! {
+    todo!("0x1cac1c __ZNSt5dequeIPhSaIS0_EE16_M_push_back_auxERKS0_")
+}
+
+#[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::push_back(unsigned char * const&)")]
+// 0x1cac80 — __ZNSt5dequeIPhSaIS0_EE9push_backERKS0_
+// was: std::deque<unsigned char *,std::allocator<unsigned char *>>::push_back(unsigned char * const&)
+pub fn stub_1cac80() -> ! {
+    todo!("0x1cac80 __ZNSt5dequeIPhSaIS0_EE9push_backERKS0_")
+}
+
+#[doc(alias = "std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>::operator--(void)")]
+// 0x1cacc4 — __ZNSt15_Deque_iteratorIPhRS0_PS0_EmmEv
+// was: std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>::operator--(void)
+pub fn stub_1cacc4() -> ! {
+    todo!("0x1cacc4 __ZNSt15_Deque_iteratorIPhRS0_PS0_EmmEv")
+}
+
+#[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::back(void)")]
+// 0x1cad04 — __ZNSt5dequeIPhSaIS0_EE4backEv
+// was: std::deque<unsigned char *,std::allocator<unsigned char *>>::back(void)
+pub fn stub_1cad04() -> ! {
+    todo!("0x1cad04 __ZNSt5dequeIPhSaIS0_EE4backEv")
+}
+
+#[doc(alias = "std::deque<unsigned short,std::allocator<unsigned short>>::_M_push_back_aux(unsigned short const&)")]
+// 0x1cad44 — __ZNSt5dequeItSaItEE16_M_push_back_auxERKt
+// was: std::deque<unsigned short,std::allocator<unsigned short>>::_M_push_back_aux(unsigned short const&)
+pub fn stub_1cad44() -> ! {
+    todo!("0x1cad44 __ZNSt5dequeItSaItEE16_M_push_back_auxERKt")
+}
+
+#[doc(alias = "std::deque<unsigned short,std::allocator<unsigned short>>::push_back(unsigned short const&)")]
+// 0x1cada8 — __ZNSt5dequeItSaItEE9push_backERKt
+// was: std::deque<unsigned short,std::allocator<unsigned short>>::push_back(unsigned short const&)
+pub fn stub_1cada8() -> ! {
+    todo!("0x1cada8 __ZNSt5dequeItSaItEE9push_backERKt")
+}
+
+#[doc(alias = "std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_M_destroy_nodes(unsigned short **,unsigned short **)")]
+// 0x1cadec — __ZNSt11_Deque_baseItSaItEE16_M_destroy_nodesEPPtS3_
+// was: std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_M_destroy_nodes(unsigned short **,unsigned short **)
+pub fn stub_1cadec() -> ! {
+    todo!("0x1cadec __ZNSt11_Deque_baseItSaItEE16_M_destroy_nodesEPPtS3_")
+}
+
+#[doc(alias = "std::_Deque_base<unsigned short,std::allocator<unsigned short>>::~_Deque_base()")]
+// 0x1caedc — __ZNSt11_Deque_baseItSaItEED2Ev
+// was: std::_Deque_base<unsigned short,std::allocator<unsigned short>>::~_Deque_base()
+pub fn stub_1caedc() -> ! {
+    todo!("0x1caedc __ZNSt11_Deque_baseItSaItEED2Ev")
+}
+
+#[doc(alias = "std::deque<unsigned short,std::allocator<unsigned short>>::~deque()")]
+// 0x1caf10 — __ZNSt5dequeItSaItEED2Ev
+// was: std::deque<unsigned short,std::allocator<unsigned short>>::~deque()
+pub fn stub_1caf10() -> ! {
+    todo!("0x1caf10 __ZNSt5dequeItSaItEED2Ev")
+}
+
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_push_back_aux(TagLib::MDMODEL const&)")]
+// 0x1caf80 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE16_M_push_back_auxERKS1_
+// was: std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_push_back_aux(TagLib::MDMODEL const&)
+pub fn stub_1caf80() -> ! {
+    todo!("0x1caf80 __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE16_M_push_back_auxERKS1_")
+}
+
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::push_back(TagLib::MDMODEL const&)")]
+// 0x1cafe4 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE9push_backERKS1_
+// was: std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::push_back(TagLib::MDMODEL const&)
+pub fn stub_1cafe4() -> ! {
+    todo!("0x1cafe4 __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE9push_backERKS1_")
+}
+
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_pop_back_aux(void)")]
+// 0x1cb028 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE15_M_pop_back_auxEv
+// was: std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_pop_back_aux(void)
+pub fn stub_1cb028() -> ! {
+    todo!("0x1cb028 __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE15_M_pop_back_auxEv")
+}
+
+#[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::_M_pop_back_aux(void)")]
+// 0x1cb05c — __ZNSt5dequeIPhSaIS0_EE15_M_pop_back_auxEv
+// was: std::deque<unsigned char *,std::allocator<unsigned char *>>::_M_pop_back_aux(void)
+pub fn stub_1cb05c() -> ! {
+    todo!("0x1cb05c __ZNSt5dequeIPhSaIS0_EE15_M_pop_back_auxEv")
+}
+
+#[doc(alias = "std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_destroy_nodes(unsigned char ***,unsigned char ***)")]
+// 0x1cb090 — __ZNSt11_Deque_baseIPhSaIS0_EE16_M_destroy_nodesEPPS0_S4_
+// was: std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_destroy_nodes(unsigned char ***,unsigned char ***)
+pub fn stub_1cb090() -> ! {
+    todo!("0x1cb090 __ZNSt11_Deque_baseIPhSaIS0_EE16_M_destroy_nodesEPPS0_S4_")
+}
+
+#[doc(alias = "std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::~_Deque_base()")]
+// 0x1cb180 — __ZNSt11_Deque_baseIPhSaIS0_EED2Ev
+// was: std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::~_Deque_base()
+pub fn stub_1cb180() -> ! {
+    todo!("0x1cb180 __ZNSt11_Deque_baseIPhSaIS0_EED2Ev")
+}
+
+#[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::~deque()")]
+// 0x1cb1b4 — __ZNSt5dequeIPhSaIS0_EED2Ev
+// was: std::deque<unsigned char *,std::allocator<unsigned char *>>::~deque()
+pub fn stub_1cb1b4() -> ! {
+    todo!("0x1cb1b4 __ZNSt5dequeIPhSaIS0_EED2Ev")
+}
+
+#[doc(alias = "std::map<unsigned int,int,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::operator[](unsigned int const&)")]
+// 0x1cb224 — __ZNSt3mapIjiSt4lessIjESaISt4pairIKjiEEEixERS3_
+// was: std::map<unsigned int,int,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::operator[](unsigned int const&)
+pub fn stub_1cb224() -> ! {
+    todo!("0x1cb224 __ZNSt3mapIjiSt4lessIjESaISt4pairIKjiEEEixERS3_")
+}
+
+#[doc(alias = "std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_M_create_nodes(unsigned short **,unsigned short **)")]
+// 0x1cb290 — __ZNSt11_Deque_baseItSaItEE15_M_create_nodesEPPtS3_
+// was: std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_M_create_nodes(unsigned short **,unsigned short **)
+pub fn stub_1cb290() -> ! {
+    todo!("0x1cb290 __ZNSt11_Deque_baseItSaItEE15_M_create_nodesEPPtS3_")
+}
+
+#[doc(alias = "std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_M_initialize_map(unsigned long)")]
+// 0x1cb510 — __ZNSt11_Deque_baseItSaItEE17_M_initialize_mapEm
+// was: std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_M_initialize_map(unsigned long)
+pub fn stub_1cb510() -> ! {
+    todo!("0x1cb510 __ZNSt11_Deque_baseItSaItEE17_M_initialize_mapEm")
+}
+
+#[doc(alias = "std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_Deque_base(std::allocator<unsigned short> const&,unsigned long)")]
+// 0x1cb6e0 — __ZNSt11_Deque_baseItSaItEEC2ERKS0_m
+// was: std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_Deque_base(std::allocator<unsigned short> const&,unsigned long)
+pub fn stub_1cb6e0() -> ! {
+    todo!("0x1cb6e0 __ZNSt11_Deque_baseItSaItEEC2ERKS0_m")
+}
+
+#[doc(alias = "std::deque<unsigned short,std::allocator<unsigned short>>::deque(std::deque<unsigned short,std::allocator<unsigned short>> const&)")]
+// 0x1cb7b0 — __ZNSt5dequeItSaItEEC2ERKS1_
+// was: std::deque<unsigned short,std::allocator<unsigned short>>::deque(std::deque<unsigned short,std::allocator<unsigned short>> const&)
+pub fn stub_1cb7b0() -> ! {
+    todo!("0x1cb7b0 __ZNSt5dequeItSaItEEC2ERKS1_")
+}
+
+#[doc(alias = "std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_create_nodes(TagLib::MDMODEL**,TagLib::MDMODEL**)")]
+// 0x1cb878 — __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EE15_M_create_nodesEPPS1_S5_
+// was: std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_create_nodes(TagLib::MDMODEL**,TagLib::MDMODEL**)
+pub fn stub_1cb878() -> ! {
+    todo!("0x1cb878 __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EE15_M_create_nodesEPPS1_S5_")
+}
+
+#[doc(alias = "std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_initialize_map(unsigned long)")]
+// 0x1cbaf8 — __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EE17_M_initialize_mapEm
+// was: std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_initialize_map(unsigned long)
+pub fn stub_1cbaf8() -> ! {
+    todo!("0x1cbaf8 __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EE17_M_initialize_mapEm")
+}
+
+#[doc(alias = "std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_Deque_base(std::allocator<TagLib::MDMODEL> const&,unsigned long)")]
+// 0x1cbcc8 — __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EEC2ERKS2_m
+// was: std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_Deque_base(std::allocator<TagLib::MDMODEL> const&,unsigned long)
+pub fn stub_1cbcc8() -> ! {
+    todo!("0x1cbcc8 __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EEC2ERKS2_m")
+}
+
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::deque(std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>> const&)")]
+// 0x1cbd98 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EEC2ERKS3_
+// was: std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::deque(std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>> const&)
+pub fn stub_1cbd98() -> ! {
+    todo!("0x1cbd98 __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EEC2ERKS3_")
+}
+
+#[doc(alias = "std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_create_nodes(unsigned char ***,unsigned char ***)")]
+// 0x1cbe60 — __ZNSt11_Deque_baseIPhSaIS0_EE15_M_create_nodesEPPS0_S4_
+// was: std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_create_nodes(unsigned char ***,unsigned char ***)
+pub fn stub_1cbe60() -> ! {
+    todo!("0x1cbe60 __ZNSt11_Deque_baseIPhSaIS0_EE15_M_create_nodesEPPS0_S4_")
+}
+
+#[doc(alias = "std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_initialize_map(unsigned long)")]
+// 0x1cc0e0 — __ZNSt11_Deque_baseIPhSaIS0_EE17_M_initialize_mapEm
+// was: std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_initialize_map(unsigned long)
+pub fn stub_1cc0e0() -> ! {
+    todo!("0x1cc0e0 __ZNSt11_Deque_baseIPhSaIS0_EE17_M_initialize_mapEm")
+}
+
+#[doc(alias = "std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_Deque_base(std::allocator<unsigned char *> const&,unsigned long)")]
+// 0x1cc2b0 — __ZNSt11_Deque_baseIPhSaIS0_EEC2ERKS1_m
+// was: std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_Deque_base(std::allocator<unsigned char *> const&,unsigned long)
+pub fn stub_1cc2b0() -> ! {
+    todo!("0x1cc2b0 __ZNSt11_Deque_baseIPhSaIS0_EEC2ERKS1_m")
+}
+
+#[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::deque(std::deque<unsigned char *,std::allocator<unsigned char *>> const&)")]
+// 0x1cc380 — __ZNSt5dequeIPhSaIS0_EEC2ERKS2_
+// was: std::deque<unsigned char *,std::allocator<unsigned char *>>::deque(std::deque<unsigned char *,std::allocator<unsigned char *>> const&)
+pub fn stub_1cc380() -> ! {
+    todo!("0x1cc380 __ZNSt5dequeIPhSaIS0_EEC2ERKS2_")
+}
+
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_destroy_data_aux(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>)")]
+// 0x1cc448 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE19_M_destroy_data_auxESt15_Deque_iteratorIS1_RS1_PS1_ES7_
+// was: std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_destroy_data_aux(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>)
+pub fn stub_1cc448() -> ! {
+    todo!("0x1cc448 __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE19_M_destroy_data_auxESt15_Deque_iteratorIS1_RS1_PS1_ES7_")
+}
+
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_destroy_data_dispatch(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::__false_type)")]
+// 0x1cc450 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE24_M_destroy_data_dispatchESt15_Deque_iteratorIS1_RS1_PS1_ES7_St12__false_type
+// was: std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_destroy_data_dispatch(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::__false_type)
+pub fn stub_1cc450() -> ! {
+    todo!("0x1cc450 __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE24_M_destroy_data_dispatchESt15_Deque_iteratorIS1_RS1_PS1_ES7_St12__false_type")
+}
+
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_destroy_data(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::allocator<TagLib::MDMODEL> const&)")]
+// 0x1cc4b0 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE15_M_destroy_dataESt15_Deque_iteratorIS1_RS1_PS1_ES7_RKS2_
+// was: std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_destroy_data(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::allocator<TagLib::MDMODEL> const&)
+pub fn stub_1cc4b0() -> ! {
+    todo!("0x1cc4b0 __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE15_M_destroy_dataESt15_Deque_iteratorIS1_RS1_PS1_ES7_RKS2_")
+}
+
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::~deque()")]
+// 0x1cc508 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EED2Ev
+// was: std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::~deque()
+pub fn stub_1cc508() -> ! {
+    todo!("0x1cc508 __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EED2Ev")
+}
+
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::string>,std::_Select1st<std::pair<std::string const,std::string>>,std::less<std::string>,std::allocator<std::pair<std::string const,std::string>>>::find(std::string const&)")]
+// 0x232bf4 — __ZNSt8_Rb_treeISsSt4pairIKSsSsESt10_Select1stIS2_ESt4lessISsESaIS2_EE4findERS1_
+// was: std::_Rb_tree<std::string,std::pair<std::string const,std::string>,std::_Select1st<std::pair<std::string const,std::string>>,std::less<std::string>,std::allocator<std::pair<std::string const,std::string>>>::find(std::string const&)
+pub fn stub_232bf4() -> ! {
+    todo!("0x232bf4 __ZNSt8_Rb_treeISsSt4pairIKSsSsESt10_Select1stIS2_ESt4lessISsESaIS2_EE4findERS1_")
+}
+
+#[doc(alias = "std::vector<OIS::MultiTouchState,std::allocator<OIS::MultiTouchState>>::size(void)const")]
+// 0x2331f8 — __ZNKSt6vectorIN3OIS15MultiTouchStateESaIS1_EE4sizeEv
+// was: std::vector<OIS::MultiTouchState,std::allocator<OIS::MultiTouchState>>::size(void)const
+pub fn stub_2331f8() -> ! {
+    todo!("0x2331f8 __ZNKSt6vectorIN3OIS15MultiTouchStateESaIS1_EE4sizeEv")
+}
+
+#[doc(alias = "OIS::MultiTouchState * std::uninitialized_copy<OIS::MultiTouchState *,OIS::MultiTouchState *>(OIS::MultiTouchState *,OIS::MultiTouchState *,OIS::MultiTouchState *)")]
+// 0x233214 — __ZSt18uninitialized_copyIPN3OIS15MultiTouchStateES2_ET0_T_S4_S3_
+// was: OIS::MultiTouchState * std::uninitialized_copy<OIS::MultiTouchState *,OIS::MultiTouchState *>(OIS::MultiTouchState *,OIS::MultiTouchState *,OIS::MultiTouchState *)
+pub fn stub_233214() -> ! {
+    todo!("0x233214 __ZSt18uninitialized_copyIPN3OIS15MultiTouchStateES2_ET0_T_S4_S3_")
+}
+
+#[doc(alias = "OIS::MultiTouchState * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<OIS::MultiTouchState *,OIS::MultiTouchState *>(OIS::MultiTouchState *,OIS::MultiTouchState *,OIS::MultiTouchState *)")]
+// 0x23344c — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3OIS15MultiTouchStateES5_EET0_T_S7_S6_
+// was: OIS::MultiTouchState * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<OIS::MultiTouchState *,OIS::MultiTouchState *>(OIS::MultiTouchState *,OIS::MultiTouchState *,OIS::MultiTouchState *)
+pub fn stub_23344c() -> ! {
+    todo!("0x23344c __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3OIS15MultiTouchStateES5_EET0_T_S7_S6_")
+}
+
+#[doc(alias = "std::vector<OIS::MultiTouchState,std::allocator<OIS::MultiTouchState>>::_M_insert_aux(__gnu_cxx::__normal_iterator<OIS::MultiTouchState*,std::vector<OIS::MultiTouchState,std::allocator<OIS::MultiTouchState>>>,OIS::MultiTouchState const&)")]
+// 0x233714 — __ZNSt6vectorIN3OIS15MultiTouchStateESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
+// was: std::vector<OIS::MultiTouchState,std::allocator<OIS::MultiTouchState>>::_M_insert_aux(__gnu_cxx::__normal_iterator<OIS::MultiTouchState*,std::vector<OIS::MultiTouchState,std::allocator<OIS::MultiTouchState>>>,OIS::MultiTouchState const&)
+pub fn stub_233714() -> ! {
+    todo!("0x233714 __ZNSt6vectorIN3OIS15MultiTouchStateESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_")
+}
+
+#[doc(alias = "std::vector<OIS::MultiTouchState,std::allocator<OIS::MultiTouchState>>::push_back(OIS::MultiTouchState const&)")]
+// 0x233920 — __ZNSt6vectorIN3OIS15MultiTouchStateESaIS1_EE9push_backERKS1_
+// was: std::vector<OIS::MultiTouchState,std::allocator<OIS::MultiTouchState>>::push_back(OIS::MultiTouchState const&)
+pub fn stub_233920() -> ! {
+    todo!("0x233920 __ZNSt6vectorIN3OIS15MultiTouchStateESaIS1_EE9push_backERKS1_")
+}
+
+#[doc(alias = "boost::detail::get_once_per_thread_epoch(void)")]
+// 0x235884 — __ZN5boost6detail25get_once_per_thread_epochEv
+// was: boost::detail::get_once_per_thread_epoch(void)
+pub fn stub_235884() -> ! {
+    todo!("0x235884 __ZN5boost6detail25get_once_per_thread_epochEv")
+}
+
+#[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
+// 0x2358fc — __ZN5boost6detail16thread_data_baseD0Ev
+// was: boost::detail::thread_data_base::~thread_data_base()
+pub fn stub_2358fc() -> ! {
+    todo!("0x2358fc __ZN5boost6detail16thread_data_baseD0Ev")
+}
+
+#[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
+// 0x235910 — __ZN5boost6detail16thread_data_baseD1Ev
+// was: boost::detail::thread_data_base::~thread_data_base()
+pub fn stub_235910() -> ! {
+    todo!("0x235910 __ZN5boost6detail16thread_data_baseD1Ev")
+}
+
+#[doc(alias = "boost::detail::thread_data_base::~thread_data_base()")]
+// 0x23591c — __ZN5boost6detail16thread_data_baseD2Ev
+// was: boost::detail::thread_data_base::~thread_data_base()
+pub fn stub_23591c() -> ! {
+    todo!("0x23591c __ZN5boost6detail16thread_data_baseD2Ev")
+}
+
+#[doc(alias = "boost::detail::get_current_thread_data(void)")]
+// 0x235d7c — __ZN5boost6detail23get_current_thread_dataEv
+// was: boost::detail::get_current_thread_data(void)
+pub fn stub_235d7c() -> ! {
+    todo!("0x235d7c __ZN5boost6detail23get_current_thread_dataEv")
+}
+
+#[doc(alias = "boost::detail::anonymous_namespace::create_current_thread_tls_key(void)")]
+// 0x235da4 — __ZN5boost6detail12_GLOBAL__N_129create_current_thread_tls_keyEv
+// was: boost::detail::anonymous_namespace::create_current_thread_tls_key(void)
+pub fn stub_235da4() -> ! {
+    todo!("0x235da4 __ZN5boost6detail12_GLOBAL__N_129create_current_thread_tls_keyEv")
+}
+
+#[doc(alias = "boost::thread::start_thread_noexcept(void)")]
+// 0x235dc4 — __ZN5boost6thread21start_thread_noexceptEv
+// was: boost::thread::start_thread_noexcept(void)
+pub fn stub_235dc4() -> ! {
+    todo!("0x235dc4 __ZN5boost6thread21start_thread_noexceptEv")
+}
+
+#[doc(alias = "boost::thread::join_noexcept(void)")]
+// 0x2360c4 — __ZN5boost6thread13join_noexceptEv
+// was: boost::thread::join_noexcept(void)
+pub fn stub_2360c4() -> ! {
+    todo!("0x2360c4 __ZN5boost6thread13join_noexceptEv")
+}
+
+#[doc(alias = "boost::thread::do_try_join_until_noexcept(timespec const&,bool &)")]
+// 0x236318 — __ZN5boost6thread26do_try_join_until_noexceptERK8timespecRb
+// was: boost::thread::do_try_join_until_noexcept(timespec const&,bool &)
+pub fn stub_236318() -> ! {
+    todo!("0x236318 __ZN5boost6thread26do_try_join_until_noexceptERK8timespecRb")
+}
+
+#[doc(alias = "boost::thread::detach(void)")]
+// 0x236598 — __ZN5boost6thread6detachEv
+// was: boost::thread::detach(void)
+pub fn stub_236598() -> ! {
+    todo!("0x236598 __ZN5boost6thread6detachEv")
+}
+
+#[doc(alias = "boost::this_thread::hiden::sleep_until(timespec const&)")]
+// 0x2366b0 — __ZN5boost11this_thread5hiden11sleep_untilERK8timespec
+// was: boost::this_thread::hiden::sleep_until(timespec const&)
+pub fn stub_2366b0() -> ! {
+    todo!("0x2366b0 __ZN5boost11this_thread5hiden11sleep_untilERK8timespec")
+}
+
+#[doc(alias = "boost::thread::native_handle(void)")]
+// 0x2368cc — __ZN5boost6thread13native_handleEv
+// was: boost::thread::native_handle(void)
+pub fn stub_2368cc() -> ! {
+    todo!("0x2368cc __ZN5boost6thread13native_handleEv")
+}
+
+#[doc(alias = "boost::this_thread::interruption_point(void)")]
+// 0x236a00 — __ZN5boost11this_thread18interruption_pointEv
+// was: boost::this_thread::interruption_point(void)
+pub fn stub_236a00() -> ! {
+    todo!("0x236a00 __ZN5boost11this_thread18interruption_pointEv")
+}
+
+#[doc(alias = "boost::this_thread::disable_interruption::disable_interruption(void)")]
+// 0x236b14 — __ZN5boost11this_thread20disable_interruptionC1Ev
+// was: boost::this_thread::disable_interruption::disable_interruption(void)
+pub fn stub_236b14() -> ! {
+    todo!("0x236b14 __ZN5boost11this_thread20disable_interruptionC1Ev")
+}
+
+#[doc(alias = "boost::this_thread::disable_interruption::~disable_interruption()")]
+// 0x236c14 — __ZN5boost11this_thread20disable_interruptionD1Ev
+// was: boost::this_thread::disable_interruption::~disable_interruption()
+pub fn stub_236c14() -> ! {
+    todo!("0x236c14 __ZN5boost11this_thread20disable_interruptionD1Ev")
+}
+
+#[doc(alias = "boost::anonymous_namespace::get_or_make_current_thread_data(void)")]
+// 0x236d04 — __ZN5boost12_GLOBAL__N_131get_or_make_current_thread_dataEv
+// was: boost::anonymous_namespace::get_or_make_current_thread_data(void)
+pub fn stub_236d04() -> ! {
+    todo!("0x236d04 __ZN5boost12_GLOBAL__N_131get_or_make_current_thread_dataEv")
+}
+
+#[doc(alias = "boost::detail::get_tss_data(void const*)")]
+// 0x236ec0 — __ZN5boost6detail12get_tss_dataEPKv
+// was: boost::detail::get_tss_data(void const*)
+pub fn stub_236ec0() -> ! {
+    todo!("0x236ec0 __ZN5boost6detail12get_tss_dataEPKv")
+}
+
+#[doc(alias = "boost::detail::add_new_tss_node(void const*,boost::shared_ptr<boost::detail::tss_cleanup_function>,void *)")]
+// 0x236f30 — __ZN5boost6detail16add_new_tss_nodeEPKvNS_10shared_ptrINS0_20tss_cleanup_functionEEEPv
+// was: boost::detail::add_new_tss_node(void const*,boost::shared_ptr<boost::detail::tss_cleanup_function>,void *)
+pub fn stub_236f30() -> ! {
+    todo!("0x236f30 __ZN5boost6detail16add_new_tss_nodeEPKvNS_10shared_ptrINS0_20tss_cleanup_functionEEEPv")
+}
+
+#[doc(alias = "boost::detail::set_tss_data(void const*,boost::shared_ptr<boost::detail::tss_cleanup_function>,void *,bool)")]
+// 0x237130 — __ZN5boost6detail12set_tss_dataEPKvNS_10shared_ptrINS0_20tss_cleanup_functionEEEPvb
+// was: boost::detail::set_tss_data(void const*,boost::shared_ptr<boost::detail::tss_cleanup_function>,void *,bool)
+pub fn stub_237130() -> ! {
+    todo!("0x237130 __ZN5boost6detail12set_tss_dataEPKvNS_10shared_ptrINS0_20tss_cleanup_functionEEEPvb")
+}
+
+#[doc(alias = "boost::anonymous_namespace::externally_launched_thread::~externally_launched_thread()")]
+// 0x237348 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD1Ev
+// was: boost::anonymous_namespace::externally_launched_thread::~externally_launched_thread()
+pub fn stub_237348() -> ! {
+    todo!("0x237348 __ZN5boost12_GLOBAL__N_126externally_launched_threadD1Ev")
+}
+
+#[doc(alias = "boost::anonymous_namespace::externally_launched_thread::~externally_launched_thread()")]
+// 0x237354 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev
+// was: boost::anonymous_namespace::externally_launched_thread::~externally_launched_thread()
+pub fn stub_237354() -> ! {
+    todo!("0x237354 __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev")
+}
+
+#[doc(alias = "boost::anonymous_namespace::externally_launched_thread::run(void)")]
+// 0x237368 — __ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv
+// was: boost::anonymous_namespace::externally_launched_thread::run(void)
+pub fn stub_237368() -> ! {
+    todo!("0x237368 __ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv")
+}
+
+#[doc(alias = "boost::anonymous_namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")]
+// 0x23736c — __ZN5boost12_GLOBAL__N_126externally_launched_thread25notify_all_at_thread_exitEPNS_18condition_variableEPNS_5mutexE
+// was: boost::anonymous_namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)
+pub fn stub_23736c() -> ! {
+    todo!("0x23736c __ZN5boost12_GLOBAL__N_126externally_launched_thread25notify_all_at_thread_exitEPNS_18condition_variableEPNS_5mutexE")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::detail::thread_data_base>::operator=(boost::shared_ptr<boost::detail::thread_data_base> const&)")]
+// 0x2374bc — __ZN5boost10shared_ptrINS_6detail16thread_data_baseEEaSERKS3_
+// was: boost::shared_ptr<boost::detail::thread_data_base>::operator=(boost::shared_ptr<boost::detail::thread_data_base> const&)
+pub fn stub_2374bc() -> ! {
+    todo!("0x2374bc __ZN5boost10shared_ptrINS_6detail16thread_data_baseEEaSERKS3_")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::detail::tss_cleanup_function>::operator=(boost::shared_ptr<boost::detail::tss_cleanup_function> const&)")]
+// 0x2375b0 — __ZN5boost10shared_ptrINS_6detail20tss_cleanup_functionEEaSERKS3_
+// was: boost::shared_ptr<boost::detail::tss_cleanup_function>::operator=(boost::shared_ptr<boost::detail::tss_cleanup_function> const&)
+pub fn stub_2375b0() -> ! {
+    todo!("0x2375b0 __ZN5boost10shared_ptrINS_6detail20tss_cleanup_functionEEaSERKS3_")
+}
+
+#[doc(alias = "std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::erase(std::_Rb_tree_iterator<std::pair<void const* const,boost::detail::tss_data_node>>,std::_Rb_tree_iterator<std::pair<void const* const,boost::detail::tss_data_node>>)")]
+// 0x2376a4 — __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE5eraseESt17_Rb_tree_iteratorIS7_ESF_
+// was: std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::erase(std::_Rb_tree_iterator<std::pair<void const* const,boost::detail::tss_data_node>>,std::_Rb_tree_iterator<std::pair<void const* const,boost::detail::tss_data_node>>)
+pub fn stub_2376a4() -> ! {
+    todo!("0x2376a4 __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE5eraseESt17_Rb_tree_iteratorIS7_ESF_")
+}
+
+#[doc(alias = "std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_erase(std::_Rb_tree_node<std::pair<void const* const,boost::detail::tss_data_node>> *)")]
+// 0x237798 — __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
+// was: std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_erase(std::_Rb_tree_node<std::pair<void const* const,boost::detail::tss_data_node>> *)
+pub fn stub_237798() -> ! {
+    todo!("0x237798 __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E")
+}
+
+#[doc(alias = "std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_insert_unique(std::pair<void const* const,boost::detail::tss_data_node> const&)")]
+// 0x237848 — __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE16_M_insert_uniqueERKS7_
+// was: std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_insert_unique(std::pair<void const* const,boost::detail::tss_data_node> const&)
+pub fn stub_237848() -> ! {
+    todo!("0x237848 __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE16_M_insert_uniqueERKS7_")
+}
+
+#[doc(alias = "std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_create_node(std::pair<void const* const,boost::detail::tss_data_node> const&)")]
+// 0x2378fc — __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE14_M_create_nodeERKS7_
+// was: std::_Rb_tree<void const*,std::pair<void const* const,boost::detail::tss_data_node>,std::_Select1st<std::pair<void const* const,boost::detail::tss_data_node>>,std::less<void const*>,std::allocator<std::pair<void const* const,boost::detail::tss_data_node>>>::_M_create_node(std::pair<void const* const,boost::detail::tss_data_node> const&)
+pub fn stub_2378fc() -> ! {
+    todo!("0x2378fc __ZNSt8_Rb_treeIPKvSt4pairIKS1_N5boost6detail13tss_data_nodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE14_M_create_nodeERKS7_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data_base>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data_base *)const")]
+// 0x2379ec — __ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data_base>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data_base *)const
+pub fn stub_2379ec() -> ! {
+    todo!("0x2379ec __ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")]
+// 0x237b40 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED1Ev
+// was: boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()
+pub fn stub_237b40() -> ! {
+    todo!("0x237b40 __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()")]
+// 0x237b44 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED0Ev
+// was: boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::~sp_counted_impl_p()
+pub fn stub_237b44() -> ! {
+    todo!("0x237b44 __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::dispose(void)")]
+// 0x237b50 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEE7disposeEv
+// was: boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::dispose(void)
+pub fn stub_237b50() -> ! {
+    todo!("0x237b50 __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::get_deleter(std::type_info const&)")]
+// 0x237b64 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::get_deleter(std::type_info const&)
+pub fn stub_237b64() -> ! {
+    todo!("0x237b64 __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::get_untyped_deleter(void)")]
+// 0x237b68 — __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_p<boost::detail::thread_data_base>::get_untyped_deleter(void)
+pub fn stub_237b68() -> ! {
+    todo!("0x237b68 __ZN5boost6detail17sp_counted_impl_pINS0_16thread_data_baseEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::detail::future_object_base::mark_finished_internal(boost::unique_lock<boost::mutex> &)")]
+// 0x237b6c — __ZN5boost6detail18future_object_base22mark_finished_internalERNS_11unique_lockINS_5mutexEEE
+// was: boost::detail::future_object_base::mark_finished_internal(boost::unique_lock<boost::mutex> &)
+pub fn stub_237b6c() -> ! {
+    todo!("0x237b6c __ZN5boost6detail18future_object_base22mark_finished_internalERNS_11unique_lockINS_5mutexEEE")
+}
+
+#[doc(alias = "boost::filesystem::detail::symlink_status(boost::filesystem::path const&,boost::system::error_code *)")]
+// 0x237d60 — __ZN5boost10filesystem6detail14symlink_statusERKNS0_4pathEPNS_6system10error_codeE
+// was: boost::filesystem::detail::symlink_status(boost::filesystem::path const&,boost::system::error_code *)
+pub fn stub_237d60() -> ! {
+    todo!("0x237d60 __ZN5boost10filesystem6detail14symlink_statusERKNS0_4pathEPNS_6system10error_codeE")
+}
+
+#[doc(alias = "boost::filesystem::detail::current_path(boost::system::error_code *)")]
+// 0x237fa4 — __ZN5boost10filesystem6detail12current_pathEPNS_6system10error_codeE
+// was: boost::filesystem::detail::current_path(boost::system::error_code *)
+pub fn stub_237fa4() -> ! {
+    todo!("0x237fa4 __ZN5boost10filesystem6detail12current_pathEPNS_6system10error_codeE")
+}
+
+#[doc(alias = "anonymous_namespace::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)")]
+// 0x238258 — __ZN12_GLOBAL__N_15errorEbRKN5boost10filesystem4pathEPNS0_6system10error_codeERKSs
+// was: anonymous_namespace::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)
+pub fn stub_238258() -> ! {
+    todo!("0x238258 __ZN12_GLOBAL__N_15errorEbRKN5boost10filesystem4pathEPNS0_6system10error_codeERKSs")
+}
+
+#[doc(alias = "boost::filesystem::detail::initial_path(boost::system::error_code *)")]
+// 0x23837c — __ZN5boost10filesystem6detail12initial_pathEPNS_6system10error_codeE
+// was: boost::filesystem::detail::initial_path(boost::system::error_code *)
+pub fn stub_23837c() -> ! {
+    todo!("0x23837c __ZN5boost10filesystem6detail12initial_pathEPNS_6system10error_codeE")
+}
+
+#[doc(alias = "boost::filesystem::detail::is_empty(boost::filesystem::path const&,boost::system::error_code *)")]
+// 0x23852c — __ZN5boost10filesystem6detail8is_emptyERKNS0_4pathEPNS_6system10error_codeE
+// was: boost::filesystem::detail::is_empty(boost::filesystem::path const&,boost::system::error_code *)
+pub fn stub_23852c() -> ! {
+    todo!("0x23852c __ZN5boost10filesystem6detail8is_emptyERKNS0_4pathEPNS_6system10error_codeE")
+}
+
+#[doc(alias = "boost::filesystem::detail::remove(boost::filesystem::path const&,boost::system::error_code *)")]
+// 0x2386d4 — __ZN5boost10filesystem6detail6removeERKNS0_4pathEPNS_6system10error_codeE
+// was: boost::filesystem::detail::remove(boost::filesystem::path const&,boost::system::error_code *)
+pub fn stub_2386d4() -> ! {
+    todo!("0x2386d4 __ZN5boost10filesystem6detail6removeERKNS0_4pathEPNS_6system10error_codeE")
+}
+
+#[doc(alias = "anonymous_namespace::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)")]
+// 0x2388a8 — __ZN12_GLOBAL__N_124remove_file_or_directoryERKN5boost10filesystem4pathENS1_9file_typeEPNS0_6system10error_codeE
+// was: anonymous_namespace::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)
+pub fn stub_2388a8() -> ! {
+    todo!("0x2388a8 __ZN12_GLOBAL__N_124remove_file_or_directoryERKN5boost10filesystem4pathENS1_9file_typeEPNS0_6system10error_codeE")
+}
+
+#[doc(alias = "boost::filesystem::detail::status(boost::filesystem::path const&,boost::system::error_code *)")]
+// 0x238adc — __ZN5boost10filesystem6detail6statusERKNS0_4pathEPNS_6system10error_codeE
+// was: boost::filesystem::detail::status(boost::filesystem::path const&,boost::system::error_code *)
+pub fn stub_238adc() -> ! {
+    todo!("0x238adc __ZN5boost10filesystem6detail6statusERKNS0_4pathEPNS_6system10error_codeE")
+}
+
+#[doc(alias = "boost::filesystem::detail::system_complete(boost::filesystem::path const&,boost::system::error_code *)")]
+// 0x238d18 — __ZN5boost10filesystem6detail15system_completeERKNS0_4pathEPNS_6system10error_codeE
+// was: boost::filesystem::detail::system_complete(boost::filesystem::path const&,boost::system::error_code *)
+pub fn stub_238d18() -> ! {
+    todo!("0x238d18 __ZN5boost10filesystem6detail15system_completeERKNS0_4pathEPNS_6system10error_codeE")
+}
+
+#[doc(alias = "boost::filesystem::directory_entry::m_get_status(boost::system::error_code *)const")]
+// 0x238f14 — __ZNK5boost10filesystem15directory_entry12m_get_statusEPNS_6system10error_codeE
+// was: boost::filesystem::directory_entry::m_get_status(boost::system::error_code *)const
+pub fn stub_238f14() -> ! {
+    todo!("0x238f14 __ZNK5boost10filesystem15directory_entry12m_get_statusEPNS_6system10error_codeE")
+}
+
+#[doc(alias = "boost::filesystem::detail::dir_itr_close(void *&,void *&)")]
+// 0x238f80 — __ZN5boost10filesystem6detail13dir_itr_closeERPvS3_
+// was: boost::filesystem::detail::dir_itr_close(void *&,void *&)
+pub fn stub_238f80() -> ! {
+    todo!("0x238f80 __ZN5boost10filesystem6detail13dir_itr_closeERPvS3_")
+}
+
+#[doc(alias = "boost::filesystem::detail::directory_iterator_construct(boost::filesystem::directory_iterator &,boost::filesystem::path const&,boost::system::error_code *)")]
+// 0x238fd4 — __ZN5boost10filesystem6detail28directory_iterator_constructERNS0_18directory_iteratorERKNS0_4pathEPNS_6system10error_codeE
+// was: boost::filesystem::detail::directory_iterator_construct(boost::filesystem::directory_iterator &,boost::filesystem::path const&,boost::system::error_code *)
+pub fn stub_238fd4() -> ! {
+    todo!("0x238fd4 __ZN5boost10filesystem6detail28directory_iterator_constructERNS0_18directory_iteratorERKNS0_4pathEPNS_6system10error_codeE")
+}
+
+#[doc(alias = "boost::filesystem::detail::directory_iterator_increment(boost::filesystem::directory_iterator &,boost::system::error_code *)")]
+// 0x239668 — __ZN5boost10filesystem6detail28directory_iterator_incrementERNS0_18directory_iteratorEPNS_6system10error_codeE
+// was: boost::filesystem::detail::directory_iterator_increment(boost::filesystem::directory_iterator &,boost::system::error_code *)
+pub fn stub_239668() -> ! {
+    todo!("0x239668 __ZN5boost10filesystem6detail28directory_iterator_incrementERNS0_18directory_iteratorEPNS_6system10error_codeE")
+}
+
+#[doc(alias = "boost::filesystem::directory_iterator::~directory_iterator()")]
+// 0x239b34 — __ZN5boost10filesystem18directory_iteratorD1Ev
+// was: boost::filesystem::directory_iterator::~directory_iterator()
+pub fn stub_239b34() -> ! {
+    todo!("0x239b34 __ZN5boost10filesystem18directory_iteratorD1Ev")
+}
+
+#[doc(alias = "boost::filesystem::filesystem_error::~filesystem_error()")]
+// 0x239bc8 — __ZN5boost10filesystem16filesystem_errorD1Ev
+// was: boost::filesystem::filesystem_error::~filesystem_error()
+pub fn stub_239bc8() -> ! {
+    todo!("0x239bc8 __ZN5boost10filesystem16filesystem_errorD1Ev")
+}
+
+#[doc(alias = "boost::filesystem::filesystem_error::filesystem_error(std::string const&,boost::system::error_code)")]
+// 0x239cc8 — __ZN5boost10filesystem16filesystem_errorC2ERKSsNS_6system10error_codeE
+// was: boost::filesystem::filesystem_error::filesystem_error(std::string const&,boost::system::error_code)
+pub fn stub_239cc8() -> ! {
+    todo!("0x239cc8 __ZN5boost10filesystem16filesystem_errorC2ERKSsNS_6system10error_codeE")
+}
+
+#[doc(alias = "boost::filesystem::filesystem_error::~filesystem_error()")]
+// 0x239e90 — __ZN5boost10filesystem16filesystem_errorD0Ev
+// was: boost::filesystem::filesystem_error::~filesystem_error()
+pub fn stub_239e90() -> ! {
+    todo!("0x239e90 __ZN5boost10filesystem16filesystem_errorD0Ev")
+}
+
+#[doc(alias = "boost::filesystem::filesystem_error::what(void)const")]
+// 0x239f94 — __ZNK5boost10filesystem16filesystem_error4whatEv
+// was: boost::filesystem::filesystem_error::what(void)const
+pub fn stub_239f94() -> ! {
+    todo!("0x239f94 __ZNK5boost10filesystem16filesystem_error4whatEv")
+}
