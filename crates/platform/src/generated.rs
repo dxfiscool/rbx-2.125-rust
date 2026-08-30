@@ -1,6 +1,6 @@
-//! platform generated — next 482 stubs sorted by EA, from ida/export.json
-//! Filter: RobloxView|GameViewController|AppDelegate|EAGL2|PlaceLauncher|ControlView|UIViewController|HomeViewController|Teleporter
-//! Batch: 482 stubs (100 + 100 + 100 + 100 + 2 + 80 final, 481 filter + 1 stray Login) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! platform generated — next 582 stubs sorted by EA, from ida/export.json
+//! Filter: RobloxView|GameViewController|AppDelegate|EAGL2|PlaceLauncher|ControlView|UIViewController|HomeViewController|Teleporter|LoginViewController|SignupViewController|RobloxNavBar|DebugSettings|MainViewController|ExternalLogin|RobloxInfo|RobloxAlert
+//! Batch: 582 stubs (100 + 100 + 100 + 100 + 2 + 80 final + 100 expanded, 1263 filter (Roblox iOS), 482 prior + 100 new) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -3376,3 +3376,695 @@ pub fn stub_f27264() -> ! {
 pub fn stub_f27274() -> ! {
     todo!("0xf27274 RobloxView::RenderJob::getMetric(std::string const&)const")
 }
+
+// 0x1a970 — -[DebugSettingsViewController initWithCoder:]
+// type: DebugSettingsViewController *__cdecl(DebugSettingsViewController *self, SEL, id)
+#[doc(alias = "-[DebugSettingsViewController initWithCoder:]")]
+pub fn stub_1a970() -> ! {
+    todo!("0x1a970 -[DebugSettingsViewController initWithCoder:]")
+}
+
+// 0x1ab20 — -[DebugSettingsViewController dealloc]
+// type: void __cdecl(DebugSettingsViewController *self, SEL)
+#[doc(alias = "-[DebugSettingsViewController dealloc]")]
+pub fn stub_1ab20() -> ! {
+    todo!("0x1ab20 -[DebugSettingsViewController dealloc]")
+}
+
+// 0x1ab6c — -[DebugSettingsViewController reloadOldData]
+// type: void __cdecl(DebugSettingsViewController *self, SEL)
+#[doc(alias = "-[DebugSettingsViewController reloadOldData]")]
+pub fn stub_1ab6c() -> ! {
+    todo!("0x1ab6c -[DebugSettingsViewController reloadOldData]")
+}
+
+// 0x1ab70 — -[DebugSettingsViewController viewDidLoad]
+// type: void __cdecl(DebugSettingsViewController *self, SEL)
+#[doc(alias = "-[DebugSettingsViewController viewDidLoad]")]
+pub fn stub_1ab70() -> ! {
+    todo!("0x1ab70 -[DebugSettingsViewController viewDidLoad]")
+}
+
+// 0x1abb0 — -[DebugSettingsViewController setDisplayUI]
+// type: void __cdecl(DebugSettingsViewController *self, SEL)
+#[doc(alias = "-[DebugSettingsViewController setDisplayUI]")]
+pub fn stub_1abb0() -> ! {
+    todo!("0x1abb0 -[DebugSettingsViewController setDisplayUI]")
+}
+
+// 0x1ac80 — -[DebugSettingsViewController displayPickerDoneClicked:]
+// type: void __cdecl(DebugSettingsViewController *self, SEL, id)
+#[doc(alias = "-[DebugSettingsViewController displayPickerDoneClicked:]")]
+pub fn stub_1ac80() -> ! {
+    todo!("0x1ac80 -[DebugSettingsViewController displayPickerDoneClicked:]")
+}
+
+// 0x1ad78 — ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")]
+pub fn stub_1ad78() -> ! {
+    todo!("0x1ad78 ___56-[DebugSettingsViewController displayPickerDoneClicked:]_block_invoke")
+}
+
+// 0x1aed0 — -[DebugSettingsViewController displayTouchUp:]
+// type: void __cdecl(DebugSettingsViewController *self, SEL, id)
+#[doc(alias = "-[DebugSettingsViewController displayTouchUp:]")]
+pub fn stub_1aed0() -> ! {
+    todo!("0x1aed0 -[DebugSettingsViewController displayTouchUp:]")
+}
+
+// 0x1afa0 — ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")]
+pub fn stub_1afa0() -> ! {
+    todo!("0x1afa0 ___46-[DebugSettingsViewController displayTouchUp:]_block_invoke")
+}
+
+// 0x1b170 — -[DebugSettingsViewController didReceiveMemoryWarning]
+// type: void __cdecl(DebugSettingsViewController *self, SEL)
+#[doc(alias = "-[DebugSettingsViewController didReceiveMemoryWarning]")]
+pub fn stub_1b170() -> ! {
+    todo!("0x1b170 -[DebugSettingsViewController didReceiveMemoryWarning]")
+}
+
+// 0x1b19c — -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]
+// type: char __cdecl(DebugSettingsViewController *self, SEL, int)
+#[doc(alias = "-[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")]
+pub fn stub_1b19c() -> ! {
+    todo!("0x1b19c -[DebugSettingsViewController shouldAutorotateToInterfaceOrientation:]")
+}
+
+// 0x1b224 — -[DebugSettingsViewController viewWillAppear:]
+// type: void __cdecl(DebugSettingsViewController *self, SEL, char)
+#[doc(alias = "-[DebugSettingsViewController viewWillAppear:]")]
+pub fn stub_1b224() -> ! {
+    todo!("0x1b224 -[DebugSettingsViewController viewWillAppear:]")
+}
+
+// 0x1b2a8 — -[DebugSettingsViewController doneTouchUp:]
+// type: void __cdecl(DebugSettingsViewController *self, SEL, id)
+#[doc(alias = "-[DebugSettingsViewController doneTouchUp:]")]
+pub fn stub_1b2a8() -> ! {
+    todo!("0x1b2a8 -[DebugSettingsViewController doneTouchUp:]")
+}
+
+// 0x1b2bc — -[DebugSettingsViewController numberOfComponentsInPickerView:]
+// type: int __cdecl(DebugSettingsViewController *self, SEL, id)
+#[doc(alias = "-[DebugSettingsViewController numberOfComponentsInPickerView:]")]
+pub fn stub_1b2bc() -> ! {
+    todo!("0x1b2bc -[DebugSettingsViewController numberOfComponentsInPickerView:]")
+}
+
+// 0x1b2c0 — -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]
+// type: int __cdecl(DebugSettingsViewController *self, SEL, id, int)
+#[doc(alias = "-[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")]
+pub fn stub_1b2c0() -> ! {
+    todo!("0x1b2c0 -[DebugSettingsViewController pickerView:numberOfRowsInComponent:]")
+}
+
+// 0x1b2e0 — -[DebugSettingsViewController pickerView:titleForRow:forComponent:]
+// type: id __cdecl(DebugSettingsViewController *self, SEL, id, int, int)
+#[doc(alias = "-[DebugSettingsViewController pickerView:titleForRow:forComponent:]")]
+pub fn stub_1b2e0() -> ! {
+    todo!("0x1b2e0 -[DebugSettingsViewController pickerView:titleForRow:forComponent:]")
+}
+
+// 0x1b300 — -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]
+// type: char __cdecl(DebugSettingsViewController *self, SEL)
+#[doc(alias = "-[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")]
+pub fn stub_1b300() -> ! {
+    todo!("0x1b300 -[DebugSettingsViewController disablesAutomaticKeyboardDismissal]")
+}
+
+// 0x1b304 — -[DebugSettingsViewController .cxx_construct]
+// type: id __cdecl(DebugSettingsViewController *self, SEL)
+#[doc(alias = "-[DebugSettingsViewController .cxx_construct]")]
+pub fn stub_1b304() -> ! {
+    todo!("0x1b304 -[DebugSettingsViewController .cxx_construct]")
+}
+
+// 0x1da5c — +[LoginViewController sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[LoginViewController sharedInstance]")]
+pub fn stub_1da5c() -> ! {
+    todo!("0x1da5c +[LoginViewController sharedInstance]")
+}
+
+// 0x1da6c — -[LoginViewController initWithCoder:]
+// type: LoginViewController *__cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController initWithCoder:]")]
+pub fn stub_1da6c() -> ! {
+    todo!("0x1da6c -[LoginViewController initWithCoder:]")
+}
+
+// 0x1dbd4 — -[LoginViewController dealloc]
+// type: void __cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController dealloc]")]
+pub fn stub_1dbd4() -> ! {
+    todo!("0x1dbd4 -[LoginViewController dealloc]")
+}
+
+// 0x1dd84 — -[LoginViewController populateEnvironmentPicker]
+// type: void __cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController populateEnvironmentPicker]")]
+pub fn stub_1dd84() -> ! {
+    todo!("0x1dd84 -[LoginViewController populateEnvironmentPicker]")
+}
+
+// 0x1e0d8 — -[LoginViewController pickerView:didSelectRow:inComponent:]
+// type: void __cdecl(LoginViewController *self, SEL, id, int, int)
+#[doc(alias = "-[LoginViewController pickerView:didSelectRow:inComponent:]")]
+pub fn stub_1e0d8() -> ! {
+    todo!("0x1e0d8 -[LoginViewController pickerView:didSelectRow:inComponent:]")
+}
+
+// 0x1e13c — ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")]
+pub fn stub_1e13c() -> ! {
+    todo!("0x1e13c ___59-[LoginViewController pickerView:didSelectRow:inComponent:]_block_invoke")
+}
+
+// 0x1e170 — -[LoginViewController numberOfComponentsInPickerView:]
+// type: int __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController numberOfComponentsInPickerView:]")]
+pub fn stub_1e170() -> ! {
+    todo!("0x1e170 -[LoginViewController numberOfComponentsInPickerView:]")
+}
+
+// 0x1e174 — -[LoginViewController pickerView:numberOfRowsInComponent:]
+// type: int __cdecl(LoginViewController *self, SEL, id, int)
+#[doc(alias = "-[LoginViewController pickerView:numberOfRowsInComponent:]")]
+pub fn stub_1e174() -> ! {
+    todo!("0x1e174 -[LoginViewController pickerView:numberOfRowsInComponent:]")
+}
+
+// 0x1e194 — -[LoginViewController pickerView:titleForRow:forComponent:]
+// type: id __cdecl(LoginViewController *self, SEL, id, int, int)
+#[doc(alias = "-[LoginViewController pickerView:titleForRow:forComponent:]")]
+pub fn stub_1e194() -> ! {
+    todo!("0x1e194 -[LoginViewController pickerView:titleForRow:forComponent:]")
+}
+
+// 0x1e1b4 — -[LoginViewController viewWillAppear:]
+// type: void __cdecl(LoginViewController *self, SEL, char)
+#[doc(alias = "-[LoginViewController viewWillAppear:]")]
+pub fn stub_1e1b4() -> ! {
+    todo!("0x1e1b4 -[LoginViewController viewWillAppear:]")
+}
+
+// 0x1e2c4 — ___38-[LoginViewController viewWillAppear:]_block_invoke
+#[doc(alias = "___38-[LoginViewController viewWillAppear:]_block_invoke")]
+pub fn stub_1e2c4() -> ! {
+    todo!("0x1e2c4 ___38-[LoginViewController viewWillAppear:]_block_invoke")
+}
+
+// 0x1e2ec — -[LoginViewController viewDidLoad]
+// type: void __cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController viewDidLoad]")]
+pub fn stub_1e2ec() -> ! {
+    todo!("0x1e2ec -[LoginViewController viewDidLoad]")
+}
+
+// 0x1e898 — ___34-[LoginViewController viewDidLoad]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___34-[LoginViewController viewDidLoad]_block_invoke")]
+pub fn stub_1e898() -> ! {
+    todo!("0x1e898 ___34-[LoginViewController viewDidLoad]_block_invoke")
+}
+
+// 0x1e8cc — -[LoginViewController viewDidUnload]
+// type: void __cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController viewDidUnload]")]
+pub fn stub_1e8cc() -> ! {
+    todo!("0x1e8cc -[LoginViewController viewDidUnload]")
+}
+
+// 0x1e9d0 — -[LoginViewController handleSignupNotification:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController handleSignupNotification:]")]
+pub fn stub_1e9d0() -> ! {
+    todo!("0x1e9d0 -[LoginViewController handleSignupNotification:]")
+}
+
+// 0x1eaa0 — ___48-[LoginViewController handleSignupNotification:]_block_invoke
+#[doc(alias = "___48-[LoginViewController handleSignupNotification:]_block_invoke")]
+pub fn stub_1eaa0() -> ! {
+    todo!("0x1eaa0 ___48-[LoginViewController handleSignupNotification:]_block_invoke")
+}
+
+// 0x1eb5c — -[LoginViewController gotLoginFailedNotification:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController gotLoginFailedNotification:]")]
+pub fn stub_1eb5c() -> ! {
+    todo!("0x1eb5c -[LoginViewController gotLoginFailedNotification:]")
+}
+
+// 0x1ebdc — ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke
+#[doc(alias = "___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")]
+pub fn stub_1ebdc() -> ! {
+    todo!("0x1ebdc ___50-[LoginViewController gotLoginFailedNotification:]_block_invoke")
+}
+
+// 0x1ec84 — -[LoginViewController gotLoginSuccessfulNotification:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController gotLoginSuccessfulNotification:]")]
+pub fn stub_1ec84() -> ! {
+    todo!("0x1ec84 -[LoginViewController gotLoginSuccessfulNotification:]")
+}
+
+// 0x1ed04 — ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke
+#[doc(alias = "___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")]
+pub fn stub_1ed04() -> ! {
+    todo!("0x1ed04 ___54-[LoginViewController gotLoginSuccessfulNotification:]_block_invoke")
+}
+
+// 0x1ed44 — -[LoginViewController showLoggingIn]
+// type: void __cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController showLoggingIn]")]
+pub fn stub_1ed44() -> ! {
+    todo!("0x1ed44 -[LoginViewController showLoggingIn]")
+}
+
+// 0x1edbc — ___36-[LoginViewController showLoggingIn]_block_invoke
+#[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke")]
+pub fn stub_1edbc() -> ! {
+    todo!("0x1edbc ___36-[LoginViewController showLoggingIn]_block_invoke")
+}
+
+// 0x1ee58 — ___36-[LoginViewController showLoggingIn]_block_invoke_2
+#[doc(alias = "___36-[LoginViewController showLoggingIn]_block_invoke_2")]
+pub fn stub_1ee58() -> ! {
+    todo!("0x1ee58 ___36-[LoginViewController showLoggingIn]_block_invoke_2")
+}
+
+// 0x1eeac — -[LoginViewController stopShowLoggingIn]
+// type: void __cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController stopShowLoggingIn]")]
+pub fn stub_1eeac() -> ! {
+    todo!("0x1eeac -[LoginViewController stopShowLoggingIn]")
+}
+
+// 0x1eefc — ___40-[LoginViewController stopShowLoggingIn]_block_invoke
+#[doc(alias = "___40-[LoginViewController stopShowLoggingIn]_block_invoke")]
+pub fn stub_1eefc() -> ! {
+    todo!("0x1eefc ___40-[LoginViewController stopShowLoggingIn]_block_invoke")
+}
+
+// 0x1efac — ___40-[LoginViewController stopShowLoggingIn]_block_invoke_2
+#[doc(alias = "___40-[LoginViewController stopShowLoggingIn]_block_invoke_2")]
+pub fn stub_1efac() -> ! {
+    todo!("0x1efac ___40-[LoginViewController stopShowLoggingIn]_block_invoke_2")
+}
+
+// 0x1f004 — -[LoginViewController playNowDidTouchUpInside:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController playNowDidTouchUpInside:]")]
+pub fn stub_1f004() -> ! {
+    todo!("0x1f004 -[LoginViewController playNowDidTouchUpInside:]")
+}
+
+// 0x1f0d4 — -[LoginViewController login:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController login:]")]
+pub fn stub_1f0d4() -> ! {
+    todo!("0x1f0d4 -[LoginViewController login:]")
+}
+
+// 0x1f1a0 — -[LoginViewController usernameDidEndOnExit:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController usernameDidEndOnExit:]")]
+pub fn stub_1f1a0() -> ! {
+    todo!("0x1f1a0 -[LoginViewController usernameDidEndOnExit:]")
+}
+
+// 0x1f1c8 — -[LoginViewController passwordDidEndOnExit:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController passwordDidEndOnExit:]")]
+pub fn stub_1f1c8() -> ! {
+    todo!("0x1f1c8 -[LoginViewController passwordDidEndOnExit:]")
+}
+
+// 0x1f260 — -[LoginViewController swiToggleRememberMyPassword:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController swiToggleRememberMyPassword:]")]
+pub fn stub_1f260() -> ! {
+    todo!("0x1f260 -[LoginViewController swiToggleRememberMyPassword:]")
+}
+
+// 0x1f2c0 — -[LoginViewController loginButtonDidTouchUpInside:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController loginButtonDidTouchUpInside:]")]
+pub fn stub_1f2c0() -> ! {
+    todo!("0x1f2c0 -[LoginViewController loginButtonDidTouchUpInside:]")
+}
+
+// 0x1f2e0 — -[LoginViewController onKeyboardHide:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController onKeyboardHide:]")]
+pub fn stub_1f2e0() -> ! {
+    todo!("0x1f2e0 -[LoginViewController onKeyboardHide:]")
+}
+
+// 0x1f380 — ___38-[LoginViewController onKeyboardHide:]_block_invoke
+#[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke")]
+pub fn stub_1f380() -> ! {
+    todo!("0x1f380 ___38-[LoginViewController onKeyboardHide:]_block_invoke")
+}
+
+// 0x1f3f8 — ___38-[LoginViewController onKeyboardHide:]_block_invoke_2
+#[doc(alias = "___38-[LoginViewController onKeyboardHide:]_block_invoke_2")]
+pub fn stub_1f3f8() -> ! {
+    todo!("0x1f3f8 ___38-[LoginViewController onKeyboardHide:]_block_invoke_2")
+}
+
+// 0x1f4a8 — -[LoginViewController onKeyboardShow:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController onKeyboardShow:]")]
+pub fn stub_1f4a8() -> ! {
+    todo!("0x1f4a8 -[LoginViewController onKeyboardShow:]")
+}
+
+// 0x1f538 — ___38-[LoginViewController onKeyboardShow:]_block_invoke
+#[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke")]
+pub fn stub_1f538() -> ! {
+    todo!("0x1f538 ___38-[LoginViewController onKeyboardShow:]_block_invoke")
+}
+
+// 0x1f5e0 — ___38-[LoginViewController onKeyboardShow:]_block_invoke_2
+#[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke_2")]
+pub fn stub_1f5e0() -> ! {
+    todo!("0x1f5e0 ___38-[LoginViewController onKeyboardShow:]_block_invoke_2")
+}
+
+// 0x1f674 — ___38-[LoginViewController onKeyboardShow:]_block_invoke311
+// type: id __fastcall(int)
+#[doc(alias = "___38-[LoginViewController onKeyboardShow:]_block_invoke311")]
+pub fn stub_1f674() -> ! {
+    todo!("0x1f674 ___38-[LoginViewController onKeyboardShow:]_block_invoke311")
+}
+
+// 0x1f6b0 — -[LoginViewController doLoginTransition]
+// type: void __cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController doLoginTransition]")]
+pub fn stub_1f6b0() -> ! {
+    todo!("0x1f6b0 -[LoginViewController doLoginTransition]")
+}
+
+// 0x1f808 — ___40-[LoginViewController doLoginTransition]_block_invoke
+#[doc(alias = "___40-[LoginViewController doLoginTransition]_block_invoke")]
+pub fn stub_1f808() -> ! {
+    todo!("0x1f808 ___40-[LoginViewController doLoginTransition]_block_invoke")
+}
+
+// 0x1fd38 — -[LoginViewController prepareForSegue:sender:]
+// type: void __cdecl(LoginViewController *self, SEL, id, id)
+#[doc(alias = "-[LoginViewController prepareForSegue:sender:]")]
+pub fn stub_1fd38() -> ! {
+    todo!("0x1fd38 -[LoginViewController prepareForSegue:sender:]")
+}
+
+// 0x1fe70 — -[LoginViewController setLoginPlaceId:]
+// type: void __cdecl(LoginViewController *self, SEL, int)
+#[doc(alias = "-[LoginViewController setLoginPlaceId:]")]
+pub fn stub_1fe70() -> ! {
+    todo!("0x1fe70 -[LoginViewController setLoginPlaceId:]")
+}
+
+// 0x1ff5c — -[LoginViewController username]
+// type: UITextField *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController username]")]
+pub fn stub_1ff5c() -> ! {
+    todo!("0x1ff5c -[LoginViewController username]")
+}
+
+// 0x1ff6c — -[LoginViewController setUsername:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setUsername:]")]
+pub fn stub_1ff6c() -> ! {
+    todo!("0x1ff6c -[LoginViewController setUsername:]")
+}
+
+// 0x1ff90 — -[LoginViewController password]
+// type: UITextField *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController password]")]
+pub fn stub_1ff90() -> ! {
+    todo!("0x1ff90 -[LoginViewController password]")
+}
+
+// 0x1ffa0 — -[LoginViewController setPassword:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setPassword:]")]
+pub fn stub_1ffa0() -> ! {
+    todo!("0x1ffa0 -[LoginViewController setPassword:]")
+}
+
+// 0x1ffc4 — -[LoginViewController btnSkip]
+// type: UIButton *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController btnSkip]")]
+pub fn stub_1ffc4() -> ! {
+    todo!("0x1ffc4 -[LoginViewController btnSkip]")
+}
+
+// 0x1ffd4 — -[LoginViewController setBtnSkip:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setBtnSkip:]")]
+pub fn stub_1ffd4() -> ! {
+    todo!("0x1ffd4 -[LoginViewController setBtnSkip:]")
+}
+
+// 0x1fff8 — -[LoginViewController mainView]
+// type: UIView *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController mainView]")]
+pub fn stub_1fff8() -> ! {
+    todo!("0x1fff8 -[LoginViewController mainView]")
+}
+
+// 0x20008 — -[LoginViewController setMainView:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setMainView:]")]
+pub fn stub_20008() -> ! {
+    todo!("0x20008 -[LoginViewController setMainView:]")
+}
+
+// 0x2002c — -[LoginViewController EnvironmentPicker]
+// type: UIPickerView *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController EnvironmentPicker]")]
+pub fn stub_2002c() -> ! {
+    todo!("0x2002c -[LoginViewController EnvironmentPicker]")
+}
+
+// 0x2003c — -[LoginViewController setEnvironmentPicker:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setEnvironmentPicker:]")]
+pub fn stub_2003c() -> ! {
+    todo!("0x2003c -[LoginViewController setEnvironmentPicker:]")
+}
+
+// 0x20060 — -[LoginViewController rememberPwLabel]
+// type: UILabel *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController rememberPwLabel]")]
+pub fn stub_20060() -> ! {
+    todo!("0x20060 -[LoginViewController rememberPwLabel]")
+}
+
+// 0x20070 — -[LoginViewController setRememberPwLabel:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setRememberPwLabel:]")]
+pub fn stub_20070() -> ! {
+    todo!("0x20070 -[LoginViewController setRememberPwLabel:]")
+}
+
+// 0x20094 — -[LoginViewController loginLabel]
+// type: UILabel *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController loginLabel]")]
+pub fn stub_20094() -> ! {
+    todo!("0x20094 -[LoginViewController loginLabel]")
+}
+
+// 0x200a4 — -[LoginViewController setLoginLabel:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setLoginLabel:]")]
+pub fn stub_200a4() -> ! {
+    todo!("0x200a4 -[LoginViewController setLoginLabel:]")
+}
+
+// 0x200c8 — -[LoginViewController signupLabel]
+// type: UILabel *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController signupLabel]")]
+pub fn stub_200c8() -> ! {
+    todo!("0x200c8 -[LoginViewController signupLabel]")
+}
+
+// 0x200d8 — -[LoginViewController setSignupLabel:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setSignupLabel:]")]
+pub fn stub_200d8() -> ! {
+    todo!("0x200d8 -[LoginViewController setSignupLabel:]")
+}
+
+// 0x200fc — -[LoginViewController swiRememberMyPassword]
+// type: UISwitch *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController swiRememberMyPassword]")]
+pub fn stub_200fc() -> ! {
+    todo!("0x200fc -[LoginViewController swiRememberMyPassword]")
+}
+
+// 0x2010c — -[LoginViewController setSwiRememberMyPassword:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setSwiRememberMyPassword:]")]
+pub fn stub_2010c() -> ! {
+    todo!("0x2010c -[LoginViewController setSwiRememberMyPassword:]")
+}
+
+// 0x20130 — -[LoginViewController scrollView]
+// type: UIScrollView *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController scrollView]")]
+pub fn stub_20130() -> ! {
+    todo!("0x20130 -[LoginViewController scrollView]")
+}
+
+// 0x20140 — -[LoginViewController setScrollView:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setScrollView:]")]
+pub fn stub_20140() -> ! {
+    todo!("0x20140 -[LoginViewController setScrollView:]")
+}
+
+// 0x20164 — -[LoginViewController imgUsernamePasswordBackground]
+// type: UIImageView *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController imgUsernamePasswordBackground]")]
+pub fn stub_20164() -> ! {
+    todo!("0x20164 -[LoginViewController imgUsernamePasswordBackground]")
+}
+
+// 0x20174 — -[LoginViewController setImgUsernamePasswordBackground:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setImgUsernamePasswordBackground:]")]
+pub fn stub_20174() -> ! {
+    todo!("0x20174 -[LoginViewController setImgUsernamePasswordBackground:]")
+}
+
+// 0x20198 — -[LoginViewController robloxLogo]
+// type: UIImageView *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController robloxLogo]")]
+pub fn stub_20198() -> ! {
+    todo!("0x20198 -[LoginViewController robloxLogo]")
+}
+
+// 0x201cc — -[LoginViewController loginFieldViews]
+// type: UIView *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController loginFieldViews]")]
+pub fn stub_201cc() -> ! {
+    todo!("0x201cc -[LoginViewController loginFieldViews]")
+}
+
+// 0x201dc — -[LoginViewController setLoginFieldViews:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setLoginFieldViews:]")]
+pub fn stub_201dc() -> ! {
+    todo!("0x201dc -[LoginViewController setLoginFieldViews:]")
+}
+
+// 0x20200 — -[LoginViewController loginActivityIndicator]
+// type: UIActivityIndicatorView *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController loginActivityIndicator]")]
+pub fn stub_20200() -> ! {
+    todo!("0x20200 -[LoginViewController loginActivityIndicator]")
+}
+
+// 0x20210 — -[LoginViewController setLoginActivityIndicator:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setLoginActivityIndicator:]")]
+pub fn stub_20210() -> ! {
+    todo!("0x20210 -[LoginViewController setLoginActivityIndicator:]")
+}
+
+// 0x20234 — -[LoginViewController aboutButton]
+// type: UIButton *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController aboutButton]")]
+pub fn stub_20234() -> ! {
+    todo!("0x20234 -[LoginViewController aboutButton]")
+}
+
+// 0x20244 — -[LoginViewController setAboutButton:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setAboutButton:]")]
+pub fn stub_20244() -> ! {
+    todo!("0x20244 -[LoginViewController setAboutButton:]")
+}
+
+// 0x20268 — -[LoginViewController playNowLabel]
+// type: UILabel *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController playNowLabel]")]
+pub fn stub_20268() -> ! {
+    todo!("0x20268 -[LoginViewController playNowLabel]")
+}
+
+// 0x20278 — -[LoginViewController setPlayNowLabel:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setPlayNowLabel:]")]
+pub fn stub_20278() -> ! {
+    todo!("0x20278 -[LoginViewController setPlayNowLabel:]")
+}
+
+// 0x2029c — -[LoginViewController versionLabel]
+// type: UILabel *__cdecl(LoginViewController *self, SEL)
+#[doc(alias = "-[LoginViewController versionLabel]")]
+pub fn stub_2029c() -> ! {
+    todo!("0x2029c -[LoginViewController versionLabel]")
+}
+
+// 0x202ac — -[LoginViewController setVersionLabel:]
+// type: void __cdecl(LoginViewController *self, SEL, id)
+#[doc(alias = "-[LoginViewController setVersionLabel:]")]
+pub fn stub_202ac() -> ! {
+    todo!("0x202ac -[LoginViewController setVersionLabel:]")
+}
+
+// 0x2ce2c — __ZN5boost4bindIvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEESsSsSsP24RobloxPageViewControllerS6_EENS_3_bi6bind_tIT_PFSB_T0_T1_T2_T3_T4_ENS9_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESI_SK_SL_SM_SN_SO_
+// demangled: boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>)
+// type: int __fastcall(int, int, std::string *, int, std::string *, int, int)
+// was: boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>)
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>)")]
+pub fn stub_2ce2c() -> ! {
+    todo!("0x2ce2c boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list_av_5<std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>::type> boost::bind<void,std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>,std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>>(void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),std::string,std::string,std::string,RobloxPageViewController *,boost::shared_ptr<RBX::Game>)")
+}
+
+// 0x2dc24 — __ZN5boost6threadC2INS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEEOT_
+// demangled: boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>> &&)
+#[doc(alias = "boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>> &&)")]
+pub fn stub_2dc24() -> ! {
+    todo!("0x2dc24 boost::thread::thread<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>> &&)")
+}
+
+// 0x2dfac — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEEC2EOSK_
+// demangled: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>&&)
+// type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, int, int)
+// was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>&&)
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>&&)")]
+pub fn stub_2dfac() -> ! {
+    todo!("0x2dfac boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>&&)")
+}
+
+// 0x2e0f4 — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEED1Ev
+// demangled: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::~thread_data()
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::~thread_data()")]
+pub fn stub_2e0f4() -> ! {
+    todo!("0x2e0f4 boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::~thread_data()")
+}
+
+// 0x2e1bc — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEED0Ev
+// demangled: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::~thread_data()
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::~thread_data()")]
+pub fn stub_2e1bc() -> ! {
+    todo!("0x2e1bc boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::~thread_data()")
+}
+
+// 0x2e284 — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvSsSsSsP8NSObjectNS_10shared_ptrIN3RBX4GameEEEENS2_5list5INS2_5valueISsEESE_SE_NSD_IP24RobloxPageViewControllerEENSD_IS9_EEEEEEE3runEv
+// demangled: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::run(void)
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::run(void)")]
+pub fn stub_2e284() -> ! {
+    todo!("0x2e284 boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>),boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RobloxPageViewController *>,boost::_bi::value<boost::shared_ptr<RBX::Game>>>>>::run(void)")
+}
+
