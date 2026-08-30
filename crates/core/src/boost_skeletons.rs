@@ -5474,3 +5474,724 @@ pub fn stub_242284() -> ! {
 pub fn stub_2423c8() -> ! {
     todo!("0x2423c8 __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEED1Ev")
 }
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::~sp_counted_impl_p()")]
+// 0x2423cc — __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEED0Ev
+// was: boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::~sp_counted_impl_p()
+pub fn stub_2423cc() -> ! {
+    todo!("0x2423cc __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::dispose(void)")]
+// 0x2423d8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE7disposeEv
+// was: boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::dispose(void)
+pub fn stub_2423d8() -> ! {
+    todo!("0x2423d8 __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::get_deleter(std::type_info const&)")]
+// 0x2424bc — __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::get_deleter(std::type_info const&)
+pub fn stub_2424bc() -> ! {
+    todo!("0x2424bc __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::get_untyped_deleter(void)")]
+// 0x2424c0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_p<RBX::worker_thread::data>::get_untyped_deleter(void)
+pub fn stub_2424c0() -> ! {
+    todo!("0x2424c0 __ZN5boost6detail17sp_counted_impl_pIN3RBX13worker_thread4dataEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>)")]
+// 0x2424c4 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvRKS1_SsENS3_5list2INS3_5valueIS1_EENSA_ISsEEEEEEEEvT_
+// was: void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>)
+pub fn stub_2424c4() -> ! {
+    todo!("0x2424c4 __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvRKS1_SsENS3_5list2INS3_5valueIS1_EENSA_ISsEEEEEEEEvT_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// 0x242818 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_242818() -> ! {
+    todo!("0x242818 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE")
+}
+
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+// 0x24283c — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEvE6invokeERNS1_15function_bufferE
+// was: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>,void>::invoke(boost::detail::function::function_buffer &)
+pub fn stub_24283c() -> ! {
+    todo!("0x24283c __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEvE6invokeERNS1_15function_bufferE")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// 0x242958 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS5_5list2INS5_5valueIS8_EENSE_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// was: bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn stub_242958() -> ! {
+    todo!("0x242958 __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS5_5list2INS5_5valueIS8_EENSE_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+// 0x242be8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::function0<void> const&,std::string),boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+pub fn stub_242be8() -> ! {
+    todo!("0x242be8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRKNS_9function0IvEESsENS3_5list2INS3_5valueIS6_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+#[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>)")]
+// 0x242e08 — __ZN5boost3_bi5list2INS0_5valueINS_9function0IvEEEENS2_ISsEEEC2ES5_S6_
+// was: boost::_bi::list2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>)
+pub fn stub_242e08() -> ! {
+    todo!("0x242e08 __ZN5boost3_bi5list2INS0_5valueINS_9function0IvEEEENS2_ISsEEEC2ES5_S6_")
+}
+
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>)")]
+// 0x242fc0 — __ZN5boost3_bi8storage2INS0_5valueINS_9function0IvEEEENS2_ISsEEEC2ES5_S6_
+// was: boost::_bi::storage2<boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::function0<void>>,boost::_bi::value<std::string>)
+pub fn stub_242fc0() -> ! {
+    todo!("0x242fc0 __ZN5boost3_bi8storage2INS0_5valueINS_9function0IvEEEENS2_ISsEEEC2ES5_S6_")
+}
+
+#[doc(alias = "boost::thread_specific_ptr<std::string>::~thread_specific_ptr()")]
+// 0x24316c — __ZN5boost19thread_specific_ptrISsED2Ev
+// was: boost::thread_specific_ptr<std::string>::~thread_specific_ptr()
+pub fn stub_24316c() -> ! {
+    todo!("0x24316c __ZN5boost19thread_specific_ptrISsED2Ev")
+}
+
+#[doc(alias = "boost::thread_specific_ptr<std::string>::delete_data::~delete_data()")]
+// 0x243260 — __ZN5boost19thread_specific_ptrISsE11delete_dataD1Ev
+// was: boost::thread_specific_ptr<std::string>::delete_data::~delete_data()
+pub fn stub_243260() -> ! {
+    todo!("0x243260 __ZN5boost19thread_specific_ptrISsE11delete_dataD1Ev")
+}
+
+#[doc(alias = "boost::thread_specific_ptr<std::string>::delete_data::~delete_data()")]
+// 0x243264 — __ZN5boost19thread_specific_ptrISsE11delete_dataD0Ev
+// was: boost::thread_specific_ptr<std::string>::delete_data::~delete_data()
+pub fn stub_243264() -> ! {
+    todo!("0x243264 __ZN5boost19thread_specific_ptrISsE11delete_dataD0Ev")
+}
+
+#[doc(alias = "boost::thread_specific_ptr<std::string>::delete_data::operator()(void *)")]
+// 0x243270 — __ZN5boost19thread_specific_ptrISsE11delete_dataclEPv
+// was: boost::thread_specific_ptr<std::string>::delete_data::operator()(void *)
+pub fn stub_243270() -> ! {
+    todo!("0x243270 __ZN5boost19thread_specific_ptrISsE11delete_dataclEPv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::~sp_counted_impl_pd()")]
+// 0x2432c4 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEED1Ev
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::~sp_counted_impl_pd()
+pub fn stub_2432c4() -> ! {
+    todo!("0x2432c4 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::~sp_counted_impl_pd()")]
+// 0x2432c8 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEED0Ev
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::~sp_counted_impl_pd()
+pub fn stub_2432c8() -> ! {
+    todo!("0x2432c8 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::dispose(void)")]
+// 0x2432d4 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::dispose(void)
+pub fn stub_2432d4() -> ! {
+    todo!("0x2432d4 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::get_deleter(std::type_info const&)")]
+// 0x2432e8 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::get_deleter(std::type_info const&)
+pub fn stub_2432e8() -> ! {
+    todo!("0x2432e8 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::get_untyped_deleter(void)")]
+// 0x243300 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<std::string>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<std::string>::delete_data>>::get_untyped_deleter(void)
+pub fn stub_243300() -> ! {
+    todo!("0x243300 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrISsE11delete_dataENS0_14do_heap_deleteIS4_EEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::condition_variable_any::condition_variable_any(void)")]
+// 0x243304 — __ZN5boost22condition_variable_anyC2Ev
+// was: boost::condition_variable_any::condition_variable_any(void)
+pub fn stub_243304() -> ! {
+    todo!("0x243304 __ZN5boost22condition_variable_anyC2Ev")
+}
+
+#[doc(alias = "global constructor keyed to_a_44")]
+// 0x2434dc — __GLOBAL__I_a_44
+// was: `global constructor keyed to'_a_44
+pub fn stub_2434dc() -> ! {
+    todo!("0x2434dc __GLOBAL__I_a_44")
+}
+
+#[doc(alias = "RBX::CEvent::Wait(void)")]
+// 0x2435a4 — __ZN3RBX6CEvent4WaitEv
+// was: RBX::CEvent::Wait(void)
+pub fn stub_2435a4() -> ! {
+    todo!("0x2435a4 __ZN3RBX6CEvent4WaitEv")
+}
+
+#[doc(alias = "RBX::CEvent::WaitForSingleObject(RBX::CEvent&,int)")]
+// 0x2435b4 — __ZN3RBX6CEvent19WaitForSingleObjectERS0_i
+// was: RBX::CEvent::WaitForSingleObject(RBX::CEvent&,int)
+pub fn stub_2435b4() -> ! {
+    todo!("0x2435b4 __ZN3RBX6CEvent19WaitForSingleObjectERS0_i")
+}
+
+#[doc(alias = "RBX::CEvent::Wait(int)")]
+// 0x24381c — __ZN3RBX6CEvent4WaitEi
+// was: RBX::CEvent::Wait(int)
+pub fn stub_24381c() -> ! {
+    todo!("0x24381c __ZN3RBX6CEvent4WaitEi")
+}
+
+#[doc(alias = "RBX::CEvent::~CEvent()")]
+// 0x243830 — __ZN3RBX6CEventD1Ev
+// was: RBX::CEvent::~CEvent()
+pub fn stub_243830() -> ! {
+    todo!("0x243830 __ZN3RBX6CEventD1Ev")
+}
+
+#[doc(alias = "RBX::CEvent::~CEvent()")]
+// 0x24383c — __ZN3RBX6CEventD2Ev
+// was: RBX::CEvent::~CEvent()
+pub fn stub_24383c() -> ! {
+    todo!("0x24383c __ZN3RBX6CEventD2Ev")
+}
+
+#[doc(alias = "RBX::CEvent::CEvent(bool)")]
+// 0x243944 — __ZN3RBX6CEventC1Eb
+// was: RBX::CEvent::CEvent(bool)
+pub fn stub_243944() -> ! {
+    todo!("0x243944 __ZN3RBX6CEventC1Eb")
+}
+
+#[doc(alias = "RBX::CEvent::Set(void)")]
+// 0x243a30 — __ZN3RBX6CEvent3SetEv
+// was: RBX::CEvent::Set(void)
+pub fn stub_243a30() -> ! {
+    todo!("0x243a30 __ZN3RBX6CEvent3SetEv")
+}
+
+#[doc(alias = "boost::condition_variable::do_wait_until(boost::unique_lock<boost::mutex> &,timespec const&)")]
+// 0x243b84 — __ZN5boost18condition_variable13do_wait_untilERNS_11unique_lockINS_5mutexEEERK8timespec
+// was: boost::condition_variable::do_wait_until(boost::unique_lock<boost::mutex> &,timespec const&)
+pub fn stub_243b84() -> ! {
+    todo!("0x243b84 __ZN5boost18condition_variable13do_wait_untilERNS_11unique_lockINS_5mutexEEERK8timespec")
+}
+
+#[doc(alias = "global constructor keyed to_a_45")]
+// 0x243dd0 — __GLOBAL__I_a_45
+// was: `global constructor keyed to'_a_45
+pub fn stub_243dd0() -> ! {
+    todo!("0x243dd0 __GLOBAL__I_a_45")
+}
+
+#[doc(alias = "RBX::Limits::Countable::Countable(void)")]
+// 0x243e98 — __ZN3RBX6Limits9CountableC2Ev
+// was: RBX::Limits::Countable::Countable(void)
+pub fn stub_243e98() -> ! {
+    todo!("0x243e98 __ZN3RBX6Limits9CountableC2Ev")
+}
+
+#[doc(alias = "RBX::Limits::Counter::add(RBX::Limits::Countable *)")]
+// 0x244088 — __ZN3RBX6Limits7Counter3addEPNS0_9CountableE
+// was: RBX::Limits::Counter::add(RBX::Limits::Countable *)
+pub fn stub_244088() -> ! {
+    todo!("0x244088 __ZN3RBX6Limits7Counter3addEPNS0_9CountableE")
+}
+
+#[doc(alias = "RBX::Limits::Countable::~Countable()")]
+// 0x244200 — __ZN3RBX6Limits9CountableD2Ev
+// was: RBX::Limits::Countable::~Countable()
+pub fn stub_244200() -> ! {
+    todo!("0x244200 __ZN3RBX6Limits9CountableD2Ev")
+}
+
+#[doc(alias = "RBX::Limits::Counter::getCurrentCount(void)")]
+// 0x2442c4 — __ZN3RBX6Limits7Counter15getCurrentCountEv
+// was: RBX::Limits::Counter::getCurrentCount(void)
+pub fn stub_2442c4() -> ! {
+    todo!("0x2442c4 __ZN3RBX6Limits7Counter15getCurrentCountEv")
+}
+
+#[doc(alias = "RBX::Limits::Counter::canAdd(int)")]
+// 0x244358 — __ZN3RBX6Limits7Counter6canAddEi
+// was: RBX::Limits::Counter::canAdd(int)
+pub fn stub_244358() -> ! {
+    todo!("0x244358 __ZN3RBX6Limits7Counter6canAddEi")
+}
+
+#[doc(alias = "RBX::Limits::Counter::Activator::Activator(boost::shared_ptr<RBX::Limits::Counter>)")]
+// 0x244384 — __ZN3RBX6Limits7Counter9ActivatorC1EN5boost10shared_ptrIS1_EE
+// was: RBX::Limits::Counter::Activator::Activator(boost::shared_ptr<RBX::Limits::Counter>)
+// now: RBX::Limits::Counter::Activator::Activator(rbx_core::SharedPtr<RBX::Limits::Counter>) // rbx_core::SharedPtr
+pub fn stub_244384() -> ! {
+    todo!("0x244384 __ZN3RBX6Limits7Counter9ActivatorC1EN5boost10shared_ptrIS1_EE")
+}
+
+#[doc(alias = "RBX::Limits::Counter::Activator::Activator(boost::shared_ptr<RBX::Limits::Counter>)")]
+// 0x244390 — __ZN3RBX6Limits7Counter9ActivatorC2EN5boost10shared_ptrIS1_EE
+// was: RBX::Limits::Counter::Activator::Activator(boost::shared_ptr<RBX::Limits::Counter>)
+// now: RBX::Limits::Counter::Activator::Activator(rbx_core::SharedPtr<RBX::Limits::Counter>) // rbx_core::SharedPtr
+pub fn stub_244390() -> ! {
+    todo!("0x244390 __ZN3RBX6Limits7Counter9ActivatorC2EN5boost10shared_ptrIS1_EE")
+}
+
+#[doc(alias = "RBX::Limits::Counter::Activator::~Activator()")]
+// 0x2445fc — __ZN3RBX6Limits7Counter9ActivatorD1Ev
+// was: RBX::Limits::Counter::Activator::~Activator()
+pub fn stub_2445fc() -> ! {
+    todo!("0x2445fc __ZN3RBX6Limits7Counter9ActivatorD1Ev")
+}
+
+#[doc(alias = "RBX::Limits::Counter::Activator::~Activator()")]
+// 0x244608 — __ZN3RBX6Limits7Counter9ActivatorD2Ev
+// was: RBX::Limits::Counter::Activator::~Activator()
+pub fn stub_244608() -> ! {
+    todo!("0x244608 __ZN3RBX6Limits7Counter9ActivatorD2Ev")
+}
+
+#[doc(alias = "boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::reset(boost::shared_ptr<RBX::Limits::Counter>*)")]
+// 0x24480c — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE5resetEPS5_
+// was: boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::reset(boost::shared_ptr<RBX::Limits::Counter>*)
+// now: boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::reset(rbx_core::SharedPtr<RBX::Limits::Counter>*) // rbx_core::SharedPtr
+pub fn stub_24480c() -> ! {
+    todo!("0x24480c __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE5resetEPS5_")
+}
+
+#[doc(alias = "RBX::Limits::Counter::safe_static_init_current(void)")]
+// 0x244928 — __ZN3RBX6Limits7Counter24safe_static_init_currentEv
+// was: RBX::Limits::Counter::safe_static_init_current(void)
+pub fn stub_244928() -> ! {
+    todo!("0x244928 __ZN3RBX6Limits7Counter24safe_static_init_currentEv")
+}
+
+#[doc(alias = "RBX::Limits::Counter::safe_static_do_get_current(void)")]
+// 0x244934 — __ZN3RBX6Limits7Counter26safe_static_do_get_currentEv
+// was: RBX::Limits::Counter::safe_static_do_get_current(void)
+pub fn stub_244934() -> ! {
+    todo!("0x244934 __ZN3RBX6Limits7Counter26safe_static_do_get_currentEv")
+}
+
+#[doc(alias = "rbx::thread_specific_shared_ptr<RBX::Limits::Counter>::~thread_specific_shared_ptr()")]
+// 0x244ab8 — __ZN3rbx26thread_specific_shared_ptrIN3RBX6Limits7CounterEED1Ev
+// was: rbx::thread_specific_shared_ptr<RBX::Limits::Counter>::~thread_specific_shared_ptr()
+pub fn stub_244ab8() -> ! {
+    todo!("0x244ab8 __ZN3rbx26thread_specific_shared_ptrIN3RBX6Limits7CounterEED1Ev")
+}
+
+#[doc(alias = "boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::~thread_specific_ptr()")]
+// 0x244ac8 — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEED2Ev
+// was: boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::~thread_specific_ptr()
+// now: boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::~thread_specific_ptr() // rbx_core::SharedPtr
+pub fn stub_244ac8() -> ! {
+    todo!("0x244ac8 __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEED2Ev")
+}
+
+#[doc(alias = "boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data::~delete_data()")]
+// 0x244bbc — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataD1Ev
+// was: boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data::~delete_data()
+// now: boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data::~delete_data() // rbx_core::SharedPtr
+pub fn stub_244bbc() -> ! {
+    todo!("0x244bbc __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataD1Ev")
+}
+
+#[doc(alias = "boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data::~delete_data()")]
+// 0x244bc0 — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataD0Ev
+// was: boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data::~delete_data()
+// now: boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data::~delete_data() // rbx_core::SharedPtr
+pub fn stub_244bc0() -> ! {
+    todo!("0x244bc0 __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataD0Ev")
+}
+
+#[doc(alias = "boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data::operator()(void *)")]
+// 0x244bcc — __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataclEPv
+// was: boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data::operator()(void *)
+// now: boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data::operator()(void *) // rbx_core::SharedPtr
+pub fn stub_244bcc() -> ! {
+    todo!("0x244bcc __ZN5boost19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataclEPv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data>>::~sp_counted_impl_pd()")]
+// 0x244c74 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEED1Ev
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data>>::~sp_counted_impl_pd()
+// now: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data>>::~sp_counted_impl_pd() // rbx_core::SharedPtr
+pub fn stub_244c74() -> ! {
+    todo!("0x244c74 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data>>::~sp_counted_impl_pd()")]
+// 0x244c78 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEED0Ev
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data>>::~sp_counted_impl_pd()
+// now: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data>>::~sp_counted_impl_pd() // rbx_core::SharedPtr
+pub fn stub_244c78() -> ! {
+    todo!("0x244c78 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data>>::dispose(void)")]
+// 0x244c84 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data>>::dispose(void)
+// now: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data>>::dispose(void) // rbx_core::SharedPtr
+pub fn stub_244c84() -> ! {
+    todo!("0x244c84 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data>>::get_deleter(std::type_info const&)")]
+// 0x244c98 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data>>::get_deleter(std::type_info const&)
+// now: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data>>::get_deleter(std::type_info const&) // rbx_core::SharedPtr
+pub fn stub_244c98() -> ! {
+    todo!("0x244c98 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data>>::get_untyped_deleter(void)")]
+// 0x244cb0 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<boost::shared_ptr<RBX::Limits::Counter>>::delete_data>>::get_untyped_deleter(void)
+// now: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<rbx_core::SharedPtr<RBX::Limits::Counter>>::delete_data>>::get_untyped_deleter(void) // rbx_core::SharedPtr
+pub fn stub_244cb0() -> ! {
+    todo!("0x244cb0 __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrINS_10shared_ptrIN3RBX6Limits7CounterEEEE11delete_dataENS0_14do_heap_deleteIS9_EEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "global constructor keyed to_a_46")]
+// 0x244cb4 — __GLOBAL__I_a_46
+// was: `global constructor keyed to'_a_46
+pub fn stub_244cb4() -> ! {
+    todo!("0x244cb4 __GLOBAL__I_a_46")
+}
+
+#[doc(alias = "RBX::roblox_allocator::malloc(unsigned long)")]
+// 0x244d7c — __ZN3RBX16roblox_allocator6mallocEm
+// was: RBX::roblox_allocator::malloc(unsigned long)
+pub fn stub_244d7c() -> ! {
+    todo!("0x244d7c __ZN3RBX16roblox_allocator6mallocEm")
+}
+
+#[doc(alias = "RBX::roblox_allocator::free(char *)")]
+// 0x244dac — __ZN3RBX16roblox_allocator4freeEPc
+// was: RBX::roblox_allocator::free(char *)
+pub fn stub_244dac() -> ! {
+    todo!("0x244dac __ZN3RBX16roblox_allocator4freeEPc")
+}
+
+#[doc(alias = "std::vector<unsigned long *,std::allocator<unsigned long *>>::~vector()")]
+// 0x244db8 — __ZNSt6vectorIPmSaIS0_EED1Ev
+// was: std::vector<unsigned long *,std::allocator<unsigned long *>>::~vector()
+pub fn stub_244db8() -> ! {
+    todo!("0x244db8 __ZNSt6vectorIPmSaIS0_EED1Ev")
+}
+
+#[doc(alias = "std::vector<bool (*)(void),std::allocator<bool (*)(void)>>::~vector()")]
+// 0x244dcc — __ZNSt6vectorIPFbvESaIS1_EED1Ev
+// was: std::vector<bool (*)(void),std::allocator<bool (*)(void)>>::~vector()
+pub fn stub_244dcc() -> ! {
+    todo!("0x244dcc __ZNSt6vectorIPFbvESaIS1_EED1Ev")
+}
+
+#[doc(alias = "global constructor keyed to_a_47")]
+// 0x244de0 — __GLOBAL__I_a_47
+// was: `global constructor keyed to'_a_47
+pub fn stub_244de0() -> ! {
+    todo!("0x244de0 __GLOBAL__I_a_47")
+}
+
+#[doc(alias = "rbx::signals::connection::disconnect(void)const")]
+// 0x244e94 — __ZNK3rbx7signals10connection10disconnectEv
+// was: rbx::signals::connection::disconnect(void)const
+pub fn stub_244e94() -> ! {
+    todo!("0x244e94 __ZNK3rbx7signals10connection10disconnectEv")
+}
+
+#[doc(alias = "rbx::signals::connection::connected(void)const")]
+// 0x244fd4 — __ZNK3rbx7signals10connection9connectedEv
+// was: rbx::signals::connection::connected(void)const
+pub fn stub_244fd4() -> ! {
+    todo!("0x244fd4 __ZNK3rbx7signals10connection9connectedEv")
+}
+
+#[doc(alias = "rbx::signals::connection::operator==(rbx::signals::connection const&)const")]
+// 0x245118 — __ZNK3rbx7signals10connectioneqERKS1_
+// was: rbx::signals::connection::operator==(rbx::signals::connection const&)const
+pub fn stub_245118() -> ! {
+    todo!("0x245118 __ZNK3rbx7signals10connectioneqERKS1_")
+}
+
+#[doc(alias = "rbx::signals::connection::operator!=(rbx::signals::connection const&)const")]
+// 0x2452d0 — __ZNK3rbx7signals10connectionneERKS1_
+// was: rbx::signals::connection::operator!=(rbx::signals::connection const&)const
+pub fn stub_2452d0() -> ! {
+    todo!("0x2452d0 __ZNK3rbx7signals10connectionneERKS1_")
+}
+
+#[doc(alias = "rbx::signals::connection::operator=(rbx::signals::connection const&)")]
+// 0x245488 — __ZN3rbx7signals10connectionaSERKS1_
+// was: rbx::signals::connection::operator=(rbx::signals::connection const&)
+pub fn stub_245488() -> ! {
+    todo!("0x245488 __ZN3rbx7signals10connectionaSERKS1_")
+}
+
+#[doc(alias = "boost::function<void ()(std::exception &)>::~function()")]
+// 0x24551c — __ZN5boost8functionIFvRSt9exceptionEED1Ev
+// was: boost::function<void ()(std::exception &)>::~function()
+pub fn stub_24551c() -> ! {
+    todo!("0x24551c __ZN5boost8functionIFvRSt9exceptionEED1Ev")
+}
+
+#[doc(alias = "Init::initStaticData(void)")]
+// 0x245544 — __ZN4Init14initStaticDataEv
+// was: Init::initStaticData(void)
+pub fn stub_245544() -> ! {
+    todo!("0x245544 __ZN4Init14initStaticDataEv")
+}
+
+#[doc(alias = "global constructor keyed to_a_48")]
+// 0x245548 — __GLOBAL__I_a_48
+// was: `global constructor keyed to'_a_48
+pub fn stub_245548() -> ! {
+    todo!("0x245548 __GLOBAL__I_a_48")
+}
+
+#[doc(alias = "RBX::Tasks::SequenceBase::isInhibited(RBX::TaskScheduler::Job *)")]
+// 0x2456a0 — __ZN3RBX5Tasks12SequenceBase11isInhibitedEPNS_13TaskScheduler3JobE
+// was: RBX::Tasks::SequenceBase::isInhibited(RBX::TaskScheduler::Job *)
+pub fn stub_2456a0() -> ! {
+    todo!("0x2456a0 __ZN3RBX5Tasks12SequenceBase11isInhibitedEPNS_13TaskScheduler3JobE")
+}
+
+#[doc(alias = "RBX::Tasks::SequenceBase::advance(void)")]
+// 0x2456d8 — __ZN3RBX5Tasks12SequenceBase7advanceEv
+// was: RBX::Tasks::SequenceBase::advance(void)
+pub fn stub_2456d8() -> ! {
+    todo!("0x2456d8 __ZN3RBX5Tasks12SequenceBase7advanceEv")
+}
+
+#[doc(alias = "RBX::Tasks::SequenceBase::onAdded(RBX::TaskScheduler::Job *)")]
+// 0x245708 — __ZN3RBX5Tasks12SequenceBase7onAddedEPNS_13TaskScheduler3JobE
+// was: RBX::Tasks::SequenceBase::onAdded(RBX::TaskScheduler::Job *)
+pub fn stub_245708() -> ! {
+    todo!("0x245708 __ZN3RBX5Tasks12SequenceBase7onAddedEPNS_13TaskScheduler3JobE")
+}
+
+#[doc(alias = "RBX::Tasks::SequenceBase::onRemoved(RBX::TaskScheduler::Job *)")]
+// 0x2457f0 — __ZN3RBX5Tasks12SequenceBase9onRemovedEPNS_13TaskScheduler3JobE
+// was: RBX::Tasks::SequenceBase::onRemoved(RBX::TaskScheduler::Job *)
+pub fn stub_2457f0() -> ! {
+    todo!("0x2457f0 __ZN3RBX5Tasks12SequenceBase9onRemovedEPNS_13TaskScheduler3JobE")
+}
+
+#[doc(alias = "std::vector<RBX::TaskScheduler::Job *,std::allocator<RBX::TaskScheduler::Job *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::TaskScheduler::Job **,std::vector<RBX::TaskScheduler::Job *,std::allocator<RBX::TaskScheduler::Job *>>>,RBX::TaskScheduler::Job * const&)")]
+// 0x245848 — __ZNSt6vectorIPN3RBX13TaskScheduler3JobESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+// was: std::vector<RBX::TaskScheduler::Job *,std::allocator<RBX::TaskScheduler::Job *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::TaskScheduler::Job **,std::vector<RBX::TaskScheduler::Job *,std::allocator<RBX::TaskScheduler::Job *>>>,RBX::TaskScheduler::Job * const&)
+pub fn stub_245848() -> ! {
+    todo!("0x245848 __ZNSt6vectorIPN3RBX13TaskScheduler3JobESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")
+}
+
+#[doc(alias = "global constructor keyed to_a_49")]
+// 0x245940 — __GLOBAL__I_a_49
+// was: `global constructor keyed to'_a_49
+pub fn stub_245940() -> ! {
+    todo!("0x245940 __GLOBAL__I_a_49")
+}
+
+#[doc(alias = "RBX::TaskScheduler::getSchedulerDutyCyclePerThread(void)const")]
+// 0x245a08 — __ZNK3RBX13TaskScheduler30getSchedulerDutyCyclePerThreadEv
+// was: RBX::TaskScheduler::getSchedulerDutyCyclePerThread(void)const
+pub fn stub_245a08() -> ! {
+    todo!("0x245a08 __ZNK3RBX13TaskScheduler30getSchedulerDutyCyclePerThreadEv")
+}
+
+#[doc(alias = "RBX::ExclusiveArbiter::areExclusive(RBX::TaskScheduler::Job *,RBX::TaskScheduler::Job *)")]
+// 0x245ab0 — __ZN3RBX16ExclusiveArbiter12areExclusiveEPNS_13TaskScheduler3JobES3_
+// was: RBX::ExclusiveArbiter::areExclusive(RBX::TaskScheduler::Job *,RBX::TaskScheduler::Job *)
+pub fn stub_245ab0() -> ! {
+    todo!("0x245ab0 __ZN3RBX16ExclusiveArbiter12areExclusiveEPNS_13TaskScheduler3JobES3_")
+}
+
+#[doc(alias = "RBX::TaskScheduler::static_init(void)")]
+// 0x245b68 — __ZN3RBX13TaskScheduler11static_initEv
+// was: RBX::TaskScheduler::static_init(void)
+pub fn stub_245b68() -> ! {
+    todo!("0x245b68 __ZN3RBX13TaskScheduler11static_initEv")
+}
+
+#[doc(alias = "RBX::TaskScheduler::~TaskScheduler()")]
+// 0x245c64 — __ZN3RBX13TaskSchedulerD1Ev
+// was: RBX::TaskScheduler::~TaskScheduler()
+pub fn stub_245c64() -> ! {
+    todo!("0x245c64 __ZN3RBX13TaskSchedulerD1Ev")
+}
+
+#[doc(alias = "RBX::TaskScheduler::singleton(void)")]
+// 0x245c70 — __ZN3RBX13TaskScheduler9singletonEv
+// was: RBX::TaskScheduler::singleton(void)
+pub fn stub_245c70() -> ! {
+    todo!("0x245c70 __ZN3RBX13TaskScheduler9singletonEv")
+}
+
+#[doc(alias = "RBX::TaskScheduler::TaskScheduler(void)")]
+// 0x245c94 — __ZN3RBX13TaskSchedulerC2Ev
+// was: RBX::TaskScheduler::TaskScheduler(void)
+pub fn stub_245c94() -> ! {
+    todo!("0x245c94 __ZN3RBX13TaskSchedulerC2Ev")
+}
+
+#[doc(alias = "RBX::TaskScheduler::sampleRunningJobCount(void)")]
+// 0x246308 — __ZN3RBX13TaskScheduler21sampleRunningJobCountEv
+// was: RBX::TaskScheduler::sampleRunningJobCount(void)
+pub fn stub_246308() -> ! {
+    todo!("0x246308 __ZN3RBX13TaskScheduler21sampleRunningJobCountEv")
+}
+
+#[doc(alias = "RBX::TaskScheduler::~TaskScheduler()")]
+// 0x246358 — __ZN3RBX13TaskSchedulerD2Ev
+// was: RBX::TaskScheduler::~TaskScheduler()
+pub fn stub_246358() -> ! {
+    todo!("0x246358 __ZN3RBX13TaskSchedulerD2Ev")
+}
+
+#[doc(alias = "RBX::TaskScheduler::remove(boost::shared_ptr<RBX::TaskScheduler::Job>,bool,boost::function<void ()(void)>)")]
+// 0x2467d0 — __ZN3RBX13TaskScheduler6removeEN5boost10shared_ptrINS0_3JobEEEbNS1_8functionIFvvEEE
+// was: RBX::TaskScheduler::remove(boost::shared_ptr<RBX::TaskScheduler::Job>,bool,boost::function<void ()(void)>)
+// now: RBX::TaskScheduler::remove(rbx_core::SharedPtr<RBX::TaskScheduler::Job>,bool,boost::function<void ()(void)>) // rbx_core::SharedPtr
+pub fn stub_2467d0() -> ! {
+    todo!("0x2467d0 __ZN3RBX13TaskScheduler6removeEN5boost10shared_ptrINS0_3JobEEEbNS1_8functionIFvvEEE")
+}
+
+#[doc(alias = "RBX::TaskScheduler::remove(boost::shared_ptr<RBX::TaskScheduler::Job> const&,boost::shared_ptr<RBX::CEvent>)")]
+// 0x246a48 — __ZN3RBX13TaskScheduler6removeERKN5boost10shared_ptrINS0_3JobEEENS2_INS_6CEventEEE
+// was: RBX::TaskScheduler::remove(boost::shared_ptr<RBX::TaskScheduler::Job> const&,boost::shared_ptr<RBX::CEvent>)
+// now: RBX::TaskScheduler::remove(rbx_core::SharedPtr<RBX::TaskScheduler::Job> const&,rbx_core::SharedPtr<RBX::CEvent>) // rbx_core::SharedPtr
+pub fn stub_246a48() -> ! {
+    todo!("0x246a48 __ZN3RBX13TaskScheduler6removeERKN5boost10shared_ptrINS0_3JobEEENS2_INS_6CEventEEE")
+}
+
+#[doc(alias = "RBX::TaskScheduler::reschedule(boost::shared_ptr<RBX::TaskScheduler::Job>)")]
+// 0x246da8 — __ZN3RBX13TaskScheduler10rescheduleEN5boost10shared_ptrINS0_3JobEEE
+// was: RBX::TaskScheduler::reschedule(boost::shared_ptr<RBX::TaskScheduler::Job>)
+// now: RBX::TaskScheduler::reschedule(rbx_core::SharedPtr<RBX::TaskScheduler::Job>) // rbx_core::SharedPtr
+pub fn stub_246da8() -> ! {
+    todo!("0x246da8 __ZN3RBX13TaskScheduler10rescheduleEN5boost10shared_ptrINS0_3JobEEE")
+}
+
+#[doc(alias = "RBX::TaskScheduler::scheduleJob(RBX::TaskScheduler::Job &)")]
+// 0x246e98 — __ZN3RBX13TaskScheduler11scheduleJobERNS0_3JobE
+// was: RBX::TaskScheduler::scheduleJob(RBX::TaskScheduler::Job &)
+pub fn stub_246e98() -> ! {
+    todo!("0x246e98 __ZN3RBX13TaskScheduler11scheduleJobERNS0_3JobE")
+}
+
+#[doc(alias = "RBX::TaskScheduler::add(boost::shared_ptr<RBX::TaskScheduler::Job>)")]
+// 0x246f90 — __ZN3RBX13TaskScheduler3addEN5boost10shared_ptrINS0_3JobEEE
+// was: RBX::TaskScheduler::add(boost::shared_ptr<RBX::TaskScheduler::Job>)
+// now: RBX::TaskScheduler::add(rbx_core::SharedPtr<RBX::TaskScheduler::Job>) // rbx_core::SharedPtr
+pub fn stub_246f90() -> ! {
+    todo!("0x246f90 __ZN3RBX13TaskScheduler3addEN5boost10shared_ptrINS0_3JobEEE")
+}
+
+#[doc(alias = "RBX::TaskScheduler::incrementThreadCount(void)")]
+// 0x24710c — __ZN3RBX13TaskScheduler20incrementThreadCountEv
+// was: RBX::TaskScheduler::incrementThreadCount(void)
+pub fn stub_24710c() -> ! {
+    todo!("0x24710c __ZN3RBX13TaskScheduler20incrementThreadCountEv")
+}
+
+#[doc(alias = "RBX::TaskScheduler::decrementThreadCount(void)")]
+// 0x24711c — __ZN3RBX13TaskScheduler20decrementThreadCountEv
+// was: RBX::TaskScheduler::decrementThreadCount(void)
+pub fn stub_24711c() -> ! {
+    todo!("0x24711c __ZN3RBX13TaskScheduler20decrementThreadCountEv")
+}
+
+#[doc(alias = "RBX::TaskScheduler::getShortestSleepTime(void)const")]
+// 0x247130 — __ZNK3RBX13TaskScheduler20getShortestSleepTimeEv
+// was: RBX::TaskScheduler::getShortestSleepTime(void)const
+pub fn stub_247130() -> ! {
+    todo!("0x247130 __ZNK3RBX13TaskScheduler20getShortestSleepTimeEv")
+}
+
+#[doc(alias = "RBX::TaskScheduler::wakeSleepingJobs(void)")]
+// 0x247154 — __ZN3RBX13TaskScheduler16wakeSleepingJobsEv
+// was: RBX::TaskScheduler::wakeSleepingJobs(void)
+pub fn stub_247154() -> ! {
+    todo!("0x247154 __ZN3RBX13TaskScheduler16wakeSleepingJobsEv")
+}
+
+#[doc(alias = "RBX::TaskScheduler::findJobToRun(boost::shared_ptr<RBX::TaskScheduler::Thread>)")]
+// 0x247220 — __ZN3RBX13TaskScheduler12findJobToRunEN5boost10shared_ptrINS0_6ThreadEEE
+// was: RBX::TaskScheduler::findJobToRun(boost::shared_ptr<RBX::TaskScheduler::Thread>)
+// now: RBX::TaskScheduler::findJobToRun(rbx_core::SharedPtr<RBX::TaskScheduler::Thread>) // rbx_core::SharedPtr
+pub fn stub_247220() -> ! {
+    todo!("0x247220 __ZN3RBX13TaskScheduler12findJobToRunEN5boost10shared_ptrINS0_6ThreadEEE")
+}
+
+#[doc(alias = "rbx::thread_specific_reference<RBX::TaskScheduler::Job>::~thread_specific_reference()")]
+// 0x247bd8 — __ZN3rbx25thread_specific_referenceIN3RBX13TaskScheduler3JobEED1Ev
+// was: rbx::thread_specific_reference<RBX::TaskScheduler::Job>::~thread_specific_reference()
+pub fn stub_247bd8() -> ! {
+    todo!("0x247bd8 __ZN3rbx25thread_specific_referenceIN3RBX13TaskScheduler3JobEED1Ev")
+}
+
+#[doc(alias = "RBX::TaskScheduler::Job::getDebugName(void)const")]
+// 0x247be8 — __ZNK3RBX13TaskScheduler3Job12getDebugNameEv
+// was: RBX::TaskScheduler::Job::getDebugName(void)const
+pub fn stub_247be8() -> ! {
+    todo!("0x247be8 __ZNK3RBX13TaskScheduler3Job12getDebugNameEv")
+}
+
+#[doc(alias = "RBX::RunningAverage<int,double>::sample(int)")]
+// 0x247db0 — __ZN3RBX14RunningAverageIidE6sampleEi
+// was: RBX::RunningAverage<int,double>::sample(int)
+pub fn stub_247db0() -> ! {
+    todo!("0x247db0 __ZN3RBX14RunningAverageIidE6sampleEi")
+}
+
+#[doc(alias = "RBX::ExclusiveArbiter::arbiterName(void)")]
+// 0x247e74 — __ZN3RBX16ExclusiveArbiter11arbiterNameEv
+// was: RBX::ExclusiveArbiter::arbiterName(void)
+pub fn stub_247e74() -> ! {
+    todo!("0x247e74 __ZN3RBX16ExclusiveArbiter11arbiterNameEv")
+}
+
+#[doc(alias = "RBX::ExclusiveArbiter::isThrottled(void)")]
+// 0x247e90 — __ZN3RBX16ExclusiveArbiter11isThrottledEv
+// was: RBX::ExclusiveArbiter::isThrottled(void)
+pub fn stub_247e90() -> ! {
+    todo!("0x247e90 __ZN3RBX16ExclusiveArbiter11isThrottledEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::TaskScheduler::Job>::shared_ptr<RBX::TaskScheduler::Job>(boost::weak_ptr<RBX::TaskScheduler::Job> const&)")]
+// 0x247e94 — __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEC2IS3_EERKNS_8weak_ptrIT_EE
+// was: boost::shared_ptr<RBX::TaskScheduler::Job>::shared_ptr<RBX::TaskScheduler::Job>(boost::weak_ptr<RBX::TaskScheduler::Job> const&)
+// now: rbx_core::SharedPtr<RBX::TaskScheduler::Job>::shared_ptr<RBX::TaskScheduler::Job>(boost::weak_ptr<RBX::TaskScheduler::Job> const&) // rbx_core::SharedPtr
+pub fn stub_247e94() -> ! {
+    todo!("0x247e94 __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEC2IS3_EERKNS_8weak_ptrIT_EE")
+}
+
+#[doc(alias = "std::_Rb_tree<boost::shared_ptr<RBX::TaskScheduler::Job>,boost::shared_ptr<RBX::TaskScheduler::Job>,std::_Identity<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::less<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job>>>::erase(std::_Rb_tree_iterator<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::_Rb_tree_iterator<boost::shared_ptr<RBX::TaskScheduler::Job>>)")]
+// 0x247fac — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE5eraseESt17_Rb_tree_iteratorIS5_ESD_
+// was: std::_Rb_tree<boost::shared_ptr<RBX::TaskScheduler::Job>,boost::shared_ptr<RBX::TaskScheduler::Job>,std::_Identity<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::less<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job>>>::erase(std::_Rb_tree_iterator<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::_Rb_tree_iterator<boost::shared_ptr<RBX::TaskScheduler::Job>>)
+// now: std::_Rb_tree<rbx_core::SharedPtr<RBX::TaskScheduler::Job>,rbx_core::SharedPtr<RBX::TaskScheduler::Job>,std::_Identity<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>,std::less<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>>::erase(std::_Rb_tree_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>,std::_Rb_tree_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>) // rbx_core::SharedPtr
+pub fn stub_247fac() -> ! {
+    todo!("0x247fac __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE5eraseESt17_Rb_tree_iteratorIS5_ESD_")
+}
+
+#[doc(alias = "std::_Rb_tree<boost::shared_ptr<RBX::TaskScheduler::Job>,boost::shared_ptr<RBX::TaskScheduler::Job>,std::_Identity<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::less<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job>>>::_M_erase(std::_Rb_tree_node<boost::shared_ptr<RBX::TaskScheduler::Job>> *)")]
+// 0x248020 — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
+// was: std::_Rb_tree<boost::shared_ptr<RBX::TaskScheduler::Job>,boost::shared_ptr<RBX::TaskScheduler::Job>,std::_Identity<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::less<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job>>>::_M_erase(std::_Rb_tree_node<boost::shared_ptr<RBX::TaskScheduler::Job>> *)
+// now: std::_Rb_tree<rbx_core::SharedPtr<RBX::TaskScheduler::Job>,rbx_core::SharedPtr<RBX::TaskScheduler::Job>,std::_Identity<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>,std::less<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>>::_M_erase(std::_Rb_tree_node<rbx_core::SharedPtr<RBX::TaskScheduler::Job>> *) // rbx_core::SharedPtr
+pub fn stub_248020() -> ! {
+    todo!("0x248020 __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E")
+}
+
+#[doc(alias = "std::_Rb_tree<boost::shared_ptr<RBX::TaskScheduler::Job>,boost::shared_ptr<RBX::TaskScheduler::Job>,std::_Identity<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::less<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job>>>::_M_insert_unique(boost::shared_ptr<RBX::TaskScheduler::Job> const&)")]
+// 0x248050 — __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE16_M_insert_uniqueERKS5_
+// was: std::_Rb_tree<boost::shared_ptr<RBX::TaskScheduler::Job>,boost::shared_ptr<RBX::TaskScheduler::Job>,std::_Identity<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::less<boost::shared_ptr<RBX::TaskScheduler::Job>>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job>>>::_M_insert_unique(boost::shared_ptr<RBX::TaskScheduler::Job> const&)
+// now: std::_Rb_tree<rbx_core::SharedPtr<RBX::TaskScheduler::Job>,rbx_core::SharedPtr<RBX::TaskScheduler::Job>,std::_Identity<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>,std::less<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job>>>::_M_insert_unique(rbx_core::SharedPtr<RBX::TaskScheduler::Job> const&) // rbx_core::SharedPtr
+pub fn stub_248050() -> ! {
+    todo!("0x248050 __ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE16_M_insert_uniqueERKS5_")
+}
