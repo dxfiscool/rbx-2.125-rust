@@ -1,6 +1,6 @@
 //! platform generated — next 200 stubs sorted by EA, from ida/export.json
 //! Filter: RobloxView|GameViewController|AppDelegate|EAGL2|PlaceLauncher|ControlView|UIViewController|HomeViewController|Teleporter
-//! Batch: 200 stubs (100 + 100) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 300 stubs (100 + 100 + 100) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -1422,3 +1422,668 @@ pub fn stub_201a8() -> ! {
     todo!("0x201a8 -[LoginViewController setRobloxLogo:]")
 }
 
+// 0x33548 — __ZN10TeleporterD1Ev
+// type: void __fastcall(Teleporter *__hidden this)
+#[doc(alias = "Teleporter::~Teleporter()")]
+pub fn stub_33548() -> ! {
+    todo!("0x33548 Teleporter::~Teleporter()")
+}
+
+// 0x3354c — __ZN10TeleporterD0Ev
+// type: void __fastcall(Teleporter *__hidden this)
+#[doc(alias = "Teleporter::~Teleporter()")]
+pub fn stub_3354c() -> ! {
+    todo!("0x3354c Teleporter::~Teleporter()")
+}
+
+// 0x33550 — __ZN10Teleporter10doTeleportERKSsS1_S1_
+// type: _DWORD __fastcall(Teleporter *__hidden this, const std::string *, const std::string *, const std::string *)
+#[doc(alias = "Teleporter::doTeleport(std::string const&,std::string const&,std::string const&)")]
+pub fn stub_33550() -> ! {
+    todo!("0x33550 Teleporter::doTeleport(std::string const&,std::string const&,std::string const&)")
+}
+
+// 0x33920 — __ZNK10Teleporter17isTeleportEnabledEv
+// type: _DWORD __fastcall(Teleporter *__hidden this)
+#[doc(alias = "Teleporter::isTeleportEnabled(void)const")]
+pub fn stub_33920() -> ! {
+    todo!("0x33920 Teleporter::isTeleportEnabled(void)const")
+}
+
+// 0x39e10 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEE5resetEv
+#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")]
+pub fn stub_39e10() -> ! {
+    todo!("0x39e10 boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")
+}
+
+// 0x39ea8 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEaSEOS3_
+#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")]
+pub fn stub_39ea8() -> ! {
+    todo!("0x39ea8 boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")
+}
+
+// 0x39f4c — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEC1IS2_EEPT_
+// type: int __fastcall(int, void *, int, int, int, int)
+#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
+pub fn stub_39f4c() -> ! {
+    todo!("0x39f4c boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+}
+
+// 0x3a030 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_
+#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")]
+pub fn stub_3a030() -> ! {
+    todo!("0x3a030 boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")
+}
+
+// 0x3a0d4 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_
+// type: int __fastcall(int, void *, int, int, int, int)
+#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
+pub fn stub_3a0d4() -> ! {
+    todo!("0x3a0d4 boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+}
+
+// 0x3a278 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
+// type: int(void)
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")]
+pub fn stub_3a278() -> ! {
+    todo!("0x3a278 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>> const&)")
+}
+
+// 0x3a390 — __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEEENS0_10connectionERKT_
+// type: int(void)
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")]
+pub fn stub_3a390() -> ! {
+    todo!("0x3a390 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>> const&)")
+}
+
+// 0x3cdb8 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED1Ev
+#[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
+pub fn stub_3cdb8() -> ! {
+    todo!("0x3cdb8 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")
+}
+
+// 0x3ce64 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0Iv10RobloxViewEENS6_5list1INS6_5valueIPSA_EEEEEEED0Ev
+#[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")]
+pub fn stub_3ce64() -> ! {
+    todo!("0x3ce64 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>>::~callable_slot()")
+}
+
+// 0x3cf18 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
+pub fn stub_3cf18() -> ! {
+    todo!("0x3cf18 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")
+}
+
+// 0x3cf20 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
+pub fn stub_3cf20() -> ! {
+    todo!("0x3cf20 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")
+}
+
+// 0x3cf28 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv
+// type: int(void)
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")]
+pub fn stub_3cf28() -> ! {
+    todo!("0x3cf28 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")
+}
+
+// 0x3d0e4 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED1Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")]
+pub fn stub_3d0e4() -> ! {
+    todo!("0x3d0e4 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")
+}
+
+// 0x3d190 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_ED0Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")]
+pub fn stub_3d190() -> ! {
+    todo!("0x3d190 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::~callable()")
+}
+
+// 0x3d6a8 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED1Ev
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")]
+pub fn stub_3d6a8() -> ! {
+    todo!("0x3d6a8 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x3d754 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED0Ev
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")]
+pub fn stub_3d754() -> ! {
+    todo!("0x3d754 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x3d808 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+pub fn stub_3d808() -> ! {
+    todo!("0x3d808 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+}
+
+// 0x3d81c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+pub fn stub_3d81c() -> ! {
+    todo!("0x3d81c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+}
+
+// 0x3d830 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1Iv10RobloxViewPKN3RBX10Reflection18PropertyDescriptorEEENS0_5list2INS0_5valueIPS4_EENS_3argILi1EEEEEEclIS9_EEvRT_
+// type: int(void)
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")]
+pub fn stub_3d830() -> ! {
+    todo!("0x3d830 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")
+}
+
+// 0x3d9f0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+pub fn stub_3d9f0() -> ! {
+    todo!("0x3d9f0 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0x3da9c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+pub fn stub_3da9c() -> ! {
+    todo!("0x3da9c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0x3dc60 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView9RenderJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
+pub fn stub_3dc60() -> ! {
+    todo!("0x3dc60 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")
+}
+
+// 0x3dd34 — __ZN5boost6detail12shared_countC2IN10RobloxView9RenderJobEEEPT_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
+pub fn stub_3dd34() -> ! {
+    todo!("0x3dd34 boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+}
+
+// 0x3de28 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
+pub fn stub_3de28() -> ! {
+    todo!("0x3de28 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
+}
+
+// 0x3de2c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
+pub fn stub_3de2c() -> ! {
+    todo!("0x3de2c boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
+}
+
+// 0x3de30 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")]
+pub fn stub_3de30() -> ! {
+    todo!("0x3de30 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")
+}
+
+// 0x3de40 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")]
+pub fn stub_3de40() -> ! {
+    todo!("0x3de40 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")
+}
+
+// 0x3de44 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")]
+pub fn stub_3de44() -> ! {
+    todo!("0x3de44 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")
+}
+
+// 0x3de48 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView13ViewUpdateJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(boost::shared_ptr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")]
+pub fn stub_3de48() -> ! {
+    todo!("0x3de48 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(boost::shared_ptr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")
+}
+
+// 0x3df1c — __ZN5boost6detail12shared_countC2IN10RobloxView13ViewUpdateJobEEEPT_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
+pub fn stub_3df1c() -> ! {
+    todo!("0x3df1c boost::detail::shared_count::shared_count<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
+}
+
+// 0x3e010 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")]
+pub fn stub_3e010() -> ! {
+    todo!("0x3e010 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")
+}
+
+// 0x3e014 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")]
+pub fn stub_3e014() -> ! {
+    todo!("0x3e014 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::~sp_counted_impl_p()")
+}
+
+// 0x3e018 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)")]
+pub fn stub_3e018() -> ! {
+    todo!("0x3e018 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::dispose(void)")
+}
+
+// 0x3e028 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)")]
+pub fn stub_3e028() -> ! {
+    todo!("0x3e028 boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_deleter(std::type_info const&)")
+}
+
+// 0x3e02c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView13ViewUpdateJobEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)")]
+pub fn stub_3e02c() -> ! {
+    todo!("0x3e02c boost::detail::sp_counted_impl_p<RobloxView::ViewUpdateJob>::get_untyped_deleter(void)")
+}
+
+// 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
+// type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
+#[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")]
+pub fn stub_3ecf0() -> ! {
+    todo!("0x3ecf0 RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")
+}
+
+// 0x40160 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_40160() -> ! {
+    todo!("0x40160 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x401dc — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+pub fn stub_401dc() -> ! {
+    todo!("0x401dc boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+}
+
+// 0x401f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_401f0() -> ! {
+    todo!("0x401f0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x40270 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+pub fn stub_40270() -> ! {
+    todo!("0x40270 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+}
+
+// 0x4027c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// type: int(void)
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")]
+pub fn stub_4027c() -> ! {
+    todo!("0x4027c void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")
+}
+
+// 0x402a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_402a8() -> ! {
+    todo!("0x402a8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x40308 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+pub fn stub_40308() -> ! {
+    todo!("0x40308 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")
+}
+
+// 0x471c0 — -[ControlComponent findControlView]
+// type: id __cdecl(ControlComponent *self, SEL)
+#[doc(alias = "-[ControlComponent findControlView]")]
+pub fn stub_471c0() -> ! {
+    todo!("0x471c0 -[ControlComponent findControlView]")
+}
+
+// 0x47274 — -[ControlComponent getGameFromControlView]
+// type: Game *__cdecl(ControlComponent *self, SEL)
+#[doc(alias = "-[ControlComponent getGameFromControlView]")]
+pub fn stub_47274() -> ! {
+    todo!("0x47274 -[ControlComponent getGameFromControlView]")
+}
+
+// 0x47638 — -[ControlView init:withGame:]
+// type: id __cdecl(ControlView *self, SEL, CGRect, shared_ptr<RBX::Game>)
+#[doc(alias = "-[ControlView init:withGame:]")]
+pub fn stub_47638() -> ! {
+    todo!("0x47638 -[ControlView init:withGame:]")
+}
+
+// 0x47904 — -[ControlView dealloc]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView dealloc]")]
+pub fn stub_47904() -> ! {
+    todo!("0x47904 -[ControlView dealloc]")
+}
+
+// 0x479f8 — -[ControlView setGame:]
+// type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::Game>)
+#[doc(alias = "-[ControlView setGame:]")]
+pub fn stub_479f8() -> ! {
+    todo!("0x479f8 -[ControlView setGame:]")
+}
+
+// 0x47aec — -[ControlView gotStartLeaveGameNotification:]
+// type: void __cdecl(ControlView *self, SEL, id)
+#[doc(alias = "-[ControlView gotStartLeaveGameNotification:]")]
+pub fn stub_47aec() -> ! {
+    todo!("0x47aec -[ControlView gotStartLeaveGameNotification:]")
+}
+
+// 0x47afc — -[ControlView dataModelChanged:]
+// type: void __cdecl(ControlView *self, SEL, DataModel *)
+#[doc(alias = "-[ControlView dataModelChanged:]")]
+pub fn stub_47afc() -> ! {
+    todo!("0x47afc -[ControlView dataModelChanged:]")
+}
+
+// 0x47b38 — -[ControlView setControlVisibility:]
+// type: void __cdecl(ControlView *self, SEL, char)
+#[doc(alias = "-[ControlView setControlVisibility:]")]
+pub fn stub_47b38() -> ! {
+    todo!("0x47b38 -[ControlView setControlVisibility:]")
+}
+
+// 0x47b90 — ___36-[ControlView setControlVisibility:]_block_invoke
+#[doc(alias = "___36-[ControlView setControlVisibility:]_block_invoke")]
+pub fn stub_47b90() -> ! {
+    todo!("0x47b90 ___36-[ControlView setControlVisibility:]_block_invoke")
+}
+
+// 0x47c18 — -[ControlView showControls]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView showControls]")]
+pub fn stub_47c18() -> ! {
+    todo!("0x47c18 -[ControlView showControls]")
+}
+
+// 0x47c2c — -[ControlView hideControls]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView hideControls]")]
+pub fn stub_47c2c() -> ! {
+    todo!("0x47c2c -[ControlView hideControls]")
+}
+
+// 0x47c40 — -[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]
+// type: void __cdecl(ControlView *self, SEL, bool, void *, UIEvent)
+#[doc(alias = "-[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]")]
+pub fn stub_47c40() -> ! {
+    todo!("0x47c40 -[ControlView postMouseEventProcessedFromOverlay:inputObject:event:]")
+}
+
+// 0x47d48 — -[ControlView postMouseEventProcessed:inputObject:event:]
+// type: void __cdecl(ControlView *self, SEL, bool, void *, UIEvent)
+#[doc(alias = "-[ControlView postMouseEventProcessed:inputObject:event:]")]
+pub fn stub_47d48() -> ! {
+    todo!("0x47d48 -[ControlView postMouseEventProcessed:inputObject:event:]")
+}
+
+// 0x47d78 — -[ControlView setupLocalPlayerConnections]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView setupLocalPlayerConnections]")]
+pub fn stub_47d78() -> ! {
+    todo!("0x47d78 -[ControlView setupLocalPlayerConnections]")
+}
+
+// 0x47d7c — -[ControlView textBoxFocusGained:]
+// type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::TextBox>)
+#[doc(alias = "-[ControlView textBoxFocusGained:]")]
+pub fn stub_47d7c() -> ! {
+    todo!("0x47d7c -[ControlView textBoxFocusGained:]")
+}
+
+// 0x47ea4 — -[ControlView getGame]
+// type: shared_ptr<RBX::Game> *__cdecl(shared_ptr<RBX::Game> *__return_ptr __struct_ptr retstr, ControlView *self, SEL)
+#[doc(alias = "-[ControlView getGame]")]
+pub fn stub_47ea4() -> ! {
+    todo!("0x47ea4 -[ControlView getGame]")
+}
+
+// 0x47f48 — -[ControlView setupEvents]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView setupEvents]")]
+pub fn stub_47f48() -> ! {
+    todo!("0x47f48 -[ControlView setupEvents]")
+}
+
+// 0x4818c — -[ControlView disconnectEvents]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView disconnectEvents]")]
+pub fn stub_4818c() -> ! {
+    todo!("0x4818c -[ControlView disconnectEvents]")
+}
+
+// 0x481cc — -[ControlView bindToUserInputService:]
+// type: void __cdecl(ControlView *self, SEL, shared_ptr<RBX::DataModel>)
+#[doc(alias = "-[ControlView bindToUserInputService:]")]
+pub fn stub_481cc() -> ! {
+    todo!("0x481cc -[ControlView bindToUserInputService:]")
+}
+
+// 0x48604 — -[ControlView bindUserInputService]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView bindUserInputService]")]
+pub fn stub_48604() -> ! {
+    todo!("0x48604 -[ControlView bindUserInputService]")
+}
+
+// 0x48774 — -[ControlView checkUserInputPropertyChanged:onDataModel:]
+// type: char __cdecl(ControlView *self, SEL, const PropertyDescriptor *, shared_ptr<RBX::DataModel>)
+#[doc(alias = "-[ControlView checkUserInputPropertyChanged:onDataModel:]")]
+pub fn stub_48774() -> ! {
+    todo!("0x48774 -[ControlView checkUserInputPropertyChanged:onDataModel:]")
+}
+
+// 0x487d4 — -[ControlView isValidUserInputProperty:]
+// type: char __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
+#[doc(alias = "-[ControlView isValidUserInputProperty:]")]
+pub fn stub_487d4() -> ! {
+    todo!("0x487d4 -[ControlView isValidUserInputProperty:]")
+}
+
+// 0x4880c — -[ControlView userInputPropertyChangedOnDataModel:]
+// type: void __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
+#[doc(alias = "-[ControlView userInputPropertyChangedOnDataModel:]")]
+pub fn stub_4880c() -> ! {
+    todo!("0x4880c -[ControlView userInputPropertyChangedOnDataModel:]")
+}
+
+// 0x48918 — -[ControlView userInputPropertyChangedOnOverlay:]
+// type: void __cdecl(ControlView *self, SEL, const PropertyDescriptor *)
+#[doc(alias = "-[ControlView userInputPropertyChangedOnOverlay:]")]
+pub fn stub_48918() -> ! {
+    todo!("0x48918 -[ControlView userInputPropertyChangedOnOverlay:]")
+}
+
+// 0x48a50 — -[ControlView setupInputControls]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView setupInputControls]")]
+pub fn stub_48a50() -> ! {
+    todo!("0x48a50 -[ControlView setupInputControls]")
+}
+
+// 0x48fe8 — -[ControlView gameLoaded]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView gameLoaded]")]
+pub fn stub_48fe8() -> ! {
+    todo!("0x48fe8 -[ControlView gameLoaded]")
+}
+
+// 0x48ff8 — -[ControlView invalidateTapGesture:]
+// type: void __cdecl(ControlView *self, SEL, id)
+#[doc(alias = "-[ControlView invalidateTapGesture:]")]
+pub fn stub_48ff8() -> ! {
+    todo!("0x48ff8 -[ControlView invalidateTapGesture:]")
+}
+
+// 0x49018 — -[ControlView createNativeMenu]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView createNativeMenu]")]
+pub fn stub_49018() -> ! {
+    todo!("0x49018 -[ControlView createNativeMenu]")
+}
+
+// 0x4908c — -[ControlView checkTouchesForTap:withEvent:]
+// type: id __cdecl(ControlView *self, SEL, id, id)
+#[doc(alias = "-[ControlView checkTouchesForTap:withEvent:]")]
+pub fn stub_4908c() -> ! {
+    todo!("0x4908c -[ControlView checkTouchesForTap:withEvent:]")
+}
+
+// 0x4918c — -[ControlView sendMouseEventToGame:withTouch:]
+// type: void __cdecl(ControlView *self, SEL, UIEvent, id)
+#[doc(alias = "-[ControlView sendMouseEventToGame:withTouch:]")]
+pub fn stub_4918c() -> ! {
+    todo!("0x4918c -[ControlView sendMouseEventToGame:withTouch:]")
+}
+
+// 0x49314 — -[ControlView touchesBegan:withEvent:]
+// type: void __cdecl(ControlView *self, SEL, id, id)
+#[doc(alias = "-[ControlView touchesBegan:withEvent:]")]
+pub fn stub_49314() -> ! {
+    todo!("0x49314 -[ControlView touchesBegan:withEvent:]")
+}
+
+// 0x4951c — -[ControlView touchesEnded:withEvent:]
+// type: void __cdecl(ControlView *self, SEL, id, id)
+#[doc(alias = "-[ControlView touchesEnded:withEvent:]")]
+pub fn stub_4951c() -> ! {
+    todo!("0x4951c -[ControlView touchesEnded:withEvent:]")
+}
+
+// 0x49684 — -[ControlView touchesMoved:withEvent:]
+// type: void __cdecl(ControlView *self, SEL, id, id)
+#[doc(alias = "-[ControlView touchesMoved:withEvent:]")]
+pub fn stub_49684() -> ! {
+    todo!("0x49684 -[ControlView touchesMoved:withEvent:]")
+}
+
+// 0x497d0 — -[ControlView checkTapTouchMove:]
+// type: void __cdecl(ControlView *self, SEL, id)
+#[doc(alias = "-[ControlView checkTapTouchMove:]")]
+pub fn stub_497d0() -> ! {
+    todo!("0x497d0 -[ControlView checkTapTouchMove:]")
+}
+
+// 0x49920 — -[ControlView touchesCancelled:withEvent:]
+// type: void __cdecl(ControlView *self, SEL, id, id)
+#[doc(alias = "-[ControlView touchesCancelled:withEvent:]")]
+pub fn stub_49920() -> ! {
+    todo!("0x49920 -[ControlView touchesCancelled:withEvent:]")
+}
+
+// 0x499e0 — -[ControlView twoFingerPinch:]
+// type: void __cdecl(ControlView *self, SEL, id)
+#[doc(alias = "-[ControlView twoFingerPinch:]")]
+pub fn stub_499e0() -> ! {
+    todo!("0x499e0 -[ControlView twoFingerPinch:]")
+}
+
+// 0x49acc — -[ControlView oneFingerSingleTap]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView oneFingerSingleTap]")]
+pub fn stub_49acc() -> ! {
+    todo!("0x49acc -[ControlView oneFingerSingleTap]")
+}
+
+// 0x49bb4 — -[ControlView gestureRecognizer:shouldReceiveTouch:]
+// type: char __cdecl(ControlView *self, SEL, id, id)
+#[doc(alias = "-[ControlView gestureRecognizer:shouldReceiveTouch:]")]
+pub fn stub_49bb4() -> ! {
+    todo!("0x49bb4 -[ControlView gestureRecognizer:shouldReceiveTouch:]")
+}
+
+// 0x49ca0 — -[ControlView .cxx_destruct]
+// type: void __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView .cxx_destruct]")]
+pub fn stub_49ca0() -> ! {
+    todo!("0x49ca0 -[ControlView .cxx_destruct]")
+}
+
+// 0x49e18 — -[ControlView .cxx_construct]
+// type: id __cdecl(ControlView *self, SEL)
+#[doc(alias = "-[ControlView .cxx_construct]")]
+pub fn stub_49e18() -> ! {
+    todo!("0x49e18 -[ControlView .cxx_construct]")
+}
+
+// 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]
+// type: char __cdecl(GameViewController *self, SEL, id, id, int)
+#[doc(alias = "-[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")]
+pub fn stub_4db9c() -> ! {
+    todo!("0x4db9c -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")
+}
+
+// 0x4dbe8 — -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]
+// type: void __cdecl(GameViewController *self, SEL, DataModel *)
+#[doc(alias = "-[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")]
+pub fn stub_4dbe8() -> ! {
+    todo!("0x4dbe8 -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")
+}
+
+// 0x4dc08 — -[GameViewController closeUrlWindow:]
+// type: void __cdecl(GameViewController *self, SEL, id)
+#[doc(alias = "-[GameViewController closeUrlWindow:]")]
+pub fn stub_4dc08() -> ! {
+    todo!("0x4dc08 -[GameViewController closeUrlWindow:]")
+}
+
+// 0x4de58 — ___37-[GameViewController closeUrlWindow:]_block_invoke
+// type: id __fastcall(_DWORD *)
+#[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke")]
+pub fn stub_4de58() -> ! {
+    todo!("0x4de58 ___37-[GameViewController closeUrlWindow:]_block_invoke")
+}
+
+// 0x4df1c — ___37-[GameViewController closeUrlWindow:]_block_invoke_2
+// type: id __fastcall(int)
+#[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke_2")]
+pub fn stub_4df1c() -> ! {
+    todo!("0x4df1c ___37-[GameViewController closeUrlWindow:]_block_invoke_2")
+}
+
+// 0x4dfec — ___37-[GameViewController closeUrlWindow:]_block_invoke93
+// type: id __fastcall(int)
+#[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke93")]
+pub fn stub_4dfec() -> ! {
+    todo!("0x4dfec ___37-[GameViewController closeUrlWindow:]_block_invoke93")
+}
+
+// 0x4e070 — -[GameViewController closeUrlWindow]
+// type: void __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController closeUrlWindow]")]
+pub fn stub_4e070() -> ! {
+    todo!("0x4e070 -[GameViewController closeUrlWindow]")
+}
+
+// 0x4e084 — -[GameViewController openUrlWindow:]
+// type: void __cdecl(GameViewController *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
+#[doc(alias = "-[GameViewController openUrlWindow:]")]
+pub fn stub_4e084() -> ! {
+    todo!("0x4e084 -[GameViewController openUrlWindow:]")
+}
+
+// 0x4e2ac — ___36-[GameViewController openUrlWindow:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke")]
+pub fn stub_4e2ac() -> ! {
+    todo!("0x4e2ac ___36-[GameViewController openUrlWindow:]_block_invoke")
+}
+
+// 0x4e4dc — ___36-[GameViewController openUrlWindow:]_block_invoke136
+// type: id __fastcall(int)
+#[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke136")]
+pub fn stub_4e4dc() -> ! {
+    todo!("0x4e4dc ___36-[GameViewController openUrlWindow:]_block_invoke136")
+}
+
+// 0x4e5fc — ___36-[GameViewController openUrlWindow:]_block_invoke_2
+// type: id __fastcall(_DWORD *)
+#[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke_2")]
+pub fn stub_4e5fc() -> ! {
+    todo!("0x4e5fc ___36-[GameViewController openUrlWindow:]_block_invoke_2")
+}
+
+// 0x4e730 — -[GameViewController handlePromptLoginSignal]
+// type: void __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController handlePromptLoginSignal]")]
+pub fn stub_4e730() -> ! {
+    todo!("0x4e730 -[GameViewController handlePromptLoginSignal]")
+}
+
+// 0x4e780 — ___45-[GameViewController handlePromptLoginSignal]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___45-[GameViewController handlePromptLoginSignal]_block_invoke")]
+pub fn stub_4e780() -> ! {
+    todo!("0x4e780 ___45-[GameViewController handlePromptLoginSignal]_block_invoke")
+}
