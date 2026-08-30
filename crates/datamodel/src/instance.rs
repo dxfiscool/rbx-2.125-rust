@@ -6,7 +6,7 @@
 
 use rbx_core::SharedPtr;
 
-// 1203 stubs in this file | batch range 0xef04..0x402840
+// 1303 stubs in this file | batch range 0xef04..0x417190
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
@@ -8423,4 +8423,704 @@ pub fn stub_0x402838() -> ! {
 // was: `non-virtual thunk to'RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()
 pub fn stub_0x402840() -> ! {
     todo!("0x402840 `non-virtual thunk to'RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
+}
+
+// 0x402848 — __ZThn96_N3RBX17FilteredSelectionINS_10PVInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&)")]
+// was: non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&)
+pub fn stub_0x402848() -> ! {
+    todo!("0x402848 non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
+}
+
+// 0x402850 — __ZNSt6vectorIPN3RBX10PVInstanceESaIS2_EE9push_backERKS2_
+#[doc(alias = "std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>::push_back(RBX::PVInstance * const&)")]
+// was: std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>::push_back(RBX::PVInstance * const&)
+pub fn stub_0x402850() -> ! {
+    todo!("0x402850 std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>::push_back(RBX::PVInstance * const&)")
+}
+
+// 0x40287c — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPPN3RBX10PVInstanceESt6vectorIS4_SaIS4_EEEEPNS2_8InstanceEET_SC_SC_RKT0_St26random_access_iterator_tag
+#[doc(alias = "__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,RBX::Instance *>(__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,RBX::Instance * const&,std::random_access_iterator_tag)")]
+// was: __gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,RBX::Instance *>(__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,RBX::Instance * const&,std::random_access_iterator_tag)
+pub fn stub_0x40287c() -> ! {
+    todo!("0x40287c __gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>> std::__find<__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,RBX::Instance *>(__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,RBX::Instance * const&,std::random_access_iterator_tag)")
+}
+
+// 0x40290c — __ZNSt6vectorIPN3RBX10PVInstanceESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,RBX::PVInstance * const&)")]
+// was: std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,RBX::PVInstance * const&)
+pub fn stub_0x40290c() -> ! {
+    todo!("0x40290c std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::PVInstance **,std::vector<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>>,RBX::PVInstance * const&)")
+}
+
+// 0x4029ec — __ZNSt12_Vector_baseIPN3RBX10PVInstanceESaIS2_EE11_M_allocateEm
+#[doc(alias = "std::_Vector_base<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>::_M_allocate(unsigned long)")]
+// was: std::_Vector_base<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>::_M_allocate(unsigned long)
+pub fn stub_0x4029ec() -> ! {
+    todo!("0x4029ec std::_Vector_base<RBX::PVInstance *,std::allocator<RBX::PVInstance *>>::_M_allocate(unsigned long)")
+}
+
+// 0x402a04 — __ZN3RBX17FilteredSelectionINS_10PVInstanceEED2Ev
+#[doc(alias = "RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
+// was: RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()
+pub fn stub_0x402a04() -> ! {
+    todo!("0x402a04 RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
+}
+
+// 0x402b38 — __ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_10PVInstanceEEEEC2IS4_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>>::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>>::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x402b38() -> ! {
+    todo!("0x402b38 boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>>::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x402c00 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17FilteredSelectionINS1_10PVInstanceEEES8_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FilteredSelection<RBX::PVInstance>,RBX::FilteredSelection<RBX::PVInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const*,RBX::FilteredSelection<RBX::PVInstance> *)const")]
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FilteredSelection<RBX::PVInstance>,RBX::FilteredSelection<RBX::PVInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const*,RBX::FilteredSelection<RBX::PVInstance> *)const
+pub fn stub_0x402c00() -> ! {
+    todo!("0x402c00 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FilteredSelection<RBX::PVInstance>,RBX::FilteredSelection<RBX::PVInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const*,RBX::FilteredSelection<RBX::PVInstance> *)const")
+}
+
+// 0x402ce8 — __ZN5boost6detail12shared_countC2IPN3RBX17FilteredSelectionINS3_10PVInstanceEEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::detail::shared_count::shared_count<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x402ce8() -> ! {
+    todo!("0x402ce8 boost::detail::shared_count::shared_count<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x402df0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x402df0() -> ! {
+    todo!("0x402df0 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x402df4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x402df4() -> ! {
+    todo!("0x402df4 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x402df8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn stub_0x402df8() -> ! {
+    todo!("0x402df8 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x402e18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+pub fn stub_0x402e18() -> ! {
+    todo!("0x402e18 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x402e30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX17FilteredSelectionINS2_10PVInstanceEEENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
+pub fn stub_0x402e30() -> ! {
+    todo!("0x402e30 boost::detail::sp_counted_impl_pd<RBX::FilteredSelection<RBX::PVInstance> *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x402e34 — __ZNK3RBX13ServiceClientINS_17FilteredSelectionINS_10PVInstanceEEEE13createServiceEv
+#[doc(alias = "RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance>>::createService(void)const")]
+// was: RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance>>::createService(void)const
+pub fn stub_0x402e34() -> ! {
+    todo!("0x402e34 RBX::ServiceClient<RBX::FilteredSelection<RBX::PVInstance>>::createService(void)const")
+}
+
+// 0x402f14 — __ZN5boost10shared_ptrIN3RBX17FilteredSelectionINS1_10PVInstanceEEEEaSERKS5_
+#[doc(alias = "boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>>::operator=(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const&)")]
+// was: boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>>::operator=(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const&)
+pub fn stub_0x402f14() -> ! {
+    todo!("0x402f14 boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>>::operator=(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const&)")
+}
+
+// 0x402f4c — __ZN3RBX11shared_fromINS_17FilteredSelectionINS_10PVInstanceEEEEEN5boost10shared_ptrIT_EEPS6_
+#[doc(alias = "boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> RBX::shared_from<RBX::FilteredSelection<RBX::PVInstance>>(RBX::FilteredSelection<RBX::PVInstance>*)")]
+// was: boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> RBX::shared_from<RBX::FilteredSelection<RBX::PVInstance>>(RBX::FilteredSelection<RBX::PVInstance>*)
+pub fn stub_0x402f4c() -> ! {
+    todo!("0x402f4c boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> RBX::shared_from<RBX::FilteredSelection<RBX::PVInstance>>(RBX::FilteredSelection<RBX::PVInstance>*)")
+}
+
+// 0x403034 — __ZN3RBX21BoolPropertyVerbSetItclEN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::BoolPropertyVerbSetIt::operator()(boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::BoolPropertyVerbSetIt::operator()(boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x403034() -> ! {
+    todo!("0x403034 RBX::BoolPropertyVerbSetIt::operator()(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x403278 — __ZSt9__find_ifIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIbPFbPKcS6_ENSD_5list2INSD_5valueISG_EENS2_3argILi1EEEEEEEET_SQ_SQ_T0_St26random_access_iterator_tag
+#[doc(alias = "__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find_if<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>,std::random_access_iterator_tag)")]
+// was: __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find_if<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>,std::random_access_iterator_tag)
+pub fn stub_0x403278() -> ! {
+    todo!("0x403278 __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> std::__find_if<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>>,std::random_access_iterator_tag)")
+}
+
+// 0x40336c — __ZN5boost3_bi5list2INS0_5valueIPKcEENS_3argILi1EEEEclIbPFbS4_NS_10shared_ptrIN3RBX8InstanceEEEENS0_5list1IRKSD_EEEET_NS0_4typeISK_EERT0_RT1_l
+#[doc(alias = "bool boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>::operator()<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<bool>,bool (*)(char const*,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,long)")]
+// was: bool boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>::operator()<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<bool>,bool (*)(char const*,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,long)
+pub fn stub_0x40336c() -> ! {
+    todo!("0x40336c bool boost::_bi::list2<boost::_bi::value<char const*>,boost::arg<1>>::operator()<bool,bool (*)(char const*,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<bool>,bool (*)(char const*,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,long)")
+}
+
+// 0x403820 — __ZN3RBX11CommonVerbsC1EPNS_9DataModelE
+#[doc(alias = "RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)")]
+// was: RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)
+pub fn stub_0x403820() -> ! {
+    todo!("0x403820 RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)")
+}
+
+// 0x403824 — __ZN3RBX11CommonVerbsC2EPNS_9DataModelE
+#[doc(alias = "RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)")]
+// was: RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)
+pub fn stub_0x403824() -> ! {
+    todo!("0x403824 RBX::CommonVerbs::CommonVerbs(RBX::DataModel *)")
+}
+
+// 0x404394 — __ZN3RBX9TToolVerbINS_10HammerToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::HammerTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::HammerTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x404394() -> ! {
+    todo!("0x404394 RBX::TToolVerb<RBX::HammerTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x4047d4 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10HammerToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::HammerTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HammerTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::HammerTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HammerTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x4047d4() -> ! {
+    todo!("0x4047d4 boost::shared_ptr<RBX::HammerTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HammerTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x404c8c — __ZN3RBX9TToolVerbINS_9CloneToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::CloneTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::CloneTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x404c8c() -> ! {
+    todo!("0x404c8c RBX::TToolVerb<RBX::CloneTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x4050c8 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9CloneToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::CloneTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::CloneTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::CloneTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::CloneTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x4050c8() -> ! {
+    todo!("0x4050c8 boost::shared_ptr<RBX::CloneTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::CloneTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x405580 — __ZN3RBX9TToolVerbINS_8GrabToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::GrabTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::GrabTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x405580() -> ! {
+    todo!("0x405580 RBX::TToolVerb<RBX::GrabTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x4059bc — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GrabToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::GrabTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GrabTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::GrabTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GrabTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x4059bc() -> ! {
+    todo!("0x4059bc boost::shared_ptr<RBX::GrabTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GrabTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x405e74 — __ZN3RBX9TToolVerbINS_8GameToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::GameTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::GameTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x405e74() -> ! {
+    todo!("0x405e74 RBX::TToolVerb<RBX::GameTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x4062b0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GameToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::GameTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GameTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::GameTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GameTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x4062b0() -> ! {
+    todo!("0x4062b0 boost::shared_ptr<RBX::GameTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GameTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x406768 — __ZN3RBX9TToolVerbINS_8NullToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::NullTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::NullTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x406768() -> ! {
+    todo!("0x406768 RBX::TToolVerb<RBX::NullTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x406ba4 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8NullToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::NullTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::NullTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::NullTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::NullTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x406ba4() -> ! {
+    todo!("0x406ba4 boost::shared_ptr<RBX::NullTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::NullTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40705c — __ZN3RBX9TToolVerbINS_11DropperToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40705c() -> ! {
+    todo!("0x40705c RBX::TToolVerb<RBX::DropperTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x407498 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11DropperToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::DropperTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::DropperTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::DropperTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::DropperTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x407498() -> ! {
+    todo!("0x407498 boost::shared_ptr<RBX::DropperTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::DropperTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x407994 — __ZN3RBX9TToolVerbINS_12MaterialToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x407994() -> ! {
+    todo!("0x407994 RBX::TToolVerb<RBX::MaterialTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x407dd0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_12MaterialToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::MaterialTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MaterialTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::MaterialTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MaterialTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x407dd0() -> ! {
+    todo!("0x407dd0 boost::shared_ptr<RBX::MaterialTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MaterialTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x408394 — __ZN3RBX9TToolVerbINS_8FillToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::FillTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::FillTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x408394() -> ! {
+    todo!("0x408394 RBX::TToolVerb<RBX::FillTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x4087d0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8FillToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::FillTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FillTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::FillTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FillTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x4087d0() -> ! {
+    todo!("0x4087d0 boost::shared_ptr<RBX::FillTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FillTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x408d94 — __ZN3RBX9TToolVerbINS_8LockToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::LockTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::LockTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x408d94() -> ! {
+    todo!("0x408d94 RBX::TToolVerb<RBX::LockTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x4091d0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8LockToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::LockTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LockTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::LockTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LockTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x4091d0() -> ! {
+    todo!("0x4091d0 boost::shared_ptr<RBX::LockTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LockTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x4098e0 — __ZN3RBX9TToolVerbINS_10AnchorToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::AnchorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::AnchorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x4098e0() -> ! {
+    todo!("0x4098e0 RBX::TToolVerb<RBX::AnchorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x409d1c — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10AnchorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::AnchorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AnchorTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::AnchorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AnchorTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x409d1c() -> ! {
+    todo!("0x409d1c boost::shared_ptr<RBX::AnchorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AnchorTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40a434 — __ZN3RBX9TToolVerbINS_20SmoothNoOutlinesToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::SmoothNoOutlinesTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::SmoothNoOutlinesTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40a434() -> ! {
+    todo!("0x40a434 RBX::TToolVerb<RBX::SmoothNoOutlinesTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x40a870 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_20SmoothNoOutlinesToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::SmoothNoOutlinesTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::SmoothNoOutlinesTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::SmoothNoOutlinesTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::SmoothNoOutlinesTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x40a870() -> ! {
+    todo!("0x40a870 boost::shared_ptr<RBX::SmoothNoOutlinesTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::SmoothNoOutlinesTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40ae34 — __ZN3RBX9TToolVerbINS_18OscillateMotorToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::OscillateMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::OscillateMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40ae34() -> ! {
+    todo!("0x40ae34 RBX::TToolVerb<RBX::OscillateMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x40b270 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18OscillateMotorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::OscillateMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::OscillateMotorTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::OscillateMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::OscillateMotorTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x40b270() -> ! {
+    todo!("0x40b270 boost::shared_ptr<RBX::OscillateMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::OscillateMotorTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40b76c — __ZN3RBX9TToolVerbINS_13LeftMotorToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::LeftMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::LeftMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40b76c() -> ! {
+    todo!("0x40b76c RBX::TToolVerb<RBX::LeftMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x40bba8 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_13LeftMotorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::LeftMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LeftMotorTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::LeftMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LeftMotorTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x40bba8() -> ! {
+    todo!("0x40bba8 boost::shared_ptr<RBX::LeftMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LeftMotorTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40c0a4 — __ZN3RBX9TToolVerbINS_14RightMotorToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::RightMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::RightMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40c0a4() -> ! {
+    todo!("0x40c0a4 RBX::TToolVerb<RBX::RightMotorTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x40c4e0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_14RightMotorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::RightMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::RightMotorTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::RightMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::RightMotorTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x40c4e0() -> ! {
+    todo!("0x40c4e0 boost::shared_ptr<RBX::RightMotorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::RightMotorTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40caa4 — __ZN3RBX9TToolVerbINS_9HingeToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::HingeTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::HingeTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40caa4() -> ! {
+    todo!("0x40caa4 RBX::TToolVerb<RBX::HingeTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x40cee0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9HingeToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::HingeTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HingeTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::HingeTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HingeTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x40cee0() -> ! {
+    todo!("0x40cee0 boost::shared_ptr<RBX::HingeTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HingeTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40d4a4 — __ZN3RBX9TToolVerbINS_13UniversalToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::UniversalTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::UniversalTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40d4a4() -> ! {
+    todo!("0x40d4a4 RBX::TToolVerb<RBX::UniversalTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x40d8e0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_13UniversalToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::UniversalTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::UniversalTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::UniversalTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::UniversalTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x40d8e0() -> ! {
+    todo!("0x40d8e0 boost::shared_ptr<RBX::UniversalTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::UniversalTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40dea4 — __ZN3RBX9TToolVerbINS_9InletToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::InletTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::InletTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40dea4() -> ! {
+    todo!("0x40dea4 RBX::TToolVerb<RBX::InletTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x40e2e0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9InletToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::InletTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::InletTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::InletTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::InletTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x40e2e0() -> ! {
+    todo!("0x40e2e0 boost::shared_ptr<RBX::InletTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::InletTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40e8a4 — __ZN3RBX9TToolVerbINS_9StudsToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::StudsTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::StudsTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40e8a4() -> ! {
+    todo!("0x40e8a4 RBX::TToolVerb<RBX::StudsTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x40ece0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9StudsToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::StudsTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::StudsTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::StudsTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::StudsTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x40ece0() -> ! {
+    todo!("0x40ece0 boost::shared_ptr<RBX::StudsTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::StudsTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40f2a4 — __ZN3RBX9TToolVerbINS_8WeldToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::WeldTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::WeldTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40f2a4() -> ! {
+    todo!("0x40f2a4 RBX::TToolVerb<RBX::WeldTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x40f6e0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8WeldToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::WeldTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::WeldTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::WeldTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::WeldTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x40f6e0() -> ! {
+    todo!("0x40f6e0 boost::shared_ptr<RBX::WeldTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::WeldTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x40fca4 — __ZN3RBX9TToolVerbINS_8GlueToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::GlueTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::GlueTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x40fca4() -> ! {
+    todo!("0x40fca4 RBX::TToolVerb<RBX::GlueTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x4100e0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GlueToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::GlueTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GlueTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::GlueTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GlueTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x4100e0() -> ! {
+    todo!("0x4100e0 boost::shared_ptr<RBX::GlueTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GlueTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x4106a4 — __ZN3RBX9TToolVerbINS_8FlatToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::FlatTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::FlatTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x4106a4() -> ! {
+    todo!("0x4106a4 RBX::TToolVerb<RBX::FlatTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x410ae0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8FlatToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::FlatTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FlatTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::FlatTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FlatTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x410ae0() -> ! {
+    todo!("0x410ae0 boost::shared_ptr<RBX::FlatTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FlatTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x4110a4 — __ZN3RBX9TToolVerbINS_12AdvArrowToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::AdvArrowTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::AdvArrowTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x4110a4() -> ! {
+    todo!("0x4110a4 RBX::TToolVerb<RBX::AdvArrowTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x4114dc — __ZN3RBX9TToolVerbINS_13AdvRotateToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::AdvRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::AdvRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x4114dc() -> ! {
+    todo!("0x4114dc RBX::TToolVerb<RBX::AdvRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x411918 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_13AdvRotateToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::AdvRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvRotateTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::AdvRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvRotateTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x411918() -> ! {
+    todo!("0x411918 boost::shared_ptr<RBX::AdvRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvRotateTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x411d70 — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
+#[doc(alias = "std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_erase(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)")]
+// was: std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_erase(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)
+pub fn stub_0x411d70() -> ! {
+    todo!("0x411d70 std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_erase(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)")
+}
+
+// 0x411d98 — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS7_E
+#[doc(alias = "std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)")]
+// was: std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)
+pub fn stub_0x411d98() -> ! {
+    todo!("0x411d98 std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)")
+}
+
+// 0x4121b8 — __ZN3RBX9TToolVerbINS_11AdvMoveToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::AdvMoveTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::AdvMoveTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x4121b8() -> ! {
+    todo!("0x4121b8 RBX::TToolVerb<RBX::AdvMoveTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x4125f4 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11AdvMoveToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::AdvMoveTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvMoveTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::AdvMoveTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvMoveTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x4125f4() -> ! {
+    todo!("0x4125f4 boost::shared_ptr<RBX::AdvMoveTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvMoveTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x412c84 — __ZN3RBX9TToolVerbINS_18MoveResizeJoinToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x412c84() -> ! {
+    todo!("0x412c84 RBX::TToolVerb<RBX::MoveResizeJoinTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x4130c0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18MoveResizeJoinToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x4130c0() -> ! {
+    todo!("0x4130c0 boost::shared_ptr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x413174 — __ZN3RBX18MoveResizeJoinToolC2EPNS_9WorkspaceE
+#[doc(alias = "RBX::MoveResizeJoinTool::MoveResizeJoinTool(RBX::Workspace *)")]
+// was: RBX::MoveResizeJoinTool::MoveResizeJoinTool(RBX::Workspace *)
+pub fn stub_0x413174() -> ! {
+    todo!("0x413174 RBX::MoveResizeJoinTool::MoveResizeJoinTool(RBX::Workspace *)")
+}
+
+// 0x413798 — __ZN3RBX9TToolVerbINS_14AxisRotateToolENS_12RunStateVerbEEC2EPNS_9DataModelEb
+#[doc(alias = "RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")]
+// was: RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)
+pub fn stub_0x413798() -> ! {
+    todo!("0x413798 RBX::TToolVerb<RBX::AxisRotateTool,RBX::RunStateVerb>::TToolVerb(RBX::DataModel *,bool)")
+}
+
+// 0x413bd0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_14AxisRotateToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)")]
+// was: boost::shared_ptr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn stub_0x413bd0() -> ! {
+    todo!("0x413bd0 boost::shared_ptr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)")
+}
+
+// 0x414914 — __ZN3RBX12ResetCommandC2EPNS_9DataModelE
+#[doc(alias = "RBX::ResetCommand::ResetCommand(RBX::DataModel *)")]
+// was: RBX::ResetCommand::ResetCommand(RBX::DataModel *)
+pub fn stub_0x414914() -> ! {
+    todo!("0x414914 RBX::ResetCommand::ResetCommand(RBX::DataModel *)")
+}
+
+// 0x414a5c — __ZN3RBX11StopCommandC2EPNS_9DataModelE
+#[doc(alias = "RBX::StopCommand::StopCommand(RBX::DataModel *)")]
+// was: RBX::StopCommand::StopCommand(RBX::DataModel *)
+pub fn stub_0x414a5c() -> ! {
+    todo!("0x414a5c RBX::StopCommand::StopCommand(RBX::DataModel *)")
+}
+
+// 0x414ba4 — __ZN3RBX10RunCommandC2EPNS_9DataModelE
+#[doc(alias = "RBX::RunCommand::RunCommand(RBX::DataModel *)")]
+// was: RBX::RunCommand::RunCommand(RBX::DataModel *)
+pub fn stub_0x414ba4() -> ! {
+    todo!("0x414ba4 RBX::RunCommand::RunCommand(RBX::DataModel *)")
+}
+
+// 0x414cec — __ZN3RBX15MoveUpBrickVerbC2EPNS_9DataModelE
+#[doc(alias = "RBX::MoveUpBrickVerb::MoveUpBrickVerb(RBX::DataModel *)")]
+// was: RBX::MoveUpBrickVerb::MoveUpBrickVerb(RBX::DataModel *)
+pub fn stub_0x414cec() -> ! {
+    todo!("0x414cec RBX::MoveUpBrickVerb::MoveUpBrickVerb(RBX::DataModel *)")
+}
+
+// 0x414e3c — __ZN3RBX19MoveUpSelectionVerbC2EPNS_9DataModelERKSsf
+#[doc(alias = "RBX::MoveUpSelectionVerb::MoveUpSelectionVerb(RBX::DataModel *,std::string const&,float)")]
+// was: RBX::MoveUpSelectionVerb::MoveUpSelectionVerb(RBX::DataModel *,std::string const&,float)
+pub fn stub_0x414e3c() -> ! {
+    todo!("0x414e3c RBX::MoveUpSelectionVerb::MoveUpSelectionVerb(RBX::DataModel *,std::string const&,float)")
+}
+
+// 0x415020 — __ZN3RBX15MoveUpPlateVerbC2EPNS_9DataModelE
+#[doc(alias = "RBX::MoveUpPlateVerb::MoveUpPlateVerb(RBX::DataModel *)")]
+// was: RBX::MoveUpPlateVerb::MoveUpPlateVerb(RBX::DataModel *)
+pub fn stub_0x415020() -> ! {
+    todo!("0x415020 RBX::MoveUpPlateVerb::MoveUpPlateVerb(RBX::DataModel *)")
+}
+
+// 0x415210 — __ZN3RBX19AllCanSelectCommandC2EPNS_9DataModelE
+#[doc(alias = "RBX::AllCanSelectCommand::AllCanSelectCommand(RBX::DataModel *)")]
+// was: RBX::AllCanSelectCommand::AllCanSelectCommand(RBX::DataModel *)
+pub fn stub_0x415210() -> ! {
+    todo!("0x415210 RBX::AllCanSelectCommand::AllCanSelectCommand(RBX::DataModel *)")
+}
+
+// 0x415358 — __ZN3RBX19CanNotSelectCommandC2EPNS_9DataModelE
+#[doc(alias = "RBX::CanNotSelectCommand::CanNotSelectCommand(RBX::DataModel *)")]
+// was: RBX::CanNotSelectCommand::CanNotSelectCommand(RBX::DataModel *)
+pub fn stub_0x415358() -> ! {
+    todo!("0x415358 RBX::CanNotSelectCommand::CanNotSelectCommand(RBX::DataModel *)")
+}
+
+// 0x4154a0 — __ZN3RBX14CanCollideVerbC2EPNS_9DataModelE
+#[doc(alias = "RBX::CanCollideVerb::CanCollideVerb(RBX::DataModel *)")]
+// was: RBX::CanCollideVerb::CanCollideVerb(RBX::DataModel *)
+pub fn stub_0x4154a0() -> ! {
+    todo!("0x4154a0 RBX::CanCollideVerb::CanCollideVerb(RBX::DataModel *)")
+}
+
+// 0x415694 — __ZN3RBX15TranslucentVerbC2EPNS_9DataModelE
+#[doc(alias = "RBX::TranslucentVerb::TranslucentVerb(RBX::DataModel *)")]
+// was: RBX::TranslucentVerb::TranslucentVerb(RBX::DataModel *)
+pub fn stub_0x415694() -> ! {
+    todo!("0x415694 RBX::TranslucentVerb::TranslucentVerb(RBX::DataModel *)")
+}
+
+// 0x415888 — __ZN3RBX10AnchorVerbC2EPNS_9DataModelE
+#[doc(alias = "RBX::AnchorVerb::AnchorVerb(RBX::DataModel *)")]
+// was: RBX::AnchorVerb::AnchorVerb(RBX::DataModel *)
+pub fn stub_0x415888() -> ! {
+    todo!("0x415888 RBX::AnchorVerb::AnchorVerb(RBX::DataModel *)")
+}
+
+// 0x415a7c — __ZN3RBX13UnlockAllVerbC2EPNS_9DataModelE
+#[doc(alias = "RBX::UnlockAllVerb::UnlockAllVerb(RBX::DataModel *)")]
+// was: RBX::UnlockAllVerb::UnlockAllVerb(RBX::DataModel *)
+pub fn stub_0x415a7c() -> ! {
+    todo!("0x415a7c RBX::UnlockAllVerb::UnlockAllVerb(RBX::DataModel *)")
+}
+
+// 0x415bc4 — __ZN3RBX16SelectAllCommandC2EPNS_9DataModelE
+#[doc(alias = "RBX::SelectAllCommand::SelectAllCommand(RBX::DataModel *)")]
+// was: RBX::SelectAllCommand::SelectAllCommand(RBX::DataModel *)
+pub fn stub_0x415bc4() -> ! {
+    todo!("0x415bc4 RBX::SelectAllCommand::SelectAllCommand(RBX::DataModel *)")
+}
+
+// 0x415d0c — __ZN3RBX19DeleteSelectionVerbC2EPNS_9DataModelE
+#[doc(alias = "RBX::DeleteSelectionVerb::DeleteSelectionVerb(RBX::DataModel *)")]
+// was: RBX::DeleteSelectionVerb::DeleteSelectionVerb(RBX::DataModel *)
+pub fn stub_0x415d0c() -> ! {
+    todo!("0x415d0c RBX::DeleteSelectionVerb::DeleteSelectionVerb(RBX::DataModel *)")
+}
+
+// 0x415ef8 — __ZN3RBX23PlayDeleteSelectionVerbC2EPNS_9DataModelE
+#[doc(alias = "RBX::PlayDeleteSelectionVerb::PlayDeleteSelectionVerb(RBX::DataModel *)")]
+// was: RBX::PlayDeleteSelectionVerb::PlayDeleteSelectionVerb(RBX::DataModel *)
+pub fn stub_0x415ef8() -> ! {
+    todo!("0x415ef8 RBX::PlayDeleteSelectionVerb::PlayDeleteSelectionVerb(RBX::DataModel *)")
+}
+
+// 0x41657c — __ZNK3RBX13Configuration14askForbidChildEPKNS_8InstanceE
+#[doc(alias = "RBX::Configuration::askForbidChild(RBX::Instance const*)const")]
+// was: RBX::Configuration::askForbidChild(RBX::Instance const*)const
+pub fn stub_0x41657c() -> ! {
+    todo!("0x41657c RBX::Configuration::askForbidChild(RBX::Instance const*)const")
+}
+
+// 0x4165b8 — __ZNK3RBX13Configuration12askSetParentEPKNS_8InstanceE
+#[doc(alias = "RBX::Configuration::askSetParent(RBX::Instance const*)const")]
+// was: RBX::Configuration::askSetParent(RBX::Instance const*)const
+pub fn stub_0x4165b8() -> ! {
+    todo!("0x4165b8 RBX::Configuration::askSetParent(RBX::Instance const*)const")
+}
+
+// 0x416e00 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13ConfigurationEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)")]
+// was: boost::shared_ptr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)
+pub fn stub_0x416e00() -> ! {
+    todo!("0x416e00 boost::shared_ptr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)")
+}
+
+// 0x416eb0 — __ZN5boost10shared_ptrIN3RBX13ConfigurationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::shared_ptr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x416eb0() -> ! {
+    todo!("0x416eb0 boost::shared_ptr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x417060 — __ZN5boost6detail12shared_countC2IPN3RBX13ConfigurationENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::detail::shared_count::shared_count<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x417060() -> ! {
+    todo!("0x417060 boost::detail::shared_count::shared_count<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x417168 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x417168() -> ! {
+    todo!("0x417168 boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x41716c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x41716c() -> ! {
+    todo!("0x41716c boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x417170 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn stub_0x417170() -> ! {
+    todo!("0x417170 boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x417190 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13ConfigurationENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+pub fn stub_0x417190() -> ! {
+    todo!("0x417190 boost::detail::sp_counted_impl_pd<RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
 }
