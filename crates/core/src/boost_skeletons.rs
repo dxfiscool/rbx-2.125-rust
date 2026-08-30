@@ -8353,3 +8353,739 @@ pub fn stub_26504c() -> ! {
 pub fn stub_2650b8() -> ! {
     todo!("0x2650b8 __ZN5boost21thread_resource_errorD0Ev")
 }
+
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const")]
+// 0x2650e8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE7rethrowEv
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const
+pub fn stub_2650e8() -> ! {
+    todo!("0x2650e8 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE7rethrowEv")
+}
+
+#[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const")]
+// 0x2652b0 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE7rethrowEv
+// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const
+pub fn stub_2652b0() -> ! {
+    todo!("0x2652b0 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE7rethrowEv")
+}
+
+#[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
+// 0x2652c0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
+// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
+pub fn stub_2652c0() -> ! {
+    todo!("0x2652c0 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev")
+}
+
+#[doc(alias = "non_virtual_thunk_to boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
+// 0x2652e0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev
+// was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
+pub fn stub_2652e0() -> ! {
+    todo!("0x2652e0 __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev")
+}
+
+#[doc(alias = "boost::exception_detail::clone_base::~clone_base()")]
+// 0x2652f8 — __ZN5boost16exception_detail10clone_baseD1Ev
+// was: boost::exception_detail::clone_base::~clone_base()
+pub fn stub_2652f8() -> ! {
+    todo!("0x2652f8 __ZN5boost16exception_detail10clone_baseD1Ev")
+}
+
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_tag)")]
+// 0x265300 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEEC1ERKS5_NS5_9clone_tagE
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone_tag)
+pub fn stub_265300() -> ! {
+    todo!("0x265300 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEEC1ERKS5_NS5_9clone_tagE")
+}
+
+#[doc(alias = "boost::exception_detail::bad_exception_::~bad_exception_()")]
+// 0x2654d8 — __ZN5boost16exception_detail14bad_exception_D2Ev
+// was: boost::exception_detail::bad_exception_::~bad_exception_()
+pub fn stub_2654d8() -> ! {
+    todo!("0x2654d8 __ZN5boost16exception_detail14bad_exception_D2Ev")
+}
+
+#[doc(alias = "non_virtual_thunk_to boost::exception_detail::bad_exception_::~bad_exception_()")]
+// 0x265590 — __ZThn20_N5boost16exception_detail14bad_exception_D1Ev
+// was: `non-virtual thunk to'boost::exception_detail::bad_exception_::~bad_exception_()
+pub fn stub_265590() -> ! {
+    todo!("0x265590 __ZThn20_N5boost16exception_detail14bad_exception_D1Ev")
+}
+
+#[doc(alias = "non_virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
+// 0x265598 — __ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev
+// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()
+pub fn stub_265598() -> ! {
+    todo!("0x265598 __ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev")
+}
+
+#[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
+// 0x2655a0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev
+// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()
+pub fn stub_2655a0() -> ! {
+    todo!("0x2655a0 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")]
+// 0x2655b0 — __ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_14bad_exception_EEEEEPT_
+// was: boost::detail::shared_count::shared_count<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)
+pub fn stub_2655b0() -> ! {
+    todo!("0x2655b0 __ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_14bad_exception_EEEEEPT_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::~sp_counted_impl_p()")]
+// 0x2656a8 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED0Ev
+// was: boost::detail::sp_counted_impl_p<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>::~sp_counted_impl_p()
+pub fn stub_2656a8() -> ! {
+    todo!("0x2656a8 __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED0Ev")
+}
+
+#[doc(alias = "boost::exception_detail::bad_alloc_::~bad_alloc_()")]
+// 0x2656b0 — __ZN5boost16exception_detail10bad_alloc_D2Ev
+// was: boost::exception_detail::bad_alloc_::~bad_alloc_()
+pub fn stub_2656b0() -> ! {
+    todo!("0x2656b0 __ZN5boost16exception_detail10bad_alloc_D2Ev")
+}
+
+#[doc(alias = "non_virtual_thunk_to boost::exception_detail::bad_alloc_::~bad_alloc_()")]
+// 0x265768 — __ZThn20_N5boost16exception_detail10bad_alloc_D1Ev
+// was: `non-virtual thunk to'boost::exception_detail::bad_alloc_::~bad_alloc_()
+pub fn stub_265768() -> ! {
+    todo!("0x265768 __ZThn20_N5boost16exception_detail10bad_alloc_D1Ev")
+}
+
+#[doc(alias = "non_virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
+// 0x265770 — __ZThn20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev
+// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
+pub fn stub_265770() -> ! {
+    todo!("0x265770 __ZThn20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev")
+}
+
+#[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
+// 0x265778 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev
+// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
+pub fn stub_265778() -> ! {
+    todo!("0x265778 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev")
+}
+
+#[doc(alias = "boost::exception_detail::bad_alloc_::~bad_alloc_()")]
+// 0x265788 — __ZN5boost16exception_detail10bad_alloc_D0Ev
+// was: boost::exception_detail::bad_alloc_::~bad_alloc_()
+pub fn stub_265788() -> ! {
+    todo!("0x265788 __ZN5boost16exception_detail10bad_alloc_D0Ev")
+}
+
+#[doc(alias = "boost::unordered::unordered_map<std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual,std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>>::~unordered_map()")]
+// 0x26634c — __ZN5boost9unordered13unordered_mapIPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorENS7_8TypeHashENS7_9TypeEqualESaISt4pairIKS4_S9_EEED1Ev
+// was: boost::unordered::unordered_map<std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual,std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>>::~unordered_map()
+pub fn stub_26634c() -> ! {
+    todo!("0x26634c __ZN5boost9unordered13unordered_mapIPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorENS7_8TypeHashENS7_9TypeEqualESaISt4pairIKS4_S9_EEED1Ev")
+}
+
+#[doc(alias = "boost::lock_error::~lock_error()")]
+// 0x2665b8 — __ZN5boost10lock_errorD1Ev
+// was: boost::lock_error::~lock_error()
+pub fn stub_2665b8() -> ! {
+    todo!("0x2665b8 __ZN5boost10lock_errorD1Ev")
+}
+
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
+// 0x2665e8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
+pub fn stub_2665e8() -> ! {
+    todo!("0x2665e8 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev")
+}
+
+#[doc(alias = "non_virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
+// 0x2665f8 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
+// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
+pub fn stub_2665f8() -> ! {
+    todo!("0x2665f8 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev")
+}
+
+#[doc(alias = "boost::singleton_pool<XmlAttribute,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x266840 — __ZN5boost14singleton_poolI12XmlAttributeLj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
+// was: boost::singleton_pool<XmlAttribute,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_266840() -> ! {
+    todo!("0x266840 __ZN5boost14singleton_poolI12XmlAttributeLj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::pool<boost::default_user_allocator_malloc_free>::release_memory(void)")]
+// 0x266870 — __ZN5boost4poolINS_34default_user_allocator_malloc_freeEE14release_memoryEv
+// was: boost::pool<boost::default_user_allocator_malloc_free>::release_memory(void)
+pub fn stub_266870() -> ! {
+    todo!("0x266870 __ZN5boost4poolINS_34default_user_allocator_malloc_freeEE14release_memoryEv")
+}
+
+#[doc(alias = "boost::simple_segregated_storage<unsigned long>::segregate(void *,unsigned long,unsigned long,void *)")]
+// 0x266960 — __ZN5boost25simple_segregated_storageImE9segregateEPvmmS2_
+// was: boost::simple_segregated_storage<unsigned long>::segregate(void *,unsigned long,unsigned long,void *)
+pub fn stub_266960() -> ! {
+    todo!("0x266960 __ZN5boost25simple_segregated_storageImE9segregateEPvmmS2_")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")]
+// 0x2669c8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm
+// was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::PropertyDescriptor *>>,char const*,RBX::Reflection::PropertyDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)
+pub fn stub_2669c8() -> ! {
+    todo!("0x2669c8 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection18PropertyDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm")
+}
+
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::operator[](std::type_info const* const&)")]
+// 0x266aac — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEEixERS8_
+// was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::operator[](std::type_info const* const&)
+pub fn stub_266aac() -> ! {
+    todo!("0x266aac __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEEixERS8_")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::reserve_for_insert(unsigned long)")]
+// 0x266c30 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE18reserve_for_insertEm
+// was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::reserve_for_insert(unsigned long)
+pub fn stub_266c30() -> ! {
+    todo!("0x266c30 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE18reserve_for_insertEm")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::create_buckets(unsigned long)")]
+// 0x266c80 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14create_bucketsEm
+// was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::create_buckets(unsigned long)
+pub fn stub_266c80() -> ! {
+    todo!("0x266c80 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14create_bucketsEm")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::min_buckets_for_size(unsigned long)const")]
+// 0x266da8 — __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE20min_buckets_for_sizeEm
+// was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::min_buckets_for_size(unsigned long)const
+pub fn stub_266da8() -> ! {
+    todo!("0x266da8 __ZNK5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE20min_buckets_for_sizeEm")
+}
+
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::rehash_impl(unsigned long)")]
+// 0x266e38 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE11rehash_implEm
+// was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::rehash_impl(unsigned long)
+pub fn stub_266e38() -> ! {
+    todo!("0x266e38 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE11rehash_implEm")
+}
+
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>> &,boost::unordered::detail::ptr_bucket *)")]
+// 0x266e64 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE15place_in_bucketERNS1_5tableISI_EEPNS1_10ptr_bucketE
+// was: boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>> &,boost::unordered::detail::ptr_bucket *)
+pub fn stub_266e64() -> ! {
+    todo!("0x266e64 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE15place_in_bucketERNS1_5tableISI_EEPNS1_10ptr_bucketE")
+}
+
+#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>>>::construct(void)")]
+// 0x266ebc — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEEEEE9constructEv
+// was: boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>>>::construct(void)
+pub fn stub_266ebc() -> ! {
+    todo!("0x266ebc __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEEEEE9constructEv")
+}
+
+#[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::find_node_impl<std::type_info const*,RBX::Reflection::EnumDescriptor::TypeEqual>(unsigned long,std::type_info const* const&,RBX::Reflection::EnumDescriptor::TypeEqual const&)const")]
+// 0x266ef4 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14find_node_implIS7_SH_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISE_EEEEmRKT_RKT0_
+// was: boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::find_node_impl<std::type_info const*,RBX::Reflection::EnumDescriptor::TypeEqual>(unsigned long,std::type_info const* const&,RBX::Reflection::EnumDescriptor::TypeEqual const&)const
+pub fn stub_266ef4() -> ! {
+    todo!("0x266ef4 __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14find_node_implIS7_SH_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISE_EEEEmRKT_RKT0_")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::delete_buckets(void)")]
+// 0x2671d8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14delete_bucketsEv
+// was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::delete_buckets(void)
+pub fn stub_2671d8() -> ! {
+    todo!("0x2671d8 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEE14delete_bucketsEv")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::table(unsigned long,RBX::Reflection::EnumDescriptor::TypeHash const&,RBX::Reflection::EnumDescriptor::TypeEqual const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>> const&)")]
+// 0x267224 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEEC2EmRKSG_RKSH_RKSaINS1_8ptr_nodeISE_EEE
+// was: boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>,std::type_info const*,RBX::Reflection::EnumDescriptor const*,RBX::Reflection::EnumDescriptor::TypeHash,RBX::Reflection::EnumDescriptor::TypeEqual>>::table(unsigned long,RBX::Reflection::EnumDescriptor::TypeHash const&,RBX::Reflection::EnumDescriptor::TypeEqual const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<std::type_info const* const,RBX::Reflection::EnumDescriptor const*>>> const&)
+pub fn stub_267224() -> ! {
+    todo!("0x267224 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKSt9type_infoPKN3RBX10Reflection14EnumDescriptorEEES7_SD_NSB_8TypeHashENSB_9TypeEqualEEEEC2EmRKSG_RKSH_RKSaINS1_8ptr_nodeISE_EEE")
+}
+
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")]
+// 0x2675e0 — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEEERKS1_v
+// was: RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)
+// now: RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void) // rbx_core::SharedPtr
+pub fn stub_2675e0() -> ! {
+    todo!("0x2675e0 __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEEERKS1_v")
+}
+
+#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")]
+// 0x2677ac — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt6vectorIS1_SaIS1_EEEEEERT_v
+// was: boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)
+// now: rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> & RBX::Reflection::Variant::convert<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void) // rbx_core::SharedPtr
+pub fn stub_2677ac() -> ! {
+    todo!("0x2677ac __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt6vectorIS1_SaIS1_EEEEEERT_v")
+}
+
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
+// 0x26796c — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEERKS1_v
+// was: RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)
+// now: RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void) // rbx_core::SharedPtr
+pub fn stub_26796c() -> ! {
+    todo!("0x26796c __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEERKS1_v")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
+// 0x267a50 — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsS1_NS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS1_EEEEEEEERT_v
+// was: boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)
+// now: rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void) // rbx_core::SharedPtr
+pub fn stub_267a50() -> ! {
+    todo!("0x267a50 __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsS1_NS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS1_EEEEEEEERT_v")
+}
+
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
+// 0x267c30 — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEERKS1_v
+// was: RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)
+// now: RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void) // rbx_core::SharedPtr
+pub fn stub_267c30() -> ! {
+    todo!("0x267c30 __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEERKS1_v")
+}
+
+#[doc(alias = "boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
+// 0x267d18 — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt3mapISsS1_St4lessISsESaISt4pairIKSsS1_EEEEEEERT_v
+// was: boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)
+// now: rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void) // rbx_core::SharedPtr
+pub fn stub_267d18() -> ! {
+    todo!("0x267d18 __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt3mapISsS1_St4lessISsESaISt4pairIKSsS1_EEEEEEERT_v")
+}
+
+#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
+// 0x268484 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED1Ev
+// was: RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()
+// now: RBX::Reflection::TType<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType() // rbx_core::SharedPtr
+pub fn stub_268484() -> ! {
+    todo!("0x268484 __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED1Ev")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
+// 0x268488 — __ZN3rbx8any_castIN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEENS5_7Region3EEEPT_PNS_13placement_anyIT0_EE
+// was: boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)
+// now: rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *) // rbx_core::SharedPtr
+pub fn stub_268488() -> ! {
+    todo!("0x268488 __ZN3rbx8any_castIN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEENS5_7Region3EEEPT_PNS_13placement_anyIT0_EE")
+}
+
+#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
+// 0x2684e0 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED1Ev
+// was: RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()
+// now: RBX::Reflection::TType<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType() // rbx_core::SharedPtr
+pub fn stub_2684e0() -> ! {
+    todo!("0x2684e0 __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED1Ev")
+}
+
+#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
+// 0x2684e4 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED1Ev
+// was: RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()
+// now: RBX::Reflection::TType<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType() // rbx_core::SharedPtr
+pub fn stub_2684e4() -> ! {
+    todo!("0x2684e4 __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED1Ev")
+}
+
+#[doc(alias = "boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
+// 0x2684e8 — __ZN3rbx8any_castIN5boost10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEENS4_7Region3EEEPT_PNS_13placement_anyIT0_EE
+// was: boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)
+// now: rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *) // rbx_core::SharedPtr
+pub fn stub_2684e8() -> ! {
+    todo!("0x2684e8 __ZN3rbx8any_castIN5boost10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEENS4_7Region3EEEPT_PNS_13placement_anyIT0_EE")
+}
+
+#[doc(alias = "RBX::Reflection::Type::Type<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")]
+// 0x26872c — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEEPKcPT_
+// was: RBX::Reflection::Type::Type<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)
+// now: RBX::Reflection::Type::Type<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *) // rbx_core::SharedPtr
+pub fn stub_26872c() -> ! {
+    todo!("0x26872c __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEEPKcPT_")
+}
+
+#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
+// 0x2687d8 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED0Ev
+// was: RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()
+// now: RBX::Reflection::TType<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType() // rbx_core::SharedPtr
+pub fn stub_2687d8() -> ! {
+    todo!("0x2687d8 __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED0Ev")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)")]
+// 0x2687dc — __ZN5boost10shared_ptrIKNS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEC2ISE_EEPT_
+// was: boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)
+// now: rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *) // rbx_core::SharedPtr
+pub fn stub_2687dc() -> ! {
+    todo!("0x2687dc __ZN5boost10shared_ptrIKNS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEC2ISE_EEPT_")
+}
+
+#[doc(alias = "RBX::Reflection::Type::Type<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")]
+// 0x2688b0 — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEEPKcPT_
+// was: RBX::Reflection::Type::Type<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)
+// now: RBX::Reflection::Type::Type<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *) // rbx_core::SharedPtr
+pub fn stub_2688b0() -> ! {
+    todo!("0x2688b0 __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEEPKcPT_")
+}
+
+#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
+// 0x26895c — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED0Ev
+// was: RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()
+// now: RBX::Reflection::TType<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType() // rbx_core::SharedPtr
+pub fn stub_26895c() -> ! {
+    todo!("0x26895c __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED0Ev")
+}
+
+#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
+// 0x268960 — __ZN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEC2IS6_EEPT_
+// was: boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)
+// now: rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *) // rbx_core::SharedPtr
+pub fn stub_268960() -> ! {
+    todo!("0x268960 __ZN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEC2IS6_EEPT_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
+// 0x268a34 — __ZN5boost6detail12shared_countC2ISt6vectorIN3RBX10Reflection7VariantESaIS6_EEEEPT_
+// was: boost::detail::shared_count::shared_count<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)
+pub fn stub_268a34() -> ! {
+    todo!("0x268a34 __ZN5boost6detail12shared_countC2ISt6vectorIN3RBX10Reflection7VariantESaIS6_EEEEPT_")
+}
+
+#[doc(alias = "RBX::Reflection::Type::Type<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(char const*,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> *)")]
+// 0x268b40 — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEEEPKcPT_
+// was: RBX::Reflection::Type::Type<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(char const*,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> *)
+// now: RBX::Reflection::Type::Type<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(char const*,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> *) // rbx_core::SharedPtr
+pub fn stub_268b40() -> ! {
+    todo!("0x268b40 __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEEEPKcPT_")
+}
+
+#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
+// 0x268bec — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED0Ev
+// was: RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()
+// now: RBX::Reflection::TType<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType() // rbx_core::SharedPtr
+pub fn stub_268bec() -> ! {
+    todo!("0x268bec __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED0Ev")
+}
+
+#[doc(alias = "boost::multi_index::detail::hashed_index<boost::multi_index::identity<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>,boost::hash<RBX::ProtectedString>,std::equal_to<RBX::ProtectedString>,boost::multi_index::detail::nth_layer<1,boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>,boost::flyweights::hashed_factory_class<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>,RBX::ProtectedString,mpl_::na,mpl_::na,mpl_::na>::index_list,std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>>,boost::mpl::vector0<mpl_::na>,boost::multi_index::detail::hashed_unique_tag>::link_point(boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString> const&,boost::multi_index::detail::hashed_index_node_impl<std::allocator<char>> *&,boost::multi_index::detail::hashed_unique_tag)")]
+// 0x26af9c — __ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE10link_pointERKSC_RPNS1_22hashed_index_node_implISaIcEEEST_
+// was: boost::multi_index::detail::hashed_index<boost::multi_index::identity<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>,boost::hash<RBX::ProtectedString>,std::equal_to<RBX::ProtectedString>,boost::multi_index::detail::nth_layer<1,boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>,boost::flyweights::hashed_factory_class<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>,RBX::ProtectedString,mpl_::na,mpl_::na,mpl_::na>::index_list,std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>>,boost::mpl::vector0<mpl_::na>,boost::multi_index::detail::hashed_unique_tag>::link_point(boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString> const&,boost::multi_index::detail::hashed_index_node_impl<std::allocator<char>> *&,boost::multi_index::detail::hashed_unique_tag)
+pub fn stub_26af9c() -> ! {
+    todo!("0x26af9c __ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE10link_pointERKSC_RPNS1_22hashed_index_node_implISaIcEEEST_")
+}
+
+#[doc(alias = "boost::multi_index::detail::auto_space<unsigned long,std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>>::auto_space(std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>> const&,unsigned long)")]
+// 0x26afd0 — __ZN5boost11multi_index6detail10auto_spaceImSaINS_10flyweights6detail16refcounted_valueINS4_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES8_EEEEC2ERKSC_m
+// was: boost::multi_index::detail::auto_space<unsigned long,std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>>>::auto_space(std::allocator<boost::flyweights::detail::refcounted_value<boost::flyweights::detail::default_value_policy<RBX::ProtectedString>::rep_type,RBX::ProtectedString>> const&,unsigned long)
+pub fn stub_26afd0() -> ! {
+    todo!("0x26afd0 __ZN5boost11multi_index6detail10auto_spaceImSaINS_10flyweights6detail16refcounted_valueINS4_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES8_EEEEC2ERKSC_m")
+}
+
+#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,int>(int const&)")]
+// 0x26c500 — __ZN3rbx11make_sharedISt6vectorIN3RBX10Reflection7VariantESaIS4_EEiEEN5boost10shared_ptrIT_EERKT0_
+// was: boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,int>(int const&)
+// now: rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,int>(int const&) // rbx_core::SharedPtr
+pub fn stub_26c500() -> ! {
+    todo!("0x26c500 __ZN3rbx11make_sharedISt6vectorIN3RBX10Reflection7VariantESaIS4_EEiEEN5boost10shared_ptrIT_EERKT0_")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::operator=(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>> const&)")]
+// 0x26c6a4 — __ZN5boost10shared_ptrINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEaSERKSF_
+// was: boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::operator=(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>> const&)
+// now: rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>::operator=(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>> const&) // rbx_core::SharedPtr
+pub fn stub_26c6a4() -> ! {
+    todo!("0x26c6a4 __ZN5boost10shared_ptrINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEaSERKSF_")
+}
+
+#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>(void)")]
+// 0x26c6dc — __ZN3rbx11make_sharedIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEEN5boost10shared_ptrIT_EEv
+// was: boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>(void)
+// now: rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>(void) // rbx_core::SharedPtr
+pub fn stub_26c6dc() -> ! {
+    todo!("0x26c6dc __ZN3rbx11make_sharedIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEEN5boost10shared_ptrIT_EEv")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>> const& rbx::any_cast<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+// 0x26ec34 — __ZN3rbx8any_castIRKN5boost10shared_ptrINS1_8functionIFNS2_IKN3RBX10Reflection5TupleEEES8_EEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
+// was: boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>> const& rbx::any_cast<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
+// now: rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>> const& rbx::any_cast<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) // rbx_core::SharedPtr
+pub fn stub_26ec34() -> ! {
+    todo!("0x26ec34 __ZN3rbx8any_castIRKN5boost10shared_ptrINS1_8functionIFNS2_IKN3RBX10Reflection5TupleEEES8_EEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::Reflection::Tuple const> const& rbx::any_cast<boost::shared_ptr<RBX::Reflection::Tuple const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+// 0x26ed24 — __ZN3rbx8any_castIRKN5boost10shared_ptrIKN3RBX10Reflection5TupleEEENS3_7Region3EEET_RNS_13placement_anyIT0_EE
+// was: boost::shared_ptr<RBX::Reflection::Tuple const> const& rbx::any_cast<boost::shared_ptr<RBX::Reflection::Tuple const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
+// now: rbx_core::SharedPtr<RBX::Reflection::Tuple const> const& rbx::any_cast<rbx_core::SharedPtr<RBX::Reflection::Tuple const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) // rbx_core::SharedPtr
+pub fn stub_26ed24() -> ! {
+    todo!("0x26ed24 __ZN3rbx8any_castIRKN5boost10shared_ptrIKN3RBX10Reflection5TupleEEENS3_7Region3EEET_RNS_13placement_anyIT0_EE")
+}
+
+#[doc(alias = "boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const& rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+// 0x26f0e4 — __ZN3rbx8any_castIRKN5boost10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
+// was: boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const& rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
+// now: rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const& rbx::any_cast<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &) // rbx_core::SharedPtr
+pub fn stub_26f0e4() -> ! {
+    todo!("0x26f0e4 __ZN3rbx8any_castIRKN5boost10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE")
+}
+
+#[doc(alias = "rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> * boost::get_deleter<rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const&)")]
+// 0x26fb68 — __ZN5boost11get_deleterIN3rbx6detail13sp_ms_deleterIKSt6vectorIN3RBX10Reflection7VariantESaIS7_EEEESA_EEPT_RKNS_10shared_ptrIT0_EE
+// was: rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> * boost::get_deleter<rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const&)
+// now: rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> * boost::get_deleter<rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const&) // rbx_core::SharedPtr
+pub fn stub_26fb68() -> ! {
+    todo!("0x26fb68 __ZN5boost11get_deleterIN3rbx6detail13sp_ms_deleterIKSt6vectorIN3RBX10Reflection7VariantESaIS7_EEEESA_EEPT_RKNS_10shared_ptrIT0_EE")
+}
+
+#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)")]
+// 0x26fbc4 — __ZN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEC2IS7_N3rbx6detail13sp_ms_deleterIS7_EEEEPT_T0_
+// was: boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)
+// now: rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const *,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>) // rbx_core::SharedPtr
+pub fn stub_26fbc4() -> ! {
+    todo!("0x26fbc4 __ZN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEC2IS7_N3rbx6detail13sp_ms_deleterIS7_EEEEPT_T0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)")]
+// 0x26fccc — __ZN5boost6detail12shared_countC2IPKSt6vectorIN3RBX10Reflection7VariantESaIS6_EEN3rbx6detail13sp_ms_deleterIS9_EEEET_T0_
+// was: boost::detail::shared_count::shared_count<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)
+pub fn stub_26fccc() -> ! {
+    todo!("0x26fccc __ZN5boost6detail12shared_countC2IPKSt6vectorIN3RBX10Reflection7VariantESaIS6_EEN3rbx6detail13sp_ms_deleterIS9_EEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~sp_counted_impl_pd()")]
+// 0x26fdd0 — __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEED1Ev
+// was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~sp_counted_impl_pd()
+pub fn stub_26fdd0() -> ! {
+    todo!("0x26fdd0 __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~sp_counted_impl_pd()")]
+// 0x26fdfc — __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEED0Ev
+// was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~sp_counted_impl_pd()
+pub fn stub_26fdfc() -> ! {
+    todo!("0x26fdfc __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::dispose(void)")]
+// 0x26feb4 — __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::dispose(void)
+pub fn stub_26feb4() -> ! {
+    todo!("0x26feb4 __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::get_deleter(std::type_info const&)")]
+// 0x26fed4 — __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::get_deleter(std::type_info const&)
+pub fn stub_26fed4() -> ! {
+    todo!("0x26fed4 __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::get_untyped_deleter(void)")]
+// 0x26feec — __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const*,rbx::detail::sp_ms_deleter<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::get_untyped_deleter(void)
+pub fn stub_26feec() -> ! {
+    todo!("0x26feec __ZN5boost6detail18sp_counted_impl_pdIPKSt6vectorIN3RBX10Reflection7VariantESaIS5_EEN3rbx6detail13sp_ms_deleterIS8_EEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")]
+// 0x26fef0 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSIN5boost10shared_ptrIKNS5_9unordered13unordered_mapISsNS1_10Reflection7VariantENS5_4hashISsEESt8equal_toISsESaISt4pairIKSsSA_EEEEEEEERS3_RKT_
+// was: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)
+// now: rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&) // rbx_core::SharedPtr
+pub fn stub_26fef0() -> ! {
+    todo!("0x26fef0 __ZN3rbx13placement_anyIN3RBX7Region3EEaSIN5boost10shared_ptrIKNS5_9unordered13unordered_mapISsNS1_10Reflection7VariantENS5_4hashISsEESt8equal_toISsESaISt4pairIKSsSA_EEEEEEEERS3_RKT_")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::operator=(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")]
+// 0x26ff58 — __ZN5boost10shared_ptrIKNS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEaSERKSG_
+// was: boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::operator=(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)
+// now: rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::operator=(rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&) // rbx_core::SharedPtr
+pub fn stub_26ff58() -> ! {
+    todo!("0x26ff58 __ZN5boost10shared_ptrIKNS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEaSERKSG_")
+}
+
+#[doc(alias = "void boost::shared_ptr<RBX::Reflection::Tuple>::reset<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)")]
+// 0x28581c — __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEE5resetIS3_EEvPT_
+// was: void boost::shared_ptr<RBX::Reflection::Tuple>::reset<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *)
+// now: void rbx_core::SharedPtr<RBX::Reflection::Tuple>::reset<RBX::Reflection::Tuple>(RBX::Reflection::Tuple *) // rbx_core::SharedPtr
+pub fn stub_28581c() -> ! {
+    todo!("0x28581c __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEE5resetIS3_EEvPT_")
+}
+
+#[doc(alias = "std::vector<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>::push_back(boost::pool<boost::default_user_allocator_new_delete> * const&)")]
+// 0x286100 — __ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE9push_backERKS4_
+// was: std::vector<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>::push_back(boost::pool<boost::default_user_allocator_new_delete> * const&)
+pub fn stub_286100() -> ! {
+    todo!("0x286100 __ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE9push_backERKS4_")
+}
+
+#[doc(alias = "boost::pool<boost::default_user_allocator_new_delete>::purge_memory(void)")]
+// 0x28612c — __ZN5boost4poolINS_33default_user_allocator_new_deleteEE12purge_memoryEv
+// was: boost::pool<boost::default_user_allocator_new_delete>::purge_memory(void)
+pub fn stub_28612c() -> ! {
+    todo!("0x28612c __ZN5boost4poolINS_33default_user_allocator_new_deleteEE12purge_memoryEv")
+}
+
+#[doc(alias = "std::vector<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::pool<boost::default_user_allocator_new_delete> **,std::vector<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>>,boost::pool<boost::default_user_allocator_new_delete> * const&)")]
+// 0x286170 — __ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
+// was: std::vector<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::pool<boost::default_user_allocator_new_delete> **,std::vector<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>>,boost::pool<boost::default_user_allocator_new_delete> * const&)
+pub fn stub_286170() -> ! {
+    todo!("0x286170 __ZNSt6vectorIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_")
+}
+
+#[doc(alias = "std::_Vector_base<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>::_M_allocate(unsigned long)")]
+// 0x286250 — __ZNSt12_Vector_baseIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE11_M_allocateEm
+// was: std::_Vector_base<boost::pool<boost::default_user_allocator_new_delete> *,std::allocator<boost::pool<boost::default_user_allocator_new_delete> *>>::_M_allocate(unsigned long)
+pub fn stub_286250() -> ! {
+    todo!("0x286250 __ZNSt12_Vector_baseIPN5boost4poolINS0_33default_user_allocator_new_deleteEEESaIS4_EE11_M_allocateEm")
+}
+
+#[doc(alias = "boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_>::~flyweight()")]
+// 0x28d6bc — __ZN5boost10flyweights9flyweightIN3RBX15ProtectedStringENS_9parameter5void_ES5_S5_S5_S5_ED1Ev
+// was: boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_>::~flyweight()
+pub fn stub_28d6bc() -> ! {
+    todo!("0x28d6bc __ZN5boost10flyweights9flyweightIN3RBX15ProtectedStringENS_9parameter5void_ES5_S5_S5_S5_ED1Ev")
+}
+
+#[doc(alias = "boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_>::operator=(boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_> const&)")]
+// 0x28d6fc — __ZN5boost10flyweights9flyweightIN3RBX15ProtectedStringENS_9parameter5void_ES5_S5_S5_S5_EaSERKS6_
+// was: boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_>::operator=(boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_> const&)
+pub fn stub_28d6fc() -> ! {
+    todo!("0x28d6fc __ZN5boost10flyweights9flyweightIN3RBX15ProtectedStringENS_9parameter5void_ES5_S5_S5_S5_EaSERKS6_")
+}
+
+#[doc(alias = "boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_>::flyweight(void)")]
+// 0x2949dc — __ZN5boost10flyweights9flyweightIN3RBX15ProtectedStringENS_9parameter5void_ES5_S5_S5_S5_EC2Ev
+// was: boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_>::flyweight(void)
+pub fn stub_2949dc() -> ! {
+    todo!("0x2949dc __ZN5boost10flyweights9flyweightIN3RBX15ProtectedStringENS_9parameter5void_ES5_S5_S5_S5_EC2Ev")
+}
+
+#[doc(alias = "boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_>::operator=(RBX::ProtectedString const&)")]
+// 0x294ba8 — __ZN5boost10flyweights9flyweightIN3RBX15ProtectedStringENS_9parameter5void_ES5_S5_S5_S5_EaSERKS3_
+// was: boost::flyweights::flyweight<RBX::ProtectedString,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_,boost::parameter::void_>::operator=(RBX::ProtectedString const&)
+pub fn stub_294ba8() -> ! {
+    todo!("0x294ba8 __ZN5boost10flyweights9flyweightIN3RBX15ProtectedStringENS_9parameter5void_ES5_S5_S5_S5_EaSERKS3_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::TaskScheduler::Job>::operator=(boost::shared_ptr<RBX::TaskScheduler::Job> const&)")]
+// 0x2a4a7c — __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEaSERKS4_
+// was: boost::shared_ptr<RBX::TaskScheduler::Job>::operator=(boost::shared_ptr<RBX::TaskScheduler::Job> const&)
+// now: rbx_core::SharedPtr<RBX::TaskScheduler::Job>::operator=(rbx_core::SharedPtr<RBX::TaskScheduler::Job> const&) // rbx_core::SharedPtr
+pub fn stub_2a4a7c() -> ! {
+    todo!("0x2a4a7c __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEaSERKS4_")
+}
+
+#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,unsigned long>(unsigned long const&)")]
+// 0x2a4d18 — __ZN3rbx11make_sharedISt6vectorIN3RBX10Reflection7VariantESaIS4_EEmEEN5boost10shared_ptrIT_EERKT0_
+// was: boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,unsigned long>(unsigned long const&)
+// now: rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,unsigned long>(unsigned long const&) // rbx_core::SharedPtr
+pub fn stub_2a4d18() -> ! {
+    todo!("0x2a4d18 __ZN3rbx11make_sharedISt6vectorIN3RBX10Reflection7VariantESaIS4_EEmEEN5boost10shared_ptrIT_EERKT0_")
+}
+
+#[doc(alias = "boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)const")]
+// 0x2a5550 — __ZNK5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEclES6_
+// was: boost::function1<void,boost::shared_ptr<RBX::Reflection::Tuple const>>::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)const
+// now: boost::function1<void,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::operator()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)const // rbx_core::SharedPtr
+pub fn stub_2a5550() -> ! {
+    todo!("0x2a5550 __ZNK5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEclES6_")
+}
+
+#[doc(alias = "boost::function1<void,bool>::operator()(bool)const")]
+// 0x2a5da0 — __ZNK5boost9function1IvbEclEb
+// was: boost::function1<void,bool>::operator()(bool)const
+pub fn stub_2a5da0() -> ! {
+    todo!("0x2a5da0 __ZNK5boost9function1IvbEclEb")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::Stats::StatsService> RBX::shared_from<RBX::Stats::StatsService>(RBX::Stats::StatsService*)")]
+// 0x2a5e64 — __ZN3RBX11shared_fromINS_5Stats12StatsServiceEEEN5boost10shared_ptrIT_EEPS5_
+// was: boost::shared_ptr<RBX::Stats::StatsService> RBX::shared_from<RBX::Stats::StatsService>(RBX::Stats::StatsService*)
+// now: rbx_core::SharedPtr<RBX::Stats::StatsService> RBX::shared_from<RBX::Stats::StatsService>(RBX::Stats::StatsService*) // rbx_core::SharedPtr
+pub fn stub_2a5e64() -> ! {
+    todo!("0x2a5e64 __ZN3RBX11shared_fromINS_5Stats12StatsServiceEEEN5boost10shared_ptrIT_EEPS5_")
+}
+
+#[doc(alias = "boost::thread::join(void)")]
+// 0x2a6368 — __ZN5boost6thread4joinEv
+// was: boost::thread::join(void)
+pub fn stub_2a6368() -> ! {
+    todo!("0x2a6368 __ZN5boost6thread4joinEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::RunService>::operator=(boost::shared_ptr<RBX::RunService> const&)")]
+// 0x2a65c8 — __ZN5boost10shared_ptrIN3RBX10RunServiceEEaSERKS3_
+// was: boost::shared_ptr<RBX::RunService>::operator=(boost::shared_ptr<RBX::RunService> const&)
+// now: rbx_core::SharedPtr<RBX::RunService>::operator=(rbx_core::SharedPtr<RBX::RunService> const&) // rbx_core::SharedPtr
+pub fn stub_2a65c8() -> ! {
+    todo!("0x2a65c8 __ZN5boost10shared_ptrIN3RBX10RunServiceEEaSERKS3_")
+}
+
+#[doc(alias = "boost::function1<std::string,std::string const&>::operator()(std::string const&)const")]
+// 0x2a73ec — __ZNK5boost9function1ISsRKSsEclES2_
+// was: boost::function1<std::string,std::string const&>::operator()(std::string const&)const
+pub fn stub_2a73ec() -> ! {
+    todo!("0x2a73ec __ZNK5boost9function1ISsRKSsEclES2_")
+}
+
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot> const&)")]
+// 0x2a947c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviEE4slotEEaSERKS7_
+// was: boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot> const&)
+pub fn stub_2a947c() -> ! {
+    todo!("0x2a947c __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviEE4slotEEaSERKS7_")
+}
+
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> const&)")]
+// 0x2a9710 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSERKS7_
+// was: boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> const&)
+pub fn stub_2a9710() -> ! {
+    todo!("0x2a9710 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSERKS7_")
+}
+
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ScriptContext *>,boost::arg<1>,boost::_bi::value<RBX::ScriptContext::ScriptStartOptions>>::operator()<boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions>,boost::_bi::list1<RBX::BaseScript * const&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions> &,boost::_bi::list1<RBX::BaseScript * const&> &,int)")]
+// 0x2ab3f4 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX13ScriptContextEEENS_3argILi1EEENS2_INS4_18ScriptStartOptionsEEEEclINS_4_mfi3mf2IvS4_PNS3_10BaseScriptES9_EENS0_5list1IRKSG_EEEEvNS0_4typeIvEERT_RT0_i
+// was: void boost::_bi::list3<boost::_bi::value<RBX::ScriptContext *>,boost::arg<1>,boost::_bi::value<RBX::ScriptContext::ScriptStartOptions>>::operator()<boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions>,boost::_bi::list1<RBX::BaseScript * const&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions> &,boost::_bi::list1<RBX::BaseScript * const&> &,int)
+pub fn stub_2ab3f4() -> ! {
+    todo!("0x2ab3f4 __ZN5boost3_bi5list3INS0_5valueIPN3RBX13ScriptContextEEENS_3argILi1EEENS2_INS4_18ScriptStartOptionsEEEEclINS_4_mfi3mf2IvS4_PNS3_10BaseScriptES9_EENS0_5list1IRKSG_EEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+#[doc(alias = "boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions>::operator()(RBX::ScriptContext*,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions)const")]
+// 0x2ab620 — __ZNK5boost4_mfi3mf2IvN3RBX13ScriptContextEPNS2_10BaseScriptENS3_18ScriptStartOptionsEEclEPS3_S5_S6_
+// was: boost::_mfi::mf2<void,RBX::ScriptContext,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions>::operator()(RBX::ScriptContext*,RBX::BaseScript *,RBX::ScriptContext::ScriptStartOptions)const
+pub fn stub_2ab620() -> ! {
+    todo!("0x2ab620 __ZNK5boost4_mfi3mf2IvN3RBX13ScriptContextEPNS2_10BaseScriptENS3_18ScriptStartOptionsEEclEPS3_S5_S6_")
+}
+
+#[doc(alias = "boost::_bi::list3<boost::_bi::value<RBX::ScriptContext *>,boost::arg<1>,boost::_bi::value<RBX::ScriptContext::ScriptStartOptions>>::list3(boost::_bi::value<RBX::ScriptContext *>,boost::arg<1>,boost::_bi::value<RBX::ScriptContext::ScriptStartOptions>)")]
+// 0x2ab868 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX13ScriptContextEEENS_3argILi1EEENS2_INS4_18ScriptStartOptionsEEEEC2ES6_S8_SA_
+// was: boost::_bi::list3<boost::_bi::value<RBX::ScriptContext *>,boost::arg<1>,boost::_bi::value<RBX::ScriptContext::ScriptStartOptions>>::list3(boost::_bi::value<RBX::ScriptContext *>,boost::arg<1>,boost::_bi::value<RBX::ScriptContext::ScriptStartOptions>)
+pub fn stub_2ab868() -> ! {
+    todo!("0x2ab868 __ZN5boost3_bi5list3INS0_5valueIPN3RBX13ScriptContextEEENS_3argILi1EEENS2_INS4_18ScriptStartOptionsEEEEC2ES6_S8_SA_")
+}
+
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot>::operator=(rbx::signals::signal<void ()(RBX::RunTransition)>::slot*)")]
+// 0x2ac1c0 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotEEaSEPS8_
+// was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot>::operator=(rbx::signals::signal<void ()(RBX::RunTransition)>::slot*)
+pub fn stub_2ac1c0() -> ! {
+    todo!("0x2ac1c0 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotEEaSEPS8_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::RunTransition)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>>::~callable_slot()")]
+// 0x2ac1e4 — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_20RuntimeScriptServiceES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEED1Ev
+// was: rbx::signals::signal<void ()(RBX::RunTransition)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>>::~callable_slot()
+pub fn stub_2ac1e4() -> ! {
+    todo!("0x2ac1e4 __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_20RuntimeScriptServiceES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEED1Ev")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::RunTransition)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>>::~callable_slot()")]
+// 0x2ac210 — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_20RuntimeScriptServiceES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEED0Ev
+// was: rbx::signals::signal<void ()(RBX::RunTransition)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>>::~callable_slot()
+pub fn stub_2ac210() -> ! {
+    todo!("0x2ac210 __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE13callable_slotIN5boost3_bi6bind_tIvNS7_4_mfi3mf1IvNS2_20RuntimeScriptServiceES3_EENS8_5list2INS8_5valueIPSC_EENS7_3argILi1EEEEEEEED0Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::RunTransition)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>,1,void ()(RBX::RunTransition)>::call(RBX::RunTransition)")]
+// 0x2ac2e8 — __ZN3rbx8callableINS_7signals6signalIFvN3RBX13RunTransitionEEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS3_20RuntimeScriptServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEELi1ES5_E4callES4_
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::RunTransition)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>,1,void ()(RBX::RunTransition)>::call(RBX::RunTransition)
+pub fn stub_2ac2e8() -> ! {
+    todo!("0x2ac2e8 __ZN3rbx8callableINS_7signals6signalIFvN3RBX13RunTransitionEEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS3_20RuntimeScriptServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEELi1ES5_E4callES4_")
+}
+
+#[doc(alias = "non_virtual_thunk_to rbx::callable<rbx::signals::signal<void ()(RBX::RunTransition)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>,1,void ()(RBX::RunTransition)>::call(RBX::RunTransition)")]
+// 0x2ac30c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX13RunTransitionEEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS3_20RuntimeScriptServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEELi1ES5_E4callES4_
+// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::RunTransition)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>,1,void ()(RBX::RunTransition)>::call(RBX::RunTransition)
+pub fn stub_2ac30c() -> ! {
+    todo!("0x2ac30c __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX13RunTransitionEEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS3_20RuntimeScriptServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEELi1ES5_E4callES4_")
+}
+
