@@ -2601,3 +2601,618 @@ pub fn stub_0x259838() -> ! {
 pub fn stub_0x259868() -> ! {
     todo!("0x259868 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::~BoundFuncDesc()")
 }
+// 0x258c78 — __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x258c78() -> ! {
+    todo!("0x258c78 __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x258c7c — __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x258c7c() -> ! {
+    todo!("0x258c7c __ZN3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x258d1c — __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x258d1c() -> ! {
+    todo!("0x258d1c __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x258d24 — __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x258d24() -> ! {
+    todo!("0x258d24 __ZThn32_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x258dc8 — __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x258dc8() -> ! {
+    todo!("0x258dc8 __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x258dd0 — __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x258dd0() -> ! {
+    todo!("0x258dd0 __ZThn36_N3RBX10Reflection9DescribedINS_11HttpServiceELZNS_12sHttpServiceEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sHttpServiceEES4_EELNS0_15ClassDescriptor13FunctionalityE11ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x259984 — __ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+// was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_0x259984() -> ! {
+    todo!("0x259984 RBX::Reflection::BoundFuncDesc<RBX::HttpService,std::string ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x259a6c — __ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FSsN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEESI_SsE4callEPS2_SK_RS7_RKSI_
+// was: RBX::Reflection::Call1Helper<RBX::HttpService,std::string (RBX::HttpService::*)(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,std::string>::call(RBX::HttpService*,std::string (RBX::HttpService::*)(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),RBX::Reflection::Variant&,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)
+#[doc(alias = "RBX::Reflection::Call1Helper<RBX::HttpService,std::string (RBX::HttpService::*)(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,std::string>::call(RBX::HttpService*,std::string (RBX::HttpService::*)(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),RBX::Reflection::Variant&,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")]
+pub fn stub_0x259a6c() -> ! {
+    todo!("0x259a6c RBX::Reflection::Call1Helper<RBX::HttpService,std::string (RBX::HttpService::*)(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,std::string>::call(RBX::HttpService*,std::string (RBX::HttpService::*)(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),RBX::Reflection::Variant&,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")
+}
+
+// 0x259bfc — __ZN3RBX10Reflection9ArgHelper6getArgIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKNS3_10scoped_ptrISJ_EEPNS3_10disable_ifINS3_7is_sameISJ_NS4_IKNS0_5TupleEEEEEvE4typeE
+// was: boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::ArgHelper::getArg<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>> const&,boost::disable_if<boost::is_same<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
+#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::ArgHelper::getArg<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>> const&,boost::disable_if<boost::is_same<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+pub fn stub_0x259bfc() -> ! {
+    todo!("0x259bfc boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::ArgHelper::getArg<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>> const&,boost::disable_if<boost::is_same<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+}
+
+// 0x259dbc — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EEC2EMS2_FSI_SsEPKcSO_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::BoundFuncDesc(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::BoundFuncDesc(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x259dbc() -> ! {
+    todo!("0x259dbc RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::BoundFuncDesc(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x259f34 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EE16declareSignatureEPKcS7_
+// was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+pub fn stub_0x259f34() -> ! {
+    todo!("0x259f34 RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0x259f64 — __ZN3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EED0Ev
+// was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::~BoundFuncDesc()
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::~BoundFuncDesc()")]
+pub fn stub_0x259f64() -> ! {
+    todo!("0x259f64 RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::~BoundFuncDesc()")
+}
+
+// 0x25a030 — __ZNK3RBX10Reflection13BoundFuncDescINS_11HttpServiceEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+// was: RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_0x25a030() -> ! {
+    todo!("0x25a030 RBX::Reflection::BoundFuncDesc<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x25a170 — __ZN3RBX10Reflection11Call1HelperINS_11HttpServiceEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEESsESsSI_E4callEPS2_SK_RS7_RSD_
+// was: RBX::Reflection::Call1Helper<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::call(RBX::HttpService*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),RBX::Reflection::Variant&,std::string const&)
+#[doc(alias = "RBX::Reflection::Call1Helper<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::call(RBX::HttpService*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),RBX::Reflection::Variant&,std::string const&)")]
+pub fn stub_0x25a170() -> ! {
+    todo!("0x25a170 RBX::Reflection::Call1Helper<RBX::HttpService,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::call(RBX::HttpService*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::HttpService::*)(std::string),RBX::Reflection::Variant&,std::string const&)")
+}
+
+// 0x25a2f0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EEC2EMS2_FvSsSsS3_N5boost8functionIFvSsEEES9_EPKcSD_SD_SD_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x25a2f0() -> ! {
+    todo!("0x25a2f0 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x25a68c — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
+pub fn stub_0x25a68c() -> ! {
+    todo!("0x25a68c RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+}
+
+// 0x25a958 — __ZN3RBX10Reflection9ArgHelper6getArgINS_11HttpService15HttpContentTypeELi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
+// was: RBX::HttpService::HttpContentType RBX::Reflection::ArgHelper::getArg<RBX::HttpService::HttpContentType,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::HttpService::HttpContentType> const&,boost::disable_if<boost::is_same<RBX::HttpService::HttpContentType,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
+#[doc(alias = "RBX::HttpService::HttpContentType RBX::Reflection::ArgHelper::getArg<RBX::HttpService::HttpContentType,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::HttpService::HttpContentType> const&,boost::disable_if<boost::is_same<RBX::HttpService::HttpContentType,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+pub fn stub_0x25a958() -> ! {
+    todo!("0x25a958 RBX::HttpService::HttpContentType RBX::Reflection::ArgHelper::getArg<RBX::HttpService::HttpContentType,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::HttpService::HttpContentType> const&,boost::disable_if<boost::is_same<RBX::HttpService::HttpContentType,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+}
+
+// 0x25aaec — __ZN3RBX10Reflection9ArgHelper8try_enumILi3ENS_11HttpService15HttpContentTypeEEEbRNS0_18FunctionDescriptor9ArgumentsERT0_PN5boost9enable_ifINSA_7is_enumIS8_EEvE4typeE
+// was: bool RBX::Reflection::ArgHelper::try_enum<3,RBX::HttpService::HttpContentType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::HttpService::HttpContentType &,boost::enable_if<boost::is_enum<RBX::HttpService::HttpContentType>,void>::type *)
+#[doc(alias = "bool RBX::Reflection::ArgHelper::try_enum<3,RBX::HttpService::HttpContentType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::HttpService::HttpContentType &,boost::enable_if<boost::is_enum<RBX::HttpService::HttpContentType>,void>::type *)")]
+pub fn stub_0x25aaec() -> ! {
+    todo!("0x25aaec bool RBX::Reflection::ArgHelper::try_enum<3,RBX::HttpService::HttpContentType>(RBX::Reflection::FunctionDescriptor::Arguments &,RBX::HttpService::HttpContentType &,boost::enable_if<boost::is_enum<RBX::HttpService::HttpContentType>,void>::type *)")
+}
+
+// 0x25ab40 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EEC2EMS2_FvSsN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x25ab40() -> ! {
+    todo!("0x25ab40 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x25adb4 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
+pub fn stub_0x25adb4() -> ! {
+    todo!("0x25adb4 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+}
+
+// 0x25c178 — __ZN3RBX10Reflection14PropDescriptorINS_9SpotLightEfED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")]
+pub fn stub_0x25c178() -> ! {
+    todo!("0x25c178 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")
+}
+
+// 0x25c1ac — __ZN3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor()")]
+pub fn stub_0x25c1ac() -> ! {
+    todo!("0x25c1ac RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor()")
+}
+
+// 0x25c648 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9SpotLightES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpotLight,RBX::SpotLight>(boost::shared_ptr<RBX::SpotLight> const*,RBX::SpotLight *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpotLight,RBX::SpotLight>(boost::shared_ptr<RBX::SpotLight> const*,RBX::SpotLight *)const")]
+pub fn stub_0x25c648() -> ! {
+    todo!("0x25c648 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpotLight,RBX::SpotLight>(boost::shared_ptr<RBX::SpotLight> const*,RBX::SpotLight *)const")
+}
+
+// 0x25cff8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10PointLightES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PointLight,RBX::PointLight>(boost::shared_ptr<RBX::PointLight> const*,RBX::PointLight *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PointLight,RBX::PointLight>(boost::shared_ptr<RBX::PointLight> const*,RBX::PointLight *)const")]
+pub fn stub_0x25cff8() -> ! {
+    todo!("0x25cff8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PointLight,RBX::PointLight>(boost::shared_ptr<RBX::PointLight> const*,RBX::PointLight *)const")
+}
+
+// 0x25d6ac — __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25d6ac() -> ! {
+    todo!("0x25d6ac __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25d6b0 — __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25d6b0() -> ! {
+    todo!("0x25d6b0 __ZN3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25d750 — __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25d750() -> ! {
+    todo!("0x25d750 __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25d758 — __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25d758() -> ! {
+    todo!("0x25d758 __ZThn32_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25d7fc — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25d7fc() -> ! {
+    todo!("0x25d7fc __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25d804 — __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25d804() -> ! {
+    todo!("0x25d804 __ZThn36_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25d8a8 — __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25d8a8() -> ! {
+    todo!("0x25d8a8 __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25d8b0 — __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25d8b0() -> ! {
+    todo!("0x25d8b0 __ZThn92_N3RBX10Reflection9DescribedINS_9SpotLightELZNS_10sSpotLightEENS_14FactoryProductIS2_NS_5LightELZNS_10sSpotLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25d954 — __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25d954() -> ! {
+    todo!("0x25d954 __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25d958 — __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25d958() -> ! {
+    todo!("0x25d958 __ZN3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25d9f8 — __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25d9f8() -> ! {
+    todo!("0x25d9f8 __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25da00 — __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25da00() -> ! {
+    todo!("0x25da00 __ZThn32_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25daa4 — __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25daa4() -> ! {
+    todo!("0x25daa4 __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25daac — __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25daac() -> ! {
+    todo!("0x25daac __ZThn36_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25db50 — __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25db50() -> ! {
+    todo!("0x25db50 __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25db58 — __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25db58() -> ! {
+    todo!("0x25db58 __ZThn92_N3RBX10Reflection9DescribedINS_10PointLightELZNS_11sPointLightEENS_14FactoryProductIS2_NS_5LightELZNS_11sPointLightEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25dbfc — __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25dbfc() -> ! {
+    todo!("0x25dbfc __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25dc00 — __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25dc00() -> ! {
+    todo!("0x25dc00 __ZN3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25dca0 — __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25dca0() -> ! {
+    todo!("0x25dca0 __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25dca8 — __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25dca8() -> ! {
+    todo!("0x25dca8 __ZThn32_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25dd4c — __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25dd4c() -> ! {
+    todo!("0x25dd4c __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25dd54 — __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25dd54() -> ! {
+    todo!("0x25dd54 __ZThn36_N3RBX21DescribedNonCreatableINS_5LightENS_8InstanceELZNS_6sLightEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25ddf8 — __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25ddf8() -> ! {
+    todo!("0x25ddf8 __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25ddfc — __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25ddfc() -> ! {
+    todo!("0x25ddfc __ZN3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25de9c — __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25de9c() -> ! {
+    todo!("0x25de9c __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25dea4 — __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25dea4() -> ! {
+    todo!("0x25dea4 __ZThn32_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25df48 — __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x25df48() -> ! {
+    todo!("0x25df48 __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x25df50 — __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x25df50() -> ! {
+    todo!("0x25df50 __ZThn36_N3RBX10Reflection9DescribedINS_5LightELZNS_6sLightEENS_17NonFactoryProductINS_8InstanceELZNS_6sLightEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x25dff4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x25dff4() -> ! {
+    todo!("0x25dff4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x25e1a8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor()")]
+pub fn stub_0x25e1a8() -> ! {
+    todo!("0x25e1a8 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::~EnumPropDescriptor()")
+}
+
+// 0x25e1d4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::isReadOnly(void)const")]
+pub fn stub_0x25e1d4() -> ! {
+    todo!("0x25e1d4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::isReadOnly(void)const")
+}
+
+// 0x25e1e4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::isWriteOnly(void)const")]
+pub fn stub_0x25e1e4() -> ! {
+    todo!("0x25e1e4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::isWriteOnly(void)const")
+}
+
+// 0x25e1f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25e1f4() -> ! {
+    todo!("0x25e1f4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x25e21c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x25e21c() -> ! {
+    todo!("0x25e21c RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x25e240 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x25e240() -> ! {
+    todo!("0x25e240 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x25e38c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x25e38c() -> ! {
+    todo!("0x25e38c RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x25e3b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::hasStringValue(void)const")]
+pub fn stub_0x25e3b0() -> ! {
+    todo!("0x25e3b0 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::hasStringValue(void)const")
+}
+
+// 0x25e3b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25e3b4() -> ! {
+    todo!("0x25e3b4 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x25e3d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_0x25e3d8() -> ! {
+    todo!("0x25e3d8 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x25e418 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x25e418() -> ! {
+    todo!("0x25e418 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x25e438 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x25e438() -> ! {
+    todo!("0x25e438 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x25e678 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25e678() -> ! {
+    todo!("0x25e678 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x25e694 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_0x25e694() -> ! {
+    todo!("0x25e694 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x25e6c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25e6c8() -> ! {
+    todo!("0x25e6c8 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x25e6d0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x25e6d0() -> ! {
+    todo!("0x25e6d0 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x25e71c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25e71c() -> ! {
+    todo!("0x25e71c RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x25e73c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_0x25e73c() -> ! {
+    todo!("0x25e73c RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x25e770 — __ZNK3RBX10Reflection8EnumDescINS_8NormalIdEE14convertToIndexES2_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NormalId>::convertToIndex(RBX::NormalId)const")]
+pub fn stub_0x25e770() -> ! {
+    todo!("0x25e770 RBX::Reflection::EnumDesc<RBX::NormalId>::convertToIndex(RBX::NormalId)const")
+}
+
+// 0x25e7e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_9SpotLightENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x25e7e0() -> ! {
+    todo!("0x25e7e0 RBX::Reflection::EnumPropDescriptor<RBX::SpotLight,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x25e820 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::isReadOnly(void)const")]
+pub fn stub_0x25e820() -> ! {
+    todo!("0x25e820 RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::isReadOnly(void)const")
+}
+
+// 0x25e824 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::isWriteOnly(void)const")]
+pub fn stub_0x25e824() -> ! {
+    todo!("0x25e824 RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::isWriteOnly(void)const")
+}
+
+// 0x25e828 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25e828() -> ! {
+    todo!("0x25e828 RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x25e848 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")]
+pub fn stub_0x25e848() -> ! {
+    todo!("0x25e848 RBX::Reflection::PropDescriptor<RBX::SpotLight,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")
+}
+
+// 0x25e86c — __ZN3RBX10Reflection14PropDescriptorINS_9SpotLightEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::PropDescriptor<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>(char const*,char const*,float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x25e86c() -> ! {
+    todo!("0x25e86c RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::PropDescriptor<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>(char const*,char const*,float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x25e980 — __ZN3RBX10Reflection14PropDescriptorINS_9SpotLightEfED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")]
+pub fn stub_0x25e980() -> ! {
+    todo!("0x25e980 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::~PropDescriptor()")
+}
+
+// 0x25e9ac — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::isReadOnly(void)const")]
+pub fn stub_0x25e9ac() -> ! {
+    todo!("0x25e9ac RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::isReadOnly(void)const")
+}
+
+// 0x25e9b0 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::isWriteOnly(void)const")]
+pub fn stub_0x25e9b0() -> ! {
+    todo!("0x25e9b0 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::isWriteOnly(void)const")
+}
+
+// 0x25e9b4 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25e9b4() -> ! {
+    todo!("0x25e9b4 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x25e9d4 — __ZNK3RBX10Reflection14PropDescriptorINS_9SpotLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x25e9d4() -> ! {
+    todo!("0x25e9d4 RBX::Reflection::PropDescriptor<RBX::SpotLight,float>::GetSetImpl<float (RBX::SpotLight::*)(void)const,void (RBX::SpotLight::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x25e9f8 — __ZN3RBX10Reflection14PropDescriptorINS_10PointLightEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::PropDescriptor<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>(char const*,char const*,float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x25e9f8() -> ! {
+    todo!("0x25e9f8 RBX::Reflection::PropDescriptor<RBX::PointLight,float>::PropDescriptor<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>(char const*,char const*,float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x25eb0c — __ZN3RBX10Reflection14PropDescriptorINS_10PointLightEfED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor()")]
+pub fn stub_0x25eb0c() -> ! {
+    todo!("0x25eb0c RBX::Reflection::PropDescriptor<RBX::PointLight,float>::~PropDescriptor()")
+}
+
+// 0x25eb38 — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::isReadOnly(void)const")]
+pub fn stub_0x25eb38() -> ! {
+    todo!("0x25eb38 RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::isReadOnly(void)const")
+}
+
+// 0x25eb3c — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::isWriteOnly(void)const")]
+pub fn stub_0x25eb3c() -> ! {
+    todo!("0x25eb3c RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::isWriteOnly(void)const")
+}
+
+// 0x25eb40 — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25eb40() -> ! {
+    todo!("0x25eb40 RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x25eb60 — __ZNK3RBX10Reflection14PropDescriptorINS_10PointLightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x25eb60() -> ! {
+    todo!("0x25eb60 RBX::Reflection::PropDescriptor<RBX::PointLight,float>::GetSetImpl<float (RBX::PointLight::*)(void)const,void (RBX::PointLight::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x25eb84 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::PropDescriptor<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>(char const*,char const*,float (RBX::Light::*)(void)const,void (RBX::Light::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x25eb84() -> ! {
+    todo!("0x25eb84 RBX::Reflection::PropDescriptor<RBX::Light,float>::PropDescriptor<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>(char const*,char const*,float (RBX::Light::*)(void)const,void (RBX::Light::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x25ec98 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEfED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor()")]
+pub fn stub_0x25ec98() -> ! {
+    todo!("0x25ec98 RBX::Reflection::PropDescriptor<RBX::Light,float>::~PropDescriptor()")
+}
+
+// 0x25ecc4 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::isReadOnly(void)const")]
+pub fn stub_0x25ecc4() -> ! {
+    todo!("0x25ecc4 RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::isReadOnly(void)const")
+}
+
+// 0x25ecc8 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::isWriteOnly(void)const")]
+pub fn stub_0x25ecc8() -> ! {
+    todo!("0x25ecc8 RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::isWriteOnly(void)const")
+}
+
+// 0x25eccc — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25eccc() -> ! {
+    todo!("0x25eccc RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x25ecec — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x25ecec() -> ! {
+    todo!("0x25ecec RBX::Reflection::PropDescriptor<RBX::Light,float>::GetSetImpl<float (RBX::Light::*)(void)const,void (RBX::Light::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x25ed10 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x25ed10() -> ! {
+    todo!("0x25ed10 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x25ee24 — __ZN3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor()")]
+pub fn stub_0x25ee24() -> ! {
+    todo!("0x25ee24 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::~PropDescriptor()")
+}
+
+// 0x25ee50 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::isReadOnly(void)const")]
+pub fn stub_0x25ee50() -> ! {
+    todo!("0x25ee50 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::isReadOnly(void)const")
+}
+
+// 0x25ee54 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::isWriteOnly(void)const")]
+pub fn stub_0x25ee54() -> ! {
+    todo!("0x25ee54 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::isWriteOnly(void)const")
+}
+
+// 0x25ee58 — __ZNK3RBX10Reflection14PropDescriptorINS_5LightEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x25ee58() -> ! {
+    todo!("0x25ee58 RBX::Reflection::PropDescriptor<RBX::Light,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Light::*)(void)const,void (RBX::Light::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
