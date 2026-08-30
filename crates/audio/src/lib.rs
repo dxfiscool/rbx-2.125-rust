@@ -1,5 +1,5 @@
 //! audio — FMOD (FMOD::System, FMOD::Sound, Channel, etc.)
-//! Generated from ida/export.json filtered for FMOD (1882 funcs, 950 stubs here).
+//! Generated from ida/export.json filtered for FMOD (1882 funcs, 1050 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
@@ -5699,3 +5699,504 @@ pub fn stub_c1c84() -> ! {
     todo!("0xc1c84 FMOD::DSPSfxReverb::SetDiffusion(_I3DL2_LISTENERPROPERTIES *)")
 }
 
+
+// 0xc1d48 — __ZN4FMOD12DSPSfxReverb19SetReflectionsLevelEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetReflectionsLevel(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c1d48() -> ! {
+    todo!("0xc1d48 FMOD::DSPSfxReverb::SetReflectionsLevel(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc1de4 — __ZN4FMOD12DSPSfxReverb14SetReverbDelayEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetReverbDelay(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c1de4() -> ! {
+    todo!("0xc1de4 FMOD::DSPSfxReverb::SetReverbDelay(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc1e74 — __ZN4FMOD12DSPSfxReverb19SetReflectionsDelayEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetReflectionsDelay(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c1e74() -> ! {
+    todo!("0xc1e74 FMOD::DSPSfxReverb::SetReflectionsDelay(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc1f00 — __ZN4FMOD12DSPSfxReverb14SetReverbLevelEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetReverbLevel(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c1f00() -> ! {
+    todo!("0xc1f00 FMOD::DSPSfxReverb::SetReverbLevel(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc2014 — __ZN4FMOD12DSPSfxReverb7SetRoomEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetRoom(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c2014() -> ! {
+    todo!("0xc2014 FMOD::DSPSfxReverb::SetRoom(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc207c — __ZN4FMOD12DSPSfxReverb20CalculateShelfCoeffsEfffPfS1_S1_S1_S1_
+#[doc(alias = "FMOD::DSPSfxReverb::CalculateShelfCoeffs(float,float,float,float *,float *,float *,float *,float *)")]
+pub fn stub_c207c() -> ! {
+    todo!("0xc207c FMOD::DSPSfxReverb::CalculateShelfCoeffs(float,float,float,float *,float *,float *,float *,float *)")
+}
+// 0xc2178 — __ZN4FMOD12DSPSfxReverb9SetRoomLFEPNS_18SFX_REVERB_LFPROPSE
+#[doc(alias = "FMOD::DSPSfxReverb::SetRoomLF(FMOD::SFX_REVERB_LFPROPS *)")]
+pub fn stub_c2178() -> ! {
+    todo!("0xc2178 FMOD::DSPSfxReverb::SetRoomLF(FMOD::SFX_REVERB_LFPROPS *)")
+}
+// 0xc2210 — __ZN4FMOD12DSPSfxReverb14SetLFReferenceEPNS_18SFX_REVERB_LFPROPSE
+#[doc(alias = "FMOD::DSPSfxReverb::SetLFReference(FMOD::SFX_REVERB_LFPROPS *)")]
+pub fn stub_c2210() -> ! {
+    todo!("0xc2210 FMOD::DSPSfxReverb::SetLFReference(FMOD::SFX_REVERB_LFPROPS *)")
+}
+// 0xc2250 — __ZN4FMOD12DSPSfxReverb29Calculate1stOrderLowpassCoeffEfffPf
+#[doc(alias = "FMOD::DSPSfxReverb::Calculate1stOrderLowpassCoeff(float,float,float,float *)")]
+pub fn stub_c2250() -> ! {
+    todo!("0xc2250 FMOD::DSPSfxReverb::Calculate1stOrderLowpassCoeff(float,float,float,float *)")
+}
+// 0xc2370 — __ZN4FMOD12DSPSfxReverb12SetDecayTimeEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetDecayTime(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c2370() -> ! {
+    todo!("0xc2370 FMOD::DSPSfxReverb::SetDecayTime(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc2508 — __ZN4FMOD12DSPSfxReverb15SetDecayHFRatioEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetDecayHFRatio(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c2508() -> ! {
+    todo!("0xc2508 FMOD::DSPSfxReverb::SetDecayHFRatio(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc2550 — __ZN4FMOD12DSPSfxReverb19SetDelayLineLengthsEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetDelayLineLengths(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c2550() -> ! {
+    todo!("0xc2550 FMOD::DSPSfxReverb::SetDelayLineLengths(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc2618 — __ZN4FMOD12DSPSfxReverb10SetDensityEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetDensity(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c2618() -> ! {
+    todo!("0xc2618 FMOD::DSPSfxReverb::SetDensity(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc2664 — __ZN4FMOD12DSPSfxReverb9SetRoomHFEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetRoomHF(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c2664() -> ! {
+    todo!("0xc2664 FMOD::DSPSfxReverb::SetRoomHF(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc2730 — __ZN4FMOD12DSPSfxReverb14SetHFReferenceEP25_I3DL2_LISTENERPROPERTIES
+#[doc(alias = "FMOD::DSPSfxReverb::SetHFReference(_I3DL2_LISTENERPROPERTIES *)")]
+pub fn stub_c2730() -> ! {
+    todo!("0xc2730 FMOD::DSPSfxReverb::SetHFReference(_I3DL2_LISTENERPROPERTIES *)")
+}
+// 0xc2794 — __ZN4FMOD12DSPSfxReverb14updateInternalEv
+#[doc(alias = "FMOD::DSPSfxReverb::updateInternal(void)")]
+pub fn stub_c2794() -> ! {
+    todo!("0xc2794 FMOD::DSPSfxReverb::updateInternal(void)")
+}
+// 0xc2a18 — __ZN4FMOD12DSPSfxReverb14updateCallbackEP14FMOD_DSP_STATE
+#[doc(alias = "FMOD::DSPSfxReverb::updateCallback(FMOD_DSP_STATE *)")]
+pub fn stub_c2a18() -> ! {
+    todo!("0xc2a18 FMOD::DSPSfxReverb::updateCallback(FMOD_DSP_STATE *)")
+}
+// 0xc2a24 — __ZN4FMOD12DSPSfxReverb20getParameterInternalEiPfPc
+#[doc(alias = "FMOD::DSPSfxReverb::getParameterInternal(int,float *,char *)")]
+pub fn stub_c2a24() -> ! {
+    todo!("0xc2a24 FMOD::DSPSfxReverb::getParameterInternal(int,float *,char *)")
+}
+// 0xc2e88 — __ZN4FMOD12DSPSfxReverb20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
+#[doc(alias = "FMOD::DSPSfxReverb::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")]
+pub fn stub_c2e88() -> ! {
+    todo!("0xc2e88 FMOD::DSPSfxReverb::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")
+}
+// 0xc2e94 — __ZN4FMOD12DSPSfxReverb20setParameterInternalEif
+#[doc(alias = "FMOD::DSPSfxReverb::setParameterInternal(int,float)")]
+pub fn stub_c2e94() -> ! {
+    todo!("0xc2e94 FMOD::DSPSfxReverb::setParameterInternal(int,float)")
+}
+// 0xc3178 — __ZN4FMOD12DSPSfxReverb20setParameterCallbackEP14FMOD_DSP_STATEif
+#[doc(alias = "FMOD::DSPSfxReverb::setParameterCallback(FMOD_DSP_STATE *,int,float)")]
+pub fn stub_c3178() -> ! {
+    todo!("0xc3178 FMOD::DSPSfxReverb::setParameterCallback(FMOD_DSP_STATE *,int,float)")
+}
+// 0xc3184 — __ZN4FMOD12DSPSfxReverb13resetInternalEv
+#[doc(alias = "FMOD::DSPSfxReverb::resetInternal(void)")]
+pub fn stub_c3184() -> ! {
+    todo!("0xc3184 FMOD::DSPSfxReverb::resetInternal(void)")
+}
+// 0xc31bc — __ZN4FMOD12DSPSfxReverb13resetCallbackEP14FMOD_DSP_STATE
+#[doc(alias = "FMOD::DSPSfxReverb::resetCallback(FMOD_DSP_STATE *)")]
+pub fn stub_c31bc() -> ! {
+    todo!("0xc31bc FMOD::DSPSfxReverb::resetCallback(FMOD_DSP_STATE *)")
+}
+// 0xc31c8 — __ZN4FMOD12DSPSfxReverb12readInternalEPfS1_jii
+#[doc(alias = "FMOD::DSPSfxReverb::readInternal(float *,float *,unsigned int,int,int)")]
+pub fn stub_c31c8() -> ! {
+    todo!("0xc31c8 FMOD::DSPSfxReverb::readInternal(float *,float *,unsigned int,int,int)")
+}
+// 0xc327c — __ZN4FMOD12DSPSfxReverb12readCallbackEP14FMOD_DSP_STATEPfS3_jii
+#[doc(alias = "FMOD::DSPSfxReverb::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+pub fn stub_c327c() -> ! {
+    todo!("0xc327c FMOD::DSPSfxReverb::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
+}
+// 0xc32a4 — __ZN4FMOD12DSPSfxReverb15releaseInternalEv
+#[doc(alias = "FMOD::DSPSfxReverb::releaseInternal(void)")]
+pub fn stub_c32a4() -> ! {
+    todo!("0xc32a4 FMOD::DSPSfxReverb::releaseInternal(void)")
+}
+// 0xc32bc — __ZN4FMOD12DSPSfxReverb15releaseCallbackEP14FMOD_DSP_STATE
+#[doc(alias = "FMOD::DSPSfxReverb::releaseCallback(FMOD_DSP_STATE *)")]
+pub fn stub_c32bc() -> ! {
+    todo!("0xc32bc FMOD::DSPSfxReverb::releaseCallback(FMOD_DSP_STATE *)")
+}
+// 0xc32c8 — __ZN4FMOD12DSPSfxReverb14createInternalEv
+#[doc(alias = "FMOD::DSPSfxReverb::createInternal(void)")]
+pub fn stub_c32c8() -> ! {
+    todo!("0xc32c8 FMOD::DSPSfxReverb::createInternal(void)")
+}
+// 0xc35cc — __ZN4FMOD12DSPSfxReverb14createCallbackEP14FMOD_DSP_STATE
+#[doc(alias = "FMOD::DSPSfxReverb::createCallback(FMOD_DSP_STATE *)")]
+pub fn stub_c35cc() -> ! {
+    todo!("0xc35cc FMOD::DSPSfxReverb::createCallback(FMOD_DSP_STATE *)")
+}
+// 0xc35d8 — __ZN4FMOD12DSPSfxReverb16getDescriptionExEv
+#[doc(alias = "FMOD::DSPSfxReverb::getDescriptionEx(void)")]
+pub fn stub_c35d8() -> ! {
+    todo!("0xc35d8 FMOD::DSPSfxReverb::getDescriptionEx(void)")
+}
+// 0xc3718 — __GLOBAL__I__ZN4FMOD12dspsfxreverbE
+#[doc(alias = "global constructor keyed toFMOD::dspsfxreverb")]
+pub fn stub_c3718() -> ! {
+    todo!("0xc3718 `global constructor keyed to'FMOD::dspsfxreverb")
+}
+// 0xc3724 — __ZN4FMOD12DSPSoundCard5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE
+#[doc(alias = "FMOD::DSPSoundCard::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX *)")]
+pub fn stub_c3724() -> ! {
+    todo!("0xc3724 FMOD::DSPSoundCard::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX *)")
+}
+// 0xc3750 — __ZN4FMOD12DSPSoundCard4readEPvPj16FMOD_SPEAKERMODEij
+#[doc(alias = "FMOD::DSPSoundCard::read(void *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
+pub fn stub_c3750() -> ! {
+    todo!("0xc3750 FMOD::DSPSoundCard::read(void *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
+}
+// 0xc3bcc — __ZN4FMOD12DSPWaveTable19setPositionInternalEj
+#[doc(alias = "FMOD::DSPWaveTable::setPositionInternal(unsigned int)")]
+pub fn stub_c3bcc() -> ! {
+    todo!("0xc3bcc FMOD::DSPWaveTable::setPositionInternal(unsigned int)")
+}
+// 0xc3bf4 — __ZN4FMOD12DSPWaveTable20setParameterInternalEif
+#[doc(alias = "FMOD::DSPWaveTable::setParameterInternal(int,float)")]
+pub fn stub_c3bf4() -> ! {
+    todo!("0xc3bf4 FMOD::DSPWaveTable::setParameterInternal(int,float)")
+}
+// 0xc3bfc — __ZN4FMOD12DSPWaveTable20getParameterInternalEiPfPc
+#[doc(alias = "FMOD::DSPWaveTable::getParameterInternal(int,float *,char *)")]
+pub fn stub_c3bfc() -> ! {
+    todo!("0xc3bfc FMOD::DSPWaveTable::getParameterInternal(int,float *,char *)")
+}
+// 0xc3c04 — __ZN4FMOD12DSPWaveTable12setFrequencyEf
+#[doc(alias = "FMOD::DSPWaveTable::setFrequency(float)")]
+pub fn stub_c3c04() -> ! {
+    todo!("0xc3c04 FMOD::DSPWaveTable::setFrequency(float)")
+}
+// 0xc3c80 — __ZN4FMOD12DSPWaveTable11getFinishedEPb
+#[doc(alias = "FMOD::DSPWaveTable::getFinished(bool *)")]
+pub fn stub_c3c80() -> ! {
+    todo!("0xc3c80 FMOD::DSPWaveTable::getFinished(bool *)")
+}
+// 0xc3cc4 — __ZN4FMOD12DSPWaveTable19setPositionCallbackEP14FMOD_DSP_STATEj
+#[doc(alias = "FMOD::DSPWaveTable::setPositionCallback(FMOD_DSP_STATE *,unsigned int)")]
+pub fn stub_c3cc4() -> ! {
+    todo!("0xc3cc4 FMOD::DSPWaveTable::setPositionCallback(FMOD_DSP_STATE *,unsigned int)")
+}
+// 0xc3cd0 — __ZN4FMOD12DSPWaveTable20setParameterCallbackEP14FMOD_DSP_STATEif
+#[doc(alias = "FMOD::DSPWaveTable::setParameterCallback(FMOD_DSP_STATE *,int,float)")]
+pub fn stub_c3cd0() -> ! {
+    todo!("0xc3cd0 FMOD::DSPWaveTable::setParameterCallback(FMOD_DSP_STATE *,int,float)")
+}
+// 0xc3cdc — __ZN4FMOD12DSPWaveTable20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
+#[doc(alias = "FMOD::DSPWaveTable::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")]
+pub fn stub_c3cdc() -> ! {
+    todo!("0xc3cdc FMOD::DSPWaveTable::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")
+}
+// 0xc3ce8 — __ZN4FMOD12DSPWaveTable13resetCallbackEP14FMOD_DSP_STATE
+#[doc(alias = "FMOD::DSPWaveTable::resetCallback(FMOD_DSP_STATE *)")]
+pub fn stub_c3ce8() -> ! {
+    todo!("0xc3ce8 FMOD::DSPWaveTable::resetCallback(FMOD_DSP_STATE *)")
+}
+// 0xc3d00 — __ZN4FMOD12DSPWaveTable11setFinishedEbb
+#[doc(alias = "FMOD::DSPWaveTable::setFinished(bool,bool)")]
+pub fn stub_c3d00() -> ! {
+    todo!("0xc3d00 FMOD::DSPWaveTable::setFinished(bool,bool)")
+}
+// 0xc3d94 — __ZN4FMOD12DSPWaveTable4readEPPfPiPj16FMOD_SPEAKERMODEij
+#[doc(alias = "FMOD::DSPWaveTable::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
+pub fn stub_c3d94() -> ! {
+    todo!("0xc3d94 FMOD::DSPWaveTable::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
+}
+// 0xc4728 — __ZN4FMOD12DSPWaveTable5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE
+#[doc(alias = "FMOD::DSPWaveTable::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX *)")]
+pub fn stub_c4728() -> ! {
+    todo!("0xc4728 FMOD::DSPWaveTable::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX *)")
+}
+// 0xc4788 — __ZN4FMOD4DSPI4readEPPfPiPj16FMOD_SPEAKERMODEij
+#[doc(alias = "FMOD::DSPI::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
+pub fn stub_c4788() -> ! {
+    todo!("0xc4788 FMOD::DSPI::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
+}
+// 0xc4790 — __ZN4FMOD4DSPI4readEPvPj16FMOD_SPEAKERMODEij
+#[doc(alias = "FMOD::DSPI::read(void *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
+pub fn stub_c4790() -> ! {
+    todo!("0xc4790 FMOD::DSPI::read(void *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
+}
+// 0xc47d4 — __ZN4FMOD4DSPIC2Ev
+#[doc(alias = "FMOD::DSPI::DSPI(void)")]
+pub fn stub_c47d4() -> ! {
+    todo!("0xc47d4 FMOD::DSPI::DSPI(void)")
+}
+// 0xc489c — __ZN4FMOD4DSPI15getSystemObjectEPPNS_6SystemE
+#[doc(alias = "FMOD::DSPI::getSystemObject(FMOD::System **)")]
+pub fn stub_c489c() -> ! {
+    todo!("0xc489c FMOD::DSPI::getSystemObject(FMOD::System **)")
+}
+// 0xc48b4 — __ZN4FMOD4DSPI13updateDSPTickEj
+#[doc(alias = "FMOD::DSPI::updateDSPTick(unsigned int)")]
+pub fn stub_c48b4() -> ! {
+    todo!("0xc48b4 FMOD::DSPI::updateDSPTick(unsigned int)")
+}
+// 0xc48f8 — __ZN4FMOD4DSPI5resetEv
+#[doc(alias = "FMOD::DSPI::reset(void)")]
+pub fn stub_c48f8() -> ! {
+    todo!("0xc48f8 FMOD::DSPI::reset(void)")
+}
+// 0xc4918 — __ZN4FMOD4DSPI12setParameterEif
+#[doc(alias = "FMOD::DSPI::setParameter(int,float)")]
+pub fn stub_c4918() -> ! {
+    todo!("0xc4918 FMOD::DSPI::setParameter(int,float)")
+}
+// 0xc498c — __ZN4FMOD4DSPI16getNumParametersEPi
+#[doc(alias = "FMOD::DSPI::getNumParameters(int *)")]
+pub fn stub_c498c() -> ! {
+    todo!("0xc498c FMOD::DSPI::getNumParameters(int *)")
+}
+// 0xc49a4 — __ZN4FMOD4DSPI16showConfigDialogEPvb
+#[doc(alias = "FMOD::DSPI::showConfigDialog(void *,bool)")]
+pub fn stub_c49a4() -> ! {
+    todo!("0xc49a4 FMOD::DSPI::showConfigDialog(void *,bool)")
+}
+// 0xc49c8 — __ZN4FMOD4DSPI7getTypeEP13FMOD_DSP_TYPE
+#[doc(alias = "FMOD::DSPI::getType(FMOD_DSP_TYPE *)")]
+pub fn stub_c49c8() -> ! {
+    todo!("0xc49c8 FMOD::DSPI::getType(FMOD_DSP_TYPE *)")
+}
+// 0xc49dc — __ZN4FMOD4DSPI11setDefaultsEfffi
+#[doc(alias = "FMOD::DSPI::setDefaults(float,float,float,int)")]
+pub fn stub_c49dc() -> ! {
+    todo!("0xc49dc FMOD::DSPI::setDefaults(float,float,float,int)")
+}
+// 0xc4a64 — __ZN4FMOD4DSPI11getDefaultsEPfS1_S1_Pi
+#[doc(alias = "FMOD::DSPI::getDefaults(float *,float *,float *,int *)")]
+pub fn stub_c4a64() -> ! {
+    todo!("0xc4a64 FMOD::DSPI::getDefaults(float *,float *,float *,int *)")
+}
+// 0xc4aa8 — __ZN4FMOD4DSPI11setUserDataEPv
+#[doc(alias = "FMOD::DSPI::setUserData(void *)")]
+pub fn stub_c4aa8() -> ! {
+    todo!("0xc4aa8 FMOD::DSPI::setUserData(void *)")
+}
+// 0xc4ab4 — __ZN4FMOD4DSPI18setTargetFrequencyEi
+#[doc(alias = "FMOD::DSPI::setTargetFrequency(int)")]
+pub fn stub_c4ab4() -> ! {
+    todo!("0xc4ab4 FMOD::DSPI::setTargetFrequency(int)")
+}
+// 0xc4ac0 — __ZN4FMOD4DSPI18getTargetFrequencyEPi
+#[doc(alias = "FMOD::DSPI::getTargetFrequency(int *)")]
+pub fn stub_c4ac0() -> ! {
+    todo!("0xc4ac0 FMOD::DSPI::getTargetFrequency(int *)")
+}
+// 0xc4ad8 — __ZN4FMOD4DSPI13stopBufferingEv
+#[doc(alias = "FMOD::DSPI::stopBuffering(void)")]
+pub fn stub_c4ad8() -> ! {
+    todo!("0xc4ad8 FMOD::DSPI::stopBuffering(void)")
+}
+// 0xc4ae0 — __ZN4FMOD4DSPI17getMemoryUsedImplEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::DSPI::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_c4ae0() -> ! {
+    todo!("0xc4ae0 FMOD::DSPI::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+// 0xc4b68 — __ZN4FMOD4DSPI14calculatePeaksEPKfjjPS0_
+#[doc(alias = "FMOD::DSPI::calculatePeaks(float const*,unsigned int,unsigned int,FMOD::DSPI*)")]
+pub fn stub_c4b68() -> ! {
+    todo!("0xc4b68 FMOD::DSPI::calculatePeaks(float const*,unsigned int,unsigned int,FMOD::DSPI*)")
+}
+// 0xc4d3c — __ZN4FMOD4DSPI7getInfoEPcPjPiS3_S3_
+#[doc(alias = "FMOD::DSPI::getInfo(char *,unsigned int *,int *,int *,int *)")]
+pub fn stub_c4d3c() -> ! {
+    todo!("0xc4d3c FMOD::DSPI::getInfo(char *,unsigned int *,int *,int *,int *)")
+}
+// 0xc4dac — __ZN4FMOD4DSPI12getParameterEiPfPci
+#[doc(alias = "FMOD::DSPI::getParameter(int,float *,char *,int)")]
+pub fn stub_c4dac() -> ! {
+    todo!("0xc4dac FMOD::DSPI::getParameter(int,float *,char *,int)")
+}
+// 0xc4e40 — __ZN4FMOD4DSPI16getParameterInfoEiPcS1_S1_iPfS2_
+#[doc(alias = "FMOD::DSPI::getParameterInfo(int,char *,char *,char *,int,float *,float *)")]
+pub fn stub_c4e40() -> ! {
+    todo!("0xc4e40 FMOD::DSPI::getParameterInfo(int,char *,char *,char *,int,float *,float *)")
+}
+// 0xc4f64 — __ZN4FMOD4DSPI13getNumOutputsEPib
+#[doc(alias = "FMOD::DSPI::getNumOutputs(int *,bool)")]
+pub fn stub_c4f64() -> ! {
+    todo!("0xc4f64 FMOD::DSPI::getNumOutputs(int *,bool)")
+}
+// 0xc4fd0 — __ZN4FMOD4DSPI12getNumInputsEPib
+#[doc(alias = "FMOD::DSPI::getNumInputs(int *,bool)")]
+pub fn stub_c4fd0() -> ! {
+    todo!("0xc4fd0 FMOD::DSPI::getNumInputs(int *,bool)")
+}
+// 0xc503c — __ZN4FMOD4DSPI14addInputQueuedEPS0_bPNS_14DSPConnectionIEPS3_
+#[doc(alias = "FMOD::DSPI::addInputQueued(FMOD::DSPI*,bool,FMOD::DSPConnectionI *,FMOD::DSPConnectionI **)")]
+pub fn stub_c503c() -> ! {
+    todo!("0xc503c FMOD::DSPI::addInputQueued(FMOD::DSPI*,bool,FMOD::DSPConnectionI *,FMOD::DSPConnectionI **)")
+}
+// 0xc51bc — __ZN4FMOD4DSPI8addInputEPS0_PPNS_14DSPConnectionIE
+#[doc(alias = "FMOD::DSPI::addInput(FMOD::DSPI*,FMOD::DSPConnectionI **)")]
+pub fn stub_c51bc() -> ! {
+    todo!("0xc51bc FMOD::DSPI::addInput(FMOD::DSPI*,FMOD::DSPConnectionI **)")
+}
+// 0xc51f0 — __ZN4FMOD4DSPI15updateTreeLevelEi
+#[doc(alias = "FMOD::DSPI::updateTreeLevel(int)")]
+pub fn stub_c51f0() -> ! {
+    todo!("0xc51f0 FMOD::DSPI::updateTreeLevel(int)")
+}
+// 0xc5374 — __ZN4FMOD4DSPI20releaseHistoryBufferEPf
+#[doc(alias = "FMOD::DSPI::releaseHistoryBuffer(float *)")]
+pub fn stub_c5374() -> ! {
+    todo!("0xc5374 FMOD::DSPI::releaseHistoryBuffer(float *)")
+}
+// 0xc5390 — __ZN4FMOD4DSPI19createHistoryBufferEPPfi
+#[doc(alias = "FMOD::DSPI::createHistoryBuffer(float **,int)")]
+pub fn stub_c5390() -> ! {
+    todo!("0xc5390 FMOD::DSPI::createHistoryBuffer(float **,int)")
+}
+// 0xc53ac — __ZN4FMOD4DSPI22calculateSpeakerLevelsEffffffff16FMOD_SPEAKERMODEi19FMOD_SPEAKERMAPTYPEPfPi
+#[doc(alias = "FMOD::DSPI::calculateSpeakerLevels(float,float,float,float,float,float,float,float,FMOD_SPEAKERMODE,int,FMOD_SPEAKERMAPTYPE,float *,int *)")]
+pub fn stub_c53ac() -> ! {
+    todo!("0xc53ac FMOD::DSPI::calculateSpeakerLevels(float,float,float,float,float,float,float,float,FMOD_SPEAKERMODE,int,FMOD_SPEAKERMAPTYPE,float *,int *)")
+}
+// 0xc6888 — __ZN4FMOD4DSPI5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE
+#[doc(alias = "FMOD::DSPI::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX *)")]
+pub fn stub_c6888() -> ! {
+    todo!("0xc6888 FMOD::DSPI::alloc(FMOD::FMOD_DSP_DESCRIPTION_EX *)")
+}
+// 0xc693c — __ZN4FMOD4DSPI13disconnectAllEbb
+#[doc(alias = "FMOD::DSPI::disconnectAll(bool,bool)")]
+pub fn stub_c693c() -> ! {
+    todo!("0xc693c FMOD::DSPI::disconnectAll(bool,bool)")
+}
+// 0xc6a60 — __ZN4FMOD4DSPI14disconnectFromEPS0_PNS_14DSPConnectionIE
+#[doc(alias = "FMOD::DSPI::disconnectFrom(FMOD::DSPI*,FMOD::DSPConnectionI *)")]
+pub fn stub_c6a60() -> ! {
+    todo!("0xc6a60 FMOD::DSPI::disconnectFrom(FMOD::DSPI*,FMOD::DSPConnectionI *)")
+}
+// 0xc6b5c — __ZN4FMOD4DSPI18insertInputBetweenEPS0_ibPPNS_14DSPConnectionIE
+#[doc(alias = "FMOD::DSPI::insertInputBetween(FMOD::DSPI*,int,bool,FMOD::DSPConnectionI **)")]
+pub fn stub_c6b5c() -> ! {
+    todo!("0xc6b5c FMOD::DSPI::insertInputBetween(FMOD::DSPI*,int,bool,FMOD::DSPConnectionI **)")
+}
+// 0xc6ca4 — __ZN4FMOD4DSPI9getOutputEiPPS0_PPNS_14DSPConnectionIEb
+#[doc(alias = "FMOD::DSPI::getOutput(int,FMOD::DSPI**,FMOD::DSPConnectionI **,bool)")]
+pub fn stub_c6ca4() -> ! {
+    todo!("0xc6ca4 FMOD::DSPI::getOutput(int,FMOD::DSPI**,FMOD::DSPConnectionI **,bool)")
+}
+// 0xc6d84 — __ZN4FMOD4DSPI8getInputEiPPS0_PPNS_14DSPConnectionIEb
+#[doc(alias = "FMOD::DSPI::getInput(int,FMOD::DSPI**,FMOD::DSPConnectionI **,bool)")]
+pub fn stub_c6d84() -> ! {
+    todo!("0xc6d84 FMOD::DSPI::getInput(int,FMOD::DSPI**,FMOD::DSPConnectionI **,bool)")
+}
+// 0xc6e64 — __ZN4FMOD4DSPI22disconnectFromInternalEPS0_PNS_14DSPConnectionIEb
+#[doc(alias = "FMOD::DSPI::disconnectFromInternal(FMOD::DSPI*,FMOD::DSPConnectionI *,bool)")]
+pub fn stub_c6e64() -> ! {
+    todo!("0xc6e64 FMOD::DSPI::disconnectFromInternal(FMOD::DSPI*,FMOD::DSPConnectionI *,bool)")
+}
+// 0xc7194 — __ZN4FMOD4DSPI21disconnectAllInternalEbbb
+#[doc(alias = "FMOD::DSPI::disconnectAllInternal(bool,bool,bool)")]
+pub fn stub_c7194() -> ! {
+    todo!("0xc7194 FMOD::DSPI::disconnectAllInternal(bool,bool,bool)")
+}
+// 0xc72c0 — __ZN4FMOD4DSPI11setPositionEjb
+#[doc(alias = "FMOD::DSPI::setPosition(unsigned int,bool)")]
+pub fn stub_c72c0() -> ! {
+    todo!("0xc72c0 FMOD::DSPI::setPosition(unsigned int,bool)")
+}
+// 0xc7380 — __ZN4FMOD4DSPI13doesUnitExistEPS0_b
+#[doc(alias = "FMOD::DSPI::doesUnitExist(FMOD::DSPI*,bool)")]
+pub fn stub_c7380() -> ! {
+    todo!("0xc7380 FMOD::DSPI::doesUnitExist(FMOD::DSPI*,bool)")
+}
+// 0xc7430 — __ZN4FMOD4DSPI16addInputInternalEPS0_bPNS_14DSPConnectionIEPS3_b
+#[doc(alias = "FMOD::DSPI::addInputInternal(FMOD::DSPI*,bool,FMOD::DSPConnectionI *,FMOD::DSPConnectionI **,bool)")]
+pub fn stub_c7430() -> ! {
+    todo!("0xc7430 FMOD::DSPI::addInputInternal(FMOD::DSPI*,bool,FMOD::DSPConnectionI *,FMOD::DSPConnectionI **,bool)")
+}
+// 0xc7720 — __ZN4FMOD4DSPI14removeInternalEb
+#[doc(alias = "FMOD::DSPI::removeInternal(bool)")]
+pub fn stub_c7720() -> ! {
+    todo!("0xc7720 FMOD::DSPI::removeInternal(bool)")
+}
+// 0xc7858 — __ZN4FMOD4DSPI6removeEv
+#[doc(alias = "FMOD::DSPI::remove(void)")]
+pub fn stub_c7858() -> ! {
+    todo!("0xc7858 FMOD::DSPI::remove(void)")
+}
+// 0xc7860 — __ZN4FMOD4DSPI7releaseEb
+#[doc(alias = "FMOD::DSPI::release(bool)")]
+pub fn stub_c7860() -> ! {
+    todo!("0xc7860 FMOD::DSPI::release(bool)")
+}
+// 0xc798c — __ZN4FMOD4DSPI26insertInputBetweenInternalEPS0_ibPNS_14DSPConnectionIEb
+#[doc(alias = "FMOD::DSPI::insertInputBetweenInternal(FMOD::DSPI*,int,bool,FMOD::DSPConnectionI *,bool)")]
+pub fn stub_c798c() -> ! {
+    todo!("0xc798c FMOD::DSPI::insertInputBetweenInternal(FMOD::DSPI*,int,bool,FMOD::DSPConnectionI *,bool)")
+}
+// 0xc7b14 — __ZN4FMOD4FileC2Ev
+#[doc(alias = "FMOD::File::File(void)")]
+pub fn stub_c7b14() -> ! {
+    todo!("0xc7b14 FMOD::File::File(void)")
+}
+// 0xc7b48 — __ZN4FMOD4File6cancelEv
+#[doc(alias = "FMOD::File::cancel(void)")]
+pub fn stub_c7b48() -> ! {
+    todo!("0xc7b48 FMOD::File::cancel(void)")
+}
+// 0xc7b60 — __ZN4FMOD4File4seekEii
+#[doc(alias = "FMOD::File::seek(int,int)")]
+pub fn stub_c7b60() -> ! {
+    todo!("0xc7b60 FMOD::File::seek(int,int)")
+}
+// 0xc7d08 — __ZN4FMOD4File4tellEPj
+#[doc(alias = "FMOD::File::tell(unsigned int *)")]
+pub fn stub_c7d08() -> ! {
+    todo!("0xc7d08 FMOD::File::tell(unsigned int *)")
+}
+// 0xc7d3c — __ZN4FMOD4File14setStartOffsetEj
+#[doc(alias = "FMOD::File::setStartOffset(unsigned int)")]
+pub fn stub_c7d3c() -> ! {
+    todo!("0xc7d3c FMOD::File::setStartOffset(unsigned int)")
+}
+// 0xc7d64 — __ZN4FMOD4File14getStartOffsetEPj
+#[doc(alias = "FMOD::File::getStartOffset(unsigned int *)")]
+pub fn stub_c7d64() -> ! {
+    todo!("0xc7d64 FMOD::File::getStartOffset(unsigned int *)")
+}
+// 0xc7d7c — __ZN4FMOD4File7getNameEPPc
+#[doc(alias = "FMOD::File::getName(char **)")]
+pub fn stub_c7d7c() -> ! {
+    todo!("0xc7d7c FMOD::File::getName(char **)")
+}
+// 0xc7d90 — __ZN4FMOD4File17getMemoryUsedImplEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::File::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_c7d90() -> ! {
+    todo!("0xc7d90 FMOD::File::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+// 0xc7db4 — __ZN4FMOD4File7setNameEPc
+#[doc(alias = "FMOD::File::setName(char *)")]
+pub fn stub_c7db4() -> ! {
+    todo!("0xc7db4 FMOD::File::setName(char *)")
+}
+// 0xc7de4 — _FMOD_File_SetDiskBusy
+#[doc(alias = "_FMOD_File_SetDiskBusy")]
+pub fn stub_c7de4() -> ! {
+    todo!("0xc7de4 _FMOD_File_SetDiskBusy")
+}
+// 0xc7e48 — __ZN4FMOD4File12seekAndResetEv
+#[doc(alias = "FMOD::File::seekAndReset(void)")]
+pub fn stub_c7e48() -> ! {
+    todo!("0xc7e48 FMOD::File::seekAndReset(void)")
+}
