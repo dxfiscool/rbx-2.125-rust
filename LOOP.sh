@@ -19,7 +19,7 @@ while true; do
     COUNT=$(grep -r "0x" "crates/$CRATE/src" 2>/dev/null | wc -l || echo 0)
     echo "[LOOP] $CRATE current stubs: $COUNT"
     # Run omp for this crate — generates next 100 funcs, verifies, commits
-    timeout 600 omp --cwd "$PROJECT" --auto-approve --print "You are in $PROJECT. Read AGENT.md. Task: continue skeleton generation for crate $CRATE (rbx-$CRATE). Use ida/export.json (85545 funcs), filter demangled for that crate's namespace (Reflection->reflection, Instance/DataModel->datamodel, Ogre->rendering, RakNet->network, etc). Generate next 100 stubs with // 0xADDR — mangled + #[doc(alias)] + todo!(\"0xADDR\"), using rbx_core::SharedPtr not boost. After batch, cargo check --workspace must pass, then git add + commit. If crate is done (all funcs stubbed), skip. Be brief." 2>&1 | tail -100
+    timeout 600 omp --model muse-spark --cwd "$PROJECT" --auto-approve --print "You are in $PROJECT. Read AGENT.md. Task: continue skeleton generation for crate $CRATE (rbx-$CRATE). Use ida/export.json (85545 funcs), filter demangled for that crate's namespace (Reflection->reflection, Instance/DataModel->datamodel, Ogre->rendering, RakNet->network, etc). Generate next 100 stubs with // 0xADDR — mangled + #[doc(alias)] + todo!(\"0xADDR\"), using rbx_core::SharedPtr not boost. After batch, cargo check --workspace must pass, then git add + commit. If crate is done (all funcs stubbed), skip. Be brief." 2>&1 | tail -100
     echo "[LOOP] omp exit:$? for $CRATE"
     cargo check --workspace 2>&1 | tail -5
     git status --short 2>&1 | head -20
