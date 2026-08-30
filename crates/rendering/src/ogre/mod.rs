@@ -4845,3 +4845,704 @@ pub fn stub_529948() -> ! {
 pub fn stub_529968() -> ! {
     todo!("0x529968 RBX::GuiObject::render2dImpl(RBX::Adorn *,G3D::Color4 const&,G3D::Rect2D &)")
 }
+
+// 0x529b14 — __ZN3RBX9GuiObject12Scale9Rect2DERKN3G3D6Rect2DEff
+#[doc(alias = "RBX::GuiObject::Scale9Rect2D(G3D::Rect2D const&,float,float)")]
+// was: RBX::GuiObject::Scale9Rect2D(G3D::Rect2D const&,float,float)
+pub fn stub_529b14() -> ! {
+    todo!("0x529b14 RBX::GuiObject::Scale9Rect2D(G3D::Rect2D const&,float,float)")
+}
+
+// 0x529bd4 — __ZN3RBX9GuiObject18render2dScale9ImplEPNS_5AdornERKNS_9TextureIdERKN3G3D12Vector2int16ERKNS6_7Vector2ERNS_12GuiDrawImageERNS6_6Rect2DEPS0_
+#[doc(alias = "RBX::GuiObject::render2dScale9Impl(RBX::Adorn *,RBX::TextureId const&,G3D::Vector2int16 const&,G3D::Vector2 const&,RBX::GuiDrawImage &,G3D::Rect2D &,RBX::GuiObject*)")]
+// was: RBX::GuiObject::render2dScale9Impl(RBX::Adorn *,RBX::TextureId const&,G3D::Vector2int16 const&,G3D::Vector2 const&,RBX::GuiDrawImage &,G3D::Rect2D &,RBX::GuiObject*)
+pub fn stub_529bd4() -> ! {
+    todo!("0x529bd4 RBX::GuiObject::render2dScale9Impl(RBX::Adorn *,RBX::TextureId const&,G3D::Vector2int16 const&,G3D::Vector2 const&,RBX::GuiDrawImage &,G3D::Rect2D &,RBX::GuiObject*)")
+}
+
+// 0x529eac — __ZN3RBX9GuiObject16render2dTextImplEPNS_5AdornERKN3G3D6Color4ERKSsNS_11TextService4FontENS9_8FontSizeES6_S6_bbNS9_10XAlignmentENS9_10YAlignmentE
+#[doc(alias = "RBX::GuiObject::render2dTextImpl(RBX::Adorn *,G3D::Color4 const&,std::string const&,RBX::TextService::Font,RBX::TextService::FontSize,G3D::Color4 const&,G3D::Color4 const&,bool,bool,RBX::TextService::XAlignment,RBX::TextService::YAlignment)")]
+// was: RBX::GuiObject::render2dTextImpl(RBX::Adorn *,G3D::Color4 const&,std::string const&,RBX::TextService::Font,RBX::TextService::FontSize,G3D::Color4 const&,G3D::Color4 const&,bool,bool,RBX::TextService::XAlignment,RBX::TextService::YAlignment)
+pub fn stub_529eac() -> ! {
+    todo!("0x529eac RBX::GuiObject::render2dTextImpl(RBX::Adorn *,G3D::Color4 const&,std::string const&,RBX::TextService::Font,RBX::TextService::FontSize,G3D::Color4 const&,G3D::Color4 const&,bool,bool,RBX::TextService::XAlignment,RBX::TextService::YAlignment)")
+}
+
+// 0x529f10 — __ZN3RBX9GuiObject16render2dTextImplEPNS_5AdornERKN3G3D6Rect2DERKSsNS_11TextService4FontENS9_8FontSizeERKNS3_6Color4ESE_bbNS9_10XAlignmentENS9_10YAlignmentE
+#[doc(alias = "RBX::GuiObject::render2dTextImpl(RBX::Adorn *,G3D::Rect2D const&,std::string const&,RBX::TextService::Font,RBX::TextService::FontSize,G3D::Color4 const&,G3D::Color4 const&,bool,bool,RBX::TextService::XAlignment,RBX::TextService::YAlignment)")]
+// was: RBX::GuiObject::render2dTextImpl(RBX::Adorn *,G3D::Rect2D const&,std::string const&,RBX::TextService::Font,RBX::TextService::FontSize,G3D::Color4 const&,G3D::Color4 const&,bool,bool,RBX::TextService::XAlignment,RBX::TextService::YAlignment)
+pub fn stub_529f10() -> ! {
+    todo!("0x529f10 RBX::GuiObject::render2dTextImpl(RBX::Adorn *,G3D::Rect2D const&,std::string const&,RBX::TextService::Font,RBX::TextService::FontSize,G3D::Color4 const&,G3D::Color4 const&,bool,bool,RBX::TextService::XAlignment,RBX::TextService::YAlignment)")
+}
+
+// 0x52a12c — __ZN3RBX9GuiObject17getScaledFontSizeERKN3G3D6Rect2DERKSsNS_11TextService4FontEbf
+#[doc(alias = "RBX::GuiObject::getScaledFontSize(G3D::Rect2D const&,std::string const&,RBX::TextService::Font,bool,float)")]
+// was: RBX::GuiObject::getScaledFontSize(G3D::Rect2D const&,std::string const&,RBX::TextService::Font,bool,float)
+pub fn stub_52a12c() -> ! {
+    todo!("0x52a12c RBX::GuiObject::getScaledFontSize(G3D::Rect2D const&,std::string const&,RBX::TextService::Font,bool,float)")
+}
+
+// 0x52a334 — __ZN3RBX9GuiObject11mouseIsOverERKN3G3D7Vector2E
+#[doc(alias = "RBX::GuiObject::mouseIsOver(G3D::Vector2 const&)")]
+// was: RBX::GuiObject::mouseIsOver(G3D::Vector2 const&)
+pub fn stub_52a334() -> ! {
+    todo!("0x52a334 RBX::GuiObject::mouseIsOver(G3D::Vector2 const&)")
+}
+
+// 0x52b31c — __ZN3RBX9GuiButton18render2dButtonImplEPNS_5AdornERN3G3D6Rect2DE
+#[doc(alias = "RBX::GuiButton::render2dButtonImpl(RBX::Adorn *,G3D::Rect2D &)")]
+// was: RBX::GuiButton::render2dButtonImpl(RBX::Adorn *,G3D::Rect2D &)
+pub fn stub_52b31c() -> ! {
+    todo!("0x52b31c RBX::GuiButton::render2dButtonImpl(RBX::Adorn *,G3D::Rect2D &)")
+}
+
+// 0x52bed0 — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEN3G3D6Color3EED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::~PropDescriptor()")]
+// was: RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::~PropDescriptor()
+pub fn stub_52bed0() -> ! {
+    todo!("0x52bed0 RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::~PropDescriptor()")
+}
+
+// 0x52d8e0 — __ZNK3G3D6Rect2D9intersectERKS0_
+#[doc(alias = "G3D::Rect2D::intersect(G3D::Rect2D const&)const")]
+// was: G3D::Rect2D::intersect(G3D::Rect2D const&)const
+pub fn stub_52d8e0() -> ! {
+    todo!("0x52d8e0 G3D::Rect2D::intersect(G3D::Rect2D const&)const")
+}
+
+// 0x53c130 — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_53c130() -> ! {
+    todo!("0x53c130 RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x53c244 — __ZN3RBX10Reflection14PropDescriptorINS_9GuiObjectEN3G3D6Color3EED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::~PropDescriptor()")]
+// was: RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::~PropDescriptor()
+pub fn stub_53c244() -> ! {
+    todo!("0x53c244 RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::~PropDescriptor()")
+}
+
+// 0x53c270 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiObjectEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::isReadOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::isReadOnly(void)const
+pub fn stub_53c270() -> ! {
+    todo!("0x53c270 RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::isReadOnly(void)const")
+}
+
+// 0x53c274 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiObjectEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::isWriteOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::isWriteOnly(void)const
+pub fn stub_53c274() -> ! {
+    todo!("0x53c274 RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::isWriteOnly(void)const")
+}
+
+// 0x53c278 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiObjectEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_53c278() -> ! {
+    todo!("0x53c278 RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x53c2a0 — __ZNK3RBX10Reflection14PropDescriptorINS_9GuiObjectEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const
+pub fn stub_53c2a0() -> ! {
+    todo!("0x53c2a0 RBX::Reflection::PropDescriptor<RBX::GuiObject,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::GuiObject::*)(void)const,void (RBX::GuiObject::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")
+}
+
+// 0x555e18 — __ZN3RBX9BodyMover12computeForceEbRPNS_4BodyERN3G3D7Vector3ES6_
+#[doc(alias = "RBX::BodyMover::computeForce(bool,RBX::Body *&,G3D::Vector3 &,G3D::Vector3 &)")]
+// was: RBX::BodyMover::computeForce(bool,RBX::Body *&,G3D::Vector3 &,G3D::Vector3 &)
+pub fn stub_555e18() -> ! {
+    todo!("0x555e18 RBX::BodyMover::computeForce(bool,RBX::Body *&,G3D::Vector3 &,G3D::Vector3 &)")
+}
+
+// 0x55603c — __Z17different5percentRKN3G3D7Vector3ES2_
+#[doc(alias = "different5percent(G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: different5percent(G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_55603c() -> ! {
+    todo!("0x55603c different5percent(G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0x557064 — __ZN3RBX6Rocket16computeForceImplEbPNS_4BodyES2_RN3G3D7Vector3ES5_
+#[doc(alias = "RBX::Rocket::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")]
+// was: RBX::Rocket::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)
+pub fn stub_557064() -> ! {
+    todo!("0x557064 RBX::Rocket::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")
+}
+
+// 0x5575a4 — __ZN3RBX6Rocket13computeTorqueEPNS_4BodyES2_RKN3G3D7Vector3E
+#[doc(alias = "RBX::Rocket::computeTorque(RBX::Body *,RBX::Body *,G3D::Vector3 const&)")]
+// was: RBX::Rocket::computeTorque(RBX::Body *,RBX::Body *,G3D::Vector3 const&)
+pub fn stub_5575a4() -> ! {
+    todo!("0x5575a4 RBX::Rocket::computeTorque(RBX::Body *,RBX::Body *,G3D::Vector3 const&)")
+}
+
+// 0x557a64 — __ZN3RBX8BodyGyro16computeForceImplEbPNS_4BodyES2_RN3G3D7Vector3ES5_
+#[doc(alias = "RBX::BodyGyro::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")]
+// was: RBX::BodyGyro::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)
+pub fn stub_557a64() -> ! {
+    todo!("0x557a64 RBX::BodyGyro::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")
+}
+
+// 0x5584cc — __ZN3RBX12BodyPosition16computeForceImplEbPNS_4BodyES2_RN3G3D7Vector3ES5_
+#[doc(alias = "RBX::BodyPosition::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")]
+// was: RBX::BodyPosition::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)
+pub fn stub_5584cc() -> ! {
+    todo!("0x5584cc RBX::BodyPosition::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")
+}
+
+// 0x558aac — __ZN3RBX12BodyVelocity16computeForceImplEbPNS_4BodyES2_RN3G3D7Vector3ES5_
+#[doc(alias = "RBX::BodyVelocity::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")]
+// was: RBX::BodyVelocity::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)
+pub fn stub_558aac() -> ! {
+    todo!("0x558aac RBX::BodyVelocity::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")
+}
+
+// 0x558de8 — __ZN3RBX19BodyAngularVelocity16computeForceImplEbPNS_4BodyES2_RN3G3D7Vector3ES5_
+#[doc(alias = "RBX::BodyAngularVelocity::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")]
+// was: RBX::BodyAngularVelocity::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)
+pub fn stub_558de8() -> ! {
+    todo!("0x558de8 RBX::BodyAngularVelocity::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")
+}
+
+// 0x559108 — __ZN3RBX9BodyForce16computeForceImplEbPNS_4BodyES2_RN3G3D7Vector3ES5_
+#[doc(alias = "RBX::BodyForce::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")]
+// was: RBX::BodyForce::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)
+pub fn stub_559108() -> ! {
+    todo!("0x559108 RBX::BodyForce::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")
+}
+
+// 0x5592d8 — __ZN3RBX10BodyThrust16computeForceImplEbPNS_4BodyES2_RN3G3D7Vector3ES5_
+#[doc(alias = "RBX::BodyThrust::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")]
+// was: RBX::BodyThrust::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)
+pub fn stub_5592d8() -> ! {
+    todo!("0x5592d8 RBX::BodyThrust::computeForceImpl(bool,RBX::Body *,RBX::Body *,G3D::Vector3 &,G3D::Vector3 &)")
+}
+
+// 0x5595bc — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()
+pub fn stub_5595bc() -> ! {
+    todo!("0x5595bc RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x559614 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()
+pub fn stub_559614() -> ! {
+    todo!("0x559614 RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x55d044 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_10BodyThrustEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyThrust>(char const*,char const*,G3D::Vector3 RBX::BodyThrust::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyThrust>(char const*,char const*,G3D::Vector3 RBX::BodyThrust::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_55d044() -> ! {
+    todo!("0x55d044 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyThrust>(char const*,char const*,G3D::Vector3 RBX::BodyThrust::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55d1d4 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isReadOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isReadOnly(void)const
+pub fn stub_55d1d4() -> ! {
+    todo!("0x55d1d4 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isReadOnly(void)const")
+}
+
+// 0x55d1d8 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isWriteOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isWriteOnly(void)const
+pub fn stub_55d1d8() -> ! {
+    todo!("0x55d1d8 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isWriteOnly(void)const")
+}
+
+// 0x55d1dc — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_55d1dc() -> ! {
+    todo!("0x55d1dc RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55d1f8 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const
+pub fn stub_55d1f8() -> ! {
+    todo!("0x55d1f8 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x55d7a8 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_9BodyForceEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyForce>(char const*,char const*,G3D::Vector3 RBX::BodyForce::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyForce>(char const*,char const*,G3D::Vector3 RBX::BodyForce::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_55d7a8() -> ! {
+    todo!("0x55d7a8 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyForce>(char const*,char const*,G3D::Vector3 RBX::BodyForce::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55d938 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isReadOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isReadOnly(void)const
+pub fn stub_55d938() -> ! {
+    todo!("0x55d938 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isReadOnly(void)const")
+}
+
+// 0x55d93c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isWriteOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isWriteOnly(void)const
+pub fn stub_55d93c() -> ! {
+    todo!("0x55d93c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isWriteOnly(void)const")
+}
+
+// 0x55d940 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_55d940() -> ! {
+    todo!("0x55d940 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55d95c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const
+pub fn stub_55d95c() -> ! {
+    todo!("0x55d95c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x55df0c — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_19BodyAngularVelocityEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyAngularVelocity>(char const*,char const*,G3D::Vector3 RBX::BodyAngularVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyAngularVelocity>(char const*,char const*,G3D::Vector3 RBX::BodyAngularVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_55df0c() -> ! {
+    todo!("0x55df0c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyAngularVelocity>(char const*,char const*,G3D::Vector3 RBX::BodyAngularVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55e09c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isReadOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isReadOnly(void)const
+pub fn stub_55e09c() -> ! {
+    todo!("0x55e09c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isReadOnly(void)const")
+}
+
+// 0x55e0a0 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isWriteOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isWriteOnly(void)const
+pub fn stub_55e0a0() -> ! {
+    todo!("0x55e0a0 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isWriteOnly(void)const")
+}
+
+// 0x55e0a4 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_55e0a4() -> ! {
+    todo!("0x55e0a4 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55e0c0 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const
+pub fn stub_55e0c0() -> ! {
+    todo!("0x55e0c0 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x55e870 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::BodyVelocity::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::BodyVelocity::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+pub fn stub_55e870() -> ! {
+    todo!("0x55e870 RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::BodyVelocity::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x55e974 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()
+pub fn stub_55e974() -> ! {
+    todo!("0x55e974 RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x55ea28 — __ZNK3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
+pub fn stub_55ea28() -> ! {
+    todo!("0x55ea28 RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x55ea4c — __ZN3RBX10Reflection11Call0HelperINS_12BodyVelocityEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE
+#[doc(alias = "RBX::Reflection::Call0Helper<RBX::BodyVelocity,G3D::Vector3 (RBX::BodyVelocity::*)(void),G3D::Vector3>::call(RBX::BodyVelocity*,G3D::Vector3 (RBX::BodyVelocity::*)(void),RBX::Reflection::Variant &)")]
+// was: RBX::Reflection::Call0Helper<RBX::BodyVelocity,G3D::Vector3 (RBX::BodyVelocity::*)(void),G3D::Vector3>::call(RBX::BodyVelocity*,G3D::Vector3 (RBX::BodyVelocity::*)(void),RBX::Reflection::Variant &)
+pub fn stub_55ea4c() -> ! {
+    todo!("0x55ea4c RBX::Reflection::Call0Helper<RBX::BodyVelocity,G3D::Vector3 (RBX::BodyVelocity::*)(void),G3D::Vector3>::call(RBX::BodyVelocity*,G3D::Vector3 (RBX::BodyVelocity::*)(void),RBX::Reflection::Variant &)")
+}
+
+// 0x55ea80 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyVelocityEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyVelocity>(char const*,char const*,G3D::Vector3 RBX::BodyVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyVelocity>(char const*,char const*,G3D::Vector3 RBX::BodyVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_55ea80() -> ! {
+    todo!("0x55ea80 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyVelocity>(char const*,char const*,G3D::Vector3 RBX::BodyVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55ec10 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isReadOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isReadOnly(void)const
+pub fn stub_55ec10() -> ! {
+    todo!("0x55ec10 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isReadOnly(void)const")
+}
+
+// 0x55ec14 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isWriteOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isWriteOnly(void)const
+pub fn stub_55ec14() -> ! {
+    todo!("0x55ec14 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isWriteOnly(void)const")
+}
+
+// 0x55ec18 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_55ec18() -> ! {
+    todo!("0x55ec18 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55ec34 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const
+pub fn stub_55ec34() -> ! {
+    todo!("0x55ec34 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x55f754 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::BodyPosition::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::BodyPosition::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+pub fn stub_55f754() -> ! {
+    todo!("0x55f754 RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::BodyPosition::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x55f858 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()
+pub fn stub_55f858() -> ! {
+    todo!("0x55f858 RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x55f90c — __ZNK3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
+pub fn stub_55f90c() -> ! {
+    todo!("0x55f90c RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x55f930 — __ZN3RBX10Reflection11Call0HelperINS_12BodyPositionEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE
+#[doc(alias = "RBX::Reflection::Call0Helper<RBX::BodyPosition,G3D::Vector3 (RBX::BodyPosition::*)(void),G3D::Vector3>::call(RBX::BodyPosition*,G3D::Vector3 (RBX::BodyPosition::*)(void),RBX::Reflection::Variant &)")]
+// was: RBX::Reflection::Call0Helper<RBX::BodyPosition,G3D::Vector3 (RBX::BodyPosition::*)(void),G3D::Vector3>::call(RBX::BodyPosition*,G3D::Vector3 (RBX::BodyPosition::*)(void),RBX::Reflection::Variant &)
+pub fn stub_55f930() -> ! {
+    todo!("0x55f930 RBX::Reflection::Call0Helper<RBX::BodyPosition,G3D::Vector3 (RBX::BodyPosition::*)(void),G3D::Vector3>::call(RBX::BodyPosition*,G3D::Vector3 (RBX::BodyPosition::*)(void),RBX::Reflection::Variant &)")
+}
+
+// 0x55f964 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,G3D::Vector3 RBX::BodyPosition::*,void (RBX::BodyPosition::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,G3D::Vector3 RBX::BodyPosition::*,void (RBX::BodyPosition::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_55f964() -> ! {
+    todo!("0x55f964 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,G3D::Vector3 RBX::BodyPosition::*,void (RBX::BodyPosition::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55faf8 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isReadOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isReadOnly(void)const
+pub fn stub_55faf8() -> ! {
+    todo!("0x55faf8 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isReadOnly(void)const")
+}
+
+// 0x55fafc — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isWriteOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isWriteOnly(void)const
+pub fn stub_55fafc() -> ! {
+    todo!("0x55fafc RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isWriteOnly(void)const")
+}
+
+// 0x55fb00 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_55fb00() -> ! {
+    todo!("0x55fb00 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55fb1c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const
+pub fn stub_55fb1c() -> ! {
+    todo!("0x55fb1c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x55fbb0 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,G3D::Vector3 RBX::BodyPosition::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,G3D::Vector3 RBX::BodyPosition::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_55fbb0() -> ! {
+    todo!("0x55fbb0 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,G3D::Vector3 RBX::BodyPosition::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x56045c — __ZN3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,G3D::CoordinateFrame RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,G3D::CoordinateFrame RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_56045c() -> ! {
+    todo!("0x56045c RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,G3D::CoordinateFrame RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x5605ec — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const
+pub fn stub_5605ec() -> ! {
+    todo!("0x5605ec RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const")
+}
+
+// 0x5605f0 — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const
+pub fn stub_5605f0() -> ! {
+    todo!("0x5605f0 RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const")
+}
+
+// 0x5605f4 — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_5605f4() -> ! {
+    todo!("0x5605f4 RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x560620 — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")]
+// was: RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const
+pub fn stub_560620() -> ! {
+    todo!("0x560620 RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")
+}
+
+// 0x5606ec — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,G3D::Vector3 RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,G3D::Vector3 RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_5606ec() -> ! {
+    todo!("0x5606ec RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,G3D::Vector3 RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x56087c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const
+pub fn stub_56087c() -> ! {
+    todo!("0x56087c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const")
+}
+
+// 0x560880 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const
+pub fn stub_560880() -> ! {
+    todo!("0x560880 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const")
+}
+
+// 0x560884 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_560884() -> ! {
+    todo!("0x560884 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5608a0 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const
+pub fn stub_5608a0() -> ! {
+    todo!("0x5608a0 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x56178c — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,G3D::Vector3 RBX::Rocket::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,G3D::Vector3 RBX::Rocket::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_56178c() -> ! {
+    todo!("0x56178c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,G3D::Vector3 RBX::Rocket::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x56191c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isReadOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isReadOnly(void)const
+pub fn stub_56191c() -> ! {
+    todo!("0x56191c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isReadOnly(void)const")
+}
+
+// 0x561920 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isWriteOnly(void)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isWriteOnly(void)const
+pub fn stub_561920() -> ! {
+    todo!("0x561920 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isWriteOnly(void)const")
+}
+
+// 0x561924 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_561924() -> ! {
+    todo!("0x561924 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x561940 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const
+pub fn stub_561940() -> ! {
+    todo!("0x561940 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x561d68 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,G3D::Vector3 RBX::Rocket::*,void (RBX::Rocket::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,G3D::Vector3 RBX::Rocket::*,void (RBX::Rocket::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_561d68() -> ! {
+    todo!("0x561d68 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,G3D::Vector3 RBX::Rocket::*,void (RBX::Rocket::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x56fc18 — __ZN3RBX11HandlesBase16findTargetHandleERKNS_7UIEventERN3G3D7Vector3ERNS_8NormalIdE
+#[doc(alias = "RBX::HandlesBase::findTargetHandle(RBX::UIEvent const&,G3D::Vector3 &,RBX::NormalId &)")]
+// was: RBX::HandlesBase::findTargetHandle(RBX::UIEvent const&,G3D::Vector3 &,RBX::NormalId &)
+pub fn stub_56fc18() -> ! {
+    todo!("0x56fc18 RBX::HandlesBase::findTargetHandle(RBX::UIEvent const&,G3D::Vector3 &,RBX::NormalId &)")
+}
+
+// 0x56fd94 — __ZN3RBX11HandlesBase21getDistanceFromHandleERKNS_7UIEventENS_8NormalIdERKN3G3D7Vector3ERf
+#[doc(alias = "RBX::HandlesBase::getDistanceFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,float &)")]
+// was: RBX::HandlesBase::getDistanceFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,float &)
+pub fn stub_56fd94() -> ! {
+    todo!("0x56fd94 RBX::HandlesBase::getDistanceFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,float &)")
+}
+
+// 0x56ff64 — __ZN3RBX11HandlesBase20getFacePosFromHandleERKNS_7UIEventENS_8NormalIdERKN3G3D7Vector3ERNS5_7Vector2ESA_
+#[doc(alias = "RBX::HandlesBase::getFacePosFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,G3D::Vector2 &,G3D::Vector2 &)")]
+// was: RBX::HandlesBase::getFacePosFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,G3D::Vector2 &,G3D::Vector2 &)
+pub fn stub_56ff64() -> ! {
+    todo!("0x56ff64 RBX::HandlesBase::getFacePosFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,G3D::Vector2 &,G3D::Vector2 &)")
+}
+
+// 0x5702b0 — __ZN3RBX11HandlesBase24getAngleRadiusFromHandleERKNS_7UIEventENS_8NormalIdERKN3G3D7Vector3ERfS9_S9_S9_
+#[doc(alias = "RBX::HandlesBase::getAngleRadiusFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,float &,float &,float &,float &)")]
+// was: RBX::HandlesBase::getAngleRadiusFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,float &,float &,float &,float &)
+pub fn stub_5702b0() -> ! {
+    todo!("0x5702b0 RBX::HandlesBase::getAngleRadiusFromHandle(RBX::UIEvent const&,RBX::NormalId,G3D::Vector3 const&,float &,float &,float &,float &)")
+}
+
+// 0x579fcc — __ZN3RBX17ICharacterSubject10initCameraERN3G3D7Vector3ERNS1_15CoordinateFrameE
+#[doc(alias = "RBX::ICharacterSubject::initCamera(G3D::Vector3 &,G3D::CoordinateFrame &)")]
+// was: RBX::ICharacterSubject::initCamera(G3D::Vector3 &,G3D::CoordinateFrame &)
+pub fn stub_579fcc() -> ! {
+    todo!("0x579fcc RBX::ICharacterSubject::initCamera(G3D::Vector3 &,G3D::CoordinateFrame &)")
+}
+
+// 0x57a0b4 — __ZN3RBX17ICharacterSubject20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
+#[doc(alias = "RBX::ICharacterSubject::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
+// was: RBX::ICharacterSubject::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)
+pub fn stub_57a0b4() -> ! {
+    todo!("0x57a0b4 RBX::ICharacterSubject::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
+}
+
+// 0x57a17c — __ZN3RBX17ICharacterSubject12doCameraMoveERN3G3D7Vector3ERNS1_15CoordinateFrameEd
+#[doc(alias = "RBX::ICharacterSubject::doCameraMove(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
+// was: RBX::ICharacterSubject::doCameraMove(G3D::Vector3 &,G3D::CoordinateFrame &,double)
+pub fn stub_57a17c() -> ! {
+    todo!("0x57a17c RBX::ICharacterSubject::doCameraMove(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
+}
+
+// 0x57a6c8 — __ZN3RBX17ICharacterSubject15doCameraOccludeERN3G3D7Vector3ERKNS1_15CoordinateFrameEd
+#[doc(alias = "RBX::ICharacterSubject::doCameraOcclude(G3D::Vector3 &,G3D::CoordinateFrame const&,double)")]
+// was: RBX::ICharacterSubject::doCameraOcclude(G3D::Vector3 &,G3D::CoordinateFrame const&,double)
+pub fn stub_57a6c8() -> ! {
+    todo!("0x57a6c8 RBX::ICharacterSubject::doCameraOcclude(G3D::Vector3 &,G3D::CoordinateFrame const&,double)")
+}
+
+// 0x57ab88 — __ZNK3RBX17ICharacterSubject19getNearPlaneCornersERN5boost5arrayIN3G3D7Vector3ELm4EEE
+#[doc(alias = "RBX::ICharacterSubject::getNearPlaneCorners(boost::array<G3D::Vector3,4ul> &)const")]
+// was: RBX::ICharacterSubject::getNearPlaneCorners(boost::array<G3D::Vector3,4ul> &)const
+pub fn stub_57ab88() -> ! {
+    todo!("0x57ab88 RBX::ICharacterSubject::getNearPlaneCorners(boost::array<G3D::Vector3,4ul> &)const")
+}
+
+// 0x57ad58 — __ZN3RBX17ICharacterSubject16getHalfDistancesERN5boost5arrayIfLm4EEERKN3G3D7Vector3ERKNS5_15CoordinateFrameE
+#[doc(alias = "RBX::ICharacterSubject::getHalfDistances(boost::array<float,4ul> &,G3D::Vector3 const&,G3D::CoordinateFrame const&)")]
+// was: RBX::ICharacterSubject::getHalfDistances(boost::array<float,4ul> &,G3D::Vector3 const&,G3D::CoordinateFrame const&)
+pub fn stub_57ad58() -> ! {
+    todo!("0x57ad58 RBX::ICharacterSubject::getHalfDistances(boost::array<float,4ul> &,G3D::Vector3 const&,G3D::CoordinateFrame const&)")
+}
+
+// 0x57b03c — __ZN3RBX17ICharacterSubject22characterOcclusionTestERKN3G3D7Vector3ERKNS1_15CoordinateFrameE
+#[doc(alias = "RBX::ICharacterSubject::characterOcclusionTest(G3D::Vector3 const&,G3D::CoordinateFrame const&)")]
+// was: RBX::ICharacterSubject::characterOcclusionTest(G3D::Vector3 const&,G3D::CoordinateFrame const&)
+pub fn stub_57b03c() -> ! {
+    todo!("0x57b03c RBX::ICharacterSubject::characterOcclusionTest(G3D::Vector3 const&,G3D::CoordinateFrame const&)")
+}
+
+// 0x57b5e4 — __ZN3RBX17ICharacterSubject4zoomEfRN3G3D15CoordinateFrameES3_
+#[doc(alias = "RBX::ICharacterSubject::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
+// was: RBX::ICharacterSubject::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)
+pub fn stub_57b5e4() -> ! {
+    todo!("0x57b5e4 RBX::ICharacterSubject::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
+}
+
+// 0x57bbe0 — __ZN3RBX17ICharacterSubject17onCameraHeartbeatERKN3G3D7Vector3ES4_
+#[doc(alias = "RBX::ICharacterSubject::onCameraHeartbeat(G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: RBX::ICharacterSubject::onCameraHeartbeat(G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_57bbe0() -> ! {
+    todo!("0x57bbe0 RBX::ICharacterSubject::onCameraHeartbeat(G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0x57c17c — __ZN3RBX10IEquipable9buildWeldEPNS_12PartInstanceES2_RKN3G3D15CoordinateFrameES6_RKSs
+#[doc(alias = "RBX::IEquipable::buildWeld(RBX::PartInstance *,RBX::PartInstance *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&,std::string const&)")]
+// was: RBX::IEquipable::buildWeld(RBX::PartInstance *,RBX::PartInstance *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&,std::string const&)
+pub fn stub_57c17c() -> ! {
+    todo!("0x57c17c RBX::IEquipable::buildWeld(RBX::PartInstance *,RBX::PartInstance *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&,std::string const&)")
+}
+
+// 0x57cb3c — __ZN3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
+#[doc(alias = "RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")]
+// was: RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)
+pub fn stub_57cb3c() -> ! {
+    todo!("0x57cb3c RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
+}
+
+// 0x57cb88 — __ZThn800_N3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
+#[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")]
+// was: `non-virtual thunk to'RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)
+pub fn stub_57cb88() -> ! {
+    todo!("0x57cb88 `non-virtual thunk to'RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
+}
+
+// 0x57cb90 — __ZN3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
+#[doc(alias = "RBX::GuiImageButton::setImageRectSize(G3D::Vector2)")]
+// was: RBX::GuiImageButton::setImageRectSize(G3D::Vector2)
+pub fn stub_57cb90() -> ! {
+    todo!("0x57cb90 RBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
+}
+
+// 0x57cbdc — __ZThn800_N3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
+#[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")]
+// was: `non-virtual thunk to'RBX::GuiImageButton::setImageRectSize(G3D::Vector2)
+pub fn stub_57cbdc() -> ! {
+    todo!("0x57cbdc `non-virtual thunk to'RBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
+}
+
+// 0x57e610 — __ZN3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E
+#[doc(alias = "RBX::ImageLabel::setImageRectOffset(G3D::Vector2)")]
+// was: RBX::ImageLabel::setImageRectOffset(G3D::Vector2)
+pub fn stub_57e610() -> ! {
+    todo!("0x57e610 RBX::ImageLabel::setImageRectOffset(G3D::Vector2)")
+}
+
+// 0x57e65c — __ZThn536_N3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E
+#[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImageRectOffset(G3D::Vector2)")]
+// was: `non-virtual thunk to'RBX::ImageLabel::setImageRectOffset(G3D::Vector2)
+pub fn stub_57e65c() -> ! {
+    todo!("0x57e65c `non-virtual thunk to'RBX::ImageLabel::setImageRectOffset(G3D::Vector2)")
+}
+
+// 0x57e664 — __ZN3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E
+#[doc(alias = "RBX::ImageLabel::setImageRectSize(G3D::Vector2)")]
+// was: RBX::ImageLabel::setImageRectSize(G3D::Vector2)
+pub fn stub_57e664() -> ! {
+    todo!("0x57e664 RBX::ImageLabel::setImageRectSize(G3D::Vector2)")
+}
+
+// 0x57e6b0 — __ZThn536_N3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E
+#[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImageRectSize(G3D::Vector2)")]
+// was: `non-virtual thunk to'RBX::ImageLabel::setImageRectSize(G3D::Vector2)
+pub fn stub_57e6b0() -> ! {
+    todo!("0x57e6b0 `non-virtual thunk to'RBX::ImageLabel::setImageRectSize(G3D::Vector2)")
+}
+
+// 0x59f290 — __ZN3RBX13JointInstance5setC0ERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::JointInstance::setC0(G3D::CoordinateFrame const&)")]
+// was: RBX::JointInstance::setC0(G3D::CoordinateFrame const&)
+pub fn stub_59f290() -> ! {
+    todo!("0x59f290 RBX::JointInstance::setC0(G3D::CoordinateFrame const&)")
+}
+
