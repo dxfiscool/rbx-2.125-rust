@@ -1348,3 +1348,702 @@ pub fn stub_2e8ee8() -> ! {
     todo!("0x2e8ee8 RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::BoundFuncDesc(void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
 
+// 0x2e9144 — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EE16declareSignatureEPKcNS0_7VariantESH_SI_SH_SI_
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
+pub fn stub_2e9144() -> ! {
+    todo!("0x2e9144 RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+}
+
+// 0x2e91ac — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()
+pub fn stub_2e91ac() -> ! {
+    todo!("0x2e91ac RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")
+}
+
+// 0x2e924c — __ZNK3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
+pub fn stub_2e924c() -> ! {
+    todo!("0x2e924c RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x2e9388 — __ZN3RBX10Reflection11Call3HelperINS_10LuaDraggerEMS2_FvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEES6_S8_SD_vE4callEPS2_SF_RNS0_7VariantERKS6_RKS8_RKSD_
+#[doc(alias = "RBX::Reflection::Call3Helper<RBX::LuaDragger,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,void>::call(RBX::LuaDragger*,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,G3D::Vector3 const&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const&)")]
+// was: RBX::Reflection::Call3Helper<RBX::LuaDragger,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,void>::call(RBX::LuaDragger*,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,G3D::Vector3 const&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const&)
+pub fn stub_2e9388() -> ! {
+    todo!("0x2e9388 RBX::Reflection::Call3Helper<RBX::LuaDragger,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,void>::call(RBX::LuaDragger*,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,G3D::Vector3 const&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const&)")
+}
+
+// 0x2e94dc — __ZN3RBX10Reflection9ArgHelper6getArgIN3G3D7Vector3ELi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
+#[doc(alias = "G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+// was: G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
+pub fn stub_2e94dc() -> ! {
+    todo!("0x2e94dc G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
+}
+
+// 0x2e998c — __ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()
+pub fn stub_2e998c() -> ! {
+    todo!("0x2e998c RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")
+}
+
+// 0x2e9f80 — __ZN3RBX11LuaDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
+pub fn stub_2e9f80() -> ! {
+    todo!("0x2e9f80 RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x2e9f84 — __ZN3RBX11LuaDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIN5boost8weak_ptrIS1_EESaISA_EEPNS_9WorkspaceENS8_10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
+pub fn stub_2e9f84() -> ! {
+    todo!("0x2e9f84 RBX::LuaDragTool::LuaDragTool(RBX::PartInstance *,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x2eb604 — __ZN3RBX11MegaDragger13safeMoveYDropERKN3G3D7Vector3E
+#[doc(alias = "RBX::MegaDragger::safeMoveYDrop(G3D::Vector3 const&)")]
+// was: RBX::MegaDragger::safeMoveYDrop(G3D::Vector3 const&)
+pub fn stub_2eb604() -> ! {
+    todo!("0x2eb604 RBX::MegaDragger::safeMoveYDrop(G3D::Vector3 const&)")
+}
+
+// 0x2eb680 — __ZN3RBX11MegaDragger15getPartsForDragERN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEE
+#[doc(alias = "RBX::MegaDragger::getPartsForDrag(G3D::Array<RBX::Primitive *,10,32ul> &)")]
+// was: RBX::MegaDragger::getPartsForDrag(G3D::Array<RBX::Primitive *,10,32ul> &)
+pub fn stub_2eb680() -> ! {
+    todo!("0x2eb680 RBX::MegaDragger::getPartsForDrag(G3D::Array<RBX::Primitive *,10,32ul> &)")
+}
+
+// 0x2eb734 — __ZN3RBX11MegaDragger14safeMoveNoDropERKN3G3D7Vector3E
+#[doc(alias = "RBX::MegaDragger::safeMoveNoDrop(G3D::Vector3 const&)")]
+// was: RBX::MegaDragger::safeMoveNoDrop(G3D::Vector3 const&)
+pub fn stub_2eb734() -> ! {
+    todo!("0x2eb734 RBX::MegaDragger::safeMoveNoDrop(G3D::Vector3 const&)")
+}
+
+// 0x2eb87c — __ZN3RBX11MegaDragger17safeMoveAlongLineERKN3G3D7Vector3E
+#[doc(alias = "RBX::MegaDragger::safeMoveAlongLine(G3D::Vector3 const&)")]
+// was: RBX::MegaDragger::safeMoveAlongLine(G3D::Vector3 const&)
+pub fn stub_2eb87c() -> ! {
+    todo!("0x2eb87c RBX::MegaDragger::safeMoveAlongLine(G3D::Vector3 const&)")
+}
+
+// 0x2eba30 — __ZN3RBX11MegaDragger22moveSafePlaceAlongLineERKN3G3D7Vector3E
+#[doc(alias = "RBX::MegaDragger::moveSafePlaceAlongLine(G3D::Vector3 const&)")]
+// was: RBX::MegaDragger::moveSafePlaceAlongLine(G3D::Vector3 const&)
+pub fn stub_2eba30() -> ! {
+    todo!("0x2eba30 RBX::MegaDragger::moveSafePlaceAlongLine(G3D::Vector3 const&)")
+}
+
+// 0x2ebc38 — __ZN3RBX11MegaDragger13moveAlongLineERKN3G3D7Vector3E
+#[doc(alias = "RBX::MegaDragger::moveAlongLine(G3D::Vector3 const&)")]
+// was: RBX::MegaDragger::moveAlongLine(G3D::Vector3 const&)
+pub fn stub_2ebc38() -> ! {
+    todo!("0x2ebc38 RBX::MegaDragger::moveAlongLine(G3D::Vector3 const&)")
+}
+
+// 0x2ebc44 — __ZN3RBX11MegaDragger19safeRotateAlongLineERKN3G3D7Vector3E
+#[doc(alias = "RBX::MegaDragger::safeRotateAlongLine(G3D::Vector3 const&)")]
+// was: RBX::MegaDragger::safeRotateAlongLine(G3D::Vector3 const&)
+pub fn stub_2ebc44() -> ! {
+    todo!("0x2ebc44 RBX::MegaDragger::safeRotateAlongLine(G3D::Vector3 const&)")
+}
+
+// 0x2ebd7c — __ZN3RBX11MegaDragger10safeRotateERKN3G3D7Matrix3E
+#[doc(alias = "RBX::MegaDragger::safeRotate(G3D::Matrix3 const&)")]
+// was: RBX::MegaDragger::safeRotate(G3D::Matrix3 const&)
+pub fn stub_2ebd7c() -> ! {
+    todo!("0x2ebd7c RBX::MegaDragger::safeRotate(G3D::Matrix3 const&)")
+}
+
+// 0x2ebf24 — __ZN3RBX11MegaDragger15rotateDragPartsERKN3G3D7Matrix3Eb
+#[doc(alias = "RBX::MegaDragger::rotateDragParts(G3D::Matrix3 const&,bool)")]
+// was: RBX::MegaDragger::rotateDragParts(G3D::Matrix3 const&,bool)
+pub fn stub_2ebf24() -> ! {
+    todo!("0x2ebf24 RBX::MegaDragger::rotateDragParts(G3D::Matrix3 const&,bool)")
+}
+
+// 0x2ef364 — __ZN3RBX11NewNullTool16getIndicatedPartERKNS_7UIEventERKbPPNS_12PartInstanceEPbPN3G3D7Vector3E
+#[doc(alias = "RBX::NewNullTool::getIndicatedPart(RBX::UIEvent const&,bool const&,RBX::PartInstance **,bool *,G3D::Vector3 *)")]
+// was: RBX::NewNullTool::getIndicatedPart(RBX::UIEvent const&,bool const&,RBX::PartInstance **,bool *,G3D::Vector3 *)
+pub fn stub_2ef364() -> ! {
+    todo!("0x2ef364 RBX::NewNullTool::getIndicatedPart(RBX::UIEvent const&,bool const&,RBX::PartInstance **,bool *,G3D::Vector3 *)")
+}
+
+// 0x2f0948 — __ZN3RBX12PartDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
+pub fn stub_2f0948() -> ! {
+    todo!("0x2f0948 RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x2f094c — __ZN3RBX12PartDragToolC2EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)
+pub fn stub_2f094c() -> ! {
+    todo!("0x2f094c RBX::PartDragTool::PartDragTool(RBX::PartInstance *,G3D::Vector3 const&,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x2f2bf0 — __ZN3RBX10RunDragger9initLocalEPNS_9WorkspaceEN5boost8weak_ptrINS_12PartInstanceEEERKN3G3D7Vector3E
+#[doc(alias = "RBX::RunDragger::initLocal(RBX::Workspace *,boost::weak_ptr<RBX::PartInstance>,G3D::Vector3 const&)")]
+// was: RBX::RunDragger::initLocal(RBX::Workspace *,boost::weak_ptr<RBX::PartInstance>,G3D::Vector3 const&)
+pub fn stub_2f2bf0() -> ! {
+    todo!("0x2f2bf0 RBX::RunDragger::initLocal(RBX::Workspace *,boost::weak_ptr<RBX::PartInstance>,G3D::Vector3 const&)")
+}
+
+// 0x2f2ff8 — __ZN3RBX10RunDragger4initEPNS_9WorkspaceEN5boost8weak_ptrINS_12PartInstanceEEERKN3G3D7Vector3E
+#[doc(alias = "RBX::RunDragger::init(RBX::Workspace *,boost::weak_ptr<RBX::PartInstance>,G3D::Vector3 const&)")]
+// was: RBX::RunDragger::init(RBX::Workspace *,boost::weak_ptr<RBX::PartInstance>,G3D::Vector3 const&)
+pub fn stub_2f2ff8() -> ! {
+    todo!("0x2f2ff8 RBX::RunDragger::init(RBX::Workspace *,boost::weak_ptr<RBX::PartInstance>,G3D::Vector3 const&)")
+}
+
+// 0x2f33e0 — __ZN3RBX10RunDragger17createSnapSurfaceEPNS_9PrimitiveEPN3G3D5ArrayImLi10ELm32EEE
+#[doc(alias = "RBX::RunDragger::createSnapSurface(RBX::Primitive *,G3D::Array<unsigned long,10,32ul> *)")]
+// was: RBX::RunDragger::createSnapSurface(RBX::Primitive *,G3D::Array<unsigned long,10,32ul> *)
+pub fn stub_2f33e0() -> ! {
+    todo!("0x2f33e0 RBX::RunDragger::createSnapSurface(RBX::Primitive *,G3D::Array<unsigned long,10,32ul> *)")
+}
+
+// 0x2f4630 — __ZN3RBX10RunDragger8notTriedEPNS_9PrimitiveERKN3G3D5ArrayIS2_Li10ELm32EEE
+#[doc(alias = "RBX::RunDragger::notTried(RBX::Primitive *,G3D::Array<RBX::Primitive *,10,32ul> const&)")]
+// was: RBX::RunDragger::notTried(RBX::Primitive *,G3D::Array<RBX::Primitive *,10,32ul> const&)
+pub fn stub_2f4630() -> ! {
+    todo!("0x2f4630 RBX::RunDragger::notTried(RBX::Primitive *,G3D::Array<RBX::Primitive *,10,32ul> const&)")
+}
+
+// 0x2f4700 — __ZN3RBX10RunDragger11rayHitsPartERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEEb
+#[doc(alias = "RBX::RunDragger::rayHitsPart(G3D::Array<RBX::Primitive *,10,32ul> const&,bool)")]
+// was: RBX::RunDragger::rayHitsPart(G3D::Array<RBX::Primitive *,10,32ul> const&,bool)
+pub fn stub_2f4700() -> ! {
+    todo!("0x2f4700 RBX::RunDragger::rayHitsPart(G3D::Array<RBX::Primitive *,10,32ul> const&,bool)")
+}
+
+// 0x2f495c — __ZN3RBX10RunDragger17bestProximatePartERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEEMNS_7ContactEFbfE
+#[doc(alias = "RBX::RunDragger::bestProximatePart(G3D::Array<RBX::Primitive *,10,32ul> const&,bool (RBX::Contact::*)(float))")]
+// was: RBX::RunDragger::bestProximatePart(G3D::Array<RBX::Primitive *,10,32ul> const&,bool (RBX::Contact::*)(float))
+pub fn stub_2f495c() -> ! {
+    todo!("0x2f495c RBX::RunDragger::bestProximatePart(G3D::Array<RBX::Primitive *,10,32ul> const&,bool (RBX::Contact::*)(float))")
+}
+
+// 0x2f4eac — __ZN3RBX10RunDragger8findSnapERKN3G3D5ArrayIPNS_9PrimitiveELi10ELm32EEE
+#[doc(alias = "RBX::RunDragger::findSnap(G3D::Array<RBX::Primitive *,10,32ul> const&)")]
+// was: RBX::RunDragger::findSnap(G3D::Array<RBX::Primitive *,10,32ul> const&)
+pub fn stub_2f4eac() -> ! {
+    todo!("0x2f4eac RBX::RunDragger::findSnap(G3D::Array<RBX::Primitive *,10,32ul> const&)")
+}
+
+// 0x2f5018 — __ZN3RBX10RunDragger18findNoSnapPositionERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::RunDragger::findNoSnapPosition(G3D::CoordinateFrame const&)")]
+// was: RBX::RunDragger::findNoSnapPosition(G3D::CoordinateFrame const&)
+pub fn stub_2f5018() -> ! {
+    todo!("0x2f5018 RBX::RunDragger::findNoSnapPosition(G3D::CoordinateFrame const&)")
+}
+
+// 0x2f53f4 — __ZN3RBX10RunDragger32rotatePart90DegAboutSnapFaceAxisEN3G3D7Vector34AxisE
+#[doc(alias = "RBX::RunDragger::rotatePart90DegAboutSnapFaceAxis(G3D::Vector3::Axis)")]
+// was: RBX::RunDragger::rotatePart90DegAboutSnapFaceAxis(G3D::Vector3::Axis)
+pub fn stub_2f53f4() -> ! {
+    todo!("0x2f53f4 RBX::RunDragger::rotatePart90DegAboutSnapFaceAxis(G3D::Vector3::Axis)")
+}
+
+// 0x2f5410 — __ZN3RBX10RunDragger27rotatePartAboutSnapFaceAxisEN3G3D7Vector34AxisERKf
+#[doc(alias = "RBX::RunDragger::rotatePartAboutSnapFaceAxis(G3D::Vector3::Axis,float const&)")]
+// was: RBX::RunDragger::rotatePartAboutSnapFaceAxis(G3D::Vector3::Axis,float const&)
+pub fn stub_2f5410() -> ! {
+    todo!("0x2f5410 RBX::RunDragger::rotatePartAboutSnapFaceAxis(G3D::Vector3::Axis,float const&)")
+}
+
+// 0x2f587c — __ZN3G3D5ArrayImLi10ELm32EE6appendERKm
+#[doc(alias = "G3D::Array<unsigned long,10,32ul>::append(unsigned long const&)")]
+// was: G3D::Array<unsigned long,10,32ul>::append(unsigned long const&)
+pub fn stub_2f587c() -> ! {
+    todo!("0x2f587c G3D::Array<unsigned long,10,32ul>::append(unsigned long const&)")
+}
+
+// 0x2f58d8 — __ZN3G3D5ArrayImLi10ELm32EE6resizeEib
+#[doc(alias = "G3D::Array<unsigned long,10,32ul>::resize(int,bool)")]
+// was: G3D::Array<unsigned long,10,32ul>::resize(int,bool)
+pub fn stub_2f58d8() -> ! {
+    todo!("0x2f58d8 G3D::Array<unsigned long,10,32ul>::resize(int,bool)")
+}
+
+// 0x2f5990 — __ZN3G3D5ArrayImLi10ELm32EE7reallocEi
+#[doc(alias = "G3D::Array<unsigned long,10,32ul>::realloc(int)")]
+// was: G3D::Array<unsigned long,10,32ul>::realloc(int)
+pub fn stub_2f5990() -> ! {
+    todo!("0x2f5990 G3D::Array<unsigned long,10,32ul>::realloc(int)")
+}
+
+// 0x2f5b78 — __ZN3G3D5ArrayImLi10ELm32EED2Ev
+#[doc(alias = "G3D::Array<unsigned long,10,32ul>::~Array()")]
+// was: G3D::Array<unsigned long,10,32ul>::~Array()
+pub fn stub_2f5b78() -> ! {
+    todo!("0x2f5b78 G3D::Array<unsigned long,10,32ul>::~Array()")
+}
+
+// 0x2f5c4c — __ZN3G3D5ArrayImLi10ELm32EEC2Ev
+#[doc(alias = "G3D::Array<unsigned long,10,32ul>::Array(void)")]
+// was: G3D::Array<unsigned long,10,32ul>::Array(void)
+pub fn stub_2f5c4c() -> ! {
+    todo!("0x2f5c4c G3D::Array<unsigned long,10,32ul>::Array(void)")
+}
+
+// 0x2f75e8 — __ZN3RBX16BoxSelectCommand17getMouseInstancesERSt3setIN5boost10shared_ptrINS_8InstanceEEESt4lessIS5_ESaIS5_EERKNS_7UIEventERN3G3D6Rect2DE
+#[doc(alias = "RBX::BoxSelectCommand::getMouseInstances(std::set<boost::shared_ptr<RBX::Instance>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>> &,RBX::UIEvent const&,G3D::Rect2D &)")]
+// was: RBX::BoxSelectCommand::getMouseInstances(std::set<boost::shared_ptr<RBX::Instance>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>> &,RBX::UIEvent const&,G3D::Rect2D &)
+pub fn stub_2f75e8() -> ! {
+    todo!("0x2f75e8 RBX::BoxSelectCommand::getMouseInstances(std::set<boost::shared_ptr<RBX::Instance>,std::less<boost::shared_ptr<RBX::Instance>>,std::allocator<boost::shared_ptr<RBX::Instance>>> &,RBX::UIEvent const&,G3D::Rect2D &)")
+}
+
+// 0x302ed8 — __ZN3RBX4Axes14axisToNormalIdEN3G3D7Vector34AxisE
+#[doc(alias = "RBX::Axes::axisToNormalId(G3D::Vector3::Axis)")]
+// was: RBX::Axes::axisToNormalId(G3D::Vector3::Axis)
+pub fn stub_302ed8() -> ! {
+    todo!("0x302ed8 RBX::Axes::axisToNormalId(G3D::Vector3::Axis)")
+}
+
+// 0x302ee0 — __ZN3RBX4Axes10axisToMaskEN3G3D7Vector34AxisE
+#[doc(alias = "RBX::Axes::axisToMask(G3D::Vector3::Axis)")]
+// was: RBX::Axes::axisToMask(G3D::Vector3::Axis)
+pub fn stub_302ee0() -> ! {
+    todo!("0x302ee0 RBX::Axes::axisToMask(G3D::Vector3::Axis)")
+}
+
+// 0x302f1c — __ZNK3RBX4Axes7getAxisEN3G3D7Vector34AxisE
+#[doc(alias = "RBX::Axes::getAxis(G3D::Vector3::Axis)const")]
+// was: RBX::Axes::getAxis(G3D::Vector3::Axis)const
+pub fn stub_302f1c() -> ! {
+    todo!("0x302f1c RBX::Axes::getAxis(G3D::Vector3::Axis)const")
+}
+
+// 0x303124 — __ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::EnumDesc(void)")]
+// was: RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::EnumDesc(void)
+pub fn stub_303124() -> ! {
+    todo!("0x303124 RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::EnumDesc(void)")
+}
+
+// 0x303128 — __ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::EnumDesc(void)")]
+// was: RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::EnumDesc(void)
+pub fn stub_303128() -> ! {
+    todo!("0x303128 RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::EnumDesc(void)")
+}
+
+// 0x303300 — __ZN3RBX10Reflection7Variant7convertIN3G3D7Vector34AxisEEERT_v
+#[doc(alias = "G3D::Vector3::Axis & RBX::Reflection::Variant::convert<G3D::Vector3::Axis>(void)")]
+// was: G3D::Vector3::Axis & RBX::Reflection::Variant::convert<G3D::Vector3::Axis>(void)
+pub fn stub_303300() -> ! {
+    todo!("0x303300 G3D::Vector3::Axis & RBX::Reflection::Variant::convert<G3D::Vector3::Axis>(void)")
+}
+
+// 0x303304 — __ZN3RBX15StringConverterIN3G3D7Vector34AxisEE14convertToValueERKSsRS3_
+#[doc(alias = "RBX::StringConverter<G3D::Vector3::Axis>::convertToValue(std::string const&,G3D::Vector3::Axis&)")]
+// was: RBX::StringConverter<G3D::Vector3::Axis>::convertToValue(std::string const&,G3D::Vector3::Axis&)
+pub fn stub_303304() -> ! {
+    todo!("0x303304 RBX::StringConverter<G3D::Vector3::Axis>::convertToValue(std::string const&,G3D::Vector3::Axis&)")
+}
+
+// 0x30367c — __ZN3RBX10Reflection8EnumDescIN3G3D7Vector34AxisEE7addPairES4_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::addPair(G3D::Vector3::Axis,char const*)")]
+// was: RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::addPair(G3D::Vector3::Axis,char const*)
+pub fn stub_30367c() -> ! {
+    todo!("0x30367c RBX::Reflection::EnumDesc<G3D::Vector3::Axis>::addPair(G3D::Vector3::Axis,char const*)")
+}
+
+// 0x3039dc — __ZN3RBX10Reflection7Variant14genericConvertIN3G3D7Vector34AxisEEERT_v
+#[doc(alias = "G3D::Vector3::Axis & RBX::Reflection::Variant::genericConvert<G3D::Vector3::Axis>(void)")]
+// was: G3D::Vector3::Axis & RBX::Reflection::Variant::genericConvert<G3D::Vector3::Axis>(void)
+pub fn stub_3039dc() -> ! {
+    todo!("0x3039dc G3D::Vector3::Axis & RBX::Reflection::Variant::genericConvert<G3D::Vector3::Axis>(void)")
+}
+
+// 0x303bc8 — __ZN3rbx8any_castIN3G3D7Vector34AxisEN3RBX7Region3EEEPT_PNS_13placement_anyIT0_EE
+#[doc(alias = "G3D::Vector3::Axis * rbx::any_cast<G3D::Vector3::Axis,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
+// was: G3D::Vector3::Axis * rbx::any_cast<G3D::Vector3::Axis,RBX::Region3>(rbx::placement_any<RBX::Region3> *)
+pub fn stub_303bc8() -> ! {
+    todo!("0x303bc8 G3D::Vector3::Axis * rbx::any_cast<G3D::Vector3::Axis,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")
+}
+
+// 0x303c20 — __ZN3rbx8any_castIRN3G3D7Vector34AxisEN3RBX7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "G3D::Vector3::Axis & rbx::any_cast<G3D::Vector3::Axis &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+// was: G3D::Vector3::Axis & rbx::any_cast<G3D::Vector3::Axis &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
+pub fn stub_303c20() -> ! {
+    todo!("0x303c20 G3D::Vector3::Axis & rbx::any_cast<G3D::Vector3::Axis &,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+}
+
+// 0x303d10 — __ZNSt6vectorIN3G3D7Vector34AxisESaIS2_EE6resizeEmS2_
+#[doc(alias = "std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::resize(unsigned long,G3D::Vector3::Axis)")]
+// was: std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::resize(unsigned long,G3D::Vector3::Axis)
+pub fn stub_303d10() -> ! {
+    todo!("0x303d10 std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::resize(unsigned long,G3D::Vector3::Axis)")
+}
+
+// 0x303d44 — __ZNSt6vectorIN3G3D7Vector34AxisESaIS2_EE9push_backERKS2_
+#[doc(alias = "std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::push_back(G3D::Vector3::Axis const&)")]
+// was: std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::push_back(G3D::Vector3::Axis const&)
+pub fn stub_303d44() -> ! {
+    todo!("0x303d44 std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::push_back(G3D::Vector3::Axis const&)")
+}
+
+// 0x303d6c — __ZNSt3mapIPKN3RBX4NameEN3G3D7Vector34AxisESt4lessIS3_ESaISt4pairIKS3_S6_EEEixERSA_
+#[doc(alias = "std::map<RBX::Name const*,G3D::Vector3::Axis,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::operator[](RBX::Name const* const&)")]
+// was: std::map<RBX::Name const*,G3D::Vector3::Axis,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::operator[](RBX::Name const* const&)
+pub fn stub_303d6c() -> ! {
+    todo!("0x303d6c std::map<RBX::Name const*,G3D::Vector3::Axis,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::operator[](RBX::Name const* const&)")
+}
+
+// 0x303dc4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N3G3D7Vector34AxisEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,G3D::Vector3::Axis>,std::_Select1st<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::pair<RBX::Name const* const,G3D::Vector3::Axis> const&)")]
+// was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,G3D::Vector3::Axis>,std::_Select1st<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::pair<RBX::Name const* const,G3D::Vector3::Axis> const&)
+pub fn stub_303dc4() -> ! {
+    todo!("0x303dc4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,G3D::Vector3::Axis>,std::_Select1st<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::pair<RBX::Name const* const,G3D::Vector3::Axis> const&)")
+}
+
+// 0x303e78 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N3G3D7Vector34AxisEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,G3D::Vector3::Axis>,std::_Select1st<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,G3D::Vector3::Axis> const&)")]
+// was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,G3D::Vector3::Axis>,std::_Select1st<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,G3D::Vector3::Axis> const&)
+pub fn stub_303e78() -> ! {
+    todo!("0x303e78 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,G3D::Vector3::Axis>,std::_Select1st<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,G3D::Vector3::Axis> const&)")
+}
+
+// 0x303ed0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N3G3D7Vector34AxisEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,G3D::Vector3::Axis>,std::_Select1st<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::_M_insert_unique(std::pair<RBX::Name const* const,G3D::Vector3::Axis> const&)")]
+// was: std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,G3D::Vector3::Axis>,std::_Select1st<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::_M_insert_unique(std::pair<RBX::Name const* const,G3D::Vector3::Axis> const&)
+pub fn stub_303ed0() -> ! {
+    todo!("0x303ed0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,G3D::Vector3::Axis>,std::_Select1st<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,G3D::Vector3::Axis>>>::_M_insert_unique(std::pair<RBX::Name const* const,G3D::Vector3::Axis> const&)")
+}
+
+// 0x303f38 — __ZNSt6vectorIN3G3D7Vector34AxisESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::_M_insert_aux(__gnu_cxx::__normal_iterator<G3D::Vector3::Axis*,std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>>,G3D::Vector3::Axis const&)")]
+// was: std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::_M_insert_aux(__gnu_cxx::__normal_iterator<G3D::Vector3::Axis*,std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>>,G3D::Vector3::Axis const&)
+pub fn stub_303f38() -> ! {
+    todo!("0x303f38 std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::_M_insert_aux(__gnu_cxx::__normal_iterator<G3D::Vector3::Axis*,std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>>,G3D::Vector3::Axis const&)")
+}
+
+// 0x30401c — __ZNSt12_Vector_baseIN3G3D7Vector34AxisESaIS2_EE11_M_allocateEm
+#[doc(alias = "std::_Vector_base<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::_M_allocate(unsigned long)")]
+// was: std::_Vector_base<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::_M_allocate(unsigned long)
+pub fn stub_30401c() -> ! {
+    todo!("0x30401c std::_Vector_base<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::_M_allocate(unsigned long)")
+}
+
+// 0x304034 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3G3D7Vector34AxisES6_EET0_T_S8_S7_
+#[doc(alias = "G3D::Vector3::Axis * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<G3D::Vector3::Axis *,G3D::Vector3::Axis *>(G3D::Vector3::Axis *,G3D::Vector3::Axis *,G3D::Vector3::Axis *)")]
+// was: G3D::Vector3::Axis * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<G3D::Vector3::Axis *,G3D::Vector3::Axis *>(G3D::Vector3::Axis *,G3D::Vector3::Axis *,G3D::Vector3::Axis *)
+pub fn stub_304034() -> ! {
+    todo!("0x304034 G3D::Vector3::Axis * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<G3D::Vector3::Axis *,G3D::Vector3::Axis *>(G3D::Vector3::Axis *,G3D::Vector3::Axis *,G3D::Vector3::Axis *)")
+}
+
+// 0x304070 — __ZNSt6vectorIN3G3D7Vector34AxisESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+#[doc(alias = "std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::_M_fill_insert(__gnu_cxx::__normal_iterator<G3D::Vector3::Axis*,std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>>,unsigned long,G3D::Vector3::Axis const&)")]
+// was: std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::_M_fill_insert(__gnu_cxx::__normal_iterator<G3D::Vector3::Axis*,std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>>,unsigned long,G3D::Vector3::Axis const&)
+pub fn stub_304070() -> ! {
+    todo!("0x304070 std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>::_M_fill_insert(__gnu_cxx::__normal_iterator<G3D::Vector3::Axis*,std::vector<G3D::Vector3::Axis,std::allocator<G3D::Vector3::Axis>>>,unsigned long,G3D::Vector3::Axis const&)")
+}
+
+// 0x3044a0 — __ZN3RBX10BrickColor7closestEN3G3D6Color3E
+#[doc(alias = "RBX::BrickColor::closest(G3D::Color3)")]
+// was: RBX::BrickColor::closest(G3D::Color3)
+pub fn stub_3044a0() -> ! {
+    todo!("0x3044a0 RBX::BrickColor::closest(G3D::Color3)")
+}
+
+// 0x3044c4 — __ZN3RBX10BrickColor7closestEN3G3D6Color4E
+#[doc(alias = "RBX::BrickColor::closest(G3D::Color4)")]
+// was: RBX::BrickColor::closest(G3D::Color4)
+pub fn stub_3044c4() -> ! {
+    todo!("0x3044c4 RBX::BrickColor::closest(G3D::Color4)")
+}
+
+// 0x30dd94 — __ZN3RBX13CameraSubject11doOcclusionERN3G3D7Vector3ERNS1_15CoordinateFrameEf
+#[doc(alias = "RBX::CameraSubject::doOcclusion(G3D::Vector3 &,G3D::CoordinateFrame &,float)")]
+// was: RBX::CameraSubject::doOcclusion(G3D::Vector3 &,G3D::CoordinateFrame &,float)
+pub fn stub_30dd94() -> ! {
+    todo!("0x30dd94 RBX::CameraSubject::doOcclusion(G3D::Vector3 &,G3D::CoordinateFrame &,float)")
+}
+
+// 0x30de2c — __ZN3RBX13CameraSubject13testOcclusionERKN3G3D7Vector3ERKNS1_15CoordinateFrameERf
+#[doc(alias = "RBX::CameraSubject::testOcclusion(G3D::Vector3 const&,G3D::CoordinateFrame const&,float &)")]
+// was: RBX::CameraSubject::testOcclusion(G3D::Vector3 const&,G3D::CoordinateFrame const&,float &)
+pub fn stub_30de2c() -> ! {
+    todo!("0x30de2c RBX::CameraSubject::testOcclusion(G3D::Vector3 const&,G3D::CoordinateFrame const&,float &)")
+}
+
+// 0x30e130 — __ZN3RBX13CameraSubject23cameraPointFromDistanceERKN3G3D7Vector3ES4_f
+#[doc(alias = "RBX::CameraSubject::cameraPointFromDistance(G3D::Vector3 const&,G3D::Vector3 const&,float)")]
+// was: RBX::CameraSubject::cameraPointFromDistance(G3D::Vector3 const&,G3D::Vector3 const&,float)
+pub fn stub_30e130() -> ! {
+    todo!("0x30e130 RBX::CameraSubject::cameraPointFromDistance(G3D::Vector3 const&,G3D::Vector3 const&,float)")
+}
+
+// 0x31e9f4 — __ZN3RBX7Extents11closestFaceERKN3G3D7Vector3E
+#[doc(alias = "RBX::Extents::closestFace(G3D::Vector3 const&)")]
+// was: RBX::Extents::closestFace(G3D::Vector3 const&)
+pub fn stub_31e9f4() -> ! {
+    todo!("0x31e9f4 RBX::Extents::closestFace(G3D::Vector3 const&)")
+}
+
+// 0x31ebfc — __ZNK3RBX7Extents14getFaceCornersENS_8NormalIdERN3G3D7Vector3ES4_S4_S4_
+#[doc(alias = "RBX::Extents::getFaceCorners(RBX::NormalId,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &)const")]
+// was: RBX::Extents::getFaceCorners(RBX::NormalId,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &)const
+pub fn stub_31ebfc() -> ! {
+    todo!("0x31ebfc RBX::Extents::getFaceCorners(RBX::NormalId,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &)const")
+}
+
+// 0x31ee8c — __ZNK3RBX7Extents7expressERKN3G3D15CoordinateFrameES4_
+#[doc(alias = "RBX::Extents::express(G3D::CoordinateFrame const&,G3D::CoordinateFrame const&)const")]
+// was: RBX::Extents::express(G3D::CoordinateFrame const&,G3D::CoordinateFrame const&)const
+pub fn stub_31ee8c() -> ! {
+    todo!("0x31ee8c RBX::Extents::express(G3D::CoordinateFrame const&,G3D::CoordinateFrame const&)const")
+}
+
+// 0x31f1b4 — __ZN3RBX7Extents12toWorldSpaceERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::Extents::toWorldSpace(G3D::CoordinateFrame const&)")]
+// was: RBX::Extents::toWorldSpace(G3D::CoordinateFrame const&)
+pub fn stub_31f1b4() -> ! {
+    todo!("0x31f1b4 RBX::Extents::toWorldSpace(G3D::CoordinateFrame const&)")
+}
+
+// 0x31f4d0 — __ZNK3RBX7Extents31computeClosestSqDistanceToPointERKN3G3D7Vector3E
+#[doc(alias = "RBX::Extents::computeClosestSqDistanceToPoint(G3D::Vector3 const&)const")]
+// was: RBX::Extents::computeClosestSqDistanceToPoint(G3D::Vector3 const&)const
+pub fn stub_31f4d0() -> ! {
+    todo!("0x31f4d0 RBX::Extents::computeClosestSqDistanceToPoint(G3D::Vector3 const&)const")
+}
+
+// 0x31f68c — __ZN3RBX7Extents2vvERKN3G3D7Vector3ES4_
+#[doc(alias = "RBX::Extents::vv(G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: RBX::Extents::vv(G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_31f68c() -> ! {
+    todo!("0x31f68c RBX::Extents::vv(G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0x31fcd4 — __ZNK3RBX4Face24fuzzyContainsInExtrusionERKN3G3D7Vector3Ef
+#[doc(alias = "RBX::Face::fuzzyContainsInExtrusion(G3D::Vector3 const&,float)const")]
+// was: RBX::Face::fuzzyContainsInExtrusion(G3D::Vector3 const&,float)const
+pub fn stub_31fcd4() -> ! {
+    todo!("0x31fcd4 RBX::Face::fuzzyContainsInExtrusion(G3D::Vector3 const&,float)const")
+}
+
+// 0x31fdc4 — __ZNK3RBX4Face6minMaxERKN3G3D7Vector3ES4_RfS5_
+#[doc(alias = "RBX::Face::minMax(G3D::Vector3 const&,G3D::Vector3 const&,float &,float &)const")]
+// was: RBX::Face::minMax(G3D::Vector3 const&,G3D::Vector3 const&,float &,float &)const
+pub fn stub_31fdc4() -> ! {
+    todo!("0x31fdc4 RBX::Face::minMax(G3D::Vector3 const&,G3D::Vector3 const&,float &,float &)const")
+}
+
+// 0x320024 — __ZNK3RBX4Face12toWorldSpaceERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::Face::toWorldSpace(G3D::CoordinateFrame const&)const")]
+// was: RBX::Face::toWorldSpace(G3D::CoordinateFrame const&)const
+pub fn stub_320024() -> ! {
+    todo!("0x320024 RBX::Face::toWorldSpace(G3D::CoordinateFrame const&)const")
+}
+
+// 0x32010c — __ZNK3RBX4Face13toObjectSpaceERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::Face::toObjectSpace(G3D::CoordinateFrame const&)const")]
+// was: RBX::Face::toObjectSpace(G3D::CoordinateFrame const&)const
+pub fn stub_32010c() -> ! {
+    todo!("0x32010c RBX::Face::toObjectSpace(G3D::CoordinateFrame const&)const")
+}
+
+// 0x32366c — __ZN3RBX13HandleHitTest18hitTestHandleWorldERKNS_7ExtentsENS_10HandleTypeERKNS_6RbxRayERN3G3D7Vector3ERNS_8NormalIdEi
+#[doc(alias = "RBX::HandleHitTest::hitTestHandleWorld(RBX::Extents const&,RBX::HandleType,RBX::RbxRay const&,G3D::Vector3 &,RBX::NormalId &,int)")]
+// was: RBX::HandleHitTest::hitTestHandleWorld(RBX::Extents const&,RBX::HandleType,RBX::RbxRay const&,G3D::Vector3 &,RBX::NormalId &,int)
+pub fn stub_32366c() -> ! {
+    todo!("0x32366c RBX::HandleHitTest::hitTestHandleWorld(RBX::Extents const&,RBX::HandleType,RBX::RbxRay const&,G3D::Vector3 &,RBX::NormalId &,int)")
+}
+
+// 0x323768 — __ZN3RBX13HandleHitTest18hitTestHandleLocalERKNS_7ExtentsERKN3G3D15CoordinateFrameENS_10HandleTypeERKNS_6RbxRayERNS4_7Vector3ERNS_8NormalIdEi
+#[doc(alias = "RBX::HandleHitTest::hitTestHandleLocal(RBX::Extents const&,G3D::CoordinateFrame const&,RBX::HandleType,RBX::RbxRay const&,G3D::Vector3 &,RBX::NormalId &,int)")]
+// was: RBX::HandleHitTest::hitTestHandleLocal(RBX::Extents const&,G3D::CoordinateFrame const&,RBX::HandleType,RBX::RbxRay const&,G3D::Vector3 &,RBX::NormalId &,int)
+pub fn stub_323768() -> ! {
+    todo!("0x323768 RBX::HandleHitTest::hitTestHandleLocal(RBX::Extents const&,G3D::CoordinateFrame const&,RBX::HandleType,RBX::RbxRay const&,G3D::Vector3 &,RBX::NormalId &,int)")
+}
+
+// 0x3238e8 — __ZN3RBX13HandleHitTest22hitTestMoveHandleWorldERKNS_7ExtentsERKNS_6RbxRayERN3G3D7Vector3ERNS_8NormalIdEi
+#[doc(alias = "RBX::HandleHitTest::hitTestMoveHandleWorld(RBX::Extents const&,RBX::RbxRay const&,G3D::Vector3 &,RBX::NormalId &,int)")]
+// was: RBX::HandleHitTest::hitTestMoveHandleWorld(RBX::Extents const&,RBX::RbxRay const&,G3D::Vector3 &,RBX::NormalId &,int)
+pub fn stub_3238e8() -> ! {
+    todo!("0x3238e8 RBX::HandleHitTest::hitTestMoveHandleWorld(RBX::Extents const&,RBX::RbxRay const&,G3D::Vector3 &,RBX::NormalId &,int)")
+}
+
+// 0x323de8 — __ZN3RBX8IndexBoxC1ERKN3G3D7Vector3ES4_
+#[doc(alias = "RBX::IndexBox::IndexBox(G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: RBX::IndexBox::IndexBox(G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_323de8() -> ! {
+    todo!("0x323de8 RBX::IndexBox::IndexBox(G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0x323dec — __ZN3RBX8IndexBoxC2ERKN3G3D7Vector3ES4_
+#[doc(alias = "RBX::IndexBox::IndexBox(G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: RBX::IndexBox::IndexBox(G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_323dec() -> ! {
+    todo!("0x323dec RBX::IndexBox::IndexBox(G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0x323efc — __ZNK3RBX8IndexBox14getFaceCornersEiRN3G3D7Vector3ES3_S3_S3_
+#[doc(alias = "RBX::IndexBox::getFaceCorners(int,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &)const")]
+// was: RBX::IndexBox::getFaceCorners(int,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &)const
+pub fn stub_323efc() -> ! {
+    todo!("0x323efc RBX::IndexBox::getFaceCorners(int,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &,G3D::Vector3 &)const")
+}
+
+// 0x324cec — __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE6appendERKS3_
+#[doc(alias = "G3D::Array<RBX::IndexedTree *,10,32ul>::append(RBX::IndexedTree * const&)")]
+// was: G3D::Array<RBX::IndexedTree *,10,32ul>::append(RBX::IndexedTree * const&)
+pub fn stub_324cec() -> ! {
+    todo!("0x324cec G3D::Array<RBX::IndexedTree *,10,32ul>::append(RBX::IndexedTree * const&)")
+}
+
+// 0x324d48 — __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE6resizeEib
+#[doc(alias = "G3D::Array<RBX::IndexedTree *,10,32ul>::resize(int,bool)")]
+// was: G3D::Array<RBX::IndexedTree *,10,32ul>::resize(int,bool)
+pub fn stub_324d48() -> ! {
+    todo!("0x324d48 G3D::Array<RBX::IndexedTree *,10,32ul>::resize(int,bool)")
+}
+
+// 0x324e00 — __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE7reallocEi
+#[doc(alias = "G3D::Array<RBX::IndexedTree *,10,32ul>::realloc(int)")]
+// was: G3D::Array<RBX::IndexedTree *,10,32ul>::realloc(int)
+pub fn stub_324e00() -> ! {
+    todo!("0x324e00 G3D::Array<RBX::IndexedTree *,10,32ul>::realloc(int)")
+}
+
+// 0x324fe8 — __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EED2Ev
+#[doc(alias = "G3D::Array<RBX::IndexedTree *,10,32ul>::~Array()")]
+// was: G3D::Array<RBX::IndexedTree *,10,32ul>::~Array()
+pub fn stub_324fe8() -> ! {
+    todo!("0x324fe8 G3D::Array<RBX::IndexedTree *,10,32ul>::~Array()")
+}
+
+// 0x3250bc — __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EEC2Ev
+#[doc(alias = "G3D::Array<RBX::IndexedTree *,10,32ul>::Array(void)")]
+// was: G3D::Array<RBX::IndexedTree *,10,32ul>::Array(void)
+pub fn stub_3250bc() -> ! {
+    todo!("0x3250bc G3D::Array<RBX::IndexedTree *,10,32ul>::Array(void)")
+}
+
+// 0x3252f8 — __ZN3RBX18InterpolatedCFrame8setValueEPNS_12PartInstanceERKN3G3D15CoordinateFrameERKNS_10RemoteTimeE
+#[doc(alias = "RBX::InterpolatedCFrame::setValue(RBX::PartInstance *,G3D::CoordinateFrame const&,RBX::RemoteTime const&)")]
+// was: RBX::InterpolatedCFrame::setValue(RBX::PartInstance *,G3D::CoordinateFrame const&,RBX::RemoteTime const&)
+pub fn stub_3252f8() -> ! {
+    todo!("0x3252f8 RBX::InterpolatedCFrame::setValue(RBX::PartInstance *,G3D::CoordinateFrame const&,RBX::RemoteTime const&)")
+}
+
+// 0x325b08 — __ZN3RBX18InterpolatedCFrame16setRenderedFrameERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::InterpolatedCFrame::setRenderedFrame(G3D::CoordinateFrame const&)")]
+// was: RBX::InterpolatedCFrame::setRenderedFrame(G3D::CoordinateFrame const&)
+pub fn stub_325b08() -> ! {
+    todo!("0x325b08 RBX::InterpolatedCFrame::setRenderedFrame(G3D::CoordinateFrame const&)")
+}
+
+// 0x325b4c — __ZN3RBX18InterpolatedCFrame16setRenderedFrameERKN3G3D15CoordinateFrameERKNS_10RemoteTimeE
+#[doc(alias = "RBX::InterpolatedCFrame::setRenderedFrame(G3D::CoordinateFrame const&,RBX::RemoteTime const&)")]
+// was: RBX::InterpolatedCFrame::setRenderedFrame(G3D::CoordinateFrame const&,RBX::RemoteTime const&)
+pub fn stub_325b4c() -> ! {
+    todo!("0x325b4c RBX::InterpolatedCFrame::setRenderedFrame(G3D::CoordinateFrame const&,RBX::RemoteTime const&)")
+}
+
+// 0x35677c — __ZN3RBX4Math12sumDeltaAxisERKN3G3D7Matrix3ES4_
+#[doc(alias = "RBX::Math::sumDeltaAxis(G3D::Matrix3 const&,G3D::Matrix3 const&)")]
+// was: RBX::Math::sumDeltaAxis(G3D::Matrix3 const&,G3D::Matrix3 const&)
+pub fn stub_35677c() -> ! {
+    todo!("0x35677c RBX::Math::sumDeltaAxis(G3D::Matrix3 const&,G3D::Matrix3 const&)")
+}
+
+// 0x3567e0 — __ZN3RBX4Math19mulMatrixDiagVectorERKN3G3D7Matrix3ERKNS1_7Vector3ERS2_
+#[doc(alias = "RBX::Math::mulMatrixDiagVector(G3D::Matrix3 const&,G3D::Vector3 const&,G3D::Matrix3&)")]
+// was: RBX::Math::mulMatrixDiagVector(G3D::Matrix3 const&,G3D::Vector3 const&,G3D::Matrix3&)
+pub fn stub_3567e0() -> ! {
+    todo!("0x3567e0 RBX::Math::mulMatrixDiagVector(G3D::Matrix3 const&,G3D::Vector3 const&,G3D::Matrix3&)")
+}
+
+// 0x356878 — __ZN3RBX4Math24mulMatrixMatrixTransposeERKN3G3D7Matrix3ES4_RS2_
+#[doc(alias = "RBX::Math::mulMatrixMatrixTranspose(G3D::Matrix3 const&,G3D::Matrix3 const&,G3D::Matrix3&)")]
+// was: RBX::Math::mulMatrixMatrixTranspose(G3D::Matrix3 const&,G3D::Matrix3 const&,G3D::Matrix3&)
+pub fn stub_356878() -> ! {
+    todo!("0x356878 RBX::Math::mulMatrixMatrixTranspose(G3D::Matrix3 const&,G3D::Matrix3 const&,G3D::Matrix3&)")
+}
+
+// 0x356ae0 — __ZN3RBX4Math13getFocusSpaceERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::Math::getFocusSpace(G3D::CoordinateFrame const&)")]
+// was: RBX::Math::getFocusSpace(G3D::CoordinateFrame const&)
+pub fn stub_356ae0() -> ! {
+    todo!("0x356ae0 RBX::Math::getFocusSpace(G3D::CoordinateFrame const&)")
+}
+
+// 0x356b18 — __ZN3RBX4Math19getHeadingElevationERKN3G3D15CoordinateFrameERfS5_
+#[doc(alias = "RBX::Math::getHeadingElevation(G3D::CoordinateFrame const&,float &,float &)")]
+// was: RBX::Math::getHeadingElevation(G3D::CoordinateFrame const&,float &,float &)
+pub fn stub_356b18() -> ! {
+    todo!("0x356b18 RBX::Math::getHeadingElevation(G3D::CoordinateFrame const&,float &,float &)")
+}
+
+// 0x356b84 — __ZN3RBX4Math19setHeadingElevationERN3G3D15CoordinateFrameEff
+#[doc(alias = "RBX::Math::setHeadingElevation(G3D::CoordinateFrame &,float,float)")]
+// was: RBX::Math::setHeadingElevation(G3D::CoordinateFrame &,float,float)
+pub fn stub_356b84() -> ! {
+    todo!("0x356b84 RBX::Math::setHeadingElevation(G3D::CoordinateFrame &,float,float)")
+}
+
+// 0x356c3c — __ZN3RBX4Math8lessThanERKN3G3D7Vector3ES4_
+#[doc(alias = "RBX::Math::lessThan(G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: RBX::Math::lessThan(G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_356c3c() -> ! {
+    todo!("0x356c3c RBX::Math::lessThan(G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0x356cc8 — __ZN3RBX4Math15isNanInfVector3ERKN3G3D7Vector3E
+#[doc(alias = "RBX::Math::isNanInfVector3(G3D::Vector3 const&)")]
+// was: RBX::Math::isNanInfVector3(G3D::Vector3 const&)
+pub fn stub_356cc8() -> ! {
+    todo!("0x356cc8 RBX::Math::isNanInfVector3(G3D::Vector3 const&)")
+}
+
+// 0x356d38 — __ZN3RBX4Math21isNanInfDenormVector3ERKN3G3D7Vector3E
+#[doc(alias = "RBX::Math::isNanInfDenormVector3(G3D::Vector3 const&)")]
+// was: RBX::Math::isNanInfDenormVector3(G3D::Vector3 const&)
+pub fn stub_356d38() -> ! {
+    todo!("0x356d38 RBX::Math::isNanInfDenormVector3(G3D::Vector3 const&)")
+}
+
+// 0x356d70 — __ZN3RBX4Math11hasNanOrInfERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::Math::hasNanOrInf(G3D::CoordinateFrame const&)")]
+// was: RBX::Math::hasNanOrInf(G3D::CoordinateFrame const&)
+pub fn stub_356d70() -> ! {
+    todo!("0x356d70 RBX::Math::hasNanOrInf(G3D::CoordinateFrame const&)")
+}
+
+// 0x356df4 — __ZN3RBX4Math9fixDenormERN3G3D7Vector3E
+#[doc(alias = "RBX::Math::fixDenorm(G3D::Vector3 &)")]
+// was: RBX::Math::fixDenorm(G3D::Vector3 &)
+pub fn stub_356df4() -> ! {
+    todo!("0x356df4 RBX::Math::fixDenorm(G3D::Vector3 &)")
+}
+
+// 0x35711c — __ZN3RBX4Math16getIWorldAtPointERKN3G3D7Vector3ES4_RKNS1_7Matrix3Ef
+#[doc(alias = "RBX::Math::getIWorldAtPoint(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Matrix3 const&,float)")]
+// was: RBX::Math::getIWorldAtPoint(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Matrix3 const&,float)
+pub fn stub_35711c() -> ! {
+    todo!("0x35711c RBX::Math::getIWorldAtPoint(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Matrix3 const&,float)")
+}
+
+// 0x3571c0 — __ZN3RBX4Math15getIBodyAtPointERKN3G3D7Vector3ERKNS1_7Matrix3Ef
+#[doc(alias = "RBX::Math::getIBodyAtPoint(G3D::Vector3 const&,G3D::Matrix3 const&,float)")]
+// was: RBX::Math::getIBodyAtPoint(G3D::Vector3 const&,G3D::Matrix3 const&,float)
+pub fn stub_3571c0() -> ! {
+    todo!("0x3571c0 RBX::Math::getIBodyAtPoint(G3D::Vector3 const&,G3D::Matrix3 const&,float)")
+}
+
+// 0x357250 — __ZN3RBX4Math19momentToObjectSpaceERKN3G3D7Matrix3ES4_
+#[doc(alias = "RBX::Math::momentToObjectSpace(G3D::Matrix3 const&,G3D::Matrix3 const&)")]
+// was: RBX::Math::momentToObjectSpace(G3D::Matrix3 const&,G3D::Matrix3 const&)
+pub fn stub_357250() -> ! {
+    todo!("0x357250 RBX::Math::momentToObjectSpace(G3D::Matrix3 const&,G3D::Matrix3 const&)")
+}
