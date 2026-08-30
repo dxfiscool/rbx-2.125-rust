@@ -354,3 +354,352 @@ pub fn stub_272268() -> ! {
     todo!("0x272268 RBX::Lua::Bridge<G3D::Vector3int16,true>::on_index(G3D::Vector3int16 const&,char const*,lua_State *)")
 }
 
+// 0x2723d0 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_newindexERS3_PKcP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::on_newindex(G3D::Vector3int16&,char const*,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector3int16,true>::on_newindex(G3D::Vector3int16&,char const*,lua_State *)
+pub fn stub_2723d0() -> ! {
+    todo!("0x2723d0 RBX::Lua::Bridge<G3D::Vector3int16,true>::on_newindex(G3D::Vector3int16&,char const*,lua_State *)")
+}
+
+// 0x272804 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8on_indexERKS3_PKcP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_index(G3D::Vector2int16 const&,char const*,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2int16,true>::on_index(G3D::Vector2int16 const&,char const*,lua_State *)
+pub fn stub_272804() -> ! {
+    todo!("0x272804 RBX::Lua::Bridge<G3D::Vector2int16,true>::on_index(G3D::Vector2int16 const&,char const*,lua_State *)")
+}
+
+// 0x272940 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_newindexERS3_PKcP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_newindex(G3D::Vector2int16&,char const*,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2int16,true>::on_newindex(G3D::Vector2int16&,char const*,lua_State *)
+pub fn stub_272940() -> ! {
+    todo!("0x272940 RBX::Lua::Bridge<G3D::Vector2int16,true>::on_newindex(G3D::Vector2int16&,char const*,lua_State *)")
+}
+
+// 0x272d70 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE8on_indexERKS3_PKcP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_index(G3D::Vector2 const&,char const*,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2,true>::on_index(G3D::Vector2 const&,char const*,lua_State *)
+pub fn stub_272d70() -> ! {
+    todo!("0x272d70 RBX::Lua::Bridge<G3D::Vector2,true>::on_index(G3D::Vector2 const&,char const*,lua_State *)")
+}
+
+// 0x272fe4 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_newindexERS3_PKcP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_newindex(G3D::Vector2&,char const*,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2,true>::on_newindex(G3D::Vector2&,char const*,lua_State *)
+pub fn stub_272fe4() -> ! {
+    todo!("0x272fe4 RBX::Lua::Bridge<G3D::Vector2,true>::on_newindex(G3D::Vector2&,char const*,lua_State *)")
+}
+
+// 0x2749f0 — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE8on_indexERKS3_PKcP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_index(G3D::CoordinateFrame const&,char const*,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_index(G3D::CoordinateFrame const&,char const*,lua_State *)
+pub fn stub_2749f0() -> ! {
+    todo!("0x2749f0 RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_index(G3D::CoordinateFrame const&,char const*,lua_State *)")
+}
+
+// 0x274da0 — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_newindexERS3_PKcP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_newindex(G3D::CoordinateFrame&,char const*,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_newindex(G3D::CoordinateFrame&,char const*,lua_State *)
+pub fn stub_274da0() -> ! {
+    todo!("0x274da0 RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_newindex(G3D::CoordinateFrame&,char const*,lua_State *)")
+}
+
+// 0x276858 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13registerClassEP9lua_StatePFiS6_ES8_
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+// was: RBX::Lua::Bridge<G3D::Vector3int16,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
+pub fn stub_276858() -> ! {
+    todo!("0x276858 RBX::Lua::Bridge<G3D::Vector3int16,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")
+}
+
+// 0x276a48 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13registerClassEP9lua_StatePFiS6_ES8_
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+// was: RBX::Lua::Bridge<G3D::Vector2int16,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
+pub fn stub_276a48() -> ! {
+    todo!("0x276a48 RBX::Lua::Bridge<G3D::Vector2int16,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")
+}
+
+// 0x276c38 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE13registerClassEP9lua_StatePFiS6_ES8_
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+// was: RBX::Lua::Bridge<G3D::Vector3,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
+pub fn stub_276c38() -> ! {
+    todo!("0x276c38 RBX::Lua::Bridge<G3D::Vector3,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")
+}
+
+// 0x276e28 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE13registerClassEP9lua_StatePFiS6_ES8_
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+// was: RBX::Lua::Bridge<G3D::Vector2,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
+pub fn stub_276e28() -> ! {
+    todo!("0x276e28 RBX::Lua::Bridge<G3D::Vector2,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")
+}
+
+// 0x277018 — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE13registerClassEP9lua_StatePFiS6_ES8_
+#[doc(alias = "RBX::Lua::Bridge<G3D::CoordinateFrame,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+// was: RBX::Lua::Bridge<G3D::CoordinateFrame,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
+pub fn stub_277018() -> ! {
+    todo!("0x277018 RBX::Lua::Bridge<G3D::CoordinateFrame,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")
+}
+
+// 0x2774ac — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
+#[doc(alias = "G3D::Color3* RBX::Lua::Bridge<G3D::Color3,true>::pushNewObject<G3D::Color3>(lua_State *,G3D::Color3)")]
+// was: G3D::Color3* RBX::Lua::Bridge<G3D::Color3,true>::pushNewObject<G3D::Color3>(lua_State *,G3D::Color3)
+pub fn stub_2774ac() -> ! {
+    todo!("0x2774ac G3D::Color3* RBX::Lua::Bridge<G3D::Color3,true>::pushNewObject<G3D::Color3>(lua_State *,G3D::Color3)")
+}
+
+// 0x2774f4 — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE13pushNewObjectIPfEEPS3_P9lua_StateT_
+#[doc(alias = "G3D::Color3* RBX::Lua::Bridge<G3D::Color3,true>::pushNewObject<float *>(lua_State *,float *)")]
+// was: G3D::Color3* RBX::Lua::Bridge<G3D::Color3,true>::pushNewObject<float *>(lua_State *,float *)
+pub fn stub_2774f4() -> ! {
+    todo!("0x2774f4 G3D::Color3* RBX::Lua::Bridge<G3D::Color3,true>::pushNewObject<float *>(lua_State *,float *)")
+}
+
+// 0x27759c — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
+#[doc(alias = "G3D::Vector3* RBX::Lua::Bridge<G3D::Vector3,true>::pushNewObject<G3D::Vector3>(lua_State *,G3D::Vector3)")]
+// was: G3D::Vector3* RBX::Lua::Bridge<G3D::Vector3,true>::pushNewObject<G3D::Vector3>(lua_State *,G3D::Vector3)
+pub fn stub_27759c() -> ! {
+    todo!("0x27759c G3D::Vector3* RBX::Lua::Bridge<G3D::Vector3,true>::pushNewObject<G3D::Vector3>(lua_State *,G3D::Vector3)")
+}
+
+// 0x2775ec — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE13pushNewObjectIPfEEPS3_P9lua_StateT_
+#[doc(alias = "G3D::Vector3* RBX::Lua::Bridge<G3D::Vector3,true>::pushNewObject<float *>(lua_State *,float *)")]
+// was: G3D::Vector3* RBX::Lua::Bridge<G3D::Vector3,true>::pushNewObject<float *>(lua_State *,float *)
+pub fn stub_2775ec() -> ! {
+    todo!("0x2775ec G3D::Vector3* RBX::Lua::Bridge<G3D::Vector3,true>::pushNewObject<float *>(lua_State *,float *)")
+}
+
+// 0x277634 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE13pushNewObjectIPiEEPS3_P9lua_StateT_
+#[doc(alias = "G3D::Vector3int16* RBX::Lua::Bridge<G3D::Vector3int16,true>::pushNewObject<int *>(lua_State *,int *)")]
+// was: G3D::Vector3int16* RBX::Lua::Bridge<G3D::Vector3int16,true>::pushNewObject<int *>(lua_State *,int *)
+pub fn stub_277634() -> ! {
+    todo!("0x277634 G3D::Vector3int16* RBX::Lua::Bridge<G3D::Vector3int16,true>::pushNewObject<int *>(lua_State *,int *)")
+}
+
+// 0x27767c — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8getValueIS3_EEbP9lua_StatejRT_
+#[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<G3D::Vector2int16>(lua_State *,unsigned int,G3D::Vector2int16 &)")]
+// was: bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<G3D::Vector2int16>(lua_State *,unsigned int,G3D::Vector2int16 &)
+pub fn stub_27767c() -> ! {
+    todo!("0x27767c bool RBX::Lua::Bridge<G3D::Vector2int16,true>::getValue<G3D::Vector2int16>(lua_State *,unsigned int,G3D::Vector2int16 &)")
+}
+
+// 0x2776ec — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE13pushNewObjectIPiEEPS3_P9lua_StateT_
+#[doc(alias = "G3D::Vector2int16* RBX::Lua::Bridge<G3D::Vector2int16,true>::pushNewObject<int *>(lua_State *,int *)")]
+// was: G3D::Vector2int16* RBX::Lua::Bridge<G3D::Vector2int16,true>::pushNewObject<int *>(lua_State *,int *)
+pub fn stub_2776ec() -> ! {
+    todo!("0x2776ec G3D::Vector2int16* RBX::Lua::Bridge<G3D::Vector2int16,true>::pushNewObject<int *>(lua_State *,int *)")
+}
+
+// 0x277730 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE8getValueIS3_EEbP9lua_StatejRT_
+#[doc(alias = "bool RBX::Lua::Bridge<G3D::Vector2,true>::getValue<G3D::Vector2>(lua_State *,unsigned int,G3D::Vector2 &)")]
+// was: bool RBX::Lua::Bridge<G3D::Vector2,true>::getValue<G3D::Vector2>(lua_State *,unsigned int,G3D::Vector2 &)
+pub fn stub_277730() -> ! {
+    todo!("0x277730 bool RBX::Lua::Bridge<G3D::Vector2,true>::getValue<G3D::Vector2>(lua_State *,unsigned int,G3D::Vector2 &)")
+}
+
+// 0x2777a8 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE13pushNewObjectIPfEEPS3_P9lua_StateT_
+#[doc(alias = "G3D::Vector2* RBX::Lua::Bridge<G3D::Vector2,true>::pushNewObject<float *>(lua_State *,float *)")]
+// was: G3D::Vector2* RBX::Lua::Bridge<G3D::Vector2,true>::pushNewObject<float *>(lua_State *,float *)
+pub fn stub_2777a8() -> ! {
+    todo!("0x2777a8 G3D::Vector2* RBX::Lua::Bridge<G3D::Vector2,true>::pushNewObject<float *>(lua_State *,float *)")
+}
+
+// 0x2777ec — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
+#[doc(alias = "G3D::Vector2* RBX::Lua::Bridge<G3D::Vector2,true>::pushNewObject<G3D::Vector2>(lua_State *,G3D::Vector2)")]
+// was: G3D::Vector2* RBX::Lua::Bridge<G3D::Vector2,true>::pushNewObject<G3D::Vector2>(lua_State *,G3D::Vector2)
+pub fn stub_2777ec() -> ! {
+    todo!("0x2777ec G3D::Vector2* RBX::Lua::Bridge<G3D::Vector2,true>::pushNewObject<G3D::Vector2>(lua_State *,G3D::Vector2)")
+}
+
+// 0x277894 — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE13pushNewObjectIS3_EEPS3_P9lua_StateT_
+#[doc(alias = "G3D::CoordinateFrame* RBX::Lua::Bridge<G3D::CoordinateFrame,true>::pushNewObject<G3D::CoordinateFrame>(lua_State *,G3D::CoordinateFrame)")]
+// was: G3D::CoordinateFrame* RBX::Lua::Bridge<G3D::CoordinateFrame,true>::pushNewObject<G3D::CoordinateFrame>(lua_State *,G3D::CoordinateFrame)
+pub fn stub_277894() -> ! {
+    todo!("0x277894 G3D::CoordinateFrame* RBX::Lua::Bridge<G3D::CoordinateFrame,true>::pushNewObject<G3D::CoordinateFrame>(lua_State *,G3D::CoordinateFrame)")
+}
+
+// 0x2778e4 — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE8getValueIS3_EEbP9lua_StatejRT_
+#[doc(alias = "bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<G3D::CoordinateFrame>(lua_State *,unsigned int,G3D::CoordinateFrame &)")]
+// was: bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<G3D::CoordinateFrame>(lua_State *,unsigned int,G3D::CoordinateFrame &)
+pub fn stub_2778e4() -> ! {
+    todo!("0x2778e4 bool RBX::Lua::Bridge<G3D::CoordinateFrame,true>::getValue<G3D::CoordinateFrame>(lua_State *,unsigned int,G3D::CoordinateFrame &)")
+}
+
+// 0x27797c — __ZN3G3D7Matrix313fromAxisAngleERKNS_7Vector3Ef
+#[doc(alias = "G3D::Matrix3::fromAxisAngle(G3D::Vector3 const&,float)")]
+// was: G3D::Matrix3::fromAxisAngle(G3D::Vector3 const&,float)
+pub fn stub_27797c() -> ! {
+    todo!("0x27797c G3D::Matrix3::fromAxisAngle(G3D::Vector3 const&,float)")
+}
+
+// 0x277c90 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE5on_gcEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::on_gc(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector3int16,true>::on_gc(lua_State *)
+pub fn stub_277c90() -> ! {
+    todo!("0x277c90 RBX::Lua::Bridge<G3D::Vector3int16,true>::on_gc(lua_State *)")
+}
+
+// 0x277cac — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE5on_eqEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::on_eq(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector3int16,true>::on_eq(lua_State *)
+pub fn stub_277cac() -> ! {
+    todo!("0x277cac RBX::Lua::Bridge<G3D::Vector3int16,true>::on_eq(lua_State *)")
+}
+
+// 0x277cf8 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::on_tostring(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector3int16,true>::on_tostring(lua_State *)
+pub fn stub_277cf8() -> ! {
+    todo!("0x277cf8 RBX::Lua::Bridge<G3D::Vector3int16,true>::on_tostring(lua_State *)")
+}
+
+// 0x277d1c — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE5on_gcEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_gc(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2int16,true>::on_gc(lua_State *)
+pub fn stub_277d1c() -> ! {
+    todo!("0x277d1c RBX::Lua::Bridge<G3D::Vector2int16,true>::on_gc(lua_State *)")
+}
+
+// 0x277d38 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE5on_eqEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_eq(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2int16,true>::on_eq(lua_State *)
+pub fn stub_277d38() -> ! {
+    todo!("0x277d38 RBX::Lua::Bridge<G3D::Vector2int16,true>::on_eq(lua_State *)")
+}
+
+// 0x277d74 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_tostring(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2int16,true>::on_tostring(lua_State *)
+pub fn stub_277d74() -> ! {
+    todo!("0x277d74 RBX::Lua::Bridge<G3D::Vector2int16,true>::on_tostring(lua_State *)")
+}
+
+// 0x277d98 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE5on_gcEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_gc(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector3,true>::on_gc(lua_State *)
+pub fn stub_277d98() -> ! {
+    todo!("0x277d98 RBX::Lua::Bridge<G3D::Vector3,true>::on_gc(lua_State *)")
+}
+
+// 0x277db4 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE5on_eqEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_eq(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector3,true>::on_eq(lua_State *)
+pub fn stub_277db4() -> ! {
+    todo!("0x277db4 RBX::Lua::Bridge<G3D::Vector3,true>::on_eq(lua_State *)")
+}
+
+// 0x277e20 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_tostring(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector3,true>::on_tostring(lua_State *)
+pub fn stub_277e20() -> ! {
+    todo!("0x277e20 RBX::Lua::Bridge<G3D::Vector3,true>::on_tostring(lua_State *)")
+}
+
+// 0x277e44 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE5on_gcEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_gc(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2,true>::on_gc(lua_State *)
+pub fn stub_277e44() -> ! {
+    todo!("0x277e44 RBX::Lua::Bridge<G3D::Vector2,true>::on_gc(lua_State *)")
+}
+
+// 0x277e60 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE5on_eqEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_eq(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2,true>::on_eq(lua_State *)
+pub fn stub_277e60() -> ! {
+    todo!("0x277e60 RBX::Lua::Bridge<G3D::Vector2,true>::on_eq(lua_State *)")
+}
+
+// 0x277eb8 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_tostring(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2,true>::on_tostring(lua_State *)
+pub fn stub_277eb8() -> ! {
+    todo!("0x277eb8 RBX::Lua::Bridge<G3D::Vector2,true>::on_tostring(lua_State *)")
+}
+
+// 0x277edc — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE5on_gcEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_gc(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_gc(lua_State *)
+pub fn stub_277edc() -> ! {
+    todo!("0x277edc RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_gc(lua_State *)")
+}
+
+// 0x277ef8 — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE5on_eqEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_eq(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_eq(lua_State *)
+pub fn stub_277ef8() -> ! {
+    todo!("0x277ef8 RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_eq(lua_State *)")
+}
+
+// 0x277f70 — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_tostring(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_tostring(lua_State *)
+pub fn stub_277f70() -> ! {
+    todo!("0x277f70 RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_tostring(lua_State *)")
+}
+
+// 0x278084 — __ZNK3RBX6RbxRay8distanceERKN3G3D7Vector3E
+#[doc(alias = "RBX::RbxRay::distance(G3D::Vector3 const&)const")]
+// was: RBX::RbxRay::distance(G3D::Vector3 const&)const
+pub fn stub_278084() -> ! {
+    todo!("0x278084 RBX::RbxRay::distance(G3D::Vector3 const&)const")
+}
+
+// 0x2780dc — __ZNK3RBX6RbxRay12closestPointERKN3G3D7Vector3E
+#[doc(alias = "RBX::RbxRay::closestPoint(G3D::Vector3 const&)const")]
+// was: RBX::RbxRay::closestPoint(G3D::Vector3 const&)const
+pub fn stub_2780dc() -> ! {
+    todo!("0x2780dc RBX::RbxRay::closestPoint(G3D::Vector3 const&)const")
+}
+
+// 0x27832c — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE11on_tostringERKS3_P9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_tostring(G3D::Color3 const&,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Color3,true>::on_tostring(G3D::Color3 const&,lua_State *)
+pub fn stub_27832c() -> ! {
+    todo!("0x27832c RBX::Lua::Bridge<G3D::Color3,true>::on_tostring(G3D::Color3 const&,lua_State *)")
+}
+
+// 0x278574 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringERKS3_P9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::on_tostring(G3D::Vector3int16 const&,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector3int16,true>::on_tostring(G3D::Vector3int16 const&,lua_State *)
+pub fn stub_278574() -> ! {
+    todo!("0x278574 RBX::Lua::Bridge<G3D::Vector3int16,true>::on_tostring(G3D::Vector3int16 const&,lua_State *)")
+}
+
+// 0x278698 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringERKS3_P9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_tostring(G3D::Vector2int16 const&,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2int16,true>::on_tostring(G3D::Vector2int16 const&,lua_State *)
+pub fn stub_278698() -> ! {
+    todo!("0x278698 RBX::Lua::Bridge<G3D::Vector2int16,true>::on_tostring(G3D::Vector2int16 const&,lua_State *)")
+}
+
+// 0x2787bc — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringERKS3_P9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_tostring(G3D::Vector3 const&,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector3,true>::on_tostring(G3D::Vector3 const&,lua_State *)
+pub fn stub_2787bc() -> ! {
+    todo!("0x2787bc RBX::Lua::Bridge<G3D::Vector3,true>::on_tostring(G3D::Vector3 const&,lua_State *)")
+}
+
+// 0x2788e0 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringERKS3_P9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_tostring(G3D::Vector2 const&,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Vector2,true>::on_tostring(G3D::Vector2 const&,lua_State *)
+pub fn stub_2788e0() -> ! {
+    todo!("0x2788e0 RBX::Lua::Bridge<G3D::Vector2,true>::on_tostring(G3D::Vector2 const&,lua_State *)")
+}
+
+// 0x278b28 — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringERKS3_P9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_tostring(G3D::CoordinateFrame const&,lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_tostring(G3D::CoordinateFrame const&,lua_State *)
+pub fn stub_278b28() -> ! {
+    todo!("0x278b28 RBX::Lua::Bridge<G3D::CoordinateFrame,true>::on_tostring(G3D::CoordinateFrame const&,lua_State *)")
+}
+
+// 0x279e44 — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE13registerClassEP9lua_StatePFiS6_ES8_
+#[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+// was: RBX::Lua::Bridge<G3D::Color3,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
+pub fn stub_279e44() -> ! {
+    todo!("0x279e44 RBX::Lua::Bridge<G3D::Color3,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")
+}
+
+// 0x279f58 — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE5on_gcEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_gc(lua_State *)")]
+// was: RBX::Lua::Bridge<G3D::Color3,true>::on_gc(lua_State *)
+pub fn stub_279f58() -> ! {
+    todo!("0x279f58 RBX::Lua::Bridge<G3D::Color3,true>::on_gc(lua_State *)")
+}
