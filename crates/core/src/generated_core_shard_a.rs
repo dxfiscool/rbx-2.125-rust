@@ -1,4 +1,4 @@
-//! core shard A — 220 core stubs EA-sorted, next uncovered.
+//! core shard A — 340 core stubs EA-sorted, next uncovered.
 //! Source: `ida/export.json` filtered where demangled contains boost::|RBX::Signals|shared_ptr|weak_ptr|function|bind, excluding Reflection/Instance/Ogre/RakNet/Network, EA-sorted, next 120 after existing stubs.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, single quotes removed.
 
@@ -1420,4 +1420,729 @@ pub fn stub_0x6b7a0c() -> ! {
 // 0x6b7b7c — __ZN3rbx7signals6signalIFvN3G3D7Vector3EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE — rbx::signals::signal<void ()(G3D::Vector3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot> &)
 pub fn stub_0x6b7b7c() -> ! {
     todo!("0x6b7b7c __ZN3rbx7signals6signalIFvN3G3D7Vector3EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::insert(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot *)")]
+// 0x6c5c78 — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE6insertEPNS7_4slotE — rbx::signals::signal<void ()(RBX::UIEvent const&)>::insert(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot *)
+pub fn stub_0x6c5c78() -> ! {
+    todo!("0x6c5c78 __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE6insertEPNS7_4slotE")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::disconnect(void)")]
+// 0x6c5fa8 — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot10disconnectEv — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::disconnect(void)
+pub fn stub_0x6c5fa8() -> ! {
+    todo!("0x6c5fa8 __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot10disconnectEv")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::connected(void)const")]
+// 0x6c60b8 — __ZNK3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot9connectedEv — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::connected(void)const
+pub fn stub_0x6c60b8() -> ! {
+    todo!("0x6c60b8 __ZNK3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot9connectedEv")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::remove(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot *)")]
+// 0x6c60ec — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE6removeEPNS7_4slotE — rbx::signals::signal<void ()(RBX::UIEvent const&)>::remove(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot *)
+pub fn stub_0x6c60ec() -> ! {
+    todo!("0x6c60ec __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE6removeEPNS7_4slotE")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::safe_static_init_mutex(void)")]
+// 0x6c61dc — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot22safe_static_init_mutexEv — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::safe_static_init_mutex(void)
+pub fn stub_0x6c61dc() -> ! {
+    todo!("0x6c61dc __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot22safe_static_init_mutexEv")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::safe_static_do_get_mutex(void)")]
+// 0x6c61e0 — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::safe_static_do_get_mutex(void)
+pub fn stub_0x6c61e0() -> ! {
+    todo!("0x6c61e0 __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slot24safe_static_do_get_mutexEv")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::~slot()")]
+// 0x6c62d0 — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotD1Ev — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::~slot()
+pub fn stub_0x6c62d0() -> ! {
+    todo!("0x6c62d0 __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotD1Ev")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::~slot()")]
+// 0x6c62fc — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotD0Ev — rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot::~slot()
+pub fn stub_0x6c62fc() -> ! {
+    todo!("0x6c62fc __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotD0Ev")
+}
+
+#[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::TouchPair const&)>::operator()(RBX::TouchPair const&)")]
+// 0x6d1e9c — __ZN3rbx7signals16signal_with_argsILi1EFvRKN3RBX9TouchPairEEEclES5_ — rbx::signals::signal_with_args<1,void ()(RBX::TouchPair const&)>::operator()(RBX::TouchPair const&)
+pub fn stub_0x6d1e9c() -> ! {
+    todo!("0x6d1e9c __ZN3rbx7signals16signal_with_argsILi1EFvRKN3RBX9TouchPairEEEclES5_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::on_error(std::exception &)")]
+// 0x6d47bc — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE8on_errorERSt9exception — rbx::signals::signal<void ()(RBX::TouchPair const&)>::on_error(std::exception &)
+pub fn stub_0x6d47bc() -> ! {
+    todo!("0x6d47bc __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE8on_errorERSt9exception")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::safe_static_init_mutex(void)")]
+// 0x6d47e8 — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE22safe_static_init_mutexEv — rbx::signals::signal<void ()(RBX::TouchPair const&)>::safe_static_init_mutex(void)
+pub fn stub_0x6d47e8() -> ! {
+    todo!("0x6d47e8 __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE22safe_static_init_mutexEv")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::safe_static_do_get_mutex(void)")]
+// 0x6d47ec — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(RBX::TouchPair const&)>::safe_static_do_get_mutex(void)
+pub fn stub_0x6d47ec() -> ! {
+    todo!("0x6d47ec __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE24safe_static_do_get_mutexEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::BallCellContact,228u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x72a390 — __ZN5boost14singleton_poolIN3RBX15BallCellContactELj228ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::BallCellContact,228u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x72a390() -> ! {
+    todo!("0x72a390 __ZN5boost14singleton_poolIN3RBX15BallCellContactELj228ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x72b770 — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x72b770() -> ! {
+    todo!("0x72b770 __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x72b8e0 — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x72b8e0() -> ! {
+    todo!("0x72b8e0 __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::construct(void)")]
+// 0x72c074 — __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEE9constructEv — boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::construct(void)
+pub fn stub_0x72c074() -> ! {
+    todo!("0x72c074 __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEE9constructEv")
+}
+
+#[doc(alias = "boost::pool<RBX::roblox_allocator>::ordered_malloc_need_resize(void)")]
+// 0x72c17c — __ZN5boost4poolIN3RBX16roblox_allocatorEE26ordered_malloc_need_resizeEv — boost::pool<RBX::roblox_allocator>::ordered_malloc_need_resize(void)
+pub fn stub_0x72c17c() -> ! {
+    todo!("0x72c17c __ZN5boost4poolIN3RBX16roblox_allocatorEE26ordered_malloc_need_resizeEv")
+}
+
+#[doc(alias = "boost::simple_segregated_storage<unsigned long>::add_ordered_block(void *,unsigned long,unsigned long)")]
+// 0x72c2b0 — __ZN5boost25simple_segregated_storageImE17add_ordered_blockEPvmm — boost::simple_segregated_storage<unsigned long>::add_ordered_block(void *,unsigned long,unsigned long)
+pub fn stub_0x72c2b0() -> ! {
+    todo!("0x72c2b0 __ZN5boost25simple_segregated_storageImE17add_ordered_blockEPvmm")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x72c468 — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x72c468() -> ! {
+    todo!("0x72c468 __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x72c49c — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x72c49c() -> ! {
+    todo!("0x72c49c __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode* boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::construct<int,int,RBX::Vector3int32>(int &,int &,RBX::Vector3int32 const&)")]
+// 0x72c544 — __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeENS1_16roblox_allocatorEE9constructIiiNS1_12Vector3int32EEEPS7_RT_RT0_RKT1_ — RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode* boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::construct<int,int,RBX::Vector3int32>(int &,int &,RBX::Vector3int32 const&)
+pub fn stub_0x72c544() -> ! {
+    todo!("0x72c544 __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeENS1_16roblox_allocatorEE9constructIiiNS1_12Vector3int32EEEPS7_RT_RT0_RKT1_")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x72c70c — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x72c70c() -> ! {
+    todo!("0x72c70c __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x72c73c — __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,32u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x72c73c() -> ! {
+    todo!("0x72c73c __ZN5boost14singleton_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeELj32ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x72c7c0 — __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x72c7c0() -> ! {
+    todo!("0x72c7c0 __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x72c80c — __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x72c80c() -> ! {
+    todo!("0x72c80c __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::BlockBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x72c844 — __ZN5boost14singleton_poolIN3RBX17BlockBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::BlockBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x72c844() -> ! {
+    todo!("0x72c844 __ZN5boost14singleton_poolIN3RBX17BlockBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::BlockBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x72c890 — __ZN5boost14singleton_poolIN3RBX17BlockBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::BlockBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x72c890() -> ! {
+    todo!("0x72c890 __ZN5boost14singleton_poolIN3RBX17BlockBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::BallPolyContact,212u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x72c8c8 — __ZN5boost14singleton_poolIN3RBX15BallPolyContactELj212ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::BallPolyContact,212u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x72c8c8() -> ! {
+    todo!("0x72c8c8 __ZN5boost14singleton_poolIN3RBX15BallPolyContactELj212ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::BallPolyContact,212u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x72c914 — __ZN5boost14singleton_poolIN3RBX15BallPolyContactELj212ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::BallPolyContact,212u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x72c914() -> ! {
+    todo!("0x72c914 __ZN5boost14singleton_poolIN3RBX15BallPolyContactELj212ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::BallBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x72c94c — __ZN5boost14singleton_poolIN3RBX16BallBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::BallBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x72c94c() -> ! {
+    todo!("0x72c94c __ZN5boost14singleton_poolIN3RBX16BallBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::BallBallContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x72c988 — __ZN5boost14singleton_poolIN3RBX15BallBallContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::BallBallContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x72c988() -> ! {
+    todo!("0x72c988 __ZN5boost14singleton_poolIN3RBX15BallBallContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Primitive *>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::emplace_impl<boost::unordered::detail::emplace_args1<RBX::Primitive *>>(RBX::Primitive * const&,boost::unordered::detail::emplace_args1<RBX::Primitive *> const&)")]
+// 0x72cbe0 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE12emplace_implINS1_13emplace_args1IS6_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEbERKS6_RKT_ — std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Primitive *>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::emplace_impl<boost::unordered::detail::emplace_args1<RBX::Primitive *>>(RBX::Primitive * const&,boost::unordered::detail::emplace_args1<RBX::Primitive *> const&)
+pub fn stub_0x72cbe0() -> ! {
+    todo!("0x72cbe0 __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE12emplace_implINS1_13emplace_args1IS6_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEbERKS6_RKT_")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::reserve_for_insert(unsigned long)")]
+// 0x72cd70 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::reserve_for_insert(unsigned long)
+pub fn stub_0x72cd70() -> ! {
+    todo!("0x72cd70 __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE18reserve_for_insertEm")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::create_buckets(unsigned long)")]
+// 0x72cdc0 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::create_buckets(unsigned long)
+pub fn stub_0x72cdc0() -> ! {
+    todo!("0x72cdc0 __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14create_bucketsEm")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::min_buckets_for_size(unsigned long)const")]
+// 0x72cee8 — __ZNK5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE20min_buckets_for_sizeEm — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::min_buckets_for_size(unsigned long)const
+pub fn stub_0x72cee8() -> ! {
+    todo!("0x72cee8 __ZNK5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE20min_buckets_for_sizeEm")
+}
+
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::rehash_impl(unsigned long)")]
+// 0x72cf78 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE11rehash_implEm — boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::rehash_impl(unsigned long)
+pub fn stub_0x72cf78() -> ! {
+    todo!("0x72cf78 __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE11rehash_implEm")
+}
+
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>> &,boost::unordered::detail::ptr_bucket *)")]
+// 0x72cfa4 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE15place_in_bucketERNS1_5tableISC_EEPNS1_10ptr_bucketE — boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>> &,boost::unordered::detail::ptr_bucket *)
+pub fn stub_0x72cfa4() -> ! {
+    todo!("0x72cfa4 __ZN5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE15place_in_bucketERNS1_5tableISC_EEPNS1_10ptr_bucketE")
+}
+
+#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive *>>>::construct(void)")]
+// 0x72cff8 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPN3RBX9PrimitiveEEEEE9constructEv — boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive *>>>::construct(void)
+pub fn stub_0x72cff8() -> ! {
+    todo!("0x72cff8 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeIPN3RBX9PrimitiveEEEEE9constructEv")
+}
+
+#[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Primitive *>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::find_node_impl<RBX::Primitive *,std::equal_to<RBX::Primitive *>>(unsigned long,RBX::Primitive * const&,std::equal_to<RBX::Primitive *> const&)const")]
+// 0x72d030 — __ZNK5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14find_node_implIS6_SB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_ — boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<RBX::Primitive *>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::find_node_impl<RBX::Primitive *,std::equal_to<RBX::Primitive *>>(unsigned long,RBX::Primitive * const&,std::equal_to<RBX::Primitive *> const&)const
+pub fn stub_0x72d030() -> ! {
+    todo!("0x72d030 __ZNK5boost9unordered6detail10table_implINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14find_node_implIS6_SB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::clear(void)")]
+// 0x72d0a0 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE5clearEv — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::clear(void)
+pub fn stub_0x72d0a0() -> ! {
+    todo!("0x72d0a0 __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE5clearEv")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::delete_nodes(boost::unordered::detail::ptr_bucket *,boost::unordered::detail::ptr_bucket *)")]
+// 0x72d0d0 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE12delete_nodesEPNS1_10ptr_bucketESF_ — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::delete_nodes(boost::unordered::detail::ptr_bucket *,boost::unordered::detail::ptr_bucket *)
+pub fn stub_0x72d0d0() -> ! {
+    todo!("0x72d0d0 __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE12delete_nodesEPNS1_10ptr_bucketESF_")
+}
+
+#[doc(alias = "boost::pool<RBX::roblox_allocator>::purge_memory(void)")]
+// 0x72d69c — __ZN5boost4poolIN3RBX16roblox_allocatorEE12purge_memoryEv — boost::pool<RBX::roblox_allocator>::purge_memory(void)
+pub fn stub_0x72d69c() -> ! {
+    todo!("0x72d69c __ZN5boost4poolIN3RBX16roblox_allocatorEE12purge_memoryEv")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::SpatialRegion::Id>,RBX::SpatialRegion::Id,RBX::SpatialRegion::Id::boost_compatible_hash_value,std::equal_to<RBX::SpatialRegion::Id>>>::delete_buckets(void)")]
+// 0x72d750 — __ZN5boost9unordered6detail5tableINS1_3setISaIN3RBX13SpatialRegion2IdEES6_NS6_27boost_compatible_hash_valueESt8equal_toIS6_EEEE14delete_bucketsEv — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::SpatialRegion::Id>,RBX::SpatialRegion::Id,RBX::SpatialRegion::Id::boost_compatible_hash_value,std::equal_to<RBX::SpatialRegion::Id>>>::delete_buckets(void)
+pub fn stub_0x72d750() -> ! {
+    todo!("0x72d750 __ZN5boost9unordered6detail5tableINS1_3setISaIN3RBX13SpatialRegion2IdEES6_NS6_27boost_compatible_hash_valueESt8equal_toIS6_EEEE14delete_bucketsEv")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::delete_buckets(void)")]
+// 0x72d780 — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14delete_bucketsEv — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::delete_buckets(void)
+pub fn stub_0x72d780() -> ! {
+    todo!("0x72d780 __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEE14delete_bucketsEv")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::SpatialRegion::Id>,RBX::SpatialRegion::Id,RBX::SpatialRegion::Id::boost_compatible_hash_value,std::equal_to<RBX::SpatialRegion::Id>>>::table(unsigned long,RBX::SpatialRegion::Id::boost_compatible_hash_value const&,std::equal_to<RBX::SpatialRegion::Id> const&,std::allocator<boost::unordered::detail::ptr_node<RBX::SpatialRegion::Id>> const&)")]
+// 0x72d7b0 — __ZN5boost9unordered6detail5tableINS1_3setISaIN3RBX13SpatialRegion2IdEES6_NS6_27boost_compatible_hash_valueESt8equal_toIS6_EEEEC2EmRKS8_RKSA_RKSaINS1_8ptr_nodeIS6_EEE — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::SpatialRegion::Id>,RBX::SpatialRegion::Id,RBX::SpatialRegion::Id::boost_compatible_hash_value,std::equal_to<RBX::SpatialRegion::Id>>>::table(unsigned long,RBX::SpatialRegion::Id::boost_compatible_hash_value const&,std::equal_to<RBX::SpatialRegion::Id> const&,std::allocator<boost::unordered::detail::ptr_node<RBX::SpatialRegion::Id>> const&)
+pub fn stub_0x72d7b0() -> ! {
+    todo!("0x72d7b0 __ZN5boost9unordered6detail5tableINS1_3setISaIN3RBX13SpatialRegion2IdEES6_NS6_27boost_compatible_hash_valueESt8equal_toIS6_EEEEC2EmRKS8_RKSA_RKSaINS1_8ptr_nodeIS6_EEE")
+}
+
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::table(unsigned long,boost::hash<RBX::Primitive *> const&,std::equal_to<RBX::Primitive *> const&,std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive *>> const&)")]
+// 0x72d81c — __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEEC2EmRKS9_RKSB_RKSaINS1_8ptr_nodeIS6_EEE — boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<RBX::Primitive *>,RBX::Primitive *,boost::hash<RBX::Primitive *>,std::equal_to<RBX::Primitive *>>>::table(unsigned long,boost::hash<RBX::Primitive *> const&,std::equal_to<RBX::Primitive *> const&,std::allocator<boost::unordered::detail::ptr_node<RBX::Primitive *>> const&)
+pub fn stub_0x72d81c() -> ! {
+    todo!("0x72d81c __ZN5boost9unordered6detail5tableINS1_3setISaIPN3RBX9PrimitiveEES6_NS_4hashIS6_EESt8equal_toIS6_EEEEC2EmRKS9_RKSB_RKSaINS1_8ptr_nodeIS6_EEE")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::MegaClusterMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x72d888 — __ZN5boost14singleton_poolIN3RBX4POLY15MegaClusterMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::MegaClusterMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x72d888() -> ! {
+    todo!("0x72d888 __ZN5boost14singleton_poolIN3RBX4POLY15MegaClusterMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::BallBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x72dca4 — __ZN5boost14singleton_poolIN3RBX16BallBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::BallBlockContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x72dca4() -> ! {
+    todo!("0x72dca4 __ZN5boost14singleton_poolIN3RBX16BallBlockContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::BallBallContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x72e008 — __ZN5boost14singleton_poolIN3RBX15BallBallContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::BallBallContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x72e008() -> ! {
+    todo!("0x72e008 __ZN5boost14singleton_poolIN3RBX15BallBallContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::~object_pool()")]
+// 0x72e1f8 — __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEED2Ev — boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::~object_pool()
+pub fn stub_0x72e1f8() -> ! {
+    todo!("0x72e1f8 __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEED2Ev")
+}
+
+#[doc(alias = "boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::~object_pool()")]
+// 0x72e338 — __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeENS1_16roblox_allocatorEED2Ev — boost::object_pool<RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::~object_pool()
+pub fn stub_0x72e338() -> ! {
+    todo!("0x72e338 __ZN5boost11object_poolIN3RBX11SpatialHashINS1_9PrimitiveENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeENS1_16roblox_allocatorEED2Ev")
+}
+
+#[doc(alias = "RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::getPrimitivesTouchingGrids(RBX::Extents const&,RBX::Primitive const*,unsigned long,boost::unordered::unordered_set<RBX::Primitive*,boost::hash<RBX::Primitive*>,std::equal_to<RBX::Primitive*>,std::allocator<RBX::Primitive*>> &)")]
+// 0x72f230 — __ZN3RBX11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EE26getPrimitivesTouchingGridsERKNS_7ExtentsEPKS1_mRN5boost9unordered13unordered_setIPS1_NSA_4hashISD_EESt8equal_toISD_ESaISD_EEE — RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::getPrimitivesTouchingGrids(RBX::Extents const&,RBX::Primitive const*,unsigned long,boost::unordered::unordered_set<RBX::Primitive*,boost::hash<RBX::Primitive*>,std::equal_to<RBX::Primitive*>,std::allocator<RBX::Primitive*>> &)
+pub fn stub_0x72f230() -> ! {
+    todo!("0x72f230 __ZN3RBX11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EE26getPrimitivesTouchingGridsERKNS_7ExtentsEPKS1_mRN5boost9unordered13unordered_setIPS1_NSA_4hashISD_EESt8equal_toISD_ESaISD_EEE")
+}
+
+#[doc(alias = "void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>,RBX::Primitive*>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>,RBX::Primitive*>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash *>,boost::arg<1>>>,RBX::Primitive*)")]
+// 0x72f604 — __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EEEPS8_EENS3_5list2INS3_5valueIPNS_25ContactManagerSpatialHashEEENS2_3argILi1EEEEEEEEEvT_SC_ — void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>,RBX::Primitive*>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>,RBX::Primitive*>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash *>,boost::arg<1>>>,RBX::Primitive*)
+pub fn stub_0x72f604() -> ! {
+    todo!("0x72f604 __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EEEPS8_EENS3_5list2INS3_5valueIPNS_25ContactManagerSpatialHashEEENS2_3argILi1EEEEEEEEEvT_SC_")
+}
+
+#[doc(alias = "boost::simple_segregated_storage<unsigned long>::ordered_free(void *)")]
+// 0x72f888 — __ZN5boost25simple_segregated_storageImE12ordered_freeEPv — boost::simple_segregated_storage<unsigned long>::ordered_free(void *)
+pub fn stub_0x72f888() -> ! {
+    todo!("0x72f888 __ZN5boost25simple_segregated_storageImE12ordered_freeEPv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x7324f0 — __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x7324f0() -> ! {
+    todo!("0x7324f0 __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x732520 — __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x732520() -> ! {
+    todo!("0x732520 __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EdgeBuffer,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::EdgeBuffer*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EdgeBuffer,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::EdgeBuffer*>,boost::arg<1>>>,RBX::Primitive *)")]
+// 0x733194 — __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_10EdgeBufferEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_ — void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EdgeBuffer,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::EdgeBuffer*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EdgeBuffer,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::EdgeBuffer*>,boost::arg<1>>>,RBX::Primitive *)
+pub fn stub_0x733194() -> ! {
+    todo!("0x733194 __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_10EdgeBufferEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x734678 — __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x734678() -> ! {
+    todo!("0x734678 __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x734730 — __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::NormalBreakConnector,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x734730() -> ! {
+    todo!("0x734730 __ZN5boost14singleton_poolIN3RBX20NormalBreakConnectorELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x739914 — __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x739914() -> ! {
+    todo!("0x739914 __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x739960 — __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::CornerWedgeMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x739960() -> ! {
+    todo!("0x739960 __ZN5boost14singleton_poolIN3RBX4POLY15CornerWedgeMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x7399ac — __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x7399ac() -> ! {
+    todo!("0x7399ac __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x7399f8 — __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x7399f8() -> ! {
+    todo!("0x7399f8 __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x739a44 — __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x739a44() -> ! {
+    todo!("0x739a44 __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x739a90 — __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x739a90() -> ! {
+    todo!("0x739a90 __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "void boost::_bi::list4<boost::_bi::value<RBX::JointStage *>,boost::arg<1>,boost::arg<2>,boost::reference_wrapper<std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>>>::operator()<boost::_mfi::mf3<void,RBX::JointStage,RBX::Primitive *,RBX::Joint *,std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>&>,boost::_bi::list2<RBX::Primitive * const&,RBX::Joint * const&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::JointStage,RBX::Primitive *,RBX::Joint *,std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>&> const&,boost::_bi::list2<RBX::Primitive * const&,RBX::Joint * const&> &,int)const")]
+// 0x73b270 — __ZNK5boost3_bi5list4INS0_5valueIPN3RBX10JointStageEEENS_3argILi1EEENS7_ILi2EEENS_17reference_wrapperISt6vectorIPNS3_5JointESaISD_EEEEEclINS_4_mfi3mf3IvS4_PNS3_9PrimitiveESD_RSF_EENS0_5list2IRKSM_RKSD_EEEEvNS0_4typeIvEERKT_RT0_i — void boost::_bi::list4<boost::_bi::value<RBX::JointStage *>,boost::arg<1>,boost::arg<2>,boost::reference_wrapper<std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>>>::operator()<boost::_mfi::mf3<void,RBX::JointStage,RBX::Primitive *,RBX::Joint *,std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>&>,boost::_bi::list2<RBX::Primitive * const&,RBX::Joint * const&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::JointStage,RBX::Primitive *,RBX::Joint *,std::vector<RBX::Joint *,std::allocator<RBX::Joint *>>&> const&,boost::_bi::list2<RBX::Primitive * const&,RBX::Joint * const&> &,int)const
+pub fn stub_0x73b270() -> ! {
+    todo!("0x73b270 __ZNK5boost3_bi5list4INS0_5valueIPN3RBX10JointStageEEENS_3argILi1EEENS7_ILi2EEENS_17reference_wrapperISt6vectorIPNS3_5JointESaISD_EEEEEclINS_4_mfi3mf3IvS4_PNS3_9PrimitiveESD_RSF_EENS0_5list2IRKSM_RKSD_EEEEvNS0_4typeIvEERKT_RT0_i")
+}
+
+#[doc(alias = "void RBX::IndexedTree::visitMeAndChildren<RBX::Assembly,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AssemblyStage,RBX::Assembly*>,boost::_bi::list2<boost::_bi::value<RBX::AssemblyStage*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AssemblyStage,RBX::Assembly*>,boost::_bi::list2<boost::_bi::value<RBX::AssemblyStage*>,boost::arg<1>>>)")]
+// 0x73cbc8 — __ZN3RBX11IndexedTree18visitMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_13AssemblyStageEPS2_EENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEvT0_ — void RBX::IndexedTree::visitMeAndChildren<RBX::Assembly,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AssemblyStage,RBX::Assembly*>,boost::_bi::list2<boost::_bi::value<RBX::AssemblyStage*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AssemblyStage,RBX::Assembly*>,boost::_bi::list2<boost::_bi::value<RBX::AssemblyStage*>,boost::arg<1>>>)
+pub fn stub_0x73cbc8() -> ! {
+    todo!("0x73cbc8 __ZN3RBX11IndexedTree18visitMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_13AssemblyStageEPS2_EENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEvT0_")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x742328 — __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x742328() -> ! {
+    todo!("0x742328 __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x742374 — __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x742374() -> ! {
+    todo!("0x742374 __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x74242c — __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x74242c() -> ! {
+    todo!("0x74242c __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x742c78 — __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x742c78() -> ! {
+    todo!("0x742c78 __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x742dfc — __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x742dfc() -> ! {
+    todo!("0x742dfc __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x7455f8 — __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x7455f8() -> ! {
+    todo!("0x7455f8 __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x745628 — __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x745628() -> ! {
+    todo!("0x745628 __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x74a0e0 — __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::PolyPolyContact,216u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x74a0e0() -> ! {
+    todo!("0x74a0e0 __ZN5boost14singleton_poolIN3RBX15PolyPolyContactELj216ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::Body,276u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x74cf14 — __ZN5boost14singleton_poolIN3RBX4BodyELj276ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv — boost::singleton_pool<RBX::Body,276u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_0x74cf14() -> ! {
+    todo!("0x74cf14 __ZN5boost14singleton_poolIN3RBX4BodyELj276ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::Body,276u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x74cf64 — __ZN5boost14singleton_poolIN3RBX4BodyELj276ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::Body,276u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x74cf64() -> ! {
+    todo!("0x74cf64 __ZN5boost14singleton_poolIN3RBX4BodyELj276ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token> const&)")]
+// 0x74e294 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_ — rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token> const&)
+// was: boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token> const&)
+pub fn stub_0x74e294() -> ! {
+    todo!("0x74e294 __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_")
+}
+
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token *)")]
+// 0x74e550 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_ — rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token *)
+// was: boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token *)
+pub fn stub_0x74e550() -> ! {
+    todo!("0x74e550 __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY9PrismMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token *)")]
+// 0x74e624 — __ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY9PrismMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_ — boost::detail::shared_count::shared_count<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token *)
+pub fn stub_0x74e624() -> ! {
+    todo!("0x74e624 __ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY9PrismMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()")]
+// 0x74ebb8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEED1Ev — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()
+pub fn stub_0x74ebb8() -> ! {
+    todo!("0x74ebb8 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()")]
+// 0x74ebbc — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEED0Ev — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()
+pub fn stub_0x74ebbc() -> ! {
+    todo!("0x74ebbc __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::dispose(void)")]
+// 0x74ebc0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE7disposeEv — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::dispose(void)
+pub fn stub_0x74ebc0() -> ! {
+    todo!("0x74ebc0 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::get_deleter(std::type_info const&)")]
+// 0x74ec68 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::get_deleter(std::type_info const&)
+pub fn stub_0x74ec68() -> ! {
+    todo!("0x74ec68 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::get_untyped_deleter(void)")]
+// 0x74ec6c — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE19get_untyped_deleterEv — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::Token>::get_untyped_deleter(void)
+pub fn stub_0x74ec6c() -> ! {
+    todo!("0x74ec6c __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY9PrismMeshENS2_21Vector3_2IntsComparerEE5TokenEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x74f134 — __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x74f134() -> ! {
+    todo!("0x74f134 __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x74f164 — __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::PrismMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x74f164() -> ! {
+    todo!("0x74f164 __ZN5boost14singleton_poolIN3RBX4POLY9PrismMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token> const&)")]
+// 0x74fcd0 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_ — rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token> const&)
+// was: boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token> const&)
+pub fn stub_0x74fcd0() -> ! {
+    todo!("0x74fcd0 __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEaSERKS9_")
+}
+
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token *)")]
+// 0x74ff8c — __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_ — rbx_core::SharedPtr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token *)
+// was: boost::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::shared_ptr<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token *)
+pub fn stub_0x74ff8c() -> ! {
+    todo!("0x74ff8c __ZN5boost10shared_ptrIN3RBX12GeometryPoolINS1_13Vector3_2IntsENS1_4POLY11PyramidMeshENS1_21Vector3_2IntsComparerEE5TokenEEC2IS8_EEPT_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token *)")]
+// 0x750060 — __ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY11PyramidMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_ — boost::detail::shared_count::shared_count<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>(RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token *)
+pub fn stub_0x750060() -> ! {
+    todo!("0x750060 __ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolINS3_13Vector3_2IntsENS3_4POLY11PyramidMeshENS3_21Vector3_2IntsComparerEE5TokenEEEPT_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()")]
+// 0x750674 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEED1Ev — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()
+pub fn stub_0x750674() -> ! {
+    todo!("0x750674 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()")]
+// 0x750678 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEED0Ev — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::~sp_counted_impl_p()
+pub fn stub_0x750678() -> ! {
+    todo!("0x750678 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::dispose(void)")]
+// 0x75067c — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE7disposeEv — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::dispose(void)
+pub fn stub_0x75067c() -> ! {
+    todo!("0x75067c __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::get_deleter(std::type_info const&)")]
+// 0x750724 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE11get_deleterERKSt9type_info — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::get_deleter(std::type_info const&)
+pub fn stub_0x750724() -> ! {
+    todo!("0x750724 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::get_untyped_deleter(void)")]
+// 0x750728 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE19get_untyped_deleterEv — boost::detail::sp_counted_impl_p<RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::Token>::get_untyped_deleter(void)
+pub fn stub_0x750728() -> ! {
+    todo!("0x750728 __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolINS2_13Vector3_2IntsENS2_4POLY11PyramidMeshENS2_21Vector3_2IntsComparerEE5TokenEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x750bf0 — __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x750bf0() -> ! {
+    todo!("0x750bf0 __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x750c20 — __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::PyramidMesh,56u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x750c20() -> ! {
+    todo!("0x750c20 __ZN5boost14singleton_poolIN3RBX4POLY11PyramidMeshELj56ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x752248 — __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x752248() -> ! {
+    todo!("0x752248 __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x752278 — __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::RightAngleRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x752278() -> ! {
+    todo!("0x752278 __ZN5boost14singleton_poolIN3RBX4POLY18RightAngleRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "void RBX::IndexedTree::visitMeAndChildren<RBX::Assembly,boost::_bi::bind_t<void,void (*)(RBX::Assembly*),boost::_bi::list1<boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Assembly*),boost::_bi::list1<boost::arg<1>>>)")]
+// 0x75fa40 — __ZN3RBX11IndexedTree18visitMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvPFvPS2_ENS4_5list1INS3_3argILi1EEEEEEEEEvT0_ — void RBX::IndexedTree::visitMeAndChildren<RBX::Assembly,boost::_bi::bind_t<void,void (*)(RBX::Assembly*),boost::_bi::list1<boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Assembly*),boost::_bi::list1<boost::arg<1>>>)
+pub fn stub_0x75fa40() -> ! {
+    todo!("0x75fa40 __ZN3RBX11IndexedTree18visitMeAndChildrenINS_8AssemblyEN5boost3_bi6bind_tIvPFvPS2_ENS4_5list1INS3_3argILi1EEEEEEEEEvT0_")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
+// 0x761104 — __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv — boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)
+pub fn stub_0x761104() -> ! {
+    todo!("0x761104 __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// 0x761134 — __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv — boost::singleton_pool<RBX::POLY::WedgeMesh,36u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_0x761134() -> ! {
+    todo!("0x761134 __ZN5boost14singleton_poolIN3RBX4POLY9WedgeMeshELj36ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>> std::for_each<boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>>>(boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>>)")]
+// 0x7659cc — __ZSt8for_eachIN5boost9intrusive13list_iteratorINS1_9list_implINS1_7listoptINS1_6detail16base_hook_traitsIN3RBX8AssemblyENS1_16list_node_traitsIPvEELNS1_14link_mode_typeE1ENS7_13SimulateStageELi1EEEmLb1EEEEELb0EEENS0_3_bi6bind_tIvNS0_4_mfi3mf1IvNS7_25ContactManagerSpatialHashERS8_EENSI_5list2INSI_5valueIPSM_EENS0_3argILi1EEEEEEEET0_T_SY_SX_ — boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>> std::for_each<boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>>>(boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::intrusive::list_iterator<boost::intrusive::list_impl<boost::intrusive::listopt<boost::intrusive::detail::base_hook_traits<RBX::Assembly,boost::intrusive::list_node_traits<void *>,(boost::intrusive::link_mode_type)1,RBX::SimulateStage,1>,unsigned long,true>>,false>,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManagerSpatialHash,RBX::Assembly&>,boost::_bi::list2<boost::_bi::value<RBX::ContactManagerSpatialHash*>,boost::arg<1>>>)
+pub fn stub_0x7659cc() -> ! {
+    todo!("0x7659cc __ZSt8for_eachIN5boost9intrusive13list_iteratorINS1_9list_implINS1_7listoptINS1_6detail16base_hook_traitsIN3RBX8AssemblyENS1_16list_node_traitsIPvEELNS1_14link_mode_typeE1ENS7_13SimulateStageELi1EEEmLb1EEEEELb0EEENS0_3_bi6bind_tIvNS0_4_mfi3mf1IvNS7_25ContactManagerSpatialHashERS8_EENSI_5list2INSI_5valueIPSM_EENS0_3argILi1EEEEEEEET0_T_SY_SX_")
+}
+
+#[doc(alias = "rbx::signals::signal_with_args<1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::operator()(std::pair<RBX::Primitive *,RBX::Primitive *>)")]
+// 0x765ab0 — __ZN3rbx7signals16signal_with_argsILi1EFvSt4pairIPN3RBX9PrimitiveES5_EEEclES6_ — rbx::signals::signal_with_args<1,void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::operator()(std::pair<RBX::Primitive *,RBX::Primitive *>)
+pub fn stub_0x765ab0() -> ! {
+    todo!("0x765ab0 __ZN3rbx7signals16signal_with_argsILi1EFvSt4pairIPN3RBX9PrimitiveES5_EEEclES6_")
+}
+
+#[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Joint *)>::operator()(RBX::Joint *)")]
+// 0x765c80 — __ZN3rbx7signals16signal_with_argsILi1EFvPN3RBX5JointEEEclES4_ — rbx::signals::signal_with_args<1,void ()(RBX::Joint *)>::operator()(RBX::Joint *)
+pub fn stub_0x765c80() -> ! {
+    todo!("0x765c80 __ZN3rbx7signals16signal_with_argsILi1EFvPN3RBX5JointEEEclES4_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Joint *)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot> &)")]
+// 0x766674 — __ZN3rbx7signals6signalIFvPN3RBX5JointEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE — rbx::signals::signal<void ()(RBX::Joint *)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot> &)
+pub fn stub_0x766674() -> ! {
+    todo!("0x766674 __ZN3rbx7signals6signalIFvPN3RBX5JointEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Joint *)>::on_error(std::exception &)")]
+// 0x7667d4 — __ZN3rbx7signals6signalIFvPN3RBX5JointEEE8on_errorERSt9exception — rbx::signals::signal<void ()(RBX::Joint *)>::on_error(std::exception &)
+pub fn stub_0x7667d4() -> ! {
+    todo!("0x7667d4 __ZN3rbx7signals6signalIFvPN3RBX5JointEEE8on_errorERSt9exception")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot> &)")]
+// 0x766a08 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE4nextERN5boost13intrusive_ptrINS8_4slotEEE — rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot> &)
+pub fn stub_0x766a08() -> ! {
+    todo!("0x766a08 __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE4nextERN5boost13intrusive_ptrINS8_4slotEEE")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::on_error(std::exception &)")]
+// 0x766b68 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE8on_errorERSt9exception — rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::on_error(std::exception &)
+pub fn stub_0x766b68() -> ! {
+    todo!("0x766b68 __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE8on_errorERSt9exception")
+}
+
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot> const&)")]
+// 0x766b90 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES7_EEE4slotEEaSERKSC_ — boost::intrusive_ptr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::slot> const&)
+pub fn stub_0x766b90() -> ! {
+    todo!("0x766b90 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES7_EEE4slotEEaSERKSC_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::safe_static_init_mutex(void)")]
+// 0x766bb4 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE22safe_static_init_mutexEv — rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::safe_static_init_mutex(void)
+pub fn stub_0x766bb4() -> ! {
+    todo!("0x766bb4 __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE22safe_static_init_mutexEv")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::safe_static_do_get_mutex(void)")]
+// 0x766bb8 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE24safe_static_do_get_mutexEv — rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::safe_static_do_get_mutex(void)
+pub fn stub_0x766bb8() -> ! {
+    todo!("0x766bb8 __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE24safe_static_do_get_mutexEv")
+}
+
+#[doc(alias = "void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::ContactManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::ContactManager*>,boost::arg<1>>>,RBX::Primitive *)")]
+// 0x766cb0 — __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_14ContactManagerEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_ — void RBX::Assembly::visitPrimitivesImpl<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::ContactManager*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ContactManager,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::ContactManager*>,boost::arg<1>>>,RBX::Primitive *)
+pub fn stub_0x766cb0() -> ! {
+    todo!("0x766cb0 __ZN3RBX8Assembly19visitPrimitivesImplIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_14ContactManagerEPNS_9PrimitiveEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvT_S9_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Joint *)>::disconnectAll(void)")]
+// 0x7671d8 — __ZN3rbx7signals6signalIFvPN3RBX5JointEEE13disconnectAllEv — rbx::signals::signal<void ()(RBX::Joint *)>::disconnectAll(void)
+pub fn stub_0x7671d8() -> ! {
+    todo!("0x7671d8 __ZN3rbx7signals6signalIFvPN3RBX5JointEEE13disconnectAllEv")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::disconnectAll(void)")]
+// 0x767350 — __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE13disconnectAllEv — rbx::signals::signal<void ()(std::pair<RBX::Primitive *,RBX::Primitive *>)>::disconnectAll(void)
+pub fn stub_0x767350() -> ! {
+    todo!("0x767350 __ZN3rbx7signals6signalIFvSt4pairIPN3RBX9PrimitiveES5_EEE13disconnectAllEv")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Primitive *)>::disconnectAll(void)")]
+// 0x7674c8 — __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13disconnectAllEv — rbx::signals::signal<void ()(RBX::Primitive *)>::disconnectAll(void)
+pub fn stub_0x7674c8() -> ! {
+    todo!("0x7674c8 __ZN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE13disconnectAllEv")
+}
+
+#[doc(alias = "bool boost::char_separator<char,std::char_traits<char>>::operator()<__gnu_cxx::__normal_iterator<char const*,std::string>,std::string>(__gnu_cxx::__normal_iterator<char const*,std::string> &,__gnu_cxx::__normal_iterator<char const*,std::string>,std::string &)")]
+// 0x775a90 — __ZN5boost14char_separatorIcSt11char_traitsIcEEclIN9__gnu_cxx17__normal_iteratorIPKcSsEESsEEbRT_SA_RT0_ — bool boost::char_separator<char,std::char_traits<char>>::operator()<__gnu_cxx::__normal_iterator<char const*,std::string>,std::string>(__gnu_cxx::__normal_iterator<char const*,std::string> &,__gnu_cxx::__normal_iterator<char const*,std::string>,std::string &)
+pub fn stub_0x775a90() -> ! {
+    todo!("0x775a90 __ZN5boost14char_separatorIcSt11char_traitsIcEEclIN9__gnu_cxx17__normal_iteratorIPKcSsEESsEEbRT_SA_RT0_")
+}
+
+#[doc(alias = "boost::char_separator<char,std::char_traits<char>>::is_dropped(char)const")]
+// 0x775bf0 — __ZNK5boost14char_separatorIcSt11char_traitsIcEE10is_droppedEc — boost::char_separator<char,std::char_traits<char>>::is_dropped(char)const
+pub fn stub_0x775bf0() -> ! {
+    todo!("0x775bf0 __ZNK5boost14char_separatorIcSt11char_traitsIcEE10is_droppedEc")
+}
+
+#[doc(alias = "boost::char_separator<char,std::char_traits<char>>::char_separator(char const*,char const*,boost::empty_token_policy)")]
+// 0x775c28 — __ZN5boost14char_separatorIcSt11char_traitsIcEEC2EPKcS5_NS_18empty_token_policyE — boost::char_separator<char,std::char_traits<char>>::char_separator(char const*,char const*,boost::empty_token_policy)
+pub fn stub_0x775c28() -> ! {
+    todo!("0x775c28 __ZN5boost14char_separatorIcSt11char_traitsIcEEC2EPKcS5_NS_18empty_token_policyE")
+}
+
+#[doc(alias = "rbx_core::SharedPtr<std::string>::operator=(rbx_core::SharedPtr<std::string> const&)")]
+// 0x777a9c — __ZN5boost10shared_ptrISsEaSERKS1_ — rbx_core::SharedPtr<std::string>::operator=(rbx_core::SharedPtr<std::string> const&)
+// was: boost::shared_ptr<std::string>::operator=(boost::shared_ptr<std::string> const&)
+pub fn stub_0x777a9c() -> ! {
+    todo!("0x777a9c __ZN5boost10shared_ptrISsEaSERKS1_")
 }
