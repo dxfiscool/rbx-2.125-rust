@@ -16,6 +16,7 @@ pub mod generated_12;
 pub mod generated_13;
 pub mod generated_14;
 pub mod generated_15;
+pub mod generated_16;
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
@@ -552,7 +553,9 @@ pub fn stub_710a0() -> ! {
 }
 
 // 0x710dc — __ZN4FMOD7Channel11setCallbackEPF11FMOD_RESULTP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS5_E
-#[doc(alias = "FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")]
+#[doc(
+    alias = "FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))"
+)]
 pub fn stub_710dc() -> ! {
     todo!("0x710dc FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")
 }
@@ -630,7 +633,9 @@ pub fn stub_71334() -> ! {
 }
 
 // 0x7133c — __ZN4FMOD15ChannelEmulated13setSpeakerMixEffffffff
-#[doc(alias = "FMOD::ChannelEmulated::setSpeakerMix(float,float,float,float,float,float,float,float)")]
+#[doc(
+    alias = "FMOD::ChannelEmulated::setSpeakerMix(float,float,float,float,float,float,float,float)"
+)]
 pub fn stub_7133c() -> ! {
     todo!("0x7133c FMOD::ChannelEmulated::setSpeakerMix(float,float,float,float,float,float,float,float)")
 }
@@ -788,7 +793,9 @@ pub fn stub_719d8() -> ! {
 // 0x719e0 — __ZN4FMOD11ChannelReal13setSpeakerMixEffffffff
 #[doc(alias = "FMOD::ChannelReal::setSpeakerMix(float,float,float,float,float,float,float,float)")]
 pub fn stub_719e0() -> ! {
-    todo!("0x719e0 FMOD::ChannelReal::setSpeakerMix(float,float,float,float,float,float,float,float)")
+    todo!(
+        "0x719e0 FMOD::ChannelReal::setSpeakerMix(float,float,float,float,float,float,float,float)"
+    )
 }
 
 // 0x71e34 — __ZN4FMOD11ChannelReal11setPositionEjj
@@ -977,7 +984,9 @@ pub fn stub_74554() -> ! {
 }
 
 // 0x74564 — __ZN4FMOD15ChannelSoftware16moveChannelGroupEPNS_13ChannelGroupIES2_b
-#[doc(alias = "FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
+#[doc(
+    alias = "FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)"
+)]
 pub fn stub_74564() -> ! {
     todo!("0x74564 FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")
 }
@@ -1121,7 +1130,9 @@ pub fn stub_762c4() -> ! {
 }
 
 // 0x76584 — __ZN4FMOD15ChannelSoftware13setSpeakerMixEffffffff
-#[doc(alias = "FMOD::ChannelSoftware::setSpeakerMix(float,float,float,float,float,float,float,float)")]
+#[doc(
+    alias = "FMOD::ChannelSoftware::setSpeakerMix(float,float,float,float,float,float,float,float)"
+)]
 pub fn stub_76584() -> ! {
     todo!("0x76584 FMOD::ChannelSoftware::setSpeakerMix(float,float,float,float,float,float,float,float)")
 }
@@ -1141,7 +1152,9 @@ pub fn stub_76a80() -> ! {
 // 0x76b3c — __ZN4FMOD15ChannelSoftware19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES
 #[doc(alias = "FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
 pub fn stub_76b3c() -> ! {
-    todo!("0x76b3c FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+    todo!(
+        "0x76b3c FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)"
+    )
 }
 
 // 0x7709c — __ZN4FMOD15ChannelSoftware9getPausedEPb
@@ -1175,7 +1188,9 @@ pub fn stub_77428() -> ! {
 }
 
 // 0x77474 — __ZN4FMOD13ChannelStream16moveChannelGroupEPNS_13ChannelGroupIES2_b
-#[doc(alias = "FMOD::ChannelStream::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
+#[doc(
+    alias = "FMOD::ChannelStream::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)"
+)]
 pub fn stub_77474() -> ! {
     todo!("0x77474 FMOD::ChannelStream::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")
 }
@@ -1217,7 +1232,9 @@ pub fn stub_7781c() -> ! {
 }
 
 // 0x77868 — __ZN4FMOD13ChannelStream13setSpeakerMixEffffffff
-#[doc(alias = "FMOD::ChannelStream::setSpeakerMix(float,float,float,float,float,float,float,float)")]
+#[doc(
+    alias = "FMOD::ChannelStream::setSpeakerMix(float,float,float,float,float,float,float,float)"
+)]
 pub fn stub_77868() -> ! {
     todo!("0x77868 FMOD::ChannelStream::setSpeakerMix(float,float,float,float,float,float,float,float)")
 }
@@ -1565,7 +1582,9 @@ pub fn stub_7a358() -> ! {
 }
 
 // 0x7a50c — __ZN4FMOD8ChannelI13setSpeakerMixEffffffffb
-#[doc(alias = "FMOD::ChannelI::setSpeakerMix(float,float,float,float,float,float,float,float,bool)")]
+#[doc(
+    alias = "FMOD::ChannelI::setSpeakerMix(float,float,float,float,float,float,float,float,bool)"
+)]
 pub fn stub_7a50c() -> ! {
     todo!("0x7a50c FMOD::ChannelI::setSpeakerMix(float,float,float,float,float,float,float,float,bool)")
 }
@@ -1631,7 +1650,9 @@ pub fn stub_7ad44() -> ! {
 }
 
 // 0x7ad70 — __ZN4FMOD8ChannelI11setCallbackEPF11FMOD_RESULTP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS5_E
-#[doc(alias = "FMOD::ChannelI::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")]
+#[doc(
+    alias = "FMOD::ChannelI::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))"
+)]
 pub fn stub_7ad70() -> ! {
     todo!("0x7ad70 FMOD::ChannelI::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")
 }
@@ -1739,7 +1760,9 @@ pub fn stub_7c224() -> ! {
 }
 
 // 0x7c3d8 — __ZN4FMOD8ChannelI13getLoopPointsEPjjS1_j
-#[doc(alias = "FMOD::ChannelI::getLoopPoints(unsigned int *,unsigned int,unsigned int *,unsigned int)")]
+#[doc(
+    alias = "FMOD::ChannelI::getLoopPoints(unsigned int *,unsigned int,unsigned int *,unsigned int)"
+)]
 pub fn stub_7c3d8() -> ! {
     todo!("0x7c3d8 FMOD::ChannelI::getLoopPoints(unsigned int *,unsigned int,unsigned int *,unsigned int)")
 }
@@ -1931,7 +1954,9 @@ pub fn stub_7f984() -> ! {
 }
 
 // 0x7f9ec — __ZN4FMOD5Codec8metaDataE12FMOD_TAGTYPEPKcPvj16FMOD_TAGDATATYPEb
-#[doc(alias = "FMOD::Codec::metaData(FMOD_TAGTYPE,char const*,void *,unsigned int,FMOD_TAGDATATYPE,bool)")]
+#[doc(
+    alias = "FMOD::Codec::metaData(FMOD_TAGTYPE,char const*,void *,unsigned int,FMOD_TAGDATATYPE,bool)"
+)]
 pub fn stub_7f9ec() -> ! {
     todo!("0x7f9ec FMOD::Codec::metaData(FMOD_TAGTYPE,char const*,void *,unsigned int,FMOD_TAGDATATYPE,bool)")
 }
@@ -1973,7 +1998,9 @@ pub fn stub_80388() -> ! {
 }
 
 // 0x804cc — __ZN4FMOD9CodecAIFF19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecAIFF::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecAIFF::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_804cc() -> ! {
     todo!("0x804cc FMOD::CodecAIFF::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -1985,7 +2012,9 @@ pub fn stub_804d8() -> ! {
 }
 
 // 0x806e4 — __ZN4FMOD9CodecAIFF12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecAIFF::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecAIFF::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_806e4() -> ! {
     todo!("0x806e4 FMOD::CodecAIFF::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -2015,7 +2044,9 @@ pub fn stub_80864() -> ! {
 }
 
 // 0x81068 — __ZN4FMOD9CodecAIFF12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecAIFF::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecAIFF::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_81068() -> ! {
     todo!("0x81068 FMOD::CodecAIFF::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -2039,7 +2070,9 @@ pub fn stub_81168() -> ! {
 }
 
 // 0x8132c — __ZN4FMOD8CodecDLS19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecDLS::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecDLS::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_8132c() -> ! {
     todo!("0x8132c FMOD::CodecDLS::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -2051,7 +2084,9 @@ pub fn stub_81338() -> ! {
 }
 
 // 0x813e8 — __ZN4FMOD8CodecDLS12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecDLS::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecDLS::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_813e8() -> ! {
     todo!("0x813e8 FMOD::CodecDLS::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -2087,7 +2122,9 @@ pub fn stub_82848() -> ! {
 }
 
 // 0x82970 — __ZN4FMOD8CodecDLS12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecDLS::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecDLS::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_82970() -> ! {
     todo!("0x82970 FMOD::CodecDLS::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -2099,13 +2136,17 @@ pub fn stub_829c8() -> ! {
 }
 
 // 0x829d4 — __ZN4FMODL24FMOD_FLAC_LengthCallbackEPK19FLAC__StreamDecoderPyPv
-#[doc(alias = "FMOD::FMOD_FLAC_LengthCallback(FLAC__StreamDecoder const*,unsigned long long *,void *)")]
+#[doc(
+    alias = "FMOD::FMOD_FLAC_LengthCallback(FLAC__StreamDecoder const*,unsigned long long *,void *)"
+)]
 pub fn stub_829d4() -> ! {
     todo!("0x829d4 FMOD::FMOD_FLAC_LengthCallback(FLAC__StreamDecoder const*,unsigned long long *,void *)")
 }
 
 // 0x82a1c — __ZN4FMODL23FMOD_FLAC_ErrorCallbackEPK19FLAC__StreamDecoder30FLAC__StreamDecoderErrorStatusPv
-#[doc(alias = "FMOD::FMOD_FLAC_ErrorCallback(FLAC__StreamDecoder const*,FLAC__StreamDecoderErrorStatus,void *)")]
+#[doc(
+    alias = "FMOD::FMOD_FLAC_ErrorCallback(FLAC__StreamDecoder const*,FLAC__StreamDecoderErrorStatus,void *)"
+)]
 pub fn stub_82a1c() -> ! {
     todo!("0x82a1c FMOD::FMOD_FLAC_ErrorCallback(FLAC__StreamDecoder const*,FLAC__StreamDecoderErrorStatus,void *)")
 }
@@ -2117,7 +2158,9 @@ pub fn stub_82a20() -> ! {
 }
 
 // 0x82a70 — __ZN4FMOD9CodecFLAC19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecFLAC::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecFLAC::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_82a70() -> ! {
     todo!("0x82a70 FMOD::CodecFLAC::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -2129,7 +2172,9 @@ pub fn stub_82a7c() -> ! {
 }
 
 // 0x82adc — __ZN4FMOD9CodecFLAC12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecFLAC::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecFLAC::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_82adc() -> ! {
     todo!("0x82adc FMOD::CodecFLAC::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -2153,7 +2198,9 @@ pub fn stub_82bb0() -> ! {
 }
 
 // 0x82bd0 — __ZN4FMODL22FMOD_FLAC_ReadCallbackEPK19FLAC__StreamDecoderPhPmPv
-#[doc(alias = "FMOD::FMOD_FLAC_ReadCallback(FLAC__StreamDecoder const*,unsigned char *,unsigned long *,void *)")]
+#[doc(
+    alias = "FMOD::FMOD_FLAC_ReadCallback(FLAC__StreamDecoder const*,unsigned char *,unsigned long *,void *)"
+)]
 pub fn stub_82bd0() -> ! {
     todo!("0x82bd0 FMOD::FMOD_FLAC_ReadCallback(FLAC__StreamDecoder const*,unsigned char *,unsigned long *,void *)")
 }
@@ -2165,19 +2212,25 @@ pub fn stub_82c14() -> ! {
 }
 
 // 0x82f38 — __ZN4FMOD9CodecFLAC12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecFLAC::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecFLAC::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_82f38() -> ! {
     todo!("0x82f38 FMOD::CodecFLAC::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
 
 // 0x82f44 — __ZN4FMODL23FMOD_FLAC_WriteCallbackEPK19FLAC__StreamDecoderPK11FLAC__FramePKPKiPv
-#[doc(alias = "FMOD::FMOD_FLAC_WriteCallback(FLAC__StreamDecoder const*,FLAC__Frame const*,int const* const*,void *)")]
+#[doc(
+    alias = "FMOD::FMOD_FLAC_WriteCallback(FLAC__StreamDecoder const*,FLAC__Frame const*,int const* const*,void *)"
+)]
 pub fn stub_82f44() -> ! {
     todo!("0x82f44 FMOD::FMOD_FLAC_WriteCallback(FLAC__StreamDecoder const*,FLAC__Frame const*,int const* const*,void *)")
 }
 
 // 0x830e4 — __ZN4FMODL26FMOD_FLAC_MetadataCallbackEPK19FLAC__StreamDecoderPK20FLAC__StreamMetadataPv
-#[doc(alias = "FMOD::FMOD_FLAC_MetadataCallback(FLAC__StreamDecoder const*,FLAC__StreamMetadata const*,void *)")]
+#[doc(
+    alias = "FMOD::FMOD_FLAC_MetadataCallback(FLAC__StreamDecoder const*,FLAC__StreamMetadata const*,void *)"
+)]
 pub fn stub_830e4() -> ! {
     todo!("0x830e4 FMOD::FMOD_FLAC_MetadataCallback(FLAC__StreamDecoder const*,FLAC__StreamMetadata const*,void *)")
 }
@@ -2189,7 +2242,9 @@ pub fn stub_83298() -> ! {
 }
 
 // 0x832e0 — __ZN4FMODL22FMOD_FLAC_TellCallbackEPK19FLAC__StreamDecoderPyPv
-#[doc(alias = "FMOD::FMOD_FLAC_TellCallback(FLAC__StreamDecoder const*,unsigned long long *,void *)")]
+#[doc(
+    alias = "FMOD::FMOD_FLAC_TellCallback(FLAC__StreamDecoder const*,unsigned long long *,void *)"
+)]
 pub fn stub_832e0() -> ! {
     todo!("0x832e0 FMOD::FMOD_FLAC_TellCallback(FLAC__StreamDecoder const*,unsigned long long *,void *)")
 }
@@ -2279,7 +2334,9 @@ pub fn stub_83cec() -> ! {
 }
 
 // 0x842c4 — __ZN4FMOD8CodecFSB21getWaveFormatCallbackEP16FMOD_CODEC_STATEiP21FMOD_CODEC_WAVEFORMAT
-#[doc(alias = "FMOD::CodecFSB::getWaveFormatCallback(FMOD_CODEC_STATE *,int,FMOD_CODEC_WAVEFORMAT *)")]
+#[doc(
+    alias = "FMOD::CodecFSB::getWaveFormatCallback(FMOD_CODEC_STATE *,int,FMOD_CODEC_WAVEFORMAT *)"
+)]
 pub fn stub_842c4() -> ! {
     todo!("0x842c4 FMOD::CodecFSB::getWaveFormatCallback(FMOD_CODEC_STATE *,int,FMOD_CODEC_WAVEFORMAT *)")
 }
@@ -2303,7 +2360,9 @@ pub fn stub_844a0() -> ! {
 }
 
 // 0x84540 — __ZN4FMOD8CodecFSB19getPositionCallbackEP16FMOD_CODEC_STATEPjj
-#[doc(alias = "FMOD::CodecFSB::getPositionCallback(FMOD_CODEC_STATE *,unsigned int *,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecFSB::getPositionCallback(FMOD_CODEC_STATE *,unsigned int *,unsigned int)"
+)]
 pub fn stub_84540() -> ! {
     todo!("0x84540 FMOD::CodecFSB::getPositionCallback(FMOD_CODEC_STATE *,unsigned int *,unsigned int)")
 }
@@ -2315,7 +2374,9 @@ pub fn stub_8454c() -> ! {
 }
 
 // 0x84ef4 — __ZN4FMOD8CodecFSB12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecFSB::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecFSB::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_84ef4() -> ! {
     todo!("0x84ef4 FMOD::CodecFSB::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -2327,7 +2388,9 @@ pub fn stub_84f00() -> ! {
 }
 
 // 0x86654 — __ZN4FMOD8CodecFSB12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecFSB::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecFSB::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_86654() -> ! {
     todo!("0x86654 FMOD::CodecFSB::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -2339,7 +2402,9 @@ pub fn stub_86660() -> ! {
 }
 
 // 0x86aa0 — __ZN4FMOD8CodecFSB19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecFSB::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecFSB::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_86aa0() -> ! {
     todo!("0x86aa0 FMOD::CodecFSB::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -2399,13 +2464,17 @@ pub fn stub_8710c() -> ! {
 }
 
 // 0x87238 — __ZN4FMOD7CodecIT15processEnvelopeEPNS_18MusicEnvelopeStateEPNS_19MusicVirtualChannelEiPNS_17MusicEnvelopeNodeEiiiiih
-#[doc(alias = "FMOD::CodecIT::processEnvelope(FMOD::MusicEnvelopeState *,FMOD::MusicVirtualChannel *,int,FMOD::MusicEnvelopeNode *,int,int,int,int,int,unsigned char)")]
+#[doc(
+    alias = "FMOD::CodecIT::processEnvelope(FMOD::MusicEnvelopeState *,FMOD::MusicVirtualChannel *,int,FMOD::MusicEnvelopeNode *,int,int,int,int,int,unsigned char)"
+)]
 pub fn stub_87238() -> ! {
     todo!("0x87238 FMOD::CodecIT::processEnvelope(FMOD::MusicEnvelopeState *,FMOD::MusicVirtualChannel *,int,FMOD::MusicEnvelopeNode *,int,int,int,int,int,unsigned char)")
 }
 
 // 0x874a0 — __ZN4FMOD7CodecIT20processPitchEnvelopeEPNS_19MusicVirtualChannelEPNS_15MusicInstrumentEi
-#[doc(alias = "FMOD::CodecIT::processPitchEnvelope(FMOD::MusicVirtualChannel *,FMOD::MusicInstrument *,int)")]
+#[doc(
+    alias = "FMOD::CodecIT::processPitchEnvelope(FMOD::MusicVirtualChannel *,FMOD::MusicInstrument *,int)"
+)]
 pub fn stub_874a0() -> ! {
     todo!("0x874a0 FMOD::CodecIT::processPitchEnvelope(FMOD::MusicVirtualChannel *,FMOD::MusicInstrument *,int)")
 }
@@ -2495,7 +2564,9 @@ pub fn stub_8b854() -> ! {
 }
 
 // 0x8b908 — __ZN4FMOD7CodecIT19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecIT::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecIT::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_8b908() -> ! {
     todo!("0x8b908 FMOD::CodecIT::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -2513,7 +2584,9 @@ pub fn stub_8b978() -> ! {
 }
 
 // 0x8e7bc — __ZN4FMOD7CodecIT12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecIT::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecIT::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_8e7bc() -> ! {
     todo!("0x8e7bc FMOD::CodecIT::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -2555,7 +2628,9 @@ pub fn stub_8ef90() -> ! {
 }
 
 // 0x8f00c — __ZN4FMOD16CodecMIDIChannel8getSoundEiPPNS_6SoundIEPPNS_18CodecDLSInstrumentEPiS7_S7_PbS7_S7_PPNS_19DLS_CONNECTIONBLOCKE
-#[doc(alias = "FMOD::CodecMIDIChannel::getSound(int,FMOD::SoundI **,FMOD::CodecDLSInstrument **,int *,int *,int *,bool *,int *,int *,FMOD::DLS_CONNECTIONBLOCK **)")]
+#[doc(
+    alias = "FMOD::CodecMIDIChannel::getSound(int,FMOD::SoundI **,FMOD::CodecDLSInstrument **,int *,int *,int *,bool *,int *,int *,FMOD::DLS_CONNECTIONBLOCK **)"
+)]
 pub fn stub_8f00c() -> ! {
     todo!("0x8f00c FMOD::CodecMIDIChannel::getSound(int,FMOD::SoundI **,FMOD::CodecDLSInstrument **,int *,int *,int *,bool *,int *,int *,FMOD::DLS_CONNECTIONBLOCK **)")
 }
@@ -2722,7 +2797,9 @@ pub fn stub_91d30() -> ! {
 }
 
 // 0x92a68 — __ZN4FMOD9CodecMIDI12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecMIDI::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecMIDI::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_92a68() -> ! {
     todo!("0x92a68 FMOD::CodecMIDI::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -2740,7 +2817,9 @@ pub fn stub_92b38() -> ! {
 }
 
 // 0x92b94 — __ZN4FMOD9CodecMIDI19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecMIDI::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecMIDI::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_92b94() -> ! {
     todo!("0x92b94 FMOD::CodecMIDI::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -2752,7 +2831,9 @@ pub fn stub_92ba0() -> ! {
 }
 
 // 0x92fac — __ZN4FMOD9CodecMIDI12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecMIDI::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecMIDI::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_92fac() -> ! {
     todo!("0x92fac FMOD::CodecMIDI::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -2824,7 +2905,9 @@ pub fn stub_94790() -> ! {
 }
 
 // 0x94844 — __ZN4FMOD8CodecMOD19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecMOD::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecMOD::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_94844() -> ! {
     todo!("0x94844 FMOD::CodecMOD::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -2842,7 +2925,9 @@ pub fn stub_948b4() -> ! {
 }
 
 // 0x95a74 — __ZN4FMOD8CodecMOD12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecMOD::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecMOD::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_95a74() -> ! {
     todo!("0x95a74 FMOD::CodecMOD::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -2854,7 +2939,9 @@ pub fn stub_95a80() -> ! {
 }
 
 // 0x95e64 — __ZN4FMOD8CodecMOD12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecMOD::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecMOD::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_95e64() -> ! {
     todo!("0x95e64 FMOD::CodecMOD::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -2902,7 +2989,9 @@ pub fn stub_96120() -> ! {
 }
 
 // 0x964d8 — __ZN4FMOD9CodecMPEG19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecMPEG::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecMPEG::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_964d8() -> ! {
     todo!("0x964d8 FMOD::CodecMPEG::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -2920,7 +3009,9 @@ pub fn stub_965a4() -> ! {
 }
 
 // 0x96854 — __ZN4FMOD9CodecMPEG12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecMPEG::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecMPEG::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_96854() -> ! {
     todo!("0x96854 FMOD::CodecMPEG::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -2950,7 +3041,9 @@ pub fn stub_96c9c() -> ! {
 }
 
 // 0x97670 — __ZN4FMOD9CodecMPEG12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecMPEG::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecMPEG::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_97670() -> ! {
     todo!("0x97670 FMOD::CodecMPEG::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -3000,7 +3093,9 @@ pub fn stub_986f8() -> ! {
 // 0x987e4 — __ZN4FMOD9CodecMPEG16decodeXingHeaderEPhS1_Pj
 #[doc(alias = "FMOD::CodecMPEG::decodeXingHeader(unsigned char *,unsigned char *,unsigned int *)")]
 pub fn stub_987e4() -> ! {
-    todo!("0x987e4 FMOD::CodecMPEG::decodeXingHeader(unsigned char *,unsigned char *,unsigned int *)")
+    todo!(
+        "0x987e4 FMOD::CodecMPEG::decodeXingHeader(unsigned char *,unsigned char *,unsigned int *)"
+    )
 }
 
 // 0x9891c — __ZN4FMOD9CodecMPEG12decodeHeaderEPvPiS2_S2_
@@ -3046,7 +3141,9 @@ pub fn stub_99b08() -> ! {
 }
 
 // 0x99d7c — __ZN4FMOD9CodecMPEG12III_i_stereoEPA32_A18_fPiPNS_9gr_info_sEiii
-#[doc(alias = "FMOD::CodecMPEG::III_i_stereo(float (*)[32][18],int *,FMOD::gr_info_s *,int,int,int)")]
+#[doc(
+    alias = "FMOD::CodecMPEG::III_i_stereo(float (*)[32][18],int *,FMOD::gr_info_s *,int,int,int)"
+)]
 pub fn stub_99d7c() -> ! {
     todo!("0x99d7c FMOD::CodecMPEG::III_i_stereo(float (*)[32][18],int *,FMOD::gr_info_s *,int,int,int)")
 }
@@ -3076,13 +3173,17 @@ pub fn stub_9af14() -> ! {
 }
 
 // 0x9b1f8 — __ZN4FMOD9CodecMPEG24III_dequantize_sample_msEPA32_A18_fPiPNS_9gr_info_sEii
-#[doc(alias = "FMOD::CodecMPEG::III_dequantize_sample_ms(float (*)[32][18],int *,FMOD::gr_info_s *,int,int)")]
+#[doc(
+    alias = "FMOD::CodecMPEG::III_dequantize_sample_ms(float (*)[32][18],int *,FMOD::gr_info_s *,int,int)"
+)]
 pub fn stub_9b1f8() -> ! {
     todo!("0x9b1f8 FMOD::CodecMPEG::III_dequantize_sample_ms(float (*)[32][18],int *,FMOD::gr_info_s *,int,int)")
 }
 
 // 0x9c668 — __ZN4FMOD9CodecMPEG21III_dequantize_sampleEPA18_fPiPNS_9gr_info_sEii
-#[doc(alias = "FMOD::CodecMPEG::III_dequantize_sample(float (*)[18],int *,FMOD::gr_info_s *,int,int)")]
+#[doc(
+    alias = "FMOD::CodecMPEG::III_dequantize_sample(float (*)[18],int *,FMOD::gr_info_s *,int,int)"
+)]
 pub fn stub_9c668() -> ! {
     todo!("0x9c668 FMOD::CodecMPEG::III_dequantize_sample(float (*)[18],int *,FMOD::gr_info_s *,int,int)")
 }
@@ -3130,7 +3231,9 @@ pub fn stub_9fa10() -> ! {
 }
 
 // 0x9fa34 — __ZN4FMOD14CodecOggVorbis21getMemoryUsedCallbackEP16FMOD_CODEC_STATEPNS_13MemoryTrackerE
-#[doc(alias = "FMOD::CodecOggVorbis::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")]
+#[doc(
+    alias = "FMOD::CodecOggVorbis::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)"
+)]
 pub fn stub_9fa34() -> ! {
     todo!("0x9fa34 FMOD::CodecOggVorbis::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")
 }
@@ -3148,7 +3251,9 @@ pub fn stub_9fb70() -> ! {
 }
 
 // 0x9fba0 — __ZN4FMOD14CodecOggVorbis19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecOggVorbis::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecOggVorbis::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_9fba0() -> ! {
     todo!("0x9fba0 FMOD::CodecOggVorbis::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -3160,7 +3265,9 @@ pub fn stub_9fbac() -> ! {
 }
 
 // 0x9fd24 — __ZN4FMOD14CodecOggVorbis12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecOggVorbis::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecOggVorbis::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_9fd24() -> ! {
     todo!("0x9fd24 FMOD::CodecOggVorbis::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -3208,7 +3315,9 @@ pub fn stub_9fec8() -> ! {
 }
 
 // 0xa0448 — __ZN4FMOD14CodecOggVorbis12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecOggVorbis::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecOggVorbis::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_a0448() -> ! {
     todo!("0xa0448 FMOD::CodecOggVorbis::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -3262,13 +3371,17 @@ pub fn stub_a068c() -> ! {
 }
 
 // 0xa0698 — __ZN4FMOD13CodecPlaylist12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecPlaylist::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecPlaylist::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_a0698() -> ! {
     todo!("0xa0698 FMOD::CodecPlaylist::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
 
 // 0xa06a0 — __ZN4FMOD13CodecPlaylist19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecPlaylist::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecPlaylist::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_a06a0() -> ! {
     todo!("0xa06a0 FMOD::CodecPlaylist::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -3357,7 +3470,9 @@ pub fn stub_a1b4c() -> ! {
 }
 
 // 0xa1df4 — __ZN4FMOD13CodecPlaylist12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecPlaylist::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecPlaylist::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_a1df4() -> ! {
     todo!("0xa1df4 FMOD::CodecPlaylist::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -3399,7 +3514,9 @@ pub fn stub_a1e80() -> ! {
 }
 
 // 0xa1eec — __ZN4FMOD8CodecRaw19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecRaw::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecRaw::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_a1eec() -> ! {
     todo!("0xa1eec FMOD::CodecRaw::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -3411,7 +3528,9 @@ pub fn stub_a1ef8() -> ! {
 }
 
 // 0xa1f58 — __ZN4FMOD8CodecRaw12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecRaw::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecRaw::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_a1f58() -> ! {
     todo!("0xa1f58 FMOD::CodecRaw::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -3423,7 +3542,9 @@ pub fn stub_a1f64() -> ! {
 }
 
 // 0xa226c — __ZN4FMOD8CodecRaw12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecRaw::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecRaw::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_a226c() -> ! {
     todo!("0xa226c FMOD::CodecRaw::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -3513,7 +3634,9 @@ pub fn stub_a4174() -> ! {
 }
 
 // 0xa4228 — __ZN4FMOD8CodecS3M19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecS3M::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecS3M::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_a4228() -> ! {
     todo!("0xa4228 FMOD::CodecS3M::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -3531,7 +3654,9 @@ pub fn stub_a4298() -> ! {
 }
 
 // 0xa467c — __ZN4FMOD8CodecS3M12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecS3M::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecS3M::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_a467c() -> ! {
     todo!("0xa467c FMOD::CodecS3M::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -3543,7 +3668,9 @@ pub fn stub_a4688() -> ! {
 }
 
 // 0xa5c8c — __ZN4FMOD8CodecS3M12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecS3M::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecS3M::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_a5c8c() -> ! {
     todo!("0xa5c8c FMOD::CodecS3M::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -3567,13 +3694,17 @@ pub fn stub_a5cf8() -> ! {
 }
 
 // 0xa5d04 — __ZN4FMOD8CodecTag12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecTag::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecTag::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_a5d04() -> ! {
     todo!("0xa5d04 FMOD::CodecTag::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
 
 // 0xa5d0c — __ZN4FMOD8CodecTag19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecTag::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecTag::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_a5d0c() -> ! {
     todo!("0xa5d0c FMOD::CodecTag::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -3615,7 +3746,9 @@ pub fn stub_a69c4() -> ! {
 }
 
 // 0xa6aa0 — __ZN4FMOD8CodecTag12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecTag::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecTag::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_a6aa0() -> ! {
     todo!("0xa6aa0 FMOD::CodecTag::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -3651,13 +3784,17 @@ pub fn stub_a6b20() -> ! {
 }
 
 // 0xa6b2c — __ZN4FMOD9CodecUser12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecUser::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecUser::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_a6b2c() -> ! {
     todo!("0xa6b2c FMOD::CodecUser::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
 
 // 0xa6b38 — __ZN4FMOD9CodecUser19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecUser::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecUser::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_a6b38() -> ! {
     todo!("0xa6b38 FMOD::CodecUser::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -3669,7 +3806,9 @@ pub fn stub_a6b44() -> ! {
 }
 
 // 0xa6e20 — __ZN4FMOD9CodecUser12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecUser::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecUser::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_a6e20() -> ! {
     todo!("0xa6e20 FMOD::CodecUser::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -3717,7 +3856,9 @@ pub fn stub_a70c8() -> ! {
 }
 
 // 0xa7588 — __ZN4FMOD8CodecWav12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecWav::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecWav::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_a7588() -> ! {
     todo!("0xa7588 FMOD::CodecWav::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -3747,7 +3888,9 @@ pub fn stub_a77b8() -> ! {
 }
 
 // 0xa8028 — __ZN4FMOD8CodecWav12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecWav::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecWav::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_a8028() -> ! {
     todo!("0xa8028 FMOD::CodecWav::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -3759,7 +3902,9 @@ pub fn stub_a8034() -> ! {
 }
 
 // 0xa83f4 — __ZN4FMOD8CodecWav19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecWav::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecWav::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_a83f4() -> ! {
     todo!("0xa83f4 FMOD::CodecWav::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -3771,13 +3916,17 @@ pub fn stub_a844c() -> ! {
 }
 
 // 0xa8458 — __ZN4FMOD18IMAAdpcm_DecodeS16EPhPsjjj
-#[doc(alias = "FMOD::IMAAdpcm_DecodeS16(unsigned char *,short *,unsigned int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::IMAAdpcm_DecodeS16(unsigned char *,short *,unsigned int,unsigned int,unsigned int)"
+)]
 pub fn stub_a8458() -> ! {
     todo!("0xa8458 FMOD::IMAAdpcm_DecodeS16(unsigned char *,short *,unsigned int,unsigned int,unsigned int)")
 }
 
 // 0xa88fc — __ZN4FMOD18IMAAdpcm_DecodeM16EPhPsjjji
-#[doc(alias = "FMOD::IMAAdpcm_DecodeM16(unsigned char *,short *,unsigned int,unsigned int,unsigned int,int)")]
+#[doc(
+    alias = "FMOD::IMAAdpcm_DecodeM16(unsigned char *,short *,unsigned int,unsigned int,unsigned int,int)"
+)]
 pub fn stub_a88fc() -> ! {
     todo!("0xa88fc FMOD::IMAAdpcm_DecodeM16(unsigned char *,short *,unsigned int,unsigned int,unsigned int,int)")
 }
@@ -3807,7 +3956,9 @@ pub fn stub_a941c() -> ! {
 }
 
 // 0xa952c — __ZN4FMOD7CodecXM15processEnvelopeEPNS_18MusicEnvelopeStateEPNS_19MusicVirtualChannelEiPtiiihh
-#[doc(alias = "FMOD::CodecXM::processEnvelope(FMOD::MusicEnvelopeState *,FMOD::MusicVirtualChannel *,int,unsigned short *,int,int,int,unsigned char,unsigned char)")]
+#[doc(
+    alias = "FMOD::CodecXM::processEnvelope(FMOD::MusicEnvelopeState *,FMOD::MusicVirtualChannel *,int,unsigned short *,int,int,int,unsigned char,unsigned char)"
+)]
 pub fn stub_a952c() -> ! {
     todo!("0xa952c FMOD::CodecXM::processEnvelope(FMOD::MusicEnvelopeState *,FMOD::MusicVirtualChannel *,int,unsigned short *,int,int,int,unsigned char,unsigned char)")
 }
@@ -3831,7 +3982,9 @@ pub fn stub_a9984() -> ! {
 }
 
 // 0xa9a10 — __ZN4FMOD7CodecXM11processNoteEPNS_9MusicNoteEPNS_14MusicChannelXMEPNS_19MusicVirtualChannelEPNS_15MusicInstrumentEPNS_11MusicSampleE
-#[doc(alias = "FMOD::CodecXM::processNote(FMOD::MusicNote *,FMOD::MusicChannelXM *,FMOD::MusicVirtualChannel *,FMOD::MusicInstrument *,FMOD::MusicSample *)")]
+#[doc(
+    alias = "FMOD::CodecXM::processNote(FMOD::MusicNote *,FMOD::MusicChannelXM *,FMOD::MusicVirtualChannel *,FMOD::MusicInstrument *,FMOD::MusicSample *)"
+)]
 pub fn stub_a9a10() -> ! {
     todo!("0xa9a10 FMOD::CodecXM::processNote(FMOD::MusicNote *,FMOD::MusicChannelXM *,FMOD::MusicVirtualChannel *,FMOD::MusicInstrument *,FMOD::MusicSample *)")
 }
@@ -3855,13 +4008,17 @@ pub fn stub_a9f58() -> ! {
 }
 
 // 0xaa090 — __ZN4FMOD7CodecXM11updateFlagsEPNS_12MusicChannelEPNS_19MusicVirtualChannelEPNS_11MusicSampleE
-#[doc(alias = "FMOD::CodecXM::updateFlags(FMOD::MusicChannel *,FMOD::MusicVirtualChannel *,FMOD::MusicSample *)")]
+#[doc(
+    alias = "FMOD::CodecXM::updateFlags(FMOD::MusicChannel *,FMOD::MusicVirtualChannel *,FMOD::MusicSample *)"
+)]
 pub fn stub_aa090() -> ! {
     todo!("0xaa090 FMOD::CodecXM::updateFlags(FMOD::MusicChannel *,FMOD::MusicVirtualChannel *,FMOD::MusicSample *)")
 }
 
 // 0xaa288 — __ZN4FMOD7CodecXM15spawnNewChannelEPNS_12MusicChannelEPNS_19MusicVirtualChannelEPNS_11MusicSampleEPS4_
-#[doc(alias = "FMOD::CodecXM::spawnNewChannel(FMOD::MusicChannel *,FMOD::MusicVirtualChannel *,FMOD::MusicSample *,FMOD::MusicVirtualChannel **)")]
+#[doc(
+    alias = "FMOD::CodecXM::spawnNewChannel(FMOD::MusicChannel *,FMOD::MusicVirtualChannel *,FMOD::MusicSample *,FMOD::MusicVirtualChannel **)"
+)]
 pub fn stub_aa288() -> ! {
     todo!("0xaa288 FMOD::CodecXM::spawnNewChannel(FMOD::MusicChannel *,FMOD::MusicVirtualChannel *,FMOD::MusicSample *,FMOD::MusicVirtualChannel **)")
 }
@@ -3897,7 +4054,9 @@ pub fn stub_abb08() -> ! {
 }
 
 // 0xabbbc — __ZN4FMOD7CodecXM19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecXM::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecXM::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_abbbc() -> ! {
     todo!("0xabbbc FMOD::CodecXM::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -3927,7 +4086,9 @@ pub fn stub_ac01c() -> ! {
 }
 
 // 0xad880 — __ZN4FMOD7CodecXM12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecXM::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecXM::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_ad880() -> ! {
     todo!("0xad880 FMOD::CodecXM::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -3969,7 +4130,9 @@ pub fn stub_adb30() -> ! {
 }
 
 // 0xae24c — __ZN4FMOD9DSPChorus12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPChorus::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPChorus::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_ae24c() -> ! {
     todo!("0xae24c FMOD::DSPChorus::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -4119,7 +4282,9 @@ pub fn stub_ae858() -> ! {
 }
 
 // 0xaed98 — __ZN4FMOD8DSPCodec12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPCodec::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPCodec::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_aed98() -> ! {
     todo!("0xaed98 FMOD::DSPCodec::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -4169,7 +4334,9 @@ pub fn stub_af148() -> ! {
 // 0xaf528 — __ZN4FMOD5Codec20defaultGetWaveFormatEP16FMOD_CODEC_STATEiP21FMOD_CODEC_WAVEFORMAT
 #[doc(alias = "FMOD::Codec::defaultGetWaveFormat(FMOD_CODEC_STATE *,int,FMOD_CODEC_WAVEFORMAT *)")]
 pub fn stub_af528() -> ! {
-    todo!("0xaf528 FMOD::Codec::defaultGetWaveFormat(FMOD_CODEC_STATE *,int,FMOD_CODEC_WAVEFORMAT *)")
+    todo!(
+        "0xaf528 FMOD::Codec::defaultGetWaveFormat(FMOD_CODEC_STATE *,int,FMOD_CODEC_WAVEFORMAT *)"
+    )
 }
 
 // 0xaf5ac — __ZN4FMOD13DSPCompressor14createInternalEv
@@ -4227,7 +4394,9 @@ pub fn stub_af8b0() -> ! {
 }
 
 // 0xafc5c — __ZN4FMOD13DSPCompressor12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPCompressor::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPCompressor::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_afc5c() -> ! {
     todo!("0xafc5c FMOD::DSPCompressor::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -4347,7 +4516,9 @@ pub fn stub_b0768() -> ! {
 }
 
 // 0xb0e2c — __ZN4FMOD13DSPDistortion12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPDistortion::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPDistortion::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_b0e2c() -> ! {
     todo!("0xb0e2c FMOD::DSPDistortion::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -4491,7 +4662,9 @@ pub fn stub_b27bc() -> ! {
 }
 
 // 0xb27c0 — __ZN4FMOD6DSPFFT11getSpectrumEPfjjS1_iii19FMOD_DSP_FFT_WINDOW
-#[doc(alias = "FMOD::DSPFFT::getSpectrum(float *,unsigned int,unsigned int,float *,int,int,int,FMOD_DSP_FFT_WINDOW)")]
+#[doc(
+    alias = "FMOD::DSPFFT::getSpectrum(float *,unsigned int,unsigned int,float *,int,int,int,FMOD_DSP_FFT_WINDOW)"
+)]
 pub fn stub_b27c0() -> ! {
     todo!("0xb27c0 FMOD::DSPFFT::getSpectrum(float *,unsigned int,unsigned int,float *,int,int,int,FMOD_DSP_FFT_WINDOW)")
 }
@@ -4509,7 +4682,9 @@ pub fn stub_b30b8() -> ! {
 }
 
 // 0xb30e4 — __ZN4FMOD9DSPFilter4readEPPfPiPj16FMOD_SPEAKERMODEij
-#[doc(alias = "FMOD::DSPFilter::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
+#[doc(
+    alias = "FMOD::DSPFilter::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)"
+)]
 pub fn stub_b30e4() -> ! {
     todo!("0xb30e4 FMOD::DSPFilter::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
 }
@@ -4581,7 +4756,9 @@ pub fn stub_b3ad0() -> ! {
 }
 
 // 0xb3ec0 — __ZN4FMOD9DSPFlange12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPFlange::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPFlange::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_b3ec0() -> ! {
     todo!("0xb3ec0 FMOD::DSPFlange::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -4661,7 +4838,9 @@ pub fn stub_b4e20() -> ! {
 // 0xb4e2c — __ZN4FMOD11DSPHighPass21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::DSPHighPass::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
 pub fn stub_b4e2c() -> ! {
-    todo!("0xb4e2c FMOD::DSPHighPass::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")
+    todo!(
+        "0xb4e2c FMOD::DSPHighPass::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)"
+    )
 }
 
 // 0xb4e84 — __ZN4FMOD11DSPHighPass20getParameterInternalEiPfPc
@@ -4695,7 +4874,9 @@ pub fn stub_b5098() -> ! {
 }
 
 // 0xb52c0 — __ZN4FMOD11DSPHighPass12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPHighPass::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPHighPass::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_b52c0() -> ! {
     todo!("0xb52c0 FMOD::DSPHighPass::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -4797,7 +4978,9 @@ pub fn stub_b596c() -> ! {
 }
 
 // 0xb5d44 — __ZN4FMOD9DSPITEcho12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPITEcho::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPITEcho::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_b5d44() -> ! {
     todo!("0xb5d44 FMOD::DSPITEcho::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -4815,7 +4998,9 @@ pub fn stub_b5e9c() -> ! {
 }
 
 // 0xb5ea8 — __ZN4FMOD10DSPLowPass8bilinearEffffffPffS1_
-#[doc(alias = "FMOD::DSPLowPass::bilinear(float,float,float,float,float,float,float *,float,float *)")]
+#[doc(
+    alias = "FMOD::DSPLowPass::bilinear(float,float,float,float,float,float,float *,float,float *)"
+)]
 pub fn stub_b5ea8() -> ! {
     todo!("0xb5ea8 FMOD::DSPLowPass::bilinear(float,float,float,float,float,float,float *,float,float *)")
 }
@@ -4863,7 +5048,9 @@ pub fn stub_b60d4() -> ! {
 }
 
 // 0xb6144 — __ZN4FMOD10DSPLowPass7szxformEPfS1_S1_S1_S1_S1_ffS1_S1_
-#[doc(alias = "FMOD::DSPLowPass::szxform(float *,float *,float *,float *,float *,float *,float,float,float *,float *)")]
+#[doc(
+    alias = "FMOD::DSPLowPass::szxform(float *,float *,float *,float *,float *,float *,float,float,float *,float *)"
+)]
 pub fn stub_b6144() -> ! {
     todo!("0xb6144 FMOD::DSPLowPass::szxform(float *,float *,float *,float *,float *,float *,float,float,float *,float *)")
 }
@@ -4905,7 +5092,9 @@ pub fn stub_b779c() -> ! {
 }
 
 // 0xb79c4 — __ZN4FMOD10DSPLowPass12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPLowPass::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPLowPass::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_b79c4() -> ! {
     todo!("0xb79c4 FMOD::DSPLowPass::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -4949,7 +5138,9 @@ pub fn stub_b7ab0() -> ! {
 // 0xb7abc — __ZN4FMOD11DSPLowPass221getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::DSPLowPass2::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
 pub fn stub_b7abc() -> ! {
-    todo!("0xb7abc FMOD::DSPLowPass2::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")
+    todo!(
+        "0xb7abc FMOD::DSPLowPass2::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)"
+    )
 }
 
 // 0xb7b14 — __ZN4FMOD11DSPLowPass220getParameterInternalEiPfPc
@@ -4977,7 +5168,9 @@ pub fn stub_b7cc8() -> ! {
 }
 
 // 0xb8780 — __ZN4FMOD11DSPLowPass212readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPLowPass2::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPLowPass2::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_b8780() -> ! {
     todo!("0xb8780 FMOD::DSPLowPass2::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -5055,7 +5248,9 @@ pub fn stub_b8b30() -> ! {
 }
 
 // 0xb8b3c — __ZN4FMOD16DSPLowPassSimple21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
-#[doc(alias = "FMOD::DSPLowPassSimple::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
+#[doc(
+    alias = "FMOD::DSPLowPassSimple::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)"
+)]
 pub fn stub_b8b3c() -> ! {
     todo!("0xb8b3c FMOD::DSPLowPassSimple::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")
 }
@@ -5069,7 +5264,9 @@ pub fn stub_b8b94() -> ! {
 // 0xb8bd4 — __ZN4FMOD16DSPLowPassSimple20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
 #[doc(alias = "FMOD::DSPLowPassSimple::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")]
 pub fn stub_b8bd4() -> ! {
-    todo!("0xb8bd4 FMOD::DSPLowPassSimple::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")
+    todo!(
+        "0xb8bd4 FMOD::DSPLowPassSimple::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)"
+    )
 }
 
 // 0xb8be0 — __ZN4FMOD16DSPLowPassSimple12readInternalEPfS1_jii
@@ -5079,7 +5276,9 @@ pub fn stub_b8be0() -> ! {
 }
 
 // 0xb958c — __ZN4FMOD16DSPLowPassSimple12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPLowPassSimple::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPLowPassSimple::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_b958c() -> ! {
     todo!("0xb958c FMOD::DSPLowPassSimple::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -5153,7 +5352,9 @@ pub fn stub_b9820() -> ! {
 // 0xb982c — __ZN4FMOD12DSPNormalize21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::DSPNormalize::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
 pub fn stub_b982c() -> ! {
-    todo!("0xb982c FMOD::DSPNormalize::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")
+    todo!(
+        "0xb982c FMOD::DSPNormalize::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)"
+    )
 }
 
 // 0xb9884 — __ZN4FMOD12DSPNormalize20getParameterInternalEiPfPc
@@ -5175,7 +5376,9 @@ pub fn stub_b9940() -> ! {
 }
 
 // 0xb9a94 — __ZN4FMOD12DSPNormalize12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPNormalize::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPNormalize::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_b9a94() -> ! {
     todo!("0xb9a94 FMOD::DSPNormalize::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -5247,7 +5450,9 @@ pub fn stub_b9e10() -> ! {
 }
 
 // 0xba0f4 — __ZN4FMOD13DSPOscillator12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPOscillator::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPOscillator::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_ba0f4() -> ! {
     todo!("0xba0f4 FMOD::DSPOscillator::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -5319,7 +5524,9 @@ pub fn stub_ba49c() -> ! {
 }
 
 // 0xbb54c — __ZN4FMOD10DSPParamEq12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPParamEq::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPParamEq::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_bb54c() -> ! {
     todo!("0xbb54c FMOD::DSPParamEq::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -5511,7 +5718,9 @@ pub fn stub_bf024() -> ! {
 }
 
 // 0xbf2f0 — __ZN4FMOD13DSPPitchShift12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPPitchShift::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPPitchShift::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_bf2f0() -> ! {
     todo!("0xbf2f0 FMOD::DSPPitchShift::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -5571,7 +5780,9 @@ pub fn stub_bf814() -> ! {
 }
 
 // 0xbf8c4 — __ZN4FMOD12DSPResampler4readEPPfPiPj16FMOD_SPEAKERMODEij
-#[doc(alias = "FMOD::DSPResampler::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
+#[doc(
+    alias = "FMOD::DSPResampler::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)"
+)]
 pub fn stub_bf8c4() -> ! {
     todo!("0xbf8c4 FMOD::DSPResampler::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
 }
@@ -5583,7 +5794,9 @@ pub fn stub_c0334() -> ! {
 }
 
 // 0xc0378 — __ZN4FMOD22DSPResamplerMultiInput4readEPPfPiPj16FMOD_SPEAKERMODEij
-#[doc(alias = "FMOD::DSPResamplerMultiInput::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
+#[doc(
+    alias = "FMOD::DSPResamplerMultiInput::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)"
+)]
 pub fn stub_c0378() -> ! {
     todo!("0xc0378 FMOD::DSPResamplerMultiInput::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
 }
@@ -5661,7 +5874,9 @@ pub fn stub_c187c() -> ! {
 }
 
 // 0xc191c — __ZN4FMOD9DSPReverb12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPReverb::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPReverb::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_c191c() -> ! {
     todo!("0xc191c FMOD::DSPReverb::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -5705,7 +5920,9 @@ pub fn stub_c1b24() -> ! {
 // 0xc1c2c — __ZN4FMOD12DSPSfxReverb21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::DSPSfxReverb::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
 pub fn stub_c1c2c() -> ! {
-    todo!("0xc1c2c FMOD::DSPSfxReverb::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")
+    todo!(
+        "0xc1c2c FMOD::DSPSfxReverb::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)"
+    )
 }
 
 // 0xc1c84 — __ZN4FMOD12DSPSfxReverb12SetDiffusionEP25_I3DL2_LISTENERPROPERTIES
@@ -5713,7 +5930,6 @@ pub fn stub_c1c2c() -> ! {
 pub fn stub_c1c84() -> ! {
     todo!("0xc1c84 FMOD::DSPSfxReverb::SetDiffusion(_I3DL2_LISTENERPROPERTIES *)")
 }
-
 
 // 0xc1d48 — __ZN4FMOD12DSPSfxReverb19SetReflectionsLevelEP25_I3DL2_LISTENERPROPERTIES
 #[doc(alias = "FMOD::DSPSfxReverb::SetReflectionsLevel(_I3DL2_LISTENERPROPERTIES *)")]
@@ -5741,7 +5957,9 @@ pub fn stub_c2014() -> ! {
     todo!("0xc2014 FMOD::DSPSfxReverb::SetRoom(_I3DL2_LISTENERPROPERTIES *)")
 }
 // 0xc207c — __ZN4FMOD12DSPSfxReverb20CalculateShelfCoeffsEfffPfS1_S1_S1_S1_
-#[doc(alias = "FMOD::DSPSfxReverb::CalculateShelfCoeffs(float,float,float,float *,float *,float *,float *,float *)")]
+#[doc(
+    alias = "FMOD::DSPSfxReverb::CalculateShelfCoeffs(float,float,float,float *,float *,float *,float *,float *)"
+)]
 pub fn stub_c207c() -> ! {
     todo!("0xc207c FMOD::DSPSfxReverb::CalculateShelfCoeffs(float,float,float,float *,float *,float *,float *,float *)")
 }
@@ -5836,7 +6054,9 @@ pub fn stub_c31c8() -> ! {
     todo!("0xc31c8 FMOD::DSPSfxReverb::readInternal(float *,float *,unsigned int,int,int)")
 }
 // 0xc327c — __ZN4FMOD12DSPSfxReverb12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPSfxReverb::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPSfxReverb::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_c327c() -> ! {
     todo!("0xc327c FMOD::DSPSfxReverb::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -5878,7 +6098,9 @@ pub fn stub_c3724() -> ! {
 // 0xc3750 — __ZN4FMOD12DSPSoundCard4readEPvPj16FMOD_SPEAKERMODEij
 #[doc(alias = "FMOD::DSPSoundCard::read(void *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
 pub fn stub_c3750() -> ! {
-    todo!("0xc3750 FMOD::DSPSoundCard::read(void *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
+    todo!(
+        "0xc3750 FMOD::DSPSoundCard::read(void *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)"
+    )
 }
 // 0xc3bcc — __ZN4FMOD12DSPWaveTable19setPositionInternalEj
 #[doc(alias = "FMOD::DSPWaveTable::setPositionInternal(unsigned int)")]
@@ -5931,7 +6153,9 @@ pub fn stub_c3d00() -> ! {
     todo!("0xc3d00 FMOD::DSPWaveTable::setFinished(bool,bool)")
 }
 // 0xc3d94 — __ZN4FMOD12DSPWaveTable4readEPPfPiPj16FMOD_SPEAKERMODEij
-#[doc(alias = "FMOD::DSPWaveTable::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
+#[doc(
+    alias = "FMOD::DSPWaveTable::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)"
+)]
 pub fn stub_c3d94() -> ! {
     todo!("0xc3d94 FMOD::DSPWaveTable::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
 }
@@ -5943,7 +6167,9 @@ pub fn stub_c4728() -> ! {
 // 0xc4788 — __ZN4FMOD4DSPI4readEPPfPiPj16FMOD_SPEAKERMODEij
 #[doc(alias = "FMOD::DSPI::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
 pub fn stub_c4788() -> ! {
-    todo!("0xc4788 FMOD::DSPI::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")
+    todo!(
+        "0xc4788 FMOD::DSPI::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)"
+    )
 }
 // 0xc4790 — __ZN4FMOD4DSPI4readEPvPj16FMOD_SPEAKERMODEij
 #[doc(alias = "FMOD::DSPI::read(void *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
@@ -6056,7 +6282,9 @@ pub fn stub_c4fd0() -> ! {
     todo!("0xc4fd0 FMOD::DSPI::getNumInputs(int *,bool)")
 }
 // 0xc503c — __ZN4FMOD4DSPI14addInputQueuedEPS0_bPNS_14DSPConnectionIEPS3_
-#[doc(alias = "FMOD::DSPI::addInputQueued(FMOD::DSPI*,bool,FMOD::DSPConnectionI *,FMOD::DSPConnectionI **)")]
+#[doc(
+    alias = "FMOD::DSPI::addInputQueued(FMOD::DSPI*,bool,FMOD::DSPConnectionI *,FMOD::DSPConnectionI **)"
+)]
 pub fn stub_c503c() -> ! {
     todo!("0xc503c FMOD::DSPI::addInputQueued(FMOD::DSPI*,bool,FMOD::DSPConnectionI *,FMOD::DSPConnectionI **)")
 }
@@ -6081,7 +6309,9 @@ pub fn stub_c5390() -> ! {
     todo!("0xc5390 FMOD::DSPI::createHistoryBuffer(float **,int)")
 }
 // 0xc53ac — __ZN4FMOD4DSPI22calculateSpeakerLevelsEffffffff16FMOD_SPEAKERMODEi19FMOD_SPEAKERMAPTYPEPfPi
-#[doc(alias = "FMOD::DSPI::calculateSpeakerLevels(float,float,float,float,float,float,float,float,FMOD_SPEAKERMODE,int,FMOD_SPEAKERMAPTYPE,float *,int *)")]
+#[doc(
+    alias = "FMOD::DSPI::calculateSpeakerLevels(float,float,float,float,float,float,float,float,FMOD_SPEAKERMODE,int,FMOD_SPEAKERMAPTYPE,float *,int *)"
+)]
 pub fn stub_c53ac() -> ! {
     todo!("0xc53ac FMOD::DSPI::calculateSpeakerLevels(float,float,float,float,float,float,float,float,FMOD_SPEAKERMODE,int,FMOD_SPEAKERMAPTYPE,float *,int *)")
 }
@@ -6136,7 +6366,9 @@ pub fn stub_c7380() -> ! {
     todo!("0xc7380 FMOD::DSPI::doesUnitExist(FMOD::DSPI*,bool)")
 }
 // 0xc7430 — __ZN4FMOD4DSPI16addInputInternalEPS0_bPNS_14DSPConnectionIEPS3_b
-#[doc(alias = "FMOD::DSPI::addInputInternal(FMOD::DSPI*,bool,FMOD::DSPConnectionI *,FMOD::DSPConnectionI **,bool)")]
+#[doc(
+    alias = "FMOD::DSPI::addInputInternal(FMOD::DSPI*,bool,FMOD::DSPConnectionI *,FMOD::DSPConnectionI **,bool)"
+)]
 pub fn stub_c7430() -> ! {
     todo!("0xc7430 FMOD::DSPI::addInputInternal(FMOD::DSPI*,bool,FMOD::DSPConnectionI *,FMOD::DSPConnectionI **,bool)")
 }
@@ -6156,7 +6388,9 @@ pub fn stub_c7860() -> ! {
     todo!("0xc7860 FMOD::DSPI::release(bool)")
 }
 // 0xc798c — __ZN4FMOD4DSPI26insertInputBetweenInternalEPS0_ibPNS_14DSPConnectionIEb
-#[doc(alias = "FMOD::DSPI::insertInputBetweenInternal(FMOD::DSPI*,int,bool,FMOD::DSPConnectionI *,bool)")]
+#[doc(
+    alias = "FMOD::DSPI::insertInputBetweenInternal(FMOD::DSPI*,int,bool,FMOD::DSPConnectionI *,bool)"
+)]
 pub fn stub_c798c() -> ! {
     todo!("0xc798c FMOD::DSPI::insertInputBetweenInternal(FMOD::DSPI*,int,bool,FMOD::DSPConnectionI *,bool)")
 }
@@ -6474,7 +6708,9 @@ pub fn stub_c9aa8() -> ! {
 }
 
 // 0xc9b00 — __ZN4FMOD7NetFile9openAsMMSEPKcPcS3_S3_tPj
-#[doc(alias = "FMOD::NetFile::openAsMMS(char const*,char *,char *,char *,unsigned short,unsigned int *)")]
+#[doc(
+    alias = "FMOD::NetFile::openAsMMS(char const*,char *,char *,char *,unsigned short,unsigned int *)"
+)]
 pub fn stub_c9b00() -> ! {
     todo!("0xc9b00 FMOD::NetFile::openAsMMS(char const*,char *,char *,char *,unsigned short,unsigned int *)")
 }
@@ -6516,13 +6752,17 @@ pub fn stub_c9dd4() -> ! {
 }
 
 // 0xca20c — __ZN4FMOD7NetFile8parseUrlEPcS1_iS1_iPtS1_iPb
-#[doc(alias = "FMOD::NetFile::parseUrl(char *,char *,int,char *,int,unsigned short *,char *,int,bool *)")]
+#[doc(
+    alias = "FMOD::NetFile::parseUrl(char *,char *,int,char *,int,unsigned short *,char *,int,bool *)"
+)]
 pub fn stub_ca20c() -> ! {
     todo!("0xca20c FMOD::NetFile::parseUrl(char *,char *,int,char *,int,unsigned short *,char *,int,bool *)")
 }
 
 // 0xca58c — __ZN4FMOD7NetFile10openAsHTTPEPKcPcS3_S3_tPj
-#[doc(alias = "FMOD::NetFile::openAsHTTP(char const*,char *,char *,char *,unsigned short,unsigned int *)")]
+#[doc(
+    alias = "FMOD::NetFile::openAsHTTP(char const*,char *,char *,char *,unsigned short,unsigned int *)"
+)]
 pub fn stub_ca58c() -> ! {
     todo!("0xca58c FMOD::NetFile::openAsHTTP(char const*,char *,char *,char *,unsigned short,unsigned int *)")
 }
@@ -6732,7 +6972,9 @@ pub fn stub_cbeb8() -> ! {
 }
 
 // 0xcbebc — __ZN4FMOD11GeometryMgr11lineTestAllEPK11FMOD_VECTORS3_PfS4_
-#[doc(alias = "FMOD::GeometryMgr::lineTestAll(FMOD_VECTOR const*,FMOD_VECTOR const*,float *,float *)")]
+#[doc(
+    alias = "FMOD::GeometryMgr::lineTestAll(FMOD_VECTOR const*,FMOD_VECTOR const*,float *,float *)"
+)]
 pub fn stub_cbebc() -> ! {
     todo!("0xcbebc FMOD::GeometryMgr::lineTestAll(FMOD_VECTOR const*,FMOD_VECTOR const*,float *,float *)")
 }
@@ -6966,7 +7208,9 @@ pub fn stub_cdf64() -> ! {
 }
 
 // 0xcdfe0 — __ZN4FMOD8Metadata6addTagE12FMOD_TAGTYPEPKcPvj16FMOD_TAGDATATYPEb
-#[doc(alias = "FMOD::Metadata::addTag(FMOD_TAGTYPE,char const*,void *,unsigned int,FMOD_TAGDATATYPE,bool)")]
+#[doc(
+    alias = "FMOD::Metadata::addTag(FMOD_TAGTYPE,char const*,void *,unsigned int,FMOD_TAGDATATYPE,bool)"
+)]
 pub fn stub_cdfe0() -> ! {
     todo!("0xcdfe0 FMOD::Metadata::addTag(FMOD_TAGTYPE,char const*,void *,unsigned int,FMOD_TAGDATATYPE,bool)")
 }
@@ -6990,7 +7234,9 @@ pub fn stub_ce2f0() -> ! {
 }
 
 // 0xce3b4 — __ZN4FMOD9MusicSong22spawnNewVirtualChannelEPNS_12MusicChannelEPNS_11MusicSampleEPPNS_19MusicVirtualChannelE
-#[doc(alias = "FMOD::MusicSong::spawnNewVirtualChannel(FMOD::MusicChannel *,FMOD::MusicSample *,FMOD::MusicVirtualChannel **)")]
+#[doc(
+    alias = "FMOD::MusicSong::spawnNewVirtualChannel(FMOD::MusicChannel *,FMOD::MusicSample *,FMOD::MusicVirtualChannel **)"
+)]
 pub fn stub_ce3b4() -> ! {
     todo!("0xce3b4 FMOD::MusicSong::spawnNewVirtualChannel(FMOD::MusicChannel *,FMOD::MusicSample *,FMOD::MusicVirtualChannel **)")
 }
@@ -7056,7 +7302,9 @@ pub fn stub_ce800() -> ! {
 }
 
 // 0xce80c — __ZN4FMOD9MusicSong19getPositionCallbackEP16FMOD_CODEC_STATEPjj
-#[doc(alias = "FMOD::MusicSong::getPositionCallback(FMOD_CODEC_STATE *,unsigned int *,unsigned int)")]
+#[doc(
+    alias = "FMOD::MusicSong::getPositionCallback(FMOD_CODEC_STATE *,unsigned int *,unsigned int)"
+)]
 pub fn stub_ce80c() -> ! {
     todo!("0xce80c FMOD::MusicSong::getPositionCallback(FMOD_CODEC_STATE *,unsigned int *,unsigned int)")
 }
@@ -7110,13 +7358,17 @@ pub fn stub_ce8bc() -> ! {
 }
 
 // 0xce91c — __ZN4FMOD9MusicSong31getHardwareMusicChannelCallbackEP16FMOD_CODEC_STATEPPNS_11ChannelRealE
-#[doc(alias = "FMOD::MusicSong::getHardwareMusicChannelCallback(FMOD_CODEC_STATE *,FMOD::ChannelReal **)")]
+#[doc(
+    alias = "FMOD::MusicSong::getHardwareMusicChannelCallback(FMOD_CODEC_STATE *,FMOD::ChannelReal **)"
+)]
 pub fn stub_ce91c() -> ! {
     todo!("0xce91c FMOD::MusicSong::getHardwareMusicChannelCallback(FMOD_CODEC_STATE *,FMOD::ChannelReal **)")
 }
 
 // 0xce928 — __ZN4FMOD9MusicSong9playSoundEPNS_11MusicSampleEPNS_19MusicVirtualChannelEbPNS_13_SNDMIXPLUGINE
-#[doc(alias = "FMOD::MusicSong::playSound(FMOD::MusicSample *,FMOD::MusicVirtualChannel *,bool,FMOD::_SNDMIXPLUGIN *)")]
+#[doc(
+    alias = "FMOD::MusicSong::playSound(FMOD::MusicSample *,FMOD::MusicVirtualChannel *,bool,FMOD::_SNDMIXPLUGIN *)"
+)]
 pub fn stub_ce928() -> ! {
     todo!("0xce928 FMOD::MusicSong::playSound(FMOD::MusicSample *,FMOD::MusicVirtualChannel *,bool,FMOD::_SNDMIXPLUGIN *)")
 }
@@ -7164,7 +7416,9 @@ pub fn stub_ceec8() -> ! {
 }
 
 // 0xceed0 — __ZN4FMOD11ChannelReal16moveChannelGroupEPNS_13ChannelGroupIES2_b
-#[doc(alias = "FMOD::ChannelReal::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
+#[doc(
+    alias = "FMOD::ChannelReal::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)"
+)]
 pub fn stub_ceed0() -> ! {
     todo!("0xceed0 FMOD::ChannelReal::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")
 }
@@ -7272,13 +7526,17 @@ pub fn stub_cfc08() -> ! {
 }
 
 // 0xcfd48 — __ZN4FMOD6Octree8testLineEPNS_10OctreeNodeE11FMOD_VECTORS3_PNS0_13RecursionDataE
-#[doc(alias = "FMOD::Octree::testLine(FMOD::OctreeNode *,FMOD_VECTOR,FMOD_VECTOR,FMOD::Octree::RecursionData *)")]
+#[doc(
+    alias = "FMOD::Octree::testLine(FMOD::OctreeNode *,FMOD_VECTOR,FMOD_VECTOR,FMOD::Octree::RecursionData *)"
+)]
 pub fn stub_cfd48() -> ! {
     todo!("0xcfd48 FMOD::Octree::testLine(FMOD::OctreeNode *,FMOD_VECTOR,FMOD_VECTOR,FMOD::Octree::RecursionData *)")
 }
 
 // 0xd0370 — __ZN4FMOD6Octree8testLineEPFbPNS_10OctreeNodeEPvES3_RK11FMOD_VECTORS8_
-#[doc(alias = "FMOD::Octree::testLine(bool (*)(FMOD::OctreeNode *,void *),void *,FMOD_VECTOR const&,FMOD_VECTOR const&)")]
+#[doc(
+    alias = "FMOD::Octree::testLine(bool (*)(FMOD::OctreeNode *,void *),void *,FMOD_VECTOR const&,FMOD_VECTOR const&)"
+)]
 pub fn stub_d0370() -> ! {
     todo!("0xd0370 FMOD::Octree::testLine(bool (*)(FMOD::OctreeNode *,void *),void *,FMOD_VECTOR const&,FMOD_VECTOR const&)")
 }
@@ -7350,7 +7608,9 @@ pub fn stub_d0718() -> ! {
 }
 
 // 0xd0844 — __Z21FMOD_OS_Thread_CreatePKcPFPvS1_ES1_20FMOD_THREAD_PRIORITYS1_iPS1_
-#[doc(alias = "FMOD_OS_Thread_Create(char const*,void * (*)(void *),void *,FMOD_THREAD_PRIORITY,void *,int,void **)")]
+#[doc(
+    alias = "FMOD_OS_Thread_Create(char const*,void * (*)(void *),void *,FMOD_THREAD_PRIORITY,void *,int,void **)"
+)]
 pub fn stub_d0844() -> ! {
     todo!("0xd0844 FMOD_OS_Thread_Create(char const*,void * (*)(void *),void *,FMOD_THREAD_PRIORITY,void *,int,void **)")
 }
@@ -7529,7 +7789,9 @@ pub fn stub_d17f4() -> ! {
 }
 
 // 0xd1850 — __ZN4FMOD6Output10recordReadEPNS_19FMOD_RECORDING_INFOEPfS3_jii
-#[doc(alias = "FMOD::Output::recordRead(FMOD::FMOD_RECORDING_INFO *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::Output::recordRead(FMOD::FMOD_RECORDING_INFO *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_d1850() -> ! {
     todo!("0xd1850 FMOD::Output::recordRead(FMOD::FMOD_RECORDING_INFO *,float *,float *,unsigned int,int,int)")
 }
@@ -7571,13 +7833,17 @@ pub fn stub_d27c8() -> ! {
 }
 
 // 0xd27dc — __ZN4FMOD15OutputCoreAudio17recordGetPositionEPNS_19FMOD_RECORDING_INFOEPj
-#[doc(alias = "FMOD::OutputCoreAudio::recordGetPosition(FMOD::FMOD_RECORDING_INFO *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::recordGetPosition(FMOD::FMOD_RECORDING_INFO *,unsigned int *)"
+)]
 pub fn stub_d27dc() -> ! {
     todo!("0xd27dc FMOD::OutputCoreAudio::recordGetPosition(FMOD::FMOD_RECORDING_INFO *,unsigned int *)")
 }
 
 // 0xd27ec — __ZN4FMOD15OutputCoreAudio10recordLockEPNS_19FMOD_RECORDING_INFOEjjPPvS4_PjS5_
-#[doc(alias = "FMOD::OutputCoreAudio::recordLock(FMOD::FMOD_RECORDING_INFO *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::recordLock(FMOD::FMOD_RECORDING_INFO *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)"
+)]
 pub fn stub_d27ec() -> ! {
     todo!("0xd27ec FMOD::OutputCoreAudio::recordLock(FMOD::FMOD_RECORDING_INFO *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
 }
@@ -7595,13 +7861,17 @@ pub fn stub_d28a0() -> ! {
 }
 
 // 0xd28ac — __ZN4FMOD15OutputCoreAudio25recordGetPositionCallbackEP17FMOD_OUTPUT_STATEPNS_19FMOD_RECORDING_INFOEPj
-#[doc(alias = "FMOD::OutputCoreAudio::recordGetPositionCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::recordGetPositionCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *,unsigned int *)"
+)]
 pub fn stub_d28ac() -> ! {
     todo!("0xd28ac FMOD::OutputCoreAudio::recordGetPositionCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *,unsigned int *)")
 }
 
 // 0xd28b8 — __ZN4FMOD15OutputCoreAudio18recordLockCallbackEP17FMOD_OUTPUT_STATEPNS_19FMOD_RECORDING_INFOEjjPPvS6_PjS7_
-#[doc(alias = "FMOD::OutputCoreAudio::recordLockCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::recordLockCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)"
+)]
 pub fn stub_d28b8() -> ! {
     todo!("0xd28b8 FMOD::OutputCoreAudio::recordLockCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
 }
@@ -7613,13 +7883,17 @@ pub fn stub_d28f8() -> ! {
 }
 
 // 0xd296c — __ZN4FMOD15OutputCoreAudio12updateRecordEPmPK14AudioTimeStampmm
-#[doc(alias = "FMOD::OutputCoreAudio::updateRecord(unsigned long *,AudioTimeStamp const*,unsigned long,unsigned long)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::updateRecord(unsigned long *,AudioTimeStamp const*,unsigned long,unsigned long)"
+)]
 pub fn stub_d296c() -> ! {
     todo!("0xd296c FMOD::OutputCoreAudio::updateRecord(unsigned long *,AudioTimeStamp const*,unsigned long,unsigned long)")
 }
 
 // 0xd2a3c — __ZN4FMOD15OutputCoreAudio14recordCallbackEPvPmPK14AudioTimeStampmmP15AudioBufferList
-#[doc(alias = "FMOD::OutputCoreAudio::recordCallback(void *,unsigned long *,AudioTimeStamp const*,unsigned long,unsigned long,AudioBufferList *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::recordCallback(void *,unsigned long *,AudioTimeStamp const*,unsigned long,unsigned long,AudioBufferList *)"
+)]
 pub fn stub_d2a3c() -> ! {
     todo!("0xd2a3c FMOD::OutputCoreAudio::recordCallback(void *,unsigned long *,AudioTimeStamp const*,unsigned long,unsigned long,AudioBufferList *)")
 }
@@ -7637,7 +7911,9 @@ pub fn stub_d2bd8() -> ! {
 }
 
 // 0xd2c20 — __ZN4FMOD15OutputCoreAudio27recordGetDriverInfoCallbackEP17FMOD_OUTPUT_STATEiPciP9FMOD_GUID
-#[doc(alias = "FMOD::OutputCoreAudio::recordGetDriverInfoCallback(FMOD_OUTPUT_STATE *,int,char *,int,FMOD_GUID *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::recordGetDriverInfoCallback(FMOD_OUTPUT_STATE *,int,char *,int,FMOD_GUID *)"
+)]
 pub fn stub_d2c20() -> ! {
     todo!("0xd2c20 FMOD::OutputCoreAudio::recordGetDriverInfoCallback(FMOD_OUTPUT_STATE *,int,char *,int,FMOD_GUID *)")
 }
@@ -7649,7 +7925,9 @@ pub fn stub_d2c34() -> ! {
 }
 
 // 0xd2c7c — __ZN4FMOD15OutputCoreAudio21getDriverInfoCallbackEP17FMOD_OUTPUT_STATEiPciP9FMOD_GUID
-#[doc(alias = "FMOD::OutputCoreAudio::getDriverInfoCallback(FMOD_OUTPUT_STATE *,int,char *,int,FMOD_GUID *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::getDriverInfoCallback(FMOD_OUTPUT_STATE *,int,char *,int,FMOD_GUID *)"
+)]
 pub fn stub_d2c7c() -> ! {
     todo!("0xd2c7c FMOD::OutputCoreAudio::getDriverInfoCallback(FMOD_OUTPUT_STATE *,int,char *,int,FMOD_GUID *)")
 }
@@ -7661,7 +7939,9 @@ pub fn stub_d2c90() -> ! {
 }
 
 // 0xd2dd0 — __ZN4FMOD15OutputCoreAudio19routeChangeCallbackEPvmmPKv
-#[doc(alias = "FMOD::OutputCoreAudio::routeChangeCallback(void *,unsigned long,unsigned long,void const*)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::routeChangeCallback(void *,unsigned long,unsigned long,void const*)"
+)]
 pub fn stub_d2dd0() -> ! {
     todo!("0xd2dd0 FMOD::OutputCoreAudio::routeChangeCallback(void *,unsigned long,unsigned long,void const*)")
 }
@@ -7673,7 +7953,9 @@ pub fn stub_d2e00() -> ! {
 }
 
 // 0xd2ecc — __ZN4FMOD15OutputCoreAudio14renderCallbackEPvPmPK14AudioTimeStampmmP15AudioBufferList
-#[doc(alias = "FMOD::OutputCoreAudio::renderCallback(void *,unsigned long *,AudioTimeStamp const*,unsigned long,unsigned long,AudioBufferList *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::renderCallback(void *,unsigned long *,AudioTimeStamp const*,unsigned long,unsigned long,AudioBufferList *)"
+)]
 pub fn stub_d2ecc() -> ! {
     todo!("0xd2ecc FMOD::OutputCoreAudio::renderCallback(void *,unsigned long *,AudioTimeStamp const*,unsigned long,unsigned long,AudioBufferList *)")
 }
@@ -7751,7 +8033,9 @@ pub fn stub_d33c8() -> ! {
 }
 
 // 0xd3408 — __ZN4FMOD15OutputCoreAudio22inputAvailableCallbackEPvmmPKv
-#[doc(alias = "FMOD::OutputCoreAudio::inputAvailableCallback(void *,unsigned long,unsigned long,void const*)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::inputAvailableCallback(void *,unsigned long,unsigned long,void const*)"
+)]
 pub fn stub_d3408() -> ! {
     todo!("0xd3408 FMOD::OutputCoreAudio::inputAvailableCallback(void *,unsigned long,unsigned long,void const*)")
 }
@@ -7763,7 +8047,9 @@ pub fn stub_d3438() -> ! {
 }
 
 // 0xd353c — __ZN4FMOD15OutputCoreAudio18recordStopCallbackEP17FMOD_OUTPUT_STATEPNS_19FMOD_RECORDING_INFOE
-#[doc(alias = "FMOD::OutputCoreAudio::recordStopCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::recordStopCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *)"
+)]
 pub fn stub_d353c() -> ! {
     todo!("0xd353c FMOD::OutputCoreAudio::recordStopCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *)")
 }
@@ -7775,7 +8061,9 @@ pub fn stub_d3548() -> ! {
 }
 
 // 0xd392c — __ZN4FMOD15OutputCoreAudio19recordStartCallbackEP17FMOD_OUTPUT_STATEPNS_19FMOD_RECORDING_INFOEP10FMOD_SOUNDi
-#[doc(alias = "FMOD::OutputCoreAudio::recordStartCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *,FMOD_SOUND *,int)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::recordStartCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *,FMOD_SOUND *,int)"
+)]
 pub fn stub_d392c() -> ! {
     todo!("0xd392c FMOD::OutputCoreAudio::recordStartCallback(FMOD_OUTPUT_STATE *,FMOD::FMOD_RECORDING_INFO *,FMOD_SOUND *,int)")
 }
@@ -7795,17 +8083,23 @@ pub fn stub_d3968() -> ! {
 // 0xd3978 — __ZN4FMOD15OutputCoreAudio19prepareAudioSessionE27FMOD_IPHONE_SESSIONCATEGORYbb
 #[doc(alias = "FMOD::OutputCoreAudio::prepareAudioSession(FMOD_IPHONE_SESSIONCATEGORY,bool,bool)")]
 pub fn stub_d3978() -> ! {
-    todo!("0xd3978 FMOD::OutputCoreAudio::prepareAudioSession(FMOD_IPHONE_SESSIONCATEGORY,bool,bool)")
+    todo!(
+        "0xd3978 FMOD::OutputCoreAudio::prepareAudioSession(FMOD_IPHONE_SESSIONCATEGORY,bool,bool)"
+    )
 }
 
 // 0xd3ae8 — __ZN4FMOD15OutputCoreAudio4initEijPiiP17FMOD_SOUND_FORMATiiPv
-#[doc(alias = "FMOD::OutputCoreAudio::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)"
+)]
 pub fn stub_d3ae8() -> ! {
     todo!("0xd3ae8 FMOD::OutputCoreAudio::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
 }
 
 // 0xd3c0c — __ZN4FMOD15OutputCoreAudio12initCallbackEP17FMOD_OUTPUT_STATEijPiiP17FMOD_SOUND_FORMATiiPv
-#[doc(alias = "FMOD::OutputCoreAudio::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+#[doc(
+    alias = "FMOD::OutputCoreAudio::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)"
+)]
 pub fn stub_d3c0c() -> ! {
     todo!("0xd3c0c FMOD::OutputCoreAudio::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
 }
@@ -7859,7 +8153,9 @@ pub fn stub_d3ff0() -> ! {
 }
 
 // 0xd4004 — __ZN4FMOD13OutputNoSound4lockEjjPPvS2_PjS3_
-#[doc(alias = "FMOD::OutputNoSound::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputNoSound::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)"
+)]
 pub fn stub_d4004() -> ! {
     todo!("0xd4004 FMOD::OutputNoSound::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
 }
@@ -7877,7 +8173,9 @@ pub fn stub_d40b0() -> ! {
 }
 
 // 0xd40bc — __ZN4FMOD13OutputNoSound12lockCallbackEP17FMOD_OUTPUT_STATEjjPPvS4_PjS5_
-#[doc(alias = "FMOD::OutputNoSound::lockCallback(FMOD_OUTPUT_STATE *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputNoSound::lockCallback(FMOD_OUTPUT_STATE *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)"
+)]
 pub fn stub_d40bc() -> ! {
     todo!("0xd40bc FMOD::OutputNoSound::lockCallback(FMOD_OUTPUT_STATE *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
 }
@@ -7907,13 +8205,17 @@ pub fn stub_d419c() -> ! {
 }
 
 // 0xd41a8 — __ZN4FMOD13OutputNoSound4initEijPiiP17FMOD_SOUND_FORMATiiPv
-#[doc(alias = "FMOD::OutputNoSound::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+#[doc(
+    alias = "FMOD::OutputNoSound::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)"
+)]
 pub fn stub_d41a8() -> ! {
     todo!("0xd41a8 FMOD::OutputNoSound::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
 }
 
 // 0xd4350 — __ZN4FMOD13OutputNoSound12initCallbackEP17FMOD_OUTPUT_STATEijPiiP17FMOD_SOUND_FORMATiiPv
-#[doc(alias = "FMOD::OutputNoSound::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+#[doc(
+    alias = "FMOD::OutputNoSound::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)"
+)]
 pub fn stub_d4350() -> ! {
     todo!("0xd4350 FMOD::OutputNoSound::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
 }
@@ -7961,7 +8263,9 @@ pub fn stub_d4518() -> ! {
 }
 
 // 0xd4524 — __ZN4FMOD17OutputNoSound_NRT21getDriverCapsCallbackEP17FMOD_OUTPUT_STATEiPj
-#[doc(alias = "FMOD::OutputNoSound_NRT::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputNoSound_NRT::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)"
+)]
 pub fn stub_d4524() -> ! {
     todo!("0xd4524 FMOD::OutputNoSound_NRT::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)")
 }
@@ -7991,13 +8295,17 @@ pub fn stub_d45ac() -> ! {
 }
 
 // 0xd45b8 — __ZN4FMOD17OutputNoSound_NRT4initEijPiiP17FMOD_SOUND_FORMATiiPv
-#[doc(alias = "FMOD::OutputNoSound_NRT::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+#[doc(
+    alias = "FMOD::OutputNoSound_NRT::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)"
+)]
 pub fn stub_d45b8() -> ! {
     todo!("0xd45b8 FMOD::OutputNoSound_NRT::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
 }
 
 // 0xd4764 — __ZN4FMOD17OutputNoSound_NRT12initCallbackEP17FMOD_OUTPUT_STATEijPiiP17FMOD_SOUND_FORMATiiPv
-#[doc(alias = "FMOD::OutputNoSound_NRT::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+#[doc(
+    alias = "FMOD::OutputNoSound_NRT::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)"
+)]
 pub fn stub_d4764() -> ! {
     todo!("0xd4764 FMOD::OutputNoSound_NRT::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
 }
@@ -8092,7 +8400,9 @@ pub fn stub_d506c() -> ! {
 }
 
 // 0xd5074 — __ZN4FMOD14OutputSoftware28getSampleMaxChannelsCallbackEP17FMOD_OUTPUT_STATEj17FMOD_SOUND_FORMAT
-#[doc(alias = "FMOD::OutputSoftware::getSampleMaxChannelsCallback(FMOD_OUTPUT_STATE *,unsigned int,FMOD_SOUND_FORMAT)")]
+#[doc(
+    alias = "FMOD::OutputSoftware::getSampleMaxChannelsCallback(FMOD_OUTPUT_STATE *,unsigned int,FMOD_SOUND_FORMAT)"
+)]
 pub fn stub_d5074() -> ! {
     todo!("0xd5074 FMOD::OutputSoftware::getSampleMaxChannelsCallback(FMOD_OUTPUT_STATE *,unsigned int,FMOD_SOUND_FORMAT)")
 }
@@ -8122,7 +8432,9 @@ pub fn stub_d5174() -> ! {
 }
 
 // 0xd52d0 — __ZN4FMOD14OutputSoftware12createSampleEjP21FMOD_CODEC_WAVEFORMATPPNS_6SampleE
-#[doc(alias = "FMOD::OutputSoftware::createSample(unsigned int,FMOD_CODEC_WAVEFORMAT *,FMOD::Sample **)")]
+#[doc(
+    alias = "FMOD::OutputSoftware::createSample(unsigned int,FMOD_CODEC_WAVEFORMAT *,FMOD::Sample **)"
+)]
 pub fn stub_d52d0() -> ! {
     todo!("0xd52d0 FMOD::OutputSoftware::createSample(unsigned int,FMOD_CODEC_WAVEFORMAT *,FMOD::Sample **)")
 }
@@ -8140,7 +8452,9 @@ pub fn stub_d5780() -> ! {
 }
 
 // 0xd5794 — __ZN4FMOD15OutputWavWriter4lockEjjPPvS2_PjS3_
-#[doc(alias = "FMOD::OutputWavWriter::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputWavWriter::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)"
+)]
 pub fn stub_d5794() -> ! {
     todo!("0xd5794 FMOD::OutputWavWriter::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
 }
@@ -8158,13 +8472,17 @@ pub fn stub_d5844() -> ! {
 }
 
 // 0xd5850 — __ZN4FMOD15OutputWavWriter21getDriverCapsCallbackEP17FMOD_OUTPUT_STATEiPj
-#[doc(alias = "FMOD::OutputWavWriter::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputWavWriter::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)"
+)]
 pub fn stub_d5850() -> ! {
     todo!("0xd5850 FMOD::OutputWavWriter::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)")
 }
 
 // 0xd585c — __ZN4FMOD15OutputWavWriter12lockCallbackEP17FMOD_OUTPUT_STATEjjPPvS4_PjS5_
-#[doc(alias = "FMOD::OutputWavWriter::lockCallback(FMOD_OUTPUT_STATE *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputWavWriter::lockCallback(FMOD_OUTPUT_STATE *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)"
+)]
 pub fn stub_d585c() -> ! {
     todo!("0xd585c FMOD::OutputWavWriter::lockCallback(FMOD_OUTPUT_STATE *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
 }
@@ -8188,7 +8506,9 @@ pub fn stub_d5adc() -> ! {
 }
 
 // 0xd5bd0 — __ZN4FMOD15OutputWavWriter14unlockCallbackEP17FMOD_OUTPUT_STATEPvS3_jj
-#[doc(alias = "FMOD::OutputWavWriter::unlockCallback(FMOD_OUTPUT_STATE *,void *,void *,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::OutputWavWriter::unlockCallback(FMOD_OUTPUT_STATE *,void *,void *,unsigned int,unsigned int)"
+)]
 pub fn stub_d5bd0() -> ! {
     todo!("0xd5bd0 FMOD::OutputWavWriter::unlockCallback(FMOD_OUTPUT_STATE *,void *,void *,unsigned int,unsigned int)")
 }
@@ -8214,17 +8534,23 @@ pub fn stub_d5c64() -> ! {
 // 0xd5c8c — __ZN4FMOD15OutputWavWriter21getDriverNameCallbackEP17FMOD_OUTPUT_STATEiPci
 #[doc(alias = "FMOD::OutputWavWriter::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")]
 pub fn stub_d5c8c() -> ! {
-    todo!("0xd5c8c FMOD::OutputWavWriter::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")
+    todo!(
+        "0xd5c8c FMOD::OutputWavWriter::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)"
+    )
 }
 
 // 0xd5c98 — __ZN4FMOD15OutputWavWriter4initEijPiiP17FMOD_SOUND_FORMATiiPv
-#[doc(alias = "FMOD::OutputWavWriter::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+#[doc(
+    alias = "FMOD::OutputWavWriter::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)"
+)]
 pub fn stub_d5c98() -> ! {
     todo!("0xd5c98 FMOD::OutputWavWriter::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
 }
 
 // 0xd5f48 — __ZN4FMOD15OutputWavWriter12initCallbackEP17FMOD_OUTPUT_STATEijPiiP17FMOD_SOUND_FORMATiiPv
-#[doc(alias = "FMOD::OutputWavWriter::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+#[doc(
+    alias = "FMOD::OutputWavWriter::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)"
+)]
 pub fn stub_d5f48() -> ! {
     todo!("0xd5f48 FMOD::OutputWavWriter::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
 }
@@ -8278,7 +8604,9 @@ pub fn stub_d6184() -> ! {
 }
 
 // 0xd6190 — __ZN4FMOD19OutputWavWriter_NRT21getDriverCapsCallbackEP17FMOD_OUTPUT_STATEiPj
-#[doc(alias = "FMOD::OutputWavWriter_NRT::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::OutputWavWriter_NRT::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)"
+)]
 pub fn stub_d6190() -> ! {
     todo!("0xd6190 FMOD::OutputWavWriter_NRT::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)")
 }
@@ -8344,13 +8672,17 @@ pub fn stub_d6560() -> ! {
 }
 
 // 0xd656c — __ZN4FMOD19OutputWavWriter_NRT4initEijPiiP17FMOD_SOUND_FORMATiiPv
-#[doc(alias = "FMOD::OutputWavWriter_NRT::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+#[doc(
+    alias = "FMOD::OutputWavWriter_NRT::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)"
+)]
 pub fn stub_d656c() -> ! {
     todo!("0xd656c FMOD::OutputWavWriter_NRT::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
 }
 
 // 0xd67f0 — __ZN4FMOD19OutputWavWriter_NRT12initCallbackEP17FMOD_OUTPUT_STATEijPiiP17FMOD_SOUND_FORMATiiPv
-#[doc(alias = "FMOD::OutputWavWriter_NRT::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+#[doc(
+    alias = "FMOD::OutputWavWriter_NRT::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)"
+)]
 pub fn stub_d67f0() -> ! {
     todo!("0xd67f0 FMOD::OutputWavWriter_NRT::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
 }
@@ -8362,7 +8694,9 @@ pub fn stub_d6840() -> ! {
 }
 
 // 0xd6868 — __ZN4FMOD19OutputWavWriter_NRT21getDriverNameCallbackEP17FMOD_OUTPUT_STATEiPci
-#[doc(alias = "FMOD::OutputWavWriter_NRT::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")]
+#[doc(
+    alias = "FMOD::OutputWavWriter_NRT::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)"
+)]
 pub fn stub_d6868() -> ! {
     todo!("0xd6868 FMOD::OutputWavWriter_NRT::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")
 }
@@ -8442,7 +8776,9 @@ pub fn stub_d6c54() -> ! {
 // 0xd6cb8 — __ZN4FMOD13PluginFactory9getOutputEjPPNS_26FMOD_OUTPUT_DESCRIPTION_EXE
 #[doc(alias = "FMOD::PluginFactory::getOutput(unsigned int,FMOD::FMOD_OUTPUT_DESCRIPTION_EX **)")]
 pub fn stub_d6cb8() -> ! {
-    todo!("0xd6cb8 FMOD::PluginFactory::getOutput(unsigned int,FMOD::FMOD_OUTPUT_DESCRIPTION_EX **)")
+    todo!(
+        "0xd6cb8 FMOD::PluginFactory::getOutput(unsigned int,FMOD::FMOD_OUTPUT_DESCRIPTION_EX **)"
+    )
 }
 
 // 0xd6d1c — __ZN4FMOD13PluginFactory12unloadPluginEj
@@ -8476,13 +8812,17 @@ pub fn stub_d70d8() -> ! {
 }
 
 // 0xd70dc — __ZN4FMOD13PluginFactory13registerCodecEPNS_25FMOD_CODEC_DESCRIPTION_EXEPjj
-#[doc(alias = "FMOD::PluginFactory::registerCodec(FMOD::FMOD_CODEC_DESCRIPTION_EX *,unsigned int *,unsigned int)")]
+#[doc(
+    alias = "FMOD::PluginFactory::registerCodec(FMOD::FMOD_CODEC_DESCRIPTION_EX *,unsigned int *,unsigned int)"
+)]
 pub fn stub_d70dc() -> ! {
     todo!("0xd70dc FMOD::PluginFactory::registerCodec(FMOD::FMOD_CODEC_DESCRIPTION_EX *,unsigned int *,unsigned int)")
 }
 
 // 0xd72a0 — __ZN4FMOD13PluginFactory12createOutputEPNS_26FMOD_OUTPUT_DESCRIPTION_EXEPPNS_6OutputE
-#[doc(alias = "FMOD::PluginFactory::createOutput(FMOD::FMOD_OUTPUT_DESCRIPTION_EX *,FMOD::Output **)")]
+#[doc(
+    alias = "FMOD::PluginFactory::createOutput(FMOD::FMOD_OUTPUT_DESCRIPTION_EX *,FMOD::Output **)"
+)]
 pub fn stub_d72a0() -> ! {
     todo!("0xd72a0 FMOD::PluginFactory::createOutput(FMOD::FMOD_OUTPUT_DESCRIPTION_EX *,FMOD::Output **)")
 }
@@ -8490,11 +8830,15 @@ pub fn stub_d72a0() -> ! {
 // 0xd73c0 — __ZN4FMOD13PluginFactory11registerDSPEPNS_23FMOD_DSP_DESCRIPTION_EXEPj
 #[doc(alias = "FMOD::PluginFactory::registerDSP(FMOD::FMOD_DSP_DESCRIPTION_EX *,unsigned int *)")]
 pub fn stub_d73c0() -> ! {
-    todo!("0xd73c0 FMOD::PluginFactory::registerDSP(FMOD::FMOD_DSP_DESCRIPTION_EX *,unsigned int *)")
+    todo!(
+        "0xd73c0 FMOD::PluginFactory::registerDSP(FMOD::FMOD_DSP_DESCRIPTION_EX *,unsigned int *)"
+    )
 }
 
 // 0xd7538 — __ZN4FMOD13PluginFactory14registerOutputEPNS_26FMOD_OUTPUT_DESCRIPTION_EXEPj
-#[doc(alias = "FMOD::PluginFactory::registerOutput(FMOD::FMOD_OUTPUT_DESCRIPTION_EX *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::PluginFactory::registerOutput(FMOD::FMOD_OUTPUT_DESCRIPTION_EX *,unsigned int *)"
+)]
 pub fn stub_d7538() -> ! {
     todo!("0xd7538 FMOD::PluginFactory::registerOutput(FMOD::FMOD_OUTPUT_DESCRIPTION_EX *,unsigned int *)")
 }
@@ -8512,7 +8856,9 @@ pub fn stub_d788c() -> ! {
 }
 
 // 0xd7f7c — __ZN4FMOD5Codec15defaultMetaDataEP16FMOD_CODEC_STATE12FMOD_TAGTYPEPcPvj16FMOD_TAGDATATYPEi
-#[doc(alias = "FMOD::Codec::defaultMetaData(FMOD_CODEC_STATE *,FMOD_TAGTYPE,char *,void *,unsigned int,FMOD_TAGDATATYPE,int)")]
+#[doc(
+    alias = "FMOD::Codec::defaultMetaData(FMOD_CODEC_STATE *,FMOD_TAGTYPE,char *,void *,unsigned int,FMOD_TAGDATATYPE,int)"
+)]
 pub fn stub_d7f7c() -> ! {
     todo!("0xd7f7c FMOD::Codec::defaultMetaData(FMOD_CODEC_STATE *,FMOD_TAGTYPE,char *,void *,unsigned int,FMOD_TAGDATATYPE,int)")
 }
@@ -8584,19 +8930,25 @@ pub fn stub_d8248() -> ! {
 }
 
 // 0xd8338 — __ZN4FMOD7ReverbI11factorPropsEP22FMOD_REVERB_PROPERTIESPNS_25FMOD_REVERB_STDPROPERTIESEf
-#[doc(alias = "FMOD::ReverbI::factorProps(FMOD_REVERB_PROPERTIES *,FMOD::FMOD_REVERB_STDPROPERTIES *,float)")]
+#[doc(
+    alias = "FMOD::ReverbI::factorProps(FMOD_REVERB_PROPERTIES *,FMOD::FMOD_REVERB_STDPROPERTIES *,float)"
+)]
 pub fn stub_d8338() -> ! {
     todo!("0xd8338 FMOD::ReverbI::factorProps(FMOD_REVERB_PROPERTIES *,FMOD::FMOD_REVERB_STDPROPERTIES *,float)")
 }
 
 // 0xd857c — __ZN4FMOD7ReverbI8sumPropsEPNS_25FMOD_REVERB_STDPROPERTIESEP22FMOD_REVERB_PROPERTIESf
-#[doc(alias = "FMOD::ReverbI::sumProps(FMOD::FMOD_REVERB_STDPROPERTIES *,FMOD_REVERB_PROPERTIES *,float)")]
+#[doc(
+    alias = "FMOD::ReverbI::sumProps(FMOD::FMOD_REVERB_STDPROPERTIES *,FMOD_REVERB_PROPERTIES *,float)"
+)]
 pub fn stub_d857c() -> ! {
     todo!("0xd857c FMOD::ReverbI::sumProps(FMOD::FMOD_REVERB_STDPROPERTIES *,FMOD_REVERB_PROPERTIES *,float)")
 }
 
 // 0xd8788 — __ZN4FMOD7ReverbI12sumRoomPropsEPNS_25FMOD_REVERB_STDPROPERTIESEP22FMOD_REVERB_PROPERTIESf
-#[doc(alias = "FMOD::ReverbI::sumRoomProps(FMOD::FMOD_REVERB_STDPROPERTIES *,FMOD_REVERB_PROPERTIES *,float)")]
+#[doc(
+    alias = "FMOD::ReverbI::sumRoomProps(FMOD::FMOD_REVERB_STDPROPERTIES *,FMOD_REVERB_PROPERTIES *,float)"
+)]
 pub fn stub_d8788() -> ! {
     todo!("0xd8788 FMOD::ReverbI::sumRoomProps(FMOD::FMOD_REVERB_STDPROPERTIES *,FMOD_REVERB_PROPERTIES *,float)")
 }
@@ -8614,13 +8966,17 @@ pub fn stub_d8904() -> ! {
 }
 
 // 0xd89d8 — __ZN4FMOD7ReverbI17setChanPropertiesEiiPK29FMOD_REVERB_CHANNELPROPERTIESPNS_14DSPConnectionIE
-#[doc(alias = "FMOD::ReverbI::setChanProperties(int,int,FMOD_REVERB_CHANNELPROPERTIES const*,FMOD::DSPConnectionI *)")]
+#[doc(
+    alias = "FMOD::ReverbI::setChanProperties(int,int,FMOD_REVERB_CHANNELPROPERTIES const*,FMOD::DSPConnectionI *)"
+)]
 pub fn stub_d89d8() -> ! {
     todo!("0xd89d8 FMOD::ReverbI::setChanProperties(int,int,FMOD_REVERB_CHANNELPROPERTIES const*,FMOD::DSPConnectionI *)")
 }
 
 // 0xd8ac8 — __ZN4FMOD7ReverbI17getChanPropertiesEiiP29FMOD_REVERB_CHANNELPROPERTIESPPNS_14DSPConnectionIE
-#[doc(alias = "FMOD::ReverbI::getChanProperties(int,int,FMOD_REVERB_CHANNELPROPERTIES *,FMOD::DSPConnectionI **)")]
+#[doc(
+    alias = "FMOD::ReverbI::getChanProperties(int,int,FMOD_REVERB_CHANNELPROPERTIES *,FMOD::DSPConnectionI **)"
+)]
 pub fn stub_d8ac8() -> ! {
     todo!("0xd8ac8 FMOD::ReverbI::getChanProperties(int,int,FMOD_REVERB_CHANNELPROPERTIES *,FMOD::DSPConnectionI **)")
 }
@@ -8722,7 +9078,9 @@ pub fn stub_da494() -> ! {
 }
 
 // 0xda5f0 — __ZN4FMOD14SampleSoftware12lockInternalEjjPPvS2_PjS3_
-#[doc(alias = "FMOD::SampleSoftware::lockInternal(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::SampleSoftware::lockInternal(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)"
+)]
 pub fn stub_da5f0() -> ! {
     todo!("0xda5f0 FMOD::SampleSoftware::lockInternal(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
 }
@@ -8766,7 +9124,9 @@ pub fn stub_daaa4() -> ! {
 // 0xdaad8 — __ZN4FMOD6Sample13setLoopPointsEjjjj
 #[doc(alias = "FMOD::Sample::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)")]
 pub fn stub_daad8() -> ! {
-    todo!("0xdaad8 FMOD::Sample::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)")
+    todo!(
+        "0xdaad8 FMOD::Sample::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)"
+    )
 }
 
 // 0xdab6c — __ZN4FMOD6Sample12setLoopCountEi
@@ -8830,7 +9190,9 @@ pub fn stub_daf58() -> ! {
 }
 
 // 0xdb774 — __ZN4FMOD6Sample4lockEjjPPvS2_PjS3_
-#[doc(alias = "FMOD::Sample::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::Sample::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)"
+)]
 pub fn stub_db774() -> ! {
     todo!("0xdb774 FMOD::Sample::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
 }
@@ -8842,7 +9204,9 @@ pub fn stub_dc278() -> ! {
 }
 
 // 0xdc2d0 — __ZN4FMOD6Sample12lockInternalEjjPPvS2_PjS3_
-#[doc(alias = "FMOD::Sample::lockInternal(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::Sample::lockInternal(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)"
+)]
 pub fn stub_dc2d0() -> ! {
     todo!("0xdc2d0 FMOD::Sample::lockInternal(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
 }
@@ -9004,7 +9368,9 @@ pub fn stub_dd530() -> ! {
 }
 
 // 0xdd548 — __ZN4FMOD6SoundI4lockEjjPPvS2_PjS3_
-#[doc(alias = "FMOD::SoundI::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+#[doc(
+    alias = "FMOD::SoundI::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)"
+)]
 pub fn stub_dd548() -> ! {
     todo!("0xdd548 FMOD::SoundI::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
 }
@@ -9094,7 +9460,9 @@ pub fn stub_dd948() -> ! {
 }
 
 // 0xdd960 — __ZN4FMOD6SoundI12addSyncPointEjjPKcPP14FMOD_SYNCPOINTib
-#[doc(alias = "FMOD::SoundI::addSyncPoint(unsigned int,unsigned int,char const*,FMOD_SYNCPOINT **,int,bool)")]
+#[doc(
+    alias = "FMOD::SoundI::addSyncPoint(unsigned int,unsigned int,char const*,FMOD_SYNCPOINT **,int,bool)"
+)]
 pub fn stub_dd960() -> ! {
     todo!("0xdd960 FMOD::SoundI::addSyncPoint(unsigned int,unsigned int,char const*,FMOD_SYNCPOINT **,int,bool)")
 }
@@ -9190,7 +9558,9 @@ pub fn stub_ddcb8() -> ! {
 }
 
 // 0xddd44 — __ZN4FMOD6SoundI13getMemoryInfoEjjPjP25FMOD_MEMORY_USAGE_DETAILS
-#[doc(alias = "FMOD::SoundI::getMemoryInfo(unsigned int,unsigned int,unsigned int *,FMOD_MEMORY_USAGE_DETAILS *)")]
+#[doc(
+    alias = "FMOD::SoundI::getMemoryInfo(unsigned int,unsigned int,unsigned int *,FMOD_MEMORY_USAGE_DETAILS *)"
+)]
 pub fn stub_ddd44() -> ! {
     todo!("0xddd44 FMOD::SoundI::getMemoryInfo(unsigned int,unsigned int,unsigned int *,FMOD_MEMORY_USAGE_DETAILS *)")
 }
@@ -9309,13 +9679,17 @@ pub fn stub_dff14() -> ! {
 }
 
 // 0xe0204 — __ZN4FMOD6SoundI16getSyncPointInfoEP14FMOD_SYNCPOINTPciPjj
-#[doc(alias = "FMOD::SoundI::getSyncPointInfo(FMOD_SYNCPOINT *,char *,int,unsigned int *,unsigned int)")]
+#[doc(
+    alias = "FMOD::SoundI::getSyncPointInfo(FMOD_SYNCPOINT *,char *,int,unsigned int *,unsigned int)"
+)]
 pub fn stub_e0204() -> ! {
     todo!("0xe0204 FMOD::SoundI::getSyncPointInfo(FMOD_SYNCPOINT *,char *,int,unsigned int *,unsigned int)")
 }
 
 // 0xe0484 — __ZN4FMOD6SoundI13getLoopPointsEPjjS1_j
-#[doc(alias = "FMOD::SoundI::getLoopPoints(unsigned int *,unsigned int,unsigned int *,unsigned int)")]
+#[doc(
+    alias = "FMOD::SoundI::getLoopPoints(unsigned int *,unsigned int,unsigned int *,unsigned int)"
+)]
 pub fn stub_e0484() -> ! {
     todo!("0xe0484 FMOD::SoundI::getLoopPoints(unsigned int *,unsigned int,unsigned int *,unsigned int)")
 }
@@ -9323,11 +9697,15 @@ pub fn stub_e0484() -> ! {
 // 0xe0804 — __ZN4FMOD6SoundI13setLoopPointsEjjjj
 #[doc(alias = "FMOD::SoundI::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)")]
 pub fn stub_e0804() -> ! {
-    todo!("0xe0804 FMOD::SoundI::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)")
+    todo!(
+        "0xe0804 FMOD::SoundI::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)"
+    )
 }
 
 // 0xe0b84 — __ZN4FMOD6SoundI20addSyncPointInternalEjjPKcPP14FMOD_SYNCPOINTib
-#[doc(alias = "FMOD::SoundI::addSyncPointInternal(unsigned int,unsigned int,char const*,FMOD_SYNCPOINT **,int,bool)")]
+#[doc(
+    alias = "FMOD::SoundI::addSyncPointInternal(unsigned int,unsigned int,char const*,FMOD_SYNCPOINT **,int,bool)"
+)]
 pub fn stub_e0b84() -> ! {
     todo!("0xe0b84 FMOD::SoundI::addSyncPointInternal(unsigned int,unsigned int,char const*,FMOD_SYNCPOINT **,int,bool)")
 }
@@ -9561,7 +9939,9 @@ pub fn stub_e2f88() -> ! {
 }
 
 // 0xe2fc4 — __ZN4FMOD6System11createSoundEPKcjP22FMOD_CREATESOUNDEXINFOPPNS_5SoundE
-#[doc(alias = "FMOD::System::createSound(char const*,unsigned int,FMOD_CREATESOUNDEXINFO *,FMOD::Sound **)")]
+#[doc(
+    alias = "FMOD::System::createSound(char const*,unsigned int,FMOD_CREATESOUNDEXINFO *,FMOD::Sound **)"
+)]
 pub fn stub_e2fc4() -> ! {
     todo!("0xe2fc4 FMOD::System::createSound(char const*,unsigned int,FMOD_CREATESOUNDEXINFO *,FMOD::Sound **)")
 }
@@ -9585,7 +9965,9 @@ pub fn stub_e3098() -> ! {
 }
 
 // 0xe30cc — __ZN4FMOD6System23set3DListenerAttributesEiPK11FMOD_VECTORS3_S3_S3_
-#[doc(alias = "FMOD::System::set3DListenerAttributes(int,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*)")]
+#[doc(
+    alias = "FMOD::System::set3DListenerAttributes(int,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*)"
+)]
 pub fn stub_e30cc() -> ! {
     todo!("0xe30cc FMOD::System::set3DListenerAttributes(int,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*)")
 }
@@ -9687,7 +10069,9 @@ pub fn stub_e34a8() -> ! {
 }
 
 // 0xe3508 — __ZN4FMOD7SystemI23set3DListenerAttributesEiPK11FMOD_VECTORS3_S3_S3_
-#[doc(alias = "FMOD::SystemI::set3DListenerAttributes(int,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*)")]
+#[doc(
+    alias = "FMOD::SystemI::set3DListenerAttributes(int,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*)"
+)]
 pub fn stub_e3508() -> ! {
     todo!("0xe3508 FMOD::SystemI::set3DListenerAttributes(int,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*,FMOD_VECTOR const*)")
 }
@@ -9807,7 +10191,9 @@ pub fn stub_e44c0() -> ! {
 }
 
 // 0xe45fc — __ZN4FMOD7SystemI26createChannelGroupInternalEPKcPPNS_13ChannelGroupIEbb
-#[doc(alias = "FMOD::SystemI::createChannelGroupInternal(char const*,FMOD::ChannelGroupI **,bool,bool)")]
+#[doc(
+    alias = "FMOD::SystemI::createChannelGroupInternal(char const*,FMOD::ChannelGroupI **,bool,bool)"
+)]
 pub fn stub_e45fc() -> ! {
     todo!("0xe45fc FMOD::SystemI::createChannelGroupInternal(char const*,FMOD::ChannelGroupI **,bool,bool)")
 }
@@ -9904,7 +10290,9 @@ pub fn stub_e5e80() -> ! {
 // 0xe5f98 — __ZN4FMOD7SystemI12createSampleEjP21FMOD_CODEC_WAVEFORMATPPNS_6SampleE
 #[doc(alias = "FMOD::SystemI::createSample(unsigned int,FMOD_CODEC_WAVEFORMAT *,FMOD::Sample **)")]
 pub fn stub_e5f98() -> ! {
-    todo!("0xe5f98 FMOD::SystemI::createSample(unsigned int,FMOD_CODEC_WAVEFORMAT *,FMOD::Sample **)")
+    todo!(
+        "0xe5f98 FMOD::SystemI::createSample(unsigned int,FMOD_CODEC_WAVEFORMAT *,FMOD::Sample **)"
+    )
 }
 
 // 0xe6594 — __ZN4FMOD7SystemI11findChannelE17FMOD_CHANNELINDEXPNS_6SoundIEPPNS_8ChannelIE
@@ -9964,7 +10352,9 @@ pub fn stub_e7fdc() -> ! {
 // 0xe8024 — __ZN4FMOD7SystemI9playSoundE17FMOD_CHANNELINDEXPNS_6SoundIEbPPNS_8ChannelIE
 #[doc(alias = "FMOD::SystemI::playSound(FMOD_CHANNELINDEX,FMOD::SoundI *,bool,FMOD::ChannelI **)")]
 pub fn stub_e8024() -> ! {
-    todo!("0xe8024 FMOD::SystemI::playSound(FMOD_CHANNELINDEX,FMOD::SoundI *,bool,FMOD::ChannelI **)")
+    todo!(
+        "0xe8024 FMOD::SystemI::playSound(FMOD_CHANNELINDEX,FMOD::SoundI *,bool,FMOD::ChannelI **)"
+    )
 }
 
 // 0xe82a0 — __ZN4FMOD7SystemI26flushDSPConnectionRequestsEb
@@ -10028,13 +10418,17 @@ pub fn stub_ea4ac() -> ! {
 }
 
 // 0xea4b0 — __ZN4FMOD7SystemI19createSoundInternalEPKcjjjP22FMOD_CREATESOUNDEXINFObPPNS_6SoundIE
-#[doc(alias = "FMOD::SystemI::createSoundInternal(char const*,unsigned int,unsigned int,unsigned int,FMOD_CREATESOUNDEXINFO *,bool,FMOD::SoundI **)")]
+#[doc(
+    alias = "FMOD::SystemI::createSoundInternal(char const*,unsigned int,unsigned int,unsigned int,FMOD_CREATESOUNDEXINFO *,bool,FMOD::SoundI **)"
+)]
 pub fn stub_ea4b0() -> ! {
     todo!("0xea4b0 FMOD::SystemI::createSoundInternal(char const*,unsigned int,unsigned int,unsigned int,FMOD_CREATESOUNDEXINFO *,bool,FMOD::SoundI **)")
 }
 
 // 0xed7e4 — __ZN4FMOD7SystemI11createSoundEPKcjP22FMOD_CREATESOUNDEXINFOPPNS_6SoundIE
-#[doc(alias = "FMOD::SystemI::createSound(char const*,unsigned int,FMOD_CREATESOUNDEXINFO *,FMOD::SoundI **)")]
+#[doc(
+    alias = "FMOD::SystemI::createSound(char const*,unsigned int,FMOD_CREATESOUNDEXINFO *,FMOD::SoundI **)"
+)]
 pub fn stub_ed7e4() -> ! {
     todo!("0xed7e4 FMOD::SystemI::createSound(char const*,unsigned int,FMOD_CREATESOUNDEXINFO *,FMOD::SoundI **)")
 }
@@ -10088,7 +10482,9 @@ pub fn stub_edef4() -> ! {
 }
 
 // 0xedf94 — __ZN4FMOD6Thread10initThreadEPKcPFvPvES3_NS0_8PRIORITYES3_ibiPNS_7SystemIE
-#[doc(alias = "FMOD::Thread::initThread(char const*,void (*)(void *),void *,FMOD::Thread::PRIORITY,void *,int,bool,int,FMOD::SystemI *)")]
+#[doc(
+    alias = "FMOD::Thread::initThread(char const*,void (*)(void *),void *,FMOD::Thread::PRIORITY,void *,int,bool,int,FMOD::SystemI *)"
+)]
 pub fn stub_edf94() -> ! {
     todo!("0xedf94 FMOD::Thread::initThread(char const*,void (*)(void *),void *,FMOD::Thread::PRIORITY,void *,int,bool,int,FMOD::SystemI *)")
 }
@@ -10411,7 +10807,6 @@ pub fn stub_f5a68() -> ! {
     todo!("0xf5a68 __FMOD_ilog")
 }
 
-
 // 0xf5b20 — _FMOD_vorbis_book_clear
 #[doc(alias = "_FMOD_vorbis_book_clear")]
 pub fn stub_f5b20() -> ! {
@@ -10731,7 +11126,9 @@ pub fn stub_1021e0() -> ! {
 }
 
 // 0x102264 — __ZN4FMOD4DSPI7convertEPvS1_17FMOD_SOUND_FORMATS2_jiif
-#[doc(alias = "FMOD::DSPI::convert(void *,void *,FMOD_SOUND_FORMAT,FMOD_SOUND_FORMAT,unsigned int,int,int,float)")]
+#[doc(
+    alias = "FMOD::DSPI::convert(void *,void *,FMOD_SOUND_FORMAT,FMOD_SOUND_FORMAT,unsigned int,int,int,float)"
+)]
 pub fn stub_102264() -> ! {
     todo!("0x102264 FMOD::DSPI::convert(void *,void *,FMOD_SOUND_FORMAT,FMOD_SOUND_FORMAT,unsigned int,int,int,float)")
 }
@@ -10827,7 +11224,9 @@ pub fn stub_1044c8() -> ! {
 }
 
 // 0x1050ac — __ZN4FMOD8DSPDelay12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPDelay::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPDelay::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_1050ac() -> ! {
     todo!("0x1050ac FMOD::DSPDelay::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -10913,7 +11312,9 @@ pub fn stub_105820() -> ! {
 // 0x10582c — __ZN4FMOD10DSPTremolo21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
 #[doc(alias = "FMOD::DSPTremolo::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
 pub fn stub_10582c() -> ! {
-    todo!("0x10582c FMOD::DSPTremolo::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")
+    todo!(
+        "0x10582c FMOD::DSPTremolo::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)"
+    )
 }
 
 // 0x105884 — __ZN4FMOD10DSPTremolo20getParameterInternalEiPfPc
@@ -10965,7 +11366,9 @@ pub fn stub_105ef8() -> ! {
 }
 
 // 0x106428 — __ZN4FMOD10DSPTremolo12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-#[doc(alias = "FMOD::DSPTremolo::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
+#[doc(
+    alias = "FMOD::DSPTremolo::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)"
+)]
 pub fn stub_106428() -> ! {
     todo!("0x106428 FMOD::DSPTremolo::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")
 }
@@ -11031,7 +11434,9 @@ pub fn stub_1069cc() -> ! {
 }
 
 // 0x1069fc — __ZN4FMOD15CodecAudioQueue21getMemoryUsedCallbackEP16FMOD_CODEC_STATEPNS_13MemoryTrackerE
-#[doc(alias = "FMOD::CodecAudioQueue::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")]
+#[doc(
+    alias = "FMOD::CodecAudioQueue::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)"
+)]
 pub fn stub_1069fc() -> ! {
     todo!("0x1069fc FMOD::CodecAudioQueue::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")
 }
@@ -11051,11 +11456,15 @@ pub fn stub_106ad0() -> ! {
 // 0x106afc — __ZN4FMOD15CodecAudioQueue8fileReadExmPvPm
 #[doc(alias = "FMOD::CodecAudioQueue::fileRead(long long,unsigned long,void *,unsigned long *)")]
 pub fn stub_106afc() -> ! {
-    todo!("0x106afc FMOD::CodecAudioQueue::fileRead(long long,unsigned long,void *,unsigned long *)")
+    todo!(
+        "0x106afc FMOD::CodecAudioQueue::fileRead(long long,unsigned long,void *,unsigned long *)"
+    )
 }
 
 // 0x106c1c — __ZN4FMOD15CodecAudioQueue16fileReadCallbackEPvxmS1_Pm
-#[doc(alias = "FMOD::CodecAudioQueue::fileReadCallback(void *,long long,unsigned long,void *,unsigned long *)")]
+#[doc(
+    alias = "FMOD::CodecAudioQueue::fileReadCallback(void *,long long,unsigned long,void *,unsigned long *)"
+)]
 pub fn stub_106c1c() -> ! {
     todo!("0x106c1c FMOD::CodecAudioQueue::fileReadCallback(void *,long long,unsigned long,void *,unsigned long *)")
 }
@@ -11063,11 +11472,15 @@ pub fn stub_106c1c() -> ! {
 // 0x106c20 — __ZN4FMOD15CodecAudioQueue17processAudioQueueEP16OpaqueAudioQueueP16AudioQueueBuffer
 #[doc(alias = "FMOD::CodecAudioQueue::processAudioQueue(OpaqueAudioQueue *,AudioQueueBuffer *)")]
 pub fn stub_106c20() -> ! {
-    todo!("0x106c20 FMOD::CodecAudioQueue::processAudioQueue(OpaqueAudioQueue *,AudioQueueBuffer *)")
+    todo!(
+        "0x106c20 FMOD::CodecAudioQueue::processAudioQueue(OpaqueAudioQueue *,AudioQueueBuffer *)"
+    )
 }
 
 // 0x106cf8 — __ZN4FMOD15CodecAudioQueue24audioQueueOutputCallbackEPvP16OpaqueAudioQueueP16AudioQueueBuffer
-#[doc(alias = "FMOD::CodecAudioQueue::audioQueueOutputCallback(void *,OpaqueAudioQueue *,AudioQueueBuffer *)")]
+#[doc(
+    alias = "FMOD::CodecAudioQueue::audioQueueOutputCallback(void *,OpaqueAudioQueue *,AudioQueueBuffer *)"
+)]
 pub fn stub_106cf8() -> ! {
     todo!("0x106cf8 FMOD::CodecAudioQueue::audioQueueOutputCallback(void *,OpaqueAudioQueue *,AudioQueueBuffer *)")
 }
@@ -11085,7 +11498,9 @@ pub fn stub_106eac() -> ! {
 }
 
 // 0x107090 — __ZN4FMOD15CodecAudioQueue19setPositionCallbackEP16FMOD_CODEC_STATEijj
-#[doc(alias = "FMOD::CodecAudioQueue::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+#[doc(
+    alias = "FMOD::CodecAudioQueue::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)"
+)]
 pub fn stub_107090() -> ! {
     todo!("0x107090 FMOD::CodecAudioQueue::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
 }
@@ -11121,7 +11536,9 @@ pub fn stub_107598() -> ! {
 }
 
 // 0x10773c — __ZN4FMOD15CodecAudioQueue12readCallbackEP16FMOD_CODEC_STATEPvjPj
-#[doc(alias = "FMOD::CodecAudioQueue::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+#[doc(
+    alias = "FMOD::CodecAudioQueue::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)"
+)]
 pub fn stub_10773c() -> ! {
     todo!("0x10773c FMOD::CodecAudioQueue::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
 }
@@ -11133,7 +11550,9 @@ pub fn stub_107748() -> ! {
 }
 
 // 0x1078d4 — __ZN4FMOD15CodecAudioQueue12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
-#[doc(alias = "FMOD::CodecAudioQueue::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+#[doc(
+    alias = "FMOD::CodecAudioQueue::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)"
+)]
 pub fn stub_1078d4() -> ! {
     todo!("0x1078d4 FMOD::CodecAudioQueue::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
 }
@@ -11181,19 +11600,25 @@ pub fn stub_375ce8() -> ! {
 }
 
 // 0x7f964c — __ZN3RBX10Soundscape14CollisionSound4PlayEPN4FMOD6SystemEPNS2_12ChannelGroupERKN3G3D7Vector3ESA_f
-#[doc(alias = "RBX::Soundscape::CollisionSound::Play(FMOD::System *,FMOD::ChannelGroup *,G3D::Vector3 const&,G3D::Vector3 const&,float)")]
+#[doc(
+    alias = "RBX::Soundscape::CollisionSound::Play(FMOD::System *,FMOD::ChannelGroup *,G3D::Vector3 const&,G3D::Vector3 const&,float)"
+)]
 pub fn stub_7f964c() -> ! {
     todo!("0x7f964c RBX::Soundscape::CollisionSound::Play(FMOD::System *,FMOD::ChannelGroup *,G3D::Vector3 const&,G3D::Vector3 const&,float)")
 }
 
 // 0x7f98a4 — __ZN3RBX10Soundscape21CollisionSoundManagerC1EPN4FMOD6SystemEPNS_8InstanceE
-#[doc(alias = "RBX::Soundscape::CollisionSoundManager::CollisionSoundManager(FMOD::System *,RBX::Instance *)")]
+#[doc(
+    alias = "RBX::Soundscape::CollisionSoundManager::CollisionSoundManager(FMOD::System *,RBX::Instance *)"
+)]
 pub fn stub_7f98a4() -> ! {
     todo!("0x7f98a4 RBX::Soundscape::CollisionSoundManager::CollisionSoundManager(FMOD::System *,RBX::Instance *)")
 }
 
 // 0x7f98a8 — __ZN3RBX10Soundscape21CollisionSoundManagerC2EPN4FMOD6SystemEPNS_8InstanceE
-#[doc(alias = "RBX::Soundscape::CollisionSoundManager::CollisionSoundManager(FMOD::System *,RBX::Instance *)")]
+#[doc(
+    alias = "RBX::Soundscape::CollisionSoundManager::CollisionSoundManager(FMOD::System *,RBX::Instance *)"
+)]
 pub fn stub_7f98a8() -> ! {
     todo!("0x7f98a8 RBX::Soundscape::CollisionSoundManager::CollisionSoundManager(FMOD::System *,RBX::Instance *)")
 }
@@ -11206,7 +11631,9 @@ pub fn stub_f1ffa8() -> ! {
 
 // 0xf1ffb4 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv$shim
 // type: _DWORD __fastcall(RBX *__hidden this)
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv$shim")]
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv$shim"
+)]
 pub fn stub_f1ffb4() -> ! {
     todo!("0xf1ffb4 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv$shim")
 }
@@ -11220,28 +11647,36 @@ pub fn stub_f1ffc0() -> ! {
 
 // 0xf1ffcc — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv$shim
 // type: int __fastcall(_DWORD)
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv$shim")]
+#[doc(
+    alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv$shim"
+)]
 pub fn stub_f1ffcc() -> ! {
     todo!("0xf1ffcc __ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv$shim")
 }
 
 // 0xf1ffd8 — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv$shim
 // type: int __fastcall(_DWORD)
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv$shim")]
+#[doc(
+    alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv$shim"
+)]
 pub fn stub_f1ffd8() -> ! {
     todo!("0xf1ffd8 __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv$shim")
 }
 
 // 0xf1ffe4 — __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev$shim
 // type: int(void)
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev$shim")]
+#[doc(
+    alias = "__ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev$shim"
+)]
 pub fn stub_f1ffe4() -> ! {
     todo!("0xf1ffe4 __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev$shim")
 }
 
 // 0xf1fff0 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev$shim
 // type: int(void)
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev$shim")]
+#[doc(
+    alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev$shim"
+)]
 pub fn stub_f1fff0() -> ! {
     todo!("0xf1fff0 __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev$shim")
 }
@@ -11262,21 +11697,27 @@ pub fn stub_f20008() -> ! {
 
 // 0xf20014 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE14doGetSingletonEv$shim
 // type: int()
-#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE14doGetSingletonEv$shim")]
+#[doc(
+    alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE14doGetSingletonEv$shim"
+)]
 pub fn stub_f20014() -> ! {
     todo!("0xf20014 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE14doGetSingletonEv$shim")
 }
 
 // 0xf20020 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_$shim
 // type: int __fastcall(_DWORD)
-#[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_$shim")]
+#[doc(
+    alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_$shim"
+)]
 pub fn stub_f20020() -> ! {
     todo!("0xf20020 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_$shim")
 }
 
 // 0xf2002c — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToIndexES3_$shim
 // type: int()
-#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToIndexES3_$shim")]
+#[doc(
+    alias = "__ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToIndexES3_$shim"
+)]
 pub fn stub_f2002c() -> ! {
     todo!("0xf2002c __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToIndexES3_$shim")
 }
@@ -11290,14 +11731,18 @@ pub fn stub_f20038() -> ! {
 
 // 0xf20044 — __ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv$shim
 // type: int __fastcall(_DWORD)
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+#[doc(
+    alias = "__ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv$shim"
+)]
 pub fn stub_f20044() -> ! {
     todo!("0xf20044 __ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv$shim")
 }
 
 // 0xf20050 — __ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
 // type: int(void)
-#[doc(alias = "__ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+#[doc(
+    alias = "__ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim"
+)]
 pub fn stub_f20050() -> ! {
     todo!("0xf20050 __ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
 }
@@ -11311,14 +11756,18 @@ pub fn stub_f2005c() -> ! {
 
 // 0xf20068 — __ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
 // type: int(void)
-#[doc(alias = "__ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
+#[doc(
+    alias = "__ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim"
+)]
 pub fn stub_f20068() -> ! {
     todo!("0xf20068 __ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")
 }
 
 // 0xf20bcc — __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev$shim
 // type: int()
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev$shim")]
+#[doc(
+    alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev$shim"
+)]
 pub fn stub_f20bcc() -> ! {
     todo!("0xf20bcc __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev$shim")
 }
@@ -11345,7 +11794,9 @@ pub fn stub_f20de8() -> ! {
 }
 
 // 0xf21a48 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv$shim
-#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv$shim")]
+#[doc(
+    alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv$shim"
+)]
 pub fn stub_f21a48() -> ! {
     todo!("0xf21a48 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv$shim")
 }
@@ -11652,7 +12103,9 @@ pub fn stub_3728c0() -> ! {
 
 // 0x3729bc — __ZL12releaseSoundRKSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEE
 // type: int __fastcall(int)
-#[doc(alias = "releaseSound(std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")]
+#[doc(
+    alias = "releaseSound(std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>> const&)"
+)]
 pub fn stub_3729bc() -> ! {
     todo!("0x3729bc releaseSound(std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
 }
@@ -11687,7 +12140,9 @@ pub fn stub_373894() -> ! {
 
 // 0x3738a8 — __ZN3RBX10Soundscape12SoundService16setAmbientReverbERKNS0_10ReverbTypeE
 // type: int __fastcall(RBX::Instance *, int *)
-#[doc(alias = "RBX::Soundscape::SoundService::setAmbientReverb(RBX::Soundscape::ReverbType const&)")]
+#[doc(
+    alias = "RBX::Soundscape::SoundService::setAmbientReverb(RBX::Soundscape::ReverbType const&)"
+)]
 pub fn stub_3738a8() -> ! {
     todo!("0x3738a8 RBX::Soundscape::SoundService::setAmbientReverb(RBX::Soundscape::ReverbType const&)")
 }
@@ -11708,7 +12163,9 @@ pub fn stub_373918() -> ! {
 
 // 0x373974 — __ZN3RBX10Soundscape12SoundService17onServiceProviderEPNS_15ServiceProviderES3_
 // type: void __fastcall(shared_count *this, RBX::ServiceProvider *, RBX::ServiceProvider *)
-#[doc(alias = "RBX::Soundscape::SoundService::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+#[doc(
+    alias = "RBX::Soundscape::SoundService::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)"
+)]
 pub fn stub_373974() -> ! {
     todo!("0x373974 RBX::Soundscape::SoundService::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
 }
@@ -11729,63 +12186,81 @@ pub fn stub_373fd0() -> ! {
 
 // 0x374028 — __ZN3RBX15StringConverterINS_10Soundscape7SoundIdEE14convertToValueERKSsRS2_
 // type: int __fastcall(std::string *, std::string *)
-#[doc(alias = "RBX::StringConverter<RBX::Soundscape::SoundId>::convertToValue(std::string const&,RBX::Soundscape::SoundId&)")]
+#[doc(
+    alias = "RBX::StringConverter<RBX::Soundscape::SoundId>::convertToValue(std::string const&,RBX::Soundscape::SoundId&)"
+)]
 pub fn stub_374028() -> ! {
     todo!("0x374028 RBX::StringConverter<RBX::Soundscape::SoundId>::convertToValue(std::string const&,RBX::Soundscape::SoundId&)")
 }
 
 // 0x37414c — __ZN3RBX10Reflection4Type12getSingletonINS_10Soundscape7SoundIdEEERKS1_v
 // type: int()
-#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Soundscape::SoundId>(void)")]
+#[doc(
+    alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Soundscape::SoundId>(void)"
+)]
 pub fn stub_37414c() -> ! {
     todo!("0x37414c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Soundscape::SoundId>(void)")
 }
 
 // 0x374154 — __ZN3RBX10Reflection7Variant7convertINS_10Soundscape7SoundIdEEERT_v
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Soundscape::SoundId & RBX::Reflection::Variant::convert<RBX::Soundscape::SoundId>(void)")]
+#[doc(
+    alias = "RBX::Soundscape::SoundId & RBX::Reflection::Variant::convert<RBX::Soundscape::SoundId>(void)"
+)]
 pub fn stub_374154() -> ! {
     todo!("0x374154 RBX::Soundscape::SoundId & RBX::Reflection::Variant::convert<RBX::Soundscape::SoundId>(void)")
 }
 
 // 0x374340 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
 // type: void __fastcall(int, int, XmlElement *this)
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const"
+)]
 pub fn stub_374340() -> ! {
     todo!("0x374340 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
 }
 
 // 0x374528 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
 // type: void __fastcall(int, int, int)
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const"
+)]
 pub fn stub_374528() -> ! {
     todo!("0x374528 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
 }
 
 // 0x374758 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE11getDataSizeEPKNS0_13DescribedBaseE
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getDataSize(RBX::Reflection::DescribedBase const*)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getDataSize(RBX::Reflection::DescribedBase const*)const"
+)]
 pub fn stub_374758() -> ! {
     todo!("0x374758 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getDataSize(RBX::Reflection::DescribedBase const*)const")
 }
 
 // 0x3747b4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE14hasStringValueEv
 // type: int()
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::hasStringValue(void)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::hasStringValue(void)const"
+)]
 pub fn stub_3747b4() -> ! {
     todo!("0x3747b4 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::hasStringValue(void)const")
 }
 
 // 0x3747b8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE14getStringValueEPKNS0_13DescribedBaseE
 // type: void __fastcall(std::string *, int)
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getStringValue(RBX::Reflection::DescribedBase const*)const"
+)]
 pub fn stub_3747b8() -> ! {
     todo!("0x3747b8 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getStringValue(RBX::Reflection::DescribedBase const*)const")
 }
 
 // 0x3748d4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE14setStringValueEPNS0_13DescribedBaseERKSs
 // type: int __fastcall(RBX::Name *, int, std::string *)
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const"
+)]
 pub fn stub_3748d4() -> ! {
     todo!("0x3748d4 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
 }
@@ -11932,14 +12407,18 @@ pub fn stub_375338() -> ! {
 
 // 0x375340 — __ZNK3RBX10Soundscape12SoundService11getCpuStatsERNS1_8CpuStatsE
 // type: int __fastcall(int, float *)
-#[doc(alias = "RBX::Soundscape::SoundService::getCpuStats(RBX::Soundscape::SoundService::CpuStats &)const")]
+#[doc(
+    alias = "RBX::Soundscape::SoundService::getCpuStats(RBX::Soundscape::SoundService::CpuStats &)const"
+)]
 pub fn stub_375340() -> ! {
     todo!("0x375340 RBX::Soundscape::SoundService::getCpuStats(RBX::Soundscape::SoundService::CpuStats &)const")
 }
 
 // 0x3753e8 — __ZN3RBX10Soundscape12SoundService13getSoundStatsERKSt3mapINS0_7SoundIdEN5boost10shared_ptrINS0_5SoundEEESt4lessIS3_ESaISt4pairIKS3_S7_EEERjSH_
 // type: const _Rb_tree_node_base *__fastcall(int, _DWORD *, _DWORD *)
-#[doc(alias = "RBX::Soundscape::SoundService::getSoundStats(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> const&,unsigned int &,unsigned int &)")]
+#[doc(
+    alias = "RBX::Soundscape::SoundService::getSoundStats(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> const&,unsigned int &,unsigned int &)"
+)]
 pub fn stub_3753e8() -> ! {
     todo!("0x3753e8 RBX::Soundscape::SoundService::getSoundStats(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> const&,unsigned int &,unsigned int &)")
 }
@@ -11953,7 +12432,9 @@ pub fn stub_375418() -> ! {
 
 // 0x375438 — __ZN3RBX10Soundscape12SoundService8gcSoundsERSt3mapINS0_7SoundIdEN5boost10shared_ptrINS0_5SoundEEESt4lessIS3_ESaISt4pairIKS3_S7_EEE
 // type: int __fastcall(int result)
-#[doc(alias = "RBX::Soundscape::SoundService::gcSounds(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> &)")]
+#[doc(
+    alias = "RBX::Soundscape::SoundService::gcSounds(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> &)"
+)]
 pub fn stub_375438() -> ! {
     todo!("0x375438 RBX::Soundscape::SoundService::gcSounds(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> &)")
 }
@@ -12008,7 +12489,9 @@ pub fn stub_375744() -> ! {
 
 // 0x375b7c — __ZN3RBX10Soundscape12SoundChannel17onServiceProviderEPNS_15ServiceProviderES3_
 // type: _DWORD __fastcall(RBX::Soundscape::SoundChannel *__hidden this, RBX::ServiceProvider *, RBX::ServiceProvider *)
-#[doc(alias = "RBX::Soundscape::SoundChannel::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+#[doc(
+    alias = "RBX::Soundscape::SoundChannel::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)"
+)]
 pub fn stub_375b7c() -> ! {
     todo!("0x375b7c RBX::Soundscape::SoundChannel::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
 }
@@ -12057,21 +12540,27 @@ pub fn stub_37619c() -> ! {
 
 // 0x376244 — __ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE7addPairES3_PKc
 // type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::addPair(RBX::Soundscape::ReverbType,char const*)")]
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::addPair(RBX::Soundscape::ReverbType,char const*)"
+)]
 pub fn stub_376244() -> ! {
     todo!("0x376244 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::addPair(RBX::Soundscape::ReverbType,char const*)")
 }
 
 // 0x3765a4 — __ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEEPFvRKS1_IS4_S9_EEET0_T_SI_SH_
 // type: void (__fastcall *__fastcall(_Rb_tree_node_base *, _Rb_tree_node_base *, void (__fastcall *)(_DWORD *), int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int))(_DWORD *)
-#[doc(alias = "void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>))")]
+#[doc(
+    alias = "void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>))"
+)]
 pub fn stub_3765a4() -> ! {
     todo!("0x3765a4 void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>))")
 }
 
 // 0x3768dc — __ZNSt3mapIN3RBX9SoundTypeEN5boost10shared_ptrINS0_10Soundscape12SoundChannelEEESt4lessIS1_ESaISt4pairIKS1_S6_EEEixERSA_
 // type: int __fastcall(int, int *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "std::map<RBX::SoundType,boost::shared_ptr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&)")]
+#[doc(
+    alias = "std::map<RBX::SoundType,boost::shared_ptr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&)"
+)]
 pub fn stub_3768dc() -> ! {
     todo!("0x3768dc std::map<RBX::SoundType,boost::shared_ptr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&)")
 }
@@ -12635,7 +13124,9 @@ pub fn stub_710a0_wd093() -> ! {
 }
 
 // 0x710dc — __ZN4FMOD7Channel11setCallbackEPF11FMOD_RESULTP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS5_E
-#[doc(alias = "FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")]
+#[doc(
+    alias = "FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))"
+)]
 pub fn stub_710dc_wd094() -> ! {
     todo!("0x710dc FMOD::Channel::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")
 }
@@ -12713,7 +13204,9 @@ pub fn stub_71334_wd106() -> ! {
 }
 
 // 0x7133c — __ZN4FMOD15ChannelEmulated13setSpeakerMixEffffffff
-#[doc(alias = "FMOD::ChannelEmulated::setSpeakerMix(float,float,float,float,float,float,float,float)")]
+#[doc(
+    alias = "FMOD::ChannelEmulated::setSpeakerMix(float,float,float,float,float,float,float,float)"
+)]
 pub fn stub_7133c_wd107() -> ! {
     todo!("0x7133c FMOD::ChannelEmulated::setSpeakerMix(float,float,float,float,float,float,float,float)")
 }
@@ -12871,7 +13364,9 @@ pub fn stub_719d8_wd132() -> ! {
 // 0x719e0 — __ZN4FMOD11ChannelReal13setSpeakerMixEffffffff
 #[doc(alias = "FMOD::ChannelReal::setSpeakerMix(float,float,float,float,float,float,float,float)")]
 pub fn stub_719e0_wd133() -> ! {
-    todo!("0x719e0 FMOD::ChannelReal::setSpeakerMix(float,float,float,float,float,float,float,float)")
+    todo!(
+        "0x719e0 FMOD::ChannelReal::setSpeakerMix(float,float,float,float,float,float,float,float)"
+    )
 }
 
 // 0x71e34 — __ZN4FMOD11ChannelReal11setPositionEjj
@@ -12976,13 +13471,17 @@ pub fn stub_725a0_wd150() -> ! {
     todo!("0x725a0 FMOD::ChannelReal::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
 }
 // 0x376a24 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEaSINS1_10StockSoundEEERS4_RKNS0_IT_EE
-#[doc(alias = "boost::shared_ptr<RBX::Soundscape::SoundChannel>& boost::shared_ptr<RBX::Soundscape::SoundChannel>::operator=<RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const&)")]
+#[doc(
+    alias = "boost::shared_ptr<RBX::Soundscape::SoundChannel>& boost::shared_ptr<RBX::Soundscape::SoundChannel>::operator=<RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const&)"
+)]
 pub fn stub_376a24() -> ! {
     todo!("0x376a24 boost::shared_ptr<RBX::Soundscape::SoundChannel>& boost::shared_ptr<RBX::Soundscape::SoundChannel>::operator=<RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const&)")
 }
 
 // 0x376a58 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundService8SoundJobEEaSERKS5_
-#[doc(alias = "boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob>::operator=(boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob> const&)")]
+#[doc(
+    alias = "boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob>::operator=(boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob> const&)"
+)]
 pub fn stub_376a58() -> ! {
     todo!("0x376a58 boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob>::operator=(boost::shared_ptr<RBX::Soundscape::SoundService::SoundJob> const&)")
 }
@@ -12994,19 +13493,25 @@ pub fn stub_376ac4() -> ! {
 }
 
 // 0x376c84 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_10Soundscape7SoundIdEEERS3_RKT_
-#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Soundscape::SoundId>(RBX::Soundscape::SoundId const&)")]
+#[doc(
+    alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Soundscape::SoundId>(RBX::Soundscape::SoundId const&)"
+)]
 pub fn stub_376c84() -> ! {
     todo!("0x376c84 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Soundscape::SoundId>(RBX::Soundscape::SoundId const&)")
 }
 
 // 0x376ce4 — __ZN3RBX10Reflection7Variant14genericConvertINS_10Soundscape7SoundIdEEERT_v
-#[doc(alias = "RBX::Soundscape::SoundId & RBX::Reflection::Variant::genericConvert<RBX::Soundscape::SoundId>(void)")]
+#[doc(
+    alias = "RBX::Soundscape::SoundId & RBX::Reflection::Variant::genericConvert<RBX::Soundscape::SoundId>(void)"
+)]
 pub fn stub_376ce4() -> ! {
     todo!("0x376ce4 RBX::Soundscape::SoundId & RBX::Reflection::Variant::genericConvert<RBX::Soundscape::SoundId>(void)")
 }
 
 // 0x376f90 — __ZN3RBX10Soundscape12SoundService18on3DSettingChangedERKNS_10Reflection18PropertyDescriptorE
-#[doc(alias = "RBX::Soundscape::SoundService::on3DSettingChanged(RBX::Reflection::PropertyDescriptor const&)")]
+#[doc(
+    alias = "RBX::Soundscape::SoundService::on3DSettingChanged(RBX::Reflection::PropertyDescriptor const&)"
+)]
 pub fn stub_376f90() -> ! {
     todo!("0x376f90 RBX::Soundscape::SoundService::on3DSettingChanged(RBX::Reflection::PropertyDescriptor const&)")
 }
@@ -13018,25 +13523,33 @@ pub fn stub_376fb8() -> ! {
 }
 
 // 0x376fc0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEED1Ev
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::~EnumPropDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::~EnumPropDescriptor()"
+)]
 pub fn stub_376fc0() -> ! {
     todo!("0x376fc0 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::~EnumPropDescriptor()")
 }
 
 // 0x376fe4 — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EED1Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::~BoundFuncDesc()")]
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::~BoundFuncDesc()"
+)]
 pub fn stub_376fe4() -> ! {
     todo!("0x376fe4 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::~BoundFuncDesc()")
 }
 
 // 0x377024 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEED1Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::~PropDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::~PropDescriptor()"
+)]
 pub fn stub_377024() -> ! {
     todo!("0x377024 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::~PropDescriptor()")
 }
 
 // 0x377048 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfED1Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::~PropDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::~PropDescriptor()"
+)]
 pub fn stub_377048() -> ! {
     todo!("0x377048 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::~PropDescriptor()")
 }
@@ -13048,85 +13561,113 @@ pub fn stub_37706c() -> ! {
 }
 
 // 0x377074 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiED1Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::~PropDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::~PropDescriptor()"
+)]
 pub fn stub_377074() -> ! {
     todo!("0x377074 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::~PropDescriptor()")
 }
 
 // 0x377098 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbED1Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::~PropDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::~PropDescriptor()"
+)]
 pub fn stub_377098() -> ! {
     todo!("0x377098 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::~PropDescriptor()")
 }
 
 // 0x3770bc — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EED1Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::~BoundFuncDesc()")]
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::~BoundFuncDesc()"
+)]
 pub fn stub_3770bc() -> ! {
     todo!("0x3770bc RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::~BoundFuncDesc()")
 }
 
 // 0x3770e0 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_
-#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>> const&)")]
+#[doc(
+    alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>> const&)"
+)]
 pub fn stub_3770e0() -> ! {
     todo!("0x3770e0 rbx::signals::connection rbx::signals::signal<void ()(RBX::Heartbeat const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>> const&)")
 }
 
 // 0x377154 — __ZN3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_PKNS_8InstanceE
-#[doc(alias = "RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(RBX::Instance const*)")]
+#[doc(
+    alias = "RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(RBX::Instance const*)"
+)]
 pub fn stub_377154() -> ! {
     todo!("0x377154 RBX::Soundscape::SoundService * RBX::ServiceProvider::find<RBX::Soundscape::SoundService>(RBX::Instance const*)")
 }
 
 // 0x37716c — __ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEaSERKS4_
-#[doc(alias = "boost::shared_ptr<RBX::Soundscape::Sound>::operator=(boost::shared_ptr<RBX::Soundscape::Sound> const&)")]
+#[doc(
+    alias = "boost::shared_ptr<RBX::Soundscape::Sound>::operator=(boost::shared_ptr<RBX::Soundscape::Sound> const&)"
+)]
 pub fn stub_37716c() -> ! {
     todo!("0x37716c boost::shared_ptr<RBX::Soundscape::Sound>::operator=(boost::shared_ptr<RBX::Soundscape::Sound> const&)")
 }
 
 // 0x3771a4 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+)]
 pub fn stub_3771a4() -> ! {
     todo!("0x3771a4 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
 }
 
 // 0x3772c0 — __ZNSt3mapIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEESt4lessIS2_ESaISt4pairIKS2_S6_EEEixERSA_
-#[doc(alias = "std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&)")]
+#[doc(
+    alias = "std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&)"
+)]
 pub fn stub_3772c0() -> ! {
     todo!("0x3772c0 std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::operator[](RBX::Soundscape::SoundId const&)")
 }
 
 // 0x37750c — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv")]
+#[doc(
+    alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv"
+)]
 pub fn stub_37750c() -> ! {
     todo!("0x37750c __ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv")
 }
 
 // 0x37751c — __ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv")]
+#[doc(
+    alias = "__ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv"
+)]
 pub fn stub_37751c() -> ! {
     todo!("0x37751c __ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E12getClassNameEv")
 }
 
 // 0x37752c — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv")]
+#[doc(
+    alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv"
+)]
 pub fn stub_37752c() -> ! {
     todo!("0x37752c __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv")
 }
 
 // 0x37753c — __ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv")]
+#[doc(
+    alias = "__ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv"
+)]
 pub fn stub_37753c() -> ! {
     todo!("0x37753c __ZThn32_NK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E12getClassNameEv")
 }
 
 // 0x37754c — __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD1Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD1Ev")]
+#[doc(
+    alias = "__ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD1Ev"
+)]
 pub fn stub_37754c() -> ! {
     todo!("0x37754c __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD1Ev")
 }
 
 // 0x377550 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD1Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD1Ev")]
+#[doc(
+    alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD1Ev"
+)]
 pub fn stub_377550() -> ! {
     todo!("0x377550 __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD1Ev")
 }
@@ -13146,35 +13687,47 @@ pub fn stub_377558() -> ! {
 // 0x3775f8 — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE6lookupEPKc
 #[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::lookup(char const*)const")]
 pub fn stub_3775f8() -> ! {
-    todo!("0x3775f8 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::lookup(char const*)const")
+    todo!(
+        "0x3775f8 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::lookup(char const*)const"
+    )
 }
 
 // 0x377628 — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE6lookupERKNS0_7VariantE
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::lookup(RBX::Reflection::Variant const&)const")]
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::lookup(RBX::Reflection::Variant const&)const"
+)]
 pub fn stub_377628() -> ! {
     todo!("0x377628 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::lookup(RBX::Reflection::Variant const&)const")
 }
 
 // 0x377648 — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToValueEmRNS0_7VariantE
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
 pub fn stub_377648() -> ! {
     todo!("0x377648 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
 }
 
 // 0x3776a4 — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE15convertToStringEmRSs
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToString(unsigned long,std::string &)const")]
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToString(unsigned long,std::string &)const"
+)]
 pub fn stub_3776a4() -> ! {
     todo!("0x3776a4 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToString(unsigned long,std::string &)const")
 }
 
 // 0x3777e8 — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE15convertToStringERKS3_
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToString(RBX::Soundscape::ReverbType const&)const")]
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToString(RBX::Soundscape::ReverbType const&)const"
+)]
 pub fn stub_3777e8() -> ! {
     todo!("0x3777e8 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToString(RBX::Soundscape::ReverbType const&)const")
 }
 
 // 0x377988 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_10Soundscape10ReverbTypeEEERS3_RKT_
-#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Soundscape::ReverbType>(RBX::Soundscape::ReverbType const&)")]
+#[doc(
+    alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Soundscape::ReverbType>(RBX::Soundscape::ReverbType const&)"
+)]
 pub fn stub_377988() -> ! {
     todo!("0x377988 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::Soundscape::ReverbType>(RBX::Soundscape::ReverbType const&)")
 }
@@ -13182,35 +13735,47 @@ pub fn stub_377988() -> ! {
 // 0x3779d8 — __ZN3rbx14implementation12typed_holderIN3RBX10Soundscape10ReverbTypeEE9singletonEv
 #[doc(alias = "rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::singleton(void)")]
 pub fn stub_3779d8() -> ! {
-    todo!("0x3779d8 rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::singleton(void)")
+    todo!(
+        "0x3779d8 rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::singleton(void)"
+    )
 }
 
 // 0x377a44 — __ZN3rbx14implementation12typed_holderIN3RBX10Soundscape10ReverbTypeEE14construct_funcEPKcPc
-#[doc(alias = "rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::construct_func(char const*,char *)")]
+#[doc(
+    alias = "rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::construct_func(char const*,char *)"
+)]
 pub fn stub_377a44() -> ! {
     todo!("0x377a44 rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::construct_func(char const*,char *)")
 }
 
 // 0x377a50 — __ZN3rbx14implementation12typed_holderIN3RBX10Soundscape10ReverbTypeEE13destruct_funcEPc
-#[doc(alias = "rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::destruct_func(char *)")]
+#[doc(
+    alias = "rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::destruct_func(char *)"
+)]
 pub fn stub_377a50() -> ! {
     todo!("0x377a50 rbx::implementation::typed_holder<RBX::Soundscape::ReverbType>::destruct_func(char *)")
 }
 
 // 0x377a54 — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE13convertToItemERKS3_
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToItem(RBX::Soundscape::ReverbType const&)const")]
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToItem(RBX::Soundscape::ReverbType const&)const"
+)]
 pub fn stub_377a54() -> ! {
     todo!("0x377a54 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToItem(RBX::Soundscape::ReverbType const&)const")
 }
 
 // 0x377b20 — __ZN3rbx8any_castIRKN3RBX10Soundscape10ReverbTypeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-#[doc(alias = "RBX::Soundscape::ReverbType const& rbx::any_cast<RBX::Soundscape::ReverbType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+#[doc(
+    alias = "RBX::Soundscape::ReverbType const& rbx::any_cast<RBX::Soundscape::ReverbType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)"
+)]
 pub fn stub_377b20() -> ! {
     todo!("0x377b20 RBX::Soundscape::ReverbType const& rbx::any_cast<RBX::Soundscape::ReverbType const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
 }
 
 // 0x377c10 — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToValueERKNS_4NameERS3_
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToValue(RBX::Name const&,RBX::Soundscape::ReverbType&)const")]
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToValue(RBX::Name const&,RBX::Soundscape::ReverbType&)const"
+)]
 pub fn stub_377c10() -> ! {
     todo!("0x377c10 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToValue(RBX::Name const&,RBX::Soundscape::ReverbType&)const")
 }
@@ -13222,73 +13787,97 @@ pub fn stub_377c8c() -> ! {
 }
 
 // 0x377e60 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev")]
+#[doc(
+    alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev"
+)]
 pub fn stub_377e60() -> ! {
     todo!("0x377e60 __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev")
 }
 
 // 0x377efc — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv")]
+#[doc(
+    alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv"
+)]
 pub fn stub_377efc() -> ! {
     todo!("0x377efc __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv")
 }
 
 // 0x377f84 — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator6createEv
-#[doc(alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator6createEv")]
+#[doc(
+    alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator6createEv"
+)]
 pub fn stub_377f84() -> ! {
     todo!("0x377f84 __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator6createEv")
 }
 
 // 0x3780c8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10Soundscape12SoundChannelEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)")]
+#[doc(
+    alias = "boost::shared_ptr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)"
+)]
 pub fn stub_3780c8() -> ! {
     todo!("0x3780c8 boost::shared_ptr<RBX::Soundscape::SoundChannel> RBX::Creatable<RBX::Instance>::create<RBX::Soundscape::SoundChannel>(void)")
 }
 
 // 0x378178 — __ZN5boost10shared_ptrIN3RBX10Soundscape12SoundChannelEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(
+    alias = "boost::shared_ptr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)"
+)]
 pub fn stub_378178() -> ! {
     todo!("0x378178 boost::shared_ptr<RBX::Soundscape::SoundChannel>::shared_ptr<RBX::Soundscape::SoundChannel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x378240 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundChannelES7_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundChannel>(boost::shared_ptr<RBX::Soundscape::SoundChannel> const*,RBX::Soundscape::SoundChannel *)const")]
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundChannel>(boost::shared_ptr<RBX::Soundscape::SoundChannel> const*,RBX::Soundscape::SoundChannel *)const"
+)]
 pub fn stub_378240() -> ! {
     todo!("0x378240 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundChannel>(boost::shared_ptr<RBX::Soundscape::SoundChannel> const*,RBX::Soundscape::SoundChannel *)const")
 }
 
 // 0x37832c — __ZN5boost6detail12shared_countC2IPN3RBX10Soundscape12SoundChannelENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
-#[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(
+    alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)"
+)]
 pub fn stub_37832c() -> ! {
     todo!("0x37832c boost::detail::shared_count::shared_count<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x378434 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()"
+)]
 pub fn stub_378434() -> ! {
     todo!("0x378434 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
 
 // 0x378438 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()"
+)]
 pub fn stub_378438() -> ! {
     todo!("0x378438 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
 
 // 0x37843c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)"
+)]
 pub fn stub_37843c() -> ! {
     todo!("0x37843c boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
 }
 
 // 0x37845c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)"
+)]
 pub fn stub_37845c() -> ! {
     todo!("0x37845c boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
 }
 
 // 0x378474 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Soundscape12SoundChannelENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
-#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)"
+)]
 pub fn stub_378474() -> ! {
     todo!("0x378474 boost::detail::sp_counted_impl_pd<RBX::Soundscape::SoundChannel *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
 }
@@ -13306,55 +13895,73 @@ pub fn stub_37847c() -> ! {
 }
 
 // 0x37855c — __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorC2Ev
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorC2Ev")]
+#[doc(
+    alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorC2Ev"
+)]
 pub fn stub_37855c() -> ! {
     todo!("0x37855c __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorC2Ev")
 }
 
 // 0x3787a0 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E17static_getCreatorEv
-#[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E17static_getCreatorEv")]
+#[doc(
+    alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E17static_getCreatorEv"
+)]
 pub fn stub_3787a0() -> ! {
     todo!("0x3787a0 __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E17static_getCreatorEv")
 }
 
 // 0x378814 — __ZNSt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2ERS3_RKS7_
-#[doc(alias = "std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>::pair(RBX::Soundscape::SoundId const&,boost::shared_ptr<RBX::Soundscape::Sound> const&)")]
+#[doc(
+    alias = "std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>::pair(RBX::Soundscape::SoundId const&,boost::shared_ptr<RBX::Soundscape::Sound> const&)"
+)]
 pub fn stub_378814() -> ! {
     todo!("0x378814 std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>::pair(RBX::Soundscape::SoundId const&,boost::shared_ptr<RBX::Soundscape::Sound> const&)")
 }
 
 // 0x3788dc — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
-#[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)"
+)]
 pub fn stub_3788dc() -> ! {
     todo!("0x3788dc std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
 }
 
 // 0x3789c4 — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_
-#[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)"
+)]
 pub fn stub_3789c4() -> ! {
     todo!("0x3789c4 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
 }
 
 // 0x378a14 — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE16_M_insert_uniqueERKS9_
-#[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)"
+)]
 pub fn stub_378a14() -> ! {
     todo!("0x378a14 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_insert_unique(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
 }
 
 // 0x378a94 — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE14_M_create_nodeERKS9_
-#[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_create_node(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_create_node(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)"
+)]
 pub fn stub_378a94() -> ! {
     todo!("0x378a94 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_create_node(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
 }
 
 // 0x378ba0 — __ZN5boost10shared_ptrIN3RBX10Soundscape5SoundEEC2IS3_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::Soundscape::Sound>::shared_ptr<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
+#[doc(
+    alias = "boost::shared_ptr<RBX::Soundscape::Sound>::shared_ptr<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)"
+)]
 pub fn stub_378ba0() -> ! {
     todo!("0x378ba0 boost::shared_ptr<RBX::Soundscape::Sound>::shared_ptr<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")
 }
 
 // 0x378c74 — __ZN5boost6detail12shared_countC2IN3RBX10Soundscape5SoundEEEPT_
-#[doc(alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")]
+#[doc(
+    alias = "boost::detail::shared_count::shared_count<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)"
+)]
 pub fn stub_378c74() -> ! {
     todo!("0x378c74 boost::detail::shared_count::shared_count<RBX::Soundscape::Sound>(RBX::Soundscape::Sound *)")
 }
@@ -13378,499 +13985,665 @@ pub fn stub_378d88() -> ! {
 }
 
 // 0x378e2c — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape5SoundEE11get_deleterERKSt9type_info
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::get_deleter(std::type_info const&)")]
+#[doc(
+    alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::get_deleter(std::type_info const&)"
+)]
 pub fn stub_378e2c() -> ! {
     todo!("0x378e2c boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::get_deleter(std::type_info const&)")
 }
 
 // 0x378e30 — __ZN5boost6detail17sp_counted_impl_pIN3RBX10Soundscape5SoundEE19get_untyped_deleterEv
-#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::get_untyped_deleter(void)")]
+#[doc(
+    alias = "boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::get_untyped_deleter(void)"
+)]
 pub fn stub_378e30() -> ! {
     todo!("0x378e30 boost::detail::sp_counted_impl_p<RBX::Soundscape::Sound>::get_untyped_deleter(void)")
 }
 
 // 0x378e34 — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE4findERS4_
-#[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::find(RBX::Soundscape::SoundId const&)")]
+#[doc(
+    alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::find(RBX::Soundscape::SoundId const&)"
+)]
 pub fn stub_378e34() -> ! {
     todo!("0x378e34 std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::find(RBX::Soundscape::SoundId const&)")
 }
 
 // 0x378e84 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE13initSingletonEv
-#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType> const>::initSingleton(void)")]
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType> const>::initSingleton(void)"
+)]
 pub fn stub_378e84() -> ! {
     todo!("0x378e84 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType> const>::initSingleton(void)")
 }
 
 // 0x378e88 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE14doGetSingletonEv
-#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType> const>::doGetSingleton(void)")]
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType> const>::doGetSingleton(void)"
+)]
 pub fn stub_378e88() -> ! {
     todo!("0x378e88 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType> const>::doGetSingleton(void)")
 }
 
 // 0x378f78 — __ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv"
+)]
 pub fn stub_378f78() -> ! {
     todo!("0x378f78 __ZN3RBX10Reflection9DescribedINS_10StockSoundELZNS_11sStockSoundEENS_14FactoryProductIS2_NS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE17ELNS_8Security11PermissionsE0EE15classDescriptorEv")
 }
 
 // 0x379094 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED1Ev
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(
+    alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>::~callable_slot()"
+)]
 pub fn stub_379094() -> ! {
     todo!("0x379094 rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>::~callable_slot()")
 }
 
 // 0x3790c0 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_10Soundscape12SoundChannelES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED0Ev
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(
+    alias = "rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>::~callable_slot()"
+)]
 pub fn stub_3790c0() -> ! {
     todo!("0x3790c0 rbx::signals::signal<void ()(RBX::Heartbeat const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>>::~callable_slot()")
 }
 
 // 0x379194 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape12SoundChannelES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
+#[doc(
+    alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)"
+)]
 pub fn stub_379194() -> ! {
     todo!("0x379194 rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
 }
 
 // 0x37919c — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape12SoundChannelES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
+#[doc(
+    alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)"
+)]
 pub fn stub_37919c() -> ! {
     todo!("0x37919c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
 }
 
 // 0x3791a4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_
-#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)")]
+#[doc(
+    alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)"
+)]
 pub fn stub_3791a4() -> ! {
     todo!("0x3791a4 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>::operator()<RBX::Heartbeat>(RBX::Heartbeat const&)")
 }
 
 // 0x3791bc — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape12SoundChannelES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_ED1Ev
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")]
+#[doc(
+    alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()"
+)]
 pub fn stub_3791bc() -> ! {
     todo!("0x3791bc rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")
 }
 
 // 0x3791e8 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape12SoundChannelES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")]
+#[doc(
+    alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()"
+)]
 pub fn stub_3791e8() -> ! {
     todo!("0x3791e8 rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::~callable()")
 }
 
 // 0x3792bc — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE5eraseESt17_Rb_tree_iteratorIS9_E
-#[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>)")]
+#[doc(
+    alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>)"
+)]
 pub fn stub_3792bc() -> ! {
     todo!("0x3792bc std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>)")
 }
 
 // 0x3792e4 — __ZN9__gnu_cxx13new_allocatorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEE7destroyEPSA_
-#[doc(alias = "__gnu_cxx::new_allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>::destroy(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>*)")]
+#[doc(
+    alias = "__gnu_cxx::new_allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>::destroy(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>*)"
+)]
 pub fn stub_3792e4() -> ! {
     todo!("0x3792e4 __gnu_cxx::new_allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>::destroy(std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>*)")
 }
 
 // 0x379388 — __ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-#[doc(alias = "__ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+#[doc(
+    alias = "__ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
 pub fn stub_379388() -> ! {
     todo!("0x379388 __ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x37938c — __ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+#[doc(
+    alias = "__ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
 pub fn stub_37938c() -> ! {
     todo!("0x37938c __ZN3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
 }
 
 // 0x37942c — __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-#[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+#[doc(
+    alias = "__ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
 pub fn stub_37942c() -> ! {
     todo!("0x37942c __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x379434 — __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+#[doc(
+    alias = "__ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
 pub fn stub_379434() -> ! {
     todo!("0x379434 __ZThn32_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
 }
 
 // 0x3794d8 — __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-#[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+#[doc(
+    alias = "__ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
 pub fn stub_3794d8() -> ! {
     todo!("0x3794d8 __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x3794e0 — __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+#[doc(
+    alias = "__ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
 pub fn stub_3794e0() -> ! {
     todo!("0x3794e0 __ZThn36_N3RBX18DescribedCreatableINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
 }
 
 // 0x379584 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
 pub fn stub_379584() -> ! {
     todo!("0x379584 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x379588 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
 pub fn stub_379588() -> ! {
     todo!("0x379588 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
 }
 
 // 0x379628 — __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
 pub fn stub_379628() -> ! {
     todo!("0x379628 __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x379630 — __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
 pub fn stub_379630() -> ! {
     todo!("0x379630 __ZThn32_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
 }
 
 // 0x3796d4 — __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
 pub fn stub_3796d4() -> ! {
     todo!("0x3796d4 __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
 
 // 0x3796dc — __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
-#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
 pub fn stub_3796dc() -> ! {
     todo!("0x3796dc __ZThn36_N3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
 }
 
 // 0x379780 — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EEC2EMS3_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::BoundFuncDesc(void (RBX::Soundscape::SoundChannel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::BoundFuncDesc(void (RBX::Soundscape::SoundChannel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
+)]
 pub fn stub_379780() -> ! {
     todo!("0x379780 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::BoundFuncDesc(void (RBX::Soundscape::SoundChannel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
 
 // 0x379884 — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::~BoundFuncDesc()")]
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::~BoundFuncDesc()"
+)]
 pub fn stub_379884() -> ! {
     todo!("0x379884 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::~BoundFuncDesc()")
 }
 
 // 0x379938 — __ZNK3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundChannelEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
+)]
 pub fn stub_379938() -> ! {
     todo!("0x379938 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundChannel,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
 }
 
 // 0x379958 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_10Soundscape12SoundChannelEEEPKcS8_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundChannel>(char const*,char const*,bool RBX::Soundscape::SoundChannel::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+#[doc(
+    alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundChannel>(char const*,char const*,bool RBX::Soundscape::SoundChannel::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
 pub fn stub_379958() -> ! {
     todo!("0x379958 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundChannel>(char const*,char const*,bool RBX::Soundscape::SoundChannel::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
 }
 
 // 0x379ae8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundChannelEE10isReadOnlyEv
-#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::isReadOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::isReadOnly(void)const"
+)]
 pub fn stub_379ae8() -> ! {
     todo!("0x379ae8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::isReadOnly(void)const")
 }
 
 // 0x379aec — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundChannelEE11isWriteOnlyEv
-#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::isWriteOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::isWriteOnly(void)const"
+)]
 pub fn stub_379aec() -> ! {
     todo!("0x379aec RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::isWriteOnly(void)const")
 }
 
 // 0x379af0 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundChannelEE8getValueEPKNS0_13DescribedBaseE
-#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::getValue(RBX::Reflection::DescribedBase const*)const")]
+#[doc(
+    alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
 pub fn stub_379af0() -> ! {
     todo!("0x379af0 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::getValue(RBX::Reflection::DescribedBase const*)const")
 }
 
 // 0x379afc — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundChannelEE8setValueEPNS0_13DescribedBaseERKb
-#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
+#[doc(
+    alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::setValue(RBX::Reflection::DescribedBase *,bool const&)const"
+)]
 pub fn stub_379afc() -> ! {
     todo!("0x379afc RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundChannel>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
 }
 
 // 0x379b4c — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbEC2IMS3_KFbvEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,int>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,int>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
 pub fn stub_379b4c() -> ! {
     todo!("0x379b4c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,int>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
 }
 
 // 0x379c58 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::~PropDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::~PropDescriptor()"
+)]
 pub fn stub_379c58() -> ! {
     todo!("0x379c58 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::~PropDescriptor()")
 }
 
 // 0x379c84 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE7GetImplIMS3_KFbvEE10isReadOnlyEv
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::isReadOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::isReadOnly(void)const"
+)]
 pub fn stub_379c84() -> ! {
     todo!("0x379c84 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::isReadOnly(void)const")
 }
 
 // 0x379c88 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE7GetImplIMS3_KFbvEE11isWriteOnlyEv
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::isWriteOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::isWriteOnly(void)const"
+)]
 pub fn stub_379c88() -> ! {
     todo!("0x379c88 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::isWriteOnly(void)const")
 }
 
 // 0x379c8c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE7GetImplIMS3_KFbvEE8getValueEPKNS0_13DescribedBaseE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
 pub fn stub_379c8c() -> ! {
     todo!("0x379c8c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
 }
 
 // 0x379cb0 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE7GetImplIMS3_KFbvEE8setValueEPNS0_13DescribedBaseERKb
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const"
+)]
 pub fn stub_379cb0() -> ! {
     todo!("0x379cb0 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
 }
 
 // 0x379dd0 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbEC2IMS3_KFbvEMS3_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
 pub fn stub_379dd0() -> ! {
     todo!("0x379dd0 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::PropDescriptor<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>(char const*,char const*,bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
 }
 
 // 0x379ee4 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE10GetSetImplIMS3_KFbvEMS3_FvbEE10isReadOnlyEv
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::isReadOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::isReadOnly(void)const"
+)]
 pub fn stub_379ee4() -> ! {
     todo!("0x379ee4 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::isReadOnly(void)const")
 }
 
 // 0x379ee8 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE10GetSetImplIMS3_KFbvEMS3_FvbEE11isWriteOnlyEv
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::isWriteOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::isWriteOnly(void)const"
+)]
 pub fn stub_379ee8() -> ! {
     todo!("0x379ee8 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::isWriteOnly(void)const")
 }
 
 // 0x379eec — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE10GetSetImplIMS3_KFbvEMS3_FvbEE8getValueEPKNS0_13DescribedBaseE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
 pub fn stub_379eec() -> ! {
     todo!("0x379eec RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
 }
 
 // 0x379f10 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEbE10GetSetImplIMS3_KFbvEMS3_FvbEE8setValueEPNS0_13DescribedBaseERKb
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const"
+)]
 pub fn stub_379f10() -> ! {
     todo!("0x379f10 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,bool>::GetSetImpl<bool (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
 }
 
 // 0x379f34 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiEC2IMS3_KFivEMS3_FviEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::PropDescriptor<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>(char const*,char const*,int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::PropDescriptor<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>(char const*,char const*,int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
 pub fn stub_379f34() -> ! {
     todo!("0x379f34 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::PropDescriptor<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>(char const*,char const*,int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
 }
 
 // 0x37a048 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::~PropDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::~PropDescriptor()"
+)]
 pub fn stub_37a048() -> ! {
     todo!("0x37a048 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::~PropDescriptor()")
 }
 
 // 0x37a074 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiE10GetSetImplIMS3_KFivEMS3_FviEE10isReadOnlyEv
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::isReadOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::isReadOnly(void)const"
+)]
 pub fn stub_37a074() -> ! {
     todo!("0x37a074 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::isReadOnly(void)const")
 }
 
 // 0x37a078 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiE10GetSetImplIMS3_KFivEMS3_FviEE11isWriteOnlyEv
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::isWriteOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::isWriteOnly(void)const"
+)]
 pub fn stub_37a078() -> ! {
     todo!("0x37a078 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::isWriteOnly(void)const")
 }
 
 // 0x37a07c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiE10GetSetImplIMS3_KFivEMS3_FviEE8getValueEPKNS0_13DescribedBaseE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
 pub fn stub_37a07c() -> ! {
     todo!("0x37a07c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
 }
 
 // 0x37a09c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEiE10GetSetImplIMS3_KFivEMS3_FviEE8setValueEPNS0_13DescribedBaseERKi
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const"
+)]
 pub fn stub_37a09c() -> ! {
     todo!("0x37a09c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,int>::GetSetImpl<int (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
 }
 
 // 0x37a0c0 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfEC2IMS3_KFfvEMS3_FvfEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::PropDescriptor<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>(char const*,char const*,float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::PropDescriptor<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>(char const*,char const*,float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
 pub fn stub_37a0c0() -> ! {
     todo!("0x37a0c0 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::PropDescriptor<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>(char const*,char const*,float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
 }
 
 // 0x37a1d4 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::~PropDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::~PropDescriptor()"
+)]
 pub fn stub_37a1d4() -> ! {
     todo!("0x37a1d4 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::~PropDescriptor()")
 }
 
 // 0x37a200 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfE10GetSetImplIMS3_KFfvEMS3_FvfEE10isReadOnlyEv
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::isReadOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::isReadOnly(void)const"
+)]
 pub fn stub_37a200() -> ! {
     todo!("0x37a200 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::isReadOnly(void)const")
 }
 
 // 0x37a204 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfE10GetSetImplIMS3_KFfvEMS3_FvfEE11isWriteOnlyEv
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::isWriteOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::isWriteOnly(void)const"
+)]
 pub fn stub_37a204() -> ! {
     todo!("0x37a204 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::isWriteOnly(void)const")
 }
 
 // 0x37a208 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfE10GetSetImplIMS3_KFfvEMS3_FvfEE8getValueEPKNS0_13DescribedBaseE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
 pub fn stub_37a208() -> ! {
     todo!("0x37a208 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
 }
 
 // 0x37a228 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelEfE10GetSetImplIMS3_KFfvEMS3_FvfEE8setValueEPNS0_13DescribedBaseERKf
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const"
+)]
 pub fn stub_37a228() -> ! {
     todo!("0x37a228 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,float>::GetSetImpl<float (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
 }
 
 // 0x37a24c — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::PropDescriptor<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>(char const*,char const*,RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::PropDescriptor<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>(char const*,char const*,RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
 pub fn stub_37a24c() -> ! {
     todo!("0x37a24c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::PropDescriptor<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>(char const*,char const*,RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
 }
 
 // 0x37a360 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEEC2ERNS0_15ClassDescriptorEPKcS8_St8auto_ptrINS4_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
 pub fn stub_37a360() -> ! {
     todo!("0x37a360 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
 }
 
 // 0x37a484 — __ZN3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEED0Ev
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::~PropDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::~PropDescriptor()"
+)]
 pub fn stub_37a484() -> ! {
     todo!("0x37a484 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::~PropDescriptor()")
 }
 
 // 0x37a4b0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE10isReadOnlyEv
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::isReadOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::isReadOnly(void)const"
+)]
 pub fn stub_37a4b0() -> ! {
     todo!("0x37a4b0 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::isReadOnly(void)const")
 }
 
 // 0x37a4c0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE11isWriteOnlyEv
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::isWriteOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::isWriteOnly(void)const"
+)]
 pub fn stub_37a4c0() -> ! {
     todo!("0x37a4c0 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::isWriteOnly(void)const")
 }
 
 // 0x37a4d0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE11equalValuesEPKNS0_13DescribedBaseES7_
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
+)]
 pub fn stub_37a4d0() -> ! {
     todo!("0x37a4d0 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
 }
 
 // 0x37a67c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const"
+)]
 pub fn stub_37a67c() -> ! {
     todo!("0x37a67c RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
 }
 
 // 0x37a7a8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const"
+)]
 pub fn stub_37a7a8() -> ! {
     todo!("0x37a7a8 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
 }
 
 // 0x37a9a4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE9copyValueEPKNS0_13DescribedBaseEPS5_
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const"
+)]
 pub fn stub_37a9a4() -> ! {
     todo!("0x37a9a4 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
 }
 
 // 0x37aacc — __ZN3rbx8any_castIRKN3RBX10Soundscape7SoundIdENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-#[doc(alias = "RBX::Soundscape::SoundId const& rbx::any_cast<RBX::Soundscape::SoundId const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+#[doc(
+    alias = "RBX::Soundscape::SoundId const& rbx::any_cast<RBX::Soundscape::SoundId const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)"
+)]
 pub fn stub_37aacc() -> ! {
     todo!("0x37aacc RBX::Soundscape::SoundId const& rbx::any_cast<RBX::Soundscape::SoundId const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
 }
 
 // 0x37abbc — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEED1Ev
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::~TypedPropertyDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::~TypedPropertyDescriptor()"
+)]
 pub fn stub_37abbc() -> ! {
     todo!("0x37abbc RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::~TypedPropertyDescriptor()")
 }
 
 // 0x37abe0 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEED0Ev
-#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::~TypedPropertyDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::~TypedPropertyDescriptor()"
+)]
 pub fn stub_37abe0() -> ! {
     todo!("0x37abe0 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::~TypedPropertyDescriptor()")
 }
 
 // 0x37ac0c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE10isReadOnlyEv
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::isReadOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::isReadOnly(void)const"
+)]
 pub fn stub_37ac0c() -> ! {
     todo!("0x37ac0c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::isReadOnly(void)const")
 }
 
 // 0x37ac10 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE11isWriteOnlyEv
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::isWriteOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::isWriteOnly(void)const"
+)]
 pub fn stub_37ac10() -> ! {
     todo!("0x37ac10 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::isWriteOnly(void)const")
 }
 
 // 0x37ac14 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE8getValueEPKNS0_13DescribedBaseE
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
 pub fn stub_37ac14() -> ! {
     todo!("0x37ac14 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::getValue(RBX::Reflection::DescribedBase const*)const")
 }
 
 // 0x37ac3c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundChannelENS2_7SoundIdEE10GetSetImplIMS3_KFS4_vEMS3_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
-#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::setValue(RBX::Reflection::DescribedBase *,RBX::Soundscape::SoundId const&)const")]
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::setValue(RBX::Reflection::DescribedBase *,RBX::Soundscape::SoundId const&)const"
+)]
 pub fn stub_37ac3c() -> ! {
     todo!("0x37ac3c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundChannel,RBX::Soundscape::SoundId>::GetSetImpl<RBX::Soundscape::SoundId (RBX::Soundscape::SoundChannel::*)(void)const,void (RBX::Soundscape::SoundChannel::*)(RBX::Soundscape::SoundId)>::setValue(RBX::Reflection::DescribedBase *,RBX::Soundscape::SoundId const&)const")
 }
 
 // 0x37ad84 — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EEC2EMS3_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::BoundFuncDesc(void (RBX::Soundscape::SoundService::*)(RBX::SoundType),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::BoundFuncDesc(void (RBX::Soundscape::SoundService::*)(RBX::SoundType),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
+)]
 pub fn stub_37ad84() -> ! {
     todo!("0x37ad84 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::BoundFuncDesc(void (RBX::Soundscape::SoundService::*)(RBX::SoundType),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
 
 // 0x37aefc — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EE16declareSignatureEPKcNS0_7VariantE
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::declareSignature(char const*,RBX::Reflection::Variant)"
+)]
 pub fn stub_37aefc() -> ! {
     todo!("0x37aefc RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::declareSignature(char const*,RBX::Reflection::Variant)")
 }
 
 // 0x37af2c — __ZN3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::~BoundFuncDesc()")]
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::~BoundFuncDesc()"
+)]
 pub fn stub_37af2c() -> ! {
     todo!("0x37af2c RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::~BoundFuncDesc()")
 }
 
 // 0x37b000 — __ZNK3RBX10Reflection13BoundFuncDescINS_10Soundscape12SoundServiceEFvNS_9SoundTypeEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
+)]
 pub fn stub_37b000() -> ! {
     todo!("0x37b000 RBX::Reflection::BoundFuncDesc<RBX::Soundscape::SoundService,void ()(RBX::SoundType),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
 }
 
 // 0x37b218 — __ZN3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEEC2IMS3_KFS4_vEMS3_FvRKS4_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::EnumPropDescriptor<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>(char const*,char const*,RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::EnumPropDescriptor<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>(char const*,char const*,RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
 pub fn stub_37b218() -> ! {
     todo!("0x37b218 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::EnumPropDescriptor<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>(char const*,char const*,RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
 }
 
 // 0x37b3cc — __ZN3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEED0Ev
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::~EnumPropDescriptor()")]
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::~EnumPropDescriptor()"
+)]
 pub fn stub_37b3cc() -> ! {
     todo!("0x37b3cc RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::~EnumPropDescriptor()")
 }
 
 // 0x37b3f8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE10isReadOnlyEv
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::isReadOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::isReadOnly(void)const"
+)]
 pub fn stub_37b3f8() -> ! {
     todo!("0x37b3f8 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::isReadOnly(void)const")
 }
 
 // 0x37b408 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE11isWriteOnlyEv
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::isWriteOnly(void)const")]
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::isWriteOnly(void)const"
+)]
 pub fn stub_37b408() -> ! {
     todo!("0x37b408 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::isWriteOnly(void)const")
 }
 
 // 0x37b418 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE11equalValuesEPKNS0_13DescribedBaseES8_
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
+)]
 pub fn stub_37b418() -> ! {
     todo!("0x37b418 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
 }
