@@ -26552,3 +26552,784 @@ pub fn stub_0x480614() -> ! {
 pub fn stub_0x4807e8() -> ! {
     todo!("0x4807e8 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToString(RBX::EThrottle::EThrottleType const&)const")
 }
+
+
+// 0x480a54 — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE13convertToItemERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToItem(RBX::EThrottle::EThrottleType const&)const"
+)]
+pub fn stub_0x480a54() -> ! {
+    todo!("0x480a54 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToItem(RBX::EThrottle::EThrottleType const&)const")
+}
+
+// 0x480c10 — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToValueERKNS_4NameERS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToValue(RBX::Name const&,RBX::EThrottle::EThrottleType&)const"
+)]
+pub fn stub_0x480c10() -> ! {
+    todo!("0x480c10 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToValue(RBX::Name const&,RBX::EThrottle::EThrottleType&)const")
+}
+
+// 0x480c8c — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")]
+pub fn stub_0x480c8c() -> ! {
+    todo!("0x480c8c RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")
+}
+
+// 0x480e60 — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE15convertToStringERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(RBX::DebugSettings::ErrorReporting const&)const"
+)]
+pub fn stub_0x480e60() -> ! {
+    todo!("0x480e60 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(RBX::DebugSettings::ErrorReporting const&)const")
+}
+
+// 0x4810cc — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE13convertToItemERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToItem(RBX::DebugSettings::ErrorReporting const&)const"
+)]
+pub fn stub_0x4810cc() -> ! {
+    todo!("0x4810cc RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToItem(RBX::DebugSettings::ErrorReporting const&)const")
+}
+
+// 0x481288 — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToValueERKNS_4NameERS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(RBX::Name const&,RBX::DebugSettings::ErrorReporting&)const"
+)]
+pub fn stub_0x481288() -> ! {
+    todo!("0x481288 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(RBX::Name const&,RBX::DebugSettings::ErrorReporting&)const")
+}
+
+// 0x481304 — __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
+pub fn stub_0x481304() -> ! {
+    todo!("0x481304 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+}
+
+// 0x4814d8 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE15convertToStringERKS4_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToString(RBX::TaskScheduler::Job::SleepAdjustMethod const&)const"
+)]
+pub fn stub_0x4814d8() -> ! {
+    todo!("0x4814d8 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToString(RBX::TaskScheduler::Job::SleepAdjustMethod const&)const")
+}
+
+// 0x481744 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE13convertToItemERKS4_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToItem(RBX::TaskScheduler::Job::SleepAdjustMethod const&)const"
+)]
+pub fn stub_0x481744() -> ! {
+    todo!("0x481744 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToItem(RBX::TaskScheduler::Job::SleepAdjustMethod const&)const")
+}
+
+// 0x481900 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE14convertToValueERKNS_4NameERS4_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToValue(RBX::Name const&,RBX::TaskScheduler::Job::SleepAdjustMethod&)const"
+)]
+pub fn stub_0x481900() -> ! {
+    todo!("0x481900 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToValue(RBX::Name const&,RBX::TaskScheduler::Job::SleepAdjustMethod&)const")
+}
+
+// 0x48197c — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED2Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()"
+)]
+pub fn stub_0x48197c() -> ! {
+    todo!("0x48197c RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")
+}
+
+// 0x481b50 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE15convertToStringERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToString(RBX::TaskScheduler::PriorityMethod const&)const"
+)]
+pub fn stub_0x481b50() -> ! {
+    todo!("0x481b50 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToString(RBX::TaskScheduler::PriorityMethod const&)const")
+}
+
+// 0x481dbc — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE13convertToItemERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToItem(RBX::TaskScheduler::PriorityMethod const&)const"
+)]
+pub fn stub_0x481dbc() -> ! {
+    todo!("0x481dbc RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToItem(RBX::TaskScheduler::PriorityMethod const&)const")
+}
+
+// 0x481f78 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE14convertToValueERKNS_4NameERS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToValue(RBX::Name const&,RBX::TaskScheduler::PriorityMethod&)const"
+)]
+pub fn stub_0x481f78() -> ! {
+    todo!("0x481f78 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToValue(RBX::Name const&,RBX::TaskScheduler::PriorityMethod&)const")
+}
+
+// 0x481ff4 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")]
+pub fn stub_0x481ff4() -> ! {
+    todo!("0x481ff4 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")
+}
+
+// 0x4821c8 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE15convertToStringERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToString(RBX::TaskScheduler::ThreadPoolConfig const&)const"
+)]
+pub fn stub_0x4821c8() -> ! {
+    todo!("0x4821c8 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToString(RBX::TaskScheduler::ThreadPoolConfig const&)const")
+}
+
+// 0x482434 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE13convertToItemERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToItem(RBX::TaskScheduler::ThreadPoolConfig const&)const"
+)]
+pub fn stub_0x482434() -> ! {
+    todo!("0x482434 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToItem(RBX::TaskScheduler::ThreadPoolConfig const&)const")
+}
+
+// 0x4825f0 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE14convertToValueERKNS_4NameERS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToValue(RBX::Name const&,RBX::TaskScheduler::ThreadPoolConfig&)const"
+)]
+pub fn stub_0x4825f0() -> ! {
+    todo!("0x4825f0 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToValue(RBX::Name const&,RBX::TaskScheduler::ThreadPoolConfig&)const")
+}
+
+// 0x48266c — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")]
+pub fn stub_0x48266c() -> ! {
+    todo!("0x48266c RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")
+}
+
+// 0x48456c — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x48456c() -> ! {
+    todo!("0x48456c RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x484684 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")]
+pub fn stub_0x484684() -> ! {
+    todo!("0x484684 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")
+}
+
+// 0x4846b4 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::isReadOnly(void)const"
+)]
+pub fn stub_0x4846b4() -> ! {
+    todo!("0x4846b4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::isReadOnly(void)const")
+}
+
+// 0x4846b8 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x4846b8() -> ! {
+    todo!("0x4846b8 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::isWriteOnly(void)const")
+}
+
+// 0x4846bc — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x4846bc() -> ! {
+    todo!("0x4846bc RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4846dc — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const"
+)]
+pub fn stub_0x4846dc() -> ! {
+    todo!("0x4846dc RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetSetImpl<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+}
+
+// 0x484700 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::EnumPropDescriptor<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>(char const*,char const*,RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x484700() -> ! {
+    todo!("0x484700 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::EnumPropDescriptor<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>(char const*,char const*,RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4848b4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEED0Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x4848b4() -> ! {
+    todo!("0x4848b4 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()")
+}
+
+// 0x4848e0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::isReadOnly(void)const"
+)]
+pub fn stub_0x4848e0() -> ! {
+    todo!("0x4848e0 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::isReadOnly(void)const")
+}
+
+// 0x4848f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::isWriteOnly(void)const"
+)]
+pub fn stub_0x4848f0() -> ! {
+    todo!("0x4848f0 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::isWriteOnly(void)const")
+}
+
+// 0x484900 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE11equalValuesEPKNS0_13DescribedBaseES8_
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x484900() -> ! {
+    todo!("0x484900 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x484928 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x484928() -> ! {
+    todo!("0x484928 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x48494c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x48494c() -> ! {
+    todo!("0x48494c RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x484a98 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE9copyValueEPKNS0_13DescribedBaseEPS6_
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const"
+)]
+pub fn stub_0x484a98() -> ! {
+    todo!("0x484a98 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x484ac0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE14hasStringValueEv
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::hasStringValue(void)const"
+)]
+pub fn stub_0x484ac0() -> ! {
+    todo!("0x484ac0 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::hasStringValue(void)const")
+}
+
+// 0x484ac4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::getStringValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x484ac4() -> ! {
+    todo!("0x484ac4 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x484ae8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const"
+)]
+pub fn stub_0x484ae8() -> ! {
+    todo!("0x484ae8 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x484b28 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const"
+)]
+pub fn stub_0x484b28() -> ! {
+    todo!("0x484b28 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x484b48 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const"
+)]
+pub fn stub_0x484b48() -> ! {
+    todo!("0x484b48 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x484d88 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::getIndexValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x484d88() -> ! {
+    todo!("0x484d88 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x484da4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const"
+)]
+pub fn stub_0x484da4() -> ! {
+    todo!("0x484da4 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x484dd8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::getEnumValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x484dd8() -> ! {
+    todo!("0x484dd8 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x484de0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setEnumValue(RBX::Reflection::DescribedBase *,int)const"
+)]
+pub fn stub_0x484de0() -> ! {
+    todo!("0x484de0 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x484e2c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::getEnumItem(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x484e2c() -> ! {
+    todo!("0x484e2c RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x484e4c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const"
+)]
+pub fn stub_0x484e4c() -> ! {
+    todo!("0x484e4c RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x484e80 — __ZN3RBX10Reflection14EnumDescriptor10equalValueEPKNS1_4ItemEi
+#[doc(
+    alias = "RBX::Reflection::EnumDescriptor::equalValue(RBX::Reflection::EnumDescriptor::Item const*,int)"
+)]
+pub fn stub_0x484e80() -> ! {
+    todo!("0x484e80 RBX::Reflection::EnumDescriptor::equalValue(RBX::Reflection::EnumDescriptor::Item const*,int)")
+}
+
+// 0x484e8c — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE14convertToIndexES3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToIndex(RBX::Time::SampleMethod)const"
+)]
+pub fn stub_0x484e8c() -> ! {
+    todo!("0x484e8c RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToIndex(RBX::Time::SampleMethod)const")
+}
+
+// 0x484efc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setIntValue(RBX::Reflection::DescribedBase *,int)const"
+)]
+pub fn stub_0x484efc() -> ! {
+    todo!("0x484efc RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x484f3c — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::isReadOnly(void)const"
+)]
+pub fn stub_0x484f3c() -> ! {
+    todo!("0x484f3c RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::isReadOnly(void)const")
+}
+
+// 0x484f40 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x484f40() -> ! {
+    todo!("0x484f40 RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::isWriteOnly(void)const")
+}
+
+// 0x484f44 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x484f44() -> ! {
+    todo!("0x484f44 RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x484f64 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::setValue(RBX::Reflection::DescribedBase *,RBX::Time::SampleMethod const&)const"
+)]
+pub fn stub_0x484f64() -> ! {
+    todo!("0x484f64 RBX::Reflection::PropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::GetSetImpl<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>::setValue(RBX::Reflection::DescribedBase *,RBX::Time::SampleMethod const&)const")
+}
+
+// 0x484f88 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_4Time12SampleMethodEEEE13initSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Time::SampleMethod> const>::initSingleton(void)"
+)]
+pub fn stub_0x484f88() -> ! {
+    todo!("0x484f88 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Time::SampleMethod> const>::initSingleton(void)")
+}
+
+// 0x484f8c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_4Time12SampleMethodEEEE14doGetSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Time::SampleMethod> const>::doGetSingleton(void)"
+)]
+pub fn stub_0x484f8c() -> ! {
+    todo!("0x484f8c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Time::SampleMethod> const>::doGetSingleton(void)")
+}
+
+// 0x48507c — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdEC2IMS2_KFdvEMS2_FvdEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::PropDescriptor<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>(char const*,char const*,double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x48507c() -> ! {
+    todo!("0x48507c RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::PropDescriptor<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>(char const*,char const*,double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x485190 — __ZN3RBX10Reflection23TypedPropertyDescriptorIdEC2ERNS0_15ClassDescriptorEPKcS6_St8auto_ptrINS2_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<double>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<double>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x485190() -> ! {
+    todo!("0x485190 RBX::Reflection::TypedPropertyDescriptor<double>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<double>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4852b4 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()")]
+pub fn stub_0x4852b4() -> ! {
+    todo!("0x4852b4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()")
+}
+
+// 0x4852e0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIdE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<double>::isReadOnly(void)const")]
+pub fn stub_0x4852e0() -> ! {
+    todo!("0x4852e0 RBX::Reflection::TypedPropertyDescriptor<double>::isReadOnly(void)const")
+}
+
+// 0x4852f0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIdE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<double>::isWriteOnly(void)const")]
+pub fn stub_0x4852f0() -> ! {
+    todo!("0x4852f0 RBX::Reflection::TypedPropertyDescriptor<double>::isWriteOnly(void)const")
+}
+
+// 0x485300 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIdE11equalValuesEPKNS0_13DescribedBaseES5_
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<double>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x485300() -> ! {
+    todo!("0x485300 RBX::Reflection::TypedPropertyDescriptor<double>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x485340 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIdE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<double>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x485340() -> ! {
+    todo!("0x485340 RBX::Reflection::TypedPropertyDescriptor<double>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x485378 — __ZNK3RBX10Reflection23TypedPropertyDescriptorIdE9copyValueEPKNS0_13DescribedBaseEPS3_
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<double>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const"
+)]
+pub fn stub_0x485378() -> ! {
+    todo!("0x485378 RBX::Reflection::TypedPropertyDescriptor<double>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x4853b0 — __ZN3RBX10Reflection23TypedPropertyDescriptorIdED0Ev
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<double>::~TypedPropertyDescriptor()")]
+pub fn stub_0x4853b0() -> ! {
+    todo!("0x4853b0 RBX::Reflection::TypedPropertyDescriptor<double>::~TypedPropertyDescriptor()")
+}
+
+// 0x4853dc — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::isReadOnly(void)const"
+)]
+pub fn stub_0x4853dc() -> ! {
+    todo!("0x4853dc RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::isReadOnly(void)const")
+}
+
+// 0x4853e0 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x4853e0() -> ! {
+    todo!("0x4853e0 RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::isWriteOnly(void)const")
+}
+
+// 0x4853e4 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x4853e4() -> ! {
+    todo!("0x4853e4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x485404 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8setValueEPNS0_13DescribedBaseERKd
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::setValue(RBX::Reflection::DescribedBase *,double const&)const"
+)]
+pub fn stub_0x485404() -> ! {
+    todo!("0x485404 RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::GetSetImpl<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>::setValue(RBX::Reflection::DescribedBase *,double const&)const")
+}
+
+// 0x48542c — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::PropDescriptor<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>(char const*,char const*,bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x48542c() -> ! {
+    todo!("0x48542c RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::PropDescriptor<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>(char const*,char const*,bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x485544 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()")]
+pub fn stub_0x485544() -> ! {
+    todo!("0x485544 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()")
+}
+
+// 0x485574 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::isReadOnly(void)const"
+)]
+pub fn stub_0x485574() -> ! {
+    todo!("0x485574 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::isReadOnly(void)const")
+}
+
+// 0x485578 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x485578() -> ! {
+    todo!("0x485578 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::isWriteOnly(void)const")
+}
+
+// 0x48557c — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x48557c() -> ! {
+    todo!("0x48557c RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4855a0 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const"
+)]
+pub fn stub_0x4855a0() -> ! {
+    todo!("0x4855a0 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::GetSetImpl<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+}
+
+// 0x4855c4 — __ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdEC2IMS2_KFdvEMS2_FvdEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::PropDescriptor<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>(char const*,char const*,double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x4855c4() -> ! {
+    todo!("0x4855c4 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::PropDescriptor<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>(char const*,char const*,double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4856d8 — __ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdED0Ev
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::~PropDescriptor()"
+)]
+pub fn stub_0x4856d8() -> ! {
+    todo!("0x4856d8 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::~PropDescriptor()")
+}
+
+// 0x485704 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::isReadOnly(void)const"
+)]
+pub fn stub_0x485704() -> ! {
+    todo!("0x485704 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::isReadOnly(void)const")
+}
+
+// 0x485708 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x485708() -> ! {
+    todo!("0x485708 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::isWriteOnly(void)const")
+}
+
+// 0x48570c — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x48570c() -> ! {
+    todo!("0x48570c RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x48572c — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdE10GetSetImplIMS2_KFdvEMS2_FvdEE8setValueEPNS0_13DescribedBaseERKd
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::setValue(RBX::Reflection::DescribedBase *,double const&)const"
+)]
+pub fn stub_0x48572c() -> ! {
+    todo!("0x48572c RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::GetSetImpl<double (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(double)>::setValue(RBX::Reflection::DescribedBase *,double const&)const")
+}
+
+// 0x485754 — __ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::PropDescriptor<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>(char const*,char const*,bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x485754() -> ! {
+    todo!("0x485754 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::PropDescriptor<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>(char const*,char const*,bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x485868 — __ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbED0Ev
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::~PropDescriptor()"
+)]
+pub fn stub_0x485868() -> ! {
+    todo!("0x485868 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::~PropDescriptor()")
+}
+
+// 0x485894 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::isReadOnly(void)const"
+)]
+pub fn stub_0x485894() -> ! {
+    todo!("0x485894 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::isReadOnly(void)const")
+}
+
+// 0x485898 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x485898() -> ! {
+    todo!("0x485898 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::isWriteOnly(void)const")
+}
+
+// 0x48589c — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x48589c() -> ! {
+    todo!("0x48589c RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4858c0 — __ZNK3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const"
+)]
+pub fn stub_0x4858c0() -> ! {
+    todo!("0x4858c0 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::GetSetImpl<bool (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+}
+
+// 0x4858e4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::EnumPropDescriptor<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>(char const*,char const*,RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x4858e4() -> ! {
+    todo!("0x4858e4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::EnumPropDescriptor<RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel)>(char const*,char const*,RBX::DataModelArbiter::ConcurrencyModel (RBX::TaskSchedulerSettings::*)(void)const,void (RBX::TaskSchedulerSettings::*)(RBX::DataModelArbiter::ConcurrencyModel),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x485a98 — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEED0Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x485a98() -> ! {
+    todo!("0x485a98 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()")
+}
+
+// 0x485ac4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::isReadOnly(void)const"
+)]
+pub fn stub_0x485ac4() -> ! {
+    todo!("0x485ac4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::isReadOnly(void)const")
+}
+
+// 0x485ad4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::isWriteOnly(void)const"
+)]
+pub fn stub_0x485ad4() -> ! {
+    todo!("0x485ad4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::isWriteOnly(void)const")
+}
+
+// 0x485ae4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE11equalValuesEPKNS0_13DescribedBaseES8_
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x485ae4() -> ! {
+    todo!("0x485ae4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x485b0c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x485b0c() -> ! {
+    todo!("0x485b0c RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x485b30 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x485b30() -> ! {
+    todo!("0x485b30 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x485c7c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE9copyValueEPKNS0_13DescribedBaseEPS6_
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const"
+)]
+pub fn stub_0x485c7c() -> ! {
+    todo!("0x485c7c RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x485ca0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE14hasStringValueEv
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::hasStringValue(void)const"
+)]
+pub fn stub_0x485ca0() -> ! {
+    todo!("0x485ca0 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::hasStringValue(void)const")
+}
+
+// 0x485ca4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getStringValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x485ca4() -> ! {
+    todo!("0x485ca4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x485cc8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const"
+)]
+pub fn stub_0x485cc8() -> ! {
+    todo!("0x485cc8 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x485d08 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const"
+)]
+pub fn stub_0x485d08() -> ! {
+    todo!("0x485d08 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x485d28 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const"
+)]
+pub fn stub_0x485d28() -> ! {
+    todo!("0x485d28 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x485f68 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getIndexValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x485f68() -> ! {
+    todo!("0x485f68 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x485f84 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const"
+)]
+pub fn stub_0x485f84() -> ! {
+    todo!("0x485f84 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x485fb8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getEnumValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x485fb8() -> ! {
+    todo!("0x485fb8 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
