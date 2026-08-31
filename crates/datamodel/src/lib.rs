@@ -9,3 +9,4 @@ pub mod part;
 pub mod model;
 
 pub mod generated_b;
+pub mod generated_a;
