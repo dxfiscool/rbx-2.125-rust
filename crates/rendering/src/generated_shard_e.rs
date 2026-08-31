@@ -687,10 +687,10 @@ pub fn stub_d3432c() -> ! {
 }
 
 // 0xd343e8 — __ZThn12_N4Ogre19PanelOverlayElementD0Ev
-#[doc(alias = "`non-virtual thunk to'Ogre::PanelOverlayElement::~PanelOverlayElement()")]
-// was: `non-virtual thunk to'Ogre::PanelOverlayElement::~PanelOverlayElement()
+#[doc(alias = "non-virtual thunk to Ogre::PanelOverlayElement::~PanelOverlayElement()")]
+// was: non-virtual thunk to Ogre::PanelOverlayElement::~PanelOverlayElement()
 pub fn stub_d343e8() -> ! {
-    todo!("0xd343e8 `non-virtual thunk to'Ogre::PanelOverlayElement::~PanelOverlayElement()")
+    todo!("0xd343e8 non-virtual thunk to Ogre::PanelOverlayElement::~PanelOverlayElement()")
 }
 
 // 0xd344b4 — __ZN4Ogre19PanelOverlayElementD2Ev
@@ -701,10 +701,10 @@ pub fn stub_d344b4() -> ! {
 }
 
 // 0xd34570 — __ZThn12_N4Ogre19PanelOverlayElementD1Ev
-#[doc(alias = "`non-virtual thunk to'Ogre::PanelOverlayElement::~PanelOverlayElement()")]
-// was: `non-virtual thunk to'Ogre::PanelOverlayElement::~PanelOverlayElement()
+#[doc(alias = "non-virtual thunk to Ogre::PanelOverlayElement::~PanelOverlayElement()")]
+// was: non-virtual thunk to Ogre::PanelOverlayElement::~PanelOverlayElement()
 pub fn stub_d34570() -> ! {
-    todo!("0xd34570 `non-virtual thunk to'Ogre::PanelOverlayElement::~PanelOverlayElement()")
+    todo!("0xd34570 non-virtual thunk to Ogre::PanelOverlayElement::~PanelOverlayElement()")
 }
 
 // 0xd3462c — __ZN4Ogre19PanelOverlayElement10initialiseEv
@@ -729,10 +729,10 @@ pub fn stub_d34870() -> ! {
 }
 
 // 0xd34890 — __ZThn12_N4Ogre19PanelOverlayElement18getRenderOperationERNS_15RenderOperationE
-#[doc(alias = "`non-virtual thunk to'Ogre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
-// was: `non-virtual thunk to'Ogre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)
+#[doc(alias = "non-virtual thunk to Ogre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
+// was: non-virtual thunk to Ogre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_d34890() -> ! {
-    todo!("0xd34890 `non-virtual thunk to'Ogre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")
+    todo!("0xd34890 non-virtual thunk to Ogre::PanelOverlayElement::getRenderOperation(Ogre::RenderOperation &)")
 }
 
 // 0xd348b0 — __ZN4Ogre19PanelOverlayElement15setMaterialNameERKSs
