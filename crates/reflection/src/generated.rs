@@ -30333,3 +30333,903 @@ pub fn stub_0x4a14e0() -> ! {
     todo!("0x4a14e0 RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToItem(RBX::Explosion::ExplosionType const&)const")
 }
 
+
+// 0x4ab26c — __ZN3RBX10Reflection4Type12getSingletonINS_4Time12SampleMethodEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Time::SampleMethod>(void)")]
+pub fn stub_0x4ab26c() -> ! {
+    todo!("0x4ab26c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Time::SampleMethod>(void)")
+}
+
+// 0x4ab2a0 — __ZN3RBX10Reflection4Type12getSingletonINS_10GuiService10SpecialKeyEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiService::SpecialKey>(void)")]
+pub fn stub_0x4ab2a0() -> ! {
+    todo!("0x4ab2a0 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiService::SpecialKey>(void)")
+}
+
+// 0x4ab2d4 — __ZN3RBX10Reflection4Type12getSingletonINS_10GuiService16CenterDialogTypeEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiService::CenterDialogType>(void)")]
+pub fn stub_0x4ab2d4() -> ! {
+    todo!("0x4ab2d4 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::GuiService::CenterDialogType>(void)")
+}
+
+// 0x4ab308 — __ZN3RBX10Reflection4Type12getSingletonINS_11ChatService9ChatColorEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::ChatService::ChatColor>(void)")]
+pub fn stub_0x4ab308() -> ! {
+    todo!("0x4ab308 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::ChatService::ChatColor>(void)")
+}
+
+// 0x4ab33c — __ZN3RBX10Reflection4Type12getSingletonINS_18MarketplaceService12CurrencyTypeEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::MarketplaceService::CurrencyType>(void)")]
+pub fn stub_0x4ab33c() -> ! {
+    todo!("0x4ab33c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::MarketplaceService::CurrencyType>(void)")
+}
+
+// 0x4ab370 — __ZN3RBX10Reflection4Type12getSingletonINS_5Voxel12CellMaterialEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellMaterial>(void)")]
+pub fn stub_0x4ab370() -> ! {
+    todo!("0x4ab370 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellMaterial>(void)")
+}
+
+// 0x4ab3a4 — __ZN3RBX10Reflection4Type12getSingletonINS_5Voxel9CellBlockEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellBlock>(void)")]
+pub fn stub_0x4ab3a4() -> ! {
+    todo!("0x4ab3a4 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellBlock>(void)")
+}
+
+// 0x4ab3d8 — __ZN3RBX10Reflection4Type12getSingletonINS_5Voxel15CellOrientationEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellOrientation>(void)")]
+pub fn stub_0x4ab3d8() -> ! {
+    todo!("0x4ab3d8 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::CellOrientation>(void)")
+}
+
+// 0x4ab40c — __ZN3RBX10Reflection4Type12getSingletonINS_5Voxel14WaterCellForceEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::WaterCellForce>(void)")]
+pub fn stub_0x4ab40c() -> ! {
+    todo!("0x4ab40c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::WaterCellForce>(void)")
+}
+
+// 0x4ab440 — __ZN3RBX10Reflection4Type12getSingletonINS_5Voxel18WaterCellDirectionEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::WaterCellDirection>(void)")]
+pub fn stub_0x4ab440() -> ! {
+    todo!("0x4ab440 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Voxel::WaterCellDirection>(void)")
+}
+
+// 0x4ab474 — __ZN3RBX10Reflection4Type12getSingletonINS_12AssetService10AccessTypeEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::AssetService::AccessType>(void)")]
+pub fn stub_0x4ab474() -> ! {
+    todo!("0x4ab474 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::AssetService::AccessType>(void)")
+}
+
+// 0x4ab4a8 — __ZN3RBX10Reflection4Type12getSingletonINS_11HttpService15HttpContentTypeEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::HttpService::HttpContentType>(void)")]
+pub fn stub_0x4ab4a8() -> ! {
+    todo!("0x4ab4a8 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::HttpService::HttpContentType>(void)")
+}
+
+// 0x4ab4dc — __ZN3RBX10Reflection4Type12getSingletonINS_17StarterGuiService11CoreGuiTypeEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::StarterGuiService::CoreGuiType>(void)")]
+pub fn stub_0x4ab4dc() -> ! {
+    todo!("0x4ab4dc RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::StarterGuiService::CoreGuiType>(void)")
+}
+
+// 0x4abb28 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE22safe_static_init_mutexEv
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::safe_static_init_mutex(void)")]
+pub fn stub_0x4abb28() -> ! {
+    todo!("0x4abb28 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::safe_static_init_mutex(void)")
+}
+
+// 0x4abb2c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE24safe_static_do_get_mutexEv
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::safe_static_do_get_mutex(void)")]
+pub fn stub_0x4abb2c() -> ! {
+    todo!("0x4abb2c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::safe_static_do_get_mutex(void)")
+}
+
+// 0x4ac008 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13BindableEventES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BindableEvent,RBX::BindableEvent>(boost::shared_ptr<RBX::BindableEvent> const*,RBX::BindableEvent *)const")]
+pub fn stub_0x4ac008() -> ! {
+    todo!("0x4ac008 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BindableEvent,RBX::BindableEvent>(boost::shared_ptr<RBX::BindableEvent> const*,RBX::BindableEvent *)const")
+}
+
+// 0x4ad850 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16BindableFunctionES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BindableFunction,RBX::BindableFunction>(boost::shared_ptr<RBX::BindableFunction> const*,RBX::BindableFunction *)const")]
+pub fn stub_0x4ad850() -> ! {
+    todo!("0x4ad850 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BindableFunction,RBX::BindableFunction>(boost::shared_ptr<RBX::BindableFunction> const*,RBX::BindableFunction *)const")
+}
+
+// 0x4ae19c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9AnimationES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Animation,RBX::Animation>(boost::shared_ptr<RBX::Animation> const*,RBX::Animation *)const")]
+pub fn stub_0x4ae19c() -> ! {
+    todo!("0x4ae19c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Animation,RBX::Animation>(boost::shared_ptr<RBX::Animation> const*,RBX::Animation *)const")
+}
+
+// 0x4af228 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8SparklesES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Sparkles,RBX::Sparkles>(boost::shared_ptr<RBX::Sparkles> const*,RBX::Sparkles *)const")]
+pub fn stub_0x4af228() -> ! {
+    todo!("0x4af228 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Sparkles,RBX::Sparkles>(boost::shared_ptr<RBX::Sparkles> const*,RBX::Sparkles *)const")
+}
+
+// 0x4afb78 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17BasicPartInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BasicPartInstance,RBX::BasicPartInstance>(boost::shared_ptr<RBX::BasicPartInstance> const*,RBX::BasicPartInstance *)const")]
+pub fn stub_0x4afb78() -> ! {
+    todo!("0x4afb78 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BasicPartInstance,RBX::BasicPartInstance>(boost::shared_ptr<RBX::BasicPartInstance> const*,RBX::BasicPartInstance *)const")
+}
+
+// 0x4b0264 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10ForceFieldES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ForceField,RBX::ForceField>(boost::shared_ptr<RBX::ForceField> const*,RBX::ForceField *)const")]
+pub fn stub_0x4b0264() -> ! {
+    todo!("0x4b0264 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ForceField,RBX::ForceField>(boost::shared_ptr<RBX::ForceField> const*,RBX::ForceField *)const")
+}
+
+// 0x4b1a4c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11CustomEventES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEvent,RBX::CustomEvent>(boost::shared_ptr<RBX::CustomEvent> const*,RBX::CustomEvent *)const")]
+pub fn stub_0x4b1a4c() -> ! {
+    todo!("0x4b1a4c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEvent,RBX::CustomEvent>(boost::shared_ptr<RBX::CustomEvent> const*,RBX::CustomEvent *)const")
+}
+
+// 0x4b3730 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19CustomEventReceiverES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEventReceiver,RBX::CustomEventReceiver>(boost::shared_ptr<RBX::CustomEventReceiver> const*,RBX::CustomEventReceiver *)const")]
+pub fn stub_0x4b3730() -> ! {
+    todo!("0x4b3730 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEventReceiver,RBX::CustomEventReceiver>(boost::shared_ptr<RBX::CustomEventReceiver> const*,RBX::CustomEventReceiver *)const")
+}
+
+// 0x4b3cb8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17StarterGuiService11CoreGuiTypeEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType> const>::doGetSingleton(void)")]
+pub fn stub_0x4b3cb8() -> ! {
+    todo!("0x4b3cb8 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType> const>::doGetSingleton(void)")
+}
+
+// 0x4b3da8 — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::~EnumDesc()")]
+pub fn stub_0x4b3da8() -> ! {
+    todo!("0x4b3da8 RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::~EnumDesc()")
+}
+
+// 0x4b3dac — __ZN3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::~EnumDesc()")]
+pub fn stub_0x4b3dac() -> ! {
+    todo!("0x4b3dac RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::~EnumDesc()")
+}
+
+// 0x4b3f80 — __ZNK3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4b3f80() -> ! {
+    todo!("0x4b3f80 RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4b40d0 — __ZNK3RBX10Reflection8EnumDescINS_17StarterGuiService11CoreGuiTypeEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::convertToItem(RBX::StarterGuiService::CoreGuiType const&)const")]
+pub fn stub_0x4b40d0() -> ! {
+    todo!("0x4b40d0 RBX::Reflection::EnumDesc<RBX::StarterGuiService::CoreGuiType>::convertToItem(RBX::StarterGuiService::CoreGuiType const&)const")
+}
+
+// 0x4b419c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11HttpService15HttpContentTypeEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType> const>::initSingleton(void)")]
+pub fn stub_0x4b419c() -> ! {
+    todo!("0x4b419c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType> const>::initSingleton(void)")
+}
+
+// 0x4b41a0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11HttpService15HttpContentTypeEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType> const>::doGetSingleton(void)")]
+pub fn stub_0x4b41a0() -> ! {
+    todo!("0x4b41a0 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType> const>::doGetSingleton(void)")
+}
+
+// 0x4b4290 — __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()")]
+pub fn stub_0x4b4290() -> ! {
+    todo!("0x4b4290 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()")
+}
+
+// 0x4b4294 — __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()")]
+pub fn stub_0x4b4294() -> ! {
+    todo!("0x4b4294 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()")
+}
+
+// 0x4b4468 — __ZN3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()")]
+pub fn stub_0x4b4468() -> ! {
+    todo!("0x4b4468 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::~EnumDesc()")
+}
+
+// 0x4b4508 — __ZNK3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::lookup(char const*)const")]
+pub fn stub_0x4b4508() -> ! {
+    todo!("0x4b4508 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::lookup(char const*)const")
+}
+
+// 0x4b4538 — __ZNK3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4b4538() -> ! {
+    todo!("0x4b4538 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4b4558 — __ZNK3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4b4558() -> ! {
+    todo!("0x4b4558 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4b45b4 — __ZNK3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4b45b4() -> ! {
+    todo!("0x4b45b4 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4b46f8 — __ZNK3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::convertToString(RBX::HttpService::HttpContentType const&)const")]
+pub fn stub_0x4b46f8() -> ! {
+    todo!("0x4b46f8 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::convertToString(RBX::HttpService::HttpContentType const&)const")
+}
+
+// 0x4b4964 — __ZNK3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::convertToItem(RBX::HttpService::HttpContentType const&)const")]
+pub fn stub_0x4b4964() -> ! {
+    todo!("0x4b4964 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::convertToItem(RBX::HttpService::HttpContentType const&)const")
+}
+
+// 0x4b4b20 — __ZNK3RBX10Reflection8EnumDescINS_11HttpService15HttpContentTypeEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::convertToValue(RBX::Name const&,RBX::HttpService::HttpContentType&)const")]
+pub fn stub_0x4b4b20() -> ! {
+    todo!("0x4b4b20 RBX::Reflection::EnumDesc<RBX::HttpService::HttpContentType>::convertToValue(RBX::Name const&,RBX::HttpService::HttpContentType&)const")
+}
+
+// 0x4b4bc4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12AssetService10AccessTypeEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::AssetService::AccessType> const>::initSingleton(void)")]
+pub fn stub_0x4b4bc4() -> ! {
+    todo!("0x4b4bc4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::AssetService::AccessType> const>::initSingleton(void)")
+}
+
+// 0x4b4bc8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_12AssetService10AccessTypeEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::AssetService::AccessType> const>::doGetSingleton(void)")]
+pub fn stub_0x4b4bc8() -> ! {
+    todo!("0x4b4bc8 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::AssetService::AccessType> const>::doGetSingleton(void)")
+}
+
+// 0x4b4cb8 — __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()")]
+pub fn stub_0x4b4cb8() -> ! {
+    todo!("0x4b4cb8 RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()")
+}
+
+// 0x4b4cbc — __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()")]
+pub fn stub_0x4b4cbc() -> ! {
+    todo!("0x4b4cbc RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()")
+}
+
+// 0x4b4e90 — __ZN3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()")]
+pub fn stub_0x4b4e90() -> ! {
+    todo!("0x4b4e90 RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::~EnumDesc()")
+}
+
+// 0x4b4f30 — __ZNK3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::lookup(char const*)const")]
+pub fn stub_0x4b4f30() -> ! {
+    todo!("0x4b4f30 RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::lookup(char const*)const")
+}
+
+// 0x4b4f60 — __ZNK3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4b4f60() -> ! {
+    todo!("0x4b4f60 RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4b4f80 — __ZNK3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4b4f80() -> ! {
+    todo!("0x4b4f80 RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4b4fdc — __ZNK3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4b4fdc() -> ! {
+    todo!("0x4b4fdc RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4b5120 — __ZNK3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::convertToString(RBX::AssetService::AccessType const&)const")]
+pub fn stub_0x4b5120() -> ! {
+    todo!("0x4b5120 RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::convertToString(RBX::AssetService::AccessType const&)const")
+}
+
+// 0x4b538c — __ZNK3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::convertToItem(RBX::AssetService::AccessType const&)const")]
+pub fn stub_0x4b538c() -> ! {
+    todo!("0x4b538c RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::convertToItem(RBX::AssetService::AccessType const&)const")
+}
+
+// 0x4b5548 — __ZNK3RBX10Reflection8EnumDescINS_12AssetService10AccessTypeEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::convertToValue(RBX::Name const&,RBX::AssetService::AccessType&)const")]
+pub fn stub_0x4b5548() -> ! {
+    todo!("0x4b5548 RBX::Reflection::EnumDesc<RBX::AssetService::AccessType>::convertToValue(RBX::Name const&,RBX::AssetService::AccessType&)const")
+}
+
+// 0x4b55ec — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject14UserInputStateEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState> const>::initSingleton(void)")]
+pub fn stub_0x4b55ec() -> ! {
+    todo!("0x4b55ec RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState> const>::initSingleton(void)")
+}
+
+// 0x4b55f0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject14UserInputStateEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState> const>::doGetSingleton(void)")]
+pub fn stub_0x4b55f0() -> ! {
+    todo!("0x4b55f0 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState> const>::doGetSingleton(void)")
+}
+
+// 0x4b56e0 — __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()")]
+pub fn stub_0x4b56e0() -> ! {
+    todo!("0x4b56e0 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()")
+}
+
+// 0x4b56e4 — __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()")]
+pub fn stub_0x4b56e4() -> ! {
+    todo!("0x4b56e4 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()")
+}
+
+// 0x4b58b8 — __ZN3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()")]
+pub fn stub_0x4b58b8() -> ! {
+    todo!("0x4b58b8 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::~EnumDesc()")
+}
+
+// 0x4b5958 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::lookup(char const*)const")]
+pub fn stub_0x4b5958() -> ! {
+    todo!("0x4b5958 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::lookup(char const*)const")
+}
+
+// 0x4b5988 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4b5988() -> ! {
+    todo!("0x4b5988 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4b59a8 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4b59a8() -> ! {
+    todo!("0x4b59a8 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4b5a04 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4b5a04() -> ! {
+    todo!("0x4b5a04 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4b5b48 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::convertToString(RBX::InputObject::UserInputState const&)const")]
+pub fn stub_0x4b5b48() -> ! {
+    todo!("0x4b5b48 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::convertToString(RBX::InputObject::UserInputState const&)const")
+}
+
+// 0x4b5db4 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::convertToItem(RBX::InputObject::UserInputState const&)const")]
+pub fn stub_0x4b5db4() -> ! {
+    todo!("0x4b5db4 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::convertToItem(RBX::InputObject::UserInputState const&)const")
+}
+
+// 0x4b5f70 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject14UserInputStateEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::convertToValue(RBX::Name const&,RBX::InputObject::UserInputState&)const")]
+pub fn stub_0x4b5f70() -> ! {
+    todo!("0x4b5f70 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputState>::convertToValue(RBX::Name const&,RBX::InputObject::UserInputState&)const")
+}
+
+// 0x4b6014 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject13UserInputTypeEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType> const>::initSingleton(void)")]
+pub fn stub_0x4b6014() -> ! {
+    todo!("0x4b6014 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType> const>::initSingleton(void)")
+}
+
+// 0x4b6018 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_11InputObject13UserInputTypeEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType> const>::doGetSingleton(void)")]
+pub fn stub_0x4b6018() -> ! {
+    todo!("0x4b6018 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType> const>::doGetSingleton(void)")
+}
+
+// 0x4b6108 — __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()")]
+pub fn stub_0x4b6108() -> ! {
+    todo!("0x4b6108 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()")
+}
+
+// 0x4b610c — __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()")]
+pub fn stub_0x4b610c() -> ! {
+    todo!("0x4b610c RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()")
+}
+
+// 0x4b62e0 — __ZN3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()")]
+pub fn stub_0x4b62e0() -> ! {
+    todo!("0x4b62e0 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::~EnumDesc()")
+}
+
+// 0x4b6380 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::lookup(char const*)const")]
+pub fn stub_0x4b6380() -> ! {
+    todo!("0x4b6380 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::lookup(char const*)const")
+}
+
+// 0x4b63b0 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4b63b0() -> ! {
+    todo!("0x4b63b0 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4b63d0 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4b63d0() -> ! {
+    todo!("0x4b63d0 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4b642c — __ZNK3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4b642c() -> ! {
+    todo!("0x4b642c RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4b6570 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::convertToString(RBX::InputObject::UserInputType const&)const")]
+pub fn stub_0x4b6570() -> ! {
+    todo!("0x4b6570 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::convertToString(RBX::InputObject::UserInputType const&)const")
+}
+
+// 0x4b67dc — __ZNK3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::convertToItem(RBX::InputObject::UserInputType const&)const")]
+pub fn stub_0x4b67dc() -> ! {
+    todo!("0x4b67dc RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::convertToItem(RBX::InputObject::UserInputType const&)const")
+}
+
+// 0x4b6998 — __ZNK3RBX10Reflection8EnumDescINS_11InputObject13UserInputTypeEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::convertToValue(RBX::Name const&,RBX::InputObject::UserInputType&)const")]
+pub fn stub_0x4b6998() -> ! {
+    todo!("0x4b6998 RBX::Reflection::EnumDesc<RBX::InputObject::UserInputType>::convertToValue(RBX::Name const&,RBX::InputObject::UserInputType&)const")
+}
+
+// 0x4b6a3c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9Explosion13ExplosionTypeEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType> const>::doGetSingleton(void)")]
+pub fn stub_0x4b6a3c() -> ! {
+    todo!("0x4b6a3c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType> const>::doGetSingleton(void)")
+}
+
+// 0x4b6b2c — __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()")]
+pub fn stub_0x4b6b2c() -> ! {
+    todo!("0x4b6b2c RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()")
+}
+
+// 0x4b6bcc — __ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::lookup(char const*)const")]
+pub fn stub_0x4b6bcc() -> ! {
+    todo!("0x4b6bcc RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::lookup(char const*)const")
+}
+
+// 0x4b6bfc — __ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4b6bfc() -> ! {
+    todo!("0x4b6bfc RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4b6c1c — __ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4b6c1c() -> ! {
+    todo!("0x4b6c1c RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4b6c78 — __ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToString(RBX::Explosion::ExplosionType const&)const")]
+pub fn stub_0x4b6c78() -> ! {
+    todo!("0x4b6c78 RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToString(RBX::Explosion::ExplosionType const&)const")
+}
+
+// 0x4b6fc8 — __ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToValue(RBX::Name const&,RBX::Explosion::ExplosionType&)const")]
+pub fn stub_0x4b6fc8() -> ! {
+    todo!("0x4b6fc8 RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToValue(RBX::Name const&,RBX::Explosion::ExplosionType&)const")
+}
+
+// 0x4b7044 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel18WaterCellDirectionEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection> const>::initSingleton(void)")]
+pub fn stub_0x4b7044() -> ! {
+    todo!("0x4b7044 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection> const>::initSingleton(void)")
+}
+
+// 0x4b7048 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel18WaterCellDirectionEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection> const>::doGetSingleton(void)")]
+pub fn stub_0x4b7048() -> ! {
+    todo!("0x4b7048 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection> const>::doGetSingleton(void)")
+}
+
+// 0x4b7138 — __ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::~EnumDesc()")]
+pub fn stub_0x4b7138() -> ! {
+    todo!("0x4b7138 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::~EnumDesc()")
+}
+
+// 0x4b713c — __ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::~EnumDesc()")]
+pub fn stub_0x4b713c() -> ! {
+    todo!("0x4b713c RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::~EnumDesc()")
+}
+
+// 0x4b7310 — __ZN3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::~EnumDesc()")]
+pub fn stub_0x4b7310() -> ! {
+    todo!("0x4b7310 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::~EnumDesc()")
+}
+
+// 0x4b73b0 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::lookup(char const*)const")]
+pub fn stub_0x4b73b0() -> ! {
+    todo!("0x4b73b0 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::lookup(char const*)const")
+}
+
+// 0x4b73e0 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4b73e0() -> ! {
+    todo!("0x4b73e0 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4b7400 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4b7400() -> ! {
+    todo!("0x4b7400 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4b745c — __ZNK3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4b745c() -> ! {
+    todo!("0x4b745c RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4b75a0 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::convertToString(RBX::Voxel::WaterCellDirection const&)const")]
+pub fn stub_0x4b75a0() -> ! {
+    todo!("0x4b75a0 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::convertToString(RBX::Voxel::WaterCellDirection const&)const")
+}
+
+// 0x4b780c — __ZNK3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::convertToItem(RBX::Voxel::WaterCellDirection const&)const")]
+pub fn stub_0x4b780c() -> ! {
+    todo!("0x4b780c RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::convertToItem(RBX::Voxel::WaterCellDirection const&)const")
+}
+
+// 0x4b79c8 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel18WaterCellDirectionEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::convertToValue(RBX::Name const&,RBX::Voxel::WaterCellDirection&)const")]
+pub fn stub_0x4b79c8() -> ! {
+    todo!("0x4b79c8 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellDirection>::convertToValue(RBX::Name const&,RBX::Voxel::WaterCellDirection&)const")
+}
+
+// 0x4b7a6c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel14WaterCellForceEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce> const>::initSingleton(void)")]
+pub fn stub_0x4b7a6c() -> ! {
+    todo!("0x4b7a6c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce> const>::initSingleton(void)")
+}
+
+// 0x4b7a70 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel14WaterCellForceEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce> const>::doGetSingleton(void)")]
+pub fn stub_0x4b7a70() -> ! {
+    todo!("0x4b7a70 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce> const>::doGetSingleton(void)")
+}
+
+// 0x4b7b60 — __ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::~EnumDesc()")]
+pub fn stub_0x4b7b60() -> ! {
+    todo!("0x4b7b60 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::~EnumDesc()")
+}
+
+// 0x4b7b64 — __ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::~EnumDesc()")]
+pub fn stub_0x4b7b64() -> ! {
+    todo!("0x4b7b64 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::~EnumDesc()")
+}
+
+// 0x4b7d38 — __ZN3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::~EnumDesc()")]
+pub fn stub_0x4b7d38() -> ! {
+    todo!("0x4b7d38 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::~EnumDesc()")
+}
+
+// 0x4b7dd8 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::lookup(char const*)const")]
+pub fn stub_0x4b7dd8() -> ! {
+    todo!("0x4b7dd8 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::lookup(char const*)const")
+}
+
+// 0x4b7e08 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4b7e08() -> ! {
+    todo!("0x4b7e08 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4b7e28 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4b7e28() -> ! {
+    todo!("0x4b7e28 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4b7e84 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4b7e84() -> ! {
+    todo!("0x4b7e84 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4b7fc8 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::convertToString(RBX::Voxel::WaterCellForce const&)const")]
+pub fn stub_0x4b7fc8() -> ! {
+    todo!("0x4b7fc8 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::convertToString(RBX::Voxel::WaterCellForce const&)const")
+}
+
+// 0x4b8234 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::convertToItem(RBX::Voxel::WaterCellForce const&)const")]
+pub fn stub_0x4b8234() -> ! {
+    todo!("0x4b8234 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::convertToItem(RBX::Voxel::WaterCellForce const&)const")
+}
+
+// 0x4b83f0 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel14WaterCellForceEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::convertToValue(RBX::Name const&,RBX::Voxel::WaterCellForce&)const")]
+pub fn stub_0x4b83f0() -> ! {
+    todo!("0x4b83f0 RBX::Reflection::EnumDesc<RBX::Voxel::WaterCellForce>::convertToValue(RBX::Name const&,RBX::Voxel::WaterCellForce&)const")
+}
+
+// 0x4b8494 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel15CellOrientationEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation> const>::initSingleton(void)")]
+pub fn stub_0x4b8494() -> ! {
+    todo!("0x4b8494 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation> const>::initSingleton(void)")
+}
+
+// 0x4b8498 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel15CellOrientationEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation> const>::doGetSingleton(void)")]
+pub fn stub_0x4b8498() -> ! {
+    todo!("0x4b8498 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation> const>::doGetSingleton(void)")
+}
+
+// 0x4b8588 — __ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::~EnumDesc()")]
+pub fn stub_0x4b8588() -> ! {
+    todo!("0x4b8588 RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::~EnumDesc()")
+}
+
+// 0x4b858c — __ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::~EnumDesc()")]
+pub fn stub_0x4b858c() -> ! {
+    todo!("0x4b858c RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::~EnumDesc()")
+}
+
+// 0x4b8760 — __ZN3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::~EnumDesc()")]
+pub fn stub_0x4b8760() -> ! {
+    todo!("0x4b8760 RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::~EnumDesc()")
+}
+
+// 0x4b8800 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::lookup(char const*)const")]
+pub fn stub_0x4b8800() -> ! {
+    todo!("0x4b8800 RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::lookup(char const*)const")
+}
+
+// 0x4b8830 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4b8830() -> ! {
+    todo!("0x4b8830 RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4b8850 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4b8850() -> ! {
+    todo!("0x4b8850 RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4b88ac — __ZNK3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4b88ac() -> ! {
+    todo!("0x4b88ac RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4b89f0 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::convertToString(RBX::Voxel::CellOrientation const&)const")]
+pub fn stub_0x4b89f0() -> ! {
+    todo!("0x4b89f0 RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::convertToString(RBX::Voxel::CellOrientation const&)const")
+}
+
+// 0x4b8c5c — __ZNK3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::convertToItem(RBX::Voxel::CellOrientation const&)const")]
+pub fn stub_0x4b8c5c() -> ! {
+    todo!("0x4b8c5c RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::convertToItem(RBX::Voxel::CellOrientation const&)const")
+}
+
+// 0x4b8e18 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel15CellOrientationEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::convertToValue(RBX::Name const&,RBX::Voxel::CellOrientation&)const")]
+pub fn stub_0x4b8e18() -> ! {
+    todo!("0x4b8e18 RBX::Reflection::EnumDesc<RBX::Voxel::CellOrientation>::convertToValue(RBX::Name const&,RBX::Voxel::CellOrientation&)const")
+}
+
+// 0x4b8ebc — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel9CellBlockEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock> const>::initSingleton(void)")]
+pub fn stub_0x4b8ebc() -> ! {
+    todo!("0x4b8ebc RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock> const>::initSingleton(void)")
+}
+
+// 0x4b8ec0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel9CellBlockEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock> const>::doGetSingleton(void)")]
+pub fn stub_0x4b8ec0() -> ! {
+    todo!("0x4b8ec0 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock> const>::doGetSingleton(void)")
+}
+
+// 0x4b8fb0 — __ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::~EnumDesc()")]
+pub fn stub_0x4b8fb0() -> ! {
+    todo!("0x4b8fb0 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::~EnumDesc()")
+}
+
+// 0x4b8fb4 — __ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::~EnumDesc()")]
+pub fn stub_0x4b8fb4() -> ! {
+    todo!("0x4b8fb4 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::~EnumDesc()")
+}
+
+// 0x4b9188 — __ZN3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::~EnumDesc()")]
+pub fn stub_0x4b9188() -> ! {
+    todo!("0x4b9188 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::~EnumDesc()")
+}
+
+// 0x4b9228 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::lookup(char const*)const")]
+pub fn stub_0x4b9228() -> ! {
+    todo!("0x4b9228 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::lookup(char const*)const")
+}
+
+// 0x4b9258 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4b9258() -> ! {
+    todo!("0x4b9258 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4b9278 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4b9278() -> ! {
+    todo!("0x4b9278 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4b92d4 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4b92d4() -> ! {
+    todo!("0x4b92d4 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4b9418 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::convertToString(RBX::Voxel::CellBlock const&)const")]
+pub fn stub_0x4b9418() -> ! {
+    todo!("0x4b9418 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::convertToString(RBX::Voxel::CellBlock const&)const")
+}
+
+// 0x4b9684 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::convertToItem(RBX::Voxel::CellBlock const&)const")]
+pub fn stub_0x4b9684() -> ! {
+    todo!("0x4b9684 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::convertToItem(RBX::Voxel::CellBlock const&)const")
+}
+
+// 0x4b9840 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel9CellBlockEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::convertToValue(RBX::Name const&,RBX::Voxel::CellBlock&)const")]
+pub fn stub_0x4b9840() -> ! {
+    todo!("0x4b9840 RBX::Reflection::EnumDesc<RBX::Voxel::CellBlock>::convertToValue(RBX::Name const&,RBX::Voxel::CellBlock&)const")
+}
+
+// 0x4b98e4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel12CellMaterialEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial> const>::initSingleton(void)")]
+pub fn stub_0x4b98e4() -> ! {
+    todo!("0x4b98e4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial> const>::initSingleton(void)")
+}
+
+// 0x4b98e8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Voxel12CellMaterialEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial> const>::doGetSingleton(void)")]
+pub fn stub_0x4b98e8() -> ! {
+    todo!("0x4b98e8 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial> const>::doGetSingleton(void)")
+}
+
+// 0x4b99d8 — __ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::~EnumDesc()")]
+pub fn stub_0x4b99d8() -> ! {
+    todo!("0x4b99d8 RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::~EnumDesc()")
+}
+
+// 0x4b99dc — __ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::~EnumDesc()")]
+pub fn stub_0x4b99dc() -> ! {
+    todo!("0x4b99dc RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::~EnumDesc()")
+}
+
+// 0x4b9bb0 — __ZN3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::~EnumDesc()")]
+pub fn stub_0x4b9bb0() -> ! {
+    todo!("0x4b9bb0 RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::~EnumDesc()")
+}
+
+// 0x4b9c50 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::lookup(char const*)const")]
+pub fn stub_0x4b9c50() -> ! {
+    todo!("0x4b9c50 RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::lookup(char const*)const")
+}
+
+// 0x4b9c80 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4b9c80() -> ! {
+    todo!("0x4b9c80 RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4b9ca0 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4b9ca0() -> ! {
+    todo!("0x4b9ca0 RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4b9cfc — __ZNK3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4b9cfc() -> ! {
+    todo!("0x4b9cfc RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4b9e40 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::convertToString(RBX::Voxel::CellMaterial const&)const")]
+pub fn stub_0x4b9e40() -> ! {
+    todo!("0x4b9e40 RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::convertToString(RBX::Voxel::CellMaterial const&)const")
+}
+
+// 0x4ba0ac — __ZNK3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::convertToItem(RBX::Voxel::CellMaterial const&)const")]
+pub fn stub_0x4ba0ac() -> ! {
+    todo!("0x4ba0ac RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::convertToItem(RBX::Voxel::CellMaterial const&)const")
+}
+
+// 0x4ba268 — __ZNK3RBX10Reflection8EnumDescINS_5Voxel12CellMaterialEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::convertToValue(RBX::Name const&,RBX::Voxel::CellMaterial&)const")]
+pub fn stub_0x4ba268() -> ! {
+    todo!("0x4ba268 RBX::Reflection::EnumDesc<RBX::Voxel::CellMaterial>::convertToValue(RBX::Name const&,RBX::Voxel::CellMaterial&)const")
+}
+
+// 0x4ba30c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10DialogRoot10DialogToneEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone> const>::initSingleton(void)")]
+pub fn stub_0x4ba30c() -> ! {
+    todo!("0x4ba30c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone> const>::initSingleton(void)")
+}
+
+// 0x4ba310 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10DialogRoot10DialogToneEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone> const>::doGetSingleton(void)")]
+pub fn stub_0x4ba310() -> ! {
+    todo!("0x4ba310 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone> const>::doGetSingleton(void)")
+}
+
+// 0x4ba400 — __ZN3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::~EnumDesc()")]
+pub fn stub_0x4ba400() -> ! {
+    todo!("0x4ba400 RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::~EnumDesc()")
+}
+
+// 0x4ba404 — __ZN3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::~EnumDesc()")]
+pub fn stub_0x4ba404() -> ! {
+    todo!("0x4ba404 RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::~EnumDesc()")
+}
+
+// 0x4ba5d8 — __ZN3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::~EnumDesc()")]
+pub fn stub_0x4ba5d8() -> ! {
+    todo!("0x4ba5d8 RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::~EnumDesc()")
+}
+
+// 0x4ba678 — __ZNK3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::lookup(char const*)const")]
+pub fn stub_0x4ba678() -> ! {
+    todo!("0x4ba678 RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::lookup(char const*)const")
+}
+
+// 0x4ba6a8 — __ZNK3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4ba6a8() -> ! {
+    todo!("0x4ba6a8 RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::lookup(RBX::Reflection::Variant const&)const")
+}
