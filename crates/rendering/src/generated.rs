@@ -1,5 +1,5 @@
-//! rendering generated — next 100 stubs
-//! Filter: Ogre|Gfx|Render|G3D (15058 total, 4950 prior +100 this batch = 5050 total) — 0xc82db8..0xc8a3d4 after 0xc828dc
+//! rendering generated — next 150 stubs
+//! Filter: Ogre|Gfx|Render|G3D (15058 total, 5350 prior +150 this batch = 5500 total) — 0xca1580..0xcb64e0 after 0xc8a3d4
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -3506,3 +3506,1154 @@ pub fn stub_c8a3d4() -> ! {
     todo!("0xc8a3d4 Ogre::Entity::EntityShadowRenderable::~EntityShadowRenderable()")
 }
 
+// 0xca1580 — __ZN4Ogre17GpuProgramManager26canGetCompiledShaderBufferEv
+// type: _DWORD __fastcall(Ogre::GpuProgramManager *__hidden this)
+#[doc(alias = "Ogre::GpuProgramManager::canGetCompiledShaderBuffer(void)")]
+// was: Ogre::GpuProgramManager::canGetCompiledShaderBuffer(void)
+pub fn stub_ca1580() -> ! {
+    todo!("0xca1580 Ogre::GpuProgramManager::canGetCompiledShaderBuffer(void)")
+}
+
+// 0xca159c — __ZN4Ogre17GpuProgramManager21addRenderSystemToNameERKSs
+// type: _DWORD __fastcall(Ogre::GpuProgramManager *__hidden this, const std::string *)
+#[doc(alias = "Ogre::GpuProgramManager::addRenderSystemToName(std::string const&)")]
+// was: Ogre::GpuProgramManager::addRenderSystemToName(std::string const&)
+pub fn stub_ca159c() -> ! {
+    todo!("0xca159c Ogre::GpuProgramManager::addRenderSystemToName(std::string const&)")
+}
+
+// 0xca1764 — __ZNK4Ogre17GpuProgramManager27isMicrocodeAvailableInCacheERKSs
+// type: _DWORD __fastcall(Ogre::GpuProgramManager *__hidden this, const std::string *)
+#[doc(alias = "Ogre::GpuProgramManager::isMicrocodeAvailableInCache(std::string const&)const")]
+// was: Ogre::GpuProgramManager::isMicrocodeAvailableInCache(std::string const&)const
+pub fn stub_ca1764() -> ! {
+    todo!("0xca1764 Ogre::GpuProgramManager::isMicrocodeAvailableInCache(std::string const&)const")
+}
+
+// 0xca17d8 — __ZNK4Ogre17GpuProgramManager21getMicrocodeFromCacheERKSs
+// type: _DWORD __fastcall(Ogre::GpuProgramManager *__hidden this, const std::string *)
+#[doc(alias = "Ogre::GpuProgramManager::getMicrocodeFromCache(std::string const&)const")]
+// was: Ogre::GpuProgramManager::getMicrocodeFromCache(std::string const&)const
+pub fn stub_ca17d8() -> ! {
+    todo!("0xca17d8 Ogre::GpuProgramManager::getMicrocodeFromCache(std::string const&)const")
+}
+
+// 0xca183c — __ZNK4Ogre17GpuProgramManager15createMicrocodeEm
+// type: _DWORD __fastcall(Ogre::GpuProgramManager *__hidden this, unsigned int)
+#[doc(alias = "Ogre::GpuProgramManager::createMicrocode(unsigned long)const")]
+// was: Ogre::GpuProgramManager::createMicrocode(unsigned long)const
+pub fn stub_ca183c() -> ! {
+    todo!("0xca183c Ogre::GpuProgramManager::createMicrocode(unsigned long)const")
+}
+
+// 0xca193c — __ZN4Ogre17GpuProgramManager19addMicrocodeToCacheERKSsRKNS_9SharedPtrINS_16MemoryDataStreamEEE
+#[doc(alias = "Ogre::GpuProgramManager::addMicrocodeToCache(std::string const&,Ogre::SharedPtr<Ogre::MemoryDataStream> const&)")]
+// was: Ogre::GpuProgramManager::addMicrocodeToCache(std::string const&,Ogre::SharedPtr<Ogre::MemoryDataStream> const&)
+pub fn stub_ca193c() -> ! {
+    todo!("0xca193c Ogre::GpuProgramManager::addMicrocodeToCache(std::string const&,Ogre::SharedPtr<Ogre::MemoryDataStream> const&)")
+}
+
+// 0xca1ef0 — __ZNK4Ogre17GpuProgramManager18saveMicrocodeCacheENS_9SharedPtrINS_10DataStreamEEE
+#[doc(alias = "Ogre::GpuProgramManager::saveMicrocodeCache(Ogre::SharedPtr<Ogre::DataStream>)const")]
+// was: Ogre::GpuProgramManager::saveMicrocodeCache(Ogre::SharedPtr<Ogre::DataStream>)const
+pub fn stub_ca1ef0() -> ! {
+    todo!("0xca1ef0 Ogre::GpuProgramManager::saveMicrocodeCache(Ogre::SharedPtr<Ogre::DataStream>)const")
+}
+
+// 0xca21a8 — __ZN4Ogre17GpuProgramManager18loadMicrocodeCacheENS_9SharedPtrINS_10DataStreamEEE
+// type: int __fastcall(int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, int, int, int, char, char, char, char, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, int, int)
+#[doc(alias = "Ogre::GpuProgramManager::loadMicrocodeCache(Ogre::SharedPtr<Ogre::DataStream>)")]
+// was: Ogre::GpuProgramManager::loadMicrocodeCache(Ogre::SharedPtr<Ogre::DataStream>)
+pub fn stub_ca21a8() -> ! {
+    todo!("0xca21a8 Ogre::GpuProgramManager::loadMicrocodeCache(Ogre::SharedPtr<Ogre::DataStream>)")
+}
+
+// 0xca2830 — __ZNSt3mapISsN4Ogre9SharedPtrINS0_19GpuSharedParametersEEESt4lessISsENS0_12STLAllocatorISt4pairIKSsS3_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS8_
+#[doc(alias = "std::map<std::string,Ogre::SharedPtr<Ogre::GpuSharedParameters>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
+// was: std::map<std::string,Ogre::SharedPtr<Ogre::GpuSharedParameters>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
+pub fn stub_ca2830() -> ! {
+    todo!("0xca2830 std::map<std::string,Ogre::SharedPtr<Ogre::GpuSharedParameters>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
+}
+
+// 0xca2ad0 — __ZN4Ogre9SharedPtrINS_19GpuSharedParametersEEaSERKS2_
+// type: int __fastcall(int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int)
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuSharedParameters>::operator=(Ogre::SharedPtr<Ogre::GpuSharedParameters> const&)")]
+// was: Ogre::SharedPtr<Ogre::GpuSharedParameters>::operator=(Ogre::SharedPtr<Ogre::GpuSharedParameters> const&)
+pub fn stub_ca2ad0() -> ! {
+    todo!("0xca2ad0 Ogre::SharedPtr<Ogre::GpuSharedParameters>::operator=(Ogre::SharedPtr<Ogre::GpuSharedParameters> const&)")
+}
+
+// 0xca2c50 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS6_E
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>> *)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>> *)
+pub fn stub_ca2c50() -> ! {
+    todo!("0xca2c50 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>> *)")
+}
+
+// 0xca2c80 — __ZN4Ogre12STLAllocatorISt4pairIKSsNS_9SharedPtrINS_16MemoryDataStreamEEEENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS6_
+#[doc(alias = "Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>*)")]
+// was: Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>*)
+pub fn stub_ca2c80() -> ! {
+    todo!("0xca2c80 Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>*)")
+}
+
+// 0xca2db0 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS6_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)
+pub fn stub_ca2db0() -> ! {
+    todo!("0xca2db0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")
+}
+
+// 0xca2e94 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSI_RKS6_
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)
+pub fn stub_ca2e94() -> ! {
+    todo!("0xca2e94 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")
+}
+
+// 0xca2f08 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS6_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)
+pub fn stub_ca2f08() -> ! {
+    todo!("0xca2f08 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")
+}
+
+// 0xca3020 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
+pub fn stub_ca3020() -> ! {
+    todo!("0xca3020 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+}
+
+// 0xca30c4 — __ZNKSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const
+pub fn stub_ca30c4() -> ! {
+    todo!("0xca30c4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")
+}
+
+// 0xca3168 — __ZNKSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const
+pub fn stub_ca3168() -> ! {
+    todo!("0xca3168 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")
+}
+
+// 0xca320c — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS6_ERKS6_
+// type: int __fastcall(int)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)
+pub fn stub_ca320c() -> ! {
+    todo!("0xca320c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")
+}
+
+// 0xca3554 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSI_RKS6_
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)
+pub fn stub_ca3554() -> ! {
+    todo!("0xca3554 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")
+}
+
+// 0xca35c8 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS6_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)
+pub fn stub_ca35c8() -> ! {
+    todo!("0xca35c8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")
+}
+
+// 0xca36ac — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS6_
+// type: _DWORD *__fastcall(int, const std::string *, int, int, void *, int)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)
+pub fn stub_ca36ac() -> ! {
+    todo!("0xca36ac std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")
+}
+
+// 0xca37c4 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
+pub fn stub_ca37c4() -> ! {
+    todo!("0xca37c4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+}
+
+// 0xca3868 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implISA_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_ca3868() -> ! {
+    todo!("0xca3868 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xca386c — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implISA_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_ca386c() -> ! {
+    todo!("0xca386c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xca3878 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implISA_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_ca3878() -> ! {
+    todo!("0xca3878 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xca387c — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implISA_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_ca387c() -> ! {
+    todo!("0xca387c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xca3888 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS6_E
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>> *)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>> *)
+pub fn stub_ca3888() -> ! {
+    todo!("0xca3888 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>> *)")
+}
+
+// 0xca38b8 — __ZN4Ogre12STLAllocatorISt4pairIKSsNS_9SharedPtrINS_19GpuSharedParametersEEEENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS6_
+#[doc(alias = "Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>*)")]
+// was: Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>*)
+pub fn stub_ca38b8() -> ! {
+    todo!("0xca38b8 Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>*)")
+}
+
+// 0xca3a1c — __ZN4Ogre17GpuNamedConstants38generateConstantDefinitionArrayEntriesERKSsRKNS_21GpuConstantDefinitionE
+#[doc(alias = "Ogre::GpuNamedConstants::generateConstantDefinitionArrayEntries(std::string const&,Ogre::GpuConstantDefinition const&)")]
+// was: Ogre::GpuNamedConstants::generateConstantDefinitionArrayEntries(std::string const&,Ogre::GpuConstantDefinition const&)
+pub fn stub_ca3a1c() -> ! {
+    todo!("0xca3a1c Ogre::GpuNamedConstants::generateConstantDefinitionArrayEntries(std::string const&,Ogre::GpuConstantDefinition const&)")
+}
+
+// 0xca3f10 — __ZN4Ogre27GpuNamedConstantsSerializerD1Ev
+// type: void __fastcall(Ogre::GpuNamedConstantsSerializer *__hidden this)
+#[doc(alias = "Ogre::GpuNamedConstantsSerializer::~GpuNamedConstantsSerializer()")]
+// was: Ogre::GpuNamedConstantsSerializer::~GpuNamedConstantsSerializer()
+pub fn stub_ca3f10() -> ! {
+    todo!("0xca3f10 Ogre::GpuNamedConstantsSerializer::~GpuNamedConstantsSerializer()")
+}
+
+// 0xca3f1c — __ZN4Ogre17GpuNamedConstants4loadERNS_9SharedPtrINS_10DataStreamEEE
+#[doc(alias = "Ogre::GpuNamedConstants::load(Ogre::SharedPtr<Ogre::DataStream> &)")]
+// was: Ogre::GpuNamedConstants::load(Ogre::SharedPtr<Ogre::DataStream> &)
+pub fn stub_ca3f1c() -> ! {
+    todo!("0xca3f1c Ogre::GpuNamedConstants::load(Ogre::SharedPtr<Ogre::DataStream> &)")
+}
+
+// 0xca3ff0 — __ZN4Ogre27GpuNamedConstantsSerializer20importNamedConstantsERNS_9SharedPtrINS_10DataStreamEEEPNS_17GpuNamedConstantsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "Ogre::GpuNamedConstantsSerializer::importNamedConstants(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::GpuNamedConstants *)")]
+// was: Ogre::GpuNamedConstantsSerializer::importNamedConstants(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::GpuNamedConstants *)
+pub fn stub_ca3ff0() -> ! {
+    todo!("0xca3ff0 Ogre::GpuNamedConstantsSerializer::importNamedConstants(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::GpuNamedConstants *)")
+}
+
+// 0xca4228 — __ZN4Ogre27GpuNamedConstantsSerializerD0Ev
+// type: void __fastcall(Ogre::GpuNamedConstantsSerializer *__hidden this)
+#[doc(alias = "Ogre::GpuNamedConstantsSerializer::~GpuNamedConstantsSerializer()")]
+// was: Ogre::GpuNamedConstantsSerializer::~GpuNamedConstantsSerializer()
+pub fn stub_ca4228() -> ! {
+    todo!("0xca4228 Ogre::GpuNamedConstantsSerializer::~GpuNamedConstantsSerializer()")
+}
+
+// 0xca42b8 — __ZN4Ogre19GpuSharedParametersC1ERKSs
+// type: _DWORD __fastcall(Ogre::GpuSharedParameters *__hidden this, const std::string *)
+#[doc(alias = "Ogre::GpuSharedParameters::GpuSharedParameters(std::string const&)")]
+// was: Ogre::GpuSharedParameters::GpuSharedParameters(std::string const&)
+pub fn stub_ca42b8() -> ! {
+    todo!("0xca42b8 Ogre::GpuSharedParameters::GpuSharedParameters(std::string const&)")
+}
+
+// 0xca42c4 — __ZN4Ogre19GpuSharedParametersC2ERKSs
+// type: _DWORD __fastcall(Ogre::GpuSharedParameters *__hidden this, const std::string *)
+#[doc(alias = "Ogre::GpuSharedParameters::GpuSharedParameters(std::string const&)")]
+// was: Ogre::GpuSharedParameters::GpuSharedParameters(std::string const&)
+pub fn stub_ca42c4() -> ! {
+    todo!("0xca42c4 Ogre::GpuSharedParameters::GpuSharedParameters(std::string const&)")
+}
+
+// 0xca44c8 — __ZN4Ogre19GpuSharedParametersD0Ev
+// type: void __fastcall(Ogre::GpuSharedParameters *__hidden this)
+#[doc(alias = "Ogre::GpuSharedParameters::~GpuSharedParameters()")]
+// was: Ogre::GpuSharedParameters::~GpuSharedParameters()
+pub fn stub_ca44c8() -> ! {
+    todo!("0xca44c8 Ogre::GpuSharedParameters::~GpuSharedParameters()")
+}
+
+// 0xca4558 — __ZN4Ogre19GpuSharedParametersD1Ev
+// type: void __fastcall(Ogre::GpuSharedParameters *__hidden this)
+#[doc(alias = "Ogre::GpuSharedParameters::~GpuSharedParameters()")]
+// was: Ogre::GpuSharedParameters::~GpuSharedParameters()
+pub fn stub_ca4558() -> ! {
+    todo!("0xca4558 Ogre::GpuSharedParameters::~GpuSharedParameters()")
+}
+
+// 0xca4564 — __ZN4Ogre19GpuSharedParametersD2Ev
+// type: void __fastcall(Ogre::GpuSharedParameters *__hidden this)
+#[doc(alias = "Ogre::GpuSharedParameters::~GpuSharedParameters()")]
+// was: Ogre::GpuSharedParameters::~GpuSharedParameters()
+pub fn stub_ca4564() -> ! {
+    todo!("0xca4564 Ogre::GpuSharedParameters::~GpuSharedParameters()")
+}
+
+// 0xca46a4 — __ZN4Ogre19GpuSharedParameters21addConstantDefinitionERKSsNS_15GpuConstantTypeEm
+#[doc(alias = "Ogre::GpuSharedParameters::addConstantDefinition(std::string const&,Ogre::GpuConstantType,unsigned long)")]
+// was: Ogre::GpuSharedParameters::addConstantDefinition(std::string const&,Ogre::GpuConstantType,unsigned long)
+pub fn stub_ca46a4() -> ! {
+    todo!("0xca46a4 Ogre::GpuSharedParameters::addConstantDefinition(std::string const&,Ogre::GpuConstantType,unsigned long)")
+}
+
+// 0xca4a64 — __ZN4Ogre19GpuSharedParameters16setNamedConstantERKSsPKfm
+// type: _DWORD __fastcall(Ogre::GpuSharedParameters *__hidden this, const std::string *, const float *, unsigned int)
+#[doc(alias = "Ogre::GpuSharedParameters::setNamedConstant(std::string const&,float const*,unsigned long)")]
+// was: Ogre::GpuSharedParameters::setNamedConstant(std::string const&,float const*,unsigned long)
+pub fn stub_ca4a64() -> ! {
+    todo!("0xca4a64 Ogre::GpuSharedParameters::setNamedConstant(std::string const&,float const*,unsigned long)")
+}
+
+// 0xca4aa8 — __ZN4Ogre19GpuSharedParameters16setNamedConstantERKSsPKim
+// type: _DWORD __fastcall(Ogre::GpuSharedParameters *__hidden this, const std::string *, const int *, unsigned int)
+#[doc(alias = "Ogre::GpuSharedParameters::setNamedConstant(std::string const&,int const*,unsigned long)")]
+// was: Ogre::GpuSharedParameters::setNamedConstant(std::string const&,int const*,unsigned long)
+pub fn stub_ca4aa8() -> ! {
+    todo!("0xca4aa8 Ogre::GpuSharedParameters::setNamedConstant(std::string const&,int const*,unsigned long)")
+}
+
+// 0xca4aec — __ZN4Ogre24GpuSharedParametersUsageC2ENS_9SharedPtrINS_19GpuSharedParametersEEEPNS_20GpuProgramParametersE
+#[doc(alias = "Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::SharedPtr<Ogre::GpuSharedParameters>,Ogre::GpuProgramParameters *)")]
+// was: Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::SharedPtr<Ogre::GpuSharedParameters>,Ogre::GpuProgramParameters *)
+pub fn stub_ca4aec() -> ! {
+    todo!("0xca4aec Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::SharedPtr<Ogre::GpuSharedParameters>,Ogre::GpuProgramParameters *)")
+}
+
+// 0xca4c9c — __ZN4Ogre24GpuSharedParametersUsage12initCopyDataEv
+// type: _DWORD __fastcall(Ogre::GpuSharedParametersUsage *__hidden this)
+#[doc(alias = "Ogre::GpuSharedParametersUsage::initCopyData(void)")]
+// was: Ogre::GpuSharedParametersUsage::initCopyData(void)
+pub fn stub_ca4c9c() -> ! {
+    todo!("0xca4c9c Ogre::GpuSharedParametersUsage::initCopyData(void)")
+}
+
+// 0xca4d34 — __ZNK4Ogre20GpuProgramParameters28_findNamedConstantDefinitionERKSsb
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, bool)
+#[doc(alias = "Ogre::GpuProgramParameters::_findNamedConstantDefinition(std::string const&,bool)const")]
+// was: Ogre::GpuProgramParameters::_findNamedConstantDefinition(std::string const&,bool)const
+pub fn stub_ca4d34() -> ! {
+    todo!("0xca4d34 Ogre::GpuProgramParameters::_findNamedConstantDefinition(std::string const&,bool)const")
+}
+
+// 0xca51ac — __ZN4Ogre24GpuSharedParametersUsage31_copySharedParamsToTargetParamsEv
+// type: _DWORD __fastcall(Ogre::GpuSharedParametersUsage *__hidden this)
+#[doc(alias = "Ogre::GpuSharedParametersUsage::_copySharedParamsToTargetParams(void)")]
+// was: Ogre::GpuSharedParametersUsage::_copySharedParamsToTargetParams(void)
+pub fn stub_ca51ac() -> ! {
+    todo!("0xca51ac Ogre::GpuSharedParametersUsage::_copySharedParamsToTargetParams(void)")
+}
+
+// 0xca5348 — __ZN4Ogre20GpuProgramParametersC1Ev
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this)
+#[doc(alias = "Ogre::GpuProgramParameters::GpuProgramParameters(void)")]
+// was: Ogre::GpuProgramParameters::GpuProgramParameters(void)
+pub fn stub_ca5348() -> ! {
+    todo!("0xca5348 Ogre::GpuProgramParameters::GpuProgramParameters(void)")
+}
+
+// 0xca541c — __ZN4Ogre20GpuProgramParametersC1ERKS0_
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const Ogre::GpuProgramParameters *)
+#[doc(alias = "Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)")]
+// was: Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)
+pub fn stub_ca541c() -> ! {
+    todo!("0xca541c Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)")
+}
+
+// 0xca5428 — __ZN4Ogre20GpuProgramParametersC2ERKS0_
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const Ogre::GpuProgramParameters *)
+#[doc(alias = "Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)")]
+// was: Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)
+pub fn stub_ca5428() -> ! {
+    todo!("0xca5428 Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)")
+}
+
+// 0xca5750 — __ZN4Ogre20GpuProgramParameters23copySharedParamSetUsageERKSt6vectorINS_24GpuSharedParametersUsageENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, Ogre::NedPoolingImpl *, int, int, char, int, int, int, int, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int)
+#[doc(alias = "Ogre::GpuProgramParameters::copySharedParamSetUsage(std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: Ogre::GpuProgramParameters::copySharedParamSetUsage(std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_ca5750() -> ! {
+    todo!("0xca5750 Ogre::GpuProgramParameters::copySharedParamSetUsage(std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xca5970 — __ZN4Ogre20GpuProgramParameters18_setNamedConstantsERKNS_9SharedPtrINS_17GpuNamedConstantsEEE
+#[doc(alias = "Ogre::GpuProgramParameters::_setNamedConstants(Ogre::SharedPtr<Ogre::GpuNamedConstants> const&)")]
+// was: Ogre::GpuProgramParameters::_setNamedConstants(Ogre::SharedPtr<Ogre::GpuNamedConstants> const&)
+pub fn stub_ca5970() -> ! {
+    todo!("0xca5970 Ogre::GpuProgramParameters::_setNamedConstants(Ogre::SharedPtr<Ogre::GpuNamedConstants> const&)")
+}
+
+// 0xca59c8 — __ZN4Ogre20GpuProgramParameters18_setLogicalIndexesERKNS_9SharedPtrINS_22GpuLogicalBufferStructEEES5_
+#[doc(alias = "Ogre::GpuProgramParameters::_setLogicalIndexes(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&,Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&)")]
+// was: Ogre::GpuProgramParameters::_setLogicalIndexes(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&,Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&)
+pub fn stub_ca59c8() -> ! {
+    todo!("0xca59c8 Ogre::GpuProgramParameters::_setLogicalIndexes(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&,Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&)")
+}
+
+// 0xca5a30 — __ZN4Ogre20GpuProgramParameters11setConstantEmPKfm
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int, const float *, unsigned int)
+#[doc(alias = "Ogre::GpuProgramParameters::setConstant(unsigned long,float const*,unsigned long)")]
+// was: Ogre::GpuProgramParameters::setConstant(unsigned long,float const*,unsigned long)
+pub fn stub_ca5a30() -> ! {
+    todo!("0xca5a30 Ogre::GpuProgramParameters::setConstant(unsigned long,float const*,unsigned long)")
+}
+
+// 0xca5a5c — __ZN4Ogre20GpuProgramParameters11setConstantEmRKNS_7Matrix4E
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int, const Ogre::Matrix4 *)
+#[doc(alias = "Ogre::GpuProgramParameters::setConstant(unsigned long,Ogre::Matrix4 const&)")]
+// was: Ogre::GpuProgramParameters::setConstant(unsigned long,Ogre::Matrix4 const&)
+pub fn stub_ca5a5c() -> ! {
+    todo!("0xca5a5c Ogre::GpuProgramParameters::setConstant(unsigned long,Ogre::Matrix4 const&)")
+}
+
+// 0xca5b78 — __ZN4Ogre20GpuProgramParameters11setConstantEmPKim
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int, const int *, unsigned int)
+#[doc(alias = "Ogre::GpuProgramParameters::setConstant(unsigned long,int const*,unsigned long)")]
+// was: Ogre::GpuProgramParameters::setConstant(unsigned long,int const*,unsigned long)
+pub fn stub_ca5b78() -> ! {
+    todo!("0xca5b78 Ogre::GpuProgramParameters::setConstant(unsigned long,int const*,unsigned long)")
+}
+
+// 0xca5ba4 — __ZN4Ogre20GpuProgramParameters17_writeRawConstantEmRKNS_7Vector4Em
+// type: int __fastcall(int, int, void *__src)
+#[doc(alias = "Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Vector4 const&,unsigned long)")]
+// was: Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Vector4 const&,unsigned long)
+pub fn stub_ca5ba4() -> ! {
+    todo!("0xca5ba4 Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Vector4 const&,unsigned long)")
+}
+
+// 0xca5bc4 — __ZN4Ogre20GpuProgramParameters17_writeRawConstantEmRKNS_7Matrix4Em
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int, const Ogre::Matrix4 *__src, unsigned int)
+#[doc(alias = "Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const&,unsigned long)")]
+// was: Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const&,unsigned long)
+pub fn stub_ca5bc4() -> ! {
+    todo!("0xca5bc4 Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const&,unsigned long)")
+}
+
+// 0xca5ca4 — __ZN4Ogre20GpuProgramParameters17_writeRawConstantEmPKNS_7Matrix4Em
+// type: int __fastcall(int, int, void *__src, size_t __n)
+#[doc(alias = "Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const*,unsigned long)")]
+// was: Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const*,unsigned long)
+pub fn stub_ca5ca4() -> ! {
+    todo!("0xca5ca4 Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const*,unsigned long)")
+}
+
+// 0xca5d6c — __ZN4Ogre20GpuProgramParameters32_getFloatConstantLogicalIndexUseEmmt
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int, unsigned int, unsigned __int16)
+#[doc(alias = "Ogre::GpuProgramParameters::_getFloatConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)")]
+// was: Ogre::GpuProgramParameters::_getFloatConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)
+pub fn stub_ca5d6c() -> ! {
+    todo!("0xca5d6c Ogre::GpuProgramParameters::_getFloatConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)")
+}
+
+// 0xca5f30 — __ZN4Ogre20GpuProgramParameters30_getIntConstantLogicalIndexUseEmmt
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int, unsigned int, unsigned __int16)
+#[doc(alias = "Ogre::GpuProgramParameters::_getIntConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)")]
+// was: Ogre::GpuProgramParameters::_getIntConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)
+pub fn stub_ca5f30() -> ! {
+    todo!("0xca5f30 Ogre::GpuProgramParameters::_getIntConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)")
+}
+
+// 0xca62d4 — __ZNK4Ogre20GpuProgramParameters29getConstantDefinitionIteratorEv
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this)
+#[doc(alias = "Ogre::GpuProgramParameters::getConstantDefinitionIterator(void)const")]
+// was: Ogre::GpuProgramParameters::getConstantDefinitionIterator(void)const
+pub fn stub_ca62d4() -> ! {
+    todo!("0xca62d4 Ogre::GpuProgramParameters::getConstantDefinitionIterator(void)const")
+}
+
+// 0xca64b4 — __ZNK4Ogre20GpuProgramParameters21getConstantDefinitionERKSs
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *)
+#[doc(alias = "Ogre::GpuProgramParameters::getConstantDefinition(std::string const&)const")]
+// was: Ogre::GpuProgramParameters::getConstantDefinition(std::string const&)const
+pub fn stub_ca64b4() -> ! {
+    todo!("0xca64b4 Ogre::GpuProgramParameters::getConstantDefinition(std::string const&)const")
+}
+
+// 0xca669c — __ZN4Ogre20GpuProgramParameters15setAutoConstantEmNS0_16AutoConstantTypeEm
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "Ogre::GpuProgramParameters::setAutoConstant(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)")]
+// was: Ogre::GpuProgramParameters::setAutoConstant(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)
+pub fn stub_ca669c() -> ! {
+    todo!("0xca669c Ogre::GpuProgramParameters::setAutoConstant(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)")
+}
+
+// 0xca6b2c — __ZN4Ogre20GpuProgramParameters17clearAutoConstantEm
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int)
+#[doc(alias = "Ogre::GpuProgramParameters::clearAutoConstant(unsigned long)")]
+// was: Ogre::GpuProgramParameters::clearAutoConstant(unsigned long)
+pub fn stub_ca6b2c() -> ! {
+    todo!("0xca6b2c Ogre::GpuProgramParameters::clearAutoConstant(unsigned long)")
+}
+
+// 0xca6b90 — __ZN4Ogre20GpuProgramParameters22clearNamedAutoConstantERKSs
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *)
+#[doc(alias = "Ogre::GpuProgramParameters::clearNamedAutoConstant(std::string const&)")]
+// was: Ogre::GpuProgramParameters::clearNamedAutoConstant(std::string const&)
+pub fn stub_ca6b90() -> ! {
+    todo!("0xca6b90 Ogre::GpuProgramParameters::clearNamedAutoConstant(std::string const&)")
+}
+
+// 0xca6c1c — __ZNK4Ogre20GpuProgramParameters23getAutoConstantIteratorEv
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this)
+#[doc(alias = "Ogre::GpuProgramParameters::getAutoConstantIterator(void)const")]
+// was: Ogre::GpuProgramParameters::getAutoConstantIterator(void)const
+pub fn stub_ca6c1c() -> ! {
+    todo!("0xca6c1c Ogre::GpuProgramParameters::getAutoConstantIterator(void)const")
+}
+
+// 0xca6c28 — __ZN4Ogre20GpuProgramParameters19setAutoConstantRealEmNS0_16AutoConstantTypeEf
+#[doc(alias = "Ogre::GpuProgramParameters::setAutoConstantReal(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,float)")]
+// was: Ogre::GpuProgramParameters::setAutoConstantReal(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,float)
+pub fn stub_ca6c28() -> ! {
+    todo!("0xca6c28 Ogre::GpuProgramParameters::setAutoConstantReal(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,float)")
+}
+
+// 0xca70b4 — __ZN4Ogre20GpuProgramParameters17_updateAutoParamsEPKNS_19AutoParamDataSourceEt
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const Ogre::AutoParamDataSource *, unsigned __int16)
+#[doc(alias = "Ogre::GpuProgramParameters::_updateAutoParams(Ogre::AutoParamDataSource const*,unsigned short)")]
+// was: Ogre::GpuProgramParameters::_updateAutoParams(Ogre::AutoParamDataSource const*,unsigned short)
+pub fn stub_ca70b4() -> ! {
+    todo!("0xca70b4 Ogre::GpuProgramParameters::_updateAutoParams(Ogre::AutoParamDataSource const*,unsigned short)")
+}
+
+// 0xca96ec — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsf
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, float)
+#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,float)")]
+// was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,float)
+pub fn stub_ca96ec() -> ! {
+    todo!("0xca96ec Ogre::GpuProgramParameters::setNamedConstant(std::string const&,float)")
+}
+
+// 0xca9724 — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsRKNS_7Vector4E
+// type: int __fastcall(Ogre::GpuProgramParameters *this)
+#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Vector4 const&)")]
+// was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Vector4 const&)
+pub fn stub_ca9724() -> ! {
+    todo!("0xca9724 Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Vector4 const&)")
+}
+
+// 0xca9760 — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsRKNS_7Matrix4E
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, const Ogre::Matrix4 *)
+#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Matrix4 const&)")]
+// was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Matrix4 const&)
+pub fn stub_ca9760() -> ! {
+    todo!("0xca9760 Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Matrix4 const&)")
+}
+
+// 0xca9790 — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsPKfmm
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, const float *, unsigned int, unsigned int)
+#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,float const*,unsigned long,unsigned long)")]
+// was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,float const*,unsigned long,unsigned long)
+pub fn stub_ca9790() -> ! {
+    todo!("0xca9790 Ogre::GpuProgramParameters::setNamedConstant(std::string const&,float const*,unsigned long,unsigned long)")
+}
+
+// 0xca97c8 — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsRKNS_11ColourValueE
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, const Ogre::ColourValue *)
+#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::ColourValue const&)")]
+// was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::ColourValue const&)
+pub fn stub_ca97c8() -> ! {
+    todo!("0xca97c8 Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::ColourValue const&)")
+}
+
+// 0xca9804 — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsPKimm
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, const int *, unsigned int, unsigned int)
+#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,int const*,unsigned long,unsigned long)")]
+// was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,int const*,unsigned long,unsigned long)
+pub fn stub_ca9804() -> ! {
+    todo!("0xca9804 Ogre::GpuProgramParameters::setNamedConstant(std::string const&,int const*,unsigned long,unsigned long)")
+}
+
+// 0xca983c — __ZN4Ogre20GpuProgramParameters20setNamedAutoConstantERKSsNS0_16AutoConstantTypeEm
+// type: int __fastcall(Ogre::GpuProgramParameters *this)
+#[doc(alias = "Ogre::GpuProgramParameters::setNamedAutoConstant(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)")]
+// was: Ogre::GpuProgramParameters::setNamedAutoConstant(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)
+pub fn stub_ca983c() -> ! {
+    todo!("0xca983c Ogre::GpuProgramParameters::setNamedAutoConstant(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)")
+}
+
+// 0xca9a24 — __ZN4Ogre20GpuProgramParameters24setNamedAutoConstantRealERKSsNS0_16AutoConstantTypeEf
+// type: int __fastcall(Ogre::GpuProgramParameters *this)
+#[doc(alias = "Ogre::GpuProgramParameters::setNamedAutoConstantReal(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,float)")]
+// was: Ogre::GpuProgramParameters::setNamedAutoConstantReal(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,float)
+pub fn stub_ca9a24() -> ! {
+    todo!("0xca9a24 Ogre::GpuProgramParameters::setNamedAutoConstantReal(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,float)")
+}
+
+// 0xca9c20 — __ZN4Ogre20GpuProgramParameters30_findRawAutoConstantEntryFloatEm
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int)
+#[doc(alias = "Ogre::GpuProgramParameters::_findRawAutoConstantEntryFloat(unsigned long)")]
+// was: Ogre::GpuProgramParameters::_findRawAutoConstantEntryFloat(unsigned long)
+pub fn stub_ca9c20() -> ! {
+    todo!("0xca9c20 Ogre::GpuProgramParameters::_findRawAutoConstantEntryFloat(unsigned long)")
+}
+
+// 0xca9c3c — __ZN4Ogre20GpuProgramParameters17copyConstantsFromERKS0_
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const Ogre::GpuProgramParameters *)
+#[doc(alias = "Ogre::GpuProgramParameters::copyConstantsFrom(Ogre::GpuProgramParameters const&)")]
+// was: Ogre::GpuProgramParameters::copyConstantsFrom(Ogre::GpuProgramParameters const&)
+pub fn stub_ca9c3c() -> ! {
+    todo!("0xca9c3c Ogre::GpuProgramParameters::copyConstantsFrom(Ogre::GpuProgramParameters const&)")
+}
+
+// 0xca9c74 — __ZN4Ogre20GpuProgramParameters30copyMatchingNamedConstantsFromERKS0_
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const Ogre::GpuProgramParameters *)
+#[doc(alias = "Ogre::GpuProgramParameters::copyMatchingNamedConstantsFrom(Ogre::GpuProgramParameters const&)")]
+// was: Ogre::GpuProgramParameters::copyMatchingNamedConstantsFrom(Ogre::GpuProgramParameters const&)
+pub fn stub_ca9c74() -> ! {
+    todo!("0xca9c74 Ogre::GpuProgramParameters::copyMatchingNamedConstantsFrom(Ogre::GpuProgramParameters const&)")
+}
+
+// 0xcaa0a4 — __ZN4Ogre20GpuProgramParameters19addSharedParametersENS_9SharedPtrINS_19GpuSharedParametersEEE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, Ogre::NedPoolingImpl *, int, int, char, int, int, int, int, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int)
+#[doc(alias = "Ogre::GpuProgramParameters::addSharedParameters(Ogre::SharedPtr<Ogre::GpuSharedParameters>)")]
+// was: Ogre::GpuProgramParameters::addSharedParameters(Ogre::SharedPtr<Ogre::GpuSharedParameters>)
+pub fn stub_caa0a4() -> ! {
+    todo!("0xcaa0a4 Ogre::GpuProgramParameters::addSharedParameters(Ogre::SharedPtr<Ogre::GpuSharedParameters>)")
+}
+
+// 0xcaa2dc — __ZN4Ogre20GpuProgramParameters25getAutoConstantDefinitionERKSs
+#[doc(alias = "Ogre::GpuProgramParameters::getAutoConstantDefinition(std::string const&)")]
+// was: Ogre::GpuProgramParameters::getAutoConstantDefinition(std::string const&)
+pub fn stub_caa2dc() -> ! {
+    todo!("0xcaa2dc Ogre::GpuProgramParameters::getAutoConstantDefinition(std::string const&)")
+}
+
+// 0xcaa364 — __ZN4Ogre20GpuProgramParameters22incPassIterationNumberEv
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this)
+#[doc(alias = "Ogre::GpuProgramParameters::incPassIterationNumber(void)")]
+// was: Ogre::GpuProgramParameters::incPassIterationNumber(void)
+pub fn stub_caa364() -> ! {
+    todo!("0xcaa364 Ogre::GpuProgramParameters::incPassIterationNumber(void)")
+}
+
+// 0xcaa388 — __ZN4Ogre20GpuProgramParameters19addSharedParametersERKSs
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *)
+#[doc(alias = "Ogre::GpuProgramParameters::addSharedParameters(std::string const&)")]
+// was: Ogre::GpuProgramParameters::addSharedParameters(std::string const&)
+pub fn stub_caa388() -> ! {
+    todo!("0xcaa388 Ogre::GpuProgramParameters::addSharedParameters(std::string const&)")
+}
+
+// 0xcaa500 — __ZN4Ogre20GpuProgramParameters17_copySharedParamsEv
+// type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this)
+#[doc(alias = "Ogre::GpuProgramParameters::_copySharedParams(void)")]
+// was: Ogre::GpuProgramParameters::_copySharedParams(void)
+pub fn stub_caa500() -> ! {
+    todo!("0xcaa500 Ogre::GpuProgramParameters::_copySharedParams(void)")
+}
+
+// 0xcaa520 — __ZNSt3mapISsN4Ogre21GpuConstantDefinitionESt4lessISsENS0_12STLAllocatorISt4pairIKSsS1_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS6_
+#[doc(alias = "std::map<std::string,Ogre::GpuConstantDefinition,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
+// was: std::map<std::string,Ogre::GpuConstantDefinition,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
+pub fn stub_caa520() -> ! {
+    todo!("0xcaa520 std::map<std::string,Ogre::GpuConstantDefinition,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
+}
+
+// 0xcaa6e8 — __ZN4Ogre12STLAllocatorINS_24GpuSharedParametersUsageENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev
+#[doc(alias = "Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
+// was: Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()
+pub fn stub_caa6e8() -> ! {
+    todo!("0xcaa6e8 Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
+}
+
+// 0xcaa6ec — __ZNSt6vectorIfN4Ogre12STLAllocatorIfNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS6_
+#[doc(alias = "std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_caa6ec() -> ! {
+    todo!("0xcaa6ec std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xcaa7ac — __ZNSt6vectorIiN4Ogre12STLAllocatorIiNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS6_
+#[doc(alias = "std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_caa7ac() -> ! {
+    todo!("0xcaa7ac std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xcaa86c — __ZNSt6vectorIN4Ogre20GpuProgramParameters17AutoConstantEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS8_
+#[doc(alias = "std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_caa86c() -> ! {
+    todo!("0xcaa86c std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xcaab68 — __ZNSt6vectorIN4Ogre24GpuSharedParametersUsage13CopyDataEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS8_
+#[doc(alias = "std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_caab68() -> ! {
+    todo!("0xcaab68 std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xcaaeac — __ZNSt6vectorIN4Ogre20GpuProgramParameters17AutoConstantEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
+#[doc(alias = "std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuProgramParameters::AutoConstantEntry*,std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuProgramParameters::AutoConstantEntry const&)")]
+// was: std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuProgramParameters::AutoConstantEntry*,std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuProgramParameters::AutoConstantEntry const&)
+pub fn stub_caaeac() -> ! {
+    todo!("0xcaaeac std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuProgramParameters::AutoConstantEntry*,std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuProgramParameters::AutoConstantEntry const&)")
+}
+
+// 0xcab01c — __ZNSt6vectorIiN4Ogre12STLAllocatorIiNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS6_EEmRKi
+// type: int __fastcall(int, void *__src)
+#[doc(alias = "std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<int *,std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,int const&)")]
+// was: std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<int *,std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,int const&)
+pub fn stub_cab01c() -> ! {
+    todo!("0xcab01c std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<int *,std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,int const&)")
+}
+
+// 0xcab1b8 — __ZNSt6vectorIN4Ogre24GpuSharedParametersUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage*,std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage const&)")]
+// was: std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage*,std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage const&)
+pub fn stub_cab1b8() -> ! {
+    todo!("0xcab1b8 std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage*,std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage const&)")
+}
+
+// 0xcab460 — __ZSt22__uninitialized_copy_aIPN4Ogre24GpuSharedParametersUsageES2_NS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEET0_T_S9_S8_T1_
+// type: int __fastcall(int, int, int, int, Ogre::GpuSharedParametersUsage *, void *, int, int, int, int)
+#[doc(alias = "Ogre::GpuSharedParametersUsage * std::__uninitialized_copy_a<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")]
+// was: Ogre::GpuSharedParametersUsage * std::__uninitialized_copy_a<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)
+pub fn stub_cab460() -> ! {
+    todo!("0xcab460 Ogre::GpuSharedParametersUsage * std::__uninitialized_copy_a<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")
+}
+
+// 0xcab578 — __ZN4Ogre12STLAllocatorINS_24GpuSharedParametersUsageENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev
+#[doc(alias = "Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
+// was: Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()
+pub fn stub_cab578() -> ! {
+    todo!("0xcab578 Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
+}
+
+// 0xcab584 — __ZNSt22__copy_backward_normalILb0ELb0EE10__copy_b_nIPN4Ogre24GpuSharedParametersUsageES4_EET0_T_S6_S5_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "Ogre::GpuSharedParametersUsage * std::__copy_backward_normal<false,false>::__copy_b_n<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *)")]
+// was: Ogre::GpuSharedParametersUsage * std::__copy_backward_normal<false,false>::__copy_b_n<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *)
+pub fn stub_cab584() -> ! {
+    todo!("0xcab584 Ogre::GpuSharedParametersUsage * std::__copy_backward_normal<false,false>::__copy_b_n<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *)")
+}
+
+// 0xcab6ec — __ZN4Ogre24GpuSharedParametersUsageC2ERKS0_
+// type: _DWORD __fastcall(Ogre::GpuSharedParametersUsage *__hidden this, const Ogre::GpuSharedParametersUsage *)
+#[doc(alias = "Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::GpuSharedParametersUsage const&)")]
+// was: Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::GpuSharedParametersUsage const&)
+pub fn stub_cab6ec() -> ! {
+    todo!("0xcab6ec Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::GpuSharedParametersUsage const&)")
+}
+
+// 0xcab890 — __ZNSt6vectorIN4Ogre24GpuSharedParametersUsage13CopyDataEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEC2ERKS8_
+#[doc(alias = "std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_cab890() -> ! {
+    todo!("0xcab890 std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xcab910 — __ZNSt12_Vector_baseIN4Ogre24GpuSharedParametersUsage13CopyDataEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
+#[doc(alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_cab910() -> ! {
+    todo!("0xcab910 std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xcab914 — __ZNSt12_Vector_baseIN4Ogre24GpuSharedParametersUsage13CopyDataEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
+#[doc(alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_cab914() -> ! {
+    todo!("0xcab914 std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xcab920 — __ZNSt12_Vector_baseIN4Ogre24GpuSharedParametersUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
+#[doc(alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_cab920() -> ! {
+    todo!("0xcab920 std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xcab924 — __ZNSt12_Vector_baseIN4Ogre24GpuSharedParametersUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
+#[doc(alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_cab924() -> ! {
+    todo!("0xcab924 std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xcab930 — __ZNSt12_Vector_baseIN4Ogre20GpuProgramParameters17AutoConstantEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
+#[doc(alias = "std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_cab930() -> ! {
+    todo!("0xcab930 std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xcab934 — __ZNSt12_Vector_baseIN4Ogre20GpuProgramParameters17AutoConstantEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
+#[doc(alias = "std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_cab934() -> ! {
+    todo!("0xcab934 std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xcab940 — __ZNSt6vectorIN4Ogre24GpuSharedParametersUsage13CopyDataEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
+#[doc(alias = "std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage::CopyDataEntry*,std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage::CopyDataEntry const&)")]
+// was: std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage::CopyDataEntry*,std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage::CopyDataEntry const&)
+pub fn stub_cab940() -> ! {
+    todo!("0xcab940 std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage::CopyDataEntry*,std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage::CopyDataEntry const&)")
+}
+
+// 0xcaba5c — __ZNKSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const
+pub fn stub_caba5c() -> ! {
+    todo!("0xcaba5c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")
+}
+
+// 0xcabb00 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
+pub fn stub_cabb00() -> ! {
+    todo!("0xcabb00 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+}
+
+// 0xcabba4 — __ZNSt12_Vector_baseIiN4Ogre12STLAllocatorIiNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
+#[doc(alias = "std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_cabba4() -> ! {
+    todo!("0xcabba4 std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xcabba8 — __ZNSt12_Vector_baseIiN4Ogre12STLAllocatorIiNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
+#[doc(alias = "std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_cabba8() -> ! {
+    todo!("0xcabba8 std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xcabbb4 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_
+// type: int __fastcall(int, int, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)
+pub fn stub_cabbb4() -> ! {
+    todo!("0xcabbb4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")
+}
+
+// 0xcabd94 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS4_
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, Ogre::NedPoolingImpl *, int, int, void *, int)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)
+pub fn stub_cabd94() -> ! {
+    todo!("0xcabd94 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")
+}
+
+// 0xcabef8 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS4_
+// type: int __fastcall(int, int, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::GpuConstantDefinition> const&)
+pub fn stub_cabef8() -> ! {
+    todo!("0xcabef8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")
+}
+
+// 0xcb4364 — __ZN4Ogre15GpuProgramUsageC1ENS_14GpuProgramTypeEPNS_4PassE
+#[doc(alias = "Ogre::GpuProgramUsage::GpuProgramUsage(Ogre::GpuProgramType,Ogre::Pass *)")]
+// was: Ogre::GpuProgramUsage::GpuProgramUsage(Ogre::GpuProgramType,Ogre::Pass *)
+pub fn stub_cb4364() -> ! {
+    todo!("0xcb4364 Ogre::GpuProgramUsage::GpuProgramUsage(Ogre::GpuProgramType,Ogre::Pass *)")
+}
+
+// 0xcb43b8 — __ZN4Ogre15GpuProgramUsageC1ERKS0_PNS_4PassE
+// type: _DWORD __fastcall(Ogre::GpuProgramUsage *__hidden this, const Ogre::GpuProgramUsage *, Ogre::Pass *)
+#[doc(alias = "Ogre::GpuProgramUsage::GpuProgramUsage(Ogre::GpuProgramUsage const&,Ogre::Pass *)")]
+// was: Ogre::GpuProgramUsage::GpuProgramUsage(Ogre::GpuProgramUsage const&,Ogre::Pass *)
+pub fn stub_cb43b8() -> ! {
+    todo!("0xcb43b8 Ogre::GpuProgramUsage::GpuProgramUsage(Ogre::GpuProgramUsage const&,Ogre::Pass *)")
+}
+
+// 0xcb43c4 — __ZN4Ogre15GpuProgramUsageC2ERKS0_PNS_4PassE
+// type: _DWORD __fastcall(Ogre::GpuProgramUsage *__hidden this, const Ogre::GpuProgramUsage *, Ogre::Pass *)
+#[doc(alias = "Ogre::GpuProgramUsage::GpuProgramUsage(Ogre::GpuProgramUsage const&,Ogre::Pass *)")]
+// was: Ogre::GpuProgramUsage::GpuProgramUsage(Ogre::GpuProgramUsage const&,Ogre::Pass *)
+pub fn stub_cb43c4() -> ! {
+    todo!("0xcb43c4 Ogre::GpuProgramUsage::GpuProgramUsage(Ogre::GpuProgramUsage const&,Ogre::Pass *)")
+}
+
+// 0xcb45ac — __ZN4Ogre15GpuProgramUsageD0Ev
+// type: void __fastcall(Ogre::GpuProgramUsage *__hidden this)
+#[doc(alias = "Ogre::GpuProgramUsage::~GpuProgramUsage()")]
+// was: Ogre::GpuProgramUsage::~GpuProgramUsage()
+pub fn stub_cb45ac() -> ! {
+    todo!("0xcb45ac Ogre::GpuProgramUsage::~GpuProgramUsage()")
+}
+
+// 0xcb463c — __ZN4Ogre15GpuProgramUsageD1Ev
+// type: void __fastcall(Ogre::GpuProgramUsage *__hidden this)
+#[doc(alias = "Ogre::GpuProgramUsage::~GpuProgramUsage()")]
+// was: Ogre::GpuProgramUsage::~GpuProgramUsage()
+pub fn stub_cb463c() -> ! {
+    todo!("0xcb463c Ogre::GpuProgramUsage::~GpuProgramUsage()")
+}
+
+// 0xcb4648 — __ZN4Ogre15GpuProgramUsageD2Ev
+// type: void __fastcall(Ogre::GpuProgramUsage *__hidden this)
+#[doc(alias = "Ogre::GpuProgramUsage::~GpuProgramUsage()")]
+// was: Ogre::GpuProgramUsage::~GpuProgramUsage()
+pub fn stub_cb4648() -> ! {
+    todo!("0xcb4648 Ogre::GpuProgramUsage::~GpuProgramUsage()")
+}
+
+// 0xcb4840 — __ZN4Ogre15GpuProgramUsage14setProgramNameERKSsb
+// type: _DWORD __fastcall(Ogre::GpuProgramUsage *__hidden this, const std::string *, bool)
+#[doc(alias = "Ogre::GpuProgramUsage::setProgramName(std::string const&,bool)")]
+// was: Ogre::GpuProgramUsage::setProgramName(std::string const&,bool)
+pub fn stub_cb4840() -> ! {
+    todo!("0xcb4840 Ogre::GpuProgramUsage::setProgramName(std::string const&,bool)")
+}
+
+// 0xcb4ed0 — __ZN4Ogre15GpuProgramUsage18recreateParametersEv
+// type: _DWORD __fastcall(Ogre::GpuProgramUsage *__hidden this)
+#[doc(alias = "Ogre::GpuProgramUsage::recreateParameters(void)")]
+// was: Ogre::GpuProgramUsage::recreateParameters(void)
+pub fn stub_cb4ed0() -> ! {
+    todo!("0xcb4ed0 Ogre::GpuProgramUsage::recreateParameters(void)")
+}
+
+// 0xcb5040 — __ZN4Ogre15GpuProgramUsage13setParametersENS_9SharedPtrINS_20GpuProgramParametersEEE
+#[doc(alias = "Ogre::GpuProgramUsage::setParameters(Ogre::SharedPtr<Ogre::GpuProgramParameters>)")]
+// was: Ogre::GpuProgramUsage::setParameters(Ogre::SharedPtr<Ogre::GpuProgramParameters>)
+pub fn stub_cb5040() -> ! {
+    todo!("0xcb5040 Ogre::GpuProgramUsage::setParameters(Ogre::SharedPtr<Ogre::GpuProgramParameters>)")
+}
+
+// 0xcb504c — __ZN4Ogre15GpuProgramUsage13getParametersEv
+// type: _DWORD __fastcall(Ogre::GpuProgramUsage *__hidden this)
+#[doc(alias = "Ogre::GpuProgramUsage::getParameters(void)")]
+// was: Ogre::GpuProgramUsage::getParameters(void)
+pub fn stub_cb504c() -> ! {
+    todo!("0xcb504c Ogre::GpuProgramUsage::getParameters(void)")
+}
+
+// 0xcb5244 — __ZN4Ogre15GpuProgramUsage5_loadEv
+// type: _DWORD __fastcall(Ogre::GpuProgramUsage *__hidden this)
+#[doc(alias = "Ogre::GpuProgramUsage::_load(void)")]
+// was: Ogre::GpuProgramUsage::_load(void)
+pub fn stub_cb5244() -> ! {
+    todo!("0xcb5244 Ogre::GpuProgramUsage::_load(void)")
+}
+
+// 0xcb5894 — __ZN4Ogre15GpuProgramUsage17unloadingCompleteEPNS_8ResourceE
+// type: _DWORD __fastcall(Ogre::GpuProgramUsage *__hidden this, Ogre::Resource *)
+#[doc(alias = "Ogre::GpuProgramUsage::unloadingComplete(Ogre::Resource *)")]
+// was: Ogre::GpuProgramUsage::unloadingComplete(Ogre::Resource *)
+pub fn stub_cb5894() -> ! {
+    todo!("0xcb5894 Ogre::GpuProgramUsage::unloadingComplete(Ogre::Resource *)")
+}
+
+// 0xcb589c — __ZN4Ogre15GpuProgramUsage15loadingCompleteEPNS_8ResourceE
+// type: _DWORD __fastcall(Ogre::GpuProgramUsage *__hidden this, Ogre::Resource *)
+#[doc(alias = "Ogre::GpuProgramUsage::loadingComplete(Ogre::Resource *)")]
+// was: Ogre::GpuProgramUsage::loadingComplete(Ogre::Resource *)
+pub fn stub_cb589c() -> ! {
+    todo!("0xcb589c Ogre::GpuProgramUsage::loadingComplete(Ogre::Resource *)")
+}
+
+// 0xcb58b0 — __ZN4Ogre13GpuProgramPtrD1Ev
+// type: void __fastcall(Ogre::GpuProgramPtr *__hidden this)
+#[doc(alias = "Ogre::GpuProgramPtr::~GpuProgramPtr()")]
+// was: Ogre::GpuProgramPtr::~GpuProgramPtr()
+pub fn stub_cb58b0() -> ! {
+    todo!("0xcb58b0 Ogre::GpuProgramPtr::~GpuProgramPtr()")
+}
+
+// 0xcb59a0 — __ZN4Ogre8Resource8Listener25backgroundLoadingCompleteEPS0_
+// type: _DWORD __fastcall(Ogre::Resource::Listener *__hidden this, Ogre::Resource *)
+#[doc(alias = "Ogre::Resource::Listener::backgroundLoadingComplete(Ogre::Resource*)")]
+// was: Ogre::Resource::Listener::backgroundLoadingComplete(Ogre::Resource*)
+pub fn stub_cb59a0() -> ! {
+    todo!("0xcb59a0 Ogre::Resource::Listener::backgroundLoadingComplete(Ogre::Resource*)")
+}
+
+// 0xcb59a4 — __ZN4Ogre9SharedPtrINS_10GpuProgramEEaSERKS2_
+// type: int __fastcall(int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int)
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuProgram>::operator=(Ogre::SharedPtr<Ogre::GpuProgram> const&)")]
+// was: Ogre::SharedPtr<Ogre::GpuProgram>::operator=(Ogre::SharedPtr<Ogre::GpuProgram> const&)
+pub fn stub_cb59a4() -> ! {
+    todo!("0xcb59a4 Ogre::SharedPtr<Ogre::GpuProgram>::operator=(Ogre::SharedPtr<Ogre::GpuProgram> const&)")
+}
+
+// 0xcb5b24 — __ZN4Ogre13GpuProgramPtrD0Ev
+// type: void __fastcall(Ogre::GpuProgramPtr *__hidden this)
+#[doc(alias = "Ogre::GpuProgramPtr::~GpuProgramPtr()")]
+// was: Ogre::GpuProgramPtr::~GpuProgramPtr()
+pub fn stub_cb5b24() -> ! {
+    todo!("0xcb5b24 Ogre::GpuProgramPtr::~GpuProgramPtr()")
+}
+
+// 0xcb5c4c — __ZN4Ogre21HardwareBufferManager15getSingletonPtrEv
+// type: _DWORD __fastcall(Ogre::HardwareBufferManager *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManager::getSingletonPtr(void)")]
+// was: Ogre::HardwareBufferManager::getSingletonPtr(void)
+pub fn stub_cb5c4c() -> ! {
+    todo!("0xcb5c4c Ogre::HardwareBufferManager::getSingletonPtr(void)")
+}
+
+// 0xcb5c5c — __ZN4Ogre21HardwareBufferManager12getSingletonEv
+// type: _DWORD __fastcall(Ogre::HardwareBufferManager *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManager::getSingleton(void)")]
+// was: Ogre::HardwareBufferManager::getSingleton(void)
+pub fn stub_cb5c5c() -> ! {
+    todo!("0xcb5c5c Ogre::HardwareBufferManager::getSingleton(void)")
+}
+
+// 0xcb5c6c — __ZN4Ogre21HardwareBufferManagerC2EPNS_25HardwareBufferManagerBaseE
+#[doc(alias = "Ogre::HardwareBufferManager::HardwareBufferManager(Ogre::HardwareBufferManagerBase *)")]
+// was: Ogre::HardwareBufferManager::HardwareBufferManager(Ogre::HardwareBufferManagerBase *)
+pub fn stub_cb5c6c() -> ! {
+    todo!("0xcb5c6c Ogre::HardwareBufferManager::HardwareBufferManager(Ogre::HardwareBufferManagerBase *)")
+}
+
+// 0xcb5d70 — __ZN4Ogre25HardwareBufferManagerBaseC2Ev
+// type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::HardwareBufferManagerBase(void)")]
+// was: Ogre::HardwareBufferManagerBase::HardwareBufferManagerBase(void)
+pub fn stub_cb5d70() -> ! {
+    todo!("0xcb5d70 Ogre::HardwareBufferManagerBase::HardwareBufferManagerBase(void)")
+}
+
+// 0xcb5e60 — __ZN4Ogre25HardwareBufferManagerBaseD2Ev
+// type: void __fastcall(Ogre::HardwareBufferManagerBase *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::~HardwareBufferManagerBase()")]
+// was: Ogre::HardwareBufferManagerBase::~HardwareBufferManagerBase()
+pub fn stub_cb5e60() -> ! {
+    todo!("0xcb5e60 Ogre::HardwareBufferManagerBase::~HardwareBufferManagerBase()")
+}
+
+// 0xcb605c — __ZN4Ogre21HardwareBufferManagerD0Ev
+// type: void __fastcall(Ogre::HardwareBufferManager *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManager::~HardwareBufferManager()")]
+// was: Ogre::HardwareBufferManager::~HardwareBufferManager()
+pub fn stub_cb605c() -> ! {
+    todo!("0xcb605c Ogre::HardwareBufferManager::~HardwareBufferManager()")
+}
+
+// 0xcb60fc — __ZN4Ogre21HardwareBufferManagerD1Ev
+// type: void __fastcall(Ogre::HardwareBufferManager *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManager::~HardwareBufferManager()")]
+// was: Ogre::HardwareBufferManager::~HardwareBufferManager()
+pub fn stub_cb60fc() -> ! {
+    todo!("0xcb60fc Ogre::HardwareBufferManager::~HardwareBufferManager()")
+}
+
+// 0xcb6114 — __ZN4Ogre21HardwareBufferManagerD2Ev
+// type: void __fastcall(Ogre::HardwareBufferManager *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManager::~HardwareBufferManager()")]
+// was: Ogre::HardwareBufferManager::~HardwareBufferManager()
+pub fn stub_cb6114() -> ! {
+    todo!("0xcb6114 Ogre::HardwareBufferManager::~HardwareBufferManager()")
+}
+
+// 0xcb612c — __ZN4Ogre25HardwareBufferManagerBaseD0Ev
+// type: void __fastcall(Ogre::HardwareBufferManagerBase *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::~HardwareBufferManagerBase()")]
+// was: Ogre::HardwareBufferManagerBase::~HardwareBufferManagerBase()
+pub fn stub_cb612c() -> ! {
+    todo!("0xcb612c Ogre::HardwareBufferManagerBase::~HardwareBufferManagerBase()")
+}
+
+// 0xcb61bc — __ZN4Ogre25HardwareBufferManagerBaseD1Ev
+// type: void __fastcall(Ogre::HardwareBufferManagerBase *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::~HardwareBufferManagerBase()")]
+// was: Ogre::HardwareBufferManagerBase::~HardwareBufferManagerBase()
+pub fn stub_cb61bc() -> ! {
+    todo!("0xcb61bc Ogre::HardwareBufferManagerBase::~HardwareBufferManagerBase()")
+}
+
+// 0xcb61c8 — __ZN4Ogre25HardwareBufferManagerBase23createVertexDeclarationEv
+// type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::createVertexDeclaration(void)")]
+// was: Ogre::HardwareBufferManagerBase::createVertexDeclaration(void)
+pub fn stub_cb61c8() -> ! {
+    todo!("0xcb61c8 Ogre::HardwareBufferManagerBase::createVertexDeclaration(void)")
+}
+
+// 0xcb61ec — __ZN4Ogre25HardwareBufferManagerBase24destroyVertexDeclarationEPNS_17VertexDeclarationE
+// type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this, Ogre::VertexDeclaration *)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::destroyVertexDeclaration(Ogre::VertexDeclaration *)")]
+// was: Ogre::HardwareBufferManagerBase::destroyVertexDeclaration(Ogre::VertexDeclaration *)
+pub fn stub_cb61ec() -> ! {
+    todo!("0xcb61ec Ogre::HardwareBufferManagerBase::destroyVertexDeclaration(Ogre::VertexDeclaration *)")
+}
+
+// 0xcb624c — __ZN4Ogre25HardwareBufferManagerBase25createVertexBufferBindingEv
+// type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::createVertexBufferBinding(void)")]
+// was: Ogre::HardwareBufferManagerBase::createVertexBufferBinding(void)
+pub fn stub_cb624c() -> ! {
+    todo!("0xcb624c Ogre::HardwareBufferManagerBase::createVertexBufferBinding(void)")
+}
+
+// 0xcb6270 — __ZN4Ogre25HardwareBufferManagerBase26destroyVertexBufferBindingEPNS_19VertexBufferBindingE
+// type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this, Ogre::VertexBufferBinding *)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::destroyVertexBufferBinding(Ogre::VertexBufferBinding *)")]
+// was: Ogre::HardwareBufferManagerBase::destroyVertexBufferBinding(Ogre::VertexBufferBinding *)
+pub fn stub_cb6270() -> ! {
+    todo!("0xcb6270 Ogre::HardwareBufferManagerBase::destroyVertexBufferBinding(Ogre::VertexBufferBinding *)")
+}
+
+// 0xcb62d0 — __ZN4Ogre25HardwareBufferManagerBase27createVertexDeclarationImplEv
+// type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::createVertexDeclarationImpl(void)")]
+// was: Ogre::HardwareBufferManagerBase::createVertexDeclarationImpl(void)
+pub fn stub_cb62d0() -> ! {
+    todo!("0xcb62d0 Ogre::HardwareBufferManagerBase::createVertexDeclarationImpl(void)")
+}
+
+// 0xcb6388 — __ZN4Ogre25HardwareBufferManagerBase28destroyVertexDeclarationImplEPNS_17VertexDeclarationE
+#[doc(alias = "Ogre::HardwareBufferManagerBase::destroyVertexDeclarationImpl(Ogre::VertexDeclaration *)")]
+// was: Ogre::HardwareBufferManagerBase::destroyVertexDeclarationImpl(Ogre::VertexDeclaration *)
+pub fn stub_cb6388() -> ! {
+    todo!("0xcb6388 Ogre::HardwareBufferManagerBase::destroyVertexDeclarationImpl(Ogre::VertexDeclaration *)")
+}
+
+// 0xcb639c — __ZN4Ogre25HardwareBufferManagerBase29createVertexBufferBindingImplEv
+// type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::createVertexBufferBindingImpl(void)")]
+// was: Ogre::HardwareBufferManagerBase::createVertexBufferBindingImpl(void)
+pub fn stub_cb639c() -> ! {
+    todo!("0xcb639c Ogre::HardwareBufferManagerBase::createVertexBufferBindingImpl(void)")
+}
+
+// 0xcb6454 — __ZN4Ogre25HardwareBufferManagerBase30destroyVertexBufferBindingImplEPNS_19VertexBufferBindingE
+#[doc(alias = "Ogre::HardwareBufferManagerBase::destroyVertexBufferBindingImpl(Ogre::VertexBufferBinding *)")]
+// was: Ogre::HardwareBufferManagerBase::destroyVertexBufferBindingImpl(Ogre::VertexBufferBinding *)
+pub fn stub_cb6454() -> ! {
+    todo!("0xcb6454 Ogre::HardwareBufferManagerBase::destroyVertexBufferBindingImpl(Ogre::VertexBufferBinding *)")
+}
+
+// 0xcb6468 — __ZN4Ogre25HardwareBufferManagerBase22destroyAllDeclarationsEv
+// type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::destroyAllDeclarations(void)")]
+// was: Ogre::HardwareBufferManagerBase::destroyAllDeclarations(void)
+pub fn stub_cb6468() -> ! {
+    todo!("0xcb6468 Ogre::HardwareBufferManagerBase::destroyAllDeclarations(void)")
+}
+
+// 0xcb64a4 — __ZN4Ogre25HardwareBufferManagerBase18destroyAllBindingsEv
+// type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::destroyAllBindings(void)")]
+// was: Ogre::HardwareBufferManagerBase::destroyAllBindings(void)
+pub fn stub_cb64a4() -> ! {
+    todo!("0xcb64a4 Ogre::HardwareBufferManagerBase::destroyAllBindings(void)")
+}
+
+// 0xcb64e0 — __ZN4Ogre25HardwareBufferManagerBase33registerVertexBufferSourceAndCopyERKNS_29HardwareVertexBufferSharedPtrES3_
+// type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this, const Ogre::HardwareVertexBufferSharedPtr *, const Ogre::HardwareVertexBufferSharedPtr *)
+#[doc(alias = "Ogre::HardwareBufferManagerBase::registerVertexBufferSourceAndCopy(Ogre::HardwareVertexBufferSharedPtr const&,Ogre::HardwareVertexBufferSharedPtr const&)")]
+// was: Ogre::HardwareBufferManagerBase::registerVertexBufferSourceAndCopy(Ogre::HardwareVertexBufferSharedPtr const&,Ogre::HardwareVertexBufferSharedPtr const&)
+pub fn stub_cb64e0() -> ! {
+    todo!("0xcb64e0 Ogre::HardwareBufferManagerBase::registerVertexBufferSourceAndCopy(Ogre::HardwareVertexBufferSharedPtr const&,Ogre::HardwareVertexBufferSharedPtr const&)")
+}

@@ -1,6 +1,6 @@
-//! platform generated — 3474 stubs sorted by EA, from ida/export.json
-//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2401 in prior 3324, 362 remaining before batch) | ObjC -[/+ only
-//! Batch: 3474 stubs (3324 prior +150 this batch, 212 ObjC remaining, 2763 total ObjC) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! platform generated — 3624 stubs sorted by EA, from ida/export.json
+//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2551 in prior 3474, 362 remaining before batch) | ObjC -[/+ only
+//! Batch: 3624 stubs (3474 prior +150 this batch, 62 ObjC remaining, 2763 total ObjC) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -24441,4 +24441,1054 @@ pub fn stub_f12600() -> ! {
 #[doc(alias = "-[FlurryDataSenderBase didCompleteAllTasks]")]
 pub fn stub_f12618() -> ! {
     todo!("0xf12618 -[FlurryDataSenderBase didCompleteAllTasks]")
+}
+
+// 0xf12630 — -[FlurryDataSenderBase cancelTasks]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase cancelTasks]")]
+pub fn stub_f12630() -> ! {
+    todo!("0xf12630 -[FlurryDataSenderBase cancelTasks]")
+}
+
+// 0xf12680 — -[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]")]
+pub fn stub_f12680() -> ! {
+    todo!("0xf12680 -[FlurryDataSenderBase startBackgroundTaskTrackingIfNeeded]")
+}
+
+// 0xf127ac — -[FlurryDataSenderBase stopBackgroundTasksTracking]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase stopBackgroundTasksTracking]")]
+pub fn stub_f127ac() -> ! {
+    todo!("0xf127ac -[FlurryDataSenderBase stopBackgroundTasksTracking]")
+}
+
+// 0xf128ac — -[FlurryDataSenderBase networkStatusChanged:]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderBase networkStatusChanged:]")]
+pub fn stub_f128ac() -> ! {
+    todo!("0xf128ac -[FlurryDataSenderBase networkStatusChanged:]")
+}
+
+// 0xf129d8 — -[FlurryDataSenderBase performRetransmitNotSentBlocks]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase performRetransmitNotSentBlocks]")]
+pub fn stub_f129d8() -> ! {
+    todo!("0xf129d8 -[FlurryDataSenderBase performRetransmitNotSentBlocks]")
+}
+
+// 0xf12a70 — -[FlurryDataSenderBase runningTasks]
+// type: NSMutableArray *__cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase runningTasks]")]
+pub fn stub_f12a70() -> ! {
+    todo!("0xf12a70 -[FlurryDataSenderBase runningTasks]")
+}
+
+// 0xf12a80 — -[FlurryDataSenderBase setRunningTasks:]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderBase setRunningTasks:]")]
+pub fn stub_f12a80() -> ! {
+    todo!("0xf12a80 -[FlurryDataSenderBase setRunningTasks:]")
+}
+
+// 0xf12aa4 — -[FlurryDataSenderBase backgroundTask]
+// type: unsigned int __cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase backgroundTask]")]
+pub fn stub_f12aa4() -> ! {
+    todo!("0xf12aa4 -[FlurryDataSenderBase backgroundTask]")
+}
+
+// 0xf12ab4 — -[FlurryDataSenderBase setBackgroundTask:]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL, unsigned int)
+#[doc(alias = "-[FlurryDataSenderBase setBackgroundTask:]")]
+pub fn stub_f12ab4() -> ! {
+    todo!("0xf12ab4 -[FlurryDataSenderBase setBackgroundTask:]")
+}
+
+// 0xf12ac4 — -[FlurryDataSenderBase queue]
+// type: dispatch_queue_s *__cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase queue]")]
+pub fn stub_f12ac4() -> ! {
+    todo!("0xf12ac4 -[FlurryDataSenderBase queue]")
+}
+
+// 0xf12ad4 — -[FlurryDataSenderBase setQueue:]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL, dispatch_queue_s *)
+#[doc(alias = "-[FlurryDataSenderBase setQueue:]")]
+pub fn stub_f12ad4() -> ! {
+    todo!("0xf12ad4 -[FlurryDataSenderBase setQueue:]")
+}
+
+// 0xf12ae4 — +[FlurryGlobalVariableStorage sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryGlobalVariableStorage sharedInstance]")]
+pub fn stub_f12ae4() -> ! {
+    todo!("0xf12ae4 +[FlurryGlobalVariableStorage sharedInstance]")
+}
+
+// 0xf12bb4 — -[FlurryGlobalVariableStorage init]
+// type: FlurryGlobalVariableStorage *__cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage init]")]
+pub fn stub_f12bb4() -> ! {
+    todo!("0xf12bb4 -[FlurryGlobalVariableStorage init]")
+}
+
+// 0xf12d3c — -[FlurryGlobalVariableStorage setApiKey:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
+#[doc(alias = "-[FlurryGlobalVariableStorage setApiKey:]")]
+pub fn stub_f12d3c() -> ! {
+    todo!("0xf12d3c -[FlurryGlobalVariableStorage setApiKey:]")
+}
+
+// 0xf12dd0 — -[FlurryGlobalVariableStorage setPushToken:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
+#[doc(alias = "-[FlurryGlobalVariableStorage setPushToken:]")]
+pub fn stub_f12dd0() -> ! {
+    todo!("0xf12dd0 -[FlurryGlobalVariableStorage setPushToken:]")
+}
+
+// 0xf12ec8 — -[FlurryGlobalVariableStorage savedResponseUrl]
+// type: NSString *__cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage savedResponseUrl]")]
+pub fn stub_f12ec8() -> ! {
+    todo!("0xf12ec8 -[FlurryGlobalVariableStorage savedResponseUrl]")
+}
+
+// 0xf12ee0 — -[FlurryGlobalVariableStorage setSavedResponseUrl:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
+#[doc(alias = "-[FlurryGlobalVariableStorage setSavedResponseUrl:]")]
+pub fn stub_f12ee0() -> ! {
+    todo!("0xf12ee0 -[FlurryGlobalVariableStorage setSavedResponseUrl:]")
+}
+
+// 0xf12f04 — -[FlurryGlobalVariableStorage apiKey]
+// type: NSString *__cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage apiKey]")]
+pub fn stub_f12f04() -> ! {
+    todo!("0xf12f04 -[FlurryGlobalVariableStorage apiKey]")
+}
+
+// 0xf12f1c — -[FlurryGlobalVariableStorage udidEnabled]
+// type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage udidEnabled]")]
+pub fn stub_f12f1c() -> ! {
+    todo!("0xf12f1c -[FlurryGlobalVariableStorage udidEnabled]")
+}
+
+// 0xf12f34 — -[FlurryGlobalVariableStorage setUdidEnabled:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
+#[doc(alias = "-[FlurryGlobalVariableStorage setUdidEnabled:]")]
+pub fn stub_f12f34() -> ! {
+    todo!("0xf12f34 -[FlurryGlobalVariableStorage setUdidEnabled:]")
+}
+
+// 0xf12f4c — -[FlurryGlobalVariableStorage pauseSecondsBeforeStartingNewSession]
+// type: int __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage pauseSecondsBeforeStartingNewSession]")]
+pub fn stub_f12f4c() -> ! {
+    todo!("0xf12f4c -[FlurryGlobalVariableStorage pauseSecondsBeforeStartingNewSession]")
+}
+
+// 0xf12f60 — -[FlurryGlobalVariableStorage setPauseSecondsBeforeStartingNewSession:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, int)
+#[doc(alias = "-[FlurryGlobalVariableStorage setPauseSecondsBeforeStartingNewSession:]")]
+pub fn stub_f12f60() -> ! {
+    todo!("0xf12f60 -[FlurryGlobalVariableStorage setPauseSecondsBeforeStartingNewSession:]")
+}
+
+// 0xf12f78 — -[FlurryGlobalVariableStorage pauseTime]
+// type: NSDate *__cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage pauseTime]")]
+pub fn stub_f12f78() -> ! {
+    todo!("0xf12f78 -[FlurryGlobalVariableStorage pauseTime]")
+}
+
+// 0xf12f90 — -[FlurryGlobalVariableStorage setPauseTime:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
+#[doc(alias = "-[FlurryGlobalVariableStorage setPauseTime:]")]
+pub fn stub_f12f90() -> ! {
+    todo!("0xf12f90 -[FlurryGlobalVariableStorage setPauseTime:]")
+}
+
+// 0xf12fb4 — -[FlurryGlobalVariableStorage sessionReportsOnCloseEnabled]
+// type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage sessionReportsOnCloseEnabled]")]
+pub fn stub_f12fb4() -> ! {
+    todo!("0xf12fb4 -[FlurryGlobalVariableStorage sessionReportsOnCloseEnabled]")
+}
+
+// 0xf12fcc — -[FlurryGlobalVariableStorage setSessionReportsOnCloseEnabled:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
+#[doc(alias = "-[FlurryGlobalVariableStorage setSessionReportsOnCloseEnabled:]")]
+pub fn stub_f12fcc() -> ! {
+    todo!("0xf12fcc -[FlurryGlobalVariableStorage setSessionReportsOnCloseEnabled:]")
+}
+
+// 0xf12fe4 — -[FlurryGlobalVariableStorage sessionReportsOnPauseEnabled]
+// type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage sessionReportsOnPauseEnabled]")]
+pub fn stub_f12fe4() -> ! {
+    todo!("0xf12fe4 -[FlurryGlobalVariableStorage sessionReportsOnPauseEnabled]")
+}
+
+// 0xf12ffc — -[FlurryGlobalVariableStorage setSessionReportsOnPauseEnabled:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
+#[doc(alias = "-[FlurryGlobalVariableStorage setSessionReportsOnPauseEnabled:]")]
+pub fn stub_f12ffc() -> ! {
+    todo!("0xf12ffc -[FlurryGlobalVariableStorage setSessionReportsOnPauseEnabled:]")
+}
+
+// 0xf13014 — -[FlurryGlobalVariableStorage backgroundSessionEnabled]
+// type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage backgroundSessionEnabled]")]
+pub fn stub_f13014() -> ! {
+    todo!("0xf13014 -[FlurryGlobalVariableStorage backgroundSessionEnabled]")
+}
+
+// 0xf1302c — -[FlurryGlobalVariableStorage setBackgroundSessionEnabled:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
+#[doc(alias = "-[FlurryGlobalVariableStorage setBackgroundSessionEnabled:]")]
+pub fn stub_f1302c() -> ! {
+    todo!("0xf1302c -[FlurryGlobalVariableStorage setBackgroundSessionEnabled:]")
+}
+
+// 0xf13044 — -[FlurryGlobalVariableStorage crashReportingEnabled]
+// type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage crashReportingEnabled]")]
+pub fn stub_f13044() -> ! {
+    todo!("0xf13044 -[FlurryGlobalVariableStorage crashReportingEnabled]")
+}
+
+// 0xf1305c — -[FlurryGlobalVariableStorage setCrashReportingEnabled:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
+#[doc(alias = "-[FlurryGlobalVariableStorage setCrashReportingEnabled:]")]
+pub fn stub_f1305c() -> ! {
+    todo!("0xf1305c -[FlurryGlobalVariableStorage setCrashReportingEnabled:]")
+}
+
+// 0xf13074 — -[FlurryGlobalVariableStorage appVersion]
+// type: NSString *__cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage appVersion]")]
+pub fn stub_f13074() -> ! {
+    todo!("0xf13074 -[FlurryGlobalVariableStorage appVersion]")
+}
+
+// 0xf1308c — -[FlurryGlobalVariableStorage setAppVersion:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
+#[doc(alias = "-[FlurryGlobalVariableStorage setAppVersion:]")]
+pub fn stub_f1308c() -> ! {
+    todo!("0xf1308c -[FlurryGlobalVariableStorage setAppVersion:]")
+}
+
+// 0xf130b0 — -[FlurryGlobalVariableStorage eventLoggingEnabled]
+// type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage eventLoggingEnabled]")]
+pub fn stub_f130b0() -> ! {
+    todo!("0xf130b0 -[FlurryGlobalVariableStorage eventLoggingEnabled]")
+}
+
+// 0xf130c8 — -[FlurryGlobalVariableStorage setEventLoggingEnabled:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
+#[doc(alias = "-[FlurryGlobalVariableStorage setEventLoggingEnabled:]")]
+pub fn stub_f130c8() -> ! {
+    todo!("0xf130c8 -[FlurryGlobalVariableStorage setEventLoggingEnabled:]")
+}
+
+// 0xf130e0 — -[FlurryGlobalVariableStorage userID]
+// type: NSString *__cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage userID]")]
+pub fn stub_f130e0() -> ! {
+    todo!("0xf130e0 -[FlurryGlobalVariableStorage userID]")
+}
+
+// 0xf130f8 — -[FlurryGlobalVariableStorage setUserID:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
+#[doc(alias = "-[FlurryGlobalVariableStorage setUserID:]")]
+pub fn stub_f130f8() -> ! {
+    todo!("0xf130f8 -[FlurryGlobalVariableStorage setUserID:]")
+}
+
+// 0xf1311c — -[FlurryGlobalVariableStorage age]
+// type: int __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage age]")]
+pub fn stub_f1311c() -> ! {
+    todo!("0xf1311c -[FlurryGlobalVariableStorage age]")
+}
+
+// 0xf13130 — -[FlurryGlobalVariableStorage setAge:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, int)
+#[doc(alias = "-[FlurryGlobalVariableStorage setAge:]")]
+pub fn stub_f13130() -> ! {
+    todo!("0xf13130 -[FlurryGlobalVariableStorage setAge:]")
+}
+
+// 0xf13148 — -[FlurryGlobalVariableStorage gender]
+// type: NSString *__cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage gender]")]
+pub fn stub_f13148() -> ! {
+    todo!("0xf13148 -[FlurryGlobalVariableStorage gender]")
+}
+
+// 0xf13160 — -[FlurryGlobalVariableStorage setGender:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
+#[doc(alias = "-[FlurryGlobalVariableStorage setGender:]")]
+pub fn stub_f13160() -> ! {
+    todo!("0xf13160 -[FlurryGlobalVariableStorage setGender:]")
+}
+
+// 0xf13184 — -[FlurryGlobalVariableStorage startSessionCalled]
+// type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage startSessionCalled]")]
+pub fn stub_f13184() -> ! {
+    todo!("0xf13184 -[FlurryGlobalVariableStorage startSessionCalled]")
+}
+
+// 0xf1319c — -[FlurryGlobalVariableStorage setStartSessionCalled:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
+#[doc(alias = "-[FlurryGlobalVariableStorage setStartSessionCalled:]")]
+pub fn stub_f1319c() -> ! {
+    todo!("0xf1319c -[FlurryGlobalVariableStorage setStartSessionCalled:]")
+}
+
+// 0xf131b4 — -[FlurryGlobalVariableStorage launchOptions]
+// type: NSMutableDictionary *__cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage launchOptions]")]
+pub fn stub_f131b4() -> ! {
+    todo!("0xf131b4 -[FlurryGlobalVariableStorage launchOptions]")
+}
+
+// 0xf131c8 — -[FlurryGlobalVariableStorage pushToken]
+// type: NSString *__cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage pushToken]")]
+pub fn stub_f131c8() -> ! {
+    todo!("0xf131c8 -[FlurryGlobalVariableStorage pushToken]")
+}
+
+// 0xf131e0 — -[FlurryGlobalVariableStorage location]
+// type: id __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage location]")]
+pub fn stub_f131e0() -> ! {
+    todo!("0xf131e0 -[FlurryGlobalVariableStorage location]")
+}
+
+// 0xf131f8 — -[FlurryGlobalVariableStorage setLocation:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, id)
+#[doc(alias = "-[FlurryGlobalVariableStorage setLocation:]")]
+pub fn stub_f131f8() -> ! {
+    todo!("0xf131f8 -[FlurryGlobalVariableStorage setLocation:]")
+}
+
+// 0xf1321c — -[FlurryGlobalVariableStorage macAddressEnabled]
+// type: char __cdecl(FlurryGlobalVariableStorage *self, SEL)
+#[doc(alias = "-[FlurryGlobalVariableStorage macAddressEnabled]")]
+pub fn stub_f1321c() -> ! {
+    todo!("0xf1321c -[FlurryGlobalVariableStorage macAddressEnabled]")
+}
+
+// 0xf13234 — -[FlurryGlobalVariableStorage setMacAddressEnabled:]
+// type: void __cdecl(FlurryGlobalVariableStorage *self, SEL, char)
+#[doc(alias = "-[FlurryGlobalVariableStorage setMacAddressEnabled:]")]
+pub fn stub_f13234() -> ! {
+    todo!("0xf13234 -[FlurryGlobalVariableStorage setMacAddressEnabled:]")
+}
+
+// 0xf1324c — -[FlurryError init]
+// type: FlurryError *__cdecl(FlurryError *self, SEL)
+#[doc(alias = "-[FlurryError init]")]
+pub fn stub_f1324c() -> ! {
+    todo!("0xf1324c -[FlurryError init]")
+}
+
+// 0xf132f0 — -[FlurryError initWithCoder:]
+// type: FlurryError *__cdecl(FlurryError *self, SEL, id)
+#[doc(alias = "-[FlurryError initWithCoder:]")]
+pub fn stub_f132f0() -> ! {
+    todo!("0xf132f0 -[FlurryError initWithCoder:]")
+}
+
+// 0xf13454 — -[FlurryError encodeWithCoder:]
+// type: void __cdecl(FlurryError *self, SEL, id)
+#[doc(alias = "-[FlurryError encodeWithCoder:]")]
+pub fn stub_f13454() -> ! {
+    todo!("0xf13454 -[FlurryError encodeWithCoder:]")
+}
+
+// 0xf1358c — +[FlurryError errorWithString:message:exceptionString:errorType:reportData:]
+// type: id __cdecl(id, SEL, id, id, id, int, id)
+#[doc(alias = "+[FlurryError errorWithString:message:exceptionString:errorType:reportData:]")]
+pub fn stub_f1358c() -> ! {
+    todo!("0xf1358c +[FlurryError errorWithString:message:exceptionString:errorType:reportData:]")
+}
+
+// 0xf13620 — -[FlurryError appendToData:]
+// type: void __cdecl(FlurryError *self, SEL, id)
+#[doc(alias = "-[FlurryError appendToData:]")]
+pub fn stub_f13620() -> ! {
+    todo!("0xf13620 -[FlurryError appendToData:]")
+}
+
+// 0xf137dc — -[FlurryError description]
+// type: id __cdecl(FlurryError *self, SEL)
+#[doc(alias = "-[FlurryError description]")]
+pub fn stub_f137dc() -> ! {
+    todo!("0xf137dc -[FlurryError description]")
+}
+
+// 0xf138a0 — -[FlurryError dealloc]
+// type: void __cdecl(FlurryError *self, SEL)
+#[doc(alias = "-[FlurryError dealloc]")]
+pub fn stub_f138a0() -> ! {
+    todo!("0xf138a0 -[FlurryError dealloc]")
+}
+
+// 0xf13934 — -[FlurryError errorID]
+// type: int __cdecl(FlurryError *self, SEL)
+#[doc(alias = "-[FlurryError errorID]")]
+pub fn stub_f13934() -> ! {
+    todo!("0xf13934 -[FlurryError errorID]")
+}
+
+// 0xf13944 — -[FlurryError setErrorID:]
+// type: void __cdecl(FlurryError *self, SEL, int)
+#[doc(alias = "-[FlurryError setErrorID:]")]
+pub fn stub_f13944() -> ! {
+    todo!("0xf13944 -[FlurryError setErrorID:]")
+}
+
+// 0xf13954 — -[FlurryError date]
+// type: NSDate *__cdecl(FlurryError *self, SEL)
+#[doc(alias = "-[FlurryError date]")]
+pub fn stub_f13954() -> ! {
+    todo!("0xf13954 -[FlurryError date]")
+}
+
+// 0xf13964 — -[FlurryError setDate:]
+// type: void __cdecl(FlurryError *self, SEL, id)
+#[doc(alias = "-[FlurryError setDate:]")]
+pub fn stub_f13964() -> ! {
+    todo!("0xf13964 -[FlurryError setDate:]")
+}
+
+// 0xf13988 — -[FlurryError errorString]
+// type: NSString *__cdecl(FlurryError *self, SEL)
+#[doc(alias = "-[FlurryError errorString]")]
+pub fn stub_f13988() -> ! {
+    todo!("0xf13988 -[FlurryError errorString]")
+}
+
+// 0xf13998 — -[FlurryError setErrorString:]
+// type: void __cdecl(FlurryError *self, SEL, id)
+#[doc(alias = "-[FlurryError setErrorString:]")]
+pub fn stub_f13998() -> ! {
+    todo!("0xf13998 -[FlurryError setErrorString:]")
+}
+
+// 0xf139bc — -[FlurryError errorMessage]
+// type: NSString *__cdecl(FlurryError *self, SEL)
+#[doc(alias = "-[FlurryError errorMessage]")]
+pub fn stub_f139bc() -> ! {
+    todo!("0xf139bc -[FlurryError errorMessage]")
+}
+
+// 0xf139cc — -[FlurryError setErrorMessage:]
+// type: void __cdecl(FlurryError *self, SEL, id)
+#[doc(alias = "-[FlurryError setErrorMessage:]")]
+pub fn stub_f139cc() -> ! {
+    todo!("0xf139cc -[FlurryError setErrorMessage:]")
+}
+
+// 0xf139f0 — -[FlurryError exceptionString]
+// type: NSString *__cdecl(FlurryError *self, SEL)
+#[doc(alias = "-[FlurryError exceptionString]")]
+pub fn stub_f139f0() -> ! {
+    todo!("0xf139f0 -[FlurryError exceptionString]")
+}
+
+// 0xf13a00 — -[FlurryError setExceptionString:]
+// type: void __cdecl(FlurryError *self, SEL, id)
+#[doc(alias = "-[FlurryError setExceptionString:]")]
+pub fn stub_f13a00() -> ! {
+    todo!("0xf13a00 -[FlurryError setExceptionString:]")
+}
+
+// 0xf13a24 — -[FlurryError errorType]
+// type: int __cdecl(FlurryError *self, SEL)
+#[doc(alias = "-[FlurryError errorType]")]
+pub fn stub_f13a24() -> ! {
+    todo!("0xf13a24 -[FlurryError errorType]")
+}
+
+// 0xf13a34 — -[FlurryError setErrorType:]
+// type: void __cdecl(FlurryError *self, SEL, int)
+#[doc(alias = "-[FlurryError setErrorType:]")]
+pub fn stub_f13a34() -> ! {
+    todo!("0xf13a34 -[FlurryError setErrorType:]")
+}
+
+// 0xf13a44 — -[FlurryError reportData]
+// type: NSData *__cdecl(FlurryError *self, SEL)
+#[doc(alias = "-[FlurryError reportData]")]
+pub fn stub_f13a44() -> ! {
+    todo!("0xf13a44 -[FlurryError reportData]")
+}
+
+// 0xf13a54 — -[FlurryError setReportData:]
+// type: void __cdecl(FlurryError *self, SEL, id)
+#[doc(alias = "-[FlurryError setReportData:]")]
+pub fn stub_f13a54() -> ! {
+    todo!("0xf13a54 -[FlurryError setReportData:]")
+}
+
+// 0xf13a78 — +[FlurryKeychainWrapper keychainWrapperWithIdentifier:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryKeychainWrapper keychainWrapperWithIdentifier:]")]
+pub fn stub_f13a78() -> ! {
+    todo!("0xf13a78 +[FlurryKeychainWrapper keychainWrapperWithIdentifier:]")
+}
+
+// 0xf13ac0 — -[FlurryKeychainWrapper initWithIdentifier:]
+// type: FlurryKeychainWrapper *__cdecl(FlurryKeychainWrapper *self, SEL, id)
+#[doc(alias = "-[FlurryKeychainWrapper initWithIdentifier:]")]
+pub fn stub_f13ac0() -> ! {
+    todo!("0xf13ac0 -[FlurryKeychainWrapper initWithIdentifier:]")
+}
+
+// 0xf13bb4 — -[FlurryKeychainWrapper dealloc]
+// type: void __cdecl(FlurryKeychainWrapper *self, SEL)
+#[doc(alias = "-[FlurryKeychainWrapper dealloc]")]
+pub fn stub_f13bb4() -> ! {
+    todo!("0xf13bb4 -[FlurryKeychainWrapper dealloc]")
+}
+
+// 0xf13bf8 — -[FlurryKeychainWrapper setupSearchForKey:]
+// type: id __cdecl(FlurryKeychainWrapper *self, SEL, id)
+#[doc(alias = "-[FlurryKeychainWrapper setupSearchForKey:]")]
+pub fn stub_f13bf8() -> ! {
+    todo!("0xf13bf8 -[FlurryKeychainWrapper setupSearchForKey:]")
+}
+
+// 0xf13ce0 — -[FlurryKeychainWrapper dataForKey:]
+// type: id __cdecl(FlurryKeychainWrapper *self, SEL, id)
+#[doc(alias = "-[FlurryKeychainWrapper dataForKey:]")]
+pub fn stub_f13ce0() -> ! {
+    todo!("0xf13ce0 -[FlurryKeychainWrapper dataForKey:]")
+}
+
+// 0xf13d88 — -[FlurryKeychainWrapper stringForKey:]
+// type: id __cdecl(FlurryKeychainWrapper *self, SEL, id)
+#[doc(alias = "-[FlurryKeychainWrapper stringForKey:]")]
+pub fn stub_f13d88() -> ! {
+    todo!("0xf13d88 -[FlurryKeychainWrapper stringForKey:]")
+}
+
+// 0xf13de8 — -[FlurryKeychainWrapper setObject:forKey:]
+// type: char __cdecl(FlurryKeychainWrapper *self, SEL, id, id)
+#[doc(alias = "-[FlurryKeychainWrapper setObject:forKey:]")]
+pub fn stub_f13de8() -> ! {
+    todo!("0xf13de8 -[FlurryKeychainWrapper setObject:forKey:]")
+}
+
+// 0xf13e30 — -[FlurryKeychainWrapper objectForKey:]
+// type: id __cdecl(FlurryKeychainWrapper *self, SEL, id)
+#[doc(alias = "-[FlurryKeychainWrapper objectForKey:]")]
+pub fn stub_f13e30() -> ! {
+    todo!("0xf13e30 -[FlurryKeychainWrapper objectForKey:]")
+}
+
+// 0xf13e6c — -[FlurryKeychainWrapper setString:forKey:]
+// type: char __cdecl(FlurryKeychainWrapper *self, SEL, id, id)
+#[doc(alias = "-[FlurryKeychainWrapper setString:forKey:]")]
+pub fn stub_f13e6c() -> ! {
+    todo!("0xf13e6c -[FlurryKeychainWrapper setString:forKey:]")
+}
+
+// 0xf13ea0 — -[FlurryKeychainWrapper setData:forKey:]
+// type: char __cdecl(FlurryKeychainWrapper *self, SEL, id, id)
+#[doc(alias = "-[FlurryKeychainWrapper setData:forKey:]")]
+pub fn stub_f13ea0() -> ! {
+    todo!("0xf13ea0 -[FlurryKeychainWrapper setData:forKey:]")
+}
+
+// 0xf13f68 — -[FlurryKeychainWrapper updateValueData:forKey:]
+// type: char __cdecl(FlurryKeychainWrapper *self, SEL, id, id)
+#[doc(alias = "-[FlurryKeychainWrapper updateValueData:forKey:]")]
+pub fn stub_f13f68() -> ! {
+    todo!("0xf13f68 -[FlurryKeychainWrapper updateValueData:forKey:]")
+}
+
+// 0xf13fd8 — -[FlurryKeychainWrapper removeObjectForKey:]
+// type: void __cdecl(FlurryKeychainWrapper *self, SEL, id)
+#[doc(alias = "-[FlurryKeychainWrapper removeObjectForKey:]")]
+pub fn stub_f13fd8() -> ! {
+    todo!("0xf13fd8 -[FlurryKeychainWrapper removeObjectForKey:]")
+}
+
+// 0xf13ff4 — -[FlurryKeychainWrapper identifier]
+// type: NSString *__cdecl(FlurryKeychainWrapper *self, SEL)
+#[doc(alias = "-[FlurryKeychainWrapper identifier]")]
+pub fn stub_f13ff4() -> ! {
+    todo!("0xf13ff4 -[FlurryKeychainWrapper identifier]")
+}
+
+// 0xf14004 — -[FlurryKeychainWrapper setIdentifier:]
+// type: void __cdecl(FlurryKeychainWrapper *self, SEL, id)
+#[doc(alias = "-[FlurryKeychainWrapper setIdentifier:]")]
+pub fn stub_f14004() -> ! {
+    todo!("0xf14004 -[FlurryKeychainWrapper setIdentifier:]")
+}
+
+// 0xf14030 — +[FlurryPLCrashSignalHandler sharedHandler]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryPLCrashSignalHandler sharedHandler]")]
+pub fn stub_f14030() -> ! {
+    todo!("0xf14030 +[FlurryPLCrashSignalHandler sharedHandler]")
+}
+
+// 0xf14080 — -[FlurryPLCrashSignalHandler init]
+// type: FlurryPLCrashSignalHandler *__cdecl(FlurryPLCrashSignalHandler *self, SEL)
+#[doc(alias = "-[FlurryPLCrashSignalHandler init]")]
+pub fn stub_f14080() -> ! {
+    todo!("0xf14080 -[FlurryPLCrashSignalHandler init]")
+}
+
+// 0xf14104 — -[FlurryPLCrashSignalHandler registerHandlerForSignal:error:]
+// type: char __cdecl(FlurryPLCrashSignalHandler *self, SEL, int, id *)
+#[doc(alias = "-[FlurryPLCrashSignalHandler registerHandlerForSignal:error:]")]
+pub fn stub_f14104() -> ! {
+    todo!("0xf14104 -[FlurryPLCrashSignalHandler registerHandlerForSignal:error:]")
+}
+
+// 0xf141e4 — -[FlurryPLCrashSignalHandler registerHandlerWithCallback:context:error:]
+// type: char __cdecl(FlurryPLCrashSignalHandler *self, SEL, void *, void *, id *)
+#[doc(alias = "-[FlurryPLCrashSignalHandler registerHandlerWithCallback:context:error:]")]
+pub fn stub_f141e4() -> ! {
+    todo!("0xf141e4 -[FlurryPLCrashSignalHandler registerHandlerWithCallback:context:error:]")
+}
+
+// 0xf159c0 — +[FlurryPLCrashReporter initialize]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[FlurryPLCrashReporter initialize]")]
+pub fn stub_f159c0() -> ! {
+    todo!("0xf159c0 +[FlurryPLCrashReporter initialize]")
+}
+
+// 0xf15aac — +[FlurryPLCrashReporter sharedReporter]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryPLCrashReporter sharedReporter]")]
+pub fn stub_f15aac() -> ! {
+    todo!("0xf15aac +[FlurryPLCrashReporter sharedReporter]")
+}
+
+// 0xf15b14 — -[FlurryPLCrashReporter hasPendingCrashReport]
+// type: char __cdecl(FlurryPLCrashReporter *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReporter hasPendingCrashReport]")]
+pub fn stub_f15b14() -> ! {
+    todo!("0xf15b14 -[FlurryPLCrashReporter hasPendingCrashReport]")
+}
+
+// 0xf15b60 — -[FlurryPLCrashReporter loadPendingCrashReportData]
+// type: id __cdecl(FlurryPLCrashReporter *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReporter loadPendingCrashReportData]")]
+pub fn stub_f15b60() -> ! {
+    todo!("0xf15b60 -[FlurryPLCrashReporter loadPendingCrashReportData]")
+}
+
+// 0xf15b78 — -[FlurryPLCrashReporter loadPendingCrashReportDataAndReturnError:]
+// type: id __cdecl(FlurryPLCrashReporter *self, SEL, id *)
+#[doc(alias = "-[FlurryPLCrashReporter loadPendingCrashReportDataAndReturnError:]")]
+pub fn stub_f15b78() -> ! {
+    todo!("0xf15b78 -[FlurryPLCrashReporter loadPendingCrashReportDataAndReturnError:]")
+}
+
+// 0xf15bb8 — -[FlurryPLCrashReporter purgePendingCrashReport]
+// type: char __cdecl(FlurryPLCrashReporter *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReporter purgePendingCrashReport]")]
+pub fn stub_f15bb8() -> ! {
+    todo!("0xf15bb8 -[FlurryPLCrashReporter purgePendingCrashReport]")
+}
+
+// 0xf15bd0 — -[FlurryPLCrashReporter purgePendingCrashReportAndReturnError:]
+// type: char __cdecl(FlurryPLCrashReporter *self, SEL, id *)
+#[doc(alias = "-[FlurryPLCrashReporter purgePendingCrashReportAndReturnError:]")]
+pub fn stub_f15bd0() -> ! {
+    todo!("0xf15bd0 -[FlurryPLCrashReporter purgePendingCrashReportAndReturnError:]")
+}
+
+// 0xf15c20 — -[FlurryPLCrashReporter enableCrashReporter]
+// type: char __cdecl(FlurryPLCrashReporter *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReporter enableCrashReporter]")]
+pub fn stub_f15c20() -> ! {
+    todo!("0xf15c20 -[FlurryPLCrashReporter enableCrashReporter]")
+}
+
+// 0xf15c38 — -[FlurryPLCrashReporter enableCrashReporterAndReturnError:]
+// type: char __cdecl(FlurryPLCrashReporter *self, SEL, id *)
+#[doc(alias = "-[FlurryPLCrashReporter enableCrashReporterAndReturnError:]")]
+pub fn stub_f15c38() -> ! {
+    todo!("0xf15c38 -[FlurryPLCrashReporter enableCrashReporterAndReturnError:]")
+}
+
+// 0xf15e78 — -[FlurryPLCrashReporter generateLiveReportWithThread:]
+// type: id __cdecl(FlurryPLCrashReporter *self, SEL, unsigned int)
+#[doc(alias = "-[FlurryPLCrashReporter generateLiveReportWithThread:]")]
+pub fn stub_f15e78() -> ! {
+    todo!("0xf15e78 -[FlurryPLCrashReporter generateLiveReportWithThread:]")
+}
+
+// 0xf15e90 — -[FlurryPLCrashReporter generateLiveReportWithThread:error:]
+// type: id __cdecl(FlurryPLCrashReporter *self, SEL, unsigned int, id *)
+#[doc(alias = "-[FlurryPLCrashReporter generateLiveReportWithThread:error:]")]
+pub fn stub_f15e90() -> ! {
+    todo!("0xf15e90 -[FlurryPLCrashReporter generateLiveReportWithThread:error:]")
+}
+
+// 0xf160dc — -[FlurryPLCrashReporter generateLiveReport]
+// type: id __cdecl(FlurryPLCrashReporter *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReporter generateLiveReport]")]
+pub fn stub_f160dc() -> ! {
+    todo!("0xf160dc -[FlurryPLCrashReporter generateLiveReport]")
+}
+
+// 0xf160f4 — -[FlurryPLCrashReporter generateLiveReportAndReturnError:]
+// type: id __cdecl(FlurryPLCrashReporter *self, SEL, id *)
+#[doc(alias = "-[FlurryPLCrashReporter generateLiveReportAndReturnError:]")]
+pub fn stub_f160f4() -> ! {
+    todo!("0xf160f4 -[FlurryPLCrashReporter generateLiveReportAndReturnError:]")
+}
+
+// 0xf16118 — -[FlurryPLCrashReporter setCrashCallbacks:]
+// type: void __cdecl(FlurryPLCrashReporter *self, SEL, PLCrashReporterCallbacks *)
+#[doc(alias = "-[FlurryPLCrashReporter setCrashCallbacks:]")]
+pub fn stub_f16118() -> ! {
+    todo!("0xf16118 -[FlurryPLCrashReporter setCrashCallbacks:]")
+}
+
+// 0xf161a0 — -[FlurryPLCrashReporter initWithApplicationIdentifier:appVersion:]
+// type: FlurryPLCrashReporter *__cdecl(FlurryPLCrashReporter *self, SEL, id, id)
+#[doc(alias = "-[FlurryPLCrashReporter initWithApplicationIdentifier:appVersion:]")]
+pub fn stub_f161a0() -> ! {
+    todo!("0xf161a0 -[FlurryPLCrashReporter initWithApplicationIdentifier:appVersion:]")
+}
+
+// 0xf162b8 — -[FlurryPLCrashReporter initWithBundle:]
+// type: FlurryPLCrashReporter *__cdecl(FlurryPLCrashReporter *self, SEL, id)
+#[doc(alias = "-[FlurryPLCrashReporter initWithBundle:]")]
+pub fn stub_f162b8() -> ! {
+    todo!("0xf162b8 -[FlurryPLCrashReporter initWithBundle:]")
+}
+
+// 0xf163bc — -[FlurryPLCrashReporter dealloc]
+// type: void __cdecl(FlurryPLCrashReporter *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReporter dealloc]")]
+pub fn stub_f163bc() -> ! {
+    todo!("0xf163bc -[FlurryPLCrashReporter dealloc]")
+}
+
+// 0xf16434 — -[FlurryPLCrashReporter populateCrashReportDirectoryAndReturnError:]
+// type: char __cdecl(FlurryPLCrashReporter *self, SEL, id *)
+#[doc(alias = "-[FlurryPLCrashReporter populateCrashReportDirectoryAndReturnError:]")]
+pub fn stub_f16434() -> ! {
+    todo!("0xf16434 -[FlurryPLCrashReporter populateCrashReportDirectoryAndReturnError:]")
+}
+
+// 0xf1656c — -[FlurryPLCrashReporter crashReportDirectory]
+// type: id __cdecl(FlurryPLCrashReporter *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReporter crashReportDirectory]")]
+pub fn stub_f1656c() -> ! {
+    todo!("0xf1656c -[FlurryPLCrashReporter crashReportDirectory]")
+}
+
+// 0xf1657c — -[FlurryPLCrashReporter queuedCrashReportDirectory]
+// type: id __cdecl(FlurryPLCrashReporter *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReporter queuedCrashReportDirectory]")]
+pub fn stub_f1657c() -> ! {
+    todo!("0xf1657c -[FlurryPLCrashReporter queuedCrashReportDirectory]")
+}
+
+// 0xf165ac — -[FlurryPLCrashReporter crashReportPath]
+// type: id __cdecl(FlurryPLCrashReporter *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReporter crashReportPath]")]
+pub fn stub_f165ac() -> ! {
+    todo!("0xf165ac -[FlurryPLCrashReporter crashReportPath]")
+}
+
+// 0xf165dc — -[FlurryPLCrashReport initWithData:error:]
+// type: FlurryPLCrashReport *__cdecl(FlurryPLCrashReport *self, SEL, id, id *)
+#[doc(alias = "-[FlurryPLCrashReport initWithData:error:]")]
+pub fn stub_f165dc() -> ! {
+    todo!("0xf165dc -[FlurryPLCrashReport initWithData:error:]")
+}
+
+// 0xf168b4 — -[FlurryPLCrashReport dealloc]
+// type: void __cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport dealloc]")]
+pub fn stub_f168b4() -> ! {
+    todo!("0xf168b4 -[FlurryPLCrashReport dealloc]")
+}
+
+// 0xf169c0 — -[FlurryPLCrashReport imageForAddress:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, unsigned __int64)
+#[doc(alias = "-[FlurryPLCrashReport imageForAddress:]")]
+pub fn stub_f169c0() -> ! {
+    todo!("0xf169c0 -[FlurryPLCrashReport imageForAddress:]")
+}
+
+// 0xf16b00 — -[FlurryPLCrashReport hasMachineInfo]
+// type: char __cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport hasMachineInfo]")]
+pub fn stub_f16b00() -> ! {
+    todo!("0xf16b00 -[FlurryPLCrashReport hasMachineInfo]")
+}
+
+// 0xf16b18 — -[FlurryPLCrashReport hasProcessInfo]
+// type: char __cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport hasProcessInfo]")]
+pub fn stub_f16b18() -> ! {
+    todo!("0xf16b18 -[FlurryPLCrashReport hasProcessInfo]")
+}
+
+// 0xf16b30 — -[FlurryPLCrashReport hasExceptionInfo]
+// type: char __cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport hasExceptionInfo]")]
+pub fn stub_f16b30() -> ! {
+    todo!("0xf16b30 -[FlurryPLCrashReport hasExceptionInfo]")
+}
+
+// 0xf16b48 — -[FlurryPLCrashReport systemInfo]
+// type: FlurryPLCrashReportSystemInfo *__cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport systemInfo]")]
+pub fn stub_f16b48() -> ! {
+    todo!("0xf16b48 -[FlurryPLCrashReport systemInfo]")
+}
+
+// 0xf16b58 — -[FlurryPLCrashReport machineInfo]
+// type: FlurryPLCrashReportMachineInfo *__cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport machineInfo]")]
+pub fn stub_f16b58() -> ! {
+    todo!("0xf16b58 -[FlurryPLCrashReport machineInfo]")
+}
+
+// 0xf16b68 — -[FlurryPLCrashReport applicationInfo]
+// type: FlurryPLCrashReportApplicationInfo *__cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport applicationInfo]")]
+pub fn stub_f16b68() -> ! {
+    todo!("0xf16b68 -[FlurryPLCrashReport applicationInfo]")
+}
+
+// 0xf16b78 — -[FlurryPLCrashReport processInfo]
+// type: FlurryPLCrashReportProcessInfo *__cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport processInfo]")]
+pub fn stub_f16b78() -> ! {
+    todo!("0xf16b78 -[FlurryPLCrashReport processInfo]")
+}
+
+// 0xf16b88 — -[FlurryPLCrashReport signalInfo]
+// type: FlurryPLCrashReportSignalInfo *__cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport signalInfo]")]
+pub fn stub_f16b88() -> ! {
+    todo!("0xf16b88 -[FlurryPLCrashReport signalInfo]")
+}
+
+// 0xf16b98 — -[FlurryPLCrashReport threads]
+// type: NSArray *__cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport threads]")]
+pub fn stub_f16b98() -> ! {
+    todo!("0xf16b98 -[FlurryPLCrashReport threads]")
+}
+
+// 0xf16ba8 — -[FlurryPLCrashReport images]
+// type: NSArray *__cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport images]")]
+pub fn stub_f16ba8() -> ! {
+    todo!("0xf16ba8 -[FlurryPLCrashReport images]")
+}
+
+// 0xf16bb8 — -[FlurryPLCrashReport exceptionInfo]
+// type: FlurryPLCrashReportExceptionInfo *__cdecl(FlurryPLCrashReport *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReport exceptionInfo]")]
+pub fn stub_f16bb8() -> ! {
+    todo!("0xf16bb8 -[FlurryPLCrashReport exceptionInfo]")
+}
+
+// 0xf16bc8 — -[FlurryPLCrashReport decodeCrashData:error:]
+// type: _Plcrash__CrashReport *__cdecl(FlurryPLCrashReport *self, SEL, id, id *)
+#[doc(alias = "-[FlurryPLCrashReport decodeCrashData:error:]")]
+pub fn stub_f16bc8() -> ! {
+    todo!("0xf16bc8 -[FlurryPLCrashReport decodeCrashData:error:]")
+}
+
+// 0xf16d64 — -[FlurryPLCrashReport extractSystemInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport__SystemInfo *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractSystemInfo:error:]")]
+pub fn stub_f16d64() -> ! {
+    todo!("0xf16d64 -[FlurryPLCrashReport extractSystemInfo:error:]")
+}
+
+// 0xf16ed4 — -[FlurryPLCrashReport extractProcessorInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport__Processor *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractProcessorInfo:error:]")]
+pub fn stub_f16ed4() -> ! {
+    todo!("0xf16ed4 -[FlurryPLCrashReport extractProcessorInfo:error:]")
+}
+
+// 0xf16f88 — -[FlurryPLCrashReport extractMachineInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport__MachineInfo *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractMachineInfo:error:]")]
+pub fn stub_f16f88() -> ! {
+    todo!("0xf16f88 -[FlurryPLCrashReport extractMachineInfo:error:]")
+}
+
+// 0xf17088 — -[FlurryPLCrashReport extractApplicationInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport__ApplicationInfo *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractApplicationInfo:error:]")]
+pub fn stub_f17088() -> ! {
+    todo!("0xf17088 -[FlurryPLCrashReport extractApplicationInfo:error:]")
+}
+
+// 0xf171d4 — -[FlurryPLCrashReport extractProcessInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport__ProcessInfo *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractProcessInfo:error:]")]
+pub fn stub_f171d4() -> ! {
+    todo!("0xf171d4 -[FlurryPLCrashReport extractProcessInfo:error:]")
+}
+
+// 0xf17308 — -[FlurryPLCrashReport extractSymbolInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport__Symbol *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractSymbolInfo:error:]")]
+pub fn stub_f17308() -> ! {
+    todo!("0xf17308 -[FlurryPLCrashReport extractSymbolInfo:error:]")
+}
+
+// 0xf173e8 — -[FlurryPLCrashReport extractStackFrameInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport__Thread__StackFrame *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractStackFrameInfo:error:]")]
+pub fn stub_f173e8() -> ! {
+    todo!("0xf173e8 -[FlurryPLCrashReport extractStackFrameInfo:error:]")
+}
+
+// 0xf174b8 — -[FlurryPLCrashReport extractThreadInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractThreadInfo:error:]")]
+pub fn stub_f174b8() -> ! {
+    todo!("0xf174b8 -[FlurryPLCrashReport extractThreadInfo:error:]")
+}
+
+// 0xf176fc — -[FlurryPLCrashReport extractImageInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractImageInfo:error:]")]
+pub fn stub_f176fc() -> ! {
+    todo!("0xf176fc -[FlurryPLCrashReport extractImageInfo:error:]")
+}
+
+// 0xf17910 — -[FlurryPLCrashReport extractExceptionInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport__Exception *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractExceptionInfo:error:]")]
+pub fn stub_f17910() -> ! {
+    todo!("0xf17910 -[FlurryPLCrashReport extractExceptionInfo:error:]")
+}
+
+// 0xf17aec — -[FlurryPLCrashReport extractSignalInfo:error:]
+// type: id __cdecl(FlurryPLCrashReport *self, SEL, _Plcrash__CrashReport__Signal *, id *)
+#[doc(alias = "-[FlurryPLCrashReport extractSignalInfo:error:]")]
+pub fn stub_f17aec() -> ! {
+    todo!("0xf17aec -[FlurryPLCrashReport extractSignalInfo:error:]")
+}
+
+// 0xf19ed8 — -[FlurryPLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:architecture:timestamp:]
+// type: FlurryPLCrashReportSystemInfo *__cdecl(FlurryPLCrashReportSystemInfo *self, SEL, int, id, int, id)
+#[doc(alias = "-[FlurryPLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:architecture:timestamp:]")]
+pub fn stub_f19ed8() -> ! {
+    todo!("0xf19ed8 -[FlurryPLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:architecture:timestamp:]")
+}
+
+// 0xf19f0c — -[FlurryPLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:operatingSystemBuild:architecture:timestamp:]
+// type: FlurryPLCrashReportSystemInfo *__cdecl(FlurryPLCrashReportSystemInfo *self, SEL, int, id, id, int, id)
+#[doc(alias = "-[FlurryPLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:operatingSystemBuild:architecture:timestamp:]")]
+pub fn stub_f19f0c() -> ! {
+    todo!("0xf19f0c -[FlurryPLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:operatingSystemBuild:architecture:timestamp:]")
+}
+
+// 0xf19fc4 — -[FlurryPLCrashReportSystemInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSystemInfo dealloc]")]
+pub fn stub_f19fc4() -> ! {
+    todo!("0xf19fc4 -[FlurryPLCrashReportSystemInfo dealloc]")
+}
+
+// 0xf1a03c — -[FlurryPLCrashReportSystemInfo operatingSystem]
+// type: int __cdecl(FlurryPLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSystemInfo operatingSystem]")]
+pub fn stub_f1a03c() -> ! {
+    todo!("0xf1a03c -[FlurryPLCrashReportSystemInfo operatingSystem]")
+}
+
+// 0xf1a04c — -[FlurryPLCrashReportSystemInfo operatingSystemVersion]
+// type: NSString *__cdecl(FlurryPLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSystemInfo operatingSystemVersion]")]
+pub fn stub_f1a04c() -> ! {
+    todo!("0xf1a04c -[FlurryPLCrashReportSystemInfo operatingSystemVersion]")
+}
+
+// 0xf1a05c — -[FlurryPLCrashReportSystemInfo operatingSystemBuild]
+// type: NSString *__cdecl(FlurryPLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSystemInfo operatingSystemBuild]")]
+pub fn stub_f1a05c() -> ! {
+    todo!("0xf1a05c -[FlurryPLCrashReportSystemInfo operatingSystemBuild]")
+}
+
+// 0xf1a06c — -[FlurryPLCrashReportSystemInfo architecture]
+// type: int __cdecl(FlurryPLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSystemInfo architecture]")]
+pub fn stub_f1a06c() -> ! {
+    todo!("0xf1a06c -[FlurryPLCrashReportSystemInfo architecture]")
+}
+
+// 0xf1a07c — -[FlurryPLCrashReportSystemInfo timestamp]
+// type: NSDate *__cdecl(FlurryPLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSystemInfo timestamp]")]
+pub fn stub_f1a07c() -> ! {
+    todo!("0xf1a07c -[FlurryPLCrashReportSystemInfo timestamp]")
+}
+
+// 0xf1a08c — -[FlurryPLCrashReportApplicationInfo initWithApplicationIdentifier:applicationVersion:]
+// type: FlurryPLCrashReportApplicationInfo *__cdecl(FlurryPLCrashReportApplicationInfo *self, SEL, id, id)
+#[doc(alias = "-[FlurryPLCrashReportApplicationInfo initWithApplicationIdentifier:applicationVersion:]")]
+pub fn stub_f1a08c() -> ! {
+    todo!("0xf1a08c -[FlurryPLCrashReportApplicationInfo initWithApplicationIdentifier:applicationVersion:]")
+}
+
+// 0xf1a104 — -[FlurryPLCrashReportApplicationInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportApplicationInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportApplicationInfo dealloc]")]
+pub fn stub_f1a104() -> ! {
+    todo!("0xf1a104 -[FlurryPLCrashReportApplicationInfo dealloc]")
+}
+
+// 0xf1a168 — -[FlurryPLCrashReportApplicationInfo applicationIdentifier]
+// type: NSString *__cdecl(FlurryPLCrashReportApplicationInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportApplicationInfo applicationIdentifier]")]
+pub fn stub_f1a168() -> ! {
+    todo!("0xf1a168 -[FlurryPLCrashReportApplicationInfo applicationIdentifier]")
+}
+
+// 0xf1a178 — -[FlurryPLCrashReportApplicationInfo applicationVersion]
+// type: NSString *__cdecl(FlurryPLCrashReportApplicationInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportApplicationInfo applicationVersion]")]
+pub fn stub_f1a178() -> ! {
+    todo!("0xf1a178 -[FlurryPLCrashReportApplicationInfo applicationVersion]")
+}
+
+// 0xf1a188 — -[FlurryPLCrashReportThreadInfo initWithThreadNumber:stackFrames:crashed:registers:]
+// type: FlurryPLCrashReportThreadInfo *__cdecl(FlurryPLCrashReportThreadInfo *self, SEL, int, id, char, id)
+#[doc(alias = "-[FlurryPLCrashReportThreadInfo initWithThreadNumber:stackFrames:crashed:registers:]")]
+pub fn stub_f1a188() -> ! {
+    todo!("0xf1a188 -[FlurryPLCrashReportThreadInfo initWithThreadNumber:stackFrames:crashed:registers:]")
+}
+
+// 0xf1a228 — -[FlurryPLCrashReportThreadInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportThreadInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportThreadInfo dealloc]")]
+pub fn stub_f1a228() -> ! {
+    todo!("0xf1a228 -[FlurryPLCrashReportThreadInfo dealloc]")
 }
