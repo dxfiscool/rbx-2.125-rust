@@ -5,9 +5,9 @@
 pub mod descriptor;
 pub mod enum_desc;
 pub mod generated;
+pub mod generated_09;
 pub mod generated_next;
 pub mod generated_shard_a;
-pub mod generated_09;
 pub mod generated_shard_c;
 pub mod generated_shard_d;
 pub mod generated_shard_e;
@@ -25,3 +25,4 @@ pub mod generated_shard_p;
 pub mod generated_shard_q;
 pub mod generated_shard_r;
 pub mod generated_shard_s;
+pub mod generated_shard_t;
