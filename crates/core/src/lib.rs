@@ -24,6 +24,7 @@ pub mod boost_skeletons2;
 pub mod generated_core_d;
 pub mod generated_core_e;
 pub mod generated_core_f;
+pub mod generated_core_g;
 pub mod intrusive;
 pub mod signal;
 pub mod task_scheduler;
