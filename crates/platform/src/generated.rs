@@ -1,6 +1,6 @@
-//! platform generated — next 1174 stubs sorted by EA, from ida/export.json
-//! Filter: RobloxView|GameViewController|AppDelegate|EAGL2|PlaceLauncher|ControlView|UIViewController|HomeViewController|Teleporter|LoginViewController|SignupViewController|RobloxNavBar|DebugSettings|MainViewController|ExternalLogin|RobloxInfo|RobloxAlert
-//! Batch: 1174 stubs (1082 prior + 92 this batch, 1168 filtered, 0 remaining filtered; 6 non-filtered boost wrappers extra) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! platform generated — 1274 stubs sorted by EA, from ida/export.json
+//! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
+//! Batch: 1274 stubs (1174 prior + 100 this batch, 3026 filtered, 2300 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -8175,4 +8175,704 @@ pub fn stub_f39ed4() -> ! {
 #[doc(alias = "j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEE9singletonEv")]
 pub fn stub_f5e884() -> ! {
     todo!("0xf5e884 j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEE9singletonEv")
+}
+
+// 0x17df0 — +[Appirater setAppId:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[Appirater setAppId:]")]
+pub fn stub_17df0() -> ! {
+    todo!("0x17df0 +[Appirater setAppId:]")
+}
+
+// 0x17e00 — +[Appirater setDaysUntilPrompt:]
+// type: void __cdecl(id, SEL, double)
+#[doc(alias = "+[Appirater setDaysUntilPrompt:]")]
+pub fn stub_17e00() -> ! {
+    todo!("0x17e00 +[Appirater setDaysUntilPrompt:]")
+}
+
+// 0x17e14 — +[Appirater setUsesUntilPrompt:]
+// type: void __cdecl(id, SEL, int)
+#[doc(alias = "+[Appirater setUsesUntilPrompt:]")]
+pub fn stub_17e14() -> ! {
+    todo!("0x17e14 +[Appirater setUsesUntilPrompt:]")
+}
+
+// 0x17e24 — +[Appirater setSignificantEventsUntilPrompt:]
+// type: void __cdecl(id, SEL, int)
+#[doc(alias = "+[Appirater setSignificantEventsUntilPrompt:]")]
+pub fn stub_17e24() -> ! {
+    todo!("0x17e24 +[Appirater setSignificantEventsUntilPrompt:]")
+}
+
+// 0x17e34 — +[Appirater setTimeBeforeReminding:]
+// type: void __cdecl(id, SEL, double)
+#[doc(alias = "+[Appirater setTimeBeforeReminding:]")]
+pub fn stub_17e34() -> ! {
+    todo!("0x17e34 +[Appirater setTimeBeforeReminding:]")
+}
+
+// 0x17e48 — +[Appirater setDebug:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[Appirater setDebug:]")]
+pub fn stub_17e48() -> ! {
+    todo!("0x17e48 +[Appirater setDebug:]")
+}
+
+// 0x17e58 — +[Appirater setDelegate:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[Appirater setDelegate:]")]
+pub fn stub_17e58() -> ! {
+    todo!("0x17e58 +[Appirater setDelegate:]")
+}
+
+// 0x17e68 — -[Appirater connectedToNetwork]
+// type: char __cdecl(Appirater *self, SEL)
+#[doc(alias = "-[Appirater connectedToNetwork]")]
+pub fn stub_17e68() -> ! {
+    todo!("0x17e68 -[Appirater connectedToNetwork]")
+}
+
+// 0x17f80 — +[Appirater sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[Appirater sharedInstance]")]
+pub fn stub_17f80() -> ! {
+    todo!("0x17f80 +[Appirater sharedInstance]")
+}
+
+// 0x17fe4 — ___27+[Appirater sharedInstance]_block_invoke
+// type: (unknown)
+#[doc(alias = "___27+[Appirater sharedInstance]_block_invoke")]
+pub fn stub_17fe4() -> ! {
+    todo!("0x17fe4 ___27+[Appirater sharedInstance]_block_invoke")
+}
+
+// 0x180a8 — -[Appirater showRatingAlert]
+// type: void __cdecl(Appirater *self, SEL)
+#[doc(alias = "-[Appirater showRatingAlert]")]
+pub fn stub_180a8() -> ! {
+    todo!("0x180a8 -[Appirater showRatingAlert]")
+}
+
+// 0x183d8 — -[Appirater ratingConditionsHaveBeenMet]
+// type: char __cdecl(Appirater *self, SEL)
+#[doc(alias = "-[Appirater ratingConditionsHaveBeenMet]")]
+pub fn stub_183d8() -> ! {
+    todo!("0x183d8 -[Appirater ratingConditionsHaveBeenMet]")
+}
+
+// 0x185b0 — -[Appirater incrementUseCount]
+// type: void __cdecl(Appirater *self, SEL)
+#[doc(alias = "-[Appirater incrementUseCount]")]
+pub fn stub_185b0() -> ! {
+    todo!("0x185b0 -[Appirater incrementUseCount]")
+}
+
+// 0x18878 — -[Appirater incrementSignificantEventCount]
+// type: void __cdecl(Appirater *self, SEL)
+#[doc(alias = "-[Appirater incrementSignificantEventCount]")]
+pub fn stub_18878() -> ! {
+    todo!("0x18878 -[Appirater incrementSignificantEventCount]")
+}
+
+// 0x18b18 — -[Appirater incrementAndRate:]
+// type: void __cdecl(Appirater *self, SEL, char)
+#[doc(alias = "-[Appirater incrementAndRate:]")]
+pub fn stub_18b18() -> ! {
+    todo!("0x18b18 -[Appirater incrementAndRate:]")
+}
+
+// 0x18bb4 — ___30-[Appirater incrementAndRate:]_block_invoke
+// type: (unknown)
+#[doc(alias = "___30-[Appirater incrementAndRate:]_block_invoke")]
+pub fn stub_18bb4() -> ! {
+    todo!("0x18bb4 ___30-[Appirater incrementAndRate:]_block_invoke")
+}
+
+// 0x18bdc — -[Appirater incrementSignificantEventAndRate:]
+// type: void __cdecl(Appirater *self, SEL, char)
+#[doc(alias = "-[Appirater incrementSignificantEventAndRate:]")]
+pub fn stub_18bdc() -> ! {
+    todo!("0x18bdc -[Appirater incrementSignificantEventAndRate:]")
+}
+
+// 0x18c78 — ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke
+// type: (unknown)
+#[doc(alias = "___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")]
+pub fn stub_18c78() -> ! {
+    todo!("0x18c78 ___46-[Appirater incrementSignificantEventAndRate:]_block_invoke")
+}
+
+// 0x18ca0 — +[Appirater appLaunched]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[Appirater appLaunched]")]
+pub fn stub_18ca0() -> ! {
+    todo!("0x18ca0 +[Appirater appLaunched]")
+}
+
+// 0x18cc0 — +[Appirater appLaunched:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[Appirater appLaunched:]")]
+pub fn stub_18cc0() -> ! {
+    todo!("0x18cc0 +[Appirater appLaunched:]")
+}
+
+// 0x18d10 — ___25+[Appirater appLaunched:]_block_invoke
+// type: (unknown)
+#[doc(alias = "___25+[Appirater appLaunched:]_block_invoke")]
+pub fn stub_18d10() -> ! {
+    todo!("0x18d10 ___25+[Appirater appLaunched:]_block_invoke")
+}
+
+// 0x18d4c — -[Appirater hideRatingAlert]
+// type: void __cdecl(Appirater *self, SEL)
+#[doc(alias = "-[Appirater hideRatingAlert]")]
+pub fn stub_18d4c() -> ! {
+    todo!("0x18d4c -[Appirater hideRatingAlert]")
+}
+
+// 0x18dbc — +[Appirater appWillResignActive]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[Appirater appWillResignActive]")]
+pub fn stub_18dbc() -> ! {
+    todo!("0x18dbc +[Appirater appWillResignActive]")
+}
+
+// 0x18e0c — +[Appirater appEnteredForeground:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[Appirater appEnteredForeground:]")]
+pub fn stub_18e0c() -> ! {
+    todo!("0x18e0c +[Appirater appEnteredForeground:]")
+}
+
+// 0x18e5c — ___34+[Appirater appEnteredForeground:]_block_invoke
+// type: (unknown)
+#[doc(alias = "___34+[Appirater appEnteredForeground:]_block_invoke")]
+pub fn stub_18e5c() -> ! {
+    todo!("0x18e5c ___34+[Appirater appEnteredForeground:]_block_invoke")
+}
+
+// 0x18e98 — +[Appirater userDidSignificantEvent:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[Appirater userDidSignificantEvent:]")]
+pub fn stub_18e98() -> ! {
+    todo!("0x18e98 +[Appirater userDidSignificantEvent:]")
+}
+
+// 0x18ee8 — ___37+[Appirater userDidSignificantEvent:]_block_invoke
+// type: (unknown)
+#[doc(alias = "___37+[Appirater userDidSignificantEvent:]_block_invoke")]
+pub fn stub_18ee8() -> ! {
+    todo!("0x18ee8 ___37+[Appirater userDidSignificantEvent:]_block_invoke")
+}
+
+// 0x18f24 — +[Appirater rateApp]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[Appirater rateApp]")]
+pub fn stub_18f24() -> ! {
+    todo!("0x18f24 +[Appirater rateApp]")
+}
+
+// 0x19028 — -[Appirater alertView:clickedButtonAtIndex:]
+// type: void __cdecl(Appirater *self, SEL, id, int)
+#[doc(alias = "-[Appirater alertView:clickedButtonAtIndex:]")]
+pub fn stub_19028() -> ! {
+    todo!("0x19028 -[Appirater alertView:clickedButtonAtIndex:]")
+}
+
+// 0x191d4 — -[Appirater ratingAlert]
+// type: UIAlertView *__cdecl(Appirater *self, SEL)
+#[doc(alias = "-[Appirater ratingAlert]")]
+pub fn stub_191d4() -> ! {
+    todo!("0x191d4 -[Appirater ratingAlert]")
+}
+
+// 0x191e4 — -[Appirater setRatingAlert:]
+// type: void __cdecl(Appirater *self, SEL, id)
+#[doc(alias = "-[Appirater setRatingAlert:]")]
+pub fn stub_191e4() -> ! {
+    todo!("0x191e4 -[Appirater setRatingAlert:]")
+}
+
+// 0x19208 — -[Appirater delegate]
+// type: AppiraterDelegate *__cdecl(Appirater *self, SEL)
+#[doc(alias = "-[Appirater delegate]")]
+pub fn stub_19208() -> ! {
+    todo!("0x19208 -[Appirater delegate]")
+}
+
+// 0x19218 — -[Appirater setDelegate:]
+// type: void __cdecl(Appirater *self, SEL, id)
+#[doc(alias = "-[Appirater setDelegate:]")]
+pub fn stub_19218() -> ! {
+    todo!("0x19218 -[Appirater setDelegate:]")
+}
+
+// 0x1da08 — -[NSString stringWithPercentEscape]
+// type: NSString *__cdecl(NSString *self, SEL)
+#[doc(alias = "-[NSString stringWithPercentEscape]")]
+pub fn stub_1da08() -> ! {
+    todo!("0x1da08 -[NSString stringWithPercentEscape]")
+}
+
+// 0x20468 — -[AboutController initWithCoder:]
+// type: AboutController *__cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController initWithCoder:]")]
+pub fn stub_20468() -> ! {
+    todo!("0x20468 -[AboutController initWithCoder:]")
+}
+
+// 0x2057c — -[AboutController dealloc]
+// type: void __cdecl(AboutController *self, SEL)
+#[doc(alias = "-[AboutController dealloc]")]
+pub fn stub_2057c() -> ! {
+    todo!("0x2057c -[AboutController dealloc]")
+}
+
+// 0x20644 — -[AboutController viewDidLoad]
+// type: void __cdecl(AboutController *self, SEL)
+#[doc(alias = "-[AboutController viewDidLoad]")]
+pub fn stub_20644() -> ! {
+    todo!("0x20644 -[AboutController viewDidLoad]")
+}
+
+// 0x20a7c — -[AboutController viewWillAppear:]
+// type: void __cdecl(AboutController *self, SEL, char)
+#[doc(alias = "-[AboutController viewWillAppear:]")]
+pub fn stub_20a7c() -> ! {
+    todo!("0x20a7c -[AboutController viewWillAppear:]")
+}
+
+// 0x20b00 — -[AboutController webViewDidFinishLoad:]
+// type: void __cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController webViewDidFinishLoad:]")]
+pub fn stub_20b00() -> ! {
+    todo!("0x20b00 -[AboutController webViewDidFinishLoad:]")
+}
+
+// 0x20b28 — -[AboutController webView:shouldStartLoadWithRequest:navigationType:]
+// type: char __cdecl(AboutController *self, SEL, id, id, int)
+#[doc(alias = "-[AboutController webView:shouldStartLoadWithRequest:navigationType:]")]
+pub fn stub_20b28() -> ! {
+    todo!("0x20b28 -[AboutController webView:shouldStartLoadWithRequest:navigationType:]")
+}
+
+// 0x20bb0 — -[AboutController prepareForSegue:sender:]
+// type: void __cdecl(AboutController *self, SEL, id, id)
+#[doc(alias = "-[AboutController prepareForSegue:sender:]")]
+pub fn stub_20bb0() -> ! {
+    todo!("0x20bb0 -[AboutController prepareForSegue:sender:]")
+}
+
+// 0x20c14 — -[AboutController closeButtonPressed:]
+// type: void __cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController closeButtonPressed:]")]
+pub fn stub_20c14() -> ! {
+    todo!("0x20c14 -[AboutController closeButtonPressed:]")
+}
+
+// 0x20c28 — -[AboutController clearCookiesButtonPressed:]
+// type: void __cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController clearCookiesButtonPressed:]")]
+pub fn stub_20c28() -> ! {
+    todo!("0x20c28 -[AboutController clearCookiesButtonPressed:]")
+}
+
+// 0x20cb4 — -[AboutController viewDidUnload]
+// type: void __cdecl(AboutController *self, SEL)
+#[doc(alias = "-[AboutController viewDidUnload]")]
+pub fn stub_20cb4() -> ! {
+    todo!("0x20cb4 -[AboutController viewDidUnload]")
+}
+
+// 0x20d0c — -[AboutController navigationTitle]
+// type: UINavigationItem *__cdecl(AboutController *self, SEL)
+#[doc(alias = "-[AboutController navigationTitle]")]
+pub fn stub_20d0c() -> ! {
+    todo!("0x20d0c -[AboutController navigationTitle]")
+}
+
+// 0x20d1c — -[AboutController setNavigationTitle:]
+// type: void __cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController setNavigationTitle:]")]
+pub fn stub_20d1c() -> ! {
+    todo!("0x20d1c -[AboutController setNavigationTitle:]")
+}
+
+// 0x20d40 — -[AboutController closeButton]
+// type: UIBarButtonItem *__cdecl(AboutController *self, SEL)
+#[doc(alias = "-[AboutController closeButton]")]
+pub fn stub_20d40() -> ! {
+    todo!("0x20d40 -[AboutController closeButton]")
+}
+
+// 0x20d50 — -[AboutController setCloseButton:]
+// type: void __cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController setCloseButton:]")]
+pub fn stub_20d50() -> ! {
+    todo!("0x20d50 -[AboutController setCloseButton:]")
+}
+
+// 0x20d74 — -[AboutController clearCookies]
+// type: UIBarButtonItem *__cdecl(AboutController *self, SEL)
+#[doc(alias = "-[AboutController clearCookies]")]
+pub fn stub_20d74() -> ! {
+    todo!("0x20d74 -[AboutController clearCookies]")
+}
+
+// 0x20d84 — -[AboutController setClearCookies:]
+// type: void __cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController setClearCookies:]")]
+pub fn stub_20d84() -> ! {
+    todo!("0x20d84 -[AboutController setClearCookies:]")
+}
+
+// 0x20da8 — -[AboutController legalTextView]
+// type: UITextView *__cdecl(AboutController *self, SEL)
+#[doc(alias = "-[AboutController legalTextView]")]
+pub fn stub_20da8() -> ! {
+    todo!("0x20da8 -[AboutController legalTextView]")
+}
+
+// 0x20db8 — -[AboutController setLegalTextView:]
+// type: void __cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController setLegalTextView:]")]
+pub fn stub_20db8() -> ! {
+    todo!("0x20db8 -[AboutController setLegalTextView:]")
+}
+
+// 0x20ddc — -[AboutController versionLabel]
+// type: UILabel *__cdecl(AboutController *self, SEL)
+#[doc(alias = "-[AboutController versionLabel]")]
+pub fn stub_20ddc() -> ! {
+    todo!("0x20ddc -[AboutController versionLabel]")
+}
+
+// 0x20dec — -[AboutController setVersionLabel:]
+// type: void __cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController setVersionLabel:]")]
+pub fn stub_20dec() -> ! {
+    todo!("0x20dec -[AboutController setVersionLabel:]")
+}
+
+// 0x20e10 — -[AboutController agreementWebView]
+// type: UIWebView *__cdecl(AboutController *self, SEL)
+#[doc(alias = "-[AboutController agreementWebView]")]
+pub fn stub_20e10() -> ! {
+    todo!("0x20e10 -[AboutController agreementWebView]")
+}
+
+// 0x20e20 — -[AboutController setAgreementWebView:]
+// type: void __cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController setAgreementWebView:]")]
+pub fn stub_20e20() -> ! {
+    todo!("0x20e20 -[AboutController setAgreementWebView:]")
+}
+
+// 0x20e44 — -[AboutController domainName]
+// type: UILabel *__cdecl(AboutController *self, SEL)
+#[doc(alias = "-[AboutController domainName]")]
+pub fn stub_20e44() -> ! {
+    todo!("0x20e44 -[AboutController domainName]")
+}
+
+// 0x20e54 — -[AboutController setDomainName:]
+// type: void __cdecl(AboutController *self, SEL, id)
+#[doc(alias = "-[AboutController setDomainName:]")]
+pub fn stub_20e54() -> ! {
+    todo!("0x20e54 -[AboutController setDomainName:]")
+}
+
+// 0x20e78 — +[UpgradeCheckHelper getUpgradeCheckHelper]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[UpgradeCheckHelper getUpgradeCheckHelper]")]
+pub fn stub_20e78() -> ! {
+    todo!("0x20e78 +[UpgradeCheckHelper getUpgradeCheckHelper]")
+}
+
+// 0x20ed4 — ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke
+// type: (unknown)
+#[doc(alias = "___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")]
+pub fn stub_20ed4() -> ! {
+    todo!("0x20ed4 ___43+[UpgradeCheckHelper getUpgradeCheckHelper]_block_invoke")
+}
+
+// 0x20f1c — -[UpgradeCheckHelper init]
+// type: UpgradeCheckHelper *__cdecl(UpgradeCheckHelper *self, SEL)
+#[doc(alias = "-[UpgradeCheckHelper init]")]
+pub fn stub_20f1c() -> ! {
+    todo!("0x20f1c -[UpgradeCheckHelper init]")
+}
+
+// 0x21038 — -[UpgradeCheckHelper dealloc]
+// type: void __cdecl(UpgradeCheckHelper *self, SEL)
+#[doc(alias = "-[UpgradeCheckHelper dealloc]")]
+pub fn stub_21038() -> ! {
+    todo!("0x21038 -[UpgradeCheckHelper dealloc]")
+}
+
+// 0x210b4 — +[UpgradeCheckHelper getUpgradeUrl]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[UpgradeCheckHelper getUpgradeUrl]")]
+pub fn stub_210b4() -> ! {
+    todo!("0x210b4 +[UpgradeCheckHelper getUpgradeUrl]")
+}
+
+// 0x2111c — -[UpgradeCheckHelper getAlertViewButton:]
+// type: id __cdecl(UpgradeCheckHelper *self, SEL, id)
+#[doc(alias = "-[UpgradeCheckHelper getAlertViewButton:]")]
+pub fn stub_2111c() -> ! {
+    todo!("0x2111c -[UpgradeCheckHelper getAlertViewButton:]")
+}
+
+// 0x21254 — -[UpgradeCheckHelper makeUpgradeRequest:]
+// type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
+#[doc(alias = "-[UpgradeCheckHelper makeUpgradeRequest:]")]
+pub fn stub_21254() -> ! {
+    todo!("0x21254 -[UpgradeCheckHelper makeUpgradeRequest:]")
+}
+
+// 0x212cc — +[UpgradeCheckHelper checkForUpdate]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[UpgradeCheckHelper checkForUpdate]")]
+pub fn stub_212cc() -> ! {
+    todo!("0x212cc +[UpgradeCheckHelper checkForUpdate]")
+}
+
+// 0x214a4 — -[UpgradeCheckHelper processCheckForUpdateResponse]
+// type: void __cdecl(UpgradeCheckHelper *self, SEL)
+#[doc(alias = "-[UpgradeCheckHelper processCheckForUpdateResponse]")]
+pub fn stub_214a4() -> ! {
+    todo!("0x214a4 -[UpgradeCheckHelper processCheckForUpdateResponse]")
+}
+
+// 0x21abc — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")]
+pub fn stub_21abc() -> ! {
+    todo!("0x21abc ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke")
+}
+
+// 0x21af0 — ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141
+// type: (unknown)
+#[doc(alias = "___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")]
+pub fn stub_21af0() -> ! {
+    todo!("0x21af0 ___51-[UpgradeCheckHelper processCheckForUpdateResponse]_block_invoke141")
+}
+
+// 0x21b24 — -[UpgradeCheckHelper connection:didReceiveData:]
+// type: void __cdecl(UpgradeCheckHelper *self, SEL, id, id)
+#[doc(alias = "-[UpgradeCheckHelper connection:didReceiveData:]")]
+pub fn stub_21b24() -> ! {
+    todo!("0x21b24 -[UpgradeCheckHelper connection:didReceiveData:]")
+}
+
+// 0x21b58 — -[UpgradeCheckHelper connectionDidFinishLoading:]
+// type: void __cdecl(UpgradeCheckHelper *self, SEL, id)
+#[doc(alias = "-[UpgradeCheckHelper connectionDidFinishLoading:]")]
+pub fn stub_21b58() -> ! {
+    todo!("0x21b58 -[UpgradeCheckHelper connectionDidFinishLoading:]")
+}
+
+// 0x21ba0 — -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]
+// type: void __cdecl(UpgradeCheckHelper *self, SEL, id, int)
+#[doc(alias = "-[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")]
+pub fn stub_21ba0() -> ! {
+    todo!("0x21ba0 -[UpgradeCheckHelper alertView:clickedButtonAtIndex:]")
+}
+
+// 0x3588c — -[Reachability startNotifier]
+// type: char __cdecl(Reachability *self, SEL)
+#[doc(alias = "-[Reachability startNotifier]")]
+pub fn stub_3588c() -> ! {
+    todo!("0x3588c -[Reachability startNotifier]")
+}
+
+// 0x35970 — -[Reachability stopNotifier]
+// type: void __cdecl(Reachability *self, SEL)
+#[doc(alias = "-[Reachability stopNotifier]")]
+pub fn stub_35970() -> ! {
+    todo!("0x35970 -[Reachability stopNotifier]")
+}
+
+// 0x359a8 — -[Reachability dealloc]
+// type: void __cdecl(Reachability *self, SEL)
+#[doc(alias = "-[Reachability dealloc]")]
+pub fn stub_359a8() -> ! {
+    todo!("0x359a8 -[Reachability dealloc]")
+}
+
+// 0x35a00 — +[Reachability reachabilityWithHostName:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[Reachability reachabilityWithHostName:]")]
+pub fn stub_35a00() -> ! {
+    todo!("0x35a00 +[Reachability reachabilityWithHostName:]")
+}
+
+// 0x35a80 — +[Reachability reachabilityWithAddress:]
+// type: id __cdecl(id, SEL, const sockaddr_in *)
+#[doc(alias = "+[Reachability reachabilityWithAddress:]")]
+pub fn stub_35a80() -> ! {
+    todo!("0x35a80 +[Reachability reachabilityWithAddress:]")
+}
+
+// 0x35af8 — +[Reachability reachabilityForInternetConnection]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[Reachability reachabilityForInternetConnection]")]
+pub fn stub_35af8() -> ! {
+    todo!("0x35af8 +[Reachability reachabilityForInternetConnection]")
+}
+
+// 0x35b44 — +[Reachability reachabilityForLocalWiFi]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[Reachability reachabilityForLocalWiFi]")]
+pub fn stub_35b44() -> ! {
+    todo!("0x35b44 +[Reachability reachabilityForLocalWiFi]")
+}
+
+// 0x35ba8 — -[Reachability localWiFiStatusForFlags:]
+// type: int __cdecl(Reachability *self, SEL, unsigned int)
+#[doc(alias = "-[Reachability localWiFiStatusForFlags:]")]
+pub fn stub_35ba8() -> ! {
+    todo!("0x35ba8 -[Reachability localWiFiStatusForFlags:]")
+}
+
+// 0x35c6c — -[Reachability networkStatusForFlags:]
+// type: int __cdecl(Reachability *self, SEL, unsigned int)
+#[doc(alias = "-[Reachability networkStatusForFlags:]")]
+pub fn stub_35c6c() -> ! {
+    todo!("0x35c6c -[Reachability networkStatusForFlags:]")
+}
+
+// 0x35cb8 — -[Reachability connectionRequired]
+// type: char __cdecl(Reachability *self, SEL)
+#[doc(alias = "-[Reachability connectionRequired]")]
+pub fn stub_35cb8() -> ! {
+    todo!("0x35cb8 -[Reachability connectionRequired]")
+}
+
+// 0x35ce4 — -[Reachability currentReachabilityStatus]
+// type: int __cdecl(Reachability *self, SEL)
+#[doc(alias = "-[Reachability currentReachabilityStatus]")]
+pub fn stub_35ce4() -> ! {
+    todo!("0x35ce4 -[Reachability currentReachabilityStatus]")
+}
+
+// 0x40984 — -[UserInfo init]
+// type: UserInfo *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo init]")]
+pub fn stub_40984() -> ! {
+    todo!("0x40984 -[UserInfo init]")
+}
+
+// 0x409b0 — -[UserInfo setUserLoggedIn:]
+// type: void __cdecl(UserInfo *self, SEL, char)
+#[doc(alias = "-[UserInfo setUserLoggedIn:]")]
+pub fn stub_409b0() -> ! {
+    todo!("0x409b0 -[UserInfo setUserLoggedIn:]")
+}
+
+// 0x40ab4 — -[UserInfo userLoggedIn]
+// type: char __cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo userLoggedIn]")]
+pub fn stub_40ab4() -> ! {
+    todo!("0x40ab4 -[UserInfo userLoggedIn]")
+}
+
+// 0x40ac4 — -[UserInfo UpdatePlayerInfo]
+// type: void __cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo UpdatePlayerInfo]")]
+pub fn stub_40ac4() -> ! {
+    todo!("0x40ac4 -[UserInfo UpdatePlayerInfo]")
+}
+
+// 0x40c58 — ___28-[UserInfo UpdatePlayerInfo]_block_invoke
+// type: (unknown)
+#[doc(alias = "___28-[UserInfo UpdatePlayerInfo]_block_invoke")]
+pub fn stub_40c58() -> ! {
+    todo!("0x40c58 ___28-[UserInfo UpdatePlayerInfo]_block_invoke")
+}
+
+// 0x41144 — +[UserInfo CurrentPlayer]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[UserInfo CurrentPlayer]")]
+pub fn stub_41144() -> ! {
+    todo!("0x41144 +[UserInfo CurrentPlayer]")
+}
+
+// 0x4118c — -[UserInfo Robux]
+// type: id __cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo Robux]")]
+pub fn stub_4118c() -> ! {
+    todo!("0x4118c -[UserInfo Robux]")
+}
+
+// 0x41288 — -[UserInfo Tix]
+// type: id __cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo Tix]")]
+pub fn stub_41288() -> ! {
+    todo!("0x41288 -[UserInfo Tix]")
+}
+
+// 0x4129c — +[UserInfo clearAllRobloxCookie]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[UserInfo clearAllRobloxCookie]")]
+pub fn stub_4129c() -> ! {
+    todo!("0x4129c +[UserInfo clearAllRobloxCookie]")
+}
+
+// 0x41580 — +[UserInfo printCookies]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[UserInfo printCookies]")]
+pub fn stub_41580() -> ! {
+    todo!("0x41580 +[UserInfo printCookies]")
+}
+
+// 0x419c8 — +[UserInfo logout]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[UserInfo logout]")]
+pub fn stub_419c8() -> ! {
+    todo!("0x419c8 +[UserInfo logout]")
+}
+
+// 0x419f4 — -[UserInfo userInfoDict]
+// type: NSDictionary *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo userInfoDict]")]
+pub fn stub_419f4() -> ! {
+    todo!("0x419f4 -[UserInfo userInfoDict]")
+}
+
+// 0x41a04 — -[UserInfo setUserInfoDict:]
+// type: void __cdecl(UserInfo *self, SEL, id)
+#[doc(alias = "-[UserInfo setUserInfoDict:]")]
+pub fn stub_41a04() -> ! {
+    todo!("0x41a04 -[UserInfo setUserInfoDict:]")
+}
+
+// 0x41a28 — -[UserInfo userinfo]
+// type: NSString *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo userinfo]")]
+pub fn stub_41a28() -> ! {
+    todo!("0x41a28 -[UserInfo userinfo]")
+}
+
+// 0x41a38 — -[UserInfo setUserinfo:]
+// type: void __cdecl(UserInfo *self, SEL, id)
+#[doc(alias = "-[UserInfo setUserinfo:]")]
+pub fn stub_41a38() -> ! {
+    todo!("0x41a38 -[UserInfo setUserinfo:]")
+}
+
+// 0x41a5c — -[UserInfo rbxBal]
+// type: NSNumber *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo rbxBal]")]
+pub fn stub_41a5c() -> ! {
+    todo!("0x41a5c -[UserInfo rbxBal]")
+}
+
+// 0x41a6c — -[UserInfo setRbxBal:]
+// type: void __cdecl(UserInfo *self, SEL, id)
+#[doc(alias = "-[UserInfo setRbxBal:]")]
+pub fn stub_41a6c() -> ! {
+    todo!("0x41a6c -[UserInfo setRbxBal:]")
 }
