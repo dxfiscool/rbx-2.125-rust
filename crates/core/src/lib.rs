@@ -33,3 +33,4 @@ pub use parking_lot::{Mutex as PLMutex, RwLock};
 pub mod boost_core_l;
 pub mod boost_high;
 pub mod generated;
+pub mod generated_core_h;
