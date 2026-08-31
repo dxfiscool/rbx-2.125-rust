@@ -1,6 +1,6 @@
-//! platform generated — 3624 stubs sorted by EA, from ida/export.json
-//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2551 in prior 3474, 362 remaining before batch) | ObjC -[/+ only
-//! Batch: 3624 stubs (3474 prior +150 this batch, 62 ObjC remaining, 2763 total ObjC) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! platform generated — 3686 stubs sorted by EA, from ida/export.json
+//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2763 done, 0 remaining) | ObjC -[/+ only
+//! Batch: 3686 stubs (3624 prior +62 this batch completes ObjC, 2763 total ObjC) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -25491,4 +25491,437 @@ pub fn stub_f1a188() -> ! {
 #[doc(alias = "-[FlurryPLCrashReportThreadInfo dealloc]")]
 pub fn stub_f1a228() -> ! {
     todo!("0xf1a228 -[FlurryPLCrashReportThreadInfo dealloc]")
+}
+// 0xf1a28c — -[FlurryPLCrashReportThreadInfo threadNumber]
+// type: int __cdecl(FlurryPLCrashReportThreadInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportThreadInfo threadNumber]")]
+pub fn stub_f1a28c() -> ! {
+    todo!("0xf1a28c -[FlurryPLCrashReportThreadInfo threadNumber]")
+}
+
+// 0xf1a29c — -[FlurryPLCrashReportThreadInfo stackFrames]
+// type: NSArray *__cdecl(FlurryPLCrashReportThreadInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportThreadInfo stackFrames]")]
+pub fn stub_f1a29c() -> ! {
+    todo!("0xf1a29c -[FlurryPLCrashReportThreadInfo stackFrames]")
+}
+
+// 0xf1a2ac — -[FlurryPLCrashReportThreadInfo crashed]
+// type: char __cdecl(FlurryPLCrashReportThreadInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportThreadInfo crashed]")]
+pub fn stub_f1a2ac() -> ! {
+    todo!("0xf1a2ac -[FlurryPLCrashReportThreadInfo crashed]")
+}
+
+// 0xf1a2bc — -[FlurryPLCrashReportThreadInfo registers]
+// type: NSArray *__cdecl(FlurryPLCrashReportThreadInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportThreadInfo registers]")]
+pub fn stub_f1a2bc() -> ! {
+    todo!("0xf1a2bc -[FlurryPLCrashReportThreadInfo registers]")
+}
+
+// 0xf1a2cc — -[FlurryPLCrashReportBinaryImageInfo initWithCodeType:baseAddress:size:name:uuid:]
+// type: FlurryPLCrashReportBinaryImageInfo *__cdecl(FlurryPLCrashReportBinaryImageInfo *self, SEL, id, unsigned __int64, unsigned __int64, id, id)
+#[doc(alias = "-[FlurryPLCrashReportBinaryImageInfo initWithCodeType:baseAddress:size:name:uuid:]")]
+pub fn stub_f1a2cc() -> ! {
+    todo!("0xf1a2cc -[FlurryPLCrashReportBinaryImageInfo initWithCodeType:baseAddress:size:name:uuid:]")
+}
+
+// 0xf1a438 — -[FlurryPLCrashReportBinaryImageInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportBinaryImageInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportBinaryImageInfo dealloc]")]
+pub fn stub_f1a438() -> ! {
+    todo!("0xf1a438 -[FlurryPLCrashReportBinaryImageInfo dealloc]")
+}
+
+// 0xf1a4b0 — -[FlurryPLCrashReportBinaryImageInfo codeType]
+// type: FlurryPLCrashReportProcessorInfo *__cdecl(FlurryPLCrashReportBinaryImageInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportBinaryImageInfo codeType]")]
+pub fn stub_f1a4b0() -> ! {
+    todo!("0xf1a4b0 -[FlurryPLCrashReportBinaryImageInfo codeType]")
+}
+
+// 0xf1a4c0 — -[FlurryPLCrashReportBinaryImageInfo imageBaseAddress]
+// type: unsigned __int64 __cdecl(FlurryPLCrashReportBinaryImageInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportBinaryImageInfo imageBaseAddress]")]
+pub fn stub_f1a4c0() -> ! {
+    todo!("0xf1a4c0 -[FlurryPLCrashReportBinaryImageInfo imageBaseAddress]")
+}
+
+// 0xf1a4d8 — -[FlurryPLCrashReportBinaryImageInfo imageSize]
+// type: unsigned __int64 __cdecl(FlurryPLCrashReportBinaryImageInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportBinaryImageInfo imageSize]")]
+pub fn stub_f1a4d8() -> ! {
+    todo!("0xf1a4d8 -[FlurryPLCrashReportBinaryImageInfo imageSize]")
+}
+
+// 0xf1a4f0 — -[FlurryPLCrashReportBinaryImageInfo imageName]
+// type: NSString *__cdecl(FlurryPLCrashReportBinaryImageInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportBinaryImageInfo imageName]")]
+pub fn stub_f1a4f0() -> ! {
+    todo!("0xf1a4f0 -[FlurryPLCrashReportBinaryImageInfo imageName]")
+}
+
+// 0xf1a500 — -[FlurryPLCrashReportBinaryImageInfo hasImageUUID]
+// type: char __cdecl(FlurryPLCrashReportBinaryImageInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportBinaryImageInfo hasImageUUID]")]
+pub fn stub_f1a500() -> ! {
+    todo!("0xf1a500 -[FlurryPLCrashReportBinaryImageInfo hasImageUUID]")
+}
+
+// 0xf1a510 — -[FlurryPLCrashReportBinaryImageInfo imageUUID]
+// type: NSString *__cdecl(FlurryPLCrashReportBinaryImageInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportBinaryImageInfo imageUUID]")]
+pub fn stub_f1a510() -> ! {
+    todo!("0xf1a510 -[FlurryPLCrashReportBinaryImageInfo imageUUID]")
+}
+
+// 0xf1a520 — -[FlurryPLCrashReportExceptionInfo initWithExceptionName:reason:]
+// type: FlurryPLCrashReportExceptionInfo *__cdecl(FlurryPLCrashReportExceptionInfo *self, SEL, id, id)
+#[doc(alias = "-[FlurryPLCrashReportExceptionInfo initWithExceptionName:reason:]")]
+pub fn stub_f1a520() -> ! {
+    todo!("0xf1a520 -[FlurryPLCrashReportExceptionInfo initWithExceptionName:reason:]")
+}
+
+// 0xf1a544 — -[FlurryPLCrashReportExceptionInfo initWithExceptionName:reason:stackFrames:]
+// type: FlurryPLCrashReportExceptionInfo *__cdecl(FlurryPLCrashReportExceptionInfo *self, SEL, id, id, id)
+#[doc(alias = "-[FlurryPLCrashReportExceptionInfo initWithExceptionName:reason:stackFrames:]")]
+pub fn stub_f1a544() -> ! {
+    todo!("0xf1a544 -[FlurryPLCrashReportExceptionInfo initWithExceptionName:reason:stackFrames:]")
+}
+
+// 0xf1a5d8 — -[FlurryPLCrashReportExceptionInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportExceptionInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportExceptionInfo dealloc]")]
+pub fn stub_f1a5d8() -> ! {
+    todo!("0xf1a5d8 -[FlurryPLCrashReportExceptionInfo dealloc]")
+}
+
+// 0xf1a650 — -[FlurryPLCrashReportExceptionInfo exceptionName]
+// type: NSString *__cdecl(FlurryPLCrashReportExceptionInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportExceptionInfo exceptionName]")]
+pub fn stub_f1a650() -> ! {
+    todo!("0xf1a650 -[FlurryPLCrashReportExceptionInfo exceptionName]")
+}
+
+// 0xf1a660 — -[FlurryPLCrashReportExceptionInfo exceptionReason]
+// type: NSString *__cdecl(FlurryPLCrashReportExceptionInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportExceptionInfo exceptionReason]")]
+pub fn stub_f1a660() -> ! {
+    todo!("0xf1a660 -[FlurryPLCrashReportExceptionInfo exceptionReason]")
+}
+
+// 0xf1a670 — -[FlurryPLCrashReportExceptionInfo stackFrames]
+// type: NSArray *__cdecl(FlurryPLCrashReportExceptionInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportExceptionInfo stackFrames]")]
+pub fn stub_f1a670() -> ! {
+    todo!("0xf1a670 -[FlurryPLCrashReportExceptionInfo stackFrames]")
+}
+
+// 0xf1a6ec — -[FlurryPLCrashReportSignalInfo initWithSignalName:code:address:]
+// type: FlurryPLCrashReportSignalInfo *__cdecl(FlurryPLCrashReportSignalInfo *self, SEL, id, id, unsigned __int64)
+#[doc(alias = "-[FlurryPLCrashReportSignalInfo initWithSignalName:code:address:]")]
+pub fn stub_f1a6ec() -> ! {
+    todo!("0xf1a6ec -[FlurryPLCrashReportSignalInfo initWithSignalName:code:address:]")
+}
+
+// 0xf1a784 — -[FlurryPLCrashReportSignalInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportSignalInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSignalInfo dealloc]")]
+pub fn stub_f1a784() -> ! {
+    todo!("0xf1a784 -[FlurryPLCrashReportSignalInfo dealloc]")
+}
+
+// 0xf1a7e8 — -[FlurryPLCrashReportSignalInfo name]
+// type: NSString *__cdecl(FlurryPLCrashReportSignalInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSignalInfo name]")]
+pub fn stub_f1a7e8() -> ! {
+    todo!("0xf1a7e8 -[FlurryPLCrashReportSignalInfo name]")
+}
+
+// 0xf1a7f8 — -[FlurryPLCrashReportSignalInfo code]
+// type: NSString *__cdecl(FlurryPLCrashReportSignalInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSignalInfo code]")]
+pub fn stub_f1a7f8() -> ! {
+    todo!("0xf1a7f8 -[FlurryPLCrashReportSignalInfo code]")
+}
+
+// 0xf1a808 — -[FlurryPLCrashReportSignalInfo address]
+// type: unsigned __int64 __cdecl(FlurryPLCrashReportSignalInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSignalInfo address]")]
+pub fn stub_f1a808() -> ! {
+    todo!("0xf1a808 -[FlurryPLCrashReportSignalInfo address]")
+}
+
+// 0xf1a820 — -[FlurryPLCrashReportProcessInfo initWithProcessName:processID:processPath:parentProcessName:parentProcessID:native:]
+// type: FlurryPLCrashReportProcessInfo *__cdecl(FlurryPLCrashReportProcessInfo *self, SEL, id, unsigned int, id, id, unsigned int, char)
+#[doc(alias = "-[FlurryPLCrashReportProcessInfo initWithProcessName:processID:processPath:parentProcessName:parentProcessID:native:]")]
+pub fn stub_f1a820() -> ! {
+    todo!("0xf1a820 -[FlurryPLCrashReportProcessInfo initWithProcessName:processID:processPath:parentProcessName:parentProcessID:native:]")
+}
+
+// 0xf1a8e8 — -[FlurryPLCrashReportProcessInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportProcessInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportProcessInfo dealloc]")]
+pub fn stub_f1a8e8() -> ! {
+    todo!("0xf1a8e8 -[FlurryPLCrashReportProcessInfo dealloc]")
+}
+
+// 0xf1a960 — -[FlurryPLCrashReportProcessInfo processName]
+// type: NSString *__cdecl(FlurryPLCrashReportProcessInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportProcessInfo processName]")]
+pub fn stub_f1a960() -> ! {
+    todo!("0xf1a960 -[FlurryPLCrashReportProcessInfo processName]")
+}
+
+// 0xf1a970 — -[FlurryPLCrashReportProcessInfo processID]
+// type: unsigned int __cdecl(FlurryPLCrashReportProcessInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportProcessInfo processID]")]
+pub fn stub_f1a970() -> ! {
+    todo!("0xf1a970 -[FlurryPLCrashReportProcessInfo processID]")
+}
+
+// 0xf1a980 — -[FlurryPLCrashReportProcessInfo processPath]
+// type: NSString *__cdecl(FlurryPLCrashReportProcessInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportProcessInfo processPath]")]
+pub fn stub_f1a980() -> ! {
+    todo!("0xf1a980 -[FlurryPLCrashReportProcessInfo processPath]")
+}
+
+// 0xf1a990 — -[FlurryPLCrashReportProcessInfo parentProcessName]
+// type: NSString *__cdecl(FlurryPLCrashReportProcessInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportProcessInfo parentProcessName]")]
+pub fn stub_f1a990() -> ! {
+    todo!("0xf1a990 -[FlurryPLCrashReportProcessInfo parentProcessName]")
+}
+
+// 0xf1a9a0 — -[FlurryPLCrashReportProcessInfo parentProcessID]
+// type: unsigned int __cdecl(FlurryPLCrashReportProcessInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportProcessInfo parentProcessID]")]
+pub fn stub_f1a9a0() -> ! {
+    todo!("0xf1a9a0 -[FlurryPLCrashReportProcessInfo parentProcessID]")
+}
+
+// 0xf1a9b0 — -[FlurryPLCrashReportProcessInfo native]
+// type: char __cdecl(FlurryPLCrashReportProcessInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportProcessInfo native]")]
+pub fn stub_f1a9b0() -> ! {
+    todo!("0xf1a9b0 -[FlurryPLCrashReportProcessInfo native]")
+}
+
+// 0xf1a9c0 — +[FlurryPLCrashReportTextFormatter stringValueForCrashReport:withTextFormat:]
+// type: id __cdecl(id, SEL, id, int)
+#[doc(alias = "+[FlurryPLCrashReportTextFormatter stringValueForCrashReport:withTextFormat:]")]
+pub fn stub_f1a9c0() -> ! {
+    todo!("0xf1a9c0 +[FlurryPLCrashReportTextFormatter stringValueForCrashReport:withTextFormat:]")
+}
+
+// 0xf1bae8 — -[FlurryPLCrashReportTextFormatter initWithTextFormat:stringEncoding:]
+// type: FlurryPLCrashReportTextFormatter *__cdecl(FlurryPLCrashReportTextFormatter *self, SEL, int, unsigned int)
+#[doc(alias = "-[FlurryPLCrashReportTextFormatter initWithTextFormat:stringEncoding:]")]
+pub fn stub_f1bae8() -> ! {
+    todo!("0xf1bae8 -[FlurryPLCrashReportTextFormatter initWithTextFormat:stringEncoding:]")
+}
+
+// 0xf1bb3c — -[FlurryPLCrashReportTextFormatter formatReport:error:]
+// type: id __cdecl(FlurryPLCrashReportTextFormatter *self, SEL, id, id *)
+#[doc(alias = "-[FlurryPLCrashReportTextFormatter formatReport:error:]")]
+pub fn stub_f1bb3c() -> ! {
+    todo!("0xf1bb3c -[FlurryPLCrashReportTextFormatter formatReport:error:]")
+}
+
+// 0xf1bb90 — +[FlurryPLCrashReportTextFormatter formatStackFrame:frameIndex:report:lp64:]
+// type: id __cdecl(id, SEL, id, unsigned int, id, char)
+#[doc(alias = "+[FlurryPLCrashReportTextFormatter formatStackFrame:frameIndex:report:lp64:]")]
+pub fn stub_f1bb90() -> ! {
+    todo!("0xf1bb90 +[FlurryPLCrashReportTextFormatter formatStackFrame:frameIndex:report:lp64:]")
+}
+
+// 0xf1bfd4 — -[FlurryPLCrashReportProcessorInfo initWithTypeEncoding:type:subtype:]
+// type: FlurryPLCrashReportProcessorInfo *__cdecl(FlurryPLCrashReportProcessorInfo *self, SEL, int, unsigned __int64, unsigned __int64)
+#[doc(alias = "-[FlurryPLCrashReportProcessorInfo initWithTypeEncoding:type:subtype:]")]
+pub fn stub_f1bfd4() -> ! {
+    todo!("0xf1bfd4 -[FlurryPLCrashReportProcessorInfo initWithTypeEncoding:type:subtype:]")
+}
+
+// 0xf1c04c — -[FlurryPLCrashReportProcessorInfo typeEncoding]
+// type: int __cdecl(FlurryPLCrashReportProcessorInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportProcessorInfo typeEncoding]")]
+pub fn stub_f1c04c() -> ! {
+    todo!("0xf1c04c -[FlurryPLCrashReportProcessorInfo typeEncoding]")
+}
+
+// 0xf1c05c — -[FlurryPLCrashReportProcessorInfo type]
+// type: unsigned __int64 __cdecl(FlurryPLCrashReportProcessorInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportProcessorInfo type]")]
+pub fn stub_f1c05c() -> ! {
+    todo!("0xf1c05c -[FlurryPLCrashReportProcessorInfo type]")
+}
+
+// 0xf1c074 — -[FlurryPLCrashReportProcessorInfo subtype]
+// type: unsigned __int64 __cdecl(FlurryPLCrashReportProcessorInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportProcessorInfo subtype]")]
+pub fn stub_f1c074() -> ! {
+    todo!("0xf1c074 -[FlurryPLCrashReportProcessorInfo subtype]")
+}
+
+// 0xf1c08c — -[FlurryPLCrashReportMachineInfo initWithModelName:processorInfo:processorCount:logicalProcessorCount:]
+// type: FlurryPLCrashReportMachineInfo *__cdecl(FlurryPLCrashReportMachineInfo *self, SEL, id, id, unsigned int, unsigned int)
+#[doc(alias = "-[FlurryPLCrashReportMachineInfo initWithModelName:processorInfo:processorCount:logicalProcessorCount:]")]
+pub fn stub_f1c08c() -> ! {
+    todo!("0xf1c08c -[FlurryPLCrashReportMachineInfo initWithModelName:processorInfo:processorCount:logicalProcessorCount:]")
+}
+
+// 0xf1c12c — -[FlurryPLCrashReportMachineInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportMachineInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportMachineInfo dealloc]")]
+pub fn stub_f1c12c() -> ! {
+    todo!("0xf1c12c -[FlurryPLCrashReportMachineInfo dealloc]")
+}
+
+// 0xf1c190 — -[FlurryPLCrashReportMachineInfo modelName]
+// type: NSString *__cdecl(FlurryPLCrashReportMachineInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportMachineInfo modelName]")]
+pub fn stub_f1c190() -> ! {
+    todo!("0xf1c190 -[FlurryPLCrashReportMachineInfo modelName]")
+}
+
+// 0xf1c1a0 — -[FlurryPLCrashReportMachineInfo processorInfo]
+// type: FlurryPLCrashReportProcessorInfo *__cdecl(FlurryPLCrashReportMachineInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportMachineInfo processorInfo]")]
+pub fn stub_f1c1a0() -> ! {
+    todo!("0xf1c1a0 -[FlurryPLCrashReportMachineInfo processorInfo]")
+}
+
+// 0xf1c1b0 — -[FlurryPLCrashReportMachineInfo processorCount]
+// type: unsigned int __cdecl(FlurryPLCrashReportMachineInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportMachineInfo processorCount]")]
+pub fn stub_f1c1b0() -> ! {
+    todo!("0xf1c1b0 -[FlurryPLCrashReportMachineInfo processorCount]")
+}
+
+// 0xf1c1c0 — -[FlurryPLCrashReportMachineInfo logicalProcessorCount]
+// type: unsigned int __cdecl(FlurryPLCrashReportMachineInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportMachineInfo logicalProcessorCount]")]
+pub fn stub_f1c1c0() -> ! {
+    todo!("0xf1c1c0 -[FlurryPLCrashReportMachineInfo logicalProcessorCount]")
+}
+
+// 0xf1d88c — -[FlurryPLCrashReportStackFrameInfo initWithInstructionPointer:symbolInfo:]
+// type: FlurryPLCrashReportStackFrameInfo *__cdecl(FlurryPLCrashReportStackFrameInfo *self, SEL, unsigned __int64, id)
+#[doc(alias = "-[FlurryPLCrashReportStackFrameInfo initWithInstructionPointer:symbolInfo:]")]
+pub fn stub_f1d88c() -> ! {
+    todo!("0xf1d88c -[FlurryPLCrashReportStackFrameInfo initWithInstructionPointer:symbolInfo:]")
+}
+
+// 0xf1d8f8 — -[FlurryPLCrashReportStackFrameInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportStackFrameInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportStackFrameInfo dealloc]")]
+pub fn stub_f1d8f8() -> ! {
+    todo!("0xf1d8f8 -[FlurryPLCrashReportStackFrameInfo dealloc]")
+}
+
+// 0xf1d944 — -[FlurryPLCrashReportStackFrameInfo instructionPointer]
+// type: unsigned __int64 __cdecl(FlurryPLCrashReportStackFrameInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportStackFrameInfo instructionPointer]")]
+pub fn stub_f1d944() -> ! {
+    todo!("0xf1d944 -[FlurryPLCrashReportStackFrameInfo instructionPointer]")
+}
+
+// 0xf1d95c — -[FlurryPLCrashReportStackFrameInfo symbolInfo]
+// type: FlurryPLCrashReportSymbolInfo *__cdecl(FlurryPLCrashReportStackFrameInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportStackFrameInfo symbolInfo]")]
+pub fn stub_f1d95c() -> ! {
+    todo!("0xf1d95c -[FlurryPLCrashReportStackFrameInfo symbolInfo]")
+}
+
+// 0xf1d96c — -[FlurryPLCrashReportRegisterInfo initWithRegisterName:registerValue:]
+// type: FlurryPLCrashReportRegisterInfo *__cdecl(FlurryPLCrashReportRegisterInfo *self, SEL, id, unsigned __int64)
+#[doc(alias = "-[FlurryPLCrashReportRegisterInfo initWithRegisterName:registerValue:]")]
+pub fn stub_f1d96c() -> ! {
+    todo!("0xf1d96c -[FlurryPLCrashReportRegisterInfo initWithRegisterName:registerValue:]")
+}
+
+// 0xf1d9e4 — -[FlurryPLCrashReportRegisterInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportRegisterInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportRegisterInfo dealloc]")]
+pub fn stub_f1d9e4() -> ! {
+    todo!("0xf1d9e4 -[FlurryPLCrashReportRegisterInfo dealloc]")
+}
+
+// 0xf1da30 — -[FlurryPLCrashReportRegisterInfo registerName]
+// type: NSString *__cdecl(FlurryPLCrashReportRegisterInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportRegisterInfo registerName]")]
+pub fn stub_f1da30() -> ! {
+    todo!("0xf1da30 -[FlurryPLCrashReportRegisterInfo registerName]")
+}
+
+// 0xf1da40 — -[FlurryPLCrashReportRegisterInfo registerValue]
+// type: unsigned __int64 __cdecl(FlurryPLCrashReportRegisterInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportRegisterInfo registerValue]")]
+pub fn stub_f1da40() -> ! {
+    todo!("0xf1da40 -[FlurryPLCrashReportRegisterInfo registerValue]")
+}
+
+// 0xf1da58 — -[FlurryPLCrashReportSymbolInfo initWithSymbolName:startAddress:endAddress:]
+// type: FlurryPLCrashReportSymbolInfo *__cdecl(FlurryPLCrashReportSymbolInfo *self, SEL, id, unsigned __int64, unsigned __int64)
+#[doc(alias = "-[FlurryPLCrashReportSymbolInfo initWithSymbolName:startAddress:endAddress:]")]
+pub fn stub_f1da58() -> ! {
+    todo!("0xf1da58 -[FlurryPLCrashReportSymbolInfo initWithSymbolName:startAddress:endAddress:]")
+}
+
+// 0xf1daf0 — -[FlurryPLCrashReportSymbolInfo dealloc]
+// type: void __cdecl(FlurryPLCrashReportSymbolInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSymbolInfo dealloc]")]
+pub fn stub_f1daf0() -> ! {
+    todo!("0xf1daf0 -[FlurryPLCrashReportSymbolInfo dealloc]")
+}
+
+// 0xf1db3c — -[FlurryPLCrashReportSymbolInfo symbolName]
+// type: NSString *__cdecl(FlurryPLCrashReportSymbolInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSymbolInfo symbolName]")]
+pub fn stub_f1db3c() -> ! {
+    todo!("0xf1db3c -[FlurryPLCrashReportSymbolInfo symbolName]")
+}
+
+// 0xf1db4c — -[FlurryPLCrashReportSymbolInfo startAddress]
+// type: unsigned __int64 __cdecl(FlurryPLCrashReportSymbolInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSymbolInfo startAddress]")]
+pub fn stub_f1db4c() -> ! {
+    todo!("0xf1db4c -[FlurryPLCrashReportSymbolInfo startAddress]")
+}
+
+// 0xf1db64 — -[FlurryPLCrashReportSymbolInfo endAddress]
+// type: unsigned __int64 __cdecl(FlurryPLCrashReportSymbolInfo *self, SEL)
+#[doc(alias = "-[FlurryPLCrashReportSymbolInfo endAddress]")]
+pub fn stub_f1db64() -> ! {
+    todo!("0xf1db64 -[FlurryPLCrashReportSymbolInfo endAddress]")
+}
+
+// 0xf1db7c — -[FlurryPLCrashMachExceptionServer init]
+// type: FlurryPLCrashMachExceptionServer *__cdecl(FlurryPLCrashMachExceptionServer *self, SEL)
+#[doc(alias = "-[FlurryPLCrashMachExceptionServer init]")]
+pub fn stub_f1db7c() -> ! {
+    todo!("0xf1db7c -[FlurryPLCrashMachExceptionServer init]")
+}
+
+// 0xf1dba8 — -[FlurryPLCrashMachExceptionServer registerHandlerForTask:thread:withCallback:context:error:]
+// type: char __cdecl(FlurryPLCrashMachExceptionServer *self, SEL, unsigned int, unsigned int, void *, void *, id *)
+#[doc(alias = "-[FlurryPLCrashMachExceptionServer registerHandlerForTask:thread:withCallback:context:error:]")]
+pub fn stub_f1dba8() -> ! {
+    todo!("0xf1dba8 -[FlurryPLCrashMachExceptionServer registerHandlerForTask:thread:withCallback:context:error:]")
+}
+
+// 0xf1e478 — -[FlurryPLCrashMachExceptionServer deregisterHandlerAndReturnError:]
+// type: char __cdecl(FlurryPLCrashMachExceptionServer *self, SEL, id *)
+#[doc(alias = "-[FlurryPLCrashMachExceptionServer deregisterHandlerAndReturnError:]")]
+pub fn stub_f1e478() -> ! {
+    todo!("0xf1e478 -[FlurryPLCrashMachExceptionServer deregisterHandlerAndReturnError:]")
+}
+
+// 0xf1e79c — +[__ARCLite__ load]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[__ARCLite__ load]")]
+pub fn stub_f1e79c() -> ! {
+    todo!("0xf1e79c +[__ARCLite__ load]")
 }
