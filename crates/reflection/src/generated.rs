@@ -40853,3 +40853,904 @@ pub fn stub_0x550cd4() -> ! {
 pub fn stub_0x550ce8() -> ! {
     todo!("0x550ce8 bool boost::detail::function::basic_vtable2<void,RBX::GuiService::SpecialKey,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")
 }
+
+// 0x550dd0 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX10GuiService10SpecialKeyESsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_RKSsEENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,RBX::GuiService::SpecialKey,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn stub_0x550dd0() -> ! {
+    todo!("0x550dd0 bool boost::detail::function::basic_vtable2<void,RBX::GuiService::SpecialKey,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0x550eb4 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX10GuiService10SpecialKeyESsE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_RKSsEENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+#[doc(alias = "void boost::detail::function::basic_vtable2<void,RBX::GuiService::SpecialKey,std::string>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+pub fn stub_0x550eb4() -> ! {
+    todo!("0x550eb4 void boost::detail::function::basic_vtable2<void,RBX::GuiService::SpecialKey,std::string>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+// 0x550f88 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS4_10GuiService10SpecialKeyERKSsEENS0_5list3INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEENSJ_ILi2EEEEEEclIS8_SsEEvRT_RT0_
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<RBX::GuiService::SpecialKey,std::string>(RBX::GuiService::SpecialKey &,std::string &)")]
+pub fn stub_0x550f88() -> ! {
+    todo!("0x550f88 void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<RBX::GuiService::SpecialKey,std::string>(RBX::GuiService::SpecialKey &,std::string &)")
+}
+
+// 0x550fa4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10GuiService10SpecialKeyERKSsEENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+pub fn stub_0x550fa4() -> ! {
+    todo!("0x550fa4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::GuiService::SpecialKey const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0x55204c — __ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvSsSsEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_SA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::EventDesc(rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x55204c() -> ! {
+    todo!("0x55204c RBX::Reflection::EventDesc<RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::EventDesc(rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x55223c — __ZN3RBX10Reflection9EventDescINS_10GuiServiceEFvSsSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::~EventDesc()")]
+pub fn stub_0x55223c() -> ! {
+    todo!("0x55223c RBX::Reflection::EventDesc<RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::~EventDesc()")
+}
+
+// 0x5522f0 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_10GuiServiceEFvSsSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_0x5522f0() -> ! {
+    todo!("0x5522f0 RBX::Reflection::EventDescImpl<2,RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x552444 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_10GuiServiceEFvSsSsEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_0x552444() -> ! {
+    todo!("0x552444 RBX::Reflection::EventDescImpl<2,RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x552680 — __ZNK3RBX10Reflection13EventDescBaseINS_10GuiServiceEFvSsSsEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_0x552680() -> ! {
+    todo!("0x552680 RBX::Reflection::EventDescBase<RBX::GuiService,void ()(std::string,std::string),rbx::signal<void ()(std::string,std::string)>,rbx::signal<void ()(std::string,std::string)> RBX::GuiService::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x55280c — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKSsS5_NS_10shared_ptrIS3_EENS_3argILi1EEENS8_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISD_T0_T1_T2_EENSB_9list_av_3IT3_T4_T5_E4typeEEEMSG_FSD_SH_SI_ESL_SM_SN_
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,std::string const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
+pub fn stub_0x55280c() -> ! {
+    todo!("0x55280c boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,std::string const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")
+}
+
+// 0x552928 — __ZN3RBX10Reflection18GenericSlotWrapper8execute2ISsSsEEvRKT_RKT0_
+#[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute2<std::string,std::string>(std::string const&,std::string const&)")]
+pub fn stub_0x552928() -> ! {
+    todo!("0x552928 void RBX::Reflection::GenericSlotWrapper::execute2<std::string,std::string>(std::string const&,std::string const&)")
+}
+
+// 0x552c88 — __ZN5boost9function2IvSsSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEEEvT_
+#[doc(alias = "void boost::function2<void,std::string,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
+pub fn stub_0x552c88() -> ! {
+    todo!("0x552c88 void boost::function2<void,std::string,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")
+}
+
+// 0x552d80 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_0x552d80() -> ! {
+    todo!("0x552d80 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x552d9c — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEvSsSsE6invokeERNS1_15function_bufferESsSs
+#[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,std::string,std::string>::invoke(boost::detail::function::function_buffer &,std::string,std::string)")]
+pub fn stub_0x552d9c() -> ! {
+    todo!("0x552d9c boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,std::string,std::string>::invoke(boost::detail::function::function_buffer &,std::string,std::string)")
+}
+
+// 0x552da4 — __ZNK5boost6detail8function13basic_vtable2IvSsSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
+pub fn stub_0x552da4() -> ! {
+    todo!("0x552da4 bool boost::detail::function::basic_vtable2<void,std::string,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0x552e8c — __ZNK5boost6detail8function13basic_vtable2IvSsSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn stub_0x552e8c() -> ! {
+    todo!("0x552e8c bool boost::detail::function::basic_vtable2<void,std::string,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0x552f70 — __ZNK5boost6detail8function13basic_vtable2IvSsSsE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+#[doc(alias = "void boost::detail::function::basic_vtable2<void,std::string,std::string>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+pub fn stub_0x552f70() -> ! {
+    todo!("0x552f70 void boost::detail::function::basic_vtable2<void,std::string,std::string>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+// 0x553044 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsS8_EENS0_5list3INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEENSF_ILi2EEEEEEclISsSsEEvRT_RT0_
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<std::string,std::string>(std::string &,std::string &)")]
+pub fn stub_0x553044() -> ! {
+    todo!("0x553044 void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<std::string,std::string>(std::string &,std::string &)")
+}
+
+// 0x553060 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+pub fn stub_0x553060() -> ! {
+    todo!("0x553060 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,std::string const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0x554210 — __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::PropDescriptor<bool (RBX::GuiService::*)(void)const,int>(char const*,char const*,bool (RBX::GuiService::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x554210() -> ! {
+    todo!("0x554210 RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::PropDescriptor<bool (RBX::GuiService::*)(void)const,int>(char const*,char const*,bool (RBX::GuiService::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55431c — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE7GetImplIMS2_KFbvEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::isReadOnly(void)const")]
+pub fn stub_0x55431c() -> ! {
+    todo!("0x55431c RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::isReadOnly(void)const")
+}
+
+// 0x554320 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE7GetImplIMS2_KFbvEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::isWriteOnly(void)const")]
+pub fn stub_0x554320() -> ! {
+    todo!("0x554320 RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::isWriteOnly(void)const")
+}
+
+// 0x554324 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE7GetImplIMS2_KFbvEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x554324() -> ! {
+    todo!("0x554324 RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x554348 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEbE7GetImplIMS2_KFbvEE8setValueEPNS0_13DescribedBaseERKb
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
+pub fn stub_0x554348() -> ! {
+    todo!("0x554348 RBX::Reflection::PropDescriptor<RBX::GuiService,bool>::GetImpl<bool (RBX::GuiService::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+}
+
+// 0x554468 — __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEdEC2IMS2_KFdvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::PropDescriptor<double (RBX::GuiService::*)(void)const,int>(char const*,char const*,double (RBX::GuiService::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x554468() -> ! {
+    todo!("0x554468 RBX::Reflection::PropDescriptor<RBX::GuiService,double>::PropDescriptor<double (RBX::GuiService::*)(void)const,int>(char const*,char const*,double (RBX::GuiService::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x554574 — __ZN3RBX10Reflection14PropDescriptorINS_10GuiServiceEdED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::~PropDescriptor()")]
+pub fn stub_0x554574() -> ! {
+    todo!("0x554574 RBX::Reflection::PropDescriptor<RBX::GuiService,double>::~PropDescriptor()")
+}
+
+// 0x5545a0 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEdE7GetImplIMS2_KFdvEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::isReadOnly(void)const")]
+pub fn stub_0x5545a0() -> ! {
+    todo!("0x5545a0 RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::isReadOnly(void)const")
+}
+
+// 0x5545a4 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEdE7GetImplIMS2_KFdvEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::isWriteOnly(void)const")]
+pub fn stub_0x5545a4() -> ! {
+    todo!("0x5545a4 RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::isWriteOnly(void)const")
+}
+
+// 0x5545a8 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEdE7GetImplIMS2_KFdvEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x5545a8() -> ! {
+    todo!("0x5545a8 RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5545c8 — __ZNK3RBX10Reflection14PropDescriptorINS_10GuiServiceEdE7GetImplIMS2_KFdvEE8setValueEPNS0_13DescribedBaseERKd
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,double const&)const")]
+pub fn stub_0x5545c8() -> ! {
+    todo!("0x5545c8 RBX::Reflection::PropDescriptor<RBX::GuiService,double>::GetImpl<double (RBX::GuiService::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,double const&)const")
+}
+
+// 0x5546e8 — __ZN3rbx11make_sharedIN3RBX10Reflection5TupleEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::Reflection::Tuple> rbx::make_shared<RBX::Reflection::Tuple>(void)")]
+pub fn stub_0x5546e8() -> ! {
+    todo!("0x5546e8 boost::shared_ptr<RBX::Reflection::Tuple> rbx::make_shared<RBX::Reflection::Tuple>(void)")
+}
+
+// 0x554994 — __ZNSt8auto_ptrIN3RBX10Reflection5TupleEED2Ev
+#[doc(alias = "std::auto_ptr<RBX::Reflection::Tuple>::~auto_ptr()")]
+pub fn stub_0x554994() -> ! {
+    todo!("0x554994 std::auto_ptr<RBX::Reflection::Tuple>::~auto_ptr()")
+}
+
+// 0x554b04 — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EED2Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()")]
+pub fn stub_0x554b04() -> ! {
+    todo!("0x554b04 RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()")
+}
+
+// 0x554c64 — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvSsSsSsiNS_3Lua15WeakFunctionRefEELi5EED2Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(std::string,std::string,std::string,int,RBX::Lua::WeakFunctionRef),5>::~BoundFuncDesc()")]
+pub fn stub_0x554c64() -> ! {
+    todo!("0x554c64 RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(std::string,std::string,std::string,int,RBX::Lua::WeakFunctionRef),5>::~BoundFuncDesc()")
+}
+
+// 0x559448 — __ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEED1Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()")]
+pub fn stub_0x559448() -> ! {
+    todo!("0x559448 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()")
+}
+
+// 0x559474 — __ZN3RBX6Rocket13onGoalChangedERKNS_10Reflection18PropertyDescriptorE
+#[doc(alias = "RBX::Rocket::onGoalChanged(RBX::Reflection::PropertyDescriptor const&)")]
+pub fn stub_0x559474() -> ! {
+    todo!("0x559474 RBX::Rocket::onGoalChanged(RBX::Reflection::PropertyDescriptor const&)")
+}
+
+// 0x55947c — __ZN3RBX10Reflection13BoundFuncDescINS_6RocketEFvvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_0x55947c() -> ! {
+    todo!("0x55947c RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x5594a0 — __ZN3RBX10Reflection15RemoteEventDescINS_6RocketEFvvEN3rbx13remote_signalIS3_EEED1Ev
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
+pub fn stub_0x5594a0() -> ! {
+    todo!("0x5594a0 RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+}
+
+// 0x5595a4 — __ZN3RBX12BodyPosition13onGoalChangedERKNS_10Reflection18PropertyDescriptorE
+#[doc(alias = "RBX::BodyPosition::onGoalChanged(RBX::Reflection::PropertyDescriptor const&)")]
+pub fn stub_0x5595a4() -> ! {
+    todo!("0x5595a4 RBX::BodyPosition::onGoalChanged(RBX::Reflection::PropertyDescriptor const&)")
+}
+
+// 0x5595bc — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_0x5595bc() -> ! {
+    todo!("0x5595bc RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x5595e0 — __ZN3RBX10Reflection15RemoteEventDescINS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEED1Ev
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
+pub fn stub_0x5595e0() -> ! {
+    todo!("0x5595e0 RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+}
+
+// 0x559614 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_0x559614() -> ! {
+    todo!("0x559614 RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x55d044 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_10BodyThrustEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyThrust>(char const*,char const*,G3D::Vector3 RBX::BodyThrust::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x55d044() -> ! {
+    todo!("0x55d044 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyThrust>(char const*,char const*,G3D::Vector3 RBX::BodyThrust::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55d1d4 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isReadOnly(void)const")]
+pub fn stub_0x55d1d4() -> ! {
+    todo!("0x55d1d4 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isReadOnly(void)const")
+}
+
+// 0x55d1d8 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isWriteOnly(void)const")]
+pub fn stub_0x55d1d8() -> ! {
+    todo!("0x55d1d8 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::isWriteOnly(void)const")
+}
+
+// 0x55d1dc — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x55d1dc() -> ! {
+    todo!("0x55d1dc RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55d1f8 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_10BodyThrustEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+pub fn stub_0x55d1f8() -> ! {
+    todo!("0x55d1f8 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyThrust>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x55d7a8 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_9BodyForceEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyForce>(char const*,char const*,G3D::Vector3 RBX::BodyForce::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x55d7a8() -> ! {
+    todo!("0x55d7a8 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyForce>(char const*,char const*,G3D::Vector3 RBX::BodyForce::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55d938 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isReadOnly(void)const")]
+pub fn stub_0x55d938() -> ! {
+    todo!("0x55d938 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isReadOnly(void)const")
+}
+
+// 0x55d93c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isWriteOnly(void)const")]
+pub fn stub_0x55d93c() -> ! {
+    todo!("0x55d93c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::isWriteOnly(void)const")
+}
+
+// 0x55d940 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x55d940() -> ! {
+    todo!("0x55d940 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55d95c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_9BodyForceEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+pub fn stub_0x55d95c() -> ! {
+    todo!("0x55d95c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyForce>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x55df0c — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_19BodyAngularVelocityEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyAngularVelocity>(char const*,char const*,G3D::Vector3 RBX::BodyAngularVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x55df0c() -> ! {
+    todo!("0x55df0c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyAngularVelocity>(char const*,char const*,G3D::Vector3 RBX::BodyAngularVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55e09c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isReadOnly(void)const")]
+pub fn stub_0x55e09c() -> ! {
+    todo!("0x55e09c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isReadOnly(void)const")
+}
+
+// 0x55e0a0 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isWriteOnly(void)const")]
+pub fn stub_0x55e0a0() -> ! {
+    todo!("0x55e0a0 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isWriteOnly(void)const")
+}
+
+// 0x55e0a4 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x55e0a4() -> ! {
+    todo!("0x55e0a4 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55e0c0 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+pub fn stub_0x55e0c0() -> ! {
+    todo!("0x55e0c0 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x55e154 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_19BodyAngularVelocityEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyAngularVelocity>(char const*,char const*,float RBX::BodyAngularVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x55e154() -> ! {
+    todo!("0x55e154 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyAngularVelocity>(char const*,char const*,float RBX::BodyAngularVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55e2e4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isReadOnly(void)const")]
+pub fn stub_0x55e2e4() -> ! {
+    todo!("0x55e2e4 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isReadOnly(void)const")
+}
+
+// 0x55e2e8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isWriteOnly(void)const")]
+pub fn stub_0x55e2e8() -> ! {
+    todo!("0x55e2e8 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::isWriteOnly(void)const")
+}
+
+// 0x55e2ec — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x55e2ec() -> ! {
+    todo!("0x55e2ec RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55e2f8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_19BodyAngularVelocityEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x55e2f8() -> ! {
+    todo!("0x55e2f8 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyAngularVelocity>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x55e870 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::BodyVelocity::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x55e870() -> ! {
+    todo!("0x55e870 RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::BodyVelocity::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x55e974 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_0x55e974() -> ! {
+    todo!("0x55e974 RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x55ea28 — __ZNK3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_0x55ea28() -> ! {
+    todo!("0x55ea28 RBX::Reflection::BoundFuncDesc<RBX::BodyVelocity,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x55ea4c — __ZN3RBX10Reflection11Call0HelperINS_12BodyVelocityEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE
+#[doc(alias = "RBX::Reflection::Call0Helper<RBX::BodyVelocity,G3D::Vector3 (RBX::BodyVelocity::*)(void),G3D::Vector3>::call(RBX::BodyVelocity*,G3D::Vector3 (RBX::BodyVelocity::*)(void),RBX::Reflection::Variant &)")]
+pub fn stub_0x55ea4c() -> ! {
+    todo!("0x55ea4c RBX::Reflection::Call0Helper<RBX::BodyVelocity,G3D::Vector3 (RBX::BodyVelocity::*)(void),G3D::Vector3>::call(RBX::BodyVelocity*,G3D::Vector3 (RBX::BodyVelocity::*)(void),RBX::Reflection::Variant &)")
+}
+
+// 0x55ea80 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyVelocityEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyVelocity>(char const*,char const*,G3D::Vector3 RBX::BodyVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x55ea80() -> ! {
+    todo!("0x55ea80 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyVelocity>(char const*,char const*,G3D::Vector3 RBX::BodyVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55ec10 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isReadOnly(void)const")]
+pub fn stub_0x55ec10() -> ! {
+    todo!("0x55ec10 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isReadOnly(void)const")
+}
+
+// 0x55ec14 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isWriteOnly(void)const")]
+pub fn stub_0x55ec14() -> ! {
+    todo!("0x55ec14 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isWriteOnly(void)const")
+}
+
+// 0x55ec18 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x55ec18() -> ! {
+    todo!("0x55ec18 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55ec34 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+pub fn stub_0x55ec34() -> ! {
+    todo!("0x55ec34 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x55ecc8 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12BodyVelocityEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyVelocity>(char const*,char const*,float RBX::BodyVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x55ecc8() -> ! {
+    todo!("0x55ecc8 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyVelocity>(char const*,char const*,float RBX::BodyVelocity::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55ee58 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isReadOnly(void)const")]
+pub fn stub_0x55ee58() -> ! {
+    todo!("0x55ee58 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isReadOnly(void)const")
+}
+
+// 0x55ee5c — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isWriteOnly(void)const")]
+pub fn stub_0x55ee5c() -> ! {
+    todo!("0x55ee5c RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::isWriteOnly(void)const")
+}
+
+// 0x55ee60 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x55ee60() -> ! {
+    todo!("0x55ee60 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55ee6c — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyVelocityEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x55ee6c() -> ! {
+    todo!("0x55ee6c RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyVelocity>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x55f3e4 — __ZN3RBX10Reflection15RemoteEventDescINS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEED0Ev
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
+pub fn stub_0x55f3e4() -> ! {
+    todo!("0x55f3e4 RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+}
+
+// 0x55f498 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::BodyPosition::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_0x55f498() -> ! {
+    todo!("0x55f498 RBX::Reflection::EventDescImpl<0,RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::BodyPosition::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x55f6ac — __ZNK3RBX10Reflection15RemoteEventDescINS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEE12isScriptableEv
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::isScriptable(void)const")]
+pub fn stub_0x55f6ac() -> ! {
+    todo!("0x55f6ac RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::isScriptable(void)const")
+}
+
+// 0x55f6b4 — __ZNK3RBX10Reflection15RemoteEventDescINS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEE11isBroadcastEv
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::isBroadcast(void)const")]
+pub fn stub_0x55f6b4() -> ! {
+    todo!("0x55f6b4 RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::isBroadcast(void)const")
+}
+
+// 0x55f6bc — __ZNK3RBX10Reflection13EventDescImplILi0ENS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::BodyPosition::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_0x55f6bc() -> ! {
+    todo!("0x55f6bc RBX::Reflection::EventDescImpl<0,RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::BodyPosition::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x55f730 — __ZNK3RBX10Reflection15RemoteEventDescINS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISB_EE
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_0x55f730() -> ! {
+    todo!("0x55f730 RBX::Reflection::RemoteEventDesc<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x55f740 — __ZNK3RBX10Reflection13EventDescBaseINS_12BodyPositionEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::BodyPosition::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_0x55f740() -> ! {
+    todo!("0x55f740 RBX::Reflection::EventDescBase<RBX::BodyPosition,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::BodyPosition::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x55f754 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::BodyPosition::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x55f754() -> ! {
+    todo!("0x55f754 RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::BoundFuncDesc(G3D::Vector3 (RBX::BodyPosition::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x55f858 — __ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_0x55f858() -> ! {
+    todo!("0x55f858 RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x55f90c — __ZNK3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_0x55f90c() -> ! {
+    todo!("0x55f90c RBX::Reflection::BoundFuncDesc<RBX::BodyPosition,G3D::Vector3 ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x55f930 — __ZN3RBX10Reflection11Call0HelperINS_12BodyPositionEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE
+#[doc(alias = "RBX::Reflection::Call0Helper<RBX::BodyPosition,G3D::Vector3 (RBX::BodyPosition::*)(void),G3D::Vector3>::call(RBX::BodyPosition*,G3D::Vector3 (RBX::BodyPosition::*)(void),RBX::Reflection::Variant &)")]
+pub fn stub_0x55f930() -> ! {
+    todo!("0x55f930 RBX::Reflection::Call0Helper<RBX::BodyPosition,G3D::Vector3 (RBX::BodyPosition::*)(void),G3D::Vector3>::call(RBX::BodyPosition*,G3D::Vector3 (RBX::BodyPosition::*)(void),RBX::Reflection::Variant &)")
+}
+
+// 0x55f964 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,G3D::Vector3 RBX::BodyPosition::*,void (RBX::BodyPosition::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x55f964() -> ! {
+    todo!("0x55f964 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,G3D::Vector3 RBX::BodyPosition::*,void (RBX::BodyPosition::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55faf8 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isReadOnly(void)const")]
+pub fn stub_0x55faf8() -> ! {
+    todo!("0x55faf8 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isReadOnly(void)const")
+}
+
+// 0x55fafc — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isWriteOnly(void)const")]
+pub fn stub_0x55fafc() -> ! {
+    todo!("0x55fafc RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isWriteOnly(void)const")
+}
+
+// 0x55fb00 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x55fb00() -> ! {
+    todo!("0x55fb00 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55fb1c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+pub fn stub_0x55fb1c() -> ! {
+    todo!("0x55fb1c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x55fbb0 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,G3D::Vector3 RBX::BodyPosition::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x55fbb0() -> ! {
+    todo!("0x55fbb0 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,G3D::Vector3 RBX::BodyPosition::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55fd40 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,float RBX::BodyPosition::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x55fd40() -> ! {
+    todo!("0x55fd40 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyPosition>(char const*,char const*,float RBX::BodyPosition::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x55fed0 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isReadOnly(void)const")]
+pub fn stub_0x55fed0() -> ! {
+    todo!("0x55fed0 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isReadOnly(void)const")
+}
+
+// 0x55fed4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isWriteOnly(void)const")]
+pub fn stub_0x55fed4() -> ! {
+    todo!("0x55fed4 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::isWriteOnly(void)const")
+}
+
+// 0x55fed8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x55fed8() -> ! {
+    todo!("0x55fed8 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x55fee4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12BodyPositionEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x55fee4() -> ! {
+    todo!("0x55fee4 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyPosition>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x56045c — __ZN3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,G3D::CoordinateFrame RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x56045c() -> ! {
+    todo!("0x56045c RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,G3D::CoordinateFrame RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x5605ec — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const")]
+pub fn stub_0x5605ec() -> ! {
+    todo!("0x5605ec RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const")
+}
+
+// 0x5605f0 — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const")]
+pub fn stub_0x5605f0() -> ! {
+    todo!("0x5605f0 RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const")
+}
+
+// 0x5605f4 — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x5605f4() -> ! {
+    todo!("0x5605f4 RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x560620 — __ZNK3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")]
+pub fn stub_0x560620() -> ! {
+    todo!("0x560620 RBX::Reflection::BoundProp<G3D::CoordinateFrame,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")
+}
+
+// 0x5606ec — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,G3D::Vector3 RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x5606ec() -> ! {
+    todo!("0x5606ec RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,G3D::Vector3 RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x56087c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const")]
+pub fn stub_0x56087c() -> ! {
+    todo!("0x56087c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const")
+}
+
+// 0x560880 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const")]
+pub fn stub_0x560880() -> ! {
+    todo!("0x560880 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const")
+}
+
+// 0x560884 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x560884() -> ! {
+    todo!("0x560884 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5608a0 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+pub fn stub_0x5608a0() -> ! {
+    todo!("0x5608a0 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x560934 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,float RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x560934() -> ! {
+    todo!("0x560934 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::BodyGyro>(char const*,char const*,float RBX::BodyGyro::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x560ac4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const")]
+pub fn stub_0x560ac4() -> ! {
+    todo!("0x560ac4 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isReadOnly(void)const")
+}
+
+// 0x560ac8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const")]
+pub fn stub_0x560ac8() -> ! {
+    todo!("0x560ac8 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::isWriteOnly(void)const")
+}
+
+// 0x560acc — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x560acc() -> ! {
+    todo!("0x560acc RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x560ad8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_8BodyGyroEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x560ad8() -> ! {
+    todo!("0x560ad8 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::BodyGyro>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x561050 — __ZN3RBX10Reflection15RemoteEventDescINS_6RocketEFvvEN3rbx13remote_signalIS3_EEED0Ev
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")]
+pub fn stub_0x561050() -> ! {
+    todo!("0x561050 RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+}
+
+// 0x561104 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_6RocketEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::Rocket::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_0x561104() -> ! {
+    todo!("0x561104 RBX::Reflection::EventDescImpl<0,RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::Rocket::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x561318 — __ZNK3RBX10Reflection15RemoteEventDescINS_6RocketEFvvEN3rbx13remote_signalIS3_EEE12isScriptableEv
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::isScriptable(void)const")]
+pub fn stub_0x561318() -> ! {
+    todo!("0x561318 RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::isScriptable(void)const")
+}
+
+// 0x561320 — __ZNK3RBX10Reflection15RemoteEventDescINS_6RocketEFvvEN3rbx13remote_signalIS3_EEE11isBroadcastEv
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::isBroadcast(void)const")]
+pub fn stub_0x561320() -> ! {
+    todo!("0x561320 RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::isBroadcast(void)const")
+}
+
+// 0x561328 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_6RocketEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::Rocket::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_0x561328() -> ! {
+    todo!("0x561328 RBX::Reflection::EventDescImpl<0,RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::Rocket::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x56139c — __ZNK3RBX10Reflection15RemoteEventDescINS_6RocketEFvvEN3rbx13remote_signalIS3_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISB_EE
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_0x56139c() -> ! {
+    todo!("0x56139c RBX::Reflection::RemoteEventDesc<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x5613ac — __ZNK3RBX10Reflection13EventDescBaseINS_6RocketEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::Rocket::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_0x5613ac() -> ! {
+    todo!("0x5613ac RBX::Reflection::EventDescBase<RBX::Rocket,void ()(void),rbx::remote_signal<void ()(void)>,rbx::remote_signal<void ()(void)> RBX::Rocket::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x5613c0 — __ZN3RBX10Reflection13BoundFuncDescINS_6RocketEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::BoundFuncDesc(void (RBX::Rocket::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x5613c0() -> ! {
+    todo!("0x5613c0 RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::BoundFuncDesc(void (RBX::Rocket::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x5614c4 — __ZN3RBX10Reflection13BoundFuncDescINS_6RocketEFvvELi0EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_0x5614c4() -> ! {
+    todo!("0x5614c4 RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x561578 — __ZNK3RBX10Reflection13BoundFuncDescINS_6RocketEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_0x561578() -> ! {
+    todo!("0x561578 RBX::Reflection::BoundFuncDesc<RBX::Rocket,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x561598 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,bool RBX::Rocket::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x561598() -> ! {
+    todo!("0x561598 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,bool RBX::Rocket::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x561728 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isReadOnly(void)const")]
+pub fn stub_0x561728() -> ! {
+    todo!("0x561728 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isReadOnly(void)const")
+}
+
+// 0x56172c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isWriteOnly(void)const")]
+pub fn stub_0x56172c() -> ! {
+    todo!("0x56172c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isWriteOnly(void)const")
+}
+
+// 0x561730 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x561730() -> ! {
+    todo!("0x561730 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x56173c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8setValueEPNS0_13DescribedBaseERKb
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
+pub fn stub_0x56173c() -> ! {
+    todo!("0x56173c RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+}
+
+// 0x56178c — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,G3D::Vector3 RBX::Rocket::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x56178c() -> ! {
+    todo!("0x56178c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,G3D::Vector3 RBX::Rocket::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x56191c — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isReadOnly(void)const")]
+pub fn stub_0x56191c() -> ! {
+    todo!("0x56191c RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isReadOnly(void)const")
+}
+
+// 0x561920 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isWriteOnly(void)const")]
+pub fn stub_0x561920() -> ! {
+    todo!("0x561920 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isWriteOnly(void)const")
+}
+
+// 0x561924 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x561924() -> ! {
+    todo!("0x561924 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x561940 — __ZNK3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+pub fn stub_0x561940() -> ! {
+    todo!("0x561940 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x5619d4 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,float RBX::Rocket::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x5619d4() -> ! {
+    todo!("0x5619d4 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,float RBX::Rocket::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x561b64 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isReadOnly(void)const")]
+pub fn stub_0x561b64() -> ! {
+    todo!("0x561b64 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isReadOnly(void)const")
+}
+
+// 0x561b68 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isWriteOnly(void)const")]
+pub fn stub_0x561b68() -> ! {
+    todo!("0x561b68 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::isWriteOnly(void)const")
+}
+
+// 0x561b6c — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x561b6c() -> ! {
+    todo!("0x561b6c RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x561b78 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_6RocketEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x561b78() -> ! {
+    todo!("0x561b78 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Rocket>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x561bd4 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_fMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,float RBX::Rocket::*,void (RBX::Rocket::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x561bd4() -> ! {
+    todo!("0x561bd4 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,float RBX::Rocket::*,void (RBX::Rocket::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x561d68 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,G3D::Vector3 RBX::Rocket::*,void (RBX::Rocket::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x561d68() -> ! {
+    todo!("0x561d68 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Rocket>(char const*,char const*,G3D::Vector3 RBX::Rocket::*,void (RBX::Rocket::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x561efc — __ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::Rocket::*)(void)const,void (RBX::Rocket::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::Rocket::*)(void)const,void (RBX::Rocket::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x561efc() -> ! {
+    todo!("0x561efc RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::Rocket::*)(void)const,void (RBX::Rocket::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::Rocket::*)(void)const,void (RBX::Rocket::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x561fa0 — __ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEED0Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()")]
+pub fn stub_0x561fa0() -> ! {
+    todo!("0x561fa0 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::~RefPropDescriptor()")
+}
+
+// 0x561fd0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::isReadOnly(void)const")]
+pub fn stub_0x561fd0() -> ! {
+    todo!("0x561fd0 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::isReadOnly(void)const")
+}
+
+// 0x561fe0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::isWriteOnly(void)const")]
+pub fn stub_0x561fe0() -> ! {
+    todo!("0x561fe0 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::isWriteOnly(void)const")
+}
+
+// 0x561ff0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x561ff0() -> ! {
+    todo!("0x561ff0 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x562018 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x562018() -> ! {
+    todo!("0x562018 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x562130 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x562130() -> ! {
+    todo!("0x562130 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x5621f8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x5621f8() -> ! {
+    todo!("0x5621f8 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x56221c — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x56221c() -> ! {
+    todo!("0x56221c RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x5622f0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x5622f0() -> ! {
+    todo!("0x5622f0 RBX::Reflection::RefPropDescriptor<RBX::Rocket,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
