@@ -27,3 +27,4 @@ pub mod generated_shard_r;
 pub mod generated_shard_s;
 pub mod generated_shard_t;
 pub mod generated_shard_u;
+pub mod generated_shard_v;
