@@ -1,7 +1,7 @@
 //! script — RBX::Script, Lua VM, YieldFunctionStateObject
 //! Mirrors Client/App/script/*
 
-pub mod lua;
 pub mod generated;
 pub mod generated_03;
 pub mod generated_04;
+pub mod generated_05;
