@@ -18602,3 +18602,704 @@ pub fn stub_0x4a2e8c() -> ! {
 pub fn stub_0x4a2eb4() -> ! {
     todo!("0x4a2eb4 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::safe_static_init_mutex(void)")
 }
+
+// 0x4a2eb8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE24safe_static_do_get_mutexEv
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::safe_static_do_get_mutex(void)")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::safe_static_do_get_mutex(void)
+pub fn stub_0x4a2eb8() -> ! {
+    todo!("0x4a2eb8 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::safe_static_do_get_mutex(void)")
+}
+
+// 0x4a38b8 — __ZN3RBX10Reflection9EventDescINS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+// was: RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+pub fn stub_0x4a38b8() -> ! {
+    todo!("0x4a38b8 RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x4a3aa8 — __ZN3RBX10Reflection9EventDescINS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::~EventDesc()")]
+// was: RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::~EventDesc()
+pub fn stub_0x4a3aa8() -> ! {
+    todo!("0x4a3aa8 RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::~EventDesc()")
+}
+
+// 0x4a3b5c — __ZNK3RBX10Reflection13EventDescImplILi2ENS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+// was: RBX::Reflection::EventDescImpl<2,RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
+pub fn stub_0x4a3b5c() -> ! {
+    todo!("0x4a3b5c RBX::Reflection::EventDescImpl<2,RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x4a3cb0 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+// was: RBX::Reflection::EventDescImpl<2,RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
+pub fn stub_0x4a3cb0() -> ! {
+    todo!("0x4a3cb0 RBX::Reflection::EventDescImpl<2,RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x4a3e20 — __ZNK3RBX10Reflection13EventDescBaseINS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+// was: RBX::Reflection::EventDescBase<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::disconnectAll(RBX::Reflection::EventSource *)const
+pub fn stub_0x4a3e20() -> ! {
+    todo!("0x4a3e20 RBX::Reflection::EventDescBase<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x4a3e34 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE13disconnectAllEv
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::disconnectAll(void)")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::disconnectAll(void)
+pub fn stub_0x4a3e34() -> ! {
+    todo!("0x4a3e34 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::disconnectAll(void)")
+}
+
+// 0x4a3fac — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKfNS4_IS3_EENS_3argILi1EEENSC_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISH_T0_T1_T2_EENSF_9list_av_3IT3_T4_T5_E4typeEEEMSK_FSH_SL_SM_ESP_SQ_SR_
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,float const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
+// was: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,float const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)
+pub fn stub_0x4a3fac() -> ! {
+    todo!("0x4a3fac boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,float const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")
+}
+
+// 0x4a40c8 — __ZN3RBX10Reflection18GenericSlotWrapper8execute2IN5boost10shared_ptrINS_8InstanceEEEfEEvRKT_RKT0_
+#[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute2<boost::shared_ptr<RBX::Instance>,float>(boost::shared_ptr<RBX::Instance> const&,float const&)")]
+// was: void RBX::Reflection::GenericSlotWrapper::execute2<boost::shared_ptr<RBX::Instance>,float>(boost::shared_ptr<RBX::Instance> const&,float const&)
+pub fn stub_0x4a40c8() -> ! {
+    todo!("0x4a40c8 void RBX::Reflection::GenericSlotWrapper::execute2<boost::shared_ptr<RBX::Instance>,float>(boost::shared_ptr<RBX::Instance> const&,float const&)")
+}
+
+// 0x4a4230 — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfE5clearEv
+#[doc(alias = "boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::clear(void)")]
+// was: boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::clear(void)
+pub fn stub_0x4a4230() -> ! {
+    todo!("0x4a4230 boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::clear(void)")
+}
+
+// 0x4a442c — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_RKfEENS7_5list3INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_
+#[doc(alias = "void boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
+// was: void boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)
+pub fn stub_0x4a442c() -> ! {
+    todo!("0x4a442c void boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")
+}
+
+// 0x4a4524 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_0x4a4524() -> ! {
+    todo!("0x4a4524 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x4a4540 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEvSC_fE6invokeERNS1_15function_bufferESC_f
+#[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,boost::shared_ptr<RBX::Instance>,float>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>,float)")]
+// was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,boost::shared_ptr<RBX::Instance>,float>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>,float)
+pub fn stub_0x4a4540() -> ! {
+    todo!("0x4a4540 boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,boost::shared_ptr<RBX::Instance>,float>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>,float)")
+}
+
+// 0x4a4554 — __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
+// was: bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const
+pub fn stub_0x4a4554() -> ! {
+    todo!("0x4a4554 bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0x4a463c — __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// was: bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn stub_0x4a463c() -> ! {
+    todo!("0x4a463c bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0x4a4720 — __ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+#[doc(alias = "void boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+// was: void boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
+pub fn stub_0x4a4720() -> ! {
+    todo!("0x4a4720 void boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+// 0x4a47f4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS4_8InstanceEEERKfEENS0_5list3INS0_5valueINS7_IS6_EEEENS_3argILi1EEENSJ_ILi2EEEEEEclIS9_fEEvRT_RT0_
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<boost::shared_ptr<RBX::Instance>,float>(boost::shared_ptr<RBX::Instance> &,float &)")]
+// was: void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<boost::shared_ptr<RBX::Instance>,float>(boost::shared_ptr<RBX::Instance> &,float &)
+pub fn stub_0x4a47f4() -> ! {
+    todo!("0x4a47f4 void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<boost::shared_ptr<RBX::Instance>,float>(boost::shared_ptr<RBX::Instance> &,float &)")
+}
+
+// 0x4a4810 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+pub fn stub_0x4a4810() -> ! {
+    todo!("0x4a4810 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0x4a4968 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE7connectINS2_8functionIS7_EEEENS0_10connectionERKT_
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&)")]
+// was: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&)
+pub fn stub_0x4a4968() -> ! {
+    todo!("0x4a4968 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&)")
+}
+
+// 0x4a4a5c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE6insertEPNS8_4slotE
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)
+pub fn stub_0x4a4a5c() -> ! {
+    todo!("0x4a4a5c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)")
+}
+
+// 0x4a4c68 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEfEE4slotEEaSEPSA_
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot*)")]
+// was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot*)
+pub fn stub_0x4a4c68() -> ! {
+    todo!("0x4a4c68 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot*)")
+}
+
+// 0x4a4c8c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_EC2IPS9_EERKSC_T_
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*)")]
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*)
+pub fn stub_0x4a4c8c() -> ! {
+    todo!("0x4a4c8c rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*)")
+}
+
+// 0x4a4d88 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE13callable_slotINS2_8functionIS7_EEED1Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>::~callable_slot()")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>::~callable_slot()
+pub fn stub_0x4a4d88() -> ! {
+    todo!("0x4a4d88 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>::~callable_slot()")
+}
+
+// 0x4a4e98 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE13callable_slotINS2_8functionIS7_EEED0Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>::~callable_slot()")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>::~callable_slot()
+pub fn stub_0x4a4e98() -> ! {
+    todo!("0x4a4e98 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>::~callable_slot()")
+}
+
+// 0x4a4fc8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slot10disconnectEv
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::disconnect(void)")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::disconnect(void)
+pub fn stub_0x4a4fc8() -> ! {
+    todo!("0x4a4fc8 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::disconnect(void)")
+}
+
+// 0x4a50d8 — __ZNK3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slot9connectedEv
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::connected(void)const")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::connected(void)const
+pub fn stub_0x4a50d8() -> ! {
+    todo!("0x4a50d8 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::connected(void)const")
+}
+
+// 0x4a50e4 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")]
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)
+pub fn stub_0x4a50e4() -> ! {
+    todo!("0x4a50e4 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")
+}
+
+// 0x4a51bc — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")]
+// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)
+pub fn stub_0x4a51bc() -> ! {
+    todo!("0x4a51bc `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")
+}
+
+// 0x4a51c4 — __ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfEclES4_f
+#[doc(alias = "boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::operator()(boost::shared_ptr<RBX::Instance>,float)const")]
+// was: boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::operator()(boost::shared_ptr<RBX::Instance>,float)const
+pub fn stub_0x4a51c4() -> ! {
+    todo!("0x4a51c4 boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::operator()(boost::shared_ptr<RBX::Instance>,float)const")
+}
+
+// 0x4a52dc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE6removeEPNS8_4slotE
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)
+pub fn stub_0x4a52dc() -> ! {
+    todo!("0x4a52dc rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)")
+}
+
+// 0x4a53cc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slot22safe_static_init_mutexEv
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::safe_static_init_mutex(void)")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::safe_static_init_mutex(void)
+pub fn stub_0x4a53cc() -> ! {
+    todo!("0x4a53cc rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::safe_static_init_mutex(void)")
+}
+
+// 0x4a53d0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slot24safe_static_do_get_mutexEv
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::safe_static_do_get_mutex(void)")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::safe_static_do_get_mutex(void)
+pub fn stub_0x4a53d0() -> ! {
+    todo!("0x4a53d0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::safe_static_do_get_mutex(void)")
+}
+
+// 0x4a54c4 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_ED1Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::~callable()")]
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::~callable()
+pub fn stub_0x4a54c4() -> ! {
+    todo!("0x4a54c4 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::~callable()")
+}
+
+// 0x4a55d4 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_ED0Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::~callable()")]
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::~callable()
+pub fn stub_0x4a55d4() -> ! {
+    todo!("0x4a55d4 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::~callable()")
+}
+
+// 0x4a5704 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotD1Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::~slot()")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::~slot()
+pub fn stub_0x4a5704() -> ! {
+    todo!("0x4a5704 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::~slot()")
+}
+
+// 0x4a5730 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotD0Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::~slot()")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::~slot()
+pub fn stub_0x4a5730() -> ! {
+    todo!("0x4a5730 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::~slot()")
+}
+
+// 0x4a5804 — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfE13assign_to_ownERKS5_
+#[doc(alias = "boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,float> const&)")]
+// was: boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,float> const&)
+pub fn stub_0x4a5804() -> ! {
+    todo!("0x4a5804 boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,float> const&)")
+}
+
+// 0x4a6e24 — __ZN3RBX20ExtrudedPartInstance19setVisualTrussStyleENS0_16VisualTrussStyleE
+#[doc(alias = "RBX::ExtrudedPartInstance::setVisualTrussStyle(RBX::ExtrudedPartInstance::VisualTrussStyle)")]
+// was: RBX::ExtrudedPartInstance::setVisualTrussStyle(RBX::ExtrudedPartInstance::VisualTrussStyle)
+pub fn stub_0x4a6e24() -> ! {
+    todo!("0x4a6e24 RBX::ExtrudedPartInstance::setVisualTrussStyle(RBX::ExtrudedPartInstance::VisualTrussStyle)")
+}
+
+// 0x4a6e80 — __ZN3RBX20ExtrudedPartInstanceC1Ev
+#[doc(alias = "RBX::ExtrudedPartInstance::ExtrudedPartInstance(void)")]
+// was: RBX::ExtrudedPartInstance::ExtrudedPartInstance(void)
+pub fn stub_0x4a6e80() -> ! {
+    todo!("0x4a6e80 RBX::ExtrudedPartInstance::ExtrudedPartInstance(void)")
+}
+
+// 0x4a7184 — __ZN3RBX20ExtrudedPartInstanceD0Ev
+#[doc(alias = "RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+// was: RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+pub fn stub_0x4a7184() -> ! {
+    todo!("0x4a7184 RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+}
+
+// 0x4a7234 — __ZN3RBX20ExtrudedPartInstanceD1Ev
+#[doc(alias = "RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+// was: RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+pub fn stub_0x4a7234() -> ! {
+    todo!("0x4a7234 RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+}
+
+// 0x4a7244 — __ZThn32_N3RBX20ExtrudedPartInstanceD0Ev
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+// was: `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+pub fn stub_0x4a7244() -> ! {
+    todo!("0x4a7244 `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+}
+
+// 0x4a724c — __ZThn36_N3RBX20ExtrudedPartInstanceD0Ev
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+// was: `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+pub fn stub_0x4a724c() -> ! {
+    todo!("0x4a724c `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+}
+
+// 0x4a7254 — __ZThn132_N3RBX20ExtrudedPartInstanceD0Ev
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+// was: `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+pub fn stub_0x4a7254() -> ! {
+    todo!("0x4a7254 `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+}
+
+// 0x4a725c — __ZThn32_N3RBX20ExtrudedPartInstanceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+// was: `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+pub fn stub_0x4a725c() -> ! {
+    todo!("0x4a725c `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+}
+
+// 0x4a7270 — __ZThn36_N3RBX20ExtrudedPartInstanceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+// was: `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+pub fn stub_0x4a7270() -> ! {
+    todo!("0x4a7270 `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+}
+
+// 0x4a7284 — __ZThn132_N3RBX20ExtrudedPartInstanceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+// was: `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()
+pub fn stub_0x4a7284() -> ! {
+    todo!("0x4a7284 `non-virtual thunk to'RBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+}
+
+// 0x4a7298 — __ZNK3RBX20ExtrudedPartInstance16getMinimumUiSizeEv
+#[doc(alias = "RBX::ExtrudedPartInstance::getMinimumUiSize(void)const")]
+// was: RBX::ExtrudedPartInstance::getMinimumUiSize(void)const
+pub fn stub_0x4a7298() -> ! {
+    todo!("0x4a7298 RBX::ExtrudedPartInstance::getMinimumUiSize(void)const")
+}
+
+// 0x4a72a8 — __ZN3RBX20ExtrudedPartInstance14setPartSizeXmlERKN3G3D7Vector3E
+#[doc(alias = "RBX::ExtrudedPartInstance::setPartSizeXml(G3D::Vector3 const&)")]
+// was: RBX::ExtrudedPartInstance::setPartSizeXml(G3D::Vector3 const&)
+pub fn stub_0x4a72a8() -> ! {
+    todo!("0x4a72a8 RBX::ExtrudedPartInstance::setPartSizeXml(G3D::Vector3 const&)")
+}
+
+// 0x4a7524 — __ZNK3RBX20ExtrudedPartInstance18getResizeIncrementEv
+#[doc(alias = "RBX::ExtrudedPartInstance::getResizeIncrement(void)const")]
+// was: RBX::ExtrudedPartInstance::getResizeIncrement(void)const
+pub fn stub_0x4a7524() -> ! {
+    todo!("0x4a7524 RBX::ExtrudedPartInstance::getResizeIncrement(void)const")
+}
+
+// 0x4a7528 — __ZNK3RBX20ExtrudedPartInstance19getResizeHandleMaskEv
+#[doc(alias = "RBX::ExtrudedPartInstance::getResizeHandleMask(void)const")]
+// was: RBX::ExtrudedPartInstance::getResizeHandleMask(void)const
+pub fn stub_0x4a7528() -> ! {
+    todo!("0x4a7528 RBX::ExtrudedPartInstance::getResizeHandleMask(void)const")
+}
+
+// 0x4a772c — __ZNK3RBX20ExtrudedPartInstance19getVisualTrussStyleEv
+#[doc(alias = "RBX::ExtrudedPartInstance::getVisualTrussStyle(void)const")]
+// was: RBX::ExtrudedPartInstance::getVisualTrussStyle(void)const
+pub fn stub_0x4a772c() -> ! {
+    todo!("0x4a772c RBX::ExtrudedPartInstance::getVisualTrussStyle(void)const")
+}
+
+// 0x4a7734 — __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()
+pub fn stub_0x4a7734() -> ! {
+    todo!("0x4a7734 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()")
+}
+
+// 0x4a7768 — __ZNK3RBX20ExtrudedPartInstance11getPartTypeEv
+#[doc(alias = "RBX::ExtrudedPartInstance::getPartType(void)const")]
+// was: RBX::ExtrudedPartInstance::getPartType(void)const
+pub fn stub_0x4a7768() -> ! {
+    todo!("0x4a7768 RBX::ExtrudedPartInstance::getPartType(void)const")
+}
+
+// 0x4a7de0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_20ExtrudedPartInstanceEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::ExtrudedPartInstance> RBX::Creatable<RBX::Instance>::create<RBX::ExtrudedPartInstance>(void)")]
+// was: boost::shared_ptr<RBX::ExtrudedPartInstance> RBX::Creatable<RBX::Instance>::create<RBX::ExtrudedPartInstance>(void)
+pub fn stub_0x4a7de0() -> ! {
+    todo!("0x4a7de0 boost::shared_ptr<RBX::ExtrudedPartInstance> RBX::Creatable<RBX::Instance>::create<RBX::ExtrudedPartInstance>(void)")
+}
+
+// 0x4a7e94 — __ZN5boost10shared_ptrIN3RBX20ExtrudedPartInstanceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::ExtrudedPartInstance>::shared_ptr<RBX::ExtrudedPartInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::shared_ptr<RBX::ExtrudedPartInstance>::shared_ptr<RBX::ExtrudedPartInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x4a7e94() -> ! {
+    todo!("0x4a7e94 boost::shared_ptr<RBX::ExtrudedPartInstance>::shared_ptr<RBX::ExtrudedPartInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x4a7f5c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20ExtrudedPartInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance>(boost::shared_ptr<RBX::ExtrudedPartInstance> const*,RBX::ExtrudedPartInstance *)const")]
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance>(boost::shared_ptr<RBX::ExtrudedPartInstance> const*,RBX::ExtrudedPartInstance *)const
+pub fn stub_0x4a7f5c() -> ! {
+    todo!("0x4a7f5c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance>(boost::shared_ptr<RBX::ExtrudedPartInstance> const*,RBX::ExtrudedPartInstance *)const")
+}
+
+// 0x4a8044 — __ZN5boost6detail12shared_countC2IPN3RBX20ExtrudedPartInstanceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::detail::shared_count::shared_count<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x4a8044() -> ! {
+    todo!("0x4a8044 boost::detail::shared_count::shared_count<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x4a814c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ExtrudedPartInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x4a814c() -> ! {
+    todo!("0x4a814c boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x4a8150 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ExtrudedPartInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x4a8150() -> ! {
+    todo!("0x4a8150 boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x4a8154 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ExtrudedPartInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn stub_0x4a8154() -> ! {
+    todo!("0x4a8154 boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x4a8174 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ExtrudedPartInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+pub fn stub_0x4a8174() -> ! {
+    todo!("0x4a8174 boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x4a818c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20ExtrudedPartInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
+pub fn stub_0x4a818c() -> ! {
+    todo!("0x4a818c boost::detail::sp_counted_impl_pd<RBX::ExtrudedPartInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x4a88f0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumPropDescriptor<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>(char const*,char const*,RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumPropDescriptor<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>(char const*,char const*,RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_0x4a88f0() -> ! {
+    todo!("0x4a88f0 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumPropDescriptor<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>(char const*,char const*,RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4a8aa4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()
+pub fn stub_0x4a8aa4() -> ! {
+    todo!("0x4a8aa4 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::~EnumPropDescriptor()")
+}
+
+// 0x4a8ad0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::isReadOnly(void)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::isReadOnly(void)const
+pub fn stub_0x4a8ad0() -> ! {
+    todo!("0x4a8ad0 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::isReadOnly(void)const")
+}
+
+// 0x4a8ae0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::isWriteOnly(void)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::isWriteOnly(void)const
+pub fn stub_0x4a8ae0() -> ! {
+    todo!("0x4a8ae0 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::isWriteOnly(void)const")
+}
+
+// 0x4a8af0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x4a8af0() -> ! {
+    todo!("0x4a8af0 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4a8b18 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
+pub fn stub_0x4a8b18() -> ! {
+    todo!("0x4a8b18 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x4a8b3c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
+pub fn stub_0x4a8b3c() -> ! {
+    todo!("0x4a8b3c RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x4a8c88 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
+pub fn stub_0x4a8c88() -> ! {
+    todo!("0x4a8c88 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x4a8cac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::hasStringValue(void)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::hasStringValue(void)const
+pub fn stub_0x4a8cac() -> ! {
+    todo!("0x4a8cac RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::hasStringValue(void)const")
+}
+
+// 0x4a8cb0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x4a8cb0() -> ! {
+    todo!("0x4a8cb0 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4a8cd4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const
+pub fn stub_0x4a8cd4() -> ! {
+    todo!("0x4a8cd4 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x4a8d14 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
+pub fn stub_0x4a8d14() -> ! {
+    todo!("0x4a8d14 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x4a8d34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
+pub fn stub_0x4a8d34() -> ! {
+    todo!("0x4a8d34 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x4a8f74 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x4a8f74() -> ! {
+    todo!("0x4a8f74 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4a8f90 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const
+pub fn stub_0x4a8f90() -> ! {
+    todo!("0x4a8f90 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x4a8fc4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x4a8fc4() -> ! {
+    todo!("0x4a8fc4 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4a8fcc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const
+pub fn stub_0x4a8fcc() -> ! {
+    todo!("0x4a8fcc RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4a9018 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x4a9018() -> ! {
+    todo!("0x4a9018 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4a9038 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const
+pub fn stub_0x4a9038() -> ! {
+    todo!("0x4a9038 RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x4a906c — __ZNK3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE14convertToIndexES3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToIndex(RBX::ExtrudedPartInstance::VisualTrussStyle)const")]
+// was: RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToIndex(RBX::ExtrudedPartInstance::VisualTrussStyle)const
+pub fn stub_0x4a906c() -> ! {
+    todo!("0x4a906c RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::convertToIndex(RBX::ExtrudedPartInstance::VisualTrussStyle)const")
+}
+
+// 0x4a90dc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const
+pub fn stub_0x4a90dc() -> ! {
+    todo!("0x4a90dc RBX::Reflection::EnumPropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4a911c — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isReadOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isReadOnly(void)const
+pub fn stub_0x4a911c() -> ! {
+    todo!("0x4a911c RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isReadOnly(void)const")
+}
+
+// 0x4a9120 — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isWriteOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isWriteOnly(void)const
+pub fn stub_0x4a9120() -> ! {
+    todo!("0x4a9120 RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::isWriteOnly(void)const")
+}
+
+// 0x4a9124 — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x4a9124() -> ! {
+    todo!("0x4a9124 RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4a9144 — __ZNK3RBX10Reflection14PropDescriptorINS_20ExtrudedPartInstanceENS2_16VisualTrussStyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::ExtrudedPartInstance::VisualTrussStyle const&)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::ExtrudedPartInstance::VisualTrussStyle const&)const
+pub fn stub_0x4a9144() -> ! {
+    todo!("0x4a9144 RBX::Reflection::PropDescriptor<RBX::ExtrudedPartInstance,RBX::ExtrudedPartInstance::VisualTrussStyle>::GetSetImpl<RBX::ExtrudedPartInstance::VisualTrussStyle (RBX::ExtrudedPartInstance::*)(void)const,void (RBX::ExtrudedPartInstance::*)(RBX::ExtrudedPartInstance::VisualTrussStyle)>::setValue(RBX::Reflection::DescribedBase *,RBX::ExtrudedPartInstance::VisualTrussStyle const&)const")
+}
+
+// 0x4a94fc — __ZN3RBX12FaceInstance7setFaceENS_8NormalIdE
+#[doc(alias = "RBX::FaceInstance::setFace(RBX::NormalId)")]
+// was: RBX::FaceInstance::setFace(RBX::NormalId)
+pub fn stub_0x4a94fc() -> ! {
+    todo!("0x4a94fc RBX::FaceInstance::setFace(RBX::NormalId)")
+}
+
+// 0x4a9518 — __ZN3RBX12FaceInstanceC2Ev
+#[doc(alias = "RBX::FaceInstance::FaceInstance(void)")]
+// was: RBX::FaceInstance::FaceInstance(void)
+pub fn stub_0x4a9518() -> ! {
+    todo!("0x4a9518 RBX::FaceInstance::FaceInstance(void)")
+}
+
+// 0x4a9668 — __ZNK3RBX12FaceInstance12askSetParentEPKNS_8InstanceE
+#[doc(alias = "RBX::FaceInstance::askSetParent(RBX::Instance const*)const")]
+// was: RBX::FaceInstance::askSetParent(RBX::Instance const*)const
+pub fn stub_0x4a9668() -> ! {
+    todo!("0x4a9668 RBX::FaceInstance::askSetParent(RBX::Instance const*)const")
+}
+
+// 0x4a96a4 — __ZN3RBX12FaceInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
+#[doc(alias = "RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+// was: RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
+pub fn stub_0x4a96a4() -> ! {
+    todo!("0x4a96a4 RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+}
+
+// 0x4a971c — __ZThn92_N3RBX12FaceInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
+#[doc(alias = "non-virtual thunk toRBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+// was: `non-virtual thunk to'RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
+pub fn stub_0x4a971c() -> ! {
+    todo!("0x4a971c `non-virtual thunk to'RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+}
+
+// 0x4a9724 — __ZNK3RBX12FaceInstance7getFaceEv
+#[doc(alias = "RBX::FaceInstance::getFace(void)const")]
+// was: RBX::FaceInstance::getFace(void)const
+pub fn stub_0x4a9724() -> ! {
+    todo!("0x4a9724 RBX::FaceInstance::getFace(void)const")
+}
+
+// 0x4a9728 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12FaceInstanceENS_8NormalIdEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::~EnumPropDescriptor()")]
+// was: RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::~EnumPropDescriptor()
+pub fn stub_0x4a9728() -> ! {
+    todo!("0x4a9728 RBX::Reflection::EnumPropDescriptor<RBX::FaceInstance,RBX::NormalId>::~EnumPropDescriptor()")
+}
+
+// 0x4a974c — __ZN3RBX12FaceInstanceD1Ev
+#[doc(alias = "RBX::FaceInstance::~FaceInstance()")]
+// was: RBX::FaceInstance::~FaceInstance()
+pub fn stub_0x4a974c() -> ! {
+    todo!("0x4a974c RBX::FaceInstance::~FaceInstance()")
+}
+
+// 0x4a9808 — __ZN3RBX12FaceInstanceD0Ev
+#[doc(alias = "RBX::FaceInstance::~FaceInstance()")]
+// was: RBX::FaceInstance::~FaceInstance()
+pub fn stub_0x4a9808() -> ! {
+    todo!("0x4a9808 RBX::FaceInstance::~FaceInstance()")
+}
+
+// 0x4a98d4 — __ZThn32_N3RBX12FaceInstanceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
+// was: `non-virtual thunk to'RBX::FaceInstance::~FaceInstance()
+pub fn stub_0x4a98d4() -> ! {
+    todo!("0x4a98d4 `non-virtual thunk to'RBX::FaceInstance::~FaceInstance()")
+}
+
+// 0x4a998c — __ZThn32_N3RBX12FaceInstanceD0Ev
+#[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
+// was: `non-virtual thunk to'RBX::FaceInstance::~FaceInstance()
+pub fn stub_0x4a998c() -> ! {
+    todo!("0x4a998c `non-virtual thunk to'RBX::FaceInstance::~FaceInstance()")
+}
+
+// 0x4a9a5c — __ZThn36_N3RBX12FaceInstanceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
+// was: `non-virtual thunk to'RBX::FaceInstance::~FaceInstance()
+pub fn stub_0x4a9a5c() -> ! {
+    todo!("0x4a9a5c `non-virtual thunk to'RBX::FaceInstance::~FaceInstance()")
+}
+
