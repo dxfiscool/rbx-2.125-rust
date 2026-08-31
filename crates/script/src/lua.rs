@@ -1,7 +1,7 @@
 //! RBX::Script Lua VM skeletons — auto-generated from ida/export.json
-//! Filter: Script|Lua|Yield (case-sensitive, plus lua lower) — 3780 stubs, sorted by EA
+//! Filter: Script|Lua|Yield (case-sensitive, plus lua lower) — 3880 stubs, sorted by EA
 //! Source: ida/export.json (85545 funcs), DAG: script crate (RBX::Script, Lua, Yield)
-//! Batch range 0x267ec..0xde1180
+//! Batch range 0x267ec..0xf1f6f0
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
@@ -25039,4 +25039,682 @@ pub fn stub_0xde117c() -> ! {
 #[doc(alias = "std::_List_base<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
 pub fn stub_0xde1180() -> ! {
     todo!("0xde1180 std::_List_base<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+}
+
+// 0xde1be0 — __ZN4Ogre39ProcessNameExclusionScriptCompilerEventD0Ev
+// type: void __fastcall(Ogre::ProcessNameExclusionScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::ProcessNameExclusionScriptCompilerEvent::~ProcessNameExclusionScriptCompilerEvent()")]
+pub fn stub_0xde1be0() -> ! {
+    todo!("0xde1be0 Ogre::ProcessNameExclusionScriptCompilerEvent::~ProcessNameExclusionScriptCompilerEvent()")
+}
+
+// 0xde1c8c — __ZN4Ogre19ScriptCompilerEventD1Ev
+// type: void __fastcall(Ogre::ScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerEvent::~ScriptCompilerEvent()")]
+pub fn stub_0xde1c8c() -> ! {
+    todo!("0xde1c8c Ogre::ScriptCompilerEvent::~ScriptCompilerEvent()")
+}
+
+// 0xde1ce8 — __ZN4Ogre19ScriptCompilerEventD0Ev
+// type: void __fastcall(Ogre::ScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerEvent::~ScriptCompilerEvent()")]
+pub fn stub_0xde1ce8() -> ! {
+    todo!("0xde1ce8 Ogre::ScriptCompilerEvent::~ScriptCompilerEvent()")
+}
+
+// 0xde1fe8 — __ZN4Ogre11ScriptLexerC1Ev
+// type: _DWORD __fastcall(Ogre::ScriptLexer *__hidden this)
+#[doc(alias = "Ogre::ScriptLexer::ScriptLexer(void)")]
+pub fn stub_0xde1fe8() -> ! {
+    todo!("0xde1fe8 Ogre::ScriptLexer::ScriptLexer(void)")
+}
+
+// 0xde1ffc — __ZN4Ogre11ScriptLexer8tokenizeERKSsS2_
+// type: _DWORD __fastcall(Ogre::ScriptLexer *__hidden this, const std::string *, const std::string *)
+#[doc(alias = "Ogre::ScriptLexer::tokenize(std::string const&,std::string const&)")]
+pub fn stub_0xde1ffc() -> ! {
+    todo!("0xde1ffc Ogre::ScriptLexer::tokenize(std::string const&,std::string const&)")
+}
+
+// 0xde2b7c — __ZN4Ogre11ScriptLexer8setTokenERKSsjS2_PSt6vectorINS_9SharedPtrINS_11ScriptTokenEEENS_12STLAllocatorIS6_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "Ogre::ScriptLexer::setToken(std::string const&,unsigned int,std::string const&,std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)")]
+pub fn stub_0xde2b7c() -> ! {
+    todo!("0xde2b7c Ogre::ScriptLexer::setToken(std::string const&,unsigned int,std::string const&,std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)")
+}
+
+// 0xde2dec — __ZN4Ogre9SharedPtrINS_11ScriptTokenEED1Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::ScriptToken>::~SharedPtr()")]
+pub fn stub_0xde2dec() -> ! {
+    todo!("0xde2dec Ogre::SharedPtr<Ogre::ScriptToken>::~SharedPtr()")
+}
+
+// 0xde2e9c — __ZN4Ogre11ScriptLexerD1Ev
+// type: void __fastcall(Ogre::ScriptLexer *__hidden this)
+#[doc(alias = "Ogre::ScriptLexer::~ScriptLexer()")]
+pub fn stub_0xde2e9c() -> ! {
+    todo!("0xde2e9c Ogre::ScriptLexer::~ScriptLexer()")
+}
+
+// 0xde2ea0 — __ZN4Ogre11ScriptLexerD0Ev
+// type: void __fastcall(Ogre::ScriptLexer *__hidden this)
+#[doc(alias = "Ogre::ScriptLexer::~ScriptLexer()")]
+pub fn stub_0xde2ea0() -> ! {
+    todo!("0xde2ea0 Ogre::ScriptLexer::~ScriptLexer()")
+}
+
+// 0xde2f2c — __ZNSt6vectorIN4Ogre9SharedPtrINS0_11ScriptTokenEEENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S9_EERKS3_
+// type: int(void)
+#[doc(alias = "std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::SharedPtr<Ogre::ScriptToken>*,std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::SharedPtr<Ogre::ScriptToken> const&)")]
+pub fn stub_0xde2f2c() -> ! {
+    todo!("0xde2f2c std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::SharedPtr<Ogre::ScriptToken>*,std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::SharedPtr<Ogre::ScriptToken> const&)")
+}
+
+// 0xde3254 — __ZN4Ogre9SharedPtrINS_11ScriptTokenEEaSERKS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::ScriptToken>::operator=(Ogre::SharedPtr<Ogre::ScriptToken> const&)")]
+pub fn stub_0xde3254() -> ! {
+    todo!("0xde3254 Ogre::SharedPtr<Ogre::ScriptToken>::operator=(Ogre::SharedPtr<Ogre::ScriptToken> const&)")
+}
+
+// 0xde3360 — __ZN4Ogre9SharedPtrINS_11ScriptTokenEED0Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::ScriptToken>::~SharedPtr()")]
+pub fn stub_0xde3360() -> ! {
+    todo!("0xde3360 Ogre::SharedPtr<Ogre::ScriptToken>::~SharedPtr()")
+}
+
+// 0xde3414 — __ZN4Ogre9SharedPtrINS_11ScriptTokenEE7destroyEv
+// type: int(void)
+#[doc(alias = "Ogre::SharedPtr<Ogre::ScriptToken>::destroy(void)")]
+pub fn stub_0xde3414() -> ! {
+    todo!("0xde3414 Ogre::SharedPtr<Ogre::ScriptToken>::destroy(void)")
+}
+
+// 0xde3540 — __ZN4Ogre9SharedPtrINS_11ScriptTokenEE4swapERS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::ScriptToken>::swap(Ogre::SharedPtr<Ogre::ScriptToken>&)")]
+pub fn stub_0xde3540() -> ! {
+    todo!("0xde3540 Ogre::SharedPtr<Ogre::ScriptToken>::swap(Ogre::SharedPtr<Ogre::ScriptToken>&)")
+}
+
+// 0xde355c — __ZNSt12_Vector_baseIN4Ogre9SharedPtrINS0_11ScriptTokenEEENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
+#[doc(alias = "std::_Vector_base<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+pub fn stub_0xde355c() -> ! {
+    todo!("0xde355c std::_Vector_base<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xde3560 — __ZNSt12_Vector_baseIN4Ogre9SharedPtrINS0_11ScriptTokenEEENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
+#[doc(alias = "std::_Vector_base<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+pub fn stub_0xde3560() -> ! {
+    todo!("0xde3560 std::_Vector_base<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xde35a0 — __ZN4Ogre12ScriptParserC1Ev
+// type: _DWORD __fastcall(Ogre::ScriptParser *__hidden this)
+#[doc(alias = "Ogre::ScriptParser::ScriptParser(void)")]
+pub fn stub_0xde35a0() -> ! {
+    todo!("0xde35a0 Ogre::ScriptParser::ScriptParser(void)")
+}
+
+// 0xde35b4 — __ZN4Ogre12ScriptParser5parseERKNS_9SharedPtrISt6vectorINS1_INS_11ScriptTokenEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEE
+#[doc(alias = "Ogre::ScriptParser::parse(Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
+pub fn stub_0xde35b4() -> ! {
+    todo!("0xde35b4 Ogre::ScriptParser::parse(Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")
+}
+
+// 0xde6628 — __ZN4Ogre12ScriptParser10parseChunkERKNS_9SharedPtrISt6vectorINS1_INS_11ScriptTokenEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEE
+#[doc(alias = "Ogre::ScriptParser::parseChunk(Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
+pub fn stub_0xde6628() -> ! {
+    todo!("0xde6628 Ogre::ScriptParser::parseChunk(Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")
+}
+
+// 0xde7010 — __ZN4Ogre12ScriptParserD1Ev
+// type: void __fastcall(Ogre::ScriptParser *__hidden this)
+#[doc(alias = "Ogre::ScriptParser::~ScriptParser()")]
+pub fn stub_0xde7010() -> ! {
+    todo!("0xde7010 Ogre::ScriptParser::~ScriptParser()")
+}
+
+// 0xde7014 — __ZN4Ogre12ScriptParserD0Ev
+// type: void __fastcall(Ogre::ScriptParser *__hidden this)
+#[doc(alias = "Ogre::ScriptParser::~ScriptParser()")]
+pub fn stub_0xde7014() -> ! {
+    todo!("0xde7014 Ogre::ScriptParser::~ScriptParser()")
+}
+
+// 0xde70e4 — __ZN4Ogre16ScriptTranslator11processNodeEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::ScriptTranslator::processNode(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xde70e4() -> ! {
+    todo!("0xde70e4 Ogre::ScriptTranslator::processNode(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xde7364 — __ZN4Ogre16ScriptTranslator15getConstantTypeESt20_List_const_iteratorINS_9SharedPtrINS_12AbstractNodeEEEEPNS_15GpuConstantTypeE
+#[doc(alias = "Ogre::ScriptTranslator::getConstantType(std::_List_const_iterator<Ogre::SharedPtr<Ogre::AbstractNode>>,Ogre::GpuConstantType *)")]
+pub fn stub_0xde7364() -> ! {
+    todo!("0xde7364 Ogre::ScriptTranslator::getConstantType(std::_List_const_iterator<Ogre::SharedPtr<Ogre::AbstractNode>>,Ogre::GpuConstantType *)")
+}
+
+// 0xde77d0 — __ZN4Ogre18MaterialTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::MaterialTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xde77d0() -> ! {
+    todo!("0xde77d0 Ogre::MaterialTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xde94f8 — __ZN4Ogre19TechniqueTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, char, char, int, int, char, char, int, char, int, char, char, int, int, char, char, char, int, char, char, int, int, char, char, char, int, char, char, char, int, char, int, char, char, int, char, char, int, char, char, char, int, char, int, char, int, char, char, int, char, int, char, char, int, char, char, char, int, char, int, char, int, char, char, char, char, int, char, char, int, char, char, char, char, int, char, char, char, int, char, char, int, char, char, char, int, char, int, char, char, int, c
+#[doc(alias = "Ogre::TechniqueTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xde94f8() -> ! {
+    todo!("0xde94f8 Ogre::TechniqueTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xdec274 — __ZN4Ogre14PassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::PassTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xdec274() -> ! {
+    todo!("0xdec274 Ogre::PassTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xdf9fe8 — __ZN4Ogre14PassTranslator27translateFragmentProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
+// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
+#[doc(alias = "Ogre::PassTranslator::translateFragmentProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xdf9fe8() -> ! {
+    todo!("0xdf9fe8 Ogre::PassTranslator::translateFragmentProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xdfa56c — __ZN4Ogre14PassTranslator25translateVertexProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
+// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
+#[doc(alias = "Ogre::PassTranslator::translateVertexProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xdfa56c() -> ! {
+    todo!("0xdfa56c Ogre::PassTranslator::translateVertexProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xdfaaf0 — __ZN4Ogre14PassTranslator27translateGeometryProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
+// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
+#[doc(alias = "Ogre::PassTranslator::translateGeometryProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xdfaaf0() -> ! {
+    todo!("0xdfaaf0 Ogre::PassTranslator::translateGeometryProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xdfb074 — __ZN4Ogre14PassTranslator37translateShadowCasterVertexProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
+// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
+#[doc(alias = "Ogre::PassTranslator::translateShadowCasterVertexProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xdfb074() -> ! {
+    todo!("0xdfb074 Ogre::PassTranslator::translateShadowCasterVertexProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xdfb5f4 — __ZN4Ogre14PassTranslator39translateShadowCasterFragmentProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
+// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
+#[doc(alias = "Ogre::PassTranslator::translateShadowCasterFragmentProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xdfb5f4() -> ! {
+    todo!("0xdfb5f4 Ogre::PassTranslator::translateShadowCasterFragmentProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xdfbb74 — __ZN4Ogre14PassTranslator39translateShadowReceiverVertexProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
+// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
+#[doc(alias = "Ogre::PassTranslator::translateShadowReceiverVertexProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xdfbb74() -> ! {
+    todo!("0xdfbb74 Ogre::PassTranslator::translateShadowReceiverVertexProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xdfc0f4 — __ZN4Ogre14PassTranslator41translateShadowReceiverFragmentProgramRefEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
+// type: _DWORD __fastcall(Ogre::PassTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
+#[doc(alias = "Ogre::PassTranslator::translateShadowReceiverFragmentProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xdfc0f4() -> ! {
+    todo!("0xdfc0f4 Ogre::PassTranslator::translateShadowReceiverFragmentProgramRef(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xdfc674 — __ZN4Ogre20GpuProgramTranslator26translateProgramParametersEPNS_14ScriptCompilerENS_9SharedPtrINS_20GpuProgramParametersEEEPNS_18ObjectAbstractNodeE
+#[doc(alias = "Ogre::GpuProgramTranslator::translateProgramParameters(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::GpuProgramParameters>,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xdfc674() -> ! {
+    todo!("0xdfc674 Ogre::GpuProgramTranslator::translateProgramParameters(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::GpuProgramParameters>,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xdfe7a0 — __ZN4Ogre21TextureUnitTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::TextureUnitTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xdfe7a0() -> ! {
+    todo!("0xdfe7a0 Ogre::TextureUnitTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe0a450 — __ZN4Ogre23TextureSourceTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::TextureSourceTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe0a450() -> ! {
+    todo!("0xe0a450 Ogre::TextureSourceTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe0b134 — __ZN4Ogre20GpuProgramTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::GpuProgramTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe0b134() -> ! {
+    todo!("0xe0b134 Ogre::GpuProgramTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe0b4ec — __ZN4Ogre20GpuProgramTranslator19translateGpuProgramEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
+// type: _DWORD __fastcall(Ogre::GpuProgramTranslator *__hidden this, struct _Unwind_Exception *lpuexcpt, Ogre::ObjectAbstractNode *)
+#[doc(alias = "Ogre::GpuProgramTranslator::translateGpuProgram(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xe0b4ec() -> ! {
+    todo!("0xe0b4ec Ogre::GpuProgramTranslator::translateGpuProgram(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xe0c5c4 — __ZN4Ogre20GpuProgramTranslator26translateUnifiedGpuProgramEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
+// type: _DWORD __fastcall(Ogre::GpuProgramTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
+#[doc(alias = "Ogre::GpuProgramTranslator::translateUnifiedGpuProgram(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xe0c5c4() -> ! {
+    todo!("0xe0c5c4 Ogre::GpuProgramTranslator::translateUnifiedGpuProgram(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xe0d7dc — __ZN4Ogre20GpuProgramTranslator28translateHighLevelGpuProgramEPNS_14ScriptCompilerEPNS_18ObjectAbstractNodeE
+// type: _DWORD __fastcall(Ogre::GpuProgramTranslator *__hidden this, Ogre::ScriptCompiler *, Ogre::ObjectAbstractNode *)
+#[doc(alias = "Ogre::GpuProgramTranslator::translateHighLevelGpuProgram(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xe0d7dc() -> ! {
+    todo!("0xe0d7dc Ogre::GpuProgramTranslator::translateHighLevelGpuProgram(Ogre::ScriptCompiler *,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xe0e954 — __ZN4Ogre22SharedParamsTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::SharedParamsTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe0e954() -> ! {
+    todo!("0xe0e954 Ogre::SharedParamsTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe0f7b4 — __ZN4Ogre24ParticleSystemTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::ParticleSystemTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe0f7b4() -> ! {
+    todo!("0xe0f7b4 Ogre::ParticleSystemTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe10a40 — __ZN4Ogre25ParticleEmitterTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::ParticleEmitterTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe10a40() -> ! {
+    todo!("0xe10a40 Ogre::ParticleEmitterTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe11134 — __ZN4Ogre26ParticleAffectorTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::ParticleAffectorTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe11134() -> ! {
+    todo!("0xe11134 Ogre::ParticleAffectorTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe11828 — __ZN4Ogre20CompositorTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::CompositorTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe11828() -> ! {
+    todo!("0xe11828 Ogre::CompositorTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe11ef0 — __ZN4Ogre30CompositionTechniqueTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::CompositionTechniqueTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe11ef0() -> ! {
+    todo!("0xe11ef0 Ogre::CompositionTechniqueTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe138bc — __ZN4Ogre31CompositionTargetPassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::CompositionTargetPassTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe138bc() -> ! {
+    todo!("0xe138bc Ogre::CompositionTargetPassTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe14d44 — __ZN4Ogre25CompositionPassTranslator9translateEPNS_14ScriptCompilerERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::CompositionPassTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe14d44() -> ! {
+    todo!("0xe14d44 Ogre::CompositionPassTranslator::translate(Ogre::ScriptCompiler *,Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe18500 — __ZN4Ogre30BuiltinScriptTranslatorManagerC1Ev
+// type: _DWORD __fastcall(Ogre::BuiltinScriptTranslatorManager *__hidden this)
+#[doc(alias = "Ogre::BuiltinScriptTranslatorManager::BuiltinScriptTranslatorManager(void)")]
+pub fn stub_0xe18500() -> ! {
+    todo!("0xe18500 Ogre::BuiltinScriptTranslatorManager::BuiltinScriptTranslatorManager(void)")
+}
+
+// 0xe1862c — __ZNK4Ogre30BuiltinScriptTranslatorManager17getNumTranslatorsEv
+// type: _DWORD __fastcall(Ogre::BuiltinScriptTranslatorManager *__hidden this)
+#[doc(alias = "Ogre::BuiltinScriptTranslatorManager::getNumTranslators(void)const")]
+pub fn stub_0xe1862c() -> ! {
+    todo!("0xe1862c Ogre::BuiltinScriptTranslatorManager::getNumTranslators(void)const")
+}
+
+// 0xe18630 — __ZN4Ogre30BuiltinScriptTranslatorManager13getTranslatorERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::BuiltinScriptTranslatorManager::getTranslator(Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xe18630() -> ! {
+    todo!("0xe18630 Ogre::BuiltinScriptTranslatorManager::getTranslator(Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xe1878c — __ZN4Ogre41PreApplyTextureAliasesScriptCompilerEventD1Ev
+// type: void __fastcall(Ogre::PreApplyTextureAliasesScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::PreApplyTextureAliasesScriptCompilerEvent::~PreApplyTextureAliasesScriptCompilerEvent()")]
+pub fn stub_0xe1878c() -> ! {
+    todo!("0xe1878c Ogre::PreApplyTextureAliasesScriptCompilerEvent::~PreApplyTextureAliasesScriptCompilerEvent()")
+}
+
+// 0xe187e8 — __ZN4Ogre33CreateMaterialScriptCompilerEventD1Ev
+// type: void __fastcall(Ogre::CreateMaterialScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateMaterialScriptCompilerEvent::~CreateMaterialScriptCompilerEvent()")]
+pub fn stub_0xe187e8() -> ! {
+    todo!("0xe187e8 Ogre::CreateMaterialScriptCompilerEvent::~CreateMaterialScriptCompilerEvent()")
+}
+
+// 0xe18b8c — __ZN4Ogre38ProcessResourceNameScriptCompilerEventD1Ev
+// type: void __fastcall(Ogre::ProcessResourceNameScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::ProcessResourceNameScriptCompilerEvent::~ProcessResourceNameScriptCompilerEvent()")]
+pub fn stub_0xe18b8c() -> ! {
+    todo!("0xe18b8c Ogre::ProcessResourceNameScriptCompilerEvent::~ProcessResourceNameScriptCompilerEvent()")
+}
+
+// 0xe196fc — __ZN4Ogre35CreateGpuProgramScriptCompilerEventD1Ev
+// type: void __fastcall(Ogre::CreateGpuProgramScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateGpuProgramScriptCompilerEvent::~CreateGpuProgramScriptCompilerEvent()")]
+pub fn stub_0xe196fc() -> ! {
+    todo!("0xe196fc Ogre::CreateGpuProgramScriptCompilerEvent::~CreateGpuProgramScriptCompilerEvent()")
+}
+
+// 0xe19708 — __ZN4Ogre44CreateHighLevelGpuProgramScriptCompilerEventD1Ev
+// type: void __fastcall(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent()")]
+pub fn stub_0xe19708() -> ! {
+    todo!("0xe19708 Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent()")
+}
+
+// 0xe19714 — __ZN4Ogre44CreateGpuSharedParametersScriptCompilerEventD1Ev
+// type: void __fastcall(Ogre::CreateGpuSharedParametersScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateGpuSharedParametersScriptCompilerEvent::~CreateGpuSharedParametersScriptCompilerEvent()")]
+pub fn stub_0xe19714() -> ! {
+    todo!("0xe19714 Ogre::CreateGpuSharedParametersScriptCompilerEvent::~CreateGpuSharedParametersScriptCompilerEvent()")
+}
+
+// 0xe19720 — __ZN4Ogre39CreateParticleSystemScriptCompilerEventD1Ev
+// type: void __fastcall(Ogre::CreateParticleSystemScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateParticleSystemScriptCompilerEvent::~CreateParticleSystemScriptCompilerEvent()")]
+pub fn stub_0xe19720() -> ! {
+    todo!("0xe19720 Ogre::CreateParticleSystemScriptCompilerEvent::~CreateParticleSystemScriptCompilerEvent()")
+}
+
+// 0xe19ac4 — __ZN4Ogre35CreateCompositorScriptCompilerEventD1Ev
+// type: void __fastcall(Ogre::CreateCompositorScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateCompositorScriptCompilerEvent::~CreateCompositorScriptCompilerEvent()")]
+pub fn stub_0xe19ac4() -> ! {
+    todo!("0xe19ac4 Ogre::CreateCompositorScriptCompilerEvent::~CreateCompositorScriptCompilerEvent()")
+}
+
+// 0xe1af14 — __ZN4Ogre30BuiltinScriptTranslatorManagerD1Ev
+// type: void __fastcall(Ogre::BuiltinScriptTranslatorManager *__hidden this)
+#[doc(alias = "Ogre::BuiltinScriptTranslatorManager::~BuiltinScriptTranslatorManager()")]
+pub fn stub_0xe1af14() -> ! {
+    todo!("0xe1af14 Ogre::BuiltinScriptTranslatorManager::~BuiltinScriptTranslatorManager()")
+}
+
+// 0xe1afc8 — __ZN4Ogre30BuiltinScriptTranslatorManagerD0Ev
+// type: void __fastcall(Ogre::BuiltinScriptTranslatorManager *__hidden this)
+#[doc(alias = "Ogre::BuiltinScriptTranslatorManager::~BuiltinScriptTranslatorManager()")]
+pub fn stub_0xe1afc8() -> ! {
+    todo!("0xe1afc8 Ogre::BuiltinScriptTranslatorManager::~BuiltinScriptTranslatorManager()")
+}
+
+// 0xe1b7f4 — __ZN4Ogre35CreateCompositorScriptCompilerEventD2Ev
+// type: void __fastcall(Ogre::CreateCompositorScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateCompositorScriptCompilerEvent::~CreateCompositorScriptCompilerEvent()")]
+pub fn stub_0xe1b7f4() -> ! {
+    todo!("0xe1b7f4 Ogre::CreateCompositorScriptCompilerEvent::~CreateCompositorScriptCompilerEvent()")
+}
+
+// 0xe1b900 — __ZN4Ogre35CreateCompositorScriptCompilerEventD0Ev
+// type: void __fastcall(Ogre::CreateCompositorScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateCompositorScriptCompilerEvent::~CreateCompositorScriptCompilerEvent()")]
+pub fn stub_0xe1b900() -> ! {
+    todo!("0xe1b900 Ogre::CreateCompositorScriptCompilerEvent::~CreateCompositorScriptCompilerEvent()")
+}
+
+// 0xe1b914 — __ZN4Ogre35CreateCompositorScriptCompilerEventC2ERKSsS2_S2_
+// type: _DWORD __fastcall(Ogre::CreateCompositorScriptCompilerEvent *__hidden this, const std::string *, const std::string *, const std::string *)
+#[doc(alias = "Ogre::CreateCompositorScriptCompilerEvent::CreateCompositorScriptCompilerEvent(std::string const&,std::string const&,std::string const&)")]
+pub fn stub_0xe1b914() -> ! {
+    todo!("0xe1b914 Ogre::CreateCompositorScriptCompilerEvent::CreateCompositorScriptCompilerEvent(std::string const&,std::string const&,std::string const&)")
+}
+
+// 0xe1bae8 — __ZN4Ogre39CreateParticleSystemScriptCompilerEventD2Ev
+// type: void __fastcall(Ogre::CreateParticleSystemScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateParticleSystemScriptCompilerEvent::~CreateParticleSystemScriptCompilerEvent()")]
+pub fn stub_0xe1bae8() -> ! {
+    todo!("0xe1bae8 Ogre::CreateParticleSystemScriptCompilerEvent::~CreateParticleSystemScriptCompilerEvent()")
+}
+
+// 0xe1bbf4 — __ZN4Ogre39CreateParticleSystemScriptCompilerEventD0Ev
+// type: void __fastcall(Ogre::CreateParticleSystemScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateParticleSystemScriptCompilerEvent::~CreateParticleSystemScriptCompilerEvent()")]
+pub fn stub_0xe1bbf4() -> ! {
+    todo!("0xe1bbf4 Ogre::CreateParticleSystemScriptCompilerEvent::~CreateParticleSystemScriptCompilerEvent()")
+}
+
+// 0xe1bc08 — __ZN4Ogre39CreateParticleSystemScriptCompilerEventC2ERKSsS2_S2_
+// type: _DWORD __fastcall(Ogre::CreateParticleSystemScriptCompilerEvent *__hidden this, const std::string *, const std::string *, const std::string *)
+#[doc(alias = "Ogre::CreateParticleSystemScriptCompilerEvent::CreateParticleSystemScriptCompilerEvent(std::string const&,std::string const&,std::string const&)")]
+pub fn stub_0xe1bc08() -> ! {
+    todo!("0xe1bc08 Ogre::CreateParticleSystemScriptCompilerEvent::CreateParticleSystemScriptCompilerEvent(std::string const&,std::string const&,std::string const&)")
+}
+
+// 0xe1bddc — __ZN4Ogre44CreateGpuSharedParametersScriptCompilerEventD2Ev
+// type: void __fastcall(Ogre::CreateGpuSharedParametersScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateGpuSharedParametersScriptCompilerEvent::~CreateGpuSharedParametersScriptCompilerEvent()")]
+pub fn stub_0xe1bddc() -> ! {
+    todo!("0xe1bddc Ogre::CreateGpuSharedParametersScriptCompilerEvent::~CreateGpuSharedParametersScriptCompilerEvent()")
+}
+
+// 0xe1bee8 — __ZN4Ogre44CreateGpuSharedParametersScriptCompilerEventD0Ev
+// type: void __fastcall(Ogre::CreateGpuSharedParametersScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateGpuSharedParametersScriptCompilerEvent::~CreateGpuSharedParametersScriptCompilerEvent()")]
+pub fn stub_0xe1bee8() -> ! {
+    todo!("0xe1bee8 Ogre::CreateGpuSharedParametersScriptCompilerEvent::~CreateGpuSharedParametersScriptCompilerEvent()")
+}
+
+// 0xe1befc — __ZN4Ogre44CreateGpuSharedParametersScriptCompilerEventC2ERKSsS2_S2_
+// type: _DWORD __fastcall(Ogre::CreateGpuSharedParametersScriptCompilerEvent *__hidden this, const std::string *, const std::string *, const std::string *)
+#[doc(alias = "Ogre::CreateGpuSharedParametersScriptCompilerEvent::CreateGpuSharedParametersScriptCompilerEvent(std::string const&,std::string const&,std::string const&)")]
+pub fn stub_0xe1befc() -> ! {
+    todo!("0xe1befc Ogre::CreateGpuSharedParametersScriptCompilerEvent::CreateGpuSharedParametersScriptCompilerEvent(std::string const&,std::string const&,std::string const&)")
+}
+
+// 0xe1c0d0 — __ZN4Ogre44CreateHighLevelGpuProgramScriptCompilerEventD2Ev
+// type: void __fastcall(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent()")]
+pub fn stub_0xe1c0d0() -> ! {
+    todo!("0xe1c0d0 Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent()")
+}
+
+// 0xe1c240 — __ZN4Ogre44CreateHighLevelGpuProgramScriptCompilerEventD0Ev
+// type: void __fastcall(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent()")]
+pub fn stub_0xe1c240() -> ! {
+    todo!("0xe1c240 Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::~CreateHighLevelGpuProgramScriptCompilerEvent()")
+}
+
+// 0xe1c254 — __ZN4Ogre44CreateHighLevelGpuProgramScriptCompilerEventC2ERKSsS2_S2_S2_S2_NS_14GpuProgramTypeEPKSt4listISt4pairISsSsENS_12STLAllocatorIS6_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+// type: int __fastcall(int, int, int, int, std::string *, std::string *, int, int, char, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::CreateHighLevelGpuProgramScriptCompilerEvent(std::string const&,std::string const&,std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::list<std::pair<std::string,std::string>,Ogre::STLAllocator<std::pair<std::string,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+pub fn stub_0xe1c254() -> ! {
+    todo!("0xe1c254 Ogre::CreateHighLevelGpuProgramScriptCompilerEvent::CreateHighLevelGpuProgramScriptCompilerEvent(std::string const&,std::string const&,std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::list<std::pair<std::string,std::string>,Ogre::STLAllocator<std::pair<std::string,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xe1c610 — __ZN4Ogre35CreateGpuProgramScriptCompilerEventD2Ev
+// type: void __fastcall(Ogre::CreateGpuProgramScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateGpuProgramScriptCompilerEvent::~CreateGpuProgramScriptCompilerEvent()")]
+pub fn stub_0xe1c610() -> ! {
+    todo!("0xe1c610 Ogre::CreateGpuProgramScriptCompilerEvent::~CreateGpuProgramScriptCompilerEvent()")
+}
+
+// 0xe1c780 — __ZN4Ogre35CreateGpuProgramScriptCompilerEventD0Ev
+// type: void __fastcall(Ogre::CreateGpuProgramScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateGpuProgramScriptCompilerEvent::~CreateGpuProgramScriptCompilerEvent()")]
+pub fn stub_0xe1c780() -> ! {
+    todo!("0xe1c780 Ogre::CreateGpuProgramScriptCompilerEvent::~CreateGpuProgramScriptCompilerEvent()")
+}
+
+// 0xe1c794 — __ZN4Ogre35CreateGpuProgramScriptCompilerEventC2ERKSsS2_S2_S2_S2_NS_14GpuProgramTypeE
+// type: int __fastcall(int, int, int, int, std::string *, std::string *, int, char, char, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::CreateGpuProgramScriptCompilerEvent::CreateGpuProgramScriptCompilerEvent(std::string const&,std::string const&,std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType)")]
+pub fn stub_0xe1c794() -> ! {
+    todo!("0xe1c794 Ogre::CreateGpuProgramScriptCompilerEvent::CreateGpuProgramScriptCompilerEvent(std::string const&,std::string const&,std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType)")
+}
+
+// 0xe1ca20 — __ZN4Ogre38ProcessResourceNameScriptCompilerEventD0Ev
+// type: void __fastcall(Ogre::ProcessResourceNameScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::ProcessResourceNameScriptCompilerEvent::~ProcessResourceNameScriptCompilerEvent()")]
+pub fn stub_0xe1ca20() -> ! {
+    todo!("0xe1ca20 Ogre::ProcessResourceNameScriptCompilerEvent::~ProcessResourceNameScriptCompilerEvent()")
+}
+
+// 0xe1cacc — __ZN4Ogre33CreateMaterialScriptCompilerEventD2Ev
+// type: void __fastcall(Ogre::CreateMaterialScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateMaterialScriptCompilerEvent::~CreateMaterialScriptCompilerEvent()")]
+pub fn stub_0xe1cacc() -> ! {
+    todo!("0xe1cacc Ogre::CreateMaterialScriptCompilerEvent::~CreateMaterialScriptCompilerEvent()")
+}
+
+// 0xe1cbd8 — __ZN4Ogre33CreateMaterialScriptCompilerEventD0Ev
+// type: void __fastcall(Ogre::CreateMaterialScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::CreateMaterialScriptCompilerEvent::~CreateMaterialScriptCompilerEvent()")]
+pub fn stub_0xe1cbd8() -> ! {
+    todo!("0xe1cbd8 Ogre::CreateMaterialScriptCompilerEvent::~CreateMaterialScriptCompilerEvent()")
+}
+
+// 0xe1cbec — __ZN4Ogre41PreApplyTextureAliasesScriptCompilerEventD0Ev
+// type: void __fastcall(Ogre::PreApplyTextureAliasesScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::PreApplyTextureAliasesScriptCompilerEvent::~PreApplyTextureAliasesScriptCompilerEvent()")]
+pub fn stub_0xe1cbec() -> ! {
+    todo!("0xe1cbec Ogre::PreApplyTextureAliasesScriptCompilerEvent::~PreApplyTextureAliasesScriptCompilerEvent()")
+}
+
+// 0xe1cc4c — __ZN4Ogre33CreateMaterialScriptCompilerEventC2ERKSsS2_S2_
+// type: _DWORD __fastcall(Ogre::CreateMaterialScriptCompilerEvent *__hidden this, const std::string *, const std::string *, const std::string *)
+#[doc(alias = "Ogre::CreateMaterialScriptCompilerEvent::CreateMaterialScriptCompilerEvent(std::string const&,std::string const&,std::string const&)")]
+pub fn stub_0xe1cc4c() -> ! {
+    todo!("0xe1cc4c Ogre::CreateMaterialScriptCompilerEvent::CreateMaterialScriptCompilerEvent(std::string const&,std::string const&,std::string const&)")
+}
+
+// 0xf1f264 — __ZN3RBX4Name7declareILZNS_14sScriptContextEEEERKS0_v$shim
+#[doc(alias = "__ZN3RBX4Name7declareILZNS_14sScriptContextEEEERKS0_v$shim")]
+pub fn stub_0xf1f264() -> ! {
+    todo!("0xf1f264 __ZN3RBX4Name7declareILZNS_14sScriptContextEEEERKS0_v$shim")
+}
+
+// 0xf1f54c — __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim
+// type: int(void)
+#[doc(alias = "__ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
+pub fn stub_0xf1f54c() -> ! {
+    todo!("0xf1f54c __ZNSt6vectorIPN3RBX10Reflection25MemberDescriptorContainerINS1_23YieldFunctionDescriptorEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")
+}
+
+// 0xf1f558 — __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv$shim")]
+pub fn stub_0xf1f558() -> ! {
+    todo!("0xf1f558 __ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv$shim")
+}
+
+// 0xf1f564 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")]
+// was: __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim
+pub fn stub_0xf1f564() -> ! {
+    todo!("0xf1f564 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm$shim")
+}
+
+// 0xf1f570 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")]
+// was: __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim
+pub fn stub_0xf1f570() -> ! {
+    todo!("0xf1f570 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm$shim")
+}
+
+// 0xf1f648 — __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v$shim")]
+pub fn stub_0xf1f648() -> ! {
+    todo!("0xf1f648 __ZN3RBX4Name9doDeclareILZNS_11sCoreScriptEEEERKS0_v$shim")
+}
+
+// 0xf1f654 — __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v$shim")]
+pub fn stub_0xf1f654() -> ! {
+    todo!("0xf1f654 __ZN3RBX4Name9doDeclareILZNS_14sStarterScriptEEEERKS0_v$shim")
+}
+
+// 0xf1f660 — __ZN3RBX16withVariantValueIiNS_3Lua14ArgumentPusherEEET_RKNS_10Reflection7VariantET0_$shim
+// type: int(void)
+#[doc(alias = "__ZN3RBX16withVariantValueIiNS_3Lua14ArgumentPusherEEET_RKNS_10Reflection7VariantET0_$shim")]
+pub fn stub_0xf1f660() -> ! {
+    todo!("0xf1f660 __ZN3RBX16withVariantValueIiNS_3Lua14ArgumentPusherEEET_RKNS_10Reflection7VariantET0_$shim")
+}
+
+// 0xf1f66c — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringERKS3_P9lua_State$shim
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "__ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringERKS3_P9lua_State$shim")]
+pub fn stub_0xf1f66c() -> ! {
+    todo!("0xf1f66c __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_tostringERKS3_P9lua_State$shim")
+}
+
+// 0xf1f678 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringERKS3_P9lua_State$shim
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "__ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringERKS3_P9lua_State$shim")]
+pub fn stub_0xf1f678() -> ! {
+    todo!("0xf1f678 __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_tostringERKS3_P9lua_State$shim")
+}
+
+// 0xf1f684 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringERKS3_P9lua_State$shim
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "__ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringERKS3_P9lua_State$shim")]
+pub fn stub_0xf1f684() -> ! {
+    todo!("0xf1f684 __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_tostringERKS3_P9lua_State$shim")
+}
+
+// 0xf1f690 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringERKS3_P9lua_State$shim
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "__ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringERKS3_P9lua_State$shim")]
+pub fn stub_0xf1f690() -> ! {
+    todo!("0xf1f690 __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_tostringERKS3_P9lua_State$shim")
+}
+
+// 0xf1f69c — __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringERKS3_P9lua_State$shim
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "__ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringERKS3_P9lua_State$shim")]
+pub fn stub_0xf1f69c() -> ! {
+    todo!("0xf1f69c __ZN3RBX3Lua6BridgeIN3G3D15CoordinateFrameELb1EE11on_tostringERKS3_P9lua_State$shim")
+}
+
+// 0xf1f6a8 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE12manage_smallERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE$shim
+// type: int(void)
+#[doc(alias = "__ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE12manage_smallERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE$shim")]
+// was: __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE12manage_smallERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE$shim
+pub fn stub_0xf1f6a8() -> ! {
+    todo!("0xf1f6a8 __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE12manage_smallERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE$shim")
+}
+
+// 0xf1f6b4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int(void)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+// was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+pub fn stub_0xf1f6b4() -> ! {
+    todo!("0xf1f6b4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1f6c0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int(void)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+// was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+pub fn stub_0xf1f6c0() -> ! {
+    todo!("0xf1f6c0 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1f6cc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS_10shared_ptrIN3RBX10Reflection5TupleEEEPFS9_NS6_3Lua15WeakFunctionRefENS5_IKS8_EENS_13intrusive_ptrINSA_13WeakThreadRefEEEENS3_5list3INS3_5valueISB_EENS_3argILi1EEENSK_ISG_EEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int __fastcall(int, int, int, int, void *, int, int, int, int, int)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS_10shared_ptrIN3RBX10Reflection5TupleEEEPFS9_NS6_3Lua15WeakFunctionRefENS5_IKS8_EENS_13intrusive_ptrINSA_13WeakThreadRefEEEENS3_5list3INS3_5valueISB_EENS_3argILi1EEENSK_ISG_EEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+// was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS_10shared_ptrIN3RBX10Reflection5TupleEEEPFS9_NS6_3Lua15WeakFunctionRefENS5_IKS8_EENS_13intrusive_ptrINSA_13WeakThreadRefEEEENS3_5list3INS3_5valueISB_EENS_3argILi1EEENSK_ISG_EEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+pub fn stub_0xf1f6cc() -> ! {
+    todo!("0xf1f6cc __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS_10shared_ptrIN3RBX10Reflection5TupleEEEPFS9_NS6_3Lua15WeakFunctionRefENS5_IKS8_EENS_13intrusive_ptrINSA_13WeakThreadRefEEEENS3_5list3INS3_5valueISB_EENS_3argILi1EEENSK_ISG_EEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1f6e4 — __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator12getClassNameEv$shim
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_0xf1f6e4() -> ! {
+    todo!("0xf1f6e4 __ZNK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf1f6f0 — __ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev$shim
+#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev$shim")]
+pub fn stub_0xf1f6f0() -> ! {
+    todo!("0xf1f6f0 __ZN3RBX26GlobalAdvancedSettingsItemINS_11LuaSettingsELZNS_12sLuaSettingsEEED0Ev$shim")
 }
