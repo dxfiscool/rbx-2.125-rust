@@ -26,5 +26,6 @@ pub mod generated_20;
 pub mod generated_21;
 pub mod generated_22;
 pub mod generated_shard_e;
+pub mod generated_shard_bg4;
 pub mod high;
 pub mod next_batch;
