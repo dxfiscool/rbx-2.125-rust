@@ -775,3 +775,5 @@ pub fn stub_0xf36b84() -> ! {
 pub fn stub_0xf36b94() -> ! {
     todo!("0xf36b94 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DataModel::GearType>(RBX::DataModel::GearType const&)")
 }
+
+// shard BG3 — 120 stubs EA-sorted after 0xf35844
