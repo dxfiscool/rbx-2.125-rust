@@ -11537,3 +11537,526 @@ pub fn stub_f282d4() -> ! {
     todo!("0xf282d4 _AudioUnitGetProperty")
 }
 
+// 0x37148c — __ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEEC2Ev
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::EnumDesc(void)")]
+pub fn stub_37148c() -> ! {
+    todo!("0x37148c RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::EnumDesc(void)")
+}
+
+// 0x371b5c — __ZN3RBX10Soundscape12SoundServiceC1Ev
+// type: int __fastcall(RBX::Soundscape::SoundService *this)
+#[doc(alias = "RBX::Soundscape::SoundService::SoundService(void)")]
+pub fn stub_371b5c() -> ! {
+    todo!("0x371b5c RBX::Soundscape::SoundService::SoundService(void)")
+}
+
+// 0x371b60 — __ZN3RBX10Soundscape12SoundServiceC2Ev
+// type: RBX::Instance *__fastcall(RBX::Soundscape::SoundService *this)
+#[doc(alias = "RBX::Soundscape::SoundService::SoundService(void)")]
+pub fn stub_371b60() -> ! {
+    todo!("0x371b60 RBX::Soundscape::SoundService::SoundService(void)")
+}
+
+// 0x371e5c — __ZN3RBX10Soundscape12SoundService8openFmodEv
+// type: int __fastcall(RBX::Soundscape::SoundService *this, int, int, int)
+#[doc(alias = "RBX::Soundscape::SoundService::openFmod(void)")]
+pub fn stub_371e5c() -> ! {
+    todo!("0x371e5c RBX::Soundscape::SoundService::openFmod(void)")
+}
+
+// 0x3723f4 — __ZN3RBX10Soundscape12SoundService16update3DSettingsEv
+// type: FMOD::System *__fastcall(RBX::Soundscape::SoundService *this)
+#[doc(alias = "RBX::Soundscape::SoundService::update3DSettings(void)")]
+pub fn stub_3723f4() -> ! {
+    todo!("0x3723f4 RBX::Soundscape::SoundService::update3DSettings(void)")
+}
+
+// 0x372414 — __ZN3RBX10Soundscape12SoundService19updateAmbientReverbEv
+// type: _DWORD __fastcall(RBX::Soundscape::SoundService *__hidden this)
+#[doc(alias = "RBX::Soundscape::SoundService::updateAmbientReverb(void)")]
+pub fn stub_372414() -> ! {
+    todo!("0x372414 RBX::Soundscape::SoundService::updateAmbientReverb(void)")
+}
+
+// 0x372460 — __ZN3RBX10Soundscape12SoundServiceD0Ev
+// type: void __fastcall(RBX::Soundscape::SoundService *__hidden this)
+#[doc(alias = "RBX::Soundscape::SoundService::~SoundService()")]
+pub fn stub_372460() -> ! {
+    todo!("0x372460 RBX::Soundscape::SoundService::~SoundService()")
+}
+
+// 0x372500 — __ZN3RBX10Soundscape12SoundServiceD1Ev
+// type: void __fastcall(RBX::Soundscape::SoundService *__hidden this)
+#[doc(alias = "RBX::Soundscape::SoundService::~SoundService()")]
+pub fn stub_372500() -> ! {
+    todo!("0x372500 RBX::Soundscape::SoundService::~SoundService()")
+}
+
+// 0x372504 — __ZThn32_N3RBX10Soundscape12SoundServiceD0Ev
+// type: void __fastcall(RBX::Soundscape::SoundService *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
+pub fn stub_372504() -> ! {
+    todo!("0x372504 `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+}
+
+// 0x37250c — __ZThn36_N3RBX10Soundscape12SoundServiceD0Ev
+// type: void __fastcall(RBX::Soundscape::SoundService *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
+pub fn stub_37250c() -> ! {
+    todo!("0x37250c `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+}
+
+// 0x372514 — __ZN3RBX10Soundscape12SoundServiceD2Ev
+// type: void __fastcall(RBX::Soundscape::SoundService *this, int, int)
+#[doc(alias = "RBX::Soundscape::SoundService::~SoundService()")]
+pub fn stub_372514() -> ! {
+    todo!("0x372514 RBX::Soundscape::SoundService::~SoundService()")
+}
+
+// 0x3728b0 — __ZThn32_N3RBX10Soundscape12SoundServiceD1Ev
+// type: void __fastcall(RBX::Soundscape::SoundService *this, int, int)
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
+pub fn stub_3728b0() -> ! {
+    todo!("0x3728b0 `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+}
+
+// 0x3728b8 — __ZThn36_N3RBX10Soundscape12SoundServiceD1Ev
+// type: void __fastcall(RBX::Soundscape::SoundService *this, int, int)
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
+pub fn stub_3728b8() -> ! {
+    todo!("0x3728b8 `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+}
+
+// 0x3728c0 — __ZN3RBX10Soundscape12SoundService9closeFmodEv
+// type: _DWORD __fastcall(RBX::Soundscape::SoundService *__hidden this)
+#[doc(alias = "RBX::Soundscape::SoundService::closeFmod(void)")]
+pub fn stub_3728c0() -> ! {
+    todo!("0x3728c0 RBX::Soundscape::SoundService::closeFmod(void)")
+}
+
+// 0x3729bc — __ZL12releaseSoundRKSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEE
+// type: int __fastcall(int)
+#[doc(alias = "releaseSound(std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")]
+pub fn stub_3729bc() -> ! {
+    todo!("0x3729bc releaseSound(std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>> const&)")
+}
+
+// 0x372bb0 — __ZN3RBX10Soundscape12SoundService15loadStockSoundsEv
+// type: void __fastcall(RBX::Soundscape::SoundService *this)
+#[doc(alias = "RBX::Soundscape::SoundService::loadStockSounds(void)")]
+pub fn stub_372bb0() -> ! {
+    todo!("0x372bb0 RBX::Soundscape::SoundService::loadStockSounds(void)")
+}
+
+// 0x373554 — __ZN3RBX10Soundscape12SoundService14loadStockSoundENS_9SoundTypeESs
+// type: void __fastcall(RBX::Instance *, int, int, int)
+#[doc(alias = "RBX::Soundscape::SoundService::loadStockSound(RBX::SoundType,std::string)")]
+pub fn stub_373554() -> ! {
+    todo!("0x373554 RBX::Soundscape::SoundService::loadStockSound(RBX::SoundType,std::string)")
+}
+
+// 0x37384c — __ZN3RBX10Soundscape12SoundChannel10setSoundIdENS0_7SoundIdE
+// type: int __fastcall(_DWORD *, std::string *)
+#[doc(alias = "RBX::Soundscape::SoundChannel::setSoundId(RBX::Soundscape::SoundId)")]
+pub fn stub_37384c() -> ! {
+    todo!("0x37384c RBX::Soundscape::SoundChannel::setSoundId(RBX::Soundscape::SoundId)")
+}
+
+// 0x373894 — __ZN3RBX10Soundscape7SoundIdC1ERKNS_9ContentIdE
+// type: RBX::Soundscape::SoundId *__fastcall(RBX::Soundscape::SoundId *this, const RBX::ContentId *)
+#[doc(alias = "RBX::Soundscape::SoundId::SoundId(RBX::ContentId const&)")]
+pub fn stub_373894() -> ! {
+    todo!("0x373894 RBX::Soundscape::SoundId::SoundId(RBX::ContentId const&)")
+}
+
+// 0x3738a8 — __ZN3RBX10Soundscape12SoundService16setAmbientReverbERKNS0_10ReverbTypeE
+// type: int __fastcall(RBX::Instance *, int *)
+#[doc(alias = "RBX::Soundscape::SoundService::setAmbientReverb(RBX::Soundscape::ReverbType const&)")]
+pub fn stub_3738a8() -> ! {
+    todo!("0x3738a8 RBX::Soundscape::SoundService::setAmbientReverb(RBX::Soundscape::ReverbType const&)")
+}
+
+// 0x3738d8 — __ZN3RBX10Soundscape12SoundService9playSoundENS_9SoundTypeE
+// type: _DWORD *__fastcall(int, int)
+#[doc(alias = "RBX::Soundscape::SoundService::playSound(RBX::SoundType)")]
+pub fn stub_3738d8() -> ! {
+    todo!("0x3738d8 RBX::Soundscape::SoundService::playSound(RBX::SoundType)")
+}
+
+// 0x373918 — __ZN3RBX10Soundscape12SoundChannel4playEv
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this)
+#[doc(alias = "RBX::Soundscape::SoundChannel::play(void)")]
+pub fn stub_373918() -> ! {
+    todo!("0x373918 RBX::Soundscape::SoundChannel::play(void)")
+}
+
+// 0x373974 — __ZN3RBX10Soundscape12SoundService17onServiceProviderEPNS_15ServiceProviderES3_
+// type: void __fastcall(shared_count *this, RBX::ServiceProvider *, RBX::ServiceProvider *)
+#[doc(alias = "RBX::Soundscape::SoundService::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+pub fn stub_373974() -> ! {
+    todo!("0x373974 RBX::Soundscape::SoundService::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+}
+
+// 0x373cb8 — __ZN3RBX10Soundscape12SoundService4stepEv
+// type: void __fastcall(RBX::Soundscape::SoundService *this, int, int, int (*)(const char *, ...))
+#[doc(alias = "RBX::Soundscape::SoundService::step(void)")]
+pub fn stub_373cb8() -> ! {
+    todo!("0x373cb8 RBX::Soundscape::SoundService::step(void)")
+}
+
+// 0x373fd0 — __ZN3RBX10Soundscape12SoundService20garbageCollectSoundsEv
+// type: void __fastcall(RBX::Soundscape::SoundService *this)
+#[doc(alias = "RBX::Soundscape::SoundService::garbageCollectSounds(void)")]
+pub fn stub_373fd0() -> ! {
+    todo!("0x373fd0 RBX::Soundscape::SoundService::garbageCollectSounds(void)")
+}
+
+// 0x374028 — __ZN3RBX15StringConverterINS_10Soundscape7SoundIdEE14convertToValueERKSsRS2_
+// type: int __fastcall(std::string *, std::string *)
+#[doc(alias = "RBX::StringConverter<RBX::Soundscape::SoundId>::convertToValue(std::string const&,RBX::Soundscape::SoundId&)")]
+pub fn stub_374028() -> ! {
+    todo!("0x374028 RBX::StringConverter<RBX::Soundscape::SoundId>::convertToValue(std::string const&,RBX::Soundscape::SoundId&)")
+}
+
+// 0x37414c — __ZN3RBX10Reflection4Type12getSingletonINS_10Soundscape7SoundIdEEERKS1_v
+// type: int()
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Soundscape::SoundId>(void)")]
+pub fn stub_37414c() -> ! {
+    todo!("0x37414c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Soundscape::SoundId>(void)")
+}
+
+// 0x374154 — __ZN3RBX10Reflection7Variant7convertINS_10Soundscape7SoundIdEEERT_v
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Soundscape::SoundId & RBX::Reflection::Variant::convert<RBX::Soundscape::SoundId>(void)")]
+pub fn stub_374154() -> ! {
+    todo!("0x374154 RBX::Soundscape::SoundId & RBX::Reflection::Variant::convert<RBX::Soundscape::SoundId>(void)")
+}
+
+// 0x374340 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+// type: void __fastcall(int, int, XmlElement *this)
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_374340() -> ! {
+    todo!("0x374340 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x374528 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+// type: void __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_374528() -> ! {
+    todo!("0x374528 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x374758 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE11getDataSizeEPKNS0_13DescribedBaseE
+// type: int __fastcall(int, int)
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getDataSize(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_374758() -> ! {
+    todo!("0x374758 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getDataSize(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x3747b4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE14hasStringValueEv
+// type: int()
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::hasStringValue(void)const")]
+pub fn stub_3747b4() -> ! {
+    todo!("0x3747b4 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::hasStringValue(void)const")
+}
+
+// 0x3747b8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE14getStringValueEPKNS0_13DescribedBaseE
+// type: void __fastcall(std::string *, int)
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_3747b8() -> ! {
+    todo!("0x3747b8 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x3748d4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_10Soundscape7SoundIdEE14setStringValueEPNS0_13DescribedBaseERKSs
+// type: int __fastcall(RBX::Name *, int, std::string *)
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_3748d4() -> ! {
+    todo!("0x3748d4 RBX::Reflection::TypedPropertyDescriptor<RBX::Soundscape::SoundId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x374a2c — __ZNK3RBX10Soundscape12SoundChannel10getSoundIdEv
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this, int)
+#[doc(alias = "RBX::Soundscape::SoundChannel::getSoundId(void)const")]
+pub fn stub_374a2c() -> ! {
+    todo!("0x374a2c RBX::Soundscape::SoundChannel::getSoundId(void)const")
+}
+
+// 0x374a44 — __ZNK3RBX10Soundscape12SoundChannel9getVolumeEv
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this)
+#[doc(alias = "RBX::Soundscape::SoundChannel::getVolume(void)const")]
+pub fn stub_374a44() -> ! {
+    todo!("0x374a44 RBX::Soundscape::SoundChannel::getVolume(void)const")
+}
+
+// 0x374a48 — __ZN3RBX10Soundscape12SoundChannel9setVolumeEf
+// type: int __fastcall(int this, float32_t, FMOD::ChannelI **)
+#[doc(alias = "RBX::Soundscape::SoundChannel::setVolume(float)")]
+pub fn stub_374a48() -> ! {
+    todo!("0x374a48 RBX::Soundscape::SoundChannel::setVolume(float)")
+}
+
+// 0x374aa4 — __ZNK3RBX10Soundscape12SoundChannel8getPitchEv
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this)
+#[doc(alias = "RBX::Soundscape::SoundChannel::getPitch(void)const")]
+pub fn stub_374aa4() -> ! {
+    todo!("0x374aa4 RBX::Soundscape::SoundChannel::getPitch(void)const")
+}
+
+// 0x374aa8 — __ZN3RBX10Soundscape12SoundChannel8setPitchEf
+// type: int __fastcall(int this, float, FMOD::ChannelI **)
+#[doc(alias = "RBX::Soundscape::SoundChannel::setPitch(float)")]
+pub fn stub_374aa8() -> ! {
+    todo!("0x374aa8 RBX::Soundscape::SoundChannel::setPitch(float)")
+}
+
+// 0x374af8 — __ZN3RBX10Soundscape12SoundChannel12setPlayCountEi
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this, int)
+#[doc(alias = "RBX::Soundscape::SoundChannel::setPlayCount(int)")]
+pub fn stub_374af8() -> ! {
+    todo!("0x374af8 RBX::Soundscape::SoundChannel::setPlayCount(int)")
+}
+
+// 0x374b68 — __ZNK3RBX10Soundscape12SoundChannel9getLoopedEv
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this)
+#[doc(alias = "RBX::Soundscape::SoundChannel::getLooped(void)const")]
+pub fn stub_374b68() -> ! {
+    todo!("0x374b68 RBX::Soundscape::SoundChannel::getLooped(void)const")
+}
+
+// 0x374b74 — __ZN3RBX10Soundscape12SoundChannel9setLoopedEb
+// type: unsigned int __fastcall(RBX::Soundscape::SoundChannel *this, int)
+#[doc(alias = "RBX::Soundscape::SoundChannel::setLooped(bool)")]
+pub fn stub_374b74() -> ! {
+    todo!("0x374b74 RBX::Soundscape::SoundChannel::setLooped(bool)")
+}
+
+// 0x374bb4 — __ZNK3RBX10Soundscape12SoundChannel9isPlayingEv
+// type: bool __fastcall(RBX::Soundscape::SoundChannel *this, int, FMOD::ChannelI **)
+#[doc(alias = "RBX::Soundscape::SoundChannel::isPlaying(void)const")]
+pub fn stub_374bb4() -> ! {
+    todo!("0x374bb4 RBX::Soundscape::SoundChannel::isPlaying(void)const")
+}
+
+// 0x374bec — __ZNK3RBX10Soundscape12SoundChannel8isPausedEv
+// type: bool __fastcall(RBX::Soundscape::SoundChannel *this, int, FMOD::ChannelI **)
+#[doc(alias = "RBX::Soundscape::SoundChannel::isPaused(void)const")]
+pub fn stub_374bec() -> ! {
+    todo!("0x374bec RBX::Soundscape::SoundChannel::isPaused(void)const")
+}
+
+// 0x374c24 — __ZN3RBX10Soundscape12SoundChannel5pauseEv
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this, int, FMOD::ChannelI **)
+#[doc(alias = "RBX::Soundscape::SoundChannel::pause(void)")]
+pub fn stub_374c24() -> ! {
+    todo!("0x374c24 RBX::Soundscape::SoundChannel::pause(void)")
+}
+
+// 0x374c68 — __ZN3RBX10Soundscape12SoundChannel4stopEv
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this, int, FMOD::ChannelI **)
+#[doc(alias = "RBX::Soundscape::SoundChannel::stop(void)")]
+pub fn stub_374c68() -> ! {
+    todo!("0x374c68 RBX::Soundscape::SoundChannel::stop(void)")
+}
+
+// 0x374cc4 — __ZN3RBX10Soundscape12SoundChannelC2Ev
+// type: RBX::Instance *__fastcall(RBX::Soundscape::SoundChannel *this)
+#[doc(alias = "RBX::Soundscape::SoundChannel::SoundChannel(void)")]
+pub fn stub_374cc4() -> ! {
+    todo!("0x374cc4 RBX::Soundscape::SoundChannel::SoundChannel(void)")
+}
+
+// 0x374ff4 — __ZN3RBX10Soundscape12SoundChannelD0Ev
+// type: void __fastcall(RBX::Soundscape::SoundChannel *__hidden this)
+#[doc(alias = "RBX::Soundscape::SoundChannel::~SoundChannel()")]
+pub fn stub_374ff4() -> ! {
+    todo!("0x374ff4 RBX::Soundscape::SoundChannel::~SoundChannel()")
+}
+
+// 0x375094 — __ZN3RBX10Soundscape12SoundChannelD1Ev
+// type: void __fastcall(RBX::Soundscape::SoundChannel *__hidden this)
+#[doc(alias = "RBX::Soundscape::SoundChannel::~SoundChannel()")]
+pub fn stub_375094() -> ! {
+    todo!("0x375094 RBX::Soundscape::SoundChannel::~SoundChannel()")
+}
+
+// 0x375098 — __ZThn32_N3RBX10Soundscape12SoundChannelD0Ev
+// type: void __fastcall(RBX::Soundscape::SoundChannel *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
+pub fn stub_375098() -> ! {
+    todo!("0x375098 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+}
+
+// 0x3750a0 — __ZThn36_N3RBX10Soundscape12SoundChannelD0Ev
+// type: void __fastcall(RBX::Soundscape::SoundChannel *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
+pub fn stub_3750a0() -> ! {
+    todo!("0x3750a0 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+}
+
+// 0x3750a8 — __ZN3RBX10Soundscape12SoundChannelD2Ev
+// type: void __fastcall(RBX::Soundscape::SoundChannel *this, int, int)
+#[doc(alias = "RBX::Soundscape::SoundChannel::~SoundChannel()")]
+pub fn stub_3750a8() -> ! {
+    todo!("0x3750a8 RBX::Soundscape::SoundChannel::~SoundChannel()")
+}
+
+// 0x375330 — __ZThn32_N3RBX10Soundscape12SoundChannelD1Ev
+// type: void __fastcall(RBX::Soundscape::SoundChannel *this, int, int)
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
+pub fn stub_375330() -> ! {
+    todo!("0x375330 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+}
+
+// 0x375338 — __ZThn36_N3RBX10Soundscape12SoundChannelD1Ev
+// type: void __fastcall(RBX::Soundscape::SoundChannel *this, int, int)
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
+pub fn stub_375338() -> ! {
+    todo!("0x375338 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+}
+
+// 0x375340 — __ZNK3RBX10Soundscape12SoundService11getCpuStatsERNS1_8CpuStatsE
+// type: int __fastcall(int, float *)
+#[doc(alias = "RBX::Soundscape::SoundService::getCpuStats(RBX::Soundscape::SoundService::CpuStats &)const")]
+pub fn stub_375340() -> ! {
+    todo!("0x375340 RBX::Soundscape::SoundService::getCpuStats(RBX::Soundscape::SoundService::CpuStats &)const")
+}
+
+// 0x3753e8 — __ZN3RBX10Soundscape12SoundService13getSoundStatsERKSt3mapINS0_7SoundIdEN5boost10shared_ptrINS0_5SoundEEESt4lessIS3_ESaISt4pairIKS3_S7_EEERjSH_
+// type: const _Rb_tree_node_base *__fastcall(int, _DWORD *, _DWORD *)
+#[doc(alias = "RBX::Soundscape::SoundService::getSoundStats(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> const&,unsigned int &,unsigned int &)")]
+pub fn stub_3753e8() -> ! {
+    todo!("0x3753e8 RBX::Soundscape::SoundService::getSoundStats(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> const&,unsigned int &,unsigned int &)")
+}
+
+// 0x375418 — __ZNK3RBX10Soundscape12SoundService18getChannelsPlayingERi
+// type: FMOD::System *__fastcall(RBX::Soundscape::SoundService *this, int *)
+#[doc(alias = "RBX::Soundscape::SoundService::getChannelsPlaying(int &)const")]
+pub fn stub_375418() -> ! {
+    todo!("0x375418 RBX::Soundscape::SoundService::getChannelsPlaying(int &)const")
+}
+
+// 0x375438 — __ZN3RBX10Soundscape12SoundService8gcSoundsERSt3mapINS0_7SoundIdEN5boost10shared_ptrINS0_5SoundEEESt4lessIS3_ESaISt4pairIKS3_S7_EEE
+// type: int __fastcall(int result)
+#[doc(alias = "RBX::Soundscape::SoundService::gcSounds(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> &)")]
+pub fn stub_375438() -> ! {
+    todo!("0x375438 RBX::Soundscape::SoundService::gcSounds(std::map<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>> &)")
+}
+
+// 0x3754c4 — __ZN3RBX10Soundscape5Sound7releaseEv
+// type: FMOD::Sound *__fastcall(FMOD::Sound **this)
+#[doc(alias = "RBX::Soundscape::Sound::release(void)")]
+pub fn stub_3754c4() -> ! {
+    todo!("0x3754c4 RBX::Soundscape::Sound::release(void)")
+}
+
+// 0x3754e0 — __ZN3RBX10Soundscape12SoundChannel14releaseChannelEv
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this, int, FMOD::ChannelI **)
+#[doc(alias = "RBX::Soundscape::SoundChannel::releaseChannel(void)")]
+pub fn stub_3754e0() -> ! {
+    todo!("0x3754e0 RBX::Soundscape::SoundChannel::releaseChannel(void)")
+}
+
+// 0x37551c — __ZNK3RBX10Soundscape12SoundChannel12askSetParentEPKNS_8InstanceE
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this, const RBX::Instance *)
+#[doc(alias = "RBX::Soundscape::SoundChannel::askSetParent(RBX::Instance const*)const")]
+pub fn stub_37551c() -> ! {
+    todo!("0x37551c RBX::Soundscape::SoundChannel::askSetParent(RBX::Instance const*)const")
+}
+
+// 0x375520 — __ZN3RBX10Soundscape12SoundChannel17updateListenStateEv
+// type: void __fastcall(RBX::Soundscape::SoundChannel *this)
+#[doc(alias = "RBX::Soundscape::SoundChannel::updateListenState(void)")]
+pub fn stub_375520() -> ! {
+    todo!("0x375520 RBX::Soundscape::SoundChannel::updateListenState(void)")
+}
+
+// 0x375660 — __ZN3RBX10Soundscape12SoundChannel11onHeartbeatERKNS_9HeartbeatE
+// type: int __fastcall(FMOD::Channel **, int, FMOD::ChannelI **)
+#[doc(alias = "RBX::Soundscape::SoundChannel::onHeartbeat(RBX::Heartbeat const&)")]
+pub fn stub_375660() -> ! {
+    todo!("0x375660 RBX::Soundscape::SoundChannel::onHeartbeat(RBX::Heartbeat const&)")
+}
+
+// 0x37567c — __ZN3RBX10Soundscape12SoundChannel17onAncestorChangedERKNS_15AncestorChangedE
+#[doc(alias = "RBX::Soundscape::SoundChannel::onAncestorChanged(RBX::AncestorChanged const&)")]
+pub fn stub_37567c() -> ! {
+    todo!("0x37567c RBX::Soundscape::SoundChannel::onAncestorChanged(RBX::AncestorChanged const&)")
+}
+
+// 0x375744 — __ZN3RBX10Soundscape12SoundChannel9playSoundEPKNS_8InstanceE
+// type: void __fastcall(RBX::Soundscape::SoundChannel *this, const RBX::Instance *)
+#[doc(alias = "RBX::Soundscape::SoundChannel::playSound(RBX::Instance const*)")]
+pub fn stub_375744() -> ! {
+    todo!("0x375744 RBX::Soundscape::SoundChannel::playSound(RBX::Instance const*)")
+}
+
+// 0x375b7c — __ZN3RBX10Soundscape12SoundChannel17onServiceProviderEPNS_15ServiceProviderES3_
+// type: _DWORD __fastcall(RBX::Soundscape::SoundChannel *__hidden this, RBX::ServiceProvider *, RBX::ServiceProvider *)
+#[doc(alias = "RBX::Soundscape::SoundChannel::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+pub fn stub_375b7c() -> ! {
+    todo!("0x375b7c RBX::Soundscape::SoundChannel::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+}
+
+// 0x375be0 — __ZN3RBX10Soundscape12SoundChannel12preloadSoundEv
+// type: _DWORD __fastcall(RBX::Soundscape::SoundChannel *__hidden this)
+#[doc(alias = "RBX::Soundscape::SoundChannel::preloadSound(void)")]
+pub fn stub_375be0() -> ! {
+    todo!("0x375be0 RBX::Soundscape::SoundChannel::preloadSound(void)")
+}
+
+// 0x375c8c — __ZN3RBX10Soundscape12SoundChannel12updateLoopedEv
+// type: FMOD::Channel *__fastcall(RBX::Soundscape::SoundChannel *this, int, FMOD::ChannelI **)
+#[doc(alias = "RBX::Soundscape::SoundChannel::updateLooped(void)")]
+pub fn stub_375c8c() -> ! {
+    todo!("0x375c8c RBX::Soundscape::SoundChannel::updateLooped(void)")
+}
+
+// 0x375d0c — __ZNK3RBX10Soundscape12SoundChannel14isHeardLocallyEPKNS_8InstanceE
+// type: int __fastcall(RBX::Soundscape::SoundChannel *this, const RBX::Instance *)
+#[doc(alias = "RBX::Soundscape::SoundChannel::isHeardLocally(RBX::Instance const*)const")]
+pub fn stub_375d0c() -> ! {
+    todo!("0x375d0c RBX::Soundscape::SoundChannel::isHeardLocally(RBX::Instance const*)const")
+}
+
+// 0x375dd4 — __ZN3RBX10Soundscape12SoundService9loadSoundENS0_7SoundIdEb
+// type: void __fastcall(sp_counted_base **, const shared_count *, const std::string *, int)
+#[doc(alias = "RBX::Soundscape::SoundService::loadSound(RBX::Soundscape::SoundId,bool)")]
+pub fn stub_375dd4() -> ! {
+    todo!("0x375dd4 RBX::Soundscape::SoundService::loadSound(RBX::Soundscape::SoundId,bool)")
+}
+
+// 0x376004 — __ZN3RBX10Soundscape5Sound3getEPKNS_8InstanceE
+// type: int __fastcall(RBX::Soundscape::Sound *this, const RBX::Instance *)
+#[doc(alias = "RBX::Soundscape::Sound::get(RBX::Instance const*)")]
+pub fn stub_376004() -> ! {
+    todo!("0x376004 RBX::Soundscape::Sound::get(RBX::Instance const*)")
+}
+
+// 0x37619c — __ZN3RBX10Soundscape5SoundD2Ev
+// type: void __fastcall(FMOD::Sound **this)
+#[doc(alias = "RBX::Soundscape::Sound::~Sound()")]
+pub fn stub_37619c() -> ! {
+    todo!("0x37619c RBX::Soundscape::Sound::~Sound()")
+}
+
+// 0x376244 — __ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE7addPairES3_PKc
+// type: void __fastcall(_DWORD *, int, const char *)
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::addPair(RBX::Soundscape::ReverbType,char const*)")]
+pub fn stub_376244() -> ! {
+    todo!("0x376244 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::addPair(RBX::Soundscape::ReverbType,char const*)")
+}
+
+// 0x3765a4 — __ZSt8for_eachISt17_Rb_tree_iteratorISt4pairIKN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS3_5SoundEEEEEPFvRKS1_IS4_S9_EEET0_T_SI_SH_
+// type: void (__fastcall *__fastcall(_Rb_tree_node_base *, _Rb_tree_node_base *, void (__fastcall *)(_DWORD *), int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int))(_DWORD *)
+#[doc(alias = "void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>))")]
+pub fn stub_3765a4() -> ! {
+    todo!("0x3765a4 void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>) std::for_each<std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>)>(std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::_Rb_tree_iterator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,void (*)(std::pair const&<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>))")
+}
+
+// 0x3768dc — __ZNSt3mapIN3RBX9SoundTypeEN5boost10shared_ptrINS0_10Soundscape12SoundChannelEEESt4lessIS1_ESaISt4pairIKS1_S6_EEEixERSA_
+// type: int __fastcall(int, int *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "std::map<RBX::SoundType,boost::shared_ptr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&)")]
+pub fn stub_3768dc() -> ! {
+    todo!("0x3768dc std::map<RBX::SoundType,boost::shared_ptr<RBX::Soundscape::SoundChannel>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::operator[](RBX::SoundType const&)")
+}

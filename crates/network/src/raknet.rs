@@ -10029,3 +10029,527 @@ pub fn stub_9b8e54() -> ! {
 pub fn stub_9b9958() -> ! {
     todo!("0x9b9958 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod> const&)")
 }
+// 0x9b9b0c — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings20PhysicsReceiveMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+// type: _Rb_tree_node_base *__fastcall(int, _DWORD *, int *)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod> const&)")]
+pub fn stub_9b9b0c() -> ! {
+    todo!("0x9b9b0c std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod> const&)")
+}
+
+// 0x9b9bfc — __ZNSt6vectorIN3RBX15NetworkSettings20PhysicsReceiveMethodESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+// type: char *__fastcall(int, char *, _DWORD *)
+#[doc(alias = "std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsReceiveMethod*,std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>>,RBX::NetworkSettings::PhysicsReceiveMethod const&)")]
+pub fn stub_9b9bfc() -> ! {
+    todo!("0x9b9bfc std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsReceiveMethod*,std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>>,RBX::NetworkSettings::PhysicsReceiveMethod const&)")
+}
+
+// 0x9b9d0c — __ZNSt6vectorIN3RBX15NetworkSettings20PhysicsReceiveMethodESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+// type: _DWORD *__fastcall(_DWORD *result, _DWORD *, unsigned int, _DWORD *)
+#[doc(alias = "std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsReceiveMethod*,std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>>,unsigned long,RBX::NetworkSettings::PhysicsReceiveMethod const&)")]
+pub fn stub_9b9d0c() -> ! {
+    todo!("0x9b9d0c std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsReceiveMethod*,std::vector<RBX::NetworkSettings::PhysicsReceiveMethod,std::allocator<RBX::NetworkSettings::PhysicsReceiveMethod>>>,unsigned long,RBX::NetworkSettings::PhysicsReceiveMethod const&)")
+}
+
+// 0x9b9eb4 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings17PhysicsSendMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+// type: _Rb_tree_node_base *__fastcall(int, _Rb_tree_node_base *, unsigned int *)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod> const&)")]
+pub fn stub_9b9eb4() -> ! {
+    todo!("0x9b9eb4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod> const&)")
+}
+
+// 0x9ba068 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings17PhysicsSendMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+// type: _Rb_tree_node_base *__fastcall(int, _DWORD *, int *)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod> const&)")]
+pub fn stub_9ba068() -> ! {
+    todo!("0x9ba068 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod> const&)")
+}
+
+// 0x9ba158 — __ZNSt6vectorIN3RBX15NetworkSettings17PhysicsSendMethodESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+// type: char *__fastcall(int, char *, _DWORD *)
+#[doc(alias = "std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsSendMethod*,std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>>,RBX::NetworkSettings::PhysicsSendMethod const&)")]
+pub fn stub_9ba158() -> ! {
+    todo!("0x9ba158 std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsSendMethod*,std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>>,RBX::NetworkSettings::PhysicsSendMethod const&)")
+}
+
+// 0x9ba268 — __ZNSt6vectorIN3RBX15NetworkSettings17PhysicsSendMethodESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+// type: _DWORD *__fastcall(_DWORD *result, _DWORD *, unsigned int, _DWORD *)
+#[doc(alias = "std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsSendMethod*,std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>>,unsigned long,RBX::NetworkSettings::PhysicsSendMethod const&)")]
+pub fn stub_9ba268() -> ! {
+    todo!("0x9ba268 std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::NetworkSettings::PhysicsSendMethod*,std::vector<RBX::NetworkSettings::PhysicsSendMethod,std::allocator<RBX::NetworkSettings::PhysicsSendMethod>>>,unsigned long,RBX::NetworkSettings::PhysicsSendMethod const&)")
+}
+
+// 0x9be624 — __ZN3RBX7Network15PhysicsReceiver10setPhysicsERKNS_13MechanismItemERKNS_10RemoteTimeEj
+// type: void __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "RBX::Network::PhysicsReceiver::setPhysics(RBX::MechanismItem const&,RBX::RemoteTime const&,unsigned int)")]
+pub fn stub_9be624() -> ! {
+    todo!("0x9be624 RBX::Network::PhysicsReceiver::setPhysics(RBX::MechanismItem const&,RBX::RemoteTime const&,unsigned int)")
+}
+
+// 0x9bebb4 — __ZN3RBX7Network15PhysicsReceiver24okDistributedReceivePartERKN5boost10shared_ptrINS_12PartInstanceEEE
+// type: int __fastcall(int, _DWORD *)
+#[doc(alias = "RBX::Network::PhysicsReceiver::okDistributedReceivePart(boost::shared_ptr<RBX::PartInstance> const&)")]
+pub fn stub_9bebb4() -> ! {
+    todo!("0x9bebb4 RBX::Network::PhysicsReceiver::okDistributedReceivePart(boost::shared_ptr<RBX::PartInstance> const&)")
+}
+
+// 0x9bfa90 — __ZN3RBX7Network13PhysicsSender11sendTouchesE14PacketPriority
+// type: void __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, char, int, char, int, int, int, int, int, int, int, int, void *, int, int, int, int, int)
+#[doc(alias = "RBX::Network::PhysicsSender::sendTouches(PacketPriority)")]
+pub fn stub_9bfa90() -> ! {
+    todo!("0x9bfa90 RBX::Network::PhysicsSender::sendTouches(PacketPriority)")
+}
+
+// 0x9c0908 — __ZN3RBX7Network13PhysicsSenderC2ERNS0_10ReplicatorE
+// type: RBX::Network::PhysicsSender *__fastcall(RBX::Network::PhysicsSender *this, RBX::Network::Replicator *)
+#[doc(alias = "RBX::Network::PhysicsSender::PhysicsSender(RBX::Network::Replicator &)")]
+pub fn stub_9c0908() -> ! {
+    todo!("0x9c0908 RBX::Network::PhysicsSender::PhysicsSender(RBX::Network::Replicator &)")
+}
+
+// 0x9c0a9c — __ZN3RBX7Network13PhysicsSender11onTouchStepERKNS_9TouchPairE
+// type: int __fastcall(int, int)
+#[doc(alias = "RBX::Network::PhysicsSender::onTouchStep(RBX::TouchPair const&)")]
+pub fn stub_9c0a9c() -> ! {
+    todo!("0x9c0a9c RBX::Network::PhysicsSender::onTouchStep(RBX::TouchPair const&)")
+}
+
+// 0x9c0ab8 — __ZN3RBX7Network13PhysicsSender14connectTouchesEv
+// type: void __fastcall(RBX::Network::PhysicsSender *this)
+#[doc(alias = "RBX::Network::PhysicsSender::connectTouches(void)")]
+pub fn stub_9c0ab8() -> ! {
+    todo!("0x9c0ab8 RBX::Network::PhysicsSender::connectTouches(void)")
+}
+
+// 0x9c0dd4 — __ZN3RBX7Network13PhysicsSender5startEN5boost10shared_ptrIS1_EE
+// type: void __fastcall(int, int, int, int, pthread_mutex_t *, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, void *, int, void *, int, char, char, int, int, int, int)
+#[doc(alias = "RBX::Network::PhysicsSender::start(boost::shared_ptr<RBX::Network::PhysicsSender>)")]
+pub fn stub_9c0dd4() -> ! {
+    todo!("0x9c0dd4 RBX::Network::PhysicsSender::start(boost::shared_ptr<RBX::Network::PhysicsSender>)")
+}
+
+// 0x9c1ea4 — __ZN3RBX7Network13PhysicsSenderD0Ev
+// type: void __fastcall(RBX::Network::PhysicsSender *__hidden this)
+#[doc(alias = "RBX::Network::PhysicsSender::~PhysicsSender()")]
+pub fn stub_9c1ea4() -> ! {
+    todo!("0x9c1ea4 RBX::Network::PhysicsSender::~PhysicsSender()")
+}
+
+// 0x9c1f44 — __ZN3RBX7Network13PhysicsSenderD1Ev
+// type: void __fastcall(RBX::Network::PhysicsSender *__hidden this)
+#[doc(alias = "RBX::Network::PhysicsSender::~PhysicsSender()")]
+pub fn stub_9c1f44() -> ! {
+    todo!("0x9c1f44 RBX::Network::PhysicsSender::~PhysicsSender()")
+}
+
+// 0x9c1f50 — __ZN3RBX7Network13PhysicsSenderD2Ev
+// type: void __fastcall(RBX::Network::PhysicsSender *__hidden this)
+#[doc(alias = "RBX::Network::PhysicsSender::~PhysicsSender()")]
+pub fn stub_9c1f50() -> ! {
+    todo!("0x9c1f50 RBX::Network::PhysicsSender::~PhysicsSender()")
+}
+
+// 0x9c2f6c — __ZN5boost10shared_ptrIN3RBX7Network13PhysicsSender3JobEE5resetEv
+// type: _DWORD *__fastcall(_DWORD *result)
+#[doc(alias = "boost::shared_ptr<RBX::Network::PhysicsSender::Job>::reset(void)")]
+pub fn stub_9c2f6c() -> ! {
+    todo!("0x9c2f6c boost::shared_ptr<RBX::Network::PhysicsSender::Job>::reset(void)")
+}
+
+// 0x9c300c — __ZN5boost10shared_ptrIN3RBX7Network13PhysicsSender8TouchJobEE5resetEv
+// type: _DWORD *__fastcall(_DWORD *result)
+#[doc(alias = "boost::shared_ptr<RBX::Network::PhysicsSender::TouchJob>::reset(void)")]
+pub fn stub_9c300c() -> ! {
+    todo!("0x9c300c boost::shared_ptr<RBX::Network::PhysicsSender::TouchJob>::reset(void)")
+}
+
+// 0x9c3854 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSender8TouchJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender::TouchJob,RBX::Network::PhysicsSender::TouchJob>(boost::shared_ptr<RBX::Network::PhysicsSender::TouchJob> *,RBX::Network::PhysicsSender::TouchJob *,boost::detail::shared_count &)")]
+pub fn stub_9c3854() -> ! {
+    todo!("0x9c3854 void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender::TouchJob,RBX::Network::PhysicsSender::TouchJob>(boost::shared_ptr<RBX::Network::PhysicsSender::TouchJob> *,RBX::Network::PhysicsSender::TouchJob *,boost::detail::shared_count &)")
+}
+
+// 0x9c3a04 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network13PhysicsSender8TouchJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::PhysicsSender::TouchJob,RBX::Network::PhysicsSender::TouchJob>(boost::shared_ptr<RBX::Network::PhysicsSender::TouchJob> const*,RBX::Network::PhysicsSender::TouchJob *)const")]
+pub fn stub_9c3a04() -> ! {
+    todo!("0x9c3a04 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::PhysicsSender::TouchJob,RBX::Network::PhysicsSender::TouchJob>(boost::shared_ptr<RBX::Network::PhysicsSender::TouchJob> const*,RBX::Network::PhysicsSender::TouchJob *)const")
+}
+
+// 0x9c3cb0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEED1Ev
+// type: void()
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::~sp_counted_impl_p()")]
+pub fn stub_9c3cb0() -> ! {
+    todo!("0x9c3cb0 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::~sp_counted_impl_p()")
+}
+
+// 0x9c3cb4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEED0Ev
+// type: void __fastcall(void *)
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::~sp_counted_impl_p()")]
+pub fn stub_9c3cb4() -> ! {
+    todo!("0x9c3cb4 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::~sp_counted_impl_p()")
+}
+
+// 0x9c3cc0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE7disposeEv
+// type: int __fastcall(int)
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::dispose(void)")]
+pub fn stub_9c3cc0() -> ! {
+    todo!("0x9c3cc0 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::dispose(void)")
+}
+
+// 0x9c3cd4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE11get_deleterERKSt9type_info
+// type: int()
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::get_deleter(std::type_info const&)")]
+pub fn stub_9c3cd4() -> ! {
+    todo!("0x9c3cd4 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::get_deleter(std::type_info const&)")
+}
+
+// 0x9c3cd8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender8TouchJobEE19get_untyped_deleterEv
+// type: int()
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::get_untyped_deleter(void)")]
+pub fn stub_9c3cd8() -> ! {
+    todo!("0x9c3cd8 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::TouchJob>::get_untyped_deleter(void)")
+}
+
+// 0x9c3cdc — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSender3JobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender::Job,RBX::Network::PhysicsSender::Job>(boost::shared_ptr<RBX::Network::PhysicsSender::Job> *,RBX::Network::PhysicsSender::Job *,boost::detail::shared_count &)")]
+pub fn stub_9c3cdc() -> ! {
+    todo!("0x9c3cdc void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender::Job,RBX::Network::PhysicsSender::Job>(boost::shared_ptr<RBX::Network::PhysicsSender::Job> *,RBX::Network::PhysicsSender::Job *,boost::detail::shared_count &)")
+}
+
+// 0x9c3e8c — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network13PhysicsSender3JobES8_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::PhysicsSender::Job,RBX::Network::PhysicsSender::Job>(boost::shared_ptr<RBX::Network::PhysicsSender::Job> const*,RBX::Network::PhysicsSender::Job *)const")]
+pub fn stub_9c3e8c() -> ! {
+    todo!("0x9c3e8c void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::PhysicsSender::Job,RBX::Network::PhysicsSender::Job>(boost::shared_ptr<RBX::Network::PhysicsSender::Job> const*,RBX::Network::PhysicsSender::Job *)const")
+}
+
+// 0x9c4138 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEED1Ev
+// type: void()
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::~sp_counted_impl_p()")]
+pub fn stub_9c4138() -> ! {
+    todo!("0x9c4138 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::~sp_counted_impl_p()")
+}
+
+// 0x9c413c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEED0Ev
+// type: void __fastcall(void *)
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::~sp_counted_impl_p()")]
+pub fn stub_9c413c() -> ! {
+    todo!("0x9c413c boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::~sp_counted_impl_p()")
+}
+
+// 0x9c4148 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE7disposeEv
+// type: int __fastcall(int)
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::dispose(void)")]
+pub fn stub_9c4148() -> ! {
+    todo!("0x9c4148 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::dispose(void)")
+}
+
+// 0x9c415c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE11get_deleterERKSt9type_info
+// type: int()
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::get_deleter(std::type_info const&)")]
+pub fn stub_9c415c() -> ! {
+    todo!("0x9c415c boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::get_deleter(std::type_info const&)")
+}
+
+// 0x9c4160 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network13PhysicsSender3JobEE19get_untyped_deleterEv
+// type: int()
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::get_untyped_deleter(void)")]
+pub fn stub_9c4160() -> ! {
+    todo!("0x9c4160 boost::detail::sp_counted_impl_p<RBX::Network::PhysicsSender::Job>::get_untyped_deleter(void)")
+}
+
+// 0x9c469c — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_7Network13PhysicsSenderES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED1Ev
+// type: int __fastcall(int)
+#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
+pub fn stub_9c469c() -> ! {
+    todo!("0x9c469c rbx::signals::signal<void ()(RBX::TouchPair const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x9c46f8 — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_7Network13PhysicsSenderES5_EENSA_5list2INSA_5valueIPSF_EENS9_3argILi1EEEEEEEED0Ev
+// type: void __fastcall(_DWORD *)
+#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
+pub fn stub_9c46f8() -> ! {
+    todo!("0x9c46f8 rbx::signals::signal<void ()(RBX::TouchPair const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x9c4980 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9TouchPairEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_7Network13PhysicsSenderES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
+// type: int __fastcall(_DWORD *)
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>,1,void ()(RBX::TouchPair const&)>::call(RBX::TouchPair const&)")]
+pub fn stub_9c4980() -> ! {
+    todo!("0x9c4980 rbx::callable<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>,1,void ()(RBX::TouchPair const&)>::call(RBX::TouchPair const&)")
+}
+
+// 0x9c499c — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9TouchPairEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_7Network13PhysicsSenderES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
+// type: int __fastcall(_DWORD *)
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>,1,void ()(RBX::TouchPair const&)>::call(RBX::TouchPair const&)")]
+pub fn stub_9c499c() -> ! {
+    todo!("0x9c499c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::PhysicsSender,RBX::TouchPair const&>,boost::_bi::list2<boost::_bi::value<RBX::Network::PhysicsSender*>,boost::arg<1>>>,1,void ()(RBX::TouchPair const&)>::call(RBX::TouchPair const&)")
+}
+
+// 0x9c56a4 — __ZN3RBX7Network13PhysicsSender8TouchJobC2EN5boost10shared_ptrIS1_EE
+// type: RBX::TaskScheduler::Job *__fastcall(RBX::TaskScheduler::Job *, _DWORD *)
+#[doc(alias = "RBX::Network::PhysicsSender::TouchJob::TouchJob(boost::shared_ptr<RBX::Network::PhysicsSender>)")]
+pub fn stub_9c56a4() -> ! {
+    todo!("0x9c56a4 RBX::Network::PhysicsSender::TouchJob::TouchJob(boost::shared_ptr<RBX::Network::PhysicsSender>)")
+}
+
+// 0x9c5830 — __ZN3RBX7Network13PhysicsSender8TouchJobD1Ev
+// type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *__hidden this)
+#[doc(alias = "RBX::Network::PhysicsSender::TouchJob::~TouchJob()")]
+pub fn stub_9c5830() -> ! {
+    todo!("0x9c5830 RBX::Network::PhysicsSender::TouchJob::~TouchJob()")
+}
+
+// 0x9c583c — __ZN3RBX7Network13PhysicsSender8TouchJobD0Ev
+// type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *__hidden this)
+#[doc(alias = "RBX::Network::PhysicsSender::TouchJob::~TouchJob()")]
+pub fn stub_9c583c() -> ! {
+    todo!("0x9c583c RBX::Network::PhysicsSender::TouchJob::~TouchJob()")
+}
+
+// 0x9c58dc — __ZN3RBX7Network13PhysicsSender8TouchJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
+// type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *this, const RBX::TaskScheduler::Job::Stats *, double)
+#[doc(alias = "RBX::Network::PhysicsSender::TouchJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_9c58dc() -> ! {
+    todo!("0x9c58dc RBX::Network::PhysicsSender::TouchJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x9c58fc — __ZN3RBX7Network13PhysicsSender8TouchJob5errorERKNS_13TaskScheduler3Job5StatsE
+// type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *this, const RBX::TaskScheduler::Job::Stats *, double *)
+#[doc(alias = "RBX::Network::PhysicsSender::TouchJob::error(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_9c58fc() -> ! {
+    todo!("0x9c58fc RBX::Network::PhysicsSender::TouchJob::error(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x9c5bfc — __ZN3RBX7Network13PhysicsSender8TouchJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE
+// type: int __fastcall(RBX::Network::PhysicsSender::TouchJob *this, const RBX::TaskScheduler::Job::Stats *)
+#[doc(alias = "RBX::Network::PhysicsSender::TouchJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_9c5bfc() -> ! {
+    todo!("0x9c5bfc RBX::Network::PhysicsSender::TouchJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x9c5e38 — __ZN3RBX7Network13PhysicsSender8TouchJobD2Ev
+// type: void __fastcall(RBX::Network::PhysicsSender::TouchJob *__hidden this)
+#[doc(alias = "RBX::Network::PhysicsSender::TouchJob::~TouchJob()")]
+pub fn stub_9c5e38() -> ! {
+    todo!("0x9c5e38 RBX::Network::PhysicsSender::TouchJob::~TouchJob()")
+}
+
+// 0x9c5fdc — __ZN3RBX7Network13PhysicsSender3JobC2EN5boost10shared_ptrIS1_EE
+// type: RBX::TaskScheduler::Job *__fastcall(RBX::TaskScheduler::Job *, _DWORD *)
+#[doc(alias = "RBX::Network::PhysicsSender::Job::Job(boost::shared_ptr<RBX::Network::PhysicsSender>)")]
+pub fn stub_9c5fdc() -> ! {
+    todo!("0x9c5fdc RBX::Network::PhysicsSender::Job::Job(boost::shared_ptr<RBX::Network::PhysicsSender>)")
+}
+
+// 0x9c6168 — __ZN3RBX7Network13PhysicsSender3JobD1Ev
+// type: void __fastcall(RBX::Network::PhysicsSender::Job *__hidden this)
+#[doc(alias = "RBX::Network::PhysicsSender::Job::~Job()")]
+pub fn stub_9c6168() -> ! {
+    todo!("0x9c6168 RBX::Network::PhysicsSender::Job::~Job()")
+}
+
+// 0x9c6174 — __ZN3RBX7Network13PhysicsSender3JobD0Ev
+// type: void __fastcall(RBX::Network::PhysicsSender::Job *__hidden this)
+#[doc(alias = "RBX::Network::PhysicsSender::Job::~Job()")]
+pub fn stub_9c6174() -> ! {
+    todo!("0x9c6174 RBX::Network::PhysicsSender::Job::~Job()")
+}
+
+// 0x9c6214 — __ZN3RBX7Network13PhysicsSender3Job9sleepTimeERKNS_13TaskScheduler3Job5StatsE
+// type: void __fastcall(RBX::Network::PhysicsSender::Job *this, const RBX::TaskScheduler::Job::Stats *, double)
+#[doc(alias = "RBX::Network::PhysicsSender::Job::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_9c6214() -> ! {
+    todo!("0x9c6214 RBX::Network::PhysicsSender::Job::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x9c6234 — __ZN3RBX7Network13PhysicsSender3Job5errorERKNS_13TaskScheduler3Job5StatsE
+// type: int __fastcall(RBX::Network::PhysicsSender::Job *this, const RBX::TaskScheduler::Job::Stats *, double *)
+#[doc(alias = "RBX::Network::PhysicsSender::Job::error(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_9c6234() -> ! {
+    todo!("0x9c6234 RBX::Network::PhysicsSender::Job::error(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x9c6288 — __ZN3RBX7Network13PhysicsSender3Job16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE
+// type: int __fastcall(RBX::Network::PhysicsSender::Job *this, const RBX::TaskScheduler::Job::Stats *)
+#[doc(alias = "RBX::Network::PhysicsSender::Job::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_9c6288() -> ! {
+    todo!("0x9c6288 RBX::Network::PhysicsSender::Job::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x9c6568 — __ZN3RBX7Network13PhysicsSender3JobD2Ev
+// type: void __fastcall(RBX::Network::PhysicsSender::Job *__hidden this)
+#[doc(alias = "RBX::Network::PhysicsSender::Job::~Job()")]
+pub fn stub_9c6568() -> ! {
+    todo!("0x9c6568 RBX::Network::PhysicsSender::Job::~Job()")
+}
+
+// 0x9c6da4 — __ZN3RBX7Network6Server5startEii
+// type: int __fastcall(RBX::Network::ConcurrentRakPeer **this, unsigned __int16, int, const void *)
+#[doc(alias = "RBX::Network::Server::start(int,int)")]
+pub fn stub_9c6da4() -> ! {
+    todo!("0x9c6da4 RBX::Network::Server::start(int,int)")
+}
+
+// 0x9c7234 — __ZN3RBX7Network6Server4stopEi
+// type: int __fastcall(RBX::Network::ConcurrentRakPeer **this, char *, int, const void *)
+#[doc(alias = "RBX::Network::Server::stop(int)")]
+pub fn stub_9c7234() -> ! {
+    todo!("0x9c7234 RBX::Network::Server::stop(int)")
+}
+
+// 0x9c72a8 — __ZN3RBX7Network6Server14getClientCountEv
+// type: _DWORD __fastcall(RBX::Network::Server *__hidden this)
+#[doc(alias = "RBX::Network::Server::getClientCount(void)")]
+pub fn stub_9c72a8() -> ! {
+    todo!("0x9c72a8 RBX::Network::Server::getClientCount(void)")
+}
+
+// 0x9c7444 — __ZN3RBX7Network6ServerC1Ev
+// type: int __fastcall(RBX::Network::Server *this)
+#[doc(alias = "RBX::Network::Server::Server(void)")]
+pub fn stub_9c7444() -> ! {
+    todo!("0x9c7444 RBX::Network::Server::Server(void)")
+}
+
+// 0x9c7450 — __ZN3RBX7Network6ServerC2Ev
+// type: RBX::Network::Peer *__fastcall(RBX::Network::Server *this)
+#[doc(alias = "RBX::Network::Server::Server(void)")]
+pub fn stub_9c7450() -> ! {
+    todo!("0x9c7450 RBX::Network::Server::Server(void)")
+}
+
+// 0x9c7e78 — __ZN3RBX7Network6ServerD0Ev
+// type: void __fastcall(RBX::Network::Server *__hidden this)
+#[doc(alias = "RBX::Network::Server::~Server()")]
+pub fn stub_9c7e78() -> ! {
+    todo!("0x9c7e78 RBX::Network::Server::~Server()")
+}
+
+// 0x9c7f18 — __ZN3RBX7Network6ServerD1Ev
+// type: void __fastcall(RBX::Network::Server *__hidden this)
+#[doc(alias = "RBX::Network::Server::~Server()")]
+pub fn stub_9c7f18() -> ! {
+    todo!("0x9c7f18 RBX::Network::Server::~Server()")
+}
+
+// 0x9c7f24 — __ZThn32_N3RBX7Network6ServerD0Ev
+// type: void __fastcall(RBX::Network::Server *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
+pub fn stub_9c7f24() -> ! {
+    todo!("0x9c7f24 `non-virtual thunk to'RBX::Network::Server::~Server()")
+}
+
+// 0x9c7fc8 — __ZThn36_N3RBX7Network6ServerD0Ev
+// type: void __fastcall(RBX::Network::Server *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
+pub fn stub_9c7fc8() -> ! {
+    todo!("0x9c7fc8 `non-virtual thunk to'RBX::Network::Server::~Server()")
+}
+
+// 0x9c806c — __ZThn92_N3RBX7Network6ServerD0Ev
+// type: void __fastcall(RBX::Network::Server *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
+pub fn stub_9c806c() -> ! {
+    todo!("0x9c806c `non-virtual thunk to'RBX::Network::Server::~Server()")
+}
+
+// 0x9c8110 — __ZN3RBX7Network6ServerD2Ev
+// type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
+#[doc(alias = "RBX::Network::Server::~Server()")]
+pub fn stub_9c8110() -> ! {
+    todo!("0x9c8110 RBX::Network::Server::~Server()")
+}
+
+// 0x9c87d4 — __ZThn32_N3RBX7Network6ServerD1Ev
+// type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
+pub fn stub_9c87d4() -> ! {
+    todo!("0x9c87d4 `non-virtual thunk to'RBX::Network::Server::~Server()")
+}
+
+// 0x9c87e0 — __ZThn36_N3RBX7Network6ServerD1Ev
+// type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
+pub fn stub_9c87e0() -> ! {
+    todo!("0x9c87e0 `non-virtual thunk to'RBX::Network::Server::~Server()")
+}
+
+// 0x9c87ec — __ZThn92_N3RBX7Network6ServerD1Ev
+// type: void __fastcall(RBX::Network::Server *this, int, int, const void *)
+#[doc(alias = "non-virtual thunk toRBX::Network::Server::~Server()")]
+pub fn stub_9c87ec() -> ! {
+    todo!("0x9c87ec `non-virtual thunk to'RBX::Network::Server::~Server()")
+}
+
+// 0x9c87f8 — __ZN3RBX7Network6Server15serverIsPresentEPKNS_8InstanceEb
+// type: bool __fastcall(RBX::Network::Server *this, int, bool, int (*)(const char *, ...))
+#[doc(alias = "RBX::Network::Server::serverIsPresent(RBX::Instance const*,bool)")]
+pub fn stub_9c87f8() -> ! {
+    todo!("0x9c87f8 RBX::Network::Server::serverIsPresent(RBX::Instance const*,bool)")
+}
+
+// 0x9c8b20 — __ZN3RBX7Network6Server15onCreateRakPeerEv
+// type: int __fastcall(RBX::Network::ConcurrentRakPeer **this)
+#[doc(alias = "RBX::Network::Server::onCreateRakPeer(void)")]
+pub fn stub_9c8b20() -> ! {
+    todo!("0x9c8b20 RBX::Network::Server::onCreateRakPeer(void)")
+}
+
+// 0x9c8b88 — __ZN3RBX7Network6Server17onServiceProviderEPNS_15ServiceProviderES3_
+// type: void __fastcall(struct _Unwind_Exception *this, RBX::ServiceProvider *, pthread_mutex_t *, int)
+#[doc(alias = "RBX::Network::Server::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+pub fn stub_9c8b88() -> ! {
+    todo!("0x9c8b88 RBX::Network::Server::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+}
+
+// 0x9c9b78 — __ZN3RBX7Network6Server11onItemAddedEN5boost10shared_ptrINS_8InstanceEEE
+// type: void __fastcall(int, int, int, int)
+#[doc(alias = "RBX::Network::Server::onItemAdded(boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_9c9b78() -> ! {
+    todo!("0x9c9b78 RBX::Network::Server::onItemAdded(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x9c9f74 — __ZNK3RBX7Network6Server11askAddChildEPKNS_8InstanceE
+// type: _DWORD __fastcall(RBX::Network::Server *__hidden this, const RBX::Instance *)
+#[doc(alias = "RBX::Network::Server::askAddChild(RBX::Instance const*)const")]
+pub fn stub_9c9f74() -> ! {
+    todo!("0x9c9f74 RBX::Network::Server::askAddChild(RBX::Instance const*)const")
+}
+
+// 0x9cadf8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviiELi2EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int,int),2>::~BoundFuncDesc()")]
+pub fn stub_9cadf8() -> ! {
+    todo!("0x9cadf8 RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int,int),2>::~BoundFuncDesc()")
+}
+
+// 0x9cae6c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFviELi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int),1>::~BoundFuncDesc()")]
+pub fn stub_9cae6c() -> ! {
+    todo!("0x9cae6c RBX::Reflection::BoundFuncDesc<RBX::Network::Server,void ()(int),1>::~BoundFuncDesc()")
+}
+
+// 0x9caed4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ServerEFivELi0EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Server,int ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_9caed4() -> ! {
+    todo!("0x9caed4 RBX::Reflection::BoundFuncDesc<RBX::Network::Server,int ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x9caf1c — __ZNK3RBX7Network6Server7getPortEv
+// type: int __fastcall(RBX::Network::Server *this)
+#[doc(alias = "RBX::Network::Server::getPort(void)const")]
+pub fn stub_9caf1c() -> ! {
+    todo!("0x9caf1c RBX::Network::Server::getPort(void)const")
+}
+
+// 0x9caf24 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6ServerEiED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::~PropDescriptor()")]
+pub fn stub_9caf24() -> ! {
+    todo!("0x9caf24 RBX::Reflection::PropDescriptor<RBX::Network::Server,int>::~PropDescriptor()")
+}
