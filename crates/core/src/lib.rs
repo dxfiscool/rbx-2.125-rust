@@ -38,3 +38,4 @@ pub mod generated_core_i;
 pub mod generated_core_j;
 pub mod generated_core_k;
 pub mod generated_core_shard_a;
+pub mod generated_core_shard_b;
