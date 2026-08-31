@@ -1,6 +1,6 @@
-//! platform generated — next 1082 stubs sorted by EA, from ida/export.json
+//! platform generated — next 1174 stubs sorted by EA, from ida/export.json
 //! Filter: RobloxView|GameViewController|AppDelegate|EAGL2|PlaceLauncher|ControlView|UIViewController|HomeViewController|Teleporter|LoginViewController|SignupViewController|RobloxNavBar|DebugSettings|MainViewController|ExternalLogin|RobloxInfo|RobloxAlert
-//! Batch: 1082 stubs (982 prior + 100 this batch, 1168 filtered, 92 remaining filtered; 6 non-filtered boost wrappers extra) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 1174 stubs (1082 prior + 92 this batch, 1168 filtered, 0 remaining filtered; 6 non-filtered boost wrappers extra) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -7552,4 +7552,627 @@ pub fn stub_48ab18() -> ! {
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
 pub fn stub_48ac38() -> ! {
     todo!("0x48ac38 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+// 0x48ad44 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE7GetImplIMS2_KFivEE10isReadOnlyEv
+// type: int()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetImpl<int (RBX::DebugSettings::*)(void)const>::isReadOnly(void)const")]
+pub fn stub_48ad44() -> ! {
+    todo!("0x48ad44 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetImpl<int (RBX::DebugSettings::*)(void)const>::isReadOnly(void)const")
+}
+
+// 0x48ad48 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE7GetImplIMS2_KFivEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetImpl<int (RBX::DebugSettings::*)(void)const>::isWriteOnly(void)const")]
+pub fn stub_48ad48() -> ! {
+    todo!("0x48ad48 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetImpl<int (RBX::DebugSettings::*)(void)const>::isWriteOnly(void)const")
+}
+
+// 0x48ad4c — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE7GetImplIMS2_KFivEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetImpl<int (RBX::DebugSettings::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_48ad4c() -> ! {
+    todo!("0x48ad4c RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetImpl<int (RBX::DebugSettings::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x48ad6c — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiE7GetImplIMS2_KFivEE8setValueEPNS0_13DescribedBaseERKi
+// type: void __noreturn()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetImpl<int (RBX::DebugSettings::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
+pub fn stub_48ad6c() -> ! {
+    todo!("0x48ad6c RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::GetImpl<int (RBX::DebugSettings::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+}
+
+// 0x48ae8c — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::PropDescriptor<float (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,float (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_48ae8c() -> ! {
+    todo!("0x48ae8c RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::PropDescriptor<float (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,float (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x48b0bc — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()")]
+pub fn stub_48b0bc() -> ! {
+    todo!("0x48b0bc RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()")
+}
+
+// 0x48b31c — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfE7GetImplIMS2_KFfvEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::GetImpl<float (RBX::DebugSettings::*)(void)const>::isReadOnly(void)const")]
+pub fn stub_48b31c() -> ! {
+    todo!("0x48b31c RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::GetImpl<float (RBX::DebugSettings::*)(void)const>::isReadOnly(void)const")
+}
+
+// 0x48b320 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::GetImpl<float (RBX::DebugSettings::*)(void)const>::isWriteOnly(void)const")]
+pub fn stub_48b320() -> ! {
+    todo!("0x48b320 RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::GetImpl<float (RBX::DebugSettings::*)(void)const>::isWriteOnly(void)const")
+}
+
+// 0x48b324 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfE7GetImplIMS2_KFfvEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::GetImpl<float (RBX::DebugSettings::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_48b324() -> ! {
+    todo!("0x48b324 RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::GetImpl<float (RBX::DebugSettings::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x48b344 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfE7GetImplIMS2_KFfvEE8setValueEPNS0_13DescribedBaseERKf
+// type: void __noreturn()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::GetImpl<float (RBX::DebugSettings::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_48b344() -> ! {
+    todo!("0x48b344 RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::GetImpl<float (RBX::DebugSettings::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x48b464 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsEC2IMS2_KFSsvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::PropDescriptor<std::string (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,std::string (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_48b464() -> ! {
+    todo!("0x48b464 RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::PropDescriptor<std::string (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,std::string (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x48b694 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()")]
+pub fn stub_48b694() -> ! {
+    todo!("0x48b694 RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()")
+}
+
+// 0x48ba68 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsE7GetImplIMS2_KFSsvEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::GetImpl<std::string (RBX::DebugSettings::*)(void)const>::isReadOnly(void)const")]
+pub fn stub_48ba68() -> ! {
+    todo!("0x48ba68 RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::GetImpl<std::string (RBX::DebugSettings::*)(void)const>::isReadOnly(void)const")
+}
+
+// 0x48ba6c — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsE7GetImplIMS2_KFSsvEE11isWriteOnlyEv
+// type: int()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::GetImpl<std::string (RBX::DebugSettings::*)(void)const>::isWriteOnly(void)const")]
+pub fn stub_48ba6c() -> ! {
+    todo!("0x48ba6c RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::GetImpl<std::string (RBX::DebugSettings::*)(void)const>::isWriteOnly(void)const")
+}
+
+// 0x48ba70 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsE7GetImplIMS2_KFSsvEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::GetImpl<std::string (RBX::DebugSettings::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_48ba70() -> ! {
+    todo!("0x48ba70 RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::GetImpl<std::string (RBX::DebugSettings::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x48ba98 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsE7GetImplIMS2_KFSsvEE8setValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::GetImpl<std::string (RBX::DebugSettings::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_48ba98() -> ! {
+    todo!("0x48ba98 RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::GetImpl<std::string (RBX::DebugSettings::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x48c5b0 — __ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE6resizeEmS2_
+// type: int(void)
+#[doc(alias = "std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::resize(unsigned long,RBX::DebugSettings::ErrorReporting)")]
+pub fn stub_48c5b0() -> ! {
+    todo!("0x48c5b0 std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::resize(unsigned long,RBX::DebugSettings::ErrorReporting)")
+}
+
+// 0x48c5e4 — __ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE9push_backERKS2_
+// type: int(void)
+#[doc(alias = "std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::push_back(RBX::DebugSettings::ErrorReporting const&)")]
+pub fn stub_48c5e4() -> ! {
+    todo!("0x48c5e4 std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::push_back(RBX::DebugSettings::ErrorReporting const&)")
+}
+
+// 0x48c60c — __ZNSt3mapIPKN3RBX4NameENS0_13DebugSettings14ErrorReportingESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+// type: int(void)
+#[doc(alias = "std::map<RBX::Name const*,RBX::DebugSettings::ErrorReporting,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::operator[](RBX::Name const* const&)")]
+pub fn stub_48c60c() -> ! {
+    todo!("0x48c60c std::map<RBX::Name const*,RBX::DebugSettings::ErrorReporting,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::operator[](RBX::Name const* const&)")
+}
+
+// 0x48c664 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DebugSettings14ErrorReportingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+// type: int __fastcall(int, _Rb_tree_node_base *)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")]
+pub fn stub_48c664() -> ! {
+    todo!("0x48c664 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")
+}
+
+// 0x48c718 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DebugSettings14ErrorReportingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+// type: int(void)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")]
+pub fn stub_48c718() -> ! {
+    todo!("0x48c718 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")
+}
+
+// 0x48c770 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DebugSettings14ErrorReportingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+// type: int(void)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")]
+pub fn stub_48c770() -> ! {
+    todo!("0x48c770 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")
+}
+
+// 0x48c7d8 — __ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+// type: int(void)
+#[doc(alias = "std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DebugSettings::ErrorReporting*,std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>>,RBX::DebugSettings::ErrorReporting const&)")]
+pub fn stub_48c7d8() -> ! {
+    todo!("0x48c7d8 std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DebugSettings::ErrorReporting*,std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>>,RBX::DebugSettings::ErrorReporting const&)")
+}
+
+// 0x48c8bc — __ZNSt12_Vector_baseIN3RBX13DebugSettings14ErrorReportingESaIS2_EE11_M_allocateEm
+// type: int __fastcall(int, unsigned int)
+#[doc(alias = "std::_Vector_base<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_allocate(unsigned long)")]
+pub fn stub_48c8bc() -> ! {
+    todo!("0x48c8bc std::_Vector_base<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_allocate(unsigned long)")
+}
+
+// 0x48c8d4 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX13DebugSettings14ErrorReportingES6_EET0_T_S8_S7_
+// type: int(void)
+#[doc(alias = "RBX::DebugSettings::ErrorReporting * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *>(RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *)")]
+pub fn stub_48c8d4() -> ! {
+    todo!("0x48c8d4 RBX::DebugSettings::ErrorReporting * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *>(RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *)")
+}
+
+// 0x48c910 — __ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+// type: int(void)
+#[doc(alias = "std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DebugSettings::ErrorReporting*,std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>>,unsigned long,RBX::DebugSettings::ErrorReporting const&)")]
+pub fn stub_48c910() -> ! {
+    todo!("0x48c910 std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DebugSettings::ErrorReporting*,std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>>,unsigned long,RBX::DebugSettings::ErrorReporting const&)")
+}
+
+// 0x48dd10 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DebugSettings14ErrorReportingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+// type: int(void)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>> *)")]
+pub fn stub_48dd10() -> ! {
+    todo!("0x48dd10 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>> *)")
+}
+
+// 0x4aaec4 — __ZN3RBX10Reflection4Type12getSingletonINS_13DebugSettings14ErrorReportingEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::DebugSettings::ErrorReporting>(void)")]
+pub fn stub_4aaec4() -> ! {
+    todo!("0x4aaec4 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::DebugSettings::ErrorReporting>(void)")
+}
+
+// 0x96ca20 — __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEE9singletonEv
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, char, int, int, int, RBX::Instance *, int, int, void *, int)
+#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEE9singletonEv")]
+pub fn stub_96ca20() -> ! {
+    todo!("0x96ca20 __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEE9singletonEv")
+}
+
+// 0xf1f804 — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev$shim
+#[doc(alias = "__ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_f1f804() -> ! {
+    todo!("0xf1f804 __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf1f8b8 — __ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v$shim
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v$shim")]
+pub fn stub_f1f8b8() -> ! {
+    todo!("0xf1f8b8 __ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v$shim")
+}
+
+// 0xf21304 — __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED2Ev$shim
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED2Ev$shim")]
+pub fn stub_f21304() -> ! {
+    todo!("0xf21304 __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED2Ev$shim")
+}
+
+// 0xf21328 — __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator12getClassNameEv$shim
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_f21328() -> ! {
+    todo!("0xf21328 __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf2137c — __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev$shim
+#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev$shim")]
+pub fn stub_f2137c() -> ! {
+    todo!("0xf2137c __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev$shim")
+}
+
+// 0xf21400 — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToIndexES3_$shim
+#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToIndexES3_$shim")]
+pub fn stub_f21400() -> ! {
+    todo!("0xf21400 __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToIndexES3_$shim")
+}
+
+// 0xf2140c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DebugSettings14ErrorReportingEEEE14doGetSingletonEv$shim
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DebugSettings14ErrorReportingEEEE14doGetSingletonEv$shim")]
+pub fn stub_f2140c() -> ! {
+    todo!("0xf2140c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DebugSettings14ErrorReportingEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21418 — __ZN3RBX10Reflection11Call0HelperINS_13DebugSettingsEMS2_FN5boost10shared_ptrIKNS0_5TupleEEEvES7_E4callEPS2_S9_RNS0_7VariantE$shim
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+// was: __ZN3RBX10Reflection11Call0HelperINS_13DebugSettingsEMS2_FN5boost10shared_ptrIKNS0_5TupleEEEvES7_E4callEPS2_S9_RNS0_7VariantE$shim
+#[doc(alias = "__ZN3RBX10Reflection11Call0HelperINS_13DebugSettingsEMS2_FN5boost10shared_ptrIKNS0_5TupleEEEvES7_E4callEPS2_S9_RNS0_7VariantE$shim")]
+pub fn stub_f21418() -> ! {
+    todo!("0xf21418 __ZN3RBX10Reflection11Call0HelperINS_13DebugSettingsEMS2_FN5boost10shared_ptrIKNS0_5TupleEEEvES7_E4callEPS2_S9_RNS0_7VariantE$shim")
+}
+
+// 0xf2143c — __ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+#[doc(alias = "__ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_f2143c() -> ! {
+    todo!("0xf2143c __ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf2b044 — j___ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(_DWORD)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_f2b044() -> ! {
+    todo!("0xf2b044 j___ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf2b054 — j___ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_f2b054() -> ! {
+    todo!("0xf2b054 j___ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0xf2b2d4 — j___ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v
+#[doc(alias = "j___ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v")]
+pub fn stub_f2b2d4() -> ! {
+    todo!("0xf2b2d4 j___ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v")
+}
+
+// 0xf2b344 — j___ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v
+#[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v")]
+pub fn stub_f2b344() -> ! {
+    todo!("0xf2b344 j___ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v")
+}
+
+// 0xf2b444 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_13DebugSettingsEEEN5boost10shared_ptrIT_EEv
+// was: boost::shared_ptr<RBX::DebugSettings> RBX::Creatable<RBX::Instance>::create<RBX::DebugSettings>(void)
+#[doc(alias = "boost::shared_ptr<RBX::DebugSettings> RBX::Creatable<RBX::Instance>::create<RBX::DebugSettings>(void)")]
+pub fn stub_f2b444() -> ! {
+    todo!("0xf2b444 boost::shared_ptr<RBX::DebugSettings> RBX::Creatable<RBX::Instance>::create<RBX::DebugSettings>(void)")
+}
+
+// 0xf2b984 — j___ZN5boost10shared_ptrIN3RBX13DebugSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::DebugSettings>::shared_ptr<RBX::DebugSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)
+#[doc(alias = "boost::shared_ptr<RBX::DebugSettings>::shared_ptr<RBX::DebugSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
+pub fn stub_f2b984() -> ! {
+    todo!("0xf2b984 boost::shared_ptr<RBX::DebugSettings>::shared_ptr<RBX::DebugSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0xf2be24 — j___ZN5boost6detail12shared_countC2IPN3RBX13DebugSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+// type: int __fastcall(int, int, int, int, void *, int)
+// was: boost::detail::shared_count::shared_count<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
+pub fn stub_f2be24() -> ! {
+    todo!("0xf2be24 boost::detail::shared_count::shared_count<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0xf2c3d4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13DebugSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebugSettings,RBX::DebugSettings>(boost::shared_ptr<RBX::DebugSettings> const*,RBX::DebugSettings *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebugSettings,RBX::DebugSettings>(boost::shared_ptr<RBX::DebugSettings> const*,RBX::DebugSettings *)const")]
+pub fn stub_f2c3d4() -> ! {
+    todo!("0xf2c3d4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebugSettings,RBX::DebugSettings>(boost::shared_ptr<RBX::DebugSettings> const*,RBX::DebugSettings *)const")
+}
+
+// 0xf39314 — j___ZN3RBX10Reflection11Call0HelperINS_13DebugSettingsEMS2_FN5boost10shared_ptrIKNS0_5TupleEEEvES7_E4callEPS2_S9_RNS0_7VariantE
+// was: RBX::Reflection::Call0Helper<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::DebugSettings::*)(void),boost::shared_ptr<RBX::Reflection::Tuple const>>::call(RBX::DebugSettings*,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::DebugSettings::*)(void),RBX::Reflection::Variant &)
+#[doc(alias = "RBX::Reflection::Call0Helper<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::DebugSettings::*)(void),boost::shared_ptr<RBX::Reflection::Tuple const>>::call(RBX::DebugSettings*,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::DebugSettings::*)(void),RBX::Reflection::Variant &)")]
+pub fn stub_f39314() -> ! {
+    todo!("0xf39314 RBX::Reflection::Call0Helper<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::DebugSettings::*)(void),boost::shared_ptr<RBX::Reflection::Tuple const>>::call(RBX::DebugSettings*,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::DebugSettings::*)(void),RBX::Reflection::Variant &)")
+}
+
+// 0xf39324 — j___ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EEC2EMS2_FS7_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(int, unsigned int, unsigned int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
+// was: RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::DebugSettings::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::DebugSettings::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_f39324() -> ! {
+    todo!("0xf39324 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::DebugSettings::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0xf39334 — j___ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFvbELi1EE16declareSignatureEPKcNS0_7VariantE
+// type: int()
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+pub fn stub_f39334() -> ! {
+    todo!("0xf39334 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0xf39344 — j___ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFvbELi1EEC2EMS2_FvbEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(int, int, int, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::BoundFuncDesc(void (RBX::DebugSettings::*)(bool),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_f39344() -> ! {
+    todo!("0xf39344 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::BoundFuncDesc(void (RBX::DebugSettings::*)(bool),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0xf39354 — j___ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(void),0>::BoundFuncDesc(void (RBX::DebugSettings::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_f39354() -> ! {
+    todo!("0xf39354 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(void),0>::BoundFuncDesc(void (RBX::DebugSettings::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0xf393a4 — j___ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsEC2IMS2_KFSsvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::PropDescriptor<std::string (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,std::string (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f393a4() -> ! {
+    todo!("0xf393a4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::PropDescriptor<std::string (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,std::string (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf393b4 — j___ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::PropDescriptor<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>(char const*,char const*,bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f393b4() -> ! {
+    todo!("0xf393b4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::PropDescriptor<bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool)>(char const*,char const*,bool (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf393c4 — j___ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbEC2IMS2_KFbvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::PropDescriptor<bool (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,bool (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f393c4() -> ! {
+    todo!("0xf393c4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::PropDescriptor<bool (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,bool (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf393d4 — j___ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdEC2IMS2_KFdvEMS2_FvdEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::PropDescriptor<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>(char const*,char const*,double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f393d4() -> ! {
+    todo!("0xf393d4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::PropDescriptor<double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double)>(char const*,char const*,double (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(double),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf393e4 — j___ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdEC2IMS2_KFdvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::PropDescriptor<double (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,double (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f393e4() -> ! {
+    todo!("0xf393e4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::PropDescriptor<double (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,double (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf393f4 — j___ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::PropDescriptor<float (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,float (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f393f4() -> ! {
+    todo!("0xf393f4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::PropDescriptor<float (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,float (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf39404 — j___ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f39404() -> ! {
+    todo!("0xf39404 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf39414 — j___ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiEC2IMS2_KFivEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f39414() -> ! {
+    todo!("0xf39414 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf39424 — j___ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiEC2IMS2_KFlvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<long (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,long (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f39424() -> ! {
+    todo!("0xf39424 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<long (RBX::DebugSettings::*)(void)const,int>(char const*,char const*,long (RBX::DebugSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf39474 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS2_14ErrorReportingEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::EnumPropDescriptor<RBX::DebugSettings::ErrorReporting (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::DebugSettings::ErrorReporting)>(char const*,char const*,RBX::DebugSettings::ErrorReporting (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::DebugSettings::ErrorReporting),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f39474() -> ! {
+    todo!("0xf39474 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::EnumPropDescriptor<RBX::DebugSettings::ErrorReporting (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::DebugSettings::ErrorReporting)>(char const*,char const*,RBX::DebugSettings::ErrorReporting (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::DebugSettings::ErrorReporting),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf39484 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::EnumPropDescriptor<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>(char const*,char const*,RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f39484() -> ! {
+    todo!("0xf39484 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::EnumPropDescriptor<RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod)>(char const*,char const*,RBX::Time::SampleMethod (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(RBX::Time::SampleMethod),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf39504 — j___ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE7addPairES3_PKc
+// type: int()
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)")]
+pub fn stub_f39504() -> ! {
+    todo!("0xf39504 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)")
+}
+
+// 0xf39514 — j___ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED2Ev
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
+pub fn stub_f39514() -> ! {
+    todo!("0xf39514 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+}
+
+// 0xf395f4 — j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_13DebugSettingsEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::DebugSettings>(char const*,char const*,bool RBX::DebugSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_f395f4() -> ! {
+    todo!("0xf395f4 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::DebugSettings>(char const*,char const*,bool RBX::DebugSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0xf39614 — j___ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_f39614() -> ! {
+    todo!("0xf39614 j___ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+}
+
+// 0xf39644 — j___ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DebugSettings14ErrorReportingEEEE14doGetSingletonEv
+// type: int __fastcall(int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting> const>::doGetSingleton(void)")]
+pub fn stub_f39644() -> ! {
+    todo!("0xf39644 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting> const>::doGetSingleton(void)")
+}
+
+// 0xf396c4 — j___ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE17static_getCreatorEv
+// type: int()
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_f396c4() -> ! {
+    todo!("0xf396c4 j___ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0xf39714 — j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEEC2Ev
+// type: int()
+#[doc(alias = "j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEEC2Ev")]
+pub fn stub_f39714() -> ! {
+    todo!("0xf39714 j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEEC2Ev")
+}
+
+// 0xf39724 — j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev
+// type: int __fastcall(int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")]
+pub fn stub_f39724() -> ! {
+    todo!("0xf39724 j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")
+}
+
+// 0xf397a4 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_13DebugSettings14ErrorReportingEEERS3_RKT_
+// type: int()
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DebugSettings::ErrorReporting>(RBX::DebugSettings::ErrorReporting const&)")]
+pub fn stub_f397a4() -> ! {
+    todo!("0xf397a4 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DebugSettings::ErrorReporting>(RBX::DebugSettings::ErrorReporting const&)")
+}
+
+// 0xf39824 — j___ZN3rbx14implementation12typed_holderIN3RBX13DebugSettings14ErrorReportingEE9singletonEv
+// type: int()
+#[doc(alias = "rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::singleton(void)")]
+pub fn stub_f39824() -> ! {
+    todo!("0xf39824 rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::singleton(void)")
+}
+
+// 0xf398a4 — j___ZN3rbx8any_castIRKN3RBX13DebugSettings14ErrorReportingENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+// type: int()
+#[doc(alias = "RBX::DebugSettings::ErrorReporting const& rbx::any_cast<RBX::DebugSettings::ErrorReporting const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+pub fn stub_f398a4() -> ! {
+    todo!("0xf398a4 RBX::DebugSettings::ErrorReporting const& rbx::any_cast<RBX::DebugSettings::ErrorReporting const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+}
+
+// 0xf399b4 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS2_14ErrorReportingEE11setIntValueEPNS0_13DescribedBaseEi
+// type: int()
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_f399b4() -> ! {
+    todo!("0xf399b4 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0xf399c4 — j___ZNK3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEE11setIntValueEPNS0_13DescribedBaseEi
+// type: int()
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_f399c4() -> ! {
+    todo!("0xf399c4 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0xf39a14 — j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE13convertToItemERKS3_
+// type: int()
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToItem(RBX::DebugSettings::ErrorReporting const&)const")]
+pub fn stub_f39a14() -> ! {
+    todo!("0xf39a14 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToItem(RBX::DebugSettings::ErrorReporting const&)const")
+}
+
+// 0xf39a24 — j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToIndexES3_
+// type: int()
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToIndex(RBX::DebugSettings::ErrorReporting)const")]
+pub fn stub_f39a24() -> ! {
+    todo!("0xf39a24 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToIndex(RBX::DebugSettings::ErrorReporting)const")
+}
+
+// 0xf39a34 — j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToValueERKNS_4NameERS3_
+// type: int()
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(RBX::Name const&,RBX::DebugSettings::ErrorReporting&)const")]
+pub fn stub_f39a34() -> ! {
+    todo!("0xf39a34 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(RBX::Name const&,RBX::DebugSettings::ErrorReporting&)const")
+}
+
+// 0xf39a44 — j___ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE15convertToStringERKS3_
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(RBX::DebugSettings::ErrorReporting const&)const")]
+pub fn stub_f39a44() -> ! {
+    todo!("0xf39a44 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(RBX::DebugSettings::ErrorReporting const&)const")
+}
+
+// 0xf39bb4 — j___ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator12getClassNameEv
+// type: int()
+#[doc(alias = "j___ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator12getClassNameEv")]
+pub fn stub_f39bb4() -> ! {
+    todo!("0xf39bb4 j___ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator12getClassNameEv")
+}
+
+// 0xf39bf4 — j___ZNSt12_Vector_baseIN3RBX13DebugSettings14ErrorReportingESaIS2_EE11_M_allocateEm
+#[doc(alias = "std::_Vector_base<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_allocate(unsigned long)")]
+pub fn stub_f39bf4() -> ! {
+    todo!("0xf39bf4 std::_Vector_base<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_allocate(unsigned long)")
+}
+
+// 0xf39c54 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX13DebugSettings14ErrorReportingES6_EET0_T_S8_S7_
+// type: int()
+#[doc(alias = "RBX::DebugSettings::ErrorReporting * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *>(RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *)")]
+pub fn stub_f39c54() -> ! {
+    todo!("0xf39c54 RBX::DebugSettings::ErrorReporting * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *>(RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *,RBX::DebugSettings::ErrorReporting *)")
+}
+
+// 0xf39cb4 — j___ZNSt3mapIPKN3RBX4NameENS0_13DebugSettings14ErrorReportingESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+// type: int()
+#[doc(alias = "std::map<RBX::Name const*,RBX::DebugSettings::ErrorReporting,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::operator[](RBX::Name const* const&)")]
+pub fn stub_f39cb4() -> ! {
+    todo!("0xf39cb4 std::map<RBX::Name const*,RBX::DebugSettings::ErrorReporting,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::operator[](RBX::Name const* const&)")
+}
+
+// 0xf39d14 — j___ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+// type: int()
+#[doc(alias = "std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DebugSettings::ErrorReporting*,std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>>,RBX::DebugSettings::ErrorReporting const&)")]
+pub fn stub_f39d14() -> ! {
+    todo!("0xf39d14 std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::DebugSettings::ErrorReporting*,std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>>,RBX::DebugSettings::ErrorReporting const&)")
+}
+
+// 0xf39d24 — j___ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+// type: int()
+#[doc(alias = "std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DebugSettings::ErrorReporting*,std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>>,unsigned long,RBX::DebugSettings::ErrorReporting const&)")]
+pub fn stub_f39d24() -> ! {
+    todo!("0xf39d24 std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::DebugSettings::ErrorReporting*,std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>>,unsigned long,RBX::DebugSettings::ErrorReporting const&)")
+}
+
+// 0xf39d34 — j___ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE6resizeEmS2_
+// type: int()
+#[doc(alias = "std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::resize(unsigned long,RBX::DebugSettings::ErrorReporting)")]
+pub fn stub_f39d34() -> ! {
+    todo!("0xf39d34 std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::resize(unsigned long,RBX::DebugSettings::ErrorReporting)")
+}
+
+// 0xf39d44 — j___ZNSt6vectorIN3RBX13DebugSettings14ErrorReportingESaIS2_EE9push_backERKS2_
+// type: int()
+#[doc(alias = "std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::push_back(RBX::DebugSettings::ErrorReporting const&)")]
+pub fn stub_f39d44() -> ! {
+    todo!("0xf39d44 std::vector<RBX::DebugSettings::ErrorReporting,std::allocator<RBX::DebugSettings::ErrorReporting>>::push_back(RBX::DebugSettings::ErrorReporting const&)")
+}
+
+// 0xf39ea4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DebugSettings14ErrorReportingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+// type: int()
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")]
+pub fn stub_f39ea4() -> ! {
+    todo!("0xf39ea4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")
+}
+
+// 0xf39eb4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DebugSettings14ErrorReportingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+// type: int __fastcall(int, _Rb_tree_node_base *)
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")]
+pub fn stub_f39eb4() -> ! {
+    todo!("0xf39eb4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")
+}
+
+// 0xf39ec4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DebugSettings14ErrorReportingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+// type: int()
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>> *)")]
+pub fn stub_f39ec4() -> ! {
+    todo!("0xf39ec4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>> *)")
+}
+
+// 0xf39ed4 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_13DebugSettings14ErrorReportingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+// type: int()
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")]
+pub fn stub_f39ed4() -> ! {
+    todo!("0xf39ed4 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Name const* const,RBX::DebugSettings::ErrorReporting> const&)")
+}
+
+// 0xf5e884 — j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEE9singletonEv
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, char, int, int, int, RBX::Instance *, int, int, void *, int)
+#[doc(alias = "j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEE9singletonEv")]
+pub fn stub_f5e884() -> ! {
+    todo!("0xf5e884 j___ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEE9singletonEv")
 }
