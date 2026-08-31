@@ -1,5 +1,5 @@
-//! rendering shard A — next 120 stubs (EA-sorted, Ogre|G3D|Gfx|Render|Adorn)
-//! Filter: Ogre|G3D|Gfx|Render|Adorn (15586 total, 1984 prior, +120 this batch)
+//! rendering shard A — 240 stubs (120 Ogre|G3D|Gfx|Render|Adorn + 120 Ogre|G3D strict EA-sorted after last rendering stub 0xd18074)
+//! Filter: Ogre|G3D strict (13333 strict total / 13663 substr, 120 this batch 0xd18118..0xd219d0, rbx_core::SharedPtr not boost)
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -847,3 +847,846 @@ pub fn stub_3cba0c() -> ! {
 pub fn stub_3cbab4() -> ! {
     todo!("0x3cbab4 __gnu_cxx::new_allocator<std::pair<G3D::CoordinateFrame,G3D::CoordinateFrame>>::construct(std::pair<G3D::CoordinateFrame,G3D::CoordinateFrame>*,std::pair<G3D::CoordinateFrame,G3D::CoordinateFrame> const&)")
 }
+
+// — next 120 Ogre|G3D strict EA-sorted after last rendering stub 0xd18074 (0xd18118..0xd219d0) —
+
+// 0xd18118 — __ZN4Ogre18MeshSerializerImpl24calcSubMeshOperationSizeEPKNS_7SubMeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcSubMeshOperationSize(Ogre::SubMesh const*)")]
+// was: Ogre::MeshSerializerImpl::calcSubMeshOperationSize(Ogre::SubMesh const*)
+pub fn stub_d18118() -> ! {
+    todo!("0xd18118 Ogre::MeshSerializerImpl::calcSubMeshOperationSize(Ogre::SubMesh const*)")
+}
+
+// 0xd1811c — __ZN4Ogre18MeshSerializerImpl29calcSubMeshTextureAliasesSizeEPKNS_7SubMeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcSubMeshTextureAliasesSize(Ogre::SubMesh const*)")]
+// was: Ogre::MeshSerializerImpl::calcSubMeshTextureAliasesSize(Ogre::SubMesh const*)
+pub fn stub_d1811c() -> ! {
+    todo!("0xd1811c Ogre::MeshSerializerImpl::calcSubMeshTextureAliasesSize(Ogre::SubMesh const*)")
+}
+
+// 0xd1814c — __ZN4Ogre18MeshSerializerImpl16calcGeometrySizeEPKNS_10VertexDataE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcGeometrySize(Ogre::VertexData const*)")]
+// was: Ogre::MeshSerializerImpl::calcGeometrySize(Ogre::VertexData const*)
+pub fn stub_d1814c() -> ! {
+    todo!("0xd1814c Ogre::MeshSerializerImpl::calcGeometrySize(Ogre::VertexData const*)")
+}
+
+// 0xd18188 — __ZN4Ogre18MeshSerializerImpl12readGeometryERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_10VertexDataE
+#[doc(alias = "Ogre::MeshSerializerImpl::readGeometry(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")]
+// was: Ogre::MeshSerializerImpl::readGeometry(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)
+pub fn stub_d18188() -> ! {
+    todo!("0xd18188 Ogre::MeshSerializerImpl::readGeometry(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")
+}
+
+// 0xd18258 — __ZN4Ogre18MeshSerializerImpl29readGeometryVertexDeclarationERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_10VertexDataE
+#[doc(alias = "Ogre::MeshSerializerImpl::readGeometryVertexDeclaration(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")]
+// was: Ogre::MeshSerializerImpl::readGeometryVertexDeclaration(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)
+pub fn stub_d18258() -> ! {
+    todo!("0xd18258 Ogre::MeshSerializerImpl::readGeometryVertexDeclaration(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")
+}
+
+// 0xd182d4 — __ZN4Ogre18MeshSerializerImpl25readGeometryVertexElementERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_10VertexDataE
+#[doc(alias = "Ogre::MeshSerializerImpl::readGeometryVertexElement(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")]
+// was: Ogre::MeshSerializerImpl::readGeometryVertexElement(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)
+pub fn stub_d182d4() -> ! {
+    todo!("0xd182d4 Ogre::MeshSerializerImpl::readGeometryVertexElement(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")
+}
+
+// 0xd1846c — __ZN4Ogre18MeshSerializerImpl24readGeometryVertexBufferERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_10VertexDataE
+#[doc(alias = "Ogre::MeshSerializerImpl::readGeometryVertexBuffer(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")]
+// was: Ogre::MeshSerializerImpl::readGeometryVertexBuffer(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)
+pub fn stub_d1846c() -> ! {
+    todo!("0xd1846c Ogre::MeshSerializerImpl::readGeometryVertexBuffer(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")
+}
+
+// 0xd18adc — __ZN4Ogre18MeshSerializerImpl20readSubMeshNameTableERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readSubMeshNameTable(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readSubMeshNameTable(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d18adc() -> ! {
+    todo!("0xd18adc Ogre::MeshSerializerImpl::readSubMeshNameTable(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd18d44 — __ZN4Ogre18MeshSerializerImpl8readMeshERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_22MeshSerializerListenerE
+#[doc(alias = "Ogre::MeshSerializerImpl::readMesh(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)")]
+// was: Ogre::MeshSerializerImpl::readMesh(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)
+pub fn stub_d18d44() -> ! {
+    todo!("0xd18d44 Ogre::MeshSerializerImpl::readMesh(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)")
+}
+
+// 0xd190d4 — __ZN4Ogre18MeshSerializerImpl11readSubMeshERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_22MeshSerializerListenerE
+#[doc(alias = "Ogre::MeshSerializerImpl::readSubMesh(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)")]
+// was: Ogre::MeshSerializerImpl::readSubMesh(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)
+pub fn stub_d190d4() -> ! {
+    todo!("0xd190d4 Ogre::MeshSerializerImpl::readSubMesh(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)")
+}
+
+// 0xd1990c — __ZN4Ogre18MeshSerializerImpl20readSubMeshOperationERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_7SubMeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readSubMeshOperation(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::SubMesh *)")]
+// was: Ogre::MeshSerializerImpl::readSubMeshOperation(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::SubMesh *)
+pub fn stub_d1990c() -> ! {
+    todo!("0xd1990c Ogre::MeshSerializerImpl::readSubMeshOperation(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::SubMesh *)")
+}
+
+// 0xd19928 — __ZN4Ogre18MeshSerializerImpl23readSubMeshTextureAliasERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_7SubMeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readSubMeshTextureAlias(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::SubMesh *)")]
+// was: Ogre::MeshSerializerImpl::readSubMeshTextureAlias(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::SubMesh *)
+pub fn stub_d19928() -> ! {
+    todo!("0xd19928 Ogre::MeshSerializerImpl::readSubMeshTextureAlias(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::SubMesh *)")
+}
+
+// 0xd19ad0 — __ZN4Ogre18MeshSerializerImpl17writeSkeletonLinkERKSs
+#[doc(alias = "Ogre::MeshSerializerImpl::writeSkeletonLink(std::string const&)")]
+// was: Ogre::MeshSerializerImpl::writeSkeletonLink(std::string const&)
+pub fn stub_d19ad0() -> ! {
+    todo!("0xd19ad0 Ogre::MeshSerializerImpl::writeSkeletonLink(std::string const&)")
+}
+
+// 0xd19af8 — __ZN4Ogre18MeshSerializerImpl16readSkeletonLinkERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_22MeshSerializerListenerE
+#[doc(alias = "Ogre::MeshSerializerImpl::readSkeletonLink(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)")]
+// was: Ogre::MeshSerializerImpl::readSkeletonLink(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)
+pub fn stub_d19af8() -> ! {
+    todo!("0xd19af8 Ogre::MeshSerializerImpl::readSkeletonLink(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)")
+}
+
+// 0xd19c2c — __ZN4Ogre18MeshSerializerImpl16readTextureLayerERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshERNS_11MaterialPtrE
+#[doc(alias = "Ogre::MeshSerializerImpl::readTextureLayer(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MaterialPtr &)")]
+// was: Ogre::MeshSerializerImpl::readTextureLayer(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MaterialPtr &)
+pub fn stub_d19c2c() -> ! {
+    todo!("0xd19c2c Ogre::MeshSerializerImpl::readTextureLayer(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MaterialPtr &)")
+}
+
+// 0xd19c30 — __ZN4Ogre18MeshSerializerImpl20calcSkeletonLinkSizeERKSs
+#[doc(alias = "Ogre::MeshSerializerImpl::calcSkeletonLinkSize(std::string const&)")]
+// was: Ogre::MeshSerializerImpl::calcSkeletonLinkSize(std::string const&)
+pub fn stub_d19c30() -> ! {
+    todo!("0xd19c30 Ogre::MeshSerializerImpl::calcSkeletonLinkSize(std::string const&)")
+}
+
+// 0xd19c3c — __ZN4Ogre18MeshSerializerImpl23writeMeshBoneAssignmentERKNS_22VertexBoneAssignment_sE
+#[doc(alias = "Ogre::MeshSerializerImpl::writeMeshBoneAssignment(Ogre::VertexBoneAssignment_s const&)")]
+// was: Ogre::MeshSerializerImpl::writeMeshBoneAssignment(Ogre::VertexBoneAssignment_s const&)
+pub fn stub_d19c3c() -> ! {
+    todo!("0xd19c3c Ogre::MeshSerializerImpl::writeMeshBoneAssignment(Ogre::VertexBoneAssignment_s const&)")
+}
+
+// 0xd19c7c — __ZN4Ogre18MeshSerializerImpl26writeSubMeshBoneAssignmentERKNS_22VertexBoneAssignment_sE
+#[doc(alias = "Ogre::MeshSerializerImpl::writeSubMeshBoneAssignment(Ogre::VertexBoneAssignment_s const&)")]
+// was: Ogre::MeshSerializerImpl::writeSubMeshBoneAssignment(Ogre::VertexBoneAssignment_s const&)
+pub fn stub_d19c7c() -> ! {
+    todo!("0xd19c7c Ogre::MeshSerializerImpl::writeSubMeshBoneAssignment(Ogre::VertexBoneAssignment_s const&)")
+}
+
+// 0xd19cbc — __ZN4Ogre18MeshSerializerImpl22readMeshBoneAssignmentERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readMeshBoneAssignment(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readMeshBoneAssignment(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d19cbc() -> ! {
+    todo!("0xd19cbc Ogre::MeshSerializerImpl::readMeshBoneAssignment(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd19d00 — __ZN4Ogre18MeshSerializerImpl25readSubMeshBoneAssignmentERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_7SubMeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readSubMeshBoneAssignment(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::SubMesh *)")]
+// was: Ogre::MeshSerializerImpl::readSubMeshBoneAssignment(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::SubMesh *)
+pub fn stub_d19d00() -> ! {
+    todo!("0xd19d00 Ogre::MeshSerializerImpl::readSubMeshBoneAssignment(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::SubMesh *)")
+}
+
+// 0xd19d44 — __ZN4Ogre18MeshSerializerImpl22calcBoneAssignmentSizeEv
+#[doc(alias = "Ogre::MeshSerializerImpl::calcBoneAssignmentSize(void)")]
+// was: Ogre::MeshSerializerImpl::calcBoneAssignmentSize(void)
+pub fn stub_d19d44() -> ! {
+    todo!("0xd19d44 Ogre::MeshSerializerImpl::calcBoneAssignmentSize(void)")
+}
+
+// 0xd19d48 — __ZN4Ogre18MeshSerializerImpl12writeLodInfoEPKNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::writeLodInfo(Ogre::Mesh const*)")]
+// was: Ogre::MeshSerializerImpl::writeLodInfo(Ogre::Mesh const*)
+pub fn stub_d19d48() -> ! {
+    todo!("0xd19d48 Ogre::MeshSerializerImpl::writeLodInfo(Ogre::Mesh const*)")
+}
+
+// 0xd19dc0 — __ZN4Ogre18MeshSerializerImpl15writeLodSummaryEtbPKNS_11LodStrategyE
+#[doc(alias = "Ogre::MeshSerializerImpl::writeLodSummary(unsigned short,bool,Ogre::LodStrategy const*)")]
+// was: Ogre::MeshSerializerImpl::writeLodSummary(unsigned short,bool,Ogre::LodStrategy const*)
+pub fn stub_d19dc0() -> ! {
+    todo!("0xd19dc0 Ogre::MeshSerializerImpl::writeLodSummary(unsigned short,bool,Ogre::LodStrategy const*)")
+}
+
+// 0xd19e00 — __ZN4Ogre18MeshSerializerImpl19writeLodUsageManualERKNS_12MeshLodUsageE
+#[doc(alias = "Ogre::MeshSerializerImpl::writeLodUsageManual(Ogre::MeshLodUsage const&)")]
+// was: Ogre::MeshSerializerImpl::writeLodUsageManual(Ogre::MeshLodUsage const&)
+pub fn stub_d19e00() -> ! {
+    todo!("0xd19e00 Ogre::MeshSerializerImpl::writeLodUsageManual(Ogre::MeshLodUsage const&)")
+}
+
+// 0xd19e50 — __ZN4Ogre18MeshSerializerImpl22writeLodUsageGeneratedEPKNS_4MeshERKNS_12MeshLodUsageEt
+#[doc(alias = "Ogre::MeshSerializerImpl::writeLodUsageGenerated(Ogre::Mesh const*,Ogre::MeshLodUsage const&,unsigned short)")]
+// was: Ogre::MeshSerializerImpl::writeLodUsageGenerated(Ogre::Mesh const*,Ogre::MeshLodUsage const&,unsigned short)
+pub fn stub_d19e50() -> ! {
+    todo!("0xd19e50 Ogre::MeshSerializerImpl::writeLodUsageGenerated(Ogre::Mesh const*,Ogre::MeshLodUsage const&,unsigned short)")
+}
+
+// 0xd1a154 — __ZN4Ogre18MeshSerializerImpl15writeBoundsInfoEPKNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::writeBoundsInfo(Ogre::Mesh const*)")]
+// was: Ogre::MeshSerializerImpl::writeBoundsInfo(Ogre::Mesh const*)
+pub fn stub_d1a154() -> ! {
+    todo!("0xd1a154 Ogre::MeshSerializerImpl::writeBoundsInfo(Ogre::Mesh const*)")
+}
+
+// 0xd1a1c0 — __ZN4Ogre18MeshSerializerImpl14readBoundsInfoERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readBoundsInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readBoundsInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d1a1c0() -> ! {
+    todo!("0xd1a1c0 Ogre::MeshSerializerImpl::readBoundsInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd1a340 — __ZN4Ogre18MeshSerializerImpl15readMeshLodInfoERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readMeshLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readMeshLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d1a340() -> ! {
+    todo!("0xd1a340 Ogre::MeshSerializerImpl::readMeshLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd1a984 — __ZN4Ogre18MeshSerializerImpl22readMeshLodUsageManualERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEtRNS_12MeshLodUsageE
+#[doc(alias = "Ogre::MeshSerializerImpl::readMeshLodUsageManual(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,unsigned short,Ogre::MeshLodUsage &)")]
+// was: Ogre::MeshSerializerImpl::readMeshLodUsageManual(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,unsigned short,Ogre::MeshLodUsage &)
+pub fn stub_d1a984() -> ! {
+    todo!("0xd1a984 Ogre::MeshSerializerImpl::readMeshLodUsageManual(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,unsigned short,Ogre::MeshLodUsage &)")
+}
+
+// 0xd1acc0 — __ZN4Ogre18MeshSerializerImpl25readMeshLodUsageGeneratedERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEtRNS_12MeshLodUsageE
+#[doc(alias = "Ogre::MeshSerializerImpl::readMeshLodUsageGenerated(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,unsigned short,Ogre::MeshLodUsage &)")]
+// was: Ogre::MeshSerializerImpl::readMeshLodUsageGenerated(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,unsigned short,Ogre::MeshLodUsage &)
+pub fn stub_d1acc0() -> ! {
+    todo!("0xd1acc0 Ogre::MeshSerializerImpl::readMeshLodUsageGenerated(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,unsigned short,Ogre::MeshLodUsage &)")
+}
+
+// 0xd1b288 — __ZN4Ogre18MeshSerializerImpl20flipFromLittleEndianEPvmmRKSt4listINS_13VertexElementENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::MeshSerializerImpl::flipFromLittleEndian(void *,unsigned long,unsigned long,std::list<Ogre::VertexElement,Ogre::STLAllocator<Ogre::VertexElement,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: Ogre::MeshSerializerImpl::flipFromLittleEndian(void *,unsigned long,unsigned long,std::list<Ogre::VertexElement,Ogre::STLAllocator<Ogre::VertexElement,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_d1b288() -> ! {
+    todo!("0xd1b288 Ogre::MeshSerializerImpl::flipFromLittleEndian(void *,unsigned long,unsigned long,std::list<Ogre::VertexElement,Ogre::STLAllocator<Ogre::VertexElement,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xd1b2b0 — __ZN4Ogre18MeshSerializerImpl18flipToLittleEndianEPvmmRKSt4listINS_13VertexElementENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::MeshSerializerImpl::flipToLittleEndian(void *,unsigned long,unsigned long,std::list<Ogre::VertexElement,Ogre::STLAllocator<Ogre::VertexElement,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: Ogre::MeshSerializerImpl::flipToLittleEndian(void *,unsigned long,unsigned long,std::list<Ogre::VertexElement,Ogre::STLAllocator<Ogre::VertexElement,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_d1b2b0() -> ! {
+    todo!("0xd1b2b0 Ogre::MeshSerializerImpl::flipToLittleEndian(void *,unsigned long,unsigned long,std::list<Ogre::VertexElement,Ogre::STLAllocator<Ogre::VertexElement,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xd1b2d8 — __ZN4Ogre18MeshSerializerImpl10flipEndianEPvmmRKSt4listINS_13VertexElementENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::MeshSerializerImpl::flipEndian(void *,unsigned long,unsigned long,std::list<Ogre::VertexElement,Ogre::STLAllocator<Ogre::VertexElement,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: Ogre::MeshSerializerImpl::flipEndian(void *,unsigned long,unsigned long,std::list<Ogre::VertexElement,Ogre::STLAllocator<Ogre::VertexElement,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_d1b2d8() -> ! {
+    todo!("0xd1b2d8 Ogre::MeshSerializerImpl::flipEndian(void *,unsigned long,unsigned long,std::list<Ogre::VertexElement,Ogre::STLAllocator<Ogre::VertexElement,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xd1b358 — __ZN4Ogre18MeshSerializerImpl16calcEdgeListSizeEPKNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcEdgeListSize(Ogre::Mesh const*)")]
+// was: Ogre::MeshSerializerImpl::calcEdgeListSize(Ogre::Mesh const*)
+pub fn stub_d1b358() -> ! {
+    todo!("0xd1b358 Ogre::MeshSerializerImpl::calcEdgeListSize(Ogre::Mesh const*)")
+}
+
+// 0xd1b3b4 — __ZN4Ogre18MeshSerializerImpl19calcEdgeListLodSizeEPKNS_8EdgeDataEb
+#[doc(alias = "Ogre::MeshSerializerImpl::calcEdgeListLodSize(Ogre::EdgeData const*,bool)")]
+// was: Ogre::MeshSerializerImpl::calcEdgeListLodSize(Ogre::EdgeData const*,bool)
+pub fn stub_d1b3b4() -> ! {
+    todo!("0xd1b3b4 Ogre::MeshSerializerImpl::calcEdgeListLodSize(Ogre::EdgeData const*,bool)")
+}
+
+// 0xd1b408 — __ZN4Ogre18MeshSerializerImpl17calcEdgeGroupSizeERKNS_8EdgeData9EdgeGroupE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcEdgeGroupSize(Ogre::EdgeData::EdgeGroup const&)")]
+// was: Ogre::MeshSerializerImpl::calcEdgeGroupSize(Ogre::EdgeData::EdgeGroup const&)
+pub fn stub_d1b408() -> ! {
+    todo!("0xd1b408 Ogre::MeshSerializerImpl::calcEdgeGroupSize(Ogre::EdgeData::EdgeGroup const&)")
+}
+
+// 0xd1b420 — __ZN4Ogre18MeshSerializerImpl13writeEdgeListEPKNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::writeEdgeList(Ogre::Mesh const*)")]
+// was: Ogre::MeshSerializerImpl::writeEdgeList(Ogre::Mesh const*)
+pub fn stub_d1b420() -> ! {
+    todo!("0xd1b420 Ogre::MeshSerializerImpl::writeEdgeList(Ogre::Mesh const*)")
+}
+
+// 0xd1b67c — __ZN4Ogre18MeshSerializerImpl12readEdgeListERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readEdgeList(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readEdgeList(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d1b67c() -> ! {
+    todo!("0xd1b67c Ogre::MeshSerializerImpl::readEdgeList(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd1b84c — __ZN4Ogre18MeshSerializerImpl19readEdgeListLodInfoERNS_9SharedPtrINS_10DataStreamEEEPNS_8EdgeDataE
+#[doc(alias = "Ogre::MeshSerializerImpl::readEdgeListLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::EdgeData *)")]
+// was: Ogre::MeshSerializerImpl::readEdgeListLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::EdgeData *)
+pub fn stub_d1b84c() -> ! {
+    todo!("0xd1b84c Ogre::MeshSerializerImpl::readEdgeListLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::EdgeData *)")
+}
+
+// 0xd1be0c — __ZN4Ogre18MeshSerializerImpl18calcAnimationsSizeEPKNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcAnimationsSize(Ogre::Mesh const*)")]
+// was: Ogre::MeshSerializerImpl::calcAnimationsSize(Ogre::Mesh const*)
+pub fn stub_d1be0c() -> ! {
+    todo!("0xd1be0c Ogre::MeshSerializerImpl::calcAnimationsSize(Ogre::Mesh const*)")
+}
+
+// 0xd1be60 — __ZN4Ogre18MeshSerializerImpl17calcAnimationSizeEPKNS_9AnimationE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcAnimationSize(Ogre::Animation const*)")]
+// was: Ogre::MeshSerializerImpl::calcAnimationSize(Ogre::Animation const*)
+pub fn stub_d1be60() -> ! {
+    todo!("0xd1be60 Ogre::MeshSerializerImpl::calcAnimationSize(Ogre::Animation const*)")
+}
+
+// 0xd1beac — __ZN4Ogre18MeshSerializerImpl22calcAnimationTrackSizeEPKNS_20VertexAnimationTrackE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcAnimationTrackSize(Ogre::VertexAnimationTrack const*)")]
+// was: Ogre::MeshSerializerImpl::calcAnimationTrackSize(Ogre::VertexAnimationTrack const*)
+pub fn stub_d1beac() -> ! {
+    todo!("0xd1beac Ogre::MeshSerializerImpl::calcAnimationTrackSize(Ogre::VertexAnimationTrack const*)")
+}
+
+// 0xd1bf34 — __ZN4Ogre18MeshSerializerImpl21calcMorphKeyframeSizeEPKNS_19VertexMorphKeyFrameEm
+#[doc(alias = "Ogre::MeshSerializerImpl::calcMorphKeyframeSize(Ogre::VertexMorphKeyFrame const*,unsigned long)")]
+// was: Ogre::MeshSerializerImpl::calcMorphKeyframeSize(Ogre::VertexMorphKeyFrame const*,unsigned long)
+pub fn stub_d1bf34() -> ! {
+    todo!("0xd1bf34 Ogre::MeshSerializerImpl::calcMorphKeyframeSize(Ogre::VertexMorphKeyFrame const*,unsigned long)")
+}
+
+// 0xd1bf54 — __ZN4Ogre18MeshSerializerImpl20calcPoseKeyframeSizeEPKNS_18VertexPoseKeyFrameE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcPoseKeyframeSize(Ogre::VertexPoseKeyFrame const*)")]
+// was: Ogre::MeshSerializerImpl::calcPoseKeyframeSize(Ogre::VertexPoseKeyFrame const*)
+pub fn stub_d1bf54() -> ! {
+    todo!("0xd1bf54 Ogre::MeshSerializerImpl::calcPoseKeyframeSize(Ogre::VertexPoseKeyFrame const*)")
+}
+
+// 0xd1bf78 — __ZN4Ogre18MeshSerializerImpl27calcPoseKeyframePoseRefSizeEv
+#[doc(alias = "Ogre::MeshSerializerImpl::calcPoseKeyframePoseRefSize(void)")]
+// was: Ogre::MeshSerializerImpl::calcPoseKeyframePoseRefSize(void)
+pub fn stub_d1bf78() -> ! {
+    todo!("0xd1bf78 Ogre::MeshSerializerImpl::calcPoseKeyframePoseRefSize(void)")
+}
+
+// 0xd1bf7c — __ZN4Ogre18MeshSerializerImpl13calcPosesSizeEPKNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcPosesSize(Ogre::Mesh const*)")]
+// was: Ogre::MeshSerializerImpl::calcPosesSize(Ogre::Mesh const*)
+pub fn stub_d1bf7c() -> ! {
+    todo!("0xd1bf7c Ogre::MeshSerializerImpl::calcPosesSize(Ogre::Mesh const*)")
+}
+
+// 0xd1bfb8 — __ZN4Ogre18MeshSerializerImpl12calcPoseSizeEPKNS_4PoseE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcPoseSize(Ogre::Pose const*)")]
+// was: Ogre::MeshSerializerImpl::calcPoseSize(Ogre::Pose const*)
+pub fn stub_d1bfb8() -> ! {
+    todo!("0xd1bfb8 Ogre::MeshSerializerImpl::calcPoseSize(Ogre::Pose const*)")
+}
+
+// 0xd1bfd4 — __ZN4Ogre18MeshSerializerImpl18calcPoseVertexSizeEPKNS_4PoseE
+#[doc(alias = "Ogre::MeshSerializerImpl::calcPoseVertexSize(Ogre::Pose const*)")]
+// was: Ogre::MeshSerializerImpl::calcPoseVertexSize(Ogre::Pose const*)
+pub fn stub_d1bfd4() -> ! {
+    todo!("0xd1bfd4 Ogre::MeshSerializerImpl::calcPoseVertexSize(Ogre::Pose const*)")
+}
+
+// 0xd1bfe0 — __ZN4Ogre18MeshSerializerImpl10writePosesEPKNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::writePoses(Ogre::Mesh const*)")]
+// was: Ogre::MeshSerializerImpl::writePoses(Ogre::Mesh const*)
+pub fn stub_d1bfe0() -> ! {
+    todo!("0xd1bfe0 Ogre::MeshSerializerImpl::writePoses(Ogre::Mesh const*)")
+}
+
+// 0xd1c02c — __ZN4Ogre18MeshSerializerImpl9writePoseEPKNS_4PoseE
+#[doc(alias = "Ogre::MeshSerializerImpl::writePose(Ogre::Pose const*)")]
+// was: Ogre::MeshSerializerImpl::writePose(Ogre::Pose const*)
+pub fn stub_d1c02c() -> ! {
+    todo!("0xd1c02c Ogre::MeshSerializerImpl::writePose(Ogre::Pose const*)")
+}
+
+// 0xd1c120 — __ZN4Ogre18MeshSerializerImpl15writeAnimationsEPKNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::writeAnimations(Ogre::Mesh const*)")]
+// was: Ogre::MeshSerializerImpl::writeAnimations(Ogre::Mesh const*)
+pub fn stub_d1c120() -> ! {
+    todo!("0xd1c120 Ogre::MeshSerializerImpl::writeAnimations(Ogre::Mesh const*)")
+}
+
+// 0xd1c3cc — __ZN4Ogre18MeshSerializerImpl14writeAnimationEPKNS_9AnimationE
+#[doc(alias = "Ogre::MeshSerializerImpl::writeAnimation(Ogre::Animation const*)")]
+// was: Ogre::MeshSerializerImpl::writeAnimation(Ogre::Animation const*)
+pub fn stub_d1c3cc() -> ! {
+    todo!("0xd1c3cc Ogre::MeshSerializerImpl::writeAnimation(Ogre::Animation const*)")
+}
+
+// 0xd1c488 — __ZN4Ogre18MeshSerializerImpl19writeAnimationTrackEPKNS_20VertexAnimationTrackE
+#[doc(alias = "Ogre::MeshSerializerImpl::writeAnimationTrack(Ogre::VertexAnimationTrack const*)")]
+// was: Ogre::MeshSerializerImpl::writeAnimationTrack(Ogre::VertexAnimationTrack const*)
+pub fn stub_d1c488() -> ! {
+    todo!("0xd1c488 Ogre::MeshSerializerImpl::writeAnimationTrack(Ogre::VertexAnimationTrack const*)")
+}
+
+// 0xd1c530 — __ZN4Ogre18MeshSerializerImpl18writeMorphKeyframeEPKNS_19VertexMorphKeyFrameEm
+#[doc(alias = "Ogre::MeshSerializerImpl::writeMorphKeyframe(Ogre::VertexMorphKeyFrame const*,unsigned long)")]
+// was: Ogre::MeshSerializerImpl::writeMorphKeyframe(Ogre::VertexMorphKeyFrame const*,unsigned long)
+pub fn stub_d1c530() -> ! {
+    todo!("0xd1c530 Ogre::MeshSerializerImpl::writeMorphKeyframe(Ogre::VertexMorphKeyFrame const*,unsigned long)")
+}
+
+// 0xd1c5cc — __ZN4Ogre18MeshSerializerImpl17writePoseKeyframeEPKNS_18VertexPoseKeyFrameE
+#[doc(alias = "Ogre::MeshSerializerImpl::writePoseKeyframe(Ogre::VertexPoseKeyFrame const*)")]
+// was: Ogre::MeshSerializerImpl::writePoseKeyframe(Ogre::VertexPoseKeyFrame const*)
+pub fn stub_d1c5cc() -> ! {
+    todo!("0xd1c5cc Ogre::MeshSerializerImpl::writePoseKeyframe(Ogre::VertexPoseKeyFrame const*)")
+}
+
+// 0xd1c634 — __ZN4Ogre18MeshSerializerImpl24writePoseKeyframePoseRefERKNS_18VertexPoseKeyFrame7PoseRefE
+#[doc(alias = "Ogre::MeshSerializerImpl::writePoseKeyframePoseRef(Ogre::VertexPoseKeyFrame::PoseRef const&)")]
+// was: Ogre::MeshSerializerImpl::writePoseKeyframePoseRef(Ogre::VertexPoseKeyFrame::PoseRef const&)
+pub fn stub_d1c634() -> ! {
+    todo!("0xd1c634 Ogre::MeshSerializerImpl::writePoseKeyframePoseRef(Ogre::VertexPoseKeyFrame::PoseRef const&)")
+}
+
+// 0xd1c668 — __ZN4Ogre18MeshSerializerImpl9readPosesERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readPoses(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readPoses(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d1c668() -> ! {
+    todo!("0xd1c668 Ogre::MeshSerializerImpl::readPoses(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd1c6dc — __ZN4Ogre18MeshSerializerImpl8readPoseERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readPose(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readPose(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d1c6dc() -> ! {
+    todo!("0xd1c6dc Ogre::MeshSerializerImpl::readPose(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd1c918 — __ZN4Ogre18MeshSerializerImpl14readAnimationsERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readAnimations(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readAnimations(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d1c918() -> ! {
+    todo!("0xd1c918 Ogre::MeshSerializerImpl::readAnimations(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd1c98c — __ZN4Ogre18MeshSerializerImpl13readAnimationERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readAnimation(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readAnimation(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d1c98c() -> ! {
+    todo!("0xd1c98c Ogre::MeshSerializerImpl::readAnimation(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd1cc5c — __ZN4Ogre18MeshSerializerImpl18readAnimationTrackERNS_9SharedPtrINS_10DataStreamEEEPNS_9AnimationEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readAnimationTrack(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Animation *,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readAnimationTrack(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Animation *,Ogre::Mesh *)
+pub fn stub_d1cc5c() -> ! {
+    todo!("0xd1cc5c Ogre::MeshSerializerImpl::readAnimationTrack(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Animation *,Ogre::Mesh *)")
+}
+
+// 0xd1cd34 — __ZN4Ogre18MeshSerializerImpl17readMorphKeyFrameERNS_9SharedPtrINS_10DataStreamEEEPNS_20VertexAnimationTrackE
+#[doc(alias = "Ogre::MeshSerializerImpl::readMorphKeyFrame(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::VertexAnimationTrack *)")]
+// was: Ogre::MeshSerializerImpl::readMorphKeyFrame(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::VertexAnimationTrack *)
+pub fn stub_d1cd34() -> ! {
+    todo!("0xd1cd34 Ogre::MeshSerializerImpl::readMorphKeyFrame(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::VertexAnimationTrack *)")
+}
+
+// 0xd1cf34 — __ZN4Ogre18MeshSerializerImpl16readPoseKeyFrameERNS_9SharedPtrINS_10DataStreamEEEPNS_20VertexAnimationTrackE
+#[doc(alias = "Ogre::MeshSerializerImpl::readPoseKeyFrame(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::VertexAnimationTrack *)")]
+// was: Ogre::MeshSerializerImpl::readPoseKeyFrame(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::VertexAnimationTrack *)
+pub fn stub_d1cf34() -> ! {
+    todo!("0xd1cf34 Ogre::MeshSerializerImpl::readPoseKeyFrame(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::VertexAnimationTrack *)")
+}
+
+// 0xd1cff0 — __ZN4Ogre18MeshSerializerImpl12readExtremesERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl::readExtremes(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl::readExtremes(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d1cff0() -> ! {
+    todo!("0xd1cff0 Ogre::MeshSerializerImpl::readExtremes(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd1d0ac — __ZN4Ogre24MeshSerializerImpl_v1_41C1Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_41::MeshSerializerImpl_v1_41(void)")]
+// was: Ogre::MeshSerializerImpl_v1_41::MeshSerializerImpl_v1_41(void)
+pub fn stub_d1d0ac() -> ! {
+    todo!("0xd1d0ac Ogre::MeshSerializerImpl_v1_41::MeshSerializerImpl_v1_41(void)")
+}
+
+// 0xd1d198 — __ZN4Ogre24MeshSerializerImpl_v1_41D0Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_41::~MeshSerializerImpl_v1_41()")]
+// was: Ogre::MeshSerializerImpl_v1_41::~MeshSerializerImpl_v1_41()
+pub fn stub_d1d198() -> ! {
+    todo!("0xd1d198 Ogre::MeshSerializerImpl_v1_41::~MeshSerializerImpl_v1_41()")
+}
+
+// 0xd1d228 — __ZN4Ogre24MeshSerializerImpl_v1_41D1Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_41::~MeshSerializerImpl_v1_41()")]
+// was: Ogre::MeshSerializerImpl_v1_41::~MeshSerializerImpl_v1_41()
+pub fn stub_d1d228() -> ! {
+    todo!("0xd1d228 Ogre::MeshSerializerImpl_v1_41::~MeshSerializerImpl_v1_41()")
+}
+
+// 0xd1d234 — __ZN4Ogre24MeshSerializerImpl_v1_4118writeMorphKeyframeEPKNS_19VertexMorphKeyFrameEm
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_41::writeMorphKeyframe(Ogre::VertexMorphKeyFrame const*,unsigned long)")]
+// was: Ogre::MeshSerializerImpl_v1_41::writeMorphKeyframe(Ogre::VertexMorphKeyFrame const*,unsigned long)
+pub fn stub_d1d234() -> ! {
+    todo!("0xd1d234 Ogre::MeshSerializerImpl_v1_41::writeMorphKeyframe(Ogre::VertexMorphKeyFrame const*,unsigned long)")
+}
+
+// 0xd1d2a0 — __ZN4Ogre24MeshSerializerImpl_v1_4117readMorphKeyFrameERNS_9SharedPtrINS_10DataStreamEEEPNS_20VertexAnimationTrackE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_41::readMorphKeyFrame(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::VertexAnimationTrack *)")]
+// was: Ogre::MeshSerializerImpl_v1_41::readMorphKeyFrame(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::VertexAnimationTrack *)
+pub fn stub_d1d2a0() -> ! {
+    todo!("0xd1d2a0 Ogre::MeshSerializerImpl_v1_41::readMorphKeyFrame(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::VertexAnimationTrack *)")
+}
+
+// 0xd1d480 — __ZN4Ogre24MeshSerializerImpl_v1_419writePoseEPKNS_4PoseE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_41::writePose(Ogre::Pose const*)")]
+// was: Ogre::MeshSerializerImpl_v1_41::writePose(Ogre::Pose const*)
+pub fn stub_d1d480() -> ! {
+    todo!("0xd1d480 Ogre::MeshSerializerImpl_v1_41::writePose(Ogre::Pose const*)")
+}
+
+// 0xd1d520 — __ZN4Ogre24MeshSerializerImpl_v1_418readPoseERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_41::readPose(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl_v1_41::readPose(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d1d520() -> ! {
+    todo!("0xd1d520 Ogre::MeshSerializerImpl_v1_41::readPose(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd1d720 — __ZN4Ogre24MeshSerializerImpl_v1_4112calcPoseSizeEPKNS_4PoseE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_41::calcPoseSize(Ogre::Pose const*)")]
+// was: Ogre::MeshSerializerImpl_v1_41::calcPoseSize(Ogre::Pose const*)
+pub fn stub_d1d720() -> ! {
+    todo!("0xd1d720 Ogre::MeshSerializerImpl_v1_41::calcPoseSize(Ogre::Pose const*)")
+}
+
+// 0xd1d734 — __ZN4Ogre24MeshSerializerImpl_v1_4121calcMorphKeyframeSizeEPKNS_19VertexMorphKeyFrameEm
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_41::calcMorphKeyframeSize(Ogre::VertexMorphKeyFrame const*,unsigned long)")]
+// was: Ogre::MeshSerializerImpl_v1_41::calcMorphKeyframeSize(Ogre::VertexMorphKeyFrame const*,unsigned long)
+pub fn stub_d1d734() -> ! {
+    todo!("0xd1d734 Ogre::MeshSerializerImpl_v1_41::calcMorphKeyframeSize(Ogre::VertexMorphKeyFrame const*,unsigned long)")
+}
+
+// 0xd1d740 — __ZN4Ogre23MeshSerializerImpl_v1_4C1Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_4::MeshSerializerImpl_v1_4(void)")]
+// was: Ogre::MeshSerializerImpl_v1_4::MeshSerializerImpl_v1_4(void)
+pub fn stub_d1d740() -> ! {
+    todo!("0xd1d740 Ogre::MeshSerializerImpl_v1_4::MeshSerializerImpl_v1_4(void)")
+}
+
+// 0xd1d858 — __ZN4Ogre23MeshSerializerImpl_v1_4D0Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_4::~MeshSerializerImpl_v1_4()")]
+// was: Ogre::MeshSerializerImpl_v1_4::~MeshSerializerImpl_v1_4()
+pub fn stub_d1d858() -> ! {
+    todo!("0xd1d858 Ogre::MeshSerializerImpl_v1_4::~MeshSerializerImpl_v1_4()")
+}
+
+// 0xd1d8e8 — __ZN4Ogre23MeshSerializerImpl_v1_4D1Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_4::~MeshSerializerImpl_v1_4()")]
+// was: Ogre::MeshSerializerImpl_v1_4::~MeshSerializerImpl_v1_4()
+pub fn stub_d1d8e8() -> ! {
+    todo!("0xd1d8e8 Ogre::MeshSerializerImpl_v1_4::~MeshSerializerImpl_v1_4()")
+}
+
+// 0xd1d8f4 — __ZN4Ogre23MeshSerializerImpl_v1_415writeLodSummaryEtbPKNS_11LodStrategyE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_4::writeLodSummary(unsigned short,bool,Ogre::LodStrategy const*)")]
+// was: Ogre::MeshSerializerImpl_v1_4::writeLodSummary(unsigned short,bool,Ogre::LodStrategy const*)
+pub fn stub_d1d8f4() -> ! {
+    todo!("0xd1d8f4 Ogre::MeshSerializerImpl_v1_4::writeLodSummary(unsigned short,bool,Ogre::LodStrategy const*)")
+}
+
+// 0xd1d92c — __ZN4Ogre23MeshSerializerImpl_v1_419writeLodUsageManualERKNS_12MeshLodUsageE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_4::writeLodUsageManual(Ogre::MeshLodUsage const&)")]
+// was: Ogre::MeshSerializerImpl_v1_4::writeLodUsageManual(Ogre::MeshLodUsage const&)
+pub fn stub_d1d92c() -> ! {
+    todo!("0xd1d92c Ogre::MeshSerializerImpl_v1_4::writeLodUsageManual(Ogre::MeshLodUsage const&)")
+}
+
+// 0xd1d97c — __ZN4Ogre23MeshSerializerImpl_v1_422writeLodUsageGeneratedEPKNS_4MeshERKNS_12MeshLodUsageEt
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_4::writeLodUsageGenerated(Ogre::Mesh const*,Ogre::MeshLodUsage const&,unsigned short)")]
+// was: Ogre::MeshSerializerImpl_v1_4::writeLodUsageGenerated(Ogre::Mesh const*,Ogre::MeshLodUsage const&,unsigned short)
+pub fn stub_d1d97c() -> ! {
+    todo!("0xd1d97c Ogre::MeshSerializerImpl_v1_4::writeLodUsageGenerated(Ogre::Mesh const*,Ogre::MeshLodUsage const&,unsigned short)")
+}
+
+// 0xd1dc80 — __ZN4Ogre23MeshSerializerImpl_v1_415readMeshLodInfoERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_4::readMeshLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")]
+// was: Ogre::MeshSerializerImpl_v1_4::readMeshLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)
+pub fn stub_d1dc80() -> ! {
+    todo!("0xd1dc80 Ogre::MeshSerializerImpl_v1_4::readMeshLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *)")
+}
+
+// 0xd1e1e4 — __ZN4Ogre23MeshSerializerImpl_v1_3C1Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_3::MeshSerializerImpl_v1_3(void)")]
+// was: Ogre::MeshSerializerImpl_v1_3::MeshSerializerImpl_v1_3(void)
+pub fn stub_d1e1e4() -> ! {
+    todo!("0xd1e1e4 Ogre::MeshSerializerImpl_v1_3::MeshSerializerImpl_v1_3(void)")
+}
+
+// 0xd1e1f0 — __ZN4Ogre23MeshSerializerImpl_v1_3C2Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_3::MeshSerializerImpl_v1_3(void)")]
+// was: Ogre::MeshSerializerImpl_v1_3::MeshSerializerImpl_v1_3(void)
+pub fn stub_d1e1f0() -> ! {
+    todo!("0xd1e1f0 Ogre::MeshSerializerImpl_v1_3::MeshSerializerImpl_v1_3(void)")
+}
+
+// 0xd1e330 — __ZN4Ogre23MeshSerializerImpl_v1_3D0Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_3::~MeshSerializerImpl_v1_3()")]
+// was: Ogre::MeshSerializerImpl_v1_3::~MeshSerializerImpl_v1_3()
+pub fn stub_d1e330() -> ! {
+    todo!("0xd1e330 Ogre::MeshSerializerImpl_v1_3::~MeshSerializerImpl_v1_3()")
+}
+
+// 0xd1e3c0 — __ZN4Ogre23MeshSerializerImpl_v1_3D1Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_3::~MeshSerializerImpl_v1_3()")]
+// was: Ogre::MeshSerializerImpl_v1_3::~MeshSerializerImpl_v1_3()
+pub fn stub_d1e3c0() -> ! {
+    todo!("0xd1e3c0 Ogre::MeshSerializerImpl_v1_3::~MeshSerializerImpl_v1_3()")
+}
+
+// 0xd1e3cc — __ZN4Ogre23MeshSerializerImpl_v1_319readEdgeListLodInfoERNS_9SharedPtrINS_10DataStreamEEEPNS_8EdgeDataE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_3::readEdgeListLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::EdgeData *)")]
+// was: Ogre::MeshSerializerImpl_v1_3::readEdgeListLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::EdgeData *)
+pub fn stub_d1e3cc() -> ! {
+    todo!("0xd1e3cc Ogre::MeshSerializerImpl_v1_3::readEdgeListLodInfo(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::EdgeData *)")
+}
+
+// 0xd1e970 — __ZN4Ogre23MeshSerializerImpl_v1_319reorganiseTrianglesEPNS_8EdgeDataE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_3::reorganiseTriangles(Ogre::EdgeData *)")]
+// was: Ogre::MeshSerializerImpl_v1_3::reorganiseTriangles(Ogre::EdgeData *)
+pub fn stub_d1e970() -> ! {
+    todo!("0xd1e970 Ogre::MeshSerializerImpl_v1_3::reorganiseTriangles(Ogre::EdgeData *)")
+}
+
+// 0xd1ecfc — __ZN4Ogre23MeshSerializerImpl_v1_313writeEdgeListEPKNS_4MeshE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_3::writeEdgeList(Ogre::Mesh const*)")]
+// was: Ogre::MeshSerializerImpl_v1_3::writeEdgeList(Ogre::Mesh const*)
+pub fn stub_d1ecfc() -> ! {
+    todo!("0xd1ecfc Ogre::MeshSerializerImpl_v1_3::writeEdgeList(Ogre::Mesh const*)")
+}
+
+// 0xd1ef1c — __ZN4Ogre23MeshSerializerImpl_v1_2C1Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_2::MeshSerializerImpl_v1_2(void)")]
+// was: Ogre::MeshSerializerImpl_v1_2::MeshSerializerImpl_v1_2(void)
+pub fn stub_d1ef1c() -> ! {
+    todo!("0xd1ef1c Ogre::MeshSerializerImpl_v1_2::MeshSerializerImpl_v1_2(void)")
+}
+
+// 0xd1efe0 — __ZN4Ogre23MeshSerializerImpl_v1_2D0Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_2::~MeshSerializerImpl_v1_2()")]
+// was: Ogre::MeshSerializerImpl_v1_2::~MeshSerializerImpl_v1_2()
+pub fn stub_d1efe0() -> ! {
+    todo!("0xd1efe0 Ogre::MeshSerializerImpl_v1_2::~MeshSerializerImpl_v1_2()")
+}
+
+// 0xd1f070 — __ZN4Ogre23MeshSerializerImpl_v1_2D1Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_2::~MeshSerializerImpl_v1_2()")]
+// was: Ogre::MeshSerializerImpl_v1_2::~MeshSerializerImpl_v1_2()
+pub fn stub_d1f070() -> ! {
+    todo!("0xd1f070 Ogre::MeshSerializerImpl_v1_2::~MeshSerializerImpl_v1_2()")
+}
+
+// 0xd1f07c — __ZN4Ogre23MeshSerializerImpl_v1_28readMeshERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_22MeshSerializerListenerE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_2::readMesh(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)")]
+// was: Ogre::MeshSerializerImpl_v1_2::readMesh(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)
+pub fn stub_d1f07c() -> ! {
+    todo!("0xd1f07c Ogre::MeshSerializerImpl_v1_2::readMesh(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::MeshSerializerListener *)")
+}
+
+// 0xd1f090 — __ZN4Ogre23MeshSerializerImpl_v1_212readGeometryERNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_10VertexDataE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_2::readGeometry(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")]
+// was: Ogre::MeshSerializerImpl_v1_2::readGeometry(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)
+pub fn stub_d1f090() -> ! {
+    todo!("0xd1f090 Ogre::MeshSerializerImpl_v1_2::readGeometry(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")
+}
+
+// 0xd1f1a0 — __ZN4Ogre23MeshSerializerImpl_v1_221readGeometryPositionsEtRNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_10VertexDataE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_2::readGeometryPositions(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")]
+// was: Ogre::MeshSerializerImpl_v1_2::readGeometryPositions(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)
+pub fn stub_d1f1a0() -> ! {
+    todo!("0xd1f1a0 Ogre::MeshSerializerImpl_v1_2::readGeometryPositions(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")
+}
+
+// 0xd1f4a0 — __ZN4Ogre23MeshSerializerImpl_v1_219readGeometryNormalsEtRNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_10VertexDataE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_2::readGeometryNormals(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")]
+// was: Ogre::MeshSerializerImpl_v1_2::readGeometryNormals(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)
+pub fn stub_d1f4a0() -> ! {
+    todo!("0xd1f4a0 Ogre::MeshSerializerImpl_v1_2::readGeometryNormals(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")
+}
+
+// 0xd1f79c — __ZN4Ogre23MeshSerializerImpl_v1_219readGeometryColoursEtRNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_10VertexDataE
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_2::readGeometryColours(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")]
+// was: Ogre::MeshSerializerImpl_v1_2::readGeometryColours(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)
+pub fn stub_d1f79c() -> ! {
+    todo!("0xd1f79c Ogre::MeshSerializerImpl_v1_2::readGeometryColours(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *)")
+}
+
+// 0xd1fa94 — __ZN4Ogre23MeshSerializerImpl_v1_221readGeometryTexCoordsEtRNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_10VertexDataEt
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_2::readGeometryTexCoords(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *,unsigned short)")]
+// was: Ogre::MeshSerializerImpl_v1_2::readGeometryTexCoords(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *,unsigned short)
+pub fn stub_d1fa94() -> ! {
+    todo!("0xd1fa94 Ogre::MeshSerializerImpl_v1_2::readGeometryTexCoords(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *,unsigned short)")
+}
+
+// 0xd1fdc0 — __ZN4Ogre23MeshSerializerImpl_v1_1C1Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_1::MeshSerializerImpl_v1_1(void)")]
+// was: Ogre::MeshSerializerImpl_v1_1::MeshSerializerImpl_v1_1(void)
+pub fn stub_d1fdc0() -> ! {
+    todo!("0xd1fdc0 Ogre::MeshSerializerImpl_v1_1::MeshSerializerImpl_v1_1(void)")
+}
+
+// 0xd1feac — __ZN4Ogre23MeshSerializerImpl_v1_1D0Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_1::~MeshSerializerImpl_v1_1()")]
+// was: Ogre::MeshSerializerImpl_v1_1::~MeshSerializerImpl_v1_1()
+pub fn stub_d1feac() -> ! {
+    todo!("0xd1feac Ogre::MeshSerializerImpl_v1_1::~MeshSerializerImpl_v1_1()")
+}
+
+// 0xd1ff3c — __ZN4Ogre23MeshSerializerImpl_v1_1D1Ev
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_1::~MeshSerializerImpl_v1_1()")]
+// was: Ogre::MeshSerializerImpl_v1_1::~MeshSerializerImpl_v1_1()
+pub fn stub_d1ff3c() -> ! {
+    todo!("0xd1ff3c Ogre::MeshSerializerImpl_v1_1::~MeshSerializerImpl_v1_1()")
+}
+
+// 0xd1ff48 — __ZN4Ogre23MeshSerializerImpl_v1_121readGeometryTexCoordsEtRNS_9SharedPtrINS_10DataStreamEEEPNS_4MeshEPNS_10VertexDataEt
+#[doc(alias = "Ogre::MeshSerializerImpl_v1_1::readGeometryTexCoords(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *,unsigned short)")]
+// was: Ogre::MeshSerializerImpl_v1_1::readGeometryTexCoords(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *,unsigned short)
+pub fn stub_d1ff48() -> ! {
+    todo!("0xd1ff48 Ogre::MeshSerializerImpl_v1_1::readGeometryTexCoords(unsigned short,Ogre::SharedPtr<Ogre::DataStream> &,Ogre::Mesh *,Ogre::VertexData *,unsigned short)")
+}
+
+// 0xd202a8 — __ZNSt3mapItSsSt4lessItEN4Ogre12STLAllocatorISt4pairIKtSsENS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEixERS5_
+#[doc(alias = "std::map<unsigned short,std::string,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](unsigned short const&)")]
+// was: std::map<unsigned short,std::string,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](unsigned short const&)
+pub fn stub_d202a8() -> ! {
+    todo!("0xd202a8 std::map<unsigned short,std::string,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](unsigned short const&)")
+}
+
+// 0xd20480 — __ZNSt6vectorIN4Ogre12MeshLodUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE9push_backERKS1_
+#[doc(alias = "std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::push_back(Ogre::MeshLodUsage const&)")]
+// was: std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::push_back(Ogre::MeshLodUsage const&)
+pub fn stub_d20480() -> ! {
+    todo!("0xd20480 std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::push_back(Ogre::MeshLodUsage const&)")
+}
+
+// 0xd205f4 — __ZNSt6vectorIN4Ogre8EdgeData4EdgeENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S8_EEmRKS2_
+#[doc(alias = "std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Edge*,std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::EdgeData::Edge const&)")]
+// was: std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Edge*,std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::EdgeData::Edge const&)
+pub fn stub_d205f4() -> ! {
+    todo!("0xd205f4 std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Edge*,std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::EdgeData::Edge const&)")
+}
+
+// 0xd208c8 — __ZNSt6vectorIN4Ogre7Vector4ENS0_12STLAllocatorIS1_NS0_27CategorisedAlignAllocPolicyILNS0_14MemoryCategoryE1ELm0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S7_EEmRKS1_
+#[doc(alias = "std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>>,unsigned long,Ogre::Vector4 const&)")]
+// was: std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>>,unsigned long,Ogre::Vector4 const&)
+pub fn stub_d208c8() -> ! {
+    todo!("0xd208c8 std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>>,unsigned long,Ogre::Vector4 const&)")
+}
+
+// 0xd20b04 — __ZNSt6vectorIN4Ogre8EdgeData8TriangleENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S8_EEmRKS2_
+#[doc(alias = "std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Triangle*,std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::EdgeData::Triangle const&)")]
+// was: std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Triangle*,std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::EdgeData::Triangle const&)
+pub fn stub_d20b04() -> ! {
+    todo!("0xd20b04 std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Triangle*,std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::EdgeData::Triangle const&)")
+}
+
+// 0xd20d84 — __ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS2_ERKS2_
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,std::string>>,std::pair<unsigned short const,std::string> const&)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,std::string>>,std::pair<unsigned short const,std::string> const&)
+pub fn stub_d20d84() -> ! {
+    todo!("0xd20d84 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,std::string>>,std::pair<unsigned short const,std::string> const&)")
+}
+
+// 0xd20e38 — __ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSF_RKS2_
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned short const,std::string> const&)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned short const,std::string> const&)
+pub fn stub_d20e38() -> ! {
+    todo!("0xd20e38 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned short const,std::string> const&)")
+}
+
+// 0xd20f70 — __ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS2_
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,std::string> const&)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,std::string> const&)
+pub fn stub_d20f70() -> ! {
+    todo!("0xd20f70 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,std::string> const&)")
+}
+
+// 0xd20fdc — __ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
+pub fn stub_d20fdc() -> ! {
+    todo!("0xd20fdc std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+}
+
+// 0xd20fe0 — __ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
+pub fn stub_d20fe0() -> ! {
+    todo!("0xd20fe0 std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+}
+
+// 0xd20fec — __ZNSt8_Rb_treeItSt4pairIKtSsESt10_Select1stIS2_ESt4lessItEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,std::string>> *)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,std::string>> *)
+pub fn stub_d20fec() -> ! {
+    todo!("0xd20fec std::_Rb_tree<unsigned short,std::pair<unsigned short const,std::string>,std::_Select1st<std::pair<unsigned short const,std::string>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,std::string>> *)")
+}
+
+// 0xd21098 — __ZN4Ogre13MovableObjectC2Ev
+#[doc(alias = "Ogre::MovableObject::MovableObject(void)")]
+// was: Ogre::MovableObject::MovableObject(void)
+pub fn stub_d21098() -> ! {
+    todo!("0xd21098 Ogre::MovableObject::MovableObject(void)")
+}
+
+// 0xd21384 — __ZN4Ogre13MovableObjectC2ERKSs
+#[doc(alias = "Ogre::MovableObject::MovableObject(std::string const&)")]
+// was: Ogre::MovableObject::MovableObject(std::string const&)
+pub fn stub_d21384() -> ! {
+    todo!("0xd21384 Ogre::MovableObject::MovableObject(std::string const&)")
+}
+
+// 0xd2166c — __ZN4Ogre13MovableObjectD0Ev
+#[doc(alias = "Ogre::MovableObject::~MovableObject()")]
+// was: Ogre::MovableObject::~MovableObject()
+pub fn stub_d2166c() -> ! {
+    todo!("0xd2166c Ogre::MovableObject::~MovableObject()")
+}
+
+// 0xd216fc — __ZN4Ogre13MovableObjectD1Ev
+#[doc(alias = "Ogre::MovableObject::~MovableObject()")]
+// was: Ogre::MovableObject::~MovableObject()
+pub fn stub_d216fc() -> ! {
+    todo!("0xd216fc Ogre::MovableObject::~MovableObject()")
+}
+
+// 0xd21708 — __ZThn4_N4Ogre13MovableObjectD0Ev
+#[doc(alias = "non-virtual thunk toOgre::MovableObject::~MovableObject()")]
+// was: `non-virtual thunk to'Ogre::MovableObject::~MovableObject()
+pub fn stub_d21708() -> ! {
+    todo!("0xd21708 `non-virtual thunk to'Ogre::MovableObject::~MovableObject()")
+}
+
+// 0xd2179c — __ZN4Ogre13MovableObjectD2Ev
+#[doc(alias = "Ogre::MovableObject::~MovableObject()")]
+// was: Ogre::MovableObject::~MovableObject()
+pub fn stub_d2179c() -> ! {
+    todo!("0xd2179c Ogre::MovableObject::~MovableObject()")
+}
+
+// 0xd21990 — __ZThn4_N4Ogre13MovableObjectD1Ev
+#[doc(alias = "non-virtual thunk toOgre::MovableObject::~MovableObject()")]
+// was: `non-virtual thunk to'Ogre::MovableObject::~MovableObject()
+pub fn stub_d21990() -> ! {
+    todo!("0xd21990 `non-virtual thunk to'Ogre::MovableObject::~MovableObject()")
+}
+
+// 0xd2199c — __ZN4Ogre13MovableObject15_notifyAttachedEPNS_4NodeEb
+#[doc(alias = "Ogre::MovableObject::_notifyAttached(Ogre::Node *,bool)")]
+// was: Ogre::MovableObject::_notifyAttached(Ogre::Node *,bool)
+pub fn stub_d2199c() -> ! {
+    todo!("0xd2199c Ogre::MovableObject::_notifyAttached(Ogre::Node *,bool)")
+}
+
+// 0xd219d0 — __ZNK4Ogre13MovableObject13getParentNodeEv
+#[doc(alias = "Ogre::MovableObject::getParentNode(void)const")]
+// was: Ogre::MovableObject::getParentNode(void)const
+pub fn stub_d219d0() -> ! {
+    todo!("0xd219d0 Ogre::MovableObject::getParentNode(void)const")
+}
+
