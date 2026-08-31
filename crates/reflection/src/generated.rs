@@ -21959,3 +21959,987 @@ pub fn stub_0x438b84() -> ! {
 pub fn stub_0x438cc8() -> ! {
     todo!("0x438cc8 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")
 }
+
+// 0x438ccc — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED0Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()"
+)]
+pub fn stub_0x438ccc() -> ! {
+    todo!(
+        "0x438ccc RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()"
+    )
+}
+
+// 0x438d6c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE6lookupEPKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(char const*)const"
+)]
+pub fn stub_0x438d6c() -> ! {
+    todo!(
+        "0x438d6c RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(char const*)const"
+    )
+}
+
+// 0x438d9c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE6lookupERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x438d9c() -> ! {
+    todo!(
+        "0x438d9c RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::lookup(RBX::Reflection::Variant const&)const"
+    )
+}
+
+// 0x438dbc — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x438dbc() -> ! {
+    todo!(
+        "0x438dbc RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+    )
+}
+
+// 0x438df0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x438df0() -> ! {
+    todo!(
+        "0x438df0 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(unsigned long,std::string &)const"
+    )
+}
+
+// 0x438f34 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()"
+)]
+pub fn stub_0x438f34() -> ! {
+    todo!("0x438f34 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")
+}
+
+// 0x438f38 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED0Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()"
+)]
+pub fn stub_0x438f38() -> ! {
+    todo!("0x438f38 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")
+}
+
+// 0x438fd8 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE6lookupEPKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(char const*)const"
+)]
+pub fn stub_0x438fd8() -> ! {
+    todo!(
+        "0x438fd8 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(char const*)const"
+    )
+}
+
+// 0x439008 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE6lookupERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x439008() -> ! {
+    todo!(
+        "0x439008 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::lookup(RBX::Reflection::Variant const&)const"
+    )
+}
+
+// 0x439028 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x439028() -> ! {
+    todo!(
+        "0x439028 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+    )
+}
+
+// 0x43905c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x43905c() -> ! {
+    todo!(
+        "0x43905c RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(unsigned long,std::string &)const"
+    )
+}
+
+// 0x4391a0 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()"
+)]
+pub fn stub_0x4391a0() -> ! {
+    todo!("0x4391a0 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")
+}
+
+// 0x4391a4 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED0Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()"
+)]
+pub fn stub_0x4391a4() -> ! {
+    todo!("0x4391a4 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")
+}
+
+// 0x439244 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE6lookupEPKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(char const*)const"
+)]
+pub fn stub_0x439244() -> ! {
+    todo!(
+        "0x439244 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(char const*)const"
+    )
+}
+
+// 0x439274 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE6lookupERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x439274() -> ! {
+    todo!(
+        "0x439274 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::lookup(RBX::Reflection::Variant const&)const"
+    )
+}
+
+// 0x439294 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x439294() -> ! {
+    todo!(
+        "0x439294 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+    )
+}
+
+// 0x4392c8 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x4392c8() -> ! {
+    todo!(
+        "0x4392c8 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(unsigned long,std::string &)const"
+    )
+}
+
+// 0x43940c — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE15convertToStringERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(RBX::Instance::SaveFilter const&)const"
+)]
+pub fn stub_0x43940c() -> ! {
+    todo!(
+        "0x43940c RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToString(RBX::Instance::SaveFilter const&)const"
+    )
+}
+
+// 0x439678 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE13convertToItemERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToItem(RBX::Instance::SaveFilter const&)const"
+)]
+pub fn stub_0x439678() -> ! {
+    todo!(
+        "0x439678 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToItem(RBX::Instance::SaveFilter const&)const"
+    )
+}
+
+// 0x439834 — __ZNK3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE14convertToValueERKNS_4NameERS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToValue(RBX::Name const&,RBX::Instance::SaveFilter&)const"
+)]
+pub fn stub_0x439834() -> ! {
+    todo!(
+        "0x439834 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::convertToValue(RBX::Name const&,RBX::Instance::SaveFilter&)const"
+    )
+}
+
+// 0x4398b0 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEED2Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()"
+)]
+pub fn stub_0x4398b0() -> ! {
+    todo!("0x4398b0 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::~EnumDesc()")
+}
+
+// 0x439a84 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE15convertToStringERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(RBX::DataModel::GearType const&)const"
+)]
+pub fn stub_0x439a84() -> ! {
+    todo!(
+        "0x439a84 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToString(RBX::DataModel::GearType const&)const"
+    )
+}
+
+// 0x439cf0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE13convertToItemERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToItem(RBX::DataModel::GearType const&)const"
+)]
+pub fn stub_0x439cf0() -> ! {
+    todo!(
+        "0x439cf0 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToItem(RBX::DataModel::GearType const&)const"
+    )
+}
+
+// 0x439eac — __ZNK3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE14convertToValueERKNS_4NameERS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToValue(RBX::Name const&,RBX::DataModel::GearType&)const"
+)]
+pub fn stub_0x439eac() -> ! {
+    todo!(
+        "0x439eac RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::convertToValue(RBX::Name const&,RBX::DataModel::GearType&)const"
+    )
+}
+
+// 0x439f28 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEED2Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()"
+)]
+pub fn stub_0x439f28() -> ! {
+    todo!("0x439f28 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::~EnumDesc()")
+}
+
+// 0x43a0fc — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE15convertToStringERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(RBX::DataModel::GearGenreSetting const&)const"
+)]
+pub fn stub_0x43a0fc() -> ! {
+    todo!(
+        "0x43a0fc RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToString(RBX::DataModel::GearGenreSetting const&)const"
+    )
+}
+
+// 0x43a368 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE13convertToItemERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToItem(RBX::DataModel::GearGenreSetting const&)const"
+)]
+pub fn stub_0x43a368() -> ! {
+    todo!(
+        "0x43a368 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToItem(RBX::DataModel::GearGenreSetting const&)const"
+    )
+}
+
+// 0x43a524 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE14convertToValueERKNS_4NameERS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToValue(RBX::Name const&,RBX::DataModel::GearGenreSetting&)const"
+)]
+pub fn stub_0x43a524() -> ! {
+    todo!(
+        "0x43a524 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::convertToValue(RBX::Name const&,RBX::DataModel::GearGenreSetting&)const"
+    )
+}
+
+// 0x43a5a0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED2Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()"
+)]
+pub fn stub_0x43a5a0() -> ! {
+    todo!(
+        "0x43a5a0 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()"
+    )
+}
+
+// 0x43a774 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(RBX::DataModel::Genre const&)const"
+)]
+pub fn stub_0x43a774() -> ! {
+    todo!(
+        "0x43a774 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(RBX::DataModel::Genre const&)const"
+    )
+}
+
+// 0x43a9e0 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE13convertToItemERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToItem(RBX::DataModel::Genre const&)const"
+)]
+pub fn stub_0x43a9e0() -> ! {
+    todo!(
+        "0x43a9e0 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToItem(RBX::DataModel::Genre const&)const"
+    )
+}
+
+// 0x43ab9c — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToValueERKNS_4NameERS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToValue(RBX::Name const&,RBX::DataModel::Genre&)const"
+)]
+pub fn stub_0x43ab9c() -> ! {
+    todo!(
+        "0x43ab9c RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToValue(RBX::Name const&,RBX::DataModel::Genre&)const"
+    )
+}
+
+// 0x43ac18 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED2Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()"
+)]
+pub fn stub_0x43ac18() -> ! {
+    todo!("0x43ac18 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")
+}
+
+// 0x43adec — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(RBX::DataModel::CreatorType const&)const"
+)]
+pub fn stub_0x43adec() -> ! {
+    todo!(
+        "0x43adec RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(RBX::DataModel::CreatorType const&)const"
+    )
+}
+
+// 0x43b058 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE13convertToItemERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToItem(RBX::DataModel::CreatorType const&)const"
+)]
+pub fn stub_0x43b058() -> ! {
+    todo!(
+        "0x43b058 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToItem(RBX::DataModel::CreatorType const&)const"
+    )
+}
+
+// 0x43b214 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE14convertToValueERKNS_4NameERS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToValue(RBX::Name const&,RBX::DataModel::CreatorType&)const"
+)]
+pub fn stub_0x43b214() -> ! {
+    todo!(
+        "0x43b214 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToValue(RBX::Name const&,RBX::DataModel::CreatorType&)const"
+    )
+}
+
+// 0x43b290 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED2Ev
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()"
+)]
+pub fn stub_0x43b290() -> ! {
+    todo!("0x43b290 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")
+}
+
+// 0x43ba50 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4nextERNS2_13intrusive_ptrINSC_4slotEEE
+#[doc(
+    alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> &)"
+)]
+pub fn stub_0x43ba50() -> ! {
+    todo!(
+        "0x43ba50 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> &)"
+    )
+}
+
+// 0x43bbb0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE8on_errorERSt9exception
+#[doc(
+    alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::on_error(std::exception &)"
+)]
+pub fn stub_0x43bbb0() -> ! {
+    todo!(
+        "0x43bbb0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::on_error(std::exception &)"
+    )
+}
+
+// 0x43bbd8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotEEaSERKSF_
+#[doc(
+    alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> const&)"
+)]
+pub fn stub_0x43bbd8() -> ! {
+    todo!(
+        "0x43bbd8 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> const&)"
+    )
+}
+
+// 0x43bbfc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE22safe_static_init_mutexEv
+#[doc(
+    alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::safe_static_init_mutex(void)"
+)]
+pub fn stub_0x43bbfc() -> ! {
+    todo!(
+        "0x43bbfc rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::safe_static_init_mutex(void)"
+    )
+}
+
+// 0x43bc00 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE24safe_static_do_get_mutexEv
+#[doc(
+    alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::safe_static_do_get_mutex(void)"
+)]
+pub fn stub_0x43bc00() -> ! {
+    todo!(
+        "0x43bc00 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::safe_static_do_get_mutex(void)"
+    )
+}
+
+// 0x43c250 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX9DataModelEEENS_3argILi1EEENS2_IPSt6vectorINS3_10Reflection7VariantESaISB_EEEEEclIPFvS5_NS_10shared_ptrIKNS3_13TaskScheduler3JobEEESE_ENS0_5list1IRSM_EEEEvNS0_4typeIvEERT_RT0_i
+#[doc(
+    alias = "void boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *>>::operator()<void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *),boost::_bi::list1<boost::shared_ptr<RBX::TaskScheduler::Job const>&>>(boost::_bi::type<void>,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *) &,boost::_bi::list1<boost::shared_ptr<RBX::TaskScheduler::Job const>&> &,int)"
+)]
+pub fn stub_0x43c250() -> ! {
+    todo!(
+        "0x43c250 void boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *>>::operator()<void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *),boost::_bi::list1<boost::shared_ptr<RBX::TaskScheduler::Job const>&>>(boost::_bi::type<void>,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *) &,boost::_bi::list1<boost::shared_ptr<RBX::TaskScheduler::Job const>&> &,int)"
+    )
+}
+
+// 0x441838 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5TeamsES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Teams,RBX::Teams>(boost::shared_ptr<RBX::Teams> const*,RBX::Teams *)const"
+)]
+pub fn stub_0x441838() -> ! {
+    todo!(
+        "0x441838 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Teams,RBX::Teams>(boost::shared_ptr<RBX::Teams> const*,RBX::Teams *)const"
+    )
+}
+
+// 0x442fa8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17ControllerServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ControllerService,RBX::ControllerService>(boost::shared_ptr<RBX::ControllerService> const*,RBX::ControllerService *)const"
+)]
+pub fn stub_0x442fa8() -> ! {
+    todo!(
+        "0x442fa8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ControllerService,RBX::ControllerService>(boost::shared_ptr<RBX::ControllerService> const*,RBX::ControllerService *)const"
+    )
+}
+
+// 0x443644 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19ServerScriptServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ServerScriptService,RBX::ServerScriptService>(boost::shared_ptr<RBX::ServerScriptService> const*,RBX::ServerScriptService *)const"
+)]
+pub fn stub_0x443644() -> ! {
+    todo!(
+        "0x443644 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ServerScriptService,RBX::ServerScriptService>(boost::shared_ptr<RBX::ServerScriptService> const*,RBX::ServerScriptService *)const"
+    )
+}
+
+// 0x4442c0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17ReplicatedStorageES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ReplicatedStorage,RBX::ReplicatedStorage>(boost::shared_ptr<RBX::ReplicatedStorage> const*,RBX::ReplicatedStorage *)const"
+)]
+pub fn stub_0x4442c0() -> ! {
+    todo!(
+        "0x4442c0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ReplicatedStorage,RBX::ReplicatedStorage>(boost::shared_ptr<RBX::ReplicatedStorage> const*,RBX::ReplicatedStorage *)const"
+    )
+}
+
+// 0x444cd4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ServerStorageES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ServerStorage,RBX::ServerStorage>(boost::shared_ptr<RBX::ServerStorage> const*,RBX::ServerStorage *)const"
+)]
+pub fn stub_0x444cd4() -> ! {
+    todo!(
+        "0x444cd4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ServerStorage,RBX::ServerStorage>(boost::shared_ptr<RBX::ServerStorage> const*,RBX::ServerStorage *)const"
+    )
+}
+
+// 0x445c38 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8LightingES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Lighting,RBX::Lighting>(boost::shared_ptr<RBX::Lighting> const*,RBX::Lighting *)const"
+)]
+pub fn stub_0x445c38() -> ! {
+    todo!(
+        "0x445c38 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Lighting,RBX::Lighting>(boost::shared_ptr<RBX::Lighting> const*,RBX::Lighting *)const"
+    )
+}
+
+// 0x448cc8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12AssetServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::AssetService,RBX::AssetService>(boost::shared_ptr<RBX::AssetService> const*,RBX::AssetService *)const"
+)]
+pub fn stub_0x448cc8() -> ! {
+    todo!(
+        "0x448cc8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::AssetService,RBX::AssetService>(boost::shared_ptr<RBX::AssetService> const*,RBX::AssetService *)const"
+    )
+}
+
+// 0x449bd8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ScriptServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ScriptService,RBX::ScriptService>(boost::shared_ptr<RBX::ScriptService> const*,RBX::ScriptService *)const"
+)]
+pub fn stub_0x449bd8() -> ! {
+    todo!(
+        "0x449bd8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ScriptService,RBX::ScriptService>(boost::shared_ptr<RBX::ScriptService> const*,RBX::ScriptService *)const"
+    )
+}
+
+// 0x44a338 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20ContextActionServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ContextActionService,RBX::ContextActionService>(boost::shared_ptr<RBX::ContextActionService> const*,RBX::ContextActionService *)const"
+)]
+pub fn stub_0x44a338() -> ! {
+    todo!(
+        "0x44a338 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ContextActionService,RBX::ContextActionService>(boost::shared_ptr<RBX::ContextActionService> const*,RBX::ContextActionService *)const"
+    )
+}
+
+// 0x44a8f0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9FWServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FWService,RBX::FWService>(boost::shared_ptr<RBX::FWService> const*,RBX::FWService *)const"
+)]
+pub fn stub_0x44a8f0() -> ! {
+    todo!(
+        "0x44a8f0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FWService,RBX::FWService>(boost::shared_ptr<RBX::FWService> const*,RBX::FWService *)const"
+    )
+}
+
+// 0x44ab28 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network7PlayersES7_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Players,RBX::Network::Players>(boost::shared_ptr<RBX::Network::Players> const*,RBX::Network::Players *)const"
+)]
+pub fn stub_0x44ab28() -> ! {
+    todo!(
+        "0x44ab28 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Players,RBX::Network::Players>(boost::shared_ptr<RBX::Network::Players> const*,RBX::Network::Players *)const"
+    )
+}
+
+// 0x44b148 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_21PersonalServerServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PersonalServerService,RBX::PersonalServerService>(boost::shared_ptr<RBX::PersonalServerService> const*,RBX::PersonalServerService *)const"
+)]
+pub fn stub_0x44b148() -> ! {
+    todo!(
+        "0x44b148 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PersonalServerService,RBX::PersonalServerService>(boost::shared_ptr<RBX::PersonalServerService> const*,RBX::PersonalServerService *)const"
+    )
+}
+
+// 0x44b948 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15TeleportServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TeleportService,RBX::TeleportService>(boost::shared_ptr<RBX::TeleportService> const*,RBX::TeleportService *)const"
+)]
+pub fn stub_0x44b948() -> ! {
+    todo!(
+        "0x44b948 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TeleportService,RBX::TeleportService>(boost::shared_ptr<RBX::TeleportService> const*,RBX::TeleportService *)const"
+    )
+}
+
+// 0x44c148 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14CookiesServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CookiesService,RBX::CookiesService>(boost::shared_ptr<RBX::CookiesService> const*,RBX::CookiesService *)const"
+)]
+pub fn stub_0x44c148() -> ! {
+    todo!(
+        "0x44c148 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CookiesService,RBX::CookiesService>(boost::shared_ptr<RBX::CookiesService> const*,RBX::CookiesService *)const"
+    )
+}
+
+// 0x44cc18 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13DebrisServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebrisService,RBX::DebrisService>(boost::shared_ptr<RBX::DebrisService> const*,RBX::DebrisService *)const"
+)]
+pub fn stub_0x44cc18() -> ! {
+    todo!(
+        "0x44cc18 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebrisService,RBX::DebrisService>(boost::shared_ptr<RBX::DebrisService> const*,RBX::DebrisService *)const"
+    )
+}
+
+// 0x44d418 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15GamePassServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GamePassService,RBX::GamePassService>(boost::shared_ptr<RBX::GamePassService> const*,RBX::GamePassService *)const"
+)]
+pub fn stub_0x44d418() -> ! {
+    todo!(
+        "0x44d418 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GamePassService,RBX::GamePassService>(boost::shared_ptr<RBX::GamePassService> const*,RBX::GamePassService *)const"
+    )
+}
+
+// 0x44dc18 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13SocialServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SocialService,RBX::SocialService>(boost::shared_ptr<RBX::SocialService> const*,RBX::SocialService *)const"
+)]
+pub fn stub_0x44dc18() -> ! {
+    todo!(
+        "0x44dc18 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SocialService,RBX::SocialService>(boost::shared_ptr<RBX::SocialService> const*,RBX::SocialService *)const"
+    )
+}
+
+// 0x44e6bc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18RenderHooksServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RenderHooksService,RBX::RenderHooksService>(boost::shared_ptr<RBX::RenderHooksService> const*,RBX::RenderHooksService *)const"
+)]
+pub fn stub_0x44e6bc() -> ! {
+    todo!(
+        "0x44e6bc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RenderHooksService,RBX::RenderHooksService>(boost::shared_ptr<RBX::RenderHooksService> const*,RBX::RenderHooksService *)const"
+    )
+}
+
+// 0x44f2ec — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15GeometryServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GeometryService,RBX::GeometryService>(boost::shared_ptr<RBX::GeometryService> const*,RBX::GeometryService *)const"
+)]
+pub fn stub_0x44f2ec() -> ! {
+    todo!(
+        "0x44f2ec void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GeometryService,RBX::GeometryService>(boost::shared_ptr<RBX::GeometryService> const*,RBX::GeometryService *)const"
+    )
+}
+
+// 0x4511a4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14PhysicsServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PhysicsService,RBX::PhysicsService>(boost::shared_ptr<RBX::PhysicsService> const*,RBX::PhysicsService *)const"
+)]
+pub fn stub_0x4511a4() -> ! {
+    todo!(
+        "0x4511a4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PhysicsService,RBX::PhysicsService>(boost::shared_ptr<RBX::PhysicsService> const*,RBX::PhysicsService *)const"
+    )
+}
+
+// 0x4519a4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17CollectionServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CollectionService,RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const*,RBX::CollectionService *)const"
+)]
+pub fn stub_0x4519a4() -> ! {
+    todo!(
+        "0x4519a4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CollectionService,RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const*,RBX::CollectionService *)const"
+    )
+}
+
+// 0x451e28 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13JointsServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::JointsService,RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const*,RBX::JointsService *)const"
+)]
+pub fn stub_0x451e28() -> ! {
+    todo!(
+        "0x451e28 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::JointsService,RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const*,RBX::JointsService *)const"
+    )
+}
+
+// 0x452ac8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10Soundscape12SoundServiceES7_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundService,RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const*,RBX::Soundscape::SoundService *)const"
+)]
+pub fn stub_0x452ac8() -> ! {
+    todo!(
+        "0x452ac8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Soundscape::SoundService,RBX::Soundscape::SoundService>(boost::shared_ptr<RBX::Soundscape::SoundService> const*,RBX::Soundscape::SoundService *)const"
+    )
+}
+
+// 0x453108 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14CoreGuiServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreGuiService,RBX::CoreGuiService>(boost::shared_ptr<RBX::CoreGuiService> const*,RBX::CoreGuiService *)const"
+)]
+pub fn stub_0x453108() -> ! {
+    todo!(
+        "0x453108 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreGuiService,RBX::CoreGuiService>(boost::shared_ptr<RBX::CoreGuiService> const*,RBX::CoreGuiService *)const"
+    )
+}
+
+// 0x453728 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17StarterGuiServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterGuiService,RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const*,RBX::StarterGuiService *)const"
+)]
+pub fn stub_0x453728() -> ! {
+    todo!(
+        "0x453728 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterGuiService,RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const*,RBX::StarterGuiService *)const"
+    )
+}
+
+// 0x453e28 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18StarterPackServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterPackService,RBX::StarterPackService>(boost::shared_ptr<RBX::StarterPackService> const*,RBX::StarterPackService *)const"
+)]
+pub fn stub_0x453e28() -> ! {
+    todo!(
+        "0x453e28 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterPackService,RBX::StarterPackService>(boost::shared_ptr<RBX::StarterPackService> const*,RBX::StarterPackService *)const"
+    )
+}
+
+// 0x454088 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9PlayerHUDES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerHUD,RBX::PlayerHUD>(boost::shared_ptr<RBX::PlayerHUD> const*,RBX::PlayerHUD *)const"
+)]
+pub fn stub_0x454088() -> ! {
+    todo!(
+        "0x454088 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerHUD,RBX::PlayerHUD>(boost::shared_ptr<RBX::PlayerHUD> const*,RBX::PlayerHUD *)const"
+    )
+}
+
+// 0x4547e8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13LocalBackpackES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LocalBackpack,RBX::LocalBackpack>(boost::shared_ptr<RBX::LocalBackpack> const*,RBX::LocalBackpack *)const"
+)]
+pub fn stub_0x4547e8() -> ! {
+    todo!(
+        "0x4547e8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LocalBackpack,RBX::LocalBackpack>(boost::shared_ptr<RBX::LocalBackpack> const*,RBX::LocalBackpack *)const"
+    )
+}
+
+// 0x4557a4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11ChatServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ChatService,RBX::ChatService>(boost::shared_ptr<RBX::ChatService> const*,RBX::ChatService *)const"
+)]
+pub fn stub_0x4557a4() -> ! {
+    todo!(
+        "0x4557a4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ChatService,RBX::ChatService>(boost::shared_ptr<RBX::ChatService> const*,RBX::ChatService *)const"
+    )
+}
+
+// 0x45623c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10GuiServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiService,RBX::GuiService>(boost::shared_ptr<RBX::GuiService> const*,RBX::GuiService *)const"
+)]
+pub fn stub_0x45623c() -> ! {
+    todo!(
+        "0x45623c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiService,RBX::GuiService>(boost::shared_ptr<RBX::GuiService> const*,RBX::GuiService *)const"
+    )
+}
+
+// 0x4568bc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_24KeyframeSequenceProviderES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::KeyframeSequenceProvider,RBX::KeyframeSequenceProvider>(boost::shared_ptr<RBX::KeyframeSequenceProvider> const*,RBX::KeyframeSequenceProvider *)const"
+)]
+pub fn stub_0x4568bc() -> ! {
+    todo!(
+        "0x4568bc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::KeyframeSequenceProvider,RBX::KeyframeSequenceProvider>(boost::shared_ptr<RBX::KeyframeSequenceProvider> const*,RBX::KeyframeSequenceProvider *)const"
+    )
+}
+
+// 0x4570bc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ContentFilterES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ContentFilter,RBX::ContentFilter>(boost::shared_ptr<RBX::ContentFilter> const*,RBX::ContentFilter *)const"
+)]
+pub fn stub_0x4570bc() -> ! {
+    todo!(
+        "0x4570bc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ContentFilter,RBX::ContentFilter>(boost::shared_ptr<RBX::ContentFilter> const*,RBX::ContentFilter *)const"
+    )
+}
+
+// 0x457d60 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7GuiRootES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiRoot,RBX::GuiRoot>(boost::shared_ptr<RBX::GuiRoot> const*,RBX::GuiRoot *)const"
+)]
+pub fn stub_0x457d60() -> ! {
+    todo!(
+        "0x457d60 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiRoot,RBX::GuiRoot>(boost::shared_ptr<RBX::GuiRoot> const*,RBX::GuiRoot *)const"
+    )
+}
+
+// 0x458060 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9WorkspaceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Workspace,RBX::Workspace>(boost::shared_ptr<RBX::Workspace> const*,RBX::Workspace *)const"
+)]
+pub fn stub_0x458060() -> ! {
+    todo!(
+        "0x458060 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Workspace,RBX::Workspace>(boost::shared_ptr<RBX::Workspace> const*,RBX::Workspace *)const"
+    )
+}
+
+// 0x4585f4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20ChangeHistoryServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ChangeHistoryService,RBX::ChangeHistoryService>(boost::shared_ptr<RBX::ChangeHistoryService> const*,RBX::ChangeHistoryService *)const"
+)]
+pub fn stub_0x4585f4() -> ! {
+    todo!(
+        "0x4585f4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ChangeHistoryService,RBX::ChangeHistoryService>(boost::shared_ptr<RBX::ChangeHistoryService> const*,RBX::ChangeHistoryService *)const"
+    )
+}
+
+// 0x458fd8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9DataModelES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DataModel,RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const*,RBX::DataModel *)const"
+)]
+pub fn stub_0x458fd8() -> ! {
+    todo!(
+        "0x458fd8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DataModel,RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const*,RBX::DataModel *)const"
+    )
+}
+
+// 0x459d14 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5VisitES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Visit,RBX::Visit>(boost::shared_ptr<RBX::Visit> const*,RBX::Visit *)const"
+)]
+pub fn stub_0x459d14() -> ! {
+    todo!(
+        "0x459d14 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Visit,RBX::Visit>(boost::shared_ptr<RBX::Visit> const*,RBX::Visit *)const"
+    )
+}
+
+// 0x45a174 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Instance10SaveFilterEEEE13initSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter> const>::initSingleton(void)"
+)]
+pub fn stub_0x45a174() -> ! {
+    todo!(
+        "0x45a174 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter> const>::initSingleton(void)"
+    )
+}
+
+// 0x45a178 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Instance10SaveFilterEEEE14doGetSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter> const>::doGetSingleton(void)"
+)]
+pub fn stub_0x45a178() -> ! {
+    todo!(
+        "0x45a178 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter> const>::doGetSingleton(void)"
+    )
+}
+
+// 0x45a268 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel8GearTypeEEEE13initSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearType> const>::initSingleton(void)"
+)]
+pub fn stub_0x45a268() -> ! {
+    todo!(
+        "0x45a268 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearType> const>::initSingleton(void)"
+    )
+}
+
+// 0x45a26c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel8GearTypeEEEE14doGetSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearType> const>::doGetSingleton(void)"
+)]
+pub fn stub_0x45a26c() -> ! {
+    todo!(
+        "0x45a26c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearType> const>::doGetSingleton(void)"
+    )
+}
+
+// 0x45a35c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel16GearGenreSettingEEEE13initSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting> const>::initSingleton(void)"
+)]
+pub fn stub_0x45a35c() -> ! {
+    todo!(
+        "0x45a35c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting> const>::initSingleton(void)"
+    )
+}
+
+// 0x45a360 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel16GearGenreSettingEEEE14doGetSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting> const>::doGetSingleton(void)"
+)]
+pub fn stub_0x45a360() -> ! {
+    todo!(
+        "0x45a360 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting> const>::doGetSingleton(void)"
+    )
+}
+
+// 0x45a450 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel5GenreEEEE13initSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::Genre> const>::initSingleton(void)"
+)]
+pub fn stub_0x45a450() -> ! {
+    todo!(
+        "0x45a450 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::Genre> const>::initSingleton(void)"
+    )
+}
+
+// 0x45a454 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel5GenreEEEE14doGetSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::Genre> const>::doGetSingleton(void)"
+)]
+pub fn stub_0x45a454() -> ! {
+    todo!(
+        "0x45a454 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::Genre> const>::doGetSingleton(void)"
+    )
+}
+
+// 0x45a544 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel11CreatorTypeEEEE13initSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType> const>::initSingleton(void)"
+)]
+pub fn stub_0x45a544() -> ! {
+    todo!(
+        "0x45a544 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType> const>::initSingleton(void)"
+    )
+}
+
+// 0x45a548 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9DataModel11CreatorTypeEEEE14doGetSingletonEv
+#[doc(
+    alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType> const>::doGetSingleton(void)"
+)]
+pub fn stub_0x45a548() -> ! {
+    todo!(
+        "0x45a548 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType> const>::doGetSingleton(void)"
+    )
+}
+
+// 0x45c664 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EEC2EMS2_FvSsSsEPKcS8_S8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::BoundFuncDesc(void (RBX::DataModel::*)(std::string,std::string),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
+)]
+pub fn stub_0x45c664() -> ! {
+    todo!(
+        "0x45c664 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::BoundFuncDesc(void (RBX::DataModel::*)(std::string,std::string),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
+    )
+}
+
+// 0x45c82c — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EE16declareSignatureEPKcNS0_7VariantES6_S7_
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)"
+)]
+pub fn stub_0x45c82c() -> ! {
+    todo!(
+        "0x45c82c RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)"
+    )
+}
+
+// 0x45c878 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EED0Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x45c878() -> ! {
+    todo!(
+        "0x45c878 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc()"
+    )
+}
+
+// 0x45c94c — __ZNK3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
+)]
+pub fn stub_0x45c94c() -> ! {
+    todo!(
+        "0x45c94c RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
+    )
+}
+
+// 0x45cb18 — __ZN3RBX10Reflection11Call2HelperINS_9DataModelEMS2_FvSsSsESsSsvE4callEPS2_S4_RNS0_7VariantERKSsSA_
+#[doc(
+    alias = "RBX::Reflection::Call2Helper<RBX::DataModel,void (RBX::DataModel::*)(std::string,std::string),std::string,std::string,void>::call(RBX::DataModel*,void (RBX::DataModel::*)(std::string,std::string),RBX::Reflection::Variant &,std::string const&,std::string const&)"
+)]
+pub fn stub_0x45cb18() -> ! {
+    todo!(
+        "0x45cb18 RBX::Reflection::Call2Helper<RBX::DataModel,void (RBX::DataModel::*)(std::string,std::string),std::string,std::string,void>::call(RBX::DataModel*,void (RBX::DataModel::*)(std::string,std::string),RBX::Reflection::Variant &,std::string const&,std::string const&)"
+    )
+}
+
+// 0x45ccdc — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::EventDesc(rbx::signal<void ()(bool)> RBX::DataModel::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
+)]
+pub fn stub_0x45ccdc() -> ! {
+    todo!(
+        "0x45ccdc RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::EventDesc(rbx::signal<void ()(bool)> RBX::DataModel::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
+    )
+}
+
+// 0x45ce60 — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::~EventDesc()"
+)]
+pub fn stub_0x45ce60() -> ! {
+    todo!(
+        "0x45ce60 RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::~EventDesc()"
+    )
+}
+
+// 0x45cf14 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+#[doc(
+    alias = "RBX::Reflection::EventDescImpl<1,RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const"
+)]
+pub fn stub_0x45cf14() -> ! {
+    todo!(
+        "0x45cf14 RBX::Reflection::EventDescImpl<1,RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const"
+    )
+}
+
+// 0x45d068 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
+#[doc(
+    alias = "RBX::Reflection::EventDescImpl<1,RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const"
+)]
+pub fn stub_0x45d068() -> ! {
+    todo!(
+        "0x45d068 RBX::Reflection::EventDescImpl<1,RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const"
+    )
+}
+
+// 0x45d0f4 — __ZNK3RBX10Reflection13EventDescBaseINS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
+#[doc(
+    alias = "RBX::Reflection::EventDescBase<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::disconnectAll(RBX::Reflection::EventSource *)const"
+)]
+pub fn stub_0x45d0f4() -> ! {
+    todo!(
+        "0x45d0f4 RBX::Reflection::EventDescBase<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::disconnectAll(RBX::Reflection::EventSource *)const"
+    )
+}
