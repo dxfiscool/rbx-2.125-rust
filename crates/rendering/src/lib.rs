@@ -29,4 +29,5 @@ pub mod generated_shard_e;
 pub mod generated_shard_bg4;
 pub mod generated_shard_bg10;
 pub mod high;
+pub mod generated_24;
 pub mod next_batch;
