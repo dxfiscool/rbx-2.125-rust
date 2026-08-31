@@ -28,6 +28,7 @@ pub mod generated_26;
 pub mod generated_27;
 pub mod generated_28;
 pub mod generated_29;
+pub mod generated_30;
 pub mod generated_shard_a;
 pub mod generated_shard_b;
 pub mod generated_shard_bg10;
