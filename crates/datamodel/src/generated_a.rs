@@ -141,7 +141,7 @@ pub fn stub_0x623544() -> ! {
 }
 
 // 0x623624 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SelectionPartLassoENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_0x623624() -> ! {
     todo!("0x623624 `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionPartLasso,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
@@ -177,7 +177,7 @@ pub fn stub_0x623fd8() -> ! {
 }
 
 // 0x6240b8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_0x6240b8() -> ! {
     todo!("0x6240b8 `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
@@ -333,7 +333,7 @@ pub fn stub_0x62c97c() -> ! {
 }
 
 // 0x62c998 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12PlatformImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_0x62c998() -> ! {
     todo!("0x62c998 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")
 }
@@ -447,7 +447,7 @@ pub fn stub_0x62fd78() -> ! {
 }
 
 // 0x62fe58 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_0x62fe58() -> ! {
     todo!("0x62fe58 `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
@@ -459,7 +459,7 @@ pub fn stub_0x63061c() -> ! {
 }
 
 // 0x6306fc — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_0x6306fc() -> ! {
     todo!("0x6306fc `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }

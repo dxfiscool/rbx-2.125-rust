@@ -1,6 +1,6 @@
-//! platform generated — 3024 stubs sorted by EA, from ida/export.json
-//! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Flurry
-//! Batch: 3024 stubs (2924 prior +100 this batch, 3026 ObjC filtered, 550 ObjC remaining; total ObjC 3026, non-ObjC helpers 548 included) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! platform generated — 3174 stubs sorted by EA, from ida/export.json
+//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (1072 strict, 1452 incl. SkateboardPlatform noise; ObjC selectors 2763 total)
+//! Batch: 3174 stubs (3024 prior +150 this batch, strict remaining 721; was 3026 ObjC filtered) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -21075,3 +21075,1270 @@ pub fn stub_f06ee0() -> ! {
     todo!("0xf06ee0 -[FlurrySession crashReportData]")
 }
 
+
+// 0x21ce0 — iOSSettingsService::Init(void)
+// mangled: __ZN18iOSSettingsService4InitEv
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this)
+#[doc(alias = "iOSSettingsService::Init(void)")]
+pub fn stub_21ce0() -> ! {
+    todo!("0x21ce0 iOSSettingsService::Init(void)")
+}
+
+// 0x239ec — iOSSettingsService::ReadValueiPadMinimumVersion(char const*)
+// mangled: __ZN18iOSSettingsService27ReadValueiPadMinimumVersionEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPadMinimumVersion(char const*)")]
+pub fn stub_239ec() -> ! {
+    todo!("0x239ec iOSSettingsService::ReadValueiPadMinimumVersion(char const*)")
+}
+
+// 0x23b50 — iOSSettingsService::ReadValueiPadMaximumVersion(char const*)
+// mangled: __ZN18iOSSettingsService27ReadValueiPadMaximumVersionEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPadMaximumVersion(char const*)")]
+pub fn stub_23b50() -> ! {
+    todo!("0x23b50 iOSSettingsService::ReadValueiPadMaximumVersion(char const*)")
+}
+
+// 0x23b68 — iOSSettingsService::ReadValueiPhoneMinimumVersion(char const*)
+// mangled: __ZN18iOSSettingsService29ReadValueiPhoneMinimumVersionEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPhoneMinimumVersion(char const*)")]
+pub fn stub_23b68() -> ! {
+    todo!("0x23b68 iOSSettingsService::ReadValueiPhoneMinimumVersion(char const*)")
+}
+
+// 0x23b80 — iOSSettingsService::ReadValueiPhoneMaximumVersion(char const*)
+// mangled: __ZN18iOSSettingsService29ReadValueiPhoneMaximumVersionEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPhoneMaximumVersion(char const*)")]
+pub fn stub_23b80() -> ! {
+    todo!("0x23b80 iOSSettingsService::ReadValueiPhoneMaximumVersion(char const*)")
+}
+
+// 0x23b98 — iOSSettingsService::ReadValueiPodMinimumVersion(char const*)
+// mangled: __ZN18iOSSettingsService27ReadValueiPodMinimumVersionEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPodMinimumVersion(char const*)")]
+pub fn stub_23b98() -> ! {
+    todo!("0x23b98 iOSSettingsService::ReadValueiPodMinimumVersion(char const*)")
+}
+
+// 0x23bb0 — iOSSettingsService::ReadValueiPodMaximumVersion(char const*)
+// mangled: __ZN18iOSSettingsService27ReadValueiPodMaximumVersionEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPodMaximumVersion(char const*)")]
+pub fn stub_23bb0() -> ! {
+    todo!("0x23bb0 iOSSettingsService::ReadValueiPodMaximumVersion(char const*)")
+}
+
+// 0x23bc8 — iOSSettingsService::ReadValueDisablePlayButtonForAll(char const*)
+// mangled: __ZN18iOSSettingsService32ReadValueDisablePlayButtonForAllEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueDisablePlayButtonForAll(char const*)")]
+pub fn stub_23bc8() -> ! {
+    todo!("0x23bc8 iOSSettingsService::ReadValueDisablePlayButtonForAll(char const*)")
+}
+
+// 0x23be4 — iOSSettingsService::ReadValueDisablePlayButtonForNonBC(char const*)
+// mangled: __ZN18iOSSettingsService34ReadValueDisablePlayButtonForNonBCEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueDisablePlayButtonForNonBC(char const*)")]
+pub fn stub_23be4() -> ! {
+    todo!("0x23be4 iOSSettingsService::ReadValueDisablePlayButtonForNonBC(char const*)")
+}
+
+// 0x23c00 — iOSSettingsService::ReadValueiPad1_MaximumIdealParts(char const*)
+// mangled: __ZN18iOSSettingsService32ReadValueiPad1_MaximumIdealPartsEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPad1_MaximumIdealParts(char const*)")]
+pub fn stub_23c00() -> ! {
+    todo!("0x23c00 iOSSettingsService::ReadValueiPad1_MaximumIdealParts(char const*)")
+}
+
+// 0x23c18 — iOSSettingsService::ReadValueiPad2_MaximumIdealParts(char const*)
+// mangled: __ZN18iOSSettingsService32ReadValueiPad2_MaximumIdealPartsEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPad2_MaximumIdealParts(char const*)")]
+pub fn stub_23c18() -> ! {
+    todo!("0x23c18 iOSSettingsService::ReadValueiPad2_MaximumIdealParts(char const*)")
+}
+
+// 0x23c30 — iOSSettingsService::ReadValueiPad3_MaximumIdealParts(char const*)
+// mangled: __ZN18iOSSettingsService32ReadValueiPad3_MaximumIdealPartsEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPad3_MaximumIdealParts(char const*)")]
+pub fn stub_23c30() -> ! {
+    todo!("0x23c30 iOSSettingsService::ReadValueiPad3_MaximumIdealParts(char const*)")
+}
+
+// 0x23c48 — iOSSettingsService::ReadValueiPad4_MaximumIdealParts(char const*)
+// mangled: __ZN18iOSSettingsService32ReadValueiPad4_MaximumIdealPartsEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPad4_MaximumIdealParts(char const*)")]
+pub fn stub_23c48() -> ! {
+    todo!("0x23c48 iOSSettingsService::ReadValueiPad4_MaximumIdealParts(char const*)")
+}
+
+// 0x23c60 — iOSSettingsService::ReadValueiPod4_MaximumIdealParts(char const*)
+// mangled: __ZN18iOSSettingsService32ReadValueiPod4_MaximumIdealPartsEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPod4_MaximumIdealParts(char const*)")]
+pub fn stub_23c60() -> ! {
+    todo!("0x23c60 iOSSettingsService::ReadValueiPod4_MaximumIdealParts(char const*)")
+}
+
+// 0x23c78 — iOSSettingsService::ReadValueiPod5_MaximumIdealParts(char const*)
+// mangled: __ZN18iOSSettingsService32ReadValueiPod5_MaximumIdealPartsEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPod5_MaximumIdealParts(char const*)")]
+pub fn stub_23c78() -> ! {
+    todo!("0x23c78 iOSSettingsService::ReadValueiPod5_MaximumIdealParts(char const*)")
+}
+
+// 0x23c90 — iOSSettingsService::ReadValueiPhone4s_MaximumIdealParts(char const*)
+// mangled: __ZN18iOSSettingsService35ReadValueiPhone4s_MaximumIdealPartsEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPhone4s_MaximumIdealParts(char const*)")]
+pub fn stub_23c90() -> ! {
+    todo!("0x23c90 iOSSettingsService::ReadValueiPhone4s_MaximumIdealParts(char const*)")
+}
+
+// 0x23ca8 — iOSSettingsService::ReadValueiPhone5_MaximumIdealParts(char const*)
+// mangled: __ZN18iOSSettingsService34ReadValueiPhone5_MaximumIdealPartsEPKc
+// type: int __fastcall(iOSSettingsService *this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiPhone5_MaximumIdealParts(char const*)")]
+pub fn stub_23ca8() -> ! {
+    todo!("0x23ca8 iOSSettingsService::ReadValueiPhone5_MaximumIdealParts(char const*)")
+}
+
+// 0x23cc0 — iOSSettingsService::ReadValueTimeIntervalBetweenRobuxPurchaseInMinutes(char const*)
+// mangled: __ZN18iOSSettingsService50ReadValueTimeIntervalBetweenRobuxPurchaseInMinutesEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueTimeIntervalBetweenRobuxPurchaseInMinutes(char const*)")]
+pub fn stub_23cc0() -> ! {
+    todo!("0x23cc0 iOSSettingsService::ReadValueTimeIntervalBetweenRobuxPurchaseInMinutes(char const*)")
+}
+
+// 0x23cd8 — iOSSettingsService::ReadValueTimeIntervalBetweenBCPurchaseInMinutes(char const*)
+// mangled: __ZN18iOSSettingsService47ReadValueTimeIntervalBetweenBCPurchaseInMinutesEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueTimeIntervalBetweenBCPurchaseInMinutes(char const*)")]
+pub fn stub_23cd8() -> ! {
+    todo!("0x23cd8 iOSSettingsService::ReadValueTimeIntervalBetweenBCPurchaseInMinutes(char const*)")
+}
+
+// 0x23cf0 — iOSSettingsService::ReadValueTimeIntervalBetweenCatalogPurchaseInMinutes(char const*)
+// mangled: __ZN18iOSSettingsService52ReadValueTimeIntervalBetweenCatalogPurchaseInMinutesEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueTimeIntervalBetweenCatalogPurchaseInMinutes(char const*)")]
+pub fn stub_23cf0() -> ! {
+    todo!("0x23cf0 iOSSettingsService::ReadValueTimeIntervalBetweenCatalogPurchaseInMinutes(char const*)")
+}
+
+// 0x23d08 — iOSSettingsService::ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUp(char const*)
+// mangled: __ZN18iOSSettingsService56ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUpEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUp(char const*)")]
+pub fn stub_23d08() -> ! {
+    todo!("0x23d08 iOSSettingsService::ReadValueTimeLimitForBillingServiceRetriesBeforeGivingUp(char const*)")
+}
+
+// 0x23d20 — iOSSettingsService::ReadValueTestFlightLoggingLevel(char const*)
+// mangled: __ZN18iOSSettingsService31ReadValueTestFlightLoggingLevelEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueTestFlightLoggingLevel(char const*)")]
+pub fn stub_23d20() -> ! {
+    todo!("0x23d20 iOSSettingsService::ReadValueTestFlightLoggingLevel(char const*)")
+}
+
+// 0x23d38 — iOSSettingsService::ReadValueTestFlightPercentage(char const*)
+// mangled: __ZN18iOSSettingsService29ReadValueTestFlightPercentageEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueTestFlightPercentage(char const*)")]
+pub fn stub_23d38() -> ! {
+    todo!("0x23d38 iOSSettingsService::ReadValueTestFlightPercentage(char const*)")
+}
+
+// 0x23d50 — iOSSettingsService::ReadValueBugSensePercentage(char const*)
+// mangled: __ZN18iOSSettingsService27ReadValueBugSensePercentageEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueBugSensePercentage(char const*)")]
+pub fn stub_23d50() -> ! {
+    todo!("0x23d50 iOSSettingsService::ReadValueBugSensePercentage(char const*)")
+}
+
+// 0x23d68 — iOSSettingsService::ReadValueBugSenseLogLines(char const*)
+// mangled: __ZN18iOSSettingsService25ReadValueBugSenseLogLinesEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueBugSenseLogLines(char const*)")]
+pub fn stub_23d68() -> ! {
+    todo!("0x23d68 iOSSettingsService::ReadValueBugSenseLogLines(char const*)")
+}
+
+// 0x23d80 — iOSSettingsService::ReadValueBugSenseLogLevel(char const*)
+// mangled: __ZN18iOSSettingsService25ReadValueBugSenseLogLevelEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueBugSenseLogLevel(char const*)")]
+pub fn stub_23d80() -> ! {
+    todo!("0x23d80 iOSSettingsService::ReadValueBugSenseLogLevel(char const*)")
+}
+
+// 0x23d9c — iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)
+// mangled: __ZN18iOSSettingsService35ReadValueiOSGoogleAnalyticsAccount2EPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)")]
+pub fn stub_23d9c() -> ! {
+    todo!("0x23d9c iOSSettingsService::ReadValueiOSGoogleAnalyticsAccount2(char const*)")
+}
+
+// 0x23ed4 — iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)
+// mangled: __ZN18iOSSettingsService37ReadValueiOSGoogleAnalyticsSampleRateEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)")]
+pub fn stub_23ed4() -> ! {
+    todo!("0x23ed4 iOSSettingsService::ReadValueiOSGoogleAnalyticsSampleRate(char const*)")
+}
+
+// 0x23eec — iOSSettingsService::ReadValueSearchEndpointIPad(char const*)
+// mangled: __ZN18iOSSettingsService27ReadValueSearchEndpointIPadEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueSearchEndpointIPad(char const*)")]
+pub fn stub_23eec() -> ! {
+    todo!("0x23eec iOSSettingsService::ReadValueSearchEndpointIPad(char const*)")
+}
+
+// 0x24024 — iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)
+// mangled: __ZN18iOSSettingsService29ReadValueSearchEndpointIPhoneEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)")]
+pub fn stub_24024() -> ! {
+    todo!("0x24024 iOSSettingsService::ReadValueSearchEndpointIPhone(char const*)")
+}
+
+// 0x2415c — iOSSettingsService::ReadValueCacheUIWebViews(char const*)
+// mangled: __ZN18iOSSettingsService24ReadValueCacheUIWebViewsEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueCacheUIWebViews(char const*)")]
+pub fn stub_2415c() -> ! {
+    todo!("0x2415c iOSSettingsService::ReadValueCacheUIWebViews(char const*)")
+}
+
+// 0x24178 — iOSSettingsService::ReadValueThumbstickControlStyle(char const*)
+// mangled: __ZN18iOSSettingsService31ReadValueThumbstickControlStyleEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueThumbstickControlStyle(char const*)")]
+pub fn stub_24178() -> ! {
+    todo!("0x24178 iOSSettingsService::ReadValueThumbstickControlStyle(char const*)")
+}
+
+// 0x24194 — iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)
+// mangled: __ZN18iOSSettingsService32ReadValueFreeMemoryCheckerActiveEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)")]
+pub fn stub_24194() -> ! {
+    todo!("0x24194 iOSSettingsService::ReadValueFreeMemoryCheckerActive(char const*)")
+}
+
+// 0x241b0 — iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)
+// mangled: __ZN18iOSSettingsService42ReadValueFreeMemoryCheckerRateMilliSecondsEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)")]
+pub fn stub_241b0() -> ! {
+    todo!("0x241b0 iOSSettingsService::ReadValueFreeMemoryCheckerRateMilliSeconds(char const*)")
+}
+
+// 0x241cc — iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)
+// mangled: __ZN18iOSSettingsService44ReadValueFreeMemoryCheckerThresholdKiloBytesEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)")]
+pub fn stub_241cc() -> ! {
+    todo!("0x241cc iOSSettingsService::ReadValueFreeMemoryCheckerThresholdKiloBytes(char const*)")
+}
+
+// 0x241e8 — iOSSettingsService::ReadValueMemoryBouncerActive(char const*)
+// mangled: __ZN18iOSSettingsService28ReadValueMemoryBouncerActiveEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerActive(char const*)")]
+pub fn stub_241e8() -> ! {
+    todo!("0x241e8 iOSSettingsService::ReadValueMemoryBouncerActive(char const*)")
+}
+
+// 0x24204 — iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)
+// mangled: __ZN18iOSSettingsService45ReadValueMemoryBouncerEnforceRateMilliSecondsEPKc
+// type: int __fastcall(iOSSettingsService *this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")]
+pub fn stub_24204() -> ! {
+    todo!("0x24204 iOSSettingsService::ReadValueMemoryBouncerEnforceRateMilliSeconds(char const*)")
+}
+
+// 0x24220 — iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)
+// mangled: __ZN18iOSSettingsService40ReadValueMemoryBouncerThresholdKiloBytesEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")]
+pub fn stub_24220() -> ! {
+    todo!("0x24220 iOSSettingsService::ReadValueMemoryBouncerThresholdKiloBytes(char const*)")
+}
+
+// 0x2423c — iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)
+// mangled: __ZN18iOSSettingsService36ReadValueMemoryBouncerLimitMegaBytesEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")]
+pub fn stub_2423c() -> ! {
+    todo!("0x2423c iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytes(char const*)")
+}
+
+// 0x24258 — iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)
+// mangled: __ZN18iOSSettingsService52ReadValueMemoryBouncerLimitMegaBytesForLowMemDevicesEPKc
+// type: _DWORD __fastcall(iOSSettingsService *__hidden this, const char *)
+#[doc(alias = "iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")]
+pub fn stub_24258() -> ! {
+    todo!("0x24258 iOSSettingsService::ReadValueMemoryBouncerLimitMegaBytesForLowMemDevices(char const*)")
+}
+
+// 0x31cd0 — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
+// mangled: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
+// type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_31cd0() -> ! {
+    todo!("0x31cd0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x31d30 — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Instance>::invoke(boost::detail::function::function_buffer &,RBX::Instance)
+// mangled: __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Instance>::invoke(boost::detail::function::function_buffer &,RBX::Instance)")]
+pub fn stub_31d30() -> ! {
+    todo!("0x31d30 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Instance>::invoke(boost::detail::function::function_buffer &,RBX::Instance)")
+}
+
+// 0x31d48 — void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<RBX::Instance&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<RBX::Instance&> &,int)
+// mangled: __ZN5boost3_bi5list3INS0_5valueIP11objc_objectEENS2_IP13objc_selectorEENS_3argILi1EEEEclIPFvS4_S6_NS_10shared_ptrIN3RBX8InstanceEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
+// type: void __fastcall(int *, void (__fastcall **)(int, int, sp_counted_base **), const shared_count **, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<RBX::Instance&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<RBX::Instance&> &,int)")]
+pub fn stub_31d48() -> ! {
+    todo!("0x31d48 void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<RBX::Instance&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<RBX::Instance&> &,int)")
+}
+
+// 0x32270 — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
+// mangled: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorSsENS3_5list3INS3_5valueIS6_EENSB_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
+// type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_32270() -> ! {
+    todo!("0x32270 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x322d0 — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,std::string>::invoke(boost::detail::function::function_buffer &,std::string)
+// mangled: __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorSsENS3_5list3INS3_5valueIS6_EENSB_IS7_EENS_3argILi1EEEEEEEvSsE6invokeERNS1_15function_bufferESs
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,std::string>::invoke(boost::detail::function::function_buffer &,std::string)")]
+pub fn stub_322d0() -> ! {
+    todo!("0x322d0 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,std::string),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,std::string>::invoke(boost::detail::function::function_buffer &,std::string)")
+}
+
+// 0x322e8 — void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,std::string),boost::_bi::list1<std::string &>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,std::string) &,boost::_bi::list1<std::string &> &,int)
+// mangled: __ZN5boost3_bi5list3INS0_5valueIP11objc_objectEENS2_IP13objc_selectorEENS_3argILi1EEEEclIPFvS4_S6_SsENS0_5list1IRSsEEEEvNS0_4typeIvEERT_RT0_i
+// type: void __fastcall(int *, void (__fastcall **)(int, int, int *), const std::string **)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,std::string),boost::_bi::list1<std::string &>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,std::string) &,boost::_bi::list1<std::string &> &,int)")]
+pub fn stub_322e8() -> ! {
+    todo!("0x322e8 void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,std::string),boost::_bi::list1<std::string &>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,std::string) &,boost::_bi::list1<std::string &> &,int)")
+}
+
+// 0x33080 — boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>)
+// mangled: __ZN5boost9iostreams6detail11execute_allINS1_14copy_operationINS_17reference_wrapperISiEENS4_ISt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEEEENS1_26device_close_all_operationIS5_EENSD_ISB_EEEENS1_14execute_traitsIT_NS_9result_ofIFSH_vEE4typeEE11result_typeESH_T0_T1_
+// type: int __fastcall(int, int, int, int, void *, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>)")]
+pub fn stub_33080() -> ! {
+    todo!("0x33080 boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>)")
+}
+
+// 0x33188 — boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>)
+// mangled: __ZN5boost9iostreams6detail11execute_allINS1_14copy_operationINS_17reference_wrapperISiEENS4_ISt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEEEENS1_26device_close_all_operationIS5_EEEENS1_14execute_traitsIT_NS_9result_ofIFSG_vEE4typeEE11result_typeESG_T0_
+// type: int __fastcall(int, int, int, int, void *, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>)")]
+pub fn stub_33188() -> ! {
+    todo!("0x33188 boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<std::istream>>)")
+}
+
+// 0x33250 — int boost::iostreams::detail::copy_impl<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>(boost::reference_wrapper<std::istream> &,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>> &,int,mpl_::bool_<false>,mpl_::bool_<false>)
+// mangled: __ZN5boost9iostreams6detail9copy_implINS_17reference_wrapperISiEENS3_ISt19basic_ostringstreamIcSt11char_traitsIcESaIcEEEEEEiRT_RT0_iN4mpl_5bool_ILb0EEESH_
+// type: int __fastcall(int, int, unsigned int, int, int, void *, int, int, int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "int boost::iostreams::detail::copy_impl<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>(boost::reference_wrapper<std::istream> &,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>> &,int,mpl_::bool_<false>,mpl_::bool_<false>)")]
+pub fn stub_33250() -> ! {
+    todo!("0x33250 int boost::iostreams::detail::copy_impl<boost::reference_wrapper<std::istream>,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>>>(boost::reference_wrapper<std::istream> &,boost::reference_wrapper<std::basic_ostringstream<char,std::char_traits<char>,std::allocator<char>>> &,int,mpl_::bool_<false>,mpl_::bool_<false>)")
+}
+
+// 0x334dc — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>&,boost::detail::function::functor_manager_operation_type)
+// mangled: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorENS3_5list2INS3_5valueIS6_EENSB_IS7_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
+// type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_334dc() -> ! {
+    todo!("0x334dc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>>&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x3353c — boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>,void>::invoke(boost::detail::function::function_buffer &)
+// mangled: __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorENS3_5list2INS3_5valueIS6_EENSB_IS7_EEEEEEvE6invokeERNS1_15function_bufferE
+// type: int __fastcall(int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+pub fn stub_3353c() -> ! {
+    todo!("0x3353c boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *),boost::_bi::list2<boost::_bi::value<objc_object *>,boost::_bi::list2<objc_selector>>>,void>::invoke(boost::detail::function::function_buffer &)")
+}
+
+// 0x43180 — iOSSettingsService::iOSSettingsService(void)
+// mangled: __ZN18iOSSettingsServiceC2Ev
+// type: iOSSettingsService *__fastcall(iOSSettingsService *__hidden this)
+#[doc(alias = "iOSSettingsService::iOSSettingsService(void)")]
+pub fn stub_43180() -> ! {
+    todo!("0x43180 iOSSettingsService::iOSSettingsService(void)")
+}
+
+// 0x432b0 — iOSSettingsService::~iOSSettingsService()
+// mangled: __ZN18iOSSettingsServiceD1Ev
+// type: void __fastcall(iOSSettingsService *__hidden this)
+#[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
+pub fn stub_432b0() -> ! {
+    todo!("0x432b0 iOSSettingsService::~iOSSettingsService()")
+}
+
+// 0x432b4 — iOSSettingsService::~iOSSettingsService()
+// mangled: __ZN18iOSSettingsServiceD0Ev
+// type: void __fastcall(iOSSettingsService *__hidden this)
+#[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
+pub fn stub_432b4() -> ! {
+    todo!("0x432b4 iOSSettingsService::~iOSSettingsService()")
+}
+
+// 0x432c8 — iOSSettingsService::~iOSSettingsService()
+// mangled: __ZN18iOSSettingsServiceD2Ev
+// type: void __fastcall(iOSSettingsService *__hidden this)
+#[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
+pub fn stub_432c8() -> ! {
+    todo!("0x432c8 iOSSettingsService::~iOSSettingsService()")
+}
+
+// 0x463cc — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)
+// mangled: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
+// type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_463cc() -> ! {
+    todo!("0x463cc boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>>&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x4642c — boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)
+// mangled: __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorbPvN3RBX7UIEventEENS3_5list5INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEENSH_ILi2EEENSH_ILi3EEEEEEEvbS8_SA_E6invokeERNS1_15function_bufferEbS8_SA_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")]
+pub fn stub_4642c() -> ! {
+    todo!("0x4642c boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,bool,void *,RBX::UIEvent),boost::_bi::list5<boost::_bi::value<objc_object *>,boost::_bi::list5<objc_selector>,boost::arg<1>,boost::_bi::list5<objc_selector><2>,boost::_bi::list5<objc_selector><3>>>,void,bool,objc_selector *,RBX>::invoke(boost::detail::function::function_buffer &,bool,objc_selector *,RBX)")
+}
+
+// 0x46c18 — rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)
+// mangled: __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP13CharacterMoveEENSL_ISF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
+// type: int __fastcall(int *, int, __int64 *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")]
+pub fn stub_46c18() -> ! {
+    todo!("0x46c18 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")
+}
+
+// 0x46c8c — rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()
+// mangled: __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP13CharacterMoveEENSL_ISF_EENSA_3argILi1EEEEEEEED1Ev
+// type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")]
+pub fn stub_46c8c() -> ! {
+    todo!("0x46c8c rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x46d38 — rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()
+// mangled: __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP13CharacterMoveEENSL_ISF_EENSA_3argILi1EEEEEEEED0Ev
+// type: void __fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")]
+pub fn stub_46d38() -> ! {
+    todo!("0x46d38 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x46de8 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
+// mangled: __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+pub fn stub_46de8() -> ! {
+    todo!("0x46de8 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+}
+
+// 0x46df8 — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
+// mangled: __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+pub fn stub_46df8() -> ! {
+    todo!("0x46df8 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+}
+
+// 0x46e08 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
+// mangled: __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
+// type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+pub fn stub_46e08() -> ! {
+    todo!("0x46e08 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0x46eb4 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
+// mangled: __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
+// type: void __fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+pub fn stub_46eb4() -> ! {
+    todo!("0x46eb4 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0x4a21c — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
+// mangled: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKN3RBX10Reflection18PropertyDescriptorEENS3_5list3INS3_5valueIS6_EENSG_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
+// type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_4a21c() -> ! {
+    todo!("0x4a21c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x4a27c — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)
+// mangled: __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKN3RBX10Reflection18PropertyDescriptorEENS3_5list3INS3_5valueIS6_EENSG_IS7_EENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)")]
+pub fn stub_4a27c() -> ! {
+    todo!("0x4a27c boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::Reflection::PropertyDescriptor const*),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::Reflection::PropertyDescriptor const>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::PropertyDescriptor const)")
+}
+
+// 0x4b010 — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
+// mangled: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX7TextBoxEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
+// type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_4b010() -> ! {
+    todo!("0x4b010 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x4b070 — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::TextBox>::invoke(boost::detail::function::function_buffer &,RBX::TextBox)
+// mangled: __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorNS_10shared_ptrIN3RBX7TextBoxEEEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::TextBox>::invoke(boost::detail::function::function_buffer &,RBX::TextBox)")]
+pub fn stub_4b070() -> ! {
+    todo!("0x4b070 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,boost::shared_ptr<RBX::TextBox>),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::TextBox>::invoke(boost::detail::function::function_buffer &,RBX::TextBox)")
+}
+
+// 0x4b088 — void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::TextBox>),boost::_bi::list1<RBX::TextBox&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::TextBox>) &,boost::_bi::list1<RBX::TextBox&> &,int)
+// mangled: __ZN5boost3_bi5list3INS0_5valueIP11objc_objectEENS2_IP13objc_selectorEENS_3argILi1EEEEclIPFvS4_S6_NS_10shared_ptrIN3RBX7TextBoxEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
+// type: void __fastcall(int *, void (__fastcall **)(int, int, sp_counted_base **), const shared_count **, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::TextBox>),boost::_bi::list1<RBX::TextBox&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::TextBox>) &,boost::_bi::list1<RBX::TextBox&> &,int)")]
+pub fn stub_4b088() -> ! {
+    todo!("0x4b088 void boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::value<objc_selector *>,boost::arg<1>>::operator()<void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::TextBox>),boost::_bi::list1<RBX::TextBox&>>(boost::_bi::type<void>,void (*)(objc_object *,objc_selector,boost::shared_ptr<RBX::TextBox>) &,boost::_bi::list1<RBX::TextBox&> &,int)")
+}
+
+// 0x4bf6c — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
+// mangled: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
+// type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_4bf6c() -> ! {
+    todo!("0x4bf6c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x4bfcc — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)
+// mangled: __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)")]
+pub fn stub_4bfcc() -> ! {
+    todo!("0x4bfcc boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)")
+}
+
+// 0x4f470 — rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)
+// mangled: __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE7connectIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP10JumpButtonEENSL_ISF_EENSA_3argILi1EEEEEEEEENS0_10connectionERKT_
+// type: int __fastcall(int *, int, __int64 *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")]
+pub fn stub_4f470() -> ! {
+    todo!("0x4f470 rbx::signals::connection rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>> const&)")
+}
+
+// 0x4f4e4 — rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()
+// mangled: __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP10JumpButtonEENSL_ISF_EENSA_3argILi1EEEEEEEED1Ev
+// type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")]
+pub fn stub_4f4e4() -> ! {
+    todo!("0x4f4e4 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x4f590 — rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()
+// mangled: __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSB_5list3INSB_5valueIP10JumpButtonEENSL_ISF_EENSA_3argILi1EEEEEEEED0Ev
+// type: void __fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")]
+pub fn stub_4f590() -> ! {
+    todo!("0x4f590 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x4f640 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
+// mangled: __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+pub fn stub_4f640() -> ! {
+    todo!("0x4f640 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+}
+
+// 0x4f650 — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
+// mangled: __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+pub fn stub_4f650() -> ! {
+    todo!("0x4f650 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+}
+
+// 0x4f660 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
+// mangled: __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
+// type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+pub fn stub_4f660() -> ! {
+    todo!("0x4f660 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0x4f70c — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
+// mangled: __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
+// type: void __fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+pub fn stub_4f70c() -> ! {
+    todo!("0x4f70c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0x65ab0 — boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
+// mangled: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorRKN3RBX18StandardOutMessageEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
+// type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_65ab0() -> ! {
+    todo!("0x65ab0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x65b10 — boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::StandardOutMessage const>::invoke(boost::detail::function::function_buffer &,RBX::StandardOutMessage const)
+// mangled: __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorRKN3RBX18StandardOutMessageEENS3_5list3INS3_5valueIS6_EENSF_IS7_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::StandardOutMessage const>::invoke(boost::detail::function::function_buffer &,RBX::StandardOutMessage const)")]
+pub fn stub_65b10() -> ! {
+    todo!("0x65b10 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::StandardOutMessage const&),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::StandardOutMessage const>::invoke(boost::detail::function::function_buffer &,RBX::StandardOutMessage const)")
+}
+
+// 0xd3144 — FMOD::OutputCoreAudio::setupAudioSession(unsigned int,unsigned int)
+// mangled: __ZN4FMOD15OutputCoreAudio17setupAudioSessionEjj
+// type: _DWORD __fastcall(FMOD::OutputCoreAudio *__hidden this, unsigned int, unsigned int)
+#[doc(alias = "FMOD::OutputCoreAudio::setupAudioSession(unsigned int,unsigned int)")]
+pub fn stub_d3144() -> ! {
+    todo!("0xd3144 FMOD::OutputCoreAudio::setupAudioSession(unsigned int,unsigned int)")
+}
+
+// 0xd3978 — FMOD::OutputCoreAudio::prepareAudioSession(FMOD_IPHONE_SESSIONCATEGORY,bool,bool)
+// mangled: __ZN4FMOD15OutputCoreAudio19prepareAudioSessionE27FMOD_IPHONE_SESSIONCATEGORYbb
+#[doc(alias = "FMOD::OutputCoreAudio::prepareAudioSession(FMOD_IPHONE_SESSIONCATEGORY,bool,bool)")]
+pub fn stub_d3978() -> ! {
+    todo!("0xd3978 FMOD::OutputCoreAudio::prepareAudioSession(FMOD_IPHONE_SESSIONCATEGORY,bool,bool)")
+}
+
+// 0x23cb64 — boost::iostreams::detail::gzip_header::process(char)
+// mangled: __ZN5boost9iostreams6detail11gzip_header7processEc
+// type: void __fastcall(boost::iostreams::detail::gzip_header *this, unsigned __int8)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::gzip_header::process(char)")]
+pub fn stub_23cb64() -> ! {
+    todo!("0x23cb64 boost::iostreams::detail::gzip_header::process(char)")
+}
+
+// 0x23cef0 — boost::iostreams::detail::gzip_header::reset(void)
+// mangled: __ZN5boost9iostreams6detail11gzip_header5resetEv
+// type: int __fastcall(boost::iostreams::detail::gzip_header *this)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::gzip_header::reset(void)")]
+pub fn stub_23cef0() -> ! {
+    todo!("0x23cef0 boost::iostreams::detail::gzip_header::reset(void)")
+}
+
+// 0x23cf2c — boost::iostreams::detail::gzip_footer::process(char)
+// mangled: __ZN5boost9iostreams6detail11gzip_footer7processEc
+// type: _DWORD *__fastcall(_DWORD *this, unsigned __int8)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::gzip_footer::process(char)")]
+pub fn stub_23cf2c() -> ! {
+    todo!("0x23cf2c boost::iostreams::detail::gzip_footer::process(char)")
+}
+
+// 0x23cf7c — boost::iostreams::detail::gzip_footer::reset(void)
+// mangled: __ZN5boost9iostreams6detail11gzip_footer5resetEv
+// type: _DWORD *__fastcall(_DWORD *this)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::gzip_footer::reset(void)")]
+pub fn stub_23cf7c() -> ! {
+    todo!("0x23cf7c boost::iostreams::detail::gzip_footer::reset(void)")
+}
+
+// 0x23cf8c — boost::iostreams::zlib_error::check(int)
+// mangled: __ZN5boost9iostreams10zlib_error5checkEi
+// type: void __fastcall(boost::iostreams::zlib_error *this, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::zlib_error::check(int)")]
+pub fn stub_23cf8c() -> ! {
+    todo!("0x23cf8c boost::iostreams::zlib_error::check(int)")
+}
+
+// 0x23d0c8 — boost::iostreams::detail::zlib_base::zlib_base(void)
+// mangled: __ZN5boost9iostreams6detail9zlib_baseC2Ev
+// type: boost::iostreams::detail::zlib_base *__fastcall(boost::iostreams::detail::zlib_base *this)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::zlib_base::zlib_base(void)")]
+pub fn stub_23d0c8() -> ! {
+    todo!("0x23d0c8 boost::iostreams::detail::zlib_base::zlib_base(void)")
+}
+
+// 0x23d0e8 — boost::iostreams::detail::zlib_base::~zlib_base()
+// mangled: __ZN5boost9iostreams6detail9zlib_baseD2Ev
+// type: void __fastcall(void **this)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::zlib_base::~zlib_base()")]
+pub fn stub_23d0e8() -> ! {
+    todo!("0x23d0e8 boost::iostreams::detail::zlib_base::~zlib_base()")
+}
+
+// 0x23d0fc — boost::iostreams::detail::zlib_base::before(char const*&,char const*,char *&,char *)
+// mangled: __ZN5boost9iostreams6detail9zlib_base6beforeERPKcS4_RPcS6_
+// type: int __fastcall(boost::iostreams::detail::zlib_base *this, const char **, const char *, char **, char *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::zlib_base::before(char const*&,char const*,char *&,char *)")]
+pub fn stub_23d0fc() -> ! {
+    todo!("0x23d0fc boost::iostreams::detail::zlib_base::before(char const*&,char const*,char *&,char *)")
+}
+
+// 0x23d120 — boost::iostreams::detail::zlib_base::after(char const*&,char *&,bool)
+// mangled: __ZN5boost9iostreams6detail9zlib_base5afterERPKcRPcb
+// type: const char *__fastcall(boost::iostreams::detail::zlib_base *this, const char **, char **, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::zlib_base::after(char const*&,char *&,bool)")]
+pub fn stub_23d120() -> ! {
+    todo!("0x23d120 boost::iostreams::detail::zlib_base::after(char const*&,char *&,bool)")
+}
+
+// 0x23d180 — boost::iostreams::detail::zlib_base::xdeflate(int)
+// mangled: __ZN5boost9iostreams6detail9zlib_base8xdeflateEi
+// type: int __fastcall(z_streamp *this, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::zlib_base::xdeflate(int)")]
+pub fn stub_23d180() -> ! {
+    todo!("0x23d180 boost::iostreams::detail::zlib_base::xdeflate(int)")
+}
+
+// 0x23d18c — boost::iostreams::detail::zlib_base::xinflate(int)
+// mangled: __ZN5boost9iostreams6detail9zlib_base8xinflateEi
+// type: int __fastcall(z_streamp *this, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::zlib_base::xinflate(int)")]
+pub fn stub_23d18c() -> ! {
+    todo!("0x23d18c boost::iostreams::detail::zlib_base::xinflate(int)")
+}
+
+// 0x23d198 — boost::iostreams::detail::zlib_base::reset(bool,bool)
+// mangled: __ZN5boost9iostreams6detail9zlib_base5resetEbb
+// type: int __fastcall(z_stream **this, int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::zlib_base::reset(bool,bool)")]
+pub fn stub_23d198() -> ! {
+    todo!("0x23d198 boost::iostreams::detail::zlib_base::reset(bool,bool)")
+}
+
+// 0x23d1c8 — boost::iostreams::detail::zlib_base::do_init(boost::iostreams::zlib_params const&,bool,void * (*)(void *,unsigned int,unsigned int),void (*)(void *,void *),void *)
+// mangled: __ZN5boost9iostreams6detail9zlib_base7do_initERKNS0_11zlib_paramsEbPFPvS6_jjEPFvS6_S6_ES6_
+// type: void __fastcall(int, int, int, int, int, void *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::detail::zlib_base::do_init(boost::iostreams::zlib_params const&,bool,void * (*)(void *,unsigned int,unsigned int),void (*)(void *,void *),void *)")]
+pub fn stub_23d1c8() -> ! {
+    todo!("0x23d1c8 boost::iostreams::detail::zlib_base::do_init(boost::iostreams::zlib_params const&,bool,void * (*)(void *,unsigned int,unsigned int),void (*)(void *,void *),void *)")
+}
+
+// 0x23d238 — void boost::throw_exception<boost::iostreams::zlib_error>(boost::iostreams::zlib_error const&)
+// mangled: __ZN5boost15throw_exceptionINS_9iostreams10zlib_errorEEEvRKT_
+// type: void __fastcall __noreturn(int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "void boost::throw_exception<boost::iostreams::zlib_error>(boost::iostreams::zlib_error const&)")]
+pub fn stub_23d238() -> ! {
+    todo!("0x23d238 void boost::throw_exception<boost::iostreams::zlib_error>(boost::iostreams::zlib_error const&)")
+}
+
+// 0x23d390 — boost::iostreams::zlib_error::~zlib_error()
+// mangled: __ZN5boost9iostreams10zlib_errorD1Ev
+// type: void __fastcall(boost::iostreams::zlib_error *__hidden this)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::zlib_error::~zlib_error()")]
+pub fn stub_23d390() -> ! {
+    todo!("0x23d390 boost::iostreams::zlib_error::~zlib_error()")
+}
+
+// 0x23d39c — boost::iostreams::zlib_error::~zlib_error()
+// mangled: __ZN5boost9iostreams10zlib_errorD0Ev
+// type: void __fastcall(boost::iostreams::zlib_error *__hidden this)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::iostreams::zlib_error::~zlib_error()")]
+pub fn stub_23d39c() -> ! {
+    todo!("0x23d39c boost::iostreams::zlib_error::~zlib_error()")
+}
+
+// 0x23d3b0 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+// mangled: __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
+// type: std::ios_base::failure *__fastcall(std::ios_base::failure *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_23d3b0() -> ! {
+    todo!("0x23d3b0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23d468 — boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
+// mangled: __ZN5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev
+// type: int __fastcall(std::ios_base::failure *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
+pub fn stub_23d468() -> ! {
+    todo!("0x23d468 boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+}
+
+// 0x23d520 — `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
+// mangled: __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev
+// type: void __fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
+pub fn stub_23d520() -> ! {
+    todo!("0x23d520 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+}
+
+// 0x23d5d8 — `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+// mangled: __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
+// type: void __fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_23d5d8() -> ! {
+    todo!("0x23d5d8 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23d690 — `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+// mangled: __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
+// type: void __fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_23d690() -> ! {
+    todo!("0x23d690 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23d75c — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+// mangled: __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
+// type: void __fastcall(std::ios_base::failure *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_23d75c() -> ! {
+    todo!("0x23d75c boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23d818 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const
+// mangled: __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE5cloneEv
+// type: char *__fastcall(int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")]
+pub fn stub_23d818() -> ! {
+    todo!("0x23d818 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")
+}
+
+// 0x23d8d4 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const
+// mangled: __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE7rethrowEv
+// type: void __fastcall __noreturn(int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")]
+pub fn stub_23d8d4() -> ! {
+    todo!("0x23d8d4 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")
+}
+
+// 0x23d984 — `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+// mangled: __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
+// type: void __fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_23d984() -> ! {
+    todo!("0x23d984 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23da40 — `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const
+// mangled: __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE5cloneEv
+// type: char *__fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")]
+pub fn stub_23da40() -> ! {
+    todo!("0x23da40 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")
+}
+
+// 0x23db04 — `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const
+// mangled: __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE7rethrowEv
+// type: void __fastcall __noreturn(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")]
+pub fn stub_23db04() -> ! {
+    todo!("0x23db04 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")
+}
+
+// 0x23db14 — `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+// mangled: __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
+// type: void __fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_23db14() -> ! {
+    todo!("0x23db14 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23dbe8 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&)
+// mangled: __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&)")]
+pub fn stub_23dbe8() -> ! {
+    todo!("0x23dbe8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&)")
+}
+
+// 0x23dd30 — boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
+// mangled: __ZN5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
+// type: void __fastcall(std::ios_base::failure *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
+pub fn stub_23dd30() -> ! {
+    todo!("0x23dd30 boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+}
+
+// 0x23ddec — `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
+// mangled: __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
+// type: void __fastcall(_DWORD *)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
+pub fn stub_23ddec() -> ! {
+    todo!("0x23ddec `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+}
+
+// 0x23dea8 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_tag)
+// mangled: __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_NS6_9clone_tagE
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_tag)")]
+pub fn stub_23dea8() -> ! {
+    todo!("0x23dea8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_tag)")
+}
+
+// 0x23e044 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::iostreams::zlib_error> const&)
+// mangled: __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS5_
+// type: int __fastcall(int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::iostreams::zlib_error> const&)")]
+pub fn stub_23e044() -> ! {
+    todo!("0x23e044 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::iostreams::zlib_error> const&)")
+}
+
+// 0x43ccd8 — boost::io::detail::stream_format_state<char,std::char_traits<char>>::apply_on(std::basic_ios<char,std::char_traits<char>> &,std::locale *)const
+// mangled: __ZNK5boost2io6detail19stream_format_stateIcSt11char_traitsIcEE8apply_onERSt9basic_iosIcS4_EPSt6locale
+// type: void __fastcall(int *, int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::io::detail::stream_format_state<char,std::char_traits<char>>::apply_on(std::basic_ios<char,std::char_traits<char>> &,std::locale *)const")]
+pub fn stub_43ccd8() -> ! {
+    todo!("0x43ccd8 boost::io::detail::stream_format_state<char,std::char_traits<char>>::apply_on(std::basic_ios<char,std::char_traits<char>> &,std::locale *)const")
+}
+
+// 0x43cd68 — void boost::io::detail::mk_str<char,std::char_traits<char>,std::allocator<char>>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,char const*,std::basic_string<char,std::char_traits<char>,std::allocator<char>>::size_type,int,char,std::_Ios_Fmtflags,char,bool)
+// mangled: __ZN5boost2io6detail6mk_strIcSt11char_traitsIcESaIcEEEvRSbIT_T0_T1_EPKS6_NS9_9size_typeEiS6_St13_Ios_FmtflagsS6_b
+// type: int __fastcall(std::string *, const char *, unsigned int, signed int, int, int, char, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "void boost::io::detail::mk_str<char,std::char_traits<char>,std::allocator<char>>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,char const*,std::basic_string<char,std::char_traits<char>,std::allocator<char>>::size_type,int,char,std::_Ios_Fmtflags,char,bool)")]
+pub fn stub_43cd68() -> ! {
+    todo!("0x43cd68 void boost::io::detail::mk_str<char,std::char_traits<char>,std::allocator<char>>(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &,char const*,std::basic_string<char,std::char_traits<char>,std::allocator<char>>::size_type,int,char,std::_Ios_Fmtflags,char,bool)")
+}
+
+// 0x4dd838 — __ZN3RBX10Reflection9DescribedINS_8PlatformELZNS_9sPlatformEENS_12PlatformImplINS_17BasicPartInstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// mangled: __ZN3RBX10Reflection9DescribedINS_8PlatformELZNS_9sPlatformEENS_12PlatformImplINS_17BasicPartInstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8PlatformELZNS_9sPlatformEENS_12PlatformImplINS_17BasicPartInstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_4dd838() -> ! {
+    todo!("0x4dd838 __ZN3RBX10Reflection9DescribedINS_8PlatformELZNS_9sPlatformEENS_12PlatformImplINS_17BasicPartInstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+}
+
+// 0x62a0e4 — RBX::PlatformImpl<RBX::BasicPartInstance>::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE17onServiceProviderEPNS_15ServiceProviderES4_
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+pub fn stub_62a0e4() -> ! {
+    todo!("0x62a0e4 RBX::PlatformImpl<RBX::BasicPartInstance>::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+}
+
+// 0x62a238 — RBX::PlatformImpl<RBX::BasicPartInstance>::findPlatformMotor6D(void)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE19findPlatformMotor6DEv
+// type: int __fastcall(RBX::Instance *this)
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::findPlatformMotor6D(void)")]
+pub fn stub_62a238() -> ! {
+    todo!("0x62a238 RBX::PlatformImpl<RBX::BasicPartInstance>::findPlatformMotor6D(void)")
+}
+
+// 0x62a26c — RBX::PlatformImpl<RBX::BasicPartInstance>::humanoidFromMotor6D(RBX::Motor6D *)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE19humanoidFromMotor6DEPNS_7Motor6DE
+// type: int __fastcall(int, RBX::JointInstance *this)
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::humanoidFromMotor6D(RBX::Motor6D *)")]
+pub fn stub_62a26c() -> ! {
+    todo!("0x62a26c RBX::PlatformImpl<RBX::BasicPartInstance>::humanoidFromMotor6D(RBX::Motor6D *)")
+}
+
+// 0x62a4f8 — RBX::PlatformImpl<RBX::BasicPartInstance>::onChildAdded(RBX::Instance *)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE12onChildAddedEPNS_8InstanceE
+// type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::onChildAdded(RBX::Instance *)")]
+pub fn stub_62a4f8() -> ! {
+    todo!("0x62a4f8 RBX::PlatformImpl<RBX::BasicPartInstance>::onChildAdded(RBX::Instance *)")
+}
+
+// 0x62a6d0 — RBX::PlatformImpl<RBX::BasicPartInstance>::onChildRemoved(RBX::Instance *)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE14onChildRemovedEPNS_8InstanceE
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::onChildRemoved(RBX::Instance *)")]
+pub fn stub_62a6d0() -> ! {
+    todo!("0x62a6d0 RBX::PlatformImpl<RBX::BasicPartInstance>::onChildRemoved(RBX::Instance *)")
+}
+
+// 0x62a7fc — RBX::PlatformImpl<RBX::BasicPartInstance>::onPlatformStandingChanged(bool,RBX::Humanoid *)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE25onPlatformStandingChangedEbPNS_8HumanoidE
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::onPlatformStandingChanged(bool,RBX::Humanoid *)")]
+pub fn stub_62a7fc() -> ! {
+    todo!("0x62a7fc RBX::PlatformImpl<RBX::BasicPartInstance>::onPlatformStandingChanged(bool,RBX::Humanoid *)")
+}
+
+// 0x62a800 — RBX::PlatformImpl<RBX::BasicPartInstance>::applySpecificImpulse(G3D::Vector3,G3D::Vector3)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE20applySpecificImpulseEN3G3D7Vector3ES4_
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::applySpecificImpulse(G3D::Vector3,G3D::Vector3)")]
+pub fn stub_62a800() -> ! {
+    todo!("0x62a800 RBX::PlatformImpl<RBX::BasicPartInstance>::applySpecificImpulse(G3D::Vector3,G3D::Vector3)")
+}
+
+// 0x62ab38 — RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
+pub fn stub_62ab38() -> ! {
+    todo!("0x62ab38 RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")
+}
+
+// 0x62ab48 — RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
+pub fn stub_62ab48() -> ! {
+    todo!("0x62ab48 RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")
+}
+
+// 0x62abf4 — `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// mangled: __ZThn132_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev
+// type: int __fastcall(int)
+#[doc(alias = "non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
+pub fn stub_62abf4() -> ! {
+    todo!("0x62abf4 `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")
+}
+
+// 0x62ac08 — `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// mangled: __ZThn132_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev
+#[doc(alias = "non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
+pub fn stub_62ac08() -> ! {
+    todo!("0x62ac08 `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")
+}
+
+// 0x62b750 — RBX::PlatformImpl<RBX::BasicPartInstance>::isChildPlatformMotor6D(RBX::Instance *)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE22isChildPlatformMotor6DEPNS_8InstanceE
+// type: int __fastcall(int, RBX::Instance *this)
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::isChildPlatformMotor6D(RBX::Instance *)")]
+pub fn stub_62b750() -> ! {
+    todo!("0x62b750 RBX::PlatformImpl<RBX::BasicPartInstance>::isChildPlatformMotor6D(RBX::Instance *)")
+}
+
+// 0x62b798 — rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>> const&)
+// mangled: __ZN3rbx7signals6signalIFvvEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX12PlatformImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEEENS0_10connectionERKT_
+// type: int(void)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>> const&)")]
+pub fn stub_62b798() -> ! {
+    todo!("0x62b798 rbx::signals::connection rbx::signals::signal<void ()(void)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>> const&)")
+}
+
+// 0x62b80c — RBX::PlatformImpl<RBX::BasicPartInstance>::onEvent_humanoidDonePlatformStanding(void)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE36onEvent_humanoidDonePlatformStandingEv
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::onEvent_humanoidDonePlatformStanding(void)")]
+pub fn stub_62b80c() -> ! {
+    todo!("0x62b80c RBX::PlatformImpl<RBX::BasicPartInstance>::onEvent_humanoidDonePlatformStanding(void)")
+}
+
+// 0x62b82c — rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>::~callable_slot()
+// mangled: __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX12PlatformImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEED1Ev
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>::~callable_slot()")]
+pub fn stub_62b82c() -> ! {
+    todo!("0x62b82c rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>::~callable_slot()")
+}
+
+// 0x62b858 — rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>::~callable_slot()
+// mangled: __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX12PlatformImplINSA_17BasicPartInstanceEEEEENS6_5list1INS6_5valueIPSD_EEEEEEED0Ev
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>::~callable_slot()")]
+pub fn stub_62b858() -> ! {
+    todo!("0x62b858 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>>::~callable_slot()")
+}
+
+// 0x62b92c — rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)
+// mangled: __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12PlatformImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")]
+pub fn stub_62b92c() -> ! {
+    todo!("0x62b92c rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")
+}
+
+// 0x62b934 — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)
+// mangled: __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12PlatformImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")]
+pub fn stub_62b934() -> ! {
+    todo!("0x62b934 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")
+}
+
+// 0x62b93c — boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>::operator()(void)
+// mangled: __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX12PlatformImplINS4_17BasicPartInstanceEEEEENS0_5list1INS0_5valueIPS7_EEEEEclEv
+// type: int(void)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>::operator()(void)")]
+pub fn stub_62b93c() -> ! {
+    todo!("0x62b93c boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>::operator()(void)")
+}
+
+// 0x62b954 — rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::~callable()
+// mangled: __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12PlatformImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED1Ev
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::~callable()")]
+pub fn stub_62b954() -> ! {
+    todo!("0x62b954 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::~callable()")
+}
+
+// 0x62b980 — rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::~callable()
+// mangled: __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12PlatformImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_ED0Ev
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::~callable()")]
+pub fn stub_62b980() -> ! {
+    todo!("0x62b980 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::~callable()")
+}
+
+// 0x62ba54 — RBX::PlatformImpl<RBX::BasicPartInstance>::destroyOtherMotor6D(boost::shared_ptr<RBX::Instance>,RBX::Motor6D *)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE19destroyOtherMotor6DEN5boost10shared_ptrINS_8InstanceEEEPNS_7Motor6DE
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::destroyOtherMotor6D(boost::shared_ptr<RBX::Instance>,RBX::Motor6D *)")]
+pub fn stub_62ba54() -> ! {
+    todo!("0x62ba54 RBX::PlatformImpl<RBX::BasicPartInstance>::destroyOtherMotor6D(boost::shared_ptr<RBX::Instance>,RBX::Motor6D *)")
+}
+
+// 0x62ba7c — void boost::_bi::list3<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>,boost::_bi::value<RBX::Motor6D *>>::operator()<boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
+// mangled: __ZN5boost3_bi5list3INS0_5valueIPN3RBX12PlatformImplINS3_17BasicPartInstanceEEEEENS_3argILi1EEENS2_IPNS3_7Motor6DEEEEclINS_4_mfi3mf2IvS6_NS_10shared_ptrINS3_8InstanceEEESC_EENS0_5list1IRKSK_EEEEvNS0_4typeIvEERT_RT0_i
+// type: void __fastcall(int *, int, int **)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>,boost::_bi::value<RBX::Motor6D *>>::operator()<boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")]
+pub fn stub_62ba7c() -> ! {
+    todo!("0x62ba7c void boost::_bi::list3<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>,boost::_bi::value<RBX::Motor6D *>>::operator()<boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")
+}
+
+// 0x62bb58 — boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *>::operator()(RBX::PlatformImpl<RBX::BasicPartInstance>*,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *)const
+// mangled: __ZNK5boost4_mfi3mf2IvN3RBX12PlatformImplINS2_17BasicPartInstanceEEENS_10shared_ptrINS2_8InstanceEEEPNS2_7Motor6DEEclEPS5_S8_SA_
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *>::operator()(RBX::PlatformImpl<RBX::BasicPartInstance>*,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *)const")]
+pub fn stub_62bb58() -> ! {
+    todo!("0x62bb58 boost::_mfi::mf2<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *>::operator()(RBX::PlatformImpl<RBX::BasicPartInstance>*,boost::shared_ptr<RBX::Instance>,RBX::Motor6D *)const")
+}
+
+// 0x62c208 — rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>> const&)
+// mangled: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_12PlatformImplINS4_17BasicPartInstanceEEES6_EENSA_5list2INSA_5valueIPSG_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
+// type: int(void)
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>> const&)")]
+pub fn stub_62c208() -> ! {
+    todo!("0x62c208 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>> const&)")
+}
+
+// 0x62c27c — RBX::PlatformImpl<RBX::BasicPartInstance>::onEvent_platformTouched(boost::shared_ptr<RBX::Instance>)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE23onEvent_platformTouchedEN5boost10shared_ptrINS_8InstanceEEE
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::onEvent_platformTouched(boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_62c27c() -> ! {
+    todo!("0x62c27c RBX::PlatformImpl<RBX::BasicPartInstance>::onEvent_platformTouched(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x62c3a0 — RBX::PlatformImpl<RBX::BasicPartInstance>::createPlatformMotor6D(RBX::Humanoid *)
+// mangled: __ZN3RBX12PlatformImplINS_17BasicPartInstanceEE21createPlatformMotor6DEPNS_8HumanoidE
+// type: int(void)
+#[doc(alias = "RBX::PlatformImpl<RBX::BasicPartInstance>::createPlatformMotor6D(RBX::Humanoid *)")]
+pub fn stub_62c3a0() -> ! {
+    todo!("0x62c3a0 RBX::PlatformImpl<RBX::BasicPartInstance>::createPlatformMotor6D(RBX::Humanoid *)")
+}
+
+// 0x62c87c — rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>::~callable_slot()
+// mangled: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_12PlatformImplINS4_17BasicPartInstanceEEES6_EENSA_5list2INSA_5valueIPSG_EENS2_3argILi1EEEEEEEED1Ev
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>::~callable_slot()")]
+pub fn stub_62c87c() -> ! {
+    todo!("0x62c87c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x62c8a8 — rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>::~callable_slot()
+// mangled: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_12PlatformImplINS4_17BasicPartInstanceEEES6_EENSA_5list2INSA_5valueIPSG_EENS2_3argILi1EEEEEEEED0Ev
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>::~callable_slot()")]
+pub fn stub_62c8a8() -> ! {
+    todo!("0x62c8a8 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x62c97c — rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
+// mangled: __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12PlatformImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_62c97c() -> ! {
+    todo!("0x62c97c rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x62c998 — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
+// mangled: __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12PlatformImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_62c998() -> ! {
+    todo!("0x62c998 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x62c9b4 — void boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)
+// mangled: __ZN5boost3_bi5list2INS0_5valueIPN3RBX12PlatformImplINS3_17BasicPartInstanceEEEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS6_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSH_EEEEvNS0_4typeIvEERT_RT0_i
+// was: boost::shared_ptr -> rbx_core::SharedPtr
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")]
+pub fn stub_62c9b4() -> ! {
+    todo!("0x62c9b4 void boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")
+}
