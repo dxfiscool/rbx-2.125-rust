@@ -34231,3 +34231,903 @@ pub fn stub_0x4d49d4() -> ! {
 pub fn stub_0x4d49d8() -> ! {
     todo!("0x4d49d8 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result> const>::doGetSingleton(void)")
 }
+
+// 0x4d4ac8 — __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()")]
+pub fn stub_0x4d4ac8() -> ! {
+    todo!("0x4d4ac8 RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()")
+}
+
+// 0x4d4acc — __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()")]
+pub fn stub_0x4d4acc() -> ! {
+    todo!("0x4d4acc RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()")
+}
+
+// 0x4d4ca0 — __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()")]
+pub fn stub_0x4d4ca0() -> ! {
+    todo!("0x4d4ca0 RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::~EnumDesc()")
+}
+
+// 0x4d4d40 — __ZNK3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::lookup(char const*)const")]
+pub fn stub_0x4d4d40() -> ! {
+    todo!("0x4d4d40 RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::lookup(char const*)const")
+}
+
+// 0x4d4d70 — __ZNK3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4d4d70() -> ! {
+    todo!("0x4d4d70 RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4d4d90 — __ZNK3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4d4d90() -> ! {
+    todo!("0x4d4d90 RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4d4dec — __ZNK3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4d4dec() -> ! {
+    todo!("0x4d4dec RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4d4f30 — __ZNK3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::convertToString(RBX::FunctionalTest::Result const&)const")]
+pub fn stub_0x4d4f30() -> ! {
+    todo!("0x4d4f30 RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::convertToString(RBX::FunctionalTest::Result const&)const")
+}
+
+// 0x4d519c — __ZNK3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::convertToItem(RBX::FunctionalTest::Result const&)const")]
+pub fn stub_0x4d519c() -> ! {
+    todo!("0x4d519c RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::convertToItem(RBX::FunctionalTest::Result const&)const")
+}
+
+// 0x4d5358 — __ZNK3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::convertToValue(RBX::Name const&,RBX::FunctionalTest::Result&)const")]
+pub fn stub_0x4d5358() -> ! {
+    todo!("0x4d5358 RBX::Reflection::EnumDesc<RBX::FunctionalTest::Result>::convertToValue(RBX::Name const&,RBX::FunctionalTest::Result&)const")
+}
+
+// 0x4d53fc — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior> const>::initSingleton(void)")]
+pub fn stub_0x4d53fc() -> ! {
+    todo!("0x4d53fc RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior> const>::initSingleton(void)")
+}
+
+// 0x4d5400 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEEE14doGetSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior> const>::doGetSingleton(void)")]
+pub fn stub_0x4d5400() -> ! {
+    todo!("0x4d5400 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior> const>::doGetSingleton(void)")
+}
+
+// 0x4d54f0 — __ZN3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::~EnumDesc()")]
+pub fn stub_0x4d54f0() -> ! {
+    todo!("0x4d54f0 RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::~EnumDesc()")
+}
+
+// 0x4d5590 — __ZNK3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::lookup(char const*)const")]
+pub fn stub_0x4d5590() -> ! {
+    todo!("0x4d5590 RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::lookup(char const*)const")
+}
+
+// 0x4d55c0 — __ZNK3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4d55c0() -> ! {
+    todo!("0x4d55c0 RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x4d55e0 — __ZNK3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4d55e0() -> ! {
+    todo!("0x4d55e0 RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x4d563c — __ZNK3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::convertToString(RBX::ChangeHistoryService::RuntimeUndoBehavior const&)const")]
+pub fn stub_0x4d563c() -> ! {
+    todo!("0x4d563c RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::convertToString(RBX::ChangeHistoryService::RuntimeUndoBehavior const&)const")
+}
+
+// 0x4d598c — __ZNK3RBX10Reflection8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEE14convertToValueERKNS_4NameERS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::convertToValue(RBX::Name const&,RBX::ChangeHistoryService::RuntimeUndoBehavior&)const")]
+pub fn stub_0x4d598c() -> ! {
+    todo!("0x4d598c RBX::Reflection::EnumDesc<RBX::ChangeHistoryService::RuntimeUndoBehavior>::convertToValue(RBX::Name const&,RBX::ChangeHistoryService::RuntimeUndoBehavior&)const")
+}
+
+// 0x4e48f4 — __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::EnumDesc(void)")]
+pub fn stub_0x4e48f4() -> ! {
+    todo!("0x4e48f4 RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::EnumDesc(void)")
+}
+
+// 0x4e48f8 — __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::EnumDesc(void)")]
+pub fn stub_0x4e48f8() -> ! {
+    todo!("0x4e48f8 RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::EnumDesc(void)")
+}
+
+// 0x4e4ad0 — __ZN3RBX10Reflection8EnumDescINS_7Feature9LeftRightEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::EnumDesc(void)")]
+pub fn stub_0x4e4ad0() -> ! {
+    todo!("0x4e4ad0 RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::EnumDesc(void)")
+}
+
+// 0x4e4ad4 — __ZN3RBX10Reflection8EnumDescINS_7Feature9LeftRightEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::EnumDesc(void)")]
+pub fn stub_0x4e4ad4() -> ! {
+    todo!("0x4e4ad4 RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::EnumDesc(void)")
+}
+
+// 0x4e4cac — __ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::InOut>::EnumDesc(void)")]
+pub fn stub_0x4e4cac() -> ! {
+    todo!("0x4e4cac RBX::Reflection::EnumDesc<RBX::Feature::InOut>::EnumDesc(void)")
+}
+
+// 0x4e4cb0 — __ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::InOut>::EnumDesc(void)")]
+pub fn stub_0x4e4cb0() -> ! {
+    todo!("0x4e4cb0 RBX::Reflection::EnumDesc<RBX::Feature::InOut>::EnumDesc(void)")
+}
+
+// 0x4e6354 — __ZN3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEED1Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::~RefPropDescriptor()")]
+pub fn stub_0x4e6354() -> ! {
+    todo!("0x4e6354 RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::~RefPropDescriptor()")
+}
+
+// 0x4e6380 — __ZN3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::~PropDescriptor()")]
+pub fn stub_0x4e6380() -> ! {
+    todo!("0x4e6380 RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::~PropDescriptor()")
+}
+
+// 0x4e63a4 — __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::addPair(RBX::Feature::TopBottom,char const*)")]
+pub fn stub_0x4e63a4() -> ! {
+    todo!("0x4e63a4 RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::addPair(RBX::Feature::TopBottom,char const*)")
+}
+
+// 0x4e6704 — __ZN3RBX10Reflection8EnumDescINS_7Feature9LeftRightEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::addPair(RBX::Feature::LeftRight,char const*)")]
+pub fn stub_0x4e6704() -> ! {
+    todo!("0x4e6704 RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::addPair(RBX::Feature::LeftRight,char const*)")
+}
+
+// 0x4e6a64 — __ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::InOut>::addPair(RBX::Feature::InOut,char const*)")]
+pub fn stub_0x4e6a64() -> ! {
+    todo!("0x4e6a64 RBX::Reflection::EnumDesc<RBX::Feature::InOut>::addPair(RBX::Feature::InOut,char const*)")
+}
+
+// 0x4e6dc8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::~EnumPropDescriptor()")]
+pub fn stub_0x4e6dc8() -> ! {
+    todo!("0x4e6dc8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::~EnumPropDescriptor()")
+}
+
+// 0x4e6df0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::~EnumPropDescriptor()")]
+pub fn stub_0x4e6df0() -> ! {
+    todo!("0x4e6df0 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::~EnumPropDescriptor()")
+}
+
+// 0x4e6e18 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::~EnumPropDescriptor()")]
+pub fn stub_0x4e6e18() -> ! {
+    todo!("0x4e6e18 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::~EnumPropDescriptor()")
+}
+
+// 0x4e6e44 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::~EnumPropDescriptor()")]
+pub fn stub_0x4e6e44() -> ! {
+    todo!("0x4e6e44 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::~EnumPropDescriptor()")
+}
+
+// 0x4e7ff0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12MotorFeatureES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::MotorFeature,RBX::MotorFeature>(boost::shared_ptr<RBX::MotorFeature> const*,RBX::MotorFeature *)const")]
+pub fn stub_0x4e7ff0() -> ! {
+    todo!("0x4e7ff0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::MotorFeature,RBX::MotorFeature>(boost::shared_ptr<RBX::MotorFeature> const*,RBX::MotorFeature *)const")
+}
+
+// 0x4e89a0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4HoleES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Hole,RBX::Hole>(boost::shared_ptr<RBX::Hole> const*,RBX::Hole *)const")]
+pub fn stub_0x4e89a0() -> ! {
+    todo!("0x4e89a0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Hole,RBX::Hole>(boost::shared_ptr<RBX::Hole> const*,RBX::Hole *)const")
+}
+
+// 0x4e9548 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13VelocityMotorES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VelocityMotor,RBX::VelocityMotor>(boost::shared_ptr<RBX::VelocityMotor> const*,RBX::VelocityMotor *)const")]
+pub fn stub_0x4e9548() -> ! {
+    todo!("0x4e9548 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VelocityMotor,RBX::VelocityMotor>(boost::shared_ptr<RBX::VelocityMotor> const*,RBX::VelocityMotor *)const")
+}
+
+// 0x4e9d70 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::EnumPropDescriptor<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>(char const*,char const*,RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4e9d70() -> ! {
+    todo!("0x4e9d70 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::EnumPropDescriptor<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>(char const*,char const*,RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4e9f24 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::~EnumPropDescriptor()")]
+pub fn stub_0x4e9f24() -> ! {
+    todo!("0x4e9f24 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::~EnumPropDescriptor()")
+}
+
+// 0x4e9f50 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::isReadOnly(void)const")]
+pub fn stub_0x4e9f50() -> ! {
+    todo!("0x4e9f50 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::isReadOnly(void)const")
+}
+
+// 0x4e9f60 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::isWriteOnly(void)const")]
+pub fn stub_0x4e9f60() -> ! {
+    todo!("0x4e9f60 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::isWriteOnly(void)const")
+}
+
+// 0x4e9f70 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4e9f70() -> ! {
+    todo!("0x4e9f70 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4e9f98 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4e9f98() -> ! {
+    todo!("0x4e9f98 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x4e9fbc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4e9fbc() -> ! {
+    todo!("0x4e9fbc RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x4ea108 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x4ea108() -> ! {
+    todo!("0x4ea108 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x4ea12c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::hasStringValue(void)const")]
+pub fn stub_0x4ea12c() -> ! {
+    todo!("0x4ea12c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::hasStringValue(void)const")
+}
+
+// 0x4ea130 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ea130() -> ! {
+    todo!("0x4ea130 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ea154 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_0x4ea154() -> ! {
+    todo!("0x4ea154 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x4ea194 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x4ea194() -> ! {
+    todo!("0x4ea194 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x4ea1b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x4ea1b4() -> ! {
+    todo!("0x4ea1b4 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x4ea3f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ea3f4() -> ! {
+    todo!("0x4ea3f4 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ea410 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_0x4ea410() -> ! {
+    todo!("0x4ea410 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x4ea444 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ea444() -> ! {
+    todo!("0x4ea444 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ea44c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x4ea44c() -> ! {
+    todo!("0x4ea44c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4ea498 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ea498() -> ! {
+    todo!("0x4ea498 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ea4b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_0x4ea4b8() -> ! {
+    todo!("0x4ea4b8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x4ea4ec — __ZNK3RBX10Reflection8EnumDescINS_7Feature5InOutEE14convertToIndexES3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::InOut>::convertToIndex(RBX::Feature::InOut)const")]
+pub fn stub_0x4ea4ec() -> ! {
+    todo!("0x4ea4ec RBX::Reflection::EnumDesc<RBX::Feature::InOut>::convertToIndex(RBX::Feature::InOut)const")
+}
+
+// 0x4ea55c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_5InOutEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x4ea55c() -> ! {
+    todo!("0x4ea55c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::InOut>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4ea59c — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_5InOutEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::InOut>::GetSetImpl<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>::isReadOnly(void)const")]
+pub fn stub_0x4ea59c() -> ! {
+    todo!("0x4ea59c RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::InOut>::GetSetImpl<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>::isReadOnly(void)const")
+}
+
+// 0x4ea5a0 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_5InOutEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::InOut>::GetSetImpl<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>::isWriteOnly(void)const")]
+pub fn stub_0x4ea5a0() -> ! {
+    todo!("0x4ea5a0 RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::InOut>::GetSetImpl<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>::isWriteOnly(void)const")
+}
+
+// 0x4ea5a4 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_5InOutEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::InOut>::GetSetImpl<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ea5a4() -> ! {
+    todo!("0x4ea5a4 RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::InOut>::GetSetImpl<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ea5c4 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_5InOutEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::InOut>::GetSetImpl<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>::setValue(RBX::Reflection::DescribedBase *,RBX::Feature::InOut const&)const")]
+pub fn stub_0x4ea5c4() -> ! {
+    todo!("0x4ea5c4 RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::InOut>::GetSetImpl<RBX::Feature::InOut (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::InOut)>::setValue(RBX::Reflection::DescribedBase *,RBX::Feature::InOut const&)const")
+}
+
+// 0x4ea5e8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::EnumPropDescriptor<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>(char const*,char const*,RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4ea5e8() -> ! {
+    todo!("0x4ea5e8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::EnumPropDescriptor<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>(char const*,char const*,RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4ea79c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::~EnumPropDescriptor()")]
+pub fn stub_0x4ea79c() -> ! {
+    todo!("0x4ea79c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::~EnumPropDescriptor()")
+}
+
+// 0x4ea7c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::isReadOnly(void)const")]
+pub fn stub_0x4ea7c8() -> ! {
+    todo!("0x4ea7c8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::isReadOnly(void)const")
+}
+
+// 0x4ea7d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::isWriteOnly(void)const")]
+pub fn stub_0x4ea7d8() -> ! {
+    todo!("0x4ea7d8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::isWriteOnly(void)const")
+}
+
+// 0x4ea7e8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ea7e8() -> ! {
+    todo!("0x4ea7e8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ea810 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4ea810() -> ! {
+    todo!("0x4ea810 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x4ea834 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4ea834() -> ! {
+    todo!("0x4ea834 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x4ea980 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x4ea980() -> ! {
+    todo!("0x4ea980 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x4ea9a4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::hasStringValue(void)const")]
+pub fn stub_0x4ea9a4() -> ! {
+    todo!("0x4ea9a4 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::hasStringValue(void)const")
+}
+
+// 0x4ea9a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ea9a8() -> ! {
+    todo!("0x4ea9a8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ea9cc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_0x4ea9cc() -> ! {
+    todo!("0x4ea9cc RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x4eaa0c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x4eaa0c() -> ! {
+    todo!("0x4eaa0c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x4eaa2c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x4eaa2c() -> ! {
+    todo!("0x4eaa2c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x4eac6c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eac6c() -> ! {
+    todo!("0x4eac6c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4eac88 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_0x4eac88() -> ! {
+    todo!("0x4eac88 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x4eacbc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eacbc() -> ! {
+    todo!("0x4eacbc RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4eacc4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x4eacc4() -> ! {
+    todo!("0x4eacc4 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4ead10 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ead10() -> ! {
+    todo!("0x4ead10 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ead30 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_0x4ead30() -> ! {
+    todo!("0x4ead30 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x4ead64 — __ZNK3RBX10Reflection8EnumDescINS_7Feature9LeftRightEE14convertToIndexES3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::convertToIndex(RBX::Feature::LeftRight)const")]
+pub fn stub_0x4ead64() -> ! {
+    todo!("0x4ead64 RBX::Reflection::EnumDesc<RBX::Feature::LeftRight>::convertToIndex(RBX::Feature::LeftRight)const")
+}
+
+// 0x4eadd4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9LeftRightEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x4eadd4() -> ! {
+    todo!("0x4eadd4 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4eae14 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_9LeftRightEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::GetSetImpl<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>::isReadOnly(void)const")]
+pub fn stub_0x4eae14() -> ! {
+    todo!("0x4eae14 RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::GetSetImpl<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>::isReadOnly(void)const")
+}
+
+// 0x4eae18 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_9LeftRightEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::GetSetImpl<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>::isWriteOnly(void)const")]
+pub fn stub_0x4eae18() -> ! {
+    todo!("0x4eae18 RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::GetSetImpl<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>::isWriteOnly(void)const")
+}
+
+// 0x4eae1c — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_9LeftRightEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::GetSetImpl<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eae1c() -> ! {
+    todo!("0x4eae1c RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::GetSetImpl<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4eae3c — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_9LeftRightEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::GetSetImpl<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>::setValue(RBX::Reflection::DescribedBase *,RBX::Feature::LeftRight const&)const")]
+pub fn stub_0x4eae3c() -> ! {
+    todo!("0x4eae3c RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::LeftRight>::GetSetImpl<RBX::Feature::LeftRight (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::LeftRight)>::setValue(RBX::Reflection::DescribedBase *,RBX::Feature::LeftRight const&)const")
+}
+
+// 0x4eae60 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::EnumPropDescriptor<RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom)>(char const*,char const*,RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4eae60() -> ! {
+    todo!("0x4eae60 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::EnumPropDescriptor<RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom)>(char const*,char const*,RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4eb014 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::~EnumPropDescriptor()")]
+pub fn stub_0x4eb014() -> ! {
+    todo!("0x4eb014 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::~EnumPropDescriptor()")
+}
+
+// 0x4eb040 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::isReadOnly(void)const")]
+pub fn stub_0x4eb040() -> ! {
+    todo!("0x4eb040 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::isReadOnly(void)const")
+}
+
+// 0x4eb050 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::isWriteOnly(void)const")]
+pub fn stub_0x4eb050() -> ! {
+    todo!("0x4eb050 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::isWriteOnly(void)const")
+}
+
+// 0x4eb060 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eb060() -> ! {
+    todo!("0x4eb060 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4eb088 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4eb088() -> ! {
+    todo!("0x4eb088 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x4eb0ac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4eb0ac() -> ! {
+    todo!("0x4eb0ac RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x4eb1f8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x4eb1f8() -> ! {
+    todo!("0x4eb1f8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x4eb21c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::hasStringValue(void)const")]
+pub fn stub_0x4eb21c() -> ! {
+    todo!("0x4eb21c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::hasStringValue(void)const")
+}
+
+// 0x4eb220 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eb220() -> ! {
+    todo!("0x4eb220 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4eb244 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_0x4eb244() -> ! {
+    todo!("0x4eb244 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x4eb284 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x4eb284() -> ! {
+    todo!("0x4eb284 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x4eb2a4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x4eb2a4() -> ! {
+    todo!("0x4eb2a4 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x4eb4e4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eb4e4() -> ! {
+    todo!("0x4eb4e4 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4eb500 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_0x4eb500() -> ! {
+    todo!("0x4eb500 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x4eb534 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eb534() -> ! {
+    todo!("0x4eb534 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4eb53c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x4eb53c() -> ! {
+    todo!("0x4eb53c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4eb588 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eb588() -> ! {
+    todo!("0x4eb588 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4eb5a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_0x4eb5a8() -> ! {
+    todo!("0x4eb5a8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x4eb5dc — __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE14convertToIndexES3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::convertToIndex(RBX::Feature::TopBottom)const")]
+pub fn stub_0x4eb5dc() -> ! {
+    todo!("0x4eb5dc RBX::Reflection::EnumDesc<RBX::Feature::TopBottom>::convertToIndex(RBX::Feature::TopBottom)const")
+}
+
+// 0x4eb64c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS2_9TopBottomEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x4eb64c() -> ! {
+    todo!("0x4eb64c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4eb68c — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_9TopBottomEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::GetSetImpl<RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom)>::isReadOnly(void)const")]
+pub fn stub_0x4eb68c() -> ! {
+    todo!("0x4eb68c RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::GetSetImpl<RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom)>::isReadOnly(void)const")
+}
+
+// 0x4eb690 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_9TopBottomEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::GetSetImpl<RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom)>::isWriteOnly(void)const")]
+pub fn stub_0x4eb690() -> ! {
+    todo!("0x4eb690 RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::GetSetImpl<RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom)>::isWriteOnly(void)const")
+}
+
+// 0x4eb694 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_9TopBottomEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::GetSetImpl<RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eb694() -> ! {
+    todo!("0x4eb694 RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::GetSetImpl<RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4eb6b4 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS2_9TopBottomEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::GetSetImpl<RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom)>::setValue(RBX::Reflection::DescribedBase *,RBX::Feature::TopBottom const&)const")]
+pub fn stub_0x4eb6b4() -> ! {
+    todo!("0x4eb6b4 RBX::Reflection::PropDescriptor<RBX::Feature,RBX::Feature::TopBottom>::GetSetImpl<RBX::Feature::TopBottom (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::Feature::TopBottom)>::setValue(RBX::Reflection::DescribedBase *,RBX::Feature::TopBottom const&)const")
+}
+
+// 0x4eb6d8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4eb6d8() -> ! {
+    todo!("0x4eb6d8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::EnumPropDescriptor<RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId)>(char const*,char const*,RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4eb88c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::~EnumPropDescriptor()")]
+pub fn stub_0x4eb88c() -> ! {
+    todo!("0x4eb88c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::~EnumPropDescriptor()")
+}
+
+// 0x4eb8b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::isReadOnly(void)const")]
+pub fn stub_0x4eb8b8() -> ! {
+    todo!("0x4eb8b8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::isReadOnly(void)const")
+}
+
+// 0x4eb8c8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::isWriteOnly(void)const")]
+pub fn stub_0x4eb8c8() -> ! {
+    todo!("0x4eb8c8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::isWriteOnly(void)const")
+}
+
+// 0x4eb8d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eb8d8() -> ! {
+    todo!("0x4eb8d8 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4eb900 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4eb900() -> ! {
+    todo!("0x4eb900 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x4eb924 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4eb924() -> ! {
+    todo!("0x4eb924 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x4eba70 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x4eba70() -> ! {
+    todo!("0x4eba70 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x4eba94 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::hasStringValue(void)const")]
+pub fn stub_0x4eba94() -> ! {
+    todo!("0x4eba94 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::hasStringValue(void)const")
+}
+
+// 0x4eba98 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eba98() -> ! {
+    todo!("0x4eba98 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ebabc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_0x4ebabc() -> ! {
+    todo!("0x4ebabc RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x4ebafc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x4ebafc() -> ! {
+    todo!("0x4ebafc RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x4ebb1c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x4ebb1c() -> ! {
+    todo!("0x4ebb1c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x4ebd5c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ebd5c() -> ! {
+    todo!("0x4ebd5c RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ebd78 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_0x4ebd78() -> ! {
+    todo!("0x4ebd78 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x4ebdac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ebdac() -> ! {
+    todo!("0x4ebdac RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ebdb4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x4ebdb4() -> ! {
+    todo!("0x4ebdb4 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4ebe00 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ebe00() -> ! {
+    todo!("0x4ebe00 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ebe20 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_0x4ebe20() -> ! {
+    todo!("0x4ebe20 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x4ebe54 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_7FeatureENS_8NormalIdEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x4ebe54() -> ! {
+    todo!("0x4ebe54 RBX::Reflection::EnumPropDescriptor<RBX::Feature,RBX::NormalId>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4ebe94 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId)>::isReadOnly(void)const")]
+pub fn stub_0x4ebe94() -> ! {
+    todo!("0x4ebe94 RBX::Reflection::PropDescriptor<RBX::Feature,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId)>::isReadOnly(void)const")
+}
+
+// 0x4ebe98 — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId)>::isWriteOnly(void)const")]
+pub fn stub_0x4ebe98() -> ! {
+    todo!("0x4ebe98 RBX::Reflection::PropDescriptor<RBX::Feature,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId)>::isWriteOnly(void)const")
+}
+
+// 0x4ebe9c — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ebe9c() -> ! {
+    todo!("0x4ebe9c RBX::Reflection::PropDescriptor<RBX::Feature,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ebebc — __ZNK3RBX10Reflection14PropDescriptorINS_7FeatureENS_8NormalIdEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Feature,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")]
+pub fn stub_0x4ebebc() -> ! {
+    todo!("0x4ebebc RBX::Reflection::PropDescriptor<RBX::Feature,RBX::NormalId>::GetSetImpl<RBX::NormalId (RBX::Feature::*)(void)const,void (RBX::Feature::*)(RBX::NormalId)>::setValue(RBX::Reflection::DescribedBase *,RBX::NormalId const&)const")
+}
+
+// 0x4ecdb0 — __ZN3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::PropDescriptor<float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float)>(char const*,char const*,float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4ecdb0() -> ! {
+    todo!("0x4ecdb0 RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::PropDescriptor<float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float)>(char const*,char const*,float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4ecec4 — __ZN3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::~PropDescriptor()")]
+pub fn stub_0x4ecec4() -> ! {
+    todo!("0x4ecec4 RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::~PropDescriptor()")
+}
+
+// 0x4ecef0 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::GetSetImpl<float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float)>::isReadOnly(void)const")]
+pub fn stub_0x4ecef0() -> ! {
+    todo!("0x4ecef0 RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::GetSetImpl<float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float)>::isReadOnly(void)const")
+}
+
+// 0x4ecef4 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::GetSetImpl<float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float)>::isWriteOnly(void)const")]
+pub fn stub_0x4ecef4() -> ! {
+    todo!("0x4ecef4 RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::GetSetImpl<float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float)>::isWriteOnly(void)const")
+}
+
+// 0x4ecef8 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::GetSetImpl<float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ecef8() -> ! {
+    todo!("0x4ecef8 RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::GetSetImpl<float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ecf18 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::GetSetImpl<float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x4ecf18() -> ! {
+    todo!("0x4ecf18 RBX::Reflection::PropDescriptor<RBX::VelocityMotor,float>::GetSetImpl<float (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x4ecf3c — __ZN3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::RefPropDescriptor<RBX::Hole* (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(RBX::Hole*)>(char const*,char const*,RBX::Hole* (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(RBX::Hole*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4ecf3c() -> ! {
+    todo!("0x4ecf3c RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::RefPropDescriptor<RBX::Hole* (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(RBX::Hole*)>(char const*,char const*,RBX::Hole* (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(RBX::Hole*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4ecfe0 — __ZN3RBX10Reflection7RefTypeIPNS_4HoleEE9singletonEv
+#[doc(alias = "RBX::Reflection::RefType<RBX::Hole *>::singleton(void)")]
+pub fn stub_0x4ecfe0() -> ! {
+    todo!("0x4ecfe0 RBX::Reflection::RefType<RBX::Hole *>::singleton(void)")
+}
+
+// 0x4ed0d8 — __ZN3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEED0Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::~RefPropDescriptor()")]
+pub fn stub_0x4ed0d8() -> ! {
+    todo!("0x4ed0d8 RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::~RefPropDescriptor()")
+}
+
+// 0x4ed108 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::isReadOnly(void)const")]
+pub fn stub_0x4ed108() -> ! {
+    todo!("0x4ed108 RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::isReadOnly(void)const")
+}
+
+// 0x4ed118 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::isWriteOnly(void)const")]
+pub fn stub_0x4ed118() -> ! {
+    todo!("0x4ed118 RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::isWriteOnly(void)const")
+}
+
+// 0x4ed128 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ed128() -> ! {
+    todo!("0x4ed128 RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4ed150 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4ed150() -> ! {
+    todo!("0x4ed150 RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x4ed268 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4ed268() -> ! {
+    todo!("0x4ed268 RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x4ed330 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x4ed330() -> ! {
+    todo!("0x4ed330 RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
