@@ -59,3 +59,4 @@ pub mod generated_core_shard_s;
 pub mod generated_core_shard_t;
 pub mod generated_core_shard_u;
 pub mod generated_core_shard_v;
+pub mod generated_core_shard_w;
