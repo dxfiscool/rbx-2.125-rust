@@ -63,4 +63,5 @@ pub mod generated_core_shard_w;
 pub mod generated_core_shard_x;
 pub mod generated_core_shard_y;
 pub mod generated_core_shard_z;
+pub mod generated_core_shard_aa;
 pub mod generated_gap;
