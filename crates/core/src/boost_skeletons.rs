@@ -10488,3 +10488,702 @@ pub fn stub_2b22cc() {
 pub fn stub_2b23a8() {
     todo!("0x2b23a8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX13ScriptContextENS7_3Lua13WeakThreadRefEP9lua_StateEENS3_5list3INS3_5valueIPS8_EENSF_ISA_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
 }
+#[doc(alias = "virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
+// 0x3c528 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
+// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
+pub fn boost_stub_3c528() {
+    todo!("0x3c528 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev")
+}
+
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
+// 0x3c570 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
+pub fn boost_stub_3c570() {
+    todo!("0x3c570 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")
+}
+
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")]
+// 0x3c5b8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const
+pub fn boost_stub_3c5b8() {
+    todo!("0x3c5b8 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv")
+}
+
+#[doc(alias = "non_virtual_thunk_to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
+// 0x3c678 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
+// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
+pub fn boost_stub_3c678() {
+    todo!("0x3c678 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")
+}
+
+#[doc(alias = "boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
+// 0x3c680 — __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
+// was: boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()
+pub fn boost_stub_3c680() {
+    todo!("0x3c680 __ZN5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev")
+}
+
+#[doc(alias = "boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::adopt(boost::exception_detail::error_info_container*)")]
+// 0x3c698 — __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEE5adoptEPS2_
+// was: boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::adopt(boost::exception_detail::error_info_container*)
+pub fn boost_stub_3c698() {
+    todo!("0x3c698 __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEE5adoptEPS2_")
+}
+
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::lock_error> const&)")]
+// 0x3c6c8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS4_
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::lock_error> const&)
+pub fn boost_stub_3c6c8() {
+    todo!("0x3c6c8 __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS4_")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)")]
+// 0x3cf28 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv
+// was: boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>::operator()(void)
+pub fn boost_stub_3cf28(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x3cf28 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0Iv10RobloxViewEENS0_5list1INS0_5valueIPS4_EEEEEclEv")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")]
+// 0x3d6a8 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED1Ev
+// was: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()
+pub fn boost_stub_3d6a8(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x3d6a8 __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED1Ev")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()")]
+// 0x3d754 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED0Ev
+// was: rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>>::~callable_slot()
+pub fn boost_stub_3d754(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x3d754 __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1Iv10RobloxViewS6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEEED0Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+// 0x3d808 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
+pub fn boost_stub_3d808(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x3d808 __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_")
+}
+
+#[doc(alias = "non_virtual_thunk_to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+// 0x3d81c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
+// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
+pub fn boost_stub_3d81c(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x3d81c __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_")
+}
+
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)")]
+// 0x3d830 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1Iv10RobloxViewPKN3RBX10Reflection18PropertyDescriptorEEENS0_5list2INS0_5valueIPS4_EENS_3argILi1EEEEEEclIS9_EEvRT_
+// was: void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>::operator()<RBX::Reflection::PropertyDescriptor const*>(RBX::Reflection::PropertyDescriptor const* &)
+pub fn boost_stub_3d830(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x3d830 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1Iv10RobloxViewPKN3RBX10Reflection18PropertyDescriptorEEENS0_5list2INS0_5valueIPS4_EENS_3argILi1EEEEEEclIS9_EEvRT_")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+// 0x3d9f0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
+pub fn boost_stub_3d9f0(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x3d9f0 __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+// 0x3da9c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
+pub fn boost_stub_3da9c(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x3da9c __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_ED0Ev")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")]
+// 0x3e0b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI19CRenderSettingsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const
+pub fn boost_stub_3e0b0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3e0b0 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI19CRenderSettingsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// 0x3e190 — __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_3e190() {
+    todo!("0x3e190 __ZN5boost6detail18sp_counted_impl_pdIP19CRenderSettingsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x3e1e8 — __ZN5boost14singleton_poolIN3RBX16OnDemandInstanceELj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
+// was: boost::singleton_pool<RBX::OnDemandInstance,20u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn boost_stub_3e1e8() {
+    todo!("0x3e1e8 __ZN5boost14singleton_poolIN3RBX16OnDemandInstanceELj20ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")]
+// 0x3ec30 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED1Ev
+// was: boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()
+pub fn boost_stub_3ec30() {
+    todo!("0x3ec30 __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED1Ev")
+}
+
+#[doc(alias = "boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()")]
+// 0x3ec34 — __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev
+// was: boost::scoped_ptr<Ogre::LogManager>::~scoped_ptr()
+pub fn boost_stub_3ec34() {
+    todo!("0x3ec34 __ZN5boost10scoped_ptrIN4Ogre10LogManagerEED2Ev")
+}
+
+#[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")]
+// 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
+// was: RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)
+pub fn boost_stub_3ecf0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3ecf0 __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE")
+}
+
+#[doc(alias = "boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")]
+// 0x40318 — __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
+// was: boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)
+pub fn boost_stub_40318(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40318 __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")
+}
+
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::DataModel *)>::connect<boost::function<void ()(RBX::DataModel *)>>(boost::function<void ()(RBX::DataModel *)> const&)")]
+// 0x49e7c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
+// was: rbx::signals::connection rbx::signals::signal<void ()(RBX::DataModel *)>::connect<boost::function<void ()(RBX::DataModel *)>>(boost::function<void ()(RBX::DataModel *)> const&)
+pub fn boost_stub_49e7c(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x49e7c __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_")
+}
+
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::DataModel *)>::slot*)")]
+// 0x4b374 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSEPS9_
+// was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::DataModel *)>::slot*)
+pub fn boost_stub_4b374(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4b374 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSEPS9_")
+}
+
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> const&)")]
+// 0x4b418 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSERKSA_
+// was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> const&)
+pub fn boost_stub_4b418(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4b418 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9DataModelEEE4slotEEaSERKSA_")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::callable<rbx::signals::signal<void ()(RBX::DataModel *)>*>(boost::function<void ()(RBX::DataModel *)> const&,rbx::signals::signal<void ()(RBX::DataModel *)>*)")]
+// 0x4b5b8 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_EC2IPS7_EERKSB_T_
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::callable<rbx::signals::signal<void ()(RBX::DataModel *)>*>(boost::function<void ()(RBX::DataModel *)> const&,rbx::signals::signal<void ()(RBX::DataModel *)>*)
+pub fn boost_stub_4b5b8(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4b5b8 __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_EC2IPS7_EERKSB_T_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")]
+// 0x4b6b4 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED1Ev
+// was: rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()
+pub fn boost_stub_4b6b4(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4b6b4 __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED1Ev")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()")]
+// 0x4b788 — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED0Ev
+// was: rbx::signals::signal<void ()(RBX::DataModel *)>::callable_slot<boost::function<void ()(RBX::DataModel *)>>::~callable_slot()
+pub fn boost_stub_4b788(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4b788 __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE13callable_slotIN5boost8functionIS5_EEED0Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
+// 0x4b97c — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
+pub fn boost_stub_4b97c(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4b97c __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
+}
+
+#[doc(alias = "non_virtual_thunk_to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
+// 0x4b984 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
+// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
+pub fn boost_stub_4b984(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4b984 __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
+}
+
+#[doc(alias = "boost::function1<void,RBX::DataModel *>::operator()(RBX::DataModel *)const")]
+// 0x4b98c — __ZNK5boost9function1IvPN3RBX9DataModelEEclES3_
+// was: boost::function1<void,RBX::DataModel *>::operator()(RBX::DataModel *)const
+pub fn boost_stub_4b98c(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4b98c __ZNK5boost9function1IvPN3RBX9DataModelEEclES3_")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")]
+// 0x4bc34 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED1Ev
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()
+pub fn boost_stub_4bc34(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4bc34 __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED1Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()")]
+// 0x4bd08 — __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED0Ev
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::~callable()
+pub fn boost_stub_4bd08(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4bd08 __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_ED0Ev")
+}
+
+#[doc(alias = "boost::function1<void,RBX::DataModel *>::assign_to_own(boost::function1<void,RBX::DataModel *> const&)")]
+// 0x4bf3c — __ZN5boost9function1IvPN3RBX9DataModelEE13assign_to_ownERKS4_
+// was: boost::function1<void,RBX::DataModel *>::assign_to_own(boost::function1<void,RBX::DataModel *> const&)
+pub fn boost_stub_4bf3c(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4bf3c __ZN5boost9function1IvPN3RBX9DataModelEE13assign_to_ownERKS4_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)")]
+// 0x4bf6c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>>&,boost::detail::function::functor_manager_operation_type)
+pub fn boost_stub_4bf6c(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4bf6c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE")
+}
+
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)")]
+// 0x4bfcc — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_
+// was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,RBX::DataModel *),boost::_bi::list3<boost::_bi::value<objc_object *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,void,RBX::DataModel>::invoke(boost::detail::function::function_buffer &,RBX::DataModel)
+pub fn boost_stub_4bfcc(_cb: Box<dyn Fn() + Send + Sync + 'static>) {
+    todo!("0x4bfcc __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPN3RBX9DataModelEENS3_5list3INS3_5valueIS6_EENSE_IS7_EENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_")
+}
+
+#[doc(alias = "RBX::boost_detail::init_foo(void)")]
+// 0x23f2ac — __ZN3RBX12boost_detail8init_fooEv
+// was: RBX::boost_detail::init_foo(void)
+pub fn boost_stub_23f2ac() {
+    todo!("0x23f2ac __ZN3RBX12boost_detail8init_fooEv")
+}
+
+#[doc(alias = "RBX::Lua::LuaArguments::getObject(int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)const")]
+// 0x26b55c — __ZNK3RBX3Lua12LuaArguments9getObjectEiRN5boost10shared_ptrINS_10Reflection13DescribedBaseEEE
+// was: RBX::Lua::LuaArguments::getObject(int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)const
+pub fn boost_stub_26b55c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26b55c __ZNK3RBX3Lua12LuaArguments9getObjectEiRN5boost10shared_ptrINS_10Reflection13DescribedBaseEEE")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::Reflection::DescribedBase>& boost::shared_ptr<RBX::Reflection::DescribedBase>::operator=<RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
+// 0x26c350 — __ZN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEaSINS1_8InstanceEEERS4_RKNS0_IT_EE
+// was: boost::shared_ptr<RBX::Reflection::DescribedBase>& boost::shared_ptr<RBX::Reflection::DescribedBase>::operator=<RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)
+pub fn boost_stub_26c350(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26c350 __ZN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEaSINS1_8InstanceEEERS4_RKNS0_IT_EE")
+}
+
+#[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)")]
+// 0x26c38c — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrINS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
+// was: bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)
+pub fn boost_stub_26c38c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26c38c __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrINS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_")
+}
+
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Instance> const&)")]
+// 0x26dce4 — __ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Instance> const&)
+pub fn boost_stub_26dce4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26dce4 __ZN3RBX3Lua14ArgumentPusherclERKN5boost10shared_ptrINS_8InstanceEEE")
+}
+
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)")]
+// 0x26ddb4 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEE
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)
+pub fn boost_stub_26ddb4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26ddb4 __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEE")
+}
+
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
+// 0x26dddc — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEE
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)
+pub fn boost_stub_26dddc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26dddc __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEE")
+}
+
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
+// 0x26dea0 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEE
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)
+pub fn boost_stub_26dea0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26dea0 __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEE")
+}
+
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>)")]
+// 0x26df08 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>)
+pub fn boost_stub_26df08(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26df08 __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKSt6vectorINS3_INS_8InstanceEEESaIS6_EEEE")
+}
+
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)")]
+// 0x26df2c — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS_10Reflection5TupleEEE
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>)
+pub fn boost_stub_26df2c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26df2c __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrIKNS_10Reflection5TupleEEE")
+}
+
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)")]
+// 0x26df60 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEE
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)
+pub fn boost_stub_26df60(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26df60 __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEE")
+}
+
+#[doc(alias = "RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>)")]
+// 0x26e030 — __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEE
+// was: RBX::Lua::ArgumentPusher::operator()(boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>)
+pub fn boost_stub_26e030(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26e030 __ZN3RBX3Lua14ArgumentPusherclEN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEE")
+}
+
+#[doc(alias = "int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)")]
+// 0x26e100 — __ZN3RBX3Lua14ArgumentPusherclINS_6CellIDEEEiRKT_PN5boost10disable_ifINS7_13is_arithmeticIS4_EEvE4typeE
+// was: int RBX::Lua::ArgumentPusher::operator()<RBX::CellID>(RBX::CellID const&,boost::disable_if<boost::is_arithmetic<RBX::CellID>,void>::type *)
+pub fn boost_stub_26e100() {
+    todo!("0x26e100 __ZN3RBX3Lua14ArgumentPusherclINS_6CellIDEEEiRKT_PN5boost10disable_ifINS7_13is_arithmeticIS4_EEvE4typeE")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const& rbx::any_cast<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+// 0x26eb44 — __ZN3rbx8any_castIRKN5boost10shared_ptrINS1_8functionIFvNS2_IKN3RBX10Reflection5TupleEEENS3_IFvPNS4_3Lua12IAsyncResultEEEEEEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
+// was: boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const& rbx::any_cast<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
+pub fn boost_stub_26eb44(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26eb44 __ZN3rbx8any_castIRKN5boost10shared_ptrINS1_8functionIFvNS2_IKN3RBX10Reflection5TupleEEENS3_IFvPNS4_3Lua12IAsyncResultEEEEEEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE")
+}
+
+#[doc(alias = "boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const& rbx::any_cast<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+// 0x26ee14 — __ZN3rbx8any_castIRKN5boost10shared_ptrIKSt6vectorINS2_IN3RBX8InstanceEEESaIS6_EEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
+// was: boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const& rbx::any_cast<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
+pub fn boost_stub_26ee14(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26ee14 __ZN3rbx8any_castIRKN5boost10shared_ptrIKSt6vectorINS2_IN3RBX8InstanceEEESaIS6_EEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE")
+}
+
+#[doc(alias = "int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,lua_State *)")]
+// 0x26ef04 — __ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEEEiT_SF_P9lua_State
+// was: int RBX::Lua::LuaArguments::pushArray<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,lua_State *)
+pub fn boost_stub_26ef04(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26ef04 __ZN3RBX3Lua12LuaArguments9pushArrayIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEEEiT_SF_P9lua_State")
+}
+
+#[doc(alias = "bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)")]
+// 0x26fa78 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_
+// was: bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<RBX::Reflection::Variant>(lua_State *,unsigned int,RBX::Reflection::Variant &)
+pub fn boost_stub_26fa78(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26fa78 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS_10Reflection7VariantEEEbP9lua_StatejRT_")
+}
+
+#[doc(alias = "bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)")]
+// 0x26ff94 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS3_INS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_
+// was: bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Reflection::DescribedBase>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Reflection::DescribedBase> &)
+pub fn boost_stub_26ff94(_ptr: crate::SharedPtr<()>) {
+    todo!("0x26ff94 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueINS3_INS_10Reflection13DescribedBaseEEEEEbP9lua_StatejRT_")
+}
+
+#[doc(alias = "RBX::CellID::fromParameters(bool,float *,boost::shared_ptr<RBX::Instance>)")]
+// 0x277af4 — __ZN3RBX6CellID14fromParametersEbPfN5boost10shared_ptrINS_8InstanceEEE
+// was: RBX::CellID::fromParameters(bool,float *,boost::shared_ptr<RBX::Instance>)
+pub fn boost_stub_277af4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x277af4 __ZN3RBX6CellID14fromParametersEbPfN5boost10shared_ptrINS_8InstanceEEE")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+// 0x27a00c — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE13registerClassEP9lua_StatePFiS9_ESB_
+// was: RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
+pub fn boost_stub_27a00c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a00c __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE13registerClassEP9lua_StatePFiS9_ESB_")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_gc(lua_State *)")]
+// 0x27a120 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE5on_gcEP9lua_State
+// was: RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_gc(lua_State *)
+pub fn boost_stub_27a120(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a120 __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE5on_gcEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_eq(lua_State *)")]
+// 0x27a148 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE5on_eqEP9lua_State
+// was: RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_eq(lua_State *)
+pub fn boost_stub_27a148(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a148 __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE5on_eqEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_tostring(lua_State *)")]
+// 0x27a188 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_tostringEP9lua_State
+// was: RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_tostring(lua_State *)
+pub fn boost_stub_27a188(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a188 __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_tostringEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+// 0x27a1b0 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE13registerClassEP9lua_StatePFiSE_ESG_
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
+pub fn boost_stub_27a1b0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a1b0 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE13registerClassEP9lua_StatePFiSE_ESG_")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_gc(lua_State *)")]
+// 0x27a2c4 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE5on_gcEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_gc(lua_State *)
+pub fn boost_stub_27a2c4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a2c4 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE5on_gcEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_eq(lua_State *)")]
+// 0x27a2ec — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE5on_eqEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_eq(lua_State *)
+pub fn boost_stub_27a2ec(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a2ec __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE5on_eqEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_tostring(lua_State *)")]
+// 0x27a32c — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE11on_tostringEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_tostring(lua_State *)
+pub fn boost_stub_27a32c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a32c __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE11on_tostringEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+// 0x27a354 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE13registerClassEP9lua_StatePFiSI_ESK_
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
+pub fn boost_stub_27a354(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a354 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE13registerClassEP9lua_StatePFiSI_ESK_")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_gc(lua_State *)")]
+// 0x27a468 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE5on_gcEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_gc(lua_State *)
+pub fn boost_stub_27a468(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a468 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE5on_gcEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_eq(lua_State *)")]
+// 0x27a490 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE5on_eqEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_eq(lua_State *)
+pub fn boost_stub_27a490(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a490 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE5on_eqEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_tostring(lua_State *)")]
+// 0x27a4d0 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE11on_tostringEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_tostring(lua_State *)
+pub fn boost_stub_27a4d0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a4d0 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE11on_tostringEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+// 0x27a4f8 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE13registerClassEP9lua_StatePFiS8_ESA_
+// was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))
+pub fn boost_stub_27a4f8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a4f8 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE13registerClassEP9lua_StatePFiS8_ESA_")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_gc(lua_State *)")]
+// 0x27a5e0 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE5on_gcEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_gc(lua_State *)
+pub fn boost_stub_27a5e0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a5e0 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE5on_gcEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(lua_State *)")]
+// 0x27a608 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringEP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(lua_State *)
+pub fn boost_stub_27a608(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27a608 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringEP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_index(boost::shared_ptr<RBX::Instance> const&,char const*,lua_State *)")]
+// 0x27c258 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexERKS5_PKcP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_index(boost::shared_ptr<RBX::Instance> const&,char const*,lua_State *)
+pub fn boost_stub_27c258(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27c258 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexERKS5_PKcP9lua_State")
+}
+
+#[doc(alias = "PropertyNameCorrection(boost::shared_ptr<RBX::Instance> const&,char const*,lua_State *)")]
+// 0x27dbc8 — __ZL22PropertyNameCorrectionRKN5boost10shared_ptrIN3RBX8InstanceEEEPKcP9lua_State
+// was: PropertyNameCorrection(boost::shared_ptr<RBX::Instance> const&,char const*,lua_State *)
+pub fn boost_stub_27dbc8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27dbc8 __ZL22PropertyNameCorrectionRKN5boost10shared_ptrIN3RBX8InstanceEEEPKcP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::callCallback(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)")]
+// 0x27e448 — __ZN3RBX3Lua12callCallbackENS0_15WeakFunctionRefEN5boost10shared_ptrIKNS_10Reflection5TupleEEENS2_13intrusive_ptrINS0_13WeakThreadRefEEE
+// was: RBX::Lua::callCallback(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)
+pub fn boost_stub_27e448(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27e448 __ZN3RBX3Lua12callCallbackENS0_15WeakFunctionRefEN5boost10shared_ptrIKNS_10Reflection5TupleEEENS2_13intrusive_ptrINS0_13WeakThreadRefEEE")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_newindex(boost::shared_ptr<RBX::Instance>&,char const*,lua_State *)")]
+// 0x27ef18 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_newindexERS5_PKcP9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_newindex(boost::shared_ptr<RBX::Instance>&,char const*,lua_State *)
+pub fn boost_stub_27ef18(_ptr: crate::SharedPtr<()>) {
+    todo!("0x27ef18 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_newindexERS5_PKcP9lua_State")
+}
+
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(boost::shared_ptr<RBX::Instance> const&,lua_State *)")]
+// 0x280b90 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringERKS5_P9lua_State
+// was: RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(boost::shared_ptr<RBX::Instance> const&,lua_State *)
+pub fn boost_stub_280b90(_ptr: crate::SharedPtr<()>) {
+    todo!("0x280b90 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringERKS5_P9lua_State")
+}
+
+#[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)")]
+// 0x280c4c — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrIS2_EEEEbP9lua_StatejRT_
+// was: bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)
+pub fn boost_stub_280c4c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x280c4c __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrIS2_EEEEbP9lua_StatejRT_")
+}
+
+#[doc(alias = "boost::shared_ptr<YieldFunctionStateObject>::shared_ptr<YieldFunctionStateObject>(YieldFunctionStateObject *)")]
+// 0x281000 — __ZN5boost10shared_ptrI24YieldFunctionStateObjectEC2IS1_EEPT_
+// was: boost::shared_ptr<YieldFunctionStateObject>::shared_ptr<YieldFunctionStateObject>(YieldFunctionStateObject *)
+pub fn boost_stub_281000(_ptr: crate::SharedPtr<()>) {
+    todo!("0x281000 __ZN5boost10shared_ptrI24YieldFunctionStateObjectEC2IS1_EEPT_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<YieldFunctionStateObject>::_internal_accept_owner<YieldFunctionStateObject,YieldFunctionStateObject>(boost::shared_ptr<YieldFunctionStateObject> const*,YieldFunctionStateObject *)const")]
+// 0x2810e8 — __ZNK5boost23enable_shared_from_thisI24YieldFunctionStateObjectE22_internal_accept_ownerIS1_S1_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<YieldFunctionStateObject>::_internal_accept_owner<YieldFunctionStateObject,YieldFunctionStateObject>(boost::shared_ptr<YieldFunctionStateObject> const*,YieldFunctionStateObject *)const
+pub fn boost_stub_2810e8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x2810e8 __ZNK5boost23enable_shared_from_thisI24YieldFunctionStateObjectE22_internal_accept_ownerIS1_S1_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<YieldFunctionStateObject>(YieldFunctionStateObject *)")]
+// 0x2811cc — __ZN5boost6detail12shared_countC2I24YieldFunctionStateObjectEEPT_
+// was: boost::detail::shared_count::shared_count<YieldFunctionStateObject>(YieldFunctionStateObject *)
+pub fn boost_stub_2811cc() {
+    todo!("0x2811cc __ZN5boost6detail12shared_countC2I24YieldFunctionStateObjectEEPT_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()")]
+// 0x281354 — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED1Ev
+// was: boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()
+pub fn boost_stub_281354() {
+    todo!("0x281354 __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()")]
+// 0x281358 — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED0Ev
+// was: boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::~sp_counted_impl_p()
+pub fn boost_stub_281358() {
+    todo!("0x281358 __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::dispose(void)")]
+// 0x28135c — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE7disposeEv
+// was: boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::dispose(void)
+pub fn boost_stub_28135c() {
+    todo!("0x28135c __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::get_deleter(std::type_info const&)")]
+// 0x28148c — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::get_deleter(std::type_info const&)
+pub fn boost_stub_28148c() {
+    todo!("0x28148c __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::get_untyped_deleter(void)")]
+// 0x281490 — __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_p<YieldFunctionStateObject>::get_untyped_deleter(void)
+pub fn boost_stub_281490() {
+    todo!("0x281490 __ZN5boost6detail17sp_counted_impl_pI24YieldFunctionStateObjectE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)")]
+// 0x281494 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueIS5_EEbP9lua_StatejRT_
+// was: bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)
+pub fn boost_stub_281494(_ptr: crate::SharedPtr<()>) {
+    todo!("0x281494 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueIS5_EEbP9lua_StatejRT_")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list_av_2<boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,RBX::Reflection::Variant,boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(RBX::Reflection::Variant),boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>)")]
+// 0x281504 — __ZN5boost4bindIv24YieldFunctionStateObjectN3RBX10Reflection7VariantENS_10shared_ptrIS1_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1ISB_T0_T1_EENS9_9list_av_2IT2_T3_E4typeEEEMSE_FSB_SF_ESI_SJ_
+// was: boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list_av_2<boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,RBX::Reflection::Variant,boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(RBX::Reflection::Variant),boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>)
+pub fn boost_stub_281504(_ptr: crate::SharedPtr<()>) {
+    todo!("0x281504 __ZN5boost4bindIv24YieldFunctionStateObjectN3RBX10Reflection7VariantENS_10shared_ptrIS1_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1ISB_T0_T1_EENS9_9list_av_2IT2_T3_E4typeEEEMSE_FSB_SF_ESI_SJ_")
+}
+
+#[doc(alias = "boost::shared_ptr<YieldFunctionStateObject> RBX::shared_from<YieldFunctionStateObject>(YieldFunctionStateObject*)")]
+// 0x281988 — __ZN3RBX11shared_fromI24YieldFunctionStateObjectEEN5boost10shared_ptrIT_EEPS4_
+// was: boost::shared_ptr<YieldFunctionStateObject> RBX::shared_from<YieldFunctionStateObject>(YieldFunctionStateObject*)
+pub fn boost_stub_281988(_ptr: crate::SharedPtr<()>) {
+    todo!("0x281988 __ZN3RBX11shared_fromI24YieldFunctionStateObjectEEN5boost10shared_ptrIT_EEPS4_")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list_av_2<boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,std::string,boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(std::string),boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>)")]
+// 0x281af0 — __ZN5boost4bindIv24YieldFunctionStateObjectSsNS_10shared_ptrIS1_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_
+// was: boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list_av_2<boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,std::string,boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(std::string),boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>)
+pub fn boost_stub_281af0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x281af0 __ZN5boost4bindIv24YieldFunctionStateObjectSsNS_10shared_ptrIS1_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list_av_2<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string>::type> boost::bind<void,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string>(void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string)")]
+// 0x281f70 — __ZN5boost4bindIvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsS5_SsEENS_3_bi6bind_tIT_PFS8_T0_T1_ENS6_9list_av_2IT2_T3_E4typeEEESC_SE_SF_
+// was: boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list_av_2<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string>::type> boost::bind<void,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string>(void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string)
+pub fn boost_stub_281f70(_ptr: crate::SharedPtr<()>) {
+    todo!("0x281f70 __ZN5boost4bindIvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsS5_SsEENS_3_bi6bind_tIT_PFS8_T0_T1_ENS6_9list_av_2IT2_T3_E4typeEEESC_SE_SF_")
+}
+
+#[doc(alias = "YieldFunctionStateObject::resumeThreadWithException(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string)")]
+// 0x2821bc — __ZN24YieldFunctionStateObject25resumeThreadWithExceptionEN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESs
+// was: YieldFunctionStateObject::resumeThreadWithException(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string)
+pub fn boost_stub_2821bc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x2821bc __ZN24YieldFunctionStateObject25resumeThreadWithExceptionEN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESs")
+}
+
+#[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>)")]
+// 0x2824b4 — __ZN5boost3_bi5list2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEC2ES8_S9_
+// was: boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>)
+pub fn boost_stub_2824b4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x2824b4 __ZN5boost3_bi5list2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEC2ES8_S9_")
+}
+
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>)")]
+// 0x282620 — __ZN5boost3_bi8storage2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEC2ES8_S9_
+// was: boost::_bi::storage2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>)
+pub fn boost_stub_282620(_ptr: crate::SharedPtr<()>) {
+    todo!("0x282620 __ZN5boost3_bi8storage2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEC2ES8_S9_")
+}
+
+#[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS7_5list2INS7_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
+// 0x282734 — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS7_5list2INS7_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS7_5list2INS7_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
+pub fn boost_stub_282734() {
+    todo!("0x282734 __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS7_5list2INS7_5valueISC_EENSG_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")]
+// 0x2828bc — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
+pub fn boost_stub_2828bc() {
+    todo!("0x2828bc __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>)")]
+// 0x282a48 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEEvT_
+// was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>)
+pub fn boost_stub_282a48(_ptr: crate::SharedPtr<()>) {
+    todo!("0x282a48 __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS1_3Lua13WeakThreadRefEEESsENS6_5list2INS6_5valueISB_EENSF_ISsEEEEEEEEvT_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// 0x282be4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn boost_stub_282be4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x282be4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE")
+}
+
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
+// 0x282c00 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESJ_
+// was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
+pub fn boost_stub_282c00(_ptr: crate::SharedPtr<()>) {
+    todo!("0x282c00 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEvPNS6_9DataModelEE6invokeERNS1_15function_bufferESJ_")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
+// 0x282c1c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS3_3Lua13WeakThreadRefEEESsENS8_5list2INS8_5valueISD_EENSH_ISsEEEEEEEEbT_RNS1_15function_bufferE
+// was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const
+pub fn boost_stub_282c1c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x282c1c __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS3_3Lua13WeakThreadRefEEESsENS8_5list2INS8_5valueISD_EENSH_ISsEEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// 0x282da8 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS3_3Lua13WeakThreadRefEEESsENS8_5list2INS8_5valueISD_EENSH_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn boost_stub_282da8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x282da8 __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_13intrusive_ptrINS3_3Lua13WeakThreadRefEEESsENS8_5list2INS8_5valueISD_EENSH_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
+// 0x282f78 — __ZN5boost3_bi5list2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEclIPFvS7_SsENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i
+// was: void boost::_bi::list2<boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,std::string) &,boost::_bi::list1<RBX::DataModel *&> &,int)
+pub fn boost_stub_282f78(_ptr: crate::SharedPtr<()>) {
+    todo!("0x282f78 __ZN5boost3_bi5list2INS0_5valueINS_13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEEEENS2_ISsEEEclIPFvS7_SsENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i")
+}
