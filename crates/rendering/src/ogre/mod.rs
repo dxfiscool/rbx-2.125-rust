@@ -27214,3 +27214,1052 @@ pub fn stub_c65cf0() -> ! {
 pub fn stub_c65cfc() -> ! {
     todo!("0xc65cfc Ogre::Bone::createChildImpl(void)")
 }
+// 0xc65d10 — __ZN4Ogre4Bone15createChildImplERKSs
+#[doc(alias = "Ogre::Bone::createChildImpl(std::string const&)")]
+// was: Ogre::Bone::createChildImpl(std::string const&)
+pub fn stub_c65d10() -> ! {
+    todo!("0xc65d10 Ogre::Bone::createChildImpl(std::string const&)")
+}
+
+// 0xc65d24 — __ZN4Ogre4Bone14setBindingPoseEv
+#[doc(alias = "Ogre::Bone::setBindingPose(void)")]
+// was: Ogre::Bone::setBindingPose(void)
+pub fn stub_c65d24() -> ! {
+    todo!("0xc65d24 Ogre::Bone::setBindingPose(void)")
+}
+
+// 0xc65ddc — __ZN4Ogre4Bone5resetEv
+#[doc(alias = "Ogre::Bone::reset(void)")]
+// was: Ogre::Bone::reset(void)
+pub fn stub_c65ddc() -> ! {
+    todo!("0xc65ddc Ogre::Bone::reset(void)")
+}
+
+// 0xc65dec — __ZNK4Ogre4Bone20isManuallyControlledEv
+#[doc(alias = "Ogre::Bone::isManuallyControlled(void)const")]
+// was: Ogre::Bone::isManuallyControlled(void)const
+pub fn stub_c65dec() -> ! {
+    todo!("0xc65dec Ogre::Bone::isManuallyControlled(void)const")
+}
+
+// 0xc65df4 — __ZNK4Ogre4Bone19_getOffsetTransformERNS_7Matrix4E
+#[doc(alias = "Ogre::Bone::_getOffsetTransform(Ogre::Matrix4 &)const")]
+// was: Ogre::Bone::_getOffsetTransform(Ogre::Matrix4 &)const
+pub fn stub_c65df4() -> ! {
+    todo!("0xc65df4 Ogre::Bone::_getOffsetTransform(Ogre::Matrix4 &)const")
+}
+
+// 0xc65f00 — __ZNK4Ogre4Bone9getHandleEv
+#[doc(alias = "Ogre::Bone::getHandle(void)const")]
+// was: Ogre::Bone::getHandle(void)const
+pub fn stub_c65f00() -> ! {
+    todo!("0xc65f00 Ogre::Bone::getHandle(void)const")
+}
+
+// 0xc65f08 — __ZN4Ogre4Bone10needUpdateEb
+#[doc(alias = "Ogre::Bone::needUpdate(bool)")]
+// was: Ogre::Bone::needUpdate(bool)
+pub fn stub_c65f08() -> ! {
+    todo!("0xc65f08 Ogre::Bone::needUpdate(bool)")
+}
+
+// 0xc65f60 — __ZN4Ogre25BorderPanelOverlayElementC1ERKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::BorderPanelOverlayElement(std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::BorderPanelOverlayElement(std::string const&)
+pub fn stub_c65f60() -> ! {
+    todo!("0xc65f60 Ogre::BorderPanelOverlayElement::BorderPanelOverlayElement(std::string const&)")
+}
+
+// 0xc65f6c — __ZN4Ogre25BorderPanelOverlayElementC2ERKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::BorderPanelOverlayElement(std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::BorderPanelOverlayElement(std::string const&)
+pub fn stub_c65f6c() -> ! {
+    todo!("0xc65f6c Ogre::BorderPanelOverlayElement::BorderPanelOverlayElement(std::string const&)")
+}
+
+// 0xc66218 — __ZN4Ogre25BorderPanelOverlayElementD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
+// was: Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
+pub fn stub_c66218() -> ! {
+    todo!("0xc66218 Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+}
+
+// 0xc662a8 — __ZN4Ogre25BorderPanelOverlayElementD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
+// was: Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
+pub fn stub_c662a8() -> ! {
+    todo!("0xc662a8 Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+}
+
+// 0xc662b4 — __ZThn12_N4Ogre25BorderPanelOverlayElementD0Ev
+#[doc(alias = "non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
+// was: `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
+pub fn stub_c662b4() -> ! {
+    todo!("0xc662b4 `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+}
+
+// 0xc66348 — __ZN4Ogre25BorderPanelOverlayElementD2Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
+// was: Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
+pub fn stub_c66348() -> ! {
+    todo!("0xc66348 Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+}
+
+// 0xc664ec — __ZThn12_N4Ogre25BorderPanelOverlayElementD1Ev
+#[doc(alias = "non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
+// was: `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
+pub fn stub_c664ec() -> ! {
+    todo!("0xc664ec `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+}
+
+// 0xc664f8 — __ZN4Ogre25BorderPanelOverlayElement10initialiseEv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::initialise(void)")]
+// was: Ogre::BorderPanelOverlayElement::initialise(void)
+pub fn stub_c664f8() -> ! {
+    todo!("0xc664f8 Ogre::BorderPanelOverlayElement::initialise(void)")
+}
+
+// 0xc66b9c — __ZN4Ogre25BorderPanelOverlayElement17addBaseParametersEv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::addBaseParameters(void)")]
+// was: Ogre::BorderPanelOverlayElement::addBaseParameters(void)
+pub fn stub_c66b9c() -> ! {
+    todo!("0xc66b9c Ogre::BorderPanelOverlayElement::addBaseParameters(void)")
+}
+
+// 0xc68630 — __ZN4Ogre25BorderPanelOverlayElement21updateTextureGeometryEv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::updateTextureGeometry(void)")]
+// was: Ogre::BorderPanelOverlayElement::updateTextureGeometry(void)
+pub fn stub_c68630() -> ! {
+    todo!("0xc68630 Ogre::BorderPanelOverlayElement::updateTextureGeometry(void)")
+}
+
+// 0xc68818 — __ZNK4Ogre25BorderPanelOverlayElement15getCellUVStringENS0_15BorderCellIndexE
+#[doc(alias = "Ogre::BorderPanelOverlayElement::getCellUVString(Ogre::BorderPanelOverlayElement::BorderCellIndex)const")]
+// was: Ogre::BorderPanelOverlayElement::getCellUVString(Ogre::BorderPanelOverlayElement::BorderCellIndex)const
+pub fn stub_c68818() -> ! {
+    todo!("0xc68818 Ogre::BorderPanelOverlayElement::getCellUVString(Ogre::BorderPanelOverlayElement::BorderCellIndex)const")
+}
+
+// 0xc68fa0 — __ZN4Ogre25BorderPanelOverlayElement21setBorderMaterialNameERKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::setBorderMaterialName(std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::setBorderMaterialName(std::string const&)
+pub fn stub_c68fa0() -> ! {
+    todo!("0xc68fa0 Ogre::BorderPanelOverlayElement::setBorderMaterialName(std::string const&)")
+}
+
+// 0xc69388 — __ZN4Ogre25BorderPanelOverlayElement22updatePositionGeometryEv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::updatePositionGeometry(void)")]
+// was: Ogre::BorderPanelOverlayElement::updatePositionGeometry(void)
+pub fn stub_c69388() -> ! {
+    todo!("0xc69388 Ogre::BorderPanelOverlayElement::updatePositionGeometry(void)")
+}
+
+// 0xc6976c — __ZN4Ogre25BorderPanelOverlayElement18_updateRenderQueueEPNS_11RenderQueueE
+#[doc(alias = "Ogre::BorderPanelOverlayElement::_updateRenderQueue(Ogre::RenderQueue *)")]
+// was: Ogre::BorderPanelOverlayElement::_updateRenderQueue(Ogre::RenderQueue *)
+pub fn stub_c6976c() -> ! {
+    todo!("0xc6976c Ogre::BorderPanelOverlayElement::_updateRenderQueue(Ogre::RenderQueue *)")
+}
+
+// 0xc69798 — __ZN4Ogre25BorderPanelOverlayElement14setMetricsModeENS_14GuiMetricsModeE
+#[doc(alias = "Ogre::BorderPanelOverlayElement::setMetricsMode(Ogre::GuiMetricsMode)")]
+// was: Ogre::BorderPanelOverlayElement::setMetricsMode(Ogre::GuiMetricsMode)
+pub fn stub_c69798() -> ! {
+    todo!("0xc69798 Ogre::BorderPanelOverlayElement::setMetricsMode(Ogre::GuiMetricsMode)")
+}
+
+// 0xc697ec — __ZN4Ogre25BorderPanelOverlayElement7_updateEv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::_update(void)")]
+// was: Ogre::BorderPanelOverlayElement::_update(void)
+pub fn stub_c697ec() -> ! {
+    todo!("0xc697ec Ogre::BorderPanelOverlayElement::_update(void)")
+}
+
+// 0xc69878 — __ZNK4Ogre25BorderPanelOverlayElement13CmdBorderSize5doGetEPKv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderSize::doGet(void const*)const")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderSize::doGet(void const*)const
+pub fn stub_c69878() -> ! {
+    todo!("0xc69878 Ogre::BorderPanelOverlayElement::CmdBorderSize::doGet(void const*)const")
+}
+
+// 0xc6a064 — __ZN4Ogre25BorderPanelOverlayElement13CmdBorderSize5doSetEPvRKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderSize::doSet(void *,std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderSize::doSet(void *,std::string const&)
+pub fn stub_c6a064() -> ! {
+    todo!("0xc6a064 Ogre::BorderPanelOverlayElement::CmdBorderSize::doSet(void *,std::string const&)")
+}
+
+// 0xc6a324 — __ZNK4Ogre25BorderPanelOverlayElement17CmdBorderMaterial5doGetEPKv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderMaterial::doGet(void const*)const")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderMaterial::doGet(void const*)const
+pub fn stub_c6a324() -> ! {
+    todo!("0xc6a324 Ogre::BorderPanelOverlayElement::CmdBorderMaterial::doGet(void const*)const")
+}
+
+// 0xc6a334 — __ZN4Ogre25BorderPanelOverlayElement17CmdBorderMaterial5doSetEPvRKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderMaterial::doSet(void *,std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderMaterial::doSet(void *,std::string const&)
+pub fn stub_c6a334() -> ! {
+    todo!("0xc6a334 Ogre::BorderPanelOverlayElement::CmdBorderMaterial::doSet(void *,std::string const&)")
+}
+
+// 0xc6a554 — __ZNK4Ogre25BorderPanelOverlayElement21CmdBorderBottomLeftUV5doGetEPKv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::doGet(void const*)const")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::doGet(void const*)const
+pub fn stub_c6a554() -> ! {
+    todo!("0xc6a554 Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::doGet(void const*)const")
+}
+
+// 0xc6a564 — __ZN4Ogre25BorderPanelOverlayElement21CmdBorderBottomLeftUV5doSetEPvRKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::doSet(void *,std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::doSet(void *,std::string const&)
+pub fn stub_c6a564() -> ! {
+    todo!("0xc6a564 Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::doSet(void *,std::string const&)")
+}
+
+// 0xc6a7e8 — __ZNK4Ogre25BorderPanelOverlayElement22CmdBorderBottomRightUV5doGetEPKv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::doGet(void const*)const")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::doGet(void const*)const
+pub fn stub_c6a7e8() -> ! {
+    todo!("0xc6a7e8 Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::doGet(void const*)const")
+}
+
+// 0xc6a7f8 — __ZN4Ogre25BorderPanelOverlayElement22CmdBorderBottomRightUV5doSetEPvRKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::doSet(void *,std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::doSet(void *,std::string const&)
+pub fn stub_c6a7f8() -> ! {
+    todo!("0xc6a7f8 Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::doSet(void *,std::string const&)")
+}
+
+// 0xc6aa7c — __ZNK4Ogre25BorderPanelOverlayElement18CmdBorderTopLeftUV5doGetEPKv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::doGet(void const*)const")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::doGet(void const*)const
+pub fn stub_c6aa7c() -> ! {
+    todo!("0xc6aa7c Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::doGet(void const*)const")
+}
+
+// 0xc6aa8c — __ZN4Ogre25BorderPanelOverlayElement18CmdBorderTopLeftUV5doSetEPvRKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::doSet(void *,std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::doSet(void *,std::string const&)
+pub fn stub_c6aa8c() -> ! {
+    todo!("0xc6aa8c Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::doSet(void *,std::string const&)")
+}
+
+// 0xc6ad10 — __ZNK4Ogre25BorderPanelOverlayElement19CmdBorderTopRightUV5doGetEPKv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::doGet(void const*)const")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::doGet(void const*)const
+pub fn stub_c6ad10() -> ! {
+    todo!("0xc6ad10 Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::doGet(void const*)const")
+}
+
+// 0xc6ad20 — __ZN4Ogre25BorderPanelOverlayElement19CmdBorderTopRightUV5doSetEPvRKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::doSet(void *,std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::doSet(void *,std::string const&)
+pub fn stub_c6ad20() -> ! {
+    todo!("0xc6ad20 Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::doSet(void *,std::string const&)")
+}
+
+// 0xc6afa4 — __ZNK4Ogre25BorderPanelOverlayElement15CmdBorderLeftUV5doGetEPKv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::doGet(void const*)const")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::doGet(void const*)const
+pub fn stub_c6afa4() -> ! {
+    todo!("0xc6afa4 Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::doGet(void const*)const")
+}
+
+// 0xc6afb4 — __ZN4Ogre25BorderPanelOverlayElement15CmdBorderLeftUV5doSetEPvRKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::doSet(void *,std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::doSet(void *,std::string const&)
+pub fn stub_c6afb4() -> ! {
+    todo!("0xc6afb4 Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::doSet(void *,std::string const&)")
+}
+
+// 0xc6b238 — __ZNK4Ogre25BorderPanelOverlayElement16CmdBorderRightUV5doGetEPKv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderRightUV::doGet(void const*)const")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderRightUV::doGet(void const*)const
+pub fn stub_c6b238() -> ! {
+    todo!("0xc6b238 Ogre::BorderPanelOverlayElement::CmdBorderRightUV::doGet(void const*)const")
+}
+
+// 0xc6b248 — __ZN4Ogre25BorderPanelOverlayElement16CmdBorderRightUV5doSetEPvRKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderRightUV::doSet(void *,std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderRightUV::doSet(void *,std::string const&)
+pub fn stub_c6b248() -> ! {
+    todo!("0xc6b248 Ogre::BorderPanelOverlayElement::CmdBorderRightUV::doSet(void *,std::string const&)")
+}
+
+// 0xc6b4cc — __ZNK4Ogre25BorderPanelOverlayElement14CmdBorderTopUV5doGetEPKv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopUV::doGet(void const*)const")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopUV::doGet(void const*)const
+pub fn stub_c6b4cc() -> ! {
+    todo!("0xc6b4cc Ogre::BorderPanelOverlayElement::CmdBorderTopUV::doGet(void const*)const")
+}
+
+// 0xc6b4dc — __ZN4Ogre25BorderPanelOverlayElement14CmdBorderTopUV5doSetEPvRKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopUV::doSet(void *,std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopUV::doSet(void *,std::string const&)
+pub fn stub_c6b4dc() -> ! {
+    todo!("0xc6b4dc Ogre::BorderPanelOverlayElement::CmdBorderTopUV::doSet(void *,std::string const&)")
+}
+
+// 0xc6b760 — __ZNK4Ogre25BorderPanelOverlayElement17CmdBorderBottomUV5doGetEPKv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::doGet(void const*)const")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::doGet(void const*)const
+pub fn stub_c6b760() -> ! {
+    todo!("0xc6b760 Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::doGet(void const*)const")
+}
+
+// 0xc6b770 — __ZN4Ogre25BorderPanelOverlayElement17CmdBorderBottomUV5doSetEPvRKSs
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::doSet(void *,std::string const&)")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::doSet(void *,std::string const&)
+pub fn stub_c6b770() -> ! {
+    todo!("0xc6b770 Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::doSet(void *,std::string const&)")
+}
+
+// 0xc6b9f4 — __ZNK4Ogre25BorderPanelOverlayElement11getTypeNameEv
+#[doc(alias = "Ogre::BorderPanelOverlayElement::getTypeName(void)const")]
+// was: Ogre::BorderPanelOverlayElement::getTypeName(void)const
+pub fn stub_c6b9f4() -> ! {
+    todo!("0xc6b9f4 Ogre::BorderPanelOverlayElement::getTypeName(void)const")
+}
+
+// 0xc6ba00 — __ZN4Ogre25BorderPanelOverlayElement13CmdBorderSizeD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderSize::~CmdBorderSize()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderSize::~CmdBorderSize()
+pub fn stub_c6ba00() -> ! {
+    todo!("0xc6ba00 Ogre::BorderPanelOverlayElement::CmdBorderSize::~CmdBorderSize()")
+}
+
+// 0xc6ba04 — __ZN4Ogre25BorderPanelOverlayElement17CmdBorderMaterialD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderMaterial::~CmdBorderMaterial()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderMaterial::~CmdBorderMaterial()
+pub fn stub_c6ba04() -> ! {
+    todo!("0xc6ba04 Ogre::BorderPanelOverlayElement::CmdBorderMaterial::~CmdBorderMaterial()")
+}
+
+// 0xc6ba08 — __ZN4Ogre25BorderPanelOverlayElement15CmdBorderLeftUVD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::~CmdBorderLeftUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::~CmdBorderLeftUV()
+pub fn stub_c6ba08() -> ! {
+    todo!("0xc6ba08 Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::~CmdBorderLeftUV()")
+}
+
+// 0xc6ba0c — __ZN4Ogre25BorderPanelOverlayElement14CmdBorderTopUVD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopUV::~CmdBorderTopUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopUV::~CmdBorderTopUV()
+pub fn stub_c6ba0c() -> ! {
+    todo!("0xc6ba0c Ogre::BorderPanelOverlayElement::CmdBorderTopUV::~CmdBorderTopUV()")
+}
+
+// 0xc6ba10 — __ZN4Ogre25BorderPanelOverlayElement17CmdBorderBottomUVD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::~CmdBorderBottomUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::~CmdBorderBottomUV()
+pub fn stub_c6ba10() -> ! {
+    todo!("0xc6ba10 Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::~CmdBorderBottomUV()")
+}
+
+// 0xc6ba14 — __ZN4Ogre25BorderPanelOverlayElement16CmdBorderRightUVD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderRightUV::~CmdBorderRightUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderRightUV::~CmdBorderRightUV()
+pub fn stub_c6ba14() -> ! {
+    todo!("0xc6ba14 Ogre::BorderPanelOverlayElement::CmdBorderRightUV::~CmdBorderRightUV()")
+}
+
+// 0xc6ba18 — __ZN4Ogre25BorderPanelOverlayElement18CmdBorderTopLeftUVD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::~CmdBorderTopLeftUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::~CmdBorderTopLeftUV()
+pub fn stub_c6ba18() -> ! {
+    todo!("0xc6ba18 Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::~CmdBorderTopLeftUV()")
+}
+
+// 0xc6ba1c — __ZN4Ogre25BorderPanelOverlayElement21CmdBorderBottomLeftUVD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::~CmdBorderBottomLeftUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::~CmdBorderBottomLeftUV()
+pub fn stub_c6ba1c() -> ! {
+    todo!("0xc6ba1c Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::~CmdBorderBottomLeftUV()")
+}
+
+// 0xc6ba20 — __ZN4Ogre25BorderPanelOverlayElement19CmdBorderTopRightUVD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::~CmdBorderTopRightUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::~CmdBorderTopRightUV()
+pub fn stub_c6ba20() -> ! {
+    todo!("0xc6ba20 Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::~CmdBorderTopRightUV()")
+}
+
+// 0xc6ba24 — __ZN4Ogre25BorderPanelOverlayElement22CmdBorderBottomRightUVD1Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::~CmdBorderBottomRightUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::~CmdBorderBottomRightUV()
+pub fn stub_c6ba24() -> ! {
+    todo!("0xc6ba24 Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::~CmdBorderBottomRightUV()")
+}
+
+// 0xc6ba28 — __ZN4Ogre25BorderPanelOverlayElement13CmdBorderSizeD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderSize::~CmdBorderSize()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderSize::~CmdBorderSize()
+pub fn stub_c6ba28() -> ! {
+    todo!("0xc6ba28 Ogre::BorderPanelOverlayElement::CmdBorderSize::~CmdBorderSize()")
+}
+
+// 0xc6ba34 — __ZN4Ogre25BorderPanelOverlayElement17CmdBorderMaterialD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderMaterial::~CmdBorderMaterial()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderMaterial::~CmdBorderMaterial()
+pub fn stub_c6ba34() -> ! {
+    todo!("0xc6ba34 Ogre::BorderPanelOverlayElement::CmdBorderMaterial::~CmdBorderMaterial()")
+}
+
+// 0xc6ba40 — __ZN4Ogre25BorderPanelOverlayElement15CmdBorderLeftUVD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::~CmdBorderLeftUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::~CmdBorderLeftUV()
+pub fn stub_c6ba40() -> ! {
+    todo!("0xc6ba40 Ogre::BorderPanelOverlayElement::CmdBorderLeftUV::~CmdBorderLeftUV()")
+}
+
+// 0xc6ba4c — __ZN4Ogre25BorderPanelOverlayElement14CmdBorderTopUVD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopUV::~CmdBorderTopUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopUV::~CmdBorderTopUV()
+pub fn stub_c6ba4c() -> ! {
+    todo!("0xc6ba4c Ogre::BorderPanelOverlayElement::CmdBorderTopUV::~CmdBorderTopUV()")
+}
+
+// 0xc6ba58 — __ZN4Ogre25BorderPanelOverlayElement17CmdBorderBottomUVD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::~CmdBorderBottomUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::~CmdBorderBottomUV()
+pub fn stub_c6ba58() -> ! {
+    todo!("0xc6ba58 Ogre::BorderPanelOverlayElement::CmdBorderBottomUV::~CmdBorderBottomUV()")
+}
+
+// 0xc6ba64 — __ZN4Ogre25BorderPanelOverlayElement16CmdBorderRightUVD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderRightUV::~CmdBorderRightUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderRightUV::~CmdBorderRightUV()
+pub fn stub_c6ba64() -> ! {
+    todo!("0xc6ba64 Ogre::BorderPanelOverlayElement::CmdBorderRightUV::~CmdBorderRightUV()")
+}
+
+// 0xc6ba70 — __ZN4Ogre25BorderPanelOverlayElement18CmdBorderTopLeftUVD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::~CmdBorderTopLeftUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::~CmdBorderTopLeftUV()
+pub fn stub_c6ba70() -> ! {
+    todo!("0xc6ba70 Ogre::BorderPanelOverlayElement::CmdBorderTopLeftUV::~CmdBorderTopLeftUV()")
+}
+
+// 0xc6ba7c — __ZN4Ogre25BorderPanelOverlayElement21CmdBorderBottomLeftUVD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::~CmdBorderBottomLeftUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::~CmdBorderBottomLeftUV()
+pub fn stub_c6ba7c() -> ! {
+    todo!("0xc6ba7c Ogre::BorderPanelOverlayElement::CmdBorderBottomLeftUV::~CmdBorderBottomLeftUV()")
+}
+
+// 0xc6ba88 — __ZN4Ogre25BorderPanelOverlayElement19CmdBorderTopRightUVD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::~CmdBorderTopRightUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::~CmdBorderTopRightUV()
+pub fn stub_c6ba88() -> ! {
+    todo!("0xc6ba88 Ogre::BorderPanelOverlayElement::CmdBorderTopRightUV::~CmdBorderTopRightUV()")
+}
+
+// 0xc6ba94 — __ZN4Ogre25BorderPanelOverlayElement22CmdBorderBottomRightUVD0Ev
+#[doc(alias = "Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::~CmdBorderBottomRightUV()")]
+// was: Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::~CmdBorderBottomRightUV()
+pub fn stub_c6ba94() -> ! {
+    todo!("0xc6ba94 Ogre::BorderPanelOverlayElement::CmdBorderBottomRightUV::~CmdBorderBottomRightUV()")
+}
+
+// 0xc6baa0 — __ZN4Ogre16BorderRenderableD1Ev
+#[doc(alias = "Ogre::BorderRenderable::~BorderRenderable()")]
+// was: Ogre::BorderRenderable::~BorderRenderable()
+pub fn stub_c6baa0() -> ! {
+    todo!("0xc6baa0 Ogre::BorderRenderable::~BorderRenderable()")
+}
+
+// 0xc6bb58 — __ZN4Ogre16BorderRenderableD0Ev
+#[doc(alias = "Ogre::BorderRenderable::~BorderRenderable()")]
+// was: Ogre::BorderRenderable::~BorderRenderable()
+pub fn stub_c6bb58() -> ! {
+    todo!("0xc6bb58 Ogre::BorderRenderable::~BorderRenderable()")
+}
+
+// 0xc6bc1c — __ZNK4Ogre16BorderRenderable11getMaterialEv
+#[doc(alias = "Ogre::BorderRenderable::getMaterial(void)const")]
+// was: Ogre::BorderRenderable::getMaterial(void)const
+pub fn stub_c6bc1c() -> ! {
+    todo!("0xc6bc1c Ogre::BorderRenderable::getMaterial(void)const")
+}
+
+// 0xc6bc24 — __ZN4Ogre16BorderRenderable18getRenderOperationERNS_15RenderOperationE
+#[doc(alias = "Ogre::BorderRenderable::getRenderOperation(Ogre::RenderOperation &)")]
+// was: Ogre::BorderRenderable::getRenderOperation(Ogre::RenderOperation &)
+pub fn stub_c6bc24() -> ! {
+    todo!("0xc6bc24 Ogre::BorderRenderable::getRenderOperation(Ogre::RenderOperation &)")
+}
+
+// 0xc6bc44 — __ZNK4Ogre16BorderRenderable18getWorldTransformsEPNS_7Matrix4E
+#[doc(alias = "Ogre::BorderRenderable::getWorldTransforms(Ogre::Matrix4 *)const")]
+// was: Ogre::BorderRenderable::getWorldTransforms(Ogre::Matrix4 *)const
+pub fn stub_c6bc44() -> ! {
+    todo!("0xc6bc44 Ogre::BorderRenderable::getWorldTransforms(Ogre::Matrix4 *)const")
+}
+
+// 0xc6bc54 — __ZNK4Ogre16BorderRenderable21getNumWorldTransformsEv
+#[doc(alias = "Ogre::BorderRenderable::getNumWorldTransforms(void)const")]
+// was: Ogre::BorderRenderable::getNumWorldTransforms(void)const
+pub fn stub_c6bc54() -> ! {
+    todo!("0xc6bc54 Ogre::BorderRenderable::getNumWorldTransforms(void)const")
+}
+
+// 0xc6bc58 — __ZNK4Ogre16BorderRenderable19getSquaredViewDepthEPKNS_6CameraE
+#[doc(alias = "Ogre::BorderRenderable::getSquaredViewDepth(Ogre::Camera const*)const")]
+// was: Ogre::BorderRenderable::getSquaredViewDepth(Ogre::Camera const*)const
+pub fn stub_c6bc58() -> ! {
+    todo!("0xc6bc58 Ogre::BorderRenderable::getSquaredViewDepth(Ogre::Camera const*)const")
+}
+
+// 0xc6bc68 — __ZNK4Ogre16BorderRenderable9getLightsEv
+#[doc(alias = "Ogre::BorderRenderable::getLights(void)const")]
+// was: Ogre::BorderRenderable::getLights(void)const
+pub fn stub_c6bc68() -> ! {
+    todo!("0xc6bc68 Ogre::BorderRenderable::getLights(void)const")
+}
+
+// 0xc6bce4 — __ZNK4Ogre16BorderRenderable26getPolygonModeOverrideableEv
+#[doc(alias = "Ogre::BorderRenderable::getPolygonModeOverrideable(void)const")]
+// was: Ogre::BorderRenderable::getPolygonModeOverrideable(void)const
+pub fn stub_c6bce4() -> ! {
+    todo!("0xc6bce4 Ogre::BorderRenderable::getPolygonModeOverrideable(void)const")
+}
+
+// 0xc6bcf4 — __ZN4Ogre10RenderableD1Ev
+#[doc(alias = "Ogre::Renderable::~Renderable()")]
+// was: Ogre::Renderable::~Renderable()
+pub fn stub_c6bcf4() -> ! {
+    todo!("0xc6bcf4 Ogre::Renderable::~Renderable()")
+}
+
+// 0xc6bdac — __ZN4Ogre10RenderableD0Ev
+#[doc(alias = "Ogre::Renderable::~Renderable()")]
+// was: Ogre::Renderable::~Renderable()
+pub fn stub_c6bdac() -> ! {
+    todo!("0xc6bdac Ogre::Renderable::~Renderable()")
+}
+
+// 0xc6be68 — __ZNSt8_Rb_treeImSt4pairIKmN4Ogre7Vector4EESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::Vector4>,std::_Select1st<std::pair<unsigned long const,Ogre::Vector4>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::Vector4>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::Vector4>,std::_Select1st<std::pair<unsigned long const,Ogre::Vector4>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::Vector4>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()
+pub fn stub_c6be68() -> ! {
+    todo!("0xc6be68 std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::Vector4>,std::_Select1st<std::pair<unsigned long const,Ogre::Vector4>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::Vector4>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc6bfe4 — __ZN4Ogre6CameraC1ERKSsPNS_12SceneManagerE
+#[doc(alias = "Ogre::Camera::Camera(std::string const&,Ogre::SceneManager *)")]
+// was: Ogre::Camera::Camera(std::string const&,Ogre::SceneManager *)
+pub fn stub_c6bfe4() -> ! {
+    todo!("0xc6bfe4 Ogre::Camera::Camera(std::string const&,Ogre::SceneManager *)")
+}
+
+// 0xc6bff0 — __ZN4Ogre6CameraC2ERKSsPNS_12SceneManagerE
+#[doc(alias = "Ogre::Camera::Camera(std::string const&,Ogre::SceneManager *)")]
+// was: Ogre::Camera::Camera(std::string const&,Ogre::SceneManager *)
+pub fn stub_c6bff0() -> ! {
+    todo!("0xc6bff0 Ogre::Camera::Camera(std::string const&,Ogre::SceneManager *)")
+}
+
+// 0xc6c338 — __ZN4Ogre6CameraD0Ev
+#[doc(alias = "Ogre::Camera::~Camera()")]
+// was: Ogre::Camera::~Camera()
+pub fn stub_c6c338() -> ! {
+    todo!("0xc6c338 Ogre::Camera::~Camera()")
+}
+
+// 0xc6c3c8 — __ZN4Ogre6CameraD1Ev
+#[doc(alias = "Ogre::Camera::~Camera()")]
+// was: Ogre::Camera::~Camera()
+pub fn stub_c6c3c8() -> ! {
+    todo!("0xc6c3c8 Ogre::Camera::~Camera()")
+}
+
+// 0xc6c3d4 — __ZThn4_N4Ogre6CameraD0Ev
+#[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
+// was: `non-virtual thunk to'Ogre::Camera::~Camera()
+pub fn stub_c6c3d4() -> ! {
+    todo!("0xc6c3d4 `non-virtual thunk to'Ogre::Camera::~Camera()")
+}
+
+// 0xc6c468 — __ZThn188_N4Ogre6CameraD0Ev
+#[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
+// was: `non-virtual thunk to'Ogre::Camera::~Camera()
+pub fn stub_c6c468() -> ! {
+    todo!("0xc6c468 `non-virtual thunk to'Ogre::Camera::~Camera()")
+}
+
+// 0xc6c4fc — __ZN4Ogre6CameraD2Ev
+#[doc(alias = "Ogre::Camera::~Camera()")]
+// was: Ogre::Camera::~Camera()
+pub fn stub_c6c4fc() -> ! {
+    todo!("0xc6c4fc Ogre::Camera::~Camera()")
+}
+
+// 0xc6c63c — __ZThn4_N4Ogre6CameraD1Ev
+#[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
+// was: `non-virtual thunk to'Ogre::Camera::~Camera()
+pub fn stub_c6c63c() -> ! {
+    todo!("0xc6c63c `non-virtual thunk to'Ogre::Camera::~Camera()")
+}
+
+// 0xc6c648 — __ZThn188_N4Ogre6CameraD1Ev
+#[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
+// was: `non-virtual thunk to'Ogre::Camera::~Camera()
+pub fn stub_c6c648() -> ! {
+    todo!("0xc6c648 `non-virtual thunk to'Ogre::Camera::~Camera()")
+}
+
+// 0xc6c654 — __ZNK4Ogre6Camera15getSceneManagerEv
+#[doc(alias = "Ogre::Camera::getSceneManager(void)const")]
+// was: Ogre::Camera::getSceneManager(void)const
+pub fn stub_c6c654() -> ! {
+    todo!("0xc6c654 Ogre::Camera::getSceneManager(void)const")
+}
+
+// 0xc6c65c — __ZNK4Ogre6Camera14getPolygonModeEv
+#[doc(alias = "Ogre::Camera::getPolygonMode(void)const")]
+// was: Ogre::Camera::getPolygonMode(void)const
+pub fn stub_c6c65c() -> ! {
+    todo!("0xc6c65c Ogre::Camera::getPolygonMode(void)const")
+}
+
+// 0xc6c664 — __ZN4Ogre6Camera11setPositionEfff
+#[doc(alias = "Ogre::Camera::setPosition(float,float,float)")]
+// was: Ogre::Camera::setPosition(float,float,float)
+pub fn stub_c6c664() -> ! {
+    todo!("0xc6c664 Ogre::Camera::setPosition(float,float,float)")
+}
+
+// 0xc6c67c — __ZN4Ogre6Camera11setPositionERKNS_7Vector3E
+#[doc(alias = "Ogre::Camera::setPosition(Ogre::Vector3 const&)")]
+// was: Ogre::Camera::setPosition(Ogre::Vector3 const&)
+pub fn stub_c6c67c() -> ! {
+    todo!("0xc6c67c Ogre::Camera::setPosition(Ogre::Vector3 const&)")
+}
+
+// 0xc6c69c — __ZNK4Ogre6Camera11getPositionEv
+#[doc(alias = "Ogre::Camera::getPosition(void)const")]
+// was: Ogre::Camera::getPosition(void)const
+pub fn stub_c6c69c() -> ! {
+    todo!("0xc6c69c Ogre::Camera::getPosition(void)const")
+}
+
+// 0xc6c6a4 — __ZN4Ogre6Camera12setDirectionERKNS_7Vector3E
+#[doc(alias = "Ogre::Camera::setDirection(Ogre::Vector3 const&)")]
+// was: Ogre::Camera::setDirection(Ogre::Vector3 const&)
+pub fn stub_c6c6a4() -> ! {
+    todo!("0xc6c6a4 Ogre::Camera::setDirection(Ogre::Vector3 const&)")
+}
+
+// 0xc6c9d8 — __ZN4Ogre6Camera6lookAtEfff
+#[doc(alias = "Ogre::Camera::lookAt(float,float,float)")]
+// was: Ogre::Camera::lookAt(float,float,float)
+pub fn stub_c6c9d8() -> ! {
+    todo!("0xc6c9d8 Ogre::Camera::lookAt(float,float,float)")
+}
+
+// 0xc6ca44 — __ZN4Ogre6Camera4rollERKNS_6RadianE
+#[doc(alias = "Ogre::Camera::roll(Ogre::Radian const&)")]
+// was: Ogre::Camera::roll(Ogre::Radian const&)
+pub fn stub_c6ca44() -> ! {
+    todo!("0xc6ca44 Ogre::Camera::roll(Ogre::Radian const&)")
+}
+
+// 0xc6cad4 — __ZN4Ogre6Camera3yawERKNS_6RadianE
+#[doc(alias = "Ogre::Camera::yaw(Ogre::Radian const&)")]
+// was: Ogre::Camera::yaw(Ogre::Radian const&)
+pub fn stub_c6cad4() -> ! {
+    todo!("0xc6cad4 Ogre::Camera::yaw(Ogre::Radian const&)")
+}
+
+// 0xc6cb8c — __ZNK4Ogre6Camera15isViewOutOfDateEv
+#[doc(alias = "Ogre::Camera::isViewOutOfDate(void)const")]
+// was: Ogre::Camera::isViewOutOfDate(void)const
+pub fn stub_c6cb8c() -> ! {
+    todo!("0xc6cb8c Ogre::Camera::isViewOutOfDate(void)const")
+}
+
+// 0xc6cfe8 — __ZNK4Ogre6Camera14invalidateViewEv
+#[doc(alias = "Ogre::Camera::invalidateView(void)const")]
+// was: Ogre::Camera::invalidateView(void)const
+pub fn stub_c6cfe8() -> ! {
+    todo!("0xc6cfe8 Ogre::Camera::invalidateView(void)const")
+}
+
+// 0xc6cff8 — __ZNK4Ogre6Camera17invalidateFrustumEv
+#[doc(alias = "Ogre::Camera::invalidateFrustum(void)const")]
+// was: Ogre::Camera::invalidateFrustum(void)const
+pub fn stub_c6cff8() -> ! {
+    todo!("0xc6cff8 Ogre::Camera::invalidateFrustum(void)const")
+}
+
+// 0xc6d008 — __ZN4Ogre6Camera12_renderSceneEPNS_8ViewportEb
+#[doc(alias = "Ogre::Camera::_renderScene(Ogre::Viewport *,bool)")]
+// was: Ogre::Camera::_renderScene(Ogre::Viewport *,bool)
+pub fn stub_c6d008() -> ! {
+    todo!("0xc6d008 Ogre::Camera::_renderScene(Ogre::Viewport *,bool)")
+}
+
+// 0xc6d0e4 — __ZN4Ogre6Camera11addListenerEPNS0_8ListenerE
+#[doc(alias = "Ogre::Camera::addListener(Ogre::Camera::Listener *)")]
+// was: Ogre::Camera::addListener(Ogre::Camera::Listener *)
+pub fn stub_c6d0e4() -> ! {
+    todo!("0xc6d0e4 Ogre::Camera::addListener(Ogre::Camera::Listener *)")
+}
+
+// 0xc6d1ac — __ZN4Ogre6Camera14removeListenerEPNS0_8ListenerE
+#[doc(alias = "Ogre::Camera::removeListener(Ogre::Camera::Listener *)")]
+// was: Ogre::Camera::removeListener(Ogre::Camera::Listener *)
+pub fn stub_c6d1ac() -> ! {
+    todo!("0xc6d1ac Ogre::Camera::removeListener(Ogre::Camera::Listener *)")
+}
+
+// 0xc6d248 — __ZN4Ogre6Camera20_notifyRenderedFacesEj
+#[doc(alias = "Ogre::Camera::_notifyRenderedFaces(unsigned int)")]
+// was: Ogre::Camera::_notifyRenderedFaces(unsigned int)
+pub fn stub_c6d248() -> ! {
+    todo!("0xc6d248 Ogre::Camera::_notifyRenderedFaces(unsigned int)")
+}
+
+// 0xc6d250 — __ZN4Ogre6Camera22_notifyRenderedBatchesEj
+#[doc(alias = "Ogre::Camera::_notifyRenderedBatches(unsigned int)")]
+// was: Ogre::Camera::_notifyRenderedBatches(unsigned int)
+pub fn stub_c6d250() -> ! {
+    todo!("0xc6d250 Ogre::Camera::_notifyRenderedBatches(unsigned int)")
+}
+
+// 0xc6d258 — __ZNK4Ogre6Camera20_getNumRenderedFacesEv
+#[doc(alias = "Ogre::Camera::_getNumRenderedFaces(void)const")]
+// was: Ogre::Camera::_getNumRenderedFaces(void)const
+pub fn stub_c6d258() -> ! {
+    todo!("0xc6d258 Ogre::Camera::_getNumRenderedFaces(void)const")
+}
+
+// 0xc6d260 — __ZNK4Ogre6Camera22_getNumRenderedBatchesEv
+#[doc(alias = "Ogre::Camera::_getNumRenderedBatches(void)const")]
+// was: Ogre::Camera::_getNumRenderedBatches(void)const
+pub fn stub_c6d260() -> ! {
+    todo!("0xc6d260 Ogre::Camera::_getNumRenderedBatches(void)const")
+}
+
+// 0xc6d268 — __ZNK4Ogre6Camera14getOrientationEv
+#[doc(alias = "Ogre::Camera::getOrientation(void)const")]
+// was: Ogre::Camera::getOrientation(void)const
+pub fn stub_c6d268() -> ! {
+    todo!("0xc6d268 Ogre::Camera::getOrientation(void)const")
+}
+
+// 0xc6d270 — __ZN4Ogre6Camera14setOrientationERKNS_10QuaternionE
+#[doc(alias = "Ogre::Camera::setOrientation(Ogre::Quaternion const&)")]
+// was: Ogre::Camera::setOrientation(Ogre::Quaternion const&)
+pub fn stub_c6d270() -> ! {
+    todo!("0xc6d270 Ogre::Camera::setOrientation(Ogre::Quaternion const&)")
+}
+
+// 0xc6d2a4 — __ZNK4Ogre6Camera21getDerivedOrientationEv
+#[doc(alias = "Ogre::Camera::getDerivedOrientation(void)const")]
+// was: Ogre::Camera::getDerivedOrientation(void)const
+pub fn stub_c6d2a4() -> ! {
+    todo!("0xc6d2a4 Ogre::Camera::getDerivedOrientation(void)const")
+}
+
+// 0xc6d2bc — __ZNK4Ogre6Camera18getDerivedPositionEv
+#[doc(alias = "Ogre::Camera::getDerivedPosition(void)const")]
+// was: Ogre::Camera::getDerivedPosition(void)const
+pub fn stub_c6d2bc() -> ! {
+    todo!("0xc6d2bc Ogre::Camera::getDerivedPosition(void)const")
+}
+
+// 0xc6d2d4 — __ZNK4Ogre6Camera19getDerivedDirectionEv
+#[doc(alias = "Ogre::Camera::getDerivedDirection(void)const")]
+// was: Ogre::Camera::getDerivedDirection(void)const
+pub fn stub_c6d2d4() -> ! {
+    todo!("0xc6d2d4 Ogre::Camera::getDerivedDirection(void)const")
+}
+
+// 0xc6d300 — __ZNK4Ogre6Camera12getDerivedUpEv
+#[doc(alias = "Ogre::Camera::getDerivedUp(void)const")]
+// was: Ogre::Camera::getDerivedUp(void)const
+pub fn stub_c6d300() -> ! {
+    todo!("0xc6d300 Ogre::Camera::getDerivedUp(void)const")
+}
+
+// 0xc6d32c — __ZNK4Ogre6Camera15getDerivedRightEv
+#[doc(alias = "Ogre::Camera::getDerivedRight(void)const")]
+// was: Ogre::Camera::getDerivedRight(void)const
+pub fn stub_c6d32c() -> ! {
+    todo!("0xc6d32c Ogre::Camera::getDerivedRight(void)const")
+}
+
+// 0xc6d358 — __ZNK4Ogre6Camera15getRealPositionEv
+#[doc(alias = "Ogre::Camera::getRealPosition(void)const")]
+// was: Ogre::Camera::getRealPosition(void)const
+pub fn stub_c6d358() -> ! {
+    todo!("0xc6d358 Ogre::Camera::getRealPosition(void)const")
+}
+
+// 0xc6d370 — __ZNK4Ogre6Camera18getWorldTransformsEPNS_7Matrix4E
+#[doc(alias = "Ogre::Camera::getWorldTransforms(Ogre::Matrix4 *)const")]
+// was: Ogre::Camera::getWorldTransforms(Ogre::Matrix4 *)const
+pub fn stub_c6d370() -> ! {
+    todo!("0xc6d370 Ogre::Camera::getWorldTransforms(Ogre::Matrix4 *)const")
+}
+
+// 0xc6d3bc — __ZThn188_NK4Ogre6Camera18getWorldTransformsEPNS_7Matrix4E
+#[doc(alias = "non-virtual thunk toOgre::Camera::getWorldTransforms(Ogre::Matrix4 *)const")]
+// was: `non-virtual thunk to'Ogre::Camera::getWorldTransforms(Ogre::Matrix4 *)const
+pub fn stub_c6d3bc() -> ! {
+    todo!("0xc6d3bc `non-virtual thunk to'Ogre::Camera::getWorldTransforms(Ogre::Matrix4 *)const")
+}
+
+// 0xc6d40c — __ZNK4Ogre6Camera14getMovableTypeEv
+#[doc(alias = "Ogre::Camera::getMovableType(void)const")]
+// was: Ogre::Camera::getMovableType(void)const
+pub fn stub_c6d40c() -> ! {
+    todo!("0xc6d40c Ogre::Camera::getMovableType(void)const")
+}
+
+// 0xc6d418 — __ZN4Ogre6Camera10_autoTrackEv
+#[doc(alias = "Ogre::Camera::_autoTrack(void)")]
+// was: Ogre::Camera::_autoTrack(void)
+pub fn stub_c6d418() -> ! {
+    todo!("0xc6d418 Ogre::Camera::_autoTrack(void)")
+}
+
+// 0xc6d4c8 — __ZNK4Ogre6Camera18_getLodBiasInverseEv
+#[doc(alias = "Ogre::Camera::_getLodBiasInverse(void)const")]
+// was: Ogre::Camera::_getLodBiasInverse(void)const
+pub fn stub_c6d4c8() -> ! {
+    todo!("0xc6d4c8 Ogre::Camera::_getLodBiasInverse(void)const")
+}
+
+// 0xc6d4d0 — __ZN4Ogre6Camera12setLodCameraEPKS0_
+#[doc(alias = "Ogre::Camera::setLodCamera(Ogre::Camera const*)")]
+// was: Ogre::Camera::setLodCamera(Ogre::Camera const*)
+pub fn stub_c6d4d0() -> ! {
+    todo!("0xc6d4d0 Ogre::Camera::setLodCamera(Ogre::Camera const*)")
+}
+
+// 0xc6d4dc — __ZNK4Ogre6Camera12getLodCameraEv
+#[doc(alias = "Ogre::Camera::getLodCamera(void)const")]
+// was: Ogre::Camera::getLodCamera(void)const
+pub fn stub_c6d4dc() -> ! {
+    todo!("0xc6d4dc Ogre::Camera::getLodCamera(void)const")
+}
+
+// 0xc6d4ec — __ZNK4Ogre6Camera13getViewMatrixEb
+#[doc(alias = "Ogre::Camera::getViewMatrix(bool)const")]
+// was: Ogre::Camera::getViewMatrix(bool)const
+pub fn stub_c6d4ec() -> ! {
+    todo!("0xc6d4ec Ogre::Camera::getViewMatrix(bool)const")
+}
+
+// 0xc6d504 — __ZN4Ogre6Camera9setWindowEffff
+#[doc(alias = "Ogre::Camera::setWindow(float,float,float,float)")]
+// was: Ogre::Camera::setWindow(float,float,float,float)
+pub fn stub_c6d504() -> ! {
+    todo!("0xc6d504 Ogre::Camera::setWindow(float,float,float,float)")
+}
+
+// 0xc6d528 — __ZN4Ogre6Camera11resetWindowEv
+#[doc(alias = "Ogre::Camera::resetWindow(void)")]
+// was: Ogre::Camera::resetWindow(void)
+pub fn stub_c6d528() -> ! {
+    todo!("0xc6d528 Ogre::Camera::resetWindow(void)")
+}
+
+// 0xc6d530 — __ZNK4Ogre6Camera13setWindowImplEv
+#[doc(alias = "Ogre::Camera::setWindowImpl(void)const")]
+// was: Ogre::Camera::setWindowImpl(void)const
+pub fn stub_c6d530() -> ! {
+    todo!("0xc6d530 Ogre::Camera::setWindowImpl(void)const")
+}
+
+// 0xc6da10 — __ZNK4Ogre6Camera15getWindowPlanesEv
+#[doc(alias = "Ogre::Camera::getWindowPlanes(void)const")]
+// was: Ogre::Camera::getWindowPlanes(void)const
+pub fn stub_c6da10() -> ! {
+    todo!("0xc6da10 Ogre::Camera::getWindowPlanes(void)const")
+}
+
+// 0xc6da30 — __ZNK4Ogre6Camera17getBoundingRadiusEv
+#[doc(alias = "Ogre::Camera::getBoundingRadius(void)const")]
+// was: Ogre::Camera::getBoundingRadius(void)const
+pub fn stub_c6da30() -> ! {
+    todo!("0xc6da30 Ogre::Camera::getBoundingRadius(void)const")
+}
+
+// 0xc6da44 — __ZNK4Ogre6Camera24getPositionForViewUpdateEv
+#[doc(alias = "Ogre::Camera::getPositionForViewUpdate(void)const")]
+// was: Ogre::Camera::getPositionForViewUpdate(void)const
+pub fn stub_c6da44() -> ! {
+    todo!("0xc6da44 Ogre::Camera::getPositionForViewUpdate(void)const")
+}
+
+// 0xc6da4c — __ZNK4Ogre6Camera27getOrientationForViewUpdateEv
+#[doc(alias = "Ogre::Camera::getOrientationForViewUpdate(void)const")]
+// was: Ogre::Camera::getOrientationForViewUpdate(void)const
+pub fn stub_c6da4c() -> ! {
+    todo!("0xc6da4c Ogre::Camera::getOrientationForViewUpdate(void)const")
+}
+
+// 0xc6da54 — __ZNK4Ogre6Camera18getAutoAspectRatioEv
+#[doc(alias = "Ogre::Camera::getAutoAspectRatio(void)const")]
+// was: Ogre::Camera::getAutoAspectRatio(void)const
+pub fn stub_c6da54() -> ! {
+    todo!("0xc6da54 Ogre::Camera::getAutoAspectRatio(void)const")
+}
+
+// 0xc6da5c — __ZN4Ogre6Camera18setAutoAspectRatioEb
+#[doc(alias = "Ogre::Camera::setAutoAspectRatio(bool)")]
+// was: Ogre::Camera::setAutoAspectRatio(bool)
+pub fn stub_c6da5c() -> ! {
+    todo!("0xc6da5c Ogre::Camera::setAutoAspectRatio(bool)")
+}
+
+// 0xc6da64 — __ZNK4Ogre6Camera9isVisibleERKNS_14AxisAlignedBoxEPNS_12FrustumPlaneE
+#[doc(alias = "Ogre::Camera::isVisible(Ogre::AxisAlignedBox const&,Ogre::FrustumPlane *)const")]
+// was: Ogre::Camera::isVisible(Ogre::AxisAlignedBox const&,Ogre::FrustumPlane *)const
+pub fn stub_c6da64() -> ! {
+    todo!("0xc6da64 Ogre::Camera::isVisible(Ogre::AxisAlignedBox const&,Ogre::FrustumPlane *)const")
+}
+
+// 0xc6da84 — __ZNK4Ogre6Camera9isVisibleERKNS_6SphereEPNS_12FrustumPlaneE
+#[doc(alias = "Ogre::Camera::isVisible(Ogre::Sphere const&,Ogre::FrustumPlane *)const")]
+// was: Ogre::Camera::isVisible(Ogre::Sphere const&,Ogre::FrustumPlane *)const
+pub fn stub_c6da84() -> ! {
+    todo!("0xc6da84 Ogre::Camera::isVisible(Ogre::Sphere const&,Ogre::FrustumPlane *)const")
+}
+
+// 0xc6daa4 — __ZNK4Ogre6Camera9isVisibleERKNS_7Vector3EPNS_12FrustumPlaneE
+#[doc(alias = "Ogre::Camera::isVisible(Ogre::Vector3 const&,Ogre::FrustumPlane *)const")]
+// was: Ogre::Camera::isVisible(Ogre::Vector3 const&,Ogre::FrustumPlane *)const
+pub fn stub_c6daa4() -> ! {
+    todo!("0xc6daa4 Ogre::Camera::isVisible(Ogre::Vector3 const&,Ogre::FrustumPlane *)const")
+}
+
+// 0xc6dac4 — __ZNK4Ogre6Camera20getWorldSpaceCornersEv
+#[doc(alias = "Ogre::Camera::getWorldSpaceCorners(void)const")]
+// was: Ogre::Camera::getWorldSpaceCorners(void)const
+pub fn stub_c6dac4() -> ! {
+    todo!("0xc6dac4 Ogre::Camera::getWorldSpaceCorners(void)const")
+}
+
+// 0xc6dae4 — __ZNK4Ogre6Camera15getFrustumPlaneEt
+#[doc(alias = "Ogre::Camera::getFrustumPlane(unsigned short)const")]
+// was: Ogre::Camera::getFrustumPlane(unsigned short)const
+pub fn stub_c6dae4() -> ! {
+    todo!("0xc6dae4 Ogre::Camera::getFrustumPlane(unsigned short)const")
+}
+
+// 0xc6db04 — __ZNK4Ogre6Camera13projectSphereERKNS_6SphereEPfS4_S4_S4_
+#[doc(alias = "Ogre::Camera::projectSphere(Ogre::Sphere const&,float *,float *,float *,float *)const")]
+// was: Ogre::Camera::projectSphere(Ogre::Sphere const&,float *,float *,float *,float *)const
+pub fn stub_c6db04() -> ! {
+    todo!("0xc6db04 Ogre::Camera::projectSphere(Ogre::Sphere const&,float *,float *,float *,float *)const")
+}
+
+// 0xc6db40 — __ZNK4Ogre6Camera19getNearClipDistanceEv
+#[doc(alias = "Ogre::Camera::getNearClipDistance(void)const")]
+// was: Ogre::Camera::getNearClipDistance(void)const
+pub fn stub_c6db40() -> ! {
+    todo!("0xc6db40 Ogre::Camera::getNearClipDistance(void)const")
+}
+
+// 0xc6db68 — __ZNK4Ogre6Camera18getFarClipDistanceEv
+#[doc(alias = "Ogre::Camera::getFarClipDistance(void)const")]
+// was: Ogre::Camera::getFarClipDistance(void)const
+pub fn stub_c6db68() -> ! {
+    todo!("0xc6db68 Ogre::Camera::getFarClipDistance(void)const")
+}
+
+// 0xc6db90 — __ZNK4Ogre6Camera13getViewMatrixEv
+#[doc(alias = "Ogre::Camera::getViewMatrix(void)const")]
+// was: Ogre::Camera::getViewMatrix(void)const
+pub fn stub_c6db90() -> ! {
+    todo!("0xc6db90 Ogre::Camera::getViewMatrix(void)const")
+}
+
+// 0xc6dbb0 — __ZNK4Ogre6Camera22getRayForwardIntersectERKNS_7Vector3EPS2_f
+#[doc(alias = "Ogre::Camera::getRayForwardIntersect(Ogre::Vector3 const&,Ogre::Vector3 const*,float)const")]
+// was: Ogre::Camera::getRayForwardIntersect(Ogre::Vector3 const&,Ogre::Vector3 const*,float)const
+pub fn stub_c6dbb0() -> ! {
+    todo!("0xc6dbb0 Ogre::Camera::getRayForwardIntersect(Ogre::Vector3 const&,Ogre::Vector3 const*,float)const")
+}
+
+// 0xc6df20 — __ZNK4Ogre6Camera16forwardIntersectERKNS_5PlaneEPSt6vectorINS_7Vector4ENS_12STLAllocatorIS5_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::Camera::forwardIntersect(Ogre::Plane const&,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)const")]
+// was: Ogre::Camera::forwardIntersect(Ogre::Plane const&,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)const
+pub fn stub_c6df20() -> ! {
+    todo!("0xc6df20 Ogre::Camera::forwardIntersect(Ogre::Plane const&,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)const")
+}
+
+// 0xc6e2c4 — __ZN4Ogre6Camera27synchroniseBaseSettingsWithEPKS0_
+#[doc(alias = "Ogre::Camera::synchroniseBaseSettingsWith(Ogre::Camera const*)")]
+// was: Ogre::Camera::synchroniseBaseSettingsWith(Ogre::Camera const*)
+pub fn stub_c6e2c4() -> ! {
+    todo!("0xc6e2c4 Ogre::Camera::synchroniseBaseSettingsWith(Ogre::Camera const*)")
+}
+
+// 0xc6e3c0 — __ZNK4Ogre7Vector313getRotationToERKS0_S2_
+#[doc(alias = "Ogre::Vector3::getRotationTo(Ogre::Vector3 const&,Ogre::Vector3 const&)const")]
+// was: Ogre::Vector3::getRotationTo(Ogre::Vector3 const&,Ogre::Vector3 const&)const
+pub fn stub_c6e3c0() -> ! {
+    todo!("0xc6e3c0 Ogre::Vector3::getRotationTo(Ogre::Vector3 const&,Ogre::Vector3 const&)const")
+}
+
+// 0xc6e6cc — __ZNK4Ogre13MovableObject14getCastShadowsEv
+#[doc(alias = "Ogre::MovableObject::getCastShadows(void)const")]
+// was: Ogre::MovableObject::getCastShadows(void)const
+pub fn stub_c6e6cc() -> ! {
+    todo!("0xc6e6cc Ogre::MovableObject::getCastShadows(void)const")
+}
+
+// 0xc6e6d4 — __ZN4Ogre13MovableObject11getEdgeListEv
+#[doc(alias = "Ogre::MovableObject::getEdgeList(void)")]
+// was: Ogre::MovableObject::getEdgeList(void)
+pub fn stub_c6e6d4() -> ! {
+    todo!("0xc6e6d4 Ogre::MovableObject::getEdgeList(void)")
+}
+
+// 0xc6e6d8 — __ZN4Ogre13MovableObject11hasEdgeListEv
+#[doc(alias = "Ogre::MovableObject::hasEdgeList(void)")]
+// was: Ogre::MovableObject::hasEdgeList(void)
+pub fn stub_c6e6d8() -> ! {
+    todo!("0xc6e6d8 Ogre::MovableObject::hasEdgeList(void)")
+}
+
+// 0xc6e6dc — __ZN4Ogre13MovableObject14_notifyCreatorEPNS_20MovableObjectFactoryE
+#[doc(alias = "Ogre::MovableObject::_notifyCreator(Ogre::MovableObjectFactory *)")]
+// was: Ogre::MovableObject::_notifyCreator(Ogre::MovableObjectFactory *)
+pub fn stub_c6e6dc() -> ! {
+    todo!("0xc6e6dc Ogre::MovableObject::_notifyCreator(Ogre::MovableObjectFactory *)")
+}
+
+// 0xc6e6e0 — __ZNK4Ogre13MovableObject11_getCreatorEv
+#[doc(alias = "Ogre::MovableObject::_getCreator(void)const")]
+// was: Ogre::MovableObject::_getCreator(void)const
+pub fn stub_c6e6e0() -> ! {
+    todo!("0xc6e6e0 Ogre::MovableObject::_getCreator(void)const")
+}
+
+// 0xc6e6e4 — __ZN4Ogre13MovableObject14_notifyManagerEPNS_12SceneManagerE
+#[doc(alias = "Ogre::MovableObject::_notifyManager(Ogre::SceneManager *)")]
+// was: Ogre::MovableObject::_notifyManager(Ogre::SceneManager *)
+pub fn stub_c6e6e4() -> ! {
+    todo!("0xc6e6e4 Ogre::MovableObject::_notifyManager(Ogre::SceneManager *)")
+}
+
+// 0xc6e6e8 — __ZNK4Ogre13MovableObject11_getManagerEv
+#[doc(alias = "Ogre::MovableObject::_getManager(void)const")]
+// was: Ogre::MovableObject::_getManager(void)const
+pub fn stub_c6e6e8() -> ! {
+    todo!("0xc6e6e8 Ogre::MovableObject::_getManager(void)const")
+}
+
+// 0xc6e6ec — __ZNK4Ogre13MovableObject7getNameEv
+#[doc(alias = "Ogre::MovableObject::getName(void)const")]
+// was: Ogre::MovableObject::getName(void)const
+pub fn stub_c6e6ec() -> ! {
+    todo!("0xc6e6ec Ogre::MovableObject::getName(void)const")
+}
