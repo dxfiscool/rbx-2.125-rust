@@ -37531,3 +37531,903 @@ pub fn stub_4d6338() -> ! {
 pub fn stub_4d6458() -> ! {
     todo!("0x4d6458 __ZN3RBX10Reflection9DescribedINS_22RightAngleRampInstanceELZNS_15sRightAngleRampEENS_17NonFactoryProductINS_12PartInstanceELZNS_15sRightAngleRampEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
 }
+
+// 0x4f56a0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9FlagStandES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FlagStand,RBX::FlagStand>(boost::shared_ptr<RBX::FlagStand> const*,RBX::FlagStand *)const")]
+pub fn stub_4f56a0() -> ! {
+    todo!("0x4f56a0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FlagStand,RBX::FlagStand>(boost::shared_ptr<RBX::FlagStand> const*,RBX::FlagStand *)const")
+}
+
+// 0x4f66c8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16FlagStandServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FlagStandService,RBX::FlagStandService>(boost::shared_ptr<RBX::FlagStandService> const*,RBX::FlagStandService *)const")]
+pub fn stub_4f66c8() -> ! {
+    todo!("0x4f66c8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FlagStandService,RBX::FlagStandService>(boost::shared_ptr<RBX::FlagStandService> const*,RBX::FlagStandService *)const")
+}
+
+// 0x4f6f10 — __ZN3RBX10Reflection9EventDescINS_9FlagStandEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_4f6f10() -> ! {
+    todo!("0x4f6f10 RBX::Reflection::EventDesc<RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x4f7094 — __ZN3RBX10Reflection9EventDescINS_9FlagStandEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::~EventDesc()")]
+pub fn stub_4f7094() -> ! {
+    todo!("0x4f7094 RBX::Reflection::EventDesc<RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::~EventDesc()")
+}
+
+// 0x4f7148 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9FlagStandEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_4f7148() -> ! {
+    todo!("0x4f7148 RBX::Reflection::EventDescImpl<1,RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x4f729c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9FlagStandEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_4f729c() -> ! {
+    todo!("0x4f729c RBX::Reflection::EventDescImpl<1,RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x4f73fc — __ZNK3RBX10Reflection13EventDescBaseINS_9FlagStandEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_4f73fc() -> ! {
+    todo!("0x4f73fc RBX::Reflection::EventDescBase<RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x4f7410 — __ZN3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_4f7410() -> ! {
+    todo!("0x4f7410 RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4f7524 — __ZN3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::~PropDescriptor()")]
+pub fn stub_4f7524() -> ! {
+    todo!("0x4f7524 RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::~PropDescriptor()")
+}
+
+// 0x4f7550 — __ZNK3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>::isReadOnly(void)const")]
+pub fn stub_4f7550() -> ! {
+    todo!("0x4f7550 RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>::isReadOnly(void)const")
+}
+
+// 0x4f7554 — __ZNK3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
+pub fn stub_4f7554() -> ! {
+    todo!("0x4f7554 RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>::isWriteOnly(void)const")
+}
+
+// 0x4f7558 — __ZNK3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_4f7558() -> ! {
+    todo!("0x4f7558 RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4f7580 — __ZNK3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")]
+pub fn stub_4f7580() -> ! {
+    todo!("0x4f7580 RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::FlagStand::*)(void)const,void (RBX::FlagStand::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")
+}
+
+// 0x4f910c — __ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::EnumDesc(void)")]
+pub fn stub_4f910c() -> ! {
+    todo!("0x4f910c RBX::Reflection::EnumDesc<RBX::Frame::Style>::EnumDesc(void)")
+}
+
+// 0x4f9110 — __ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::EnumDesc(void)")]
+pub fn stub_4f9110() -> ! {
+    todo!("0x4f9110 RBX::Reflection::EnumDesc<RBX::Frame::Style>::EnumDesc(void)")
+}
+
+// 0x4f9988 — __ZN3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::~EnumPropDescriptor()")]
+pub fn stub_4f9988() -> ! {
+    todo!("0x4f9988 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::~EnumPropDescriptor()")
+}
+
+// 0x4f99ac — __ZN3RBX10Reflection8EnumDescINS_5Frame5StyleEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::addPair(RBX::Frame::Style,char const*)")]
+pub fn stub_4f99ac() -> ! {
+    todo!("0x4f99ac RBX::Reflection::EnumDesc<RBX::Frame::Style>::addPair(RBX::Frame::Style,char const*)")
+}
+
+// 0x4fa3f8 — __ZN3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::EnumPropDescriptor<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>(char const*,char const*,RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_4fa3f8() -> ! {
+    todo!("0x4fa3f8 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::EnumPropDescriptor<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>(char const*,char const*,RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4fa5ac — __ZN3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::~EnumPropDescriptor()")]
+pub fn stub_4fa5ac() -> ! {
+    todo!("0x4fa5ac RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::~EnumPropDescriptor()")
+}
+
+// 0x4fa5d8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::isReadOnly(void)const")]
+pub fn stub_4fa5d8() -> ! {
+    todo!("0x4fa5d8 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::isReadOnly(void)const")
+}
+
+// 0x4fa5e8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::isWriteOnly(void)const")]
+pub fn stub_4fa5e8() -> ! {
+    todo!("0x4fa5e8 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::isWriteOnly(void)const")
+}
+
+// 0x4fa5f8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_4fa5f8() -> ! {
+    todo!("0x4fa5f8 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4fa620 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_4fa620() -> ! {
+    todo!("0x4fa620 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x4fa644 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_4fa644() -> ! {
+    todo!("0x4fa644 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x4fa790 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_4fa790() -> ! {
+    todo!("0x4fa790 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x4fa7b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::hasStringValue(void)const")]
+pub fn stub_4fa7b4() -> ! {
+    todo!("0x4fa7b4 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::hasStringValue(void)const")
+}
+
+// 0x4fa7b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_4fa7b8() -> ! {
+    todo!("0x4fa7b8 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4fa7dc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_4fa7dc() -> ! {
+    todo!("0x4fa7dc RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x4fa81c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_4fa81c() -> ! {
+    todo!("0x4fa81c RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x4fa83c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_4fa83c() -> ! {
+    todo!("0x4fa83c RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x4faa7c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_4faa7c() -> ! {
+    todo!("0x4faa7c RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4faa98 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_4faa98() -> ! {
+    todo!("0x4faa98 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x4faacc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_4faacc() -> ! {
+    todo!("0x4faacc RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4faad4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_4faad4() -> ! {
+    todo!("0x4faad4 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4fab20 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_4fab20() -> ! {
+    todo!("0x4fab20 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4fab40 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_4fab40() -> ! {
+    todo!("0x4fab40 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x4fab74 — __ZNK3RBX10Reflection8EnumDescINS_5Frame5StyleEE14convertToIndexES3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Frame::Style>::convertToIndex(RBX::Frame::Style)const")]
+pub fn stub_4fab74() -> ! {
+    todo!("0x4fab74 RBX::Reflection::EnumDesc<RBX::Frame::Style>::convertToIndex(RBX::Frame::Style)const")
+}
+
+// 0x4fabe4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_5FrameENS2_5StyleEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_4fabe4() -> ! {
+    todo!("0x4fabe4 RBX::Reflection::EnumPropDescriptor<RBX::Frame,RBX::Frame::Style>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x4fac24 — __ZNK3RBX10Reflection14PropDescriptorINS_5FrameENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Frame,RBX::Frame::Style>::GetSetImpl<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>::isReadOnly(void)const")]
+pub fn stub_4fac24() -> ! {
+    todo!("0x4fac24 RBX::Reflection::PropDescriptor<RBX::Frame,RBX::Frame::Style>::GetSetImpl<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>::isReadOnly(void)const")
+}
+
+// 0x4fac28 — __ZNK3RBX10Reflection14PropDescriptorINS_5FrameENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Frame,RBX::Frame::Style>::GetSetImpl<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>::isWriteOnly(void)const")]
+pub fn stub_4fac28() -> ! {
+    todo!("0x4fac28 RBX::Reflection::PropDescriptor<RBX::Frame,RBX::Frame::Style>::GetSetImpl<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>::isWriteOnly(void)const")
+}
+
+// 0x4fac2c — __ZNK3RBX10Reflection14PropDescriptorINS_5FrameENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Frame,RBX::Frame::Style>::GetSetImpl<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_4fac2c() -> ! {
+    todo!("0x4fac2c RBX::Reflection::PropDescriptor<RBX::Frame,RBX::Frame::Style>::GetSetImpl<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4fac4c — __ZNK3RBX10Reflection14PropDescriptorINS_5FrameENS2_5StyleEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Frame,RBX::Frame::Style>::GetSetImpl<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>::setValue(RBX::Reflection::DescribedBase *,RBX::Frame::Style const&)const")]
+pub fn stub_4fac4c() -> ! {
+    todo!("0x4fac4c RBX::Reflection::PropDescriptor<RBX::Frame,RBX::Frame::Style>::GetSetImpl<RBX::Frame::Style (RBX::Frame::*)(void)const,void (RBX::Frame::*)(RBX::Frame::Style)>::setValue(RBX::Reflection::DescribedBase *,RBX::Frame::Style const&)const")
+}
+
+// 0x500768 — __ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::EnumDesc(void)")]
+pub fn stub_500768() -> ! {
+    todo!("0x500768 RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::EnumDesc(void)")
+}
+
+// 0x50076c — __ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::EnumDesc(void)")]
+pub fn stub_50076c() -> ! {
+    todo!("0x50076c RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::EnumDesc(void)")
+}
+
+// 0x5009c4 — __ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::EnumDesc(void)")]
+pub fn stub_5009c4() -> ! {
+    todo!("0x5009c4 RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::EnumDesc(void)")
+}
+
+// 0x5009c8 — __ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::EnumDesc(void)")]
+pub fn stub_5009c8() -> ! {
+    todo!("0x5009c8 RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::EnumDesc(void)")
+}
+
+// 0x500ecc — __ZN3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::addPair(RBX::GameSettings::VideoQuality,char const*)")]
+pub fn stub_500ecc() -> ! {
+    todo!("0x500ecc RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::addPair(RBX::GameSettings::VideoQuality,char const*)")
+}
+
+// 0x50122c — __ZN3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::addPair(RBX::GameSettings::UploadSetting,char const*)")]
+pub fn stub_50122c() -> ! {
+    todo!("0x50122c RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::addPair(RBX::GameSettings::UploadSetting,char const*)")
+}
+
+// 0x501594 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::~EnumPropDescriptor()")]
+pub fn stub_501594() -> ! {
+    todo!("0x501594 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::~EnumPropDescriptor()")
+}
+
+// 0x5015c0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::~EnumPropDescriptor()")]
+pub fn stub_5015c0() -> ! {
+    todo!("0x5015c0 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::~EnumPropDescriptor()")
+}
+
+// 0x5015e4 — __ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::~EventDesc()")]
+pub fn stub_5015e4() -> ! {
+    todo!("0x5015e4 RBX::Reflection::EventDesc<RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::~EventDesc()")
+}
+
+// 0x502528 — __ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::EventDesc(rbx::signal<void ()(bool)> RBX::GameSettings::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_502528() -> ! {
+    todo!("0x502528 RBX::Reflection::EventDesc<RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::EventDesc(rbx::signal<void ()(bool)> RBX::GameSettings::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x5026ac — __ZN3RBX10Reflection9EventDescINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::~EventDesc()")]
+pub fn stub_5026ac() -> ! {
+    todo!("0x5026ac RBX::Reflection::EventDesc<RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::~EventDesc()")
+}
+
+// 0x502760 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_502760() -> ! {
+    todo!("0x502760 RBX::Reflection::EventDescImpl<1,RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x5028b4 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_5028b4() -> ! {
+    todo!("0x5028b4 RBX::Reflection::EventDescImpl<1,RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x502940 — __ZNK3RBX10Reflection13EventDescBaseINS_12GameSettingsEFvbEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_502940() -> ! {
+    todo!("0x502940 RBX::Reflection::EventDescBase<RBX::GameSettings,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::GameSettings::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x502954 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::EnumPropDescriptor<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>(char const*,char const*,RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_502954() -> ! {
+    todo!("0x502954 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::EnumPropDescriptor<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>(char const*,char const*,RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x502b08 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::~EnumPropDescriptor()")]
+pub fn stub_502b08() -> ! {
+    todo!("0x502b08 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::~EnumPropDescriptor()")
+}
+
+// 0x502b34 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::isReadOnly(void)const")]
+pub fn stub_502b34() -> ! {
+    todo!("0x502b34 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::isReadOnly(void)const")
+}
+
+// 0x502b44 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::isWriteOnly(void)const")]
+pub fn stub_502b44() -> ! {
+    todo!("0x502b44 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::isWriteOnly(void)const")
+}
+
+// 0x502b54 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_502b54() -> ! {
+    todo!("0x502b54 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x502b7c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_502b7c() -> ! {
+    todo!("0x502b7c RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x502ba0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_502ba0() -> ! {
+    todo!("0x502ba0 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x502cec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_502cec() -> ! {
+    todo!("0x502cec RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x502d10 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::hasStringValue(void)const")]
+pub fn stub_502d10() -> ! {
+    todo!("0x502d10 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::hasStringValue(void)const")
+}
+
+// 0x502d14 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_502d14() -> ! {
+    todo!("0x502d14 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x502d38 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_502d38() -> ! {
+    todo!("0x502d38 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x502d78 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_502d78() -> ! {
+    todo!("0x502d78 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x502d98 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_502d98() -> ! {
+    todo!("0x502d98 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x502fd8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_502fd8() -> ! {
+    todo!("0x502fd8 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x502ff4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_502ff4() -> ! {
+    todo!("0x502ff4 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x503028 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_503028() -> ! {
+    todo!("0x503028 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x503030 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_503030() -> ! {
+    todo!("0x503030 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x50307c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_50307c() -> ! {
+    todo!("0x50307c RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x50309c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_50309c() -> ! {
+    todo!("0x50309c RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x5030d0 — __ZNK3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEE14convertToIndexES3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::convertToIndex(RBX::GameSettings::UploadSetting)const")]
+pub fn stub_5030d0() -> ! {
+    todo!("0x5030d0 RBX::Reflection::EnumDesc<RBX::GameSettings::UploadSetting>::convertToIndex(RBX::GameSettings::UploadSetting)const")
+}
+
+// 0x503140 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_13UploadSettingEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_503140() -> ! {
+    todo!("0x503140 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x503180 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>::isReadOnly(void)const")]
+pub fn stub_503180() -> ! {
+    todo!("0x503180 RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>::isReadOnly(void)const")
+}
+
+// 0x503184 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>::isWriteOnly(void)const")]
+pub fn stub_503184() -> ! {
+    todo!("0x503184 RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>::isWriteOnly(void)const")
+}
+
+// 0x503188 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_503188() -> ! {
+    todo!("0x503188 RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5031a8 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_13UploadSettingEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>::setValue(RBX::Reflection::DescribedBase *,RBX::GameSettings::UploadSetting const&)const")]
+pub fn stub_5031a8() -> ! {
+    todo!("0x5031a8 RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::UploadSetting>::GetSetImpl<RBX::GameSettings::UploadSetting (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::UploadSetting)>::setValue(RBX::Reflection::DescribedBase *,RBX::GameSettings::UploadSetting const&)const")
+}
+
+// 0x5031cc — __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::EnumPropDescriptor<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>(char const*,char const*,RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_5031cc() -> ! {
+    todo!("0x5031cc RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::EnumPropDescriptor<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>(char const*,char const*,RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x503380 — __ZN3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::~EnumPropDescriptor()")]
+pub fn stub_503380() -> ! {
+    todo!("0x503380 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::~EnumPropDescriptor()")
+}
+
+// 0x5033ac — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::isReadOnly(void)const")]
+pub fn stub_5033ac() -> ! {
+    todo!("0x5033ac RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::isReadOnly(void)const")
+}
+
+// 0x5033bc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::isWriteOnly(void)const")]
+pub fn stub_5033bc() -> ! {
+    todo!("0x5033bc RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::isWriteOnly(void)const")
+}
+
+// 0x5033cc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_5033cc() -> ! {
+    todo!("0x5033cc RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5033f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_5033f4() -> ! {
+    todo!("0x5033f4 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x503418 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_503418() -> ! {
+    todo!("0x503418 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x503564 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_503564() -> ! {
+    todo!("0x503564 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x503588 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::hasStringValue(void)const")]
+pub fn stub_503588() -> ! {
+    todo!("0x503588 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::hasStringValue(void)const")
+}
+
+// 0x50358c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_50358c() -> ! {
+    todo!("0x50358c RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5035b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_5035b0() -> ! {
+    todo!("0x5035b0 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x5035f0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_5035f0() -> ! {
+    todo!("0x5035f0 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x503610 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_503610() -> ! {
+    todo!("0x503610 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x503850 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_503850() -> ! {
+    todo!("0x503850 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x50386c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_50386c() -> ! {
+    todo!("0x50386c RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x5038a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_5038a0() -> ! {
+    todo!("0x5038a0 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5038a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_5038a8() -> ! {
+    todo!("0x5038a8 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x5038f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_5038f4() -> ! {
+    todo!("0x5038f4 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x503914 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_503914() -> ! {
+    todo!("0x503914 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x503948 — __ZNK3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE14convertToIndexES3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::convertToIndex(RBX::GameSettings::VideoQuality)const")]
+pub fn stub_503948() -> ! {
+    todo!("0x503948 RBX::Reflection::EnumDesc<RBX::GameSettings::VideoQuality>::convertToIndex(RBX::GameSettings::VideoQuality)const")
+}
+
+// 0x5039b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_12GameSettingsENS2_12VideoQualityEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_5039b8() -> ! {
+    todo!("0x5039b8 RBX::Reflection::EnumPropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x5039f8 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::GetSetImpl<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>::isReadOnly(void)const")]
+pub fn stub_5039f8() -> ! {
+    todo!("0x5039f8 RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::GetSetImpl<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>::isReadOnly(void)const")
+}
+
+// 0x5039fc — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::GetSetImpl<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>::isWriteOnly(void)const")]
+pub fn stub_5039fc() -> ! {
+    todo!("0x5039fc RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::GetSetImpl<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>::isWriteOnly(void)const")
+}
+
+// 0x503a00 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::GetSetImpl<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_503a00() -> ! {
+    todo!("0x503a00 RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::GetSetImpl<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x503a20 — __ZNK3RBX10Reflection14PropDescriptorINS_12GameSettingsENS2_12VideoQualityEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::GetSetImpl<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>::setValue(RBX::Reflection::DescribedBase *,RBX::GameSettings::VideoQuality const&)const")]
+pub fn stub_503a20() -> ! {
+    todo!("0x503a20 RBX::Reflection::PropDescriptor<RBX::GameSettings,RBX::GameSettings::VideoQuality>::GetSetImpl<RBX::GameSettings::VideoQuality (RBX::GameSettings::*)(void)const,void (RBX::GameSettings::*)(RBX::GameSettings::VideoQuality)>::setValue(RBX::Reflection::DescribedBase *,RBX::GameSettings::VideoQuality const&)const")
+}
+
+// 0x503a44 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::GameSettings>(char const*,char const*,float RBX::GameSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_503a44() -> ! {
+    todo!("0x503a44 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::GameSettings>(char const*,char const*,float RBX::GameSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x503bd4 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isReadOnly(void)const")]
+pub fn stub_503bd4() -> ! {
+    todo!("0x503bd4 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isReadOnly(void)const")
+}
+
+// 0x503bd8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isWriteOnly(void)const")]
+pub fn stub_503bd8() -> ! {
+    todo!("0x503bd8 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isWriteOnly(void)const")
+}
+
+// 0x503bdc — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_503bdc() -> ! {
+    todo!("0x503bdc RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x503be8 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_503be8() -> ! {
+    todo!("0x503be8 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x503c44 — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::GameSettings>(char const*,char const*,bool RBX::GameSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_503c44() -> ! {
+    todo!("0x503c44 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::GameSettings>(char const*,char const*,bool RBX::GameSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x503dd4 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isReadOnly(void)const")]
+pub fn stub_503dd4() -> ! {
+    todo!("0x503dd4 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isReadOnly(void)const")
+}
+
+// 0x503dd8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isWriteOnly(void)const")]
+pub fn stub_503dd8() -> ! {
+    todo!("0x503dd8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isWriteOnly(void)const")
+}
+
+// 0x503ddc — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_503ddc() -> ! {
+    todo!("0x503ddc RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x503de8 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE8setValueEPNS0_13DescribedBaseERKb
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
+pub fn stub_503de8() -> ! {
+    todo!("0x503de8 RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+}
+
+// 0x503e38 — __ZN3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EEC2INS_12GameSettingsEEEPKcS7_MT_iNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundProp<RBX::GameSettings>(char const*,char const*,int RBX::GameSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_503e38() -> ! {
+    todo!("0x503e38 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundProp<RBX::GameSettings>(char const*,char const*,int RBX::GameSettings::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x503fc8 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isReadOnly(void)const")]
+pub fn stub_503fc8() -> ! {
+    todo!("0x503fc8 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isReadOnly(void)const")
+}
+
+// 0x503fcc — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isWriteOnly(void)const")]
+pub fn stub_503fcc() -> ! {
+    todo!("0x503fcc RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::isWriteOnly(void)const")
+}
+
+// 0x503fd0 — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_503fd0() -> ! {
+    todo!("0x503fd0 RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x503fdc — __ZNK3RBX10Reflection9BoundPropIiLNS0_10MutabilityE1EE15BoundPropGetSetINS_12GameSettingsEE8setValueEPNS0_13DescribedBaseERKi
+#[doc(alias = "RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
+pub fn stub_503fdc() -> ! {
+    todo!("0x503fdc RBX::Reflection::BoundProp<int,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::GameSettings>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+}
+
+// 0x508e18 — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFSsSsELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,std::string ()(std::string),1>::~BoundFuncDesc()")]
+pub fn stub_508e18() -> ! {
+    todo!("0x508e18 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,std::string ()(std::string),1>::~BoundFuncDesc()")
+}
+
+// 0x508e58 — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_508e58() -> ! {
+    todo!("0x508e58 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x508e7c — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFbSsELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,bool ()(std::string),1>::~BoundFuncDesc()")]
+pub fn stub_508e7c() -> ! {
+    todo!("0x508e7c RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,bool ()(std::string),1>::~BoundFuncDesc()")
+}
+
+// 0x509070 — __ZN3RBX10Reflection13BoundFuncDescINS_19GlobalBasicSettingsEFvvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalBasicSettings,void ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_509070() -> ! {
+    todo!("0x509070 RBX::Reflection::BoundFuncDesc<RBX::GlobalBasicSettings,void ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x50a0e8 — __ZN5boost11get_deleterIN3rbx6detail13sp_ms_deleterINS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEESH_EEPT_RKNS_10shared_ptrIT0_EE
+#[doc(alias = "rbx::detail::sp_ms_deleter<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>> * boost::get_deleter<rbx::detail::sp_ms_deleter<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>,boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>> const&)")]
+pub fn stub_50a0e8() -> ! {
+    todo!("0x50a0e8 rbx::detail::sp_ms_deleter<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>> * boost::get_deleter<rbx::detail::sp_ms_deleter<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>,boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>> const&)")
+}
+
+// 0x50a148 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsN3RBX10Reflection7VariantEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14delete_bucketsEv
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>,std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")]
+pub fn stub_50a148() -> ! {
+    todo!("0x50a148 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>,std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>>>::delete_buckets(void)")
+}
+
+// 0x50a180 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsN3RBX10Reflection7VariantEEESsS8_NS_4hashISsEESt8equal_toISsEEEE11delete_nodeEPNS1_10ptr_bucketE
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>,std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)")]
+pub fn stub_50a180() -> ! {
+    todo!("0x50a180 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>,std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>>>::delete_node(boost::unordered::detail::ptr_bucket *)")
+}
+
+// 0x50a250 — __ZN5boost6detail18sp_counted_impl_pdIPNS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEN3rbx6detail13sp_ms_deleterISF_EEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *,rbx::detail::sp_ms_deleter<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>>::~sp_counted_impl_pd()")]
+pub fn stub_50a250() -> ! {
+    todo!("0x50a250 boost::detail::sp_counted_impl_pd<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *,rbx::detail::sp_ms_deleter<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>>::~sp_counted_impl_pd()")
+}
+
+// 0x50a280 — __ZN5boost6detail18sp_counted_impl_pdIPNS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEN3rbx6detail13sp_ms_deleterISF_EEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *,rbx::detail::sp_ms_deleter<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>>::get_deleter(std::type_info const&)")]
+pub fn stub_50a280() -> ! {
+    todo!("0x50a280 boost::detail::sp_counted_impl_pd<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *,rbx::detail::sp_ms_deleter<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>>::get_deleter(std::type_info const&)")
+}
+
+// 0x50a298 — __ZN5boost6detail18sp_counted_impl_pdIPNS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEN3rbx6detail13sp_ms_deleterISF_EEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *,rbx::detail::sp_ms_deleter<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>>::get_untyped_deleter(void)")]
+pub fn stub_50a298() -> ! {
+    todo!("0x50a298 boost::detail::sp_counted_impl_pd<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *,rbx::detail::sp_ms_deleter<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>>::get_untyped_deleter(void)")
+}
+
+// 0x50b04c — __ZN3RBX10Reflection13BoundFuncDescINS_19GlobalBasicSettingsEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalBasicSettings,void ()(void),0>::BoundFuncDesc(void (RBX::GlobalBasicSettings::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_50b04c() -> ! {
+    todo!("0x50b04c RBX::Reflection::BoundFuncDesc<RBX::GlobalBasicSettings,void ()(void),0>::BoundFuncDesc(void (RBX::GlobalBasicSettings::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x50b150 — __ZN3RBX10Reflection13BoundFuncDescINS_19GlobalBasicSettingsEFvvELi0EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalBasicSettings,void ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_50b150() -> ! {
+    todo!("0x50b150 RBX::Reflection::BoundFuncDesc<RBX::GlobalBasicSettings,void ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x50b204 — __ZNK3RBX10Reflection13BoundFuncDescINS_19GlobalBasicSettingsEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalBasicSettings,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_50b204() -> ! {
+    todo!("0x50b204 RBX::Reflection::BoundFuncDesc<RBX::GlobalBasicSettings,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x50b750 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9SelectionES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Selection,RBX::Selection>(boost::shared_ptr<RBX::Selection> const*,RBX::Selection *)const")]
+pub fn stub_50b750() -> ! {
+    todo!("0x50b750 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Selection,RBX::Selection>(boost::shared_ptr<RBX::Selection> const*,RBX::Selection *)const")
+}
+
+// 0x50d030 — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFbSsELi1EEC2EMS2_FbSsEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,bool ()(std::string),1>::BoundFuncDesc(bool (RBX::GlobalAdvancedSettings::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_50d030() -> ! {
+    todo!("0x50d030 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,bool ()(std::string),1>::BoundFuncDesc(bool (RBX::GlobalAdvancedSettings::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x50d1a8 — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFbSsELi1EE16declareSignatureEPKcNS0_7VariantE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,bool ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+pub fn stub_50d1a8() -> ! {
+    todo!("0x50d1a8 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,bool ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0x50d1d8 — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFbSsELi1EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,bool ()(std::string),1>::~BoundFuncDesc()")]
+pub fn stub_50d1d8() -> ! {
+    todo!("0x50d1d8 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,bool ()(std::string),1>::~BoundFuncDesc()")
+}
+
+// 0x50d2a4 — __ZNK3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFbSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,bool ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_50d2a4() -> ! {
+    todo!("0x50d2a4 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,bool ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x50d3e4 — __ZN3RBX10Reflection11Call1HelperINS_22GlobalAdvancedSettingsEMS2_FbSsESsbE4callEPS2_S4_RNS0_7VariantERKSs
+#[doc(alias = "RBX::Reflection::Call1Helper<RBX::GlobalAdvancedSettings,bool (RBX::GlobalAdvancedSettings::*)(std::string),std::string,bool>::call(RBX::GlobalAdvancedSettings*,bool (RBX::GlobalAdvancedSettings::*)(std::string),RBX::Reflection::Variant &,std::string const&)")]
+pub fn stub_50d3e4() -> ! {
+    todo!("0x50d3e4 RBX::Reflection::Call1Helper<RBX::GlobalAdvancedSettings,bool (RBX::GlobalAdvancedSettings::*)(std::string),std::string,bool>::call(RBX::GlobalAdvancedSettings*,bool (RBX::GlobalAdvancedSettings::*)(std::string),RBX::Reflection::Variant &,std::string const&)")
+}
+
+// 0x50d538 — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEvELi0EEC2EMS2_FSI_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::GlobalAdvancedSettings::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_50d538() -> ! {
+    todo!("0x50d538 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::GlobalAdvancedSettings::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x50d63c — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEvELi0EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_50d63c() -> ! {
+    todo!("0x50d63c RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x50d6f0 — __ZNK3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_50d6f0() -> ! {
+    todo!("0x50d6f0 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x50d714 — __ZN3RBX10Reflection11Call0HelperINS_22GlobalAdvancedSettingsEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEvESI_E4callEPS2_SK_RS7_
+#[doc(alias = "RBX::Reflection::Call0Helper<RBX::GlobalAdvancedSettings,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::GlobalAdvancedSettings::*)(void),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::call(RBX::GlobalAdvancedSettings*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::GlobalAdvancedSettings::*)(void),RBX::Reflection::Variant&)")]
+pub fn stub_50d714() -> ! {
+    todo!("0x50d714 RBX::Reflection::Call0Helper<RBX::GlobalAdvancedSettings,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::GlobalAdvancedSettings::*)(void),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::call(RBX::GlobalAdvancedSettings*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> (RBX::GlobalAdvancedSettings::*)(void),RBX::Reflection::Variant&)")
+}
+
+// 0x50d7fc — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFSsSsELi1EEC2EMS2_FSsSsEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,std::string ()(std::string),1>::BoundFuncDesc(std::string (RBX::GlobalAdvancedSettings::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_50d7fc() -> ! {
+    todo!("0x50d7fc RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,std::string ()(std::string),1>::BoundFuncDesc(std::string (RBX::GlobalAdvancedSettings::*)(std::string),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x50d974 — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFSsSsELi1EE16declareSignatureEPKcNS0_7VariantE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,std::string ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+pub fn stub_50d974() -> ! {
+    todo!("0x50d974 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,std::string ()(std::string),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0x50d9a4 — __ZN3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFSsSsELi1EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,std::string ()(std::string),1>::~BoundFuncDesc()")]
+pub fn stub_50d9a4() -> ! {
+    todo!("0x50d9a4 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,std::string ()(std::string),1>::~BoundFuncDesc()")
+}
+
+// 0x50da70 — __ZNK3RBX10Reflection13BoundFuncDescINS_22GlobalAdvancedSettingsEFSsSsELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,std::string ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_50da70() -> ! {
+    todo!("0x50da70 RBX::Reflection::BoundFuncDesc<RBX::GlobalAdvancedSettings,std::string ()(std::string),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x50dbb0 — __ZN3RBX10Reflection11Call1HelperINS_22GlobalAdvancedSettingsEMS2_FSsSsESsSsE4callEPS2_S4_RNS0_7VariantERKSs
+#[doc(alias = "RBX::Reflection::Call1Helper<RBX::GlobalAdvancedSettings,std::string (RBX::GlobalAdvancedSettings::*)(std::string),std::string,std::string>::call(RBX::GlobalAdvancedSettings*,std::string (RBX::GlobalAdvancedSettings::*)(std::string),RBX::Reflection::Variant &,std::string const&)")]
+pub fn stub_50dbb0() -> ! {
+    todo!("0x50dbb0 RBX::Reflection::Call1Helper<RBX::GlobalAdvancedSettings,std::string (RBX::GlobalAdvancedSettings::*)(std::string),std::string,std::string>::call(RBX::GlobalAdvancedSettings*,std::string (RBX::GlobalAdvancedSettings::*)(std::string),RBX::Reflection::Variant &,std::string const&)")
+}
+
+// 0x50def4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19GlobalBasicSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GlobalBasicSettings,RBX::GlobalBasicSettings>(boost::shared_ptr<RBX::GlobalBasicSettings> const*,RBX::GlobalBasicSettings *)const")]
+pub fn stub_50def4() -> ! {
+    todo!("0x50def4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GlobalBasicSettings,RBX::GlobalBasicSettings>(boost::shared_ptr<RBX::GlobalBasicSettings> const*,RBX::GlobalBasicSettings *)const")
+}
