@@ -1,7 +1,7 @@
 //! RBX::Script Lua VM skeletons — auto-generated from ida/export.json
-//! Filter: Script|Lua|Yield (case-sensitive, plus lua lower) — 3580 stubs, sorted by EA
+//! Filter: Script|Lua|Yield (case-sensitive, plus lua lower) — 3680 stubs, sorted by EA
 //! Source: ida/export.json (85545 funcs), DAG: script crate (RBX::Script, Lua, Yield)
-//! Batch range 0x267ec..0xabdc94
+//! Batch range 0x267ec..0xcf40f4
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
@@ -23845,4 +23845,551 @@ pub fn stub_0xabd9d8() -> ! {
 #[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(int)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 pub fn stub_0xabdc94() -> ! {
     todo!("0xabdc94 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(int)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+// 0xabdf00 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EED0Ev
+// type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()")]
+pub fn stub_0xabdf00() -> ! {
+    todo!("0xabdf00 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()")
+}
+// 0xabdffc — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
+// type: void __fastcall(int, int, int, int *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
+pub fn stub_0xabdffc() -> ! {
+    todo!("0xabdffc RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+}
+// 0xabe2b8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EEC2EMS3_FviNS4_8functionIFvSJ_EEENSM_IFvSsEEEEPKcSU_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),char const*,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0xabe2b8() -> ! {
+    todo!("0xabe2b8 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),char const*,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+// 0xabe5ac — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EED0Ev
+// type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()")]
+pub fn stub_0xabe5ac() -> ! {
+    todo!("0xabe5ac RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()")
+}
+// 0xabe6a8 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsENS4_8functionIFvS8_EEENSR_IFvSsEEE
+// type: void __fastcall(int, int, int, int *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
+pub fn stub_0xabe6a8() -> ! {
+    todo!("0xabe6a8 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+}
+// 0xac5e98 — __ZNK3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEE12isScriptableEv
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::isScriptable(void)const")]
+pub fn stub_0xac5e98() -> ! {
+    todo!("0xac5e98 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::isScriptable(void)const")
+}
+// 0xac8970 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbvEbLi0EED0Ev
+// type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(void),bool,0>::~BoundYieldFuncDesc()")]
+pub fn stub_0xac8970() -> ! {
+    todo!("0xac8970 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(void),bool,0>::~BoundYieldFuncDesc()")
+}
+// 0xac8a4c — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbvEbLi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
+// type: void __fastcall(int, int, int, int *, int *)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(void),bool,0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
+pub fn stub_0xac8a4c() -> ! {
+    todo!("0xac8a4c RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(void),bool,0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+}
+// 0xac9400 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbiEbLi1EEC2EMS3_FviN5boost8functionIFvbEEENS7_IFvSsEEEEPKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(int),bool,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0xac9400() -> ! {
+    todo!("0xac9400 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(int),bool,1>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+// 0xac966c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbiEbLi1EED0Ev
+// type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(int),bool,1>::~BoundYieldFuncDesc()")]
+pub fn stub_0xac966c() -> ! {
+    todo!("0xac966c RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(int),bool,1>::~BoundYieldFuncDesc()")
+}
+// 0xac9768 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbiEbLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
+// type: void __fastcall(int, int, int, int *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(int),bool,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
+pub fn stub_0xac9768() -> ! {
+    todo!("0xac9768 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(int),bool,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+}
+// 0xac9a24 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsvESsLi0EED0Ev
+// type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(void),std::string,0>::~BoundYieldFuncDesc()")]
+pub fn stub_0xac9a24() -> ! {
+    todo!("0xac9a24 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(void),std::string,0>::~BoundYieldFuncDesc()")
+}
+// 0xac9b00 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsvESsLi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSC_IFvSsEEE
+// type: void __fastcall(int, int, int, int *, int *)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(void),std::string,0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
+pub fn stub_0xac9b00() -> ! {
+    todo!("0xac9b00 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(void),std::string,0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+}
+// 0xbb5020 — __ZN4Ogre20ShaderScriptListenerD1Ev
+// type: void __fastcall(Ogre::ShaderScriptListener *__hidden this)
+#[doc(alias = "Ogre::ShaderScriptListener::~ShaderScriptListener()")]
+pub fn stub_0xbb5020() -> ! {
+    todo!("0xbb5020 Ogre::ShaderScriptListener::~ShaderScriptListener()")
+}
+// 0xbb507c — __ZN4Ogre20ShaderScriptListenerD0Ev
+// type: void __fastcall(Ogre::ShaderScriptListener *__hidden this)
+#[doc(alias = "Ogre::ShaderScriptListener::~ShaderScriptListener()")]
+pub fn stub_0xbb507c() -> ! {
+    todo!("0xbb507c Ogre::ShaderScriptListener::~ShaderScriptListener()")
+}
+// 0xbb50dc — __ZN4Ogre20ShaderScriptListener11handleEventEPNS_14ScriptCompilerEPNS_19ScriptCompilerEventEPv
+// type: _DWORD __fastcall(Ogre::ShaderScriptListener *__hidden this, Ogre::ScriptCompiler *, Ogre::ScriptCompilerEvent *, Ogre::NedPoolingImpl *)
+#[doc(alias = "Ogre::ShaderScriptListener::handleEvent(Ogre::ScriptCompiler *,Ogre::ScriptCompilerEvent *,void *)")]
+pub fn stub_0xbb50dc() -> ! {
+    todo!("0xbb50dc Ogre::ShaderScriptListener::handleEvent(Ogre::ScriptCompiler *,Ogre::ScriptCompilerEvent *,void *)")
+}
+// 0xbb5440 — __ZN4Ogre20ShaderScriptListener26getAutogeneratedShaderPathERKNS_44CreateHighLevelGpuProgramScriptCompilerEventE
+// type: _DWORD __fastcall(Ogre::ShaderScriptListener *__hidden this, const Ogre::CreateHighLevelGpuProgramScriptCompilerEvent *)
+#[doc(alias = "Ogre::ShaderScriptListener::getAutogeneratedShaderPath(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent const&)")]
+pub fn stub_0xbb5440() -> ! {
+    todo!("0xbb5440 Ogre::ShaderScriptListener::getAutogeneratedShaderPath(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent const&)")
+}
+// 0xbb569c — __ZN4Ogre20ShaderScriptListener26getAutogeneratedShaderPathERKSsS2_S2_
+// type: _DWORD __fastcall(Ogre::ShaderScriptListener *__hidden this, const std::string *, const std::string *, const std::string *)
+#[doc(alias = "Ogre::ShaderScriptListener::getAutogeneratedShaderPath(std::string const&,std::string const&,std::string const&)")]
+pub fn stub_0xbb569c() -> ! {
+    todo!("0xbb569c Ogre::ShaderScriptListener::getAutogeneratedShaderPath(std::string const&,std::string const&,std::string const&)")
+}
+// 0xc75db0 — __ZN4Ogre17CompositorManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs
+#[doc(alias = "Ogre::CompositorManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+pub fn stub_0xc75db0() -> ! {
+    todo!("0xc75db0 Ogre::CompositorManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")
+}
+// 0xc85e98 — __ZN4Ogre6Entity26reevaluateVertexProcessingEv
+// type: _DWORD __fastcall(Ogre::Entity *__hidden this)
+#[doc(alias = "Ogre::Entity::reevaluateVertexProcessing(void)")]
+pub fn stub_0xc85e98() -> ! {
+    todo!("0xc85e98 Ogre::Entity::reevaluateVertexProcessing(void)")
+}
+// 0xc94c78 — __ZN4Ogre11FontManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs
+#[doc(alias = "Ogre::FontManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+pub fn stub_0xc94c78() -> ! {
+    todo!("0xc94c78 Ogre::FontManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")
+}
+// 0xce23b4 — __ZN4Ogre15MaterialManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs
+#[doc(alias = "Ogre::MaterialManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+pub fn stub_0xce23b4() -> ! {
+    todo!("0xce23b4 Ogre::MaterialManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")
+}
+// 0xce39f4 — __ZN4Ogre13logParseErrorERKSsRKNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::logParseError(std::string const&,Ogre::MaterialScriptContext const&)")]
+pub fn stub_0xce39f4() -> ! {
+    todo!("0xce39f4 Ogre::logParseError(std::string const&,Ogre::MaterialScriptContext const&)")
+}
+// 0xce4950 — __ZN4Ogre12parseAmbientERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseAmbient(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce4950() -> ! {
+    todo!("0xce4950 Ogre::parseAmbient(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce4da8 — __ZN4Ogre12parseDiffuseERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseDiffuse(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce4da8() -> ! {
+    todo!("0xce4da8 Ogre::parseDiffuse(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce5200 — __ZN4Ogre13parseSpecularERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseSpecular(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce5200() -> ! {
+    todo!("0xce5200 Ogre::parseSpecular(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce56b0 — __ZN4Ogre13parseEmissiveERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseEmissive(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce56b0() -> ! {
+    todo!("0xce56b0 Ogre::parseEmissive(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce5dd0 — __ZN4Ogre15parseSceneBlendERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseSceneBlend(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce5dd0() -> ! {
+    todo!("0xce5dd0 Ogre::parseSceneBlend(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce64d0 — __ZN4Ogre23parseSeparateSceneBlendERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseSeparateSceneBlend(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce64d0() -> ! {
+    todo!("0xce64d0 Ogre::parseSeparateSceneBlend(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce7104 — __ZN4Ogre15parseDepthCheckERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseDepthCheck(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce7104() -> ! {
+    todo!("0xce7104 Ogre::parseDepthCheck(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce7288 — __ZN4Ogre15parseDepthWriteERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseDepthWrite(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce7288() -> ! {
+    todo!("0xce7288 Ogre::parseDepthWrite(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce740c — __ZN4Ogre17parseLightScissorERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseLightScissor(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce740c() -> ! {
+    todo!("0xce740c Ogre::parseLightScissor(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce7588 — __ZN4Ogre14parseLightClipERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseLightClip(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce7588() -> ! {
+    todo!("0xce7588 Ogre::parseLightClip(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce7704 — __ZN4Ogre14parseDepthFuncERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, void *, int)
+#[doc(alias = "Ogre::parseDepthFunc(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce7704() -> ! {
+    todo!("0xce7704 Ogre::parseDepthFunc(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce7884 — __ZN4Ogre21parseNormaliseNormalsERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseNormaliseNormals(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce7884() -> ! {
+    todo!("0xce7884 Ogre::parseNormaliseNormals(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce7a00 — __ZN4Ogre16parseColourWriteERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseColourWrite(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce7a00() -> ! {
+    todo!("0xce7a00 Ogre::parseColourWrite(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce7b84 — __ZN4Ogre17parseCullHardwareERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseCullHardware(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce7b84() -> ! {
+    todo!("0xce7b84 Ogre::parseCullHardware(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce7d2c — __ZN4Ogre17parseCullSoftwareERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseCullSoftware(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce7d2c() -> ! {
+    todo!("0xce7d2c Ogre::parseCullSoftware(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce7ed4 — __ZN4Ogre13parseLightingERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseLighting(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce7ed4() -> ! {
+    todo!("0xce7ed4 Ogre::parseLighting(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce8058 — __ZN4Ogre14parseMaxLightsERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseMaxLights(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce8058() -> ! {
+    todo!("0xce8058 Ogre::parseMaxLights(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce8070 — __ZN4Ogre15parseStartLightERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseStartLight(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce8070() -> ! {
+    todo!("0xce8070 Ogre::parseStartLight(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce8088 — __ZN4Ogre24parseIterationLightTypesERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseIterationLightTypes(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce8088() -> ! {
+    todo!("0xce8088 Ogre::parseIterationLightTypes(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce8234 — __ZN4Ogre14parseIterationERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int)
+#[doc(alias = "Ogre::parseIteration(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce8234() -> ! {
+    todo!("0xce8234 Ogre::parseIteration(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce8868 — __ZN4Ogre14parsePointSizeERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parsePointSize(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce8868() -> ! {
+    todo!("0xce8868 Ogre::parsePointSize(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce8880 — __ZN4Ogre17parsePointSpritesERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parsePointSprites(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce8880() -> ! {
+    todo!("0xce8880 Ogre::parsePointSprites(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce89fc — __ZN4Ogre21parsePointAttenuationERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, char, int, char, char, int, int, int, int)
+#[doc(alias = "Ogre::parsePointAttenuation(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce89fc() -> ! {
+    todo!("0xce89fc Ogre::parsePointAttenuation(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce8da4 — __ZN4Ogre17parsePointSizeMinERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parsePointSizeMin(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce8da4() -> ! {
+    todo!("0xce8da4 Ogre::parsePointSizeMin(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce8dbc — __ZN4Ogre17parsePointSizeMaxERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parsePointSizeMax(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce8dbc() -> ! {
+    todo!("0xce8dbc Ogre::parsePointSizeMax(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce8dd4 — __ZN4Ogre12parseFoggingERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseFogging(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce8dd4() -> ! {
+    todo!("0xce8dd4 Ogre::parseFogging(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce931c — __ZN4Ogre12parseShadingERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseShading(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce931c() -> ! {
+    todo!("0xce931c Ogre::parseShading(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce94c4 — __ZN4Ogre16parsePolygonModeERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parsePolygonMode(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce94c4() -> ! {
+    todo!("0xce94c4 Ogre::parsePolygonMode(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce966c — __ZN4Ogre28parsePolygonModeOverrideableERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parsePolygonModeOverrideable(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce966c() -> ! {
+    todo!("0xce966c Ogre::parsePolygonModeOverrideable(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce9690 — __ZN4Ogre14parseFilteringERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, char, char, char, int, int, char, int, int, int, int)
+#[doc(alias = "Ogre::parseFiltering(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce9690() -> ! {
+    todo!("0xce9690 Ogre::parseFiltering(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xce9c18 — __ZN4Ogre12parseTextureERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, char, char, char, char, int, char, char, char, int, int, int, int)
+#[doc(alias = "Ogre::parseTexture(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xce9c18() -> ! {
+    todo!("0xce9c18 Ogre::parseTexture(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcea2e4 — __ZN4Ogre16parseBindingTypeERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseBindingType(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcea2e4() -> ! {
+    todo!("0xcea2e4 Ogre::parseBindingType(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcea568 — __ZN4Ogre16parseAnimTextureERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseAnimTexture(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcea568() -> ! {
+    todo!("0xcea568 Ogre::parseAnimTexture(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcea8c8 — __ZN4Ogre17parseCubicTextureERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseCubicTexture(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcea8c8() -> ! {
+    todo!("0xcea8c8 Ogre::parseCubicTexture(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xceaca4 — __ZN4Ogre13parseTexCoordERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseTexCoord(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xceaca4() -> ! {
+    todo!("0xceaca4 Ogre::parseTexCoord(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xceacbc — __ZN4Ogre18convTexAddressModeERKSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::convTexAddressMode(std::string const&,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xceacbc() -> ! {
+    todo!("0xceacbc Ogre::convTexAddressMode(std::string const&,Ogre::MaterialScriptContext &)")
+}
+// 0xceae54 — __ZN4Ogre19parseTexAddressModeERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseTexAddressMode(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xceae54() -> ! {
+    todo!("0xceae54 Ogre::parseTexAddressMode(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xceb1a0 — __ZN4Ogre20parseTexBorderColourERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseTexBorderColour(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xceb1a0() -> ! {
+    todo!("0xceb1a0 Ogre::parseTexBorderColour(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xceb4fc — __ZN4Ogre13parseColourOpERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseColourOp(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xceb4fc() -> ! {
+    todo!("0xceb4fc Ogre::parseColourOp(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xceb6cc — __ZN4Ogre19parseAlphaRejectionERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseAlphaRejection(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xceb6cc() -> ! {
+    todo!("0xceb6cc Ogre::parseAlphaRejection(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcebaa8 — __ZN4Ogre20parseAlphaToCoverageERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseAlphaToCoverage(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcebaa8() -> ! {
+    todo!("0xcebaa8 Ogre::parseAlphaToCoverage(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcebc2c — __ZN4Ogre23parseTransparentSortingERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseTransparentSorting(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcebc2c() -> ! {
+    todo!("0xcebc2c Ogre::parseTransparentSorting(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcec348 — __ZN4Ogre15parseColourOpExERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseColourOpEx(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcec348() -> ! {
+    todo!("0xcec348 Ogre::parseColourOpEx(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcecf28 — __ZN4Ogre21parseColourOpFallbackERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseColourOpFallback(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcecf28() -> ! {
+    todo!("0xcecf28 Ogre::parseColourOpFallback(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xced384 — __ZN4Ogre14parseAlphaOpExERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseAlphaOpEx(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xced384() -> ! {
+    todo!("0xced384 Ogre::parseAlphaOpEx(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcede50 — __ZN4Ogre11parseEnvMapERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseEnvMap(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcede50() -> ! {
+    todo!("0xcede50 Ogre::parseEnvMap(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcee048 — __ZN4Ogre11parseScrollERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseScroll(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcee048() -> ! {
+    todo!("0xcee048 Ogre::parseScroll(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcee354 — __ZN4Ogre15parseScrollAnimERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseScrollAnim(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcee354() -> ! {
+    todo!("0xcee354 Ogre::parseScrollAnim(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcee660 — __ZN4Ogre11parseRotateERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseRotate(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcee660() -> ! {
+    todo!("0xcee660 Ogre::parseRotate(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcee684 — __ZN4Ogre15parseRotateAnimERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseRotateAnim(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcee684() -> ! {
+    todo!("0xcee684 Ogre::parseRotateAnim(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcee69c — __ZN4Ogre10parseScaleERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseScale(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcee69c() -> ! {
+    todo!("0xcee69c Ogre::parseScale(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcee9a8 — __ZN4Ogre14parseWaveXformERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseWaveXform(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcee9a8() -> ! {
+    todo!("0xcee9a8 Ogre::parseWaveXform(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xceef54 — __ZN4Ogre14parseTransformERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseTransform(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xceef54() -> ! {
+    todo!("0xceef54 Ogre::parseTransform(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcef3e4 — __ZN4Ogre14parseDepthBiasERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseDepthBias(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcef3e4() -> ! {
+    todo!("0xcef3e4 Ogre::parseDepthBias(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcef640 — __ZN4Ogre23parseIterationDepthBiasERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseIterationDepthBias(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcef640() -> ! {
+    todo!("0xcef640 Ogre::parseIterationDepthBias(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcef874 — __ZN4Ogre15parseAnisotropyERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseAnisotropy(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcef874() -> ! {
+    todo!("0xcef874 Ogre::parseAnisotropy(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcef88c — __ZN4Ogre17parseTextureAliasERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(std::string *)
+#[doc(alias = "Ogre::parseTextureAlias(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcef88c() -> ! {
+    todo!("0xcef88c Ogre::parseTextureAlias(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcef8a0 — __ZN4Ogre15parseMipmapBiasERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseMipmapBias(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcef8a0() -> ! {
+    todo!("0xcef8a0 Ogre::parseMipmapBias(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcef8b4 — __ZN4Ogre16parseContentTypeERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseContentType(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcef8b4() -> ! {
+    todo!("0xcef8b4 Ogre::parseContentType(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcefe8c — __ZN4Ogre22parseIlluminationStageERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseIlluminationStage(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcefe8c() -> ! {
+    todo!("0xcefe8c Ogre::parseIlluminationStage(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf0020 — __ZN4Ogre14parseLodValuesERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, char, char, int, int, int, int)
+#[doc(alias = "Ogre::parseLodValues(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf0020() -> ! {
+    todo!("0xcf0020 Ogre::parseLodValues(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf02d8 — __ZN4Ogre13parseLodIndexERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseLodIndex(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf02d8() -> ! {
+    todo!("0xcf02d8 Ogre::parseLodIndex(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf02f0 — __ZN4Ogre11parseSchemeERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseScheme(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf02f0() -> ! {
+    todo!("0xcf02f0 Ogre::parseScheme(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf0304 — __ZN4Ogre18parseGPUVendorRuleERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseGPUVendorRule(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf0304() -> ! {
+    todo!("0xcf0304 Ogre::parseGPUVendorRule(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf08d0 — __ZN4Ogre18parseGPUDeviceRuleERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseGPUDeviceRule(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf08d0() -> ! {
+    todo!("0xcf08d0 Ogre::parseGPUDeviceRule(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf0d04 — __ZN4Ogre25parseShadowCasterMaterialERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(std::string *)
+#[doc(alias = "Ogre::parseShadowCasterMaterial(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf0d04() -> ! {
+    todo!("0xcf0d04 Ogre::parseShadowCasterMaterial(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf0d18 — __ZN4Ogre27parseShadowReceiverMaterialERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(std::string *)
+#[doc(alias = "Ogre::parseShadowReceiverMaterial(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf0d18() -> ! {
+    todo!("0xcf0d18 Ogre::parseShadowReceiverMaterial(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf0d2c — __ZN4Ogre20parseSetTextureAliasERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseSetTextureAlias(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf0d2c() -> ! {
+    todo!("0xcf0d2c Ogre::parseSetTextureAlias(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf100c — __ZN4Ogre25processManualProgramParamEbSsRSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERNS_21MaterialScriptContextEmRKSs
+// type: int __fastcall(int, int, int, int, unsigned int, std::string *)
+#[doc(alias = "Ogre::processManualProgramParam(bool,std::string,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &,Ogre::MaterialScriptContext &,unsigned long,std::string const&)")]
+pub fn stub_0xcf100c() -> ! {
+    todo!("0xcf100c Ogre::processManualProgramParam(bool,std::string,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &,Ogre::MaterialScriptContext &,unsigned long,std::string const&)")
+}
+// 0xcf1d14 — __ZN4Ogre23processAutoProgramParamEbRKSsRSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERNS_21MaterialScriptContextEmS1_
+#[doc(alias = "Ogre::processAutoProgramParam(bool,std::string const&,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &,Ogre::MaterialScriptContext &,unsigned long,std::string const&)")]
+pub fn stub_0xcf1d14() -> ! {
+    todo!("0xcf1d14 Ogre::processAutoProgramParam(bool,std::string const&,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &,Ogre::MaterialScriptContext &,unsigned long,std::string const&)")
+}
+// 0xcf25d0 — __ZN4Ogre17parseParamIndexedERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseParamIndexed(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf25d0() -> ! {
+    todo!("0xcf25d0 Ogre::parseParamIndexed(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf2980 — __ZN4Ogre21parseParamIndexedAutoERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseParamIndexedAuto(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf2980() -> ! {
+    todo!("0xcf2980 Ogre::parseParamIndexedAuto(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf2d34 — __ZN4Ogre15parseParamNamedERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseParamNamed(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf2d34() -> ! {
+    todo!("0xcf2d34 Ogre::parseParamNamed(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf3244 — __ZN4Ogre19parseParamNamedAutoERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseParamNamedAuto(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf3244() -> ! {
+    todo!("0xcf3244 Ogre::parseParamNamedAuto(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf3754 — __ZN4Ogre13parseMaterialERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseMaterial(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf3754() -> ! {
+    todo!("0xcf3754 Ogre::parseMaterial(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf4060 — __ZN4Ogre14parseTechniqueERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseTechnique(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf4060() -> ! {
+    todo!("0xcf4060 Ogre::parseTechnique(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf40f4 — __ZN4Ogre9parsePassERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parsePass(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf40f4() -> ! {
+    todo!("0xcf40f4 Ogre::parsePass(std::string &,Ogre::MaterialScriptContext &)")
 }
