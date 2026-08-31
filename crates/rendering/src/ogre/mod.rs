@@ -20916,3 +20916,703 @@ pub fn stub_bfefcc() -> ! {
 pub fn stub_bfefd0() -> ! {
     todo!("0xbfefd0 Ogre::RBXSSAO::~RBXSSAO()")
 }
+// 0xbff164 — __ZN4Ogre7RBXSSAO12setSSAOLevelEN3RBX9SSAOLevelE
+#[doc(alias = "Ogre::RBXSSAO::setSSAOLevel(RBX::SSAOLevel)")]
+// was: Ogre::RBXSSAO::setSSAOLevel(RBX::SSAOLevel)
+pub fn stub_bff164() -> ! {
+    todo!("0xbff164 Ogre::RBXSSAO::setSSAOLevel(RBX::SSAOLevel)")
+}
+
+// 0xbff518 — __ZN4Ogre7RBXSSAO20destroyLostResourcesEv
+#[doc(alias = "Ogre::RBXSSAO::destroyLostResources(void)")]
+// was: Ogre::RBXSSAO::destroyLostResources(void)
+pub fn stub_bff518() -> ! {
+    todo!("0xbff518 Ogre::RBXSSAO::destroyLostResources(void)")
+}
+
+// 0xbff598 — __ZN4Ogre7RBXSSAO19createLostResourcesEv
+#[doc(alias = "Ogre::RBXSSAO::createLostResources(void)")]
+// was: Ogre::RBXSSAO::createLostResources(void)
+pub fn stub_bff598() -> ! {
+    todo!("0xbff598 Ogre::RBXSSAO::createLostResources(void)")
+}
+
+// 0xc00380 — __ZN4Ogre7RBXSSAO15createSSAONoiseEv
+#[doc(alias = "Ogre::RBXSSAO::createSSAONoise(void)")]
+// was: Ogre::RBXSSAO::createSSAONoise(void)
+pub fn stub_c00380() -> ! {
+    todo!("0xc00380 Ogre::RBXSSAO::createSSAONoise(void)")
+}
+
+// 0xc0094c — __ZN4Ogre7RBXSSAO16onDeviceRestoredEv
+#[doc(alias = "Ogre::RBXSSAO::onDeviceRestored(void)")]
+// was: Ogre::RBXSSAO::onDeviceRestored(void)
+pub fn stub_c0094c() -> ! {
+    todo!("0xc0094c Ogre::RBXSSAO::onDeviceRestored(void)")
+}
+
+// 0xc00974 — __ZN4Ogre7RBXSSAO13renderComputeEv
+#[doc(alias = "Ogre::RBXSSAO::renderCompute(void)")]
+// was: Ogre::RBXSSAO::renderCompute(void)
+pub fn stub_c00974() -> ! {
+    todo!("0xc00974 Ogre::RBXSSAO::renderCompute(void)")
+}
+
+// 0xc01f6c — __ZN4Ogre7RBXSSAO20renderFullScreenQuadERKNS_11MaterialPtrE
+#[doc(alias = "Ogre::RBXSSAO::renderFullScreenQuad(Ogre::MaterialPtr const&)")]
+// was: Ogre::RBXSSAO::renderFullScreenQuad(Ogre::MaterialPtr const&)
+pub fn stub_c01f6c() -> ! {
+    todo!("0xc01f6c Ogre::RBXSSAO::renderFullScreenQuad(Ogre::MaterialPtr const&)")
+}
+
+// 0xc01fc8 — __ZN4Ogre7RBXSSAO14renderCompositEv
+#[doc(alias = "Ogre::RBXSSAO::renderComposit(void)")]
+// was: Ogre::RBXSSAO::renderComposit(void)
+pub fn stub_c01fc8() -> ! {
+    todo!("0xc01fc8 Ogre::RBXSSAO::renderComposit(void)")
+}
+
+// 0xc02d80 — __ZN19ResourceGroupHelper31UpdateMaterialRenderableVisitor5visitEPN4Ogre10RenderableEtbPNS1_3AnyE
+#[doc(alias = "ResourceGroupHelper::UpdateMaterialRenderableVisitor::visit(Ogre::Renderable *,unsigned short,bool,Ogre::Any *)")]
+// was: ResourceGroupHelper::UpdateMaterialRenderableVisitor::visit(Ogre::Renderable *,unsigned short,bool,Ogre::Any *)
+pub fn stub_c02d80() -> ! {
+    todo!("0xc02d80 ResourceGroupHelper::UpdateMaterialRenderableVisitor::visit(Ogre::Renderable *,unsigned short,bool,Ogre::Any *)")
+}
+
+// 0xc036ac — __ZN19ResourceGroupHelper30ResourceGroupHelperLogListener13messageLoggedERKSsN4Ogre15LogMessageLevelEbS2_Rb
+#[doc(alias = "ResourceGroupHelper::ResourceGroupHelperLogListener::messageLogged(std::string const&,Ogre::LogMessageLevel,bool,std::string const&,bool &)")]
+// was: ResourceGroupHelper::ResourceGroupHelperLogListener::messageLogged(std::string const&,Ogre::LogMessageLevel,bool,std::string const&,bool &)
+pub fn stub_c036ac() -> ! {
+    todo!("0xc036ac ResourceGroupHelper::ResourceGroupHelperLogListener::messageLogged(std::string const&,Ogre::LogMessageLevel,bool,std::string const&,bool &)")
+}
+
+// 0xc03db8 — __ZL28updateMaterialsOnRenderNodesPKN4Ogre9SceneNodeE
+#[doc(alias = "updateMaterialsOnRenderNodes(Ogre::SceneNode const*)")]
+// was: updateMaterialsOnRenderNodes(Ogre::SceneNode const*)
+pub fn stub_c03db8() -> ! {
+    todo!("0xc03db8 updateMaterialsOnRenderNodes(Ogre::SceneNode const*)")
+}
+
+// 0xc04658 — __ZN19ResourceGroupHelper31visitRecursivelyRenderablesFromEPN4Ogre16OverlayContainerERNS0_10Renderable7VisitorEb
+#[doc(alias = "ResourceGroupHelper::visitRecursivelyRenderablesFrom(Ogre::OverlayContainer *,Ogre::Renderable::Visitor &,bool)")]
+// was: ResourceGroupHelper::visitRecursivelyRenderablesFrom(Ogre::OverlayContainer *,Ogre::Renderable::Visitor &,bool)
+pub fn stub_c04658() -> ! {
+    todo!("0xc04658 ResourceGroupHelper::visitRecursivelyRenderablesFrom(Ogre::OverlayContainer *,Ogre::Renderable::Visitor &,bool)")
+}
+
+// 0xc058d4 — __ZN3RBX17MegaClusterLegacyC1EPN4Ogre15RbxSceneManagerE
+#[doc(alias = "RBX::MegaClusterLegacy::MegaClusterLegacy(Ogre::RbxSceneManager *)")]
+// was: RBX::MegaClusterLegacy::MegaClusterLegacy(Ogre::RbxSceneManager *)
+pub fn stub_c058d4() -> ! {
+    todo!("0xc058d4 RBX::MegaClusterLegacy::MegaClusterLegacy(Ogre::RbxSceneManager *)")
+}
+
+// 0xc058d8 — __ZN3RBX17MegaClusterLegacyC2EPN4Ogre15RbxSceneManagerE
+#[doc(alias = "RBX::MegaClusterLegacy::MegaClusterLegacy(Ogre::RbxSceneManager *)")]
+// was: RBX::MegaClusterLegacy::MegaClusterLegacy(Ogre::RbxSceneManager *)
+pub fn stub_c058d8() -> ! {
+    todo!("0xc058d8 RBX::MegaClusterLegacy::MegaClusterLegacy(Ogre::RbxSceneManager *)")
+}
+
+// 0xc06a98 — __ZN3RBX10outputFaceEPNS_10MEGAVERTEXERKN3G3D7Vector3ERKNS_12OFFSETINFOV2ERKNS_5Voxel13BlockAxisFaceEPKNS2_7Vector2ESF_jjh
+#[doc(alias = "RBX::outputFace(RBX::MEGAVERTEX *,G3D::Vector3 const&,RBX::OFFSETINFOV2 const&,RBX::Voxel::BlockAxisFace const&,G3D::Vector2 const*,G3D::Vector2 const*,unsigned int,unsigned int,unsigned char)")]
+// was: RBX::outputFace(RBX::MEGAVERTEX *,G3D::Vector3 const&,RBX::OFFSETINFOV2 const&,RBX::Voxel::BlockAxisFace const&,G3D::Vector2 const*,G3D::Vector2 const*,unsigned int,unsigned int,unsigned char)
+pub fn stub_c06a98() -> ! {
+    todo!("0xc06a98 RBX::outputFace(RBX::MEGAVERTEX *,G3D::Vector3 const&,RBX::OFFSETINFOV2 const&,RBX::Voxel::BlockAxisFace const&,G3D::Vector2 const*,G3D::Vector2 const*,unsigned int,unsigned int,unsigned char)")
+}
+
+// 0xc06ea8 — __ZN3RBX17MegaClusterLegacy26updateChunkCoordinateFrameEPN4Ogre20RbxCullableSceneNodeERKNS_13SpatialRegion2IdE
+#[doc(alias = "RBX::MegaClusterLegacy::updateChunkCoordinateFrame(Ogre::RbxCullableSceneNode *,RBX::SpatialRegion::Id const&)")]
+// was: RBX::MegaClusterLegacy::updateChunkCoordinateFrame(Ogre::RbxCullableSceneNode *,RBX::SpatialRegion::Id const&)
+pub fn stub_c06ea8() -> ! {
+    todo!("0xc06ea8 RBX::MegaClusterLegacy::updateChunkCoordinateFrame(Ogre::RbxCullableSceneNode *,RBX::SpatialRegion::Id const&)")
+}
+
+// 0xc0727c — __ZN3RBX11MegaClusterC1EPN4Ogre15RbxSceneManagerERKN5boost10shared_ptrINS_12PartInstanceEEE
+#[doc(alias = "RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)")]
+// was: RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)
+pub fn stub_c0727c() -> ! {
+    todo!("0xc0727c RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)")
+}
+
+// 0xc07280 — __ZN3RBX11MegaClusterC2EPN4Ogre15RbxSceneManagerERKN5boost10shared_ptrINS_12PartInstanceEEE
+#[doc(alias = "RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)")]
+// was: RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)
+pub fn stub_c07280() -> ! {
+    todo!("0xc07280 RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)")
+}
+
+// 0xc0923c — __ZN3RBX11MegaCluster14createGeometryEPNS_10RenderNodeERKN4Ogre29HardwareVertexBufferSharedPtrEPKch
+#[doc(alias = "RBX::MegaCluster::createGeometry(RBX::RenderNode *,Ogre::HardwareVertexBufferSharedPtr const&,char const*,unsigned char)")]
+// was: RBX::MegaCluster::createGeometry(RBX::RenderNode *,Ogre::HardwareVertexBufferSharedPtr const&,char const*,unsigned char)
+pub fn stub_c0923c() -> ! {
+    todo!("0xc0923c RBX::MegaCluster::createGeometry(RBX::RenderNode *,Ogre::HardwareVertexBufferSharedPtr const&,char const*,unsigned char)")
+}
+
+// 0xc0ba10 — __ZNK3RBX5Voxel8AreaCopyILj36ELj19ELj34EE5Chunk17fillLocalAreaInfoERKN3G3D12Vector3int16ERKNS0_5Water17RelevantNeighborsEPNS8_13LocalAreaInfoE
+#[doc(alias = "RBX::Voxel::AreaCopy<36u,19u,34u>::Chunk::fillLocalAreaInfo(G3D::Vector3int16 const&,RBX::Voxel::Water::RelevantNeighbors const&,RBX::Voxel::Water::LocalAreaInfo *)const")]
+// was: RBX::Voxel::AreaCopy<36u,19u,34u>::Chunk::fillLocalAreaInfo(G3D::Vector3int16 const&,RBX::Voxel::Water::RelevantNeighbors const&,RBX::Voxel::Water::LocalAreaInfo *)const
+pub fn stub_c0ba10() -> ! {
+    todo!("0xc0ba10 RBX::Voxel::AreaCopy<36u,19u,34u>::Chunk::fillLocalAreaInfo(G3D::Vector3int16 const&,RBX::Voxel::Water::RelevantNeighbors const&,RBX::Voxel::Water::LocalAreaInfo *)const")
+}
+
+// 0xc0d190 — __ZN3RBX20SolidTerrainRendererINS_5Voxel8AreaCopyILj36ELj19ELj34EEEE12renderHelperENS1_4CellENS1_12CellMaterialERKN3G3D12Vector3int16EbRKNS7_7Vector3ENS1_13FaceDirectionEh
+#[doc(alias = "RBX::SolidTerrainRenderer<RBX::Voxel::AreaCopy<36u,19u,34u>>::renderHelper(RBX::Voxel::Cell,RBX::Voxel::CellMaterial,G3D::Vector3int16 const&,bool,G3D::Vector3 const&,RBX::Voxel::FaceDirection,unsigned char)")]
+// was: RBX::SolidTerrainRenderer<RBX::Voxel::AreaCopy<36u,19u,34u>>::renderHelper(RBX::Voxel::Cell,RBX::Voxel::CellMaterial,G3D::Vector3int16 const&,bool,G3D::Vector3 const&,RBX::Voxel::FaceDirection,unsigned char)
+pub fn stub_c0d190() -> ! {
+    todo!("0xc0d190 RBX::SolidTerrainRenderer<RBX::Voxel::AreaCopy<36u,19u,34u>>::renderHelper(RBX::Voxel::Cell,RBX::Voxel::CellMaterial,G3D::Vector3int16 const&,bool,G3D::Vector3 const&,RBX::Voxel::FaceDirection,unsigned char)")
+}
+
+// 0xc1188c — __ZN3RBX20SolidTerrainRendererINS_19MegaClusterInstanceEE12renderHelperENS_5Voxel4CellENS3_12CellMaterialERKN3G3D12Vector3int16EbRKNS6_7Vector3ENS3_13FaceDirectionEh
+#[doc(alias = "RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::renderHelper(RBX::Voxel::Cell,RBX::Voxel::CellMaterial,G3D::Vector3int16 const&,bool,G3D::Vector3 const&,RBX::Voxel::FaceDirection,unsigned char)")]
+// was: RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::renderHelper(RBX::Voxel::Cell,RBX::Voxel::CellMaterial,G3D::Vector3int16 const&,bool,G3D::Vector3 const&,RBX::Voxel::FaceDirection,unsigned char)
+pub fn stub_c1188c() -> ! {
+    todo!("0xc1188c RBX::SolidTerrainRenderer<RBX::MegaClusterInstance>::renderHelper(RBX::Voxel::Cell,RBX::Voxel::CellMaterial,G3D::Vector3int16 const&,bool,G3D::Vector3 const&,RBX::Voxel::FaceDirection,unsigned char)")
+}
+
+// 0xc162c8 — __ZN3RBX20SolidTerrainRendererINS_17MegaClusterLegacy16VoxelGridOverlayEE12renderHelperENS_5Voxel4CellENS4_12CellMaterialERKN3G3D12Vector3int16EbRKNS7_7Vector3ENS4_13FaceDirectionEh
+#[doc(alias = "RBX::SolidTerrainRenderer<RBX::MegaClusterLegacy::VoxelGridOverlay>::renderHelper(RBX::Voxel::Cell,RBX::Voxel::CellMaterial,G3D::Vector3int16 const&,bool,G3D::Vector3 const&,RBX::Voxel::FaceDirection,unsigned char)")]
+// was: RBX::SolidTerrainRenderer<RBX::MegaClusterLegacy::VoxelGridOverlay>::renderHelper(RBX::Voxel::Cell,RBX::Voxel::CellMaterial,G3D::Vector3int16 const&,bool,G3D::Vector3 const&,RBX::Voxel::FaceDirection,unsigned char)
+pub fn stub_c162c8() -> ! {
+    todo!("0xc162c8 RBX::SolidTerrainRenderer<RBX::MegaClusterLegacy::VoxelGridOverlay>::renderHelper(RBX::Voxel::Cell,RBX::Voxel::CellMaterial,G3D::Vector3int16 const&,bool,G3D::Vector3 const&,RBX::Voxel::FaceDirection,unsigned char)")
+}
+
+// 0xc184dc — __ZN3RBX5Voxel8AreaCopyILj36ELj19ELj34EE5Chunk8loadDataINS0_4GridEEEvPKT_RKN3G3D12Vector3int16E
+#[doc(alias = "void RBX::Voxel::AreaCopy<36u,19u,34u>::Chunk::loadData<RBX::Voxel::Grid>(RBX::Voxel::Grid const*,G3D::Vector3int16 const&)")]
+// was: void RBX::Voxel::AreaCopy<36u,19u,34u>::Chunk::loadData<RBX::Voxel::Grid>(RBX::Voxel::Grid const*,G3D::Vector3int16 const&)
+pub fn stub_c184dc() -> ! {
+    todo!("0xc184dc void RBX::Voxel::AreaCopy<36u,19u,34u>::Chunk::loadData<RBX::Voxel::Grid>(RBX::Voxel::Grid const*,G3D::Vector3int16 const&)")
+}
+
+// 0xc188c4 — __ZN3RBX5Voxel8AreaCopyILj36ELj19ELj34EE5Chunk9fillEmptyERKN3G3D12Vector3int16ES7_
+#[doc(alias = "RBX::Voxel::AreaCopy<36u,19u,34u>::Chunk::fillEmpty(G3D::Vector3int16 const&,G3D::Vector3int16 const&)")]
+// was: RBX::Voxel::AreaCopy<36u,19u,34u>::Chunk::fillEmpty(G3D::Vector3int16 const&,G3D::Vector3int16 const&)
+pub fn stub_c188c4() -> ! {
+    todo!("0xc188c4 RBX::Voxel::AreaCopy<36u,19u,34u>::Chunk::fillEmpty(G3D::Vector3int16 const&,G3D::Vector3int16 const&)")
+}
+
+// 0xc18d18 — __ZN3RBX26MaterialTextureCoordinatesC2ERKN3G3D12Vector2int16ES4_S4_fb
+#[doc(alias = "RBX::MaterialTextureCoordinates::MaterialTextureCoordinates(G3D::Vector2int16 const&,G3D::Vector2int16 const&,G3D::Vector2int16 const&,float,bool)")]
+// was: RBX::MaterialTextureCoordinates::MaterialTextureCoordinates(G3D::Vector2int16 const&,G3D::Vector2int16 const&,G3D::Vector2int16 const&,float,bool)
+pub fn stub_c18d18() -> ! {
+    todo!("0xc18d18 RBX::MaterialTextureCoordinates::MaterialTextureCoordinates(G3D::Vector2int16 const&,G3D::Vector2int16 const&,G3D::Vector2int16 const&,float,bool)")
+}
+
+// 0xc1a250 — __ZN3RBX20getLightContributionERKN3G3D7Vector3Ei
+#[doc(alias = "RBX::getLightContribution(G3D::Vector3 const&,int)")]
+// was: RBX::getLightContribution(G3D::Vector3 const&,int)
+pub fn stub_c1a250() -> ! {
+    todo!("0xc1a250 RBX::getLightContribution(G3D::Vector3 const&,int)")
+}
+
+// 0xc1a978 — __ZN3RBX9LightGrid21registerDummyTexturesEPN4Ogre12VisualEngineE
+#[doc(alias = "RBX::LightGrid::registerDummyTextures(Ogre::VisualEngine *)")]
+// was: RBX::LightGrid::registerDummyTextures(Ogre::VisualEngine *)
+pub fn stub_c1a978() -> ! {
+    todo!("0xc1a978 RBX::LightGrid::registerDummyTextures(Ogre::VisualEngine *)")
+}
+
+// 0xc1acdc — __ZN3RBX9LightGrid6createEPN4Ogre12VisualEngineERKNS_12Vector3int32Eb
+#[doc(alias = "RBX::LightGrid::create(Ogre::VisualEngine *,RBX::Vector3int32 const&,bool)")]
+// was: RBX::LightGrid::create(Ogre::VisualEngine *,RBX::Vector3int32 const&,bool)
+pub fn stub_c1acdc() -> ! {
+    todo!("0xc1acdc RBX::LightGrid::create(Ogre::VisualEngine *,RBX::Vector3int32 const&,bool)")
+}
+
+// 0xc1b814 — __ZN3RBX9LightGridC2EPN4Ogre12VisualEngineERKNS1_10TexturePtrERKNS_12Vector3int32E
+#[doc(alias = "RBX::LightGrid::LightGrid(Ogre::VisualEngine *,Ogre::TexturePtr const&,RBX::Vector3int32 const&)")]
+// was: RBX::LightGrid::LightGrid(Ogre::VisualEngine *,Ogre::TexturePtr const&,RBX::Vector3int32 const&)
+pub fn stub_c1b814() -> ! {
+    todo!("0xc1b814 RBX::LightGrid::LightGrid(Ogre::VisualEngine *,Ogre::TexturePtr const&,RBX::Vector3int32 const&)")
+}
+
+// 0xc1cdec — __ZN3RBX9LightGrid22occupancyFillBlockDFAAERNS_14LightGridChunkERKNS_7ExtentsERKN3G3D7Vector3ERKNS6_15CoordinateFrameEf
+#[doc(alias = "RBX::LightGrid::occupancyFillBlockDFAA(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float)")]
+// was: RBX::LightGrid::occupancyFillBlockDFAA(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float)
+pub fn stub_c1cdec() -> ! {
+    todo!("0xc1cdec RBX::LightGrid::occupancyFillBlockDFAA(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float)")
+}
+
+// 0xc1d3e4 — __ZN3RBX9LightGrid20occupancyFillBlockDFERNS_14LightGridChunkERKNS_7ExtentsERKN3G3D7Vector3ERKNS6_15CoordinateFrameEf
+#[doc(alias = "RBX::LightGrid::occupancyFillBlockDF(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float)")]
+// was: RBX::LightGrid::occupancyFillBlockDF(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float)
+pub fn stub_c1d3e4() -> ! {
+    todo!("0xc1d3e4 RBX::LightGrid::occupancyFillBlockDF(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float)")
+}
+
+// 0xc1d970 — __ZN3RBX9LightGrid24lightingUpdateChunkLocalERNS_14LightGridChunkEPN4Ogre14GfxSpatialHashE
+#[doc(alias = "RBX::LightGrid::lightingUpdateChunkLocal(RBX::LightGridChunk &,Ogre::GfxSpatialHash *)")]
+// was: RBX::LightGrid::lightingUpdateChunkLocal(RBX::LightGridChunk &,Ogre::GfxSpatialHash *)
+pub fn stub_c1d970() -> ! {
+    todo!("0xc1d970 RBX::LightGrid::lightingUpdateChunkLocal(RBX::LightGridChunk &,Ogre::GfxSpatialHash *)")
+}
+
+// 0xc1dea0 — __ZN3RBX9LightGrid17lightingGetLightsERKNS_7ExtentsEPN4Ogre14GfxSpatialHashE
+#[doc(alias = "RBX::LightGrid::lightingGetLights(RBX::Extents const&,Ogre::GfxSpatialHash *)")]
+// was: RBX::LightGrid::lightingGetLights(RBX::Extents const&,Ogre::GfxSpatialHash *)
+pub fn stub_c1dea0() -> ! {
+    todo!("0xc1dea0 RBX::LightGrid::lightingGetLights(RBX::Extents const&,Ogre::GfxSpatialHash *)")
+}
+
+// 0xc1eb68 — __ZN3RBX9LightGrid25lightingUpdateDirectionalERNS_14LightGridChunkERKN3G3D7Vector3E
+#[doc(alias = "RBX::LightGrid::lightingUpdateDirectional(RBX::LightGridChunk &,G3D::Vector3 const&)")]
+// was: RBX::LightGrid::lightingUpdateDirectional(RBX::LightGridChunk &,G3D::Vector3 const&)
+pub fn stub_c1eb68() -> ! {
+    todo!("0xc1eb68 RBX::LightGrid::lightingUpdateDirectional(RBX::LightGridChunk &,G3D::Vector3 const&)")
+}
+
+// 0xc1fde4 — __ZN3RBX9LightGrid15invalidatePointERKN3G3D7Vector3Ej
+#[doc(alias = "RBX::LightGrid::invalidatePoint(G3D::Vector3 const&,unsigned int)")]
+// was: RBX::LightGrid::invalidatePoint(G3D::Vector3 const&,unsigned int)
+pub fn stub_c1fde4() -> ! {
+    todo!("0xc1fde4 RBX::LightGrid::invalidatePoint(G3D::Vector3 const&,unsigned int)")
+}
+
+// 0xc1fe84 — __ZN3RBX9LightGrid16updateGridCenterERKN3G3D7Vector3Eb
+#[doc(alias = "RBX::LightGrid::updateGridCenter(G3D::Vector3 const&,bool)")]
+// was: RBX::LightGrid::updateGridCenter(G3D::Vector3 const&,bool)
+pub fn stub_c1fe84() -> ! {
+    todo!("0xc1fe84 RBX::LightGrid::updateGridCenter(G3D::Vector3 const&,bool)")
+}
+
+// 0xc20528 — __ZN3RBX9LightGrid26updateAgePriorityForChunksERKN3G3D7Vector3E
+#[doc(alias = "RBX::LightGrid::updateAgePriorityForChunks(G3D::Vector3 const&)")]
+// was: RBX::LightGrid::updateAgePriorityForChunks(G3D::Vector3 const&)
+pub fn stub_c20528() -> ! {
+    todo!("0xc20528 RBX::LightGrid::updateAgePriorityForChunks(G3D::Vector3 const&)")
+}
+
+// 0xc20648 — __ZN3RBX9LightGrid17updateBorderColorERKN3G3D7Vector3ERKNS_7FrustumE
+#[doc(alias = "RBX::LightGrid::updateBorderColor(G3D::Vector3 const&,RBX::Frustum const&)")]
+// was: RBX::LightGrid::updateBorderColor(G3D::Vector3 const&,RBX::Frustum const&)
+pub fn stub_c20648() -> ! {
+    todo!("0xc20648 RBX::LightGrid::updateBorderColor(G3D::Vector3 const&,RBX::Frustum const&)")
+}
+
+// 0xc209e8 — __ZN3RBX9LightGrid19computeAverageColorERKN3G3D7Vector3E
+#[doc(alias = "RBX::LightGrid::computeAverageColor(G3D::Vector3 const&)")]
+// was: RBX::LightGrid::computeAverageColor(G3D::Vector3 const&)
+pub fn stub_c209e8() -> ! {
+    todo!("0xc209e8 RBX::LightGrid::computeAverageColor(G3D::Vector3 const&)")
+}
+
+// 0xc20e68 — __ZN3RBX9LightGrid17setLightDirectionERKN3G3D7Vector3E
+#[doc(alias = "RBX::LightGrid::setLightDirection(G3D::Vector3 const&)")]
+// was: RBX::LightGrid::setLightDirection(G3D::Vector3 const&)
+pub fn stub_c20e68() -> ! {
+    todo!("0xc20e68 RBX::LightGrid::setLightDirection(G3D::Vector3 const&)")
+}
+
+// 0xc20fb0 — __ZN3RBX9LightGrid13setSkyAmbientERKN3G3D11Color3uint8E
+#[doc(alias = "RBX::LightGrid::setSkyAmbient(G3D::Color3uint8 const&)")]
+// was: RBX::LightGrid::setSkyAmbient(G3D::Color3uint8 const&)
+pub fn stub_c20fb0() -> ! {
+    todo!("0xc20fb0 RBX::LightGrid::setSkyAmbient(G3D::Color3uint8 const&)")
+}
+
+// 0xc216f8 — __ZN3RBX9LightGrid25lightingComputeShadowMaskERKNS_14LightGridChunkERKNS_12Vector3int32ES6_RKN3G3D7Vector3ERNS_14LightShadowMapE
+#[doc(alias = "RBX::LightGrid::lightingComputeShadowMask(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,RBX::LightShadowMap &)")]
+// was: RBX::LightGrid::lightingComputeShadowMask(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,RBX::LightShadowMap &)
+pub fn stub_c216f8() -> ! {
+    todo!("0xc216f8 RBX::LightGrid::lightingComputeShadowMask(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,RBX::LightShadowMap &)")
+}
+
+// 0xc21a74 — __ZN3RBX9LightGrid28lightingComputeShadowMaskXYZERKNS_14LightGridChunkERKNS_12Vector3int32ES6_S6_RKN3G3D7Vector3E
+#[doc(alias = "RBX::LightGrid::lightingComputeShadowMaskXYZ(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: RBX::LightGrid::lightingComputeShadowMaskXYZ(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c21a74() -> ! {
+    todo!("0xc21a74 RBX::LightGrid::lightingComputeShadowMaskXYZ(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc220d0 — __ZN3RBX9LightGrid24lightingCompositImplSIMDERKNS_14LightGridChunkEPhjjRKN3G3D11Color3uint8E
+#[doc(alias = "RBX::LightGrid::lightingCompositImplSIMD(RBX::LightGridChunk const&,unsigned char *,unsigned int,unsigned int,G3D::Color3uint8 const&)")]
+// was: RBX::LightGrid::lightingCompositImplSIMD(RBX::LightGridChunk const&,unsigned char *,unsigned int,unsigned int,G3D::Color3uint8 const&)
+pub fn stub_c220d0() -> ! {
+    todo!("0xc220d0 RBX::LightGrid::lightingCompositImplSIMD(RBX::LightGridChunk const&,unsigned char *,unsigned int,unsigned int,G3D::Color3uint8 const&)")
+}
+
+// 0xc22288 — __ZN3RBX9LightGrid20lightingCompositImplERKNS_14LightGridChunkEPhjjRKN3G3D11Color3uint8E
+#[doc(alias = "RBX::LightGrid::lightingCompositImpl(RBX::LightGridChunk const&,unsigned char *,unsigned int,unsigned int,G3D::Color3uint8 const&)")]
+// was: RBX::LightGrid::lightingCompositImpl(RBX::LightGridChunk const&,unsigned char *,unsigned int,unsigned int,G3D::Color3uint8 const&)
+pub fn stub_c22288() -> ! {
+    todo!("0xc22288 RBX::LightGrid::lightingCompositImpl(RBX::LightGridChunk const&,unsigned char *,unsigned int,unsigned int,G3D::Color3uint8 const&)")
+}
+
+// 0xc231d8 — __ZN3RBX9LightGrid13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE
+#[doc(alias = "RBX::LightGrid::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+// was: RBX::LightGrid::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)
+pub fn stub_c231d8() -> ! {
+    todo!("0xc231d8 RBX::LightGrid::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xc23458 — __ZN4Ogre10TexturePtrD1Ev
+#[doc(alias = "Ogre::TexturePtr::~TexturePtr()")]
+// was: Ogre::TexturePtr::~TexturePtr()
+pub fn stub_c23458() -> ! {
+    todo!("0xc23458 Ogre::TexturePtr::~TexturePtr()")
+}
+
+// 0xc24a3c — __ZN3RBX9LightGrid15occupancyFillDFINS_22SphereDistanceFunctionEEEvRNS_14LightGridChunkERKNS_7ExtentsERKN3G3D7Vector3ERKNS8_15CoordinateFrameEfRT_
+#[doc(alias = "void RBX::LightGrid::occupancyFillDF<RBX::SphereDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::SphereDistanceFunction &)")]
+// was: void RBX::LightGrid::occupancyFillDF<RBX::SphereDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::SphereDistanceFunction &)
+pub fn stub_c24a3c() -> ! {
+    todo!("0xc24a3c void RBX::LightGrid::occupancyFillDF<RBX::SphereDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::SphereDistanceFunction &)")
+}
+
+// 0xc24f80 — __ZN3RBX9LightGrid15occupancyFillDFINS_25EllipsoidDistanceFunctionEEEvRNS_14LightGridChunkERKNS_7ExtentsERKN3G3D7Vector3ERKNS8_15CoordinateFrameEfRT_
+#[doc(alias = "void RBX::LightGrid::occupancyFillDF<RBX::EllipsoidDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::EllipsoidDistanceFunction &)")]
+// was: void RBX::LightGrid::occupancyFillDF<RBX::EllipsoidDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::EllipsoidDistanceFunction &)
+pub fn stub_c24f80() -> ! {
+    todo!("0xc24f80 void RBX::LightGrid::occupancyFillDF<RBX::EllipsoidDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::EllipsoidDistanceFunction &)")
+}
+
+// 0xc25514 — __ZN3RBX9LightGrid15occupancyFillDFINS_25CylinderXDistanceFunctionEEEvRNS_14LightGridChunkERKNS_7ExtentsERKN3G3D7Vector3ERKNS8_15CoordinateFrameEfRT_
+#[doc(alias = "void RBX::LightGrid::occupancyFillDF<RBX::CylinderXDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::CylinderXDistanceFunction &)")]
+// was: void RBX::LightGrid::occupancyFillDF<RBX::CylinderXDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::CylinderXDistanceFunction &)
+pub fn stub_c25514() -> ! {
+    todo!("0xc25514 void RBX::LightGrid::occupancyFillDF<RBX::CylinderXDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::CylinderXDistanceFunction &)")
+}
+
+// 0xc25a64 — __ZN3RBX9LightGrid15occupancyFillDFINS_25CylinderYDistanceFunctionEEEvRNS_14LightGridChunkERKNS_7ExtentsERKN3G3D7Vector3ERKNS8_15CoordinateFrameEfRT_
+#[doc(alias = "void RBX::LightGrid::occupancyFillDF<RBX::CylinderYDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::CylinderYDistanceFunction &)")]
+// was: void RBX::LightGrid::occupancyFillDF<RBX::CylinderYDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::CylinderYDistanceFunction &)
+pub fn stub_c25a64() -> ! {
+    todo!("0xc25a64 void RBX::LightGrid::occupancyFillDF<RBX::CylinderYDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::CylinderYDistanceFunction &)")
+}
+
+// 0xc25fb4 — __ZN3RBX9LightGrid15occupancyFillDFINS_21WedgeDistanceFunctionEEEvRNS_14LightGridChunkERKNS_7ExtentsERKN3G3D7Vector3ERKNS8_15CoordinateFrameEfRT_
+#[doc(alias = "void RBX::LightGrid::occupancyFillDF<RBX::WedgeDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::WedgeDistanceFunction &)")]
+// was: void RBX::LightGrid::occupancyFillDF<RBX::WedgeDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::WedgeDistanceFunction &)
+pub fn stub_c25fb4() -> ! {
+    todo!("0xc25fb4 void RBX::LightGrid::occupancyFillDF<RBX::WedgeDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::WedgeDistanceFunction &)")
+}
+
+// 0xc26594 — __ZN3RBX9LightGrid15occupancyFillDFINS_27CornerWedgeDistanceFunctionEEEvRNS_14LightGridChunkERKNS_7ExtentsERKN3G3D7Vector3ERKNS8_15CoordinateFrameEfRT_
+#[doc(alias = "void RBX::LightGrid::occupancyFillDF<RBX::CornerWedgeDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::CornerWedgeDistanceFunction &)")]
+// was: void RBX::LightGrid::occupancyFillDF<RBX::CornerWedgeDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::CornerWedgeDistanceFunction &)
+pub fn stub_c26594() -> ! {
+    todo!("0xc26594 void RBX::LightGrid::occupancyFillDF<RBX::CornerWedgeDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::CornerWedgeDistanceFunction &)")
+}
+
+// 0xc26bb0 — __ZN3RBX9LightGrid15occupancyFillDFINS_21TorsoDistanceFunctionEEEvRNS_14LightGridChunkERKNS_7ExtentsERKN3G3D7Vector3ERKNS8_15CoordinateFrameEfRT_
+#[doc(alias = "void RBX::LightGrid::occupancyFillDF<RBX::TorsoDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::TorsoDistanceFunction &)")]
+// was: void RBX::LightGrid::occupancyFillDF<RBX::TorsoDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::TorsoDistanceFunction &)
+pub fn stub_c26bb0() -> ! {
+    todo!("0xc26bb0 void RBX::LightGrid::occupancyFillDF<RBX::TorsoDistanceFunction>(RBX::LightGridChunk &,RBX::Extents const&,G3D::Vector3 const&,G3D::CoordinateFrame const&,float,RBX::TorsoDistanceFunction &)")
+}
+
+// 0xc296f0 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE24getPrimitivesOverlappingINS_12DenseHashSetIPS2_N5boost4hashIS8_EESaIS8_EEEEEvRKNS_7ExtentsERT_
+#[doc(alias = "void RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::getPrimitivesOverlapping<RBX::DenseHashSet<Ogre::RbxCullableSceneNode*,boost::hash<Ogre::RbxCullableSceneNode*>,std::allocator<Ogre::RbxCullableSceneNode*>>>(RBX::Extents const&,RBX::DenseHashSet<Ogre::RbxCullableSceneNode*,boost::hash<Ogre::RbxCullableSceneNode*>,std::allocator<Ogre::RbxCullableSceneNode*>> &)")]
+// was: void RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::getPrimitivesOverlapping<RBX::DenseHashSet<Ogre::RbxCullableSceneNode*,boost::hash<Ogre::RbxCullableSceneNode*>,std::allocator<Ogre::RbxCullableSceneNode*>>>(RBX::Extents const&,RBX::DenseHashSet<Ogre::RbxCullableSceneNode*,boost::hash<Ogre::RbxCullableSceneNode*>,std::allocator<Ogre::RbxCullableSceneNode*>> &)
+pub fn stub_c296f0() -> ! {
+    todo!("0xc296f0 void RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::getPrimitivesOverlapping<RBX::DenseHashSet<Ogre::RbxCullableSceneNode*,boost::hash<Ogre::RbxCullableSceneNode*>,std::allocator<Ogre::RbxCullableSceneNode*>>>(RBX::Extents const&,RBX::DenseHashSet<Ogre::RbxCullableSceneNode*,boost::hash<Ogre::RbxCullableSceneNode*>,std::allocator<Ogre::RbxCullableSceneNode*>> &)")
+}
+
+// 0xc29a00 — __ZN3RBX9LightGrid35lightingUpdatePointLightScratchSIMDILb1EEEvRKNS_12Vector3int32ES4_RKN3G3D7Vector3EfRKNS5_11Color3uint8Ef
+#[doc(alias = "void RBX::LightGrid::lightingUpdatePointLightScratchSIMD<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")]
+// was: void RBX::LightGrid::lightingUpdatePointLightScratchSIMD<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)
+pub fn stub_c29a00() -> ! {
+    todo!("0xc29a00 void RBX::LightGrid::lightingUpdatePointLightScratchSIMD<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")
+}
+
+// 0xc29d28 — __ZN3RBX9LightGrid31lightingUpdatePointLightScratchILb1EEEvRKNS_12Vector3int32ES4_RKN3G3D7Vector3EfRKNS5_11Color3uint8Ef
+#[doc(alias = "void RBX::LightGrid::lightingUpdatePointLightScratch<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")]
+// was: void RBX::LightGrid::lightingUpdatePointLightScratch<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)
+pub fn stub_c29d28() -> ! {
+    todo!("0xc29d28 void RBX::LightGrid::lightingUpdatePointLightScratch<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")
+}
+
+// 0xc29f70 — __ZN3RBX9LightGrid35lightingUpdatePointLightScratchSIMDILb0EEEvRKNS_12Vector3int32ES4_RKN3G3D7Vector3EfRKNS5_11Color3uint8Ef
+#[doc(alias = "void RBX::LightGrid::lightingUpdatePointLightScratchSIMD<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")]
+// was: void RBX::LightGrid::lightingUpdatePointLightScratchSIMD<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)
+pub fn stub_c29f70() -> ! {
+    todo!("0xc29f70 void RBX::LightGrid::lightingUpdatePointLightScratchSIMD<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")
+}
+
+// 0xc2a218 — __ZN3RBX9LightGrid31lightingUpdatePointLightScratchILb0EEEvRKNS_12Vector3int32ES4_RKN3G3D7Vector3EfRKNS5_11Color3uint8Ef
+#[doc(alias = "void RBX::LightGrid::lightingUpdatePointLightScratch<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")]
+// was: void RBX::LightGrid::lightingUpdatePointLightScratch<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)
+pub fn stub_c2a218() -> ! {
+    todo!("0xc2a218 void RBX::LightGrid::lightingUpdatePointLightScratch<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")
+}
+
+// 0xc2a430 — __ZN3RBX9LightGrid34lightingUpdateSpotLightScratchSIMDILb1EEEvRKNS_12Vector3int32ES4_RKN3G3D7Vector3EfS8_fRKNS5_11Color3uint8Ef
+#[doc(alias = "void RBX::LightGrid::lightingUpdateSpotLightScratchSIMD<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")]
+// was: void RBX::LightGrid::lightingUpdateSpotLightScratchSIMD<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)
+pub fn stub_c2a430() -> ! {
+    todo!("0xc2a430 void RBX::LightGrid::lightingUpdateSpotLightScratchSIMD<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")
+}
+
+// 0xc2a8c8 — __ZN3RBX9LightGrid30lightingUpdateSpotLightScratchILb1EEEvRKNS_12Vector3int32ES4_RKN3G3D7Vector3EfS8_fRKNS5_11Color3uint8Ef
+#[doc(alias = "void RBX::LightGrid::lightingUpdateSpotLightScratch<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")]
+// was: void RBX::LightGrid::lightingUpdateSpotLightScratch<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)
+pub fn stub_c2a8c8() -> ! {
+    todo!("0xc2a8c8 void RBX::LightGrid::lightingUpdateSpotLightScratch<true>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")
+}
+
+// 0xc2ac10 — __ZN3RBX9LightGrid34lightingUpdateSpotLightScratchSIMDILb0EEEvRKNS_12Vector3int32ES4_RKN3G3D7Vector3EfS8_fRKNS5_11Color3uint8Ef
+#[doc(alias = "void RBX::LightGrid::lightingUpdateSpotLightScratchSIMD<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")]
+// was: void RBX::LightGrid::lightingUpdateSpotLightScratchSIMD<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)
+pub fn stub_c2ac10() -> ! {
+    todo!("0xc2ac10 void RBX::LightGrid::lightingUpdateSpotLightScratchSIMD<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")
+}
+
+// 0xc2b030 — __ZN3RBX9LightGrid30lightingUpdateSpotLightScratchILb0EEEvRKNS_12Vector3int32ES4_RKN3G3D7Vector3EfS8_fRKNS5_11Color3uint8Ef
+#[doc(alias = "void RBX::LightGrid::lightingUpdateSpotLightScratch<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")]
+// was: void RBX::LightGrid::lightingUpdateSpotLightScratch<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)
+pub fn stub_c2b030() -> ! {
+    todo!("0xc2b030 void RBX::LightGrid::lightingUpdateSpotLightScratch<false>(RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&,float,G3D::Vector3 const&,float,G3D::Color3uint8 const&,float)")
+}
+
+// 0xc2bea0 — __ZN3RBX9LightGrid27lightingComputeShadowMaskYZILb1EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskYZ<true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskYZ<true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2bea0() -> ! {
+    todo!("0xc2bea0 void RBX::LightGrid::lightingComputeShadowMaskYZ<true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2bf38 — __ZN3RBX9LightGrid27lightingComputeShadowMaskYZILb0EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskYZ<false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskYZ<false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2bf38() -> ! {
+    todo!("0xc2bf38 void RBX::LightGrid::lightingComputeShadowMaskYZ<false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2e150 — __ZN3RBX9LightGrid26lightingComputeShadowMaskZILb0ELb1EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskZ<false,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskZ<false,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2e150() -> ! {
+    todo!("0xc2e150 void RBX::LightGrid::lightingComputeShadowMaskZ<false,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2e1d8 — __ZN3RBX9LightGrid26lightingComputeShadowMaskZILb0ELb0EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskZ<false,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskZ<false,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2e1d8() -> ! {
+    todo!("0xc2e1d8 void RBX::LightGrid::lightingComputeShadowMaskZ<false,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2e260 — __ZN3RBX9LightGrid32lightingComputeShadowMaskImplLUTILb0ELb0ELb0EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,false,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,false,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2e260() -> ! {
+    todo!("0xc2e260 void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,false,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2e508 — __ZN3RBX9LightGrid32lightingComputeShadowMaskImplLUTILb0ELb0ELb1EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,false,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,false,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2e508() -> ! {
+    todo!("0xc2e508 void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,false,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2e7c0 — __ZN3RBX9LightGrid32lightingComputeShadowMaskImplLUTILb0ELb1ELb0EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,true,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,true,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2e7c0() -> ! {
+    todo!("0xc2e7c0 void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,true,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2ea4c — __ZN3RBX9LightGrid32lightingComputeShadowMaskImplLUTILb0ELb1ELb1EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,true,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,true,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2ea4c() -> ! {
+    todo!("0xc2ea4c void RBX::LightGrid::lightingComputeShadowMaskImplLUT<false,true,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2ecec — __ZN3RBX9LightGrid26lightingComputeShadowMaskZILb1ELb1EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskZ<true,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskZ<true,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2ecec() -> ! {
+    todo!("0xc2ecec void RBX::LightGrid::lightingComputeShadowMaskZ<true,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2ed74 — __ZN3RBX9LightGrid26lightingComputeShadowMaskZILb1ELb0EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskZ<true,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskZ<true,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2ed74() -> ! {
+    todo!("0xc2ed74 void RBX::LightGrid::lightingComputeShadowMaskZ<true,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2edfc — __ZN3RBX9LightGrid32lightingComputeShadowMaskImplLUTILb1ELb0ELb0EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,false,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,false,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2edfc() -> ! {
+    todo!("0xc2edfc void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,false,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2f0b8 — __ZN3RBX9LightGrid32lightingComputeShadowMaskImplLUTILb1ELb0ELb1EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,false,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,false,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2f0b8() -> ! {
+    todo!("0xc2f0b8 void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,false,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2f394 — __ZN3RBX9LightGrid32lightingComputeShadowMaskImplLUTILb1ELb1ELb0EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,true,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,true,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2f394() -> ! {
+    todo!("0xc2f394 void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,true,false>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2f630 — __ZN3RBX9LightGrid32lightingComputeShadowMaskImplLUTILb1ELb1ELb1EEEvRKNS_14LightGridChunkERKNS_12Vector3int32ES7_S7_RKN3G3D7Vector3E
+#[doc(alias = "void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,true,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")]
+// was: void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,true,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)
+pub fn stub_c2f630() -> ! {
+    todo!("0xc2f630 void RBX::LightGrid::lightingComputeShadowMaskImplLUT<true,true,true>(RBX::LightGridChunk const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,RBX::Vector3int32 const&,G3D::Vector3 const&)")
+}
+
+// 0xc2f9bc — __ZN3RBX12DenseHashSetIPN4Ogre20RbxCullableSceneNodeEN5boost4hashIS3_EESaIS3_EE6insertERKS3_
+#[doc(alias = "RBX::DenseHashSet<Ogre::RbxCullableSceneNode *,boost::hash<Ogre::RbxCullableSceneNode *>,std::allocator<Ogre::RbxCullableSceneNode *>>::insert(Ogre::RbxCullableSceneNode * const&)")]
+// was: RBX::DenseHashSet<Ogre::RbxCullableSceneNode *,boost::hash<Ogre::RbxCullableSceneNode *>,std::allocator<Ogre::RbxCullableSceneNode *>>::insert(Ogre::RbxCullableSceneNode * const&)
+pub fn stub_c2f9bc() -> ! {
+    todo!("0xc2f9bc RBX::DenseHashSet<Ogre::RbxCullableSceneNode *,boost::hash<Ogre::RbxCullableSceneNode *>,std::allocator<Ogre::RbxCullableSceneNode *>>::insert(Ogre::RbxCullableSceneNode * const&)")
+}
+
+// 0xc2facc — __ZN3RBX12DenseHashSetIPN4Ogre20RbxCullableSceneNodeEN5boost4hashIS3_EESaIS3_EE6rehashEv
+#[doc(alias = "RBX::DenseHashSet<Ogre::RbxCullableSceneNode *,boost::hash<Ogre::RbxCullableSceneNode *>,std::allocator<Ogre::RbxCullableSceneNode *>>::rehash(void)")]
+// was: RBX::DenseHashSet<Ogre::RbxCullableSceneNode *,boost::hash<Ogre::RbxCullableSceneNode *>,std::allocator<Ogre::RbxCullableSceneNode *>>::rehash(void)
+pub fn stub_c2facc() -> ! {
+    todo!("0xc2facc RBX::DenseHashSet<Ogre::RbxCullableSceneNode *,boost::hash<Ogre::RbxCullableSceneNode *>,std::allocator<Ogre::RbxCullableSceneNode *>>::rehash(void)")
+}
+
+// 0xc2fc44 — __ZN3RBX12DenseHashSetIPN4Ogre20RbxCullableSceneNodeEN5boost4hashIS3_EESaIS3_EEC2ERKS3_mRKS6_
+#[doc(alias = "RBX::DenseHashSet<Ogre::RbxCullableSceneNode *,boost::hash<Ogre::RbxCullableSceneNode *>,std::allocator<Ogre::RbxCullableSceneNode *>>::DenseHashSet(Ogre::RbxCullableSceneNode * const&,unsigned long,boost::hash<Ogre::RbxCullableSceneNode *> const&)")]
+// was: RBX::DenseHashSet<Ogre::RbxCullableSceneNode *,boost::hash<Ogre::RbxCullableSceneNode *>,std::allocator<Ogre::RbxCullableSceneNode *>>::DenseHashSet(Ogre::RbxCullableSceneNode * const&,unsigned long,boost::hash<Ogre::RbxCullableSceneNode *> const&)
+pub fn stub_c2fc44() -> ! {
+    todo!("0xc2fc44 RBX::DenseHashSet<Ogre::RbxCullableSceneNode *,boost::hash<Ogre::RbxCullableSceneNode *>,std::allocator<Ogre::RbxCullableSceneNode *>>::DenseHashSet(Ogre::RbxCullableSceneNode * const&,unsigned long,boost::hash<Ogre::RbxCullableSceneNode *> const&)")
+}
+
+// 0xc2fdb0 — __ZN3G3D5ArrayINS_5PlaneELi10ELm32EE7reallocEi
+#[doc(alias = "G3D::Array<G3D::Plane,10,32ul>::realloc(int)")]
+// was: G3D::Array<G3D::Plane,10,32ul>::realloc(int)
+pub fn stub_c2fdb0() -> ! {
+    todo!("0xc2fdb0 G3D::Array<G3D::Plane,10,32ul>::realloc(int)")
+}
+
+// 0xc2ffe8 — __ZN3G3D5PlaneD0Ev
+#[doc(alias = "G3D::Plane::~Plane()")]
+// was: G3D::Plane::~Plane()
+pub fn stub_c2ffe8() -> ! {
+    todo!("0xc2ffe8 G3D::Plane::~Plane()")
+}
+
+// 0xc2ffec — __ZNK3RBX27CornerWedgeDistanceFunctionclERKN3G3D7Vector3E
+#[doc(alias = "RBX::CornerWedgeDistanceFunction::operator()(G3D::Vector3 const&)const")]
+// was: RBX::CornerWedgeDistanceFunction::operator()(G3D::Vector3 const&)const
+pub fn stub_c2ffec() -> ! {
+    todo!("0xc2ffec RBX::CornerWedgeDistanceFunction::operator()(G3D::Vector3 const&)const")
+}
+
+// 0xc30bf0 — __ZN3G3D5ArrayINS_5PlaneELi10ELm32EED2Ev
+#[doc(alias = "G3D::Array<G3D::Plane,10,32ul>::~Array()")]
+// was: G3D::Array<G3D::Plane,10,32ul>::~Array()
+pub fn stub_c30bf0() -> ! {
+    todo!("0xc30bf0 G3D::Array<G3D::Plane,10,32ul>::~Array()")
+}
+
+// 0xc30d54 — __ZN3G3D5ArrayINS_5PlaneELi10ELm32EE5_copyERKS2_
+#[doc(alias = "G3D::Array<G3D::Plane,10,32ul>::_copy(G3D::Array<G3D::Plane,10,32ul> const&)")]
+// was: G3D::Array<G3D::Plane,10,32ul>::_copy(G3D::Array<G3D::Plane,10,32ul> const&)
+pub fn stub_c30d54() -> ! {
+    todo!("0xc30d54 G3D::Array<G3D::Plane,10,32ul>::_copy(G3D::Array<G3D::Plane,10,32ul> const&)")
+}
+
+// 0xc30f00 — __ZN4Ogre9SharedPtrINS_7TextureEED1Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::Texture>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::Texture>::~SharedPtr()
+pub fn stub_c30f00() -> ! {
+    todo!("0xc30f00 Ogre::SharedPtr<Ogre::Texture>::~SharedPtr()")
+}
+
+// 0xc30f58 — __ZN4Ogre10TexturePtrD0Ev
+#[doc(alias = "Ogre::TexturePtr::~TexturePtr()")]
+// was: Ogre::TexturePtr::~TexturePtr()
+pub fn stub_c30f58() -> ! {
+    todo!("0xc30f58 Ogre::TexturePtr::~TexturePtr()")
+}
+
+// 0xc31068 — __ZN4Ogre9SharedPtrINS_19HardwarePixelBufferEED1Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::HardwarePixelBuffer>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::HardwarePixelBuffer>::~SharedPtr()
+pub fn stub_c31068() -> ! {
+    todo!("0xc31068 Ogre::SharedPtr<Ogre::HardwarePixelBuffer>::~SharedPtr()")
+}
+
+// 0xc31984 — __ZN3RBX11LightObjectC1EPN4Ogre12SceneManagerE
+#[doc(alias = "RBX::LightObject::LightObject(Ogre::SceneManager *)")]
+// was: RBX::LightObject::LightObject(Ogre::SceneManager *)
+pub fn stub_c31984() -> ! {
+    todo!("0xc31984 RBX::LightObject::LightObject(Ogre::SceneManager *)")
+}
+
+// 0xc31988 — __ZN3RBX11LightObjectC2EPN4Ogre12SceneManagerE
+#[doc(alias = "RBX::LightObject::LightObject(Ogre::SceneManager *)")]
+// was: RBX::LightObject::LightObject(Ogre::SceneManager *)
+pub fn stub_c31988() -> ! {
+    todo!("0xc31988 RBX::LightObject::LightObject(Ogre::SceneManager *)")
+}
+
+// 0xc33b64 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE12changeMinMaxEPS2_PKNS_12ExtentsInt32ES9_S9_b
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::changeMinMax(Ogre::RbxCullableSceneNode*,RBX::ExtentsInt32 const*,RBX::ExtentsInt32 const*,RBX::ExtentsInt32 const*,bool)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::changeMinMax(Ogre::RbxCullableSceneNode*,RBX::ExtentsInt32 const*,RBX::ExtentsInt32 const*,RBX::ExtentsInt32 const*,bool)
+pub fn stub_c33b64() -> ! {
+    todo!("0xc33b64 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::changeMinMax(Ogre::RbxCullableSceneNode*,RBX::ExtentsInt32 const*,RBX::ExtentsInt32 const*,RBX::ExtentsInt32 const*,bool)")
+}
+
+// 0xc33cf8 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE8findNodeEPS2_RKNS_12Vector3int32E
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::findNode(Ogre::RbxCullableSceneNode*,RBX::Vector3int32 const&)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::findNode(Ogre::RbxCullableSceneNode*,RBX::Vector3int32 const&)
+pub fn stub_c33cf8() -> ! {
+    todo!("0xc33cf8 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::findNode(Ogre::RbxCullableSceneNode*,RBX::Vector3int32 const&)")
+}
+
+// 0xc33e08 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE26findOtherNodesInLevel0CellEPNS5_11SpatialNodeE
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::findOtherNodesInLevel0Cell(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::findOtherNodesInLevel0Cell(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *)
+pub fn stub_c33e08() -> ! {
+    todo!("0xc33e08 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::findOtherNodesInLevel0Cell(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *)")
+}
+
+// 0xc33edc — __ZN5boost11object_poolIN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEE7destroyEPS8_
+#[doc(alias = "boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::destroy(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode*)")]
+// was: boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::destroy(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode*)
+pub fn stub_c33edc() -> ! {
+    todo!("0xc33edc boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::destroy(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode*)")
+}
+
+// 0xc34074 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE7newNodeEiiRKNS_12Vector3int32E
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::newNode(int,int,RBX::Vector3int32 const&)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::newNode(int,int,RBX::Vector3int32 const&)
+pub fn stub_c34074() -> ! {
+    todo!("0xc34074 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::newNode(int,int,RBX::Vector3int32 const&)")
+}
+
+// 0xc3432c — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE21insertNodeToPrimitiveEPNS5_11SpatialNodeEPS2_RKNS_12Vector3int32Ei
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::insertNodeToPrimitive(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *,Ogre::RbxCullableSceneNode*,RBX::Vector3int32 const&,int)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::insertNodeToPrimitive(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *,Ogre::RbxCullableSceneNode*,RBX::Vector3int32 const&,int)
+pub fn stub_c3432c() -> ! {
+    todo!("0xc3432c RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::insertNodeToPrimitive(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *,Ogre::RbxCullableSceneNode*,RBX::Vector3int32 const&,int)")
+}
+
+// 0xc343f0 — __ZN5boost11object_poolIN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEE9constructEv
+#[doc(alias = "boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::construct(void)")]
+// was: boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::construct(void)
+pub fn stub_c343f0() -> ! {
+    todo!("0xc343f0 boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::construct(void)")
+}
+
+// 0xc3457c — __ZN3RBX9AllocatorINS_11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE8TreeNodeEEC2Ev
+#[doc(alias = "RBX::Allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode>::Allocator(void)")]
+// was: RBX::Allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode>::Allocator(void)
+pub fn stub_c3457c() -> ! {
+    todo!("0xc3457c RBX::Allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode>::Allocator(void)")
+}
+
+// 0xc34624 — __ZN5boost14singleton_poolIN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
+#[doc(alias = "boost::singleton_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
+// was: boost::singleton_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)
+pub fn stub_c34624() -> ! {
+    todo!("0xc34624 boost::singleton_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")
+}
+
