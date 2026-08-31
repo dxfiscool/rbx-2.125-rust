@@ -23017,3 +23017,703 @@ pub fn stub_c44128() -> ! {
 pub fn stub_c44134() -> ! {
     todo!("0xc44134 G3D::System::malloc(unsigned long)")
 }
+
+// 0xc44144 — __ZN3G3D6System7reallocEPvm
+#[doc(alias = "G3D::System::realloc(void *,unsigned long)")]
+// was: G3D::System::realloc(void *,unsigned long)
+pub fn stub_c44144() -> ! {
+    todo!("0xc44144 G3D::System::realloc(void *,unsigned long)")
+}
+
+// 0xc44150 — __ZN3G3D6System4freeEPv
+#[doc(alias = "G3D::System::free(void *)")]
+// was: G3D::System::free(void *)
+pub fn stub_c44150() -> ! {
+    todo!("0xc44150 G3D::System::free(void *)")
+}
+
+// 0xc4415c — __ZN3G3D6System13alignedMallocEmm
+#[doc(alias = "G3D::System::alignedMalloc(unsigned long,unsigned long)")]
+// was: G3D::System::alignedMalloc(unsigned long,unsigned long)
+pub fn stub_c4415c() -> ! {
+    todo!("0xc4415c G3D::System::alignedMalloc(unsigned long,unsigned long)")
+}
+
+// 0xc44310 — __ZN3G3D6System11alignedFreeEPv
+#[doc(alias = "G3D::System::alignedFree(void *)")]
+// was: G3D::System::alignedFree(void *)
+pub fn stub_c44310() -> ! {
+    todo!("0xc44310 G3D::System::alignedFree(void *)")
+}
+
+// 0xc44324 — __ZN3G3D6SystemD1Ev
+#[doc(alias = "G3D::System::~System()")]
+// was: G3D::System::~System()
+pub fn stub_c44324() -> ! {
+    todo!("0xc44324 G3D::System::~System()")
+}
+
+// 0xc44330 — __ZN3G3D17BufferPoolDeleterD1Ev
+#[doc(alias = "G3D::BufferPoolDeleter::~BufferPoolDeleter()")]
+// was: G3D::BufferPoolDeleter::~BufferPoolDeleter()
+pub fn stub_c44330() -> ! {
+    todo!("0xc44330 G3D::BufferPoolDeleter::~BufferPoolDeleter()")
+}
+
+// 0xc44334 — __ZN3G3D6SystemD2Ev
+#[doc(alias = "G3D::System::~System()")]
+// was: G3D::System::~System()
+pub fn stub_c44334() -> ! {
+    todo!("0xc44334 G3D::System::~System()")
+}
+
+// 0xc46f50 — __ZN3G3D5ArrayISsLi10ELm32EE6resizeEib
+#[doc(alias = "G3D::Array<std::string,10,32ul>::resize(int,bool)")]
+// was: G3D::Array<std::string,10,32ul>::resize(int,bool)
+pub fn stub_c46f50() -> ! {
+    todo!("0xc46f50 G3D::Array<std::string,10,32ul>::resize(int,bool)")
+}
+
+// 0xc47098 — __ZN3G3D5ArrayISsLi10ELm32EE6appendERKSs
+#[doc(alias = "G3D::Array<std::string,10,32ul>::append(std::string const&)")]
+// was: G3D::Array<std::string,10,32ul>::append(std::string const&)
+pub fn stub_c47098() -> ! {
+    todo!("0xc47098 G3D::Array<std::string,10,32ul>::append(std::string const&)")
+}
+
+// 0xc4720c — __ZN3G3D5ArrayISsLi10ELm32EE7reallocEi
+#[doc(alias = "G3D::Array<std::string,10,32ul>::realloc(int)")]
+// was: G3D::Array<std::string,10,32ul>::realloc(int)
+pub fn stub_c4720c() -> ! {
+    todo!("0xc4720c G3D::Array<std::string,10,32ul>::realloc(int)")
+}
+
+// 0xc47450 — __ZN3G3D3SetISs9HashTraitISsE11EqualsTraitISsEED1Ev
+#[doc(alias = "G3D::Set<std::string,HashTrait<std::string>,EqualsTrait<std::string>>::~Set()")]
+// was: G3D::Set<std::string,HashTrait<std::string>,EqualsTrait<std::string>>::~Set()
+pub fn stub_c47450() -> ! {
+    todo!("0xc47450 G3D::Set<std::string,HashTrait<std::string>,EqualsTrait<std::string>>::~Set()")
+}
+
+// 0xc47474 — __ZN3G3D5TableISsb9HashTraitISsE11EqualsTraitISsEED1Ev
+#[doc(alias = "G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")]
+// was: G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()
+pub fn stub_c47474() -> ! {
+    todo!("0xc47474 G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")
+}
+
+// 0xc47480 — __ZN3G3D3SetISs9HashTraitISsE11EqualsTraitISsEED0Ev
+#[doc(alias = "G3D::Set<std::string,HashTrait<std::string>,EqualsTrait<std::string>>::~Set()")]
+// was: G3D::Set<std::string,HashTrait<std::string>,EqualsTrait<std::string>>::~Set()
+pub fn stub_c47480() -> ! {
+    todo!("0xc47480 G3D::Set<std::string,HashTrait<std::string>,EqualsTrait<std::string>>::~Set()")
+}
+
+// 0xc47534 — __ZN3G3D5TableISsb9HashTraitISsE11EqualsTraitISsEED2Ev
+#[doc(alias = "G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")]
+// was: G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()
+pub fn stub_c47534() -> ! {
+    todo!("0xc47534 G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")
+}
+
+// 0xc47650 — __ZN3G3D5TableISsb9HashTraitISsE11EqualsTraitISsEE10freeMemoryEv
+#[doc(alias = "G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::freeMemory(void)")]
+// was: G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::freeMemory(void)
+pub fn stub_c47650() -> ! {
+    todo!("0xc47650 G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::freeMemory(void)")
+}
+
+// 0xc47710 — __ZN3G3D5TableISsb9HashTraitISsE11EqualsTraitISsEED0Ev
+#[doc(alias = "G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")]
+// was: G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()
+pub fn stub_c47710() -> ! {
+    todo!("0xc47710 G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")
+}
+
+// 0xc477e4 — __ZN3G3D13MemoryManager5allocEm
+#[doc(alias = "G3D::MemoryManager::alloc(unsigned long)")]
+// was: G3D::MemoryManager::alloc(unsigned long)
+pub fn stub_c477e4() -> ! {
+    todo!("0xc477e4 G3D::MemoryManager::alloc(unsigned long)")
+}
+
+// 0xc477f0 — __ZN3G3D13MemoryManager4freeEPv
+#[doc(alias = "G3D::MemoryManager::free(void *)")]
+// was: G3D::MemoryManager::free(void *)
+pub fn stub_c477f0() -> ! {
+    todo!("0xc477f0 G3D::MemoryManager::free(void *)")
+}
+
+// 0xc477fc — __ZNK3G3D13MemoryManager12isThreadsafeEv
+#[doc(alias = "G3D::MemoryManager::isThreadsafe(void)const")]
+// was: G3D::MemoryManager::isThreadsafe(void)const
+pub fn stub_c477fc() -> ! {
+    todo!("0xc477fc G3D::MemoryManager::isThreadsafe(void)const")
+}
+
+// 0xc47800 — __ZN3G3D13MemoryManager6createEv
+#[doc(alias = "G3D::MemoryManager::create(void)")]
+// was: G3D::MemoryManager::create(void)
+pub fn stub_c47800() -> ! {
+    todo!("0xc47800 G3D::MemoryManager::create(void)")
+}
+
+// 0xc4795c — __ZN3G3D23ReferenceCountedPointerINS_13MemoryManagerEED1Ev
+#[doc(alias = "G3D::ReferenceCountedPointer<G3D::MemoryManager>::~ReferenceCountedPointer()")]
+// was: G3D::ReferenceCountedPointer<G3D::MemoryManager>::~ReferenceCountedPointer()
+pub fn stub_c4795c() -> ! {
+    todo!("0xc4795c G3D::ReferenceCountedPointer<G3D::MemoryManager>::~ReferenceCountedPointer()")
+}
+
+// 0xc47988 — __ZN3G3D13MemoryManagerD1Ev
+#[doc(alias = "G3D::MemoryManager::~MemoryManager()")]
+// was: G3D::MemoryManager::~MemoryManager()
+pub fn stub_c47988() -> ! {
+    todo!("0xc47988 G3D::MemoryManager::~MemoryManager()")
+}
+
+// 0xc47994 — __ZN3G3D13MemoryManagerD0Ev
+#[doc(alias = "G3D::MemoryManager::~MemoryManager()")]
+// was: G3D::MemoryManager::~MemoryManager()
+pub fn stub_c47994() -> ! {
+    todo!("0xc47994 G3D::MemoryManager::~MemoryManager()")
+}
+
+// 0xc47a34 — __ZN3G3D22ReferenceCountedObjectC2Ev
+#[doc(alias = "G3D::ReferenceCountedObject::ReferenceCountedObject(void)")]
+// was: G3D::ReferenceCountedObject::ReferenceCountedObject(void)
+pub fn stub_c47a34() -> ! {
+    todo!("0xc47a34 G3D::ReferenceCountedObject::ReferenceCountedObject(void)")
+}
+
+// 0xc47a4c — __ZN3G3D22ReferenceCountedObject39ReferenceCountedObject_zeroWeakPointersEv
+#[doc(alias = "G3D::ReferenceCountedObject::ReferenceCountedObject_zeroWeakPointers(void)")]
+// was: G3D::ReferenceCountedObject::ReferenceCountedObject_zeroWeakPointers(void)
+pub fn stub_c47a4c() -> ! {
+    todo!("0xc47a4c G3D::ReferenceCountedObject::ReferenceCountedObject_zeroWeakPointers(void)")
+}
+
+// 0xc47a70 — __ZN3G3D22ReferenceCountedObjectD0Ev
+#[doc(alias = "G3D::ReferenceCountedObject::~ReferenceCountedObject()")]
+// was: G3D::ReferenceCountedObject::~ReferenceCountedObject()
+pub fn stub_c47a70() -> ! {
+    todo!("0xc47a70 G3D::ReferenceCountedObject::~ReferenceCountedObject()")
+}
+
+// 0xc47a7c — __ZN3G3D22ReferenceCountedObjectD1Ev
+#[doc(alias = "G3D::ReferenceCountedObject::~ReferenceCountedObject()")]
+// was: G3D::ReferenceCountedObject::~ReferenceCountedObject()
+pub fn stub_c47a7c() -> ! {
+    todo!("0xc47a7c G3D::ReferenceCountedObject::~ReferenceCountedObject()")
+}
+
+// 0xc47a80 — __ZN3G3D22ReferenceCountedObjectD2Ev
+#[doc(alias = "G3D::ReferenceCountedObject::~ReferenceCountedObject()")]
+// was: G3D::ReferenceCountedObject::~ReferenceCountedObject()
+pub fn stub_c47a80() -> ! {
+    todo!("0xc47a80 G3D::ReferenceCountedObject::~ReferenceCountedObject()")
+}
+
+// 0xc47a84 — __ZN3G3D10g3dfnmatchEPKcS1_i
+#[doc(alias = "G3D::g3dfnmatch(char const*,char const*,int)")]
+// was: G3D::g3dfnmatch(char const*,char const*,int)
+pub fn stub_c47a84() -> ! {
+    todo!("0xc47a84 G3D::g3dfnmatch(char const*,char const*,int)")
+}
+
+// 0xc47a90 — __ZN3G3D6Random6commonEv
+#[doc(alias = "G3D::Random::common(void)")]
+// was: G3D::Random::common(void)
+pub fn stub_c47a90() -> ! {
+    todo!("0xc47a90 G3D::Random::common(void)")
+}
+
+// 0xc47bd8 — __ZN3G3D6RandomD1Ev
+#[doc(alias = "G3D::Random::~Random()")]
+// was: G3D::Random::~Random()
+pub fn stub_c47bd8() -> ! {
+    todo!("0xc47bd8 G3D::Random::~Random()")
+}
+
+// 0xc47c00 — __ZN3G3D6RandomD0Ev
+#[doc(alias = "G3D::Random::~Random()")]
+// was: G3D::Random::~Random()
+pub fn stub_c47c00() -> ! {
+    todo!("0xc47c00 G3D::Random::~Random()")
+}
+
+// 0xc47c28 — __ZN3G3D6Random4bitsEv
+#[doc(alias = "G3D::Random::bits(void)")]
+// was: G3D::Random::bits(void)
+pub fn stub_c47c28() -> ! {
+    todo!("0xc47c28 G3D::Random::bits(void)")
+}
+
+// 0xc47c74 — __ZN3G3D6Random8generateEv
+#[doc(alias = "G3D::Random::generate(void)")]
+// was: G3D::Random::generate(void)
+pub fn stub_c47c74() -> ! {
+    todo!("0xc47c74 G3D::Random::generate(void)")
+}
+
+// 0xc47d80 — __ZN3G3D6Random7integerEii
+#[doc(alias = "G3D::Random::integer(int,int)")]
+// was: G3D::Random::integer(int,int)
+pub fn stub_c47d80() -> ! {
+    todo!("0xc47d80 G3D::Random::integer(int,int)")
+}
+
+// 0xc47de0 — __ZN3G3D6Random8gaussianEff
+#[doc(alias = "G3D::Random::gaussian(float,float)")]
+// was: G3D::Random::gaussian(float,float)
+pub fn stub_c47de0() -> ! {
+    todo!("0xc47de0 G3D::Random::gaussian(float,float)")
+}
+
+// 0xc47e88 — __ZN3G3D6Random7cosHemiERfS1_S1_
+#[doc(alias = "G3D::Random::cosHemi(float &,float &,float &)")]
+// was: G3D::Random::cosHemi(float &,float &,float &)
+pub fn stub_c47e88() -> ! {
+    todo!("0xc47e88 G3D::Random::cosHemi(float &,float &,float &)")
+}
+
+// 0xc47f2c — __ZN3G3D6Random10cosPowHemiEfRfS1_S1_
+#[doc(alias = "G3D::Random::cosPowHemi(float,float &,float &,float &)")]
+// was: G3D::Random::cosPowHemi(float,float &,float &,float &)
+pub fn stub_c47f2c() -> ! {
+    todo!("0xc47f2c G3D::Random::cosPowHemi(float,float &,float &,float &)")
+}
+
+// 0xc48000 — __ZN3G3D6Random4hemiERfS1_S1_
+#[doc(alias = "G3D::Random::hemi(float &,float &,float &)")]
+// was: G3D::Random::hemi(float &,float &,float &)
+pub fn stub_c48000() -> ! {
+    todo!("0xc48000 G3D::Random::hemi(float &,float &,float &)")
+}
+
+// 0xc48024 — __ZN3G3D6Random6sphereERfS1_S1_
+#[doc(alias = "G3D::Random::sphere(float &,float &,float &)")]
+// was: G3D::Random::sphere(float &,float &,float &)
+pub fn stub_c48024() -> ! {
+    todo!("0xc48024 G3D::Random::sphere(float &,float &,float &)")
+}
+
+// 0xc48108 — __ZN3G3D6Random7uniformEff
+#[doc(alias = "G3D::Random::uniform(float,float)")]
+// was: G3D::Random::uniform(float,float)
+pub fn stub_c48108() -> ! {
+    todo!("0xc48108 G3D::Random::uniform(float,float)")
+}
+
+// 0xc48144 — __ZN3G3D6Random7uniformEv
+#[doc(alias = "G3D::Random::uniform(void)")]
+// was: G3D::Random::uniform(void)
+pub fn stub_c48144() -> ! {
+    todo!("0xc48144 G3D::Random::uniform(void)")
+}
+
+// 0xc48168 — __ZN3G3D6Crypto5crc32EPKvm
+#[doc(alias = "G3D::Crypto::crc32(void const*,unsigned long)")]
+// was: G3D::Crypto::crc32(void const*,unsigned long)
+pub fn stub_c48168() -> ! {
+    todo!("0xc48168 G3D::Crypto::crc32(void const*,unsigned long)")
+}
+
+// 0xc48184 — __ZN3G3D6promptEPKcS1_PS1_ib
+#[doc(alias = "G3D::prompt(char const*,char const*,char const**,int,bool)")]
+// was: G3D::prompt(char const*,char const*,char const**,int,bool)
+pub fn stub_c48184() -> ! {
+    todo!("0xc48184 G3D::prompt(char const*,char const*,char const**,int,bool)")
+}
+
+// 0xc482dc — __ZN3G3D10FileSystem8instanceEv
+#[doc(alias = "G3D::FileSystem::instance(void)")]
+// was: G3D::FileSystem::instance(void)
+pub fn stub_c482dc() -> ! {
+    todo!("0xc482dc G3D::FileSystem::instance(void)")
+}
+
+// 0xc483d4 — __ZN3G3D10FileSystem3Dir17computeZipListingERKSsS3_
+#[doc(alias = "G3D::FileSystem::Dir::computeZipListing(std::string const&,std::string const&)")]
+// was: G3D::FileSystem::Dir::computeZipListing(std::string const&,std::string const&)
+pub fn stub_c483d4() -> ! {
+    todo!("0xc483d4 G3D::FileSystem::Dir::computeZipListing(std::string const&,std::string const&)")
+}
+
+// 0xc48904 — __ZN3G3D8FilePath19removeTrailingSlashERKSs
+#[doc(alias = "G3D::FilePath::removeTrailingSlash(std::string const&)")]
+// was: G3D::FilePath::removeTrailingSlash(std::string const&)
+pub fn stub_c48904() -> ! {
+    todo!("0xc48904 G3D::FilePath::removeTrailingSlash(std::string const&)")
+}
+
+// 0xc48b50 — __ZN3G3D10FileSystem11getContentsERKSsb
+#[doc(alias = "G3D::FileSystem::getContents(std::string const&,bool)")]
+// was: G3D::FileSystem::getContents(std::string const&,bool)
+pub fn stub_c48b50() -> ! {
+    todo!("0xc48b50 G3D::FileSystem::getContents(std::string const&,bool)")
+}
+
+// 0xc49440 — __ZN3G3D8FilePath12canonicalizeESs
+#[doc(alias = "G3D::FilePath::canonicalize(std::string)")]
+// was: G3D::FilePath::canonicalize(std::string)
+pub fn stub_c49440() -> ! {
+    todo!("0xc49440 G3D::FilePath::canonicalize(std::string)")
+}
+
+// 0xc494b4 — __ZN3G3D10FileSystem10_inZipfileERKSsRSs
+#[doc(alias = "G3D::FileSystem::_inZipfile(std::string const&,std::string &)")]
+// was: G3D::FileSystem::_inZipfile(std::string const&,std::string &)
+pub fn stub_c494b4() -> ! {
+    todo!("0xc494b4 G3D::FileSystem::_inZipfile(std::string const&,std::string &)")
+}
+
+// 0xc49698 — __ZN3G3D10FileSystem10_isZipfileERKSs
+#[doc(alias = "G3D::FileSystem::_isZipfile(std::string const&)")]
+// was: G3D::FileSystem::_isZipfile(std::string const&)
+pub fn stub_c49698() -> ! {
+    todo!("0xc49698 G3D::FileSystem::_isZipfile(std::string const&)")
+}
+
+// 0xc498bc — __ZN3G3D8FilePath3extERKSs
+#[doc(alias = "G3D::FilePath::ext(std::string const&)")]
+// was: G3D::FilePath::ext(std::string const&)
+pub fn stub_c498bc() -> ! {
+    todo!("0xc498bc G3D::FilePath::ext(std::string const&)")
+}
+
+// 0xc49920 — __ZN3G3D10FileSystem6_fopenEPKcS2_
+#[doc(alias = "G3D::FileSystem::_fopen(char const*,char const*)")]
+// was: G3D::FileSystem::_fopen(char const*,char const*)
+pub fn stub_c49920() -> ! {
+    todo!("0xc49920 G3D::FileSystem::_fopen(char const*,char const*)")
+}
+
+// 0xc49c20 — __ZN3G3D10FileSystem11_clearCacheERKSs
+#[doc(alias = "G3D::FileSystem::_clearCache(std::string const&)")]
+// was: G3D::FileSystem::_clearCache(std::string const&)
+pub fn stub_c49c20() -> ! {
+    todo!("0xc49c20 G3D::FileSystem::_clearCache(std::string const&)")
+}
+
+// 0xc4a118 — __ZN3G3D8FilePath6parentERKSs
+#[doc(alias = "G3D::FilePath::parent(std::string const&)")]
+// was: G3D::FilePath::parent(std::string const&)
+pub fn stub_c4a118() -> ! {
+    todo!("0xc4a118 G3D::FilePath::parent(std::string const&)")
+}
+
+// 0xc4a28c — __ZN3G3D10FileSystem7_existsERKSsb
+#[doc(alias = "G3D::FileSystem::_exists(std::string const&,bool)")]
+// was: G3D::FileSystem::_exists(std::string const&,bool)
+pub fn stub_c4a28c() -> ! {
+    todo!("0xc4a28c G3D::FileSystem::_exists(std::string const&,bool)")
+}
+
+// 0xc4a5fc — __ZN3G3D8FilePath7baseExtERKSs
+#[doc(alias = "G3D::FilePath::baseExt(std::string const&)")]
+// was: G3D::FilePath::baseExt(std::string const&)
+pub fn stub_c4a5fc() -> ! {
+    todo!("0xc4a5fc G3D::FilePath::baseExt(std::string const&)")
+}
+
+// 0xc4a66c — __ZN3G3D8FilePath6concatERKSsS2_
+#[doc(alias = "G3D::FilePath::concat(std::string const&,std::string const&)")]
+// was: G3D::FilePath::concat(std::string const&,std::string const&)
+pub fn stub_c4a66c() -> ! {
+    todo!("0xc4a66c G3D::FilePath::concat(std::string const&,std::string const&)")
+}
+
+// 0xc4a894 — __ZN3G3D10FileSystem5_sizeERKSs
+#[doc(alias = "G3D::FileSystem::_size(std::string const&)")]
+// was: G3D::FileSystem::_size(std::string const&)
+pub fn stub_c4a894() -> ! {
+    todo!("0xc4a894 G3D::FileSystem::_size(std::string const&)")
+}
+
+// 0xc4aa80 — __ZN3G3D17FileSystemDeleterD1Ev
+#[doc(alias = "G3D::FileSystemDeleter::~FileSystemDeleter()")]
+// was: G3D::FileSystemDeleter::~FileSystemDeleter()
+pub fn stub_c4aa80() -> ! {
+    todo!("0xc4aa80 G3D::FileSystemDeleter::~FileSystemDeleter()")
+}
+
+// 0xc4ab60 — __ZN3G3D10FileSystem7resolveERKSsS2_
+#[doc(alias = "G3D::FileSystem::resolve(std::string const&,std::string const&)")]
+// was: G3D::FileSystem::resolve(std::string const&,std::string const&)
+pub fn stub_c4ab60() -> ! {
+    todo!("0xc4ab60 G3D::FileSystem::resolve(std::string const&,std::string const&)")
+}
+
+// 0xc4ac8c — __ZN3G3D10FileSystem16currentDirectoryEv
+#[doc(alias = "G3D::FileSystem::currentDirectory(void)")]
+// was: G3D::FileSystem::currentDirectory(void)
+pub fn stub_c4ac8c() -> ! {
+    todo!("0xc4ac8c G3D::FileSystem::currentDirectory(void)")
+}
+
+// 0xc4add8 — __ZN3G3D5TableISsNS_10FileSystem3DirE9HashTraitISsE11EqualsTraitISsEE6removeERKSs
+#[doc(alias = "G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::remove(std::string const&)")]
+// was: G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::remove(std::string const&)
+pub fn stub_c4add8() -> ! {
+    todo!("0xc4add8 G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::remove(std::string const&)")
+}
+
+// 0xc4af48 — __ZN3G3D5TableISsNS_10FileSystem3DirE9HashTraitISsE11EqualsTraitISsEE6removeERKSsRSsRS2_b
+#[doc(alias = "G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::remove(std::string const&,std::string &,G3D::FileSystem::Dir&,bool)")]
+// was: G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::remove(std::string const&,std::string &,G3D::FileSystem::Dir&,bool)
+pub fn stub_c4af48() -> ! {
+    todo!("0xc4af48 G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::remove(std::string const&,std::string &,G3D::FileSystem::Dir&,bool)")
+}
+
+// 0xc4b1a0 — __ZN3G3D5TableISsNS_10FileSystem3DirE9HashTraitISsE11EqualsTraitISsEE10freeMemoryEv
+#[doc(alias = "G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::freeMemory(void)")]
+// was: G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::freeMemory(void)
+pub fn stub_c4b1a0() -> ! {
+    todo!("0xc4b1a0 G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::freeMemory(void)")
+}
+
+// 0xc4b318 — __ZN3G3D5TableISsNS_10FileSystem3DirE9HashTraitISsE11EqualsTraitISsEE14getCreateEntryERKSsRb
+#[doc(alias = "G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::getCreateEntry(std::string const&,bool &)")]
+// was: G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::getCreateEntry(std::string const&,bool &)
+pub fn stub_c4b318() -> ! {
+    todo!("0xc4b318 G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::getCreateEntry(std::string const&,bool &)")
+}
+
+// 0xc4b630 — __ZN3G3D5TableISsNS_10FileSystem3DirE9HashTraitISsE11EqualsTraitISsEE6resizeEm
+#[doc(alias = "G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::resize(unsigned long)")]
+// was: G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::resize(unsigned long)
+pub fn stub_c4b630() -> ! {
+    todo!("0xc4b630 G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::resize(unsigned long)")
+}
+
+// 0xc4b6c0 — __ZN3G3D5ArrayINS_10FileSystem5EntryELi10ELm32EE6resizeEib
+#[doc(alias = "G3D::Array<G3D::FileSystem::Entry,10,32ul>::resize(int,bool)")]
+// was: G3D::Array<G3D::FileSystem::Entry,10,32ul>::resize(int,bool)
+pub fn stub_c4b6c0() -> ! {
+    todo!("0xc4b6c0 G3D::Array<G3D::FileSystem::Entry,10,32ul>::resize(int,bool)")
+}
+
+// 0xc4b80c — __ZN3G3D5ArrayINS_10FileSystem5EntryELi10ELm32EE7reallocEi
+#[doc(alias = "G3D::Array<G3D::FileSystem::Entry,10,32ul>::realloc(int)")]
+// was: G3D::Array<G3D::FileSystem::Entry,10,32ul>::realloc(int)
+pub fn stub_c4b80c() -> ! {
+    todo!("0xc4b80c G3D::Array<G3D::FileSystem::Entry,10,32ul>::realloc(int)")
+}
+
+// 0xc4ba54 — __ZN3G3D5TableISsNS_10FileSystem3DirE9HashTraitISsE11EqualsTraitISsEEC2Ev
+#[doc(alias = "G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::Table(void)")]
+// was: G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::Table(void)
+pub fn stub_c4ba54() -> ! {
+    todo!("0xc4ba54 G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::Table(void)")
+}
+
+// 0xc4bc1c — __ZN3G3D5TableISsNS_10FileSystem3DirE9HashTraitISsE11EqualsTraitISsEED1Ev
+#[doc(alias = "G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")]
+// was: G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()
+pub fn stub_c4bc1c() -> ! {
+    todo!("0xc4bc1c G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")
+}
+
+// 0xc4bc28 — __ZN3G3D5TableISsNS_10FileSystem3DirE9HashTraitISsE11EqualsTraitISsEED0Ev
+#[doc(alias = "G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")]
+// was: G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()
+pub fn stub_c4bc28() -> ! {
+    todo!("0xc4bc28 G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")
+}
+
+// 0xc4bcc8 — __ZN3G3D5TableISsNS_10FileSystem3DirE9HashTraitISsE11EqualsTraitISsEED2Ev
+#[doc(alias = "G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")]
+// was: G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()
+pub fn stub_c4bcc8() -> ! {
+    todo!("0xc4bcc8 G3D::Table<std::string,G3D::FileSystem::Dir,HashTrait<std::string>,EqualsTrait<std::string>>::~Table()")
+}
+
+// 0xc4bde4 — __ZN3G3D5ArrayINS_10FileSystem5EntryELi10ELm32EED2Ev
+#[doc(alias = "G3D::Array<G3D::FileSystem::Entry,10,32ul>::~Array()")]
+// was: G3D::Array<G3D::FileSystem::Entry,10,32ul>::~Array()
+pub fn stub_c4bde4() -> ! {
+    todo!("0xc4bde4 G3D::Array<G3D::FileSystem::Entry,10,32ul>::~Array()")
+}
+
+// 0xc4bf60 — __ZN3G3D5ArrayINS_10FileSystem5EntryELi10ELm32EEC2Ev
+#[doc(alias = "G3D::Array<G3D::FileSystem::Entry,10,32ul>::Array(void)")]
+// was: G3D::Array<G3D::FileSystem::Entry,10,32ul>::Array(void)
+pub fn stub_c4bf60() -> ! {
+    todo!("0xc4bf60 G3D::Array<G3D::FileSystem::Entry,10,32ul>::Array(void)")
+}
+
+// 0xc4c168 — __ZN3G3D18LightingParametersC1Ev
+#[doc(alias = "G3D::LightingParameters::LightingParameters(void)")]
+// was: G3D::LightingParameters::LightingParameters(void)
+pub fn stub_c4c168() -> ! {
+    todo!("0xc4c168 G3D::LightingParameters::LightingParameters(void)")
+}
+
+// 0xc4c270 — __ZN3G3D18LightingParameters7setTimeEd
+#[doc(alias = "G3D::LightingParameters::setTime(double)")]
+// was: G3D::LightingParameters::setTime(double)
+pub fn stub_c4c270() -> ! {
+    todo!("0xc4c270 G3D::LightingParameters::setTime(double)")
+}
+
+// 0xc4cc64 — __ZN3G3D12linearSplineIdNS_6Color3EEET0_dPKT_PKS2_i
+#[doc(alias = "G3D::Color3 G3D::linearSpline<double,G3D::Color3>(double,double const*,G3D::Color3 const*,int)")]
+// was: G3D::Color3 G3D::linearSpline<double,G3D::Color3>(double,double const*,G3D::Color3 const*,int)
+pub fn stub_c4cc64() -> ! {
+    todo!("0xc4cc64 G3D::Color3 G3D::linearSpline<double,G3D::Color3>(double,double const*,G3D::Color3 const*,int)")
+}
+
+// 0xc4cdf0 — __ZN4Ogre13AnimableValue16resetToBaseValueEv
+#[doc(alias = "Ogre::AnimableValue::resetToBaseValue(void)")]
+// was: Ogre::AnimableValue::resetToBaseValue(void)
+pub fn stub_c4cdf0() -> ! {
+    todo!("0xc4cdf0 Ogre::AnimableValue::resetToBaseValue(void)")
+}
+
+// 0xc4cedc — __ZN4Ogre13AnimableValue14setAsBaseValueERKNS_3AnyE
+#[doc(alias = "Ogre::AnimableValue::setAsBaseValue(Ogre::Any const&)")]
+// was: Ogre::AnimableValue::setAsBaseValue(Ogre::Any const&)
+pub fn stub_c4cedc() -> ! {
+    todo!("0xc4cedc Ogre::AnimableValue::setAsBaseValue(Ogre::Any const&)")
+}
+
+// 0xc4cf84 — __ZN4Ogre13AnimableValue8setValueERKNS_3AnyE
+#[doc(alias = "Ogre::AnimableValue::setValue(Ogre::Any const&)")]
+// was: Ogre::AnimableValue::setValue(Ogre::Any const&)
+pub fn stub_c4cf84() -> ! {
+    todo!("0xc4cf84 Ogre::AnimableValue::setValue(Ogre::Any const&)")
+}
+
+// 0xc4d02c — __ZN4Ogre13AnimableValue15applyDeltaValueERKNS_3AnyE
+#[doc(alias = "Ogre::AnimableValue::applyDeltaValue(Ogre::Any const&)")]
+// was: Ogre::AnimableValue::applyDeltaValue(Ogre::Any const&)
+pub fn stub_c4d02c() -> ! {
+    todo!("0xc4d02c Ogre::AnimableValue::applyDeltaValue(Ogre::Any const&)")
+}
+
+// 0xc4d0d4 — __ZNSt3mapISsSt6vectorISsN4Ogre12STLAllocatorISsNS1_22CategorisedAllocPolicyILNS1_14MemoryCategoryE0EEEEEESt4lessISsENS2_ISt4pairIKSsS7_ES5_EEED1Ev
+#[doc(alias = "std::map<std::string,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~map()")]
+// was: std::map<std::string,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~map()
+pub fn stub_c4d0d4() -> ! {
+    todo!("0xc4d0d4 std::map<std::string,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~map()")
+}
+
+// 0xc4d168 — __ZN4Ogre8any_castIiEET_RKNS_3AnyE
+#[doc(alias = "int Ogre::any_cast<int>(Ogre::Any const&)")]
+// was: int Ogre::any_cast<int>(Ogre::Any const&)
+pub fn stub_c4d168() -> ! {
+    todo!("0xc4d168 int Ogre::any_cast<int>(Ogre::Any const&)")
+}
+
+// 0xc4d524 — __ZN4Ogre8any_castIfEET_RKNS_3AnyE
+#[doc(alias = "float Ogre::any_cast<float>(Ogre::Any const&)")]
+// was: float Ogre::any_cast<float>(Ogre::Any const&)
+pub fn stub_c4d524() -> ! {
+    todo!("0xc4d524 float Ogre::any_cast<float>(Ogre::Any const&)")
+}
+
+// 0xc4d8e0 — __ZN4Ogre8any_castINS_7Vector2EEET_RKNS_3AnyE
+#[doc(alias = "Ogre::Vector2 Ogre::any_cast<Ogre::Vector2>(Ogre::Any const&)")]
+// was: Ogre::Vector2 Ogre::any_cast<Ogre::Vector2>(Ogre::Any const&)
+pub fn stub_c4d8e0() -> ! {
+    todo!("0xc4d8e0 Ogre::Vector2 Ogre::any_cast<Ogre::Vector2>(Ogre::Any const&)")
+}
+
+// 0xc4dc7c — __ZN4Ogre8any_castINS_7Vector3EEET_RKNS_3AnyE
+#[doc(alias = "Ogre::Vector3 Ogre::any_cast<Ogre::Vector3>(Ogre::Any const&)")]
+// was: Ogre::Vector3 Ogre::any_cast<Ogre::Vector3>(Ogre::Any const&)
+pub fn stub_c4dc7c() -> ! {
+    todo!("0xc4dc7c Ogre::Vector3 Ogre::any_cast<Ogre::Vector3>(Ogre::Any const&)")
+}
+
+// 0xc4e01c — __ZN4Ogre8any_castINS_7Vector4EEET_RKNS_3AnyE
+#[doc(alias = "Ogre::Vector4 Ogre::any_cast<Ogre::Vector4>(Ogre::Any const&)")]
+// was: Ogre::Vector4 Ogre::any_cast<Ogre::Vector4>(Ogre::Any const&)
+pub fn stub_c4e01c() -> ! {
+    todo!("0xc4e01c Ogre::Vector4 Ogre::any_cast<Ogre::Vector4>(Ogre::Any const&)")
+}
+
+// 0xc4e3bc — __ZN4Ogre8any_castINS_10QuaternionEEET_RKNS_3AnyE
+#[doc(alias = "Ogre::Quaternion Ogre::any_cast<Ogre::Quaternion>(Ogre::Any const&)")]
+// was: Ogre::Quaternion Ogre::any_cast<Ogre::Quaternion>(Ogre::Any const&)
+pub fn stub_c4e3bc() -> ! {
+    todo!("0xc4e3bc Ogre::Quaternion Ogre::any_cast<Ogre::Quaternion>(Ogre::Any const&)")
+}
+
+// 0xc4e75c — __ZN4Ogre8any_castINS_11ColourValueEEET_RKNS_3AnyE
+#[doc(alias = "Ogre::ColourValue Ogre::any_cast<Ogre::ColourValue>(Ogre::Any const&)")]
+// was: Ogre::ColourValue Ogre::any_cast<Ogre::ColourValue>(Ogre::Any const&)
+pub fn stub_c4e75c() -> ! {
+    todo!("0xc4e75c Ogre::ColourValue Ogre::any_cast<Ogre::ColourValue>(Ogre::Any const&)")
+}
+
+// 0xc4eafc — __ZN4Ogre8any_castINS_6DegreeEEET_RKNS_3AnyE
+#[doc(alias = "Ogre::Degree Ogre::any_cast<Ogre::Degree>(Ogre::Any const&)")]
+// was: Ogre::Degree Ogre::any_cast<Ogre::Degree>(Ogre::Any const&)
+pub fn stub_c4eafc() -> ! {
+    todo!("0xc4eafc Ogre::Degree Ogre::any_cast<Ogre::Degree>(Ogre::Any const&)")
+}
+
+// 0xc4ee9c — __ZN4Ogre8any_castINS_6RadianEEET_RKNS_3AnyE
+#[doc(alias = "Ogre::Radian Ogre::any_cast<Ogre::Radian>(Ogre::Any const&)")]
+// was: Ogre::Radian Ogre::any_cast<Ogre::Radian>(Ogre::Any const&)
+pub fn stub_c4ee9c() -> ! {
+    todo!("0xc4ee9c Ogre::Radian Ogre::any_cast<Ogre::Radian>(Ogre::Any const&)")
+}
+
+// 0xc4f23c — __ZNSt8_Rb_treeISsSt4pairIKSsSt6vectorISsN4Ogre12STLAllocatorISsNS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISA_ESt4lessISsENS4_ISA_S7_EEE13_Rb_tree_implISE_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_c4f23c() -> ! {
+    todo!("0xc4f23c std::_Rb_tree<std::string,std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc4f240 — __ZNSt8_Rb_treeISsSt4pairIKSsSt6vectorISsN4Ogre12STLAllocatorISsNS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISA_ESt4lessISsENS4_ISA_S7_EEE13_Rb_tree_implISE_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_c4f240() -> ! {
+    todo!("0xc4f240 std::_Rb_tree<std::string,std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc4f24c — __ZNSt8_Rb_treeISsSt4pairIKSsSt6vectorISsN4Ogre12STLAllocatorISsNS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEEESt10_Select1stISA_ESt4lessISsENS4_ISA_S7_EEE8_M_eraseEPSt13_Rb_tree_nodeISA_E
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)
+pub fn stub_c4f24c() -> ! {
+    todo!("0xc4f24c std::_Rb_tree<std::string,std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)")
+}
+
+// 0xc4f27c — __ZN4Ogre12STLAllocatorISt4pairIKSsSt6vectorISsNS0_ISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEES6_E7destroyEPS9_
+#[doc(alias = "Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>*)")]
+// was: Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>*)
+pub fn stub_c4f27c() -> ! {
+    todo!("0xc4f27c Ogre::STLAllocator<std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>*)")
+}
+
+// 0xc4f420 — __ZN4Ogre9AnimationC1ERKSsf
+#[doc(alias = "Ogre::Animation::Animation(std::string const&,float)")]
+// was: Ogre::Animation::Animation(std::string const&,float)
+pub fn stub_c4f420() -> ! {
+    todo!("0xc4f420 Ogre::Animation::Animation(std::string const&,float)")
+}
+
+// 0xc4f42c — __ZN4Ogre9AnimationC2ERKSsf
+#[doc(alias = "Ogre::Animation::Animation(std::string const&,float)")]
+// was: Ogre::Animation::Animation(std::string const&,float)
+pub fn stub_c4f42c() -> ! {
+    todo!("0xc4f42c Ogre::Animation::Animation(std::string const&,float)")
+}
+
+// 0xc4f674 — __ZN4Ogre9AnimationD0Ev
+#[doc(alias = "Ogre::Animation::~Animation()")]
+// was: Ogre::Animation::~Animation()
+pub fn stub_c4f674() -> ! {
+    todo!("0xc4f674 Ogre::Animation::~Animation()")
+}
+
+// 0xc4f704 — __ZN4Ogre9AnimationD1Ev
+#[doc(alias = "Ogre::Animation::~Animation()")]
+// was: Ogre::Animation::~Animation()
+pub fn stub_c4f704() -> ! {
+    todo!("0xc4f704 Ogre::Animation::~Animation()")
+}
