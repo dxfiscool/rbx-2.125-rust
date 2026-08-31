@@ -17432,3 +17432,702 @@ pub fn stub_b8fd78() -> ! {
 pub fn stub_b8fe00() -> ! {
     todo!("0xb8fe00 RBX::AdornRbxGfx::drawFont2DImpl(RBX::Adorn *,std::string const&,G3D::Vector2 const&,float,G3D::Color4 const&,G3D::Color4 const&,RBX::Text::Font,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Rect2D const&)")
 }
+// 0xb900fc — __ZNK3RBX11AdornRbxGfx17get2DStringBoundsERKSsfNS_4Text4FontERKN3G3D7Vector2E
+#[doc(alias = "RBX::AdornRbxGfx::get2DStringBounds(std::string const&,float,RBX::Text::Font,G3D::Vector2 const&)const")]
+// was: RBX::AdornRbxGfx::get2DStringBounds(std::string const&,float,RBX::Text::Font,G3D::Vector2 const&)const
+pub fn stub_b900fc() -> ! {
+    todo!("0xb900fc RBX::AdornRbxGfx::get2DStringBounds(std::string const&,float,RBX::Text::Font,G3D::Vector2 const&)const")
+}
+
+// 0xb90cc4 — __ZN3RBX11AdornRbxGfx22setObjectToWorldMatrixERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::AdornRbxGfx::setObjectToWorldMatrix(G3D::CoordinateFrame const&)")]
+// was: RBX::AdornRbxGfx::setObjectToWorldMatrix(G3D::CoordinateFrame const&)
+pub fn stub_b90cc4() -> ! {
+    todo!("0xb90cc4 RBX::AdornRbxGfx::setObjectToWorldMatrix(G3D::CoordinateFrame const&)")
+}
+
+// 0xb90cfc — __ZN3RBX11AdornRbxGfx11setMaterialERKN3G3D6Color4Eii
+#[doc(alias = "RBX::AdornRbxGfx::setMaterial(G3D::Color4 const&,int,int)")]
+// was: RBX::AdornRbxGfx::setMaterial(G3D::Color4 const&,int,int)
+pub fn stub_b90cfc() -> ! {
+    todo!("0xb90cfc RBX::AdornRbxGfx::setMaterial(G3D::Color4 const&,int,int)")
+}
+
+// 0xb917fc — __ZN3RBX11AdornRbxGfx3boxERKN3G3D5AABoxERKNS1_6Color4E
+#[doc(alias = "RBX::AdornRbxGfx::box(G3D::AABox const&,G3D::Color4 const&)")]
+// was: RBX::AdornRbxGfx::box(G3D::AABox const&,G3D::Color4 const&)
+pub fn stub_b917fc() -> ! {
+    todo!("0xb917fc RBX::AdornRbxGfx::box(G3D::AABox const&,G3D::Color4 const&)")
+}
+
+// 0xb926cc — __ZN3RBX11AdornRbxGfx14cylinderAlongXEffRKN3G3D6Color4Eb
+#[doc(alias = "RBX::AdornRbxGfx::cylinderAlongX(float,float,G3D::Color4 const&,bool)")]
+// was: RBX::AdornRbxGfx::cylinderAlongX(float,float,G3D::Color4 const&,bool)
+pub fn stub_b926cc() -> ! {
+    todo!("0xb926cc RBX::AdornRbxGfx::cylinderAlongX(float,float,G3D::Color4 const&,bool)")
+}
+
+// 0xb93104 — __ZN3RBX11AdornRbxGfx6sphereERKN3G3D6SphereERKNS1_6Color4E
+#[doc(alias = "RBX::AdornRbxGfx::sphere(G3D::Sphere const&,G3D::Color4 const&)")]
+// was: RBX::AdornRbxGfx::sphere(G3D::Sphere const&,G3D::Color4 const&)
+pub fn stub_b93104() -> ! {
+    todo!("0xb93104 RBX::AdornRbxGfx::sphere(G3D::Sphere const&,G3D::Color4 const&)")
+}
+
+// 0xb93a08 — __ZN3RBX11AdornRbxGfx11lineSegmentERKN3G3D11LineSegmentERKNS1_6Color4Ef
+#[doc(alias = "RBX::AdornRbxGfx::lineSegment(G3D::LineSegment const&,G3D::Color4 const&,float)")]
+// was: RBX::AdornRbxGfx::lineSegment(G3D::LineSegment const&,G3D::Color4 const&,float)
+pub fn stub_b93a08() -> ! {
+    todo!("0xb93a08 RBX::AdornRbxGfx::lineSegment(G3D::LineSegment const&,G3D::Color4 const&,float)")
+}
+
+// 0xb93a0c — __ZN3RBX11AdornRbxGfx6line3dERKN3G3D7Vector3ES4_RKNS1_6Color4E
+#[doc(alias = "RBX::AdornRbxGfx::line3d(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Color4 const&)")]
+// was: RBX::AdornRbxGfx::line3d(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Color4 const&)
+pub fn stub_b93a0c() -> ! {
+    todo!("0xb93a0c RBX::AdornRbxGfx::line3d(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Color4 const&)")
+}
+
+// 0xb93b60 — __ZN3RBX11AdornRbxGfx4quadERKN3G3D7Vector3ES4_S4_S4_RKNS1_6Color4ERKNS1_7Vector2ESA_ib
+#[doc(alias = "RBX::AdornRbxGfx::quad(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Color4 const&,G3D::Vector2 const&,G3D::Vector2 const&,int,bool)")]
+// was: RBX::AdornRbxGfx::quad(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Color4 const&,G3D::Vector2 const&,G3D::Vector2 const&,int,bool)
+pub fn stub_b93b60() -> ! {
+    todo!("0xb93b60 RBX::AdornRbxGfx::quad(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&,G3D::Color4 const&,G3D::Vector2 const&,G3D::Vector2 const&,int,bool)")
+}
+
+// 0xb94190 — __ZNK3RBX11AdornRbxGfx15convexPolygon2dEPKN3G3D7Vector2EiRKNS1_6Color4Ei
+#[doc(alias = "RBX::AdornRbxGfx::convexPolygon2d(G3D::Vector2 const*,int,G3D::Color4 const&,int)const")]
+// was: RBX::AdornRbxGfx::convexPolygon2d(G3D::Vector2 const*,int,G3D::Color4 const&,int)const
+pub fn stub_b94190() -> ! {
+    todo!("0xb94190 RBX::AdornRbxGfx::convexPolygon2d(G3D::Vector2 const*,int,G3D::Color4 const&,int)const")
+}
+
+// 0xb94328 — __ZN3RBX11AdornRbxGfx13convexPolygonEPKN3G3D7Vector3EiRKNS1_6Color4Ei
+#[doc(alias = "RBX::AdornRbxGfx::convexPolygon(G3D::Vector3 const*,int,G3D::Color4 const&,int)")]
+// was: RBX::AdornRbxGfx::convexPolygon(G3D::Vector3 const*,int,G3D::Color4 const&,int)
+pub fn stub_b94328() -> ! {
+    todo!("0xb94328 RBX::AdornRbxGfx::convexPolygon(G3D::Vector3 const*,int,G3D::Color4 const&,int)")
+}
+
+// 0xb94474 — __ZN3RBX11AdornRbxGfx9extrusionEPNS_13I3DLinearFuncEiS2_iRKN3G3D6Color4Ebb
+#[doc(alias = "RBX::AdornRbxGfx::extrusion(RBX::I3DLinearFunc *,int,RBX::I3DLinearFunc *,int,G3D::Color4 const&,bool,bool)")]
+// was: RBX::AdornRbxGfx::extrusion(RBX::I3DLinearFunc *,int,RBX::I3DLinearFunc *,int,G3D::Color4 const&,bool,bool)
+pub fn stub_b94474() -> ! {
+    todo!("0xb94474 RBX::AdornRbxGfx::extrusion(RBX::I3DLinearFunc *,int,RBX::I3DLinearFunc *,int,G3D::Color4 const&,bool,bool)")
+}
+
+// 0xb94f98 — __ZN3RBX11AdornRbxGfx4axesERKN3G3D6Color4ES4_S4_f
+#[doc(alias = "RBX::AdornRbxGfx::axes(G3D::Color4 const&,G3D::Color4 const&,G3D::Color4 const&,float)")]
+// was: RBX::AdornRbxGfx::axes(G3D::Color4 const&,G3D::Color4 const&,G3D::Color4 const&,float)
+pub fn stub_b94f98() -> ! {
+    todo!("0xb94f98 RBX::AdornRbxGfx::axes(G3D::Color4 const&,G3D::Color4 const&,G3D::Color4 const&,float)")
+}
+
+// 0xb94f9c — __ZN3RBX11AdornRbxGfx3rayERKNS_6RbxRayERKN3G3D6Color4E
+#[doc(alias = "RBX::AdornRbxGfx::ray(RBX::RbxRay const&,G3D::Color4 const&)")]
+// was: RBX::AdornRbxGfx::ray(RBX::RbxRay const&,G3D::Color4 const&)
+pub fn stub_b94f9c() -> ! {
+    todo!("0xb94f9c RBX::AdornRbxGfx::ray(RBX::RbxRay const&,G3D::Color4 const&)")
+}
+
+// 0xb962e8 — __ZN3RBX11AdornRbxGfx17RESTORE_EXPLOSIONEPN4Ogre14ParticleSystemEPNS1_15ParticleEmitterEif
+#[doc(alias = "RBX::AdornRbxGfx::RESTORE_EXPLOSION(Ogre::ParticleSystem *,Ogre::ParticleEmitter *,int,float)")]
+// was: RBX::AdornRbxGfx::RESTORE_EXPLOSION(Ogre::ParticleSystem *,Ogre::ParticleEmitter *,int,float)
+pub fn stub_b962e8() -> ! {
+    todo!("0xb962e8 RBX::AdornRbxGfx::RESTORE_EXPLOSION(Ogre::ParticleSystem *,Ogre::ParticleEmitter *,int,float)")
+}
+
+// 0xb9699c — __ZN3RBX11AdornRbxGfx9explosionERKN3G3D6SphereE
+#[doc(alias = "RBX::AdornRbxGfx::explosion(G3D::Sphere const&)")]
+// was: RBX::AdornRbxGfx::explosion(G3D::Sphere const&)
+pub fn stub_b9699c() -> ! {
+    todo!("0xb9699c RBX::AdornRbxGfx::explosion(G3D::Sphere const&)")
+}
+
+// 0xb98608 — __ZN4Ogre7MeshPtrD1Ev
+#[doc(alias = "Ogre::MeshPtr::~MeshPtr()")]
+// was: Ogre::MeshPtr::~MeshPtr()
+pub fn stub_b98608() -> ! {
+    todo!("0xb98608 Ogre::MeshPtr::~MeshPtr()")
+}
+
+// 0xb98874 — __ZNSt3mapISsN4Ogre7MeshPtrESt4lessISsESaISt4pairIKSsS1_EEEixERS5_
+#[doc(alias = "std::map<std::string,Ogre::MeshPtr,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::operator[](std::string const&)")]
+// was: std::map<std::string,Ogre::MeshPtr,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::operator[](std::string const&)
+pub fn stub_b98874() -> ! {
+    todo!("0xb98874 std::map<std::string,Ogre::MeshPtr,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::operator[](std::string const&)")
+}
+
+// 0xb98bb0 — __ZN4Ogre9SharedPtrINS_10DataStreamEED1Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::DataStream>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::DataStream>::~SharedPtr()
+pub fn stub_b98bb0() -> ! {
+    todo!("0xb98bb0 Ogre::SharedPtr<Ogre::DataStream>::~SharedPtr()")
+}
+
+// 0xb98c04 — __ZNSt3mapIN3RBX12Vector3int32EPN4Ogre9SceneNodeESt4lessIS1_ESaISt4pairIKS1_S4_EEEixERS8_
+#[doc(alias = "std::map<RBX::Vector3int32,Ogre::SceneNode *,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::operator[](RBX::Vector3int32 const&)")]
+// was: std::map<RBX::Vector3int32,Ogre::SceneNode *,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::operator[](RBX::Vector3int32 const&)
+pub fn stub_b98c04() -> ! {
+    todo!("0xb98c04 std::map<RBX::Vector3int32,Ogre::SceneNode *,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::operator[](RBX::Vector3int32 const&)")
+}
+
+// 0xb98c94 — __ZNSt6vectorIPN4Ogre9SceneNodeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "std::vector<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::SceneNode **,std::vector<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *>>>,Ogre::SceneNode * const&)")]
+// was: std::vector<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::SceneNode **,std::vector<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *>>>,Ogre::SceneNode * const&)
+pub fn stub_b98c94() -> ! {
+    todo!("0xb98c94 std::vector<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::SceneNode **,std::vector<Ogre::SceneNode *,std::allocator<Ogre::SceneNode *>>>,Ogre::SceneNode * const&)")
+}
+
+// 0xb98d8c — __ZNSt8_Rb_treeIN3RBX12Vector3int32ESt4pairIKS1_PN4Ogre9SceneNodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS7_ERKS7_
+#[doc(alias = "std::_Rb_tree<RBX::Vector3int32,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>,std::_Select1st<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *> const&)")]
+// was: std::_Rb_tree<RBX::Vector3int32,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>,std::_Select1st<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *> const&)
+pub fn stub_b98d8c() -> ! {
+    todo!("0xb98d8c std::_Rb_tree<RBX::Vector3int32,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>,std::_Select1st<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *> const&)")
+}
+
+// 0xb990d4 — __ZNSt8_Rb_treeIN3RBX12Vector3int32ESt4pairIKS1_PN4Ogre9SceneNodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE16_M_insert_uniqueERKS7_
+#[doc(alias = "std::_Rb_tree<RBX::Vector3int32,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>,std::_Select1st<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::_M_insert_unique(std::pair<RBX::Vector3int32 const,Ogre::SceneNode *> const&)")]
+// was: std::_Rb_tree<RBX::Vector3int32,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>,std::_Select1st<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::_M_insert_unique(std::pair<RBX::Vector3int32 const,Ogre::SceneNode *> const&)
+pub fn stub_b990d4() -> ! {
+    todo!("0xb990d4 std::_Rb_tree<RBX::Vector3int32,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>,std::_Select1st<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::_M_insert_unique(std::pair<RBX::Vector3int32 const,Ogre::SceneNode *> const&)")
+}
+
+// 0xb991d4 — __ZNSt6vectorISt17_Rb_tree_iteratorISt4pairIKN3RBX12Vector3int32EPN4Ogre9SceneNodeEEESaIS9_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS9_SB_EERKS9_
+#[doc(alias = "std::vector<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::allocator<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>*,std::vector<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::allocator<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>>>,std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>> const&)")]
+// was: std::vector<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::allocator<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>*,std::vector<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::allocator<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>>>,std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>> const&)
+pub fn stub_b991d4() -> ! {
+    todo!("0xb991d4 std::vector<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::allocator<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>*,std::vector<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::allocator<std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>>>,std::_Rb_tree_iterator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>> const&)")
+}
+
+// 0xb992d8 — __ZNSt8_Rb_treeIN3RBX12Vector3int32ESt4pairIKS1_PN4Ogre9SceneNodeEESt10_Select1stIS7_ESt4lessIS1_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
+#[doc(alias = "std::_Rb_tree<RBX::Vector3int32,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>,std::_Select1st<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>> *)")]
+// was: std::_Rb_tree<RBX::Vector3int32,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>,std::_Select1st<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>> *)
+pub fn stub_b992d8() -> ! {
+    todo!("0xb992d8 std::_Rb_tree<RBX::Vector3int32,std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>,std::_Select1st<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>,std::less<RBX::Vector3int32>,std::allocator<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Vector3int32 const,Ogre::SceneNode *>> *)")
+}
+
+// 0xb99300 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre7MeshPtrEESt10_Select1stIS4_ESt4lessISsESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::MeshPtr>> *)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::MeshPtr>> *)
+pub fn stub_b99300() -> ! {
+    todo!("0xb99300 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::MeshPtr>> *)")
+}
+
+// 0xb99330 — __ZN9__gnu_cxx13new_allocatorISt4pairIKSsN4Ogre7MeshPtrEEE7destroyEPS5_
+#[doc(alias = "__gnu_cxx::new_allocator<std::pair<std::string const,Ogre::MeshPtr>>::destroy(std::pair<std::string const,Ogre::MeshPtr>*)")]
+// was: __gnu_cxx::new_allocator<std::pair<std::string const,Ogre::MeshPtr>>::destroy(std::pair<std::string const,Ogre::MeshPtr>*)
+pub fn stub_b99330() -> ! {
+    todo!("0xb99330 __gnu_cxx::new_allocator<std::pair<std::string const,Ogre::MeshPtr>>::destroy(std::pair<std::string const,Ogre::MeshPtr>*)")
+}
+
+// 0xb99630 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre7MeshPtrEESt10_Select1stIS4_ESt4lessISsESaIS4_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::MeshPtr>>,std::pair<std::string const,Ogre::MeshPtr> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::MeshPtr>>,std::pair<std::string const,Ogre::MeshPtr> const&)
+pub fn stub_b99630() -> ! {
+    todo!("0xb99630 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::MeshPtr>>,std::pair<std::string const,Ogre::MeshPtr> const&)")
+}
+
+// 0xb99978 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre7MeshPtrEESt10_Select1stIS4_ESt4lessISsESaIS4_EE9_M_insertEPSt18_Rb_tree_node_baseSC_RKS4_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::MeshPtr> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::MeshPtr> const&)
+pub fn stub_b99978() -> ! {
+    todo!("0xb99978 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::MeshPtr> const&)")
+}
+
+// 0xb999ec — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre7MeshPtrEESt10_Select1stIS4_ESt4lessISsESaIS4_EE16_M_insert_uniqueERKS4_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_insert_unique(std::pair<std::string const,Ogre::MeshPtr> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_insert_unique(std::pair<std::string const,Ogre::MeshPtr> const&)
+pub fn stub_b999ec() -> ! {
+    todo!("0xb999ec std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_insert_unique(std::pair<std::string const,Ogre::MeshPtr> const&)")
+}
+
+// 0xb99ad0 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre7MeshPtrEESt10_Select1stIS4_ESt4lessISsESaIS4_EE14_M_create_nodeERKS4_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_create_node(std::pair<std::string const,Ogre::MeshPtr> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_create_node(std::pair<std::string const,Ogre::MeshPtr> const&)
+pub fn stub_b99ad0() -> ! {
+    todo!("0xb99ad0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::_M_create_node(std::pair<std::string const,Ogre::MeshPtr> const&)")
+}
+
+// 0xb99be8 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre7MeshPtrEESt10_Select1stIS4_ESt4lessISsESaIS4_EE4findERS1_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::find(std::string const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::find(std::string const&)
+pub fn stub_b99be8() -> ! {
+    todo!("0xb99be8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MeshPtr>,std::_Select1st<std::pair<std::string const,Ogre::MeshPtr>>,std::less<std::string>,std::allocator<std::pair<std::string const,Ogre::MeshPtr>>>::find(std::string const&)")
+}
+
+// 0xb99c8c — __ZNSt6vectorIPN4Ogre12RbxSubEntityESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "std::vector<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::RbxSubEntity **,std::vector<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *>>>,Ogre::RbxSubEntity * const&)")]
+// was: std::vector<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::RbxSubEntity **,std::vector<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *>>>,Ogre::RbxSubEntity * const&)
+pub fn stub_b99c8c() -> ! {
+    todo!("0xb99c8c std::vector<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::RbxSubEntity **,std::vector<Ogre::RbxSubEntity *,std::allocator<Ogre::RbxSubEntity *>>>,Ogre::RbxSubEntity * const&)")
+}
+
+// 0xb99d88 — __ZN4Ogre9SharedPtrINS_20GpuProgramParametersEED0Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuProgramParameters>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::GpuProgramParameters>::~SharedPtr()
+pub fn stub_b99d88() -> ! {
+    todo!("0xb99d88 Ogre::SharedPtr<Ogre::GpuProgramParameters>::~SharedPtr()")
+}
+
+// 0xb99e48 — __ZN4Ogre9SharedPtrINS_20GpuProgramParametersEE7destroyEv
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuProgramParameters>::destroy(void)")]
+// was: Ogre::SharedPtr<Ogre::GpuProgramParameters>::destroy(void)
+pub fn stub_b99e48() -> ! {
+    todo!("0xb99e48 Ogre::SharedPtr<Ogre::GpuProgramParameters>::destroy(void)")
+}
+
+// 0xb99f40 — __ZN4Ogre9SharedPtrINS_20GpuProgramParametersEE4swapERS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuProgramParameters>::swap(Ogre::SharedPtr<Ogre::GpuProgramParameters>&)")]
+// was: Ogre::SharedPtr<Ogre::GpuProgramParameters>::swap(Ogre::SharedPtr<Ogre::GpuProgramParameters>&)
+pub fn stub_b99f40() -> ! {
+    todo!("0xb99f40 Ogre::SharedPtr<Ogre::GpuProgramParameters>::swap(Ogre::SharedPtr<Ogre::GpuProgramParameters>&)")
+}
+
+// 0xb99f60 — __ZN4Ogre9SharedPtrINS_17GpuNamedConstantsEED1Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuNamedConstants>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::GpuNamedConstants>::~SharedPtr()
+pub fn stub_b99f60() -> ! {
+    todo!("0xb99f60 Ogre::SharedPtr<Ogre::GpuNamedConstants>::~SharedPtr()")
+}
+
+// 0xb99f90 — __ZN4Ogre9SharedPtrINS_22GpuLogicalBufferStructEED0Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::~SharedPtr()
+pub fn stub_b99f90() -> ! {
+    todo!("0xb99f90 Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::~SharedPtr()")
+}
+
+// 0xb9a050 — __ZN4Ogre9SharedPtrINS_22GpuLogicalBufferStructEE7destroyEv
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::destroy(void)")]
+// was: Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::destroy(void)
+pub fn stub_b9a050() -> ! {
+    todo!("0xb9a050 Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::destroy(void)")
+}
+
+// 0xb9a150 — __ZN4Ogre9SharedPtrINS_22GpuLogicalBufferStructEE4swapERS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::swap(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>&)")]
+// was: Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::swap(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>&)
+pub fn stub_b9a150() -> ! {
+    todo!("0xb9a150 Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::swap(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>&)")
+}
+
+// 0xb9a170 — __ZN4Ogre9SharedPtrINS_17GpuNamedConstantsEE4swapERS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuNamedConstants>::swap(Ogre::SharedPtr<Ogre::GpuNamedConstants>&)")]
+// was: Ogre::SharedPtr<Ogre::GpuNamedConstants>::swap(Ogre::SharedPtr<Ogre::GpuNamedConstants>&)
+pub fn stub_b9a170() -> ! {
+    todo!("0xb9a170 Ogre::SharedPtr<Ogre::GpuNamedConstants>::swap(Ogre::SharedPtr<Ogre::GpuNamedConstants>&)")
+}
+
+// 0xb9a190 — __ZN4Ogre9SharedPtrINS_19GpuSharedParametersEED0Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuSharedParameters>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::GpuSharedParameters>::~SharedPtr()
+pub fn stub_b9a190() -> ! {
+    todo!("0xb9a190 Ogre::SharedPtr<Ogre::GpuSharedParameters>::~SharedPtr()")
+}
+
+// 0xb9a230 — __ZN4Ogre9SharedPtrINS_19GpuSharedParametersEE7destroyEv
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuSharedParameters>::destroy(void)")]
+// was: Ogre::SharedPtr<Ogre::GpuSharedParameters>::destroy(void)
+pub fn stub_b9a230() -> ! {
+    todo!("0xb9a230 Ogre::SharedPtr<Ogre::GpuSharedParameters>::destroy(void)")
+}
+
+// 0xb9a268 — __ZN4Ogre9SharedPtrINS_19GpuSharedParametersEE4swapERS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuSharedParameters>::swap(Ogre::SharedPtr<Ogre::GpuSharedParameters>&)")]
+// was: Ogre::SharedPtr<Ogre::GpuSharedParameters>::swap(Ogre::SharedPtr<Ogre::GpuSharedParameters>&)
+pub fn stub_b9a268() -> ! {
+    todo!("0xb9a268 Ogre::SharedPtr<Ogre::GpuSharedParameters>::swap(Ogre::SharedPtr<Ogre::GpuSharedParameters>&)")
+}
+
+// 0xb9a284 — __ZN3RBX26ManualObjectMeshGenAdapterC2EPN4Ogre12ManualObjectE
+#[doc(alias = "RBX::ManualObjectMeshGenAdapter::ManualObjectMeshGenAdapter(Ogre::ManualObject *)")]
+// was: RBX::ManualObjectMeshGenAdapter::ManualObjectMeshGenAdapter(Ogre::ManualObject *)
+pub fn stub_b9a284() -> ! {
+    todo!("0xb9a284 RBX::ManualObjectMeshGenAdapter::ManualObjectMeshGenAdapter(Ogre::ManualObject *)")
+}
+
+// 0xb9a914 — __ZN3RBX7MeshGen21pushVerticesTransformERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::MeshGen::pushVerticesTransform(G3D::CoordinateFrame const&)")]
+// was: RBX::MeshGen::pushVerticesTransform(G3D::CoordinateFrame const&)
+pub fn stub_b9a914() -> ! {
+    todo!("0xb9a914 RBX::MeshGen::pushVerticesTransform(G3D::CoordinateFrame const&)")
+}
+
+// 0xb9a920 — __ZN4Ogre9SharedPtrINS_4MeshEED0Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::Mesh>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::Mesh>::~SharedPtr()
+pub fn stub_b9a920() -> ! {
+    todo!("0xb9a920 Ogre::SharedPtr<Ogre::Mesh>::~SharedPtr()")
+}
+
+// 0xb9a9c0 — __ZN4Ogre9SharedPtrINS_4MeshEE7destroyEv
+#[doc(alias = "Ogre::SharedPtr<Ogre::Mesh>::destroy(void)")]
+// was: Ogre::SharedPtr<Ogre::Mesh>::destroy(void)
+pub fn stub_b9a9c0() -> ! {
+    todo!("0xb9a9c0 Ogre::SharedPtr<Ogre::Mesh>::destroy(void)")
+}
+
+// 0xb9a9f8 — __ZN4Ogre9SharedPtrINS_4MeshEE4swapERS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::Mesh>::swap(Ogre::SharedPtr<Ogre::Mesh>&)")]
+// was: Ogre::SharedPtr<Ogre::Mesh>::swap(Ogre::SharedPtr<Ogre::Mesh>&)
+pub fn stub_b9a9f8() -> ! {
+    todo!("0xb9a9f8 Ogre::SharedPtr<Ogre::Mesh>::swap(Ogre::SharedPtr<Ogre::Mesh>&)")
+}
+
+// 0xb9aa2c — __ZN4Ogre4Node11setListenerEPNS0_8ListenerE
+#[doc(alias = "Ogre::Node::setListener(Ogre::Node::Listener *)")]
+// was: Ogre::Node::setListener(Ogre::Node::Listener *)
+pub fn stub_b9aa2c() -> ! {
+    todo!("0xb9aa2c Ogre::Node::setListener(Ogre::Node::Listener *)")
+}
+
+// 0xb9aa34 — __ZNK4Ogre4Node11getListenerEv
+#[doc(alias = "Ogre::Node::getListener(void)const")]
+// was: Ogre::Node::getListener(void)const
+pub fn stub_b9aa34() -> ! {
+    todo!("0xb9aa34 Ogre::Node::getListener(void)const")
+}
+
+// 0xb9aa3c — __ZN4Ogre4Node10setUserAnyERKNS_3AnyE
+#[doc(alias = "Ogre::Node::setUserAny(Ogre::Any const&)")]
+// was: Ogre::Node::setUserAny(Ogre::Any const&)
+pub fn stub_b9aa3c() -> ! {
+    todo!("0xb9aa3c Ogre::Node::setUserAny(Ogre::Any const&)")
+}
+
+// 0xb9aa44 — __ZNK4Ogre4Node10getUserAnyEv
+#[doc(alias = "Ogre::Node::getUserAny(void)const")]
+// was: Ogre::Node::getUserAny(void)const
+pub fn stub_b9aa44() -> ! {
+    todo!("0xb9aa44 Ogre::Node::getUserAny(void)const")
+}
+
+// 0xb9aa4c — __ZNK4Ogre9SceneNode14isInSceneGraphEv
+#[doc(alias = "Ogre::SceneNode::isInSceneGraph(void)const")]
+// was: Ogre::SceneNode::isInSceneGraph(void)const
+pub fn stub_b9aa4c() -> ! {
+    todo!("0xb9aa4c Ogre::SceneNode::isInSceneGraph(void)const")
+}
+
+// 0xb9aa54 — __ZN4Ogre9SceneNode15_notifyRootNodeEv
+#[doc(alias = "Ogre::SceneNode::_notifyRootNode(void)")]
+// was: Ogre::SceneNode::_notifyRootNode(void)
+pub fn stub_b9aa54() -> ! {
+    todo!("0xb9aa54 Ogre::SceneNode::_notifyRootNode(void)")
+}
+
+// 0xb9aa5c — __ZN4Ogre9SceneNode18getAutoTrackTargetEv
+#[doc(alias = "Ogre::SceneNode::getAutoTrackTarget(void)")]
+// was: Ogre::SceneNode::getAutoTrackTarget(void)
+pub fn stub_b9aa5c() -> ! {
+    todo!("0xb9aa5c Ogre::SceneNode::getAutoTrackTarget(void)")
+}
+
+// 0xb9aa64 — __ZN4Ogre9SceneNode18getAutoTrackOffsetEv
+#[doc(alias = "Ogre::SceneNode::getAutoTrackOffset(void)")]
+// was: Ogre::SceneNode::getAutoTrackOffset(void)
+pub fn stub_b9aa64() -> ! {
+    todo!("0xb9aa64 Ogre::SceneNode::getAutoTrackOffset(void)")
+}
+
+// 0xb9aa6c — __ZN4Ogre9SceneNode26getAutoTrackLocalDirectionEv
+#[doc(alias = "Ogre::SceneNode::getAutoTrackLocalDirection(void)")]
+// was: Ogre::SceneNode::getAutoTrackLocalDirection(void)
+pub fn stub_b9aa6c() -> ! {
+    todo!("0xb9aa6c Ogre::SceneNode::getAutoTrackLocalDirection(void)")
+}
+
+// 0xb9b3bc — __ZN4Ogre17istreamDataStreamC1EPSib
+#[doc(alias = "Ogre::istreamDataStream::istreamDataStream(std::istream *,bool)")]
+// was: Ogre::istreamDataStream::istreamDataStream(std::istream *,bool)
+pub fn stub_b9b3bc() -> ! {
+    todo!("0xb9b3bc Ogre::istreamDataStream::istreamDataStream(std::istream *,bool)")
+}
+
+// 0xb9b52c — __ZN4Ogre17istreamDataStreamD0Ev
+#[doc(alias = "Ogre::istreamDataStream::~istreamDataStream()")]
+// was: Ogre::istreamDataStream::~istreamDataStream()
+pub fn stub_b9b52c() -> ! {
+    todo!("0xb9b52c Ogre::istreamDataStream::~istreamDataStream()")
+}
+
+// 0xb9b5e0 — __ZN4Ogre17istreamDataStreamD1Ev
+#[doc(alias = "Ogre::istreamDataStream::~istreamDataStream()")]
+// was: Ogre::istreamDataStream::~istreamDataStream()
+pub fn stub_b9b5e0() -> ! {
+    todo!("0xb9b5e0 Ogre::istreamDataStream::~istreamDataStream()")
+}
+
+// 0xb9b5e4 — __ZN4Ogre17istreamDataStreamD2Ev
+#[doc(alias = "Ogre::istreamDataStream::~istreamDataStream()")]
+// was: Ogre::istreamDataStream::~istreamDataStream()
+pub fn stub_b9b5e4() -> ! {
+    todo!("0xb9b5e4 Ogre::istreamDataStream::~istreamDataStream()")
+}
+
+// 0xb9b744 — __ZN4Ogre17istreamDataStream4readEPvm
+#[doc(alias = "Ogre::istreamDataStream::read(void *,unsigned long)")]
+// was: Ogre::istreamDataStream::read(void *,unsigned long)
+pub fn stub_b9b744() -> ! {
+    todo!("0xb9b744 Ogre::istreamDataStream::read(void *,unsigned long)")
+}
+
+// 0xb9b758 — __ZN4Ogre17istreamDataStream8readLineEPcmRKSs
+#[doc(alias = "Ogre::istreamDataStream::readLine(char *,unsigned long,std::string const&)")]
+// was: Ogre::istreamDataStream::readLine(char *,unsigned long,std::string const&)
+pub fn stub_b9b758() -> ! {
+    todo!("0xb9b758 Ogre::istreamDataStream::readLine(char *,unsigned long,std::string const&)")
+}
+
+// 0xb9bbd0 — __ZN4Ogre17istreamDataStream4skipEl
+#[doc(alias = "Ogre::istreamDataStream::skip(long)")]
+// was: Ogre::istreamDataStream::skip(long)
+pub fn stub_b9bbd0() -> ! {
+    todo!("0xb9bbd0 Ogre::istreamDataStream::skip(long)")
+}
+
+// 0xb9bbf8 — __ZN4Ogre17istreamDataStream4seekEm
+#[doc(alias = "Ogre::istreamDataStream::seek(unsigned long)")]
+// was: Ogre::istreamDataStream::seek(unsigned long)
+pub fn stub_b9bbf8() -> ! {
+    todo!("0xb9bbf8 Ogre::istreamDataStream::seek(unsigned long)")
+}
+
+// 0xb9bc20 — __ZNK4Ogre17istreamDataStream4tellEv
+#[doc(alias = "Ogre::istreamDataStream::tell(void)const")]
+// was: Ogre::istreamDataStream::tell(void)const
+pub fn stub_b9bc20() -> ! {
+    todo!("0xb9bc20 Ogre::istreamDataStream::tell(void)const")
+}
+
+// 0xb9bc64 — __ZNK4Ogre17istreamDataStream3eofEv
+#[doc(alias = "Ogre::istreamDataStream::eof(void)const")]
+// was: Ogre::istreamDataStream::eof(void)const
+pub fn stub_b9bc64() -> ! {
+    todo!("0xb9bc64 Ogre::istreamDataStream::eof(void)const")
+}
+
+// 0xb9bc78 — __ZN4Ogre17istreamDataStream5closeEv
+#[doc(alias = "Ogre::istreamDataStream::close(void)")]
+// was: Ogre::istreamDataStream::close(void)
+pub fn stub_b9bc78() -> ! {
+    todo!("0xb9bc78 Ogre::istreamDataStream::close(void)")
+}
+
+// 0xb9c320 — __ZN4Ogre7QuadricC1Ev
+#[doc(alias = "Ogre::Quadric::Quadric(void)")]
+// was: Ogre::Quadric::Quadric(void)
+pub fn stub_b9c320() -> ! {
+    todo!("0xb9c320 Ogre::Quadric::Quadric(void)")
+}
+
+// 0xb9c344 — __ZN4Ogre7Quadric9setOriginERKNS_7Vector3E
+#[doc(alias = "Ogre::Quadric::setOrigin(Ogre::Vector3 const&)")]
+// was: Ogre::Quadric::setOrigin(Ogre::Vector3 const&)
+pub fn stub_b9c344() -> ! {
+    todo!("0xb9c344 Ogre::Quadric::setOrigin(Ogre::Vector3 const&)")
+}
+
+// 0xb9c358 — __ZN4Ogre7Quadric14createCylinderEPNS_12SceneManagerERKSsPNS_12ManualObjectEfffii
+#[doc(alias = "Ogre::Quadric::createCylinder(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,float,float,int,int)")]
+// was: Ogre::Quadric::createCylinder(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,float,float,int,int)
+pub fn stub_b9c358() -> ! {
+    todo!("0xb9c358 Ogre::Quadric::createCylinder(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,float,float,int,int)")
+}
+
+// 0xb9e7e8 — __ZN4Ogre7Quadric10createDiskEPNS_12SceneManagerERKSsPNS_12ManualObjectEffii
+#[doc(alias = "Ogre::Quadric::createDisk(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,float,int,int)")]
+// was: Ogre::Quadric::createDisk(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,float,int,int)
+pub fn stub_b9e7e8() -> ! {
+    todo!("0xb9e7e8 Ogre::Quadric::createDisk(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,float,int,int)")
+}
+
+// 0xb9e830 — __ZN4Ogre7Quadric17createPartialDiskEPNS_12SceneManagerERKSsPNS_12ManualObjectEffiiff
+#[doc(alias = "Ogre::Quadric::createPartialDisk(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,float,int,int,float,float)")]
+// was: Ogre::Quadric::createPartialDisk(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,float,int,int,float,float)
+pub fn stub_b9e830() -> ! {
+    todo!("0xb9e830 Ogre::Quadric::createPartialDisk(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,float,int,int,float,float)")
+}
+
+// 0xba0b70 — __ZN4Ogre7Quadric12createSphereEPNS_12SceneManagerERKSsPNS_12ManualObjectEfii
+#[doc(alias = "Ogre::Quadric::createSphere(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,int,int)")]
+// was: Ogre::Quadric::createSphere(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,int,int)
+pub fn stub_ba0b70() -> ! {
+    todo!("0xba0b70 Ogre::Quadric::createSphere(Ogre::SceneManager *,std::string const&,Ogre::ManualObject *,float,int,int)")
+}
+
+// 0xba3c7c — __ZNSt6vectorIN4Ogre7Vector3ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_
+#[doc(alias = "std::vector<Ogre::Vector3,std::allocator<Ogre::Vector3>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector3*,std::vector<Ogre::Vector3,std::allocator<Ogre::Vector3>>>,Ogre::Vector3 const&)")]
+// was: std::vector<Ogre::Vector3,std::allocator<Ogre::Vector3>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector3*,std::vector<Ogre::Vector3,std::allocator<Ogre::Vector3>>>,Ogre::Vector3 const&)
+pub fn stub_ba3c7c() -> ! {
+    todo!("0xba3c7c std::vector<Ogre::Vector3,std::allocator<Ogre::Vector3>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector3*,std::vector<Ogre::Vector3,std::allocator<Ogre::Vector3>>>,Ogre::Vector3 const&)")
+}
+
+// 0xba4494 — __ZNK4Ogre10RbxArchive15isCaseSensitiveEv
+#[doc(alias = "Ogre::RbxArchive::isCaseSensitive(void)const")]
+// was: Ogre::RbxArchive::isCaseSensitive(void)const
+pub fn stub_ba4494() -> ! {
+    todo!("0xba4494 Ogre::RbxArchive::isCaseSensitive(void)const")
+}
+
+// 0xba4498 — __ZNK4Ogre10RbxArchive17doStaticFindFilesERKSsbbPSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEPS3_INS_8FileInfoENS4_ISB_S7_EEE
+#[doc(alias = "Ogre::RbxArchive::doStaticFindFiles(std::string const&,bool,bool,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::vector*<Ogre::FileInfo,Ogre::STLAllocator<std::vector*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>)const")]
+// was: Ogre::RbxArchive::doStaticFindFiles(std::string const&,bool,bool,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::vector*<Ogre::FileInfo,Ogre::STLAllocator<std::vector*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>)const
+pub fn stub_ba4498() -> ! {
+    todo!("0xba4498 Ogre::RbxArchive::doStaticFindFiles(std::string const&,bool,bool,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::vector*<Ogre::FileInfo,Ogre::STLAllocator<std::vector*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>)const")
+}
+
+// 0xba4a18 — __ZNK4Ogre10RbxArchive9findFilesERKSsbbPSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEPS3_INS_8FileInfoENS4_ISB_S7_EEE
+#[doc(alias = "Ogre::RbxArchive::findFiles(std::string const&,bool,bool,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::vector*<Ogre::FileInfo,Ogre::STLAllocator<std::vector*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>)const")]
+// was: Ogre::RbxArchive::findFiles(std::string const&,bool,bool,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::vector*<Ogre::FileInfo,Ogre::STLAllocator<std::vector*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>)const
+pub fn stub_ba4a18() -> ! {
+    todo!("0xba4a18 Ogre::RbxArchive::findFiles(std::string const&,bool,bool,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::vector*<Ogre::FileInfo,Ogre::STLAllocator<std::vector*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>)const")
+}
+
+// 0xba5874 — __ZN4OgreL16concatenate_pathERKSsS1_
+#[doc(alias = "Ogre::concatenate_path(std::string const&,std::string const&)")]
+// was: Ogre::concatenate_path(std::string const&,std::string const&)
+pub fn stub_ba5874() -> ! {
+    todo!("0xba5874 Ogre::concatenate_path(std::string const&,std::string const&)")
+}
+
+// 0xba5a54 — __ZN4Ogre10RbxArchiveD0Ev
+#[doc(alias = "Ogre::RbxArchive::~RbxArchive()")]
+// was: Ogre::RbxArchive::~RbxArchive()
+pub fn stub_ba5a54() -> ! {
+    todo!("0xba5a54 Ogre::RbxArchive::~RbxArchive()")
+}
+
+// 0xba5af0 — __ZN4Ogre10RbxArchiveD1Ev
+#[doc(alias = "Ogre::RbxArchive::~RbxArchive()")]
+// was: Ogre::RbxArchive::~RbxArchive()
+pub fn stub_ba5af0() -> ! {
+    todo!("0xba5af0 Ogre::RbxArchive::~RbxArchive()")
+}
+
+// 0xba5b88 — __ZN4Ogre10RbxArchive4loadEv
+#[doc(alias = "Ogre::RbxArchive::load(void)")]
+// was: Ogre::RbxArchive::load(void)
+pub fn stub_ba5b88() -> ! {
+    todo!("0xba5b88 Ogre::RbxArchive::load(void)")
+}
+
+// 0xba5b8c — __ZN4Ogre10RbxArchive6unloadEv
+#[doc(alias = "Ogre::RbxArchive::unload(void)")]
+// was: Ogre::RbxArchive::unload(void)
+pub fn stub_ba5b8c() -> ! {
+    todo!("0xba5b8c Ogre::RbxArchive::unload(void)")
+}
+
+// 0xba5b90 — __ZNK4Ogre10RbxArchive4openERKSsb
+#[doc(alias = "Ogre::RbxArchive::open(std::string const&,bool)const")]
+// was: Ogre::RbxArchive::open(std::string const&,bool)const
+pub fn stub_ba5b90() -> ! {
+    todo!("0xba5b90 Ogre::RbxArchive::open(std::string const&,bool)const")
+}
+
+// 0xba6244 — __ZN4Ogre10RbxArchive4listEbb
+#[doc(alias = "Ogre::RbxArchive::list(bool,bool)")]
+// was: Ogre::RbxArchive::list(bool,bool)
+pub fn stub_ba6244() -> ! {
+    todo!("0xba6244 Ogre::RbxArchive::list(bool,bool)")
+}
+
+// 0xba6460 — __ZN4Ogre10RbxArchive12listFileInfoEbb
+#[doc(alias = "Ogre::RbxArchive::listFileInfo(bool,bool)")]
+// was: Ogre::RbxArchive::listFileInfo(bool,bool)
+pub fn stub_ba6460() -> ! {
+    todo!("0xba6460 Ogre::RbxArchive::listFileInfo(bool,bool)")
+}
+
+// 0xba667c — __ZN4Ogre10RbxArchive4findERKSsbb
+#[doc(alias = "Ogre::RbxArchive::find(std::string const&,bool,bool)")]
+// was: Ogre::RbxArchive::find(std::string const&,bool,bool)
+pub fn stub_ba667c() -> ! {
+    todo!("0xba667c Ogre::RbxArchive::find(std::string const&,bool,bool)")
+}
+
+// 0xba67f8 — __ZNK4Ogre10RbxArchive12findFileInfoERKSsbb
+#[doc(alias = "Ogre::RbxArchive::findFileInfo(std::string const&,bool,bool)const")]
+// was: Ogre::RbxArchive::findFileInfo(std::string const&,bool,bool)const
+pub fn stub_ba67f8() -> ! {
+    todo!("0xba67f8 Ogre::RbxArchive::findFileInfo(std::string const&,bool,bool)const")
+}
+
+// 0xba6974 — __ZN4Ogre10RbxArchive12makeFullPathERKSs
+#[doc(alias = "Ogre::RbxArchive::makeFullPath(std::string const&)")]
+// was: Ogre::RbxArchive::makeFullPath(std::string const&)
+pub fn stub_ba6974() -> ! {
+    todo!("0xba6974 Ogre::RbxArchive::makeFullPath(std::string const&)")
+}
+
+// 0xba6f04 — __ZN4Ogre10RbxArchive6existsERKSs
+#[doc(alias = "Ogre::RbxArchive::exists(std::string const&)")]
+// was: Ogre::RbxArchive::exists(std::string const&)
+pub fn stub_ba6f04() -> ! {
+    todo!("0xba6f04 Ogre::RbxArchive::exists(std::string const&)")
+}
+
+// 0xba7028 — __ZN4Ogre10RbxArchive15getModifiedTimeERKSs
+#[doc(alias = "Ogre::RbxArchive::getModifiedTime(std::string const&)")]
+// was: Ogre::RbxArchive::getModifiedTime(std::string const&)
+pub fn stub_ba7028() -> ! {
+    todo!("0xba7028 Ogre::RbxArchive::getModifiedTime(std::string const&)")
+}
+
+// 0xba7150 — __ZN4Ogre17RbxArchiveFactoryC2EPN3RBX15ContentProviderE
+#[doc(alias = "Ogre::RbxArchiveFactory::RbxArchiveFactory(RBX::ContentProvider *)")]
+// was: Ogre::RbxArchiveFactory::RbxArchiveFactory(RBX::ContentProvider *)
+pub fn stub_ba7150() -> ! {
+    todo!("0xba7150 Ogre::RbxArchiveFactory::RbxArchiveFactory(RBX::ContentProvider *)")
+}
+
+// 0xba72c4 — __ZN4Ogre17RbxArchiveFactory18getArchiveTypeNameEPN3RBX15ContentProviderE
+#[doc(alias = "Ogre::RbxArchiveFactory::getArchiveTypeName(RBX::ContentProvider *)")]
+// was: Ogre::RbxArchiveFactory::getArchiveTypeName(RBX::ContentProvider *)
+pub fn stub_ba72c4() -> ! {
+    todo!("0xba72c4 Ogre::RbxArchiveFactory::getArchiveTypeName(RBX::ContentProvider *)")
+}
+
+// 0xba74cc — __ZNK4Ogre17RbxArchiveFactory7getTypeEv
+#[doc(alias = "Ogre::RbxArchiveFactory::getType(void)const")]
+// was: Ogre::RbxArchiveFactory::getType(void)const
+pub fn stub_ba74cc() -> ! {
+    todo!("0xba74cc Ogre::RbxArchiveFactory::getType(void)const")
+}
+
+// 0xba74d0 — __ZN4Ogre17RbxArchiveFactory9singletonEv
+#[doc(alias = "Ogre::RbxArchiveFactory::singleton(void)")]
+// was: Ogre::RbxArchiveFactory::singleton(void)
+pub fn stub_ba74d0() -> ! {
+    todo!("0xba74d0 Ogre::RbxArchiveFactory::singleton(void)")
+}
+
+// 0xba75a8 — __ZN4Ogre17RbxArchiveFactoryD0Ev
+#[doc(alias = "Ogre::RbxArchiveFactory::~RbxArchiveFactory()")]
+// was: Ogre::RbxArchiveFactory::~RbxArchiveFactory()
+pub fn stub_ba75a8() -> ! {
+    todo!("0xba75a8 Ogre::RbxArchiveFactory::~RbxArchiveFactory()")
+}
+
+// 0xba7618 — __ZN4Ogre17RbxArchiveFactoryD1Ev
+#[doc(alias = "Ogre::RbxArchiveFactory::~RbxArchiveFactory()")]
+// was: Ogre::RbxArchiveFactory::~RbxArchiveFactory()
+pub fn stub_ba7618() -> ! {
+    todo!("0xba7618 Ogre::RbxArchiveFactory::~RbxArchiveFactory()")
+}
+
+// 0xba7684 — __ZN4Ogre17RbxArchiveFactory10destroyAllEv
+#[doc(alias = "Ogre::RbxArchiveFactory::destroyAll(void)")]
+// was: Ogre::RbxArchiveFactory::destroyAll(void)
+pub fn stub_ba7684() -> ! {
+    todo!("0xba7684 Ogre::RbxArchiveFactory::destroyAll(void)")
+}
+
+// 0xba769c — __ZN4Ogre17RbxArchiveFactory14createInstanceERKSs
+#[doc(alias = "Ogre::RbxArchiveFactory::createInstance(std::string const&)")]
+// was: Ogre::RbxArchiveFactory::createInstance(std::string const&)
+pub fn stub_ba769c() -> ! {
+    todo!("0xba769c Ogre::RbxArchiveFactory::createInstance(std::string const&)")
+}
