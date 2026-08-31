@@ -30,3 +30,4 @@ pub mod generated_shard_u;
 pub mod generated_shard_v;
 pub mod generated_shard_w;
 pub mod generated_shard_x;
+pub mod generated_shard_y;
