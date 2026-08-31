@@ -55,3 +55,4 @@ pub mod generated_core_shard_o;
 pub mod generated_core_shard_p;
 pub mod generated_core_shard_q;
 pub mod generated_core_shard_r;
+pub mod generated_core_shard_s;
