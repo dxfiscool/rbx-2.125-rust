@@ -1,6 +1,6 @@
-//! platform generated — 2074 stubs sorted by EA, from ida/export.json
+//! platform generated — 2174 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 2074 stubs (1974 prior + 100 this batch, 3026 filtered, 1500 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 2174 stubs (2074 prior + 100 this batch, 3026 filtered, 1400 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -14473,4 +14473,694 @@ pub fn stub_ec5cac() -> ! {
 #[doc(alias = "-[GAIDispatcher requestBuilder]")]
 pub fn stub_ec5cd0() -> ! {
     todo!("0xec5cd0 -[GAIDispatcher requestBuilder]")
+}
+
+// 0xec5ce0 — -[GAIDispatcher setRequestBuilder:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id)
+#[doc(alias = "-[GAIDispatcher setRequestBuilder:]")]
+pub fn stub_ec5ce0() -> ! {
+    todo!("0xec5ce0 -[GAIDispatcher setRequestBuilder:]")
+}
+
+// 0xec5d04 — -[GAIDispatcher pendingDispatch]
+// type: GAIURLConnection *__cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher pendingDispatch]")]
+pub fn stub_ec5d04() -> ! {
+    todo!("0xec5d04 -[GAIDispatcher pendingDispatch]")
+}
+
+// 0xec5d14 — -[GAIDispatcher setPendingDispatch:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id)
+#[doc(alias = "-[GAIDispatcher setPendingDispatch:]")]
+pub fn stub_ec5d14() -> ! {
+    todo!("0xec5d14 -[GAIDispatcher setPendingDispatch:]")
+}
+
+// 0xec5d38 — -[GAIDispatcher reachability]
+// type: GAIReachabilityChecker *__cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher reachability]")]
+pub fn stub_ec5d38() -> ! {
+    todo!("0xec5d38 -[GAIDispatcher reachability]")
+}
+
+// 0xec5d48 — -[GAIDispatcher setReachability:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id)
+#[doc(alias = "-[GAIDispatcher setReachability:]")]
+pub fn stub_ec5d48() -> ! {
+    todo!("0xec5d48 -[GAIDispatcher setReachability:]")
+}
+
+// 0xec5d6c — -[GAIDispatcher cacheBuster]
+// type: unsigned __int64 __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher cacheBuster]")]
+pub fn stub_ec5d6c() -> ! {
+    todo!("0xec5d6c -[GAIDispatcher cacheBuster]")
+}
+
+// 0xec5d84 — -[GAIDispatcher setCacheBuster:]
+// type: void __cdecl(GAIDispatcher *self, SEL, unsigned __int64)
+#[doc(alias = "-[GAIDispatcher setCacheBuster:]")]
+pub fn stub_ec5d84() -> ! {
+    todo!("0xec5d84 -[GAIDispatcher setCacheBuster:]")
+}
+
+// 0xec5d98 — -[GAIDispatcher dispatchTimer]
+// type: NSTimer *__cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher dispatchTimer]")]
+pub fn stub_ec5d98() -> ! {
+    todo!("0xec5d98 -[GAIDispatcher dispatchTimer]")
+}
+
+// 0xec5da8 — -[GAIDispatcher setDispatchTimer:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id)
+#[doc(alias = "-[GAIDispatcher setDispatchTimer:]")]
+pub fn stub_ec5da8() -> ! {
+    todo!("0xec5da8 -[GAIDispatcher setDispatchTimer:]")
+}
+
+// 0xec5dcc — -[GAIDispatcher urlConnectionClass]
+// type: Class __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher urlConnectionClass]")]
+pub fn stub_ec5dcc() -> ! {
+    todo!("0xec5dcc -[GAIDispatcher urlConnectionClass]")
+}
+
+// 0xec5ddc — -[GAIDispatcher setUrlConnectionClass:]
+// type: void __cdecl(GAIDispatcher *self, SEL, Class)
+#[doc(alias = "-[GAIDispatcher setUrlConnectionClass:]")]
+pub fn stub_ec5ddc() -> ! {
+    todo!("0xec5ddc -[GAIDispatcher setUrlConnectionClass:]")
+}
+
+// 0xec5e70 — +[TFApplicationInformation bundleInformation]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFApplicationInformation bundleInformation]")]
+pub fn stub_ec5e70() -> ! {
+    todo!("0xec5e70 +[TFApplicationInformation bundleInformation]")
+}
+
+// 0xec61d8 — +[TFApplicationInformation setApplicationToken:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[TFApplicationInformation setApplicationToken:]")]
+pub fn stub_ec61d8() -> ! {
+    todo!("0xec61d8 +[TFApplicationInformation setApplicationToken:]")
+}
+
+// 0xec6360 — +[TFApplicationInformation bundleUUID]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFApplicationInformation bundleUUID]")]
+pub fn stub_ec6360() -> ! {
+    todo!("0xec6360 +[TFApplicationInformation bundleUUID]")
+}
+
+// 0xec6370 — +[TFApplicationInformation getApplicationVersion]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFApplicationInformation getApplicationVersion]")]
+pub fn stub_ec6370() -> ! {
+    todo!("0xec6370 +[TFApplicationInformation getApplicationVersion]")
+}
+
+// 0xec63a4 — ___49+[TFApplicationInformation getApplicationVersion]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___49+[TFApplicationInformation getApplicationVersion]_block_invoke")]
+pub fn stub_ec63a4() -> ! {
+    todo!("0xec63a4 ___49+[TFApplicationInformation getApplicationVersion]_block_invoke")
+}
+
+// 0xec6528 — +[TFApplicationInformation hasEncryptionSet:]
+// type: char __cdecl(id, SEL, id *)
+#[doc(alias = "+[TFApplicationInformation hasEncryptionSet:]")]
+pub fn stub_ec6528() -> ! {
+    todo!("0xec6528 +[TFApplicationInformation hasEncryptionSet:]")
+}
+
+// 0xec6644 — +[TFApplicationInformation getDistributionMethod:]
+// type: id __cdecl(id, SEL, id *)
+#[doc(alias = "+[TFApplicationInformation getDistributionMethod:]")]
+pub fn stub_ec6644() -> ! {
+    todo!("0xec6644 +[TFApplicationInformation getDistributionMethod:]")
+}
+
+// 0xec6680 — ___50+[TFApplicationInformation getDistributionMethod:]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___50+[TFApplicationInformation getDistributionMethod:]_block_invoke")]
+pub fn stub_ec6680() -> ! {
+    todo!("0xec6680 ___50+[TFApplicationInformation getDistributionMethod:]_block_invoke")
+}
+
+// 0xec6b18 — +[TFApplicationInformation allowInAppUpdate]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[TFApplicationInformation allowInAppUpdate]")]
+pub fn stub_ec6b18() -> ! {
+    todo!("0xec6b18 +[TFApplicationInformation allowInAppUpdate]")
+}
+
+// 0xec6b50 — ___44+[TFApplicationInformation allowInAppUpdate]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___44+[TFApplicationInformation allowInAppUpdate]_block_invoke")]
+pub fn stub_ec6b50() -> ! {
+    todo!("0xec6b50 ___44+[TFApplicationInformation allowInAppUpdate]_block_invoke")
+}
+
+// 0xec6c3c — +[TFApplicationInformation allowDeviceIdentifier]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[TFApplicationInformation allowDeviceIdentifier]")]
+pub fn stub_ec6c3c() -> ! {
+    todo!("0xec6c3c +[TFApplicationInformation allowDeviceIdentifier]")
+}
+
+// 0xec6c74 — ___49+[TFApplicationInformation allowDeviceIdentifier]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___49+[TFApplicationInformation allowDeviceIdentifier]_block_invoke")]
+pub fn stub_ec6c74() -> ! {
+    todo!("0xec6c74 ___49+[TFApplicationInformation allowDeviceIdentifier]_block_invoke")
+}
+
+// 0xec72b4 — +[TFCompatibility allowedToRun_5_0]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[TFCompatibility allowedToRun_5_0]")]
+pub fn stub_ec72b4() -> ! {
+    todo!("0xec72b4 +[TFCompatibility allowedToRun_5_0]")
+}
+
+// 0xec72f4 — ___35+[TFCompatibility allowedToRun_5_0]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___35+[TFCompatibility allowedToRun_5_0]_block_invoke")]
+pub fn stub_ec72f4() -> ! {
+    todo!("0xec72f4 ___35+[TFCompatibility allowedToRun_5_0]_block_invoke")
+}
+
+// 0xec7378 — +[TFCompatibility allowedToRun_6_0]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[TFCompatibility allowedToRun_6_0]")]
+pub fn stub_ec7378() -> ! {
+    todo!("0xec7378 +[TFCompatibility allowedToRun_6_0]")
+}
+
+// 0xec73b0 — ___35+[TFCompatibility allowedToRun_6_0]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___35+[TFCompatibility allowedToRun_6_0]_block_invoke")]
+pub fn stub_ec73b0() -> ! {
+    todo!("0xec73b0 ___35+[TFCompatibility allowedToRun_6_0]_block_invoke")
+}
+
+// 0xec7434 — +[TFCompatibility isIdiomIPhone]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[TFCompatibility isIdiomIPhone]")]
+pub fn stub_ec7434() -> ! {
+    todo!("0xec7434 +[TFCompatibility isIdiomIPhone]")
+}
+
+// 0xec746c — ___32+[TFCompatibility isIdiomIPhone]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___32+[TFCompatibility isIdiomIPhone]_block_invoke")]
+pub fn stub_ec746c() -> ! {
+    todo!("0xec746c ___32+[TFCompatibility isIdiomIPhone]_block_invoke")
+}
+
+// 0xec74c4 — +[TFCompatibility isIdiomIPad]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[TFCompatibility isIdiomIPad]")]
+pub fn stub_ec74c4() -> ! {
+    todo!("0xec74c4 +[TFCompatibility isIdiomIPad]")
+}
+
+// 0xec74fc — ___30+[TFCompatibility isIdiomIPad]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___30+[TFCompatibility isIdiomIPad]_block_invoke")]
+pub fn stub_ec74fc() -> ! {
+    todo!("0xec74fc ___30+[TFCompatibility isIdiomIPad]_block_invoke")
+}
+
+// 0xec7550 — +[TFCrypto sha1:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[TFCrypto sha1:]")]
+pub fn stub_ec7550() -> ! {
+    todo!("0xec7550 +[TFCrypto sha1:]")
+}
+
+// 0xec769c — +[TFDeviceInfo initialize]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TFDeviceInfo initialize]")]
+pub fn stub_ec769c() -> ! {
+    todo!("0xec769c +[TFDeviceInfo initialize]")
+}
+
+// 0xec76d0 — ___26+[TFDeviceInfo initialize]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___26+[TFDeviceInfo initialize]_block_invoke")]
+pub fn stub_ec76d0() -> ! {
+    todo!("0xec76d0 ___26+[TFDeviceInfo initialize]_block_invoke")
+}
+
+// 0xec7718 — +[TFDeviceInfo addCustomEnvironmentInformation:forKey:]
+// type: void __cdecl(id, SEL, id, id)
+#[doc(alias = "+[TFDeviceInfo addCustomEnvironmentInformation:forKey:]")]
+pub fn stub_ec7718() -> ! {
+    todo!("0xec7718 +[TFDeviceInfo addCustomEnvironmentInformation:forKey:]")
+}
+
+// 0xec77fc — +[TFDeviceInfo setDeviceIdentifier:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[TFDeviceInfo setDeviceIdentifier:]")]
+pub fn stub_ec77fc() -> ! {
+    todo!("0xec77fc +[TFDeviceInfo setDeviceIdentifier:]")
+}
+
+// 0xec78b0 — +[TFDeviceInfo deviceInformation]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFDeviceInfo deviceInformation]")]
+pub fn stub_ec78b0() -> ! {
+    todo!("0xec78b0 +[TFDeviceInfo deviceInformation]")
+}
+
+// 0xec7ef8 — +[TFDeviceInfo machine]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFDeviceInfo machine]")]
+pub fn stub_ec7ef8() -> ! {
+    todo!("0xec7ef8 +[TFDeviceInfo machine]")
+}
+
+// 0xec7f70 — +[TFDeviceInfo architecture]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFDeviceInfo architecture]")]
+pub fn stub_ec7f70() -> ! {
+    todo!("0xec7f70 +[TFDeviceInfo architecture]")
+}
+
+// 0xec7fa4 — +[TFDeviceInfo carrier]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFDeviceInfo carrier]")]
+pub fn stub_ec7fa4() -> ! {
+    todo!("0xec7fa4 +[TFDeviceInfo carrier]")
+}
+
+// 0xec7fd8 — ___23+[TFDeviceInfo carrier]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___23+[TFDeviceInfo carrier]_block_invoke")]
+pub fn stub_ec7fd8() -> ! {
+    todo!("0xec7fd8 ___23+[TFDeviceInfo carrier]_block_invoke")
+}
+
+// 0xec80d8 — +[TFDeviceInfo orientation]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFDeviceInfo orientation]")]
+pub fn stub_ec80d8() -> ! {
+    todo!("0xec80d8 +[TFDeviceInfo orientation]")
+}
+
+// 0xec818c — +[TFDeviceInfo batteryState]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFDeviceInfo batteryState]")]
+pub fn stub_ec818c() -> ! {
+    todo!("0xec818c +[TFDeviceInfo batteryState]")
+}
+
+// 0xec8218 — +[TFDeviceInfo connectivityState]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFDeviceInfo connectivityState]")]
+pub fn stub_ec8218() -> ! {
+    todo!("0xec8218 +[TFDeviceInfo connectivityState]")
+}
+
+// 0xec8c50 — +[TFLogManager sharedManager]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFLogManager sharedManager]")]
+pub fn stub_ec8c50() -> ! {
+    todo!("0xec8c50 +[TFLogManager sharedManager]")
+}
+
+// 0xec8c80 — ___29+[TFLogManager sharedManager]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___29+[TFLogManager sharedManager]_block_invoke")]
+pub fn stub_ec8c80() -> ! {
+    todo!("0xec8c80 ___29+[TFLogManager sharedManager]_block_invoke")
+}
+
+// 0xec8cb8 — -[TFLogManager init]
+// type: TFLogManager *__cdecl(TFLogManager *self, SEL)
+#[doc(alias = "-[TFLogManager init]")]
+pub fn stub_ec8cb8() -> ! {
+    todo!("0xec8cb8 -[TFLogManager init]")
+}
+
+// 0xec8d54 — -[TFLogManager dealloc]
+// type: void __cdecl(TFLogManager *self, SEL)
+#[doc(alias = "-[TFLogManager dealloc]")]
+pub fn stub_ec8d54() -> ! {
+    todo!("0xec8d54 -[TFLogManager dealloc]")
+}
+
+// 0xec8da4 — -[TFLogManager setCurrentSessionID:]
+// type: void __cdecl(TFLogManager *self, SEL, id)
+#[doc(alias = "-[TFLogManager setCurrentSessionID:]")]
+pub fn stub_ec8da4() -> ! {
+    todo!("0xec8da4 -[TFLogManager setCurrentSessionID:]")
+}
+
+// 0xec8e48 — ___36-[TFLogManager setCurrentSessionID:]_block_invoke
+#[doc(alias = "___36-[TFLogManager setCurrentSessionID:]_block_invoke")]
+pub fn stub_ec8e48() -> ! {
+    todo!("0xec8e48 ___36-[TFLogManager setCurrentSessionID:]_block_invoke")
+}
+
+// 0xec8f64 — -[TFLogManager setLogToConsole:]
+// type: void __cdecl(TFLogManager *self, SEL, char)
+#[doc(alias = "-[TFLogManager setLogToConsole:]")]
+pub fn stub_ec8f64() -> ! {
+    todo!("0xec8f64 -[TFLogManager setLogToConsole:]")
+}
+
+// 0xec8fe4 — ___32-[TFLogManager setLogToConsole:]_block_invoke
+#[doc(alias = "___32-[TFLogManager setLogToConsole:]_block_invoke")]
+pub fn stub_ec8fe4() -> ! {
+    todo!("0xec8fe4 ___32-[TFLogManager setLogToConsole:]_block_invoke")
+}
+
+// 0xec9010 — -[TFLogManager setLogToSTDERR:]
+// type: void __cdecl(TFLogManager *self, SEL, char)
+#[doc(alias = "-[TFLogManager setLogToSTDERR:]")]
+pub fn stub_ec9010() -> ! {
+    todo!("0xec9010 -[TFLogManager setLogToSTDERR:]")
+}
+
+// 0xec9090 — ___31-[TFLogManager setLogToSTDERR:]_block_invoke
+#[doc(alias = "___31-[TFLogManager setLogToSTDERR:]_block_invoke")]
+pub fn stub_ec9090() -> ! {
+    todo!("0xec9090 ___31-[TFLogManager setLogToSTDERR:]_block_invoke")
+}
+
+// 0xec90bc — -[TFLogManager log:]
+// type: void __cdecl(TFLogManager *self, SEL, id)
+#[doc(alias = "-[TFLogManager log:]")]
+pub fn stub_ec90bc() -> ! {
+    todo!("0xec90bc -[TFLogManager log:]")
+}
+
+// 0xec91b0 — ___20-[TFLogManager log:]_block_invoke
+#[doc(alias = "___20-[TFLogManager log:]_block_invoke")]
+pub fn stub_ec91b0() -> ! {
+    todo!("0xec91b0 ___20-[TFLogManager log:]_block_invoke")
+}
+
+// 0xec93f4 — -[TFLogManager logAsync:]
+// type: void __cdecl(TFLogManager *self, SEL, id)
+#[doc(alias = "-[TFLogManager logAsync:]")]
+pub fn stub_ec93f4() -> ! {
+    todo!("0xec93f4 -[TFLogManager logAsync:]")
+}
+
+// 0xec94e8 — ___25-[TFLogManager logAsync:]_block_invoke
+#[doc(alias = "___25-[TFLogManager logAsync:]_block_invoke")]
+pub fn stub_ec94e8() -> ! {
+    todo!("0xec94e8 ___25-[TFLogManager logAsync:]_block_invoke")
+}
+
+// 0xec9734 — -[TFLogManager _pathForSessionID:]
+// type: id __cdecl(TFLogManager *self, SEL, id)
+#[doc(alias = "-[TFLogManager _pathForSessionID:]")]
+pub fn stub_ec9734() -> ! {
+    todo!("0xec9734 -[TFLogManager _pathForSessionID:]")
+}
+
+// 0xec9780 — -[TFLogManager writeLogFor:toFileDescriptor:inAHurry:bytesWritten:]
+// type: char __cdecl(TFLogManager *self, SEL, id, int, char, int *)
+#[doc(alias = "-[TFLogManager writeLogFor:toFileDescriptor:inAHurry:bytesWritten:]")]
+pub fn stub_ec9780() -> ! {
+    todo!("0xec9780 -[TFLogManager writeLogFor:toFileDescriptor:inAHurry:bytesWritten:]")
+}
+
+// 0xec987c — ___67-[TFLogManager writeLogFor:toFileDescriptor:inAHurry:bytesWritten:]_block_invoke
+#[doc(alias = "___67-[TFLogManager writeLogFor:toFileDescriptor:inAHurry:bytesWritten:]_block_invoke")]
+pub fn stub_ec987c() -> ! {
+    todo!("0xec987c ___67-[TFLogManager writeLogFor:toFileDescriptor:inAHurry:bytesWritten:]_block_invoke")
+}
+
+// 0xec9b68 — -[TFLogManager sessionIDsWithOldLogs]
+// type: id __cdecl(TFLogManager *self, SEL)
+#[doc(alias = "-[TFLogManager sessionIDsWithOldLogs]")]
+pub fn stub_ec9b68() -> ! {
+    todo!("0xec9b68 -[TFLogManager sessionIDsWithOldLogs]")
+}
+
+// 0xec9dd0 — ___37-[TFLogManager sessionIDsWithOldLogs]_block_invoke
+#[doc(alias = "___37-[TFLogManager sessionIDsWithOldLogs]_block_invoke")]
+pub fn stub_ec9dd0() -> ! {
+    todo!("0xec9dd0 ___37-[TFLogManager sessionIDsWithOldLogs]_block_invoke")
+}
+
+// 0xec9e58 — -[TFLogManager deleteLogFor:]
+// type: void __cdecl(TFLogManager *self, SEL, id)
+#[doc(alias = "-[TFLogManager deleteLogFor:]")]
+pub fn stub_ec9e58() -> ! {
+    todo!("0xec9e58 -[TFLogManager deleteLogFor:]")
+}
+
+// 0xec9efc — ___29-[TFLogManager deleteLogFor:]_block_invoke
+#[doc(alias = "___29-[TFLogManager deleteLogFor:]_block_invoke")]
+pub fn stub_ec9efc() -> ! {
+    todo!("0xec9efc ___29-[TFLogManager deleteLogFor:]_block_invoke")
+}
+
+// 0xec9f44 — -[TFLogManager internalDeleteLogFor:]
+// type: void __cdecl(TFLogManager *self, SEL, id)
+#[doc(alias = "-[TFLogManager internalDeleteLogFor:]")]
+pub fn stub_ec9f44() -> ! {
+    todo!("0xec9f44 -[TFLogManager internalDeleteLogFor:]")
+}
+
+// 0xeca020 — -[TFLogManager logCheckpoints]
+// type: char __cdecl(TFLogManager *self, SEL)
+#[doc(alias = "-[TFLogManager logCheckpoints]")]
+pub fn stub_eca020() -> ! {
+    todo!("0xeca020 -[TFLogManager logCheckpoints]")
+}
+
+// 0xeca038 — -[TFLogManager setLogCheckpoints:]
+// type: void __cdecl(TFLogManager *self, SEL, char)
+#[doc(alias = "-[TFLogManager setLogCheckpoints:]")]
+pub fn stub_eca038() -> ! {
+    todo!("0xeca038 -[TFLogManager setLogCheckpoints:]")
+}
+
+// 0xeca050 — -[TFLogManager .cxx_destruct]
+// type: void __cdecl(TFLogManager *self, SEL)
+#[doc(alias = "-[TFLogManager .cxx_destruct]")]
+pub fn stub_eca050() -> ! {
+    todo!("0xeca050 -[TFLogManager .cxx_destruct]")
+}
+
+// 0xecb13c — +[TFMessagePack pack:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[TFMessagePack pack:]")]
+pub fn stub_ecb13c() -> ! {
+    todo!("0xecb13c +[TFMessagePack pack:]")
+}
+
+// 0xecb19c — +[TFMessagePack unpack:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[TFMessagePack unpack:]")]
+pub fn stub_ecb19c() -> ! {
+    todo!("0xecb19c +[TFMessagePack unpack:]")
+}
+
+// 0xecb744 — +[TFMessagePack unpackDictionary:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[TFMessagePack unpackDictionary:]")]
+pub fn stub_ecb744() -> ! {
+    todo!("0xecb744 +[TFMessagePack unpackDictionary:]")
+}
+
+// 0xecb7a8 — +[TFMessagePack unpackArray:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[TFMessagePack unpackArray:]")]
+pub fn stub_ecb7a8() -> ! {
+    todo!("0xecb7a8 +[TFMessagePack unpackArray:]")
+}
+
+// 0xecb80c — +[TFMessagePack messagePackWithContentsOfFile:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[TFMessagePack messagePackWithContentsOfFile:]")]
+pub fn stub_ecb80c() -> ! {
+    todo!("0xecb80c +[TFMessagePack messagePackWithContentsOfFile:]")
+}
+
+// 0xecb870 — +[TFMessagePack packArrayHeaderOnly:]
+// type: id __cdecl(id, SEL, unsigned int)
+#[doc(alias = "+[TFMessagePack packArrayHeaderOnly:]")]
+pub fn stub_ecb870() -> ! {
+    todo!("0xecb870 +[TFMessagePack packArrayHeaderOnly:]")
+}
+
+// 0xecb8f8 — +[TFMessagePack packMapHeaderOnly:]
+// type: id __cdecl(id, SEL, unsigned int)
+#[doc(alias = "+[TFMessagePack packMapHeaderOnly:]")]
+pub fn stub_ecb8f8() -> ! {
+    todo!("0xecb8f8 +[TFMessagePack packMapHeaderOnly:]")
+}
+
+// 0xecb980 — +[TFMessagePack packRawHeaderOnly:]
+// type: id __cdecl(id, SEL, unsigned int)
+#[doc(alias = "+[TFMessagePack packRawHeaderOnly:]")]
+pub fn stub_ecb980() -> ! {
+    todo!("0xecb980 +[TFMessagePack packRawHeaderOnly:]")
+}
+
+// 0xecba08 — -[__TFMessagePackPacker pack:]
+// type: id __cdecl(__TFMessagePackPacker *self, SEL, id)
+#[doc(alias = "-[__TFMessagePackPacker pack:]")]
+pub fn stub_ecba08() -> ! {
+    todo!("0xecba08 -[__TFMessagePackPacker pack:]")
+}
+
+// 0xecbb0c — -[__TFMessagePackPacker packObject:]
+// type: void __cdecl(__TFMessagePackPacker *self, SEL, id)
+#[doc(alias = "-[__TFMessagePackPacker packObject:]")]
+pub fn stub_ecbb0c() -> ! {
+    todo!("0xecbb0c -[__TFMessagePackPacker packObject:]")
+}
+
+// 0xecbd24 — -[__TFMessagePackPacker packNSArray:]
+// type: void __cdecl(__TFMessagePackPacker *self, SEL, id)
+#[doc(alias = "-[__TFMessagePackPacker packNSArray:]")]
+pub fn stub_ecbd24() -> ! {
+    todo!("0xecbd24 -[__TFMessagePackPacker packNSArray:]")
+}
+
+// 0xecbe28 — -[__TFMessagePackPacker packNSDictionary:]
+// type: void __cdecl(__TFMessagePackPacker *self, SEL, id)
+#[doc(alias = "-[__TFMessagePackPacker packNSDictionary:]")]
+pub fn stub_ecbe28() -> ! {
+    todo!("0xecbe28 -[__TFMessagePackPacker packNSDictionary:]")
+}
+
+// 0xecbee0 — ___42-[__TFMessagePackPacker packNSDictionary:]_block_invoke
+// type: int __fastcall(int, id)
+#[doc(alias = "___42-[__TFMessagePackPacker packNSDictionary:]_block_invoke")]
+pub fn stub_ecbee0() -> ! {
+    todo!("0xecbee0 ___42-[__TFMessagePackPacker packNSDictionary:]_block_invoke")
+}
+
+// 0xecbf4c — -[__TFMessagePackPacker packNSNumber:]
+// type: void __cdecl(__TFMessagePackPacker *self, SEL, id)
+#[doc(alias = "-[__TFMessagePackPacker packNSNumber:]")]
+pub fn stub_ecbf4c() -> ! {
+    todo!("0xecbf4c -[__TFMessagePackPacker packNSNumber:]")
+}
+
+// 0xecc4d4 — ___38-[__TFMessagePackPacker packNSNumber:]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___38-[__TFMessagePackPacker packNSNumber:]_block_invoke")]
+pub fn stub_ecc4d4() -> ! {
+    todo!("0xecc4d4 ___38-[__TFMessagePackPacker packNSNumber:]_block_invoke")
+}
+
+// 0xecc4ec — -[__TFMessagePackPacker packNSString:]
+// type: void __cdecl(__TFMessagePackPacker *self, SEL, id)
+#[doc(alias = "-[__TFMessagePackPacker packNSString:]")]
+pub fn stub_ecc4ec() -> ! {
+    todo!("0xecc4ec -[__TFMessagePackPacker packNSString:]")
+}
+
+// 0xecc578 — -[__TFMessagePackPacker packNSData:]
+// type: void __cdecl(__TFMessagePackPacker *self, SEL, id)
+#[doc(alias = "-[__TFMessagePackPacker packNSData:]")]
+pub fn stub_ecc578() -> ! {
+    todo!("0xecc578 -[__TFMessagePackPacker packNSData:]")
+}
+
+// 0xecc600 — -[__TFMessagePackPacker packNSNull]
+// type: void __cdecl(__TFMessagePackPacker *self, SEL)
+#[doc(alias = "-[__TFMessagePackPacker packNSNull]")]
+pub fn stub_ecc600() -> ! {
+    todo!("0xecc600 -[__TFMessagePackPacker packNSNull]")
+}
+
+// 0xecc638 — -[NSData tf_isMessagePack]
+// type: char __cdecl(NSData *self, SEL)
+#[doc(alias = "-[NSData tf_isMessagePack]")]
+pub fn stub_ecc638() -> ! {
+    todo!("0xecc638 -[NSData tf_isMessagePack]")
+}
+
+// 0xecc670 — -[NSData tf_setMessagePack:]
+// type: void __cdecl(NSData *self, SEL, char)
+#[doc(alias = "-[NSData tf_setMessagePack:]")]
+pub fn stub_ecc670() -> ! {
+    todo!("0xecc670 -[NSData tf_setMessagePack:]")
+}
+
+// 0xecde90 — +[TestFlight initialize]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TestFlight initialize]")]
+pub fn stub_ecde90() -> ! {
+    todo!("0xecde90 +[TestFlight initialize]")
+}
+
+// 0xecdec4 — ___24+[TestFlight initialize]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___24+[TestFlight initialize]_block_invoke")]
+pub fn stub_ecdec4() -> ! {
+    todo!("0xecdec4 ___24+[TestFlight initialize]_block_invoke")
+}
+
+// 0xecdf5c — +[TestFlight addCustomEnvironmentInformation:forKey:]
+// type: void __cdecl(id, SEL, id, id)
+#[doc(alias = "+[TestFlight addCustomEnvironmentInformation:forKey:]")]
+pub fn stub_ecdf5c() -> ! {
+    todo!("0xecdf5c +[TestFlight addCustomEnvironmentInformation:forKey:]")
+}
+
+// 0xece050 — ___53+[TestFlight addCustomEnvironmentInformation:forKey:]_block_invoke
+#[doc(alias = "___53+[TestFlight addCustomEnvironmentInformation:forKey:]_block_invoke")]
+pub fn stub_ece050() -> ! {
+    todo!("0xece050 ___53+[TestFlight addCustomEnvironmentInformation:forKey:]_block_invoke")
+}
+
+// 0xece0bc — +[TestFlight takeOff:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[TestFlight takeOff:]")]
+pub fn stub_ece0bc() -> ! {
+    todo!("0xece0bc +[TestFlight takeOff:]")
+}
+
+// 0xece168 — ___22+[TestFlight takeOff:]_block_invoke
+#[doc(alias = "___22+[TestFlight takeOff:]_block_invoke")]
+pub fn stub_ece168() -> ! {
+    todo!("0xece168 ___22+[TestFlight takeOff:]_block_invoke")
+}
+
+// 0xece39c — ___22+[TestFlight takeOff:]_block_invoke_2
+// type: void __cdecl(id)
+#[doc(alias = "___22+[TestFlight takeOff:]_block_invoke_2")]
+pub fn stub_ece39c() -> ! {
+    todo!("0xece39c ___22+[TestFlight takeOff:]_block_invoke_2")
+}
+
+// 0xece3fc — +[TestFlight _automaticStartSession]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TestFlight _automaticStartSession]")]
+pub fn stub_ece3fc() -> ! {
+    todo!("0xece3fc +[TestFlight _automaticStartSession]")
+}
+
+// 0xece414 — +[TestFlight _automaticEndSession]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TestFlight _automaticEndSession]")]
+pub fn stub_ece414() -> ! {
+    todo!("0xece414 +[TestFlight _automaticEndSession]")
+}
+
+// 0xece42c — +[TestFlight manuallyStartSession]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TestFlight manuallyStartSession]")]
+pub fn stub_ece42c() -> ! {
+    todo!("0xece42c +[TestFlight manuallyStartSession]")
+}
+
+// 0xece444 — +[TestFlight manuallyEndSession]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TestFlight manuallyEndSession]")]
+pub fn stub_ece444() -> ! {
+    todo!("0xece444 +[TestFlight manuallyEndSession]")
 }
