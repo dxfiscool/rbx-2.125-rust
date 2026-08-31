@@ -28412,7 +28412,7 @@ pub fn stub_c90074() -> ! {
 }
 
 // 0xc90080 — __ZThn88_N4Ogre4FontD0Ev
-#[doc(alias = "`non-virtual thunk to Ogre::Font::~Font()")]
+#[doc(alias = "non-virtual thunk to Ogre::Font::~Font()")]
 // was: `non-virtual thunk to'Ogre::Font::~Font()
 pub fn stub_c90080() -> ! {
     todo!("0xc90080 `non-virtual thunk to'Ogre::Font::~Font()")
@@ -28426,7 +28426,7 @@ pub fn stub_c90114() -> ! {
 }
 
 // 0xc90534 — __ZThn88_N4Ogre4FontD1Ev
-#[doc(alias = "`non-virtual thunk to Ogre::Font::~Font()")]
+#[doc(alias = "non-virtual thunk to Ogre::Font::~Font()")]
 // was: `non-virtual thunk to'Ogre::Font::~Font()
 pub fn stub_c90534() -> ! {
     todo!("0xc90534 `non-virtual thunk to'Ogre::Font::~Font()")
@@ -28503,7 +28503,7 @@ pub fn stub_c913ac() -> ! {
 }
 
 // 0xc92bf8 — __ZThn88_N4Ogre4Font12loadResourceEPNS_8ResourceE
-#[doc(alias = "`non-virtual thunk to Ogre::Font::loadResource(Ogre::Resource *)")]
+#[doc(alias = "non-virtual thunk to Ogre::Font::loadResource(Ogre::Resource *)")]
 // was: `non-virtual thunk to'Ogre::Font::loadResource(Ogre::Resource *)
 pub fn stub_c92bf8() -> ! {
     todo!("0xc92bf8 `non-virtual thunk to'Ogre::Font::loadResource(Ogre::Resource *)")
@@ -29224,14 +29224,14 @@ pub fn stub_c99428() -> ! {
 }
 
 // 0xc99434 — __ZThn4_N4Ogre7FrustumD0Ev
-#[doc(alias = "`non-virtual thunk to Ogre::Frustum::~Frustum()")]
+#[doc(alias = "non-virtual thunk to Ogre::Frustum::~Frustum()")]
 // was: `non-virtual thunk to'Ogre::Frustum::~Frustum()
 pub fn stub_c99434() -> ! {
     todo!("0xc99434 `non-virtual thunk to'Ogre::Frustum::~Frustum()")
 }
 
 // 0xc994c8 — __ZThn188_N4Ogre7FrustumD0Ev
-#[doc(alias = "`non-virtual thunk to Ogre::Frustum::~Frustum()")]
+#[doc(alias = "non-virtual thunk to Ogre::Frustum::~Frustum()")]
 // was: `non-virtual thunk to'Ogre::Frustum::~Frustum()
 pub fn stub_c994c8() -> ! {
     todo!("0xc994c8 `non-virtual thunk to'Ogre::Frustum::~Frustum()")
@@ -29245,14 +29245,14 @@ pub fn stub_c9955c() -> ! {
 }
 
 // 0xc996e0 — __ZThn4_N4Ogre7FrustumD1Ev
-#[doc(alias = "`non-virtual thunk to Ogre::Frustum::~Frustum()")]
+#[doc(alias = "non-virtual thunk to Ogre::Frustum::~Frustum()")]
 // was: `non-virtual thunk to'Ogre::Frustum::~Frustum()
 pub fn stub_c996e0() -> ! {
     todo!("0xc996e0 `non-virtual thunk to'Ogre::Frustum::~Frustum()")
 }
 
 // 0xc996ec — __ZThn188_N4Ogre7FrustumD1Ev
-#[doc(alias = "`non-virtual thunk to Ogre::Frustum::~Frustum()")]
+#[doc(alias = "non-virtual thunk to Ogre::Frustum::~Frustum()")]
 // was: `non-virtual thunk to'Ogre::Frustum::~Frustum()
 pub fn stub_c996ec() -> ! {
     todo!("0xc996ec `non-virtual thunk to'Ogre::Frustum::~Frustum()")
