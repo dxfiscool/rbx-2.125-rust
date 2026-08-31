@@ -6,7 +6,7 @@
 
 use rbx_core::SharedPtr;
 
-// 3603 stubs in this file | batch range 0xef04..0x59f2c4
+// 3703 stubs in this file | batch range 0xef04..0x5abd48
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
@@ -24793,3 +24793,703 @@ pub fn stub_0x59f2c4() -> ! {
     todo!("0x59f2c4 RBX::JointInstance::setC1(G3D::CoordinateFrame const&)")
 }
 
+
+// 0x59f418 — __ZN3RBX13JointInstanceC2EPNS_5JointE
+#[doc(alias = "RBX::JointInstance::JointInstance(RBX::Joint *)")]
+// was: RBX::JointInstance::JointInstance(RBX::Joint *)
+pub fn stub_0x59f418() -> ! {
+    todo!("0x59f418 RBX::JointInstance::JointInstance(RBX::Joint *)")
+}
+
+// 0x59f6bc — __ZN3RBX13JointInstanceD0Ev
+#[doc(alias = "RBX::JointInstance::~JointInstance()")]
+// was: RBX::JointInstance::~JointInstance()
+pub fn stub_0x59f6bc() -> ! {
+    todo!("0x59f6bc RBX::JointInstance::~JointInstance()")
+}
+
+// 0x59f75c — __ZN3RBX13JointInstanceD1Ev
+#[doc(alias = "RBX::JointInstance::~JointInstance()")]
+// was: RBX::JointInstance::~JointInstance()
+pub fn stub_0x59f75c() -> ! {
+    todo!("0x59f75c RBX::JointInstance::~JointInstance()")
+}
+
+// 0x59f760 — __ZThn32_N3RBX13JointInstanceD0Ev
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+// was: non-virtual thunk toRBX::JointInstance::~JointInstance()
+pub fn stub_0x59f760() -> ! {
+    todo!("0x59f760 non-virtual thunk toRBX::JointInstance::~JointInstance()")
+}
+
+// 0x59f768 — __ZThn36_N3RBX13JointInstanceD0Ev
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+// was: non-virtual thunk toRBX::JointInstance::~JointInstance()
+pub fn stub_0x59f768() -> ! {
+    todo!("0x59f768 non-virtual thunk toRBX::JointInstance::~JointInstance()")
+}
+
+// 0x59f770 — __ZN3RBX13JointInstanceD2Ev
+#[doc(alias = "RBX::JointInstance::~JointInstance()")]
+// was: RBX::JointInstance::~JointInstance()
+pub fn stub_0x59f770() -> ! {
+    todo!("0x59f770 RBX::JointInstance::~JointInstance()")
+}
+
+// 0x59fa24 — __ZThn32_N3RBX13JointInstanceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+// was: non-virtual thunk toRBX::JointInstance::~JointInstance()
+pub fn stub_0x59fa24() -> ! {
+    todo!("0x59fa24 non-virtual thunk toRBX::JointInstance::~JointInstance()")
+}
+
+// 0x59fa2c — __ZThn36_N3RBX13JointInstanceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::~JointInstance()")]
+// was: non-virtual thunk toRBX::JointInstance::~JointInstance()
+pub fn stub_0x59fa2c() -> ! {
+    todo!("0x59fa2c non-virtual thunk toRBX::JointInstance::~JointInstance()")
+}
+
+// 0x59fa34 — __ZN3RBX13JointInstance8writeXmlERKN5boost8functionIFbPNS_8InstanceEEEENS_11CreatorRoleE
+#[doc(alias = "RBX::JointInstance::writeXml(boost::function<bool ()(RBX::Instance *)> const&,RBX::CreatorRole)")]
+// was: RBX::JointInstance::writeXml(boost::function<bool ()(RBX::Instance *)> const&,RBX::CreatorRole)
+pub fn stub_0x59fa34() -> ! {
+    todo!("0x59fa34 RBX::JointInstance::writeXml(boost::function<bool ()(RBX::Instance *)> const&,RBX::CreatorRole)")
+}
+
+// 0x59fa90 — __ZN3RBX13JointInstance8getPart0Ev
+#[doc(alias = "RBX::JointInstance::getPart0(void)")]
+// was: RBX::JointInstance::getPart0(void)
+pub fn stub_0x59fa90() -> ! {
+    todo!("0x59fa90 RBX::JointInstance::getPart0(void)")
+}
+
+// 0x59fab4 — __ZN3RBX13JointInstance8getPart1Ev
+#[doc(alias = "RBX::JointInstance::getPart1(void)")]
+// was: RBX::JointInstance::getPart1(void)
+pub fn stub_0x59fab4() -> ! {
+    todo!("0x59fab4 RBX::JointInstance::getPart1(void)")
+}
+
+// 0x59fad8 — __ZNK3RBX13JointInstance19shouldRender3dAdornEv
+#[doc(alias = "RBX::JointInstance::shouldRender3dAdorn(void)const")]
+// was: RBX::JointInstance::shouldRender3dAdorn(void)const
+pub fn stub_0x59fad8() -> ! {
+    todo!("0x59fad8 RBX::JointInstance::shouldRender3dAdorn(void)const")
+}
+
+// 0x59fae8 — __ZThn92_NK3RBX13JointInstance19shouldRender3dAdornEv
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::shouldRender3dAdorn(void)const")]
+// was: non-virtual thunk toRBX::JointInstance::shouldRender3dAdorn(void)const
+pub fn stub_0x59fae8() -> ! {
+    todo!("0x59fae8 non-virtual thunk toRBX::JointInstance::shouldRender3dAdorn(void)const")
+}
+
+// 0x59faf8 — __ZN3RBX13JointInstance13render3dAdornEPNS_5AdornE
+#[doc(alias = "RBX::JointInstance::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::JointInstance::render3dAdorn(RBX::Adorn *)
+pub fn stub_0x59faf8() -> ! {
+    todo!("0x59faf8 RBX::JointInstance::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x59fc7c — __ZThn92_N3RBX13JointInstance13render3dAdornEPNS_5AdornE
+#[doc(alias = "non-virtual thunk toRBX::JointInstance::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk toRBX::JointInstance::render3dAdorn(RBX::Adorn *)
+pub fn stub_0x59fc7c() -> ! {
+    todo!("0x59fc7c non-virtual thunk toRBX::JointInstance::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x59fc84 — __ZN3RBX13JointInstance7setPartEiPNS_12PartInstanceE
+#[doc(alias = "RBX::JointInstance::setPart(int,RBX::PartInstance *)")]
+// was: RBX::JointInstance::setPart(int,RBX::PartInstance *)
+pub fn stub_0x59fc84() -> ! {
+    todo!("0x59fc84 RBX::JointInstance::setPart(int,RBX::PartInstance *)")
+}
+
+// 0x59fde4 — __ZNK3RBX13JointInstance12askSetParentEPKNS_8InstanceE
+#[doc(alias = "RBX::JointInstance::askSetParent(RBX::Instance const*)const")]
+// was: RBX::JointInstance::askSetParent(RBX::Instance const*)const
+pub fn stub_0x59fde4() -> ! {
+    todo!("0x59fde4 RBX::JointInstance::askSetParent(RBX::Instance const*)const")
+}
+
+// 0x59fe28 — __ZN3RBX13JointInstance12computeWorldEv
+#[doc(alias = "RBX::JointInstance::computeWorld(void)")]
+// was: RBX::JointInstance::computeWorld(void)
+pub fn stub_0x59fe28() -> ! {
+    todo!("0x59fe28 RBX::JointInstance::computeWorld(void)")
+}
+
+// 0x59fe6c — __ZN3RBX13JointInstance17onAncestorChangedERKNS_15AncestorChangedE
+#[doc(alias = "RBX::JointInstance::onAncestorChanged(RBX::AncestorChanged const&)")]
+// was: RBX::JointInstance::onAncestorChanged(RBX::AncestorChanged const&)
+pub fn stub_0x59fe6c() -> ! {
+    todo!("0x59fe6c RBX::JointInstance::onAncestorChanged(RBX::AncestorChanged const&)")
+}
+
+// 0x5a0020 — __ZN3RBX13JointInstance7setNameERKSs
+#[doc(alias = "RBX::JointInstance::setName(std::string const&)")]
+// was: RBX::JointInstance::setName(std::string const&)
+pub fn stub_0x5a0020() -> ! {
+    todo!("0x5a0020 RBX::JointInstance::setName(std::string const&)")
+}
+
+// 0x5a0aa4 — __ZN3RBX26ManualSurfaceJointInstanceC2EPNS_5JointE
+#[doc(alias = "RBX::ManualSurfaceJointInstance::ManualSurfaceJointInstance(RBX::Joint *)")]
+// was: RBX::ManualSurfaceJointInstance::ManualSurfaceJointInstance(RBX::Joint *)
+pub fn stub_0x5a0aa4() -> ! {
+    todo!("0x5a0aa4 RBX::ManualSurfaceJointInstance::ManualSurfaceJointInstance(RBX::Joint *)")
+}
+
+// 0x5a0be4 — __ZN3RBX26ManualSurfaceJointInstanceC2Ev
+#[doc(alias = "RBX::ManualSurfaceJointInstance::ManualSurfaceJointInstance(void)")]
+// was: RBX::ManualSurfaceJointInstance::ManualSurfaceJointInstance(void)
+pub fn stub_0x5a0be4() -> ! {
+    todo!("0x5a0be4 RBX::ManualSurfaceJointInstance::ManualSurfaceJointInstance(void)")
+}
+
+// 0x5a0d24 — __ZN3RBX26ManualSurfaceJointInstance13render3dAdornEPNS_5AdornE
+#[doc(alias = "RBX::ManualSurfaceJointInstance::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::ManualSurfaceJointInstance::render3dAdorn(RBX::Adorn *)
+pub fn stub_0x5a0d24() -> ! {
+    todo!("0x5a0d24 RBX::ManualSurfaceJointInstance::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x5a0d28 — __ZThn92_N3RBX26ManualSurfaceJointInstance13render3dAdornEPNS_5AdornE
+#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk toRBX::ManualSurfaceJointInstance::render3dAdorn(RBX::Adorn *)
+pub fn stub_0x5a0d28() -> ! {
+    todo!("0x5a0d28 non-virtual thunk toRBX::ManualSurfaceJointInstance::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x5a31ac — __ZN3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEED1Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::~RefPropDescriptor()")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::~RefPropDescriptor()
+pub fn stub_0x5a31ac() -> ! {
+    todo!("0x5a31ac RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::~RefPropDescriptor()")
+}
+
+// 0x5a31d8 — __ZN3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::~PropDescriptor()")]
+// was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::~PropDescriptor()
+pub fn stub_0x5a31d8() -> ! {
+    todo!("0x5a31d8 RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::~PropDescriptor()")
+}
+
+// 0x5a31fc — __ZN3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::~PropDescriptor()
+pub fn stub_0x5a31fc() -> ! {
+    todo!("0x5a31fc RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::~PropDescriptor()")
+}
+
+// 0x5a32cc — __ZNK5boost9function1IbPN3RBX8InstanceEEclES3_
+#[doc(alias = "boost::function1<bool,RBX::Instance *>::operator()(RBX::Instance *)const")]
+// was: boost::function1<bool,RBX::Instance *>::operator()(RBX::Instance *)const
+pub fn stub_0x5a32cc() -> ! {
+    todo!("0x5a32cc boost::function1<bool,RBX::Instance *>::operator()(RBX::Instance *)const")
+}
+
+// 0x5a381c — __ZN3RBX26ManualSurfaceJointInstanceD1Ev
+#[doc(alias = "RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
+// was: RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()
+pub fn stub_0x5a381c() -> ! {
+    todo!("0x5a381c RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")
+}
+
+// 0x5a3820 — __ZN3RBX26ManualSurfaceJointInstanceD0Ev
+#[doc(alias = "RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
+// was: RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()
+pub fn stub_0x5a3820() -> ! {
+    todo!("0x5a3820 RBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")
+}
+
+// 0x5a38d0 — __ZThn32_N3RBX26ManualSurfaceJointInstanceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
+// was: non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()
+pub fn stub_0x5a38d0() -> ! {
+    todo!("0x5a38d0 non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")
+}
+
+// 0x5a38d8 — __ZThn32_N3RBX26ManualSurfaceJointInstanceD0Ev
+#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
+// was: non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()
+pub fn stub_0x5a38d8() -> ! {
+    todo!("0x5a38d8 non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")
+}
+
+// 0x5a398c — __ZThn36_N3RBX26ManualSurfaceJointInstanceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
+// was: non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()
+pub fn stub_0x5a398c() -> ! {
+    todo!("0x5a398c non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")
+}
+
+// 0x5a3994 — __ZThn36_N3RBX26ManualSurfaceJointInstanceD0Ev
+#[doc(alias = "non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")]
+// was: non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()
+pub fn stub_0x5a3994() -> ! {
+    todo!("0x5a3994 non-virtual thunk toRBX::ManualSurfaceJointInstance::~ManualSurfaceJointInstance()")
+}
+
+// 0x5a5920 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10ManualGlueEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::ManualGlue> RBX::Creatable<RBX::Instance>::create<RBX::ManualGlue>(void)")]
+// was: boost::shared_ptr<RBX::ManualGlue> RBX::Creatable<RBX::Instance>::create<RBX::ManualGlue>(void)
+pub fn stub_0x5a5920() -> ! {
+    todo!("0x5a5920 boost::shared_ptr<RBX::ManualGlue> RBX::Creatable<RBX::Instance>::create<RBX::ManualGlue>(void)")
+}
+
+// 0x5a59d0 — __ZN5boost10shared_ptrIN3RBX10ManualGlueEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::ManualGlue>::shared_ptr<RBX::ManualGlue,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::shared_ptr<RBX::ManualGlue>::shared_ptr<RBX::ManualGlue,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x5a59d0() -> ! {
+    todo!("0x5a59d0 boost::shared_ptr<RBX::ManualGlue>::shared_ptr<RBX::ManualGlue,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x5a5b80 — __ZN5boost6detail12shared_countC2IPN3RBX10ManualGlueENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::detail::shared_count::shared_count<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x5a5b80() -> ! {
+    todo!("0x5a5b80 boost::detail::shared_count::shared_count<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x5a5c88 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ManualGlueENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x5a5c88() -> ! {
+    todo!("0x5a5c88 boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x5a5c8c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ManualGlueENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x5a5c8c() -> ! {
+    todo!("0x5a5c8c boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x5a5c90 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ManualGlueENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn stub_0x5a5c90() -> ! {
+    todo!("0x5a5c90 boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x5a5cb0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ManualGlueENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+pub fn stub_0x5a5cb0() -> ! {
+    todo!("0x5a5cb0 boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x5a5cc8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ManualGlueENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
+pub fn stub_0x5a5cc8() -> ! {
+    todo!("0x5a5cc8 boost::detail::sp_counted_impl_pd<RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x5a62d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10ManualWeldEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::ManualWeld> RBX::Creatable<RBX::Instance>::create<RBX::ManualWeld>(void)")]
+// was: boost::shared_ptr<RBX::ManualWeld> RBX::Creatable<RBX::Instance>::create<RBX::ManualWeld>(void)
+pub fn stub_0x5a62d0() -> ! {
+    todo!("0x5a62d0 boost::shared_ptr<RBX::ManualWeld> RBX::Creatable<RBX::Instance>::create<RBX::ManualWeld>(void)")
+}
+
+// 0x5a6380 — __ZN5boost10shared_ptrIN3RBX10ManualWeldEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::ManualWeld>::shared_ptr<RBX::ManualWeld,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::shared_ptr<RBX::ManualWeld>::shared_ptr<RBX::ManualWeld,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x5a6380() -> ! {
+    todo!("0x5a6380 boost::shared_ptr<RBX::ManualWeld>::shared_ptr<RBX::ManualWeld,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x5a6530 — __ZN5boost6detail12shared_countC2IPN3RBX10ManualWeldENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::detail::shared_count::shared_count<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x5a6530() -> ! {
+    todo!("0x5a6530 boost::detail::shared_count::shared_count<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x5a6638 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ManualWeldENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x5a6638() -> ! {
+    todo!("0x5a6638 boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x5a663c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ManualWeldENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x5a663c() -> ! {
+    todo!("0x5a663c boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x5a6640 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ManualWeldENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn stub_0x5a6640() -> ! {
+    todo!("0x5a6640 boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x5a6660 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ManualWeldENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+pub fn stub_0x5a6660() -> ! {
+    todo!("0x5a6660 boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x5a6678 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10ManualWeldENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
+pub fn stub_0x5a6678() -> ! {
+    todo!("0x5a6678 boost::detail::sp_counted_impl_pd<RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x5a6c80 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_26ManualSurfaceJointInstanceEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::ManualSurfaceJointInstance> RBX::Creatable<RBX::Instance>::create<RBX::ManualSurfaceJointInstance>(void)")]
+// was: boost::shared_ptr<RBX::ManualSurfaceJointInstance> RBX::Creatable<RBX::Instance>::create<RBX::ManualSurfaceJointInstance>(void)
+pub fn stub_0x5a6c80() -> ! {
+    todo!("0x5a6c80 boost::shared_ptr<RBX::ManualSurfaceJointInstance> RBX::Creatable<RBX::Instance>::create<RBX::ManualSurfaceJointInstance>(void)")
+}
+
+// 0x5a6d30 — __ZN5boost10shared_ptrIN3RBX26ManualSurfaceJointInstanceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::ManualSurfaceJointInstance>::shared_ptr<RBX::ManualSurfaceJointInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::shared_ptr<RBX::ManualSurfaceJointInstance>::shared_ptr<RBX::ManualSurfaceJointInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x5a6d30() -> ! {
+    todo!("0x5a6d30 boost::shared_ptr<RBX::ManualSurfaceJointInstance>::shared_ptr<RBX::ManualSurfaceJointInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x5a6df8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_26ManualSurfaceJointInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualSurfaceJointInstance,RBX::ManualSurfaceJointInstance>(boost::shared_ptr<RBX::ManualSurfaceJointInstance> const*,RBX::ManualSurfaceJointInstance *)const")]
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualSurfaceJointInstance,RBX::ManualSurfaceJointInstance>(boost::shared_ptr<RBX::ManualSurfaceJointInstance> const*,RBX::ManualSurfaceJointInstance *)const
+pub fn stub_0x5a6df8() -> ! {
+    todo!("0x5a6df8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualSurfaceJointInstance,RBX::ManualSurfaceJointInstance>(boost::shared_ptr<RBX::ManualSurfaceJointInstance> const*,RBX::ManualSurfaceJointInstance *)const")
+}
+
+// 0x5a6ee0 — __ZN5boost6detail12shared_countC2IPN3RBX26ManualSurfaceJointInstanceENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::detail::shared_count::shared_count<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x5a6ee0() -> ! {
+    todo!("0x5a6ee0 boost::detail::shared_count::shared_count<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x5a6fe8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX26ManualSurfaceJointInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x5a6fe8() -> ! {
+    todo!("0x5a6fe8 boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x5a6fec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX26ManualSurfaceJointInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x5a6fec() -> ! {
+    todo!("0x5a6fec boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x5a6ff0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX26ManualSurfaceJointInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn stub_0x5a6ff0() -> ! {
+    todo!("0x5a6ff0 boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x5a7010 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX26ManualSurfaceJointInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+pub fn stub_0x5a7010() -> ! {
+    todo!("0x5a7010 boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x5a7028 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX26ManualSurfaceJointInstanceENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
+pub fn stub_0x5a7028() -> ! {
+    todo!("0x5a7028 boost::detail::sp_counted_impl_pd<RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x5a7c34 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5MotorEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::Motor> RBX::Creatable<RBX::Instance>::create<RBX::Motor>(void)")]
+// was: boost::shared_ptr<RBX::Motor> RBX::Creatable<RBX::Instance>::create<RBX::Motor>(void)
+pub fn stub_0x5a7c34() -> ! {
+    todo!("0x5a7c34 boost::shared_ptr<RBX::Motor> RBX::Creatable<RBX::Instance>::create<RBX::Motor>(void)")
+}
+
+// 0x5a7ce4 — __ZN5boost10shared_ptrIN3RBX5MotorEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::Motor>::shared_ptr<RBX::Motor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::shared_ptr<RBX::Motor>::shared_ptr<RBX::Motor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x5a7ce4() -> ! {
+    todo!("0x5a7ce4 boost::shared_ptr<RBX::Motor>::shared_ptr<RBX::Motor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x5a7e94 — __ZN5boost6detail12shared_countC2IPN3RBX5MotorENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::detail::shared_count::shared_count<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x5a7e94() -> ! {
+    todo!("0x5a7e94 boost::detail::shared_count::shared_count<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x5a7f9c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x5a7f9c() -> ! {
+    todo!("0x5a7f9c boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x5a7fa0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x5a7fa0() -> ! {
+    todo!("0x5a7fa0 boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x5a7fa4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn stub_0x5a7fa4() -> ! {
+    todo!("0x5a7fa4 boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x5a7fc4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+pub fn stub_0x5a7fc4() -> ! {
+    todo!("0x5a7fc4 boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x5a7fdc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5MotorENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
+pub fn stub_0x5a7fdc() -> ! {
+    todo!("0x5a7fdc boost::detail::sp_counted_impl_pd<RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x5a8e4c — __ZN3RBX13JointInstanceC2Ev
+#[doc(alias = "RBX::JointInstance::JointInstance(void)")]
+// was: RBX::JointInstance::JointInstance(void)
+pub fn stub_0x5a8e4c() -> ! {
+    todo!("0x5a8e4c RBX::JointInstance::JointInstance(void)")
+}
+
+// 0x5aa50c — __ZN3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_0x5aa50c() -> ! {
+    todo!("0x5aa50c RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x5aa620 — __ZN3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::~PropDescriptor()")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::~PropDescriptor()
+pub fn stub_0x5aa620() -> ! {
+    todo!("0x5aa620 RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::~PropDescriptor()")
+}
+
+// 0x5aa64c — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const
+pub fn stub_0x5aa64c() -> ! {
+    todo!("0x5aa64c RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")
+}
+
+// 0x5aa650 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const
+pub fn stub_0x5aa650() -> ! {
+    todo!("0x5aa650 RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")
+}
+
+// 0x5aa654 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x5aa654() -> ! {
+    todo!("0x5aa654 RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5aa690 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8setValueEPNS0_13DescribedBaseES8_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const
+pub fn stub_0x5aa690() -> ! {
+    todo!("0x5aa690 RBX::Reflection::PropDescriptor<RBX::JointInstance,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")
+}
+
+// 0x5aa6b4 — __ZN3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::PropDescriptor<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>(char const*,char const*,int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::PropDescriptor<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>(char const*,char const*,int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_0x5aa6b4() -> ! {
+    todo!("0x5aa6b4 RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::PropDescriptor<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>(char const*,char const*,int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x5aa7c8 — __ZN3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::~PropDescriptor()")]
+// was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::~PropDescriptor()
+pub fn stub_0x5aa7c8() -> ! {
+    todo!("0x5aa7c8 RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::~PropDescriptor()")
+}
+
+// 0x5aa7f4 — __ZNK3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isReadOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isReadOnly(void)const
+pub fn stub_0x5aa7f4() -> ! {
+    todo!("0x5aa7f4 RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isReadOnly(void)const")
+}
+
+// 0x5aa7f8 — __ZNK3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isWriteOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isWriteOnly(void)const
+pub fn stub_0x5aa7f8() -> ! {
+    todo!("0x5aa7f8 RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::isWriteOnly(void)const")
+}
+
+// 0x5aa7fc — __ZNK3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x5aa7fc() -> ! {
+    todo!("0x5aa7fc RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5aa81c — __ZNK3RBX10Reflection14PropDescriptorINS_26ManualSurfaceJointInstanceEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const
+pub fn stub_0x5aa81c() -> ! {
+    todo!("0x5aa81c RBX::Reflection::PropDescriptor<RBX::ManualSurfaceJointInstance,int>::GetSetImpl<int (RBX::ManualSurfaceJointInstance::*)(void)const,void (RBX::ManualSurfaceJointInstance::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+}
+
+// 0x5aa840 — __ZN3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_0x5aa840() -> ! {
+    todo!("0x5aa840 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x5aa8e4 — __ZN3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEED0Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::~RefPropDescriptor()")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::~RefPropDescriptor()
+pub fn stub_0x5aa8e4() -> ! {
+    todo!("0x5aa8e4 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::~RefPropDescriptor()")
+}
+
+// 0x5aa914 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isReadOnly(void)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isReadOnly(void)const
+pub fn stub_0x5aa914() -> ! {
+    todo!("0x5aa914 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isReadOnly(void)const")
+}
+
+// 0x5aa924 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isWriteOnly(void)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isWriteOnly(void)const
+pub fn stub_0x5aa924() -> ! {
+    todo!("0x5aa924 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::isWriteOnly(void)const")
+}
+
+// 0x5aa934 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x5aa934() -> ! {
+    todo!("0x5aa934 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5aa95c — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
+pub fn stub_0x5aa95c() -> ! {
+    todo!("0x5aa95c RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x5aaa74 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
+pub fn stub_0x5aaa74() -> ! {
+    todo!("0x5aaa74 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x5aab3c — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
+pub fn stub_0x5aab3c() -> ! {
+    todo!("0x5aab3c RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x5aab60 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
+pub fn stub_0x5aab60() -> ! {
+    todo!("0x5aab60 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x5aac34 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
+pub fn stub_0x5aac34() -> ! {
+    todo!("0x5aac34 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x5aac58 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11getRefValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x5aac58() -> ! {
+    todo!("0x5aac58 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5aac6c — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11setRefValueEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
+pub fn stub_0x5aac6c() -> ! {
+    todo!("0x5aac6c RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x5aace8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
+pub fn stub_0x5aace8() -> ! {
+    todo!("0x5aace8 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x5aad08 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+pub fn stub_0x5aad08() -> ! {
+    todo!("0x5aad08 RBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x5aade8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13JointInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+// was: non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+pub fn stub_0x5aade8() -> ! {
+    todo!("0x5aade8 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::JointInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x5aadf0 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::isReadOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::isReadOnly(void)const
+pub fn stub_0x5aadf0() -> ! {
+    todo!("0x5aadf0 RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::isReadOnly(void)const")
+}
+
+// 0x5aadf4 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::isWriteOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::isWriteOnly(void)const
+pub fn stub_0x5aadf4() -> ! {
+    todo!("0x5aadf4 RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::isWriteOnly(void)const")
+}
+
+// 0x5aadf8 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_0x5aadf8() -> ! {
+    todo!("0x5aadf8 RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x5aae18 — __ZNK3RBX10Reflection14PropDescriptorINS_13JointInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance * const&)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance * const&)const
+pub fn stub_0x5aae18() -> ! {
+    todo!("0x5aae18 RBX::Reflection::PropDescriptor<RBX::JointInstance,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::JointInstance::*)(void)const,void (RBX::JointInstance::*)(RBX::PartInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance * const&)const")
+}
+
+// 0x5abd48 — __ZN3RBX13JointsService24setJoinAfterMoveInstanceEN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::JointsService::setJoinAfterMoveInstance(boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::JointsService::setJoinAfterMoveInstance(boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x5abd48() -> ! {
+    todo!("0x5abd48 RBX::JointsService::setJoinAfterMoveInstance(boost::shared_ptr<RBX::Instance>)")
+}
