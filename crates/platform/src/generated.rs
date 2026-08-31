@@ -1,6 +1,6 @@
-//! platform generated — 3689 stubs sorted by EA, from ida/export.json
-//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2763 done, 0 remaining) + 3 final iOSSettingsService shims (214 non-ObjC iOS/Roblox/GVC total, 214 done)
-//! Batch: 3689 stubs (3686 prior +3 this batch completes iOSSettingsService $shim/j_ thunks) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! platform generated — 3839 stubs sorted by EA, from ida/export.json
+//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2763 done, 0 remaining) + 214 non-ObjC iOS/Roblox/GVC done + 150 high-EA filler (0xf5e894..0xf5f1e4, rbx_core::SharedPtr not boost)
+//! Batch: 3839 stubs (3689 prior +150 this batch 0xf5e894..0xf5f1e4 high-EA filler, rbx_core::SharedPtr not boost) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -25946,4 +25946,1236 @@ pub fn stub_f27354() -> ! {
 #[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
 pub fn stub_f27364() -> ! {
     todo!("0xf27364 iOSSettingsService::~iOSSettingsService()")
+}
+// 0xf5e894 — rbx::signals::signal_with_args<2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::fireItem(rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot *,std::string,boost::shared_ptr<RBX::Instance>)
+// mangled: j___ZN3rbx7signals16signal_with_argsILi2EFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE8fireItemEPNS0_6signalIS7_E4slotESsS6_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+// was: rbx::signals::signal_with_args<2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::fireItem(rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot *,std::string,boost::shared_ptr<RBX::Instance>)
+#[doc(alias = "rbx::signals::signal_with_args<2,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::fireItem(rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
+pub fn stub_f5e894() -> ! {
+    todo!("0xf5e894 rbx::signals::signal_with_args<2,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::fireItem(rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *,std::string,rbx_core::SharedPtr<RBX::Instance>)")
+}
+
+// 0xf5e8a4 — rbx::signals::signal_with_args<3,void ()(std::string,int,std::string)>::fireItem(rbx::signals::signal<void ()(std::string,int,std::string)>::slot *,std::string,int,std::string)
+// mangled: j___ZN3rbx7signals16signal_with_argsILi3EFvSsiSsEE8fireItemEPNS0_6signalIS2_E4slotESsiSs
+#[doc(alias = "rbx::signals::signal_with_args<3,void ()(std::string,int,std::string)>::fireItem(rbx::signals::signal<void ()(std::string,int,std::string)>::slot *,std::string,int,std::string)")]
+pub fn stub_f5e8a4() -> ! {
+    todo!("0xf5e8a4 rbx::signals::signal_with_args<3,void ()(std::string,int,std::string)>::fireItem(rbx::signals::signal<void ()(std::string,int,std::string)>::slot *,std::string,int,std::string)")
+}
+
+// 0xf5e8b4 — rbx::signals::signal_with_args<3,void ()(std::string,int,std::string)>::operator()(std::string,int,std::string)
+// mangled: j___ZN3rbx7signals16signal_with_argsILi3EFvSsiSsEEclESsiSs
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "rbx::signals::signal_with_args<3,void ()(std::string,int,std::string)>::operator()(std::string,int,std::string)")]
+pub fn stub_f5e8b4() -> ! {
+    todo!("0xf5e8b4 rbx::signals::signal_with_args<3,void ()(std::string,int,std::string)>::operator()(std::string,int,std::string)")
+}
+
+// 0xf5e8c4 — rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::disconnectAll(void)
+// mangled: j___ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE13disconnectAllEv
+// type: int __fastcall(_DWORD)
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::disconnectAll(void)
+#[doc(alias = "rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::disconnectAll(void)")]
+pub fn stub_f5e8c4() -> ! {
+    todo!("0xf5e8c4 rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::disconnectAll(void)")
+}
+
+// 0xf5e8d4 — rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::mutex(void)
+// mangled: j___ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE5mutexEv
+// type: int __fastcall(_DWORD)
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::mutex(void)
+#[doc(alias = "rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::mutex(void)")]
+pub fn stub_f5e8d4() -> ! {
+    todo!("0xf5e8d4 rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::mutex(void)")
+}
+
+// 0xf5e8e4 — rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
+// mangled: j___ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE6insertEPNS8_4slotE
+// type: int __fastcall(_DWORD, _DWORD)
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
+#[doc(alias = "rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")]
+pub fn stub_f5e8e4() -> ! {
+    todo!("0xf5e8e4 rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::insert(rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")
+}
+
+// 0xf5e8f4 — rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
+// mangled: j___ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE6removeEPNS8_4slotE
+// type: int __fastcall(int, char *)
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot *)
+#[doc(alias = "rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")]
+pub fn stub_f5e8f4() -> ! {
+    todo!("0xf5e8f4 rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::remove(rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot *)")
+}
+
+// 0xf5e904 — rbx::signals::signal<void ()(std::string,int,std::string)>::disconnectAll(void)
+// mangled: j___ZN3rbx7signals6signalIFvSsiSsEE13disconnectAllEv
+// type: int __fastcall(_DWORD)
+#[doc(alias = "rbx::signals::signal<void ()(std::string,int,std::string)>::disconnectAll(void)")]
+pub fn stub_f5e904() -> ! {
+    todo!("0xf5e904 rbx::signals::signal<void ()(std::string,int,std::string)>::disconnectAll(void)")
+}
+
+// 0xf5e914 — rbx::signals::signal<void ()(std::string,int,std::string)>::insert(rbx::signals::signal<void ()(std::string,int,std::string)>::slot *)
+// mangled: j___ZN3rbx7signals6signalIFvSsiSsEE6insertEPNS3_4slotE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "rbx::signals::signal<void ()(std::string,int,std::string)>::insert(rbx::signals::signal<void ()(std::string,int,std::string)>::slot *)")]
+pub fn stub_f5e914() -> ! {
+    todo!("0xf5e914 rbx::signals::signal<void ()(std::string,int,std::string)>::insert(rbx::signals::signal<void ()(std::string,int,std::string)>::slot *)")
+}
+
+// 0xf5e924 — rbx::signals::signal<void ()(std::string,int,std::string)>::remove(rbx::signals::signal<void ()(std::string,int,std::string)>::slot *)
+// mangled: j___ZN3rbx7signals6signalIFvSsiSsEE6removeEPNS3_4slotE
+// type: int __fastcall(int, char *)
+#[doc(alias = "rbx::signals::signal<void ()(std::string,int,std::string)>::remove(rbx::signals::signal<void ()(std::string,int,std::string)>::slot *)")]
+pub fn stub_f5e924() -> ! {
+    todo!("0xf5e924 rbx::signals::signal<void ()(std::string,int,std::string)>::remove(rbx::signals::signal<void ()(std::string,int,std::string)>::slot *)")
+}
+
+// 0xf5e934 — rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)
+// mangled: j___ZN3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi2ES8_E4callESsS7_
+// type: int(void)
+// was: rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,2,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(std::string,rbx_core::SharedPtr<RBX::Instance>)")]
+pub fn stub_f5e934() -> ! {
+    todo!("0xf5e934 rbx::callable<rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,2,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(std::string,rbx_core::SharedPtr<RBX::Instance>)")
+}
+
+// 0xf5e944 — rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
+// mangled: j___ZN3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi2ES8_ED2Ev
+// type: int(void)
+// was: rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,2,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
+pub fn stub_f5e944() -> ! {
+    todo!("0xf5e944 rbx::callable<rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,2,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::~callable()")
+}
+
+// 0xf5e954 — rbx::callable<rbx::signals::signal<void ()(std::string,int,std::string)>::slot,boost::function<void ()(std::string,int,std::string)>,3,void ()(std::string,int,std::string)>::call(std::string,int,std::string)
+// mangled: j___ZN3rbx8callableINS_7signals6signalIFvSsiSsEE4slotEN5boost8functionIS3_EELi3ES3_E4callESsiSs
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,int,std::string)>::slot,boost::function<void ()(std::string,int,std::string)>,3,void ()(std::string,int,std::string)>::call(std::string,int,std::string)")]
+pub fn stub_f5e954() -> ! {
+    todo!("0xf5e954 rbx::callable<rbx::signals::signal<void ()(std::string,int,std::string)>::slot,boost::function<void ()(std::string,int,std::string)>,3,void ()(std::string,int,std::string)>::call(std::string,int,std::string)")
+}
+
+// 0xf5e964 — rbx::callable<rbx::signals::signal<void ()(std::string,int,std::string)>::slot,boost::function<void ()(std::string,int,std::string)>,3,void ()(std::string,int,std::string)>::~callable()
+// mangled: j___ZN3rbx8callableINS_7signals6signalIFvSsiSsEE4slotEN5boost8functionIS3_EELi3ES3_ED2Ev
+// type: int __fastcall(_DWORD)
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,int,std::string)>::slot,boost::function<void ()(std::string,int,std::string)>,3,void ()(std::string,int,std::string)>::~callable()")]
+pub fn stub_f5e964() -> ! {
+    todo!("0xf5e964 rbx::callable<rbx::signals::signal<void ()(std::string,int,std::string)>::slot,boost::function<void ()(std::string,int,std::string)>,3,void ()(std::string,int,std::string)>::~callable()")
+}
+
+// 0xf5e974 — boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string,int,std::string)>::slot*)
+// mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsiSsEE4slotEEaSEPS6_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string,int,std::string)>::slot*)")]
+pub fn stub_f5e974() -> ! {
+    todo!("0xf5e974 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string,int,std::string)>::slot*)")
+}
+
+// 0xf5e984 — boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot> const&)
+// mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsiSsEE4slotEEaSERKS7_
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot> const&)")]
+pub fn stub_f5e984() -> ! {
+    todo!("0xf5e984 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot> const&)")
+}
+
+// 0xf5e994 — void boost::throw_exception<boost::gregorian::bad_day_of_month>(boost::gregorian::bad_day_of_month const&)
+// mangled: j___ZN5boost15throw_exceptionINS_9gregorian16bad_day_of_monthEEEvRKT_
+// type: int __fastcall(_DWORD)
+#[doc(alias = "void boost::throw_exception<boost::gregorian::bad_day_of_month>(boost::gregorian::bad_day_of_month const&)")]
+pub fn stub_f5e994() -> ! {
+    todo!("0xf5e994 void boost::throw_exception<boost::gregorian::bad_day_of_month>(boost::gregorian::bad_day_of_month const&)")
+}
+
+// 0xf5e9a4 — void boost::throw_exception<boost::gregorian::bad_year>(boost::gregorian::bad_year const&)
+// mangled: j___ZN5boost15throw_exceptionINS_9gregorian8bad_yearEEEvRKT_
+// type: int __fastcall(_DWORD)
+#[doc(alias = "void boost::throw_exception<boost::gregorian::bad_year>(boost::gregorian::bad_year const&)")]
+pub fn stub_f5e9a4() -> ! {
+    todo!("0xf5e9a4 void boost::throw_exception<boost::gregorian::bad_year>(boost::gregorian::bad_year const&)")
+}
+
+// 0xf5e9b4 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::clone_impl(boost::exception_detail::error_info_injector<boost::gregorian::bad_month> const&)
+// mangled: j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian9bad_monthEEEEC1ERKS5_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::clone_impl(boost::exception_detail::error_info_injector<boost::gregorian::bad_month> const&)")]
+pub fn stub_f5e9b4() -> ! {
+    todo!("0xf5e9b4 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_month>>::clone_impl(boost::exception_detail::error_info_injector<boost::gregorian::bad_month> const&)")
+}
+
+// 0xf5e9c4 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::clone_impl(boost::exception_detail::error_info_injector<std::runtime_error> const&)
+// mangled: j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEEC1ERKS4_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::clone_impl(boost::exception_detail::error_info_injector<std::runtime_error> const&)")]
+pub fn stub_f5e9c4() -> ! {
+    todo!("0xf5e9c4 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::clone_impl(boost::exception_detail::error_info_injector<std::runtime_error> const&)")
+}
+
+// 0xf5e9d4 — boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::DataModel>>)
+// mangled: j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModelEEEEEEC2ES7_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
+// was: boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::DataModel>>)
+#[doc(alias = "boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>::list1(boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>)")]
+pub fn stub_f5e9d4() -> ! {
+    todo!("0xf5e9d4 boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>::list1(boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>)")
+}
+
+// 0xf5e9e4 — boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::list1(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>)
+// mangled: j___ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEEEC2ES7_
+// type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>::list1(boost::_bi::value<rbx_core::Weak<RBX::DataModel>>)")]
+pub fn stub_f5e9e4() -> ! {
+    todo!("0xf5e9e4 boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>::list1(boost::_bi::value<rbx_core::Weak<RBX::DataModel>>)")
+}
+
+// 0xf5e9f4 — void boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>) &,boost::_bi::list0 &,int)
+// mangled: j___ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEEEclIPFvS6_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "void boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>::operator()<void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(rbx_core::Weak<RBX::DataModel>) &,boost::_bi::list0 &,int)")]
+pub fn stub_f5e9f4() -> ! {
+    todo!("0xf5e9f4 void boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>::operator()<void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(rbx_core::Weak<RBX::DataModel>) &,boost::_bi::list0 &,int)")
+}
+
+// 0xf5ea04 — boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,boost::shared_ptr<RBX::Instance> const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)
+// mangled: j___ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKSsRKNS_10shared_ptrINS1_8InstanceEEENS6_IS3_EENS_3argILi1EEENSC_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISH_T0_T1_T2_EENSF_9list_av_3IT3_T4_T5_E4typeEEEMSK_FSH_SL_SM_ESP_SQ_SR_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+// was: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,boost::shared_ptr<RBX::Instance> const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,boost::shared_ptr<RBX::Instance> const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,rbx_core::SharedPtr<RBX::Instance> const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
+pub fn stub_f5ea04() -> ! {
+    todo!("0xf5ea04 boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,rbx_core::SharedPtr<RBX::Instance> const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,rbx_core::SharedPtr<RBX::Instance> const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")
+}
+
+// 0xf5ea14 — boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,int const&,std::string const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)
+// mangled: j___ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKSsRKiS5_NS_10shared_ptrIS3_EENS_3argILi1EEENSA_ILi2EEENSA_ILi3EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISG_T0_T1_T2_T3_EENSE_9list_av_4IT4_T5_T6_T7_E4typeEEEMSJ_FSG_SK_SL_SM_ESP_SQ_SR_SS_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+// was: boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,int const&,std::string const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list_av_4<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,int const&,std::string const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
+pub fn stub_f5ea14() -> ! {
+    todo!("0xf5ea14 boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list_av_4<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(std::string const&,int const&,std::string const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")
+}
+
+// 0xf5ea24 — boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list_av_1<boost::shared_ptr<RBX::DataModel>>::type> boost::bind<void,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::DataModel>>(void (*)(boost::shared_ptr<RBX::DataModel>),boost::shared_ptr<RBX::DataModel>)
+// mangled: j___ZN5boost4bindIvNS_10shared_ptrIN3RBX9DataModelEEES4_EENS_3_bi6bind_tIT_PFS7_T0_ENS5_9list_av_1IT1_E4typeEEESA_SC_
+// type: int __fastcall(pthread_mutex_t *, int)
+// was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list_av_1<boost::shared_ptr<RBX::DataModel>>::type> boost::bind<void,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::DataModel>>(void (*)(boost::shared_ptr<RBX::DataModel>),boost::shared_ptr<RBX::DataModel>)
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list_av_1<rbx_core::SharedPtr<RBX::DataModel>>::type> boost::bind<void,rbx_core::SharedPtr<RBX::DataModel>,rbx_core::SharedPtr<RBX::DataModel>>(void (*)(rbx_core::SharedPtr<RBX::DataModel>),rbx_core::SharedPtr<RBX::DataModel>)")]
+pub fn stub_f5ea24() -> ! {
+    todo!("0xf5ea24 boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list_av_1<rbx_core::SharedPtr<RBX::DataModel>>::type> boost::bind<void,rbx_core::SharedPtr<RBX::DataModel>,rbx_core::SharedPtr<RBX::DataModel>>(void (*)(rbx_core::SharedPtr<RBX::DataModel>),rbx_core::SharedPtr<RBX::DataModel>)")
+}
+
+// 0xf5ea34 — boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>> * boost::detail::heap_new_impl<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>&>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>&)
+// mangled: j___ZN5boost6detail13heap_new_implINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEEENS3_5list1INS3_5valueIS8_EEEEEEEERSF_EEPT_T0_
+// type: int __fastcall(_DWORD)
+// was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>> * boost::detail::heap_new_impl<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>&>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>&)
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>> * boost::detail::heap_new_impl<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>&>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>&)")]
+pub fn stub_f5ea34() -> ! {
+    todo!("0xf5ea34 boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>> * boost::detail::heap_new_impl<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>&>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>&)")
+}
+
+// 0xf5ea44 — boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>> * boost::detail::heap_new_impl<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>&>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>&)
+// mangled: j___ZN5boost6detail13heap_new_implINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS3_5list1INS3_5valueIS8_EEEEEEEERSF_EEPT_T0_
+// type: int __fastcall(_DWORD)
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>> * boost::detail::heap_new_impl<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>&>(boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>&)")]
+pub fn stub_f5ea44() -> ! {
+    todo!("0xf5ea44 boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>> * boost::detail::heap_new_impl<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>&>(boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>&)")
+}
+
+// 0xf5ea54 — void boost::detail::sp_pointer_construct<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> *,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>> *,boost::detail::shared_count &)
+// mangled: j___ZN5boost6detail20sp_pointer_constructINS0_16thread_data_baseENS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEEENS4_5list1INS4_5valueIS9_EEEEEEEEEEvPNS6_IT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
+// was: void boost::detail::sp_pointer_construct<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> *,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>> *,boost::detail::shared_count &)
+#[doc(alias = "void boost::detail::sp_pointer_construct<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>>>(rbx_core::SharedPtr<boost::detail::thread_data_base> *,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>> *,boost::detail::shared_count &)")]
+pub fn stub_f5ea54() -> ! {
+    todo!("0xf5ea54 void boost::detail::sp_pointer_construct<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>>>(rbx_core::SharedPtr<boost::detail::thread_data_base> *,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>> *,boost::detail::shared_count &)")
+}
+
+// 0xf5ea64 — void boost::detail::sp_pointer_construct<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> *,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>> *,boost::detail::shared_count &)
+// mangled: j___ZN5boost6detail20sp_pointer_constructINS0_16thread_data_baseENS0_11thread_dataINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS4_5list1INS4_5valueIS9_EEEEEEEEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
+// was: void boost::detail::sp_pointer_construct<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> *,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>> *,boost::detail::shared_count &)
+#[doc(alias = "void boost::detail::sp_pointer_construct<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>>>(rbx_core::SharedPtr<boost::detail::thread_data_base> *,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>> *,boost::detail::shared_count &)")]
+pub fn stub_f5ea64() -> ! {
+    todo!("0xf5ea64 void boost::detail::sp_pointer_construct<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>>>(rbx_core::SharedPtr<boost::detail::thread_data_base> *,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>> *,boost::detail::shared_count &)")
+}
+
+// 0xf5ea74 — boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+// mangled: j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsRKiSB_EENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEE7managerERKNS1_15function_bufferERSR_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+pub fn stub_f5ea74() -> ! {
+    todo!("0xf5ea74 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0xf5ea84 — j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE")]
+pub fn stub_f5ea84() -> ! {
+    todo!("0xf5ea84 j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE")
+}
+
+// 0xf5ea94 — j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE")]
+pub fn stub_f5ea94() -> ! {
+    todo!("0xf5ea94 j___ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS2_5list1INS2_5valueIS7_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSF_NS_6detail13thread_move_tISF_EEEE5valueEPNS0_5dummyEE4typeE")
+}
+
+// 0xf5eaa4 — j___ZN5boost8functionIFvSsNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKSsRKS4_EENS8_5list3INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZN5boost8functionIFvSsNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKSsRKS4_EENS8_5list3INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f5eaa4() -> ! {
+    todo!("0xf5eaa4 j___ZN5boost8functionIFvSsNS_10shared_ptrIN3RBX8InstanceEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKSsRKS4_EENS8_5list3INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSN_ILi2EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISS_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf5eab4 — j___ZN5boost8functionIFvSsiSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsRKiSC_EENS4_5list4INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(pthread_mutex_t *, int, int, int, pthread_mutex_t *, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZN5boost8functionIFvSsiSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsRKiSC_EENS4_5list4INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f5eab4() -> ! {
+    todo!("0xf5eab4 j___ZN5boost8functionIFvSsiSsEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsRKiSC_EENS4_5list4INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISR_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf5eac4 — boost::date_time::microsec_clock<boost::posix_time::ptime>::create_time(tm * (*)(long const*,tm *))
+// mangled: j___ZN5boost9date_time14microsec_clockINS_10posix_time5ptimeEE11create_timeEPFP2tmPKlS6_E
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::date_time::microsec_clock<boost::posix_time::ptime>::create_time(tm * (*)(long const*,tm *))")]
+pub fn stub_f5eac4() -> ! {
+    todo!("0xf5eac4 boost::date_time::microsec_clock<boost::posix_time::ptime>::create_time(tm * (*)(long const*,tm *))")
+}
+
+// 0xf5ead4 — void boost::function3<void,std::string,int,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)
+// mangled: j___ZN5boost9function3IvSsiSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsRKiSB_EENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEEEvT_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int, int)
+// was: void boost::function3<void,std::string,int,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)
+#[doc(alias = "void boost::function3<void,std::string,int,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)")]
+pub fn stub_f5ead4() -> ! {
+    todo!("0xf5ead4 void boost::function3<void,std::string,int,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>)")
+}
+
+// 0xf5eae4 — RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string)> const&)const
+// mangled: j___ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string)> const&)const")]
+pub fn stub_f5eae4() -> ! {
+    todo!("0xf5eae4 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string)> const&)const")
+}
+
+// 0xf5eaf4 — RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)> const&)const
+// mangled: j___ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E7connectEPNS0_11EventSourceERKNS4_8functionIS8_EE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+// was: RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)> const&)const
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> const&)const")]
+pub fn stub_f5eaf4() -> ! {
+    todo!("0xf5eaf4 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> const&)const")
+}
+
+// 0xf5eb04 — RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,int,std::string)> const&)const
+// mangled: j___ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,int,std::string)> const&)const")]
+pub fn stub_f5eb04() -> ! {
+    todo!("0xf5eb04 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,int,std::string)> const&)const")
+}
+
+// 0xf5eb14 — void RBX::Instance::visitChildren<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>> const&)const
+// mangled: j___ZNK3RBX8Instance13visitChildrenIN5boost3_bi6bind_tIvNS2_4_mfi3mf0IvS0_EENS3_5list1INS2_3argILi1EEEEEEEEEvRKT_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, int, int, int, int)
+#[doc(alias = "void RBX::Instance::visitChildren<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>> const&)const")]
+pub fn stub_f5eb14() -> ! {
+    todo!("0xf5eb14 void RBX::Instance::visitChildren<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Instance>,boost::_bi::list1<boost::arg<1>>> const&)const")
+}
+
+// 0xf5eb24 — RBX::Network::ClientReplicator const* RBX::Instance::findConstFirstChildOfType<RBX::Network::ClientReplicator>(void)const
+// mangled: j___ZNK3RBX8Instance25findConstFirstChildOfTypeINS_7Network16ClientReplicatorEEEPKT_v
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, __guard *, int, int, int, int, int, int, int)
+#[doc(alias = "RBX::Network::ClientReplicator const* RBX::Instance::findConstFirstChildOfType<RBX::Network::ClientReplicator>(void)const")]
+pub fn stub_f5eb24() -> ! {
+    todo!("0xf5eb24 RBX::Network::ClientReplicator const* RBX::Instance::findConstFirstChildOfType<RBX::Network::ClientReplicator>(void)const")
+}
+
+// 0xf5eb34 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::rethrow(void)const
+// mangled: j___ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian16bad_day_of_monthEEEE7rethrowEv
+// type: __int64 __fastcall(_DWORD)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::rethrow(void)const")]
+pub fn stub_f5eb34() -> ! {
+    todo!("0xf5eb34 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_day_of_month>>::rethrow(void)const")
+}
+
+// 0xf5eb44 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const
+// mangled: j___ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9gregorian8bad_yearEEEE7rethrowEv
+// type: __int64 __fastcall(_DWORD)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const")]
+pub fn stub_f5eb44() -> ! {
+    todo!("0xf5eb44 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::gregorian::bad_year>>::rethrow(void)const")
+}
+
+// 0xf5eb54 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::rethrow(void)const
+// mangled: j___ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorISt13runtime_errorEEE7rethrowEv
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::rethrow(void)const")]
+pub fn stub_f5eb54() -> ! {
+    todo!("0xf5eb54 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::runtime_error>>::rethrow(void)const")
+}
+
+// 0xf5eb64 — void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(boost::shared_ptr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const
+// mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicatorES7_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(boost::shared_ptr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(rbx_core::SharedPtr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const")]
+pub fn stub_f5eb64() -> ! {
+    todo!("0xf5eb64 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(rbx_core::SharedPtr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const")
+}
+
+// 0xf5eb74 — void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(boost::shared_ptr<RBX::Network::Client> const*,RBX::Network::Client *)const
+// mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network6ClientES7_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(boost::shared_ptr<RBX::Network::Client> const*,RBX::Network::Client *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(rbx_core::SharedPtr<RBX::Network::Client> const*,RBX::Network::Client *)const")]
+pub fn stub_f5eb74() -> ! {
+    todo!("0xf5eb74 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(rbx_core::SharedPtr<RBX::Network::Client> const*,RBX::Network::Client *)const")
+}
+
+// 0xf5eb84 — void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>> *)const
+// mangled: j___ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_NS1_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModelEEEENS6_5list1INS6_5valueISB_EEEEEEEEEEvPKNS8_IT_EEPT0_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+// was: void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel>>>>> *)const
+#[doc(alias = "void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>>>(rbx_core::SharedPtr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>> *)const")]
+pub fn stub_f5eb84() -> ! {
+    todo!("0xf5eb84 void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>>>(rbx_core::SharedPtr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel>>>>> *)const")
+}
+
+// 0xf5eb94 — void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>> *)const
+// mangled: j___ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_NS1_11thread_dataINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEENS6_5list1INS6_5valueISB_EEEEEEEEEEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+// was: void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>>>> *)const
+#[doc(alias = "void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>>>(rbx_core::SharedPtr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>> *)const")]
+pub fn stub_f5eb94() -> ! {
+    todo!("0xf5eb94 void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>>>(rbx_core::SharedPtr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(rbx_core::Weak<RBX::DataModel>),boost::_bi::list1<boost::_bi::value<rbx_core::Weak<RBX::DataModel>>>>> *)const")
+}
+
+// 0xf5eba4 — bool boost::detail::function::basic_vtable3<void,std::string,int,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+// mangled: j___ZNK5boost6detail8function13basic_vtable3IvSsiSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX10Reflection18GenericSlotWrapperERKSsRKiSD_EENS5_5list4INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSM_ILi2EEENSM_ILi3EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, void *, int, int, int, int)
+// was: bool boost::detail::function::basic_vtable3<void,std::string,int,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+#[doc(alias = "bool boost::detail::function::basic_vtable3<void,std::string,int,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn stub_f5eba4() -> ! {
+    todo!("0xf5eba4 bool boost::detail::function::basic_vtable3<void,std::string,int,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,std::string const&,int const&,std::string const&>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0xf5ebb4 — boost::function2<void,std::string,boost::shared_ptr<RBX::Instance>>::operator()(std::string,boost::shared_ptr<RBX::Instance>)const
+// mangled: j___ZNK5boost9function2IvSsNS_10shared_ptrIN3RBX8InstanceEEEEclESsS4_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+// was: boost::function2<void,std::string,boost::shared_ptr<RBX::Instance>>::operator()(std::string,boost::shared_ptr<RBX::Instance>)const
+#[doc(alias = "boost::function2<void,std::string,rbx_core::SharedPtr<RBX::Instance>>::operator()(std::string,rbx_core::SharedPtr<RBX::Instance>)const")]
+pub fn stub_f5ebb4() -> ! {
+    todo!("0xf5ebb4 boost::function2<void,std::string,rbx_core::SharedPtr<RBX::Instance>>::operator()(std::string,rbx_core::SharedPtr<RBX::Instance>)const")
+}
+
+// 0xf5ebc4 — boost::function3<void,std::string,int,std::string>::operator()(std::string,int,std::string)const
+// mangled: j___ZNK5boost9function3IvSsiSsEclESsiSs
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::function3<void,std::string,int,std::string>::operator()(std::string,int,std::string)const")]
+pub fn stub_f5ebc4() -> ! {
+    todo!("0xf5ebc4 boost::function3<void,std::string,int,std::string>::operator()(std::string,int,std::string)const")
+}
+
+// 0xf5ebd4 — boost::shared_ptr<RBX::JointInstance> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::JointInstance,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)
+// mangled: j___ZN3RBX10Reflection13DescribedBase21fastSharedDynamicCastINS_13JointInstanceENS_8InstanceEEEN5boost10shared_ptrIT_EERKNS6_IT0_EE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, __guard *, int, int, int)
+// was: boost::shared_ptr<RBX::JointInstance> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::JointInstance,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)
+#[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::JointInstance,RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")]
+pub fn stub_f5ebd4() -> ! {
+    todo!("0xf5ebd4 rbx_core::SharedPtr<RBX::JointInstance> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::JointInstance,RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")
+}
+
+// 0xf5ebe4 — boost::shared_ptr<RBX::PartInstance const> RBX::shared_from<RBX::PartInstance const>(RBX::PartInstance const*)
+// mangled: j___ZN3RBX11shared_fromIKNS_12PartInstanceEEEN5boost10shared_ptrIT_EEPS5_
+// type: int __fastcall(_DWORD, _DWORD)
+// was: boost::shared_ptr<RBX::PartInstance const> RBX::shared_from<RBX::PartInstance const>(RBX::PartInstance const*)
+#[doc(alias = "rbx_core::SharedPtr<RBX::PartInstance const> RBX::shared_from<RBX::PartInstance const>(RBX::PartInstance const*)")]
+pub fn stub_f5ebe4() -> ! {
+    todo!("0xf5ebe4 rbx_core::SharedPtr<RBX::PartInstance const> RBX::shared_from<RBX::PartInstance const>(RBX::PartInstance const*)")
+}
+
+// 0xf5ebf4 — boost::shared_ptr<RBX::Network::ClientReplicator> RBX::shared_from<RBX::Network::ClientReplicator>(RBX::Network::ClientReplicator*)
+// mangled: j___ZN3RBX11shared_fromINS_7Network16ClientReplicatorEEEN5boost10shared_ptrIT_EEPS5_
+// type: int __fastcall(_DWORD)
+// was: boost::shared_ptr<RBX::Network::ClientReplicator> RBX::shared_from<RBX::Network::ClientReplicator>(RBX::Network::ClientReplicator*)
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClientReplicator> RBX::shared_from<RBX::Network::ClientReplicator>(RBX::Network::ClientReplicator*)")]
+pub fn stub_f5ebf4() -> ! {
+    todo!("0xf5ebf4 rbx_core::SharedPtr<RBX::Network::ClientReplicator> RBX::shared_from<RBX::Network::ClientReplicator>(RBX::Network::ClientReplicator*)")
+}
+
+// 0xf5ec04 — RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()
+// mangled: j___ZN3RBX5Stats14TypedStatsItemIfED2Ev
+// type: int __fastcall(_DWORD)
+#[doc(alias = "RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
+pub fn stub_f5ec04() -> ! {
+    todo!("0xf5ec04 RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
+}
+
+// 0xf5ec14 — RBX::Stats::Item* RBX::Stats::Item::createBoundChildItem<float>(char const*,float const&)
+// mangled: j___ZN3RBX5Stats4Item20createBoundChildItemIfEEPS1_PKcRKT_
+// type: int __fastcall(int, int)
+#[doc(alias = "RBX::Stats::Item* RBX::Stats::Item::createBoundChildItem<float>(char const*,float const&)")]
+pub fn stub_f5ec14() -> ! {
+    todo!("0xf5ec14 RBX::Stats::Item* RBX::Stats::Item::createBoundChildItem<float>(char const*,float const&)")
+}
+
+// 0xf5ec24 — RBX::Stats::Item* RBX::Stats::Item::createBoundChildItem<unsigned long long>(char const*,unsigned long long const&)
+// mangled: j___ZN3RBX5Stats4Item20createBoundChildItemIyEEPS1_PKcRKT_
+// type: int __fastcall(int, int)
+#[doc(alias = "RBX::Stats::Item* RBX::Stats::Item::createBoundChildItem<unsigned long long>(char const*,unsigned long long const&)")]
+pub fn stub_f5ec24() -> ! {
+    todo!("0xf5ec24 RBX::Stats::Item* RBX::Stats::Item::createBoundChildItem<unsigned long long>(char const*,unsigned long long const&)")
+}
+
+// 0xf5ec34 — RBX::Network::Replicator::StatsItem::StatsItem(boost::shared_ptr<RBX::Network::Replicator const> const&)
+// mangled: j___ZN3RBX7Network10Replicator9StatsItemC2ERKN5boost10shared_ptrIKS1_EE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, char, RBX::Instance *, RBX::Instance *, int, int, void *, int)
+// was: RBX::Network::Replicator::StatsItem::StatsItem(boost::shared_ptr<RBX::Network::Replicator const> const&)
+#[doc(alias = "RBX::Network::Replicator::StatsItem::StatsItem(rbx_core::SharedPtr<RBX::Network::Replicator const> const&)")]
+pub fn stub_f5ec34() -> ! {
+    todo!("0xf5ec34 RBX::Network::Replicator::StatsItem::StatsItem(rbx_core::SharedPtr<RBX::Network::Replicator const> const&)")
+}
+
+// 0xf5ec44 — RBX::Network::RakStatsItem::RakStatsItem(RakNet::RakNetStatistics const*)
+// mangled: j___ZN3RBX7Network12RakStatsItemC2EPKN6RakNet16RakNetStatisticsE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "RBX::Network::RakStatsItem::RakStatsItem(RakNet::RakNetStatistics const*)")]
+pub fn stub_f5ec44() -> ! {
+    todo!("0xf5ec44 RBX::Network::RakStatsItem::RakStatsItem(RakNet::RakNetStatistics const*)")
+}
+
+// 0xf5ec54 — RBX::Network::ClientReplicator::ClientStatsItem::ClientStatsItem(boost::shared_ptr<RBX::Network::ClientReplicator const> const&)
+// mangled: j___ZN3RBX7Network16ClientReplicator15ClientStatsItemC2ERKN5boost10shared_ptrIKS1_EE
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int)
+// was: RBX::Network::ClientReplicator::ClientStatsItem::ClientStatsItem(boost::shared_ptr<RBX::Network::ClientReplicator const> const&)
+#[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::ClientStatsItem(rbx_core::SharedPtr<RBX::Network::ClientReplicator const> const&)")]
+pub fn stub_f5ec54() -> ! {
+    todo!("0xf5ec54 RBX::Network::ClientReplicator::ClientStatsItem::ClientStatsItem(rbx_core::SharedPtr<RBX::Network::ClientReplicator const> const&)")
+}
+
+// 0xf5ec64 — RBX::Network::PropSync::Slave::onPropertySend(RBX::Reflection::ConstProperty,int &)
+// mangled: j___ZN3RBX7Network8PropSync5Slave14onPropertySendENS_10Reflection13ConstPropertyERi
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "RBX::Network::PropSync::Slave::onPropertySend(RBX::Reflection::ConstProperty,int &)")]
+pub fn stub_f5ec64() -> ! {
+    todo!("0xf5ec64 RBX::Network::PropSync::Slave::onPropertySend(RBX::Reflection::ConstProperty,int &)")
+}
+
+// 0xf5ec74 — RBX::Network::PropSync::Slave::onReceivedPropertyChanged(RBX::Reflection::ConstProperty,bool)
+// mangled: j___ZN3RBX7Network8PropSync5Slave25onReceivedPropertyChangedENS_10Reflection13ConstPropertyEb
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "RBX::Network::PropSync::Slave::onReceivedPropertyChanged(RBX::Reflection::ConstProperty,bool)")]
+pub fn stub_f5ec74() -> ! {
+    todo!("0xf5ec74 RBX::Network::PropSync::Slave::onReceivedPropertyChanged(RBX::Reflection::ConstProperty,bool)")
+}
+
+// 0xf5ec84 — RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::expireItems(void)
+// mangled: j___ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEE11expireItemsEv
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::expireItems(void)")]
+pub fn stub_f5ec84() -> ! {
+    todo!("0xf5ec84 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::expireItems(void)")
+}
+
+// 0xf5ec94 — RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::Base(RBX::Time::Interval)
+// mangled: j___ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEEC2ENS_4Time8IntervalE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::Base(RBX::Time::Interval)")]
+pub fn stub_f5ec94() -> ! {
+    todo!("0xf5ec94 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::Base(RBX::Time::Interval)")
+}
+
+// 0xf5eca4 — RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::~Base()
+// mangled: j___ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEED2Ev
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::~Base()")]
+pub fn stub_f5eca4() -> ! {
+    todo!("0xf5eca4 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::~Base()")
+}
+
+// 0xf5ecb4 — boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::Network::ClientReplicator::ClientStatsItem,boost::shared_ptr<RBX::Network::ClientReplicator>>(boost::shared_ptr<RBX::Network::ClientReplicator>)
+// mangled: j___ZN3RBX9CreatableINS_8InstanceEE6createINS_7Network16ClientReplicator15ClientStatsItemEN5boost10shared_ptrIS5_EEEENS8_IT_EET0_
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, RBX::Instance *, boost::detail::shared_count *, int, int, void *, int)
+// was: boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::Network::ClientReplicator::ClientStatsItem,boost::shared_ptr<RBX::Network::ClientReplicator>>(boost::shared_ptr<RBX::Network::ClientReplicator>)
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClientReplicator::ClientStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::Network::ClientReplicator::ClientStatsItem,rbx_core::SharedPtr<RBX::Network::ClientReplicator>>(rbx_core::SharedPtr<RBX::Network::ClientReplicator>)")]
+pub fn stub_f5ecb4() -> ! {
+    todo!("0xf5ecb4 rbx_core::SharedPtr<RBX::Network::ClientReplicator::ClientStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::Network::ClientReplicator::ClientStatsItem,rbx_core::SharedPtr<RBX::Network::ClientReplicator>>(rbx_core::SharedPtr<RBX::Network::ClientReplicator>)")
+}
+
+// 0xf5ecc4 — rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>::safe_queue(void)
+// mangled: j___ZN3rbx10safe_queueINS_14implementation27timestamped_safe_queue_itemIN3RBX7Network8PropSync6detail11PropertyKeyEEEEC2Ev
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>::safe_queue(void)")]
+pub fn stub_f5ecc4() -> ! {
+    todo!("0xf5ecc4 rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>::safe_queue(void)")
+}
+
+// 0xf5ecd4 — rbx::signals::signal<void ()(std::string,int,std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot> &)
+// mangled: j___ZN3rbx7signals6signalIFvSsiSsEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
+#[doc(alias = "rbx::signals::signal<void ()(std::string,int,std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot> &)")]
+pub fn stub_f5ecd4() -> ! {
+    todo!("0xf5ecd4 rbx::signals::signal<void ()(std::string,int,std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,int,std::string)>::slot> &)")
+}
+
+// 0xf5ece4 — rbx::signals::signal<void ()(std::string,int,std::string)>::mutex(void)
+// mangled: j___ZN3rbx7signals6signalIFvSsiSsEE5mutexEv
+// type: int __fastcall(_DWORD)
+#[doc(alias = "rbx::signals::signal<void ()(std::string,int,std::string)>::mutex(void)")]
+pub fn stub_f5ece4() -> ! {
+    todo!("0xf5ece4 rbx::signals::signal<void ()(std::string,int,std::string)>::mutex(void)")
+}
+
+// 0xf5ecf4 — boost::shared_ptr<RBX::Network::ClientReplicator::GCJob>::reset(void)
+// mangled: j___ZN5boost10shared_ptrIN3RBX7Network16ClientReplicator5GCJobEE5resetEv
+// type: int __fastcall(_DWORD)
+// was: boost::shared_ptr<RBX::Network::ClientReplicator::GCJob>::reset(void)
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob>::reset(void)")]
+pub fn stub_f5ecf4() -> ! {
+    todo!("0xf5ecf4 rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob>::reset(void)")
+}
+
+// 0xf5ed04 — void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>::operator()<void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
+// mangled: j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX8GuidItemINS4_8InstanceEE8RegistryEEEEENS_3argILi1EEEEclIPFvS9_NS3_IS6_EEENS0_5list1IRKSF_EEEEvNS0_4typeIvEERT_RT0_i
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
+// was: void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>::operator()<void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>::operator()<void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
+pub fn stub_f5ed04() -> ! {
+    todo!("0xf5ed04 void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>::operator()<void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")
+}
+
+// 0xf5ed14 — void boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>::operator()<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&)
+// mangled: j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network16ClientReplicatorERKNS4_4Guid4DataEPNS4_12PartInstanceENS_10shared_ptrINS4_8InstanceEEEEENS0_5list4INS0_5valueIPS6_EENSI_IS8_EENSI_ISC_EENS_3argILi1EEEEEEclISF_EEvRKT_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+// was: void boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>::operator()<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&)
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>::operator()<rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> const&)")]
+pub fn stub_f5ed14() -> ! {
+    todo!("0xf5ed14 void boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>::operator()<rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> const&)")
+}
+
+// 0xf5ed24 — boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>)
+// mangled: j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX8GuidItemINS4_8InstanceEE8RegistryEEEEENS_3argILi1EEEEC2ESA_SC_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
+// was: boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>)
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>)")]
+pub fn stub_f5ed24() -> ! {
+    todo!("0xf5ed24 boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>)")
+}
+
+// 0xf5ed34 — boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>),boost::_bi::list_av_2<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>>::type> boost::bind<void,boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>>(void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>)
+// mangled: j___ZN5boost4bindIvNS_10shared_ptrIN3RBX8GuidItemINS2_8InstanceEE8RegistryEEENS1_IS4_EES7_NS_3argILi1EEEEENS_3_bi6bind_tIT_PFSD_T0_T1_ENSB_9list_av_2IT2_T3_E4typeEEESH_SJ_SK_
+// type: int __fastcall(int, int)
+// was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>),boost::_bi::list_av_2<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>>::type> boost::bind<void,boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>>(void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>)
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>>::type> boost::bind<void,rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>>(void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>)")]
+pub fn stub_f5ed34() -> ! {
+    todo!("0xf5ed34 boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>>::type> boost::bind<void,rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>>(void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,boost::arg<1>)")
+}
+
+// 0xf5ed44 — void boost::detail::sp_pointer_construct<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(boost::shared_ptr<RBX::Network::ClientReplicator::GCJob> *,RBX::Network::ClientReplicator::GCJob *,boost::detail::shared_count &)
+// mangled: j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network16ClientReplicator5GCJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
+// was: void boost::detail::sp_pointer_construct<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(boost::shared_ptr<RBX::Network::ClientReplicator::GCJob> *,RBX::Network::ClientReplicator::GCJob *,boost::detail::shared_count &)
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob> *,RBX::Network::ClientReplicator::GCJob *,boost::detail::shared_count &)")]
+pub fn stub_f5ed44() -> ! {
+    todo!("0xf5ed44 void boost::detail::sp_pointer_construct<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob> *,RBX::Network::ClientReplicator::GCJob *,boost::detail::shared_count &)")
+}
+
+// 0xf5ed54 — boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *)
+// mangled: j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE11erase_nodesEPNS1_8ptr_nodeISC_EESM_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *)")]
+pub fn stub_f5ed54() -> ! {
+    todo!("0xf5ed54 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *)")
+}
+
+// 0xf5ed64 — std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>(RBX::Network::PropSync::detail::PropertyKey const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> const&)
+// mangled: j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE12emplace_implINS1_13emplace_args1ISC_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEbERSA_RKT_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>(RBX::Network::PropSync::detail::PropertyKey const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> const&)")]
+pub fn stub_f5ed64() -> ! {
+    todo!("0xf5ed64 std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>(RBX::Network::PropSync::detail::PropertyKey const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> const&)")
+}
+
+// 0xf5ed74 — boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::create_buckets(unsigned long)
+// mangled: j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE14create_bucketsEm
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::create_buckets(unsigned long)")]
+pub fn stub_f5ed74() -> ! {
+    todo!("0xf5ed74 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::create_buckets(unsigned long)")
+}
+
+// 0xf5ed84 — boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::reserve_for_insert(unsigned long)
+// mangled: j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE18reserve_for_insertEm
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::reserve_for_insert(unsigned long)")]
+pub fn stub_f5ed84() -> ! {
+    todo!("0xf5ed84 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::reserve_for_insert(unsigned long)")
+}
+
+// 0xf5ed94 — bool RakNet::BitStream::Read<unsigned short>(unsigned short &)
+// mangled: j___ZN6RakNet9BitStream4ReadItEEbRT_
+// type: int __fastcall(int, int, int, int, __guard *, int, int, int, int)
+#[doc(alias = "bool RakNet::BitStream::Read<unsigned short>(unsigned short &)")]
+pub fn stub_f5ed94() -> ! {
+    todo!("0xf5ed94 bool RakNet::BitStream::Read<unsigned short>(unsigned short &)")
+}
+
+// 0xf5eda4 — void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>> const&)const
+// mangled: j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network16ClientReplicatorERKNS_4Guid4DataEPNS_12PartInstanceENS2_10shared_ptrIS0_EEEENS3_5list4INS3_5valueIPS8_EENSJ_ISA_EENSJ_ISE_EENS2_3argILi1EEEEEEEEEvRKT_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, int, int, int, int)
+// was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>> const&)const
+#[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>> const&)const")]
+pub fn stub_f5eda4() -> ! {
+    todo!("0xf5eda4 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>> const&)const")
+}
+
+// 0xf5edb4 — void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>> const&)const
+// mangled: j___ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvPFvNS2_10shared_ptrINS_8GuidItemIS0_E8RegistryEEENS5_IS0_EEENS3_5list2INS3_5valueIS9_EENS2_3argILi1EEEEEEEEEvRKT_
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
+// was: void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>> const&)const
+#[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>> const&)const")]
+pub fn stub_f5edb4() -> ! {
+    todo!("0xf5edb4 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>>,boost::arg<1>>> const&)const")
+}
+
+// 0xf5edc4 — void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<float>,RBX::Stats::TypedStatsItem<float>>(boost::shared_ptr<RBX::Stats::TypedStatsItem<float>> const*,RBX::Stats::TypedStatsItem<float> *)const
+// mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats14TypedStatsItemIfEES8_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<float>,RBX::Stats::TypedStatsItem<float>>(boost::shared_ptr<RBX::Stats::TypedStatsItem<float>> const*,RBX::Stats::TypedStatsItem<float> *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<float>,RBX::Stats::TypedStatsItem<float>>(rbx_core::SharedPtr<RBX::Stats::TypedStatsItem<float>> const*,RBX::Stats::TypedStatsItem<float> *)const")]
+pub fn stub_f5edc4() -> ! {
+    todo!("0xf5edc4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<float>,RBX::Stats::TypedStatsItem<float>>(rbx_core::SharedPtr<RBX::Stats::TypedStatsItem<float>> const*,RBX::Stats::TypedStatsItem<float> *)const")
+}
+
+// 0xf5edd4 — void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<unsigned long long>,RBX::Stats::TypedStatsItem<unsigned long long>>(boost::shared_ptr<RBX::Stats::TypedStatsItem<unsigned long long>> const*,RBX::Stats::TypedStatsItem<unsigned long long> *)const
+// mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats14TypedStatsItemIyEES8_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<unsigned long long>,RBX::Stats::TypedStatsItem<unsigned long long>>(boost::shared_ptr<RBX::Stats::TypedStatsItem<unsigned long long>> const*,RBX::Stats::TypedStatsItem<unsigned long long> *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<unsigned long long>,RBX::Stats::TypedStatsItem<unsigned long long>>(rbx_core::SharedPtr<RBX::Stats::TypedStatsItem<unsigned long long>> const*,RBX::Stats::TypedStatsItem<unsigned long long> *)const")]
+pub fn stub_f5edd4() -> ! {
+    todo!("0xf5edd4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedStatsItem<unsigned long long>,RBX::Stats::TypedStatsItem<unsigned long long>>(rbx_core::SharedPtr<RBX::Stats::TypedStatsItem<unsigned long long>> const*,RBX::Stats::TypedStatsItem<unsigned long long> *)const")
+}
+
+// 0xf5ede4 — void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const
+// mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicator15ClientStatsItemES8_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const")]
+pub fn stub_f5ede4() -> ! {
+    todo!("0xf5ede4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const")
+}
+
+// 0xf5edf4 — void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(boost::shared_ptr<RBX::Network::ClientReplicator::GCJob> const*,RBX::Network::ClientReplicator::GCJob *)const
+// mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network16ClientReplicator5GCJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+// was: void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(boost::shared_ptr<RBX::Network::ClientReplicator::GCJob> const*,RBX::Network::ClientReplicator::GCJob *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob> const*,RBX::Network::ClientReplicator::GCJob *)const")]
+pub fn stub_f5edf4() -> ! {
+    todo!("0xf5edf4 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::GCJob> const*,RBX::Network::ClientReplicator::GCJob *)const")
+}
+
+// 0xf5ee04 — boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator*,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>)const
+// mangled: j___ZNK5boost4_mfi3mf3IvN3RBX7Network16ClientReplicatorERKNS2_4Guid4DataEPNS2_12PartInstanceENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S8_SA_SD_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+// was: boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator*,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>)const
+#[doc(alias = "boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator*,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>)const")]
+pub fn stub_f5ee04() -> ! {
+    todo!("0xf5ee04 boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator*,RBX::Guid::Data const&,RBX::PartInstance *,rbx_core::SharedPtr<RBX::Instance>)const")
+}
+
+// 0xf5ee14 — std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>>::_M_initialize_map(unsigned long)
+// mangled: j___ZNSt11_Deque_baseIN3rbx14implementation27timestamped_safe_queue_itemIN3RBX7Network8PropSync6detail11PropertyKeyEEESaIS8_EE17_M_initialize_mapEm
+// type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, void *, int)
+#[doc(alias = "std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>>::_M_initialize_map(unsigned long)")]
+pub fn stub_f5ee14() -> ! {
+    todo!("0xf5ee14 std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>>::_M_initialize_map(unsigned long)")
+}
+
+// 0xf5ee24 — j___ZN3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(int, int, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_f5ee24() -> ! {
+    todo!("0xf5ee24 j___ZN3RBX14FactoryProductINS_15NetworkSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sNetworkSettingsEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf5ee34 — j___ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEE9singletonEv
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, char, int, int, int, RBX::Instance *, int, int, void *, int)
+#[doc(alias = "j___ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEE9singletonEv")]
+pub fn stub_f5ee34() -> ! {
+    todo!("0xf5ee34 j___ZN3RBX26GlobalAdvancedSettingsItemINS_15NetworkSettingsELZNS_16sNetworkSettingsEEE9singletonEv")
+}
+
+// 0xf5ee44 — RBX::Network::CustomSerializer::readNormQuat(float &,float &,float &,float &,RakNet::BitStream &)
+// mangled: j___ZN3RBX7Network16CustomSerializer12readNormQuatERfS2_S2_S2_RN6RakNet9BitStreamE
+// type: _DWORD __fastcall(RBX::Network::CustomSerializer *__hidden this, float *, float *, float *, RakNet::BitStream *, RakNet::BitStream *)
+#[doc(alias = "RBX::Network::CustomSerializer::readNormQuat(float &,float &,float &,float &,RakNet::BitStream &)")]
+pub fn stub_f5ee44() -> ! {
+    todo!("0xf5ee44 RBX::Network::CustomSerializer::readNormQuat(float &,float &,float &,float &,RakNet::BitStream &)")
+}
+
+// 0xf5ee54 — RBX::Network::CustomSerializer::writeNormQuat(bool,float const&,float const&,float const&,float const&,RakNet::BitStream &)
+// mangled: j___ZN3RBX7Network16CustomSerializer13writeNormQuatEbRKfS3_S3_S3_RN6RakNet9BitStreamE
+// type: _DWORD __fastcall(RBX::Network::CustomSerializer *__hidden this, bool, const float *, const float *, const float *, RakNet::BitStream *, RakNet::BitStream *)
+#[doc(alias = "RBX::Network::CustomSerializer::writeNormQuat(bool,float const&,float const&,float const&,float const&,RakNet::BitStream &)")]
+pub fn stub_f5ee54() -> ! {
+    todo!("0xf5ee54 RBX::Network::CustomSerializer::writeNormQuat(bool,float const&,float const&,float const&,float const&,RakNet::BitStream &)")
+}
+
+// 0xf5ee64 — rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::mutex(void)
+// mangled: j___ZN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS3_19ICombinedSignalDataEEE5mutexEv
+// type: int __fastcall(_DWORD)
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::mutex(void)")]
+pub fn stub_f5ee64() -> ! {
+    todo!("0xf5ee64 rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::mutex(void)")
+}
+
+// 0xf5ee74 — boost::unique_lock<boost::mutex>::~unique_lock()
+// mangled: j___ZN5boost11unique_lockINS_5mutexEED1Ev
+// type: int __fastcall(_DWORD)
+#[doc(alias = "boost::unique_lock<boost::mutex>::~unique_lock()")]
+pub fn stub_f5ee74() -> ! {
+    todo!("0xf5ee74 boost::unique_lock<boost::mutex>::~unique_lock()")
+}
+
+// 0xf5ee84 — void boost::throw_exception<boost::iostreams::gzip_error>(boost::iostreams::gzip_error const&)
+// mangled: j___ZN5boost15throw_exceptionINS_9iostreams10gzip_errorEEEvRKT_
+// type: int __fastcall(_DWORD)
+#[doc(alias = "void boost::throw_exception<boost::iostreams::gzip_error>(boost::iostreams::gzip_error const&)")]
+pub fn stub_f5ee84() -> ! {
+    todo!("0xf5ee84 void boost::throw_exception<boost::iostreams::gzip_error>(boost::iostreams::gzip_error const&)")
+}
+
+// 0xf5ee94 — void boost::throw_exception<std::logic_error>(std::logic_error const&)
+// mangled: j___ZN5boost15throw_exceptionISt11logic_errorEEvRKT_
+// type: int __fastcall(_DWORD)
+#[doc(alias = "void boost::throw_exception<std::logic_error>(std::logic_error const&)")]
+pub fn stub_f5ee94() -> ! {
+    todo!("0xf5ee94 void boost::throw_exception<std::logic_error>(std::logic_error const&)")
+}
+
+// 0xf5eea4 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::iostreams::gzip_error> const&)
+// mangled: j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEEC1ERKS5_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::iostreams::gzip_error> const&)")]
+pub fn stub_f5eea4() -> ! {
+    todo!("0xf5eea4 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::iostreams::gzip_error> const&)")
+}
+
+// 0xf5eeb4 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>> const&)
+// mangled: j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEEC1ERKS6_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>> const&)")]
+pub fn stub_f5eeb4() -> ! {
+    todo!("0xf5eeb4 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>> const&)")
+}
+
+// 0xf5eec4 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_tag)
+// mangled: j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEEC1ERKS6_NS6_9clone_tagE
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_tag)")]
+pub fn stub_f5eec4() -> ! {
+    todo!("0xf5eec4 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone_tag)")
+}
+
+// 0xf5eed4 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::clone_impl(boost::exception_detail::error_info_injector<std::ios_base::failure> const&)
+// mangled: j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEEC1ERKS5_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::clone_impl(boost::exception_detail::error_info_injector<std::ios_base::failure> const&)")]
+pub fn stub_f5eed4() -> ! {
+    todo!("0xf5eed4 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::clone_impl(boost::exception_detail::error_info_injector<std::ios_base::failure> const&)")
+}
+
+// 0xf5eee4 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::logic_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::logic_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::logic_error>>::clone_tag)
+// mangled: j___ZN5boost16exception_detail10clone_implINS0_19error_info_injectorISt11logic_errorEEEC1ERKS5_NS5_9clone_tagE
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::logic_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::logic_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::logic_error>>::clone_tag)")]
+pub fn stub_f5eee4() -> ! {
+    todo!("0xf5eee4 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::logic_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::logic_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::logic_error>>::clone_tag)")
+}
+
+// 0xf5eef4 — void boost::detail::sp_pointer_construct<boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl,boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl>(boost::shared_ptr<boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl> *,boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl *,boost::detail::shared_count &)
+// mangled: j___ZN5boost6detail20sp_pointer_constructINS_9iostreams16symmetric_filterINS2_6detail22zlib_decompressor_implISaIcEEES6_E4implES9_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, int, int, int, void *, int)
+// was: void boost::detail::sp_pointer_construct<boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl,boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl>(boost::shared_ptr<boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl> *,boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl *,boost::detail::shared_count &)
+#[doc(alias = "void boost::detail::sp_pointer_construct<boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl,boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl>(rbx_core::SharedPtr<boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl> *,boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl *,boost::detail::shared_count &)")]
+pub fn stub_f5eef4() -> ! {
+    todo!("0xf5eef4 void boost::detail::sp_pointer_construct<boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl,boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl>(rbx_core::SharedPtr<boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl> *,boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::impl *,boost::detail::shared_count &)")
+}
+
+// 0xf5ef04 — void boost::detail::sp_pointer_construct<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl,boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl>(boost::shared_ptr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl> *,boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl *,boost::detail::shared_count &)
+// mangled: j___ZN5boost6detail20sp_pointer_constructINS_9iostreams6detail10chain_baseINS2_5chainINS2_5inputEcSt11char_traitsIcESaIcEEEcS8_S9_S6_E10chain_implESC_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, int, int, int, void *, int)
+// was: void boost::detail::sp_pointer_construct<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl,boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl>(boost::shared_ptr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl> *,boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl *,boost::detail::shared_count &)
+#[doc(alias = "void boost::detail::sp_pointer_construct<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl,boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl>(rbx_core::SharedPtr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl> *,boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl *,boost::detail::shared_count &)")]
+pub fn stub_f5ef04() -> ! {
+    todo!("0xf5ef04 void boost::detail::sp_pointer_construct<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl,boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl>(rbx_core::SharedPtr<boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl> *,boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl *,boost::detail::shared_count &)")
+}
+
+// 0xf5ef14 — boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char,boost::iostreams::input>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::basic_null_device<char,boost::iostreams::input> const&,int,int)
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_17basic_null_deviceIcNS0_5inputEEESt11char_traitsIcESaIcES3_E9open_implERKS4_ii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char,boost::iostreams::input>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::basic_null_device<char,boost::iostreams::input> const&,int,int)")]
+pub fn stub_f5ef14() -> ! {
+    todo!("0xf5ef14 boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char,boost::iostreams::input>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::basic_null_device<char,boost::iostreams::input> const&,int,int)")
+}
+
+// 0xf5ef24 — boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char,boost::iostreams::input>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_17basic_null_deviceIcNS0_5inputEEESt11char_traitsIcESaIcES3_ED2Ev
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char,boost::iostreams::input>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()")]
+pub fn stub_f5ef24() -> ! {
+    todo!("0xf5ef24 boost::iostreams::stream_buffer<boost::iostreams::basic_null_device<char,boost::iostreams::input>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()")
+}
+
+// 0xf5ef34 — boost::iostreams::stream_buffer<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input_seekable>::open_impl(boost::iostreams::basic_array_source<char> const&,int,int)
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_18basic_array_sourceIcEESt11char_traitsIcESaIcENS0_14input_seekableEE9open_implERKS3_ii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input_seekable>::open_impl(boost::iostreams::basic_array_source<char> const&,int,int)")]
+pub fn stub_f5ef34() -> ! {
+    todo!("0xf5ef34 boost::iostreams::stream_buffer<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input_seekable>::open_impl(boost::iostreams::basic_array_source<char> const&,int,int)")
+}
+
+// 0xf5ef44 — boost::iostreams::stream_buffer<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input_seekable>::~stream_buffer()
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_18basic_array_sourceIcEESt11char_traitsIcESaIcENS0_14input_seekableEED2Ev
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input_seekable>::~stream_buffer()")]
+pub fn stub_f5ef44() -> ! {
+    todo!("0xf5ef44 boost::iostreams::stream_buffer<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input_seekable>::~stream_buffer()")
+}
+
+// 0xf5ef54 — boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&,int,int)
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_21basic_gzip_compressorISaIcEEESt11char_traitsIcES3_NS0_5inputEE9open_implERKS4_ii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&,int,int)")]
+pub fn stub_f5ef54() -> ! {
+    todo!("0xf5ef54 boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&,int,int)")
+}
+
+// 0xf5ef64 — boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::stream_buffer(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&,int,int)
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_21basic_gzip_compressorISaIcEEESt11char_traitsIcES3_NS0_5inputEEC2ERKS4_ii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::stream_buffer(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&,int,int)")]
+pub fn stub_f5ef64() -> ! {
+    todo!("0xf5ef64 boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::stream_buffer(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&,int,int)")
+}
+
+// 0xf5ef74 — boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_21basic_gzip_compressorISaIcEEESt11char_traitsIcES3_NS0_5inputEED2Ev
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()")]
+pub fn stub_f5ef74() -> ! {
+    todo!("0xf5ef74 boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()")
+}
+
+// 0xf5ef84 — boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::basic_gzip_decompressor<std::allocator<char>> const&,int,int)
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_23basic_gzip_decompressorISaIcEEESt11char_traitsIcES3_NS0_5inputEE9open_implERKS4_ii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::basic_gzip_decompressor<std::allocator<char>> const&,int,int)")]
+pub fn stub_f5ef84() -> ! {
+    todo!("0xf5ef84 boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::basic_gzip_decompressor<std::allocator<char>> const&,int,int)")
+}
+
+// 0xf5ef94 — boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_23basic_gzip_decompressorISaIcEEESt11char_traitsIcES3_NS0_5inputEED2Ev
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()")]
+pub fn stub_f5ef94() -> ! {
+    todo!("0xf5ef94 boost::iostreams::stream_buffer<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()")
+}
+
+// 0xf5efa4 — boost::iostreams::stream_buffer<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream> const&,int,int)
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_6detail12mode_adapterINS0_5inputESiEESt11char_traitsIcESaIcES4_E9open_implERKS5_ii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream> const&,int,int)")]
+pub fn stub_f5efa4() -> ! {
+    todo!("0xf5efa4 boost::iostreams::stream_buffer<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::open_impl(boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream> const&,int,int)")
+}
+
+// 0xf5efb4 — boost::iostreams::stream_buffer<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()
+// mangled: j___ZN5boost9iostreams13stream_bufferINS0_6detail12mode_adapterINS0_5inputESiEESt11char_traitsIcESaIcES4_ED2Ev
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::iostreams::stream_buffer<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()")]
+pub fn stub_f5efb4() -> ! {
+    todo!("0xf5efb4 boost::iostreams::stream_buffer<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::~stream_buffer()")
+}
+
+// 0xf5efc4 — int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_compressor_impl<std::allocator<char>>,std::allocator<char>>::read<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char *,int)
+// mangled: j___ZN5boost9iostreams16symmetric_filterINS0_6detail20zlib_compressor_implISaIcEEES4_E4readINS2_16linked_streambufIcSt11char_traitsIcEEEEEiRT_Pci
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_compressor_impl<std::allocator<char>>,std::allocator<char>>::read<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char *,int)")]
+pub fn stub_f5efc4() -> ! {
+    todo!("0xf5efc4 int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_compressor_impl<std::allocator<char>>,std::allocator<char>>::read<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char *,int)")
+}
+
+// 0xf5efd4 — int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_compressor_impl<std::allocator<char>>,std::allocator<char>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char const*,int)
+// mangled: j___ZN5boost9iostreams16symmetric_filterINS0_6detail20zlib_compressor_implISaIcEEES4_E5writeINS2_16linked_streambufIcSt11char_traitsIcEEEEEiRT_PKci
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_compressor_impl<std::allocator<char>>,std::allocator<char>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char const*,int)")]
+pub fn stub_f5efd4() -> ! {
+    todo!("0xf5efd4 int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_compressor_impl<std::allocator<char>>,std::allocator<char>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char const*,int)")
+}
+
+// 0xf5efe4 — int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::read<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::peekable_source<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::peekable_source<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> &,char *,int)
+// mangled: j___ZN5boost9iostreams16symmetric_filterINS0_6detail22zlib_decompressor_implISaIcEEES4_E4readINS0_23basic_gzip_decompressorIS4_E15peekable_sourceINS2_16linked_streambufIcSt11char_traitsIcEEEEEEEiRT_Pci
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::read<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::peekable_source<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::peekable_source<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> &,char *,int)")]
+pub fn stub_f5efe4() -> ! {
+    todo!("0xf5efe4 int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::read<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::peekable_source<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::peekable_source<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> &,char *,int)")
+}
+
+// 0xf5eff4 — void boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::close<boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> &,std::_Ios_Openmode)
+// mangled: j___ZN5boost9iostreams16symmetric_filterINS0_6detail22zlib_decompressor_implISaIcEEES4_E5closeINS0_20non_blocking_adapterINS2_16linked_streambufIcSt11char_traitsIcEEEEEEEvRT_St13_Ios_Openmode
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, void *, int)
+#[doc(alias = "void boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::close<boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> &,std::_Ios_Openmode)")]
+pub fn stub_f5eff4() -> ! {
+    todo!("0xf5eff4 void boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::close<boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> &,std::_Ios_Openmode)")
+}
+
+// 0xf5f004 — void boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::close<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,std::_Ios_Openmode)
+// mangled: j___ZN5boost9iostreams16symmetric_filterINS0_6detail22zlib_decompressor_implISaIcEEES4_E5closeINS2_16linked_streambufIcSt11char_traitsIcEEEEEvRT_St13_Ios_Openmode
+// type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, void *, int)
+#[doc(alias = "void boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::close<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,std::_Ios_Openmode)")]
+pub fn stub_f5f004() -> ! {
+    todo!("0xf5f004 void boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::close<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,std::_Ios_Openmode)")
+}
+
+// 0xf5f014 — int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char const*,int)
+// mangled: j___ZN5boost9iostreams16symmetric_filterINS0_6detail22zlib_decompressor_implISaIcEEES4_E5writeINS2_16linked_streambufIcSt11char_traitsIcEEEEEiRT_PKci
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char const*,int)")]
+pub fn stub_f5f014() -> ! {
+    todo!("0xf5f014 int boost::iostreams::symmetric_filter<boost::iostreams::detail::zlib_decompressor_impl<std::allocator<char>>,std::allocator<char>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char const*,int)")
+}
+
+// 0xf5f024 — boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()
+// mangled: j___ZN5boost9iostreams19filtering_streambufINS0_5inputEcSt11char_traitsIcESaIcENS0_7public_EED2Ev
+// type: int __fastcall(_DWORD)
+#[doc(alias = "boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")]
+pub fn stub_f5f024() -> ! {
+    todo!("0xf5f024 boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_streambuf()")
+}
+
+// 0xf5f034 — void boost::iostreams::basic_gzip_compressor<std::allocator<char>>::write_long<boost::iostreams::back_insert_device<std::string>>(long,boost::iostreams::back_insert_device<std::string> &,mpl_::bool_<true>)
+// mangled: j___ZN5boost9iostreams21basic_gzip_compressorISaIcEE10write_longINS0_18back_insert_deviceISsEEEEvlRT_N4mpl_5bool_ILb1EEE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "void boost::iostreams::basic_gzip_compressor<std::allocator<char>>::write_long<boost::iostreams::back_insert_device<std::string>>(long,boost::iostreams::back_insert_device<std::string> &,mpl_::bool_<true>)")]
+pub fn stub_f5f034() -> ! {
+    todo!("0xf5f034 void boost::iostreams::basic_gzip_compressor<std::allocator<char>>::write_long<boost::iostreams::back_insert_device<std::string>>(long,boost::iostreams::back_insert_device<std::string> &,mpl_::bool_<true>)")
+}
+
+// 0xf5f044 — int boost::iostreams::basic_gzip_compressor<std::allocator<char>>::read<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char *,int)
+// mangled: j___ZN5boost9iostreams21basic_gzip_compressorISaIcEE4readINS0_6detail16linked_streambufIcSt11char_traitsIcEEEEEiRT_Pci
+// type: int __fastcall(int, int, void *__dst, size_t __len)
+#[doc(alias = "int boost::iostreams::basic_gzip_compressor<std::allocator<char>>::read<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char *,int)")]
+pub fn stub_f5f044() -> ! {
+    todo!("0xf5f044 int boost::iostreams::basic_gzip_compressor<std::allocator<char>>::read<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char *,int)")
+}
+
+// 0xf5f054 — boost::iostreams::basic_gzip_compressor<std::allocator<char>>::basic_gzip_compressor(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&)
+// mangled: j___ZN5boost9iostreams21basic_gzip_compressorISaIcEEC2ERKS3_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::basic_gzip_compressor<std::allocator<char>>::basic_gzip_compressor(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&)")]
+pub fn stub_f5f054() -> ! {
+    todo!("0xf5f054 boost::iostreams::basic_gzip_compressor<std::allocator<char>>::basic_gzip_compressor(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&)")
+}
+
+// 0xf5f064 — boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::make_params(int)
+// mangled: j___ZN5boost9iostreams23basic_gzip_decompressorISaIcEE11make_paramsEi
+// type: int __fastcall(_DWORD)
+#[doc(alias = "boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::make_params(int)")]
+pub fn stub_f5f064() -> ! {
+    todo!("0xf5f064 boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::make_params(int)")
+}
+
+// 0xf5f074 — boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::peekable_source<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>::putback(char)
+// mangled: j___ZN5boost9iostreams23basic_gzip_decompressorISaIcEE15peekable_sourceINS0_6detail16linked_streambufIcSt11char_traitsIcEEEE7putbackEc
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::peekable_source<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>::putback(char)")]
+pub fn stub_f5f074() -> ! {
+    todo!("0xf5f074 boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::peekable_source<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>::putback(char)")
+}
+
+// 0xf5f084 — int boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::read<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char *,int)
+// mangled: j___ZN5boost9iostreams23basic_gzip_decompressorISaIcEE4readINS0_6detail16linked_streambufIcSt11char_traitsIcEEEEEiRT_Pci
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "int boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::read<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char *,int)")]
+pub fn stub_f5f084() -> ! {
+    todo!("0xf5f084 int boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::read<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char *,int)")
+}
+
+// 0xf5f094 — void boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::close<boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> &,std::_Ios_Openmode)
+// mangled: j___ZN5boost9iostreams23basic_gzip_decompressorISaIcEE5closeINS0_20non_blocking_adapterINS0_6detail16linked_streambufIcSt11char_traitsIcEEEEEEEvRT_St13_Ios_Openmode
+// type: int __fastcall(int, int, int)
+#[doc(alias = "void boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::close<boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> &,std::_Ios_Openmode)")]
+pub fn stub_f5f094() -> ! {
+    todo!("0xf5f094 void boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::close<boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::non_blocking_adapter<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> &,std::_Ios_Openmode)")
+}
+
+// 0xf5f0a4 — int boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char const*,int)
+// mangled: j___ZN5boost9iostreams23basic_gzip_decompressorISaIcEE5writeINS0_6detail16linked_streambufIcSt11char_traitsIcEEEEEiRT_PKci
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "int boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char const*,int)")]
+pub fn stub_f5f0a4() -> ! {
+    todo!("0xf5f0a4 int boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,char const*,int)")
+}
+
+// 0xf5f0b4 — boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::basic_gzip_decompressor(boost::iostreams::basic_gzip_decompressor<std::allocator<char>> const&)
+// mangled: j___ZN5boost9iostreams23basic_gzip_decompressorISaIcEEC2ERKS3_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::basic_gzip_decompressor(boost::iostreams::basic_gzip_decompressor<std::allocator<char>> const&)")]
+pub fn stub_f5f0b4() -> ! {
+    todo!("0xf5f0b4 boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::basic_gzip_decompressor(boost::iostreams::basic_gzip_decompressor<std::allocator<char>> const&)")
+}
+
+// 0xf5f0c4 — boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::basic_gzip_decompressor(int,int)
+// mangled: j___ZN5boost9iostreams23basic_gzip_decompressorISaIcEEC2Eii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::basic_gzip_decompressor(int,int)")]
+pub fn stub_f5f0c4() -> ! {
+    todo!("0xf5f0c4 boost::iostreams::basic_gzip_decompressor<std::allocator<char>>::basic_gzip_decompressor(int,int)")
+}
+
+// 0xf5f0d4 — boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl::close(void)
+// mangled: j___ZN5boost9iostreams6detail10chain_baseINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEEcS6_S7_S4_E10chain_impl5closeEv
+// type: int __fastcall(int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, void *, int)
+#[doc(alias = "boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl::close(void)")]
+pub fn stub_f5f0d4() -> ! {
+    todo!("0xf5f0d4 boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl::close(void)")
+}
+
+// 0xf5f0e4 — boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl::~chain_impl()
+// mangled: j___ZN5boost9iostreams6detail10chain_baseINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEEcS6_S7_S4_E10chain_implD2Ev
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl::~chain_impl()")]
+pub fn stub_f5f0e4() -> ! {
+    todo!("0xf5f0e4 boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::chain_impl::~chain_impl()")
+}
+
+// 0xf5f0f4 — boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::pop(void)
+// mangled: j___ZN5boost9iostreams6detail10chain_baseINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEEcS6_S7_S4_E3popEv
+// type: int(void)
+#[doc(alias = "boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::pop(void)")]
+pub fn stub_f5f0f4() -> ! {
+    todo!("0xf5f0f4 boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::pop(void)")
+}
+
+// 0xf5f104 — void boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::push_impl<boost::iostreams::basic_gzip_compressor<std::allocator<char>>>(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&,int,int)
+// mangled: j___ZN5boost9iostreams6detail10chain_baseINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEEcS6_S7_S4_E9push_implINS0_21basic_gzip_compressorIS7_EEEEvRKT_ii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "void boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::push_impl<boost::iostreams::basic_gzip_compressor<std::allocator<char>>>(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&,int,int)")]
+pub fn stub_f5f104() -> ! {
+    todo!("0xf5f104 void boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::push_impl<boost::iostreams::basic_gzip_compressor<std::allocator<char>>>(boost::iostreams::basic_gzip_compressor<std::allocator<char>> const&,int,int)")
+}
+
+// 0xf5f114 — void boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::push_impl<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>(boost::iostreams::basic_gzip_decompressor<std::allocator<char>> const&,int,int)
+// mangled: j___ZN5boost9iostreams6detail10chain_baseINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEEcS6_S7_S4_E9push_implINS0_23basic_gzip_decompressorIS7_EEEEvRKT_ii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "void boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::push_impl<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>(boost::iostreams::basic_gzip_decompressor<std::allocator<char>> const&,int,int)")]
+pub fn stub_f5f114() -> ! {
+    todo!("0xf5f114 void boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::push_impl<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>(boost::iostreams::basic_gzip_decompressor<std::allocator<char>> const&,int,int)")
+}
+
+// 0xf5f124 — void boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::push_impl<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>(boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream> const&,int,int)
+// mangled: j___ZN5boost9iostreams6detail10chain_baseINS0_5chainINS0_5inputEcSt11char_traitsIcESaIcEEEcS6_S7_S4_E9push_implINS1_12mode_adapterIS4_SiEEEEvRKT_ii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "void boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::push_impl<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>(boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream> const&,int,int)")]
+pub fn stub_f5f124() -> ! {
+    todo!("0xf5f124 void boost::iostreams::detail::chain_base<boost::iostreams::chain<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>>,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::input>::push_impl<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>(boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream> const&,int,int)")
+}
+
+// 0xf5f134 — void boost::iostreams::detail::close_impl<boost::iostreams::detail::two_sequence>::close<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::basic_gzip_compressor<std::allocator<char>> &,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,std::_Ios_Openmode)
+// mangled: j___ZN5boost9iostreams6detail10close_implINS1_12two_sequenceEE5closeINS0_21basic_gzip_compressorISaIcEEENS1_16linked_streambufIcSt11char_traitsIcEEEEEvRT_RT0_St13_Ios_Openmode
+// type: int __fastcall(struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
+#[doc(alias = "void boost::iostreams::detail::close_impl<boost::iostreams::detail::two_sequence>::close<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::basic_gzip_compressor<std::allocator<char>> &,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,std::_Ios_Openmode)")]
+pub fn stub_f5f134() -> ! {
+    todo!("0xf5f134 void boost::iostreams::detail::close_impl<boost::iostreams::detail::two_sequence>::close<boost::iostreams::basic_gzip_compressor<std::allocator<char>>,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(boost::iostreams::basic_gzip_compressor<std::allocator<char>> &,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> &,std::_Ios_Openmode)")
+}
+
+// 0xf5f144 — boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>>)
+// mangled: j___ZN5boost9iostreams6detail11execute_allINS1_14copy_operationINS_17reference_wrapperINS0_19filtering_streambufINS0_5inputEcSt11char_traitsIcESaIcENS0_7public_EEEEE11String_sinkEENS1_26device_close_all_operationISC_EEEENS1_14execute_traitsIT_NS_9result_ofIFSI_vEE4typeEE11result_typeESI_T0_
+// type: int __fastcall(int, int, int, int, int, void *, int, int, void *, int)
+#[doc(alias = "boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>>)")]
+pub fn stub_f5f144() -> ! {
+    todo!("0xf5f144 boost::iostreams::detail::execute_traits<boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink>,boost::result_of<boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>>>(boost::iostreams::detail::copy_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>,String_sink>,boost::iostreams::detail::device_close_all_operation<boost::reference_wrapper<boost::iostreams::filtering_streambuf<boost::iostreams::input,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>>>)")
+}
+
+// 0xf5f154 — boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>)
+// mangled: j___ZN5boost9iostreams6detail11execute_allINS1_22member_close_operationINS1_16linked_streambufIcSt11char_traitsIcEEEEES8_EENS1_14execute_traitsIT_NS_9result_ofIFSA_vEE4typeEE11result_typeESA_T0_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>)")]
+pub fn stub_f5f154() -> ! {
+    todo!("0xf5f154 boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>)")
+}
+
+// 0xf5f164 — boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>>>,boost::iostreams::detail::clear_flags_operation<int>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>>>,boost::iostreams::detail::clear_flags_operation<int>)
+// mangled: j___ZN5boost9iostreams6detail11execute_allINS1_22member_close_operationINS1_16linked_streambufIcSt11char_traitsIcEEEEES8_NS1_15reset_operationINS1_8optionalINS1_15concept_adapterINS0_17basic_null_deviceIcNS0_5inputEEEEEEEEENS1_21clear_flags_operationIiEEEENS1_14execute_traitsIT_NS_9result_ofIFSL_vEE4typeEE11result_typeESL_T0_T1_T2_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>>>,boost::iostreams::detail::clear_flags_operation<int>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>>>,boost::iostreams::detail::clear_flags_operation<int>)")]
+pub fn stub_f5f164() -> ! {
+    todo!("0xf5f164 boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>>>,boost::iostreams::detail::clear_flags_operation<int>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>>>,boost::iostreams::detail::clear_flags_operation<int>)")
+}
+
+// 0xf5f174 — boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>>>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>>>)
+// mangled: j___ZN5boost9iostreams6detail11execute_allINS1_22member_close_operationINS1_16linked_streambufIcSt11char_traitsIcEEEEES8_NS1_15reset_operationINS1_8optionalINS1_15concept_adapterINS0_23basic_gzip_decompressorISaIcEEEEEEEEEEENS1_14execute_traitsIT_NS_9result_ofIFSJ_vEE4typeEE11result_typeESJ_T0_T1_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>>>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>>>)")]
+pub fn stub_f5f174() -> ! {
+    todo!("0xf5f174 boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>>>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>>>)")
+}
+
+// 0xf5f184 — boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>>>,boost::iostreams::detail::clear_flags_operation<int>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>>>,boost::iostreams::detail::clear_flags_operation<int>)
+// mangled: j___ZN5boost9iostreams6detail11execute_allINS1_22member_close_operationINS1_16linked_streambufIcSt11char_traitsIcEEEEES8_NS1_15reset_operationINS1_8optionalINS1_15concept_adapterINS1_12mode_adapterINS0_5inputESiEEEEEEEENS1_21clear_flags_operationIiEEEENS1_14execute_traitsIT_NS_9result_ofIFSL_vEE4typeEE11result_typeESL_T0_T1_T2_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>>>,boost::iostreams::detail::clear_flags_operation<int>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>>>,boost::iostreams::detail::clear_flags_operation<int>)")]
+pub fn stub_f5f184() -> ! {
+    todo!("0xf5f184 boost::iostreams::detail::execute_traits<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::result_of<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>> ()(void)>::type>::result_type boost::iostreams::detail::execute_all<boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>>>,boost::iostreams::detail::clear_flags_operation<int>>(boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::member_close_operation<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>,boost::iostreams::detail::reset_operation<boost::iostreams::detail::optional<boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>>>,boost::iostreams::detail::clear_flags_operation<int>)")
+}
+
+// 0xf5f194 — std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)
+// mangled: j___ZN5boost9iostreams6detail15concept_adapterINS0_17basic_null_deviceIcNS0_5inputEEEE4seekINS1_16linked_streambufIcSt11char_traitsIcEEEEESt4fposI11__mbstate_tExSt12_Ios_SeekdirSt13_Ios_OpenmodePT_
+// type: void __fastcall __noreturn(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")]
+pub fn stub_f5f194() -> ! {
+    todo!("0xf5f194 std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")
+}
+
+// 0xf5f1a4 — int boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(char const*,int,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)
+// mangled: j___ZN5boost9iostreams6detail15concept_adapterINS0_17basic_null_deviceIcNS0_5inputEEEE5writeINS1_16linked_streambufIcSt11char_traitsIcEEEEEiPKciPT_
+// type: void __fastcall __noreturn(_DWORD, _DWORD)
+#[doc(alias = "int boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(char const*,int,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")]
+pub fn stub_f5f1a4() -> ! {
+    todo!("0xf5f1a4 int boost::iostreams::detail::concept_adapter<boost::iostreams::basic_null_device<char,boost::iostreams::input>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(char const*,int,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")
+}
+
+// 0xf5f1b4 — std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_compressor<std::allocator<char>>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)
+// mangled: j___ZN5boost9iostreams6detail15concept_adapterINS0_21basic_gzip_compressorISaIcEEEE4seekINS1_16linked_streambufIcSt11char_traitsIcEEEEESt4fposI11__mbstate_tExSt12_Ios_SeekdirSt13_Ios_OpenmodePT_
+// type: void __fastcall __noreturn(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_compressor<std::allocator<char>>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")]
+pub fn stub_f5f1b4() -> ! {
+    todo!("0xf5f1b4 std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_compressor<std::allocator<char>>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")
+}
+
+// 0xf5f1c4 — std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)
+// mangled: j___ZN5boost9iostreams6detail15concept_adapterINS0_23basic_gzip_decompressorISaIcEEEE4seekINS1_16linked_streambufIcSt11char_traitsIcEEEEESt4fposI11__mbstate_tExSt12_Ios_SeekdirSt13_Ios_OpenmodePT_
+// type: void __fastcall __noreturn(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")]
+pub fn stub_f5f1c4() -> ! {
+    todo!("0xf5f1c4 std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::basic_gzip_decompressor<std::allocator<char>>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")
+}
+
+// 0xf5f1d4 — std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)
+// mangled: j___ZN5boost9iostreams6detail15concept_adapterINS1_12mode_adapterINS0_5inputESiEEE4seekINS1_16linked_streambufIcSt11char_traitsIcEEEEESt4fposI11__mbstate_tExSt12_Ios_SeekdirSt13_Ios_OpenmodePT_
+// type: void __fastcall __noreturn(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")]
+pub fn stub_f5f1d4() -> ! {
+    todo!("0xf5f1d4 std::fpos<__mbstate_t> boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>::seek<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(long long,std::_Ios_Seekdir,std::_Ios_Openmode,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")
+}
+
+// 0xf5f1e4 — int boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(char const*,int,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)
+// mangled: j___ZN5boost9iostreams6detail15concept_adapterINS1_12mode_adapterINS0_5inputESiEEE5writeINS1_16linked_streambufIcSt11char_traitsIcEEEEEiPKciPT_
+// type: void __fastcall __noreturn(_DWORD, _DWORD)
+#[doc(alias = "int boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(char const*,int,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")]
+pub fn stub_f5f1e4() -> ! {
+    todo!("0xf5f1e4 int boost::iostreams::detail::concept_adapter<boost::iostreams::detail::mode_adapter<boost::iostreams::input,std::istream>>::write<boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>>>(char const*,int,boost::iostreams::detail::linked_streambuf<char,std::char_traits<char>> *)")
 }
