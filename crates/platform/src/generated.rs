@@ -1,6 +1,6 @@
-//! platform generated — next 782 stubs sorted by EA, from ida/export.json
+//! platform generated — next 882 stubs sorted by EA, from ida/export.json
 //! Filter: RobloxView|GameViewController|AppDelegate|EAGL2|PlaceLauncher|ControlView|UIViewController|HomeViewController|Teleporter|LoginViewController|SignupViewController|RobloxNavBar|DebugSettings|MainViewController|ExternalLogin|RobloxInfo|RobloxAlert
-//! Batch: 782 stubs (682 prior + 100 this batch, 1168 filtered Roblox iOS, 386 remaining) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 882 stubs (782 prior + 100 this batch, 1168 filtered Roblox iOS, 286 remaining) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -5564,3 +5564,696 @@ pub fn stub_622a8() -> ! {
 pub fn stub_622b8() -> ! {
     todo!("0x622b8 -[SignupViewController setBirthdayLabel:]")
 }
+// 0x622dc — -[SignupViewController emailLabel]
+// type: UILabel *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController emailLabel]")]
+pub fn stub_622dc() -> ! {
+    todo!("0x622dc -[SignupViewController emailLabel]")
+}
+
+// 0x622ec — -[SignupViewController setEmailLabel:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setEmailLabel:]")]
+pub fn stub_622ec() -> ! {
+    todo!("0x622ec -[SignupViewController setEmailLabel:]")
+}
+
+// 0x62310 — -[SignupViewController selectLabel]
+// type: UILabel *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController selectLabel]")]
+pub fn stub_62310() -> ! {
+    todo!("0x62310 -[SignupViewController selectLabel]")
+}
+
+// 0x62320 — -[SignupViewController setSelectLabel:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setSelectLabel:]")]
+pub fn stub_62320() -> ! {
+    todo!("0x62320 -[SignupViewController setSelectLabel:]")
+}
+
+// 0x62344 — -[SignupViewController signupLabel]
+// type: UILabel *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController signupLabel]")]
+pub fn stub_62344() -> ! {
+    todo!("0x62344 -[SignupViewController signupLabel]")
+}
+
+// 0x62354 — -[SignupViewController setSignupLabel:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setSignupLabel:]")]
+pub fn stub_62354() -> ! {
+    todo!("0x62354 -[SignupViewController setSignupLabel:]")
+}
+
+// 0x62378 — -[SignupViewController signingUpLabel]
+// type: UILabel *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController signingUpLabel]")]
+pub fn stub_62378() -> ! {
+    todo!("0x62378 -[SignupViewController signingUpLabel]")
+}
+
+// 0x62388 — -[SignupViewController setSigningUpLabel:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setSigningUpLabel:]")]
+pub fn stub_62388() -> ! {
+    todo!("0x62388 -[SignupViewController setSigningUpLabel:]")
+}
+
+// 0x623ac — -[SignupViewController usernameTextfield]
+// type: UITextField *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController usernameTextfield]")]
+pub fn stub_623ac() -> ! {
+    todo!("0x623ac -[SignupViewController usernameTextfield]")
+}
+
+// 0x623bc — -[SignupViewController setUsernameTextfield:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setUsernameTextfield:]")]
+pub fn stub_623bc() -> ! {
+    todo!("0x623bc -[SignupViewController setUsernameTextfield:]")
+}
+
+// 0x623e0 — -[SignupViewController passwordTextfield]
+// type: UITextField *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController passwordTextfield]")]
+pub fn stub_623e0() -> ! {
+    todo!("0x623e0 -[SignupViewController passwordTextfield]")
+}
+
+// 0x623f0 — -[SignupViewController setPasswordTextfield:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setPasswordTextfield:]")]
+pub fn stub_623f0() -> ! {
+    todo!("0x623f0 -[SignupViewController setPasswordTextfield:]")
+}
+
+// 0x62414 — -[SignupViewController verifyTextfield]
+// type: UITextField *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController verifyTextfield]")]
+pub fn stub_62414() -> ! {
+    todo!("0x62414 -[SignupViewController verifyTextfield]")
+}
+
+// 0x62424 — -[SignupViewController setVerifyTextfield:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setVerifyTextfield:]")]
+pub fn stub_62424() -> ! {
+    todo!("0x62424 -[SignupViewController setVerifyTextfield:]")
+}
+
+// 0x62448 — -[SignupViewController emailTextfield]
+// type: UITextField *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController emailTextfield]")]
+pub fn stub_62448() -> ! {
+    todo!("0x62448 -[SignupViewController emailTextfield]")
+}
+
+// 0x62458 — -[SignupViewController setEmailTextfield:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setEmailTextfield:]")]
+pub fn stub_62458() -> ! {
+    todo!("0x62458 -[SignupViewController setEmailTextfield:]")
+}
+
+// 0x6247c — -[SignupViewController birthdayButton]
+// type: UIButton *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController birthdayButton]")]
+pub fn stub_6247c() -> ! {
+    todo!("0x6247c -[SignupViewController birthdayButton]")
+}
+
+// 0x6248c — -[SignupViewController setBirthdayButton:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setBirthdayButton:]")]
+pub fn stub_6248c() -> ! {
+    todo!("0x6248c -[SignupViewController setBirthdayButton:]")
+}
+
+// 0x624b0 — -[SignupViewController emailButton]
+// type: UIButton *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController emailButton]")]
+pub fn stub_624b0() -> ! {
+    todo!("0x624b0 -[SignupViewController emailButton]")
+}
+
+// 0x624c0 — -[SignupViewController setEmailButton:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setEmailButton:]")]
+pub fn stub_624c0() -> ! {
+    todo!("0x624c0 -[SignupViewController setEmailButton:]")
+}
+
+// 0x624e4 — -[SignupViewController usernameStatusButton]
+// type: UIButton *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController usernameStatusButton]")]
+pub fn stub_624e4() -> ! {
+    todo!("0x624e4 -[SignupViewController usernameStatusButton]")
+}
+
+// 0x624f4 — -[SignupViewController setUsernameStatusButton:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setUsernameStatusButton:]")]
+pub fn stub_624f4() -> ! {
+    todo!("0x624f4 -[SignupViewController setUsernameStatusButton:]")
+}
+
+// 0x62518 — -[SignupViewController passwordStatusButton]
+// type: UIButton *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController passwordStatusButton]")]
+pub fn stub_62518() -> ! {
+    todo!("0x62518 -[SignupViewController passwordStatusButton]")
+}
+
+// 0x62528 — -[SignupViewController setPasswordStatusButton:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setPasswordStatusButton:]")]
+pub fn stub_62528() -> ! {
+    todo!("0x62528 -[SignupViewController setPasswordStatusButton:]")
+}
+
+// 0x6254c — -[SignupViewController verifyStatusButton]
+// type: UIButton *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController verifyStatusButton]")]
+pub fn stub_6254c() -> ! {
+    todo!("0x6254c -[SignupViewController verifyStatusButton]")
+}
+
+// 0x6255c — -[SignupViewController setVerifyStatusButton:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setVerifyStatusButton:]")]
+pub fn stub_6255c() -> ! {
+    todo!("0x6255c -[SignupViewController setVerifyStatusButton:]")
+}
+
+// 0x62580 — -[SignupViewController signupButton]
+// type: UIButton *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController signupButton]")]
+pub fn stub_62580() -> ! {
+    todo!("0x62580 -[SignupViewController signupButton]")
+}
+
+// 0x62590 — -[SignupViewController setSignupButton:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setSignupButton:]")]
+pub fn stub_62590() -> ! {
+    todo!("0x62590 -[SignupViewController setSignupButton:]")
+}
+
+// 0x625b4 — -[SignupViewController birthdayPicker]
+// type: UIDatePicker *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController birthdayPicker]")]
+pub fn stub_625b4() -> ! {
+    todo!("0x625b4 -[SignupViewController birthdayPicker]")
+}
+
+// 0x625c4 — -[SignupViewController setBirthdayPicker:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setBirthdayPicker:]")]
+pub fn stub_625c4() -> ! {
+    todo!("0x625c4 -[SignupViewController setBirthdayPicker:]")
+}
+
+// 0x625e8 — -[SignupViewController genderPicker]
+// type: UIPickerView *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController genderPicker]")]
+pub fn stub_625e8() -> ! {
+    todo!("0x625e8 -[SignupViewController genderPicker]")
+}
+
+// 0x625f8 — -[SignupViewController setGenderPicker:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setGenderPicker:]")]
+pub fn stub_625f8() -> ! {
+    todo!("0x625f8 -[SignupViewController setGenderPicker:]")
+}
+
+// 0x6261c — -[SignupViewController fineTextView]
+// type: UIWebView *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController fineTextView]")]
+pub fn stub_6261c() -> ! {
+    todo!("0x6261c -[SignupViewController fineTextView]")
+}
+
+// 0x6262c — -[SignupViewController setFineTextView:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setFineTextView:]")]
+pub fn stub_6262c() -> ! {
+    todo!("0x6262c -[SignupViewController setFineTextView:]")
+}
+
+// 0x62650 — -[SignupViewController signingUpView]
+// type: UIView *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController signingUpView]")]
+pub fn stub_62650() -> ! {
+    todo!("0x62650 -[SignupViewController signingUpView]")
+}
+
+// 0x62660 — -[SignupViewController setSigningUpView:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setSigningUpView:]")]
+pub fn stub_62660() -> ! {
+    todo!("0x62660 -[SignupViewController setSigningUpView:]")
+}
+
+// 0x62684 — -[SignupViewController popoverAnchor]
+// type: UIView *__cdecl(SignupViewController *self, SEL)
+#[doc(alias = "-[SignupViewController popoverAnchor]")]
+pub fn stub_62684() -> ! {
+    todo!("0x62684 -[SignupViewController popoverAnchor]")
+}
+
+// 0x62694 — -[SignupViewController setPopoverAnchor:]
+// type: void __cdecl(SignupViewController *self, SEL, id)
+#[doc(alias = "-[SignupViewController setPopoverAnchor:]")]
+pub fn stub_62694() -> ! {
+    todo!("0x62694 -[SignupViewController setPopoverAnchor:]")
+}
+
+// 0x65ce4 — -[ExternalLoginViewController initWithCoder:]
+// type: ExternalLoginViewController *__cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController initWithCoder:]")]
+pub fn stub_65ce4() -> ! {
+    todo!("0x65ce4 -[ExternalLoginViewController initWithCoder:]")
+}
+
+// 0x65df4 — -[ExternalLoginViewController dealloc]
+// type: void __cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController dealloc]")]
+pub fn stub_65df4() -> ! {
+    todo!("0x65df4 -[ExternalLoginViewController dealloc]")
+}
+
+// 0x65ec0 — +[ExternalLoginViewController getLoginFinishedNotification]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[ExternalLoginViewController getLoginFinishedNotification]")]
+pub fn stub_65ec0() -> ! {
+    todo!("0x65ec0 +[ExternalLoginViewController getLoginFinishedNotification]")
+}
+
+// 0x65ecc — -[ExternalLoginViewController viewDidLoad]
+// type: void __cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController viewDidLoad]")]
+pub fn stub_65ecc() -> ! {
+    todo!("0x65ecc -[ExternalLoginViewController viewDidLoad]")
+}
+
+// 0x65f0c — -[ExternalLoginViewController viewWillAppear:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, char)
+#[doc(alias = "-[ExternalLoginViewController viewWillAppear:]")]
+pub fn stub_65f0c() -> ! {
+    todo!("0x65f0c -[ExternalLoginViewController viewWillAppear:]")
+}
+
+// 0x65f38 — -[ExternalLoginViewController didReceiveMemoryWarning]
+// type: void __cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController didReceiveMemoryWarning]")]
+pub fn stub_65f38() -> ! {
+    todo!("0x65f38 -[ExternalLoginViewController didReceiveMemoryWarning]")
+}
+
+// 0x65f64 — -[ExternalLoginViewController localizeStrings]
+// type: void __cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController localizeStrings]")]
+pub fn stub_65f64() -> ! {
+    todo!("0x65f64 -[ExternalLoginViewController localizeStrings]")
+}
+
+// 0x66078 — -[ExternalLoginViewController usernameDidEndOnExit:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController usernameDidEndOnExit:]")]
+pub fn stub_66078() -> ! {
+    todo!("0x66078 -[ExternalLoginViewController usernameDidEndOnExit:]")
+}
+
+// 0x660a0 — -[ExternalLoginViewController passwordDidEndOnExit:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController passwordDidEndOnExit:]")]
+pub fn stub_660a0() -> ! {
+    todo!("0x660a0 -[ExternalLoginViewController passwordDidEndOnExit:]")
+}
+
+// 0x660b4 — -[ExternalLoginViewController showLoggingIn]
+// type: void __cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController showLoggingIn]")]
+pub fn stub_660b4() -> ! {
+    todo!("0x660b4 -[ExternalLoginViewController showLoggingIn]")
+}
+
+// 0x66100 — -[ExternalLoginViewController showLoginFields]
+// type: void __cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController showLoginFields]")]
+pub fn stub_66100() -> ! {
+    todo!("0x66100 -[ExternalLoginViewController showLoginFields]")
+}
+
+// 0x6614c — -[ExternalLoginViewController gotLoginFailedNotification:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController gotLoginFailedNotification:]")]
+pub fn stub_6614c() -> ! {
+    todo!("0x6614c -[ExternalLoginViewController gotLoginFailedNotification:]")
+}
+
+// 0x6619c — ___58-[ExternalLoginViewController gotLoginFailedNotification:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___58-[ExternalLoginViewController gotLoginFailedNotification:]_block_invoke")]
+pub fn stub_6619c() -> ! {
+    todo!("0x6619c ___58-[ExternalLoginViewController gotLoginFailedNotification:]_block_invoke")
+}
+
+// 0x661c4 — -[ExternalLoginViewController gotLoginSuccessfulNotification:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController gotLoginSuccessfulNotification:]")]
+pub fn stub_661c4() -> ! {
+    todo!("0x661c4 -[ExternalLoginViewController gotLoginSuccessfulNotification:]")
+}
+
+// 0x66244 — ___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke")]
+pub fn stub_66244() -> ! {
+    todo!("0x66244 ___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke")
+}
+
+// 0x662a0 — ___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke_2
+// type: id __fastcall(int)
+#[doc(alias = "___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke_2")]
+pub fn stub_662a0() -> ! {
+    todo!("0x662a0 ___62-[ExternalLoginViewController gotLoginSuccessfulNotification:]_block_invoke_2")
+}
+
+// 0x663e8 — -[ExternalLoginViewController doLogin:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController doLogin:]")]
+pub fn stub_663e8() -> ! {
+    todo!("0x663e8 -[ExternalLoginViewController doLogin:]")
+}
+
+// 0x66480 — -[ExternalLoginViewController cancelTouched:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController cancelTouched:]")]
+pub fn stub_66480() -> ! {
+    todo!("0x66480 -[ExternalLoginViewController cancelTouched:]")
+}
+
+// 0x664d0 — ___45-[ExternalLoginViewController cancelTouched:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___45-[ExternalLoginViewController cancelTouched:]_block_invoke")]
+pub fn stub_664d0() -> ! {
+    todo!("0x664d0 ___45-[ExternalLoginViewController cancelTouched:]_block_invoke")
+}
+
+// 0x66528 — ___45-[ExternalLoginViewController cancelTouched:]_block_invoke_2
+// type: id __fastcall(int)
+#[doc(alias = "___45-[ExternalLoginViewController cancelTouched:]_block_invoke_2")]
+pub fn stub_66528() -> ! {
+    todo!("0x66528 ___45-[ExternalLoginViewController cancelTouched:]_block_invoke_2")
+}
+
+// 0x66608 — -[ExternalLoginViewController usernameTextField]
+// type: UITextField *__cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController usernameTextField]")]
+pub fn stub_66608() -> ! {
+    todo!("0x66608 -[ExternalLoginViewController usernameTextField]")
+}
+
+// 0x66618 — -[ExternalLoginViewController setUsernameTextField:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController setUsernameTextField:]")]
+pub fn stub_66618() -> ! {
+    todo!("0x66618 -[ExternalLoginViewController setUsernameTextField:]")
+}
+
+// 0x6663c — -[ExternalLoginViewController passwordTextField]
+// type: UITextField *__cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController passwordTextField]")]
+pub fn stub_6663c() -> ! {
+    todo!("0x6663c -[ExternalLoginViewController passwordTextField]")
+}
+
+// 0x6664c — -[ExternalLoginViewController setPasswordTextField:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController setPasswordTextField:]")]
+pub fn stub_6664c() -> ! {
+    todo!("0x6664c -[ExternalLoginViewController setPasswordTextField:]")
+}
+
+// 0x66670 — -[ExternalLoginViewController loginButton]
+// type: UIButton *__cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController loginButton]")]
+pub fn stub_66670() -> ! {
+    todo!("0x66670 -[ExternalLoginViewController loginButton]")
+}
+
+// 0x66680 — -[ExternalLoginViewController setLoginButton:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController setLoginButton:]")]
+pub fn stub_66680() -> ! {
+    todo!("0x66680 -[ExternalLoginViewController setLoginButton:]")
+}
+
+// 0x666a4 — -[ExternalLoginViewController loginLabel]
+// type: UILabel *__cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController loginLabel]")]
+pub fn stub_666a4() -> ! {
+    todo!("0x666a4 -[ExternalLoginViewController loginLabel]")
+}
+
+// 0x666b4 — -[ExternalLoginViewController setLoginLabel:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController setLoginLabel:]")]
+pub fn stub_666b4() -> ! {
+    todo!("0x666b4 -[ExternalLoginViewController setLoginLabel:]")
+}
+
+// 0x666d8 — -[ExternalLoginViewController loggingInIndicator]
+// type: UIActivityIndicatorView *__cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController loggingInIndicator]")]
+pub fn stub_666d8() -> ! {
+    todo!("0x666d8 -[ExternalLoginViewController loggingInIndicator]")
+}
+
+// 0x666e8 — -[ExternalLoginViewController setLoggingInIndicator:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController setLoggingInIndicator:]")]
+pub fn stub_666e8() -> ! {
+    todo!("0x666e8 -[ExternalLoginViewController setLoggingInIndicator:]")
+}
+
+// 0x6670c — -[ExternalLoginViewController loginView]
+// type: UIView *__cdecl(ExternalLoginViewController *self, SEL)
+#[doc(alias = "-[ExternalLoginViewController loginView]")]
+pub fn stub_6670c() -> ! {
+    todo!("0x6670c -[ExternalLoginViewController loginView]")
+}
+
+// 0x6671c — -[ExternalLoginViewController setLoginView:]
+// type: void __cdecl(ExternalLoginViewController *self, SEL, id)
+#[doc(alias = "-[ExternalLoginViewController setLoginView:]")]
+pub fn stub_6671c() -> ! {
+    todo!("0x6671c -[ExternalLoginViewController setLoginView:]")
+}
+
+// 0x2a7ef0 — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD1Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD1Ev")]
+pub fn stub_2a7ef0() -> ! {
+    todo!("0x2a7ef0 __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD1Ev")
+}
+
+// 0x2ae1e0 — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_2ae1e0() -> ! {
+    todo!("0x2ae1e0 __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x2ae280 — __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator6createEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_2ae280() -> ! {
+    todo!("0x2ae280 __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x2ae3c8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13DebugSettingsEEEN5boost10shared_ptrIT_EEv
+// was: boost::shared_ptr<RBX::DebugSettings> RBX::Creatable<RBX::Instance>::create<RBX::DebugSettings>(void)
+#[doc(alias = "boost::shared_ptr<RBX::DebugSettings> RBX::Creatable<RBX::Instance>::create<RBX::DebugSettings>(void)")]
+pub fn stub_2ae3c8() -> ! {
+    todo!("0x2ae3c8 boost::shared_ptr<RBX::DebugSettings> RBX::Creatable<RBX::Instance>::create<RBX::DebugSettings>(void)")
+}
+
+// 0x2ae478 — __ZN5boost10shared_ptrIN3RBX13DebugSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::DebugSettings>::shared_ptr<RBX::DebugSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)
+#[doc(alias = "boost::shared_ptr<RBX::DebugSettings>::shared_ptr<RBX::DebugSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
+pub fn stub_2ae478() -> ! {
+    todo!("0x2ae478 boost::shared_ptr<RBX::DebugSettings>::shared_ptr<RBX::DebugSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x2ae540 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13DebugSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebugSettings,RBX::DebugSettings>(boost::shared_ptr<RBX::DebugSettings> const*,RBX::DebugSettings *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebugSettings,RBX::DebugSettings>(boost::shared_ptr<RBX::DebugSettings> const*,RBX::DebugSettings *)const")]
+pub fn stub_2ae540() -> ! {
+    todo!("0x2ae540 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DebugSettings,RBX::DebugSettings>(boost::shared_ptr<RBX::DebugSettings> const*,RBX::DebugSettings *)const")
+}
+
+// 0x2ae630 — __ZN5boost6detail12shared_countC2IPN3RBX13DebugSettingsENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+// type: int __fastcall(int, int, int, int, void *, int)
+// was: boost::detail::shared_count::shared_count<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
+pub fn stub_2ae630() -> ! {
+    todo!("0x2ae630 boost::detail::shared_count::shared_count<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x2ae738 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13DebugSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+pub fn stub_2ae738() -> ! {
+    todo!("0x2ae738 boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x2ae740 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13DebugSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+pub fn stub_2ae740() -> ! {
+    todo!("0x2ae740 boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x2ae760 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13DebugSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+pub fn stub_2ae760() -> ! {
+    todo!("0x2ae760 boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x2ae778 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13DebugSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+pub fn stub_2ae778() -> ! {
+    todo!("0x2ae778 boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x2ae77c — __ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v
+#[doc(alias = "__ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v")]
+pub fn stub_2ae77c() -> ! {
+    todo!("0x2ae77c __ZN3RBX4Name7declareILZNS_14sDebugSettingsEEEERKS0_v")
+}
+
+// 0x2ae7c0 — __ZN3RBX4Name13callDoDeclareILZNS_14sDebugSettingsEEEEvv
+#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_14sDebugSettingsEEEEvv")]
+pub fn stub_2ae7c0() -> ! {
+    todo!("0x2ae7c0 __ZN3RBX4Name13callDoDeclareILZNS_14sDebugSettingsEEEEvv")
+}
+
+// 0x2ae7c4 — __ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v")]
+pub fn stub_2ae7c4() -> ! {
+    todo!("0x2ae7c4 __ZN3RBX4Name9doDeclareILZNS_14sDebugSettingsEEEERKS0_v")
+}
+
+// 0x2ae8a8 — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorC2Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_2ae8a8() -> ! {
+    todo!("0x2ae8a8 __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0x47aee0 — __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::EnumDesc(void)")]
+pub fn stub_47aee0() -> ! {
+    todo!("0x47aee0 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::EnumDesc(void)")
+}
+
+// 0x47b4cc — __ZNK3RBX13DebugSettings20getVertexShaderModelEv
+// type: int __fastcall(RBX::DebugSettings *this)
+#[doc(alias = "RBX::DebugSettings::getVertexShaderModel(void)const")]
+pub fn stub_47b4cc() -> ! {
+    todo!("0x47b4cc RBX::DebugSettings::getVertexShaderModel(void)const")
+}
+
+// 0x47b4d0 — __ZNK3RBX13DebugSettings19getPixelShaderModelEv
+// type: int __fastcall(RBX::DebugSettings *this)
+#[doc(alias = "RBX::DebugSettings::getPixelShaderModel(void)const")]
+pub fn stub_47b4d0() -> ! {
+    todo!("0x47b4d0 RBX::DebugSettings::getPixelShaderModel(void)const")
+}
+
+// 0x47b4d4 — __ZNK3RBX13DebugSettings11videoMemoryEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::videoMemory(void)const")]
+pub fn stub_47b4d4() -> ! {
+    todo!("0x47b4d4 RBX::DebugSettings::videoMemory(void)const")
+}
+
+// 0x47b564 — __ZNK3RBX13DebugSettings8cpuSpeedEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::cpuSpeed(void)const")]
+pub fn stub_47b564() -> ! {
+    todo!("0x47b564 RBX::DebugSettings::cpuSpeed(void)const")
+}
+
+// 0x47b5f4 — __ZNK3RBX13DebugSettings8cpuCountEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::cpuCount(void)const")]
+pub fn stub_47b5f4() -> ! {
+    todo!("0x47b5f4 RBX::DebugSettings::cpuCount(void)const")
+}
+
+// 0x47b684 — __ZNK3RBX13DebugSettings12osPlatformIdEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::osPlatformId(void)const")]
+pub fn stub_47b684() -> ! {
+    todo!("0x47b684 RBX::DebugSettings::osPlatformId(void)const")
+}
+
+// 0x47b688 — __ZNK3RBX13DebugSettings10osPlatformEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::osPlatform(void)const")]
+pub fn stub_47b688() -> ! {
+    todo!("0x47b688 RBX::DebugSettings::osPlatform(void)const")
+}
+
+// 0x47b6a4 — __ZNK3RBX13DebugSettings5osVerEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::osVer(void)const")]
+pub fn stub_47b6a4() -> ! {
+    todo!("0x47b6a4 RBX::DebugSettings::osVer(void)const")
+}
+
+// 0x47b6b0 — __ZNK3RBX13DebugSettings9osIs64BitEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::osIs64Bit(void)const")]
+pub fn stub_47b6b0() -> ! {
+    todo!("0x47b6b0 RBX::DebugSettings::osIs64Bit(void)const")
+}
+
+// 0x47b6bc — __ZNK3RBX13DebugSettings17systemProductNameEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::systemProductName(void)const")]
+pub fn stub_47b6bc() -> ! {
+    todo!("0x47b6bc RBX::DebugSettings::systemProductName(void)const")
+}
+
+// 0x47b6d8 — __ZNK3RBX13DebugSettings7gfxcardEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::gfxcard(void)const")]
+pub fn stub_47b6d8() -> ! {
+    todo!("0x47b6d8 RBX::DebugSettings::gfxcard(void)const")
+}
+
+// 0x47b6e4 — __ZNK3RBX13DebugSettings3cpuEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::cpu(void)const")]
+pub fn stub_47b6e4() -> ! {
+    todo!("0x47b6e4 RBX::DebugSettings::cpu(void)const")
+}
+
+// 0x47b894 — __ZNK3RBX13DebugSettings4simdEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::simd(void)const")]
+pub fn stub_47b894() -> ! {
+    todo!("0x47b894 RBX::DebugSettings::simd(void)const")
+}
+
+// 0x47b9a4 — __ZNK3RBX13DebugSettings19totalPhysicalMemoryEv
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::totalPhysicalMemory(void)const")]
+pub fn stub_47b9a4() -> ! {
+    todo!("0x47b9a4 RBX::DebugSettings::totalPhysicalMemory(void)const")
+}
+
