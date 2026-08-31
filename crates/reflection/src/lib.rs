@@ -12,3 +12,4 @@ pub mod generated_shard_c;
 pub mod generated_shard_d;
 pub mod generated_shard_e;
 pub mod generated_shard_f;
+pub mod generated_shard_g;
