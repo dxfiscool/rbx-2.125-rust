@@ -1,6 +1,6 @@
-//! platform generated — 2524 stubs sorted by EA, from ida/export.json
+//! platform generated — 2624 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 2524 stubs (2374 prior + 150 this batch, 3026 filtered, 1050 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 2624 stubs (2524 prior + 100 this batch, 3026 filtered, 950 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -17574,4 +17574,704 @@ pub fn stub_ee2218() -> ! {
 #[doc(alias = "-[BSAFHTTPRequestOperation dataAccumulator]")]
 pub fn stub_ee2228() -> ! {
     todo!("0xee2228 -[BSAFHTTPRequestOperation dataAccumulator]")
+}
+
+// 0xee2238 — -[BSAFHTTPRequestOperation setDataAccumulator:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setDataAccumulator:]")]
+pub fn stub_ee2238() -> ! {
+    todo!("0xee2238 -[BSAFHTTPRequestOperation setDataAccumulator:]")
+}
+
+// 0xee225c — -[BSAFHTTPRequestOperation outputStream]
+// type: NSOutputStream *__cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation outputStream]")]
+pub fn stub_ee225c() -> ! {
+    todo!("0xee225c -[BSAFHTTPRequestOperation outputStream]")
+}
+
+// 0xee226c — -[BSAFHTTPRequestOperation setOutputStream:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setOutputStream:]")]
+pub fn stub_ee226c() -> ! {
+    todo!("0xee226c -[BSAFHTTPRequestOperation setOutputStream:]")
+}
+
+// 0xee2290 — -[BSAFHTTPRequestOperation uploadProgress]
+// type: id __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation uploadProgress]")]
+pub fn stub_ee2290() -> ! {
+    todo!("0xee2290 -[BSAFHTTPRequestOperation uploadProgress]")
+}
+
+// 0xee22a8 — -[BSAFHTTPRequestOperation setUploadProgress:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setUploadProgress:]")]
+pub fn stub_ee22a8() -> ! {
+    todo!("0xee22a8 -[BSAFHTTPRequestOperation setUploadProgress:]")
+}
+
+// 0xee22d8 — -[BSAFHTTPRequestOperation downloadProgress]
+// type: id __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation downloadProgress]")]
+pub fn stub_ee22d8() -> ! {
+    todo!("0xee22d8 -[BSAFHTTPRequestOperation downloadProgress]")
+}
+
+// 0xee22f0 — -[BSAFHTTPRequestOperation setDownloadProgress:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setDownloadProgress:]")]
+pub fn stub_ee22f0() -> ! {
+    todo!("0xee22f0 -[BSAFHTTPRequestOperation setDownloadProgress:]")
+}
+
+// 0xee2320 — -[BSAFHTTPRequestOperation completion]
+// type: id __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation completion]")]
+pub fn stub_ee2320() -> ! {
+    todo!("0xee2320 -[BSAFHTTPRequestOperation completion]")
+}
+
+// 0xee2338 — -[BSAFHTTPRequestOperation setCompletion:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setCompletion:]")]
+pub fn stub_ee2338() -> ! {
+    todo!("0xee2338 -[BSAFHTTPRequestOperation setCompletion:]")
+}
+
+// 0xee2368 — +[BSAFJSONRequestOperation operationWithRequest:success:]
+// type: id __cdecl(id, SEL, id, id)
+#[doc(alias = "+[BSAFJSONRequestOperation operationWithRequest:success:]")]
+pub fn stub_ee2368() -> ! {
+    todo!("0xee2368 +[BSAFJSONRequestOperation operationWithRequest:success:]")
+}
+
+// 0xee238c — +[BSAFJSONRequestOperation operationWithRequest:success:failure:]
+// type: id __cdecl(id, SEL, id, id, id)
+#[doc(alias = "+[BSAFJSONRequestOperation operationWithRequest:success:failure:]")]
+pub fn stub_ee238c() -> ! {
+    todo!("0xee238c +[BSAFJSONRequestOperation operationWithRequest:success:failure:]")
+}
+
+// 0xee2444 — ___65+[BSAFJSONRequestOperation operationWithRequest:success:failure:]_block_invoke
+// type: void
+#[doc(alias = "___65+[BSAFJSONRequestOperation operationWithRequest:success:failure:]_block_invoke")]
+pub fn stub_ee2444() -> ! {
+    todo!("0xee2444 ___65+[BSAFJSONRequestOperation operationWithRequest:success:failure:]_block_invoke")
+}
+
+// 0xee2478 — ___65+[BSAFJSONRequestOperation operationWithRequest:success:failure:]_block_invoke5
+// type: void
+#[doc(alias = "___65+[BSAFJSONRequestOperation operationWithRequest:success:failure:]_block_invoke5")]
+pub fn stub_ee2478() -> ! {
+    todo!("0xee2478 ___65+[BSAFJSONRequestOperation operationWithRequest:success:failure:]_block_invoke5")
+}
+
+// 0xee24ac — +[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]
+// type: id __cdecl(id, SEL, id, id, id, id, id)
+#[doc(alias = "+[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]")]
+pub fn stub_ee24ac() -> ! {
+    todo!("0xee24ac +[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]")
+}
+
+// 0xee2510 — ___110+[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]_block_invoke
+// type: int __fastcall(int, int, id, int, int)
+#[doc(alias = "___110+[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]_block_invoke")]
+pub fn stub_ee2510() -> ! {
+    todo!("0xee2510 ___110+[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]_block_invoke")
+}
+
+// 0xee2738 — ___110+[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]_block_invoke_2
+// type: void
+#[doc(alias = "___110+[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]_block_invoke_2")]
+pub fn stub_ee2738() -> ! {
+    todo!("0xee2738 ___110+[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]_block_invoke_2")
+}
+
+// 0xee27d0 — ___110+[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]_block_invoke_3
+// type: void
+#[doc(alias = "___110+[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]_block_invoke_3")]
+pub fn stub_ee27d0() -> ! {
+    todo!("0xee27d0 ___110+[BSAFJSONRequestOperation operationWithRequest:acceptableStatusCodes:acceptableContentTypes:success:failure:]_block_invoke_3")
+}
+
+// 0xee2978 — +[BSAFJSONRequestOperation defaultAcceptableStatusCodes]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BSAFJSONRequestOperation defaultAcceptableStatusCodes]")]
+pub fn stub_ee2978() -> ! {
+    todo!("0xee2978 +[BSAFJSONRequestOperation defaultAcceptableStatusCodes]")
+}
+
+// 0xee29a0 — +[BSAFJSONRequestOperation defaultAcceptableContentTypes]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BSAFJSONRequestOperation defaultAcceptableContentTypes]")]
+pub fn stub_ee29a0() -> ! {
+    todo!("0xee29a0 +[BSAFJSONRequestOperation defaultAcceptableContentTypes]")
+}
+
+// 0xee2a1c — +[BSAFNetworkActivityIndicatorManager sharedManager]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BSAFNetworkActivityIndicatorManager sharedManager]")]
+pub fn stub_ee2a1c() -> ! {
+    todo!("0xee2a1c +[BSAFNetworkActivityIndicatorManager sharedManager]")
+}
+
+// 0xee2a48 — ___52+[BSAFNetworkActivityIndicatorManager sharedManager]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___52+[BSAFNetworkActivityIndicatorManager sharedManager]_block_invoke")]
+pub fn stub_ee2a48() -> ! {
+    todo!("0xee2a48 ___52+[BSAFNetworkActivityIndicatorManager sharedManager]_block_invoke")
+}
+
+// 0xee2a88 — -[BSAFNetworkActivityIndicatorManager setActivityCount:]
+// type: void __cdecl(BSAFNetworkActivityIndicatorManager *self, SEL, int)
+#[doc(alias = "-[BSAFNetworkActivityIndicatorManager setActivityCount:]")]
+pub fn stub_ee2a88() -> ! {
+    todo!("0xee2a88 -[BSAFNetworkActivityIndicatorManager setActivityCount:]")
+}
+
+// 0xee2b24 — -[BSAFNetworkActivityIndicatorManager startAnimating]
+// type: void __cdecl(BSAFNetworkActivityIndicatorManager *self, SEL)
+#[doc(alias = "-[BSAFNetworkActivityIndicatorManager startAnimating]")]
+pub fn stub_ee2b24() -> ! {
+    todo!("0xee2b24 -[BSAFNetworkActivityIndicatorManager startAnimating]")
+}
+
+// 0xee2bf4 — -[BSAFNetworkActivityIndicatorManager stopAnimating]
+// type: void __cdecl(BSAFNetworkActivityIndicatorManager *self, SEL)
+#[doc(alias = "-[BSAFNetworkActivityIndicatorManager stopAnimating]")]
+pub fn stub_ee2bf4() -> ! {
+    todo!("0xee2bf4 -[BSAFNetworkActivityIndicatorManager stopAnimating]")
+}
+
+// 0xee2cc4 — -[BSAFNetworkActivityIndicatorManager activityCount]
+// type: int __cdecl(BSAFNetworkActivityIndicatorManager *self, SEL)
+#[doc(alias = "-[BSAFNetworkActivityIndicatorManager activityCount]")]
+pub fn stub_ee2cc4() -> ! {
+    todo!("0xee2cc4 -[BSAFNetworkActivityIndicatorManager activityCount]")
+}
+
+// 0xee2cd4 — -[BSAFRestClient init]
+// type: BSAFRestClient *__cdecl(BSAFRestClient *self, SEL)
+#[doc(alias = "-[BSAFRestClient init]")]
+pub fn stub_ee2cd4() -> ! {
+    todo!("0xee2cd4 -[BSAFRestClient init]")
+}
+
+// 0xee2ff0 — -[BSAFRestClient dealloc]
+// type: void __cdecl(BSAFRestClient *self, SEL)
+#[doc(alias = "-[BSAFRestClient dealloc]")]
+pub fn stub_ee2ff0() -> ! {
+    todo!("0xee2ff0 -[BSAFRestClient dealloc]")
+}
+
+// 0xee3054 — +[BSAFRestClient baseURL]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BSAFRestClient baseURL]")]
+pub fn stub_ee3054() -> ! {
+    todo!("0xee3054 +[BSAFRestClient baseURL]")
+}
+
+// 0xee30cc — -[BSAFRestClient defaultValueForHeader:]
+// type: id __cdecl(BSAFRestClient *self, SEL, id)
+#[doc(alias = "-[BSAFRestClient defaultValueForHeader:]")]
+pub fn stub_ee30cc() -> ! {
+    todo!("0xee30cc -[BSAFRestClient defaultValueForHeader:]")
+}
+
+// 0xee30f8 — -[BSAFRestClient setDefaultHeader:value:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id)
+#[doc(alias = "-[BSAFRestClient setDefaultHeader:value:]")]
+pub fn stub_ee30f8() -> ! {
+    todo!("0xee30f8 -[BSAFRestClient setDefaultHeader:value:]")
+}
+
+// 0xee3128 — -[BSAFRestClient setAuthorizationHeaderWithUsername:password:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id)
+#[doc(alias = "-[BSAFRestClient setAuthorizationHeaderWithUsername:password:]")]
+pub fn stub_ee3128() -> ! {
+    todo!("0xee3128 -[BSAFRestClient setAuthorizationHeaderWithUsername:password:]")
+}
+
+// 0xee31fc — -[BSAFRestClient setAuthorizationHeaderWithToken:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id)
+#[doc(alias = "-[BSAFRestClient setAuthorizationHeaderWithToken:]")]
+pub fn stub_ee31fc() -> ! {
+    todo!("0xee31fc -[BSAFRestClient setAuthorizationHeaderWithToken:]")
+}
+
+// 0xee324c — -[BSAFRestClient clearAuthorizationHeader]
+// type: void __cdecl(BSAFRestClient *self, SEL)
+#[doc(alias = "-[BSAFRestClient clearAuthorizationHeader]")]
+pub fn stub_ee324c() -> ! {
+    todo!("0xee324c -[BSAFRestClient clearAuthorizationHeader]")
+}
+
+// 0xee327c — -[BSAFRestClient requestWithMethod:path:parameters:]
+// type: id __cdecl(BSAFRestClient *self, SEL, id, id, id)
+#[doc(alias = "-[BSAFRestClient requestWithMethod:path:parameters:]")]
+pub fn stub_ee327c() -> ! {
+    todo!("0xee327c -[BSAFRestClient requestWithMethod:path:parameters:]")
+}
+
+// 0xee3670 — -[BSAFRestClient enqueueHTTPOperationWithRequest:success:failure:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id, id)
+#[doc(alias = "-[BSAFRestClient enqueueHTTPOperationWithRequest:success:failure:]")]
+pub fn stub_ee3670() -> ! {
+    todo!("0xee3670 -[BSAFRestClient enqueueHTTPOperationWithRequest:success:failure:]")
+}
+
+// 0xee372c — -[BSAFRestClient cancelHTTPOperationsWithRequest:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id)
+#[doc(alias = "-[BSAFRestClient cancelHTTPOperationsWithRequest:]")]
+pub fn stub_ee372c() -> ! {
+    todo!("0xee372c -[BSAFRestClient cancelHTTPOperationsWithRequest:]")
+}
+
+// 0xee3834 — -[BSAFRestClient cancelAllHTTPOperations]
+// type: void __cdecl(BSAFRestClient *self, SEL)
+#[doc(alias = "-[BSAFRestClient cancelAllHTTPOperations]")]
+pub fn stub_ee3834() -> ! {
+    todo!("0xee3834 -[BSAFRestClient cancelAllHTTPOperations]")
+}
+
+// 0xee385c — -[BSAFRestClient getPath:parameters:success:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id, id)
+#[doc(alias = "-[BSAFRestClient getPath:parameters:success:]")]
+pub fn stub_ee385c() -> ! {
+    todo!("0xee385c -[BSAFRestClient getPath:parameters:success:]")
+}
+
+// 0xee3880 — -[BSAFRestClient getPath:parameters:success:failure:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id, id, id)
+#[doc(alias = "-[BSAFRestClient getPath:parameters:success:failure:]")]
+pub fn stub_ee3880() -> ! {
+    todo!("0xee3880 -[BSAFRestClient getPath:parameters:success:failure:]")
+}
+
+// 0xee38c8 — -[BSAFRestClient postPath:parameters:success:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id, id)
+#[doc(alias = "-[BSAFRestClient postPath:parameters:success:]")]
+pub fn stub_ee38c8() -> ! {
+    todo!("0xee38c8 -[BSAFRestClient postPath:parameters:success:]")
+}
+
+// 0xee38ec — -[BSAFRestClient postPath:parameters:success:failure:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id, id, id)
+#[doc(alias = "-[BSAFRestClient postPath:parameters:success:failure:]")]
+pub fn stub_ee38ec() -> ! {
+    todo!("0xee38ec -[BSAFRestClient postPath:parameters:success:failure:]")
+}
+
+// 0xee3934 — -[BSAFRestClient putPath:parameters:success:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id, id)
+#[doc(alias = "-[BSAFRestClient putPath:parameters:success:]")]
+pub fn stub_ee3934() -> ! {
+    todo!("0xee3934 -[BSAFRestClient putPath:parameters:success:]")
+}
+
+// 0xee3958 — -[BSAFRestClient putPath:parameters:success:failure:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id, id, id)
+#[doc(alias = "-[BSAFRestClient putPath:parameters:success:failure:]")]
+pub fn stub_ee3958() -> ! {
+    todo!("0xee3958 -[BSAFRestClient putPath:parameters:success:failure:]")
+}
+
+// 0xee39a0 — -[BSAFRestClient deletePath:parameters:success:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id, id)
+#[doc(alias = "-[BSAFRestClient deletePath:parameters:success:]")]
+pub fn stub_ee39a0() -> ! {
+    todo!("0xee39a0 -[BSAFRestClient deletePath:parameters:success:]")
+}
+
+// 0xee39c4 — -[BSAFRestClient deletePath:parameters:success:failure:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id, id, id, id)
+#[doc(alias = "-[BSAFRestClient deletePath:parameters:success:failure:]")]
+pub fn stub_ee39c4() -> ! {
+    todo!("0xee39c4 -[BSAFRestClient deletePath:parameters:success:failure:]")
+}
+
+// 0xee3a0c — -[BSAFRestClient defaultHeaders]
+// type: NSMutableDictionary *__cdecl(BSAFRestClient *self, SEL)
+#[doc(alias = "-[BSAFRestClient defaultHeaders]")]
+pub fn stub_ee3a0c() -> ! {
+    todo!("0xee3a0c -[BSAFRestClient defaultHeaders]")
+}
+
+// 0xee3a1c — -[BSAFRestClient setDefaultHeaders:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id)
+#[doc(alias = "-[BSAFRestClient setDefaultHeaders:]")]
+pub fn stub_ee3a1c() -> ! {
+    todo!("0xee3a1c -[BSAFRestClient setDefaultHeaders:]")
+}
+
+// 0xee3a40 — -[BSAFRestClient operationQueue]
+// type: NSOperationQueue *__cdecl(BSAFRestClient *self, SEL)
+#[doc(alias = "-[BSAFRestClient operationQueue]")]
+pub fn stub_ee3a40() -> ! {
+    todo!("0xee3a40 -[BSAFRestClient operationQueue]")
+}
+
+// 0xee3a50 — -[BSAFRestClient setOperationQueue:]
+// type: void __cdecl(BSAFRestClient *self, SEL, id)
+#[doc(alias = "-[BSAFRestClient setOperationQueue:]")]
+pub fn stub_ee3a50() -> ! {
+    todo!("0xee3a50 -[BSAFRestClient setOperationQueue:]")
+}
+
+// 0xee3a74 — -[NSMutableURLRequest bs_setHTTPBodyWithData:mimeType:forParameterNamed:parameters:useGzipCompression:]
+// type: void __cdecl(NSMutableURLRequest *self, SEL, id, id, id, id, char)
+#[doc(alias = "-[NSMutableURLRequest bs_setHTTPBodyWithData:mimeType:forParameterNamed:parameters:useGzipCompression:]")]
+pub fn stub_ee3a74() -> ! {
+    todo!("0xee3a74 -[NSMutableURLRequest bs_setHTTPBodyWithData:mimeType:forParameterNamed:parameters:useGzipCompression:]")
+}
+
+// 0xee3e34 — -[NSString bs_urlEncodedString]
+// type: id __cdecl(NSString *self, SEL)
+#[doc(alias = "-[NSString bs_urlEncodedString]")]
+pub fn stub_ee3e34() -> ! {
+    todo!("0xee3e34 -[NSString bs_urlEncodedString]")
+}
+
+// 0xee3e4c — -[NSString bs_urlEncodedStringWithEncoding:]
+// type: id __cdecl(NSString *self, SEL, unsigned int)
+#[doc(alias = "-[NSString bs_urlEncodedStringWithEncoding:]")]
+pub fn stub_ee3e4c() -> ! {
+    todo!("0xee3e4c -[NSString bs_urlEncodedStringWithEncoding:]")
+}
+
+// 0xee3fac — +[JKArray allocWithZone:]
+// type: id __cdecl(id, SEL, _NSZone *)
+#[doc(alias = "+[JKArray allocWithZone:]")]
+pub fn stub_ee3fac() -> ! {
+    todo!("0xee3fac +[JKArray allocWithZone:]")
+}
+
+// 0xee4034 — -[JKArray dealloc]
+// type: void __cdecl(JKArray *self, SEL)
+#[doc(alias = "-[JKArray dealloc]")]
+pub fn stub_ee4034() -> ! {
+    todo!("0xee4034 -[JKArray dealloc]")
+}
+
+// 0xee40bc — -[JKArray count]
+// type: unsigned int __cdecl(JKArray *self, SEL)
+#[doc(alias = "-[JKArray count]")]
+pub fn stub_ee40bc() -> ! {
+    todo!("0xee40bc -[JKArray count]")
+}
+
+// 0xee418c — -[JKArray getObjects:range:]
+// type: void __cdecl(JKArray *self, SEL, id *, _NSRange)
+#[doc(alias = "-[JKArray getObjects:range:]")]
+pub fn stub_ee418c() -> ! {
+    todo!("0xee418c -[JKArray getObjects:range:]")
+}
+
+// 0xee4360 — -[JKArray objectAtIndex:]
+// type: id __cdecl(JKArray *self, SEL, unsigned int)
+#[doc(alias = "-[JKArray objectAtIndex:]")]
+pub fn stub_ee4360() -> ! {
+    todo!("0xee4360 -[JKArray objectAtIndex:]")
+}
+
+// 0xee44ac — -[JKArray countByEnumeratingWithState:objects:count:]
+// type: unsigned int __cdecl(JKArray *self, SEL, $D08BFEEC8BCEE38771DFCC919E079042 *, id *, unsigned int)
+#[doc(alias = "-[JKArray countByEnumeratingWithState:objects:count:]")]
+pub fn stub_ee44ac() -> ! {
+    todo!("0xee44ac -[JKArray countByEnumeratingWithState:objects:count:]")
+}
+
+// 0xee4688 — -[JKArray insertObject:atIndex:]
+// type: void __cdecl(JKArray *self, SEL, id, unsigned int)
+#[doc(alias = "-[JKArray insertObject:atIndex:]")]
+pub fn stub_ee4688() -> ! {
+    todo!("0xee4688 -[JKArray insertObject:atIndex:]")
+}
+
+// 0xee4a04 — -[JKArray removeObjectAtIndex:]
+// type: void __cdecl(JKArray *self, SEL, unsigned int)
+#[doc(alias = "-[JKArray removeObjectAtIndex:]")]
+pub fn stub_ee4a04() -> ! {
+    todo!("0xee4a04 -[JKArray removeObjectAtIndex:]")
+}
+
+// 0xee4ca8 — -[JKArray replaceObjectAtIndex:withObject:]
+// type: void __cdecl(JKArray *self, SEL, unsigned int, id)
+#[doc(alias = "-[JKArray replaceObjectAtIndex:withObject:]")]
+pub fn stub_ee4ca8() -> ! {
+    todo!("0xee4ca8 -[JKArray replaceObjectAtIndex:withObject:]")
+}
+
+// 0xee4fc0 — -[JKArray copyWithZone:]
+// type: id __cdecl(JKArray *self, SEL, _NSZone *)
+#[doc(alias = "-[JKArray copyWithZone:]")]
+pub fn stub_ee4fc0() -> ! {
+    todo!("0xee4fc0 -[JKArray copyWithZone:]")
+}
+
+// 0xee50ec — -[JKArray mutableCopyWithZone:]
+// type: id __cdecl(JKArray *self, SEL, _NSZone *)
+#[doc(alias = "-[JKArray mutableCopyWithZone:]")]
+pub fn stub_ee50ec() -> ! {
+    todo!("0xee50ec -[JKArray mutableCopyWithZone:]")
+}
+
+// 0xee51ec — -[JKDictionaryEnumerator initWithJKDictionary:]
+// type: JKDictionaryEnumerator *__cdecl(JKDictionaryEnumerator *self, SEL, id)
+#[doc(alias = "-[JKDictionaryEnumerator initWithJKDictionary:]")]
+pub fn stub_ee51ec() -> ! {
+    todo!("0xee51ec -[JKDictionaryEnumerator initWithJKDictionary:]")
+}
+
+// 0xee52dc — -[JKDictionaryEnumerator dealloc]
+// type: void __cdecl(JKDictionaryEnumerator *self, SEL)
+#[doc(alias = "-[JKDictionaryEnumerator dealloc]")]
+pub fn stub_ee52dc() -> ! {
+    todo!("0xee52dc -[JKDictionaryEnumerator dealloc]")
+}
+
+// 0xee5324 — -[JKDictionaryEnumerator allObjects]
+// type: id __cdecl(JKDictionaryEnumerator *self, SEL)
+#[doc(alias = "-[JKDictionaryEnumerator allObjects]")]
+pub fn stub_ee5324() -> ! {
+    todo!("0xee5324 -[JKDictionaryEnumerator allObjects]")
+}
+
+// 0xee5514 — -[JKDictionaryEnumerator nextObject]
+// type: id __cdecl(JKDictionaryEnumerator *self, SEL)
+#[doc(alias = "-[JKDictionaryEnumerator nextObject]")]
+pub fn stub_ee5514() -> ! {
+    todo!("0xee5514 -[JKDictionaryEnumerator nextObject]")
+}
+
+// 0xee5754 — +[JKDictionary allocWithZone:]
+// type: id __cdecl(id, SEL, _NSZone *)
+#[doc(alias = "+[JKDictionary allocWithZone:]")]
+pub fn stub_ee5754() -> ! {
+    todo!("0xee5754 +[JKDictionary allocWithZone:]")
+}
+
+// 0xee57dc — -[JKDictionary dealloc]
+// type: void __cdecl(JKDictionary *self, SEL)
+#[doc(alias = "-[JKDictionary dealloc]")]
+pub fn stub_ee57dc() -> ! {
+    todo!("0xee57dc -[JKDictionary dealloc]")
+}
+
+// 0xee5888 — -[JKDictionary count]
+// type: unsigned int __cdecl(JKDictionary *self, SEL)
+#[doc(alias = "-[JKDictionary count]")]
+pub fn stub_ee5888() -> ! {
+    todo!("0xee5888 -[JKDictionary count]")
+}
+
+// 0xee5898 — -[JKDictionary objectForKey:]
+// type: id __cdecl(JKDictionary *self, SEL, id)
+#[doc(alias = "-[JKDictionary objectForKey:]")]
+pub fn stub_ee5898() -> ! {
+    todo!("0xee5898 -[JKDictionary objectForKey:]")
+}
+
+// 0xee5c40 — -[JKDictionary getObjects:andKeys:]
+// type: void __cdecl(JKDictionary *self, SEL, id *, id *)
+#[doc(alias = "-[JKDictionary getObjects:andKeys:]")]
+pub fn stub_ee5c40() -> ! {
+    todo!("0xee5c40 -[JKDictionary getObjects:andKeys:]")
+}
+
+// 0xee5e34 — -[JKDictionary countByEnumeratingWithState:objects:count:]
+// type: unsigned int __cdecl(JKDictionary *self, SEL, $D08BFEEC8BCEE38771DFCC919E079042 *, id *, unsigned int)
+#[doc(alias = "-[JKDictionary countByEnumeratingWithState:objects:count:]")]
+pub fn stub_ee5e34() -> ! {
+    todo!("0xee5e34 -[JKDictionary countByEnumeratingWithState:objects:count:]")
+}
+
+// 0xee5f84 — -[JKDictionary keyEnumerator]
+// type: id __cdecl(JKDictionary *self, SEL)
+#[doc(alias = "-[JKDictionary keyEnumerator]")]
+pub fn stub_ee5f84() -> ! {
+    todo!("0xee5f84 -[JKDictionary keyEnumerator]")
+}
+
+// 0xee5fcc — -[JKDictionary setObject:forKey:]
+// type: void __cdecl(JKDictionary *self, SEL, id, id)
+#[doc(alias = "-[JKDictionary setObject:forKey:]")]
+pub fn stub_ee5fcc() -> ! {
+    todo!("0xee5fcc -[JKDictionary setObject:forKey:]")
+}
+
+// 0xee6618 — -[JKDictionary removeObjectForKey:]
+// type: void __cdecl(JKDictionary *self, SEL, id)
+#[doc(alias = "-[JKDictionary removeObjectForKey:]")]
+pub fn stub_ee6618() -> ! {
+    todo!("0xee6618 -[JKDictionary removeObjectForKey:]")
+}
+
+// 0xee6b20 — -[JKDictionary copyWithZone:]
+// type: id __cdecl(JKDictionary *self, SEL, _NSZone *)
+#[doc(alias = "-[JKDictionary copyWithZone:]")]
+pub fn stub_ee6b20() -> ! {
+    todo!("0xee6b20 -[JKDictionary copyWithZone:]")
+}
+
+// 0xee6c38 — -[JKDictionary mutableCopyWithZone:]
+// type: id __cdecl(JKDictionary *self, SEL, _NSZone *)
+#[doc(alias = "-[JKDictionary mutableCopyWithZone:]")]
+pub fn stub_ee6c38() -> ! {
+    todo!("0xee6c38 -[JKDictionary mutableCopyWithZone:]")
+}
+
+// 0xee6d2c — +[JSONDecoder decoder]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[JSONDecoder decoder]")]
+pub fn stub_ee6d2c() -> ! {
+    todo!("0xee6d2c +[JSONDecoder decoder]")
+}
+
+// 0xee6d44 — +[JSONDecoder decoderWithParseOptions:]
+// type: id __cdecl(id, SEL, unsigned int)
+#[doc(alias = "+[JSONDecoder decoderWithParseOptions:]")]
+pub fn stub_ee6d44() -> ! {
+    todo!("0xee6d44 +[JSONDecoder decoderWithParseOptions:]")
+}
+
+// 0xee6d80 — -[JSONDecoder init]
+// type: JSONDecoder *__cdecl(JSONDecoder *self, SEL)
+#[doc(alias = "-[JSONDecoder init]")]
+pub fn stub_ee6d80() -> ! {
+    todo!("0xee6d80 -[JSONDecoder init]")
+}
+
+// 0xee6d98 — -[JSONDecoder initWithParseOptions:]
+// type: JSONDecoder *__cdecl(JSONDecoder *self, SEL, unsigned int)
+#[doc(alias = "-[JSONDecoder initWithParseOptions:]")]
+pub fn stub_ee6d98() -> ! {
+    todo!("0xee6d98 -[JSONDecoder initWithParseOptions:]")
+}
+
+// 0xee6ea8 — -[JSONDecoder dealloc]
+// type: void __cdecl(JSONDecoder *self, SEL)
+#[doc(alias = "-[JSONDecoder dealloc]")]
+pub fn stub_ee6ea8() -> ! {
+    todo!("0xee6ea8 -[JSONDecoder dealloc]")
+}
+
+// 0xee6f40 — -[JSONDecoder clearCache]
+// type: void __cdecl(JSONDecoder *self, SEL)
+#[doc(alias = "-[JSONDecoder clearCache]")]
+pub fn stub_ee6f40() -> ! {
+    todo!("0xee6f40 -[JSONDecoder clearCache]")
+}
+
+// 0xee6ff4 — -[JSONDecoder parseUTF8String:length:]
+// type: id __cdecl(JSONDecoder *self, SEL, const char *, unsigned int)
+#[doc(alias = "-[JSONDecoder parseUTF8String:length:]")]
+pub fn stub_ee6ff4() -> ! {
+    todo!("0xee6ff4 -[JSONDecoder parseUTF8String:length:]")
+}
+
+// 0xee7018 — -[JSONDecoder parseUTF8String:length:error:]
+// type: id __cdecl(JSONDecoder *self, SEL, const char *, unsigned int, id *)
+#[doc(alias = "-[JSONDecoder parseUTF8String:length:error:]")]
+pub fn stub_ee7018() -> ! {
+    todo!("0xee7018 -[JSONDecoder parseUTF8String:length:error:]")
+}
+
+// 0xee703c — -[JSONDecoder parseJSONData:]
+// type: id __cdecl(JSONDecoder *self, SEL, id)
+#[doc(alias = "-[JSONDecoder parseJSONData:]")]
+pub fn stub_ee703c() -> ! {
+    todo!("0xee703c -[JSONDecoder parseJSONData:]")
+}
+
+// 0xee7054 — -[JSONDecoder parseJSONData:error:]
+// type: id __cdecl(JSONDecoder *self, SEL, id, id *)
+#[doc(alias = "-[JSONDecoder parseJSONData:error:]")]
+pub fn stub_ee7054() -> ! {
+    todo!("0xee7054 -[JSONDecoder parseJSONData:error:]")
+}
+
+// 0xee706c — -[JSONDecoder objectWithUTF8String:length:]
+// type: id __cdecl(JSONDecoder *self, SEL, const char *, unsigned int)
+#[doc(alias = "-[JSONDecoder objectWithUTF8String:length:]")]
+pub fn stub_ee706c() -> ! {
+    todo!("0xee706c -[JSONDecoder objectWithUTF8String:length:]")
+}
+
+// 0xee7090 — -[JSONDecoder objectWithUTF8String:length:error:]
+// type: id __cdecl(JSONDecoder *self, SEL, const char *, unsigned int, id *)
+#[doc(alias = "-[JSONDecoder objectWithUTF8String:length:error:]")]
+pub fn stub_ee7090() -> ! {
+    todo!("0xee7090 -[JSONDecoder objectWithUTF8String:length:error:]")
+}
+
+// 0xee79d8 — -[JSONDecoder objectWithData:]
+// type: id __cdecl(JSONDecoder *self, SEL, id)
+#[doc(alias = "-[JSONDecoder objectWithData:]")]
+pub fn stub_ee79d8() -> ! {
+    todo!("0xee79d8 -[JSONDecoder objectWithData:]")
+}
+
+// 0xee79f0 — -[JSONDecoder objectWithData:error:]
+// type: id __cdecl(JSONDecoder *self, SEL, id, id *)
+#[doc(alias = "-[JSONDecoder objectWithData:error:]")]
+pub fn stub_ee79f0() -> ! {
+    todo!("0xee79f0 -[JSONDecoder objectWithData:error:]")
+}
+
+// 0xee7a80 — -[JSONDecoder mutableObjectWithUTF8String:length:]
+// type: id __cdecl(JSONDecoder *self, SEL, const char *, unsigned int)
+#[doc(alias = "-[JSONDecoder mutableObjectWithUTF8String:length:]")]
+pub fn stub_ee7a80() -> ! {
+    todo!("0xee7a80 -[JSONDecoder mutableObjectWithUTF8String:length:]")
+}
+
+// 0xee7aa4 — -[JSONDecoder mutableObjectWithUTF8String:length:error:]
+// type: id __cdecl(JSONDecoder *self, SEL, const char *, unsigned int, id *)
+#[doc(alias = "-[JSONDecoder mutableObjectWithUTF8String:length:error:]")]
+pub fn stub_ee7aa4() -> ! {
+    todo!("0xee7aa4 -[JSONDecoder mutableObjectWithUTF8String:length:error:]")
+}
+
+// 0xee7b4c — -[JSONDecoder mutableObjectWithData:]
+// type: id __cdecl(JSONDecoder *self, SEL, id)
+#[doc(alias = "-[JSONDecoder mutableObjectWithData:]")]
+pub fn stub_ee7b4c() -> ! {
+    todo!("0xee7b4c -[JSONDecoder mutableObjectWithData:]")
+}
+
+// 0xee7b64 — -[JSONDecoder mutableObjectWithData:error:]
+// type: id __cdecl(JSONDecoder *self, SEL, id, id *)
+#[doc(alias = "-[JSONDecoder mutableObjectWithData:error:]")]
+pub fn stub_ee7b64() -> ! {
+    todo!("0xee7b64 -[JSONDecoder mutableObjectWithData:error:]")
+}
+
+// 0xee7bf4 — -[NSString bs_objectFromJSONString]
+// type: id __cdecl(NSString *self, SEL)
+#[doc(alias = "-[NSString bs_objectFromJSONString]")]
+pub fn stub_ee7bf4() -> ! {
+    todo!("0xee7bf4 -[NSString bs_objectFromJSONString]")
+}
+
+// 0xee7c10 — -[NSString bs_objectFromJSONStringWithParseOptions:]
+// type: id __cdecl(NSString *self, SEL, unsigned int)
+#[doc(alias = "-[NSString bs_objectFromJSONStringWithParseOptions:]")]
+pub fn stub_ee7c10() -> ! {
+    todo!("0xee7c10 -[NSString bs_objectFromJSONStringWithParseOptions:]")
+}
+
+// 0xee7c28 — -[NSString bs_objectFromJSONStringWithParseOptions:error:]
+// type: id __cdecl(NSString *self, SEL, unsigned int, id *)
+#[doc(alias = "-[NSString bs_objectFromJSONStringWithParseOptions:error:]")]
+pub fn stub_ee7c28() -> ! {
+    todo!("0xee7c28 -[NSString bs_objectFromJSONStringWithParseOptions:error:]")
+}
+
+// 0xee7d98 — -[NSString bs_mutableObjectFromJSONString]
+// type: id __cdecl(NSString *self, SEL)
+#[doc(alias = "-[NSString bs_mutableObjectFromJSONString]")]
+pub fn stub_ee7d98() -> ! {
+    todo!("0xee7d98 -[NSString bs_mutableObjectFromJSONString]")
 }
