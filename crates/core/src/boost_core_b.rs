@@ -1,6 +1,6 @@
-//! core-B2: 100 boost stubs — filtered boost:: namespace.
-//! Continuation of EA-ordered boost stubs (0x461efc..0x46c0bc) so `cargo check` stays green.
-//! Source: `ida/export.json` filtered where mangled/demangled contains "boost", sorted by EA, next 100 after 4630 already covered.
+//! core-B2: 150 boost stubs — filtered boost:: namespace.
+//! Continuation of EA-ordered boost stubs (0x461efc..0x46e808) so `cargo check` stays green.
+//! Source: `ida/export.json` filtered where mangled/demangled contains "boost", sorted by EA, next 150 after 4630 already covered.
 //! Each stub preserves IDA address, mangled symbol, and demangled spelling; signatures use `rbx_core::SharedPtr` not `boost::`.
 
 
@@ -703,3 +703,354 @@ pub fn stub_46c0a0() -> ! {
 pub fn stub_46c0bc() -> ! {
     todo!("0x46c0bc __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKPKNS8_18PropertyDescriptorEEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSP_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
 }
+
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> const&)")]
+// 0x46c214 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE7connectINS2_8functionISB_EEEENS0_10connectionERKT_
+// was: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> const&)
+pub fn stub_46c214() -> ! {
+    todo!("0x46c214 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE7connectINS2_8functionISB_EEEENS0_10connectionERKT_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot *)")]
+// 0x46c308 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE6insertEPNSC_4slotE
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot *)
+pub fn stub_46c308() -> ! {
+    todo!("0x46c308 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE6insertEPNSC_4slotE")
+}
+
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot*)")]
+// 0x46c514 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotEEaSEPSE_
+// was: boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot*)
+pub fn stub_46c514() -> ! {
+    todo!("0x46c514 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotEEaSEPSE_")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>*>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>*)")]
+// 0x46c538 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_EC2IPSD_EERKSG_T_
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>*>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>*)
+pub fn stub_46c538() -> ! {
+    todo!("0x46c538 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_EC2IPSD_EERKSG_T_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>>::~callable_slot()")]
+// 0x46c634 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE13callable_slotINS2_8functionISB_EEED1Ev
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>>::~callable_slot()
+pub fn stub_46c634() -> ! {
+    todo!("0x46c634 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE13callable_slotINS2_8functionISB_EEED1Ev")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>>::~callable_slot()")]
+// 0x46c744 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE13callable_slotINS2_8functionISB_EEED0Ev
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>>::~callable_slot()
+pub fn stub_46c744() -> ! {
+    todo!("0x46c744 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE13callable_slotINS2_8functionISB_EEED0Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
+// 0x46c878 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_E4callES7_SB_
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)
+pub fn stub_46c878() -> ! {
+    todo!("0x46c878 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_E4callES7_SB_")
+}
+
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
+// 0x46c950 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_E4callES7_SB_
+// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::call(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)
+pub fn stub_46c950() -> ! {
+    todo!("0x46c950 __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_E4callES7_SB_")
+}
+
+#[doc(alias = "boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)const")]
+// 0x46c958 — __ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEclES4_S8_
+// was: boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)const
+pub fn stub_46c958() -> ! {
+    todo!("0x46c958 __ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEEclES4_S8_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_do_get_mutex(void)")]
+// 0x46ca70 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot24safe_static_do_get_mutexEv
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_do_get_mutex(void)
+pub fn stub_46ca70() -> ! {
+    todo!("0x46ca70 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot24safe_static_do_get_mutexEv")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+// 0x46cb60 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_ED1Ev
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()
+pub fn stub_46cb60() -> ! {
+    todo!("0x46cb60 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_ED1Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+// 0x46cc70 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_ED0Ev
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()
+pub fn stub_46cc70() -> ! {
+    todo!("0x46cc70 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_ED0Ev")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()")]
+// 0x46cda0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slotD1Ev
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()
+pub fn stub_46cda0() -> ! {
+    todo!("0x46cda0 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slotD1Ev")
+}
+
+#[doc(alias = "boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*> const&)")]
+// 0x46cdd0 — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEE13assign_to_ownERKS9_
+// was: boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*> const&)
+pub fn stub_46cdd0() -> ! {
+    todo!("0x46cdd0 __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEE13assign_to_ownERKS9_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<void (*)(RBX::DataModel *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// 0x46cfd8 — __ZN5boost6detail8function15functor_managerIPFvPN3RBX9DataModelEEE6manageERKNS1_15function_bufferERS9_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<void (*)(RBX::DataModel *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_46cfd8() -> ! {
+    todo!("0x46cfd8 __ZN5boost6detail8function15functor_managerIPFvPN3RBX9DataModelEEE6manageERKNS1_15function_bufferERS9_NS1_30functor_manager_operation_typeE")
+}
+
+#[doc(alias = "boost::detail::function::void_function_invoker1<void (*)(RBX::DataModel *),void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
+// 0x46d034 — __ZN5boost6detail8function22void_function_invoker1IPFvPN3RBX9DataModelEEvS5_E6invokeERNS1_15function_bufferES5_
+// was: boost::detail::function::void_function_invoker1<void (*)(RBX::DataModel *),void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
+pub fn stub_46d034() -> ! {
+    todo!("0x46d034 __ZN5boost6detail8function22void_function_invoker1IPFvPN3RBX9DataModelEEvS5_E6invokeERNS1_15function_bufferES5_")
+}
+
+#[doc(alias = "boost::circular_buffer<double,std::allocator<double>>::push_back(double const&)")]
+// 0x46d040 — __ZN5boost15circular_bufferIdSaIdEE9push_backERKd
+// was: boost::circular_buffer<double,std::allocator<double>>::push_back(double const&)
+pub fn stub_46d040() -> ! {
+    todo!("0x46d040 __ZN5boost15circular_bufferIdSaIdEE9push_backERKd")
+}
+
+#[doc(alias = "boost::singleton_pool<RBX::BallBallContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
+// 0x46d098 — __ZN5boost14singleton_poolIN3RBX15BallBallContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
+// was: boost::singleton_pool<RBX::BallBallContact,52u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)
+pub fn stub_46d098() -> ! {
+    todo!("0x46d098 __ZN5boost14singleton_poolIN3RBX15BallBallContactELj52ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
+}
+
+#[doc(alias = "RBX::DataModel::LegacyLock::Implementation::Implementation(RBX::DataModel*,boost::shared_ptr<RBX::DataModel::GenericJob>,boost::shared_ptr<RBX::Limits::Counter>)")]
+// 0x46d248 — __ZN3RBX9DataModel10LegacyLock14ImplementationC2EPS0_N5boost10shared_ptrINS0_10GenericJobEEENS5_INS_6Limits7CounterEEE
+// was: RBX::DataModel::LegacyLock::Implementation::Implementation(RBX::DataModel*,boost::shared_ptr<RBX::DataModel::GenericJob>,boost::shared_ptr<RBX::Limits::Counter>)
+pub fn stub_46d248() -> ! {
+    todo!("0x46d248 __ZN3RBX9DataModel10LegacyLock14ImplementationC2EPS0_N5boost10shared_ptrINS0_10GenericJobEEENS5_INS_6Limits7CounterEEE")
+}
+
+#[doc(alias = "rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::pop_if_present(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&)")]
+// 0x46d698 — __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEE14pop_if_presentERS8_
+// was: rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::pop_if_present(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&)
+pub fn stub_46d698() -> ! {
+    todo!("0x46d698 __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEE14pop_if_presentERS8_")
+}
+
+#[doc(alias = "void boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::reset<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
+// 0x46d778 — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEE5resetIS5_EEvPT_
+// was: void boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::reset<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)
+pub fn stub_46d778() -> ! {
+    todo!("0x46d778 __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEE5resetIS5_EEvPT_")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list_av_1<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::type> boost::bind<void,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>(void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)")]
+// 0x46d7a4 — __ZN5boost4bindIvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEES7_EENS_3_bi6bind_tIT_PFSA_T0_ENS8_9list_av_1IT1_E4typeEEESD_SF_
+// was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list_av_1<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::type> boost::bind<void,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>(void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)
+pub fn stub_46d7a4() -> ! {
+    todo!("0x46d7a4 __ZN5boost4bindIvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEES7_EENS_3_bi6bind_tIT_PFSA_T0_ENS8_9list_av_1IT1_E4typeEEESD_SF_")
+}
+
+#[doc(alias = "RBX::DataModel::LegacyLock::Implementation::task(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)")]
+// 0x46d8bc — __ZN3RBX9DataModel10LegacyLock14Implementation4taskEN5boost10shared_ptrINS2_6EventsEEE
+// was: RBX::DataModel::LegacyLock::Implementation::task(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)
+pub fn stub_46d8bc() -> ! {
+    todo!("0x46d8bc __ZN3RBX9DataModel10LegacyLock14Implementation4taskEN5boost10shared_ptrINS2_6EventsEEE")
+}
+
+#[doc(alias = "rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::push(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
+// 0x46d908 — __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEE4pushERKS8_
+// was: rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::push(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
+pub fn stub_46d908() -> ! {
+    todo!("0x46d908 __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEE4pushERKS8_")
+}
+
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::push_back(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
+// 0x46d9cc — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE9push_backERKS7_
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::push_back(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
+pub fn stub_46d9cc() -> ! {
+    todo!("0x46d9cc __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE9push_backERKS7_")
+}
+
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_push_back_aux(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
+// 0x46da0c — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE16_M_push_back_auxERKS7_
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_push_back_aux(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
+pub fn stub_46da0c() -> ! {
+    todo!("0x46da0c __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE16_M_push_back_auxERKS7_")
+}
+
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reserve_map_at_back(unsigned long)")]
+// 0x46db60 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE22_M_reserve_map_at_backEm
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reserve_map_at_back(unsigned long)
+pub fn stub_46db60() -> ! {
+    todo!("0x46db60 __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE22_M_reserve_map_at_backEm")
+}
+
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reallocate_map(unsigned long,bool)")]
+// 0x46db7c — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE17_M_reallocate_mapEmb
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reallocate_map(unsigned long,bool)
+pub fn stub_46db7c() -> ! {
+    todo!("0x46db7c __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE17_M_reallocate_mapEmb")
+}
+
+#[doc(alias = "std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_allocate_map(unsigned long)")]
+// 0x46dc54 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE15_M_allocate_mapEm
+// was: std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_allocate_map(unsigned long)
+pub fn stub_46dc54() -> ! {
+    todo!("0x46dc54 __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE15_M_allocate_mapEm")
+}
+
+#[doc(alias = "boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>)")]
+// 0x46dc6c — __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEEEEC2ESA_
+// was: boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>)
+pub fn stub_46dc6c() -> ! {
+    todo!("0x46dc6c __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEEEEC2ESA_")
+}
+
+#[doc(alias = "__ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS7_5list1INS7_5valueISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")]
+// 0x46dd4c — __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS7_5list1INS7_5valueISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS7_5list1INS7_5valueISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE
+pub fn stub_46dd4c() -> ! {
+    todo!("0x46dd4c __ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS7_5list1INS7_5valueISD_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISL_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "__ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")]
+// 0x46de28 — __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE
+pub fn stub_46de28() -> ! {
+    todo!("0x46de28 __ZN5boost9function1IvPN3RBX9DataModelEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISK_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>)")]
+// 0x46df08 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEEvT_
+// was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>)
+pub fn stub_46df08() -> ! {
+    todo!("0x46df08 __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEEvT_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// 0x46dff8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_46dff8() -> ! {
+    todo!("0x46dff8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")
+}
+
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
+// 0x46e014 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEvPS7_E6invokeERNS1_15function_bufferESJ_
+// was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)
+pub fn stub_46e014() -> ! {
+    todo!("0x46e014 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEvPS7_E6invokeERNS1_15function_bufferESJ_")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const")]
+// 0x46e030 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferE
+// was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const
+pub fn stub_46e030() -> ! {
+    todo!("0x46e030 __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// 0x46e110 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn stub_46e110() -> ! {
+    todo!("0x46e110 __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+#[doc(alias = "void boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::operator()<void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
+// 0x46e208 — __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEEEEclIPFvS9_ENS1_IRPS5_EEEEvNS0_4typeIvEERT_RT0_i
+// was: void boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::operator()<void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>) &,boost::_bi::list1<RBX::DataModel*&> &,int)
+pub fn stub_46e208() -> ! {
+    todo!("0x46e208 __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEEEEclIPFvS9_ENS1_IRPS5_EEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// 0x46e2d4 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE12manage_smallERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_46e2d4() -> ! {
+    todo!("0x46e2d4 __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE12manage_smallERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
+// 0x46e404 — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEC2IS5_EEPT_
+// was: boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)
+pub fn stub_46e404() -> ! {
+    todo!("0x46e404 __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEC2IS5_EEPT_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
+// 0x46e4d8 — __ZN5boost6detail12shared_countC2IN3RBX9DataModel10LegacyLock14Implementation6EventsEEEPT_
+// was: boost::detail::shared_count::shared_count<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)
+pub fn stub_46e4d8() -> ! {
+    todo!("0x46e4d8 __ZN5boost6detail12shared_countC2IN3RBX9DataModel10LegacyLock14Implementation6EventsEEEPT_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()")]
+// 0x46e5d8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEED1Ev
+// was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()
+pub fn stub_46e5d8() -> ! {
+    todo!("0x46e5d8 __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()")]
+// 0x46e5dc — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEED0Ev
+// was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()
+pub fn stub_46e5dc() -> ! {
+    todo!("0x46e5dc __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::dispose(void)")]
+// 0x46e5e0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE7disposeEv
+// was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::dispose(void)
+pub fn stub_46e5e0() -> ! {
+    todo!("0x46e5e0 __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_deleter(std::type_info const&)")]
+// 0x46e604 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_deleter(std::type_info const&)
+pub fn stub_46e604() -> ! {
+    todo!("0x46e604 __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_untyped_deleter(void)")]
+// 0x46e608 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_untyped_deleter(void)
+pub fn stub_46e608() -> ! {
+    todo!("0x46e608 __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::operator=(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
+// 0x46e60c — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEaSERKS6_
+// was: boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::operator=(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
+pub fn stub_46e60c() -> ! {
+    todo!("0x46e60c __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEaSERKS6_")
+}
+
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)")]
+// 0x46e644 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE9pop_frontEv
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)
+pub fn stub_46e644() -> ! {
+    todo!("0x46e644 __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE9pop_frontEv")
+}
+
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)")]
+// 0x46e670 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE16_M_pop_front_auxEv
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)
+pub fn stub_46e670() -> ! {
+    todo!("0x46e670 __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE16_M_pop_front_auxEv")
+}
+
+#[doc(alias = "rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::~safe_queue()")]
+// 0x46e808 — __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEED1Ev
+// was: rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::~safe_queue()
+pub fn stub_46e808() -> ! {
+    todo!("0x46e808 __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEED1Ev")
+}
+
