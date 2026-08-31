@@ -1,5 +1,5 @@
-//! rendering generated — next 100 stubs
-//! Filter: Ogre|Gfx|Render|G3D (15058 total, 4700 prior +100 this batch) — next 100 after 0xc7ae68
+//! rendering generated — next 150 stubs
+//! Filter: Ogre|Gfx|Render|G3D (15058 total, 4800 prior +150 this batch = 4950 total) — 0xc7aef8..0xc828dc after 0xc7ae68
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -1755,3 +1755,1054 @@ pub fn stub_c7ae5c() -> ! {
 pub fn stub_c7ae68() -> ! {
     todo!("0xc7ae68 Ogre::Controller<float>::~Controller()")
 }
+
+// 0xc7aef8 — __ZN4Ogre10ControllerIfED2Ev
+#[doc(alias = "Ogre::Controller<float>::~Controller()")]
+// was: Ogre::Controller<float>::~Controller()
+pub fn stub_c7aef8() -> ! {
+    todo!("0xc7aef8 Ogre::Controller<float>::~Controller()")
+}
+
+// 0xc7b0cc — __ZNSt8_Rb_treeIPN4Ogre10ControllerIfEES3_St9_IdentityIS3_ESt4lessIS3_ENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS7_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()
+pub fn stub_c7b0cc() -> ! {
+    todo!("0xc7b0cc std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc7b0d0 — __ZNSt8_Rb_treeIPN4Ogre10ControllerIfEES3_St9_IdentityIS3_ESt4lessIS3_ENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS7_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()
+pub fn stub_c7b0d0() -> ! {
+    todo!("0xc7b0d0 std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc7b110 — __ZN4Ogre10ConvexBody15_initialisePoolEv
+#[doc(alias = "Ogre::ConvexBody::_initialisePool(void)")]
+// was: Ogre::ConvexBody::_initialisePool(void)
+pub fn stub_c7b110() -> ! {
+    todo!("0xc7b110 Ogre::ConvexBody::_initialisePool(void)")
+}
+
+// 0xc7b16c — __ZN4Ogre10ConvexBody12_destroyPoolEv
+#[doc(alias = "Ogre::ConvexBody::_destroyPool(void)")]
+// was: Ogre::ConvexBody::_destroyPool(void)
+pub fn stub_c7b16c() -> ! {
+    todo!("0xc7b16c Ogre::ConvexBody::_destroyPool(void)")
+}
+
+// 0xc7b1a0 — __ZNSt6vectorIPN4Ogre7PolygonENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED1Ev
+#[doc(alias = "std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~vector()")]
+// was: std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~vector()
+pub fn stub_c7b1a0() -> ! {
+    todo!("0xc7b1a0 std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~vector()")
+}
+
+// 0xc7b234 — __ZNSt6vectorIPN4Ogre7PolygonENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S8_EEmRKS2_
+#[doc(alias = "std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Polygon **,std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::Polygon * const&)")]
+// was: std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Polygon **,std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::Polygon * const&)
+pub fn stub_c7b234() -> ! {
+    todo!("0xc7b234 std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Polygon **,std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::Polygon * const&)")
+}
+
+// 0xc7b3dc — __ZNSt12_Vector_baseIPN4Ogre7PolygonENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
+#[doc(alias = "std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_c7b3dc() -> ! {
+    todo!("0xc7b3dc std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xc7b3e0 — __ZNSt12_Vector_baseIPN4Ogre7PolygonENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
+#[doc(alias = "std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_c7b3e0() -> ! {
+    todo!("0xc7b3e0 std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xc7b458 — __ZN4Ogre10DataStream7getLineEb
+#[doc(alias = "Ogre::DataStream::getLine(bool)")]
+// was: Ogre::DataStream::getLine(bool)
+pub fn stub_c7b458() -> ! {
+    todo!("0xc7b458 Ogre::DataStream::getLine(bool)")
+}
+
+// 0xc7b630 — __ZN4Ogre10DataStream8readLineEPcmRKSs
+#[doc(alias = "Ogre::DataStream::readLine(char *,unsigned long,std::string const&)")]
+// was: Ogre::DataStream::readLine(char *,unsigned long,std::string const&)
+pub fn stub_c7b630() -> ! {
+    todo!("0xc7b630 Ogre::DataStream::readLine(char *,unsigned long,std::string const&)")
+}
+
+// 0xc7b710 — __ZN4Ogre10DataStream8skipLineERKSs
+#[doc(alias = "Ogre::DataStream::skipLine(std::string const&)")]
+// was: Ogre::DataStream::skipLine(std::string const&)
+pub fn stub_c7b710() -> ! {
+    todo!("0xc7b710 Ogre::DataStream::skipLine(std::string const&)")
+}
+
+// 0xc7b78c — __ZN4Ogre10DataStream11getAsStringEv
+#[doc(alias = "Ogre::DataStream::getAsString(void)")]
+// was: Ogre::DataStream::getAsString(void)
+pub fn stub_c7b78c() -> ! {
+    todo!("0xc7b78c Ogre::DataStream::getAsString(void)")
+}
+
+// 0xc7b8c8 — __ZN4Ogre16MemoryDataStreamC1EPvmbb
+#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(void *,unsigned long,bool,bool)")]
+// was: Ogre::MemoryDataStream::MemoryDataStream(void *,unsigned long,bool,bool)
+pub fn stub_c7b8c8() -> ! {
+    todo!("0xc7b8c8 Ogre::MemoryDataStream::MemoryDataStream(void *,unsigned long,bool,bool)")
+}
+
+// 0xc7b918 — __ZN4Ogre16MemoryDataStreamC1ERNS_9SharedPtrINS_10DataStreamEEEbb
+#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)")]
+// was: Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)
+pub fn stub_c7b918() -> ! {
+    todo!("0xc7b918 Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)")
+}
+
+// 0xc7b924 — __ZN4Ogre16MemoryDataStreamC2ERNS_9SharedPtrINS_10DataStreamEEEbb
+#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)")]
+// was: Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)
+pub fn stub_c7b924() -> ! {
+    todo!("0xc7b924 Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)")
+}
+
+// 0xc7bb48 — __ZN4Ogre16MemoryDataStreamC1ERKSsRKNS_9SharedPtrINS_10DataStreamEEEbb
+#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)")]
+// was: Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)
+pub fn stub_c7bb48() -> ! {
+    todo!("0xc7bb48 Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)")
+}
+
+// 0xc7bb60 — __ZN4Ogre16MemoryDataStreamC2ERKSsRKNS_9SharedPtrINS_10DataStreamEEEbb
+#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)")]
+// was: Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)
+pub fn stub_c7bb60() -> ! {
+    todo!("0xc7bb60 Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)")
+}
+
+// 0xc7bd9c — __ZN4Ogre16MemoryDataStreamC1Embb
+#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(unsigned long,bool,bool)")]
+// was: Ogre::MemoryDataStream::MemoryDataStream(unsigned long,bool,bool)
+pub fn stub_c7bd9c() -> ! {
+    todo!("0xc7bd9c Ogre::MemoryDataStream::MemoryDataStream(unsigned long,bool,bool)")
+}
+
+// 0xc7bed4 — __ZN4Ogre16MemoryDataStreamC1ERKSsmbb
+#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(std::string const&,unsigned long,bool,bool)")]
+// was: Ogre::MemoryDataStream::MemoryDataStream(std::string const&,unsigned long,bool,bool)
+pub fn stub_c7bed4() -> ! {
+    todo!("0xc7bed4 Ogre::MemoryDataStream::MemoryDataStream(std::string const&,unsigned long,bool,bool)")
+}
+
+// 0xc7c010 — __ZN4Ogre16MemoryDataStreamD0Ev
+#[doc(alias = "Ogre::MemoryDataStream::~MemoryDataStream()")]
+// was: Ogre::MemoryDataStream::~MemoryDataStream()
+pub fn stub_c7c010() -> ! {
+    todo!("0xc7c010 Ogre::MemoryDataStream::~MemoryDataStream()")
+}
+
+// 0xc7c0a0 — __ZN4Ogre16MemoryDataStreamD1Ev
+#[doc(alias = "Ogre::MemoryDataStream::~MemoryDataStream()")]
+// was: Ogre::MemoryDataStream::~MemoryDataStream()
+pub fn stub_c7c0a0() -> ! {
+    todo!("0xc7c0a0 Ogre::MemoryDataStream::~MemoryDataStream()")
+}
+
+// 0xc7c0ac — __ZN4Ogre16MemoryDataStreamD2Ev
+#[doc(alias = "Ogre::MemoryDataStream::~MemoryDataStream()")]
+// was: Ogre::MemoryDataStream::~MemoryDataStream()
+pub fn stub_c7c0ac() -> ! {
+    todo!("0xc7c0ac Ogre::MemoryDataStream::~MemoryDataStream()")
+}
+
+// 0xc7c200 — __ZN4Ogre16MemoryDataStream4readEPvm
+#[doc(alias = "Ogre::MemoryDataStream::read(void *,unsigned long)")]
+// was: Ogre::MemoryDataStream::read(void *,unsigned long)
+pub fn stub_c7c200() -> ! {
+    todo!("0xc7c200 Ogre::MemoryDataStream::read(void *,unsigned long)")
+}
+
+// 0xc7c234 — __ZN4Ogre16MemoryDataStream5writeEPKvm
+#[doc(alias = "Ogre::MemoryDataStream::write(void const*,unsigned long)")]
+// was: Ogre::MemoryDataStream::write(void const*,unsigned long)
+pub fn stub_c7c234() -> ! {
+    todo!("0xc7c234 Ogre::MemoryDataStream::write(void const*,unsigned long)")
+}
+
+// 0xc7c278 — __ZN4Ogre16MemoryDataStream8readLineEPcmRKSs
+#[doc(alias = "Ogre::MemoryDataStream::readLine(char *,unsigned long,std::string const&)")]
+// was: Ogre::MemoryDataStream::readLine(char *,unsigned long,std::string const&)
+pub fn stub_c7c278() -> ! {
+    todo!("0xc7c278 Ogre::MemoryDataStream::readLine(char *,unsigned long,std::string const&)")
+}
+
+// 0xc7c308 — __ZN4Ogre16MemoryDataStream8skipLineERKSs
+#[doc(alias = "Ogre::MemoryDataStream::skipLine(std::string const&)")]
+// was: Ogre::MemoryDataStream::skipLine(std::string const&)
+pub fn stub_c7c308() -> ! {
+    todo!("0xc7c308 Ogre::MemoryDataStream::skipLine(std::string const&)")
+}
+
+// 0xc7c338 — __ZN4Ogre16MemoryDataStream4skipEl
+#[doc(alias = "Ogre::MemoryDataStream::skip(long)")]
+// was: Ogre::MemoryDataStream::skip(long)
+pub fn stub_c7c338() -> ! {
+    todo!("0xc7c338 Ogre::MemoryDataStream::skip(long)")
+}
+
+// 0xc7c340 — __ZN4Ogre16MemoryDataStream4seekEm
+#[doc(alias = "Ogre::MemoryDataStream::seek(unsigned long)")]
+// was: Ogre::MemoryDataStream::seek(unsigned long)
+pub fn stub_c7c340() -> ! {
+    todo!("0xc7c340 Ogre::MemoryDataStream::seek(unsigned long)")
+}
+
+// 0xc7c348 — __ZNK4Ogre16MemoryDataStream4tellEv
+#[doc(alias = "Ogre::MemoryDataStream::tell(void)const")]
+// was: Ogre::MemoryDataStream::tell(void)const
+pub fn stub_c7c348() -> ! {
+    todo!("0xc7c348 Ogre::MemoryDataStream::tell(void)const")
+}
+
+// 0xc7c350 — __ZNK4Ogre16MemoryDataStream3eofEv
+#[doc(alias = "Ogre::MemoryDataStream::eof(void)const")]
+// was: Ogre::MemoryDataStream::eof(void)const
+pub fn stub_c7c350() -> ! {
+    todo!("0xc7c350 Ogre::MemoryDataStream::eof(void)const")
+}
+
+// 0xc7c360 — __ZN4Ogre16MemoryDataStream5closeEv
+#[doc(alias = "Ogre::MemoryDataStream::close(void)")]
+// was: Ogre::MemoryDataStream::close(void)
+pub fn stub_c7c360() -> ! {
+    todo!("0xc7c360 Ogre::MemoryDataStream::close(void)")
+}
+
+// 0xc7c37c — __ZN4Ogre20FileStreamDataStreamC1ERKSsPSt14basic_ifstreamIcSt11char_traitsIcEEb
+#[doc(alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)")]
+// was: Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)
+pub fn stub_c7c37c() -> ! {
+    todo!("0xc7c37c Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)")
+}
+
+// 0xc7c388 — __ZN4Ogre20FileStreamDataStreamC2ERKSsPSt14basic_ifstreamIcSt11char_traitsIcEEb
+#[doc(alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)")]
+// was: Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)
+pub fn stub_c7c388() -> ! {
+    todo!("0xc7c388 Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)")
+}
+
+// 0xc7c520 — __ZN4Ogre20FileStreamDataStreamC1ERKSsPSt14basic_ifstreamIcSt11char_traitsIcEEmb
+#[doc(alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,unsigned long,bool)")]
+// was: Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,unsigned long,bool)
+pub fn stub_c7c520() -> ! {
+    todo!("0xc7c520 Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,unsigned long,bool)")
+}
+
+// 0xc7c56c — __ZN4Ogre20FileStreamDataStreamC1ERKSsPSt13basic_fstreamIcSt11char_traitsIcEEmb
+#[doc(alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_fstream<char,std::char_traits<char>> *,unsigned long,bool)")]
+// was: Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_fstream<char,std::char_traits<char>> *,unsigned long,bool)
+pub fn stub_c7c56c() -> ! {
+    todo!("0xc7c56c Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_fstream<char,std::char_traits<char>> *,unsigned long,bool)")
+}
+
+// 0xc7c5b8 — __ZN4Ogre20FileStreamDataStreamD0Ev
+#[doc(alias = "Ogre::FileStreamDataStream::~FileStreamDataStream()")]
+// was: Ogre::FileStreamDataStream::~FileStreamDataStream()
+pub fn stub_c7c5b8() -> ! {
+    todo!("0xc7c5b8 Ogre::FileStreamDataStream::~FileStreamDataStream()")
+}
+
+// 0xc7c648 — __ZN4Ogre20FileStreamDataStreamD1Ev
+#[doc(alias = "Ogre::FileStreamDataStream::~FileStreamDataStream()")]
+// was: Ogre::FileStreamDataStream::~FileStreamDataStream()
+pub fn stub_c7c648() -> ! {
+    todo!("0xc7c648 Ogre::FileStreamDataStream::~FileStreamDataStream()")
+}
+
+// 0xc7c654 — __ZN4Ogre20FileStreamDataStreamD2Ev
+#[doc(alias = "Ogre::FileStreamDataStream::~FileStreamDataStream()")]
+// was: Ogre::FileStreamDataStream::~FileStreamDataStream()
+pub fn stub_c7c654() -> ! {
+    todo!("0xc7c654 Ogre::FileStreamDataStream::~FileStreamDataStream()")
+}
+
+// 0xc7c798 — __ZN4Ogre20FileStreamDataStream4readEPvm
+#[doc(alias = "Ogre::FileStreamDataStream::read(void *,unsigned long)")]
+// was: Ogre::FileStreamDataStream::read(void *,unsigned long)
+pub fn stub_c7c798() -> ! {
+    todo!("0xc7c798 Ogre::FileStreamDataStream::read(void *,unsigned long)")
+}
+
+// 0xc7c7ac — __ZN4Ogre20FileStreamDataStream5writeEPKvm
+#[doc(alias = "Ogre::FileStreamDataStream::write(void const*,unsigned long)")]
+// was: Ogre::FileStreamDataStream::write(void const*,unsigned long)
+pub fn stub_c7c7ac() -> ! {
+    todo!("0xc7c7ac Ogre::FileStreamDataStream::write(void const*,unsigned long)")
+}
+
+// 0xc7c7e0 — __ZN4Ogre20FileStreamDataStream8readLineEPcmRKSs
+#[doc(alias = "Ogre::FileStreamDataStream::readLine(char *,unsigned long,std::string const&)")]
+// was: Ogre::FileStreamDataStream::readLine(char *,unsigned long,std::string const&)
+pub fn stub_c7c7e0() -> ! {
+    todo!("0xc7c7e0 Ogre::FileStreamDataStream::readLine(char *,unsigned long,std::string const&)")
+}
+
+// 0xc7cc5c — __ZN4Ogre20FileStreamDataStream4skipEl
+#[doc(alias = "Ogre::FileStreamDataStream::skip(long)")]
+// was: Ogre::FileStreamDataStream::skip(long)
+pub fn stub_c7cc5c() -> ! {
+    todo!("0xc7cc5c Ogre::FileStreamDataStream::skip(long)")
+}
+
+// 0xc7cc84 — __ZN4Ogre20FileStreamDataStream4seekEm
+#[doc(alias = "Ogre::FileStreamDataStream::seek(unsigned long)")]
+// was: Ogre::FileStreamDataStream::seek(unsigned long)
+pub fn stub_c7cc84() -> ! {
+    todo!("0xc7cc84 Ogre::FileStreamDataStream::seek(unsigned long)")
+}
+
+// 0xc7ccac — __ZNK4Ogre20FileStreamDataStream4tellEv
+#[doc(alias = "Ogre::FileStreamDataStream::tell(void)const")]
+// was: Ogre::FileStreamDataStream::tell(void)const
+pub fn stub_c7ccac() -> ! {
+    todo!("0xc7ccac Ogre::FileStreamDataStream::tell(void)const")
+}
+
+// 0xc7ccf0 — __ZNK4Ogre20FileStreamDataStream3eofEv
+#[doc(alias = "Ogre::FileStreamDataStream::eof(void)const")]
+// was: Ogre::FileStreamDataStream::eof(void)const
+pub fn stub_c7ccf0() -> ! {
+    todo!("0xc7ccf0 Ogre::FileStreamDataStream::eof(void)const")
+}
+
+// 0xc7cd04 — __ZN4Ogre20FileStreamDataStream5closeEv
+#[doc(alias = "Ogre::FileStreamDataStream::close(void)")]
+// was: Ogre::FileStreamDataStream::close(void)
+pub fn stub_c7cd04() -> ! {
+    todo!("0xc7cd04 Ogre::FileStreamDataStream::close(void)")
+}
+
+// 0xc7cdc4 — __ZN4Ogre8DDSCodec7startupEv
+#[doc(alias = "Ogre::DDSCodec::startup(void)")]
+// was: Ogre::DDSCodec::startup(void)
+pub fn stub_c7cdc4() -> ! {
+    todo!("0xc7cdc4 Ogre::DDSCodec::startup(void)")
+}
+
+// 0xc7cf9c — __ZN4Ogre8DDSCodec8shutdownEv
+#[doc(alias = "Ogre::DDSCodec::shutdown(void)")]
+// was: Ogre::DDSCodec::shutdown(void)
+pub fn stub_c7cf9c() -> ! {
+    todo!("0xc7cf9c Ogre::DDSCodec::shutdown(void)")
+}
+
+// 0xc7cfc8 — __ZNK4Ogre8DDSCodec4codeERNS_9SharedPtrINS_16MemoryDataStreamEEERNS1_INS_5Codec9CodecDataEEE
+#[doc(alias = "Ogre::DDSCodec::code(Ogre::SharedPtr<Ogre::MemoryDataStream> &,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const")]
+// was: Ogre::DDSCodec::code(Ogre::SharedPtr<Ogre::MemoryDataStream> &,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const
+pub fn stub_c7cfc8() -> ! {
+    todo!("0xc7cfc8 Ogre::DDSCodec::code(Ogre::SharedPtr<Ogre::MemoryDataStream> &,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const")
+}
+
+// 0xc7d178 — __ZNK4Ogre8DDSCodec10codeToFileERNS_9SharedPtrINS_16MemoryDataStreamEEERKSsRNS1_INS_5Codec9CodecDataEEE
+#[doc(alias = "Ogre::DDSCodec::codeToFile(Ogre::SharedPtr<Ogre::MemoryDataStream> &,std::string const&,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const")]
+// was: Ogre::DDSCodec::codeToFile(Ogre::SharedPtr<Ogre::MemoryDataStream> &,std::string const&,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const
+pub fn stub_c7d178() -> ! {
+    todo!("0xc7d178 Ogre::DDSCodec::codeToFile(Ogre::SharedPtr<Ogre::MemoryDataStream> &,std::string const&,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const")
+}
+
+// 0xc7d8b8 — __ZNK4Ogre8DDSCodec18convertPixelFormatEjjjjj
+#[doc(alias = "Ogre::DDSCodec::convertPixelFormat(unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)const")]
+// was: Ogre::DDSCodec::convertPixelFormat(unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)const
+pub fn stub_c7d8b8() -> ! {
+    todo!("0xc7d8b8 Ogre::DDSCodec::convertPixelFormat(unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)const")
+}
+
+// 0xc7db10 — __ZNK4Ogre8DDSCodec15unpackDXTColourENS_11PixelFormatERKNS_14DXTColourBlockEPNS_11ColourValueE
+#[doc(alias = "Ogre::DDSCodec::unpackDXTColour(Ogre::PixelFormat,Ogre::DXTColourBlock const&,Ogre::ColourValue *)const")]
+// was: Ogre::DDSCodec::unpackDXTColour(Ogre::PixelFormat,Ogre::DXTColourBlock const&,Ogre::ColourValue *)const
+pub fn stub_c7db10() -> ! {
+    todo!("0xc7db10 Ogre::DDSCodec::unpackDXTColour(Ogre::PixelFormat,Ogre::DXTColourBlock const&,Ogre::ColourValue *)const")
+}
+
+// 0xc7ddc4 — __ZNK4Ogre8DDSCodec14unpackDXTAlphaERKNS_21DXTExplicitAlphaBlockEPNS_11ColourValueE
+#[doc(alias = "Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTExplicitAlphaBlock const&,Ogre::ColourValue *)const")]
+// was: Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTExplicitAlphaBlock const&,Ogre::ColourValue *)const
+pub fn stub_c7ddc4() -> ! {
+    todo!("0xc7ddc4 Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTExplicitAlphaBlock const&,Ogre::ColourValue *)const")
+}
+
+// 0xc7df0c — __ZNK4Ogre8DDSCodec14unpackDXTAlphaERKNS_25DXTInterpolatedAlphaBlockEPNS_11ColourValueE
+#[doc(alias = "Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTInterpolatedAlphaBlock const&,Ogre::ColourValue *)const")]
+// was: Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTInterpolatedAlphaBlock const&,Ogre::ColourValue *)const
+pub fn stub_c7df0c() -> ! {
+    todo!("0xc7df0c Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTInterpolatedAlphaBlock const&,Ogre::ColourValue *)const")
+}
+
+// 0xc7e0d4 — __ZNK4Ogre8DDSCodec6decodeERNS_9SharedPtrINS_10DataStreamEEE
+#[doc(alias = "Ogre::DDSCodec::decode(Ogre::SharedPtr<Ogre::DataStream> &)const")]
+// was: Ogre::DDSCodec::decode(Ogre::SharedPtr<Ogre::DataStream> &)const
+pub fn stub_c7e0d4() -> ! {
+    todo!("0xc7e0d4 Ogre::DDSCodec::decode(Ogre::SharedPtr<Ogre::DataStream> &)const")
+}
+
+// 0xc7eea8 — __ZNK4Ogre8DDSCodec7getTypeEv
+#[doc(alias = "Ogre::DDSCodec::getType(void)const")]
+// was: Ogre::DDSCodec::getType(void)const
+pub fn stub_c7eea8() -> ! {
+    todo!("0xc7eea8 Ogre::DDSCodec::getType(void)const")
+}
+
+// 0xc7eeb4 — __ZNK4Ogre8DDSCodec20magicNumberToFileExtEPKcm
+#[doc(alias = "Ogre::DDSCodec::magicNumberToFileExt(char const*,unsigned long)const")]
+// was: Ogre::DDSCodec::magicNumberToFileExt(char const*,unsigned long)const
+pub fn stub_c7eeb4() -> ! {
+    todo!("0xc7eeb4 Ogre::DDSCodec::magicNumberToFileExt(char const*,unsigned long)const")
+}
+
+// 0xc7eef4 — __ZN4Ogre8DDSCodecD1Ev
+#[doc(alias = "Ogre::DDSCodec::~DDSCodec()")]
+// was: Ogre::DDSCodec::~DDSCodec()
+pub fn stub_c7eef4() -> ! {
+    todo!("0xc7eef4 Ogre::DDSCodec::~DDSCodec()")
+}
+
+// 0xc7ef54 — __ZN4Ogre8DDSCodecD0Ev
+#[doc(alias = "Ogre::DDSCodec::~DDSCodec()")]
+// was: Ogre::DDSCodec::~DDSCodec()
+pub fn stub_c7ef54() -> ! {
+    todo!("0xc7ef54 Ogre::DDSCodec::~DDSCodec()")
+}
+
+// 0xc7f068 — __ZN4Ogre27DefaultHardwareVertexBufferC1EPNS_25HardwareBufferManagerBaseEmmNS_14HardwareBuffer5UsageE
+#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::DefaultHardwareVertexBuffer(Ogre::HardwareBufferManagerBase *,unsigned long,unsigned long,Ogre::HardwareBuffer::Usage)")]
+// was: Ogre::DefaultHardwareVertexBuffer::DefaultHardwareVertexBuffer(Ogre::HardwareBufferManagerBase *,unsigned long,unsigned long,Ogre::HardwareBuffer::Usage)
+pub fn stub_c7f068() -> ! {
+    todo!("0xc7f068 Ogre::DefaultHardwareVertexBuffer::DefaultHardwareVertexBuffer(Ogre::HardwareBufferManagerBase *,unsigned long,unsigned long,Ogre::HardwareBuffer::Usage)")
+}
+
+// 0xc7f134 — __ZN4Ogre27DefaultHardwareVertexBufferD0Ev
+#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::~DefaultHardwareVertexBuffer()")]
+// was: Ogre::DefaultHardwareVertexBuffer::~DefaultHardwareVertexBuffer()
+pub fn stub_c7f134() -> ! {
+    todo!("0xc7f134 Ogre::DefaultHardwareVertexBuffer::~DefaultHardwareVertexBuffer()")
+}
+
+// 0xc7f1f8 — __ZN4Ogre27DefaultHardwareVertexBufferD1Ev
+#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::~DefaultHardwareVertexBuffer()")]
+// was: Ogre::DefaultHardwareVertexBuffer::~DefaultHardwareVertexBuffer()
+pub fn stub_c7f1f8() -> ! {
+    todo!("0xc7f1f8 Ogre::DefaultHardwareVertexBuffer::~DefaultHardwareVertexBuffer()")
+}
+
+// 0xc7f2ac — __ZN4Ogre27DefaultHardwareVertexBuffer8lockImplEmmNS_14HardwareBuffer11LockOptionsE
+#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")]
+// was: Ogre::DefaultHardwareVertexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)
+pub fn stub_c7f2ac() -> ! {
+    todo!("0xc7f2ac Ogre::DefaultHardwareVertexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")
+}
+
+// 0xc7f2b4 — __ZN4Ogre27DefaultHardwareVertexBuffer10unlockImplEv
+#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::unlockImpl(void)")]
+// was: Ogre::DefaultHardwareVertexBuffer::unlockImpl(void)
+pub fn stub_c7f2b4() -> ! {
+    todo!("0xc7f2b4 Ogre::DefaultHardwareVertexBuffer::unlockImpl(void)")
+}
+
+// 0xc7f2b8 — __ZN4Ogre27DefaultHardwareVertexBuffer4lockEmmNS_14HardwareBuffer11LockOptionsE
+#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")]
+// was: Ogre::DefaultHardwareVertexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)
+pub fn stub_c7f2b8() -> ! {
+    todo!("0xc7f2b8 Ogre::DefaultHardwareVertexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")
+}
+
+// 0xc7f2c4 — __ZN4Ogre27DefaultHardwareVertexBuffer6unlockEv
+#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::unlock(void)")]
+// was: Ogre::DefaultHardwareVertexBuffer::unlock(void)
+pub fn stub_c7f2c4() -> ! {
+    todo!("0xc7f2c4 Ogre::DefaultHardwareVertexBuffer::unlock(void)")
+}
+
+// 0xc7f2cc — __ZN4Ogre27DefaultHardwareVertexBuffer8readDataEmmPv
+#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::readData(unsigned long,unsigned long,void *)")]
+// was: Ogre::DefaultHardwareVertexBuffer::readData(unsigned long,unsigned long,void *)
+pub fn stub_c7f2cc() -> ! {
+    todo!("0xc7f2cc Ogre::DefaultHardwareVertexBuffer::readData(unsigned long,unsigned long,void *)")
+}
+
+// 0xc7f2dc — __ZN4Ogre27DefaultHardwareVertexBuffer9writeDataEmmPKvb
+#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::writeData(unsigned long,unsigned long,void const*,bool)")]
+// was: Ogre::DefaultHardwareVertexBuffer::writeData(unsigned long,unsigned long,void const*,bool)
+pub fn stub_c7f2dc() -> ! {
+    todo!("0xc7f2dc Ogre::DefaultHardwareVertexBuffer::writeData(unsigned long,unsigned long,void const*,bool)")
+}
+
+// 0xc7f2ec — __ZN4Ogre26DefaultHardwareIndexBufferC1ENS_19HardwareIndexBuffer9IndexTypeEmNS_14HardwareBuffer5UsageE
+#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::DefaultHardwareIndexBuffer(Ogre::HardwareIndexBuffer::IndexType,unsigned long,Ogre::HardwareBuffer::Usage)")]
+// was: Ogre::DefaultHardwareIndexBuffer::DefaultHardwareIndexBuffer(Ogre::HardwareIndexBuffer::IndexType,unsigned long,Ogre::HardwareBuffer::Usage)
+pub fn stub_c7f2ec() -> ! {
+    todo!("0xc7f2ec Ogre::DefaultHardwareIndexBuffer::DefaultHardwareIndexBuffer(Ogre::HardwareIndexBuffer::IndexType,unsigned long,Ogre::HardwareBuffer::Usage)")
+}
+
+// 0xc7f3bc — __ZN4Ogre26DefaultHardwareIndexBufferD0Ev
+#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::~DefaultHardwareIndexBuffer()")]
+// was: Ogre::DefaultHardwareIndexBuffer::~DefaultHardwareIndexBuffer()
+pub fn stub_c7f3bc() -> ! {
+    todo!("0xc7f3bc Ogre::DefaultHardwareIndexBuffer::~DefaultHardwareIndexBuffer()")
+}
+
+// 0xc7f47c — __ZN4Ogre26DefaultHardwareIndexBufferD1Ev
+#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::~DefaultHardwareIndexBuffer()")]
+// was: Ogre::DefaultHardwareIndexBuffer::~DefaultHardwareIndexBuffer()
+pub fn stub_c7f47c() -> ! {
+    todo!("0xc7f47c Ogre::DefaultHardwareIndexBuffer::~DefaultHardwareIndexBuffer()")
+}
+
+// 0xc7f530 — __ZN4Ogre26DefaultHardwareIndexBuffer8lockImplEmmNS_14HardwareBuffer11LockOptionsE
+#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")]
+// was: Ogre::DefaultHardwareIndexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)
+pub fn stub_c7f530() -> ! {
+    todo!("0xc7f530 Ogre::DefaultHardwareIndexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")
+}
+
+// 0xc7f538 — __ZN4Ogre26DefaultHardwareIndexBuffer10unlockImplEv
+#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::unlockImpl(void)")]
+// was: Ogre::DefaultHardwareIndexBuffer::unlockImpl(void)
+pub fn stub_c7f538() -> ! {
+    todo!("0xc7f538 Ogre::DefaultHardwareIndexBuffer::unlockImpl(void)")
+}
+
+// 0xc7f53c — __ZN4Ogre26DefaultHardwareIndexBuffer4lockEmmNS_14HardwareBuffer11LockOptionsE
+#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")]
+// was: Ogre::DefaultHardwareIndexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)
+pub fn stub_c7f53c() -> ! {
+    todo!("0xc7f53c Ogre::DefaultHardwareIndexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")
+}
+
+// 0xc7f548 — __ZN4Ogre26DefaultHardwareIndexBuffer6unlockEv
+#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::unlock(void)")]
+// was: Ogre::DefaultHardwareIndexBuffer::unlock(void)
+pub fn stub_c7f548() -> ! {
+    todo!("0xc7f548 Ogre::DefaultHardwareIndexBuffer::unlock(void)")
+}
+
+// 0xc7f550 — __ZN4Ogre26DefaultHardwareIndexBuffer8readDataEmmPv
+#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::readData(unsigned long,unsigned long,void *)")]
+// was: Ogre::DefaultHardwareIndexBuffer::readData(unsigned long,unsigned long,void *)
+pub fn stub_c7f550() -> ! {
+    todo!("0xc7f550 Ogre::DefaultHardwareIndexBuffer::readData(unsigned long,unsigned long,void *)")
+}
+
+// 0xc7f560 — __ZN4Ogre26DefaultHardwareIndexBuffer9writeDataEmmPKvb
+#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::writeData(unsigned long,unsigned long,void const*,bool)")]
+// was: Ogre::DefaultHardwareIndexBuffer::writeData(unsigned long,unsigned long,void const*,bool)
+pub fn stub_c7f560() -> ! {
+    todo!("0xc7f560 Ogre::DefaultHardwareIndexBuffer::writeData(unsigned long,unsigned long,void const*,bool)")
+}
+
+// 0xc7f5a4 — __ZN4Ogre29DefaultIntersectionSceneQueryC1EPNS_12SceneManagerE
+#[doc(alias = "Ogre::DefaultIntersectionSceneQuery::DefaultIntersectionSceneQuery(Ogre::SceneManager *)")]
+// was: Ogre::DefaultIntersectionSceneQuery::DefaultIntersectionSceneQuery(Ogre::SceneManager *)
+pub fn stub_c7f5a4() -> ! {
+    todo!("0xc7f5a4 Ogre::DefaultIntersectionSceneQuery::DefaultIntersectionSceneQuery(Ogre::SceneManager *)")
+}
+
+// 0xc7f66c — __ZN4Ogre29DefaultIntersectionSceneQueryD0Ev
+#[doc(alias = "Ogre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")]
+// was: Ogre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()
+pub fn stub_c7f66c() -> ! {
+    todo!("0xc7f66c Ogre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")
+}
+
+// 0xc7f6fc — __ZN4Ogre29DefaultIntersectionSceneQueryD1Ev
+#[doc(alias = "Ogre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")]
+// was: Ogre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()
+pub fn stub_c7f6fc() -> ! {
+    todo!("0xc7f6fc Ogre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")
+}
+
+// 0xc7f708 — __ZThn48_N4Ogre29DefaultIntersectionSceneQueryD0Ev
+#[doc(alias = "non-virtual thunk toOgre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")]
+// was: `non-virtual thunk to'Ogre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()
+pub fn stub_c7f708() -> ! {
+    todo!("0xc7f708 `non-virtual thunk to'Ogre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")
+}
+
+// 0xc7f79c — __ZThn48_N4Ogre29DefaultIntersectionSceneQueryD1Ev
+#[doc(alias = "non-virtual thunk toOgre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")]
+// was: `non-virtual thunk to'Ogre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()
+pub fn stub_c7f79c() -> ! {
+    todo!("0xc7f79c `non-virtual thunk to'Ogre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")
+}
+
+// 0xc7f7a8 — __ZN4Ogre29DefaultIntersectionSceneQuery7executeEPNS_30IntersectionSceneQueryListenerE
+#[doc(alias = "Ogre::DefaultIntersectionSceneQuery::execute(Ogre::IntersectionSceneQueryListener *)")]
+// was: Ogre::DefaultIntersectionSceneQuery::execute(Ogre::IntersectionSceneQueryListener *)
+pub fn stub_c7f7a8() -> ! {
+    todo!("0xc7f7a8 Ogre::DefaultIntersectionSceneQuery::execute(Ogre::IntersectionSceneQueryListener *)")
+}
+
+// 0xc7fa48 — __ZN4Ogre31DefaultAxisAlignedBoxSceneQueryC1EPNS_12SceneManagerE
+#[doc(alias = "Ogre::DefaultAxisAlignedBoxSceneQuery::DefaultAxisAlignedBoxSceneQuery(Ogre::SceneManager *)")]
+// was: Ogre::DefaultAxisAlignedBoxSceneQuery::DefaultAxisAlignedBoxSceneQuery(Ogre::SceneManager *)
+pub fn stub_c7fa48() -> ! {
+    todo!("0xc7fa48 Ogre::DefaultAxisAlignedBoxSceneQuery::DefaultAxisAlignedBoxSceneQuery(Ogre::SceneManager *)")
+}
+
+// 0xc7fb10 — __ZN4Ogre31DefaultAxisAlignedBoxSceneQueryD0Ev
+#[doc(alias = "Ogre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")]
+// was: Ogre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()
+pub fn stub_c7fb10() -> ! {
+    todo!("0xc7fb10 Ogre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")
+}
+
+// 0xc7fba0 — __ZN4Ogre31DefaultAxisAlignedBoxSceneQueryD1Ev
+#[doc(alias = "Ogre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")]
+// was: Ogre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()
+pub fn stub_c7fba0() -> ! {
+    todo!("0xc7fba0 Ogre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")
+}
+
+// 0xc7fbac — __ZThn48_N4Ogre31DefaultAxisAlignedBoxSceneQueryD0Ev
+#[doc(alias = "non-virtual thunk toOgre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")]
+// was: `non-virtual thunk to'Ogre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()
+pub fn stub_c7fbac() -> ! {
+    todo!("0xc7fbac `non-virtual thunk to'Ogre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")
+}
+
+// 0xc7fc40 — __ZThn48_N4Ogre31DefaultAxisAlignedBoxSceneQueryD1Ev
+#[doc(alias = "non-virtual thunk toOgre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")]
+// was: `non-virtual thunk to'Ogre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()
+pub fn stub_c7fc40() -> ! {
+    todo!("0xc7fc40 `non-virtual thunk to'Ogre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")
+}
+
+// 0xc7fc4c — __ZN4Ogre31DefaultAxisAlignedBoxSceneQuery7executeEPNS_18SceneQueryListenerE
+#[doc(alias = "Ogre::DefaultAxisAlignedBoxSceneQuery::execute(Ogre::SceneQueryListener *)")]
+// was: Ogre::DefaultAxisAlignedBoxSceneQuery::execute(Ogre::SceneQueryListener *)
+pub fn stub_c7fc4c() -> ! {
+    todo!("0xc7fc4c Ogre::DefaultAxisAlignedBoxSceneQuery::execute(Ogre::SceneQueryListener *)")
+}
+
+// 0xc7fd80 — __ZN4Ogre20DefaultRaySceneQueryC1EPNS_12SceneManagerE
+#[doc(alias = "Ogre::DefaultRaySceneQuery::DefaultRaySceneQuery(Ogre::SceneManager *)")]
+// was: Ogre::DefaultRaySceneQuery::DefaultRaySceneQuery(Ogre::SceneManager *)
+pub fn stub_c7fd80() -> ! {
+    todo!("0xc7fd80 Ogre::DefaultRaySceneQuery::DefaultRaySceneQuery(Ogre::SceneManager *)")
+}
+
+// 0xc7fe48 — __ZN4Ogre20DefaultRaySceneQueryD0Ev
+#[doc(alias = "Ogre::DefaultRaySceneQuery::~DefaultRaySceneQuery()")]
+// was: Ogre::DefaultRaySceneQuery::~DefaultRaySceneQuery()
+pub fn stub_c7fe48() -> ! {
+    todo!("0xc7fe48 Ogre::DefaultRaySceneQuery::~DefaultRaySceneQuery()")
+}
+
+// 0xc7fed8 — __ZN4Ogre20DefaultRaySceneQueryD1Ev
+#[doc(alias = "Ogre::DefaultRaySceneQuery::~DefaultRaySceneQuery()")]
+// was: Ogre::DefaultRaySceneQuery::~DefaultRaySceneQuery()
+pub fn stub_c7fed8() -> ! {
+    todo!("0xc7fed8 Ogre::DefaultRaySceneQuery::~DefaultRaySceneQuery()")
+}
+
+// 0xc7fee4 — __ZThn48_N4Ogre20DefaultRaySceneQueryD0Ev
+#[doc(alias = "non-virtual thunk toOgre::DefaultRaySceneQuery::~DefaultRaySceneQuery()")]
+// was: `non-virtual thunk to'Ogre::DefaultRaySceneQuery::~DefaultRaySceneQuery()
+pub fn stub_c7fee4() -> ! {
+    todo!("0xc7fee4 `non-virtual thunk to'Ogre::DefaultRaySceneQuery::~DefaultRaySceneQuery()")
+}
+
+// 0xc7ff78 — __ZThn48_N4Ogre20DefaultRaySceneQueryD1Ev
+#[doc(alias = "non-virtual thunk toOgre::DefaultRaySceneQuery::~DefaultRaySceneQuery()")]
+// was: `non-virtual thunk to'Ogre::DefaultRaySceneQuery::~DefaultRaySceneQuery()
+pub fn stub_c7ff78() -> ! {
+    todo!("0xc7ff78 `non-virtual thunk to'Ogre::DefaultRaySceneQuery::~DefaultRaySceneQuery()")
+}
+
+// 0xc7ff84 — __ZN4Ogre20DefaultRaySceneQuery7executeEPNS_21RaySceneQueryListenerE
+#[doc(alias = "Ogre::DefaultRaySceneQuery::execute(Ogre::RaySceneQueryListener *)")]
+// was: Ogre::DefaultRaySceneQuery::execute(Ogre::RaySceneQueryListener *)
+pub fn stub_c7ff84() -> ! {
+    todo!("0xc7ff84 Ogre::DefaultRaySceneQuery::execute(Ogre::RaySceneQueryListener *)")
+}
+
+// 0xc8004c — __ZN4Ogre23DefaultSphereSceneQueryC1EPNS_12SceneManagerE
+#[doc(alias = "Ogre::DefaultSphereSceneQuery::DefaultSphereSceneQuery(Ogre::SceneManager *)")]
+// was: Ogre::DefaultSphereSceneQuery::DefaultSphereSceneQuery(Ogre::SceneManager *)
+pub fn stub_c8004c() -> ! {
+    todo!("0xc8004c Ogre::DefaultSphereSceneQuery::DefaultSphereSceneQuery(Ogre::SceneManager *)")
+}
+
+// 0xc80114 — __ZN4Ogre23DefaultSphereSceneQueryD0Ev
+#[doc(alias = "Ogre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()")]
+// was: Ogre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()
+pub fn stub_c80114() -> ! {
+    todo!("0xc80114 Ogre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()")
+}
+
+// 0xc801a4 — __ZN4Ogre23DefaultSphereSceneQueryD1Ev
+#[doc(alias = "Ogre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()")]
+// was: Ogre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()
+pub fn stub_c801a4() -> ! {
+    todo!("0xc801a4 Ogre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()")
+}
+
+// 0xc801b0 — __ZThn48_N4Ogre23DefaultSphereSceneQueryD0Ev
+#[doc(alias = "non-virtual thunk toOgre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()")]
+// was: `non-virtual thunk to'Ogre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()
+pub fn stub_c801b0() -> ! {
+    todo!("0xc801b0 `non-virtual thunk to'Ogre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()")
+}
+
+// 0xc80244 — __ZThn48_N4Ogre23DefaultSphereSceneQueryD1Ev
+#[doc(alias = "non-virtual thunk toOgre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()")]
+// was: `non-virtual thunk to'Ogre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()
+pub fn stub_c80244() -> ! {
+    todo!("0xc80244 `non-virtual thunk to'Ogre::DefaultSphereSceneQuery::~DefaultSphereSceneQuery()")
+}
+
+// 0xc80250 — __ZN4Ogre23DefaultSphereSceneQuery7executeEPNS_18SceneQueryListenerE
+#[doc(alias = "Ogre::DefaultSphereSceneQuery::execute(Ogre::SceneQueryListener *)")]
+// was: Ogre::DefaultSphereSceneQuery::execute(Ogre::SceneQueryListener *)
+pub fn stub_c80250() -> ! {
+    todo!("0xc80250 Ogre::DefaultSphereSceneQuery::execute(Ogre::SceneQueryListener *)")
+}
+
+// 0xc80384 — __ZN4Ogre39DefaultPlaneBoundedVolumeListSceneQueryC1EPNS_12SceneManagerE
+#[doc(alias = "Ogre::DefaultPlaneBoundedVolumeListSceneQuery::DefaultPlaneBoundedVolumeListSceneQuery(Ogre::SceneManager *)")]
+// was: Ogre::DefaultPlaneBoundedVolumeListSceneQuery::DefaultPlaneBoundedVolumeListSceneQuery(Ogre::SceneManager *)
+pub fn stub_c80384() -> ! {
+    todo!("0xc80384 Ogre::DefaultPlaneBoundedVolumeListSceneQuery::DefaultPlaneBoundedVolumeListSceneQuery(Ogre::SceneManager *)")
+}
+
+// 0xc8044c — __ZN4Ogre39DefaultPlaneBoundedVolumeListSceneQueryD0Ev
+#[doc(alias = "Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")]
+// was: Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()
+pub fn stub_c8044c() -> ! {
+    todo!("0xc8044c Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")
+}
+
+// 0xc804dc — __ZN4Ogre39DefaultPlaneBoundedVolumeListSceneQueryD1Ev
+#[doc(alias = "Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")]
+// was: Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()
+pub fn stub_c804dc() -> ! {
+    todo!("0xc804dc Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")
+}
+
+// 0xc804e8 — __ZThn48_N4Ogre39DefaultPlaneBoundedVolumeListSceneQueryD0Ev
+#[doc(alias = "non-virtual thunk toOgre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")]
+// was: `non-virtual thunk to'Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()
+pub fn stub_c804e8() -> ! {
+    todo!("0xc804e8 `non-virtual thunk to'Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")
+}
+
+// 0xc8057c — __ZThn48_N4Ogre39DefaultPlaneBoundedVolumeListSceneQueryD1Ev
+#[doc(alias = "non-virtual thunk toOgre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")]
+// was: `non-virtual thunk to'Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()
+pub fn stub_c8057c() -> ! {
+    todo!("0xc8057c `non-virtual thunk to'Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")
+}
+
+// 0xc80588 — __ZN4Ogre39DefaultPlaneBoundedVolumeListSceneQuery7executeEPNS_18SceneQueryListenerE
+#[doc(alias = "Ogre::DefaultPlaneBoundedVolumeListSceneQuery::execute(Ogre::SceneQueryListener *)")]
+// was: Ogre::DefaultPlaneBoundedVolumeListSceneQuery::execute(Ogre::SceneQueryListener *)
+pub fn stub_c80588() -> ! {
+    todo!("0xc80588 Ogre::DefaultPlaneBoundedVolumeListSceneQuery::execute(Ogre::SceneQueryListener *)")
+}
+
+// 0xc80728 — __ZNSt8_Rb_treeIN4Ogre10SceneQuery17WorldFragmentTypeES2_St9_IdentityIS2_ESt4lessIS2_ENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS2_
+#[doc(alias = "std::_Rb_tree<Ogre::SceneQuery::WorldFragmentType,Ogre::SceneQuery::WorldFragmentType,std::_Identity<Ogre::SceneQuery::WorldFragmentType>,std::less<Ogre::SceneQuery::WorldFragmentType>,Ogre::STLAllocator<Ogre::SceneQuery::WorldFragmentType,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::SceneQuery::WorldFragmentType const&)")]
+// was: std::_Rb_tree<Ogre::SceneQuery::WorldFragmentType,Ogre::SceneQuery::WorldFragmentType,std::_Identity<Ogre::SceneQuery::WorldFragmentType>,std::less<Ogre::SceneQuery::WorldFragmentType>,Ogre::STLAllocator<Ogre::SceneQuery::WorldFragmentType,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::SceneQuery::WorldFragmentType const&)
+pub fn stub_c80728() -> ! {
+    todo!("0xc80728 std::_Rb_tree<Ogre::SceneQuery::WorldFragmentType,Ogre::SceneQuery::WorldFragmentType,std::_Identity<Ogre::SceneQuery::WorldFragmentType>,std::less<Ogre::SceneQuery::WorldFragmentType>,Ogre::STLAllocator<Ogre::SceneQuery::WorldFragmentType,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::SceneQuery::WorldFragmentType const&)")
+}
+
+// 0xc80854 — __ZN4Ogre19DistanceLodStrategy15getSingletonPtrEv
+#[doc(alias = "Ogre::DistanceLodStrategy::getSingletonPtr(void)")]
+// was: Ogre::DistanceLodStrategy::getSingletonPtr(void)
+pub fn stub_c80854() -> ! {
+    todo!("0xc80854 Ogre::DistanceLodStrategy::getSingletonPtr(void)")
+}
+
+// 0xc80864 — __ZN4Ogre19DistanceLodStrategyC1Ev
+#[doc(alias = "Ogre::DistanceLodStrategy::DistanceLodStrategy(void)")]
+// was: Ogre::DistanceLodStrategy::DistanceLodStrategy(void)
+pub fn stub_c80864() -> ! {
+    todo!("0xc80864 Ogre::DistanceLodStrategy::DistanceLodStrategy(void)")
+}
+
+// 0xc80870 — __ZN4Ogre19DistanceLodStrategyC2Ev
+#[doc(alias = "Ogre::DistanceLodStrategy::DistanceLodStrategy(void)")]
+// was: Ogre::DistanceLodStrategy::DistanceLodStrategy(void)
+pub fn stub_c80870() -> ! {
+    todo!("0xc80870 Ogre::DistanceLodStrategy::DistanceLodStrategy(void)")
+}
+
+// 0xc809cc — __ZNK4Ogre19DistanceLodStrategy12getValueImplEPKNS_13MovableObjectEPKNS_6CameraE
+#[doc(alias = "Ogre::DistanceLodStrategy::getValueImpl(Ogre::MovableObject const*,Ogre::Camera const*)const")]
+// was: Ogre::DistanceLodStrategy::getValueImpl(Ogre::MovableObject const*,Ogre::Camera const*)const
+pub fn stub_c809cc() -> ! {
+    todo!("0xc809cc Ogre::DistanceLodStrategy::getValueImpl(Ogre::MovableObject const*,Ogre::Camera const*)const")
+}
+
+// 0xc80ad8 — __ZNK4Ogre19DistanceLodStrategy12getBaseValueEv
+#[doc(alias = "Ogre::DistanceLodStrategy::getBaseValue(void)const")]
+// was: Ogre::DistanceLodStrategy::getBaseValue(void)const
+pub fn stub_c80ad8() -> ! {
+    todo!("0xc80ad8 Ogre::DistanceLodStrategy::getBaseValue(void)const")
+}
+
+// 0xc80adc — __ZNK4Ogre19DistanceLodStrategy13transformBiasEf
+#[doc(alias = "Ogre::DistanceLodStrategy::transformBias(float)const")]
+// was: Ogre::DistanceLodStrategy::transformBias(float)const
+pub fn stub_c80adc() -> ! {
+    todo!("0xc80adc Ogre::DistanceLodStrategy::transformBias(float)const")
+}
+
+// 0xc80af0 — __ZNK4Ogre19DistanceLodStrategy18transformUserValueEf
+#[doc(alias = "Ogre::DistanceLodStrategy::transformUserValue(float)const")]
+// was: Ogre::DistanceLodStrategy::transformUserValue(float)const
+pub fn stub_c80af0() -> ! {
+    todo!("0xc80af0 Ogre::DistanceLodStrategy::transformUserValue(float)const")
+}
+
+// 0xc80b00 — __ZNK4Ogre19DistanceLodStrategy8getIndexEfRKSt6vectorINS_12MeshLodUsageENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::DistanceLodStrategy::getIndex(float,std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")]
+// was: Ogre::DistanceLodStrategy::getIndex(float,std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const
+pub fn stub_c80b00() -> ! {
+    todo!("0xc80b00 Ogre::DistanceLodStrategy::getIndex(float,std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")
+}
+
+// 0xc80b10 — __ZNK4Ogre19DistanceLodStrategy8getIndexEfRKSt6vectorIfNS_12STLAllocatorIfNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::DistanceLodStrategy::getIndex(float,std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")]
+// was: Ogre::DistanceLodStrategy::getIndex(float,std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const
+pub fn stub_c80b10() -> ! {
+    todo!("0xc80b10 Ogre::DistanceLodStrategy::getIndex(float,std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")
+}
+
+// 0xc80b20 — __ZNK4Ogre19DistanceLodStrategy8isSortedERKSt6vectorIfNS_12STLAllocatorIfNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::DistanceLodStrategy::isSorted(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")]
+// was: Ogre::DistanceLodStrategy::isSorted(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const
+pub fn stub_c80b20() -> ! {
+    todo!("0xc80b20 Ogre::DistanceLodStrategy::isSorted(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")
+}
+
+// 0xc80b2c — __ZNK4Ogre19DistanceLodStrategy4sortERSt6vectorINS_12MeshLodUsageENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::DistanceLodStrategy::sort(std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")]
+// was: Ogre::DistanceLodStrategy::sort(std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const
+pub fn stub_c80b2c() -> ! {
+    todo!("0xc80b2c Ogre::DistanceLodStrategy::sort(std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")
+}
+
+// 0xc80b38 — __ZN4Ogre19DistanceLodStrategyD1Ev
+#[doc(alias = "Ogre::DistanceLodStrategy::~DistanceLodStrategy()")]
+// was: Ogre::DistanceLodStrategy::~DistanceLodStrategy()
+pub fn stub_c80b38() -> ! {
+    todo!("0xc80b38 Ogre::DistanceLodStrategy::~DistanceLodStrategy()")
+}
+
+// 0xc80b50 — __ZN4Ogre19DistanceLodStrategyD0Ev
+#[doc(alias = "Ogre::DistanceLodStrategy::~DistanceLodStrategy()")]
+// was: Ogre::DistanceLodStrategy::~DistanceLodStrategy()
+pub fn stub_c80b50() -> ! {
+    todo!("0xc80b50 Ogre::DistanceLodStrategy::~DistanceLodStrategy()")
+}
+
+// 0xc80c24 — __ZN4Ogre6DynLibC1ERKSs
+#[doc(alias = "Ogre::DynLib::DynLib(std::string const&)")]
+// was: Ogre::DynLib::DynLib(std::string const&)
+pub fn stub_c80c24() -> ! {
+    todo!("0xc80c24 Ogre::DynLib::DynLib(std::string const&)")
+}
+
+// 0xc80d10 — __ZN4Ogre6DynLibD1Ev
+#[doc(alias = "Ogre::DynLib::~DynLib()")]
+// was: Ogre::DynLib::~DynLib()
+pub fn stub_c80d10() -> ! {
+    todo!("0xc80d10 Ogre::DynLib::~DynLib()")
+}
+
+// 0xc80d5c — __ZN4Ogre6DynLib4loadEv
+#[doc(alias = "Ogre::DynLib::load(void)")]
+// was: Ogre::DynLib::load(void)
+pub fn stub_c80d5c() -> ! {
+    todo!("0xc80d5c Ogre::DynLib::load(void)")
+}
+
+// 0xc812a0 — __ZN4Ogre6DynLib6unloadEv
+#[doc(alias = "Ogre::DynLib::unload(void)")]
+// was: Ogre::DynLib::unload(void)
+pub fn stub_c812a0() -> ! {
+    todo!("0xc812a0 Ogre::DynLib::unload(void)")
+}
+
+// 0xc8141c — __ZNK4Ogre6DynLib9getSymbolERKSs
+#[doc(alias = "Ogre::DynLib::getSymbol(std::string const&)const")]
+// was: Ogre::DynLib::getSymbol(std::string const&)const
+pub fn stub_c8141c() -> ! {
+    todo!("0xc8141c Ogre::DynLib::getSymbol(std::string const&)const")
+}
+
+// 0xc814e4 — __ZN4Ogre13DynLibManager12getSingletonEv
+#[doc(alias = "Ogre::DynLibManager::getSingleton(void)")]
+// was: Ogre::DynLibManager::getSingleton(void)
+pub fn stub_c814e4() -> ! {
+    todo!("0xc814e4 Ogre::DynLibManager::getSingleton(void)")
+}
+
+// 0xc814f4 — __ZN4Ogre13DynLibManagerC1Ev
+#[doc(alias = "Ogre::DynLibManager::DynLibManager(void)")]
+// was: Ogre::DynLibManager::DynLibManager(void)
+pub fn stub_c814f4() -> ! {
+    todo!("0xc814f4 Ogre::DynLibManager::DynLibManager(void)")
+}
+
+// 0xc81538 — __ZN4Ogre13DynLibManager4loadERKSs
+#[doc(alias = "Ogre::DynLibManager::load(std::string const&)")]
+// was: Ogre::DynLibManager::load(std::string const&)
+pub fn stub_c81538() -> ! {
+    todo!("0xc81538 Ogre::DynLibManager::load(std::string const&)")
+}
+
+// 0xc8162c — __ZN4Ogre13DynLibManager6unloadEPNS_6DynLibE
+#[doc(alias = "Ogre::DynLibManager::unload(Ogre::DynLib *)")]
+// was: Ogre::DynLibManager::unload(Ogre::DynLib *)
+pub fn stub_c8162c() -> ! {
+    todo!("0xc8162c Ogre::DynLibManager::unload(Ogre::DynLib *)")
+}
+
+// 0xc81740 — __ZN4Ogre13DynLibManagerD0Ev
+#[doc(alias = "Ogre::DynLibManager::~DynLibManager()")]
+// was: Ogre::DynLibManager::~DynLibManager()
+pub fn stub_c81740() -> ! {
+    todo!("0xc81740 Ogre::DynLibManager::~DynLibManager()")
+}
+
+// 0xc817d0 — __ZN4Ogre13DynLibManagerD1Ev
+#[doc(alias = "Ogre::DynLibManager::~DynLibManager()")]
+// was: Ogre::DynLibManager::~DynLibManager()
+pub fn stub_c817d0() -> ! {
+    todo!("0xc817d0 Ogre::DynLibManager::~DynLibManager()")
+}
+
+// 0xc817dc — __ZN4Ogre13DynLibManagerD2Ev
+#[doc(alias = "Ogre::DynLibManager::~DynLibManager()")]
+// was: Ogre::DynLibManager::~DynLibManager()
+pub fn stub_c817dc() -> ! {
+    todo!("0xc817dc Ogre::DynLibManager::~DynLibManager()")
+}
+
+// 0xc8193c — __ZNSt3mapISsPN4Ogre6DynLibESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_
+#[doc(alias = "std::map<std::string,Ogre::DynLib *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
+// was: std::map<std::string,Ogre::DynLib *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
+pub fn stub_c8193c() -> ! {
+    todo!("0xc8193c std::map<std::string,Ogre::DynLib *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
+}
+
+// 0xc81af8 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::DynLib *>> *)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::DynLib *>> *)
+pub fn stub_c81af8() -> ! {
+    todo!("0xc81af8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::DynLib *>> *)")
+}
+
+// 0xc81b70 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::DynLib *>>,std::pair<std::string const,Ogre::DynLib *> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::DynLib *>>,std::pair<std::string const,Ogre::DynLib *> const&)
+pub fn stub_c81b70() -> ! {
+    todo!("0xc81b70 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::DynLib *>>,std::pair<std::string const,Ogre::DynLib *> const&)")
+}
+
+// 0xc81d50 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::DynLib *> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::DynLib *> const&)
+pub fn stub_c81d50() -> ! {
+    todo!("0xc81d50 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::DynLib *> const&)")
+}
+
+// 0xc81ea4 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::DynLib *> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::DynLib *> const&)
+pub fn stub_c81ea4() -> ! {
+    todo!("0xc81ea4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::DynLib *> const&)")
+}
+
+// 0xc81f88 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
+pub fn stub_c81f88() -> ! {
+    todo!("0xc81f88 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+}
+
+// 0xc8202c — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_c8202c() -> ! {
+    todo!("0xc8202c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc82030 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_c82030() -> ! {
+    todo!("0xc82030 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc82070 — __ZN4Ogre15EdgeListBuilderC1Ev
+#[doc(alias = "Ogre::EdgeListBuilder::EdgeListBuilder(void)")]
+// was: Ogre::EdgeListBuilder::EdgeListBuilder(void)
+pub fn stub_c82070() -> ! {
+    todo!("0xc82070 Ogre::EdgeListBuilder::EdgeListBuilder(void)")
+}
+
+// 0xc82118 — __ZN4Ogre15EdgeListBuilderD0Ev
+#[doc(alias = "Ogre::EdgeListBuilder::~EdgeListBuilder()")]
+// was: Ogre::EdgeListBuilder::~EdgeListBuilder()
+pub fn stub_c82118() -> ! {
+    todo!("0xc82118 Ogre::EdgeListBuilder::~EdgeListBuilder()")
+}
+
+// 0xc8212c — __ZN4Ogre15EdgeListBuilderD1Ev
+#[doc(alias = "Ogre::EdgeListBuilder::~EdgeListBuilder()")]
+// was: Ogre::EdgeListBuilder::~EdgeListBuilder()
+pub fn stub_c8212c() -> ! {
+    todo!("0xc8212c Ogre::EdgeListBuilder::~EdgeListBuilder()")
+}
+
+// 0xc82138 — __ZN4Ogre15EdgeListBuilderD2Ev
+#[doc(alias = "Ogre::EdgeListBuilder::~EdgeListBuilder()")]
+// was: Ogre::EdgeListBuilder::~EdgeListBuilder()
+pub fn stub_c82138() -> ! {
+    todo!("0xc82138 Ogre::EdgeListBuilder::~EdgeListBuilder()")
+}
+
+// 0xc82224 — __ZN4Ogre15EdgeListBuilder13addVertexDataEPKNS_10VertexDataE
+#[doc(alias = "Ogre::EdgeListBuilder::addVertexData(Ogre::VertexData const*)")]
+// was: Ogre::EdgeListBuilder::addVertexData(Ogre::VertexData const*)
+pub fn stub_c82224() -> ! {
+    todo!("0xc82224 Ogre::EdgeListBuilder::addVertexData(Ogre::VertexData const*)")
+}
+
+// 0xc82420 — __ZN4Ogre15EdgeListBuilder12addIndexDataEPKNS_9IndexDataEmNS_15RenderOperation13OperationTypeE
+#[doc(alias = "Ogre::EdgeListBuilder::addIndexData(Ogre::IndexData const*,unsigned long,Ogre::RenderOperation::OperationType)")]
+// was: Ogre::EdgeListBuilder::addIndexData(Ogre::IndexData const*,unsigned long,Ogre::RenderOperation::OperationType)
+pub fn stub_c82420() -> ! {
+    todo!("0xc82420 Ogre::EdgeListBuilder::addIndexData(Ogre::IndexData const*,unsigned long,Ogre::RenderOperation::OperationType)")
+}
+
+// 0xc82634 — __ZN4Ogre15EdgeListBuilder5buildEv
+#[doc(alias = "Ogre::EdgeListBuilder::build(void)")]
+// was: Ogre::EdgeListBuilder::build(void)
+pub fn stub_c82634() -> ! {
+    todo!("0xc82634 Ogre::EdgeListBuilder::build(void)")
+}
+
+// 0xc828dc — __ZN4Ogre15EdgeListBuilder19buildTrianglesEdgesERKNS0_8GeometryE
+#[doc(alias = "Ogre::EdgeListBuilder::buildTrianglesEdges(Ogre::EdgeListBuilder::Geometry const&)")]
+// was: Ogre::EdgeListBuilder::buildTrianglesEdges(Ogre::EdgeListBuilder::Geometry const&)
+pub fn stub_c828dc() -> ! {
+    todo!("0xc828dc Ogre::EdgeListBuilder::buildTrianglesEdges(Ogre::EdgeListBuilder::Geometry const&)")
+}
+
