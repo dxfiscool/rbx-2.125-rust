@@ -55,3 +55,4 @@ pub mod generated_32;
 pub mod generated_33;
 pub mod generated_34;
 pub mod generated_35;
+pub mod generated_36;
