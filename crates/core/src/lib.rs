@@ -13,6 +13,7 @@ pub mod task_scheduler;
 pub mod intrusive;
 pub mod boost_skeletons;
 pub mod boost_skeletons2;
+pub mod boost_core_a;
 
 /// Re-export for `use rbx_core::SharedPtr`
 pub use parking_lot::{Mutex as PLMutex, RwLock};
