@@ -8,5 +8,6 @@ pub mod generated;
 pub mod generated_03;
 pub mod generated_04;
 pub mod generated_05;
+pub mod generated_06;
 pub mod high;
 pub mod next_batch;
