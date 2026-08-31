@@ -1,6 +1,6 @@
-//! platform generated — 2374 stubs sorted by EA, from ida/export.json
+//! platform generated — 2524 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 2374 stubs (2274 prior + 100 this batch, 3026 filtered, 1200 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 2524 stubs (2374 prior + 150 this batch, 3026 filtered, 1050 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -16537,4 +16537,1041 @@ pub fn stub_ed977c() -> ! {
 #[doc(alias = "-[__TFAppUpdater_Helper dealloc]")]
 pub fn stub_ed9830() -> ! {
     todo!("0xed9830 -[__TFAppUpdater_Helper dealloc]")
+}
+
+// 0xed98ac — -[__TFAppUpdater_Helper dismissAlert]
+// type: void __cdecl(__TFAppUpdater_Helper *self, SEL)
+#[doc(alias = "-[__TFAppUpdater_Helper dismissAlert]")]
+pub fn stub_ed98ac() -> ! {
+    todo!("0xed98ac -[__TFAppUpdater_Helper dismissAlert]")
+}
+
+// 0xed98e8 — -[__TFAppUpdater_Helper alertView:clickedButtonAtIndex:]
+// type: void __cdecl(__TFAppUpdater_Helper *self, SEL, id, int)
+#[doc(alias = "-[__TFAppUpdater_Helper alertView:clickedButtonAtIndex:]")]
+pub fn stub_ed98e8() -> ! {
+    todo!("0xed98e8 -[__TFAppUpdater_Helper alertView:clickedButtonAtIndex:]")
+}
+
+// 0xed9a84 — -[__TFAppUpdater_Helper willPresentAlertView:]
+// type: void __cdecl(__TFAppUpdater_Helper *self, SEL, id)
+#[doc(alias = "-[__TFAppUpdater_Helper willPresentAlertView:]")]
+pub fn stub_ed9a84() -> ! {
+    todo!("0xed9a84 -[__TFAppUpdater_Helper willPresentAlertView:]")
+}
+
+// 0xed9b0c — -[__TFAppUpdater_Helper fixMessageForOrientation:]
+// type: void __cdecl(__TFAppUpdater_Helper *self, SEL, int)
+#[doc(alias = "-[__TFAppUpdater_Helper fixMessageForOrientation:]")]
+pub fn stub_ed9b0c() -> ! {
+    todo!("0xed9b0c -[__TFAppUpdater_Helper fixMessageForOrientation:]")
+}
+
+// 0xed9bf0 — -[__TFAppUpdater_Helper orientationChange:]
+// type: void __cdecl(__TFAppUpdater_Helper *self, SEL, id)
+#[doc(alias = "-[__TFAppUpdater_Helper orientationChange:]")]
+pub fn stub_ed9bf0() -> ! {
+    todo!("0xed9bf0 -[__TFAppUpdater_Helper orientationChange:]")
+}
+
+// 0xed9c6c — -[__TFAppUpdater_Helper info]
+// type: NSDictionary *__cdecl(__TFAppUpdater_Helper *self, SEL)
+#[doc(alias = "-[__TFAppUpdater_Helper info]")]
+pub fn stub_ed9c6c() -> ! {
+    todo!("0xed9c6c -[__TFAppUpdater_Helper info]")
+}
+
+// 0xed9c84 — -[__TFAppUpdater_Helper setInfo:]
+// type: void __cdecl(__TFAppUpdater_Helper *self, SEL, id)
+#[doc(alias = "-[__TFAppUpdater_Helper setInfo:]")]
+pub fn stub_ed9c84() -> ! {
+    todo!("0xed9c84 -[__TFAppUpdater_Helper setInfo:]")
+}
+
+// 0xed9ca8 — -[__TFAppUpdater_Helper alert]
+// type: UIAlertView *__cdecl(__TFAppUpdater_Helper *self, SEL)
+#[doc(alias = "-[__TFAppUpdater_Helper alert]")]
+pub fn stub_ed9ca8() -> ! {
+    todo!("0xed9ca8 -[__TFAppUpdater_Helper alert]")
+}
+
+// 0xed9cb8 — -[__TFAppUpdater_Helper setAlert:]
+// type: void __cdecl(__TFAppUpdater_Helper *self, SEL, id)
+#[doc(alias = "-[__TFAppUpdater_Helper setAlert:]")]
+pub fn stub_ed9cb8() -> ! {
+    todo!("0xed9cb8 -[__TFAppUpdater_Helper setAlert:]")
+}
+
+// 0xed9cc8 — -[__TFAppUpdater_Helper .cxx_destruct]
+// type: void __cdecl(__TFAppUpdater_Helper *self, SEL)
+#[doc(alias = "-[__TFAppUpdater_Helper .cxx_destruct]")]
+pub fn stub_ed9cc8() -> ! {
+    todo!("0xed9cc8 -[__TFAppUpdater_Helper .cxx_destruct]")
+}
+
+// 0xed9cf8 — -[BugSenseController crashReporter]
+// type: id __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController crashReporter]")]
+pub fn stub_ed9cf8() -> ! {
+    todo!("0xed9cf8 -[BugSenseController crashReporter]")
+}
+
+// 0xed9d38 — -[BugSenseController crashReport]
+// type: id __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController crashReport]")]
+pub fn stub_ed9d38() -> ! {
+    todo!("0xed9d38 -[BugSenseController crashReport]")
+}
+
+// 0xed9e2c — -[BugSenseController dispatchQueue]
+// type: dispatch_queue_s *__cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController dispatchQueue]")]
+pub fn stub_ed9e2c() -> ! {
+    todo!("0xed9e2c -[BugSenseController dispatchQueue]")
+}
+
+// 0xed9e60 — -[BugSenseController operationQueue]
+// type: id __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController operationQueue]")]
+pub fn stub_ed9e60() -> ! {
+    todo!("0xed9e60 -[BugSenseController operationQueue]")
+}
+
+// 0xed9eb0 — -[BugSenseController sessionStartTimestampInMilliseconds]
+// type: unsigned __int64 __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController sessionStartTimestampInMilliseconds]")]
+pub fn stub_ed9eb0() -> ! {
+    todo!("0xed9eb0 -[BugSenseController sessionStartTimestampInMilliseconds]")
+}
+
+// 0xed9ec8 — +[BugSenseController openUDID]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController openUDID]")]
+pub fn stub_ed9ec8() -> ! {
+    todo!("0xed9ec8 +[BugSenseController openUDID]")
+}
+
+// 0xed9ee8 — +[BugSenseController endpointURL]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController endpointURL]")]
+pub fn stub_ed9ee8() -> ! {
+    todo!("0xed9ee8 +[BugSenseController endpointURL]")
+}
+
+// 0xed9f08 — +[BugSenseController apiKey]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController apiKey]")]
+pub fn stub_ed9f08() -> ! {
+    todo!("0xed9f08 +[BugSenseController apiKey]")
+}
+
+// 0xed9f18 — +[BugSenseController userIdentifier]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController userIdentifier]")]
+pub fn stub_ed9f18() -> ! {
+    todo!("0xed9f18 +[BugSenseController userIdentifier]")
+}
+
+// 0xed9f48 — +[BugSenseController setUsesProxy:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[BugSenseController setUsesProxy:]")]
+pub fn stub_ed9f48() -> ! {
+    todo!("0xed9f48 +[BugSenseController setUsesProxy:]")
+}
+
+// 0xed9f58 — +[BugSenseController usesProxy]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController usesProxy]")]
+pub fn stub_ed9f58() -> ! {
+    todo!("0xed9f58 +[BugSenseController usesProxy]")
+}
+
+// 0xed9f68 — +[BugSenseController setLogMessagesCount:]
+// type: void __cdecl(id, SEL, unsigned int)
+#[doc(alias = "+[BugSenseController setLogMessagesCount:]")]
+pub fn stub_ed9f68() -> ! {
+    todo!("0xed9f68 +[BugSenseController setLogMessagesCount:]")
+}
+
+// 0xed9f78 — +[BugSenseController setLogMessagesLevel:]
+// type: void __cdecl(id, SEL, unsigned int)
+#[doc(alias = "+[BugSenseController setLogMessagesLevel:]")]
+pub fn stub_ed9f78() -> ! {
+    todo!("0xed9f78 +[BugSenseController setLogMessagesLevel:]")
+}
+
+// 0xed9f88 — +[BugSenseController setFixNotificationsTitle:message:]
+// type: void __cdecl(id, SEL, id, id)
+#[doc(alias = "+[BugSenseController setFixNotificationsTitle:message:]")]
+pub fn stub_ed9f88() -> ! {
+    todo!("0xed9f88 +[BugSenseController setFixNotificationsTitle:message:]")
+}
+
+// 0xed9fc8 — +[BugSenseController setUserIdentifier:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseController setUserIdentifier:]")]
+pub fn stub_ed9fc8() -> ! {
+    todo!("0xed9fc8 +[BugSenseController setUserIdentifier:]")
+}
+
+// 0xeda0b0 — -[BugSenseController performPostCrashOperations]
+// type: void __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController performPostCrashOperations]")]
+pub fn stub_eda0b0() -> ! {
+    todo!("0xeda0b0 -[BugSenseController performPostCrashOperations]")
+}
+
+// 0xeda268 — +[BugSenseController logException:withExtraData:]
+// type: char __cdecl(id, SEL, id, id)
+#[doc(alias = "+[BugSenseController logException:withExtraData:]")]
+pub fn stub_eda268() -> ! {
+    todo!("0xeda268 +[BugSenseController logException:withExtraData:]")
+}
+
+// 0xeda420 — -[BugSenseController initiateReporting]
+// type: void __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController initiateReporting]")]
+pub fn stub_eda420() -> ! {
+    todo!("0xeda420 -[BugSenseController initiateReporting]")
+}
+
+// 0xeda510 — ___39-[BugSenseController initiateReporting]_block_invoke
+#[doc(alias = "___39-[BugSenseController initiateReporting]_block_invoke")]
+pub fn stub_eda510() -> ! {
+    todo!("0xeda510 ___39-[BugSenseController initiateReporting]_block_invoke")
+}
+
+// 0xeda560 — -[BugSenseController startInstanceSession]
+// type: void __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController startInstanceSession]")]
+pub fn stub_eda560() -> ! {
+    todo!("0xeda560 -[BugSenseController startInstanceSession]")
+}
+
+// 0xeda5fc — ___42-[BugSenseController startInstanceSession]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___42-[BugSenseController startInstanceSession]_block_invoke")]
+pub fn stub_eda5fc() -> ! {
+    todo!("0xeda5fc ___42-[BugSenseController startInstanceSession]_block_invoke")
+}
+
+// 0xeda654 — +[BugSenseController startSession]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController startSession]")]
+pub fn stub_eda654() -> ! {
+    todo!("0xeda654 +[BugSenseController startSession]")
+}
+
+// 0xeda678 — -[BugSenseController stopInstanceSession]
+// type: void __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController stopInstanceSession]")]
+pub fn stub_eda678() -> ! {
+    todo!("0xeda678 -[BugSenseController stopInstanceSession]")
+}
+
+// 0xeda69c — +[BugSenseController stopSession]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController stopSession]")]
+pub fn stub_eda69c() -> ! {
+    todo!("0xeda69c +[BugSenseController stopSession]")
+}
+
+// 0xeda794 — ___33+[BugSenseController stopSession]_block_invoke
+#[doc(alias = "___33+[BugSenseController stopSession]_block_invoke")]
+pub fn stub_eda794() -> ! {
+    todo!("0xeda794 ___33+[BugSenseController stopSession]_block_invoke")
+}
+
+// 0xeda804 — ___33+[BugSenseController stopSession]_block_invoke113
+#[doc(alias = "___33+[BugSenseController stopSession]_block_invoke113")]
+pub fn stub_eda804() -> ! {
+    todo!("0xeda804 ___33+[BugSenseController stopSession]_block_invoke113")
+}
+
+// 0xeda904 — +[BugSenseController sendEventWithTag:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseController sendEventWithTag:]")]
+pub fn stub_eda904() -> ! {
+    todo!("0xeda904 +[BugSenseController sendEventWithTag:]")
+}
+
+// 0xedaa2c — ___39+[BugSenseController sendEventWithTag:]_block_invoke
+#[doc(alias = "___39+[BugSenseController sendEventWithTag:]_block_invoke")]
+pub fn stub_edaa2c() -> ! {
+    todo!("0xedaa2c ___39+[BugSenseController sendEventWithTag:]_block_invoke")
+}
+
+// 0xedaa70 — ___39+[BugSenseController sendEventWithTag:]_block_invoke134
+#[doc(alias = "___39+[BugSenseController sendEventWithTag:]_block_invoke134")]
+pub fn stub_edaa70() -> ! {
+    todo!("0xedaa70 ___39+[BugSenseController sendEventWithTag:]_block_invoke134")
+}
+
+// 0xedaab4 — +[BugSenseController sendCustomEventWithTag:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseController sendCustomEventWithTag:]")]
+pub fn stub_edaab4() -> ! {
+    todo!("0xedaab4 +[BugSenseController sendCustomEventWithTag:]")
+}
+
+// 0xedab5c — +[BugSenseController leaveBreadcrumb:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseController leaveBreadcrumb:]")]
+pub fn stub_edab5c() -> ! {
+    todo!("0xedab5c +[BugSenseController leaveBreadcrumb:]")
+}
+
+// 0xedad4c — +[BugSenseController setErrorNetworkOperationsCompletionBlock:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseController setErrorNetworkOperationsCompletionBlock:]")]
+pub fn stub_edad4c() -> ! {
+    todo!("0xedad4c +[BugSenseController setErrorNetworkOperationsCompletionBlock:]")
+}
+
+// 0xedad70 — +[BugSenseController lastCrashId]
+// type: int __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController lastCrashId]")]
+pub fn stub_edad70() -> ! {
+    todo!("0xedad70 +[BugSenseController lastCrashId]")
+}
+
+// 0xedad80 — +[BugSenseController setLastCrashId:]
+// type: void __cdecl(id, SEL, int)
+#[doc(alias = "+[BugSenseController setLastCrashId:]")]
+pub fn stub_edad80() -> ! {
+    todo!("0xedad80 +[BugSenseController setLastCrashId:]")
+}
+
+// 0xedad90 — +[BugSenseController crashCount]
+// type: int __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController crashCount]")]
+pub fn stub_edad90() -> ! {
+    todo!("0xedad90 +[BugSenseController crashCount]")
+}
+
+// 0xedadb4 — +[BugSenseController resetCrashCount]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController resetCrashCount]")]
+pub fn stub_edadb4() -> ! {
+    todo!("0xedadb4 +[BugSenseController resetCrashCount]")
+}
+
+// 0xedadd8 — +[BugSenseController sharedControllerWithBugSenseAPIKey:endpointURL:userDictionary:sendImmediately:]
+// type: id __cdecl(id, SEL, id, id, id, char)
+#[doc(alias = "+[BugSenseController sharedControllerWithBugSenseAPIKey:endpointURL:userDictionary:sendImmediately:]")]
+pub fn stub_edadd8() -> ! {
+    todo!("0xedadd8 +[BugSenseController sharedControllerWithBugSenseAPIKey:endpointURL:userDictionary:sendImmediately:]")
+}
+
+// 0xedae4c — ___100+[BugSenseController sharedControllerWithBugSenseAPIKey:endpointURL:userDictionary:sendImmediately:]_block_invoke
+#[doc(alias = "___100+[BugSenseController sharedControllerWithBugSenseAPIKey:endpointURL:userDictionary:sendImmediately:]_block_invoke")]
+pub fn stub_edae4c() -> ! {
+    todo!("0xedae4c ___100+[BugSenseController sharedControllerWithBugSenseAPIKey:endpointURL:userDictionary:sendImmediately:]_block_invoke")
+}
+
+// 0xedaf28 — +[BugSenseController sharedControllerWithBugSenseAPIKey:userDictionary:sendImmediately:]
+// type: id __cdecl(id, SEL, id, id, char)
+#[doc(alias = "+[BugSenseController sharedControllerWithBugSenseAPIKey:userDictionary:sendImmediately:]")]
+pub fn stub_edaf28() -> ! {
+    todo!("0xedaf28 +[BugSenseController sharedControllerWithBugSenseAPIKey:userDictionary:sendImmediately:]")
+}
+
+// 0xedaf4c — +[BugSenseController sharedControllerWithBugSenseAPIKey:userDictionary:]
+// type: id __cdecl(id, SEL, id, id)
+#[doc(alias = "+[BugSenseController sharedControllerWithBugSenseAPIKey:userDictionary:]")]
+pub fn stub_edaf4c() -> ! {
+    todo!("0xedaf4c +[BugSenseController sharedControllerWithBugSenseAPIKey:userDictionary:]")
+}
+
+// 0xedaf70 — +[BugSenseController sharedControllerWithBugSenseAPIKey:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseController sharedControllerWithBugSenseAPIKey:]")]
+pub fn stub_edaf70() -> ! {
+    todo!("0xedaf70 +[BugSenseController sharedControllerWithBugSenseAPIKey:]")
+}
+
+// 0xedaf88 — +[BugSenseController sharedController]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseController sharedController]")]
+pub fn stub_edaf88() -> ! {
+    todo!("0xedaf88 +[BugSenseController sharedController]")
+}
+
+// 0xedaf98 — -[BugSenseController initWithAPIKey:endpointURL:userDictionary:sendImmediately:]
+// type: BugSenseController *__cdecl(BugSenseController *self, SEL, id, id, id, char)
+#[doc(alias = "-[BugSenseController initWithAPIKey:endpointURL:userDictionary:sendImmediately:]")]
+pub fn stub_edaf98() -> ! {
+    todo!("0xedaf98 -[BugSenseController initWithAPIKey:endpointURL:userDictionary:sendImmediately:]")
+}
+
+// 0xedb35c — +[BugSenseController allocWithZone:]
+// type: id __cdecl(id, SEL, _NSZone *)
+#[doc(alias = "+[BugSenseController allocWithZone:]")]
+pub fn stub_edb35c() -> ! {
+    todo!("0xedb35c +[BugSenseController allocWithZone:]")
+}
+
+// 0xedb444 — -[BugSenseController copyWithZone:]
+// type: id __cdecl(BugSenseController *self, SEL, _NSZone *)
+#[doc(alias = "-[BugSenseController copyWithZone:]")]
+pub fn stub_edb444() -> ! {
+    todo!("0xedb444 -[BugSenseController copyWithZone:]")
+}
+
+// 0xedb448 — -[BugSenseController retain]
+// type: BugSenseController *__cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController retain]")]
+pub fn stub_edb448() -> ! {
+    todo!("0xedb448 -[BugSenseController retain]")
+}
+
+// 0xedb44c — -[BugSenseController release]
+// type: void __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController release]")]
+pub fn stub_edb44c() -> ! {
+    todo!("0xedb44c -[BugSenseController release]")
+}
+
+// 0xedb450 — -[BugSenseController autorelease]
+// type: BugSenseController *__cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController autorelease]")]
+pub fn stub_edb450() -> ! {
+    todo!("0xedb450 -[BugSenseController autorelease]")
+}
+
+// 0xedb454 — -[BugSenseController retainCount]
+// type: unsigned int __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController retainCount]")]
+pub fn stub_edb454() -> ! {
+    todo!("0xedb454 -[BugSenseController retainCount]")
+}
+
+// 0xedb45c — -[BugSenseController dealloc]
+// type: void __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController dealloc]")]
+pub fn stub_edb45c() -> ! {
+    todo!("0xedb45c -[BugSenseController dealloc]")
+}
+
+// 0xedb4ec — -[BugSenseController retainSymbolsForReport:]
+// type: void __cdecl(BugSenseController *self, SEL, id)
+#[doc(alias = "-[BugSenseController retainSymbolsForReport:]")]
+pub fn stub_edb4ec() -> ! {
+    todo!("0xedb4ec -[BugSenseController retainSymbolsForReport:]")
+}
+
+// 0xedb67c — -[BugSenseController retainAdditionalCrashInfo]
+// type: void __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController retainAdditionalCrashInfo]")]
+pub fn stub_edb67c() -> ! {
+    todo!("0xedb67c -[BugSenseController retainAdditionalCrashInfo]")
+}
+
+// 0xedb8c0 — -[BugSenseController processCrashReport:]
+// type: void __cdecl(BugSenseController *self, SEL, id)
+#[doc(alias = "-[BugSenseController processCrashReport:]")]
+pub fn stub_edb8c0() -> ! {
+    todo!("0xedb8c0 -[BugSenseController processCrashReport:]")
+}
+
+// 0xedbff8 — -[BugSenseController storeResponsePropertiesWithData:]
+// type: void __cdecl(BugSenseController *self, SEL, id)
+#[doc(alias = "-[BugSenseController storeResponsePropertiesWithData:]")]
+pub fn stub_edbff8() -> ! {
+    todo!("0xedbff8 -[BugSenseController storeResponsePropertiesWithData:]")
+}
+
+// 0xedc204 — -[BugSenseController showNewVersionAlertView]
+// type: void __cdecl(BugSenseController *self, SEL)
+#[doc(alias = "-[BugSenseController showNewVersionAlertView]")]
+pub fn stub_edc204() -> ! {
+    todo!("0xedc204 -[BugSenseController showNewVersionAlertView]")
+}
+
+// 0xedc338 — -[BugSenseController alertView:clickedButtonAtIndex:]
+// type: void __cdecl(BugSenseController *self, SEL, id, int)
+#[doc(alias = "-[BugSenseController alertView:clickedButtonAtIndex:]")]
+pub fn stub_edc338() -> ! {
+    todo!("0xedc338 -[BugSenseController alertView:clickedButtonAtIndex:]")
+}
+
+// 0xedc3c0 — -[BugSenseController operationCompleted:withData:forData:]
+// type: void __cdecl(BugSenseController *self, SEL, char, id, id)
+#[doc(alias = "-[BugSenseController operationCompleted:withData:forData:]")]
+pub fn stub_edc3c0() -> ! {
+    todo!("0xedc3c0 -[BugSenseController operationCompleted:withData:forData:]")
+}
+
+// 0xedc554 — ___70-[BugSenseController(Delegation) operationCompleted:withData:forData:]_block_invoke
+#[doc(alias = "___70-[BugSenseController(Delegation) operationCompleted:withData:forData:]_block_invoke")]
+pub fn stub_edc554() -> ! {
+    todo!("0xedc554 ___70-[BugSenseController(Delegation) operationCompleted:withData:forData:]_block_invoke")
+}
+
+// 0xedc598 — -[BugSenseController analyticsOperationCompleted:forData:]
+// type: void __cdecl(BugSenseController *self, SEL, char, id)
+#[doc(alias = "-[BugSenseController analyticsOperationCompleted:forData:]")]
+pub fn stub_edc598() -> ! {
+    todo!("0xedc598 -[BugSenseController analyticsOperationCompleted:forData:]")
+}
+
+// 0xedc63c — ___70-[BugSenseController(Delegation) analyticsOperationCompleted:forData:]_block_invoke
+#[doc(alias = "___70-[BugSenseController(Delegation) analyticsOperationCompleted:forData:]_block_invoke")]
+pub fn stub_edc63c() -> ! {
+    todo!("0xedc63c ___70-[BugSenseController(Delegation) analyticsOperationCompleted:forData:]_block_invoke")
+}
+
+// 0xedc6e8 — +[BugSenseSymbolicator symbolsDirectory]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseSymbolicator symbolsDirectory]")]
+pub fn stub_edc6e8() -> ! {
+    todo!("0xedc6e8 +[BugSenseSymbolicator symbolsDirectory]")
+}
+
+// 0xedc780 — +[BugSenseSymbolicator populateSymbolsDirectoryAndReturnError:]
+// type: char __cdecl(id, SEL, id *)
+#[doc(alias = "+[BugSenseSymbolicator populateSymbolsDirectoryAndReturnError:]")]
+pub fn stub_edc780() -> ! {
+    todo!("0xedc780 +[BugSenseSymbolicator populateSymbolsDirectoryAndReturnError:]")
+}
+
+// 0xedc864 — +[BugSenseSymbolicator retainSymbolsForStackFrames:inReport:]
+// type: char __cdecl(id, SEL, id, id)
+#[doc(alias = "+[BugSenseSymbolicator retainSymbolsForStackFrames:inReport:]")]
+pub fn stub_edc864() -> ! {
+    todo!("0xedc864 +[BugSenseSymbolicator retainSymbolsForStackFrames:inReport:]")
+}
+
+// 0xedcb64 — +[BugSenseSymbolicator clearSymbols]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseSymbolicator clearSymbols]")]
+pub fn stub_edcb64() -> ! {
+    todo!("0xedcb64 +[BugSenseSymbolicator clearSymbols]")
+}
+
+// 0xedcbb4 — +[BugSenseSymbolicator symbolAndOffsetForInstructionPointer:]
+// type: id __cdecl(id, SEL, unsigned __int64)
+#[doc(alias = "+[BugSenseSymbolicator symbolAndOffsetForInstructionPointer:]")]
+pub fn stub_edcbb4() -> ! {
+    todo!("0xedcbb4 +[BugSenseSymbolicator symbolAndOffsetForInstructionPointer:]")
+}
+
+// 0xedccfc — +[BugSenseJSONGenerator frameworkVersion]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator frameworkVersion]")]
+pub fn stub_edccfc() -> ! {
+    todo!("0xedccfc +[BugSenseJSONGenerator frameworkVersion]")
+}
+
+// 0xedcd08 — +[BugSenseJSONGenerator frameworkPlatform]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator frameworkPlatform]")]
+pub fn stub_edcd08() -> ! {
+    todo!("0xedcd08 +[BugSenseJSONGenerator frameworkPlatform]")
+}
+
+// 0xedcd14 — +[BugSenseJSONGenerator applicationNameForReport:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseJSONGenerator applicationNameForReport:]")]
+pub fn stub_edcd14() -> ! {
+    todo!("0xedcd14 +[BugSenseJSONGenerator applicationNameForReport:]")
+}
+
+// 0xedcd9c — +[BugSenseJSONGenerator executableNameForReport:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseJSONGenerator executableNameForReport:]")]
+pub fn stub_edcd9c() -> ! {
+    todo!("0xedcd9c +[BugSenseJSONGenerator executableNameForReport:]")
+}
+
+// 0xedce24 — +[BugSenseJSONGenerator applicationName]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator applicationName]")]
+pub fn stub_edce24() -> ! {
+    todo!("0xedce24 +[BugSenseJSONGenerator applicationName]")
+}
+
+// 0xedcec8 — +[BugSenseJSONGenerator executableName]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator executableName]")]
+pub fn stub_edcec8() -> ! {
+    todo!("0xedcec8 +[BugSenseJSONGenerator executableName]")
+}
+
+// 0xedcf14 — +[BugSenseJSONGenerator applicationBuildNumberForReport:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseJSONGenerator applicationBuildNumberForReport:]")]
+pub fn stub_edcf14() -> ! {
+    todo!("0xedcf14 +[BugSenseJSONGenerator applicationBuildNumberForReport:]")
+}
+
+// 0xedcf78 — +[BugSenseJSONGenerator applicationBuildNumber]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator applicationBuildNumber]")]
+pub fn stub_edcf78() -> ! {
+    todo!("0xedcf78 +[BugSenseJSONGenerator applicationBuildNumber]")
+}
+
+// 0xedd00c — +[BugSenseJSONGenerator applicationVersionNumberForReport:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseJSONGenerator applicationVersionNumberForReport:]")]
+pub fn stub_edd00c() -> ! {
+    todo!("0xedd00c +[BugSenseJSONGenerator applicationVersionNumberForReport:]")
+}
+
+// 0xedd034 — +[BugSenseJSONGenerator applicationVersionNumber]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator applicationVersionNumber]")]
+pub fn stub_edd034() -> ! {
+    todo!("0xedd034 +[BugSenseJSONGenerator applicationVersionNumber]")
+}
+
+// 0xedd0c8 — +[BugSenseJSONGenerator IPAddress]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator IPAddress]")]
+pub fn stub_edd0c8() -> ! {
+    todo!("0xedd0c8 +[BugSenseJSONGenerator IPAddress]")
+}
+
+// 0xedd180 — +[BugSenseJSONGenerator device]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator device]")]
+pub fn stub_edd180() -> ! {
+    todo!("0xedd180 +[BugSenseJSONGenerator device]")
+}
+
+// 0xedd224 — +[BugSenseJSONGenerator carrierName]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator carrierName]")]
+pub fn stub_edd224() -> ! {
+    todo!("0xedd224 +[BugSenseJSONGenerator carrierName]")
+}
+
+// 0xedd2c0 — +[BugSenseJSONGenerator languagesForReport:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseJSONGenerator languagesForReport:]")]
+pub fn stub_edd2c0() -> ! {
+    todo!("0xedd2c0 +[BugSenseJSONGenerator languagesForReport:]")
+}
+
+// 0xedd3a4 — +[BugSenseJSONGenerator languages]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator languages]")]
+pub fn stub_edd3a4() -> ! {
+    todo!("0xedd3a4 +[BugSenseJSONGenerator languages]")
+}
+
+// 0xedd494 — +[BugSenseJSONGenerator isJailbroken]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseJSONGenerator isJailbroken]")]
+pub fn stub_edd494() -> ! {
+    todo!("0xedd494 +[BugSenseJSONGenerator isJailbroken]")
+}
+
+// 0xedd514 — +[BugSenseJSONGenerator stacktraceFromException:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseJSONGenerator stacktraceFromException:]")]
+pub fn stub_edd514() -> ! {
+    todo!("0xedd514 +[BugSenseJSONGenerator stacktraceFromException:]")
+}
+
+// 0xedd850 — ___49+[BugSenseJSONGenerator stacktraceFromException:]_block_invoke
+// type: int __cdecl(id, id, id)
+#[doc(alias = "___49+[BugSenseJSONGenerator stacktraceFromException:]_block_invoke")]
+pub fn stub_edd850() -> ! {
+    todo!("0xedd850 ___49+[BugSenseJSONGenerator stacktraceFromException:]_block_invoke")
+}
+
+// 0xedd8a0 — +[BugSenseJSONGenerator JSONDataFromCrashReport:userDictionary:additionalInfo:]
+// type: id __cdecl(id, SEL, id, id, id)
+#[doc(alias = "+[BugSenseJSONGenerator JSONDataFromCrashReport:userDictionary:additionalInfo:]")]
+pub fn stub_edd8a0() -> ! {
+    todo!("0xedd8a0 +[BugSenseJSONGenerator JSONDataFromCrashReport:userDictionary:additionalInfo:]")
+}
+
+// 0xedf5b0 — +[BugSenseJSONGenerator JSONDataFromException:userDictionary:additionalInfo:]
+// type: id __cdecl(id, SEL, id, id, id)
+#[doc(alias = "+[BugSenseJSONGenerator JSONDataFromException:userDictionary:additionalInfo:]")]
+pub fn stub_edf5b0() -> ! {
+    todo!("0xedf5b0 +[BugSenseJSONGenerator JSONDataFromException:userDictionary:additionalInfo:]")
+}
+
+// 0xee0600 — +[BugSenseDataDispatcher pendingDispatchesCount]
+// type: unsigned int __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseDataDispatcher pendingDispatchesCount]")]
+pub fn stub_ee0600() -> ! {
+    todo!("0xee0600 +[BugSenseDataDispatcher pendingDispatchesCount]")
+}
+
+// 0xee0610 — +[BugSenseDataDispatcher postJSONData:withAPIKey:delegate:showFeedback:]
+// type: char __cdecl(id, SEL, id, id, id, char)
+#[doc(alias = "+[BugSenseDataDispatcher postJSONData:withAPIKey:delegate:showFeedback:]")]
+pub fn stub_ee0610() -> ! {
+    todo!("0xee0610 +[BugSenseDataDispatcher postJSONData:withAPIKey:delegate:showFeedback:]")
+}
+
+// 0xee0910 — ___72+[BugSenseDataDispatcher postJSONData:withAPIKey:delegate:showFeedback:]_block_invoke
+// type: int __fastcall(int, int, id, int, int)
+#[doc(alias = "___72+[BugSenseDataDispatcher postJSONData:withAPIKey:delegate:showFeedback:]_block_invoke")]
+pub fn stub_ee0910() -> ! {
+    todo!("0xee0910 ___72+[BugSenseDataDispatcher postJSONData:withAPIKey:delegate:showFeedback:]_block_invoke")
+}
+
+// 0xee0a24 — ___72+[BugSenseDataDispatcher postJSONData:withAPIKey:delegate:showFeedback:]_block_invoke_2
+#[doc(alias = "___72+[BugSenseDataDispatcher postJSONData:withAPIKey:delegate:showFeedback:]_block_invoke_2")]
+pub fn stub_ee0a24() -> ! {
+    todo!("0xee0a24 ___72+[BugSenseDataDispatcher postJSONData:withAPIKey:delegate:showFeedback:]_block_invoke_2")
+}
+
+// 0xee0ae0 — +[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]
+// type: char __cdecl(id, SEL, id, id, id)
+#[doc(alias = "+[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]")]
+pub fn stub_ee0ae0() -> ! {
+    todo!("0xee0ae0 +[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]")
+}
+
+// 0xee0e48 — ___64+[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]_block_invoke
+// type: int __fastcall(int, int, id, int, int)
+#[doc(alias = "___64+[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]_block_invoke")]
+pub fn stub_ee0e48() -> ! {
+    todo!("0xee0e48 ___64+[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]_block_invoke")
+}
+
+// 0xee0f6c — ___64+[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]_block_invoke_2
+#[doc(alias = "___64+[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]_block_invoke_2")]
+pub fn stub_ee0f6c() -> ! {
+    todo!("0xee0f6c ___64+[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]_block_invoke_2")
+}
+
+// 0xee0fc8 — ___64+[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]_block_invoke95
+#[doc(alias = "___64+[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]_block_invoke95")]
+pub fn stub_ee0fc8() -> ! {
+    todo!("0xee0fc8 ___64+[BugSenseDataDispatcher postAnalyticsData:withAPIKey:delegate:]_block_invoke95")
+}
+
+// 0xee1060 — +[BSAFHTTPRequestOperation networkRequestThread]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BSAFHTTPRequestOperation networkRequestThread]")]
+pub fn stub_ee1060() -> ! {
+    todo!("0xee1060 +[BSAFHTTPRequestOperation networkRequestThread]")
+}
+
+// 0xee10c4 — ___48+[BSAFHTTPRequestOperation networkRequestThread]_block_invoke
+#[doc(alias = "___48+[BSAFHTTPRequestOperation networkRequestThread]_block_invoke")]
+pub fn stub_ee10c4() -> ! {
+    todo!("0xee10c4 ___48+[BSAFHTTPRequestOperation networkRequestThread]_block_invoke")
+}
+
+// 0xee114c — +[BSAFHTTPRequestOperation networkRequestThreadEntryPoint:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[BSAFHTTPRequestOperation networkRequestThreadEntryPoint:]")]
+pub fn stub_ee114c() -> ! {
+    todo!("0xee114c +[BSAFHTTPRequestOperation networkRequestThreadEntryPoint:]")
+}
+
+// 0xee11d4 — +[BSAFHTTPRequestOperation operationWithRequest:observer:]
+// type: id __cdecl(id, SEL, id, id)
+#[doc(alias = "+[BSAFHTTPRequestOperation operationWithRequest:observer:]")]
+pub fn stub_ee11d4() -> ! {
+    todo!("0xee11d4 +[BSAFHTTPRequestOperation operationWithRequest:observer:]")
+}
+
+// 0xee124c — +[BSAFHTTPRequestOperation operationWithRequest:completion:]
+// type: id __cdecl(id, SEL, id, id)
+#[doc(alias = "+[BSAFHTTPRequestOperation operationWithRequest:completion:]")]
+pub fn stub_ee124c() -> ! {
+    todo!("0xee124c +[BSAFHTTPRequestOperation operationWithRequest:completion:]")
+}
+
+// 0xee12a0 — +[BSAFHTTPRequestOperation operationWithRequest:inputStream:outputStream:completion:]
+// type: id __cdecl(id, SEL, id, id, id, id)
+#[doc(alias = "+[BSAFHTTPRequestOperation operationWithRequest:inputStream:outputStream:completion:]")]
+pub fn stub_ee12a0() -> ! {
+    todo!("0xee12a0 +[BSAFHTTPRequestOperation operationWithRequest:inputStream:outputStream:completion:]")
+}
+
+// 0xee1380 — ___85+[BSAFHTTPRequestOperation operationWithRequest:inputStream:outputStream:completion:]_block_invoke
+#[doc(alias = "___85+[BSAFHTTPRequestOperation operationWithRequest:inputStream:outputStream:completion:]_block_invoke")]
+pub fn stub_ee1380() -> ! {
+    todo!("0xee1380 ___85+[BSAFHTTPRequestOperation operationWithRequest:inputStream:outputStream:completion:]_block_invoke")
+}
+
+// 0xee13b8 — -[BSAFHTTPRequestOperation initWithRequest:]
+// type: BSAFHTTPRequestOperation *__cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation initWithRequest:]")]
+pub fn stub_ee13b8() -> ! {
+    todo!("0xee13b8 -[BSAFHTTPRequestOperation initWithRequest:]")
+}
+
+// 0xee1458 — -[BSAFHTTPRequestOperation dealloc]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation dealloc]")]
+pub fn stub_ee1458() -> ! {
+    todo!("0xee1458 -[BSAFHTTPRequestOperation dealloc]")
+}
+
+// 0xee1570 — -[BSAFHTTPRequestOperation setUploadProgressBlock:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setUploadProgressBlock:]")]
+pub fn stub_ee1570() -> ! {
+    todo!("0xee1570 -[BSAFHTTPRequestOperation setUploadProgressBlock:]")
+}
+
+// 0xee1588 — -[BSAFHTTPRequestOperation setDownloadProgressBlock:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setDownloadProgressBlock:]")]
+pub fn stub_ee1588() -> ! {
+    todo!("0xee1588 -[BSAFHTTPRequestOperation setDownloadProgressBlock:]")
+}
+
+// 0xee15a0 — -[BSAFHTTPRequestOperation setState:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, int)
+#[doc(alias = "-[BSAFHTTPRequestOperation setState:]")]
+pub fn stub_ee15a0() -> ! {
+    todo!("0xee15a0 -[BSAFHTTPRequestOperation setState:]")
+}
+
+// 0xee1788 — -[BSAFHTTPRequestOperation responseString]
+// type: NSString *__cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation responseString]")]
+pub fn stub_ee1788() -> ! {
+    todo!("0xee1788 -[BSAFHTTPRequestOperation responseString]")
+}
+
+// 0xee17e8 — -[BSAFHTTPRequestOperation isReady]
+// type: char __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation isReady]")]
+pub fn stub_ee17e8() -> ! {
+    todo!("0xee17e8 -[BSAFHTTPRequestOperation isReady]")
+}
+
+// 0xee1804 — -[BSAFHTTPRequestOperation isExecuting]
+// type: char __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation isExecuting]")]
+pub fn stub_ee1804() -> ! {
+    todo!("0xee1804 -[BSAFHTTPRequestOperation isExecuting]")
+}
+
+// 0xee1824 — -[BSAFHTTPRequestOperation isFinished]
+// type: char __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation isFinished]")]
+pub fn stub_ee1824() -> ! {
+    todo!("0xee1824 -[BSAFHTTPRequestOperation isFinished]")
+}
+
+// 0xee1864 — -[BSAFHTTPRequestOperation isConcurrent]
+// type: char __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation isConcurrent]")]
+pub fn stub_ee1864() -> ! {
+    todo!("0xee1864 -[BSAFHTTPRequestOperation isConcurrent]")
+}
+
+// 0xee1868 — -[BSAFHTTPRequestOperation start]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation start]")]
+pub fn stub_ee1868() -> ! {
+    todo!("0xee1868 -[BSAFHTTPRequestOperation start]")
+}
+
+// 0xee1914 — -[BSAFHTTPRequestOperation operationDidStart]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation operationDidStart]")]
+pub fn stub_ee1914() -> ! {
+    todo!("0xee1914 -[BSAFHTTPRequestOperation operationDidStart]")
+}
+
+// 0xee1ac8 — -[BSAFHTTPRequestOperation cancel]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation cancel]")]
+pub fn stub_ee1ac8() -> ! {
+    todo!("0xee1ac8 -[BSAFHTTPRequestOperation cancel]")
+}
+
+// 0xee1b08 — -[BSAFHTTPRequestOperation finish]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation finish]")]
+pub fn stub_ee1b08() -> ! {
+    todo!("0xee1b08 -[BSAFHTTPRequestOperation finish]")
+}
+
+// 0xee1bb0 — -[BSAFHTTPRequestOperation connection:didReceiveResponse:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation connection:didReceiveResponse:]")]
+pub fn stub_ee1bb0() -> ! {
+    todo!("0xee1bb0 -[BSAFHTTPRequestOperation connection:didReceiveResponse:]")
+}
+
+// 0xee1c90 — -[BSAFHTTPRequestOperation connection:didReceiveData:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation connection:didReceiveData:]")]
+pub fn stub_ee1c90() -> ! {
+    todo!("0xee1c90 -[BSAFHTTPRequestOperation connection:didReceiveData:]")
+}
+
+// 0xee1dd0 — -[BSAFHTTPRequestOperation connectionDidFinishLoading:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation connectionDidFinishLoading:]")]
+pub fn stub_ee1dd0() -> ! {
+    todo!("0xee1dd0 -[BSAFHTTPRequestOperation connectionDidFinishLoading:]")
+}
+
+// 0xee1e98 — -[BSAFHTTPRequestOperation connection:didFailWithError:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation connection:didFailWithError:]")]
+pub fn stub_ee1e98() -> ! {
+    todo!("0xee1e98 -[BSAFHTTPRequestOperation connection:didFailWithError:]")
+}
+
+// 0xee1edc — -[BSAFHTTPRequestOperation connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id, int, int, int)
+#[doc(alias = "-[BSAFHTTPRequestOperation connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:]")]
+pub fn stub_ee1edc() -> ! {
+    todo!("0xee1edc -[BSAFHTTPRequestOperation connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:]")
+}
+
+// 0xee1f18 — -[BSAFHTTPRequestOperation connection:willCacheResponse:]
+// type: id __cdecl(BSAFHTTPRequestOperation *self, SEL, id, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation connection:willCacheResponse:]")]
+pub fn stub_ee1f18() -> ! {
+    todo!("0xee1f18 -[BSAFHTTPRequestOperation connection:willCacheResponse:]")
+}
+
+// 0xee1f3c — -[BSAFHTTPRequestOperation connection:canAuthenticateAgainstProtectionSpace:]
+// type: char __cdecl(BSAFHTTPRequestOperation *self, SEL, id, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation connection:canAuthenticateAgainstProtectionSpace:]")]
+pub fn stub_ee1f3c() -> ! {
+    todo!("0xee1f3c -[BSAFHTTPRequestOperation connection:canAuthenticateAgainstProtectionSpace:]")
+}
+
+// 0xee1fb4 — -[BSAFHTTPRequestOperation connection:didReceiveAuthenticationChallenge:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation connection:didReceiveAuthenticationChallenge:]")]
+pub fn stub_ee1fb4() -> ! {
+    todo!("0xee1fb4 -[BSAFHTTPRequestOperation connection:didReceiveAuthenticationChallenge:]")
+}
+
+// 0xee20a0 — -[BSAFHTTPRequestOperation state]
+// type: int __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation state]")]
+pub fn stub_ee20a0() -> ! {
+    todo!("0xee20a0 -[BSAFHTTPRequestOperation state]")
+}
+
+// 0xee20b0 — -[BSAFHTTPRequestOperation isCancelled]
+// type: char __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation isCancelled]")]
+pub fn stub_ee20b0() -> ! {
+    todo!("0xee20b0 -[BSAFHTTPRequestOperation isCancelled]")
+}
+
+// 0xee20c0 — -[BSAFHTTPRequestOperation setIsCancelled:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, char)
+#[doc(alias = "-[BSAFHTTPRequestOperation setIsCancelled:]")]
+pub fn stub_ee20c0() -> ! {
+    todo!("0xee20c0 -[BSAFHTTPRequestOperation setIsCancelled:]")
+}
+
+// 0xee20d0 — -[BSAFHTTPRequestOperation connection]
+// type: NSURLConnection *__cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation connection]")]
+pub fn stub_ee20d0() -> ! {
+    todo!("0xee20d0 -[BSAFHTTPRequestOperation connection]")
+}
+
+// 0xee20e0 — -[BSAFHTTPRequestOperation setConnection:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setConnection:]")]
+pub fn stub_ee20e0() -> ! {
+    todo!("0xee20e0 -[BSAFHTTPRequestOperation setConnection:]")
+}
+
+// 0xee2104 — -[BSAFHTTPRequestOperation runLoopModes]
+// type: NSSet *__cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation runLoopModes]")]
+pub fn stub_ee2104() -> ! {
+    todo!("0xee2104 -[BSAFHTTPRequestOperation runLoopModes]")
+}
+
+// 0xee2114 — -[BSAFHTTPRequestOperation setRunLoopModes:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setRunLoopModes:]")]
+pub fn stub_ee2114() -> ! {
+    todo!("0xee2114 -[BSAFHTTPRequestOperation setRunLoopModes:]")
+}
+
+// 0xee2138 — -[BSAFHTTPRequestOperation request]
+// type: NSURLRequest *__cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation request]")]
+pub fn stub_ee2138() -> ! {
+    todo!("0xee2138 -[BSAFHTTPRequestOperation request]")
+}
+
+// 0xee2148 — -[BSAFHTTPRequestOperation setRequest:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setRequest:]")]
+pub fn stub_ee2148() -> ! {
+    todo!("0xee2148 -[BSAFHTTPRequestOperation setRequest:]")
+}
+
+// 0xee216c — -[BSAFHTTPRequestOperation response]
+// type: NSHTTPURLResponse *__cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation response]")]
+pub fn stub_ee216c() -> ! {
+    todo!("0xee216c -[BSAFHTTPRequestOperation response]")
+}
+
+// 0xee217c — -[BSAFHTTPRequestOperation setResponse:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setResponse:]")]
+pub fn stub_ee217c() -> ! {
+    todo!("0xee217c -[BSAFHTTPRequestOperation setResponse:]")
+}
+
+// 0xee21a0 — -[BSAFHTTPRequestOperation error]
+// type: NSError *__cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation error]")]
+pub fn stub_ee21a0() -> ! {
+    todo!("0xee21a0 -[BSAFHTTPRequestOperation error]")
+}
+
+// 0xee21b0 — -[BSAFHTTPRequestOperation setError:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setError:]")]
+pub fn stub_ee21b0() -> ! {
+    todo!("0xee21b0 -[BSAFHTTPRequestOperation setError:]")
+}
+
+// 0xee21d4 — -[BSAFHTTPRequestOperation responseBody]
+// type: NSData *__cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation responseBody]")]
+pub fn stub_ee21d4() -> ! {
+    todo!("0xee21d4 -[BSAFHTTPRequestOperation responseBody]")
+}
+
+// 0xee21e4 — -[BSAFHTTPRequestOperation setResponseBody:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, id)
+#[doc(alias = "-[BSAFHTTPRequestOperation setResponseBody:]")]
+pub fn stub_ee21e4() -> ! {
+    todo!("0xee21e4 -[BSAFHTTPRequestOperation setResponseBody:]")
+}
+
+// 0xee2208 — -[BSAFHTTPRequestOperation totalBytesRead]
+// type: unsigned int __cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation totalBytesRead]")]
+pub fn stub_ee2208() -> ! {
+    todo!("0xee2208 -[BSAFHTTPRequestOperation totalBytesRead]")
+}
+
+// 0xee2218 — -[BSAFHTTPRequestOperation setTotalBytesRead:]
+// type: void __cdecl(BSAFHTTPRequestOperation *self, SEL, unsigned int)
+#[doc(alias = "-[BSAFHTTPRequestOperation setTotalBytesRead:]")]
+pub fn stub_ee2218() -> ! {
+    todo!("0xee2218 -[BSAFHTTPRequestOperation setTotalBytesRead:]")
+}
+
+// 0xee2228 — -[BSAFHTTPRequestOperation dataAccumulator]
+// type: NSMutableData *__cdecl(BSAFHTTPRequestOperation *self, SEL)
+#[doc(alias = "-[BSAFHTTPRequestOperation dataAccumulator]")]
+pub fn stub_ee2228() -> ! {
+    todo!("0xee2228 -[BSAFHTTPRequestOperation dataAccumulator]")
 }
