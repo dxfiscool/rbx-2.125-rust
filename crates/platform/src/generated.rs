@@ -1,6 +1,6 @@
-//! platform generated — next 882 stubs sorted by EA, from ida/export.json
+//! platform generated — next 982 stubs sorted by EA, from ida/export.json
 //! Filter: RobloxView|GameViewController|AppDelegate|EAGL2|PlaceLauncher|ControlView|UIViewController|HomeViewController|Teleporter|LoginViewController|SignupViewController|RobloxNavBar|DebugSettings|MainViewController|ExternalLogin|RobloxInfo|RobloxAlert
-//! Batch: 882 stubs (782 prior + 100 this batch, 1168 filtered Roblox iOS, 286 remaining) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 982 stubs (882 prior + 100 this batch, 1168 filtered, 192 remaining filtered; 6 non-filtered boost wrappers extra) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -6255,5 +6255,671 @@ pub fn stub_47b894() -> ! {
 #[doc(alias = "RBX::DebugSettings::totalPhysicalMemory(void)const")]
 pub fn stub_47b9a4() -> ! {
     todo!("0x47b9a4 RBX::DebugSettings::totalPhysicalMemory(void)const")
+}
+
+// 0x47ba34 — RBX::DebugSettings::resolution(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::resolution(void)const")]
+pub fn stub_47ba34() -> ! {
+    todo!("0x47ba34 RBX::DebugSettings::resolution(void)const")
+}
+
+// 0x47bbb4 — RBX::DebugSettings::availablePhysicalMemory(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::availablePhysicalMemory(void)const")]
+pub fn stub_47bbb4() -> ! {
+    todo!("0x47bbb4 RBX::DebugSettings::availablePhysicalMemory(void)const")
+}
+
+// 0x47bc44 — RBX::DebugSettings::getElapsedTime(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getElapsedTime(void)const")]
+pub fn stub_47bc44() -> ! {
+    todo!("0x47bc44 RBX::DebugSettings::getElapsedTime(void)const")
+}
+
+// 0x47bc50 — RBX::DebugSettings::processCores(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::processCores(void)const")]
+pub fn stub_47bc50() -> ! {
+    todo!("0x47bc50 RBX::DebugSettings::processCores(void)const")
+}
+
+// 0x47bc8c — RBX::DebugSettings::totalProcessorTime(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::totalProcessorTime(void)const")]
+pub fn stub_47bc8c() -> ! {
+    todo!("0x47bc8c RBX::DebugSettings::totalProcessorTime(void)const")
+}
+
+// 0x47bcb0 — RBX::DebugSettings::processorTime(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::processorTime(void)const")]
+pub fn stub_47bcb0() -> ! {
+    todo!("0x47bcb0 RBX::DebugSettings::processorTime(void)const")
+}
+
+// 0x47bcb8 — RBX::DebugSettings::privateBytes(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::privateBytes(void)const")]
+pub fn stub_47bcb8() -> ! {
+    todo!("0x47bcb8 RBX::DebugSettings::privateBytes(void)const")
+}
+
+// 0x47bcdc — RBX::DebugSettings::privateWorkingSetBytes(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::privateWorkingSetBytes(void)const")]
+pub fn stub_47bcdc() -> ! {
+    todo!("0x47bcdc RBX::DebugSettings::privateWorkingSetBytes(void)const")
+}
+
+// 0x47bcfc — RBX::DebugSettings::GetVirtualBytes(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::GetVirtualBytes(void)const")]
+pub fn stub_47bcfc() -> ! {
+    todo!("0x47bcfc RBX::DebugSettings::GetVirtualBytes(void)const")
+}
+
+// 0x47bd1c — RBX::DebugSettings::GetPageFileBytes(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::GetPageFileBytes(void)const")]
+pub fn stub_47bd1c() -> ! {
+    todo!("0x47bd1c RBX::DebugSettings::GetPageFileBytes(void)const")
+}
+
+// 0x47bd24 — RBX::DebugSettings::GetPageFaultsPerSecond(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::GetPageFaultsPerSecond(void)const")]
+pub fn stub_47bd24() -> ! {
+    todo!("0x47bd24 RBX::DebugSettings::GetPageFaultsPerSecond(void)const")
+}
+
+// 0x47bd50 — RBX::DebugSettings::getPlayerCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getPlayerCount(void)const")]
+pub fn stub_47bd50() -> ! {
+    todo!("0x47bd50 RBX::DebugSettings::getPlayerCount(void)const")
+}
+
+// 0x47bd60 — RBX::DebugSettings::getDataModelCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getDataModelCount(void)const")]
+pub fn stub_47bd60() -> ! {
+    todo!("0x47bd60 RBX::DebugSettings::getDataModelCount(void)const")
+}
+
+// 0x47bd70 — RBX::DebugSettings::getCdnSuccessCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getCdnSuccessCount(void)const")]
+pub fn stub_47bd70() -> ! {
+    todo!("0x47bd70 RBX::DebugSettings::getCdnSuccessCount(void)const")
+}
+
+// 0x47bd80 — RBX::DebugSettings::getCdnFailureCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getCdnFailureCount(void)const")]
+pub fn stub_47bd80() -> ! {
+    todo!("0x47bd80 RBX::DebugSettings::getCdnFailureCount(void)const")
+}
+
+// 0x47bd90 — RBX::DebugSettings::getAlternateCdnSuccessCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getAlternateCdnSuccessCount(void)const")]
+pub fn stub_47bd90() -> ! {
+    todo!("0x47bd90 RBX::DebugSettings::getAlternateCdnSuccessCount(void)const")
+}
+
+// 0x47bda0 — RBX::DebugSettings::getAlternateCdnFailureCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getAlternateCdnFailureCount(void)const")]
+pub fn stub_47bda0() -> ! {
+    todo!("0x47bda0 RBX::DebugSettings::getAlternateCdnFailureCount(void)const")
+}
+
+// 0x47bdb0 — RBX::DebugSettings::getBlockMeshMapCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getBlockMeshMapCount(void)const")]
+pub fn stub_47bdb0() -> ! {
+    todo!("0x47bdb0 RBX::DebugSettings::getBlockMeshMapCount(void)const")
+}
+
+// 0x47bdb4 — RBX::DebugSettings::getLastCdnFailureTimeSpan(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getLastCdnFailureTimeSpan(void)const")]
+pub fn stub_47bdb4() -> ! {
+    todo!("0x47bdb4 RBX::DebugSettings::getLastCdnFailureTimeSpan(void)const")
+}
+
+// 0x47bdcc — RBX::DebugSettings::getRobloxSuccessCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getRobloxSuccessCount(void)const")]
+pub fn stub_47bdcc() -> ! {
+    todo!("0x47bdcc RBX::DebugSettings::getRobloxSuccessCount(void)const")
+}
+
+// 0x47bddc — RBX::DebugSettings::getRobloxFalureCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getRobloxFalureCount(void)const")]
+pub fn stub_47bddc() -> ! {
+    todo!("0x47bddc RBX::DebugSettings::getRobloxFalureCount(void)const")
+}
+
+// 0x47bdf0 — RBX::DebugSettings::getRobloxResponce(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getRobloxResponce(void)const")]
+pub fn stub_47bdf0() -> ! {
+    todo!("0x47bdf0 RBX::DebugSettings::getRobloxResponce(void)const")
+}
+
+// 0x47be48 — RBX::DebugSettings::getCdnRespoce(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getCdnRespoce(void)const")]
+pub fn stub_47be48() -> ! {
+    todo!("0x47be48 RBX::DebugSettings::getCdnRespoce(void)const")
+}
+
+// 0x47bea0 — RBX::DebugSettings::resetCdnFailureCounts(void)
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::resetCdnFailureCounts(void)")]
+pub fn stub_47bea0() -> ! {
+    todo!("0x47bea0 RBX::DebugSettings::resetCdnFailureCounts(void)")
+}
+
+// 0x47c3f8 — RBX::DebugSettings::setErrorReporting(RBX::DebugSettings::ErrorReporting)
+#[doc(alias = "RBX::DebugSettings::setErrorReporting(RBX::DebugSettings::ErrorReporting)")]
+pub fn stub_47c3f8() -> ! {
+    todo!("0x47c3f8 RBX::DebugSettings::setErrorReporting(RBX::DebugSettings::ErrorReporting)")
+}
+
+// 0x47c564 — RBX::DebugSettings::getIsProfilingEnabled(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getIsProfilingEnabled(void)const")]
+pub fn stub_47c564() -> ! {
+    todo!("0x47c564 RBX::DebugSettings::getIsProfilingEnabled(void)const")
+}
+
+// 0x47c570 — RBX::DebugSettings::setIsProfilingEnabled(bool)
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this, RBX::Profiling *)
+#[doc(alias = "RBX::DebugSettings::setIsProfilingEnabled(bool)")]
+pub fn stub_47c570() -> ! {
+    todo!("0x47c570 RBX::DebugSettings::setIsProfilingEnabled(bool)")
+}
+
+// 0x47c578 — RBX::DebugSettings::getProfilingWindow(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getProfilingWindow(void)const")]
+pub fn stub_47c578() -> ! {
+    todo!("0x47c578 RBX::DebugSettings::getProfilingWindow(void)const")
+}
+
+// 0x47c590 — RBX::DebugSettings::setProfilingWindow(double)
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this, double)
+#[doc(alias = "RBX::DebugSettings::setProfilingWindow(double)")]
+pub fn stub_47c590() -> ! {
+    todo!("0x47c590 RBX::DebugSettings::setProfilingWindow(double)")
+}
+
+// 0x47c5a8 — RBX::DebugSettings::getLuaRamLimit(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getLuaRamLimit(void)const")]
+pub fn stub_47c5a8() -> ! {
+    todo!("0x47c5a8 RBX::DebugSettings::getLuaRamLimit(void)const")
+}
+
+// 0x47c5b8 — RBX::DebugSettings::setLuaRamLimit(int)
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this, int)
+#[doc(alias = "RBX::DebugSettings::setLuaRamLimit(int)")]
+pub fn stub_47c5b8() -> ! {
+    todo!("0x47c5b8 RBX::DebugSettings::setLuaRamLimit(int)")
+}
+
+// 0x47c5c8 — RBX::DebugSettings::getInstanceCountLimit(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getInstanceCountLimit(void)const")]
+pub fn stub_47c5c8() -> ! {
+    todo!("0x47c5c8 RBX::DebugSettings::getInstanceCountLimit(void)const")
+}
+
+// 0x47c5d8 — RBX::DebugSettings::setInstanceCountLimit(int)
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this, int)
+#[doc(alias = "RBX::DebugSettings::setInstanceCountLimit(int)")]
+pub fn stub_47c5d8() -> ! {
+    todo!("0x47c5d8 RBX::DebugSettings::setInstanceCountLimit(int)")
+}
+
+// 0x47c5e8 — RBX::DebugSettings::getEnforceInstanceCountLimit(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getEnforceInstanceCountLimit(void)const")]
+pub fn stub_47c5e8() -> ! {
+    todo!("0x47c5e8 RBX::DebugSettings::getEnforceInstanceCountLimit(void)const")
+}
+
+// 0x47c5f8 — RBX::DebugSettings::setEnforceInstanceCountLimit(bool)
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this, bool)
+#[doc(alias = "RBX::DebugSettings::setEnforceInstanceCountLimit(bool)")]
+pub fn stub_47c5f8() -> ! {
+    todo!("0x47c5f8 RBX::DebugSettings::setEnforceInstanceCountLimit(bool)")
+}
+
+// 0x47c608 — RBX::DebugSettings::DebugSettings(void)
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::DebugSettings(void)")]
+pub fn stub_47c608() -> ! {
+    todo!("0x47c608 RBX::DebugSettings::DebugSettings(void)")
+}
+
+// 0x47c60c — RBX::DebugSettings::DebugSettings(void)
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::DebugSettings(void)")]
+pub fn stub_47c60c() -> ! {
+    todo!("0x47c60c RBX::DebugSettings::DebugSettings(void)")
+}
+
+// 0x47d434 — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)
+// type: int(void)
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)")]
+pub fn stub_47d434() -> ! {
+    todo!("0x47d434 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)")
+}
+
+// 0x47de54 — RBX::DebugSettings::getRobloxVersion(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getRobloxVersion(void)const")]
+pub fn stub_47de54() -> ! {
+    todo!("0x47de54 RBX::DebugSettings::getRobloxVersion(void)const")
+}
+
+// 0x47dec8 — RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()")]
+pub fn stub_47dec8() -> ! {
+    todo!("0x47dec8 RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()")
+}
+
+// 0x47deec — RBX::DebugSettings::getRobloxProductName(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getRobloxProductName(void)const")]
+pub fn stub_47deec() -> ! {
+    todo!("0x47deec RBX::DebugSettings::getRobloxProductName(void)const")
+}
+
+// 0x47df60 — RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()")]
+pub fn stub_47df60() -> ! {
+    todo!("0x47df60 RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()")
+}
+
+// 0x47df84 — RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")]
+pub fn stub_47df84() -> ! {
+    todo!("0x47df84 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")
+}
+
+// 0x47dfa8 — RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()")]
+pub fn stub_47dfa8() -> ! {
+    todo!("0x47dfa8 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()")
+}
+
+// 0x47dfcc — RBX::DebugSettings::nameDatabaseSize(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::nameDatabaseSize(void)const")]
+pub fn stub_47dfcc() -> ! {
+    todo!("0x47dfcc RBX::DebugSettings::nameDatabaseSize(void)const")
+}
+
+// 0x47dfd0 — RBX::DebugSettings::nameDatabaseBytes(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::nameDatabaseBytes(void)const")]
+pub fn stub_47dfd0() -> ! {
+    todo!("0x47dfd0 RBX::DebugSettings::nameDatabaseBytes(void)const")
+}
+
+// 0x47dfd4 — RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()")]
+pub fn stub_47dfd4() -> ! {
+    todo!("0x47dfd4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()")
+}
+
+// 0x47dff8 — RBX::DebugSettings::instanceCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::instanceCount(void)const")]
+pub fn stub_47dff8() -> ! {
+    todo!("0x47dff8 RBX::DebugSettings::instanceCount(void)const")
+}
+
+// 0x47e008 — RBX::DebugSettings::jobCount(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::jobCount(void)const")]
+pub fn stub_47e008() -> ! {
+    todo!("0x47e008 RBX::DebugSettings::jobCount(void)const")
+}
+
+// 0x47e018 — RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()
+// was: RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_47e018() -> ! {
+    todo!("0x47e018 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x47e158 — RBX::DebugSettings::getErrorReporting(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getErrorReporting(void)const")]
+pub fn stub_47e158() -> ! {
+    todo!("0x47e158 RBX::DebugSettings::getErrorReporting(void)const")
+}
+
+// 0x47e15c — RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::~EnumPropDescriptor()
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::~EnumPropDescriptor()")]
+pub fn stub_47e15c() -> ! {
+    todo!("0x47e15c RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::~EnumPropDescriptor()")
+}
+
+// 0x47e180 — RBX::DebugSettings::noOpt(void)
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::noOpt(void)")]
+pub fn stub_47e180() -> ! {
+    todo!("0x47e180 RBX::DebugSettings::noOpt(void)")
+}
+
+// 0x47e184 — RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(void),0>::~BoundFuncDesc()
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_47e184() -> ! {
+    todo!("0x47e184 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x47e1a8 — RBX::DebugSettings::setBlockingRemove(bool)
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this, bool)
+#[doc(alias = "RBX::DebugSettings::setBlockingRemove(bool)")]
+pub fn stub_47e1a8() -> ! {
+    todo!("0x47e1a8 RBX::DebugSettings::setBlockingRemove(bool)")
+}
+
+// 0x47e1b0 — RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::~BoundFuncDesc()
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::~BoundFuncDesc()")]
+pub fn stub_47e1b0() -> ! {
+    todo!("0x47e1b0 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::~BoundFuncDesc()")
+}
+
+// 0x47e344 — RBX::DebugSettings::getTickCountPreciseOverride(void)const
+// type: _DWORD __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::getTickCountPreciseOverride(void)const")]
+pub fn stub_47e344() -> ! {
+    todo!("0x47e344 RBX::DebugSettings::getTickCountPreciseOverride(void)const")
+}
+
+// 0x47e354 — RBX::DebugSettings::setTickCountPreciseOverride(RBX::Time::SampleMethod)
+#[doc(alias = "RBX::DebugSettings::setTickCountPreciseOverride(RBX::Time::SampleMethod)")]
+pub fn stub_47e354() -> ! {
+    todo!("0x47e354 RBX::DebugSettings::setTickCountPreciseOverride(RBX::Time::SampleMethod)")
+}
+
+// 0x47e364 — RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()")]
+pub fn stub_47e364() -> ! {
+    todo!("0x47e364 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()")
+}
+
+// 0x47e388 — __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEEC2Ev
+// type: int(void)
+#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEEC2Ev")]
+pub fn stub_47e388() -> ! {
+    todo!("0x47e388 __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEEC2Ev")
+}
+
+// 0x47f068 — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
+pub fn stub_47f068() -> ! {
+    todo!("0x47f068 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+}
+
+// 0x47f06c — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
+pub fn stub_47f06c() -> ! {
+    todo!("0x47f06c RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+}
+
+// 0x47f10c — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::lookup(char const*)const
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::lookup(char const*)const")]
+pub fn stub_47f10c() -> ! {
+    todo!("0x47f10c RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::lookup(char const*)const")
+}
+
+// 0x47f13c — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::lookup(RBX::Reflection::Variant const&)const
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_47f13c() -> ! {
+    todo!("0x47f13c RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x47f15c — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(unsigned long,RBX::Reflection::Variant &)const
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_47f15c() -> ! {
+    todo!("0x47f15c RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x47f190 — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(unsigned long,std::string &)const
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_47f190() -> ! {
+    todo!("0x47f190 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x47f7ac — RBX::DebugSettings::~DebugSettings()
+// type: void __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::~DebugSettings()")]
+pub fn stub_47f7ac() -> ! {
+    todo!("0x47f7ac RBX::DebugSettings::~DebugSettings()")
+}
+
+// 0x47f7ec — RBX::DebugSettings::~DebugSettings()
+// type: void __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "RBX::DebugSettings::~DebugSettings()")]
+pub fn stub_47f7ec() -> ! {
+    todo!("0x47f7ec RBX::DebugSettings::~DebugSettings()")
+}
+
+// 0x47f908 — __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv")]
+pub fn stub_47f908() -> ! {
+    todo!("0x47f908 __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv")
+}
+
+// 0x47f91c — `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// type: void __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+pub fn stub_47f91c() -> ! {
+    todo!("0x47f91c `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+}
+
+// 0x47f960 — `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// type: void __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+pub fn stub_47f960() -> ! {
+    todo!("0x47f960 `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+}
+
+// 0x47fa48 — __ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv
+#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv")]
+pub fn stub_47fa48() -> ! {
+    todo!("0x47fa48 __ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv")
+}
+
+// 0x47fa58 — `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// type: void __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+pub fn stub_47fa58() -> ! {
+    todo!("0x47fa58 `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+}
+
+// 0x47fa9c — `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// type: void __fastcall(RBX::DebugSettings *__hidden this)
+#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+pub fn stub_47fa9c() -> ! {
+    todo!("0x47fa9c `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+}
+
+// 0x48006c — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE17static_getCreatorEv
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_48006c() -> ! {
+    todo!("0x48006c __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0x4800e0 — __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator12getClassNameEv
+// type: int(void)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator12getClassNameEv")]
+pub fn stub_4800e0() -> ! {
+    todo!("0x4800e0 __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE7Creator12getClassNameEv")
+}
+
+// 0x480e60 — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(RBX::DebugSettings::ErrorReporting const&)const
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(RBX::DebugSettings::ErrorReporting const&)const")]
+pub fn stub_480e60() -> ! {
+    todo!("0x480e60 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(RBX::DebugSettings::ErrorReporting const&)const")
+}
+
+// 0x481000 — rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DebugSettings::ErrorReporting>(RBX::DebugSettings::ErrorReporting const&)
+// type: int(void)
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DebugSettings::ErrorReporting>(RBX::DebugSettings::ErrorReporting const&)")]
+pub fn stub_481000() -> ! {
+    todo!("0x481000 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::DebugSettings::ErrorReporting>(RBX::DebugSettings::ErrorReporting const&)")
+}
+
+// 0x481050 — rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::singleton(void)
+// type: int(void)
+#[doc(alias = "rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::singleton(void)")]
+pub fn stub_481050() -> ! {
+    todo!("0x481050 rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::singleton(void)")
+}
+
+// 0x4810bc — rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::construct_func(char const*,char *)
+#[doc(alias = "rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::construct_func(char const*,char *)")]
+pub fn stub_4810bc() -> ! {
+    todo!("0x4810bc rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::construct_func(char const*,char *)")
+}
+
+// 0x4810c8 — rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::destruct_func(char *)
+#[doc(alias = "rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::destruct_func(char *)")]
+pub fn stub_4810c8() -> ! {
+    todo!("0x4810c8 rbx::implementation::typed_holder<RBX::DebugSettings::ErrorReporting>::destruct_func(char *)")
+}
+
+// 0x4810cc — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToItem(RBX::DebugSettings::ErrorReporting const&)const
+// type: int(void)
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToItem(RBX::DebugSettings::ErrorReporting const&)const")]
+pub fn stub_4810cc() -> ! {
+    todo!("0x4810cc RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToItem(RBX::DebugSettings::ErrorReporting const&)const")
+}
+
+// 0x481198 — RBX::DebugSettings::ErrorReporting const& rbx::any_cast<RBX::DebugSettings::ErrorReporting const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
+// type: int(void)
+#[doc(alias = "RBX::DebugSettings::ErrorReporting const& rbx::any_cast<RBX::DebugSettings::ErrorReporting const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+pub fn stub_481198() -> ! {
+    todo!("0x481198 RBX::DebugSettings::ErrorReporting const& rbx::any_cast<RBX::DebugSettings::ErrorReporting const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+}
+
+// 0x481288 — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(RBX::Name const&,RBX::DebugSettings::ErrorReporting&)const
+// type: int(void)
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(RBX::Name const&,RBX::DebugSettings::ErrorReporting&)const")]
+pub fn stub_481288() -> ! {
+    todo!("0x481288 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(RBX::Name const&,RBX::DebugSettings::ErrorReporting&)const")
+}
+
+// 0x481304 — RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
+pub fn stub_481304() -> ! {
+    todo!("0x481304 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+}
+
+// 0x482c00 — boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+// was: boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+pub fn stub_482c00() -> ! {
+    todo!("0x482c00 boost::detail::sp_counted_impl_pd<RBX::DebugSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x48409c — __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev
+#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")]
+pub fn stub_48409c() -> ! {
+    todo!("0x48409c __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")
+}
+
+// 0x4840dc — __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev
+#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")]
+pub fn stub_4840dc() -> ! {
+    todo!("0x4840dc __ZN3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")
+}
+
+// 0x4841bc — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev
+#[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")]
+pub fn stub_4841bc() -> ! {
+    todo!("0x4841bc __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")
+}
+
+// 0x484200 — __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev
+#[doc(alias = "__ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")]
+pub fn stub_484200() -> ! {
+    todo!("0x484200 __ZThn32_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")
+}
+
+// 0x484208 — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev
+#[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")]
+pub fn stub_484208() -> ! {
+    todo!("0x484208 __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED1Ev")
+}
+
+// 0x48424c — __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev
+#[doc(alias = "__ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")]
+pub fn stub_48424c() -> ! {
+    todo!("0x48424c __ZThn36_N3RBX26GlobalAdvancedSettingsItemINS_13DebugSettingsELZNS_14sDebugSettingsEEED0Ev")
+}
+
+// 0x484254 — __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_484254() -> ! {
+    todo!("0x484254 __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+}
+
+// 0x484370 — __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_484370() -> ! {
+    todo!("0x484370 __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x484374 — __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_484374() -> ! {
+    todo!("0x484374 __ZN3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x484414 — __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_484414() -> ! {
+    todo!("0x484414 __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x48441c — __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_48441c() -> ! {
+    todo!("0x48441c __ZThn32_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4844c0 — __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_4844c0() -> ! {
+    todo!("0x4844c0 __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4844c8 — __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_4844c8() -> ! {
+    todo!("0x4844c8 __ZThn36_N3RBX10Reflection9DescribedINS_13DebugSettingsELZNS_14sDebugSettingsEENS_14FactoryProductIS2_NS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x48456c — RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_48456c() -> ! {
+    todo!("0x48456c RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::PropDescriptor<int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int)>(char const*,char const*,int (RBX::DebugSettings::*)(void)const,void (RBX::DebugSettings::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
 }
 
