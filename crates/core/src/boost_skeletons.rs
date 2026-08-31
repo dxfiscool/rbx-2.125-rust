@@ -23777,3 +23777,703 @@ pub fn boost_stub_3ae028(_ptr: crate::SharedPtr<()>) {
 pub fn boost_stub_3ae138(_ptr: crate::SharedPtr<()>) {
     todo!("0x3ae138 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEN5boost8functionIS6_EELi3ES6_ED0Ev")
 }
+
+#[doc(alias = "boost::function3<void,G3D::Vector3::Axis,float,float>::assign_to_own(boost::function3<void,G3D::Vector3::Axis,float,float> const&)")]
+// 0x3ae268 — __ZN5boost9function3IvN3G3D7Vector34AxisEffE13assign_to_ownERKS4_
+// was: boost::function3<void,G3D::Vector3::Axis,float,float>::assign_to_own(boost::function3<void,G3D::Vector3::Axis,float,float> const&)
+pub fn boost_stub_3ae268(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3ae268 __ZN5boost9function3IvN3G3D7Vector34AxisEffE13assign_to_ownERKS4_")
+}
+
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis),rbx::remote_signal<void ()(G3D::Vector3::Axis)>,rbx::remote_signal<void ()(G3D::Vector3::Axis)> RBX::ArcHandles::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+// 0x3ae680 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_10ArcHandlesEFvN3G3D7Vector34AxisEEN3rbx13remote_signalIS6_EEMS2_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+// was: RBX::Reflection::EventDescImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis),rbx::remote_signal<void ()(G3D::Vector3::Axis)>,rbx::remote_signal<void ()(G3D::Vector3::Axis)> RBX::ArcHandles::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
+pub fn boost_stub_3ae680(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3ae680 __ZNK3RBX10Reflection13EventDescImplILi1ENS_10ArcHandlesEFvN3G3D7Vector34AxisEEN3rbx13remote_signalIS6_EEMS2_S9_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list_av_2<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>>(void (RBX::Reflection::GenericSlotWrapper::*)(G3D::Vector3::Axis const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>)")]
+// 0x3ae8a4 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKN3G3D7Vector34AxisENS_10shared_ptrIS3_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1ISF_T0_T1_EENSD_9list_av_2IT2_T3_E4typeEEEMSI_FSF_SJ_ESM_SN_
+// was: boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list_av_2<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>>(void (RBX::Reflection::GenericSlotWrapper::*)(G3D::Vector3::Axis const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>)
+pub fn boost_stub_3ae8a4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3ae8a4 __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKN3G3D7Vector34AxisENS_10shared_ptrIS3_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1ISF_T0_T1_EENSD_9list_av_2IT2_T3_E4typeEEEMSI_FSF_SJ_ESM_SN_")
+}
+
+#[doc(alias = "boost::function1<void,G3D::Vector3::Axis>::clear(void)")]
+// 0x3aeb04 — __ZN5boost9function1IvN3G3D7Vector34AxisEE5clearEv
+// was: boost::function1<void,G3D::Vector3::Axis>::clear(void)
+pub fn boost_stub_3aeb04(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3aeb04 __ZN5boost9function1IvN3G3D7Vector34AxisEE5clearEv")
+}
+
+#[doc(alias = "__ZN5boost8functionIFvN3G3D7Vector34AxisEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS3_EENS7_5list2INS7_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")]
+// 0x3aeb30 — __ZN5boost8functionIFvN3G3D7Vector34AxisEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS3_EENS7_5list2INS7_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost8functionIFvN3G3D7Vector34AxisEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS3_EENS7_5list2INS7_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE
+pub fn boost_stub_3aeb30(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3aeb30 __ZN5boost8functionIFvN3G3D7Vector34AxisEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS3_EENS7_5list2INS7_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISQ_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "__ZN5boost9function1IvN3G3D7Vector34AxisEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS3_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
+// 0x3aec14 — __ZN5boost9function1IvN3G3D7Vector34AxisEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS3_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost9function1IvN3G3D7Vector34AxisEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS3_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
+pub fn boost_stub_3aec14(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3aec14 __ZN5boost9function1IvN3G3D7Vector34AxisEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS3_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "void boost::function1<void,G3D::Vector3::Axis>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>)")]
+// 0x3aecfc — __ZN5boost9function1IvN3G3D7Vector34AxisEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS3_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEvT_
+// was: void boost::function1<void,G3D::Vector3::Axis>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>)
+pub fn boost_stub_3aecfc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3aecfc __ZN5boost9function1IvN3G3D7Vector34AxisEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS3_EENS6_5list2INS6_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEvT_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// 0x3aedf4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKN3G3D7Vector34AxisEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn boost_stub_3aedf4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3aedf4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKN3G3D7Vector34AxisEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE")
+}
+
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,G3D::Vector3::Axis>::invoke(boost::detail::function::function_buffer &,G3D::Vector3::Axis)")]
+// 0x3aee10 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKN3G3D7Vector34AxisEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_
+// was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,G3D::Vector3::Axis>::invoke(boost::detail::function::function_buffer &,G3D::Vector3::Axis)
+pub fn boost_stub_3aee10(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3aee10 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKN3G3D7Vector34AxisEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,G3D::Vector3::Axis>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
+// 0x3aee24 — __ZNK5boost6detail8function13basic_vtable1IvN3G3D7Vector34AxisEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS5_EENS8_5list2INS8_5valueINS_10shared_ptrISE_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
+// was: bool boost::detail::function::basic_vtable1<void,G3D::Vector3::Axis>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const
+pub fn boost_stub_3aee24(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3aee24 __ZNK5boost6detail8function13basic_vtable1IvN3G3D7Vector34AxisEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS5_EENS8_5list2INS8_5valueINS_10shared_ptrISE_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,G3D::Vector3::Axis>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// 0x3aef0c — __ZNK5boost6detail8function13basic_vtable1IvN3G3D7Vector34AxisEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS5_EENS8_5list2INS8_5valueINS_10shared_ptrISE_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// was: bool boost::detail::function::basic_vtable1<void,G3D::Vector3::Axis>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn boost_stub_3aef0c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3aef0c __ZNK5boost6detail8function13basic_vtable1IvN3G3D7Vector34AxisEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS5_EENS8_5list2INS8_5valueINS_10shared_ptrISE_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+#[doc(alias = "void boost::detail::function::basic_vtable1<void,G3D::Vector3::Axis>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+// 0x3aeff0 — __ZNK5boost6detail8function13basic_vtable1IvN3G3D7Vector34AxisEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS5_EENS8_5list2INS8_5valueINS_10shared_ptrISE_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// was: void boost::detail::function::basic_vtable1<void,G3D::Vector3::Axis>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
+pub fn boost_stub_3aeff0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3aeff0 __ZNK5boost6detail8function13basic_vtable1IvN3G3D7Vector34AxisEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKS5_EENS8_5list2INS8_5valueINS_10shared_ptrISE_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+}
+
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<G3D::Vector3::Axis>(G3D::Vector3::Axis &)")]
+// 0x3af0c4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKN3G3D7Vector34AxisEEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIS9_EEvRT_
+// was: void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<G3D::Vector3::Axis>(G3D::Vector3::Axis &)
+pub fn boost_stub_3af0c4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af0c4 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKN3G3D7Vector34AxisEEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIS9_EEvRT_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+// 0x3af0dc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKN3G3D7Vector34AxisEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,G3D::Vector3::Axis const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+pub fn boost_stub_3af0dc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af0dc __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKN3G3D7Vector34AxisEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(G3D::Vector3::Axis)>::connect<boost::function<void ()(G3D::Vector3::Axis)>>(boost::function<void ()(G3D::Vector3::Axis)> const&)")]
+// 0x3af234 — __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_
+// was: rbx::signals::connection rbx::signals::signal<void ()(G3D::Vector3::Axis)>::connect<boost::function<void ()(G3D::Vector3::Axis)>>(boost::function<void ()(G3D::Vector3::Axis)> const&)
+pub fn boost_stub_3af234(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af234 __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE7connectIN5boost8functionIS5_EEEENS0_10connectionERKT_")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>*>(boost::function<void ()(G3D::Vector3::Axis)> const&,rbx::signals::signal<void ()(G3D::Vector3::Axis)>*)")]
+// 0x3af328 — __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_EC2IPS7_EERKSB_T_
+// was: rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>*>(boost::function<void ()(G3D::Vector3::Axis)> const&,rbx::signals::signal<void ()(G3D::Vector3::Axis)>*)
+pub fn boost_stub_3af328(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af328 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_EC2IPS7_EERKSB_T_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3::Axis)>::callable_slot<boost::function<void ()(G3D::Vector3::Axis)>>::~callable_slot()")]
+// 0x3af424 — __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE13callable_slotIN5boost8functionIS5_EEED1Ev
+// was: rbx::signals::signal<void ()(G3D::Vector3::Axis)>::callable_slot<boost::function<void ()(G3D::Vector3::Axis)>>::~callable_slot()
+pub fn boost_stub_3af424(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af424 __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE13callable_slotIN5boost8functionIS5_EEED1Ev")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3::Axis)>::callable_slot<boost::function<void ()(G3D::Vector3::Axis)>>::~callable_slot()")]
+// 0x3af534 — __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE13callable_slotIN5boost8functionIS5_EEED0Ev
+// was: rbx::signals::signal<void ()(G3D::Vector3::Axis)>::callable_slot<boost::function<void ()(G3D::Vector3::Axis)>>::~callable_slot()
+pub fn boost_stub_3af534(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af534 __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE13callable_slotIN5boost8functionIS5_EEED0Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
+// 0x3af664 — __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
+// was: rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)
+pub fn boost_stub_3af664(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af664 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
+}
+
+#[doc(alias = "non_virtual_thunk_torbx::callable<rbx::signals::signal<void_()(G3D::Vector3::Axis)>::slot,boost::function<void_()(G3D::Vector3::Axis)>,1,void_()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
+// 0x3af66c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
+// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)
+pub fn boost_stub_3af66c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af66c __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
+}
+
+#[doc(alias = "boost::function1<void,G3D::Vector3::Axis>::operator()(G3D::Vector3::Axis)const")]
+// 0x3af674 — __ZNK5boost9function1IvN3G3D7Vector34AxisEEclES3_
+// was: boost::function1<void,G3D::Vector3::Axis>::operator()(G3D::Vector3::Axis)const
+pub fn boost_stub_3af674(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af674 __ZNK5boost9function1IvN3G3D7Vector34AxisEEclES3_")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::~callable()")]
+// 0x3af738 — __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_ED1Ev
+// was: rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::~callable()
+pub fn boost_stub_3af738(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af738 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_ED1Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::~callable()")]
+// 0x3af848 — __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_ED0Ev
+// was: rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::~callable()
+pub fn boost_stub_3af848(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af848 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_ED0Ev")
+}
+
+#[doc(alias = "boost::function1<void,G3D::Vector3::Axis>::assign_to_own(boost::function1<void,G3D::Vector3::Axis> const&)")]
+// 0x3af978 — __ZN5boost9function1IvN3G3D7Vector34AxisEE13assign_to_ownERKS4_
+// was: boost::function1<void,G3D::Vector3::Axis>::assign_to_own(boost::function1<void,G3D::Vector3::Axis> const&)
+pub fn boost_stub_3af978(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3af978 __ZN5boost9function1IvN3G3D7Vector34AxisEE13assign_to_ownERKS4_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::Backpack> RBX::Creatable<RBX::Instance>::create<RBX::Backpack>(void)")]
+// 0x3b16ac — __ZN3RBX9CreatableINS_8InstanceEE6createINS_8BackpackEEEN5boost10shared_ptrIT_EEv
+// was: boost::shared_ptr<RBX::Backpack> RBX::Creatable<RBX::Instance>::create<RBX::Backpack>(void)
+pub fn boost_stub_3b16ac(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b16ac __ZN3RBX9CreatableINS_8InstanceEE6createINS_8BackpackEEEN5boost10shared_ptrIT_EEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::Backpack>::shared_ptr<RBX::Backpack,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// 0x3b175c — __ZN5boost10shared_ptrIN3RBX8BackpackEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::Backpack>::shared_ptr<RBX::Backpack,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn boost_stub_3b175c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b175c __ZN5boost10shared_ptrIN3RBX8BackpackEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// 0x3b1824 — __ZN5boost6detail12shared_countC2IPN3RBX8BackpackENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn boost_stub_3b1824(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b1824 __ZN5boost6detail12shared_countC2IPN3RBX8BackpackENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "RBX::BadgeService::userHasBadge(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b21a4 — __ZN3RBX12BadgeService12userHasBadgeEiiN5boost8functionIFvbEEENS2_IFvSsEEE
+// was: RBX::BadgeService::userHasBadge(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b21a4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b21a4 __ZN3RBX12BadgeService12userHasBadgeEiiN5boost8functionIFvbEEENS2_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::awardBadge(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b2908 — __ZN3RBX12BadgeService10awardBadgeEiiN5boost8functionIFvbEEENS2_IFvSsEEE
+// was: RBX::BadgeService::awardBadge(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b2908(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b2908 __ZN3RBX12BadgeService10awardBadgeEiiN5boost8functionIFvbEEENS2_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::isDisabled(int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b3160 — __ZN3RBX12BadgeService10isDisabledEiN5boost8functionIFvbEEENS2_IFvSsEEE
+// was: RBX::BadgeService::isDisabled(int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b3160(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b3160 __ZN3RBX12BadgeService10isDisabledEiN5boost8functionIFvbEEENS2_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::isLegal(int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b3840 — __ZN3RBX12BadgeService7isLegalEiN5boost8functionIFvbEEENS2_IFvSsEEE
+// was: RBX::BadgeService::isLegal(int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b3840(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b3840 __ZN3RBX12BadgeService7isLegalEiN5boost8functionIFvbEEENS2_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::hasBadgeResultHelper(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b42f4 — __ZN3RBX12BadgeService20hasBadgeResultHelperEN5boost8weak_ptrIS0_EEiiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
+// was: RBX::BadgeService::hasBadgeResultHelper(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b42f4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b42f4 __ZN3RBX12BadgeService20hasBadgeResultHelperEN5boost8weak_ptrIS0_EEiiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::hasBadgeResult(int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b4424 — __ZN3RBX12BadgeService14hasBadgeResultEiiPSsPSt9exceptionN5boost8functionIFvbEEENS5_IFvSsEEE
+// was: RBX::BadgeService::hasBadgeResult(int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b4424(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b4424 __ZN3RBX12BadgeService14hasBadgeResultEiiPSsPSt9exceptionN5boost8functionIFvbEEENS5_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::isDiabledResultHelper(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b4720 — __ZN3RBX12BadgeService21isDiabledResultHelperEN5boost8weak_ptrIS0_EEiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
+// was: RBX::BadgeService::isDiabledResultHelper(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b4720(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b4720 __ZN3RBX12BadgeService21isDiabledResultHelperEN5boost8weak_ptrIS0_EEiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::isDisabledResult(int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b484c — __ZN3RBX12BadgeService16isDisabledResultEiPSsPSt9exceptionN5boost8functionIFvbEEENS5_IFvSsEEE
+// was: RBX::BadgeService::isDisabledResult(int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b484c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b484c __ZN3RBX12BadgeService16isDisabledResultEiPSsPSt9exceptionN5boost8functionIFvbEEENS5_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::isLegalResultHelper(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b4a20 — __ZN3RBX12BadgeService19isLegalResultHelperEN5boost8weak_ptrIS0_EEiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
+// was: RBX::BadgeService::isLegalResultHelper(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b4a20(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b4a20 __ZN3RBX12BadgeService19isLegalResultHelperEN5boost8weak_ptrIS0_EEiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::isLegalResult(int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b4b4c — __ZN3RBX12BadgeService13isLegalResultEiPSsPSt9exceptionN5boost8functionIFvbEEENS5_IFvSsEEE
+// was: RBX::BadgeService::isLegalResult(int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b4b4c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b4b4c __ZN3RBX12BadgeService13isLegalResultEiPSsPSt9exceptionN5boost8functionIFvbEEENS5_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::awardBadgeResultHelper(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b4d20 — __ZN3RBX12BadgeService22awardBadgeResultHelperEN5boost8weak_ptrIS0_EEiiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
+// was: RBX::BadgeService::awardBadgeResultHelper(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b4d20(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b4d20 __ZN3RBX12BadgeService22awardBadgeResultHelperEN5boost8weak_ptrIS0_EEiiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BadgeService::awardBadgeResult(int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b4e50 — __ZN3RBX12BadgeService16awardBadgeResultEiiPSsPSt9exceptionN5boost8functionIFvbEEENS5_IFvSsEEE
+// was: RBX::BadgeService::awardBadgeResult(int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b4e50(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b4e50 __ZN3RBX12BadgeService16awardBadgeResultEiiPSsPSt9exceptionN5boost8functionIFvbEEENS5_IFvSsEEE")
+}
+
+#[doc(alias = "void RBX::Reflection::resume_adapter<bool>(boost::function<void ()(RBX::Reflection::Variant)>,bool)")]
+// 0x3b50bc — __ZN3RBX10ReflectionL14resume_adapterIbEEvN5boost8functionIFvNS0_7VariantEEEET_
+// was: void RBX::Reflection::resume_adapter<bool>(boost::function<void ()(RBX::Reflection::Variant)>,bool)
+pub fn boost_stub_3b50bc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b50bc __ZN3RBX10ReflectionL14resume_adapterIbEEvN5boost8functionIFvNS0_7VariantEEEET_")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list_av_7<boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b5484 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENS8_IFvSsEEES4_iiNS_3argILi1EEENSD_ILi2EEESA_SC_EENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_T4_T5_T6_ENSG_9list_av_7IT7_T8_T9_T10_T11_T12_T13_E4typeEEESR_ST_SU_SV_SW_SX_SY_SZ_
+// was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list_av_7<boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b5484(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b5484 __ZN5boost4bindIvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENS8_IFvSsEEES4_iiNS_3argILi1EEENSD_ILi2EEESA_SC_EENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_T4_T5_T6_ENSG_9list_av_7IT7_T8_T9_T10_T11_T12_T13_E4typeEEESR_ST_SU_SV_SW_SX_SY_SZ_")
+}
+
+#[doc(alias = "boost::weak_ptr<RBX::BadgeService> RBX::weak_from<RBX::BadgeService>(RBX::BadgeService*)")]
+// 0x3b5728 — __ZN3RBX9weak_fromINS_12BadgeServiceEEEN5boost8weak_ptrIT_EEPS4_
+// was: boost::weak_ptr<RBX::BadgeService> RBX::weak_from<RBX::BadgeService>(RBX::BadgeService*)
+pub fn boost_stub_3b5728(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b5728 __ZN3RBX9weak_fromINS_12BadgeServiceEEEN5boost8weak_ptrIT_EEPS4_")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list_av_6<boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+// 0x3b5978 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENS8_IFvSsEEES4_iNS_3argILi1EEENSD_ILi2EEESA_SC_EENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_T4_T5_ENSG_9list_av_6IT6_T7_T8_T9_T10_T11_E4typeEEESQ_SS_ST_SU_SV_SW_SX_
+// was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list_av_6<boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)
+pub fn boost_stub_3b5978(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b5978 __ZN5boost4bindIvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENS8_IFvSsEEES4_iNS_3argILi1EEENSD_ILi2EEESA_SC_EENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_T4_T5_ENSG_9list_av_6IT6_T7_T8_T9_T10_T11_E4typeEEESQ_SS_ST_SU_SV_SW_SX_")
+}
+
+#[doc(alias = "__ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS0_IFvbEEENS0_IFvSsEEEENS7_5list6INS7_5valueISC_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")]
+// 0x3b6384 — __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS0_IFvbEEENS0_IFvSsEEEENS7_5list6INS7_5valueISC_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS0_IFvbEEENS0_IFvSsEEEENS7_5list6INS7_5valueISC_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
+pub fn boost_stub_3b6384(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b6384 __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS0_IFvbEEENS0_IFvSsEEEENS7_5list6INS7_5valueISC_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "__ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list6INS6_5valueISB_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")]
+// 0x3b6540 — __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list6INS6_5valueISB_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list6INS6_5valueISB_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
+pub fn boost_stub_3b6540(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b6540 __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list6INS6_5valueISB_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage6(boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>> const&)")]
+// 0x3b6700 — __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ERKSJ_
+// was: boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage6(boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>> const&)
+pub fn boost_stub_3b6700(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b6700 __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ERKSJ_")
+}
+
+#[doc(alias = "void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>)")]
+// 0x3b6880 — __ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list6INS6_5valueISB_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEEvT_
+// was: void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>)
+pub fn boost_stub_3b6880(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b6880 __ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list6INS6_5valueISB_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEEvT_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// 0x3b6a4c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list6INS3_5valueIS8_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn boost_stub_3b6a4c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b6a4c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list6INS3_5valueIS8_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE")
+}
+
+#[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")]
+// 0x3b6a68 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list6INS3_5valueIS8_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEvS9_SB_E6invokeERNS1_15function_bufferES9_SB_
+// was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)
+pub fn boost_stub_3b6a68(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b6a68 __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list6INS3_5valueIS8_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEvS9_SB_E6invokeERNS1_15function_bufferES9_SB_")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &)const")]
+// 0x3b6a88 — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list6INS8_5valueISD_EENSM_IiEENS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferE
+// was: bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &)const
+pub fn boost_stub_3b6a88(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b6a88 __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list6INS8_5valueISD_EENSM_IiEENS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// 0x3b6c44 — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list6INS8_5valueISD_EENSM_IiEENS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// was: bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn boost_stub_3b6c44(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b6c44 __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list6INS8_5valueISD_EENSM_IiEENS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+#[doc(alias = "void boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+// 0x3b6dfc — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list6INS8_5valueISD_EENSM_IiEENS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// was: void boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
+pub fn boost_stub_3b6dfc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b6dfc __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list6INS8_5valueISD_EENSM_IiEENS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+}
+
+#[doc(alias = "void boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::operator()<void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)")]
+// 0x3b6ebc — __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEclIPFvS6_iPSsPSt9exceptionSE_SH_ENS0_5list2IRSL_RSN_EEEEvNS0_4typeIvEERT_RT0_i
+// was: void boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::operator()<void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)
+pub fn boost_stub_3b6ebc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b6ebc __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEclIPFvS6_iPSsPSt9exceptionSE_SH_ENS0_5list2IRSL_RSN_EEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+// 0x3b7054 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list6INS3_5valueIS8_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+pub fn boost_stub_3b7054(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b7054 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list6INS3_5valueIS8_EENSK_IiEENS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+#[doc(alias = "boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list6(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")]
+// 0x3b7224 — __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_SA_SB_SF_SI_
+// was: boost::_bi::list6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list6(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)
+pub fn boost_stub_3b7224(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b7224 __ZN5boost3_bi5list6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_SA_SB_SF_SI_")
+}
+
+#[doc(alias = "boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage6(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")]
+// 0x3b73a4 — __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_SA_SB_SF_SI_
+// was: boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage6(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)
+pub fn boost_stub_3b73a4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b73a4 __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_SA_SB_SF_SI_")
+}
+
+#[doc(alias = "boost::_bi::storage5<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>>::storage5(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>)")]
+// 0x3b7550 — __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEEEC2ES7_S8_SA_SB_SF_
+// was: boost::_bi::storage5<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>>::storage5(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>)
+pub fn boost_stub_3b7550(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b7550 __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEEEC2ES7_S8_SA_SB_SF_")
+}
+
+#[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>)")]
+// 0x3b7698 — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEEEC2ES7_S8_SA_SB_
+// was: boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>)
+pub fn boost_stub_3b7698(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b7698 __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEEEC2ES7_S8_SA_SB_")
+}
+
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>)")]
+// 0x3b77b4 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEEEC2ES7_S8_SA_
+// was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::arg<1>)
+pub fn boost_stub_3b77b4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b77b4 __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEENS_3argILi1EEEEC2ES7_S8_SA_")
+}
+
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>)")]
+// 0x3b78d0 — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEEEC2ES7_S8_
+// was: boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>)
+pub fn boost_stub_3b78d0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b78d0 __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEEEC2ES7_S8_")
+}
+
+#[doc(alias = "__ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS0_IFvbEEENS0_IFvSsEEEENS7_5list7INS7_5valueISC_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")]
+// 0x3b7b94 — __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS0_IFvbEEENS0_IFvSsEEEENS7_5list7INS7_5valueISC_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS0_IFvbEEENS0_IFvSsEEEENS7_5list7INS7_5valueISC_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
+pub fn boost_stub_3b7b94(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b7b94 __ZN5boost8functionIFvPSsPSt9exceptionEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS0_IFvbEEENS0_IFvSsEEEENS7_5list7INS7_5valueISC_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "__ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list7INS6_5valueISB_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")]
+// 0x3b7d50 — __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list7INS6_5valueISB_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list7INS6_5valueISB_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
+pub fn boost_stub_3b7d50(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b7d50 __ZN5boost9function2IvPSsPSt9exceptionEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list7INS6_5valueISB_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "boost::_bi::storage7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage7(boost::_bi::storage7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>> const&)")]
+// 0x3b7f10 — __ZN5boost3_bi8storage7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ERKSJ_
+// was: boost::_bi::storage7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage7(boost::_bi::storage7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>> const&)
+pub fn boost_stub_3b7f10(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b7f10 __ZN5boost3_bi8storage7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ERKSJ_")
+}
+
+#[doc(alias = "void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>)")]
+// 0x3b8094 — __ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list7INS6_5valueISB_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEEvT_
+// was: void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>)
+pub fn boost_stub_3b8094(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b8094 __ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS1_S3_NS_8functionIFvbEEENSC_IFvSsEEEENS6_5list7INS6_5valueISB_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEEEvT_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// 0x3b8260 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list7INS3_5valueIS8_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn boost_stub_3b8260(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b8260 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list7INS3_5valueIS8_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE6manageERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeE")
+}
+
+#[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")]
+// 0x3b827c — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list7INS3_5valueIS8_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEvS9_SB_E6invokeERNS1_15function_bufferES9_SB_
+// was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)
+pub fn boost_stub_3b827c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b827c __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list7INS3_5valueIS8_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEvS9_SB_E6invokeERNS1_15function_bufferES9_SB_")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &)const")]
+// 0x3b829c — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list7INS8_5valueISD_EENSM_IiEESO_NS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferE
+// was: bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &)const
+pub fn boost_stub_3b829c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b829c __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list7INS8_5valueISD_EENSM_IiEESO_NS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// 0x3b8458 — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list7INS8_5valueISD_EENSM_IiEESO_NS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// was: bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn boost_stub_3b8458(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b8458 __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list7INS8_5valueISD_EENSM_IiEESO_NS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+#[doc(alias = "void boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+// 0x3b8610 — __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list7INS8_5valueISD_EENSM_IiEESO_NS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// was: void boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
+pub fn boost_stub_3b8610(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b8610 __ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiS3_S5_NS_8functionIFvbEEENSE_IFvSsEEEENS8_5list7INS8_5valueISD_EENSM_IiEESO_NS_3argILi1EEENSP_ILi2EEENSM_ISG_EENSM_ISI_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+}
+
+#[doc(alias = "void boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::operator()<void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)")]
+// 0x3b86d0 — __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEclIPFvS6_iiPSsPSt9exceptionSE_SH_ENS0_5list2IRSL_RSN_EEEEvNS0_4typeIvEERT_RT0_i
+// was: void boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::operator()<void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)
+pub fn boost_stub_3b86d0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b86d0 __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEclIPFvS6_iiPSsPSt9exceptionSE_SH_ENS0_5list2IRSL_RSN_EEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+// 0x3b8870 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list7INS3_5valueIS8_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+pub fn boost_stub_3b8870(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b8870 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENSC_IFvSsEEEENS3_5list7INS3_5valueIS8_EENSK_IiEESM_NS_3argILi1EEENSN_ILi2EEENSK_ISE_EENSK_ISG_EEEEEEE7managerERKNS1_15function_bufferERSV_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+#[doc(alias = "boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list7(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")]
+// 0x3b8a40 — __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_S8_SA_SB_SF_SI_
+// was: boost::_bi::list7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list7(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)
+pub fn boost_stub_3b8a40(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b8a40 __ZN5boost3_bi5list7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_S8_SA_SB_SF_SI_")
+}
+
+#[doc(alias = "boost::_bi::storage7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage7(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")]
+// 0x3b8bc8 — __ZN5boost3_bi8storage7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_S8_SA_SB_SF_SI_
+// was: boost::_bi::storage7<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::storage7(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>,boost::_bi::value<boost::function<void ()(std::string)>>)
+pub fn boost_stub_3b8bc8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b8bc8 __ZN5boost3_bi8storage7INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEENS2_INSC_IFvSsEEEEEEC2ES7_S8_S8_SA_SB_SF_SI_")
+}
+
+#[doc(alias = "boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>>::storage6(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>)")]
+// 0x3b8d7c — __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEEEC2ES7_S8_S8_SA_SB_SF_
+// was: boost::_bi::storage6<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>>::storage6(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(bool)>>)
+pub fn boost_stub_3b8d7c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b8d7c __ZN5boost3_bi8storage6INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEENS2_INS_8functionIFvbEEEEEEC2ES7_S8_S8_SA_SB_SF_")
+}
+
+#[doc(alias = "boost::_bi::storage5<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>::storage5(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>)")]
+// 0x3b8ec8 — __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEEEC2ES7_S8_S8_SA_SB_
+// was: boost::_bi::storage5<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>::storage5(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>)
+pub fn boost_stub_3b8ec8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b8ec8 __ZN5boost3_bi8storage5INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEENS9_ILi2EEEEC2ES7_S8_S8_SA_SB_")
+}
+
+#[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>)")]
+// 0x3b8fe4 — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEEEC2ES7_S8_S8_SA_
+// was: boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>,boost::arg<1>)
+pub fn boost_stub_3b8fe4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b8fe4 __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_NS_3argILi1EEEEC2ES7_S8_S8_SA_")
+}
+
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>)")]
+// 0x3b9100 — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_EC2ES7_S8_S8_
+// was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::BadgeService>>,boost::_bi::value<int>,boost::_bi::value<int>)
+pub fn boost_stub_3b9100(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b9100 __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX12BadgeServiceEEEEENS2_IiEES8_EC2ES7_S8_S8_")
+}
+
+#[doc(alias = "boost::weak_ptr<RBX::BadgeService>::weak_ptr<RBX::BadgeService>(boost::shared_ptr<RBX::BadgeService> const&,boost::detail::sp_enable_if_convertible<RBX::BadgeService,RBX::BadgeService>::type)")]
+// 0x3b9224 — __ZN5boost8weak_ptrIN3RBX12BadgeServiceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
+// was: boost::weak_ptr<RBX::BadgeService>::weak_ptr<RBX::BadgeService>(boost::shared_ptr<RBX::BadgeService> const&,boost::detail::sp_enable_if_convertible<RBX::BadgeService,RBX::BadgeService>::type)
+pub fn boost_stub_3b9224(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b9224 __ZN5boost8weak_ptrIN3RBX12BadgeServiceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::BadgeService>::shared_ptr<RBX::BadgeService>(boost::weak_ptr<RBX::BadgeService> const&,boost::detail::sp_nothrow_tag)")]
+// 0x3b9738 — __ZN5boost10shared_ptrIN3RBX12BadgeServiceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
+// was: boost::shared_ptr<RBX::BadgeService>::shared_ptr<RBX::BadgeService>(boost::weak_ptr<RBX::BadgeService> const&,boost::detail::sp_nothrow_tag)
+pub fn boost_stub_3b9738(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b9738 __ZN5boost10shared_ptrIN3RBX12BadgeServiceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
+}
+
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::BadgeService,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::BadgeService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+// 0x3b9bc0 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12BadgeServiceEFvSsEN3rbx13remote_signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+// was: RBX::Reflection::EventDescImpl<1,RBX::BadgeService,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::BadgeService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
+pub fn boost_stub_3b9bc0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3b9bc0 __ZNK3RBX10Reflection13EventDescImplILi1ENS_12BadgeServiceEFvSsEN3rbx13remote_signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
+}
+
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int),bool,1>::BoundYieldFuncDesc(void (RBX::BadgeService::*)(int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+// 0x3ba8e8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_12BadgeServiceEFbiEbLi1EEC2EMS2_FviN5boost8functionIFvbEEENS6_IFvSsEEEEPKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int),bool,1>::BoundYieldFuncDesc(void (RBX::BadgeService::*)(int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+pub fn boost_stub_3ba8e8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3ba8e8 __ZN3RBX10Reflection18BoundYieldFuncDescINS_12BadgeServiceEFbiEbLi1EEC2EMS2_FviN5boost8functionIFvbEEENS6_IFvSsEEEEPKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int),bool,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
+// 0x3bab64 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_12BadgeServiceEFbiEbLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int),bool,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const
+pub fn boost_stub_3bab64(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3bab64 __ZNK3RBX10Reflection18BoundYieldFuncDescINS_12BadgeServiceEFbiEbLi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int,int),bool,2>::BoundYieldFuncDesc(void (RBX::BadgeService::*)(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+// 0x3bad04 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_12BadgeServiceEFbiiEbLi2EEC2EMS2_FviiN5boost8functionIFvbEEENS6_IFvSsEEEEPKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int,int),bool,2>::BoundYieldFuncDesc(void (RBX::BadgeService::*)(int,int,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+pub fn boost_stub_3bad04(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3bad04 __ZN3RBX10Reflection18BoundYieldFuncDescINS_12BadgeServiceEFbiiEbLi2EEC2EMS2_FviiN5boost8functionIFvbEEENS6_IFvSsEEEEPKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int,int),bool,2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
+// 0x3baff8 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_12BadgeServiceEFbiiEbLi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::BadgeService,bool ()(int,int),bool,2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const
+pub fn boost_stub_3baff8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3baff8 __ZNK3RBX10Reflection18BoundYieldFuncDescINS_12BadgeServiceEFbiiEbLi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsEN5boost8functionIFvNS0_7VariantEEEENSB_IFvSsEEE")
+}
+
+#[doc(alias = "RBX::BillboardGui::setRenderFunction(boost::function<void ()(RBX::BillboardGui*,RBX::Adorn *)>)")]
+// 0x3c042c — __ZN3RBX12BillboardGui17setRenderFunctionEN5boost8functionIFvPS0_PNS_5AdornEEEE
+// was: RBX::BillboardGui::setRenderFunction(boost::function<void ()(RBX::BillboardGui*,RBX::Adorn *)>)
+pub fn boost_stub_3c042c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3c042c __ZN3RBX12BillboardGui17setRenderFunctionEN5boost8functionIFvPS0_PNS_5AdornEEEE")
+}
+
+#[doc(alias = "boost::function<void ()(RBX::BillboardGui *,RBX::Adorn *)>::operator=(boost::function<void ()(RBX::BillboardGui *,RBX::Adorn *)> const&)")]
+// 0x3c106c — __ZN5boost8functionIFvPN3RBX12BillboardGuiEPNS1_5AdornEEEaSERKS7_
+// was: boost::function<void ()(RBX::BillboardGui *,RBX::Adorn *)>::operator=(boost::function<void ()(RBX::BillboardGui *,RBX::Adorn *)> const&)
+pub fn boost_stub_3c106c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3c106c __ZN5boost8functionIFvPN3RBX12BillboardGuiEPNS1_5AdornEEEaSERKS7_")
+}
+
+#[doc(alias = "boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::operator()(RBX::BillboardGui *,RBX::Adorn *)const")]
+// 0x3c1130 — __ZNK5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEEclES3_S5_
+// was: boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::operator()(RBX::BillboardGui *,RBX::Adorn *)const
+pub fn boost_stub_3c1130(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3c1130 __ZNK5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEEclES3_S5_")
+}
+
+#[doc(alias = "boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::dummy::nonnull(void)")]
+// 0x3c1adc — __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE5dummy7nonnullEv
+// was: boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::dummy::nonnull(void)
+pub fn boost_stub_3c1adc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3c1adc __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE5dummy7nonnullEv")
+}
+
+#[doc(alias = "boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::swap(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>&)")]
+// 0x3c1ae0 — __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE4swapERS6_
+// was: boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::swap(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>&)
+pub fn boost_stub_3c1ae0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3c1ae0 __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE4swapERS6_")
+}
+
+#[doc(alias = "boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::move_assign(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>&)")]
+// 0x3c1bbc — __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE11move_assignERS6_
+// was: boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::move_assign(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>&)
+pub fn boost_stub_3c1bbc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3c1bbc __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE11move_assignERS6_")
+}
+
+#[doc(alias = "boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::assign_to_own(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *> const&)")]
+// 0x3c1cc0 — __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE13assign_to_ownERKS6_
+// was: boost::function2<void,RBX::BillboardGui *,RBX::Adorn *>::assign_to_own(boost::function2<void,RBX::BillboardGui *,RBX::Adorn *> const&)
+pub fn boost_stub_3c1cc0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3c1cc0 __ZN5boost9function2IvPN3RBX12BillboardGuiEPNS1_5AdornEE13assign_to_ownERKS6_")
+}
+
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+// 0x3cd39c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+// was: RBX::Reflection::EventDescImpl<1,RBX::Camera,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::Camera::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
+pub fn boost_stub_3cd39c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3cd39c __ZNK3RBX10Reflection13EventDescImplILi1ENS_6CameraEFvbEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
+}
+
+#[doc(alias = "__ZN5boost8functionIFvbEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS4_5list2INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
+// 0x3cd6d4 — __ZN5boost8functionIFvbEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS4_5list2INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
+// was: __ZN5boost8functionIFvbEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS4_5list2INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
+pub fn boost_stub_3cd6d4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3cd6d4 __ZN5boost8functionIFvbEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS4_5list2INS4_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+}
+
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,bool>::invoke(boost::detail::function::function_buffer &,bool)")]
+// 0x3cd7b8 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvbE6invokeERNS1_15function_bufferEb
+// was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,void,bool>::invoke(boost::detail::function::function_buffer &,bool)
+pub fn boost_stub_3cd7b8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3cd7b8 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvbE6invokeERNS1_15function_bufferEb")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,bool>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
+// 0x3cd7d0 — __ZNK5boost6detail8function13basic_vtable1IvbE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
+// was: bool boost::detail::function::basic_vtable1<void,bool>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const
+pub fn boost_stub_3cd7d0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3cd7d0 __ZNK5boost6detail8function13basic_vtable1IvbE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,bool>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// 0x3cd8b8 — __ZNK5boost6detail8function13basic_vtable1IvbE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// was: bool boost::detail::function::basic_vtable1<void,bool>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn boost_stub_3cd8b8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3cd8b8 __ZNK5boost6detail8function13basic_vtable1IvbE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS5_5list2INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<bool>(bool &)")]
+// 0x3cd99c — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIbEEvRT_
+// was: void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>::operator()<bool>(bool &)
+pub fn boost_stub_3cd99c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3cd99c __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS0_5list2INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEEEEEclIbEEvRT_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+// 0x3cd9b4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Reflection::GenericSlotWrapper,bool const&>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+pub fn boost_stub_3cd9b4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3cd9b4 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKbEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(bool)>::connect<boost::function<void ()(bool)>>(boost::function<void ()(bool)> const&)")]
+// 0x3cdb0c — __ZN3rbx7signals6signalIFvbEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_
+// was: rbx::signals::connection rbx::signals::signal<void ()(bool)>::connect<boost::function<void ()(bool)>>(boost::function<void ()(bool)> const&)
+pub fn boost_stub_3cdb0c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3cdb0c __ZN3rbx7signals6signalIFvbEE7connectIN5boost8functionIS2_EEEENS0_10connectionERKT_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(bool)>::callable_slot<boost::function<void ()(bool)>>::~callable_slot()")]
+// 0x3cdc00 — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost8functionIS2_EEED1Ev
+// was: rbx::signals::signal<void ()(bool)>::callable_slot<boost::function<void ()(bool)>>::~callable_slot()
+pub fn boost_stub_3cdc00(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3cdc00 __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost8functionIS2_EEED1Ev")
+}
