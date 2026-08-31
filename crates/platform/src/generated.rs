@@ -1,6 +1,6 @@
-//! platform generated — 1974 stubs sorted by EA, from ida/export.json
+//! platform generated — 2074 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 1974 stubs (1874 prior + 100 this batch, 3026 filtered, 1600 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 2074 stubs (1974 prior + 100 this batch, 3026 filtered, 1500 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -13774,3 +13774,703 @@ pub fn stub_ec0b34() -> ! {
     todo!("0xec0b34 -[GAIURLConnection setCompletionQueue:]")
 }
 
+
+// 0xec0b44 — -[GAIURLConnection completionHandler]
+// type: id __cdecl(GAIURLConnection *self, SEL)
+#[doc(alias = "-[GAIURLConnection completionHandler]")]
+pub fn stub_ec0b44() -> ! {
+    todo!("0xec0b44 -[GAIURLConnection completionHandler]")
+}
+
+// 0xec0b54 — -[GAIURLConnection setCompletionHandler:]
+// type: void __cdecl(GAIURLConnection *self, SEL, id)
+#[doc(alias = "-[GAIURLConnection setCompletionHandler:]")]
+pub fn stub_ec0b54() -> ! {
+    todo!("0xec0b54 -[GAIURLConnection setCompletionHandler:]")
+}
+
+// 0xec0b78 — +[GAIAdMobInfo adMobInfo]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIAdMobInfo adMobInfo]")]
+pub fn stub_ec0b78() -> ! {
+    todo!("0xec0b78 +[GAIAdMobInfo adMobInfo]")
+}
+
+// 0xec0bac — -[GAITrackedViewController viewDidAppear:]
+// type: void __cdecl(GAITrackedViewController *self, SEL, char)
+#[doc(alias = "-[GAITrackedViewController viewDidAppear:]")]
+pub fn stub_ec0bac() -> ! {
+    todo!("0xec0bac -[GAITrackedViewController viewDidAppear:]")
+}
+
+// 0xec0cf8 — -[GAITrackedViewController dealloc]
+// type: void __cdecl(GAITrackedViewController *self, SEL)
+#[doc(alias = "-[GAITrackedViewController dealloc]")]
+pub fn stub_ec0cf8() -> ! {
+    todo!("0xec0cf8 -[GAITrackedViewController dealloc]")
+}
+
+// 0xec0d44 — -[GAITrackedViewController tracker]
+// type: GAITracker *__cdecl(GAITrackedViewController *self, SEL)
+#[doc(alias = "-[GAITrackedViewController tracker]")]
+pub fn stub_ec0d44() -> ! {
+    todo!("0xec0d44 -[GAITrackedViewController tracker]")
+}
+
+// 0xec0d54 — -[GAITrackedViewController setTracker:]
+// type: void __cdecl(GAITrackedViewController *self, SEL, id)
+#[doc(alias = "-[GAITrackedViewController setTracker:]")]
+pub fn stub_ec0d54() -> ! {
+    todo!("0xec0d54 -[GAITrackedViewController setTracker:]")
+}
+
+// 0xec0d64 — -[GAITrackedViewController trackedViewName]
+// type: NSString *__cdecl(GAITrackedViewController *self, SEL)
+#[doc(alias = "-[GAITrackedViewController trackedViewName]")]
+pub fn stub_ec0d64() -> ! {
+    todo!("0xec0d64 -[GAITrackedViewController trackedViewName]")
+}
+
+// 0xec0d7c — -[GAITrackedViewController setTrackedViewName:]
+// type: void __cdecl(GAITrackedViewController *self, SEL, id)
+#[doc(alias = "-[GAITrackedViewController setTrackedViewName:]")]
+pub fn stub_ec0d7c() -> ! {
+    todo!("0xec0d7c -[GAITrackedViewController setTrackedViewName:]")
+}
+
+// 0xec0da0 — -[GAIReachabilityChecker reachabilityApi]
+// type: const GAIReachabilityApi *__cdecl(GAIReachabilityChecker *self, SEL)
+#[doc(alias = "-[GAIReachabilityChecker reachabilityApi]")]
+pub fn stub_ec0da0() -> ! {
+    todo!("0xec0da0 -[GAIReachabilityChecker reachabilityApi]")
+}
+
+// 0xec0db0 — -[GAIReachabilityChecker setReachabilityApi:]
+// type: void __cdecl(GAIReachabilityChecker *self, SEL, const GAIReachabilityApi *)
+#[doc(alias = "-[GAIReachabilityChecker setReachabilityApi:]")]
+pub fn stub_ec0db0() -> ! {
+    todo!("0xec0db0 -[GAIReachabilityChecker setReachabilityApi:]")
+}
+
+// 0xec0e30 — -[GAIReachabilityChecker isActive]
+// type: char __cdecl(GAIReachabilityChecker *self, SEL)
+#[doc(alias = "-[GAIReachabilityChecker isActive]")]
+pub fn stub_ec0e30() -> ! {
+    todo!("0xec0e30 -[GAIReachabilityChecker isActive]")
+}
+
+// 0xec0e48 — -[GAIReachabilityChecker setDelegate:]
+// type: void __cdecl(GAIReachabilityChecker *self, SEL, id)
+#[doc(alias = "-[GAIReachabilityChecker setDelegate:]")]
+pub fn stub_ec0e48() -> ! {
+    todo!("0xec0e48 -[GAIReachabilityChecker setDelegate:]")
+}
+
+// 0xec0ee4 — -[GAIReachabilityChecker init]
+// type: GAIReachabilityChecker *__cdecl(GAIReachabilityChecker *self, SEL)
+#[doc(alias = "-[GAIReachabilityChecker init]")]
+pub fn stub_ec0ee4() -> ! {
+    todo!("0xec0ee4 -[GAIReachabilityChecker init]")
+}
+
+// 0xec0f40 — -[GAIReachabilityChecker initWithDelegate:withHost:]
+// type: GAIReachabilityChecker *__cdecl(GAIReachabilityChecker *self, SEL, id, id)
+#[doc(alias = "-[GAIReachabilityChecker initWithDelegate:withHost:]")]
+pub fn stub_ec0f40() -> ! {
+    todo!("0xec0f40 -[GAIReachabilityChecker initWithDelegate:withHost:]")
+}
+
+// 0xec106c — -[GAIReachabilityChecker dealloc]
+// type: void __cdecl(GAIReachabilityChecker *self, SEL)
+#[doc(alias = "-[GAIReachabilityChecker dealloc]")]
+pub fn stub_ec106c() -> ! {
+    todo!("0xec106c -[GAIReachabilityChecker dealloc]")
+}
+
+// 0xec10cc — -[GAIReachabilityChecker start]
+// type: char __cdecl(GAIReachabilityChecker *self, SEL)
+#[doc(alias = "-[GAIReachabilityChecker start]")]
+pub fn stub_ec10cc() -> ! {
+    todo!("0xec10cc -[GAIReachabilityChecker start]")
+}
+
+// 0xec11c4 — -[GAIReachabilityChecker stop]
+// type: void __cdecl(GAIReachabilityChecker *self, SEL)
+#[doc(alias = "-[GAIReachabilityChecker stop]")]
+pub fn stub_ec11c4() -> ! {
+    todo!("0xec11c4 -[GAIReachabilityChecker stop]")
+}
+
+// 0xec1234 — -[GAIReachabilityChecker statusForFlags:]
+// type: int __cdecl(GAIReachabilityChecker *self, SEL, unsigned int)
+#[doc(alias = "-[GAIReachabilityChecker statusForFlags:]")]
+pub fn stub_ec1234() -> ! {
+    todo!("0xec1234 -[GAIReachabilityChecker statusForFlags:]")
+}
+
+// 0xec1260 — -[GAIReachabilityChecker reachabilityFlagsChanged:]
+// type: void __cdecl(GAIReachabilityChecker *self, SEL, unsigned int)
+#[doc(alias = "-[GAIReachabilityChecker reachabilityFlagsChanged:]")]
+pub fn stub_ec1260() -> ! {
+    todo!("0xec1260 -[GAIReachabilityChecker reachabilityFlagsChanged:]")
+}
+
+// 0xec1324 — -[GAIReachabilityChecker reachability]
+// type: __SCNetworkReachability *__cdecl(GAIReachabilityChecker *self, SEL)
+#[doc(alias = "-[GAIReachabilityChecker reachability]")]
+pub fn stub_ec1324() -> ! {
+    todo!("0xec1324 -[GAIReachabilityChecker reachability]")
+}
+
+// 0xec1334 — -[GAIReachabilityChecker setReachability:]
+// type: void __cdecl(GAIReachabilityChecker *self, SEL, __SCNetworkReachability *)
+#[doc(alias = "-[GAIReachabilityChecker setReachability:]")]
+pub fn stub_ec1334() -> ! {
+    todo!("0xec1334 -[GAIReachabilityChecker setReachability:]")
+}
+
+// 0xec1344 — -[GAIReachabilityChecker reachabilityStatus]
+// type: int __cdecl(GAIReachabilityChecker *self, SEL)
+#[doc(alias = "-[GAIReachabilityChecker reachabilityStatus]")]
+pub fn stub_ec1344() -> ! {
+    todo!("0xec1344 -[GAIReachabilityChecker reachabilityStatus]")
+}
+
+// 0xec1354 — -[GAIReachabilityChecker setReachabilityStatus:]
+// type: void __cdecl(GAIReachabilityChecker *self, SEL, int)
+#[doc(alias = "-[GAIReachabilityChecker setReachabilityStatus:]")]
+pub fn stub_ec1354() -> ! {
+    todo!("0xec1354 -[GAIReachabilityChecker setReachabilityStatus:]")
+}
+
+// 0xec1364 — -[GAIReachabilityChecker host]
+// type: NSString *__cdecl(GAIReachabilityChecker *self, SEL)
+#[doc(alias = "-[GAIReachabilityChecker host]")]
+pub fn stub_ec1364() -> ! {
+    todo!("0xec1364 -[GAIReachabilityChecker host]")
+}
+
+// 0xec137c — -[GAIReachabilityChecker setHost:]
+// type: void __cdecl(GAIReachabilityChecker *self, SEL, id)
+#[doc(alias = "-[GAIReachabilityChecker setHost:]")]
+pub fn stub_ec137c() -> ! {
+    todo!("0xec137c -[GAIReachabilityChecker setHost:]")
+}
+
+// 0xec13a0 — -[GAIReachabilityChecker delegate]
+// type: GAIReachabilityDelegate *__cdecl(GAIReachabilityChecker *self, SEL)
+#[doc(alias = "-[GAIReachabilityChecker delegate]")]
+pub fn stub_ec13a0() -> ! {
+    todo!("0xec13a0 -[GAIReachabilityChecker delegate]")
+}
+
+// 0xec164c — -[GAIReadOnlySetter setValue:forKey:withModel:isTemporary:]
+// type: char __cdecl(GAIReadOnlySetter *self, SEL, id, id, id, char)
+#[doc(alias = "-[GAIReadOnlySetter setValue:forKey:withModel:isTemporary:]")]
+pub fn stub_ec164c() -> ! {
+    todo!("0xec164c -[GAIReadOnlySetter setValue:forKey:withModel:isTemporary:]")
+}
+
+// 0xec16b4 — -[GAIMetaModel init]
+// type: GAIMetaModel *__cdecl(GAIMetaModel *self, SEL)
+#[doc(alias = "-[GAIMetaModel init]")]
+pub fn stub_ec16b4() -> ! {
+    todo!("0xec16b4 -[GAIMetaModel init]")
+}
+
+// 0xec1718 — -[GAIMetaModel dealloc]
+// type: void __cdecl(GAIMetaModel *self, SEL)
+#[doc(alias = "-[GAIMetaModel dealloc]")]
+pub fn stub_ec1718() -> ! {
+    todo!("0xec1718 -[GAIMetaModel dealloc]")
+}
+
+// 0xec1764 — -[GAIMetaModel allKeys]
+// type: id __cdecl(GAIMetaModel *self, SEL)
+#[doc(alias = "-[GAIMetaModel allKeys]")]
+pub fn stub_ec1764() -> ! {
+    todo!("0xec1764 -[GAIMetaModel allKeys]")
+}
+
+// 0xec1788 — -[GAIMetaModel allMetaInfos]
+// type: id __cdecl(GAIMetaModel *self, SEL)
+#[doc(alias = "-[GAIMetaModel allMetaInfos]")]
+pub fn stub_ec1788() -> ! {
+    todo!("0xec1788 -[GAIMetaModel allMetaInfos]")
+}
+
+// 0xec17ac — -[GAIMetaModel metaInfoForKey:]
+// type: id __cdecl(GAIMetaModel *self, SEL, id)
+#[doc(alias = "-[GAIMetaModel metaInfoForKey:]")]
+pub fn stub_ec17ac() -> ! {
+    todo!("0xec17ac -[GAIMetaModel metaInfoForKey:]")
+}
+
+// 0xec17d0 — -[GAIMetaModel addField:forKey:]
+// type: char __cdecl(GAIMetaModel *self, SEL, id, id)
+#[doc(alias = "-[GAIMetaModel addField:forKey:]")]
+pub fn stub_ec17d0() -> ! {
+    todo!("0xec17d0 -[GAIMetaModel addField:forKey:]")
+}
+
+// 0xec1824 — -[GAIMetaInfo initWithUrlParam:isTemporary:assumedValue:getter:setter:]
+// type: GAIMetaInfo *__cdecl(GAIMetaInfo *self, SEL, id, char, id, id, id)
+#[doc(alias = "-[GAIMetaInfo initWithUrlParam:isTemporary:assumedValue:getter:setter:]")]
+pub fn stub_ec1824() -> ! {
+    todo!("0xec1824 -[GAIMetaInfo initWithUrlParam:isTemporary:assumedValue:getter:setter:]")
+}
+
+// 0xec1974 — -[GAIMetaInfo initWithUrlParam:isTemporary:assumedValue:getter:]
+// type: GAIMetaInfo *__cdecl(GAIMetaInfo *self, SEL, id, char, id, id)
+#[doc(alias = "-[GAIMetaInfo initWithUrlParam:isTemporary:assumedValue:getter:]")]
+pub fn stub_ec1974() -> ! {
+    todo!("0xec1974 -[GAIMetaInfo initWithUrlParam:isTemporary:assumedValue:getter:]")
+}
+
+// 0xec1adc — -[GAIMetaInfo dealloc]
+// type: void __cdecl(GAIMetaInfo *self, SEL)
+#[doc(alias = "-[GAIMetaInfo dealloc]")]
+pub fn stub_ec1adc() -> ! {
+    todo!("0xec1adc -[GAIMetaInfo dealloc]")
+}
+
+// 0xec1b68 — -[GAIMetaInfo urlParameter]
+// type: NSString *__cdecl(GAIMetaInfo *self, SEL)
+#[doc(alias = "-[GAIMetaInfo urlParameter]")]
+pub fn stub_ec1b68() -> ! {
+    todo!("0xec1b68 -[GAIMetaInfo urlParameter]")
+}
+
+// 0xec1b78 — -[GAIMetaInfo isTemporary]
+// type: char __cdecl(GAIMetaInfo *self, SEL)
+#[doc(alias = "-[GAIMetaInfo isTemporary]")]
+pub fn stub_ec1b78() -> ! {
+    todo!("0xec1b78 -[GAIMetaInfo isTemporary]")
+}
+
+// 0xec1b88 — -[GAIMetaInfo assumedValue]
+// type: NSString *__cdecl(GAIMetaInfo *self, SEL)
+#[doc(alias = "-[GAIMetaInfo assumedValue]")]
+pub fn stub_ec1b88() -> ! {
+    todo!("0xec1b88 -[GAIMetaInfo assumedValue]")
+}
+
+// 0xec1b98 — -[GAIMetaInfo getter]
+// type: GAIGetter *__cdecl(GAIMetaInfo *self, SEL)
+#[doc(alias = "-[GAIMetaInfo getter]")]
+pub fn stub_ec1b98() -> ! {
+    todo!("0xec1b98 -[GAIMetaInfo getter]")
+}
+
+// 0xec1ba8 — -[GAIMetaInfo setter]
+// type: GAISetter *__cdecl(GAIMetaInfo *self, SEL)
+#[doc(alias = "-[GAIMetaInfo setter]")]
+pub fn stub_ec1ba8() -> ! {
+    todo!("0xec1ba8 -[GAIMetaInfo setter]")
+}
+
+// 0xec1bb8 — -[GAIModel init]
+// type: GAIModel *__cdecl(GAIModel *self, SEL)
+#[doc(alias = "-[GAIModel init]")]
+pub fn stub_ec1bb8() -> ! {
+    todo!("0xec1bb8 -[GAIModel init]")
+}
+
+// 0xec1c14 — -[GAIModel initWithMetaModel:]
+// type: GAIModel *__cdecl(GAIModel *self, SEL, id)
+#[doc(alias = "-[GAIModel initWithMetaModel:]")]
+pub fn stub_ec1c14() -> ! {
+    todo!("0xec1c14 -[GAIModel initWithMetaModel:]")
+}
+
+// 0xec1cc4 — -[GAIModel dealloc]
+// type: void __cdecl(GAIModel *self, SEL)
+#[doc(alias = "-[GAIModel dealloc]")]
+pub fn stub_ec1cc4() -> ! {
+    todo!("0xec1cc4 -[GAIModel dealloc]")
+}
+
+// 0xec1d3c — -[GAIModel internalSet:forKey:isTemporary:isRaw:]
+// type: char __cdecl(GAIModel *self, SEL, id, id, char, char)
+#[doc(alias = "-[GAIModel internalSet:forKey:isTemporary:isRaw:]")]
+pub fn stub_ec1d3c() -> ! {
+    todo!("0xec1d3c -[GAIModel internalSet:forKey:isTemporary:isRaw:]")
+}
+
+// 0xec2144 — -[GAIModel setValue:forKey:isTemporary:]
+// type: char __cdecl(GAIModel *self, SEL, id, id, char)
+#[doc(alias = "-[GAIModel setValue:forKey:isTemporary:]")]
+pub fn stub_ec2144() -> ! {
+    todo!("0xec2144 -[GAIModel setValue:forKey:isTemporary:]")
+}
+
+// 0xec2168 — -[GAIModel setValue:forKey:]
+// type: char __cdecl(GAIModel *self, SEL, id, id)
+#[doc(alias = "-[GAIModel setValue:forKey:]")]
+pub fn stub_ec2168() -> ! {
+    todo!("0xec2168 -[GAIModel setValue:forKey:]")
+}
+
+// 0xec2190 — -[GAIModel rawSetValue:forKey:isTemporary:]
+// type: char __cdecl(GAIModel *self, SEL, id, id, char)
+#[doc(alias = "-[GAIModel rawSetValue:forKey:isTemporary:]")]
+pub fn stub_ec2190() -> ! {
+    todo!("0xec2190 -[GAIModel rawSetValue:forKey:isTemporary:]")
+}
+
+// 0xec21b4 — -[GAIModel setFromDictionary:isTemporary:]
+// type: char __cdecl(GAIModel *self, SEL, id, char)
+#[doc(alias = "-[GAIModel setFromDictionary:isTemporary:]")]
+pub fn stub_ec21b4() -> ! {
+    todo!("0xec21b4 -[GAIModel setFromDictionary:isTemporary:]")
+}
+
+// 0xec233c — -[GAIModel get:]
+// type: id __cdecl(GAIModel *self, SEL, id)
+#[doc(alias = "-[GAIModel get:]")]
+pub fn stub_ec233c() -> ! {
+    todo!("0xec233c -[GAIModel get:]")
+}
+
+// 0xec2584 — -[GAIModel clearTemporaryValues]
+// type: void __cdecl(GAIModel *self, SEL)
+#[doc(alias = "-[GAIModel clearTemporaryValues]")]
+pub fn stub_ec2584() -> ! {
+    todo!("0xec2584 -[GAIModel clearTemporaryValues]")
+}
+
+// 0xec25a8 — -[GAIModel paramsWithValues]
+// type: id __cdecl(GAIModel *self, SEL)
+#[doc(alias = "-[GAIModel paramsWithValues]")]
+pub fn stub_ec25a8() -> ! {
+    todo!("0xec25a8 -[GAIModel paramsWithValues]")
+}
+
+// 0xec2814 — -[GAIModel metaModel]
+// type: GAIMetaModel *__cdecl(GAIModel *self, SEL)
+#[doc(alias = "-[GAIModel metaModel]")]
+pub fn stub_ec2814() -> ! {
+    todo!("0xec2814 -[GAIModel metaModel]")
+}
+
+// 0xec2824 — -[GAIModel values]
+// type: NSMutableDictionary *__cdecl(GAIModel *self, SEL)
+#[doc(alias = "-[GAIModel values]")]
+pub fn stub_ec2824() -> ! {
+    todo!("0xec2824 -[GAIModel values]")
+}
+
+// 0xec2834 — -[GAIModel setValues:]
+// type: void __cdecl(GAIModel *self, SEL, id)
+#[doc(alias = "-[GAIModel setValues:]")]
+pub fn stub_ec2834() -> ! {
+    todo!("0xec2834 -[GAIModel setValues:]")
+}
+
+// 0xec2858 — -[GAIModel temporaryValues]
+// type: NSMutableDictionary *__cdecl(GAIModel *self, SEL)
+#[doc(alias = "-[GAIModel temporaryValues]")]
+pub fn stub_ec2858() -> ! {
+    todo!("0xec2858 -[GAIModel temporaryValues]")
+}
+
+// 0xec2868 — -[GAIModel setTemporaryValues:]
+// type: void __cdecl(GAIModel *self, SEL, id)
+#[doc(alias = "-[GAIModel setTemporaryValues:]")]
+pub fn stub_ec2868() -> ! {
+    todo!("0xec2868 -[GAIModel setTemporaryValues:]")
+}
+
+// 0xec288c — -[GAIExceptionParser init]
+// type: GAIExceptionParser *__cdecl(GAIExceptionParser *self, SEL)
+#[doc(alias = "-[GAIExceptionParser init]")]
+pub fn stub_ec288c() -> ! {
+    todo!("0xec288c -[GAIExceptionParser init]")
+}
+
+// 0xec28e8 — +[GAIExceptionParser symbolFromStackFrame:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[GAIExceptionParser symbolFromStackFrame:]")]
+pub fn stub_ec28e8() -> ! {
+    todo!("0xec28e8 +[GAIExceptionParser symbolFromStackFrame:]")
+}
+
+// 0xec2a0c — +[GAIExceptionParser exceptionDescription:withMaxLength:]
+// type: id __cdecl(id, SEL, id, unsigned int)
+#[doc(alias = "+[GAIExceptionParser exceptionDescription:withMaxLength:]")]
+pub fn stub_ec2a0c() -> ! {
+    todo!("0xec2a0c +[GAIExceptionParser exceptionDescription:withMaxLength:]")
+}
+
+// 0xec2b84 — -[GAIHitMetaModel init]
+// type: GAIHitMetaModel *__cdecl(GAIHitMetaModel *self, SEL)
+#[doc(alias = "-[GAIHitMetaModel init]")]
+pub fn stub_ec2b84() -> ! {
+    todo!("0xec2b84 -[GAIHitMetaModel init]")
+}
+
+// 0xec2ca0 — +[GAIHitMetaModel sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIHitMetaModel sharedInstance]")]
+pub fn stub_ec2ca0() -> ! {
+    todo!("0xec2ca0 +[GAIHitMetaModel sharedInstance]")
+}
+
+// 0xec2d84 — +[GAIHitMetaModel allocWithZone:]
+// type: id __cdecl(id, SEL, _NSZone *)
+#[doc(alias = "+[GAIHitMetaModel allocWithZone:]")]
+pub fn stub_ec2d84() -> ! {
+    todo!("0xec2d84 +[GAIHitMetaModel allocWithZone:]")
+}
+
+// 0xec2e6c — -[GAIHitMetaModel retain]
+// type: GAIHitMetaModel *__cdecl(GAIHitMetaModel *self, SEL)
+#[doc(alias = "-[GAIHitMetaModel retain]")]
+pub fn stub_ec2e6c() -> ! {
+    todo!("0xec2e6c -[GAIHitMetaModel retain]")
+}
+
+// 0xec2e70 — -[GAIHitMetaModel retainCount]
+// type: unsigned int __cdecl(GAIHitMetaModel *self, SEL)
+#[doc(alias = "-[GAIHitMetaModel retainCount]")]
+pub fn stub_ec2e70() -> ! {
+    todo!("0xec2e70 -[GAIHitMetaModel retainCount]")
+}
+
+// 0xec2e78 — -[GAIHitMetaModel release]
+// type: void __cdecl(GAIHitMetaModel *self, SEL)
+#[doc(alias = "-[GAIHitMetaModel release]")]
+pub fn stub_ec2e78() -> ! {
+    todo!("0xec2e78 -[GAIHitMetaModel release]")
+}
+
+// 0xec2e7c — -[GAIHitMetaModel autorelease]
+// type: GAIHitMetaModel *__cdecl(GAIHitMetaModel *self, SEL)
+#[doc(alias = "-[GAIHitMetaModel autorelease]")]
+pub fn stub_ec2e7c() -> ! {
+    todo!("0xec2e7c -[GAIHitMetaModel autorelease]")
+}
+
+// 0xec2e80 — -[GAIHitMetaModel copyWithZone:]
+// type: id __cdecl(GAIHitMetaModel *self, SEL, _NSZone *)
+#[doc(alias = "-[GAIHitMetaModel copyWithZone:]")]
+pub fn stub_ec2e80() -> ! {
+    todo!("0xec2e80 -[GAIHitMetaModel copyWithZone:]")
+}
+
+// 0xec2e88 — -[GAIDispatcher optOut]
+// type: char __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher optOut]")]
+pub fn stub_ec2e88() -> ! {
+    todo!("0xec2e88 -[GAIDispatcher optOut]")
+}
+
+// 0xec2eac — -[GAIDispatcher saveUpdatedOptOut]
+// type: void __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher saveUpdatedOptOut]")]
+pub fn stub_ec2eac() -> ! {
+    todo!("0xec2eac -[GAIDispatcher saveUpdatedOptOut]")
+}
+
+// 0xec31ac — -[GAIDispatcher setOptOut:]
+// type: void __cdecl(GAIDispatcher *self, SEL, char)
+#[doc(alias = "-[GAIDispatcher setOptOut:]")]
+pub fn stub_ec31ac() -> ! {
+    todo!("0xec31ac -[GAIDispatcher setOptOut:]")
+}
+
+// 0xec3258 — -[GAIDispatcher dispatchInterval]
+// type: double __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher dispatchInterval]")]
+pub fn stub_ec3258() -> ! {
+    todo!("0xec3258 -[GAIDispatcher dispatchInterval]")
+}
+
+// 0xec3288 — -[GAIDispatcher setDispatchInterval:]
+// type: void __cdecl(GAIDispatcher *self, SEL, double)
+#[doc(alias = "-[GAIDispatcher setDispatchInterval:]")]
+pub fn stub_ec3288() -> ! {
+    todo!("0xec3288 -[GAIDispatcher setDispatchInterval:]")
+}
+
+// 0xec33d4 — -[GAIDispatcher timerFired:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id)
+#[doc(alias = "-[GAIDispatcher timerFired:]")]
+pub fn stub_ec33d4() -> ! {
+    todo!("0xec33d4 -[GAIDispatcher timerFired:]")
+}
+
+// 0xec350c — -[GAIDispatcher dispatch]
+// type: void __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher dispatch]")]
+pub fn stub_ec350c() -> ! {
+    todo!("0xec350c -[GAIDispatcher dispatch]")
+}
+
+// 0xec359c — -[GAIDispatcher internalCreateTimer]
+// type: void __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher internalCreateTimer]")]
+pub fn stub_ec359c() -> ! {
+    todo!("0xec359c -[GAIDispatcher internalCreateTimer]")
+}
+
+// 0xec37b4 — -[GAIDispatcher createTimer]
+// type: void __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher createTimer]")]
+pub fn stub_ec37b4() -> ! {
+    todo!("0xec37b4 -[GAIDispatcher createTimer]")
+}
+
+// 0xec3940 — -[GAIDispatcher cancelTimer]
+// type: void __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher cancelTimer]")]
+pub fn stub_ec3940() -> ! {
+    todo!("0xec3940 -[GAIDispatcher cancelTimer]")
+}
+
+// 0xec3bb8 — -[GAIDispatcher cancelDispatch]
+// type: void __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher cancelDispatch]")]
+pub fn stub_ec3bb8() -> ! {
+    todo!("0xec3bb8 -[GAIDispatcher cancelDispatch]")
+}
+
+// 0xec3d10 — -[GAIDispatcher init]
+// type: GAIDispatcher *__cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher init]")]
+pub fn stub_ec3d10() -> ! {
+    todo!("0xec3d10 -[GAIDispatcher init]")
+}
+
+// 0xec3d6c — -[GAIDispatcher initWithDataStore:withClientId:withOptOut:withNumHits:withDispatchInterval:]
+// type: GAIDispatcher *__cdecl(GAIDispatcher *self, SEL, id, id, char, int, double)
+#[doc(alias = "-[GAIDispatcher initWithDataStore:withClientId:withOptOut:withNumHits:withDispatchInterval:]")]
+pub fn stub_ec3d6c() -> ! {
+    todo!("0xec3d6c -[GAIDispatcher initWithDataStore:withClientId:withOptOut:withNumHits:withDispatchInterval:]")
+}
+
+// 0xec3ee8 — -[GAIDispatcher dealloc]
+// type: void __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher dealloc]")]
+pub fn stub_ec3ee8() -> ! {
+    todo!("0xec3ee8 -[GAIDispatcher dealloc]")
+}
+
+// 0xec3f98 — -[GAIDispatcher shouldRetryWithError:withHttpStatus:]
+// type: char __cdecl(GAIDispatcher *self, SEL, id, int)
+#[doc(alias = "-[GAIDispatcher shouldRetryWithError:withHttpStatus:]")]
+pub fn stub_ec3f98() -> ! {
+    todo!("0xec3f98 -[GAIDispatcher shouldRetryWithError:withHttpStatus:]")
+}
+
+// 0xec4004 — -[GAIDispatcher reachability:statusChanged:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id, int)
+#[doc(alias = "-[GAIDispatcher reachability:statusChanged:]")]
+pub fn stub_ec4004() -> ! {
+    todo!("0xec4004 -[GAIDispatcher reachability:statusChanged:]")
+}
+
+// 0xec40bc — -[GAIDispatcher connectivityLost:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id)
+#[doc(alias = "-[GAIDispatcher connectivityLost:]")]
+pub fn stub_ec40bc() -> ! {
+    todo!("0xec40bc -[GAIDispatcher connectivityLost:]")
+}
+
+// 0xec424c — -[GAIDispatcher connectivityEstablished]
+// type: void __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher connectivityEstablished]")]
+pub fn stub_ec424c() -> ! {
+    todo!("0xec424c -[GAIDispatcher connectivityEstablished]")
+}
+
+// 0xec4420 — -[GAIDispatcher dispatchComplete:withStartTime:withRetryNumber:withResponse:withData:withError:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id, double, int, id, id, id)
+#[doc(alias = "-[GAIDispatcher dispatchComplete:withStartTime:withRetryNumber:withResponse:withData:withError:]")]
+pub fn stub_ec4420() -> ! {
+    todo!("0xec4420 -[GAIDispatcher dispatchComplete:withStartTime:withRetryNumber:withResponse:withData:withError:]")
+}
+
+// 0xec4bf8 — -[GAIDispatcher nextPendingHit]
+// type: id __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher nextPendingHit]")]
+pub fn stub_ec4bf8() -> ! {
+    todo!("0xec4bf8 -[GAIDispatcher nextPendingHit]")
+}
+
+// 0xec4e78 — -[GAIDispatcher initiateDispatch:retryNumber:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id, int)
+#[doc(alias = "-[GAIDispatcher initiateDispatch:retryNumber:]")]
+pub fn stub_ec4e78() -> ! {
+    todo!("0xec4e78 -[GAIDispatcher initiateDispatch:retryNumber:]")
+}
+
+// 0xec525c — -[GAIDispatcher persistAndDispatch:url:timestamp:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id, id, double)
+#[doc(alias = "-[GAIDispatcher persistAndDispatch:url:timestamp:]")]
+pub fn stub_ec525c() -> ! {
+    todo!("0xec525c -[GAIDispatcher persistAndDispatch:url:timestamp:]")
+}
+
+// 0xec55e4 — +[GAIDispatcher dispatcherWithDatastorePath:withDispatchInterval:withError:]
+// type: GAIDispatcher *__cdecl(id, SEL, id, double, id *)
+#[doc(alias = "+[GAIDispatcher dispatcherWithDatastorePath:withDispatchInterval:withError:]")]
+pub fn stub_ec55e4() -> ! {
+    todo!("0xec55e4 +[GAIDispatcher dispatcherWithDatastorePath:withDispatchInterval:withError:]")
+}
+
+// 0xec5940 — -[GAIDispatcher queueDispatch:url:timestamp:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id, id, double)
+#[doc(alias = "-[GAIDispatcher queueDispatch:url:timestamp:]")]
+pub fn stub_ec5940() -> ! {
+    todo!("0xec5940 -[GAIDispatcher queueDispatch:url:timestamp:]")
+}
+
+// 0xec5a48 — -[GAIDispatcher queueDispatch:url:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id, id)
+#[doc(alias = "-[GAIDispatcher queueDispatch:url:]")]
+pub fn stub_ec5a48() -> ! {
+    todo!("0xec5a48 -[GAIDispatcher queueDispatch:url:]")
+}
+
+// 0xec5b98 — -[GAIDispatcher wait_and_release]
+// type: void __cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher wait_and_release]")]
+pub fn stub_ec5b98() -> ! {
+    todo!("0xec5b98 -[GAIDispatcher wait_and_release]")
+}
+
+// 0xec5c60 — -[GAIDispatcher clientId]
+// type: NSString *__cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher clientId]")]
+pub fn stub_ec5c60() -> ! {
+    todo!("0xec5c60 -[GAIDispatcher clientId]")
+}
+
+// 0xec5c78 — -[GAIDispatcher setClientId:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id)
+#[doc(alias = "-[GAIDispatcher setClientId:]")]
+pub fn stub_ec5c78() -> ! {
+    todo!("0xec5c78 -[GAIDispatcher setClientId:]")
+}
+
+// 0xec5c9c — -[GAIDispatcher dataStore]
+// type: GAIDataStore *__cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher dataStore]")]
+pub fn stub_ec5c9c() -> ! {
+    todo!("0xec5c9c -[GAIDispatcher dataStore]")
+}
+
+// 0xec5cac — -[GAIDispatcher setDataStore:]
+// type: void __cdecl(GAIDispatcher *self, SEL, id)
+#[doc(alias = "-[GAIDispatcher setDataStore:]")]
+pub fn stub_ec5cac() -> ! {
+    todo!("0xec5cac -[GAIDispatcher setDataStore:]")
+}
+
+// 0xec5cd0 — -[GAIDispatcher requestBuilder]
+// type: GAIRequestBuilder *__cdecl(GAIDispatcher *self, SEL)
+#[doc(alias = "-[GAIDispatcher requestBuilder]")]
+pub fn stub_ec5cd0() -> ! {
+    todo!("0xec5cd0 -[GAIDispatcher requestBuilder]")
+}
