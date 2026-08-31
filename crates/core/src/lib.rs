@@ -20,6 +20,6 @@ pub mod boost_core_d;
 pub mod boost_core_e;
 pub mod boost_core_f;
 pub mod generated_core_d;
-
+pub mod generated_core_e;
 /// Re-export for `use rbx_core::SharedPtr`
 pub use parking_lot::{Mutex as PLMutex, RwLock};
