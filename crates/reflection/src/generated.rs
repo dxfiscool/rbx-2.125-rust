@@ -21021,3 +21021,941 @@ pub fn stub_0x4014dc() -> ! {
         "0x4014dc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FilteredSelection<RBX::ModelInstance>,RBX::FilteredSelection<RBX::ModelInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::ModelInstance>> const*,RBX::FilteredSelection<RBX::ModelInstance> *)const"
     )
 }
+// 0x4019f8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ModelInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ModelInstance,RBX::ModelInstance>(boost::shared_ptr<RBX::ModelInstance> const*,RBX::ModelInstance *)const"
+)]
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ModelInstance,RBX::ModelInstance>(boost::shared_ptr<RBX::ModelInstance> const*,RBX::ModelInstance *)const
+pub fn stub_0x4019f8() -> ! {
+    todo!(
+        "0x4019f8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ModelInstance,RBX::ModelInstance>(boost::shared_ptr<RBX::ModelInstance> const*,RBX::ModelInstance *)const"
+    )
+}
+
+// 0x402c00 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17FilteredSelectionINS1_10PVInstanceEEES8_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FilteredSelection<RBX::PVInstance>,RBX::FilteredSelection<RBX::PVInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const*,RBX::FilteredSelection<RBX::PVInstance> *)const"
+)]
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FilteredSelection<RBX::PVInstance>,RBX::FilteredSelection<RBX::PVInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const*,RBX::FilteredSelection<RBX::PVInstance> *)const
+pub fn stub_0x402c00() -> ! {
+    todo!(
+        "0x402c00 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FilteredSelection<RBX::PVInstance>,RBX::FilteredSelection<RBX::PVInstance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::PVInstance>> const*,RBX::FilteredSelection<RBX::PVInstance> *)const"
+    )
+}
+
+// 0x416f78 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ConfigurationES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Configuration,RBX::Configuration>(boost::shared_ptr<RBX::Configuration> const*,RBX::Configuration *)const"
+)]
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Configuration,RBX::Configuration>(boost::shared_ptr<RBX::Configuration> const*,RBX::Configuration *)const
+pub fn stub_0x416f78() -> ! {
+    todo!(
+        "0x416f78 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Configuration,RBX::Configuration>(boost::shared_ptr<RBX::Configuration> const*,RBX::Configuration *)const"
+    )
+}
+
+// 0x417548 — __ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x417548() -> ! {
+    todo!(
+        "0x417548 __ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x41754c — __ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x41754c() -> ! {
+    todo!(
+        "0x41754c __ZN3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x4175ec — __ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x4175ec() -> ! {
+    todo!(
+        "0x4175ec __ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x4175f4 — __ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x4175f4() -> ! {
+    todo!(
+        "0x4175f4 __ZThn32_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x417698 — __ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x417698() -> ! {
+    todo!(
+        "0x417698 __ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x4176a0 — __ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x4176a0() -> ! {
+    todo!(
+        "0x4176a0 __ZThn36_N3RBX10Reflection9DescribedINS_13ConfigurationELZNS_14sConfigurationEENS_14FactoryProductIS2_NS_8InstanceELZNS_14sConfigurationEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x417eb0 — __ZN3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZN3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x417eb0() -> ! {
+    todo!(
+        "0x417eb0 __ZN3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x417ec4 — __ZN3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZN3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x417ec4() -> ! {
+    todo!(
+        "0x417ec4 __ZN3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x417f74 — __ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x417f74() -> ! {
+    todo!(
+        "0x417f74 __ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x417f88 — __ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x417f88() -> ! {
+    todo!(
+        "0x417f88 __ZThn132_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x41803c — __ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x41803c() -> ! {
+    todo!(
+        "0x41803c __ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x418050 — __ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x418050() -> ! {
+    todo!(
+        "0x418050 __ZN3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x418100 — __ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x418100() -> ! {
+    todo!(
+        "0x418100 __ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x418114 — __ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x418114() -> ! {
+    todo!(
+        "0x418114 __ZThn132_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x418690 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19CornerWedgeInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CornerWedgeInstance,RBX::CornerWedgeInstance>(boost::shared_ptr<RBX::CornerWedgeInstance> const*,RBX::CornerWedgeInstance *)const"
+)]
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CornerWedgeInstance,RBX::CornerWedgeInstance>(boost::shared_ptr<RBX::CornerWedgeInstance> const*,RBX::CornerWedgeInstance *)const
+pub fn stub_0x418690() -> ! {
+    todo!(
+        "0x418690 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CornerWedgeInstance,RBX::CornerWedgeInstance>(boost::shared_ptr<RBX::CornerWedgeInstance> const*,RBX::CornerWedgeInstance *)const"
+    )
+}
+
+// 0x418c98 — __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x418c98() -> ! {
+    todo!(
+        "0x418c98 __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x418cac — __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x418cac() -> ! {
+    todo!(
+        "0x418cac __ZThn32_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x418d60 — __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x418d60() -> ! {
+    todo!(
+        "0x418d60 __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x418d74 — __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x418d74() -> ! {
+    todo!(
+        "0x418d74 __ZThn36_N3RBX18DescribedCreatableINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x418e94 — __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x418e94() -> ! {
+    todo!(
+        "0x418e94 __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x418ea8 — __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x418ea8() -> ! {
+    todo!(
+        "0x418ea8 __ZThn32_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x418f5c — __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+)]
+pub fn stub_0x418f5c() -> ! {
+    todo!(
+        "0x418f5c __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev"
+    )
+}
+
+// 0x418f70 — __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(
+    alias = "__ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+)]
+pub fn stub_0x418f70() -> ! {
+    todo!(
+        "0x418f70 __ZThn36_N3RBX10Reflection9DescribedINS_19CornerWedgeInstanceELZNS_12sCornerWedgeEENS_14FactoryProductIS2_NS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev"
+    )
+}
+
+// 0x41d3d0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::EnumDesc(void)")]
+pub fn stub_0x41d3d0() -> ! {
+    todo!("0x41d3d0 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::EnumDesc(void)")
+}
+
+// 0x41d590 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::EnumDesc(void)")]
+pub fn stub_0x41d590() -> ! {
+    todo!("0x41d590 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::EnumDesc(void)")
+}
+
+// 0x41d864 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::EnumDesc(void)")]
+pub fn stub_0x41d864() -> ! {
+    todo!("0x41d864 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::EnumDesc(void)")
+}
+
+// 0x41da24 — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::EnumDesc(void)")]
+pub fn stub_0x41da24() -> ! {
+    todo!("0x41da24 RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::EnumDesc(void)")
+}
+
+// 0x41dc84 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::EnumDesc(void)")]
+pub fn stub_0x41dc84() -> ! {
+    todo!("0x41dc84 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::EnumDesc(void)")
+}
+
+// 0x41e040 — __ZN3RBX9DataModel15serverSavePlaceENS_8Instance10SaveFilterEN5boost8functionIFvNS3_10shared_ptrIKNS_10Reflection5TupleEEEEEENS4_IFvSsEEE
+#[doc(
+    alias = "RBX::DataModel::serverSavePlace(RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)"
+)]
+// was: RBX::DataModel::serverSavePlace(RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)
+pub fn stub_0x41e040() -> ! {
+    todo!(
+        "0x41e040 RBX::DataModel::serverSavePlace(RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)"
+    )
+}
+
+// 0x41e51c — __ZN3RBX9DataModel14savePlaceAsyncENS_8Instance10SaveFilterEN5boost8functionIFvNS3_10shared_ptrIKNS_10Reflection5TupleEEEEEENS4_IFvSsEEE
+#[doc(
+    alias = "RBX::DataModel::savePlaceAsync(RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)"
+)]
+// was: RBX::DataModel::savePlaceAsync(RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)
+pub fn stub_0x41e51c() -> ! {
+    todo!(
+        "0x41e51c RBX::DataModel::savePlaceAsync(RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)"
+    )
+}
+
+// 0x42fb68 — __ZN3RBXL13appendJobInfoEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEEPSt6vectorINS_10Reflection7VariantESaISA_EE
+#[doc(
+    alias = "RBX::appendJobInfo(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)"
+)]
+// was: RBX::appendJobInfo(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)
+pub fn stub_0x42fb68() -> ! {
+    todo!(
+        "0x42fb68 RBX::appendJobInfo(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)"
+    )
+}
+
+// 0x43001c — __ZN3RBXL22appendJobExtendedStatsEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEEPSt6vectorINS_10Reflection7VariantESaISA_EE
+#[doc(
+    alias = "RBX::appendJobExtendedStats(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)"
+)]
+// was: RBX::appendJobExtendedStats(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)
+pub fn stub_0x43001c() -> ! {
+    todo!(
+        "0x43001c RBX::appendJobExtendedStats(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)"
+    )
+}
+
+// 0x430e54 — __ZN3RBX10ReflectionL14resume_adapterIbEEvN5boost8functionIFvNS0_7VariantEEEET__0
+#[doc(
+    alias = "__ZN3RBX10ReflectionL14resume_adapterIbEEvN5boost8functionIFvNS0_7VariantEEEET__0"
+)]
+// was: __ZN3RBX10ReflectionL14resume_adapterIbEEvN5boost8functionIFvNS0_7VariantEEEET__0
+pub fn stub_0x430e54() -> ! {
+    todo!(
+        "0x430e54 __ZN3RBX10ReflectionL14resume_adapterIbEEvN5boost8functionIFvNS0_7VariantEEEET__0"
+    )
+}
+
+// 0x430fa8 — __ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET__0
+#[doc(
+    alias = "__ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET__0"
+)]
+// was: __ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET__0
+pub fn stub_0x430fa8() -> ! {
+    todo!(
+        "0x430fa8 __ZN3RBX10ReflectionL14resume_adapterISsEEvN5boost8functionIFvNS0_7VariantEEEET__0"
+    )
+}
+
+// 0x431100 — __ZN3RBX10ReflectionL14resume_adapterIN5boost10shared_ptrIKNS0_5TupleEEEEEvNS2_8functionIFvNS0_7VariantEEEET_
+#[doc(
+    alias = "void RBX::Reflection::resume_adapter<boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::function<void ()(RBX::Reflection::Variant)>,boost::shared_ptr<RBX::Reflection::Tuple const>)"
+)]
+// was: void RBX::Reflection::resume_adapter<boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::function<void ()(RBX::Reflection::Variant)>,boost::shared_ptr<RBX::Reflection::Tuple const>)
+pub fn stub_0x431100() -> ! {
+    todo!(
+        "0x431100 void RBX::Reflection::resume_adapter<boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::function<void ()(RBX::Reflection::Variant)>,boost::shared_ptr<RBX::Reflection::Tuple const>)"
+    )
+}
+
+// 0x431288 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_0x431288() -> ! {
+    todo!("0x431288 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x4312ac — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvN5boost10shared_ptrINS_8InstanceEEEPKNS0_18PropertyDescriptorEEN3rbx6signalISA_EEMS2_SD_ED1Ev
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()"
+)]
+// was: RBX::Reflection::EventDesc<RBX::DataModel,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()
+pub fn stub_0x4312ac() -> ! {
+    todo!(
+        "0x4312ac RBX::Reflection::EventDesc<RBX::DataModel,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()"
+    )
+}
+
+// 0x4312d0 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_9ContentIdEELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()"
+)]
+// was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()
+pub fn stub_0x4312d0() -> ! {
+    todo!(
+        "0x4312d0 RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()"
+    )
+}
+
+// 0x431310 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFN5boost10shared_ptrIKNS0_5TupleEEENS_8Instance10SaveFilterEES7_Li1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),boost::shared_ptr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()"
+)]
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),boost::shared_ptr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()
+pub fn stub_0x431310() -> ! {
+    todo!(
+        "0x431310 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),boost::shared_ptr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()"
+    )
+}
+
+// 0x431350 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFviELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int),1>::~BoundFuncDesc()")]
+pub fn stub_0x431350() -> ! {
+    todo!("0x431350 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int),1>::~BoundFuncDesc()")
+}
+
+// 0x431390 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS_9ContentIdEELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::ContentId),1>::~BoundFuncDesc()"
+)]
+pub fn stub_0x431390() -> ! {
+    todo!(
+        "0x431390 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::ContentId),1>::~BoundFuncDesc()"
+    )
+}
+
+// 0x4313d0 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvbELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(bool),1>::~BoundFuncDesc()")]
+pub fn stub_0x4313d0() -> ! {
+    todo!("0x4313d0 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(bool),1>::~BoundFuncDesc()")
+}
+
+// 0x431410 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFbvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_0x431410() -> ! {
+    todo!("0x431410 RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x431434 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string),1>::~BoundFuncDesc()"
+)]
+pub fn stub_0x431434() -> ! {
+    todo!(
+        "0x431434 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string),1>::~BoundFuncDesc()"
+    )
+}
+
+// 0x431474 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFSsSsESsLi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()"
+)]
+pub fn stub_0x431474() -> ! {
+    todo!(
+        "0x431474 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string),std::string,1>::~BoundYieldFuncDesc()"
+    )
+}
+
+// 0x4314b4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFSsSsSsESsLi2EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string,std::string),std::string,2>::~BoundYieldFuncDesc()"
+)]
+pub fn stub_0x4314b4() -> ! {
+    todo!(
+        "0x4314b4 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,std::string ()(std::string,std::string),std::string,2>::~BoundYieldFuncDesc()"
+    )
+}
+
+// 0x4314fc — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFSsSsbELi2EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,std::string ()(std::string,bool),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x4314fc() -> ! {
+    todo!(
+        "0x4314fc RBX::Reflection::BoundFuncDesc<RBX::DataModel,std::string ()(std::string,bool),2>::~BoundFuncDesc()"
+    )
+}
+
+// 0x431544 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFSsSsSsbELi3EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,std::string ()(std::string,std::string,bool),3>::~BoundFuncDesc()"
+)]
+pub fn stub_0x431544() -> ! {
+    todo!(
+        "0x431544 RBX::Reflection::BoundFuncDesc<RBX::DataModel,std::string ()(std::string,std::string,bool),3>::~BoundFuncDesc()"
+    )
+}
+
+// 0x431594 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()"
+)]
+// was: RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()
+pub fn stub_0x431594() -> ! {
+    todo!(
+        "0x431594 RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()"
+    )
+}
+
+// 0x4315b8 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsSsSsSsELi5EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string,std::string,std::string,std::string),5>::~BoundFuncDesc()"
+)]
+pub fn stub_0x4315b8() -> ! {
+    todo!(
+        "0x4315b8 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string,std::string,std::string,std::string),5>::~BoundFuncDesc()"
+    )
+}
+
+// 0x431628 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelEbED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::~PropDescriptor()")]
+pub fn stub_0x431628() -> ! {
+    todo!("0x431628 RBX::Reflection::PropDescriptor<RBX::DataModel,bool>::~PropDescriptor()")
+}
+
+// 0x43164c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFbvEbLi0EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::~BoundYieldFuncDesc()"
+)]
+pub fn stub_0x43164c() -> ! {
+    todo!(
+        "0x43164c RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,bool ()(void),bool,0>::~BoundYieldFuncDesc()"
+    )
+}
+
+// 0x431670 — __ZN3RBX10Reflection17BoundCallbackDescIFbvEED1Ev
+#[doc(alias = "RBX::Reflection::BoundCallbackDesc<bool ()(void)>::~BoundCallbackDesc()")]
+pub fn stub_0x431670() -> ! {
+    todo!("0x431670 RBX::Reflection::BoundCallbackDesc<bool ()(void)>::~BoundCallbackDesc()")
+}
+
+// 0x43177c — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFdSsdELi2EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x43177c() -> ! {
+    todo!(
+        "0x43177c RBX::Reflection::BoundFuncDesc<RBX::DataModel,double ()(std::string,double),2>::~BoundFuncDesc()"
+    )
+}
+
+// 0x4317c4 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvdELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::~BoundFuncDesc()"
+)]
+pub fn stub_0x4317c4() -> ! {
+    todo!(
+        "0x4317c4 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(double),1>::~BoundFuncDesc()"
+    )
+}
+
+// 0x431804 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvibELi2EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x431804() -> ! {
+    todo!(
+        "0x431804 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,bool),2>::~BoundFuncDesc()"
+    )
+}
+
+// 0x43184c — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFviNS2_11CreatorTypeEELi2EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x43184c() -> ! {
+    todo!(
+        "0x43184c RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(int,RBX::DataModel::CreatorType),2>::~BoundFuncDesc()"
+    )
+}
+
+// 0x431894 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_5GenreEELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::~BoundFuncDesc()"
+)]
+pub fn stub_0x431894() -> ! {
+    todo!(
+        "0x431894 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::Genre),1>::~BoundFuncDesc()"
+    )
+}
+
+// 0x4318d4 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvNS2_16GearGenreSettingEiELi2EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x4318d4() -> ! {
+    todo!(
+        "0x4318d4 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(RBX::DataModel::GearGenreSetting,int),2>::~BoundFuncDesc()"
+    )
+}
+
+// 0x431924 — __ZN3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_9WorkspaceEED1Ev
+#[doc(
+    alias = "RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::~RefPropDescriptor()"
+)]
+pub fn stub_0x431924() -> ! {
+    todo!(
+        "0x431924 RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Workspace>::~RefPropDescriptor()"
+    )
+}
+
+// 0x431950 — __ZN3RBX10Reflection17RefPropDescriptorINS_9DataModelENS_8InstanceEED1Ev
+#[doc(
+    alias = "RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::~RefPropDescriptor()"
+)]
+pub fn stub_0x431950() -> ! {
+    todo!(
+        "0x431950 RBX::Reflection::RefPropDescriptor<RBX::DataModel,RBX::Instance>::~RefPropDescriptor()"
+    )
+}
+
+// 0x431984 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelEiED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,int>::~PropDescriptor()")]
+pub fn stub_0x431984() -> ! {
+    todo!("0x431984 RBX::Reflection::PropDescriptor<RBX::DataModel,int>::~PropDescriptor()")
+}
+
+// 0x4319c0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_11CreatorTypeEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x4319c0() -> ! {
+    todo!(
+        "0x4319c0 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::CreatorType>::~EnumPropDescriptor()"
+    )
+}
+
+// 0x4319ec — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_5GenreEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x4319ec() -> ! {
+    todo!(
+        "0x4319ec RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::Genre>::~EnumPropDescriptor()"
+    )
+}
+
+// 0x431a18 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9DataModelENS2_16GearGenreSettingEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x431a18() -> ! {
+    todo!(
+        "0x431a18 RBX::Reflection::EnumPropDescriptor<RBX::DataModel,RBX::DataModel::GearGenreSetting>::~EnumPropDescriptor()"
+    )
+}
+
+// 0x431a3c — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFbNS2_8GearTypeEELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(RBX::DataModel::GearType),1>::~BoundFuncDesc()"
+)]
+pub fn stub_0x431a3c() -> ! {
+    todo!(
+        "0x431a3c RBX::Reflection::BoundFuncDesc<RBX::DataModel,bool ()(RBX::DataModel::GearType),1>::~BoundFuncDesc()"
+    )
+}
+
+// 0x431a7c — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvvEN3rbx6signalIS3_EEMS2_S6_ED1Ev
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::DataModel::*>::~EventDesc()"
+)]
+pub fn stub_0x431a7c() -> ! {
+    todo!(
+        "0x431a7c RBX::Reflection::EventDesc<RBX::DataModel,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::DataModel::*>::~EventDesc()"
+    )
+}
+
+// 0x431ab0 — __ZN3RBX10Reflection14PropDescriptorINS_9DataModelESsED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::~PropDescriptor()")]
+pub fn stub_0x431ab0() -> ! {
+    todo!("0x431ab0 RBX::Reflection::PropDescriptor<RBX::DataModel,std::string>::~PropDescriptor()")
+}
+
+// 0x431ad4 — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvbEN3rbx6signalIS3_EEMS2_S6_ED1Ev
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::~EventDesc()"
+)]
+pub fn stub_0x431ad4() -> ! {
+    todo!(
+        "0x431ad4 RBX::Reflection::EventDesc<RBX::DataModel,void ()(bool),rbx::signal<void ()(bool)>,rbx::signal<void ()(bool)> RBX::DataModel::*>::~EventDesc()"
+    )
+}
+
+// 0x431b00 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvSsSsELi2EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x431b00() -> ! {
+    todo!(
+        "0x431b00 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(std::string,std::string),2>::~BoundFuncDesc()"
+    )
+}
+
+// 0x431b48 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE7addPairES3_PKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::addPair(RBX::DataModel::CreatorType,char const*)"
+)]
+pub fn stub_0x431b48() -> ! {
+    todo!(
+        "0x431b48 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::addPair(RBX::DataModel::CreatorType,char const*)"
+    )
+}
+
+// 0x431ea8 — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel11CreatorTypeEEERT_v
+#[doc(
+    alias = "RBX::DataModel::CreatorType & RBX::Reflection::Variant::genericConvert<RBX::DataModel::CreatorType>(void)"
+)]
+pub fn stub_0x431ea8() -> ! {
+    todo!(
+        "0x431ea8 RBX::DataModel::CreatorType & RBX::Reflection::Variant::genericConvert<RBX::DataModel::CreatorType>(void)"
+    )
+}
+
+// 0x432094 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEE7addPairES3_PKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::addPair(RBX::DataModel::Genre,char const*)"
+)]
+pub fn stub_0x432094() -> ! {
+    todo!(
+        "0x432094 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::addPair(RBX::DataModel::Genre,char const*)"
+    )
+}
+
+// 0x4323f4 — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel5GenreEEERT_v
+#[doc(
+    alias = "RBX::DataModel::Genre & RBX::Reflection::Variant::genericConvert<RBX::DataModel::Genre>(void)"
+)]
+pub fn stub_0x4323f4() -> ! {
+    todo!(
+        "0x4323f4 RBX::DataModel::Genre & RBX::Reflection::Variant::genericConvert<RBX::DataModel::Genre>(void)"
+    )
+}
+
+// 0x4325e0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEE7addPairES3_PKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::addPair(RBX::DataModel::GearGenreSetting,char const*)"
+)]
+pub fn stub_0x4325e0() -> ! {
+    todo!(
+        "0x4325e0 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::addPair(RBX::DataModel::GearGenreSetting,char const*)"
+    )
+}
+
+// 0x432940 — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel16GearGenreSettingEEERT_v
+#[doc(
+    alias = "RBX::DataModel::GearGenreSetting & RBX::Reflection::Variant::genericConvert<RBX::DataModel::GearGenreSetting>(void)"
+)]
+pub fn stub_0x432940() -> ! {
+    todo!(
+        "0x432940 RBX::DataModel::GearGenreSetting & RBX::Reflection::Variant::genericConvert<RBX::DataModel::GearGenreSetting>(void)"
+    )
+}
+
+// 0x432b2c — __ZN3RBX10Reflection8EnumDescINS_9DataModel8GearTypeEE7addPairES3_PKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::addPair(RBX::DataModel::GearType,char const*)"
+)]
+pub fn stub_0x432b2c() -> ! {
+    todo!(
+        "0x432b2c RBX::Reflection::EnumDesc<RBX::DataModel::GearType>::addPair(RBX::DataModel::GearType,char const*)"
+    )
+}
+
+// 0x432e8c — __ZN3RBX10Reflection7Variant14genericConvertINS_9DataModel8GearTypeEEERT_v
+#[doc(
+    alias = "RBX::DataModel::GearType & RBX::Reflection::Variant::genericConvert<RBX::DataModel::GearType>(void)"
+)]
+pub fn stub_0x432e8c() -> ! {
+    todo!(
+        "0x432e8c RBX::DataModel::GearType & RBX::Reflection::Variant::genericConvert<RBX::DataModel::GearType>(void)"
+    )
+}
+
+// 0x433078 — __ZN3RBX10Reflection8EnumDescINS_8Instance10SaveFilterEE7addPairES3_PKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::addPair(RBX::Instance::SaveFilter,char const*)"
+)]
+pub fn stub_0x433078() -> ! {
+    todo!(
+        "0x433078 RBX::Reflection::EnumDesc<RBX::Instance::SaveFilter>::addPair(RBX::Instance::SaveFilter,char const*)"
+    )
+}
+
+// 0x4333d8 — __ZN3RBX10Reflection7Variant14genericConvertINS_8Instance10SaveFilterEEERT_v
+#[doc(
+    alias = "RBX::Instance::SaveFilter & RBX::Reflection::Variant::genericConvert<RBX::Instance::SaveFilter>(void)"
+)]
+pub fn stub_0x4333d8() -> ! {
+    todo!(
+        "0x4333d8 RBX::Instance::SaveFilter & RBX::Reflection::Variant::genericConvert<RBX::Instance::SaveFilter>(void)"
+    )
+}
+
+// 0x437b50 — __ZN3RBX32shared_from_polymorphic_downcastINS_5Stats4ItemENS_10Reflection13DescribedBaseEEEN5boost10shared_ptrIT_EEPNS5_23enable_shared_from_thisIT0_EE
+#[doc(
+    alias = "boost::shared_ptr<RBX::Stats::Item> RBX::shared_from_polymorphic_downcast<RBX::Stats::Item,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)"
+)]
+// was: boost::shared_ptr<RBX::Stats::Item> RBX::shared_from_polymorphic_downcast<RBX::Stats::Item,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)
+pub fn stub_0x437b50() -> ! {
+    todo!(
+        "0x437b50 boost::shared_ptr<RBX::Stats::Item> RBX::shared_from_polymorphic_downcast<RBX::Stats::Item,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)"
+    )
+}
+
+// 0x437ef0 — __ZN3rbx11make_sharedISt6vectorIN3RBX10Reflection7VariantESaIS4_EEEEN5boost10shared_ptrIT_EEv
+#[doc(
+    alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(void)"
+)]
+// was: boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(void)
+pub fn stub_0x437ef0() -> ! {
+    todo!(
+        "0x437ef0 boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(void)"
+    )
+}
+
+// 0x438048 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESt6vectorIS8_SaIS8_EEEENS2_3_bi6bind_tIvPFvPNS4_9DataModelES8_PSA_INS4_10Reflection7VariantESaISJ_EEENSE_5list3INSE_5valueISH_EENS2_3argILi1EEENSQ_ISM_EEEEEEET0_T_SY_SX_
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>)"
+)]
+// was: boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>)
+pub fn stub_0x438048() -> ! {
+    todo!(
+        "0x438048 boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>)"
+    )
+}
+
+// 0x4382c8 — __ZN3rbx7signals16signal_with_argsILi2EFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEEclES6_SA_
+#[doc(
+    alias = "rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)"
+)]
+// was: rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)
+pub fn stub_0x4382c8() -> ! {
+    todo!(
+        "0x4382c8 rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)"
+    )
+}
+
+// 0x4387f0 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")]
+pub fn stub_0x4387f0() -> ! {
+    todo!("0x4387f0 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")
+}
+
+// 0x4387f4 — __ZN3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")]
+pub fn stub_0x4387f4() -> ! {
+    todo!("0x4387f4 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::~EnumDesc()")
+}
+
+// 0x438894 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(char const*)const")]
+pub fn stub_0x438894() -> ! {
+    todo!("0x438894 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(char const*)const")
+}
+
+// 0x4388c4 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE6lookupERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x4388c4() -> ! {
+    todo!(
+        "0x4388c4 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::lookup(RBX::Reflection::Variant const&)const"
+    )
+}
+
+// 0x4388e4 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x4388e4() -> ! {
+    todo!(
+        "0x4388e4 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+    )
+}
+
+// 0x438918 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel11CreatorTypeEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x438918() -> ! {
+    todo!(
+        "0x438918 RBX::Reflection::EnumDesc<RBX::DataModel::CreatorType>::convertToString(unsigned long,std::string &)const"
+    )
+}
+
+// 0x438a5c — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
+pub fn stub_0x438a5c() -> ! {
+    todo!("0x438a5c RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")
+}
+
+// 0x438a60 — __ZN3RBX10Reflection8EnumDescINS_9DataModel5GenreEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")]
+pub fn stub_0x438a60() -> ! {
+    todo!("0x438a60 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::~EnumDesc()")
+}
+
+// 0x438b00 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(char const*)const")]
+pub fn stub_0x438b00() -> ! {
+    todo!("0x438b00 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(char const*)const")
+}
+
+// 0x438b30 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE6lookupERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x438b30() -> ! {
+    todo!(
+        "0x438b30 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::lookup(RBX::Reflection::Variant const&)const"
+    )
+}
+
+// 0x438b50 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x438b50() -> ! {
+    todo!(
+        "0x438b50 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+    )
+}
+
+// 0x438b84 — __ZNK3RBX10Reflection8EnumDescINS_9DataModel5GenreEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x438b84() -> ! {
+    todo!(
+        "0x438b84 RBX::Reflection::EnumDesc<RBX::DataModel::Genre>::convertToString(unsigned long,std::string &)const"
+    )
+}
+
+// 0x438cc8 — __ZN3RBX10Reflection8EnumDescINS_9DataModel16GearGenreSettingEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")]
+pub fn stub_0x438cc8() -> ! {
+    todo!("0x438cc8 RBX::Reflection::EnumDesc<RBX::DataModel::GearGenreSetting>::~EnumDesc()")
+}
