@@ -26578,3 +26578,703 @@ pub fn boost_stub_4014dc(_ptr: crate::SharedPtr<()>) {
 pub fn boost_stub_4015c4(_ptr: crate::SharedPtr<()>) {
     todo!("0x4015c4 __ZN5boost6detail12shared_countC2IPN3RBX17FilteredSelectionINS3_13ModelInstanceEEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
 }
+
+#[doc(alias = "boost::shared_ptr<RBX::HammerTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HammerTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x4047d4 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10HammerToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::HammerTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::HammerTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_4047d4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4047d4 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10HammerToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::HammerTool>::shared_ptr<RBX::HammerTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x404888 — __ZN5boost10shared_ptrIN3RBX10HammerToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::HammerTool>::shared_ptr<RBX::HammerTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_404888(_ptr: crate::SharedPtr<()>) {
+    todo!("0x404888 __ZN5boost10shared_ptrIN3RBX10HammerToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::HammerTool,RBX::HammerTool>(boost::shared_ptr<RBX::HammerTool> const*,RBX::HammerTool *)const")]
+// 0x404950 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10HammerToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::HammerTool,RBX::HammerTool>(boost::shared_ptr<RBX::HammerTool> const*,RBX::HammerTool *)const
+pub fn boost_stub_404950(_ptr: crate::SharedPtr<()>) {
+    todo!("0x404950 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10HammerToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x404a34 — __ZN5boost6detail12shared_countC2IPN3RBX10HammerToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_404a34(_ptr: crate::SharedPtr<()>) {
+    todo!("0x404a34 __ZN5boost6detail12shared_countC2IPN3RBX10HammerToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x404b2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_404b2c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x404b2c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x404b30 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_404b30(_ptr: crate::SharedPtr<()>) {
+    todo!("0x404b30 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x404b34 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_404b34(_ptr: crate::SharedPtr<()>) {
+    todo!("0x404b34 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x404b44 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_404b44(_ptr: crate::SharedPtr<()>) {
+    todo!("0x404b44 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
+// 0x404b5c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::HammerTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_404b5c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x404b5c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10HammerToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::CloneTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::CloneTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x4050c8 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9CloneToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::CloneTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::CloneTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_4050c8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4050c8 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_9CloneToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::CloneTool>::shared_ptr<RBX::CloneTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x40517c — __ZN5boost10shared_ptrIN3RBX9CloneToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::CloneTool>::shared_ptr<RBX::CloneTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_40517c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40517c __ZN5boost10shared_ptrIN3RBX9CloneToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::CloneTool,RBX::CloneTool>(boost::shared_ptr<RBX::CloneTool> const*,RBX::CloneTool *)const")]
+// 0x405244 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9CloneToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::CloneTool,RBX::CloneTool>(boost::shared_ptr<RBX::CloneTool> const*,RBX::CloneTool *)const
+pub fn boost_stub_405244(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405244 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9CloneToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x405328 — __ZN5boost6detail12shared_countC2IPN3RBX9CloneToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_405328(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405328 __ZN5boost6detail12shared_countC2IPN3RBX9CloneToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x405420 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_405420(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405420 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x405424 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_405424(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405424 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x405428 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_405428(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405428 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x405438 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_405438(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405438 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
+// 0x405450 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_405450(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405450 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9CloneToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::GrabTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GrabTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x4059bc — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GrabToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::GrabTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GrabTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_4059bc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4059bc __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GrabToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::GrabTool>::shared_ptr<RBX::GrabTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x405a70 — __ZN5boost10shared_ptrIN3RBX8GrabToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::GrabTool>::shared_ptr<RBX::GrabTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_405a70(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405a70 __ZN5boost10shared_ptrIN3RBX8GrabToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GrabTool,RBX::GrabTool>(boost::shared_ptr<RBX::GrabTool> const*,RBX::GrabTool *)const")]
+// 0x405b38 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GrabToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GrabTool,RBX::GrabTool>(boost::shared_ptr<RBX::GrabTool> const*,RBX::GrabTool *)const
+pub fn boost_stub_405b38(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405b38 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GrabToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x405c1c — __ZN5boost6detail12shared_countC2IPN3RBX8GrabToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_405c1c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405c1c __ZN5boost6detail12shared_countC2IPN3RBX8GrabToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x405d14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_405d14(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405d14 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x405d18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_405d18(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405d18 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x405d1c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_405d1c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405d1c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x405d2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_405d2c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405d2c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
+// 0x405d44 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_405d44(_ptr: crate::SharedPtr<()>) {
+    todo!("0x405d44 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GrabToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::GameTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GameTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x4062b0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GameToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::GameTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::GameTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_4062b0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4062b0 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8GameToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::GameTool>::shared_ptr<RBX::GameTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x406364 — __ZN5boost10shared_ptrIN3RBX8GameToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::GameTool>::shared_ptr<RBX::GameTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_406364(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406364 __ZN5boost10shared_ptrIN3RBX8GameToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GameTool,RBX::GameTool>(boost::shared_ptr<RBX::GameTool> const*,RBX::GameTool *)const")]
+// 0x40642c — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GameToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GameTool,RBX::GameTool>(boost::shared_ptr<RBX::GameTool> const*,RBX::GameTool *)const
+pub fn boost_stub_40642c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40642c __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GameToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x406510 — __ZN5boost6detail12shared_countC2IPN3RBX8GameToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_406510(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406510 __ZN5boost6detail12shared_countC2IPN3RBX8GameToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x406608 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_406608(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406608 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x40660c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_40660c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40660c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x406610 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_406610(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406610 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x406620 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_406620(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406620 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
+// 0x406638 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::GameTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_406638(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406638 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8GameToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::NullTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::NullTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x406ba4 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8NullToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::NullTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::NullTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_406ba4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406ba4 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8NullToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::NullTool>::shared_ptr<RBX::NullTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x406c58 — __ZN5boost10shared_ptrIN3RBX8NullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::NullTool>::shared_ptr<RBX::NullTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_406c58(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406c58 __ZN5boost10shared_ptrIN3RBX8NullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::NullTool,RBX::NullTool>(boost::shared_ptr<RBX::NullTool> const*,RBX::NullTool *)const")]
+// 0x406d20 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8NullToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::NullTool,RBX::NullTool>(boost::shared_ptr<RBX::NullTool> const*,RBX::NullTool *)const
+pub fn boost_stub_406d20(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406d20 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8NullToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x406e04 — __ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_406e04(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406e04 __ZN5boost6detail12shared_countC2IPN3RBX8NullToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x406efc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_406efc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406efc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x406f00 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_406f00(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406f00 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x406f04 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_406f04(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406f04 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x406f14 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_406f14(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406f14 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
+// 0x406f2c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_406f2c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x406f2c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8NullToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::DropperTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::DropperTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x407498 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11DropperToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::DropperTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::DropperTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_407498(_ptr: crate::SharedPtr<()>) {
+    todo!("0x407498 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11DropperToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::DropperTool>::shared_ptr<RBX::DropperTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x407590 — __ZN5boost10shared_ptrIN3RBX11DropperToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::DropperTool>::shared_ptr<RBX::DropperTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_407590(_ptr: crate::SharedPtr<()>) {
+    todo!("0x407590 __ZN5boost10shared_ptrIN3RBX11DropperToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::DropperTool,RBX::DropperTool>(boost::shared_ptr<RBX::DropperTool> const*,RBX::DropperTool *)const")]
+// 0x407658 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11DropperToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::DropperTool,RBX::DropperTool>(boost::shared_ptr<RBX::DropperTool> const*,RBX::DropperTool *)const
+pub fn boost_stub_407658(_ptr: crate::SharedPtr<()>) {
+    todo!("0x407658 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11DropperToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x40773c — __ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_40773c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40773c __ZN5boost6detail12shared_countC2IPN3RBX11DropperToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x407834 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_407834(_ptr: crate::SharedPtr<()>) {
+    todo!("0x407834 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x407838 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_407838(_ptr: crate::SharedPtr<()>) {
+    todo!("0x407838 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x40783c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_40783c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40783c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x40784c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_40784c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40784c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
+// 0x407864 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::DropperTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_407864(_ptr: crate::SharedPtr<()>) {
+    todo!("0x407864 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX11DropperToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::MaterialTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MaterialTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x407dd0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_12MaterialToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::MaterialTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MaterialTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_407dd0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x407dd0 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_12MaterialToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::MaterialTool>::shared_ptr<RBX::MaterialTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x407f90 — __ZN5boost10shared_ptrIN3RBX12MaterialToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::MaterialTool>::shared_ptr<RBX::MaterialTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_407f90(_ptr: crate::SharedPtr<()>) {
+    todo!("0x407f90 __ZN5boost10shared_ptrIN3RBX12MaterialToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MaterialTool,RBX::MaterialTool>(boost::shared_ptr<RBX::MaterialTool> const*,RBX::MaterialTool *)const")]
+// 0x408058 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_12MaterialToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MaterialTool,RBX::MaterialTool>(boost::shared_ptr<RBX::MaterialTool> const*,RBX::MaterialTool *)const
+pub fn boost_stub_408058(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408058 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_12MaterialToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x40813c — __ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_40813c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40813c __ZN5boost6detail12shared_countC2IPN3RBX12MaterialToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x408234 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_408234(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408234 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x408238 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_408238(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408238 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x40823c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_40823c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40823c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x40824c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_40824c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40824c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
+// 0x408264 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::MaterialTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_408264(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408264 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12MaterialToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::FillTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FillTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x4087d0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8FillToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::FillTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::FillTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_4087d0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4087d0 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8FillToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::FillTool>::shared_ptr<RBX::FillTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x408990 — __ZN5boost10shared_ptrIN3RBX8FillToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::FillTool>::shared_ptr<RBX::FillTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_408990(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408990 __ZN5boost10shared_ptrIN3RBX8FillToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::FillTool,RBX::FillTool>(boost::shared_ptr<RBX::FillTool> const*,RBX::FillTool *)const")]
+// 0x408a58 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FillToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::FillTool,RBX::FillTool>(boost::shared_ptr<RBX::FillTool> const*,RBX::FillTool *)const
+pub fn boost_stub_408a58(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408a58 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FillToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x408b3c — __ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_408b3c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408b3c __ZN5boost6detail12shared_countC2IPN3RBX8FillToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x408c34 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_408c34(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408c34 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x408c38 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_408c38(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408c38 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x408c3c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_408c3c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408c3c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x408c4c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_408c4c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408c4c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
+// 0x408c64 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::FillTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_408c64(_ptr: crate::SharedPtr<()>) {
+    todo!("0x408c64 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8FillToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::LockTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LockTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x4091d0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8LockToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::LockTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LockTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_4091d0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4091d0 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_8LockToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::LockTool> RBX::shared_from<RBX::LockTool>(RBX::LockTool*)")]
+// 0x409374 — __ZN3RBX11shared_fromINS_8LockToolEEEN5boost10shared_ptrIT_EEPS4_
+// was: boost::shared_ptr<RBX::LockTool> RBX::shared_from<RBX::LockTool>(RBX::LockTool*)
+pub fn boost_stub_409374(_ptr: crate::SharedPtr<()>) {
+    todo!("0x409374 __ZN3RBX11shared_fromINS_8LockToolEEEN5boost10shared_ptrIT_EEPS4_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::LockTool>::shared_ptr<RBX::LockTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x4094dc — __ZN5boost10shared_ptrIN3RBX8LockToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::LockTool>::shared_ptr<RBX::LockTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_4094dc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4094dc __ZN5boost10shared_ptrIN3RBX8LockToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LockTool,RBX::LockTool>(boost::shared_ptr<RBX::LockTool> const*,RBX::LockTool *)const")]
+// 0x4095a4 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8LockToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LockTool,RBX::LockTool>(boost::shared_ptr<RBX::LockTool> const*,RBX::LockTool *)const
+pub fn boost_stub_4095a4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4095a4 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8LockToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x409688 — __ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_409688(_ptr: crate::SharedPtr<()>) {
+    todo!("0x409688 __ZN5boost6detail12shared_countC2IPN3RBX8LockToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x409780 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_409780(_ptr: crate::SharedPtr<()>) {
+    todo!("0x409780 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x409784 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_409784(_ptr: crate::SharedPtr<()>) {
+    todo!("0x409784 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x409788 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_409788(_ptr: crate::SharedPtr<()>) {
+    todo!("0x409788 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x409798 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_409798(_ptr: crate::SharedPtr<()>) {
+    todo!("0x409798 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
+// 0x4097b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_4097b0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x4097b0 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX8LockToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::AnchorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AnchorTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x409d1c — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10AnchorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::AnchorTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AnchorTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_409d1c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x409d1c __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_10AnchorToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::AnchorTool> RBX::shared_from<RBX::AnchorTool>(RBX::AnchorTool*)")]
+// 0x409ec8 — __ZN3RBX11shared_fromINS_10AnchorToolEEEN5boost10shared_ptrIT_EEPS4_
+// was: boost::shared_ptr<RBX::AnchorTool> RBX::shared_from<RBX::AnchorTool>(RBX::AnchorTool*)
+pub fn boost_stub_409ec8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x409ec8 __ZN3RBX11shared_fromINS_10AnchorToolEEEN5boost10shared_ptrIT_EEPS4_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::AnchorTool>::shared_ptr<RBX::AnchorTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x40a030 — __ZN5boost10shared_ptrIN3RBX10AnchorToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::AnchorTool>::shared_ptr<RBX::AnchorTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_40a030(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40a030 __ZN5boost10shared_ptrIN3RBX10AnchorToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AnchorTool,RBX::AnchorTool>(boost::shared_ptr<RBX::AnchorTool> const*,RBX::AnchorTool *)const")]
+// 0x40a0f8 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10AnchorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AnchorTool,RBX::AnchorTool>(boost::shared_ptr<RBX::AnchorTool> const*,RBX::AnchorTool *)const
+pub fn boost_stub_40a0f8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40a0f8 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10AnchorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x40a1dc — __ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_40a1dc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40a1dc __ZN5boost6detail12shared_countC2IPN3RBX10AnchorToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x40a2d4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_40a2d4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40a2d4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x40a2d8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_40a2d8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40a2d8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x40a2dc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_40a2dc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40a2dc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x40a2ec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_40a2ec(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40a2ec __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)")]
+// 0x40a304 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::AnchorTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_40a304(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40a304 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10AnchorToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::SmoothNoOutlinesTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::SmoothNoOutlinesTool,RBX::Workspace *>(RBX::Workspace *)")]
+// 0x40a870 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_20SmoothNoOutlinesToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::SmoothNoOutlinesTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::SmoothNoOutlinesTool,RBX::Workspace *>(RBX::Workspace *)
+pub fn boost_stub_40a870(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40a870 __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_20SmoothNoOutlinesToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::SmoothNoOutlinesTool>::shared_ptr<RBX::SmoothNoOutlinesTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x40aa30 — __ZN5boost10shared_ptrIN3RBX20SmoothNoOutlinesToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::SmoothNoOutlinesTool>::shared_ptr<RBX::SmoothNoOutlinesTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_40aa30(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40aa30 __ZN5boost10shared_ptrIN3RBX20SmoothNoOutlinesToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::SmoothNoOutlinesTool,RBX::SmoothNoOutlinesTool>(boost::shared_ptr<RBX::SmoothNoOutlinesTool> const*,RBX::SmoothNoOutlinesTool *)const")]
+// 0x40aaf8 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_20SmoothNoOutlinesToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::SmoothNoOutlinesTool,RBX::SmoothNoOutlinesTool>(boost::shared_ptr<RBX::SmoothNoOutlinesTool> const*,RBX::SmoothNoOutlinesTool *)const
+pub fn boost_stub_40aaf8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40aaf8 __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_20SmoothNoOutlinesToolES5_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+// 0x40abdc — __ZN5boost6detail12shared_countC2IPN3RBX20SmoothNoOutlinesToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)
+pub fn boost_stub_40abdc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40abdc __ZN5boost6detail12shared_countC2IPN3RBX20SmoothNoOutlinesToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x40acd4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_40acd4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40acd4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()")]
+// 0x40acd8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_40acd8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40acd8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)")]
+// 0x40acdc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::dispose(void)
+pub fn boost_stub_40acdc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40acdc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x40acec — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::SmoothNoOutlinesTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_40acec(_ptr: crate::SharedPtr<()>) {
+    todo!("0x40acec __ZN5boost6detail18sp_counted_impl_pdIPN3RBX20SmoothNoOutlinesToolENS2_9CreatableINS2_12MouseCommandEE7DeleterEE11get_deleterERKSt9type_info")
+}
