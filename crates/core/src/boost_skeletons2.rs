@@ -480,7 +480,7 @@ pub fn stub_3c4a0() -> ! {
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 // 0x3c4e0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev
-// was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()
+// was: non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()
 pub fn stub_3c4e0() -> ! {
     todo!("0x3c4e0 __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev")
 }
@@ -508,7 +508,7 @@ pub fn stub_3c5b8() -> ! {
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 // 0x3c678 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
+// was: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
 pub fn stub_3c678() -> ! {
     todo!("0x3c678 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")
 }
@@ -550,7 +550,7 @@ pub fn stub_3c958() -> ! {
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
 // 0x3c998 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev
-// was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
+// was: non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
 pub fn stub_3c998() -> ! {
     todo!("0x3c998 __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev")
 }
@@ -578,7 +578,7 @@ pub fn stub_3ca70() -> ! {
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 // 0x3cb30 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
+// was: non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
 pub fn stub_3cb30() -> ! {
     todo!("0x3cb30 __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev")
 }
@@ -627,7 +627,7 @@ pub fn stub_3cf18() -> ! {
 
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)")]
 // 0x3cf20 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)
+// was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RobloxView>,boost::_bi::list1<boost::_bi::value<RobloxView*>>>,0,void ()(void)>::call(void)
 pub fn stub_3cf20() -> ! {
     todo!("0x3cf20 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0Iv10RobloxViewEENS7_5list1INS7_5valueIPSB_EEEEEELi0ES3_E4callEv")
 }
@@ -683,7 +683,7 @@ pub fn stub_3d808() -> ! {
 
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 // 0x3d81c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
+// was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RobloxView,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<RobloxView*>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 pub fn stub_3d81c() -> ! {
     todo!("0x3d81c __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1Iv10RobloxViewS7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_")
 }
@@ -935,7 +935,7 @@ pub fn stub_3e3a8() -> ! {
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()")]
 // 0x3e528 — __ZThn20_N5boost16exception_detail14bad_exception_D0Ev
-// was: `non-virtual thunk to'boost::exception_detail::bad_exception_::~bad_exception_()
+// was: non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()
 pub fn stub_3e528() -> ! {
     todo!("0x3e528 __ZThn20_N5boost16exception_detail14bad_exception_D0Ev")
 }
@@ -998,7 +998,7 @@ pub fn stub_3e900() -> ! {
 
 #[doc(alias = "non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")]
 // 0x3ea80 — __ZThn20_N5boost16exception_detail10bad_alloc_D0Ev
-// was: `non-virtual thunk to'boost::exception_detail::bad_alloc_::~bad_alloc_()
+// was: non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()
 pub fn stub_3ea80() -> ! {
     todo!("0x3ea80 __ZThn20_N5boost16exception_detail10bad_alloc_D0Ev")
 }

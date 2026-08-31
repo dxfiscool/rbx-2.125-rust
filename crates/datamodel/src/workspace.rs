@@ -498,43 +498,43 @@ pub fn stub_0x6cc160() -> ! {
 
 // 0x6cc170 — __ZThn32_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
-// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+// was: non-virtual thunk toRBX::Workspace::~Workspace()
 pub fn stub_0x6cc170() -> ! {
-    todo!("0x6cc170 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc170 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc178 — __ZThn36_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
-// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+// was: non-virtual thunk toRBX::Workspace::~Workspace()
 pub fn stub_0x6cc178() -> ! {
-    todo!("0x6cc178 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc178 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc180 — __ZThn120_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
-// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+// was: non-virtual thunk toRBX::Workspace::~Workspace()
 pub fn stub_0x6cc180() -> ! {
-    todo!("0x6cc180 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc180 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc188 — __ZThn280_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
-// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+// was: non-virtual thunk toRBX::Workspace::~Workspace()
 pub fn stub_0x6cc188() -> ! {
-    todo!("0x6cc188 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc188 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc190 — __ZThn324_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
-// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+// was: non-virtual thunk toRBX::Workspace::~Workspace()
 pub fn stub_0x6cc190() -> ! {
-    todo!("0x6cc190 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc190 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc198 — __ZThn356_N3RBX9WorkspaceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
-// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+// was: non-virtual thunk toRBX::Workspace::~Workspace()
 pub fn stub_0x6cc198() -> ! {
-    todo!("0x6cc198 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc198 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 

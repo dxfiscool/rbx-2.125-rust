@@ -1,6 +1,6 @@
-//! platform generated — 3324 stubs sorted by EA, from ida/export.json
-//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2251 in prior 3174, 512 remaining before batch) | ObjC -[/+ only
-//! Batch: 3324 stubs (3174 prior +150 this batch, 362 ObjC remaining, 2763 total ObjC) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! platform generated — 3474 stubs sorted by EA, from ida/export.json
+//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2401 in prior 3324, 362 remaining before batch) | ObjC -[/+ only
+//! Batch: 3474 stubs (3324 prior +150 this batch, 212 ObjC remaining, 2763 total ObjC) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -3126,32 +3126,32 @@ pub fn stub_3f700() -> ! {
     todo!("0x3f700 RobloxView::RenderJob::getMetric(std::string const&)const")
 }
 
-// 0x3f904 — `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()
+// 0x3f904 — non-virtual thunk toRobloxView::RenderJob::~RenderJob()
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
 pub fn stub_3f904() -> ! {
-    todo!("0x3f904 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
+    todo!("0x3f904 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
 }
 
-// 0x3f9c8 — `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()
+// 0x3f9c8 — non-virtual thunk toRobloxView::RenderJob::~RenderJob()
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
 pub fn stub_3f9c8() -> ! {
-    todo!("0x3f9c8 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
+    todo!("0x3f9c8 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
 }
 
-// 0x3fa94 — `non-virtual thunk to'RobloxView::RenderJob::getMetric(std::string const&)const
+// 0x3fa94 — non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")]
 pub fn stub_3fa94() -> ! {
-    todo!("0x3fa94 `non-virtual thunk to'RobloxView::RenderJob::getMetric(std::string const&)const")
+    todo!("0x3fa94 non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")
 }
 
-// 0x3faa4 — `non-virtual thunk to'RobloxView::RenderJob::getMetricValue(std::string const&)const
+// 0x3faa4 — non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")]
 pub fn stub_3faa4() -> ! {
-    todo!("0x3faa4 `non-virtual thunk to'RobloxView::RenderJob::getMetricValue(std::string const&)const")
+    todo!("0x3faa4 non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")
 }
 
 // 0x3faac — RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)
@@ -6722,18 +6722,18 @@ pub fn stub_47f908() -> ! {
     todo!("0x47f908 __ZNK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv")
 }
 
-// 0x47f91c — `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// 0x47f91c — non-virtual thunk toRBX::DebugSettings::~DebugSettings()
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 pub fn stub_47f91c() -> ! {
-    todo!("0x47f91c `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+    todo!("0x47f91c non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
 }
 
-// 0x47f960 — `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// 0x47f960 — non-virtual thunk toRBX::DebugSettings::~DebugSettings()
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 pub fn stub_47f960() -> ! {
-    todo!("0x47f960 `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+    todo!("0x47f960 non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
 }
 
 // 0x47fa48 — __ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv
@@ -6742,18 +6742,18 @@ pub fn stub_47fa48() -> ! {
     todo!("0x47fa48 __ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv")
 }
 
-// 0x47fa58 — `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// 0x47fa58 — non-virtual thunk toRBX::DebugSettings::~DebugSettings()
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 pub fn stub_47fa58() -> ! {
-    todo!("0x47fa58 `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+    todo!("0x47fa58 non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
 }
 
-// 0x47fa9c — `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// 0x47fa9c — non-virtual thunk toRBX::DebugSettings::~DebugSettings()
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 pub fn stub_47fa9c() -> ! {
-    todo!("0x47fa9c `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+    todo!("0x47fa9c non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
 }
 
 // 0x48006c — __ZN3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE17static_getCreatorEv
@@ -21581,13 +21581,13 @@ pub fn stub_46de8() -> ! {
     todo!("0x46de8 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
-// 0x46df8 — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
+// 0x46df8 — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 // mangled: __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP13CharacterMoveEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 pub fn stub_46df8() -> ! {
-    todo!("0x46df8 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+    todo!("0x46df8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
 // 0x46e08 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<CharacterMove *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
@@ -21707,13 +21707,13 @@ pub fn stub_4f640() -> ! {
     todo!("0x4f640 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
-// 0x4f650 — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
+// 0x4f650 — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 // mangled: __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 pub fn stub_4f650() -> ! {
-    todo!("0x4f650 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+    todo!("0x4f650 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
 // 0x4f660 — rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()
@@ -21929,22 +21929,22 @@ pub fn stub_23d468() -> ! {
     todo!("0x23d468 boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
 }
 
-// 0x23d520 — `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
+// 0x23d520 — non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
 // mangled: __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev
 // type: void __fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
 pub fn stub_23d520() -> ! {
-    todo!("0x23d520 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+    todo!("0x23d520 non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
 }
 
-// 0x23d5d8 — `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+// 0x23d5d8 — non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
 // mangled: __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
 // type: void __fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 pub fn stub_23d5d8() -> ! {
-    todo!("0x23d5d8 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+    todo!("0x23d5d8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
 }
 
 // 0x23d690 — `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
@@ -21983,13 +21983,13 @@ pub fn stub_23d8d4() -> ! {
     todo!("0x23d8d4 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")
 }
 
-// 0x23d984 — `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+// 0x23d984 — non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
 // mangled: __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 // type: void __fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 pub fn stub_23d984() -> ! {
-    todo!("0x23d984 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+    todo!("0x23d984 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
 }
 
 // 0x23da40 — `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const
@@ -22037,13 +22037,13 @@ pub fn stub_23dd30() -> ! {
     todo!("0x23dd30 boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
 }
 
-// 0x23ddec — `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
+// 0x23ddec — non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
 // mangled: __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
 // type: void __fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
 pub fn stub_23ddec() -> ! {
-    todo!("0x23ddec `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+    todo!("0x23ddec non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
 }
 
 // 0x23dea8 — boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_tag)
@@ -22157,19 +22157,19 @@ pub fn stub_62ab48() -> ! {
     todo!("0x62ab48 RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")
 }
 
-// 0x62abf4 — `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// 0x62abf4 — non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
 // mangled: __ZThn132_N3RBX12PlatformImplINS_17BasicPartInstanceEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
 pub fn stub_62abf4() -> ! {
-    todo!("0x62abf4 `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")
+    todo!("0x62abf4 non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")
 }
 
-// 0x62ac08 — `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
+// 0x62ac08 — non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()
 // mangled: __ZThn132_N3RBX12PlatformImplINS_17BasicPartInstanceEED0Ev
 #[doc(alias = "non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")]
 pub fn stub_62ac08() -> ! {
-    todo!("0x62ac08 `non-virtual thunk to'RBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")
+    todo!("0x62ac08 non-virtual thunk toRBX::PlatformImpl<RBX::BasicPartInstance>::~PlatformImpl()")
 }
 
 // 0x62b750 — RBX::PlatformImpl<RBX::BasicPartInstance>::isChildPlatformMotor6D(RBX::Instance *)
@@ -22220,12 +22220,12 @@ pub fn stub_62b92c() -> ! {
     todo!("0x62b92c rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")
 }
 
-// 0x62b934 — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)
+// 0x62b934 — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)
 // mangled: __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12PlatformImplINSB_17BasicPartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_62b934() -> ! {
-    todo!("0x62b934 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")
+    todo!("0x62b934 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x62b93c — boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::PlatformImpl<RBX::BasicPartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>>>::operator()(void)
@@ -22327,12 +22327,12 @@ pub fn stub_62c97c() -> ! {
     todo!("0x62c97c rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
 }
 
-// 0x62c998 — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
+// 0x62c998 — non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
 // mangled: __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12PlatformImplINS5_17BasicPartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 // was: boost::shared_ptr -> rbx_core::SharedPtr
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 pub fn stub_62c998() -> ! {
-    todo!("0x62c998 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+    todo!("0x62c998 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0x62c9b4 — void boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)
@@ -23391,4 +23391,1054 @@ pub fn stub_f0b3fc() -> ! {
 #[doc(alias = "-[FlurryAutoIncrement nextCountFor:]")]
 pub fn stub_f0b47c() -> ! {
     todo!("0xf0b47c -[FlurryAutoIncrement nextCountFor:]")
+}
+
+// 0xf0b71c — -[FlurryAutoIncrement resetAll]
+// type: void __cdecl(FlurryAutoIncrement *self, SEL)
+#[doc(alias = "-[FlurryAutoIncrement resetAll]")]
+pub fn stub_f0b71c() -> ! {
+    todo!("0xf0b71c -[FlurryAutoIncrement resetAll]")
+}
+
+// 0xf0b844 — -[FlurryAutoIncrement dealloc]
+// type: void __cdecl(FlurryAutoIncrement *self, SEL)
+#[doc(alias = "-[FlurryAutoIncrement dealloc]")]
+pub fn stub_f0b844() -> ! {
+    todo!("0xf0b844 -[FlurryAutoIncrement dealloc]")
+}
+
+// 0xf0b888 — -[FlurryAutoIncrement counters]
+// type: NSMutableDictionary *__cdecl(FlurryAutoIncrement *self, SEL)
+#[doc(alias = "-[FlurryAutoIncrement counters]")]
+pub fn stub_f0b888() -> ! {
+    todo!("0xf0b888 -[FlurryAutoIncrement counters]")
+}
+
+// 0xf0b898 — -[FlurryAutoIncrement setCounters:]
+// type: void __cdecl(FlurryAutoIncrement *self, SEL, id)
+#[doc(alias = "-[FlurryAutoIncrement setCounters:]")]
+pub fn stub_f0b898() -> ! {
+    todo!("0xf0b898 -[FlurryAutoIncrement setCounters:]")
+}
+
+// 0xf0b8bc — +[FlurryNetworkUtil instance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryNetworkUtil instance]")]
+pub fn stub_f0b8bc() -> ! {
+    todo!("0xf0b8bc +[FlurryNetworkUtil instance]")
+}
+
+// 0xf0b994 — +[FlurryNetworkUtil setLastNetworkOperationError:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryNetworkUtil setLastNetworkOperationError:]")]
+pub fn stub_f0b994() -> ! {
+    todo!("0xf0b994 +[FlurryNetworkUtil setLastNetworkOperationError:]")
+}
+
+// 0xf0b9c0 — +[FlurryNetworkUtil setNetworkLikelyNotReachable]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[FlurryNetworkUtil setNetworkLikelyNotReachable]")]
+pub fn stub_f0b9c0() -> ! {
+    todo!("0xf0b9c0 +[FlurryNetworkUtil setNetworkLikelyNotReachable]")
+}
+
+// 0xf0ba3c — +[FlurryNetworkUtil isNetworkLikelyNotReachable]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryNetworkUtil isNetworkLikelyNotReachable]")]
+pub fn stub_f0ba3c() -> ! {
+    todo!("0xf0ba3c +[FlurryNetworkUtil isNetworkLikelyNotReachable]")
+}
+
+// 0xf0bab8 — +[FlurryNetworkUtil initNetworkReachability]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[FlurryNetworkUtil initNetworkReachability]")]
+pub fn stub_f0bab8() -> ! {
+    todo!("0xf0bab8 +[FlurryNetworkUtil initNetworkReachability]")
+}
+
+// 0xf0bcec — +[FlurryNetworkUtil updateNetworkStatus:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryNetworkUtil updateNetworkStatus:]")]
+pub fn stub_f0bcec() -> ! {
+    todo!("0xf0bcec +[FlurryNetworkUtil updateNetworkStatus:]")
+}
+
+// 0xf0be94 — +[FlurryNetworkUtil isNetworkReachable]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryNetworkUtil isNetworkReachable]")]
+pub fn stub_f0be94() -> ! {
+    todo!("0xf0be94 +[FlurryNetworkUtil isNetworkReachable]")
+}
+
+// 0xf0bea8 — +[FlurryNetworkUtil networkStatus]
+// type: int __cdecl(id, SEL)
+#[doc(alias = "+[FlurryNetworkUtil networkStatus]")]
+pub fn stub_f0bea8() -> ! {
+    todo!("0xf0bea8 +[FlurryNetworkUtil networkStatus]")
+}
+
+// 0xf0beb8 — +[FlurryNetworkUtil setAdServerUrl:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryNetworkUtil setAdServerUrl:]")]
+pub fn stub_f0beb8() -> ! {
+    todo!("0xf0beb8 +[FlurryNetworkUtil setAdServerUrl:]")
+}
+
+// 0xf0bfcc — +[FlurryNetworkUtil adServerUrl]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryNetworkUtil adServerUrl]")]
+pub fn stub_f0bfcc() -> ! {
+    todo!("0xf0bfcc +[FlurryNetworkUtil adServerUrl]")
+}
+
+// 0xf0bfdc — +[FlurryNetworkUtil setAdLogServerUrl:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryNetworkUtil setAdLogServerUrl:]")]
+pub fn stub_f0bfdc() -> ! {
+    todo!("0xf0bfdc +[FlurryNetworkUtil setAdLogServerUrl:]")
+}
+
+// 0xf0c0f0 — +[FlurryNetworkUtil adLogServerUrl]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryNetworkUtil adLogServerUrl]")]
+pub fn stub_f0c0f0() -> ! {
+    todo!("0xf0c0f0 +[FlurryNetworkUtil adLogServerUrl]")
+}
+
+// 0xf0c100 — +[FlurryNetworkUtil setServerURL:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryNetworkUtil setServerURL:]")]
+pub fn stub_f0c100() -> ! {
+    todo!("0xf0c100 +[FlurryNetworkUtil setServerURL:]")
+}
+
+// 0xf0c210 — +[FlurryNetworkUtil setSecureTransportEnabled:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[FlurryNetworkUtil setSecureTransportEnabled:]")]
+pub fn stub_f0c210() -> ! {
+    todo!("0xf0c210 +[FlurryNetworkUtil setSecureTransportEnabled:]")
+}
+
+// 0xf0c3a0 — +[FlurryNetworkUtil serverURL]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryNetworkUtil serverURL]")]
+pub fn stub_f0c3a0() -> ! {
+    todo!("0xf0c3a0 +[FlurryNetworkUtil serverURL]")
+}
+
+// 0xf0c3b0 — +[FlurryNetworkUtil setAppCloudServerToStaging:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[FlurryNetworkUtil setAppCloudServerToStaging:]")]
+pub fn stub_f0c3b0() -> ! {
+    todo!("0xf0c3b0 +[FlurryNetworkUtil setAppCloudServerToStaging:]")
+}
+
+// 0xf0c3c8 — +[FlurryNetworkUtil appCloudServerUrl]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryNetworkUtil appCloudServerUrl]")]
+pub fn stub_f0c3c8() -> ! {
+    todo!("0xf0c3c8 +[FlurryNetworkUtil appCloudServerUrl]")
+}
+
+// 0xf0c3f0 — -[FlurryNetworkUtil lastNetworkOperationError]
+// type: NSError *__cdecl(FlurryNetworkUtil *self, SEL)
+#[doc(alias = "-[FlurryNetworkUtil lastNetworkOperationError]")]
+pub fn stub_f0c3f0() -> ! {
+    todo!("0xf0c3f0 -[FlurryNetworkUtil lastNetworkOperationError]")
+}
+
+// 0xf0c408 — -[FlurryNetworkUtil setLastNetworkOperationError:]
+// type: void __cdecl(FlurryNetworkUtil *self, SEL, id)
+#[doc(alias = "-[FlurryNetworkUtil setLastNetworkOperationError:]")]
+pub fn stub_f0c408() -> ! {
+    todo!("0xf0c408 -[FlurryNetworkUtil setLastNetworkOperationError:]")
+}
+
+// 0xf0c42c — -[FlurryHttpAsyncTask dealloc]
+// type: void __cdecl(FlurryHttpAsyncTask *self, SEL)
+#[doc(alias = "-[FlurryHttpAsyncTask dealloc]")]
+pub fn stub_f0c42c() -> ! {
+    todo!("0xf0c42c -[FlurryHttpAsyncTask dealloc]")
+}
+
+// 0xf0c4dc — -[FlurryHttpAsyncTask init]
+// type: FlurryHttpAsyncTask *__cdecl(FlurryHttpAsyncTask *self, SEL)
+#[doc(alias = "-[FlurryHttpAsyncTask init]")]
+pub fn stub_f0c4dc() -> ! {
+    todo!("0xf0c4dc -[FlurryHttpAsyncTask init]")
+}
+
+// 0xf0c5b0 — +[FlurryHttpAsyncTask get:delegate:]
+// type: id __cdecl(id, SEL, id, id)
+#[doc(alias = "+[FlurryHttpAsyncTask get:delegate:]")]
+pub fn stub_f0c5b0() -> ! {
+    todo!("0xf0c5b0 +[FlurryHttpAsyncTask get:delegate:]")
+}
+
+// 0xf0c5d0 — +[FlurryHttpAsyncTask get:headerFields:delegate:]
+// type: id __cdecl(id, SEL, id, id, id)
+#[doc(alias = "+[FlurryHttpAsyncTask get:headerFields:delegate:]")]
+pub fn stub_f0c5d0() -> ! {
+    todo!("0xf0c5d0 +[FlurryHttpAsyncTask get:headerFields:delegate:]")
+}
+
+// 0xf0c668 — +[FlurryHttpAsyncTask post:body:delegate:]
+// type: id __cdecl(id, SEL, id, id, id)
+#[doc(alias = "+[FlurryHttpAsyncTask post:body:delegate:]")]
+pub fn stub_f0c668() -> ! {
+    todo!("0xf0c668 +[FlurryHttpAsyncTask post:body:delegate:]")
+}
+
+// 0xf0c68c — +[FlurryHttpAsyncTask post:body:headerFields:delegate:]
+// type: id __cdecl(id, SEL, id, id, id, id)
+#[doc(alias = "+[FlurryHttpAsyncTask post:body:headerFields:delegate:]")]
+pub fn stub_f0c68c() -> ! {
+    todo!("0xf0c68c +[FlurryHttpAsyncTask post:body:headerFields:delegate:]")
+}
+
+// 0xf0c728 — +[FlurryHttpAsyncTask sendMethod:to:body:headerFields:delegate:]
+// type: id __cdecl(id, SEL, id, id, id, id, id)
+#[doc(alias = "+[FlurryHttpAsyncTask sendMethod:to:body:headerFields:delegate:]")]
+pub fn stub_f0c728() -> ! {
+    todo!("0xf0c728 +[FlurryHttpAsyncTask sendMethod:to:body:headerFields:delegate:]")
+}
+
+// 0xf0c760 — +[FlurryHttpAsyncTask sendMethod:to:body:headerFields:delegate:startImmediately:]
+// type: id __cdecl(id, SEL, id, id, id, id, id, char)
+#[doc(alias = "+[FlurryHttpAsyncTask sendMethod:to:body:headerFields:delegate:startImmediately:]")]
+pub fn stub_f0c760() -> ! {
+    todo!("0xf0c760 +[FlurryHttpAsyncTask sendMethod:to:body:headerFields:delegate:startImmediately:]")
+}
+
+// 0xf0c7a8 — +[FlurryHttpAsyncTask sendMethod:to:body:headerFields:timeoutInterval:useCachePolicy:delegate:startImmediately:]
+// type: id __cdecl(id, SEL, id, id, id, id, int, id, id, char)
+#[doc(alias = "+[FlurryHttpAsyncTask sendMethod:to:body:headerFields:timeoutInterval:useCachePolicy:delegate:startImmediately:]")]
+pub fn stub_f0c7a8() -> ! {
+    todo!("0xf0c7a8 +[FlurryHttpAsyncTask sendMethod:to:body:headerFields:timeoutInterval:useCachePolicy:delegate:startImmediately:]")
+}
+
+// 0xf0c9bc — -[FlurryHttpAsyncTask startInRunLoop:]
+// type: void __cdecl(FlurryHttpAsyncTask *self, SEL, id)
+#[doc(alias = "-[FlurryHttpAsyncTask startInRunLoop:]")]
+pub fn stub_f0c9bc() -> ! {
+    todo!("0xf0c9bc -[FlurryHttpAsyncTask startInRunLoop:]")
+}
+
+// 0xf0ca14 — -[FlurryHttpAsyncTask cancelTask]
+// type: void __cdecl(FlurryHttpAsyncTask *self, SEL)
+#[doc(alias = "-[FlurryHttpAsyncTask cancelTask]")]
+pub fn stub_f0ca14() -> ! {
+    todo!("0xf0ca14 -[FlurryHttpAsyncTask cancelTask]")
+}
+
+// 0xf0ca3c — +[FlurryHttpAsyncTask queryDictionaryToString:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryHttpAsyncTask queryDictionaryToString:]")]
+pub fn stub_f0ca3c() -> ! {
+    todo!("0xf0ca3c +[FlurryHttpAsyncTask queryDictionaryToString:]")
+}
+
+// 0xf0cba0 — +[FlurryHttpAsyncTask stringToQueryDictionary:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryHttpAsyncTask stringToQueryDictionary:]")]
+pub fn stub_f0cba0() -> ! {
+    todo!("0xf0cba0 +[FlurryHttpAsyncTask stringToQueryDictionary:]")
+}
+
+// 0xf0cd20 — +[FlurryHttpAsyncTask urlWithProtocol:host:port:path:query:]
+// type: id __cdecl(id, SEL, id, id, int, id, id)
+#[doc(alias = "+[FlurryHttpAsyncTask urlWithProtocol:host:port:path:query:]")]
+pub fn stub_f0cd20() -> ! {
+    todo!("0xf0cd20 +[FlurryHttpAsyncTask urlWithProtocol:host:port:path:query:]")
+}
+
+// 0xf0ce8c — -[FlurryHttpAsyncTask connection]
+// type: NSURLConnection *__cdecl(FlurryHttpAsyncTask *self, SEL)
+#[doc(alias = "-[FlurryHttpAsyncTask connection]")]
+pub fn stub_f0ce8c() -> ! {
+    todo!("0xf0ce8c -[FlurryHttpAsyncTask connection]")
+}
+
+// 0xf0ce9c — -[FlurryHttpAsyncTask setConnection:]
+// type: void __cdecl(FlurryHttpAsyncTask *self, SEL, id)
+#[doc(alias = "-[FlurryHttpAsyncTask setConnection:]")]
+pub fn stub_f0ce9c() -> ! {
+    todo!("0xf0ce9c -[FlurryHttpAsyncTask setConnection:]")
+}
+
+// 0xf0cec0 — -[FlurryHttpAsyncTask tag]
+// type: NSString *__cdecl(FlurryHttpAsyncTask *self, SEL)
+#[doc(alias = "-[FlurryHttpAsyncTask tag]")]
+pub fn stub_f0cec0() -> ! {
+    todo!("0xf0cec0 -[FlurryHttpAsyncTask tag]")
+}
+
+// 0xf0ced0 — -[FlurryHttpAsyncTask setTag:]
+// type: void __cdecl(FlurryHttpAsyncTask *self, SEL, id)
+#[doc(alias = "-[FlurryHttpAsyncTask setTag:]")]
+pub fn stub_f0ced0() -> ! {
+    todo!("0xf0ced0 -[FlurryHttpAsyncTask setTag:]")
+}
+
+// 0xf0cef4 — -[FlurryHttpAsyncTask taskParams]
+// type: NSMutableDictionary *__cdecl(FlurryHttpAsyncTask *self, SEL)
+#[doc(alias = "-[FlurryHttpAsyncTask taskParams]")]
+pub fn stub_f0cef4() -> ! {
+    todo!("0xf0cef4 -[FlurryHttpAsyncTask taskParams]")
+}
+
+// 0xf0cf04 — -[FlurryHttpAsyncTask setTaskParams:]
+// type: void __cdecl(FlurryHttpAsyncTask *self, SEL, id)
+#[doc(alias = "-[FlurryHttpAsyncTask setTaskParams:]")]
+pub fn stub_f0cf04() -> ! {
+    todo!("0xf0cf04 -[FlurryHttpAsyncTask setTaskParams:]")
+}
+
+// 0xf0cf28 — -[FlurryHttpAsyncTask backgroundTask]
+// type: unsigned int __cdecl(FlurryHttpAsyncTask *self, SEL)
+#[doc(alias = "-[FlurryHttpAsyncTask backgroundTask]")]
+pub fn stub_f0cf28() -> ! {
+    todo!("0xf0cf28 -[FlurryHttpAsyncTask backgroundTask]")
+}
+
+// 0xf0cf38 — -[FlurryHttpAsyncTask setBackgroundTask:]
+// type: void __cdecl(FlurryHttpAsyncTask *self, SEL, unsigned int)
+#[doc(alias = "-[FlurryHttpAsyncTask setBackgroundTask:]")]
+pub fn stub_f0cf38() -> ! {
+    todo!("0xf0cf38 -[FlurryHttpAsyncTask setBackgroundTask:]")
+}
+
+// 0xf0cf48 — +[FlurryDataSender instance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryDataSender instance]")]
+pub fn stub_f0cf48() -> ! {
+    todo!("0xf0cf48 +[FlurryDataSender instance]")
+}
+
+// 0xf0d020 — +[FlurryDataSender httpAsyncTaskClass]
+// type: Class __cdecl(id, SEL)
+#[doc(alias = "+[FlurryDataSender httpAsyncTaskClass]")]
+pub fn stub_f0d020() -> ! {
+    todo!("0xf0d020 +[FlurryDataSender httpAsyncTaskClass]")
+}
+
+// 0xf0d044 — -[FlurryDataSender init]
+// type: FlurryDataSender *__cdecl(FlurryDataSender *self, SEL)
+#[doc(alias = "-[FlurryDataSender init]")]
+pub fn stub_f0d044() -> ! {
+    todo!("0xf0d044 -[FlurryDataSender init]")
+}
+
+// 0xf0d124 — -[FlurryDataSender dealloc]
+// type: void __cdecl(FlurryDataSender *self, SEL)
+#[doc(alias = "-[FlurryDataSender dealloc]")]
+pub fn stub_f0d124() -> ! {
+    todo!("0xf0d124 -[FlurryDataSender dealloc]")
+}
+
+// 0xf0d170 — +[FlurryDataSender dataKey]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryDataSender dataKey]")]
+pub fn stub_f0d170() -> ! {
+    todo!("0xf0d170 +[FlurryDataSender dataKey]")
+}
+
+// 0xf0d1e4 — -[FlurryDataSender setup]
+// type: void __cdecl(FlurryDataSender *self, SEL)
+#[doc(alias = "-[FlurryDataSender setup]")]
+pub fn stub_f0d1e4() -> ! {
+    todo!("0xf0d1e4 -[FlurryDataSender setup]")
+}
+
+// 0xf0d274 — -[FlurryDataSender storeData:]
+// type: id __cdecl(FlurryDataSender *self, SEL, id)
+#[doc(alias = "-[FlurryDataSender storeData:]")]
+pub fn stub_f0d274() -> ! {
+    todo!("0xf0d274 -[FlurryDataSender storeData:]")
+}
+
+// 0xf0d330 — -[FlurryDataSender removeStoredDataWithIdentifier:]
+// type: void __cdecl(FlurryDataSender *self, SEL, id)
+#[doc(alias = "-[FlurryDataSender removeStoredDataWithIdentifier:]")]
+pub fn stub_f0d330() -> ! {
+    todo!("0xf0d330 -[FlurryDataSender removeStoredDataWithIdentifier:]")
+}
+
+// 0xf0d384 — -[FlurryDataSender everSentReportSuccessfully]
+// type: char __cdecl(FlurryDataSender *self, SEL)
+#[doc(alias = "-[FlurryDataSender everSentReportSuccessfully]")]
+pub fn stub_f0d384() -> ! {
+    todo!("0xf0d384 -[FlurryDataSender everSentReportSuccessfully]")
+}
+
+// 0xf0d3ac — -[FlurryDataSender sendData:withIdentifier:]
+// type: void __cdecl(FlurryDataSender *self, SEL, id, id)
+#[doc(alias = "-[FlurryDataSender sendData:withIdentifier:]")]
+pub fn stub_f0d3ac() -> ! {
+    todo!("0xf0d3ac -[FlurryDataSender sendData:withIdentifier:]")
+}
+
+// 0xf0d608 — -[FlurryDataSender sendSessionsData:]
+// type: void __cdecl(FlurryDataSender *self, SEL, id)
+#[doc(alias = "-[FlurryDataSender sendSessionsData:]")]
+pub fn stub_f0d608() -> ! {
+    todo!("0xf0d608 -[FlurryDataSender sendSessionsData:]")
+}
+
+// 0xf0d780 — -[FlurryDataSender requestDidFail:withResponse:]
+// type: void __cdecl(FlurryDataSender *self, SEL, id, id)
+#[doc(alias = "-[FlurryDataSender requestDidFail:withResponse:]")]
+pub fn stub_f0d780() -> ! {
+    todo!("0xf0d780 -[FlurryDataSender requestDidFail:withResponse:]")
+}
+
+// 0xf0d910 — -[FlurryDataSender requestDidCancel:withResponse:]
+// type: void __cdecl(FlurryDataSender *self, SEL, id, id)
+#[doc(alias = "-[FlurryDataSender requestDidCancel:withResponse:]")]
+pub fn stub_f0d910() -> ! {
+    todo!("0xf0d910 -[FlurryDataSender requestDidCancel:withResponse:]")
+}
+
+// 0xf0da04 — -[FlurryDataSender requestSuccessful:withResponse:]
+// type: void __cdecl(FlurryDataSender *self, SEL, id, id)
+#[doc(alias = "-[FlurryDataSender requestSuccessful:withResponse:]")]
+pub fn stub_f0da04() -> ! {
+    todo!("0xf0da04 -[FlurryDataSender requestSuccessful:withResponse:]")
+}
+
+// 0xf0db10 — -[FlurryDataSender requestSuccessComplete:withResponse:]
+// type: void __cdecl(FlurryDataSender *self, SEL, id, id)
+#[doc(alias = "-[FlurryDataSender requestSuccessComplete:withResponse:]")]
+pub fn stub_f0db10() -> ! {
+    todo!("0xf0db10 -[FlurryDataSender requestSuccessComplete:withResponse:]")
+}
+
+// 0xf0dc70 — -[FlurryDataSender didCompleteAllTasks]
+// type: void __cdecl(FlurryDataSender *self, SEL)
+#[doc(alias = "-[FlurryDataSender didCompleteAllTasks]")]
+pub fn stub_f0dc70() -> ! {
+    todo!("0xf0dc70 -[FlurryDataSender didCompleteAllTasks]")
+}
+
+// 0xf0dcc4 — -[FlurryDataSender retransmitNotSentBlocks]
+// type: void __cdecl(FlurryDataSender *self, SEL)
+#[doc(alias = "-[FlurryDataSender retransmitNotSentBlocks]")]
+pub fn stub_f0dcc4() -> ! {
+    todo!("0xf0dcc4 -[FlurryDataSender retransmitNotSentBlocks]")
+}
+
+// 0xf0e0cc — -[FlurryDataSender dataIndex]
+// type: FlurryDataSenderIndex *__cdecl(FlurryDataSender *self, SEL)
+#[doc(alias = "-[FlurryDataSender dataIndex]")]
+pub fn stub_f0e0cc() -> ! {
+    todo!("0xf0e0cc -[FlurryDataSender dataIndex]")
+}
+
+// 0xf0e0dc — -[FlurryDataSender setDataIndex:]
+// type: void __cdecl(FlurryDataSender *self, SEL, id)
+#[doc(alias = "-[FlurryDataSender setDataIndex:]")]
+pub fn stub_f0e0dc() -> ! {
+    todo!("0xf0e0dc -[FlurryDataSender setDataIndex:]")
+}
+
+// 0xf0e100 — -[FlurryDataSenderBlockInfo initWithData:]
+// type: FlurryDataSenderBlockInfo *__cdecl(FlurryDataSenderBlockInfo *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderBlockInfo initWithData:]")]
+pub fn stub_f0e100() -> ! {
+    todo!("0xf0e100 -[FlurryDataSenderBlockInfo initWithData:]")
+}
+
+// 0xf0e290 — -[FlurryDataSenderBlockInfo initWithCoder:]
+// type: FlurryDataSenderBlockInfo *__cdecl(FlurryDataSenderBlockInfo *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderBlockInfo initWithCoder:]")]
+pub fn stub_f0e290() -> ! {
+    todo!("0xf0e290 -[FlurryDataSenderBlockInfo initWithCoder:]")
+}
+
+// 0xf0e38c — -[FlurryDataSenderBlockInfo description]
+// type: id __cdecl(FlurryDataSenderBlockInfo *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBlockInfo description]")]
+pub fn stub_f0e38c() -> ! {
+    todo!("0xf0e38c -[FlurryDataSenderBlockInfo description]")
+}
+
+// 0xf0e3ec — -[FlurryDataSenderBlockInfo dealloc]
+// type: void __cdecl(FlurryDataSenderBlockInfo *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBlockInfo dealloc]")]
+pub fn stub_f0e3ec() -> ! {
+    todo!("0xf0e3ec -[FlurryDataSenderBlockInfo dealloc]")
+}
+
+// 0xf0e450 — -[FlurryDataSenderBlockInfo encodeWithCoder:]
+// type: void __cdecl(FlurryDataSenderBlockInfo *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderBlockInfo encodeWithCoder:]")]
+pub fn stub_f0e450() -> ! {
+    todo!("0xf0e450 -[FlurryDataSenderBlockInfo encodeWithCoder:]")
+}
+
+// 0xf0e4e4 — -[FlurryDataSenderBlockInfo deletePersistentData]
+// type: char __cdecl(FlurryDataSenderBlockInfo *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBlockInfo deletePersistentData]")]
+pub fn stub_f0e4e4() -> ! {
+    todo!("0xf0e4e4 -[FlurryDataSenderBlockInfo deletePersistentData]")
+}
+
+// 0xf0e5f0 — -[FlurryDataSenderBlockInfo data]
+// type: id __cdecl(FlurryDataSenderBlockInfo *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBlockInfo data]")]
+pub fn stub_f0e5f0() -> ! {
+    todo!("0xf0e5f0 -[FlurryDataSenderBlockInfo data]")
+}
+
+// 0xf0e6bc — -[FlurryDataSenderBlockInfo setData:]
+// type: char __cdecl(FlurryDataSenderBlockInfo *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderBlockInfo setData:]")]
+pub fn stub_f0e6bc() -> ! {
+    todo!("0xf0e6bc -[FlurryDataSenderBlockInfo setData:]")
+}
+
+// 0xf0e7dc — -[FlurryDataSenderBlockInfo identifier]
+// type: NSString *__cdecl(FlurryDataSenderBlockInfo *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBlockInfo identifier]")]
+pub fn stub_f0e7dc() -> ! {
+    todo!("0xf0e7dc -[FlurryDataSenderBlockInfo identifier]")
+}
+
+// 0xf0e7ec — -[FlurryDataSenderBlockInfo setIdentifier:]
+// type: void __cdecl(FlurryDataSenderBlockInfo *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderBlockInfo setIdentifier:]")]
+pub fn stub_f0e7ec() -> ! {
+    todo!("0xf0e7ec -[FlurryDataSenderBlockInfo setIdentifier:]")
+}
+
+// 0xf0e810 — -[FlurryDataSenderBlockInfo dataSize]
+// type: unsigned int __cdecl(FlurryDataSenderBlockInfo *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBlockInfo dataSize]")]
+pub fn stub_f0e810() -> ! {
+    todo!("0xf0e810 -[FlurryDataSenderBlockInfo dataSize]")
+}
+
+// 0xf0e820 — -[FlurryDataSenderBlockInfo setDataSize:]
+// type: void __cdecl(FlurryDataSenderBlockInfo *self, SEL, unsigned int)
+#[doc(alias = "-[FlurryDataSenderBlockInfo setDataSize:]")]
+pub fn stub_f0e820() -> ! {
+    todo!("0xf0e820 -[FlurryDataSenderBlockInfo setDataSize:]")
+}
+
+// 0xf0e830 — -[FlurryDataSenderBlockInfo creationDate]
+// type: NSDate *__cdecl(FlurryDataSenderBlockInfo *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBlockInfo creationDate]")]
+pub fn stub_f0e830() -> ! {
+    todo!("0xf0e830 -[FlurryDataSenderBlockInfo creationDate]")
+}
+
+// 0xf0e840 — -[FlurryDataSenderBlockInfo setCreationDate:]
+// type: void __cdecl(FlurryDataSenderBlockInfo *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderBlockInfo setCreationDate:]")]
+pub fn stub_f0e840() -> ! {
+    todo!("0xf0e840 -[FlurryDataSenderBlockInfo setCreationDate:]")
+}
+
+// 0xf0e864 — +[FlurryDataSenderIndex instantiatedIndex]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryDataSenderIndex instantiatedIndex]")]
+pub fn stub_f0e864() -> ! {
+    todo!("0xf0e864 +[FlurryDataSenderIndex instantiatedIndex]")
+}
+
+// 0xf0e928 — -[FlurryDataSenderIndex init]
+// type: FlurryDataSenderIndex *__cdecl(FlurryDataSenderIndex *self, SEL)
+#[doc(alias = "-[FlurryDataSenderIndex init]")]
+pub fn stub_f0e928() -> ! {
+    todo!("0xf0e928 -[FlurryDataSenderIndex init]")
+}
+
+// 0xf0e994 — -[FlurryDataSenderIndex initWithCoder:]
+// type: FlurryDataSenderIndex *__cdecl(FlurryDataSenderIndex *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderIndex initWithCoder:]")]
+pub fn stub_f0e994() -> ! {
+    todo!("0xf0e994 -[FlurryDataSenderIndex initWithCoder:]")
+}
+
+// 0xf0ea68 — -[FlurryDataSenderIndex dealloc]
+// type: void __cdecl(FlurryDataSenderIndex *self, SEL)
+#[doc(alias = "-[FlurryDataSenderIndex dealloc]")]
+pub fn stub_f0ea68() -> ! {
+    todo!("0xf0ea68 -[FlurryDataSenderIndex dealloc]")
+}
+
+// 0xf0eab8 — -[FlurryDataSenderIndex encodeWithCoder:]
+// type: void __cdecl(FlurryDataSenderIndex *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderIndex encodeWithCoder:]")]
+pub fn stub_f0eab8() -> ! {
+    todo!("0xf0eab8 -[FlurryDataSenderIndex encodeWithCoder:]")
+}
+
+// 0xf0eb1c — -[FlurryDataSenderIndex saveState]
+// type: void __cdecl(FlurryDataSenderIndex *self, SEL)
+#[doc(alias = "-[FlurryDataSenderIndex saveState]")]
+pub fn stub_f0eb1c() -> ! {
+    todo!("0xf0eb1c -[FlurryDataSenderIndex saveState]")
+}
+
+// 0xf0eb94 — -[FlurryDataSenderIndex addBlockInfo:forDataKey:]
+// type: void __cdecl(FlurryDataSenderIndex *self, SEL, id, id)
+#[doc(alias = "-[FlurryDataSenderIndex addBlockInfo:forDataKey:]")]
+pub fn stub_f0eb94() -> ! {
+    todo!("0xf0eb94 -[FlurryDataSenderIndex addBlockInfo:forDataKey:]")
+}
+
+// 0xf0ec40 — -[FlurryDataSenderIndex removeBlockInfoWithIdentifier:forDataKey:]
+// type: void __cdecl(FlurryDataSenderIndex *self, SEL, id, id)
+#[doc(alias = "-[FlurryDataSenderIndex removeBlockInfoWithIdentifier:forDataKey:]")]
+pub fn stub_f0ec40() -> ! {
+    todo!("0xf0ec40 -[FlurryDataSenderIndex removeBlockInfoWithIdentifier:forDataKey:]")
+}
+
+// 0xf0ed80 — -[FlurryDataSenderIndex setupForCurrentDataKey:]
+// type: void __cdecl(FlurryDataSenderIndex *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderIndex setupForCurrentDataKey:]")]
+pub fn stub_f0ed80() -> ! {
+    todo!("0xf0ed80 -[FlurryDataSenderIndex setupForCurrentDataKey:]")
+}
+
+// 0xf0efa0 — -[FlurryDataSenderIndex discardOutdatedBlocksForDataKey:]
+// type: char __cdecl(FlurryDataSenderIndex *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderIndex discardOutdatedBlocksForDataKey:]")]
+pub fn stub_f0efa0() -> ! {
+    todo!("0xf0efa0 -[FlurryDataSenderIndex discardOutdatedBlocksForDataKey:]")
+}
+
+// 0xf0f0e8 — -[FlurryDataSenderIndex notSentBlocksForDataKey:]
+// type: id __cdecl(FlurryDataSenderIndex *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderIndex notSentBlocksForDataKey:]")]
+pub fn stub_f0f0e8() -> ! {
+    todo!("0xf0f0e8 -[FlurryDataSenderIndex notSentBlocksForDataKey:]")
+}
+
+// 0xf0f18c — -[FlurryDataSenderIndex indexMap]
+// type: NSMutableDictionary *__cdecl(FlurryDataSenderIndex *self, SEL)
+#[doc(alias = "-[FlurryDataSenderIndex indexMap]")]
+pub fn stub_f0f18c() -> ! {
+    todo!("0xf0f18c -[FlurryDataSenderIndex indexMap]")
+}
+
+// 0xf0f19c — -[FlurryDataSenderIndex setIndexMap:]
+// type: void __cdecl(FlurryDataSenderIndex *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderIndex setIndexMap:]")]
+pub fn stub_f0f19c() -> ! {
+    todo!("0xf0f19c -[FlurryDataSenderIndex setIndexMap:]")
+}
+
+// 0xf0f1c0 — -[FlurryDataSenderIndex sentReportSuccessfully]
+// type: char __cdecl(FlurryDataSenderIndex *self, SEL)
+#[doc(alias = "-[FlurryDataSenderIndex sentReportSuccessfully]")]
+pub fn stub_f0f1c0() -> ! {
+    todo!("0xf0f1c0 -[FlurryDataSenderIndex sentReportSuccessfully]")
+}
+
+// 0xf0f1d0 — -[FlurryDataSenderIndex setSentReportSuccessfully:]
+// type: void __cdecl(FlurryDataSenderIndex *self, SEL, char)
+#[doc(alias = "-[FlurryDataSenderIndex setSentReportSuccessfully:]")]
+pub fn stub_f0f1d0() -> ! {
+    todo!("0xf0f1d0 -[FlurryDataSenderIndex setSentReportSuccessfully:]")
+}
+
+// 0xf0f1e0 — +[FlurryImpl instance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryImpl instance]")]
+pub fn stub_f0f1e0() -> ! {
+    todo!("0xf0f1e0 +[FlurryImpl instance]")
+}
+
+// 0xf0f2b8 — -[FlurryImpl init]
+// type: FlurryImpl *__cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl init]")]
+pub fn stub_f0f2b8() -> ! {
+    todo!("0xf0f2b8 -[FlurryImpl init]")
+}
+
+// 0xf0f3dc — -[FlurryImpl resetStartDate]
+// type: void __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl resetStartDate]")]
+pub fn stub_f0f3dc() -> ! {
+    todo!("0xf0f3dc -[FlurryImpl resetStartDate]")
+}
+
+// 0xf0f414 — -[FlurryImpl setupForApiKey:]
+// type: void __cdecl(FlurryImpl *self, SEL, id)
+#[doc(alias = "-[FlurryImpl setupForApiKey:]")]
+pub fn stub_f0f414() -> ! {
+    todo!("0xf0f414 -[FlurryImpl setupForApiKey:]")
+}
+
+// 0xf0f678 — -[FlurryImpl setLatitude:longitude:horizontalAccuracy:verticalAccuracy:]
+// type: void __cdecl(FlurryImpl *self, SEL, double, double, float, float)
+#[doc(alias = "-[FlurryImpl setLatitude:longitude:horizontalAccuracy:verticalAccuracy:]")]
+pub fn stub_f0f678() -> ! {
+    todo!("0xf0f678 -[FlurryImpl setLatitude:longitude:horizontalAccuracy:verticalAccuracy:]")
+}
+
+// 0xf0f7d8 — -[FlurryImpl setEventLoggingEnabled:]
+// type: void __cdecl(FlurryImpl *self, SEL, char)
+#[doc(alias = "-[FlurryImpl setEventLoggingEnabled:]")]
+pub fn stub_f0f7d8() -> ! {
+    todo!("0xf0f7d8 -[FlurryImpl setEventLoggingEnabled:]")
+}
+
+// 0xf0f8d0 — -[FlurryImpl setUserID:]
+// type: void __cdecl(FlurryImpl *self, SEL, id)
+#[doc(alias = "-[FlurryImpl setUserID:]")]
+pub fn stub_f0f8d0() -> ! {
+    todo!("0xf0f8d0 -[FlurryImpl setUserID:]")
+}
+
+// 0xf0f9dc — -[FlurryImpl setSessionReportsOnCloseEnabled:]
+// type: void __cdecl(FlurryImpl *self, SEL, char)
+#[doc(alias = "-[FlurryImpl setSessionReportsOnCloseEnabled:]")]
+pub fn stub_f0f9dc() -> ! {
+    todo!("0xf0f9dc -[FlurryImpl setSessionReportsOnCloseEnabled:]")
+}
+
+// 0xf0fad4 — -[FlurryImpl setSessionReportsOnPauseEnabled:]
+// type: void __cdecl(FlurryImpl *self, SEL, char)
+#[doc(alias = "-[FlurryImpl setSessionReportsOnPauseEnabled:]")]
+pub fn stub_f0fad4() -> ! {
+    todo!("0xf0fad4 -[FlurryImpl setSessionReportsOnPauseEnabled:]")
+}
+
+// 0xf0fbcc — -[FlurryImpl setCrashReportingEnabled:]
+// type: void __cdecl(FlurryImpl *self, SEL, char)
+#[doc(alias = "-[FlurryImpl setCrashReportingEnabled:]")]
+pub fn stub_f0fbcc() -> ! {
+    todo!("0xf0fbcc -[FlurryImpl setCrashReportingEnabled:]")
+}
+
+// 0xf0fcc4 — -[FlurryImpl maybeIncrementPageView]
+// type: void __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl maybeIncrementPageView]")]
+pub fn stub_f0fcc4() -> ! {
+    todo!("0xf0fcc4 -[FlurryImpl maybeIncrementPageView]")
+}
+
+// 0xf0fdac — -[FlurryImpl setGenderAsString:]
+// type: void __cdecl(FlurryImpl *self, SEL, id)
+#[doc(alias = "-[FlurryImpl setGenderAsString:]")]
+pub fn stub_f0fdac() -> ! {
+    todo!("0xf0fdac -[FlurryImpl setGenderAsString:]")
+}
+
+// 0xf0feb8 — -[FlurryImpl setAgeInYears:]
+// type: void __cdecl(FlurryImpl *self, SEL, int)
+#[doc(alias = "-[FlurryImpl setAgeInYears:]")]
+pub fn stub_f0feb8() -> ! {
+    todo!("0xf0feb8 -[FlurryImpl setAgeInYears:]")
+}
+
+// 0xf0ffa8 — -[FlurryImpl setPushToken:]
+// type: void __cdecl(FlurryImpl *self, SEL, id)
+#[doc(alias = "-[FlurryImpl setPushToken:]")]
+pub fn stub_f0ffa8() -> ! {
+    todo!("0xf0ffa8 -[FlurryImpl setPushToken:]")
+}
+
+// 0xf100b4 — -[FlurryImpl recordEvent:withParameters:]
+// type: void __cdecl(FlurryImpl *self, SEL, id, id)
+#[doc(alias = "-[FlurryImpl recordEvent:withParameters:]")]
+pub fn stub_f100b4() -> ! {
+    todo!("0xf100b4 -[FlurryImpl recordEvent:withParameters:]")
+}
+
+// 0xf101e0 — -[FlurryImpl recordEvent:withParameters:timed:]
+// type: void __cdecl(FlurryImpl *self, SEL, id, id, char)
+#[doc(alias = "-[FlurryImpl recordEvent:withParameters:timed:]")]
+pub fn stub_f101e0() -> ! {
+    todo!("0xf101e0 -[FlurryImpl recordEvent:withParameters:timed:]")
+}
+
+// 0xf10328 — -[FlurryImpl endTimedEvent:withParameters:]
+// type: void __cdecl(FlurryImpl *self, SEL, id, id)
+#[doc(alias = "-[FlurryImpl endTimedEvent:withParameters:]")]
+pub fn stub_f10328() -> ! {
+    todo!("0xf10328 -[FlurryImpl endTimedEvent:withParameters:]")
+}
+
+// 0xf10454 — -[FlurryImpl recordError:message:exception:liveReport:]
+// type: void __cdecl(FlurryImpl *self, SEL, id, id, id, id)
+#[doc(alias = "-[FlurryImpl recordError:message:exception:liveReport:]")]
+pub fn stub_f10454() -> ! {
+    todo!("0xf10454 -[FlurryImpl recordError:message:exception:liveReport:]")
+}
+
+// 0xf105d4 — -[FlurryImpl recordError:message:error:liveReport:]
+// type: void __cdecl(FlurryImpl *self, SEL, id, id, id, id)
+#[doc(alias = "-[FlurryImpl recordError:message:error:liveReport:]")]
+pub fn stub_f105d4() -> ! {
+    todo!("0xf105d4 -[FlurryImpl recordError:message:error:liveReport:]")
+}
+
+// 0xf10754 — -[FlurryImpl recordError:message:exceptionString:errorType:liveReport:]
+// type: void __cdecl(FlurryImpl *self, SEL, id, id, id, int, id)
+#[doc(alias = "-[FlurryImpl recordError:message:exceptionString:errorType:liveReport:]")]
+pub fn stub_f10754() -> ! {
+    todo!("0xf10754 -[FlurryImpl recordError:message:exceptionString:errorType:liveReport:]")
+}
+
+// 0xf108ec — -[FlurryImpl recordPurchaseItem:]
+// type: void __cdecl(FlurryImpl *self, SEL, id)
+#[doc(alias = "-[FlurryImpl recordPurchaseItem:]")]
+pub fn stub_f108ec() -> ! {
+    todo!("0xf108ec -[FlurryImpl recordPurchaseItem:]")
+}
+
+// 0xf109f8 — -[FlurryImpl pauseSession]
+// type: void __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl pauseSession]")]
+pub fn stub_f109f8() -> ! {
+    todo!("0xf109f8 -[FlurryImpl pauseSession]")
+}
+
+// 0xf10bb8 — -[FlurryImpl markSessionAsResuming]
+// type: void __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl markSessionAsResuming]")]
+pub fn stub_f10bb8() -> ! {
+    todo!("0xf10bb8 -[FlurryImpl markSessionAsResuming]")
+}
+
+// 0xf10ca0 — -[FlurryImpl resumeSession]
+// type: void __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl resumeSession]")]
+pub fn stub_f10ca0() -> ! {
+    todo!("0xf10ca0 -[FlurryImpl resumeSession]")
+}
+
+// 0xf10d88 — -[FlurryImpl endSession]
+// type: void __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl endSession]")]
+pub fn stub_f10d88() -> ! {
+    todo!("0xf10d88 -[FlurryImpl endSession]")
+}
+
+// 0xf10e70 — -[FlurryImpl sendSessionsToServerForCreateSession]
+// type: void __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl sendSessionsToServerForCreateSession]")]
+pub fn stub_f10e70() -> ! {
+    todo!("0xf10e70 -[FlurryImpl sendSessionsToServerForCreateSession]")
+}
+
+// 0xf10f58 — -[FlurryImpl latitude]
+// type: double __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl latitude]")]
+pub fn stub_f10f58() -> ! {
+    todo!("0xf10f58 -[FlurryImpl latitude]")
+}
+
+// 0xf11188 — -[FlurryImpl longitude]
+// type: double __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl longitude]")]
+pub fn stub_f11188() -> ! {
+    todo!("0xf11188 -[FlurryImpl longitude]")
+}
+
+// 0xf113b8 — -[FlurryImpl accuracy]
+// type: double __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl accuracy]")]
+pub fn stub_f113b8() -> ! {
+    todo!("0xf113b8 -[FlurryImpl accuracy]")
+}
+
+// 0xf115f8 — -[FlurryImpl gender]
+// type: int __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl gender]")]
+pub fn stub_f115f8() -> ! {
+    todo!("0xf115f8 -[FlurryImpl gender]")
+}
+
+// 0xf11814 — -[FlurryImpl age]
+// type: id __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl age]")]
+pub fn stub_f11814() -> ! {
+    todo!("0xf11814 -[FlurryImpl age]")
+}
+
+// 0xf11a6c — -[FlurryImpl pageViewCount]
+// type: int __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl pageViewCount]")]
+pub fn stub_f11a6c() -> ! {
+    todo!("0xf11a6c -[FlurryImpl pageViewCount]")
+}
+
+// 0xf11c88 — -[FlurryImpl pauseTime]
+// type: NSDate *__cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl pauseTime]")]
+pub fn stub_f11c88() -> ! {
+    todo!("0xf11c88 -[FlurryImpl pauseTime]")
+}
+
+// 0xf11ec0 — +[FlurryImpl registerBackgoundTask]
+// type: unsigned int __cdecl(id, SEL)
+#[doc(alias = "+[FlurryImpl registerBackgoundTask]")]
+pub fn stub_f11ec0() -> ! {
+    todo!("0xf11ec0 +[FlurryImpl registerBackgoundTask]")
+}
+
+// 0xf11fa0 — +[FlurryImpl unregisterBackgoundTask:]
+// type: void __cdecl(id, SEL, unsigned int)
+#[doc(alias = "+[FlurryImpl unregisterBackgoundTask:]")]
+pub fn stub_f11fa0() -> ! {
+    todo!("0xf11fa0 +[FlurryImpl unregisterBackgoundTask:]")
+}
+
+// 0xf12010 — -[FlurryImpl session]
+// type: FlurrySession *__cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl session]")]
+pub fn stub_f12010() -> ! {
+    todo!("0xf12010 -[FlurryImpl session]")
+}
+
+// 0xf12020 — -[FlurryImpl setSession:]
+// type: void __cdecl(FlurryImpl *self, SEL, id)
+#[doc(alias = "-[FlurryImpl setSession:]")]
+pub fn stub_f12020() -> ! {
+    todo!("0xf12020 -[FlurryImpl setSession:]")
+}
+
+// 0xf12044 — -[FlurryImpl apiKey]
+// type: NSString *__cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl apiKey]")]
+pub fn stub_f12044() -> ! {
+    todo!("0xf12044 -[FlurryImpl apiKey]")
+}
+
+// 0xf1205c — -[FlurryImpl setApiKey:]
+// type: void __cdecl(FlurryImpl *self, SEL, id)
+#[doc(alias = "-[FlurryImpl setApiKey:]")]
+pub fn stub_f1205c() -> ! {
+    todo!("0xf1205c -[FlurryImpl setApiKey:]")
+}
+
+// 0xf12080 — -[FlurryImpl startTime]
+// type: NSDate *__cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl startTime]")]
+pub fn stub_f12080() -> ! {
+    todo!("0xf12080 -[FlurryImpl startTime]")
+}
+
+// 0xf12098 — -[FlurryImpl setStartTime:]
+// type: void __cdecl(FlurryImpl *self, SEL, id)
+#[doc(alias = "-[FlurryImpl setStartTime:]")]
+pub fn stub_f12098() -> ! {
+    todo!("0xf12098 -[FlurryImpl setStartTime:]")
+}
+
+// 0xf120bc — -[FlurryImpl queue]
+// type: dispatch_queue_s *__cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl queue]")]
+pub fn stub_f120bc() -> ! {
+    todo!("0xf120bc -[FlurryImpl queue]")
+}
+
+// 0xf120cc — -[FlurryImpl setQueue:]
+// type: void __cdecl(FlurryImpl *self, SEL, dispatch_queue_s *)
+#[doc(alias = "-[FlurryImpl setQueue:]")]
+pub fn stub_f120cc() -> ! {
+    todo!("0xf120cc -[FlurryImpl setQueue:]")
+}
+
+// 0xf120dc — -[FlurryImpl isBackgroundSupported]
+// type: char __cdecl(FlurryImpl *self, SEL)
+#[doc(alias = "-[FlurryImpl isBackgroundSupported]")]
+pub fn stub_f120dc() -> ! {
+    todo!("0xf120dc -[FlurryImpl isBackgroundSupported]")
+}
+
+// 0xf120ec — -[FlurryImpl setIsBackgroundSupported:]
+// type: void __cdecl(FlurryImpl *self, SEL, char)
+#[doc(alias = "-[FlurryImpl setIsBackgroundSupported:]")]
+pub fn stub_f120ec() -> ! {
+    todo!("0xf120ec -[FlurryImpl setIsBackgroundSupported:]")
+}
+
+// 0xf120fc — +[FlurrySharedData instance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurrySharedData instance]")]
+pub fn stub_f120fc() -> ! {
+    todo!("0xf120fc +[FlurrySharedData instance]")
+}
+
+// 0xf121d4 — -[FlurrySharedData storeAppCloudUserID:]
+// type: void __cdecl(FlurrySharedData *self, SEL, id)
+#[doc(alias = "-[FlurrySharedData storeAppCloudUserID:]")]
+pub fn stub_f121d4() -> ! {
+    todo!("0xf121d4 -[FlurrySharedData storeAppCloudUserID:]")
+}
+
+// 0xf12248 — -[FlurrySharedData storedAppCloudUserID]
+// type: id __cdecl(FlurrySharedData *self, SEL)
+#[doc(alias = "-[FlurrySharedData storedAppCloudUserID]")]
+pub fn stub_f12248() -> ! {
+    todo!("0xf12248 -[FlurrySharedData storedAppCloudUserID]")
+}
+
+// 0xf12284 — -[FlurryDataSenderBase initialize]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase initialize]")]
+pub fn stub_f12284() -> ! {
+    todo!("0xf12284 -[FlurryDataSenderBase initialize]")
+}
+
+// 0xf12308 — -[FlurryDataSenderBase init]
+// type: FlurryDataSenderBase *__cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase init]")]
+pub fn stub_f12308() -> ! {
+    todo!("0xf12308 -[FlurryDataSenderBase init]")
+}
+
+// 0xf1234c — -[FlurryDataSenderBase initWithQueue:]
+// type: FlurryDataSenderBase *__cdecl(FlurryDataSenderBase *self, SEL, dispatch_queue_s *)
+#[doc(alias = "-[FlurryDataSenderBase initWithQueue:]")]
+pub fn stub_f1234c() -> ! {
+    todo!("0xf1234c -[FlurryDataSenderBase initWithQueue:]")
+}
+
+// 0xf123ec — -[FlurryDataSenderBase dealloc]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase dealloc]")]
+pub fn stub_f123ec() -> ! {
+    todo!("0xf123ec -[FlurryDataSenderBase dealloc]")
+}
+
+// 0xf12478 — -[FlurryDataSenderBase hasOngoingTasksWindow]
+// type: char __cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase hasOngoingTasksWindow]")]
+pub fn stub_f12478() -> ! {
+    todo!("0xf12478 -[FlurryDataSenderBase hasOngoingTasksWindow]")
+}
+
+// 0xf124a8 — -[FlurryDataSenderBase registerNewTask:]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL, id)
+#[doc(alias = "-[FlurryDataSenderBase registerNewTask:]")]
+pub fn stub_f124a8() -> ! {
+    todo!("0xf124a8 -[FlurryDataSenderBase registerNewTask:]")
+}
+
+// 0xf1251c — -[FlurryDataSenderBase unregisterTask:completedSuccessfuly:]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL, id, char)
+#[doc(alias = "-[FlurryDataSenderBase unregisterTask:completedSuccessfuly:]")]
+pub fn stub_f1251c() -> ! {
+    todo!("0xf1251c -[FlurryDataSenderBase unregisterTask:completedSuccessfuly:]")
+}
+
+// 0xf12600 — -[FlurryDataSenderBase retransmitNotSentBlocks]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase retransmitNotSentBlocks]")]
+pub fn stub_f12600() -> ! {
+    todo!("0xf12600 -[FlurryDataSenderBase retransmitNotSentBlocks]")
+}
+
+// 0xf12618 — -[FlurryDataSenderBase didCompleteAllTasks]
+// type: void __cdecl(FlurryDataSenderBase *self, SEL)
+#[doc(alias = "-[FlurryDataSenderBase didCompleteAllTasks]")]
+pub fn stub_f12618() -> ! {
+    todo!("0xf12618 -[FlurryDataSenderBase didCompleteAllTasks]")
 }

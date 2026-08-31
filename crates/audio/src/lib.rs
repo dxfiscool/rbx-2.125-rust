@@ -8039,7 +8039,7 @@ pub fn stub_d4980() -> ! {
 // 0xd4ac0 — __ZThn360_N4FMOD12OutputPolled10threadFuncEv
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::threadFunc(void)")]
 pub fn stub_d4ac0() -> ! {
-    todo!("0xd4ac0 `non-virtual thunk to'FMOD::OutputPolled::threadFunc(void)")
+    todo!("0xd4ac0 non-virtual thunk toFMOD::OutputPolled::threadFunc(void)")
 }
 
 // 0xd4ac8 — __ZN4FMOD12OutputPolled10threadFuncEv
@@ -8051,7 +8051,7 @@ pub fn stub_d4ac8() -> ! {
 // 0xd4ff8 — __ZThn360_N4FMOD12OutputPolledD0Ev
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")]
 pub fn stub_d4ff8() -> ! {
-    todo!("0xd4ff8 `non-virtual thunk to'FMOD::OutputPolled::~OutputPolled()")
+    todo!("0xd4ff8 non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")
 }
 
 // 0xd5000 — __ZN4FMOD12OutputPolledD0Ev
@@ -8063,7 +8063,7 @@ pub fn stub_d5000() -> ! {
 // 0xd5038 — __ZThn360_N4FMOD12OutputPolledD1Ev
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")]
 pub fn stub_d5038() -> ! {
-    todo!("0xd5038 `non-virtual thunk to'FMOD::OutputPolled::~OutputPolled()")
+    todo!("0xd5038 non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")
 }
 
 // 0xd5040 — __ZN4FMOD12OutputPolledD1Ev
@@ -11599,14 +11599,14 @@ pub fn stub_372500() -> ! {
 // type: void __fastcall(RBX::Soundscape::SoundService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 pub fn stub_372504() -> ! {
-    todo!("0x372504 `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+    todo!("0x372504 non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
 }
 
 // 0x37250c — __ZThn36_N3RBX10Soundscape12SoundServiceD0Ev
 // type: void __fastcall(RBX::Soundscape::SoundService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 pub fn stub_37250c() -> ! {
-    todo!("0x37250c `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+    todo!("0x37250c non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
 }
 
 // 0x372514 — __ZN3RBX10Soundscape12SoundServiceD2Ev
@@ -11620,14 +11620,14 @@ pub fn stub_372514() -> ! {
 // type: void __fastcall(RBX::Soundscape::SoundService *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 pub fn stub_3728b0() -> ! {
-    todo!("0x3728b0 `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+    todo!("0x3728b0 non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
 }
 
 // 0x3728b8 — __ZThn36_N3RBX10Soundscape12SoundServiceD1Ev
 // type: void __fastcall(RBX::Soundscape::SoundService *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 pub fn stub_3728b8() -> ! {
-    todo!("0x3728b8 `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+    todo!("0x3728b8 non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
 }
 
 // 0x3728c0 — __ZN3RBX10Soundscape12SoundService9closeFmodEv
@@ -11886,14 +11886,14 @@ pub fn stub_375094() -> ! {
 // type: void __fastcall(RBX::Soundscape::SoundChannel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 pub fn stub_375098() -> ! {
-    todo!("0x375098 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+    todo!("0x375098 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
 }
 
 // 0x3750a0 — __ZThn36_N3RBX10Soundscape12SoundChannelD0Ev
 // type: void __fastcall(RBX::Soundscape::SoundChannel *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 pub fn stub_3750a0() -> ! {
-    todo!("0x3750a0 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+    todo!("0x3750a0 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
 }
 
 // 0x3750a8 — __ZN3RBX10Soundscape12SoundChannelD2Ev
@@ -11907,14 +11907,14 @@ pub fn stub_3750a8() -> ! {
 // type: void __fastcall(RBX::Soundscape::SoundChannel *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 pub fn stub_375330() -> ! {
-    todo!("0x375330 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+    todo!("0x375330 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
 }
 
 // 0x375338 — __ZThn36_N3RBX10Soundscape12SoundChannelD1Ev
 // type: void __fastcall(RBX::Soundscape::SoundChannel *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 pub fn stub_375338() -> ! {
-    todo!("0x375338 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+    todo!("0x375338 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
 }
 
 // 0x375340 — __ZNK3RBX10Soundscape12SoundService11getCpuStatsERNS1_8CpuStatsE
@@ -13421,7 +13421,7 @@ pub fn stub_379194() -> ! {
 // 0x37919c — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10Soundscape12SoundChannelES6_EENSB_5list2INSB_5valueIPSG_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
 pub fn stub_37919c() -> ! {
-    todo!("0x37919c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
+    todo!("0x37919c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Soundscape::SoundChannel,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Soundscape::SoundChannel*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
 }
 
 // 0x3791a4 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_

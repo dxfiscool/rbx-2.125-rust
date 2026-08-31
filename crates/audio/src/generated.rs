@@ -1451,14 +1451,14 @@ pub fn stub_37c9d8() -> ! {
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 pub fn stub_37c9e8() -> ! {
-    todo!("0x37c9e8 `non-virtual thunk to'RBX::StockSound::~StockSound()")
+    todo!("0x37c9e8 non-virtual thunk toRBX::StockSound::~StockSound()")
 }
 
 // 0x37c9f0 — __ZThn32_N3RBX10StockSoundD0Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 pub fn stub_37c9f0() -> ! {
-    todo!("0x37c9f0 `non-virtual thunk to'RBX::StockSound::~StockSound()")
+    todo!("0x37c9f0 non-virtual thunk toRBX::StockSound::~StockSound()")
 }
 
 // 0x37ca94 — __ZThn32_NK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE12getClassNameEv
@@ -1472,14 +1472,14 @@ pub fn stub_37ca94() -> ! {
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 pub fn stub_37caa4() -> ! {
-    todo!("0x37caa4 `non-virtual thunk to'RBX::StockSound::~StockSound()")
+    todo!("0x37caa4 non-virtual thunk toRBX::StockSound::~StockSound()")
 }
 
 // 0x37caac — __ZThn36_N3RBX10StockSoundD0Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
 #[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 pub fn stub_37caac() -> ! {
-    todo!("0x37caac `non-virtual thunk to'RBX::StockSound::~StockSound()")
+    todo!("0x37caac non-virtual thunk toRBX::StockSound::~StockSound()")
 }
 
 // 0x37cb50 — __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE17static_getCreatorEv

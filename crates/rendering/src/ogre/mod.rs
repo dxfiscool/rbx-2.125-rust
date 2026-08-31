@@ -29314,3 +29314,1052 @@ pub fn stub_c99940() -> ! {
     todo!("0xc99940 Ogre::Frustum::setFrustumOffset(float,float)")
 }
 
+// 0xc99958 — __ZNK4Ogre7Frustum16getFrustumOffsetEv
+#[doc(alias = "Ogre::Frustum::getFrustumOffset(void)const")]
+// was: Ogre::Frustum::getFrustumOffset(void)const
+pub fn stub_c99958() -> ! {
+    todo!("0xc99958 Ogre::Frustum::getFrustumOffset(void)const")
+}
+
+// 0xc99960 — __ZN4Ogre7Frustum14setFocalLengthEf
+#[doc(alias = "Ogre::Frustum::setFocalLength(float)")]
+// was: Ogre::Frustum::setFocalLength(float)
+pub fn stub_c99960() -> ! {
+    todo!("0xc99960 Ogre::Frustum::setFocalLength(float)")
+}
+
+// 0xc99b50 — __ZNK4Ogre7Frustum14getFocalLengthEv
+#[doc(alias = "Ogre::Frustum::getFocalLength(void)const")]
+// was: Ogre::Frustum::getFocalLength(void)const
+pub fn stub_c99b50() -> ! {
+    todo!("0xc99b50 Ogre::Frustum::getFocalLength(void)const")
+}
+
+// 0xc99b58 — __ZNK4Ogre7Frustum19getProjectionMatrixEv
+#[doc(alias = "Ogre::Frustum::getProjectionMatrix(void)const")]
+// was: Ogre::Frustum::getProjectionMatrix(void)const
+pub fn stub_c99b58() -> ! {
+    todo!("0xc99b58 Ogre::Frustum::getProjectionMatrix(void)const")
+}
+
+// 0xc99b70 — __ZNK4Ogre7Frustum30getProjectionMatrixWithRSDepthEv
+#[doc(alias = "Ogre::Frustum::getProjectionMatrixWithRSDepth(void)const")]
+// was: Ogre::Frustum::getProjectionMatrixWithRSDepth(void)const
+pub fn stub_c99b70() -> ! {
+    todo!("0xc99b70 Ogre::Frustum::getProjectionMatrixWithRSDepth(void)const")
+}
+
+// 0xc99b88 — __ZNK4Ogre7Frustum21getProjectionMatrixRSEv
+#[doc(alias = "Ogre::Frustum::getProjectionMatrixRS(void)const")]
+// was: Ogre::Frustum::getProjectionMatrixRS(void)const
+pub fn stub_c99b88() -> ! {
+    todo!("0xc99b88 Ogre::Frustum::getProjectionMatrixRS(void)const")
+}
+
+// 0xc99ba0 — __ZNK4Ogre7Frustum13getViewMatrixEv
+#[doc(alias = "Ogre::Frustum::getViewMatrix(void)const")]
+// was: Ogre::Frustum::getViewMatrix(void)const
+pub fn stub_c99ba0() -> ! {
+    todo!("0xc99ba0 Ogre::Frustum::getViewMatrix(void)const")
+}
+
+// 0xc99bb8 — __ZNK4Ogre7Frustum16getFrustumPlanesEv
+#[doc(alias = "Ogre::Frustum::getFrustumPlanes(void)const")]
+// was: Ogre::Frustum::getFrustumPlanes(void)const
+pub fn stub_c99bb8() -> ! {
+    todo!("0xc99bb8 Ogre::Frustum::getFrustumPlanes(void)const")
+}
+
+// 0xc99bd0 — __ZNK4Ogre7Frustum15getFrustumPlaneEt
+#[doc(alias = "Ogre::Frustum::getFrustumPlane(unsigned short)const")]
+// was: Ogre::Frustum::getFrustumPlane(unsigned short)const
+pub fn stub_c99bd0() -> ! {
+    todo!("0xc99bd0 Ogre::Frustum::getFrustumPlane(unsigned short)const")
+}
+
+// 0xc99bec — __ZNK4Ogre7Frustum9isVisibleERKNS_14AxisAlignedBoxEPNS_12FrustumPlaneE
+#[doc(alias = "Ogre::Frustum::isVisible(Ogre::AxisAlignedBox const&,Ogre::FrustumPlane *)const")]
+// was: Ogre::Frustum::isVisible(Ogre::AxisAlignedBox const&,Ogre::FrustumPlane *)const
+pub fn stub_c99bec() -> ! {
+    todo!("0xc99bec Ogre::Frustum::isVisible(Ogre::AxisAlignedBox const&,Ogre::FrustumPlane *)const")
+}
+
+// 0xc99d28 — __ZNK4Ogre7Frustum9isVisibleERKNS_7Vector3EPNS_12FrustumPlaneE
+#[doc(alias = "Ogre::Frustum::isVisible(Ogre::Vector3 const&,Ogre::FrustumPlane *)const")]
+// was: Ogre::Frustum::isVisible(Ogre::Vector3 const&,Ogre::FrustumPlane *)const
+pub fn stub_c99d28() -> ! {
+    todo!("0xc99d28 Ogre::Frustum::isVisible(Ogre::Vector3 const&,Ogre::FrustumPlane *)const")
+}
+
+// 0xc99d90 — __ZNK4Ogre7Frustum9isVisibleERKNS_6SphereEPNS_12FrustumPlaneE
+#[doc(alias = "Ogre::Frustum::isVisible(Ogre::Sphere const&,Ogre::FrustumPlane *)const")]
+// was: Ogre::Frustum::isVisible(Ogre::Sphere const&,Ogre::FrustumPlane *)const
+pub fn stub_c99d90() -> ! {
+    todo!("0xc99d90 Ogre::Frustum::isVisible(Ogre::Sphere const&,Ogre::FrustumPlane *)const")
+}
+
+// 0xc99e0c — __ZNK4Ogre7Frustum12getTypeFlagsEv
+#[doc(alias = "Ogre::Frustum::getTypeFlags(void)const")]
+// was: Ogre::Frustum::getTypeFlags(void)const
+pub fn stub_c99e0c() -> ! {
+    todo!("0xc99e0c Ogre::Frustum::getTypeFlags(void)const")
+}
+
+// 0xc99e1c — __ZNK4Ogre7Frustum24calcProjectionParametersERfS1_S1_S1_
+#[doc(alias = "Ogre::Frustum::calcProjectionParameters(float &,float &,float &,float &)const")]
+// was: Ogre::Frustum::calcProjectionParameters(float &,float &,float &,float &)const
+pub fn stub_c99e1c() -> ! {
+    todo!("0xc99e1c Ogre::Frustum::calcProjectionParameters(float &,float &,float &,float &)const")
+}
+
+// 0xc9a054 — __ZNK4Ogre7Frustum17updateFrustumImplEv
+#[doc(alias = "Ogre::Frustum::updateFrustumImpl(void)const")]
+// was: Ogre::Frustum::updateFrustumImpl(void)const
+pub fn stub_c9a054() -> ! {
+    todo!("0xc9a054 Ogre::Frustum::updateFrustumImpl(void)const")
+}
+
+// 0xc9a5c0 — __ZNK4Ogre7Frustum13updateFrustumEv
+#[doc(alias = "Ogre::Frustum::updateFrustum(void)const")]
+// was: Ogre::Frustum::updateFrustum(void)const
+pub fn stub_c9a5c0() -> ! {
+    todo!("0xc9a5c0 Ogre::Frustum::updateFrustum(void)const")
+}
+
+// 0xc9a5e4 — __ZNK4Ogre7Frustum16updateVertexDataEv
+#[doc(alias = "Ogre::Frustum::updateVertexData(void)const")]
+// was: Ogre::Frustum::updateVertexData(void)const
+pub fn stub_c9a5e4() -> ! {
+    todo!("0xc9a5e4 Ogre::Frustum::updateVertexData(void)const")
+}
+
+// 0xc9ab80 — __ZNK4Ogre7Frustum15isViewOutOfDateEv
+#[doc(alias = "Ogre::Frustum::isViewOutOfDate(void)const")]
+// was: Ogre::Frustum::isViewOutOfDate(void)const
+pub fn stub_c9ab80() -> ! {
+    todo!("0xc9ab80 Ogre::Frustum::isViewOutOfDate(void)const")
+}
+
+// 0xc9ad5c — __ZNK4Ogre7Frustum18isFrustumOutOfDateEv
+#[doc(alias = "Ogre::Frustum::isFrustumOutOfDate(void)const")]
+// was: Ogre::Frustum::isFrustumOutOfDate(void)const
+pub fn stub_c9ad5c() -> ! {
+    todo!("0xc9ad5c Ogre::Frustum::isFrustumOutOfDate(void)const")
+}
+
+// 0xc9ae20 — __ZNK4Ogre7Frustum14updateViewImplEv
+#[doc(alias = "Ogre::Frustum::updateViewImpl(void)const")]
+// was: Ogre::Frustum::updateViewImpl(void)const
+pub fn stub_c9ae20() -> ! {
+    todo!("0xc9ae20 Ogre::Frustum::updateViewImpl(void)const")
+}
+
+// 0xc9aeb8 — __ZNK4Ogre7Frustum22calcViewMatrixRelativeERKNS_7Vector3ERNS_7Matrix4E
+#[doc(alias = "Ogre::Frustum::calcViewMatrixRelative(Ogre::Vector3 const&,Ogre::Matrix4 &)const")]
+// was: Ogre::Frustum::calcViewMatrixRelative(Ogre::Vector3 const&,Ogre::Matrix4 &)const
+pub fn stub_c9aeb8() -> ! {
+    todo!("0xc9aeb8 Ogre::Frustum::calcViewMatrixRelative(Ogre::Vector3 const&,Ogre::Matrix4 &)const")
+}
+
+// 0xc9af60 — __ZNK4Ogre7Frustum10updateViewEv
+#[doc(alias = "Ogre::Frustum::updateView(void)const")]
+// was: Ogre::Frustum::updateView(void)const
+pub fn stub_c9af60() -> ! {
+    todo!("0xc9af60 Ogre::Frustum::updateView(void)const")
+}
+
+// 0xc9af84 — __ZNK4Ogre7Frustum23updateFrustumPlanesImplEv
+#[doc(alias = "Ogre::Frustum::updateFrustumPlanesImpl(void)const")]
+// was: Ogre::Frustum::updateFrustumPlanesImpl(void)const
+pub fn stub_c9af84() -> ! {
+    todo!("0xc9af84 Ogre::Frustum::updateFrustumPlanesImpl(void)const")
+}
+
+// 0xc9b11c — __ZNK4Ogre7Frustum19updateFrustumPlanesEv
+#[doc(alias = "Ogre::Frustum::updateFrustumPlanes(void)const")]
+// was: Ogre::Frustum::updateFrustumPlanes(void)const
+pub fn stub_c9b11c() -> ! {
+    todo!("0xc9b11c Ogre::Frustum::updateFrustumPlanes(void)const")
+}
+
+// 0xc9b14c — __ZNK4Ogre7Frustum27updateWorldSpaceCornersImplEv
+#[doc(alias = "Ogre::Frustum::updateWorldSpaceCornersImpl(void)const")]
+// was: Ogre::Frustum::updateWorldSpaceCornersImpl(void)const
+pub fn stub_c9b14c() -> ! {
+    todo!("0xc9b14c Ogre::Frustum::updateWorldSpaceCornersImpl(void)const")
+}
+
+// 0xc9b438 — __ZNK4Ogre7Frustum23updateWorldSpaceCornersEv
+#[doc(alias = "Ogre::Frustum::updateWorldSpaceCorners(void)const")]
+// was: Ogre::Frustum::updateWorldSpaceCorners(void)const
+pub fn stub_c9b438() -> ! {
+    todo!("0xc9b438 Ogre::Frustum::updateWorldSpaceCorners(void)const")
+}
+
+// 0xc9b460 — __ZNK4Ogre7Frustum14getAspectRatioEv
+#[doc(alias = "Ogre::Frustum::getAspectRatio(void)const")]
+// was: Ogre::Frustum::getAspectRatio(void)const
+pub fn stub_c9b460() -> ! {
+    todo!("0xc9b460 Ogre::Frustum::getAspectRatio(void)const")
+}
+
+// 0xc9b468 — __ZN4Ogre7Frustum14setAspectRatioEf
+#[doc(alias = "Ogre::Frustum::setAspectRatio(float)")]
+// was: Ogre::Frustum::setAspectRatio(float)
+pub fn stub_c9b468() -> ! {
+    todo!("0xc9b468 Ogre::Frustum::setAspectRatio(float)")
+}
+
+// 0xc9b47c — __ZNK4Ogre7Frustum14getBoundingBoxEv
+#[doc(alias = "Ogre::Frustum::getBoundingBox(void)const")]
+// was: Ogre::Frustum::getBoundingBox(void)const
+pub fn stub_c9b47c() -> ! {
+    todo!("0xc9b47c Ogre::Frustum::getBoundingBox(void)const")
+}
+
+// 0xc9b484 — __ZN4Ogre7Frustum18_updateRenderQueueEPNS_11RenderQueueE
+#[doc(alias = "Ogre::Frustum::_updateRenderQueue(Ogre::RenderQueue *)")]
+// was: Ogre::Frustum::_updateRenderQueue(Ogre::RenderQueue *)
+pub fn stub_c9b484() -> ! {
+    todo!("0xc9b484 Ogre::Frustum::_updateRenderQueue(Ogre::RenderQueue *)")
+}
+
+// 0xc9b4a0 — __ZNK4Ogre7Frustum14getMovableTypeEv
+#[doc(alias = "Ogre::Frustum::getMovableType(void)const")]
+// was: Ogre::Frustum::getMovableType(void)const
+pub fn stub_c9b4a0() -> ! {
+    todo!("0xc9b4a0 Ogre::Frustum::getMovableType(void)const")
+}
+
+// 0xc9b4ac — __ZNK4Ogre7Frustum17getBoundingRadiusEv
+#[doc(alias = "Ogre::Frustum::getBoundingRadius(void)const")]
+// was: Ogre::Frustum::getBoundingRadius(void)const
+pub fn stub_c9b4ac() -> ! {
+    todo!("0xc9b4ac Ogre::Frustum::getBoundingRadius(void)const")
+}
+
+// 0xc9b4cc — __ZNK4Ogre7Frustum11getMaterialEv
+#[doc(alias = "Ogre::Frustum::getMaterial(void)const")]
+// was: Ogre::Frustum::getMaterial(void)const
+pub fn stub_c9b4cc() -> ! {
+    todo!("0xc9b4cc Ogre::Frustum::getMaterial(void)const")
+}
+
+// 0xc9b4d4 — __ZThn188_NK4Ogre7Frustum11getMaterialEv
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getMaterial(void)const")]
+// was: `non-virtual thunk to'Ogre::Frustum::getMaterial(void)const
+pub fn stub_c9b4d4() -> ! {
+    todo!("0xc9b4d4 `non-virtual thunk to'Ogre::Frustum::getMaterial(void)const")
+}
+
+// 0xc9b4dc — __ZN4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE
+#[doc(alias = "Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)")]
+// was: Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)
+pub fn stub_c9b4dc() -> ! {
+    todo!("0xc9b4dc Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)")
+}
+
+// 0xc9b500 — __ZThn188_N4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getRenderOperation(Ogre::RenderOperation &)")]
+// was: `non-virtual thunk to'Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)
+pub fn stub_c9b500() -> ! {
+    todo!("0xc9b500 `non-virtual thunk to'Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)")
+}
+
+// 0xc9b524 — __ZNK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E
+#[doc(alias = "Ogre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")]
+// was: Ogre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const
+pub fn stub_c9b524() -> ! {
+    todo!("0xc9b524 Ogre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")
+}
+
+// 0xc9b57c — __ZThn188_NK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")]
+// was: `non-virtual thunk to'Ogre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const
+pub fn stub_c9b57c() -> ! {
+    todo!("0xc9b57c `non-virtual thunk to'Ogre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")
+}
+
+// 0xc9b5d8 — __ZNK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE
+#[doc(alias = "Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")]
+// was: Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const
+pub fn stub_c9b5d8() -> ! {
+    todo!("0xc9b5d8 Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")
+}
+
+// 0xc9b638 — __ZThn188_NK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")]
+// was: `non-virtual thunk to'Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const
+pub fn stub_c9b638() -> ! {
+    todo!("0xc9b638 `non-virtual thunk to'Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")
+}
+
+// 0xc9b69c — __ZNK4Ogre7Frustum9getLightsEv
+#[doc(alias = "Ogre::Frustum::getLights(void)const")]
+// was: Ogre::Frustum::getLights(void)const
+pub fn stub_c9b69c() -> ! {
+    todo!("0xc9b69c Ogre::Frustum::getLights(void)const")
+}
+
+// 0xc9b784 — __ZThn188_NK4Ogre7Frustum9getLightsEv
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getLights(void)const")]
+// was: `non-virtual thunk to'Ogre::Frustum::getLights(void)const
+pub fn stub_c9b784() -> ! {
+    todo!("0xc9b784 `non-virtual thunk to'Ogre::Frustum::getLights(void)const")
+}
+
+// 0xc9b86c — __ZN4Ogre7Frustum20_notifyCurrentCameraEPNS_6CameraE
+#[doc(alias = "Ogre::Frustum::_notifyCurrentCamera(Ogre::Camera *)")]
+// was: Ogre::Frustum::_notifyCurrentCamera(Ogre::Camera *)
+pub fn stub_c9b86c() -> ! {
+    todo!("0xc9b86c Ogre::Frustum::_notifyCurrentCamera(Ogre::Camera *)")
+}
+
+// 0xc9b888 — __ZNK4Ogre7Frustum17invalidateFrustumEv
+#[doc(alias = "Ogre::Frustum::invalidateFrustum(void)const")]
+// was: Ogre::Frustum::invalidateFrustum(void)const
+pub fn stub_c9b888() -> ! {
+    todo!("0xc9b888 Ogre::Frustum::invalidateFrustum(void)const")
+}
+
+// 0xc9b89c — __ZNK4Ogre7Frustum14invalidateViewEv
+#[doc(alias = "Ogre::Frustum::invalidateView(void)const")]
+// was: Ogre::Frustum::invalidateView(void)const
+pub fn stub_c9b89c() -> ! {
+    todo!("0xc9b89c Ogre::Frustum::invalidateView(void)const")
+}
+
+// 0xc9b8ac — __ZNK4Ogre7Frustum20getWorldSpaceCornersEv
+#[doc(alias = "Ogre::Frustum::getWorldSpaceCorners(void)const")]
+// was: Ogre::Frustum::getWorldSpaceCorners(void)const
+pub fn stub_c9b8ac() -> ! {
+    todo!("0xc9b8ac Ogre::Frustum::getWorldSpaceCorners(void)const")
+}
+
+// 0xc9b8c4 — __ZN4Ogre7Frustum17setProjectionTypeENS_14ProjectionTypeE
+#[doc(alias = "Ogre::Frustum::setProjectionType(Ogre::ProjectionType)")]
+// was: Ogre::Frustum::setProjectionType(Ogre::ProjectionType)
+pub fn stub_c9b8c4() -> ! {
+    todo!("0xc9b8c4 Ogre::Frustum::setProjectionType(Ogre::ProjectionType)")
+}
+
+// 0xc9b8d8 — __ZNK4Ogre7Frustum17getProjectionTypeEv
+#[doc(alias = "Ogre::Frustum::getProjectionType(void)const")]
+// was: Ogre::Frustum::getProjectionType(void)const
+pub fn stub_c9b8d8() -> ! {
+    todo!("0xc9b8d8 Ogre::Frustum::getProjectionType(void)const")
+}
+
+// 0xc9b8e0 — __ZNK4Ogre7Frustum24getPositionForViewUpdateEv
+#[doc(alias = "Ogre::Frustum::getPositionForViewUpdate(void)const")]
+// was: Ogre::Frustum::getPositionForViewUpdate(void)const
+pub fn stub_c9b8e0() -> ! {
+    todo!("0xc9b8e0 Ogre::Frustum::getPositionForViewUpdate(void)const")
+}
+
+// 0xc9b8e8 — __ZNK4Ogre7Frustum27getOrientationForViewUpdateEv
+#[doc(alias = "Ogre::Frustum::getOrientationForViewUpdate(void)const")]
+// was: Ogre::Frustum::getOrientationForViewUpdate(void)const
+pub fn stub_c9b8e8() -> ! {
+    todo!("0xc9b8e8 Ogre::Frustum::getOrientationForViewUpdate(void)const")
+}
+
+// 0xc9b8f0 — __ZN4Ogre7Frustum16enableReflectionERKNS_5PlaneE
+#[doc(alias = "Ogre::Frustum::enableReflection(Ogre::Plane const&)")]
+// was: Ogre::Frustum::enableReflection(Ogre::Plane const&)
+pub fn stub_c9b8f0() -> ! {
+    todo!("0xc9b8f0 Ogre::Frustum::enableReflection(Ogre::Plane const&)")
+}
+
+// 0xc9b970 — __ZN4Ogre7Frustum16enableReflectionEPKNS_12MovablePlaneE
+#[doc(alias = "Ogre::Frustum::enableReflection(Ogre::MovablePlane const*)")]
+// was: Ogre::Frustum::enableReflection(Ogre::MovablePlane const*)
+pub fn stub_c9b970() -> ! {
+    todo!("0xc9b970 Ogre::Frustum::enableReflection(Ogre::MovablePlane const*)")
+}
+
+// 0xc9ba18 — __ZN4Ogre7Frustum17disableReflectionEv
+#[doc(alias = "Ogre::Frustum::disableReflection(void)")]
+// was: Ogre::Frustum::disableReflection(void)
+pub fn stub_c9ba18() -> ! {
+    todo!("0xc9ba18 Ogre::Frustum::disableReflection(void)")
+}
+
+// 0xc9ba50 — __ZNK4Ogre7Frustum13projectSphereERKNS_6SphereEPfS4_S4_S4_
+#[doc(alias = "Ogre::Frustum::projectSphere(Ogre::Sphere const&,float *,float *,float *,float *)const")]
+// was: Ogre::Frustum::projectSphere(Ogre::Sphere const&,float *,float *,float *,float *)const
+pub fn stub_c9ba50() -> ! {
+    todo!("0xc9ba50 Ogre::Frustum::projectSphere(Ogre::Sphere const&,float *,float *,float *,float *)const")
+}
+
+// 0xc9bfc4 — __ZN4Ogre7Frustum25enableCustomNearClipPlaneEPKNS_12MovablePlaneE
+#[doc(alias = "Ogre::Frustum::enableCustomNearClipPlane(Ogre::MovablePlane const*)")]
+// was: Ogre::Frustum::enableCustomNearClipPlane(Ogre::MovablePlane const*)
+pub fn stub_c9bfc4() -> ! {
+    todo!("0xc9bfc4 Ogre::Frustum::enableCustomNearClipPlane(Ogre::MovablePlane const*)")
+}
+
+// 0xc9c000 — __ZN4Ogre7Frustum25enableCustomNearClipPlaneERKNS_5PlaneE
+#[doc(alias = "Ogre::Frustum::enableCustomNearClipPlane(Ogre::Plane const&)")]
+// was: Ogre::Frustum::enableCustomNearClipPlane(Ogre::Plane const&)
+pub fn stub_c9c000() -> ! {
+    todo!("0xc9c000 Ogre::Frustum::enableCustomNearClipPlane(Ogre::Plane const&)")
+}
+
+// 0xc9c034 — __ZN4Ogre7Frustum26disableCustomNearClipPlaneEv
+#[doc(alias = "Ogre::Frustum::disableCustomNearClipPlane(void)")]
+// was: Ogre::Frustum::disableCustomNearClipPlane(void)
+pub fn stub_c9c034() -> ! {
+    todo!("0xc9c034 Ogre::Frustum::disableCustomNearClipPlane(void)")
+}
+
+// 0xc9c04c — __ZN4Ogre7Frustum19setCustomViewMatrixEbRKNS_7Matrix4E
+#[doc(alias = "Ogre::Frustum::setCustomViewMatrix(bool,Ogre::Matrix4 const&)")]
+// was: Ogre::Frustum::setCustomViewMatrix(bool,Ogre::Matrix4 const&)
+pub fn stub_c9c04c() -> ! {
+    todo!("0xc9c04c Ogre::Frustum::setCustomViewMatrix(bool,Ogre::Matrix4 const&)")
+}
+
+// 0xc9c0a0 — __ZN4Ogre7Frustum25setCustomProjectionMatrixEbRKNS_7Matrix4E
+#[doc(alias = "Ogre::Frustum::setCustomProjectionMatrix(bool,Ogre::Matrix4 const&)")]
+// was: Ogre::Frustum::setCustomProjectionMatrix(bool,Ogre::Matrix4 const&)
+pub fn stub_c9c0a0() -> ! {
+    todo!("0xc9c0a0 Ogre::Frustum::setCustomProjectionMatrix(bool,Ogre::Matrix4 const&)")
+}
+
+// 0xc9c0f4 — __ZN4Ogre7Frustum14setOrthoWindowEff
+#[doc(alias = "Ogre::Frustum::setOrthoWindow(float,float)")]
+// was: Ogre::Frustum::setOrthoWindow(float,float)
+pub fn stub_c9c0f4() -> ! {
+    todo!("0xc9c0f4 Ogre::Frustum::setOrthoWindow(float,float)")
+}
+
+// 0xc9c118 — __ZN4Ogre7Frustum20setOrthoWindowHeightEf
+#[doc(alias = "Ogre::Frustum::setOrthoWindowHeight(float)")]
+// was: Ogre::Frustum::setOrthoWindowHeight(float)
+pub fn stub_c9c118() -> ! {
+    todo!("0xc9c118 Ogre::Frustum::setOrthoWindowHeight(float)")
+}
+
+// 0xc9c12c — __ZN4Ogre7Frustum19setOrthoWindowWidthEf
+#[doc(alias = "Ogre::Frustum::setOrthoWindowWidth(float)")]
+// was: Ogre::Frustum::setOrthoWindowWidth(float)
+pub fn stub_c9c12c() -> ! {
+    todo!("0xc9c12c Ogre::Frustum::setOrthoWindowWidth(float)")
+}
+
+// 0xc9c14c — __ZNK4Ogre7Frustum20getOrthoWindowHeightEv
+#[doc(alias = "Ogre::Frustum::getOrthoWindowHeight(void)const")]
+// was: Ogre::Frustum::getOrthoWindowHeight(void)const
+pub fn stub_c9c14c() -> ! {
+    todo!("0xc9c14c Ogre::Frustum::getOrthoWindowHeight(void)const")
+}
+
+// 0xc9c154 — __ZNK4Ogre7Frustum19getOrthoWindowWidthEv
+#[doc(alias = "Ogre::Frustum::getOrthoWindowWidth(void)const")]
+// was: Ogre::Frustum::getOrthoWindowWidth(void)const
+pub fn stub_c9c154() -> ! {
+    todo!("0xc9c154 Ogre::Frustum::getOrthoWindowWidth(void)const")
+}
+
+// 0xc9c168 — __ZN4Ogre7Frustum16visitRenderablesEPNS_10Renderable7VisitorEb
+#[doc(alias = "Ogre::Frustum::visitRenderables(Ogre::Renderable::Visitor *,bool)")]
+// was: Ogre::Frustum::visitRenderables(Ogre::Renderable::Visitor *,bool)
+pub fn stub_c9c168() -> ! {
+    todo!("0xc9c168 Ogre::Frustum::visitRenderables(Ogre::Renderable::Visitor *,bool)")
+}
+
+// 0xc9c190 — __ZN4Ogre7Frustum17setFrustumExtentsEffff
+#[doc(alias = "Ogre::Frustum::setFrustumExtents(float,float,float,float)")]
+// was: Ogre::Frustum::setFrustumExtents(float,float,float,float)
+pub fn stub_c9c190() -> ! {
+    todo!("0xc9c190 Ogre::Frustum::setFrustumExtents(float,float,float,float)")
+}
+
+// 0xc9c1bc — __ZN4Ogre7Frustum19resetFrustumExtentsEv
+#[doc(alias = "Ogre::Frustum::resetFrustumExtents(void)")]
+// was: Ogre::Frustum::resetFrustumExtents(void)
+pub fn stub_c9c1bc() -> ! {
+    todo!("0xc9c1bc Ogre::Frustum::resetFrustumExtents(void)")
+}
+
+// 0xc9c1d0 — __ZNK4Ogre7Frustum17getFrustumExtentsERfS1_S1_S1_
+#[doc(alias = "Ogre::Frustum::getFrustumExtents(float &,float &,float &,float &)const")]
+// was: Ogre::Frustum::getFrustumExtents(float &,float &,float &,float &)const
+pub fn stub_c9c1d0() -> ! {
+    todo!("0xc9c1d0 Ogre::Frustum::getFrustumExtents(float &,float &,float &,float &)const")
+}
+
+// 0xc9c20c — __ZN4Ogre7Frustum18setOrientationModeENS_15OrientationModeE
+#[doc(alias = "Ogre::Frustum::setOrientationMode(Ogre::OrientationMode)")]
+// was: Ogre::Frustum::setOrientationMode(Ogre::OrientationMode)
+pub fn stub_c9c20c() -> ! {
+    todo!("0xc9c20c Ogre::Frustum::setOrientationMode(Ogre::OrientationMode)")
+}
+
+// 0xc9c220 — __ZNK4Ogre7Matrix4mlERKNS_5PlaneE
+#[doc(alias = "Ogre::Matrix4::operator*(Ogre::Plane const&)const")]
+// was: Ogre::Matrix4::operator*(Ogre::Plane const&)const
+pub fn stub_c9c220() -> ! {
+    todo!("0xc9c220 Ogre::Matrix4::operator*(Ogre::Plane const&)const")
+}
+
+// 0xc9c3e0 — __ZN4Ogre10GpuProgramC2EPNS_15ResourceManagerERKSsyS4_bPNS_20ManualResourceLoaderE
+#[doc(alias = "Ogre::GpuProgram::GpuProgram(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)")]
+// was: Ogre::GpuProgram::GpuProgram(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)
+pub fn stub_c9c3e0() -> ! {
+    todo!("0xc9c3e0 Ogre::GpuProgram::GpuProgram(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)")
+}
+
+// 0xc9c71c — __ZNK4Ogre10GpuProgram32createParameterMappingStructuresEb
+#[doc(alias = "Ogre::GpuProgram::createParameterMappingStructures(bool)const")]
+// was: Ogre::GpuProgram::createParameterMappingStructures(bool)const
+pub fn stub_c9c71c() -> ! {
+    todo!("0xc9c71c Ogre::GpuProgram::createParameterMappingStructures(bool)const")
+}
+
+// 0xc9c734 — __ZN4Ogre10GpuProgram7setTypeENS_14GpuProgramTypeE
+#[doc(alias = "Ogre::GpuProgram::setType(Ogre::GpuProgramType)")]
+// was: Ogre::GpuProgram::setType(Ogre::GpuProgramType)
+pub fn stub_c9c734() -> ! {
+    todo!("0xc9c734 Ogre::GpuProgram::setType(Ogre::GpuProgramType)")
+}
+
+// 0xc9c738 — __ZN4Ogre10GpuProgram13setSyntaxCodeERKSs
+#[doc(alias = "Ogre::GpuProgram::setSyntaxCode(std::string const&)")]
+// was: Ogre::GpuProgram::setSyntaxCode(std::string const&)
+pub fn stub_c9c738() -> ! {
+    todo!("0xc9c738 Ogre::GpuProgram::setSyntaxCode(std::string const&)")
+}
+
+// 0xc9c744 — __ZN4Ogre10GpuProgram13setSourceFileERKSs
+#[doc(alias = "Ogre::GpuProgram::setSourceFile(std::string const&)")]
+// was: Ogre::GpuProgram::setSourceFile(std::string const&)
+pub fn stub_c9c744() -> ! {
+    todo!("0xc9c744 Ogre::GpuProgram::setSourceFile(std::string const&)")
+}
+
+// 0xc9c774 — __ZN4Ogre10GpuProgram9setSourceERKSs
+#[doc(alias = "Ogre::GpuProgram::setSource(std::string const&)")]
+// was: Ogre::GpuProgram::setSource(std::string const&)
+pub fn stub_c9c774() -> ! {
+    todo!("0xc9c774 Ogre::GpuProgram::setSource(std::string const&)")
+}
+
+// 0xc9c7a0 — __ZN4Ogre10GpuProgram8loadImplEv
+#[doc(alias = "Ogre::GpuProgram::loadImpl(void)")]
+// was: Ogre::GpuProgram::loadImpl(void)
+pub fn stub_c9c7a0() -> ! {
+    todo!("0xc9c7a0 Ogre::GpuProgram::loadImpl(void)")
+}
+
+// 0xc9cbf4 — __ZNK4Ogre10GpuProgram11isSupportedEv
+#[doc(alias = "Ogre::GpuProgram::isSupported(void)const")]
+// was: Ogre::GpuProgram::isSupported(void)const
+pub fn stub_c9cbf4() -> ! {
+    todo!("0xc9cbf4 Ogre::GpuProgram::isSupported(void)const")
+}
+
+// 0xc9cc58 — __ZNK4Ogre10GpuProgram39createLogicalParameterMappingStructuresEb
+#[doc(alias = "Ogre::GpuProgram::createLogicalParameterMappingStructures(bool)const")]
+// was: Ogre::GpuProgram::createLogicalParameterMappingStructures(bool)const
+pub fn stub_c9cc58() -> ! {
+    todo!("0xc9cc58 Ogre::GpuProgram::createLogicalParameterMappingStructures(bool)const")
+}
+
+// 0xc9ceb4 — __ZNK4Ogre10GpuProgram37createNamedParameterMappingStructuresEb
+#[doc(alias = "Ogre::GpuProgram::createNamedParameterMappingStructures(bool)const")]
+// was: Ogre::GpuProgram::createNamedParameterMappingStructures(bool)const
+pub fn stub_c9ceb4() -> ! {
+    todo!("0xc9ceb4 Ogre::GpuProgram::createNamedParameterMappingStructures(bool)const")
+}
+
+// 0xc9d014 — __ZN4Ogre10GpuProgram27setManualNamedConstantsFileERKSs
+#[doc(alias = "Ogre::GpuProgram::setManualNamedConstantsFile(std::string const&)")]
+// was: Ogre::GpuProgram::setManualNamedConstantsFile(std::string const&)
+pub fn stub_c9d014() -> ! {
+    todo!("0xc9d014 Ogre::GpuProgram::setManualNamedConstantsFile(std::string const&)")
+}
+
+// 0xc9d02c — __ZN4Ogre10GpuProgram23setManualNamedConstantsERKNS_17GpuNamedConstantsE
+#[doc(alias = "Ogre::GpuProgram::setManualNamedConstants(Ogre::GpuNamedConstants const&)")]
+// was: Ogre::GpuProgram::setManualNamedConstants(Ogre::GpuNamedConstants const&)
+pub fn stub_c9d02c() -> ! {
+    todo!("0xc9d02c Ogre::GpuProgram::setManualNamedConstants(Ogre::GpuNamedConstants const&)")
+}
+
+// 0xc9d16c — __ZN4Ogre10GpuProgram16createParametersEv
+#[doc(alias = "Ogre::GpuProgram::createParameters(void)")]
+// was: Ogre::GpuProgram::createParameters(void)
+pub fn stub_c9d16c() -> ! {
+    todo!("0xc9d16c Ogre::GpuProgram::createParameters(void)")
+}
+
+// 0xc9d4d8 — __ZN4Ogre10GpuProgram20getDefaultParametersEv
+#[doc(alias = "Ogre::GpuProgram::getDefaultParameters(void)")]
+// was: Ogre::GpuProgram::getDefaultParameters(void)
+pub fn stub_c9d4d8() -> ! {
+    todo!("0xc9d4d8 Ogre::GpuProgram::getDefaultParameters(void)")
+}
+
+// 0xc9d610 — __ZN4Ogre10GpuProgram24setupBaseParamDictionaryEv
+#[doc(alias = "Ogre::GpuProgram::setupBaseParamDictionary(void)")]
+// was: Ogre::GpuProgram::setupBaseParamDictionary(void)
+pub fn stub_c9d610() -> ! {
+    todo!("0xc9d610 Ogre::GpuProgram::setupBaseParamDictionary(void)")
+}
+
+// 0xc9eb68 — __ZNK4Ogre10GpuProgram11getLanguageEv
+#[doc(alias = "Ogre::GpuProgram::getLanguage(void)const")]
+// was: Ogre::GpuProgram::getLanguage(void)const
+pub fn stub_c9eb68() -> ! {
+    todo!("0xc9eb68 Ogre::GpuProgram::getLanguage(void)const")
+}
+
+// 0xc9ec5c — __ZNK4Ogre10GpuProgram7CmdType5doGetEPKv
+#[doc(alias = "Ogre::GpuProgram::CmdType::doGet(void const*)const")]
+// was: Ogre::GpuProgram::CmdType::doGet(void const*)const
+pub fn stub_c9ec5c() -> ! {
+    todo!("0xc9ec5c Ogre::GpuProgram::CmdType::doGet(void const*)const")
+}
+
+// 0xc9ed58 — __ZN4Ogre10GpuProgram7CmdType5doSetEPvRKSs
+#[doc(alias = "Ogre::GpuProgram::CmdType::doSet(void *,std::string const&)")]
+// was: Ogre::GpuProgram::CmdType::doSet(void *,std::string const&)
+pub fn stub_c9ed58() -> ! {
+    todo!("0xc9ed58 Ogre::GpuProgram::CmdType::doSet(void *,std::string const&)")
+}
+
+// 0xc9edac — __ZNK4Ogre10GpuProgram9CmdSyntax5doGetEPKv
+#[doc(alias = "Ogre::GpuProgram::CmdSyntax::doGet(void const*)const")]
+// was: Ogre::GpuProgram::CmdSyntax::doGet(void const*)const
+pub fn stub_c9edac() -> ! {
+    todo!("0xc9edac Ogre::GpuProgram::CmdSyntax::doGet(void const*)const")
+}
+
+// 0xc9edc8 — __ZN4Ogre10GpuProgram9CmdSyntax5doSetEPvRKSs
+#[doc(alias = "Ogre::GpuProgram::CmdSyntax::doSet(void *,std::string const&)")]
+// was: Ogre::GpuProgram::CmdSyntax::doSet(void *,std::string const&)
+pub fn stub_c9edc8() -> ! {
+    todo!("0xc9edc8 Ogre::GpuProgram::CmdSyntax::doSet(void *,std::string const&)")
+}
+
+// 0xc9eddc — __ZNK4Ogre10GpuProgram11CmdSkeletal5doGetEPKv
+#[doc(alias = "Ogre::GpuProgram::CmdSkeletal::doGet(void const*)const")]
+// was: Ogre::GpuProgram::CmdSkeletal::doGet(void const*)const
+pub fn stub_c9eddc() -> ! {
+    todo!("0xc9eddc Ogre::GpuProgram::CmdSkeletal::doGet(void const*)const")
+}
+
+// 0xc9edf8 — __ZN4Ogre10GpuProgram11CmdSkeletal5doSetEPvRKSs
+#[doc(alias = "Ogre::GpuProgram::CmdSkeletal::doSet(void *,std::string const&)")]
+// was: Ogre::GpuProgram::CmdSkeletal::doSet(void *,std::string const&)
+pub fn stub_c9edf8() -> ! {
+    todo!("0xc9edf8 Ogre::GpuProgram::CmdSkeletal::doSet(void *,std::string const&)")
+}
+
+// 0xc9ee14 — __ZNK4Ogre10GpuProgram8CmdMorph5doGetEPKv
+#[doc(alias = "Ogre::GpuProgram::CmdMorph::doGet(void const*)const")]
+// was: Ogre::GpuProgram::CmdMorph::doGet(void const*)const
+pub fn stub_c9ee14() -> ! {
+    todo!("0xc9ee14 Ogre::GpuProgram::CmdMorph::doGet(void const*)const")
+}
+
+// 0xc9ee30 — __ZN4Ogre10GpuProgram8CmdMorph5doSetEPvRKSs
+#[doc(alias = "Ogre::GpuProgram::CmdMorph::doSet(void *,std::string const&)")]
+// was: Ogre::GpuProgram::CmdMorph::doSet(void *,std::string const&)
+pub fn stub_c9ee30() -> ! {
+    todo!("0xc9ee30 Ogre::GpuProgram::CmdMorph::doSet(void *,std::string const&)")
+}
+
+// 0xc9ee4c — __ZNK4Ogre10GpuProgram7CmdPose5doGetEPKv
+#[doc(alias = "Ogre::GpuProgram::CmdPose::doGet(void const*)const")]
+// was: Ogre::GpuProgram::CmdPose::doGet(void const*)const
+pub fn stub_c9ee4c() -> ! {
+    todo!("0xc9ee4c Ogre::GpuProgram::CmdPose::doGet(void const*)const")
+}
+
+// 0xc9ee74 — __ZN4Ogre10GpuProgram7CmdPose5doSetEPvRKSs
+#[doc(alias = "Ogre::GpuProgram::CmdPose::doSet(void *,std::string const&)")]
+// was: Ogre::GpuProgram::CmdPose::doSet(void *,std::string const&)
+pub fn stub_c9ee74() -> ! {
+    todo!("0xc9ee74 Ogre::GpuProgram::CmdPose::doSet(void *,std::string const&)")
+}
+
+// 0xc9ee90 — __ZNK4Ogre10GpuProgram6CmdVTF5doGetEPKv
+#[doc(alias = "Ogre::GpuProgram::CmdVTF::doGet(void const*)const")]
+// was: Ogre::GpuProgram::CmdVTF::doGet(void const*)const
+pub fn stub_c9ee90() -> ! {
+    todo!("0xc9ee90 Ogre::GpuProgram::CmdVTF::doGet(void const*)const")
+}
+
+// 0xc9eeac — __ZN4Ogre10GpuProgram6CmdVTF5doSetEPvRKSs
+#[doc(alias = "Ogre::GpuProgram::CmdVTF::doSet(void *,std::string const&)")]
+// was: Ogre::GpuProgram::CmdVTF::doSet(void *,std::string const&)
+pub fn stub_c9eeac() -> ! {
+    todo!("0xc9eeac Ogre::GpuProgram::CmdVTF::doSet(void *,std::string const&)")
+}
+
+// 0xc9eec8 — __ZNK4Ogre10GpuProgram24CmdManualNamedConstsFile5doGetEPKv
+#[doc(alias = "Ogre::GpuProgram::CmdManualNamedConstsFile::doGet(void const*)const")]
+// was: Ogre::GpuProgram::CmdManualNamedConstsFile::doGet(void const*)const
+pub fn stub_c9eec8() -> ! {
+    todo!("0xc9eec8 Ogre::GpuProgram::CmdManualNamedConstsFile::doGet(void const*)const")
+}
+
+// 0xc9eee4 — __ZN4Ogre10GpuProgram24CmdManualNamedConstsFile5doSetEPvRKSs
+#[doc(alias = "Ogre::GpuProgram::CmdManualNamedConstsFile::doSet(void *,std::string const&)")]
+// was: Ogre::GpuProgram::CmdManualNamedConstsFile::doSet(void *,std::string const&)
+pub fn stub_c9eee4() -> ! {
+    todo!("0xc9eee4 Ogre::GpuProgram::CmdManualNamedConstsFile::doSet(void *,std::string const&)")
+}
+
+// 0xc9eef8 — __ZNK4Ogre10GpuProgram12CmdAdjacency5doGetEPKv
+#[doc(alias = "Ogre::GpuProgram::CmdAdjacency::doGet(void const*)const")]
+// was: Ogre::GpuProgram::CmdAdjacency::doGet(void const*)const
+pub fn stub_c9eef8() -> ! {
+    todo!("0xc9eef8 Ogre::GpuProgram::CmdAdjacency::doGet(void const*)const")
+}
+
+// 0xc9ef14 — __ZN4Ogre10GpuProgram12CmdAdjacency5doSetEPvRKSs
+#[doc(alias = "Ogre::GpuProgram::CmdAdjacency::doSet(void *,std::string const&)")]
+// was: Ogre::GpuProgram::CmdAdjacency::doSet(void *,std::string const&)
+pub fn stub_c9ef14() -> ! {
+    todo!("0xc9ef14 Ogre::GpuProgram::CmdAdjacency::doSet(void *,std::string const&)")
+}
+
+// 0xc9ef30 — __ZN4Ogre10GpuProgram7CmdTypeD1Ev
+#[doc(alias = "Ogre::GpuProgram::CmdType::~CmdType()")]
+// was: Ogre::GpuProgram::CmdType::~CmdType()
+pub fn stub_c9ef30() -> ! {
+    todo!("0xc9ef30 Ogre::GpuProgram::CmdType::~CmdType()")
+}
+
+// 0xc9ef34 — __ZN4Ogre10GpuProgram9CmdSyntaxD1Ev
+#[doc(alias = "Ogre::GpuProgram::CmdSyntax::~CmdSyntax()")]
+// was: Ogre::GpuProgram::CmdSyntax::~CmdSyntax()
+pub fn stub_c9ef34() -> ! {
+    todo!("0xc9ef34 Ogre::GpuProgram::CmdSyntax::~CmdSyntax()")
+}
+
+// 0xc9ef38 — __ZN4Ogre10GpuProgram11CmdSkeletalD1Ev
+#[doc(alias = "Ogre::GpuProgram::CmdSkeletal::~CmdSkeletal()")]
+// was: Ogre::GpuProgram::CmdSkeletal::~CmdSkeletal()
+pub fn stub_c9ef38() -> ! {
+    todo!("0xc9ef38 Ogre::GpuProgram::CmdSkeletal::~CmdSkeletal()")
+}
+
+// 0xc9ef3c — __ZN4Ogre10GpuProgram8CmdMorphD1Ev
+#[doc(alias = "Ogre::GpuProgram::CmdMorph::~CmdMorph()")]
+// was: Ogre::GpuProgram::CmdMorph::~CmdMorph()
+pub fn stub_c9ef3c() -> ! {
+    todo!("0xc9ef3c Ogre::GpuProgram::CmdMorph::~CmdMorph()")
+}
+
+// 0xc9ef40 — __ZN4Ogre10GpuProgram7CmdPoseD1Ev
+#[doc(alias = "Ogre::GpuProgram::CmdPose::~CmdPose()")]
+// was: Ogre::GpuProgram::CmdPose::~CmdPose()
+pub fn stub_c9ef40() -> ! {
+    todo!("0xc9ef40 Ogre::GpuProgram::CmdPose::~CmdPose()")
+}
+
+// 0xc9ef44 — __ZN4Ogre10GpuProgram6CmdVTFD1Ev
+#[doc(alias = "Ogre::GpuProgram::CmdVTF::~CmdVTF()")]
+// was: Ogre::GpuProgram::CmdVTF::~CmdVTF()
+pub fn stub_c9ef44() -> ! {
+    todo!("0xc9ef44 Ogre::GpuProgram::CmdVTF::~CmdVTF()")
+}
+
+// 0xc9ef48 — __ZN4Ogre10GpuProgram24CmdManualNamedConstsFileD1Ev
+#[doc(alias = "Ogre::GpuProgram::CmdManualNamedConstsFile::~CmdManualNamedConstsFile()")]
+// was: Ogre::GpuProgram::CmdManualNamedConstsFile::~CmdManualNamedConstsFile()
+pub fn stub_c9ef48() -> ! {
+    todo!("0xc9ef48 Ogre::GpuProgram::CmdManualNamedConstsFile::~CmdManualNamedConstsFile()")
+}
+
+// 0xc9ef4c — __ZN4Ogre10GpuProgram12CmdAdjacencyD1Ev
+#[doc(alias = "Ogre::GpuProgram::CmdAdjacency::~CmdAdjacency()")]
+// was: Ogre::GpuProgram::CmdAdjacency::~CmdAdjacency()
+pub fn stub_c9ef4c() -> ! {
+    todo!("0xc9ef4c Ogre::GpuProgram::CmdAdjacency::~CmdAdjacency()")
+}
+
+// 0xc9ef50 — __ZN4Ogre9SharedPtrINS_22GpuLogicalBufferStructEEaSERKS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::operator=(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&)")]
+// was: Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::operator=(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&)
+pub fn stub_c9ef50() -> ! {
+    todo!("0xc9ef50 Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct>::operator=(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&)")
+}
+
+// 0xc9f05c — __ZN4Ogre9SharedPtrINS_17GpuNamedConstantsEEaSERKS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::GpuNamedConstants>::operator=(Ogre::SharedPtr<Ogre::GpuNamedConstants> const&)")]
+// was: Ogre::SharedPtr<Ogre::GpuNamedConstants>::operator=(Ogre::SharedPtr<Ogre::GpuNamedConstants> const&)
+pub fn stub_c9f05c() -> ! {
+    todo!("0xc9f05c Ogre::SharedPtr<Ogre::GpuNamedConstants>::operator=(Ogre::SharedPtr<Ogre::GpuNamedConstants> const&)")
+}
+
+// 0xc9f168 — __ZN4Ogre10GpuProgram7CmdTypeD0Ev
+#[doc(alias = "Ogre::GpuProgram::CmdType::~CmdType()")]
+// was: Ogre::GpuProgram::CmdType::~CmdType()
+pub fn stub_c9f168() -> ! {
+    todo!("0xc9f168 Ogre::GpuProgram::CmdType::~CmdType()")
+}
+
+// 0xc9f174 — __ZN4Ogre10GpuProgram9CmdSyntaxD0Ev
+#[doc(alias = "Ogre::GpuProgram::CmdSyntax::~CmdSyntax()")]
+// was: Ogre::GpuProgram::CmdSyntax::~CmdSyntax()
+pub fn stub_c9f174() -> ! {
+    todo!("0xc9f174 Ogre::GpuProgram::CmdSyntax::~CmdSyntax()")
+}
+
+// 0xc9f180 — __ZN4Ogre10GpuProgram11CmdSkeletalD0Ev
+#[doc(alias = "Ogre::GpuProgram::CmdSkeletal::~CmdSkeletal()")]
+// was: Ogre::GpuProgram::CmdSkeletal::~CmdSkeletal()
+pub fn stub_c9f180() -> ! {
+    todo!("0xc9f180 Ogre::GpuProgram::CmdSkeletal::~CmdSkeletal()")
+}
+
+// 0xc9f18c — __ZN4Ogre10GpuProgram8CmdMorphD0Ev
+#[doc(alias = "Ogre::GpuProgram::CmdMorph::~CmdMorph()")]
+// was: Ogre::GpuProgram::CmdMorph::~CmdMorph()
+pub fn stub_c9f18c() -> ! {
+    todo!("0xc9f18c Ogre::GpuProgram::CmdMorph::~CmdMorph()")
+}
+
+// 0xc9f198 — __ZN4Ogre10GpuProgram7CmdPoseD0Ev
+#[doc(alias = "Ogre::GpuProgram::CmdPose::~CmdPose()")]
+// was: Ogre::GpuProgram::CmdPose::~CmdPose()
+pub fn stub_c9f198() -> ! {
+    todo!("0xc9f198 Ogre::GpuProgram::CmdPose::~CmdPose()")
+}
+
+// 0xc9f1a4 — __ZN4Ogre10GpuProgram6CmdVTFD0Ev
+#[doc(alias = "Ogre::GpuProgram::CmdVTF::~CmdVTF()")]
+// was: Ogre::GpuProgram::CmdVTF::~CmdVTF()
+pub fn stub_c9f1a4() -> ! {
+    todo!("0xc9f1a4 Ogre::GpuProgram::CmdVTF::~CmdVTF()")
+}
+
+// 0xc9f1b0 — __ZN4Ogre10GpuProgram24CmdManualNamedConstsFileD0Ev
+#[doc(alias = "Ogre::GpuProgram::CmdManualNamedConstsFile::~CmdManualNamedConstsFile()")]
+// was: Ogre::GpuProgram::CmdManualNamedConstsFile::~CmdManualNamedConstsFile()
+pub fn stub_c9f1b0() -> ! {
+    todo!("0xc9f1b0 Ogre::GpuProgram::CmdManualNamedConstsFile::~CmdManualNamedConstsFile()")
+}
+
+// 0xc9f1bc — __ZN4Ogre10GpuProgram12CmdAdjacencyD0Ev
+#[doc(alias = "Ogre::GpuProgram::CmdAdjacency::~CmdAdjacency()")]
+// was: Ogre::GpuProgram::CmdAdjacency::~CmdAdjacency()
+pub fn stub_c9f1bc() -> ! {
+    todo!("0xc9f1bc Ogre::GpuProgram::CmdAdjacency::~CmdAdjacency()")
+}
+
+// 0xc9f1c8 — __ZN4Ogre10GpuProgramD1Ev
+#[doc(alias = "Ogre::GpuProgram::~GpuProgram()")]
+// was: Ogre::GpuProgram::~GpuProgram()
+pub fn stub_c9f1c8() -> ! {
+    todo!("0xc9f1c8 Ogre::GpuProgram::~GpuProgram()")
+}
+
+// 0xc9f1d4 — __ZN4Ogre10GpuProgramD0Ev
+#[doc(alias = "Ogre::GpuProgram::~GpuProgram()")]
+// was: Ogre::GpuProgram::~GpuProgram()
+pub fn stub_c9f1d4() -> ! {
+    todo!("0xc9f1d4 Ogre::GpuProgram::~GpuProgram()")
+}
+
+// 0xc9f264 — __ZN4Ogre10GpuProgram19_getBindingDelegateEv
+#[doc(alias = "Ogre::GpuProgram::_getBindingDelegate(void)")]
+// was: Ogre::GpuProgram::_getBindingDelegate(void)
+pub fn stub_c9f264() -> ! {
+    todo!("0xc9f264 Ogre::GpuProgram::_getBindingDelegate(void)")
+}
+
+// 0xc9f268 — __ZNK4Ogre10GpuProgram17getNamedConstantsEv
+#[doc(alias = "Ogre::GpuProgram::getNamedConstants(void)const")]
+// was: Ogre::GpuProgram::getNamedConstants(void)const
+pub fn stub_c9f268() -> ! {
+    todo!("0xc9f268 Ogre::GpuProgram::getNamedConstants(void)const")
+}
+
+// 0xc9f270 — __ZNK4Ogre10GpuProgram22getConstantDefinitionsEv
+#[doc(alias = "Ogre::GpuProgram::getConstantDefinitions(void)const")]
+// was: Ogre::GpuProgram::getConstantDefinitions(void)const
+pub fn stub_c9f270() -> ! {
+    todo!("0xc9f270 Ogre::GpuProgram::getConstantDefinitions(void)const")
+}
+
+// 0xc9f278 — __ZNSt8_Rb_treeImSt4pairIKmN4Ogre18GpuLogicalIndexUseEESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS4_
+#[doc(alias = "std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned long const,Ogre::GpuLogicalIndexUse> const&)")]
+// was: std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned long const,Ogre::GpuLogicalIndexUse> const&)
+pub fn stub_c9f278() -> ! {
+    todo!("0xc9f278 std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned long const,Ogre::GpuLogicalIndexUse> const&)")
+}
+
+// 0xc9f37c — __ZNSt8_Rb_treeImSt4pairIKmN4Ogre18GpuLogicalIndexUseEESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()
+pub fn stub_c9f37c() -> ! {
+    todo!("0xc9f37c std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc9f380 — __ZN4Ogre10GpuProgramD2Ev
+#[doc(alias = "Ogre::GpuProgram::~GpuProgram()")]
+// was: Ogre::GpuProgram::~GpuProgram()
+pub fn stub_c9f380() -> ! {
+    todo!("0xc9f380 Ogre::GpuProgram::~GpuProgram()")
+}
+
+// 0xc9f5bc — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_c9f5bc() -> ! {
+    todo!("0xc9f5bc std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc9f5c0 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE7_M_copyEPKSt13_Rb_tree_nodeIS4_EPSG_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_copy(std::_Rb_tree_node<std::pair<std::string const,Ogre::GpuConstantDefinition>> const*,std::_Rb_tree_node<std::pair<std::string const,Ogre::GpuConstantDefinition>>*)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_copy(std::_Rb_tree_node<std::pair<std::string const,Ogre::GpuConstantDefinition>> const*,std::_Rb_tree_node<std::pair<std::string const,Ogre::GpuConstantDefinition>>*)
+pub fn stub_c9f5c0() -> ! {
+    todo!("0xc9f5c0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_copy(std::_Rb_tree_node<std::pair<std::string const,Ogre::GpuConstantDefinition>> const*,std::_Rb_tree_node<std::pair<std::string const,Ogre::GpuConstantDefinition>>*)")
+}
+
+// 0xc9f7d0 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_c9f7d0() -> ! {
+    todo!("0xc9f7d0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc9f7dc — __ZNSt8_Rb_treeImSt4pairIKmN4Ogre18GpuLogicalIndexUseEESt10_Select1stIS4_ESt4lessImENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()
+pub fn stub_c9f7dc() -> ! {
+    todo!("0xc9f7dc std::_Rb_tree<unsigned long,std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,std::_Select1st<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>>,std::less<unsigned long>,Ogre::STLAllocator<std::pair<unsigned long const,Ogre::GpuLogicalIndexUse>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned long>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc9f8fc — __ZN4Ogre17GpuProgramManager12getSingletonEv
+#[doc(alias = "Ogre::GpuProgramManager::getSingleton(void)")]
+// was: Ogre::GpuProgramManager::getSingleton(void)
+pub fn stub_c9f8fc() -> ! {
+    todo!("0xc9f8fc Ogre::GpuProgramManager::getSingleton(void)")
+}
+
+// 0xc9f90c — __ZN4Ogre17GpuProgramManagerC2Ev
+#[doc(alias = "Ogre::GpuProgramManager::GpuProgramManager(void)")]
+// was: Ogre::GpuProgramManager::GpuProgramManager(void)
+pub fn stub_c9f90c() -> ! {
+    todo!("0xc9f90c Ogre::GpuProgramManager::GpuProgramManager(void)")
+}
+
+// 0xc9fa90 — __ZN4Ogre17GpuProgramManagerD0Ev
+#[doc(alias = "Ogre::GpuProgramManager::~GpuProgramManager()")]
+// was: Ogre::GpuProgramManager::~GpuProgramManager()
+pub fn stub_c9fa90() -> ! {
+    todo!("0xc9fa90 Ogre::GpuProgramManager::~GpuProgramManager()")
+}
+
+// 0xc9fb6c — __ZN4Ogre17GpuProgramManagerD1Ev
+#[doc(alias = "Ogre::GpuProgramManager::~GpuProgramManager()")]
+// was: Ogre::GpuProgramManager::~GpuProgramManager()
+pub fn stub_c9fb6c() -> ! {
+    todo!("0xc9fb6c Ogre::GpuProgramManager::~GpuProgramManager()")
+}
+
+// 0xc9fc3c — __ZN4Ogre17GpuProgramManagerD2Ev
+#[doc(alias = "Ogre::GpuProgramManager::~GpuProgramManager()")]
+// was: Ogre::GpuProgramManager::~GpuProgramManager()
+pub fn stub_c9fc3c() -> ! {
+    todo!("0xc9fc3c Ogre::GpuProgramManager::~GpuProgramManager()")
+}
+
+// 0xc9fd0c — __ZN4Ogre17GpuProgramManager4loadERKSsS2_S2_NS_14GpuProgramTypeES2_
+#[doc(alias = "Ogre::GpuProgramManager::load(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)")]
+// was: Ogre::GpuProgramManager::load(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)
+pub fn stub_c9fd0c() -> ! {
+    todo!("0xc9fd0c Ogre::GpuProgramManager::load(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)")
+}
+
+// 0xca009c — __ZN4Ogre17GpuProgramManager9getByNameERKSsb
+#[doc(alias = "Ogre::GpuProgramManager::getByName(std::string const&,bool)")]
+// was: Ogre::GpuProgramManager::getByName(std::string const&,bool)
+pub fn stub_ca009c() -> ! {
+    todo!("0xca009c Ogre::GpuProgramManager::getByName(std::string const&,bool)")
+}
+
+// 0xca0418 — __ZN4Ogre17GpuProgramManager14loadFromStringERKSsS2_S2_NS_14GpuProgramTypeES2_
+#[doc(alias = "Ogre::GpuProgramManager::loadFromString(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)")]
+// was: Ogre::GpuProgramManager::loadFromString(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)
+pub fn stub_ca0418() -> ! {
+    todo!("0xca0418 Ogre::GpuProgramManager::loadFromString(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)")
+}
+
+// 0xca07a8 — __ZN4Ogre17GpuProgramManager6createERKSsS2_NS_14GpuProgramTypeES2_bPNS_20ManualResourceLoaderE
+#[doc(alias = "Ogre::GpuProgramManager::create(std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&,bool,Ogre::ManualResourceLoader *)")]
+// was: Ogre::GpuProgramManager::create(std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&,bool,Ogre::ManualResourceLoader *)
+pub fn stub_ca07a8() -> ! {
+    todo!("0xca07a8 Ogre::GpuProgramManager::create(std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&,bool,Ogre::ManualResourceLoader *)")
+}
+
+// 0xca0944 — __ZN4Ogre17GpuProgramManager13createProgramERKSsS2_S2_NS_14GpuProgramTypeES2_
+#[doc(alias = "Ogre::GpuProgramManager::createProgram(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)")]
+// was: Ogre::GpuProgramManager::createProgram(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)
+pub fn stub_ca0944() -> ! {
+    todo!("0xca0944 Ogre::GpuProgramManager::createProgram(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)")
+}
+
+// 0xca0b1c — __ZN4Ogre17GpuProgramManager23createProgramFromStringERKSsS2_S2_NS_14GpuProgramTypeES2_
+#[doc(alias = "Ogre::GpuProgramManager::createProgramFromString(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)")]
+// was: Ogre::GpuProgramManager::createProgramFromString(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)
+pub fn stub_ca0b1c() -> ! {
+    todo!("0xca0b1c Ogre::GpuProgramManager::createProgramFromString(std::string const&,std::string const&,std::string const&,Ogre::GpuProgramType,std::string const&)")
+}
+
+// 0xca0cf4 — __ZNK4Ogre17GpuProgramManager18getSupportedSyntaxEv
+#[doc(alias = "Ogre::GpuProgramManager::getSupportedSyntax(void)const")]
+// was: Ogre::GpuProgramManager::getSupportedSyntax(void)const
+pub fn stub_ca0cf4() -> ! {
+    todo!("0xca0cf4 Ogre::GpuProgramManager::getSupportedSyntax(void)const")
+}
+
+// 0xca0d08 — __ZNK4Ogre17GpuProgramManager17isSyntaxSupportedERKSs
+#[doc(alias = "Ogre::GpuProgramManager::isSyntaxSupported(std::string const&)const")]
+// was: Ogre::GpuProgramManager::isSyntaxSupported(std::string const&)const
+pub fn stub_ca0d08() -> ! {
+    todo!("0xca0d08 Ogre::GpuProgramManager::isSyntaxSupported(std::string const&)const")
+}
+
+// 0xca0d34 — __ZN4Ogre17GpuProgramManager16createParametersEv
+#[doc(alias = "Ogre::GpuProgramManager::createParameters(void)")]
+// was: Ogre::GpuProgramManager::createParameters(void)
+pub fn stub_ca0d34() -> ! {
+    todo!("0xca0d34 Ogre::GpuProgramManager::createParameters(void)")
+}
+
+// 0xca0e2c — __ZN4Ogre17GpuProgramManager22createSharedParametersERKSs
+#[doc(alias = "Ogre::GpuProgramManager::createSharedParameters(std::string const&)")]
+// was: Ogre::GpuProgramManager::createSharedParameters(std::string const&)
+pub fn stub_ca0e2c() -> ! {
+    todo!("0xca0e2c Ogre::GpuProgramManager::createSharedParameters(std::string const&)")
+}
+
+// 0xca1260 — __ZNK4Ogre17GpuProgramManager19getSharedParametersERKSs
+#[doc(alias = "Ogre::GpuProgramManager::getSharedParameters(std::string const&)const")]
+// was: Ogre::GpuProgramManager::getSharedParameters(std::string const&)const
+pub fn stub_ca1260() -> ! {
+    todo!("0xca1260 Ogre::GpuProgramManager::getSharedParameters(std::string const&)const")
+}
+
+// 0xca1574 — __ZNK4Ogre17GpuProgramManager28getAvailableSharedParametersEv
+#[doc(alias = "Ogre::GpuProgramManager::getAvailableSharedParameters(void)const")]
+// was: Ogre::GpuProgramManager::getAvailableSharedParameters(void)const
+pub fn stub_ca1574() -> ! {
+    todo!("0xca1574 Ogre::GpuProgramManager::getAvailableSharedParameters(void)const")
+}
+
+// 0xca1578 — __ZN4Ogre17GpuProgramManager24getSaveMicrocodesToCacheEv
+#[doc(alias = "Ogre::GpuProgramManager::getSaveMicrocodesToCache(void)")]
+// was: Ogre::GpuProgramManager::getSaveMicrocodesToCache(void)
+pub fn stub_ca1578() -> ! {
+    todo!("0xca1578 Ogre::GpuProgramManager::getSaveMicrocodesToCache(void)")
+}

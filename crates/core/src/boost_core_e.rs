@@ -151,7 +151,7 @@ pub fn stub_4b2f20() -> ! {
     todo!("0x4b2f20 __ZN3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEf")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::call(float)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::call(float)")]
 // 0x4b2f34 — __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEf
 pub fn stub_4b2f34() -> ! {
     todo!("0x4b2f34 __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEf")
@@ -418,7 +418,7 @@ pub fn stub_4e9154() -> ! {
     todo!("0x4e9154 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvNS5_13VelocityMotorEEENSB_5list1INSB_5valueIPSF_EEEEEELi2ES8_E4callES7_S7_")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 // 0x4e916c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvNS5_13VelocityMotorEEENSB_5list1INSB_5valueIPSF_EEEEEELi2ES8_E4callES7_S7_
 // was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
 pub fn stub_4e916c() -> ! {

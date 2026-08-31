@@ -972,13 +972,13 @@ pub fn stub_0x6d2d18() -> ! {
 }
 
 // 0x6d2d58 — __ZThn96_N3RBX9Workspace14render3dSelectEPNS_5AdornENS_11SelectStateE
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 pub fn stub_0x6d2d58() -> ! {
     todo!("0x6d2d58 `non-virtual thunk toRBX::Workspace::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
 // 0x6d2d84 — __ZThn280_NK3RBX9Workspace19getCameraOwnerModelEv
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::getCameraOwnerModel(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::getCameraOwnerModel(void)const")]
 pub fn stub_0x6d2d84() -> ! {
     todo!("0x6d2d84 `non-virtual thunk toRBX::Workspace::getCameraOwnerModel(void)const")
 }
@@ -1002,7 +1002,7 @@ pub fn stub_0x6d3dac() -> ! {
 }
 
 // 0x6d3db4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9WorkspaceEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_0x6d3db4() -> ! {
     todo!("0x6d3db4 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)")
 }
@@ -1044,7 +1044,7 @@ pub fn stub_0x6d43dc() -> ! {
 }
 
 // 0x6d43e4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9WorkspaceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Workspace,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Workspace*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Workspace,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Workspace*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
 pub fn stub_0x6d43e4() -> ! {
     todo!("0x6d43e4 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Workspace,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Workspace*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
 }
@@ -1212,7 +1212,7 @@ pub fn stub_0x6d82b4() -> ! {
 }
 
 // 0x6d8394 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_6CameraEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Camera>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Camera>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_0x6d8394() -> ! {
     todo!("0x6d8394 `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Camera>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
@@ -1368,7 +1368,7 @@ pub fn stub_0x6d8df8() -> ! {
 }
 
 // 0x6d8ed8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_0x6d8ed8() -> ! {
     todo!("0x6d8ed8 `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
@@ -1788,25 +1788,25 @@ pub fn stub_0x6e0890() -> ! {
 }
 
 // 0x6e0964 — __ZThn32_N3RBX18WorkspaceStatsItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 pub fn stub_0x6e0964() -> ! {
     todo!("0x6e0964 `non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
 }
 
 // 0x6e09a4 — __ZThn32_N3RBX18WorkspaceStatsItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 pub fn stub_0x6e09a4() -> ! {
     todo!("0x6e09a4 `non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
 }
 
 // 0x6e0a78 — __ZThn36_N3RBX18WorkspaceStatsItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 pub fn stub_0x6e0a78() -> ! {
     todo!("0x6e0a78 `non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
 }
 
 // 0x6e0ab8 — __ZThn36_N3RBX18WorkspaceStatsItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 pub fn stub_0x6e0ab8() -> ! {
     todo!("0x6e0ab8 `non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")
 }
@@ -1959,7 +1959,7 @@ pub fn stub_0x8863a8() -> ! {
 }
 
 // 0x8865c0 — __ZThn92_N3RBX13PluginManager8activateEPNS_6PluginEPNS_9DataModelE
-#[doc(alias = "`non-virtual thunk toRBX::PluginManager::activate(RBX::Plugin *,RBX::DataModel *)")]
+#[doc(alias = "non-virtual thunk toRBX::PluginManager::activate(RBX::Plugin *,RBX::DataModel *)")]
 pub fn stub_0x8865c0() -> ! {
     todo!("0x8865c0 `non-virtual thunk toRBX::PluginManager::activate(RBX::Plugin *,RBX::DataModel *)")
 }
@@ -1971,7 +1971,7 @@ pub fn stub_0x886b4c() -> ! {
 }
 
 // 0x886cb0 — __ZThn96_N3RBX13PluginManager11buttonClickEPNS_9DataModelEPv
-#[doc(alias = "`non-virtual thunk toRBX::PluginManager::buttonClick(RBX::DataModel *,void *)")]
+#[doc(alias = "non-virtual thunk toRBX::PluginManager::buttonClick(RBX::DataModel *,void *)")]
 pub fn stub_0x886cb0() -> ! {
     todo!("0x886cb0 `non-virtual thunk toRBX::PluginManager::buttonClick(RBX::DataModel *,void *)")
 }
