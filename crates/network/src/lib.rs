@@ -22,3 +22,4 @@ pub mod generated_19;
 pub mod generated_20;
 pub mod raknet;
 pub mod generated_21;
+pub mod generated_22;
