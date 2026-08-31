@@ -1,6 +1,6 @@
-//! platform generated — 2174 stubs sorted by EA, from ida/export.json
+//! platform generated — 2274 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 2174 stubs (2074 prior + 100 this batch, 3026 filtered, 1400 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 2274 stubs (2174 prior + 100 this batch, 3026 filtered, 1300 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -15163,4 +15163,691 @@ pub fn stub_ece42c() -> ! {
 #[doc(alias = "+[TestFlight manuallyEndSession]")]
 pub fn stub_ece444() -> ! {
     todo!("0xece444 +[TestFlight manuallyEndSession]")
+}
+// 0xece45c — +[TestFlight _startSession:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[TestFlight _startSession:]")]
+pub fn stub_ece45c() -> ! {
+    todo!("0xece45c +[TestFlight _startSession:]")
+}
+
+// 0xece4a0 — ___28+[TestFlight _startSession:]_block_invoke
+#[doc(alias = "___28+[TestFlight _startSession:]_block_invoke")]
+pub fn stub_ece4a0() -> ! {
+    todo!("0xece4a0 ___28+[TestFlight _startSession:]_block_invoke")
+}
+
+// 0xece600 — +[TestFlight _endSession:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[TestFlight _endSession:]")]
+pub fn stub_ece600() -> ! {
+    todo!("0xece600 +[TestFlight _endSession:]")
+}
+
+// 0xece648 — ___26+[TestFlight _endSession:]_block_invoke
+#[doc(alias = "___26+[TestFlight _endSession:]_block_invoke")]
+pub fn stub_ece648() -> ! {
+    todo!("0xece648 ___26+[TestFlight _endSession:]_block_invoke")
+}
+
+// 0xece718 — +[TestFlight setOptions:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[TestFlight setOptions:]")]
+pub fn stub_ece718() -> ! {
+    todo!("0xece718 +[TestFlight setOptions:]")
+}
+
+// 0xece768 — ___25+[TestFlight setOptions:]_block_invoke
+#[doc(alias = "___25+[TestFlight setOptions:]_block_invoke")]
+pub fn stub_ece768() -> ! {
+    todo!("0xece768 ___25+[TestFlight setOptions:]_block_invoke")
+}
+
+// 0xece7c4 — ___25+[TestFlight setOptions:]_block_invoke_2
+// type: int __fastcall(int, id)
+#[doc(alias = "___25+[TestFlight setOptions:]_block_invoke_2")]
+pub fn stub_ece7c4() -> ! {
+    todo!("0xece7c4 ___25+[TestFlight setOptions:]_block_invoke_2")
+}
+
+// 0xeced68 — +[TestFlight passCheckpoint:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[TestFlight passCheckpoint:]")]
+pub fn stub_eced68() -> ! {
+    todo!("0xeced68 +[TestFlight passCheckpoint:]")
+}
+
+// 0xecee28 — ___29+[TestFlight passCheckpoint:]_block_invoke
+#[doc(alias = "___29+[TestFlight passCheckpoint:]_block_invoke")]
+pub fn stub_ecee28() -> ! {
+    todo!("0xecee28 ___29+[TestFlight passCheckpoint:]_block_invoke")
+}
+
+// 0xecee9c — +[TestFlight flush]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TestFlight flush]")]
+pub fn stub_ecee9c() -> ! {
+    todo!("0xecee9c +[TestFlight flush]")
+}
+
+// 0xecf080 — ___19+[TestFlight flush]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___19+[TestFlight flush]_block_invoke")]
+pub fn stub_ecf080() -> ! {
+    todo!("0xecf080 ___19+[TestFlight flush]_block_invoke")
+}
+
+// 0xecf1a0 — +[TestFlight submitFeedback:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[TestFlight submitFeedback:]")]
+pub fn stub_ecf1a0() -> ! {
+    todo!("0xecf1a0 +[TestFlight submitFeedback:]")
+}
+
+// 0xecf1f0 — ___29+[TestFlight submitFeedback:]_block_invoke
+#[doc(alias = "___29+[TestFlight submitFeedback:]_block_invoke")]
+pub fn stub_ecf1f0() -> ! {
+    todo!("0xecf1f0 ___29+[TestFlight submitFeedback:]_block_invoke")
+}
+
+// 0xecf260 — +[TestFlight setDeviceIdentifier:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[TestFlight setDeviceIdentifier:]")]
+pub fn stub_ecf260() -> ! {
+    todo!("0xecf260 +[TestFlight setDeviceIdentifier:]")
+}
+
+// 0xecf2c8 — ___34+[TestFlight setDeviceIdentifier:]_block_invoke
+#[doc(alias = "___34+[TestFlight setDeviceIdentifier:]_block_invoke")]
+pub fn stub_ecf2c8() -> ! {
+    todo!("0xecf2c8 ___34+[TestFlight setDeviceIdentifier:]_block_invoke")
+}
+
+// 0xecf688 — +[TFSessionManager sharedSessionManager]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFSessionManager sharedSessionManager]")]
+pub fn stub_ecf688() -> ! {
+    todo!("0xecf688 +[TFSessionManager sharedSessionManager]")
+}
+
+// 0xecf6b8 — ___40+[TFSessionManager sharedSessionManager]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___40+[TFSessionManager sharedSessionManager]_block_invoke")]
+pub fn stub_ecf6b8() -> ! {
+    todo!("0xecf6b8 ___40+[TFSessionManager sharedSessionManager]_block_invoke")
+}
+
+// 0xecf6f0 — -[TFSessionManager init]
+// type: TFSessionManager *__cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager init]")]
+pub fn stub_ecf6f0() -> ! {
+    todo!("0xecf6f0 -[TFSessionManager init]")
+}
+
+// 0xecf7ec — -[TFSessionManager dealloc]
+// type: void __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager dealloc]")]
+pub fn stub_ecf7ec() -> ! {
+    todo!("0xecf7ec -[TFSessionManager dealloc]")
+}
+
+// 0xecf838 — -[TFSessionManager setApplicationToken:]
+// type: void __cdecl(TFSessionManager *self, SEL, id)
+#[doc(alias = "-[TFSessionManager setApplicationToken:]")]
+pub fn stub_ecf838() -> ! {
+    todo!("0xecf838 -[TFSessionManager setApplicationToken:]")
+}
+
+// 0xecf998 — -[TFSessionManager sessionKeepAliveTimeout]
+// type: double __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager sessionKeepAliveTimeout]")]
+pub fn stub_ecf998() -> ! {
+    todo!("0xecf998 -[TFSessionManager sessionKeepAliveTimeout]")
+}
+
+// 0xecf9d0 — -[TFSessionManager _savePermissions]
+// type: void __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager _savePermissions]")]
+pub fn stub_ecf9d0() -> ! {
+    todo!("0xecf9d0 -[TFSessionManager _savePermissions]")
+}
+
+// 0xecfb84 — -[TFSessionManager _loadPermissions]
+// type: void __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager _loadPermissions]")]
+pub fn stub_ecfb84() -> ! {
+    todo!("0xecfb84 -[TFSessionManager _loadPermissions]")
+}
+
+// 0xecfd24 — -[TFSessionManager startSession:]
+// type: void __cdecl(TFSessionManager *self, SEL, char)
+#[doc(alias = "-[TFSessionManager startSession:]")]
+pub fn stub_ecfd24() -> ! {
+    todo!("0xecfd24 -[TFSessionManager startSession:]")
+}
+
+// 0xed01dc — ___33-[TFSessionManager startSession:]_block_invoke
+#[doc(alias = "___33-[TFSessionManager startSession:]_block_invoke")]
+pub fn stub_ed01dc() -> ! {
+    todo!("0xed01dc ___33-[TFSessionManager startSession:]_block_invoke")
+}
+
+// 0xed01f4 — -[TFSessionManager checkpointHit:withParameters:]
+// type: void __cdecl(TFSessionManager *self, SEL, id, id)
+#[doc(alias = "-[TFSessionManager checkpointHit:withParameters:]")]
+pub fn stub_ed01f4() -> ! {
+    todo!("0xed01f4 -[TFSessionManager checkpointHit:withParameters:]")
+}
+
+// 0xed02ec — -[TFSessionManager respondTofeedback:feedbackType:]
+// type: void __cdecl(TFSessionManager *self, SEL, id, id)
+#[doc(alias = "-[TFSessionManager respondTofeedback:feedbackType:]")]
+pub fn stub_ed02ec() -> ! {
+    todo!("0xed02ec -[TFSessionManager respondTofeedback:feedbackType:]")
+}
+
+// 0xed036c — -[TFSessionManager respondToFeedbackCustom:]
+// type: void __cdecl(TFSessionManager *self, SEL, id)
+#[doc(alias = "-[TFSessionManager respondToFeedbackCustom:]")]
+pub fn stub_ed036c() -> ! {
+    todo!("0xed036c -[TFSessionManager respondToFeedbackCustom:]")
+}
+
+// 0xed03c4 — -[TFSessionManager endSession:]
+// type: void __cdecl(TFSessionManager *self, SEL, char)
+#[doc(alias = "-[TFSessionManager endSession:]")]
+pub fn stub_ed03c4() -> ! {
+    todo!("0xed03c4 -[TFSessionManager endSession:]")
+}
+
+// 0xed0708 — ___31-[TFSessionManager endSession:]_block_invoke
+#[doc(alias = "___31-[TFSessionManager endSession:]_block_invoke")]
+pub fn stub_ed0708() -> ! {
+    todo!("0xed0708 ___31-[TFSessionManager endSession:]_block_invoke")
+}
+
+// 0xed0844 — ___31-[TFSessionManager endSession:]_block_invoke_2
+// type: int __fastcall(int, id)
+#[doc(alias = "___31-[TFSessionManager endSession:]_block_invoke_2")]
+pub fn stub_ed0844() -> ! {
+    todo!("0xed0844 ___31-[TFSessionManager endSession:]_block_invoke_2")
+}
+
+// 0xed092c — -[TFSessionManager endOldSessions]
+// type: void __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager endOldSessions]")]
+pub fn stub_ed092c() -> ! {
+    todo!("0xed092c -[TFSessionManager endOldSessions]")
+}
+
+// 0xed0ac0 — ___34-[TFSessionManager endOldSessions]_block_invoke
+#[doc(alias = "___34-[TFSessionManager endOldSessions]_block_invoke")]
+pub fn stub_ed0ac0() -> ! {
+    todo!("0xed0ac0 ___34-[TFSessionManager endOldSessions]_block_invoke")
+}
+
+// 0xed0b34 — ___34-[TFSessionManager endOldSessions]_block_invoke_2
+// type: int __fastcall(int, id)
+#[doc(alias = "___34-[TFSessionManager endOldSessions]_block_invoke_2")]
+pub fn stub_ed0b34() -> ! {
+    todo!("0xed0b34 ___34-[TFSessionManager endOldSessions]_block_invoke_2")
+}
+
+// 0xed0fa0 — ___34-[TFSessionManager endOldSessions]_block_invoke_3
+// type: int __fastcall(int, id)
+#[doc(alias = "___34-[TFSessionManager endOldSessions]_block_invoke_3")]
+pub fn stub_ed0fa0() -> ! {
+    todo!("0xed0fa0 ___34-[TFSessionManager endOldSessions]_block_invoke_3")
+}
+
+// 0xed105c — ___34-[TFSessionManager endOldSessions]_block_invoke259
+// type: void __cdecl(id, id, char *)
+#[doc(alias = "___34-[TFSessionManager endOldSessions]_block_invoke259")]
+pub fn stub_ed105c() -> ! {
+    todo!("0xed105c ___34-[TFSessionManager endOldSessions]_block_invoke259")
+}
+
+// 0xed10ec — -[TFSessionManager sendOldCrashReport:]
+// type: void __cdecl(TFSessionManager *self, SEL, id)
+#[doc(alias = "-[TFSessionManager sendOldCrashReport:]")]
+pub fn stub_ed10ec() -> ! {
+    todo!("0xed10ec -[TFSessionManager sendOldCrashReport:]")
+}
+
+// 0xed1194 — -[TFSessionManager recordEvent:]
+// type: void __cdecl(TFSessionManager *self, SEL, id)
+#[doc(alias = "-[TFSessionManager recordEvent:]")]
+pub fn stub_ed1194() -> ! {
+    todo!("0xed1194 -[TFSessionManager recordEvent:]")
+}
+
+// 0xed11ac — -[TFSessionManager recordEvent:withDictionary:]
+// type: void __cdecl(TFSessionManager *self, SEL, id, id)
+#[doc(alias = "-[TFSessionManager recordEvent:withDictionary:]")]
+pub fn stub_ed11ac() -> ! {
+    todo!("0xed11ac -[TFSessionManager recordEvent:withDictionary:]")
+}
+
+// 0xed11e4 — -[TFSessionManager recordEvent:withDictionary:highPriority:]
+// type: void __cdecl(TFSessionManager *self, SEL, id, id, char)
+#[doc(alias = "-[TFSessionManager recordEvent:withDictionary:highPriority:]")]
+pub fn stub_ed11e4() -> ! {
+    todo!("0xed11e4 -[TFSessionManager recordEvent:withDictionary:highPriority:]")
+}
+
+// 0xed135c — -[TFSessionManager currentSessionInformation]
+// type: id __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager currentSessionInformation]")]
+pub fn stub_ed135c() -> ! {
+    todo!("0xed135c -[TFSessionManager currentSessionInformation]")
+}
+
+// 0xed19d8 — -[TFSessionManager doApiHandshake]
+// type: void __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager doApiHandshake]")]
+pub fn stub_ed19d8() -> ! {
+    todo!("0xed19d8 -[TFSessionManager doApiHandshake]")
+}
+
+// 0xed1c78 — ___34-[TFSessionManager doApiHandshake]_block_invoke
+// type: int __fastcall(int, int, id, int, int)
+#[doc(alias = "___34-[TFSessionManager doApiHandshake]_block_invoke")]
+pub fn stub_ed1c78() -> ! {
+    todo!("0xed1c78 ___34-[TFSessionManager doApiHandshake]_block_invoke")
+}
+
+// 0xed1cd4 — -[TFSessionManager finishedHandshakeWithData:response:error:]
+// type: void __cdecl(TFSessionManager *self, SEL, id, id, id)
+#[doc(alias = "-[TFSessionManager finishedHandshakeWithData:response:error:]")]
+pub fn stub_ed1cd4() -> ! {
+    todo!("0xed1cd4 -[TFSessionManager finishedHandshakeWithData:response:error:]")
+}
+
+// 0xed2020 — -[TFSessionManager sessionFilePathForFileName:extension:]
+// type: id __cdecl(TFSessionManager *self, SEL, id, id)
+#[doc(alias = "-[TFSessionManager sessionFilePathForFileName:extension:]")]
+pub fn stub_ed2020() -> ! {
+    todo!("0xed2020 -[TFSessionManager sessionFilePathForFileName:extension:]")
+}
+
+// 0xed20ac — -[TFSessionManager saveLastSessionInformation]
+// type: void __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager saveLastSessionInformation]")]
+pub fn stub_ed20ac() -> ! {
+    todo!("0xed20ac -[TFSessionManager saveLastSessionInformation]")
+}
+
+// 0xed2280 — -[TFSessionManager saveEndSessionInformation]
+// type: void __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager saveEndSessionInformation]")]
+pub fn stub_ed2280() -> ! {
+    todo!("0xed2280 -[TFSessionManager saveEndSessionInformation]")
+}
+
+// 0xed23cc — -[TFSessionManager sequenceNumberPathForSessionID:]
+// type: id __cdecl(TFSessionManager *self, SEL, id)
+#[doc(alias = "-[TFSessionManager sequenceNumberPathForSessionID:]")]
+pub fn stub_ed23cc() -> ! {
+    todo!("0xed23cc -[TFSessionManager sequenceNumberPathForSessionID:]")
+}
+
+// 0xed23ec — -[TFSessionManager savedEndSessionInformationForSessionID:]
+// type: id __cdecl(TFSessionManager *self, SEL, id)
+#[doc(alias = "-[TFSessionManager savedEndSessionInformationForSessionID:]")]
+pub fn stub_ed23ec() -> ! {
+    todo!("0xed23ec -[TFSessionManager savedEndSessionInformationForSessionID:]")
+}
+
+// 0xed2478 — -[TFSessionManager deleteSavedEndSessionInformationForSessionID:]
+// type: void __cdecl(TFSessionManager *self, SEL, id)
+#[doc(alias = "-[TFSessionManager deleteSavedEndSessionInformationForSessionID:]")]
+pub fn stub_ed2478() -> ! {
+    todo!("0xed2478 -[TFSessionManager deleteSavedEndSessionInformationForSessionID:]")
+}
+
+// 0xed25a8 — -[TFSessionManager sessionIDsWithOldSavedSessionInformation]
+// type: id __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager sessionIDsWithOldSavedSessionInformation]")]
+pub fn stub_ed25a8() -> ! {
+    todo!("0xed25a8 -[TFSessionManager sessionIDsWithOldSavedSessionInformation]")
+}
+
+// 0xed29bc — ___60-[TFSessionManager sessionIDsWithOldSavedSessionInformation]_block_invoke
+#[doc(alias = "___60-[TFSessionManager sessionIDsWithOldSavedSessionInformation]_block_invoke")]
+pub fn stub_ed29bc() -> ! {
+    todo!("0xed29bc ___60-[TFSessionManager sessionIDsWithOldSavedSessionInformation]_block_invoke")
+}
+
+// 0xed2a34 — -[TFSessionManager shouldSendLogs]
+// type: char __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager shouldSendLogs]")]
+pub fn stub_ed2a34() -> ! {
+    todo!("0xed2a34 -[TFSessionManager shouldSendLogs]")
+}
+
+// 0xed2a70 — -[TFSessionManager getStringOrNilFrom:withKey:]
+// type: id __cdecl(TFSessionManager *self, SEL, id, id)
+#[doc(alias = "-[TFSessionManager getStringOrNilFrom:withKey:]")]
+pub fn stub_ed2a70() -> ! {
+    todo!("0xed2a70 -[TFSessionManager getStringOrNilFrom:withKey:]")
+}
+
+// 0xed2af4 — -[TFSessionManager getNumberOrNilFrom:withKey:]
+// type: id __cdecl(TFSessionManager *self, SEL, id, id)
+#[doc(alias = "-[TFSessionManager getNumberOrNilFrom:withKey:]")]
+pub fn stub_ed2af4() -> ! {
+    todo!("0xed2af4 -[TFSessionManager getNumberOrNilFrom:withKey:]")
+}
+
+// 0xed2b78 — -[TFSessionManager unixTime]
+// type: double __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager unixTime]")]
+pub fn stub_ed2b78() -> ! {
+    todo!("0xed2b78 -[TFSessionManager unixTime]")
+}
+
+// 0xed2bc4 — -[TFSessionManager getUUID]
+// type: id __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager getUUID]")]
+pub fn stub_ed2bc4() -> ! {
+    todo!("0xed2bc4 -[TFSessionManager getUUID]")
+}
+
+// 0xed2be8 — -[TFSessionManager useSeqNumber]
+// type: unsigned int __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager useSeqNumber]")]
+pub fn stub_ed2be8() -> ! {
+    todo!("0xed2be8 -[TFSessionManager useSeqNumber]")
+}
+
+// 0xed2c24 — -[TFSessionManager sendLogOnlyOnCrash]
+// type: char __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager sendLogOnlyOnCrash]")]
+pub fn stub_ed2c24() -> ! {
+    todo!("0xed2c24 -[TFSessionManager sendLogOnlyOnCrash]")
+}
+
+// 0xed2c3c — -[TFSessionManager setSendLogOnlyOnCrash:]
+// type: void __cdecl(TFSessionManager *self, SEL, char)
+#[doc(alias = "-[TFSessionManager setSendLogOnlyOnCrash:]")]
+pub fn stub_ed2c3c() -> ! {
+    todo!("0xed2c3c -[TFSessionManager setSendLogOnlyOnCrash:]")
+}
+
+// 0xed2c54 — -[TFSessionManager setSessionKeepAliveTimeout:]
+// type: void __cdecl(TFSessionManager *self, SEL, double)
+#[doc(alias = "-[TFSessionManager setSessionKeepAliveTimeout:]")]
+pub fn stub_ed2c54() -> ! {
+    todo!("0xed2c54 -[TFSessionManager setSessionKeepAliveTimeout:]")
+}
+
+// 0xed2c68 — -[TFSessionManager nextSeqNumber]
+// type: unsigned int __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager nextSeqNumber]")]
+pub fn stub_ed2c68() -> ! {
+    todo!("0xed2c68 -[TFSessionManager nextSeqNumber]")
+}
+
+// 0xed2c78 — -[TFSessionManager setNextSeqNumber:]
+// type: void __cdecl(TFSessionManager *self, SEL, unsigned int)
+#[doc(alias = "-[TFSessionManager setNextSeqNumber:]")]
+pub fn stub_ed2c78() -> ! {
+    todo!("0xed2c78 -[TFSessionManager setNextSeqNumber:]")
+}
+
+// 0xed2c88 — -[TFSessionManager inSession]
+// type: char __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager inSession]")]
+pub fn stub_ed2c88() -> ! {
+    todo!("0xed2c88 -[TFSessionManager inSession]")
+}
+
+// 0xed2c98 — -[TFSessionManager setInSession:]
+// type: void __cdecl(TFSessionManager *self, SEL, char)
+#[doc(alias = "-[TFSessionManager setInSession:]")]
+pub fn stub_ed2c98() -> ! {
+    todo!("0xed2c98 -[TFSessionManager setInSession:]")
+}
+
+// 0xed2ca8 — -[TFSessionManager sessionID]
+// type: NSString *__cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager sessionID]")]
+pub fn stub_ed2ca8() -> ! {
+    todo!("0xed2ca8 -[TFSessionManager sessionID]")
+}
+
+// 0xed2cc0 — -[TFSessionManager setSessionID:]
+// type: void __cdecl(TFSessionManager *self, SEL, id)
+#[doc(alias = "-[TFSessionManager setSessionID:]")]
+pub fn stub_ed2cc0() -> ! {
+    todo!("0xed2cc0 -[TFSessionManager setSessionID:]")
+}
+
+// 0xed2ce4 — -[TFSessionManager .cxx_destruct]
+// type: void __cdecl(TFSessionManager *self, SEL)
+#[doc(alias = "-[TFSessionManager .cxx_destruct]")]
+pub fn stub_ed2ce4() -> ! {
+    todo!("0xed2ce4 -[TFSessionManager .cxx_destruct]")
+}
+
+// 0xed3e50 — +[TFEventManager initialize]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TFEventManager initialize]")]
+pub fn stub_ed3e50() -> ! {
+    todo!("0xed3e50 +[TFEventManager initialize]")
+}
+
+// 0xed3eb4 — ___28+[TFEventManager initialize]_block_invoke
+#[doc(alias = "___28+[TFEventManager initialize]_block_invoke")]
+pub fn stub_ed3eb4() -> ! {
+    todo!("0xed3eb4 ___28+[TFEventManager initialize]_block_invoke")
+}
+
+// 0xed3f80 — +[TFEventManager _ensureNetworkStartDataIsSetup]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TFEventManager _ensureNetworkStartDataIsSetup]")]
+pub fn stub_ed3f80() -> ! {
+    todo!("0xed3f80 +[TFEventManager _ensureNetworkStartDataIsSetup]")
+}
+
+// 0xed41f4 — +[TFEventManager bustCachedNetworkStartData]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TFEventManager bustCachedNetworkStartData]")]
+pub fn stub_ed41f4() -> ! {
+    todo!("0xed41f4 +[TFEventManager bustCachedNetworkStartData]")
+}
+
+// 0xed4234 — +[TFEventManager eventManagerWithQueueKey:url:]
+// type: TFEventManager *__cdecl(id, SEL, id, id)
+#[doc(alias = "+[TFEventManager eventManagerWithQueueKey:url:]")]
+pub fn stub_ed4234() -> ! {
+    todo!("0xed4234 +[TFEventManager eventManagerWithQueueKey:url:]")
+}
+
+// 0xed4294 — -[TFEventManager init]
+// type: TFEventManager *__cdecl(TFEventManager *self, SEL)
+#[doc(alias = "-[TFEventManager init]")]
+pub fn stub_ed4294() -> ! {
+    todo!("0xed4294 -[TFEventManager init]")
+}
+
+// 0xed42bc — -[TFEventManager initWithQueueKey:url:]
+// type: TFEventManager *__cdecl(TFEventManager *self, SEL, id, id)
+#[doc(alias = "-[TFEventManager initWithQueueKey:url:]")]
+pub fn stub_ed42bc() -> ! {
+    todo!("0xed42bc -[TFEventManager initWithQueueKey:url:]")
+}
+
+// 0xed4498 — -[TFEventManager dealloc]
+// type: void __cdecl(TFEventManager *self, SEL)
+#[doc(alias = "-[TFEventManager dealloc]")]
+pub fn stub_ed4498() -> ! {
+    todo!("0xed4498 -[TFEventManager dealloc]")
+}
+
+// 0xed44e4 — +[TFEventManager flush]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TFEventManager flush]")]
+pub fn stub_ed44e4() -> ! {
+    todo!("0xed44e4 +[TFEventManager flush]")
+}
+
+// 0xed4514 — -[TFEventManager _flush]
+// type: void __cdecl(TFEventManager *self, SEL)
+#[doc(alias = "-[TFEventManager _flush]")]
+pub fn stub_ed4514() -> ! {
+    todo!("0xed4514 -[TFEventManager _flush]")
+}
+
+// 0xed4810 — -[TFEventManager enqueueObject:]
+// type: void __cdecl(TFEventManager *self, SEL, id)
+#[doc(alias = "-[TFEventManager enqueueObject:]")]
+pub fn stub_ed4810() -> ! {
+    todo!("0xed4810 -[TFEventManager enqueueObject:]")
+}
+
+// 0xed4828 — -[TFEventManager enqueueObject:andSendImmediately:]
+// type: void __cdecl(TFEventManager *self, SEL, id, char)
+#[doc(alias = "-[TFEventManager enqueueObject:andSendImmediately:]")]
+pub fn stub_ed4828() -> ! {
+    todo!("0xed4828 -[TFEventManager enqueueObject:andSendImmediately:]")
+}
+
+// 0xed49e4 — -[TFEventManager enqueueDictionary:withExtraPairWithKey:andObjectDataWriter:]
+// type: char __cdecl(TFEventManager *self, SEL, id, id, id)
+#[doc(alias = "-[TFEventManager enqueueDictionary:withExtraPairWithKey:andObjectDataWriter:]")]
+pub fn stub_ed49e4() -> ! {
+    todo!("0xed49e4 -[TFEventManager enqueueDictionary:withExtraPairWithKey:andObjectDataWriter:]")
+}
+
+// 0xed4c88 — ___77-[TFEventManager enqueueDictionary:withExtraPairWithKey:andObjectDataWriter:]_block_invoke
+// type: int __fastcall(int, id)
+#[doc(alias = "___77-[TFEventManager enqueueDictionary:withExtraPairWithKey:andObjectDataWriter:]_block_invoke")]
+pub fn stub_ed4c88() -> ! {
+    todo!("0xed4c88 ___77-[TFEventManager enqueueDictionary:withExtraPairWithKey:andObjectDataWriter:]_block_invoke")
+}
+
+// 0xed4d6c — -[TFEventManager _endCurrentEventQueue]
+// type: void __cdecl(TFEventManager *self, SEL)
+#[doc(alias = "-[TFEventManager _endCurrentEventQueue]")]
+pub fn stub_ed4d6c() -> ! {
+    todo!("0xed4d6c -[TFEventManager _endCurrentEventQueue]")
+}
+
+// 0xed4d8c — -[TFEventManager _ensureEventQueueIsSetup]
+// type: void __cdecl(TFEventManager *self, SEL)
+#[doc(alias = "-[TFEventManager _ensureEventQueueIsSetup]")]
+pub fn stub_ed4d8c() -> ! {
+    todo!("0xed4d8c -[TFEventManager _ensureEventQueueIsSetup]")
+}
+
+// 0xed4e30 — -[TFEventManager _createNewQueueFileName]
+// type: id __cdecl(TFEventManager *self, SEL)
+#[doc(alias = "-[TFEventManager _createNewQueueFileName]")]
+pub fn stub_ed4e30() -> ! {
+    todo!("0xed4e30 -[TFEventManager _createNewQueueFileName]")
+}
+
+// 0xed4e80 — -[TFEventManager _createNewQueueAtPath:itemCount:]
+// type: void __cdecl(TFEventManager *self, SEL, id, unsigned int)
+#[doc(alias = "-[TFEventManager _createNewQueueAtPath:itemCount:]")]
+pub fn stub_ed4e80() -> ! {
+    todo!("0xed4e80 -[TFEventManager _createNewQueueAtPath:itemCount:]")
+}
+
+// 0xed50d8 — -[TFEventManager _getOldQueuePaths]
+// type: void __cdecl(TFEventManager *self, SEL)
+#[doc(alias = "-[TFEventManager _getOldQueuePaths]")]
+pub fn stub_ed50d8() -> ! {
+    todo!("0xed50d8 -[TFEventManager _getOldQueuePaths]")
+}
+
+// 0xed5300 — ___35-[TFEventManager _getOldQueuePaths]_block_invoke
+// type: int __fastcall(int, id)
+#[doc(alias = "___35-[TFEventManager _getOldQueuePaths]_block_invoke")]
+pub fn stub_ed5300() -> ! {
+    todo!("0xed5300 ___35-[TFEventManager _getOldQueuePaths]_block_invoke")
+}
+
+// 0xed5494 — -[TFEventManager url]
+// type: NSURL *__cdecl(TFEventManager *self, SEL)
+#[doc(alias = "-[TFEventManager url]")]
+pub fn stub_ed5494() -> ! {
+    todo!("0xed5494 -[TFEventManager url]")
+}
+
+// 0xed54a4 — -[TFEventManager setUrl:]
+// type: void __cdecl(TFEventManager *self, SEL, id)
+#[doc(alias = "-[TFEventManager setUrl:]")]
+pub fn stub_ed54a4() -> ! {
+    todo!("0xed54a4 -[TFEventManager setUrl:]")
+}
+
+// 0xed54c8 — -[TFEventManager .cxx_destruct]
+// type: void __cdecl(TFEventManager *self, SEL)
+#[doc(alias = "-[TFEventManager .cxx_destruct]")]
+pub fn stub_ed54c8() -> ! {
+    todo!("0xed54c8 -[TFEventManager .cxx_destruct]")
+}
+
+// 0xed5570 — +[TFMemoryMonitor startMemoryMonitor]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TFMemoryMonitor startMemoryMonitor]")]
+pub fn stub_ed5570() -> ! {
+    todo!("0xed5570 +[TFMemoryMonitor startMemoryMonitor]")
+}
+
+// 0xed55c4 — +[TFMemoryMonitor recordUsage]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TFMemoryMonitor recordUsage]")]
+pub fn stub_ed55c4() -> ! {
+    todo!("0xed55c4 +[TFMemoryMonitor recordUsage]")
+}
+
+// 0xed56fc — +[TFNetworkManager sharedManager]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFNetworkManager sharedManager]")]
+pub fn stub_ed56fc() -> ! {
+    todo!("0xed56fc +[TFNetworkManager sharedManager]")
+}
+
+// 0xed572c — ___33+[TFNetworkManager sharedManager]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___33+[TFNetworkManager sharedManager]_block_invoke")]
+pub fn stub_ed572c() -> ! {
+    todo!("0xed572c ___33+[TFNetworkManager sharedManager]_block_invoke")
+}
+
+// 0xed5764 — -[TFNetworkManager init]
+// type: TFNetworkManager *__cdecl(TFNetworkManager *self, SEL)
+#[doc(alias = "-[TFNetworkManager init]")]
+pub fn stub_ed5764() -> ! {
+    todo!("0xed5764 -[TFNetworkManager init]")
+}
+
+// 0xed5a04 — ___24-[TFNetworkManager init]_block_invoke
+#[doc(alias = "___24-[TFNetworkManager init]_block_invoke")]
+pub fn stub_ed5a04() -> ! {
+    todo!("0xed5a04 ___24-[TFNetworkManager init]_block_invoke")
+}
+
+// 0xed5a20 — -[TFNetworkManager dealloc]
+// type: void __cdecl(TFNetworkManager *self, SEL)
+#[doc(alias = "-[TFNetworkManager dealloc]")]
+pub fn stub_ed5a20() -> ! {
+    todo!("0xed5a20 -[TFNetworkManager dealloc]")
+}
+
+// 0xed5ae8 — -[TFNetworkManager sendFile:toURL:]
+// type: void __cdecl(TFNetworkManager *self, SEL, id, id)
+#[doc(alias = "-[TFNetworkManager sendFile:toURL:]")]
+pub fn stub_ed5ae8() -> ! {
+    todo!("0xed5ae8 -[TFNetworkManager sendFile:toURL:]")
+}
+
+// 0xed5b38 — -[TFNetworkManager sendFile:toURL:withPriority:]
+// type: void __cdecl(TFNetworkManager *self, SEL, id, id, int)
+#[doc(alias = "-[TFNetworkManager sendFile:toURL:withPriority:]")]
+pub fn stub_ed5b38() -> ! {
+    todo!("0xed5b38 -[TFNetworkManager sendFile:toURL:withPriority:]")
 }
