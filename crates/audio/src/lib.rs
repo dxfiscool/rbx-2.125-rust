@@ -3,6 +3,7 @@
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 pub mod generated;
+pub mod generated_03;
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
