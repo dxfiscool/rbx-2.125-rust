@@ -1,5 +1,5 @@
 //! audio — FMOD (FMOD::System, FMOD::Sound, Channel, etc.)
-//! Generated from ida/export.json filtered for FMOD (1882 funcs, 1350 stubs here).
+//! Generated from ida/export.json filtered for FMOD (1882 funcs, 1450 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
@@ -7998,3 +7998,603 @@ pub fn stub_d47b4() -> ! {
 pub fn stub_d47dc() -> ! {
     todo!("0xd47dc FMOD::OutputNoSound_NRT::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")
 }
+// 0xd47e8 — __ZN4FMOD17OutputNoSound_NRT16getDescriptionExEv
+#[doc(alias = "FMOD::OutputNoSound_NRT::getDescriptionEx(void)")]
+pub fn stub_d47e8() -> ! {
+    todo!("0xd47e8 FMOD::OutputNoSound_NRT::getDescriptionEx(void)")
+}
+
+// 0xd48ec — __GLOBAL__I__ZN4FMOD17nosoundoutput_nrtE
+#[doc(alias = "global constructor keyed toFMOD::nosoundoutput_nrt")]
+pub fn stub_d48ec() -> ! {
+    todo!("0xd48ec `global constructor keyed to'FMOD::nosoundoutput_nrt")
+}
+
+// 0xd48f8 — __ZN4FMOD12OutputPolled4stopEv
+#[doc(alias = "FMOD::OutputPolled::stop(void)")]
+pub fn stub_d48f8() -> ! {
+    todo!("0xd48f8 FMOD::OutputPolled::stop(void)")
+}
+
+// 0xd4930 — __ZN4FMOD12OutputPolledC2Ev
+#[doc(alias = "FMOD::OutputPolled::OutputPolled(void)")]
+pub fn stub_d4930() -> ! {
+    todo!("0xd4930 FMOD::OutputPolled::OutputPolled(void)")
+}
+
+// 0xd497c — __ZN4FMOD12OutputPolledC1Ev
+#[doc(alias = "FMOD::OutputPolled::OutputPolled(void)")]
+pub fn stub_d497c() -> ! {
+    todo!("0xd497c FMOD::OutputPolled::OutputPolled(void)")
+}
+
+// 0xd4980 — __ZN4FMOD12OutputPolled5startEv
+#[doc(alias = "FMOD::OutputPolled::start(void)")]
+pub fn stub_d4980() -> ! {
+    todo!("0xd4980 FMOD::OutputPolled::start(void)")
+}
+
+// 0xd4ac0 — __ZThn360_N4FMOD12OutputPolled10threadFuncEv
+#[doc(alias = "non-virtual thunk toFMOD::OutputPolled::threadFunc(void)")]
+pub fn stub_d4ac0() -> ! {
+    todo!("0xd4ac0 `non-virtual thunk to'FMOD::OutputPolled::threadFunc(void)")
+}
+
+// 0xd4ac8 — __ZN4FMOD12OutputPolled10threadFuncEv
+#[doc(alias = "FMOD::OutputPolled::threadFunc(void)")]
+pub fn stub_d4ac8() -> ! {
+    todo!("0xd4ac8 FMOD::OutputPolled::threadFunc(void)")
+}
+
+// 0xd4ff8 — __ZThn360_N4FMOD12OutputPolledD0Ev
+#[doc(alias = "non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")]
+pub fn stub_d4ff8() -> ! {
+    todo!("0xd4ff8 `non-virtual thunk to'FMOD::OutputPolled::~OutputPolled()")
+}
+
+// 0xd5000 — __ZN4FMOD12OutputPolledD0Ev
+#[doc(alias = "FMOD::OutputPolled::~OutputPolled()")]
+pub fn stub_d5000() -> ! {
+    todo!("0xd5000 FMOD::OutputPolled::~OutputPolled()")
+}
+
+// 0xd5038 — __ZThn360_N4FMOD12OutputPolledD1Ev
+#[doc(alias = "non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")]
+pub fn stub_d5038() -> ! {
+    todo!("0xd5038 `non-virtual thunk to'FMOD::OutputPolled::~OutputPolled()")
+}
+
+// 0xd5040 — __ZN4FMOD12OutputPolledD1Ev
+#[doc(alias = "FMOD::OutputPolled::~OutputPolled()")]
+pub fn stub_d5040() -> ! {
+    todo!("0xd5040 FMOD::OutputPolled::~OutputPolled()")
+}
+
+// 0xd506c — __ZN4FMOD14OutputSoftware20getSampleMaxChannelsEj17FMOD_SOUND_FORMAT
+#[doc(alias = "FMOD::OutputSoftware::getSampleMaxChannels(unsigned int,FMOD_SOUND_FORMAT)")]
+pub fn stub_d506c() -> ! {
+    todo!("0xd506c FMOD::OutputSoftware::getSampleMaxChannels(unsigned int,FMOD_SOUND_FORMAT)")
+}
+
+// 0xd5074 — __ZN4FMOD14OutputSoftware28getSampleMaxChannelsCallbackEP17FMOD_OUTPUT_STATEj17FMOD_SOUND_FORMAT
+#[doc(alias = "FMOD::OutputSoftware::getSampleMaxChannelsCallback(FMOD_OUTPUT_STATE *,unsigned int,FMOD_SOUND_FORMAT)")]
+pub fn stub_d5074() -> ! {
+    todo!("0xd5074 FMOD::OutputSoftware::getSampleMaxChannelsCallback(FMOD_OUTPUT_STATE *,unsigned int,FMOD_SOUND_FORMAT)")
+}
+
+// 0xd5080 — __ZN4FMOD14OutputSoftware7releaseEv
+#[doc(alias = "FMOD::OutputSoftware::release(void)")]
+pub fn stub_d5080() -> ! {
+    todo!("0xd5080 FMOD::OutputSoftware::release(void)")
+}
+
+// 0xd50ec — __ZN4FMOD14OutputSoftwareC2Ev
+#[doc(alias = "FMOD::OutputSoftware::OutputSoftware(void)")]
+pub fn stub_d50ec() -> ! {
+    todo!("0xd50ec FMOD::OutputSoftware::OutputSoftware(void)")
+}
+
+// 0xd5170 — __ZN4FMOD14OutputSoftwareC1Ev
+#[doc(alias = "FMOD::OutputSoftware::OutputSoftware(void)")]
+pub fn stub_d5170() -> ! {
+    todo!("0xd5170 FMOD::OutputSoftware::OutputSoftware(void)")
+}
+
+// 0xd5174 — __ZN4FMOD14OutputSoftware4initEi
+#[doc(alias = "FMOD::OutputSoftware::init(int)")]
+pub fn stub_d5174() -> ! {
+    todo!("0xd5174 FMOD::OutputSoftware::init(int)")
+}
+
+// 0xd52d0 — __ZN4FMOD14OutputSoftware12createSampleEjP21FMOD_CODEC_WAVEFORMATPPNS_6SampleE
+#[doc(alias = "FMOD::OutputSoftware::createSample(unsigned int,FMOD_CODEC_WAVEFORMAT *,FMOD::Sample **)")]
+pub fn stub_d52d0() -> ! {
+    todo!("0xd52d0 FMOD::OutputSoftware::createSample(unsigned int,FMOD_CODEC_WAVEFORMAT *,FMOD::Sample **)")
+}
+
+// 0xd5770 — __ZN4FMOD15OutputWavWriter13getNumDriversEPi
+#[doc(alias = "FMOD::OutputWavWriter::getNumDrivers(int *)")]
+pub fn stub_d5770() -> ! {
+    todo!("0xd5770 FMOD::OutputWavWriter::getNumDrivers(int *)")
+}
+
+// 0xd5780 — __ZN4FMOD15OutputWavWriter13getDriverCapsEiPj
+#[doc(alias = "FMOD::OutputWavWriter::getDriverCaps(int,unsigned int *)")]
+pub fn stub_d5780() -> ! {
+    todo!("0xd5780 FMOD::OutputWavWriter::getDriverCaps(int,unsigned int *)")
+}
+
+// 0xd5794 — __ZN4FMOD15OutputWavWriter4lockEjjPPvS2_PjS3_
+#[doc(alias = "FMOD::OutputWavWriter::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+pub fn stub_d5794() -> ! {
+    todo!("0xd5794 FMOD::OutputWavWriter::lock(unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
+}
+
+// 0xd5834 — __ZN4FMOD15OutputWavWriter9getHandleEPPv
+#[doc(alias = "FMOD::OutputWavWriter::getHandle(void **)")]
+pub fn stub_d5834() -> ! {
+    todo!("0xd5834 FMOD::OutputWavWriter::getHandle(void **)")
+}
+
+// 0xd5844 — __ZN4FMOD15OutputWavWriter21getNumDriversCallbackEP17FMOD_OUTPUT_STATEPi
+#[doc(alias = "FMOD::OutputWavWriter::getNumDriversCallback(FMOD_OUTPUT_STATE *,int *)")]
+pub fn stub_d5844() -> ! {
+    todo!("0xd5844 FMOD::OutputWavWriter::getNumDriversCallback(FMOD_OUTPUT_STATE *,int *)")
+}
+
+// 0xd5850 — __ZN4FMOD15OutputWavWriter21getDriverCapsCallbackEP17FMOD_OUTPUT_STATEiPj
+#[doc(alias = "FMOD::OutputWavWriter::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)")]
+pub fn stub_d5850() -> ! {
+    todo!("0xd5850 FMOD::OutputWavWriter::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)")
+}
+
+// 0xd585c — __ZN4FMOD15OutputWavWriter12lockCallbackEP17FMOD_OUTPUT_STATEjjPPvS4_PjS5_
+#[doc(alias = "FMOD::OutputWavWriter::lockCallback(FMOD_OUTPUT_STATE *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")]
+pub fn stub_d585c() -> ! {
+    todo!("0xd585c FMOD::OutputWavWriter::lockCallback(FMOD_OUTPUT_STATE *,unsigned int,unsigned int,void **,void **,unsigned int *,unsigned int *)")
+}
+
+// 0xd588c — __ZN4FMOD15OutputWavWriter17getHandleCallbackEP17FMOD_OUTPUT_STATEPPv
+#[doc(alias = "FMOD::OutputWavWriter::getHandleCallback(FMOD_OUTPUT_STATE *,void **)")]
+pub fn stub_d588c() -> ! {
+    todo!("0xd588c FMOD::OutputWavWriter::getHandleCallback(FMOD_OUTPUT_STATE *,void **)")
+}
+
+// 0xd5898 — __ZN4FMOD15OutputWavWriter14writeWavHeaderEv
+#[doc(alias = "FMOD::OutputWavWriter::writeWavHeader(void)")]
+pub fn stub_d5898() -> ! {
+    todo!("0xd5898 FMOD::OutputWavWriter::writeWavHeader(void)")
+}
+
+// 0xd5adc — __ZN4FMOD15OutputWavWriter6unlockEPvS1_jj
+#[doc(alias = "FMOD::OutputWavWriter::unlock(void *,void *,unsigned int,unsigned int)")]
+pub fn stub_d5adc() -> ! {
+    todo!("0xd5adc FMOD::OutputWavWriter::unlock(void *,void *,unsigned int,unsigned int)")
+}
+
+// 0xd5bd0 — __ZN4FMOD15OutputWavWriter14unlockCallbackEP17FMOD_OUTPUT_STATEPvS3_jj
+#[doc(alias = "FMOD::OutputWavWriter::unlockCallback(FMOD_OUTPUT_STATE *,void *,void *,unsigned int,unsigned int)")]
+pub fn stub_d5bd0() -> ! {
+    todo!("0xd5bd0 FMOD::OutputWavWriter::unlockCallback(FMOD_OUTPUT_STATE *,void *,void *,unsigned int,unsigned int)")
+}
+
+// 0xd5be4 — __ZN4FMOD15OutputWavWriter5closeEv
+#[doc(alias = "FMOD::OutputWavWriter::close(void)")]
+pub fn stub_d5be4() -> ! {
+    todo!("0xd5be4 FMOD::OutputWavWriter::close(void)")
+}
+
+// 0xd5c58 — __ZN4FMOD15OutputWavWriter13closeCallbackEP17FMOD_OUTPUT_STATE
+#[doc(alias = "FMOD::OutputWavWriter::closeCallback(FMOD_OUTPUT_STATE *)")]
+pub fn stub_d5c58() -> ! {
+    todo!("0xd5c58 FMOD::OutputWavWriter::closeCallback(FMOD_OUTPUT_STATE *)")
+}
+
+// 0xd5c64 — __ZN4FMOD15OutputWavWriter13getDriverNameEiPci
+#[doc(alias = "FMOD::OutputWavWriter::getDriverName(int,char *,int)")]
+pub fn stub_d5c64() -> ! {
+    todo!("0xd5c64 FMOD::OutputWavWriter::getDriverName(int,char *,int)")
+}
+
+// 0xd5c8c — __ZN4FMOD15OutputWavWriter21getDriverNameCallbackEP17FMOD_OUTPUT_STATEiPci
+#[doc(alias = "FMOD::OutputWavWriter::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")]
+pub fn stub_d5c8c() -> ! {
+    todo!("0xd5c8c FMOD::OutputWavWriter::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")
+}
+
+// 0xd5c98 — __ZN4FMOD15OutputWavWriter4initEijPiiP17FMOD_SOUND_FORMATiiPv
+#[doc(alias = "FMOD::OutputWavWriter::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+pub fn stub_d5c98() -> ! {
+    todo!("0xd5c98 FMOD::OutputWavWriter::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
+}
+
+// 0xd5f48 — __ZN4FMOD15OutputWavWriter12initCallbackEP17FMOD_OUTPUT_STATEijPiiP17FMOD_SOUND_FORMATiiPv
+#[doc(alias = "FMOD::OutputWavWriter::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+pub fn stub_d5f48() -> ! {
+    todo!("0xd5f48 FMOD::OutputWavWriter::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
+}
+
+// 0xd5f98 — __ZN4FMOD15OutputWavWriter16getDescriptionExEv
+#[doc(alias = "FMOD::OutputWavWriter::getDescriptionEx(void)")]
+pub fn stub_d5f98() -> ! {
+    todo!("0xd5f98 FMOD::OutputWavWriter::getDescriptionEx(void)")
+}
+
+// 0xd60a0 — __ZN4FMOD15OutputWavWriter11getPositionEPj
+#[doc(alias = "FMOD::OutputWavWriter::getPosition(unsigned int *)")]
+pub fn stub_d60a0() -> ! {
+    todo!("0xd60a0 FMOD::OutputWavWriter::getPosition(unsigned int *)")
+}
+
+// 0xd60f4 — __ZN4FMOD15OutputWavWriter19getPositionCallbackEP17FMOD_OUTPUT_STATEPj
+#[doc(alias = "FMOD::OutputWavWriter::getPositionCallback(FMOD_OUTPUT_STATE *,unsigned int *)")]
+pub fn stub_d60f4() -> ! {
+    todo!("0xd60f4 FMOD::OutputWavWriter::getPositionCallback(FMOD_OUTPUT_STATE *,unsigned int *)")
+}
+
+// 0xd6144 — __GLOBAL__I__ZN4FMOD15wavwriteroutputE
+#[doc(alias = "global constructor keyed toFMOD::wavwriteroutput")]
+pub fn stub_d6144() -> ! {
+    todo!("0xd6144 `global constructor keyed to'FMOD::wavwriteroutput")
+}
+
+// 0xd6150 — __ZN4FMOD19OutputWavWriter_NRT13getNumDriversEPi
+#[doc(alias = "FMOD::OutputWavWriter_NRT::getNumDrivers(int *)")]
+pub fn stub_d6150() -> ! {
+    todo!("0xd6150 FMOD::OutputWavWriter_NRT::getNumDrivers(int *)")
+}
+
+// 0xd6160 — __ZN4FMOD19OutputWavWriter_NRT13getDriverCapsEiPj
+#[doc(alias = "FMOD::OutputWavWriter_NRT::getDriverCaps(int,unsigned int *)")]
+pub fn stub_d6160() -> ! {
+    todo!("0xd6160 FMOD::OutputWavWriter_NRT::getDriverCaps(int,unsigned int *)")
+}
+
+// 0xd6174 — __ZN4FMOD19OutputWavWriter_NRT9getHandleEPPv
+#[doc(alias = "FMOD::OutputWavWriter_NRT::getHandle(void **)")]
+pub fn stub_d6174() -> ! {
+    todo!("0xd6174 FMOD::OutputWavWriter_NRT::getHandle(void **)")
+}
+
+// 0xd6184 — __ZN4FMOD19OutputWavWriter_NRT21getNumDriversCallbackEP17FMOD_OUTPUT_STATEPi
+#[doc(alias = "FMOD::OutputWavWriter_NRT::getNumDriversCallback(FMOD_OUTPUT_STATE *,int *)")]
+pub fn stub_d6184() -> ! {
+    todo!("0xd6184 FMOD::OutputWavWriter_NRT::getNumDriversCallback(FMOD_OUTPUT_STATE *,int *)")
+}
+
+// 0xd6190 — __ZN4FMOD19OutputWavWriter_NRT21getDriverCapsCallbackEP17FMOD_OUTPUT_STATEiPj
+#[doc(alias = "FMOD::OutputWavWriter_NRT::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)")]
+pub fn stub_d6190() -> ! {
+    todo!("0xd6190 FMOD::OutputWavWriter_NRT::getDriverCapsCallback(FMOD_OUTPUT_STATE *,int,unsigned int *)")
+}
+
+// 0xd619c — __ZN4FMOD19OutputWavWriter_NRT17getHandleCallbackEP17FMOD_OUTPUT_STATEPPv
+#[doc(alias = "FMOD::OutputWavWriter_NRT::getHandleCallback(FMOD_OUTPUT_STATE *,void **)")]
+pub fn stub_d619c() -> ! {
+    todo!("0xd619c FMOD::OutputWavWriter_NRT::getHandleCallback(FMOD_OUTPUT_STATE *,void **)")
+}
+
+// 0xd61a8 — __ZN4FMOD19OutputWavWriter_NRT14writeWavHeaderEv
+#[doc(alias = "FMOD::OutputWavWriter_NRT::writeWavHeader(void)")]
+pub fn stub_d61a8() -> ! {
+    todo!("0xd61a8 FMOD::OutputWavWriter_NRT::writeWavHeader(void)")
+}
+
+// 0xd63ec — __ZN4FMOD19OutputWavWriter_NRT4stopEv
+#[doc(alias = "FMOD::OutputWavWriter_NRT::stop(void)")]
+pub fn stub_d63ec() -> ! {
+    todo!("0xd63ec FMOD::OutputWavWriter_NRT::stop(void)")
+}
+
+// 0xd641c — __ZN4FMOD19OutputWavWriter_NRT12stopCallbackEP17FMOD_OUTPUT_STATE
+#[doc(alias = "FMOD::OutputWavWriter_NRT::stopCallback(FMOD_OUTPUT_STATE *)")]
+pub fn stub_d641c() -> ! {
+    todo!("0xd641c FMOD::OutputWavWriter_NRT::stopCallback(FMOD_OUTPUT_STATE *)")
+}
+
+// 0xd6428 — __ZN4FMOD19OutputWavWriter_NRT5startEv
+#[doc(alias = "FMOD::OutputWavWriter_NRT::start(void)")]
+pub fn stub_d6428() -> ! {
+    todo!("0xd6428 FMOD::OutputWavWriter_NRT::start(void)")
+}
+
+// 0xd6468 — __ZN4FMOD19OutputWavWriter_NRT13startCallbackEP17FMOD_OUTPUT_STATE
+#[doc(alias = "FMOD::OutputWavWriter_NRT::startCallback(FMOD_OUTPUT_STATE *)")]
+pub fn stub_d6468() -> ! {
+    todo!("0xd6468 FMOD::OutputWavWriter_NRT::startCallback(FMOD_OUTPUT_STATE *)")
+}
+
+// 0xd6474 — __ZN4FMOD19OutputWavWriter_NRT6updateEv
+#[doc(alias = "FMOD::OutputWavWriter_NRT::update(void)")]
+pub fn stub_d6474() -> ! {
+    todo!("0xd6474 FMOD::OutputWavWriter_NRT::update(void)")
+}
+
+// 0xd6504 — __ZN4FMOD19OutputWavWriter_NRT14updateCallbackEP17FMOD_OUTPUT_STATE
+#[doc(alias = "FMOD::OutputWavWriter_NRT::updateCallback(FMOD_OUTPUT_STATE *)")]
+pub fn stub_d6504() -> ! {
+    todo!("0xd6504 FMOD::OutputWavWriter_NRT::updateCallback(FMOD_OUTPUT_STATE *)")
+}
+
+// 0xd6510 — __ZN4FMOD19OutputWavWriter_NRT5closeEv
+#[doc(alias = "FMOD::OutputWavWriter_NRT::close(void)")]
+pub fn stub_d6510() -> ! {
+    todo!("0xd6510 FMOD::OutputWavWriter_NRT::close(void)")
+}
+
+// 0xd6560 — __ZN4FMOD19OutputWavWriter_NRT13closeCallbackEP17FMOD_OUTPUT_STATE
+#[doc(alias = "FMOD::OutputWavWriter_NRT::closeCallback(FMOD_OUTPUT_STATE *)")]
+pub fn stub_d6560() -> ! {
+    todo!("0xd6560 FMOD::OutputWavWriter_NRT::closeCallback(FMOD_OUTPUT_STATE *)")
+}
+
+// 0xd656c — __ZN4FMOD19OutputWavWriter_NRT4initEijPiiP17FMOD_SOUND_FORMATiiPv
+#[doc(alias = "FMOD::OutputWavWriter_NRT::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+pub fn stub_d656c() -> ! {
+    todo!("0xd656c FMOD::OutputWavWriter_NRT::init(int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
+}
+
+// 0xd67f0 — __ZN4FMOD19OutputWavWriter_NRT12initCallbackEP17FMOD_OUTPUT_STATEijPiiP17FMOD_SOUND_FORMATiiPv
+#[doc(alias = "FMOD::OutputWavWriter_NRT::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")]
+pub fn stub_d67f0() -> ! {
+    todo!("0xd67f0 FMOD::OutputWavWriter_NRT::initCallback(FMOD_OUTPUT_STATE *,int,unsigned int,int *,int,FMOD_SOUND_FORMAT *,int,int,void *)")
+}
+
+// 0xd6840 — __ZN4FMOD19OutputWavWriter_NRT13getDriverNameEiPci
+#[doc(alias = "FMOD::OutputWavWriter_NRT::getDriverName(int,char *,int)")]
+pub fn stub_d6840() -> ! {
+    todo!("0xd6840 FMOD::OutputWavWriter_NRT::getDriverName(int,char *,int)")
+}
+
+// 0xd6868 — __ZN4FMOD19OutputWavWriter_NRT21getDriverNameCallbackEP17FMOD_OUTPUT_STATEiPci
+#[doc(alias = "FMOD::OutputWavWriter_NRT::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")]
+pub fn stub_d6868() -> ! {
+    todo!("0xd6868 FMOD::OutputWavWriter_NRT::getDriverNameCallback(FMOD_OUTPUT_STATE *,int,char *,int)")
+}
+
+// 0xd6874 — __ZN4FMOD19OutputWavWriter_NRT16getDescriptionExEv
+#[doc(alias = "FMOD::OutputWavWriter_NRT::getDescriptionEx(void)")]
+pub fn stub_d6874() -> ! {
+    todo!("0xd6874 FMOD::OutputWavWriter_NRT::getDescriptionEx(void)")
+}
+
+// 0xd69bc — __GLOBAL__I__ZN4FMOD19wavwriteroutput_nrtE
+#[doc(alias = "global constructor keyed toFMOD::wavwriteroutput_nrt")]
+pub fn stub_d69bc() -> ! {
+    todo!("0xd69bc `global constructor keyed to'FMOD::wavwriteroutput_nrt")
+}
+
+// 0xd69c8 — __ZN4FMOD6Plugin7releaseEv
+#[doc(alias = "FMOD::Plugin::release(void)")]
+pub fn stub_d69c8() -> ! {
+    todo!("0xd69c8 FMOD::Plugin::release(void)")
+}
+
+// 0xd6a04 — __ZN4FMOD13PluginFactory9setSystemEPNS_7SystemIE
+#[doc(alias = "FMOD::PluginFactory::setSystem(FMOD::SystemI *)")]
+pub fn stub_d6a04() -> ! {
+    todo!("0xd6a04 FMOD::PluginFactory::setSystem(FMOD::SystemI *)")
+}
+
+// 0xd6a10 — __ZN4FMOD13PluginFactory12getNumCodecsEPi
+#[doc(alias = "FMOD::PluginFactory::getNumCodecs(int *)")]
+pub fn stub_d6a10() -> ! {
+    todo!("0xd6a10 FMOD::PluginFactory::getNumCodecs(int *)")
+}
+
+// 0xd6a50 — __ZN4FMOD13PluginFactory10getNumDSPsEPi
+#[doc(alias = "FMOD::PluginFactory::getNumDSPs(int *)")]
+pub fn stub_d6a50() -> ! {
+    todo!("0xd6a50 FMOD::PluginFactory::getNumDSPs(int *)")
+}
+
+// 0xd6a90 — __ZN4FMOD13PluginFactory13getNumOutputsEPi
+#[doc(alias = "FMOD::PluginFactory::getNumOutputs(int *)")]
+pub fn stub_d6a90() -> ! {
+    todo!("0xd6a90 FMOD::PluginFactory::getNumOutputs(int *)")
+}
+
+// 0xd6ad0 — __ZN4FMOD13PluginFactory14getCodecHandleEiPj
+#[doc(alias = "FMOD::PluginFactory::getCodecHandle(int,unsigned int *)")]
+pub fn stub_d6ad0() -> ! {
+    todo!("0xd6ad0 FMOD::PluginFactory::getCodecHandle(int,unsigned int *)")
+}
+
+// 0xd6b30 — __ZN4FMOD13PluginFactory12getDSPHandleEiPj
+#[doc(alias = "FMOD::PluginFactory::getDSPHandle(int,unsigned int *)")]
+pub fn stub_d6b30() -> ! {
+    todo!("0xd6b30 FMOD::PluginFactory::getDSPHandle(int,unsigned int *)")
+}
+
+// 0xd6b90 — __ZN4FMOD13PluginFactory15getOutputHandleEiPj
+#[doc(alias = "FMOD::PluginFactory::getOutputHandle(int,unsigned int *)")]
+pub fn stub_d6b90() -> ! {
+    todo!("0xd6b90 FMOD::PluginFactory::getOutputHandle(int,unsigned int *)")
+}
+
+// 0xd6bf0 — __ZN4FMOD13PluginFactory8getCodecEjPPNS_25FMOD_CODEC_DESCRIPTION_EXE
+#[doc(alias = "FMOD::PluginFactory::getCodec(unsigned int,FMOD::FMOD_CODEC_DESCRIPTION_EX **)")]
+pub fn stub_d6bf0() -> ! {
+    todo!("0xd6bf0 FMOD::PluginFactory::getCodec(unsigned int,FMOD::FMOD_CODEC_DESCRIPTION_EX **)")
+}
+
+// 0xd6c54 — __ZN4FMOD13PluginFactory6getDSPEjPPNS_23FMOD_DSP_DESCRIPTION_EXE
+#[doc(alias = "FMOD::PluginFactory::getDSP(unsigned int,FMOD::FMOD_DSP_DESCRIPTION_EX **)")]
+pub fn stub_d6c54() -> ! {
+    todo!("0xd6c54 FMOD::PluginFactory::getDSP(unsigned int,FMOD::FMOD_DSP_DESCRIPTION_EX **)")
+}
+
+// 0xd6cb8 — __ZN4FMOD13PluginFactory9getOutputEjPPNS_26FMOD_OUTPUT_DESCRIPTION_EXE
+#[doc(alias = "FMOD::PluginFactory::getOutput(unsigned int,FMOD::FMOD_OUTPUT_DESCRIPTION_EX **)")]
+pub fn stub_d6cb8() -> ! {
+    todo!("0xd6cb8 FMOD::PluginFactory::getOutput(unsigned int,FMOD::FMOD_OUTPUT_DESCRIPTION_EX **)")
+}
+
+// 0xd6d1c — __ZN4FMOD13PluginFactory12unloadPluginEj
+#[doc(alias = "FMOD::PluginFactory::unloadPlugin(unsigned int)")]
+pub fn stub_d6d1c() -> ! {
+    todo!("0xd6d1c FMOD::PluginFactory::unloadPlugin(unsigned int)")
+}
+
+// 0xd6e9c — __ZN4FMOD13PluginFactory7releaseEv
+#[doc(alias = "FMOD::PluginFactory::release(void)")]
+pub fn stub_d6e9c() -> ! {
+    todo!("0xd6e9c FMOD::PluginFactory::release(void)")
+}
+
+// 0xd7004 — __ZN4FMOD13PluginFactory13setPluginPathEPKc
+#[doc(alias = "FMOD::PluginFactory::setPluginPath(char const*)")]
+pub fn stub_d7004() -> ! {
+    todo!("0xd7004 FMOD::PluginFactory::setPluginPath(char const*)")
+}
+
+// 0xd7040 — __ZN4FMOD13PluginFactoryC2Ev
+#[doc(alias = "FMOD::PluginFactory::PluginFactory(void)")]
+pub fn stub_d7040() -> ! {
+    todo!("0xd7040 FMOD::PluginFactory::PluginFactory(void)")
+}
+
+// 0xd70d8 — __ZN4FMOD13PluginFactoryC1Ev
+#[doc(alias = "FMOD::PluginFactory::PluginFactory(void)")]
+pub fn stub_d70d8() -> ! {
+    todo!("0xd70d8 FMOD::PluginFactory::PluginFactory(void)")
+}
+
+// 0xd70dc — __ZN4FMOD13PluginFactory13registerCodecEPNS_25FMOD_CODEC_DESCRIPTION_EXEPjj
+#[doc(alias = "FMOD::PluginFactory::registerCodec(FMOD::FMOD_CODEC_DESCRIPTION_EX *,unsigned int *,unsigned int)")]
+pub fn stub_d70dc() -> ! {
+    todo!("0xd70dc FMOD::PluginFactory::registerCodec(FMOD::FMOD_CODEC_DESCRIPTION_EX *,unsigned int *,unsigned int)")
+}
+
+// 0xd72a0 — __ZN4FMOD13PluginFactory12createOutputEPNS_26FMOD_OUTPUT_DESCRIPTION_EXEPPNS_6OutputE
+#[doc(alias = "FMOD::PluginFactory::createOutput(FMOD::FMOD_OUTPUT_DESCRIPTION_EX *,FMOD::Output **)")]
+pub fn stub_d72a0() -> ! {
+    todo!("0xd72a0 FMOD::PluginFactory::createOutput(FMOD::FMOD_OUTPUT_DESCRIPTION_EX *,FMOD::Output **)")
+}
+
+// 0xd73c0 — __ZN4FMOD13PluginFactory11registerDSPEPNS_23FMOD_DSP_DESCRIPTION_EXEPj
+#[doc(alias = "FMOD::PluginFactory::registerDSP(FMOD::FMOD_DSP_DESCRIPTION_EX *,unsigned int *)")]
+pub fn stub_d73c0() -> ! {
+    todo!("0xd73c0 FMOD::PluginFactory::registerDSP(FMOD::FMOD_DSP_DESCRIPTION_EX *,unsigned int *)")
+}
+
+// 0xd7538 — __ZN4FMOD13PluginFactory14registerOutputEPNS_26FMOD_OUTPUT_DESCRIPTION_EXEPj
+#[doc(alias = "FMOD::PluginFactory::registerOutput(FMOD::FMOD_OUTPUT_DESCRIPTION_EX *,unsigned int *)")]
+pub fn stub_d7538() -> ! {
+    todo!("0xd7538 FMOD::PluginFactory::registerOutput(FMOD::FMOD_OUTPUT_DESCRIPTION_EX *,unsigned int *)")
+}
+
+// 0xd7740 — __ZN4FMOD13PluginFactory11createCodecEPNS_25FMOD_CODEC_DESCRIPTION_EXEPPNS_5CodecE
+#[doc(alias = "FMOD::PluginFactory::createCodec(FMOD::FMOD_CODEC_DESCRIPTION_EX *,FMOD::Codec **)")]
+pub fn stub_d7740() -> ! {
+    todo!("0xd7740 FMOD::PluginFactory::createCodec(FMOD::FMOD_CODEC_DESCRIPTION_EX *,FMOD::Codec **)")
+}
+
+// 0xd788c — __ZN4FMOD13PluginFactory9createDSPEPNS_23FMOD_DSP_DESCRIPTION_EXEPPNS_4DSPIE
+#[doc(alias = "FMOD::PluginFactory::createDSP(FMOD::FMOD_DSP_DESCRIPTION_EX *,FMOD::DSPI **)")]
+pub fn stub_d788c() -> ! {
+    todo!("0xd788c FMOD::PluginFactory::createDSP(FMOD::FMOD_DSP_DESCRIPTION_EX *,FMOD::DSPI **)")
+}
+
+// 0xd7f7c — __ZN4FMOD5Codec15defaultMetaDataEP16FMOD_CODEC_STATE12FMOD_TAGTYPEPcPvj16FMOD_TAGDATATYPEi
+#[doc(alias = "FMOD::Codec::defaultMetaData(FMOD_CODEC_STATE *,FMOD_TAGTYPE,char *,void *,unsigned int,FMOD_TAGDATATYPE,int)")]
+pub fn stub_d7f7c() -> ! {
+    todo!("0xd7f7c FMOD::Codec::defaultMetaData(FMOD_CODEC_STATE *,FMOD_TAGTYPE,char *,void *,unsigned int,FMOD_TAGDATATYPE,int)")
+}
+
+// 0xd7fc0 — __ZN4FMOD5Codec15defaultFileSeekEPvjS1_
+#[doc(alias = "FMOD::Codec::defaultFileSeek(void *,unsigned int,void *)")]
+pub fn stub_d7fc0() -> ! {
+    todo!("0xd7fc0 FMOD::Codec::defaultFileSeek(void *,unsigned int,void *)")
+}
+
+// 0xd7fd4 — __ZN4FMOD5Codec15defaultFileReadEPvS1_jPjS1_
+#[doc(alias = "FMOD::Codec::defaultFileRead(void *,void *,unsigned int,unsigned int *,void *)")]
+pub fn stub_d7fd4() -> ! {
+    todo!("0xd7fd4 FMOD::Codec::defaultFileRead(void *,void *,unsigned int,unsigned int *,void *)")
+}
+
+// 0xd7ffc — __ZN4FMOD7ReverbIC2Ev
+#[doc(alias = "FMOD::ReverbI::ReverbI(void)")]
+pub fn stub_d7ffc() -> ! {
+    todo!("0xd7ffc FMOD::ReverbI::ReverbI(void)")
+}
+
+// 0xd808c — __ZN4FMOD7ReverbIC1Ev
+#[doc(alias = "FMOD::ReverbI::ReverbI(void)")]
+pub fn stub_d808c() -> ! {
+    todo!("0xd808c FMOD::ReverbI::ReverbI(void)")
+}
+
+// 0xd8090 — __ZN4FMOD7ReverbI22resetConnectionPointerEii
+#[doc(alias = "FMOD::ReverbI::resetConnectionPointer(int,int)")]
+pub fn stub_d8090() -> ! {
+    todo!("0xd8090 FMOD::ReverbI::resetConnectionPointer(int,int)")
+}
+
+// 0xd80d0 — __ZN4FMOD7ReverbI15get3DAttributesEP11FMOD_VECTORPfS3_
+#[doc(alias = "FMOD::ReverbI::get3DAttributes(FMOD_VECTOR *,float *,float *)")]
+pub fn stub_d80d0() -> ! {
+    todo!("0xd80d0 FMOD::ReverbI::get3DAttributes(FMOD_VECTOR *,float *,float *)")
+}
+
+// 0xd8110 — __ZN4FMOD7ReverbI13getPropertiesEP22FMOD_REVERB_PROPERTIES
+#[doc(alias = "FMOD::ReverbI::getProperties(FMOD_REVERB_PROPERTIES *)")]
+pub fn stub_d8110() -> ! {
+    todo!("0xd8110 FMOD::ReverbI::getProperties(FMOD_REVERB_PROPERTIES *)")
+}
+
+// 0xd815c — __ZN4FMOD7ReverbI9getActiveEPb
+#[doc(alias = "FMOD::ReverbI::getActive(bool *)")]
+pub fn stub_d815c() -> ! {
+    todo!("0xd815c FMOD::ReverbI::getActive(bool *)")
+}
+
+// 0xd8174 — __ZN4FMOD7ReverbI15setPresenceGainEiif
+#[doc(alias = "FMOD::ReverbI::setPresenceGain(int,int,float)")]
+pub fn stub_d8174() -> ! {
+    todo!("0xd8174 FMOD::ReverbI::setPresenceGain(int,int,float)")
+}
+
+// 0xd81d8 — __ZN4FMOD7ReverbI15getPresenceGainEiiPf
+#[doc(alias = "FMOD::ReverbI::getPresenceGain(int,int,float *)")]
+pub fn stub_d81d8() -> ! {
+    todo!("0xd81d8 FMOD::ReverbI::getPresenceGain(int,int,float *)")
+}
+
+// 0xd8248 — __ZN4FMOD7ReverbI17getMemoryUsedImplEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::ReverbI::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_d8248() -> ! {
+    todo!("0xd8248 FMOD::ReverbI::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+
+// 0xd8338 — __ZN4FMOD7ReverbI11factorPropsEP22FMOD_REVERB_PROPERTIESPNS_25FMOD_REVERB_STDPROPERTIESEf
+#[doc(alias = "FMOD::ReverbI::factorProps(FMOD_REVERB_PROPERTIES *,FMOD::FMOD_REVERB_STDPROPERTIES *,float)")]
+pub fn stub_d8338() -> ! {
+    todo!("0xd8338 FMOD::ReverbI::factorProps(FMOD_REVERB_PROPERTIES *,FMOD::FMOD_REVERB_STDPROPERTIES *,float)")
+}
+
+// 0xd857c — __ZN4FMOD7ReverbI8sumPropsEPNS_25FMOD_REVERB_STDPROPERTIESEP22FMOD_REVERB_PROPERTIESf
+#[doc(alias = "FMOD::ReverbI::sumProps(FMOD::FMOD_REVERB_STDPROPERTIES *,FMOD_REVERB_PROPERTIES *,float)")]
+pub fn stub_d857c() -> ! {
+    todo!("0xd857c FMOD::ReverbI::sumProps(FMOD::FMOD_REVERB_STDPROPERTIES *,FMOD_REVERB_PROPERTIES *,float)")
+}
+
+// 0xd8788 — __ZN4FMOD7ReverbI12sumRoomPropsEPNS_25FMOD_REVERB_STDPROPERTIESEP22FMOD_REVERB_PROPERTIESf
+#[doc(alias = "FMOD::ReverbI::sumRoomProps(FMOD::FMOD_REVERB_STDPROPERTIES *,FMOD_REVERB_PROPERTIES *,float)")]
+pub fn stub_d8788() -> ! {
+    todo!("0xd8788 FMOD::ReverbI::sumRoomProps(FMOD::FMOD_REVERB_STDPROPERTIES *,FMOD_REVERB_PROPERTIES *,float)")
+}
+
+// 0xd87ec — __ZN4FMOD7ReverbI21calculateDistanceGainEP11FMOD_VECTORPfS3_
+#[doc(alias = "FMOD::ReverbI::calculateDistanceGain(FMOD_VECTOR *,float *,float *)")]
+pub fn stub_d87ec() -> ! {
+    todo!("0xd87ec FMOD::ReverbI::calculateDistanceGain(FMOD_VECTOR *,float *,float *)")
+}
+
+// 0xd8904 — __ZN4FMOD7ReverbI19resetChanPropertiesEii
+#[doc(alias = "FMOD::ReverbI::resetChanProperties(int,int)")]
+pub fn stub_d8904() -> ! {
+    todo!("0xd8904 FMOD::ReverbI::resetChanProperties(int,int)")
+}
+
