@@ -57,3 +57,4 @@ pub mod generated_core_shard_q;
 pub mod generated_core_shard_r;
 pub mod generated_core_shard_s;
 pub mod generated_core_shard_t;
+pub mod generated_core_shard_u;
