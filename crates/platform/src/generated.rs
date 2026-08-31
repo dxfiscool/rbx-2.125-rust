@@ -1,6 +1,6 @@
-//! platform generated — 2274 stubs sorted by EA, from ida/export.json
+//! platform generated — 2374 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 2274 stubs (2174 prior + 100 this batch, 3026 filtered, 1300 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 2374 stubs (2274 prior + 100 this batch, 3026 filtered, 1200 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -15850,4 +15850,691 @@ pub fn stub_ed5ae8() -> ! {
 #[doc(alias = "-[TFNetworkManager sendFile:toURL:withPriority:]")]
 pub fn stub_ed5b38() -> ! {
     todo!("0xed5b38 -[TFNetworkManager sendFile:toURL:withPriority:]")
+}
+// 0xed5b9c — -[TFNetworkManager addNetworkOperation:]
+// type: void __cdecl(TFNetworkManager *self, SEL, id)
+#[doc(alias = "-[TFNetworkManager addNetworkOperation:]")]
+pub fn stub_ed5b9c() -> ! {
+    todo!("0xed5b9c -[TFNetworkManager addNetworkOperation:]")
+}
+
+// 0xed5bd4 — -[TFNetworkManager _setPaused:]
+// type: void __cdecl(TFNetworkManager *self, SEL, char)
+#[doc(alias = "-[TFNetworkManager _setPaused:]")]
+pub fn stub_ed5bd4() -> ! {
+    todo!("0xed5bd4 -[TFNetworkManager _setPaused:]")
+}
+
+// 0xed5c68 — -[TFNetworkManager _createFileOperationForFile:url:]
+// type: id __cdecl(TFNetworkManager *self, SEL, id, id)
+#[doc(alias = "-[TFNetworkManager _createFileOperationForFile:url:]")]
+pub fn stub_ed5c68() -> ! {
+    todo!("0xed5c68 -[TFNetworkManager _createFileOperationForFile:url:]")
+}
+
+// 0xed5eac — ___52-[TFNetworkManager _createFileOperationForFile:url:]_block_invoke
+// type: int __fastcall(int, int, id, int, id)
+#[doc(alias = "___52-[TFNetworkManager _createFileOperationForFile:url:]_block_invoke")]
+pub fn stub_ed5eac() -> ! {
+    todo!("0xed5eac ___52-[TFNetworkManager _createFileOperationForFile:url:]_block_invoke")
+}
+
+// 0xed5fb0 — -[TFNetworkManager _isResponseASuccess:]
+// type: char __cdecl(TFNetworkManager *self, SEL, id)
+#[doc(alias = "-[TFNetworkManager _isResponseASuccess:]")]
+pub fn stub_ed5fb0() -> ! {
+    todo!("0xed5fb0 -[TFNetworkManager _isResponseASuccess:]")
+}
+
+// 0xed6020 — -[TFNetworkManager _shouldPauseAndRetryFailedFileSend:response:error:]
+// type: char __cdecl(TFNetworkManager *self, SEL, id, id, id)
+#[doc(alias = "-[TFNetworkManager _shouldPauseAndRetryFailedFileSend:response:error:]")]
+pub fn stub_ed6020() -> ! {
+    todo!("0xed6020 -[TFNetworkManager _shouldPauseAndRetryFailedFileSend:response:error:]")
+}
+
+// 0xed6124 — -[TFNetworkManager _pauseQueueForABit]
+// type: void __cdecl(TFNetworkManager *self, SEL)
+#[doc(alias = "-[TFNetworkManager _pauseQueueForABit]")]
+pub fn stub_ed6124() -> ! {
+    todo!("0xed6124 -[TFNetworkManager _pauseQueueForABit]")
+}
+
+// 0xed61b8 — ___38-[TFNetworkManager _pauseQueueForABit]_block_invoke
+#[doc(alias = "___38-[TFNetworkManager _pauseQueueForABit]_block_invoke")]
+pub fn stub_ed61b8() -> ! {
+    todo!("0xed61b8 ___38-[TFNetworkManager _pauseQueueForABit]_block_invoke")
+}
+
+// 0xed61ec — -[TFNetworkManager observeValueForKeyPath:ofObject:change:context:]
+// type: void __cdecl(TFNetworkManager *self, SEL, id, id, id, void *)
+#[doc(alias = "-[TFNetworkManager observeValueForKeyPath:ofObject:change:context:]")]
+pub fn stub_ed61ec() -> ! {
+    todo!("0xed61ec -[TFNetworkManager observeValueForKeyPath:ofObject:change:context:]")
+}
+
+// 0xed623c — -[TFNetworkManager _handleReachabilityStatus:]
+// type: void __cdecl(TFNetworkManager *self, SEL, int)
+#[doc(alias = "-[TFNetworkManager _handleReachabilityStatus:]")]
+pub fn stub_ed623c() -> ! {
+    todo!("0xed623c -[TFNetworkManager _handleReachabilityStatus:]")
+}
+
+// 0xed628c — -[TFNetworkManager _startBackgroundTaskIfAppropriateAsyncSafe]
+// type: void __cdecl(TFNetworkManager *self, SEL)
+#[doc(alias = "-[TFNetworkManager _startBackgroundTaskIfAppropriateAsyncSafe]")]
+pub fn stub_ed628c() -> ! {
+    todo!("0xed628c -[TFNetworkManager _startBackgroundTaskIfAppropriateAsyncSafe]")
+}
+
+// 0xed62f0 — ___62-[TFNetworkManager _startBackgroundTaskIfAppropriateAsyncSafe]_block_invoke
+#[doc(alias = "___62-[TFNetworkManager _startBackgroundTaskIfAppropriateAsyncSafe]_block_invoke")]
+pub fn stub_ed62f0() -> ! {
+    todo!("0xed62f0 ___62-[TFNetworkManager _startBackgroundTaskIfAppropriateAsyncSafe]_block_invoke")
+}
+
+// 0xed6320 — -[TFNetworkManager _startBackgroundTaskIfAppropriate]
+// type: void __cdecl(TFNetworkManager *self, SEL)
+#[doc(alias = "-[TFNetworkManager _startBackgroundTaskIfAppropriate]")]
+pub fn stub_ed6320() -> ! {
+    todo!("0xed6320 -[TFNetworkManager _startBackgroundTaskIfAppropriate]")
+}
+
+// 0xed6370 — -[TFNetworkManager _startBackgroundTask]
+// type: void __cdecl(TFNetworkManager *self, SEL)
+#[doc(alias = "-[TFNetworkManager _startBackgroundTask]")]
+pub fn stub_ed6370() -> ! {
+    todo!("0xed6370 -[TFNetworkManager _startBackgroundTask]")
+}
+
+// 0xed6428 — ___40-[TFNetworkManager _startBackgroundTask]_block_invoke
+#[doc(alias = "___40-[TFNetworkManager _startBackgroundTask]_block_invoke")]
+pub fn stub_ed6428() -> ! {
+    todo!("0xed6428 ___40-[TFNetworkManager _startBackgroundTask]_block_invoke")
+}
+
+// 0xed6498 — ___40-[TFNetworkManager _startBackgroundTask]_block_invoke_2
+#[doc(alias = "___40-[TFNetworkManager _startBackgroundTask]_block_invoke_2")]
+pub fn stub_ed6498() -> ! {
+    todo!("0xed6498 ___40-[TFNetworkManager _startBackgroundTask]_block_invoke_2")
+}
+
+// 0xed651c — -[TFNetworkManager _endBackgroundTaskIfAppropriateAsyncSafe]
+// type: void __cdecl(TFNetworkManager *self, SEL)
+#[doc(alias = "-[TFNetworkManager _endBackgroundTaskIfAppropriateAsyncSafe]")]
+pub fn stub_ed651c() -> ! {
+    todo!("0xed651c -[TFNetworkManager _endBackgroundTaskIfAppropriateAsyncSafe]")
+}
+
+// 0xed6580 — ___60-[TFNetworkManager _endBackgroundTaskIfAppropriateAsyncSafe]_block_invoke
+#[doc(alias = "___60-[TFNetworkManager _endBackgroundTaskIfAppropriateAsyncSafe]_block_invoke")]
+pub fn stub_ed6580() -> ! {
+    todo!("0xed6580 ___60-[TFNetworkManager _endBackgroundTaskIfAppropriateAsyncSafe]_block_invoke")
+}
+
+// 0xed65b0 — -[TFNetworkManager _endBackgroundTaskIfAppropriate]
+// type: void __cdecl(TFNetworkManager *self, SEL)
+#[doc(alias = "-[TFNetworkManager _endBackgroundTaskIfAppropriate]")]
+pub fn stub_ed65b0() -> ! {
+    todo!("0xed65b0 -[TFNetworkManager _endBackgroundTaskIfAppropriate]")
+}
+
+// 0xed65f0 — -[TFNetworkManager _endBackgroundTask]
+// type: void __cdecl(TFNetworkManager *self, SEL)
+#[doc(alias = "-[TFNetworkManager _endBackgroundTask]")]
+pub fn stub_ed65f0() -> ! {
+    todo!("0xed65f0 -[TFNetworkManager _endBackgroundTask]")
+}
+
+// 0xed6664 — -[TFNetworkManager .cxx_destruct]
+// type: void __cdecl(TFNetworkManager *self, SEL)
+#[doc(alias = "-[TFNetworkManager .cxx_destruct]")]
+pub fn stub_ed6664() -> ! {
+    todo!("0xed6664 -[TFNetworkManager .cxx_destruct]")
+}
+
+// 0xed66a8 — +[TFReachability initialize]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TFReachability initialize]")]
+pub fn stub_ed66a8() -> ! {
+    todo!("0xed66a8 +[TFReachability initialize]")
+}
+
+// 0xed66d4 — ___28+[TFReachability initialize]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___28+[TFReachability initialize]_block_invoke")]
+pub fn stub_ed66d4() -> ! {
+    todo!("0xed66d4 ___28+[TFReachability initialize]_block_invoke")
+}
+
+// 0xed6814 — +[TFReachability reachabilityWithHostName:]
+// type: TFReachability *__cdecl(id, SEL, id)
+#[doc(alias = "+[TFReachability reachabilityWithHostName:]")]
+pub fn stub_ed6814() -> ! {
+    todo!("0xed6814 +[TFReachability reachabilityWithHostName:]")
+}
+
+// 0xed689c — +[TFReachability reachabilityWithAddress:localWifiRef:]
+// type: TFReachability *__cdecl(id, SEL, const sockaddr_in *, char)
+#[doc(alias = "+[TFReachability reachabilityWithAddress:localWifiRef:]")]
+pub fn stub_ed689c() -> ! {
+    todo!("0xed689c +[TFReachability reachabilityWithAddress:localWifiRef:]")
+}
+
+// 0xed68fc — +[TFReachability reachabilityForInternetConnection]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFReachability reachabilityForInternetConnection]")]
+pub fn stub_ed68fc() -> ! {
+    todo!("0xed68fc +[TFReachability reachabilityForInternetConnection]")
+}
+
+// 0xed694c — +[TFReachability reachabilityForLocalWiFi]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFReachability reachabilityForLocalWiFi]")]
+pub fn stub_ed694c() -> ! {
+    todo!("0xed694c +[TFReachability reachabilityForLocalWiFi]")
+}
+
+// 0xed69a4 — -[TFReachability initWithNetworkReachabilityRef:localWifiRef:]
+// type: TFReachability *__cdecl(TFReachability *self, SEL, __SCNetworkReachability *, char)
+#[doc(alias = "-[TFReachability initWithNetworkReachabilityRef:localWifiRef:]")]
+pub fn stub_ed69a4() -> ! {
+    todo!("0xed69a4 -[TFReachability initWithNetworkReachabilityRef:localWifiRef:]")
+}
+
+// 0xed6a24 — -[TFReachability dealloc]
+// type: void __cdecl(TFReachability *self, SEL)
+#[doc(alias = "-[TFReachability dealloc]")]
+pub fn stub_ed6a24() -> ! {
+    todo!("0xed6a24 -[TFReachability dealloc]")
+}
+
+// 0xed6a80 — -[TFReachability setReachabilityStatusUpdateBlock:]
+// type: void __cdecl(TFReachability *self, SEL, id)
+#[doc(alias = "-[TFReachability setReachabilityStatusUpdateBlock:]")]
+pub fn stub_ed6a80() -> ! {
+    todo!("0xed6a80 -[TFReachability setReachabilityStatusUpdateBlock:]")
+}
+
+// 0xed6bac — -[TFReachability status]
+// type: int __cdecl(TFReachability *self, SEL)
+#[doc(alias = "-[TFReachability status]")]
+pub fn stub_ed6bac() -> ! {
+    todo!("0xed6bac -[TFReachability status]")
+}
+
+// 0xed6bf0 — -[TFReachability statusForFlags:]
+// type: int __cdecl(TFReachability *self, SEL, unsigned int)
+#[doc(alias = "-[TFReachability statusForFlags:]")]
+pub fn stub_ed6bf0() -> ! {
+    todo!("0xed6bf0 -[TFReachability statusForFlags:]")
+}
+
+// 0xed6c3c — -[TFReachability reachabilityStatusUpdateBlock]
+// type: id __cdecl(TFReachability *self, SEL)
+#[doc(alias = "-[TFReachability reachabilityStatusUpdateBlock]")]
+pub fn stub_ed6c3c() -> ! {
+    todo!("0xed6c3c -[TFReachability reachabilityStatusUpdateBlock]")
+}
+
+// 0xed6c54 — -[TFReachability .cxx_destruct]
+// type: void __cdecl(TFReachability *self, SEL)
+#[doc(alias = "-[TFReachability .cxx_destruct]")]
+pub fn stub_ed6c54() -> ! {
+    todo!("0xed6c54 -[TFReachability .cxx_destruct]")
+}
+
+// 0xed6c70 — +[TFURLConnectionOperation _runNetworkThread:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[TFURLConnectionOperation _runNetworkThread:]")]
+pub fn stub_ed6c70() -> ! {
+    todo!("0xed6c70 +[TFURLConnectionOperation _runNetworkThread:]")
+}
+
+// 0xed6d50 — +[TFURLConnectionOperation initialize]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[TFURLConnectionOperation initialize]")]
+pub fn stub_ed6d50() -> ! {
+    todo!("0xed6d50 +[TFURLConnectionOperation initialize]")
+}
+
+// 0xed6db4 — ___38+[TFURLConnectionOperation initialize]_block_invoke
+#[doc(alias = "___38+[TFURLConnectionOperation initialize]_block_invoke")]
+pub fn stub_ed6db4() -> ! {
+    todo!("0xed6db4 ___38+[TFURLConnectionOperation initialize]_block_invoke")
+}
+
+// 0xed6e48 — +[TFURLConnectionOperation _networkThread]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFURLConnectionOperation _networkThread]")]
+pub fn stub_ed6e48() -> ! {
+    todo!("0xed6e48 +[TFURLConnectionOperation _networkThread]")
+}
+
+// 0xed6e60 — +[TFURLConnectionOperation automaticallyNotifiesObserversForKey:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[TFURLConnectionOperation automaticallyNotifiesObserversForKey:]")]
+pub fn stub_ed6e60() -> ! {
+    todo!("0xed6e60 +[TFURLConnectionOperation automaticallyNotifiesObserversForKey:]")
+}
+
+// 0xed6f34 — -[TFURLConnectionOperation initWithRequest:completionHandler:]
+// type: TFURLConnectionOperation *__cdecl(TFURLConnectionOperation *self, SEL, id, id)
+#[doc(alias = "-[TFURLConnectionOperation initWithRequest:completionHandler:]")]
+pub fn stub_ed6f34() -> ! {
+    todo!("0xed6f34 -[TFURLConnectionOperation initWithRequest:completionHandler:]")
+}
+
+// 0xed6f78 — -[TFURLConnectionOperation initWithRequest:streamPath:completionHandler:]
+// type: TFURLConnectionOperation *__cdecl(TFURLConnectionOperation *self, SEL, id, id, id)
+#[doc(alias = "-[TFURLConnectionOperation initWithRequest:streamPath:completionHandler:]")]
+pub fn stub_ed6f78() -> ! {
+    todo!("0xed6f78 -[TFURLConnectionOperation initWithRequest:streamPath:completionHandler:]")
+}
+
+// 0xed70f4 — -[TFURLConnectionOperation _createConnection]
+// type: id __cdecl(TFURLConnectionOperation *self, SEL)
+#[doc(alias = "-[TFURLConnectionOperation _createConnection]")]
+pub fn stub_ed70f4() -> ! {
+    todo!("0xed70f4 -[TFURLConnectionOperation _createConnection]")
+}
+
+// 0xed7144 — -[TFURLConnectionOperation start]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL)
+#[doc(alias = "-[TFURLConnectionOperation start]")]
+pub fn stub_ed7144() -> ! {
+    todo!("0xed7144 -[TFURLConnectionOperation start]")
+}
+
+// 0xed7184 — -[TFURLConnectionOperation cancel]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL)
+#[doc(alias = "-[TFURLConnectionOperation cancel]")]
+pub fn stub_ed7184() -> ! {
+    todo!("0xed7184 -[TFURLConnectionOperation cancel]")
+}
+
+// 0xed71c4 — -[TFURLConnectionOperation isConcurrent]
+// type: char __cdecl(TFURLConnectionOperation *self, SEL)
+#[doc(alias = "-[TFURLConnectionOperation isConcurrent]")]
+pub fn stub_ed71c4() -> ! {
+    todo!("0xed71c4 -[TFURLConnectionOperation isConcurrent]")
+}
+
+// 0xed71c8 — -[TFURLConnectionOperation _start]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL)
+#[doc(alias = "-[TFURLConnectionOperation _start]")]
+pub fn stub_ed71c8() -> ! {
+    todo!("0xed71c8 -[TFURLConnectionOperation _start]")
+}
+
+// 0xed7478 — ___34-[TFURLConnectionOperation _start]_block_invoke
+#[doc(alias = "___34-[TFURLConnectionOperation _start]_block_invoke")]
+pub fn stub_ed7478() -> ! {
+    todo!("0xed7478 ___34-[TFURLConnectionOperation _start]_block_invoke")
+}
+
+// 0xed74e4 — -[TFURLConnectionOperation _cancel]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL)
+#[doc(alias = "-[TFURLConnectionOperation _cancel]")]
+pub fn stub_ed74e4() -> ! {
+    todo!("0xed74e4 -[TFURLConnectionOperation _cancel]")
+}
+
+// 0xed75f4 — -[TFURLConnectionOperation _timeout]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL)
+#[doc(alias = "-[TFURLConnectionOperation _timeout]")]
+pub fn stub_ed75f4() -> ! {
+    todo!("0xed75f4 -[TFURLConnectionOperation _timeout]")
+}
+
+// 0xed7694 — -[TFURLConnectionOperation _finishWithData:response:error:]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL, id, id, id)
+#[doc(alias = "-[TFURLConnectionOperation _finishWithData:response:error:]")]
+pub fn stub_ed7694() -> ! {
+    todo!("0xed7694 -[TFURLConnectionOperation _finishWithData:response:error:]")
+}
+
+// 0xed7834 — ___59-[TFURLConnectionOperation _finishWithData:response:error:]_block_invoke
+#[doc(alias = "___59-[TFURLConnectionOperation _finishWithData:response:error:]_block_invoke")]
+pub fn stub_ed7834() -> ! {
+    todo!("0xed7834 ___59-[TFURLConnectionOperation _finishWithData:response:error:]_block_invoke")
+}
+
+// 0xed78a0 — -[TFURLConnectionOperation connection:needNewBodyStream:]
+// type: id __cdecl(TFURLConnectionOperation *self, SEL, id, id)
+#[doc(alias = "-[TFURLConnectionOperation connection:needNewBodyStream:]")]
+pub fn stub_ed78a0() -> ! {
+    todo!("0xed78a0 -[TFURLConnectionOperation connection:needNewBodyStream:]")
+}
+
+// 0xed78e0 — -[TFURLConnectionOperation connection:didReceiveResponse:]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL, id, id)
+#[doc(alias = "-[TFURLConnectionOperation connection:didReceiveResponse:]")]
+pub fn stub_ed78e0() -> ! {
+    todo!("0xed78e0 -[TFURLConnectionOperation connection:didReceiveResponse:]")
+}
+
+// 0xed7924 — -[TFURLConnectionOperation connection:didReceiveData:]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL, id, id)
+#[doc(alias = "-[TFURLConnectionOperation connection:didReceiveData:]")]
+pub fn stub_ed7924() -> ! {
+    todo!("0xed7924 -[TFURLConnectionOperation connection:didReceiveData:]")
+}
+
+// 0xed794c — -[TFURLConnectionOperation connectionDidFinishLoading:]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL, id)
+#[doc(alias = "-[TFURLConnectionOperation connectionDidFinishLoading:]")]
+pub fn stub_ed794c() -> ! {
+    todo!("0xed794c -[TFURLConnectionOperation connectionDidFinishLoading:]")
+}
+
+// 0xed7990 — -[TFURLConnectionOperation connection:didFailWithError:]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL, id, id)
+#[doc(alias = "-[TFURLConnectionOperation connection:didFailWithError:]")]
+pub fn stub_ed7990() -> ! {
+    todo!("0xed7990 -[TFURLConnectionOperation connection:didFailWithError:]")
+}
+
+// 0xed79b0 — -[TFURLConnectionOperation isExecuting]
+// type: char __cdecl(TFURLConnectionOperation *self, SEL)
+#[doc(alias = "-[TFURLConnectionOperation isExecuting]")]
+pub fn stub_ed79b0() -> ! {
+    todo!("0xed79b0 -[TFURLConnectionOperation isExecuting]")
+}
+
+// 0xed79c8 — -[TFURLConnectionOperation setIsExecuting:]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL, char)
+#[doc(alias = "-[TFURLConnectionOperation setIsExecuting:]")]
+pub fn stub_ed79c8() -> ! {
+    todo!("0xed79c8 -[TFURLConnectionOperation setIsExecuting:]")
+}
+
+// 0xed79e0 — -[TFURLConnectionOperation isFinished]
+// type: char __cdecl(TFURLConnectionOperation *self, SEL)
+#[doc(alias = "-[TFURLConnectionOperation isFinished]")]
+pub fn stub_ed79e0() -> ! {
+    todo!("0xed79e0 -[TFURLConnectionOperation isFinished]")
+}
+
+// 0xed79f8 — -[TFURLConnectionOperation setIsFinished:]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL, char)
+#[doc(alias = "-[TFURLConnectionOperation setIsFinished:]")]
+pub fn stub_ed79f8() -> ! {
+    todo!("0xed79f8 -[TFURLConnectionOperation setIsFinished:]")
+}
+
+// 0xed7a10 — -[TFURLConnectionOperation .cxx_destruct]
+// type: void __cdecl(TFURLConnectionOperation *self, SEL)
+#[doc(alias = "-[TFURLConnectionOperation .cxx_destruct]")]
+pub fn stub_ed7a10() -> ! {
+    todo!("0xed7a10 -[TFURLConnectionOperation .cxx_destruct]")
+}
+
+// 0xed7aa4 — +[TFSDKUpgradeManager sharedSDKUpgradeManager]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TFSDKUpgradeManager sharedSDKUpgradeManager]")]
+pub fn stub_ed7aa4() -> ! {
+    todo!("0xed7aa4 +[TFSDKUpgradeManager sharedSDKUpgradeManager]")
+}
+
+// 0xed7ad4 — ___46+[TFSDKUpgradeManager sharedSDKUpgradeManager]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___46+[TFSDKUpgradeManager sharedSDKUpgradeManager]_block_invoke")]
+pub fn stub_ed7ad4() -> ! {
+    todo!("0xed7ad4 ___46+[TFSDKUpgradeManager sharedSDKUpgradeManager]_block_invoke")
+}
+
+// 0xed7b1c — -[TFSDKUpgradeManager upgradeSDKIfNecessary]
+// type: void __cdecl(TFSDKUpgradeManager *self, SEL)
+#[doc(alias = "-[TFSDKUpgradeManager upgradeSDKIfNecessary]")]
+pub fn stub_ed7b1c() -> ! {
+    todo!("0xed7b1c -[TFSDKUpgradeManager upgradeSDKIfNecessary]")
+}
+
+// 0xed7c7c — -[TFSDKUpgradeManager _upgradePaths]
+// type: id __cdecl(TFSDKUpgradeManager *self, SEL)
+#[doc(alias = "-[TFSDKUpgradeManager _upgradePaths]")]
+pub fn stub_ed7c7c() -> ! {
+    todo!("0xed7c7c -[TFSDKUpgradeManager _upgradePaths]")
+}
+
+// 0xed7d50 — ___36-[TFSDKUpgradeManager _upgradePaths]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___36-[TFSDKUpgradeManager _upgradePaths]_block_invoke")]
+pub fn stub_ed7d50() -> ! {
+    todo!("0xed7d50 ___36-[TFSDKUpgradeManager _upgradePaths]_block_invoke")
+}
+
+// 0xed7dd4 — -[TFSDKUpgradeManager _getCurrentSDKUpgradeVersion]
+// type: int __cdecl(TFSDKUpgradeManager *self, SEL)
+#[doc(alias = "-[TFSDKUpgradeManager _getCurrentSDKUpgradeVersion]")]
+pub fn stub_ed7dd4() -> ! {
+    todo!("0xed7dd4 -[TFSDKUpgradeManager _getCurrentSDKUpgradeVersion]")
+}
+
+// 0xed7ef4 — -[TFSDKUpgradeManager _setCurrentSDKUpgradeVersion:]
+// type: void __cdecl(TFSDKUpgradeManager *self, SEL, int)
+#[doc(alias = "-[TFSDKUpgradeManager _setCurrentSDKUpgradeVersion:]")]
+pub fn stub_ed7ef4() -> ! {
+    todo!("0xed7ef4 -[TFSDKUpgradeManager _setCurrentSDKUpgradeVersion:]")
+}
+
+// 0xed7ff8 — -[TFTimer init]
+// type: TFTimer *__cdecl(TFTimer *self, SEL)
+#[doc(alias = "-[TFTimer init]")]
+pub fn stub_ed7ff8() -> ! {
+    todo!("0xed7ff8 -[TFTimer init]")
+}
+
+// 0xed8004 — -[TFTimer initWithInterval:dispatchQueue:block:]
+// type: TFTimer *__cdecl(TFTimer *self, SEL, double, dispatch_queue_s *, id)
+#[doc(alias = "-[TFTimer initWithInterval:dispatchQueue:block:]")]
+pub fn stub_ed8004() -> ! {
+    todo!("0xed8004 -[TFTimer initWithInterval:dispatchQueue:block:]")
+}
+
+// 0xed8144 — ___48-[TFTimer initWithInterval:dispatchQueue:block:]_block_invoke
+#[doc(alias = "___48-[TFTimer initWithInterval:dispatchQueue:block:]_block_invoke")]
+pub fn stub_ed8144() -> ! {
+    todo!("0xed8144 ___48-[TFTimer initWithInterval:dispatchQueue:block:]_block_invoke")
+}
+
+// 0xed815c — -[TFTimer dealloc]
+// type: void __cdecl(TFTimer *self, SEL)
+#[doc(alias = "-[TFTimer dealloc]")]
+pub fn stub_ed815c() -> ! {
+    todo!("0xed815c -[TFTimer dealloc]")
+}
+
+// 0xed819c — -[TFTimer setInterval:]
+// type: void __cdecl(TFTimer *self, SEL, double)
+#[doc(alias = "-[TFTimer setInterval:]")]
+pub fn stub_ed819c() -> ! {
+    todo!("0xed819c -[TFTimer setInterval:]")
+}
+
+// 0xed81c8 — -[TFTimer restart]
+// type: void __cdecl(TFTimer *self, SEL)
+#[doc(alias = "-[TFTimer restart]")]
+pub fn stub_ed81c8() -> ! {
+    todo!("0xed81c8 -[TFTimer restart]")
+}
+
+// 0xed8260 — -[TFTimer fire]
+// type: void __cdecl(TFTimer *self, SEL)
+#[doc(alias = "-[TFTimer fire]")]
+pub fn stub_ed8260() -> ! {
+    todo!("0xed8260 -[TFTimer fire]")
+}
+
+// 0xed828c — -[TFTimer invalidate]
+// type: void __cdecl(TFTimer *self, SEL)
+#[doc(alias = "-[TFTimer invalidate]")]
+pub fn stub_ed828c() -> ! {
+    todo!("0xed828c -[TFTimer invalidate]")
+}
+
+// 0xed82d8 — -[TFTimer isValid]
+// type: char __cdecl(TFTimer *self, SEL)
+#[doc(alias = "-[TFTimer isValid]")]
+pub fn stub_ed82d8() -> ! {
+    todo!("0xed82d8 -[TFTimer isValid]")
+}
+
+// 0xed82e8 — -[TFTimer block]
+// type: id __cdecl(TFTimer *self, SEL)
+#[doc(alias = "-[TFTimer block]")]
+pub fn stub_ed82e8() -> ! {
+    todo!("0xed82e8 -[TFTimer block]")
+}
+
+// 0xed8300 — -[TFTimer setBlock:]
+// type: void __cdecl(TFTimer *self, SEL, id)
+#[doc(alias = "-[TFTimer setBlock:]")]
+pub fn stub_ed8300() -> ! {
+    todo!("0xed8300 -[TFTimer setBlock:]")
+}
+
+// 0xed8324 — -[TFTimer interval]
+// type: double __cdecl(TFTimer *self, SEL)
+#[doc(alias = "-[TFTimer interval]")]
+pub fn stub_ed8324() -> ! {
+    todo!("0xed8324 -[TFTimer interval]")
+}
+
+// 0xed833c — -[TFTimer .cxx_destruct]
+// type: void __cdecl(TFTimer *self, SEL)
+#[doc(alias = "-[TFTimer .cxx_destruct]")]
+pub fn stub_ed833c() -> ! {
+    todo!("0xed833c -[TFTimer .cxx_destruct]")
+}
+
+// 0xed8358 — +[TF_OpenUDID _setDict:forPasteboard:]
+// type: void __cdecl(id, SEL, id, id)
+#[doc(alias = "+[TF_OpenUDID _setDict:forPasteboard:]")]
+pub fn stub_ed8358() -> ! {
+    todo!("0xed8358 +[TF_OpenUDID _setDict:forPasteboard:]")
+}
+
+// 0xed839c — +[TF_OpenUDID _getDictFromPasteboard:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[TF_OpenUDID _getDictFromPasteboard:]")]
+pub fn stub_ed839c() -> ! {
+    todo!("0xed839c +[TF_OpenUDID _getDictFromPasteboard:]")
+}
+
+// 0xed84fc — +[TF_OpenUDID _generateFreshOpenUDID]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TF_OpenUDID _generateFreshOpenUDID]")]
+pub fn stub_ed84fc() -> ! {
+    todo!("0xed84fc +[TF_OpenUDID _generateFreshOpenUDID]")
+}
+
+// 0xed8618 — +[TF_OpenUDID value]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[TF_OpenUDID value]")]
+pub fn stub_ed8618() -> ! {
+    todo!("0xed8618 +[TF_OpenUDID value]")
+}
+
+// 0xed863c — +[TF_OpenUDID valueWithError:]
+// type: id __cdecl(id, SEL, id *)
+#[doc(alias = "+[TF_OpenUDID valueWithError:]")]
+pub fn stub_ed863c() -> ! {
+    todo!("0xed863c +[TF_OpenUDID valueWithError:]")
+}
+
+// 0xed8d20 — +[TF_OpenUDID setOptOut:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[TF_OpenUDID setOptOut:]")]
+pub fn stub_ed8d20() -> ! {
+    todo!("0xed8d20 +[TF_OpenUDID setOptOut:]")
+}
+
+// 0xed8e74 — +[TFAppUpdater promptIfUpdateExists:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[TFAppUpdater promptIfUpdateExists:]")]
+pub fn stub_ed8e74() -> ! {
+    todo!("0xed8e74 +[TFAppUpdater promptIfUpdateExists:]")
+}
+
+// 0xed8eec — ___37+[TFAppUpdater promptIfUpdateExists:]_block_invoke
+#[doc(alias = "___37+[TFAppUpdater promptIfUpdateExists:]_block_invoke")]
+pub fn stub_ed8eec() -> ! {
+    todo!("0xed8eec ___37+[TFAppUpdater promptIfUpdateExists:]_block_invoke")
+}
+
+// 0xed8f44 — +[TFAppUpdater setInAppUpdatesDisabled:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[TFAppUpdater setInAppUpdatesDisabled:]")]
+pub fn stub_ed8f44() -> ! {
+    todo!("0xed8f44 +[TFAppUpdater setInAppUpdatesDisabled:]")
+}
+
+// 0xed8f9c — ___40+[TFAppUpdater setInAppUpdatesDisabled:]_block_invoke
+#[doc(alias = "___40+[TFAppUpdater setInAppUpdatesDisabled:]_block_invoke")]
+pub fn stub_ed8f9c() -> ! {
+    todo!("0xed8f9c ___40+[TFAppUpdater setInAppUpdatesDisabled:]_block_invoke")
+}
+
+// 0xed8fc0 — +[TFAppUpdater _setInAppUpdatesDisabledInternal:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[TFAppUpdater _setInAppUpdatesDisabledInternal:]")]
+pub fn stub_ed8fc0() -> ! {
+    todo!("0xed8fc0 +[TFAppUpdater _setInAppUpdatesDisabledInternal:]")
+}
+
+// 0xed8fd0 — +[TFAppUpdater isUpdating]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[TFAppUpdater isUpdating]")]
+pub fn stub_ed8fd0() -> ! {
+    todo!("0xed8fd0 +[TFAppUpdater isUpdating]")
+}
+
+// 0xed8fe0 — +[TFAppUpdater setIsUpdating:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[TFAppUpdater setIsUpdating:]")]
+pub fn stub_ed8fe0() -> ! {
+    todo!("0xed8fe0 +[TFAppUpdater setIsUpdating:]")
+}
+
+// 0xed9034 — ___30+[TFAppUpdater setIsUpdating:]_block_invoke
+#[doc(alias = "___30+[TFAppUpdater setIsUpdating:]_block_invoke")]
+pub fn stub_ed9034() -> ! {
+    todo!("0xed9034 ___30+[TFAppUpdater setIsUpdating:]_block_invoke")
+}
+
+// 0xed9044 — +[TFAppUpdater shouldSkipVersion:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[TFAppUpdater shouldSkipVersion:]")]
+pub fn stub_ed9044() -> ! {
+    todo!("0xed9044 +[TFAppUpdater shouldSkipVersion:]")
+}
+
+// 0xed90d4 — +[TFAppUpdater skipVersion:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[TFAppUpdater skipVersion:]")]
+pub fn stub_ed90d4() -> ! {
+    todo!("0xed90d4 +[TFAppUpdater skipVersion:]")
+}
+
+// 0xed9150 — +[TFAppUpdater updateAlert:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[TFAppUpdater updateAlert:]")]
+pub fn stub_ed9150() -> ! {
+    todo!("0xed9150 +[TFAppUpdater updateAlert:]")
+}
+
+// 0xed977c — -[__TFAppUpdater_Helper init]
+// type: __TFAppUpdater_Helper *__cdecl(__TFAppUpdater_Helper *self, SEL)
+#[doc(alias = "-[__TFAppUpdater_Helper init]")]
+pub fn stub_ed977c() -> ! {
+    todo!("0xed977c -[__TFAppUpdater_Helper init]")
+}
+
+// 0xed9830 — -[__TFAppUpdater_Helper dealloc]
+// type: void __cdecl(__TFAppUpdater_Helper *self, SEL)
+#[doc(alias = "-[__TFAppUpdater_Helper dealloc]")]
+pub fn stub_ed9830() -> ! {
+    todo!("0xed9830 -[__TFAppUpdater_Helper dealloc]")
 }
