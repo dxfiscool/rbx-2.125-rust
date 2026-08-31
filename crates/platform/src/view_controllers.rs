@@ -1,6 +1,6 @@
 //! View controllers — GameViewController, AppDelegate, EAGL2View, UIViewController — mirrors Client/iOS/*
-//! Auto-generated from ida/export.json — filtered demangled contains RobloxView|GameViewController|AppDelegate|EAGL2|UIViewController
-//! 40 stubs | sorted by EA | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Auto-generated from ida/export.json — filtered demangled contains RobloxView|GameViewController|AppDelegate|EAGL2
+//! 100 stubs | sorted by EA | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -88,6 +88,13 @@ pub fn stub_19f34() -> ! {
 #[doc(alias = "-[AppDelegate applicationWillTerminate:]")]
 pub fn stub_19f7c() -> ! {
     todo!("0x19f7c -[AppDelegate applicationWillTerminate:]")
+}
+
+// 0x1a098 — __Z18_topMostControllerP16UIViewController
+// type: id __fastcall(id)
+#[doc(alias = "_topMostController(UIViewController *)")]
+pub fn stub_1a098() -> ! {
+    todo!("0x1a098 _topMostController(UIViewController *)")
 }
 
 // 0x1a174 — -[AppDelegate application:openURL:sourceApplication:annotation:]
@@ -230,6 +237,216 @@ pub fn stub_4db20() -> ! {
     todo!("0x4db20 -[GameViewController getControlView]")
 }
 
+// 0x4db9c — -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]
+// type: char __cdecl(GameViewController *self, SEL, id, id, int)
+#[doc(alias = "-[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")]
+pub fn stub_4db9c() -> ! {
+    todo!("0x4db9c -[GameViewController webView:shouldStartLoadWithRequest:navigationType:]")
+}
+
+// 0x4dbe8 — -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]
+// type: void __cdecl(GameViewController *self, SEL, DataModel *)
+#[doc(alias = "-[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")]
+pub fn stub_4dbe8() -> ! {
+    todo!("0x4dbe8 -[GameViewController signalGuiServiceUrlWindowClosedOnDataModel:]")
+}
+
+// 0x4dc08 — -[GameViewController closeUrlWindow:]
+// type: void __cdecl(GameViewController *self, SEL, id)
+#[doc(alias = "-[GameViewController closeUrlWindow:]")]
+pub fn stub_4dc08() -> ! {
+    todo!("0x4dc08 -[GameViewController closeUrlWindow:]")
+}
+
+// 0x4de58 — ___37-[GameViewController closeUrlWindow:]_block_invoke
+// type: id __fastcall(_DWORD *)
+#[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke")]
+pub fn stub_4de58() -> ! {
+    todo!("0x4de58 ___37-[GameViewController closeUrlWindow:]_block_invoke")
+}
+
+// 0x4df1c — ___37-[GameViewController closeUrlWindow:]_block_invoke_2
+// type: id __fastcall(int)
+#[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke_2")]
+pub fn stub_4df1c() -> ! {
+    todo!("0x4df1c ___37-[GameViewController closeUrlWindow:]_block_invoke_2")
+}
+
+// 0x4dfec — ___37-[GameViewController closeUrlWindow:]_block_invoke93
+// type: id __fastcall(int)
+#[doc(alias = "___37-[GameViewController closeUrlWindow:]_block_invoke93")]
+pub fn stub_4dfec() -> ! {
+    todo!("0x4dfec ___37-[GameViewController closeUrlWindow:]_block_invoke93")
+}
+
+// 0x4e070 — -[GameViewController closeUrlWindow]
+// type: void __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController closeUrlWindow]")]
+pub fn stub_4e070() -> ! {
+    todo!("0x4e070 -[GameViewController closeUrlWindow]")
+}
+
+// 0x4e084 — -[GameViewController openUrlWindow:]
+// type: void __cdecl(GameViewController *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
+#[doc(alias = "-[GameViewController openUrlWindow:]")]
+pub fn stub_4e084() -> ! {
+    todo!("0x4e084 -[GameViewController openUrlWindow:]")
+}
+
+// 0x4e2ac — ___36-[GameViewController openUrlWindow:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke")]
+pub fn stub_4e2ac() -> ! {
+    todo!("0x4e2ac ___36-[GameViewController openUrlWindow:]_block_invoke")
+}
+
+// 0x4e4dc — ___36-[GameViewController openUrlWindow:]_block_invoke136
+// type: id __fastcall(int)
+#[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke136")]
+pub fn stub_4e4dc() -> ! {
+    todo!("0x4e4dc ___36-[GameViewController openUrlWindow:]_block_invoke136")
+}
+
+// 0x4e5fc — ___36-[GameViewController openUrlWindow:]_block_invoke_2
+// type: id __fastcall(_DWORD *)
+#[doc(alias = "___36-[GameViewController openUrlWindow:]_block_invoke_2")]
+pub fn stub_4e5fc() -> ! {
+    todo!("0x4e5fc ___36-[GameViewController openUrlWindow:]_block_invoke_2")
+}
+
+// 0x4e730 — -[GameViewController handlePromptLoginSignal]
+// type: void __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController handlePromptLoginSignal]")]
+pub fn stub_4e730() -> ! {
+    todo!("0x4e730 -[GameViewController handlePromptLoginSignal]")
+}
+
+// 0x4e780 — ___45-[GameViewController handlePromptLoginSignal]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___45-[GameViewController handlePromptLoginSignal]_block_invoke")]
+pub fn stub_4e780() -> ! {
+    todo!("0x4e780 ___45-[GameViewController handlePromptLoginSignal]_block_invoke")
+}
+
+// 0x4e868 — -[GameViewController handlePromptSignupSignal]
+// type: void __cdecl(GameViewController *self, SEL)
+#[doc(alias = "-[GameViewController handlePromptSignupSignal]")]
+pub fn stub_4e868() -> ! {
+    todo!("0x4e868 -[GameViewController handlePromptSignupSignal]")
+}
+
+// 0x4e8b8 — ___46-[GameViewController handlePromptSignupSignal]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___46-[GameViewController handlePromptSignupSignal]_block_invoke")]
+pub fn stub_4e8b8() -> ! {
+    todo!("0x4e8b8 ___46-[GameViewController handlePromptSignupSignal]_block_invoke")
+}
+
+// 0x4e9a0 — -[GameViewController handleSignupNotification:]
+// type: void __cdecl(GameViewController *self, SEL, id)
+#[doc(alias = "-[GameViewController handleSignupNotification:]")]
+pub fn stub_4e9a0() -> ! {
+    todo!("0x4e9a0 -[GameViewController handleSignupNotification:]")
+}
+
+// 0x4ea30 — -[GameViewController handleLoginNotification:]
+// type: void __cdecl(GameViewController *self, SEL, id)
+#[doc(alias = "-[GameViewController handleLoginNotification:]")]
+pub fn stub_4ea30() -> ! {
+    todo!("0x4ea30 -[GameViewController handleLoginNotification:]")
+}
+
+// 0x4eac8 — ___46-[GameViewController handleLoginNotification:]_block_invoke
+// type: void __fastcall(id *)
+#[doc(alias = "___46-[GameViewController handleLoginNotification:]_block_invoke")]
+pub fn stub_4eac8() -> ! {
+    todo!("0x4eac8 ___46-[GameViewController handleLoginNotification:]_block_invoke")
+}
+
+// 0xe844ec — __ZN4Ogre12EAGL2SupportC1Ev
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::EAGL2Support(void)")]
+pub fn stub_e844ec() -> ! {
+    todo!("0xe844ec Ogre::EAGL2Support::EAGL2Support(void)")
+}
+
+// 0xe8455c — __ZN4Ogre12EAGL2SupportD0Ev
+// type: void __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::~EAGL2Support()")]
+pub fn stub_e8455c() -> ! {
+    todo!("0xe8455c Ogre::EAGL2Support::~EAGL2Support()")
+}
+
+// 0xe84570 — __ZN4Ogre12EAGL2SupportD1Ev
+// type: void __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::~EAGL2Support()")]
+pub fn stub_e84570() -> ! {
+    todo!("0xe84570 Ogre::EAGL2Support::~EAGL2Support()")
+}
+
+// 0xe8457c — __ZN4Ogre12EAGL2Support9addConfigEv
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::addConfig(void)")]
+pub fn stub_e8457c() -> ! {
+    todo!("0xe8457c Ogre::EAGL2Support::addConfig(void)")
+}
+
+// 0xe862b0 — __ZN4Ogre12EAGL2Support14validateConfigEv
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::validateConfig(void)")]
+pub fn stub_e862b0() -> ! {
+    todo!("0xe862b0 Ogre::EAGL2Support::validateConfig(void)")
+}
+
+// 0xe862c8 — __ZN4Ogre12EAGL2Support14getDisplayNameEv
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::getDisplayName(void)")]
+pub fn stub_e862c8() -> ! {
+    todo!("0xe862c8 Ogre::EAGL2Support::getDisplayName(void)")
+}
+
+// 0xe862e4 — __ZN4Ogre12EAGL2Support12createWindowEbPNS_17GLES2RenderSystemERKSs
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this, bool, Ogre::GLES2RenderSystem *, const std::string *)
+#[doc(alias = "Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)")]
+pub fn stub_e862e4() -> ! {
+    todo!("0xe862e4 Ogre::EAGL2Support::createWindow(bool,Ogre::GLES2RenderSystem *,std::string const&)")
+}
+
+// 0xe86aa0 — __ZN4Ogre12EAGL2Support9newWindowERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, Ogre::NedPoolingImpl *, int, int, int, int)
+#[doc(alias = "Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+pub fn stub_e86aa0() -> ! {
+    todo!("0xe86aa0 Ogre::EAGL2Support::newWindow(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xe86b80 — __ZNK4Ogre12EAGL2Support16createNewContextERPK14__CFDictionaryP11CAEAGLLayerP14EAGLSharegroup
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this, const __CFDictionary **, CAEAGLLayer *, EAGLSharegroup *)
+#[doc(alias = "Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const")]
+pub fn stub_e86b80() -> ! {
+    todo!("0xe86b80 Ogre::EAGL2Support::createNewContext(__CFDictionary const*&,CAEAGLLayer *,EAGLSharegroup *)const")
+}
+
+// 0xe86d80 — __ZN4Ogre12EAGL2Support14getProcAddressERKSs
+// type: void
+#[doc(alias = "Ogre::EAGL2Support::getProcAddress(std::string const&)")]
+pub fn stub_e86d80() -> ! {
+    todo!("0xe86d80 Ogre::EAGL2Support::getProcAddress(std::string const&)")
+}
+
+// 0xe86d84 — __ZN4Ogre12EAGL2Support5startEv
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::start(void)")]
+pub fn stub_e86d84() -> ! {
+    todo!("0xe86d84 Ogre::EAGL2Support::start(void)")
+}
+
+// 0xe86d88 — __ZN4Ogre12EAGL2Support4stopEv
+// type: _DWORD __fastcall(Ogre::EAGL2Support *__hidden this)
+#[doc(alias = "Ogre::EAGL2Support::stop(void)")]
+pub fn stub_e86d88() -> ! {
+    todo!("0xe86d88 Ogre::EAGL2Support::stop(void)")
+}
+
 // 0xe87e38 — -[EAGL2View description]
 // type: id __cdecl(EAGL2View *self, SEL)
 #[doc(alias = "-[EAGL2View description]")]
@@ -279,9 +496,212 @@ pub fn stub_e88140() -> ! {
     todo!("0xe88140 -[EAGL2View .cxx_construct]")
 }
 
-// 0x1a098 — __Z18_topMostControllerP16UIViewController
-// type: id __fastcall(id)
-#[doc(alias = "_topMostController(UIViewController *)")]
-pub fn stub_1a098() -> ! {
-    todo!("0x1a098 _topMostController(UIViewController *)")
+// 0xe88194 — -[EAGL2ViewController init]
+// type: EAGL2ViewController *__cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController init]")]
+pub fn stub_e88194() -> ! {
+    todo!("0xe88194 -[EAGL2ViewController init]")
+}
+
+// 0xe881c0 — -[EAGL2ViewController initWithNibName:bundle:]
+// type: EAGL2ViewController *__cdecl(EAGL2ViewController *self, SEL, id, id)
+#[doc(alias = "-[EAGL2ViewController initWithNibName:bundle:]")]
+pub fn stub_e881c0() -> ! {
+    todo!("0xe881c0 -[EAGL2ViewController initWithNibName:bundle:]")
+}
+
+// 0xe881f0 — -[EAGL2ViewController dealloc]
+// type: void __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController dealloc]")]
+pub fn stub_e881f0() -> ! {
+    todo!("0xe881f0 -[EAGL2ViewController dealloc]")
+}
+
+// 0xe8821c — -[EAGL2ViewController didReceiveMemoryWarning]
+// type: void __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController didReceiveMemoryWarning]")]
+pub fn stub_e8821c() -> ! {
+    todo!("0xe8821c -[EAGL2ViewController didReceiveMemoryWarning]")
+}
+
+// 0xe88248 — -[EAGL2ViewController loadView]
+// type: void __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController loadView]")]
+pub fn stub_e88248() -> ! {
+    todo!("0xe88248 -[EAGL2ViewController loadView]")
+}
+
+// 0xe88274 — -[EAGL2ViewController viewDidLoad]
+// type: void __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController viewDidLoad]")]
+pub fn stub_e88274() -> ! {
+    todo!("0xe88274 -[EAGL2ViewController viewDidLoad]")
+}
+
+// 0xe882a0 — -[EAGL2ViewController viewDidUnload]
+// type: void __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController viewDidUnload]")]
+pub fn stub_e882a0() -> ! {
+    todo!("0xe882a0 -[EAGL2ViewController viewDidUnload]")
+}
+
+// 0xe882cc — -[EAGL2ViewController shouldAutorotate]
+// type: char __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController shouldAutorotate]")]
+pub fn stub_e882cc() -> ! {
+    todo!("0xe882cc -[EAGL2ViewController shouldAutorotate]")
+}
+
+// 0xe88310 — -[EAGL2ViewController supportedInterfaceOrientations]
+// type: unsigned int __cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController supportedInterfaceOrientations]")]
+pub fn stub_e88310() -> ! {
+    todo!("0xe88310 -[EAGL2ViewController supportedInterfaceOrientations]")
+}
+
+// 0xe88314 — -[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]
+// type: char __cdecl(EAGL2ViewController *self, SEL, int)
+#[doc(alias = "-[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]")]
+pub fn stub_e88314() -> ! {
+    todo!("0xe88314 -[EAGL2ViewController shouldAutorotateToInterfaceOrientation:]")
+}
+
+// 0xe88328 — -[EAGL2ViewController mGLSupport]
+// type: EAGL2Support *__cdecl(EAGL2ViewController *self, SEL)
+#[doc(alias = "-[EAGL2ViewController mGLSupport]")]
+pub fn stub_e88328() -> ! {
+    todo!("0xe88328 -[EAGL2ViewController mGLSupport]")
+}
+
+// 0xe8833c — -[EAGL2ViewController setMGLSupport:]
+// type: void __cdecl(EAGL2ViewController *self, SEL, EAGL2Support *)
+#[doc(alias = "-[EAGL2ViewController setMGLSupport:]")]
+pub fn stub_e8833c() -> ! {
+    todo!("0xe8833c -[EAGL2ViewController setMGLSupport:]")
+}
+
+// 0xe88388 — __ZN4Ogre11EAGL2WindowC1EPNS_12EAGL2SupportE
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, Ogre::EAGL2Support *)
+#[doc(alias = "Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)")]
+pub fn stub_e88388() -> ! {
+    todo!("0xe88388 Ogre::EAGL2Window::EAGL2Window(Ogre::EAGL2Support *)")
+}
+
+// 0xe884e4 — __ZN4Ogre11EAGL2WindowD0Ev
+// type: void __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::~EAGL2Window()")]
+pub fn stub_e884e4() -> ! {
+    todo!("0xe884e4 Ogre::EAGL2Window::~EAGL2Window()")
+}
+
+// 0xe885b8 — __ZN4Ogre11EAGL2WindowD1Ev
+// type: void __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::~EAGL2Window()")]
+pub fn stub_e885b8() -> ! {
+    todo!("0xe885b8 Ogre::EAGL2Window::~EAGL2Window()")
+}
+
+// 0xe88680 — __ZN4Ogre11EAGL2Window7destroyEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::destroy(void)")]
+pub fn stub_e88680() -> ! {
+    todo!("0xe88680 Ogre::EAGL2Window::destroy(void)")
+}
+
+// 0xe886f8 — __ZN4Ogre11EAGL2Window13setFullscreenEbjj
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool, unsigned int, unsigned int)
+#[doc(alias = "Ogre::EAGL2Window::setFullscreen(bool,unsigned int,unsigned int)")]
+pub fn stub_e886f8() -> ! {
+    todo!("0xe886f8 Ogre::EAGL2Window::setFullscreen(bool,unsigned int,unsigned int)")
+}
+
+// 0xe886fc — __ZN4Ogre11EAGL2Window10repositionEii
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, int, int)
+#[doc(alias = "Ogre::EAGL2Window::reposition(int,int)")]
+pub fn stub_e886fc() -> ! {
+    todo!("0xe886fc Ogre::EAGL2Window::reposition(int,int)")
+}
+
+// 0xe88700 — __ZN4Ogre11EAGL2Window6resizeEjj
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, unsigned int, unsigned int)
+#[doc(alias = "Ogre::EAGL2Window::resize(unsigned int,unsigned int)")]
+pub fn stub_e88700() -> ! {
+    todo!("0xe88700 Ogre::EAGL2Window::resize(unsigned int,unsigned int)")
+}
+
+// 0xe88800 — __ZN4Ogre11EAGL2Window20windowMovedOrResizedEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::windowMovedOrResized(void)")]
+pub fn stub_e88800() -> ! {
+    todo!("0xe88800 Ogre::EAGL2Window::windowMovedOrResized(void)")
+}
+
+// 0xe88894 — __ZN4Ogre11EAGL2Window12_beginUpdateEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::_beginUpdate(void)")]
+pub fn stub_e88894() -> ! {
+    todo!("0xe88894 Ogre::EAGL2Window::_beginUpdate(void)")
+}
+
+// 0xe888bc — __ZN4Ogre11EAGL2Window23initNativeCreatedWindowEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIKSsSsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+// type: void
+#[doc(alias = "Ogre::EAGL2Window::initNativeCreatedWindow(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+pub fn stub_e888bc() -> ! {
+    todo!("0xe888bc Ogre::EAGL2Window::initNativeCreatedWindow(std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xe89488 — __ZN4Ogre11EAGL2Window6createERKSsjjbPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+// type: void
+#[doc(alias = "Ogre::EAGL2Window::create(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+pub fn stub_e89488() -> ! {
+    todo!("0xe89488 Ogre::EAGL2Window::create(std::string const&,unsigned int,unsigned int,bool,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xe89c80 — __ZN4Ogre11EAGL2Window11swapBuffersEb
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool)
+#[doc(alias = "Ogre::EAGL2Window::swapBuffers(bool)")]
+pub fn stub_e89c80() -> ! {
+    todo!("0xe89c80 Ogre::EAGL2Window::swapBuffers(bool)")
+}
+
+// 0xe89f88 — __ZN4Ogre11EAGL2Window18getCustomAttributeERKSsPv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, const std::string *, void *)
+#[doc(alias = "Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)")]
+pub fn stub_e89f88() -> ! {
+    todo!("0xe89f88 Ogre::EAGL2Window::getCustomAttribute(std::string const&,void *)")
+}
+
+// 0xe8a038 — __ZN4Ogre11EAGL2Window20copyContentsToMemoryERKNS_8PixelBoxENS_12RenderTarget11FrameBufferE
+// type: void
+#[doc(alias = "Ogre::EAGL2Window::copyContentsToMemory(Ogre::PixelBox const&,Ogre::RenderTarget::FrameBuffer)")]
+pub fn stub_e8a038() -> ! {
+    todo!("0xe8a038 Ogre::EAGL2Window::copyContentsToMemory(Ogre::PixelBox const&,Ogre::RenderTarget::FrameBuffer)")
+}
+
+// 0xe8a554 — __ZNK4Ogre11EAGL2Window23requiresTextureFlippingEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::requiresTextureFlipping(void)const")]
+pub fn stub_e8a554() -> ! {
+    todo!("0xe8a554 Ogre::EAGL2Window::requiresTextureFlipping(void)const")
+}
+
+// 0xe8a568 — __ZNK4Ogre11EAGL2Window9isVisibleEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::isVisible(void)const")]
+pub fn stub_e8a568() -> ! {
+    todo!("0xe8a568 Ogre::EAGL2Window::isVisible(void)const")
+}
+
+// 0xe8a570 — __ZN4Ogre11EAGL2Window10setVisibleEb
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this, bool)
+#[doc(alias = "Ogre::EAGL2Window::setVisible(bool)")]
+pub fn stub_e8a570() -> ! {
+    todo!("0xe8a570 Ogre::EAGL2Window::setVisible(bool)")
+}
+
+// 0xe8a590 — __ZNK4Ogre11EAGL2Window8isClosedEv
+// type: _DWORD __fastcall(Ogre::EAGL2Window *__hidden this)
+#[doc(alias = "Ogre::EAGL2Window::isClosed(void)const")]
+pub fn stub_e8a590() -> ! {
+    todo!("0xe8a590 Ogre::EAGL2Window::isClosed(void)const")
 }
