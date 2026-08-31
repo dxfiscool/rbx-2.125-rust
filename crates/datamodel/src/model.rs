@@ -6,7 +6,7 @@
 
 use rbx_core::SharedPtr;
 
-// 60 stubs in this file | batch range 0x2e6070..0x395cac
+// 135 stubs in this file | batch range 0x2e6070..0x6d1334 (60 existing + 75 new slice C)
 
 // 0x2e6070 — __ZN3RBX10LuaDragger9mouseDownEN5boost10shared_ptrINS_12PartInstanceEEERKN3G3D7Vector3ESt6vectorINS1_8weak_ptrIS3_EESaISB_EE
 #[doc(alias = "RBX::LuaDragger::mouseDown(boost::shared_ptr<RBX::PartInstance>,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>)")]
@@ -426,5 +426,530 @@ pub fn stub_0x395c9c() -> ! {
 // was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
 pub fn stub_0x395cac() -> ! {
     todo!("0x395cac RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x6cc1a0 — __ZN3RBX9WorkspaceD2Ev
+#[doc(alias = "RBX::Workspace::~Workspace()")]
+// was: RBX::Workspace::~Workspace()
+pub fn stub_0x6cc1a0() -> ! {
+    todo!("0x6cc1a0 RBX::Workspace::~Workspace()")
+}
+
+// 0x6cc71c — __ZThn32_N3RBX9WorkspaceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
+// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+pub fn stub_0x6cc71c() -> ! {
+    todo!("0x6cc71c `non-virtual thunk to'RBX::Workspace::~Workspace()")
+}
+
+// 0x6cc72c — __ZThn36_N3RBX9WorkspaceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
+// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+pub fn stub_0x6cc72c() -> ! {
+    todo!("0x6cc72c `non-virtual thunk to'RBX::Workspace::~Workspace()")
+}
+
+// 0x6cc73c — __ZThn120_N3RBX9WorkspaceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
+// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+pub fn stub_0x6cc73c() -> ! {
+    todo!("0x6cc73c `non-virtual thunk to'RBX::Workspace::~Workspace()")
+}
+
+// 0x6cc74c — __ZThn280_N3RBX9WorkspaceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
+// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+pub fn stub_0x6cc74c() -> ! {
+    todo!("0x6cc74c `non-virtual thunk to'RBX::Workspace::~Workspace()")
+}
+
+// 0x6cc760 — __ZThn324_N3RBX9WorkspaceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
+// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+pub fn stub_0x6cc760() -> ! {
+    todo!("0x6cc760 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+}
+
+// 0x6cc774 — __ZThn356_N3RBX9WorkspaceD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
+// was: `non-virtual thunk to'RBX::Workspace::~Workspace()
+pub fn stub_0x6cc774() -> ! {
+    todo!("0x6cc774 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+}
+
+// 0x6cc788 — __ZN3RBX9Workspace23computeExtentsWorldFastEv
+#[doc(alias = "RBX::Workspace::computeExtentsWorldFast(void)")]
+// was: RBX::Workspace::computeExtentsWorldFast(void)
+pub fn stub_0x6cc788() -> ! {
+    todo!("0x6cc788 RBX::Workspace::computeExtentsWorldFast(void)")
+}
+
+// 0x6cc804 — __ZN3RBX9Workspace11onHeartbeatERKNS_9HeartbeatE
+#[doc(alias = "RBX::Workspace::onHeartbeat(RBX::Heartbeat const&)")]
+// was: RBX::Workspace::onHeartbeat(RBX::Heartbeat const&)
+pub fn stub_0x6cc804() -> ! {
+    todo!("0x6cc804 RBX::Workspace::onHeartbeat(RBX::Heartbeat const&)")
+}
+
+// 0x6ccaa8 — __ZN3RBX9Workspace15replenishCameraEv
+#[doc(alias = "RBX::Workspace::replenishCamera(void)")]
+// was: RBX::Workspace::replenishCamera(void)
+pub fn stub_0x6ccaa8() -> ! {
+    todo!("0x6ccaa8 RBX::Workspace::replenishCamera(void)")
+}
+
+// 0x6ccc18 — __ZNK3RBX9Workspace11askAddChildEPKNS_8InstanceE
+#[doc(alias = "RBX::Workspace::askAddChild(RBX::Instance const*)const")]
+// was: RBX::Workspace::askAddChild(RBX::Instance const*)const
+pub fn stub_0x6ccc18() -> ! {
+    todo!("0x6ccc18 RBX::Workspace::askAddChild(RBX::Instance const*)const")
+}
+
+// 0x6ccc50 — __ZN3RBX9Workspace20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::Workspace::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")]
+// was: RBX::Workspace::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)
+pub fn stub_0x6ccc50() -> ! {
+    todo!("0x6ccc50 RBX::Workspace::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")
+}
+
+// 0x6ccc98 — __ZN3RBX9Workspace17onDescendantAddedEPNS_8InstanceE
+#[doc(alias = "RBX::Workspace::onDescendantAdded(RBX::Instance *)")]
+// was: RBX::Workspace::onDescendantAdded(RBX::Instance *)
+pub fn stub_0x6ccc98() -> ! {
+    todo!("0x6ccc98 RBX::Workspace::onDescendantAdded(RBX::Instance *)")
+}
+
+// 0x6ccda0 — __ZN3RBX9Workspace14startDecalDragEPNS_5DecalE
+#[doc(alias = "RBX::Workspace::startDecalDrag(RBX::Decal *)")]
+// was: RBX::Workspace::startDecalDrag(RBX::Decal *)
+pub fn stub_0x6ccda0() -> ! {
+    todo!("0x6ccda0 RBX::Workspace::startDecalDrag(RBX::Decal *)")
+}
+
+// 0x6ccf30 — __ZN3RBX9Workspace15setMouseCommandEN5boost10shared_ptrINS_12MouseCommandEEE
+#[doc(alias = "RBX::Workspace::setMouseCommand(boost::shared_ptr<RBX::MouseCommand>)")]
+// was: RBX::Workspace::setMouseCommand(boost::shared_ptr<RBX::MouseCommand>)
+pub fn stub_0x6ccf30() -> ! {
+    todo!("0x6ccf30 RBX::Workspace::setMouseCommand(boost::shared_ptr<RBX::MouseCommand>)")
+}
+
+// 0x6cd45c — __ZN3RBX9Workspace9getCameraEv
+#[doc(alias = "RBX::Workspace::getCamera(void)")]
+// was: RBX::Workspace::getCamera(void)
+pub fn stub_0x6cd45c() -> ! {
+    todo!("0x6cd45c RBX::Workspace::getCamera(void)")
+}
+
+// 0x6cd464 — __ZThn280_N3RBX9Workspace9getCameraEv
+#[doc(alias = "non-virtual thunk toRBX::Workspace::getCamera(void)")]
+// was: `non-virtual thunk to'RBX::Workspace::getCamera(void)
+pub fn stub_0x6cd464() -> ! {
+    todo!("0x6cd464 `non-virtual thunk to'RBX::Workspace::getCamera(void)")
+}
+
+// 0x6cd478 — __ZNK3RBX9Workspace14getConstCameraEv
+#[doc(alias = "RBX::Workspace::getConstCamera(void)const")]
+// was: RBX::Workspace::getConstCamera(void)const
+pub fn stub_0x6cd478() -> ! {
+    todo!("0x6cd478 RBX::Workspace::getConstCamera(void)const")
+}
+
+// 0x6cd488 — __ZThn280_NK3RBX9Workspace14getConstCameraEv
+#[doc(alias = "non-virtual thunk toRBX::Workspace::getConstCamera(void)const")]
+// was: `non-virtual thunk to'RBX::Workspace::getConstCamera(void)const
+pub fn stub_0x6cd488() -> ! {
+    todo!("0x6cd488 `non-virtual thunk to'RBX::Workspace::getConstCamera(void)const")
+}
+
+// 0x6cd540 — __ZN3RBX9Workspace10setTerrainEPNS_8InstanceE
+#[doc(alias = "RBX::Workspace::setTerrain(RBX::Instance *)")]
+// was: RBX::Workspace::setTerrain(RBX::Instance *)
+pub fn stub_0x6cd540() -> ! {
+    todo!("0x6cd540 RBX::Workspace::setTerrain(RBX::Instance *)")
+}
+
+// 0x6cd688 — __ZN3RBX9Workspace13createTerrainEv
+#[doc(alias = "RBX::Workspace::createTerrain(void)")]
+// was: RBX::Workspace::createTerrain(void)
+pub fn stub_0x6cd688() -> ! {
+    todo!("0x6cd688 RBX::Workspace::createTerrain(void)")
+}
+
+// 0x6cd86c — __ZN3RBX9Workspace12clearTerrainEv
+#[doc(alias = "RBX::Workspace::clearTerrain(void)")]
+// was: RBX::Workspace::clearTerrain(void)
+pub fn stub_0x6cd86c() -> ! {
+    todo!("0x6cd86c RBX::Workspace::clearTerrain(void)")
+}
+
+// 0x6cd8e0 — __ZN3RBX9Workspace27selectAllTopLevelRenderableEv
+#[doc(alias = "RBX::Workspace::selectAllTopLevelRenderable(void)")]
+// was: RBX::Workspace::selectAllTopLevelRenderable(void)
+pub fn stub_0x6cd8e0() -> ! {
+    todo!("0x6cd8e0 RBX::Workspace::selectAllTopLevelRenderable(void)")
+}
+
+// 0x6cda3c — __ZN3RBX9Workspace11insertItemsEP10XmlElementRSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS7_EENS_10InsertModeENS_10PromptModeEb
+#[doc(alias = "RBX::Workspace::insertItems(XmlElement *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> &,RBX::InsertMode,RBX::PromptMode,bool)")]
+// was: RBX::Workspace::insertItems(XmlElement *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> &,RBX::InsertMode,RBX::PromptMode,bool)
+pub fn stub_0x6cda3c() -> ! {
+    todo!("0x6cda3c RBX::Workspace::insertItems(XmlElement *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> &,RBX::InsertMode,RBX::PromptMode,bool)")
+}
+
+// 0x6cdae8 — __ZN3RBX9Workspace13insertContentENS_9ContentIdERSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS6_EENS_10InsertModeENS_10PromptModeE
+#[doc(alias = "RBX::Workspace::insertContent(RBX::ContentId,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> &,RBX::InsertMode,RBX::PromptMode)")]
+// was: RBX::Workspace::insertContent(RBX::ContentId,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> &,RBX::InsertMode,RBX::PromptMode)
+pub fn stub_0x6cdae8() -> ! {
+    todo!("0x6cdae8 RBX::Workspace::insertContent(RBX::ContentId,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> &,RBX::InsertMode,RBX::PromptMode)")
+}
+
+// 0x6cdd98 — __ZN3RBX9Workspace11joinAllHackEv
+#[doc(alias = "RBX::Workspace::joinAllHack(void)")]
+// was: RBX::Workspace::joinAllHack(void)
+pub fn stub_0x6cdd98() -> ! {
+    todo!("0x6cdd98 RBX::Workspace::joinAllHack(void)")
+}
+
+// 0x6cde50 — __ZN3RBX9Workspace5startEv
+#[doc(alias = "RBX::Workspace::start(void)")]
+// was: RBX::Workspace::start(void)
+pub fn stub_0x6cde50() -> ! {
+    todo!("0x6cde50 RBX::Workspace::start(void)")
+}
+
+// 0x6ce0b8 — __ZN3RBX9Workspace8assembleEv
+#[doc(alias = "RBX::Workspace::assemble(void)")]
+// was: RBX::Workspace::assemble(void)
+pub fn stub_0x6ce0b8() -> ! {
+    todo!("0x6ce0b8 RBX::Workspace::assemble(void)")
+}
+
+// 0x6ce128 — __ZN3RBX9Workspace4stopEv
+#[doc(alias = "RBX::Workspace::stop(void)")]
+// was: RBX::Workspace::stop(void)
+pub fn stub_0x6ce128() -> ! {
+    todo!("0x6ce128 RBX::Workspace::stop(void)")
+}
+
+// 0x6ce398 — __ZN3RBX9Workspace25updateDistributedGameTimeEv
+#[doc(alias = "RBX::Workspace::updateDistributedGameTime(void)")]
+// was: RBX::Workspace::updateDistributedGameTime(void)
+pub fn stub_0x6ce398() -> ! {
+    todo!("0x6ce398 RBX::Workspace::updateDistributedGameTime(void)")
+}
+
+// 0x6ce3e8 — __ZN3RBX9Workspace5resetEv
+#[doc(alias = "RBX::Workspace::reset(void)")]
+// was: RBX::Workspace::reset(void)
+pub fn stub_0x6ce3e8() -> ! {
+    todo!("0x6ce3e8 RBX::Workspace::reset(void)")
+}
+
+// 0x6ce400 — __ZN3RBX9Workspace12detachParentEPNS_8InstanceE
+#[doc(alias = "RBX::Workspace::detachParent(RBX::Instance *)")]
+// was: RBX::Workspace::detachParent(RBX::Instance *)
+pub fn stub_0x6ce400() -> ! {
+    todo!("0x6ce400 RBX::Workspace::detachParent(RBX::Instance *)")
+}
+
+// 0x6ce4d4 — __ZN3RBX9Workspace18clearEmptiedModelsERN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::Workspace::clearEmptiedModels(boost::shared_ptr<RBX::Instance> &)")]
+// was: RBX::Workspace::clearEmptiedModels(boost::shared_ptr<RBX::Instance> &)
+pub fn stub_0x6ce4d4() -> ! {
+    todo!("0x6ce4d4 RBX::Workspace::clearEmptiedModels(boost::shared_ptr<RBX::Instance> &)")
+}
+
+// 0x6ce5b8 — __ZN3RBX9Workspace17handleFallenPartsEv
+#[doc(alias = "RBX::Workspace::handleFallenParts(void)")]
+// was: RBX::Workspace::handleFallenParts(void)
+pub fn stub_0x6ce5b8() -> ! {
+    todo!("0x6ce5b8 RBX::Workspace::handleFallenParts(void)")
+}
+
+// 0x6ce8dc — __ZN3RBX9Workspace11physicsStepEbfi
+#[doc(alias = "RBX::Workspace::physicsStep(bool,float,int)")]
+// was: RBX::Workspace::physicsStep(bool,float,int)
+pub fn stub_0x6ce8dc() -> ! {
+    todo!("0x6ce8dc RBX::Workspace::physicsStep(bool,float,int)")
+}
+
+// 0x6ceda4 — __ZN3RBX9Workspace22setDefaultMouseCommandEv
+#[doc(alias = "RBX::Workspace::setDefaultMouseCommand(void)")]
+// was: RBX::Workspace::setDefaultMouseCommand(void)
+pub fn stub_0x6ceda4() -> ! {
+    todo!("0x6ceda4 RBX::Workspace::setDefaultMouseCommand(void)")
+}
+
+// 0x6cee80 — __ZN3RBX9Workspace19setNullMouseCommandEv
+#[doc(alias = "RBX::Workspace::setNullMouseCommand(void)")]
+// was: RBX::Workspace::setNullMouseCommand(void)
+pub fn stub_0x6cee80() -> ! {
+    todo!("0x6cee80 RBX::Workspace::setNullMouseCommand(void)")
+}
+
+// 0x6cefa4 — __ZN3RBX9Workspace8render2dEPNS_5AdornE
+#[doc(alias = "RBX::Workspace::render2d(RBX::Adorn *)")]
+// was: RBX::Workspace::render2d(RBX::Adorn *)
+pub fn stub_0x6cefa4() -> ! {
+    todo!("0x6cefa4 RBX::Workspace::render2d(RBX::Adorn *)")
+}
+
+// 0x6cefc8 — __ZThn96_N3RBX9Workspace8render2dEPNS_5AdornE
+#[doc(alias = "non-virtual thunk toRBX::Workspace::render2d(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::Workspace::render2d(RBX::Adorn *)
+pub fn stub_0x6cefc8() -> ! {
+    todo!("0x6cefc8 `non-virtual thunk to'RBX::Workspace::render2d(RBX::Adorn *)")
+}
+
+// 0x6ceff0 — __ZN3RBX9Workspace9getCursorEv
+#[doc(alias = "RBX::Workspace::getCursor(void)")]
+// was: RBX::Workspace::getCursor(void)
+pub fn stub_0x6ceff0() -> ! {
+    todo!("0x6ceff0 RBX::Workspace::getCursor(void)")
+}
+
+// 0x6cf11c — __ZN3RBX9Workspace13render3dAdornEPNS_5AdornE
+#[doc(alias = "RBX::Workspace::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::Workspace::render3dAdorn(RBX::Adorn *)
+pub fn stub_0x6cf11c() -> ! {
+    todo!("0x6cf11c RBX::Workspace::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x6cf3f4 — __ZN3RBXL9DrawAdornEN5boost10shared_ptrINS_8InstanceEEEPNS_5AdornENS_11SelectStateEPNS_9WorkspaceE
+#[doc(alias = "RBX::DrawAdorn(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *)")]
+// was: RBX::DrawAdorn(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *)
+pub fn stub_0x6cf3f4() -> ! {
+    todo!("0x6cf3f4 RBX::DrawAdorn(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *)")
+}
+
+// 0x6cf454 — __ZThn96_N3RBX9Workspace13render3dAdornEPNS_5AdornE
+#[doc(alias = "non-virtual thunk toRBX::Workspace::render3dAdorn(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::Workspace::render3dAdorn(RBX::Adorn *)
+pub fn stub_0x6cf454() -> ! {
+    todo!("0x6cf454 `non-virtual thunk to'RBX::Workspace::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x6cf45c — __ZN3RBX9Workspace19append3dSortedAdornERSt6vectorIPNS_10IAdornableESaIS3_EE
+#[doc(alias = "RBX::Workspace::append3dSortedAdorn(std::vector<RBX::IAdornable *,std::allocator<RBX::IAdornable *>> &)")]
+// was: RBX::Workspace::append3dSortedAdorn(std::vector<RBX::IAdornable *,std::allocator<RBX::IAdornable *>> &)
+pub fn stub_0x6cf45c() -> ! {
+    todo!("0x6cf45c RBX::Workspace::append3dSortedAdorn(std::vector<RBX::IAdornable *,std::allocator<RBX::IAdornable *>> &)")
+}
+
+// 0x6cf47c — __ZN3RBX9Workspace18hasModalGuiObjectsEv
+#[doc(alias = "RBX::Workspace::hasModalGuiObjects(void)")]
+// was: RBX::Workspace::hasModalGuiObjects(void)
+pub fn stub_0x6cf47c() -> ! {
+    todo!("0x6cf47c RBX::Workspace::hasModalGuiObjects(void)")
+}
+
+// 0x6cf570 — __ZN3RBX9Workspace24requestFirstPersonCameraEbbi
+#[doc(alias = "RBX::Workspace::requestFirstPersonCamera(bool,bool,int)")]
+// was: RBX::Workspace::requestFirstPersonCamera(bool,bool,int)
+pub fn stub_0x6cf570() -> ! {
+    todo!("0x6cf570 RBX::Workspace::requestFirstPersonCamera(bool,bool,int)")
+}
+
+// 0x6cf618 — __ZN3RBX9Workspace16setRightMousePanEv
+#[doc(alias = "RBX::Workspace::setRightMousePan(void)")]
+// was: RBX::Workspace::setRightMousePan(void)
+pub fn stub_0x6cf618() -> ! {
+    todo!("0x6cf618 RBX::Workspace::setRightMousePan(void)")
+}
+
+// 0x6cf648 — __ZN3RBX9Workspace19cancelRightMousePanEv
+#[doc(alias = "RBX::Workspace::cancelRightMousePan(void)")]
+// was: RBX::Workspace::cancelRightMousePan(void)
+pub fn stub_0x6cf648() -> ! {
+    todo!("0x6cf648 RBX::Workspace::cancelRightMousePan(void)")
+}
+
+// 0x6cf66c — __ZN3RBX9Workspace7processERKNS_8GuiEventE
+#[doc(alias = "RBX::Workspace::process(RBX::GuiEvent const&)")]
+// was: RBX::Workspace::process(RBX::GuiEvent const&)
+pub fn stub_0x6cf66c() -> ! {
+    todo!("0x6cf66c RBX::Workspace::process(RBX::GuiEvent const&)")
+}
+
+// 0x6cfe54 — __ZThn320_N3RBX9Workspace7processERKNS_8GuiEventE
+#[doc(alias = "non-virtual thunk toRBX::Workspace::process(RBX::GuiEvent const&)")]
+// was: `non-virtual thunk to'RBX::Workspace::process(RBX::GuiEvent const&)
+pub fn stub_0x6cfe54() -> ! {
+    todo!("0x6cfe54 `non-virtual thunk to'RBX::Workspace::process(RBX::GuiEvent const&)")
+}
+
+// 0x6cfe64 — __ZN3RBX9Workspace17onServiceProviderEPNS_15ServiceProviderES2_
+#[doc(alias = "RBX::Workspace::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+// was: RBX::Workspace::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)
+pub fn stub_0x6cfe64() -> ! {
+    todo!("0x6cfe64 RBX::Workspace::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+}
+
+// 0x6d0138 — __ZN3RBX9Workspace15scriptShouldRunEPNS_10BaseScriptE
+#[doc(alias = "RBX::Workspace::scriptShouldRun(RBX::BaseScript *)")]
+// was: RBX::Workspace::scriptShouldRun(RBX::BaseScript *)
+pub fn stub_0x6d0138() -> ! {
+    todo!("0x6d0138 RBX::Workspace::scriptShouldRun(RBX::BaseScript *)")
+}
+
+// 0x6d02e4 — __ZThn388_N3RBX9Workspace15scriptShouldRunEPNS_10BaseScriptE
+#[doc(alias = "non-virtual thunk toRBX::Workspace::scriptShouldRun(RBX::BaseScript *)")]
+// was: `non-virtual thunk to'RBX::Workspace::scriptShouldRun(RBX::BaseScript *)
+pub fn stub_0x6d02e4() -> ! {
+    todo!("0x6d02e4 `non-virtual thunk to'RBX::Workspace::scriptShouldRun(RBX::BaseScript *)")
+}
+
+// 0x6d0328 — __ZNK3RBX9Workspace22getDistributedGameTimeEv
+#[doc(alias = "RBX::Workspace::getDistributedGameTime(void)const")]
+// was: RBX::Workspace::getDistributedGameTime(void)const
+pub fn stub_0x6d0328() -> ! {
+    todo!("0x6d0328 RBX::Workspace::getDistributedGameTime(void)const")
+}
+
+// 0x6d0334 — __ZN3RBX10Reflection14PropDescriptorINS_9WorkspaceEdED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,double>::~PropDescriptor()")]
+// was: RBX::Reflection::PropDescriptor<RBX::Workspace,double>::~PropDescriptor()
+pub fn stub_0x6d0334() -> ! {
+    todo!("0x6d0334 RBX::Reflection::PropDescriptor<RBX::Workspace,double>::~PropDescriptor()")
+}
+
+// 0x6d0358 — __ZNK3RBX9Workspace26getNetworkStreamingEnabledEv
+#[doc(alias = "RBX::Workspace::getNetworkStreamingEnabled(void)const")]
+// was: RBX::Workspace::getNetworkStreamingEnabled(void)const
+pub fn stub_0x6d0358() -> ! {
+    todo!("0x6d0358 RBX::Workspace::getNetworkStreamingEnabled(void)const")
+}
+
+// 0x6d0360 — __ZN3RBX9Workspace26setNetworkStreamingEnabledEb
+#[doc(alias = "RBX::Workspace::setNetworkStreamingEnabled(bool)")]
+// was: RBX::Workspace::setNetworkStreamingEnabled(bool)
+pub fn stub_0x6d0360() -> ! {
+    todo!("0x6d0360 RBX::Workspace::setNetworkStreamingEnabled(bool)")
+}
+
+// 0x6d0368 — __ZN3RBX10Reflection14PropDescriptorINS_9WorkspaceEbED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::~PropDescriptor()")]
+// was: RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::~PropDescriptor()
+pub fn stub_0x6d0368() -> ! {
+    todo!("0x6d0368 RBX::Reflection::PropDescriptor<RBX::Workspace,bool>::~PropDescriptor()")
+}
+
+// 0x6d038c — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_9ContentIdEELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()
+pub fn stub_0x6d038c() -> ! {
+    todo!("0x6d038c RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")
+}
+
+// 0x6d03cc — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),1>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),1>::~BoundFuncDesc()
+pub fn stub_0x6d03cc() -> ! {
+    todo!("0x6d03cc RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),1>::~BoundFuncDesc()")
+}
+
+// 0x6d04c0 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_7Region3ES7_iELi3EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::Region3,boost::shared_ptr<RBX::Instance>,int),3>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::Region3,boost::shared_ptr<RBX::Instance>,int),3>::~BoundFuncDesc()
+pub fn stub_0x6d04c0() -> ! {
+    todo!("0x6d04c0 RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::Region3,boost::shared_ptr<RBX::Instance>,int),3>::~BoundFuncDesc()")
+}
+
+// 0x6d05d8 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFbNS_7Region3EN5boost10shared_ptrINS_8InstanceEEEELi2EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,bool ()(RBX::Region3,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,bool ()(RBX::Region3,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
+pub fn stub_0x6d05d8() -> ! {
+    todo!("0x6d05d8 RBX::Reflection::BoundFuncDesc<RBX::Workspace,bool ()(RBX::Region3,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
+}
+
+// 0x6d06e8 — __ZN3RBX9Workspace9getRayHitINS_8InstanceEEEN5boost10shared_ptrIKNS_10Reflection5TupleEEENS_6RbxRayENS4_IT_EEb
+#[doc(alias = "boost::shared_ptr<RBX::Reflection::Tuple const> RBX::Workspace::getRayHit<RBX::Instance>(RBX::RbxRay,boost::shared_ptr<RBX::Instance>,bool)")]
+// was: boost::shared_ptr<RBX::Reflection::Tuple const> RBX::Workspace::getRayHit<RBX::Instance>(RBX::RbxRay,boost::shared_ptr<RBX::Instance>,bool)
+pub fn stub_0x6d06e8() -> ! {
+    todo!("0x6d06e8 boost::shared_ptr<RBX::Reflection::Tuple const> RBX::Workspace::getRayHit<RBX::Instance>(RBX::RbxRay,boost::shared_ptr<RBX::Instance>,bool)")
+}
+
+// 0x6d0a5c — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKNS0_5TupleEEENS_6RbxRayENS4_INS_8InstanceEEEbELi3EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::RbxRay,boost::shared_ptr<RBX::Instance>,bool),3>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::RbxRay,boost::shared_ptr<RBX::Instance>,bool),3>::~BoundFuncDesc()
+pub fn stub_0x6d0a5c() -> ! {
+    todo!("0x6d0a5c RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::RbxRay,boost::shared_ptr<RBX::Instance>,bool),3>::~BoundFuncDesc()")
+}
+
+// 0x6d0b88 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_7Region3ESB_iELi3EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::Region3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,int),3>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::Region3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,int),3>::~BoundFuncDesc()
+pub fn stub_0x6d0b88() -> ! {
+    todo!("0x6d0b88 RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::Region3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,int),3>::~BoundFuncDesc()")
+}
+
+// 0x6d0ca0 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFbNS_7Region3EN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEELi2EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,bool ()(RBX::Region3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),2>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,bool ()(RBX::Region3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),2>::~BoundFuncDesc()
+pub fn stub_0x6d0ca0() -> ! {
+    todo!("0x6d0ca0 RBX::Reflection::BoundFuncDesc<RBX::Workspace,bool ()(RBX::Region3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),2>::~BoundFuncDesc()")
+}
+
+// 0x6d0db0 — __ZN3RBX9Workspace9getRayHitIKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS6_EEEENS4_IKNS_10Reflection5TupleEEENS_6RbxRayENS4_IT_EEb
+#[doc(alias = "boost::shared_ptr<RBX::Reflection::Tuple const> RBX::Workspace::getRayHit<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>(RBX::RbxRay,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,bool)")]
+// was: boost::shared_ptr<RBX::Reflection::Tuple const> RBX::Workspace::getRayHit<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>(RBX::RbxRay,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,bool)
+pub fn stub_0x6d0db0() -> ! {
+    todo!("0x6d0db0 boost::shared_ptr<RBX::Reflection::Tuple const> RBX::Workspace::getRayHit<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>(RBX::RbxRay,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,bool)")
+}
+
+// 0x6d1124 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFN5boost10shared_ptrIKNS0_5TupleEEENS_6RbxRayENS4_IKSt6vectorINS4_INS_8InstanceEEESaISB_EEEEbELi3EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::RbxRay,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,bool),3>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::RbxRay,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,bool),3>::~BoundFuncDesc()
+pub fn stub_0x6d1124() -> ! {
+    todo!("0x6d1124 RBX::Reflection::BoundFuncDesc<RBX::Workspace,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::RbxRay,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,bool),3>::~BoundFuncDesc()")
+}
+
+// 0x6d1250 — __ZN3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_8InstanceEED1Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::~RefPropDescriptor()")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::~RefPropDescriptor()
+pub fn stub_0x6d1250() -> ! {
+    todo!("0x6d1250 RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Instance>::~RefPropDescriptor()")
+}
+
+// 0x6d127c — __ZN3RBX9Workspace9doNothingEb
+#[doc(alias = "RBX::Workspace::doNothing(bool)")]
+// was: RBX::Workspace::doNothing(bool)
+pub fn stub_0x6d127c() -> ! {
+    todo!("0x6d127c RBX::Workspace::doNothing(bool)")
+}
+
+// 0x6d1280 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvbELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(bool),1>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(bool),1>::~BoundFuncDesc()
+pub fn stub_0x6d1280() -> ! {
+    todo!("0x6d1280 RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(bool),1>::~BoundFuncDesc()")
+}
+
+// 0x6d12c0 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFvvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(void),0>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(void),0>::~BoundFuncDesc()
+pub fn stub_0x6d12c0() -> ! {
+    todo!("0x6d12c0 RBX::Reflection::BoundFuncDesc<RBX::Workspace,void ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x6d12e4 — __ZN3RBX10Reflection17RefPropDescriptorINS_9WorkspaceENS_6CameraEED1Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Camera>::~RefPropDescriptor()")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Camera>::~RefPropDescriptor()
+pub fn stub_0x6d12e4() -> ! {
+    todo!("0x6d12e4 RBX::Reflection::RefPropDescriptor<RBX::Workspace,RBX::Camera>::~RefPropDescriptor()")
+}
+
+// 0x6d1310 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFdvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,double ()(void),0>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,double ()(void),0>::~BoundFuncDesc()
+pub fn stub_0x6d1310() -> ! {
+    todo!("0x6d1310 RBX::Reflection::BoundFuncDesc<RBX::Workspace,double ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x6d1334 — __ZN3RBX10Reflection13BoundFuncDescINS_9WorkspaceEFivELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Workspace,int ()(void),0>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::Workspace,int ()(void),0>::~BoundFuncDesc()
+pub fn stub_0x6d1334() -> ! {
+    todo!("0x6d1334 RBX::Reflection::BoundFuncDesc<RBX::Workspace,int ()(void),0>::~BoundFuncDesc()")
 }
 
