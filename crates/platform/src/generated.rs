@@ -1,6 +1,6 @@
-//! platform generated — 3686 stubs sorted by EA, from ida/export.json
-//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2763 done, 0 remaining) | ObjC -[/+ only
-//! Batch: 3686 stubs (3624 prior +62 this batch completes ObjC, 2763 total ObjC) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! platform generated — 3689 stubs sorted by EA, from ida/export.json
+//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2763 done, 0 remaining) + 3 final iOSSettingsService shims (214 non-ObjC iOS/Roblox/GVC total, 214 done)
+//! Batch: 3689 stubs (3686 prior +3 this batch completes iOSSettingsService $shim/j_ thunks) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -25924,4 +25924,26 @@ pub fn stub_f1e478() -> ! {
 #[doc(alias = "+[__ARCLite__ load]")]
 pub fn stub_f1e79c() -> ! {
     todo!("0xf1e79c +[__ARCLite__ load]")
+}
+// 0xf1f36c — __ZN18iOSSettingsServiceD2Ev$shim
+// mangled: __ZN18iOSSettingsServiceD2Ev$shim
+#[doc(alias = "__ZN18iOSSettingsServiceD2Ev$shim")]
+pub fn stub_f1f36c() -> ! {
+    todo!("0xf1f36c __ZN18iOSSettingsServiceD2Ev$shim")
+}
+
+// 0xf27354 — iOSSettingsService::iOSSettingsService(void)
+// mangled: j___ZN18iOSSettingsServiceC2Ev
+// type: void __fastcall(iOSSettingsService *this)
+#[doc(alias = "iOSSettingsService::iOSSettingsService(void)")]
+pub fn stub_f27354() -> ! {
+    todo!("0xf27354 iOSSettingsService::iOSSettingsService(void)")
+}
+
+// 0xf27364 — iOSSettingsService::~iOSSettingsService()
+// mangled: j___ZN18iOSSettingsServiceD2Ev
+// type: void __fastcall(iOSSettingsService *__hidden this)
+#[doc(alias = "iOSSettingsService::~iOSSettingsService()")]
+pub fn stub_f27364() -> ! {
+    todo!("0xf27364 iOSSettingsService::~iOSSettingsService()")
 }
