@@ -23,6 +23,7 @@ pub mod boost_core_g;
 pub mod boost_core_h;
 pub mod boost_core_i;
 pub mod boost_core_j;
+pub mod boost_core_k;
 pub mod generated_core_d;
 pub mod generated_core_e;
 pub mod generated_core_f;
