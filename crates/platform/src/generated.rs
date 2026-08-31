@@ -1,6 +1,6 @@
-//! platform generated — 3174 stubs sorted by EA, from ida/export.json
-//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (1072 strict, 1452 incl. SkateboardPlatform noise; ObjC selectors 2763 total)
-//! Batch: 3174 stubs (3024 prior +150 this batch, strict remaining 721; was 3026 ObjC filtered) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! platform generated — 3324 stubs sorted by EA, from ida/export.json
+//! Filter: iOS|Platform|RobloxView|GameViewController|ObjC (2763 ObjC total, 2251 in prior 3174, 512 remaining before batch) | ObjC -[/+ only
+//! Batch: 3324 stubs (3174 prior +150 this batch, 362 ObjC remaining, 2763 total ObjC) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -22341,4 +22341,1054 @@ pub fn stub_62c998() -> ! {
 #[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")]
 pub fn stub_62c9b4() -> ! {
     todo!("0x62c9b4 void boost::_bi::list2<boost::_bi::value<RBX::PlatformImpl<RBX::BasicPartInstance> *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::PlatformImpl<RBX::BasicPartInstance>,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")
+}
+
+// 0xf06ef0 — -[FlurrySession setCrashReportData:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setCrashReportData:]")]
+pub fn stub_f06ef0() -> ! {
+    todo!("0xf06ef0 -[FlurrySession setCrashReportData:]")
+}
+
+// 0xf06f14 — -[FlurrySession startTime]
+// type: NSDate *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession startTime]")]
+pub fn stub_f06f14() -> ! {
+    todo!("0xf06f14 -[FlurrySession startTime]")
+}
+
+// 0xf06f2c — -[FlurrySession setStartTime:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setStartTime:]")]
+pub fn stub_f06f2c() -> ! {
+    todo!("0xf06f2c -[FlurrySession setStartTime:]")
+}
+
+// 0xf06f50 — -[FlurrySession apiKey]
+// type: NSString *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession apiKey]")]
+pub fn stub_f06f50() -> ! {
+    todo!("0xf06f50 -[FlurrySession apiKey]")
+}
+
+// 0xf06f68 — -[FlurrySession setApiKey:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setApiKey:]")]
+pub fn stub_f06f68() -> ! {
+    todo!("0xf06f68 -[FlurrySession setApiKey:]")
+}
+
+// 0xf06f8c — -[FlurrySession latitude]
+// type: double __cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession latitude]")]
+pub fn stub_f06f8c() -> ! {
+    todo!("0xf06f8c -[FlurrySession latitude]")
+}
+
+// 0xf06fa4 — -[FlurrySession setLatitude:]
+// type: void __cdecl(FlurrySession *self, SEL, double)
+#[doc(alias = "-[FlurrySession setLatitude:]")]
+pub fn stub_f06fa4() -> ! {
+    todo!("0xf06fa4 -[FlurrySession setLatitude:]")
+}
+
+// 0xf06fb8 — -[FlurrySession longitude]
+// type: double __cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession longitude]")]
+pub fn stub_f06fb8() -> ! {
+    todo!("0xf06fb8 -[FlurrySession longitude]")
+}
+
+// 0xf06fd0 — -[FlurrySession setLongitude:]
+// type: void __cdecl(FlurrySession *self, SEL, double)
+#[doc(alias = "-[FlurrySession setLongitude:]")]
+pub fn stub_f06fd0() -> ! {
+    todo!("0xf06fd0 -[FlurrySession setLongitude:]")
+}
+
+// 0xf06fe4 — -[FlurrySession accuracy]
+// type: float __cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession accuracy]")]
+pub fn stub_f06fe4() -> ! {
+    todo!("0xf06fe4 -[FlurrySession accuracy]")
+}
+
+// 0xf06ff4 — -[FlurrySession setAccuracy:]
+// type: void __cdecl(FlurrySession *self, SEL, float)
+#[doc(alias = "-[FlurrySession setAccuracy:]")]
+pub fn stub_f06ff4() -> ! {
+    todo!("0xf06ff4 -[FlurrySession setAccuracy:]")
+}
+
+// 0xf07004 — -[FlurrySession appVersion]
+// type: NSString *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession appVersion]")]
+pub fn stub_f07004() -> ! {
+    todo!("0xf07004 -[FlurrySession appVersion]")
+}
+
+// 0xf0701c — -[FlurrySession setAppVersion:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setAppVersion:]")]
+pub fn stub_f0701c() -> ! {
+    todo!("0xf0701c -[FlurrySession setAppVersion:]")
+}
+
+// 0xf07040 — -[FlurrySession pageViewCount]
+// type: int __cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession pageViewCount]")]
+pub fn stub_f07040() -> ! {
+    todo!("0xf07040 -[FlurrySession pageViewCount]")
+}
+
+// 0xf07050 — -[FlurrySession setPageViewCount:]
+// type: void __cdecl(FlurrySession *self, SEL, int)
+#[doc(alias = "-[FlurrySession setPageViewCount:]")]
+pub fn stub_f07050() -> ! {
+    todo!("0xf07050 -[FlurrySession setPageViewCount:]")
+}
+
+// 0xf07060 — -[FlurrySession endTime]
+// type: NSDate *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession endTime]")]
+pub fn stub_f07060() -> ! {
+    todo!("0xf07060 -[FlurrySession endTime]")
+}
+
+// 0xf07070 — -[FlurrySession setEndTime:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setEndTime:]")]
+pub fn stub_f07070() -> ! {
+    todo!("0xf07070 -[FlurrySession setEndTime:]")
+}
+
+// 0xf07094 — -[FlurrySession purchaseItems]
+// type: NSMutableArray *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession purchaseItems]")]
+pub fn stub_f07094() -> ! {
+    todo!("0xf07094 -[FlurrySession purchaseItems]")
+}
+
+// 0xf070a4 — -[FlurrySession setPurchaseItems:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setPurchaseItems:]")]
+pub fn stub_f070a4() -> ! {
+    todo!("0xf070a4 -[FlurrySession setPurchaseItems:]")
+}
+
+// 0xf070c8 — -[FlurrySession resumeTime]
+// type: NSDate *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession resumeTime]")]
+pub fn stub_f070c8() -> ! {
+    todo!("0xf070c8 -[FlurrySession resumeTime]")
+}
+
+// 0xf070e0 — -[FlurrySession setResumeTime:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setResumeTime:]")]
+pub fn stub_f070e0() -> ! {
+    todo!("0xf070e0 -[FlurrySession setResumeTime:]")
+}
+
+// 0xf07104 — -[FlurrySession pauseTime]
+// type: NSDate *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession pauseTime]")]
+pub fn stub_f07104() -> ! {
+    todo!("0xf07104 -[FlurrySession pauseTime]")
+}
+
+// 0xf0711c — -[FlurrySession setPauseTime:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setPauseTime:]")]
+pub fn stub_f0711c() -> ! {
+    todo!("0xf0711c -[FlurrySession setPauseTime:]")
+}
+
+// 0xf07140 — -[FlurrySession totalPauseIntervalMillis]
+// type: signed __int64 __cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession totalPauseIntervalMillis]")]
+pub fn stub_f07140() -> ! {
+    todo!("0xf07140 -[FlurrySession totalPauseIntervalMillis]")
+}
+
+// 0xf07158 — -[FlurrySession setTotalPauseIntervalMillis:]
+// type: void __cdecl(FlurrySession *self, SEL, signed __int64)
+#[doc(alias = "-[FlurrySession setTotalPauseIntervalMillis:]")]
+pub fn stub_f07158() -> ! {
+    todo!("0xf07158 -[FlurrySession setTotalPauseIntervalMillis:]")
+}
+
+// 0xf0716c — -[FlurrySession eventCounts]
+// type: NSMutableDictionary *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession eventCounts]")]
+pub fn stub_f0716c() -> ! {
+    todo!("0xf0716c -[FlurrySession eventCounts]")
+}
+
+// 0xf0717c — -[FlurrySession setEventCounts:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setEventCounts:]")]
+pub fn stub_f0717c() -> ! {
+    todo!("0xf0717c -[FlurrySession setEventCounts:]")
+}
+
+// 0xf071a0 — -[FlurrySession pendingEventLog]
+// type: NSMutableArray *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession pendingEventLog]")]
+pub fn stub_f071a0() -> ! {
+    todo!("0xf071a0 -[FlurrySession pendingEventLog]")
+}
+
+// 0xf071b0 — -[FlurrySession setPendingEventLog:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setPendingEventLog:]")]
+pub fn stub_f071b0() -> ! {
+    todo!("0xf071b0 -[FlurrySession setPendingEventLog:]")
+}
+
+// 0xf071d4 — -[FlurrySession eventLog]
+// type: NSMutableArray *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession eventLog]")]
+pub fn stub_f071d4() -> ! {
+    todo!("0xf071d4 -[FlurrySession eventLog]")
+}
+
+// 0xf071e4 — -[FlurrySession setEventLog:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setEventLog:]")]
+pub fn stub_f071e4() -> ! {
+    todo!("0xf071e4 -[FlurrySession setEventLog:]")
+}
+
+// 0xf07208 — -[FlurrySession eventLogComplete]
+// type: char __cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession eventLogComplete]")]
+pub fn stub_f07208() -> ! {
+    todo!("0xf07208 -[FlurrySession eventLogComplete]")
+}
+
+// 0xf07218 — -[FlurrySession setEventLogComplete:]
+// type: void __cdecl(FlurrySession *self, SEL, char)
+#[doc(alias = "-[FlurrySession setEventLogComplete:]")]
+pub fn stub_f07218() -> ! {
+    todo!("0xf07218 -[FlurrySession setEventLogComplete:]")
+}
+
+// 0xf07228 — -[FlurrySession errors]
+// type: NSMutableArray *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession errors]")]
+pub fn stub_f07228() -> ! {
+    todo!("0xf07228 -[FlurrySession errors]")
+}
+
+// 0xf07238 — -[FlurrySession setErrors:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setErrors:]")]
+pub fn stub_f07238() -> ! {
+    todo!("0xf07238 -[FlurrySession setErrors:]")
+}
+
+// 0xf0725c — -[FlurrySession totalErrorCount]
+// type: int __cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession totalErrorCount]")]
+pub fn stub_f0725c() -> ! {
+    todo!("0xf0725c -[FlurrySession totalErrorCount]")
+}
+
+// 0xf0726c — -[FlurrySession setTotalErrorCount:]
+// type: void __cdecl(FlurrySession *self, SEL, int)
+#[doc(alias = "-[FlurrySession setTotalErrorCount:]")]
+pub fn stub_f0726c() -> ! {
+    todo!("0xf0726c -[FlurrySession setTotalErrorCount:]")
+}
+
+// 0xf0727c — -[FlurrySession locale]
+// type: NSString *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession locale]")]
+pub fn stub_f0727c() -> ! {
+    todo!("0xf0727c -[FlurrySession locale]")
+}
+
+// 0xf0728c — -[FlurrySession setLocale:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setLocale:]")]
+pub fn stub_f0728c() -> ! {
+    todo!("0xf0728c -[FlurrySession setLocale:]")
+}
+
+// 0xf072b0 — -[FlurrySession timeZone]
+// type: NSString *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession timeZone]")]
+pub fn stub_f072b0() -> ! {
+    todo!("0xf072b0 -[FlurrySession timeZone]")
+}
+
+// 0xf072c0 — -[FlurrySession setTimeZone:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setTimeZone:]")]
+pub fn stub_f072c0() -> ! {
+    todo!("0xf072c0 -[FlurrySession setTimeZone:]")
+}
+
+// 0xf072e4 — -[FlurrySession gender]
+// type: int __cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession gender]")]
+pub fn stub_f072e4() -> ! {
+    todo!("0xf072e4 -[FlurrySession gender]")
+}
+
+// 0xf072f4 — -[FlurrySession setGender:]
+// type: void __cdecl(FlurrySession *self, SEL, int)
+#[doc(alias = "-[FlurrySession setGender:]")]
+pub fn stub_f072f4() -> ! {
+    todo!("0xf072f4 -[FlurrySession setGender:]")
+}
+
+// 0xf07304 — -[FlurrySession pushToken]
+// type: NSString *__cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession pushToken]")]
+pub fn stub_f07304() -> ! {
+    todo!("0xf07304 -[FlurrySession pushToken]")
+}
+
+// 0xf07314 — -[FlurrySession serializationVersion]
+// type: int __cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession serializationVersion]")]
+pub fn stub_f07314() -> ! {
+    todo!("0xf07314 -[FlurrySession serializationVersion]")
+}
+
+// 0xf07324 — -[FlurrySession setSerializationVersion:]
+// type: void __cdecl(FlurrySession *self, SEL, int)
+#[doc(alias = "-[FlurrySession setSerializationVersion:]")]
+pub fn stub_f07324() -> ! {
+    todo!("0xf07324 -[FlurrySession setSerializationVersion:]")
+}
+
+// 0xf07334 — -[FlurrySession eventLoggingEnabled]
+// type: char __cdecl(FlurrySession *self, SEL)
+#[doc(alias = "-[FlurrySession eventLoggingEnabled]")]
+pub fn stub_f07334() -> ! {
+    todo!("0xf07334 -[FlurrySession eventLoggingEnabled]")
+}
+
+// 0xf07344 — -[FlurrySession setAge:]
+// type: void __cdecl(FlurrySession *self, SEL, id)
+#[doc(alias = "-[FlurrySession setAge:]")]
+pub fn stub_f07344() -> ! {
+    todo!("0xf07344 -[FlurrySession setAge:]")
+}
+
+// 0xf07368 — +[FlurryUtil assertThreadIsNotMain]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil assertThreadIsNotMain]")]
+pub fn stub_f07368() -> ! {
+    todo!("0xf07368 +[FlurryUtil assertThreadIsNotMain]")
+}
+
+// 0xf0738c — +[FlurryUtil setLogLevel:]
+// type: void __cdecl(id, SEL, int)
+#[doc(alias = "+[FlurryUtil setLogLevel:]")]
+pub fn stub_f0738c() -> ! {
+    todo!("0xf0738c +[FlurryUtil setLogLevel:]")
+}
+
+// 0xf0739c — +[FlurryUtil logLevel]
+// type: int __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil logLevel]")]
+pub fn stub_f0739c() -> ! {
+    todo!("0xf0739c +[FlurryUtil logLevel]")
+}
+
+// 0xf073ac — +[FlurryUtil setShowErrorInLogEnabled:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[FlurryUtil setShowErrorInLogEnabled:]")]
+pub fn stub_f073ac() -> ! {
+    todo!("0xf073ac +[FlurryUtil setShowErrorInLogEnabled:]")
+}
+
+// 0xf073bc — +[FlurryUtil handleException:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil handleException:]")]
+pub fn stub_f073bc() -> ! {
+    todo!("0xf073bc +[FlurryUtil handleException:]")
+}
+
+// 0xf075c0 — +[FlurryUtil safeUnarchiveObjectWithFile:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil safeUnarchiveObjectWithFile:]")]
+pub fn stub_f075c0() -> ! {
+    todo!("0xf075c0 +[FlurryUtil safeUnarchiveObjectWithFile:]")
+}
+
+// 0xf07724 — +[FlurryUtil getOrientationStrFromInterfaceOrientation:]
+// type: id __cdecl(id, SEL, int)
+#[doc(alias = "+[FlurryUtil getOrientationStrFromInterfaceOrientation:]")]
+pub fn stub_f07724() -> ! {
+    todo!("0xf07724 +[FlurryUtil getOrientationStrFromInterfaceOrientation:]")
+}
+
+// 0xf07768 — +[FlurryUtil screenBounds:]
+// type: CGRect *__cdecl(CGRect *__return_ptr __struct_ptr retstr, id, SEL, id)
+#[doc(alias = "+[FlurryUtil screenBounds:]")]
+pub fn stub_f07768() -> ! {
+    todo!("0xf07768 +[FlurryUtil screenBounds:]")
+}
+
+// 0xf07880 — +[FlurryUtil screenBounds]
+// type: CGRect *__cdecl(CGRect *__return_ptr __struct_ptr retstr, id, SEL)
+#[doc(alias = "+[FlurryUtil screenBounds]")]
+pub fn stub_f07880() -> ! {
+    todo!("0xf07880 +[FlurryUtil screenBounds]")
+}
+
+// 0xf0795c — +[FlurryUtil canvasInLandscape:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil canvasInLandscape:]")]
+pub fn stub_f0795c() -> ! {
+    todo!("0xf0795c +[FlurryUtil canvasInLandscape:]")
+}
+
+// 0xf079c4 — +[FlurryUtil canvasInLandscapeRight:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil canvasInLandscapeRight:]")]
+pub fn stub_f079c4() -> ! {
+    todo!("0xf079c4 +[FlurryUtil canvasInLandscapeRight:]")
+}
+
+// 0xf07a14 — +[FlurryUtil canvasInLandscapeLeft:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil canvasInLandscapeLeft:]")]
+pub fn stub_f07a14() -> ! {
+    todo!("0xf07a14 +[FlurryUtil canvasInLandscapeLeft:]")
+}
+
+// 0xf07a64 — +[FlurryUtil canvasInPortraitUpsideDown:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil canvasInPortraitUpsideDown:]")]
+pub fn stub_f07a64() -> ! {
+    todo!("0xf07a64 +[FlurryUtil canvasInPortraitUpsideDown:]")
+}
+
+// 0xf07ab4 — +[FlurryUtil getCanvasOrientation]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil getCanvasOrientation]")]
+pub fn stub_f07ab4() -> ! {
+    todo!("0xf07ab4 +[FlurryUtil getCanvasOrientation]")
+}
+
+// 0xf07b40 — +[FlurryUtil canvasInLandscape]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil canvasInLandscape]")]
+pub fn stub_f07b40() -> ! {
+    todo!("0xf07b40 +[FlurryUtil canvasInLandscape]")
+}
+
+// 0xf07b8c — +[FlurryUtil canvasInLandscapeRight]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil canvasInLandscapeRight]")]
+pub fn stub_f07b8c() -> ! {
+    todo!("0xf07b8c +[FlurryUtil canvasInLandscapeRight]")
+}
+
+// 0xf07bc8 — +[FlurryUtil canvasInLandscapeLeft]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil canvasInLandscapeLeft]")]
+pub fn stub_f07bc8() -> ! {
+    todo!("0xf07bc8 +[FlurryUtil canvasInLandscapeLeft]")
+}
+
+// 0xf07c04 — +[FlurryUtil canvasInPortraitUpsideDown]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil canvasInPortraitUpsideDown]")]
+pub fn stub_f07c04() -> ! {
+    todo!("0xf07c04 +[FlurryUtil canvasInPortraitUpsideDown]")
+}
+
+// 0xf07c40 — +[FlurryUtil currentInterfaceOrientation]
+// type: int __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil currentInterfaceOrientation]")]
+pub fn stub_f07c40() -> ! {
+    todo!("0xf07c40 +[FlurryUtil currentInterfaceOrientation]")
+}
+
+// 0xf07ca8 — +[FlurryUtil removeViewFromSuperview:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil removeViewFromSuperview:]")]
+pub fn stub_f07ca8() -> ! {
+    todo!("0xf07ca8 +[FlurryUtil removeViewFromSuperview:]")
+}
+
+// 0xf07cc8 — +[FlurryUtil convertStrToNum:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil convertStrToNum:]")]
+pub fn stub_f07cc8() -> ! {
+    todo!("0xf07cc8 +[FlurryUtil convertStrToNum:]")
+}
+
+// 0xf07d3c — +[FlurryUtil isIPad]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil isIPad]")]
+pub fn stub_f07d3c() -> ! {
+    todo!("0xf07d3c +[FlurryUtil isIPad]")
+}
+
+// 0xf07da0 — +[FlurryUtil isRetina]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil isRetina]")]
+pub fn stub_f07da0() -> ! {
+    todo!("0xf07da0 +[FlurryUtil isRetina]")
+}
+
+// 0xf07e30 — +[FlurryUtil addToSet:obj:]
+// type: char __cdecl(id, SEL, id, id)
+#[doc(alias = "+[FlurryUtil addToSet:obj:]")]
+pub fn stub_f07e30() -> ! {
+    todo!("0xf07e30 +[FlurryUtil addToSet:obj:]")
+}
+
+// 0xf07e74 — +[FlurryUtil getSystemVersionAsAnInteger]
+// type: int __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil getSystemVersionAsAnInteger]")]
+pub fn stub_f07e74() -> ! {
+    todo!("0xf07e74 +[FlurryUtil getSystemVersionAsAnInteger]")
+}
+
+// 0xf0803c — +[FlurryUtil addSkipBackupAttributeToItemAtURL:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil addSkipBackupAttributeToItemAtURL:]")]
+pub fn stub_f0803c() -> ! {
+    todo!("0xf0803c +[FlurryUtil addSkipBackupAttributeToItemAtURL:]")
+}
+
+// 0xf080b4 — +[FlurryUtil decodeFromPercentEscapeString:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil decodeFromPercentEscapeString:]")]
+pub fn stub_f080b4() -> ! {
+    todo!("0xf080b4 +[FlurryUtil decodeFromPercentEscapeString:]")
+}
+
+// 0xf080e4 — +[FlurryUtil encodeToPercentEscapeString:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil encodeToPercentEscapeString:]")]
+pub fn stub_f080e4() -> ! {
+    todo!("0xf080e4 +[FlurryUtil encodeToPercentEscapeString:]")
+}
+
+// 0xf0811c — +[FlurryUtil viewIsVisible:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil viewIsVisible:]")]
+pub fn stub_f0811c() -> ! {
+    todo!("0xf0811c +[FlurryUtil viewIsVisible:]")
+}
+
+// 0xf08374 — +[FlurryUtil theAppIsActive]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil theAppIsActive]")]
+pub fn stub_f08374() -> ! {
+    todo!("0xf08374 +[FlurryUtil theAppIsActive]")
+}
+
+// 0xf08420 — +[FlurryUtil generateChecksumTable]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil generateChecksumTable]")]
+pub fn stub_f08420() -> ! {
+    todo!("0xf08420 +[FlurryUtil generateChecksumTable]")
+}
+
+// 0xf084c0 — +[FlurryUtil dataChecksum:]
+// type: int __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil dataChecksum:]")]
+pub fn stub_f084c0() -> ! {
+    todo!("0xf084c0 +[FlurryUtil dataChecksum:]")
+}
+
+// 0xf0854c — +[FlurryUtil createParamKeysDictFromUrlParams:paramsHeader:paramsKVString:]
+// type: id __cdecl(id, SEL, id, id *, id *)
+#[doc(alias = "+[FlurryUtil createParamKeysDictFromUrlParams:paramsHeader:paramsKVString:]")]
+pub fn stub_f0854c() -> ! {
+    todo!("0xf0854c +[FlurryUtil createParamKeysDictFromUrlParams:paramsHeader:paramsKVString:]")
+}
+
+// 0xf086f8 — +[FlurryUtil flurryRangeOfData:inData:]
+// type: _NSRange *__cdecl(_NSRange *__return_ptr __struct_ptr retstr, id, SEL, id, id)
+#[doc(alias = "+[FlurryUtil flurryRangeOfData:inData:]")]
+pub fn stub_f086f8() -> ! {
+    todo!("0xf086f8 +[FlurryUtil flurryRangeOfData:inData:]")
+}
+
+// 0xf087e4 — +[FlurryUtil isKeyWindowAlertView]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil isKeyWindowAlertView]")]
+pub fn stub_f087e4() -> ! {
+    todo!("0xf087e4 +[FlurryUtil isKeyWindowAlertView]")
+}
+
+// 0xf08868 — +[FlurryUtil oldFilePathDirectoryUptilAgentVersion109]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil oldFilePathDirectoryUptilAgentVersion109]")]
+pub fn stub_f08868() -> ! {
+    todo!("0xf08868 +[FlurryUtil oldFilePathDirectoryUptilAgentVersion109]")
+}
+
+// 0xf08978 — +[FlurryUtil filePathDirectory]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil filePathDirectory]")]
+pub fn stub_f08978() -> ! {
+    todo!("0xf08978 +[FlurryUtil filePathDirectory]")
+}
+
+// 0xf08ad8 — +[FlurryUtil devicePlatform]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil devicePlatform]")]
+pub fn stub_f08ad8() -> ! {
+    todo!("0xf08ad8 +[FlurryUtil devicePlatform]")
+}
+
+// 0xf08b48 — +[FlurryUtil deviceMemory]
+// type: int __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil deviceMemory]")]
+pub fn stub_f08b48() -> ! {
+    todo!("0xf08b48 +[FlurryUtil deviceMemory]")
+}
+
+// 0xf08b78 — +[FlurryUtil deviceCPUFrequency]
+// type: int __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil deviceCPUFrequency]")]
+pub fn stub_f08b78() -> ! {
+    todo!("0xf08b78 +[FlurryUtil deviceCPUFrequency]")
+}
+
+// 0xf08ba0 — +[FlurryUtil deviceIsJailbroken]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil deviceIsJailbroken]")]
+pub fn stub_f08ba0() -> ! {
+    todo!("0xf08ba0 +[FlurryUtil deviceIsJailbroken]")
+}
+
+// 0xf08ba8 — +[FlurryUtil appIsCracked]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil appIsCracked]")]
+pub fn stub_f08ba8() -> ! {
+    todo!("0xf08ba8 +[FlurryUtil appIsCracked]")
+}
+
+// 0xf08c80 — +[FlurryUtil iTunesMetadataPlist]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil iTunesMetadataPlist]")]
+pub fn stub_f08c80() -> ! {
+    todo!("0xf08c80 +[FlurryUtil iTunesMetadataPlist]")
+}
+
+// 0xf08f24 — +[FlurryUtil hashData:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil hashData:]")]
+pub fn stub_f08f24() -> ! {
+    todo!("0xf08f24 +[FlurryUtil hashData:]")
+}
+
+// 0xf08fa0 — +[FlurryUtil hashDataToHexString:length:]
+// type: id __cdecl(id, SEL, char *, int)
+#[doc(alias = "+[FlurryUtil hashDataToHexString:length:]")]
+pub fn stub_f08fa0() -> ! {
+    todo!("0xf08fa0 +[FlurryUtil hashDataToHexString:length:]")
+}
+
+// 0xf090dc — +[FlurryUtil MACString]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil MACString]")]
+pub fn stub_f090dc() -> ! {
+    todo!("0xf090dc +[FlurryUtil MACString]")
+}
+
+// 0xf091ac — +[FlurryUtil getMACBasedUID]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil getMACBasedUID]")]
+pub fn stub_f091ac() -> ! {
+    todo!("0xf091ac +[FlurryUtil getMACBasedUID]")
+}
+
+// 0xf09288 — +[FlurryUtil getMACUID]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil getMACUID]")]
+pub fn stub_f09288() -> ! {
+    todo!("0xf09288 +[FlurryUtil getMACUID]")
+}
+
+// 0xf09344 — +[FlurryUtil getIdentifierForAdvertiser]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil getIdentifierForAdvertiser]")]
+pub fn stub_f09344() -> ! {
+    todo!("0xf09344 +[FlurryUtil getIdentifierForAdvertiser]")
+}
+
+// 0xf093a4 — +[FlurryUtil getIdentifierForVendor]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil getIdentifierForVendor]")]
+pub fn stub_f093a4() -> ! {
+    todo!("0xf093a4 +[FlurryUtil getIdentifierForVendor]")
+}
+
+// 0xf09420 — +[FlurryUtil getStoredIdentifierForVendor]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil getStoredIdentifierForVendor]")]
+pub fn stub_f09420() -> ! {
+    todo!("0xf09420 +[FlurryUtil getStoredIdentifierForVendor]")
+}
+
+// 0xf094d8 — +[FlurryUtil storeIdentifierForVendor:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil storeIdentifierForVendor:]")]
+pub fn stub_f094d8() -> ! {
+    todo!("0xf094d8 +[FlurryUtil storeIdentifierForVendor:]")
+}
+
+// 0xf09524 — +[FlurryUtil isAdTrackingEnabled]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil isAdTrackingEnabled]")]
+pub fn stub_f09524() -> ! {
+    todo!("0xf09524 +[FlurryUtil isAdTrackingEnabled]")
+}
+
+// 0xf09570 — +[FlurryUtil generateCFUUIDBasedUIDChecksum:]
+// type: unsigned int __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil generateCFUUIDBasedUIDChecksum:]")]
+pub fn stub_f09570() -> ! {
+    todo!("0xf09570 +[FlurryUtil generateCFUUIDBasedUIDChecksum:]")
+}
+
+// 0xf09760 — +[FlurryUtil generateCFUUID]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil generateCFUUID]")]
+pub fn stub_f09760() -> ! {
+    todo!("0xf09760 +[FlurryUtil generateCFUUID]")
+}
+
+// 0xf097a8 — +[FlurryUtil getCFUUIDBasedUIDAndStatus:]
+// type: id __cdecl(id, SEL, int *)
+#[doc(alias = "+[FlurryUtil getCFUUIDBasedUIDAndStatus:]")]
+pub fn stub_f097a8() -> ! {
+    todo!("0xf097a8 +[FlurryUtil getCFUUIDBasedUIDAndStatus:]")
+}
+
+// 0xf09ac4 — +[FlurryUtil generateCFUUIDBasedUID]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil generateCFUUIDBasedUID]")]
+pub fn stub_f09ac4() -> ! {
+    todo!("0xf09ac4 +[FlurryUtil generateCFUUIDBasedUID]")
+}
+
+// 0xf09b14 — +[FlurryUtil getCFUUIDBasedUIDWithChecksum:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil getCFUUIDBasedUIDWithChecksum:]")]
+pub fn stub_f09b14() -> ! {
+    todo!("0xf09b14 +[FlurryUtil getCFUUIDBasedUIDWithChecksum:]")
+}
+
+// 0xf09bbc — +[FlurryUtil preferredLanguage]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil preferredLanguage]")]
+pub fn stub_f09bbc() -> ! {
+    todo!("0xf09bbc +[FlurryUtil preferredLanguage]")
+}
+
+// 0xf09ca8 — +[FlurryUtil incrementCounter:locationName:]
+// type: void __cdecl(id, SEL, id, char *)
+#[doc(alias = "+[FlurryUtil incrementCounter:locationName:]")]
+pub fn stub_f09ca8() -> ! {
+    todo!("0xf09ca8 +[FlurryUtil incrementCounter:locationName:]")
+}
+
+// 0xf09d00 — +[FlurryUtil incrementCounter:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil incrementCounter:]")]
+pub fn stub_f09d00() -> ! {
+    todo!("0xf09d00 +[FlurryUtil incrementCounter:]")
+}
+
+// 0xf09e94 — +[FlurryUtil decrementCounter:locationName:]
+// type: void __cdecl(id, SEL, id, char *)
+#[doc(alias = "+[FlurryUtil decrementCounter:locationName:]")]
+pub fn stub_f09e94() -> ! {
+    todo!("0xf09e94 +[FlurryUtil decrementCounter:locationName:]")
+}
+
+// 0xf09eec — +[FlurryUtil decrementCounter:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryUtil decrementCounter:]")]
+pub fn stub_f09eec() -> ! {
+    todo!("0xf09eec +[FlurryUtil decrementCounter:]")
+}
+
+// 0xf0a080 — +[FlurryUtil printCounters]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil printCounters]")]
+pub fn stub_f0a080() -> ! {
+    todo!("0xf0a080 +[FlurryUtil printCounters]")
+}
+
+// 0xf0a204 — +[FlurryUtil allCounters]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryUtil allCounters]")]
+pub fn stub_f0a204() -> ! {
+    todo!("0xf0a204 +[FlurryUtil allCounters]")
+}
+
+// 0xf0a2f0 — -[FlurryConnectionDelegate init]
+// type: FlurryConnectionDelegate *__cdecl(FlurryConnectionDelegate *self, SEL)
+#[doc(alias = "-[FlurryConnectionDelegate init]")]
+pub fn stub_f0a2f0() -> ! {
+    todo!("0xf0a2f0 -[FlurryConnectionDelegate init]")
+}
+
+// 0xf0a364 — -[FlurryConnectionDelegate initWithTaskDelegate:taskParent:]
+// type: FlurryConnectionDelegate *__cdecl(FlurryConnectionDelegate *self, SEL, id, id)
+#[doc(alias = "-[FlurryConnectionDelegate initWithTaskDelegate:taskParent:]")]
+pub fn stub_f0a364() -> ! {
+    todo!("0xf0a364 -[FlurryConnectionDelegate initWithTaskDelegate:taskParent:]")
+}
+
+// 0xf0a40c — -[FlurryConnectionDelegate dealloc]
+// type: void __cdecl(FlurryConnectionDelegate *self, SEL)
+#[doc(alias = "-[FlurryConnectionDelegate dealloc]")]
+pub fn stub_f0a40c() -> ! {
+    todo!("0xf0a40c -[FlurryConnectionDelegate dealloc]")
+}
+
+// 0xf0a4ac — -[FlurryConnectionDelegate isDone]
+// type: char __cdecl(FlurryConnectionDelegate *self, SEL)
+#[doc(alias = "-[FlurryConnectionDelegate isDone]")]
+pub fn stub_f0a4ac() -> ! {
+    todo!("0xf0a4ac -[FlurryConnectionDelegate isDone]")
+}
+
+// 0xf0a4bc — -[FlurryConnectionDelegate connection:willSendRequest:redirectResponse:]
+// type: id __cdecl(FlurryConnectionDelegate *self, SEL, id, id, id)
+#[doc(alias = "-[FlurryConnectionDelegate connection:willSendRequest:redirectResponse:]")]
+pub fn stub_f0a4bc() -> ! {
+    todo!("0xf0a4bc -[FlurryConnectionDelegate connection:willSendRequest:redirectResponse:]")
+}
+
+// 0xf0a4c0 — -[FlurryConnectionDelegate connection:didReceiveAuthenticationChallenge:]
+// type: void __cdecl(FlurryConnectionDelegate *self, SEL, id, id)
+#[doc(alias = "-[FlurryConnectionDelegate connection:didReceiveAuthenticationChallenge:]")]
+pub fn stub_f0a4c0() -> ! {
+    todo!("0xf0a4c0 -[FlurryConnectionDelegate connection:didReceiveAuthenticationChallenge:]")
+}
+
+// 0xf0a504 — -[FlurryConnectionDelegate connection:didCancelAuthenticationChallenge:]
+// type: void __cdecl(FlurryConnectionDelegate *self, SEL, id, id)
+#[doc(alias = "-[FlurryConnectionDelegate connection:didCancelAuthenticationChallenge:]")]
+pub fn stub_f0a504() -> ! {
+    todo!("0xf0a504 -[FlurryConnectionDelegate connection:didCancelAuthenticationChallenge:]")
+}
+
+// 0xf0a5b8 — -[FlurryConnectionDelegate connection:didReceiveResponse:]
+// type: void __cdecl(FlurryConnectionDelegate *self, SEL, id, id)
+#[doc(alias = "-[FlurryConnectionDelegate connection:didReceiveResponse:]")]
+pub fn stub_f0a5b8() -> ! {
+    todo!("0xf0a5b8 -[FlurryConnectionDelegate connection:didReceiveResponse:]")
+}
+
+// 0xf0a614 — -[FlurryConnectionDelegate connection:didReceiveData:]
+// type: void __cdecl(FlurryConnectionDelegate *self, SEL, id, id)
+#[doc(alias = "-[FlurryConnectionDelegate connection:didReceiveData:]")]
+pub fn stub_f0a614() -> ! {
+    todo!("0xf0a614 -[FlurryConnectionDelegate connection:didReceiveData:]")
+}
+
+// 0xf0a63c — -[FlurryConnectionDelegate connectionDidFinishLoading:]
+// type: void __cdecl(FlurryConnectionDelegate *self, SEL, id)
+#[doc(alias = "-[FlurryConnectionDelegate connectionDidFinishLoading:]")]
+pub fn stub_f0a63c() -> ! {
+    todo!("0xf0a63c -[FlurryConnectionDelegate connectionDidFinishLoading:]")
+}
+
+// 0xf0a798 — -[FlurryConnectionDelegate connection:didFailWithError:]
+// type: void __cdecl(FlurryConnectionDelegate *self, SEL, id, id)
+#[doc(alias = "-[FlurryConnectionDelegate connection:didFailWithError:]")]
+pub fn stub_f0a798() -> ! {
+    todo!("0xf0a798 -[FlurryConnectionDelegate connection:didFailWithError:]")
+}
+
+// 0xf0a86c — -[FlurryConnectionDelegate connection:willCacheResponse:]
+// type: id __cdecl(FlurryConnectionDelegate *self, SEL, id, id)
+#[doc(alias = "-[FlurryConnectionDelegate connection:willCacheResponse:]")]
+pub fn stub_f0a86c() -> ! {
+    todo!("0xf0a86c -[FlurryConnectionDelegate connection:willCacheResponse:]")
+}
+
+// 0xf0a870 — -[FlurryConnectionDelegate connectionCanceled]
+// type: void __cdecl(FlurryConnectionDelegate *self, SEL)
+#[doc(alias = "-[FlurryConnectionDelegate connectionCanceled]")]
+pub fn stub_f0a870() -> ! {
+    todo!("0xf0a870 -[FlurryConnectionDelegate connectionCanceled]")
+}
+
+// 0xf0a904 — -[FlurryConnectionDelegate constructResponse]
+// type: id __cdecl(FlurryConnectionDelegate *self, SEL)
+#[doc(alias = "-[FlurryConnectionDelegate constructResponse]")]
+pub fn stub_f0a904() -> ! {
+    todo!("0xf0a904 -[FlurryConnectionDelegate constructResponse]")
+}
+
+// 0xf0a998 — -[FlurryConnectionDelegate response]
+// type: NSHTTPURLResponse *__cdecl(FlurryConnectionDelegate *self, SEL)
+#[doc(alias = "-[FlurryConnectionDelegate response]")]
+pub fn stub_f0a998() -> ! {
+    todo!("0xf0a998 -[FlurryConnectionDelegate response]")
+}
+
+// 0xf0a9a8 — -[FlurryConnectionDelegate body]
+// type: NSMutableData *__cdecl(FlurryConnectionDelegate *self, SEL)
+#[doc(alias = "-[FlurryConnectionDelegate body]")]
+pub fn stub_f0a9a8() -> ! {
+    todo!("0xf0a9a8 -[FlurryConnectionDelegate body]")
+}
+
+// 0xf0a9b8 — -[FlurryConnectionDelegate error]
+// type: NSError *__cdecl(FlurryConnectionDelegate *self, SEL)
+#[doc(alias = "-[FlurryConnectionDelegate error]")]
+pub fn stub_f0a9b8() -> ! {
+    todo!("0xf0a9b8 -[FlurryConnectionDelegate error]")
+}
+
+// 0xf0a9c8 — -[FlurryConnectionDelegate httpTaskDelegate]
+// type: FlurryHttpAsyncTaskDelegate *__cdecl(FlurryConnectionDelegate *self, SEL)
+#[doc(alias = "-[FlurryConnectionDelegate httpTaskDelegate]")]
+pub fn stub_f0a9c8() -> ! {
+    todo!("0xf0a9c8 -[FlurryConnectionDelegate httpTaskDelegate]")
+}
+
+// 0xf0a9d8 — -[FlurryConnectionDelegate setHttpTaskDelegate:]
+// type: void __cdecl(FlurryConnectionDelegate *self, SEL, id)
+#[doc(alias = "-[FlurryConnectionDelegate setHttpTaskDelegate:]")]
+pub fn stub_f0a9d8() -> ! {
+    todo!("0xf0a9d8 -[FlurryConnectionDelegate setHttpTaskDelegate:]")
+}
+
+// 0xf0a9fc — -[FlurryConnectionDelegate httpTask]
+// type: FlurryHttpAsyncTask *__cdecl(FlurryConnectionDelegate *self, SEL)
+#[doc(alias = "-[FlurryConnectionDelegate httpTask]")]
+pub fn stub_f0a9fc() -> ! {
+    todo!("0xf0a9fc -[FlurryConnectionDelegate httpTask]")
+}
+
+// 0xf0aa0c — -[FlurryConnectionDelegate setHttpTask:]
+// type: void __cdecl(FlurryConnectionDelegate *self, SEL, id)
+#[doc(alias = "-[FlurryConnectionDelegate setHttpTask:]")]
+pub fn stub_f0aa0c() -> ! {
+    todo!("0xf0aa0c -[FlurryConnectionDelegate setHttpTask:]")
+}
+
+// 0xf0aa30 — -[FlurryHTTPResponse initWithResponse:body:error:]
+// type: FlurryHTTPResponse *__cdecl(FlurryHTTPResponse *self, SEL, id, id, id)
+#[doc(alias = "-[FlurryHTTPResponse initWithResponse:body:error:]")]
+pub fn stub_f0aa30() -> ! {
+    todo!("0xf0aa30 -[FlurryHTTPResponse initWithResponse:body:error:]")
+}
+
+// 0xf0ac38 — -[FlurryHTTPResponse initWithBody:statusCode:headers:error:]
+// type: FlurryHTTPResponse *__cdecl(FlurryHTTPResponse *self, SEL, id, int, id, id)
+#[doc(alias = "-[FlurryHTTPResponse initWithBody:statusCode:headers:error:]")]
+pub fn stub_f0ac38() -> ! {
+    todo!("0xf0ac38 -[FlurryHTTPResponse initWithBody:statusCode:headers:error:]")
+}
+
+// 0xf0ae04 — -[FlurryHTTPResponse dealloc]
+// type: void __cdecl(FlurryHTTPResponse *self, SEL)
+#[doc(alias = "-[FlurryHTTPResponse dealloc]")]
+pub fn stub_f0ae04() -> ! {
+    todo!("0xf0ae04 -[FlurryHTTPResponse dealloc]")
+}
+
+// 0xf0ae7c — -[FlurryHTTPResponse isSuccess]
+// type: char __cdecl(FlurryHTTPResponse *self, SEL)
+#[doc(alias = "-[FlurryHTTPResponse isSuccess]")]
+pub fn stub_f0ae7c() -> ! {
+    todo!("0xf0ae7c -[FlurryHTTPResponse isSuccess]")
+}
+
+// 0xf0ae9c — -[FlurryHTTPResponse isError]
+// type: char __cdecl(FlurryHTTPResponse *self, SEL)
+#[doc(alias = "-[FlurryHTTPResponse isError]")]
+pub fn stub_f0ae9c() -> ! {
+    todo!("0xf0ae9c -[FlurryHTTPResponse isError]")
+}
+
+// 0xf0aec0 — -[FlurryHTTPResponse description]
+// type: id __cdecl(FlurryHTTPResponse *self, SEL)
+#[doc(alias = "-[FlurryHTTPResponse description]")]
+pub fn stub_f0aec0() -> ! {
+    todo!("0xf0aec0 -[FlurryHTTPResponse description]")
+}
+
+// 0xf0af7c — -[FlurryHTTPResponse saveToDisk]
+// type: void __cdecl(FlurryHTTPResponse *self, SEL)
+#[doc(alias = "-[FlurryHTTPResponse saveToDisk]")]
+pub fn stub_f0af7c() -> ! {
+    todo!("0xf0af7c -[FlurryHTTPResponse saveToDisk]")
+}
+
+// 0xf0b100 — +[FlurryHTTPResponse readFromURL:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[FlurryHTTPResponse readFromURL:]")]
+pub fn stub_f0b100() -> ! {
+    todo!("0xf0b100 +[FlurryHTTPResponse readFromURL:]")
+}
+
+// 0xf0b210 — +[FlurryHTTPResponse filePath:]
+// type: id __cdecl(id, SEL, int)
+#[doc(alias = "+[FlurryHTTPResponse filePath:]")]
+pub fn stub_f0b210() -> ! {
+    todo!("0xf0b210 +[FlurryHTTPResponse filePath:]")
+}
+
+// 0xf0b374 — -[FlurryHTTPResponse body]
+// type: NSData *__cdecl(FlurryHTTPResponse *self, SEL)
+#[doc(alias = "-[FlurryHTTPResponse body]")]
+pub fn stub_f0b374() -> ! {
+    todo!("0xf0b374 -[FlurryHTTPResponse body]")
+}
+
+// 0xf0b384 — -[FlurryHTTPResponse statusCode]
+// type: int __cdecl(FlurryHTTPResponse *self, SEL)
+#[doc(alias = "-[FlurryHTTPResponse statusCode]")]
+pub fn stub_f0b384() -> ! {
+    todo!("0xf0b384 -[FlurryHTTPResponse statusCode]")
+}
+
+// 0xf0b394 — -[FlurryHTTPResponse error]
+// type: NSError *__cdecl(FlurryHTTPResponse *self, SEL)
+#[doc(alias = "-[FlurryHTTPResponse error]")]
+pub fn stub_f0b394() -> ! {
+    todo!("0xf0b394 -[FlurryHTTPResponse error]")
+}
+
+// 0xf0b3a4 — -[FlurryHTTPResponse headers]
+// type: NSMutableDictionary *__cdecl(FlurryHTTPResponse *self, SEL)
+#[doc(alias = "-[FlurryHTTPResponse headers]")]
+pub fn stub_f0b3a4() -> ! {
+    todo!("0xf0b3a4 -[FlurryHTTPResponse headers]")
+}
+
+// 0xf0b3b4 — +[FlurryAutoIncrement instance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[FlurryAutoIncrement instance]")]
+pub fn stub_f0b3b4() -> ! {
+    todo!("0xf0b3b4 +[FlurryAutoIncrement instance]")
+}
+
+// 0xf0b3fc — -[FlurryAutoIncrement init]
+// type: FlurryAutoIncrement *__cdecl(FlurryAutoIncrement *self, SEL)
+#[doc(alias = "-[FlurryAutoIncrement init]")]
+pub fn stub_f0b3fc() -> ! {
+    todo!("0xf0b3fc -[FlurryAutoIncrement init]")
+}
+
+// 0xf0b47c — -[FlurryAutoIncrement nextCountFor:]
+// type: int __cdecl(FlurryAutoIncrement *self, SEL, int)
+#[doc(alias = "-[FlurryAutoIncrement nextCountFor:]")]
+pub fn stub_f0b47c() -> ! {
+    todo!("0xf0b47c -[FlurryAutoIncrement nextCountFor:]")
 }
