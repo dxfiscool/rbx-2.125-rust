@@ -1,6 +1,6 @@
-//! audio generated — 680 stubs sorted by EA, from ida/export.json
-//! Filter: FMOD|Sound|Audio case-sensitive (2541 distinct) — 2161 distinct EA (2307 stubs) in lib.rs + 680 in generated.rs (530 +150 watchdog) = 2541 distinct (2987 stubs) total, 0 distinct remaining
-//! Batch: 0x376198..0xf54904 + watchdog 0x686a4..0x72a28 (150 stubs, FMOD/Sound/Audio duplicates for watchdog, SharedPtr = rbx_core::SharedPtr not boost::shared_ptr) | next 150 watchdog duplicates generated
+//! audio generated — 830 stubs sorted by EA, from ida/export.json
+//! Filter: FMOD|Sound|Audio case-sensitive (2541 distinct) — 2161 distinct EA (2307 stubs) in lib.rs + 830 in generated.rs (530 +300 watchdog) = 2541 distinct (3137 stubs) total, 0 distinct remaining
+//! Batch: 0x376198..0xf54904 + watchdog 0x686a4..0x72a28 (150) + 0x72a40..0x7df78 (150 watchdog, EA-sorted, SharedPtr = rbx_core::SharedPtr not boost::shared_ptr)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -4688,3 +4688,1054 @@ pub fn stub_72a28_wdog149() -> ! {
     todo!("0x72a28 FMOD::ChannelReal::~ChannelReal()")
 }
 
+
+ // watchdog audio — next 150 duplicate stubs for FMOD/Sound/Audio (EA-sorted 0x72a40..0x7df78) using rbx_core::SharedPtr
+// 0x72a40 — __ZN4FMOD19ChannelRealManual3D5allocEv [watchdog]
+// type: int __fastcall(FMOD::ChannelRealManual3D *this)
+#[doc(alias = "FMOD::ChannelRealManual3D::alloc(void)")]
+pub fn stub_72a40_wdog150() -> ! {
+    todo!("0x72a40 FMOD::ChannelRealManual3D::alloc(void)")
+}
+
+// 0x72a58 — __ZN4FMOD19ChannelRealManual3DC2Ev [watchdog]
+// type: _DWORD *__fastcall(FMOD::ChannelRealManual3D *this)
+#[doc(alias = "FMOD::ChannelRealManual3D::ChannelRealManual3D(void)")]
+pub fn stub_72a58_wdog151() -> ! {
+    todo!("0x72a58 FMOD::ChannelRealManual3D::ChannelRealManual3D(void)")
+}
+
+// 0x72a88 — __ZN4FMOD19ChannelRealManual3D23set2DFreqVolumePanFor3DEv [watchdog]
+// type: int __fastcall(FMOD::ChannelRealManual3D *this)
+#[doc(alias = "FMOD::ChannelRealManual3D::set2DFreqVolumePanFor3D(void)")]
+pub fn stub_72a88_wdog152() -> ! {
+    todo!("0x72a88 FMOD::ChannelRealManual3D::set2DFreqVolumePanFor3D(void)")
+}
+
+// 0x73de4 — __ZN4FMOD19ChannelRealManual3DD0Ev [watchdog]
+// type: void __fastcall(FMOD::ChannelRealManual3D *__hidden this)
+#[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
+pub fn stub_73de4_wdog153() -> ! {
+    todo!("0x73de4 FMOD::ChannelRealManual3D::~ChannelRealManual3D()")
+}
+
+// 0x73e08 — __ZN4FMOD19ChannelRealManual3DD1Ev [watchdog]
+// type: void __fastcall(FMOD::ChannelRealManual3D *__hidden this)
+#[doc(alias = "FMOD::ChannelRealManual3D::~ChannelRealManual3D()")]
+pub fn stub_73e08_wdog154() -> ! {
+    todo!("0x73e08 FMOD::ChannelRealManual3D::~ChannelRealManual3D()")
+}
+
+// 0x73e20 — __ZN4FMOD15ChannelSoftware14setLowPassGainEf [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, float)
+#[doc(alias = "FMOD::ChannelSoftware::setLowPassGain(float)")]
+pub fn stub_73e20_wdog155() -> ! {
+    todo!("0x73e20 FMOD::ChannelSoftware::setLowPassGain(float)")
+}
+
+// 0x73e34 — __ZN4FMOD15ChannelSoftware16setDSPClockDelayEv [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this)
+#[doc(alias = "FMOD::ChannelSoftware::setDSPClockDelay(void)")]
+pub fn stub_73e34_wdog156() -> ! {
+    todo!("0x73e34 FMOD::ChannelSoftware::setDSPClockDelay(void)")
+}
+
+// 0x73f0c — __ZN4FMOD15ChannelSoftware11setPositionEjj [watchdog]
+// type: int __fastcall(unsigned __int64 this, unsigned int)
+#[doc(alias = "FMOD::ChannelSoftware::setPosition(unsigned int,unsigned int)")]
+pub fn stub_73f0c_wdog157() -> ! {
+    todo!("0x73f0c FMOD::ChannelSoftware::setPosition(unsigned int,unsigned int)")
+}
+
+// 0x741f4 — __ZN4FMOD15ChannelSoftware11getPositionEPjj [watchdog]
+// type: int __fastcall(int this, unsigned int *, unsigned int)
+#[doc(alias = "FMOD::ChannelSoftware::getPosition(unsigned int *,unsigned int)")]
+pub fn stub_741f4_wdog158() -> ! {
+    todo!("0x741f4 FMOD::ChannelSoftware::getPosition(unsigned int *,unsigned int)")
+}
+
+// 0x74554 — __ZN4FMOD15ChannelSoftware10getDSPHeadEPPNS_4DSPIE [watchdog]
+// type: int __fastcall(int, _DWORD *)
+#[doc(alias = "FMOD::ChannelSoftware::getDSPHead(FMOD::DSPI **)")]
+pub fn stub_74554_wdog159() -> ! {
+    todo!("0x74554 FMOD::ChannelSoftware::getDSPHead(FMOD::DSPI **)")
+}
+
+// 0x74564 — __ZN4FMOD15ChannelSoftware16moveChannelGroupEPNS_13ChannelGroupIES2_b [watchdog]
+// type: FMOD::DSPI *__fastcall(FMOD::DSPI **this, FMOD::DSPI **, FMOD::DSPI **, bool)
+#[doc(alias = "FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
+pub fn stub_74564_wdog160() -> ! {
+    todo!("0x74564 FMOD::ChannelSoftware::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")
+}
+
+// 0x745d4 — __ZN4FMOD15ChannelSoftware19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
+// type: int __fastcall(int, _DWORD *)
+#[doc(alias = "FMOD::ChannelSoftware::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
+pub fn stub_745d4_wdog161() -> ! {
+    todo!("0x745d4 FMOD::ChannelSoftware::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+}
+
+// 0x7464c — __ZN4FMOD15ChannelSoftware12addToReverbsEPNS_4DSPIE [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, FMOD::DSPI *)
+#[doc(alias = "FMOD::ChannelSoftware::addToReverbs(FMOD::DSPI *)")]
+pub fn stub_7464c_wdog162() -> ! {
+    todo!("0x7464c FMOD::ChannelSoftware::addToReverbs(FMOD::DSPI *)")
+}
+
+// 0x748b4 — __ZN4FMOD15ChannelSoftware11getWaveDataEPfii [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, float *, int, int)
+#[doc(alias = "FMOD::ChannelSoftware::getWaveData(float *,int,int)")]
+pub fn stub_748b4_wdog163() -> ! {
+    todo!("0x748b4 FMOD::ChannelSoftware::getWaveData(float *,int,int)")
+}
+
+// 0x749c4 — __ZN4FMOD15ChannelSoftware11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW [watchdog]
+// type: int __fastcall(int, int, int, int, int)
+#[doc(alias = "FMOD::ChannelSoftware::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")]
+pub fn stub_749c4_wdog164() -> ! {
+    todo!("0x749c4 FMOD::ChannelSoftware::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")
+}
+
+// 0x74b20 — __ZN4FMOD15ChannelSoftware9isPlayingEPbb [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, bool *, bool)
+#[doc(alias = "FMOD::ChannelSoftware::isPlaying(bool *,bool)")]
+pub fn stub_74b20_wdog165() -> ! {
+    todo!("0x74b20 FMOD::ChannelSoftware::isPlaying(bool *,bool)")
+}
+
+// 0x74bd0 — __ZN4FMOD15ChannelSoftware7setModeEj [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, int)
+#[doc(alias = "FMOD::ChannelSoftware::setMode(unsigned int)")]
+pub fn stub_74bd0_wdog166() -> ! {
+    todo!("0x74bd0 FMOD::ChannelSoftware::setMode(unsigned int)")
+}
+
+// 0x74c04 — __ZN4FMOD15ChannelSoftware12getLoopCountEPi [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, int *)
+#[doc(alias = "FMOD::ChannelSoftware::getLoopCount(int *)")]
+pub fn stub_74c04_wdog167() -> ! {
+    todo!("0x74c04 FMOD::ChannelSoftware::getLoopCount(int *)")
+}
+
+// 0x74c44 — __ZN4FMOD15ChannelSoftware12setLoopCountEi [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, int)
+#[doc(alias = "FMOD::ChannelSoftware::setLoopCount(int)")]
+pub fn stub_74c44_wdog168() -> ! {
+    todo!("0x74c44 FMOD::ChannelSoftware::setLoopCount(int)")
+}
+
+// 0x74c90 — __ZN4FMOD15ChannelSoftware13setLoopPointsEjj [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, unsigned int, unsigned int)
+#[doc(alias = "FMOD::ChannelSoftware::setLoopPoints(unsigned int,unsigned int)")]
+pub fn stub_74c90_wdog169() -> ! {
+    todo!("0x74c90 FMOD::ChannelSoftware::setLoopPoints(unsigned int,unsigned int)")
+}
+
+// 0x74cd8 — __ZN4FMOD15ChannelSoftware6setPanEff [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, float32_t, float)
+#[doc(alias = "FMOD::ChannelSoftware::setPan(float,float)")]
+pub fn stub_74cd8_wdog170() -> ! {
+    todo!("0x74cd8 FMOD::ChannelSoftware::setPan(float,float)")
+}
+
+// 0x74de8 — __ZN4FMOD15ChannelSoftware12setFrequencyEf [watchdog]
+// type: FMOD::DSPWaveTable *__fastcall(FMOD::ChannelSoftware *this, float32_t)
+#[doc(alias = "FMOD::ChannelSoftware::setFrequency(float)")]
+pub fn stub_74de8_wdog171() -> ! {
+    todo!("0x74de8 FMOD::ChannelSoftware::setFrequency(float)")
+}
+
+// 0x74edc — __ZN4FMOD15ChannelSoftware15updateReverbMixEPNS_7ReverbIEf [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, FMOD::ReverbI *, float32_t)
+#[doc(alias = "FMOD::ChannelSoftware::updateReverbMix(FMOD::ReverbI *,float)")]
+pub fn stub_74edc_wdog172() -> ! {
+    todo!("0x74edc FMOD::ChannelSoftware::updateReverbMix(FMOD::ReverbI *,float)")
+}
+
+// 0x751dc — __ZN4FMOD15ChannelSoftware15updateDirectMixEf [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, float32_t)
+#[doc(alias = "FMOD::ChannelSoftware::updateDirectMix(float)")]
+pub fn stub_751dc_wdog173() -> ! {
+    todo!("0x751dc FMOD::ChannelSoftware::updateDirectMix(float)")
+}
+
+// 0x75408 — __ZN4FMOD15ChannelSoftware13setupDSPCodecEPNS_4DSPIE [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, FMOD::DSPI *)
+#[doc(alias = "FMOD::ChannelSoftware::setupDSPCodec(FMOD::DSPI *)")]
+pub fn stub_75408_wdog174() -> ! {
+    todo!("0x75408 FMOD::ChannelSoftware::setupDSPCodec(FMOD::DSPI *)")
+}
+
+// 0x75738 — __ZN4FMOD15ChannelSoftware5closeEv [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this)
+#[doc(alias = "FMOD::ChannelSoftware::close(void)")]
+pub fn stub_75738_wdog175() -> ! {
+    todo!("0x75738 FMOD::ChannelSoftware::close(void)")
+}
+
+// 0x757fc — __ZN4FMOD15ChannelSoftware4initEiPNS_7SystemIEPNS_6OutputEPNS_4DSPIE [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, int, FMOD::SystemI *, FMOD::Output *, FMOD::DSPI *)
+#[doc(alias = "FMOD::ChannelSoftware::init(int,FMOD::SystemI *,FMOD::Output *,FMOD::DSPI *)")]
+pub fn stub_757fc_wdog176() -> ! {
+    todo!("0x757fc FMOD::ChannelSoftware::init(int,FMOD::SystemI *,FMOD::Output *,FMOD::DSPI *)")
+}
+
+// 0x759c0 — __ZN4FMOD15ChannelSoftwareC2Ev [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this)
+#[doc(alias = "FMOD::ChannelSoftware::ChannelSoftware(void)")]
+pub fn stub_759c0_wdog177() -> ! {
+    todo!("0x759c0 FMOD::ChannelSoftware::ChannelSoftware(void)")
+}
+
+// 0x75a44 — __ZN4FMOD15ChannelSoftwareC1Ev [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this)
+#[doc(alias = "FMOD::ChannelSoftware::ChannelSoftware(void)")]
+pub fn stub_75a44_wdog178() -> ! {
+    todo!("0x75a44 FMOD::ChannelSoftware::ChannelSoftware(void)")
+}
+
+// 0x75a48 — __ZN4FMOD15ChannelSoftware9setPausedEb [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, bool)
+#[doc(alias = "FMOD::ChannelSoftware::setPaused(bool)")]
+pub fn stub_75a48_wdog179() -> ! {
+    todo!("0x75a48 FMOD::ChannelSoftware::setPaused(bool)")
+}
+
+// 0x75b50 — __ZN4FMOD15ChannelSoftware5startEv [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this)
+#[doc(alias = "FMOD::ChannelSoftware::start(void)")]
+pub fn stub_75b50_wdog180() -> ! {
+    todo!("0x75b50 FMOD::ChannelSoftware::start(void)")
+}
+
+// 0x75be0 — __ZN4FMOD15ChannelSoftware5allocEv [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this)
+#[doc(alias = "FMOD::ChannelSoftware::alloc(void)")]
+pub fn stub_75be0_wdog181() -> ! {
+    todo!("0x75be0 FMOD::ChannelSoftware::alloc(void)")
+}
+
+// 0x75f8c — __ZN4FMOD15ChannelSoftware4stopEv [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this)
+#[doc(alias = "FMOD::ChannelSoftware::stop(void)")]
+pub fn stub_75f8c_wdog182() -> ! {
+    todo!("0x75f8c FMOD::ChannelSoftware::stop(void)")
+}
+
+// 0x762c4 — __ZN4FMOD15ChannelSoftware16setSpeakerLevelsEiPfi [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, int, float *, int)
+#[doc(alias = "FMOD::ChannelSoftware::setSpeakerLevels(int,float *,int)")]
+pub fn stub_762c4_wdog183() -> ! {
+    todo!("0x762c4 FMOD::ChannelSoftware::setSpeakerLevels(int,float *,int)")
+}
+
+// 0x76584 — __ZN4FMOD15ChannelSoftware13setSpeakerMixEffffffff [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, int, int, int, int, float, float, float, float)
+#[doc(alias = "FMOD::ChannelSoftware::setSpeakerMix(float,float,float,float,float,float,float,float)")]
+pub fn stub_76584_wdog184() -> ! {
+    todo!("0x76584 FMOD::ChannelSoftware::setSpeakerMix(float,float,float,float,float,float,float,float)")
+}
+
+// 0x76988 — __ZN4FMOD15ChannelSoftware9setVolumeEf [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, float32_t)
+#[doc(alias = "FMOD::ChannelSoftware::setVolume(float)")]
+pub fn stub_76988_wdog185() -> ! {
+    todo!("0x76988 FMOD::ChannelSoftware::setVolume(float)")
+}
+
+// 0x76a80 — __ZN4FMOD15ChannelSoftware14set3DOcclusionEff [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, float, float)
+#[doc(alias = "FMOD::ChannelSoftware::set3DOcclusion(float,float)")]
+pub fn stub_76a80_wdog186() -> ! {
+    todo!("0x76a80 FMOD::ChannelSoftware::set3DOcclusion(float,float)")
+}
+
+// 0x76b3c — __ZN4FMOD15ChannelSoftware19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, int *)
+#[doc(alias = "FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
+pub fn stub_76b3c_wdog187() -> ! {
+    todo!("0x76b3c FMOD::ChannelSoftware::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+}
+
+// 0x7709c — __ZN4FMOD15ChannelSoftware9getPausedEPb [watchdog]
+// type: int __fastcall(FMOD::ChannelSoftware *this, bool *)
+#[doc(alias = "FMOD::ChannelSoftware::getPaused(bool *)")]
+pub fn stub_7709c_wdog188() -> ! {
+    todo!("0x7709c FMOD::ChannelSoftware::getPaused(bool *)")
+}
+
+// 0x77138 — __ZN4FMOD15ChannelSoftware5allocEPNS_4DSPIE [watchdog]
+// type: int __fastcall(FMOD::DSPI **this, FMOD::DSPI *)
+#[doc(alias = "FMOD::ChannelSoftware::alloc(FMOD::DSPI *)")]
+pub fn stub_77138_wdog189() -> ! {
+    todo!("0x77138 FMOD::ChannelSoftware::alloc(FMOD::DSPI *)")
+}
+
+// 0x773c4 — __ZN4FMOD15ChannelSoftwareD1Ev [watchdog]
+// type: void __fastcall(FMOD::ChannelSoftware *__hidden this)
+#[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
+pub fn stub_773c4_wdog190() -> ! {
+    todo!("0x773c4 FMOD::ChannelSoftware::~ChannelSoftware()")
+}
+
+// 0x773f0 — __ZN4FMOD15ChannelSoftwareD0Ev [watchdog]
+// type: void __fastcall(FMOD::ChannelSoftware *__hidden this)
+#[doc(alias = "FMOD::ChannelSoftware::~ChannelSoftware()")]
+pub fn stub_773f0_wdog191() -> ! {
+    todo!("0x773f0 FMOD::ChannelSoftware::~ChannelSoftware()")
+}
+
+// 0x77428 — __ZN4FMOD13ChannelStream23set2DFreqVolumePanFor3DEv [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this)
+#[doc(alias = "FMOD::ChannelStream::set2DFreqVolumePanFor3D(void)")]
+pub fn stub_77428_wdog192() -> ! {
+    todo!("0x77428 FMOD::ChannelStream::set2DFreqVolumePanFor3D(void)")
+}
+
+// 0x77474 — __ZN4FMOD13ChannelStream16moveChannelGroupEPNS_13ChannelGroupIES2_b [watchdog]
+// type: int __fastcall(int, int, int, unsigned __int8)
+#[doc(alias = "FMOD::ChannelStream::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")]
+pub fn stub_77474_wdog193() -> ! {
+    todo!("0x77474 FMOD::ChannelStream::moveChannelGroup(FMOD::ChannelGroupI *,FMOD::ChannelGroupI *,bool)")
+}
+
+// 0x774e0 — __ZN4FMOD13ChannelStream5startEv [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this)
+#[doc(alias = "FMOD::ChannelStream::start(void)")]
+pub fn stub_774e0_wdog194() -> ! {
+    todo!("0x774e0 FMOD::ChannelStream::start(void)")
+}
+
+// 0x77574 — __ZN4FMOD13ChannelStream6updateEi [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, int)
+#[doc(alias = "FMOD::ChannelStream::update(int)")]
+pub fn stub_77574_wdog195() -> ! {
+    todo!("0x77574 FMOD::ChannelStream::update(int)")
+}
+
+// 0x775d0 — __ZN4FMOD13ChannelStream9setVolumeEf [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, float)
+#[doc(alias = "FMOD::ChannelStream::setVolume(float)")]
+pub fn stub_775d0_wdog196() -> ! {
+    todo!("0x775d0 FMOD::ChannelStream::setVolume(float)")
+}
+
+// 0x77718 — __ZN4FMOD13ChannelStream12setFrequencyEf [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, float)
+#[doc(alias = "FMOD::ChannelStream::setFrequency(float)")]
+pub fn stub_77718_wdog197() -> ! {
+    todo!("0x77718 FMOD::ChannelStream::setFrequency(float)")
+}
+
+// 0x77774 — __ZN4FMOD13ChannelStream6setPanEff [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, float, float)
+#[doc(alias = "FMOD::ChannelStream::setPan(float,float)")]
+pub fn stub_77774_wdog198() -> ! {
+    todo!("0x77774 FMOD::ChannelStream::setPan(float,float)")
+}
+
+// 0x7781c — __ZN4FMOD13ChannelStream16setDSPClockDelayEv [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this)
+#[doc(alias = "FMOD::ChannelStream::setDSPClockDelay(void)")]
+pub fn stub_7781c_wdog199() -> ! {
+    todo!("0x7781c FMOD::ChannelStream::setDSPClockDelay(void)")
+}
+
+// 0x77868 — __ZN4FMOD13ChannelStream13setSpeakerMixEffffffff [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, float, float, float, float, float, float, float, float)
+#[doc(alias = "FMOD::ChannelStream::setSpeakerMix(float,float,float,float,float,float,float,float)")]
+pub fn stub_77868_wdog200() -> ! {
+    todo!("0x77868 FMOD::ChannelStream::setSpeakerMix(float,float,float,float,float,float,float,float)")
+}
+
+// 0x77904 — __ZN4FMOD13ChannelStream16setSpeakerLevelsEiPfi [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, int, float *, int)
+#[doc(alias = "FMOD::ChannelStream::setSpeakerLevels(int,float *,int)")]
+pub fn stub_77904_wdog201() -> ! {
+    todo!("0x77904 FMOD::ChannelStream::setSpeakerLevels(int,float *,int)")
+}
+
+// 0x77970 — __ZN4FMOD13ChannelStream15set3DAttributesEv [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this)
+#[doc(alias = "FMOD::ChannelStream::set3DAttributes(void)")]
+pub fn stub_77970_wdog202() -> ! {
+    todo!("0x77970 FMOD::ChannelStream::set3DAttributes(void)")
+}
+
+// 0x779bc — __ZN4FMOD13ChannelStream14setLowPassGainEf [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, float)
+#[doc(alias = "FMOD::ChannelStream::setLowPassGain(float)")]
+pub fn stub_779bc_wdog203() -> ! {
+    todo!("0x779bc FMOD::ChannelStream::setLowPassGain(float)")
+}
+
+// 0x77a18 — __ZN4FMOD13ChannelStream19set3DMinMaxDistanceEv [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this)
+#[doc(alias = "FMOD::ChannelStream::set3DMinMaxDistance(void)")]
+pub fn stub_77a18_wdog204() -> ! {
+    todo!("0x77a18 FMOD::ChannelStream::set3DMinMaxDistance(void)")
+}
+
+// 0x77a64 — __ZN4FMOD13ChannelStream14set3DOcclusionEff [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, float, float)
+#[doc(alias = "FMOD::ChannelStream::set3DOcclusion(float,float)")]
+pub fn stub_77a64_wdog205() -> ! {
+    todo!("0x77a64 FMOD::ChannelStream::set3DOcclusion(float,float)")
+}
+
+// 0x77ac8 — __ZN4FMOD13ChannelStream19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
+// type: int __fastcall(int, int)
+#[doc(alias = "FMOD::ChannelStream::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
+pub fn stub_77ac8_wdog206() -> ! {
+    todo!("0x77ac8 FMOD::ChannelStream::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+}
+
+// 0x77b24 — __ZN4FMOD13ChannelStream19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
+// type: int __fastcall(int)
+#[doc(alias = "FMOD::ChannelStream::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
+pub fn stub_77b24_wdog207() -> ! {
+    todo!("0x77b24 FMOD::ChannelStream::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+}
+
+// 0x77b48 — __ZN4FMOD13ChannelStream9isPlayingEPbb [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, bool *, bool)
+#[doc(alias = "FMOD::ChannelStream::isPlaying(bool *,bool)")]
+pub fn stub_77b48_wdog208() -> ! {
+    todo!("0x77b48 FMOD::ChannelStream::isPlaying(bool *,bool)")
+}
+
+// 0x77b5c — __ZN4FMOD13ChannelStream11getSpectrumEPfii19FMOD_DSP_FFT_WINDOW [watchdog]
+// type: int __fastcall(int)
+#[doc(alias = "FMOD::ChannelStream::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")]
+pub fn stub_77b5c_wdog209() -> ! {
+    todo!("0x77b5c FMOD::ChannelStream::getSpectrum(float *,int,int,FMOD_DSP_FFT_WINDOW)")
+}
+
+// 0x77b6c — __ZN4FMOD13ChannelStream11getWaveDataEPfii [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, float *, int, int)
+#[doc(alias = "FMOD::ChannelStream::getWaveData(float *,int,int)")]
+pub fn stub_77b6c_wdog210() -> ! {
+    todo!("0x77b6c FMOD::ChannelStream::getWaveData(float *,int,int)")
+}
+
+// 0x77b7c — __ZN4FMOD13ChannelStream10getDSPHeadEPPNS_4DSPIE [watchdog]
+// type: int __fastcall(int)
+#[doc(alias = "FMOD::ChannelStream::getDSPHead(FMOD::DSPI **)")]
+pub fn stub_77b7c_wdog211() -> ! {
+    todo!("0x77b7c FMOD::ChannelStream::getDSPHead(FMOD::DSPI **)")
+}
+
+// 0x77b8c — __ZN4FMOD13ChannelStream12setLoopCountEi [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, int)
+#[doc(alias = "FMOD::ChannelStream::setLoopCount(int)")]
+pub fn stub_77b8c_wdog212() -> ! {
+    todo!("0x77b8c FMOD::ChannelStream::setLoopCount(int)")
+}
+
+// 0x77bc0 — __ZN4FMOD13ChannelStream13setLoopPointsEjj [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, unsigned int, unsigned int)
+#[doc(alias = "FMOD::ChannelStream::setLoopPoints(unsigned int,unsigned int)")]
+pub fn stub_77bc0_wdog213() -> ! {
+    todo!("0x77bc0 FMOD::ChannelStream::setLoopPoints(unsigned int,unsigned int)")
+}
+
+// 0x77c14 — __ZN4FMOD13ChannelStream11getPositionEPjj [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, unsigned int *, unsigned int)
+#[doc(alias = "FMOD::ChannelStream::getPosition(unsigned int *,unsigned int)")]
+pub fn stub_77c14_wdog214() -> ! {
+    todo!("0x77c14 FMOD::ChannelStream::getPosition(unsigned int *,unsigned int)")
+}
+
+// 0x77f74 — __ZN4FMOD13ChannelStream4stopEv [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this)
+#[doc(alias = "FMOD::ChannelStream::stop(void)")]
+pub fn stub_77f74_wdog215() -> ! {
+    todo!("0x77f74 FMOD::ChannelStream::stop(void)")
+}
+
+// 0x78168 — __ZN4FMOD13ChannelStream7setModeEj [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, int)
+#[doc(alias = "FMOD::ChannelStream::setMode(unsigned int)")]
+pub fn stub_78168_wdog216() -> ! {
+    todo!("0x78168 FMOD::ChannelStream::setMode(unsigned int)")
+}
+
+// 0x781f0 — __ZN4FMOD13ChannelStreamC2Ev [watchdog]
+// type: _DWORD *__fastcall(FMOD::ChannelStream *this)
+#[doc(alias = "FMOD::ChannelStream::ChannelStream(void)")]
+pub fn stub_781f0_wdog217() -> ! {
+    todo!("0x781f0 FMOD::ChannelStream::ChannelStream(void)")
+}
+
+// 0x7826c — __ZN4FMOD13ChannelStreamC1Ev [watchdog]
+// type: _DWORD *__fastcall(FMOD::ChannelStream *this)
+#[doc(alias = "FMOD::ChannelStream::ChannelStream(void)")]
+pub fn stub_7826c_wdog218() -> ! {
+    todo!("0x7826c FMOD::ChannelStream::ChannelStream(void)")
+}
+
+// 0x78270 — __ZN4FMOD13ChannelStream5allocEv [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, int, int)
+#[doc(alias = "FMOD::ChannelStream::alloc(void)")]
+pub fn stub_78270_wdog219() -> ! {
+    todo!("0x78270 FMOD::ChannelStream::alloc(void)")
+}
+
+// 0x78540 — __ZN4FMOD13ChannelStream13setPositionExEjjb [watchdog]
+// type: int __fastcall(unsigned __int64 this, unsigned int, bool)
+#[doc(alias = "FMOD::ChannelStream::setPositionEx(unsigned int,unsigned int,bool)")]
+pub fn stub_78540_wdog220() -> ! {
+    todo!("0x78540 FMOD::ChannelStream::setPositionEx(unsigned int,unsigned int,bool)")
+}
+
+// 0x78af0 — __ZN4FMOD13ChannelStream9setPausedEb [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, bool)
+#[doc(alias = "FMOD::ChannelStream::setPaused(bool)")]
+pub fn stub_78af0_wdog221() -> ! {
+    todo!("0x78af0 FMOD::ChannelStream::setPaused(bool)")
+}
+
+// 0x78b80 — __ZN4FMOD13ChannelStream12updateStreamEv [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this)
+#[doc(alias = "FMOD::ChannelStream::updateStream(void)")]
+pub fn stub_78b80_wdog222() -> ! {
+    todo!("0x78b80 FMOD::ChannelStream::updateStream(void)")
+}
+
+// 0x78fac — __ZN4FMOD13ChannelStream8isStreamEv [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this)
+#[doc(alias = "FMOD::ChannelStream::isStream(void)")]
+pub fn stub_78fac_wdog223() -> ! {
+    todo!("0x78fac FMOD::ChannelStream::isStream(void)")
+}
+
+// 0x78fb4 — __ZN4FMOD13ChannelStream11setPositionEjj [watchdog]
+// type: int __fastcall(FMOD::ChannelStream *this, unsigned int, unsigned int)
+#[doc(alias = "FMOD::ChannelStream::setPosition(unsigned int,unsigned int)")]
+pub fn stub_78fb4_wdog224() -> ! {
+    todo!("0x78fb4 FMOD::ChannelStream::setPosition(unsigned int,unsigned int)")
+}
+
+// 0x78fc4 — __ZN4FMOD13ChannelStreamD0Ev [watchdog]
+// type: void __fastcall(FMOD::ChannelStream *__hidden this)
+#[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
+pub fn stub_78fc4_wdog225() -> ! {
+    todo!("0x78fc4 FMOD::ChannelStream::~ChannelStream()")
+}
+
+// 0x78fe8 — __ZN4FMOD13ChannelStreamD1Ev [watchdog]
+// type: void __fastcall(FMOD::ChannelStream *__hidden this)
+#[doc(alias = "FMOD::ChannelStream::~ChannelStream()")]
+pub fn stub_78fe8_wdog226() -> ! {
+    todo!("0x78fe8 FMOD::ChannelStream::~ChannelStream()")
+}
+
+// 0x79000 — __ZN4FMOD12ChannelGroup9setVolumeEf [watchdog]
+// type: int __fastcall(FMOD::ChannelGroup *this, float, FMOD::ChannelGroupI **)
+#[doc(alias = "FMOD::ChannelGroup::setVolume(float)")]
+pub fn stub_79000_wdog227() -> ! {
+    todo!("0x79000 FMOD::ChannelGroup::setVolume(float)")
+}
+
+// 0x79034 — __ZN4FMOD13ChannelGroupI8validateEPNS_12ChannelGroupEPPS0_ [watchdog]
+// type: int __fastcall(int result, int *)
+#[doc(alias = "FMOD::ChannelGroupI::validate(FMOD::ChannelGroup *,FMOD::ChannelGroupI**)")]
+pub fn stub_79034_wdog228() -> ! {
+    todo!("0x79034 FMOD::ChannelGroupI::validate(FMOD::ChannelGroup *,FMOD::ChannelGroupI**)")
+}
+
+// 0x79054 — __ZN4FMOD13ChannelGroupI9getPausedEPb [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this, bool *)
+#[doc(alias = "FMOD::ChannelGroupI::getPaused(bool *)")]
+pub fn stub_79054_wdog229() -> ! {
+    todo!("0x79054 FMOD::ChannelGroupI::getPaused(bool *)")
+}
+
+// 0x7906c — __ZN4FMOD13ChannelGroupI17getMemoryUsedImplEPNS_13MemoryTrackerE [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this, FMOD::MemoryTracker *)
+#[doc(alias = "FMOD::ChannelGroupI::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_7906c_wdog230() -> ! {
+    todo!("0x7906c FMOD::ChannelGroupI::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+
+// 0x790fc — __ZN4FMOD13ChannelGroupI20updateChildMixTargetEPNS_4DSPIE [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this, FMOD::DSPI *)
+#[doc(alias = "FMOD::ChannelGroupI::updateChildMixTarget(FMOD::DSPI *)")]
+pub fn stub_790fc_wdog231() -> ! {
+    todo!("0x790fc FMOD::ChannelGroupI::updateChildMixTarget(FMOD::DSPI *)")
+}
+
+// 0x791e8 — __ZN4FMOD13ChannelGroupI7setMuteEbb [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this, bool, bool)
+#[doc(alias = "FMOD::ChannelGroupI::setMute(bool,bool)")]
+pub fn stub_791e8_wdog232() -> ! {
+    todo!("0x791e8 FMOD::ChannelGroupI::setMute(bool,bool)")
+}
+
+// 0x79280 — __ZN4FMOD13ChannelGroupI9setPausedEbb [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this, bool, bool)
+#[doc(alias = "FMOD::ChannelGroupI::setPaused(bool,bool)")]
+pub fn stub_79280_wdog233() -> ! {
+    todo!("0x79280 FMOD::ChannelGroupI::setPaused(bool,bool)")
+}
+
+// 0x79334 — __ZN4FMOD13ChannelGroupI16setPitchInternalEv [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this)
+#[doc(alias = "FMOD::ChannelGroupI::setPitchInternal(void)")]
+pub fn stub_79334_wdog234() -> ! {
+    todo!("0x79334 FMOD::ChannelGroupI::setPitchInternal(void)")
+}
+
+// 0x793e4 — __ZN4FMOD13ChannelGroupI17setVolumeInternalEv [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this)
+#[doc(alias = "FMOD::ChannelGroupI::setVolumeInternal(void)")]
+pub fn stub_793e4_wdog235() -> ! {
+    todo!("0x793e4 FMOD::ChannelGroupI::setVolumeInternal(void)")
+}
+
+// 0x794c4 — __ZN4FMOD13ChannelGroupI8addGroupEPS0_ [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this, FMOD::ChannelGroupI *)
+#[doc(alias = "FMOD::ChannelGroupI::addGroup(FMOD::ChannelGroupI*)")]
+pub fn stub_794c4_wdog236() -> ! {
+    todo!("0x794c4 FMOD::ChannelGroupI::addGroup(FMOD::ChannelGroupI*)")
+}
+
+// 0x796a4 — __ZN4FMOD13ChannelGroupI9setVolumeEf [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this, float)
+#[doc(alias = "FMOD::ChannelGroupI::setVolume(float)")]
+pub fn stub_796a4_wdog237() -> ! {
+    todo!("0x796a4 FMOD::ChannelGroupI::setVolume(float)")
+}
+
+// 0x796d4 — __ZN4FMOD13ChannelGroupI15releaseInternalEb [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this, bool)
+#[doc(alias = "FMOD::ChannelGroupI::releaseInternal(bool)")]
+pub fn stub_796d4_wdog238() -> ! {
+    todo!("0x796d4 FMOD::ChannelGroupI::releaseInternal(bool)")
+}
+
+// 0x7995c — __ZN4FMOD13ChannelGroupI7releaseEv [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupI *this)
+#[doc(alias = "FMOD::ChannelGroupI::release(void)")]
+pub fn stub_7995c_wdog239() -> ! {
+    todo!("0x7995c FMOD::ChannelGroupI::release(void)")
+}
+
+// 0x79980 — __ZN4FMOD20ChannelGroupSoftware17getMemoryUsedImplEPNS_13MemoryTrackerE [watchdog]
+// type: int __fastcall(FMOD::ChannelGroupSoftware *this, FMOD::MemoryTracker *)
+#[doc(alias = "FMOD::ChannelGroupSoftware::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_79980_wdog240() -> ! {
+    todo!("0x79980 FMOD::ChannelGroupSoftware::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+
+// 0x79a38 — __ZN4FMOD13ChannelGroupI13getMemoryUsedEPNS_13MemoryTrackerE [watchdog]
+// type: int __fastcall(int, int)
+#[doc(alias = "FMOD::ChannelGroupI::getMemoryUsed(FMOD::MemoryTracker *)")]
+pub fn stub_79a38_wdog241() -> ! {
+    todo!("0x79a38 FMOD::ChannelGroupI::getMemoryUsed(FMOD::MemoryTracker *)")
+}
+
+// 0x79a90 — __ZN4FMOD20ChannelGroupSoftware13getMemoryUsedEPNS_13MemoryTrackerE [watchdog]
+// type: int __fastcall(int, int)
+#[doc(alias = "FMOD::ChannelGroupSoftware::getMemoryUsed(FMOD::MemoryTracker *)")]
+pub fn stub_79a90_wdog242() -> ! {
+    todo!("0x79a90 FMOD::ChannelGroupSoftware::getMemoryUsed(FMOD::MemoryTracker *)")
+}
+
+// 0x79ae8 — __ZN4FMOD8ChannelI16returnToFreeListEv [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this)
+#[doc(alias = "FMOD::ChannelI::returnToFreeList(void)")]
+pub fn stub_79ae8_wdog243() -> ! {
+    todo!("0x79ae8 FMOD::ChannelI::returnToFreeList(void)")
+}
+
+// 0x79b98 — __ZN4FMOD8ChannelI14referenceStampEb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, bool)
+#[doc(alias = "FMOD::ChannelI::referenceStamp(bool)")]
+pub fn stub_79b98_wdog244() -> ! {
+    todo!("0x79b98 FMOD::ChannelI::referenceStamp(bool)")
+}
+
+// 0x79bdc — __ZN4FMOD8ChannelI14getRealChannelEPPNS_11ChannelRealEPi [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, FMOD::ChannelReal **, int *)
+#[doc(alias = "FMOD::ChannelI::getRealChannel(FMOD::ChannelReal **,int *)")]
+pub fn stub_79bdc_wdog245() -> ! {
+    todo!("0x79bdc FMOD::ChannelI::getRealChannel(FMOD::ChannelReal **,int *)")
+}
+
+// 0x79ca8 — __ZN4FMOD8ChannelI4initEv [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this)
+#[doc(alias = "FMOD::ChannelI::init(void)")]
+pub fn stub_79ca8_wdog246() -> ! {
+    todo!("0x79ca8 FMOD::ChannelI::init(void)")
+}
+
+// 0x79dd4 — __ZN4FMOD8ChannelIC2EiPNS_7SystemIE [watchdog]
+// type: int __fastcall(FMOD::ChannelI *, int, int)
+#[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
+pub fn stub_79dd4_wdog247() -> ! {
+    todo!("0x79dd4 FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")
+}
+
+// 0x79e84 — __ZN4FMOD8ChannelIC1EiPNS_7SystemIE [watchdog]
+// type: int __fastcall(FMOD::ChannelI *, int, int)
+#[doc(alias = "FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")]
+pub fn stub_79e84_wdog248() -> ! {
+    todo!("0x79e84 FMOD::ChannelI::ChannelI(int,FMOD::SystemI *)")
+}
+
+// 0x79e88 — __ZN4FMOD8ChannelIC2Ev [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this)
+#[doc(alias = "FMOD::ChannelI::ChannelI(void)")]
+pub fn stub_79e88_wdog249() -> ! {
+    todo!("0x79e88 FMOD::ChannelI::ChannelI(void)")
+}
+
+// 0x79ef0 — __ZN4FMOD8ChannelIC1Ev [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this)
+#[doc(alias = "FMOD::ChannelI::ChannelI(void)")]
+pub fn stub_79ef0_wdog250() -> ! {
+    todo!("0x79ef0 FMOD::ChannelI::ChannelI(void)")
+}
+
+// 0x79ef4 — __ZN4FMOD8ChannelI5allocEPNS_4DSPIEb [watchdog]
+// type: int __fastcall(_DWORD *, int, char)
+#[doc(alias = "FMOD::ChannelI::alloc(FMOD::DSPI *,bool)")]
+pub fn stub_79ef4_wdog251() -> ! {
+    todo!("0x79ef4 FMOD::ChannelI::alloc(FMOD::DSPI *,bool)")
+}
+
+// 0x7a0f8 — __ZN4FMOD8ChannelI5startEv [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this)
+#[doc(alias = "FMOD::ChannelI::start(void)")]
+pub fn stub_7a0f8_wdog252() -> ! {
+    todo!("0x7a0f8 FMOD::ChannelI::start(void)")
+}
+
+// 0x7a198 — __ZN4FMOD8ChannelI9getPausedEPb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, bool *)
+#[doc(alias = "FMOD::ChannelI::getPaused(bool *)")]
+pub fn stub_7a198_wdog253() -> ! {
+    todo!("0x7a198 FMOD::ChannelI::getPaused(bool *)")
+}
+
+// 0x7a1ec — __ZN4FMOD8ChannelI9getVolumeEPf [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, float *)
+#[doc(alias = "FMOD::ChannelI::getVolume(float *)")]
+pub fn stub_7a1ec_wdog254() -> ! {
+    todo!("0x7a1ec FMOD::ChannelI::getVolume(float *)")
+}
+
+// 0x7a214 — __ZN4FMOD8ChannelI12getFrequencyEPf [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, float *)
+#[doc(alias = "FMOD::ChannelI::getFrequency(float *)")]
+pub fn stub_7a214_wdog255() -> ! {
+    todo!("0x7a214 FMOD::ChannelI::getFrequency(float *)")
+}
+
+// 0x7a23c — __ZN4FMOD8ChannelI6setPanEfb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, float, bool)
+#[doc(alias = "FMOD::ChannelI::setPan(float,bool)")]
+pub fn stub_7a23c_wdog256() -> ! {
+    todo!("0x7a23c FMOD::ChannelI::setPan(float,bool)")
+}
+
+// 0x7a358 — __ZN4FMOD8ChannelI8setDelayE14FMOD_DELAYTYPEjj [watchdog]
+// type: int __fastcall(_DWORD *, int, int, int)
+#[doc(alias = "FMOD::ChannelI::setDelay(FMOD_DELAYTYPE,unsigned int,unsigned int)")]
+pub fn stub_7a358_wdog257() -> ! {
+    todo!("0x7a358 FMOD::ChannelI::setDelay(FMOD_DELAYTYPE,unsigned int,unsigned int)")
+}
+
+// 0x7a50c — __ZN4FMOD8ChannelI13setSpeakerMixEffffffffb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, float, float, float, float, float, float, float, float, bool)
+#[doc(alias = "FMOD::ChannelI::setSpeakerMix(float,float,float,float,float,float,float,float,bool)")]
+pub fn stub_7a50c_wdog258() -> ! {
+    todo!("0x7a50c FMOD::ChannelI::setSpeakerMix(float,float,float,float,float,float,float,float,bool)")
+}
+
+// 0x7a7dc — __ZN4FMOD8ChannelI16getSpeakerLevelsE12FMOD_SPEAKERPfi [watchdog]
+// type: int __fastcall(_DWORD *, int, int, int)
+#[doc(alias = "FMOD::ChannelI::getSpeakerLevels(FMOD_SPEAKER,float *,int)")]
+pub fn stub_7a7dc_wdog259() -> ! {
+    todo!("0x7a7dc FMOD::ChannelI::getSpeakerLevels(FMOD_SPEAKER,float *,int)")
+}
+
+// 0x7a8b0 — __ZN4FMOD8ChannelI7getMuteEPb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, bool *)
+#[doc(alias = "FMOD::ChannelI::getMute(bool *)")]
+pub fn stub_7a8b0_wdog260() -> ! {
+    todo!("0x7a8b0 FMOD::ChannelI::getMute(bool *)")
+}
+
+// 0x7a8d8 — __ZN4FMOD8ChannelI15set3DAttributesEPK11FMOD_VECTORS3_ [watchdog]
+// type: int __fastcall(int, float *, float *)
+#[doc(alias = "FMOD::ChannelI::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")]
+pub fn stub_7a8d8_wdog261() -> ! {
+    todo!("0x7a8d8 FMOD::ChannelI::set3DAttributes(FMOD_VECTOR const*,FMOD_VECTOR const*)")
+}
+
+// 0x7aa4c — __ZN4FMOD8ChannelI19setReverbPropertiesEPK29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
+// type: int __fastcall(int, int)
+#[doc(alias = "FMOD::ChannelI::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")]
+pub fn stub_7aa4c_wdog262() -> ! {
+    todo!("0x7aa4c FMOD::ChannelI::setReverbProperties(FMOD_REVERB_CHANNELPROPERTIES const*)")
+}
+
+// 0x7aae0 — __ZN4FMOD8ChannelI19getReverbPropertiesEP29FMOD_REVERB_CHANNELPROPERTIES [watchdog]
+// type: int __fastcall(int, int)
+#[doc(alias = "FMOD::ChannelI::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")]
+pub fn stub_7aae0_wdog263() -> ! {
+    todo!("0x7aae0 FMOD::ChannelI::getReverbProperties(FMOD_REVERB_CHANNELPROPERTIES *)")
+}
+
+// 0x7ab74 — __ZN4FMOD8ChannelI9isVirtualEPb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, bool *)
+#[doc(alias = "FMOD::ChannelI::isVirtual(bool *)")]
+pub fn stub_7ab74_wdog264() -> ! {
+    todo!("0x7ab74 FMOD::ChannelI::isVirtual(bool *)")
+}
+
+// 0x7aba0 — __ZN4FMOD8ChannelI21getAudibilityInternalEPfb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, float *, bool)
+#[doc(alias = "FMOD::ChannelI::getAudibilityInternal(float *,bool)")]
+pub fn stub_7aba0_wdog265() -> ! {
+    todo!("0x7aba0 FMOD::ChannelI::getAudibilityInternal(float *,bool)")
+}
+
+// 0x7ad00 — __ZN4FMOD8ChannelI13getAudibilityEPf [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, float *)
+#[doc(alias = "FMOD::ChannelI::getAudibility(float *)")]
+pub fn stub_7ad00_wdog266() -> ! {
+    todo!("0x7ad00 FMOD::ChannelI::getAudibility(float *)")
+}
+
+// 0x7ad08 — __ZN4FMOD8ChannelI15getCurrentSoundEPPNS_6SoundIE [watchdog]
+// type: int __fastcall(int, _DWORD *)
+#[doc(alias = "FMOD::ChannelI::getCurrentSound(FMOD::SoundI **)")]
+pub fn stub_7ad08_wdog267() -> ! {
+    todo!("0x7ad08 FMOD::ChannelI::getCurrentSound(FMOD::SoundI **)")
+}
+
+// 0x7ad44 — __ZN4FMOD8ChannelI13getCurrentDSPEPPNS_4DSPIE [watchdog]
+// type: int __fastcall(int, _DWORD *)
+#[doc(alias = "FMOD::ChannelI::getCurrentDSP(FMOD::DSPI **)")]
+pub fn stub_7ad44_wdog268() -> ! {
+    todo!("0x7ad44 FMOD::ChannelI::getCurrentDSP(FMOD::DSPI **)")
+}
+
+// 0x7ad70 — __ZN4FMOD8ChannelI11setCallbackEPF11FMOD_RESULTP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS5_E [watchdog]
+// type: int __fastcall(int result, int)
+#[doc(alias = "FMOD::ChannelI::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")]
+pub fn stub_7ad70_wdog269() -> ! {
+    todo!("0x7ad70 FMOD::ChannelI::setCallback(FMOD_RESULT (*)(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *))")
+}
+
+// 0x7ad88 — __ZN4FMOD8ChannelI11getPositionEPjj [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, unsigned int *, unsigned int)
+#[doc(alias = "FMOD::ChannelI::getPosition(unsigned int *,unsigned int)")]
+pub fn stub_7ad88_wdog270() -> ! {
+    todo!("0x7ad88 FMOD::ChannelI::getPosition(unsigned int *,unsigned int)")
+}
+
+// 0x7adb0 — __ZN4FMOD8ChannelI16updateSyncPointsEb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, bool)
+#[doc(alias = "FMOD::ChannelI::updateSyncPoints(bool)")]
+pub fn stub_7adb0_wdog271() -> ! {
+    todo!("0x7adb0 FMOD::ChannelI::updateSyncPoints(bool)")
+}
+
+// 0x7b1f8 — __ZN4FMOD8ChannelI12setFrequencyEf [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, float)
+#[doc(alias = "FMOD::ChannelI::setFrequency(float)")]
+pub fn stub_7b1f8_wdog272() -> ! {
+    todo!("0x7b1f8 FMOD::ChannelI::setFrequency(float)")
+}
+
+// 0x7b31c — __ZN4FMOD8ChannelI10getDSPHeadEPPNS_4DSPIE [watchdog]
+// type: int __fastcall(int, int)
+#[doc(alias = "FMOD::ChannelI::getDSPHead(FMOD::DSPI **)")]
+pub fn stub_7b31c_wdog273() -> ! {
+    todo!("0x7b31c FMOD::ChannelI::getDSPHead(FMOD::DSPI **)")
+}
+
+// 0x7b344 — __ZN4FMOD8ChannelI7getModeEPj [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, unsigned int *)
+#[doc(alias = "FMOD::ChannelI::getMode(unsigned int *)")]
+pub fn stub_7b344_wdog274() -> ! {
+    todo!("0x7b344 FMOD::ChannelI::getMode(unsigned int *)")
+}
+
+// 0x7b36c — __ZN4FMOD8ChannelI12setLoopCountEi [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, int)
+#[doc(alias = "FMOD::ChannelI::setLoopCount(int)")]
+pub fn stub_7b36c_wdog275() -> ! {
+    todo!("0x7b36c FMOD::ChannelI::setLoopCount(int)")
+}
+
+// 0x7b40c — __ZN4FMOD8ChannelI12getLoopCountEPi [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, int *)
+#[doc(alias = "FMOD::ChannelI::getLoopCount(int *)")]
+pub fn stub_7b40c_wdog276() -> ! {
+    todo!("0x7b40c FMOD::ChannelI::getLoopCount(int *)")
+}
+
+// 0x7b434 — __ZN4FMOD8ChannelI11setUserDataEPv [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, void *)
+#[doc(alias = "FMOD::ChannelI::setUserData(void *)")]
+pub fn stub_7b434_wdog277() -> ! {
+    todo!("0x7b434 FMOD::ChannelI::setUserData(void *)")
+}
+
+// 0x7b440 — __ZN4FMOD8ChannelI11getUserDataEPPv [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, void **)
+#[doc(alias = "FMOD::ChannelI::getUserData(void **)")]
+pub fn stub_7b440_wdog278() -> ! {
+    todo!("0x7b440 FMOD::ChannelI::getUserData(void **)")
+}
+
+// 0x7b458 — __ZN4FMOD8ChannelI17getMemoryUsedImplEPNS_13MemoryTrackerE [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, FMOD::MemoryTracker *)
+#[doc(alias = "FMOD::ChannelI::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_7b458_wdog279() -> ! {
+    todo!("0x7b458 FMOD::ChannelI::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+
+// 0x7b47c — __ZN4FMOD8ChannelI6addDSPEPNS_4DSPIEPPNS_14DSPConnectionIE [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, FMOD::DSPI *, FMOD::DSPConnectionI **)
+#[doc(alias = "FMOD::ChannelI::addDSP(FMOD::DSPI *,FMOD::DSPConnectionI **)")]
+pub fn stub_7b47c_wdog280() -> ! {
+    todo!("0x7b47c FMOD::ChannelI::addDSP(FMOD::DSPI *,FMOD::DSPConnectionI **)")
+}
+
+// 0x7b4e8 — __ZN4FMOD8ChannelI16setSpeakerLevelsE12FMOD_SPEAKERPfib [watchdog]
+// type: int __fastcall(int, unsigned int, int, int, char)
+#[doc(alias = "FMOD::ChannelI::setSpeakerLevels(FMOD_SPEAKER,float *,int,bool)")]
+pub fn stub_7b4e8_wdog281() -> ! {
+    todo!("0x7b4e8 FMOD::ChannelI::setSpeakerLevels(FMOD_SPEAKER,float *,int,bool)")
+}
+
+// 0x7b79c — __ZN4FMOD8ChannelI21calculate3DReverbGainEPNS_7ReverbIEP11FMOD_VECTORPf [watchdog]
+// type: int __fastcall(int, int, int, __int32 *)
+#[doc(alias = "FMOD::ChannelI::calculate3DReverbGain(FMOD::ReverbI *,FMOD_VECTOR *,float *)")]
+pub fn stub_7b79c_wdog282() -> ! {
+    todo!("0x7b79c FMOD::ChannelI::calculate3DReverbGain(FMOD::ReverbI *,FMOD_VECTOR *,float *)")
+}
+
+// 0x7b860 — __ZN4FMOD8ChannelI5allocEPNS_6SoundIEb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, FMOD::SoundI *, bool)
+#[doc(alias = "FMOD::ChannelI::alloc(FMOD::SoundI *,bool)")]
+pub fn stub_7b860_wdog283() -> ! {
+    todo!("0x7b860 FMOD::ChannelI::alloc(FMOD::SoundI *,bool)")
+}
+
+// 0x7bbc4 — __ZN4FMOD8ChannelI23calcVolumeAndPitchFor3DEv [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this)
+#[doc(alias = "FMOD::ChannelI::calcVolumeAndPitchFor3D(void)")]
+pub fn stub_7bbc4_wdog284() -> ! {
+    todo!("0x7bbc4 FMOD::ChannelI::calcVolumeAndPitchFor3D(void)")
+}
+
+// 0x7c164 — __ZN4FMOD8ChannelI8validateEPNS_7ChannelEPPS0_ [watchdog]
+// type: int __fastcall(unsigned int, _DWORD *, FMOD::SystemI **)
+#[doc(alias = "FMOD::ChannelI::validate(FMOD::Channel *,FMOD::ChannelI**)")]
+pub fn stub_7c164_wdog285() -> ! {
+    todo!("0x7c164 FMOD::ChannelI::validate(FMOD::Channel *,FMOD::ChannelI**)")
+}
+
+// 0x7c224 — __ZN4FMOD8ChannelI9isPlayingEPb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, bool *)
+#[doc(alias = "FMOD::ChannelI::isPlaying(bool *)")]
+pub fn stub_7c224_wdog286() -> ! {
+    todo!("0x7c224 FMOD::ChannelI::isPlaying(bool *)")
+}
+
+// 0x7c3d8 — __ZN4FMOD8ChannelI13getLoopPointsEPjjS1_j [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, unsigned int *, unsigned int, unsigned int *, unsigned int)
+#[doc(alias = "FMOD::ChannelI::getLoopPoints(unsigned int *,unsigned int,unsigned int *,unsigned int)")]
+pub fn stub_7c3d8_wdog287() -> ! {
+    todo!("0x7c3d8 FMOD::ChannelI::getLoopPoints(unsigned int *,unsigned int,unsigned int *,unsigned int)")
+}
+
+// 0x7c784 — __ZN4FMOD8ChannelI14getChannelInfoEPNS_17FMOD_CHANNEL_INFOE [watchdog]
+// type: int __fastcall(FMOD::ChannelI *, int)
+#[doc(alias = "FMOD::ChannelI::getChannelInfo(FMOD::FMOD_CHANNEL_INFO *)")]
+pub fn stub_7c784_wdog288() -> ! {
+    todo!("0x7c784 FMOD::ChannelI::getChannelInfo(FMOD::FMOD_CHANNEL_INFO *)")
+}
+
+// 0x7c83c — __ZN4FMOD8ChannelI11setPositionEjj [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, unsigned int, unsigned int)
+#[doc(alias = "FMOD::ChannelI::setPosition(unsigned int,unsigned int)")]
+pub fn stub_7c83c_wdog289() -> ! {
+    todo!("0x7c83c FMOD::ChannelI::setPosition(unsigned int,unsigned int)")
+}
+
+// 0x7ce58 — __ZN4FMOD8ChannelI13setLoopPointsEjjjj [watchdog]
+// type: int __fastcall(unsigned __int64 this, unsigned int, unsigned int, unsigned int)
+#[doc(alias = "FMOD::ChannelI::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)")]
+pub fn stub_7ce58_wdog290() -> ! {
+    todo!("0x7ce58 FMOD::ChannelI::setLoopPoints(unsigned int,unsigned int,unsigned int,unsigned int)")
+}
+
+// 0x7d208 — __ZN4FMOD8ChannelI14setChannelInfoEPNS_17FMOD_CHANNEL_INFOE [watchdog]
+// type: int __fastcall(int, int)
+#[doc(alias = "FMOD::ChannelI::setChannelInfo(FMOD::FMOD_CHANNEL_INFO *)")]
+pub fn stub_7d208_wdog291() -> ! {
+    todo!("0x7d208 FMOD::ChannelI::setChannelInfo(FMOD::FMOD_CHANNEL_INFO *)")
+}
+
+// 0x7d480 — __ZN4FMOD8ChannelI12forceVirtualEb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, bool)
+#[doc(alias = "FMOD::ChannelI::forceVirtual(bool)")]
+pub fn stub_7d480_wdog292() -> ! {
+    todo!("0x7d480 FMOD::ChannelI::forceVirtual(bool)")
+}
+
+// 0x7d5fc — __ZN4FMOD8ChannelI14updatePositionEv [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this)
+#[doc(alias = "FMOD::ChannelI::updatePosition(void)")]
+pub fn stub_7d5fc_wdog293() -> ! {
+    todo!("0x7d5fc FMOD::ChannelI::updatePosition(void)")
+}
+
+// 0x7d8c4 — __ZN4FMOD8ChannelI22set3DOcclusionInternalEffb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, float, float, bool)
+#[doc(alias = "FMOD::ChannelI::set3DOcclusionInternal(float,float,bool)")]
+pub fn stub_7d8c4_wdog294() -> ! {
+    todo!("0x7d8c4 FMOD::ChannelI::set3DOcclusionInternal(float,float,bool)")
+}
+
+// 0x7d9b8 — __ZN4FMOD8ChannelI11setPriorityEi [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, unsigned int)
+#[doc(alias = "FMOD::ChannelI::setPriority(int)")]
+pub fn stub_7d9b8_wdog295() -> ! {
+    todo!("0x7d9b8 FMOD::ChannelI::setPriority(int)")
+}
+
+// 0x7d9d0 — __ZN4FMOD8ChannelI9setVolumeEfb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, float, bool)
+#[doc(alias = "FMOD::ChannelI::setVolume(float,bool)")]
+pub fn stub_7d9d0_wdog296() -> ! {
+    todo!("0x7d9d0 FMOD::ChannelI::setVolume(float,bool)")
+}
+
+// 0x7db84 — __ZN4FMOD8ChannelI7setMuteEb [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, bool)
+#[doc(alias = "FMOD::ChannelI::setMute(bool)")]
+pub fn stub_7db84_wdog297() -> ! {
+    todo!("0x7db84 FMOD::ChannelI::setMute(bool)")
+}
+
+// 0x7dc98 — __ZN4FMOD8ChannelI11setDefaultsEv [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this)
+#[doc(alias = "FMOD::ChannelI::setDefaults(void)")]
+pub fn stub_7dc98_wdog298() -> ! {
+    todo!("0x7dc98 FMOD::ChannelI::setDefaults(void)")
+}
+
+// 0x7df78 — __ZN4FMOD8ChannelI6updateEib [watchdog]
+// type: int __fastcall(FMOD::ChannelI *this, unsigned int, bool)
+#[doc(alias = "FMOD::ChannelI::update(int,bool)")]
+pub fn stub_7df78_wdog299() -> ! {
+    todo!("0x7df78 FMOD::ChannelI::update(int,bool)")
+}
