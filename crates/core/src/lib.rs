@@ -45,3 +45,4 @@ pub mod generated_core_shard_e;
 pub mod generated_core_shard_f;
 pub mod generated_core_shard_g;
 pub mod generated_core_shard_h;
+pub mod generated_core_shard_i;
