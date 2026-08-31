@@ -25834,3 +25834,721 @@ pub fn stub_0x476644() -> ! {
 pub fn stub_0x47664c() -> ! {
     todo!("0x47664c RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
 }
+// 0x476698 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getEnumItem(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x476698() -> ! {
+    todo!("0x476698 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4766b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const"
+)]
+pub fn stub_0x4766b8() -> ! {
+    todo!("0x4766b8 RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x4766ec — __ZNK3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEE14convertToIndexES3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToIndex(RBX::DataModelMesh::LODType)const"
+)]
+pub fn stub_0x4766ec() -> ! {
+    todo!("0x4766ec RBX::Reflection::EnumDesc<RBX::DataModelMesh::LODType>::convertToIndex(RBX::DataModelMesh::LODType)const")
+}
+
+// 0x47675c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_13DataModelMeshENS2_7LODTypeEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setIntValue(RBX::Reflection::DescribedBase *,int)const"
+)]
+pub fn stub_0x47675c() -> ! {
+    todo!("0x47675c RBX::Reflection::EnumPropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x47679c — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isReadOnly(void)const"
+)]
+pub fn stub_0x47679c() -> ! {
+    todo!("0x47679c RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isReadOnly(void)const")
+}
+
+// 0x4767a0 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x4767a0() -> ! {
+    todo!("0x4767a0 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::isWriteOnly(void)const")
+}
+
+// 0x4767a4 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x4767a4() -> ! {
+    todo!("0x4767a4 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4767c4 — __ZNK3RBX10Reflection14PropDescriptorINS_13DataModelMeshENS2_7LODTypeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModelMesh::LODType const&)const"
+)]
+pub fn stub_0x4767c4() -> ! {
+    todo!("0x4767c4 RBX::Reflection::PropDescriptor<RBX::DataModelMesh,RBX::DataModelMesh::LODType>::GetSetImpl<RBX::DataModelMesh::LODType (RBX::DataModelMesh::*)(void)const,void (RBX::DataModelMesh::*)(RBX::DataModelMesh::LODType)>::setValue(RBX::Reflection::DescribedBase *,RBX::DataModelMesh::LODType const&)const")
+}
+
+// 0x477a14 — __ZN3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::~PropDescriptor()")]
+pub fn stub_0x477a14() -> ! {
+    todo!("0x477a14 RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::~PropDescriptor()")
+}
+
+// 0x477a38 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED1Ev
+// was: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x477a38() -> ! {
+    todo!("0x477a38 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()")
+}
+
+// 0x477b50 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvbELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::~BoundFuncDesc()")]
+pub fn stub_0x477b50() -> ! {
+    todo!("0x477b50 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::~BoundFuncDesc()")
+}
+
+// 0x479b80 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvbELi1EEC2EMS2_FvbEPKcS8_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::BoundFuncDesc(void (RBX::DebrisService::*)(bool),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
+)]
+pub fn stub_0x479b80() -> ! {
+    todo!("0x479b80 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::BoundFuncDesc(void (RBX::DebrisService::*)(bool),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x479cf8 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvbELi1EE16declareSignatureEPKcNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)"
+)]
+pub fn stub_0x479cf8() -> ! {
+    todo!("0x479cf8 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0x479d28 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvbELi1EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::~BoundFuncDesc()")]
+pub fn stub_0x479d28() -> ! {
+    todo!("0x479d28 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::~BoundFuncDesc()")
+}
+
+// 0x479dfc — __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvbELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
+)]
+pub fn stub_0x479dfc() -> ! {
+    todo!("0x479dfc RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(bool),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x479e30 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EEC2EMS2_FvS6_dEPKcSC_SC_dNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// was: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
+)]
+pub fn stub_0x479e30() -> ! {
+    todo!("0x479e30 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x47a050 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_
+// was: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)"
+)]
+pub fn stub_0x47a050() -> ! {
+    todo!("0x47a050 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+}
+
+// 0x47a09c — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED0Ev
+// was: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()"
+)]
+pub fn stub_0x47a09c() -> ! {
+    todo!("0x47a09c RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()")
+}
+
+// 0x47a1c8 — __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+// was: RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
+)]
+pub fn stub_0x47a1c8() -> ! {
+    todo!("0x47a1c8 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x47a2cc — __ZN3RBX10Reflection11Call2HelperINS_13DebrisServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEdES6_dvE4callEPS2_S8_RNS0_7VariantERKS6_RKd
+// was: RBX::Reflection::Call2Helper<RBX::DebrisService,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),boost::shared_ptr<RBX::Instance>,double,void>::call(RBX::DebrisService*,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,double const&)
+#[doc(
+    alias = "RBX::Reflection::Call2Helper<RBX::DebrisService,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),boost::shared_ptr<RBX::Instance>,double,void>::call(RBX::DebrisService*,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,double const&)"
+)]
+pub fn stub_0x47a2cc() -> ! {
+    todo!("0x47a2cc RBX::Reflection::Call2Helper<RBX::DebrisService,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),boost::shared_ptr<RBX::Instance>,double,void>::call(RBX::DebrisService*,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,double const&)")
+}
+
+// 0x47a3c0 — __ZN3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::PropDescriptor<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>(char const*,char const*,int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x47a3c0() -> ! {
+    todo!("0x47a3c0 RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::PropDescriptor<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>(char const*,char const*,int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x47a4d4 — __ZN3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::~PropDescriptor()")]
+pub fn stub_0x47a4d4() -> ! {
+    todo!("0x47a4d4 RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::~PropDescriptor()")
+}
+
+// 0x47a500 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isReadOnly(void)const"
+)]
+pub fn stub_0x47a500() -> ! {
+    todo!("0x47a500 RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isReadOnly(void)const")
+}
+
+// 0x47a504 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x47a504() -> ! {
+    todo!("0x47a504 RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::isWriteOnly(void)const")
+}
+
+// 0x47a508 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x47a508() -> ! {
+    todo!("0x47a508 RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x47a528 — __ZNK3RBX10Reflection14PropDescriptorINS_13DebrisServiceEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const"
+)]
+pub fn stub_0x47a528() -> ! {
+    todo!("0x47a528 RBX::Reflection::PropDescriptor<RBX::DebrisService,int>::GetSetImpl<int (RBX::DebrisService::*)(void)const,void (RBX::DebrisService::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+}
+
+// 0x47a87c — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::EnumDesc(void)")]
+pub fn stub_0x47a87c() -> ! {
+    todo!("0x47a87c RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::EnumDesc(void)")
+}
+
+// 0x47ab28 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::EnumDesc(void)")]
+pub fn stub_0x47ab28() -> ! {
+    todo!("0x47ab28 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::EnumDesc(void)")
+}
+
+// 0x47ad04 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::EnumDesc(void)")]
+pub fn stub_0x47ad04() -> ! {
+    todo!("0x47ad04 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::EnumDesc(void)")
+}
+
+// 0x47aee0 — __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::EnumDesc(void)")]
+pub fn stub_0x47aee0() -> ! {
+    todo!("0x47aee0 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::EnumDesc(void)")
+}
+
+// 0x47b0b8 — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::EnumDesc(void)")]
+pub fn stub_0x47b0b8() -> ! {
+    todo!("0x47b0b8 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::EnumDesc(void)")
+}
+
+// 0x47b0bc — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::EnumDesc(void)")]
+pub fn stub_0x47b0bc() -> ! {
+    todo!("0x47b0bc RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::EnumDesc(void)")
+}
+
+// 0x47b2f4 — __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::EnumDesc(void)")]
+pub fn stub_0x47b2f4() -> ! {
+    todo!("0x47b2f4 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::EnumDesc(void)")
+}
+
+// 0x47c9c0 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE7addPairES3_PKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::addPair(RBX::TaskScheduler::ThreadPoolConfig,char const*)"
+)]
+pub fn stub_0x47c9c0() -> ! {
+    todo!("0x47c9c0 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::addPair(RBX::TaskScheduler::ThreadPoolConfig,char const*)")
+}
+
+// 0x47cd20 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE9addLegacyEiPKcS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::addLegacy(int,char const*,RBX::TaskScheduler::ThreadPoolConfig)"
+)]
+pub fn stub_0x47cd20() -> ! {
+    todo!("0x47cd20 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::addLegacy(int,char const*,RBX::TaskScheduler::ThreadPoolConfig)")
+}
+
+// 0x47cd74 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE7addPairES3_PKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::addPair(RBX::TaskScheduler::PriorityMethod,char const*)"
+)]
+pub fn stub_0x47cd74() -> ! {
+    todo!("0x47cd74 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::addPair(RBX::TaskScheduler::PriorityMethod,char const*)")
+}
+
+// 0x47d0d4 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE7addPairES4_PKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::addPair(RBX::TaskScheduler::Job::SleepAdjustMethod,char const*)"
+)]
+pub fn stub_0x47d0d4() -> ! {
+    todo!("0x47d0d4 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::addPair(RBX::TaskScheduler::Job::SleepAdjustMethod,char const*)")
+}
+
+// 0x47d434 — __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE7addPairES3_PKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)"
+)]
+pub fn stub_0x47d434() -> ! {
+    todo!("0x47d434 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::addPair(RBX::DebugSettings::ErrorReporting,char const*)")
+}
+
+// 0x47d794 — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE7addPairES3_PKc
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::addPair(RBX::EThrottle::EThrottleType,char const*)"
+)]
+pub fn stub_0x47d794() -> ! {
+    todo!("0x47d794 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::addPair(RBX::EThrottle::EThrottleType,char const*)")
+}
+
+// 0x47daf4 — __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::addPair(RBX::Time::SampleMethod,char const*)")]
+pub fn stub_0x47daf4() -> ! {
+    todo!("0x47daf4 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::addPair(RBX::Time::SampleMethod,char const*)")
+}
+
+// 0x47dec8 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsESsED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()")]
+pub fn stub_0x47dec8() -> ! {
+    todo!("0x47dec8 RBX::Reflection::PropDescriptor<RBX::DebugSettings,std::string>::~PropDescriptor()")
+}
+
+// 0x47df60 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEfED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()")]
+pub fn stub_0x47df60() -> ! {
+    todo!("0x47df60 RBX::Reflection::PropDescriptor<RBX::DebugSettings,float>::~PropDescriptor()")
+}
+
+// 0x47df84 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEiED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")]
+pub fn stub_0x47df84() -> ! {
+    todo!("0x47df84 RBX::Reflection::PropDescriptor<RBX::DebugSettings,int>::~PropDescriptor()")
+}
+
+// 0x47dfa8 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEbED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()")]
+pub fn stub_0x47dfa8() -> ! {
+    todo!("0x47dfa8 RBX::Reflection::PropDescriptor<RBX::DebugSettings,bool>::~PropDescriptor()")
+}
+
+// 0x47dfd4 — __ZN3RBX10Reflection14PropDescriptorINS_13DebugSettingsEdED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()")]
+pub fn stub_0x47dfd4() -> ! {
+    todo!("0x47dfd4 RBX::Reflection::PropDescriptor<RBX::DebugSettings,double>::~PropDescriptor()")
+}
+
+// 0x47e018 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev
+// was: RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()"
+)]
+pub fn stub_0x47e018() -> ! {
+    todo!("0x47e018 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x47e050 — __ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEiED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,int>::~PropDescriptor()")]
+pub fn stub_0x47e050() -> ! {
+    todo!("0x47e050 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,int>::~PropDescriptor()")
+}
+
+// 0x47e088 — __ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEdED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::~PropDescriptor()")]
+pub fn stub_0x47e088() -> ! {
+    todo!("0x47e088 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,double>::~PropDescriptor()")
+}
+
+// 0x47e10c — __ZN3RBX10Reflection13BoundFuncDescINS_21TaskSchedulerSettingsEFvbdELi2EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TaskSchedulerSettings,void ()(bool,double),2>::~BoundFuncDesc()")]
+pub fn stub_0x47e10c() -> ! {
+    todo!("0x47e10c RBX::Reflection::BoundFuncDesc<RBX::TaskSchedulerSettings,void ()(bool,double),2>::~BoundFuncDesc()")
+}
+
+// 0x47e15c — __ZN3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS2_14ErrorReportingEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x47e15c() -> ! {
+    todo!("0x47e15c RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::DebugSettings::ErrorReporting>::~EnumPropDescriptor()")
+}
+
+// 0x47e184 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFvvELi0EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_0x47e184() -> ! {
+    todo!("0x47e184 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x47e1b0 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFvbELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::~BoundFuncDesc()")]
+pub fn stub_0x47e1b0() -> ! {
+    todo!("0x47e1b0 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,void ()(bool),1>::~BoundFuncDesc()")
+}
+
+// 0x47e1f0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler16ThreadPoolConfigEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::ThreadPoolConfig>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x47e1f0() -> ! {
+    todo!("0x47e1f0 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::ThreadPoolConfig>::~EnumPropDescriptor()")
+}
+
+// 0x47e214 — __ZN3RBX10Reflection13BoundFuncDescINS_21TaskSchedulerSettingsEFvdiELi2EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::TaskSchedulerSettings,void ()(double,int),2>::~BoundFuncDesc()")]
+pub fn stub_0x47e214() -> ! {
+    todo!("0x47e214 RBX::Reflection::BoundFuncDesc<RBX::TaskSchedulerSettings,void ()(double,int),2>::~BoundFuncDesc()")
+}
+
+// 0x47e26c — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler14PriorityMethodEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x47e26c() -> ! {
+    todo!("0x47e26c RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::PriorityMethod>::~EnumPropDescriptor()")
+}
+
+// 0x47e2a0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_13TaskScheduler3Job17SleepAdjustMethodEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x47e2a0() -> ! {
+    todo!("0x47e2a0 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumPropDescriptor()")
+}
+
+// 0x47e2d4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_21TaskSchedulerSettingsENS_16DataModelArbiter16ConcurrencyModelEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x47e2d4() -> ! {
+    todo!("0x47e2d4 RBX::Reflection::EnumPropDescriptor<RBX::TaskSchedulerSettings,RBX::DataModelArbiter::ConcurrencyModel>::~EnumPropDescriptor()")
+}
+
+// 0x47e308 — __ZN3RBX10Reflection14PropDescriptorINS_21TaskSchedulerSettingsEbED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::~PropDescriptor()")]
+pub fn stub_0x47e308() -> ! {
+    todo!("0x47e308 RBX::Reflection::PropDescriptor<RBX::TaskSchedulerSettings,bool>::~PropDescriptor()")
+}
+
+// 0x47e364 — __ZN3RBX10Reflection18EnumPropDescriptorINS_13DebugSettingsENS_4Time12SampleMethodEED1Ev
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()"
+)]
+pub fn stub_0x47e364() -> ! {
+    todo!("0x47e364 RBX::Reflection::EnumPropDescriptor<RBX::DebugSettings,RBX::Time::SampleMethod>::~EnumPropDescriptor()")
+}
+
+// 0x47e924 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")]
+pub fn stub_0x47e924() -> ! {
+    todo!("0x47e924 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")
+}
+
+// 0x47e928 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")]
+pub fn stub_0x47e928() -> ! {
+    todo!("0x47e928 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::~EnumDesc()")
+}
+
+// 0x47e9c8 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::lookup(char const*)const")]
+pub fn stub_0x47e9c8() -> ! {
+    todo!("0x47e9c8 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::lookup(char const*)const")
+}
+
+// 0x47e9f8 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE6lookupERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::lookup(RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x47e9f8() -> ! {
+    todo!("0x47e9f8 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x47ea18 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x47ea18() -> ! {
+    todo!("0x47ea18 RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x47ea4c — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x47ea4c() -> ! {
+    todo!("0x47ea4c RBX::Reflection::EnumDesc<RBX::TaskScheduler::ThreadPoolConfig>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x47eb90 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")]
+pub fn stub_0x47eb90() -> ! {
+    todo!("0x47eb90 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")
+}
+
+// 0x47eb94 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")]
+pub fn stub_0x47eb94() -> ! {
+    todo!("0x47eb94 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::~EnumDesc()")
+}
+
+// 0x47ec34 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::lookup(char const*)const")]
+pub fn stub_0x47ec34() -> ! {
+    todo!("0x47ec34 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::lookup(char const*)const")
+}
+
+// 0x47ec64 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE6lookupERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::lookup(RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x47ec64() -> ! {
+    todo!("0x47ec64 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x47ec84 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x47ec84() -> ! {
+    todo!("0x47ec84 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x47ecb8 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler14PriorityMethodEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x47ecb8() -> ! {
+    todo!("0x47ecb8 RBX::Reflection::EnumDesc<RBX::TaskScheduler::PriorityMethod>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x47edfc — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")]
+pub fn stub_0x47edfc() -> ! {
+    todo!("0x47edfc RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")
+}
+
+// 0x47ee00 — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")]
+pub fn stub_0x47ee00() -> ! {
+    todo!("0x47ee00 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::~EnumDesc()")
+}
+
+// 0x47eea0 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::lookup(char const*)const")]
+pub fn stub_0x47eea0() -> ! {
+    todo!("0x47eea0 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::lookup(char const*)const")
+}
+
+// 0x47eed0 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE6lookupERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::lookup(RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x47eed0() -> ! {
+    todo!("0x47eed0 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x47eef0 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x47eef0() -> ! {
+    todo!("0x47eef0 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x47ef24 — __ZNK3RBX10Reflection8EnumDescINS_13TaskScheduler3Job17SleepAdjustMethodEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x47ef24() -> ! {
+    todo!("0x47ef24 RBX::Reflection::EnumDesc<RBX::TaskScheduler::Job::SleepAdjustMethod>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x47f068 — __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
+pub fn stub_0x47f068() -> ! {
+    todo!("0x47f068 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+}
+
+// 0x47f06c — __ZN3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")]
+pub fn stub_0x47f06c() -> ! {
+    todo!("0x47f06c RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::~EnumDesc()")
+}
+
+// 0x47f10c — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::lookup(char const*)const")]
+pub fn stub_0x47f10c() -> ! {
+    todo!("0x47f10c RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::lookup(char const*)const")
+}
+
+// 0x47f13c — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE6lookupERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::lookup(RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x47f13c() -> ! {
+    todo!("0x47f13c RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x47f15c — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x47f15c() -> ! {
+    todo!("0x47f15c RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x47f190 — __ZNK3RBX10Reflection8EnumDescINS_13DebugSettings14ErrorReportingEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x47f190() -> ! {
+    todo!("0x47f190 RBX::Reflection::EnumDesc<RBX::DebugSettings::ErrorReporting>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x47f2d4 — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")]
+pub fn stub_0x47f2d4() -> ! {
+    todo!("0x47f2d4 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")
+}
+
+// 0x47f2d8 — __ZN3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")]
+pub fn stub_0x47f2d8() -> ! {
+    todo!("0x47f2d8 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::~EnumDesc()")
+}
+
+// 0x47f378 — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::lookup(char const*)const")]
+pub fn stub_0x47f378() -> ! {
+    todo!("0x47f378 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::lookup(char const*)const")
+}
+
+// 0x47f3a8 — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE6lookupERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::lookup(RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x47f3a8() -> ! {
+    todo!("0x47f3a8 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x47f3c8 — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x47f3c8() -> ! {
+    todo!("0x47f3c8 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x47f3fc — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x47f3fc() -> ! {
+    todo!("0x47f3fc RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x47f540 — __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")]
+pub fn stub_0x47f540() -> ! {
+    todo!("0x47f540 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")
+}
+
+// 0x47f544 — __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")]
+pub fn stub_0x47f544() -> ! {
+    todo!("0x47f544 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")
+}
+
+// 0x47f5e4 — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::lookup(char const*)const")]
+pub fn stub_0x47f5e4() -> ! {
+    todo!("0x47f5e4 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::lookup(char const*)const")
+}
+
+// 0x47f614 — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_0x47f614() -> ! {
+    todo!("0x47f614 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x47f634 — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE14convertToValueEmRNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x47f634() -> ! {
+    todo!("0x47f634 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x47f668 — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE15convertToStringEmRSs
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToString(unsigned long,std::string &)const"
+)]
+pub fn stub_0x47f668() -> ! {
+    todo!("0x47f668 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x48016c — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE15convertToStringERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToString(RBX::Time::SampleMethod const&)const"
+)]
+pub fn stub_0x48016c() -> ! {
+    todo!("0x48016c RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToString(RBX::Time::SampleMethod const&)const")
+}
+
+// 0x4803d8 — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE13convertToItemERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToItem(RBX::Time::SampleMethod const&)const"
+)]
+pub fn stub_0x4803d8() -> ! {
+    todo!("0x4803d8 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToItem(RBX::Time::SampleMethod const&)const")
+}
+
+// 0x480598 — __ZNK3RBX10Reflection8EnumDescINS_4Time12SampleMethodEE14convertToValueERKNS_4NameERS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToValue(RBX::Name const&,RBX::Time::SampleMethod&)const"
+)]
+pub fn stub_0x480598() -> ! {
+    todo!("0x480598 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::convertToValue(RBX::Name const&,RBX::Time::SampleMethod&)const")
+}
+
+// 0x480614 — __ZN3RBX10Reflection8EnumDescINS_4Time12SampleMethodEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")]
+pub fn stub_0x480614() -> ! {
+    todo!("0x480614 RBX::Reflection::EnumDesc<RBX::Time::SampleMethod>::~EnumDesc()")
+}
+
+// 0x4807e8 — __ZNK3RBX10Reflection8EnumDescINS_9EThrottle13EThrottleTypeEE15convertToStringERKS3_
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToString(RBX::EThrottle::EThrottleType const&)const"
+)]
+pub fn stub_0x4807e8() -> ! {
+    todo!("0x4807e8 RBX::Reflection::EnumDesc<RBX::EThrottle::EThrottleType>::convertToString(RBX::EThrottle::EThrottleType const&)const")
+}
