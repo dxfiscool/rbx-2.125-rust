@@ -28,3 +28,4 @@ pub mod roblox_view;
 pub mod view_controllers;
 pub mod generated_24;
 pub mod generated_25;
+pub mod generated_26;

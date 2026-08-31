@@ -1090,7 +1090,7 @@ pub fn stub_7a9078() -> ! {
     todo!("0x7a9078 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_10ChatOutputES7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::call(RBX::Network::ChatMessage const&)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::call(RBX::Network::ChatMessage const&)")]
 // 0x7a9080 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7Network11ChatMessageEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_10ChatOutputES7_EENSC_5list2INSC_5valueIPSG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Network::ChatMessage const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Network::ChatMessage const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Network::ChatMessage const&)>::call(RBX::Network::ChatMessage const&)
 pub fn stub_7a9080() -> ! {
@@ -1139,7 +1139,7 @@ pub fn stub_7c6850() -> ! {
     todo!("0x7c6850 __ZN3rbx8callableINS_7signals6signalIFvN3RBX8Humanoid6StatusEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Humanoid::Status)>::slot,boost::function<void ()(RBX::Humanoid::Status)>,1,void ()(RBX::Humanoid::Status)>::call(RBX::Humanoid::Status)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Humanoid::Status)>::slot,boost::function<void ()(RBX::Humanoid::Status)>,1,void ()(RBX::Humanoid::Status)>::call(RBX::Humanoid::Status)")]
 // 0x7c6858 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8Humanoid6StatusEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
 // was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Humanoid::Status)>::slot,boost::function<void ()(RBX::Humanoid::Status)>,1,void ()(RBX::Humanoid::Status)>::call(RBX::Humanoid::Status)
 pub fn stub_7c6858() -> ! {
@@ -1216,7 +1216,7 @@ pub fn stub_7c9800() -> ! {
     todo!("0x7c9800 __ZN3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost8functionIS3_EELi1ES3_E4callEf")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")]
 // 0x7c9808 — __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost8functionIS3_EELi1ES3_E4callEf
 // was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)
 pub fn stub_7c9808() -> ! {
@@ -1314,7 +1314,7 @@ pub fn stub_7d1900() -> ! {
     todo!("0x7d1900 __ZN3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX5HUMAN13HumanoidStateEbEENS7_5list2INS7_5valueIPSD_EENS6_3argILi1EEEEEEELi1ES3_E4callEb")
 }
 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HUMAN::HumanoidState,bool>,boost::_bi::list2<boost::_bi::value<RBX::HUMAN::HumanoidState*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HUMAN::HumanoidState,bool>,boost::_bi::list2<boost::_bi::value<RBX::HUMAN::HumanoidState*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
 // 0x7d1924 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX5HUMAN13HumanoidStateEbEENS7_5list2INS7_5valueIPSD_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
 // was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HUMAN::HumanoidState,bool>,boost::_bi::list2<boost::_bi::value<RBX::HUMAN::HumanoidState*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)
 pub fn stub_7d1924() -> ! {

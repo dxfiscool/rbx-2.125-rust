@@ -51,7 +51,7 @@ pub fn stub_518284() -> ! {
 
 // 0x5dbca8 — __ZN12_GLOBAL__N_136computeNetworkOwnerIsSomeoneElseImplERKN3RBX13SystemAddressES3_
 // type: int __fastcall(int, int)
-#[doc(alias = "`anonymous namespace::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)")]
+#[doc(alias = "anonymous namespace::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)")]
 pub fn stub_5dbca8() -> ! {
     todo!("0x5dbca8 `anonymous namespace'::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)")
 }

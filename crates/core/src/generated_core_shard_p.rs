@@ -53,13 +53,13 @@ pub fn stub_0x3f058() -> ! {
     todo!("0x3f058 RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")
 }
 
-#[doc(alias = "`non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
+#[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
 // 0x3f904 — __ZThn480_N10RobloxView9RenderJobD1Ev
 pub fn stub_0x3f904() -> ! {
     todo!("0x3f904 `non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
 }
 
-#[doc(alias = "`non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
+#[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
 // 0x3f9c8 — __ZThn480_N10RobloxView9RenderJobD0Ev
 pub fn stub_0x3f9c8() -> ! {
     todo!("0x3f9c8 `non-virtual thunk toRobloxView::RenderJob::~RenderJob()")

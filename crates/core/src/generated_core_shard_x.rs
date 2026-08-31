@@ -166,7 +166,7 @@ pub fn stub_0x62e5c() -> ! {
     todo!("0x62e5c -[RobloxMemoryManager logMemUsage:]")
 }
 
-#[doc(alias = "`global constructor keyed to_a_32")]
+#[doc(alias = "global constructor keyed to_a_32")]
 // 0x63040 — __GLOBAL__I_a_32
 pub fn stub_0x63040() -> ! {
     todo!("0x63040 __GLOBAL__I_a_32")
@@ -208,7 +208,7 @@ pub fn stub_0x63528() -> ! {
     todo!("0x63528 -[CameraMove touchesMoved:withEvent:]")
 }
 
-#[doc(alias = "`global constructor keyed to_a_33")]
+#[doc(alias = "global constructor keyed to_a_33")]
 // 0x637a0 — __GLOBAL__I_a_33
 pub fn stub_0x637a0() -> ! {
     todo!("0x637a0 __GLOBAL__I_a_33")
@@ -250,7 +250,7 @@ pub fn stub_0x63b28() -> ! {
     todo!("0x63b28 __ZN6Roblox16processAppEventsEv")
 }
 
-#[doc(alias = "`global constructor keyed to_a_34")]
+#[doc(alias = "global constructor keyed to_a_34")]
 // 0x63b58 — __GLOBAL__I_a_34
 pub fn stub_0x63b58() -> ! {
     todo!("0x63b58 __GLOBAL__I_a_34")
@@ -436,7 +436,7 @@ pub fn stub_0x64bac() -> ! {
     todo!("0x64bac -[CrashReporter .cxx_construct]")
 }
 
-#[doc(alias = "`global constructor keyed to_a_35")]
+#[doc(alias = "global constructor keyed to_a_35")]
 // 0x65b4c — __GLOBAL__I_a_35
 pub fn stub_0x65b4c() -> ! {
     todo!("0x65b4c __GLOBAL__I_a_35")

@@ -55,7 +55,7 @@ pub fn stub_70a830() -> ! {
 }
 
 // 0x70a910 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_E11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_8InstanceES2_E11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_70a910() -> ! {
     todo!("0x70a910 `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Instance,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
