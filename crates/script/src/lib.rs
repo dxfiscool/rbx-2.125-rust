@@ -3,3 +3,4 @@
 
 pub mod lua;
 pub mod generated;
+pub mod generated_03;
