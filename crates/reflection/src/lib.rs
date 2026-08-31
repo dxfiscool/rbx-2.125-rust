@@ -8,3 +8,4 @@ pub mod generated;
 pub mod generated_next;
 pub mod generated_shard_a;
 pub mod generated_09;
+pub mod generated_shard_c;
