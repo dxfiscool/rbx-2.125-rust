@@ -8,3 +8,4 @@ pub mod app_delegate;
 pub mod generated;
 pub mod generated_04;
 pub mod generated_05;
+pub mod generated_06;
