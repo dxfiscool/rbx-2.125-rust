@@ -1,6 +1,6 @@
-//! platform generated — 1774 stubs sorted by EA, from ida/export.json
+//! platform generated — 1874 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 1774 stubs (1674 prior + 100 this batch, 3026 filtered, 1800 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 1874 stubs (1774 prior + 100 this batch, 3026 filtered, 1700 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -12372,4 +12372,704 @@ pub fn stub_eb6b9c() -> ! {
 #[doc(alias = "-[GAITrackerImpl setCampaignUrl:]")]
 pub fn stub_eb6c64() -> ! {
     todo!("0xeb6c64 -[GAITrackerImpl setCampaignUrl:]")
+}
+
+// 0xeb6d2c — -[GAITrackerImpl sessionStart]
+// type: char __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl sessionStart]")]
+pub fn stub_eb6d2c() -> ! {
+    todo!("0xeb6d2c -[GAITrackerImpl sessionStart]")
+}
+
+// 0xeb6e18 — -[GAITrackerImpl setSessionStart:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, char)
+#[doc(alias = "-[GAITrackerImpl setSessionStart:]")]
+pub fn stub_eb6e18() -> ! {
+    todo!("0xeb6e18 -[GAITrackerImpl setSessionStart:]")
+}
+
+// 0xeb6ef4 — -[GAITrackerImpl sessionTimeout]
+// type: double __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl sessionTimeout]")]
+pub fn stub_eb6ef4() -> ! {
+    todo!("0xeb6ef4 -[GAITrackerImpl sessionTimeout]")
+}
+
+// 0xeb6f24 — -[GAITrackerImpl setSessionTimeout:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, double)
+#[doc(alias = "-[GAITrackerImpl setSessionTimeout:]")]
+pub fn stub_eb6f24() -> ! {
+    todo!("0xeb6f24 -[GAITrackerImpl setSessionTimeout:]")
+}
+
+// 0xeb6f4c — -[GAITrackerImpl init]
+// type: GAITrackerImpl *__cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl init]")]
+pub fn stub_eb6f4c() -> ! {
+    todo!("0xeb6f4c -[GAITrackerImpl init]")
+}
+
+// 0xeb6fa8 — -[GAITrackerImpl initWithDispatcher:trackingId:appName:appVersion:]
+// type: GAITrackerImpl *__cdecl(GAITrackerImpl *self, SEL, id, id, id, id)
+#[doc(alias = "-[GAITrackerImpl initWithDispatcher:trackingId:appName:appVersion:]")]
+pub fn stub_eb6fa8() -> ! {
+    todo!("0xeb6fa8 -[GAITrackerImpl initWithDispatcher:trackingId:appName:appVersion:]")
+}
+
+// 0xeb72e0 — -[GAITrackerImpl dealloc]
+// type: void __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl dealloc]")]
+pub fn stub_eb72e0() -> ! {
+    todo!("0xeb72e0 -[GAITrackerImpl dealloc]")
+}
+
+// 0xeb7370 — +[GAITrackerImpl trackerWithDispatcher:trackingId:appName:appVersion:]
+// type: id __cdecl(id, SEL, id, id, id, id)
+#[doc(alias = "+[GAITrackerImpl trackerWithDispatcher:trackingId:appName:appVersion:]")]
+pub fn stub_eb7370() -> ! {
+    todo!("0xeb7370 +[GAITrackerImpl trackerWithDispatcher:trackingId:appName:appVersion:]")
+}
+
+// 0xeb73c8 — -[GAITrackerImpl queueDispatch:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, id)
+#[doc(alias = "-[GAITrackerImpl queueDispatch:]")]
+pub fn stub_eb73c8() -> ! {
+    todo!("0xeb73c8 -[GAITrackerImpl queueDispatch:]")
+}
+
+// 0xeb7430 — -[GAITrackerImpl shouldTrack]
+// type: char __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl shouldTrack]")]
+pub fn stub_eb7430() -> ! {
+    todo!("0xeb7430 -[GAITrackerImpl shouldTrack]")
+}
+
+// 0xeb7454 — -[GAITrackerImpl updateAdParameters]
+// type: void __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl updateAdParameters]")]
+pub fn stub_eb7454() -> ! {
+    todo!("0xeb7454 -[GAITrackerImpl updateAdParameters]")
+}
+
+// 0xeb74f0 — -[GAITrackerImpl shouldThrottle]
+// type: char __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl shouldThrottle]")]
+pub fn stub_eb74f0() -> ! {
+    todo!("0xeb74f0 -[GAITrackerImpl shouldThrottle]")
+}
+
+// 0xeb75c0 — -[GAITrackerImpl trackView]
+// type: char __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl trackView]")]
+pub fn stub_eb75c0() -> ! {
+    todo!("0xeb75c0 -[GAITrackerImpl trackView]")
+}
+
+// 0xeb75d8 — -[GAITrackerImpl sendView]
+// type: char __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl sendView]")]
+pub fn stub_eb75d8() -> ! {
+    todo!("0xeb75d8 -[GAITrackerImpl sendView]")
+}
+
+// 0xeb78e8 — -[GAITrackerImpl trackView:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id)
+#[doc(alias = "-[GAITrackerImpl trackView:]")]
+pub fn stub_eb78e8() -> ! {
+    todo!("0xeb78e8 -[GAITrackerImpl trackView:]")
+}
+
+// 0xeb7900 — -[GAITrackerImpl sendView:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id)
+#[doc(alias = "-[GAITrackerImpl sendView:]")]
+pub fn stub_eb7900() -> ! {
+    todo!("0xeb7900 -[GAITrackerImpl sendView:]")
+}
+
+// 0xeb7a38 — -[GAITrackerImpl trackEventWithCategory:withAction:withLabel:withValue:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id, id, id, id)
+#[doc(alias = "-[GAITrackerImpl trackEventWithCategory:withAction:withLabel:withValue:]")]
+pub fn stub_eb7a38() -> ! {
+    todo!("0xeb7a38 -[GAITrackerImpl trackEventWithCategory:withAction:withLabel:withValue:]")
+}
+
+// 0xeb7a5c — -[GAITrackerImpl sendEventWithCategory:withAction:withLabel:withValue:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id, id, id, id)
+#[doc(alias = "-[GAITrackerImpl sendEventWithCategory:withAction:withLabel:withValue:]")]
+pub fn stub_eb7a5c() -> ! {
+    todo!("0xeb7a5c -[GAITrackerImpl sendEventWithCategory:withAction:withLabel:withValue:]")
+}
+
+// 0xeb7d0c — -[GAITrackerImpl trackTransaction:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id)
+#[doc(alias = "-[GAITrackerImpl trackTransaction:]")]
+pub fn stub_eb7d0c() -> ! {
+    todo!("0xeb7d0c -[GAITrackerImpl trackTransaction:]")
+}
+
+// 0xeb7d24 — -[GAITrackerImpl sendTransaction:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id)
+#[doc(alias = "-[GAITrackerImpl sendTransaction:]")]
+pub fn stub_eb7d24() -> ! {
+    todo!("0xeb7d24 -[GAITrackerImpl sendTransaction:]")
+}
+
+// 0xeb823c — -[GAITrackerImpl trackException:withDescription:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, char, id)
+#[doc(alias = "-[GAITrackerImpl trackException:withDescription:]")]
+pub fn stub_eb823c() -> ! {
+    todo!("0xeb823c -[GAITrackerImpl trackException:withDescription:]")
+}
+
+// 0xeb82b4 — -[GAITrackerImpl sendException:withDescription:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, char, id)
+#[doc(alias = "-[GAITrackerImpl sendException:withDescription:]")]
+pub fn stub_eb82b4() -> ! {
+    todo!("0xeb82b4 -[GAITrackerImpl sendException:withDescription:]")
+}
+
+// 0xeb8598 — -[GAITrackerImpl trackException:withNSException:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, char, id)
+#[doc(alias = "-[GAITrackerImpl trackException:withNSException:]")]
+pub fn stub_eb8598() -> ! {
+    todo!("0xeb8598 -[GAITrackerImpl trackException:withNSException:]")
+}
+
+// 0xeb85b0 — -[GAITrackerImpl sendException:withNSException:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, char, id)
+#[doc(alias = "-[GAITrackerImpl sendException:withNSException:]")]
+pub fn stub_eb85b0() -> ! {
+    todo!("0xeb85b0 -[GAITrackerImpl sendException:withNSException:]")
+}
+
+// 0xeb85f0 — -[GAITrackerImpl trackException:withNSError:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, char, id)
+#[doc(alias = "-[GAITrackerImpl trackException:withNSError:]")]
+pub fn stub_eb85f0() -> ! {
+    todo!("0xeb85f0 -[GAITrackerImpl trackException:withNSError:]")
+}
+
+// 0xeb8608 — -[GAITrackerImpl sendException:withNSError:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, char, id)
+#[doc(alias = "-[GAITrackerImpl sendException:withNSError:]")]
+pub fn stub_eb8608() -> ! {
+    todo!("0xeb8608 -[GAITrackerImpl sendException:withNSError:]")
+}
+
+// 0xeb86a4 — -[GAITrackerImpl trackTimingWithCategory:withValue:withName:withLabel:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id, double, id, id)
+#[doc(alias = "-[GAITrackerImpl trackTimingWithCategory:withValue:withName:withLabel:]")]
+pub fn stub_eb86a4() -> ! {
+    todo!("0xeb86a4 -[GAITrackerImpl trackTimingWithCategory:withValue:withName:withLabel:]")
+}
+
+// 0xeb86d8 — -[GAITrackerImpl sendTimingWithCategory:withValue:withName:withLabel:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id, double, id, id)
+#[doc(alias = "-[GAITrackerImpl sendTimingWithCategory:withValue:withName:withLabel:]")]
+pub fn stub_eb86d8() -> ! {
+    todo!("0xeb86d8 -[GAITrackerImpl sendTimingWithCategory:withValue:withName:withLabel:]")
+}
+
+// 0xeb8980 — -[GAITrackerImpl trackSocial:withAction:withTarget:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id, id, id)
+#[doc(alias = "-[GAITrackerImpl trackSocial:withAction:withTarget:]")]
+pub fn stub_eb8980() -> ! {
+    todo!("0xeb8980 -[GAITrackerImpl trackSocial:withAction:withTarget:]")
+}
+
+// 0xeb89a4 — -[GAITrackerImpl sendSocial:withAction:withTarget:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id, id, id)
+#[doc(alias = "-[GAITrackerImpl sendSocial:withAction:withTarget:]")]
+pub fn stub_eb89a4() -> ! {
+    todo!("0xeb89a4 -[GAITrackerImpl sendSocial:withAction:withTarget:]")
+}
+
+// 0xeb8d64 — -[GAITrackerImpl set:value:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id, id)
+#[doc(alias = "-[GAITrackerImpl set:value:]")]
+pub fn stub_eb8d64() -> ! {
+    todo!("0xeb8d64 -[GAITrackerImpl set:value:]")
+}
+
+// 0xeb8ebc — -[GAITrackerImpl get:]
+// type: id __cdecl(GAITrackerImpl *self, SEL, id)
+#[doc(alias = "-[GAITrackerImpl get:]")]
+pub fn stub_eb8ebc() -> ! {
+    todo!("0xeb8ebc -[GAITrackerImpl get:]")
+}
+
+// 0xeb9010 — -[GAITrackerImpl send:params:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, id, id)
+#[doc(alias = "-[GAITrackerImpl send:params:]")]
+pub fn stub_eb9010() -> ! {
+    todo!("0xeb9010 -[GAITrackerImpl send:params:]")
+}
+
+// 0xeb9318 — -[GAITrackerImpl setCustom:dimension:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, int, id)
+#[doc(alias = "-[GAITrackerImpl setCustom:dimension:]")]
+pub fn stub_eb9318() -> ! {
+    todo!("0xeb9318 -[GAITrackerImpl setCustom:dimension:]")
+}
+
+// 0xeb95b0 — -[GAITrackerImpl setCustom:metric:]
+// type: char __cdecl(GAITrackerImpl *self, SEL, int, id)
+#[doc(alias = "-[GAITrackerImpl setCustom:metric:]")]
+pub fn stub_eb95b0() -> ! {
+    todo!("0xeb95b0 -[GAITrackerImpl setCustom:metric:]")
+}
+
+// 0xeb98ac — -[GAITrackerImpl close]
+// type: void __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl close]")]
+pub fn stub_eb98ac() -> ! {
+    todo!("0xeb98ac -[GAITrackerImpl close]")
+}
+
+// 0xeb9a60 — -[GAITrackerImpl appDidBecomeActive]
+// type: void __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl appDidBecomeActive]")]
+pub fn stub_eb9a60() -> ! {
+    todo!("0xeb9a60 -[GAITrackerImpl appDidBecomeActive]")
+}
+
+// 0xeb9b90 — -[GAITrackerImpl appWillResignActive]
+// type: void __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl appWillResignActive]")]
+pub fn stub_eb9b90() -> ! {
+    todo!("0xeb9b90 -[GAITrackerImpl appWillResignActive]")
+}
+
+// 0xeb9c68 — -[GAITrackerImpl dispatcher]
+// type: GAIDispatcher *__cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl dispatcher]")]
+pub fn stub_eb9c68() -> ! {
+    todo!("0xeb9c68 -[GAITrackerImpl dispatcher]")
+}
+
+// 0xeb9c78 — -[GAITrackerImpl setDispatcher:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, id)
+#[doc(alias = "-[GAITrackerImpl setDispatcher:]")]
+pub fn stub_eb9c78() -> ! {
+    todo!("0xeb9c78 -[GAITrackerImpl setDispatcher:]")
+}
+
+// 0xeb9c9c — -[GAITrackerImpl trackerState]
+// type: GAITrackerState *__cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl trackerState]")]
+pub fn stub_eb9c9c() -> ! {
+    todo!("0xeb9c9c -[GAITrackerImpl trackerState]")
+}
+
+// 0xeb9cac — -[GAITrackerImpl setTrackerState:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, id)
+#[doc(alias = "-[GAITrackerImpl setTrackerState:]")]
+pub fn stub_eb9cac() -> ! {
+    todo!("0xeb9cac -[GAITrackerImpl setTrackerState:]")
+}
+
+// 0xeb9cd0 — -[GAITrackerImpl adSdkPresent]
+// type: char __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl adSdkPresent]")]
+pub fn stub_eb9cd0() -> ! {
+    todo!("0xeb9cd0 -[GAITrackerImpl adSdkPresent]")
+}
+
+// 0xeb9ce0 — -[GAITrackerImpl setAdSdkPresent:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, char)
+#[doc(alias = "-[GAITrackerImpl setAdSdkPresent:]")]
+pub fn stub_eb9ce0() -> ! {
+    todo!("0xeb9ce0 -[GAITrackerImpl setAdSdkPresent:]")
+}
+
+// 0xeb9cf0 — -[GAITrackerImpl trackCount]
+// type: unsigned __int64 __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl trackCount]")]
+pub fn stub_eb9cf0() -> ! {
+    todo!("0xeb9cf0 -[GAITrackerImpl trackCount]")
+}
+
+// 0xeb9d08 — -[GAITrackerImpl setTrackCount:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, unsigned __int64)
+#[doc(alias = "-[GAITrackerImpl setTrackCount:]")]
+pub fn stub_eb9d08() -> ! {
+    todo!("0xeb9d08 -[GAITrackerImpl setTrackCount:]")
+}
+
+// 0xeb9d1c — -[GAITrackerImpl hitCount]
+// type: unsigned __int64 __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl hitCount]")]
+pub fn stub_eb9d1c() -> ! {
+    todo!("0xeb9d1c -[GAITrackerImpl hitCount]")
+}
+
+// 0xeb9d34 — -[GAITrackerImpl setHitCount:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, unsigned __int64)
+#[doc(alias = "-[GAITrackerImpl setHitCount:]")]
+pub fn stub_eb9d34() -> ! {
+    todo!("0xeb9d34 -[GAITrackerImpl setHitCount:]")
+}
+
+// 0xeb9d48 — -[GAITrackerImpl lastActiveTime]
+// type: double __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl lastActiveTime]")]
+pub fn stub_eb9d48() -> ! {
+    todo!("0xeb9d48 -[GAITrackerImpl lastActiveTime]")
+}
+
+// 0xeb9d60 — -[GAITrackerImpl setLastActiveTime:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, double)
+#[doc(alias = "-[GAITrackerImpl setLastActiveTime:]")]
+pub fn stub_eb9d60() -> ! {
+    todo!("0xeb9d60 -[GAITrackerImpl setLastActiveTime:]")
+}
+
+// 0xeb9d74 — -[GAITrackerImpl trackingCredits]
+// type: double __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl trackingCredits]")]
+pub fn stub_eb9d74() -> ! {
+    todo!("0xeb9d74 -[GAITrackerImpl trackingCredits]")
+}
+
+// 0xeb9d8c — -[GAITrackerImpl setTrackingCredits:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, double)
+#[doc(alias = "-[GAITrackerImpl setTrackingCredits:]")]
+pub fn stub_eb9d8c() -> ! {
+    todo!("0xeb9d8c -[GAITrackerImpl setTrackingCredits:]")
+}
+
+// 0xeb9da0 — -[GAITrackerImpl lastTrackTime]
+// type: double __cdecl(GAITrackerImpl *self, SEL)
+#[doc(alias = "-[GAITrackerImpl lastTrackTime]")]
+pub fn stub_eb9da0() -> ! {
+    todo!("0xeb9da0 -[GAITrackerImpl lastTrackTime]")
+}
+
+// 0xeb9db8 — -[GAITrackerImpl setLastTrackTime:]
+// type: void __cdecl(GAITrackerImpl *self, SEL, double)
+#[doc(alias = "-[GAITrackerImpl setLastTrackTime:]")]
+pub fn stub_eb9db8() -> ! {
+    todo!("0xeb9db8 -[GAITrackerImpl setLastTrackTime:]")
+}
+
+// 0xeb9dcc — -[GAIDataStore init]
+// type: GAIDataStore *__cdecl(GAIDataStore *self, SEL)
+#[doc(alias = "-[GAIDataStore init]")]
+pub fn stub_eb9dcc() -> ! {
+    todo!("0xeb9dcc -[GAIDataStore init]")
+}
+
+// 0xeb9e28 — -[GAIDataStore dealloc]
+// type: void __cdecl(GAIDataStore *self, SEL)
+#[doc(alias = "-[GAIDataStore dealloc]")]
+pub fn stub_eb9e28() -> ! {
+    todo!("0xeb9e28 -[GAIDataStore dealloc]")
+}
+
+// 0xeb9edc — -[GAIDataStore openPersistentStoreWithError:]
+// type: char __cdecl(GAIDataStore *self, SEL, id *)
+#[doc(alias = "-[GAIDataStore openPersistentStoreWithError:]")]
+pub fn stub_eb9edc() -> ! {
+    todo!("0xeb9edc -[GAIDataStore openPersistentStoreWithError:]")
+}
+
+// 0xeba26c — -[GAIDataStore initWithPath:withError:]
+// type: GAIDataStore *__cdecl(GAIDataStore *self, SEL, id, id *)
+#[doc(alias = "-[GAIDataStore initWithPath:withError:]")]
+pub fn stub_eba26c() -> ! {
+    todo!("0xeba26c -[GAIDataStore initWithPath:withError:]")
+}
+
+// 0xeba3e8 — -[GAIDataStore initWithError:]
+// type: GAIDataStore *__cdecl(GAIDataStore *self, SEL, id *)
+#[doc(alias = "-[GAIDataStore initWithError:]")]
+pub fn stub_eba3e8() -> ! {
+    todo!("0xeba3e8 -[GAIDataStore initWithError:]")
+}
+
+// 0xeba544 — -[GAIDataStore contextForThread:]
+// type: id __cdecl(GAIDataStore *self, SEL, id *)
+#[doc(alias = "-[GAIDataStore contextForThread:]")]
+pub fn stub_eba544() -> ! {
+    todo!("0xeba544 -[GAIDataStore contextForThread:]")
+}
+
+// 0xeba720 — -[GAIDataStore entityCount:withError:]
+// type: int __cdecl(GAIDataStore *self, SEL, id, id *)
+#[doc(alias = "-[GAIDataStore entityCount:withError:]")]
+pub fn stub_eba720() -> ! {
+    todo!("0xeba720 -[GAIDataStore entityCount:withError:]")
+}
+
+// 0xeba9c4 — +[GAIDataStore dataStoreWithPath:withError:]
+// type: id __cdecl(id, SEL, id, id *)
+#[doc(alias = "+[GAIDataStore dataStoreWithPath:withError:]")]
+pub fn stub_eba9c4() -> ! {
+    todo!("0xeba9c4 +[GAIDataStore dataStoreWithPath:withError:]")
+}
+
+// 0xebaa28 — +[GAIDataStore inMemoryDataStoreWithError:]
+// type: id __cdecl(id, SEL, id *)
+#[doc(alias = "+[GAIDataStore inMemoryDataStoreWithError:]")]
+pub fn stub_ebaa28() -> ! {
+    todo!("0xebaa28 +[GAIDataStore inMemoryDataStoreWithError:]")
+}
+
+// 0xebaa88 — -[GAIDataStore hitCount:]
+// type: int __cdecl(GAIDataStore *self, SEL, id *)
+#[doc(alias = "-[GAIDataStore hitCount:]")]
+pub fn stub_ebaa88() -> ! {
+    todo!("0xebaa88 -[GAIDataStore hitCount:]")
+}
+
+// 0xebaab0 — -[GAIDataStore fetchHitsWithLimit:withError:]
+// type: id __cdecl(GAIDataStore *self, SEL, unsigned int, id *)
+#[doc(alias = "-[GAIDataStore fetchHitsWithLimit:withError:]")]
+pub fn stub_ebaab0() -> ! {
+    todo!("0xebaab0 -[GAIDataStore fetchHitsWithLimit:withError:]")
+}
+
+// 0xebadbc — -[GAIDataStore addHit:]
+// type: id __cdecl(GAIDataStore *self, SEL, id *)
+#[doc(alias = "-[GAIDataStore addHit:]")]
+pub fn stub_ebadbc() -> ! {
+    todo!("0xebadbc -[GAIDataStore addHit:]")
+}
+
+// 0xebafdc — -[GAIDataStore propertyCount:]
+// type: int __cdecl(GAIDataStore *self, SEL, id *)
+#[doc(alias = "-[GAIDataStore propertyCount:]")]
+pub fn stub_ebafdc() -> ! {
+    todo!("0xebafdc -[GAIDataStore propertyCount:]")
+}
+
+// 0xebb004 — -[GAIDataStore propertyForName:createIfNeeded:withError:]
+// type: id __cdecl(GAIDataStore *self, SEL, id, char, id *)
+#[doc(alias = "-[GAIDataStore propertyForName:createIfNeeded:withError:]")]
+pub fn stub_ebb004() -> ! {
+    todo!("0xebb004 -[GAIDataStore propertyForName:createIfNeeded:withError:]")
+}
+
+// 0xebb52c — -[GAIDataStore fetchProperties:]
+// type: id __cdecl(GAIDataStore *self, SEL, id *)
+#[doc(alias = "-[GAIDataStore fetchProperties:]")]
+pub fn stub_ebb52c() -> ! {
+    todo!("0xebb52c -[GAIDataStore fetchProperties:]")
+}
+
+// 0xebb7bc — -[GAIDataStore deleteObject:]
+// type: void __cdecl(GAIDataStore *self, SEL, id)
+#[doc(alias = "-[GAIDataStore deleteObject:]")]
+pub fn stub_ebb7bc() -> ! {
+    todo!("0xebb7bc -[GAIDataStore deleteObject:]")
+}
+
+// 0xebb8f8 — -[GAIDataStore deleteObjects:]
+// type: void __cdecl(GAIDataStore *self, SEL, id)
+#[doc(alias = "-[GAIDataStore deleteObjects:]")]
+pub fn stub_ebb8f8() -> ! {
+    todo!("0xebb8f8 -[GAIDataStore deleteObjects:]")
+}
+
+// 0xebbb14 — -[GAIDataStore deleteAll:withError:]
+// type: char __cdecl(GAIDataStore *self, SEL, id, id *)
+#[doc(alias = "-[GAIDataStore deleteAll:withError:]")]
+pub fn stub_ebbb14() -> ! {
+    todo!("0xebbb14 -[GAIDataStore deleteAll:withError:]")
+}
+
+// 0xebbf68 — -[GAIDataStore deleteAllHits:]
+// type: char __cdecl(GAIDataStore *self, SEL, id *)
+#[doc(alias = "-[GAIDataStore deleteAllHits:]")]
+pub fn stub_ebbf68() -> ! {
+    todo!("0xebbf68 -[GAIDataStore deleteAllHits:]")
+}
+
+// 0xebbf90 — -[GAIDataStore deleteAllProperties:]
+// type: char __cdecl(GAIDataStore *self, SEL, id *)
+#[doc(alias = "-[GAIDataStore deleteAllProperties:]")]
+pub fn stub_ebbf90() -> ! {
+    todo!("0xebbf90 -[GAIDataStore deleteAllProperties:]")
+}
+
+// 0xebbfb8 — -[GAIDataStore hasChanges]
+// type: char __cdecl(GAIDataStore *self, SEL)
+#[doc(alias = "-[GAIDataStore hasChanges]")]
+pub fn stub_ebbfb8() -> ! {
+    todo!("0xebbfb8 -[GAIDataStore hasChanges]")
+}
+
+// 0xebc0fc — -[GAIDataStore save:]
+// type: char __cdecl(GAIDataStore *self, SEL, id *)
+#[doc(alias = "-[GAIDataStore save:]")]
+pub fn stub_ebc0fc() -> ! {
+    todo!("0xebc0fc -[GAIDataStore save:]")
+}
+
+// 0xebc2c8 — -[GAIDataStore path]
+// type: NSString *__cdecl(GAIDataStore *self, SEL)
+#[doc(alias = "-[GAIDataStore path]")]
+pub fn stub_ebc2c8() -> ! {
+    todo!("0xebc2c8 -[GAIDataStore path]")
+}
+
+// 0xebc2e0 — -[GAIDataStore setPath:]
+// type: void __cdecl(GAIDataStore *self, SEL, id)
+#[doc(alias = "-[GAIDataStore setPath:]")]
+pub fn stub_ebc2e0() -> ! {
+    todo!("0xebc2e0 -[GAIDataStore setPath:]")
+}
+
+// 0xebc304 — -[GAIDataStore hitEntity]
+// type: NSEntityDescription *__cdecl(GAIDataStore *self, SEL)
+#[doc(alias = "-[GAIDataStore hitEntity]")]
+pub fn stub_ebc304() -> ! {
+    todo!("0xebc304 -[GAIDataStore hitEntity]")
+}
+
+// 0xebc314 — -[GAIDataStore setHitEntity:]
+// type: void __cdecl(GAIDataStore *self, SEL, id)
+#[doc(alias = "-[GAIDataStore setHitEntity:]")]
+pub fn stub_ebc314() -> ! {
+    todo!("0xebc314 -[GAIDataStore setHitEntity:]")
+}
+
+// 0xebc338 — -[GAIDataStore propertyEntity]
+// type: NSEntityDescription *__cdecl(GAIDataStore *self, SEL)
+#[doc(alias = "-[GAIDataStore propertyEntity]")]
+pub fn stub_ebc338() -> ! {
+    todo!("0xebc338 -[GAIDataStore propertyEntity]")
+}
+
+// 0xebc348 — -[GAIDataStore setPropertyEntity:]
+// type: void __cdecl(GAIDataStore *self, SEL, id)
+#[doc(alias = "-[GAIDataStore setPropertyEntity:]")]
+pub fn stub_ebc348() -> ! {
+    todo!("0xebc348 -[GAIDataStore setPropertyEntity:]")
+}
+
+// 0xebc36c — -[GAIDataStore model]
+// type: NSManagedObjectModel *__cdecl(GAIDataStore *self, SEL)
+#[doc(alias = "-[GAIDataStore model]")]
+pub fn stub_ebc36c() -> ! {
+    todo!("0xebc36c -[GAIDataStore model]")
+}
+
+// 0xebc37c — -[GAIDataStore setModel:]
+// type: void __cdecl(GAIDataStore *self, SEL, id)
+#[doc(alias = "-[GAIDataStore setModel:]")]
+pub fn stub_ebc37c() -> ! {
+    todo!("0xebc37c -[GAIDataStore setModel:]")
+}
+
+// 0xebc3a0 — -[GAIDataStore coordinator]
+// type: NSPersistentStoreCoordinator *__cdecl(GAIDataStore *self, SEL)
+#[doc(alias = "-[GAIDataStore coordinator]")]
+pub fn stub_ebc3a0() -> ! {
+    todo!("0xebc3a0 -[GAIDataStore coordinator]")
+}
+
+// 0xebc3b0 — -[GAIDataStore setCoordinator:]
+// type: void __cdecl(GAIDataStore *self, SEL, id)
+#[doc(alias = "-[GAIDataStore setCoordinator:]")]
+pub fn stub_ebc3b0() -> ! {
+    todo!("0xebc3b0 -[GAIDataStore setCoordinator:]")
+}
+
+// 0xebc3d4 — -[GAIDataStore contexts]
+// type: NSMutableDictionary *__cdecl(GAIDataStore *self, SEL)
+#[doc(alias = "-[GAIDataStore contexts]")]
+pub fn stub_ebc3d4() -> ! {
+    todo!("0xebc3d4 -[GAIDataStore contexts]")
+}
+
+// 0xebc3e4 — -[GAIDataStore setContexts:]
+// type: void __cdecl(GAIDataStore *self, SEL, id)
+#[doc(alias = "-[GAIDataStore setContexts:]")]
+pub fn stub_ebc3e4() -> ! {
+    todo!("0xebc3e4 -[GAIDataStore setContexts:]")
+}
+
+// 0xebc408 — +[GAIHit entityDescription]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIHit entityDescription]")]
+pub fn stub_ebc408() -> ! {
+    todo!("0xebc408 +[GAIHit entityDescription]")
+}
+
+// 0xebc56c — -[GAIHit parameters]
+// type: NSDictionary *__cdecl(GAIHit *self, SEL)
+#[doc(alias = "-[GAIHit parameters]")]
+pub fn stub_ebc56c() -> ! {
+    todo!("0xebc56c -[GAIHit parameters]")
+}
+
+// 0xebc6d0 — -[GAIHit setParameters:]
+// type: void __cdecl(GAIHit *self, SEL, id)
+#[doc(alias = "-[GAIHit setParameters:]")]
+pub fn stub_ebc6d0() -> ! {
+    todo!("0xebc6d0 -[GAIHit setParameters:]")
+}
+
+// 0xebc850 — -[GAIError init]
+// type: GAIError *__cdecl(GAIError *self, SEL)
+#[doc(alias = "-[GAIError init]")]
+pub fn stub_ebc850() -> ! {
+    todo!("0xebc850 -[GAIError init]")
+}
+
+// 0xebc8ac — +[GAIError errorWithCode:]
+// type: id __cdecl(id, SEL, int)
+#[doc(alias = "+[GAIError errorWithCode:]")]
+pub fn stub_ebc8ac() -> ! {
+    todo!("0xebc8ac +[GAIError errorWithCode:]")
+}
+
+// 0xebc8e8 — +[GAIError errorWithCode:withDescription:]
+// type: id __cdecl(id, SEL, int, id)
+#[doc(alias = "+[GAIError errorWithCode:withDescription:]")]
+pub fn stub_ebc8e8() -> ! {
+    todo!("0xebc8e8 +[GAIError errorWithCode:withDescription:]")
+}
+
+// 0xebc958 — +[GAIError errorWithCode:withFormat:]
+// type: id __cdecl(id, SEL, int, id)
+#[doc(alias = "+[GAIError errorWithCode:withFormat:]")]
+pub fn stub_ebc958() -> ! {
+    todo!("0xebc958 +[GAIError errorWithCode:withFormat:]")
+}
+
+// 0xebc9cc — +[GAIError errorWithCode:withFailedFilePath:withDescription:]
+// type: id __cdecl(id, SEL, int, id, id)
+#[doc(alias = "+[GAIError errorWithCode:withFailedFilePath:withDescription:]")]
+pub fn stub_ebc9cc() -> ! {
+    todo!("0xebc9cc +[GAIError errorWithCode:withFailedFilePath:withDescription:]")
+}
+
+// 0xebca58 — +[GAIError errorWithCode:withFailedFilePath:withFormat:]
+// type: id __cdecl(id, SEL, int, id, id)
+#[doc(alias = "+[GAIError errorWithCode:withFailedFilePath:withFormat:]")]
+pub fn stub_ebca58() -> ! {
+    todo!("0xebca58 +[GAIError errorWithCode:withFailedFilePath:withFormat:]")
+}
+
+// 0xebcad0 — +[GAIError errorWithCode:withUnderlyingError:withDescription:]
+// type: id __cdecl(id, SEL, int, id, id)
+#[doc(alias = "+[GAIError errorWithCode:withUnderlyingError:withDescription:]")]
+pub fn stub_ebcad0() -> ! {
+    todo!("0xebcad0 +[GAIError errorWithCode:withUnderlyingError:withDescription:]")
+}
+
+// 0xebcb5c — +[GAIError errorWithCode:withUnderlyingError:withFormat:]
+// type: id __cdecl(id, SEL, int, id, id)
+#[doc(alias = "+[GAIError errorWithCode:withUnderlyingError:withFormat:]")]
+pub fn stub_ebcb5c() -> ! {
+    todo!("0xebcb5c +[GAIError errorWithCode:withUnderlyingError:withFormat:]")
+}
+
+// 0xebcbd4 — +[GAIProperty entityDescription]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIProperty entityDescription]")]
+pub fn stub_ebcbd4() -> ! {
+    todo!("0xebcbd4 +[GAIProperty entityDescription]")
 }
