@@ -18,6 +18,7 @@ pub mod boost_core_b;
 pub mod boost_core_c;
 pub mod boost_core_d;
 pub mod boost_core_e;
+pub mod boost_core_f;
 pub mod generated_core_d;
 
 /// Re-export for `use rbx_core::SharedPtr`
