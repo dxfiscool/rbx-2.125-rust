@@ -26165,3 +26165,1052 @@ pub fn stub_c5f510() -> ! {
 pub fn stub_c5f520() -> ! {
     todo!("0xc5f520 Ogre::BillboardParticleRenderer::_notifyParticleRotated(void)")
 }
+// 0xc5f530 — __ZN4Ogre25BillboardParticleRenderer24_notifyDefaultDimensionsEff
+#[doc(alias = "Ogre::BillboardParticleRenderer::_notifyDefaultDimensions(float,float)")]
+// was: Ogre::BillboardParticleRenderer::_notifyDefaultDimensions(float,float)
+pub fn stub_c5f530() -> ! {
+    todo!("0xc5f530 Ogre::BillboardParticleRenderer::_notifyDefaultDimensions(float,float)")
+}
+
+// 0xc5f540 — __ZN4Ogre25BillboardParticleRenderer22_notifyParticleResizedEv
+#[doc(alias = "Ogre::BillboardParticleRenderer::_notifyParticleResized(void)")]
+// was: Ogre::BillboardParticleRenderer::_notifyParticleResized(void)
+pub fn stub_c5f540() -> ! {
+    todo!("0xc5f540 Ogre::BillboardParticleRenderer::_notifyParticleResized(void)")
+}
+
+// 0xc5f550 — __ZN4Ogre25BillboardParticleRenderer20_notifyParticleQuotaEm
+#[doc(alias = "Ogre::BillboardParticleRenderer::_notifyParticleQuota(unsigned long)")]
+// was: Ogre::BillboardParticleRenderer::_notifyParticleQuota(unsigned long)
+pub fn stub_c5f550() -> ! {
+    todo!("0xc5f550 Ogre::BillboardParticleRenderer::_notifyParticleQuota(unsigned long)")
+}
+
+// 0xc5f560 — __ZN4Ogre25BillboardParticleRenderer15_notifyAttachedEPNS_4NodeEb
+#[doc(alias = "Ogre::BillboardParticleRenderer::_notifyAttached(Ogre::Node *,bool)")]
+// was: Ogre::BillboardParticleRenderer::_notifyAttached(Ogre::Node *,bool)
+pub fn stub_c5f560() -> ! {
+    todo!("0xc5f560 Ogre::BillboardParticleRenderer::_notifyAttached(Ogre::Node *,bool)")
+}
+
+// 0xc5f570 — __ZN4Ogre25BillboardParticleRenderer19setRenderQueueGroupEh
+#[doc(alias = "Ogre::BillboardParticleRenderer::setRenderQueueGroup(unsigned char)")]
+// was: Ogre::BillboardParticleRenderer::setRenderQueueGroup(unsigned char)
+pub fn stub_c5f570() -> ! {
+    todo!("0xc5f570 Ogre::BillboardParticleRenderer::setRenderQueueGroup(unsigned char)")
+}
+
+// 0xc5f580 — __ZN4Ogre25BillboardParticleRenderer28setKeepParticlesInLocalSpaceEb
+#[doc(alias = "Ogre::BillboardParticleRenderer::setKeepParticlesInLocalSpace(bool)")]
+// was: Ogre::BillboardParticleRenderer::setKeepParticlesInLocalSpace(bool)
+pub fn stub_c5f580() -> ! {
+    todo!("0xc5f580 Ogre::BillboardParticleRenderer::setKeepParticlesInLocalSpace(bool)")
+}
+
+// 0xc5f594 — __ZNK4Ogre25BillboardParticleRenderer12_getSortModeEv
+#[doc(alias = "Ogre::BillboardParticleRenderer::_getSortMode(void)const")]
+// was: Ogre::BillboardParticleRenderer::_getSortMode(void)const
+pub fn stub_c5f594() -> ! {
+    todo!("0xc5f594 Ogre::BillboardParticleRenderer::_getSortMode(void)const")
+}
+
+// 0xc5f5a4 — __ZNK4Ogre32BillboardParticleRendererFactory7getTypeEv
+#[doc(alias = "Ogre::BillboardParticleRendererFactory::getType(void)const")]
+// was: Ogre::BillboardParticleRendererFactory::getType(void)const
+pub fn stub_c5f5a4() -> ! {
+    todo!("0xc5f5a4 Ogre::BillboardParticleRendererFactory::getType(void)const")
+}
+
+// 0xc5f5b0 — __ZN4Ogre32BillboardParticleRendererFactory14createInstanceERKSs
+#[doc(alias = "Ogre::BillboardParticleRendererFactory::createInstance(std::string const&)")]
+// was: Ogre::BillboardParticleRendererFactory::createInstance(std::string const&)
+pub fn stub_c5f5b0() -> ! {
+    todo!("0xc5f5b0 Ogre::BillboardParticleRendererFactory::createInstance(std::string const&)")
+}
+
+// 0xc5f668 — __ZN4Ogre32BillboardParticleRendererFactory15destroyInstanceEPNS_22ParticleSystemRendererE
+#[doc(alias = "Ogre::BillboardParticleRendererFactory::destroyInstance(Ogre::ParticleSystemRenderer *)")]
+// was: Ogre::BillboardParticleRendererFactory::destroyInstance(Ogre::ParticleSystemRenderer *)
+pub fn stub_c5f668() -> ! {
+    todo!("0xc5f668 Ogre::BillboardParticleRendererFactory::destroyInstance(Ogre::ParticleSystemRenderer *)")
+}
+
+// 0xc5f67c — __ZNK4Ogre25BillboardParticleRenderer16CmdBillboardType5doGetEPKv
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardType::doGet(void const*)const")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardType::doGet(void const*)const
+pub fn stub_c5f67c() -> ! {
+    todo!("0xc5f67c Ogre::BillboardParticleRenderer::CmdBillboardType::doGet(void const*)const")
+}
+
+// 0xc5f7bc — __ZN4Ogre25BillboardParticleRenderer16CmdBillboardType5doSetEPvRKSs
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardType::doSet(void *,std::string const&)")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardType::doSet(void *,std::string const&)
+pub fn stub_c5f7bc() -> ! {
+    todo!("0xc5f7bc Ogre::BillboardParticleRenderer::CmdBillboardType::doSet(void *,std::string const&)")
+}
+
+// 0xc5fb14 — __ZNK4Ogre25BillboardParticleRenderer18CmdBillboardOrigin5doGetEPKv
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardOrigin::doGet(void const*)const")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardOrigin::doGet(void const*)const
+pub fn stub_c5fb14() -> ! {
+    todo!("0xc5fb14 Ogre::BillboardParticleRenderer::CmdBillboardOrigin::doGet(void const*)const")
+}
+
+// 0xc5fcc4 — __ZN4Ogre25BillboardParticleRenderer18CmdBillboardOrigin5doSetEPvRKSs
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardOrigin::doSet(void *,std::string const&)")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardOrigin::doSet(void *,std::string const&)
+pub fn stub_c5fcc4() -> ! {
+    todo!("0xc5fcc4 Ogre::BillboardParticleRenderer::CmdBillboardOrigin::doSet(void *,std::string const&)")
+}
+
+// 0xc60084 — __ZNK4Ogre25BillboardParticleRenderer24CmdBillboardRotationType5doGetEPKv
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardRotationType::doGet(void const*)const")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardRotationType::doGet(void const*)const
+pub fn stub_c60084() -> ! {
+    todo!("0xc60084 Ogre::BillboardParticleRenderer::CmdBillboardRotationType::doGet(void const*)const")
+}
+
+// 0xc60168 — __ZN4Ogre25BillboardParticleRenderer24CmdBillboardRotationType5doSetEPvRKSs
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardRotationType::doSet(void *,std::string const&)")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardRotationType::doSet(void *,std::string const&)
+pub fn stub_c60168() -> ! {
+    todo!("0xc60168 Ogre::BillboardParticleRenderer::CmdBillboardRotationType::doSet(void *,std::string const&)")
+}
+
+// 0xc60478 — __ZNK4Ogre25BillboardParticleRenderer18CmdCommonDirection5doGetEPKv
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdCommonDirection::doGet(void const*)const")]
+// was: Ogre::BillboardParticleRenderer::CmdCommonDirection::doGet(void const*)const
+pub fn stub_c60478() -> ! {
+    todo!("0xc60478 Ogre::BillboardParticleRenderer::CmdCommonDirection::doGet(void const*)const")
+}
+
+// 0xc60494 — __ZN4Ogre25BillboardParticleRenderer18CmdCommonDirection5doSetEPvRKSs
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdCommonDirection::doSet(void *,std::string const&)")]
+// was: Ogre::BillboardParticleRenderer::CmdCommonDirection::doSet(void *,std::string const&)
+pub fn stub_c60494() -> ! {
+    todo!("0xc60494 Ogre::BillboardParticleRenderer::CmdCommonDirection::doSet(void *,std::string const&)")
+}
+
+// 0xc604c4 — __ZNK4Ogre25BillboardParticleRenderer17CmdCommonUpVector5doGetEPKv
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdCommonUpVector::doGet(void const*)const")]
+// was: Ogre::BillboardParticleRenderer::CmdCommonUpVector::doGet(void const*)const
+pub fn stub_c604c4() -> ! {
+    todo!("0xc604c4 Ogre::BillboardParticleRenderer::CmdCommonUpVector::doGet(void const*)const")
+}
+
+// 0xc604e0 — __ZN4Ogre25BillboardParticleRenderer17CmdCommonUpVector5doSetEPvRKSs
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdCommonUpVector::doSet(void *,std::string const&)")]
+// was: Ogre::BillboardParticleRenderer::CmdCommonUpVector::doSet(void *,std::string const&)
+pub fn stub_c604e0() -> ! {
+    todo!("0xc604e0 Ogre::BillboardParticleRenderer::CmdCommonUpVector::doSet(void *,std::string const&)")
+}
+
+// 0xc60510 — __ZNK4Ogre25BillboardParticleRenderer17CmdPointRendering5doGetEPKv
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdPointRendering::doGet(void const*)const")]
+// was: Ogre::BillboardParticleRenderer::CmdPointRendering::doGet(void const*)const
+pub fn stub_c60510() -> ! {
+    todo!("0xc60510 Ogre::BillboardParticleRenderer::CmdPointRendering::doGet(void const*)const")
+}
+
+// 0xc6052c — __ZN4Ogre25BillboardParticleRenderer17CmdPointRendering5doSetEPvRKSs
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdPointRendering::doSet(void *,std::string const&)")]
+// was: Ogre::BillboardParticleRenderer::CmdPointRendering::doSet(void *,std::string const&)
+pub fn stub_c6052c() -> ! {
+    todo!("0xc6052c Ogre::BillboardParticleRenderer::CmdPointRendering::doSet(void *,std::string const&)")
+}
+
+// 0xc60548 — __ZNK4Ogre25BillboardParticleRenderer17CmdAccurateFacing5doGetEPKv
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdAccurateFacing::doGet(void const*)const")]
+// was: Ogre::BillboardParticleRenderer::CmdAccurateFacing::doGet(void const*)const
+pub fn stub_c60548() -> ! {
+    todo!("0xc60548 Ogre::BillboardParticleRenderer::CmdAccurateFacing::doGet(void const*)const")
+}
+
+// 0xc60564 — __ZN4Ogre25BillboardParticleRenderer17CmdAccurateFacing5doSetEPvRKSs
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdAccurateFacing::doSet(void *,std::string const&)")]
+// was: Ogre::BillboardParticleRenderer::CmdAccurateFacing::doSet(void *,std::string const&)
+pub fn stub_c60564() -> ! {
+    todo!("0xc60564 Ogre::BillboardParticleRenderer::CmdAccurateFacing::doSet(void *,std::string const&)")
+}
+
+// 0xc60580 — __ZN4Ogre25BillboardParticleRenderer16CmdBillboardTypeD1Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardType::~CmdBillboardType()")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardType::~CmdBillboardType()
+pub fn stub_c60580() -> ! {
+    todo!("0xc60580 Ogre::BillboardParticleRenderer::CmdBillboardType::~CmdBillboardType()")
+}
+
+// 0xc60584 — __ZN4Ogre25BillboardParticleRenderer18CmdBillboardOriginD1Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardOrigin::~CmdBillboardOrigin()")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardOrigin::~CmdBillboardOrigin()
+pub fn stub_c60584() -> ! {
+    todo!("0xc60584 Ogre::BillboardParticleRenderer::CmdBillboardOrigin::~CmdBillboardOrigin()")
+}
+
+// 0xc60588 — __ZN4Ogre25BillboardParticleRenderer24CmdBillboardRotationTypeD1Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardRotationType::~CmdBillboardRotationType()")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardRotationType::~CmdBillboardRotationType()
+pub fn stub_c60588() -> ! {
+    todo!("0xc60588 Ogre::BillboardParticleRenderer::CmdBillboardRotationType::~CmdBillboardRotationType()")
+}
+
+// 0xc6058c — __ZN4Ogre25BillboardParticleRenderer18CmdCommonDirectionD1Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdCommonDirection::~CmdCommonDirection()")]
+// was: Ogre::BillboardParticleRenderer::CmdCommonDirection::~CmdCommonDirection()
+pub fn stub_c6058c() -> ! {
+    todo!("0xc6058c Ogre::BillboardParticleRenderer::CmdCommonDirection::~CmdCommonDirection()")
+}
+
+// 0xc60590 — __ZN4Ogre25BillboardParticleRenderer17CmdCommonUpVectorD1Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdCommonUpVector::~CmdCommonUpVector()")]
+// was: Ogre::BillboardParticleRenderer::CmdCommonUpVector::~CmdCommonUpVector()
+pub fn stub_c60590() -> ! {
+    todo!("0xc60590 Ogre::BillboardParticleRenderer::CmdCommonUpVector::~CmdCommonUpVector()")
+}
+
+// 0xc60594 — __ZN4Ogre25BillboardParticleRenderer17CmdPointRenderingD1Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdPointRendering::~CmdPointRendering()")]
+// was: Ogre::BillboardParticleRenderer::CmdPointRendering::~CmdPointRendering()
+pub fn stub_c60594() -> ! {
+    todo!("0xc60594 Ogre::BillboardParticleRenderer::CmdPointRendering::~CmdPointRendering()")
+}
+
+// 0xc60598 — __ZN4Ogre25BillboardParticleRenderer17CmdAccurateFacingD1Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdAccurateFacing::~CmdAccurateFacing()")]
+// was: Ogre::BillboardParticleRenderer::CmdAccurateFacing::~CmdAccurateFacing()
+pub fn stub_c60598() -> ! {
+    todo!("0xc60598 Ogre::BillboardParticleRenderer::CmdAccurateFacing::~CmdAccurateFacing()")
+}
+
+// 0xc6059c — __ZN4Ogre25BillboardParticleRenderer16CmdBillboardTypeD0Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardType::~CmdBillboardType()")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardType::~CmdBillboardType()
+pub fn stub_c6059c() -> ! {
+    todo!("0xc6059c Ogre::BillboardParticleRenderer::CmdBillboardType::~CmdBillboardType()")
+}
+
+// 0xc605a8 — __ZN4Ogre25BillboardParticleRenderer18CmdBillboardOriginD0Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardOrigin::~CmdBillboardOrigin()")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardOrigin::~CmdBillboardOrigin()
+pub fn stub_c605a8() -> ! {
+    todo!("0xc605a8 Ogre::BillboardParticleRenderer::CmdBillboardOrigin::~CmdBillboardOrigin()")
+}
+
+// 0xc605b4 — __ZN4Ogre25BillboardParticleRenderer24CmdBillboardRotationTypeD0Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdBillboardRotationType::~CmdBillboardRotationType()")]
+// was: Ogre::BillboardParticleRenderer::CmdBillboardRotationType::~CmdBillboardRotationType()
+pub fn stub_c605b4() -> ! {
+    todo!("0xc605b4 Ogre::BillboardParticleRenderer::CmdBillboardRotationType::~CmdBillboardRotationType()")
+}
+
+// 0xc605c0 — __ZN4Ogre25BillboardParticleRenderer18CmdCommonDirectionD0Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdCommonDirection::~CmdCommonDirection()")]
+// was: Ogre::BillboardParticleRenderer::CmdCommonDirection::~CmdCommonDirection()
+pub fn stub_c605c0() -> ! {
+    todo!("0xc605c0 Ogre::BillboardParticleRenderer::CmdCommonDirection::~CmdCommonDirection()")
+}
+
+// 0xc605cc — __ZN4Ogre25BillboardParticleRenderer17CmdCommonUpVectorD0Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdCommonUpVector::~CmdCommonUpVector()")]
+// was: Ogre::BillboardParticleRenderer::CmdCommonUpVector::~CmdCommonUpVector()
+pub fn stub_c605cc() -> ! {
+    todo!("0xc605cc Ogre::BillboardParticleRenderer::CmdCommonUpVector::~CmdCommonUpVector()")
+}
+
+// 0xc605d8 — __ZN4Ogre25BillboardParticleRenderer17CmdPointRenderingD0Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdPointRendering::~CmdPointRendering()")]
+// was: Ogre::BillboardParticleRenderer::CmdPointRendering::~CmdPointRendering()
+pub fn stub_c605d8() -> ! {
+    todo!("0xc605d8 Ogre::BillboardParticleRenderer::CmdPointRendering::~CmdPointRendering()")
+}
+
+// 0xc605e4 — __ZN4Ogre25BillboardParticleRenderer17CmdAccurateFacingD0Ev
+#[doc(alias = "Ogre::BillboardParticleRenderer::CmdAccurateFacing::~CmdAccurateFacing()")]
+// was: Ogre::BillboardParticleRenderer::CmdAccurateFacing::~CmdAccurateFacing()
+pub fn stub_c605e4() -> ! {
+    todo!("0xc605e4 Ogre::BillboardParticleRenderer::CmdAccurateFacing::~CmdAccurateFacing()")
+}
+
+// 0xc605f0 — __ZN4Ogre22ParticleSystemRenderer22_notifyParticleEmittedEPNS_8ParticleE
+#[doc(alias = "Ogre::ParticleSystemRenderer::_notifyParticleEmitted(Ogre::Particle *)")]
+// was: Ogre::ParticleSystemRenderer::_notifyParticleEmitted(Ogre::Particle *)
+pub fn stub_c605f0() -> ! {
+    todo!("0xc605f0 Ogre::ParticleSystemRenderer::_notifyParticleEmitted(Ogre::Particle *)")
+}
+
+// 0xc605f4 — __ZN4Ogre22ParticleSystemRenderer22_notifyParticleExpiredEPNS_8ParticleE
+#[doc(alias = "Ogre::ParticleSystemRenderer::_notifyParticleExpired(Ogre::Particle *)")]
+// was: Ogre::ParticleSystemRenderer::_notifyParticleExpired(Ogre::Particle *)
+pub fn stub_c605f4() -> ! {
+    todo!("0xc605f4 Ogre::ParticleSystemRenderer::_notifyParticleExpired(Ogre::Particle *)")
+}
+
+// 0xc605f8 — __ZN4Ogre22ParticleSystemRenderer20_notifyParticleMovedERSt4listIPNS_8ParticleENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::ParticleSystemRenderer::_notifyParticleMoved(std::list<Ogre::Particle *,Ogre::STLAllocator<Ogre::Particle *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)")]
+// was: Ogre::ParticleSystemRenderer::_notifyParticleMoved(std::list<Ogre::Particle *,Ogre::STLAllocator<Ogre::Particle *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)
+pub fn stub_c605f8() -> ! {
+    todo!("0xc605f8 Ogre::ParticleSystemRenderer::_notifyParticleMoved(std::list<Ogre::Particle *,Ogre::STLAllocator<Ogre::Particle *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)")
+}
+
+// 0xc605fc — __ZN4Ogre22ParticleSystemRenderer22_notifyParticleClearedERSt4listIPNS_8ParticleENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::ParticleSystemRenderer::_notifyParticleCleared(std::list<Ogre::Particle *,Ogre::STLAllocator<Ogre::Particle *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)")]
+// was: Ogre::ParticleSystemRenderer::_notifyParticleCleared(std::list<Ogre::Particle *,Ogre::STLAllocator<Ogre::Particle *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)
+pub fn stub_c605fc() -> ! {
+    todo!("0xc605fc Ogre::ParticleSystemRenderer::_notifyParticleCleared(std::list<Ogre::Particle *,Ogre::STLAllocator<Ogre::Particle *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)")
+}
+
+// 0xc60600 — __ZN4Ogre22ParticleSystemRenderer17_createVisualDataEv
+#[doc(alias = "Ogre::ParticleSystemRenderer::_createVisualData(void)")]
+// was: Ogre::ParticleSystemRenderer::_createVisualData(void)
+pub fn stub_c60600() -> ! {
+    todo!("0xc60600 Ogre::ParticleSystemRenderer::_createVisualData(void)")
+}
+
+// 0xc60604 — __ZN4Ogre22ParticleSystemRenderer18_destroyVisualDataEPNS_18ParticleVisualDataE
+#[doc(alias = "Ogre::ParticleSystemRenderer::_destroyVisualData(Ogre::ParticleVisualData *)")]
+// was: Ogre::ParticleSystemRenderer::_destroyVisualData(Ogre::ParticleVisualData *)
+pub fn stub_c60604() -> ! {
+    todo!("0xc60604 Ogre::ParticleSystemRenderer::_destroyVisualData(Ogre::ParticleVisualData *)")
+}
+
+// 0xc6072c — __ZN4Ogre12BillboardSetC1ERKSsjb
+#[doc(alias = "Ogre::BillboardSet::BillboardSet(std::string const&,unsigned int,bool)")]
+// was: Ogre::BillboardSet::BillboardSet(std::string const&,unsigned int,bool)
+pub fn stub_c6072c() -> ! {
+    todo!("0xc6072c Ogre::BillboardSet::BillboardSet(std::string const&,unsigned int,bool)")
+}
+
+// 0xc60738 — __ZN4Ogre12BillboardSetC2ERKSsjb
+#[doc(alias = "Ogre::BillboardSet::BillboardSet(std::string const&,unsigned int,bool)")]
+// was: Ogre::BillboardSet::BillboardSet(std::string const&,unsigned int,bool)
+pub fn stub_c60738() -> ! {
+    todo!("0xc60738 Ogre::BillboardSet::BillboardSet(std::string const&,unsigned int,bool)")
+}
+
+// 0xc60dc0 — __ZN4Ogre12BillboardSetD0Ev
+#[doc(alias = "Ogre::BillboardSet::~BillboardSet()")]
+// was: Ogre::BillboardSet::~BillboardSet()
+pub fn stub_c60dc0() -> ! {
+    todo!("0xc60dc0 Ogre::BillboardSet::~BillboardSet()")
+}
+
+// 0xc60e50 — __ZN4Ogre12BillboardSetD1Ev
+#[doc(alias = "Ogre::BillboardSet::~BillboardSet()")]
+// was: Ogre::BillboardSet::~BillboardSet()
+pub fn stub_c60e50() -> ! {
+    todo!("0xc60e50 Ogre::BillboardSet::~BillboardSet()")
+}
+
+// 0xc60e5c — __ZThn4_N4Ogre12BillboardSetD0Ev
+#[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
+// was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
+pub fn stub_c60e5c() -> ! {
+    todo!("0xc60e5c `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()")
+}
+
+// 0xc60ef0 — __ZThn188_N4Ogre12BillboardSetD0Ev
+#[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
+// was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
+pub fn stub_c60ef0() -> ! {
+    todo!("0xc60ef0 `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()")
+}
+
+// 0xc60f84 — __ZN4Ogre12BillboardSetD2Ev
+#[doc(alias = "Ogre::BillboardSet::~BillboardSet()")]
+// was: Ogre::BillboardSet::~BillboardSet()
+pub fn stub_c60f84() -> ! {
+    todo!("0xc60f84 Ogre::BillboardSet::~BillboardSet()")
+}
+
+// 0xc614d8 — __ZThn4_N4Ogre12BillboardSetD1Ev
+#[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
+// was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
+pub fn stub_c614d8() -> ! {
+    todo!("0xc614d8 `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()")
+}
+
+// 0xc614e4 — __ZThn188_N4Ogre12BillboardSetD1Ev
+#[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
+// was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
+pub fn stub_c614e4() -> ! {
+    todo!("0xc614e4 `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()")
+}
+
+// 0xc614f0 — __ZN4Ogre12BillboardSet15_destroyBuffersEv
+#[doc(alias = "Ogre::BillboardSet::_destroyBuffers(void)")]
+// was: Ogre::BillboardSet::_destroyBuffers(void)
+pub fn stub_c614f0() -> ! {
+    todo!("0xc614f0 Ogre::BillboardSet::_destroyBuffers(void)")
+}
+
+// 0xc615e8 — __ZN4Ogre12BillboardSet15createBillboardERKNS_7Vector3ERKNS_11ColourValueE
+#[doc(alias = "Ogre::BillboardSet::createBillboard(Ogre::Vector3 const&,Ogre::ColourValue const&)")]
+// was: Ogre::BillboardSet::createBillboard(Ogre::Vector3 const&,Ogre::ColourValue const&)
+pub fn stub_c615e8() -> ! {
+    todo!("0xc615e8 Ogre::BillboardSet::createBillboard(Ogre::Vector3 const&,Ogre::ColourValue const&)")
+}
+
+// 0xc617dc — __ZNK4Ogre12BillboardSet16getNumBillboardsEv
+#[doc(alias = "Ogre::BillboardSet::getNumBillboards(void)const")]
+// was: Ogre::BillboardSet::getNumBillboards(void)const
+pub fn stub_c617dc() -> ! {
+    todo!("0xc617dc Ogre::BillboardSet::getNumBillboards(void)const")
+}
+
+// 0xc617f4 — __ZN4Ogre12BillboardSet5clearEv
+#[doc(alias = "Ogre::BillboardSet::clear(void)")]
+// was: Ogre::BillboardSet::clear(void)
+pub fn stub_c617f4() -> ! {
+    todo!("0xc617f4 Ogre::BillboardSet::clear(void)")
+}
+
+// 0xc61810 — __ZNK4Ogre12BillboardSet12getBillboardEj
+#[doc(alias = "Ogre::BillboardSet::getBillboard(unsigned int)const")]
+// was: Ogre::BillboardSet::getBillboard(unsigned int)const
+pub fn stub_c61810() -> ! {
+    todo!("0xc61810 Ogre::BillboardSet::getBillboard(unsigned int)const")
+}
+
+// 0xc6185c — __ZN4Ogre12BillboardSet15removeBillboardEj
+#[doc(alias = "Ogre::BillboardSet::removeBillboard(unsigned int)")]
+// was: Ogre::BillboardSet::removeBillboard(unsigned int)
+pub fn stub_c6185c() -> ! {
+    todo!("0xc6185c Ogre::BillboardSet::removeBillboard(unsigned int)")
+}
+
+// 0xc618c8 — __ZN4Ogre12BillboardSet15removeBillboardEPNS_9BillboardE
+#[doc(alias = "Ogre::BillboardSet::removeBillboard(Ogre::Billboard *)")]
+// was: Ogre::BillboardSet::removeBillboard(Ogre::Billboard *)
+pub fn stub_c618c8() -> ! {
+    todo!("0xc618c8 Ogre::BillboardSet::removeBillboard(Ogre::Billboard *)")
+}
+
+// 0xc61900 — __ZN4Ogre12BillboardSet18setBillboardOriginENS_15BillboardOriginE
+#[doc(alias = "Ogre::BillboardSet::setBillboardOrigin(Ogre::BillboardOrigin)")]
+// was: Ogre::BillboardSet::setBillboardOrigin(Ogre::BillboardOrigin)
+pub fn stub_c61900() -> ! {
+    todo!("0xc61900 Ogre::BillboardSet::setBillboardOrigin(Ogre::BillboardOrigin)")
+}
+
+// 0xc61908 — __ZNK4Ogre12BillboardSet18getBillboardOriginEv
+#[doc(alias = "Ogre::BillboardSet::getBillboardOrigin(void)const")]
+// was: Ogre::BillboardSet::getBillboardOrigin(void)const
+pub fn stub_c61908() -> ! {
+    todo!("0xc61908 Ogre::BillboardSet::getBillboardOrigin(void)const")
+}
+
+// 0xc61910 — __ZN4Ogre12BillboardSet24setBillboardRotationTypeENS_21BillboardRotationTypeE
+#[doc(alias = "Ogre::BillboardSet::setBillboardRotationType(Ogre::BillboardRotationType)")]
+// was: Ogre::BillboardSet::setBillboardRotationType(Ogre::BillboardRotationType)
+pub fn stub_c61910() -> ! {
+    todo!("0xc61910 Ogre::BillboardSet::setBillboardRotationType(Ogre::BillboardRotationType)")
+}
+
+// 0xc61918 — __ZNK4Ogre12BillboardSet24getBillboardRotationTypeEv
+#[doc(alias = "Ogre::BillboardSet::getBillboardRotationType(void)const")]
+// was: Ogre::BillboardSet::getBillboardRotationType(void)const
+pub fn stub_c61918() -> ! {
+    todo!("0xc61918 Ogre::BillboardSet::getBillboardRotationType(void)const")
+}
+
+// 0xc61920 — __ZN4Ogre12BillboardSet20setDefaultDimensionsEff
+#[doc(alias = "Ogre::BillboardSet::setDefaultDimensions(float,float)")]
+// was: Ogre::BillboardSet::setDefaultDimensions(float,float)
+pub fn stub_c61920() -> ! {
+    todo!("0xc61920 Ogre::BillboardSet::setDefaultDimensions(float,float)")
+}
+
+// 0xc6192c — __ZN4Ogre12BillboardSet15setDefaultWidthEf
+#[doc(alias = "Ogre::BillboardSet::setDefaultWidth(float)")]
+// was: Ogre::BillboardSet::setDefaultWidth(float)
+pub fn stub_c6192c() -> ! {
+    todo!("0xc6192c Ogre::BillboardSet::setDefaultWidth(float)")
+}
+
+// 0xc61934 — __ZNK4Ogre12BillboardSet15getDefaultWidthEv
+#[doc(alias = "Ogre::BillboardSet::getDefaultWidth(void)const")]
+// was: Ogre::BillboardSet::getDefaultWidth(void)const
+pub fn stub_c61934() -> ! {
+    todo!("0xc61934 Ogre::BillboardSet::getDefaultWidth(void)const")
+}
+
+// 0xc6193c — __ZN4Ogre12BillboardSet16setDefaultHeightEf
+#[doc(alias = "Ogre::BillboardSet::setDefaultHeight(float)")]
+// was: Ogre::BillboardSet::setDefaultHeight(float)
+pub fn stub_c6193c() -> ! {
+    todo!("0xc6193c Ogre::BillboardSet::setDefaultHeight(float)")
+}
+
+// 0xc61944 — __ZNK4Ogre12BillboardSet16getDefaultHeightEv
+#[doc(alias = "Ogre::BillboardSet::getDefaultHeight(void)const")]
+// was: Ogre::BillboardSet::getDefaultHeight(void)const
+pub fn stub_c61944() -> ! {
+    todo!("0xc61944 Ogre::BillboardSet::getDefaultHeight(void)const")
+}
+
+// 0xc6194c — __ZN4Ogre12BillboardSet15setMaterialNameERKSsS2_
+#[doc(alias = "Ogre::BillboardSet::setMaterialName(std::string const&,std::string const&)")]
+// was: Ogre::BillboardSet::setMaterialName(std::string const&,std::string const&)
+pub fn stub_c6194c() -> ! {
+    todo!("0xc6194c Ogre::BillboardSet::setMaterialName(std::string const&,std::string const&)")
+}
+
+// 0xc61d18 — __ZNK4Ogre12BillboardSet15getMaterialNameEv
+#[doc(alias = "Ogre::BillboardSet::getMaterialName(void)const")]
+// was: Ogre::BillboardSet::getMaterialName(void)const
+pub fn stub_c61d18() -> ! {
+    todo!("0xc61d18 Ogre::BillboardSet::getMaterialName(void)const")
+}
+
+// 0xc61d20 — __ZN4Ogre12BillboardSet15_sortBillboardsEPNS_6CameraE
+#[doc(alias = "Ogre::BillboardSet::_sortBillboards(Ogre::Camera *)")]
+// was: Ogre::BillboardSet::_sortBillboards(Ogre::Camera *)
+pub fn stub_c61d20() -> ! {
+    todo!("0xc61d20 Ogre::BillboardSet::_sortBillboards(Ogre::Camera *)")
+}
+
+// 0xc61d90 — __ZNK4Ogre12BillboardSet12_getSortModeEv
+#[doc(alias = "Ogre::BillboardSet::_getSortMode(void)const")]
+// was: Ogre::BillboardSet::_getSortMode(void)const
+pub fn stub_c61d90() -> ! {
+    todo!("0xc61d90 Ogre::BillboardSet::_getSortMode(void)const")
+}
+
+// 0xc61dac — __ZN4Ogre12BillboardSet20_notifyCurrentCameraEPNS_6CameraE
+#[doc(alias = "Ogre::BillboardSet::_notifyCurrentCamera(Ogre::Camera *)")]
+// was: Ogre::BillboardSet::_notifyCurrentCamera(Ogre::Camera *)
+pub fn stub_c61dac() -> ! {
+    todo!("0xc61dac Ogre::BillboardSet::_notifyCurrentCamera(Ogre::Camera *)")
+}
+
+// 0xc61ef8 — __ZN4Ogre12BillboardSet15beginBillboardsEm
+#[doc(alias = "Ogre::BillboardSet::beginBillboards(unsigned long)")]
+// was: Ogre::BillboardSet::beginBillboards(unsigned long)
+pub fn stub_c61ef8() -> ! {
+    todo!("0xc61ef8 Ogre::BillboardSet::beginBillboards(unsigned long)")
+}
+
+// 0xc62148 — __ZN4Ogre12BillboardSet14_createBuffersEv
+#[doc(alias = "Ogre::BillboardSet::_createBuffers(void)")]
+// was: Ogre::BillboardSet::_createBuffers(void)
+pub fn stub_c62148() -> ! {
+    todo!("0xc62148 Ogre::BillboardSet::_createBuffers(void)")
+}
+
+// 0xc62800 — __ZN4Ogre12BillboardSet16genBillboardAxesEPNS_7Vector3ES2_PKNS_9BillboardE
+#[doc(alias = "Ogre::BillboardSet::genBillboardAxes(Ogre::Vector3 *,Ogre::Vector3 *,Ogre::Billboard const*)")]
+// was: Ogre::BillboardSet::genBillboardAxes(Ogre::Vector3 *,Ogre::Vector3 *,Ogre::Billboard const*)
+pub fn stub_c62800() -> ! {
+    todo!("0xc62800 Ogre::BillboardSet::genBillboardAxes(Ogre::Vector3 *,Ogre::Vector3 *,Ogre::Billboard const*)")
+}
+
+// 0xc62be8 — __ZN4Ogre12BillboardSet15injectBillboardERKNS_9BillboardE
+#[doc(alias = "Ogre::BillboardSet::injectBillboard(Ogre::Billboard const&)")]
+// was: Ogre::BillboardSet::injectBillboard(Ogre::Billboard const&)
+pub fn stub_c62be8() -> ! {
+    todo!("0xc62be8 Ogre::BillboardSet::injectBillboard(Ogre::Billboard const&)")
+}
+
+// 0xc62e94 — __ZN4Ogre12BillboardSet11genVerticesEPKNS_7Vector3ERKNS_9BillboardE
+#[doc(alias = "Ogre::BillboardSet::genVertices(Ogre::Vector3 const*,Ogre::Billboard const&)")]
+// was: Ogre::BillboardSet::genVertices(Ogre::Vector3 const*,Ogre::Billboard const&)
+pub fn stub_c62e94() -> ! {
+    todo!("0xc62e94 Ogre::BillboardSet::genVertices(Ogre::Vector3 const*,Ogre::Billboard const&)")
+}
+
+// 0xc6341c — __ZN4Ogre12BillboardSet13endBillboardsEv
+#[doc(alias = "Ogre::BillboardSet::endBillboards(void)")]
+// was: Ogre::BillboardSet::endBillboards(void)
+pub fn stub_c6341c() -> ! {
+    todo!("0xc6341c Ogre::BillboardSet::endBillboards(void)")
+}
+
+// 0xc6342c — __ZN4Ogre12BillboardSet13_updateBoundsEv
+#[doc(alias = "Ogre::BillboardSet::_updateBounds(void)")]
+// was: Ogre::BillboardSet::_updateBounds(void)
+pub fn stub_c6342c() -> ! {
+    todo!("0xc6342c Ogre::BillboardSet::_updateBounds(void)")
+}
+
+// 0xc63748 — __ZNK4Ogre12BillboardSet14getBoundingBoxEv
+#[doc(alias = "Ogre::BillboardSet::getBoundingBox(void)const")]
+// was: Ogre::BillboardSet::getBoundingBox(void)const
+pub fn stub_c63748() -> ! {
+    todo!("0xc63748 Ogre::BillboardSet::getBoundingBox(void)const")
+}
+
+// 0xc6374c — __ZN4Ogre12BillboardSet18_updateRenderQueueEPNS_11RenderQueueE
+#[doc(alias = "Ogre::BillboardSet::_updateRenderQueue(Ogre::RenderQueue *)")]
+// was: Ogre::BillboardSet::_updateRenderQueue(Ogre::RenderQueue *)
+pub fn stub_c6374c() -> ! {
+    todo!("0xc6374c Ogre::BillboardSet::_updateRenderQueue(Ogre::RenderQueue *)")
+}
+
+// 0xc63808 — __ZNK4Ogre12BillboardSet11getMaterialEv
+#[doc(alias = "Ogre::BillboardSet::getMaterial(void)const")]
+// was: Ogre::BillboardSet::getMaterial(void)const
+pub fn stub_c63808() -> ! {
+    todo!("0xc63808 Ogre::BillboardSet::getMaterial(void)const")
+}
+
+// 0xc63810 — __ZThn188_NK4Ogre12BillboardSet11getMaterialEv
+#[doc(alias = "non-virtual thunk toOgre::BillboardSet::getMaterial(void)const")]
+// was: `non-virtual thunk to'Ogre::BillboardSet::getMaterial(void)const
+pub fn stub_c63810() -> ! {
+    todo!("0xc63810 `non-virtual thunk to'Ogre::BillboardSet::getMaterial(void)const")
+}
+
+// 0xc63814 — __ZN4Ogre12BillboardSet11setMaterialERKNS_11MaterialPtrE
+#[doc(alias = "Ogre::BillboardSet::setMaterial(Ogre::MaterialPtr const&)")]
+// was: Ogre::BillboardSet::setMaterial(Ogre::MaterialPtr const&)
+pub fn stub_c63814() -> ! {
+    todo!("0xc63814 Ogre::BillboardSet::setMaterial(Ogre::MaterialPtr const&)")
+}
+
+// 0xc63f28 — __ZN4Ogre12BillboardSet18getRenderOperationERNS_15RenderOperationE
+#[doc(alias = "Ogre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")]
+// was: Ogre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)
+pub fn stub_c63f28() -> ! {
+    todo!("0xc63f28 Ogre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")
+}
+
+// 0xc63f88 — __ZThn188_N4Ogre12BillboardSet18getRenderOperationERNS_15RenderOperationE
+#[doc(alias = "non-virtual thunk toOgre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")]
+// was: `non-virtual thunk to'Ogre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)
+pub fn stub_c63f88() -> ! {
+    todo!("0xc63f88 `non-virtual thunk to'Ogre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")
+}
+
+// 0xc63fe8 — __ZNK4Ogre12BillboardSet18getWorldTransformsEPNS_7Matrix4E
+#[doc(alias = "Ogre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")]
+// was: Ogre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const
+pub fn stub_c63fe8() -> ! {
+    todo!("0xc63fe8 Ogre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")
+}
+
+// 0xc64044 — __ZThn188_NK4Ogre12BillboardSet18getWorldTransformsEPNS_7Matrix4E
+#[doc(alias = "non-virtual thunk toOgre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")]
+// was: `non-virtual thunk to'Ogre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const
+pub fn stub_c64044() -> ! {
+    todo!("0xc64044 `non-virtual thunk to'Ogre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")
+}
+
+// 0xc640a0 — __ZN4Ogre12BillboardSet13setAutoextendEb
+#[doc(alias = "Ogre::BillboardSet::setAutoextend(bool)")]
+// was: Ogre::BillboardSet::setAutoextend(bool)
+pub fn stub_c640a0() -> ! {
+    todo!("0xc640a0 Ogre::BillboardSet::setAutoextend(bool)")
+}
+
+// 0xc640a8 — __ZNK4Ogre12BillboardSet13getAutoextendEv
+#[doc(alias = "Ogre::BillboardSet::getAutoextend(void)const")]
+// was: Ogre::BillboardSet::getAutoextend(void)const
+pub fn stub_c640a8() -> ! {
+    todo!("0xc640a8 Ogre::BillboardSet::getAutoextend(void)const")
+}
+
+// 0xc640b0 — __ZN4Ogre12BillboardSet17setSortingEnabledEb
+#[doc(alias = "Ogre::BillboardSet::setSortingEnabled(bool)")]
+// was: Ogre::BillboardSet::setSortingEnabled(bool)
+pub fn stub_c640b0() -> ! {
+    todo!("0xc640b0 Ogre::BillboardSet::setSortingEnabled(bool)")
+}
+
+// 0xc640b8 — __ZNK4Ogre12BillboardSet17getSortingEnabledEv
+#[doc(alias = "Ogre::BillboardSet::getSortingEnabled(void)const")]
+// was: Ogre::BillboardSet::getSortingEnabled(void)const
+pub fn stub_c640b8() -> ! {
+    todo!("0xc640b8 Ogre::BillboardSet::getSortingEnabled(void)const")
+}
+
+// 0xc640c0 — __ZN4Ogre12BillboardSet11setPoolSizeEm
+#[doc(alias = "Ogre::BillboardSet::setPoolSize(unsigned long)")]
+// was: Ogre::BillboardSet::setPoolSize(unsigned long)
+pub fn stub_c640c0() -> ! {
+    todo!("0xc640c0 Ogre::BillboardSet::setPoolSize(unsigned long)")
+}
+
+// 0xc64120 — __ZNK4Ogre12BillboardSet11getPoolSizeEv
+#[doc(alias = "Ogre::BillboardSet::getPoolSize(void)const")]
+// was: Ogre::BillboardSet::getPoolSize(void)const
+pub fn stub_c64120() -> ! {
+    todo!("0xc64120 Ogre::BillboardSet::getPoolSize(void)const")
+}
+
+// 0xc6412c — __ZN4Ogre12BillboardSet23_notifyBillboardResizedEv
+#[doc(alias = "Ogre::BillboardSet::_notifyBillboardResized(void)")]
+// was: Ogre::BillboardSet::_notifyBillboardResized(void)
+pub fn stub_c6412c() -> ! {
+    todo!("0xc6412c Ogre::BillboardSet::_notifyBillboardResized(void)")
+}
+
+// 0xc64134 — __ZN4Ogre12BillboardSet23_notifyBillboardRotatedEv
+#[doc(alias = "Ogre::BillboardSet::_notifyBillboardRotated(void)")]
+// was: Ogre::BillboardSet::_notifyBillboardRotated(void)
+pub fn stub_c64134() -> ! {
+    todo!("0xc64134 Ogre::BillboardSet::_notifyBillboardRotated(void)")
+}
+
+// 0xc6413c — __ZNK4Ogre12BillboardSet19getCullIndividuallyEv
+#[doc(alias = "Ogre::BillboardSet::getCullIndividually(void)const")]
+// was: Ogre::BillboardSet::getCullIndividually(void)const
+pub fn stub_c6413c() -> ! {
+    todo!("0xc6413c Ogre::BillboardSet::getCullIndividually(void)const")
+}
+
+// 0xc64144 — __ZN4Ogre12BillboardSet19setCullIndividuallyEb
+#[doc(alias = "Ogre::BillboardSet::setCullIndividually(bool)")]
+// was: Ogre::BillboardSet::setCullIndividually(bool)
+pub fn stub_c64144() -> ! {
+    todo!("0xc64144 Ogre::BillboardSet::setCullIndividually(bool)")
+}
+
+// 0xc6414c — __ZN4Ogre12BillboardSet12increasePoolEm
+#[doc(alias = "Ogre::BillboardSet::increasePool(unsigned long)")]
+// was: Ogre::BillboardSet::increasePool(unsigned long)
+pub fn stub_c6414c() -> ! {
+    todo!("0xc6414c Ogre::BillboardSet::increasePool(unsigned long)")
+}
+
+// 0xc64278 — __ZN4Ogre12BillboardSet16setBillboardTypeENS_13BillboardTypeE
+#[doc(alias = "Ogre::BillboardSet::setBillboardType(Ogre::BillboardType)")]
+// was: Ogre::BillboardSet::setBillboardType(Ogre::BillboardType)
+pub fn stub_c64278() -> ! {
+    todo!("0xc64278 Ogre::BillboardSet::setBillboardType(Ogre::BillboardType)")
+}
+
+// 0xc64280 — __ZNK4Ogre12BillboardSet16getBillboardTypeEv
+#[doc(alias = "Ogre::BillboardSet::getBillboardType(void)const")]
+// was: Ogre::BillboardSet::getBillboardType(void)const
+pub fn stub_c64280() -> ! {
+    todo!("0xc64280 Ogre::BillboardSet::getBillboardType(void)const")
+}
+
+// 0xc64288 — __ZN4Ogre12BillboardSet18setCommonDirectionERKNS_7Vector3E
+#[doc(alias = "Ogre::BillboardSet::setCommonDirection(Ogre::Vector3 const&)")]
+// was: Ogre::BillboardSet::setCommonDirection(Ogre::Vector3 const&)
+pub fn stub_c64288() -> ! {
+    todo!("0xc64288 Ogre::BillboardSet::setCommonDirection(Ogre::Vector3 const&)")
+}
+
+// 0xc6429c — __ZNK4Ogre12BillboardSet18getCommonDirectionEv
+#[doc(alias = "Ogre::BillboardSet::getCommonDirection(void)const")]
+// was: Ogre::BillboardSet::getCommonDirection(void)const
+pub fn stub_c6429c() -> ! {
+    todo!("0xc6429c Ogre::BillboardSet::getCommonDirection(void)const")
+}
+
+// 0xc642a4 — __ZN4Ogre12BillboardSet17setCommonUpVectorERKNS_7Vector3E
+#[doc(alias = "Ogre::BillboardSet::setCommonUpVector(Ogre::Vector3 const&)")]
+// was: Ogre::BillboardSet::setCommonUpVector(Ogre::Vector3 const&)
+pub fn stub_c642a4() -> ! {
+    todo!("0xc642a4 Ogre::BillboardSet::setCommonUpVector(Ogre::Vector3 const&)")
+}
+
+// 0xc642b8 — __ZNK4Ogre12BillboardSet17getCommonUpVectorEv
+#[doc(alias = "Ogre::BillboardSet::getCommonUpVector(void)const")]
+// was: Ogre::BillboardSet::getCommonUpVector(void)const
+pub fn stub_c642b8() -> ! {
+    todo!("0xc642b8 Ogre::BillboardSet::getCommonUpVector(void)const")
+}
+
+// 0xc642c0 — __ZNK4Ogre12BillboardSet12getTypeFlagsEv
+#[doc(alias = "Ogre::BillboardSet::getTypeFlags(void)const")]
+// was: Ogre::BillboardSet::getTypeFlags(void)const
+pub fn stub_c642c0() -> ! {
+    todo!("0xc642c0 Ogre::BillboardSet::getTypeFlags(void)const")
+}
+
+// 0xc642d0 — __ZNK4Ogre12BillboardSet14getMovableTypeEv
+#[doc(alias = "Ogre::BillboardSet::getMovableType(void)const")]
+// was: Ogre::BillboardSet::getMovableType(void)const
+pub fn stub_c642d0() -> ! {
+    todo!("0xc642d0 Ogre::BillboardSet::getMovableType(void)const")
+}
+
+// 0xc642dc — __ZNK4Ogre12BillboardSet19getSquaredViewDepthEPKNS_6CameraE
+#[doc(alias = "Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")]
+// was: Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const
+pub fn stub_c642dc() -> ! {
+    todo!("0xc642dc Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")
+}
+
+// 0xc642ec — __ZThn188_NK4Ogre12BillboardSet19getSquaredViewDepthEPKNS_6CameraE
+#[doc(alias = "non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")]
+// was: `non-virtual thunk to'Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const
+pub fn stub_c642ec() -> ! {
+    todo!("0xc642ec `non-virtual thunk to'Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")
+}
+
+// 0xc64300 — __ZNK4Ogre12BillboardSet17getBoundingRadiusEv
+#[doc(alias = "Ogre::BillboardSet::getBoundingRadius(void)const")]
+// was: Ogre::BillboardSet::getBoundingRadius(void)const
+pub fn stub_c64300() -> ! {
+    todo!("0xc64300 Ogre::BillboardSet::getBoundingRadius(void)const")
+}
+
+// 0xc64308 — __ZNK4Ogre12BillboardSet9getLightsEv
+#[doc(alias = "Ogre::BillboardSet::getLights(void)const")]
+// was: Ogre::BillboardSet::getLights(void)const
+pub fn stub_c64308() -> ! {
+    todo!("0xc64308 Ogre::BillboardSet::getLights(void)const")
+}
+
+// 0xc64318 — __ZThn188_NK4Ogre12BillboardSet9getLightsEv
+#[doc(alias = "non-virtual thunk toOgre::BillboardSet::getLights(void)const")]
+// was: `non-virtual thunk to'Ogre::BillboardSet::getLights(void)const
+pub fn stub_c64318() -> ! {
+    todo!("0xc64318 `non-virtual thunk to'Ogre::BillboardSet::getLights(void)const")
+}
+
+// 0xc64328 — __ZN4Ogre12BillboardSet16visitRenderablesEPNS_10Renderable7VisitorEb
+#[doc(alias = "Ogre::BillboardSet::visitRenderables(Ogre::Renderable::Visitor *,bool)")]
+// was: Ogre::BillboardSet::visitRenderables(Ogre::Renderable::Visitor *,bool)
+pub fn stub_c64328() -> ! {
+    todo!("0xc64328 Ogre::BillboardSet::visitRenderables(Ogre::Renderable::Visitor *,bool)")
+}
+
+// 0xc6434c — __ZN4Ogre12BillboardSet16setTextureCoordsEPKNS_5TRectIfEEt
+#[doc(alias = "Ogre::BillboardSet::setTextureCoords(Ogre::TRect<float> const*,unsigned short)")]
+// was: Ogre::BillboardSet::setTextureCoords(Ogre::TRect<float> const*,unsigned short)
+pub fn stub_c6434c() -> ! {
+    todo!("0xc6434c Ogre::BillboardSet::setTextureCoords(Ogre::TRect<float> const*,unsigned short)")
+}
+
+// 0xc6447c — __ZN4Ogre12BillboardSet25setTextureStacksAndSlicesEhh
+#[doc(alias = "Ogre::BillboardSet::setTextureStacksAndSlices(unsigned char,unsigned char)")]
+// was: Ogre::BillboardSet::setTextureStacksAndSlices(unsigned char,unsigned char)
+pub fn stub_c6447c() -> ! {
+    todo!("0xc6447c Ogre::BillboardSet::setTextureStacksAndSlices(unsigned char,unsigned char)")
+}
+
+// 0xc64610 — __ZN4Ogre12BillboardSet16getTextureCoordsEPt
+#[doc(alias = "Ogre::BillboardSet::getTextureCoords(unsigned short *)")]
+// was: Ogre::BillboardSet::getTextureCoords(unsigned short *)
+pub fn stub_c64610() -> ! {
+    todo!("0xc64610 Ogre::BillboardSet::getTextureCoords(unsigned short *)")
+}
+
+// 0xc64620 — __ZN4Ogre12BillboardSet24setPointRenderingEnabledEb
+#[doc(alias = "Ogre::BillboardSet::setPointRenderingEnabled(bool)")]
+// was: Ogre::BillboardSet::setPointRenderingEnabled(bool)
+pub fn stub_c64620() -> ! {
+    todo!("0xc64620 Ogre::BillboardSet::setPointRenderingEnabled(bool)")
+}
+
+// 0xc64658 — __ZNK4Ogre19BillboardSetFactory7getTypeEv
+#[doc(alias = "Ogre::BillboardSetFactory::getType(void)const")]
+// was: Ogre::BillboardSetFactory::getType(void)const
+pub fn stub_c64658() -> ! {
+    todo!("0xc64658 Ogre::BillboardSetFactory::getType(void)const")
+}
+
+// 0xc64664 — __ZN4Ogre19BillboardSetFactory18createInstanceImplERKSsPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::BillboardSetFactory::createInstanceImpl(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+// was: Ogre::BillboardSetFactory::createInstanceImpl(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)
+pub fn stub_c64664() -> ! {
+    todo!("0xc64664 Ogre::BillboardSetFactory::createInstanceImpl(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xc64880 — __ZN4Ogre19BillboardSetFactory15destroyInstanceEPNS_13MovableObjectE
+#[doc(alias = "Ogre::BillboardSetFactory::destroyInstance(Ogre::MovableObject *)")]
+// was: Ogre::BillboardSetFactory::destroyInstance(Ogre::MovableObject *)
+pub fn stub_c64880() -> ! {
+    todo!("0xc64880 Ogre::BillboardSetFactory::destroyInstance(Ogre::MovableObject *)")
+}
+
+// 0xc64894 — __ZN4Ogre9RadixSortISt4listIPNS_9BillboardENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEES3_fED1Ev
+#[doc(alias = "Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::~RadixSort()")]
+// was: Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::~RadixSort()
+pub fn stub_c64894() -> ! {
+    todo!("0xc64894 Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::~RadixSort()")
+}
+
+// 0xc6496c — __ZN4Ogre9RadixSortISt4listIPNS_9BillboardENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEES3_fE4sortINS_12BillboardSet22SortByDirectionFunctorEEEvRS9_T_
+#[doc(alias = "void Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::sort<Ogre::BillboardSet::SortByDirectionFunctor>(std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>&,Ogre::BillboardSet::SortByDirectionFunctor)")]
+// was: void Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::sort<Ogre::BillboardSet::SortByDirectionFunctor>(std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>&,Ogre::BillboardSet::SortByDirectionFunctor)
+pub fn stub_c6496c() -> ! {
+    todo!("0xc6496c void Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::sort<Ogre::BillboardSet::SortByDirectionFunctor>(std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>&,Ogre::BillboardSet::SortByDirectionFunctor)")
+}
+
+// 0xc64cc0 — __ZN4Ogre9RadixSortISt4listIPNS_9BillboardENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEES3_fE4sortINS_12BillboardSet21SortByDistanceFunctorEEEvRS9_T_
+#[doc(alias = "void Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::sort<Ogre::BillboardSet::SortByDistanceFunctor>(std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>&,Ogre::BillboardSet::SortByDistanceFunctor)")]
+// was: void Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::sort<Ogre::BillboardSet::SortByDistanceFunctor>(std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>&,Ogre::BillboardSet::SortByDistanceFunctor)
+pub fn stub_c64cc0() -> ! {
+    todo!("0xc64cc0 void Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::sort<Ogre::BillboardSet::SortByDistanceFunctor>(std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>&,Ogre::BillboardSet::SortByDistanceFunctor)")
+}
+
+// 0xc65018 — __ZN4Ogre12BillboardSet16billboardVisibleEPNS_6CameraERKNS_9BillboardE
+#[doc(alias = "Ogre::BillboardSet::billboardVisible(Ogre::Camera *,Ogre::Billboard const&)")]
+// was: Ogre::BillboardSet::billboardVisible(Ogre::Camera *,Ogre::Billboard const&)
+pub fn stub_c65018() -> ! {
+    todo!("0xc65018 Ogre::BillboardSet::billboardVisible(Ogre::Camera *,Ogre::Billboard const&)")
+}
+
+// 0xc65128 — __ZNSt6vectorIPN4Ogre9BillboardENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE7reserveEm
+#[doc(alias = "std::vector<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::reserve(unsigned long)")]
+// was: std::vector<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::reserve(unsigned long)
+pub fn stub_c65128() -> ! {
+    todo!("0xc65128 std::vector<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::reserve(unsigned long)")
+}
+
+// 0xc65194 — __ZN4Ogre12BillboardSet20setUseAccurateFacingEb
+#[doc(alias = "Ogre::BillboardSet::setUseAccurateFacing(bool)")]
+// was: Ogre::BillboardSet::setUseAccurateFacing(bool)
+pub fn stub_c65194() -> ! {
+    todo!("0xc65194 Ogre::BillboardSet::setUseAccurateFacing(bool)")
+}
+
+// 0xc6519c — __ZNK4Ogre12BillboardSet20getUseAccurateFacingEv
+#[doc(alias = "Ogre::BillboardSet::getUseAccurateFacing(void)const")]
+// was: Ogre::BillboardSet::getUseAccurateFacing(void)const
+pub fn stub_c6519c() -> ! {
+    todo!("0xc6519c Ogre::BillboardSet::getUseAccurateFacing(void)const")
+}
+
+// 0xc651a4 — __ZN4Ogre12BillboardSet25setBillboardsInWorldSpaceEb
+#[doc(alias = "Ogre::BillboardSet::setBillboardsInWorldSpace(bool)")]
+// was: Ogre::BillboardSet::setBillboardsInWorldSpace(bool)
+pub fn stub_c651a4() -> ! {
+    todo!("0xc651a4 Ogre::BillboardSet::setBillboardsInWorldSpace(bool)")
+}
+
+// 0xc651ac — __ZNK4Ogre12BillboardSet23isPointRenderingEnabledEv
+#[doc(alias = "Ogre::BillboardSet::isPointRenderingEnabled(void)const")]
+// was: Ogre::BillboardSet::isPointRenderingEnabled(void)const
+pub fn stub_c651ac() -> ! {
+    todo!("0xc651ac Ogre::BillboardSet::isPointRenderingEnabled(void)const")
+}
+
+// 0xc651b4 — __ZNSt6vectorIN4Ogre5TRectIfEENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S8_EEmRKS2_
+#[doc(alias = "std::vector<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::TRect<float>*,std::vector<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::TRect<float> const&)")]
+// was: std::vector<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::TRect<float>*,std::vector<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::TRect<float> const&)
+pub fn stub_c651b4() -> ! {
+    todo!("0xc651b4 std::vector<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::TRect<float>*,std::vector<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::TRect<float> const&)")
+}
+
+// 0xc65448 — __ZNSt6vectorIPN4Ogre9BillboardENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S8_EEmRKS2_
+#[doc(alias = "std::vector<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Billboard **,std::vector<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::Billboard * const&)")]
+// was: std::vector<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Billboard **,std::vector<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::Billboard * const&)
+pub fn stub_c65448() -> ! {
+    todo!("0xc65448 std::vector<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Billboard **,std::vector<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::Billboard * const&)")
+}
+
+// 0xc655f0 — __ZNSt4listIPN4Ogre9BillboardENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS8_
+#[doc(alias = "std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_c655f0() -> ! {
+    todo!("0xc655f0 std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xc6564c — __ZN4Ogre9RadixSortISt4listIPNS_9BillboardENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEES3_fE9finalPassEif
+#[doc(alias = "Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::finalPass(int,float)")]
+// was: Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::finalPass(int,float)
+pub fn stub_c6564c() -> ! {
+    todo!("0xc6564c Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::finalPass(int,float)")
+}
+
+// 0xc65748 — __ZNSt4listIPN4Ogre9BillboardENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE6insertISt20_List_const_iteratorIS2_EEEvSt14_List_iteratorIS2_ET_SE_
+#[doc(alias = "void std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::insert<std::_List_const_iterator<Ogre::Billboard *>>(std::_List_iterator<Ogre::Billboard *>,std::_List_const_iterator<Ogre::Billboard *>,std::_List_const_iterator<Ogre::Billboard *>)")]
+// was: void std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::insert<std::_List_const_iterator<Ogre::Billboard *>>(std::_List_iterator<Ogre::Billboard *>,std::_List_const_iterator<Ogre::Billboard *>,std::_List_const_iterator<Ogre::Billboard *>)
+pub fn stub_c65748() -> ! {
+    todo!("0xc65748 void std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::insert<std::_List_const_iterator<Ogre::Billboard *>>(std::_List_iterator<Ogre::Billboard *>,std::_List_const_iterator<Ogre::Billboard *>,std::_List_const_iterator<Ogre::Billboard *>)")
+}
+
+// 0xc658bc — __ZNSt10_List_baseIPN4Ogre9BillboardENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
+#[doc(alias = "std::_List_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
+// was: std::_List_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()
+pub fn stub_c658bc() -> ! {
+    todo!("0xc658bc std::_List_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+}
+
+// 0xc658c0 — __ZNSt10_List_baseIPN4Ogre9BillboardENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
+#[doc(alias = "std::_List_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
+// was: std::_List_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()
+pub fn stub_c658c0() -> ! {
+    todo!("0xc658c0 std::_List_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+}
+
+// 0xc658cc — __ZNSt6vectorIN4Ogre9RadixSortISt4listIPNS0_9BillboardENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEES4_fE9SortEntryENS5_ISC_S8_EEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPSC_SE_EEmRKSC_
+#[doc(alias = "std::vector<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry*,std::vector<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry const&)")]
+// was: std::vector<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry*,std::vector<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry const&)
+pub fn stub_c658cc() -> ! {
+    todo!("0xc658cc std::vector<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry*,std::vector<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry const&)")
+}
+
+// 0xc65ab4 — __ZNSt12_Vector_baseIN4Ogre5TRectIfEENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
+#[doc(alias = "std::_Vector_base<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_c65ab4() -> ! {
+    todo!("0xc65ab4 std::_Vector_base<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xc65ab8 — __ZNSt12_Vector_baseIPN4Ogre9BillboardENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
+#[doc(alias = "std::_Vector_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_c65ab8() -> ! {
+    todo!("0xc65ab8 std::_Vector_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xc65abc — __ZNSt12_Vector_baseIN4Ogre5TRectIfEENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
+#[doc(alias = "std::_Vector_base<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_c65abc() -> ! {
+    todo!("0xc65abc std::_Vector_base<Ogre::TRect<float>,Ogre::STLAllocator<Ogre::TRect<float>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xc65ac8 — __ZNSt12_Vector_baseIPN4Ogre9BillboardENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
+#[doc(alias = "std::_Vector_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_c65ac8() -> ! {
+    todo!("0xc65ac8 std::_Vector_base<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xc65ad4 — __ZNSt12_Vector_baseIN4Ogre9RadixSortISt4listIPNS0_9BillboardENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEES4_fE9SortEntryENS5_ISC_S8_EEE12_Vector_implD1Ev
+#[doc(alias = "std::_Vector_base<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_c65ad4() -> ! {
+    todo!("0xc65ad4 std::_Vector_base<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xc65ad8 — __ZNSt12_Vector_baseIN4Ogre9RadixSortISt4listIPNS0_9BillboardENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEES4_fE9SortEntryENS5_ISC_S8_EEE12_Vector_implD0Ev
+#[doc(alias = "std::_Vector_base<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+// was: std::_Vector_base<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
+pub fn stub_c65ad8() -> ! {
+    todo!("0xc65ad8 std::_Vector_base<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::STLAllocator<Ogre::RadixSort<std::list<Ogre::Billboard *,Ogre::STLAllocator<Ogre::Billboard *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>,Ogre::Billboard *,float>::SortEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xc65bd8 — __ZN4Ogre4BoneC1EtPNS_8SkeletonE
+#[doc(alias = "Ogre::Bone::Bone(unsigned short,Ogre::Skeleton *)")]
+// was: Ogre::Bone::Bone(unsigned short,Ogre::Skeleton *)
+pub fn stub_c65bd8() -> ! {
+    todo!("0xc65bd8 Ogre::Bone::Bone(unsigned short,Ogre::Skeleton *)")
+}
+
+// 0xc65c1c — __ZN4Ogre4BoneC1ERKSstPNS_8SkeletonE
+#[doc(alias = "Ogre::Bone::Bone(std::string const&,unsigned short,Ogre::Skeleton *)")]
+// was: Ogre::Bone::Bone(std::string const&,unsigned short,Ogre::Skeleton *)
+pub fn stub_c65c1c() -> ! {
+    todo!("0xc65c1c Ogre::Bone::Bone(std::string const&,unsigned short,Ogre::Skeleton *)")
+}
+
+// 0xc65c60 — __ZN4Ogre4BoneD0Ev
+#[doc(alias = "Ogre::Bone::~Bone()")]
+// was: Ogre::Bone::~Bone()
+pub fn stub_c65c60() -> ! {
+    todo!("0xc65c60 Ogre::Bone::~Bone()")
+}
+
+// 0xc65cf0 — __ZN4Ogre4BoneD1Ev
+#[doc(alias = "Ogre::Bone::~Bone()")]
+// was: Ogre::Bone::~Bone()
+pub fn stub_c65cf0() -> ! {
+    todo!("0xc65cf0 Ogre::Bone::~Bone()")
+}
+
+// 0xc65cfc — __ZN4Ogre4Bone15createChildImplEv
+#[doc(alias = "Ogre::Bone::createChildImpl(void)")]
+// was: Ogre::Bone::createChildImpl(void)
+pub fn stub_c65cfc() -> ! {
+    todo!("0xc65cfc Ogre::Bone::createChildImpl(void)")
+}
