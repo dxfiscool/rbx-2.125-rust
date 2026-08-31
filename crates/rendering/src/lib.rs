@@ -5,4 +5,6 @@ pub mod ogre;
 pub mod render_settings;
 
 pub mod generated;
+pub mod generated_03;
 pub mod high;
+pub mod next_batch;
