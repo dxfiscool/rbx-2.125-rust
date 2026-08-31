@@ -35131,3 +35131,603 @@ pub fn stub_0x4ed268() -> ! {
 pub fn stub_0x4ed330() -> ! {
     todo!("0x4ed330 RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
 }
+
+// 0x4ed354 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x4ed354() -> ! {
+    todo!("0x4ed354 __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement")
+}
+
+// 0x4ed428 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x4ed428() -> ! {
+    todo!("0x4ed428 __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE")
+}
+
+// 0x4ed44c — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11getRefValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ed44c() -> ! {
+    todo!("0x4ed44c __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11getRefValueEPKNS0_13DescribedBaseE")
+}
+
+// 0x4ed460 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11setRefValueEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x4ed460() -> ! {
+    todo!("0x4ed460 __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11setRefValueEPNS0_13DescribedBaseES6_")
+}
+
+// 0x4ed4d8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x4ed4d8() -> ! {
+    todo!("0x4ed4d8 __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_")
+}
+
+// 0x4ed4f8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x4ed4f8() -> ! {
+    todo!("0x4ed4f8 __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+}
+
+// 0x4ed5d8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x4ed5d8() -> ! {
+    todo!("0x4ed5d8 __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")
+}
+
+// 0x4ed5e0 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,RBX::Hole *>::GetSetImpl<RBX::Hole * (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(RBX::Hole *)>::isReadOnly(void)const")]
+pub fn stub_0x4ed5e0() -> ! {
+    todo!("0x4ed5e0 __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+}
+
+// 0x4ed5e4 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,RBX::Hole *>::GetSetImpl<RBX::Hole * (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(RBX::Hole *)>::isWriteOnly(void)const")]
+pub fn stub_0x4ed5e4() -> ! {
+    todo!("0x4ed5e4 __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+}
+
+// 0x4ed5e8 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,RBX::Hole *>::GetSetImpl<RBX::Hole * (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(RBX::Hole *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ed5e8() -> ! {
+    todo!("0x4ed5e8 __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+}
+
+// 0x4ed608 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::VelocityMotor,RBX::Hole *>::GetSetImpl<RBX::Hole * (RBX::VelocityMotor::*)(void)const,void (RBX::VelocityMotor::*)(RBX::Hole *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Hole * const&)const")]
+pub fn stub_0x4ed608() -> ! {
+    todo!("0x4ed608 __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+}
+
+// 0x4ed62c — __ZN3RBX10Reflection7RefTypeIPNS_4HoleEED1Ev
+#[doc(alias = "RBX::Reflection::RefType<RBX::Hole *>::~RefType()")]
+pub fn stub_0x4ed62c() -> ! {
+    todo!("0x4ed62c __ZN3RBX10Reflection7RefTypeIPNS_4HoleEED1Ev")
+}
+
+// 0x4ed630 — __ZN3RBX10Reflection4TypeC2IPNS_4HoleEEEPKcS6_PT_
+#[doc(alias = "RBX::Reflection::Type::Type<RBX::Hole *>(char const*,char const*,RBX::Hole * *)")]
+pub fn stub_0x4ed630() -> ! {
+    todo!("0x4ed630 __ZN3RBX10Reflection4TypeC2IPNS_4HoleEEEPKcS6_PT_")
+}
+
+// 0x4ed6dc — __ZN3RBX10Reflection7RefTypeIPNS_4HoleEED0Ev
+#[doc(alias = "RBX::Reflection::RefType<RBX::Hole *>::~RefType()")]
+pub fn stub_0x4ed6dc() -> ! {
+    todo!("0x4ed6dc __ZN3RBX10Reflection7RefTypeIPNS_4HoleEED0Ev")
+}
+
+// 0x4edeb0 — __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::MeshId>::~PropDescriptor()")]
+pub fn stub_0x4edeb0() -> ! {
+    todo!("0x4edeb0 __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEED1Ev")
+}
+
+// 0x4eded8 — __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::TextureId>::~PropDescriptor()")]
+pub fn stub_0x4eded8() -> ! {
+    todo!("0x4eded8 __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEED1Ev")
+}
+
+// 0x4edefc — __ZN3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4edefc() -> ! {
+    todo!("0x4edefc __ZN3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4edf00 — __ZN3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4edf00() -> ! {
+    todo!("0x4edf00 __ZN3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4edfa0 — __ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4edfa0() -> ! {
+    todo!("0x4edfa0 __ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4edfa8 — __ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4edfa8() -> ! {
+    todo!("0x4edfa8 __ZThn32_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4ee04c — __ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4ee04c() -> ! {
+    todo!("0x4ee04c __ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4ee054 — __ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4ee054() -> ! {
+    todo!("0x4ee054 __ZThn36_N3RBX10Reflection9DescribedINS_8FileMeshELZNS_9sFileMeshEENS_14FactoryProductIS2_NS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4ee0f8 — __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEEC2IMS2_KFRKS3_vEMS2_FvS7_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::TextureId>::PropDescriptor<RBX::TextureId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::TextureId const&)>(char const*,char const*,RBX::TextureId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::TextureId const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4ee0f8() -> ! {
+    todo!("0x4ee0f8 __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEEC2IMS2_KFRKS3_vEMS2_FvS7_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0x4ee20c — __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::TextureId>::~PropDescriptor()")]
+pub fn stub_0x4ee20c() -> ! {
+    todo!("0x4ee20c __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEED0Ev")
+}
+
+// 0x4ee238 — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::TextureId>::GetSetImpl<RBX::TextureId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::TextureId const&)>::isReadOnly(void)const")]
+pub fn stub_0x4ee238() -> ! {
+    todo!("0x4ee238 __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv")
+}
+
+// 0x4ee23c — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::TextureId>::GetSetImpl<RBX::TextureId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::TextureId const&)>::isWriteOnly(void)const")]
+pub fn stub_0x4ee23c() -> ! {
+    todo!("0x4ee23c __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv")
+}
+
+// 0x4ee240 — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::TextureId>::GetSetImpl<RBX::TextureId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::TextureId const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ee240() -> ! {
+    todo!("0x4ee240 __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE")
+}
+
+// 0x4ee274 — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8setValueEPNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::TextureId>::GetSetImpl<RBX::TextureId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::TextureId const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::TextureId const&)const")]
+pub fn stub_0x4ee274() -> ! {
+    todo!("0x4ee274 __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_9TextureIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8setValueEPNS0_13DescribedBaseES7_")
+}
+
+// 0x4ee298 — __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEEC2IMS2_KFRKS3_vEMS2_FvS7_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::MeshId>::PropDescriptor<RBX::MeshId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::MeshId const&)>(char const*,char const*,RBX::MeshId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::MeshId const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4ee298() -> ! {
+    todo!("0x4ee298 __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEEC2IMS2_KFRKS3_vEMS2_FvS7_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0x4ee3ac — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEEC2ERNS0_15ClassDescriptorEPKcS7_St8auto_ptrINS3_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4ee3ac() -> ! {
+    todo!("0x4ee3ac __ZN3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEEC2ERNS0_15ClassDescriptorEPKcS7_St8auto_ptrINS3_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0x4ee4d0 — __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::MeshId>::~PropDescriptor()")]
+pub fn stub_0x4ee4d0() -> ! {
+    todo!("0x4ee4d0 __ZN3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEED0Ev")
+}
+
+// 0x4ee4fc — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::isReadOnly(void)const")]
+pub fn stub_0x4ee4fc() -> ! {
+    todo!("0x4ee4fc __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE10isReadOnlyEv")
+}
+
+// 0x4ee50c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::isWriteOnly(void)const")]
+pub fn stub_0x4ee50c() -> ! {
+    todo!("0x4ee50c __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE11isWriteOnlyEv")
+}
+
+// 0x4ee51c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE11equalValuesEPKNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4ee51c() -> ! {
+    todo!("0x4ee51c __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE11equalValuesEPKNS0_13DescribedBaseES6_")
+}
+
+// 0x4ee6c8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x4ee6c8() -> ! {
+    todo!("0x4ee6c8 __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")
+}
+
+// 0x4ee7f4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x4ee7f4() -> ! {
+    todo!("0x4ee7f4 __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")
+}
+
+// 0x4ee9f0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE9copyValueEPKNS0_13DescribedBaseEPS4_
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x4ee9f0() -> ! {
+    todo!("0x4ee9f0 __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEE9copyValueEPKNS0_13DescribedBaseEPS4_")
+}
+
+// 0x4eec08 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEED1Ev
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::~TypedPropertyDescriptor()")]
+pub fn stub_0x4eec08() -> ! {
+    todo!("0x4eec08 __ZN3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEED1Ev")
+}
+
+// 0x4eec2c — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEED0Ev
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::MeshId>::~TypedPropertyDescriptor()")]
+pub fn stub_0x4eec2c() -> ! {
+    todo!("0x4eec2c __ZN3RBX10Reflection23TypedPropertyDescriptorINS_6MeshIdEED0Ev")
+}
+
+// 0x4eec58 — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::MeshId>::GetSetImpl<RBX::MeshId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::MeshId const&)>::isReadOnly(void)const")]
+pub fn stub_0x4eec58() -> ! {
+    todo!("0x4eec58 __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv")
+}
+
+// 0x4eec5c — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::MeshId>::GetSetImpl<RBX::MeshId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::MeshId const&)>::isWriteOnly(void)const")]
+pub fn stub_0x4eec5c() -> ! {
+    todo!("0x4eec5c __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv")
+}
+
+// 0x4eec60 — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::MeshId>::GetSetImpl<RBX::MeshId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::MeshId const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4eec60() -> ! {
+    todo!("0x4eec60 __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE")
+}
+
+// 0x4eec94 — __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8setValueEPNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FileMesh,RBX::MeshId>::GetSetImpl<RBX::MeshId const& (RBX::FileMesh::*)(void)const,void (RBX::FileMesh::*)(RBX::MeshId const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::MeshId const&)const")]
+pub fn stub_0x4eec94() -> ! {
+    todo!("0x4eec94 __ZNK3RBX10Reflection14PropDescriptorINS_8FileMeshENS_6MeshIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8setValueEPNS0_13DescribedBaseES7_")
+}
+
+// 0x4efcd4 — __ZN3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,G3D::Color3>::~PropDescriptor()")]
+pub fn stub_0x4efcd4() -> ! {
+    todo!("0x4efcd4 __ZN3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EED1Ev")
+}
+
+// 0x4efd0c — __ZN3RBX10Reflection14PropDescriptorINS_4FireEfED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,float>::~PropDescriptor()")]
+pub fn stub_0x4efd0c() -> ! {
+    todo!("0x4efd0c __ZN3RBX10Reflection14PropDescriptorINS_4FireEfED1Ev")
+}
+
+// 0x4f017c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4FireES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Fire,RBX::Fire>(boost::shared_ptr<RBX::Fire> const*,RBX::Fire *)const")]
+pub fn stub_0x4f017c() -> ! {
+    todo!("0x4f017c __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4FireES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0x4f074c — __ZN3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f074c() -> ! {
+    todo!("0x4f074c __ZN3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f0750 — __ZN3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f0750() -> ! {
+    todo!("0x4f0750 __ZN3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f07f0 — __ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f07f0() -> ! {
+    todo!("0x4f07f0 __ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f07f8 — __ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f07f8() -> ! {
+    todo!("0x4f07f8 __ZThn32_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f089c — __ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f089c() -> ! {
+    todo!("0x4f089c __ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f08a4 — __ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f08a4() -> ! {
+    todo!("0x4f08a4 __ZThn36_N3RBX18DescribedCreatableINS_4FireENS_8InstanceELZNS_5sFireEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f0948 — __ZN3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f0948() -> ! {
+    todo!("0x4f0948 __ZN3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f094c — __ZN3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f094c() -> ! {
+    todo!("0x4f094c __ZN3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f09ec — __ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f09ec() -> ! {
+    todo!("0x4f09ec __ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f09f4 — __ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f09f4() -> ! {
+    todo!("0x4f09f4 __ZThn32_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f0a98 — __ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f0a98() -> ! {
+    todo!("0x4f0a98 __ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f0aa0 — __ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f0aa0() -> ! {
+    todo!("0x4f0aa0 __ZThn36_N3RBX10Reflection9DescribedINS_4FireELZNS_5sFireEENS_14FactoryProductIS2_NS_8InstanceELZNS_5sFireEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f0b44 — __ZN3RBX10Reflection14PropDescriptorINS_4FireEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,float>::PropDescriptor<float (RBX::Fire::*)(void)const,void (RBX::Fire::*)(float)>(char const*,char const*,float (RBX::Fire::*)(void)const,void (RBX::Fire::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4f0b44() -> ! {
+    todo!("0x4f0b44 __ZN3RBX10Reflection14PropDescriptorINS_4FireEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0x4f0c58 — __ZN3RBX10Reflection14PropDescriptorINS_4FireEfED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,float>::~PropDescriptor()")]
+pub fn stub_0x4f0c58() -> ! {
+    todo!("0x4f0c58 __ZN3RBX10Reflection14PropDescriptorINS_4FireEfED0Ev")
+}
+
+// 0x4f0c84 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,float>::GetSetImpl<float (RBX::Fire::*)(void)const,void (RBX::Fire::*)(float)>::isReadOnly(void)const")]
+pub fn stub_0x4f0c84() -> ! {
+    todo!("0x4f0c84 __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv")
+}
+
+// 0x4f0c88 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,float>::GetSetImpl<float (RBX::Fire::*)(void)const,void (RBX::Fire::*)(float)>::isWriteOnly(void)const")]
+pub fn stub_0x4f0c88() -> ! {
+    todo!("0x4f0c88 __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv")
+}
+
+// 0x4f0c8c — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,float>::GetSetImpl<float (RBX::Fire::*)(void)const,void (RBX::Fire::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4f0c8c() -> ! {
+    todo!("0x4f0c8c __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE")
+}
+
+// 0x4f0cac — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,float>::GetSetImpl<float (RBX::Fire::*)(void)const,void (RBX::Fire::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x4f0cac() -> ! {
+    todo!("0x4f0cac __ZNK3RBX10Reflection14PropDescriptorINS_4FireEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf")
+}
+
+// 0x4f0cd0 — __ZN3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,G3D::Color3>::PropDescriptor<G3D::Color3 (RBX::Fire::*)(void)const,void (RBX::Fire::*)(G3D::Color3)>(char const*,char const*,G3D::Color3 (RBX::Fire::*)(void)const,void (RBX::Fire::*)(G3D::Color3),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4f0cd0() -> ! {
+    todo!("0x4f0cd0 __ZN3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EEC2IMS2_KFS4_vEMS2_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0x4f0de4 — __ZN3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,G3D::Color3>::~PropDescriptor()")]
+pub fn stub_0x4f0de4() -> ! {
+    todo!("0x4f0de4 __ZN3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EED0Ev")
+}
+
+// 0x4f0e10 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Fire::*)(void)const,void (RBX::Fire::*)(G3D::Color3)>::isReadOnly(void)const")]
+pub fn stub_0x4f0e10() -> ! {
+    todo!("0x4f0e10 __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv")
+}
+
+// 0x4f0e14 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Fire::*)(void)const,void (RBX::Fire::*)(G3D::Color3)>::isWriteOnly(void)const")]
+pub fn stub_0x4f0e14() -> ! {
+    todo!("0x4f0e14 __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv")
+}
+
+// 0x4f0e18 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Fire::*)(void)const,void (RBX::Fire::*)(G3D::Color3)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4f0e18() -> ! {
+    todo!("0x4f0e18 __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE")
+}
+
+// 0x4f0e40 — __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Fire,G3D::Color3>::GetSetImpl<G3D::Color3 (RBX::Fire::*)(void)const,void (RBX::Fire::*)(G3D::Color3)>::setValue(RBX::Reflection::DescribedBase *,G3D::Color3 const&)const")]
+pub fn stub_0x4f0e40() -> ! {
+    todo!("0x4f0e40 __ZNK3RBX10Reflection14PropDescriptorINS_4FireEN3G3D6Color3EE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_")
+}
+
+// 0x4f0e7c — __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_4FireEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Fire>(char const*,char const*,bool RBX::Fire::*,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4f0e7c() -> ! {
+    todo!("0x4f0e7c __ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_4FireEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0x4f100c — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Fire>::isReadOnly(void)const")]
+pub fn stub_0x4f100c() -> ! {
+    todo!("0x4f100c __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE10isReadOnlyEv")
+}
+
+// 0x4f1010 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Fire>::isWriteOnly(void)const")]
+pub fn stub_0x4f1010() -> ! {
+    todo!("0x4f1010 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE11isWriteOnlyEv")
+}
+
+// 0x4f1014 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Fire>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4f1014() -> ! {
+    todo!("0x4f1014 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE8getValueEPKNS0_13DescribedBaseE")
+}
+
+// 0x4f1020 — __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE8setValueEPNS0_13DescribedBaseERKb
+#[doc(alias = "RBX::Reflection::BoundProp<bool,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Fire>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
+pub fn stub_0x4f1020() -> ! {
+    todo!("0x4f1020 __ZNK3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EE15BoundPropGetSetINS_4FireEE8setValueEPNS0_13DescribedBaseERKb")
+}
+
+// 0x4f1e88 — __ZN3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Flag,RBX::BrickColor>::~PropDescriptor()")]
+pub fn stub_0x4f1e88() -> ! {
+    todo!("0x4f1e88 __ZN3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEED1Ev")
+}
+
+// 0x4f2438 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4FlagES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Flag,RBX::Flag>(boost::shared_ptr<RBX::Flag> const*,RBX::Flag *)const")]
+pub fn stub_0x4f2438() -> ! {
+    todo!("0x4f2438 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4FlagES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0x4f2c44 — __ZN3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f2c44() -> ! {
+    todo!("0x4f2c44 __ZN3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f2c48 — __ZN3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f2c48() -> ! {
+    todo!("0x4f2c48 __ZN3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f2ce8 — __ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f2ce8() -> ! {
+    todo!("0x4f2ce8 __ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f2cf0 — __ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f2cf0() -> ! {
+    todo!("0x4f2cf0 __ZThn32_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f2d94 — __ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f2d94() -> ! {
+    todo!("0x4f2d94 __ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f2d9c — __ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f2d9c() -> ! {
+    todo!("0x4f2d9c __ZThn36_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f2e40 — __ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f2e40() -> ! {
+    todo!("0x4f2e40 __ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f2e48 — __ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f2e48() -> ! {
+    todo!("0x4f2e48 __ZThn292_N3RBX10Reflection9DescribedINS_4FlagELZNS_5sFlagEENS_14FactoryProductIS2_NS_4ToolELZNS_5sFlagEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f2eec — __ZN3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Flag,RBX::BrickColor>::PropDescriptor<RBX::BrickColor (RBX::Flag::*)(void)const,void (RBX::Flag::*)(RBX::BrickColor)>(char const*,char const*,RBX::BrickColor (RBX::Flag::*)(void)const,void (RBX::Flag::*)(RBX::BrickColor),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4f2eec() -> ! {
+    todo!("0x4f2eec __ZN3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0x4f3000 — __ZN3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Flag,RBX::BrickColor>::~PropDescriptor()")]
+pub fn stub_0x4f3000() -> ! {
+    todo!("0x4f3000 __ZN3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEED0Ev")
+}
+
+// 0x4f302c — __ZNK3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Flag,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Flag::*)(void)const,void (RBX::Flag::*)(RBX::BrickColor)>::isReadOnly(void)const")]
+pub fn stub_0x4f302c() -> ! {
+    todo!("0x4f302c __ZNK3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv")
+}
+
+// 0x4f3030 — __ZNK3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Flag,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Flag::*)(void)const,void (RBX::Flag::*)(RBX::BrickColor)>::isWriteOnly(void)const")]
+pub fn stub_0x4f3030() -> ! {
+    todo!("0x4f3030 __ZNK3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv")
+}
+
+// 0x4f3034 — __ZNK3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Flag,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Flag::*)(void)const,void (RBX::Flag::*)(RBX::BrickColor)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x4f3034() -> ! {
+    todo!("0x4f3034 __ZNK3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE")
+}
+
+// 0x4f305c — __ZNK3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Flag,RBX::BrickColor>::GetSetImpl<RBX::BrickColor (RBX::Flag::*)(void)const,void (RBX::Flag::*)(RBX::BrickColor)>::setValue(RBX::Reflection::DescribedBase *,RBX::BrickColor const&)const")]
+pub fn stub_0x4f305c() -> ! {
+    todo!("0x4f305c __ZNK3RBX10Reflection14PropDescriptorINS_4FlagENS_10BrickColorEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_")
+}
+
+// 0x4f4550 — __ZN3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::FlagStand,RBX::BrickColor>::~PropDescriptor()")]
+pub fn stub_0x4f4550() -> ! {
+    todo!("0x4f4550 __ZN3RBX10Reflection14PropDescriptorINS_9FlagStandENS_10BrickColorEED1Ev")
+}
+
+// 0x4f4574 — __ZN3RBX10Reflection9EventDescINS_9FlagStandEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::~EventDesc()")]
+pub fn stub_0x4f4574() -> ! {
+    todo!("0x4f4574 __ZN3RBX10Reflection9EventDescINS_9FlagStandEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev")
+}
+
+// 0x4f4598 — __ZN3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EEC2Ev
+#[doc(alias = "__ZN3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EEC2Ev")]
+pub fn stub_0x4f4598() -> ! {
+    todo!("0x4f4598 __ZN3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EEC2Ev")
+}
+
+// 0x4f4ec0 — __ZN3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f4ec0() -> ! {
+    todo!("0x4f4ec0 __ZN3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f4ed4 — __ZN3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f4ed4() -> ! {
+    todo!("0x4f4ed4 __ZN3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f4f84 — __ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f4f84() -> ! {
+    todo!("0x4f4f84 __ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f4f98 — __ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f4f98() -> ! {
+    todo!("0x4f4f98 __ZThn132_N3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x4f504c — __ZN3RBX10Reflection9DescribedINS_9FlagStandELZNS_10sFlagStandEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9FlagStandELZNS_10sFlagStandEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x4f504c() -> ! {
+    todo!("0x4f504c __ZN3RBX10Reflection9DescribedINS_9FlagStandELZNS_10sFlagStandEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x4f5060 — __ZN3RBX10Reflection9DescribedINS_9FlagStandELZNS_10sFlagStandEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9FlagStandELZNS_10sFlagStandEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x4f5060() -> ! {
+    todo!("0x4f5060 __ZN3RBX10Reflection9DescribedINS_9FlagStandELZNS_10sFlagStandEENS_14FactoryProductIS2_NS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
