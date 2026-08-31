@@ -1,5 +1,5 @@
 //! audio — FMOD (FMOD::System, FMOD::Sound, Channel, etc.)
-//! Generated from ida/export.json filtered for FMOD (1882 funcs, 1850 stubs here).
+//! Generated from ida/export.json filtered for FMOD (1882 funcs, 1882 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
@@ -10997,3 +10997,194 @@ pub fn stub_1066bc() -> ! {
     todo!("0x1066bc FMOD::HistoryBufferPool::alloc(float **,int)")
 }
 
+// 0x106868 — __ZN4FMOD17HistoryBufferPool4initEii
+#[doc(alias = "FMOD::HistoryBufferPool::init(int,int)")]
+pub fn stub_106868() -> ! {
+    todo!("0x106868 FMOD::HistoryBufferPool::init(int,int)")
+}
+
+// 0x106974 — __ZN4FMOD17HistoryBufferPool13getMemoryUsedEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::HistoryBufferPool::getMemoryUsed(FMOD::MemoryTracker *)")]
+pub fn stub_106974() -> ! {
+    todo!("0x106974 FMOD::HistoryBufferPool::getMemoryUsed(FMOD::MemoryTracker *)")
+}
+
+// 0x1069cc — __ZN4FMOD15CodecAudioQueue17getMemoryUsedImplEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::CodecAudioQueue::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_1069cc() -> ! {
+    todo!("0x1069cc FMOD::CodecAudioQueue::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+
+// 0x1069fc — __ZN4FMOD15CodecAudioQueue21getMemoryUsedCallbackEP16FMOD_CODEC_STATEPNS_13MemoryTrackerE
+#[doc(alias = "FMOD::CodecAudioQueue::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")]
+pub fn stub_1069fc() -> ! {
+    todo!("0x1069fc FMOD::CodecAudioQueue::getMemoryUsedCallback(FMOD_CODEC_STATE *,FMOD::MemoryTracker *)")
+}
+
+// 0x106a54 — __ZN4FMOD15CodecAudioQueue11fileGetSizeEPx
+#[doc(alias = "FMOD::CodecAudioQueue::fileGetSize(long long *)")]
+pub fn stub_106a54() -> ! {
+    todo!("0x106a54 FMOD::CodecAudioQueue::fileGetSize(long long *)")
+}
+
+// 0x106ad0 — __ZN4FMOD15CodecAudioQueue19fileGetSizeCallbackEPv
+#[doc(alias = "FMOD::CodecAudioQueue::fileGetSizeCallback(void *)")]
+pub fn stub_106ad0() -> ! {
+    todo!("0x106ad0 FMOD::CodecAudioQueue::fileGetSizeCallback(void *)")
+}
+
+// 0x106afc — __ZN4FMOD15CodecAudioQueue8fileReadExmPvPm
+#[doc(alias = "FMOD::CodecAudioQueue::fileRead(long long,unsigned long,void *,unsigned long *)")]
+pub fn stub_106afc() -> ! {
+    todo!("0x106afc FMOD::CodecAudioQueue::fileRead(long long,unsigned long,void *,unsigned long *)")
+}
+
+// 0x106c1c — __ZN4FMOD15CodecAudioQueue16fileReadCallbackEPvxmS1_Pm
+#[doc(alias = "FMOD::CodecAudioQueue::fileReadCallback(void *,long long,unsigned long,void *,unsigned long *)")]
+pub fn stub_106c1c() -> ! {
+    todo!("0x106c1c FMOD::CodecAudioQueue::fileReadCallback(void *,long long,unsigned long,void *,unsigned long *)")
+}
+
+// 0x106c20 — __ZN4FMOD15CodecAudioQueue17processAudioQueueEP16OpaqueAudioQueueP16AudioQueueBuffer
+#[doc(alias = "FMOD::CodecAudioQueue::processAudioQueue(OpaqueAudioQueue *,AudioQueueBuffer *)")]
+pub fn stub_106c20() -> ! {
+    todo!("0x106c20 FMOD::CodecAudioQueue::processAudioQueue(OpaqueAudioQueue *,AudioQueueBuffer *)")
+}
+
+// 0x106cf8 — __ZN4FMOD15CodecAudioQueue24audioQueueOutputCallbackEPvP16OpaqueAudioQueueP16AudioQueueBuffer
+#[doc(alias = "FMOD::CodecAudioQueue::audioQueueOutputCallback(void *,OpaqueAudioQueue *,AudioQueueBuffer *)")]
+pub fn stub_106cf8() -> ! {
+    todo!("0x106cf8 FMOD::CodecAudioQueue::audioQueueOutputCallback(void *,OpaqueAudioQueue *,AudioQueueBuffer *)")
+}
+
+// 0x106cfc — __ZN4FMOD15CodecAudioQueue14setupAudioFileEb
+#[doc(alias = "FMOD::CodecAudioQueue::setupAudioFile(bool)")]
+pub fn stub_106cfc() -> ! {
+    todo!("0x106cfc FMOD::CodecAudioQueue::setupAudioFile(bool)")
+}
+
+// 0x106eac — __ZN4FMOD15CodecAudioQueue19setPositionInternalEijj
+#[doc(alias = "FMOD::CodecAudioQueue::setPositionInternal(int,unsigned int,unsigned int)")]
+pub fn stub_106eac() -> ! {
+    todo!("0x106eac FMOD::CodecAudioQueue::setPositionInternal(int,unsigned int,unsigned int)")
+}
+
+// 0x107090 — __ZN4FMOD15CodecAudioQueue19setPositionCallbackEP16FMOD_CODEC_STATEijj
+#[doc(alias = "FMOD::CodecAudioQueue::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")]
+pub fn stub_107090() -> ! {
+    todo!("0x107090 FMOD::CodecAudioQueue::setPositionCallback(FMOD_CODEC_STATE *,int,unsigned int,unsigned int)")
+}
+
+// 0x10709c — __ZN4FMOD15CodecAudioQueue13closeInternalEv
+#[doc(alias = "FMOD::CodecAudioQueue::closeInternal(void)")]
+pub fn stub_10709c() -> ! {
+    todo!("0x10709c FMOD::CodecAudioQueue::closeInternal(void)")
+}
+
+// 0x107164 — __ZN4FMOD15CodecAudioQueue13closeCallbackEP16FMOD_CODEC_STATE
+#[doc(alias = "FMOD::CodecAudioQueue::closeCallback(FMOD_CODEC_STATE *)")]
+pub fn stub_107164() -> ! {
+    todo!("0x107164 FMOD::CodecAudioQueue::closeCallback(FMOD_CODEC_STATE *)")
+}
+
+// 0x107170 — __ZN4FMOD15CodecAudioQueue16getDescriptionExEv
+#[doc(alias = "FMOD::CodecAudioQueue::getDescriptionEx(void)")]
+pub fn stub_107170() -> ! {
+    todo!("0x107170 FMOD::CodecAudioQueue::getDescriptionEx(void)")
+}
+
+// 0x107284 — __ZN4FMOD15CodecAudioQueue15setupAudioQueueEv
+#[doc(alias = "FMOD::CodecAudioQueue::setupAudioQueue(void)")]
+pub fn stub_107284() -> ! {
+    todo!("0x107284 FMOD::CodecAudioQueue::setupAudioQueue(void)")
+}
+
+// 0x107598 — __ZN4FMOD15CodecAudioQueue12readInternalEPvjPj
+#[doc(alias = "FMOD::CodecAudioQueue::readInternal(void *,unsigned int,unsigned int *)")]
+pub fn stub_107598() -> ! {
+    todo!("0x107598 FMOD::CodecAudioQueue::readInternal(void *,unsigned int,unsigned int *)")
+}
+
+// 0x10773c — __ZN4FMOD15CodecAudioQueue12readCallbackEP16FMOD_CODEC_STATEPvjPj
+#[doc(alias = "FMOD::CodecAudioQueue::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")]
+pub fn stub_10773c() -> ! {
+    todo!("0x10773c FMOD::CodecAudioQueue::readCallback(FMOD_CODEC_STATE *,void *,unsigned int,unsigned int *)")
+}
+
+// 0x107748 — __ZN4FMOD15CodecAudioQueue12openInternalEjP22FMOD_CREATESOUNDEXINFO
+#[doc(alias = "FMOD::CodecAudioQueue::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+pub fn stub_107748() -> ! {
+    todo!("0x107748 FMOD::CodecAudioQueue::openInternal(unsigned int,FMOD_CREATESOUNDEXINFO *)")
+}
+
+// 0x1078d4 — __ZN4FMOD15CodecAudioQueue12openCallbackEP16FMOD_CODEC_STATEjP22FMOD_CREATESOUNDEXINFO
+#[doc(alias = "FMOD::CodecAudioQueue::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")]
+pub fn stub_1078d4() -> ! {
+    todo!("0x1078d4 FMOD::CodecAudioQueue::openCallback(FMOD_CODEC_STATE *,unsigned int,FMOD_CREATESOUNDEXINFO *)")
+}
+
+// 0x1078e0 — __ZN4FMOD15CodecAudioQueue8resetAllEbb
+#[doc(alias = "FMOD::CodecAudioQueue::resetAll(bool,bool)")]
+pub fn stub_1078e0() -> ! {
+    todo!("0x1078e0 FMOD::CodecAudioQueue::resetAll(bool,bool)")
+}
+
+// 0x107a1c — __GLOBAL__I__ZN4FMOD15CodecAudioQueue10gCodecHeadE
+#[doc(alias = "global constructor keyed toFMOD::CodecAudioQueue::gCodecHead")]
+pub fn stub_107a1c() -> ! {
+    todo!("0x107a1c `global constructor keyed to'FMOD::CodecAudioQueue::gCodecHead")
+}
+
+// 0x371844 — __Z18checkResultNoThrow11FMOD_RESULT
+#[doc(alias = "checkResultNoThrow(FMOD_RESULT)")]
+pub fn stub_371844() -> ! {
+    todo!("0x371844 checkResultNoThrow(FMOD_RESULT)")
+}
+
+// 0x3719d0 — __Z11checkResult11FMOD_RESULT
+#[doc(alias = "checkResult(FMOD_RESULT)")]
+pub fn stub_3719d0() -> ! {
+    todo!("0x3719d0 checkResult(FMOD_RESULT)")
+}
+
+// 0x373bf4 — __Z7convertRKN3G3D7Vector3ER11FMOD_VECTOR
+#[doc(alias = "convert(G3D::Vector3 const&,FMOD_VECTOR &)")]
+pub fn stub_373bf4() -> ! {
+    todo!("0x373bf4 convert(G3D::Vector3 const&,FMOD_VECTOR &)")
+}
+
+// 0x375c3c — __ZN3RBX10Soundscape12SoundChannel8update3DEPN4FMOD7ChannelE
+#[doc(alias = "RBX::Soundscape::SoundChannel::update3D(FMOD::Channel *)")]
+pub fn stub_375c3c() -> ! {
+    todo!("0x375c3c RBX::Soundscape::SoundChannel::update3D(FMOD::Channel *)")
+}
+
+// 0x375ce8 — __Z18callbackChannelEndP12FMOD_CHANNEL25FMOD_CHANNEL_CALLBACKTYPEPvS2_
+#[doc(alias = "callbackChannelEnd(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *)")]
+pub fn stub_375ce8() -> ! {
+    todo!("0x375ce8 callbackChannelEnd(FMOD_CHANNEL *,FMOD_CHANNEL_CALLBACKTYPE,void *,void *)")
+}
+
+// 0x7f964c — __ZN3RBX10Soundscape14CollisionSound4PlayEPN4FMOD6SystemEPNS2_12ChannelGroupERKN3G3D7Vector3ESA_f
+#[doc(alias = "RBX::Soundscape::CollisionSound::Play(FMOD::System *,FMOD::ChannelGroup *,G3D::Vector3 const&,G3D::Vector3 const&,float)")]
+pub fn stub_7f964c() -> ! {
+    todo!("0x7f964c RBX::Soundscape::CollisionSound::Play(FMOD::System *,FMOD::ChannelGroup *,G3D::Vector3 const&,G3D::Vector3 const&,float)")
+}
+
+// 0x7f98a4 — __ZN3RBX10Soundscape21CollisionSoundManagerC1EPN4FMOD6SystemEPNS_8InstanceE
+#[doc(alias = "RBX::Soundscape::CollisionSoundManager::CollisionSoundManager(FMOD::System *,RBX::Instance *)")]
+pub fn stub_7f98a4() -> ! {
+    todo!("0x7f98a4 RBX::Soundscape::CollisionSoundManager::CollisionSoundManager(FMOD::System *,RBX::Instance *)")
+}
+
+// 0x7f98a8 — __ZN3RBX10Soundscape21CollisionSoundManagerC2EPN4FMOD6SystemEPNS_8InstanceE
+#[doc(alias = "RBX::Soundscape::CollisionSoundManager::CollisionSoundManager(FMOD::System *,RBX::Instance *)")]
+pub fn stub_7f98a8() -> ! {
+    todo!("0x7f98a8 RBX::Soundscape::CollisionSoundManager::CollisionSoundManager(FMOD::System *,RBX::Instance *)")
+}
+
+// 0xf1ffa8 — __ZN4FMOD7Channel7setMuteEb$shim
+#[doc(alias = "__ZN4FMOD7Channel7setMuteEb$shim")]
+pub fn stub_f1ffa8() -> ! {
+    todo!("0xf1ffa8 __ZN4FMOD7Channel7setMuteEb$shim")
+}
