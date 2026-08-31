@@ -26393,3 +26393,350 @@ pub fn stub_0xf233a4() -> ! {
 pub fn stub_0xf23f2c() -> ! {
     todo!("0xf23f2c __ZNK3RBX15ServiceProvider4findINS_13ScriptServiceEEEPT_v$shim")
 }
+
+// 0xf242ec — __ZNSt6vectorIPN3RBX9Scripting13DebuggerWatchESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_$shim
+// type: int __fastcall(int, void *)
+#[doc(alias = "__ZNSt6vectorIPN3RBX9Scripting13DebuggerWatchESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_$shim")]
+pub fn stub_0xf242ec() -> ! {
+    todo!("0xf242ec __ZNSt6vectorIPN3RBX9Scripting13DebuggerWatchESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_$shim")
+}
+
+// 0xf24304 — __ZN3RBX4Name9doDeclareILZNS_9Scripting16sDebuggerManagerEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting16sDebuggerManagerEEEERKS0_v$shim")]
+pub fn stub_0xf24304() -> ! {
+    todo!("0xf24304 __ZN3RBX4Name9doDeclareILZNS_9Scripting16sDebuggerManagerEEEERKS0_v$shim")
+}
+
+// 0xf24310 — __ZNK3RBX14FactoryProductINS_9Scripting18DebuggerBreakpointENS_8InstanceELZNS1_19sDebuggerBreakpointEES3_E7Creator12getClassNameEv$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_9Scripting18DebuggerBreakpointENS_8InstanceELZNS1_19sDebuggerBreakpointEES3_E7Creator12getClassNameEv$shim")]
+pub fn stub_0xf24310() -> ! {
+    todo!("0xf24310 __ZNK3RBX14FactoryProductINS_9Scripting18DebuggerBreakpointENS_8InstanceELZNS1_19sDebuggerBreakpointEES3_E7Creator12getClassNameEv$shim")
+}
+
+// 0xf2431c — __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorD2Ev$shim")]
+pub fn stub_0xf2431c() -> ! {
+    todo!("0xf2431c __ZN3RBX14FactoryProductINS_9Scripting14ScriptDebuggerENS_8InstanceELZNS1_15sScriptDebuggerEES3_E7CreatorD2Ev$shim")
+}
+
+// 0xf24328 — __ZN3RBX14FactoryProductINS_9Scripting18DebuggerBreakpointENS_8InstanceELZNS1_19sDebuggerBreakpointEES3_E7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_9Scripting18DebuggerBreakpointENS_8InstanceELZNS1_19sDebuggerBreakpointEES3_E7CreatorD2Ev$shim")]
+pub fn stub_0xf24328() -> ! {
+    todo!("0xf24328 __ZN3RBX14FactoryProductINS_9Scripting18DebuggerBreakpointENS_8InstanceELZNS1_19sDebuggerBreakpointEES3_E7CreatorD2Ev$shim")
+}
+
+// 0xf24334 — __ZN3RBX4Name9doDeclareILZNS_9Scripting19sDebuggerBreakpointEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9Scripting19sDebuggerBreakpointEEEERKS0_v$shim")]
+pub fn stub_0xf24334() -> ! {
+    todo!("0xf24334 __ZN3RBX4Name9doDeclareILZNS_9Scripting19sDebuggerBreakpointEEEERKS0_v$shim")
+}
+
+// 0xf24340 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIbPFbSsRKN3RBX10Reflection7VariantEiP9lua_StateENS3_5list4INS3_5valueISsEENS_17reference_wrapperIS8_EENSF_IiEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIbPFbSsRKN3RBX10Reflection7VariantEiP9lua_StateENS3_5list4INS3_5valueISsEENS_17reference_wrapperIS8_EENSF_IiEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_0xf24340() -> ! {
+    todo!("0xf24340 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIbPFbSsRKN3RBX10Reflection7VariantEiP9lua_StateENS3_5list4INS3_5valueISsEENS_17reference_wrapperIS8_EENSF_IiEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf2434c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX9Scripting14ScriptDebuggerEP9lua_StateP9lua_DebugNS_8functionIFbSB_SD_EEERbRNS_10shared_ptrISsEEEENS3_5list6INS3_5valueIPS9_EENS_3argILi1EEENSQ_ILi2EEENSN_ISG_EENS_17reference_wrapperIbEENSU_ISJ_EEEEEEE7managerERKNS1_15function_bufferERS10_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX9Scripting14ScriptDebuggerEP9lua_StateP9lua_DebugNS_8functionIFbSB_SD_EEERbRNS_10shared_ptrISsEEEENS3_5list6INS3_5valueIPS9_EENS_3argILi1EEENSQ_ILi2EEENSN_ISG_EENS_17reference_wrapperIbEENSU_ISJ_EEEEEEE7managerERKNS1_15function_bufferERS10_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_0xf2434c() -> ! {
+    todo!("0xf2434c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX9Scripting14ScriptDebuggerEP9lua_StateP9lua_DebugNS_8functionIFbSB_SD_EEERbRNS_10shared_ptrISsEEEENS3_5list6INS3_5valueIPS9_EENS_3argILi1EEENSQ_ILi2EEENSN_ISG_EENS_17reference_wrapperIbEENSU_ISJ_EEEEEEE7managerERKNS1_15function_bufferERS10_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf24358 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX9Scripting14ScriptDebuggerEP9lua_StateP9lua_DebugNS_8functionIFNS_10shared_ptrIKSt3mapISsNS7_10Reflection7VariantESt4lessISsESaISt4pairIKSsSI_EEEEESB_SD_EEERSR_RNSF_ISsEEEENS3_5list6INS3_5valueIPS9_EENS_3argILi1EEENS12_ILi2EEENSZ_IST_EENS_17reference_wrapperISR_EENS16_ISV_EEEEEEE7managerERKNS1_15function_bufferERS1C_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX9Scripting14ScriptDebuggerEP9lua_StateP9lua_DebugNS_8functionIFNS_10shared_ptrIKSt3mapISsNS7_10Reflection7VariantESt4lessISsESaISt4pairIKSsSI_EEEEESB_SD_EEERSR_RNSF_ISsEEEENS3_5list6INS3_5valueIPS9_EENS_3argILi1EEENS12_ILi2EEENSZ_IST_EENS_17reference_wrapperISR_EENS16_ISV_EEEEEEE7managerERKNS1_15function_bufferERS1C_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_0xf24358() -> ! {
+    todo!("0xf24358 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX9Scripting14ScriptDebuggerEP9lua_StateP9lua_DebugNS_8functionIFNS_10shared_ptrIKSt3mapISsNS7_10Reflection7VariantESt4lessISsESaISt4pairIKSsSI_EEEEESB_SD_EEERSR_RNSF_ISsEEEENS3_5list6INS3_5valueIPS9_EENS_3argILi1EEENS12_ILi2EEENSZ_IST_EENS_17reference_wrapperISR_EENS16_ISV_EEEEEEE7managerERKNS1_15function_bufferERS1C_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf24364 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS0_5list1INS0_5valueIPS6_EEEEEclEv$shim
+// type: int()
+#[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS0_5list1INS0_5valueIPS6_EEEEEclEv$shim")]
+pub fn stub_0xf24364() -> ! {
+    todo!("0xf24364 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX9Scripting14ScriptDebuggerEEENS0_5list1INS0_5valueIPS6_EEEEEclEv$shim")
+}
+
+// 0xf24370 — __ZN3rbx7signals6signalIFvP9lua_StateEE24safe_static_do_get_mutexEv$shim
+// type: int()
+#[doc(alias = "__ZN3rbx7signals6signalIFvP9lua_StateEE24safe_static_do_get_mutexEv$shim")]
+pub fn stub_0xf24370() -> ! {
+    todo!("0xf24370 __ZN3rbx7signals6signalIFvP9lua_StateEE24safe_static_do_get_mutexEv$shim")
+}
+
+// 0xf2437c — __ZN3rbx7signals6signalIFvP9lua_StateEE4slot24safe_static_do_get_mutexEv$shim
+// type: int()
+#[doc(alias = "__ZN3rbx7signals6signalIFvP9lua_StateEE4slot24safe_static_do_get_mutexEv$shim")]
+pub fn stub_0xf2437c() -> ! {
+    todo!("0xf2437c __ZN3rbx7signals6signalIFvP9lua_StateEE4slot24safe_static_do_get_mutexEv$shim")
+}
+
+// 0xf24388 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEE11rehash_implEm$shim
+// type: int()
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEE11rehash_implEm$shim")]
+pub fn stub_0xf24388() -> ! {
+    todo!("0xf24388 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEE11rehash_implEm$shim")
+}
+
+// 0xf24394 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEE14create_bucketsEm$shim
+// type: int()
+#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEE14create_bucketsEm$shim")]
+pub fn stub_0xf24394() -> ! {
+    todo!("0xf24394 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKiPN3RBX9Scripting18DebuggerBreakpointEEEiS9_NS_4hashIiEESt8equal_toIiEEEE14create_bucketsEm$shim")
+}
+
+// 0xf243a0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX9Scripting14ScriptDebuggerEP9lua_StateP9lua_DebugNS_8functionIFNS7_10Reflection7VariantESB_SD_EEERSG_RNS_10shared_ptrISsEEEENS3_5list6INS3_5valueIPS9_EENS_3argILi1EEENSS_ILi2EEENSP_ISI_EENS_17reference_wrapperISG_EENSW_ISL_EEEEEEE7managerERKNS1_15function_bufferERS12_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX9Scripting14ScriptDebuggerEP9lua_StateP9lua_DebugNS_8functionIFNS7_10Reflection7VariantESB_SD_EEERSG_RNS_10shared_ptrISsEEEENS3_5list6INS3_5valueIPS9_EENS_3argILi1EEENSS_ILi2EEENSP_ISI_EENS_17reference_wrapperISG_EENSW_ISL_EEEEEEE7managerERKNS1_15function_bufferERS12_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_0xf243a0() -> ! {
+    todo!("0xf243a0 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX9Scripting14ScriptDebuggerEP9lua_StateP9lua_DebugNS_8functionIFNS7_10Reflection7VariantESB_SD_EEERSG_RNS_10shared_ptrISsEEEENS3_5list6INS3_5valueIPS9_EENS_3argILi1EEENSS_ILi2EEENSP_ISI_EENS_17reference_wrapperISG_EENSW_ISL_EEEEEEE7managerERKNS1_15function_bufferERS12_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf243ac — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX6ScriptEPNS5_9Scripting14ScriptDebuggerEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE11rehash_implEm$shim
+// type: int()
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX6ScriptEPNS5_9Scripting14ScriptDebuggerEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE11rehash_implEm$shim")]
+pub fn stub_0xf243ac() -> ! {
+    todo!("0xf243ac __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX6ScriptEPNS5_9Scripting14ScriptDebuggerEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE11rehash_implEm$shim")
+}
+
+// 0xf243b8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX6ScriptEPNS5_9Scripting14ScriptDebuggerEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE14create_bucketsEm$shim
+// type: int()
+#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX6ScriptEPNS5_9Scripting14ScriptDebuggerEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE14create_bucketsEm$shim")]
+pub fn stub_0xf243b8() -> ! {
+    todo!("0xf243b8 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX6ScriptEPNS5_9Scripting14ScriptDebuggerEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE14create_bucketsEm$shim")
+}
+
+// 0xf243d0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_9Scripting14ScriptDebuggerENS_6ScriptEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+#[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_9Scripting14ScriptDebuggerENS_6ScriptEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim")]
+pub fn stub_0xf243d0() -> ! {
+    todo!("0xf243d0 __ZNK3RBX10Reflection17RefPropDescriptorINS_9Scripting14ScriptDebuggerENS_6ScriptEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim")
+}
+
+// 0xf243dc — __ZN3RBX10Reflection11Call0HelperINS_9Scripting14ScriptDebuggerEMS3_FN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS7_EEEEEvESG_E4callEPS3_SI_RS7_$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection11Call0HelperINS_9Scripting14ScriptDebuggerEMS3_FN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS7_EEEEEvESG_E4callEPS3_SI_RS7_$shim")]
+pub fn stub_0xf243dc() -> ! {
+    todo!("0xf243dc __ZN3RBX10Reflection11Call0HelperINS_9Scripting14ScriptDebuggerEMS3_FN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS7_EEEEEvESG_E4callEPS3_SI_RS7_$shim")
+}
+
+// 0xf243e8 — __ZN3RBX10Reflection11Call0HelperINS_9Scripting14ScriptDebuggerEMS3_FN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS7_EEEEvESB_E4callEPS3_SD_RS7_$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection11Call0HelperINS_9Scripting14ScriptDebuggerEMS3_FN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS7_EEEEvESB_E4callEPS3_SD_RS7_$shim")]
+pub fn stub_0xf243e8() -> ! {
+    todo!("0xf243e8 __ZN3RBX10Reflection11Call0HelperINS_9Scripting14ScriptDebuggerEMS3_FN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS7_EEEEvESB_E4callEPS3_SD_RS7_$shim")
+}
+
+// 0xf243f4 — __ZN3RBX10Reflection11Call0HelperINS_9Scripting14ScriptDebuggerEMS3_FN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEvESC_E4callEPS3_SE_RNS0_7VariantE$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection11Call0HelperINS_9Scripting14ScriptDebuggerEMS3_FN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEvESC_E4callEPS3_SE_RNS0_7VariantE$shim")]
+pub fn stub_0xf243f4() -> ! {
+    todo!("0xf243f4 __ZN3RBX10Reflection11Call0HelperINS_9Scripting14ScriptDebuggerEMS3_FN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEvESC_E4callEPS3_SE_RNS0_7VariantE$shim")
+}
+
+// 0xf24400 — __ZN3RBX10Reflection11Call0HelperINS_9Scripting15DebuggerManagerEMS3_FN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEvESC_E4callEPS3_SE_RNS0_7VariantE$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection11Call0HelperINS_9Scripting15DebuggerManagerEMS3_FN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEvESC_E4callEPS3_SE_RNS0_7VariantE$shim")]
+pub fn stub_0xf24400() -> ! {
+    todo!("0xf24400 __ZN3RBX10Reflection11Call0HelperINS_9Scripting15DebuggerManagerEMS3_FN5boost10shared_ptrIKSt6vectorINS5_INS_8InstanceEEESaIS8_EEEEvESC_E4callEPS3_SE_RNS0_7VariantE$shim")
+}
+
+// 0xf24aa8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX11TestServiceEiPKcSA_NS_10shared_ptrINS7_10BaseScriptEEEiEENS3_5list6INS3_5valueINSB_IS8_EEEENSG_IiEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi4EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX11TestServiceEiPKcSA_NS_10shared_ptrINS7_10BaseScriptEEEiEENS3_5list6INS3_5valueINSB_IS8_EEEENSG_IiEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi4EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_0xf24aa8() -> ! {
+    todo!("0xf24aa8 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf5IvN3RBX11TestServiceEiPKcSA_NS_10shared_ptrINS7_10BaseScriptEEEiEENS3_5list6INS3_5valueINSB_IS8_EEEENSG_IiEENS_3argILi1EEENSK_ILi2EEENSK_ILi3EEENSK_ILi4EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf24b44 — __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_0xf24b44() -> ! {
+    todo!("0xf24b44 __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf24b50 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ScriptContextEEESsSsNS6_14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEENS3_5list6INS3_5valueIS8_EENSI_ISsEESK_NS_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ScriptContextEEESsSsNS6_14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEENS3_5list6INS3_5valueIS8_EENSI_ISsEESK_NS_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_0xf24b50() -> ! {
+    todo!("0xf24b50 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ScriptContextEEESsSsNS6_14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEENS3_5list6INS3_5valueIS8_EENSI_ISsEESK_NS_3argILi1EEENSL_ILi2EEENSL_ILi3EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf24bb0 — __ZN13lua_exceptionD2Ev$shim
+// type: void __fastcall(lua_exception *)
+#[doc(alias = "__ZN13lua_exceptionD2Ev$shim")]
+pub fn stub_0xf24bb0() -> ! {
+    todo!("0xf24bb0 __ZN13lua_exceptionD2Ev$shim")
+}
+
+// 0xf253a8 — __ZNK3RBX15ServiceProvider6createINS_13LuaWebServiceEEEPT_v$shim
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_13LuaWebServiceEEEPT_v$shim")]
+pub fn stub_0xf253a8() -> ! {
+    todo!("0xf253a8 __ZNK3RBX15ServiceProvider6createINS_13LuaWebServiceEEEPT_v$shim")
+}
+
+// 0xf25558 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX13ScriptService4InfoEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *, int, boost::detail::sp_counted_base *, void *, int, int, int, int, int, int, int, void *, int)
+#[doc(alias = "__ZNSt6vectorIN5boost10shared_ptrIN3RBX13ScriptService4InfoEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")]
+pub fn stub_0xf25558() -> ! {
+    todo!("0xf25558 __ZNSt6vectorIN5boost10shared_ptrIN3RBX13ScriptService4InfoEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_$shim")
+}
+
+// 0xf2560c — __ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7CreatorD2Ev$shim")]
+pub fn stub_0xf2560c() -> ! {
+    todo!("0xf2560c __ZN3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7CreatorD2Ev$shim")
+}
+
+// 0xf256b4 — __ZNK3RBX14FactoryProductINS_19ServerScriptServiceENS_8InstanceELZNS_20sServerScriptServiceEES2_E7Creator12getClassNameEv$shim
+// type: int __fastcall(int)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_19ServerScriptServiceENS_8InstanceELZNS_20sServerScriptServiceEES2_E7Creator12getClassNameEv$shim")]
+pub fn stub_0xf256b4() -> ! {
+    todo!("0xf256b4 __ZNK3RBX14FactoryProductINS_19ServerScriptServiceENS_8InstanceELZNS_20sServerScriptServiceEES2_E7Creator12getClassNameEv$shim")
+}
+
+// 0xf256cc — __ZN3RBX10Reflection18BoundYieldFuncDescINS_12AssetServiceEFbiNS2_10AccessTypeEN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS7_EEEEEbLi3EED2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection18BoundYieldFuncDescINS_12AssetServiceEFbiNS2_10AccessTypeEN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS7_EEEEEbLi3EED2Ev$shim")]
+pub fn stub_0xf256cc() -> ! {
+    todo!("0xf256cc __ZN3RBX10Reflection18BoundYieldFuncDescINS_12AssetServiceEFbiNS2_10AccessTypeEN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS7_EEEEEbLi3EED2Ev$shim")
+}
+
+// 0xf26c34 — j___ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv
+// type: int()
+#[doc(alias = "j___ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")]
+pub fn stub_0xf26c34() -> ! {
+    todo!("0xf26c34 j___ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E7Creator12getClassNameEv")
+}
+
+// 0xf28b64 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE16declareSignatureEPKcNS0_7VariantE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EE16declareSignatureEPKcNS0_7VariantE")]
+pub fn stub_0xf28b64() -> ! {
+    todo!("0xf28b64 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0xf28b74 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EEC2EMS2_FvSsN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsESsLi1EEC2EMS2_FvSsN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_0xf28b74() -> ! {
+    todo!("0xf28b74 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string),std::string,1>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0xf28b84 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE16declareSignatureEPKcNS0_7VariantES7_S8_S7_S8_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EE16declareSignatureEPKcNS0_7VariantES7_S8_S7_S8_")]
+pub fn stub_0xf28b84() -> ! {
+    todo!("0xf28b84 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+}
+
+// 0xf28b94 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EEC2EMS2_FvSsSsS3_N5boost8functionIFvSsEEES9_EPKcSD_SD_SD_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection18BoundYieldFuncDescINS_11HttpServiceEFSsSsSsNS2_15HttpContentTypeEESsLi3EEC2EMS2_FvSsSsS3_N5boost8functionIFvSsEEES9_EPKcSD_SD_SD_S3_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_0xf28b94() -> ! {
+    todo!("0xf28b94 RBX::Reflection::BoundYieldFuncDesc<RBX::HttpService,std::string ()(std::string,std::string,RBX::HttpService::HttpContentType),std::string,3>::BoundYieldFuncDesc(void (RBX::HttpService::*)(std::string,std::string,RBX::HttpService::HttpContentType,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,char const*,char const*,RBX::HttpService::HttpContentType,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0xf28fc4 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10declareSubEPS2_S4_
+// type: int __fastcall(int)
+#[doc(alias = "j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10declareSubEPS2_S4_")]
+pub fn stub_0xf28fc4() -> ! {
+    todo!("0xf28fc4 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declareSub(RBX::Reflection::YieldFunctionDescriptor*,RBX::Reflection::YieldFunctionDescriptor*)")
+}
+
+// 0xf28fd4 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv
+// type: int __fastcall(_DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE10staticDataEv")]
+pub fn stub_0xf28fd4() -> ! {
+    todo!("0xf28fd4 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::staticData(void)")
+}
+
+// 0xf28fe4 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE7declareEPS2_
+// type: int __fastcall(int)
+#[doc(alias = "j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE7declareEPS2_")]
+pub fn stub_0xf28fe4() -> ! {
+    todo!("0xf28fe4 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::declare(RBX::Reflection::YieldFunctionDescriptor*)")
+}
+
+// 0xf29024 — j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_
+// type: int __fastcall(int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEixERS7_")]
+pub fn stub_0xf29024() -> ! {
+    todo!("0xf29024 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::operator[](char const* const&)")
+}
+
+// 0xf29044 — j___ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+// type: int __fastcall(int)
+#[doc(alias = "j___ZNSt6vectorIPN3RBX10Reflection23YieldFunctionDescriptorESaIS3_EE6insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_")]
+pub fn stub_0xf29044() -> ! {
+    todo!("0xf29044 std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>::insert(__gnu_cxx::__normal_iterator<RBX::Reflection::YieldFunctionDescriptor **,std::vector<RBX::Reflection::YieldFunctionDescriptor *,std::allocator<RBX::Reflection::YieldFunctionDescriptor *>>>,RBX::Reflection::YieldFunctionDescriptor * const&)")
+}
+
+// 0xf29174 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE12mergeMembersEPKS3_
+// type: int __fastcall(int)
+#[doc(alias = "j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEE12mergeMembersEPKS3_")]
+pub fn stub_0xf29174() -> ! {
+    todo!("0xf29174 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::mergeMembers(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor> const*)")
+}
+
+// 0xf29184 — j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEEC2EPS3_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection25MemberDescriptorContainerINS0_23YieldFunctionDescriptorEEC2EPS3_")]
+pub fn stub_0xf29184() -> ! {
+    todo!("0xf29184 RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>::MemberDescriptorContainer(RBX::Reflection::MemberDescriptorContainer<RBX::Reflection::YieldFunctionDescriptor>*)")
+}
+
+// 0xf29294 — j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm
+#[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE11rehash_implEm")]
+pub fn stub_0xf29294() -> ! {
+    todo!("0xf29294 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::rehash_impl(unsigned long)")
+}
+
+// 0xf292a4 — j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE15place_in_bucketERNS1_5tableISG_EEPNS1_10ptr_bucketE")]
+pub fn stub_0xf292a4() -> ! {
+    todo!("0xf292a4 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>> &,boost::unordered::detail::ptr_bucket *)")
+}
+
+// 0xf292f4 — j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEEEEE9constructEv
+// type: int __fastcall(_DWORD)
+#[doc(alias = "j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEEEEE9constructEv")]
+pub fn stub_0xf292f4() -> ! {
+    todo!("0xf292f4 boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>>>::construct(void)")
+}
+
+// 0xf293d4 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14create_bucketsEm")]
+pub fn stub_0xf293d4() -> ! {
+    todo!("0xf293d4 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::create_buckets(unsigned long)")
+}
+
+// 0xf293e4 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv
+// type: int __fastcall(_DWORD)
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE14delete_bucketsEv")]
+pub fn stub_0xf293e4() -> ! {
+    todo!("0xf293e4 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::delete_buckets(void)")
+}
+
+// 0xf293f4 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm
+// type: int(void)
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEE18reserve_for_insertEm")]
+pub fn stub_0xf293f4() -> ! {
+    todo!("0xf293f4 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::reserve_for_insert(unsigned long)")
+}
+
+// 0xf29404 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEC2EmRKSE_RKSF_RKSaINS1_8ptr_nodeISC_EEE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKcPN3RBX10Reflection23YieldFunctionDescriptorEEES6_SB_NS9_19StringHashPredicateENS9_20StringEqualPredicateEEEEC2EmRKSE_RKSF_RKSaINS1_8ptr_nodeISC_EEE")]
+pub fn stub_0xf29404() -> ! {
+    todo!("0xf29404 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>,char const*,RBX::Reflection::YieldFunctionDescriptor *,RBX::Reflection::StringHashPredicate,RBX::Reflection::StringEqualPredicate>>::table(unsigned long,RBX::Reflection::StringHashPredicate const&,RBX::Reflection::StringEqualPredicate const&,std::allocator<boost::unordered::detail::ptr_node<std::pair<char const* const,RBX::Reflection::YieldFunctionDescriptor *>>> const&)")
+}
+

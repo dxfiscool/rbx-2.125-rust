@@ -8977,3 +8977,354 @@ pub fn stub_9b407c() -> ! {
 pub fn stub_9b4084() -> ! {
     todo!("0x9b4084 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::~PropDescriptor()")
 }
+
+// 0x9b40a8 — __ZNK3RBX15NetworkSettings13getDataGCRateEv
+// type: int __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings13getDataGCRateEv")]
+pub fn stub_9b40a8() -> ! {
+    todo!("0x9b40a8 RBX::NetworkSettings::getDataGCRate(void)const")
+}
+
+// 0x9b40b0 — __ZNK3RBX15NetworkSettings18getPhysicsSendRateEv
+// type: int __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings18getPhysicsSendRateEv")]
+pub fn stub_9b40b0() -> ! {
+    todo!("0x9b40b0 RBX::NetworkSettings::getPhysicsSendRate(void)const")
+}
+
+// 0x9b40b8 — __ZNK3RBX15NetworkSettings14getReceiveRateEv
+// type: __int64 __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings14getReceiveRateEv")]
+pub fn stub_9b40b8() -> ! {
+    todo!("0x9b40b8 RBX::NetworkSettings::getReceiveRate(void)const")
+}
+
+// 0x9b40c4 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEdED1Ev")]
+pub fn stub_9b40c4() -> ! {
+    todo!("0x9b40c4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,double>::~PropDescriptor()")
+}
+
+// 0x9b40e8 — __ZNK3RBX15NetworkSettings16getReportStatURLEv
+// type: int __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings16getReportStatURLEv")]
+pub fn stub_9b40e8() -> ! {
+    todo!("0x9b40e8 RBX::NetworkSettings::getReportStatURL(void)const")
+}
+
+// 0x9b4104 — __ZN3RBX15NetworkSettings16setReportStatURLERKSs
+// type: void()
+#[doc(alias = "__ZN3RBX15NetworkSettings16setReportStatURLERKSs")]
+pub fn stub_9b4104() -> ! {
+    todo!("0x9b4104 RBX::NetworkSettings::setReportStatURL(std::string const&)")
+}
+
+// 0x9b4108 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsESsED1Ev")]
+pub fn stub_9b4108() -> ! {
+    todo!("0x9b4108 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,std::string>::~PropDescriptor()")
+}
+
+// 0x9b412c — __ZNK3RBX15NetworkSettings20getPhysicsSendMethodEv
+// type: int __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings20getPhysicsSendMethodEv")]
+pub fn stub_9b412c() -> ! {
+    todo!("0x9b412c RBX::NetworkSettings::getPhysicsSendMethod(void)const")
+}
+
+// 0x9b4134 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_17PhysicsSendMethodEED1Ev")]
+pub fn stub_9b4134() -> ! {
+    todo!("0x9b4134 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsSendMethod>::~EnumPropDescriptor()")
+}
+
+// 0x9b4158 — __ZNK3RBX15NetworkSettings28dummyGetPhysicsReceiveMethodEv
+// type: int __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings28dummyGetPhysicsReceiveMethodEv")]
+pub fn stub_9b4158() -> ! {
+    todo!("0x9b4158 RBX::NetworkSettings::dummyGetPhysicsReceiveMethod(void)const")
+}
+
+// 0x9b4160 — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_20PhysicsReceiveMethodEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsENS2_20PhysicsReceiveMethodEED1Ev")]
+pub fn stub_9b4160() -> ! {
+    todo!("0x9b4160 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumPropDescriptor()")
+}
+
+// 0x9b4184 — __ZNK3RBX15NetworkSettings22getPhysicsSendPriorityEv
+// type: int __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings22getPhysicsSendPriorityEv")]
+pub fn stub_9b4184() -> ! {
+    todo!("0x9b4184 RBX::NetworkSettings::getPhysicsSendPriority(void)const")
+}
+
+// 0x9b418c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED1Ev")]
+pub fn stub_9b418c() -> ! {
+    todo!("0x9b418c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::~EnumPropDescriptor()")
+}
+
+// 0x9b41b0 — __ZNK3RBX15NetworkSettings19getPhysicsMtuAdjustEv
+// type: int __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings19getPhysicsMtuAdjustEv")]
+pub fn stub_9b41b0() -> ! {
+    todo!("0x9b41b0 RBX::NetworkSettings::getPhysicsMtuAdjust(void)const")
+}
+
+// 0x9b41b8 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED1Ev")]
+pub fn stub_9b41b8() -> ! {
+    todo!("0x9b41b8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::~PropDescriptor()")
+}
+
+// 0x9b41dc — __ZNK3RBX15NetworkSettings23getReplicationMtuAdjustEv
+// type: int __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings23getReplicationMtuAdjustEv")]
+pub fn stub_9b41dc() -> ! {
+    todo!("0x9b41dc RBX::NetworkSettings::getReplicationMtuAdjust(void)const")
+}
+
+// 0x9b41e4 — __ZNK3RBX15NetworkSettings19getDataSendPriorityEv
+// type: int __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings19getDataSendPriorityEv")]
+pub fn stub_9b41e4() -> ! {
+    todo!("0x9b41e4 RBX::NetworkSettings::getDataSendPriority(void)const")
+}
+
+// 0x9b41ec — __ZNK3RBX15NetworkSettings22getExtraMemoryUsedInMBEv
+// type: int __fastcall(RBX::NetworkSettings *this)
+#[doc(alias = "__ZNK3RBX15NetworkSettings22getExtraMemoryUsedInMBEv")]
+pub fn stub_9b41ec() -> ! {
+    todo!("0x9b41ec RBX::NetworkSettings::getExtraMemoryUsedInMB(void)const")
+}
+
+// 0x9b41f4 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED1Ev")]
+pub fn stub_9b41f4() -> ! {
+    todo!("0x9b41f4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::~PropDescriptor()")
+}
+
+// 0x9b450c — __ZN3RBX15NetworkSettingsD1Ev
+// type: void __fastcall(RBX::NetworkSettings *__hidden this)
+#[doc(alias = "__ZN3RBX15NetworkSettingsD1Ev")]
+pub fn stub_9b450c() -> ! {
+    todo!("0x9b450c RBX::NetworkSettings::~NetworkSettings()")
+}
+
+// 0x9b45f4 — __ZN3RBX15NetworkSettingsD0Ev
+// type: void __fastcall(RBX::NetworkSettings *__hidden this)
+#[doc(alias = "__ZN3RBX15NetworkSettingsD0Ev")]
+pub fn stub_9b45f4() -> ! {
+    todo!("0x9b45f4 RBX::NetworkSettings::~NetworkSettings()")
+}
+
+// 0x9b47d8 — __ZThn32_N3RBX15NetworkSettingsD1Ev
+// type: void __fastcall(RBX::NetworkSettings *__hidden this)
+#[doc(alias = "__ZThn32_N3RBX15NetworkSettingsD1Ev")]
+pub fn stub_9b47d8() -> ! {
+    todo!("0x9b47d8 `non-virtual thunk to'RBX::NetworkSettings::~NetworkSettings()")
+}
+
+// 0x9b48c8 — __ZThn32_N3RBX15NetworkSettingsD0Ev
+// type: void __fastcall(RBX::NetworkSettings *__hidden this)
+#[doc(alias = "__ZThn32_N3RBX15NetworkSettingsD0Ev")]
+pub fn stub_9b48c8() -> ! {
+    todo!("0x9b48c8 `non-virtual thunk to'RBX::NetworkSettings::~NetworkSettings()")
+}
+
+// 0x9b4aa8 — __ZThn36_N3RBX15NetworkSettingsD1Ev
+// type: void __fastcall(RBX::NetworkSettings *__hidden this)
+#[doc(alias = "__ZThn36_N3RBX15NetworkSettingsD1Ev")]
+pub fn stub_9b4aa8() -> ! {
+    todo!("0x9b4aa8 `non-virtual thunk to'RBX::NetworkSettings::~NetworkSettings()")
+}
+
+// 0x9b4b98 — __ZThn36_N3RBX15NetworkSettingsD0Ev
+// type: void __fastcall(RBX::NetworkSettings *__hidden this)
+#[doc(alias = "__ZThn36_N3RBX15NetworkSettingsD0Ev")]
+pub fn stub_9b4b98() -> ! {
+    todo!("0x9b4b98 `non-virtual thunk to'RBX::NetworkSettings::~NetworkSettings()")
+}
+
+// 0x9b528c — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, __int64, int, int, char, int, __guard *, int, void *, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_9b528c() -> ! {
+    todo!("0x9b528c RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::PropDescriptor<bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool)>(char const*,char const*,bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x9b54b4 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED0Ev
+// type: void __fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbED0Ev")]
+pub fn stub_9b54b4() -> ! {
+    todo!("0x9b54b4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::~PropDescriptor()")
+}
+
+// 0x9b54dc — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv")]
+pub fn stub_9b54dc() -> ! {
+    todo!("0x9b54dc RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::GetSetImpl<bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool)>::isReadOnly(void)const")
+}
+
+// 0x9b54e0 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv")]
+pub fn stub_9b54e0() -> ! {
+    todo!("0x9b54e0 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::GetSetImpl<bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool)>::isWriteOnly(void)const")
+}
+
+// 0x9b54e4 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
+// type: int __fastcall(int, int)
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE")]
+pub fn stub_9b54e4() -> ! {
+    todo!("0x9b54e4 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::GetSetImpl<bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x9b5508 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
+// type: int __fastcall(int, int, unsigned __int8 *)
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb")]
+pub fn stub_9b5508() -> ! {
+    todo!("0x9b5508 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,bool>::GetSetImpl<bool (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+}
+
+// 0x9b5530 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, char, int, int, __guard *, int, void *, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_9b5530() -> ! {
+    todo!("0x9b5530 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::PropDescriptor<float (RBX::NetworkSettings::*)(void)const,int>(char const*,char const*,float (RBX::NetworkSettings::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x9b5744 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfED0Ev
+// type: void __fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfED0Ev")]
+pub fn stub_9b5744() -> ! {
+    todo!("0x9b5744 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::~PropDescriptor()")
+}
+
+// 0x9b576c — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE10isReadOnlyEv
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE10isReadOnlyEv")]
+pub fn stub_9b576c() -> ! {
+    todo!("0x9b576c RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetImpl<float (RBX::NetworkSettings::*)(void)const>::isReadOnly(void)const")
+}
+
+// 0x9b5770 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv")]
+pub fn stub_9b5770() -> ! {
+    todo!("0x9b5770 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetImpl<float (RBX::NetworkSettings::*)(void)const>::isWriteOnly(void)const")
+}
+
+// 0x9b5774 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE8getValueEPKNS0_13DescribedBaseE
+// type: int __fastcall(int, int)
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE8getValueEPKNS0_13DescribedBaseE")]
+pub fn stub_9b5774() -> ! {
+    todo!("0x9b5774 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetImpl<float (RBX::NetworkSettings::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x9b5798 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE8setValueEPNS0_13DescribedBaseERKf
+// type: void __noreturn()
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEfE7GetImplIMS2_KFfvEE8setValueEPNS0_13DescribedBaseERKf")]
+pub fn stub_9b5798() -> ! {
+    todo!("0x9b5798 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,float>::GetImpl<float (RBX::NetworkSettings::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x9b58b8 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, __int64, int, int, char, int, __guard *, int, void *, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_9b58b8() -> ! {
+    todo!("0x9b58b8 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::PropDescriptor<int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int)>(char const*,char const*,int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x9b5ae0 — __ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED0Ev
+// type: void __fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiED0Ev")]
+pub fn stub_9b5ae0() -> ! {
+    todo!("0x9b5ae0 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::~PropDescriptor()")
+}
+
+// 0x9b5b08 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv")]
+pub fn stub_9b5b08() -> ! {
+    todo!("0x9b5b08 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::GetSetImpl<int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int)>::isReadOnly(void)const")
+}
+
+// 0x9b5b0c — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv")]
+pub fn stub_9b5b0c() -> ! {
+    todo!("0x9b5b0c RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::GetSetImpl<int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int)>::isWriteOnly(void)const")
+}
+
+// 0x9b5b10 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
+// type: int __fastcall(int, int)
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE")]
+pub fn stub_9b5b10() -> ! {
+    todo!("0x9b5b10 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::GetSetImpl<int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x9b5b34 — __ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
+// type: int __fastcall(int, int, _DWORD *)
+#[doc(alias = "__ZNK3RBX10Reflection14PropDescriptorINS_15NetworkSettingsEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi")]
+pub fn stub_9b5b34() -> ! {
+    todo!("0x9b5b34 RBX::Reflection::PropDescriptor<RBX::NetworkSettings,int>::GetSetImpl<int (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+}
+
+// 0x9b5b5c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityEC2IMS2_KFS3_vEMS2_FvRKS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, char, int, __guard *, int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityEC2IMS2_KFS3_vEMS2_FvRKS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_9b5b5c() -> ! {
+    todo!("0x9b5b5c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::EnumPropDescriptor<PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&)>(char const*,char const*,PacketPriority (RBX::NetworkSettings::*)(void)const,void (RBX::NetworkSettings::*)(PacketPriority const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x9b5e5c — __ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED0Ev
+// type: void __fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityED0Ev")]
+pub fn stub_9b5e5c() -> ! {
+    todo!("0x9b5e5c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::~EnumPropDescriptor()")
+}
+
+// 0x9b5e84 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10isReadOnlyEv
+// type: int __fastcall(int)
+#[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10isReadOnlyEv")]
+pub fn stub_9b5e84() -> ! {
+    todo!("0x9b5e84 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::isReadOnly(void)const")
+}
+
+// 0x9b5e94 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE11isWriteOnlyEv
+// type: int __fastcall(int)
+#[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE11isWriteOnlyEv")]
+pub fn stub_9b5e94() -> ! {
+    todo!("0x9b5e94 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::isWriteOnly(void)const")
+}
+
+// 0x9b5ea4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE11equalValuesEPKNS0_13DescribedBaseES7_
+// type: bool __fastcall(int, int, int)
+#[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE11equalValuesEPKNS0_13DescribedBaseES7_")]
+pub fn stub_9b5ea4() -> ! {
+    todo!("0x9b5ea4 RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x9b5ecc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+// type: int __fastcall(int, int, _DWORD *)
+#[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE")]
+pub fn stub_9b5ecc() -> ! {
+    todo!("0x9b5ecc RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x9b5f7c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+// type: int __fastcall(int, int, _DWORD *)
+#[doc(alias = "__ZNK3RBX10Reflection18EnumPropDescriptorINS_15NetworkSettingsE14PacketPriorityE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE")]
+pub fn stub_9b5f7c() -> ! {
+    todo!("0x9b5f7c RBX::Reflection::EnumPropDescriptor<RBX::NetworkSettings,PacketPriority>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+

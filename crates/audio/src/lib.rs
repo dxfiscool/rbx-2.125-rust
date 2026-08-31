@@ -11188,3 +11188,352 @@ pub fn stub_7f98a8() -> ! {
 pub fn stub_f1ffa8() -> ! {
     todo!("0xf1ffa8 __ZN4FMOD7Channel7setMuteEb$shim")
 }
+
+// 0xf1ffb4 — __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv$shim
+// type: _DWORD __fastcall(RBX *__hidden this)
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv$shim")]
+pub fn stub_f1ffb4() -> ! {
+    todo!("0xf1ffb4 __ZN3RBX10Reflection9DescribedINS_10Soundscape12SoundChannelELZNS2_13sSoundChannelEENS_14FactoryProductIS3_NS_8InstanceELZNS2_13sSoundChannelEES5_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv$shim")
+}
+
+// 0xf1ffc0 — __ZNK3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_v$shim
+// type: int(void)
+#[doc(alias = "__ZNK3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_v$shim")]
+pub fn stub_f1ffc0() -> ! {
+    todo!("0xf1ffc0 __ZNK3RBX15ServiceProvider4findINS_10Soundscape12SoundServiceEEEPT_v$shim")
+}
+
+// 0xf1ffcc — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv$shim")]
+pub fn stub_f1ffcc() -> ! {
+    todo!("0xf1ffcc __ZNK3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7Creator12getClassNameEv$shim")
+}
+
+// 0xf1ffd8 — __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv$shim")]
+pub fn stub_f1ffd8() -> ! {
+    todo!("0xf1ffd8 __ZNK3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7Creator12getClassNameEv$shim")
+}
+
+// 0xf1ffe4 — __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev$shim
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_f1ffe4() -> ! {
+    todo!("0xf1ffe4 __ZN3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf1fff0 — __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev$shim
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev$shim")]
+pub fn stub_f1fff0() -> ! {
+    todo!("0xf1fff0 __ZN3RBX14FactoryProductINS_10Soundscape12SoundChannelENS_8InstanceELZNS1_13sSoundChannelEES3_E7CreatorD2Ev$shim")
+}
+
+// 0xf1fffc — __ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEED2Ev$shim
+// type: int(void)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEED2Ev$shim")]
+pub fn stub_f1fffc() -> ! {
+    todo!("0xf1fffc __ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEED2Ev$shim")
+}
+
+// 0xf20008 — __ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundChannelEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundChannelEEEERKS0_v$shim")]
+pub fn stub_f20008() -> ! {
+    todo!("0xf20008 __ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundChannelEEEERKS0_v$shim")
+}
+
+// 0xf20014 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE14doGetSingletonEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE14doGetSingletonEv$shim")]
+pub fn stub_f20014() -> ! {
+    todo!("0xf20014 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_10Soundscape10ReverbTypeEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf20020 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_$shim")]
+pub fn stub_f20020() -> ! {
+    todo!("0xf20020 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Soundscape12SoundChannelERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS6_EENS_3argILi1EEEEEEclIS7_EEvRKT_$shim")
+}
+
+// 0xf2002c — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToIndexES3_$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToIndexES3_$shim")]
+pub fn stub_f2002c() -> ! {
+    todo!("0xf2002c __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToIndexES3_$shim")
+}
+
+// 0xf20038 — __ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim")]
+pub fn stub_f20038() -> ! {
+    todo!("0xf20038 __ZN3RBX4Name9doDeclareILZNS_11sStockSoundEEEERKS0_v$shim")
+}
+
+// 0xf20044 — __ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_f20044() -> ! {
+    todo!("0xf20044 __ZNK3RBX14FactoryProductINS_10StockSoundENS_10Soundscape12SoundChannelELZNS_11sStockSoundEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf20050 — __ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int(void)
+#[doc(alias = "__ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_f20050() -> ! {
+    todo!("0xf20050 __ZNSt6vectorIN3RBX10Soundscape10ReverbTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf2005c — __ZN3RBX10Reflection7Variant14genericConvertINS_9SoundTypeEEERT_v$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN3RBX10Reflection7Variant14genericConvertINS_9SoundTypeEEERT_v$shim")]
+pub fn stub_f2005c() -> ! {
+    todo!("0xf2005c __ZN3RBX10Reflection7Variant14genericConvertINS_9SoundTypeEEERT_v$shim")
+}
+
+// 0xf20068 — __ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
+// type: int(void)
+#[doc(alias = "__ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
+pub fn stub_f20068() -> ! {
+    todo!("0xf20068 __ZNSt6vectorIN3RBX9SoundTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")
+}
+
+// 0xf20bcc — __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev$shim")]
+pub fn stub_f20bcc() -> ! {
+    todo!("0xf20bcc __ZN3RBX14FactoryProductINS_10Soundscape12SoundServiceENS_8InstanceELZNS1_13sSoundServiceEES3_E7CreatorD2Ev$shim")
+}
+
+// 0xf20dd0 — __ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v$shim
+// type: int(void)
+#[doc(alias = "__ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v$shim")]
+pub fn stub_f20dd0() -> ! {
+    todo!("0xf20dd0 __ZN3RBX4Name7declareILZNS_10Soundscape13sSoundServiceEEEERKS0_v$shim")
+}
+
+// 0xf20ddc — __ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundServiceEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundServiceEEEERKS0_v$shim")]
+pub fn stub_f20ddc() -> ! {
+    todo!("0xf20ddc __ZN3RBX4Name9doDeclareILZNS_10Soundscape13sSoundServiceEEEERKS0_v$shim")
+}
+
+// 0xf20de8 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_10Soundscape12SoundServiceEEEmv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_10Soundscape12SoundServiceEEEmv$shim")]
+pub fn stub_f20de8() -> ! {
+    todo!("0xf20de8 __ZN3RBX15ServiceProvider15doGetClassIndexINS_10Soundscape12SoundServiceEEEmv$shim")
+}
+
+// 0xf21a48 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv$shim
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv$shim")]
+pub fn stub_f21a48() -> ! {
+    todo!("0xf21a48 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9SoundTypeEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21a54 — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev$shim
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev$shim")]
+pub fn stub_f21a54() -> ! {
+    todo!("0xf21a54 __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEED2Ev$shim")
+}
+
+// 0xf245a4 — __ZNK3RBX15ServiceProvider6createINS_10Soundscape12SoundServiceEEEPT_v$shim
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_10Soundscape12SoundServiceEEEPT_v$shim")]
+pub fn stub_f245a4() -> ! {
+    todo!("0xf245a4 __ZNK3RBX15ServiceProvider6createINS_10Soundscape12SoundServiceEEEPT_v$shim")
+}
+
+// 0xf28134 — _AudioComponentFindNext
+// type: AudioComponent __cdecl(AudioComponent inComponent, const AudioComponentDescription *inDesc)
+#[doc(alias = "_AudioComponentFindNext")]
+pub fn stub_f28134() -> ! {
+    todo!("0xf28134 _AudioComponentFindNext")
+}
+
+// 0xf28144 — _AudioComponentInstanceDispose
+// type: OSStatus __cdecl(AudioComponentInstance inInstance)
+#[doc(alias = "_AudioComponentInstanceDispose")]
+pub fn stub_f28144() -> ! {
+    todo!("0xf28144 _AudioComponentInstanceDispose")
+}
+
+// 0xf28154 — _AudioComponentInstanceNew
+// type: OSStatus __cdecl(AudioComponent inComponent, AudioComponentInstance *outInstance)
+#[doc(alias = "_AudioComponentInstanceNew")]
+pub fn stub_f28154() -> ! {
+    todo!("0xf28154 _AudioComponentInstanceNew")
+}
+
+// 0xf28164 — _AudioFileClose
+// type: OSStatus __cdecl(AudioFileID inAudioFile)
+#[doc(alias = "_AudioFileClose")]
+pub fn stub_f28164() -> ! {
+    todo!("0xf28164 _AudioFileClose")
+}
+
+// 0xf28174 — _AudioFileGetProperty
+// type: OSStatus __cdecl(AudioFileID inAudioFile, AudioFilePropertyID inPropertyID, UInt32 *ioDataSize, void *outPropertyData)
+#[doc(alias = "_AudioFileGetProperty")]
+pub fn stub_f28174() -> ! {
+    todo!("0xf28174 _AudioFileGetProperty")
+}
+
+// 0xf28184 — _AudioFileGetPropertyInfo
+// type: OSStatus __cdecl(AudioFileID inAudioFile, AudioFilePropertyID inPropertyID, UInt32 *outDataSize, UInt32 *isWritable)
+#[doc(alias = "_AudioFileGetPropertyInfo")]
+pub fn stub_f28184() -> ! {
+    todo!("0xf28184 _AudioFileGetPropertyInfo")
+}
+
+// 0xf28194 — _AudioFileOpenWithCallbacks
+// type: OSStatus __cdecl(void *inClientData, AudioFile_ReadProc inReadFunc, AudioFile_WriteProc inWriteFunc, AudioFile_GetSizeProc inGetSizeFunc, AudioFile_SetSizeProc inSetSizeFunc, AudioFileTypeID inFileTypeHint, AudioFileID *outAudioFile)
+#[doc(alias = "_AudioFileOpenWithCallbacks")]
+pub fn stub_f28194() -> ! {
+    todo!("0xf28194 _AudioFileOpenWithCallbacks")
+}
+
+// 0xf281a4 — _AudioFileReadPacketData
+// type: OSStatus __cdecl(AudioFileID inAudioFile, Boolean inUseCache, UInt32 *ioNumBytes, AudioStreamPacketDescription *outPacketDescriptions, SInt64 inStartingPacket, UInt32 *ioNumPackets, void *outBuffer)
+#[doc(alias = "_AudioFileReadPacketData")]
+pub fn stub_f281a4() -> ! {
+    todo!("0xf281a4 _AudioFileReadPacketData")
+}
+
+// 0xf281b4 — _AudioOutputUnitStart
+// type: OSStatus __cdecl(AudioUnit ci)
+#[doc(alias = "_AudioOutputUnitStart")]
+pub fn stub_f281b4() -> ! {
+    todo!("0xf281b4 _AudioOutputUnitStart")
+}
+
+// 0xf281c4 — _AudioOutputUnitStop
+// type: OSStatus __cdecl(AudioUnit ci)
+#[doc(alias = "_AudioOutputUnitStop")]
+pub fn stub_f281c4() -> ! {
+    todo!("0xf281c4 _AudioOutputUnitStop")
+}
+
+// 0xf281d4 — _AudioQueueAllocateBuffer
+// type: OSStatus __cdecl(AudioQueueRef inAQ, UInt32 inBufferByteSize, AudioQueueBufferRef *outBuffer)
+#[doc(alias = "_AudioQueueAllocateBuffer")]
+pub fn stub_f281d4() -> ! {
+    todo!("0xf281d4 _AudioQueueAllocateBuffer")
+}
+
+// 0xf281e4 — _AudioQueueAllocateBufferWithPacketDescriptions
+// type: OSStatus __cdecl(AudioQueueRef inAQ, UInt32 inBufferByteSize, UInt32 inNumberPacketDescriptions, AudioQueueBufferRef *outBuffer)
+#[doc(alias = "_AudioQueueAllocateBufferWithPacketDescriptions")]
+pub fn stub_f281e4() -> ! {
+    todo!("0xf281e4 _AudioQueueAllocateBufferWithPacketDescriptions")
+}
+
+// 0xf281f4 — _AudioQueueDispose
+// type: OSStatus __cdecl(AudioQueueRef inAQ, Boolean inImmediate)
+#[doc(alias = "_AudioQueueDispose")]
+pub fn stub_f281f4() -> ! {
+    todo!("0xf281f4 _AudioQueueDispose")
+}
+
+// 0xf28204 — _AudioQueueEnqueueBuffer
+// type: OSStatus __cdecl(AudioQueueRef inAQ, AudioQueueBufferRef inBuffer, UInt32 inNumPacketDescs, const AudioStreamPacketDescription *inPacketDescs)
+#[doc(alias = "_AudioQueueEnqueueBuffer")]
+pub fn stub_f28204() -> ! {
+    todo!("0xf28204 _AudioQueueEnqueueBuffer")
+}
+
+// 0xf28214 — _AudioQueueFlush
+// type: OSStatus __cdecl(AudioQueueRef inAQ)
+#[doc(alias = "_AudioQueueFlush")]
+pub fn stub_f28214() -> ! {
+    todo!("0xf28214 _AudioQueueFlush")
+}
+
+// 0xf28224 — _AudioQueueNewOutput
+// type: OSStatus __cdecl(const AudioStreamBasicDescription *inFormat, AudioQueueOutputCallback inCallbackProc, void *inUserData, CFRunLoopRef inCallbackRunLoop, CFStringRef inCallbackRunLoopMode, UInt32 inFlags, AudioQueueRef *outAQ)
+#[doc(alias = "_AudioQueueNewOutput")]
+pub fn stub_f28224() -> ! {
+    todo!("0xf28224 _AudioQueueNewOutput")
+}
+
+// 0xf28234 — _AudioQueueOfflineRender
+// type: OSStatus __cdecl(AudioQueueRef inAQ, const AudioTimeStamp *inTimestamp, AudioQueueBufferRef ioBuffer, UInt32 inNumberFrames)
+#[doc(alias = "_AudioQueueOfflineRender")]
+pub fn stub_f28234() -> ! {
+    todo!("0xf28234 _AudioQueueOfflineRender")
+}
+
+// 0xf28244 — _AudioQueueSetOfflineRenderFormat
+// type: OSStatus __cdecl(AudioQueueRef inAQ, const AudioStreamBasicDescription *inFormat, const AudioChannelLayout *inLayout)
+#[doc(alias = "_AudioQueueSetOfflineRenderFormat")]
+pub fn stub_f28244() -> ! {
+    todo!("0xf28244 _AudioQueueSetOfflineRenderFormat")
+}
+
+// 0xf28254 — _AudioQueueSetProperty
+// type: OSStatus __cdecl(AudioQueueRef inAQ, AudioQueuePropertyID inID, const void *inData, UInt32 inDataSize)
+#[doc(alias = "_AudioQueueSetProperty")]
+pub fn stub_f28254() -> ! {
+    todo!("0xf28254 _AudioQueueSetProperty")
+}
+
+// 0xf28264 — _AudioQueueStart
+// type: OSStatus __cdecl(AudioQueueRef inAQ, const AudioTimeStamp *inStartTime)
+#[doc(alias = "_AudioQueueStart")]
+pub fn stub_f28264() -> ! {
+    todo!("0xf28264 _AudioQueueStart")
+}
+
+// 0xf28274 — _AudioQueueStop
+// type: OSStatus __cdecl(AudioQueueRef inAQ, Boolean inImmediate)
+#[doc(alias = "_AudioQueueStop")]
+pub fn stub_f28274() -> ! {
+    todo!("0xf28274 _AudioQueueStop")
+}
+
+// 0xf28284 — _AudioSessionAddPropertyListener
+// type: OSStatus __cdecl(AudioSessionPropertyID inID, AudioSessionPropertyListener inProc, void *inClientData)
+#[doc(alias = "_AudioSessionAddPropertyListener")]
+pub fn stub_f28284() -> ! {
+    todo!("0xf28284 _AudioSessionAddPropertyListener")
+}
+
+// 0xf28294 — _AudioSessionGetProperty
+// type: OSStatus __cdecl(AudioSessionPropertyID inID, UInt32 *ioDataSize, void *outData)
+#[doc(alias = "_AudioSessionGetProperty")]
+pub fn stub_f28294() -> ! {
+    todo!("0xf28294 _AudioSessionGetProperty")
+}
+
+// 0xf282a4 — _AudioSessionInitialize
+// type: OSStatus __cdecl(CFRunLoopRef inRunLoop, CFStringRef inRunLoopMode, AudioSessionInterruptionListener inInterruptionListener, void *inClientData)
+#[doc(alias = "_AudioSessionInitialize")]
+pub fn stub_f282a4() -> ! {
+    todo!("0xf282a4 _AudioSessionInitialize")
+}
+
+// 0xf282b4 — _AudioSessionSetActive
+// type: OSStatus __cdecl(Boolean active)
+#[doc(alias = "_AudioSessionSetActive")]
+pub fn stub_f282b4() -> ! {
+    todo!("0xf282b4 _AudioSessionSetActive")
+}
+
+// 0xf282c4 — _AudioSessionSetProperty
+// type: OSStatus __cdecl(AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData)
+#[doc(alias = "_AudioSessionSetProperty")]
+pub fn stub_f282c4() -> ! {
+    todo!("0xf282c4 _AudioSessionSetProperty")
+}
+
+// 0xf282d4 — _AudioUnitGetProperty
+// type: OSStatus __cdecl(AudioUnit inUnit, AudioUnitPropertyID inID, AudioUnitScope inScope, AudioUnitElement inElement, void *outData, UInt32 *ioDataSize)
+#[doc(alias = "_AudioUnitGetProperty")]
+pub fn stub_f282d4() -> ! {
+    todo!("0xf282d4 _AudioUnitGetProperty")
+}
+
