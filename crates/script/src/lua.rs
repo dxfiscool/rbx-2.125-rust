@@ -1,7 +1,7 @@
 //! RBX::Script Lua VM skeletons — auto-generated from ida/export.json
-//! Filter: Script|Lua|Yield (case-sensitive, plus lua lower) — 3680 stubs, sorted by EA
+//! Filter: Script|Lua|Yield (case-sensitive, plus lua lower) — 3780 stubs, sorted by EA
 //! Source: ida/export.json (85545 funcs), DAG: script crate (RBX::Script, Lua, Yield)
-//! Batch range 0x267ec..0xcf40f4
+//! Batch range 0x267ec..0xde1180
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
@@ -24392,4 +24392,651 @@ pub fn stub_0xcf4060() -> ! {
 #[doc(alias = "Ogre::parsePass(std::string &,Ogre::MaterialScriptContext &)")]
 pub fn stub_0xcf40f4() -> ! {
     todo!("0xcf40f4 Ogre::parsePass(std::string &,Ogre::MaterialScriptContext &)")
+}
+// 0xcf4160 — __ZN4Ogre16parseTextureUnitERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseTextureUnit(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf4160() -> ! {
+    todo!("0xcf4160 Ogre::parseTextureUnit(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf41ec — __ZN4Ogre21parseVertexProgramRefERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf41ec() -> ! {
+    todo!("0xcf41ec Ogre::parseVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf46f4 — __ZN4Ogre23parseGeometryProgramRefERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseGeometryProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf46f4() -> ! {
+    todo!("0xcf46f4 Ogre::parseGeometryProgramRef(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf4bfc — __ZN4Ogre33parseShadowCasterVertexProgramRefERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseShadowCasterVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf4bfc() -> ! {
+    todo!("0xcf4bfc Ogre::parseShadowCasterVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf5084 — __ZN4Ogre35parseShadowCasterFragmentProgramRefERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseShadowCasterFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf5084() -> ! {
+    todo!("0xcf5084 Ogre::parseShadowCasterFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf550c — __ZN4Ogre35parseShadowReceiverVertexProgramRefERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseShadowReceiverVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf550c() -> ! {
+    todo!("0xcf550c Ogre::parseShadowReceiverVertexProgramRef(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf5994 — __ZN4Ogre37parseShadowReceiverFragmentProgramRefERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseShadowReceiverFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf5994() -> ! {
+    todo!("0xcf5994 Ogre::parseShadowReceiverFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf5e1c — __ZN4Ogre23parseFragmentProgramRefERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf5e1c() -> ! {
+    todo!("0xcf5e1c Ogre::parseFragmentProgramRef(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf6320 — __ZN4Ogre18parseVertexProgramERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseVertexProgram(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf6320() -> ! {
+    todo!("0xcf6320 Ogre::parseVertexProgram(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf6684 — __ZN4Ogre20parseGeometryProgramERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseGeometryProgram(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf6684() -> ! {
+    todo!("0xcf6684 Ogre::parseGeometryProgram(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf69ec — __ZN4Ogre20parseFragmentProgramERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseFragmentProgram(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf69ec() -> ! {
+    todo!("0xcf69ec Ogre::parseFragmentProgram(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf6d50 — __ZN4Ogre18parseProgramSourceERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(std::string *)
+#[doc(alias = "Ogre::parseProgramSource(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf6d50() -> ! {
+    todo!("0xcf6d50 Ogre::parseProgramSource(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf6d64 — __ZN4Ogre29parseProgramSkeletalAnimationERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseProgramSkeletalAnimation(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf6d64() -> ! {
+    todo!("0xcf6d64 Ogre::parseProgramSkeletalAnimation(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf6d78 — __ZN4Ogre26parseProgramMorphAnimationERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseProgramMorphAnimation(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf6d78() -> ! {
+    todo!("0xcf6d78 Ogre::parseProgramMorphAnimation(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf6d8c — __ZN4Ogre25parseProgramPoseAnimationERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseProgramPoseAnimation(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf6d8c() -> ! {
+    todo!("0xcf6d8c Ogre::parseProgramPoseAnimation(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf6da0 — __ZN4Ogre30parseProgramVertexTextureFetchERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseProgramVertexTextureFetch(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf6da0() -> ! {
+    todo!("0xcf6da0 Ogre::parseProgramVertexTextureFetch(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf6db4 — __ZN4Ogre18parseProgramSyntaxERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseProgramSyntax(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf6db4() -> ! {
+    todo!("0xcf6db4 Ogre::parseProgramSyntax(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf6dd0 — __ZN4Ogre18parseTextureSourceERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseTextureSource(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf6dd0() -> ! {
+    todo!("0xcf6dd0 Ogre::parseTextureSource(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf7738 — __ZN4Ogre19parseReceiveShadowsERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseReceiveShadows(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf7738() -> ! {
+    todo!("0xcf7738 Ogre::parseReceiveShadows(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf78b4 — __ZN4Ogre18parseDefaultParamsERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseDefaultParams(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf78b4() -> ! {
+    todo!("0xcf78b4 Ogre::parseDefaultParams(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf78bc — __ZN4Ogre29parseTransparencyCastsShadowsERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "Ogre::parseTransparencyCastsShadows(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf78bc() -> ! {
+    todo!("0xcf78bc Ogre::parseTransparencyCastsShadows(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf7a38 — __ZN4Ogre16parseLodStrategyERSsRNS_21MaterialScriptContextE
+#[doc(alias = "Ogre::parseLodStrategy(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf7a38() -> ! {
+    todo!("0xcf7a38 Ogre::parseLodStrategy(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xcf7b8c — __ZN4Ogre17parseLodDistancesERSsRNS_21MaterialScriptContextE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, char, char, int, int, int, int)
+#[doc(alias = "Ogre::parseLodDistances(std::string &,Ogre::MaterialScriptContext &)")]
+pub fn stub_0xcf7b8c() -> ! {
+    todo!("0xcf7b8c Ogre::parseLodDistances(std::string &,Ogre::MaterialScriptContext &)")
+}
+
+// 0xd0168c — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS8_
+// type: int __fastcall(int, int, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)> const&)")]
+pub fn stub_0xd0168c() -> ! {
+    todo!("0xd0168c std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)> const&)")
+}
+
+// 0xd01770 — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSK_RKS8_
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, Ogre::NedPoolingImpl *, int, int, void *, int)
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)> const&)")]
+pub fn stub_0xd01770() -> ! {
+    todo!("0xd01770 std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)> const&)")
+}
+
+// 0xd018d4 — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+pub fn stub_0xd018d4() -> ! {
+    todo!("0xd018d4 std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xd018d8 — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE13_Rb_tree_implISC_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+pub fn stub_0xd018d8() -> ! {
+    todo!("0xd018d8 std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xd018e8 — __ZN4Ogre21MaterialScriptContextD2Ev
+// type: void __fastcall(Ogre::MaterialScriptContext *__hidden this)
+#[doc(alias = "Ogre::MaterialScriptContext::~MaterialScriptContext()")]
+pub fn stub_0xd018e8() -> ! {
+    todo!("0xd018e8 Ogre::MaterialScriptContext::~MaterialScriptContext()")
+}
+
+// 0xd01bc0 — __ZNSt8_Rb_treeISsSt4pairIKSsPFbRSsRN4Ogre21MaterialScriptContextEEESt10_Select1stIS8_ESt4lessISsENS3_12STLAllocatorIS8_NS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>> *)")]
+pub fn stub_0xd01bc0() -> ! {
+    todo!("0xd01bc0 std::_Rb_tree<std::string,std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,std::_Select1st<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,bool (*)(std::string &,Ogre::MaterialScriptContext &)>> *)")
+}
+
+// 0xd14558 — __ZN4Ogre15ResourceManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs
+#[doc(alias = "Ogre::ResourceManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+pub fn stub_0xd14558() -> ! {
+    todo!("0xd14558 Ogre::ResourceManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")
+}
+
+// 0xd2e34c — __ZNK4Ogre14OverlayManager17getScriptPatternsEv
+// type: _DWORD __fastcall(Ogre::OverlayManager *__hidden this)
+#[doc(alias = "Ogre::OverlayManager::getScriptPatterns(void)const")]
+pub fn stub_0xd2e34c() -> ! {
+    todo!("0xd2e34c Ogre::OverlayManager::getScriptPatterns(void)const")
+}
+
+// 0xd2e6c4 — __ZN4Ogre14OverlayManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int, int, int, int, char, int, int, int, char, int, char, char, char, char, char, char, char, int, char, char, char, char, int, int, int, int)
+#[doc(alias = "Ogre::OverlayManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+pub fn stub_0xd2e6c4() -> ! {
+    todo!("0xd2e6c4 Ogre::OverlayManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")
+}
+
+// 0xd462e4 — __ZNK4Ogre21ParticleSystemManager17getScriptPatternsEv
+// type: _DWORD __fastcall(Ogre::ParticleSystemManager *__hidden this)
+#[doc(alias = "Ogre::ParticleSystemManager::getScriptPatterns(void)const")]
+pub fn stub_0xd462e4() -> ! {
+    todo!("0xd462e4 Ogre::ParticleSystemManager::getScriptPatterns(void)const")
+}
+
+// 0xd462f0 — __ZN4Ogre21ParticleSystemManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs
+#[doc(alias = "Ogre::ParticleSystemManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+pub fn stub_0xd462f0() -> ! {
+    todo!("0xd462f0 Ogre::ParticleSystemManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")
+}
+
+// 0xd765b8 — __ZN4Ogre34RenderSystemCapabilitiesSerializer11parseScriptERNS_9SharedPtrINS_10DataStreamEEE
+#[doc(alias = "Ogre::RenderSystemCapabilitiesSerializer::parseScript(Ogre::SharedPtr<Ogre::DataStream> &)")]
+pub fn stub_0xd765b8() -> ! {
+    todo!("0xd765b8 Ogre::RenderSystemCapabilitiesSerializer::parseScript(Ogre::SharedPtr<Ogre::DataStream> &)")
+}
+
+// 0xd82da0 — __ZN4Ogre20ResourceGroupManager25parseResourceGroupScriptsEPNS0_13ResourceGroupE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, struct _Unwind_Exception *lpuexcpt, int, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, char, char, char, int, char, int, char, char, char, char, int, int, Ogre::NedPoolingImpl *, int, int, int, int)
+#[doc(alias = "Ogre::ResourceGroupManager::parseResourceGroupScripts(Ogre::ResourceGroupManager::ResourceGroup *)")]
+pub fn stub_0xd82da0() -> ! {
+    todo!("0xd82da0 Ogre::ResourceGroupManager::parseResourceGroupScripts(Ogre::ResourceGroupManager::ResourceGroup *)")
+}
+
+// 0xd87568 — __ZN4Ogre20ResourceGroupManager21_registerScriptLoaderEPNS_12ScriptLoaderE
+// type: _DWORD __fastcall(Ogre::ResourceGroupManager *__hidden this, Ogre::ScriptLoader *)
+#[doc(alias = "Ogre::ResourceGroupManager::_registerScriptLoader(Ogre::ScriptLoader *)")]
+pub fn stub_0xd87568() -> ! {
+    todo!("0xd87568 Ogre::ResourceGroupManager::_registerScriptLoader(Ogre::ScriptLoader *)")
+}
+
+// 0xd875fc — __ZN4Ogre20ResourceGroupManager23_unregisterScriptLoaderEPNS_12ScriptLoaderE
+// type: _DWORD __fastcall(Ogre::ResourceGroupManager *__hidden this, Ogre::ScriptLoader *)
+#[doc(alias = "Ogre::ResourceGroupManager::_unregisterScriptLoader(Ogre::ScriptLoader *)")]
+pub fn stub_0xd875fc() -> ! {
+    todo!("0xd875fc Ogre::ResourceGroupManager::_unregisterScriptLoader(Ogre::ScriptLoader *)")
+}
+
+// 0xd890b4 — __ZN4Ogre12ScriptLoaderD2Ev
+// type: void __fastcall(Ogre::ScriptLoader *__hidden this)
+#[doc(alias = "Ogre::ScriptLoader::~ScriptLoader()")]
+pub fn stub_0xd890b4() -> ! {
+    todo!("0xd890b4 Ogre::ScriptLoader::~ScriptLoader()")
+}
+
+// 0xd8a17c — __ZNSt10_List_baseISt4pairIPN4Ogre12ScriptLoaderENS1_9SharedPtrISt4listINS4_ISt6vectorINS1_8FileInfoENS1_12STLAllocatorIS7_NS1_22CategorisedAllocPolicyILNS1_14MemoryCategoryE0EEEEEEEENS8_ISE_SB_EEEEEENS8_ISI_SB_EEE10_List_implD1Ev
+#[doc(alias = "std::_List_base<std::pair<Ogre::ScriptLoader *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::STLAllocator<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,Ogre::STLAllocator<std::pair<Ogre::ScriptLoader *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::STLAllocator<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
+pub fn stub_0xd8a17c() -> ! {
+    todo!("0xd8a17c std::_List_base<std::pair<Ogre::ScriptLoader *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::STLAllocator<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,Ogre::STLAllocator<std::pair<Ogre::ScriptLoader *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::STLAllocator<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+}
+
+// 0xd8a180 — __ZNSt10_List_baseISt4pairIPN4Ogre12ScriptLoaderENS1_9SharedPtrISt4listINS4_ISt6vectorINS1_8FileInfoENS1_12STLAllocatorIS7_NS1_22CategorisedAllocPolicyILNS1_14MemoryCategoryE0EEEEEEEENS8_ISE_SB_EEEEEENS8_ISI_SB_EEE10_List_implD0Ev
+#[doc(alias = "std::_List_base<std::pair<Ogre::ScriptLoader *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::STLAllocator<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,Ogre::STLAllocator<std::pair<Ogre::ScriptLoader *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::STLAllocator<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
+pub fn stub_0xd8a180() -> ! {
+    todo!("0xd8a180 std::_List_base<std::pair<Ogre::ScriptLoader *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::STLAllocator<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,Ogre::STLAllocator<std::pair<Ogre::ScriptLoader *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::STLAllocator<Ogre::SharedPtr<std::vector<Ogre::FileInfo,Ogre::STLAllocator<Ogre::FileInfo,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+}
+
+// 0xd8a9bc — __ZNSt8_Rb_treeIfSt4pairIKfPN4Ogre12ScriptLoaderEESt10_Select1stIS5_ESt4lessIfENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<float,std::pair<float const,Ogre::ScriptLoader *>,std::_Select1st<std::pair<float const,Ogre::ScriptLoader *>>,std::less<float>,Ogre::STLAllocator<std::pair<float const,Ogre::ScriptLoader *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<float>,false>::~_Rb_tree_impl()")]
+pub fn stub_0xd8a9bc() -> ! {
+    todo!("0xd8a9bc std::_Rb_tree<float,std::pair<float const,Ogre::ScriptLoader *>,std::_Select1st<std::pair<float const,Ogre::ScriptLoader *>>,std::less<float>,Ogre::STLAllocator<std::pair<float const,Ogre::ScriptLoader *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<float>,false>::~_Rb_tree_impl()")
+}
+
+// 0xd8a9c0 — __ZNSt8_Rb_treeIfSt4pairIKfPN4Ogre12ScriptLoaderEESt10_Select1stIS5_ESt4lessIfENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<float,std::pair<float const,Ogre::ScriptLoader *>,std::_Select1st<std::pair<float const,Ogre::ScriptLoader *>>,std::less<float>,Ogre::STLAllocator<std::pair<float const,Ogre::ScriptLoader *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<float>,false>::~_Rb_tree_impl()")]
+pub fn stub_0xd8a9c0() -> ! {
+    todo!("0xd8a9c0 std::_Rb_tree<float,std::pair<float const,Ogre::ScriptLoader *>,std::_Select1st<std::pair<float const,Ogre::ScriptLoader *>>,std::less<float>,Ogre::STLAllocator<std::pair<float const,Ogre::ScriptLoader *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<float>,false>::~_Rb_tree_impl()")
+}
+
+// 0xd8abd4 — __ZNSt8_Rb_treeIfSt4pairIKfPN4Ogre12ScriptLoaderEESt10_Select1stIS5_ESt4lessIfENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
+#[doc(alias = "std::_Rb_tree<float,std::pair<float const,Ogre::ScriptLoader *>,std::_Select1st<std::pair<float const,Ogre::ScriptLoader *>>,std::less<float>,Ogre::STLAllocator<std::pair<float const,Ogre::ScriptLoader *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<float const,Ogre::ScriptLoader *>> *)")]
+pub fn stub_0xd8abd4() -> ! {
+    todo!("0xd8abd4 std::_Rb_tree<float,std::pair<float const,Ogre::ScriptLoader *>,std::_Select1st<std::pair<float const,Ogre::ScriptLoader *>>,std::less<float>,Ogre::STLAllocator<std::pair<float const,Ogre::ScriptLoader *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<float const,Ogre::ScriptLoader *>> *)")
+}
+
+// 0xd8df78 — __ZNK4Ogre15ResourceManager17getScriptPatternsEv
+// type: _DWORD __fastcall(Ogre::ResourceManager *__hidden this)
+#[doc(alias = "Ogre::ResourceManager::getScriptPatterns(void)const")]
+pub fn stub_0xd8df78() -> ! {
+    todo!("0xd8df78 Ogre::ResourceManager::getScriptPatterns(void)const")
+}
+
+// 0xdc86ac — __ZN4Ogre22ScriptCompilerListenerC2Ev
+// type: _DWORD __fastcall(Ogre::ScriptCompilerListener *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerListener::ScriptCompilerListener(void)")]
+pub fn stub_0xdc86ac() -> ! {
+    todo!("0xdc86ac Ogre::ScriptCompilerListener::ScriptCompilerListener(void)")
+}
+
+// 0xdc86bc — __ZN4Ogre22ScriptCompilerListener10importFileEPNS_14ScriptCompilerERKSs
+#[doc(alias = "Ogre::ScriptCompilerListener::importFile(Ogre::ScriptCompiler *,std::string const&)")]
+pub fn stub_0xdc86bc() -> ! {
+    todo!("0xdc86bc Ogre::ScriptCompilerListener::importFile(Ogre::ScriptCompiler *,std::string const&)")
+}
+
+// 0xdc86d8 — __ZN4Ogre22ScriptCompilerListener13preConversionEPNS_14ScriptCompilerENS_9SharedPtrISt4listINS3_INS_12ConcreteNodeEEENS_12STLAllocatorIS6_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEE
+#[doc(alias = "Ogre::ScriptCompilerListener::preConversion(Ogre::ScriptCompiler *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>)")]
+pub fn stub_0xdc86d8() -> ! {
+    todo!("0xdc86d8 Ogre::ScriptCompilerListener::preConversion(Ogre::ScriptCompiler *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>)")
+}
+
+// 0xdc86dc — __ZN4Ogre22ScriptCompilerListener14postConversionEPNS_14ScriptCompilerERKNS_9SharedPtrISt4listINS3_INS_12AbstractNodeEEENS_12STLAllocatorIS6_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEE
+#[doc(alias = "Ogre::ScriptCompilerListener::postConversion(Ogre::ScriptCompiler *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
+pub fn stub_0xdc86dc() -> ! {
+    todo!("0xdc86dc Ogre::ScriptCompilerListener::postConversion(Ogre::ScriptCompiler *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")
+}
+
+// 0xdc86e0 — __ZN4Ogre22ScriptCompilerListener11handleErrorEPNS_14ScriptCompilerEjRKSsiS4_
+// type: _DWORD __fastcall(Ogre::ScriptCompilerListener *__hidden this, Ogre::ScriptCompiler *, unsigned int, const std::string *, int, const std::string *)
+#[doc(alias = "Ogre::ScriptCompilerListener::handleError(Ogre::ScriptCompiler *,unsigned int,std::string const&,int,std::string const&)")]
+pub fn stub_0xdc86e0() -> ! {
+    todo!("0xdc86e0 Ogre::ScriptCompilerListener::handleError(Ogre::ScriptCompiler *,unsigned int,std::string const&,int,std::string const&)")
+}
+
+// 0xdc9038 — __ZN4Ogre14ScriptCompiler15formatErrorCodeEj
+// type: _DWORD __fastcall(Ogre::ScriptCompiler *__hidden this, unsigned int)
+#[doc(alias = "Ogre::ScriptCompiler::formatErrorCode(unsigned int)")]
+pub fn stub_0xdc9038() -> ! {
+    todo!("0xdc9038 Ogre::ScriptCompiler::formatErrorCode(unsigned int)")
+}
+
+// 0xdc9218 — __ZN4Ogre22ScriptCompilerListener11handleEventEPNS_14ScriptCompilerEPNS_19ScriptCompilerEventEPv
+#[doc(alias = "Ogre::ScriptCompilerListener::handleEvent(Ogre::ScriptCompiler *,Ogre::ScriptCompilerEvent *,void *)")]
+pub fn stub_0xdc9218() -> ! {
+    todo!("0xdc9218 Ogre::ScriptCompilerListener::handleEvent(Ogre::ScriptCompiler *,Ogre::ScriptCompilerEvent *,void *)")
+}
+
+// 0xdc921c — __ZN4Ogre14ScriptCompilerC2Ev
+// type: _DWORD __fastcall(Ogre::ScriptCompiler *__hidden this)
+#[doc(alias = "Ogre::ScriptCompiler::ScriptCompiler(void)")]
+pub fn stub_0xdc921c() -> ! {
+    todo!("0xdc921c Ogre::ScriptCompiler::ScriptCompiler(void)")
+}
+
+// 0xdc94e0 — __ZN4Ogre14ScriptCompiler11initWordMapEv
+// type: void __fastcall(Ogre::ScriptCompiler *this)
+#[doc(alias = "Ogre::ScriptCompiler::initWordMap(void)")]
+pub fn stub_0xdc94e0() -> ! {
+    todo!("0xdc94e0 Ogre::ScriptCompiler::initWordMap(void)")
+}
+
+// 0xdd6450 — __ZN4Ogre14ScriptCompiler7compileERKSsS2_S2_
+// type: _DWORD __fastcall(Ogre::ScriptCompiler *__hidden this, const std::string *, const std::string *, const std::string *)
+#[doc(alias = "Ogre::ScriptCompiler::compile(std::string const&,std::string const&,std::string const&)")]
+pub fn stub_0xdd6450() -> ! {
+    todo!("0xdd6450 Ogre::ScriptCompiler::compile(std::string const&,std::string const&,std::string const&)")
+}
+
+// 0xdd65e0 — __ZN4Ogre14ScriptCompiler7compileERKNS_9SharedPtrISt4listINS1_INS_12ConcreteNodeEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEERKSs
+// type: int __fastcall(int, int, std::string *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "Ogre::ScriptCompiler::compile(Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&,std::string const&)")]
+pub fn stub_0xdd65e0() -> ! {
+    todo!("0xdd65e0 Ogre::ScriptCompiler::compile(Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&,std::string const&)")
+}
+
+// 0xdd6910 — __ZN4Ogre14ScriptCompiler12convertToASTERKNS_9SharedPtrISt4listINS1_INS_12ConcreteNodeEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEE
+#[doc(alias = "Ogre::ScriptCompiler::convertToAST(Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
+pub fn stub_0xdd6910() -> ! {
+    todo!("0xdd6910 Ogre::ScriptCompiler::convertToAST(Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ConcreteNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")
+}
+
+// 0xdd6ab8 — __ZN4Ogre14ScriptCompiler14processImportsERNS_9SharedPtrISt4listINS1_INS_12AbstractNodeEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEEE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, char, char, char, char, int, char, char, char, int, char, int, char, char, char, char, char, char, int, int, int, int, int, int, int)
+#[doc(alias = "Ogre::ScriptCompiler::processImports(Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> &)")]
+pub fn stub_0xdd6ab8() -> ! {
+    todo!("0xdd6ab8 Ogre::ScriptCompiler::processImports(Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> &)")
+}
+
+// 0xdd78b8 — __ZN4Ogre14ScriptCompiler14processObjectsEPSt4listINS_9SharedPtrINS_12AbstractNodeEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERKNS2_ISA_EE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, char, char, int, int, char, char, int, int, int, int)
+#[doc(alias = "Ogre::ScriptCompiler::processObjects(std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")]
+pub fn stub_0xdd78b8() -> ! {
+    todo!("0xdd78b8 Ogre::ScriptCompiler::processObjects(std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,Ogre::SharedPtr<std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> const&)")
+}
+
+// 0xdd7ca4 — __ZN4Ogre14ScriptCompiler16processVariablesEPSt4listINS_9SharedPtrINS_12AbstractNodeEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, char, int, int, char, char, int, int, int, int)
+#[doc(alias = "Ogre::ScriptCompiler::processVariables(std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)")]
+pub fn stub_0xdd7ca4() -> ! {
+    todo!("0xdd7ca4 Ogre::ScriptCompiler::processVariables(std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)")
+}
+
+// 0xdd8198 — __ZN4Ogre21ScriptCompilerManager12getSingletonEv
+// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerManager::getSingleton(void)")]
+pub fn stub_0xdd8198() -> ! {
+    todo!("0xdd8198 Ogre::ScriptCompilerManager::getSingleton(void)")
+}
+
+// 0xdd81a8 — __ZN4Ogre21ScriptCompilerManager13getTranslatorERKNS_9SharedPtrINS_12AbstractNodeEEE
+#[doc(alias = "Ogre::ScriptCompilerManager::getTranslator(Ogre::SharedPtr<Ogre::AbstractNode> const&)")]
+pub fn stub_0xdd81a8() -> ! {
+    todo!("0xdd81a8 Ogre::ScriptCompilerManager::getTranslator(Ogre::SharedPtr<Ogre::AbstractNode> const&)")
+}
+
+// 0xdd81cc — __ZN4Ogre14ScriptCompiler8addErrorEjRKSsiS2_
+// type: _DWORD __fastcall(Ogre::ScriptCompiler *__hidden this, unsigned int, const std::string *, int, const std::string *)
+#[doc(alias = "Ogre::ScriptCompiler::addError(unsigned int,std::string const&,int,std::string const&)")]
+pub fn stub_0xdd81cc() -> ! {
+    todo!("0xdd81cc Ogre::ScriptCompiler::addError(unsigned int,std::string const&,int,std::string const&)")
+}
+
+// 0xdd8bac — __ZN4Ogre14ScriptCompiler11getListenerEv
+// type: _DWORD __fastcall(Ogre::ScriptCompiler *__hidden this)
+#[doc(alias = "Ogre::ScriptCompiler::getListener(void)")]
+pub fn stub_0xdd8bac() -> ! {
+    todo!("0xdd8bac Ogre::ScriptCompiler::getListener(void)")
+}
+
+// 0xdd8bb4 — __ZNK4Ogre14ScriptCompiler16getResourceGroupEv
+// type: _DWORD __fastcall(Ogre::ScriptCompiler *__hidden this)
+#[doc(alias = "Ogre::ScriptCompiler::getResourceGroup(void)const")]
+pub fn stub_0xdd8bb4() -> ! {
+    todo!("0xdd8bb4 Ogre::ScriptCompiler::getResourceGroup(void)const")
+}
+
+// 0xdd8bb8 — __ZN4Ogre14ScriptCompiler10_fireEventEPNS_19ScriptCompilerEventEPv
+#[doc(alias = "Ogre::ScriptCompiler::_fireEvent(Ogre::ScriptCompilerEvent *,void *)")]
+pub fn stub_0xdd8bb8() -> ! {
+    todo!("0xdd8bb8 Ogre::ScriptCompiler::_fireEvent(Ogre::ScriptCompilerEvent *,void *)")
+}
+
+// 0xdd8bdc — __ZN4Ogre14ScriptCompiler14loadImportPathERKSs
+// type: _DWORD __fastcall(Ogre::ScriptCompiler *__hidden this, const std::string *)
+#[doc(alias = "Ogre::ScriptCompiler::loadImportPath(std::string const&)")]
+pub fn stub_0xdd8bdc() -> ! {
+    todo!("0xdd8bdc Ogre::ScriptCompiler::loadImportPath(std::string const&)")
+}
+
+// 0xdd9090 — __ZN4Ogre14ScriptCompiler12locateTargetEPSt4listINS_9SharedPtrINS_12AbstractNodeEEENS_12STLAllocatorIS4_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEERKSs
+#[doc(alias = "Ogre::ScriptCompiler::locateTarget(std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::string const&)")]
+pub fn stub_0xdd9090() -> ! {
+    todo!("0xdd9090 Ogre::ScriptCompiler::locateTarget(std::list<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::AbstractNode>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::string const&)")
+}
+
+// 0xdd92c0 — __ZN4Ogre14ScriptCompiler13overlayObjectERKNS_9SharedPtrINS_12AbstractNodeEEEPNS_18ObjectAbstractNodeE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, struct _Unwind_Exception *lpuexcpt, int, Ogre::NedPoolingImpl *, int, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, char, int, int, int, int, int, int, char, int, int, int, int, int, int, char, int, int, int, int, int, char, int, int, int, int, int, int, int, int, int, int, char, int, int, int, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, Ogre::NedPoolingImpl *, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, Ogre::NedPoolingImpl *, int, int, int, int)
+#[doc(alias = "Ogre::ScriptCompiler::overlayObject(Ogre::SharedPtr<Ogre::AbstractNode> const&,Ogre::ObjectAbstractNode *)")]
+pub fn stub_0xdd92c0() -> ! {
+    todo!("0xdd92c0 Ogre::ScriptCompiler::overlayObject(Ogre::SharedPtr<Ogre::AbstractNode> const&,Ogre::ObjectAbstractNode *)")
+}
+
+// 0xdda460 — __ZN4Ogre14ScriptCompiler14isNameExcludedERKSsPNS_12AbstractNodeE
+#[doc(alias = "Ogre::ScriptCompiler::isNameExcluded(std::string const&,Ogre::AbstractNode *)")]
+pub fn stub_0xdda460() -> ! {
+    todo!("0xdda460 Ogre::ScriptCompiler::isNameExcluded(std::string const&,Ogre::AbstractNode *)")
+}
+
+// 0xdda7a0 — __ZN4Ogre14ScriptCompiler19AbstractTreeBuilder5visitEPNS_12ConcreteNodeE
+#[doc(alias = "Ogre::ScriptCompiler::AbstractTreeBuilder::visit(Ogre::ConcreteNode *)")]
+pub fn stub_0xdda7a0() -> ! {
+    todo!("0xdda7a0 Ogre::ScriptCompiler::AbstractTreeBuilder::visit(Ogre::ConcreteNode *)")
+}
+
+// 0xddc7dc — __ZN4Ogre21ScriptCompilerManagerC1Ev
+// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerManager::ScriptCompilerManager(void)")]
+pub fn stub_0xddc7dc() -> ! {
+    todo!("0xddc7dc Ogre::ScriptCompilerManager::ScriptCompilerManager(void)")
+}
+
+// 0xddc7e8 — __ZN4Ogre21ScriptCompilerManagerC2Ev
+// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerManager::ScriptCompilerManager(void)")]
+pub fn stub_0xddc7e8() -> ! {
+    todo!("0xddc7e8 Ogre::ScriptCompilerManager::ScriptCompilerManager(void)")
+}
+
+// 0xddce64 — __ZN4Ogre21ScriptCompilerManagerD0Ev
+// type: void __fastcall(Ogre::ScriptCompilerManager *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerManager::~ScriptCompilerManager()")]
+pub fn stub_0xddce64() -> ! {
+    todo!("0xddce64 Ogre::ScriptCompilerManager::~ScriptCompilerManager()")
+}
+
+// 0xddcef4 — __ZN4Ogre21ScriptCompilerManagerD1Ev
+// type: void __fastcall(Ogre::ScriptCompilerManager *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerManager::~ScriptCompilerManager()")]
+pub fn stub_0xddcef4() -> ! {
+    todo!("0xddcef4 Ogre::ScriptCompilerManager::~ScriptCompilerManager()")
+}
+
+// 0xddcf00 — __ZN4Ogre21ScriptCompilerManagerD2Ev
+// type: void __fastcall(Ogre::ScriptCompilerManager *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerManager::~ScriptCompilerManager()")]
+pub fn stub_0xddcf00() -> ! {
+    todo!("0xddcf00 Ogre::ScriptCompilerManager::~ScriptCompilerManager()")
+}
+
+// 0xddd040 — __ZN4Ogre21ScriptCompilerManager11setListenerEPNS_22ScriptCompilerListenerE
+// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this, Ogre::ScriptCompilerListener *)
+#[doc(alias = "Ogre::ScriptCompilerManager::setListener(Ogre::ScriptCompilerListener *)")]
+pub fn stub_0xddd040() -> ! {
+    todo!("0xddd040 Ogre::ScriptCompilerManager::setListener(Ogre::ScriptCompilerListener *)")
+}
+
+// 0xddd044 — __ZN4Ogre21ScriptCompilerManager11getListenerEv
+// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerManager::getListener(void)")]
+pub fn stub_0xddd044() -> ! {
+    todo!("0xddd044 Ogre::ScriptCompilerManager::getListener(void)")
+}
+
+// 0xddd048 — __ZNK4Ogre21ScriptCompilerManager17getScriptPatternsEv
+// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerManager::getScriptPatterns(void)const")]
+pub fn stub_0xddd048() -> ! {
+    todo!("0xddd048 Ogre::ScriptCompilerManager::getScriptPatterns(void)const")
+}
+
+// 0xddd04c — __ZNK4Ogre21ScriptCompilerManager15getLoadingOrderEv
+// type: _DWORD __fastcall(Ogre::ScriptCompilerManager *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerManager::getLoadingOrder(void)const")]
+pub fn stub_0xddd04c() -> ! {
+    todo!("0xddd04c Ogre::ScriptCompilerManager::getLoadingOrder(void)const")
+}
+
+// 0xddd054 — __ZN4Ogre21ScriptCompilerManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs
+#[doc(alias = "Ogre::ScriptCompilerManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+pub fn stub_0xddd054() -> ! {
+    todo!("0xddd054 Ogre::ScriptCompilerManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")
+}
+
+// 0xddd54c — __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED1Ev
+#[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
+pub fn stub_0xddd54c() -> ! {
+    todo!("0xddd54c Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")
+}
+
+// 0xddd75c — __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEED1Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::~SharedPtr()")]
+pub fn stub_0xddd75c() -> ! {
+    todo!("0xddd75c Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::~SharedPtr()")
+}
+
+// 0xdddc20 — __ZN4Ogre39ProcessNameExclusionScriptCompilerEventD1Ev
+// type: void __fastcall(Ogre::ProcessNameExclusionScriptCompilerEvent *__hidden this)
+#[doc(alias = "Ogre::ProcessNameExclusionScriptCompilerEvent::~ProcessNameExclusionScriptCompilerEvent()")]
+pub fn stub_0xdddc20() -> ! {
+    todo!("0xdddc20 Ogre::ProcessNameExclusionScriptCompilerEvent::~ProcessNameExclusionScriptCompilerEvent()")
+}
+
+// 0xdde714 — __ZN4Ogre22ScriptCompilerListenerD1Ev
+// type: void __fastcall(Ogre::ScriptCompilerListener *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerListener::~ScriptCompilerListener()")]
+pub fn stub_0xdde714() -> ! {
+    todo!("0xdde714 Ogre::ScriptCompilerListener::~ScriptCompilerListener()")
+}
+
+// 0xdde718 — __ZN4Ogre22ScriptCompilerListenerD0Ev
+// type: void __fastcall(Ogre::ScriptCompilerListener *__hidden this)
+#[doc(alias = "Ogre::ScriptCompilerListener::~ScriptCompilerListener()")]
+pub fn stub_0xdde718() -> ! {
+    todo!("0xdde718 Ogre::ScriptCompilerListener::~ScriptCompilerListener()")
+}
+
+// 0xdde934 — __ZN4Ogre14ScriptCompilerD1Ev
+// type: void __fastcall(Ogre::ScriptCompiler *__hidden this)
+#[doc(alias = "Ogre::ScriptCompiler::~ScriptCompiler()")]
+pub fn stub_0xdde934() -> ! {
+    todo!("0xdde934 Ogre::ScriptCompiler::~ScriptCompiler()")
+}
+
+// 0xdde940 — __ZN4Ogre14ScriptCompilerD0Ev
+// type: void __fastcall(Ogre::ScriptCompiler *__hidden this)
+#[doc(alias = "Ogre::ScriptCompiler::~ScriptCompiler()")]
+pub fn stub_0xdde940() -> ! {
+    todo!("0xdde940 Ogre::ScriptCompiler::~ScriptCompiler()")
+}
+
+// 0xdde9d0 — __ZN4Ogre14ScriptCompilerD2Ev
+// type: void __fastcall(Ogre::ScriptCompiler *__hidden this)
+#[doc(alias = "Ogre::ScriptCompiler::~ScriptCompiler()")]
+pub fn stub_0xdde9d0() -> ! {
+    todo!("0xdde9d0 Ogre::ScriptCompiler::~ScriptCompiler()")
+}
+
+// 0xddeb48 — __ZNSt6vectorIPN4Ogre23ScriptTranslatorManagerENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
+// type: int __fastcall(int, void *__src)
+#[doc(alias = "std::vector<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ScriptTranslatorManager **,std::vector<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ScriptTranslatorManager * const&)")]
+pub fn stub_0xddeb48() -> ! {
+    todo!("0xddeb48 std::vector<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ScriptTranslatorManager **,std::vector<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::ScriptTranslatorManager * const&)")
+}
+
+// 0xddec40 — __ZNSt12_Vector_baseIPN4Ogre23ScriptTranslatorManagerENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
+#[doc(alias = "std::_Vector_base<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+pub fn stub_0xddec40() -> ! {
+    todo!("0xddec40 std::_Vector_base<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xddec44 — __ZNSt12_Vector_baseIPN4Ogre23ScriptTranslatorManagerENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
+#[doc(alias = "std::_Vector_base<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+pub fn stub_0xddec44() -> ! {
+    todo!("0xddec44 std::_Vector_base<Ogre::ScriptTranslatorManager *,Ogre::STLAllocator<Ogre::ScriptTranslatorManager *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
+}
+
+// 0xde0bf4 — __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEED0Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::~SharedPtr()")]
+pub fn stub_0xde0bf4() -> ! {
+    todo!("0xde0bf4 Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::~SharedPtr()")
+}
+
+// 0xde0ca8 — __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEE7destroyEv
+#[doc(alias = "Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::destroy(void)")]
+pub fn stub_0xde0ca8() -> ! {
+    todo!("0xde0ca8 Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::destroy(void)")
+}
+
+// 0xde0e5c — __ZN4Ogre9SharedPtrINS_14ScriptCompiler5ErrorEE4swapERS3_
+#[doc(alias = "Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::swap(Ogre::SharedPtr<Ogre::ScriptCompiler::Error>&)")]
+pub fn stub_0xde0e5c() -> ! {
+    todo!("0xde0e5c Ogre::SharedPtr<Ogre::ScriptCompiler::Error>::swap(Ogre::SharedPtr<Ogre::ScriptCompiler::Error>&)")
+}
+
+// 0xde0f9c — __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEED0Ev
+#[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")]
+pub fn stub_0xde0f9c() -> ! {
+    todo!("0xde0f9c Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::~SharedPtr()")
+}
+
+// 0xde1050 — __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE7destroyEv
+#[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::destroy(void)")]
+pub fn stub_0xde1050() -> ! {
+    todo!("0xde1050 Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::destroy(void)")
+}
+
+// 0xde1160 — __ZN4Ogre9SharedPtrISt6vectorINS0_INS_11ScriptTokenEEENS_12STLAllocatorIS3_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEE4swapERSA_
+#[doc(alias = "Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::swap(Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>&)")]
+pub fn stub_0xde1160() -> ! {
+    todo!("0xde1160 Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>::swap(Ogre::SharedPtr<std::vector<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptToken>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>&)")
+}
+
+// 0xde117c — __ZNSt10_List_baseIN4Ogre9SharedPtrINS0_14ScriptCompiler5ErrorEEENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
+#[doc(alias = "std::_List_base<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
+pub fn stub_0xde117c() -> ! {
+    todo!("0xde117c std::_List_base<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+}
+
+// 0xde1180 — __ZNSt10_List_baseIN4Ogre9SharedPtrINS0_14ScriptCompiler5ErrorEEENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
+// type: void __fastcall(void *)
+#[doc(alias = "std::_List_base<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
+pub fn stub_0xde1180() -> ! {
+    todo!("0xde1180 std::_List_base<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::STLAllocator<Ogre::SharedPtr<Ogre::ScriptCompiler::Error>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
 }
