@@ -20978,3 +20978,702 @@ pub fn boost_stub_37c14c(_ptr: crate::SharedPtr<()>) {
 pub fn boost_stub_37c200(_ptr: crate::SharedPtr<()>) {
     todo!("0x37c200 __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS9_")
 }
+#[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)")]
+// 0x37c24c — __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueERKS9_
+// was: std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_insert_unique(std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)
+pub fn boost_stub_37c24c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37c24c __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE16_M_insert_uniqueERKS9_")
+}
+
+#[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_create_node(std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)")]
+// 0x37c2b4 — __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE14_M_create_nodeERKS9_
+// was: std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_create_node(std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>> const&)
+pub fn boost_stub_37c2b4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37c2b4 __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE14_M_create_nodeERKS9_")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::StockSound>::shared_ptr<RBX::StockSound,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// 0x37cdc0 — __ZN5boost10shared_ptrIN3RBX10StockSoundEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<RBX::StockSound>::shared_ptr<RBX::StockSound,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn boost_stub_37cdc0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37cdc0 __ZN5boost10shared_ptrIN3RBX10StockSoundEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StockSound,RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const*,RBX::StockSound *)const")]
+// 0x37ce88 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10StockSoundES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StockSound,RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const*,RBX::StockSound *)const
+pub fn boost_stub_37ce88(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37ce88 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10StockSoundES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// 0x37cf74 — __ZN5boost6detail12shared_countC2IPN3RBX10StockSoundENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn boost_stub_37cf74(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37cf74 __ZN5boost6detail12shared_countC2IPN3RBX10StockSoundENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// 0x37d07c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_37d07c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d07c __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// 0x37d080 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_37d080(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d080 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// 0x37d084 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn boost_stub_37d084(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d084 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x37d0a4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_37d0a4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d0a4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+// 0x37d0bc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::StockSound *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_37d0bc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d0bc __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10StockSoundENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>> *)")]
+// 0x37d0c0 — __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
+// was: std::_Rb_tree<RBX::Soundscape::SoundId,std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>,std::_Select1st<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>,std::less<RBX::Soundscape::SoundId>,std::allocator<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>> *)
+pub fn boost_stub_37d0c0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d0c0 __ZNSt8_Rb_treeIN3RBX10Soundscape7SoundIdESt4pairIKS2_N5boost10shared_ptrINS1_5SoundEEEESt10_Select1stIS9_ESt4lessIS2_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E")
+}
+
+#[doc(alias = "std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>(std::pair const&<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>)")]
+// 0x37d0f0 — __ZNSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2IKS2_S6_EERKS_IT_T0_E
+// was: std::pair<RBX::Soundscape::SoundId,boost::shared_ptr<RBX::Soundscape::Sound>>::pair<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>(std::pair const&<RBX::Soundscape::SoundId const,boost::shared_ptr<RBX::Soundscape::Sound>>)
+pub fn boost_stub_37d0f0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d0f0 __ZNSt4pairIN3RBX10Soundscape7SoundIdEN5boost10shared_ptrINS1_5SoundEEEEC2IKS2_S6_EERKS_IT_T0_E")
+}
+
+#[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>> *)")]
+// 0x37d1b4 — __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
+// was: std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>> *)
+pub fn boost_stub_37d1b4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d1b4 __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E")
+}
+
+#[doc(alias = "std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>> *)")]
+// 0x37d1dc — __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E
+// was: std::_Rb_tree<RBX::SoundType,std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>,std::_Select1st<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>,std::less<RBX::SoundType>,std::allocator<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::SoundType const,boost::shared_ptr<RBX::Soundscape::SoundChannel>>> *)
+pub fn boost_stub_37d1dc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d1dc __ZNSt8_Rb_treeIN3RBX9SoundTypeESt4pairIKS1_N5boost10shared_ptrINS0_10Soundscape12SoundChannelEEEESt10_Select1stIS9_ESt4lessIS1_ESaIS9_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS9_E")
+}
+
+#[doc(alias = "boost::scoped_ptr<RBX::Soundscape::CollisionSoundManager>::~scoped_ptr()")]
+// 0x37d1f8 — __ZN5boost10scoped_ptrIN3RBX10Soundscape21CollisionSoundManagerEED2Ev
+// was: boost::scoped_ptr<RBX::Soundscape::CollisionSoundManager>::~scoped_ptr()
+pub fn boost_stub_37d1f8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d1f8 __ZN5boost10scoped_ptrIN3RBX10Soundscape21CollisionSoundManagerEED2Ev")
+}
+
+#[doc(alias = "boost::shared_ptr<SoundServiceStatsItem> RBX::Creatable<RBX::Instance>::create<SoundServiceStatsItem,RBX::Soundscape::SoundService const*>(RBX::Soundscape::SoundService const*)")]
+// 0x37d98c — __ZN3RBX9CreatableINS_8InstanceEE6createI21SoundServiceStatsItemPKNS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<SoundServiceStatsItem> RBX::Creatable<RBX::Instance>::create<SoundServiceStatsItem,RBX::Soundscape::SoundService const*>(RBX::Soundscape::SoundService const*)
+pub fn boost_stub_37d98c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37d98c __ZN3RBX9CreatableINS_8InstanceEE6createI21SoundServiceStatsItemPKNS_10Soundscape12SoundServiceEEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// 0x37dbf4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIjEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_37dbf4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37dbf4 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIjEENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// 0x37dbf8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIjEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::Stats::TypedStatsItem<unsigned int> *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn boost_stub_37dbf8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37dbf8 __ZN5boost6detail18sp_counted_impl_pdIPN3RBX5Stats14TypedStatsItemIjEENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::Stats::TypedStatsItem<int>> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedStatsItem<int>,int const*>(int const*)")]
+// 0x37dc18 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5Stats14TypedStatsItemIiEEPKiEEN5boost10shared_ptrIT_EET0_
+// was: boost::shared_ptr<RBX::Stats::TypedStatsItem<int>> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedStatsItem<int>,int const*>(int const*)
+pub fn boost_stub_37dc18(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37dc18 __ZN3RBX9CreatableINS_8InstanceEE6createINS_5Stats14TypedStatsItemIiEEPKiEEN5boost10shared_ptrIT_EET0_")
+}
+
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<int const&,int const& (*)(int const*),boost::_bi::list1<boost::_bi::value<int const*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// 0x37dd20 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIRKiPFS6_PS5_ENS3_5list1INS3_5valueIS7_EEEEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<int const&,int const& (*)(int const*),boost::_bi::list1<boost::_bi::value<int const*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn boost_stub_37dd20(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37dd20 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIRKiPFS6_PS5_ENS3_5list1INS3_5valueIS7_EEEEEEE6manageERKNS1_15function_bufferERSG_NS1_30functor_manager_operation_typeE")
+}
+
+#[doc(alias = "boost::detail::function::function_obj_invoker0<boost::_bi::bind_t<int const&,int const& (*)(int const*),boost::_bi::list1<boost::_bi::value<int const*>>>,int>::invoke(boost::detail::function::function_buffer &)")]
+// 0x37dd80 — __ZN5boost6detail8function21function_obj_invoker0INS_3_bi6bind_tIRKiPFS6_PS5_ENS3_5list1INS3_5valueIS7_EEEEEEiE6invokeERNS1_15function_bufferE
+// was: boost::detail::function::function_obj_invoker0<boost::_bi::bind_t<int const&,int const& (*)(int const*),boost::_bi::list1<boost::_bi::value<int const*>>>,int>::invoke(boost::detail::function::function_buffer &)
+pub fn boost_stub_37dd80(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37dd80 __ZN5boost6detail8function21function_obj_invoker0INS_3_bi6bind_tIRKiPFS6_PS5_ENS3_5list1INS3_5valueIS7_EEEEEEiE6invokeERNS1_15function_bufferE")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// 0x37dd90 — __ZN5boost6detail12shared_countC2IPN3RBX5Stats14TypedStatsItemIiEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedStatsItem<int> *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn boost_stub_37dd90(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37dd90 __ZN5boost6detail12shared_countC2IPN3RBX5Stats14TypedStatsItemIiEENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::shared_ptr<SoundServiceStatsItem>::shared_ptr<SoundServiceStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// 0x37e56c — __ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
+// was: boost::shared_ptr<SoundServiceStatsItem>::shared_ptr<SoundServiceStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn boost_stub_37e56c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37e56c __ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const")]
+// 0x37e634 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21SoundServiceStatsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const
+pub fn boost_stub_37e634(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37e634 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21SoundServiceStatsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// 0x37e720 — __ZN5boost6detail12shared_countC2IP21SoundServiceStatsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_
+// was: boost::detail::shared_count::shared_count<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn boost_stub_37e720(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37e720 __ZN5boost6detail12shared_countC2IP21SoundServiceStatsItemN3RBX9CreatableINS5_8InstanceEE7DeleterEEET_T0_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// 0x37e828 — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev
+// was: boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_37e828(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37e828 __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// 0x37e82c — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev
+// was: boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn boost_stub_37e82c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37e82c __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// 0x37e830 — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn boost_stub_37e830(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37e830 __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+// 0x37e850 — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+pub fn boost_stub_37e850(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37e850 __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+// 0x37e868 — __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
+pub fn boost_stub_37e868(_ptr: crate::SharedPtr<()>) {
+    todo!("0x37e868 __ZN5boost6detail18sp_counted_impl_pdIP21SoundServiceStatsItemN3RBX9CreatableINS4_8InstanceEE7DeleterEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "RBX::StandardOut::print_exception(boost::function0<void> const&,RBX::MessageType,bool)")]
+// 0x381b0c — __ZN3RBX11StandardOut15print_exceptionERKN5boost9function0IvEENS_11MessageTypeEb
+// was: RBX::StandardOut::print_exception(boost::function0<void> const&,RBX::MessageType,bool)
+pub fn boost_stub_381b0c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x381b0c __ZN3RBX11StandardOut15print_exceptionERKN5boost9function0IvEENS_11MessageTypeEb")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::StandardOut>::~shared_ptr()")]
+// 0x3821f0 — __ZN5boost10shared_ptrIN3RBX11StandardOutEED1Ev
+// was: boost::shared_ptr<RBX::StandardOut>::~shared_ptr()
+pub fn boost_stub_3821f0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3821f0 __ZN5boost10shared_ptrIN3RBX11StandardOutEED1Ev")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot> &)")]
+// 0x382348 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
+// was: rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot> &)
+pub fn boost_stub_382348(_ptr: crate::SharedPtr<()>) {
+    todo!("0x382348 __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE")
+}
+
+#[doc(alias = "boost::shared_ptr<RBX::StandardOut>::shared_ptr<RBX::StandardOut>(RBX::StandardOut *)")]
+// 0x3824d0 — __ZN5boost10shared_ptrIN3RBX11StandardOutEEC2IS2_EEPT_
+// was: boost::shared_ptr<RBX::StandardOut>::shared_ptr<RBX::StandardOut>(RBX::StandardOut *)
+pub fn boost_stub_3824d0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3824d0 __ZN5boost10shared_ptrIN3RBX11StandardOutEEC2IS2_EEPT_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<RBX::StandardOut>::_internal_accept_owner<RBX::StandardOut,RBX::StandardOut>(boost::shared_ptr<RBX::StandardOut> const*,RBX::StandardOut *)const")]
+// 0x3825b8 — __ZNK5boost23enable_shared_from_thisIN3RBX11StandardOutEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::StandardOut>::_internal_accept_owner<RBX::StandardOut,RBX::StandardOut>(boost::shared_ptr<RBX::StandardOut> const*,RBX::StandardOut *)const
+pub fn boost_stub_3825b8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3825b8 __ZNK5boost23enable_shared_from_thisIN3RBX11StandardOutEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::StandardOut>(RBX::StandardOut *)")]
+// 0x3826dc — __ZN5boost6detail12shared_countC2IN3RBX11StandardOutEEEPT_
+// was: boost::detail::shared_count::shared_count<RBX::StandardOut>(RBX::StandardOut *)
+pub fn boost_stub_3826dc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3826dc __ZN5boost6detail12shared_countC2IN3RBX11StandardOutEEEPT_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::StandardOut>::~sp_counted_impl_p()")]
+// 0x382a84 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEED1Ev
+// was: boost::detail::sp_counted_impl_p<RBX::StandardOut>::~sp_counted_impl_p()
+pub fn boost_stub_382a84(_ptr: crate::SharedPtr<()>) {
+    todo!("0x382a84 __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::StandardOut>::~sp_counted_impl_p()")]
+// 0x382a88 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEED0Ev
+// was: boost::detail::sp_counted_impl_p<RBX::StandardOut>::~sp_counted_impl_p()
+pub fn boost_stub_382a88(_ptr: crate::SharedPtr<()>) {
+    todo!("0x382a88 __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::StandardOut>::dispose(void)")]
+// 0x382a8c — __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE7disposeEv
+// was: boost::detail::sp_counted_impl_p<RBX::StandardOut>::dispose(void)
+pub fn boost_stub_382a8c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x382a8c __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::StandardOut>::get_deleter(std::type_info const&)")]
+// 0x382b30 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_p<RBX::StandardOut>::get_deleter(std::type_info const&)
+pub fn boost_stub_382b30(_ptr: crate::SharedPtr<()>) {
+    todo!("0x382b30 __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::StandardOut>::get_untyped_deleter(void)")]
+// 0x382b34 — __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_p<RBX::StandardOut>::get_untyped_deleter(void)
+pub fn boost_stub_382b34(_ptr: crate::SharedPtr<()>) {
+    todo!("0x382b34 __ZN5boost6detail17sp_counted_impl_pIN3RBX11StandardOutEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "boost::detail::function::void_function_invoker2<void (*)(std::string *,std::exception *),void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)")]
+// 0x384c3c — __ZN5boost6detail8function22void_function_invoker2IPFvPSsPSt9exceptionEvS3_S5_E6invokeERNS1_15function_bufferES3_S5_
+// was: boost::detail::function::void_function_invoker2<void (*)(std::string *,std::exception *),void,std::string *,std::exception *>::invoke(boost::detail::function::function_buffer &,std::string *,std::exception *)
+pub fn boost_stub_384c3c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x384c3c __ZN5boost6detail8function22void_function_invoker2IPFvPSsPSt9exceptionEvS3_S5_E6invokeERNS1_15function_bufferES3_S5_")
+}
+
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(RBX::Stepped const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>> const&)")]
+// 0x384fb0 — __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_8ISteppedES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_
+// was: rbx::signals::connection rbx::signals::signal<void ()(RBX::Stepped const&)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>> const&)
+pub fn boost_stub_384fb0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x384fb0 __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_8ISteppedES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_")
+}
+
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Stepped const&)>::slot*)")]
+// 0x385230 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slotEEaSEPSA_
+// was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Stepped const&)>::slot*)
+pub fn boost_stub_385230(_ptr: crate::SharedPtr<()>) {
+    todo!("0x385230 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slotEEaSEPSA_")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Stepped const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>>::~callable_slot()")]
+// 0x385254 — __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_8ISteppedES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED1Ev
+// was: rbx::signals::signal<void ()(RBX::Stepped const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>>::~callable_slot()
+pub fn boost_stub_385254(_ptr: crate::SharedPtr<()>) {
+    todo!("0x385254 __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_8ISteppedES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED1Ev")
+}
+
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Stepped const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>>::~callable_slot()")]
+// 0x385280 — __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_8ISteppedES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED0Ev
+// was: rbx::signals::signal<void ()(RBX::Stepped const&)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>>::~callable_slot()
+pub fn boost_stub_385280(_ptr: crate::SharedPtr<()>) {
+    todo!("0x385280 __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE13callable_slotIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_8ISteppedES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEED0Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")]
+// 0x385470 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)
+pub fn boost_stub_385470(_ptr: crate::SharedPtr<()>) {
+    todo!("0x385470 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
+}
+
+#[doc(alias = "non_virtual_thunk_torbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")]
+// 0x385478 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
+// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)
+pub fn boost_stub_385478(_ptr: crate::SharedPtr<()>) {
+    todo!("0x385478 __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
+}
+
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>::operator()<RBX::Stepped>(RBX::Stepped const&)")]
+// 0x385480 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8ISteppedERKNS4_7SteppedEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_
+// was: void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>::operator()<RBX::Stepped>(RBX::Stepped const&)
+pub fn boost_stub_385480(_ptr: crate::SharedPtr<()>) {
+    todo!("0x385480 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8ISteppedERKNS4_7SteppedEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::~callable()")]
+// 0x38577c — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED1Ev
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::~callable()
+pub fn boost_stub_38577c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x38577c __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED1Ev")
+}
+
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::~callable()")]
+// 0x3857a8 — __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev
+// was: rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::~callable()
+pub fn boost_stub_3857a8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3857a8 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev")
+}
+
+#[doc(alias = "RBX::BaseThreadPool::loop(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>)")]
+// 0x385e28 — __ZN3RBX14BaseThreadPool4loopEN5boost10shared_ptrINS0_8PoolDataEEENS2_INS_5mutexEEE
+// was: RBX::BaseThreadPool::loop(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>)
+pub fn boost_stub_385e28(_ptr: crate::SharedPtr<()>) {
+    todo!("0x385e28 __ZN3RBX14BaseThreadPool4loopEN5boost10shared_ptrINS0_8PoolDataEEENS2_INS_5mutexEEE")
+}
+
+#[doc(alias = "RBX::join(boost::shared_ptr<boost::thread>)")]
+// 0x386420 — __ZN3RBXL4joinEN5boost10shared_ptrINS0_6threadEEE
+// was: RBX::join(boost::shared_ptr<boost::thread>)
+pub fn boost_stub_386420(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386420 __ZN3RBXL4joinEN5boost10shared_ptrINS0_6threadEEE")
+}
+
+#[doc(alias = "RBX::timed_join(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>)")]
+// 0x386428 — __ZN3RBXL10timed_joinEN5boost10shared_ptrINS0_6threadEEENS0_9date_time18subsecond_durationINS0_10posix_time13time_durationELx1000EEE
+// was: RBX::timed_join(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>)
+pub fn boost_stub_386428(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386428 __ZN3RBXL10timed_joinEN5boost10shared_ptrINS0_6threadEEENS0_9date_time18subsecond_durationINS0_10posix_time13time_durationELx1000EEE")
+}
+
+#[doc(alias = "RBX::ThreadPool::schedule(boost::function<void ()(boost::shared_ptr<RBX::mutex>)>)")]
+// 0x386774 — __ZN3RBX10ThreadPool8scheduleEN5boost8functionIFvNS1_10shared_ptrINS_5mutexEEEEEE
+// was: RBX::ThreadPool::schedule(boost::function<void ()(boost::shared_ptr<RBX::mutex>)>)
+pub fn boost_stub_386774(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386774 __ZN3RBX10ThreadPool8scheduleEN5boost8functionIFvNS1_10shared_ptrINS_5mutexEEEEEE")
+}
+
+#[doc(alias = "RBX::PriorityThreadPool::schedule(boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,float)")]
+// 0x3868c8 — __ZN3RBX18PriorityThreadPool8scheduleEN5boost8functionIFvNS1_10shared_ptrINS_5mutexEEEEEEf
+// was: RBX::PriorityThreadPool::schedule(boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,float)
+pub fn boost_stub_3868c8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3868c8 __ZN3RBX18PriorityThreadPool8scheduleEN5boost8functionIFvNS1_10shared_ptrINS_5mutexEEEEEEf")
+}
+
+#[doc(alias = "RBX::PriorityThreadPool::PriorityThreadPoolData::getNextTask(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> &)")]
+// 0x3869e4 — __ZN3RBX18PriorityThreadPool22PriorityThreadPoolData11getNextTaskERN5boost8functionIFvNS2_10shared_ptrINS_5mutexEEEEEE
+// was: RBX::PriorityThreadPool::PriorityThreadPoolData::getNextTask(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> &)
+pub fn boost_stub_3869e4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3869e4 __ZN3RBX18PriorityThreadPool22PriorityThreadPoolData11getNextTaskERN5boost8functionIFvNS2_10shared_ptrINS_5mutexEEEEEE")
+}
+
+#[doc(alias = "std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>::resize(unsigned long,boost::shared_ptr<boost::thread>)")]
+// 0x386abc — __ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EE6resizeEmS3_
+// was: std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>::resize(unsigned long,boost::shared_ptr<boost::thread>)
+pub fn boost_stub_386abc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386abc __ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EE6resizeEmS3_")
+}
+
+#[doc(alias = "std::vector<boost::shared_ptr<RBX::mutex>,std::allocator<boost::shared_ptr<RBX::mutex>>>::resize(unsigned long,boost::shared_ptr<RBX::mutex>)")]
+// 0x386af8 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EE6resizeEmS4_
+// was: std::vector<boost::shared_ptr<RBX::mutex>,std::allocator<boost::shared_ptr<RBX::mutex>>>::resize(unsigned long,boost::shared_ptr<RBX::mutex>)
+pub fn boost_stub_386af8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386af8 __ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EE6resizeEmS4_")
+}
+
+#[doc(alias = "void boost::shared_ptr<RBX::mutex>::reset<RBX::mutex>(RBX::mutex *)")]
+// 0x386b34 — __ZN5boost10shared_ptrIN3RBX5mutexEE5resetIS2_EEvPT_
+// was: void boost::shared_ptr<RBX::mutex>::reset<RBX::mutex>(RBX::mutex *)
+pub fn boost_stub_386b34(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386b34 __ZN5boost10shared_ptrIN3RBX5mutexEE5resetIS2_EEvPT_")
+}
+
+#[doc(alias = "void boost::shared_ptr<boost::thread>::reset<boost::thread>(boost::thread *)")]
+// 0x386b60 — __ZN5boost10shared_ptrINS_6threadEE5resetIS1_EEvPT_
+// was: void boost::shared_ptr<boost::thread>::reset<boost::thread>(boost::thread *)
+pub fn boost_stub_386b60(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386b60 __ZN5boost10shared_ptrINS_6threadEE5resetIS1_EEvPT_")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list_av_2<boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>>::type> boost::bind<void,boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>,boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>>(void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>)")]
+// 0x386b8c — __ZN5boost4bindIvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS1_INS2_5mutexEEES5_S7_EENS_3_bi6bind_tIT_PFSA_T0_T1_ENS8_9list_av_2IT2_T3_E4typeEEESE_SG_SH_
+// was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list_av_2<boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>>::type> boost::bind<void,boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>,boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>>(void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>)
+pub fn boost_stub_386b8c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386b8c __ZN5boost4bindIvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS1_INS2_5mutexEEES5_S7_EENS_3_bi6bind_tIT_PFSA_T0_T1_ENS8_9list_av_2IT2_T3_E4typeEEESE_SG_SH_")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>>)")]
+// 0x386d74 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrINS2_6threadEEESt6vectorIS5_SaIS5_EEEENS2_3_bi6bind_tIvPFvS5_ENSB_5list1INS2_3argILi1EEEEEEEET0_T_SL_SK_
+// was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>>)
+pub fn boost_stub_386d74(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386d74 __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrINS2_6threadEEESt6vectorIS5_SaIS5_EEEENS2_3_bi6bind_tIvPFvS5_ENSB_5list1INS2_3argILi1EEEEEEEET0_T_SL_SK_")
+}
+
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>>)")]
+// 0x386db4 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrINS2_6threadEEESt6vectorIS5_SaIS5_EEEENS2_3_bi6bind_tIvPFvS5_NS2_9date_time18subsecond_durationINS2_10posix_time13time_durationELx1000EEEENSB_5list2INS2_3argILi1EEENSB_5valueISH_EEEEEEET0_T_SS_SR_
+// was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>>)
+pub fn boost_stub_386db4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386db4 __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrINS2_6threadEEESt6vectorIS5_SaIS5_EEEENS2_3_bi6bind_tIvPFvS5_NS2_9date_time18subsecond_durationINS2_10posix_time13time_durationELx1000EEEENSB_5list2INS2_3argILi1EEENSB_5valueISH_EEEEEEET0_T_SS_SR_")
+}
+
+#[doc(alias = "boost::function1<void,boost::shared_ptr<RBX::mutex>>::operator()(boost::shared_ptr<RBX::mutex>)const")]
+// 0x386df0 — __ZNK5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEclES4_
+// was: boost::function1<void,boost::shared_ptr<RBX::mutex>>::operator()(boost::shared_ptr<RBX::mutex>)const
+pub fn boost_stub_386df0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386df0 __ZNK5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEclES4_")
+}
+
+#[doc(alias = "rbx::safe_queue<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>::push(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")]
+// 0x386f00 — __ZN3rbx10safe_queueIN5boost8functionIFvNS1_10shared_ptrIN3RBX5mutexEEEEEEE4pushERKS8_
+// was: rbx::safe_queue<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>::push(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)
+pub fn boost_stub_386f00(_ptr: crate::SharedPtr<()>) {
+    todo!("0x386f00 __ZN3rbx10safe_queueIN5boost8functionIFvNS1_10shared_ptrIN3RBX5mutexEEEEEEE4pushERKS8_")
+}
+
+#[doc(alias = "boost::function<void ()(boost::shared_ptr<RBX::mutex>)>::operator=(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")]
+// 0x387290 — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEaSERKS6_
+// was: boost::function<void ()(boost::shared_ptr<RBX::mutex>)>::operator=(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)
+pub fn boost_stub_387290(_ptr: crate::SharedPtr<()>) {
+    todo!("0x387290 __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEaSERKS6_")
+}
+
+#[doc(alias = "boost::function1<void,boost::shared_ptr<RBX::mutex>>::swap(boost::function1<void,boost::shared_ptr<RBX::mutex>>&)")]
+// 0x387694 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE4swapERS5_
+// was: boost::function1<void,boost::shared_ptr<RBX::mutex>>::swap(boost::function1<void,boost::shared_ptr<RBX::mutex>>&)
+pub fn boost_stub_387694(_ptr: crate::SharedPtr<()>) {
+    todo!("0x387694 __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE4swapERS5_")
+}
+
+#[doc(alias = "boost::function1<void,boost::shared_ptr<RBX::mutex>>::move_assign(boost::function1<void,boost::shared_ptr<RBX::mutex>>&)")]
+// 0x387770 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE11move_assignERS5_
+// was: boost::function1<void,boost::shared_ptr<RBX::mutex>>::move_assign(boost::function1<void,boost::shared_ptr<RBX::mutex>>&)
+pub fn boost_stub_387770(_ptr: crate::SharedPtr<()>) {
+    todo!("0x387770 __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE11move_assignERS5_")
+}
+
+#[doc(alias = "std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::push_back(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")]
+// 0x387ee8 — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE9push_backERKS7_
+// was: std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::push_back(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)
+pub fn boost_stub_387ee8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x387ee8 __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE9push_backERKS7_")
+}
+
+#[doc(alias = "std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_push_back_aux(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")]
+// 0x387f18 — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE16_M_push_back_auxERKS7_
+// was: std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_push_back_aux(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)
+pub fn boost_stub_387f18(_ptr: crate::SharedPtr<()>) {
+    todo!("0x387f18 __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE16_M_push_back_auxERKS7_")
+}
+
+#[doc(alias = "std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_reserve_map_at_back(unsigned long)")]
+// 0x388050 — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE22_M_reserve_map_at_backEm
+// was: std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_reserve_map_at_back(unsigned long)
+pub fn boost_stub_388050(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388050 __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE22_M_reserve_map_at_backEm")
+}
+
+#[doc(alias = "std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_reallocate_map(unsigned long,bool)")]
+// 0x38806c — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE17_M_reallocate_mapEmb
+// was: std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_reallocate_map(unsigned long,bool)
+pub fn boost_stub_38806c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x38806c __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE17_M_reallocate_mapEmb")
+}
+
+#[doc(alias = "std::_Deque_base<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_allocate_map(unsigned long)")]
+// 0x388144 — __ZNSt11_Deque_baseIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE15_M_allocate_mapEm
+// was: std::_Deque_base<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_allocate_map(unsigned long)
+pub fn boost_stub_388144(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388144 __ZNSt11_Deque_baseIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE15_M_allocate_mapEm")
+}
+
+#[doc(alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>::operator()<void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list1<boost::shared_ptr<boost::thread>&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>) &,boost::_bi::list1<boost::shared_ptr<boost::thread>&> &,int)")]
+// 0x38815c — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueINS_9date_time18subsecond_durationINS_10posix_time13time_durationELx1000EEEEEEclIPFvNS_10shared_ptrINS_6threadEEES9_ENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
+// was: void boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>::operator()<void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list1<boost::shared_ptr<boost::thread>&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>) &,boost::_bi::list1<boost::shared_ptr<boost::thread>&> &,int)
+pub fn boost_stub_38815c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x38815c __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueINS_9date_time18subsecond_durationINS_10posix_time13time_durationELx1000EEEEEEclIPFvNS_10shared_ptrINS_6threadEEES9_ENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+#[doc(alias = "void boost::_bi::list1<boost::arg<1>>::operator()<void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::shared_ptr<boost::thread>&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<boost::thread>) &,boost::_bi::list1<boost::shared_ptr<boost::thread>&> &,int)")]
+// 0x388238 — __ZN5boost3_bi5list1INS_3argILi1EEEEclIPFvNS_10shared_ptrINS_6threadEEEENS1_IRS8_EEEEvNS0_4typeIvEERT_RT0_i
+// was: void boost::_bi::list1<boost::arg<1>>::operator()<void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::shared_ptr<boost::thread>&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<boost::thread>) &,boost::_bi::list1<boost::shared_ptr<boost::thread>&> &,int)
+pub fn boost_stub_388238(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388238 __ZN5boost3_bi5list1INS_3argILi1EEEEclIPFvNS_10shared_ptrINS_6threadEEEENS1_IRS8_EEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+#[doc(alias = "boost::date_time::counted_time_rep<boost::posix_time::millisec_posix_time_system_config>::counted_time_rep(boost::gregorian::date const&,boost::posix_time::time_duration const&)")]
+// 0x388304 — __ZN5boost9date_time16counted_time_repINS_10posix_time33millisec_posix_time_system_configEEC2ERKNS_9gregorian4dateERKNS2_13time_durationE
+// was: boost::date_time::counted_time_rep<boost::posix_time::millisec_posix_time_system_config>::counted_time_rep(boost::gregorian::date const&,boost::posix_time::time_duration const&)
+pub fn boost_stub_388304(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388304 __ZN5boost9date_time16counted_time_repINS_10posix_time33millisec_posix_time_system_configEEC2ERKNS_9gregorian4dateERKNS2_13time_durationE")
+}
+
+#[doc(alias = "boost::date_time::time_resolution_traits<boost::date_time::time_resolution_traits_adapted64_impl,(boost::date_time::time_resolutions)5,1000000ll,(unsigned short)6,int>::to_tick_count(int,int,int,long long)")]
+// 0x38845c — __ZN5boost9date_time22time_resolution_traitsINS0_37time_resolution_traits_adapted64_implELNS0_16time_resolutionsE5ELx1000000ELt6EiE13to_tick_countEiiix
+// was: boost::date_time::time_resolution_traits<boost::date_time::time_resolution_traits_adapted64_impl,(boost::date_time::time_resolutions)5,1000000ll,(unsigned short)6,int>::to_tick_count(int,int,int,long long)
+pub fn boost_stub_38845c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x38845c __ZN5boost9date_time22time_resolution_traitsINS0_37time_resolution_traits_adapted64_implELNS0_16time_resolutionsE5ELx1000000ELt6EiE13to_tick_countEiiix")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::thread>::shared_ptr<boost::thread>(boost::thread *)")]
+// 0x38850c — __ZN5boost10shared_ptrINS_6threadEEC2IS1_EEPT_
+// was: boost::shared_ptr<boost::thread>::shared_ptr<boost::thread>(boost::thread *)
+pub fn boost_stub_38850c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x38850c __ZN5boost10shared_ptrINS_6threadEEC2IS1_EEPT_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<boost::thread>(boost::thread *)")]
+// 0x3885e0 — __ZN5boost6detail12shared_countC2INS_6threadEEEPT_
+// was: boost::detail::shared_count::shared_count<boost::thread>(boost::thread *)
+pub fn boost_stub_3885e0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3885e0 __ZN5boost6detail12shared_countC2INS_6threadEEEPT_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::thread>::~sp_counted_impl_p()")]
+// 0x3886ec — __ZN5boost6detail17sp_counted_impl_pINS_6threadEED1Ev
+// was: boost::detail::sp_counted_impl_p<boost::thread>::~sp_counted_impl_p()
+pub fn boost_stub_3886ec(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3886ec __ZN5boost6detail17sp_counted_impl_pINS_6threadEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::thread>::~sp_counted_impl_p()")]
+// 0x3886f0 — __ZN5boost6detail17sp_counted_impl_pINS_6threadEED0Ev
+// was: boost::detail::sp_counted_impl_p<boost::thread>::~sp_counted_impl_p()
+pub fn boost_stub_3886f0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3886f0 __ZN5boost6detail17sp_counted_impl_pINS_6threadEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::thread>::dispose(void)")]
+// 0x3886f4 — __ZN5boost6detail17sp_counted_impl_pINS_6threadEE7disposeEv
+// was: boost::detail::sp_counted_impl_p<boost::thread>::dispose(void)
+pub fn boost_stub_3886f4(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3886f4 __ZN5boost6detail17sp_counted_impl_pINS_6threadEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::thread>::get_deleter(std::type_info const&)")]
+// 0x388798 — __ZN5boost6detail17sp_counted_impl_pINS_6threadEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_p<boost::thread>::get_deleter(std::type_info const&)
+pub fn boost_stub_388798(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388798 __ZN5boost6detail17sp_counted_impl_pINS_6threadEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::thread>::get_untyped_deleter(void)")]
+// 0x38879c — __ZN5boost6detail17sp_counted_impl_pINS_6threadEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_p<boost::thread>::get_untyped_deleter(void)
+pub fn boost_stub_38879c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x38879c __ZN5boost6detail17sp_counted_impl_pINS_6threadEE19get_untyped_deleterEv")
+}
+
+#[doc(alias = "__ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSJ_NS_6detail13thread_move_tISJ_EEEE5valueEPNS0_5dummyEE4typeE")]
+// 0x3887a0 — __ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSJ_NS_6detail13thread_move_tISJ_EEEE5valueEPNS0_5dummyEE4typeE
+// was: __ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSJ_NS_6detail13thread_move_tISJ_EEEE5valueEPNS0_5dummyEE4typeE
+pub fn boost_stub_3887a0(_ptr: crate::SharedPtr<()>) {
+    todo!("0x3887a0 __ZN5boost6threadC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEEET_NS_12disable_if_cIXsr5boost13thread_detail14is_convertibleIRSJ_NS_6detail13thread_move_tISJ_EEEE5valueEPNS0_5dummyEE4typeE")
+}
+
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>> * boost::detail::heap_new_impl<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>&>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>&)")]
+// 0x388934 — __ZN5boost6detail13heap_new_implINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEERSJ_EEPT_T0_
+// was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>> * boost::detail::heap_new_impl<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>&>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>&)
+pub fn boost_stub_388934(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388934 __ZN5boost6detail13heap_new_implINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEERSJ_EEPT_T0_")
+}
+
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>)")]
+// 0x388ab8 — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEEC2ESI_
+// was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::thread_data(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>)
+pub fn boost_stub_388ab8(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388ab8 __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEEC2ESI_")
+}
+
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::~thread_data()")]
+// 0x388bec — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEED1Ev
+// was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::~thread_data()
+pub fn boost_stub_388bec(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388bec __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEED1Ev")
+}
+
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::~thread_data()")]
+// 0x388cec — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEED0Ev
+// was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::~thread_data()
+pub fn boost_stub_388cec(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388cec __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEED0Ev")
+}
+
+#[doc(alias = "boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::run(void)")]
+// 0x388dfc — __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEE3runEv
+// was: boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>::run(void)
+pub fn boost_stub_388dfc(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388dfc __ZN5boost6detail11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS4_INS5_5mutexEEEENS2_5list2INS2_5valueIS8_EENSE_ISA_EEEEEEE3runEv")
+}
+
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>::operator()<void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>) &,boost::_bi::list0 &,int)")]
+// 0x388e18 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEEEENS2_INS3_INS4_5mutexEEEEEEclIPFvS7_SA_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// was: void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>::operator()<void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>) &,boost::_bi::list0 &,int)
+pub fn boost_stub_388e18(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388e18 __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEEEENS2_INS3_INS4_5mutexEEEEEEclIPFvS7_SA_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
+}
+
+#[doc(alias = "boost::shared_ptr<boost::detail::thread_data_base>::shared_ptr<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>(boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>> *)")]
+// 0x388f28 — __ZN5boost10shared_ptrINS_6detail16thread_data_baseEEC2INS1_11thread_dataINS_3_bi6bind_tIvPFvNS0_IN3RBX14BaseThreadPool8PoolDataEEENS0_INS8_5mutexEEEENS6_5list2INS6_5valueISB_EENSH_ISD_EEEEEEEEEEPT_
+// was: boost::shared_ptr<boost::detail::thread_data_base>::shared_ptr<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>(boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>> *)
+pub fn boost_stub_388f28(_ptr: crate::SharedPtr<()>) {
+    todo!("0x388f28 __ZN5boost10shared_ptrINS_6detail16thread_data_baseEEC2INS1_11thread_dataINS_3_bi6bind_tIvPFvNS0_IN3RBX14BaseThreadPool8PoolDataEEENS0_INS8_5mutexEEEENS6_5list2INS6_5valueISB_EENSH_ISD_EEEEEEEEEEPT_")
+}
+
+#[doc(alias = "void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>> *)const")]
+// 0x389010 — __ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_NS1_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS8_INS9_5mutexEEEENS6_5list2INS6_5valueISC_EENSI_ISE_EEEEEEEEEEvPKNS8_IT_EEPT0_
+// was: void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>> *)const
+pub fn boost_stub_389010(_ptr: crate::SharedPtr<()>) {
+    todo!("0x389010 __ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_NS1_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS8_INS9_5mutexEEEENS6_5list2INS6_5valueISC_EENSI_ISE_EEEEEEEEEEvPKNS8_IT_EEPT0_")
+}
+
+#[doc(alias = "boost::detail::shared_count::shared_count<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>(boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>> *)")]
+// 0x389134 — __ZN5boost6detail12shared_countC2INS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS6_INS7_5mutexEEEENS4_5list2INS4_5valueISA_EENSG_ISC_EEEEEEEEEEPT_
+// was: boost::detail::shared_count::shared_count<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>(boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>> *)
+pub fn boost_stub_389134(_ptr: crate::SharedPtr<()>) {
+    todo!("0x389134 __ZN5boost6detail12shared_countC2INS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS6_INS7_5mutexEEEENS4_5list2INS4_5valueISA_EENSG_ISC_EEEEEEEEEEPT_")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::~sp_counted_impl_p()")]
+// 0x38922c — __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEED1Ev
+// was: boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::~sp_counted_impl_p()
+pub fn boost_stub_38922c(_ptr: crate::SharedPtr<()>) {
+    todo!("0x38922c __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEED1Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::~sp_counted_impl_p()")]
+// 0x389230 — __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEED0Ev
+// was: boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::~sp_counted_impl_p()
+pub fn boost_stub_389230(_ptr: crate::SharedPtr<()>) {
+    todo!("0x389230 __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEED0Ev")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::dispose(void)")]
+// 0x389234 — __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEE7disposeEv
+// was: boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::dispose(void)
+pub fn boost_stub_389234(_ptr: crate::SharedPtr<()>) {
+    todo!("0x389234 __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEE7disposeEv")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::get_deleter(std::type_info const&)")]
+// 0x389244 — __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::get_deleter(std::type_info const&)
+pub fn boost_stub_389244(_ptr: crate::SharedPtr<()>) {
+    todo!("0x389244 __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEE11get_deleterERKSt9type_info")
+}
+
+#[doc(alias = "boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::get_untyped_deleter(void)")]
+// 0x389248 — __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_p<boost::detail::thread_data<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::BaseThreadPool::PoolData>>,boost::_bi::value<boost::shared_ptr<RBX::mutex>>>>>>::get_untyped_deleter(void)
+pub fn boost_stub_389248(_ptr: crate::SharedPtr<()>) {
+    todo!("0x389248 __ZN5boost6detail17sp_counted_impl_pINS0_11thread_dataINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS5_INS6_5mutexEEEENS3_5list2INS3_5valueIS9_EENSF_ISB_EEEEEEEEE19get_untyped_deleterEv")
+}
