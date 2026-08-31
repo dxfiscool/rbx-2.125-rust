@@ -2,7 +2,13 @@
 //! Filter: Ogre|Gfx|Render|G3D (15058 total, 5350 prior +150 this batch = 5500 total) — 0xca1580..0xcb64e0 after 0xc8a3d4
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
-#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+#![allow(
+    non_snake_case,
+    dead_code,
+    unused_variables,
+    unused_imports,
+    clippy::all
+)]
 
 use rbx_core::SharedPtr;
 
@@ -224,7 +230,9 @@ pub fn stub_c6e7d0() -> ! {
 }
 
 // 0xc6e7e0 — __ZNK4Ogre14AnimableObject28initialiseAnimableDictionaryERSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-#[doc(alias = "Ogre::AnimableObject::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")]
+#[doc(
+    alias = "Ogre::AnimableObject::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const"
+)]
 // was: Ogre::AnimableObject::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const
 pub fn stub_c6e7e0() -> ! {
     todo!("0xc6e7e0 Ogre::AnimableObject::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")
@@ -252,7 +260,9 @@ pub fn stub_c6eaa0() -> ! {
 }
 
 // 0xc6eaa8 — __ZNK4Ogre10Renderable25_updateCustomGpuParameterERKNS_20GpuProgramParameters17AutoConstantEntryEPS1_
-#[doc(alias = "Ogre::Renderable::_updateCustomGpuParameter(Ogre::GpuProgramParameters::AutoConstantEntry const&,Ogre::GpuProgramParameters*)const")]
+#[doc(
+    alias = "Ogre::Renderable::_updateCustomGpuParameter(Ogre::GpuProgramParameters::AutoConstantEntry const&,Ogre::GpuProgramParameters*)const"
+)]
 // was: Ogre::Renderable::_updateCustomGpuParameter(Ogre::GpuProgramParameters::AutoConstantEntry const&,Ogre::GpuProgramParameters*)const
 pub fn stub_c6eaa8() -> ! {
     todo!("0xc6eaa8 Ogre::Renderable::_updateCustomGpuParameter(Ogre::GpuProgramParameters::AutoConstantEntry const&,Ogre::GpuProgramParameters*)const")
@@ -269,60 +279,78 @@ pub fn stub_c6eb08() -> ! {
 #[doc(alias = "Ogre::Renderable::setRenderSystemData(Ogre::Renderable::RenderSystemData *)const")]
 // was: Ogre::Renderable::setRenderSystemData(Ogre::Renderable::RenderSystemData *)const
 pub fn stub_c6eb18() -> ! {
-    todo!("0xc6eb18 Ogre::Renderable::setRenderSystemData(Ogre::Renderable::RenderSystemData *)const")
+    todo!(
+        "0xc6eb18 Ogre::Renderable::setRenderSystemData(Ogre::Renderable::RenderSystemData *)const"
+    )
 }
 
 // 0xc6eb1c — __ZNSt6vectorIN4Ogre7Vector4ENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_
-#[doc(alias = "std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Vector4 const&)")]
+#[doc(
+    alias = "std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Vector4 const&)"
+)]
 // was: std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Vector4 const&)
 pub fn stub_c6eb1c() -> ! {
     todo!("0xc6eb1c std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Vector4 const&)")
 }
 
 // 0xc6ec68 — __ZNSt12_Vector_baseIN4Ogre7Vector4ENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c6ec68() -> ! {
     todo!("0xc6ec68 std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc6ec6c — __ZNSt12_Vector_baseIN4Ogre7Vector4ENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c6ec6c() -> ! {
     todo!("0xc6ec6c std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc6ec78 — __ZNSt6vectorIN4Ogre5PlaneENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_
-#[doc(alias = "std::vector<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Plane*,std::vector<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Plane const&)")]
+#[doc(
+    alias = "std::vector<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Plane*,std::vector<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Plane const&)"
+)]
 // was: std::vector<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Plane*,std::vector<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Plane const&)
 pub fn stub_c6ec78() -> ! {
     todo!("0xc6ec78 std::vector<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Plane*,std::vector<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Plane const&)")
 }
 
 // 0xc6eef4 — __ZNSt6vectorIPN4Ogre6Camera8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S9_EERKS3_
-#[doc(alias = "std::vector<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Camera::Listener **,std::vector<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Camera::Listener * const&)")]
+#[doc(
+    alias = "std::vector<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Camera::Listener **,std::vector<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Camera::Listener * const&)"
+)]
 // was: std::vector<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Camera::Listener **,std::vector<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Camera::Listener * const&)
 pub fn stub_c6eef4() -> ! {
     todo!("0xc6eef4 std::vector<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Camera::Listener **,std::vector<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::Camera::Listener * const&)")
 }
 
 // 0xc6efec — __ZNSt12_Vector_baseIPN4Ogre6Camera8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c6efec() -> ! {
     todo!("0xc6efec std::_Vector_base<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc6eff0 — __ZNSt12_Vector_baseIPN4Ogre6Camera8ListenerENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c6eff0() -> ! {
     todo!("0xc6eff0 std::_Vector_base<Ogre::Camera::Listener *,Ogre::STLAllocator<Ogre::Camera::Listener *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc6f000 — __ZNSt12_Vector_baseIN4Ogre5PlaneENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c6f000() -> ! {
     todo!("0xc6f000 std::_Vector_base<Ogre::Plane,Ogre::STLAllocator<Ogre::Plane,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
@@ -392,21 +420,27 @@ pub fn stub_c6fbcc() -> ! {
 }
 
 // 0xc6fdc8 — __ZNSt3mapISsPN4Ogre5CodecESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED1Ev
-#[doc(alias = "std::map<std::string,Ogre::Codec *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~map()")]
+#[doc(
+    alias = "std::map<std::string,Ogre::Codec *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~map()"
+)]
 // was: std::map<std::string,Ogre::Codec *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~map()
 pub fn stub_c6fdc8() -> ! {
     todo!("0xc6fdc8 std::map<std::string,Ogre::Codec *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~map()")
 }
 
 // 0xc6fe5c — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre5CodecEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Codec *>,std::_Select1st<std::pair<std::string const,Ogre::Codec *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Codec *>,std::_Select1st<std::pair<std::string const,Ogre::Codec *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Codec *>,std::_Select1st<std::pair<std::string const,Ogre::Codec *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c6fe5c() -> ! {
     todo!("0xc6fe5c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Codec *>,std::_Select1st<std::pair<std::string const,Ogre::Codec *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc6fe60 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre5CodecEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Codec *>,std::_Select1st<std::pair<std::string const,Ogre::Codec *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Codec *>,std::_Select1st<std::pair<std::string const,Ogre::Codec *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Codec *>,std::_Select1st<std::pair<std::string const,Ogre::Codec *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c6fe60() -> ! {
     todo!("0xc6fe60 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::Codec *>,std::_Select1st<std::pair<std::string const,Ogre::Codec *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::Codec *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
@@ -521,7 +555,9 @@ pub fn stub_c708bc() -> ! {
 #[doc(alias = "Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)")]
 // was: Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)
 pub fn stub_c708cc() -> ! {
-    todo!("0xc708cc Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)")
+    todo!(
+        "0xc708cc Ogre::CompositionPass::setInput(unsigned long,std::string const&,unsigned long)"
+    )
 }
 
 // 0xc709fc — __ZN4Ogre15CompositionPass19setFirstRenderQueueEh
@@ -640,14 +676,18 @@ pub fn stub_c70a70() -> ! {
 #[doc(alias = "Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)")]
 // was: Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)
 pub fn stub_c70ad8() -> ! {
-    todo!("0xc70ad8 Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)")
+    todo!(
+        "0xc70ad8 Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)"
+    )
 }
 
 // 0xc70ae4 — __ZN4Ogre21CompositionTargetPassC2EPNS_20CompositionTechniqueE
 #[doc(alias = "Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)")]
 // was: Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)
 pub fn stub_c70ae4() -> ! {
-    todo!("0xc70ae4 Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)")
+    todo!(
+        "0xc70ae4 Ogre::CompositionTargetPass::CompositionTargetPass(Ogre::CompositionTechnique *)"
+    )
 }
 
 // 0xc70cb8 — __ZN4Ogre21CompositionTargetPassD1Ev
@@ -728,21 +768,27 @@ pub fn stub_c70f2c() -> ! {
 }
 
 // 0xc70f4c — __ZNSt6vectorIPN4Ogre15CompositionPassENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-#[doc(alias = "std::vector<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionPass **,std::vector<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionPass * const&)")]
+#[doc(
+    alias = "std::vector<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionPass **,std::vector<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionPass * const&)"
+)]
 // was: std::vector<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionPass **,std::vector<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionPass * const&)
 pub fn stub_c70f4c() -> ! {
     todo!("0xc70f4c std::vector<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionPass **,std::vector<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionPass * const&)")
 }
 
 // 0xc71044 — __ZNSt12_Vector_baseIPN4Ogre15CompositionPassENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c71044() -> ! {
     todo!("0xc71044 std::_Vector_base<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc71048 — __ZNSt12_Vector_baseIPN4Ogre15CompositionPassENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c71048() -> ! {
     todo!("0xc71048 std::_Vector_base<Ogre::CompositionPass *,Ogre::STLAllocator<Ogre::CompositionPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
@@ -833,63 +879,81 @@ pub fn stub_c718d0() -> ! {
 }
 
 // 0xc718dc — __ZNSt6vectorIPN4Ogre21CompositionTargetPassENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-#[doc(alias = "std::vector<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTargetPass **,std::vector<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTargetPass * const&)")]
+#[doc(
+    alias = "std::vector<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTargetPass **,std::vector<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTargetPass * const&)"
+)]
 // was: std::vector<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTargetPass **,std::vector<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTargetPass * const&)
 pub fn stub_c718dc() -> ! {
     todo!("0xc718dc std::vector<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTargetPass **,std::vector<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTargetPass * const&)")
 }
 
 // 0xc719d4 — __ZNSt6vectorIPN4Ogre20CompositionTechnique17TextureDefinitionENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S9_EERKS3_
-#[doc(alias = "std::vector<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTechnique::TextureDefinition **,std::vector<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTechnique::TextureDefinition * const&)")]
+#[doc(
+    alias = "std::vector<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTechnique::TextureDefinition **,std::vector<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTechnique::TextureDefinition * const&)"
+)]
 // was: std::vector<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTechnique::TextureDefinition **,std::vector<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTechnique::TextureDefinition * const&)
 pub fn stub_c719d4() -> ! {
     todo!("0xc719d4 std::vector<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTechnique::TextureDefinition **,std::vector<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTechnique::TextureDefinition * const&)")
 }
 
 // 0xc71acc — __ZNSt12_Vector_baseIPN4Ogre21CompositionTargetPassENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c71acc() -> ! {
     todo!("0xc71acc std::_Vector_base<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc71ad0 — __ZNSt12_Vector_baseIPN4Ogre20CompositionTechnique17TextureDefinitionENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c71ad0() -> ! {
     todo!("0xc71ad0 std::_Vector_base<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc71ad4 — __ZNSt12_Vector_baseIPN4Ogre21CompositionTargetPassENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c71ad4() -> ! {
     todo!("0xc71ad4 std::_Vector_base<Ogre::CompositionTargetPass *,Ogre::STLAllocator<Ogre::CompositionTargetPass *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc71ae0 — __ZNSt12_Vector_baseIPN4Ogre20CompositionTechnique17TextureDefinitionENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c71ae0() -> ! {
     todo!("0xc71ae0 std::_Vector_base<Ogre::CompositionTechnique::TextureDefinition *,Ogre::STLAllocator<Ogre::CompositionTechnique::TextureDefinition *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc71aec — __ZNSt12_Vector_baseIN4Ogre11PixelFormatENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::PixelFormat,Ogre::STLAllocator<Ogre::PixelFormat,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::PixelFormat,Ogre::STLAllocator<Ogre::PixelFormat,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::PixelFormat,Ogre::STLAllocator<Ogre::PixelFormat,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c71aec() -> ! {
     todo!("0xc71aec std::_Vector_base<Ogre::PixelFormat,Ogre::STLAllocator<Ogre::PixelFormat,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc71af0 — __ZNSt12_Vector_baseIN4Ogre11PixelFormatENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::PixelFormat,Ogre::STLAllocator<Ogre::PixelFormat,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::PixelFormat,Ogre::STLAllocator<Ogre::PixelFormat,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::PixelFormat,Ogre::STLAllocator<Ogre::PixelFormat,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c71af0() -> ! {
     todo!("0xc71af0 std::_Vector_base<Ogre::PixelFormat,Ogre::STLAllocator<Ogre::PixelFormat,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc71b30 — __ZN4Ogre10CompositorC1EPNS_15ResourceManagerERKSsyS4_bPNS_20ManualResourceLoaderE
-#[doc(alias = "Ogre::Compositor::Compositor(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)")]
+#[doc(
+    alias = "Ogre::Compositor::Compositor(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)"
+)]
 // was: Ogre::Compositor::Compositor(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)
 pub fn stub_c71b30() -> ! {
     todo!("0xc71b30 Ogre::Compositor::Compositor(Ogre::ResourceManager *,std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *)")
@@ -980,140 +1044,180 @@ pub fn stub_c73bc8() -> ! {
 }
 
 // 0xc73e08 — __ZNSt3mapISsPN4Ogre17MultiRenderTargetESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_
-#[doc(alias = "std::map<std::string,Ogre::MultiRenderTarget *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
+#[doc(
+    alias = "std::map<std::string,Ogre::MultiRenderTarget *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)"
+)]
 // was: std::map<std::string,Ogre::MultiRenderTarget *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
 pub fn stub_c73e08() -> ! {
     todo!("0xc73e08 std::map<std::string,Ogre::MultiRenderTarget *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
 }
 
 // 0xc73fc4 — __ZNSt3mapISsN4Ogre10TexturePtrESt4lessISsENS0_12STLAllocatorISt4pairIKSsS1_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS6_
-#[doc(alias = "std::map<std::string,Ogre::TexturePtr,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
+#[doc(
+    alias = "std::map<std::string,Ogre::TexturePtr,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)"
+)]
 // was: std::map<std::string,Ogre::TexturePtr,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
 pub fn stub_c73fc4() -> ! {
     todo!("0xc73fc4 std::map<std::string,Ogre::TexturePtr,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
 }
 
 // 0xc74270 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre10TexturePtrEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
 pub fn stub_c74270() -> ! {
     todo!("0xc74270 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
 }
 
 // 0xc74314 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre17MultiRenderTargetEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::MultiRenderTarget *>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::MultiRenderTarget *>> *)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::MultiRenderTarget *>> *)
 pub fn stub_c74314() -> ! {
     todo!("0xc74314 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::MultiRenderTarget *>> *)")
 }
 
 // 0xc7438c — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre10TexturePtrEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::TexturePtr>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::TexturePtr>> *)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::TexturePtr>> *)
 pub fn stub_c7438c() -> ! {
     todo!("0xc7438c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::TexturePtr>> *)")
 }
 
 // 0xc743bc — __ZN4Ogre12STLAllocatorISt4pairIKSsNS_10TexturePtrEENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS4_
-#[doc(alias = "Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::TexturePtr>*)")]
+#[doc(
+    alias = "Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::TexturePtr>*)"
+)]
 // was: Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::TexturePtr>*)
 pub fn stub_c743bc() -> ! {
     todo!("0xc743bc Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::TexturePtr>*)")
 }
 
 // 0xc744ec — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre10TexturePtrEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::TexturePtr>>,std::pair<std::string const,Ogre::TexturePtr> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::TexturePtr>>,std::pair<std::string const,Ogre::TexturePtr> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::TexturePtr>>,std::pair<std::string const,Ogre::TexturePtr> const&)
 pub fn stub_c744ec() -> ! {
     todo!("0xc744ec std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::TexturePtr>>,std::pair<std::string const,Ogre::TexturePtr> const&)")
 }
 
 // 0xc74834 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre10TexturePtrEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS4_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::TexturePtr> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::TexturePtr> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::TexturePtr> const&)
 pub fn stub_c74834() -> ! {
     todo!("0xc74834 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::TexturePtr> const&)")
 }
 
 // 0xc748a8 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre10TexturePtrEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS4_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::TexturePtr> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::TexturePtr> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::TexturePtr> const&)
 pub fn stub_c748a8() -> ! {
     todo!("0xc748a8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::TexturePtr> const&)")
 }
 
 // 0xc7498c — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre10TexturePtrEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS4_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::TexturePtr> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::TexturePtr> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::TexturePtr> const&)
 pub fn stub_c7498c() -> ! {
     todo!("0xc7498c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::TexturePtr> const&)")
 }
 
 // 0xc74ab8 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre17MultiRenderTargetEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::pair<std::string const,Ogre::MultiRenderTarget *> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::pair<std::string const,Ogre::MultiRenderTarget *> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::pair<std::string const,Ogre::MultiRenderTarget *> const&)
 pub fn stub_c74ab8() -> ! {
     todo!("0xc74ab8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::pair<std::string const,Ogre::MultiRenderTarget *> const&)")
 }
 
 // 0xc74c98 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre17MultiRenderTargetEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::MultiRenderTarget *> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::MultiRenderTarget *> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::MultiRenderTarget *> const&)
 pub fn stub_c74c98() -> ! {
     todo!("0xc74c98 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::MultiRenderTarget *> const&)")
 }
 
 // 0xc74dec — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre17MultiRenderTargetEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::MultiRenderTarget *> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::MultiRenderTarget *> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::MultiRenderTarget *> const&)
 pub fn stub_c74dec() -> ! {
     todo!("0xc74dec std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::MultiRenderTarget *> const&)")
 }
 
 // 0xc74ed0 — __ZNSt6vectorIPN4Ogre20CompositionTechniqueENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-#[doc(alias = "std::vector<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTechnique **,std::vector<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTechnique * const&)")]
+#[doc(
+    alias = "std::vector<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTechnique **,std::vector<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTechnique * const&)"
+)]
 // was: std::vector<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTechnique **,std::vector<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTechnique * const&)
 pub fn stub_c74ed0() -> ! {
     todo!("0xc74ed0 std::vector<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::CompositionTechnique **,std::vector<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::CompositionTechnique * const&)")
 }
 
 // 0xc74fc8 — __ZNSt12_Vector_baseIPN4Ogre20CompositionTechniqueENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c74fc8() -> ! {
     todo!("0xc74fc8 std::_Vector_base<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc74fcc — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre17MultiRenderTargetEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c74fcc() -> ! {
     todo!("0xc74fcc std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc74fd0 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre17MultiRenderTargetEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c74fd0() -> ! {
     todo!("0xc74fd0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::MultiRenderTarget *>,std::_Select1st<std::pair<std::string const,Ogre::MultiRenderTarget *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::MultiRenderTarget *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc74fdc — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre10TexturePtrEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c74fdc() -> ! {
     todo!("0xc74fdc std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc74fe0 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre10TexturePtrEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c74fe0() -> ! {
     todo!("0xc74fe0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::TexturePtr>,std::_Select1st<std::pair<std::string const,Ogre::TexturePtr>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc74fec — __ZNSt12_Vector_baseIPN4Ogre20CompositionTechniqueENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c74fec() -> ! {
     todo!("0xc74fec std::_Vector_base<Ogre::CompositionTechnique *,Ogre::STLAllocator<Ogre::CompositionTechnique *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
@@ -1134,7 +1238,9 @@ pub fn stub_c75094() -> ! {
 }
 
 // 0xc75098 — __ZN4Ogre20RenderTargetListener15viewportRemovedERKNS_25RenderTargetViewportEventE
-#[doc(alias = "Ogre::RenderTargetListener::viewportRemoved(Ogre::RenderTargetViewportEvent const&)")]
+#[doc(
+    alias = "Ogre::RenderTargetListener::viewportRemoved(Ogre::RenderTargetViewportEvent const&)"
+)]
 // was: Ogre::RenderTargetListener::viewportRemoved(Ogre::RenderTargetViewportEvent const&)
 pub fn stub_c75098() -> ! {
     todo!("0xc75098 Ogre::RenderTargetListener::viewportRemoved(Ogre::RenderTargetViewportEvent const&)")
@@ -1211,14 +1317,18 @@ pub fn stub_c75a20() -> ! {
 }
 
 // 0xc75cdc — __ZN4Ogre17CompositorManager10createImplERKSsyS2_bPNS_20ManualResourceLoaderEPKSt3mapISsSsSt4lessISsENS_12STLAllocatorISt4pairIS1_SsENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-#[doc(alias = "Ogre::CompositorManager::createImpl(std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+#[doc(
+    alias = "Ogre::CompositorManager::createImpl(std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)"
+)]
 // was: Ogre::CompositorManager::createImpl(std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)
 pub fn stub_c75cdc() -> ! {
     todo!("0xc75cdc Ogre::CompositorManager::createImpl(std::string const&,unsigned long long,std::string const&,bool,Ogre::ManualResourceLoader *,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
 }
 
 // 0xc75db0 — __ZN4Ogre17CompositorManager11parseScriptERNS_9SharedPtrINS_10DataStreamEEERKSs
-#[doc(alias = "Ogre::CompositorManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")]
+#[doc(
+    alias = "Ogre::CompositorManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)"
+)]
 // was: Ogre::CompositorManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)
 pub fn stub_c75db0() -> ! {
     todo!("0xc75db0 Ogre::CompositorManager::parseScript(Ogre::SharedPtr<Ogre::DataStream> &,std::string const&)")
@@ -1239,21 +1349,27 @@ pub fn stub_c75e18() -> ! {
 }
 
 // 0xc75ffc — __ZNSt8_Rb_treeISt4pairISsSsES0_IKS1_St3mapIN4Ogre17CompositorManager10TextureDefENS4_10TexturePtrENS5_14TextureDefLessENS4_12STLAllocatorIS0_IKS6_S7_ENS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEEESt10_Select1stISH_ESt4lessIS1_ESaISH_EE8_M_eraseEPSt13_Rb_tree_nodeISH_E
-#[doc(alias = "std::_Rb_tree<std::pair<std::string,std::string>,std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::pair<std::string,std::string>>,std::allocator<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::pair<std::string,std::string>,std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::pair<std::string,std::string>>,std::allocator<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)"
+)]
 // was: std::_Rb_tree<std::pair<std::string,std::string>,std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::pair<std::string,std::string>>,std::allocator<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)
 pub fn stub_c75ffc() -> ! {
     todo!("0xc75ffc std::_Rb_tree<std::pair<std::string,std::string>,std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::pair<std::string,std::string>>,std::allocator<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)")
 }
 
 // 0xc76024 — __ZNSt8_Rb_treeISt4pairISsSsES0_IKS1_St3mapIN4Ogre17CompositorManager10TextureDefENS4_10TexturePtrENS5_14TextureDefLessENS4_12STLAllocatorIS0_IKS6_S7_ENS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEEESt10_Select1stISH_ESt4lessIS1_ESaISH_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeISH_E
-#[doc(alias = "std::_Rb_tree<std::pair<std::string,std::string>,std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::pair<std::string,std::string>>,std::allocator<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::pair<std::string,std::string>,std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::pair<std::string,std::string>>,std::allocator<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)"
+)]
 // was: std::_Rb_tree<std::pair<std::string,std::string>,std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::pair<std::string,std::string>>,std::allocator<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)
 pub fn stub_c76024() -> ! {
     todo!("0xc76024 std::_Rb_tree<std::pair<std::string,std::string>,std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::_Select1st<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>,std::less<std::pair<std::string,std::string>>,std::allocator<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<std::pair<std::string,std::string> const,std::map<Ogre::CompositorManager::TextureDef,Ogre::TexturePtr,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>> *)")
 }
 
 // 0xc76134 — __ZNSt8_Rb_treeIN4Ogre17CompositorManager10TextureDefESt4pairIKS2_NS0_10TexturePtrEESt10_Select1stIS6_ENS1_14TextureDefLessENS0_12STLAllocatorIS6_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS6_E
-#[doc(alias = "std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>> *)"
+)]
 // was: std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>> *)
 pub fn stub_c76134() -> ! {
     todo!("0xc76134 std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>> *)")
@@ -1267,28 +1383,36 @@ pub fn stub_c76164() -> ! {
 }
 
 // 0xc76168 — __ZN4Ogre12STLAllocatorISt4pairIKNS_17CompositorManager10TextureDefENS_10TexturePtrEENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS6_
-#[doc(alias = "Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>*)")]
+#[doc(
+    alias = "Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>*)"
+)]
 // was: Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>*)
 pub fn stub_c76168() -> ! {
     todo!("0xc76168 Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<Ogre::CompositorManager::TextureDef const,Ogre::TexturePtr>*)")
 }
 
 // 0xc76298 — __ZNSt8_Rb_treeIN4Ogre17CompositorManager10TextureDefESt4pairIKS2_PSt6vectorINS0_10TexturePtrENS0_12STLAllocatorIS6_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ENS1_14TextureDefLessENS7_ISE_SA_EEE8_M_eraseEPSt13_Rb_tree_nodeISE_E
-#[doc(alias = "std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>> *)"
+)]
 // was: std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>> *)
 pub fn stub_c76298() -> ! {
     todo!("0xc76298 std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>> *)")
 }
 
 // 0xc76310 — __ZNSt8_Rb_treeIPN4Ogre7TextureES2_St9_IdentityIS2_ESt4lessIS2_ENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS2_
-#[doc(alias = "std::_Rb_tree<Ogre::Texture *,Ogre::Texture *,std::_Identity<Ogre::Texture *>,std::less<Ogre::Texture *>,Ogre::STLAllocator<Ogre::Texture *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::Texture * const&)")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Texture *,Ogre::Texture *,std::_Identity<Ogre::Texture *>,std::less<Ogre::Texture *>,Ogre::STLAllocator<Ogre::Texture *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::Texture * const&)"
+)]
 // was: std::_Rb_tree<Ogre::Texture *,Ogre::Texture *,std::_Identity<Ogre::Texture *>,std::less<Ogre::Texture *>,Ogre::STLAllocator<Ogre::Texture *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::Texture * const&)
 pub fn stub_c76310() -> ! {
     todo!("0xc76310 std::_Rb_tree<Ogre::Texture *,Ogre::Texture *,std::_Identity<Ogre::Texture *>,std::less<Ogre::Texture *>,Ogre::STLAllocator<Ogre::Texture *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::Texture * const&)")
 }
 
 // 0xc76408 — __ZNSt6vectorIN4Ogre10TexturePtrENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_
-#[doc(alias = "std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::TexturePtr*,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::TexturePtr const&)")]
+#[doc(
+    alias = "std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::TexturePtr*,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::TexturePtr const&)"
+)]
 // was: std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::TexturePtr*,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::TexturePtr const&)
 pub fn stub_c76408() -> ! {
     todo!("0xc76408 std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::TexturePtr*,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::TexturePtr const&)")
@@ -1302,91 +1426,117 @@ pub fn stub_c76828() -> ! {
 }
 
 // 0xc76834 — __ZNSt8_Rb_treeIPN4Ogre8ViewportESt4pairIKS2_PNS0_15CompositorChainEESt10_Select1stIS7_ESt4lessIS2_ENS0_12STLAllocatorIS7_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
-#[doc(alias = "std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>> *)"
+)]
 // was: std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>> *)
 pub fn stub_c76834() -> ! {
     todo!("0xc76834 std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>> *)")
 }
 
 // 0xc7685c — __ZNSt12_Vector_baseIPN4Ogre18CompositorInstanceENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::CompositorInstance *,Ogre::STLAllocator<Ogre::CompositorInstance *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::CompositorInstance *,Ogre::STLAllocator<Ogre::CompositorInstance *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::CompositorInstance *,Ogre::STLAllocator<Ogre::CompositorInstance *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c7685c() -> ! {
     todo!("0xc7685c std::_Vector_base<Ogre::CompositorInstance *,Ogre::STLAllocator<Ogre::CompositorInstance *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc76860 — __ZNSt8_Rb_treeIN4Ogre17CompositorManager10TextureDefESt4pairIKS2_PSt6vectorINS0_10TexturePtrENS0_12STLAllocatorIS6_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ENS1_14TextureDefLessENS7_ISE_SA_EEE13_Rb_tree_implISH_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::CompositorManager::TextureDefLess,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::CompositorManager::TextureDefLess,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::CompositorManager::TextureDefLess,false>::~_Rb_tree_impl()
 pub fn stub_c76860() -> ! {
     todo!("0xc76860 std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::CompositorManager::TextureDefLess,false>::~_Rb_tree_impl()")
 }
 
 // 0xc76864 — __ZNSt8_Rb_treeIN4Ogre17CompositorManager10TextureDefESt4pairIKS2_PSt6vectorINS0_10TexturePtrENS0_12STLAllocatorIS6_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ENS1_14TextureDefLessENS7_ISE_SA_EEE13_Rb_tree_implISH_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::CompositorManager::TextureDefLess,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::CompositorManager::TextureDefLess,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::CompositorManager::TextureDefLess,false>::~_Rb_tree_impl()
 pub fn stub_c76864() -> ! {
     todo!("0xc76864 std::_Rb_tree<Ogre::CompositorManager::TextureDef,std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,Ogre::CompositorManager::TextureDefLess,Ogre::STLAllocator<std::pair<Ogre::CompositorManager::TextureDef const,std::vector<Ogre::TexturePtr,Ogre::STLAllocator<Ogre::TexturePtr,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::CompositorManager::TextureDefLess,false>::~_Rb_tree_impl()")
 }
 
 // 0xc76870 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21CustomCompositionPassEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c76870() -> ! {
     todo!("0xc76870 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc76874 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21CustomCompositionPassEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c76874() -> ! {
     todo!("0xc76874 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc76880 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre15CompositorLogicEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c76880() -> ! {
     todo!("0xc76880 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc76884 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre15CompositorLogicEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c76884() -> ! {
     todo!("0xc76884 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc76890 — __ZNSt12_Vector_baseIPN4Ogre18CompositorInstanceENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::CompositorInstance *,Ogre::STLAllocator<Ogre::CompositorInstance *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::CompositorInstance *,Ogre::STLAllocator<Ogre::CompositorInstance *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::CompositorInstance *,Ogre::STLAllocator<Ogre::CompositorInstance *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c76890() -> ! {
     todo!("0xc76890 std::_Vector_base<Ogre::CompositorInstance *,Ogre::STLAllocator<Ogre::CompositorInstance *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc7689c — __ZNSt8_Rb_treeIPN4Ogre8ViewportESt4pairIKS2_PNS0_15CompositorChainEESt10_Select1stIS7_ESt4lessIS2_ENS0_12STLAllocatorIS7_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_Rb_tree_implISB_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Viewport *>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Viewport *>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Viewport *>,false>::~_Rb_tree_impl()
 pub fn stub_c7689c() -> ! {
     todo!("0xc7689c std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Viewport *>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc768a0 — __ZNSt8_Rb_treeIPN4Ogre8ViewportESt4pairIKS2_PNS0_15CompositorChainEESt10_Select1stIS7_ESt4lessIS2_ENS0_12STLAllocatorIS7_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_Rb_tree_implISB_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Viewport *>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Viewport *>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Viewport *>,false>::~_Rb_tree_impl()
 pub fn stub_c768a0() -> ! {
     todo!("0xc768a0 std::_Rb_tree<Ogre::Viewport *,std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,std::_Select1st<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>>,std::less<Ogre::Viewport *>,Ogre::STLAllocator<std::pair<Ogre::Viewport * const,Ogre::CompositorChain *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Viewport *>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc768ac — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre15CompositorLogicEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::CompositorLogic *>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::CompositorLogic *>> *)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::CompositorLogic *>> *)
 pub fn stub_c768ac() -> ! {
     todo!("0xc768ac std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CompositorLogic *>,std::_Select1st<std::pair<std::string const,Ogre::CompositorLogic *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CompositorLogic *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::CompositorLogic *>> *)")
 }
 
 // 0xc76924 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre21CustomCompositionPassEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::CustomCompositionPass *>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::CustomCompositionPass *>> *)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::CustomCompositionPass *>> *)
 pub fn stub_c76924() -> ! {
     todo!("0xc76924 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::CustomCompositionPass *>,std::_Select1st<std::pair<std::string const,Ogre::CustomCompositionPass *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::CustomCompositionPass *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::CustomCompositionPass *>> *)")
@@ -1442,14 +1592,18 @@ pub fn stub_c76c98() -> ! {
 }
 
 // 0xc7727c — __ZN4Ogre10ConfigFile4loadERKNS_9SharedPtrINS_10DataStreamEEERKSsb
-#[doc(alias = "Ogre::ConfigFile::load(Ogre::SharedPtr<Ogre::DataStream> const&,std::string const&,bool)")]
+#[doc(
+    alias = "Ogre::ConfigFile::load(Ogre::SharedPtr<Ogre::DataStream> const&,std::string const&,bool)"
+)]
 // was: Ogre::ConfigFile::load(Ogre::SharedPtr<Ogre::DataStream> const&,std::string const&,bool)
 pub fn stub_c7727c() -> ! {
     todo!("0xc7727c Ogre::ConfigFile::load(Ogre::SharedPtr<Ogre::DataStream> const&,std::string const&,bool)")
 }
 
 // 0xc77cb4 — __ZNK4Ogre10ConfigFile10getSettingERKSsS2_S2_
-#[doc(alias = "Ogre::ConfigFile::getSetting(std::string const&,std::string const&,std::string const&)const")]
+#[doc(
+    alias = "Ogre::ConfigFile::getSetting(std::string const&,std::string const&,std::string const&)const"
+)]
 // was: Ogre::ConfigFile::getSetting(std::string const&,std::string const&,std::string const&)const
 pub fn stub_c77cb4() -> ! {
     todo!("0xc77cb4 Ogre::ConfigFile::getSetting(std::string const&,std::string const&,std::string const&)const")
@@ -1470,84 +1624,108 @@ pub fn stub_c77ee0() -> ! {
 }
 
 // 0xc78128 — __ZNSt3mapISsPSt8multimapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIKSsSsENS3_22CategorisedAllocPolicyILNS3_14MemoryCategoryE0EEEEEES2_NS4_IS5_IS6_SD_ESA_EEEixERS6_
-#[doc(alias = "std::map<std::string,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
+#[doc(
+    alias = "std::map<std::string,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)"
+)]
 // was: std::map<std::string,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
 pub fn stub_c78128() -> ! {
     todo!("0xc78128 std::map<std::string,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
 }
 
 // 0xc782e4 — __ZNSt6vectorISsN4Ogre12STLAllocatorISsNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPSsS6_EERKSs
-#[doc(alias = "std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::string const&)")]
+#[doc(
+    alias = "std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::string const&)"
+)]
 // was: std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::string const&)
 pub fn stub_c782e4() -> ! {
     todo!("0xc782e4 std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,std::string const&)")
 }
 
 // 0xc78630 — __ZNSt8_Rb_treeISsSt4pairIKSsSsESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::string>,std::_Select1st<std::pair<std::string const,std::string>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::string>,std::_Select1st<std::pair<std::string const,std::string>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::string>,std::_Select1st<std::pair<std::string const,std::string>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
 pub fn stub_c78630() -> ! {
     todo!("0xc78630 std::_Rb_tree<std::string,std::pair<std::string const,std::string>,std::_Select1st<std::pair<std::string const,std::string>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
 }
 
 // 0xc786d4 — __ZNKSt8_Rb_treeISsSt4pairIKSsPSt8multimapISsSsSt4lessISsEN4Ogre12STLAllocatorIS0_IS1_SsENS5_22CategorisedAllocPolicyILNS5_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ES4_NS6_ISE_SA_EEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const
 pub fn stub_c786d4() -> ! {
     todo!("0xc786d4 std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")
 }
 
 // 0xc78778 — __ZNSt8_Rb_treeISsSt4pairIKSsPSt8multimapISsSsSt4lessISsEN4Ogre12STLAllocatorIS0_IS1_SsENS5_22CategorisedAllocPolicyILNS5_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ES4_NS6_ISE_SA_EEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
 pub fn stub_c78778() -> ! {
     todo!("0xc78778 std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
 }
 
 // 0xc7881c — __ZNSt8_Rb_treeISsSt4pairIKSsPSt8multimapISsSsSt4lessISsEN4Ogre12STLAllocatorIS0_IS1_SsENS5_22CategorisedAllocPolicyILNS5_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ES4_NS6_ISE_SA_EEE16_M_insert_uniqueESt17_Rb_tree_iteratorISE_ERKSE_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)
 pub fn stub_c7881c() -> ! {
     todo!("0xc7881c std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)")
 }
 
 // 0xc789fc — __ZNSt8_Rb_treeISsSt4pairIKSsPSt8multimapISsSsSt4lessISsEN4Ogre12STLAllocatorIS0_IS1_SsENS5_22CategorisedAllocPolicyILNS5_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ES4_NS6_ISE_SA_EEE9_M_insertEPSt18_Rb_tree_node_baseSK_RKSE_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)
 pub fn stub_c789fc() -> ! {
     todo!("0xc789fc std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)")
 }
 
 // 0xc78b50 — __ZNSt8_Rb_treeISsSt4pairIKSsPSt8multimapISsSsSt4lessISsEN4Ogre12STLAllocatorIS0_IS1_SsENS5_22CategorisedAllocPolicyILNS5_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ES4_NS6_ISE_SA_EEE16_M_insert_uniqueERKSE_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)
 pub fn stub_c78b50() -> ! {
     todo!("0xc78b50 std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *> const&)")
 }
 
 // 0xc78c34 — __ZNSt8_Rb_treeISsSt4pairIKSsSsESt10_Select1stIS2_ESt4lessISsEN4Ogre12STLAllocatorIS2_NS7_22CategorisedAllocPolicyILNS7_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS6_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::string>,std::_Select1st<std::pair<std::string const,std::string>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::string>,std::_Select1st<std::pair<std::string const,std::string>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::string>,std::_Select1st<std::pair<std::string const,std::string>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c78c34() -> ! {
     todo!("0xc78c34 std::_Rb_tree<std::string,std::pair<std::string const,std::string>,std::_Select1st<std::pair<std::string const,std::string>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc78c38 — __ZNSt8_Rb_treeISsSt4pairIKSsPSt8multimapISsSsSt4lessISsEN4Ogre12STLAllocatorIS0_IS1_SsENS5_22CategorisedAllocPolicyILNS5_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ES4_NS6_ISE_SA_EEE8_M_eraseEPSt13_Rb_tree_nodeISE_E
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>> *)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>> *)
 pub fn stub_c78c38() -> ! {
     todo!("0xc78c38 std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>> *)")
 }
 
 // 0xc78cb0 — __ZNSt8_Rb_treeISsSt4pairIKSsPSt8multimapISsSsSt4lessISsEN4Ogre12STLAllocatorIS0_IS1_SsENS5_22CategorisedAllocPolicyILNS5_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ES4_NS6_ISE_SA_EEE13_Rb_tree_implIS4_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c78cb0() -> ! {
     todo!("0xc78cb0 std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc78cb4 — __ZNSt8_Rb_treeISsSt4pairIKSsPSt8multimapISsSsSt4lessISsEN4Ogre12STLAllocatorIS0_IS1_SsENS5_22CategorisedAllocPolicyILNS5_14MemoryCategoryE0EEEEEEESt10_Select1stISE_ES4_NS6_ISE_SA_EEE13_Rb_tree_implIS4_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c78cb4() -> ! {
     todo!("0xc78cb4 std::_Rb_tree<std::string,std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,std::_Select1st<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::multimap<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
@@ -1589,7 +1767,9 @@ pub fn stub_c78f7c() -> ! {
 }
 
 // 0xc79268 — __ZN4Ogre17ControllerManager36createFrameTimePassthroughControllerERKNS_9SharedPtrINS_15ControllerValueIfEEEE
-#[doc(alias = "Ogre::ControllerManager::createFrameTimePassthroughController(Ogre::SharedPtr<Ogre::ControllerValue<float>> const&)")]
+#[doc(
+    alias = "Ogre::ControllerManager::createFrameTimePassthroughController(Ogre::SharedPtr<Ogre::ControllerValue<float>> const&)"
+)]
 // was: Ogre::ControllerManager::createFrameTimePassthroughController(Ogre::SharedPtr<Ogre::ControllerValue<float>> const&)
 pub fn stub_c79268() -> ! {
     todo!("0xc79268 Ogre::ControllerManager::createFrameTimePassthroughController(Ogre::SharedPtr<Ogre::ControllerValue<float>> const&)")
@@ -1620,21 +1800,27 @@ pub fn stub_c793b8() -> ! {
 #[doc(alias = "Ogre::ControllerManager::createTextureUVScroller(Ogre::TextureUnitState *,float)")]
 // was: Ogre::ControllerManager::createTextureUVScroller(Ogre::TextureUnitState *,float)
 pub fn stub_c7967c() -> ! {
-    todo!("0xc7967c Ogre::ControllerManager::createTextureUVScroller(Ogre::TextureUnitState *,float)")
+    todo!(
+        "0xc7967c Ogre::ControllerManager::createTextureUVScroller(Ogre::TextureUnitState *,float)"
+    )
 }
 
 // 0xc7998c — __ZN4Ogre17ControllerManager22createTextureUScrollerEPNS_16TextureUnitStateEf
 #[doc(alias = "Ogre::ControllerManager::createTextureUScroller(Ogre::TextureUnitState *,float)")]
 // was: Ogre::ControllerManager::createTextureUScroller(Ogre::TextureUnitState *,float)
 pub fn stub_c7998c() -> ! {
-    todo!("0xc7998c Ogre::ControllerManager::createTextureUScroller(Ogre::TextureUnitState *,float)")
+    todo!(
+        "0xc7998c Ogre::ControllerManager::createTextureUScroller(Ogre::TextureUnitState *,float)"
+    )
 }
 
 // 0xc79c9c — __ZN4Ogre17ControllerManager22createTextureVScrollerEPNS_16TextureUnitStateEf
 #[doc(alias = "Ogre::ControllerManager::createTextureVScroller(Ogre::TextureUnitState *,float)")]
 // was: Ogre::ControllerManager::createTextureVScroller(Ogre::TextureUnitState *,float)
 pub fn stub_c79c9c() -> ! {
-    todo!("0xc79c9c Ogre::ControllerManager::createTextureVScroller(Ogre::TextureUnitState *,float)")
+    todo!(
+        "0xc79c9c Ogre::ControllerManager::createTextureVScroller(Ogre::TextureUnitState *,float)"
+    )
 }
 
 // 0xc79fac — __ZN4Ogre17ControllerManager20createTextureRotaterEPNS_16TextureUnitStateEf
@@ -1645,7 +1831,9 @@ pub fn stub_c79fac() -> ! {
 }
 
 // 0xc7a2b8 — __ZN4Ogre17ControllerManager28createTextureWaveTransformerEPNS_16TextureUnitStateENS1_20TextureTransformTypeENS_12WaveformTypeEffff
-#[doc(alias = "Ogre::ControllerManager::createTextureWaveTransformer(Ogre::TextureUnitState *,Ogre::TextureUnitState::TextureTransformType,Ogre::WaveformType,float,float,float,float)")]
+#[doc(
+    alias = "Ogre::ControllerManager::createTextureWaveTransformer(Ogre::TextureUnitState *,Ogre::TextureUnitState::TextureTransformType,Ogre::WaveformType,float,float,float,float)"
+)]
 // was: Ogre::ControllerManager::createTextureWaveTransformer(Ogre::TextureUnitState *,Ogre::TextureUnitState::TextureTransformType,Ogre::WaveformType,float,float,float,float)
 pub fn stub_c7a2b8() -> ! {
     todo!("0xc7a2b8 Ogre::ControllerManager::createTextureWaveTransformer(Ogre::TextureUnitState *,Ogre::TextureUnitState::TextureTransformType,Ogre::WaveformType,float,float,float,float)")
@@ -1694,7 +1882,9 @@ pub fn stub_c7aae4() -> ! {
 }
 
 // 0xc7ab1c — __ZN4Ogre9SharedPtrINS_18ControllerFunctionIfEEE4swapERS3_
-#[doc(alias = "Ogre::SharedPtr<Ogre::ControllerFunction<float>>::swap(Ogre::SharedPtr<Ogre::ControllerFunction<float>>&)")]
+#[doc(
+    alias = "Ogre::SharedPtr<Ogre::ControllerFunction<float>>::swap(Ogre::SharedPtr<Ogre::ControllerFunction<float>>&)"
+)]
 // was: Ogre::SharedPtr<Ogre::ControllerFunction<float>>::swap(Ogre::SharedPtr<Ogre::ControllerFunction<float>>&)
 pub fn stub_c7ab1c() -> ! {
     todo!("0xc7ab1c Ogre::SharedPtr<Ogre::ControllerFunction<float>>::swap(Ogre::SharedPtr<Ogre::ControllerFunction<float>>&)")
@@ -1715,28 +1905,36 @@ pub fn stub_c7ac2c() -> ! {
 }
 
 // 0xc7ac64 — __ZN4Ogre9SharedPtrINS_15ControllerValueIfEEE4swapERS3_
-#[doc(alias = "Ogre::SharedPtr<Ogre::ControllerValue<float>>::swap(Ogre::SharedPtr<Ogre::ControllerValue<float>>&)")]
+#[doc(
+    alias = "Ogre::SharedPtr<Ogre::ControllerValue<float>>::swap(Ogre::SharedPtr<Ogre::ControllerValue<float>>&)"
+)]
 // was: Ogre::SharedPtr<Ogre::ControllerValue<float>>::swap(Ogre::SharedPtr<Ogre::ControllerValue<float>>&)
 pub fn stub_c7ac64() -> ! {
     todo!("0xc7ac64 Ogre::SharedPtr<Ogre::ControllerValue<float>>::swap(Ogre::SharedPtr<Ogre::ControllerValue<float>>&)")
 }
 
 // 0xc7ac80 — __ZNSt8_Rb_treeIPN4Ogre10ControllerIfEES3_St9_IdentityIS3_ESt4lessIS3_ENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS3_E
-#[doc(alias = "std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<Ogre::Controller<float> *> *)")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<Ogre::Controller<float> *> *)"
+)]
 // was: std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<Ogre::Controller<float> *> *)
 pub fn stub_c7ac80() -> ! {
     todo!("0xc7ac80 std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<Ogre::Controller<float> *> *)")
 }
 
 // 0xc7aca8 — __ZNSt8_Rb_treeIPN4Ogre10ControllerIfEES3_St9_IdentityIS3_ESt4lessIS3_ENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS3_
-#[doc(alias = "std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::Controller<float> * const&)")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::Controller<float> * const&)"
+)]
 // was: std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::Controller<float> * const&)
 pub fn stub_c7aca8() -> ! {
     todo!("0xc7aca8 std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::Controller<float> * const&)")
 }
 
 // 0xc7ada0 — __ZN4Ogre10ControllerIfEC2ERKNS_9SharedPtrINS_15ControllerValueIfEEEES7_RKNS2_INS_18ControllerFunctionIfEEEE
-#[doc(alias = "Ogre::Controller<float>::Controller(Ogre::SharedPtr<Ogre::ControllerValue<float>> const&,Ogre::SharedPtr<Ogre::ControllerValue<float>> const&,Ogre::SharedPtr<Ogre::ControllerFunction<float>> const&)")]
+#[doc(
+    alias = "Ogre::Controller<float>::Controller(Ogre::SharedPtr<Ogre::ControllerValue<float>> const&,Ogre::SharedPtr<Ogre::ControllerValue<float>> const&,Ogre::SharedPtr<Ogre::ControllerFunction<float>> const&)"
+)]
 // was: Ogre::Controller<float>::Controller(Ogre::SharedPtr<Ogre::ControllerValue<float>> const&,Ogre::SharedPtr<Ogre::ControllerValue<float>> const&,Ogre::SharedPtr<Ogre::ControllerFunction<float>> const&)
 pub fn stub_c7ada0() -> ! {
     todo!("0xc7ada0 Ogre::Controller<float>::Controller(Ogre::SharedPtr<Ogre::ControllerValue<float>> const&,Ogre::SharedPtr<Ogre::ControllerValue<float>> const&,Ogre::SharedPtr<Ogre::ControllerFunction<float>> const&)")
@@ -1764,14 +1962,18 @@ pub fn stub_c7aef8() -> ! {
 }
 
 // 0xc7b0cc — __ZNSt8_Rb_treeIPN4Ogre10ControllerIfEES3_St9_IdentityIS3_ESt4lessIS3_ENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS7_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()
 pub fn stub_c7b0cc() -> ! {
     todo!("0xc7b0cc std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc7b0d0 — __ZNSt8_Rb_treeIPN4Ogre10ControllerIfEES3_St9_IdentityIS3_ESt4lessIS3_ENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS7_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()
 pub fn stub_c7b0d0() -> ! {
     todo!("0xc7b0d0 std::_Rb_tree<Ogre::Controller<float> *,Ogre::Controller<float> *,std::_Identity<Ogre::Controller<float> *>,std::less<Ogre::Controller<float> *>,Ogre::STLAllocator<Ogre::Controller<float> *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<Ogre::Controller<float> *>,false>::~_Rb_tree_impl()")
@@ -1792,28 +1994,36 @@ pub fn stub_c7b16c() -> ! {
 }
 
 // 0xc7b1a0 — __ZNSt6vectorIPN4Ogre7PolygonENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEED1Ev
-#[doc(alias = "std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~vector()")]
+#[doc(
+    alias = "std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~vector()"
+)]
 // was: std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~vector()
 pub fn stub_c7b1a0() -> ! {
     todo!("0xc7b1a0 std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::~vector()")
 }
 
 // 0xc7b234 — __ZNSt6vectorIPN4Ogre7PolygonENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S8_EEmRKS2_
-#[doc(alias = "std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Polygon **,std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::Polygon * const&)")]
+#[doc(
+    alias = "std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Polygon **,std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::Polygon * const&)"
+)]
 // was: std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Polygon **,std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::Polygon * const&)
 pub fn stub_c7b234() -> ! {
     todo!("0xc7b234 std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::Polygon **,std::vector<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::Polygon * const&)")
 }
 
 // 0xc7b3dc — __ZNSt12_Vector_baseIPN4Ogre7PolygonENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c7b3dc() -> ! {
     todo!("0xc7b3dc std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc7b3e0 — __ZNSt12_Vector_baseIPN4Ogre7PolygonENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c7b3e0() -> ! {
     todo!("0xc7b3e0 std::_Vector_base<Ogre::Polygon *,Ogre::STLAllocator<Ogre::Polygon *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
@@ -1855,28 +2065,36 @@ pub fn stub_c7b8c8() -> ! {
 }
 
 // 0xc7b918 — __ZN4Ogre16MemoryDataStreamC1ERNS_9SharedPtrINS_10DataStreamEEEbb
-#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)")]
+#[doc(
+    alias = "Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)"
+)]
 // was: Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)
 pub fn stub_c7b918() -> ! {
     todo!("0xc7b918 Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)")
 }
 
 // 0xc7b924 — __ZN4Ogre16MemoryDataStreamC2ERNS_9SharedPtrINS_10DataStreamEEEbb
-#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)")]
+#[doc(
+    alias = "Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)"
+)]
 // was: Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)
 pub fn stub_c7b924() -> ! {
     todo!("0xc7b924 Ogre::MemoryDataStream::MemoryDataStream(Ogre::SharedPtr<Ogre::DataStream> &,bool,bool)")
 }
 
 // 0xc7bb48 — __ZN4Ogre16MemoryDataStreamC1ERKSsRKNS_9SharedPtrINS_10DataStreamEEEbb
-#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)")]
+#[doc(
+    alias = "Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)"
+)]
 // was: Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)
 pub fn stub_c7bb48() -> ! {
     todo!("0xc7bb48 Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)")
 }
 
 // 0xc7bb60 — __ZN4Ogre16MemoryDataStreamC2ERKSsRKNS_9SharedPtrINS_10DataStreamEEEbb
-#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)")]
+#[doc(
+    alias = "Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)"
+)]
 // was: Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)
 pub fn stub_c7bb60() -> ! {
     todo!("0xc7bb60 Ogre::MemoryDataStream::MemoryDataStream(std::string const&,Ogre::SharedPtr<Ogre::DataStream> const&,bool,bool)")
@@ -1890,7 +2108,9 @@ pub fn stub_c7bd9c() -> ! {
 }
 
 // 0xc7bed4 — __ZN4Ogre16MemoryDataStreamC1ERKSsmbb
-#[doc(alias = "Ogre::MemoryDataStream::MemoryDataStream(std::string const&,unsigned long,bool,bool)")]
+#[doc(
+    alias = "Ogre::MemoryDataStream::MemoryDataStream(std::string const&,unsigned long,bool,bool)"
+)]
 // was: Ogre::MemoryDataStream::MemoryDataStream(std::string const&,unsigned long,bool,bool)
 pub fn stub_c7bed4() -> ! {
     todo!("0xc7bed4 Ogre::MemoryDataStream::MemoryDataStream(std::string const&,unsigned long,bool,bool)")
@@ -1981,28 +2201,36 @@ pub fn stub_c7c360() -> ! {
 }
 
 // 0xc7c37c — __ZN4Ogre20FileStreamDataStreamC1ERKSsPSt14basic_ifstreamIcSt11char_traitsIcEEb
-#[doc(alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)")]
+#[doc(
+    alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)"
+)]
 // was: Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)
 pub fn stub_c7c37c() -> ! {
     todo!("0xc7c37c Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)")
 }
 
 // 0xc7c388 — __ZN4Ogre20FileStreamDataStreamC2ERKSsPSt14basic_ifstreamIcSt11char_traitsIcEEb
-#[doc(alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)")]
+#[doc(
+    alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)"
+)]
 // was: Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)
 pub fn stub_c7c388() -> ! {
     todo!("0xc7c388 Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,bool)")
 }
 
 // 0xc7c520 — __ZN4Ogre20FileStreamDataStreamC1ERKSsPSt14basic_ifstreamIcSt11char_traitsIcEEmb
-#[doc(alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,unsigned long,bool)")]
+#[doc(
+    alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,unsigned long,bool)"
+)]
 // was: Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,unsigned long,bool)
 pub fn stub_c7c520() -> ! {
     todo!("0xc7c520 Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_ifstream<char,std::char_traits<char>> *,unsigned long,bool)")
 }
 
 // 0xc7c56c — __ZN4Ogre20FileStreamDataStreamC1ERKSsPSt13basic_fstreamIcSt11char_traitsIcEEmb
-#[doc(alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_fstream<char,std::char_traits<char>> *,unsigned long,bool)")]
+#[doc(
+    alias = "Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_fstream<char,std::char_traits<char>> *,unsigned long,bool)"
+)]
 // was: Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_fstream<char,std::char_traits<char>> *,unsigned long,bool)
 pub fn stub_c7c56c() -> ! {
     todo!("0xc7c56c Ogre::FileStreamDataStream::FileStreamDataStream(std::string const&,std::basic_fstream<char,std::char_traits<char>> *,unsigned long,bool)")
@@ -2100,42 +2328,54 @@ pub fn stub_c7cf9c() -> ! {
 }
 
 // 0xc7cfc8 — __ZNK4Ogre8DDSCodec4codeERNS_9SharedPtrINS_16MemoryDataStreamEEERNS1_INS_5Codec9CodecDataEEE
-#[doc(alias = "Ogre::DDSCodec::code(Ogre::SharedPtr<Ogre::MemoryDataStream> &,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const")]
+#[doc(
+    alias = "Ogre::DDSCodec::code(Ogre::SharedPtr<Ogre::MemoryDataStream> &,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const"
+)]
 // was: Ogre::DDSCodec::code(Ogre::SharedPtr<Ogre::MemoryDataStream> &,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const
 pub fn stub_c7cfc8() -> ! {
     todo!("0xc7cfc8 Ogre::DDSCodec::code(Ogre::SharedPtr<Ogre::MemoryDataStream> &,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const")
 }
 
 // 0xc7d178 — __ZNK4Ogre8DDSCodec10codeToFileERNS_9SharedPtrINS_16MemoryDataStreamEEERKSsRNS1_INS_5Codec9CodecDataEEE
-#[doc(alias = "Ogre::DDSCodec::codeToFile(Ogre::SharedPtr<Ogre::MemoryDataStream> &,std::string const&,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const")]
+#[doc(
+    alias = "Ogre::DDSCodec::codeToFile(Ogre::SharedPtr<Ogre::MemoryDataStream> &,std::string const&,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const"
+)]
 // was: Ogre::DDSCodec::codeToFile(Ogre::SharedPtr<Ogre::MemoryDataStream> &,std::string const&,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const
 pub fn stub_c7d178() -> ! {
     todo!("0xc7d178 Ogre::DDSCodec::codeToFile(Ogre::SharedPtr<Ogre::MemoryDataStream> &,std::string const&,Ogre::SharedPtr<Ogre::Codec::CodecData> &)const")
 }
 
 // 0xc7d8b8 — __ZNK4Ogre8DDSCodec18convertPixelFormatEjjjjj
-#[doc(alias = "Ogre::DDSCodec::convertPixelFormat(unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)const")]
+#[doc(
+    alias = "Ogre::DDSCodec::convertPixelFormat(unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)const"
+)]
 // was: Ogre::DDSCodec::convertPixelFormat(unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)const
 pub fn stub_c7d8b8() -> ! {
     todo!("0xc7d8b8 Ogre::DDSCodec::convertPixelFormat(unsigned int,unsigned int,unsigned int,unsigned int,unsigned int)const")
 }
 
 // 0xc7db10 — __ZNK4Ogre8DDSCodec15unpackDXTColourENS_11PixelFormatERKNS_14DXTColourBlockEPNS_11ColourValueE
-#[doc(alias = "Ogre::DDSCodec::unpackDXTColour(Ogre::PixelFormat,Ogre::DXTColourBlock const&,Ogre::ColourValue *)const")]
+#[doc(
+    alias = "Ogre::DDSCodec::unpackDXTColour(Ogre::PixelFormat,Ogre::DXTColourBlock const&,Ogre::ColourValue *)const"
+)]
 // was: Ogre::DDSCodec::unpackDXTColour(Ogre::PixelFormat,Ogre::DXTColourBlock const&,Ogre::ColourValue *)const
 pub fn stub_c7db10() -> ! {
     todo!("0xc7db10 Ogre::DDSCodec::unpackDXTColour(Ogre::PixelFormat,Ogre::DXTColourBlock const&,Ogre::ColourValue *)const")
 }
 
 // 0xc7ddc4 — __ZNK4Ogre8DDSCodec14unpackDXTAlphaERKNS_21DXTExplicitAlphaBlockEPNS_11ColourValueE
-#[doc(alias = "Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTExplicitAlphaBlock const&,Ogre::ColourValue *)const")]
+#[doc(
+    alias = "Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTExplicitAlphaBlock const&,Ogre::ColourValue *)const"
+)]
 // was: Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTExplicitAlphaBlock const&,Ogre::ColourValue *)const
 pub fn stub_c7ddc4() -> ! {
     todo!("0xc7ddc4 Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTExplicitAlphaBlock const&,Ogre::ColourValue *)const")
 }
 
 // 0xc7df0c — __ZNK4Ogre8DDSCodec14unpackDXTAlphaERKNS_25DXTInterpolatedAlphaBlockEPNS_11ColourValueE
-#[doc(alias = "Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTInterpolatedAlphaBlock const&,Ogre::ColourValue *)const")]
+#[doc(
+    alias = "Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTInterpolatedAlphaBlock const&,Ogre::ColourValue *)const"
+)]
 // was: Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTInterpolatedAlphaBlock const&,Ogre::ColourValue *)const
 pub fn stub_c7df0c() -> ! {
     todo!("0xc7df0c Ogre::DDSCodec::unpackDXTAlpha(Ogre::DXTInterpolatedAlphaBlock const&,Ogre::ColourValue *)const")
@@ -2177,7 +2417,9 @@ pub fn stub_c7ef54() -> ! {
 }
 
 // 0xc7f068 — __ZN4Ogre27DefaultHardwareVertexBufferC1EPNS_25HardwareBufferManagerBaseEmmNS_14HardwareBuffer5UsageE
-#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::DefaultHardwareVertexBuffer(Ogre::HardwareBufferManagerBase *,unsigned long,unsigned long,Ogre::HardwareBuffer::Usage)")]
+#[doc(
+    alias = "Ogre::DefaultHardwareVertexBuffer::DefaultHardwareVertexBuffer(Ogre::HardwareBufferManagerBase *,unsigned long,unsigned long,Ogre::HardwareBuffer::Usage)"
+)]
 // was: Ogre::DefaultHardwareVertexBuffer::DefaultHardwareVertexBuffer(Ogre::HardwareBufferManagerBase *,unsigned long,unsigned long,Ogre::HardwareBuffer::Usage)
 pub fn stub_c7f068() -> ! {
     todo!("0xc7f068 Ogre::DefaultHardwareVertexBuffer::DefaultHardwareVertexBuffer(Ogre::HardwareBufferManagerBase *,unsigned long,unsigned long,Ogre::HardwareBuffer::Usage)")
@@ -2198,7 +2440,9 @@ pub fn stub_c7f1f8() -> ! {
 }
 
 // 0xc7f2ac — __ZN4Ogre27DefaultHardwareVertexBuffer8lockImplEmmNS_14HardwareBuffer11LockOptionsE
-#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")]
+#[doc(
+    alias = "Ogre::DefaultHardwareVertexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)"
+)]
 // was: Ogre::DefaultHardwareVertexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)
 pub fn stub_c7f2ac() -> ! {
     todo!("0xc7f2ac Ogre::DefaultHardwareVertexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")
@@ -2212,7 +2456,9 @@ pub fn stub_c7f2b4() -> ! {
 }
 
 // 0xc7f2b8 — __ZN4Ogre27DefaultHardwareVertexBuffer4lockEmmNS_14HardwareBuffer11LockOptionsE
-#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")]
+#[doc(
+    alias = "Ogre::DefaultHardwareVertexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)"
+)]
 // was: Ogre::DefaultHardwareVertexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)
 pub fn stub_c7f2b8() -> ! {
     todo!("0xc7f2b8 Ogre::DefaultHardwareVertexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")
@@ -2229,18 +2475,24 @@ pub fn stub_c7f2c4() -> ! {
 #[doc(alias = "Ogre::DefaultHardwareVertexBuffer::readData(unsigned long,unsigned long,void *)")]
 // was: Ogre::DefaultHardwareVertexBuffer::readData(unsigned long,unsigned long,void *)
 pub fn stub_c7f2cc() -> ! {
-    todo!("0xc7f2cc Ogre::DefaultHardwareVertexBuffer::readData(unsigned long,unsigned long,void *)")
+    todo!(
+        "0xc7f2cc Ogre::DefaultHardwareVertexBuffer::readData(unsigned long,unsigned long,void *)"
+    )
 }
 
 // 0xc7f2dc — __ZN4Ogre27DefaultHardwareVertexBuffer9writeDataEmmPKvb
-#[doc(alias = "Ogre::DefaultHardwareVertexBuffer::writeData(unsigned long,unsigned long,void const*,bool)")]
+#[doc(
+    alias = "Ogre::DefaultHardwareVertexBuffer::writeData(unsigned long,unsigned long,void const*,bool)"
+)]
 // was: Ogre::DefaultHardwareVertexBuffer::writeData(unsigned long,unsigned long,void const*,bool)
 pub fn stub_c7f2dc() -> ! {
     todo!("0xc7f2dc Ogre::DefaultHardwareVertexBuffer::writeData(unsigned long,unsigned long,void const*,bool)")
 }
 
 // 0xc7f2ec — __ZN4Ogre26DefaultHardwareIndexBufferC1ENS_19HardwareIndexBuffer9IndexTypeEmNS_14HardwareBuffer5UsageE
-#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::DefaultHardwareIndexBuffer(Ogre::HardwareIndexBuffer::IndexType,unsigned long,Ogre::HardwareBuffer::Usage)")]
+#[doc(
+    alias = "Ogre::DefaultHardwareIndexBuffer::DefaultHardwareIndexBuffer(Ogre::HardwareIndexBuffer::IndexType,unsigned long,Ogre::HardwareBuffer::Usage)"
+)]
 // was: Ogre::DefaultHardwareIndexBuffer::DefaultHardwareIndexBuffer(Ogre::HardwareIndexBuffer::IndexType,unsigned long,Ogre::HardwareBuffer::Usage)
 pub fn stub_c7f2ec() -> ! {
     todo!("0xc7f2ec Ogre::DefaultHardwareIndexBuffer::DefaultHardwareIndexBuffer(Ogre::HardwareIndexBuffer::IndexType,unsigned long,Ogre::HardwareBuffer::Usage)")
@@ -2261,7 +2513,9 @@ pub fn stub_c7f47c() -> ! {
 }
 
 // 0xc7f530 — __ZN4Ogre26DefaultHardwareIndexBuffer8lockImplEmmNS_14HardwareBuffer11LockOptionsE
-#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")]
+#[doc(
+    alias = "Ogre::DefaultHardwareIndexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)"
+)]
 // was: Ogre::DefaultHardwareIndexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)
 pub fn stub_c7f530() -> ! {
     todo!("0xc7f530 Ogre::DefaultHardwareIndexBuffer::lockImpl(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")
@@ -2275,7 +2529,9 @@ pub fn stub_c7f538() -> ! {
 }
 
 // 0xc7f53c — __ZN4Ogre26DefaultHardwareIndexBuffer4lockEmmNS_14HardwareBuffer11LockOptionsE
-#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")]
+#[doc(
+    alias = "Ogre::DefaultHardwareIndexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)"
+)]
 // was: Ogre::DefaultHardwareIndexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)
 pub fn stub_c7f53c() -> ! {
     todo!("0xc7f53c Ogre::DefaultHardwareIndexBuffer::lock(unsigned long,unsigned long,Ogre::HardwareBuffer::LockOptions)")
@@ -2296,14 +2552,18 @@ pub fn stub_c7f550() -> ! {
 }
 
 // 0xc7f560 — __ZN4Ogre26DefaultHardwareIndexBuffer9writeDataEmmPKvb
-#[doc(alias = "Ogre::DefaultHardwareIndexBuffer::writeData(unsigned long,unsigned long,void const*,bool)")]
+#[doc(
+    alias = "Ogre::DefaultHardwareIndexBuffer::writeData(unsigned long,unsigned long,void const*,bool)"
+)]
 // was: Ogre::DefaultHardwareIndexBuffer::writeData(unsigned long,unsigned long,void const*,bool)
 pub fn stub_c7f560() -> ! {
     todo!("0xc7f560 Ogre::DefaultHardwareIndexBuffer::writeData(unsigned long,unsigned long,void const*,bool)")
 }
 
 // 0xc7f5a4 — __ZN4Ogre29DefaultIntersectionSceneQueryC1EPNS_12SceneManagerE
-#[doc(alias = "Ogre::DefaultIntersectionSceneQuery::DefaultIntersectionSceneQuery(Ogre::SceneManager *)")]
+#[doc(
+    alias = "Ogre::DefaultIntersectionSceneQuery::DefaultIntersectionSceneQuery(Ogre::SceneManager *)"
+)]
 // was: Ogre::DefaultIntersectionSceneQuery::DefaultIntersectionSceneQuery(Ogre::SceneManager *)
 pub fn stub_c7f5a4() -> ! {
     todo!("0xc7f5a4 Ogre::DefaultIntersectionSceneQuery::DefaultIntersectionSceneQuery(Ogre::SceneManager *)")
@@ -2324,28 +2584,36 @@ pub fn stub_c7f6fc() -> ! {
 }
 
 // 0xc7f708 — __ZThn48_N4Ogre29DefaultIntersectionSceneQueryD0Ev
-#[doc(alias = "non-virtual thunk toOgre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")]
+#[doc(
+    alias = "non-virtual thunk toOgre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()"
+)]
 // was: non-virtual thunk toOgre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()
 pub fn stub_c7f708() -> ! {
     todo!("0xc7f708 non-virtual thunk toOgre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")
 }
 
 // 0xc7f79c — __ZThn48_N4Ogre29DefaultIntersectionSceneQueryD1Ev
-#[doc(alias = "non-virtual thunk toOgre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")]
+#[doc(
+    alias = "non-virtual thunk toOgre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()"
+)]
 // was: non-virtual thunk toOgre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()
 pub fn stub_c7f79c() -> ! {
     todo!("0xc7f79c non-virtual thunk toOgre::DefaultIntersectionSceneQuery::~DefaultIntersectionSceneQuery()")
 }
 
 // 0xc7f7a8 — __ZN4Ogre29DefaultIntersectionSceneQuery7executeEPNS_30IntersectionSceneQueryListenerE
-#[doc(alias = "Ogre::DefaultIntersectionSceneQuery::execute(Ogre::IntersectionSceneQueryListener *)")]
+#[doc(
+    alias = "Ogre::DefaultIntersectionSceneQuery::execute(Ogre::IntersectionSceneQueryListener *)"
+)]
 // was: Ogre::DefaultIntersectionSceneQuery::execute(Ogre::IntersectionSceneQueryListener *)
 pub fn stub_c7f7a8() -> ! {
     todo!("0xc7f7a8 Ogre::DefaultIntersectionSceneQuery::execute(Ogre::IntersectionSceneQueryListener *)")
 }
 
 // 0xc7fa48 — __ZN4Ogre31DefaultAxisAlignedBoxSceneQueryC1EPNS_12SceneManagerE
-#[doc(alias = "Ogre::DefaultAxisAlignedBoxSceneQuery::DefaultAxisAlignedBoxSceneQuery(Ogre::SceneManager *)")]
+#[doc(
+    alias = "Ogre::DefaultAxisAlignedBoxSceneQuery::DefaultAxisAlignedBoxSceneQuery(Ogre::SceneManager *)"
+)]
 // was: Ogre::DefaultAxisAlignedBoxSceneQuery::DefaultAxisAlignedBoxSceneQuery(Ogre::SceneManager *)
 pub fn stub_c7fa48() -> ! {
     todo!("0xc7fa48 Ogre::DefaultAxisAlignedBoxSceneQuery::DefaultAxisAlignedBoxSceneQuery(Ogre::SceneManager *)")
@@ -2366,14 +2634,18 @@ pub fn stub_c7fba0() -> ! {
 }
 
 // 0xc7fbac — __ZThn48_N4Ogre31DefaultAxisAlignedBoxSceneQueryD0Ev
-#[doc(alias = "non-virtual thunk toOgre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")]
+#[doc(
+    alias = "non-virtual thunk toOgre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()"
+)]
 // was: non-virtual thunk toOgre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()
 pub fn stub_c7fbac() -> ! {
     todo!("0xc7fbac non-virtual thunk toOgre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")
 }
 
 // 0xc7fc40 — __ZThn48_N4Ogre31DefaultAxisAlignedBoxSceneQueryD1Ev
-#[doc(alias = "non-virtual thunk toOgre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")]
+#[doc(
+    alias = "non-virtual thunk toOgre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()"
+)]
 // was: non-virtual thunk toOgre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()
 pub fn stub_c7fc40() -> ! {
     todo!("0xc7fc40 non-virtual thunk toOgre::DefaultAxisAlignedBoxSceneQuery::~DefaultAxisAlignedBoxSceneQuery()")
@@ -2471,35 +2743,45 @@ pub fn stub_c80250() -> ! {
 }
 
 // 0xc80384 — __ZN4Ogre39DefaultPlaneBoundedVolumeListSceneQueryC1EPNS_12SceneManagerE
-#[doc(alias = "Ogre::DefaultPlaneBoundedVolumeListSceneQuery::DefaultPlaneBoundedVolumeListSceneQuery(Ogre::SceneManager *)")]
+#[doc(
+    alias = "Ogre::DefaultPlaneBoundedVolumeListSceneQuery::DefaultPlaneBoundedVolumeListSceneQuery(Ogre::SceneManager *)"
+)]
 // was: Ogre::DefaultPlaneBoundedVolumeListSceneQuery::DefaultPlaneBoundedVolumeListSceneQuery(Ogre::SceneManager *)
 pub fn stub_c80384() -> ! {
     todo!("0xc80384 Ogre::DefaultPlaneBoundedVolumeListSceneQuery::DefaultPlaneBoundedVolumeListSceneQuery(Ogre::SceneManager *)")
 }
 
 // 0xc8044c — __ZN4Ogre39DefaultPlaneBoundedVolumeListSceneQueryD0Ev
-#[doc(alias = "Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")]
+#[doc(
+    alias = "Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()"
+)]
 // was: Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()
 pub fn stub_c8044c() -> ! {
     todo!("0xc8044c Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")
 }
 
 // 0xc804dc — __ZN4Ogre39DefaultPlaneBoundedVolumeListSceneQueryD1Ev
-#[doc(alias = "Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")]
+#[doc(
+    alias = "Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()"
+)]
 // was: Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()
 pub fn stub_c804dc() -> ! {
     todo!("0xc804dc Ogre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")
 }
 
 // 0xc804e8 — __ZThn48_N4Ogre39DefaultPlaneBoundedVolumeListSceneQueryD0Ev
-#[doc(alias = "non-virtual thunk toOgre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")]
+#[doc(
+    alias = "non-virtual thunk toOgre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()"
+)]
 // was: non-virtual thunk toOgre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()
 pub fn stub_c804e8() -> ! {
     todo!("0xc804e8 non-virtual thunk toOgre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")
 }
 
 // 0xc8057c — __ZThn48_N4Ogre39DefaultPlaneBoundedVolumeListSceneQueryD1Ev
-#[doc(alias = "non-virtual thunk toOgre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")]
+#[doc(
+    alias = "non-virtual thunk toOgre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()"
+)]
 // was: non-virtual thunk toOgre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()
 pub fn stub_c8057c() -> ! {
     todo!("0xc8057c non-virtual thunk toOgre::DefaultPlaneBoundedVolumeListSceneQuery::~DefaultPlaneBoundedVolumeListSceneQuery()")
@@ -2513,7 +2795,9 @@ pub fn stub_c80588() -> ! {
 }
 
 // 0xc80728 — __ZNSt8_Rb_treeIN4Ogre10SceneQuery17WorldFragmentTypeES2_St9_IdentityIS2_ESt4lessIS2_ENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS2_
-#[doc(alias = "std::_Rb_tree<Ogre::SceneQuery::WorldFragmentType,Ogre::SceneQuery::WorldFragmentType,std::_Identity<Ogre::SceneQuery::WorldFragmentType>,std::less<Ogre::SceneQuery::WorldFragmentType>,Ogre::STLAllocator<Ogre::SceneQuery::WorldFragmentType,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::SceneQuery::WorldFragmentType const&)")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::SceneQuery::WorldFragmentType,Ogre::SceneQuery::WorldFragmentType,std::_Identity<Ogre::SceneQuery::WorldFragmentType>,std::less<Ogre::SceneQuery::WorldFragmentType>,Ogre::STLAllocator<Ogre::SceneQuery::WorldFragmentType,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::SceneQuery::WorldFragmentType const&)"
+)]
 // was: std::_Rb_tree<Ogre::SceneQuery::WorldFragmentType,Ogre::SceneQuery::WorldFragmentType,std::_Identity<Ogre::SceneQuery::WorldFragmentType>,std::less<Ogre::SceneQuery::WorldFragmentType>,Ogre::STLAllocator<Ogre::SceneQuery::WorldFragmentType,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::SceneQuery::WorldFragmentType const&)
 pub fn stub_c80728() -> ! {
     todo!("0xc80728 std::_Rb_tree<Ogre::SceneQuery::WorldFragmentType,Ogre::SceneQuery::WorldFragmentType,std::_Identity<Ogre::SceneQuery::WorldFragmentType>,std::less<Ogre::SceneQuery::WorldFragmentType>,Ogre::STLAllocator<Ogre::SceneQuery::WorldFragmentType,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(Ogre::SceneQuery::WorldFragmentType const&)")
@@ -2541,7 +2825,9 @@ pub fn stub_c80870() -> ! {
 }
 
 // 0xc809cc — __ZNK4Ogre19DistanceLodStrategy12getValueImplEPKNS_13MovableObjectEPKNS_6CameraE
-#[doc(alias = "Ogre::DistanceLodStrategy::getValueImpl(Ogre::MovableObject const*,Ogre::Camera const*)const")]
+#[doc(
+    alias = "Ogre::DistanceLodStrategy::getValueImpl(Ogre::MovableObject const*,Ogre::Camera const*)const"
+)]
 // was: Ogre::DistanceLodStrategy::getValueImpl(Ogre::MovableObject const*,Ogre::Camera const*)const
 pub fn stub_c809cc() -> ! {
     todo!("0xc809cc Ogre::DistanceLodStrategy::getValueImpl(Ogre::MovableObject const*,Ogre::Camera const*)const")
@@ -2569,28 +2855,36 @@ pub fn stub_c80af0() -> ! {
 }
 
 // 0xc80b00 — __ZNK4Ogre19DistanceLodStrategy8getIndexEfRKSt6vectorINS_12MeshLodUsageENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-#[doc(alias = "Ogre::DistanceLodStrategy::getIndex(float,std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")]
+#[doc(
+    alias = "Ogre::DistanceLodStrategy::getIndex(float,std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const"
+)]
 // was: Ogre::DistanceLodStrategy::getIndex(float,std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const
 pub fn stub_c80b00() -> ! {
     todo!("0xc80b00 Ogre::DistanceLodStrategy::getIndex(float,std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")
 }
 
 // 0xc80b10 — __ZNK4Ogre19DistanceLodStrategy8getIndexEfRKSt6vectorIfNS_12STLAllocatorIfNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-#[doc(alias = "Ogre::DistanceLodStrategy::getIndex(float,std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")]
+#[doc(
+    alias = "Ogre::DistanceLodStrategy::getIndex(float,std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const"
+)]
 // was: Ogre::DistanceLodStrategy::getIndex(float,std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const
 pub fn stub_c80b10() -> ! {
     todo!("0xc80b10 Ogre::DistanceLodStrategy::getIndex(float,std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")
 }
 
 // 0xc80b20 — __ZNK4Ogre19DistanceLodStrategy8isSortedERKSt6vectorIfNS_12STLAllocatorIfNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-#[doc(alias = "Ogre::DistanceLodStrategy::isSorted(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")]
+#[doc(
+    alias = "Ogre::DistanceLodStrategy::isSorted(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const"
+)]
 // was: Ogre::DistanceLodStrategy::isSorted(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const
 pub fn stub_c80b20() -> ! {
     todo!("0xc80b20 Ogre::DistanceLodStrategy::isSorted(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)const")
 }
 
 // 0xc80b2c — __ZNK4Ogre19DistanceLodStrategy4sortERSt6vectorINS_12MeshLodUsageENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-#[doc(alias = "Ogre::DistanceLodStrategy::sort(std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")]
+#[doc(
+    alias = "Ogre::DistanceLodStrategy::sort(std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const"
+)]
 // was: Ogre::DistanceLodStrategy::sort(std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const
 pub fn stub_c80b2c() -> ! {
     todo!("0xc80b2c Ogre::DistanceLodStrategy::sort(std::vector<Ogre::MeshLodUsage,Ogre::STLAllocator<Ogre::MeshLodUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")
@@ -2695,56 +2989,72 @@ pub fn stub_c817dc() -> ! {
 }
 
 // 0xc8193c — __ZNSt3mapISsPN4Ogre6DynLibESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_
-#[doc(alias = "std::map<std::string,Ogre::DynLib *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
+#[doc(
+    alias = "std::map<std::string,Ogre::DynLib *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)"
+)]
 // was: std::map<std::string,Ogre::DynLib *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
 pub fn stub_c8193c() -> ! {
     todo!("0xc8193c std::map<std::string,Ogre::DynLib *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
 }
 
 // 0xc81af8 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::DynLib *>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::DynLib *>> *)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::DynLib *>> *)
 pub fn stub_c81af8() -> ! {
     todo!("0xc81af8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::DynLib *>> *)")
 }
 
 // 0xc81b70 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::DynLib *>>,std::pair<std::string const,Ogre::DynLib *> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::DynLib *>>,std::pair<std::string const,Ogre::DynLib *> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::DynLib *>>,std::pair<std::string const,Ogre::DynLib *> const&)
 pub fn stub_c81b70() -> ! {
     todo!("0xc81b70 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::DynLib *>>,std::pair<std::string const,Ogre::DynLib *> const&)")
 }
 
 // 0xc81d50 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::DynLib *> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::DynLib *> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::DynLib *> const&)
 pub fn stub_c81d50() -> ! {
     todo!("0xc81d50 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::DynLib *> const&)")
 }
 
 // 0xc81ea4 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::DynLib *> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::DynLib *> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::DynLib *> const&)
 pub fn stub_c81ea4() -> ! {
     todo!("0xc81ea4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::DynLib *> const&)")
 }
 
 // 0xc81f88 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
 pub fn stub_c81f88() -> ! {
     todo!("0xc81f88 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
 }
 
 // 0xc8202c — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c8202c() -> ! {
     todo!("0xc8202c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc82030 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre6DynLibEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_c82030() -> ! {
     todo!("0xc82030 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::DynLib *>,std::_Select1st<std::pair<std::string const,Ogre::DynLib *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::DynLib *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
@@ -2786,7 +3096,9 @@ pub fn stub_c82224() -> ! {
 }
 
 // 0xc82420 — __ZN4Ogre15EdgeListBuilder12addIndexDataEPKNS_9IndexDataEmNS_15RenderOperation13OperationTypeE
-#[doc(alias = "Ogre::EdgeListBuilder::addIndexData(Ogre::IndexData const*,unsigned long,Ogre::RenderOperation::OperationType)")]
+#[doc(
+    alias = "Ogre::EdgeListBuilder::addIndexData(Ogre::IndexData const*,unsigned long,Ogre::RenderOperation::OperationType)"
+)]
 // was: Ogre::EdgeListBuilder::addIndexData(Ogre::IndexData const*,unsigned long,Ogre::RenderOperation::OperationType)
 pub fn stub_c82420() -> ! {
     todo!("0xc82420 Ogre::EdgeListBuilder::addIndexData(Ogre::IndexData const*,unsigned long,Ogre::RenderOperation::OperationType)")
@@ -2807,14 +3119,18 @@ pub fn stub_c828dc() -> ! {
 }
 
 // 0xc82db8 — __ZN4Ogre15EdgeListBuilder24findOrCreateCommonVertexERKNS_7Vector3Emmm
-#[doc(alias = "Ogre::EdgeListBuilder::findOrCreateCommonVertex(Ogre::Vector3 const&,unsigned long,unsigned long,unsigned long)")]
+#[doc(
+    alias = "Ogre::EdgeListBuilder::findOrCreateCommonVertex(Ogre::Vector3 const&,unsigned long,unsigned long,unsigned long)"
+)]
 // was: Ogre::EdgeListBuilder::findOrCreateCommonVertex(Ogre::Vector3 const&,unsigned long,unsigned long,unsigned long)
 pub fn stub_c82db8() -> ! {
     todo!("0xc82db8 Ogre::EdgeListBuilder::findOrCreateCommonVertex(Ogre::Vector3 const&,unsigned long,unsigned long,unsigned long)")
 }
 
 // 0xc82e68 — __ZN4Ogre15EdgeListBuilder19connectOrCreateEdgeEmmmmmm
-#[doc(alias = "Ogre::EdgeListBuilder::connectOrCreateEdge(unsigned long,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long)")]
+#[doc(
+    alias = "Ogre::EdgeListBuilder::connectOrCreateEdge(unsigned long,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long)"
+)]
 // was: Ogre::EdgeListBuilder::connectOrCreateEdge(unsigned long,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long)
 pub fn stub_c82e68() -> ! {
     todo!("0xc82e68 Ogre::EdgeListBuilder::connectOrCreateEdge(unsigned long,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long)")
@@ -2828,294 +3144,378 @@ pub fn stub_c82f80() -> ! {
 }
 
 // 0xc82fc4 — __ZN4Ogre8EdgeData17updateFaceNormalsEmRKNS_29HardwareVertexBufferSharedPtrE
-#[doc(alias = "Ogre::EdgeData::updateFaceNormals(unsigned long,Ogre::HardwareVertexBufferSharedPtr const&)")]
+#[doc(
+    alias = "Ogre::EdgeData::updateFaceNormals(unsigned long,Ogre::HardwareVertexBufferSharedPtr const&)"
+)]
 // was: Ogre::EdgeData::updateFaceNormals(unsigned long,Ogre::HardwareVertexBufferSharedPtr const&)
 pub fn stub_c82fc4() -> ! {
     todo!("0xc82fc4 Ogre::EdgeData::updateFaceNormals(unsigned long,Ogre::HardwareVertexBufferSharedPtr const&)")
 }
 
 // 0xc83028 — __ZNSt6vectorIN4Ogre8EdgeData8TriangleENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE7reserveEm
-#[doc(alias = "std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::reserve(unsigned long)")]
+#[doc(
+    alias = "std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::reserve(unsigned long)"
+)]
 // was: std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::reserve(unsigned long)
 pub fn stub_c83028() -> ! {
     todo!("0xc83028 std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::reserve(unsigned long)")
 }
 
 // 0xc830a4 — __ZNSt6vectorIN4Ogre7Vector4ENS0_12STLAllocatorIS1_NS0_27CategorisedAlignAllocPolicyILNS0_14MemoryCategoryE1ELm0EEEEEE7reserveEm
-#[doc(alias = "std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::reserve(unsigned long)")]
+#[doc(
+    alias = "std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::reserve(unsigned long)"
+)]
 // was: std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::reserve(unsigned long)
 pub fn stub_c830a4() -> ! {
     todo!("0xc830a4 std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::reserve(unsigned long)")
 }
 
 // 0xc83120 — __ZNSt6vectorIN4Ogre15EdgeListBuilder12CommonVertexENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-#[doc(alias = "std::vector<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::CommonVertex*,std::vector<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::CommonVertex const&)")]
+#[doc(
+    alias = "std::vector<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::CommonVertex*,std::vector<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::CommonVertex const&)"
+)]
 // was: std::vector<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::CommonVertex*,std::vector<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::CommonVertex const&)
 pub fn stub_c83120() -> ! {
     todo!("0xc83120 std::vector<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::CommonVertex*,std::vector<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::CommonVertex const&)")
 }
 
 // 0xc832f0 — __ZNSt8_Rb_treeIN4Ogre7Vector3ESt4pairIKS1_mESt10_Select1stIS4_ENS0_15EdgeListBuilder10vectorLessENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS4_
-#[doc(alias = "std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<Ogre::Vector3 const,unsigned long> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<Ogre::Vector3 const,unsigned long> const&)"
+)]
 // was: std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<Ogre::Vector3 const,unsigned long> const&)
 pub fn stub_c832f0() -> ! {
     todo!("0xc832f0 std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<Ogre::Vector3 const,unsigned long> const&)")
 }
 
 // 0xc834f4 — __ZNSt6vectorIN4Ogre8EdgeData4EdgeENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-#[doc(alias = "std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Edge*,std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeData::Edge const&)")]
+#[doc(
+    alias = "std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Edge*,std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeData::Edge const&)"
+)]
 // was: std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Edge*,std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeData::Edge const&)
 pub fn stub_c834f4() -> ! {
     todo!("0xc834f4 std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Edge*,std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeData::Edge const&)")
 }
 
 // 0xc836b8 — __ZNSt8_Rb_treeISt4pairImmES0_IKS1_S1_ESt10_Select1stIS3_ESt4lessIS1_EN4Ogre12STLAllocatorIS3_NS8_22CategorisedAllocPolicyILNS8_14MemoryCategoryE0EEEEEE15_M_insert_equalERKS3_
-#[doc(alias = "std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_equal(std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_equal(std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>> const&)"
+)]
 // was: std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_equal(std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>> const&)
 pub fn stub_c836b8() -> ! {
     todo!("0xc836b8 std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_equal(std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>> const&)")
 }
 
 // 0xc83758 — __ZNSt6vectorIN4Ogre8EdgeData8TriangleENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-#[doc(alias = "std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Triangle*,std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeData::Triangle const&)")]
+#[doc(
+    alias = "std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Triangle*,std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeData::Triangle const&)"
+)]
 // was: std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Triangle*,std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeData::Triangle const&)
 pub fn stub_c83758() -> ! {
     todo!("0xc83758 std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeData::Triangle*,std::vector<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeData::Triangle const&)")
 }
 
 // 0xc838e8 — __ZNSt6vectorIN4Ogre7Vector4ENS0_12STLAllocatorIS1_NS0_27CategorisedAlignAllocPolicyILNS0_14MemoryCategoryE1ELm0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_
-#[doc(alias = "std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>>,Ogre::Vector4 const&)")]
+#[doc(
+    alias = "std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>>,Ogre::Vector4 const&)"
+)]
 // was: std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>>,Ogre::Vector4 const&)
 pub fn stub_c838e8() -> ! {
     todo!("0xc838e8 std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::Vector4*,std::vector<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>>,Ogre::Vector4 const&)")
 }
 
 // 0xc83a30 — __ZNSt6vectorIcN4Ogre12STLAllocatorIcNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPcS6_EEmRKc
-#[doc(alias = "std::vector<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<char *,std::vector<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,char const&)")]
+#[doc(
+    alias = "std::vector<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<char *,std::vector<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,char const&)"
+)]
 // was: std::vector<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<char *,std::vector<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,char const&)
 pub fn stub_c83a30() -> ! {
     todo!("0xc83a30 std::vector<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<char *,std::vector<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,char const&)")
 }
 
 // 0xc83ba4 — __ZNSt6vectorIN4Ogre8EdgeData9EdgeGroupENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S8_EEmRKS2_
-#[doc(alias = "std::vector<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::EdgeData::EdgeGroup*,std::vector<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::EdgeData::EdgeGroup const&)")]
+#[doc(
+    alias = "std::vector<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::EdgeData::EdgeGroup*,std::vector<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::EdgeData::EdgeGroup const&)"
+)]
 // was: std::vector<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::EdgeData::EdgeGroup*,std::vector<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::EdgeData::EdgeGroup const&)
 pub fn stub_c83ba4() -> ! {
     todo!("0xc83ba4 std::vector<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<Ogre::EdgeData::EdgeGroup*,std::vector<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,Ogre::EdgeData::EdgeGroup const&)")
 }
 
 // 0xc83f40 — __ZSt22__uninitialized_copy_aIPN4Ogre8EdgeData9EdgeGroupES3_NS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEET0_T_SA_S9_T1_
-#[doc(alias = "Ogre::EdgeData::EdgeGroup * std::__uninitialized_copy_a<Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")]
+#[doc(
+    alias = "Ogre::EdgeData::EdgeGroup * std::__uninitialized_copy_a<Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)"
+)]
 // was: Ogre::EdgeData::EdgeGroup * std::__uninitialized_copy_a<Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)
 pub fn stub_c83f40() -> ! {
     todo!("0xc83f40 Ogre::EdgeData::EdgeGroup * std::__uninitialized_copy_a<Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::EdgeData::EdgeGroup *,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")
 }
 
 // 0xc84078 — __ZN4Ogre12STLAllocatorINS_8EdgeData9EdgeGroupENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev
-#[doc(alias = "Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
+#[doc(
+    alias = "Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()"
+)]
 // was: Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()
 pub fn stub_c84078() -> ! {
     todo!("0xc84078 Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
 }
 
 // 0xc8407c — __ZSt24__uninitialized_fill_n_aIPN4Ogre8EdgeData9EdgeGroupEmS2_NS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEvT_T0_RKT1_T2_
-#[doc(alias = "void std::__uninitialized_fill_n_a<Ogre::EdgeData::EdgeGroup *,unsigned long,Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::EdgeData::EdgeGroup *,unsigned long,Ogre::EdgeData::EdgeGroup const&,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")]
+#[doc(
+    alias = "void std::__uninitialized_fill_n_a<Ogre::EdgeData::EdgeGroup *,unsigned long,Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::EdgeData::EdgeGroup *,unsigned long,Ogre::EdgeData::EdgeGroup const&,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)"
+)]
 // was: void std::__uninitialized_fill_n_a<Ogre::EdgeData::EdgeGroup *,unsigned long,Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::EdgeData::EdgeGroup *,unsigned long,Ogre::EdgeData::EdgeGroup const&,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)
 pub fn stub_c8407c() -> ! {
     todo!("0xc8407c void std::__uninitialized_fill_n_a<Ogre::EdgeData::EdgeGroup *,unsigned long,Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::EdgeData::EdgeGroup *,unsigned long,Ogre::EdgeData::EdgeGroup const&,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")
 }
 
 // 0xc84198 — __ZNSt6vectorIN4Ogre8EdgeData4EdgeENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS8_
-#[doc(alias = "std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+#[doc(
+    alias = "std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)"
+)]
 // was: std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
 pub fn stub_c84198() -> ! {
     todo!("0xc84198 std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
 }
 
 // 0xc842ec — __ZN4Ogre12STLAllocatorINS_8EdgeData9EdgeGroupENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev
-#[doc(alias = "Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
+#[doc(
+    alias = "Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()"
+)]
 // was: Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()
 pub fn stub_c842ec() -> ! {
     todo!("0xc842ec Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
 }
 
 // 0xc842f8 — __ZNSt6vectorIN4Ogre8EdgeData4EdgeENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEC2ERKS8_
-#[doc(alias = "std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+#[doc(
+    alias = "std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)"
+)]
 // was: std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
 pub fn stub_c842f8() -> ! {
     todo!("0xc842f8 std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
 }
 
 // 0xc8438c — __ZNSt12_Vector_baseIN4Ogre8EdgeData4EdgeENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c8438c() -> ! {
     todo!("0xc8438c std::_Vector_base<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc84390 — __ZNSt12_Vector_baseIN4Ogre8EdgeData4EdgeENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c84390() -> ! {
     todo!("0xc84390 std::_Vector_base<Ogre::EdgeData::Edge,Ogre::STLAllocator<Ogre::EdgeData::Edge,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc8439c — __ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPN4Ogre15EdgeListBuilder8GeometryESt6vectorIS4_NS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEEEiNS3_12geometryLessEEvT_SF_T0_T1_
-#[doc(alias = "void std::__introsort_loop<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::geometryLess)")]
+#[doc(
+    alias = "void std::__introsort_loop<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::geometryLess)"
+)]
 // was: void std::__introsort_loop<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::geometryLess)
 pub fn stub_c8439c() -> ! {
     todo!("0xc8439c void std::__introsort_loop<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::geometryLess)")
 }
 
 // 0xc8450c — __ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPN4Ogre15EdgeListBuilder8GeometryESt6vectorIS4_NS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEEENS3_12geometryLessEEvT_SF_T0_
-#[doc(alias = "void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)")]
+#[doc(
+    alias = "void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)"
+)]
 // was: void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)
 pub fn stub_c8450c() -> ! {
     todo!("0xc8450c void std::__final_insertion_sort<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)")
 }
 
 // 0xc84580 — __ZSt16__insertion_sortIN9__gnu_cxx17__normal_iteratorIPN4Ogre15EdgeListBuilder8GeometryESt6vectorIS4_NS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEEENS3_12geometryLessEEvT_SF_T0_
-#[doc(alias = "void std::__insertion_sort<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)")]
+#[doc(
+    alias = "void std::__insertion_sort<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)"
+)]
 // was: void std::__insertion_sort<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)
 pub fn stub_c84580() -> ! {
     todo!("0xc84580 void std::__insertion_sort<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)")
 }
 
 // 0xc84614 — __ZSt13__heap_selectIN9__gnu_cxx17__normal_iteratorIPN4Ogre15EdgeListBuilder8GeometryESt6vectorIS4_NS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEEENS3_12geometryLessEEvT_SF_SF_T0_
-#[doc(alias = "void std::__heap_select<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)")]
+#[doc(
+    alias = "void std::__heap_select<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)"
+)]
 // was: void std::__heap_select<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)
 pub fn stub_c84614() -> ! {
     todo!("0xc84614 void std::__heap_select<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::geometryLess)")
 }
 
 // 0xc846b0 — __ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPN4Ogre15EdgeListBuilder8GeometryESt6vectorIS4_NS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEEEEiS4_NS3_12geometryLessEEvT_T0_SG_T1_T2_
-#[doc(alias = "void std::__adjust_heap<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::Geometry,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,int,Ogre::EdgeListBuilder::Geometry,Ogre::EdgeListBuilder::geometryLess)")]
+#[doc(
+    alias = "void std::__adjust_heap<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::Geometry,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,int,Ogre::EdgeListBuilder::Geometry,Ogre::EdgeListBuilder::geometryLess)"
+)]
 // was: void std::__adjust_heap<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::Geometry,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,int,Ogre::EdgeListBuilder::Geometry,Ogre::EdgeListBuilder::geometryLess)
 pub fn stub_c846b0() -> ! {
     todo!("0xc846b0 void std::__adjust_heap<__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,Ogre::EdgeListBuilder::Geometry,Ogre::EdgeListBuilder::geometryLess>(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry *,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,int,int,Ogre::EdgeListBuilder::Geometry,Ogre::EdgeListBuilder::geometryLess)")
 }
 
 // 0xc84790 — __ZNSt6vectorIN4Ogre15EdgeListBuilder8GeometryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-#[doc(alias = "std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry*,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::Geometry const&)")]
+#[doc(
+    alias = "std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry*,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::Geometry const&)"
+)]
 // was: std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry*,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::Geometry const&)
 pub fn stub_c84790() -> ! {
     todo!("0xc84790 std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::EdgeListBuilder::Geometry*,std::vector<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::EdgeListBuilder::Geometry const&)")
 }
 
 // 0xc848b4 — __ZNSt6vectorIPKN4Ogre10VertexDataENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S9_EERKS3_
-#[doc(alias = "std::vector<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::VertexData const**,std::vector<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::VertexData const* const&)")]
+#[doc(
+    alias = "std::vector<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::VertexData const**,std::vector<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::VertexData const* const&)"
+)]
 // was: std::vector<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::VertexData const**,std::vector<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::VertexData const* const&)
 pub fn stub_c848b4() -> ! {
     todo!("0xc848b4 std::vector<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::VertexData const**,std::vector<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::VertexData const* const&)")
 }
 
 // 0xc849ac — __ZNSt12_Vector_baseIN4Ogre15EdgeListBuilder12CommonVertexENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c849ac() -> ! {
     todo!("0xc849ac std::_Vector_base<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc849b0 — __ZNSt12_Vector_baseIPKN4Ogre10VertexDataENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c849b0() -> ! {
     todo!("0xc849b0 std::_Vector_base<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc849b4 — __ZNSt12_Vector_baseIN4Ogre15EdgeListBuilder8GeometryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c849b4() -> ! {
     todo!("0xc849b4 std::_Vector_base<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc849b8 — __ZNSt8_Rb_treeISt4pairImmES0_IKS1_S1_ESt10_Select1stIS3_ESt4lessIS1_EN4Ogre12STLAllocatorIS3_NS8_22CategorisedAllocPolicyILNS8_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS7_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::pair<unsigned long,unsigned long>>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::pair<unsigned long,unsigned long>>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::pair<unsigned long,unsigned long>>,false>::~_Rb_tree_impl()
 pub fn stub_c849b8() -> ! {
     todo!("0xc849b8 std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::pair<unsigned long,unsigned long>>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc849bc — __ZNSt8_Rb_treeISt4pairImmES0_IKS1_S1_ESt10_Select1stIS3_ESt4lessIS1_EN4Ogre12STLAllocatorIS3_NS8_22CategorisedAllocPolicyILNS8_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS7_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::pair<unsigned long,unsigned long>>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::pair<unsigned long,unsigned long>>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::pair<unsigned long,unsigned long>>,false>::~_Rb_tree_impl()
 pub fn stub_c849bc() -> ! {
     todo!("0xc849bc std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::pair<unsigned long,unsigned long>>,false>::~_Rb_tree_impl()")
 }
 
 // 0xc849c8 — __ZNSt8_Rb_treeIN4Ogre7Vector3ESt4pairIKS1_mESt10_Select1stIS4_ENS0_15EdgeListBuilder10vectorLessENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::EdgeListBuilder::vectorLess,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::EdgeListBuilder::vectorLess,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::EdgeListBuilder::vectorLess,false>::~_Rb_tree_impl()
 pub fn stub_c849c8() -> ! {
     todo!("0xc849c8 std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::EdgeListBuilder::vectorLess,false>::~_Rb_tree_impl()")
 }
 
 // 0xc849cc — __ZNSt8_Rb_treeIN4Ogre7Vector3ESt4pairIKS1_mESt10_Select1stIS4_ENS0_15EdgeListBuilder10vectorLessENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS8_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::EdgeListBuilder::vectorLess,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::EdgeListBuilder::vectorLess,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::EdgeListBuilder::vectorLess,false>::~_Rb_tree_impl()
 pub fn stub_c849cc() -> ! {
     todo!("0xc849cc std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<Ogre::EdgeListBuilder::vectorLess,false>::~_Rb_tree_impl()")
 }
 
 // 0xc849d8 — __ZNSt12_Vector_baseIN4Ogre15EdgeListBuilder12CommonVertexENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c849d8() -> ! {
     todo!("0xc849d8 std::_Vector_base<Ogre::EdgeListBuilder::CommonVertex,Ogre::STLAllocator<Ogre::EdgeListBuilder::CommonVertex,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc849e4 — __ZNSt12_Vector_baseIPKN4Ogre10VertexDataENS0_12STLAllocatorIS3_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c849e4() -> ! {
     todo!("0xc849e4 std::_Vector_base<Ogre::VertexData const*,Ogre::STLAllocator<Ogre::VertexData const*,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc849f0 — __ZNSt12_Vector_baseIN4Ogre15EdgeListBuilder8GeometryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c849f0() -> ! {
     todo!("0xc849f0 std::_Vector_base<Ogre::EdgeListBuilder::Geometry,Ogre::STLAllocator<Ogre::EdgeListBuilder::Geometry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc849fc — __ZNSt12_Vector_baseIN4Ogre7Vector4ENS0_12STLAllocatorIS1_NS0_27CategorisedAlignAllocPolicyILNS0_14MemoryCategoryE1ELm0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c849fc() -> ! {
     todo!("0xc849fc std::_Vector_base<Ogre::Vector4,Ogre::STLAllocator<Ogre::Vector4,Ogre::CategorisedAlignAllocPolicy<(Ogre::MemoryCategory)1,0ul>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc84a00 — __ZNSt12_Vector_baseIN4Ogre8EdgeData9EdgeGroupENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c84a00() -> ! {
     todo!("0xc84a00 std::_Vector_base<Ogre::EdgeData::EdgeGroup,Ogre::STLAllocator<Ogre::EdgeData::EdgeGroup,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc84a04 — __ZNSt12_Vector_baseIcN4Ogre12STLAllocatorIcNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c84a04() -> ! {
     todo!("0xc84a04 std::_Vector_base<char,Ogre::STLAllocator<char,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc84a10 — __ZNSt12_Vector_baseIN4Ogre8EdgeData8TriangleENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_c84a10() -> ! {
     todo!("0xc84a10 std::_Vector_base<Ogre::EdgeData::Triangle,Ogre::STLAllocator<Ogre::EdgeData::Triangle,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xc84a1c — __ZNSt8_Rb_treeISt4pairImmES0_IKS1_S1_ESt10_Select1stIS3_ESt4lessIS1_EN4Ogre12STLAllocatorIS3_NS8_22CategorisedAllocPolicyILNS8_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS3_E
-#[doc(alias = "std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>> *)"
+)]
 // was: std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>> *)
 pub fn stub_c84a1c() -> ! {
     todo!("0xc84a1c std::_Rb_tree<std::pair<unsigned long,unsigned long>,std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,std::_Select1st<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>>,std::less<std::pair<unsigned long,unsigned long>>,Ogre::STLAllocator<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::pair<unsigned long,unsigned long> const,std::pair<unsigned long,unsigned long>>> *)")
 }
 
 // 0xc84a44 — __ZNSt8_Rb_treeIN4Ogre7Vector3ESt4pairIKS1_mESt10_Select1stIS4_ENS0_15EdgeListBuilder10vectorLessENS0_12STLAllocatorIS4_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
-#[doc(alias = "std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::Vector3 const,unsigned long>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::Vector3 const,unsigned long>> *)"
+)]
 // was: std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::Vector3 const,unsigned long>> *)
 pub fn stub_c84a44() -> ! {
     todo!("0xc84a44 std::_Rb_tree<Ogre::Vector3,std::pair<Ogre::Vector3 const,unsigned long>,std::_Select1st<std::pair<Ogre::Vector3 const,unsigned long>>,Ogre::EdgeListBuilder::vectorLess,Ogre::STLAllocator<std::pair<Ogre::Vector3 const,unsigned long>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<Ogre::Vector3 const,unsigned long>> *)")
@@ -3153,7 +3553,9 @@ pub fn stub_c8585c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Entity::backgroundLoadingComplete(Ogre::Resource *)")]
 // was: `non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)
 pub fn stub_c85874() -> ! {
-    todo!("0xc85874 `non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)")
+    todo!(
+        "0xc85874 `non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)"
+    )
 }
 
 // 0xc8588c — __ZN4Ogre6Entity13_deinitialiseEv
@@ -3164,7 +3566,9 @@ pub fn stub_c8588c() -> ! {
 }
 
 // 0xc85b98 — __ZN4Ogre6Entity18buildSubEntityListERNS_7MeshPtrEPSt6vectorIPNS_9SubEntityENS_12STLAllocatorIS5_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
-#[doc(alias = "Ogre::Entity::buildSubEntityList(Ogre::MeshPtr &,std::vector<Ogre::SubEntity *,Ogre::STLAllocator<Ogre::SubEntity *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)")]
+#[doc(
+    alias = "Ogre::Entity::buildSubEntityList(Ogre::MeshPtr &,std::vector<Ogre::SubEntity *,Ogre::STLAllocator<Ogre::SubEntity *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)"
+)]
 // was: Ogre::Entity::buildSubEntityList(Ogre::MeshPtr &,std::vector<Ogre::SubEntity *,Ogre::STLAllocator<Ogre::SubEntity *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)
 pub fn stub_c85b98() -> ! {
     todo!("0xc85b98 Ogre::Entity::buildSubEntityList(Ogre::MeshPtr &,std::vector<Ogre::SubEntity *,Ogre::STLAllocator<Ogre::SubEntity *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> *)")
@@ -3367,7 +3771,9 @@ pub fn stub_c884f0() -> ! {
 }
 
 // 0xc8851c — __ZN4Ogre6Entity24initialisePoseVertexDataEPKNS_10VertexDataEPS1_b
-#[doc(alias = "Ogre::Entity::initialisePoseVertexData(Ogre::VertexData const*,Ogre::VertexData*,bool)")]
+#[doc(
+    alias = "Ogre::Entity::initialisePoseVertexData(Ogre::VertexData const*,Ogre::VertexData*,bool)"
+)]
 // was: Ogre::Entity::initialisePoseVertexData(Ogre::VertexData const*,Ogre::VertexData*,bool)
 pub fn stub_c8851c() -> ! {
     todo!("0xc8851c Ogre::Entity::initialisePoseVertexData(Ogre::VertexData const*,Ogre::VertexData*,bool)")
@@ -3395,7 +3801,9 @@ pub fn stub_c88fc4() -> ! {
 }
 
 // 0xc88fcc — __ZN4Ogre6Entity30bindMissingHardwarePoseBuffersEPKNS_10VertexDataEPS1_
-#[doc(alias = "Ogre::Entity::bindMissingHardwarePoseBuffers(Ogre::VertexData const*,Ogre::VertexData*)")]
+#[doc(
+    alias = "Ogre::Entity::bindMissingHardwarePoseBuffers(Ogre::VertexData const*,Ogre::VertexData*)"
+)]
 // was: Ogre::Entity::bindMissingHardwarePoseBuffers(Ogre::VertexData const*,Ogre::VertexData*)
 pub fn stub_c88fcc() -> ! {
     todo!("0xc88fcc Ogre::Entity::bindMissingHardwarePoseBuffers(Ogre::VertexData const*,Ogre::VertexData*)")
@@ -3430,7 +3838,9 @@ pub fn stub_c8926c() -> ! {
 }
 
 // 0xc8927c — __ZN4Ogre6Entity21extractTempBufferInfoEPNS_10VertexDataEPNS_21TempBlendedBufferInfoE
-#[doc(alias = "Ogre::Entity::extractTempBufferInfo(Ogre::VertexData *,Ogre::TempBlendedBufferInfo *)")]
+#[doc(
+    alias = "Ogre::Entity::extractTempBufferInfo(Ogre::VertexData *,Ogre::TempBlendedBufferInfo *)"
+)]
 // was: Ogre::Entity::extractTempBufferInfo(Ogre::VertexData *,Ogre::TempBlendedBufferInfo *)
 pub fn stub_c8927c() -> ! {
     todo!("0xc8927c Ogre::Entity::extractTempBufferInfo(Ogre::VertexData *,Ogre::TempBlendedBufferInfo *)")
@@ -3465,7 +3875,9 @@ pub fn stub_c89368() -> ! {
 }
 
 // 0xc89684 — __ZN4Ogre6Entity33getShadowVolumeRenderableIteratorENS_15ShadowTechniqueEPKNS_5LightEPNS_28HardwareIndexBufferSharedPtrEbfm
-#[doc(alias = "Ogre::Entity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")]
+#[doc(
+    alias = "Ogre::Entity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)"
+)]
 // was: Ogre::Entity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)
 pub fn stub_c89684() -> ! {
     todo!("0xc89684 Ogre::Entity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")
@@ -3486,7 +3898,9 @@ pub fn stub_c89e9c() -> ! {
 }
 
 // 0xc89ed4 — __ZN4Ogre6Entity22EntityShadowRenderableC2EPS0_PNS_28HardwareIndexBufferSharedPtrEPKNS_10VertexDataEbPNS_9SubEntityEb
-#[doc(alias = "Ogre::Entity::EntityShadowRenderable::EntityShadowRenderable(Ogre::Entity*,Ogre::HardwareIndexBufferSharedPtr *,Ogre::VertexData const*,bool,Ogre::SubEntity *,bool)")]
+#[doc(
+    alias = "Ogre::Entity::EntityShadowRenderable::EntityShadowRenderable(Ogre::Entity*,Ogre::HardwareIndexBufferSharedPtr *,Ogre::VertexData const*,bool,Ogre::SubEntity *,bool)"
+)]
 // was: Ogre::Entity::EntityShadowRenderable::EntityShadowRenderable(Ogre::Entity*,Ogre::HardwareIndexBufferSharedPtr *,Ogre::VertexData const*,bool,Ogre::SubEntity *,bool)
 pub fn stub_c89ed4() -> ! {
     todo!("0xc89ed4 Ogre::Entity::EntityShadowRenderable::EntityShadowRenderable(Ogre::Entity*,Ogre::HardwareIndexBufferSharedPtr *,Ogre::VertexData const*,bool,Ogre::SubEntity *,bool)")
@@ -3547,14 +3961,18 @@ pub fn stub_ca183c() -> ! {
 }
 
 // 0xca193c — __ZN4Ogre17GpuProgramManager19addMicrocodeToCacheERKSsRKNS_9SharedPtrINS_16MemoryDataStreamEEE
-#[doc(alias = "Ogre::GpuProgramManager::addMicrocodeToCache(std::string const&,Ogre::SharedPtr<Ogre::MemoryDataStream> const&)")]
+#[doc(
+    alias = "Ogre::GpuProgramManager::addMicrocodeToCache(std::string const&,Ogre::SharedPtr<Ogre::MemoryDataStream> const&)"
+)]
 // was: Ogre::GpuProgramManager::addMicrocodeToCache(std::string const&,Ogre::SharedPtr<Ogre::MemoryDataStream> const&)
 pub fn stub_ca193c() -> ! {
     todo!("0xca193c Ogre::GpuProgramManager::addMicrocodeToCache(std::string const&,Ogre::SharedPtr<Ogre::MemoryDataStream> const&)")
 }
 
 // 0xca1ef0 — __ZNK4Ogre17GpuProgramManager18saveMicrocodeCacheENS_9SharedPtrINS_10DataStreamEEE
-#[doc(alias = "Ogre::GpuProgramManager::saveMicrocodeCache(Ogre::SharedPtr<Ogre::DataStream>)const")]
+#[doc(
+    alias = "Ogre::GpuProgramManager::saveMicrocodeCache(Ogre::SharedPtr<Ogre::DataStream>)const"
+)]
 // was: Ogre::GpuProgramManager::saveMicrocodeCache(Ogre::SharedPtr<Ogre::DataStream>)const
 pub fn stub_ca1ef0() -> ! {
     todo!("0xca1ef0 Ogre::GpuProgramManager::saveMicrocodeCache(Ogre::SharedPtr<Ogre::DataStream>)const")
@@ -3569,7 +3987,9 @@ pub fn stub_ca21a8() -> ! {
 }
 
 // 0xca2830 — __ZNSt3mapISsN4Ogre9SharedPtrINS0_19GpuSharedParametersEEESt4lessISsENS0_12STLAllocatorISt4pairIKSsS3_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS8_
-#[doc(alias = "std::map<std::string,Ogre::SharedPtr<Ogre::GpuSharedParameters>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
+#[doc(
+    alias = "std::map<std::string,Ogre::SharedPtr<Ogre::GpuSharedParameters>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)"
+)]
 // was: std::map<std::string,Ogre::SharedPtr<Ogre::GpuSharedParameters>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
 pub fn stub_ca2830() -> ! {
     todo!("0xca2830 std::map<std::string,Ogre::SharedPtr<Ogre::GpuSharedParameters>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
@@ -3577,21 +3997,27 @@ pub fn stub_ca2830() -> ! {
 
 // 0xca2ad0 — __ZN4Ogre9SharedPtrINS_19GpuSharedParametersEEaSERKS2_
 // type: int __fastcall(int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int)
-#[doc(alias = "Ogre::SharedPtr<Ogre::GpuSharedParameters>::operator=(Ogre::SharedPtr<Ogre::GpuSharedParameters> const&)")]
+#[doc(
+    alias = "Ogre::SharedPtr<Ogre::GpuSharedParameters>::operator=(Ogre::SharedPtr<Ogre::GpuSharedParameters> const&)"
+)]
 // was: Ogre::SharedPtr<Ogre::GpuSharedParameters>::operator=(Ogre::SharedPtr<Ogre::GpuSharedParameters> const&)
 pub fn stub_ca2ad0() -> ! {
     todo!("0xca2ad0 Ogre::SharedPtr<Ogre::GpuSharedParameters>::operator=(Ogre::SharedPtr<Ogre::GpuSharedParameters> const&)")
 }
 
 // 0xca2c50 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS6_E
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>> *)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>> *)
 pub fn stub_ca2c50() -> ! {
     todo!("0xca2c50 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>> *)")
 }
 
 // 0xca2c80 — __ZN4Ogre12STLAllocatorISt4pairIKSsNS_9SharedPtrINS_16MemoryDataStreamEEEENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS6_
-#[doc(alias = "Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>*)")]
+#[doc(
+    alias = "Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>*)"
+)]
 // was: Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>*)
 pub fn stub_ca2c80() -> ! {
     todo!("0xca2c80 Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>*)")
@@ -3599,7 +4025,9 @@ pub fn stub_ca2c80() -> ! {
 
 // 0xca2db0 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS6_
 // type: int __fastcall(int, int, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)
 pub fn stub_ca2db0() -> ! {
     todo!("0xca2db0 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")
@@ -3607,7 +4035,9 @@ pub fn stub_ca2db0() -> ! {
 
 // 0xca2e94 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSI_RKS6_
 // type: int __fastcall(int, int, int, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)
 pub fn stub_ca2e94() -> ! {
     todo!("0xca2e94 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")
@@ -3615,28 +4045,36 @@ pub fn stub_ca2e94() -> ! {
 
 // 0xca2f08 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS6_
 // type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)
 pub fn stub_ca2f08() -> ! {
     todo!("0xca2f08 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>> const&)")
 }
 
 // 0xca3020 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
 pub fn stub_ca3020() -> ! {
     todo!("0xca3020 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
 }
 
 // 0xca30c4 — __ZNKSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const
 pub fn stub_ca30c4() -> ! {
     todo!("0xca30c4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")
 }
 
 // 0xca3168 — __ZNKSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const
 pub fn stub_ca3168() -> ! {
     todo!("0xca3168 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")
@@ -3644,7 +4082,9 @@ pub fn stub_ca3168() -> ! {
 
 // 0xca320c — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS6_ERKS6_
 // type: int __fastcall(int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)
 pub fn stub_ca320c() -> ! {
     todo!("0xca320c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")
@@ -3652,7 +4092,9 @@ pub fn stub_ca320c() -> ! {
 
 // 0xca3554 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSI_RKS6_
 // type: int __fastcall(int, int, int, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)
 pub fn stub_ca3554() -> ! {
     todo!("0xca3554 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")
@@ -3660,7 +4102,9 @@ pub fn stub_ca3554() -> ! {
 
 // 0xca35c8 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS6_
 // type: int __fastcall(int, int, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)
 pub fn stub_ca35c8() -> ! {
     todo!("0xca35c8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")
@@ -3668,63 +4112,81 @@ pub fn stub_ca35c8() -> ! {
 
 // 0xca36ac — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE14_M_create_nodeERKS6_
 // type: _DWORD *__fastcall(int, const std::string *, int, int, void *, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)
 pub fn stub_ca36ac() -> ! {
     todo!("0xca36ac std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_create_node(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>> const&)")
 }
 
 // 0xca37c4 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
 pub fn stub_ca37c4() -> ! {
     todo!("0xca37c4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
 }
 
 // 0xca3868 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implISA_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_ca3868() -> ! {
     todo!("0xca3868 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xca386c — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_16MemoryDataStreamEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implISA_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_ca386c() -> ! {
     todo!("0xca386c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::MemoryDataStream>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xca3878 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implISA_Lb0EED1Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_ca3878() -> ! {
     todo!("0xca3878 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xca387c — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implISA_Lb0EED0Ev
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
 pub fn stub_ca387c() -> ! {
     todo!("0xca387c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
 }
 
 // 0xca3888 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre9SharedPtrINS2_19GpuSharedParametersEEEESt10_Select1stIS6_ESt4lessISsENS2_12STLAllocatorIS6_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS6_E
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>> *)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>> *)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>> *)
 pub fn stub_ca3888() -> ! {
     todo!("0xca3888 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,std::_Select1st<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>> *)")
 }
 
 // 0xca38b8 — __ZN4Ogre12STLAllocatorISt4pairIKSsNS_9SharedPtrINS_19GpuSharedParametersEEEENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEE7destroyEPS6_
-#[doc(alias = "Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>*)")]
+#[doc(
+    alias = "Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>*)"
+)]
 // was: Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>*)
 pub fn stub_ca38b8() -> ! {
     todo!("0xca38b8 Ogre::STLAllocator<std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::destroy(std::pair<std::string const,Ogre::SharedPtr<Ogre::GpuSharedParameters>>*)")
 }
 
 // 0xca3a1c — __ZN4Ogre17GpuNamedConstants38generateConstantDefinitionArrayEntriesERKSsRKNS_21GpuConstantDefinitionE
-#[doc(alias = "Ogre::GpuNamedConstants::generateConstantDefinitionArrayEntries(std::string const&,Ogre::GpuConstantDefinition const&)")]
+#[doc(
+    alias = "Ogre::GpuNamedConstants::generateConstantDefinitionArrayEntries(std::string const&,Ogre::GpuConstantDefinition const&)"
+)]
 // was: Ogre::GpuNamedConstants::generateConstantDefinitionArrayEntries(std::string const&,Ogre::GpuConstantDefinition const&)
 pub fn stub_ca3a1c() -> ! {
     todo!("0xca3a1c Ogre::GpuNamedConstants::generateConstantDefinitionArrayEntries(std::string const&,Ogre::GpuConstantDefinition const&)")
@@ -3747,7 +4209,9 @@ pub fn stub_ca3f1c() -> ! {
 
 // 0xca3ff0 — __ZN4Ogre27GpuNamedConstantsSerializer20importNamedConstantsERNS_9SharedPtrINS_10DataStreamEEEPNS_17GpuNamedConstantsE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, char, int, int, struct _Unwind_Exception *lpuexcpt)
-#[doc(alias = "Ogre::GpuNamedConstantsSerializer::importNamedConstants(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::GpuNamedConstants *)")]
+#[doc(
+    alias = "Ogre::GpuNamedConstantsSerializer::importNamedConstants(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::GpuNamedConstants *)"
+)]
 // was: Ogre::GpuNamedConstantsSerializer::importNamedConstants(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::GpuNamedConstants *)
 pub fn stub_ca3ff0() -> ! {
     todo!("0xca3ff0 Ogre::GpuNamedConstantsSerializer::importNamedConstants(Ogre::SharedPtr<Ogre::DataStream> &,Ogre::GpuNamedConstants *)")
@@ -3802,7 +4266,9 @@ pub fn stub_ca4564() -> ! {
 }
 
 // 0xca46a4 — __ZN4Ogre19GpuSharedParameters21addConstantDefinitionERKSsNS_15GpuConstantTypeEm
-#[doc(alias = "Ogre::GpuSharedParameters::addConstantDefinition(std::string const&,Ogre::GpuConstantType,unsigned long)")]
+#[doc(
+    alias = "Ogre::GpuSharedParameters::addConstantDefinition(std::string const&,Ogre::GpuConstantType,unsigned long)"
+)]
 // was: Ogre::GpuSharedParameters::addConstantDefinition(std::string const&,Ogre::GpuConstantType,unsigned long)
 pub fn stub_ca46a4() -> ! {
     todo!("0xca46a4 Ogre::GpuSharedParameters::addConstantDefinition(std::string const&,Ogre::GpuConstantType,unsigned long)")
@@ -3810,7 +4276,9 @@ pub fn stub_ca46a4() -> ! {
 
 // 0xca4a64 — __ZN4Ogre19GpuSharedParameters16setNamedConstantERKSsPKfm
 // type: _DWORD __fastcall(Ogre::GpuSharedParameters *__hidden this, const std::string *, const float *, unsigned int)
-#[doc(alias = "Ogre::GpuSharedParameters::setNamedConstant(std::string const&,float const*,unsigned long)")]
+#[doc(
+    alias = "Ogre::GpuSharedParameters::setNamedConstant(std::string const&,float const*,unsigned long)"
+)]
 // was: Ogre::GpuSharedParameters::setNamedConstant(std::string const&,float const*,unsigned long)
 pub fn stub_ca4a64() -> ! {
     todo!("0xca4a64 Ogre::GpuSharedParameters::setNamedConstant(std::string const&,float const*,unsigned long)")
@@ -3818,14 +4286,18 @@ pub fn stub_ca4a64() -> ! {
 
 // 0xca4aa8 — __ZN4Ogre19GpuSharedParameters16setNamedConstantERKSsPKim
 // type: _DWORD __fastcall(Ogre::GpuSharedParameters *__hidden this, const std::string *, const int *, unsigned int)
-#[doc(alias = "Ogre::GpuSharedParameters::setNamedConstant(std::string const&,int const*,unsigned long)")]
+#[doc(
+    alias = "Ogre::GpuSharedParameters::setNamedConstant(std::string const&,int const*,unsigned long)"
+)]
 // was: Ogre::GpuSharedParameters::setNamedConstant(std::string const&,int const*,unsigned long)
 pub fn stub_ca4aa8() -> ! {
     todo!("0xca4aa8 Ogre::GpuSharedParameters::setNamedConstant(std::string const&,int const*,unsigned long)")
 }
 
 // 0xca4aec — __ZN4Ogre24GpuSharedParametersUsageC2ENS_9SharedPtrINS_19GpuSharedParametersEEEPNS_20GpuProgramParametersE
-#[doc(alias = "Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::SharedPtr<Ogre::GpuSharedParameters>,Ogre::GpuProgramParameters *)")]
+#[doc(
+    alias = "Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::SharedPtr<Ogre::GpuSharedParameters>,Ogre::GpuProgramParameters *)"
+)]
 // was: Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::SharedPtr<Ogre::GpuSharedParameters>,Ogre::GpuProgramParameters *)
 pub fn stub_ca4aec() -> ! {
     todo!("0xca4aec Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::SharedPtr<Ogre::GpuSharedParameters>,Ogre::GpuProgramParameters *)")
@@ -3841,7 +4313,9 @@ pub fn stub_ca4c9c() -> ! {
 
 // 0xca4d34 — __ZNK4Ogre20GpuProgramParameters28_findNamedConstantDefinitionERKSsb
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, bool)
-#[doc(alias = "Ogre::GpuProgramParameters::_findNamedConstantDefinition(std::string const&,bool)const")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::_findNamedConstantDefinition(std::string const&,bool)const"
+)]
 // was: Ogre::GpuProgramParameters::_findNamedConstantDefinition(std::string const&,bool)const
 pub fn stub_ca4d34() -> ! {
     todo!("0xca4d34 Ogre::GpuProgramParameters::_findNamedConstantDefinition(std::string const&,bool)const")
@@ -3865,7 +4339,9 @@ pub fn stub_ca5348() -> ! {
 
 // 0xca541c — __ZN4Ogre20GpuProgramParametersC1ERKS0_
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const Ogre::GpuProgramParameters *)
-#[doc(alias = "Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)"
+)]
 // was: Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)
 pub fn stub_ca541c() -> ! {
     todo!("0xca541c Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)")
@@ -3873,7 +4349,9 @@ pub fn stub_ca541c() -> ! {
 
 // 0xca5428 — __ZN4Ogre20GpuProgramParametersC2ERKS0_
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const Ogre::GpuProgramParameters *)
-#[doc(alias = "Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)"
+)]
 // was: Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)
 pub fn stub_ca5428() -> ! {
     todo!("0xca5428 Ogre::GpuProgramParameters::GpuProgramParameters(Ogre::GpuProgramParameters const&)")
@@ -3881,21 +4359,27 @@ pub fn stub_ca5428() -> ! {
 
 // 0xca5750 — __ZN4Ogre20GpuProgramParameters23copySharedParamSetUsageERKSt6vectorINS_24GpuSharedParametersUsageENS_12STLAllocatorIS2_NS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, Ogre::NedPoolingImpl *, int, int, char, int, int, int, int, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int)
-#[doc(alias = "Ogre::GpuProgramParameters::copySharedParamSetUsage(std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::copySharedParamSetUsage(std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)"
+)]
 // was: Ogre::GpuProgramParameters::copySharedParamSetUsage(std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
 pub fn stub_ca5750() -> ! {
     todo!("0xca5750 Ogre::GpuProgramParameters::copySharedParamSetUsage(std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
 }
 
 // 0xca5970 — __ZN4Ogre20GpuProgramParameters18_setNamedConstantsERKNS_9SharedPtrINS_17GpuNamedConstantsEEE
-#[doc(alias = "Ogre::GpuProgramParameters::_setNamedConstants(Ogre::SharedPtr<Ogre::GpuNamedConstants> const&)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::_setNamedConstants(Ogre::SharedPtr<Ogre::GpuNamedConstants> const&)"
+)]
 // was: Ogre::GpuProgramParameters::_setNamedConstants(Ogre::SharedPtr<Ogre::GpuNamedConstants> const&)
 pub fn stub_ca5970() -> ! {
     todo!("0xca5970 Ogre::GpuProgramParameters::_setNamedConstants(Ogre::SharedPtr<Ogre::GpuNamedConstants> const&)")
 }
 
 // 0xca59c8 — __ZN4Ogre20GpuProgramParameters18_setLogicalIndexesERKNS_9SharedPtrINS_22GpuLogicalBufferStructEEES5_
-#[doc(alias = "Ogre::GpuProgramParameters::_setLogicalIndexes(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&,Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::_setLogicalIndexes(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&,Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&)"
+)]
 // was: Ogre::GpuProgramParameters::_setLogicalIndexes(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&,Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&)
 pub fn stub_ca59c8() -> ! {
     todo!("0xca59c8 Ogre::GpuProgramParameters::_setLogicalIndexes(Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&,Ogre::SharedPtr<Ogre::GpuLogicalBufferStruct> const&)")
@@ -3922,12 +4406,16 @@ pub fn stub_ca5a5c() -> ! {
 #[doc(alias = "Ogre::GpuProgramParameters::setConstant(unsigned long,int const*,unsigned long)")]
 // was: Ogre::GpuProgramParameters::setConstant(unsigned long,int const*,unsigned long)
 pub fn stub_ca5b78() -> ! {
-    todo!("0xca5b78 Ogre::GpuProgramParameters::setConstant(unsigned long,int const*,unsigned long)")
+    todo!(
+        "0xca5b78 Ogre::GpuProgramParameters::setConstant(unsigned long,int const*,unsigned long)"
+    )
 }
 
 // 0xca5ba4 — __ZN4Ogre20GpuProgramParameters17_writeRawConstantEmRKNS_7Vector4Em
 // type: int __fastcall(int, int, void *__src)
-#[doc(alias = "Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Vector4 const&,unsigned long)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Vector4 const&,unsigned long)"
+)]
 // was: Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Vector4 const&,unsigned long)
 pub fn stub_ca5ba4() -> ! {
     todo!("0xca5ba4 Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Vector4 const&,unsigned long)")
@@ -3935,7 +4423,9 @@ pub fn stub_ca5ba4() -> ! {
 
 // 0xca5bc4 — __ZN4Ogre20GpuProgramParameters17_writeRawConstantEmRKNS_7Matrix4Em
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int, const Ogre::Matrix4 *__src, unsigned int)
-#[doc(alias = "Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const&,unsigned long)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const&,unsigned long)"
+)]
 // was: Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const&,unsigned long)
 pub fn stub_ca5bc4() -> ! {
     todo!("0xca5bc4 Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const&,unsigned long)")
@@ -3943,7 +4433,9 @@ pub fn stub_ca5bc4() -> ! {
 
 // 0xca5ca4 — __ZN4Ogre20GpuProgramParameters17_writeRawConstantEmPKNS_7Matrix4Em
 // type: int __fastcall(int, int, void *__src, size_t __n)
-#[doc(alias = "Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const*,unsigned long)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const*,unsigned long)"
+)]
 // was: Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const*,unsigned long)
 pub fn stub_ca5ca4() -> ! {
     todo!("0xca5ca4 Ogre::GpuProgramParameters::_writeRawConstant(unsigned long,Ogre::Matrix4 const*,unsigned long)")
@@ -3951,7 +4443,9 @@ pub fn stub_ca5ca4() -> ! {
 
 // 0xca5d6c — __ZN4Ogre20GpuProgramParameters32_getFloatConstantLogicalIndexUseEmmt
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int, unsigned int, unsigned __int16)
-#[doc(alias = "Ogre::GpuProgramParameters::_getFloatConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::_getFloatConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)"
+)]
 // was: Ogre::GpuProgramParameters::_getFloatConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)
 pub fn stub_ca5d6c() -> ! {
     todo!("0xca5d6c Ogre::GpuProgramParameters::_getFloatConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)")
@@ -3959,7 +4453,9 @@ pub fn stub_ca5d6c() -> ! {
 
 // 0xca5f30 — __ZN4Ogre20GpuProgramParameters30_getIntConstantLogicalIndexUseEmmt
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, unsigned int, unsigned int, unsigned __int16)
-#[doc(alias = "Ogre::GpuProgramParameters::_getIntConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::_getIntConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)"
+)]
 // was: Ogre::GpuProgramParameters::_getIntConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)
 pub fn stub_ca5f30() -> ! {
     todo!("0xca5f30 Ogre::GpuProgramParameters::_getIntConstantLogicalIndexUse(unsigned long,unsigned long,unsigned short)")
@@ -3983,7 +4479,9 @@ pub fn stub_ca64b4() -> ! {
 
 // 0xca669c — __ZN4Ogre20GpuProgramParameters15setAutoConstantEmNS0_16AutoConstantTypeEm
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
-#[doc(alias = "Ogre::GpuProgramParameters::setAutoConstant(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::setAutoConstant(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)"
+)]
 // was: Ogre::GpuProgramParameters::setAutoConstant(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)
 pub fn stub_ca669c() -> ! {
     todo!("0xca669c Ogre::GpuProgramParameters::setAutoConstant(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)")
@@ -4014,7 +4512,9 @@ pub fn stub_ca6c1c() -> ! {
 }
 
 // 0xca6c28 — __ZN4Ogre20GpuProgramParameters19setAutoConstantRealEmNS0_16AutoConstantTypeEf
-#[doc(alias = "Ogre::GpuProgramParameters::setAutoConstantReal(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,float)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::setAutoConstantReal(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,float)"
+)]
 // was: Ogre::GpuProgramParameters::setAutoConstantReal(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,float)
 pub fn stub_ca6c28() -> ! {
     todo!("0xca6c28 Ogre::GpuProgramParameters::setAutoConstantReal(unsigned long,Ogre::GpuProgramParameters::AutoConstantType,float)")
@@ -4022,7 +4522,9 @@ pub fn stub_ca6c28() -> ! {
 
 // 0xca70b4 — __ZN4Ogre20GpuProgramParameters17_updateAutoParamsEPKNS_19AutoParamDataSourceEt
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const Ogre::AutoParamDataSource *, unsigned __int16)
-#[doc(alias = "Ogre::GpuProgramParameters::_updateAutoParams(Ogre::AutoParamDataSource const*,unsigned short)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::_updateAutoParams(Ogre::AutoParamDataSource const*,unsigned short)"
+)]
 // was: Ogre::GpuProgramParameters::_updateAutoParams(Ogre::AutoParamDataSource const*,unsigned short)
 pub fn stub_ca70b4() -> ! {
     todo!("0xca70b4 Ogre::GpuProgramParameters::_updateAutoParams(Ogre::AutoParamDataSource const*,unsigned short)")
@@ -4038,7 +4540,9 @@ pub fn stub_ca96ec() -> ! {
 
 // 0xca9724 — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsRKNS_7Vector4E
 // type: int __fastcall(Ogre::GpuProgramParameters *this)
-#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Vector4 const&)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Vector4 const&)"
+)]
 // was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Vector4 const&)
 pub fn stub_ca9724() -> ! {
     todo!("0xca9724 Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Vector4 const&)")
@@ -4046,7 +4550,9 @@ pub fn stub_ca9724() -> ! {
 
 // 0xca9760 — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsRKNS_7Matrix4E
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, const Ogre::Matrix4 *)
-#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Matrix4 const&)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Matrix4 const&)"
+)]
 // was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Matrix4 const&)
 pub fn stub_ca9760() -> ! {
     todo!("0xca9760 Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::Matrix4 const&)")
@@ -4054,7 +4560,9 @@ pub fn stub_ca9760() -> ! {
 
 // 0xca9790 — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsPKfmm
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, const float *, unsigned int, unsigned int)
-#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,float const*,unsigned long,unsigned long)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,float const*,unsigned long,unsigned long)"
+)]
 // was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,float const*,unsigned long,unsigned long)
 pub fn stub_ca9790() -> ! {
     todo!("0xca9790 Ogre::GpuProgramParameters::setNamedConstant(std::string const&,float const*,unsigned long,unsigned long)")
@@ -4062,7 +4570,9 @@ pub fn stub_ca9790() -> ! {
 
 // 0xca97c8 — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsRKNS_11ColourValueE
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, const Ogre::ColourValue *)
-#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::ColourValue const&)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::ColourValue const&)"
+)]
 // was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::ColourValue const&)
 pub fn stub_ca97c8() -> ! {
     todo!("0xca97c8 Ogre::GpuProgramParameters::setNamedConstant(std::string const&,Ogre::ColourValue const&)")
@@ -4070,7 +4580,9 @@ pub fn stub_ca97c8() -> ! {
 
 // 0xca9804 — __ZN4Ogre20GpuProgramParameters16setNamedConstantERKSsPKimm
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const std::string *, const int *, unsigned int, unsigned int)
-#[doc(alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,int const*,unsigned long,unsigned long)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::setNamedConstant(std::string const&,int const*,unsigned long,unsigned long)"
+)]
 // was: Ogre::GpuProgramParameters::setNamedConstant(std::string const&,int const*,unsigned long,unsigned long)
 pub fn stub_ca9804() -> ! {
     todo!("0xca9804 Ogre::GpuProgramParameters::setNamedConstant(std::string const&,int const*,unsigned long,unsigned long)")
@@ -4078,7 +4590,9 @@ pub fn stub_ca9804() -> ! {
 
 // 0xca983c — __ZN4Ogre20GpuProgramParameters20setNamedAutoConstantERKSsNS0_16AutoConstantTypeEm
 // type: int __fastcall(Ogre::GpuProgramParameters *this)
-#[doc(alias = "Ogre::GpuProgramParameters::setNamedAutoConstant(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::setNamedAutoConstant(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)"
+)]
 // was: Ogre::GpuProgramParameters::setNamedAutoConstant(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)
 pub fn stub_ca983c() -> ! {
     todo!("0xca983c Ogre::GpuProgramParameters::setNamedAutoConstant(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,unsigned long)")
@@ -4086,7 +4600,9 @@ pub fn stub_ca983c() -> ! {
 
 // 0xca9a24 — __ZN4Ogre20GpuProgramParameters24setNamedAutoConstantRealERKSsNS0_16AutoConstantTypeEf
 // type: int __fastcall(Ogre::GpuProgramParameters *this)
-#[doc(alias = "Ogre::GpuProgramParameters::setNamedAutoConstantReal(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,float)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::setNamedAutoConstantReal(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,float)"
+)]
 // was: Ogre::GpuProgramParameters::setNamedAutoConstantReal(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,float)
 pub fn stub_ca9a24() -> ! {
     todo!("0xca9a24 Ogre::GpuProgramParameters::setNamedAutoConstantReal(std::string const&,Ogre::GpuProgramParameters::AutoConstantType,float)")
@@ -4105,12 +4621,16 @@ pub fn stub_ca9c20() -> ! {
 #[doc(alias = "Ogre::GpuProgramParameters::copyConstantsFrom(Ogre::GpuProgramParameters const&)")]
 // was: Ogre::GpuProgramParameters::copyConstantsFrom(Ogre::GpuProgramParameters const&)
 pub fn stub_ca9c3c() -> ! {
-    todo!("0xca9c3c Ogre::GpuProgramParameters::copyConstantsFrom(Ogre::GpuProgramParameters const&)")
+    todo!(
+        "0xca9c3c Ogre::GpuProgramParameters::copyConstantsFrom(Ogre::GpuProgramParameters const&)"
+    )
 }
 
 // 0xca9c74 — __ZN4Ogre20GpuProgramParameters30copyMatchingNamedConstantsFromERKS0_
 // type: _DWORD __fastcall(Ogre::GpuProgramParameters *__hidden this, const Ogre::GpuProgramParameters *)
-#[doc(alias = "Ogre::GpuProgramParameters::copyMatchingNamedConstantsFrom(Ogre::GpuProgramParameters const&)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::copyMatchingNamedConstantsFrom(Ogre::GpuProgramParameters const&)"
+)]
 // was: Ogre::GpuProgramParameters::copyMatchingNamedConstantsFrom(Ogre::GpuProgramParameters const&)
 pub fn stub_ca9c74() -> ! {
     todo!("0xca9c74 Ogre::GpuProgramParameters::copyMatchingNamedConstantsFrom(Ogre::GpuProgramParameters const&)")
@@ -4118,7 +4638,9 @@ pub fn stub_ca9c74() -> ! {
 
 // 0xcaa0a4 — __ZN4Ogre20GpuProgramParameters19addSharedParametersENS_9SharedPtrINS_19GpuSharedParametersEEE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, Ogre::NedPoolingImpl *, int, int, char, int, int, int, int, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int)
-#[doc(alias = "Ogre::GpuProgramParameters::addSharedParameters(Ogre::SharedPtr<Ogre::GpuSharedParameters>)")]
+#[doc(
+    alias = "Ogre::GpuProgramParameters::addSharedParameters(Ogre::SharedPtr<Ogre::GpuSharedParameters>)"
+)]
 // was: Ogre::GpuProgramParameters::addSharedParameters(Ogre::SharedPtr<Ogre::GpuSharedParameters>)
 pub fn stub_caa0a4() -> ! {
     todo!("0xcaa0a4 Ogre::GpuProgramParameters::addSharedParameters(Ogre::SharedPtr<Ogre::GpuSharedParameters>)")
@@ -4156,49 +4678,63 @@ pub fn stub_caa500() -> ! {
 }
 
 // 0xcaa520 — __ZNSt3mapISsN4Ogre21GpuConstantDefinitionESt4lessISsENS0_12STLAllocatorISt4pairIKSsS1_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS6_
-#[doc(alias = "std::map<std::string,Ogre::GpuConstantDefinition,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
+#[doc(
+    alias = "std::map<std::string,Ogre::GpuConstantDefinition,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)"
+)]
 // was: std::map<std::string,Ogre::GpuConstantDefinition,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
 pub fn stub_caa520() -> ! {
     todo!("0xcaa520 std::map<std::string,Ogre::GpuConstantDefinition,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
 }
 
 // 0xcaa6e8 — __ZN4Ogre12STLAllocatorINS_24GpuSharedParametersUsageENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED1Ev
-#[doc(alias = "Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
+#[doc(
+    alias = "Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()"
+)]
 // was: Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()
 pub fn stub_caa6e8() -> ! {
     todo!("0xcaa6e8 Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
 }
 
 // 0xcaa6ec — __ZNSt6vectorIfN4Ogre12STLAllocatorIfNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS6_
-#[doc(alias = "std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+#[doc(
+    alias = "std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)"
+)]
 // was: std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
 pub fn stub_caa6ec() -> ! {
     todo!("0xcaa6ec std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
 }
 
 // 0xcaa7ac — __ZNSt6vectorIiN4Ogre12STLAllocatorIiNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS6_
-#[doc(alias = "std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+#[doc(
+    alias = "std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)"
+)]
 // was: std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
 pub fn stub_caa7ac() -> ! {
     todo!("0xcaa7ac std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
 }
 
 // 0xcaa86c — __ZNSt6vectorIN4Ogre20GpuProgramParameters17AutoConstantEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS8_
-#[doc(alias = "std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+#[doc(
+    alias = "std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)"
+)]
 // was: std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
 pub fn stub_caa86c() -> ! {
     todo!("0xcaa86c std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
 }
 
 // 0xcaab68 — __ZNSt6vectorIN4Ogre24GpuSharedParametersUsage13CopyDataEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEaSERKS8_
-#[doc(alias = "std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+#[doc(
+    alias = "std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)"
+)]
 // was: std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
 pub fn stub_caab68() -> ! {
     todo!("0xcaab68 std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator=(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
 }
 
 // 0xcaaeac — __ZNSt6vectorIN4Ogre20GpuProgramParameters17AutoConstantEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-#[doc(alias = "std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuProgramParameters::AutoConstantEntry*,std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuProgramParameters::AutoConstantEntry const&)")]
+#[doc(
+    alias = "std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuProgramParameters::AutoConstantEntry*,std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuProgramParameters::AutoConstantEntry const&)"
+)]
 // was: std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuProgramParameters::AutoConstantEntry*,std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuProgramParameters::AutoConstantEntry const&)
 pub fn stub_caaeac() -> ! {
     todo!("0xcaaeac std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuProgramParameters::AutoConstantEntry*,std::vector<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuProgramParameters::AutoConstantEntry const&)")
@@ -4206,7 +4742,9 @@ pub fn stub_caaeac() -> ! {
 
 // 0xcab01c — __ZNSt6vectorIiN4Ogre12STLAllocatorIiNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS6_EEmRKi
 // type: int __fastcall(int, void *__src)
-#[doc(alias = "std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<int *,std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,int const&)")]
+#[doc(
+    alias = "std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<int *,std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,int const&)"
+)]
 // was: std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<int *,std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,int const&)
 pub fn stub_cab01c() -> ! {
     todo!("0xcab01c std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<int *,std::vector<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,unsigned long,int const&)")
@@ -4214,7 +4752,9 @@ pub fn stub_cab01c() -> ! {
 
 // 0xcab1b8 — __ZNSt6vectorIN4Ogre24GpuSharedParametersUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S7_EERKS1_
 // type: int __fastcall(int, int, int)
-#[doc(alias = "std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage*,std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage const&)")]
+#[doc(
+    alias = "std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage*,std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage const&)"
+)]
 // was: std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage*,std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage const&)
 pub fn stub_cab1b8() -> ! {
     todo!("0xcab1b8 std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage*,std::vector<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage const&)")
@@ -4222,14 +4762,18 @@ pub fn stub_cab1b8() -> ! {
 
 // 0xcab460 — __ZSt22__uninitialized_copy_aIPN4Ogre24GpuSharedParametersUsageES2_NS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEET0_T_S9_S8_T1_
 // type: int __fastcall(int, int, int, int, Ogre::GpuSharedParametersUsage *, void *, int, int, int, int)
-#[doc(alias = "Ogre::GpuSharedParametersUsage * std::__uninitialized_copy_a<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")]
+#[doc(
+    alias = "Ogre::GpuSharedParametersUsage * std::__uninitialized_copy_a<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)"
+)]
 // was: Ogre::GpuSharedParametersUsage * std::__uninitialized_copy_a<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)
 pub fn stub_cab460() -> ! {
     todo!("0xcab460 Ogre::GpuSharedParametersUsage * std::__uninitialized_copy_a<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>)")
 }
 
 // 0xcab578 — __ZN4Ogre12STLAllocatorINS_24GpuSharedParametersUsageENS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEED0Ev
-#[doc(alias = "Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")]
+#[doc(
+    alias = "Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()"
+)]
 // was: Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()
 pub fn stub_cab578() -> ! {
     todo!("0xcab578 Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>::~STLAllocator()")
@@ -4237,7 +4781,9 @@ pub fn stub_cab578() -> ! {
 
 // 0xcab584 — __ZNSt22__copy_backward_normalILb0ELb0EE10__copy_b_nIPN4Ogre24GpuSharedParametersUsageES4_EET0_T_S6_S5_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "Ogre::GpuSharedParametersUsage * std::__copy_backward_normal<false,false>::__copy_b_n<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *)")]
+#[doc(
+    alias = "Ogre::GpuSharedParametersUsage * std::__copy_backward_normal<false,false>::__copy_b_n<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *)"
+)]
 // was: Ogre::GpuSharedParametersUsage * std::__copy_backward_normal<false,false>::__copy_b_n<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *)
 pub fn stub_cab584() -> ! {
     todo!("0xcab584 Ogre::GpuSharedParametersUsage * std::__copy_backward_normal<false,false>::__copy_b_n<Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *>(Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *,Ogre::GpuSharedParametersUsage *)")
@@ -4245,91 +4791,117 @@ pub fn stub_cab584() -> ! {
 
 // 0xcab6ec — __ZN4Ogre24GpuSharedParametersUsageC2ERKS0_
 // type: _DWORD __fastcall(Ogre::GpuSharedParametersUsage *__hidden this, const Ogre::GpuSharedParametersUsage *)
-#[doc(alias = "Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::GpuSharedParametersUsage const&)")]
+#[doc(
+    alias = "Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::GpuSharedParametersUsage const&)"
+)]
 // was: Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::GpuSharedParametersUsage const&)
 pub fn stub_cab6ec() -> ! {
     todo!("0xcab6ec Ogre::GpuSharedParametersUsage::GpuSharedParametersUsage(Ogre::GpuSharedParametersUsage const&)")
 }
 
 // 0xcab890 — __ZNSt6vectorIN4Ogre24GpuSharedParametersUsage13CopyDataEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEC2ERKS8_
-#[doc(alias = "std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+#[doc(
+    alias = "std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)"
+)]
 // was: std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
 pub fn stub_cab890() -> ! {
     todo!("0xcab890 std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::vector(std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
 }
 
 // 0xcab910 — __ZNSt12_Vector_baseIN4Ogre24GpuSharedParametersUsage13CopyDataEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_cab910() -> ! {
     todo!("0xcab910 std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xcab914 — __ZNSt12_Vector_baseIN4Ogre24GpuSharedParametersUsage13CopyDataEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_cab914() -> ! {
     todo!("0xcab914 std::_Vector_base<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xcab920 — __ZNSt12_Vector_baseIN4Ogre24GpuSharedParametersUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_cab920() -> ! {
     todo!("0xcab920 std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xcab924 — __ZNSt12_Vector_baseIN4Ogre24GpuSharedParametersUsageENS0_12STLAllocatorIS1_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_cab924() -> ! {
     todo!("0xcab924 std::_Vector_base<Ogre::GpuSharedParametersUsage,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xcab930 — __ZNSt12_Vector_baseIN4Ogre20GpuProgramParameters17AutoConstantEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_cab930() -> ! {
     todo!("0xcab930 std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xcab934 — __ZNSt12_Vector_baseIN4Ogre20GpuProgramParameters17AutoConstantEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_cab934() -> ! {
     todo!("0xcab934 std::_Vector_base<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::STLAllocator<Ogre::GpuProgramParameters::AutoConstantEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xcab940 — __ZNSt6vectorIN4Ogre24GpuSharedParametersUsage13CopyDataEntryENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S8_EERKS2_
-#[doc(alias = "std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage::CopyDataEntry*,std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage::CopyDataEntry const&)")]
+#[doc(
+    alias = "std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage::CopyDataEntry*,std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage::CopyDataEntry const&)"
+)]
 // was: std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage::CopyDataEntry*,std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage::CopyDataEntry const&)
 pub fn stub_cab940() -> ! {
     todo!("0xcab940 std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::GpuSharedParametersUsage::CopyDataEntry*,std::vector<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::STLAllocator<Ogre::GpuSharedParametersUsage::CopyDataEntry,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,Ogre::GpuSharedParametersUsage::CopyDataEntry const&)")
 }
 
 // 0xcaba5c — __ZNKSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const
 pub fn stub_caba5c() -> ! {
     todo!("0xcaba5c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")
 }
 
 // 0xcabb00 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
 pub fn stub_cabb00() -> ! {
     todo!("0xcabb00 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
 }
 
 // 0xcabba4 — __ZNSt12_Vector_baseIiN4Ogre12STLAllocatorIiNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD1Ev
-#[doc(alias = "std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_cabba4() -> ! {
     todo!("0xcabba4 std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
 }
 
 // 0xcabba8 — __ZNSt12_Vector_baseIiN4Ogre12STLAllocatorIiNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE12_Vector_implD0Ev
-#[doc(alias = "std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")]
+#[doc(
+    alias = "std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()"
+)]
 // was: std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()
 pub fn stub_cabba8() -> ! {
     todo!("0xcabba8 std::_Vector_base<int,Ogre::STLAllocator<int,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Vector_impl::~_Vector_impl()")
@@ -4337,7 +4909,9 @@ pub fn stub_cabba8() -> ! {
 
 // 0xcabbb4 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_
 // type: int __fastcall(int, int, struct _Unwind_Exception *lpuexcpt)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)
 pub fn stub_cabbb4() -> ! {
     todo!("0xcabbb4 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")
@@ -4345,7 +4919,9 @@ pub fn stub_cabbb4() -> ! {
 
 // 0xcabd94 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS4_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, Ogre::NedPoolingImpl *, int, int, void *, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)
 pub fn stub_cabd94() -> ! {
     todo!("0xcabd94 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")
@@ -4353,7 +4929,9 @@ pub fn stub_cabd94() -> ! {
 
 // 0xcabef8 — __ZNSt8_Rb_treeISsSt4pairIKSsN4Ogre21GpuConstantDefinitionEESt10_Select1stIS4_ESt4lessISsENS2_12STLAllocatorIS4_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS4_
 // type: int __fastcall(int, int, struct _Unwind_Exception *lpuexcpt)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")]
+#[doc(
+    alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::GpuConstantDefinition> const&)"
+)]
 // was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::GpuConstantDefinition> const&)
 pub fn stub_cabef8() -> ! {
     todo!("0xcabef8 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::GpuConstantDefinition>,std::_Select1st<std::pair<std::string const,Ogre::GpuConstantDefinition>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::GpuConstantDefinition>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::GpuConstantDefinition> const&)")
@@ -4479,7 +5057,9 @@ pub fn stub_cb59a0() -> ! {
 
 // 0xcb59a4 — __ZN4Ogre9SharedPtrINS_10GpuProgramEEaSERKS2_
 // type: int __fastcall(int, int, int, int, Ogre::NedPoolingImpl *, int, int, int, int, int)
-#[doc(alias = "Ogre::SharedPtr<Ogre::GpuProgram>::operator=(Ogre::SharedPtr<Ogre::GpuProgram> const&)")]
+#[doc(
+    alias = "Ogre::SharedPtr<Ogre::GpuProgram>::operator=(Ogre::SharedPtr<Ogre::GpuProgram> const&)"
+)]
 // was: Ogre::SharedPtr<Ogre::GpuProgram>::operator=(Ogre::SharedPtr<Ogre::GpuProgram> const&)
 pub fn stub_cb59a4() -> ! {
     todo!("0xcb59a4 Ogre::SharedPtr<Ogre::GpuProgram>::operator=(Ogre::SharedPtr<Ogre::GpuProgram> const&)")
@@ -4510,7 +5090,9 @@ pub fn stub_cb5c5c() -> ! {
 }
 
 // 0xcb5c6c — __ZN4Ogre21HardwareBufferManagerC2EPNS_25HardwareBufferManagerBaseE
-#[doc(alias = "Ogre::HardwareBufferManager::HardwareBufferManager(Ogre::HardwareBufferManagerBase *)")]
+#[doc(
+    alias = "Ogre::HardwareBufferManager::HardwareBufferManager(Ogre::HardwareBufferManagerBase *)"
+)]
 // was: Ogre::HardwareBufferManager::HardwareBufferManager(Ogre::HardwareBufferManagerBase *)
 pub fn stub_cb5c6c() -> ! {
     todo!("0xcb5c6c Ogre::HardwareBufferManager::HardwareBufferManager(Ogre::HardwareBufferManagerBase *)")
@@ -4582,7 +5164,9 @@ pub fn stub_cb61c8() -> ! {
 
 // 0xcb61ec — __ZN4Ogre25HardwareBufferManagerBase24destroyVertexDeclarationEPNS_17VertexDeclarationE
 // type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this, Ogre::VertexDeclaration *)
-#[doc(alias = "Ogre::HardwareBufferManagerBase::destroyVertexDeclaration(Ogre::VertexDeclaration *)")]
+#[doc(
+    alias = "Ogre::HardwareBufferManagerBase::destroyVertexDeclaration(Ogre::VertexDeclaration *)"
+)]
 // was: Ogre::HardwareBufferManagerBase::destroyVertexDeclaration(Ogre::VertexDeclaration *)
 pub fn stub_cb61ec() -> ! {
     todo!("0xcb61ec Ogre::HardwareBufferManagerBase::destroyVertexDeclaration(Ogre::VertexDeclaration *)")
@@ -4598,7 +5182,9 @@ pub fn stub_cb624c() -> ! {
 
 // 0xcb6270 — __ZN4Ogre25HardwareBufferManagerBase26destroyVertexBufferBindingEPNS_19VertexBufferBindingE
 // type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this, Ogre::VertexBufferBinding *)
-#[doc(alias = "Ogre::HardwareBufferManagerBase::destroyVertexBufferBinding(Ogre::VertexBufferBinding *)")]
+#[doc(
+    alias = "Ogre::HardwareBufferManagerBase::destroyVertexBufferBinding(Ogre::VertexBufferBinding *)"
+)]
 // was: Ogre::HardwareBufferManagerBase::destroyVertexBufferBinding(Ogre::VertexBufferBinding *)
 pub fn stub_cb6270() -> ! {
     todo!("0xcb6270 Ogre::HardwareBufferManagerBase::destroyVertexBufferBinding(Ogre::VertexBufferBinding *)")
@@ -4613,7 +5199,9 @@ pub fn stub_cb62d0() -> ! {
 }
 
 // 0xcb6388 — __ZN4Ogre25HardwareBufferManagerBase28destroyVertexDeclarationImplEPNS_17VertexDeclarationE
-#[doc(alias = "Ogre::HardwareBufferManagerBase::destroyVertexDeclarationImpl(Ogre::VertexDeclaration *)")]
+#[doc(
+    alias = "Ogre::HardwareBufferManagerBase::destroyVertexDeclarationImpl(Ogre::VertexDeclaration *)"
+)]
 // was: Ogre::HardwareBufferManagerBase::destroyVertexDeclarationImpl(Ogre::VertexDeclaration *)
 pub fn stub_cb6388() -> ! {
     todo!("0xcb6388 Ogre::HardwareBufferManagerBase::destroyVertexDeclarationImpl(Ogre::VertexDeclaration *)")
@@ -4628,7 +5216,9 @@ pub fn stub_cb639c() -> ! {
 }
 
 // 0xcb6454 — __ZN4Ogre25HardwareBufferManagerBase30destroyVertexBufferBindingImplEPNS_19VertexBufferBindingE
-#[doc(alias = "Ogre::HardwareBufferManagerBase::destroyVertexBufferBindingImpl(Ogre::VertexBufferBinding *)")]
+#[doc(
+    alias = "Ogre::HardwareBufferManagerBase::destroyVertexBufferBindingImpl(Ogre::VertexBufferBinding *)"
+)]
 // was: Ogre::HardwareBufferManagerBase::destroyVertexBufferBindingImpl(Ogre::VertexBufferBinding *)
 pub fn stub_cb6454() -> ! {
     todo!("0xcb6454 Ogre::HardwareBufferManagerBase::destroyVertexBufferBindingImpl(Ogre::VertexBufferBinding *)")
@@ -4652,7 +5242,9 @@ pub fn stub_cb64a4() -> ! {
 
 // 0xcb64e0 — __ZN4Ogre25HardwareBufferManagerBase33registerVertexBufferSourceAndCopyERKNS_29HardwareVertexBufferSharedPtrES3_
 // type: _DWORD __fastcall(Ogre::HardwareBufferManagerBase *__hidden this, const Ogre::HardwareVertexBufferSharedPtr *, const Ogre::HardwareVertexBufferSharedPtr *)
-#[doc(alias = "Ogre::HardwareBufferManagerBase::registerVertexBufferSourceAndCopy(Ogre::HardwareVertexBufferSharedPtr const&,Ogre::HardwareVertexBufferSharedPtr const&)")]
+#[doc(
+    alias = "Ogre::HardwareBufferManagerBase::registerVertexBufferSourceAndCopy(Ogre::HardwareVertexBufferSharedPtr const&,Ogre::HardwareVertexBufferSharedPtr const&)"
+)]
 // was: Ogre::HardwareBufferManagerBase::registerVertexBufferSourceAndCopy(Ogre::HardwareVertexBufferSharedPtr const&,Ogre::HardwareVertexBufferSharedPtr const&)
 pub fn stub_cb64e0() -> ! {
     todo!("0xcb64e0 Ogre::HardwareBufferManagerBase::registerVertexBufferSourceAndCopy(Ogre::HardwareVertexBufferSharedPtr const&,Ogre::HardwareVertexBufferSharedPtr const&)")
