@@ -6,7 +6,7 @@
 
 use rbx_core::SharedPtr;
 
-// 2303 stubs in this file | batch range 0xef04..0x46ca70
+// 2403 stubs in this file | batch range 0xef04..0x473b80
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
@@ -15844,4 +15844,663 @@ pub fn stub_0x46c958() -> ! {
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_do_get_mutex(void)
 pub fn stub_0x46ca70() -> ! {
     todo!("0x46ca70 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::safe_static_do_get_mutex(void)")
+}
+
+// 0x46cb60 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_ED1Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()
+pub fn stub_0x46cb60() -> ! {
+    todo!("0x46cb60 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0x46cc70 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotENS3_8functionISC_EELi2ESC_ED0Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()
+pub fn stub_0x46cc70() -> ! {
+    todo!("0x46cc70 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0x46cda0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slotD1Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()
+pub fn stub_0x46cda0() -> ! {
+    todo!("0x46cda0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::~slot()")
+}
+
+// 0x46cdd0 — __ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEPKNS2_10Reflection18PropertyDescriptorEE13assign_to_ownERKS9_
+#[doc(alias = "boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*> const&)")]
+// was: boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*> const&)
+pub fn stub_0x46cdd0() -> ! {
+    todo!("0x46cdd0 boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*> const&)")
+}
+
+// 0x46ce00 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::BoundFuncDesc(void (RBX::DataModel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x46ce00() -> ! {
+    todo!("0x46ce00 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::BoundFuncDesc(void (RBX::DataModel::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x46cf04 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFvvELi0EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()")]
+pub fn stub_0x46cf04() -> ! {
+    todo!("0x46cf04 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x46cfb8 — __ZNK3RBX10Reflection13BoundFuncDescINS_9DataModelEFvvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_0x46cfb8() -> ! {
+    todo!("0x46cfb8 RBX::Reflection::BoundFuncDesc<RBX::DataModel,void ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x46cfd8 — __ZN5boost6detail8function15functor_managerIPFvPN3RBX9DataModelEEE6manageERKNS1_15function_bufferERS9_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<void (*)(RBX::DataModel *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// was: boost::detail::function::functor_manager<void (*)(RBX::DataModel *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_0x46cfd8() -> ! {
+    todo!("0x46cfd8 boost::detail::function::functor_manager<void (*)(RBX::DataModel *)>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x46d034 — __ZN5boost6detail8function22void_function_invoker1IPFvPN3RBX9DataModelEEvS5_E6invokeERNS1_15function_bufferES5_
+#[doc(alias = "boost::detail::function::void_function_invoker1<void (*)(RBX::DataModel *),void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")]
+// was: boost::detail::function::void_function_invoker1<void (*)(RBX::DataModel *),void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)
+pub fn stub_0x46d034() -> ! {
+    todo!("0x46d034 boost::detail::function::void_function_invoker1<void (*)(RBX::DataModel *),void,RBX::DataModel *>::invoke(boost::detail::function::function_buffer &,RBX::DataModel *)")
+}
+
+// 0x46d248 — __ZN3RBX9DataModel10LegacyLock14ImplementationC2EPS0_N5boost10shared_ptrINS0_10GenericJobEEENS5_INS_6Limits7CounterEEE
+#[doc(alias = "RBX::DataModel::LegacyLock::Implementation::Implementation(RBX::DataModel*,boost::shared_ptr<RBX::DataModel::GenericJob>,boost::shared_ptr<RBX::Limits::Counter>)")]
+// was: RBX::DataModel::LegacyLock::Implementation::Implementation(RBX::DataModel*,boost::shared_ptr<RBX::DataModel::GenericJob>,boost::shared_ptr<RBX::Limits::Counter>)
+pub fn stub_0x46d248() -> ! {
+    todo!("0x46d248 RBX::DataModel::LegacyLock::Implementation::Implementation(RBX::DataModel*,boost::shared_ptr<RBX::DataModel::GenericJob>,boost::shared_ptr<RBX::Limits::Counter>)")
+}
+
+// 0x46d698 — __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEE14pop_if_presentERS8_
+#[doc(alias = "rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::pop_if_present(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&)")]
+// was: rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::pop_if_present(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&)
+pub fn stub_0x46d698() -> ! {
+    todo!("0x46d698 rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::pop_if_present(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&)")
+}
+
+// 0x46d778 — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEE5resetIS5_EEvPT_
+#[doc(alias = "void boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::reset<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
+// was: void boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::reset<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)
+pub fn stub_0x46d778() -> ! {
+    todo!("0x46d778 void boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::reset<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")
+}
+
+// 0x46d7a4 — __ZN5boost4bindIvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEES7_EENS_3_bi6bind_tIT_PFSA_T0_ENS8_9list_av_1IT1_E4typeEEESD_SF_
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list_av_1<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::type> boost::bind<void,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>(void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)")]
+// was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list_av_1<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::type> boost::bind<void,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>(void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)
+pub fn stub_0x46d7a4() -> ! {
+    todo!("0x46d7a4 boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list_av_1<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::type> boost::bind<void,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>(void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)")
+}
+
+// 0x46d8bc — __ZN3RBX9DataModel10LegacyLock14Implementation4taskEN5boost10shared_ptrINS2_6EventsEEE
+#[doc(alias = "RBX::DataModel::LegacyLock::Implementation::task(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)")]
+// was: RBX::DataModel::LegacyLock::Implementation::task(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)
+pub fn stub_0x46d8bc() -> ! {
+    todo!("0x46d8bc RBX::DataModel::LegacyLock::Implementation::task(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>)")
+}
+
+// 0x46d908 — __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEE4pushERKS8_
+#[doc(alias = "rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::push(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
+// was: rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::push(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
+pub fn stub_0x46d908() -> ! {
+    todo!("0x46d908 rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::push(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")
+}
+
+// 0x46d9cc — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE9push_backERKS7_
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::push_back(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::push_back(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
+pub fn stub_0x46d9cc() -> ! {
+    todo!("0x46d9cc std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::push_back(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")
+}
+
+// 0x46da0c — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE16_M_push_back_auxERKS7_
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_push_back_aux(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_push_back_aux(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
+pub fn stub_0x46da0c() -> ! {
+    todo!("0x46da0c std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_push_back_aux(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")
+}
+
+// 0x46db60 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE22_M_reserve_map_at_backEm
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reserve_map_at_back(unsigned long)")]
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reserve_map_at_back(unsigned long)
+pub fn stub_0x46db60() -> ! {
+    todo!("0x46db60 std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reserve_map_at_back(unsigned long)")
+}
+
+// 0x46db7c — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE17_M_reallocate_mapEmb
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reallocate_map(unsigned long,bool)")]
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reallocate_map(unsigned long,bool)
+pub fn stub_0x46db7c() -> ! {
+    todo!("0x46db7c std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_reallocate_map(unsigned long,bool)")
+}
+
+// 0x46dc54 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE15_M_allocate_mapEm
+#[doc(alias = "std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_allocate_map(unsigned long)")]
+// was: std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_allocate_map(unsigned long)
+pub fn stub_0x46dc54() -> ! {
+    todo!("0x46dc54 std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_allocate_map(unsigned long)")
+}
+
+// 0x46dc6c — __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEEEEC2ESA_
+#[doc(alias = "boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>)")]
+// was: boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>)
+pub fn stub_0x46dc6c() -> ! {
+    todo!("0x46dc6c boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>)")
+}
+
+// 0x46df08 — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS2_10LegacyLock14Implementation6EventsEEEENS6_5list1INS6_5valueISC_EEEEEEEEvT_
+#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>)")]
+// was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>)
+pub fn stub_0x46df08() -> ! {
+    todo!("0x46df08 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>)")
+}
+
+// 0x46dff8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_0x46dff8() -> ! {
+    todo!("0x46dff8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x46e014 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEvPS7_E6invokeERNS1_15function_bufferESJ_
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
+// was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)
+pub fn stub_0x46e014() -> ! {
+    todo!("0x46e014 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
+}
+
+// 0x46e030 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const")]
+// was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const
+pub fn stub_0x46e030() -> ! {
+    todo!("0x46e030 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0x46e110 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn stub_0x46e110() -> ! {
+    todo!("0x46e110 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0x46e208 — __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEEEEclIPFvS9_ENS1_IRPS5_EEEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "void boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::operator()<void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
+// was: void boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::operator()<void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>) &,boost::_bi::list1<RBX::DataModel*&> &,int)
+pub fn stub_0x46e208() -> ! {
+    todo!("0x46e208 void boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::operator()<void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")
+}
+
+// 0x46e2d4 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE12manage_smallERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// was: boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_0x46e2d4() -> ! {
+    todo!("0x46e2d4 boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x46e358 — __ZN3RBX9DataModel10LegacyLock14Implementation6EventsC2Ev
+#[doc(alias = "RBX::DataModel::LegacyLock::Implementation::Events::Events(void)")]
+pub fn stub_0x46e358() -> ! {
+    todo!("0x46e358 RBX::DataModel::LegacyLock::Implementation::Events::Events(void)")
+}
+
+// 0x46e404 — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEC2IS5_EEPT_
+#[doc(alias = "boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
+// was: boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)
+pub fn stub_0x46e404() -> ! {
+    todo!("0x46e404 boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")
+}
+
+// 0x46e4d8 — __ZN5boost6detail12shared_countC2IN3RBX9DataModel10LegacyLock14Implementation6EventsEEEPT_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
+// was: boost::detail::shared_count::shared_count<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)
+pub fn stub_0x46e4d8() -> ! {
+    todo!("0x46e4d8 boost::detail::shared_count::shared_count<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")
+}
+
+// 0x46e5d8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()
+pub fn stub_0x46e5d8() -> ! {
+    todo!("0x46e5d8 boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()")
+}
+
+// 0x46e5dc — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()
+pub fn stub_0x46e5dc() -> ! {
+    todo!("0x46e5dc boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::~sp_counted_impl_p()")
+}
+
+// 0x46e5e0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::dispose(void)
+pub fn stub_0x46e5e0() -> ! {
+    todo!("0x46e5e0 boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::dispose(void)")
+}
+
+// 0x46e604 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_deleter(std::type_info const&)
+pub fn stub_0x46e604() -> ! {
+    todo!("0x46e604 boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_deleter(std::type_info const&)")
+}
+
+// 0x46e608 — __ZN5boost6detail17sp_counted_impl_pIN3RBX9DataModel10LegacyLock14Implementation6EventsEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_untyped_deleter(void)
+pub fn stub_0x46e608() -> ! {
+    todo!("0x46e608 boost::detail::sp_counted_impl_p<RBX::DataModel::LegacyLock::Implementation::Events>::get_untyped_deleter(void)")
+}
+
+// 0x46e60c — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEaSERKS6_
+#[doc(alias = "boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::operator=(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
+// was: boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::operator=(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)
+pub fn stub_0x46e60c() -> ! {
+    todo!("0x46e60c boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::operator=(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")
+}
+
+// 0x46e644 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE9pop_frontEv
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)")]
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)
+pub fn stub_0x46e644() -> ! {
+    todo!("0x46e644 std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)")
+}
+
+// 0x46e670 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE16_M_pop_front_auxEv
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)")]
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)
+pub fn stub_0x46e670() -> ! {
+    todo!("0x46e670 std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)")
+}
+
+// 0x46e69c — __ZN3RBX9DataModel10LegacyLock14Implementation27safe_static_init_eventsPoolEv
+#[doc(alias = "RBX::DataModel::LegacyLock::Implementation::safe_static_init_eventsPool(void)")]
+pub fn stub_0x46e69c() -> ! {
+    todo!("0x46e69c RBX::DataModel::LegacyLock::Implementation::safe_static_init_eventsPool(void)")
+}
+
+// 0x46e6a0 — __ZN3RBX9DataModel10LegacyLock14Implementation29safe_static_do_get_eventsPoolEv
+#[doc(alias = "RBX::DataModel::LegacyLock::Implementation::safe_static_do_get_eventsPool(void)")]
+pub fn stub_0x46e6a0() -> ! {
+    todo!("0x46e6a0 RBX::DataModel::LegacyLock::Implementation::safe_static_do_get_eventsPool(void)")
+}
+
+// 0x46e808 — __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEED1Ev
+#[doc(alias = "rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::~safe_queue()")]
+// was: rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::~safe_queue()
+pub fn stub_0x46e808() -> ! {
+    todo!("0x46e808 rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::~safe_queue()")
+}
+
+// 0x46e8cc — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EED2Ev
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~deque()")]
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~deque()
+pub fn stub_0x46e8cc() -> ! {
+    todo!("0x46e8cc std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~deque()")
+}
+
+// 0x46e9b4 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EED2Ev
+#[doc(alias = "std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~_Deque_base()")]
+// was: std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~_Deque_base()
+pub fn stub_0x46e9b4() -> ! {
+    todo!("0x46e9b4 std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~_Deque_base()")
+}
+
+// 0x46e9e0 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE19_M_destroy_data_auxESt15_Deque_iteratorIS7_RS7_PS7_ESD_
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_destroy_data_aux(std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>)")]
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_destroy_data_aux(std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>)
+pub fn stub_0x46e9e0() -> ! {
+    todo!("0x46e9e0 std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_destroy_data_aux(std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>)")
+}
+
+// 0x46eb20 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE17_M_initialize_mapEm
+#[doc(alias = "std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_initialize_map(unsigned long)")]
+// was: std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_initialize_map(unsigned long)
+pub fn stub_0x46eb20() -> ! {
+    todo!("0x46eb20 std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_initialize_map(unsigned long)")
+}
+
+// 0x46ec78 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE15_M_create_nodesEPPS7_SB_
+#[doc(alias = "std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_create_nodes(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>**,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>**)")]
+// was: std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_create_nodes(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>**,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>**)
+pub fn stub_0x46ec78() -> ! {
+    todo!("0x46ec78 std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_create_nodes(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>**,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>**)")
+}
+
+// 0x46ed6c — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EEC2ERKS9_
+#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::deque(std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>> const&)")]
+// was: std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::deque(std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>> const&)
+pub fn stub_0x46ed6c() -> ! {
+    todo!("0x46ed6c std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::deque(std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>> const&)")
+}
+
+// 0x46ee90 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEERKS8_PS9_ES0_IS8_RS8_PS8_EET0_T_SH_SG_St12__false_type
+#[doc(alias = "std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>>(std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::__false_type)")]
+// was: std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>>(std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::__false_type)
+pub fn stub_0x46ee90() -> ! {
+    todo!("0x46ee90 std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>>(std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::__false_type)")
+}
+
+// 0x46f030 — __ZN3RBX9DataModel10LegacyLock14Implementation27safe_static_init_currentJobEv
+#[doc(alias = "RBX::DataModel::LegacyLock::Implementation::safe_static_init_currentJob(void)")]
+pub fn stub_0x46f030() -> ! {
+    todo!("0x46f030 RBX::DataModel::LegacyLock::Implementation::safe_static_init_currentJob(void)")
+}
+
+// 0x46f034 — __ZN3RBX9DataModel10LegacyLock14Implementation29safe_static_do_get_currentJobEv
+#[doc(alias = "RBX::DataModel::LegacyLock::Implementation::safe_static_do_get_currentJob(void)")]
+pub fn stub_0x46f034() -> ! {
+    todo!("0x46f034 RBX::DataModel::LegacyLock::Implementation::safe_static_do_get_currentJob(void)")
+}
+
+// 0x46f148 — __ZN3rbx25thread_specific_referenceIN3RBX9DataModel10GenericJobEED1Ev
+#[doc(alias = "rbx::thread_specific_reference<RBX::DataModel::GenericJob>::~thread_specific_reference()")]
+pub fn stub_0x46f148() -> ! {
+    todo!("0x46f148 rbx::thread_specific_reference<RBX::DataModel::GenericJob>::~thread_specific_reference()")
+}
+
+// 0x46f158 — __ZN5boost19thread_specific_ptrIPN3RBX9DataModel10GenericJobEED2Ev
+#[doc(alias = "boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::~thread_specific_ptr()")]
+// was: boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::~thread_specific_ptr()
+pub fn stub_0x46f158() -> ! {
+    todo!("0x46f158 boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::~thread_specific_ptr()")
+}
+
+// 0x46f24c — __ZN5boost19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataD1Ev
+#[doc(alias = "boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()")]
+// was: boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()
+pub fn stub_0x46f24c() -> ! {
+    todo!("0x46f24c boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()")
+}
+
+// 0x46f250 — __ZN5boost19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataD0Ev
+#[doc(alias = "boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()")]
+// was: boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()
+pub fn stub_0x46f250() -> ! {
+    todo!("0x46f250 boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::~delete_data()")
+}
+
+// 0x46f254 — __ZN5boost19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataclEPv
+#[doc(alias = "boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::operator()(void *)")]
+// was: boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::operator()(void *)
+pub fn stub_0x46f254() -> ! {
+    todo!("0x46f254 boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data::operator()(void *)")
+}
+
+// 0x46f260 — __ZN5boost6detail12shared_countC2IPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS9_EEEET_T0_
+#[doc(alias = "boost::detail::shared_count::shared_count<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>(boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>)")]
+// was: boost::detail::shared_count::shared_count<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>(boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>)
+pub fn stub_0x46f260() -> ! {
+    todo!("0x46f260 boost::detail::shared_count::shared_count<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>(boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>)")
+}
+
+// 0x46f358 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()
+pub fn stub_0x46f358() -> ! {
+    todo!("0x46f358 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()")
+}
+
+// 0x46f35c — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()
+pub fn stub_0x46f35c() -> ! {
+    todo!("0x46f35c boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::~sp_counted_impl_pd()")
+}
+
+// 0x46f360 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::dispose(void)
+pub fn stub_0x46f360() -> ! {
+    todo!("0x46f360 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::dispose(void)")
+}
+
+// 0x46f370 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_deleter(std::type_info const&)
+pub fn stub_0x46f370() -> ! {
+    todo!("0x46f370 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_deleter(std::type_info const&)")
+}
+
+// 0x46f388 — __ZN5boost6detail18sp_counted_impl_pdIPNS_19thread_specific_ptrIPN3RBX9DataModel10GenericJobEE11delete_dataENS0_14do_heap_deleteIS8_EEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_untyped_deleter(void)
+pub fn stub_0x46f388() -> ! {
+    todo!("0x46f388 boost::detail::sp_counted_impl_pd<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data *,boost::detail::do_heap_delete<boost::thread_specific_ptr<RBX::DataModel::GenericJob *>::delete_data>>::get_untyped_deleter(void)")
+}
+
+// 0x46fd8c — __ZN3RBX9DataModel10MouseStatsC2Ev
+#[doc(alias = "RBX::DataModel::MouseStats::MouseStats(void)")]
+pub fn stub_0x46fd8c() -> ! {
+    todo!("0x46fd8c RBX::DataModel::MouseStats::MouseStats(void)")
+}
+
+// 0x46ff84 — __ZN3RBX9DataModel10GenericJobC2EN5boost10shared_ptrIS0_EEPKcNS_12DataModelJob8TaskTypeE
+#[doc(alias = "RBX::DataModel::GenericJob::GenericJob(boost::shared_ptr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)")]
+// was: RBX::DataModel::GenericJob::GenericJob(boost::shared_ptr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)
+pub fn stub_0x46ff84() -> ! {
+    todo!("0x46ff84 RBX::DataModel::GenericJob::GenericJob(boost::shared_ptr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)")
+}
+
+// 0x47013c — __ZN3RBX9DataModel10GenericJobD1Ev
+#[doc(alias = "RBX::DataModel::GenericJob::~GenericJob()")]
+pub fn stub_0x47013c() -> ! {
+    todo!("0x47013c RBX::DataModel::GenericJob::~GenericJob()")
+}
+
+// 0x47025c — __ZN3RBX9DataModel10GenericJobD0Ev
+#[doc(alias = "RBX::DataModel::GenericJob::~GenericJob()")]
+pub fn stub_0x47025c() -> ! {
+    todo!("0x47025c RBX::DataModel::GenericJob::~GenericJob()")
+}
+
+// 0x470390 — __ZN3RBX9DataModel10GenericJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "RBX::DataModel::GenericJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_0x470390() -> ! {
+    todo!("0x470390 RBX::DataModel::GenericJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x470400 — __ZN3RBX9DataModel10GenericJob5errorERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "RBX::DataModel::GenericJob::error(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_0x470400() -> ! {
+    todo!("0x470400 RBX::DataModel::GenericJob::error(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x470484 — __ZN3RBX9DataModel10GenericJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "RBX::DataModel::GenericJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_0x470484() -> ! {
+    todo!("0x470484 RBX::DataModel::GenericJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x470670 — __ZN3RBX9DataModel10GenericJob12processTasksEv
+#[doc(alias = "RBX::DataModel::GenericJob::processTasks(void)")]
+pub fn stub_0x470670() -> ! {
+    todo!("0x470670 RBX::DataModel::GenericJob::processTasks(void)")
+}
+
+// 0x470818 — __ZN3RBX9DataModel10GenericJob4stepERN5boost8functionIFvPS0_EEE
+#[doc(alias = "RBX::DataModel::GenericJob::step(boost::function<void ()(RBX::DataModel*)> &)")]
+// was: RBX::DataModel::GenericJob::step(boost::function<void ()(RBX::DataModel*)> &)
+pub fn stub_0x470818() -> ! {
+    todo!("0x470818 RBX::DataModel::GenericJob::step(boost::function<void ()(RBX::DataModel*)> &)")
+}
+
+// 0x4708e0 — __ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIN5boost8functionIFvPN3RBX9DataModelEEEEEESaISA_EED2Ev
+#[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~deque()")]
+// was: std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~deque()
+pub fn stub_0x4708e0() -> ! {
+    todo!("0x4708e0 std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~deque()")
+}
+
+// 0x4709c8 — __ZNSt11_Deque_baseIN3rbx14implementation27timestamped_safe_queue_itemIN5boost8functionIFvPN3RBX9DataModelEEEEEESaISA_EED2Ev
+#[doc(alias = "std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~_Deque_base()")]
+// was: std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~_Deque_base()
+pub fn stub_0x4709c8() -> ! {
+    todo!("0x4709c8 std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::~_Deque_base()")
+}
+
+// 0x4709f8 — __ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIN5boost8functionIFvPN3RBX9DataModelEEEEEESaISA_EEC2ERKSC_
+#[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::deque(std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>> const&)")]
+// was: std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::deque(std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>> const&)
+pub fn stub_0x4709f8() -> ! {
+    todo!("0x4709f8 std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>>::deque(std::deque<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>,std::allocator<rbx::implementation::timestamped_safe_queue_item<boost::function<void ()(RBX::DataModel *)>>>> const&)")
+}
+
+// 0x470b30 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_8Instance10SaveFilterEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>> *)")]
+pub fn stub_0x470b30() -> ! {
+    todo!("0x470b30 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Instance::SaveFilter>> *)")
+}
+
+// 0x470b58 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel8GearTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::GearType>> *)")]
+pub fn stub_0x470b58() -> ! {
+    todo!("0x470b58 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::GearType>> *)")
+}
+
+// 0x470b80 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel16GearGenreSettingEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>> *)")]
+pub fn stub_0x470b80() -> ! {
+    todo!("0x470b80 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::GearGenreSetting>> *)")
+}
+
+// 0x470ba8 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel5GenreEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::Genre>> *)")]
+pub fn stub_0x470ba8() -> ! {
+    todo!("0x470ba8 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::Genre>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::Genre>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::Genre>> *)")
+}
+
+// 0x470bd0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_9DataModel11CreatorTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>> *)")]
+pub fn stub_0x470bd0() -> ! {
+    todo!("0x470bd0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::DataModel::CreatorType>> *)")
+}
+
+// 0x4727ec — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")]
+pub fn stub_0x4727ec() -> ! {
+    todo!("0x4727ec RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")
+}
+
+// 0x4727f0 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")]
+pub fn stub_0x4727f0() -> ! {
+    todo!("0x4727f0 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::EnumDesc(void)")
+}
+
+// 0x4729dc — __ZN3RBX12DataModelJobC2EPKcNS0_8TaskTypeEbN5boost10shared_ptrINS_16DataModelArbiterEEENS_4Time8IntervalE
+#[doc(alias = "RBX::DataModelJob::DataModelJob(char const*,RBX::DataModelJob::TaskType,bool,boost::shared_ptr<RBX::DataModelArbiter>,RBX::Time::Interval)")]
+// was: RBX::DataModelJob::DataModelJob(char const*,RBX::DataModelJob::TaskType,bool,boost::shared_ptr<RBX::DataModelArbiter>,RBX::Time::Interval)
+pub fn stub_0x4729dc() -> ! {
+    todo!("0x4729dc RBX::DataModelJob::DataModelJob(char const*,RBX::DataModelJob::TaskType,bool,boost::shared_ptr<RBX::DataModelArbiter>,RBX::Time::Interval)")
+}
+
+// 0x472b4c — __ZN3RBX12DataModelJob4stepERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "RBX::DataModelJob::step(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_0x472b4c() -> ! {
+    todo!("0x472b4c RBX::DataModelJob::step(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x472cd4 — __ZN3RBX12DataModelJob17getPriorityFactorEv
+#[doc(alias = "RBX::DataModelJob::getPriorityFactor(void)")]
+pub fn stub_0x472cd4() -> ! {
+    todo!("0x472cd4 RBX::DataModelJob::getPriorityFactor(void)")
+}
+
+// 0x472e00 — __ZN3RBX16DataModelArbiter12areExclusiveEPNS_13TaskScheduler3JobES3_
+#[doc(alias = "RBX::DataModelArbiter::areExclusive(RBX::TaskScheduler::Job *,RBX::TaskScheduler::Job *)")]
+pub fn stub_0x472e00() -> ! {
+    todo!("0x472e00 RBX::DataModelArbiter::areExclusive(RBX::TaskScheduler::Job *,RBX::TaskScheduler::Job *)")
+}
+
+// 0x472e2c — __ZN3RBX16DataModelArbiterC2Ev
+#[doc(alias = "RBX::DataModelArbiter::DataModelArbiter(void)")]
+pub fn stub_0x472e2c() -> ! {
+    todo!("0x472e2c RBX::DataModelArbiter::DataModelArbiter(void)")
+}
+
+// 0x473124 — __ZN3RBX16DataModelArbiterD0Ev
+#[doc(alias = "RBX::DataModelArbiter::~DataModelArbiter()")]
+pub fn stub_0x473124() -> ! {
+    todo!("0x473124 RBX::DataModelArbiter::~DataModelArbiter()")
+}
+
+// 0x4731c4 — __ZN3RBX16DataModelArbiterD1Ev
+#[doc(alias = "RBX::DataModelArbiter::~DataModelArbiter()")]
+pub fn stub_0x4731c4() -> ! {
+    todo!("0x4731c4 RBX::DataModelArbiter::~DataModelArbiter()")
+}
+
+// 0x4731c8 — __ZN3RBX16DataModelArbiterD2Ev
+#[doc(alias = "RBX::DataModelArbiter::~DataModelArbiter()")]
+pub fn stub_0x4731c8() -> ! {
+    todo!("0x4731c8 RBX::DataModelArbiter::~DataModelArbiter()")
+}
+
+// 0x473318 — __ZN3RBX16DataModelArbiter7preStepEPNS_13TaskScheduler3JobE
+#[doc(alias = "RBX::DataModelArbiter::preStep(RBX::TaskScheduler::Job *)")]
+pub fn stub_0x473318() -> ! {
+    todo!("0x473318 RBX::DataModelArbiter::preStep(RBX::TaskScheduler::Job *)")
+}
+
+// 0x473350 — __ZN3RBX16DataModelArbiter8postStepEPNS_13TaskScheduler3JobE
+#[doc(alias = "RBX::DataModelArbiter::postStep(RBX::TaskScheduler::Job *)")]
+pub fn stub_0x473350() -> ! {
+    todo!("0x473350 RBX::DataModelArbiter::postStep(RBX::TaskScheduler::Job *)")
+}
+
+// 0x473388 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::addPair(RBX::DataModelArbiter::ConcurrencyModel,char const*)")]
+pub fn stub_0x473388() -> ! {
+    todo!("0x473388 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::addPair(RBX::DataModelArbiter::ConcurrencyModel,char const*)")
+}
+
+// 0x4736e8 — __ZN3RBX12DataModelJobD1Ev
+#[doc(alias = "RBX::DataModelJob::~DataModelJob()")]
+pub fn stub_0x4736e8() -> ! {
+    todo!("0x4736e8 RBX::DataModelJob::~DataModelJob()")
+}
+
+// 0x4736ec — __ZN3RBX12DataModelJobD0Ev
+#[doc(alias = "RBX::DataModelJob::~DataModelJob()")]
+pub fn stub_0x4736ec() -> ! {
+    todo!("0x4736ec RBX::DataModelJob::~DataModelJob()")
+}
+
+// 0x473860 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::~EnumDesc()")]
+pub fn stub_0x473860() -> ! {
+    todo!("0x473860 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::~EnumDesc()")
+}
+
+// 0x473868 — __ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x473868() -> ! {
+    todo!("0x473868 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4739b0 — __ZN3rbx14implementation12typed_holderIN3RBX16DataModelArbiter16ConcurrencyModelEE14construct_funcEPKcPc
+#[doc(alias = "rbx::implementation::typed_holder<RBX::DataModelArbiter::ConcurrencyModel>::construct_func(char const*,char *)")]
+pub fn stub_0x4739b0() -> ! {
+    todo!("0x4739b0 rbx::implementation::typed_holder<RBX::DataModelArbiter::ConcurrencyModel>::construct_func(char const*,char *)")
+}
+
+// 0x4739c0 — __ZNK3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToItem(RBX::DataModelArbiter::ConcurrencyModel const&)const")]
+pub fn stub_0x4739c0() -> ! {
+    todo!("0x4739c0 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::convertToItem(RBX::DataModelArbiter::ConcurrencyModel const&)const")
+}
+
+// 0x473a8c — __ZN3rbx8any_castIRKN3RBX16DataModelArbiter16ConcurrencyModelENS1_7Region3EEET_RNS_13placement_anyIT0_EE
+#[doc(alias = "RBX::DataModelArbiter::ConcurrencyModel const& rbx::any_cast<RBX::DataModelArbiter::ConcurrencyModel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+pub fn stub_0x473a8c() -> ! {
+    todo!("0x473a8c RBX::DataModelArbiter::ConcurrencyModel const& rbx::any_cast<RBX::DataModelArbiter::ConcurrencyModel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+}
+
+// 0x473b80 — __ZN3RBX10Reflection8EnumDescINS_16DataModelArbiter16ConcurrencyModelEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::~EnumDesc()")]
+pub fn stub_0x473b80() -> ! {
+    todo!("0x473b80 RBX::Reflection::EnumDesc<RBX::DataModelArbiter::ConcurrencyModel>::~EnumDesc()")
 }
