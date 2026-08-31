@@ -6579,3 +6579,603 @@ pub fn stub_955a74() -> ! {
 pub fn stub_955b80() -> ! {
     todo!("0x955b80 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Network::Player::MembershipType>(void)")
 }
+
+// 0x33454 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+pub fn stub_33454() -> ! {
+    todo!("0x33454 boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x3346c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network7PlayersENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+pub fn stub_3346c() -> ! {
+    todo!("0x3346c boost::detail::sp_counted_impl_pd<RBX::Network::Players *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x955c8c — __ZN3RBX10Reflection4Type12getSingletonINS_7Network7Players14PlayerChatTypeEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Network::Players::PlayerChatType>(void)")]
+pub fn stub_955c8c() -> ! {
+    todo!("0x955c8c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Network::Players::PlayerChatType>(void)")
+}
+
+// 0x955d98 — __ZN3RBX10Reflection4Type12getSingletonINS_7Network7Players10ChatOptionEEERKS1_v
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Network::Players::ChatOption>(void)")]
+pub fn stub_955d98() -> ! {
+    todo!("0x955d98 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<RBX::Network::Players::ChatOption>(void)")
+}
+
+// 0x955ea4 — __ZN3RBX7Network29isPlayerAuthenticationEnabledEv
+#[doc(alias = "RBX::Network::isPlayerAuthenticationEnabled(void)")]
+pub fn stub_955ea4() -> ! {
+    todo!("0x955ea4 RBX::Network::isPlayerAuthenticationEnabled(void)")
+}
+
+// 0x956100 — __ZN3RBX7Network19initWithoutSecurityEv
+#[doc(alias = "RBX::Network::initWithoutSecurity(void)")]
+pub fn stub_956100() -> ! {
+    todo!("0x956100 RBX::Network::initWithoutSecurity(void)")
+}
+
+// 0x9564ec — __ZN3RBX7Network22initWithPlayerSecurityEv
+#[doc(alias = "RBX::Network::initWithPlayerSecurity(void)")]
+pub fn stub_9564ec() -> ! {
+    todo!("0x9564ec RBX::Network::initWithPlayerSecurity(void)")
+}
+
+// 0x95655c — __ZN3RBX7Network16isTrustedContentEPKc
+#[doc(alias = "RBX::Network::isTrustedContent(char const*)")]
+pub fn stub_95655c() -> ! {
+    todo!("0x95655c RBX::Network::isTrustedContent(char const*)")
+}
+
+// 0x9573c0 — __ZN3RBX7Network12SafeInitFreeD1Ev
+#[doc(alias = "RBX::Network::SafeInitFree::~SafeInitFree()")]
+pub fn stub_9573c0() -> ! {
+    todo!("0x9573c0 RBX::Network::SafeInitFree::~SafeInitFree()")
+}
+
+// 0x95760c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod> const>::initSingleton(void)")]
+pub fn stub_95760c() -> ! {
+    todo!("0x95760c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod> const>::initSingleton(void)")
+}
+
+// 0x9576f0 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumDesc()")]
+pub fn stub_9576f0() -> ! {
+    todo!("0x9576f0 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumDesc()")
+}
+
+// 0x9576fc — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumDesc()")]
+pub fn stub_9576fc() -> ! {
+    todo!("0x9576fc RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumDesc()")
+}
+
+// 0x957978 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumDesc()")]
+pub fn stub_957978() -> ! {
+    todo!("0x957978 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::~EnumDesc()")
+}
+
+// 0x957a18 — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::lookup(char const*)const")]
+pub fn stub_957a18() -> ! {
+    todo!("0x957a18 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::lookup(char const*)const")
+}
+
+// 0x957aa8 — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_957aa8() -> ! {
+    todo!("0x957aa8 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x957bac — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_957bac() -> ! {
+    todo!("0x957bac RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x957bd4 — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_957bd4() -> ! {
+    todo!("0x957bd4 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x957d18 — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToString(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")]
+pub fn stub_957d18() -> ! {
+    todo!("0x957d18 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToString(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")
+}
+
+// 0x957eb8 — __ZN3RBX10Reflection7VariantaSINS_15NetworkSettings20PhysicsReceiveMethodEEERS1_RKT_
+#[doc(alias = "RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::NetworkSettings::PhysicsReceiveMethod>(RBX::NetworkSettings::PhysicsReceiveMethod const&)")]
+pub fn stub_957eb8() -> ! {
+    todo!("0x957eb8 RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::NetworkSettings::PhysicsReceiveMethod>(RBX::NetworkSettings::PhysicsReceiveMethod const&)")
+}
+
+// 0x95806c — __ZN3rbx14implementation12typed_holderIN3RBX15NetworkSettings20PhysicsReceiveMethodEE14construct_funcEPKcPc
+#[doc(alias = "rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsReceiveMethod>::construct_func(char const*,char *)")]
+pub fn stub_95806c() -> ! {
+    todo!("0x95806c rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsReceiveMethod>::construct_func(char const*,char *)")
+}
+
+// 0x958078 — __ZN3rbx14implementation12typed_holderIN3RBX15NetworkSettings20PhysicsReceiveMethodEE13destruct_funcEPc
+#[doc(alias = "rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsReceiveMethod>::destruct_func(char *)")]
+pub fn stub_958078() -> ! {
+    todo!("0x958078 rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsReceiveMethod>::destruct_func(char *)")
+}
+
+// 0x95807c — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings20PhysicsReceiveMethodEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToItem(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")]
+pub fn stub_95807c() -> ! {
+    todo!("0x95807c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsReceiveMethod>::convertToItem(RBX::NetworkSettings::PhysicsReceiveMethod const&)const")
+}
+
+// 0x958148 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings20PhysicsReceiveMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>> *)")]
+pub fn stub_958148() -> ! {
+    todo!("0x958148 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsReceiveMethod>> *)")
+}
+
+// 0x958170 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_15NetworkSettings17PhysicsSendMethodEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod> const>::initSingleton(void)")]
+pub fn stub_958170() -> ! {
+    todo!("0x958170 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod> const>::initSingleton(void)")
+}
+
+// 0x958254 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")]
+pub fn stub_958254() -> ! {
+    todo!("0x958254 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")
+}
+
+// 0x958260 — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")]
+pub fn stub_958260() -> ! {
+    todo!("0x958260 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")
+}
+
+// 0x9584dc — __ZN3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")]
+pub fn stub_9584dc() -> ! {
+    todo!("0x9584dc RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::~EnumDesc()")
+}
+
+// 0x95857c — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::lookup(char const*)const")]
+pub fn stub_95857c() -> ! {
+    todo!("0x95857c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::lookup(char const*)const")
+}
+
+// 0x95860c — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_95860c() -> ! {
+    todo!("0x95860c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x958710 — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_958710() -> ! {
+    todo!("0x958710 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x958738 — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_958738() -> ! {
+    todo!("0x958738 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x95887c — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(RBX::NetworkSettings::PhysicsSendMethod const&)const")]
+pub fn stub_95887c() -> ! {
+    todo!("0x95887c RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToString(RBX::NetworkSettings::PhysicsSendMethod const&)const")
+}
+
+// 0x958a1c — __ZN3RBX10Reflection7VariantaSINS_15NetworkSettings17PhysicsSendMethodEEERS1_RKT_
+#[doc(alias = "RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::NetworkSettings::PhysicsSendMethod>(RBX::NetworkSettings::PhysicsSendMethod const&)")]
+pub fn stub_958a1c() -> ! {
+    todo!("0x958a1c RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::NetworkSettings::PhysicsSendMethod>(RBX::NetworkSettings::PhysicsSendMethod const&)")
+}
+
+// 0x958bd0 — __ZN3rbx14implementation12typed_holderIN3RBX15NetworkSettings17PhysicsSendMethodEE14construct_funcEPKcPc
+#[doc(alias = "rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsSendMethod>::construct_func(char const*,char *)")]
+pub fn stub_958bd0() -> ! {
+    todo!("0x958bd0 rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsSendMethod>::construct_func(char const*,char *)")
+}
+
+// 0x958bdc — __ZN3rbx14implementation12typed_holderIN3RBX15NetworkSettings17PhysicsSendMethodEE13destruct_funcEPc
+#[doc(alias = "rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsSendMethod>::destruct_func(char *)")]
+pub fn stub_958bdc() -> ! {
+    todo!("0x958bdc rbx::implementation::typed_holder<RBX::NetworkSettings::PhysicsSendMethod>::destruct_func(char *)")
+}
+
+// 0x958be0 — __ZNK3RBX10Reflection8EnumDescINS_15NetworkSettings17PhysicsSendMethodEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToItem(RBX::NetworkSettings::PhysicsSendMethod const&)const")]
+pub fn stub_958be0() -> ! {
+    todo!("0x958be0 RBX::Reflection::EnumDesc<RBX::NetworkSettings::PhysicsSendMethod>::convertToItem(RBX::NetworkSettings::PhysicsSendMethod const&)const")
+}
+
+// 0x958cac — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_15NetworkSettings17PhysicsSendMethodEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>> *)")]
+pub fn stub_958cac() -> ! {
+    todo!("0x958cac std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>,std::_Select1st<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::NetworkSettings::PhysicsSendMethod>> *)")
+}
+
+// 0x958cd4 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network6Player8ChatModeEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode> const>::initSingleton(void)")]
+pub fn stub_958cd4() -> ! {
+    todo!("0x958cd4 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode> const>::initSingleton(void)")
+}
+
+// 0x958db8 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")]
+pub fn stub_958db8() -> ! {
+    todo!("0x958db8 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")
+}
+
+// 0x958dc4 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")]
+pub fn stub_958dc4() -> ! {
+    todo!("0x958dc4 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")
+}
+
+// 0x959040 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")]
+pub fn stub_959040() -> ! {
+    todo!("0x959040 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::~EnumDesc()")
+}
+
+// 0x9590e0 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::lookup(char const*)const")]
+pub fn stub_9590e0() -> ! {
+    todo!("0x9590e0 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::lookup(char const*)const")
+}
+
+// 0x959170 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_959170() -> ! {
+    todo!("0x959170 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x959274 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_959274() -> ! {
+    todo!("0x959274 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x95929c — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_95929c() -> ! {
+    todo!("0x95929c RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x9593e0 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE15convertToStringERKS4_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(RBX::Network::Player::ChatMode const&)const")]
+pub fn stub_9593e0() -> ! {
+    todo!("0x9593e0 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToString(RBX::Network::Player::ChatMode const&)const")
+}
+
+// 0x959580 — __ZN3RBX10Reflection7VariantaSINS_7Network6Player8ChatModeEEERS1_RKT_
+#[doc(alias = "RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::Network::Player::ChatMode>(RBX::Network::Player::ChatMode const&)")]
+pub fn stub_959580() -> ! {
+    todo!("0x959580 RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::Network::Player::ChatMode>(RBX::Network::Player::ChatMode const&)")
+}
+
+// 0x959734 — __ZN3rbx14implementation12typed_holderIN3RBX7Network6Player8ChatModeEE14construct_funcEPKcPc
+#[doc(alias = "rbx::implementation::typed_holder<RBX::Network::Player::ChatMode>::construct_func(char const*,char *)")]
+pub fn stub_959734() -> ! {
+    todo!("0x959734 rbx::implementation::typed_holder<RBX::Network::Player::ChatMode>::construct_func(char const*,char *)")
+}
+
+// 0x959740 — __ZN3rbx14implementation12typed_holderIN3RBX7Network6Player8ChatModeEE13destruct_funcEPc
+#[doc(alias = "rbx::implementation::typed_holder<RBX::Network::Player::ChatMode>::destruct_func(char *)")]
+pub fn stub_959740() -> ! {
+    todo!("0x959740 rbx::implementation::typed_holder<RBX::Network::Player::ChatMode>::destruct_func(char *)")
+}
+
+// 0x959744 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE13convertToItemERKS4_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToItem(RBX::Network::Player::ChatMode const&)const")]
+pub fn stub_959744() -> ! {
+    todo!("0x959744 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::convertToItem(RBX::Network::Player::ChatMode const&)const")
+}
+
+// 0x959810 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player8ChatModeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>> *)")]
+pub fn stub_959810() -> ! {
+    todo!("0x959810 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>> *)")
+}
+
+// 0x959838 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network6Player14MembershipTypeEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType> const>::initSingleton(void)")]
+pub fn stub_959838() -> ! {
+    todo!("0x959838 RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType> const>::initSingleton(void)")
+}
+
+// 0x95991c — __ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::~EnumDesc()")]
+pub fn stub_95991c() -> ! {
+    todo!("0x95991c RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::~EnumDesc()")
+}
+
+// 0x959928 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEED2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::~EnumDesc()")]
+pub fn stub_959928() -> ! {
+    todo!("0x959928 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::~EnumDesc()")
+}
+
+// 0x959ba4 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::~EnumDesc()")]
+pub fn stub_959ba4() -> ! {
+    todo!("0x959ba4 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::~EnumDesc()")
+}
+
+// 0x959c44 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::lookup(char const*)const")]
+pub fn stub_959c44() -> ! {
+    todo!("0x959c44 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::lookup(char const*)const")
+}
+
+// 0x959cd4 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_959cd4() -> ! {
+    todo!("0x959cd4 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x959dd8 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE14convertToValueEmRNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
+pub fn stub_959dd8() -> ! {
+    todo!("0x959dd8 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+}
+
+// 0x959e00 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_959e00() -> ! {
+    todo!("0x959e00 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x959f44 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE15convertToStringERKS4_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToString(RBX::Network::Player::MembershipType const&)const")]
+pub fn stub_959f44() -> ! {
+    todo!("0x959f44 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToString(RBX::Network::Player::MembershipType const&)const")
+}
+
+// 0x95a0e4 — __ZN3RBX10Reflection7VariantaSINS_7Network6Player14MembershipTypeEEERS1_RKT_
+#[doc(alias = "RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::Network::Player::MembershipType>(RBX::Network::Player::MembershipType const&)")]
+pub fn stub_95a0e4() -> ! {
+    todo!("0x95a0e4 RBX::Reflection::Variant& RBX::Reflection::Variant::operator=<RBX::Network::Player::MembershipType>(RBX::Network::Player::MembershipType const&)")
+}
+
+// 0x95a298 — __ZN3rbx14implementation12typed_holderIN3RBX7Network6Player14MembershipTypeEE14construct_funcEPKcPc
+#[doc(alias = "rbx::implementation::typed_holder<RBX::Network::Player::MembershipType>::construct_func(char const*,char *)")]
+pub fn stub_95a298() -> ! {
+    todo!("0x95a298 rbx::implementation::typed_holder<RBX::Network::Player::MembershipType>::construct_func(char const*,char *)")
+}
+
+// 0x95a2a4 — __ZN3rbx14implementation12typed_holderIN3RBX7Network6Player14MembershipTypeEE13destruct_funcEPc
+#[doc(alias = "rbx::implementation::typed_holder<RBX::Network::Player::MembershipType>::destruct_func(char *)")]
+pub fn stub_95a2a4() -> ! {
+    todo!("0x95a2a4 rbx::implementation::typed_holder<RBX::Network::Player::MembershipType>::destruct_func(char *)")
+}
+
+// 0x95a2a8 — __ZNK3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE13convertToItemERKS4_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToItem(RBX::Network::Player::MembershipType const&)const")]
+pub fn stub_95a2a8() -> ! {
+    todo!("0x95a2a8 RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::convertToItem(RBX::Network::Player::MembershipType const&)const")
+}
+
+// 0x95a374 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player14MembershipTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>> *)")]
+pub fn stub_95a374() -> ! {
+    todo!("0x95a374 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>> *)")
+}
+
+// 0x95a39c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Network12FilterResultEEEE13initSingletonEv
+#[doc(alias = "RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::FilterResult> const>::initSingleton(void)")]
+pub fn stub_95a39c() -> ! {
+    todo!("0x95a39c RBX::Reflection::Singleton<RBX::Reflection::EnumDesc<RBX::Network::FilterResult> const>::initSingleton(void)")
+}
+
+// 0x95a480 — __ZN3RBX10Reflection8EnumDescINS_7Network12FilterResultEED0Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::~EnumDesc()")]
+pub fn stub_95a480() -> ! {
+    todo!("0x95a480 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::~EnumDesc()")
+}
+
+// 0x95a520 — __ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE6lookupEPKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::lookup(char const*)const")]
+pub fn stub_95a520() -> ! {
+    todo!("0x95a520 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::lookup(char const*)const")
+}
+
+// 0x95a5b0 — __ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE6lookupERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::lookup(RBX::Reflection::Variant const&)const")]
+pub fn stub_95a5b0() -> ! {
+    todo!("0x95a5b0 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::lookup(RBX::Reflection::Variant const&)const")
+}
+
+// 0x95a6b4 — __ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE15convertToStringERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToString(RBX::Network::FilterResult const&)const")]
+pub fn stub_95a6b4() -> ! {
+    todo!("0x95a6b4 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToString(RBX::Network::FilterResult const&)const")
+}
+
+// 0x95a854 — __ZN3rbx14implementation12typed_holderIN3RBX7Network12FilterResultEE14construct_funcEPKcPc
+#[doc(alias = "rbx::implementation::typed_holder<RBX::Network::FilterResult>::construct_func(char const*,char *)")]
+pub fn stub_95a854() -> ! {
+    todo!("0x95a854 rbx::implementation::typed_holder<RBX::Network::FilterResult>::construct_func(char const*,char *)")
+}
+
+// 0x95a860 — __ZNK3RBX10Reflection8EnumDescINS_7Network12FilterResultEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToItem(RBX::Network::FilterResult const&)const")]
+pub fn stub_95a860() -> ! {
+    todo!("0x95a860 RBX::Reflection::EnumDesc<RBX::Network::FilterResult>::convertToItem(RBX::Network::FilterResult const&)const")
+}
+
+// 0x95bff4 — __ZN3RBX7Network16ServerReplicator21setPropSyncExpirationEd
+#[doc(alias = "RBX::Network::ServerReplicator::setPropSyncExpiration(double)")]
+pub fn stub_95bff4() -> ! {
+    todo!("0x95bff4 RBX::Network::ServerReplicator::setPropSyncExpiration(double)")
+}
+
+// 0x95c004 — __ZNK3RBX7Network16ServerReplicator16findTargetPlayerEv
+#[doc(alias = "RBX::Network::ServerReplicator::findTargetPlayer(void)const")]
+pub fn stub_95c004() -> ! {
+    todo!("0x95c004 RBX::Network::ServerReplicator::findTargetPlayer(void)const")
+}
+
+// 0x95c00c — __ZNK3RBX7Network16ServerReplicator15getRemotePlayerEv
+#[doc(alias = "RBX::Network::ServerReplicator::getRemotePlayer(void)const")]
+pub fn stub_95c00c() -> ! {
+    todo!("0x95c00c RBX::Network::ServerReplicator::getRemotePlayer(void)const")
+}
+
+// 0x95c014 — __ZN3RBX7Network16ServerReplicator24isProtectedStringEnabledEv
+#[doc(alias = "RBX::Network::ServerReplicator::isProtectedStringEnabled(void)")]
+pub fn stub_95c014() -> ! {
+    todo!("0x95c014 RBX::Network::ServerReplicator::isProtectedStringEnabled(void)")
+}
+
+// 0x9604a4 — __ZN3RBX7Network12IdSerializerC2Ev
+#[doc(alias = "RBX::Network::IdSerializer::IdSerializer(void)")]
+pub fn stub_9604a4() -> ! {
+    todo!("0x9604a4 RBX::Network::IdSerializer::IdSerializer(void)")
+}
+
+// 0x960624 — __ZN3RBX7Network12IdSerializer18setMaxGuidIndexBitEi
+#[doc(alias = "RBX::Network::IdSerializer::setMaxGuidIndexBit(int)")]
+pub fn stub_960624() -> ! {
+    todo!("0x960624 RBX::Network::IdSerializer::setMaxGuidIndexBit(int)")
+}
+
+// 0x9606d8 — __ZN3RBX7Network12IdSerializer14canSerializeIdEPKNS_8InstanceE
+#[doc(alias = "RBX::Network::IdSerializer::canSerializeId(RBX::Instance const*)")]
+pub fn stub_9606d8() -> ! {
+    todo!("0x9606d8 RBX::Network::IdSerializer::canSerializeId(RBX::Instance const*)")
+}
+
+// 0x96075c — __ZN3RBX7Network12IdSerializer17onServiceProviderEPNS_15ServiceProviderES3_
+#[doc(alias = "RBX::Network::IdSerializer::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+pub fn stub_96075c() -> ! {
+    todo!("0x96075c RBX::Network::IdSerializer::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+}
+
+// 0x960784 — __ZN3RBX7Network12IdSerializer9extractIdEPKNS_8InstanceE
+#[doc(alias = "RBX::Network::IdSerializer::extractId(RBX::Instance const*)")]
+pub fn stub_960784() -> ! {
+    todo!("0x960784 RBX::Network::IdSerializer::extractId(RBX::Instance const*)")
+}
+
+// 0x960f0c — __ZN3RBX7Network12IdSerializer11setRefValueERNS1_8WaitItemEPNS_8InstanceE
+#[doc(alias = "RBX::Network::IdSerializer::setRefValue(RBX::Network::IdSerializer::WaitItem &,RBX::Instance *)")]
+pub fn stub_960f0c() -> ! {
+    todo!("0x960f0c RBX::Network::IdSerializer::setRefValue(RBX::Network::IdSerializer::WaitItem &,RBX::Instance *)")
+}
+
+// 0x960f28 — __ZN3RBX7Network12IdSerializer24resolvePendingReferencesEPNS_8InstanceENS_4Guid4DataE
+#[doc(alias = "RBX::Network::IdSerializer::resolvePendingReferences(RBX::Instance *,RBX::Guid::Data)")]
+pub fn stub_960f28() -> ! {
+    todo!("0x960f28 RBX::Network::IdSerializer::resolvePendingReferences(RBX::Instance *,RBX::Guid::Data)")
+}
+
+// 0x961178 — __ZN3RBX7Network12IdSerializer13addPendingRefEPKNS_10Reflection21RefPropertyDescriptorEN5boost10shared_ptrINS_8InstanceEEENS_4Guid4DataE
+#[doc(alias = "RBX::Network::IdSerializer::addPendingRef(RBX::Reflection::RefPropertyDescriptor const*,boost::shared_ptr<RBX::Instance>,RBX::Guid::Data)")]
+pub fn stub_961178() -> ! {
+    todo!("0x961178 RBX::Network::IdSerializer::addPendingRef(RBX::Reflection::RefPropertyDescriptor const*,boost::shared_ptr<RBX::Instance>,RBX::Guid::Data)")
+}
+
+// 0x961480 — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection15ClassDescriptorEE9teachNameEPKS3_
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::teachName(RBX::Reflection::ClassDescriptor const*)const")]
+pub fn stub_961480() -> ! {
+    todo!("0x961480 RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::teachName(RBX::Reflection::ClassDescriptor const*)const")
+}
+
+// 0x961490 — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection15ClassDescriptorEE9learnNameESsi
+#[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::ClassDescriptor>::learnName(std::string,int)")]
+pub fn stub_961490() -> ! {
+    todo!("0x961490 RBX::Network::DescriptorReceiver<RBX::Reflection::ClassDescriptor>::learnName(std::string,int)")
+}
+
+// 0x961700 — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection15EventDescriptorEE9teachNameEPKS3_
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::teachName(RBX::Reflection::EventDescriptor const*)const")]
+pub fn stub_961700() -> ! {
+    todo!("0x961700 RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::teachName(RBX::Reflection::EventDescriptor const*)const")
+}
+
+// 0x9618c4 — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection15EventDescriptorEE9learnNameESsi
+#[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::EventDescriptor>::learnName(std::string,int)")]
+pub fn stub_9618c4() -> ! {
+    todo!("0x9618c4 RBX::Network::DescriptorReceiver<RBX::Reflection::EventDescriptor>::learnName(std::string,int)")
+}
+
+// 0x961ca4 — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection18PropertyDescriptorEE9teachNameEPKS3_
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::teachName(RBX::Reflection::PropertyDescriptor const*)const")]
+pub fn stub_961ca4() -> ! {
+    todo!("0x961ca4 RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::teachName(RBX::Reflection::PropertyDescriptor const*)const")
+}
+
+// 0x961e68 — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection18PropertyDescriptorEE9learnNameESsi
+#[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::PropertyDescriptor>::learnName(std::string,int)")]
+pub fn stub_961e68() -> ! {
+    todo!("0x961e68 RBX::Network::DescriptorReceiver<RBX::Reflection::PropertyDescriptor>::learnName(std::string,int)")
+}
+
+// 0x96208c — __ZNK3RBX7Network16DescriptorSenderINS_10Reflection4TypeEE9teachNameEPKS3_
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::Type>::teachName(RBX::Reflection::Type const*)const")]
+pub fn stub_96208c() -> ! {
+    todo!("0x96208c RBX::Network::DescriptorSender<RBX::Reflection::Type>::teachName(RBX::Reflection::Type const*)const")
+}
+
+// 0x96209c — __ZN3RBX7Network18DescriptorReceiverINS_10Reflection4TypeEE9learnNameESsi
+#[doc(alias = "RBX::Network::DescriptorReceiver<RBX::Reflection::Type>::learnName(std::string,int)")]
+pub fn stub_96209c() -> ! {
+    todo!("0x96209c RBX::Network::DescriptorReceiver<RBX::Reflection::Type>::learnName(std::string,int)")
+}
+
+// 0x962300 — __ZN3RBX7Network16DescriptorSenderINS_10Reflection15ClassDescriptorEEC2Ev
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::DescriptorSender(void)")]
+pub fn stub_962300() -> ! {
+    todo!("0x962300 RBX::Network::DescriptorSender<RBX::Reflection::ClassDescriptor>::DescriptorSender(void)")
+}
+
+// 0x962464 — __ZN3RBX7Network16DescriptorSenderINS_10Reflection18PropertyDescriptorEEC2Ev
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::DescriptorSender(void)")]
+pub fn stub_962464() -> ! {
+    todo!("0x962464 RBX::Network::DescriptorSender<RBX::Reflection::PropertyDescriptor>::DescriptorSender(void)")
+}
+
+// 0x962694 — __ZN3RBX7Network16DescriptorSenderINS_10Reflection15EventDescriptorEEC2Ev
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::DescriptorSender(void)")]
+pub fn stub_962694() -> ! {
+    todo!("0x962694 RBX::Network::DescriptorSender<RBX::Reflection::EventDescriptor>::DescriptorSender(void)")
+}
+
+// 0x9628c4 — __ZN3RBX7Network16DescriptorSenderINS_10Reflection4TypeEEC2Ev
+#[doc(alias = "RBX::Network::DescriptorSender<RBX::Reflection::Type>::DescriptorSender(void)")]
+pub fn stub_9628c4() -> ! {
+    todo!("0x9628c4 RBX::Network::DescriptorSender<RBX::Reflection::Type>::DescriptorSender(void)")
+}
+
+// 0x9645f8 — __ZNSt3mapIN3RBX4Guid4DataESt6vectorINS0_7Network12IdSerializer8WaitItemESaIS6_EESt4lessIS2_ESaISt4pairIKS2_S8_EEEixERSC_
+#[doc(alias = "std::map<RBX::Guid::Data,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::operator[](RBX::Guid::Data const&)")]
+pub fn stub_9645f8() -> ! {
+    todo!("0x9645f8 std::map<RBX::Guid::Data,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::operator[](RBX::Guid::Data const&)")
+}
+
+// 0x9652ac — __ZNSt6vectorIN3RBX7Network12IdSerializer8WaitItemESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+#[doc(alias = "std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::IdSerializer::WaitItem*,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,RBX::Network::IdSerializer::WaitItem const&)")]
+pub fn stub_9652ac() -> ! {
+    todo!("0x9652ac std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::IdSerializer::WaitItem*,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,RBX::Network::IdSerializer::WaitItem const&)")
+}
+
+// 0x965a2c — __ZNSt6vectorIN3RBX7Network12IdSerializer8WaitItemESaIS3_EEC2ERKS5_
+#[doc(alias = "std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>::vector(std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>> const&)")]
+pub fn stub_965a2c() -> ! {
+    todo!("0x965a2c std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>::vector(std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>> const&)")
+}
+
+// 0x965c54 — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_
+#[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")]
+pub fn stub_965c54() -> ! {
+    todo!("0x965c54 std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")
+}
