@@ -3557,3 +3557,11 @@ pub fn stub_3e190() -> ! {
     todo!("0x3e190 boost::detail::sp_counted_impl_pd<CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
 }
 
+
+// 0x93d760 — __ZN3RBX12SceneUpdaterC2EN5boost10shared_ptrINS_9DataModelEEEPNS_15CRenderSettingsEPKNS_10RenderCapsEPNS_11RenderStatsE
+#[doc(alias = "RBX::SceneUpdater::SceneUpdater(boost::shared_ptr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)")]
+// was: RBX::SceneUpdater::SceneUpdater(boost::shared_ptr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)
+pub fn stub_93d760() -> ! {
+    todo!("0x93d760 RBX::SceneUpdater::SceneUpdater(boost::shared_ptr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)")
+}
+
