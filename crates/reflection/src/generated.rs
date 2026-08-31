@@ -29727,3 +29727,609 @@ pub fn stub_0x498eec() -> ! {
 pub fn stub_0x498fa0() -> ! {
     todo!("0x498fa0 RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::BoundFuncDesc(void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
+
+// 0x499170 — __ZN3RBX10Reflection13BoundFuncDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_ELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_
+// was: RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
+pub fn stub_0x499170() -> ! {
+    todo!("0x499170 RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+}
+
+// 0x4991bc — __ZN3RBX10Reflection13BoundFuncDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_ELi2EED0Ev
+// was: RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")]
+pub fn stub_0x4991bc() -> ! {
+    todo!("0x4991bc RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
+}
+
+// 0x4992e4 — __ZNK3RBX10Reflection13BoundFuncDescINS_10DialogRootEFvN5boost10shared_ptrINS_8InstanceEEES6_ELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+// was: RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_0x4992e4() -> ! {
+    todo!("0x4992e4 RBX::Reflection::BoundFuncDesc<RBX::DialogRoot,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x499408 — __ZN3RBX10Reflection11Call2HelperINS_10DialogRootEMS2_FvN5boost10shared_ptrINS_8InstanceEEES6_ES6_S6_vE4callEPS2_S8_RNS0_7VariantERKS6_SE_
+// was: RBX::Reflection::Call2Helper<RBX::DialogRoot,void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,void>::call(RBX::DialogRoot*,void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&)
+#[doc(alias = "RBX::Reflection::Call2Helper<RBX::DialogRoot,void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,void>::call(RBX::DialogRoot*,void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&)")]
+pub fn stub_0x499408() -> ! {
+    todo!("0x499408 RBX::Reflection::Call2Helper<RBX::DialogRoot,void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,void>::call(RBX::DialogRoot*,void (RBX::DialogRoot::*)(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,boost::shared_ptr<RBX::Instance> const&)")
+}
+
+// 0x499540 — __ZN3RBX10Reflection14PropDescriptorINS_10DialogRootEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::PropDescriptor<bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool)>(char const*,char const*,bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x499540() -> ! {
+    todo!("0x499540 RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::PropDescriptor<bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool)>(char const*,char const*,bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x499654 — __ZN3RBX10Reflection14PropDescriptorINS_10DialogRootEbED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::~PropDescriptor()")]
+pub fn stub_0x499654() -> ! {
+    todo!("0x499654 RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::~PropDescriptor()")
+}
+
+// 0x499680 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::GetSetImpl<bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool)>::isReadOnly(void)const")]
+pub fn stub_0x499680() -> ! {
+    todo!("0x499680 RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::GetSetImpl<bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool)>::isReadOnly(void)const")
+}
+
+// 0x499684 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::GetSetImpl<bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool)>::isWriteOnly(void)const")]
+pub fn stub_0x499684() -> ! {
+    todo!("0x499684 RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::GetSetImpl<bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool)>::isWriteOnly(void)const")
+}
+
+// 0x499688 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::GetSetImpl<bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x499688() -> ! {
+    todo!("0x499688 RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::GetSetImpl<bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x4996ac — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::GetSetImpl<bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")]
+pub fn stub_0x4996ac() -> ! {
+    todo!("0x4996ac RBX::Reflection::PropDescriptor<RBX::DialogRoot,bool>::GetSetImpl<bool (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+}
+
+// 0x4996d0 — __ZN3RBX10Reflection14PropDescriptorINS_10DialogRootEfEC2IMS2_KFfvEMS2_FvfEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::PropDescriptor<float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float)>(char const*,char const*,float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x4996d0() -> ! {
+    todo!("0x4996d0 RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::PropDescriptor<float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float)>(char const*,char const*,float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x4997e4 — __ZN3RBX10Reflection14PropDescriptorINS_10DialogRootEfED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::~PropDescriptor()")]
+pub fn stub_0x4997e4() -> ! {
+    todo!("0x4997e4 RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::~PropDescriptor()")
+}
+
+// 0x499810 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootEfE10GetSetImplIMS2_KFfvEMS2_FvfEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::GetSetImpl<float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float)>::isReadOnly(void)const")]
+pub fn stub_0x499810() -> ! {
+    todo!("0x499810 RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::GetSetImpl<float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float)>::isReadOnly(void)const")
+}
+
+// 0x499814 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootEfE10GetSetImplIMS2_KFfvEMS2_FvfEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::GetSetImpl<float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float)>::isWriteOnly(void)const")]
+pub fn stub_0x499814() -> ! {
+    todo!("0x499814 RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::GetSetImpl<float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float)>::isWriteOnly(void)const")
+}
+
+// 0x499818 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::GetSetImpl<float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x499818() -> ! {
+    todo!("0x499818 RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::GetSetImpl<float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x499838 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootEfE10GetSetImplIMS2_KFfvEMS2_FvfEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::GetSetImpl<float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x499838() -> ! {
+    todo!("0x499838 RBX::Reflection::PropDescriptor<RBX::DialogRoot,float>::GetSetImpl<float (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(float)>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x49985c — __ZN3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::EnumPropDescriptor<RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone)>(char const*,char const*,RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x49985c() -> ! {
+    todo!("0x49985c RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::EnumPropDescriptor<RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone)>(char const*,char const*,RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x499a10 — __ZN3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::~EnumPropDescriptor()")]
+pub fn stub_0x499a10() -> ! {
+    todo!("0x499a10 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::~EnumPropDescriptor()")
+}
+
+// 0x499a3c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::isReadOnly(void)const")]
+pub fn stub_0x499a3c() -> ! {
+    todo!("0x499a3c RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::isReadOnly(void)const")
+}
+
+// 0x499a4c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::isWriteOnly(void)const")]
+pub fn stub_0x499a4c() -> ! {
+    todo!("0x499a4c RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::isWriteOnly(void)const")
+}
+
+// 0x499a5c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x499a5c() -> ! {
+    todo!("0x499a5c RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x499a84 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x499a84() -> ! {
+    todo!("0x499a84 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x499aa8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x499aa8() -> ! {
+    todo!("0x499aa8 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x499bf4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x499bf4() -> ! {
+    todo!("0x499bf4 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x499c18 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::hasStringValue(void)const")]
+pub fn stub_0x499c18() -> ! {
+    todo!("0x499c18 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::hasStringValue(void)const")
+}
+
+// 0x499c1c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x499c1c() -> ! {
+    todo!("0x499c1c RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x499c40 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_0x499c40() -> ! {
+    todo!("0x499c40 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x499c80 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x499c80() -> ! {
+    todo!("0x499c80 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x499ca0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x499ca0() -> ! {
+    todo!("0x499ca0 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x499ee0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x499ee0() -> ! {
+    todo!("0x499ee0 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x499efc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_0x499efc() -> ! {
+    todo!("0x499efc RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x499f30 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x499f30() -> ! {
+    todo!("0x499f30 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x499f38 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x499f38() -> ! {
+    todo!("0x499f38 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x499f84 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x499f84() -> ! {
+    todo!("0x499f84 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x499fa4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_0x499fa4() -> ! {
+    todo!("0x499fa4 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x499fd8 — __ZNK3RBX10Reflection8EnumDescINS_10DialogRoot10DialogToneEE14convertToIndexES3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::convertToIndex(RBX::DialogRoot::DialogTone)const")]
+pub fn stub_0x499fd8() -> ! {
+    todo!("0x499fd8 RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogTone>::convertToIndex(RBX::DialogRoot::DialogTone)const")
+}
+
+// 0x49a048 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_10DialogToneEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x49a048() -> ! {
+    todo!("0x49a048 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x49a088 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootENS2_10DialogToneEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::GetSetImpl<RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone)>::isReadOnly(void)const")]
+pub fn stub_0x49a088() -> ! {
+    todo!("0x49a088 RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::GetSetImpl<RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone)>::isReadOnly(void)const")
+}
+
+// 0x49a08c — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootENS2_10DialogToneEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::GetSetImpl<RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone)>::isWriteOnly(void)const")]
+pub fn stub_0x49a08c() -> ! {
+    todo!("0x49a08c RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::GetSetImpl<RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone)>::isWriteOnly(void)const")
+}
+
+// 0x49a090 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootENS2_10DialogToneEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::GetSetImpl<RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x49a090() -> ! {
+    todo!("0x49a090 RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::GetSetImpl<RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x49a0b0 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootENS2_10DialogToneEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::GetSetImpl<RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone)>::setValue(RBX::Reflection::DescribedBase *,RBX::DialogRoot::DialogTone const&)const")]
+pub fn stub_0x49a0b0() -> ! {
+    todo!("0x49a0b0 RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogTone>::GetSetImpl<RBX::DialogRoot::DialogTone (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogTone)>::setValue(RBX::Reflection::DescribedBase *,RBX::DialogRoot::DialogTone const&)const")
+}
+
+// 0x49a0d4 — __ZN3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::EnumPropDescriptor<RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose)>(char const*,char const*,RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x49a0d4() -> ! {
+    todo!("0x49a0d4 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::EnumPropDescriptor<RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose)>(char const*,char const*,RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x49a288 — __ZN3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::~EnumPropDescriptor()")]
+pub fn stub_0x49a288() -> ! {
+    todo!("0x49a288 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::~EnumPropDescriptor()")
+}
+
+// 0x49a2b4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::isReadOnly(void)const")]
+pub fn stub_0x49a2b4() -> ! {
+    todo!("0x49a2b4 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::isReadOnly(void)const")
+}
+
+// 0x49a2c4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::isWriteOnly(void)const")]
+pub fn stub_0x49a2c4() -> ! {
+    todo!("0x49a2c4 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::isWriteOnly(void)const")
+}
+
+// 0x49a2d4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x49a2d4() -> ! {
+    todo!("0x49a2d4 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x49a2fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x49a2fc() -> ! {
+    todo!("0x49a2fc RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x49a320 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x49a320() -> ! {
+    todo!("0x49a320 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x49a46c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x49a46c() -> ! {
+    todo!("0x49a46c RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x49a490 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE14hasStringValueEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::hasStringValue(void)const")]
+pub fn stub_0x49a490() -> ! {
+    todo!("0x49a490 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::hasStringValue(void)const")
+}
+
+// 0x49a494 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE14getStringValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::getStringValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x49a494() -> ! {
+    todo!("0x49a494 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::getStringValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x49a4b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE14setStringValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_0x49a4b8() -> ! {
+    todo!("0x49a4b8 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x49a4f8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x49a4f8() -> ! {
+    todo!("0x49a4f8 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x49a518 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x49a518() -> ! {
+    todo!("0x49a518 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x49a758 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x49a758() -> ! {
+    todo!("0x49a758 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x49a774 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_0x49a774() -> ! {
+    todo!("0x49a774 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x49a7a8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x49a7a8() -> ! {
+    todo!("0x49a7a8 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x49a7b0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x49a7b0() -> ! {
+    todo!("0x49a7b0 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x49a7fc — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x49a7fc() -> ! {
+    todo!("0x49a7fc RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x49a81c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_0x49a81c() -> ! {
+    todo!("0x49a81c RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x49a850 — __ZNK3RBX10Reflection8EnumDescINS_10DialogRoot13DialogPurposeEE14convertToIndexES3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogPurpose>::convertToIndex(RBX::DialogRoot::DialogPurpose)const")]
+pub fn stub_0x49a850() -> ! {
+    todo!("0x49a850 RBX::Reflection::EnumDesc<RBX::DialogRoot::DialogPurpose>::convertToIndex(RBX::DialogRoot::DialogPurpose)const")
+}
+
+// 0x49a8c0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10DialogRootENS2_13DialogPurposeEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x49a8c0() -> ! {
+    todo!("0x49a8c0 RBX::Reflection::EnumPropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x49a900 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootENS2_13DialogPurposeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::GetSetImpl<RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose)>::isReadOnly(void)const")]
+pub fn stub_0x49a900() -> ! {
+    todo!("0x49a900 RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::GetSetImpl<RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose)>::isReadOnly(void)const")
+}
+
+// 0x49a904 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootENS2_13DialogPurposeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::GetSetImpl<RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose)>::isWriteOnly(void)const")]
+pub fn stub_0x49a904() -> ! {
+    todo!("0x49a904 RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::GetSetImpl<RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose)>::isWriteOnly(void)const")
+}
+
+// 0x49a908 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootENS2_13DialogPurposeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::GetSetImpl<RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x49a908() -> ! {
+    todo!("0x49a908 RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::GetSetImpl<RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x49a928 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootENS2_13DialogPurposeEE10GetSetImplIMS2_KFS3_vEMS2_FvS3_EE8setValueEPNS0_13DescribedBaseERKS3_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::GetSetImpl<RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose)>::setValue(RBX::Reflection::DescribedBase *,RBX::DialogRoot::DialogPurpose const&)const")]
+pub fn stub_0x49a928() -> ! {
+    todo!("0x49a928 RBX::Reflection::PropDescriptor<RBX::DialogRoot,RBX::DialogRoot::DialogPurpose>::GetSetImpl<RBX::DialogRoot::DialogPurpose (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(RBX::DialogRoot::DialogPurpose)>::setValue(RBX::Reflection::DescribedBase *,RBX::DialogRoot::DialogPurpose const&)const")
+}
+
+// 0x49a94c — __ZN3RBX10Reflection14PropDescriptorINS_10DialogRootESsEC2IMS2_KFSsvEMS2_FvSsEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::PropDescriptor<std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string)>(char const*,char const*,std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x49a94c() -> ! {
+    todo!("0x49a94c RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::PropDescriptor<std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string)>(char const*,char const*,std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x49aa60 — __ZN3RBX10Reflection14PropDescriptorINS_10DialogRootESsED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::~PropDescriptor()")]
+pub fn stub_0x49aa60() -> ! {
+    todo!("0x49aa60 RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::~PropDescriptor()")
+}
+
+// 0x49aa8c — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::GetSetImpl<std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string)>::isReadOnly(void)const")]
+pub fn stub_0x49aa8c() -> ! {
+    todo!("0x49aa8c RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::GetSetImpl<std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string)>::isReadOnly(void)const")
+}
+
+// 0x49aa90 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::GetSetImpl<std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string)>::isWriteOnly(void)const")]
+pub fn stub_0x49aa90() -> ! {
+    todo!("0x49aa90 RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::GetSetImpl<std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string)>::isWriteOnly(void)const")
+}
+
+// 0x49aa94 — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::GetSetImpl<std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x49aa94() -> ! {
+    todo!("0x49aa94 RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::GetSetImpl<std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x49aabc — __ZNK3RBX10Reflection14PropDescriptorINS_10DialogRootESsE10GetSetImplIMS2_KFSsvEMS2_FvSsEE8setValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::GetSetImpl<std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_0x49aabc() -> ! {
+    todo!("0x49aabc RBX::Reflection::PropDescriptor<RBX::DialogRoot,std::string>::GetSetImpl<std::string (RBX::DialogRoot::*)(void)const,void (RBX::DialogRoot::*)(std::string)>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x49b52c — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::EnumDesc(void)")]
+pub fn stub_0x49b52c() -> ! {
+    todo!("0x49b52c RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::EnumDesc(void)")
+}
+
+// 0x49b530 — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::EnumDesc(void)")]
+pub fn stub_0x49b530() -> ! {
+    todo!("0x49b530 RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::EnumDesc(void)")
+}
+
+// 0x49b708 — __ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumDesc(void)")]
+pub fn stub_0x49b708() -> ! {
+    todo!("0x49b708 RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumDesc(void)")
+}
+
+// 0x49b70c — __ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumDesc(void)")]
+pub fn stub_0x49b70c() -> ! {
+    todo!("0x49b70c RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::EnumDesc(void)")
+}
+
+// 0x49b964 — __ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::EnumDesc(void)")]
+pub fn stub_0x49b964() -> ! {
+    todo!("0x49b964 RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::EnumDesc(void)")
+}
+
+// 0x49b968 — __ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::EnumDesc(void)")]
+pub fn stub_0x49b968() -> ! {
+    todo!("0x49b968 RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::EnumDesc(void)")
+}
+
+// 0x49bb84 — __ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)")]
+pub fn stub_0x49bb84() -> ! {
+    todo!("0x49bb84 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)")
+}
+
+// 0x49bb88 — __ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)")]
+pub fn stub_0x49bb88() -> ! {
+    todo!("0x49bb88 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)")
+}
+
+// 0x49bdbc — __ZN3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::EnumDesc(void)")]
+pub fn stub_0x49bdbc() -> ! {
+    todo!("0x49bdbc RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::EnumDesc(void)")
+}
+
+// 0x49bdc0 — __ZN3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::EnumDesc(void)")]
+pub fn stub_0x49bdc0() -> ! {
+    todo!("0x49bdc0 RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::EnumDesc(void)")
+}
+
+// 0x49bf80 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::EnumDesc(void)")]
+pub fn stub_0x49bf80() -> ! {
+    todo!("0x49bf80 RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::EnumDesc(void)")
+}
+
+// 0x49bf84 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::EnumDesc(void)")]
+pub fn stub_0x49bf84() -> ! {
+    todo!("0x49bf84 RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::EnumDesc(void)")
+}
+
+// 0x49c15c — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::addPair(RBX::BasicPartInstance::LegacyPartType,char const*)")]
+pub fn stub_0x49c15c() -> ! {
+    todo!("0x49c15c RBX::Reflection::EnumDesc<RBX::BasicPartInstance::LegacyPartType>::addPair(RBX::BasicPartInstance::LegacyPartType,char const*)")
+}
+
+// 0x49c4bc — __ZN3RBX10Reflection8EnumDescINS_20ExtrudedPartInstance16VisualTrussStyleEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::addPair(RBX::ExtrudedPartInstance::VisualTrussStyle,char const*)")]
+pub fn stub_0x49c4bc() -> ! {
+    todo!("0x49c4bc RBX::Reflection::EnumDesc<RBX::ExtrudedPartInstance::VisualTrussStyle>::addPair(RBX::ExtrudedPartInstance::VisualTrussStyle,char const*)")
+}
+
+// 0x49c81c — __ZN3RBX10Reflection8EnumDescINS_13PrismInstance12NumSidesEnumEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::addPair(RBX::PrismInstance::NumSidesEnum,char const*)")]
+pub fn stub_0x49c81c() -> ! {
+    todo!("0x49c81c RBX::Reflection::EnumDesc<RBX::PrismInstance::NumSidesEnum>::addPair(RBX::PrismInstance::NumSidesEnum,char const*)")
+}
+
+// 0x49cb7c — __ZN3RBX10Reflection8EnumDescINS_15PyramidInstance12NumSidesEnumEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::addPair(RBX::PyramidInstance::NumSidesEnum,char const*)")]
+pub fn stub_0x49cb7c() -> ! {
+    todo!("0x49cb7c RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::addPair(RBX::PyramidInstance::NumSidesEnum,char const*)")
+}
+
+// 0x49cedc — __ZN3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::addPair(RBX::Handles::VisualStyle,char const*)")]
+pub fn stub_0x49cedc() -> ! {
+    todo!("0x49cedc RBX::Reflection::EnumDesc<RBX::Handles::VisualStyle>::addPair(RBX::Handles::VisualStyle,char const*)")
+}
+
+// 0x49d23c — __ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::addPair(RBX::GuiObject::SizeConstraint,char const*)")]
+pub fn stub_0x49d23c() -> ! {
+    todo!("0x49d23c RBX::Reflection::EnumDesc<RBX::GuiObject::SizeConstraint>::addPair(RBX::GuiObject::SizeConstraint,char const*)")
+}
+
+// 0x49f610 — __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::EnumDesc(void)")]
+pub fn stub_0x49f610() -> ! {
+    todo!("0x49f610 RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::EnumDesc(void)")
+}
+
+// 0x49f614 — __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::EnumDesc(void)")]
+pub fn stub_0x49f614() -> ! {
+    todo!("0x49f614 RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::EnumDesc(void)")
+}
+
+// 0x4a0440 — __ZN3RBX10Reflection14PropDescriptorINS_9ExplosionEfED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Explosion,float>::~PropDescriptor()")]
+pub fn stub_0x4a0440() -> ! {
+    todo!("0x4a0440 RBX::Reflection::PropDescriptor<RBX::Explosion,float>::~PropDescriptor()")
+}
+
+// 0x4a0468 — __ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::~BoundProp()")]
+pub fn stub_0x4a0468() -> ! {
+    todo!("0x4a0468 RBX::Reflection::BoundProp<G3D::Vector3,(RBX::Reflection::Mutability)1>::~BoundProp()")
+}
+
+// 0x4a0494 — __ZN3RBX10Reflection18EnumPropDescriptorINS_9ExplosionENS2_13ExplosionTypeEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::~EnumPropDescriptor()")]
+pub fn stub_0x4a0494() -> ! {
+    todo!("0x4a0494 RBX::Reflection::EnumPropDescriptor<RBX::Explosion,RBX::Explosion::ExplosionType>::~EnumPropDescriptor()")
+}
+
+// 0x4a04b8 — __ZN3RBX10Reflection9EventDescINS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_ED1Ev
+// was: RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::~EventDesc()
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::~EventDesc()")]
+pub fn stub_0x4a04b8() -> ! {
+    todo!("0x4a04b8 RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::~EventDesc()")
+}
+
+// 0x4a04dc — __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::addPair(RBX::Explosion::ExplosionType,char const*)")]
+pub fn stub_0x4a04dc() -> ! {
+    todo!("0x4a04dc RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::addPair(RBX::Explosion::ExplosionType,char const*)")
+}
+
+// 0x4a1380 — __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEED1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()")]
+pub fn stub_0x4a1380() -> ! {
+    todo!("0x4a1380 RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::~EnumDesc()")
+}
+
+// 0x4a1388 — __ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE15convertToStringEmRSs
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToString(unsigned long,std::string &)const")]
+pub fn stub_0x4a1388() -> ! {
+    todo!("0x4a1388 RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToString(unsigned long,std::string &)const")
+}
+
+// 0x4a14e0 — __ZNK3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEE13convertToItemERKS3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToItem(RBX::Explosion::ExplosionType const&)const")]
+pub fn stub_0x4a14e0() -> ! {
+    todo!("0x4a14e0 RBX::Reflection::EnumDesc<RBX::Explosion::ExplosionType>::convertToItem(RBX::Explosion::ExplosionType const&)const")
+}
+
