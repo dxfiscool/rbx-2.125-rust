@@ -5249,3 +5249,1176 @@ pub fn stub_cb64a4() -> ! {
 pub fn stub_cb64e0() -> ! {
     todo!("0xcb64e0 Ogre::HardwareBufferManagerBase::registerVertexBufferSourceAndCopy(Ogre::HardwareVertexBufferSharedPtr const&,Ogre::HardwareVertexBufferSharedPtr const&)")
 }
+
+// 0x37068 — __ZN10RobloxView37requestStopRenderingForBackgroundModeEv
+// type: _DWORD __fastcall(RobloxView *__hidden this)
+#[doc(alias = "RobloxView::requestStopRenderingForBackgroundMode(void)")]
+// was: RobloxView::requestStopRenderingForBackgroundMode(void)
+pub fn stub_37068() -> ! {
+    todo!("0x37068 RobloxView::requestStopRenderingForBackgroundMode(void)")
+}
+
+// 0x37378 — __ZN10RobloxView22requestResumeRenderingEv
+// type: _DWORD __fastcall(RobloxView *__hidden this)
+#[doc(alias = "RobloxView::requestResumeRendering(void)")]
+// was: RobloxView::requestResumeRendering(void)
+pub fn stub_37378() -> ! {
+    todo!("0x37378 RobloxView::requestResumeRendering(void)")
+}
+
+// 0x39d7c — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEE5resetEv
+#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::reset(void)")]
+// was: boost::shared_ptr<RobloxView::RenderJob>::reset(void)
+pub fn stub_39d7c() -> ! {
+    todo!("0x39d7c boost::shared_ptr<RobloxView::RenderJob>::reset(void)")
+}
+
+// 0x3a030 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_
+#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")]
+// was: boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)
+pub fn stub_3a030() -> ! {
+    todo!("0x3a030 boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")
+}
+
+// 0x3a0d4 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_
+// type: int __fastcall(int, void *, int, int, int, int)
+#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
+// was: boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)
+pub fn stub_3a0d4() -> ! {
+    todo!("0x3a0d4 boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+}
+
+// 0x3dc60 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView9RenderJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
+// was: void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const
+pub fn stub_3dc60() -> ! {
+    todo!("0x3dc60 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,Ro")
+}
+
+// 0x3dd34 — __ZN5boost6detail12shared_countC2IN10RobloxView9RenderJobEEEPT_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
+// was: boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)
+pub fn stub_3dd34() -> ! {
+    todo!("0x3dd34 boost::detail::shared_count::shared_count<RobloxView::RenderJob>(RobloxView::RenderJob *)")
+}
+
+// 0x3de28 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()
+pub fn stub_3de28() -> ! {
+    todo!("0x3de28 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
+}
+
+// 0x3de2c — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()
+pub fn stub_3de2c() -> ! {
+    todo!("0x3de2c boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::~sp_counted_impl_p()")
+}
+
+// 0x3de30 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)
+pub fn stub_3de30() -> ! {
+    todo!("0x3de30 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::dispose(void)")
+}
+
+// 0x3de40 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)
+pub fn stub_3de40() -> ! {
+    todo!("0x3de40 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_deleter(std::type_info const&)")
+}
+
+// 0x3de44 — __ZN5boost6detail17sp_counted_impl_pIN10RobloxView9RenderJobEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)
+pub fn stub_3de44() -> ! {
+    todo!("0x3de44 boost::detail::sp_counted_impl_p<RobloxView::RenderJob>::get_untyped_deleter(void)")
+}
+
+// 0x3ecf0 — __ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
+// type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
+#[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")]
+// was: RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)
+pub fn stub_3ecf0() -> ! {
+    todo!("0x3ecf0 RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")
+}
+
+// 0x3ee80 — __ZN10RobloxView9RenderJobD1Ev
+// type: void __fastcall(RobloxView::RenderJob *__hidden this)
+#[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
+// was: RobloxView::RenderJob::~RenderJob()
+pub fn stub_3ee80() -> ! {
+    todo!("0x3ee80 RobloxView::RenderJob::~RenderJob()")
+}
+
+// 0x3ef40 — __ZN10RobloxView9RenderJobD0Ev
+// type: void __fastcall(RobloxView::RenderJob *__hidden this)
+#[doc(alias = "RobloxView::RenderJob::~RenderJob()")]
+// was: RobloxView::RenderJob::~RenderJob()
+pub fn stub_3ef40() -> ! {
+    todo!("0x3ef40 RobloxView::RenderJob::~RenderJob()")
+}
+
+// 0x3f008 — __ZN10RobloxView9RenderJob9sleepTimeERKN3RBX13TaskScheduler3Job5StatsE
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
+#[doc(alias = "RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
+// was: RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)
+pub fn stub_3f008() -> ! {
+    todo!("0x3f008 RobloxView::RenderJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x3f058 — __ZN10RobloxView9RenderJob5errorERKN3RBX13TaskScheduler3Job5StatsE
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
+#[doc(alias = "RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")]
+// was: RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)
+pub fn stub_3f058() -> ! {
+    todo!("0x3f058 RobloxView::RenderJob::error(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x3f094 — __ZN10RobloxView9RenderJob16stepDataModelJobERKN3RBX13TaskScheduler3Job5StatsE
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const RBX::TaskScheduler::Job::Stats *)
+#[doc(alias = "RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
+// was: RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)
+pub fn stub_3f094() -> ! {
+    todo!("0x3f094 RobloxView::RenderJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x3f598 — __ZNK10RobloxView9RenderJob14getMetricValueERKSs
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
+#[doc(alias = "RobloxView::RenderJob::getMetricValue(std::string const&)const")]
+// was: RobloxView::RenderJob::getMetricValue(std::string const&)const
+pub fn stub_3f598() -> ! {
+    todo!("0x3f598 RobloxView::RenderJob::getMetricValue(std::string const&)const")
+}
+
+// 0x3f700 — __ZNK10RobloxView9RenderJob9getMetricERKSs
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
+#[doc(alias = "RobloxView::RenderJob::getMetric(std::string const&)const")]
+// was: RobloxView::RenderJob::getMetric(std::string const&)const
+pub fn stub_3f700() -> ! {
+    todo!("0x3f700 RobloxView::RenderJob::getMetric(std::string const&)const")
+}
+
+// 0x3f904 — __ZThn480_N10RobloxView9RenderJobD1Ev
+// type: void __fastcall(RobloxView::RenderJob *__hidden this)
+#[doc(alias = "`non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
+// was: `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()
+pub fn stub_3f904() -> ! {
+    todo!("0x3f904 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
+}
+
+// 0x3f9c8 — __ZThn480_N10RobloxView9RenderJobD0Ev
+// type: void __fastcall(RobloxView::RenderJob *__hidden this)
+#[doc(alias = "`non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
+// was: `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()
+pub fn stub_3f9c8() -> ! {
+    todo!("0x3f9c8 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
+}
+
+// 0x3fa94 — __ZThn480_NK10RobloxView9RenderJob9getMetricERKSs
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
+#[doc(alias = "`non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")]
+// was: `non-virtual thunk to'RobloxView::RenderJob::getMetric(std::string const&)const
+pub fn stub_3fa94() -> ! {
+    todo!("0x3fa94 `non-virtual thunk to'RobloxView::RenderJob::getMetric(std::string const&)const")
+}
+
+// 0x3faa4 — __ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
+#[doc(alias = "`non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")]
+// was: `non-virtual thunk to'RobloxView::RenderJob::getMetricValue(std::string const&)const
+pub fn stub_3faa4() -> ! {
+    todo!("0x3faa4 `non-virtual thunk to'RobloxView::RenderJob::getMetricValue(std::string const&)const")
+}
+
+// 0x3faac — __ZN10RobloxView9RenderJob21scheduleRenderPrepareEPS0_PN3RBX8ViewBaseE
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RenderJob *, ViewBase *)
+#[doc(alias = "RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")]
+// was: RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)
+pub fn stub_3faac() -> ! {
+    todo!("0x3faac RobloxView::RenderJob::scheduleRenderPrepare(RobloxView::RenderJob*,RBX::ViewBase *)")
+}
+
+// 0x3fac4 — __ZN10RobloxView9RenderJob21scheduleRenderPerformEPS0_PN3RBX8ViewBaseEd
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, RobloxView::RenderJob *, RBX::ViewBase *, double)
+#[doc(alias = "RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")]
+// was: RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)
+pub fn stub_3fac4() -> ! {
+    todo!("0x3fac4 RobloxView::RenderJob::scheduleRenderPerform(RobloxView::RenderJob*,RBX::ViewBase *,double)")
+}
+
+// 0x3fb9c — __ZN10RobloxView9RenderJob4wakeEv
+// type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this)
+#[doc(alias = "RobloxView::RenderJob::wake(void)")]
+// was: RobloxView::RenderJob::wake(void)
+pub fn stub_3fb9c() -> ! {
+    todo!("0x3fb9c RobloxView::RenderJob::wake(void)")
+}
+
+// 0x40160 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_40160() -> ! {
+    todo!("0x40160 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob ")
+}
+
+// 0x401dc — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+// was: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)
+pub fn stub_401dc() -> ! {
+    todo!("0x401dc boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView:")
+}
+
+// 0x401f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_401f0() -> ! {
+    todo!("0x401f0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boos")
+}
+
+// 0x40270 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+// was: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)
+pub fn stub_40270() -> ! {
+    todo!("0x40270 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::View")
+}
+
+// 0x4027c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// type: int(void)
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")]
+// was: void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)
+pub fn stub_4027c() -> ! {
+    todo!("0x4027c void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX:")
+}
+
+// 0x402a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_402a8() -> ! {
+    todo!("0x402a8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boos")
+}
+
+// 0x40308 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+// was: boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)
+pub fn stub_40308() -> ! {
+    todo!("0x40308 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::Render")
+}
+
+// 0xd2e00 — __ZN4FMOD15OutputCoreAudio12updateRenderEmP15AudioBufferList
+// type: _DWORD __fastcall(FMOD::OutputCoreAudio *__hidden this, unsigned int, AudioBufferList *)
+#[doc(alias = "FMOD::OutputCoreAudio::updateRender(unsigned long,AudioBufferList *)")]
+// was: FMOD::OutputCoreAudio::updateRender(unsigned long,AudioBufferList *)
+pub fn stub_d2e00() -> ! {
+    todo!("0xd2e00 FMOD::OutputCoreAudio::updateRender(unsigned long,AudioBufferList *)")
+}
+
+// 0x1d9a80 — _FT_Lookup_Renderer
+#[doc(alias = "_FT_Lookup_Renderer")]
+// was: _FT_Lookup_Renderer
+pub fn stub_1d9a80() -> ! {
+    todo!("0x1d9a80 _FT_Lookup_Renderer")
+}
+
+// 0x1dcc68 — _FT_Set_Renderer
+#[doc(alias = "_FT_Set_Renderer")]
+// was: _FT_Set_Renderer
+pub fn stub_1dcc68() -> ! {
+    todo!("0x1dcc68 _FT_Set_Renderer")
+}
+
+// 0x1dcdd0 — _FT_Render_Glyph_Internal
+#[doc(alias = "_FT_Render_Glyph_Internal")]
+// was: _FT_Render_Glyph_Internal
+pub fn stub_1dcdd0() -> ! {
+    todo!("0x1dcdd0 _FT_Render_Glyph_Internal")
+}
+
+// 0x1dcec0 — _FT_Render_Glyph
+#[doc(alias = "_FT_Render_Glyph")]
+// was: _FT_Render_Glyph
+pub fn stub_1dcec0() -> ! {
+    todo!("0x1dcec0 _FT_Render_Glyph")
+}
+
+// 0x20b5dc — _Render_Single_Pass
+#[doc(alias = "_Render_Single_Pass")]
+// was: _Render_Single_Pass
+pub fn stub_20b5dc() -> ! {
+    todo!("0x20b5dc _Render_Single_Pass")
+}
+
+// 0x20c130 — _Render_Glyph
+#[doc(alias = "_Render_Glyph")]
+// was: _Render_Glyph
+pub fn stub_20c130() -> ! {
+    todo!("0x20c130 _Render_Glyph")
+}
+
+// 0x253f70 — __ZN3RBX10RbxDbgInfo14SetGfxCardNameEPKc
+// type: int __fastcall(RBX::RbxDbgInfo *this, const char *)
+#[doc(alias = "RBX::RbxDbgInfo::SetGfxCardName(char const*)")]
+// was: RBX::RbxDbgInfo::SetGfxCardName(char const*)
+pub fn stub_253f70() -> ! {
+    todo!("0x253f70 RBX::RbxDbgInfo::SetGfxCardName(char const*)")
+}
+
+// 0x253f94 — __ZN3RBX10RbxDbgInfo23SetGfxCardDriverVersionEPKc
+// type: int __fastcall(RBX::RbxDbgInfo *this, const char *)
+#[doc(alias = "RBX::RbxDbgInfo::SetGfxCardDriverVersion(char const*)")]
+// was: RBX::RbxDbgInfo::SetGfxCardDriverVersion(char const*)
+pub fn stub_253f94() -> ! {
+    todo!("0x253f94 RBX::RbxDbgInfo::SetGfxCardDriverVersion(char const*)")
+}
+
+// 0x253fb8 — __ZN3RBX10RbxDbgInfo16SetGfxCardVendorEPKc
+// type: int __fastcall(RBX::RbxDbgInfo *this, const char *)
+#[doc(alias = "RBX::RbxDbgInfo::SetGfxCardVendor(char const*)")]
+// was: RBX::RbxDbgInfo::SetGfxCardVendor(char const*)
+pub fn stub_253fb8() -> ! {
+    todo!("0x253fb8 RBX::RbxDbgInfo::SetGfxCardVendor(char const*)")
+}
+
+// 0x2d448c — __ZN3RBX15AdvMoveToolBase8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AdvMoveToolBase *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::AdvMoveToolBase::render2d(RBX::Adorn *)")]
+// was: RBX::AdvMoveToolBase::render2d(RBX::Adorn *)
+pub fn stub_2d448c() -> ! {
+    todo!("0x2d448c RBX::AdvMoveToolBase::render2d(RBX::Adorn *)")
+}
+
+// 0x2d470c — __ZThn4_N3RBX15AdvMoveToolBase8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AdvMoveToolBase *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::AdvMoveToolBase::render2d(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::AdvMoveToolBase::render2d(RBX::Adorn *)
+pub fn stub_2d470c() -> ! {
+    todo!("0x2d470c `non-virtual thunk to'RBX::AdvMoveToolBase::render2d(RBX::Adorn *)")
+}
+
+// 0x2d4714 — __ZN3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AdvMoveToolBase *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)
+pub fn stub_2d4714() -> ! {
+    todo!("0x2d4714 RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2d4874 — __ZThn4_N3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AdvMoveToolBase *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)
+pub fn stub_2d4874() -> ! {
+    todo!("0x2d4874 `non-virtual thunk to'RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2d4ac4 — __ZN3RBX11AdvMoveTool8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AdvMoveTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::AdvMoveTool::render2d(RBX::Adorn *)")]
+// was: RBX::AdvMoveTool::render2d(RBX::Adorn *)
+pub fn stub_2d4ac4() -> ! {
+    todo!("0x2d4ac4 RBX::AdvMoveTool::render2d(RBX::Adorn *)")
+}
+
+// 0x2d504c — __ZThn4_N3RBX11AdvMoveTool8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AdvMoveTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::AdvMoveTool::render2d(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::AdvMoveTool::render2d(RBX::Adorn *)
+pub fn stub_2d504c() -> ! {
+    todo!("0x2d504c `non-virtual thunk to'RBX::AdvMoveTool::render2d(RBX::Adorn *)")
+}
+
+// 0x2d51bc — __ZN3RBX9DrawAdorn11resizeColorEv
+// type: _DWORD __fastcall(RBX::DrawAdorn *__hidden this)
+#[doc(alias = "RBX::DrawAdorn::resizeColor(void)")]
+// was: RBX::DrawAdorn::resizeColor(void)
+pub fn stub_2d51bc() -> ! {
+    todo!("0x2d51bc RBX::DrawAdorn::resizeColor(void)")
+}
+
+// 0x2d5890 — __ZN3RBX13AdvRotateTool8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AdvRotateTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::AdvRotateTool::render2d(RBX::Adorn *)")]
+// was: RBX::AdvRotateTool::render2d(RBX::Adorn *)
+pub fn stub_2d5890() -> ! {
+    todo!("0x2d5890 RBX::AdvRotateTool::render2d(RBX::Adorn *)")
+}
+
+// 0x2d5a28 — __ZThn4_N3RBX13AdvRotateTool8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AdvRotateTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::AdvRotateTool::render2d(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::AdvRotateTool::render2d(RBX::Adorn *)
+pub fn stub_2d5a28() -> ! {
+    todo!("0x2d5a28 `non-virtual thunk to'RBX::AdvRotateTool::render2d(RBX::Adorn *)")
+}
+
+// 0x2d5a30 — __ZN3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AdvRotateTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)
+pub fn stub_2d5a30() -> ! {
+    todo!("0x2d5a30 RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2d5d98 — __ZThn4_N3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AdvRotateTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)
+pub fn stub_2d5d98() -> ! {
+    todo!("0x2d5d98 `non-virtual thunk to'RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2d9d4c — __ZNK3RBX13AdvRunDragger19shouldRender3dAdornEv
+// type: _DWORD __fastcall(RBX::AdvRunDragger *__hidden this)
+#[doc(alias = "RBX::AdvRunDragger::shouldRender3dAdorn(void)const")]
+// was: RBX::AdvRunDragger::shouldRender3dAdorn(void)const
+pub fn stub_2d9d4c() -> ! {
+    todo!("0x2d9d4c RBX::AdvRunDragger::shouldRender3dAdorn(void)const")
+}
+
+// 0x2dac5c — __ZN3RBX12AxisToolBase8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AxisToolBase *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::AxisToolBase::render2d(RBX::Adorn *)")]
+// was: RBX::AxisToolBase::render2d(RBX::Adorn *)
+pub fn stub_2dac5c() -> ! {
+    todo!("0x2dac5c RBX::AxisToolBase::render2d(RBX::Adorn *)")
+}
+
+// 0x2daee8 — __ZThn4_N3RBX12AxisToolBase8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AxisToolBase *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::AxisToolBase::render2d(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::AxisToolBase::render2d(RBX::Adorn *)
+pub fn stub_2daee8() -> ! {
+    todo!("0x2daee8 `non-virtual thunk to'RBX::AxisToolBase::render2d(RBX::Adorn *)")
+}
+
+// 0x2daef0 — __ZN3RBX12AxisToolBase13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AxisToolBase *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)
+pub fn stub_2daef0() -> ! {
+    todo!("0x2daef0 RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2db050 — __ZThn4_N3RBX12AxisToolBase13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::AxisToolBase *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)
+pub fn stub_2db050() -> ! {
+    todo!("0x2db050 `non-virtual thunk to'RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2e4a5c — __ZN3RBX10HammerTool13render3dAdornEPNS_5AdornE
+#[doc(alias = "RBX::HammerTool::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::HammerTool::render3dAdorn(RBX::Adorn *)
+pub fn stub_2e4a5c() -> ! {
+    todo!("0x2e4a5c RBX::HammerTool::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2e4a70 — __ZThn4_N3RBX10HammerTool13render3dAdornEPNS_5AdornE
+#[doc(alias = "`non-virtual thunk toRBX::HammerTool::render3dAdorn(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::HammerTool::render3dAdorn(RBX::Adorn *)
+pub fn stub_2e4a70() -> ! {
+    todo!("0x2e4a70 `non-virtual thunk to'RBX::HammerTool::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2ec558 — __ZN3RBX18MoveResizeJoinTool13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::MoveResizeJoinTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)
+pub fn stub_2ec558() -> ! {
+    todo!("0x2ec558 RBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2ec7e4 — __ZThn4_N3RBX18MoveResizeJoinTool13render3dAdornEPNS_5AdornE
+// type: int __fastcall(RBX::MoveResizeJoinTool *this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)
+pub fn stub_2ec7e4() -> ! {
+    todo!("0x2ec7e4 `non-virtual thunk to'RBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2ec7ec — __ZN3RBX18MoveResizeJoinTool8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::MoveResizeJoinTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")]
+// was: RBX::MoveResizeJoinTool::render2d(RBX::Adorn *)
+pub fn stub_2ec7ec() -> ! {
+    todo!("0x2ec7ec RBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")
+}
+
+// 0x2ed9d4 — __ZThn4_N3RBX18MoveResizeJoinTool8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::MoveResizeJoinTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::MoveResizeJoinTool::render2d(RBX::Adorn *)
+pub fn stub_2ed9d4() -> ! {
+    todo!("0x2ed9d4 `non-virtual thunk to'RBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")
+}
+
+// 0x2efef0 — __ZN3RBX11NewNullTool13render3dAdornEPNS_5AdornE
+#[doc(alias = "RBX::NewNullTool::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::NewNullTool::render3dAdorn(RBX::Adorn *)
+pub fn stub_2efef0() -> ! {
+    todo!("0x2efef0 RBX::NewNullTool::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2efef4 — __ZThn4_N3RBX11NewNullTool13render3dAdornEPNS_5AdornE
+#[doc(alias = "`non-virtual thunk toRBX::NewNullTool::render3dAdorn(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::NewNullTool::render3dAdorn(RBX::Adorn *)
+pub fn stub_2efef4() -> ! {
+    todo!("0x2efef4 `non-virtual thunk to'RBX::NewNullTool::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2f0410 — __ZNK3RBX11NewNullTool19shouldRender3dAdornEv
+// type: _DWORD __fastcall(RBX::NewNullTool *__hidden this)
+#[doc(alias = "RBX::NewNullTool::shouldRender3dAdorn(void)const")]
+// was: RBX::NewNullTool::shouldRender3dAdorn(void)const
+pub fn stub_2f0410() -> ! {
+    todo!("0x2f0410 RBX::NewNullTool::shouldRender3dAdorn(void)const")
+}
+
+// 0x2f0414 — __ZThn4_NK3RBX11NewNullTool19shouldRender3dAdornEv
+// type: _DWORD __fastcall(RBX::NewNullTool *__hidden this)
+#[doc(alias = "`non-virtual thunk toRBX::NewNullTool::shouldRender3dAdorn(void)const")]
+// was: `non-virtual thunk to'RBX::NewNullTool::shouldRender3dAdorn(void)const
+pub fn stub_2f0414() -> ! {
+    todo!("0x2f0414 `non-virtual thunk to'RBX::NewNullTool::shouldRender3dAdorn(void)const")
+}
+
+// 0x2f12c0 — __ZN3RBX12PartDragTool13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::PartDragTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::PartDragTool::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::PartDragTool::render3dAdorn(RBX::Adorn *)
+pub fn stub_2f12c0() -> ! {
+    todo!("0x2f12c0 RBX::PartDragTool::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2f13d0 — __ZThn4_N3RBX12PartDragTool13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::PartDragTool *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::PartDragTool::render3dAdorn(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::PartDragTool::render3dAdorn(RBX::Adorn *)
+pub fn stub_2f13d0() -> ! {
+    todo!("0x2f13d0 `non-virtual thunk to'RBX::PartDragTool::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2f6850 — __ZN3RBX13ArrowToolBase13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::ArrowToolBase *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")]
+// was: RBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)
+pub fn stub_2f6850() -> ! {
+    todo!("0x2f6850 RBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2f6858 — __ZN3RBX13ArrowToolBase15renderHoverOverEPNS_5AdornEb
+// type: _DWORD __fastcall(RBX::ArrowToolBase *__hidden this, RBX::Adorn *, bool)
+#[doc(alias = "RBX::ArrowToolBase::renderHoverOver(RBX::Adorn *,bool)")]
+// was: RBX::ArrowToolBase::renderHoverOver(RBX::Adorn *,bool)
+pub fn stub_2f6858() -> ! {
+    todo!("0x2f6858 RBX::ArrowToolBase::renderHoverOver(RBX::Adorn *,bool)")
+}
+
+// 0x2f68c8 — __ZThn4_N3RBX13ArrowToolBase13render3dAdornEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::ArrowToolBase *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)
+pub fn stub_2f68c8() -> ! {
+    todo!("0x2f68c8 `non-virtual thunk to'RBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")
+}
+
+// 0x2f7818 — __ZN3RBX16BoxSelectCommand8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::BoxSelectCommand *__hidden this, RBX::Adorn *)
+#[doc(alias = "RBX::BoxSelectCommand::render2d(RBX::Adorn *)")]
+// was: RBX::BoxSelectCommand::render2d(RBX::Adorn *)
+pub fn stub_2f7818() -> ! {
+    todo!("0x2f7818 RBX::BoxSelectCommand::render2d(RBX::Adorn *)")
+}
+
+// 0x2f78d0 — __ZThn4_N3RBX16BoxSelectCommand8render2dEPNS_5AdornE
+// type: _DWORD __fastcall(RBX::BoxSelectCommand *__hidden this, RBX::Adorn *)
+#[doc(alias = "`non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")]
+// was: `non-virtual thunk to'RBX::BoxSelectCommand::render2d(RBX::Adorn *)
+pub fn stub_2f78d0() -> ! {
+    todo!("0x2f78d0 `non-virtual thunk to'RBX::BoxSelectCommand::render2d(RBX::Adorn *)")
+}
+
+// 0x3047f0 — __ZN3RBX10BrickColor8BrickMap32setRenderingSupportedPaletteSizeEm
+// type: _DWORD __fastcall(RBX::BrickColor::BrickMap *__hidden this, unsigned int)
+#[doc(alias = "RBX::BrickColor::BrickMap::setRenderingSupportedPaletteSize(unsigned long)")]
+// was: RBX::BrickColor::BrickMap::setRenderingSupportedPaletteSize(unsigned long)
+pub fn stub_3047f0() -> ! {
+    todo!("0x3047f0 RBX::BrickColor::BrickMap::setRenderingSupportedPaletteSize(unsigned long)")
+}
+
+// 0x38c6b4 — __ZN3RBX13UserInputBase13getGameCursorEPNS_5AdornE
+// type: void __fastcall(RBX::UserInputBase *this, const shared_count *, int)
+#[doc(alias = "RBX::UserInputBase::getGameCursor(RBX::Adorn *)")]
+// was: RBX::UserInputBase::getGameCursor(RBX::Adorn *)
+pub fn stub_38c6b4() -> ! {
+    todo!("0x38c6b4 RBX::UserInputBase::getGameCursor(RBX::Adorn *)")
+}
+
+// 0x38c928 — __ZN3RBX13UserInputBase11setCursorIdEPNS_5AdornERKNS_9TextureIdE
+// type: int __fastcall(RBX::UserInputBase *this, RBX::Adorn *, const RBX::TextureId *)
+#[doc(alias = "RBX::UserInputBase::setCursorId(RBX::Adorn *,RBX::TextureId const&)")]
+// was: RBX::UserInputBase::setCursorId(RBX::Adorn *,RBX::TextureId const&)
+pub fn stub_38c928() -> ! {
+    todo!("0x38c928 RBX::UserInputBase::setCursorId(RBX::Adorn *,RBX::TextureId const&)")
+}
+
+// 0x38c974 — __ZN3RBX13UserInputBase16renderGameCursorEPNS_5AdornE
+// type: void __fastcall(RBX::UserInputBase *this, RBX::Adorn *)
+#[doc(alias = "RBX::UserInputBase::renderGameCursor(RBX::Adorn *)")]
+// was: RBX::UserInputBase::renderGameCursor(RBX::Adorn *)
+pub fn stub_38c974() -> ! {
+    todo!("0x38c974 RBX::UserInputBase::renderGameCursor(RBX::Adorn *)")
+}
+
+// 0x38efa0 — __ZN3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE
+// type: unsigned int __fastcall(RBX::Instance *, int, int)
+#[doc(alias = "RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+// was: RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)
+pub fn stub_38efa0() -> ! {
+    todo!("0x38efa0 RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+}
+
+// 0x38f014 — __ZThn104_N3RBX12Accoutrement14render3dSelectEPNS_5AdornENS_11SelectStateE
+// type: unsigned int __fastcall(int, int, int)
+#[doc(alias = "`non-virtual thunk toRBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+// was: `non-virtual thunk to'RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)
+pub fn stub_38f014() -> ! {
+    todo!("0x38f014 `non-virtual thunk to'RBX::Accoutrement::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+}
+
+// 0x39066c — __ZN3RBX12Accoutrement17getRenderLocationEv
+// type: int __fastcall(RBX::Accoutrement *this, int)
+#[doc(alias = "RBX::Accoutrement::getRenderLocation(void)")]
+// was: RBX::Accoutrement::getRenderLocation(void)
+pub fn stub_39066c() -> ! {
+    todo!("0x39066c RBX::Accoutrement::getRenderLocation(void)")
+}
+
+// 0x39067c — __ZN3RBX12Accoutrement13getRenderSizeEv
+// type: int __fastcall(RBX::Accoutrement *this, RBX::Accoutrement *)
+#[doc(alias = "RBX::Accoutrement::getRenderSize(void)")]
+// was: RBX::Accoutrement::getRenderSize(void)
+pub fn stub_39067c() -> ! {
+    todo!("0x39067c RBX::Accoutrement::getRenderSize(void)")
+}
+
+// 0x3906b4 — __ZThn128_N3RBX12Accoutrement17getRenderLocationEv
+// type: int __fastcall(RBX::Accoutrement *this, int)
+#[doc(alias = "`non-virtual thunk toRBX::Accoutrement::getRenderLocation(void)")]
+// was: `non-virtual thunk to'RBX::Accoutrement::getRenderLocation(void)
+pub fn stub_3906b4() -> ! {
+    todo!("0x3906b4 `non-virtual thunk to'RBX::Accoutrement::getRenderLocation(void)")
+}
+
+// 0x3906c4 — __ZThn128_N3RBX12Accoutrement13getRenderSizeEv
+// type: int __fastcall(RBX::Accoutrement *this)
+#[doc(alias = "`non-virtual thunk toRBX::Accoutrement::getRenderSize(void)")]
+// was: `non-virtual thunk to'RBX::Accoutrement::getRenderSize(void)
+pub fn stub_3906c4() -> ! {
+    todo!("0x3906c4 `non-virtual thunk to'RBX::Accoutrement::getRenderSize(void)")
+}
+
+// 0x393b34 — __ZN3RBX13PartAdornment10setAdorneeEPNS_12PartInstanceE
+// type: void __fastcall(RBX::PartAdornment *this, RBX::PartInstance *)
+#[doc(alias = "RBX::PartAdornment::setAdornee(RBX::PartInstance *)")]
+// was: RBX::PartAdornment::setAdornee(RBX::PartInstance *)
+pub fn stub_393b34() -> ! {
+    todo!("0x393b34 RBX::PartAdornment::setAdornee(RBX::PartInstance *)")
+}
+
+// 0x393c44 — __ZN3RBX13PartAdornmentC2EPKc
+// type: RBX::GuiBase3d *__fastcall(RBX::PartAdornment *this, const char *)
+#[doc(alias = "RBX::PartAdornment::PartAdornment(char const*)")]
+// was: RBX::PartAdornment::PartAdornment(char const*)
+pub fn stub_393c44() -> ! {
+    todo!("0x393c44 RBX::PartAdornment::PartAdornment(char const*)")
+}
+
+// 0x393dd0 — __ZN3RBX11PVAdornment10setAdorneeEPNS_10PVInstanceE
+// type: void __fastcall(RBX::PVAdornment *this, RBX::PVInstance *)
+#[doc(alias = "RBX::PVAdornment::setAdornee(RBX::PVInstance *)")]
+// was: RBX::PVAdornment::setAdornee(RBX::PVInstance *)
+pub fn stub_393dd0() -> ! {
+    todo!("0x393dd0 RBX::PVAdornment::setAdornee(RBX::PVInstance *)")
+}
+
+// 0x393ee0 — __ZN3RBX11PVAdornmentC2EPKc
+// type: RBX::GuiBase3d *__fastcall(RBX::PVAdornment *this, const char *)
+#[doc(alias = "RBX::PVAdornment::PVAdornment(char const*)")]
+// was: RBX::PVAdornment::PVAdornment(char const*)
+pub fn stub_393ee0() -> ! {
+    todo!("0x393ee0 RBX::PVAdornment::PVAdornment(char const*)")
+}
+
+// 0x39406c — __ZNK3RBX13PartAdornment19getAdorneeDangerousEv
+// type: int __fastcall(RBX::PartAdornment *this)
+#[doc(alias = "RBX::PartAdornment::getAdorneeDangerous(void)const")]
+// was: RBX::PartAdornment::getAdorneeDangerous(void)const
+pub fn stub_39406c() -> ! {
+    todo!("0x39406c RBX::PartAdornment::getAdorneeDangerous(void)const")
+}
+
+// 0x394090 — __ZN3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()
+pub fn stub_394090() -> ! {
+    todo!("0x394090 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")
+}
+
+// 0x3940bc — __ZNK3RBX11PVAdornment19getAdorneeDangerousEv
+// type: int __fastcall(RBX::PVAdornment *this)
+#[doc(alias = "RBX::PVAdornment::getAdorneeDangerous(void)const")]
+// was: RBX::PVAdornment::getAdorneeDangerous(void)const
+pub fn stub_3940bc() -> ! {
+    todo!("0x3940bc RBX::PVAdornment::getAdorneeDangerous(void)const")
+}
+
+// 0x3940e0 — __ZN3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()
+pub fn stub_3940e0() -> ! {
+    todo!("0x3940e0 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")
+}
+
+// 0x39427c — __ZN3RBX11PVAdornmentD1Ev
+// type: void __fastcall(RBX::PVAdornment *__hidden this)
+#[doc(alias = "RBX::PVAdornment::~PVAdornment()")]
+// was: RBX::PVAdornment::~PVAdornment()
+pub fn stub_39427c() -> ! {
+    todo!("0x39427c RBX::PVAdornment::~PVAdornment()")
+}
+
+// 0x3943c4 — __ZN3RBX11PVAdornmentD0Ev
+// type: void __fastcall(RBX::PVAdornment *__hidden this)
+#[doc(alias = "RBX::PVAdornment::~PVAdornment()")]
+// was: RBX::PVAdornment::~PVAdornment()
+pub fn stub_3943c4() -> ! {
+    todo!("0x3943c4 RBX::PVAdornment::~PVAdornment()")
+}
+
+// 0x394464 — __ZNK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv
+#[doc(alias = "__ZNK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv")]
+// was: __ZNK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv
+pub fn stub_394464() -> ! {
+    todo!("0x394464 __ZNK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv")
+}
+
+// 0x39448c — __ZThn32_N3RBX11PVAdornmentD1Ev
+// type: void __fastcall(RBX::PVAdornment *__hidden this)
+#[doc(alias = "`non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
+// was: `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()
+pub fn stub_39448c() -> ! {
+    todo!("0x39448c `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()")
+}
+
+// 0x3945d4 — __ZThn32_N3RBX11PVAdornmentD0Ev
+// type: void __fastcall(RBX::PVAdornment *__hidden this)
+#[doc(alias = "`non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
+// was: `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()
+pub fn stub_3945d4() -> ! {
+    todo!("0x3945d4 `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()")
+}
+
+// 0x394730 — __ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv
+#[doc(alias = "__ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv")]
+// was: __ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv
+pub fn stub_394730() -> ! {
+    todo!("0x394730 __ZThn32_NK3RBX17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEE12getClassNameEv")
+}
+
+// 0x394758 — __ZThn36_N3RBX11PVAdornmentD1Ev
+// type: void __fastcall(RBX::PVAdornment *__hidden this)
+#[doc(alias = "`non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
+// was: `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()
+pub fn stub_394758() -> ! {
+    todo!("0x394758 `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()")
+}
+
+// 0x3948a0 — __ZThn36_N3RBX11PVAdornmentD0Ev
+// type: void __fastcall(RBX::PVAdornment *__hidden this)
+#[doc(alias = "`non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
+// was: `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()
+pub fn stub_3948a0() -> ! {
+    todo!("0x3948a0 `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()")
+}
+
+// 0x3949fc — __ZN3RBX4Name13callDoDeclareILZNS_12sPVAdornmentEEEEvv
+#[doc(alias = "__ZN3RBX4Name13callDoDeclareILZNS_12sPVAdornmentEEEEvv")]
+// was: __ZN3RBX4Name13callDoDeclareILZNS_12sPVAdornmentEEEEvv
+pub fn stub_3949fc() -> ! {
+    todo!("0x3949fc __ZN3RBX4Name13callDoDeclareILZNS_12sPVAdornmentEEEEvv")
+}
+
+// 0x394a00 — __ZN3RBX4Name9doDeclareILZNS_12sPVAdornmentEEEERKS0_v
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sPVAdornmentEEEERKS0_v")]
+// was: __ZN3RBX4Name9doDeclareILZNS_12sPVAdornmentEEEERKS0_v
+pub fn stub_394a00() -> ! {
+    todo!("0x394a00 __ZN3RBX4Name9doDeclareILZNS_12sPVAdornmentEEEERKS0_v")
+}
+
+// 0x394ae0 — __ZN3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: int __fastcall(int)
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+// was: __ZN3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+pub fn stub_394ae0() -> ! {
+    todo!("0x394ae0 __ZN3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Secur")
+}
+
+// 0x394b9c — __ZN3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+// was: __ZN3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+pub fn stub_394b9c() -> ! {
+    todo!("0x394b9c __ZN3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Secur")
+}
+
+// 0x394c68 — __ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+// was: __ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+pub fn stub_394c68() -> ! {
+    todo!("0x394c68 __ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_")
+}
+
+// 0x394d20 — __ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+// was: __ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+pub fn stub_394d20() -> ! {
+    todo!("0x394d20 __ZThn32_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_")
+}
+
+// 0x394df0 — __ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+// was: __ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+pub fn stub_394df0() -> ! {
+    todo!("0x394df0 __ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_")
+}
+
+// 0x394ea8 — __ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+// was: __ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+pub fn stub_394ea8() -> ! {
+    todo!("0x394ea8 __ZThn36_N3RBX10Reflection9DescribedINS_11PVAdornmentELZNS_12sPVAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_12sPVAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_")
+}
+
+// 0x394f78 — __ZN3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int, char, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::RefPropDescriptor<RBX::PVInstance* (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance*)>(char const*,char const*,RBX::PVInstance* (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::RefPropDescriptor<RBX::PVInstance* (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance*)>(char const*,char const*,RBX::PVInstance* (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_394f78() -> ! {
+    todo!("0x394f78 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::RefPropDescriptor<RBX::PVInstance* (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance")
+}
+
+// 0x395114 — __ZN3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEED0Ev
+// type: int __fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()
+pub fn stub_395114() -> ! {
+    todo!("0x395114 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")
+}
+
+// 0x395144 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10isReadOnlyEv
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isReadOnly(void)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isReadOnly(void)const
+pub fn stub_395144() -> ! {
+    todo!("0x395144 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isReadOnly(void)const")
+}
+
+// 0x395154 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11isWriteOnlyEv
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isWriteOnly(void)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isWriteOnly(void)const
+pub fn stub_395154() -> ! {
+    todo!("0x395154 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isWriteOnly(void)const")
+}
+
+// 0x395164 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
+// type: bool __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
+pub fn stub_395164() -> ! {
+    todo!("0x395164 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x39518c — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+// type: void __fastcall(int, int, _DWORD *, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
+pub fn stub_39518c() -> ! {
+    todo!("0x39518c RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x3952a4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+// type: void __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
+pub fn stub_3952a4() -> ! {
+    todo!("0x3952a4 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x39536c — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
+pub fn stub_39536c() -> ! {
+    todo!("0x39536c RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x395390 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+// type: void __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
+pub fn stub_395390() -> ! {
+    todo!("0x395390 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x395464 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
+pub fn stub_395464() -> ! {
+    todo!("0x395464 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x395488 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11getRefValueEPKNS0_13DescribedBaseE
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_395488() -> ! {
+    todo!("0x395488 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x39549c — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11setRefValueEPNS0_13DescribedBaseES6_
+// type: int __fastcall(int, int, void *lpsrc)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
+pub fn stub_39549c() -> ! {
+    todo!("0x39549c RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x395518 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
+pub fn stub_395518() -> ! {
+    todo!("0x395518 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x395538 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+// type: void __fastcall(int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+pub fn stub_395538() -> ! {
+    todo!("0x395538 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x395618 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+// type: int __fastcall(int)
+#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+// was: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+pub fn stub_395618() -> ! {
+    todo!("0x395618 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x395620 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
+// type: int()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isReadOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isReadOnly(void)const
+pub fn stub_395620() -> ! {
+    todo!("0x395620 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::i")
+}
+
+// 0x395624 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
+// type: int()
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isWriteOnly(void)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isWriteOnly(void)const
+pub fn stub_395624() -> ! {
+    todo!("0x395624 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::i")
+}
+
+// 0x395628 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
+// type: int __fastcall(int, int)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_395628() -> ! {
+    todo!("0x395628 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::g")
+}
+
+// 0x395648 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
+// type: int __fastcall(int, int, _DWORD *)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const")]
+// was: RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const
+pub fn stub_395648() -> ! {
+    todo!("0x395648 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::s")
+}
+
+// 0x395720 — __ZN3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: int __fastcall(int)
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+// was: __ZN3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+pub fn stub_395720() -> ! {
+    todo!("0x395720 __ZN3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_")
+}
+
+// 0x3957dc — __ZN3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+// was: __ZN3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+pub fn stub_3957dc() -> ! {
+    todo!("0x3957dc __ZN3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_")
+}
+
+// 0x3958a8 — __ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+// was: __ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+pub fn stub_3958a8() -> ! {
+    todo!("0x3958a8 __ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE2")
+}
+
+// 0x395960 — __ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+// was: __ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+pub fn stub_395960() -> ! {
+    todo!("0x395960 __ZThn32_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE2")
+}
+
+// 0x395a30 — __ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+// was: __ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+pub fn stub_395a30() -> ! {
+    todo!("0x395a30 __ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE2")
+}
+
+// 0x395ae8 — __ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+// was: __ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+pub fn stub_395ae8() -> ! {
+    todo!("0x395ae8 __ZThn36_N3RBX10Reflection9DescribedINS_13PartAdornmentELZNS_14sPartAdornmentEENS_17NonFactoryProductINS_9GuiBase3dELZNS_14sPartAdornmentEEEELNS0_15ClassDescriptor13FunctionalityE2")
+}
+
+// 0x395bb8 — __ZN3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: _DWORD *__fastcall(_DWORD *, int, int, int, int, int, int, int, int, char, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)
+pub fn stub_395bb8() -> ! {
+    todo!("0x395bb8 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::")
+}
+
+// 0x395c5c — __ZN3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEED0Ev
+// type: int __fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()
+pub fn stub_395c5c() -> ! {
+    todo!("0x395c5c RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")
+}
+
+// 0x395c8c — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10isReadOnlyEv
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isReadOnly(void)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isReadOnly(void)const
+pub fn stub_395c8c() -> ! {
+    todo!("0x395c8c RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isReadOnly(void)const")
+}
+
+// 0x395c9c — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11isWriteOnlyEv
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isWriteOnly(void)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isWriteOnly(void)const
+pub fn stub_395c9c() -> ! {
+    todo!("0x395c9c RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isWriteOnly(void)const")
+}
+
+// 0x395cac — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
+// type: bool __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const
+pub fn stub_395cac() -> ! {
+    todo!("0x395cac RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x395cd4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+// type: void __fastcall(int, int, _DWORD *, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const
+pub fn stub_395cd4() -> ! {
+    todo!("0x395cd4 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x395dec — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+// type: void __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const
+pub fn stub_395dec() -> ! {
+    todo!("0x395dec RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x395eb4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const
+pub fn stub_395eb4() -> ! {
+    todo!("0x395eb4 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x395ed8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+// type: void __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const
+pub fn stub_395ed8() -> ! {
+    todo!("0x395ed8 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x395fac — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const
+pub fn stub_395fac() -> ! {
+    todo!("0x395fac RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x395fd0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11getRefValueEPKNS0_13DescribedBaseE
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const
+pub fn stub_395fd0() -> ! {
+    todo!("0x395fd0 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x395fe4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11setRefValueEPNS0_13DescribedBaseES6_
+// type: int __fastcall(int, int, void *lpsrc)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
+pub fn stub_395fe4() -> ! {
+    todo!("0x395fe4 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x396060 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const
+pub fn stub_396060() -> ! {
+    todo!("0x396060 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x396080 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+// type: void __fastcall(int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+// was: RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+pub fn stub_396080() -> ! {
+    todo!("0x396080 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
