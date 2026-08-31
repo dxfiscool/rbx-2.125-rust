@@ -1,6 +1,6 @@
-//! platform generated — 1874 stubs sorted by EA, from ida/export.json
+//! platform generated — 1974 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 1874 stubs (1774 prior + 100 this batch, 3026 filtered, 1700 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 1974 stubs (1874 prior + 100 this batch, 3026 filtered, 1600 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -13073,3 +13073,704 @@ pub fn stub_ebcb5c() -> ! {
 pub fn stub_ebcbd4() -> ! {
     todo!("0xebcbd4 +[GAIProperty entityDescription]")
 }
+
+// 0xebcd3c — +[GAIHitFormat hitMetaInfos]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIHitFormat hitMetaInfos]")]
+pub fn stub_ebcd3c() -> ! {
+    todo!("0xebcd3c +[GAIHitFormat hitMetaInfos]")
+}
+
+// 0xebd6bc — +[GAIHitFormat allKeys]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIHitFormat allKeys]")]
+pub fn stub_ebd6bc() -> ! {
+    todo!("0xebd6bc +[GAIHitFormat allKeys]")
+}
+
+// 0xebd6e4 — +[GAIHitFormat metaInfoForKey:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[GAIHitFormat metaInfoForKey:]")]
+pub fn stub_ebd6e4() -> ! {
+    todo!("0xebd6e4 +[GAIHitFormat metaInfoForKey:]")
+}
+
+// 0xebd710 — -[GAIClientId init]
+// type: GAIClientId *__cdecl(GAIClientId *self, SEL)
+#[doc(alias = "-[GAIClientId init]")]
+pub fn stub_ebd710() -> ! {
+    todo!("0xebd710 -[GAIClientId init]")
+}
+
+// 0xebd76c — +[GAIClientId generateClientId]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIClientId generateClientId]")]
+pub fn stub_ebd76c() -> ! {
+    todo!("0xebd76c +[GAIClientId generateClientId]")
+}
+
+// 0xebd7a8 — -[GAICoreDataUtil init]
+// type: GAICoreDataUtil *__cdecl(GAICoreDataUtil *self, SEL)
+#[doc(alias = "-[GAICoreDataUtil init]")]
+pub fn stub_ebd7a8() -> ! {
+    todo!("0xebd7a8 -[GAICoreDataUtil init]")
+}
+
+// 0xebd804 — +[GAICoreDataUtil attributeNamed:type:indexed:required:]
+// type: id __cdecl(id, SEL, id, unsigned int, char, char)
+#[doc(alias = "+[GAICoreDataUtil attributeNamed:type:indexed:required:]")]
+pub fn stub_ebd804() -> ! {
+    todo!("0xebd804 +[GAICoreDataUtil attributeNamed:type:indexed:required:]")
+}
+
+// 0xebd8a8 — +[GAIHitBuilder check:required:model:]
+// type: id __cdecl(id, SEL, id, id, id)
+#[doc(alias = "+[GAIHitBuilder check:required:model:]")]
+pub fn stub_ebd8a8() -> ! {
+    todo!("0xebd8a8 +[GAIHitBuilder check:required:model:]")
+}
+
+// 0xebd9a0 — +[GAIHitBuilder requiredParametersForHitType:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[GAIHitBuilder requiredParametersForHitType:]")]
+pub fn stub_ebd9a0() -> ! {
+    todo!("0xebd9a0 +[GAIHitBuilder requiredParametersForHitType:]")
+}
+
+// 0xebdc1c — +[GAIHitBuilder hitWithType:withModel:]
+// type: id __cdecl(id, SEL, id, id)
+#[doc(alias = "+[GAIHitBuilder hitWithType:withModel:]")]
+pub fn stub_ebdc1c() -> ! {
+    todo!("0xebdc1c +[GAIHitBuilder hitWithType:withModel:]")
+}
+
+// 0xebdd88 — -[GAIHitUtil init]
+// type: GAIHitUtil *__cdecl(GAIHitUtil *self, SEL)
+#[doc(alias = "-[GAIHitUtil init]")]
+pub fn stub_ebdd88() -> ! {
+    todo!("0xebdd88 -[GAIHitUtil init]")
+}
+
+// 0xebdde4 — +[GAIHitUtil systemLanguageFromLanguages:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[GAIHitUtil systemLanguageFromLanguages:]")]
+pub fn stub_ebdde4() -> ! {
+    todo!("0xebdde4 +[GAIHitUtil systemLanguageFromLanguages:]")
+}
+
+// 0xebde4c — +[GAIHitUtil systemCountryFromLocale:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[GAIHitUtil systemCountryFromLocale:]")]
+pub fn stub_ebde4c() -> ! {
+    todo!("0xebde4c +[GAIHitUtil systemCountryFromLocale:]")
+}
+
+// 0xebde84 — +[GAIHitUtil userAgentStringWithProduct:version:deviceModel:systemName:systemVersion:systemLanguage:systemCountry:]
+// type: id __cdecl(id, SEL, id, id, id, id, id, id, id)
+#[doc(alias = "+[GAIHitUtil userAgentStringWithProduct:version:deviceModel:systemName:systemVersion:systemLanguage:systemCountry:]")]
+pub fn stub_ebde84() -> ! {
+    todo!("0xebde84 +[GAIHitUtil userAgentStringWithProduct:version:deviceModel:systemName:systemVersion:systemLanguage:systemCountry:]")
+}
+
+// 0xebded8 — +[GAIHitUtil userAgentString]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIHitUtil userAgentString]")]
+pub fn stub_ebded8() -> ! {
+    todo!("0xebded8 +[GAIHitUtil userAgentString]")
+}
+
+// 0xebdfb0 — +[GAIHitUtil systemLanguage]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIHitUtil systemLanguage]")]
+pub fn stub_ebdfb0() -> ! {
+    todo!("0xebdfb0 +[GAIHitUtil systemLanguage]")
+}
+
+// 0xebdff4 — +[GAIHitUtil systemCountry]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIHitUtil systemCountry]")]
+pub fn stub_ebdff4() -> ! {
+    todo!("0xebdff4 +[GAIHitUtil systemCountry]")
+}
+
+// 0xebe038 — +[GAIHitUtil systemScreenResolution]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIHitUtil systemScreenResolution]")]
+pub fn stub_ebe038() -> ! {
+    todo!("0xebe038 +[GAIHitUtil systemScreenResolution]")
+}
+
+// 0xebe0c8 — +[GAIHitUtil systemScreenColorDepth]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GAIHitUtil systemScreenColorDepth]")]
+pub fn stub_ebe0c8() -> ! {
+    todo!("0xebe0c8 +[GAIHitUtil systemScreenColorDepth]")
+}
+
+// 0xebe0d8 — +[GAIHitUtil millisecondsElapsedFrom:To:]
+// type: signed __int64 __cdecl(id, SEL, id, id)
+#[doc(alias = "+[GAIHitUtil millisecondsElapsedFrom:To:]")]
+pub fn stub_ebe0d8() -> ! {
+    todo!("0xebe0d8 +[GAIHitUtil millisecondsElapsedFrom:To:]")
+}
+
+// 0xebe110 — -[GAIRequestBuilder init]
+// type: GAIRequestBuilder *__cdecl(GAIRequestBuilder *self, SEL)
+#[doc(alias = "-[GAIRequestBuilder init]")]
+pub fn stub_ebe110() -> ! {
+    todo!("0xebe110 -[GAIRequestBuilder init]")
+}
+
+// 0xebe17c — -[GAIRequestBuilder dealloc]
+// type: void __cdecl(GAIRequestBuilder *self, SEL)
+#[doc(alias = "-[GAIRequestBuilder dealloc]")]
+pub fn stub_ebe17c() -> ! {
+    todo!("0xebe17c -[GAIRequestBuilder dealloc]")
+}
+
+// 0xebe1c8 — -[GAIRequestBuilder encodeParameter:withValue:]
+// type: id __cdecl(GAIRequestBuilder *self, SEL, id, id)
+#[doc(alias = "-[GAIRequestBuilder encodeParameter:withValue:]")]
+pub fn stub_ebe1c8() -> ! {
+    todo!("0xebe1c8 -[GAIRequestBuilder encodeParameter:withValue:]")
+}
+
+// 0xebe238 — -[GAIRequestBuilder encodeParameters:]
+// type: id __cdecl(GAIRequestBuilder *self, SEL, id)
+#[doc(alias = "-[GAIRequestBuilder encodeParameters:]")]
+pub fn stub_ebe238() -> ! {
+    todo!("0xebe238 -[GAIRequestBuilder encodeParameters:]")
+}
+
+// 0xebe3d0 — -[GAIRequestBuilder requestForHit:]
+// type: id __cdecl(GAIRequestBuilder *self, SEL, id)
+#[doc(alias = "-[GAIRequestBuilder requestForHit:]")]
+pub fn stub_ebe3d0() -> ! {
+    todo!("0xebe3d0 -[GAIRequestBuilder requestForHit:]")
+}
+
+// 0xebe7e0 — -[GAIRequestBuilder userAgent]
+// type: NSString *__cdecl(GAIRequestBuilder *self, SEL)
+#[doc(alias = "-[GAIRequestBuilder userAgent]")]
+pub fn stub_ebe7e0() -> ! {
+    todo!("0xebe7e0 -[GAIRequestBuilder userAgent]")
+}
+
+// 0xebe7f8 — -[GAIRequestBuilder setUserAgent:]
+// type: void __cdecl(GAIRequestBuilder *self, SEL, id)
+#[doc(alias = "-[GAIRequestBuilder setUserAgent:]")]
+pub fn stub_ebe7f8() -> ! {
+    todo!("0xebe7f8 -[GAIRequestBuilder setUserAgent:]")
+}
+
+// 0xebe820 — -[GAITrackerState anonymize]
+// type: char __cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState anonymize]")]
+pub fn stub_ebe820() -> ! {
+    todo!("0xebe820 -[GAITrackerState anonymize]")
+}
+
+// 0xebe864 — -[GAITrackerState setAnonymize:]
+// type: void __cdecl(GAITrackerState *self, SEL, char)
+#[doc(alias = "-[GAITrackerState setAnonymize:]")]
+pub fn stub_ebe864() -> ! {
+    todo!("0xebe864 -[GAITrackerState setAnonymize:]")
+}
+
+// 0xebe8bc — -[GAITrackerState clientId]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState clientId]")]
+pub fn stub_ebe8bc() -> ! {
+    todo!("0xebe8bc -[GAITrackerState clientId]")
+}
+
+// 0xebe8f0 — -[GAITrackerState trackingId]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState trackingId]")]
+pub fn stub_ebe8f0() -> ! {
+    todo!("0xebe8f0 -[GAITrackerState trackingId]")
+}
+
+// 0xebe924 — -[GAITrackerState appName]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState appName]")]
+pub fn stub_ebe924() -> ! {
+    todo!("0xebe924 -[GAITrackerState appName]")
+}
+
+// 0xebe958 — -[GAITrackerState setAppName:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setAppName:]")]
+pub fn stub_ebe958() -> ! {
+    todo!("0xebe958 -[GAITrackerState setAppName:]")
+}
+
+// 0xebe990 — -[GAITrackerState appVersion]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState appVersion]")]
+pub fn stub_ebe990() -> ! {
+    todo!("0xebe990 -[GAITrackerState appVersion]")
+}
+
+// 0xebe9c4 — -[GAITrackerState setAppVersion:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setAppVersion:]")]
+pub fn stub_ebe9c4() -> ! {
+    todo!("0xebe9c4 -[GAITrackerState setAppVersion:]")
+}
+
+// 0xebe9fc — -[GAITrackerState appId]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState appId]")]
+pub fn stub_ebe9fc() -> ! {
+    todo!("0xebe9fc -[GAITrackerState appId]")
+}
+
+// 0xebea30 — -[GAITrackerState setAppId:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setAppId:]")]
+pub fn stub_ebea30() -> ! {
+    todo!("0xebea30 -[GAITrackerState setAppId:]")
+}
+
+// 0xebea68 — -[GAITrackerState appScreen]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState appScreen]")]
+pub fn stub_ebea68() -> ! {
+    todo!("0xebea68 -[GAITrackerState appScreen]")
+}
+
+// 0xebea9c — -[GAITrackerState setAppScreen:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setAppScreen:]")]
+pub fn stub_ebea9c() -> ! {
+    todo!("0xebea9c -[GAITrackerState setAppScreen:]")
+}
+
+// 0xebead4 — -[GAITrackerState sessionControl]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState sessionControl]")]
+pub fn stub_ebead4() -> ! {
+    todo!("0xebead4 -[GAITrackerState sessionControl]")
+}
+
+// 0xebeb08 — -[GAITrackerState setSessionControl:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setSessionControl:]")]
+pub fn stub_ebeb08() -> ! {
+    todo!("0xebeb08 -[GAITrackerState setSessionControl:]")
+}
+
+// 0xebeb40 — -[GAITrackerState adHitId]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState adHitId]")]
+pub fn stub_ebeb40() -> ! {
+    todo!("0xebeb40 -[GAITrackerState adHitId]")
+}
+
+// 0xebeb74 — -[GAITrackerState setAdHitId:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setAdHitId:]")]
+pub fn stub_ebeb74() -> ! {
+    todo!("0xebeb74 -[GAITrackerState setAdHitId:]")
+}
+
+// 0xebebac — -[GAITrackerState sampleRate]
+// type: double __cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState sampleRate]")]
+pub fn stub_ebebac() -> ! {
+    todo!("0xebebac -[GAITrackerState sampleRate]")
+}
+
+// 0xebebc8 — -[GAITrackerState setSampleRate:]
+// type: void __cdecl(GAITrackerState *self, SEL, double)
+#[doc(alias = "-[GAITrackerState setSampleRate:]")]
+pub fn stub_ebebc8() -> ! {
+    todo!("0xebebc8 -[GAITrackerState setSampleRate:]")
+}
+
+// 0xebeda0 — -[GAITrackerState setHttpDispatchUrl:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setHttpDispatchUrl:]")]
+pub fn stub_ebeda0() -> ! {
+    todo!("0xebeda0 -[GAITrackerState setHttpDispatchUrl:]")
+}
+
+// 0xebeed8 — -[GAITrackerState setHttpsDispatchUrl:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setHttpsDispatchUrl:]")]
+pub fn stub_ebeed8() -> ! {
+    todo!("0xebeed8 -[GAITrackerState setHttpsDispatchUrl:]")
+}
+
+// 0xebf010 — -[GAITrackerState dispatchUrl]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState dispatchUrl]")]
+pub fn stub_ebf010() -> ! {
+    todo!("0xebf010 -[GAITrackerState dispatchUrl]")
+}
+
+// 0xebf040 — -[GAITrackerState referrerUrl]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState referrerUrl]")]
+pub fn stub_ebf040() -> ! {
+    todo!("0xebf040 -[GAITrackerState referrerUrl]")
+}
+
+// 0xebf050 — -[GAITrackerState setReferrerUrl:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setReferrerUrl:]")]
+pub fn stub_ebf050() -> ! {
+    todo!("0xebf050 -[GAITrackerState setReferrerUrl:]")
+}
+
+// 0xebf0c4 — -[GAITrackerState campaignUrl]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState campaignUrl]")]
+pub fn stub_ebf0c4() -> ! {
+    todo!("0xebf0c4 -[GAITrackerState campaignUrl]")
+}
+
+// 0xebf0d4 — -[GAITrackerState setCampaignUrl:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setCampaignUrl:]")]
+pub fn stub_ebf0d4() -> ! {
+    todo!("0xebf0d4 -[GAITrackerState setCampaignUrl:]")
+}
+
+// 0xebf304 — -[GAITrackerState init]
+// type: GAITrackerState *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState init]")]
+pub fn stub_ebf304() -> ! {
+    todo!("0xebf304 -[GAITrackerState init]")
+}
+
+// 0xebf360 — -[GAITrackerState initWithTrackingId:withClientId:withAppName:withAppVersion:]
+// type: GAITrackerState *__cdecl(GAITrackerState *self, SEL, id, id, id, id)
+#[doc(alias = "-[GAITrackerState initWithTrackingId:withClientId:withAppName:withAppVersion:]")]
+pub fn stub_ebf360() -> ! {
+    todo!("0xebf360 -[GAITrackerState initWithTrackingId:withClientId:withAppName:withAppVersion:]")
+}
+
+// 0xebf5a8 — +[GAITrackerState trackerStateWithTrackingId:withClientId:withAppName:withAppVersion:]
+// type: GAITrackerState *__cdecl(id, SEL, id, id, id, id)
+#[doc(alias = "+[GAITrackerState trackerStateWithTrackingId:withClientId:withAppName:withAppVersion:]")]
+pub fn stub_ebf5a8() -> ! {
+    todo!("0xebf5a8 +[GAITrackerState trackerStateWithTrackingId:withClientId:withAppName:withAppVersion:]")
+}
+
+// 0xebf73c — -[GAITrackerState dealloc]
+// type: void __cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState dealloc]")]
+pub fn stub_ebf73c() -> ! {
+    todo!("0xebf73c -[GAITrackerState dealloc]")
+}
+
+// 0xebf7c8 — -[GAITrackerState setEventParameters:action:label:value:]
+// type: void __cdecl(GAITrackerState *self, SEL, id, id, id, id)
+#[doc(alias = "-[GAITrackerState setEventParameters:action:label:value:]")]
+pub fn stub_ebf7c8() -> ! {
+    todo!("0xebf7c8 -[GAITrackerState setEventParameters:action:label:value:]")
+}
+
+// 0xebf89c — -[GAITrackerState setTransactionParameters:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setTransactionParameters:]")]
+pub fn stub_ebf89c() -> ! {
+    todo!("0xebf89c -[GAITrackerState setTransactionParameters:]")
+}
+
+// 0xebfa4c — -[GAITrackerState setItemParameters:transaction:]
+// type: void __cdecl(GAITrackerState *self, SEL, id, id)
+#[doc(alias = "-[GAITrackerState setItemParameters:transaction:]")]
+pub fn stub_ebfa4c() -> ! {
+    todo!("0xebfa4c -[GAITrackerState setItemParameters:transaction:]")
+}
+
+// 0xebfc2c — -[GAITrackerState setExceptionParameters:isFatal:]
+// type: void __cdecl(GAITrackerState *self, SEL, id, char)
+#[doc(alias = "-[GAITrackerState setExceptionParameters:isFatal:]")]
+pub fn stub_ebfc2c() -> ! {
+    todo!("0xebfc2c -[GAITrackerState setExceptionParameters:isFatal:]")
+}
+
+// 0xebfcc0 — -[GAITrackerState setTimingParameters:value:category:label:]
+// type: void __cdecl(GAITrackerState *self, SEL, id, double, id, id)
+#[doc(alias = "-[GAITrackerState setTimingParameters:value:category:label:]")]
+pub fn stub_ebfcc0() -> ! {
+    todo!("0xebfcc0 -[GAITrackerState setTimingParameters:value:category:label:]")
+}
+
+// 0xebfde0 — -[GAITrackerState setSocialParameters:action:target:]
+// type: void __cdecl(GAITrackerState *self, SEL, id, id, id)
+#[doc(alias = "-[GAITrackerState setSocialParameters:action:target:]")]
+pub fn stub_ebfde0() -> ! {
+    todo!("0xebfde0 -[GAITrackerState setSocialParameters:action:target:]")
+}
+
+// 0xebfe7c — -[GAITrackerState model]
+// type: GAIModel *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState model]")]
+pub fn stub_ebfe7c() -> ! {
+    todo!("0xebfe7c -[GAITrackerState model]")
+}
+
+// 0xebfe8c — -[GAITrackerState setModel:]
+// type: void __cdecl(GAITrackerState *self, SEL, id)
+#[doc(alias = "-[GAITrackerState setModel:]")]
+pub fn stub_ebfe8c() -> ! {
+    todo!("0xebfe8c -[GAITrackerState setModel:]")
+}
+
+// 0xebfeb0 — -[GAITrackerState sampled]
+// type: char __cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState sampled]")]
+pub fn stub_ebfeb0() -> ! {
+    todo!("0xebfeb0 -[GAITrackerState sampled]")
+}
+
+// 0xebfec0 — -[GAITrackerState setSampled:]
+// type: void __cdecl(GAITrackerState *self, SEL, char)
+#[doc(alias = "-[GAITrackerState setSampled:]")]
+pub fn stub_ebfec0() -> ! {
+    todo!("0xebfec0 -[GAITrackerState setSampled:]")
+}
+
+// 0xebfed0 — -[GAITrackerState httpDispatchUrl]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState httpDispatchUrl]")]
+pub fn stub_ebfed0() -> ! {
+    todo!("0xebfed0 -[GAITrackerState httpDispatchUrl]")
+}
+
+// 0xebfee8 — -[GAITrackerState httpsDispatchUrl]
+// type: NSString *__cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState httpsDispatchUrl]")]
+pub fn stub_ebfee8() -> ! {
+    todo!("0xebfee8 -[GAITrackerState httpsDispatchUrl]")
+}
+
+// 0xebff00 — -[GAITrackerState useHttps]
+// type: char __cdecl(GAITrackerState *self, SEL)
+#[doc(alias = "-[GAITrackerState useHttps]")]
+pub fn stub_ebff00() -> ! {
+    todo!("0xebff00 -[GAITrackerState useHttps]")
+}
+
+// 0xebff10 — -[GAITrackerState setUseHttps:]
+// type: void __cdecl(GAITrackerState *self, SEL, char)
+#[doc(alias = "-[GAITrackerState setUseHttps:]")]
+pub fn stub_ebff10() -> ! {
+    todo!("0xebff10 -[GAITrackerState setUseHttps:]")
+}
+
+// 0xebff20 — -[GAIStringUtil init]
+// type: GAIStringUtil *__cdecl(GAIStringUtil *self, SEL)
+#[doc(alias = "-[GAIStringUtil init]")]
+pub fn stub_ebff20() -> ! {
+    todo!("0xebff20 -[GAIStringUtil init]")
+}
+
+// 0xebff7c — +[GAIStringUtil trim:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[GAIStringUtil trim:]")]
+pub fn stub_ebff7c() -> ! {
+    todo!("0xebff7c +[GAIStringUtil trim:]")
+}
+
+// 0xebffb4 — +[GAIStringUtil intString:]
+// type: id __cdecl(id, SEL, signed __int64)
+#[doc(alias = "+[GAIStringUtil intString:]")]
+pub fn stub_ebffb4() -> ! {
+    todo!("0xebffb4 +[GAIStringUtil intString:]")
+}
+
+// 0xebffec — +[GAIStringUtil uintString:]
+// type: id __cdecl(id, SEL, unsigned __int64)
+#[doc(alias = "+[GAIStringUtil uintString:]")]
+pub fn stub_ebffec() -> ! {
+    todo!("0xebffec +[GAIStringUtil uintString:]")
+}
+
+// 0xec0024 — +[GAIStringUtil decimalString:decimals:]
+// type: id __cdecl(id, SEL, double, int)
+#[doc(alias = "+[GAIStringUtil decimalString:decimals:]")]
+pub fn stub_ec0024() -> ! {
+    todo!("0xec0024 +[GAIStringUtil decimalString:decimals:]")
+}
+
+// 0xec00f4 — +[GAIStringUtil currencyMicrosString:]
+// type: id __cdecl(id, SEL, signed __int64)
+#[doc(alias = "+[GAIStringUtil currencyMicrosString:]")]
+pub fn stub_ec00f4() -> ! {
+    todo!("0xec00f4 +[GAIStringUtil currencyMicrosString:]")
+}
+
+// 0xec0294 — +[GAIStringUtil percentEncode:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[GAIStringUtil percentEncode:]")]
+pub fn stub_ec0294() -> ! {
+    todo!("0xec0294 +[GAIStringUtil percentEncode:]")
+}
+
+// 0xec02fc — +[GAIStringUtil percentDecode:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[GAIStringUtil percentDecode:]")]
+pub fn stub_ec02fc() -> ! {
+    todo!("0xec02fc +[GAIStringUtil percentDecode:]")
+}
+
+// 0xec033c — +[GAIStringUtil decodeParametersFromQuery:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[GAIStringUtil decodeParametersFromQuery:]")]
+pub fn stub_ec033c() -> ! {
+    todo!("0xec033c +[GAIStringUtil decodeParametersFromQuery:]")
+}
+
+// 0xec0500 — +[GAIStringUtil decodeParametersFromUrl:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[GAIStringUtil decodeParametersFromUrl:]")]
+pub fn stub_ec0500() -> ! {
+    todo!("0xec0500 +[GAIStringUtil decodeParametersFromUrl:]")
+}
+
+// 0xec0598 — -[GAIURLConnection dealloc]
+// type: void __cdecl(GAIURLConnection *self, SEL)
+#[doc(alias = "-[GAIURLConnection dealloc]")]
+pub fn stub_ec0598() -> ! {
+    todo!("0xec0598 -[GAIURLConnection dealloc]")
+}
+
+// 0xec0648 — -[GAIURLConnection init]
+// type: GAIURLConnection *__cdecl(GAIURLConnection *self, SEL)
+#[doc(alias = "-[GAIURLConnection init]")]
+pub fn stub_ec0648() -> ! {
+    todo!("0xec0648 -[GAIURLConnection init]")
+}
+
+// 0xec06a4 — -[GAIURLConnection initWithRequest:completionQueue:completionHandler:]
+// type: GAIURLConnection *__cdecl(GAIURLConnection *self, SEL, id, dispatch_queue_s *, id)
+#[doc(alias = "-[GAIURLConnection initWithRequest:completionQueue:completionHandler:]")]
+pub fn stub_ec06a4() -> ! {
+    todo!("0xec06a4 -[GAIURLConnection initWithRequest:completionQueue:completionHandler:]")
+}
+
+// 0xec07c4 — -[GAIURLConnection cancel]
+// type: void __cdecl(GAIURLConnection *self, SEL)
+#[doc(alias = "-[GAIURLConnection cancel]")]
+pub fn stub_ec07c4() -> ! {
+    todo!("0xec07c4 -[GAIURLConnection cancel]")
+}
+
+// 0xec0800 — -[GAIURLConnection connection:didFailWithError:]
+// type: void __cdecl(GAIURLConnection *self, SEL, id, id)
+#[doc(alias = "-[GAIURLConnection connection:didFailWithError:]")]
+pub fn stub_ec0800() -> ! {
+    todo!("0xec0800 -[GAIURLConnection connection:didFailWithError:]")
+}
+
+// 0xec08f0 — -[GAIURLConnection connection:willSendRequest:redirectResponse:]
+// type: id __cdecl(GAIURLConnection *self, SEL, id, id, id)
+#[doc(alias = "-[GAIURLConnection connection:willSendRequest:redirectResponse:]")]
+pub fn stub_ec08f0() -> ! {
+    todo!("0xec08f0 -[GAIURLConnection connection:willSendRequest:redirectResponse:]")
+}
+
+// 0xec08f4 — -[GAIURLConnection connection:willCacheResponse:]
+// type: id __cdecl(GAIURLConnection *self, SEL, id, id)
+#[doc(alias = "-[GAIURLConnection connection:willCacheResponse:]")]
+pub fn stub_ec08f4() -> ! {
+    todo!("0xec08f4 -[GAIURLConnection connection:willCacheResponse:]")
+}
+
+// 0xec08f8 — -[GAIURLConnection connection:didReceiveData:]
+// type: void __cdecl(GAIURLConnection *self, SEL, id, id)
+#[doc(alias = "-[GAIURLConnection connection:didReceiveData:]")]
+pub fn stub_ec08f8() -> ! {
+    todo!("0xec08f8 -[GAIURLConnection connection:didReceiveData:]")
+}
+
+// 0xec0938 — -[GAIURLConnection connection:didReceiveResponse:]
+// type: void __cdecl(GAIURLConnection *self, SEL, id, id)
+#[doc(alias = "-[GAIURLConnection connection:didReceiveResponse:]")]
+pub fn stub_ec0938() -> ! {
+    todo!("0xec0938 -[GAIURLConnection connection:didReceiveResponse:]")
+}
+
+// 0xec0984 — -[GAIURLConnection connectionDidFinishLoading:]
+// type: void __cdecl(GAIURLConnection *self, SEL, id)
+#[doc(alias = "-[GAIURLConnection connectionDidFinishLoading:]")]
+pub fn stub_ec0984() -> ! {
+    todo!("0xec0984 -[GAIURLConnection connectionDidFinishLoading:]")
+}
+
+// 0xec0a54 — -[GAIURLConnection request]
+// type: NSURLRequest *__cdecl(GAIURLConnection *self, SEL)
+#[doc(alias = "-[GAIURLConnection request]")]
+pub fn stub_ec0a54() -> ! {
+    todo!("0xec0a54 -[GAIURLConnection request]")
+}
+
+// 0xec0a64 — -[GAIURLConnection setRequest:]
+// type: void __cdecl(GAIURLConnection *self, SEL, id)
+#[doc(alias = "-[GAIURLConnection setRequest:]")]
+pub fn stub_ec0a64() -> ! {
+    todo!("0xec0a64 -[GAIURLConnection setRequest:]")
+}
+
+// 0xec0a88 — -[GAIURLConnection connection]
+// type: NSURLConnection *__cdecl(GAIURLConnection *self, SEL)
+#[doc(alias = "-[GAIURLConnection connection]")]
+pub fn stub_ec0a88() -> ! {
+    todo!("0xec0a88 -[GAIURLConnection connection]")
+}
+
+// 0xec0a98 — -[GAIURLConnection setConnection:]
+// type: void __cdecl(GAIURLConnection *self, SEL, id)
+#[doc(alias = "-[GAIURLConnection setConnection:]")]
+pub fn stub_ec0a98() -> ! {
+    todo!("0xec0a98 -[GAIURLConnection setConnection:]")
+}
+
+// 0xec0abc — -[GAIURLConnection response]
+// type: NSURLResponse *__cdecl(GAIURLConnection *self, SEL)
+#[doc(alias = "-[GAIURLConnection response]")]
+pub fn stub_ec0abc() -> ! {
+    todo!("0xec0abc -[GAIURLConnection response]")
+}
+
+// 0xec0acc — -[GAIURLConnection setResponse:]
+// type: void __cdecl(GAIURLConnection *self, SEL, id)
+#[doc(alias = "-[GAIURLConnection setResponse:]")]
+pub fn stub_ec0acc() -> ! {
+    todo!("0xec0acc -[GAIURLConnection setResponse:]")
+}
+
+// 0xec0af0 — -[GAIURLConnection data]
+// type: NSMutableData *__cdecl(GAIURLConnection *self, SEL)
+#[doc(alias = "-[GAIURLConnection data]")]
+pub fn stub_ec0af0() -> ! {
+    todo!("0xec0af0 -[GAIURLConnection data]")
+}
+
+// 0xec0b00 — -[GAIURLConnection setData:]
+// type: void __cdecl(GAIURLConnection *self, SEL, id)
+#[doc(alias = "-[GAIURLConnection setData:]")]
+pub fn stub_ec0b00() -> ! {
+    todo!("0xec0b00 -[GAIURLConnection setData:]")
+}
+
+// 0xec0b24 — -[GAIURLConnection completionQueue]
+// type: dispatch_queue_s *__cdecl(GAIURLConnection *self, SEL)
+#[doc(alias = "-[GAIURLConnection completionQueue]")]
+pub fn stub_ec0b24() -> ! {
+    todo!("0xec0b24 -[GAIURLConnection completionQueue]")
+}
+
+// 0xec0b34 — -[GAIURLConnection setCompletionQueue:]
+// type: void __cdecl(GAIURLConnection *self, SEL, dispatch_queue_s *)
+#[doc(alias = "-[GAIURLConnection setCompletionQueue:]")]
+pub fn stub_ec0b34() -> ! {
+    todo!("0xec0b34 -[GAIURLConnection setCompletionQueue:]")
+}
+
