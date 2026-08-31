@@ -1,6 +1,6 @@
-//! platform generated — 1474 stubs sorted by EA, from ida/export.json
+//! platform generated — 1574 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 1474 stubs (1374 prior + 100 this batch, 3026 filtered, 2100 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 1574 stubs (1474 prior + 100 this batch, 3026 filtered, 2000 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -10273,4 +10273,704 @@ pub fn stub_58d7c() -> ! {
 #[doc(alias = "-[RobloxPageViewController viewWillAppear:]")]
 pub fn stub_58e20() -> ! {
     todo!("0x58e20 -[RobloxPageViewController viewWillAppear:]")
+}
+
+// 0x58e4c — -[RobloxPageViewController shouldAutorotate]
+// type: char __cdecl(RobloxPageViewController *self, SEL)
+#[doc(alias = "-[RobloxPageViewController shouldAutorotate]")]
+pub fn stub_58e4c() -> ! {
+    todo!("0x58e4c -[RobloxPageViewController shouldAutorotate]")
+}
+
+// 0x58e50 — -[RobloxPageViewController supportedInterfaceOrientations]
+// type: unsigned int __cdecl(RobloxPageViewController *self, SEL)
+#[doc(alias = "-[RobloxPageViewController supportedInterfaceOrientations]")]
+pub fn stub_58e50() -> ! {
+    todo!("0x58e50 -[RobloxPageViewController supportedInterfaceOrientations]")
+}
+
+// 0x58eb8 — -[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]
+// type: char __cdecl(RobloxPageViewController *self, SEL, int)
+#[doc(alias = "-[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]")]
+pub fn stub_58eb8() -> ! {
+    todo!("0x58eb8 -[RobloxPageViewController shouldAutorotateToInterfaceOrientation:]")
+}
+
+// 0x58f40 — -[NSString(Escaping) stringWithPercentEscape]_0
+// type: NSString *__cdecl(NSString *self, SEL)
+#[doc(alias = "-[NSString(Escaping) stringWithPercentEscape]_0")]
+pub fn stub_58f40() -> ! {
+    todo!("0x58f40 -[NSString(Escaping) stringWithPercentEscape]_0")
+}
+
+// 0x58f94 — +[LoginManager sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[LoginManager sharedInstance]")]
+pub fn stub_58f94() -> ! {
+    todo!("0x58f94 +[LoginManager sharedInstance]")
+}
+
+// 0x58ff0 — ___30+[LoginManager sharedInstance]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___30+[LoginManager sharedInstance]_block_invoke")]
+pub fn stub_58ff0() -> ! {
+    todo!("0x58ff0 ___30+[LoginManager sharedInstance]_block_invoke")
+}
+
+// 0x59038 — -[LoginManager init]
+// type: LoginManager *__cdecl(LoginManager *self, SEL)
+#[doc(alias = "-[LoginManager init]")]
+pub fn stub_59038() -> ! {
+    todo!("0x59038 -[LoginManager init]")
+}
+
+// 0x5913c — -[LoginManager dealloc]
+// type: void __cdecl(LoginManager *self, SEL)
+#[doc(alias = "-[LoginManager dealloc]")]
+pub fn stub_5913c() -> ! {
+    todo!("0x5913c -[LoginManager dealloc]")
+}
+
+// 0x591a0 — -[LoginManager applicationWillTerminate]
+// type: void __cdecl(LoginManager *self, SEL)
+#[doc(alias = "-[LoginManager applicationWillTerminate]")]
+pub fn stub_591a0() -> ! {
+    todo!("0x591a0 -[LoginManager applicationWillTerminate]")
+}
+
+// 0x592a0 — -[LoginManager getRememberPassword]
+// type: char __cdecl(LoginManager *self, SEL)
+#[doc(alias = "-[LoginManager getRememberPassword]")]
+pub fn stub_592a0() -> ! {
+    todo!("0x592a0 -[LoginManager getRememberPassword]")
+}
+
+// 0x592b0 — -[LoginManager setRememberPassword:]
+// type: void __cdecl(LoginManager *self, SEL, char)
+#[doc(alias = "-[LoginManager setRememberPassword:]")]
+pub fn stub_592b0() -> ! {
+    todo!("0x592b0 -[LoginManager setRememberPassword:]")
+}
+
+// 0x594e4 — -[LoginManager getLoginFailedNotification]
+// type: id __cdecl(LoginManager *self, SEL)
+#[doc(alias = "-[LoginManager getLoginFailedNotification]")]
+pub fn stub_594e4() -> ! {
+    todo!("0x594e4 -[LoginManager getLoginFailedNotification]")
+}
+
+// 0x594f4 — -[LoginManager getLoginSuccessfulNotification]
+// type: id __cdecl(LoginManager *self, SEL)
+#[doc(alias = "-[LoginManager getLoginSuccessfulNotification]")]
+pub fn stub_594f4() -> ! {
+    todo!("0x594f4 -[LoginManager getLoginSuccessfulNotification]")
+}
+
+// 0x59504 — -[LoginManager updateUserInfo:password:]
+// type: void __cdecl(LoginManager *self, SEL, id, id)
+#[doc(alias = "-[LoginManager updateUserInfo:password:]")]
+pub fn stub_59504() -> ! {
+    todo!("0x59504 -[LoginManager updateUserInfo:password:]")
+}
+
+// 0x59690 — -[LoginManager isConnectedToInternet]
+// type: char __cdecl(LoginManager *self, SEL)
+#[doc(alias = "-[LoginManager isConnectedToInternet]")]
+pub fn stub_59690() -> ! {
+    todo!("0x59690 -[LoginManager isConnectedToInternet]")
+}
+
+// 0x598e4 — -[LoginManager doLogout]
+// type: void __cdecl(LoginManager *self, SEL)
+#[doc(alias = "-[LoginManager doLogout]")]
+pub fn stub_598e4() -> ! {
+    todo!("0x598e4 -[LoginManager doLogout]")
+}
+
+// 0x59a6c — ___24-[LoginManager doLogout]_block_invoke
+// type: id __fastcall(int, int, int, int)
+#[doc(alias = "___24-[LoginManager doLogout]_block_invoke")]
+pub fn stub_59a6c() -> ! {
+    todo!("0x59a6c ___24-[LoginManager doLogout]_block_invoke")
+}
+
+// 0x59ae8 — -[LoginManager doLoginWithUsername:password:]
+// type: void __cdecl(LoginManager *self, SEL, id, id)
+#[doc(alias = "-[LoginManager doLoginWithUsername:password:]")]
+pub fn stub_59ae8() -> ! {
+    todo!("0x59ae8 -[LoginManager doLoginWithUsername:password:]")
+}
+
+// 0x59ecc — ___45-[LoginManager doLoginWithUsername:password:]_block_invoke
+// type: id __fastcall(int, int, int, int)
+#[doc(alias = "___45-[LoginManager doLoginWithUsername:password:]_block_invoke")]
+pub fn stub_59ecc() -> ! {
+    todo!("0x59ecc ___45-[LoginManager doLoginWithUsername:password:]_block_invoke")
+}
+
+// 0x5a0e4 — -[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]
+// type: id __cdecl(LoginManager *self, SEL, id, id, id, id)
+#[doc(alias = "-[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]")]
+pub fn stub_5a0e4() -> ! {
+    todo!("0x5a0e4 -[LoginManager processLoginResponse:loginData:loginError:userLoginInfo:]")
+}
+
+// 0x5a42c — -[LoginManager processLogOutResponse:logoutData:logoutError:]
+// type: id __cdecl(LoginManager *self, SEL, id, id, id)
+#[doc(alias = "-[LoginManager processLogOutResponse:logoutData:logoutError:]")]
+pub fn stub_5a42c() -> ! {
+    todo!("0x5a42c -[LoginManager processLogOutResponse:logoutData:logoutError:]")
+}
+
+// 0x5a6a8 — -[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]
+// type: id __cdecl(LoginManager *self, SEL, id, id, id)
+#[doc(alias = "-[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]")]
+pub fn stub_5a6a8() -> ! {
+    todo!("0x5a6a8 -[LoginManager processSuccessfulLoginResponse:httpResponse:userLoginInfo:]")
+}
+
+// 0x5ac78 — -[LoginManager processSuccessfulLogoutResponse:httpResponse:]
+// type: id __cdecl(LoginManager *self, SEL, id, id)
+#[doc(alias = "-[LoginManager processSuccessfulLogoutResponse:httpResponse:]")]
+pub fn stub_5ac78() -> ! {
+    todo!("0x5ac78 -[LoginManager processSuccessfulLogoutResponse:httpResponse:]")
+}
+
+// 0x5ae50 — -[LoginManager processFailureLoginResponse:]
+// type: id __cdecl(LoginManager *self, SEL, id)
+#[doc(alias = "-[LoginManager processFailureLoginResponse:]")]
+pub fn stub_5ae50() -> ! {
+    todo!("0x5ae50 -[LoginManager processFailureLoginResponse:]")
+}
+
+// 0x5b150 — -[LoginManager processFailureLogoutResponse:]
+// type: id __cdecl(LoginManager *self, SEL, id)
+#[doc(alias = "-[LoginManager processFailureLogoutResponse:]")]
+pub fn stub_5b150() -> ! {
+    todo!("0x5b150 -[LoginManager processFailureLogoutResponse:]")
+}
+
+// 0x5b4a0 — -[AgreementController initWithCoder:]
+// type: AgreementController *__cdecl(AgreementController *self, SEL, id)
+#[doc(alias = "-[AgreementController initWithCoder:]")]
+pub fn stub_5b4a0() -> ! {
+    todo!("0x5b4a0 -[AgreementController initWithCoder:]")
+}
+
+// 0x5b4e0 — -[AgreementController init:]
+// type: id __cdecl(AgreementController *self, SEL, id)
+#[doc(alias = "-[AgreementController init:]")]
+pub fn stub_5b4e0() -> ! {
+    todo!("0x5b4e0 -[AgreementController init:]")
+}
+
+// 0x5b550 — -[AgreementController init:newFrame:]
+// type: id __cdecl(AgreementController *self, SEL, id, CGRect)
+#[doc(alias = "-[AgreementController init:newFrame:]")]
+pub fn stub_5b550() -> ! {
+    todo!("0x5b550 -[AgreementController init:newFrame:]")
+}
+
+// 0x5b5fc — -[AgreementController dealloc]
+// type: void __cdecl(AgreementController *self, SEL)
+#[doc(alias = "-[AgreementController dealloc]")]
+pub fn stub_5b5fc() -> ! {
+    todo!("0x5b5fc -[AgreementController dealloc]")
+}
+
+// 0x5b680 — -[AgreementController setUrl:]
+// type: void __cdecl(AgreementController *self, SEL, id)
+#[doc(alias = "-[AgreementController setUrl:]")]
+pub fn stub_5b680() -> ! {
+    todo!("0x5b680 -[AgreementController setUrl:]")
+}
+
+// 0x5b690 — -[AgreementController cancelTouch:]
+// type: void __cdecl(AgreementController *self, SEL, id)
+#[doc(alias = "-[AgreementController cancelTouch:]")]
+pub fn stub_5b690() -> ! {
+    todo!("0x5b690 -[AgreementController cancelTouch:]")
+}
+
+// 0x5b6a4 — -[AgreementController viewDidLoad]
+// type: void __cdecl(AgreementController *self, SEL)
+#[doc(alias = "-[AgreementController viewDidLoad]")]
+pub fn stub_5b6a4() -> ! {
+    todo!("0x5b6a4 -[AgreementController viewDidLoad]")
+}
+
+// 0x5ba90 — -[AgreementController toolBar]
+// type: UIToolbar *__cdecl(AgreementController *self, SEL)
+#[doc(alias = "-[AgreementController toolBar]")]
+pub fn stub_5ba90() -> ! {
+    todo!("0x5ba90 -[AgreementController toolBar]")
+}
+
+// 0x5baa0 — -[AgreementController setToolBar:]
+// type: void __cdecl(AgreementController *self, SEL, id)
+#[doc(alias = "-[AgreementController setToolBar:]")]
+pub fn stub_5baa0() -> ! {
+    todo!("0x5baa0 -[AgreementController setToolBar:]")
+}
+
+// 0x5bac4 — -[AgreementController closeButton]
+// type: UIBarButtonItem *__cdecl(AgreementController *self, SEL)
+#[doc(alias = "-[AgreementController closeButton]")]
+pub fn stub_5bac4() -> ! {
+    todo!("0x5bac4 -[AgreementController closeButton]")
+}
+
+// 0x5bad4 — -[AgreementController setCloseButton:]
+// type: void __cdecl(AgreementController *self, SEL, id)
+#[doc(alias = "-[AgreementController setCloseButton:]")]
+pub fn stub_5bad4() -> ! {
+    todo!("0x5bad4 -[AgreementController setCloseButton:]")
+}
+
+// 0x5baf8 — -[SignUpErrorViewController initWithCoder:]
+// type: SignUpErrorViewController *__cdecl(SignUpErrorViewController *self, SEL, id)
+#[doc(alias = "-[SignUpErrorViewController initWithCoder:]")]
+pub fn stub_5baf8() -> ! {
+    todo!("0x5baf8 -[SignUpErrorViewController initWithCoder:]")
+}
+
+// 0x5bb44 — -[SignUpErrorViewController dealloc]
+// type: void __cdecl(SignUpErrorViewController *self, SEL)
+#[doc(alias = "-[SignUpErrorViewController dealloc]")]
+pub fn stub_5bb44() -> ! {
+    todo!("0x5bb44 -[SignUpErrorViewController dealloc]")
+}
+
+// 0x5bc00 — -[SignUpErrorViewController viewDidLoad]
+// type: void __cdecl(SignUpErrorViewController *self, SEL)
+#[doc(alias = "-[SignUpErrorViewController viewDidLoad]")]
+pub fn stub_5bc00() -> ! {
+    todo!("0x5bc00 -[SignUpErrorViewController viewDidLoad]")
+}
+
+// 0x5bcb8 — -[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id, id, id, void *)
+#[doc(alias = "-[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]")]
+pub fn stub_5bcb8() -> ! {
+    todo!("0x5bcb8 -[SignUpErrorViewController observeValueForKeyPath:ofObject:change:context:]")
+}
+
+// 0x5bd70 — -[SignUpErrorViewController didReceiveMemoryWarning]
+// type: void __cdecl(SignUpErrorViewController *self, SEL)
+#[doc(alias = "-[SignUpErrorViewController didReceiveMemoryWarning]")]
+pub fn stub_5bd70() -> ! {
+    todo!("0x5bd70 -[SignUpErrorViewController didReceiveMemoryWarning]")
+}
+
+// 0x5bd9c — -[SignUpErrorViewController setSuggestedUsername:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
+#[doc(alias = "-[SignUpErrorViewController setSuggestedUsername:]")]
+pub fn stub_5bd9c() -> ! {
+    todo!("0x5bd9c -[SignUpErrorViewController setSuggestedUsername:]")
+}
+
+// 0x5bdbc — -[SignUpErrorViewController setMessage:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
+#[doc(alias = "-[SignUpErrorViewController setMessage:]")]
+pub fn stub_5bdbc() -> ! {
+    todo!("0x5bdbc -[SignUpErrorViewController setMessage:]")
+}
+
+// 0x5be1c — -[SignUpErrorViewController setSignupController:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
+#[doc(alias = "-[SignUpErrorViewController setSignupController:]")]
+pub fn stub_5be1c() -> ! {
+    todo!("0x5be1c -[SignUpErrorViewController setSignupController:]")
+}
+
+// 0x5be2c — -[SignUpErrorViewController touchesBegan:withEvent:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id, id)
+#[doc(alias = "-[SignUpErrorViewController touchesBegan:withEvent:]")]
+pub fn stub_5be2c() -> ! {
+    todo!("0x5be2c -[SignUpErrorViewController touchesBegan:withEvent:]")
+}
+
+// 0x5be5c — -[SignUpErrorViewController touchesEnded:withEvent:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id, id)
+#[doc(alias = "-[SignUpErrorViewController touchesEnded:withEvent:]")]
+pub fn stub_5be5c() -> ! {
+    todo!("0x5be5c -[SignUpErrorViewController touchesEnded:withEvent:]")
+}
+
+// 0x5bf68 — -[SignUpErrorViewController messageTextView]
+// type: UITextView *__cdecl(SignUpErrorViewController *self, SEL)
+#[doc(alias = "-[SignUpErrorViewController messageTextView]")]
+pub fn stub_5bf68() -> ! {
+    todo!("0x5bf68 -[SignUpErrorViewController messageTextView]")
+}
+
+// 0x5bf78 — -[SignUpErrorViewController setMessageTextView:]
+// type: void __cdecl(SignUpErrorViewController *self, SEL, id)
+#[doc(alias = "-[SignUpErrorViewController setMessageTextView:]")]
+pub fn stub_5bf78() -> ! {
+    todo!("0x5bf78 -[SignUpErrorViewController setMessageTextView:]")
+}
+
+// 0x5bf9c — -[SignupVerifier init]
+// type: SignupVerifier *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier init]")]
+pub fn stub_5bf9c() -> ! {
+    todo!("0x5bf9c -[SignupVerifier init]")
+}
+
+// 0x5c17c — -[SignupVerifier dealloc]
+// type: void __cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier dealloc]")]
+pub fn stub_5c17c() -> ! {
+    todo!("0x5c17c -[SignupVerifier dealloc]")
+}
+
+// 0x5c26c — -[SignupVerifier isValidEmail:]
+// type: bool __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier isValidEmail:]")]
+pub fn stub_5c26c() -> ! {
+    todo!("0x5c26c -[SignupVerifier isValidEmail:]")
+}
+
+// 0x5c2e8 — -[SignupVerifier doPostResponseFromUrl:args:notificationName:]
+// type: void __cdecl(SignupVerifier *self, SEL, id, id, id)
+#[doc(alias = "-[SignupVerifier doPostResponseFromUrl:args:notificationName:]")]
+pub fn stub_5c2e8() -> ! {
+    todo!("0x5c2e8 -[SignupVerifier doPostResponseFromUrl:args:notificationName:]")
+}
+
+// 0x5c444 — ___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke
+// type: _DWORD *__fastcall(_DWORD *result, int, int, int)
+#[doc(alias = "___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke")]
+pub fn stub_5c444() -> ! {
+    todo!("0x5c444 ___62-[SignupVerifier doPostResponseFromUrl:args:notificationName:]_block_invoke")
+}
+
+// 0x5c534 — -[SignupVerifier doGetResponseFromUrl:notificationName:]
+// type: void __cdecl(SignupVerifier *self, SEL, id, id)
+#[doc(alias = "-[SignupVerifier doGetResponseFromUrl:notificationName:]")]
+pub fn stub_5c534() -> ! {
+    todo!("0x5c534 -[SignupVerifier doGetResponseFromUrl:notificationName:]")
+}
+
+// 0x5c658 — ___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke
+// type: _DWORD *__fastcall(_DWORD *result, int, int, int)
+#[doc(alias = "___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke")]
+pub fn stub_5c658() -> ! {
+    todo!("0x5c658 ___56-[SignupVerifier doGetResponseFromUrl:notificationName:]_block_invoke")
+}
+
+// 0x5c708 — -[SignupVerifier checkPassword:username:]
+// type: void __cdecl(SignupVerifier *self, SEL, id, id)
+#[doc(alias = "-[SignupVerifier checkPassword:username:]")]
+pub fn stub_5c708() -> ! {
+    todo!("0x5c708 -[SignupVerifier checkPassword:username:]")
+}
+
+// 0x5c77c — -[SignupVerifier checkUsername:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier checkUsername:]")]
+pub fn stub_5c77c() -> ! {
+    todo!("0x5c77c -[SignupVerifier checkUsername:]")
+}
+
+// 0x5c888 — -[SignupVerifier getAlternateUsername:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier getAlternateUsername:]")]
+pub fn stub_5c888() -> ! {
+    todo!("0x5c888 -[SignupVerifier getAlternateUsername:]")
+}
+
+// 0x5c9d8 — ___39-[SignupVerifier getAlternateUsername:]_block_invoke
+// type: _DWORD *__fastcall(_DWORD *result, int, int, int)
+#[doc(alias = "___39-[SignupVerifier getAlternateUsername:]_block_invoke")]
+pub fn stub_5c9d8() -> ! {
+    todo!("0x5c9d8 ___39-[SignupVerifier getAlternateUsername:]_block_invoke")
+}
+
+// 0x5cae8 — -[SignupVerifier passwordsMatch:verifyPassword:]
+// type: bool __cdecl(SignupVerifier *self, SEL, id, id)
+#[doc(alias = "-[SignupVerifier passwordsMatch:verifyPassword:]")]
+pub fn stub_5cae8() -> ! {
+    todo!("0x5cae8 -[SignupVerifier passwordsMatch:verifyPassword:]")
+}
+
+// 0x5cb3c — -[SignupVerifier processSignUpResponse:data:error:]
+// type: void __cdecl(SignupVerifier *self, SEL, id, id, id)
+#[doc(alias = "-[SignupVerifier processSignUpResponse:data:error:]")]
+pub fn stub_5cb3c() -> ! {
+    todo!("0x5cb3c -[SignupVerifier processSignUpResponse:data:error:]")
+}
+
+// 0x5cd38 — -[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]
+// type: void __cdecl(SignupVerifier *self, SEL, id, id, id, id, int, id)
+#[doc(alias = "-[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]")]
+pub fn stub_5cd38() -> ! {
+    todo!("0x5cd38 -[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]")
+}
+
+// 0x5d184 — ___76-[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]_block_invoke
+// type: id __fastcall(int, int, int, int)
+#[doc(alias = "___76-[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]_block_invoke")]
+pub fn stub_5d184() -> ! {
+    todo!("0x5d184 ___76-[SignupVerifier doSignUp:password:verifyPassword:birthString:gender:email:]_block_invoke")
+}
+
+// 0x5d1bc — -[SignupVerifier signUpUrlString]
+// type: NSString *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier signUpUrlString]")]
+pub fn stub_5d1bc() -> ! {
+    todo!("0x5d1bc -[SignupVerifier signUpUrlString]")
+}
+
+// 0x5d1cc — -[SignupVerifier setSignUpUrlString:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier setSignUpUrlString:]")]
+pub fn stub_5d1cc() -> ! {
+    todo!("0x5d1cc -[SignupVerifier setSignUpUrlString:]")
+}
+
+// 0x5d1f0 — -[SignupVerifier signUpArgs]
+// type: NSString *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier signUpArgs]")]
+pub fn stub_5d1f0() -> ! {
+    todo!("0x5d1f0 -[SignupVerifier signUpArgs]")
+}
+
+// 0x5d200 — -[SignupVerifier setSignUpArgs:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier setSignUpArgs:]")]
+pub fn stub_5d200() -> ! {
+    todo!("0x5d200 -[SignupVerifier setSignUpArgs:]")
+}
+
+// 0x5d224 — -[SignupVerifier usernameCheckUrl]
+// type: NSString *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier usernameCheckUrl]")]
+pub fn stub_5d224() -> ! {
+    todo!("0x5d224 -[SignupVerifier usernameCheckUrl]")
+}
+
+// 0x5d234 — -[SignupVerifier setUsernameCheckUrl:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier setUsernameCheckUrl:]")]
+pub fn stub_5d234() -> ! {
+    todo!("0x5d234 -[SignupVerifier setUsernameCheckUrl:]")
+}
+
+// 0x5d258 — -[SignupVerifier recommendUsernameUrl]
+// type: NSString *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier recommendUsernameUrl]")]
+pub fn stub_5d258() -> ! {
+    todo!("0x5d258 -[SignupVerifier recommendUsernameUrl]")
+}
+
+// 0x5d268 — -[SignupVerifier setRecommendUsernameUrl:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier setRecommendUsernameUrl:]")]
+pub fn stub_5d268() -> ! {
+    todo!("0x5d268 -[SignupVerifier setRecommendUsernameUrl:]")
+}
+
+// 0x5d28c — -[SignupVerifier passwordCheckUrl]
+// type: NSString *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier passwordCheckUrl]")]
+pub fn stub_5d28c() -> ! {
+    todo!("0x5d28c -[SignupVerifier passwordCheckUrl]")
+}
+
+// 0x5d29c — -[SignupVerifier setPasswordCheckUrl:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier setPasswordCheckUrl:]")]
+pub fn stub_5d29c() -> ! {
+    todo!("0x5d29c -[SignupVerifier setPasswordCheckUrl:]")
+}
+
+// 0x5d2c0 — -[SignupVerifier passwordCheckArgs]
+// type: NSString *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier passwordCheckArgs]")]
+pub fn stub_5d2c0() -> ! {
+    todo!("0x5d2c0 -[SignupVerifier passwordCheckArgs]")
+}
+
+// 0x5d2d0 — -[SignupVerifier setPasswordCheckArgs:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier setPasswordCheckArgs:]")]
+pub fn stub_5d2d0() -> ! {
+    todo!("0x5d2d0 -[SignupVerifier setPasswordCheckArgs:]")
+}
+
+// 0x5d2f4 — -[SignupVerifier signUpDoneNotification]
+// type: NSString *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier signUpDoneNotification]")]
+pub fn stub_5d2f4() -> ! {
+    todo!("0x5d2f4 -[SignupVerifier signUpDoneNotification]")
+}
+
+// 0x5d304 — -[SignupVerifier setSignUpDoneNotification:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier setSignUpDoneNotification:]")]
+pub fn stub_5d304() -> ! {
+    todo!("0x5d304 -[SignupVerifier setSignUpDoneNotification:]")
+}
+
+// 0x5d328 — -[SignupVerifier passwordVerifyNotification]
+// type: NSString *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier passwordVerifyNotification]")]
+pub fn stub_5d328() -> ! {
+    todo!("0x5d328 -[SignupVerifier passwordVerifyNotification]")
+}
+
+// 0x5d338 — -[SignupVerifier setPasswordVerifyNotification:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier setPasswordVerifyNotification:]")]
+pub fn stub_5d338() -> ! {
+    todo!("0x5d338 -[SignupVerifier setPasswordVerifyNotification:]")
+}
+
+// 0x5d35c — -[SignupVerifier usernameVerifyNotification]
+// type: NSString *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier usernameVerifyNotification]")]
+pub fn stub_5d35c() -> ! {
+    todo!("0x5d35c -[SignupVerifier usernameVerifyNotification]")
+}
+
+// 0x5d36c — -[SignupVerifier setUsernameVerifyNotification:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier setUsernameVerifyNotification:]")]
+pub fn stub_5d36c() -> ! {
+    todo!("0x5d36c -[SignupVerifier setUsernameVerifyNotification:]")
+}
+
+// 0x5d390 — -[SignupVerifier recommendUsernameNotification]
+// type: NSString *__cdecl(SignupVerifier *self, SEL)
+#[doc(alias = "-[SignupVerifier recommendUsernameNotification]")]
+pub fn stub_5d390() -> ! {
+    todo!("0x5d390 -[SignupVerifier recommendUsernameNotification]")
+}
+
+// 0x5d3a0 — -[SignupVerifier setRecommendUsernameNotification:]
+// type: void __cdecl(SignupVerifier *self, SEL, id)
+#[doc(alias = "-[SignupVerifier setRecommendUsernameNotification:]")]
+pub fn stub_5d3a0() -> ! {
+    todo!("0x5d3a0 -[SignupVerifier setRecommendUsernameNotification:]")
+}
+
+// 0x62778 — +[RobloxMemoryManager sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[RobloxMemoryManager sharedInstance]")]
+pub fn stub_62778() -> ! {
+    todo!("0x62778 +[RobloxMemoryManager sharedInstance]")
+}
+
+// 0x627d4 — ___37+[RobloxMemoryManager sharedInstance]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___37+[RobloxMemoryManager sharedInstance]_block_invoke")]
+pub fn stub_627d4() -> ! {
+    todo!("0x627d4 ___37+[RobloxMemoryManager sharedInstance]_block_invoke")
+}
+
+// 0x62820 — -[RobloxMemoryManager startMemoryBouncer]
+// type: void __cdecl(RobloxMemoryManager *self, SEL)
+#[doc(alias = "-[RobloxMemoryManager startMemoryBouncer]")]
+pub fn stub_62820() -> ! {
+    todo!("0x62820 -[RobloxMemoryManager startMemoryBouncer]")
+}
+
+// 0x62a40 — -[RobloxMemoryManager stopMemoryBouncer:]
+// type: char __cdecl(RobloxMemoryManager *self, SEL, char)
+#[doc(alias = "-[RobloxMemoryManager stopMemoryBouncer:]")]
+pub fn stub_62a40() -> ! {
+    todo!("0x62a40 -[RobloxMemoryManager stopMemoryBouncer:]")
+}
+
+// 0x62ac0 — -[RobloxMemoryManager balloonMemory]
+// type: void __cdecl(RobloxMemoryManager *self, SEL)
+#[doc(alias = "-[RobloxMemoryManager balloonMemory]")]
+pub fn stub_62ac0() -> ! {
+    todo!("0x62ac0 -[RobloxMemoryManager balloonMemory]")
+}
+
+// 0x62b64 — -[RobloxMemoryManager popBalloon]
+// type: void __cdecl(RobloxMemoryManager *self, SEL)
+#[doc(alias = "-[RobloxMemoryManager popBalloon]")]
+pub fn stub_62b64() -> ! {
+    todo!("0x62b64 -[RobloxMemoryManager popBalloon]")
+}
+
+// 0x62b88 — -[RobloxMemoryManager bounceFreeMemory:]
+// type: void __cdecl(RobloxMemoryManager *self, SEL, id)
+#[doc(alias = "-[RobloxMemoryManager bounceFreeMemory:]")]
+pub fn stub_62b88() -> ! {
+    todo!("0x62b88 -[RobloxMemoryManager bounceFreeMemory:]")
+}
+
+// 0x62be8 — -[RobloxMemoryManager startFreeMemoryChecker]
+// type: void __cdecl(RobloxMemoryManager *self, SEL)
+#[doc(alias = "-[RobloxMemoryManager startFreeMemoryChecker]")]
+pub fn stub_62be8() -> ! {
+    todo!("0x62be8 -[RobloxMemoryManager startFreeMemoryChecker]")
+}
+
+// 0x62d08 — -[RobloxMemoryManager stopFreeMemoryChecker]
+// type: void __cdecl(RobloxMemoryManager *self, SEL)
+#[doc(alias = "-[RobloxMemoryManager stopFreeMemoryChecker]")]
+pub fn stub_62d08() -> ! {
+    todo!("0x62d08 -[RobloxMemoryManager stopFreeMemoryChecker]")
+}
+
+// 0x62d48 — -[RobloxMemoryManager checkFreeMemory:]
+// type: void __cdecl(RobloxMemoryManager *self, SEL, id)
+#[doc(alias = "-[RobloxMemoryManager checkFreeMemory:]")]
+pub fn stub_62d48() -> ! {
+    todo!("0x62d48 -[RobloxMemoryManager checkFreeMemory:]")
+}
+
+// 0x62e5c — -[RobloxMemoryManager logMemUsage:]
+// type: void __cdecl(RobloxMemoryManager *self, SEL, id)
+#[doc(alias = "-[RobloxMemoryManager logMemUsage:]")]
+pub fn stub_62e5c() -> ! {
+    todo!("0x62e5c -[RobloxMemoryManager logMemUsage:]")
+}
+
+// 0x631f8 — -[CameraMove init:]
+// type: id __cdecl(CameraMove *self, SEL, CGRect)
+#[doc(alias = "-[CameraMove init:]")]
+pub fn stub_631f8() -> ! {
+    todo!("0x631f8 -[CameraMove init:]")
+}
+
+// 0x63280 — -[CameraMove touchesBegan:withEvent:]
+// type: void __cdecl(CameraMove *self, SEL, id, id)
+#[doc(alias = "-[CameraMove touchesBegan:withEvent:]")]
+pub fn stub_63280() -> ! {
+    todo!("0x63280 -[CameraMove touchesBegan:withEvent:]")
+}
+
+// 0x632f0 — -[CameraMove touchesEnded:withEvent:]
+// type: void __cdecl(CameraMove *self, SEL, id, id)
+#[doc(alias = "-[CameraMove touchesEnded:withEvent:]")]
+pub fn stub_632f0() -> ! {
+    todo!("0x632f0 -[CameraMove touchesEnded:withEvent:]")
+}
+
+// 0x633c0 — -[CameraMove touchesCancelled:withEvent:]
+// type: void __cdecl(CameraMove *self, SEL, id, id)
+#[doc(alias = "-[CameraMove touchesCancelled:withEvent:]")]
+pub fn stub_633c0() -> ! {
+    todo!("0x633c0 -[CameraMove touchesCancelled:withEvent:]")
+}
+
+// 0x63490 — -[CameraMove cancelMovement]
+// type: void __cdecl(CameraMove *self, SEL)
+#[doc(alias = "-[CameraMove cancelMovement]")]
+pub fn stub_63490() -> ! {
+    todo!("0x63490 -[CameraMove cancelMovement]")
+}
+
+// 0x63528 — -[CameraMove touchesMoved:withEvent:]
+// type: void __cdecl(CameraMove *self, SEL, id, id)
+#[doc(alias = "-[CameraMove touchesMoved:withEvent:]")]
+pub fn stub_63528() -> ! {
+    todo!("0x63528 -[CameraMove touchesMoved:withEvent:]")
 }
