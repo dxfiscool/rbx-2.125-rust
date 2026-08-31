@@ -3,3 +3,5 @@
 
 pub mod ogre;
 pub mod render_settings;
+
+pub mod generated;
