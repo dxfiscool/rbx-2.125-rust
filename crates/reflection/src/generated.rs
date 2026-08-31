@@ -14114,3 +14114,608 @@ pub fn stub_0x37b5d8() -> ! {
 pub fn stub_0x37b5fc() -> ! {
     todo!("0x37b5fc RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setStringValue(RBX::Reflection::DescribedBase *,std::string const&)const")
 }
+
+// 0x37b63c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x37b63c() -> ! {
+    todo!("0x37b63c RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x37b65c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x37b65c() -> ! {
+    todo!("0x37b65c RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x37b89c — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE13getIndexValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x37b89c() -> ! {
+    todo!("0x37b89c RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::getIndexValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x37b8b8 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE13setIndexValueEPNS0_13DescribedBaseEm
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")]
+pub fn stub_0x37b8b8() -> ! {
+    todo!("0x37b8b8 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setIndexValue(RBX::Reflection::DescribedBase *,unsigned long)const")
+}
+
+// 0x37b8ec — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE12getEnumValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x37b8ec() -> ! {
+    todo!("0x37b8ec RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::getEnumValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x37b8f4 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE12setEnumValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x37b8f4() -> ! {
+    todo!("0x37b8f4 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setEnumValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x37b940 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE11getEnumItemEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x37b940() -> ! {
+    todo!("0x37b940 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::getEnumItem(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x37b960 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE14setStringValueEPNS0_13DescribedBaseERKNS_4NameE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")]
+pub fn stub_0x37b960() -> ! {
+    todo!("0x37b960 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setStringValue(RBX::Reflection::DescribedBase *,RBX::Name const&)const")
+}
+
+// 0x37b994 — __ZNK3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEE14convertToIndexES3_
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToIndex(RBX::Soundscape::ReverbType)const")]
+pub fn stub_0x37b994() -> ! {
+    todo!("0x37b994 RBX::Reflection::EnumDesc<RBX::Soundscape::ReverbType>::convertToIndex(RBX::Soundscape::ReverbType)const")
+}
+
+// 0x37ba04 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE11setIntValueEPNS0_13DescribedBaseEi
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")]
+pub fn stub_0x37ba04() -> ! {
+    todo!("0x37ba04 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::setIntValue(RBX::Reflection::DescribedBase *,int)const")
+}
+
+// 0x37ba44 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE10GetSetImplIMS3_KFS4_vEMS3_FvRKS4_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::GetSetImpl<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>::isReadOnly(void)const")]
+pub fn stub_0x37ba44() -> ! {
+    todo!("0x37ba44 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::GetSetImpl<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>::isReadOnly(void)const")
+}
+
+// 0x37ba48 — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE10GetSetImplIMS3_KFS4_vEMS3_FvRKS4_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::GetSetImpl<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>::isWriteOnly(void)const")]
+pub fn stub_0x37ba48() -> ! {
+    todo!("0x37ba48 RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::GetSetImpl<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>::isWriteOnly(void)const")
+}
+
+// 0x37ba4c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE10GetSetImplIMS3_KFS4_vEMS3_FvRKS4_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::GetSetImpl<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x37ba4c() -> ! {
+    todo!("0x37ba4c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::GetSetImpl<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x37ba6c — __ZNK3RBX10Reflection14PropDescriptorINS_10Soundscape12SoundServiceENS2_10ReverbTypeEE10GetSetImplIMS3_KFS4_vEMS3_FvRKS4_EE8setValueEPNS0_13DescribedBaseESA_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::GetSetImpl<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::Soundscape::ReverbType const&)const")]
+pub fn stub_0x37ba6c() -> ! {
+    todo!("0x37ba6c RBX::Reflection::PropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::GetSetImpl<RBX::Soundscape::ReverbType (RBX::Soundscape::SoundService::*)(void)const,void (RBX::Soundscape::SoundService::*)(RBX::Soundscape::ReverbType const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::Soundscape::ReverbType const&)const")
+}
+
+// 0x37ba90 — __ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_10Soundscape12SoundServiceEEEPKcS8_MT_fMS9_FvRKNS0_18PropertyDescriptorEENSB_10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundService>(char const*,char const*,float RBX::Soundscape::SoundService::*,void (RBX::Soundscape::SoundService::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x37ba90() -> ! {
+    todo!("0x37ba90 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundProp<RBX::Soundscape::SoundService>(char const*,char const*,float RBX::Soundscape::SoundService::*,void (RBX::Soundscape::SoundService::*)(RBX::Reflection::PropertyDescriptor const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x37bc24 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundServiceEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundService>::isReadOnly(void)const")]
+pub fn stub_0x37bc24() -> ! {
+    todo!("0x37bc24 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundService>::isReadOnly(void)const")
+}
+
+// 0x37bc28 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundServiceEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundService>::isWriteOnly(void)const")]
+pub fn stub_0x37bc28() -> ! {
+    todo!("0x37bc28 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundService>::isWriteOnly(void)const")
+}
+
+// 0x37bc2c — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundServiceEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundService>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x37bc2c() -> ! {
+    todo!("0x37bc2c RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundService>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x37bc38 — __ZNK3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EE15BoundPropGetSetINS_10Soundscape12SoundServiceEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundService>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x37bc38() -> ! {
+    todo!("0x37bc38 RBX::Reflection::BoundProp<float,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Soundscape::SoundService>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x37ce88 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10StockSoundES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StockSound,RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const*,RBX::StockSound *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StockSound,RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const*,RBX::StockSound *)const")]
+pub fn stub_0x37ce88() -> ! {
+    todo!("0x37ce88 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StockSound,RBX::StockSound>(boost::shared_ptr<RBX::StockSound> const*,RBX::StockSound *)const")
+}
+
+// 0x37e634 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21SoundServiceStatsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const")]
+pub fn stub_0x37e634() -> ! {
+    todo!("0x37e634 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const")
+}
+
+// 0x37f4d8 — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::EnumDesc(void)")]
+pub fn stub_0x37f4d8() -> ! {
+    todo!("0x37f4d8 RBX::Reflection::EnumDesc<RBX::SoundType>::EnumDesc(void)")
+}
+
+// 0x37f4dc — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::EnumDesc(void)")]
+pub fn stub_0x37f4dc() -> ! {
+    todo!("0x37f4dc RBX::Reflection::EnumDesc<RBX::SoundType>::EnumDesc(void)")
+}
+
+// 0x37f7c8 — __ZN3RBX10Reflection7Variant7convertINS_9SoundTypeEEERT_v
+#[doc(alias = "RBX::SoundType & RBX::Reflection::Variant::convert<RBX::SoundType>(void)")]
+pub fn stub_0x37f7c8() -> ! {
+    todo!("0x37f7c8 RBX::SoundType & RBX::Reflection::Variant::convert<RBX::SoundType>(void)")
+}
+
+// 0x37f818 — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEE7addPairES2_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::SoundType>::addPair(RBX::SoundType,char const*)")]
+pub fn stub_0x37f818() -> ! {
+    todo!("0x37f818 RBX::Reflection::EnumDesc<RBX::SoundType>::addPair(RBX::SoundType,char const*)")
+}
+
+// 0x37fb78 — __ZN3RBX10Reflection7Variant14genericConvertINS_9SoundTypeEEERT_v
+#[doc(alias = "RBX::SoundType & RBX::Reflection::Variant::genericConvert<RBX::SoundType>(void)")]
+pub fn stub_0x37fb78() -> ! {
+    todo!("0x37fb78 RBX::SoundType & RBX::Reflection::Variant::genericConvert<RBX::SoundType>(void)")
+}
+
+// 0x3901c0 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::~PropDescriptor()")]
+pub fn stub_0x3901c0() -> ! {
+    todo!("0x3901c0 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::~PropDescriptor()")
+}
+
+// 0x3901e4 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::~PropDescriptor()")]
+pub fn stub_0x3901e4() -> ! {
+    todo!("0x3901e4 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::~PropDescriptor()")
+}
+
+// 0x390210 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEiED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::~PropDescriptor()")]
+pub fn stub_0x390210() -> ! {
+    todo!("0x390210 RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::~PropDescriptor()")
+}
+
+// 0x391910 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_3HatES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Hat,RBX::Hat>(boost::shared_ptr<RBX::Hat> const*,RBX::Hat *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Hat,RBX::Hat>(boost::shared_ptr<RBX::Hat> const*,RBX::Hat *)const")]
+pub fn stub_0x391910() -> ! {
+    todo!("0x391910 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Hat,RBX::Hat>(boost::shared_ptr<RBX::Hat> const*,RBX::Hat *)const")
+}
+
+// 0x392168 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12AccoutrementES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Accoutrement,RBX::Accoutrement>(boost::shared_ptr<RBX::Accoutrement> const*,RBX::Accoutrement *)const
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Accoutrement,RBX::Accoutrement>(boost::shared_ptr<RBX::Accoutrement> const*,RBX::Accoutrement *)const")]
+pub fn stub_0x392168() -> ! {
+    todo!("0x392168 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Accoutrement,RBX::Accoutrement>(boost::shared_ptr<RBX::Accoutrement> const*,RBX::Accoutrement *)const")
+}
+
+// 0x3930d8 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEiEC2IMS2_KFivEMS2_FviEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::PropDescriptor<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>(char const*,char const*,int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x3930d8() -> ! {
+    todo!("0x3930d8 RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::PropDescriptor<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>(char const*,char const*,int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x3931ec — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEiED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::~PropDescriptor()")]
+pub fn stub_0x3931ec() -> ! {
+    todo!("0x3931ec RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::~PropDescriptor()")
+}
+
+// 0x393218 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEiE10GetSetImplIMS2_KFivEMS2_FviEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::isReadOnly(void)const")]
+pub fn stub_0x393218() -> ! {
+    todo!("0x393218 RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::isReadOnly(void)const")
+}
+
+// 0x39321c — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEiE10GetSetImplIMS2_KFivEMS2_FviEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::isWriteOnly(void)const")]
+pub fn stub_0x39321c() -> ! {
+    todo!("0x39321c RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::isWriteOnly(void)const")
+}
+
+// 0x393220 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEiE10GetSetImplIMS2_KFivEMS2_FviEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x393220() -> ! {
+    todo!("0x393220 RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x393240 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEiE10GetSetImplIMS2_KFivEMS2_FviEE8setValueEPNS0_13DescribedBaseERKi
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")]
+pub fn stub_0x393240() -> ! {
+    todo!("0x393240 RBX::Reflection::PropDescriptor<RBX::Accoutrement,int>::GetSetImpl<int (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(int)>::setValue(RBX::Reflection::DescribedBase *,int const&)const")
+}
+
+// 0x393264 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EEC2IMS2_KFKS4_vEMS2_FvRS7_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::PropDescriptor<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x393264() -> ! {
+    todo!("0x393264 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::PropDescriptor<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>(char const*,char const*,G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x393378 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::~PropDescriptor()")]
+pub fn stub_0x393378() -> ! {
+    todo!("0x393378 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::~PropDescriptor()")
+}
+
+// 0x3933a4 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::isReadOnly(void)const")]
+pub fn stub_0x3933a4() -> ! {
+    todo!("0x3933a4 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::isReadOnly(void)const")
+}
+
+// 0x3933a8 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")]
+pub fn stub_0x3933a8() -> ! {
+    todo!("0x3933a8 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::isWriteOnly(void)const")
+}
+
+// 0x3933ac — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x3933ac() -> ! {
+    todo!("0x3933ac RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x3933d4 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D7Vector3EE10GetSetImplIMS2_KFKS4_vEMS2_FvRS7_EE8setValueEPNS0_13DescribedBaseESA_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")]
+pub fn stub_0x3933d4() -> ! {
+    todo!("0x3933d4 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::Vector3>::GetSetImpl<G3D::Vector3 const (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::Vector3 const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::Vector3 const&)const")
+}
+
+// 0x3933f8 — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x3933f8() -> ! {
+    todo!("0x3933f8 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::PropDescriptor<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>(char const*,char const*,G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x39350c — __ZN3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::~PropDescriptor()")]
+pub fn stub_0x39350c() -> ! {
+    todo!("0x39350c RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::~PropDescriptor()")
+}
+
+// 0x393538 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")]
+pub fn stub_0x393538() -> ! {
+    todo!("0x393538 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::isReadOnly(void)const")
+}
+
+// 0x39353c — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")]
+pub fn stub_0x39353c() -> ! {
+    todo!("0x39353c RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::isWriteOnly(void)const")
+}
+
+// 0x393540 — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x393540() -> ! {
+    todo!("0x393540 RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x39357c — __ZNK3RBX10Reflection14PropDescriptorINS_12AccoutrementEN3G3D15CoordinateFrameEE10GetSetImplIMS2_KFRKS4_vEMS2_FvS8_EE8setValueEPNS0_13DescribedBaseES8_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")]
+pub fn stub_0x39357c() -> ! {
+    todo!("0x39357c RBX::Reflection::PropDescriptor<RBX::Accoutrement,G3D::CoordinateFrame>::GetSetImpl<G3D::CoordinateFrame const& (RBX::Accoutrement::*)(void)const,void (RBX::Accoutrement::*)(G3D::CoordinateFrame const&)>::setValue(RBX::Reflection::DescribedBase *,G3D::CoordinateFrame const&)const")
+}
+
+// 0x394090 — __ZN3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEED1Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")]
+pub fn stub_0x394090() -> ! {
+    todo!("0x394090 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")
+}
+
+// 0x3940e0 — __ZN3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEED1Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")]
+pub fn stub_0x3940e0() -> ! {
+    todo!("0x3940e0 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")
+}
+
+// 0x394f78 — __ZN3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::RefPropDescriptor<RBX::PVInstance* (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance*)>(char const*,char const*,RBX::PVInstance* (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x394f78() -> ! {
+    todo!("0x394f78 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::RefPropDescriptor<RBX::PVInstance* (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance*)>(char const*,char const*,RBX::PVInstance* (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x39501c — __ZN3RBX10Reflection7RefTypeIPNS_10PVInstanceEE9singletonEv
+#[doc(alias = "RBX::Reflection::RefType<RBX::PVInstance *>::singleton(void)")]
+pub fn stub_0x39501c() -> ! {
+    todo!("0x39501c RBX::Reflection::RefType<RBX::PVInstance *>::singleton(void)")
+}
+
+// 0x395114 — __ZN3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEED0Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")]
+pub fn stub_0x395114() -> ! {
+    todo!("0x395114 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::~RefPropDescriptor()")
+}
+
+// 0x395144 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isReadOnly(void)const")]
+pub fn stub_0x395144() -> ! {
+    todo!("0x395144 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isReadOnly(void)const")
+}
+
+// 0x395154 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isWriteOnly(void)const")]
+pub fn stub_0x395154() -> ! {
+    todo!("0x395154 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::isWriteOnly(void)const")
+}
+
+// 0x395164 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x395164() -> ! {
+    todo!("0x395164 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x39518c — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x39518c() -> ! {
+    todo!("0x39518c RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x3952a4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x3952a4() -> ! {
+    todo!("0x3952a4 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x39536c — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x39536c() -> ! {
+    todo!("0x39536c RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x395390 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x395390() -> ! {
+    todo!("0x395390 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x395464 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x395464() -> ! {
+    todo!("0x395464 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x395488 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11getRefValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x395488() -> ! {
+    todo!("0x395488 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x39549c — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11setRefValueEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x39549c() -> ! {
+    todo!("0x39549c RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x395518 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x395518() -> ! {
+    todo!("0x395518 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x395538 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x395538() -> ! {
+    todo!("0x395538 RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x395618 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x395618() -> ! {
+    todo!("0x395618 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::PVAdornment,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x395620 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isReadOnly(void)const")]
+pub fn stub_0x395620() -> ! {
+    todo!("0x395620 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isReadOnly(void)const")
+}
+
+// 0x395624 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isWriteOnly(void)const")]
+pub fn stub_0x395624() -> ! {
+    todo!("0x395624 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::isWriteOnly(void)const")
+}
+
+// 0x395628 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x395628() -> ! {
+    todo!("0x395628 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x395648 — __ZNK3RBX10Reflection14PropDescriptorINS_11PVAdornmentEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const")]
+pub fn stub_0x395648() -> ! {
+    todo!("0x395648 RBX::Reflection::PropDescriptor<RBX::PVAdornment,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::PVAdornment::*)(void)const,void (RBX::PVAdornment::*)(RBX::PVInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PVInstance * const&)const")
+}
+
+// 0x39566c — __ZN3RBX10Reflection7RefTypeIPNS_10PVInstanceEED1Ev
+#[doc(alias = "RBX::Reflection::RefType<RBX::PVInstance *>::~RefType()")]
+pub fn stub_0x39566c() -> ! {
+    todo!("0x39566c RBX::Reflection::RefType<RBX::PVInstance *>::~RefType()")
+}
+
+// 0x395670 — __ZN3RBX10Reflection4TypeC2IPNS_10PVInstanceEEEPKcS6_PT_
+#[doc(alias = "RBX::Reflection::Type::Type<RBX::PVInstance *>(char const*,char const*,RBX::PVInstance * *)")]
+pub fn stub_0x395670() -> ! {
+    todo!("0x395670 RBX::Reflection::Type::Type<RBX::PVInstance *>(char const*,char const*,RBX::PVInstance * *)")
+}
+
+// 0x39571c — __ZN3RBX10Reflection7RefTypeIPNS_10PVInstanceEED0Ev
+#[doc(alias = "RBX::Reflection::RefType<RBX::PVInstance *>::~RefType()")]
+pub fn stub_0x39571c() -> ! {
+    todo!("0x39571c RBX::Reflection::RefType<RBX::PVInstance *>::~RefType()")
+}
+
+// 0x395bb8 — __ZN3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x395bb8() -> ! {
+    todo!("0x395bb8 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::RefPropDescriptor<RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*)>(char const*,char const*,RBX::PartInstance* (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance*),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x395c5c — __ZN3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEED0Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")]
+pub fn stub_0x395c5c() -> ! {
+    todo!("0x395c5c RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::~RefPropDescriptor()")
+}
+
+// 0x395c8c — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isReadOnly(void)const")]
+pub fn stub_0x395c8c() -> ! {
+    todo!("0x395c8c RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isReadOnly(void)const")
+}
+
+// 0x395c9c — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isWriteOnly(void)const")]
+pub fn stub_0x395c9c() -> ! {
+    todo!("0x395c9c RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::isWriteOnly(void)const")
+}
+
+// 0x395cac — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x395cac() -> ! {
+    todo!("0x395cac RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x395cd4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x395cd4() -> ! {
+    todo!("0x395cd4 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x395dec — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x395dec() -> ! {
+    todo!("0x395dec RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x395eb4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x395eb4() -> ! {
+    todo!("0x395eb4 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x395ed8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x395ed8() -> ! {
+    todo!("0x395ed8 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x395fac — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x395fac() -> ! {
+    todo!("0x395fac RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x395fd0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11getRefValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x395fd0() -> ! {
+    todo!("0x395fd0 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x395fe4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11setRefValueEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x395fe4() -> ! {
+    todo!("0x395fe4 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x396060 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x396060() -> ! {
+    todo!("0x396060 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x396080 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x396080() -> ! {
+    todo!("0x396080 RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x396160 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x396160() -> ! {
+    todo!("0x396160 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::PartAdornment,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x396168 — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isReadOnly(void)const")]
+pub fn stub_0x396168() -> ! {
+    todo!("0x396168 RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isReadOnly(void)const")
+}
+
+// 0x39616c — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isWriteOnly(void)const")]
+pub fn stub_0x39616c() -> ! {
+    todo!("0x39616c RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::isWriteOnly(void)const")
+}
+
+// 0x396170 — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x396170() -> ! {
+    todo!("0x396170 RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x396190 — __ZNK3RBX10Reflection14PropDescriptorINS_13PartAdornmentEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance * const&)const")]
+pub fn stub_0x396190() -> ! {
+    todo!("0x396190 RBX::Reflection::PropDescriptor<RBX::PartAdornment,RBX::PartInstance *>::GetSetImpl<RBX::PartInstance * (RBX::PartAdornment::*)(void)const,void (RBX::PartAdornment::*)(RBX::PartInstance *)>::setValue(RBX::Reflection::DescribedBase *,RBX::PartInstance * const&)const")
+}
+
+// 0x396e20 — __ZN3RBX10Reflection14PropDescriptorINS_9AnimationENS_11AnimationIdEED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Animation,RBX::AnimationId>::~PropDescriptor()")]
+pub fn stub_0x396e20() -> ! {
+    todo!("0x396e20 RBX::Reflection::PropDescriptor<RBX::Animation,RBX::AnimationId>::~PropDescriptor()")
+}
+
+// 0x397708 — __ZN3RBX10Reflection14PropDescriptorINS_9AnimationENS_11AnimationIdEEC2IMS2_KFS3_vEMS2_FvS3_EEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Animation,RBX::AnimationId>::PropDescriptor<RBX::AnimationId (RBX::Animation::*)(void)const,void (RBX::Animation::*)(RBX::AnimationId)>(char const*,char const*,RBX::AnimationId (RBX::Animation::*)(void)const,void (RBX::Animation::*)(RBX::AnimationId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x397708() -> ! {
+    todo!("0x397708 RBX::Reflection::PropDescriptor<RBX::Animation,RBX::AnimationId>::PropDescriptor<RBX::AnimationId (RBX::Animation::*)(void)const,void (RBX::Animation::*)(RBX::AnimationId)>(char const*,char const*,RBX::AnimationId (RBX::Animation::*)(void)const,void (RBX::Animation::*)(RBX::AnimationId),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x39781c — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_11AnimationIdEEC2ERNS0_15ClassDescriptorEPKcS7_St8auto_ptrINS3_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x39781c() -> ! {
+    todo!("0x39781c RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x397940 — __ZN3RBX10Reflection14PropDescriptorINS_9AnimationENS_11AnimationIdEED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Animation,RBX::AnimationId>::~PropDescriptor()")]
+pub fn stub_0x397940() -> ! {
+    todo!("0x397940 RBX::Reflection::PropDescriptor<RBX::Animation,RBX::AnimationId>::~PropDescriptor()")
+}
+
+// 0x39796c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_11AnimationIdEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::isReadOnly(void)const")]
+pub fn stub_0x39796c() -> ! {
+    todo!("0x39796c RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::isReadOnly(void)const")
+}
+
+// 0x39797c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_11AnimationIdEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::isWriteOnly(void)const")]
+pub fn stub_0x39797c() -> ! {
+    todo!("0x39797c RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::isWriteOnly(void)const")
+}
+
+// 0x39798c — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_11AnimationIdEE11equalValuesEPKNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x39798c() -> ! {
+    todo!("0x39798c RBX::Reflection::TypedPropertyDescriptor<RBX::AnimationId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
