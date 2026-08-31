@@ -3,3 +3,4 @@
 
 pub mod raknet;
 pub mod generated;
+pub mod generated_03;

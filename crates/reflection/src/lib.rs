@@ -5,3 +5,4 @@
 pub mod descriptor;
 pub mod enum_desc;
 pub mod generated;
+pub mod generated_next;
