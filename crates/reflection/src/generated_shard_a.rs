@@ -1443,3 +1443,723 @@ pub fn stub_0x623bf4() -> ! {
 pub fn stub_0x623c04() -> ! {
     todo!("0x623c04 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
 }
+
+// 0x623c2c — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x623c2c() -> ! {
+    todo!("0x623c2c RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x623d44 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x623d44() -> ! {
+    todo!("0x623d44 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x623e0c — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x623e0c() -> ! {
+    todo!("0x623e0c RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x623e30 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x623e30() -> ! {
+    todo!("0x623e30 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x623f04 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x623f04() -> ! {
+    todo!("0x623f04 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x623f28 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11getRefValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x623f28() -> ! {
+    todo!("0x623f28 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x623f3c — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11setRefValueEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x623f3c() -> ! {
+    todo!("0x623f3c RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x623fb8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x623fb8() -> ! {
+    todo!("0x623fb8 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x623fd8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x623fd8() -> ! {
+    todo!("0x623fd8 RBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x6240b8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_14SelectionLassoENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x6240b8() -> ! {
+    todo!("0x6240b8 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SelectionLasso,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x6240c0 — __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::isReadOnly(void)const")]
+pub fn stub_0x6240c0() -> ! {
+    todo!("0x6240c0 RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::isReadOnly(void)const")
+}
+
+// 0x6240c4 — __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::isWriteOnly(void)const")]
+pub fn stub_0x6240c4() -> ! {
+    todo!("0x6240c4 RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::isWriteOnly(void)const")
+}
+
+// 0x6240c8 — __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x6240c8() -> ! {
+    todo!("0x6240c8 RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x6240e8 — __ZNK3RBX10Reflection14PropDescriptorINS_14SelectionLassoEPNS_8HumanoidEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Humanoid * const&)const")]
+pub fn stub_0x6240e8() -> ! {
+    todo!("0x6240e8 RBX::Reflection::PropDescriptor<RBX::SelectionLasso,RBX::Humanoid *>::GetSetImpl<RBX::Humanoid * (RBX::SelectionLasso::*)(void)const,void (RBX::SelectionLasso::*)(RBX::Humanoid *)>::setValue(RBX::Reflection::DescribedBase *,RBX::Humanoid * const&)const")
+}
+
+// 0x625080 — __ZN3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::~PropDescriptor()")]
+pub fn stub_0x625080() -> ! {
+    todo!("0x625080 RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::~PropDescriptor()")
+}
+
+// 0x6250ac — __ZN3RBX10Reflection9EventDescINS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_ED1Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::~EventDesc()")]
+pub fn stub_0x6250ac() -> ! {
+    todo!("0x6250ac RBX::Reflection::EventDesc<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::~EventDesc()")
+}
+
+// 0x626538 — __ZN3RBX10Reflection9EventDescINS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_EC2ES7_PKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::EventDesc(rbx::signal<void ()(std::string)> RBX::SkateboardController::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x626538() -> ! {
+    todo!("0x626538 RBX::Reflection::EventDesc<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::EventDesc(rbx::signal<void ()(std::string)> RBX::SkateboardController::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x6266bc — __ZN3RBX10Reflection9EventDescINS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::~EventDesc()")]
+pub fn stub_0x6266bc() -> ! {
+    todo!("0x6266bc RBX::Reflection::EventDesc<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::~EventDesc()")
+}
+
+// 0x626770 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_0x626770() -> ! {
+    todo!("0x626770 RBX::Reflection::EventDescImpl<1,RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x6268c4 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISC_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_0x6268c4() -> ! {
+    todo!("0x6268c4 RBX::Reflection::EventDescImpl<1,RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x626a68 — __ZNK3RBX10Reflection13EventDescBaseINS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_0x626a68() -> ! {
+    todo!("0x626a68 RBX::Reflection::EventDescBase<RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x626a7c — __ZN3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfEC2IMS2_KFfvEiEEPKcS8_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::PropDescriptor<float (RBX::SkateboardController::*)(void)const,int>(char const*,char const*,float (RBX::SkateboardController::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x626a7c() -> ! {
+    todo!("0x626a7c RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::PropDescriptor<float (RBX::SkateboardController::*)(void)const,int>(char const*,char const*,float (RBX::SkateboardController::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x626b88 — __ZN3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::~PropDescriptor()")]
+pub fn stub_0x626b88() -> ! {
+    todo!("0x626b88 RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::~PropDescriptor()")
+}
+
+// 0x626bb4 — __ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::isReadOnly(void)const")]
+pub fn stub_0x626bb4() -> ! {
+    todo!("0x626bb4 RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::isReadOnly(void)const")
+}
+
+// 0x626bb8 — __ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::isWriteOnly(void)const")]
+pub fn stub_0x626bb8() -> ! {
+    todo!("0x626bb8 RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::isWriteOnly(void)const")
+}
+
+// 0x626bbc — __ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x626bbc() -> ! {
+    todo!("0x626bbc RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x626bdc — __ZNK3RBX10Reflection14PropDescriptorINS_20SkateboardControllerEfE7GetImplIMS2_KFfvEE8setValueEPNS0_13DescribedBaseERKf
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,float const&)const")]
+pub fn stub_0x626bdc() -> ! {
+    todo!("0x626bdc RBX::Reflection::PropDescriptor<RBX::SkateboardController,float>::GetImpl<float (RBX::SkateboardController::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,float const&)const")
+}
+
+// 0x627234 — __ZN3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEEC1Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::EnumDesc(void)")]
+pub fn stub_0x627234() -> ! {
+    todo!("0x627234 RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::EnumDesc(void)")
+}
+
+// 0x627238 — __ZN3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEEC2Ev
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::EnumDesc(void)")]
+pub fn stub_0x627238() -> ! {
+    todo!("0x627238 RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::EnumDesc(void)")
+}
+
+// 0x6295fc — __ZN3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEiED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::~PropDescriptor()")]
+pub fn stub_0x6295fc() -> ! {
+    todo!("0x6295fc RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,int>::~PropDescriptor()")
+}
+
+// 0x629630 — __ZN3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEbED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::~PropDescriptor()")]
+pub fn stub_0x629630() -> ! {
+    todo!("0x629630 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,bool>::~PropDescriptor()")
+}
+
+// 0x62965c — __ZN3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEED1Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::~EnumPropDescriptor()")]
+pub fn stub_0x62965c() -> ! {
+    todo!("0x62965c RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::~EnumPropDescriptor()")
+}
+
+// 0x629680 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_ED1Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::~EventDesc()")]
+pub fn stub_0x629680() -> ! {
+    todo!("0x629680 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::~EventDesc()")
+}
+
+// 0x6296a4 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_ED1Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")]
+pub fn stub_0x6296a4() -> ! {
+    todo!("0x6296a4 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")
+}
+
+// 0x6296c8 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")]
+pub fn stub_0x6296c8() -> ! {
+    todo!("0x6296c8 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")
+}
+
+// 0x6296f4 — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEED1Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::~RefPropDescriptor()")]
+pub fn stub_0x6296f4() -> ! {
+    todo!("0x6296f4 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::~RefPropDescriptor()")
+}
+
+// 0x629728 — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEED1Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::~RefPropDescriptor()")]
+pub fn stub_0x629728() -> ! {
+    todo!("0x629728 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::~RefPropDescriptor()")
+}
+
+// 0x629754 — __ZN3RBX10Reflection13BoundFuncDescINS_18SkateboardPlatformEFvN3G3D7Vector3EELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::~BoundFuncDesc()")]
+pub fn stub_0x629754() -> ! {
+    todo!("0x629754 RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::~BoundFuncDesc()")
+}
+
+// 0x629794 — __ZN3RBX10Reflection8EnumDescINS_18SkateboardPlatform9MoveStateEE7addPairES3_PKc
+#[doc(alias = "RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::addPair(RBX::SkateboardPlatform::MoveState,char const*)")]
+pub fn stub_0x629794() -> ! {
+    todo!("0x629794 RBX::Reflection::EnumDesc<RBX::SkateboardPlatform::MoveState>::addPair(RBX::SkateboardPlatform::MoveState,char const*)")
+}
+
+// 0x62b180 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18SkateboardPlatformES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SkateboardPlatform,RBX::SkateboardPlatform>(rbx_core::SharedPtr<RBX::SkateboardPlatform> const*,RBX::SkateboardPlatform *)const")]
+pub fn stub_0x62b180() -> ! {
+    todo!("0x62b180 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SkateboardPlatform,RBX::SkateboardPlatform>(rbx_core::SharedPtr<RBX::SkateboardPlatform> const*,RBX::SkateboardPlatform *)const")
+}
+
+// 0x62e0b8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20SkateboardControllerES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SkateboardController,RBX::SkateboardController>(rbx_core::SharedPtr<RBX::SkateboardController> const*,RBX::SkateboardController *)const")]
+pub fn stub_0x62e0b8() -> ! {
+    todo!("0x62e0b8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SkateboardController,RBX::SkateboardController>(rbx_core::SharedPtr<RBX::SkateboardController> const*,RBX::SkateboardController *)const")
+}
+
+// 0x62f4f8 — __ZN3RBX10Reflection13BoundFuncDescINS_18SkateboardPlatformEFvN3G3D7Vector3EELi1EEC2EMS2_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::SkateboardPlatform::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x62f4f8() -> ! {
+    todo!("0x62f4f8 RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::BoundFuncDesc(void (RBX::SkateboardPlatform::*)(G3D::Vector3),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x62f670 — __ZN3RBX10Reflection13BoundFuncDescINS_18SkateboardPlatformEFvN3G3D7Vector3EELi1EE16declareSignatureEPKcNS0_7VariantE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+pub fn stub_0x62f670() -> ! {
+    todo!("0x62f670 RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0x62f6a0 — __ZN3RBX10Reflection13BoundFuncDescINS_18SkateboardPlatformEFvN3G3D7Vector3EELi1EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::~BoundFuncDesc()")]
+pub fn stub_0x62f6a0() -> ! {
+    todo!("0x62f6a0 RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::~BoundFuncDesc()")
+}
+
+// 0x62f774 — __ZNK3RBX10Reflection13BoundFuncDescINS_18SkateboardPlatformEFvN3G3D7Vector3EELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_0x62f774() -> ! {
+    todo!("0x62f774 RBX::Reflection::BoundFuncDesc<RBX::SkateboardPlatform,void ()(G3D::Vector3),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x62f7b8 — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEEC2IMS2_KFPS3_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::RefPropDescriptor<RBX::Humanoid* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::Humanoid* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x62f7b8() -> ! {
+    todo!("0x62f7b8 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::RefPropDescriptor<RBX::Humanoid* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::Humanoid* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x62f85c — __ZN3RBX10Reflection7RefTypeIPNS_8HumanoidEE9singletonEv
+#[doc(alias = "RBX::Reflection::RefType<RBX::Humanoid *>::singleton(void)")]
+pub fn stub_0x62f85c() -> ! {
+    todo!("0x62f85c RBX::Reflection::RefType<RBX::Humanoid *>::singleton(void)")
+}
+
+// 0x62f954 — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEED0Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::~RefPropDescriptor()")]
+pub fn stub_0x62f954() -> ! {
+    todo!("0x62f954 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::~RefPropDescriptor()")
+}
+
+// 0x62f984 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::isReadOnly(void)const")]
+pub fn stub_0x62f984() -> ! {
+    todo!("0x62f984 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::isReadOnly(void)const")
+}
+
+// 0x62f994 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::isWriteOnly(void)const")]
+pub fn stub_0x62f994() -> ! {
+    todo!("0x62f994 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::isWriteOnly(void)const")
+}
+
+// 0x62f9a4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x62f9a4() -> ! {
+    todo!("0x62f9a4 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x62f9cc — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x62f9cc() -> ! {
+    todo!("0x62f9cc RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x62fae4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x62fae4() -> ! {
+    todo!("0x62fae4 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x62fbac — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x62fbac() -> ! {
+    todo!("0x62fbac RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x62fbd0 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x62fbd0() -> ! {
+    todo!("0x62fbd0 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x62fca4 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x62fca4() -> ! {
+    todo!("0x62fca4 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x62fcc8 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11getRefValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x62fcc8() -> ! {
+    todo!("0x62fcc8 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x62fcdc — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11setRefValueEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x62fcdc() -> ! {
+    todo!("0x62fcdc RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x62fd58 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x62fd58() -> ! {
+    todo!("0x62fd58 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x62fd78 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x62fd78() -> ! {
+    todo!("0x62fd78 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x62fe58 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x62fe58() -> ! {
+    todo!("0x62fe58 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x62fe60 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::isReadOnly(void)const")]
+pub fn stub_0x62fe60() -> ! {
+    todo!("0x62fe60 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::isReadOnly(void)const")
+}
+
+// 0x62fe64 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::isWriteOnly(void)const")]
+pub fn stub_0x62fe64() -> ! {
+    todo!("0x62fe64 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::isWriteOnly(void)const")
+}
+
+// 0x62fe68 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x62fe68() -> ! {
+    todo!("0x62fe68 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x62fe88 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_8HumanoidEE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Humanoid * const&)const")]
+pub fn stub_0x62fe88() -> ! {
+    todo!("0x62fe88 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid *>::GetImpl<RBX::Humanoid * (RBX::SkateboardPlatform::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::Humanoid * const&)const")
+}
+
+// 0x62ffa8 — __ZN3RBX10Reflection7RefTypeIPNS_8HumanoidEED1Ev
+#[doc(alias = "RBX::Reflection::RefType<RBX::Humanoid *>::~RefType()")]
+pub fn stub_0x62ffa8() -> ! {
+    todo!("0x62ffa8 RBX::Reflection::RefType<RBX::Humanoid *>::~RefType()")
+}
+
+// 0x62ffac — __ZN3RBX10Reflection4TypeC2IPNS_8HumanoidEEEPKcS6_PT_
+#[doc(alias = "RBX::Reflection::Type::Type<RBX::Humanoid *>(char const*,char const*,RBX::Humanoid * *)")]
+pub fn stub_0x62ffac() -> ! {
+    todo!("0x62ffac RBX::Reflection::Type::Type<RBX::Humanoid *>(char const*,char const*,RBX::Humanoid * *)")
+}
+
+// 0x630058 — __ZN3RBX10Reflection7RefTypeIPNS_8HumanoidEED0Ev
+#[doc(alias = "RBX::Reflection::RefType<RBX::Humanoid *>::~RefType()")]
+pub fn stub_0x630058() -> ! {
+    todo!("0x630058 RBX::Reflection::RefType<RBX::Humanoid *>::~RefType()")
+}
+
+// 0x63005c — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEEC2IMS2_KFPS3_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::RefPropDescriptor<RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x63005c() -> ! {
+    todo!("0x63005c RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::RefPropDescriptor<RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int>(char const*,char const*,RBX::SkateboardController* (RBX::SkateboardPlatform::*)(void)const,int,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x630100 — __ZN3RBX10Reflection7RefTypeIPNS_20SkateboardControllerEE9singletonEv
+#[doc(alias = "RBX::Reflection::RefType<RBX::SkateboardController *>::singleton(void)")]
+pub fn stub_0x630100() -> ! {
+    todo!("0x630100 RBX::Reflection::RefType<RBX::SkateboardController *>::singleton(void)")
+}
+
+// 0x6301f8 — __ZN3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEED0Ev
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::~RefPropDescriptor()")]
+pub fn stub_0x6301f8() -> ! {
+    todo!("0x6301f8 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::~RefPropDescriptor()")
+}
+
+// 0x630228 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::isReadOnly(void)const")]
+pub fn stub_0x630228() -> ! {
+    todo!("0x630228 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::isReadOnly(void)const")
+}
+
+// 0x630238 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::isWriteOnly(void)const")]
+pub fn stub_0x630238() -> ! {
+    todo!("0x630238 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::isWriteOnly(void)const")
+}
+
+// 0x630248 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11equalValuesEPKNS0_13DescribedBaseES7_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x630248() -> ! {
+    todo!("0x630248 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x630270 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")]
+pub fn stub_0x630270() -> ! {
+    todo!("0x630270 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x630388 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")]
+pub fn stub_0x630388() -> ! {
+    todo!("0x630388 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x630450 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE9copyValueEPKNS0_13DescribedBaseEPS5_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")]
+pub fn stub_0x630450() -> ! {
+    todo!("0x630450 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x630474 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE10writeValueEPKNS0_13DescribedBaseEP10XmlElement
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")]
+pub fn stub_0x630474() -> ! {
+    todo!("0x630474 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::writeValue(RBX::Reflection::DescribedBase const*,XmlElement *)const")
+}
+
+// 0x630548 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE9readValueEPNS0_13DescribedBaseEPK10XmlElementRNS_16IReferenceBinderE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")]
+pub fn stub_0x630548() -> ! {
+    todo!("0x630548 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::readValue(RBX::Reflection::DescribedBase *,XmlElement const*,RBX::IReferenceBinder &)const")
+}
+
+// 0x63056c — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11getRefValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getRefValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x63056c() -> ! {
+    todo!("0x63056c RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::getRefValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x630580 — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11setRefValueEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x630580() -> ! {
+    todo!("0x630580 RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValue(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x6305fc — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE17setRefValueUnsafeEPNS0_13DescribedBaseES6_
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")]
+pub fn stub_0x6305fc() -> ! {
+    todo!("0x6305fc RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::setRefValueUnsafe(RBX::Reflection::DescribedBase *,RBX::Reflection::DescribedBase *)const")
+}
+
+// 0x63061c — __ZNK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x63061c() -> ! {
+    todo!("0x63061c RBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x6306fc — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+pub fn stub_0x6306fc() -> ! {
+    todo!("0x6306fc non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+}
+
+// 0x630874 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::isReadOnly(void)const")]
+pub fn stub_0x630874() -> ! {
+    todo!("0x630874 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::isReadOnly(void)const")
+}
+
+// 0x630878 — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::isWriteOnly(void)const")]
+pub fn stub_0x630878() -> ! {
+    todo!("0x630878 RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::isWriteOnly(void)const")
+}
+
+// 0x63087c — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_0x63087c() -> ! {
+    todo!("0x63087c RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x63089c — __ZNK3RBX10Reflection14PropDescriptorINS_18SkateboardPlatformEPNS_20SkateboardControllerEE7GetImplIMS2_KFS4_vEE8setValueEPNS0_13DescribedBaseERKS4_
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::SkateboardController * const&)const")]
+pub fn stub_0x63089c() -> ! {
+    todo!("0x63089c RBX::Reflection::PropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController *>::GetImpl<RBX::SkateboardController * (RBX::SkateboardPlatform::*)(void)const>::setValue(RBX::Reflection::DescribedBase *,RBX::SkateboardController * const&)const")
+}
+
+// 0x6309bc — __ZN3RBX10Reflection7RefTypeIPNS_20SkateboardControllerEED1Ev
+#[doc(alias = "RBX::Reflection::RefType<RBX::SkateboardController *>::~RefType()")]
+pub fn stub_0x6309bc() -> ! {
+    todo!("0x6309bc RBX::Reflection::RefType<RBX::SkateboardController *>::~RefType()")
+}
+
+// 0x6309c0 — __ZN3RBX10Reflection4TypeC2IPNS_20SkateboardControllerEEEPKcS6_PT_
+#[doc(alias = "RBX::Reflection::Type::Type<RBX::SkateboardController *>(char const*,char const*,RBX::SkateboardController * *)")]
+pub fn stub_0x6309c0() -> ! {
+    todo!("0x6309c0 RBX::Reflection::Type::Type<RBX::SkateboardController *>(char const*,char const*,RBX::SkateboardController * *)")
+}
+
+// 0x630a6c — __ZN3RBX10Reflection7RefTypeIPNS_20SkateboardControllerEED0Ev
+#[doc(alias = "RBX::Reflection::RefType<RBX::SkateboardController *>::~RefType()")]
+pub fn stub_0x630a6c() -> ! {
+    todo!("0x630a6c RBX::Reflection::RefType<RBX::SkateboardController *>::~RefType()")
+}
+
+// 0x630a70 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x630a70() -> ! {
+    todo!("0x630a70 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x630bf4 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")]
+pub fn stub_0x630bf4() -> ! {
+    todo!("0x630bf4 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")
+}
+
+// 0x630ca8 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_0x630ca8() -> ! {
+    todo!("0x630ca8 RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x630dfc — __ZNK3RBX10Reflection13EventDescImplILi1ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_0x630dfc() -> ! {
+    todo!("0x630dfc RBX::Reflection::EventDescImpl<1,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x630f5c — __ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_0x630f5c() -> ! {
+    todo!("0x630f5c RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x630f70 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x630f70() -> ! {
+    todo!("0x630f70 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x631160 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")]
+pub fn stub_0x631160() -> ! {
+    todo!("0x631160 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")
+}
+
+// 0x631214 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_0x631214() -> ! {
+    todo!("0x631214 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x631368 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_0x631368() -> ! {
+    todo!("0x631368 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x631518 — __ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_0x631518() -> ! {
+    todo!("0x631518 RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x63152c — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_EC2ES8_PKcSB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x63152c() -> ! {
+    todo!("0x63152c RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::EventDesc(rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x63171c — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::~EventDesc()")]
+pub fn stub_0x63171c() -> ! {
+    todo!("0x63171c RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::~EventDesc()")
+}
+
+// 0x6317d0 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_0x6317d0() -> ! {
+    todo!("0x6317d0 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x631924 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_0x631924() -> ! {
+    todo!("0x631924 RBX::Reflection::EventDescImpl<2,RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x6319c0 — __ZNK3RBX10Reflection13EventDescBaseINS_18SkateboardPlatformEFvNS2_9MoveStateES3_EN3rbx6signalIS4_EEMS2_S7_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_0x6319c0() -> ! {
+    todo!("0x6319c0 RBX::Reflection::EventDescBase<RBX::SkateboardPlatform,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState),rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,rbx::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)> RBX::SkateboardPlatform::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x631b4c — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS1_18SkateboardPlatform9MoveStateES7_NS_10shared_ptrIS3_EENS_3argILi1EEENSA_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
+pub fn stub_0x631b4c() -> ! {
+    todo!("0x631b4c boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")
+}
+
+// 0x631c68 — __ZN3RBX10Reflection18GenericSlotWrapper8execute2INS_18SkateboardPlatform9MoveStateES4_EEvRKT_RKT0_
+#[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute2<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&)")]
+pub fn stub_0x631c68() -> ! {
+    todo!("0x631c68 void RBX::Reflection::GenericSlotWrapper::execute2<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&)")
+}
+
+// 0x631fc8 — __ZN5boost9function2IvN3RBX18SkateboardPlatform9MoveStateES3_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS1_10Reflection18GenericSlotWrapperERKS3_SD_EENS6_5list3INS6_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEvT_
+#[doc(alias = "void boost::function2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
+pub fn stub_0x631fc8() -> ! {
+    todo!("0x631fc8 void boost::function2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")
+}
+
+// 0x6320c0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS7_18SkateboardPlatform9MoveStateESD_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSK_ILi2EEEEEEEE6manageERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+pub fn stub_0x6320c0() -> ! {
+    todo!("0x6320c0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x6320dc — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS7_18SkateboardPlatform9MoveStateESD_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSK_ILi2EEEEEEEvSB_SB_E6invokeERNS1_15function_bufferESB_SB_
+#[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::invoke(boost::detail::function::function_buffer &,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")]
+pub fn stub_0x6320dc() -> ! {
+    todo!("0x6320dc boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::invoke(boost::detail::function::function_buffer &,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")
+}
+
+// 0x6320f4 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
+pub fn stub_0x6320f4() -> ! {
+    todo!("0x6320f4 bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0x6321dc — __ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn stub_0x6321dc() -> ! {
+    todo!("0x6321dc bool boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0x6322c0 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX18SkateboardPlatform9MoveStateES5_E14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_SF_EENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+#[doc(alias = "void boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+pub fn stub_0x6322c0() -> ! {
+    todo!("0x6322c0 void boost::detail::function::basic_vtable2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+// 0x632394 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS4_18SkateboardPlatform9MoveStateESA_EENS0_5list3INS0_5valueINS_10shared_ptrIS6_EEEENS_3argILi1EEENSH_ILi2EEEEEEclIS8_S8_EEvRT_RT0_
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState &,RBX::SkateboardPlatform::MoveState &)")]
+pub fn stub_0x632394() -> ! {
+    todo!("0x632394 void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>(RBX::SkateboardPlatform::MoveState &,RBX::SkateboardPlatform::MoveState &)")
+}
+
+// 0x6323b0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS7_18SkateboardPlatform9MoveStateESD_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSK_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+pub fn stub_0x6323b0() -> ! {
+    todo!("0x6323b0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,RBX::SkateboardPlatform::MoveState const&,RBX::SkateboardPlatform::MoveState const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0x6332b0 — __ZN3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEEC2IMS2_KFS3_vEMS2_FvRKS3_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::EnumPropDescriptor<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>(char const*,char const*,RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")]
+pub fn stub_0x6332b0() -> ! {
+    todo!("0x6332b0 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::EnumPropDescriptor<RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&)>(char const*,char const*,RBX::SkateboardPlatform::MoveState (RBX::SkateboardPlatform::*)(void)const,void (RBX::SkateboardPlatform::*)(RBX::SkateboardPlatform::MoveState const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x633464 — __ZN3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEED0Ev
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::~EnumPropDescriptor()")]
+pub fn stub_0x633464() -> ! {
+    todo!("0x633464 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::~EnumPropDescriptor()")
+}
+
+// 0x633490 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::isReadOnly(void)const")]
+pub fn stub_0x633490() -> ! {
+    todo!("0x633490 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::isReadOnly(void)const")
+}
+
+// 0x6334a0 — __ZNK3RBX10Reflection18EnumPropDescriptorINS_18SkateboardPlatformENS2_9MoveStateEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::isWriteOnly(void)const")]
+pub fn stub_0x6334a0() -> ! {
+    todo!("0x6334a0 RBX::Reflection::EnumPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardPlatform::MoveState>::isWriteOnly(void)const")
+}
