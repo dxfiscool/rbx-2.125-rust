@@ -22317,3 +22317,703 @@ pub fn stub_c3e5e8() -> ! {
 pub fn stub_c3e5f8() -> ! {
     todo!("0xc3e5f8 G3D::Line::direction(void)const")
 }
+
+// 0xc3e640 — __ZNK3G3D11LineSegment12closestPointERKNS_7Vector3E
+#[doc(alias = "G3D::LineSegment::closestPoint(G3D::Vector3 const&)const")]
+// was: G3D::LineSegment::closestPoint(G3D::Vector3 const&)const
+pub fn stub_c3e640() -> ! {
+    todo!("0xc3e640 G3D::LineSegment::closestPoint(G3D::Vector3 const&)const")
+}
+
+// 0xc3e78c — __ZN3G3D3Log6commonEv
+#[doc(alias = "G3D::Log::common(void)")]
+// was: G3D::Log::common(void)
+pub fn stub_c3e78c() -> ! {
+    todo!("0xc3e78c G3D::Log::common(void)")
+}
+
+// 0xc3e8f8 — __ZN3G3D3LogC2ERKSsi
+#[doc(alias = "G3D::Log::Log(std::string const&,int)")]
+// was: G3D::Log::Log(std::string const&,int)
+pub fn stub_c3e8f8() -> ! {
+    todo!("0xc3e8f8 G3D::Log::Log(std::string const&,int)")
+}
+
+// 0xc3ea88 — __ZN3G3D3LogD0Ev
+#[doc(alias = "G3D::Log::~Log()")]
+// was: G3D::Log::~Log()
+pub fn stub_c3ea88() -> ! {
+    todo!("0xc3ea88 G3D::Log::~Log()")
+}
+
+// 0xc3eb28 — __ZN3G3D3LogD1Ev
+#[doc(alias = "G3D::Log::~Log()")]
+// was: G3D::Log::~Log()
+pub fn stub_c3eb28() -> ! {
+    todo!("0xc3eb28 G3D::Log::~Log()")
+}
+
+// 0xc3eb34 — __ZN3G3D3LogD2Ev
+#[doc(alias = "G3D::Log::~Log()")]
+// was: G3D::Log::~Log()
+pub fn stub_c3eb34() -> ! {
+    todo!("0xc3eb34 G3D::Log::~Log()")
+}
+
+// 0xc3eda8 — __ZN3G3D3Log7printlnERKSs
+#[doc(alias = "G3D::Log::println(std::string const&)")]
+// was: G3D::Log::println(std::string const&)
+pub fn stub_c3eda8() -> ! {
+    todo!("0xc3eda8 G3D::Log::println(std::string const&)")
+}
+
+// 0xc3edd8 — __ZN3G3D3Log20getCommonLogFilenameEv
+#[doc(alias = "G3D::Log::getCommonLogFilename(void)")]
+// was: G3D::Log::getCommonLogFilename(void)
+pub fn stub_c3edd8() -> ! {
+    todo!("0xc3edd8 G3D::Log::getCommonLogFilename(void)")
+}
+
+// 0xc3edf0 — __ZN3G3D3Log11printHeaderEv
+#[doc(alias = "G3D::Log::printHeader(void)")]
+// was: G3D::Log::printHeader(void)
+pub fn stub_c3edf0() -> ! {
+    todo!("0xc3edf0 G3D::Log::printHeader(void)")
+}
+
+// 0xc3ef4c — __ZN3G3D3Log5printERKSs
+#[doc(alias = "G3D::Log::print(std::string const&)")]
+// was: G3D::Log::print(std::string const&)
+pub fn stub_c3ef4c() -> ! {
+    todo!("0xc3ef4c G3D::Log::print(std::string const&)")
+}
+
+// 0xc3ef78 — __ZN3G3D7Matrix34zeroEv
+#[doc(alias = "G3D::Matrix3::zero(void)")]
+// was: G3D::Matrix3::zero(void)
+pub fn stub_c3ef78() -> ! {
+    todo!("0xc3ef78 G3D::Matrix3::zero(void)")
+}
+
+// 0xc3efbc — __ZN3G3D7Matrix3C1Efffffffff
+#[doc(alias = "G3D::Matrix3::Matrix3(float,float,float,float,float,float,float,float,float)")]
+// was: G3D::Matrix3::Matrix3(float,float,float,float,float,float,float,float,float)
+pub fn stub_c3efbc() -> ! {
+    todo!("0xc3efbc G3D::Matrix3::Matrix3(float,float,float,float,float,float,float,float,float)")
+}
+
+// 0xc3eff8 — __ZN3G3D7Matrix38identityEv
+#[doc(alias = "G3D::Matrix3::identity(void)")]
+// was: G3D::Matrix3::identity(void)
+pub fn stub_c3eff8() -> ! {
+    todo!("0xc3eff8 G3D::Matrix3::identity(void)")
+}
+
+// 0xc3f040 — __ZNK3G3D7Matrix36columnEi
+#[doc(alias = "G3D::Matrix3::column(int)const")]
+// was: G3D::Matrix3::column(int)const
+pub fn stub_c3f040() -> ! {
+    todo!("0xc3f040 G3D::Matrix3::column(int)const")
+}
+
+// 0xc3f068 — __ZNK3G3D7Matrix313isOrthonormalEv
+#[doc(alias = "G3D::Matrix3::isOrthonormal(void)const")]
+// was: G3D::Matrix3::isOrthonormal(void)const
+pub fn stub_c3f068() -> ! {
+    todo!("0xc3f068 G3D::Matrix3::isOrthonormal(void)const")
+}
+
+// 0xc3f348 — __ZN3G3D7Matrix3C1ERKNS_4QuatE
+#[doc(alias = "G3D::Matrix3::Matrix3(G3D::Quat const&)")]
+// was: G3D::Matrix3::Matrix3(G3D::Quat const&)
+pub fn stub_c3f348() -> ! {
+    todo!("0xc3f348 G3D::Matrix3::Matrix3(G3D::Quat const&)")
+}
+
+// 0xc3f428 — __ZN3G3D7Matrix33setEfffffffff
+#[doc(alias = "G3D::Matrix3::set(float,float,float,float,float,float,float,float,float)")]
+// was: G3D::Matrix3::set(float,float,float,float,float,float,float,float,float)
+pub fn stub_c3f428() -> ! {
+    todo!("0xc3f428 G3D::Matrix3::set(float,float,float,float,float,float,float,float,float)")
+}
+
+// 0xc3f464 — __ZN3G3D7Matrix3C1ERKS0_
+#[doc(alias = "G3D::Matrix3::Matrix3(G3D::Matrix3 const&)")]
+// was: G3D::Matrix3::Matrix3(G3D::Matrix3 const&)
+pub fn stub_c3f464() -> ! {
+    todo!("0xc3f464 G3D::Matrix3::Matrix3(G3D::Matrix3 const&)")
+}
+
+// 0xc3f488 — __ZN3G3D7Matrix39setColumnEiRKNS_7Vector3E
+#[doc(alias = "G3D::Matrix3::setColumn(int,G3D::Vector3 const&)")]
+// was: G3D::Matrix3::setColumn(int,G3D::Vector3 const&)
+pub fn stub_c3f488() -> ! {
+    todo!("0xc3f488 G3D::Matrix3::setColumn(int,G3D::Vector3 const&)")
+}
+
+// 0xc3f49c — __ZNK3G3D7Matrix3eqERKS0_
+#[doc(alias = "G3D::Matrix3::operator==(G3D::Matrix3 const&)const")]
+// was: G3D::Matrix3::operator==(G3D::Matrix3 const&)const
+pub fn stub_c3f49c() -> ! {
+    todo!("0xc3f49c G3D::Matrix3::operator==(G3D::Matrix3 const&)const")
+}
+
+// 0xc3f4ec — __ZNK3G3D7Matrix3neERKS0_
+#[doc(alias = "G3D::Matrix3::operator!=(G3D::Matrix3 const&)const")]
+// was: G3D::Matrix3::operator!=(G3D::Matrix3 const&)const
+pub fn stub_c3f4ec() -> ! {
+    todo!("0xc3f4ec G3D::Matrix3::operator!=(G3D::Matrix3 const&)const")
+}
+
+// 0xc3f53c — __ZNK3G3D7Matrix3plERKS0_
+#[doc(alias = "G3D::Matrix3::operator+(G3D::Matrix3 const&)const")]
+// was: G3D::Matrix3::operator+(G3D::Matrix3 const&)const
+pub fn stub_c3f53c() -> ! {
+    todo!("0xc3f53c G3D::Matrix3::operator+(G3D::Matrix3 const&)const")
+}
+
+// 0xc3f5d4 — __ZNK3G3D7Matrix3mlERKS0_
+#[doc(alias = "G3D::Matrix3::operator*(G3D::Matrix3 const&)const")]
+// was: G3D::Matrix3::operator*(G3D::Matrix3 const&)const
+pub fn stub_c3f5d4() -> ! {
+    todo!("0xc3f5d4 G3D::Matrix3::operator*(G3D::Matrix3 const&)const")
+}
+
+// 0xc3f720 — __ZN3G3D7Matrix3pLERKS0_
+#[doc(alias = "G3D::Matrix3::operator+=(G3D::Matrix3 const&)")]
+// was: G3D::Matrix3::operator+=(G3D::Matrix3 const&)
+pub fn stub_c3f720() -> ! {
+    todo!("0xc3f720 G3D::Matrix3::operator+=(G3D::Matrix3 const&)")
+}
+
+// 0xc3f7b8 — __ZN3G3D7Matrix3mIERKS0_
+#[doc(alias = "G3D::Matrix3::operator-=(G3D::Matrix3 const&)")]
+// was: G3D::Matrix3::operator-=(G3D::Matrix3 const&)
+pub fn stub_c3f7b8() -> ! {
+    todo!("0xc3f7b8 G3D::Matrix3::operator-=(G3D::Matrix3 const&)")
+}
+
+// 0xc3f850 — __ZN3G3D7Matrix3mLERKS0_
+#[doc(alias = "G3D::Matrix3::operator*=(G3D::Matrix3 const&)")]
+// was: G3D::Matrix3::operator*=(G3D::Matrix3 const&)
+pub fn stub_c3f850() -> ! {
+    todo!("0xc3f850 G3D::Matrix3::operator*=(G3D::Matrix3 const&)")
+}
+
+// 0xc3f9b8 — __ZNK3G3D7Matrix3ngEv
+#[doc(alias = "G3D::Matrix3::operator-(void)const")]
+// was: G3D::Matrix3::operator-(void)const
+pub fn stub_c3f9b8() -> ! {
+    todo!("0xc3f9b8 G3D::Matrix3::operator-(void)const")
+}
+
+// 0xc3fa30 — __ZN3G3DmlEfRKNS_7Matrix3E
+#[doc(alias = "G3D::operator*(float,G3D::Matrix3 const&)")]
+// was: G3D::operator*(float,G3D::Matrix3 const&)
+pub fn stub_c3fa30() -> ! {
+    todo!("0xc3fa30 G3D::operator*(float,G3D::Matrix3 const&)")
+}
+
+// 0xc3faa8 — __ZNK3G3D7Matrix39transposeEv
+#[doc(alias = "G3D::Matrix3::transpose(void)const")]
+// was: G3D::Matrix3::transpose(void)const
+pub fn stub_c3faa8() -> ! {
+    todo!("0xc3faa8 G3D::Matrix3::transpose(void)const")
+}
+
+// 0xc3fad0 — __ZNK3G3D7Matrix37inverseERS0_f
+#[doc(alias = "G3D::Matrix3::inverse(G3D::Matrix3&,float)const")]
+// was: G3D::Matrix3::inverse(G3D::Matrix3&,float)const
+pub fn stub_c3fad0() -> ! {
+    todo!("0xc3fad0 G3D::Matrix3::inverse(G3D::Matrix3&,float)const")
+}
+
+// 0xc3fc9c — __ZNK3G3D7Matrix37inverseEf
+#[doc(alias = "G3D::Matrix3::inverse(float)const")]
+// was: G3D::Matrix3::inverse(float)const
+pub fn stub_c3fc9c() -> ! {
+    todo!("0xc3fc9c G3D::Matrix3::inverse(float)const")
+}
+
+// 0xc3fd1c — __ZN3G3D7Matrix314orthonormalizeEv
+#[doc(alias = "G3D::Matrix3::orthonormalize(void)")]
+// was: G3D::Matrix3::orthonormalize(void)
+pub fn stub_c3fd1c() -> ! {
+    todo!("0xc3fd1c G3D::Matrix3::orthonormalize(void)")
+}
+
+// 0xc3fe98 — __ZNK3G3D7Matrix36l1NormEv
+#[doc(alias = "G3D::Matrix3::l1Norm(void)const")]
+// was: G3D::Matrix3::l1Norm(void)const
+pub fn stub_c3fe98() -> ! {
+    todo!("0xc3fe98 G3D::Matrix3::l1Norm(void)const")
+}
+
+// 0xc3ff60 — __ZNK3G3D7Matrix311toAxisAngleERNS_7Vector3ERf
+#[doc(alias = "G3D::Matrix3::toAxisAngle(G3D::Vector3 &,float &)const")]
+// was: G3D::Matrix3::toAxisAngle(G3D::Vector3 &,float &)const
+pub fn stub_c3ff60() -> ! {
+    todo!("0xc3ff60 G3D::Matrix3::toAxisAngle(G3D::Vector3 &,float &)const")
+}
+
+// 0xc4015c — __ZN3G3D7Matrix317fromAxisAngleFastERKNS_7Vector3Ef
+#[doc(alias = "G3D::Matrix3::fromAxisAngleFast(G3D::Vector3 const&,float)")]
+// was: G3D::Matrix3::fromAxisAngleFast(G3D::Vector3 const&,float)
+pub fn stub_c4015c() -> ! {
+    todo!("0xc4015c G3D::Matrix3::fromAxisAngleFast(G3D::Vector3 const&,float)")
+}
+
+// 0xc40250 — __ZNK3G3D7Matrix316toEulerAnglesXYZERfS1_S1_
+#[doc(alias = "G3D::Matrix3::toEulerAnglesXYZ(float &,float &,float &)const")]
+// was: G3D::Matrix3::toEulerAnglesXYZ(float &,float &,float &)const
+pub fn stub_c40250() -> ! {
+    todo!("0xc40250 G3D::Matrix3::toEulerAnglesXYZ(float &,float &,float &)const")
+}
+
+// 0xc403a8 — __ZN3G3D7Matrix318fromEulerAnglesXYZEfff
+#[doc(alias = "G3D::Matrix3::fromEulerAnglesXYZ(float,float,float)")]
+// was: G3D::Matrix3::fromEulerAnglesXYZ(float,float,float)
+pub fn stub_c403a8() -> ! {
+    todo!("0xc403a8 G3D::Matrix3::fromEulerAnglesXYZ(float,float,float)")
+}
+
+// 0xc40598 — __ZN3G3D7Matrix34_mulERKS0_S2_RS0_
+#[doc(alias = "G3D::Matrix3::_mul(G3D::Matrix3 const&,G3D::Matrix3 const&,G3D::Matrix3&)")]
+// was: G3D::Matrix3::_mul(G3D::Matrix3 const&,G3D::Matrix3 const&,G3D::Matrix3&)
+pub fn stub_c40598() -> ! {
+    todo!("0xc40598 G3D::Matrix3::_mul(G3D::Matrix3 const&,G3D::Matrix3 const&,G3D::Matrix3&)")
+}
+
+// 0xc40784 — __ZN3G3D7Matrix48identityEv
+#[doc(alias = "G3D::Matrix4::identity(void)")]
+// was: G3D::Matrix4::identity(void)
+pub fn stub_c40784() -> ! {
+    todo!("0xc40784 G3D::Matrix4::identity(void)")
+}
+
+// 0xc407d8 — __ZN3G3D7Matrix4C1ERKNS_15CoordinateFrameE
+#[doc(alias = "G3D::Matrix4::Matrix4(G3D::CoordinateFrame const&)")]
+// was: G3D::Matrix4::Matrix4(G3D::CoordinateFrame const&)
+pub fn stub_c407d8() -> ! {
+    todo!("0xc407d8 G3D::Matrix4::Matrix4(G3D::CoordinateFrame const&)")
+}
+
+// 0xc40818 — __ZNK3G3D7Matrix48upper3x3Ev
+#[doc(alias = "G3D::Matrix4::upper3x3(void)const")]
+// was: G3D::Matrix4::upper3x3(void)const
+pub fn stub_c40818() -> ! {
+    todo!("0xc40818 G3D::Matrix4::upper3x3(void)const")
+}
+
+// 0xc40860 — __ZN3G3D7Matrix4C1Ev
+#[doc(alias = "G3D::Matrix4::Matrix4(void)")]
+// was: G3D::Matrix4::Matrix4(void)
+pub fn stub_c40860() -> ! {
+    todo!("0xc40860 G3D::Matrix4::Matrix4(void)")
+}
+
+// 0xc40884 — __ZNK3G3D7Matrix4mlERKNS_7Vector4E
+#[doc(alias = "G3D::Matrix4::operator*(G3D::Vector4 const&)const")]
+// was: G3D::Matrix4::operator*(G3D::Vector4 const&)const
+pub fn stub_c40884() -> ! {
+    todo!("0xc40884 G3D::Matrix4::operator*(G3D::Vector4 const&)const")
+}
+
+// 0xc409ac — __ZN3G3D5PlaneC1ERKNS_7Vector3ES3_S3_
+#[doc(alias = "G3D::Plane::Plane(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: G3D::Plane::Plane(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_c409ac() -> ! {
+    todo!("0xc409ac G3D::Plane::Plane(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0xc40a94 — __ZN3G3D5PlaneC1ERKNS_7Vector3ES3_
+#[doc(alias = "G3D::Plane::Plane(G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: G3D::Plane::Plane(G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_c40a94() -> ! {
+    todo!("0xc40a94 G3D::Plane::Plane(G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0xc40b20 — __ZN3G3D5Plane12fromEquationEffff
+#[doc(alias = "G3D::Plane::fromEquation(float,float,float,float)")]
+// was: G3D::Plane::fromEquation(float,float,float,float)
+pub fn stub_c40b20() -> ! {
+    todo!("0xc40b20 G3D::Plane::fromEquation(float,float,float,float)")
+}
+
+// 0xc40b8c — __ZNK3G3D5Plane11getEquationERNS_7Vector3ERf
+#[doc(alias = "G3D::Plane::getEquation(G3D::Vector3 &,float &)const")]
+// was: G3D::Plane::getEquation(G3D::Vector3 &,float &)const
+pub fn stub_c40b8c() -> ! {
+    todo!("0xc40b8c G3D::Plane::getEquation(G3D::Vector3 &,float &)const")
+}
+
+// 0xc40be4 — __ZN3G3D4QuatC1ERKNS_7Matrix3E
+#[doc(alias = "G3D::Quat::Quat(G3D::Matrix3 const&)")]
+// was: G3D::Quat::Quat(G3D::Matrix3 const&)
+pub fn stub_c40be4() -> ! {
+    todo!("0xc40be4 G3D::Quat::Quat(G3D::Matrix3 const&)")
+}
+
+// 0xc40bf0 — __ZN3G3D4QuatC2ERKNS_7Matrix3E
+#[doc(alias = "G3D::Quat::Quat(G3D::Matrix3 const&)")]
+// was: G3D::Quat::Quat(G3D::Matrix3 const&)
+pub fn stub_c40bf0() -> ! {
+    todo!("0xc40bf0 G3D::Quat::Quat(G3D::Matrix3 const&)")
+}
+
+// 0xc40d70 — __ZNK3G3D4Quat16toRotationMatrixEv
+#[doc(alias = "G3D::Quat::toRotationMatrix(void)const")]
+// was: G3D::Quat::toRotationMatrix(void)const
+pub fn stub_c40d70() -> ! {
+    todo!("0xc40d70 G3D::Quat::toRotationMatrix(void)const")
+}
+
+// 0xc40db4 — __ZNK3G3D4Quat5slerpERKS0_ff
+#[doc(alias = "G3D::Quat::slerp(G3D::Quat const&,float,float)const")]
+// was: G3D::Quat::slerp(G3D::Quat const&,float,float)const
+pub fn stub_c40db4() -> ! {
+    todo!("0xc40db4 G3D::Quat::slerp(G3D::Quat const&,float,float)const")
+}
+
+// 0xc40ffc — __ZN3G3D3Ray3setERKNS_7Vector3ES3_
+#[doc(alias = "G3D::Ray::set(G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: G3D::Ray::set(G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_c40ffc() -> ! {
+    todo!("0xc40ffc G3D::Ray::set(G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0xc412bc — __ZNK3G3D6Sphere8toStringEv
+#[doc(alias = "G3D::Sphere::toString(void)const")]
+// was: G3D::Sphere::toString(void)const
+pub fn stub_c412bc() -> ! {
+    todo!("0xc412bc G3D::Sphere::toString(void)const")
+}
+
+// 0xc41304 — __ZNK3G3D6Sphere8containsERKNS_7Vector3E
+#[doc(alias = "G3D::Sphere::contains(G3D::Vector3 const&)const")]
+// was: G3D::Sphere::contains(G3D::Vector3 const&)const
+pub fn stub_c41304() -> ! {
+    todo!("0xc41304 G3D::Sphere::contains(G3D::Vector3 const&)const")
+}
+
+// 0xc41388 — __ZN3G3D10beginsWithERKSsS1_
+#[doc(alias = "G3D::beginsWith(std::string const&,std::string const&)")]
+// was: G3D::beginsWith(std::string const&,std::string const&)
+pub fn stub_c41388() -> ! {
+    todo!("0xc41388 G3D::beginsWith(std::string const&,std::string const&)")
+}
+
+// 0xc413c0 — __ZN3G3D8endsWithERKSsS1_
+#[doc(alias = "G3D::endsWith(std::string const&,std::string const&)")]
+// was: G3D::endsWith(std::string const&,std::string const&)
+pub fn stub_c413c0() -> ! {
+    todo!("0xc413c0 G3D::endsWith(std::string const&,std::string const&)")
+}
+
+// 0xc413f8 — __ZN3G3D7toUpperERKSs
+#[doc(alias = "G3D::toUpper(std::string const&)")]
+// was: G3D::toUpper(std::string const&)
+pub fn stub_c413f8() -> ! {
+    todo!("0xc413f8 G3D::toUpper(std::string const&)")
+}
+
+// 0xc4158c — __ZN3G3D5TableISsb9HashTraitISsE11EqualsTraitISsEEC2Ev
+#[doc(alias = "G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::Table(void)")]
+// was: G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::Table(void)
+pub fn stub_c4158c() -> ! {
+    todo!("0xc4158c G3D::Table<std::string,bool,HashTrait<std::string>,EqualsTrait<std::string>>::Table(void)")
+}
+
+// 0xc417bc — __ZN3G3D7Vector23oneEv
+#[doc(alias = "G3D::Vector2::one(void)")]
+// was: G3D::Vector2::one(void)
+pub fn stub_c417bc() -> ! {
+    todo!("0xc417bc G3D::Vector2::one(void)")
+}
+
+// 0xc417f0 — __ZN3G3D7Vector24zeroEv
+#[doc(alias = "G3D::Vector2::zero(void)")]
+// was: G3D::Vector2::zero(void)
+pub fn stub_c417f0() -> ! {
+    todo!("0xc417f0 G3D::Vector2::zero(void)")
+}
+
+// 0xc41824 — __ZNK3G3D7Vector2dvEf
+#[doc(alias = "G3D::Vector2::operator/(float)const")]
+// was: G3D::Vector2::operator/(float)const
+pub fn stub_c41824() -> ! {
+    todo!("0xc41824 G3D::Vector2::operator/(float)const")
+}
+
+// 0xc41850 — __ZN3G3D7Vector2dVEf
+#[doc(alias = "G3D::Vector2::operator/=(float)")]
+// was: G3D::Vector2::operator/=(float)
+pub fn stub_c41850() -> ! {
+    todo!("0xc41850 G3D::Vector2::operator/=(float)")
+}
+
+// 0xc41870 — __ZNK3G3D7Vector22yxEv
+#[doc(alias = "G3D::Vector2::yx(void)const")]
+// was: G3D::Vector2::yx(void)const
+pub fn stub_c41870() -> ! {
+    todo!("0xc41870 G3D::Vector2::yx(void)const")
+}
+
+// 0xc418bc — __ZN3G3D12Vector2int16C1ERKNS_7Vector2E
+#[doc(alias = "G3D::Vector2int16::Vector2int16(G3D::Vector2 const&)")]
+// was: G3D::Vector2int16::Vector2int16(G3D::Vector2 const&)
+pub fn stub_c418bc() -> ! {
+    todo!("0xc418bc G3D::Vector2int16::Vector2int16(G3D::Vector2 const&)")
+}
+
+// 0xc41918 — __ZN3G3D12Vector2int16C1EPi
+#[doc(alias = "G3D::Vector2int16::Vector2int16(int *)")]
+// was: G3D::Vector2int16::Vector2int16(int *)
+pub fn stub_c41918() -> ! {
+    todo!("0xc41918 G3D::Vector2int16::Vector2int16(int *)")
+}
+
+// 0xc41924 — __ZNK3G3D12Vector2int162yxEv
+#[doc(alias = "G3D::Vector2int16::yx(void)const")]
+// was: G3D::Vector2int16::yx(void)const
+pub fn stub_c41924() -> ! {
+    todo!("0xc41924 G3D::Vector2int16::yx(void)const")
+}
+
+// 0xc41964 — __ZN3G3D7Vector3C1ERKNS_7Vector2Ef
+#[doc(alias = "G3D::Vector3::Vector3(G3D::Vector2 const&,float)")]
+// was: G3D::Vector3::Vector3(G3D::Vector2 const&,float)
+pub fn stub_c41964() -> ! {
+    todo!("0xc41964 G3D::Vector3::Vector3(G3D::Vector2 const&,float)")
+}
+
+// 0xc41970 — __ZN3G3D7Vector34zeroEv
+#[doc(alias = "G3D::Vector3::zero(void)")]
+// was: G3D::Vector3::zero(void)
+pub fn stub_c41970() -> ! {
+    todo!("0xc41970 G3D::Vector3::zero(void)")
+}
+
+// 0xc419a8 — __ZN3G3D7Vector33oneEv
+#[doc(alias = "G3D::Vector3::one(void)")]
+// was: G3D::Vector3::one(void)
+pub fn stub_c419a8() -> ! {
+    todo!("0xc419a8 G3D::Vector3::one(void)")
+}
+
+// 0xc419e0 — __ZN3G3D7Vector35unitXEv
+#[doc(alias = "G3D::Vector3::unitX(void)")]
+// was: G3D::Vector3::unitX(void)
+pub fn stub_c419e0() -> ! {
+    todo!("0xc419e0 G3D::Vector3::unitX(void)")
+}
+
+// 0xc41a1c — __ZN3G3D7Vector35unitYEv
+#[doc(alias = "G3D::Vector3::unitY(void)")]
+// was: G3D::Vector3::unitY(void)
+pub fn stub_c41a1c() -> ! {
+    todo!("0xc41a1c G3D::Vector3::unitY(void)")
+}
+
+// 0xc41a58 — __ZN3G3D7Vector35unitZEv
+#[doc(alias = "G3D::Vector3::unitZ(void)")]
+// was: G3D::Vector3::unitZ(void)
+pub fn stub_c41a58() -> ! {
+    todo!("0xc41a58 G3D::Vector3::unitZ(void)")
+}
+
+// 0xc41a94 — __ZN3G3D7Vector33infEv
+#[doc(alias = "G3D::Vector3::inf(void)")]
+// was: G3D::Vector3::inf(void)
+pub fn stub_c41a94() -> ! {
+    todo!("0xc41a94 G3D::Vector3::inf(void)")
+}
+
+// 0xc41b94 — __ZN3G3D7Vector39minFiniteEv
+#[doc(alias = "G3D::Vector3::minFinite(void)")]
+// was: G3D::Vector3::minFinite(void)
+pub fn stub_c41b94() -> ! {
+    todo!("0xc41b94 G3D::Vector3::minFinite(void)")
+}
+
+// 0xc41bd4 — __ZN3G3D7Vector39maxFiniteEv
+#[doc(alias = "G3D::Vector3::maxFinite(void)")]
+// was: G3D::Vector3::maxFinite(void)
+pub fn stub_c41bd4() -> ! {
+    todo!("0xc41bd4 G3D::Vector3::maxFinite(void)")
+}
+
+// 0xc41c18 — __ZNK3G3D7Vector311primaryAxisEv
+#[doc(alias = "G3D::Vector3::primaryAxis(void)const")]
+// was: G3D::Vector3::primaryAxis(void)const
+pub fn stub_c41c18() -> ! {
+    todo!("0xc41c18 G3D::Vector3::primaryAxis(void)const")
+}
+
+// 0xc41c5c — __ZN3G3D7Vector3C1ERKNS_12Vector3int16E
+#[doc(alias = "G3D::Vector3::Vector3(G3D::Vector3int16 const&)")]
+// was: G3D::Vector3::Vector3(G3D::Vector3int16 const&)
+pub fn stub_c41c5c() -> ! {
+    todo!("0xc41c5c G3D::Vector3::Vector3(G3D::Vector3int16 const&)")
+}
+
+// 0xc41c98 — __ZN3G3D7Vector36randomERNS_6RandomE
+#[doc(alias = "G3D::Vector3::random(G3D::Random &)")]
+// was: G3D::Vector3::random(G3D::Random &)
+pub fn stub_c41c98() -> ! {
+    todo!("0xc41c98 G3D::Vector3::random(G3D::Random &)")
+}
+
+// 0xc41cc0 — __ZN3G3D7Vector37unitizeEf
+#[doc(alias = "G3D::Vector3::unitize(float)")]
+// was: G3D::Vector3::unitize(float)
+pub fn stub_c41cc0() -> ! {
+    todo!("0xc41cc0 G3D::Vector3::unitize(float)")
+}
+
+// 0xc41d24 — __ZN3G3D7Vector324generateOrthonormalBasisERS0_S1_S1_b
+#[doc(alias = "G3D::Vector3::generateOrthonormalBasis(G3D::Vector3&,G3D::Vector3&,G3D::Vector3&,bool)")]
+// was: G3D::Vector3::generateOrthonormalBasis(G3D::Vector3&,G3D::Vector3&,G3D::Vector3&,bool)
+pub fn stub_c41d24() -> ! {
+    todo!("0xc41d24 G3D::Vector3::generateOrthonormalBasis(G3D::Vector3&,G3D::Vector3&,G3D::Vector3&,bool)")
+}
+
+// 0xc41e7c — __ZNK3G3D7Vector314toVector3int16Ev
+#[doc(alias = "G3D::Vector3::toVector3int16(void)const")]
+// was: G3D::Vector3::toVector3int16(void)const
+pub fn stub_c41e7c() -> ! {
+    todo!("0xc41e7c G3D::Vector3::toVector3int16(void)const")
+}
+
+// 0xc41ee0 — __ZNK3G3D7Vector32xyEv
+#[doc(alias = "G3D::Vector3::xy(void)const")]
+// was: G3D::Vector3::xy(void)const
+pub fn stub_c41ee0() -> ! {
+    todo!("0xc41ee0 G3D::Vector3::xy(void)const")
+}
+
+// 0xc41ef0 — __ZNK3G3D7Vector32xzEv
+#[doc(alias = "G3D::Vector3::xz(void)const")]
+// was: G3D::Vector3::xz(void)const
+pub fn stub_c41ef0() -> ! {
+    todo!("0xc41ef0 G3D::Vector3::xz(void)const")
+}
+
+// 0xc41f08 — __ZNK3G3D7Vector33xxxEv
+#[doc(alias = "G3D::Vector3::xxx(void)const")]
+// was: G3D::Vector3::xxx(void)const
+pub fn stub_c41f08() -> ! {
+    todo!("0xc41f08 G3D::Vector3::xxx(void)const")
+}
+
+// 0xc41f24 — __ZNK3G3D7Vector33yxzEv
+#[doc(alias = "G3D::Vector3::yxz(void)const")]
+// was: G3D::Vector3::yxz(void)const
+pub fn stub_c41f24() -> ! {
+    todo!("0xc41f24 G3D::Vector3::yxz(void)const")
+}
+
+// 0xc41f78 — __ZN3G3D12Vector3int16C1ERKNS_7Vector3E
+#[doc(alias = "G3D::Vector3int16::Vector3int16(G3D::Vector3 const&)")]
+// was: G3D::Vector3int16::Vector3int16(G3D::Vector3 const&)
+pub fn stub_c41f78() -> ! {
+    todo!("0xc41f78 G3D::Vector3int16::Vector3int16(G3D::Vector3 const&)")
+}
+
+// 0xc41ff8 — __ZN3G3D12Vector3int164zeroEv
+#[doc(alias = "G3D::Vector3int16::zero(void)")]
+// was: G3D::Vector3int16::zero(void)
+pub fn stub_c41ff8() -> ! {
+    todo!("0xc41ff8 G3D::Vector3int16::zero(void)")
+}
+
+// 0xc4203c — __ZN3G3D12Vector3int163oneEv
+#[doc(alias = "G3D::Vector3int16::one(void)")]
+// was: G3D::Vector3int16::one(void)
+pub fn stub_c4203c() -> ! {
+    todo!("0xc4203c G3D::Vector3int16::one(void)")
+}
+
+// 0xc420b8 — __ZN3G3D7Vector44zeroEv
+#[doc(alias = "G3D::Vector4::zero(void)")]
+// was: G3D::Vector4::zero(void)
+pub fn stub_c420b8() -> ! {
+    todo!("0xc420b8 G3D::Vector4::zero(void)")
+}
+
+// 0xc420f4 — __ZNK3G3D7Vector4dvEf
+#[doc(alias = "G3D::Vector4::operator/(float)const")]
+// was: G3D::Vector4::operator/(float)const
+pub fn stub_c420f4() -> ! {
+    todo!("0xc420f4 G3D::Vector4::operator/(float)const")
+}
+
+// 0xc42264 — __ZNK3G3D7Vector43xyzEv
+#[doc(alias = "G3D::Vector4::xyz(void)const")]
+// was: G3D::Vector4::xyz(void)const
+pub fn stub_c42264() -> ! {
+    todo!("0xc42264 G3D::Vector4::xyz(void)const")
+}
+
+// 0xc422b0 — __ZN3G3D13zipfileExistsERKSsRSsS2_
+#[doc(alias = "G3D::zipfileExists(std::string const&,std::string &,std::string &)")]
+// was: G3D::zipfileExists(std::string const&,std::string &,std::string &)
+pub fn stub_c422b0() -> ! {
+    todo!("0xc422b0 G3D::zipfileExists(std::string const&,std::string &,std::string &)")
+}
+
+// 0xc42cf0 — __ZN3G3D13parseFilenameERKSsRSsRNS_5ArrayISsLi10ELm32EEES2_S2_
+#[doc(alias = "G3D::parseFilename(std::string const&,std::string &,G3D::Array<std::string,10,32ul> &,std::string &,std::string &)")]
+// was: G3D::parseFilename(std::string const&,std::string &,G3D::Array<std::string,10,32ul> &,std::string &,std::string &)
+pub fn stub_c42cf0() -> ! {
+    todo!("0xc42cf0 G3D::parseFilename(std::string const&,std::string &,G3D::Array<std::string,10,32ul> &,std::string &,std::string &)")
+}
+
+// 0xc4398c — __ZN3G3D11filenameExtERKSs
+#[doc(alias = "G3D::filenameExt(std::string const&)")]
+// was: G3D::filenameExt(std::string const&)
+pub fn stub_c4398c() -> ! {
+    todo!("0xc4398c G3D::filenameExt(std::string const&)")
+}
+
+// 0xc43a60 — __ZN3G3D6System8instanceEv
+#[doc(alias = "G3D::System::instance(void)")]
+// was: G3D::System::instance(void)
+pub fn stub_c43a60() -> ! {
+    todo!("0xc43a60 G3D::System::instance(void)")
+}
+
+// 0xc43b4c — __ZN3G3D6SystemC2Ev
+#[doc(alias = "G3D::System::System(void)")]
+// was: G3D::System::System(void)
+pub fn stub_c43b4c() -> ! {
+    todo!("0xc43b4c G3D::System::System(void)")
+}
+
+// 0xc43df4 — __ZN3G3D6System4initEv
+#[doc(alias = "G3D::System::init(void)")]
+// was: G3D::System::init(void)
+pub fn stub_c43df4() -> ! {
+    todo!("0xc43df4 G3D::System::init(void)")
+}
+
+// 0xc43f40 — __ZN3G3D6System4timeEv
+#[doc(alias = "G3D::System::time(void)")]
+// was: G3D::System::time(void)
+pub fn stub_c43f40() -> ! {
+    todo!("0xc43f40 G3D::System::time(void)")
+}
+
+// 0xc44128 — __ZN3G3D6System6memsetEPvhm
+#[doc(alias = "G3D::System::memset(void *,unsigned char,unsigned long)")]
+// was: G3D::System::memset(void *,unsigned char,unsigned long)
+pub fn stub_c44128() -> ! {
+    todo!("0xc44128 G3D::System::memset(void *,unsigned char,unsigned long)")
+}
+
+// 0xc44134 — __ZN3G3D6System6mallocEm
+#[doc(alias = "G3D::System::malloc(unsigned long)")]
+// was: G3D::System::malloc(unsigned long)
+pub fn stub_c44134() -> ! {
+    todo!("0xc44134 G3D::System::malloc(unsigned long)")
+}
