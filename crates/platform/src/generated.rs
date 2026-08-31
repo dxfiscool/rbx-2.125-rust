@@ -1,6 +1,6 @@
-//! platform generated — 1374 stubs sorted by EA, from ida/export.json
+//! platform generated — 1474 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 1374 stubs (1274 prior + 100 this batch, 3026 filtered, 2200 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 1474 stubs (1374 prior + 100 this batch, 3026 filtered, 2100 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -9574,4 +9574,703 @@ pub fn stub_50338() -> ! {
 #[doc(alias = "-[ThumbStickControl touchesMoved:withEvent:]")]
 pub fn stub_506cc() -> ! {
     todo!("0x506cc -[ThumbStickControl touchesMoved:withEvent:]")
+}
+// 0x508b0 — -[ThumbStickControl cancelMovement]
+// type: void __cdecl(ThumbStickControl *self, SEL)
+#[doc(alias = "-[ThumbStickControl cancelMovement]")]
+pub fn stub_508b0() -> ! {
+    todo!("0x508b0 -[ThumbStickControl cancelMovement]")
+}
+
+// 0x50960 — ___35-[ThumbStickControl cancelMovement]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke")]
+pub fn stub_50960() -> ! {
+    todo!("0x50960 ___35-[ThumbStickControl cancelMovement]_block_invoke")
+}
+
+// 0x50c18 — ___35-[ThumbStickControl cancelMovement]_block_invoke_2
+// type: id __fastcall(int)
+#[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke_2")]
+pub fn stub_50c18() -> ! {
+    todo!("0x50c18 ___35-[ThumbStickControl cancelMovement]_block_invoke_2")
+}
+
+// 0x50c80 — ___35-[ThumbStickControl cancelMovement]_block_invoke84
+// type: void __cdecl(id, char)
+#[doc(alias = "___35-[ThumbStickControl cancelMovement]_block_invoke84")]
+pub fn stub_50c80() -> ! {
+    todo!("0x50c80 ___35-[ThumbStickControl cancelMovement]_block_invoke84")
+}
+
+// 0x50eb0 — -[GameMenu init:]
+// type: id __cdecl(GameMenu *self, SEL, id)
+#[doc(alias = "-[GameMenu init:]")]
+pub fn stub_50eb0() -> ! {
+    todo!("0x50eb0 -[GameMenu init:]")
+}
+
+// 0x512f8 — -[GameMenu dealloc]
+// type: void __cdecl(GameMenu *self, SEL)
+#[doc(alias = "-[GameMenu dealloc]")]
+pub fn stub_512f8() -> ! {
+    todo!("0x512f8 -[GameMenu dealloc]")
+}
+
+// 0x51370 — -[GameMenu isShown]
+// type: char __cdecl(GameMenu *self, SEL)
+#[doc(alias = "-[GameMenu isShown]")]
+pub fn stub_51370() -> ! {
+    todo!("0x51370 -[GameMenu isShown]")
+}
+
+// 0x51380 — -[GameMenu acceptButtonPressed:]
+// type: void __cdecl(GameMenu *self, SEL, id)
+#[doc(alias = "-[GameMenu acceptButtonPressed:]")]
+pub fn stub_51380() -> ! {
+    todo!("0x51380 -[GameMenu acceptButtonPressed:]")
+}
+
+// 0x513b4 — -[GameMenu declineButtonPressed:]
+// type: void __cdecl(GameMenu *self, SEL, id)
+#[doc(alias = "-[GameMenu declineButtonPressed:]")]
+pub fn stub_513b4() -> ! {
+    todo!("0x513b4 -[GameMenu declineButtonPressed:]")
+}
+
+// 0x513c4 — -[GameMenu inverseMenuState:]
+// type: void __cdecl(GameMenu *self, SEL, id)
+#[doc(alias = "-[GameMenu inverseMenuState:]")]
+pub fn stub_513c4() -> ! {
+    todo!("0x513c4 -[GameMenu inverseMenuState:]")
+}
+
+// 0x513f8 — -[GameMenu showMenu:]
+// type: void __cdecl(GameMenu *self, SEL, id)
+#[doc(alias = "-[GameMenu showMenu:]")]
+pub fn stub_513f8() -> ! {
+    todo!("0x513f8 -[GameMenu showMenu:]")
+}
+
+// 0x51570 — ___21-[GameMenu showMenu:]_block_invoke
+// type: id __fastcall(_DWORD *)
+#[doc(alias = "___21-[GameMenu showMenu:]_block_invoke")]
+pub fn stub_51570() -> ! {
+    todo!("0x51570 ___21-[GameMenu showMenu:]_block_invoke")
+}
+
+// 0x515f0 — -[GameMenu hideMenu]
+// type: void __cdecl(GameMenu *self, SEL)
+#[doc(alias = "-[GameMenu hideMenu]")]
+pub fn stub_515f0() -> ! {
+    todo!("0x515f0 -[GameMenu hideMenu]")
+}
+
+// 0x51738 — ___20-[GameMenu hideMenu]_block_invoke
+// type: id __fastcall(_DWORD *)
+#[doc(alias = "___20-[GameMenu hideMenu]_block_invoke")]
+pub fn stub_51738() -> ! {
+    todo!("0x51738 ___20-[GameMenu hideMenu]_block_invoke")
+}
+
+// 0x517a8 — ___20-[GameMenu hideMenu]_block_invoke99
+// type: id __fastcall(int)
+#[doc(alias = "___20-[GameMenu hideMenu]_block_invoke99")]
+pub fn stub_517a8() -> ! {
+    todo!("0x517a8 ___20-[GameMenu hideMenu]_block_invoke99")
+}
+
+// 0x517ec — -[GameMenu .cxx_construct]
+// type: id __cdecl(GameMenu *self, SEL)
+#[doc(alias = "-[GameMenu .cxx_construct]")]
+pub fn stub_517ec() -> ! {
+    todo!("0x517ec -[GameMenu .cxx_construct]")
+}
+
+// 0x51a04 — -[MenuButton init:]
+// type: id __cdecl(MenuButton *self, SEL, CGRect)
+#[doc(alias = "-[MenuButton init:]")]
+pub fn stub_51a04() -> ! {
+    todo!("0x51a04 -[MenuButton init:]")
+}
+
+// 0x51af8 — -[MenuButton dealloc]
+// type: void __cdecl(MenuButton *self, SEL)
+#[doc(alias = "-[MenuButton dealloc]")]
+pub fn stub_51af8() -> ! {
+    todo!("0x51af8 -[MenuButton dealloc]")
+}
+
+// 0x51b44 — -[MenuButton doMenuSwitch:]
+// type: void __cdecl(MenuButton *self, SEL, id)
+#[doc(alias = "-[MenuButton doMenuSwitch:]")]
+pub fn stub_51b44() -> ! {
+    todo!("0x51b44 -[MenuButton doMenuSwitch:]")
+}
+
+// 0x52178 — -[RobloxAnimatingPageViewController initWithCoder:]
+// type: RobloxAnimatingPageViewController *__cdecl(RobloxAnimatingPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxAnimatingPageViewController initWithCoder:]")]
+pub fn stub_52178() -> ! {
+    todo!("0x52178 -[RobloxAnimatingPageViewController initWithCoder:]")
+}
+
+// 0x52280 — -[RobloxAnimatingPageViewController dealloc]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController dealloc]")]
+pub fn stub_52280() -> ! {
+    todo!("0x52280 -[RobloxAnimatingPageViewController dealloc]")
+}
+
+// 0x5233c — -[RobloxAnimatingPageViewController appInBackground:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxAnimatingPageViewController appInBackground:]")]
+pub fn stub_5233c() -> ! {
+    todo!("0x5233c -[RobloxAnimatingPageViewController appInBackground:]")
+}
+
+// 0x5234c — -[RobloxAnimatingPageViewController appInForeground:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxAnimatingPageViewController appInForeground:]")]
+pub fn stub_5234c() -> ! {
+    todo!("0x5234c -[RobloxAnimatingPageViewController appInForeground:]")
+}
+
+// 0x52384 — -[RobloxAnimatingPageViewController removeViewAndAnimation:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxAnimatingPageViewController removeViewAndAnimation:]")]
+pub fn stub_52384() -> ! {
+    todo!("0x52384 -[RobloxAnimatingPageViewController removeViewAndAnimation:]")
+}
+
+// 0x523d4 — -[RobloxAnimatingPageViewController didReceiveMemoryWarning]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController didReceiveMemoryWarning]")]
+pub fn stub_523d4() -> ! {
+    todo!("0x523d4 -[RobloxAnimatingPageViewController didReceiveMemoryWarning]")
+}
+
+// 0x52400 — -[RobloxAnimatingPageViewController viewDidLoad]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController viewDidLoad]")]
+pub fn stub_52400() -> ! {
+    todo!("0x52400 -[RobloxAnimatingPageViewController viewDidLoad]")
+}
+
+// 0x52580 — -[RobloxAnimatingPageViewController getInitialXPosition:]
+// type: float __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxAnimatingPageViewController getInitialXPosition:]")]
+pub fn stub_52580() -> ! {
+    todo!("0x52580 -[RobloxAnimatingPageViewController getInitialXPosition:]")
+}
+
+// 0x52614 — -[RobloxAnimatingPageViewController viewDidAppear:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, char)
+#[doc(alias = "-[RobloxAnimatingPageViewController viewDidAppear:]")]
+pub fn stub_52614() -> ! {
+    todo!("0x52614 -[RobloxAnimatingPageViewController viewDidAppear:]")
+}
+
+// 0x52a50 — -[RobloxAnimatingPageViewController viewDidDisappear:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, char)
+#[doc(alias = "-[RobloxAnimatingPageViewController viewDidDisappear:]")]
+pub fn stub_52a50() -> ! {
+    todo!("0x52a50 -[RobloxAnimatingPageViewController viewDidDisappear:]")
+}
+
+// 0x52aa0 — -[RobloxAnimatingPageViewController hasNaNValue:]
+// type: char __cdecl(RobloxAnimatingPageViewController *self, SEL, CGRect)
+#[doc(alias = "-[RobloxAnimatingPageViewController hasNaNValue:]")]
+pub fn stub_52aa0() -> ! {
+    todo!("0x52aa0 -[RobloxAnimatingPageViewController hasNaNValue:]")
+}
+
+// 0x52aec — -[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id, id, float)
+#[doc(alias = "-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]")]
+pub fn stub_52aec() -> ! {
+    todo!("0x52aec -[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]")
+}
+
+// 0x52dac — ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke")]
+pub fn stub_52dac() -> ! {
+    todo!("0x52dac ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke")
+}
+
+// 0x52f14 — ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73
+// type: id __fastcall(int)
+#[doc(alias = "___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73")]
+pub fn stub_52f14() -> ! {
+    todo!("0x52f14 ___86-[RobloxAnimatingPageViewController animateToZeroPosition:copyLayer:defaultTweenTime:]_block_invoke73")
+}
+
+// 0x52f98 — -[RobloxAnimatingPageViewController animateBackground]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController animateBackground]")]
+pub fn stub_52f98() -> ! {
+    todo!("0x52f98 -[RobloxAnimatingPageViewController animateBackground]")
+}
+
+// 0x53034 — -[RobloxAnimatingPageViewController animateForeground]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController animateForeground]")]
+pub fn stub_53034() -> ! {
+    todo!("0x53034 -[RobloxAnimatingPageViewController animateForeground]")
+}
+
+// 0x530d0 — -[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id, id, float)
+#[doc(alias = "-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]")]
+pub fn stub_530d0() -> ! {
+    todo!("0x530d0 -[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]")
+}
+
+// 0x5340c — ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke")]
+pub fn stub_5340c() -> ! {
+    todo!("0x5340c ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke")
+}
+
+// 0x535ec — ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87
+// type: _BYTE *__fastcall(_DWORD *, char)
+#[doc(alias = "___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87")]
+pub fn stub_535ec() -> ! {
+    todo!("0x535ec ___78-[RobloxAnimatingPageViewController animateLayer:copyLayer:animationDuration:]_block_invoke87")
+}
+
+// 0x53688 — -[RobloxAnimatingPageViewController startBackgroundPan]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController startBackgroundPan]")]
+pub fn stub_53688() -> ! {
+    todo!("0x53688 -[RobloxAnimatingPageViewController startBackgroundPan]")
+}
+
+// 0x536e0 — -[RobloxAnimatingPageViewController stopBackgroundPan]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController stopBackgroundPan]")]
+pub fn stub_536e0() -> ! {
+    todo!("0x536e0 -[RobloxAnimatingPageViewController stopBackgroundPan]")
+}
+
+// 0x53750 — ___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke")]
+pub fn stub_53750() -> ! {
+    todo!("0x53750 ___54-[RobloxAnimatingPageViewController stopBackgroundPan]_block_invoke")
+}
+
+// 0x53a04 — -[RobloxAnimatingPageViewController foregroundCopy]
+// type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController foregroundCopy]")]
+pub fn stub_53a04() -> ! {
+    todo!("0x53a04 -[RobloxAnimatingPageViewController foregroundCopy]")
+}
+
+// 0x53a14 — -[RobloxAnimatingPageViewController setForegroundCopy:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxAnimatingPageViewController setForegroundCopy:]")]
+pub fn stub_53a14() -> ! {
+    todo!("0x53a14 -[RobloxAnimatingPageViewController setForegroundCopy:]")
+}
+
+// 0x53a38 — -[RobloxAnimatingPageViewController backgroundCopy]
+// type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController backgroundCopy]")]
+pub fn stub_53a38() -> ! {
+    todo!("0x53a38 -[RobloxAnimatingPageViewController backgroundCopy]")
+}
+
+// 0x53a48 — -[RobloxAnimatingPageViewController setBackgroundCopy:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxAnimatingPageViewController setBackgroundCopy:]")]
+pub fn stub_53a48() -> ! {
+    todo!("0x53a48 -[RobloxAnimatingPageViewController setBackgroundCopy:]")
+}
+
+// 0x53a6c — -[RobloxAnimatingPageViewController foregroundImageInitialX]
+// type: float __cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController foregroundImageInitialX]")]
+pub fn stub_53a6c() -> ! {
+    todo!("0x53a6c -[RobloxAnimatingPageViewController foregroundImageInitialX]")
+}
+
+// 0x53a80 — -[RobloxAnimatingPageViewController setForegroundImageInitialX:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, float)
+#[doc(alias = "-[RobloxAnimatingPageViewController setForegroundImageInitialX:]")]
+pub fn stub_53a80() -> ! {
+    todo!("0x53a80 -[RobloxAnimatingPageViewController setForegroundImageInitialX:]")
+}
+
+// 0x53a98 — -[RobloxAnimatingPageViewController backgroundImageInitialX]
+// type: float __cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController backgroundImageInitialX]")]
+pub fn stub_53a98() -> ! {
+    todo!("0x53a98 -[RobloxAnimatingPageViewController backgroundImageInitialX]")
+}
+
+// 0x53aac — -[RobloxAnimatingPageViewController setBackgroundImageInitialX:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, float)
+#[doc(alias = "-[RobloxAnimatingPageViewController setBackgroundImageInitialX:]")]
+pub fn stub_53aac() -> ! {
+    todo!("0x53aac -[RobloxAnimatingPageViewController setBackgroundImageInitialX:]")
+}
+
+// 0x53ac4 — -[RobloxAnimatingPageViewController animationView]
+// type: UIView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController animationView]")]
+pub fn stub_53ac4() -> ! {
+    todo!("0x53ac4 -[RobloxAnimatingPageViewController animationView]")
+}
+
+// 0x53ad4 — -[RobloxAnimatingPageViewController setAnimationView:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxAnimatingPageViewController setAnimationView:]")]
+pub fn stub_53ad4() -> ! {
+    todo!("0x53ad4 -[RobloxAnimatingPageViewController setAnimationView:]")
+}
+
+// 0x53af8 — -[RobloxAnimatingPageViewController imgBackground]
+// type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController imgBackground]")]
+pub fn stub_53af8() -> ! {
+    todo!("0x53af8 -[RobloxAnimatingPageViewController imgBackground]")
+}
+
+// 0x53b08 — -[RobloxAnimatingPageViewController setImgBackground:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxAnimatingPageViewController setImgBackground:]")]
+pub fn stub_53b08() -> ! {
+    todo!("0x53b08 -[RobloxAnimatingPageViewController setImgBackground:]")
+}
+
+// 0x53b2c — -[RobloxAnimatingPageViewController imgForeground]
+// type: UIImageView *__cdecl(RobloxAnimatingPageViewController *self, SEL)
+#[doc(alias = "-[RobloxAnimatingPageViewController imgForeground]")]
+pub fn stub_53b2c() -> ! {
+    todo!("0x53b2c -[RobloxAnimatingPageViewController imgForeground]")
+}
+
+// 0x53b3c — -[RobloxAnimatingPageViewController setImgForeground:]
+// type: void __cdecl(RobloxAnimatingPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxAnimatingPageViewController setImgForeground:]")]
+pub fn stub_53b3c() -> ! {
+    todo!("0x53b3c -[RobloxAnimatingPageViewController setImgForeground:]")
+}
+
+// 0x55664 — -[StoreManager init]
+// type: StoreManager *__cdecl(StoreManager *self, SEL)
+#[doc(alias = "-[StoreManager init]")]
+pub fn stub_55664() -> ! {
+    todo!("0x55664 -[StoreManager init]")
+}
+
+// 0x55754 — ___20-[StoreManager init]_block_invoke
+// type: int __fastcall(int)
+#[doc(alias = "___20-[StoreManager init]_block_invoke")]
+pub fn stub_55754() -> ! {
+    todo!("0x55754 ___20-[StoreManager init]_block_invoke")
+}
+
+// 0x557dc — +[StoreManager getStoreMgr]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[StoreManager getStoreMgr]")]
+pub fn stub_557dc() -> ! {
+    todo!("0x557dc +[StoreManager getStoreMgr]")
+}
+
+// 0x55838 — ___27+[StoreManager getStoreMgr]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___27+[StoreManager getStoreMgr]_block_invoke")]
+pub fn stub_55838() -> ! {
+    todo!("0x55838 ___27+[StoreManager getStoreMgr]_block_invoke")
+}
+
+// 0x55880 — -[StoreManager canMakePurchase]
+// type: char __cdecl(StoreManager *self, SEL)
+#[doc(alias = "-[StoreManager canMakePurchase]")]
+pub fn stub_55880() -> ! {
+    todo!("0x55880 -[StoreManager canMakePurchase]")
+}
+
+// 0x558d0 — -[StoreManager request:didFailWithError:]
+// type: void __cdecl(StoreManager *self, SEL, id, id)
+#[doc(alias = "-[StoreManager request:didFailWithError:]")]
+pub fn stub_558d0() -> ! {
+    todo!("0x558d0 -[StoreManager request:didFailWithError:]")
+}
+
+// 0x559d0 — -[StoreManager requestDidFinish:]
+// type: void __cdecl(StoreManager *self, SEL, id)
+#[doc(alias = "-[StoreManager requestDidFinish:]")]
+pub fn stub_559d0() -> ! {
+    todo!("0x559d0 -[StoreManager requestDidFinish:]")
+}
+
+// 0x55a9c — -[StoreManager restrictTimeBoundPurchase:]
+// type: char __cdecl(StoreManager *self, SEL, id)
+#[doc(alias = "-[StoreManager restrictTimeBoundPurchase:]")]
+pub fn stub_55a9c() -> ! {
+    todo!("0x55a9c -[StoreManager restrictTimeBoundPurchase:]")
+}
+
+// 0x55c68 — -[StoreManager reset]
+// type: void __cdecl(StoreManager *self, SEL)
+#[doc(alias = "-[StoreManager reset]")]
+pub fn stub_55c68() -> ! {
+    todo!("0x55c68 -[StoreManager reset]")
+}
+
+// 0x55d04 — -[StoreManager recordPurchaseTime:]
+// type: void __cdecl(StoreManager *self, SEL, id)
+#[doc(alias = "-[StoreManager recordPurchaseTime:]")]
+pub fn stub_55d04() -> ! {
+    todo!("0x55d04 -[StoreManager recordPurchaseTime:]")
+}
+
+// 0x55e94 — -[StoreManager productsRequest:didReceiveResponse:]
+// type: void __cdecl(StoreManager *self, SEL, id, id)
+#[doc(alias = "-[StoreManager productsRequest:didReceiveResponse:]")]
+pub fn stub_55e94() -> ! {
+    todo!("0x55e94 -[StoreManager productsRequest:didReceiveResponse:]")
+}
+
+// 0x56894 — -[StoreManager requestProductData:]
+// type: void __cdecl(StoreManager *self, SEL, id)
+#[doc(alias = "-[StoreManager requestProductData:]")]
+pub fn stub_56894() -> ! {
+    todo!("0x56894 -[StoreManager requestProductData:]")
+}
+
+// 0x56914 — -[StoreManager purchaseProduct:]
+// type: void __cdecl(StoreManager *self, SEL, id)
+#[doc(alias = "-[StoreManager purchaseProduct:]")]
+pub fn stub_56914() -> ! {
+    todo!("0x56914 -[StoreManager purchaseProduct:]")
+}
+
+// 0x569b4 — -[StoreManager verifyIfCorrectUser]
+// type: int __cdecl(StoreManager *self, SEL)
+#[doc(alias = "-[StoreManager verifyIfCorrectUser]")]
+pub fn stub_569b4() -> ! {
+    todo!("0x569b4 -[StoreManager verifyIfCorrectUser]")
+}
+
+// 0x56ad0 — -[StoreManager completeTransaction:]
+// type: void __cdecl(StoreManager *self, SEL, id)
+#[doc(alias = "-[StoreManager completeTransaction:]")]
+pub fn stub_56ad0() -> ! {
+    todo!("0x56ad0 -[StoreManager completeTransaction:]")
+}
+
+// 0x56d80 — -[StoreManager endTransaction:paymentTransaction:paymentQueue:]
+// type: void __cdecl(StoreManager *self, SEL, char, id, id)
+#[doc(alias = "-[StoreManager endTransaction:paymentTransaction:paymentQueue:]")]
+pub fn stub_56d80() -> ! {
+    todo!("0x56d80 -[StoreManager endTransaction:paymentTransaction:paymentQueue:]")
+}
+
+// 0x572e4 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke")]
+pub fn stub_572e4() -> ! {
+    todo!("0x572e4 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke")
+}
+
+// 0x573c4 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215
+// type: id __fastcall(int)
+#[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215")]
+pub fn stub_573c4() -> ! {
+    todo!("0x573c4 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke215")
+}
+
+// 0x57450 — ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219
+// type: id __fastcall(int)
+#[doc(alias = "___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219")]
+pub fn stub_57450() -> ! {
+    todo!("0x57450 ___63-[StoreManager endTransaction:paymentTransaction:paymentQueue:]_block_invoke219")
+}
+
+// 0x57530 — -[StoreManager failedTransaction:]
+// type: void __cdecl(StoreManager *self, SEL, id)
+#[doc(alias = "-[StoreManager failedTransaction:]")]
+pub fn stub_57530() -> ! {
+    todo!("0x57530 -[StoreManager failedTransaction:]")
+}
+
+// 0x5763c — -[StoreManager restoreTransaction:]
+// type: void __cdecl(StoreManager *self, SEL, id)
+#[doc(alias = "-[StoreManager restoreTransaction:]")]
+pub fn stub_5763c() -> ! {
+    todo!("0x5763c -[StoreManager restoreTransaction:]")
+}
+
+// 0x57740 — -[StoreManager paymentQueue:updatedTransactions:]
+// type: void __cdecl(StoreManager *self, SEL, id, id)
+#[doc(alias = "-[StoreManager paymentQueue:updatedTransactions:]")]
+pub fn stub_57740() -> ! {
+    todo!("0x57740 -[StoreManager paymentQueue:updatedTransactions:]")
+}
+
+// 0x5784c — -[StoreManager encode:length:]
+// type: id __cdecl(StoreManager *self, SEL, const char *, int)
+#[doc(alias = "-[StoreManager encode:length:]")]
+pub fn stub_5784c() -> ! {
+    todo!("0x5784c -[StoreManager encode:length:]")
+}
+
+// 0x5796c — -[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]
+// type: void __cdecl(StoreManager *self, SEL, id, id, id, id)
+#[doc(alias = "-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]")]
+pub fn stub_5796c() -> ! {
+    todo!("0x5796c -[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]")
+}
+
+// 0x57da0 — ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke
+// type: void __fastcall(int, void *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke")]
+pub fn stub_57da0() -> ! {
+    todo!("0x57da0 ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke")
+}
+
+// 0x57f28 — ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2
+// type: void __cdecl(id)
+#[doc(alias = "___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2")]
+pub fn stub_57f28() -> ! {
+    todo!("0x57f28 ___75-[StoreManager verifyReceipt:forProductId:paymentTransaction:paymentQueue:]_block_invoke_2")
+}
+
+// 0x58184 — -[UIWebViewCacheManager init]
+// type: UIWebViewCacheManager *__cdecl(UIWebViewCacheManager *self, SEL)
+#[doc(alias = "-[UIWebViewCacheManager init]")]
+pub fn stub_58184() -> ! {
+    todo!("0x58184 -[UIWebViewCacheManager init]")
+}
+
+// 0x582f8 — ___29-[UIWebViewCacheManager init]_block_invoke
+// type: int __fastcall(int)
+#[doc(alias = "___29-[UIWebViewCacheManager init]_block_invoke")]
+pub fn stub_582f8() -> ! {
+    todo!("0x582f8 ___29-[UIWebViewCacheManager init]_block_invoke")
+}
+
+// 0x58348 — -[UIWebViewCacheManager dealloc]
+// type: void __cdecl(UIWebViewCacheManager *self, SEL)
+#[doc(alias = "-[UIWebViewCacheManager dealloc]")]
+pub fn stub_58348() -> ! {
+    todo!("0x58348 -[UIWebViewCacheManager dealloc]")
+}
+
+// 0x583a8 — -[UIWebViewCacheManager baseUrlDidChange:]
+// type: void __cdecl(UIWebViewCacheManager *self, SEL, id)
+#[doc(alias = "-[UIWebViewCacheManager baseUrlDidChange:]")]
+pub fn stub_583a8() -> ! {
+    todo!("0x583a8 -[UIWebViewCacheManager baseUrlDidChange:]")
+}
+
+// 0x583b8 — -[UIWebViewCacheManager gotDidLeaveGameNotification:]
+// type: void __cdecl(UIWebViewCacheManager *self, SEL, id)
+#[doc(alias = "-[UIWebViewCacheManager gotDidLeaveGameNotification:]")]
+pub fn stub_583b8() -> ! {
+    todo!("0x583b8 -[UIWebViewCacheManager gotDidLeaveGameNotification:]")
+}
+
+// 0x583f0 — -[UIWebViewCacheManager setPagesToPreload]
+// type: void __cdecl(UIWebViewCacheManager *self, SEL)
+#[doc(alias = "-[UIWebViewCacheManager setPagesToPreload]")]
+pub fn stub_583f0() -> ! {
+    todo!("0x583f0 -[UIWebViewCacheManager setPagesToPreload]")
+}
+
+// 0x584e4 — +[UIWebViewCacheManager sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[UIWebViewCacheManager sharedInstance]")]
+pub fn stub_584e4() -> ! {
+    todo!("0x584e4 +[UIWebViewCacheManager sharedInstance]")
+}
+
+// 0x58540 — ___39+[UIWebViewCacheManager sharedInstance]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___39+[UIWebViewCacheManager sharedInstance]_block_invoke")]
+pub fn stub_58540() -> ! {
+    todo!("0x58540 ___39+[UIWebViewCacheManager sharedInstance]_block_invoke")
+}
+
+// 0x58588 — -[UIWebViewCacheManager flush]
+// type: void __cdecl(UIWebViewCacheManager *self, SEL)
+#[doc(alias = "-[UIWebViewCacheManager flush]")]
+pub fn stub_58588() -> ! {
+    todo!("0x58588 -[UIWebViewCacheManager flush]")
+}
+
+// 0x585dc — -[UIWebViewCacheManager preloadDesignatedWebViews]
+// type: char __cdecl(UIWebViewCacheManager *self, SEL)
+#[doc(alias = "-[UIWebViewCacheManager preloadDesignatedWebViews]")]
+pub fn stub_585dc() -> ! {
+    todo!("0x585dc -[UIWebViewCacheManager preloadDesignatedWebViews]")
+}
+
+// 0x58658 — ___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke
+// type: int __fastcall(int)
+#[doc(alias = "___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke")]
+pub fn stub_58658() -> ! {
+    todo!("0x58658 ___50-[UIWebViewCacheManager preloadDesignatedWebViews]_block_invoke")
+}
+
+// 0x58858 — -[UIWebViewCacheManager designatedWebviewsToHomePages]
+// type: void __cdecl(UIWebViewCacheManager *self, SEL)
+#[doc(alias = "-[UIWebViewCacheManager designatedWebviewsToHomePages]")]
+pub fn stub_58858() -> ! {
+    todo!("0x58858 -[UIWebViewCacheManager designatedWebviewsToHomePages]")
+}
+
+// 0x588b8 — ___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke
+// type: int __fastcall(int)
+#[doc(alias = "___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke")]
+pub fn stub_588b8() -> ! {
+    todo!("0x588b8 ___54-[UIWebViewCacheManager designatedWebviewsToHomePages]_block_invoke")
+}
+
+// 0x58a08 — -[UIWebViewCacheManager getPreloadedWebViewForUrl:]
+// type: id __cdecl(UIWebViewCacheManager *self, SEL, id)
+#[doc(alias = "-[UIWebViewCacheManager getPreloadedWebViewForUrl:]")]
+pub fn stub_58a08() -> ! {
+    todo!("0x58a08 -[UIWebViewCacheManager getPreloadedWebViewForUrl:]")
+}
+
+// 0x58d48 — -[RobloxPageViewController handleStartGameFailure]
+// type: void __cdecl(RobloxPageViewController *self, SEL)
+#[doc(alias = "-[RobloxPageViewController handleStartGameFailure]")]
+pub fn stub_58d48() -> ! {
+    todo!("0x58d48 -[RobloxPageViewController handleStartGameFailure]")
+}
+
+// 0x58d4c — -[RobloxPageViewController handleStartGameSuccess]
+// type: void __cdecl(RobloxPageViewController *self, SEL)
+#[doc(alias = "-[RobloxPageViewController handleStartGameSuccess]")]
+pub fn stub_58d4c() -> ! {
+    todo!("0x58d4c -[RobloxPageViewController handleStartGameSuccess]")
+}
+
+// 0x58d50 — -[RobloxPageViewController initWithCoder:]
+// type: RobloxPageViewController *__cdecl(RobloxPageViewController *self, SEL, id)
+#[doc(alias = "-[RobloxPageViewController initWithCoder:]")]
+pub fn stub_58d50() -> ! {
+    todo!("0x58d50 -[RobloxPageViewController initWithCoder:]")
+}
+
+// 0x58d7c — -[RobloxPageViewController viewDidLoad]
+// type: void __cdecl(RobloxPageViewController *self, SEL)
+#[doc(alias = "-[RobloxPageViewController viewDidLoad]")]
+pub fn stub_58d7c() -> ! {
+    todo!("0x58d7c -[RobloxPageViewController viewDidLoad]")
+}
+
+// 0x58e20 — -[RobloxPageViewController viewWillAppear:]
+// type: void __cdecl(RobloxPageViewController *self, SEL, char)
+#[doc(alias = "-[RobloxPageViewController viewWillAppear:]")]
+pub fn stub_58e20() -> ! {
+    todo!("0x58e20 -[RobloxPageViewController viewWillAppear:]")
 }
