@@ -18131,3 +18131,702 @@ pub fn stub_ba7684() -> ! {
 pub fn stub_ba769c() -> ! {
     todo!("0xba769c Ogre::RbxArchiveFactory::createInstance(std::string const&)")
 }
+// 0xba7888 — __ZN4Ogre17RbxArchiveFactory15destroyInstanceEPNS_7ArchiveE
+#[doc(alias = "Ogre::RbxArchiveFactory::destroyInstance(Ogre::Archive *)")]
+// was: Ogre::RbxArchiveFactory::destroyInstance(Ogre::Archive *)
+pub fn stub_ba7888() -> ! {
+    todo!("0xba7888 Ogre::RbxArchiveFactory::destroyInstance(Ogre::Archive *)")
+}
+
+// 0xba7f20 — __ZN4Ogre20RbxCullableSceneNodeC1EPNS_12SceneManagerE
+#[doc(alias = "Ogre::RbxCullableSceneNode::RbxCullableSceneNode(Ogre::SceneManager *)")]
+// was: Ogre::RbxCullableSceneNode::RbxCullableSceneNode(Ogre::SceneManager *)
+pub fn stub_ba7f20() -> ! {
+    todo!("0xba7f20 Ogre::RbxCullableSceneNode::RbxCullableSceneNode(Ogre::SceneManager *)")
+}
+
+// 0xba7f94 — __ZN4Ogre20RbxCullableSceneNodeC1EPNS_12SceneManagerERKSs
+#[doc(alias = "Ogre::RbxCullableSceneNode::RbxCullableSceneNode(Ogre::SceneManager *,std::string const&)")]
+// was: Ogre::RbxCullableSceneNode::RbxCullableSceneNode(Ogre::SceneManager *,std::string const&)
+pub fn stub_ba7f94() -> ! {
+    todo!("0xba7f94 Ogre::RbxCullableSceneNode::RbxCullableSceneNode(Ogre::SceneManager *,std::string const&)")
+}
+
+// 0xba8008 — __ZN4Ogre20RbxCullableSceneNodeC2EPNS_12SceneManagerERKSs
+#[doc(alias = "Ogre::RbxCullableSceneNode::RbxCullableSceneNode(Ogre::SceneManager *,std::string const&)")]
+// was: Ogre::RbxCullableSceneNode::RbxCullableSceneNode(Ogre::SceneManager *,std::string const&)
+pub fn stub_ba8008() -> ! {
+    todo!("0xba8008 Ogre::RbxCullableSceneNode::RbxCullableSceneNode(Ogre::SceneManager *,std::string const&)")
+}
+
+// 0xba807c — __ZN4Ogre20RbxCullableSceneNodeD0Ev
+#[doc(alias = "Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()")]
+// was: Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()
+pub fn stub_ba807c() -> ! {
+    todo!("0xba807c Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()")
+}
+
+// 0xba8130 — __ZN4Ogre20RbxCullableSceneNodeD1Ev
+#[doc(alias = "Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()")]
+// was: Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()
+pub fn stub_ba8130() -> ! {
+    todo!("0xba8130 Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()")
+}
+
+// 0xba8134 — __ZN4Ogre20RbxCullableSceneNodeD2Ev
+#[doc(alias = "Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()")]
+// was: Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()
+pub fn stub_ba8134() -> ! {
+    todo!("0xba8134 Ogre::RbxCullableSceneNode::~RbxCullableSceneNode()")
+}
+
+// 0xba827c — __ZN4Ogre20RbxCullableSceneNode27calculateSqDistanceToCameraEPKNS_6CameraE
+#[doc(alias = "Ogre::RbxCullableSceneNode::calculateSqDistanceToCamera(Ogre::Camera const*)")]
+// was: Ogre::RbxCullableSceneNode::calculateSqDistanceToCamera(Ogre::Camera const*)
+pub fn stub_ba827c() -> ! {
+    todo!("0xba827c Ogre::RbxCullableSceneNode::calculateSqDistanceToCamera(Ogre::Camera const*)")
+}
+
+// 0xba841c — __ZN4Ogre20RbxCullableSceneNode8IsCulledEPKNS_6CameraEb
+#[doc(alias = "Ogre::RbxCullableSceneNode::IsCulled(Ogre::Camera const*,bool)")]
+// was: Ogre::RbxCullableSceneNode::IsCulled(Ogre::Camera const*,bool)
+pub fn stub_ba841c() -> ! {
+    todo!("0xba841c Ogre::RbxCullableSceneNode::IsCulled(Ogre::Camera const*,bool)")
+}
+
+// 0xba854c — __ZN4Ogre20RbxCullableSceneNode17ShouldCastShadowsEPKNS_6CameraE
+#[doc(alias = "Ogre::RbxCullableSceneNode::ShouldCastShadows(Ogre::Camera const*)")]
+// was: Ogre::RbxCullableSceneNode::ShouldCastShadows(Ogre::Camera const*)
+pub fn stub_ba854c() -> ! {
+    todo!("0xba854c Ogre::RbxCullableSceneNode::ShouldCastShadows(Ogre::Camera const*)")
+}
+
+// 0xba8594 — __ZN4Ogre20RbxCullableSceneNode19_findVisibleObjectsEPNS_6CameraEPNS_11RenderQueueEPNS_24VisibleObjectsBoundsInfoEbbbN3RBX15IntersectResultE
+#[doc(alias = "Ogre::RbxCullableSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool,RBX::IntersectResult)")]
+// was: Ogre::RbxCullableSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool,RBX::IntersectResult)
+pub fn stub_ba8594() -> ! {
+    todo!("0xba8594 Ogre::RbxCullableSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool,RBX::IntersectResult)")
+}
+
+// 0xba85e4 — __ZN4Ogre20RbxCullableSceneNode19_findVisibleObjectsEPNS_6CameraEPNS_11RenderQueueEPNS_24VisibleObjectsBoundsInfoEbbb
+#[doc(alias = "Ogre::RbxCullableSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)")]
+// was: Ogre::RbxCullableSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)
+pub fn stub_ba85e4() -> ! {
+    todo!("0xba85e4 Ogre::RbxCullableSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)")
+}
+
+// 0xba8750 — __ZN4Ogre20RbxCullableSceneNode19getFastFuzzyExtentsEv
+#[doc(alias = "Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)")]
+// was: Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)
+pub fn stub_ba8750() -> ! {
+    todo!("0xba8750 Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)")
+}
+
+// 0xba876c — __ZThn392_N4Ogre20RbxCullableSceneNode19getFastFuzzyExtentsEv
+#[doc(alias = "non-virtual thunk toOgre::RbxCullableSceneNode::getFastFuzzyExtents(void)")]
+// was: `non-virtual thunk to'Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)
+pub fn stub_ba876c() -> ! {
+    todo!("0xba876c `non-virtual thunk to'Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)")
+}
+
+// 0xba8e18 — __ZN4Ogre9RbxEntityC1Ev
+#[doc(alias = "Ogre::RbxEntity::RbxEntity(void)")]
+// was: Ogre::RbxEntity::RbxEntity(void)
+pub fn stub_ba8e18() -> ! {
+    todo!("0xba8e18 Ogre::RbxEntity::RbxEntity(void)")
+}
+
+// 0xba8eb4 — __ZN4Ogre9RbxEntity7setMeshENS_7MeshPtrE
+#[doc(alias = "Ogre::RbxEntity::setMesh(Ogre::MeshPtr)")]
+// was: Ogre::RbxEntity::setMesh(Ogre::MeshPtr)
+pub fn stub_ba8eb4() -> ! {
+    todo!("0xba8eb4 Ogre::RbxEntity::setMesh(Ogre::MeshPtr)")
+}
+
+// 0xba8f9c — __ZN4Ogre9RbxEntity16clearSubEntitiesEv
+#[doc(alias = "Ogre::RbxEntity::clearSubEntities(void)")]
+// was: Ogre::RbxEntity::clearSubEntities(void)
+pub fn stub_ba8f9c() -> ! {
+    todo!("0xba8f9c Ogre::RbxEntity::clearSubEntities(void)")
+}
+
+// 0xba8fa8 — __ZN4Ogre9RbxEntity15appendSubEntityEPNS_12RbxSubEntityE
+#[doc(alias = "Ogre::RbxEntity::appendSubEntity(Ogre::RbxSubEntity *)")]
+// was: Ogre::RbxEntity::appendSubEntity(Ogre::RbxSubEntity *)
+pub fn stub_ba8fa8() -> ! {
+    todo!("0xba8fa8 Ogre::RbxEntity::appendSubEntity(Ogre::RbxSubEntity *)")
+}
+
+// 0xba8fdc — __ZN4Ogre9RbxEntity18_updateRenderQueueEPNS_11RenderQueueE
+#[doc(alias = "Ogre::RbxEntity::_updateRenderQueue(Ogre::RenderQueue *)")]
+// was: Ogre::RbxEntity::_updateRenderQueue(Ogre::RenderQueue *)
+pub fn stub_ba8fdc() -> ! {
+    todo!("0xba8fdc Ogre::RbxEntity::_updateRenderQueue(Ogre::RenderQueue *)")
+}
+
+// 0xba905c — __ZN4Ogre9RbxEntity20_notifyCurrentCameraEPNS_6CameraE
+#[doc(alias = "Ogre::RbxEntity::_notifyCurrentCamera(Ogre::Camera *)")]
+// was: Ogre::RbxEntity::_notifyCurrentCamera(Ogre::Camera *)
+pub fn stub_ba905c() -> ! {
+    todo!("0xba905c Ogre::RbxEntity::_notifyCurrentCamera(Ogre::Camera *)")
+}
+
+// 0xba9080 — __ZN4Ogre9RbxEntity13setVisibleAllEb
+#[doc(alias = "Ogre::RbxEntity::setVisibleAll(bool)")]
+// was: Ogre::RbxEntity::setVisibleAll(bool)
+pub fn stub_ba9080() -> ! {
+    todo!("0xba9080 Ogre::RbxEntity::setVisibleAll(bool)")
+}
+
+// 0xba90b4 — __ZN4Ogre9RbxEntity4cullEPKNS_6CameraE
+#[doc(alias = "Ogre::RbxEntity::cull(Ogre::Camera const*)")]
+// was: Ogre::RbxEntity::cull(Ogre::Camera const*)
+pub fn stub_ba90b4() -> ! {
+    todo!("0xba90b4 Ogre::RbxEntity::cull(Ogre::Camera const*)")
+}
+
+// 0xba92b8 — __ZN4Ogre9RbxEntityD0Ev
+#[doc(alias = "Ogre::RbxEntity::~RbxEntity()")]
+// was: Ogre::RbxEntity::~RbxEntity()
+pub fn stub_ba92b8() -> ! {
+    todo!("0xba92b8 Ogre::RbxEntity::~RbxEntity()")
+}
+
+// 0xba936c — __ZN4Ogre9RbxEntityD1Ev
+#[doc(alias = "Ogre::RbxEntity::~RbxEntity()")]
+// was: Ogre::RbxEntity::~RbxEntity()
+pub fn stub_ba936c() -> ! {
+    todo!("0xba936c Ogre::RbxEntity::~RbxEntity()")
+}
+
+// 0xba9370 — __ZThn4_N4Ogre9RbxEntityD0Ev
+#[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
+// was: `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()
+pub fn stub_ba9370() -> ! {
+    todo!("0xba9370 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+}
+
+// 0xba9428 — __ZThn188_N4Ogre9RbxEntityD0Ev
+#[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
+// was: `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()
+pub fn stub_ba9428() -> ! {
+    todo!("0xba9428 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+}
+
+// 0xba94e0 — __ZN4Ogre9RbxEntityD2Ev
+#[doc(alias = "Ogre::RbxEntity::~RbxEntity()")]
+// was: Ogre::RbxEntity::~RbxEntity()
+pub fn stub_ba94e0() -> ! {
+    todo!("0xba94e0 Ogre::RbxEntity::~RbxEntity()")
+}
+
+// 0xba9694 — __ZThn4_N4Ogre9RbxEntityD1Ev
+#[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
+// was: `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()
+pub fn stub_ba9694() -> ! {
+    todo!("0xba9694 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+}
+
+// 0xba969c — __ZThn188_N4Ogre9RbxEntityD1Ev
+#[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
+// was: `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()
+pub fn stub_ba969c() -> ! {
+    todo!("0xba969c `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+}
+
+// 0xba96a4 — __ZNSt6vectorIN4Ogre9BlockSortESaIS1_EE7reserveEm
+#[doc(alias = "std::vector<Ogre::BlockSort,std::allocator<Ogre::BlockSort>>::reserve(unsigned long)")]
+// was: std::vector<Ogre::BlockSort,std::allocator<Ogre::BlockSort>>::reserve(unsigned long)
+pub fn stub_ba96a4() -> ! {
+    todo!("0xba96a4 std::vector<Ogre::BlockSort,std::allocator<Ogre::BlockSort>>::reserve(unsigned long)")
+}
+
+// 0xba9dbc — __ZN4Ogre11RootManager9GetOrInitENS_11GraphicsAPIERKSs
+#[doc(alias = "Ogre::RootManager::GetOrInit(Ogre::GraphicsAPI,std::string const&)")]
+// was: Ogre::RootManager::GetOrInit(Ogre::GraphicsAPI,std::string const&)
+pub fn stub_ba9dbc() -> ! {
+    todo!("0xba9dbc Ogre::RootManager::GetOrInit(Ogre::GraphicsAPI,std::string const&)")
+}
+
+// 0xbaae98 — __ZN4Ogre11RootManagerD2Ev
+#[doc(alias = "Ogre::RootManager::~RootManager()")]
+// was: Ogre::RootManager::~RootManager()
+pub fn stub_baae98() -> ! {
+    todo!("0xbaae98 Ogre::RootManager::~RootManager()")
+}
+
+// 0xbab8f8 — __ZN4Ogre11RootManager16cleanUpResourcesERNS_15ResourceManagerERKSsS4_RKSt6vectorISsSaISsEE
+#[doc(alias = "Ogre::RootManager::cleanUpResources(Ogre::ResourceManager &,std::string const&,std::string const&,std::vector<std::string,std::allocator<std::string>> const&)")]
+// was: Ogre::RootManager::cleanUpResources(Ogre::ResourceManager &,std::string const&,std::string const&,std::vector<std::string,std::allocator<std::string>> const&)
+pub fn stub_bab8f8() -> ! {
+    todo!("0xbab8f8 Ogre::RootManager::cleanUpResources(Ogre::ResourceManager &,std::string const&,std::string const&,std::vector<std::string,std::allocator<std::string>> const&)")
+}
+
+// 0xbac7fc — __ZN4Ogre11RootManager14printResourcesERNS_15ResourceManagerERKSs
+#[doc(alias = "Ogre::RootManager::printResources(Ogre::ResourceManager &,std::string const&)")]
+// was: Ogre::RootManager::printResources(Ogre::ResourceManager &,std::string const&)
+pub fn stub_bac7fc() -> ! {
+    todo!("0xbac7fc Ogre::RootManager::printResources(Ogre::ResourceManager &,std::string const&)")
+}
+
+// 0xbacfcc — __ZN4Ogre12VisualEngineC1Ev
+#[doc(alias = "Ogre::VisualEngine::VisualEngine(void)")]
+// was: Ogre::VisualEngine::VisualEngine(void)
+pub fn stub_bacfcc() -> ! {
+    todo!("0xbacfcc Ogre::VisualEngine::VisualEngine(void)")
+}
+
+// 0xbacfd0 — __ZN4Ogre12VisualEngineC2Ev
+#[doc(alias = "Ogre::VisualEngine::VisualEngine(void)")]
+// was: Ogre::VisualEngine::VisualEngine(void)
+pub fn stub_bacfd0() -> ! {
+    todo!("0xbacfd0 Ogre::VisualEngine::VisualEngine(void)")
+}
+
+// 0xbad2c8 — __ZN4Ogre12VisualEngineD0Ev
+#[doc(alias = "Ogre::VisualEngine::~VisualEngine()")]
+// was: Ogre::VisualEngine::~VisualEngine()
+pub fn stub_bad2c8() -> ! {
+    todo!("0xbad2c8 Ogre::VisualEngine::~VisualEngine()")
+}
+
+// 0xbad368 — __ZN4Ogre12VisualEngineD1Ev
+#[doc(alias = "Ogre::VisualEngine::~VisualEngine()")]
+// was: Ogre::VisualEngine::~VisualEngine()
+pub fn stub_bad368() -> ! {
+    todo!("0xbad368 Ogre::VisualEngine::~VisualEngine()")
+}
+
+// 0xbad36c — __ZN4Ogre12VisualEngineD2Ev
+#[doc(alias = "Ogre::VisualEngine::~VisualEngine()")]
+// was: Ogre::VisualEngine::~VisualEngine()
+pub fn stub_bad36c() -> ! {
+    todo!("0xbad36c Ogre::VisualEngine::~VisualEngine()")
+}
+
+// 0xbadb50 — __ZN4Ogre12VisualEngine7setViewEPN3RBX8ViewBaseE
+#[doc(alias = "Ogre::VisualEngine::setView(RBX::ViewBase *)")]
+// was: Ogre::VisualEngine::setView(RBX::ViewBase *)
+pub fn stub_badb50() -> ! {
+    todo!("0xbadb50 Ogre::VisualEngine::setView(RBX::ViewBase *)")
+}
+
+// 0xbadd64 — __ZN4Ogre14SaveRBXDbgInfoEPKNS_24RenderSystemCapabilitiesE
+#[doc(alias = "Ogre::SaveRBXDbgInfo(Ogre::RenderSystemCapabilities const*)")]
+// was: Ogre::SaveRBXDbgInfo(Ogre::RenderSystemCapabilities const*)
+pub fn stub_badd64() -> ! {
+    todo!("0xbadd64 Ogre::SaveRBXDbgInfo(Ogre::RenderSystemCapabilities const*)")
+}
+
+// 0xbae0f8 — __ZN4Ogre12VisualEngine14initializeBaseENS_11GraphicsAPIEmiiPN3RBX15CRenderSettingsERKSsmPNS2_9OSContextE
+#[doc(alias = "Ogre::VisualEngine::initializeBase(Ogre::GraphicsAPI,unsigned long,int,int,RBX::CRenderSettings *,std::string const&,unsigned long,RBX::OSContext *)")]
+// was: Ogre::VisualEngine::initializeBase(Ogre::GraphicsAPI,unsigned long,int,int,RBX::CRenderSettings *,std::string const&,unsigned long,RBX::OSContext *)
+pub fn stub_bae0f8() -> ! {
+    todo!("0xbae0f8 Ogre::VisualEngine::initializeBase(Ogre::GraphicsAPI,unsigned long,int,int,RBX::CRenderSettings *,std::string const&,unsigned long,RBX::OSContext *)")
+}
+
+// 0xbb0120 — __ZN4Ogre12VisualEngine14initializeLoadEii
+#[doc(alias = "Ogre::VisualEngine::initializeLoad(int,int)")]
+// was: Ogre::VisualEngine::initializeLoad(int,int)
+pub fn stub_bb0120() -> ! {
+    todo!("0xbb0120 Ogre::VisualEngine::initializeLoad(int,int)")
+}
+
+// 0xbb039c — __ZN4Ogre12VisualEngine14setupResourcesEv
+#[doc(alias = "Ogre::VisualEngine::setupResources(void)")]
+// was: Ogre::VisualEngine::setupResources(void)
+pub fn stub_bb039c() -> ! {
+    todo!("0xbb039c Ogre::VisualEngine::setupResources(void)")
+}
+
+// 0xbb1160 — __ZN4Ogre12VisualEngine10setupSceneEii
+#[doc(alias = "Ogre::VisualEngine::setupScene(int,int)")]
+// was: Ogre::VisualEngine::setupScene(int,int)
+pub fn stub_bb1160() -> ! {
+    todo!("0xbb1160 Ogre::VisualEngine::setupScene(int,int)")
+}
+
+// 0xbb1c18 — __ZN4Ogre12VisualEngine17checkMaterialCapsEv
+#[doc(alias = "Ogre::VisualEngine::checkMaterialCaps(void)")]
+// was: Ogre::VisualEngine::checkMaterialCaps(void)
+pub fn stub_bb1c18() -> ! {
+    todo!("0xbb1c18 Ogre::VisualEngine::checkMaterialCaps(void)")
+}
+
+// 0xbb2308 — __ZN4Ogre12VisualEngine13reloadShadersEv
+#[doc(alias = "Ogre::VisualEngine::reloadShaders(void)")]
+// was: Ogre::VisualEngine::reloadShaders(void)
+pub fn stub_bb2308() -> ! {
+    todo!("0xbb2308 Ogre::VisualEngine::reloadShaders(void)")
+}
+
+// 0xbb230c — __ZN4Ogre12VisualEngine23initializeOffscreenFullENS_11GraphicsAPIEmiiPN3RBX15CRenderSettingsEbRKSs
+#[doc(alias = "Ogre::VisualEngine::initializeOffscreenFull(Ogre::GraphicsAPI,unsigned long,int,int,RBX::CRenderSettings *,bool,std::string const&)")]
+// was: Ogre::VisualEngine::initializeOffscreenFull(Ogre::GraphicsAPI,unsigned long,int,int,RBX::CRenderSettings *,bool,std::string const&)
+pub fn stub_bb230c() -> ! {
+    todo!("0xbb230c Ogre::VisualEngine::initializeOffscreenFull(Ogre::GraphicsAPI,unsigned long,int,int,RBX::CRenderSettings *,bool,std::string const&)")
+}
+
+// 0xbb2828 — __ZN4Ogre12VisualEngine14setupDataModelEPN3RBX9DataModelE
+#[doc(alias = "Ogre::VisualEngine::setupDataModel(RBX::DataModel *)")]
+// was: Ogre::VisualEngine::setupDataModel(RBX::DataModel *)
+pub fn stub_bb2828() -> ! {
+    todo!("0xbb2828 Ogre::VisualEngine::setupDataModel(RBX::DataModel *)")
+}
+
+// 0xbb2978 — __ZN4Ogre12VisualEngine18setActiveDataModelEPN3RBX9DataModelE
+#[doc(alias = "Ogre::VisualEngine::setActiveDataModel(RBX::DataModel *)")]
+// was: Ogre::VisualEngine::setActiveDataModel(RBX::DataModel *)
+pub fn stub_bb2978() -> ! {
+    todo!("0xbb2978 Ogre::VisualEngine::setActiveDataModel(RBX::DataModel *)")
+}
+
+// 0xbb29b0 — __ZN4Ogre12VisualEngine15getSceneUpdaterEv
+#[doc(alias = "Ogre::VisualEngine::getSceneUpdater(void)")]
+// was: Ogre::VisualEngine::getSceneUpdater(void)
+pub fn stub_bb29b0() -> ! {
+    todo!("0xbb29b0 Ogre::VisualEngine::getSceneUpdater(void)")
+}
+
+// 0xbb29b4 — __ZN4Ogre12VisualEngine9setCameraERKN3RBX6CameraERKN3G3D7Vector3E
+#[doc(alias = "Ogre::VisualEngine::setCamera(RBX::Camera const&,G3D::Vector3 const&)")]
+// was: Ogre::VisualEngine::setCamera(RBX::Camera const&,G3D::Vector3 const&)
+pub fn stub_bb29b4() -> ! {
+    todo!("0xbb29b4 Ogre::VisualEngine::setCamera(RBX::Camera const&,G3D::Vector3 const&)")
+}
+
+// 0xbb2ae0 — __ZN4Ogre12VisualEngine15convertPositionERKN3G3D15CoordinateFrameE
+#[doc(alias = "Ogre::VisualEngine::convertPosition(G3D::CoordinateFrame const&)")]
+// was: Ogre::VisualEngine::convertPosition(G3D::CoordinateFrame const&)
+pub fn stub_bb2ae0() -> ! {
+    todo!("0xbb2ae0 Ogre::VisualEngine::convertPosition(G3D::CoordinateFrame const&)")
+}
+
+// 0xbb2b00 — __ZN4Ogre12VisualEngine18convertOrientationERKN3G3D15CoordinateFrameE
+#[doc(alias = "Ogre::VisualEngine::convertOrientation(G3D::CoordinateFrame const&)")]
+// was: Ogre::VisualEngine::convertOrientation(G3D::CoordinateFrame const&)
+pub fn stub_bb2b00() -> ! {
+    todo!("0xbb2b00 Ogre::VisualEngine::convertOrientation(G3D::CoordinateFrame const&)")
+}
+
+// 0xbb2b18 — __ZN4Ogre12VisualEngine20SweepUnusedResourcesEv
+#[doc(alias = "Ogre::VisualEngine::SweepUnusedResources(void)")]
+// was: Ogre::VisualEngine::SweepUnusedResources(void)
+pub fn stub_bb2b18() -> ! {
+    todo!("0xbb2b18 Ogre::VisualEngine::SweepUnusedResources(void)")
+}
+
+// 0xbb32f4 — __ZN4Ogre12VisualEngine19getFrameRateManagerEv
+#[doc(alias = "Ogre::VisualEngine::getFrameRateManager(void)")]
+// was: Ogre::VisualEngine::getFrameRateManager(void)
+pub fn stub_bb32f4() -> ! {
+    todo!("0xbb32f4 Ogre::VisualEngine::getFrameRateManager(void)")
+}
+
+// 0xbb3300 — __ZN4Ogre12VisualEngine14getSkyViewportEv
+#[doc(alias = "Ogre::VisualEngine::getSkyViewport(void)")]
+// was: Ogre::VisualEngine::getSkyViewport(void)
+pub fn stub_bb3300() -> ! {
+    todo!("0xbb3300 Ogre::VisualEngine::getSkyViewport(void)")
+}
+
+// 0xbb3310 — __ZN4Ogre12VisualEngine20setCustomSkyViewportEPNS_8ViewportE
+#[doc(alias = "Ogre::VisualEngine::setCustomSkyViewport(Ogre::Viewport *)")]
+// was: Ogre::VisualEngine::setCustomSkyViewport(Ogre::Viewport *)
+pub fn stub_bb3310() -> ! {
+    todo!("0xbb3310 Ogre::VisualEngine::setCustomSkyViewport(Ogre::Viewport *)")
+}
+
+// 0xbb3318 — __ZN4Ogre12VisualEngine21createOrUpdateTextureEPKcNS_11TextureTypeEiiiNS_11PixelFormatENS_12TextureUsageE
+#[doc(alias = "Ogre::VisualEngine::createOrUpdateTexture(char const*,Ogre::TextureType,int,int,int,Ogre::PixelFormat,Ogre::TextureUsage)")]
+// was: Ogre::VisualEngine::createOrUpdateTexture(char const*,Ogre::TextureType,int,int,int,Ogre::PixelFormat,Ogre::TextureUsage)
+pub fn stub_bb3318() -> ! {
+    todo!("0xbb3318 Ogre::VisualEngine::createOrUpdateTexture(char const*,Ogre::TextureType,int,int,int,Ogre::PixelFormat,Ogre::TextureUsage)")
+}
+
+// 0xbb3894 — __ZN4Ogre16ParticleFXPluginD1Ev
+#[doc(alias = "Ogre::ParticleFXPlugin::~ParticleFXPlugin()")]
+// was: Ogre::ParticleFXPlugin::~ParticleFXPlugin()
+pub fn stub_bb3894() -> ! {
+    todo!("0xbb3894 Ogre::ParticleFXPlugin::~ParticleFXPlugin()")
+}
+
+// 0xbb3974 — __ZN4Ogre22RbxSceneManagerFactoryD1Ev
+#[doc(alias = "Ogre::RbxSceneManagerFactory::~RbxSceneManagerFactory()")]
+// was: Ogre::RbxSceneManagerFactory::~RbxSceneManagerFactory()
+pub fn stub_bb3974() -> ! {
+    todo!("0xbb3974 Ogre::RbxSceneManagerFactory::~RbxSceneManagerFactory()")
+}
+
+// 0xbb3a0c — __ZNK4Ogre13DriverVersion8toStringEv
+#[doc(alias = "Ogre::DriverVersion::toString(void)const")]
+// was: Ogre::DriverVersion::toString(void)const
+pub fn stub_bb3a0c() -> ! {
+    todo!("0xbb3a0c Ogre::DriverVersion::toString(void)const")
+}
+
+// 0xbb3ca0 — __ZN3RBX15ScopedSingletonIN4Ogre11RootManagerEE11getInstanceEv
+#[doc(alias = "RBX::ScopedSingleton<Ogre::RootManager>::getInstance(void)")]
+// was: RBX::ScopedSingleton<Ogre::RootManager>::getInstance(void)
+pub fn stub_bb3ca0() -> ! {
+    todo!("0xbb3ca0 RBX::ScopedSingleton<Ogre::RootManager>::getInstance(void)")
+}
+
+// 0xbb4af8 — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPSsSt6vectorISsN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEEEEA10_cET_SD_SD_RKT0_St26random_access_iterator_tag
+#[doc(alias = "__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> std::__find<__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,char [10]>(__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,char [10] const&,std::random_access_iterator_tag)")]
+// was: __gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> std::__find<__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,char [10]>(__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,char [10] const&,std::random_access_iterator_tag)
+pub fn stub_bb4af8() -> ! {
+    todo!("0xbb4af8 __gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>> std::__find<__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,char [10]>(__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,__gnu_cxx::__normal_iterator<std::string *,std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>>,char [10] const&,std::random_access_iterator_tag)")
+}
+
+// 0xbb4bb0 — __ZN3RBX15ScopedSingletonIN4Ogre11RootManagerEE4syncEv
+#[doc(alias = "RBX::ScopedSingleton<Ogre::RootManager>::sync(void)")]
+// was: RBX::ScopedSingleton<Ogre::RootManager>::sync(void)
+pub fn stub_bb4bb0() -> ! {
+    todo!("0xbb4bb0 RBX::ScopedSingleton<Ogre::RootManager>::sync(void)")
+}
+
+// 0xbb4cbc — __ZN5boost6detail12shared_countC2IN4Ogre11RootManagerEEEPT_
+#[doc(alias = "boost::detail::shared_count::shared_count<Ogre::RootManager>(Ogre::RootManager *)")]
+// was: boost::detail::shared_count::shared_count<Ogre::RootManager>(Ogre::RootManager *)
+pub fn stub_bb4cbc() -> ! {
+    todo!("0xbb4cbc boost::detail::shared_count::shared_count<Ogre::RootManager>(Ogre::RootManager *)")
+}
+
+// 0xbb4dc8 — __ZN5boost6detail17sp_counted_impl_pIN4Ogre11RootManagerEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<Ogre::RootManager>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<Ogre::RootManager>::~sp_counted_impl_p()
+pub fn stub_bb4dc8() -> ! {
+    todo!("0xbb4dc8 boost::detail::sp_counted_impl_p<Ogre::RootManager>::~sp_counted_impl_p()")
+}
+
+// 0xbb4dcc — __ZN5boost6detail17sp_counted_impl_pIN4Ogre11RootManagerEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<Ogre::RootManager>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<Ogre::RootManager>::~sp_counted_impl_p()
+pub fn stub_bb4dcc() -> ! {
+    todo!("0xbb4dcc boost::detail::sp_counted_impl_p<Ogre::RootManager>::~sp_counted_impl_p()")
+}
+
+// 0xbb4dd0 — __ZN5boost6detail17sp_counted_impl_pIN4Ogre11RootManagerEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<Ogre::RootManager>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_p<Ogre::RootManager>::dispose(void)
+pub fn stub_bb4dd0() -> ! {
+    todo!("0xbb4dd0 boost::detail::sp_counted_impl_p<Ogre::RootManager>::dispose(void)")
+}
+
+// 0xbb4e74 — __ZN5boost6detail17sp_counted_impl_pIN4Ogre11RootManagerEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<Ogre::RootManager>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_p<Ogre::RootManager>::get_deleter(std::type_info const&)
+pub fn stub_bb4e74() -> ! {
+    todo!("0xbb4e74 boost::detail::sp_counted_impl_p<Ogre::RootManager>::get_deleter(std::type_info const&)")
+}
+
+// 0xbb4e78 — __ZN5boost6detail17sp_counted_impl_pIN4Ogre11RootManagerEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<Ogre::RootManager>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_p<Ogre::RootManager>::get_untyped_deleter(void)
+pub fn stub_bb4e78() -> ! {
+    todo!("0xbb4e78 boost::detail::sp_counted_impl_p<Ogre::RootManager>::get_untyped_deleter(void)")
+}
+
+// 0xbb4e7c — __ZN3RBX15ScopedSingletonIN4Ogre11RootManagerEE27safe_static_init_s_instanceEv
+#[doc(alias = "RBX::ScopedSingleton<Ogre::RootManager>::safe_static_init_s_instance(void)")]
+// was: RBX::ScopedSingleton<Ogre::RootManager>::safe_static_init_s_instance(void)
+pub fn stub_bb4e7c() -> ! {
+    todo!("0xbb4e7c RBX::ScopedSingleton<Ogre::RootManager>::safe_static_init_s_instance(void)")
+}
+
+// 0xbb4edc — __ZN5boost8weak_ptrIN4Ogre11RootManagerEED1Ev
+#[doc(alias = "boost::weak_ptr<Ogre::RootManager>::~weak_ptr()")]
+// was: boost::weak_ptr<Ogre::RootManager>::~weak_ptr()
+pub fn stub_bb4edc() -> ! {
+    todo!("0xbb4edc boost::weak_ptr<Ogre::RootManager>::~weak_ptr()")
+}
+
+// 0xbb4f3c — __ZN3RBX15ScopedSingletonIN4Ogre11RootManagerEE21safe_static_init_syncEv
+#[doc(alias = "RBX::ScopedSingleton<Ogre::RootManager>::safe_static_init_sync(void)")]
+// was: RBX::ScopedSingleton<Ogre::RootManager>::safe_static_init_sync(void)
+pub fn stub_bb4f3c() -> ! {
+    todo!("0xbb4f3c RBX::ScopedSingleton<Ogre::RootManager>::safe_static_init_sync(void)")
+}
+
+// 0xbb5020 — __ZN4Ogre20ShaderScriptListenerD1Ev
+#[doc(alias = "Ogre::ShaderScriptListener::~ShaderScriptListener()")]
+// was: Ogre::ShaderScriptListener::~ShaderScriptListener()
+pub fn stub_bb5020() -> ! {
+    todo!("0xbb5020 Ogre::ShaderScriptListener::~ShaderScriptListener()")
+}
+
+// 0xbb507c — __ZN4Ogre20ShaderScriptListenerD0Ev
+#[doc(alias = "Ogre::ShaderScriptListener::~ShaderScriptListener()")]
+// was: Ogre::ShaderScriptListener::~ShaderScriptListener()
+pub fn stub_bb507c() -> ! {
+    todo!("0xbb507c Ogre::ShaderScriptListener::~ShaderScriptListener()")
+}
+
+// 0xbb50dc — __ZN4Ogre20ShaderScriptListener11handleEventEPNS_14ScriptCompilerEPNS_19ScriptCompilerEventEPv
+#[doc(alias = "Ogre::ShaderScriptListener::handleEvent(Ogre::ScriptCompiler *,Ogre::ScriptCompilerEvent *,void *)")]
+// was: Ogre::ShaderScriptListener::handleEvent(Ogre::ScriptCompiler *,Ogre::ScriptCompilerEvent *,void *)
+pub fn stub_bb50dc() -> ! {
+    todo!("0xbb50dc Ogre::ShaderScriptListener::handleEvent(Ogre::ScriptCompiler *,Ogre::ScriptCompilerEvent *,void *)")
+}
+
+// 0xbb5440 — __ZN4Ogre20ShaderScriptListener26getAutogeneratedShaderPathERKNS_44CreateHighLevelGpuProgramScriptCompilerEventE
+#[doc(alias = "Ogre::ShaderScriptListener::getAutogeneratedShaderPath(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent const&)")]
+// was: Ogre::ShaderScriptListener::getAutogeneratedShaderPath(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent const&)
+pub fn stub_bb5440() -> ! {
+    todo!("0xbb5440 Ogre::ShaderScriptListener::getAutogeneratedShaderPath(Ogre::CreateHighLevelGpuProgramScriptCompilerEvent const&)")
+}
+
+// 0xbb569c — __ZN4Ogre20ShaderScriptListener26getAutogeneratedShaderPathERKSsS2_S2_
+#[doc(alias = "Ogre::ShaderScriptListener::getAutogeneratedShaderPath(std::string const&,std::string const&,std::string const&)")]
+// was: Ogre::ShaderScriptListener::getAutogeneratedShaderPath(std::string const&,std::string const&,std::string const&)
+pub fn stub_bb569c() -> ! {
+    todo!("0xbb569c Ogre::ShaderScriptListener::getAutogeneratedShaderPath(std::string const&,std::string const&,std::string const&)")
+}
+
+// 0xbb5a80 — __ZNKSt8_Rb_treeISsSsSt9_IdentityISsESt4lessISsEN4Ogre12STLAllocatorISsNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE4findERKSs
+#[doc(alias = "std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")]
+// was: std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const
+pub fn stub_bb5a80() -> ! {
+    todo!("0xbb5a80 std::_Rb_tree<std::string,std::string,std::_Identity<std::string>,std::less<std::string>,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")
+}
+
+// 0xbb5b24 — __ZN4Ogre22RbxSceneManagerFactoryD0Ev
+#[doc(alias = "Ogre::RbxSceneManagerFactory::~RbxSceneManagerFactory()")]
+// was: Ogre::RbxSceneManagerFactory::~RbxSceneManagerFactory()
+pub fn stub_bb5b24() -> ! {
+    todo!("0xbb5b24 Ogre::RbxSceneManagerFactory::~RbxSceneManagerFactory()")
+}
+
+// 0xbb5bc0 — __ZN4Ogre22RbxDbgVisualEngineInfoC2Ev
+#[doc(alias = "Ogre::RbxDbgVisualEngineInfo::RbxDbgVisualEngineInfo(void)")]
+// was: Ogre::RbxDbgVisualEngineInfo::RbxDbgVisualEngineInfo(void)
+pub fn stub_bb5bc0() -> ! {
+    todo!("0xbb5bc0 Ogre::RbxDbgVisualEngineInfo::RbxDbgVisualEngineInfo(void)")
+}
+
+// 0xbb5d00 — __ZN4Ogre16ParticleFXPluginD0Ev
+#[doc(alias = "Ogre::ParticleFXPlugin::~ParticleFXPlugin()")]
+// was: Ogre::ParticleFXPlugin::~ParticleFXPlugin()
+pub fn stub_bb5d00() -> ! {
+    todo!("0xbb5d00 Ogre::ParticleFXPlugin::~ParticleFXPlugin()")
+}
+
+// 0xbb6870 — __ZN4Ogre14VertexStreamerC1Ev
+#[doc(alias = "Ogre::VertexStreamer::VertexStreamer(void)")]
+// was: Ogre::VertexStreamer::VertexStreamer(void)
+pub fn stub_bb6870() -> ! {
+    todo!("0xbb6870 Ogre::VertexStreamer::VertexStreamer(void)")
+}
+
+// 0xbb6874 — __ZN4Ogre14VertexStreamerC2Ev
+#[doc(alias = "Ogre::VertexStreamer::VertexStreamer(void)")]
+// was: Ogre::VertexStreamer::VertexStreamer(void)
+pub fn stub_bb6874() -> ! {
+    todo!("0xbb6874 Ogre::VertexStreamer::VertexStreamer(void)")
+}
+
+// 0xbb6a4c — __ZN4Ogre14VertexStreamerD0Ev
+#[doc(alias = "Ogre::VertexStreamer::~VertexStreamer()")]
+// was: Ogre::VertexStreamer::~VertexStreamer()
+pub fn stub_bb6a4c() -> ! {
+    todo!("0xbb6a4c Ogre::VertexStreamer::~VertexStreamer()")
+}
+
+// 0xbb6b70 — __ZN4Ogre14VertexStreamerD1Ev
+#[doc(alias = "Ogre::VertexStreamer::~VertexStreamer()")]
+// was: Ogre::VertexStreamer::~VertexStreamer()
+pub fn stub_bb6b70() -> ! {
+    todo!("0xbb6b70 Ogre::VertexStreamer::~VertexStreamer()")
+}
+
+// 0xbb6c84 — __ZN4Ogre14VertexStreamer3endEv
+#[doc(alias = "Ogre::VertexStreamer::end(void)")]
+// was: Ogre::VertexStreamer::end(void)
+pub fn stub_bb6c84() -> ! {
+    todo!("0xbb6c84 Ogre::VertexStreamer::end(void)")
+}
+
+// 0xbb6e18 — __ZN4Ogre14VertexStreamer4initEPNS_12VisualEngineEPNS_12SceneManagerEPNS_12RenderWindowEb
+#[doc(alias = "Ogre::VertexStreamer::init(Ogre::VisualEngine *,Ogre::SceneManager *,Ogre::RenderWindow *,bool)")]
+// was: Ogre::VertexStreamer::init(Ogre::VisualEngine *,Ogre::SceneManager *,Ogre::RenderWindow *,bool)
+pub fn stub_bb6e18() -> ! {
+    todo!("0xbb6e18 Ogre::VertexStreamer::init(Ogre::VisualEngine *,Ogre::SceneManager *,Ogre::RenderWindow *,bool)")
+}
+
+// 0xbb6e30 — __ZN4Ogre14VertexStreamer10setEnabledEb
+#[doc(alias = "Ogre::VertexStreamer::setEnabled(bool)")]
+// was: Ogre::VertexStreamer::setEnabled(bool)
+pub fn stub_bb6e30() -> ! {
+    todo!("0xbb6e30 Ogre::VertexStreamer::setEnabled(bool)")
+}
+
+// 0xbb6e34 — __ZN4Ogre14VertexStreamer16cleanUpFrameDataEv
+#[doc(alias = "Ogre::VertexStreamer::cleanUpFrameData(void)")]
+// was: Ogre::VertexStreamer::cleanUpFrameData(void)
+pub fn stub_bb6e34() -> ! {
+    todo!("0xbb6e34 Ogre::VertexStreamer::cleanUpFrameData(void)")
+}
+
+// 0xbb6e84 — __ZN4Ogre14VertexStreamer6renderEv
+#[doc(alias = "Ogre::VertexStreamer::render(void)")]
+// was: Ogre::VertexStreamer::render(void)
+pub fn stub_bb6e84() -> ! {
+    todo!("0xbb6e84 Ogre::VertexStreamer::render(void)")
+}
+
+// 0xbb79f0 — __ZN4Ogre14VertexStreamer12prepareChunkERKNS_10TexturePtrENS_15RenderOperation13OperationTypeENS0_15CoordinateSpaceENS0_10VextexTypeEbb
+#[doc(alias = "Ogre::VertexStreamer::prepareChunk(Ogre::TexturePtr const&,Ogre::RenderOperation::OperationType,Ogre::VertexStreamer::CoordinateSpace,Ogre::VertexStreamer::VextexType,bool,bool)")]
+// was: Ogre::VertexStreamer::prepareChunk(Ogre::TexturePtr const&,Ogre::RenderOperation::OperationType,Ogre::VertexStreamer::CoordinateSpace,Ogre::VertexStreamer::VextexType,bool,bool)
+pub fn stub_bb79f0() -> ! {
+    todo!("0xbb79f0 Ogre::VertexStreamer::prepareChunk(Ogre::TexturePtr const&,Ogre::RenderOperation::OperationType,Ogre::VertexStreamer::CoordinateSpace,Ogre::VertexStreamer::VextexType,bool,bool)")
+}
+
+// 0xbb7cbc — __ZN4Ogre14VertexStreamer13spriteBltFullERKNS_10TexturePtrERKN3G3D6Color4Effffffffb
+#[doc(alias = "Ogre::VertexStreamer::spriteBltFull(Ogre::TexturePtr const&,G3D::Color4 const&,float,float,float,float,float,float,float,float,bool)")]
+// was: Ogre::VertexStreamer::spriteBltFull(Ogre::TexturePtr const&,G3D::Color4 const&,float,float,float,float,float,float,float,float,bool)
+pub fn stub_bb7cbc() -> ! {
+    todo!("0xbb7cbc Ogre::VertexStreamer::spriteBltFull(Ogre::TexturePtr const&,G3D::Color4 const&,float,float,float,float,float,float,float,float,bool)")
+}
+
+// 0xbb7f18 — __ZN4Ogre14VertexStreamer11spriteBlt3DERKNS_10TexturePtrERKN3G3D6Color4ERKNS4_15CoordinateFrameEfffffffffb
+#[doc(alias = "Ogre::VertexStreamer::spriteBlt3D(Ogre::TexturePtr const&,G3D::Color4 const&,G3D::CoordinateFrame const&,float,float,float,float,float,float,float,float,float,bool)")]
+// was: Ogre::VertexStreamer::spriteBlt3D(Ogre::TexturePtr const&,G3D::Color4 const&,G3D::CoordinateFrame const&,float,float,float,float,float,float,float,float,float,bool)
+pub fn stub_bb7f18() -> ! {
+    todo!("0xbb7f18 Ogre::VertexStreamer::spriteBlt3D(Ogre::TexturePtr const&,G3D::Color4 const&,G3D::CoordinateFrame const&,float,float,float,float,float,float,float,float,float,bool)")
+}
+
+// 0xbb842c — __ZN4Ogre14VertexStreamer14triangleList2dERKN3G3D6Color4EPKNS1_7Vector2EiPKsi
+#[doc(alias = "Ogre::VertexStreamer::triangleList2d(G3D::Color4 const&,G3D::Vector2 const*,int,short const*,int)")]
+// was: Ogre::VertexStreamer::triangleList2d(G3D::Color4 const&,G3D::Vector2 const*,int,short const*,int)
+pub fn stub_bb842c() -> ! {
+    todo!("0xbb842c Ogre::VertexStreamer::triangleList2d(G3D::Color4 const&,G3D::Vector2 const*,int,short const*,int)")
+}
+
+// 0xbb8704 — __ZN4Ogre14VertexStreamer12triangleListERKN3G3D6Color4ERKNS1_15CoordinateFrameEPKNS1_7Vector3EiPKsi
+#[doc(alias = "Ogre::VertexStreamer::triangleList(G3D::Color4 const&,G3D::CoordinateFrame const&,G3D::Vector3 const*,int,short const*,int)")]
+// was: Ogre::VertexStreamer::triangleList(G3D::Color4 const&,G3D::CoordinateFrame const&,G3D::Vector3 const*,int,short const*,int)
+pub fn stub_bb8704() -> ! {
+    todo!("0xbb8704 Ogre::VertexStreamer::triangleList(G3D::Color4 const&,G3D::CoordinateFrame const&,G3D::Vector3 const*,int,short const*,int)")
+}
+
+// 0xbb8a44 — __ZN4Ogre14VertexStreamer4lineEffffRKN3G3D6Color4E
+#[doc(alias = "Ogre::VertexStreamer::line(float,float,float,float,G3D::Color4 const&)")]
+// was: Ogre::VertexStreamer::line(float,float,float,float,G3D::Color4 const&)
+pub fn stub_bb8a44() -> ! {
+    todo!("0xbb8a44 Ogre::VertexStreamer::line(float,float,float,float,G3D::Color4 const&)")
+}
+
+// 0xbb8cb8 — __ZN4Ogre14VertexStreamer6line3dEffffffRKN3G3D6Color4E
+#[doc(alias = "Ogre::VertexStreamer::line3d(float,float,float,float,float,float,G3D::Color4 const&)")]
+// was: Ogre::VertexStreamer::line3d(float,float,float,float,float,float,G3D::Color4 const&)
+pub fn stub_bb8cb8() -> ! {
+    todo!("0xbb8cb8 Ogre::VertexStreamer::line3d(float,float,float,float,float,float,G3D::Color4 const&)")
+}
+
+// 0xbb8f2c — __ZN4Ogre14VertexStreamer17VertexBufferBatchINS0_15Vertex3DTextureEED1Ev
+#[doc(alias = "Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::~VertexBufferBatch()")]
+// was: Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::~VertexBufferBatch()
+pub fn stub_bb8f2c() -> ! {
+    todo!("0xbb8f2c Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::~VertexBufferBatch()")
+}
