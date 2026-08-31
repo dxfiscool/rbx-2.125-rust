@@ -22,3 +22,4 @@ pub mod generated_21;
 pub mod generated_22;
 pub mod generated_23;
 pub mod generated_24;
+pub mod generated_25;
