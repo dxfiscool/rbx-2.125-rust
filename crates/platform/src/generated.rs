@@ -1,6 +1,6 @@
-//! platform generated — 1574 stubs sorted by EA, from ida/export.json
+//! platform generated — 1674 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 1574 stubs (1474 prior + 100 this batch, 3026 filtered, 2000 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 1674 stubs (1574 prior + 100 this batch, 3026 filtered, 1900 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -10973,4 +10973,703 @@ pub fn stub_63490() -> ! {
 #[doc(alias = "-[CameraMove touchesMoved:withEvent:]")]
 pub fn stub_63528() -> ! {
     todo!("0x63528 -[CameraMove touchesMoved:withEvent:]")
+}
+// 0x639b8 — -[FunctionMarshaller marshallFunction]
+// type: void __cdecl(FunctionMarshaller *self, SEL)
+#[doc(alias = "-[FunctionMarshaller marshallFunction]")]
+pub fn stub_639b8() -> ! {
+    todo!("0x639b8 -[FunctionMarshaller marshallFunction]")
+}
+
+// 0x639e8 — -[FunctionMarshaller pClosure]
+// type: void *__cdecl(FunctionMarshaller *self, SEL)
+#[doc(alias = "-[FunctionMarshaller pClosure]")]
+pub fn stub_639e8() -> ! {
+    todo!("0x639e8 -[FunctionMarshaller pClosure]")
+}
+
+// 0x639f8 — -[FunctionMarshaller setPClosure:]
+// type: void __cdecl(FunctionMarshaller *self, SEL, void *)
+#[doc(alias = "-[FunctionMarshaller setPClosure:]")]
+pub fn stub_639f8() -> ! {
+    todo!("0x639f8 -[FunctionMarshaller setPClosure:]")
+}
+
+// 0x63d30 — +[RobloxCachedFlags sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[RobloxCachedFlags sharedInstance]")]
+pub fn stub_63d30() -> ! {
+    todo!("0x63d30 +[RobloxCachedFlags sharedInstance]")
+}
+
+// 0x63d94 — ___35+[RobloxCachedFlags sharedInstance]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___35+[RobloxCachedFlags sharedInstance]_block_invoke")]
+pub fn stub_63d94() -> ! {
+    todo!("0x63d94 ___35+[RobloxCachedFlags sharedInstance]_block_invoke")
+}
+
+// 0x63ddc — -[RobloxCachedFlags init]
+// type: RobloxCachedFlags *__cdecl(RobloxCachedFlags *self, SEL)
+#[doc(alias = "-[RobloxCachedFlags init]")]
+pub fn stub_63ddc() -> ! {
+    todo!("0x63ddc -[RobloxCachedFlags init]")
+}
+
+// 0x63e20 — -[RobloxCachedFlags dealloc]
+// type: void __cdecl(RobloxCachedFlags *self, SEL)
+#[doc(alias = "-[RobloxCachedFlags dealloc]")]
+pub fn stub_63e20() -> ! {
+    todo!("0x63e20 -[RobloxCachedFlags dealloc]")
+}
+
+// 0x63e4c — -[RobloxCachedFlags sync]
+// type: void __cdecl(RobloxCachedFlags *self, SEL)
+#[doc(alias = "-[RobloxCachedFlags sync]")]
+pub fn stub_63e4c() -> ! {
+    todo!("0x63e4c -[RobloxCachedFlags sync]")
+}
+
+// 0x63e80 — -[RobloxCachedFlags getBool:withValue:]
+// type: char __cdecl(RobloxCachedFlags *self, SEL, id, char *)
+#[doc(alias = "-[RobloxCachedFlags getBool:withValue:]")]
+pub fn stub_63e80() -> ! {
+    todo!("0x63e80 -[RobloxCachedFlags getBool:withValue:]")
+}
+
+// 0x63ee8 — -[RobloxCachedFlags getInt:withValue:]
+// type: char __cdecl(RobloxCachedFlags *self, SEL, id, int *)
+#[doc(alias = "-[RobloxCachedFlags getInt:withValue:]")]
+pub fn stub_63ee8() -> ! {
+    todo!("0x63ee8 -[RobloxCachedFlags getInt:withValue:]")
+}
+
+// 0x63f50 — -[RobloxCachedFlags getString:withValue:]
+// type: char __cdecl(RobloxCachedFlags *self, SEL, id, id)
+#[doc(alias = "-[RobloxCachedFlags getString:withValue:]")]
+pub fn stub_63f50() -> ! {
+    todo!("0x63f50 -[RobloxCachedFlags getString:withValue:]")
+}
+
+// 0x63fb0 — -[RobloxCachedFlags setBool:withValue:]
+// type: void __cdecl(RobloxCachedFlags *self, SEL, id, char)
+#[doc(alias = "-[RobloxCachedFlags setBool:withValue:]")]
+pub fn stub_63fb0() -> ! {
+    todo!("0x63fb0 -[RobloxCachedFlags setBool:withValue:]")
+}
+
+// 0x64000 — -[RobloxCachedFlags setInt:withValue:]
+// type: void __cdecl(RobloxCachedFlags *self, SEL, id, int)
+#[doc(alias = "-[RobloxCachedFlags setInt:withValue:]")]
+pub fn stub_64000() -> ! {
+    todo!("0x64000 -[RobloxCachedFlags setInt:withValue:]")
+}
+
+// 0x64050 — -[RobloxCachedFlags setString:withValue:]
+// type: void __cdecl(RobloxCachedFlags *self, SEL, id, id)
+#[doc(alias = "-[RobloxCachedFlags setString:withValue:]")]
+pub fn stub_64050() -> ! {
+    todo!("0x64050 -[RobloxCachedFlags setString:withValue:]")
+}
+
+// 0x640a0 — -[CrashReporter activeCrashReporterString]
+// type: id __cdecl(CrashReporter *self, SEL)
+#[doc(alias = "-[CrashReporter activeCrashReporterString]")]
+pub fn stub_640a0() -> ! {
+    todo!("0x640a0 -[CrashReporter activeCrashReporterString]")
+}
+
+// 0x640e4 — +[CrashReporter sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[CrashReporter sharedInstance]")]
+pub fn stub_640e4() -> ! {
+    todo!("0x640e4 +[CrashReporter sharedInstance]")
+}
+
+// 0x64140 — ___31+[CrashReporter sharedInstance]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___31+[CrashReporter sharedInstance]_block_invoke")]
+pub fn stub_64140() -> ! {
+    todo!("0x64140 ___31+[CrashReporter sharedInstance]_block_invoke")
+}
+
+// 0x64188 — -[CrashReporter setupBugsense]
+// type: void __cdecl(CrashReporter *self, SEL)
+#[doc(alias = "-[CrashReporter setupBugsense]")]
+pub fn stub_64188() -> ! {
+    todo!("0x64188 -[CrashReporter setupBugsense]")
+}
+
+// 0x641cc — ___30-[CrashReporter setupBugsense]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___30-[CrashReporter setupBugsense]_block_invoke")]
+pub fn stub_641cc() -> ! {
+    todo!("0x641cc ___30-[CrashReporter setupBugsense]_block_invoke")
+}
+
+// 0x64308 — ___30-[CrashReporter setupBugsense]_block_invoke_2
+// type: void __cdecl(id)
+#[doc(alias = "___30-[CrashReporter setupBugsense]_block_invoke_2")]
+pub fn stub_64308() -> ! {
+    todo!("0x64308 ___30-[CrashReporter setupBugsense]_block_invoke_2")
+}
+
+// 0x6447c — -[CrashReporter setupTestFlight]
+// type: void __cdecl(CrashReporter *self, SEL)
+#[doc(alias = "-[CrashReporter setupTestFlight]")]
+pub fn stub_6447c() -> ! {
+    todo!("0x6447c -[CrashReporter setupTestFlight]")
+}
+
+// 0x644c0 — ___32-[CrashReporter setupTestFlight]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___32-[CrashReporter setupTestFlight]_block_invoke")]
+pub fn stub_644c0() -> ! {
+    todo!("0x644c0 ___32-[CrashReporter setupTestFlight]_block_invoke")
+}
+
+// 0x64558 — -[CrashReporter setupFastLogConnection]
+// type: void __cdecl(CrashReporter *self, SEL)
+#[doc(alias = "-[CrashReporter setupFastLogConnection]")]
+pub fn stub_64558() -> ! {
+    todo!("0x64558 -[CrashReporter setupFastLogConnection]")
+}
+
+// 0x64764 — -[CrashReporter setup]
+// type: void __cdecl(CrashReporter *self, SEL)
+#[doc(alias = "-[CrashReporter setup]")]
+pub fn stub_64764() -> ! {
+    todo!("0x64764 -[CrashReporter setup]")
+}
+
+// 0x6496c — -[CrashReporter init]
+// type: CrashReporter *__cdecl(CrashReporter *self, SEL)
+#[doc(alias = "-[CrashReporter init]")]
+pub fn stub_6496c() -> ! {
+    todo!("0x6496c -[CrashReporter init]")
+}
+
+// 0x649b0 — -[CrashReporter dealloc]
+// type: void __cdecl(CrashReporter *self, SEL)
+#[doc(alias = "-[CrashReporter dealloc]")]
+pub fn stub_649b0() -> ! {
+    todo!("0x649b0 -[CrashReporter dealloc]")
+}
+
+// 0x649dc — -[CrashReporter tryLogMessage:]
+// type: void __cdecl(CrashReporter *self, SEL, const StandardOutMessage *)
+#[doc(alias = "-[CrashReporter tryLogMessage:]")]
+pub fn stub_649dc() -> ! {
+    todo!("0x649dc -[CrashReporter tryLogMessage:]")
+}
+
+// 0x64a74 — ___31-[CrashReporter tryLogMessage:]_block_invoke
+// type: void __fastcall(int)
+#[doc(alias = "___31-[CrashReporter tryLogMessage:]_block_invoke")]
+pub fn stub_64a74() -> ! {
+    todo!("0x64a74 ___31-[CrashReporter tryLogMessage:]_block_invoke")
+}
+
+// 0x64ae4 — -[CrashReporter .cxx_destruct]
+// type: void __cdecl(CrashReporter *self, SEL)
+#[doc(alias = "-[CrashReporter .cxx_destruct]")]
+pub fn stub_64ae4() -> ! {
+    todo!("0x64ae4 -[CrashReporter .cxx_destruct]")
+}
+
+// 0x64bac — -[CrashReporter .cxx_construct]
+// type: id __cdecl(CrashReporter *self, SEL)
+#[doc(alias = "-[CrashReporter .cxx_construct]")]
+pub fn stub_64bac() -> ! {
+    todo!("0x64bac -[CrashReporter .cxx_construct]")
+}
+
+// 0x66740 — -[NSString(Escaping) stringWithPercentEscape]_1
+// type: NSString *__cdecl(NSString *self, SEL)
+#[doc(alias = "-[NSString(Escaping) stringWithPercentEscape]_1")]
+pub fn stub_66740() -> ! {
+    todo!("0x66740 -[NSString(Escaping) stringWithPercentEscape]_1")
+}
+
+// 0x66794 — +[AppController sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[AppController sharedInstance]")]
+pub fn stub_66794() -> ! {
+    todo!("0x66794 +[AppController sharedInstance]")
+}
+
+// 0x667f0 — ___31+[AppController sharedInstance]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___31+[AppController sharedInstance]_block_invoke")]
+pub fn stub_667f0() -> ! {
+    todo!("0x667f0 ___31+[AppController sharedInstance]_block_invoke")
+}
+
+// 0x66838 — -[AppController init]
+// type: AppController *__cdecl(AppController *self, SEL)
+#[doc(alias = "-[AppController init]")]
+pub fn stub_66838() -> ! {
+    todo!("0x66838 -[AppController init]")
+}
+
+// 0x66a68 — -[AppController dealloc]
+// type: void __cdecl(AppController *self, SEL)
+#[doc(alias = "-[AppController dealloc]")]
+pub fn stub_66a68() -> ! {
+    todo!("0x66a68 -[AppController dealloc]")
+}
+
+// 0x66acc — -[AppController checkForGameLaunch]
+// type: void __cdecl(AppController *self, SEL)
+#[doc(alias = "-[AppController checkForGameLaunch]")]
+pub fn stub_66acc() -> ! {
+    todo!("0x66acc -[AppController checkForGameLaunch]")
+}
+
+// 0x66af8 — -[AppController gotLoginFailedNotification:]
+// type: void __cdecl(AppController *self, SEL, id)
+#[doc(alias = "-[AppController gotLoginFailedNotification:]")]
+pub fn stub_66af8() -> ! {
+    todo!("0x66af8 -[AppController gotLoginFailedNotification:]")
+}
+
+// 0x66b08 — -[AppController gotLoginSuccessfulNotification:]
+// type: void __cdecl(AppController *self, SEL, id)
+#[doc(alias = "-[AppController gotLoginSuccessfulNotification:]")]
+pub fn stub_66b08() -> ! {
+    todo!("0x66b08 -[AppController gotLoginSuccessfulNotification:]")
+}
+
+// 0x66b18 — -[AppController authenticateUserWithUrl:ticket:]
+// type: void __cdecl(AppController *self, SEL, id, id)
+#[doc(alias = "-[AppController authenticateUserWithUrl:ticket:]")]
+pub fn stub_66b18() -> ! {
+    todo!("0x66b18 -[AppController authenticateUserWithUrl:ticket:]")
+}
+
+// 0x66b1c — -[AppController runJoinScriptWithUrl:]
+// type: void __cdecl(AppController *self, SEL, id)
+#[doc(alias = "-[AppController runJoinScriptWithUrl:]")]
+pub fn stub_66b1c() -> ! {
+    todo!("0x66b1c -[AppController runJoinScriptWithUrl:]")
+}
+
+// 0x66bd0 — -[AppController performPollingOnMainThreadWithObject:]
+// type: void __cdecl(AppController *self, SEL, id)
+#[doc(alias = "-[AppController performPollingOnMainThreadWithObject:]")]
+pub fn stub_66bd0() -> ! {
+    todo!("0x66bd0 -[AppController performPollingOnMainThreadWithObject:]")
+}
+
+// 0x66c44 — ___54-[AppController performPollingOnMainThreadWithObject:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___54-[AppController performPollingOnMainThreadWithObject:]_block_invoke")]
+pub fn stub_66c44() -> ! {
+    todo!("0x66c44 ___54-[AppController performPollingOnMainThreadWithObject:]_block_invoke")
+}
+
+// 0x66cb8 — -[AppController processResponseToGameConnect:data:error:]
+// type: void __cdecl(AppController *self, SEL, id, id, id)
+#[doc(alias = "-[AppController processResponseToGameConnect:data:error:]")]
+pub fn stub_66cb8() -> ! {
+    todo!("0x66cb8 -[AppController processResponseToGameConnect:data:error:]")
+}
+
+// 0x66e48 — -[AppController performPollingToLoad:]
+// type: void __cdecl(AppController *self, SEL, id)
+#[doc(alias = "-[AppController performPollingToLoad:]")]
+pub fn stub_66e48() -> ! {
+    todo!("0x66e48 -[AppController performPollingToLoad:]")
+}
+
+// 0x67034 — ___38-[AppController performPollingToLoad:]_block_invoke
+// type: id __fastcall(int, int, int, int)
+#[doc(alias = "___38-[AppController performPollingToLoad:]_block_invoke")]
+pub fn stub_67034() -> ! {
+    todo!("0x67034 ___38-[AppController performPollingToLoad:]_block_invoke")
+}
+
+// 0x670b0 — -[AppController launchAppLocal:]
+// type: void __cdecl(AppController *self, SEL, id)
+#[doc(alias = "-[AppController launchAppLocal:]")]
+pub fn stub_670b0() -> ! {
+    todo!("0x670b0 -[AppController launchAppLocal:]")
+}
+
+// 0x670f8 — -[AppController launchApp:appId:]
+// type: void __cdecl(AppController *self, SEL, id, int)
+#[doc(alias = "-[AppController launchApp:appId:]")]
+pub fn stub_670f8() -> ! {
+    todo!("0x670f8 -[AppController launchApp:appId:]")
+}
+
+// 0x67148 — -[AppController launchGameFromOverlayDataModel:]
+// type: void __cdecl(AppController *self, SEL, int)
+#[doc(alias = "-[AppController launchGameFromOverlayDataModel:]")]
+pub fn stub_67148() -> ! {
+    todo!("0x67148 -[AppController launchGameFromOverlayDataModel:]")
+}
+
+// 0x67200 — -[AppController launchGame:]
+// type: void __cdecl(AppController *self, SEL, int)
+#[doc(alias = "-[AppController launchGame:]")]
+pub fn stub_67200() -> ! {
+    todo!("0x67200 -[AppController launchGame:]")
+}
+
+// 0x674f0 — +[SessionReporter sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[SessionReporter sharedInstance]")]
+pub fn stub_674f0() -> ! {
+    todo!("0x674f0 +[SessionReporter sharedInstance]")
+}
+
+// 0x6754c — ___33+[SessionReporter sharedInstance]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___33+[SessionReporter sharedInstance]_block_invoke")]
+pub fn stub_6754c() -> ! {
+    todo!("0x6754c ___33+[SessionReporter sharedInstance]_block_invoke")
+}
+
+// 0x67594 — -[SessionReporter init]
+// type: SessionReporter *__cdecl(SessionReporter *self, SEL)
+#[doc(alias = "-[SessionReporter init]")]
+pub fn stub_67594() -> ! {
+    todo!("0x67594 -[SessionReporter init]")
+}
+
+// 0x675c0 — -[SessionReporter dealloc]
+// type: void __cdecl(SessionReporter *self, SEL)
+#[doc(alias = "-[SessionReporter dealloc]")]
+pub fn stub_675c0() -> ! {
+    todo!("0x675c0 -[SessionReporter dealloc]")
+}
+
+// 0x675ec — -[SessionReporter pushSessionData:PlaceId:GamePlayTime:]
+// type: void __cdecl(SessionReporter *self, SEL, id, int, int)
+#[doc(alias = "-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]")]
+pub fn stub_675ec() -> ! {
+    todo!("0x675ec -[SessionReporter pushSessionData:PlaceId:GamePlayTime:]")
+}
+
+// 0x67934 — ___56-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]_block_invoke
+// type: void __cdecl(id, NSURLResponse *, NSData *, NSError *)
+#[doc(alias = "___56-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]_block_invoke")]
+pub fn stub_67934() -> ! {
+    todo!("0x67934 ___56-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]_block_invoke")
+}
+
+// 0x67964 — -[SessionReporter getPlayData:PlayTime:CalculateNow:]
+// type: char __cdecl(SessionReporter *self, SEL, int *, int *, char)
+#[doc(alias = "-[SessionReporter getPlayData:PlayTime:CalculateNow:]")]
+pub fn stub_67964() -> ! {
+    todo!("0x67964 -[SessionReporter getPlayData:PlayTime:CalculateNow:]")
+}
+
+// 0x67aec — -[SessionReporter callTimerFn]
+// type: void __cdecl(SessionReporter *self, SEL)
+#[doc(alias = "-[SessionReporter callTimerFn]")]
+pub fn stub_67aec() -> ! {
+    todo!("0x67aec -[SessionReporter callTimerFn]")
+}
+
+// 0x67b6c — -[SessionReporter reportSessionFor:]
+// type: void __cdecl(SessionReporter *self, SEL, int)
+#[doc(alias = "-[SessionReporter reportSessionFor:]")]
+pub fn stub_67b6c() -> ! {
+    todo!("0x67b6c -[SessionReporter reportSessionFor:]")
+}
+
+// 0x67b80 — -[SessionReporter reportSessionFor:PlaceId:]
+// type: void __cdecl(SessionReporter *self, SEL, int, int)
+#[doc(alias = "-[SessionReporter reportSessionFor:PlaceId:]")]
+pub fn stub_67b80() -> ! {
+    todo!("0x67b80 -[SessionReporter reportSessionFor:PlaceId:]")
+}
+
+// 0x68434 — ___44-[SessionReporter reportSessionFor:PlaceId:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___44-[SessionReporter reportSessionFor:PlaceId:]_block_invoke")]
+pub fn stub_68434() -> ! {
+    todo!("0x68434 ___44-[SessionReporter reportSessionFor:PlaceId:]_block_invoke")
+}
+
+// 0x68480 — -[SessionReporter clearSession]
+// type: void __cdecl(SessionReporter *self, SEL)
+#[doc(alias = "-[SessionReporter clearSession]")]
+pub fn stub_68480() -> ! {
+    todo!("0x68480 -[SessionReporter clearSession]")
+}
+
+// 0x23212c — -[InputDelegate canBecomeFirstResponder]
+// type: char __cdecl(InputDelegate *self, SEL)
+#[doc(alias = "-[InputDelegate canBecomeFirstResponder]")]
+pub fn stub_23212c() -> ! {
+    todo!("0x23212c -[InputDelegate canBecomeFirstResponder]")
+}
+
+// 0x232134 — -[InputDelegate accelerometerObject]
+// type: iPhoneAccelerometer *__cdecl(InputDelegate *self, SEL)
+#[doc(alias = "-[InputDelegate accelerometerObject]")]
+pub fn stub_232134() -> ! {
+    todo!("0x232134 -[InputDelegate accelerometerObject]")
+}
+
+// 0x232148 — -[InputDelegate setAccelerometerObject:]
+// type: void __cdecl(InputDelegate *self, SEL, iPhoneAccelerometer *)
+#[doc(alias = "-[InputDelegate setAccelerometerObject:]")]
+pub fn stub_232148() -> ! {
+    todo!("0x232148 -[InputDelegate setAccelerometerObject:]")
+}
+
+// 0x23215c — -[InputDelegate touchObject]
+// type: iPhoneMultiTouch *__cdecl(InputDelegate *self, SEL)
+#[doc(alias = "-[InputDelegate touchObject]")]
+pub fn stub_23215c() -> ! {
+    todo!("0x23215c -[InputDelegate touchObject]")
+}
+
+// 0x232170 — -[InputDelegate setTouchObject:]
+// type: void __cdecl(InputDelegate *self, SEL, iPhoneMultiTouch *)
+#[doc(alias = "-[InputDelegate setTouchObject:]")]
+pub fn stub_232170() -> ! {
+    todo!("0x232170 -[InputDelegate setTouchObject:]")
+}
+
+// 0x232184 — -[InputDelegate dealloc]
+// type: void __cdecl(InputDelegate *self, SEL)
+#[doc(alias = "-[InputDelegate dealloc]")]
+pub fn stub_232184() -> ! {
+    todo!("0x232184 -[InputDelegate dealloc]")
+}
+
+// 0x232228 — -[InputDelegate init]
+// type: InputDelegate *__cdecl(InputDelegate *self, SEL)
+#[doc(alias = "-[InputDelegate init]")]
+pub fn stub_232228() -> ! {
+    todo!("0x232228 -[InputDelegate init]")
+}
+
+// 0x232290 — -[InputDelegate accelerometer:didAccelerate:]
+// type: void __cdecl(InputDelegate *self, SEL, id, id)
+#[doc(alias = "-[InputDelegate accelerometer:didAccelerate:]")]
+pub fn stub_232290() -> ! {
+    todo!("0x232290 -[InputDelegate accelerometer:didAccelerate:]")
+}
+
+// 0x2322b4 — -[InputDelegate touchesEnded:withEvent:]
+// type: void __cdecl(InputDelegate *self, SEL, id, id)
+#[doc(alias = "-[InputDelegate touchesEnded:withEvent:]")]
+pub fn stub_2322b4() -> ! {
+    todo!("0x2322b4 -[InputDelegate touchesEnded:withEvent:]")
+}
+
+// 0x232504 — -[InputDelegate touchesMoved:withEvent:]
+// type: void __cdecl(InputDelegate *self, SEL, id, id)
+#[doc(alias = "-[InputDelegate touchesMoved:withEvent:]")]
+pub fn stub_232504() -> ! {
+    todo!("0x232504 -[InputDelegate touchesMoved:withEvent:]")
+}
+
+// 0x232754 — -[InputDelegate touchesCancelled:withEvent:]
+// type: void __cdecl(InputDelegate *self, SEL, id, id)
+#[doc(alias = "-[InputDelegate touchesCancelled:withEvent:]")]
+pub fn stub_232754() -> ! {
+    todo!("0x232754 -[InputDelegate touchesCancelled:withEvent:]")
+}
+
+// 0x2329a4 — -[InputDelegate touchesBegan:withEvent:]
+// type: void __cdecl(InputDelegate *self, SEL, id, id)
+#[doc(alias = "-[InputDelegate touchesBegan:withEvent:]")]
+pub fn stub_2329a4() -> ! {
+    todo!("0x2329a4 -[InputDelegate touchesBegan:withEvent:]")
+}
+
+// 0x7dc98c — -[MacHttpController receivedData]
+// type: id __cdecl(MacHttpController *self, SEL)
+#[doc(alias = "-[MacHttpController receivedData]")]
+pub fn stub_7dc98c() -> ! {
+    todo!("0x7dc98c -[MacHttpController receivedData]")
+}
+
+// 0x7dc99c — -[MacHttpController initWithUrl:additionalHeaders:]
+// type: MacHttpController *__cdecl(MacHttpController *self, SEL, const basic_string<char, std::char_traits<char>, std::allocator<char> > *, const map<std::string, std::string, std::less<std::string >, std::allocator<std::pair<const std::string, std::string > > > *)
+#[doc(alias = "-[MacHttpController initWithUrl:additionalHeaders:]")]
+pub fn stub_7dc99c() -> ! {
+    todo!("0x7dc99c -[MacHttpController initWithUrl:additionalHeaders:]")
+}
+
+// 0x7dcc6c — -[MacHttpController setPostDataFromStream:]
+// type: void __cdecl(MacHttpController *self, SEL, basic_istream<char, std::char_traits<char> > *)
+#[doc(alias = "-[MacHttpController setPostDataFromStream:]")]
+pub fn stub_7dcc6c() -> ! {
+    todo!("0x7dcc6c -[MacHttpController setPostDataFromStream:]")
+}
+
+// 0x7dcd0c — -[MacHttpController setPostCompressedDataFromString:]
+// type: void __cdecl(MacHttpController *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> > *)
+#[doc(alias = "-[MacHttpController setPostCompressedDataFromString:]")]
+pub fn stub_7dcd0c() -> ! {
+    todo!("0x7dcd0c -[MacHttpController setPostCompressedDataFromString:]")
+}
+
+// 0x7dcdbc — -[MacHttpController dealloc]
+// type: void __cdecl(MacHttpController *self, SEL)
+#[doc(alias = "-[MacHttpController dealloc]")]
+pub fn stub_7dcdbc() -> ! {
+    todo!("0x7dcdbc -[MacHttpController dealloc]")
+}
+
+// 0x7dce08 — -[MacHttpController setAuthDomain:withr:]
+// type: void __cdecl(MacHttpController *self, SEL, const basic_string<char, std::char_traits<char>, std::allocator<char> > *, id)
+#[doc(alias = "-[MacHttpController setAuthDomain:withr:]")]
+pub fn stub_7dce08() -> ! {
+    todo!("0x7dce08 -[MacHttpController setAuthDomain:withr:]")
+}
+
+// 0x7dce68 — -[MacHttpController configureRequest:]
+// type: void __cdecl(MacHttpController *self, SEL, id)
+#[doc(alias = "-[MacHttpController configureRequest:]")]
+pub fn stub_7dce68() -> ! {
+    todo!("0x7dce68 -[MacHttpController configureRequest:]")
+}
+
+// 0x7dcfa4 — -[MacHttpController startConnectionWithRequest:]
+// type: void __cdecl(MacHttpController *self, SEL, id)
+#[doc(alias = "-[MacHttpController startConnectionWithRequest:]")]
+pub fn stub_7dcfa4() -> ! {
+    todo!("0x7dcfa4 -[MacHttpController startConnectionWithRequest:]")
+}
+
+// 0x7dd034 — -[MacHttpController doGetPost:]
+// type: int __cdecl(MacHttpController *self, SEL, const basic_string<char, std::char_traits<char>, std::allocator<char> > *)
+#[doc(alias = "-[MacHttpController doGetPost:]")]
+pub fn stub_7dd034() -> ! {
+    todo!("0x7dd034 -[MacHttpController doGetPost:]")
+}
+
+// 0x7dd18c — -[MacHttpController connection:didFailWithError:]
+// type: void __cdecl(MacHttpController *self, SEL, id, id)
+#[doc(alias = "-[MacHttpController connection:didFailWithError:]")]
+pub fn stub_7dd18c() -> ! {
+    todo!("0x7dd18c -[MacHttpController connection:didFailWithError:]")
+}
+
+// 0x7dd1c4 — -[MacHttpController connection:didReceiveData:]
+// type: void __cdecl(MacHttpController *self, SEL, id, id)
+#[doc(alias = "-[MacHttpController connection:didReceiveData:]")]
+pub fn stub_7dd1c4() -> ! {
+    todo!("0x7dd1c4 -[MacHttpController connection:didReceiveData:]")
+}
+
+// 0x7dd1e4 — -[MacHttpController connection:didReceiveResponse:]
+// type: void __cdecl(MacHttpController *self, SEL, id, id)
+#[doc(alias = "-[MacHttpController connection:didReceiveResponse:]")]
+pub fn stub_7dd1e4() -> ! {
+    todo!("0x7dd1e4 -[MacHttpController connection:didReceiveResponse:]")
+}
+
+// 0x7dd24c — -[MacHttpController connectionDidFinishLoading:]
+// type: void __cdecl(MacHttpController *self, SEL, id)
+#[doc(alias = "-[MacHttpController connectionDidFinishLoading:]")]
+pub fn stub_7dd24c() -> ! {
+    todo!("0x7dd24c -[MacHttpController connectionDidFinishLoading:]")
+}
+
+// 0x7dd260 — -[MacHttpController connection:willSendRequest:redirectResponse:]
+// type: id __cdecl(MacHttpController *self, SEL, id, id, id)
+#[doc(alias = "-[MacHttpController connection:willSendRequest:redirectResponse:]")]
+pub fn stub_7dd260() -> ! {
+    todo!("0x7dd260 -[MacHttpController connection:willSendRequest:redirectResponse:]")
+}
+
+// 0x7dd35c — -[MacHttpController url]
+// type: NSURL *__cdecl(MacHttpController *self, SEL)
+#[doc(alias = "-[MacHttpController url]")]
+pub fn stub_7dd35c() -> ! {
+    todo!("0x7dd35c -[MacHttpController url]")
+}
+
+// 0x7dd370 — -[MacHttpController setUrl:]
+// type: void __cdecl(MacHttpController *self, SEL, id)
+#[doc(alias = "-[MacHttpController setUrl:]")]
+pub fn stub_7dd370() -> ! {
+    todo!("0x7dd370 -[MacHttpController setUrl:]")
+}
+
+// 0x7dd388 — -[MacHttpController .cxx_destruct]
+// type: void __cdecl(MacHttpController *self, SEL)
+#[doc(alias = "-[MacHttpController .cxx_destruct]")]
+pub fn stub_7dd388() -> ! {
+    todo!("0x7dd388 -[MacHttpController .cxx_destruct]")
+}
+
+// 0x7dd39c — -[MacHttpController .cxx_construct]
+// type: id __cdecl(MacHttpController *self, SEL)
+#[doc(alias = "-[MacHttpController .cxx_construct]")]
+pub fn stub_7dd39c() -> ! {
+    todo!("0x7dd39c -[MacHttpController .cxx_construct]")
+}
+
+// 0xe5eee8 — -[EAGLView description]
+// type: id __cdecl(EAGLView *self, SEL)
+#[doc(alias = "-[EAGLView description]")]
+pub fn stub_e5eee8() -> ! {
+    todo!("0xe5eee8 -[EAGLView description]")
+}
+
+// 0xe5efd8 — +[EAGLView layerClass]
+// type: Class __cdecl(id, SEL)
+#[doc(alias = "+[EAGLView layerClass]")]
+pub fn stub_e5efd8() -> ! {
+    todo!("0xe5efd8 +[EAGLView layerClass]")
+}
+
+// 0xe5effc — -[EAGLView layoutSubviews]
+// type: void __cdecl(EAGLView *self, SEL)
+#[doc(alias = "-[EAGLView layoutSubviews]")]
+pub fn stub_e5effc() -> ! {
+    todo!("0xe5effc -[EAGLView layoutSubviews]")
+}
+
+// 0xe5f17c — -[EAGLView mWindowName]
+// type: basic_string<char, std::char_traits<char>, std::allocator<char> > __cdecl(EAGLView *self, SEL)
+#[doc(alias = "-[EAGLView mWindowName]")]
+pub fn stub_e5f17c() -> ! {
+    todo!("0xe5f17c -[EAGLView mWindowName]")
+}
+
+// 0xe5f194 — -[EAGLView setMWindowName:]
+// type: void __cdecl(EAGLView *self, SEL, basic_string<char, std::char_traits<char>, std::allocator<char> >)
+#[doc(alias = "-[EAGLView setMWindowName:]")]
+pub fn stub_e5f194() -> ! {
+    todo!("0xe5f194 -[EAGLView setMWindowName:]")
+}
+
+// 0xe5f1b0 — -[EAGLView .cxx_destruct]
+// type: void __cdecl(EAGLView *self, SEL)
+#[doc(alias = "-[EAGLView .cxx_destruct]")]
+pub fn stub_e5f1b0() -> ! {
+    todo!("0xe5f1b0 -[EAGLView .cxx_destruct]")
+}
+
+// 0xe5f208 — -[EAGLView .cxx_construct]
+// type: id __cdecl(EAGLView *self, SEL)
+#[doc(alias = "-[EAGLView .cxx_construct]")]
+pub fn stub_e5f208() -> ! {
+    todo!("0xe5f208 -[EAGLView .cxx_construct]")
+}
+
+// 0xe5f25c — -[EAGLViewController init]
+// type: EAGLViewController *__cdecl(EAGLViewController *self, SEL)
+#[doc(alias = "-[EAGLViewController init]")]
+pub fn stub_e5f25c() -> ! {
+    todo!("0xe5f25c -[EAGLViewController init]")
+}
+
+// 0xe5f288 — -[EAGLViewController initWithNibName:bundle:]
+// type: EAGLViewController *__cdecl(EAGLViewController *self, SEL, id, id)
+#[doc(alias = "-[EAGLViewController initWithNibName:bundle:]")]
+pub fn stub_e5f288() -> ! {
+    todo!("0xe5f288 -[EAGLViewController initWithNibName:bundle:]")
 }
