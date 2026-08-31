@@ -1,6 +1,6 @@
-//! platform generated — 2624 stubs sorted by EA, from ida/export.json
+//! platform generated — 2774 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 2624 stubs (2524 prior + 100 this batch, 3026 filtered, 950 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 2774 stubs (2624 prior + 150 this batch, 3026 filtered, 252 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -18274,4 +18274,1054 @@ pub fn stub_ee7c28() -> ! {
 #[doc(alias = "-[NSString bs_mutableObjectFromJSONString]")]
 pub fn stub_ee7d98() -> ! {
     todo!("0xee7d98 -[NSString bs_mutableObjectFromJSONString]")
+}
+
+// 0xee7db4 — -[NSString bs_mutableObjectFromJSONStringWithParseOptions:]
+// type: id __cdecl(NSString *self, SEL, unsigned int)
+#[doc(alias = "-[NSString bs_mutableObjectFromJSONStringWithParseOptions:]")]
+pub fn stub_ee7db4() -> ! {
+    todo!("0xee7db4 -[NSString bs_mutableObjectFromJSONStringWithParseOptions:]")
+}
+
+// 0xee7dcc — -[NSString bs_mutableObjectFromJSONStringWithParseOptions:error:]
+// type: id __cdecl(NSString *self, SEL, unsigned int, id *)
+#[doc(alias = "-[NSString bs_mutableObjectFromJSONStringWithParseOptions:error:]")]
+pub fn stub_ee7dcc() -> ! {
+    todo!("0xee7dcc -[NSString bs_mutableObjectFromJSONStringWithParseOptions:error:]")
+}
+
+// 0xee7ddc — -[NSData bs_objectFromJSONData]
+// type: id __cdecl(NSData *self, SEL)
+#[doc(alias = "-[NSData bs_objectFromJSONData]")]
+pub fn stub_ee7ddc() -> ! {
+    todo!("0xee7ddc -[NSData bs_objectFromJSONData]")
+}
+
+// 0xee7df8 — -[NSData bs_objectFromJSONDataWithParseOptions:]
+// type: id __cdecl(NSData *self, SEL, unsigned int)
+#[doc(alias = "-[NSData bs_objectFromJSONDataWithParseOptions:]")]
+pub fn stub_ee7df8() -> ! {
+    todo!("0xee7df8 -[NSData bs_objectFromJSONDataWithParseOptions:]")
+}
+
+// 0xee7e10 — -[NSData bs_objectFromJSONDataWithParseOptions:error:]
+// type: id __cdecl(NSData *self, SEL, unsigned int, id *)
+#[doc(alias = "-[NSData bs_objectFromJSONDataWithParseOptions:error:]")]
+pub fn stub_ee7e10() -> ! {
+    todo!("0xee7e10 -[NSData bs_objectFromJSONDataWithParseOptions:error:]")
+}
+
+// 0xee7e5c — -[NSData bs_mutableObjectFromJSONData]
+// type: id __cdecl(NSData *self, SEL)
+#[doc(alias = "-[NSData bs_mutableObjectFromJSONData]")]
+pub fn stub_ee7e5c() -> ! {
+    todo!("0xee7e5c -[NSData bs_mutableObjectFromJSONData]")
+}
+
+// 0xee7e78 — -[NSData bs_mutableObjectFromJSONDataWithParseOptions:]
+// type: id __cdecl(NSData *self, SEL, unsigned int)
+#[doc(alias = "-[NSData bs_mutableObjectFromJSONDataWithParseOptions:]")]
+pub fn stub_ee7e78() -> ! {
+    todo!("0xee7e78 -[NSData bs_mutableObjectFromJSONDataWithParseOptions:]")
+}
+
+// 0xee7e90 — -[NSData bs_mutableObjectFromJSONDataWithParseOptions:error:]
+// type: id __cdecl(NSData *self, SEL, unsigned int, id *)
+#[doc(alias = "-[NSData bs_mutableObjectFromJSONDataWithParseOptions:error:]")]
+pub fn stub_ee7e90() -> ! {
+    todo!("0xee7e90 -[NSData bs_mutableObjectFromJSONDataWithParseOptions:error:]")
+}
+
+// 0xee7edc — +[JKSerializer serializeObject:options:encodeOption:block:delegate:selector:error:]
+// type: id __cdecl(id, SEL, id, unsigned int, unsigned int, id, id, SEL, id *)
+#[doc(alias = "+[JKSerializer serializeObject:options:encodeOption:block:delegate:selector:error:]")]
+pub fn stub_ee7edc() -> ! {
+    todo!("0xee7edc +[JKSerializer serializeObject:options:encodeOption:block:delegate:selector:error:]")
+}
+
+// 0xee7f50 — -[JKSerializer serializeObject:options:encodeOption:block:delegate:selector:error:]
+// type: id __cdecl(JKSerializer *self, SEL, id, unsigned int, unsigned int, id, id, SEL, id *)
+#[doc(alias = "-[JKSerializer serializeObject:options:encodeOption:block:delegate:selector:error:]")]
+pub fn stub_ee7f50() -> ! {
+    todo!("0xee7f50 -[JKSerializer serializeObject:options:encodeOption:block:delegate:selector:error:]")
+}
+
+// 0xee9e1c — -[JKSerializer releaseState]
+// type: void __cdecl(JKSerializer *self, SEL)
+#[doc(alias = "-[JKSerializer releaseState]")]
+pub fn stub_ee9e1c() -> ! {
+    todo!("0xee9e1c -[JKSerializer releaseState]")
+}
+
+// 0xee9e80 — -[JKSerializer dealloc]
+// type: void __cdecl(JKSerializer *self, SEL)
+#[doc(alias = "-[JKSerializer dealloc]")]
+pub fn stub_ee9e80() -> ! {
+    todo!("0xee9e80 -[JKSerializer dealloc]")
+}
+
+// 0xee9ec0 — -[NSString bs_JSONData]
+// type: id __cdecl(NSString *self, SEL)
+#[doc(alias = "-[NSString bs_JSONData]")]
+pub fn stub_ee9ec0() -> ! {
+    todo!("0xee9ec0 -[NSString bs_JSONData]")
+}
+
+// 0xee9ee4 — -[NSString bs_JSONDataWithOptions:includeQuotes:error:]
+// type: id __cdecl(NSString *self, SEL, unsigned int, char, id *)
+#[doc(alias = "-[NSString bs_JSONDataWithOptions:includeQuotes:error:]")]
+pub fn stub_ee9ee4() -> ! {
+    todo!("0xee9ee4 -[NSString bs_JSONDataWithOptions:includeQuotes:error:]")
+}
+
+// 0xee9f30 — -[NSString bs_JSONString]
+// type: id __cdecl(NSString *self, SEL)
+#[doc(alias = "-[NSString bs_JSONString]")]
+pub fn stub_ee9f30() -> ! {
+    todo!("0xee9f30 -[NSString bs_JSONString]")
+}
+
+// 0xee9f54 — -[NSString bs_JSONStringWithOptions:includeQuotes:error:]
+// type: id __cdecl(NSString *self, SEL, unsigned int, char, id *)
+#[doc(alias = "-[NSString bs_JSONStringWithOptions:includeQuotes:error:]")]
+pub fn stub_ee9f54() -> ! {
+    todo!("0xee9f54 -[NSString bs_JSONStringWithOptions:includeQuotes:error:]")
+}
+
+// 0xee9fa0 — -[NSArray bs_JSONData]
+// type: id __cdecl(NSArray *self, SEL)
+#[doc(alias = "-[NSArray bs_JSONData]")]
+pub fn stub_ee9fa0() -> ! {
+    todo!("0xee9fa0 -[NSArray bs_JSONData]")
+}
+
+// 0xee9fdc — -[NSArray bs_JSONDataWithOptions:error:]
+// type: id __cdecl(NSArray *self, SEL, unsigned int, id *)
+#[doc(alias = "-[NSArray bs_JSONDataWithOptions:error:]")]
+pub fn stub_ee9fdc() -> ! {
+    todo!("0xee9fdc -[NSArray bs_JSONDataWithOptions:error:]")
+}
+
+// 0xeea020 — -[NSArray bs_JSONDataWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]
+// type: id __cdecl(NSArray *self, SEL, unsigned int, id, SEL, id *)
+#[doc(alias = "-[NSArray bs_JSONDataWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]")]
+pub fn stub_eea020() -> ! {
+    todo!("0xeea020 -[NSArray bs_JSONDataWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]")
+}
+
+// 0xeea068 — -[NSArray bs_JSONString]
+// type: id __cdecl(NSArray *self, SEL)
+#[doc(alias = "-[NSArray bs_JSONString]")]
+pub fn stub_eea068() -> ! {
+    todo!("0xeea068 -[NSArray bs_JSONString]")
+}
+
+// 0xeea0a4 — -[NSArray bs_JSONStringWithOptions:error:]
+// type: id __cdecl(NSArray *self, SEL, unsigned int, id *)
+#[doc(alias = "-[NSArray bs_JSONStringWithOptions:error:]")]
+pub fn stub_eea0a4() -> ! {
+    todo!("0xeea0a4 -[NSArray bs_JSONStringWithOptions:error:]")
+}
+
+// 0xeea0e8 — -[NSArray bs_JSONStringWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]
+// type: id __cdecl(NSArray *self, SEL, unsigned int, id, SEL, id *)
+#[doc(alias = "-[NSArray bs_JSONStringWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]")]
+pub fn stub_eea0e8() -> ! {
+    todo!("0xeea0e8 -[NSArray bs_JSONStringWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]")
+}
+
+// 0xeea130 — -[NSDictionary bs_JSONData]
+// type: id __cdecl(NSDictionary *self, SEL)
+#[doc(alias = "-[NSDictionary bs_JSONData]")]
+pub fn stub_eea130() -> ! {
+    todo!("0xeea130 -[NSDictionary bs_JSONData]")
+}
+
+// 0xeea16c — -[NSDictionary bs_JSONDataWithOptions:error:]
+// type: id __cdecl(NSDictionary *self, SEL, unsigned int, id *)
+#[doc(alias = "-[NSDictionary bs_JSONDataWithOptions:error:]")]
+pub fn stub_eea16c() -> ! {
+    todo!("0xeea16c -[NSDictionary bs_JSONDataWithOptions:error:]")
+}
+
+// 0xeea1b0 — -[NSDictionary bs_JSONDataWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]
+// type: id __cdecl(NSDictionary *self, SEL, unsigned int, id, SEL, id *)
+#[doc(alias = "-[NSDictionary bs_JSONDataWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]")]
+pub fn stub_eea1b0() -> ! {
+    todo!("0xeea1b0 -[NSDictionary bs_JSONDataWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]")
+}
+
+// 0xeea1f8 — -[NSDictionary bs_JSONString]
+// type: id __cdecl(NSDictionary *self, SEL)
+#[doc(alias = "-[NSDictionary bs_JSONString]")]
+pub fn stub_eea1f8() -> ! {
+    todo!("0xeea1f8 -[NSDictionary bs_JSONString]")
+}
+
+// 0xeea234 — -[NSDictionary bs_JSONStringWithOptions:error:]
+// type: id __cdecl(NSDictionary *self, SEL, unsigned int, id *)
+#[doc(alias = "-[NSDictionary bs_JSONStringWithOptions:error:]")]
+pub fn stub_eea234() -> ! {
+    todo!("0xeea234 -[NSDictionary bs_JSONStringWithOptions:error:]")
+}
+
+// 0xeea278 — -[NSDictionary bs_JSONStringWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]
+// type: id __cdecl(NSDictionary *self, SEL, unsigned int, id, SEL, id *)
+#[doc(alias = "-[NSDictionary bs_JSONStringWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]")]
+pub fn stub_eea278() -> ! {
+    todo!("0xeea278 -[NSDictionary bs_JSONStringWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:]")
+}
+
+// 0xeea2c0 — -[NSArray bs_JSONDataWithOptions:serializeUnsupportedClassesUsingBlock:error:]
+// type: id __cdecl(NSArray *self, SEL, unsigned int, id, id *)
+#[doc(alias = "-[NSArray bs_JSONDataWithOptions:serializeUnsupportedClassesUsingBlock:error:]")]
+pub fn stub_eea2c0() -> ! {
+    todo!("0xeea2c0 -[NSArray bs_JSONDataWithOptions:serializeUnsupportedClassesUsingBlock:error:]")
+}
+
+// 0xeea304 — -[NSArray bs_JSONStringWithOptions:serializeUnsupportedClassesUsingBlock:error:]
+// type: id __cdecl(NSArray *self, SEL, unsigned int, id, id *)
+#[doc(alias = "-[NSArray bs_JSONStringWithOptions:serializeUnsupportedClassesUsingBlock:error:]")]
+pub fn stub_eea304() -> ! {
+    todo!("0xeea304 -[NSArray bs_JSONStringWithOptions:serializeUnsupportedClassesUsingBlock:error:]")
+}
+
+// 0xeea348 — -[NSDictionary bs_JSONDataWithOptions:serializeUnsupportedClassesUsingBlock:error:]
+// type: id __cdecl(NSDictionary *self, SEL, unsigned int, id, id *)
+#[doc(alias = "-[NSDictionary bs_JSONDataWithOptions:serializeUnsupportedClassesUsingBlock:error:]")]
+pub fn stub_eea348() -> ! {
+    todo!("0xeea348 -[NSDictionary bs_JSONDataWithOptions:serializeUnsupportedClassesUsingBlock:error:]")
+}
+
+// 0xeea38c — -[NSDictionary bs_JSONStringWithOptions:serializeUnsupportedClassesUsingBlock:error:]
+// type: id __cdecl(NSDictionary *self, SEL, unsigned int, id, id *)
+#[doc(alias = "-[NSDictionary bs_JSONStringWithOptions:serializeUnsupportedClassesUsingBlock:error:]")]
+pub fn stub_eea38c() -> ! {
+    todo!("0xeea38c -[NSDictionary bs_JSONStringWithOptions:serializeUnsupportedClassesUsingBlock:error:]")
+}
+
+// 0xeee284 — -[BSReachability startNotifier]
+// type: char __cdecl(BSReachability *self, SEL)
+#[doc(alias = "-[BSReachability startNotifier]")]
+pub fn stub_eee284() -> ! {
+    todo!("0xeee284 -[BSReachability startNotifier]")
+}
+
+// 0xeee4ac — -[BSReachability stopNotifier]
+// type: void __cdecl(BSReachability *self, SEL)
+#[doc(alias = "-[BSReachability stopNotifier]")]
+pub fn stub_eee4ac() -> ! {
+    todo!("0xeee4ac -[BSReachability stopNotifier]")
+}
+
+// 0xeee4e0 — -[BSReachability dealloc]
+// type: void __cdecl(BSReachability *self, SEL)
+#[doc(alias = "-[BSReachability dealloc]")]
+pub fn stub_eee4e0() -> ! {
+    todo!("0xeee4e0 -[BSReachability dealloc]")
+}
+
+// 0xeee538 — +[BSReachability reachabilityWithHostName:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BSReachability reachabilityWithHostName:]")]
+pub fn stub_eee538() -> ! {
+    todo!("0xeee538 +[BSReachability reachabilityWithHostName:]")
+}
+
+// 0xeee5b8 — +[BSReachability reachabilityWithAddress:]
+// type: id __cdecl(id, SEL, const sockaddr_in *)
+#[doc(alias = "+[BSReachability reachabilityWithAddress:]")]
+pub fn stub_eee5b8() -> ! {
+    todo!("0xeee5b8 +[BSReachability reachabilityWithAddress:]")
+}
+
+// 0xeee630 — +[BSReachability reachabilityForInternetConnection]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BSReachability reachabilityForInternetConnection]")]
+pub fn stub_eee630() -> ! {
+    todo!("0xeee630 +[BSReachability reachabilityForInternetConnection]")
+}
+
+// 0xeee67c — +[BSReachability reachabilityForLocalWiFi]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BSReachability reachabilityForLocalWiFi]")]
+pub fn stub_eee67c() -> ! {
+    todo!("0xeee67c +[BSReachability reachabilityForLocalWiFi]")
+}
+
+// 0xeee6e0 — -[BSReachability localWiFiStatusForFlags:]
+// type: int __cdecl(BSReachability *self, SEL, unsigned int)
+#[doc(alias = "-[BSReachability localWiFiStatusForFlags:]")]
+pub fn stub_eee6e0() -> ! {
+    todo!("0xeee6e0 -[BSReachability localWiFiStatusForFlags:]")
+}
+
+// 0xeee6f0 — -[BSReachability networkStatusForFlags:]
+// type: int __cdecl(BSReachability *self, SEL, unsigned int)
+#[doc(alias = "-[BSReachability networkStatusForFlags:]")]
+pub fn stub_eee6f0() -> ! {
+    todo!("0xeee6f0 -[BSReachability networkStatusForFlags:]")
+}
+
+// 0xeee724 — -[BSReachability connectionRequired]
+// type: char __cdecl(BSReachability *self, SEL)
+#[doc(alias = "-[BSReachability connectionRequired]")]
+pub fn stub_eee724() -> ! {
+    todo!("0xeee724 -[BSReachability connectionRequired]")
+}
+
+// 0xeee7d4 — -[BSReachability currentReachabilityStatus]
+// type: int __cdecl(BSReachability *self, SEL)
+#[doc(alias = "-[BSReachability currentReachabilityStatus]")]
+pub fn stub_eee7d4() -> ! {
+    todo!("0xeee7d4 -[BSReachability currentReachabilityStatus]")
+}
+
+// 0xeee8ac — +[BSOpenUDID _setDict:forPasteboard:]
+// type: void __cdecl(id, SEL, id, id)
+#[doc(alias = "+[BSOpenUDID _setDict:forPasteboard:]")]
+pub fn stub_eee8ac() -> ! {
+    todo!("0xeee8ac +[BSOpenUDID _setDict:forPasteboard:]")
+}
+
+// 0xeee8f0 — +[BSOpenUDID _getDictFromPasteboard:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BSOpenUDID _getDictFromPasteboard:]")]
+pub fn stub_eee8f0() -> ! {
+    todo!("0xeee8f0 +[BSOpenUDID _getDictFromPasteboard:]")
+}
+
+// 0xeeea48 — +[BSOpenUDID _generateFreshOpenUDID]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BSOpenUDID _generateFreshOpenUDID]")]
+pub fn stub_eeea48() -> ! {
+    todo!("0xeeea48 +[BSOpenUDID _generateFreshOpenUDID]")
+}
+
+// 0xeeeb64 — +[BSOpenUDID value]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BSOpenUDID value]")]
+pub fn stub_eeeb64() -> ! {
+    todo!("0xeeeb64 +[BSOpenUDID value]")
+}
+
+// 0xeeeb88 — +[BSOpenUDID valueWithError:]
+// type: id __cdecl(id, SEL, id *)
+#[doc(alias = "+[BSOpenUDID valueWithError:]")]
+pub fn stub_eeeb88() -> ! {
+    todo!("0xeeeb88 +[BSOpenUDID valueWithError:]")
+}
+
+// 0xeef274 — +[BSOpenUDID setOptOut:]
+// type: void __cdecl(id, SEL, char)
+#[doc(alias = "+[BSOpenUDID setOptOut:]")]
+pub fn stub_eef274() -> ! {
+    todo!("0xeef274 +[BSOpenUDID setOptOut:]")
+}
+
+// 0xeef3c8 — +[BugSenseAnalyticsGenerator analyticsDataWithTag:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseAnalyticsGenerator analyticsDataWithTag:]")]
+pub fn stub_eef3c8() -> ! {
+    todo!("0xeef3c8 +[BugSenseAnalyticsGenerator analyticsDataWithTag:]")
+}
+
+// 0xeef5f0 — +[BugSenseAnalyticsGenerator analyticsObjectFromData:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseAnalyticsGenerator analyticsObjectFromData:]")]
+pub fn stub_eef5f0() -> ! {
+    todo!("0xeef5f0 +[BugSenseAnalyticsGenerator analyticsObjectFromData:]")
+}
+
+// 0xeef658 — +[BugSenseAnalyticsGenerator analyticsObjectFromString:]
+// type: id __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSenseAnalyticsGenerator analyticsObjectFromString:]")]
+pub fn stub_eef658() -> ! {
+    todo!("0xeef658 +[BugSenseAnalyticsGenerator analyticsObjectFromString:]")
+}
+
+// 0xeef8dc — +[BugSensePersistence bugsenseDirectory]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence bugsenseDirectory]")]
+pub fn stub_eef8dc() -> ! {
+    todo!("0xeef8dc +[BugSensePersistence bugsenseDirectory]")
+}
+
+// 0xeef918 — +[BugSensePersistence createDirectoryStructure]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence createDirectoryStructure]")]
+pub fn stub_eef918() -> ! {
+    todo!("0xeef918 +[BugSensePersistence createDirectoryStructure]")
+}
+
+// 0xeef9c8 — +[BugSensePersistence pendingPingsStorePath]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence pendingPingsStorePath]")]
+pub fn stub_eef9c8() -> ! {
+    todo!("0xeef9c8 +[BugSensePersistence pendingPingsStorePath]")
+}
+
+// 0xeef9f8 — +[BugSensePersistence pendingTicksStorePath]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence pendingTicksStorePath]")]
+pub fn stub_eef9f8() -> ! {
+    todo!("0xeef9f8 +[BugSensePersistence pendingTicksStorePath]")
+}
+
+// 0xeefa28 — +[BugSensePersistence pendingCrashReportsStorePath]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence pendingCrashReportsStorePath]")]
+pub fn stub_eefa28() -> ! {
+    todo!("0xeefa28 +[BugSensePersistence pendingCrashReportsStorePath]")
+}
+
+// 0xeefa58 — +[BugSensePersistence valuesStorePath]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence valuesStorePath]")]
+pub fn stub_eefa58() -> ! {
+    todo!("0xeefa58 +[BugSensePersistence valuesStorePath]")
+}
+
+// 0xeefa88 — +[BugSensePersistence sendOrQueuePing:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSensePersistence sendOrQueuePing:]")]
+pub fn stub_eefa88() -> ! {
+    todo!("0xeefa88 +[BugSensePersistence sendOrQueuePing:]")
+}
+
+// 0xeefb40 — +[BugSensePersistence writePingsToFile:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSensePersistence writePingsToFile:]")]
+pub fn stub_eefb40() -> ! {
+    todo!("0xeefb40 +[BugSensePersistence writePingsToFile:]")
+}
+
+// 0xeefd90 — +[BugSensePersistence pendingPings]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence pendingPings]")]
+pub fn stub_eefd90() -> ! {
+    todo!("0xeefd90 +[BugSensePersistence pendingPings]")
+}
+
+// 0xeefdc8 — +[BugSensePersistence queuePing:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSensePersistence queuePing:]")]
+pub fn stub_eefdc8() -> ! {
+    todo!("0xeefdc8 +[BugSensePersistence queuePing:]")
+}
+
+// 0xeefe30 — +[BugSensePersistence sendAllPendingPings]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence sendAllPendingPings]")]
+pub fn stub_eefe30() -> ! {
+    todo!("0xeefe30 +[BugSensePersistence sendAllPendingPings]")
+}
+
+// 0xef0004 — +[BugSensePersistence sendOrQueueTick:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSensePersistence sendOrQueueTick:]")]
+pub fn stub_ef0004() -> ! {
+    todo!("0xef0004 +[BugSensePersistence sendOrQueueTick:]")
+}
+
+// 0xef00bc — +[BugSensePersistence writeTicksToFile:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSensePersistence writeTicksToFile:]")]
+pub fn stub_ef00bc() -> ! {
+    todo!("0xef00bc +[BugSensePersistence writeTicksToFile:]")
+}
+
+// 0xef0144 — +[BugSensePersistence pendingTicks]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence pendingTicks]")]
+pub fn stub_ef0144() -> ! {
+    todo!("0xef0144 +[BugSensePersistence pendingTicks]")
+}
+
+// 0xef017c — +[BugSensePersistence queueTick:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSensePersistence queueTick:]")]
+pub fn stub_ef017c() -> ! {
+    todo!("0xef017c +[BugSensePersistence queueTick:]")
+}
+
+// 0xef01e4 — +[BugSensePersistence sendAllPendingTicks]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence sendAllPendingTicks]")]
+pub fn stub_ef01e4() -> ! {
+    todo!("0xef01e4 +[BugSensePersistence sendAllPendingTicks]")
+}
+
+// 0xef03b8 — +[BugSensePersistence sendOrQueueCrashReport:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSensePersistence sendOrQueueCrashReport:]")]
+pub fn stub_ef03b8() -> ! {
+    todo!("0xef03b8 +[BugSensePersistence sendOrQueueCrashReport:]")
+}
+
+// 0xef0474 — +[BugSensePersistence writeCrashReportsToFile:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSensePersistence writeCrashReportsToFile:]")]
+pub fn stub_ef0474() -> ! {
+    todo!("0xef0474 +[BugSensePersistence writeCrashReportsToFile:]")
+}
+
+// 0xef0764 — +[BugSensePersistence pendingCrashReports]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence pendingCrashReports]")]
+pub fn stub_ef0764() -> ! {
+    todo!("0xef0764 +[BugSensePersistence pendingCrashReports]")
+}
+
+// 0xef079c — +[BugSensePersistence queueCrashReport:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSensePersistence queueCrashReport:]")]
+pub fn stub_ef079c() -> ! {
+    todo!("0xef079c +[BugSensePersistence queueCrashReport:]")
+}
+
+// 0xef0828 — +[BugSensePersistence sendAllPendingCrashReports]
+// type: char __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence sendAllPendingCrashReports]")]
+pub fn stub_ef0828() -> ! {
+    todo!("0xef0828 +[BugSensePersistence sendAllPendingCrashReports]")
+}
+
+// 0xef0a00 — +[BugSensePersistence lineIsSimilar:toLine:]
+// type: char __cdecl(id, SEL, id, id)
+#[doc(alias = "+[BugSensePersistence lineIsSimilar:toLine:]")]
+pub fn stub_ef0a00() -> ! {
+    todo!("0xef0a00 +[BugSensePersistence lineIsSimilar:toLine:]")
+}
+
+// 0xef0a1c — +[BugSensePersistence crashReportExists:]
+// type: char __cdecl(id, SEL, id)
+#[doc(alias = "+[BugSensePersistence crashReportExists:]")]
+pub fn stub_ef0a1c() -> ! {
+    todo!("0xef0a1c +[BugSensePersistence crashReportExists:]")
+}
+
+// 0xef0e08 — +[BugSensePersistence crashCount]
+// type: int __cdecl(id, SEL)
+#[doc(alias = "+[BugSensePersistence crashCount]")]
+pub fn stub_ef0e08() -> ! {
+    todo!("0xef0e08 +[BugSensePersistence crashCount]")
+}
+
+// 0xef0e68 — +[BugSensePersistence setCrashCount:]
+// type: char __cdecl(id, SEL, int)
+#[doc(alias = "+[BugSensePersistence setCrashCount:]")]
+pub fn stub_ef0e68() -> ! {
+    todo!("0xef0e68 +[BugSensePersistence setCrashCount:]")
+}
+
+// 0xef1d94 — +[NSData dataByTransformingData:usingGZipOperation:error:]
+// type: id __cdecl(id, SEL, id, int, id *)
+#[doc(alias = "+[NSData dataByTransformingData:usingGZipOperation:error:]")]
+pub fn stub_ef1d94() -> ! {
+    todo!("0xef1d94 +[NSData dataByTransformingData:usingGZipOperation:error:]")
+}
+
+// 0xef1f30 — -[NSData base64EncodedString]
+// type: id __cdecl(NSData *self, SEL)
+#[doc(alias = "-[NSData base64EncodedString]")]
+pub fn stub_ef1f30() -> ! {
+    todo!("0xef1f30 -[NSData base64EncodedString]")
+}
+
+// 0xef2080 — -[NSData dataByGZipCompressingWithError:]
+// type: id __cdecl(NSData *self, SEL, id *)
+#[doc(alias = "-[NSData dataByGZipCompressingWithError:]")]
+pub fn stub_ef2080() -> ! {
+    todo!("0xef2080 -[NSData dataByGZipCompressingWithError:]")
+}
+
+// 0xef20b4 — -[NSData dataByGZipDecompressingDataWithError:]
+// type: id __cdecl(NSData *self, SEL, id *)
+#[doc(alias = "-[NSData dataByGZipDecompressingDataWithError:]")]
+pub fn stub_ef20b4() -> ! {
+    todo!("0xef20b4 -[NSData dataByGZipDecompressingDataWithError:]")
+}
+
+// 0xef20e4 — +[BugSenseImageManager registerCallback]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseImageManager registerCallback]")]
+pub fn stub_ef20e4() -> ! {
+    todo!("0xef20e4 +[BugSenseImageManager registerCallback]")
+}
+
+// 0xef21a8 — +[BugSenseImageManager loadedImages]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[BugSenseImageManager loadedImages]")]
+pub fn stub_ef21a8() -> ! {
+    todo!("0xef21a8 +[BugSenseImageManager loadedImages]")
+}
+
+// 0xef2470 — +[PLCrashSignalHandler sharedHandler]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[PLCrashSignalHandler sharedHandler]")]
+pub fn stub_ef2470() -> ! {
+    todo!("0xef2470 +[PLCrashSignalHandler sharedHandler]")
+}
+
+// 0xef24c0 — -[PLCrashSignalHandler init]
+// type: PLCrashSignalHandler *__cdecl(PLCrashSignalHandler *self, SEL)
+#[doc(alias = "-[PLCrashSignalHandler init]")]
+pub fn stub_ef24c0() -> ! {
+    todo!("0xef24c0 -[PLCrashSignalHandler init]")
+}
+
+// 0xef2540 — -[PLCrashSignalHandler registerHandlerForSignal:error:]
+// type: char __cdecl(PLCrashSignalHandler *self, SEL, int, id *)
+#[doc(alias = "-[PLCrashSignalHandler registerHandlerForSignal:error:]")]
+pub fn stub_ef2540() -> ! {
+    todo!("0xef2540 -[PLCrashSignalHandler registerHandlerForSignal:error:]")
+}
+
+// 0xef2620 — -[PLCrashSignalHandler registerHandlerWithCallback:context:error:]
+// type: char __cdecl(PLCrashSignalHandler *self, SEL, void *, void *, id *)
+#[doc(alias = "-[PLCrashSignalHandler registerHandlerWithCallback:context:error:]")]
+pub fn stub_ef2620() -> ! {
+    todo!("0xef2620 -[PLCrashSignalHandler registerHandlerWithCallback:context:error:]")
+}
+
+// 0xef3da8 — +[PLCrashReporter initialize]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[PLCrashReporter initialize]")]
+pub fn stub_ef3da8() -> ! {
+    todo!("0xef3da8 +[PLCrashReporter initialize]")
+}
+
+// 0xef3e7c — +[PLCrashReporter sharedReporter]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[PLCrashReporter sharedReporter]")]
+pub fn stub_ef3e7c() -> ! {
+    todo!("0xef3e7c +[PLCrashReporter sharedReporter]")
+}
+
+// 0xef3ee4 — -[PLCrashReporter hasPendingCrashReport]
+// type: char __cdecl(PLCrashReporter *self, SEL)
+#[doc(alias = "-[PLCrashReporter hasPendingCrashReport]")]
+pub fn stub_ef3ee4() -> ! {
+    todo!("0xef3ee4 -[PLCrashReporter hasPendingCrashReport]")
+}
+
+// 0xef3f30 — -[PLCrashReporter loadPendingCrashReportData]
+// type: id __cdecl(PLCrashReporter *self, SEL)
+#[doc(alias = "-[PLCrashReporter loadPendingCrashReportData]")]
+pub fn stub_ef3f30() -> ! {
+    todo!("0xef3f30 -[PLCrashReporter loadPendingCrashReportData]")
+}
+
+// 0xef3f48 — -[PLCrashReporter loadPendingCrashReportDataAndReturnError:]
+// type: id __cdecl(PLCrashReporter *self, SEL, id *)
+#[doc(alias = "-[PLCrashReporter loadPendingCrashReportDataAndReturnError:]")]
+pub fn stub_ef3f48() -> ! {
+    todo!("0xef3f48 -[PLCrashReporter loadPendingCrashReportDataAndReturnError:]")
+}
+
+// 0xef3f88 — -[PLCrashReporter purgePendingCrashReport]
+// type: char __cdecl(PLCrashReporter *self, SEL)
+#[doc(alias = "-[PLCrashReporter purgePendingCrashReport]")]
+pub fn stub_ef3f88() -> ! {
+    todo!("0xef3f88 -[PLCrashReporter purgePendingCrashReport]")
+}
+
+// 0xef3fa0 — -[PLCrashReporter purgePendingCrashReportAndReturnError:]
+// type: char __cdecl(PLCrashReporter *self, SEL, id *)
+#[doc(alias = "-[PLCrashReporter purgePendingCrashReportAndReturnError:]")]
+pub fn stub_ef3fa0() -> ! {
+    todo!("0xef3fa0 -[PLCrashReporter purgePendingCrashReportAndReturnError:]")
+}
+
+// 0xef3ff0 — -[PLCrashReporter enableCrashReporter]
+// type: char __cdecl(PLCrashReporter *self, SEL)
+#[doc(alias = "-[PLCrashReporter enableCrashReporter]")]
+pub fn stub_ef3ff0() -> ! {
+    todo!("0xef3ff0 -[PLCrashReporter enableCrashReporter]")
+}
+
+// 0xef4008 — -[PLCrashReporter enableCrashReporterAndReturnError:]
+// type: char __cdecl(PLCrashReporter *self, SEL, id *)
+#[doc(alias = "-[PLCrashReporter enableCrashReporterAndReturnError:]")]
+pub fn stub_ef4008() -> ! {
+    todo!("0xef4008 -[PLCrashReporter enableCrashReporterAndReturnError:]")
+}
+
+// 0xef4240 — -[PLCrashReporter generateLiveReport]
+// type: id __cdecl(PLCrashReporter *self, SEL)
+#[doc(alias = "-[PLCrashReporter generateLiveReport]")]
+pub fn stub_ef4240() -> ! {
+    todo!("0xef4240 -[PLCrashReporter generateLiveReport]")
+}
+
+// 0xef4258 — -[PLCrashReporter generateLiveReportAndReturnError:]
+// type: id __cdecl(PLCrashReporter *self, SEL, id *)
+#[doc(alias = "-[PLCrashReporter generateLiveReportAndReturnError:]")]
+pub fn stub_ef4258() -> ! {
+    todo!("0xef4258 -[PLCrashReporter generateLiveReportAndReturnError:]")
+}
+
+// 0xef4478 — -[PLCrashReporter setCrashCallbacks:]
+// type: void __cdecl(PLCrashReporter *self, SEL, PLCrashReporterCallbacks *)
+#[doc(alias = "-[PLCrashReporter setCrashCallbacks:]")]
+pub fn stub_ef4478() -> ! {
+    todo!("0xef4478 -[PLCrashReporter setCrashCallbacks:]")
+}
+
+// 0xef4500 — -[PLCrashReporter initWithApplicationIdentifier:appVersion:]
+// type: PLCrashReporter *__cdecl(PLCrashReporter *self, SEL, id, id)
+#[doc(alias = "-[PLCrashReporter initWithApplicationIdentifier:appVersion:]")]
+pub fn stub_ef4500() -> ! {
+    todo!("0xef4500 -[PLCrashReporter initWithApplicationIdentifier:appVersion:]")
+}
+
+// 0xef4618 — -[PLCrashReporter initWithBundle:]
+// type: PLCrashReporter *__cdecl(PLCrashReporter *self, SEL, id)
+#[doc(alias = "-[PLCrashReporter initWithBundle:]")]
+pub fn stub_ef4618() -> ! {
+    todo!("0xef4618 -[PLCrashReporter initWithBundle:]")
+}
+
+// 0xef471c — -[PLCrashReporter dealloc]
+// type: void __cdecl(PLCrashReporter *self, SEL)
+#[doc(alias = "-[PLCrashReporter dealloc]")]
+pub fn stub_ef471c() -> ! {
+    todo!("0xef471c -[PLCrashReporter dealloc]")
+}
+
+// 0xef4794 — -[PLCrashReporter populateCrashReportDirectoryAndReturnError:]
+// type: char __cdecl(PLCrashReporter *self, SEL, id *)
+#[doc(alias = "-[PLCrashReporter populateCrashReportDirectoryAndReturnError:]")]
+pub fn stub_ef4794() -> ! {
+    todo!("0xef4794 -[PLCrashReporter populateCrashReportDirectoryAndReturnError:]")
+}
+
+// 0xef48cc — -[PLCrashReporter crashReportDirectory]
+// type: id __cdecl(PLCrashReporter *self, SEL)
+#[doc(alias = "-[PLCrashReporter crashReportDirectory]")]
+pub fn stub_ef48cc() -> ! {
+    todo!("0xef48cc -[PLCrashReporter crashReportDirectory]")
+}
+
+// 0xef48dc — -[PLCrashReporter queuedCrashReportDirectory]
+// type: id __cdecl(PLCrashReporter *self, SEL)
+#[doc(alias = "-[PLCrashReporter queuedCrashReportDirectory]")]
+pub fn stub_ef48dc() -> ! {
+    todo!("0xef48dc -[PLCrashReporter queuedCrashReportDirectory]")
+}
+
+// 0xef490c — -[PLCrashReporter crashReportPath]
+// type: id __cdecl(PLCrashReporter *self, SEL)
+#[doc(alias = "-[PLCrashReporter crashReportPath]")]
+pub fn stub_ef490c() -> ! {
+    todo!("0xef490c -[PLCrashReporter crashReportPath]")
+}
+
+// 0xef493c — -[PLCrashReport initWithData:error:]
+// type: PLCrashReport *__cdecl(PLCrashReport *self, SEL, id, id *)
+#[doc(alias = "-[PLCrashReport initWithData:error:]")]
+pub fn stub_ef493c() -> ! {
+    todo!("0xef493c -[PLCrashReport initWithData:error:]")
+}
+
+// 0xef4c0c — -[PLCrashReport dealloc]
+// type: void __cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport dealloc]")]
+pub fn stub_ef4c0c() -> ! {
+    todo!("0xef4c0c -[PLCrashReport dealloc]")
+}
+
+// 0xef4d18 — -[PLCrashReport imageForAddress:]
+// type: id __cdecl(PLCrashReport *self, SEL, unsigned __int64)
+#[doc(alias = "-[PLCrashReport imageForAddress:]")]
+pub fn stub_ef4d18() -> ! {
+    todo!("0xef4d18 -[PLCrashReport imageForAddress:]")
+}
+
+// 0xef4e58 — -[PLCrashReport hasMachineInfo]
+// type: char __cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport hasMachineInfo]")]
+pub fn stub_ef4e58() -> ! {
+    todo!("0xef4e58 -[PLCrashReport hasMachineInfo]")
+}
+
+// 0xef4e70 — -[PLCrashReport hasProcessInfo]
+// type: char __cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport hasProcessInfo]")]
+pub fn stub_ef4e70() -> ! {
+    todo!("0xef4e70 -[PLCrashReport hasProcessInfo]")
+}
+
+// 0xef4e88 — -[PLCrashReport hasExceptionInfo]
+// type: char __cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport hasExceptionInfo]")]
+pub fn stub_ef4e88() -> ! {
+    todo!("0xef4e88 -[PLCrashReport hasExceptionInfo]")
+}
+
+// 0xef4ea0 — -[PLCrashReport systemInfo]
+// type: PLCrashReportSystemInfo *__cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport systemInfo]")]
+pub fn stub_ef4ea0() -> ! {
+    todo!("0xef4ea0 -[PLCrashReport systemInfo]")
+}
+
+// 0xef4eb0 — -[PLCrashReport machineInfo]
+// type: PLCrashReportMachineInfo *__cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport machineInfo]")]
+pub fn stub_ef4eb0() -> ! {
+    todo!("0xef4eb0 -[PLCrashReport machineInfo]")
+}
+
+// 0xef4ec0 — -[PLCrashReport applicationInfo]
+// type: PLCrashReportApplicationInfo *__cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport applicationInfo]")]
+pub fn stub_ef4ec0() -> ! {
+    todo!("0xef4ec0 -[PLCrashReport applicationInfo]")
+}
+
+// 0xef4ed0 — -[PLCrashReport processInfo]
+// type: PLCrashReportProcessInfo *__cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport processInfo]")]
+pub fn stub_ef4ed0() -> ! {
+    todo!("0xef4ed0 -[PLCrashReport processInfo]")
+}
+
+// 0xef4ee0 — -[PLCrashReport signalInfo]
+// type: PLCrashReportSignalInfo *__cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport signalInfo]")]
+pub fn stub_ef4ee0() -> ! {
+    todo!("0xef4ee0 -[PLCrashReport signalInfo]")
+}
+
+// 0xef4ef0 — -[PLCrashReport threads]
+// type: NSArray *__cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport threads]")]
+pub fn stub_ef4ef0() -> ! {
+    todo!("0xef4ef0 -[PLCrashReport threads]")
+}
+
+// 0xef4f00 — -[PLCrashReport images]
+// type: NSArray *__cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport images]")]
+pub fn stub_ef4f00() -> ! {
+    todo!("0xef4f00 -[PLCrashReport images]")
+}
+
+// 0xef4f10 — -[PLCrashReport exceptionInfo]
+// type: PLCrashReportExceptionInfo *__cdecl(PLCrashReport *self, SEL)
+#[doc(alias = "-[PLCrashReport exceptionInfo]")]
+pub fn stub_ef4f10() -> ! {
+    todo!("0xef4f10 -[PLCrashReport exceptionInfo]")
+}
+
+// 0xef4f20 — -[PLCrashReport decodeCrashData:error:]
+// type: _Plcrash__CrashReport *__cdecl(PLCrashReport *self, SEL, id, id *)
+#[doc(alias = "-[PLCrashReport decodeCrashData:error:]")]
+pub fn stub_ef4f20() -> ! {
+    todo!("0xef4f20 -[PLCrashReport decodeCrashData:error:]")
+}
+
+// 0xef50bc — -[PLCrashReport extractSystemInfo:error:]
+// type: id __cdecl(PLCrashReport *self, SEL, _Plcrash__CrashReport__SystemInfo *, id *)
+#[doc(alias = "-[PLCrashReport extractSystemInfo:error:]")]
+pub fn stub_ef50bc() -> ! {
+    todo!("0xef50bc -[PLCrashReport extractSystemInfo:error:]")
+}
+
+// 0xef522c — -[PLCrashReport extractProcessorInfo:error:]
+// type: id __cdecl(PLCrashReport *self, SEL, _Plcrash__CrashReport__Processor *, id *)
+#[doc(alias = "-[PLCrashReport extractProcessorInfo:error:]")]
+pub fn stub_ef522c() -> ! {
+    todo!("0xef522c -[PLCrashReport extractProcessorInfo:error:]")
+}
+
+// 0xef52e0 — -[PLCrashReport extractMachineInfo:error:]
+// type: id __cdecl(PLCrashReport *self, SEL, _Plcrash__CrashReport__MachineInfo *, id *)
+#[doc(alias = "-[PLCrashReport extractMachineInfo:error:]")]
+pub fn stub_ef52e0() -> ! {
+    todo!("0xef52e0 -[PLCrashReport extractMachineInfo:error:]")
+}
+
+// 0xef53e0 — -[PLCrashReport extractApplicationInfo:error:]
+// type: id __cdecl(PLCrashReport *self, SEL, _Plcrash__CrashReport__ApplicationInfo *, id *)
+#[doc(alias = "-[PLCrashReport extractApplicationInfo:error:]")]
+pub fn stub_ef53e0() -> ! {
+    todo!("0xef53e0 -[PLCrashReport extractApplicationInfo:error:]")
+}
+
+// 0xef552c — -[PLCrashReport extractProcessInfo:error:]
+// type: id __cdecl(PLCrashReport *self, SEL, _Plcrash__CrashReport__ProcessInfo *, id *)
+#[doc(alias = "-[PLCrashReport extractProcessInfo:error:]")]
+pub fn stub_ef552c() -> ! {
+    todo!("0xef552c -[PLCrashReport extractProcessInfo:error:]")
+}
+
+// 0xef5660 — -[PLCrashReport extractStackFrameInfo:error:]
+// type: id __cdecl(PLCrashReport *self, SEL, _Plcrash__CrashReport__Thread__StackFrame *, id *)
+#[doc(alias = "-[PLCrashReport extractStackFrameInfo:error:]")]
+pub fn stub_ef5660() -> ! {
+    todo!("0xef5660 -[PLCrashReport extractStackFrameInfo:error:]")
+}
+
+// 0xef5708 — -[PLCrashReport extractThreadInfo:error:]
+// type: id __cdecl(PLCrashReport *self, SEL, _Plcrash__CrashReport *, id *)
+#[doc(alias = "-[PLCrashReport extractThreadInfo:error:]")]
+pub fn stub_ef5708() -> ! {
+    todo!("0xef5708 -[PLCrashReport extractThreadInfo:error:]")
+}
+
+// 0xef5950 — -[PLCrashReport extractImageInfo:error:]
+// type: id __cdecl(PLCrashReport *self, SEL, _Plcrash__CrashReport *, id *)
+#[doc(alias = "-[PLCrashReport extractImageInfo:error:]")]
+pub fn stub_ef5950() -> ! {
+    todo!("0xef5950 -[PLCrashReport extractImageInfo:error:]")
+}
+
+// 0xef5b64 — -[PLCrashReport extractExceptionInfo:error:]
+// type: id __cdecl(PLCrashReport *self, SEL, _Plcrash__CrashReport__Exception *, id *)
+#[doc(alias = "-[PLCrashReport extractExceptionInfo:error:]")]
+pub fn stub_ef5b64() -> ! {
+    todo!("0xef5b64 -[PLCrashReport extractExceptionInfo:error:]")
+}
+
+// 0xef5d40 — -[PLCrashReport extractSignalInfo:error:]
+// type: id __cdecl(PLCrashReport *self, SEL, _Plcrash__CrashReport__Signal *, id *)
+#[doc(alias = "-[PLCrashReport extractSignalInfo:error:]")]
+pub fn stub_ef5d40() -> ! {
+    todo!("0xef5d40 -[PLCrashReport extractSignalInfo:error:]")
+}
+
+// 0xef810c — -[PLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:architecture:timestamp:]
+// type: PLCrashReportSystemInfo *__cdecl(PLCrashReportSystemInfo *self, SEL, int, id, int, id)
+#[doc(alias = "-[PLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:architecture:timestamp:]")]
+pub fn stub_ef810c() -> ! {
+    todo!("0xef810c -[PLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:architecture:timestamp:]")
+}
+
+// 0xef8140 — -[PLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:operatingSystemBuild:architecture:timestamp:]
+// type: PLCrashReportSystemInfo *__cdecl(PLCrashReportSystemInfo *self, SEL, int, id, id, int, id)
+#[doc(alias = "-[PLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:operatingSystemBuild:architecture:timestamp:]")]
+pub fn stub_ef8140() -> ! {
+    todo!("0xef8140 -[PLCrashReportSystemInfo initWithOperatingSystem:operatingSystemVersion:operatingSystemBuild:architecture:timestamp:]")
+}
+
+// 0xef81f8 — -[PLCrashReportSystemInfo dealloc]
+// type: void __cdecl(PLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportSystemInfo dealloc]")]
+pub fn stub_ef81f8() -> ! {
+    todo!("0xef81f8 -[PLCrashReportSystemInfo dealloc]")
+}
+
+// 0xef8270 — -[PLCrashReportSystemInfo operatingSystem]
+// type: int __cdecl(PLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportSystemInfo operatingSystem]")]
+pub fn stub_ef8270() -> ! {
+    todo!("0xef8270 -[PLCrashReportSystemInfo operatingSystem]")
+}
+
+// 0xef8280 — -[PLCrashReportSystemInfo operatingSystemVersion]
+// type: NSString *__cdecl(PLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportSystemInfo operatingSystemVersion]")]
+pub fn stub_ef8280() -> ! {
+    todo!("0xef8280 -[PLCrashReportSystemInfo operatingSystemVersion]")
+}
+
+// 0xef8290 — -[PLCrashReportSystemInfo operatingSystemBuild]
+// type: NSString *__cdecl(PLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportSystemInfo operatingSystemBuild]")]
+pub fn stub_ef8290() -> ! {
+    todo!("0xef8290 -[PLCrashReportSystemInfo operatingSystemBuild]")
+}
+
+// 0xef82a0 — -[PLCrashReportSystemInfo architecture]
+// type: int __cdecl(PLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportSystemInfo architecture]")]
+pub fn stub_ef82a0() -> ! {
+    todo!("0xef82a0 -[PLCrashReportSystemInfo architecture]")
+}
+
+// 0xef82b0 — -[PLCrashReportSystemInfo timestamp]
+// type: NSDate *__cdecl(PLCrashReportSystemInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportSystemInfo timestamp]")]
+pub fn stub_ef82b0() -> ! {
+    todo!("0xef82b0 -[PLCrashReportSystemInfo timestamp]")
+}
+
+// 0xef82c0 — -[PLCrashReportApplicationInfo initWithApplicationIdentifier:applicationVersion:]
+// type: PLCrashReportApplicationInfo *__cdecl(PLCrashReportApplicationInfo *self, SEL, id, id)
+#[doc(alias = "-[PLCrashReportApplicationInfo initWithApplicationIdentifier:applicationVersion:]")]
+pub fn stub_ef82c0() -> ! {
+    todo!("0xef82c0 -[PLCrashReportApplicationInfo initWithApplicationIdentifier:applicationVersion:]")
+}
+
+// 0xef8338 — -[PLCrashReportApplicationInfo dealloc]
+// type: void __cdecl(PLCrashReportApplicationInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportApplicationInfo dealloc]")]
+pub fn stub_ef8338() -> ! {
+    todo!("0xef8338 -[PLCrashReportApplicationInfo dealloc]")
+}
+
+// 0xef839c — -[PLCrashReportApplicationInfo applicationIdentifier]
+// type: NSString *__cdecl(PLCrashReportApplicationInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportApplicationInfo applicationIdentifier]")]
+pub fn stub_ef839c() -> ! {
+    todo!("0xef839c -[PLCrashReportApplicationInfo applicationIdentifier]")
+}
+
+// 0xef83ac — -[PLCrashReportApplicationInfo applicationVersion]
+// type: NSString *__cdecl(PLCrashReportApplicationInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportApplicationInfo applicationVersion]")]
+pub fn stub_ef83ac() -> ! {
+    todo!("0xef83ac -[PLCrashReportApplicationInfo applicationVersion]")
+}
+
+// 0xef83bc — -[PLCrashReportThreadInfo initWithThreadNumber:stackFrames:crashed:registers:]
+// type: PLCrashReportThreadInfo *__cdecl(PLCrashReportThreadInfo *self, SEL, int, id, char, id)
+#[doc(alias = "-[PLCrashReportThreadInfo initWithThreadNumber:stackFrames:crashed:registers:]")]
+pub fn stub_ef83bc() -> ! {
+    todo!("0xef83bc -[PLCrashReportThreadInfo initWithThreadNumber:stackFrames:crashed:registers:]")
+}
+
+// 0xef845c — -[PLCrashReportThreadInfo dealloc]
+// type: void __cdecl(PLCrashReportThreadInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportThreadInfo dealloc]")]
+pub fn stub_ef845c() -> ! {
+    todo!("0xef845c -[PLCrashReportThreadInfo dealloc]")
+}
+
+// 0xef84c0 — -[PLCrashReportThreadInfo threadNumber]
+// type: int __cdecl(PLCrashReportThreadInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportThreadInfo threadNumber]")]
+pub fn stub_ef84c0() -> ! {
+    todo!("0xef84c0 -[PLCrashReportThreadInfo threadNumber]")
+}
+
+// 0xef84d0 — -[PLCrashReportThreadInfo stackFrames]
+// type: NSArray *__cdecl(PLCrashReportThreadInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportThreadInfo stackFrames]")]
+pub fn stub_ef84d0() -> ! {
+    todo!("0xef84d0 -[PLCrashReportThreadInfo stackFrames]")
+}
+
+// 0xef84e0 — -[PLCrashReportThreadInfo crashed]
+// type: char __cdecl(PLCrashReportThreadInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportThreadInfo crashed]")]
+pub fn stub_ef84e0() -> ! {
+    todo!("0xef84e0 -[PLCrashReportThreadInfo crashed]")
+}
+
+// 0xef84f0 — -[PLCrashReportThreadInfo registers]
+// type: NSArray *__cdecl(PLCrashReportThreadInfo *self, SEL)
+#[doc(alias = "-[PLCrashReportThreadInfo registers]")]
+pub fn stub_ef84f0() -> ! {
+    todo!("0xef84f0 -[PLCrashReportThreadInfo registers]")
+}
+
+// 0xef8500 — -[PLCrashReportStackFrameInfo initWithInstructionPointer:]
+// type: PLCrashReportStackFrameInfo *__cdecl(PLCrashReportStackFrameInfo *self, SEL, unsigned __int64)
+#[doc(alias = "-[PLCrashReportStackFrameInfo initWithInstructionPointer:]")]
+pub fn stub_ef8500() -> ! {
+    todo!("0xef8500 -[PLCrashReportStackFrameInfo initWithInstructionPointer:]")
 }
