@@ -392,7 +392,7 @@ pub fn stub_c7f2cc() -> ! {
 }
 
 // 0xc85874 — __ZThn188_N4Ogre6Entity25backgroundLoadingCompleteEPNS_8ResourceE
-#[doc(alias = "`non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)")]
+#[doc(alias = "non-virtual thunk toOgre::Entity::backgroundLoadingComplete(Ogre::Resource *)")]
 // was: `non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)
 pub fn stub_c85874() -> ! {
     todo!("0xc85874 `non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)")
@@ -658,7 +658,7 @@ pub fn stub_c9aeb8() -> ! {
 }
 
 // 0xc9b500 — __ZThn188_N4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE
-#[doc(alias = "`non-virtual thunk to'Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)")]
+#[doc(alias = "non-virtual thunk toOgre::Frustum::getRenderOperation(Ogre::RenderOperation &)")]
 // was: `non-virtual thunk to'Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_c9b500() -> ! {
     todo!("0xc9b500 `non-virtual thunk to'Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)")
