@@ -1,5 +1,5 @@
 //! RakNet — mirrors RakNet/BitStream, ReplicaManager, etc.
-//! Generated from ida/export.json filtered for RakNet|RBX::Network (4479 funcs, 1044 stubs here).
+//! Generated from ida/export.json filtered for RakNet|RBX::Network (4479 funcs, 1244 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
@@ -7178,4 +7178,603 @@ pub fn stub_965a2c() -> ! {
 #[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")]
 pub fn stub_965c54() -> ! {
     todo!("0x965c54 std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")
+}
+// 0x965d3c — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSJ_RKSB_
+#[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")]
+pub fn stub_965d3c() -> ! {
+    todo!("0x965d3c std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")
+}
+
+// 0x965e7c — __ZNSt8_Rb_treeIN3RBX4Guid4DataESt4pairIKS2_St6vectorINS0_7Network12IdSerializer8WaitItemESaIS8_EEESt10_Select1stISB_ESt4lessIS2_ESaISB_EE16_M_insert_uniqueERKSB_
+#[doc(alias = "std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert_unique(std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")]
+pub fn stub_965e7c() -> ! {
+    todo!("0x965e7c std::_Rb_tree<RBX::Guid::Data,std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>,std::_Select1st<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>,std::less<RBX::Guid::Data>,std::allocator<std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>>>>::_M_insert_unique(std::pair<RBX::Guid::Data const,std::vector<RBX::Network::IdSerializer::WaitItem,std::allocator<RBX::Network::IdSerializer::WaitItem>>> const&)")
+}
+
+// 0x966d78 — __ZN3RBX7Network6Client13playerConnectEiSsiii
+#[doc(alias = "RBX::Network::Client::playerConnect(int,std::string,int,int,int)")]
+pub fn stub_966d78() -> ! {
+    todo!("0x966d78 RBX::Network::Client::playerConnect(int,std::string,int,int,int)")
+}
+
+// 0x96765c — __ZN3RBX7Network6Client10disconnectEi
+#[doc(alias = "RBX::Network::Client::disconnect(int)")]
+pub fn stub_96765c() -> ! {
+    todo!("0x96765c RBX::Network::Client::disconnect(int)")
+}
+
+// 0x967744 — __ZN3RBX7Network6ClientC2Ev
+#[doc(alias = "RBX::Network::Client::Client(void)")]
+pub fn stub_967744() -> ! {
+    todo!("0x967744 RBX::Network::Client::Client(void)")
+}
+
+// 0x967e28 — __ZN3RBX7Network6ClientD0Ev
+#[doc(alias = "RBX::Network::Client::~Client()")]
+pub fn stub_967e28() -> ! {
+    todo!("0x967e28 RBX::Network::Client::~Client()")
+}
+
+// 0x967ec8 — __ZN3RBX7Network6ClientD1Ev
+#[doc(alias = "RBX::Network::Client::~Client()")]
+pub fn stub_967ec8() -> ! {
+    todo!("0x967ec8 RBX::Network::Client::~Client()")
+}
+
+// 0x967ed4 — __ZThn32_N3RBX7Network6ClientD0Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
+pub fn stub_967ed4() -> ! {
+    todo!("0x967ed4 `non-virtual thunk to'RBX::Network::Client::~Client()")
+}
+
+// 0x967f78 — __ZThn36_N3RBX7Network6ClientD0Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
+pub fn stub_967f78() -> ! {
+    todo!("0x967f78 `non-virtual thunk to'RBX::Network::Client::~Client()")
+}
+
+// 0x96801c — __ZThn92_N3RBX7Network6ClientD0Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
+pub fn stub_96801c() -> ! {
+    todo!("0x96801c `non-virtual thunk to'RBX::Network::Client::~Client()")
+}
+
+// 0x9680c0 — __ZN3RBX7Network6ClientD2Ev
+#[doc(alias = "RBX::Network::Client::~Client()")]
+pub fn stub_9680c0() -> ! {
+    todo!("0x9680c0 RBX::Network::Client::~Client()")
+}
+
+// 0x9686ac — __ZThn32_N3RBX7Network6ClientD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
+pub fn stub_9686ac() -> ! {
+    todo!("0x9686ac `non-virtual thunk to'RBX::Network::Client::~Client()")
+}
+
+// 0x9686b8 — __ZThn36_N3RBX7Network6ClientD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
+pub fn stub_9686b8() -> ! {
+    todo!("0x9686b8 `non-virtual thunk to'RBX::Network::Client::~Client()")
+}
+
+// 0x9686c4 — __ZThn92_N3RBX7Network6ClientD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::Client::~Client()")]
+pub fn stub_9686c4() -> ! {
+    todo!("0x9686c4 `non-virtual thunk to'RBX::Network::Client::~Client()")
+}
+
+// 0x9686d0 — __ZN3RBX7Network6Client10findClientEPKNS_8InstanceEb
+#[doc(alias = "RBX::Network::Client::findClient(RBX::Instance const*,bool)")]
+pub fn stub_9686d0() -> ! {
+    todo!("0x9686d0 RBX::Network::Client::findClient(RBX::Instance const*,bool)")
+}
+
+// 0x9688a4 — __ZN3RBX7Network6Client15clientIsPresentEPKNS_8InstanceEb
+#[doc(alias = "RBX::Network::Client::clientIsPresent(RBX::Instance const*,bool)")]
+pub fn stub_9688a4() -> ! {
+    todo!("0x9688a4 RBX::Network::Client::clientIsPresent(RBX::Instance const*,bool)")
+}
+
+// 0x9688b4 — __ZN3RBX7Network6Client27physicsOutBandwidthExceededEPKNS_8InstanceE
+#[doc(alias = "RBX::Network::Client::physicsOutBandwidthExceeded(RBX::Instance const*)")]
+pub fn stub_9688b4() -> ! {
+    todo!("0x9688b4 RBX::Network::Client::physicsOutBandwidthExceeded(RBX::Instance const*)")
+}
+
+// 0x9688d8 — __ZN3RBX7Network6Client22getNetworkBufferHealthEPKNS_8InstanceE
+#[doc(alias = "RBX::Network::Client::getNetworkBufferHealth(RBX::Instance const*)")]
+pub fn stub_9688d8() -> ! {
+    todo!("0x9688d8 RBX::Network::Client::getNetworkBufferHealth(RBX::Instance const*)")
+}
+
+// 0x968910 — __ZN3RBX7Network6Client25findLocalSimulatorAddressEPKNS_8InstanceE
+#[doc(alias = "RBX::Network::Client::findLocalSimulatorAddress(RBX::Instance const*)")]
+pub fn stub_968910() -> ! {
+    todo!("0x968910 RBX::Network::Client::findLocalSimulatorAddress(RBX::Instance const*)")
+}
+
+// 0x968970 — __ZN3RBX7Network6Client17onServiceProviderEPNS_15ServiceProviderES3_
+#[doc(alias = "RBX::Network::Client::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+pub fn stub_968970() -> ! {
+    todo!("0x968970 RBX::Network::Client::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+}
+
+// 0x968c18 — __ZN3RBX7Network6Client10sendTicketEv
+#[doc(alias = "RBX::Network::Client::sendTicket(void)")]
+pub fn stub_968c18() -> ! {
+    todo!("0x968c18 RBX::Network::Client::sendTicket(void)")
+}
+
+// 0x9694c0 — __ZNK3RBX7Network6Client21sendPreferedSpawnNameEv
+#[doc(alias = "RBX::Network::Client::sendPreferedSpawnName(void)const")]
+pub fn stub_9694c0() -> ! {
+    todo!("0x9694c0 RBX::Network::Client::sendPreferedSpawnName(void)const")
+}
+
+// 0x96c484 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")]
+pub fn stub_96c484() -> ! {
+    todo!("0x96c484 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")
+}
+
+// 0x96c490 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFviELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::~BoundFuncDesc()")]
+pub fn stub_96c490() -> ! {
+    todo!("0x96c490 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::~BoundFuncDesc()")
+}
+
+// 0x96c4f8 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")]
+pub fn stub_96c4f8() -> ! {
+    todo!("0x96c4f8 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")
+}
+
+// 0x96c540 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_ED1Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::~EventDesc()")]
+pub fn stub_96c540() -> ! {
+    todo!("0x96c540 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::~EventDesc()")
+}
+
+// 0x96c588 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_ED1Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::~EventDesc()")]
+pub fn stub_96c588() -> ! {
+    todo!("0x96c588 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::~EventDesc()")
+}
+
+// 0x96c5d0 — __ZNK3RBX8Instance25findConstFirstChildOfTypeINS_7Network16ClientReplicatorEEEPKT_v
+#[doc(alias = "RBX::Network::ClientReplicator const* RBX::Instance::findConstFirstChildOfType<RBX::Network::ClientReplicator>(void)const")]
+pub fn stub_96c5d0() -> ! {
+    todo!("0x96c5d0 RBX::Network::ClientReplicator const* RBX::Instance::findConstFirstChildOfType<RBX::Network::ClientReplicator>(void)const")
+}
+
+// 0x96ca10 — __ZN3RBX7Network6Client10disconnectEv
+#[doc(alias = "RBX::Network::Client::disconnect(void)")]
+pub fn stub_96ca10() -> ! {
+    todo!("0x96ca10 RBX::Network::Client::disconnect(void)")
+}
+
+// 0x96fd88 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicatorES7_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(boost::shared_ptr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const")]
+pub fn stub_96fd88() -> ! {
+    todo!("0x96fd88 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(boost::shared_ptr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const")
+}
+
+// 0x970044 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+pub fn stub_970044() -> ! {
+    todo!("0x970044 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x970048 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+pub fn stub_970048() -> ! {
+    todo!("0x970048 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x970054 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+pub fn stub_970054() -> ! {
+    todo!("0x970054 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x970070 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+pub fn stub_970070() -> ! {
+    todo!("0x970070 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x970088 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicatorENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+pub fn stub_970088() -> ! {
+    todo!("0x970088 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x970304 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX7Network6ClientEEENS6_5list1INS6_5valueIPSC_EEEEEEED1Ev
+#[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>>::~callable_slot()")]
+pub fn stub_970304() -> ! {
+    todo!("0x970304 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>>::~callable_slot()")
+}
+
+// 0x970360 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX7Network6ClientEEENS6_5list1INS6_5valueIPSC_EEEEEEED0Ev
+#[doc(alias = "rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>>::~callable_slot()")]
+pub fn stub_970360() -> ! {
+    todo!("0x970360 rbx::signals::signal<void ()(void)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>>::~callable_slot()")
+}
+
+// 0x970468 — __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX7Network6ClientEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_E4callEv
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")]
+pub fn stub_970468() -> ! {
+    todo!("0x970468 rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")
+}
+
+// 0x970484 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX7Network6ClientEEENS7_5list1INS7_5valueIPSD_EEEEEELi0ES3_E4callEv
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")]
+pub fn stub_970484() -> ! {
+    todo!("0x970484 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Client>,boost::_bi::list1<boost::_bi::value<RBX::Network::Client*>>>,0,void ()(void)>::call(void)")
+}
+
+// 0x9709b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network6ClientES7_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(boost::shared_ptr<RBX::Network::Client> const*,RBX::Network::Client *)const")]
+pub fn stub_9709b0() -> ! {
+    todo!("0x9709b0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(boost::shared_ptr<RBX::Network::Client> const*,RBX::Network::Client *)const")
+}
+
+// 0x970c70 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ClientENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+pub fn stub_970c70() -> ! {
+    todo!("0x970c70 boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x970c80 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ClientENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+pub fn stub_970c80() -> ! {
+    todo!("0x970c80 boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x970c98 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network6ClientENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+pub fn stub_970c98() -> ! {
+    todo!("0x970c98 boost::detail::sp_counted_impl_pd<RBX::Network::Client *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x970f5c — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_EC2ES8_PKcSB_SB_SB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_970f5c() -> ! {
+    todo!("0x970f5c RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*,char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x97133c — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::~EventDesc()")]
+pub fn stub_97133c() -> ! {
+    todo!("0x97133c RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::~EventDesc()")
+}
+
+// 0x971418 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_971418() -> ! {
+    todo!("0x971418 RBX::Reflection::EventDescImpl<3,RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x97189c — __ZNK3RBX10Reflection13EventDescImplILi3ENS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_97189c() -> ! {
+    todo!("0x97189c RBX::Reflection::EventDescImpl<3,RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x971bec — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_971bec() -> ! {
+    todo!("0x971bec RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x971db4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsiSsEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,int,std::string)> const&)const")]
+pub fn stub_971db4() -> ! {
+    todo!("0x971db4 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,int,std::string),rbx::signal<void ()(std::string,int,std::string)>,rbx::signal<void ()(std::string,int,std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,int,std::string)> const&)const")
+}
+
+// 0x9744e0 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string)> RBX::Network::Client::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_9744e0() -> ! {
+    todo!("0x9744e0 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string)> RBX::Network::Client::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x9746ec — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::~EventDesc()")]
+pub fn stub_9746ec() -> ! {
+    todo!("0x9746ec RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::~EventDesc()")
+}
+
+// 0x9747c8 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_9747c8() -> ! {
+    todo!("0x9747c8 RBX::Reflection::EventDescImpl<1,RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x974c4c — __ZNK3RBX10Reflection13EventDescImplILi1ENS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISD_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_974c4c() -> ! {
+    todo!("0x974c4c RBX::Reflection::EventDescImpl<1,RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x974e54 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_974e54() -> ! {
+    todo!("0x974e54 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x974e70 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string)> const&)const")]
+pub fn stub_974e70() -> ! {
+    todo!("0x974e70 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string)> const&)const")
+}
+
+// 0x975238 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_975238() -> ! {
+    todo!("0x975238 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::EventDesc(rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x975530 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")]
+pub fn stub_975530() -> ! {
+    todo!("0x975530 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")
+}
+
+// 0x97560c — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E14connectGenericEPNS0_11EventSourceENS5_INS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+pub fn stub_97560c() -> ! {
+    todo!("0x97560c RBX::Reflection::EventDescImpl<2,RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x975a90 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISH_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+pub fn stub_975a90() -> ! {
+    todo!("0x975a90 RBX::Reflection::EventDescImpl<2,RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x975f00 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+pub fn stub_975f00() -> ! {
+    todo!("0x975f00 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x9760c4 — __ZNK3RBX10Reflection13EventDescBaseINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_E7connectEPNS0_11EventSourceERKNS4_8functionIS8_EE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)> const&)const")]
+pub fn stub_9760c4() -> ! {
+    todo!("0x9760c4 RBX::Reflection::EventDescBase<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::connect(RBX::Reflection::EventSource *,boost::function<void ()(std::string,boost::shared_ptr<RBX::Instance>)> const&)const")
+}
+
+// 0x977bdc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFviELi1EEC2EMS3_FviEPKcS9_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::BoundFuncDesc(void (RBX::Network::Client::*)(int),char const*,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_977bdc() -> ! {
+    todo!("0x977bdc RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::BoundFuncDesc(void (RBX::Network::Client::*)(int),char const*,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x977e30 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFviELi1EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::~BoundFuncDesc()")]
+pub fn stub_977e30() -> ! {
+    todo!("0x977e30 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::~BoundFuncDesc()")
+}
+
+// 0x977f2c — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFviELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_977f2c() -> ! {
+    todo!("0x977f2c RBX::Reflection::BoundFuncDesc<RBX::Network::Client,void ()(int),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x977f68 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EEC2EMS3_FS7_iSsiiiEPKcSD_SD_SD_SD_iSD_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Network::Client::*)(int,std::string,int,int,int),char const*,char const*,char const*,char const*,char const*,int,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_977f68() -> ! {
+    todo!("0x977f68 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Network::Client::*)(int,std::string,int,int,int),char const*,char const*,char const*,char const*,char const*,int,char const*,int,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x978388 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EE16declareSignatureEPKcNS0_7VariantESB_SC_SB_SC_SB_SC_SB_SC_
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
+pub fn stub_978388() -> ! {
+    todo!("0x978388 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+}
+
+// 0x978428 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")]
+pub fn stub_978428() -> ! {
+    todo!("0x978428 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")
+}
+
+// 0x9784c8 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+pub fn stub_9784c8() -> ! {
+    todo!("0x9784c8 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x978668 — __ZN3RBX10Reflection11Call5HelperINS_7Network6ClientEMS3_FN5boost10shared_ptrINS_8InstanceEEEiSsiiiEiSsiiiS7_E4callEPS3_S9_RNS0_7VariantERKiRKSsSF_SF_SF_
+#[doc(alias = "RBX::Reflection::Call5Helper<RBX::Network::Client,boost::shared_ptr<RBX::Instance> (RBX::Network::Client::*)(int,std::string,int,int,int),int,std::string,int,int,int,boost::shared_ptr<RBX::Instance>>::call(RBX::Network::Client*,boost::shared_ptr<RBX::Instance> (RBX::Network::Client::*)(int,std::string,int,int,int),RBX::Reflection::Variant &,int const&,std::string const&,int const&,int const&,int const&)")]
+pub fn stub_978668() -> ! {
+    todo!("0x978668 RBX::Reflection::Call5Helper<RBX::Network::Client,boost::shared_ptr<RBX::Instance> (RBX::Network::Client::*)(int,std::string,int,int,int),int,std::string,int,int,int,boost::shared_ptr<RBX::Instance>>::call(RBX::Network::Client*,boost::shared_ptr<RBX::Instance> (RBX::Network::Client::*)(int,std::string,int,int,int),RBX::Reflection::Variant &,int const&,std::string const&,int const&,int const&,int const&)")
+}
+
+// 0x978b08 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6ClientEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::isReadOnly(void)const")]
+pub fn stub_978b08() -> ! {
+    todo!("0x978b08 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::isReadOnly(void)const")
+}
+
+// 0x978b0c — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6ClientEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::isWriteOnly(void)const")]
+pub fn stub_978b0c() -> ! {
+    todo!("0x978b0c RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::isWriteOnly(void)const")
+}
+
+// 0x978b10 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6ClientEE8getValueEPKNS0_13DescribedBaseE
+#[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::getValue(RBX::Reflection::DescribedBase const*)const")]
+pub fn stub_978b10() -> ! {
+    todo!("0x978b10 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x978b28 — __ZNK3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EE15BoundPropGetSetINS_7Network6ClientEE8setValueEPNS0_13DescribedBaseERKSs
+#[doc(alias = "RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")]
+pub fn stub_978b28() -> ! {
+    todo!("0x978b28 RBX::Reflection::BoundProp<std::string,(RBX::Reflection::Mutability)1>::BoundPropGetSet<RBX::Network::Client>::setValue(RBX::Reflection::DescribedBase *,std::string const&)const")
+}
+
+// 0x97a028 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED2Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")]
+pub fn stub_97a028() -> ! {
+    todo!("0x97a028 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")
+}
+
+// 0x97abdc — __ZN3RBX7Network16ClientReplicator15createStatsItemEv
+#[doc(alias = "RBX::Network::ClientReplicator::createStatsItem(void)")]
+pub fn stub_97abdc() -> ! {
+    todo!("0x97abdc RBX::Network::ClientReplicator::createStatsItem(void)")
+}
+
+// 0x97b6b8 — __ZN3RBX7Network16ClientReplicatorD0Ev
+#[doc(alias = "RBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97b6b8() -> ! {
+    todo!("0x97b6b8 RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97b758 — __ZN3RBX7Network16ClientReplicatorD1Ev
+#[doc(alias = "RBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97b758() -> ! {
+    todo!("0x97b758 RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97b764 — __ZThn32_N3RBX7Network16ClientReplicatorD0Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97b764() -> ! {
+    todo!("0x97b764 `non-virtual thunk to'RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97b808 — __ZThn36_N3RBX7Network16ClientReplicatorD0Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97b808() -> ! {
+    todo!("0x97b808 `non-virtual thunk to'RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97b8ac — __ZThn1180_N3RBX7Network16ClientReplicatorD0Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97b8ac() -> ! {
+    todo!("0x97b8ac `non-virtual thunk to'RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97b950 — __ZThn1192_N3RBX7Network16ClientReplicatorD0Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97b950() -> ! {
+    todo!("0x97b950 `non-virtual thunk to'RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97b9f4 — __ZN3RBX7Network16ClientReplicatorD2Ev
+#[doc(alias = "RBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97b9f4() -> ! {
+    todo!("0x97b9f4 RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97bc98 — __ZThn32_N3RBX7Network16ClientReplicatorD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97bc98() -> ! {
+    todo!("0x97bc98 `non-virtual thunk to'RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97bca4 — __ZThn36_N3RBX7Network16ClientReplicatorD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97bca4() -> ! {
+    todo!("0x97bca4 `non-virtual thunk to'RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97bcb0 — __ZThn1180_N3RBX7Network16ClientReplicatorD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97bcb0() -> ! {
+    todo!("0x97bcb0 `non-virtual thunk to'RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97bcc0 — __ZThn1192_N3RBX7Network16ClientReplicatorD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::~ClientReplicator()")]
+pub fn stub_97bcc0() -> ! {
+    todo!("0x97bcc0 `non-virtual thunk to'RBX::Network::ClientReplicator::~ClientReplicator()")
+}
+
+// 0x97bcd0 — __ZNK3RBX7Network16ClientReplicator16findTargetPlayerEv
+#[doc(alias = "RBX::Network::ClientReplicator::findTargetPlayer(void)const")]
+pub fn stub_97bcd0() -> ! {
+    todo!("0x97bcd0 RBX::Network::ClientReplicator::findTargetPlayer(void)const")
+}
+
+// 0x97bce0 — __ZN3RBX7Network16ClientReplicator19isLegalSendInstanceEPKNS_8InstanceE
+#[doc(alias = "RBX::Network::ClientReplicator::isLegalSendInstance(RBX::Instance const*)")]
+pub fn stub_97bce0() -> ! {
+    todo!("0x97bce0 RBX::Network::ClientReplicator::isLegalSendInstance(RBX::Instance const*)")
+}
+
+// 0x97be30 — __ZN3RBX7Network16ClientReplicator19isLegalSendPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
+#[doc(alias = "RBX::Network::ClientReplicator::isLegalSendProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
+pub fn stub_97be30() -> ! {
+    todo!("0x97be30 RBX::Network::ClientReplicator::isLegalSendProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")
+}
+
+// 0x97be34 — __ZN3RBX7Network16ClientReplicator12canSendItemsEv
+#[doc(alias = "RBX::Network::ClientReplicator::canSendItems(void)")]
+pub fn stub_97be34() -> ! {
+    todo!("0x97be34 RBX::Network::ClientReplicator::canSendItems(void)")
+}
+
+// 0x97ca88 — __ZN3RBX7Network16ClientReplicator17postProcessPacketEv
+#[doc(alias = "RBX::Network::ClientReplicator::postProcessPacket(void)")]
+pub fn stub_97ca88() -> ! {
+    todo!("0x97ca88 RBX::Network::ClientReplicator::postProcessPacket(void)")
+}
+
+// 0x97ca9c — __ZN3RBX7Network16ClientReplicator20updateClientCapacityEv
+#[doc(alias = "RBX::Network::ClientReplicator::updateClientCapacity(void)")]
+pub fn stub_97ca9c() -> ! {
+    todo!("0x97ca9c RBX::Network::ClientReplicator::updateClientCapacity(void)")
+}
+
+// 0x97d0c8 — __ZN3RBX7Network16ClientReplicator23checkDistributedReceiveEPNS_12PartInstanceE
+#[doc(alias = "RBX::Network::ClientReplicator::checkDistributedReceive(RBX::PartInstance *)")]
+pub fn stub_97d0c8() -> ! {
+    todo!("0x97d0c8 RBX::Network::ClientReplicator::checkDistributedReceive(RBX::PartInstance *)")
+}
+
+// 0x97d0f8 — __ZN3RBX7Network16ClientReplicator20checkDistributedSendEPKNS_12PartInstanceE
+#[doc(alias = "RBX::Network::ClientReplicator::checkDistributedSend(RBX::PartInstance const*)")]
+pub fn stub_97d0f8() -> ! {
+    todo!("0x97d0f8 RBX::Network::ClientReplicator::checkDistributedSend(RBX::PartInstance const*)")
+}
+
+// 0x97d0fc — __ZN3RBX7Network16ClientReplicator24checkDistributedSendFastEPKNS_12PartInstanceE
+#[doc(alias = "RBX::Network::ClientReplicator::checkDistributedSendFast(RBX::PartInstance const*)")]
+pub fn stub_97d0fc() -> ! {
+    todo!("0x97d0fc RBX::Network::ClientReplicator::checkDistributedSendFast(RBX::PartInstance const*)")
+}
+
+// 0x97d100 — __ZN3RBX7Network16ClientReplicator16requestCharacterEv
+#[doc(alias = "RBX::Network::ClientReplicator::requestCharacter(void)")]
+pub fn stub_97d100() -> ! {
+    todo!("0x97d100 RBX::Network::ClientReplicator::requestCharacter(void)")
+}
+
+// 0x97d3f0 — __ZN3RBX7Network16ClientReplicator22onPlayerCharacterAddedEv
+#[doc(alias = "RBX::Network::ClientReplicator::onPlayerCharacterAdded(void)")]
+pub fn stub_97d3f0() -> ! {
+    todo!("0x97d3f0 RBX::Network::ClientReplicator::onPlayerCharacterAdded(void)")
+}
+
+// 0x97d408 — __ZN3RBX7Network16ClientReplicator6needGCEv
+#[doc(alias = "RBX::Network::ClientReplicator::needGC(void)")]
+pub fn stub_97d408() -> ! {
+    todo!("0x97d408 RBX::Network::ClientReplicator::needGC(void)")
+}
+
+// 0x97d42c — __ZN3RBX7Network16ClientReplicator11dataOutStepEv
+#[doc(alias = "RBX::Network::ClientReplicator::dataOutStep(void)")]
+pub fn stub_97d42c() -> ! {
+    todo!("0x97d42c RBX::Network::ClientReplicator::dataOutStep(void)")
+}
+
+// 0x97dbd0 — __ZN3RBX7Network16ClientReplicator17streamOutInstanceEPNS_8InstanceEb
+#[doc(alias = "RBX::Network::ClientReplicator::streamOutInstance(RBX::Instance *,bool)")]
+pub fn stub_97dbd0() -> ! {
+    todo!("0x97dbd0 RBX::Network::ClientReplicator::streamOutInstance(RBX::Instance *,bool)")
 }
