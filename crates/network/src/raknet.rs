@@ -1,5 +1,5 @@
 //! RakNet — mirrors RakNet/BitStream, ReplicaManager, etc.
-//! Generated from ida/export.json filtered for RakNet|RBX::Network (4479 funcs, 2519 stubs here).
+//! Generated from ida/export.json filtered for RakNet|RBX::Network (4479 funcs, 2619 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
@@ -17107,4 +17107,858 @@ pub fn stub_a9628c() -> ! {
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,bool>::~PropDescriptor()")]
 pub fn stub_a96294() -> ! {
     todo!("0xa96294 RBX::Reflection::PropDescriptor<RBX::Network::Player,bool>::~PropDescriptor()")
+}
+// 0xa962b8 — __ZNK3RBX7Network6Player21getPersonalServerRankEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getPersonalServerRank(void)const")]
+pub fn stub_a962b8() -> ! {
+    todo!("0xa962b8 RBX::Network::Player::getPersonalServerRank(void)const")
+}
+
+// 0xa962c0 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,int>::~PropDescriptor()")]
+pub fn stub_a962c0() -> ! {
+    todo!("0xa962c0 RBX::Reflection::PropDescriptor<RBX::Network::Player,int>::~PropDescriptor()")
+}
+
+// 0xa962e4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsvESsLi0EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(void),std::string,0>::~BoundYieldFuncDesc()"
+)]
+pub fn stub_a962e4() -> ! {
+    todo!("0xa962e4 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(void),std::string,0>::~BoundYieldFuncDesc()")
+}
+
+// 0xa9632c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbiEbLi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(int),bool,1>::~BoundYieldFuncDesc()"
+)]
+pub fn stub_a9632c() -> ! {
+    todo!("0xa9632c RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(int),bool,1>::~BoundYieldFuncDesc()")
+}
+
+// 0xa96394 — __ZNK3RBX7Network6Player22getDataComplexityLimitEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getDataComplexityLimit(void)const")]
+pub fn stub_a96394() -> ! {
+    todo!("0xa96394 RBX::Network::Player::getDataComplexityLimit(void)const")
+}
+
+// 0xa96398 — __ZNK3RBX7Network6Player12getDataReadyEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getDataReady(void)const")]
+pub fn stub_a96398() -> ! {
+    todo!("0xa96398 RBX::Network::Player::getDataReady(void)const")
+}
+
+// 0xa963a0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbvEbLi0EEC1EMS3_FvN5boost8functionIFvbEEENS7_IFvSsEEEEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: _DWORD *__fastcall(_DWORD *, int, int, int, __guard *, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(void),bool,0>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
+)]
+pub fn stub_a963a0() -> ! {
+    todo!("0xa963a0 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(void),bool,0>::BoundYieldFuncDesc(void (RBX::Network::Player::*)(boost::function<void ()(bool)>,boost::function<void ()(std::string)>),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0xa96560 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbvEbLi0EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(void),bool,0>::~BoundYieldFuncDesc()"
+)]
+pub fn stub_a96560() -> ! {
+    todo!("0xa96560 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,bool ()(void),bool,0>::~BoundYieldFuncDesc()")
+}
+
+// 0xa965a8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()"
+)]
+pub fn stub_a965a8() -> ! {
+    todo!("0xa965a8 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+}
+
+// 0xa965b4 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::~RemoteEventDesc()"
+)]
+pub fn stub_a965b4() -> ! {
+    todo!("0xa965b4 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::~RemoteEventDesc()")
+}
+
+// 0xa965fc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEEvELi0EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()"
+)]
+pub fn stub_a965fc() -> ! {
+    todo!("0xa965fc RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0xa96644 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFSsSsELi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,std::string ()(std::string),1>::~BoundFuncDesc()"
+)]
+pub fn stub_a96644() -> ! {
+    todo!("0xa96644 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,std::string ()(std::string),1>::~BoundFuncDesc()")
+}
+
+// 0xa966ec — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EED1Ev
+// type: int __fastcall(int)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,std::string),2>::~BoundFuncDesc()"
+)]
+pub fn stub_a966ec() -> ! {
+    todo!("0xa966ec RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,std::string),2>::~BoundFuncDesc()")
+}
+
+// 0xa966f8 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFbSsELi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(std::string),1>::~BoundFuncDesc()"
+)]
+pub fn stub_a966f8() -> ! {
+    todo!("0xa966f8 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(std::string),1>::~BoundFuncDesc()")
+}
+
+// 0xa967a0 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsbELi2EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,bool),2>::~BoundFuncDesc()"
+)]
+pub fn stub_a967a0() -> ! {
+    todo!("0xa967a0 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,bool),2>::~BoundFuncDesc()")
+}
+
+// 0xa96854 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFdSsELi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,double ()(std::string),1>::~BoundFuncDesc()"
+)]
+pub fn stub_a96854() -> ! {
+    todo!("0xa96854 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,double ()(std::string),1>::~BoundFuncDesc()")
+}
+
+// 0xa968fc — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsdELi2EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,double),2>::~BoundFuncDesc()"
+)]
+pub fn stub_a968fc() -> ! {
+    todo!("0xa968fc RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,double),2>::~BoundFuncDesc()")
+}
+
+// 0xa969b0 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFN5boost10shared_ptrINS_8InstanceEEESsELi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()"
+)]
+pub fn stub_a969b0() -> ! {
+    todo!("0xa969b0 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,boost::shared_ptr<RBX::Instance> ()(std::string),1>::~BoundFuncDesc()")
+}
+
+// 0xa96a58 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED1Ev
+// type: int __fastcall(int)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()"
+)]
+pub fn stub_a96a58() -> ! {
+    todo!("0xa96a58 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
+}
+
+// 0xa96a64 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvbELi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(bool),1>::~BoundFuncDesc()"
+)]
+pub fn stub_a96a64() -> ! {
+    todo!("0xa96a64 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(bool),1>::~BoundFuncDesc()")
+}
+
+// 0xa96acc — __ZN3RBX7Network6Player10getUnder13Ev
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getUnder13(void)")]
+pub fn stub_a96acc() -> ! {
+    todo!("0xa96acc RBX::Network::Player::getUnder13(void)")
+}
+
+// 0xa96ad4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFbvELi0EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(void),0>::~BoundFuncDesc()"
+)]
+pub fn stub_a96ad4() -> ! {
+    todo!("0xa96ad4 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,bool ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0xa96b1c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvNS3_14MembershipTypeEELi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(RBX::Network::Player::MembershipType),1>::~BoundFuncDesc()"
+)]
+pub fn stub_a96b1c() -> ! {
+    todo!("0xa96b1c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(RBX::Network::Player::MembershipType),1>::~BoundFuncDesc()")
+}
+
+// 0xa96b84 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFviELi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(int),1>::~BoundFuncDesc()"
+)]
+pub fn stub_a96b84() -> ! {
+    todo!("0xa96b84 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,void ()(int),1>::~BoundFuncDesc()")
+}
+
+// 0xa96bec — __ZNK3RBX7Network6Player21getDangerousCharacterEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getDangerousCharacter(void)const")]
+pub fn stub_a96bec() -> ! {
+    todo!("0xa96bec RBX::Network::Player::getDangerousCharacter(void)const")
+}
+
+// 0xa96bf0 — __ZN3RBX10Reflection17RefPropDescriptorINS_7Network6PlayerENS_13ModelInstanceEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::~RefPropDescriptor()"
+)]
+pub fn stub_a96bf0() -> ! {
+    todo!("0xa96bf0 RBX::Reflection::RefPropDescriptor<RBX::Network::Player,RBX::ModelInstance>::~RefPropDescriptor()")
+}
+
+// 0xa96c1c — __ZNK3RBX7Network6Player22getCharacterAppearanceEv
+// type: int __fastcall(RBX::Network::Player *this, int)
+#[doc(alias = "RBX::Network::Player::getCharacterAppearance(void)const")]
+pub fn stub_a96c1c() -> ! {
+    todo!("0xa96c1c RBX::Network::Player::getCharacterAppearance(void)const")
+}
+
+// 0xa96c28 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::~PropDescriptor()"
+)]
+pub fn stub_a96c28() -> ! {
+    todo!("0xa96c28 RBX::Reflection::PropDescriptor<RBX::Network::Player,std::string>::~PropDescriptor()")
+}
+
+// 0xa96c4c — __ZNK3RBX7Network6Player29getCanLoadCharacterAppearanceEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getCanLoadCharacterAppearance(void)const")]
+pub fn stub_a96c4c() -> ! {
+    todo!("0xa96c4c RBX::Network::Player::getCanLoadCharacterAppearance(void)const")
+}
+
+// 0xa96c54 — __ZNK3RBX7Network6Player9getUserIDEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getUserID(void)const")]
+pub fn stub_a96c54() -> ! {
+    todo!("0xa96c54 RBX::Network::Player::getUserID(void)const")
+}
+
+// 0xa96c5c — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFfN3G3D7Vector3EELi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::~BoundFuncDesc()"
+)]
+pub fn stub_a96c5c() -> ! {
+    todo!("0xa96c5c RBX::Reflection::BoundFuncDesc<RBX::Network::Player,float ()(G3D::Vector3),1>::~BoundFuncDesc()")
+}
+
+// 0xa96cc4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFNS_13FriendService12FriendStatusEN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()"
+)]
+pub fn stub_a96cc4() -> ! {
+    todo!("0xa96cc4 RBX::Reflection::BoundFuncDesc<RBX::Network::Player,RBX::FriendService::FriendStatus ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+}
+
+// 0xa96cd0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()"
+)]
+pub fn stub_a96cd0() -> ! {
+    todo!("0xa96cd0 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> ()(int),boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,1>::~BoundYieldFuncDesc()")
+}
+
+// 0xa96d38 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()"
+)]
+pub fn stub_a96d38() -> ! {
+    todo!("0xa96d38 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,int ()(int),int,1>::~BoundYieldFuncDesc()")
+}
+
+// 0xa96da0 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsiESsLi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()"
+)]
+pub fn stub_a96da0() -> ! {
+    todo!("0xa96da0 RBX::Reflection::BoundYieldFuncDesc<RBX::Network::Player,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")
+}
+
+// 0xa96e08 — __ZNK3RBX7Network6Player32getDeprecatedMaxSimulationRadiusEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getDeprecatedMaxSimulationRadius(void)const")]
+pub fn stub_a96e08() -> ! {
+    todo!("0xa96e08 RBX::Network::Player::getDeprecatedMaxSimulationRadius(void)const")
+}
+
+// 0xa96e0c — __ZN3RBX7Network6Player32setDeprecatedMaxSimulationRadiusEf
+// type: void __fastcall(RBX::Network::Player *this, float)
+#[doc(alias = "RBX::Network::Player::setDeprecatedMaxSimulationRadius(float)")]
+pub fn stub_a96e0c() -> ! {
+    todo!("0xa96e0c RBX::Network::Player::setDeprecatedMaxSimulationRadius(float)")
+}
+
+// 0xa96e10 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEfED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,float>::~PropDescriptor()")]
+pub fn stub_a96e10() -> ! {
+    todo!("0xa96e10 RBX::Reflection::PropDescriptor<RBX::Network::Player,float>::~PropDescriptor()")
+}
+
+// 0xa96e34 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::~EnumPropDescriptor()"
+)]
+pub fn stub_a96e34() -> ! {
+    todo!("0xa96e34 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::ChatMode>::~EnumPropDescriptor()")
+}
+
+// 0xa96e58 — __ZNK3RBX7Network6Player12getTeamColorEv
+// type: _DWORD *__fastcall(_DWORD *this, int)
+#[doc(alias = "RBX::Network::Player::getTeamColor(void)const")]
+pub fn stub_a96e58() -> ! {
+    todo!("0xa96e58 RBX::Network::Player::getTeamColor(void)const")
+}
+
+// 0xa96e60 — __ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::~PropDescriptor()"
+)]
+pub fn stub_a96e60() -> ! {
+    todo!("0xa96e60 RBX::Reflection::PropDescriptor<RBX::Network::Player,RBX::BrickColor>::~PropDescriptor()")
+}
+
+// 0xa96e84 — __ZNK3RBX7Network6Player10getNeutralEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getNeutral(void)const")]
+pub fn stub_a96e84() -> ! {
+    todo!("0xa96e84 RBX::Network::Player::getNeutral(void)const")
+}
+
+// 0xa96e8c — __ZNK3RBX7Network6Player7isGuestEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::isGuest(void)const")]
+pub fn stub_a96e8c() -> ! {
+    todo!("0xa96e8c RBX::Network::Player::isGuest(void)const")
+}
+
+// 0xa96e94 — __ZNK3RBX7Network6Player17getMembershipTypeEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getMembershipType(void)const")]
+pub fn stub_a96e94() -> ! {
+    todo!("0xa96e94 RBX::Network::Player::getMembershipType(void)const")
+}
+
+// 0xa96e9c — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::~EnumPropDescriptor()"
+)]
+pub fn stub_a96e9c() -> ! {
+    todo!("0xa96e9c RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Network::Player::MembershipType>::~EnumPropDescriptor()")
+}
+
+// 0xa96ec0 — __ZNK3RBX7Network6Player13getAccountAgeEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getAccountAge(void)const")]
+pub fn stub_a96ec0() -> ! {
+    todo!("0xa96ec0 RBX::Network::Player::getAccountAge(void)const")
+}
+
+// 0xa96ec8 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()"
+)]
+pub fn stub_a96ec8() -> ! {
+    todo!("0xa96ec8 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()")
+}
+
+// 0xa96f10 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()"
+)]
+pub fn stub_a96f10() -> ! {
+    todo!("0xa96f10 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Player::*>::~EventDesc()")
+}
+
+// 0xa96f58 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvdEN3rbx6signalIS4_EEMS3_S7_ED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::Network::Player::*>::~EventDesc()"
+)]
+pub fn stub_a96f58() -> ! {
+    todo!("0xa96f58 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(double),rbx::signal<void ()(double)>,rbx::signal<void ()(double)> RBX::Network::Player::*>::~EventDesc()")
+}
+
+// 0xa96fa0 — __ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEENS_13FriendService12FriendStatusEEN3rbx6signalISA_EEMS3_SD_ED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)> RBX::Network::Player::*>::~EventDesc()"
+)]
+pub fn stub_a96fa0() -> ! {
+    todo!("0xa96fa0 RBX::Reflection::EventDesc<RBX::Network::Player,void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendStatus)> RBX::Network::Player::*>::~EventDesc()")
+}
+
+// 0xa96fe8 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvvEN3rbx13remote_signalIS4_EEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()"
+)]
+pub fn stub_a96fe8() -> ! {
+    todo!("0xa96fe8 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(void),rbx::remote_signal<void ()(void)>>::~RemoteEventDesc()")
+}
+
+// 0xa97030 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsSsSsEN3rbx13remote_signalIS4_EEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,std::string,std::string),rbx::remote_signal<void ()(std::string,std::string,std::string)>>::~RemoteEventDesc()"
+)]
+pub fn stub_a97030() -> ! {
+    todo!("0xa97030 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,std::string,std::string),rbx::remote_signal<void ()(std::string,std::string,std::string)>>::~RemoteEventDesc()")
+}
+
+// 0xa97078 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::~RemoteEventDesc()"
+)]
+pub fn stub_a97078() -> ! {
+    todo!("0xa97078 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string,G3D::Vector3),rbx::remote_signal<void ()(std::string,G3D::Vector3)>>::~RemoteEventDesc()")
+}
+
+// 0xa970c0 — __ZN3RBX10Reflection15RemoteEventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::~RemoteEventDesc()"
+)]
+pub fn stub_a970c0() -> ! {
+    todo!("0xa970c0 RBX::Reflection::RemoteEventDesc<RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::~RemoteEventDesc()")
+}
+
+// 0xa97108 — __ZNK3RBX7Network6Player20getAppearanceDidLoadEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getAppearanceDidLoad(void)const")]
+pub fn stub_a97108() -> ! {
+    todo!("0xa97108 RBX::Network::Player::getAppearanceDidLoad(void)const")
+}
+
+// 0xa97110 — __ZNK3RBX7Network6Player13getCameraModeEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::getCameraMode(void)const")]
+pub fn stub_a97110() -> ! {
+    todo!("0xa97110 RBX::Network::Player::getCameraMode(void)const")
+}
+
+// 0xa97118 — __ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::~EnumPropDescriptor()"
+)]
+pub fn stub_a97118() -> ! {
+    todo!("0xa97118 RBX::Reflection::EnumPropDescriptor<RBX::Network::Player,RBX::Camera::CameraMode>::~EnumPropDescriptor()")
+}
+
+// 0xa97e48 — __ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE21fireAndReplicateEventEPS3_Ss
+// type: void __fastcall(int, int, std::string *)
+#[doc(
+    alias = "RBX::Reflection::RemoteEventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::fireAndReplicateEvent(RBX::Network::Player*,std::string)"
+)]
+pub fn stub_a97e48() -> ! {
+    todo!("0xa97e48 RBX::Reflection::RemoteEventDescImpl<1,RBX::Network::Player,void ()(std::string),rbx::remote_signal<void ()(std::string)>>::fireAndReplicateEvent(RBX::Network::Player*,std::string)")
+}
+
+// 0xa981c8 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network6PlayerEEENS_10shared_ptrIKSt3mapISsNS2_10Reflection7VariantESt4lessISsESaISt4pairIKSsS9_EEEEES5_NS_3argILi1EEEEENS_3_bi6bind_tIT_PFSN_T0_T1_ENSL_9list_av_2IT2_T3_E4typeEEESR_ST_SU_
+// type: void __fastcall(_DWORD *, int, int *)
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list_av_2<boost::weak_ptr<RBX::Network::Player>,boost::arg<1>>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,boost::weak_ptr<RBX::Network::Player>,boost::arg<1>>(void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::weak_ptr<RBX::Network::Player>,boost::arg<1>)"
+)]
+pub fn stub_a981c8() -> ! {
+    todo!("0xa981c8 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::_bi::list_av_2<boost::weak_ptr<RBX::Network::Player>,boost::arg<1>>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,boost::weak_ptr<RBX::Network::Player>,boost::arg<1>>(void (*)(boost::weak_ptr<RBX::Network::Player>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),boost::weak_ptr<RBX::Network::Player>,boost::arg<1>)")
+}
+
+// 0xa98564 — __ZN3RBX10Reflection19RemoteEventDescImplILi0ENS_7Network6PlayerEFvvEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceE
+// type: void __fastcall(int, int)
+#[doc(
+    alias = "RBX::Reflection::RemoteEventDescImpl<0,RBX::Network::Player,void ()(void),rbx::remote_signal<void ()(void)>>::replicateEvent(RBX::Reflection::EventSource *)"
+)]
+pub fn stub_a98564() -> ! {
+    todo!("0xa98564 RBX::Reflection::RemoteEventDescImpl<0,RBX::Network::Player,void ()(void),rbx::remote_signal<void ()(void)>>::replicateEvent(RBX::Reflection::EventSource *)")
+}
+
+// 0xa98698 — __ZN5boost4bindIvN3RBX7Network6PlayerEbSsNS_10shared_ptrIS3_EEbPKcEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISA_T0_T1_T2_EENS8_9list_av_3IT3_T4_T5_E4typeEEEMSD_FSA_SE_SF_ESI_SJ_SK_
+// type: void __fastcall(int, int, int, int *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
+#[doc(
+    alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Network::Player>,bool,char const*>::type> boost::bind<void,RBX::Network::Player,bool,std::string,boost::shared_ptr<RBX::Network::Player>,bool,char const*>(void (RBX::Network::Player::*)(bool,std::string),boost::shared_ptr<RBX::Network::Player>,bool,char const*)"
+)]
+pub fn stub_a98698() -> ! {
+    todo!("0xa98698 boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::Player,bool,std::string>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Network::Player>,bool,char const*>::type> boost::bind<void,RBX::Network::Player,bool,std::string,boost::shared_ptr<RBX::Network::Player>,bool,char const*>(void (RBX::Network::Player::*)(bool,std::string),boost::shared_ptr<RBX::Network::Player>,bool,char const*)")
+}
+
+// 0xa98b0c — __ZN5boost4bindIvN3RBX7Network6PlayerENS_10shared_ptrIS3_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS8_T0_EENS6_9list_av_1IT1_E4typeEEEMSB_FS8_vESE_
+// type: void __fastcall(pthread_mutex_t *, int, int, int *)
+#[doc(
+    alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list_av_1<boost::shared_ptr<RBX::Network::Player>>::type> boost::bind<void,RBX::Network::Player,boost::shared_ptr<RBX::Network::Player>>(void (RBX::Network::Player::*)(void),boost::shared_ptr<RBX::Network::Player>)"
+)]
+pub fn stub_a98b0c() -> ! {
+    todo!("0xa98b0c boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::Player>,boost::_bi::list_av_1<boost::shared_ptr<RBX::Network::Player>>::type> boost::bind<void,RBX::Network::Player,boost::shared_ptr<RBX::Network::Player>>(void (RBX::Network::Player::*)(void),boost::shared_ptr<RBX::Network::Player>)")
+}
+
+// 0xa98f78 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network6PlayerEEENS1_INS2_8InstanceEEEbS5_NS_3argILi1EEEbEENS_3_bi6bind_tIT_PFSC_T0_T1_T2_ENSA_9list_av_3IT3_T4_T5_E4typeEEESH_SJ_SK_SL_
+// type: void __fastcall(int, int, int *, int)
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool),boost::_bi::list_av_3<boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool,boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool>(void (*)(boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool),boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool)"
+)]
+pub fn stub_a98f78() -> ! {
+    todo!("0xa98f78 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool),boost::_bi::list_av_3<boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool,boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool>(void (*)(boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::Instance>,bool),boost::weak_ptr<RBX::Network::Player>,boost::arg<1>,bool)")
+}
+
+// 0xa99284 — __ZN5boost4bindIvPSsPSt9exceptionNS_8weak_ptrIN3RBX7Network6PlayerEEENS4_INS5_9DataModelEEENS_3argILi1EEENSB_ILi2EEES8_SA_EENS_3_bi6bind_tIT_PFSG_T0_T1_T2_T3_ENSE_9list_av_4IT4_T5_T6_T7_E4typeEEESM_SO_SP_SQ_SR_
+// type: void __fastcall(int, int, int *, int *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, char, int, int, int, int, int, int, int)
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list_av_4<boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>>::type> boost::bind<void,std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>>(void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>)"
+)]
+pub fn stub_a99284() -> ! {
+    todo!("0xa99284 boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::_bi::list_av_4<boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>>::type> boost::bind<void,std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>>(void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>),boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::Network::Player>,boost::weak_ptr<RBX::DataModel>)")
+}
+
+// 0xa999ac — __ZN5boost4bindIvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS2_15ServiceProviderES5_S9_EENS_3_bi6bind_tIT_PFSC_T0_T1_ENSA_9list_av_2IT2_T3_E4typeEEESG_SI_SJ_
+// type: void __fastcall(_DWORD *, int, int *, int)
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list_av_2<boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*,boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*>(void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*)"
+)]
+pub fn stub_a999ac() -> ! {
+    todo!("0xa999ac boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list_av_2<boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*,boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*>(void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::weak_ptr<RBX::Network::Player>,RBX::ServiceProvider const*)")
+}
+
+// 0xa9aa10 — __ZN5boost10shared_ptrIN3RBX7Network6PlayerEEaSERKS4_
+// type: _DWORD *__fastcall(_DWORD *, _DWORD *)
+#[doc(
+    alias = "boost::shared_ptr<RBX::Network::Player>::operator=(boost::shared_ptr<RBX::Network::Player> const&)"
+)]
+pub fn stub_a9aa10() -> ! {
+    todo!("0xa9aa10 boost::shared_ptr<RBX::Network::Player>::operator=(boost::shared_ptr<RBX::Network::Player> const&)")
+}
+
+// 0xa9b0bc — __ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE7addPairES4_PKc
+// type: void __fastcall(_DWORD *, int, const char *)
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::addPair(RBX::Network::Player::MembershipType,char const*)"
+)]
+pub fn stub_a9b0bc() -> ! {
+    todo!("0xa9b0bc RBX::Reflection::EnumDesc<RBX::Network::Player::MembershipType>::addPair(RBX::Network::Player::MembershipType,char const*)")
+}
+
+// 0xa9b5e4 — __ZN3RBX10Reflection7Variant14genericConvertINS_7Network6Player14MembershipTypeEEERT_v
+// type: int __fastcall(int)
+#[doc(
+    alias = "RBX::Network::Player::MembershipType & RBX::Reflection::Variant::genericConvert<RBX::Network::Player::MembershipType>(void)"
+)]
+pub fn stub_a9b5e4() -> ! {
+    todo!("0xa9b5e4 RBX::Network::Player::MembershipType & RBX::Reflection::Variant::genericConvert<RBX::Network::Player::MembershipType>(void)")
+}
+
+// 0xa9b934 — __ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE7addPairES4_PKc
+// type: void __fastcall(_DWORD *, int, const char *)
+#[doc(
+    alias = "RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::addPair(RBX::Network::Player::ChatMode,char const*)"
+)]
+pub fn stub_a9b934() -> ! {
+    todo!("0xa9b934 RBX::Reflection::EnumDesc<RBX::Network::Player::ChatMode>::addPair(RBX::Network::Player::ChatMode,char const*)")
+}
+
+// 0xa9be5c — __ZN3RBX7Network6Player15canClientCreateEv
+// type: int __fastcall(RBX::Network::Player *this)
+#[doc(alias = "RBX::Network::Player::canClientCreate(void)")]
+pub fn stub_a9be5c() -> ! {
+    todo!("0xa9be5c RBX::Network::Player::canClientCreate(void)")
+}
+
+// 0xa9be60 — __ZNK3RBX7Network6Player11askAddChildEPKNS_8InstanceE
+// type: int __fastcall(RBX::Network::Player *this, const RBX::Instance *)
+#[doc(alias = "RBX::Network::Player::askAddChild(RBX::Instance const*)const")]
+pub fn stub_a9be60() -> ! {
+    todo!("0xa9be60 RBX::Network::Player::askAddChild(RBX::Instance const*)const")
+}
+
+// 0xa9cbac — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player8ChatModeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
+// type: _Rb_tree_node_base *__fastcall(int, _Rb_tree_node_base *, unsigned int *)
+#[doc(
+    alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode> const&)"
+)]
+pub fn stub_a9cbac() -> ! {
+    todo!("0xa9cbac std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode> const&)")
+}
+
+// 0xa9cd60 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player8ChatModeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_
+// type: _Rb_tree_node_base *__fastcall(int, _DWORD *, int *)
+#[doc(
+    alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode> const&)"
+)]
+pub fn stub_a9cd60() -> ! {
+    todo!("0xa9cd60 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::Player::ChatMode> const&)")
+}
+
+// 0xa9ce50 — __ZNSt6vectorIN3RBX7Network6Player8ChatModeESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+// type: char *__fastcall(int, char *, _DWORD *)
+#[doc(
+    alias = "std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::Player::ChatMode*,std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>>,RBX::Network::Player::ChatMode const&)"
+)]
+pub fn stub_a9ce50() -> ! {
+    todo!("0xa9ce50 std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::Player::ChatMode*,std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>>,RBX::Network::Player::ChatMode const&)")
+}
+
+// 0xa9cf60 — __ZNSt6vectorIN3RBX7Network6Player8ChatModeESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_
+// type: _DWORD *__fastcall(_DWORD *result, _DWORD *, unsigned int, _DWORD *)
+#[doc(
+    alias = "std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::Player::ChatMode*,std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>>,unsigned long,RBX::Network::Player::ChatMode const&)"
+)]
+pub fn stub_a9cf60() -> ! {
+    todo!("0xa9cf60 std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::Player::ChatMode*,std::vector<RBX::Network::Player::ChatMode,std::allocator<RBX::Network::Player::ChatMode>>>,unsigned long,RBX::Network::Player::ChatMode const&)")
+}
+
+// 0xa9d108 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player14MembershipTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS9_ERKS9_
+// type: _Rb_tree_node_base *__fastcall(int, _Rb_tree_node_base *, unsigned int *)
+#[doc(
+    alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType> const&)"
+)]
+pub fn stub_a9d108() -> ! {
+    todo!("0xa9d108 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType> const&)")
+}
+
+// 0xa9d2bc — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_7Network6Player14MembershipTypeEESt10_Select1stIS9_ESt4lessIS3_ESaIS9_EE16_M_insert_uniqueERKS9_
+// type: _Rb_tree_node_base *__fastcall(int, _DWORD *, int *)
+#[doc(
+    alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType> const&)"
+)]
+pub fn stub_a9d2bc() -> ! {
+    todo!("0xa9d2bc std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>,std::_Select1st<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType>>>::_M_insert_unique(std::pair<RBX::Name const* const,RBX::Network::Player::MembershipType> const&)")
+}
+
+// 0xa9d3ac — __ZNSt6vectorIN3RBX7Network6Player14MembershipTypeESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_
+// type: char *__fastcall(int, char *, _DWORD *)
+#[doc(
+    alias = "std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::Player::MembershipType*,std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>>,RBX::Network::Player::MembershipType const&)"
+)]
+pub fn stub_a9d3ac() -> ! {
+    todo!("0xa9d3ac std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>::_M_insert_aux(__gnu_cxx::__normal_iterator<RBX::Network::Player::MembershipType*,std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>>,RBX::Network::Player::MembershipType const&)")
+}
+
+// 0xa9d4bc — __ZNSt6vectorIN3RBX7Network6Player14MembershipTypeESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_
+// type: _DWORD *__fastcall(_DWORD *result, _DWORD *, unsigned int, _DWORD *)
+#[doc(
+    alias = "std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::Player::MembershipType*,std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>>,unsigned long,RBX::Network::Player::MembershipType const&)"
+)]
+pub fn stub_a9d4bc() -> ! {
+    todo!("0xa9d4bc std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::Network::Player::MembershipType*,std::vector<RBX::Network::Player::MembershipType,std::allocator<RBX::Network::Player::MembershipType>>>,unsigned long,RBX::Network::Player::MembershipType const&)")
+}
+
+// 0xaa2324 — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceEbi
+// type: int __fastcall(int, int, char, int)
+#[doc(
+    alias = "RBX::Reflection::RemoteEventDescImpl<2,RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::replicateEvent(RBX::Reflection::EventSource *,bool,int)"
+)]
+pub fn stub_aa2324() -> ! {
+    todo!("0xaa2324 RBX::Reflection::RemoteEventDescImpl<2,RBX::Network::Player,void ()(bool,int),rbx::remote_signal<void ()(bool,int)>>::replicateEvent(RBX::Reflection::EventSource *,bool,int)")
+}
+
+// 0xaa2d08 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network6PlayerES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED1Ev
+// type: int __fastcall(int)
+#[doc(
+    alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()"
+)]
+pub fn stub_aa2d08() -> ! {
+    todo!("0xaa2d08 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0xaa2d64 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network6PlayerES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED0Ev
+// type: void __fastcall(_DWORD *)
+#[doc(
+    alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()"
+)]
+pub fn stub_aa2d64() -> ! {
+    todo!("0xaa2d64 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0xaa2e6c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network6PlayerES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
+// type: void __fastcall(int, int, int, int)
+#[doc(
+    alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)"
+)]
+pub fn stub_aa2e6c() -> ! {
+    todo!("0xaa2e6c rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0xaa2f88 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network6PlayerES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
+// type: void __fastcall(int, int *, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+#[doc(
+    alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)"
+)]
+pub fn stub_aa2f88() -> ! {
+    todo!("0xaa2f88 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Player*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0xaa31f4 — __ZNK5boost4_mfi3mf1IvN3RBX7Network6PlayerENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
+// type: void __fastcall(char **, int, int *, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
+#[doc(
+    alias = "boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Player*,boost::shared_ptr<RBX::Instance>)const"
+)]
+pub fn stub_aa31f4() -> ! {
+    todo!("0xaa31f4 boost::_mfi::mf1<void,RBX::Network::Player,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Player*,boost::shared_ptr<RBX::Instance>)const")
+}
+
+// 0xaa4bf0 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvRNSA_8weak_ptrINS2_7Network6PlayerEEEPKNS2_15ServiceProviderEENSB_5list2INSB_5valueISG_EENSO_ISK_EEEEEEED1Ev
+// type: int()
+#[doc(
+    alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::~callable_slot()"
+)]
+pub fn stub_aa4bf0() -> ! {
+    todo!("0xaa4bf0 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::~callable_slot()")
+}
+
+// 0xaa4bfc — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvRNSA_8weak_ptrINS2_7Network6PlayerEEEPKNS2_15ServiceProviderEENSB_5list2INSB_5valueISG_EENSO_ISK_EEEEEEED0Ev
+// type: void __fastcall(void *)
+#[doc(
+    alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::~callable_slot()"
+)]
+pub fn stub_aa4bfc() -> ! {
+    todo!("0xaa4bfc rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::~callable_slot()")
+}
+
+// 0xaa4cb0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_E4callES7_
+// type: int __fastcall(int)
+#[doc(
+    alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)"
+)]
+pub fn stub_aa4cb0() -> ! {
+    todo!("0xaa4cb0 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+}
+
+// 0xaa4cc0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_E4callES7_
+// type: int __fastcall(int)
+#[doc(
+    alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)"
+)]
+pub fn stub_aa4cc0() -> ! {
+    todo!("0xaa4cc0 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+}
+
+// 0xaa4cd0 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_ED2Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(
+    alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()"
+)]
+pub fn stub_aa4cd0() -> ! {
+    todo!("0xaa4cd0 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0xaa4ea8 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_ED1Ev
+// type: int __fastcall(int)
+#[doc(
+    alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()"
+)]
+pub fn stub_aa4ea8() -> ! {
+    todo!("0xaa4ea8 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0xaa4eb4 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_ED0Ev
+// type: void __fastcall(void *)
+#[doc(
+    alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()"
+)]
+pub fn stub_aa4eb4() -> ! {
+    todo!("0xaa4eb4 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
+}
+
+// 0xaa5318 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS6_15ServiceProviderEENS3_5list2INS3_5valueIS9_EENSH_ISD_EEEEEEEEvT_
+// type: void __fastcall(_DWORD *, int)
+#[doc(
+    alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>)"
+)]
+pub fn stub_aa5318() -> ! {
+    todo!("0xaa5318 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>)")
+}
+
+// 0xaa5500 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS6_15ServiceProviderEENS3_5list2INS3_5valueIS9_EENSH_ISD_EEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
+#[doc(
+    alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)"
+)]
+pub fn stub_aa5500() -> ! {
+    todo!("0xaa5500 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0xaa5524 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS6_15ServiceProviderEENS3_5list2INS3_5valueIS9_EENSH_ISD_EEEEEEvE6invokeERNS1_15function_bufferE
+// type: int __fastcall(int)
+#[doc(
+    alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,void>::invoke(boost::detail::function::function_buffer &)"
+)]
+pub fn stub_aa5524() -> ! {
+    todo!("0xaa5524 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,void>::invoke(boost::detail::function::function_buffer &)")
+}
+
+// 0xaa5534 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS8_15ServiceProviderEENS5_5list2INS5_5valueISB_EENSJ_ISF_EEEEEEEEbT_RNS1_15function_bufferE
+// type: int __fastcall(int, int *, int, int)
+#[doc(
+    alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,boost::detail::function::function_buffer &)const"
+)]
+pub fn stub_aa5534() -> ! {
+    todo!("0xaa5534 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0xaa5708 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS8_15ServiceProviderEENS5_5list2INS5_5valueISB_EENSJ_ISF_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int *, _DWORD *, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, void *, int, int, int, int)
+#[doc(
+    alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const"
+)]
+pub fn stub_aa5708() -> ! {
+    todo!("0xaa5708 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0xaa5940 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvRNS_8weak_ptrIN3RBX7Network6PlayerEEEPKNS6_15ServiceProviderEENS3_5list2INS3_5valueIS9_EENSH_ISD_EEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: void __fastcall(_DWORD **, _WORD *, int, int, int, void *, int, int, int, int)
+#[doc(
+    alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)"
+)]
+pub fn stub_aa5940() -> ! {
+    todo!("0xaa5940 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0xaa5b38 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS2_IPKNS4_15ServiceProviderEEEEC2ES8_SC_
+// type: int __fastcall(int, int *, int, int)
+#[doc(
+    alias = "boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>::list2(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>)"
+)]
+pub fn stub_aa5b38() -> ! {
+    todo!("0xaa5b38 boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>::list2(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>)")
+}
+
+// 0xaa5cfc — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX7Network6PlayerEEEEENS2_IPKNS4_15ServiceProviderEEEEC2ES8_SC_
+// type: _DWORD *__fastcall(_DWORD *, unsigned int *, int, int, int, pthread_mutex_t *, int, int, int, int)
+#[doc(
+    alias = "boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>)"
+)]
+pub fn stub_aa5cfc() -> ! {
+    todo!("0xaa5cfc boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>)")
 }
