@@ -1,5 +1,5 @@
 //! RakNet — mirrors RakNet/BitStream, ReplicaManager, etc.
-//! Generated from ida/export.json filtered for RakNet|RBX::Network (4479 funcs, 1244 stubs here).
+//! Generated from ida/export.json filtered for RakNet|RBX::Network (4479 funcs, 1344 stubs here).
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
@@ -7777,4 +7777,603 @@ pub fn stub_97d42c() -> ! {
 #[doc(alias = "RBX::Network::ClientReplicator::streamOutInstance(RBX::Instance *,bool)")]
 pub fn stub_97dbd0() -> ! {
     todo!("0x97dbd0 RBX::Network::ClientReplicator::streamOutInstance(RBX::Instance *,bool)")
+}
+// 0x97e86c — __ZNK3RBX7Network16ClientReplicator33isLimitedByOutgoingBandwidthLimitEv
+#[doc(alias = "RBX::Network::ClientReplicator::isLimitedByOutgoingBandwidthLimit(void)const")]
+pub fn stub_97e86c() -> ! {
+    todo!("0x97e86c RBX::Network::ClientReplicator::isLimitedByOutgoingBandwidthLimit(void)const")
+}
+
+// 0x97e8e8 — __ZN3RBX7Network16ClientReplicator21filterChangedPropertyEPNS_8InstanceERKNS_10Reflection18PropertyDescriptorE
+#[doc(alias = "RBX::Network::ClientReplicator::filterChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")]
+pub fn stub_97e8e8() -> ! {
+    todo!("0x97e8e8 RBX::Network::ClientReplicator::filterChangedProperty(RBX::Instance *,RBX::Reflection::PropertyDescriptor const&)")
+}
+
+// 0x97ea58 — __ZN3RBX7Network16ClientReplicator17onServiceProviderEPNS_15ServiceProviderES3_
+#[doc(alias = "RBX::Network::ClientReplicator::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")]
+pub fn stub_97ea58() -> ! {
+    todo!("0x97ea58 RBX::Network::ClientReplicator::onServiceProvider(RBX::ServiceProvider *,RBX::ServiceProvider *)")
+}
+
+// 0x97ecf4 — __ZNK3RBX7Network16ClientReplicator21canUseProtocolVersionEi
+#[doc(alias = "RBX::Network::ClientReplicator::canUseProtocolVersion(int)const")]
+pub fn stub_97ecf4() -> ! {
+    todo!("0x97ecf4 RBX::Network::ClientReplicator::canUseProtocolVersion(int)const")
+}
+
+// 0x97ef48 — __ZN3RBX7Network16ClientReplicator19streamOutPartHelperERKNS_4Guid4DataEPNS_12PartInstanceEN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::Network::ClientReplicator::streamOutPartHelper(RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_97ef48() -> ! {
+    todo!("0x97ef48 RBX::Network::ClientReplicator::streamOutPartHelper(RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x97f3c8 — __ZN3RBX7Network16ClientReplicator20streamOutJointHelperESt6vectorIPNS_12PartInstanceESaIS4_EEN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::Network::ClientReplicator::streamOutJointHelper(std::vector<RBX::PartInstance *,std::allocator<RBX::PartInstance *>>,boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_97f3c8() -> ! {
+    todo!("0x97f3c8 RBX::Network::ClientReplicator::streamOutJointHelper(std::vector<RBX::PartInstance *,std::allocator<RBX::PartInstance *>>,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x97f8f4 — __ZN3RBX7Network16ClientReplicator16streamOutTerrainERKN3G3D12Vector3int16E
+#[doc(alias = "RBX::Network::ClientReplicator::streamOutTerrain(G3D::Vector3int16 const&)")]
+pub fn stub_97f8f4() -> ! {
+    todo!("0x97f8f4 RBX::Network::ClientReplicator::streamOutTerrain(G3D::Vector3int16 const&)")
+}
+
+// 0x97f9c4 — __ZN3RBX7Network16ClientReplicator21renderStreamedRegionsEPNS_5AdornE
+#[doc(alias = "RBX::Network::ClientReplicator::renderStreamedRegions(RBX::Adorn *)")]
+pub fn stub_97f9c4() -> ! {
+    todo!("0x97f9c4 RBX::Network::ClientReplicator::renderStreamedRegions(RBX::Adorn *)")
+}
+
+// 0x97f9d8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7Network16ClientReplicator15ClientStatsItemEN5boost10shared_ptrIS5_EEEENS8_IT_EET0_
+#[doc(alias = "boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::Network::ClientReplicator::ClientStatsItem,boost::shared_ptr<RBX::Network::ClientReplicator>>(boost::shared_ptr<RBX::Network::ClientReplicator>)")]
+pub fn stub_97f9d8() -> ! {
+    todo!("0x97f9d8 boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> RBX::Creatable<RBX::Instance>::create<RBX::Network::ClientReplicator::ClientStatsItem,boost::shared_ptr<RBX::Network::ClientReplicator>>(boost::shared_ptr<RBX::Network::ClientReplicator>)")
+}
+
+// 0x97fd24 — __ZN3RBX11shared_fromINS_7Network16ClientReplicatorEEEN5boost10shared_ptrIT_EEPS5_
+#[doc(alias = "boost::shared_ptr<RBX::Network::ClientReplicator> RBX::shared_from<RBX::Network::ClientReplicator>(RBX::Network::ClientReplicator*)")]
+pub fn stub_97fd24() -> ! {
+    todo!("0x97fd24 boost::shared_ptr<RBX::Network::ClientReplicator> RBX::shared_from<RBX::Network::ClientReplicator>(RBX::Network::ClientReplicator*)")
+}
+
+// 0x97ffbc — __ZN3RBX7Network8PropSync5Slave25onReceivedPropertyChangedENS_10Reflection13ConstPropertyEb
+#[doc(alias = "RBX::Network::PropSync::Slave::onReceivedPropertyChanged(RBX::Reflection::ConstProperty,bool)")]
+pub fn stub_97ffbc() -> ! {
+    todo!("0x97ffbc RBX::Network::PropSync::Slave::onReceivedPropertyChanged(RBX::Reflection::ConstProperty,bool)")
+}
+
+// 0x9803b8 — __ZN3RBX7Network8PropSync5Slave14onPropertySendENS_10Reflection13ConstPropertyERi
+#[doc(alias = "RBX::Network::PropSync::Slave::onPropertySend(RBX::Reflection::ConstProperty,int &)")]
+pub fn stub_9803b8() -> ! {
+    todo!("0x9803b8 RBX::Network::PropSync::Slave::onPropertySend(RBX::Reflection::ConstProperty,int &)")
+}
+
+// 0x9804d0 — __ZN5boost10shared_ptrIN3RBX7Network16ClientReplicator5GCJobEE5resetEv
+#[doc(alias = "boost::shared_ptr<RBX::Network::ClientReplicator::GCJob>::reset(void)")]
+pub fn stub_9804d0() -> ! {
+    todo!("0x9804d0 boost::shared_ptr<RBX::Network::ClientReplicator::GCJob>::reset(void)")
+}
+
+// 0x981138 — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf3IvNS_7Network16ClientReplicatorERKNS_4Guid4DataEPNS_12PartInstanceENS2_10shared_ptrIS0_EEEENS3_5list4INS3_5valueIPS8_EENSJ_ISA_EENSJ_ISE_EENS2_3argILi1EEEEEEEEEvRKT_
+#[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>> const&)const")]
+pub fn stub_981138() -> ! {
+    todo!("0x981138 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>> const&)const")
+}
+
+// 0x9813d4 — __ZN3RBX7Network16ClientReplicator21setPropSyncExpirationEd
+#[doc(alias = "RBX::Network::ClientReplicator::setPropSyncExpiration(double)")]
+pub fn stub_9813d4() -> ! {
+    todo!("0x9813d4 RBX::Network::ClientReplicator::setPropSyncExpiration(double)")
+}
+
+// 0x9813e4 — __ZNK3RBX7Network16ClientReplicator15getRemotePlayerEv
+#[doc(alias = "RBX::Network::ClientReplicator::getRemotePlayer(void)const")]
+pub fn stub_9813e4() -> ! {
+    todo!("0x9813e4 RBX::Network::ClientReplicator::getRemotePlayer(void)const")
+}
+
+// 0x9813e8 — __ZNK3RBX7Network10Replicator20UsesReliabilityLayerEv
+#[doc(alias = "RBX::Network::Replicator::UsesReliabilityLayer(void)const")]
+pub fn stub_9813e8() -> ! {
+    todo!("0x9813e8 RBX::Network::Replicator::UsesReliabilityLayer(void)const")
+}
+
+// 0x9813ec — __ZN3RBX7Network16ClientReplicator24isProtectedStringEnabledEv
+#[doc(alias = "RBX::Network::ClientReplicator::isProtectedStringEnabled(void)")]
+pub fn stub_9813ec() -> ! {
+    todo!("0x9813ec RBX::Network::ClientReplicator::isProtectedStringEnabled(void)")
+}
+
+// 0x98164c — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network16ClientReplicatorERKNS4_4Guid4DataEPNS4_12PartInstanceENS_10shared_ptrINS4_8InstanceEEEEENS0_5list4INS0_5valueIPS6_EENSI_IS8_EENSI_ISC_EENS_3argILi1EEEEEEclISF_EEvRKT_
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>::operator()<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&)")]
+pub fn stub_98164c() -> ! {
+    todo!("0x98164c void boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::Network::ClientReplicator*>,boost::_bi::value<RBX::Guid::Data>,boost::_bi::value<RBX::PartInstance *>,boost::arg<1>>>::operator()<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&)")
+}
+
+// 0x9818d0 — __ZNK5boost4_mfi3mf3IvN3RBX7Network16ClientReplicatorERKNS2_4Guid4DataEPNS2_12PartInstanceENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S8_SA_SD_
+#[doc(alias = "boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator*,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>)const")]
+pub fn stub_9818d0() -> ! {
+    todo!("0x9818d0 boost::_mfi::mf3<void,RBX::Network::ClientReplicator,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::ClientReplicator*,RBX::Guid::Data const&,RBX::PartInstance *,boost::shared_ptr<RBX::Instance>)const")
+}
+
+// 0x9822cc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvNS4_7Network16ClientReplicatorEEENSA_5list1INSA_5valueIPSF_EEEEEEED1Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>>::~callable_slot()")]
+pub fn stub_9822cc() -> ! {
+    todo!("0x9822cc rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>>::~callable_slot()")
+}
+
+// 0x982328 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvNS4_7Network16ClientReplicatorEEENSA_5list1INSA_5valueIPSF_EEEEEEED0Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>>::~callable_slot()")]
+pub fn stub_982328() -> ! {
+    todo!("0x982328 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>>::~callable_slot()")
+}
+
+// 0x982430 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvNS5_7Network16ClientReplicatorEEENSB_5list1INSB_5valueIPSG_EEEEEELi1ES8_E4callES7_
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_982430() -> ! {
+    todo!("0x982430 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x98244c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvNS5_7Network16ClientReplicatorEEENSB_5list1INSB_5valueIPSG_EEEEEELi1ES8_E4callES7_
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_98244c() -> ! {
+    todo!("0x98244c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Network::ClientReplicator>,boost::_bi::list1<boost::_bi::value<RBX::Network::ClientReplicator*>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x982468 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network16ClientReplicator5GCJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(boost::shared_ptr<RBX::Network::ClientReplicator::GCJob> *,RBX::Network::ClientReplicator::GCJob *,boost::detail::shared_count &)")]
+pub fn stub_982468() -> ! {
+    todo!("0x982468 void boost::detail::sp_pointer_construct<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(boost::shared_ptr<RBX::Network::ClientReplicator::GCJob> *,RBX::Network::ClientReplicator::GCJob *,boost::detail::shared_count &)")
+}
+
+// 0x982618 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network16ClientReplicator5GCJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(boost::shared_ptr<RBX::Network::ClientReplicator::GCJob> const*,RBX::Network::ClientReplicator::GCJob *)const")]
+pub fn stub_982618() -> ! {
+    todo!("0x982618 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ClientReplicator::GCJob,RBX::Network::ClientReplicator::GCJob>(boost::shared_ptr<RBX::Network::ClientReplicator::GCJob> const*,RBX::Network::ClientReplicator::GCJob *)const")
+}
+
+// 0x9828c4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::~sp_counted_impl_p()")]
+pub fn stub_9828c4() -> ! {
+    todo!("0x9828c4 boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::~sp_counted_impl_p()")
+}
+
+// 0x9828c8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::~sp_counted_impl_p()")]
+pub fn stub_9828c8() -> ! {
+    todo!("0x9828c8 boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::~sp_counted_impl_p()")
+}
+
+// 0x9828d4 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::dispose(void)")]
+pub fn stub_9828d4() -> ! {
+    todo!("0x9828d4 boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::dispose(void)")
+}
+
+// 0x9828e8 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::get_deleter(std::type_info const&)")]
+pub fn stub_9828e8() -> ! {
+    todo!("0x9828e8 boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::get_deleter(std::type_info const&)")
+}
+
+// 0x9828ec — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network16ClientReplicator5GCJobEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::get_untyped_deleter(void)")]
+pub fn stub_9828ec() -> ! {
+    todo!("0x9828ec boost::detail::sp_counted_impl_p<RBX::Network::ClientReplicator::GCJob>::get_untyped_deleter(void)")
+}
+
+// 0x982cf8 — __ZN3RBX7Network16ClientReplicator15ClientStatsItemC2ERKN5boost10shared_ptrIKS1_EE
+#[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::ClientStatsItem(boost::shared_ptr<RBX::Network::ClientReplicator const> const&)")]
+pub fn stub_982cf8() -> ! {
+    todo!("0x982cf8 RBX::Network::ClientReplicator::ClientStatsItem::ClientStatsItem(boost::shared_ptr<RBX::Network::ClientReplicator const> const&)")
+}
+
+// 0x983070 — __ZN3RBX7Network10Replicator9StatsItemC2ERKN5boost10shared_ptrIKS1_EE
+#[doc(alias = "RBX::Network::Replicator::StatsItem::StatsItem(boost::shared_ptr<RBX::Network::Replicator const> const&)")]
+pub fn stub_983070() -> ! {
+    todo!("0x983070 RBX::Network::Replicator::StatsItem::StatsItem(boost::shared_ptr<RBX::Network::Replicator const> const&)")
+}
+
+// 0x983cf4 — __ZN3RBX7Network16ClientReplicator15ClientStatsItemD1Ev
+#[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
+pub fn stub_983cf4() -> ! {
+    todo!("0x983cf4 RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+}
+
+// 0x983d00 — __ZN3RBX7Network16ClientReplicator15ClientStatsItemD0Ev
+#[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
+pub fn stub_983d00() -> ! {
+    todo!("0x983d00 RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+}
+
+// 0x983da0 — __ZN3RBX7Network16ClientReplicator15ClientStatsItem6updateEv
+#[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::update(void)")]
+pub fn stub_983da0() -> ! {
+    todo!("0x983da0 RBX::Network::ClientReplicator::ClientStatsItem::update(void)")
+}
+
+// 0x984144 — __ZThn32_N3RBX7Network16ClientReplicator15ClientStatsItemD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
+pub fn stub_984144() -> ! {
+    todo!("0x984144 `non-virtual thunk to'RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+}
+
+// 0x984150 — __ZThn32_N3RBX7Network16ClientReplicator15ClientStatsItemD0Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
+pub fn stub_984150() -> ! {
+    todo!("0x984150 `non-virtual thunk to'RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+}
+
+// 0x9841f8 — __ZThn36_N3RBX7Network16ClientReplicator15ClientStatsItemD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
+pub fn stub_9841f8() -> ! {
+    todo!("0x9841f8 `non-virtual thunk to'RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+}
+
+// 0x984204 — __ZThn36_N3RBX7Network16ClientReplicator15ClientStatsItemD0Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")]
+pub fn stub_984204() -> ! {
+    todo!("0x984204 `non-virtual thunk to'RBX::Network::ClientReplicator::ClientStatsItem::~ClientStatsItem()")
+}
+
+// 0x985838 — __ZN3RBX7Network12RakStatsItemD0Ev
+#[doc(alias = "RBX::Network::RakStatsItem::~RakStatsItem()")]
+pub fn stub_985838() -> ! {
+    todo!("0x985838 RBX::Network::RakStatsItem::~RakStatsItem()")
+}
+
+// 0x985948 — __ZThn36_N3RBX7Network12RakStatsItemD1Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
+pub fn stub_985948() -> ! {
+    todo!("0x985948 `non-virtual thunk to'RBX::Network::RakStatsItem::~RakStatsItem()")
+}
+
+// 0x9859c8 — __ZThn36_N3RBX7Network12RakStatsItemD0Ev
+#[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
+pub fn stub_9859c8() -> ! {
+    todo!("0x9859c8 `non-virtual thunk to'RBX::Network::RakStatsItem::~RakStatsItem()")
+}
+
+// 0x986b18 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network12RakStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+pub fn stub_986b18() -> ! {
+    todo!("0x986b18 boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x986b20 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network12RakStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+pub fn stub_986b20() -> ! {
+    todo!("0x986b20 boost::detail::sp_counted_impl_pd<RBX::Network::RakStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x986b40 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicator15ClientStatsItemES8_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const")]
+pub fn stub_986b40() -> ! {
+    todo!("0x986b40 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const")
+}
+
+// 0x986dfc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicator15ClientStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+pub fn stub_986dfc() -> ! {
+    todo!("0x986dfc boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x986e00 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicator15ClientStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+pub fn stub_986e00() -> ! {
+    todo!("0x986e00 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x986e0c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicator15ClientStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+pub fn stub_986e0c() -> ! {
+    todo!("0x986e0c boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x986e28 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicator15ClientStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+pub fn stub_986e28() -> ! {
+    todo!("0x986e28 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x986e40 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX7Network16ClientReplicator15ClientStatsItemENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+pub fn stub_986e40() -> ! {
+    todo!("0x986e40 boost::detail::sp_counted_impl_pd<RBX::Network::ClientReplicator::ClientStatsItem *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x987068 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE12emplace_implINS1_13emplace_args1ISC_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISC_EEEEbERSA_RKT_
+#[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>(RBX::Network::PropSync::detail::PropertyKey const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> const&)")]
+pub fn stub_987068() -> ! {
+    todo!("0x987068 std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>>(RBX::Network::PropSync::detail::PropertyKey const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> const&)")
+}
+
+// 0x9872a8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE18reserve_for_insertEm
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::reserve_for_insert(unsigned long)")]
+pub fn stub_9872a8() -> ! {
+    todo!("0x9872a8 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::reserve_for_insert(unsigned long)")
+}
+
+// 0x987450 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE14create_bucketsEm
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::create_buckets(unsigned long)")]
+pub fn stub_987450() -> ! {
+    todo!("0x987450 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::create_buckets(unsigned long)")
+}
+
+// 0x987500 — __ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEE11expireItemsEv
+#[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::expireItems(void)")]
+pub fn stub_987500() -> ! {
+    todo!("0x987500 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::expireItems(void)")
+}
+
+// 0x98769c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKN3RBX7Network8PropSync6detail11PropertyKeyENS8_9SlaveItemEEES9_SB_NS_4hashIS9_EESt8equal_toIS9_EEEE11erase_nodesEPNS1_8ptr_nodeISC_EESM_
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *)")]
+pub fn stub_98769c() -> ! {
+    todo!("0x98769c boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>>,RBX::Network::PropSync::detail::PropertyKey,RBX::Network::PropSync::detail::SlaveItem,boost::hash<RBX::Network::PropSync::detail::PropertyKey>,std::equal_to<RBX::Network::PropSync::detail::PropertyKey>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Network::PropSync::detail::PropertyKey const,RBX::Network::PropSync::detail::SlaveItem>> *)")
+}
+
+// 0x987780 — __ZN3RBX7Network16ClientReplicator24ClientCapacityUpdateItemD1Ev
+#[doc(alias = "RBX::Network::ClientReplicator::ClientCapacityUpdateItem::~ClientCapacityUpdateItem()")]
+pub fn stub_987780() -> ! {
+    todo!("0x987780 RBX::Network::ClientReplicator::ClientCapacityUpdateItem::~ClientCapacityUpdateItem()")
+}
+
+// 0x987784 — __ZN3RBX7Network16ClientReplicator24ClientCapacityUpdateItemD0Ev
+#[doc(alias = "RBX::Network::ClientReplicator::ClientCapacityUpdateItem::~ClientCapacityUpdateItem()")]
+pub fn stub_987784() -> ! {
+    todo!("0x987784 RBX::Network::ClientReplicator::ClientCapacityUpdateItem::~ClientCapacityUpdateItem()")
+}
+
+// 0x9877b8 — __ZN3RBX7Network16ClientReplicator20RequestCharacterItemD1Ev
+#[doc(alias = "RBX::Network::ClientReplicator::RequestCharacterItem::~RequestCharacterItem()")]
+pub fn stub_9877b8() -> ! {
+    todo!("0x9877b8 RBX::Network::ClientReplicator::RequestCharacterItem::~RequestCharacterItem()")
+}
+
+// 0x9877bc — __ZN3RBX7Network16ClientReplicator20RequestCharacterItemD0Ev
+#[doc(alias = "RBX::Network::ClientReplicator::RequestCharacterItem::~RequestCharacterItem()")]
+pub fn stub_9877bc() -> ! {
+    todo!("0x9877bc RBX::Network::ClientReplicator::RequestCharacterItem::~RequestCharacterItem()")
+}
+
+// 0x987c58 — __ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEED2Ev
+#[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::~Base()")]
+pub fn stub_987c58() -> ! {
+    todo!("0x987c58 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::~Base()")
+}
+
+// 0x987df0 — __ZN3RBX7Network8PropSync6detail4BaseINS2_9SlaveItemEEC2ENS_4Time8IntervalE
+#[doc(alias = "RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::Base(RBX::Time::Interval)")]
+pub fn stub_987df0() -> ! {
+    todo!("0x987df0 RBX::Network::PropSync::detail::Base<RBX::Network::PropSync::detail::SlaveItem>::Base(RBX::Time::Interval)")
+}
+
+// 0x987f38 — __ZN3rbx10safe_queueINS_14implementation27timestamped_safe_queue_itemIN3RBX7Network8PropSync6detail11PropertyKeyEEEEC2Ev
+#[doc(alias = "rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>::safe_queue(void)")]
+pub fn stub_987f38() -> ! {
+    todo!("0x987f38 rbx::safe_queue<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>::safe_queue(void)")
+}
+
+// 0x988140 — __ZNSt11_Deque_baseIN3rbx14implementation27timestamped_safe_queue_itemIN3RBX7Network8PropSync6detail11PropertyKeyEEESaIS8_EE17_M_initialize_mapEm
+#[doc(alias = "std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>>::_M_initialize_map(unsigned long)")]
+pub fn stub_988140() -> ! {
+    todo!("0x988140 std::_Deque_base<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::PropSync::detail::PropertyKey>>>::_M_initialize_map(unsigned long)")
+}
+
+// 0x9985a8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NetworkSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NetworkSettings,RBX::NetworkSettings>(boost::shared_ptr<RBX::NetworkSettings> const*,RBX::NetworkSettings *)const")]
+pub fn stub_9985a8() -> ! {
+    todo!("0x9985a8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NetworkSettings,RBX::NetworkSettings>(boost::shared_ptr<RBX::NetworkSettings> const*,RBX::NetworkSettings *)const")
+}
+
+// 0x998868 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NetworkSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+pub fn stub_998868() -> ! {
+    todo!("0x998868 boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x998878 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NetworkSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+pub fn stub_998878() -> ! {
+    todo!("0x998878 boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x998890 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX15NetworkSettingsENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+pub fn stub_998890() -> ! {
+    todo!("0x998890 boost::detail::sp_counted_impl_pd<RBX::NetworkSettings *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x99ae78 — __ZN3RBX7Network17ConcurrentRakPeerD1Ev
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::~ConcurrentRakPeer()")]
+pub fn stub_99ae78() -> ! {
+    todo!("0x99ae78 RBX::Network::ConcurrentRakPeer::~ConcurrentRakPeer()")
+}
+
+// 0x99ae84 — __ZN3RBX7Network17ConcurrentRakPeerD2Ev
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::~ConcurrentRakPeer()")]
+pub fn stub_99ae84() -> ! {
+    todo!("0x99ae84 RBX::Network::ConcurrentRakPeer::~ConcurrentRakPeer()")
+}
+
+// 0x99b848 — __ZN3RBX7Network17ConcurrentRakPeer15GetBufferHealthEv
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::GetBufferHealth(void)")]
+pub fn stub_99b848() -> ! {
+    todo!("0x99b848 RBX::Network::ConcurrentRakPeer::GetBufferHealth(void)")
+}
+
+// 0x99ba9c — __ZN3RBX7Network17ConcurrentRakPeer7rawPeerEv
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::rawPeer(void)")]
+pub fn stub_99ba9c() -> ! {
+    todo!("0x99ba9c RBX::Network::ConcurrentRakPeer::rawPeer(void)")
+}
+
+// 0x99bd24 — __ZN5boost8functionIFvRKN3RBX7Network22ConcurrentRakPeerStatsEEEaSERKS7_
+#[doc(alias = "boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>::operator=(boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)> const&)")]
+pub fn stub_99bd24() -> ! {
+    todo!("0x99bd24 boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)>::operator=(boost::function<void ()(RBX::Network::ConcurrentRakPeerStats const&)> const&)")
+}
+
+// 0x99c01c — __ZN3rbx22timestamped_safe_queueIN3RBX7Network17ConcurrentRakPeer9PacketJob8SendDataEE4pushERKS5_
+#[doc(alias = "rbx::timestamped_safe_queue<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>::push(RBX::Network::ConcurrentRakPeer::PacketJob::SendData const&)")]
+pub fn stub_99c01c() -> ! {
+    todo!("0x99c01c rbx::timestamped_safe_queue<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>::push(RBX::Network::ConcurrentRakPeer::PacketJob::SendData const&)")
+}
+
+// 0x99cae8 — __ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIN3RBX7Network17ConcurrentRakPeer9PacketJob8SendDataEEESaIS8_EE16_M_push_back_auxERKS8_
+#[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>>>::_M_push_back_aux(rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData> const&)")]
+pub fn stub_99cae8() -> ! {
+    todo!("0x99cae8 std::deque<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>>>::_M_push_back_aux(rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData> const&)")
+}
+
+// 0x99cea8 — __ZNSt5dequeIN3rbx14implementation27timestamped_safe_queue_itemIN3RBX7Network17ConcurrentRakPeer9PacketJob8SendDataEEESaIS8_EE17_M_reallocate_mapEmb
+#[doc(alias = "std::deque<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>>>::_M_reallocate_map(unsigned long,bool)")]
+pub fn stub_99cea8() -> ! {
+    todo!("0x99cea8 std::deque<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>,std::allocator<rbx::implementation::timestamped_safe_queue_item<RBX::Network::ConcurrentRakPeer::PacketJob::SendData>>>::_M_reallocate_map(unsigned long,bool)")
+}
+
+// 0x99cf80 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> *,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *,boost::detail::shared_count &)")]
+pub fn stub_99cf80() -> ! {
+    todo!("0x99cf80 void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> *,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *,boost::detail::shared_count &)")
+}
+
+// 0x99d130 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network17ConcurrentRakPeer14StatsUpdateJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> const*,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *)const")]
+pub fn stub_99d130() -> ! {
+    todo!("0x99d130 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> const*,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *)const")
+}
+
+// 0x99d3dc — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::~sp_counted_impl_p()")]
+pub fn stub_99d3dc() -> ! {
+    todo!("0x99d3dc boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::~sp_counted_impl_p()")
+}
+
+// 0x99d3e0 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::~sp_counted_impl_p()")]
+pub fn stub_99d3e0() -> ! {
+    todo!("0x99d3e0 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::~sp_counted_impl_p()")
+}
+
+// 0x99d3ec — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::dispose(void)")]
+pub fn stub_99d3ec() -> ! {
+    todo!("0x99d3ec boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::dispose(void)")
+}
+
+// 0x99d400 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::get_deleter(std::type_info const&)")]
+pub fn stub_99d400() -> ! {
+    todo!("0x99d400 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::get_deleter(std::type_info const&)")
+}
+
+// 0x99d404 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::get_untyped_deleter(void)")]
+pub fn stub_99d404() -> ! {
+    todo!("0x99d404 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::StatsUpdateJob>::get_untyped_deleter(void)")
+}
+
+// 0x99d408 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network17ConcurrentRakPeer9PacketJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::PacketJob> *,RBX::Network::ConcurrentRakPeer::PacketJob *,boost::detail::shared_count &)")]
+pub fn stub_99d408() -> ! {
+    todo!("0x99d408 void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::PacketJob> *,RBX::Network::ConcurrentRakPeer::PacketJob *,boost::detail::shared_count &)")
+}
+
+// 0x99d5b8 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network17ConcurrentRakPeer9PacketJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::PacketJob> const*,RBX::Network::ConcurrentRakPeer::PacketJob *)const")]
+pub fn stub_99d5b8() -> ! {
+    todo!("0x99d5b8 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::PacketJob> const*,RBX::Network::ConcurrentRakPeer::PacketJob *)const")
+}
+
+// 0x99d864 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer9PacketJobEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::~sp_counted_impl_p()")]
+pub fn stub_99d864() -> ! {
+    todo!("0x99d864 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::~sp_counted_impl_p()")
+}
+
+// 0x99d868 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer9PacketJobEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::~sp_counted_impl_p()")]
+pub fn stub_99d868() -> ! {
+    todo!("0x99d868 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::~sp_counted_impl_p()")
+}
+
+// 0x99d874 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer9PacketJobEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::dispose(void)")]
+pub fn stub_99d874() -> ! {
+    todo!("0x99d874 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::dispose(void)")
+}
+
+// 0x99d888 — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer9PacketJobEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::get_deleter(std::type_info const&)")]
+pub fn stub_99d888() -> ! {
+    todo!("0x99d888 boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::get_deleter(std::type_info const&)")
+}
+
+// 0x99d88c — __ZN5boost6detail17sp_counted_impl_pIN3RBX7Network17ConcurrentRakPeer9PacketJobEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::get_untyped_deleter(void)")]
+pub fn stub_99d88c() -> ! {
+    todo!("0x99d88c boost::detail::sp_counted_impl_p<RBX::Network::ConcurrentRakPeer::PacketJob>::get_untyped_deleter(void)")
+}
+
+// 0x99ef14 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobD1Ev
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::~StatsUpdateJob()")]
+pub fn stub_99ef14() -> ! {
+    todo!("0x99ef14 RBX::Network::ConcurrentRakPeer::StatsUpdateJob::~StatsUpdateJob()")
+}
+
+// 0x99ef20 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobD0Ev
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::~StatsUpdateJob()")]
+pub fn stub_99ef20() -> ! {
+    todo!("0x99ef20 RBX::Network::ConcurrentRakPeer::StatsUpdateJob::~StatsUpdateJob()")
+}
+
+// 0x99efc0 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_99efc0() -> ! {
+    todo!("0x99efc0 RBX::Network::ConcurrentRakPeer::StatsUpdateJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x99efdc — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob5errorERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_99efdc() -> ! {
+    todo!("0x99efdc RBX::Network::ConcurrentRakPeer::StatsUpdateJob::error(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x99eff8 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJob16stepDataModelJobERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_99eff8() -> ! {
+    todo!("0x99eff8 RBX::Network::ConcurrentRakPeer::StatsUpdateJob::stepDataModelJob(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x99f644 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobD2Ev
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::~StatsUpdateJob()")]
+pub fn stub_99f644() -> ! {
+    todo!("0x99f644 RBX::Network::ConcurrentRakPeer::StatsUpdateJob::~StatsUpdateJob()")
+}
+
+// 0x99ff54 — __ZN3RBX7Network17ConcurrentRakPeer9PacketJobD1Ev
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::PacketJob::~PacketJob()")]
+pub fn stub_99ff54() -> ! {
+    todo!("0x99ff54 RBX::Network::ConcurrentRakPeer::PacketJob::~PacketJob()")
+}
+
+// 0x99ff60 — __ZN3RBX7Network17ConcurrentRakPeer9PacketJobD0Ev
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::PacketJob::~PacketJob()")]
+pub fn stub_99ff60() -> ! {
+    todo!("0x99ff60 RBX::Network::ConcurrentRakPeer::PacketJob::~PacketJob()")
+}
+
+// 0x9a0000 — __ZN3RBX7Network17ConcurrentRakPeer9PacketJob9sleepTimeERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::PacketJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_9a0000() -> ! {
+    todo!("0x9a0000 RBX::Network::ConcurrentRakPeer::PacketJob::sleepTime(RBX::TaskScheduler::Job::Stats const&)")
+}
+
+// 0x9a0030 — __ZN3RBX7Network17ConcurrentRakPeer9PacketJob5errorERKNS_13TaskScheduler3Job5StatsE
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::PacketJob::error(RBX::TaskScheduler::Job::Stats const&)")]
+pub fn stub_9a0030() -> ! {
+    todo!("0x9a0030 RBX::Network::ConcurrentRakPeer::PacketJob::error(RBX::TaskScheduler::Job::Stats const&)")
 }
