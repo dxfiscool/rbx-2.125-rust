@@ -1,6 +1,6 @@
-//! platform generated — 1274 stubs sorted by EA, from ida/export.json
+//! platform generated — 1374 stubs sorted by EA, from ida/export.json
 //! Filter: ObjC -[/+[ selectors (3026 total) — includes RobloxView|GameViewController|AppDelegate|...|Appirater|AboutController|etc
-//! Batch: 1274 stubs (1174 prior + 100 this batch, 3026 filtered, 2300 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
+//! Batch: 1374 stubs (1274 prior + 100 this batch, 3026 filtered, 2200 remaining; 6 boost wrappers) | SharedPtr = rbx_core::SharedPtr (Arc) not boost::shared_ptr
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -8875,4 +8875,703 @@ pub fn stub_41a5c() -> ! {
 #[doc(alias = "-[UserInfo setRbxBal:]")]
 pub fn stub_41a6c() -> ! {
     todo!("0x41a6c -[UserInfo setRbxBal:]")
+}
+// 0x41a90 — -[UserInfo tikBal]
+// type: NSNumber *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo tikBal]")]
+pub fn stub_41a90() -> ! {
+    todo!("0x41a90 -[UserInfo tikBal]")
+}
+
+// 0x41aa0 — -[UserInfo setTikBal:]
+// type: void __cdecl(UserInfo *self, SEL, id)
+#[doc(alias = "-[UserInfo setTikBal:]")]
+pub fn stub_41aa0() -> ! {
+    todo!("0x41aa0 -[UserInfo setTikBal:]")
+}
+
+// 0x41ac4 — -[UserInfo userThumbNailUrl]
+// type: NSString *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo userThumbNailUrl]")]
+pub fn stub_41ac4() -> ! {
+    todo!("0x41ac4 -[UserInfo userThumbNailUrl]")
+}
+
+// 0x41ad4 — -[UserInfo setUserThumbNailUrl:]
+// type: void __cdecl(UserInfo *self, SEL, id)
+#[doc(alias = "-[UserInfo setUserThumbNailUrl:]")]
+pub fn stub_41ad4() -> ! {
+    todo!("0x41ad4 -[UserInfo setUserThumbNailUrl:]")
+}
+
+// 0x41af8 — -[UserInfo bcMember]
+// type: NSString *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo bcMember]")]
+pub fn stub_41af8() -> ! {
+    todo!("0x41af8 -[UserInfo bcMember]")
+}
+
+// 0x41b08 — -[UserInfo setBcMember:]
+// type: void __cdecl(UserInfo *self, SEL, id)
+#[doc(alias = "-[UserInfo setBcMember:]")]
+pub fn stub_41b08() -> ! {
+    todo!("0x41b08 -[UserInfo setBcMember:]")
+}
+
+// 0x41b2c — -[UserInfo encodedPassword]
+// type: NSString *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo encodedPassword]")]
+pub fn stub_41b2c() -> ! {
+    todo!("0x41b2c -[UserInfo encodedPassword]")
+}
+
+// 0x41b3c — -[UserInfo setEncodedPassword:]
+// type: void __cdecl(UserInfo *self, SEL, id)
+#[doc(alias = "-[UserInfo setEncodedPassword:]")]
+pub fn stub_41b3c() -> ! {
+    todo!("0x41b3c -[UserInfo setEncodedPassword:]")
+}
+
+// 0x41b60 — -[UserInfo encodedUsername]
+// type: NSString *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo encodedUsername]")]
+pub fn stub_41b60() -> ! {
+    todo!("0x41b60 -[UserInfo encodedUsername]")
+}
+
+// 0x41b70 — -[UserInfo setEncodedUsername:]
+// type: void __cdecl(UserInfo *self, SEL, id)
+#[doc(alias = "-[UserInfo setEncodedUsername:]")]
+pub fn stub_41b70() -> ! {
+    todo!("0x41b70 -[UserInfo setEncodedUsername:]")
+}
+
+// 0x41b94 — -[UserInfo username]
+// type: NSString *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo username]")]
+pub fn stub_41b94() -> ! {
+    todo!("0x41b94 -[UserInfo username]")
+}
+
+// 0x41ba4 — -[UserInfo setUsername:]
+// type: void __cdecl(UserInfo *self, SEL, id)
+#[doc(alias = "-[UserInfo setUsername:]")]
+pub fn stub_41ba4() -> ! {
+    todo!("0x41ba4 -[UserInfo setUsername:]")
+}
+
+// 0x41bc8 — -[UserInfo password]
+// type: NSString *__cdecl(UserInfo *self, SEL)
+#[doc(alias = "-[UserInfo password]")]
+pub fn stub_41bc8() -> ! {
+    todo!("0x41bc8 -[UserInfo password]")
+}
+
+// 0x41bd8 — -[UserInfo setPassword:]
+// type: void __cdecl(UserInfo *self, SEL, id)
+#[doc(alias = "-[UserInfo setPassword:]")]
+pub fn stub_41bd8() -> ! {
+    todo!("0x41bd8 -[UserInfo setPassword:]")
+}
+
+// 0x41cc4 — +[RobloxGoogleAnalytics initialize]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[RobloxGoogleAnalytics initialize]")]
+pub fn stub_41cc4() -> ! {
+    todo!("0x41cc4 +[RobloxGoogleAnalytics initialize]")
+}
+
+// 0x41cf0 — ___35+[RobloxGoogleAnalytics initialize]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___35+[RobloxGoogleAnalytics initialize]_block_invoke")]
+pub fn stub_41cf0() -> ! {
+    todo!("0x41cf0 ___35+[RobloxGoogleAnalytics initialize]_block_invoke")
+}
+
+// 0x41f28 — +[RobloxGoogleAnalytics release]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[RobloxGoogleAnalytics release]")]
+pub fn stub_41f28() -> ! {
+    todo!("0x41f28 +[RobloxGoogleAnalytics release]")
+}
+
+// 0x41f2c — +[RobloxGoogleAnalytics callBackPageTracking:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[RobloxGoogleAnalytics callBackPageTracking:]")]
+pub fn stub_41f2c() -> ! {
+    todo!("0x41f2c +[RobloxGoogleAnalytics callBackPageTracking:]")
+}
+
+// 0x41f74 — +[RobloxGoogleAnalytics setPageViewTracking:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[RobloxGoogleAnalytics setPageViewTracking:]")]
+pub fn stub_41f74() -> ! {
+    todo!("0x41f74 +[RobloxGoogleAnalytics setPageViewTracking:]")
+}
+
+// 0x4203c — +[RobloxGoogleAnalytics callBackEventTracking:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[RobloxGoogleAnalytics callBackEventTracking:]")]
+pub fn stub_4203c() -> ! {
+    todo!("0x4203c +[RobloxGoogleAnalytics callBackEventTracking:]")
+}
+
+// 0x420e4 — +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]
+// type: void __cdecl(id, SEL, id, id, id, int)
+#[doc(alias = "+[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")]
+pub fn stub_420e4() -> ! {
+    todo!("0x420e4 +[RobloxGoogleAnalytics setEventTracking:withAction:withLabel:withValue:]")
+}
+
+// 0x42230 — +[RobloxGoogleAnalytics callbackCustomVariableTracking:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[RobloxGoogleAnalytics callbackCustomVariableTracking:]")]
+pub fn stub_42230() -> ! {
+    todo!("0x42230 +[RobloxGoogleAnalytics callbackCustomVariableTracking:]")
+}
+
+// 0x42298 — +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]
+// type: void __cdecl(id, SEL, id, id)
+#[doc(alias = "+[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")]
+pub fn stub_42298() -> ! {
+    todo!("0x42298 +[RobloxGoogleAnalytics setCustomVariableWithLabel:withValue:]")
+}
+
+// 0x42374 — +[RobloxGoogleAnalytics debugCountersPrint]
+// type: void __cdecl(id, SEL)
+#[doc(alias = "+[RobloxGoogleAnalytics debugCountersPrint]")]
+pub fn stub_42374() -> ! {
+    todo!("0x42374 +[RobloxGoogleAnalytics debugCountersPrint]")
+}
+
+// 0x424cc — +[RobloxGoogleAnalytics debugCounterIncrement:]
+// type: void __cdecl(id, SEL, id)
+#[doc(alias = "+[RobloxGoogleAnalytics debugCounterIncrement:]")]
+pub fn stub_424cc() -> ! {
+    todo!("0x424cc +[RobloxGoogleAnalytics debugCounterIncrement:]")
+}
+
+// 0x42718 — +[RobloxWebUtility sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[RobloxWebUtility sharedInstance]")]
+pub fn stub_42718() -> ! {
+    todo!("0x42718 +[RobloxWebUtility sharedInstance]")
+}
+
+// 0x42774 — ___34+[RobloxWebUtility sharedInstance]_block_invoke
+// type: (unknown)
+#[doc(alias = "___34+[RobloxWebUtility sharedInstance]_block_invoke")]
+pub fn stub_42774() -> ! {
+    todo!("0x42774 ___34+[RobloxWebUtility sharedInstance]_block_invoke")
+}
+
+// 0x427c0 — -[RobloxWebUtility init]
+// type: RobloxWebUtility *__cdecl(RobloxWebUtility *self, SEL)
+#[doc(alias = "-[RobloxWebUtility init]")]
+pub fn stub_427c0() -> ! {
+    todo!("0x427c0 -[RobloxWebUtility init]")
+}
+
+// 0x42880 — -[RobloxWebUtility dealloc]
+// type: void __cdecl(RobloxWebUtility *self, SEL)
+#[doc(alias = "-[RobloxWebUtility dealloc]")]
+pub fn stub_42880() -> ! {
+    todo!("0x42880 -[RobloxWebUtility dealloc]")
+}
+
+// 0x4290c — -[RobloxWebUtility getiOSLogQueue]
+// type: dispatch_queue_s *__cdecl(RobloxWebUtility *self, SEL)
+#[doc(alias = "-[RobloxWebUtility getiOSLogQueue]")]
+pub fn stub_4290c() -> ! {
+    todo!("0x4290c -[RobloxWebUtility getiOSLogQueue]")
+}
+
+// 0x4291c — -[RobloxWebUtility getiOSSettingsQueue]
+// type: dispatch_queue_s *__cdecl(RobloxWebUtility *self, SEL)
+#[doc(alias = "-[RobloxWebUtility getiOSSettingsQueue]")]
+pub fn stub_4291c() -> ! {
+    todo!("0x4291c -[RobloxWebUtility getiOSSettingsQueue]")
+}
+
+// 0x4292c — -[RobloxWebUtility setCachediOSSettings:]
+// type: void __cdecl(RobloxWebUtility *self, SEL, iOSSettingsService *)
+#[doc(alias = "-[RobloxWebUtility setCachediOSSettings:]")]
+pub fn stub_4292c() -> ! {
+    todo!("0x4292c -[RobloxWebUtility setCachediOSSettings:]")
+}
+
+// 0x4293c — -[RobloxWebUtility getCachediOSSettings]
+// type: iOSSettingsService *__cdecl(RobloxWebUtility *self, SEL)
+#[doc(alias = "-[RobloxWebUtility getCachediOSSettings]")]
+pub fn stub_4293c() -> ! {
+    todo!("0x4293c -[RobloxWebUtility getCachediOSSettings]")
+}
+
+// 0x4294c — -[RobloxWebUtility getLastSettingsRequestTime]
+// type: id __cdecl(RobloxWebUtility *self, SEL)
+#[doc(alias = "-[RobloxWebUtility getLastSettingsRequestTime]")]
+pub fn stub_4294c() -> ! {
+    todo!("0x4294c -[RobloxWebUtility getLastSettingsRequestTime]")
+}
+
+// 0x4295c — -[RobloxWebUtility getiOSSettingsServiceFromWeb]
+// type: iOSSettingsService *__cdecl(RobloxWebUtility *self, SEL)
+#[doc(alias = "-[RobloxWebUtility getiOSSettingsServiceFromWeb]")]
+pub fn stub_4295c() -> ! {
+    todo!("0x4295c -[RobloxWebUtility getiOSSettingsServiceFromWeb]")
+}
+
+// 0x42a98 — +[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]
+// type: iOSSettingsService *__cdecl(id, SEL, char)
+#[doc(alias = "+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]")]
+pub fn stub_42a98() -> ! {
+    todo!("0x42a98 +[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]")
+}
+
+// 0x42bc8 — ___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke
+// type: iOSSettingsService *__fastcall(int)
+#[doc(alias = "___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke")]
+pub fn stub_42bc8() -> ! {
+    todo!("0x42bc8 ___63+[RobloxWebUtility getiOSSettingsServiceWithForcedReadFromWeb:]_block_invoke")
+}
+
+// 0x42dec — +[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]
+// type: id __cdecl(id, SEL, int, char, id)
+#[doc(alias = "+[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]")]
+pub fn stub_42dec() -> ! {
+    todo!("0x42dec +[RobloxWebUtility getUrlForButtonTag:recordPageView:query:]")
+}
+
+// 0x44abc — -[CameraControl init:delegate:]
+// type: id __cdecl(CameraControl *self, SEL, CGRect, id)
+#[doc(alias = "-[CameraControl init:delegate:]")]
+pub fn stub_44abc() -> ! {
+    todo!("0x44abc -[CameraControl init:delegate:]")
+}
+
+// 0x44b90 — -[CameraControl dealloc]
+// type: void __cdecl(CameraControl *self, SEL)
+#[doc(alias = "-[CameraControl dealloc]")]
+pub fn stub_44b90() -> ! {
+    todo!("0x44b90 -[CameraControl dealloc]")
+}
+
+// 0x44bbc — -[CameraControl setupPostMouseEventConnection]
+// type: void __cdecl(CameraControl *self, SEL)
+#[doc(alias = "-[CameraControl setupPostMouseEventConnection]")]
+pub fn stub_44bbc() -> ! {
+    todo!("0x44bbc -[CameraControl setupPostMouseEventConnection]")
+}
+
+// 0x44cd4 — -[CameraControl postMouseEventProcessed:inputObject:event:]
+// type: void __cdecl(CameraControl *self, SEL, bool, void *, UIEvent)
+#[doc(alias = "-[CameraControl postMouseEventProcessed:inputObject:event:]")]
+pub fn stub_44cd4() -> ! {
+    todo!("0x44cd4 -[CameraControl postMouseEventProcessed:inputObject:event:]")
+}
+
+// 0x44d04 — -[CameraControl doCameraPanTouchBegan]
+// type: void __cdecl(CameraControl *self, SEL)
+#[doc(alias = "-[CameraControl doCameraPanTouchBegan]")]
+pub fn stub_44d04() -> ! {
+    todo!("0x44d04 -[CameraControl doCameraPanTouchBegan]")
+}
+
+// 0x44dec — -[CameraControl doCameraPanTouchEnded]
+// type: void __cdecl(CameraControl *self, SEL)
+#[doc(alias = "-[CameraControl doCameraPanTouchEnded]")]
+pub fn stub_44dec() -> ! {
+    todo!("0x44dec -[CameraControl doCameraPanTouchEnded]")
+}
+
+// 0x44e58 — -[CameraControl doCameraPanTouchMove]
+// type: void __cdecl(CameraControl *self, SEL)
+#[doc(alias = "-[CameraControl doCameraPanTouchMove]")]
+pub fn stub_44e58() -> ! {
+    todo!("0x44e58 -[CameraControl doCameraPanTouchMove]")
+}
+
+// 0x450a0 — -[CameraControl touchesBegan:withEvent:]
+// type: void __cdecl(CameraControl *self, SEL, id, id)
+#[doc(alias = "-[CameraControl touchesBegan:withEvent:]")]
+pub fn stub_450a0() -> ! {
+    todo!("0x450a0 -[CameraControl touchesBegan:withEvent:]")
+}
+
+// 0x45124 — -[CameraControl touchesEnded:withEvent:]
+// type: void __cdecl(CameraControl *self, SEL, id, id)
+#[doc(alias = "-[CameraControl touchesEnded:withEvent:]")]
+pub fn stub_45124() -> ! {
+    todo!("0x45124 -[CameraControl touchesEnded:withEvent:]")
+}
+
+// 0x45234 — -[CameraControl touchesCancelled:withEvent:]
+// type: void __cdecl(CameraControl *self, SEL, id, id)
+#[doc(alias = "-[CameraControl touchesCancelled:withEvent:]")]
+pub fn stub_45234() -> ! {
+    todo!("0x45234 -[CameraControl touchesCancelled:withEvent:]")
+}
+
+// 0x45344 — -[CameraControl touchesMoved:withEvent:]
+// type: void __cdecl(CameraControl *self, SEL, id, id)
+#[doc(alias = "-[CameraControl touchesMoved:withEvent:]")]
+pub fn stub_45344() -> ! {
+    todo!("0x45344 -[CameraControl touchesMoved:withEvent:]")
+}
+
+// 0x45454 — -[CameraControl .cxx_construct]
+// type: id __cdecl(CameraControl *self, SEL)
+#[doc(alias = "-[CameraControl .cxx_construct]")]
+pub fn stub_45454() -> ! {
+    todo!("0x45454 -[CameraControl .cxx_construct]")
+}
+
+// 0x466cc — -[CharacterMove init:]
+// type: id __cdecl(CharacterMove *self, SEL, CGRect)
+#[doc(alias = "-[CharacterMove init:]")]
+pub fn stub_466cc() -> ! {
+    todo!("0x466cc -[CharacterMove init:]")
+}
+
+// 0x46704 — -[CharacterMove setupCharacterMoveConnection]
+// type: void __cdecl(CharacterMove *self, SEL)
+#[doc(alias = "-[CharacterMove setupCharacterMoveConnection]")]
+pub fn stub_46704() -> ! {
+    todo!("0x46704 -[CharacterMove setupCharacterMoveConnection]")
+}
+
+// 0x467e8 — -[CharacterMove localCharacterMovementEnabledChange:]
+// type: void __cdecl(CharacterMove *self, SEL, const PropertyDescriptor *)
+#[doc(alias = "-[CharacterMove localCharacterMovementEnabledChange:]")]
+pub fn stub_467e8() -> ! {
+    todo!("0x467e8 -[CharacterMove localCharacterMovementEnabledChange:]")
+}
+
+// 0x467ec — -[CharacterMove touchesEnded:withEvent:]
+// type: void __cdecl(CharacterMove *self, SEL, id, id)
+#[doc(alias = "-[CharacterMove touchesEnded:withEvent:]")]
+pub fn stub_467ec() -> ! {
+    todo!("0x467ec -[CharacterMove touchesEnded:withEvent:]")
+}
+
+// 0x468bc — -[CharacterMove touchesCancelled:withEvent:]
+// type: void __cdecl(CharacterMove *self, SEL, id, id)
+#[doc(alias = "-[CharacterMove touchesCancelled:withEvent:]")]
+pub fn stub_468bc() -> ! {
+    todo!("0x468bc -[CharacterMove touchesCancelled:withEvent:]")
+}
+
+// 0x4698c — -[CharacterMove cancelMovement]
+// type: void __cdecl(CharacterMove *self, SEL)
+#[doc(alias = "-[CharacterMove cancelMovement]")]
+pub fn stub_4698c() -> ! {
+    todo!("0x4698c -[CharacterMove cancelMovement]")
+}
+
+// 0x469e8 — -[CharacterMove touchesMoved:withEvent:]
+// type: void __cdecl(CharacterMove *self, SEL, id, id)
+#[doc(alias = "-[CharacterMove touchesMoved:withEvent:]")]
+pub fn stub_469e8() -> ! {
+    todo!("0x469e8 -[CharacterMove touchesMoved:withEvent:]")
+}
+
+// 0x47178 — -[ControlComponent init]
+// type: ControlComponent *__cdecl(ControlComponent *self, SEL)
+#[doc(alias = "-[ControlComponent init]")]
+pub fn stub_47178() -> ! {
+    todo!("0x47178 -[ControlComponent init]")
+}
+
+// 0x47338 — -[ControlComponent getUserInputServiceForGameDataModel]
+// type: UserInputService *__cdecl(ControlComponent *self, SEL)
+#[doc(alias = "-[ControlComponent getUserInputServiceForGameDataModel]")]
+pub fn stub_47338() -> ! {
+    todo!("0x47338 -[ControlComponent getUserInputServiceForGameDataModel]")
+}
+
+// 0x4c248 — -[GameInputViewController init:withBundle:withGame:overlayDataModel:]
+// type: id __cdecl(GameInputViewController *self, SEL, id, id, shared_ptr<RBX::Game>, shared_ptr<RBX::OverlayDataModel>)
+#[doc(alias = "-[GameInputViewController init:withBundle:withGame:overlayDataModel:]")]
+pub fn stub_4c248() -> ! {
+    todo!("0x4c248 -[GameInputViewController init:withBundle:withGame:overlayDataModel:]")
+}
+
+// 0x4c3f4 — -[GameInputViewController dealloc]
+// type: void __cdecl(GameInputViewController *self, SEL)
+#[doc(alias = "-[GameInputViewController dealloc]")]
+pub fn stub_4c3f4() -> ! {
+    todo!("0x4c3f4 -[GameInputViewController dealloc]")
+}
+
+// 0x4c440 — -[GameInputViewController viewDidLoad]
+// type: void __cdecl(GameInputViewController *self, SEL)
+#[doc(alias = "-[GameInputViewController viewDidLoad]")]
+pub fn stub_4c440() -> ! {
+    todo!("0x4c440 -[GameInputViewController viewDidLoad]")
+}
+
+// 0x4c46c — -[GameInputViewController viewDidUnload]
+// type: void __cdecl(GameInputViewController *self, SEL)
+#[doc(alias = "-[GameInputViewController viewDidUnload]")]
+pub fn stub_4c46c() -> ! {
+    todo!("0x4c46c -[GameInputViewController viewDidUnload]")
+}
+
+// 0x4c6ac — +[GameKeyboard sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[GameKeyboard sharedInstance]")]
+pub fn stub_4c6ac() -> ! {
+    todo!("0x4c6ac +[GameKeyboard sharedInstance]")
+}
+
+// 0x4c6dc — ___30+[GameKeyboard sharedInstance]_block_invoke
+// type: void __cdecl(id)
+#[doc(alias = "___30+[GameKeyboard sharedInstance]_block_invoke")]
+pub fn stub_4c6dc() -> ! {
+    todo!("0x4c6dc ___30+[GameKeyboard sharedInstance]_block_invoke")
+}
+
+// 0x4c71c — -[GameKeyboard init]
+// type: GameKeyboard *__cdecl(GameKeyboard *self, SEL)
+#[doc(alias = "-[GameKeyboard init]")]
+pub fn stub_4c71c() -> ! {
+    todo!("0x4c71c -[GameKeyboard init]")
+}
+
+// 0x4ca18 — -[GameKeyboard dealloc]
+// type: void __cdecl(GameKeyboard *self, SEL)
+#[doc(alias = "-[GameKeyboard dealloc]")]
+pub fn stub_4ca18() -> ! {
+    todo!("0x4ca18 -[GameKeyboard dealloc]")
+}
+
+// 0x4ca64 — -[GameKeyboard hideKeyboard]
+// type: void __cdecl(GameKeyboard *self, SEL)
+#[doc(alias = "-[GameKeyboard hideKeyboard]")]
+pub fn stub_4ca64() -> ! {
+    todo!("0x4ca64 -[GameKeyboard hideKeyboard]")
+}
+
+// 0x4cb80 — -[GameKeyboard keyboardWillHide:]
+// type: void __cdecl(GameKeyboard *self, SEL, id)
+#[doc(alias = "-[GameKeyboard keyboardWillHide:]")]
+pub fn stub_4cb80() -> ! {
+    todo!("0x4cb80 -[GameKeyboard keyboardWillHide:]")
+}
+
+// 0x4cbbc — -[GameKeyboard keyboardWillChangeFrame:]
+// type: void __cdecl(GameKeyboard *self, SEL, id)
+#[doc(alias = "-[GameKeyboard keyboardWillChangeFrame:]")]
+pub fn stub_4cbbc() -> ! {
+    todo!("0x4cbbc -[GameKeyboard keyboardWillChangeFrame:]")
+}
+
+// 0x4cbc0 — -[GameKeyboard setDefaultString:]
+// type: void __cdecl(GameKeyboard *self, SEL, id)
+#[doc(alias = "-[GameKeyboard setDefaultString:]")]
+pub fn stub_4cbc0() -> ! {
+    todo!("0x4cbc0 -[GameKeyboard setDefaultString:]")
+}
+
+// 0x4cbe0 — -[GameKeyboard setParentView:]
+// type: void __cdecl(GameKeyboard *self, SEL, id)
+#[doc(alias = "-[GameKeyboard setParentView:]")]
+pub fn stub_4cbe0() -> ! {
+    todo!("0x4cbe0 -[GameKeyboard setParentView:]")
+}
+
+// 0x4cbf8 — -[GameKeyboard showKeyboard:]
+// type: bool __cdecl(GameKeyboard *self, SEL, const char *)
+#[doc(alias = "-[GameKeyboard showKeyboard:]")]
+pub fn stub_4cbf8() -> ! {
+    todo!("0x4cbf8 -[GameKeyboard showKeyboard:]")
+}
+
+// 0x4cc78 — ___29-[GameKeyboard showKeyboard:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___29-[GameKeyboard showKeyboard:]_block_invoke")]
+pub fn stub_4cc78() -> ! {
+    todo!("0x4cc78 ___29-[GameKeyboard showKeyboard:]_block_invoke")
+}
+
+// 0x4ce44 — -[GameKeyboard showKeyboardWithTextBox:]
+// type: bool __cdecl(GameKeyboard *self, SEL, shared_ptr<RBX::TextBox>)
+#[doc(alias = "-[GameKeyboard showKeyboardWithTextBox:]")]
+pub fn stub_4ce44() -> ! {
+    todo!("0x4ce44 -[GameKeyboard showKeyboardWithTextBox:]")
+}
+
+// 0x4cfbc — -[GameKeyboard getText]
+// type: id __cdecl(GameKeyboard *self, SEL)
+#[doc(alias = "-[GameKeyboard getText]")]
+pub fn stub_4cfbc() -> ! {
+    todo!("0x4cfbc -[GameKeyboard getText]")
+}
+
+// 0x4cfdc — -[GameKeyboard textFieldShouldReturn:]
+// type: char __cdecl(GameKeyboard *self, SEL, id)
+#[doc(alias = "-[GameKeyboard textFieldShouldReturn:]")]
+pub fn stub_4cfdc() -> ! {
+    todo!("0x4cfdc -[GameKeyboard textFieldShouldReturn:]")
+}
+
+// 0x4d07c — ___38-[GameKeyboard textFieldShouldReturn:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___38-[GameKeyboard textFieldShouldReturn:]_block_invoke")]
+pub fn stub_4d07c() -> ! {
+    todo!("0x4d07c ___38-[GameKeyboard textFieldShouldReturn:]_block_invoke")
+}
+
+// 0x4d0a4 — -[GameKeyboard textFieldDidEndEditing:]
+// type: void __cdecl(GameKeyboard *self, SEL, id)
+#[doc(alias = "-[GameKeyboard textFieldDidEndEditing:]")]
+pub fn stub_4d0a4() -> ! {
+    todo!("0x4d0a4 -[GameKeyboard textFieldDidEndEditing:]")
+}
+
+// 0x4d15c — ___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke")]
+pub fn stub_4d15c() -> ! {
+    todo!("0x4d15c ___39-[GameKeyboard textFieldDidEndEditing:]_block_invoke")
+}
+
+// 0x4d184 — -[GameKeyboard .cxx_destruct]
+// type: void __cdecl(GameKeyboard *self, SEL)
+#[doc(alias = "-[GameKeyboard .cxx_destruct]")]
+pub fn stub_4d184() -> ! {
+    todo!("0x4d184 -[GameKeyboard .cxx_destruct]")
+}
+
+// 0x4d220 — -[GameKeyboard .cxx_construct]
+// type: id __cdecl(GameKeyboard *self, SEL)
+#[doc(alias = "-[GameKeyboard .cxx_construct]")]
+pub fn stub_4d220() -> ! {
+    todo!("0x4d220 -[GameKeyboard .cxx_construct]")
+}
+
+// 0x4d5ac — -[GameView initWithFrame:]
+// type: GameView *__cdecl(GameView *self, SEL, CGRect)
+#[doc(alias = "-[GameView initWithFrame:]")]
+pub fn stub_4d5ac() -> ! {
+    todo!("0x4d5ac -[GameView initWithFrame:]")
+}
+
+// 0x4d5e4 — -[GameView layoutSubviews]
+// type: void __cdecl(GameView *self, SEL)
+#[doc(alias = "-[GameView layoutSubviews]")]
+pub fn stub_4d5e4() -> ! {
+    todo!("0x4d5e4 -[GameView layoutSubviews]")
+}
+
+// 0x4f188 — -[JumpButton initWithFrame:]
+// type: JumpButton *__cdecl(JumpButton *self, SEL, CGRect)
+#[doc(alias = "-[JumpButton initWithFrame:]")]
+pub fn stub_4f188() -> ! {
+    todo!("0x4f188 -[JumpButton initWithFrame:]")
+}
+
+// 0x4f2b0 — -[JumpButton dealloc]
+// type: void __cdecl(JumpButton *self, SEL)
+#[doc(alias = "-[JumpButton dealloc]")]
+pub fn stub_4f2b0() -> ! {
+    todo!("0x4f2b0 -[JumpButton dealloc]")
+}
+
+// 0x4f2fc — -[JumpButton setControlComponentSuperview:]
+// type: void __cdecl(JumpButton *self, SEL, id)
+#[doc(alias = "-[JumpButton setControlComponentSuperview:]")]
+pub fn stub_4f2fc() -> ! {
+    todo!("0x4f2fc -[JumpButton setControlComponentSuperview:]")
+}
+
+// 0x4f404 — -[JumpButton jumpEnabledChanged:]
+// type: void __cdecl(JumpButton *self, SEL, const PropertyDescriptor *)
+#[doc(alias = "-[JumpButton jumpEnabledChanged:]")]
+pub fn stub_4f404() -> ! {
+    todo!("0x4f404 -[JumpButton jumpEnabledChanged:]")
+}
+
+// 0x4f408 — -[JumpButton touchDown]
+// type: void __cdecl(JumpButton *self, SEL)
+#[doc(alias = "-[JumpButton touchDown]")]
+pub fn stub_4f408() -> ! {
+    todo!("0x4f408 -[JumpButton touchDown]")
+}
+
+// 0x4f43c — -[JumpButton touchUp]
+// type: void __cdecl(JumpButton *self, SEL)
+#[doc(alias = "-[JumpButton touchUp]")]
+pub fn stub_4f43c() -> ! {
+    todo!("0x4f43c -[JumpButton touchUp]")
+}
+
+// 0x4f9d0 — -[ThumbStickControl init:]
+// type: id __cdecl(ThumbStickControl *self, SEL, CGRect)
+#[doc(alias = "-[ThumbStickControl init:]")]
+pub fn stub_4f9d0() -> ! {
+    todo!("0x4f9d0 -[ThumbStickControl init:]")
+}
+
+// 0x4fcf4 — ___26-[ThumbStickControl init:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___26-[ThumbStickControl init:]_block_invoke")]
+pub fn stub_4fcf4() -> ! {
+    todo!("0x4fcf4 ___26-[ThumbStickControl init:]_block_invoke")
+}
+
+// 0x4fd54 — -[ThumbStickControl dealloc]
+// type: void __cdecl(ThumbStickControl *self, SEL)
+#[doc(alias = "-[ThumbStickControl dealloc]")]
+pub fn stub_4fd54() -> ! {
+    todo!("0x4fd54 -[ThumbStickControl dealloc]")
+}
+
+// 0x4fdb8 — -[ThumbStickControl intToThumbstickStyle:]
+// type: int __cdecl(ThumbStickControl *self, SEL, int)
+#[doc(alias = "-[ThumbStickControl intToThumbstickStyle:]")]
+pub fn stub_4fdb8() -> ! {
+    todo!("0x4fdb8 -[ThumbStickControl intToThumbstickStyle:]")
+}
+
+// 0x4fdc4 — -[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]
+// type: float __cdecl(ThumbStickControl *self, SEL, CGPoint, CGPoint)
+#[doc(alias = "-[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]")]
+pub fn stub_4fdc4() -> ! {
+    todo!("0x4fdc4 -[ThumbStickControl DistanceBetweenTwoPoints:withPoint2:]")
+}
+
+// 0x4fdf4 — -[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]
+// type: CGPoint *__cdecl(CGPoint *__return_ptr __struct_ptr retstr, ThumbStickControl *self, SEL, CGPoint, CGPoint, float)
+#[doc(alias = "-[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]")]
+pub fn stub_4fdf4() -> ! {
+    todo!("0x4fdf4 -[ThumbStickControl rotatePointAboutLocation:withPointToRotateAbout:withRadians:]")
+}
+
+// 0x4fe88 — -[ThumbStickControl touchesBegan:withEvent:]
+// type: void __cdecl(ThumbStickControl *self, SEL, id, id)
+#[doc(alias = "-[ThumbStickControl touchesBegan:withEvent:]")]
+pub fn stub_4fe88() -> ! {
+    todo!("0x4fe88 -[ThumbStickControl touchesBegan:withEvent:]")
+}
+
+// 0x50108 — -[ThumbStickControl stationaryThumbstickTouchMove]
+// type: void __cdecl(ThumbStickControl *self, SEL)
+#[doc(alias = "-[ThumbStickControl stationaryThumbstickTouchMove]")]
+pub fn stub_50108() -> ! {
+    todo!("0x50108 -[ThumbStickControl stationaryThumbstickTouchMove]")
+}
+
+// 0x50338 — -[ThumbStickControl followThumbstickTouchMove]
+// type: void __cdecl(ThumbStickControl *self, SEL)
+#[doc(alias = "-[ThumbStickControl followThumbstickTouchMove]")]
+pub fn stub_50338() -> ! {
+    todo!("0x50338 -[ThumbStickControl followThumbstickTouchMove]")
+}
+
+// 0x506cc — -[ThumbStickControl touchesMoved:withEvent:]
+// type: void __cdecl(ThumbStickControl *self, SEL, id, id)
+#[doc(alias = "-[ThumbStickControl touchesMoved:withEvent:]")]
+pub fn stub_506cc() -> ! {
+    todo!("0x506cc -[ThumbStickControl touchesMoved:withEvent:]")
 }
