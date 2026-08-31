@@ -1,7 +1,7 @@
-// Auto-generated skeletons for rbx-script — Lua/Script/Yield/ProtectedString batch
-// Filter: Script|Lua|RBX::Script|Yield|ProtectedString (case-sensitive)
+// Auto-generated skeletons for rbx-script — Lua/Script/Yield/lua batch
+// Filter: Script|Lua|Yield|lua (case-sensitive, lua lower)
 // Source: ida/export.json (85545 funcs, base 0x4000)
-// Batch: 150 stubs | range 0xf2bdf4..0xf2cf44 | filtered 4921, existing 4430, remaining 1007
+// Batch: +100 stubs | range 0xf2bee4..0xf2eae4 | filtered 5401, existing 4580, remaining 721 (4580 -> 4680 total)
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `` stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -967,4 +967,644 @@ pub fn stub_0xf2cf34() -> ! {
 #[doc(alias = "boost::function1<void,RBX::Lua::IAsyncResult *>::assign_to_own(boost::function1<void,RBX::Lua::IAsyncResult *> const&)")]
 pub fn stub_0xf2cf44() -> ! {
     todo!("0xf2cf44 boost::function1<void,RBX::Lua::IAsyncResult *>::assign_to_own(boost::function1<void,RBX::Lua::IAsyncResult *> const&)")
+}
+
+// 0xf2bee4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvP9lua_StateNS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS3_5list2INS_3argILi1EEENS3_5valueISF_EEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+pub fn stub_0xf2bee4() -> ! {
+    todo!("0xf2bee4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0xf2bf74 — j___ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
+#[doc(alias = "j___ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_0xf2bf74() -> ! {
+    todo!("0xf2bf74 j___ZN5boost8functionIFvP9lua_StateEEC2INS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf2bfa4 — j___ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_
+#[doc(alias = "j___ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_")]
+pub fn stub_0xf2bfa4() -> ! {
+    todo!("0xf2bfa4 j___ZN5boost8functionIFvP9lua_StateEEaSINS_3_bi6bind_tIvPFvS2_NS0_IFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS6_5list2INS_3argILi1EEENS6_5valueISF_EEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESQ_")
+}
+
+// 0xf2c044 — j___ZN5boost9function1ImP9lua_StateE13assign_to_ownERKS3_
+#[doc(alias = "boost::function1<unsigned long,lua_State *>::assign_to_own(boost::function1<unsigned long,lua_State *> const&)")]
+pub fn stub_0xf2c044() -> ! {
+    todo!("0xf2c044 boost::function1<unsigned long,lua_State *>::assign_to_own(boost::function1<unsigned long,lua_State *> const&)")
+}
+
+// 0xf2c054 — j___ZN5boost9function1ImP9lua_StateE5clearEv
+#[doc(alias = "boost::function1<unsigned long,lua_State *>::clear(void)")]
+pub fn stub_0xf2c054() -> ! {
+    todo!("0xf2c054 boost::function1<unsigned long,lua_State *>::clear(void)")
+}
+
+// 0xf2c0a4 — j___ZN5boost9function1IvP9lua_StateE11move_assignERS3_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::function1<void,lua_State *>::move_assign(boost::function1<void,lua_State *>&)")]
+pub fn stub_0xf2c0a4() -> ! {
+    todo!("0xf2c0a4 boost::function1<void,lua_State *>::move_assign(boost::function1<void,lua_State *>&)")
+}
+
+// 0xf2c0b4 — j___ZN5boost9function1IvP9lua_StateE13assign_to_ownERKS3_
+#[doc(alias = "boost::function1<void,lua_State *>::assign_to_own(boost::function1<void,lua_State *> const&)")]
+pub fn stub_0xf2c0b4() -> ! {
+    todo!("0xf2c0b4 boost::function1<void,lua_State *>::assign_to_own(boost::function1<void,lua_State *> const&)")
+}
+
+// 0xf2c0c4 — j___ZN5boost9function1IvP9lua_StateE4swapERS3_
+#[doc(alias = "boost::function1<void,lua_State *>::swap(boost::function1<void,lua_State *>&)")]
+pub fn stub_0xf2c0c4() -> ! {
+    todo!("0xf2c0c4 boost::function1<void,lua_State *>::swap(boost::function1<void,lua_State *>&)")
+}
+
+// 0xf2c0d4 — j___ZN5boost9function1IvP9lua_StateE5clearEv
+#[doc(alias = "boost::function1<void,lua_State *>::clear(void)")]
+pub fn stub_0xf2c0d4() -> ! {
+    todo!("0xf2c0d4 boost::function1<void,lua_State *>::clear(void)")
+}
+
+// 0xf2c0f4 — j___ZN5boost9function1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEEvT_
+#[doc(alias = "void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>)")]
+pub fn stub_0xf2c0f4() -> ! {
+    todo!("0xf2c0f4 void boost::function1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>)")
+}
+
+// 0xf2c124 — j___ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE
+#[doc(alias = "j___ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_0xf2c124() -> ! {
+    todo!("0xf2c124 j___ZN5boost9function1IvP9lua_StateEC2INS_3_bi6bind_tIvPFvS2_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS5_5list2INS_3argILi1EEENS5_5valueISF_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISP_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf2c144 — j___ZN5boost9function2IvP9lua_StateP9lua_DebugE5clearEv
+#[doc(alias = "boost::function2<void,lua_State *,lua_Debug *>::clear(void)")]
+pub fn stub_0xf2c144() -> ! {
+    todo!("0xf2c144 boost::function2<void,lua_State *,lua_Debug *>::clear(void)")
+}
+
+// 0xf2c154 — j___ZN5boost9function2IvP9lua_StatemE13assign_to_ownERKS3_
+#[doc(alias = "boost::function2<void,lua_State *,unsigned long>::assign_to_own(boost::function2<void,lua_State *,unsigned long> const&)")]
+pub fn stub_0xf2c154() -> ! {
+    todo!("0xf2c154 boost::function2<void,lua_State *,unsigned long>::assign_to_own(boost::function2<void,lua_State *,unsigned long> const&)")
+}
+
+// 0xf2c164 — j___ZN5boost9function2IvP9lua_StatemE5clearEv
+#[doc(alias = "boost::function2<void,lua_State *,unsigned long>::clear(void)")]
+pub fn stub_0xf2c164() -> ! {
+    todo!("0xf2c164 boost::function2<void,lua_State *,unsigned long>::clear(void)")
+}
+
+// 0xf2c174 — j___ZN5boost9function2IvP9lua_StatemE9assign_toINS_3_bi6bind_tIvPFvS2_iSsENS5_5list3INS_3argILi1EEENSA_ILi2EEENS5_5valueISsEEEEEEEEvT_
+#[doc(alias = "void boost::function2<void,lua_State *,unsigned long>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>)")]
+pub fn stub_0xf2c174() -> ! {
+    todo!("0xf2c174 void boost::function2<void,lua_State *,unsigned long>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>)")
+}
+
+// 0xf2c184 — j___ZN5boost9function2IvP9lua_StatemEC2INS_3_bi6bind_tIvPFvS2_iSsENS5_5list3INS_3argILi1EEENSA_ILi2EEENS5_5valueISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE
+#[doc(alias = "j___ZN5boost9function2IvP9lua_StatemEC2INS_3_bi6bind_tIvPFvS2_iSsENS5_5list3INS_3argILi1EEENSA_ILi2EEENS5_5valueISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_0xf2c184() -> ! {
+    todo!("0xf2c184 j___ZN5boost9function2IvP9lua_StatemEC2INS_3_bi6bind_tIvPFvS2_iSsENS5_5list3INS_3argILi1EEENSA_ILi2EEENS5_5valueISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf2c4c4 — j___ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE14assign_functorINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+#[doc(alias = "void boost::detail::function::basic_vtable1<void,lua_State *>::assign_functor<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+pub fn stub_0xf2c4c4() -> ! {
+    todo!("0xf2c4c4 void boost::detail::function::basic_vtable1<void,lua_State *>::assign_functor<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+// 0xf2c504 — j___ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &)const")]
+pub fn stub_0xf2c504() -> ! {
+    todo!("0xf2c504 bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0xf2c514 — j___ZNK5boost6detail8function13basic_vtable1IvP9lua_StateE9assign_toINS_3_bi6bind_tIvPFvS4_NS_8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEEENS7_5list2INS_3argILi1EEENS7_5valueISH_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn stub_0xf2c514() -> ! {
+    todo!("0xf2c514 bool boost::detail::function::basic_vtable1<void,lua_State *>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0xf2c544 — j___ZNK5boost6detail8function13basic_vtable2IvP9lua_StatemE9assign_toINS_3_bi6bind_tIvPFvS4_iSsENS7_5list3INS_3argILi1EEENSC_ILi2EEENS7_5valueISsEEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,lua_State *,unsigned long>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
+pub fn stub_0xf2c544() -> ! {
+    todo!("0xf2c544 bool boost::detail::function::basic_vtable2<void,lua_State *,unsigned long>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0xf2c554 — j___ZNK5boost6detail8function13basic_vtable2IvP9lua_StatemE9assign_toINS_3_bi6bind_tIvPFvS4_iSsENS7_5list3INS_3argILi1EEENSC_ILi2EEENS7_5valueISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,lua_State *,unsigned long>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn stub_0xf2c554() -> ! {
+    todo!("0xf2c554 bool boost::detail::function::basic_vtable2<void,lua_State *,unsigned long>::assign_to<boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(lua_State *,int,std::string),boost::_bi::list3<boost::arg<1>,boost::arg<2>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0xf2c5e4 — j___ZNK5boost9function1ImP9lua_StateEclES2_
+#[doc(alias = "boost::function1<unsigned long,lua_State *>::operator()(lua_State *)const")]
+pub fn stub_0xf2c5e4() -> ! {
+    todo!("0xf2c5e4 boost::function1<unsigned long,lua_State *>::operator()(lua_State *)const")
+}
+
+// 0xf2c604 — j___ZNK5boost9function1IvP9lua_StateEclES2_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::function1<void,lua_State *>::operator()(lua_State *)const")]
+pub fn stub_0xf2c604() -> ! {
+    todo!("0xf2c604 boost::function1<void,lua_State *>::operator()(lua_State *)const")
+}
+
+// 0xf2c624 — j___ZNK5boost9function2IvP9lua_StatemEclES2_m
+#[doc(alias = "boost::function2<void,lua_State *,unsigned long>::operator()(lua_State *,unsigned long)const")]
+pub fn stub_0xf2c624() -> ! {
+    todo!("0xf2c624 boost::function2<void,lua_State *,unsigned long>::operator()(lua_State *,unsigned long)const")
+}
+
+// 0xf2cf54 — j___ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEE5clearEv
+#[doc(alias = "boost::function1<void,RBX::Lua::IAsyncResult *>::clear(void)")]
+pub fn stub_0xf2cf54() -> ! {
+    todo!("0xf2cf54 boost::function1<void,RBX::Lua::IAsyncResult *>::clear(void)")
+}
+
+// 0xf2cf64 — j___ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEE9assign_toINS_3_bi6bind_tIvPFvNS2_9ThreadRefENS_8weak_ptrINS1_13ScriptContextEEES4_ENS7_5list3INS7_5valueIS9_EENSG_ISC_EENS_3argILi1EEEEEEEEEvT_
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "void boost::function1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>)")]
+pub fn stub_0xf2cf64() -> ! {
+    todo!("0xf2cf64 void boost::function1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>)")
+}
+
+// 0xf2cf74 — j___ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEEC2INS_3_bi6bind_tIvPFvNS2_9ThreadRefENS_8weak_ptrINS1_13ScriptContextEEES4_ENS7_5list3INS7_5valueIS9_EENSG_ISC_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "j___ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEEC2INS_3_bi6bind_tIvPFvNS2_9ThreadRefENS_8weak_ptrINS1_13ScriptContextEEES4_ENS7_5list3INS7_5valueIS9_EENSG_ISC_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_0xf2cf74() -> ! {
+    todo!("0xf2cf74 j___ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEEC2INS_3_bi6bind_tIvPFvNS2_9ThreadRefENS_8weak_ptrINS1_13ScriptContextEEES4_ENS7_5list3INS7_5valueIS9_EENSG_ISC_EENS_3argILi1EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf2cf84 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX3Lua12IAsyncResultEE14assign_functorINS_3_bi6bind_tIvPFvNS4_9ThreadRefENS_8weak_ptrINS3_13ScriptContextEEES6_ENS9_5list3INS9_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int)
+#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_functor<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+pub fn stub_0xf2cf84() -> ! {
+    todo!("0xf2cf84 void boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_functor<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+// 0xf2cf94 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX3Lua12IAsyncResultEE9assign_toINS_3_bi6bind_tIvPFvNS4_9ThreadRefENS_8weak_ptrINS3_13ScriptContextEEES6_ENS9_5list3INS9_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
+pub fn stub_0xf2cf94() -> ! {
+    todo!("0xf2cf94 bool boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0xf2cfa4 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX3Lua12IAsyncResultEE9assign_toINS_3_bi6bind_tIvPFvNS4_9ThreadRefENS_8weak_ptrINS3_13ScriptContextEEES6_ENS9_5list3INS9_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+pub fn stub_0xf2cfa4() -> ! {
+    todo!("0xf2cfa4 bool boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0xf2cfc4 — j___ZNK5boost9function2IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEENS_8functionIFvPNS2_3Lua12IAsyncResultEEEEEclES6_SC_
+#[doc(alias = "boost::function2<void,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>>::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)const")]
+pub fn stub_0xf2cfc4() -> ! {
+    todo!("0xf2cfc4 boost::function2<void,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>>::operator()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)const")
+}
+
+// 0xf2cfd4 — j___ZN3RBX9CreatableINS_12MouseCommandEE6createINS_14AdvLuaDragToolEPNS_12PartInstanceEN3G3D7Vector3ESt6vectorIN5boost8weak_ptrIS5_EESaISC_EEPNS_9WorkspaceENSA_10shared_ptrINS_8InstanceEEEEENSH_IT_EET0_T1_T2_T3_T4_
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, void *, char, int, int, int, int)
+#[doc(alias = "boost::shared_ptr<RBX::AdvLuaDragTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvLuaDragTool,RBX::PartInstance *,G3D::Vector3,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>,RBX::Workspace *,boost::shared_ptr<RBX::Instance>>(RBX::PartInstance *,G3D::Vector3,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_0xf2cfd4() -> ! {
+    todo!("0xf2cfd4 boost::shared_ptr<RBX::AdvLuaDragTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AdvLuaDragTool,RBX::PartInstance *,G3D::Vector3,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>,RBX::Workspace *,boost::shared_ptr<RBX::Instance>>(RBX::PartInstance *,G3D::Vector3,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0xf2cfe4 — j___ZN5boost10shared_ptrIN3RBX14AdvLuaDragToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::AdvLuaDragTool>::shared_ptr<RBX::AdvLuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+pub fn stub_0xf2cfe4() -> ! {
+    todo!("0xf2cfe4 boost::shared_ptr<RBX::AdvLuaDragTool>::shared_ptr<RBX::AdvLuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+}
+
+// 0xf2cff4 — j___ZN5boost6detail12shared_countC2IPN3RBX14AdvLuaDragToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+pub fn stub_0xf2cff4() -> ! {
+    todo!("0xf2cff4 boost::detail::shared_count::shared_count<RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+}
+
+// 0xf2d004 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AdvLuaDragToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvLuaDragTool,RBX::AdvLuaDragTool>(boost::shared_ptr<RBX::AdvLuaDragTool> const*,RBX::AdvLuaDragTool *)const")]
+pub fn stub_0xf2d004() -> ! {
+    todo!("0xf2d004 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvLuaDragTool,RBX::AdvLuaDragTool>(boost::shared_ptr<RBX::AdvLuaDragTool> const*,RBX::AdvLuaDragTool *)const")
+}
+
+// 0xf2d034 — j___ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E17static_getCreatorEv
+// type: int(void)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E17static_getCreatorEv")]
+pub fn stub_0xf2d034() -> ! {
+    todo!("0xf2d034 j___ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E17static_getCreatorEv")
+}
+
+// 0xf2d044 — j___ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorC2Ev")]
+pub fn stub_0xf2d044() -> ! {
+    todo!("0xf2d044 j___ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorC2Ev")
+}
+
+// 0xf2d054 — j___ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorD2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorD2Ev")]
+pub fn stub_0xf2d054() -> ! {
+    todo!("0xf2d054 j___ZN3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7CreatorD2Ev")
+}
+
+// 0xf2d064 — j___ZN3RBX4Name9doDeclareILZNS_14sAdvLuaDraggerEEEERKS0_v
+// type: int(void)
+#[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_14sAdvLuaDraggerEEEERKS0_v")]
+pub fn stub_0xf2d064() -> ! {
+    todo!("0xf2d064 j___ZN3RBX4Name9doDeclareILZNS_14sAdvLuaDraggerEEEERKS0_v")
+}
+
+// 0xf2d074 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_13AdvLuaDraggerEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::AdvLuaDragger> RBX::Creatable<RBX::Instance>::create<RBX::AdvLuaDragger>(void)")]
+pub fn stub_0xf2d074() -> ! {
+    todo!("0xf2d074 boost::shared_ptr<RBX::AdvLuaDragger> RBX::Creatable<RBX::Instance>::create<RBX::AdvLuaDragger>(void)")
+}
+
+// 0xf2d084 — j___ZN5boost10shared_ptrIN3RBX13AdvLuaDraggerEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::AdvLuaDragger>::shared_ptr<RBX::AdvLuaDragger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")]
+pub fn stub_0xf2d084() -> ! {
+    todo!("0xf2d084 boost::shared_ptr<RBX::AdvLuaDragger>::shared_ptr<RBX::AdvLuaDragger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0xf2d094 — j___ZN5boost6detail12shared_countC2IPN3RBX13AdvLuaDraggerENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")]
+pub fn stub_0xf2d094() -> ! {
+    todo!("0xf2d094 boost::detail::shared_count::shared_count<RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::AdvLuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0xf2d0a4 — j___ZNK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7Creator12getClassNameEv
+#[doc(alias = "j___ZNK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7Creator12getClassNameEv")]
+pub fn stub_0xf2d0a4() -> ! {
+    todo!("0xf2d0a4 j___ZNK3RBX14FactoryProductINS_13AdvLuaDraggerENS_8InstanceELZNS_14sAdvLuaDraggerEES2_E7Creator12getClassNameEv")
+}
+
+// 0xf2d0b4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13AdvLuaDraggerES6_EEvPKNS_10shared_ptrIT_EEPT0_
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::AdvLuaDragger,RBX::AdvLuaDragger>(boost::shared_ptr<RBX::AdvLuaDragger> const*,RBX::AdvLuaDragger *)const")]
+pub fn stub_0xf2d0b4() -> ! {
+    todo!("0xf2d0b4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::AdvLuaDragger,RBX::AdvLuaDragger>(boost::shared_ptr<RBX::AdvLuaDragger> const*,RBX::AdvLuaDragger *)const")
+}
+
+// 0xf2d0e4 — j___ZN3RBX11shared_fromINS_14AdvLuaDragToolEEEN5boost10shared_ptrIT_EEPS4_
+#[doc(alias = "boost::shared_ptr<RBX::AdvLuaDragTool> RBX::shared_from<RBX::AdvLuaDragTool>(RBX::AdvLuaDragTool*)")]
+pub fn stub_0xf2d0e4() -> ! {
+    todo!("0xf2d0e4 boost::shared_ptr<RBX::AdvLuaDragTool> RBX::shared_from<RBX::AdvLuaDragTool>(RBX::AdvLuaDragTool*)")
+}
+
+// 0xf2d0f4 — j___ZN3RBX4Name9doDeclareILZNS_15sAdvLuaDragToolEEEERKS0_v
+#[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_15sAdvLuaDragToolEEEERKS0_v")]
+pub fn stub_0xf2d0f4() -> ! {
+    todo!("0xf2d0f4 j___ZN3RBX4Name9doDeclareILZNS_15sAdvLuaDragToolEEEERKS0_v")
+}
+
+// 0xf2d104 — j___ZN5boost10shared_ptrIN3RBX13AdvLuaDraggerEEaSERKS3_
+#[doc(alias = "boost::shared_ptr<RBX::AdvLuaDragger>::operator=(boost::shared_ptr<RBX::AdvLuaDragger> const&)")]
+pub fn stub_0xf2d104() -> ! {
+    todo!("0xf2d104 boost::shared_ptr<RBX::AdvLuaDragger>::operator=(boost::shared_ptr<RBX::AdvLuaDragger> const&)")
+}
+
+// 0xf2d294 — j___ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11LuaDragToolEPNS_12PartInstanceEN3G3D7Vector3ESt6vectorIN5boost8weak_ptrIS5_EESaISC_EEPNS_9WorkspaceENSA_10shared_ptrINS_8InstanceEEEEENSH_IT_EET0_T1_T2_T3_T4_
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, void *, char, int, int, int, int)
+#[doc(alias = "boost::shared_ptr<RBX::LuaDragTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LuaDragTool,RBX::PartInstance *,G3D::Vector3,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>,RBX::Workspace *,boost::shared_ptr<RBX::Instance>>(RBX::PartInstance *,G3D::Vector3,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_0xf2d294() -> ! {
+    todo!("0xf2d294 boost::shared_ptr<RBX::LuaDragTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::LuaDragTool,RBX::PartInstance *,G3D::Vector3,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>,RBX::Workspace *,boost::shared_ptr<RBX::Instance>>(RBX::PartInstance *,G3D::Vector3,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>,RBX::Workspace *,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0xf2d2a4 — j___ZN5boost10shared_ptrIN3RBX11LuaDragToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::shared_ptr<RBX::LuaDragTool>::shared_ptr<RBX::LuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+pub fn stub_0xf2d2a4() -> ! {
+    todo!("0xf2d2a4 boost::shared_ptr<RBX::LuaDragTool>::shared_ptr<RBX::LuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+}
+
+// 0xf2d2b4 — j___ZN5boost6detail12shared_countC2IPN3RBX11LuaDragToolENS3_9CreatableINS3_12MouseCommandEE7DeleterEEET_T0_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+pub fn stub_0xf2d2b4() -> ! {
+    todo!("0xf2d2b4 boost::detail::shared_count::shared_count<RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
+}
+
+// 0xf2d2c4 — j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11LuaDragToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LuaDragTool,RBX::LuaDragTool>(boost::shared_ptr<RBX::LuaDragTool> const*,RBX::LuaDragTool *)const")]
+pub fn stub_0xf2d2c4() -> ! {
+    todo!("0xf2d2c4 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LuaDragTool,RBX::LuaDragTool>(boost::shared_ptr<RBX::LuaDragTool> const*,RBX::LuaDragTool *)const")
+}
+
+// 0xf2d314 — j___ZN3RBX10Reflection11Call3HelperINS_10LuaDraggerEMS2_FvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEES6_S8_SD_vE4callEPS2_SF_RNS0_7VariantERKS6_RKS8_RKSD_
+// type: int __fastcall(int, int, int, int, char, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::Call3Helper<RBX::LuaDragger,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,void>::call(RBX::LuaDragger*,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,G3D::Vector3 const&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const&)")]
+pub fn stub_0xf2d314() -> ! {
+    todo!("0xf2d314 RBX::Reflection::Call3Helper<RBX::LuaDragger,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>,void>::call(RBX::LuaDragger*,void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,G3D::Vector3 const&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> const&)")
+}
+
+// 0xf2d324 — j___ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN3G3D7Vector34AxisEELi1EE16declareSignatureEPKcNS0_7VariantE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(G3D::Vector3::Axis),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+pub fn stub_0xf2d324() -> ! {
+    todo!("0xf2d324 RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(G3D::Vector3::Axis),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0xf2d334 — j___ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN3G3D7Vector34AxisEELi1EEC2EMS2_FvS5_EPKcSB_S5_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(G3D::Vector3::Axis),1>::BoundFuncDesc(void (RBX::LuaDragger::*)(G3D::Vector3::Axis),char const*,char const*,G3D::Vector3::Axis,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0xf2d334() -> ! {
+    todo!("0xf2d334 RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(G3D::Vector3::Axis),1>::BoundFuncDesc(void (RBX::LuaDragger::*)(G3D::Vector3::Axis),char const*,char const*,G3D::Vector3::Axis,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0xf2d344 — j___ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EE16declareSignatureEPKcNS0_7VariantESH_SI_SH_SI_
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
+pub fn stub_0xf2d344() -> ! {
+    todo!("0xf2d344 RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
+}
+
+// 0xf2d354 — j___ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EEC2EMS2_FvS6_S8_SD_EPKcSJ_SJ_SJ_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::BoundFuncDesc(void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0xf2d354() -> ! {
+    todo!("0xf2d354 RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::BoundFuncDesc(void (RBX::LuaDragger::*)(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0xf2d364 — j___ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS4_IKSt6vectorIS6_SaIS6_EEEEELi3EED2Ev
+// type: int __fastcall(int, int, int, int, void *, void *, int, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")]
+pub fn stub_0xf2d364() -> ! {
+    todo!("0xf2d364 RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>),3>::~BoundFuncDesc()")
+}
+
+// 0xf2d374 — j___ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvNS_6RbxRayEELi1EE16declareSignatureEPKcNS0_7VariantE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(RBX::RbxRay),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+pub fn stub_0xf2d374() -> ! {
+    todo!("0xf2d374 RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(RBX::RbxRay),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0xf2d384 — j___ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvNS_6RbxRayEELi1EEC2EMS2_FvS3_EPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(RBX::RbxRay),1>::BoundFuncDesc(void (RBX::LuaDragger::*)(RBX::RbxRay),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0xf2d384() -> ! {
+    todo!("0xf2d384 RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(RBX::RbxRay),1>::BoundFuncDesc(void (RBX::LuaDragger::*)(RBX::RbxRay),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0xf2d394 — j___ZN3RBX10Reflection13BoundFuncDescINS_10LuaDraggerEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(void),0>::BoundFuncDesc(void (RBX::LuaDragger::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0xf2d394() -> ! {
+    todo!("0xf2d394 RBX::Reflection::BoundFuncDesc<RBX::LuaDragger,void ()(void),0>::BoundFuncDesc(void (RBX::LuaDragger::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0xf2d3e4 — j___ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E17static_getCreatorEv
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E17static_getCreatorEv")]
+pub fn stub_0xf2d3e4() -> ! {
+    todo!("0xf2d3e4 j___ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E17static_getCreatorEv")
+}
+
+// 0xf2d3f4 — j___ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorC2Ev")]
+pub fn stub_0xf2d3f4() -> ! {
+    todo!("0xf2d3f4 j___ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorC2Ev")
+}
+
+// 0xf2d404 — j___ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorD2Ev
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorD2Ev")]
+pub fn stub_0xf2d404() -> ! {
+    todo!("0xf2d404 j___ZN3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7CreatorD2Ev")
+}
+
+// 0xf2d414 — j___ZN3RBX4Name9doDeclareILZNS_11sLuaDraggerEEEERKS0_v
+#[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_11sLuaDraggerEEEERKS0_v")]
+pub fn stub_0xf2d414() -> ! {
+    todo!("0xf2d414 j___ZN3RBX4Name9doDeclareILZNS_11sLuaDraggerEEEERKS0_v")
+}
+
+// 0xf2d424 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10LuaDraggerEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::LuaDragger> RBX::Creatable<RBX::Instance>::create<RBX::LuaDragger>(void)")]
+pub fn stub_0xf2d424() -> ! {
+    todo!("0xf2d424 boost::shared_ptr<RBX::LuaDragger> RBX::Creatable<RBX::Instance>::create<RBX::LuaDragger>(void)")
+}
+
+// 0xf2d434 — j___ZN5boost10shared_ptrIN3RBX10LuaDraggerEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::LuaDragger>::shared_ptr<RBX::LuaDragger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")]
+pub fn stub_0xf2d434() -> ! {
+    todo!("0xf2d434 boost::shared_ptr<RBX::LuaDragger>::shared_ptr<RBX::LuaDragger,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0xf2d464 — j___ZN5boost6detail12shared_countC2IPN3RBX10LuaDraggerENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")]
+pub fn stub_0xf2d464() -> ! {
+    todo!("0xf2d464 boost::detail::shared_count::shared_count<RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::LuaDragger *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0xf2d474 — j___ZNK3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7Creator12getClassNameEv
+#[doc(alias = "j___ZNK3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7Creator12getClassNameEv")]
+pub fn stub_0xf2d474() -> ! {
+    todo!("0xf2d474 j___ZNK3RBX14FactoryProductINS_10LuaDraggerENS_8InstanceELZNS_11sLuaDraggerEES2_E7Creator12getClassNameEv")
+}
+
+// 0xf2d484 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10LuaDraggerES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LuaDragger,RBX::LuaDragger>(boost::shared_ptr<RBX::LuaDragger> const*,RBX::LuaDragger *)const")]
+pub fn stub_0xf2d484() -> ! {
+    todo!("0xf2d484 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::LuaDragger,RBX::LuaDragger>(boost::shared_ptr<RBX::LuaDragger> const*,RBX::LuaDragger *)const")
+}
+
+// 0xf2d524 — j___ZN3RBX11shared_fromINS_11LuaDragToolEEEN5boost10shared_ptrIT_EEPS4_
+#[doc(alias = "boost::shared_ptr<RBX::LuaDragTool> RBX::shared_from<RBX::LuaDragTool>(RBX::LuaDragTool*)")]
+pub fn stub_0xf2d524() -> ! {
+    todo!("0xf2d524 boost::shared_ptr<RBX::LuaDragTool> RBX::shared_from<RBX::LuaDragTool>(RBX::LuaDragTool*)")
+}
+
+// 0xf2d534 — j___ZN3RBX4Name9doDeclareILZNS_12sLuaDragToolEEEERKS0_v
+#[doc(alias = "j___ZN3RBX4Name9doDeclareILZNS_12sLuaDragToolEEEERKS0_v")]
+pub fn stub_0xf2d534() -> ! {
+    todo!("0xf2d534 j___ZN3RBX4Name9doDeclareILZNS_12sLuaDragToolEEEERKS0_v")
+}
+
+// 0xf2d544 — j___ZN5boost10shared_ptrIN3RBX10LuaDraggerEEaSERKS3_
+#[doc(alias = "boost::shared_ptr<RBX::LuaDragger>::operator=(boost::shared_ptr<RBX::LuaDragger> const&)")]
+pub fn stub_0xf2d544() -> ! {
+    todo!("0xf2d544 boost::shared_ptr<RBX::LuaDragger>::operator=(boost::shared_ptr<RBX::LuaDragger> const&)")
+}
+
+// 0xf2e914 — j___ZN3RBX13LuaWebService10checkCacheIN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEbRKSsNS2_8functionIFvT_EEENSD_IFvSsEEE
+#[doc(alias = "bool RBX::LuaWebService::checkCache<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(std::string const&,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")]
+pub fn stub_0xf2e914() -> ! {
+    todo!("0xf2e914 bool RBX::LuaWebService::checkCache<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(std::string const&,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0xf2e924 — j___ZN3RBX13LuaWebService10checkCacheISsEEbRKSsN5boost8functionIFvT_EEENS5_IFvSsEEE
+#[doc(alias = "bool RBX::LuaWebService::checkCache<std::string>(std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")]
+pub fn stub_0xf2e924() -> ! {
+    todo!("0xf2e924 bool RBX::LuaWebService::checkCache<std::string>(std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")
+}
+
+// 0xf2e934 — j___ZN3RBX13LuaWebService10checkCacheIbEEbRKSsN5boost8functionIFvT_EEENS5_IFvSsEEE
+#[doc(alias = "bool RBX::LuaWebService::checkCache<bool>(std::string const&,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+pub fn stub_0xf2e934() -> ! {
+    todo!("0xf2e934 bool RBX::LuaWebService::checkCache<bool>(std::string const&,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
+}
+
+// 0xf2e944 — j___ZN3RBX13LuaWebService10checkCacheIiEEbRKSsN5boost8functionIFvT_EEENS5_IFvSsEEE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "bool RBX::LuaWebService::checkCache<int>(std::string const&,boost::function<void ()(int)>,boost::function<void ()(std::string)>)")]
+pub fn stub_0xf2e944() -> ! {
+    todo!("0xf2e944 bool RBX::LuaWebService::checkCache<int>(std::string const&,boost::function<void ()(int)>,boost::function<void ()(std::string)>)")
+}
+
+// 0xf2e954 — j___ZN3RBX13LuaWebService18TryDispatchRequestIN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEEbPNS_14AsyncHttpCacheINS0_23CachedLuaWebServiceInfoELb1EEERSA_NS2_8functionIFvT_EEENSL_IFvSsEEE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "bool RBX::LuaWebService::TryDispatchRequest<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)")]
+pub fn stub_0xf2e954() -> ! {
+    todo!("0xf2e954 bool RBX::LuaWebService::TryDispatchRequest<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0xf2e964 — j___ZN3RBX13LuaWebService18TryDispatchRequestIN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEbPNS_14AsyncHttpCacheINS0_23CachedLuaWebServiceInfoELb1EEERKSsNS2_8functionIFvT_EEENSH_IFvSsEEE
+#[doc(alias = "bool RBX::LuaWebService::TryDispatchRequest<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")]
+pub fn stub_0xf2e964() -> ! {
+    todo!("0xf2e964 bool RBX::LuaWebService::TryDispatchRequest<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0xf2e974 — j___ZN3RBX13LuaWebService18TryDispatchRequestISsEEbPNS_14AsyncHttpCacheINS0_23CachedLuaWebServiceInfoELb1EEERKSsN5boost8functionIFvT_EEENS9_IFvSsEEE
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "bool RBX::LuaWebService::TryDispatchRequest<std::string>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")]
+pub fn stub_0xf2e974() -> ! {
+    todo!("0xf2e974 bool RBX::LuaWebService::TryDispatchRequest<std::string>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")
+}
+
+// 0xf2e984 — j___ZN3RBX13LuaWebService18TryDispatchRequestIbEEbPNS_14AsyncHttpCacheINS0_23CachedLuaWebServiceInfoELb1EEERKSsN5boost8functionIFvT_EEENS9_IFvSsEEE
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "bool RBX::LuaWebService::TryDispatchRequest<bool>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+pub fn stub_0xf2e984() -> ! {
+    todo!("0xf2e984 bool RBX::LuaWebService::TryDispatchRequest<bool>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
+}
+
+// 0xf2e994 — j___ZN3RBX13LuaWebService18TryDispatchRequestIiEEbPNS_14AsyncHttpCacheINS0_23CachedLuaWebServiceInfoELb1EEERKSsN5boost8functionIFvT_EEENS9_IFvSsEEE
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "bool RBX::LuaWebService::TryDispatchRequest<int>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(int)>,boost::function<void ()(std::string)>)")]
+pub fn stub_0xf2e994() -> ! {
+    todo!("0xf2e994 bool RBX::LuaWebService::TryDispatchRequest<int>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(int)>,boost::function<void ()(std::string)>)")
+}
+
+// 0xf2e9a4 — j___ZN3RBX13LuaWebService21TryRawDispatchRequestISsEEbPNS_14AsyncHttpCacheINS0_26CachedRawLuaWebServiceInfoELb1EEERKSsN5boost8functionIFvT_EEENS9_IFvSsEEE
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "bool RBX::LuaWebService::TryRawDispatchRequest<std::string>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")]
+pub fn stub_0xf2e9a4() -> ! {
+    todo!("0xf2e9a4 bool RBX::LuaWebService::TryRawDispatchRequest<std::string>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>)")
+}
+
+// 0xf2e9b4 — j___ZN3RBX14AsyncHttpCacheINS_13LuaWebService23CachedLuaWebServiceInfoELb1EE13findCacheItemERKSsPS2_
+// type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
+#[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::findCacheItem(std::string const&,RBX::LuaWebService::CachedLuaWebServiceInfo*)")]
+pub fn stub_0xf2e9b4() -> ! {
+    todo!("0xf2e9b4 RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::findCacheItem(std::string const&,RBX::LuaWebService::CachedLuaWebServiceInfo*)")
+}
+
+// 0xf2e9c4 — j___ZN3RBX14AsyncHttpCacheINS_13LuaWebService23CachedLuaWebServiceInfoELb1EEC2EPNS_8InstanceEN5boost8functionIFbRKSsPSsEEEii
+// type: int __fastcall(int, int, int, int, RBX::AsyncHttpQueue *, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::AsyncHttpCache(RBX::Instance *,boost::function<bool ()(std::string const&,std::string *)>,int,int)")]
+pub fn stub_0xf2e9c4() -> ! {
+    todo!("0xf2e9c4 RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>::AsyncHttpCache(RBX::Instance *,boost::function<bool ()(std::string const&,std::string *)>,int,int)")
+}
+
+// 0xf2e9d4 — j___ZN3RBX14AsyncHttpCacheINS_13LuaWebService26CachedRawLuaWebServiceInfoELb1EE13findCacheItemERKSsPS2_
+// type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
+#[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::findCacheItem(std::string const&,RBX::LuaWebService::CachedRawLuaWebServiceInfo*)")]
+pub fn stub_0xf2e9d4() -> ! {
+    todo!("0xf2e9d4 RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::findCacheItem(std::string const&,RBX::LuaWebService::CachedRawLuaWebServiceInfo*)")
+}
+
+// 0xf2e9e4 — j___ZN3RBX14AsyncHttpCacheINS_13LuaWebService26CachedRawLuaWebServiceInfoELb1EEC2EPNS_8InstanceEN5boost8functionIFbRKSsPSsEEEii
+// type: int __fastcall(int, int, int, int, RBX::AsyncHttpQueue *, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::AsyncHttpCache(RBX::Instance *,boost::function<bool ()(std::string const&,std::string *)>,int,int)")]
+pub fn stub_0xf2e9e4() -> ! {
+    todo!("0xf2e9e4 RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>::AsyncHttpCache(RBX::Instance *,boost::function<bool ()(std::string const&,std::string *)>,int,int)")
+}
+
+// 0xf2e9f4 — j___ZN3RBX8LRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEE6insertERKSsRKS2_m
+#[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedLuaWebServiceInfo const&,unsigned long)")]
+pub fn stub_0xf2e9f4() -> ! {
+    todo!("0xf2e9f4 RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedLuaWebServiceInfo const&,unsigned long)")
+}
+
+// 0xf2ea04 — j___ZN3RBX8LRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEEC2Ev
+#[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::LRUCache(void)")]
+pub fn stub_0xf2ea04() -> ! {
+    todo!("0xf2ea04 RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::LRUCache(void)")
+}
+
+// 0xf2ea14 — j___ZN3RBX8LRUCacheISsNS_13LuaWebService23CachedLuaWebServiceInfoEED2Ev
+// type: int __fastcall(std::string *, int, int, int, struct _Unwind_Exception *, int)
+#[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::~LRUCache()")]
+pub fn stub_0xf2ea14() -> ! {
+    todo!("0xf2ea14 RBX::LRUCache<std::string,RBX::LuaWebService::CachedLuaWebServiceInfo>::~LRUCache()")
+}
+
+// 0xf2ea24 — j___ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE23removeLeastRecentlyUsedEv
+#[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::removeLeastRecentlyUsed(void)")]
+pub fn stub_0xf2ea24() -> ! {
+    todo!("0xf2ea24 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::removeLeastRecentlyUsed(void)")
+}
+
+// 0xf2ea34 — j___ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE6insertERKSsRKS2_m
+// type: int(void)
+#[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedRawLuaWebServiceInfo const&,unsigned long)")]
+pub fn stub_0xf2ea34() -> ! {
+    todo!("0xf2ea34 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::insert(std::string const&,RBX::LuaWebService::CachedRawLuaWebServiceInfo const&,unsigned long)")
+}
+
+// 0xf2ea44 — j___ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE6removeERKSs
+#[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::remove(std::string const&)")]
+pub fn stub_0xf2ea44() -> ! {
+    todo!("0xf2ea44 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::remove(std::string const&)")
+}
+
+// 0xf2ea54 — j___ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEEC2Ev
+#[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::LRUCache(void)")]
+pub fn stub_0xf2ea54() -> ! {
+    todo!("0xf2ea54 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::LRUCache(void)")
+}
+
+// 0xf2ea64 — j___ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEED2Ev
+#[doc(alias = "RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::~LRUCache()")]
+pub fn stub_0xf2ea64() -> ! {
+    todo!("0xf2ea64 RBX::LRUCache<std::string,RBX::LuaWebService::CachedRawLuaWebServiceInfo>::~LRUCache()")
+}
+
+// 0xf2ea74 — j___ZN3RBX9weak_fromINS_13LuaWebServiceEEEN5boost8weak_ptrIT_EEPS4_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::weak_ptr<RBX::LuaWebService> RBX::weak_from<RBX::LuaWebService>(RBX::LuaWebService*)")]
+pub fn stub_0xf2ea74() -> ! {
+    todo!("0xf2ea74 boost::weak_ptr<RBX::LuaWebService> RBX::weak_from<RBX::LuaWebService>(RBX::LuaWebService*)")
+}
+
+// 0xf2eaa4 — j___ZN5boost10shared_ptrIN3RBX13LuaWebServiceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "boost::shared_ptr<RBX::LuaWebService>::shared_ptr<RBX::LuaWebService>(boost::weak_ptr<RBX::LuaWebService> const&,boost::detail::sp_nothrow_tag)")]
+pub fn stub_0xf2eaa4() -> ! {
+    todo!("0xf2eaa4 boost::shared_ptr<RBX::LuaWebService>::shared_ptr<RBX::LuaWebService>(boost::weak_ptr<RBX::LuaWebService> const&,boost::detail::sp_nothrow_tag)")
+}
+
+// 0xf2eab4 — j___ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_13LuaWebService23CachedLuaWebServiceInfoELb1EEEE5resetIS5_EEvPT_
+#[doc(alias = "void boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::reset<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)")]
+pub fn stub_0xf2eab4() -> ! {
+    todo!("0xf2eab4 void boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::reset<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)")
+}
+
+// 0xf2eac4 — j___ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_13LuaWebService23CachedLuaWebServiceInfoELb1EEEEC2IS5_EEPT_
+// type: int __fastcall(int, void *, int, int, int, int)
+#[doc(alias = "boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)")]
+pub fn stub_0xf2eac4() -> ! {
+    todo!("0xf2eac4 boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *)")
+}
+
+// 0xf2ead4 — j___ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_13LuaWebService26CachedRawLuaWebServiceInfoELb1EEEE5resetIS5_EEvPT_
+#[doc(alias = "void boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::reset<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *)")]
+pub fn stub_0xf2ead4() -> ! {
+    todo!("0xf2ead4 void boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::reset<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *)")
+}
+
+// 0xf2eae4 — j___ZN5boost10shared_ptrIN3RBX14AsyncHttpCacheINS1_13LuaWebService26CachedRawLuaWebServiceInfoELb1EEEEC2IS5_EEPT_
+// type: int __fastcall(int, void *, int, int, int, int)
+#[doc(alias = "boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *)")]
+pub fn stub_0xf2eae4() -> ! {
+    todo!("0xf2eae4 boost::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>::shared_ptr<RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedRawLuaWebServiceInfo,true> *)")
 }
