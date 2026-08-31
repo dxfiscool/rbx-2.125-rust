@@ -23717,3 +23717,702 @@ pub fn stub_c4f674() -> ! {
 pub fn stub_c4f704() -> ! {
     todo!("0xc4f704 Ogre::Animation::~Animation()")
 }
+// 0xc4f710 — __ZN4Ogre9AnimationD2Ev
+#[doc(alias = "Ogre::Animation::~Animation()")]
+// was: Ogre::Animation::~Animation()
+pub fn stub_c4f710() -> ! {
+    todo!("0xc4f710 Ogre::Animation::~Animation()")
+}
+
+// 0xc4f950 — __ZN4Ogre9Animation16destroyAllTracksEv
+#[doc(alias = "Ogre::Animation::destroyAllTracks(void)")]
+// was: Ogre::Animation::destroyAllTracks(void)
+pub fn stub_c4f950() -> ! {
+    todo!("0xc4f950 Ogre::Animation::destroyAllTracks(void)")
+}
+
+// 0xc4fa1c — __ZNK4Ogre9Animation9getLengthEv
+#[doc(alias = "Ogre::Animation::getLength(void)const")]
+// was: Ogre::Animation::getLength(void)const
+pub fn stub_c4fa1c() -> ! {
+    todo!("0xc4fa1c Ogre::Animation::getLength(void)const")
+}
+
+// 0xc4fa20 — __ZN4Ogre9Animation15createNodeTrackEt
+#[doc(alias = "Ogre::Animation::createNodeTrack(unsigned short)")]
+// was: Ogre::Animation::createNodeTrack(unsigned short)
+pub fn stub_c4fa20() -> ! {
+    todo!("0xc4fa20 Ogre::Animation::createNodeTrack(unsigned short)")
+}
+
+// 0xc4fe3c — __ZNK4Ogre9Animation12hasNodeTrackEt
+#[doc(alias = "Ogre::Animation::hasNodeTrack(unsigned short)const")]
+// was: Ogre::Animation::hasNodeTrack(unsigned short)const
+pub fn stub_c4fe3c() -> ! {
+    todo!("0xc4fe3c Ogre::Animation::hasNodeTrack(unsigned short)const")
+}
+
+// 0xc4fe7c — __ZN4Ogre9Animation15createNodeTrackEtPNS_4NodeE
+#[doc(alias = "Ogre::Animation::createNodeTrack(unsigned short,Ogre::Node *)")]
+// was: Ogre::Animation::createNodeTrack(unsigned short,Ogre::Node *)
+pub fn stub_c4fe7c() -> ! {
+    todo!("0xc4fe7c Ogre::Animation::createNodeTrack(unsigned short,Ogre::Node *)")
+}
+
+// 0xc4fe98 — __ZNK4Ogre9Animation12getNodeTrackEt
+#[doc(alias = "Ogre::Animation::getNodeTrack(unsigned short)const")]
+// was: Ogre::Animation::getNodeTrack(unsigned short)const
+pub fn stub_c4fe98() -> ! {
+    todo!("0xc4fe98 Ogre::Animation::getNodeTrack(unsigned short)const")
+}
+
+// 0xc5016c — __ZN4Ogre9Animation17createVertexTrackEtNS_19VertexAnimationTypeE
+#[doc(alias = "Ogre::Animation::createVertexTrack(unsigned short,Ogre::VertexAnimationType)")]
+// was: Ogre::Animation::createVertexTrack(unsigned short,Ogre::VertexAnimationType)
+pub fn stub_c5016c() -> ! {
+    todo!("0xc5016c Ogre::Animation::createVertexTrack(unsigned short,Ogre::VertexAnimationType)")
+}
+
+// 0xc5058c — __ZN4Ogre9Animation17createVertexTrackEtPNS_10VertexDataENS_19VertexAnimationTypeE
+#[doc(alias = "Ogre::Animation::createVertexTrack(unsigned short,Ogre::VertexData *,Ogre::VertexAnimationType)")]
+// was: Ogre::Animation::createVertexTrack(unsigned short,Ogre::VertexData *,Ogre::VertexAnimationType)
+pub fn stub_c5058c() -> ! {
+    todo!("0xc5058c Ogre::Animation::createVertexTrack(unsigned short,Ogre::VertexData *,Ogre::VertexAnimationType)")
+}
+
+// 0xc5059c — __ZNK4Ogre9Animation14getVertexTrackEt
+#[doc(alias = "Ogre::Animation::getVertexTrack(unsigned short)const")]
+// was: Ogre::Animation::getVertexTrack(unsigned short)const
+pub fn stub_c5059c() -> ! {
+    todo!("0xc5059c Ogre::Animation::getVertexTrack(unsigned short)const")
+}
+
+// 0xc50870 — __ZNK4Ogre9Animation7getNameEv
+#[doc(alias = "Ogre::Animation::getName(void)const")]
+// was: Ogre::Animation::getName(void)const
+pub fn stub_c50870() -> ! {
+    todo!("0xc50870 Ogre::Animation::getName(void)const")
+}
+
+// 0xc50874 — __ZN4Ogre9Animation5applyEfff
+#[doc(alias = "Ogre::Animation::apply(float,float,float)")]
+// was: Ogre::Animation::apply(float,float,float)
+pub fn stub_c50874() -> ! {
+    todo!("0xc50874 Ogre::Animation::apply(float,float,float)")
+}
+
+// 0xc50954 — __ZN4Ogre9Animation18_applyBaseKeyFrameEv
+#[doc(alias = "Ogre::Animation::_applyBaseKeyFrame(void)")]
+// was: Ogre::Animation::_applyBaseKeyFrame(void)
+pub fn stub_c50954() -> ! {
+    todo!("0xc50954 Ogre::Animation::_applyBaseKeyFrame(void)")
+}
+
+// 0xc50bc8 — __ZNK4Ogre9Animation13_getTimeIndexEf
+#[doc(alias = "Ogre::Animation::_getTimeIndex(float)const")]
+// was: Ogre::Animation::_getTimeIndex(float)const
+pub fn stub_c50bc8() -> ! {
+    todo!("0xc50bc8 Ogre::Animation::_getTimeIndex(float)const")
+}
+
+// 0xc50c60 — __ZN4Ogre9Animation5applyEPNS_8SkeletonEfff
+#[doc(alias = "Ogre::Animation::apply(Ogre::Skeleton *,float,float,float)")]
+// was: Ogre::Animation::apply(Ogre::Skeleton *,float,float,float)
+pub fn stub_c50c60() -> ! {
+    todo!("0xc50c60 Ogre::Animation::apply(Ogre::Skeleton *,float,float,float)")
+}
+
+// 0xc50cd8 — __ZN4Ogre9Animation5applyEPNS_8SkeletonEffPKSt6vectorIfNS_12STLAllocatorIfNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEEf
+#[doc(alias = "Ogre::Animation::apply(Ogre::Skeleton *,float,float,std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*,float)")]
+// was: Ogre::Animation::apply(Ogre::Skeleton *,float,float,std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*,float)
+pub fn stub_c50cd8() -> ! {
+    todo!("0xc50cd8 Ogre::Animation::apply(Ogre::Skeleton *,float,float,std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*,float)")
+}
+
+// 0xc50d70 — __ZN4Ogre9Animation5applyEPNS_6EntityEffbb
+#[doc(alias = "Ogre::Animation::apply(Ogre::Entity *,float,float,bool,bool)")]
+// was: Ogre::Animation::apply(Ogre::Entity *,float,float,bool,bool)
+pub fn stub_c50d70() -> ! {
+    todo!("0xc50d70 Ogre::Animation::apply(Ogre::Entity *,float,float,bool,bool)")
+}
+
+// 0xc50e5c — __ZN4Ogre9Animation20setInterpolationModeENS0_17InterpolationModeE
+#[doc(alias = "Ogre::Animation::setInterpolationMode(Ogre::Animation::InterpolationMode)")]
+// was: Ogre::Animation::setInterpolationMode(Ogre::Animation::InterpolationMode)
+pub fn stub_c50e5c() -> ! {
+    todo!("0xc50e5c Ogre::Animation::setInterpolationMode(Ogre::Animation::InterpolationMode)")
+}
+
+// 0xc50e60 — __ZNK4Ogre9Animation20getInterpolationModeEv
+#[doc(alias = "Ogre::Animation::getInterpolationMode(void)const")]
+// was: Ogre::Animation::getInterpolationMode(void)const
+pub fn stub_c50e60() -> ! {
+    todo!("0xc50e60 Ogre::Animation::getInterpolationMode(void)const")
+}
+
+// 0xc50e64 — __ZN4Ogre9Animation27setDefaultInterpolationModeENS0_17InterpolationModeE
+#[doc(alias = "Ogre::Animation::setDefaultInterpolationMode(Ogre::Animation::InterpolationMode)")]
+// was: Ogre::Animation::setDefaultInterpolationMode(Ogre::Animation::InterpolationMode)
+pub fn stub_c50e64() -> ! {
+    todo!("0xc50e64 Ogre::Animation::setDefaultInterpolationMode(Ogre::Animation::InterpolationMode)")
+}
+
+// 0xc50e74 — __ZN4Ogre9Animation28setRotationInterpolationModeENS0_25RotationInterpolationModeE
+#[doc(alias = "Ogre::Animation::setRotationInterpolationMode(Ogre::Animation::RotationInterpolationMode)")]
+// was: Ogre::Animation::setRotationInterpolationMode(Ogre::Animation::RotationInterpolationMode)
+pub fn stub_c50e74() -> ! {
+    todo!("0xc50e74 Ogre::Animation::setRotationInterpolationMode(Ogre::Animation::RotationInterpolationMode)")
+}
+
+// 0xc50e78 — __ZNK4Ogre9Animation28getRotationInterpolationModeEv
+#[doc(alias = "Ogre::Animation::getRotationInterpolationMode(void)const")]
+// was: Ogre::Animation::getRotationInterpolationMode(void)const
+pub fn stub_c50e78() -> ! {
+    todo!("0xc50e78 Ogre::Animation::getRotationInterpolationMode(void)const")
+}
+
+// 0xc50e7c — __ZN4Ogre9Animation35setDefaultRotationInterpolationModeENS0_25RotationInterpolationModeE
+#[doc(alias = "Ogre::Animation::setDefaultRotationInterpolationMode(Ogre::Animation::RotationInterpolationMode)")]
+// was: Ogre::Animation::setDefaultRotationInterpolationMode(Ogre::Animation::RotationInterpolationMode)
+pub fn stub_c50e7c() -> ! {
+    todo!("0xc50e7c Ogre::Animation::setDefaultRotationInterpolationMode(Ogre::Animation::RotationInterpolationMode)")
+}
+
+// 0xc50e8c — __ZN4Ogre9Animation8optimiseEb
+#[doc(alias = "Ogre::Animation::optimise(bool)")]
+// was: Ogre::Animation::optimise(bool)
+pub fn stub_c50e8c() -> ! {
+    todo!("0xc50e8c Ogre::Animation::optimise(bool)")
+}
+
+// 0xc50ea0 — __ZN4Ogre9Animation18optimiseNodeTracksEb
+#[doc(alias = "Ogre::Animation::optimiseNodeTracks(bool)")]
+// was: Ogre::Animation::optimiseNodeTracks(bool)
+pub fn stub_c50ea0() -> ! {
+    todo!("0xc50ea0 Ogre::Animation::optimiseNodeTracks(bool)")
+}
+
+// 0xc51088 — __ZN4Ogre9Animation20optimiseVertexTracksEv
+#[doc(alias = "Ogre::Animation::optimiseVertexTracks(void)")]
+// was: Ogre::Animation::optimiseVertexTracks(void)
+pub fn stub_c51088() -> ! {
+    todo!("0xc51088 Ogre::Animation::optimiseVertexTracks(void)")
+}
+
+// 0xc5126c — __ZNK4Ogre9Animation26_collectIdentityNodeTracksERSt3setItSt4lessItENS_12STLAllocatorItNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::Animation::_collectIdentityNodeTracks(std::set<unsigned short,std::less<unsigned short>,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")]
+// was: Ogre::Animation::_collectIdentityNodeTracks(std::set<unsigned short,std::less<unsigned short>,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const
+pub fn stub_c5126c() -> ! {
+    todo!("0xc5126c Ogre::Animation::_collectIdentityNodeTracks(std::set<unsigned short,std::less<unsigned short>,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")
+}
+
+// 0xc512f0 — __ZN4Ogre9Animation18_destroyNodeTracksERKSt3setItSt4lessItENS_12STLAllocatorItNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::Animation::_destroyNodeTracks(std::set<unsigned short,std::less<unsigned short>,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: Ogre::Animation::_destroyNodeTracks(std::set<unsigned short,std::less<unsigned short>,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_c512f0() -> ! {
+    todo!("0xc512f0 Ogre::Animation::_destroyNodeTracks(std::set<unsigned short,std::less<unsigned short>,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xc51374 — __ZNK4Ogre9Animation21buildKeyFrameTimeListEv
+#[doc(alias = "Ogre::Animation::buildKeyFrameTimeList(void)const")]
+// was: Ogre::Animation::buildKeyFrameTimeList(void)const
+pub fn stub_c51374() -> ! {
+    todo!("0xc51374 Ogre::Animation::buildKeyFrameTimeList(void)const")
+}
+
+// 0xc5144c — __ZN4Ogre9Animation18setUseBaseKeyFrameEbfRKSs
+#[doc(alias = "Ogre::Animation::setUseBaseKeyFrame(bool,float,std::string const&)")]
+// was: Ogre::Animation::setUseBaseKeyFrame(bool,float,std::string const&)
+pub fn stub_c5144c() -> ! {
+    todo!("0xc5144c Ogre::Animation::setUseBaseKeyFrame(bool,float,std::string const&)")
+}
+
+// 0xc514c0 — __ZNK4Ogre9Animation18getUseBaseKeyFrameEv
+#[doc(alias = "Ogre::Animation::getUseBaseKeyFrame(void)const")]
+// was: Ogre::Animation::getUseBaseKeyFrame(void)const
+pub fn stub_c514c0() -> ! {
+    todo!("0xc514c0 Ogre::Animation::getUseBaseKeyFrame(void)const")
+}
+
+// 0xc514c8 — __ZNK4Ogre9Animation19getBaseKeyFrameTimeEv
+#[doc(alias = "Ogre::Animation::getBaseKeyFrameTime(void)const")]
+// was: Ogre::Animation::getBaseKeyFrameTime(void)const
+pub fn stub_c514c8() -> ! {
+    todo!("0xc514c8 Ogre::Animation::getBaseKeyFrameTime(void)const")
+}
+
+// 0xc514cc — __ZNK4Ogre9Animation28getBaseKeyFrameAnimationNameEv
+#[doc(alias = "Ogre::Animation::getBaseKeyFrameAnimationName(void)const")]
+// was: Ogre::Animation::getBaseKeyFrameAnimationName(void)const
+pub fn stub_c514cc() -> ! {
+    todo!("0xc514cc Ogre::Animation::getBaseKeyFrameAnimationName(void)const")
+}
+
+// 0xc514d0 — __ZN4Ogre9Animation16_notifyContainerEPNS_18AnimationContainerE
+#[doc(alias = "Ogre::Animation::_notifyContainer(Ogre::AnimationContainer *)")]
+// was: Ogre::Animation::_notifyContainer(Ogre::AnimationContainer *)
+pub fn stub_c514d0() -> ! {
+    todo!("0xc514d0 Ogre::Animation::_notifyContainer(Ogre::AnimationContainer *)")
+}
+
+// 0xc514d8 — __ZN4Ogre18VertexPoseKeyFrameD1Ev
+#[doc(alias = "Ogre::VertexPoseKeyFrame::~VertexPoseKeyFrame()")]
+// was: Ogre::VertexPoseKeyFrame::~VertexPoseKeyFrame()
+pub fn stub_c514d8() -> ! {
+    todo!("0xc514d8 Ogre::VertexPoseKeyFrame::~VertexPoseKeyFrame()")
+}
+
+// 0xc5157c — __ZNSt10_List_baseItN4Ogre12STLAllocatorItNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
+#[doc(alias = "std::_List_base<unsigned short,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
+// was: std::_List_base<unsigned short,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()
+pub fn stub_c5157c() -> ! {
+    todo!("0xc5157c std::_List_base<unsigned short,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+}
+
+// 0xc51580 — __ZNSt10_List_baseItN4Ogre12STLAllocatorItNS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
+#[doc(alias = "std::_List_base<unsigned short,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
+// was: std::_List_base<unsigned short,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()
+pub fn stub_c51580() -> ! {
+    todo!("0xc51580 std::_List_base<unsigned short,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+}
+
+// 0xc5158c — __ZNSt8_Rb_treeIttSt9_IdentityItESt4lessItEN4Ogre12STLAllocatorItNS4_22CategorisedAllocPolicyILNS4_14MemoryCategoryE0EEEEEE5eraseESt17_Rb_tree_iteratorItESC_
+#[doc(alias = "std::_Rb_tree<unsigned short,unsigned short,std::_Identity<unsigned short>,std::less<unsigned short>,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::erase(std::_Rb_tree_iterator<unsigned short>,std::_Rb_tree_iterator<unsigned short>)")]
+// was: std::_Rb_tree<unsigned short,unsigned short,std::_Identity<unsigned short>,std::less<unsigned short>,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::erase(std::_Rb_tree_iterator<unsigned short>,std::_Rb_tree_iterator<unsigned short>)
+pub fn stub_c5158c() -> ! {
+    todo!("0xc5158c std::_Rb_tree<unsigned short,unsigned short,std::_Identity<unsigned short>,std::less<unsigned short>,Ogre::STLAllocator<unsigned short,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::erase(std::_Rb_tree_iterator<unsigned short>,std::_Rb_tree_iterator<unsigned short>)")
+}
+
+// 0xc515f0 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre20VertexAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>> *)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>> *)
+pub fn stub_c515f0() -> ! {
+    todo!("0xc515f0 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>> *)")
+}
+
+// 0xc51618 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre20VertexAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::pair<unsigned short const,Ogre::VertexAnimationTrack *> const&)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::pair<unsigned short const,Ogre::VertexAnimationTrack *> const&)
+pub fn stub_c51618() -> ! {
+    todo!("0xc51618 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::pair<unsigned short const,Ogre::VertexAnimationTrack *> const&)")
+}
+
+// 0xc51820 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre20VertexAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,Ogre::VertexAnimationTrack *> const&)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,Ogre::VertexAnimationTrack *> const&)
+pub fn stub_c51820() -> ! {
+    todo!("0xc51820 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,Ogre::VertexAnimationTrack *> const&)")
+}
+
+// 0xc5191c — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre21NumericAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>> *)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>> *)
+pub fn stub_c5191c() -> ! {
+    todo!("0xc5191c std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>> *)")
+}
+
+// 0xc51944 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre18NodeAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>> *)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>> *)
+pub fn stub_c51944() -> ! {
+    todo!("0xc51944 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>> *)")
+}
+
+// 0xc5196c — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre18NodeAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::pair<unsigned short const,Ogre::NodeAnimationTrack *> const&)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::pair<unsigned short const,Ogre::NodeAnimationTrack *> const&)
+pub fn stub_c5196c() -> ! {
+    todo!("0xc5196c std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::pair<unsigned short const,Ogre::NodeAnimationTrack *> const&)")
+}
+
+// 0xc51b74 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre18NodeAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,Ogre::NodeAnimationTrack *> const&)")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,Ogre::NodeAnimationTrack *> const&)
+pub fn stub_c51b74() -> ! {
+    todo!("0xc51b74 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<unsigned short const,Ogre::NodeAnimationTrack *> const&)")
+}
+
+// 0xc51c70 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre20VertexAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
+pub fn stub_c51c70() -> ! {
+    todo!("0xc51c70 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc51c74 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre20VertexAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
+pub fn stub_c51c74() -> ! {
+    todo!("0xc51c74 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::VertexAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc51c80 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre21NumericAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
+pub fn stub_c51c80() -> ! {
+    todo!("0xc51c80 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc51c84 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre21NumericAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
+pub fn stub_c51c84() -> ! {
+    todo!("0xc51c84 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NumericAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc51c90 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre18NodeAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
+pub fn stub_c51c90() -> ! {
+    todo!("0xc51c90 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc51c94 — __ZNSt8_Rb_treeItSt4pairIKtPN4Ogre18NodeAnimationTrackEESt10_Select1stIS5_ESt4lessItENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()
+pub fn stub_c51c94() -> ! {
+    todo!("0xc51c94 std::_Rb_tree<unsigned short,std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,std::_Select1st<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>>,std::less<unsigned short>,Ogre::STLAllocator<std::pair<unsigned short const,Ogre::NodeAnimationTrack *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<unsigned short>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc51ca0 — __ZN4Ogre18VertexPoseKeyFrameD0Ev
+#[doc(alias = "Ogre::VertexPoseKeyFrame::~VertexPoseKeyFrame()")]
+// was: Ogre::VertexPoseKeyFrame::~VertexPoseKeyFrame()
+pub fn stub_c51ca0() -> ! {
+    todo!("0xc51ca0 Ogre::VertexPoseKeyFrame::~VertexPoseKeyFrame()")
+}
+
+// 0xc51d80 — __ZN4Ogre14AnimationStateD0Ev
+#[doc(alias = "Ogre::AnimationState::~AnimationState()")]
+// was: Ogre::AnimationState::~AnimationState()
+pub fn stub_c51d80() -> ! {
+    todo!("0xc51d80 Ogre::AnimationState::~AnimationState()")
+}
+
+// 0xc51e58 — __ZN4Ogre14AnimationStateD1Ev
+#[doc(alias = "Ogre::AnimationState::~AnimationState()")]
+// was: Ogre::AnimationState::~AnimationState()
+pub fn stub_c51e58() -> ! {
+    todo!("0xc51e58 Ogre::AnimationState::~AnimationState()")
+}
+
+// 0xc51eb4 — __ZNK4Ogre14AnimationState16getAnimationNameEv
+#[doc(alias = "Ogre::AnimationState::getAnimationName(void)const")]
+// was: Ogre::AnimationState::getAnimationName(void)const
+pub fn stub_c51eb4() -> ! {
+    todo!("0xc51eb4 Ogre::AnimationState::getAnimationName(void)const")
+}
+
+// 0xc51eb8 — __ZNK4Ogre14AnimationState15getTimePositionEv
+#[doc(alias = "Ogre::AnimationState::getTimePosition(void)const")]
+// was: Ogre::AnimationState::getTimePosition(void)const
+pub fn stub_c51eb8() -> ! {
+    todo!("0xc51eb8 Ogre::AnimationState::getTimePosition(void)const")
+}
+
+// 0xc51ebc — __ZN4Ogre14AnimationState15setTimePositionEf
+#[doc(alias = "Ogre::AnimationState::setTimePosition(float)")]
+// was: Ogre::AnimationState::setTimePosition(float)
+pub fn stub_c51ebc() -> ! {
+    todo!("0xc51ebc Ogre::AnimationState::setTimePosition(float)")
+}
+
+// 0xc51f50 — __ZNK4Ogre14AnimationState9getLengthEv
+#[doc(alias = "Ogre::AnimationState::getLength(void)const")]
+// was: Ogre::AnimationState::getLength(void)const
+pub fn stub_c51f50() -> ! {
+    todo!("0xc51f50 Ogre::AnimationState::getLength(void)const")
+}
+
+// 0xc51f54 — __ZN4Ogre14AnimationState9setLengthEf
+#[doc(alias = "Ogre::AnimationState::setLength(float)")]
+// was: Ogre::AnimationState::setLength(float)
+pub fn stub_c51f54() -> ! {
+    todo!("0xc51f54 Ogre::AnimationState::setLength(float)")
+}
+
+// 0xc51f58 — __ZNK4Ogre14AnimationState9getWeightEv
+#[doc(alias = "Ogre::AnimationState::getWeight(void)const")]
+// was: Ogre::AnimationState::getWeight(void)const
+pub fn stub_c51f58() -> ! {
+    todo!("0xc51f58 Ogre::AnimationState::getWeight(void)const")
+}
+
+// 0xc51f5c — __ZN4Ogre17AnimationStateSetC1Ev
+#[doc(alias = "Ogre::AnimationStateSet::AnimationStateSet(void)")]
+// was: Ogre::AnimationStateSet::AnimationStateSet(void)
+pub fn stub_c51f5c() -> ! {
+    todo!("0xc51f5c Ogre::AnimationStateSet::AnimationStateSet(void)")
+}
+
+// 0xc51fa4 — __ZNK4Ogre17AnimationStateSet17getAnimationStateERKSs
+#[doc(alias = "Ogre::AnimationStateSet::getAnimationState(std::string const&)const")]
+// was: Ogre::AnimationStateSet::getAnimationState(std::string const&)const
+pub fn stub_c51fa4() -> ! {
+    todo!("0xc51fa4 Ogre::AnimationStateSet::getAnimationState(std::string const&)const")
+}
+
+// 0xc52284 — __ZN4Ogre17AnimationStateSetD1Ev
+#[doc(alias = "Ogre::AnimationStateSet::~AnimationStateSet()")]
+// was: Ogre::AnimationStateSet::~AnimationStateSet()
+pub fn stub_c52284() -> ! {
+    todo!("0xc52284 Ogre::AnimationStateSet::~AnimationStateSet()")
+}
+
+// 0xc52290 — __ZN4Ogre17AnimationStateSetD2Ev
+#[doc(alias = "Ogre::AnimationStateSet::~AnimationStateSet()")]
+// was: Ogre::AnimationStateSet::~AnimationStateSet()
+pub fn stub_c52290() -> ! {
+    todo!("0xc52290 Ogre::AnimationStateSet::~AnimationStateSet()")
+}
+
+// 0xc5239c — __ZN4Ogre17AnimationStateSet24removeAllAnimationStatesEv
+#[doc(alias = "Ogre::AnimationStateSet::removeAllAnimationStates(void)")]
+// was: Ogre::AnimationStateSet::removeAllAnimationStates(void)
+pub fn stub_c5239c() -> ! {
+    todo!("0xc5239c Ogre::AnimationStateSet::removeAllAnimationStates(void)")
+}
+
+// 0xc523f4 — __ZN4Ogre17AnimationStateSet20removeAnimationStateERKSs
+#[doc(alias = "Ogre::AnimationStateSet::removeAnimationState(std::string const&)")]
+// was: Ogre::AnimationStateSet::removeAnimationState(std::string const&)
+pub fn stub_c523f4() -> ! {
+    todo!("0xc523f4 Ogre::AnimationStateSet::removeAnimationState(std::string const&)")
+}
+
+// 0xc524a8 — __ZN4Ogre17AnimationStateSet20createAnimationStateERKSsfffb
+#[doc(alias = "Ogre::AnimationStateSet::createAnimationState(std::string const&,float,float,float,bool)")]
+// was: Ogre::AnimationStateSet::createAnimationState(std::string const&,float,float,float,bool)
+pub fn stub_c524a8() -> ! {
+    todo!("0xc524a8 Ogre::AnimationStateSet::createAnimationState(std::string const&,float,float,float,bool)")
+}
+
+// 0xc52864 — __ZNK4Ogre17AnimationStateSet17hasAnimationStateERKSs
+#[doc(alias = "Ogre::AnimationStateSet::hasAnimationState(std::string const&)const")]
+// was: Ogre::AnimationStateSet::hasAnimationState(std::string const&)const
+pub fn stub_c52864() -> ! {
+    todo!("0xc52864 Ogre::AnimationStateSet::hasAnimationState(std::string const&)const")
+}
+
+// 0xc52880 — __ZN4Ogre17AnimationStateSet25getAnimationStateIteratorEv
+#[doc(alias = "Ogre::AnimationStateSet::getAnimationStateIterator(void)")]
+// was: Ogre::AnimationStateSet::getAnimationStateIterator(void)
+pub fn stub_c52880() -> ! {
+    todo!("0xc52880 Ogre::AnimationStateSet::getAnimationStateIterator(void)")
+}
+
+// 0xc5288c — __ZNK4Ogre17AnimationStateSet17copyMatchingStateEPS0_
+#[doc(alias = "Ogre::AnimationStateSet::copyMatchingState(Ogre::AnimationStateSet*)const")]
+// was: Ogre::AnimationStateSet::copyMatchingState(Ogre::AnimationStateSet*)const
+pub fn stub_c5288c() -> ! {
+    todo!("0xc5288c Ogre::AnimationStateSet::copyMatchingState(Ogre::AnimationStateSet*)const")
+}
+
+// 0xc52b9c — __ZNK4Ogre17AnimationStateSet32getEnabledAnimationStateIteratorEv
+#[doc(alias = "Ogre::AnimationStateSet::getEnabledAnimationStateIterator(void)const")]
+// was: Ogre::AnimationStateSet::getEnabledAnimationStateIterator(void)const
+pub fn stub_c52b9c() -> ! {
+    todo!("0xc52b9c Ogre::AnimationStateSet::getEnabledAnimationStateIterator(void)const")
+}
+
+// 0xc52ba8 — __ZNSt3mapISsPN4Ogre14AnimationStateESt4lessISsENS0_12STLAllocatorISt4pairIKSsS2_ENS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEEixERS7_
+#[doc(alias = "std::map<std::string,Ogre::AnimationState *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")]
+// was: std::map<std::string,Ogre::AnimationState *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)
+pub fn stub_c52ba8() -> ! {
+    todo!("0xc52ba8 std::map<std::string,Ogre::AnimationState *,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::operator[](std::string const&)")
+}
+
+// 0xc52d64 — __ZNKSt8_Rb_treeISsSt4pairIKSsPN4Ogre14AnimationStateEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const
+pub fn stub_c52d64() -> ! {
+    todo!("0xc52d64 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)const")
+}
+
+// 0xc52e08 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14AnimationStateEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::AnimationState *>> *)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::AnimationState *>> *)
+pub fn stub_c52e08() -> ! {
+    todo!("0xc52e08 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,Ogre::AnimationState *>> *)")
+}
+
+// 0xc52e80 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14AnimationStateEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE4findERS1_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)
+pub fn stub_c52e80() -> ! {
+    todo!("0xc52e80 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::find(std::string const&)")
+}
+
+// 0xc52f24 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14AnimationStateEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueESt17_Rb_tree_iteratorIS5_ERKS5_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::AnimationState *>>,std::pair<std::string const,Ogre::AnimationState *> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::AnimationState *>>,std::pair<std::string const,Ogre::AnimationState *> const&)
+pub fn stub_c52f24() -> ! {
+    todo!("0xc52f24 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,Ogre::AnimationState *>>,std::pair<std::string const,Ogre::AnimationState *> const&)")
+}
+
+// 0xc53104 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14AnimationStateEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE9_M_insertEPSt18_Rb_tree_node_baseSH_RKS5_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::AnimationState *> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::AnimationState *> const&)
+pub fn stub_c53104() -> ! {
+    todo!("0xc53104 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,Ogre::AnimationState *> const&)")
+}
+
+// 0xc53258 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14AnimationStateEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE16_M_insert_uniqueERKS5_
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::AnimationState *> const&)")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::AnimationState *> const&)
+pub fn stub_c53258() -> ! {
+    todo!("0xc53258 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_M_insert_unique(std::pair<std::string const,Ogre::AnimationState *> const&)")
+}
+
+// 0xc5333c — __ZNSt10_List_baseIPN4Ogre14AnimationStateENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD1Ev
+#[doc(alias = "std::_List_base<Ogre::AnimationState *,Ogre::STLAllocator<Ogre::AnimationState *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
+// was: std::_List_base<Ogre::AnimationState *,Ogre::STLAllocator<Ogre::AnimationState *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()
+pub fn stub_c5333c() -> ! {
+    todo!("0xc5333c std::_List_base<Ogre::AnimationState *,Ogre::STLAllocator<Ogre::AnimationState *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+}
+
+// 0xc53340 — __ZNSt10_List_baseIPN4Ogre14AnimationStateENS0_12STLAllocatorIS2_NS0_22CategorisedAllocPolicyILNS0_14MemoryCategoryE0EEEEEE10_List_implD0Ev
+#[doc(alias = "std::_List_base<Ogre::AnimationState *,Ogre::STLAllocator<Ogre::AnimationState *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")]
+// was: std::_List_base<Ogre::AnimationState *,Ogre::STLAllocator<Ogre::AnimationState *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()
+pub fn stub_c53340() -> ! {
+    todo!("0xc53340 std::_List_base<Ogre::AnimationState *,Ogre::STLAllocator<Ogre::AnimationState *,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_List_impl::~_List_impl()")
+}
+
+// 0xc5334c — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14AnimationStateEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED1Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_c5334c() -> ! {
+    todo!("0xc5334c std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc53350 — __ZNSt8_Rb_treeISsSt4pairIKSsPN4Ogre14AnimationStateEESt10_Select1stIS5_ESt4lessISsENS2_12STLAllocatorIS5_NS2_22CategorisedAllocPolicyILNS2_14MemoryCategoryE0EEEEEE13_Rb_tree_implIS9_Lb0EED0Ev
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")]
+// was: std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()
+pub fn stub_c53350() -> ! {
+    todo!("0xc53350 std::_Rb_tree<std::string,std::pair<std::string const,Ogre::AnimationState *>,std::_Select1st<std::pair<std::string const,Ogre::AnimationState *>>,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,Ogre::AnimationState *>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>>::_Rb_tree_impl<std::less<std::string>,false>::~_Rb_tree_impl()")
+}
+
+// 0xc53390 — __ZN4Ogre14AnimationTrackD0Ev
+#[doc(alias = "Ogre::AnimationTrack::~AnimationTrack()")]
+// was: Ogre::AnimationTrack::~AnimationTrack()
+pub fn stub_c53390() -> ! {
+    todo!("0xc53390 Ogre::AnimationTrack::~AnimationTrack()")
+}
+
+// 0xc53420 — __ZN4Ogre14AnimationTrackD1Ev
+#[doc(alias = "Ogre::AnimationTrack::~AnimationTrack()")]
+// was: Ogre::AnimationTrack::~AnimationTrack()
+pub fn stub_c53420() -> ! {
+    todo!("0xc53420 Ogre::AnimationTrack::~AnimationTrack()")
+}
+
+// 0xc5342c — __ZN4Ogre14AnimationTrackD2Ev
+#[doc(alias = "Ogre::AnimationTrack::~AnimationTrack()")]
+// was: Ogre::AnimationTrack::~AnimationTrack()
+pub fn stub_c5342c() -> ! {
+    todo!("0xc5342c Ogre::AnimationTrack::~AnimationTrack()")
+}
+
+// 0xc5351c — __ZNK4Ogre14AnimationTrack15getNumKeyFramesEv
+#[doc(alias = "Ogre::AnimationTrack::getNumKeyFrames(void)const")]
+// was: Ogre::AnimationTrack::getNumKeyFrames(void)const
+pub fn stub_c5351c() -> ! {
+    todo!("0xc5351c Ogre::AnimationTrack::getNumKeyFrames(void)const")
+}
+
+// 0xc53528 — __ZNK4Ogre14AnimationTrack11getKeyFrameEt
+#[doc(alias = "Ogre::AnimationTrack::getKeyFrame(unsigned short)const")]
+// was: Ogre::AnimationTrack::getKeyFrame(unsigned short)const
+pub fn stub_c53528() -> ! {
+    todo!("0xc53528 Ogre::AnimationTrack::getKeyFrame(unsigned short)const")
+}
+
+// 0xc53530 — __ZNK4Ogre14AnimationTrack18getKeyFramesAtTimeERKNS_9TimeIndexEPPNS_8KeyFrameES6_Pt
+#[doc(alias = "Ogre::AnimationTrack::getKeyFramesAtTime(Ogre::TimeIndex const&,Ogre::KeyFrame **,Ogre::KeyFrame **,unsigned short *)const")]
+// was: Ogre::AnimationTrack::getKeyFramesAtTime(Ogre::TimeIndex const&,Ogre::KeyFrame **,Ogre::KeyFrame **,unsigned short *)const
+pub fn stub_c53530() -> ! {
+    todo!("0xc53530 Ogre::AnimationTrack::getKeyFramesAtTime(Ogre::TimeIndex const&,Ogre::KeyFrame **,Ogre::KeyFrame **,unsigned short *)const")
+}
+
+// 0xc5366c — __ZN4Ogre14AnimationTrack14createKeyFrameEf
+#[doc(alias = "Ogre::AnimationTrack::createKeyFrame(float)")]
+// was: Ogre::AnimationTrack::createKeyFrame(float)
+pub fn stub_c5366c() -> ! {
+    todo!("0xc5366c Ogre::AnimationTrack::createKeyFrame(float)")
+}
+
+// 0xc536f8 — __ZN4Ogre14AnimationTrack14removeKeyFrameEt
+#[doc(alias = "Ogre::AnimationTrack::removeKeyFrame(unsigned short)")]
+// was: Ogre::AnimationTrack::removeKeyFrame(unsigned short)
+pub fn stub_c536f8() -> ! {
+    todo!("0xc536f8 Ogre::AnimationTrack::removeKeyFrame(unsigned short)")
+}
+
+// 0xc53738 — __ZN4Ogre14AnimationTrack18removeAllKeyFramesEv
+#[doc(alias = "Ogre::AnimationTrack::removeAllKeyFrames(void)")]
+// was: Ogre::AnimationTrack::removeAllKeyFrames(void)
+pub fn stub_c53738() -> ! {
+    todo!("0xc53738 Ogre::AnimationTrack::removeAllKeyFrames(void)")
+}
+
+// 0xc53770 — __ZN4Ogre14AnimationTrack21_collectKeyFrameTimesERSt6vectorIfNS_12STLAllocatorIfNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::AnimationTrack::_collectKeyFrameTimes(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)")]
+// was: Ogre::AnimationTrack::_collectKeyFrameTimes(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)
+pub fn stub_c53770() -> ! {
+    todo!("0xc53770 Ogre::AnimationTrack::_collectKeyFrameTimes(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)")
+}
+
+// 0xc53824 — __ZN4Ogre14AnimationTrack22_buildKeyFrameIndexMapERKSt6vectorIfNS_12STLAllocatorIfNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
+#[doc(alias = "Ogre::AnimationTrack::_buildKeyFrameIndexMap(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")]
+// was: Ogre::AnimationTrack::_buildKeyFrameIndexMap(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)
+pub fn stub_c53824() -> ! {
+    todo!("0xc53824 Ogre::AnimationTrack::_buildKeyFrameIndexMap(std::vector<float,Ogre::STLAllocator<float,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const&)")
+}
+
+// 0xc538bc — __ZNK4Ogre14AnimationTrack13populateCloneEPS0_
+#[doc(alias = "Ogre::AnimationTrack::populateClone(Ogre::AnimationTrack*)const")]
+// was: Ogre::AnimationTrack::populateClone(Ogre::AnimationTrack*)const
+pub fn stub_c538bc() -> ! {
+    todo!("0xc538bc Ogre::AnimationTrack::populateClone(Ogre::AnimationTrack*)const")
+}
+
+// 0xc53918 — __ZN4Ogre18NodeAnimationTrackC1EPNS_9AnimationEt
+#[doc(alias = "Ogre::NodeAnimationTrack::NodeAnimationTrack(Ogre::Animation *,unsigned short)")]
+// was: Ogre::NodeAnimationTrack::NodeAnimationTrack(Ogre::Animation *,unsigned short)
+pub fn stub_c53918() -> ! {
+    todo!("0xc53918 Ogre::NodeAnimationTrack::NodeAnimationTrack(Ogre::Animation *,unsigned short)")
+}
+
+// 0xc5396c — __ZN4Ogre18NodeAnimationTrackD0Ev
+#[doc(alias = "Ogre::NodeAnimationTrack::~NodeAnimationTrack()")]
+// was: Ogre::NodeAnimationTrack::~NodeAnimationTrack()
+pub fn stub_c5396c() -> ! {
+    todo!("0xc5396c Ogre::NodeAnimationTrack::~NodeAnimationTrack()")
+}
+
+// 0xc539fc — __ZN4Ogre18NodeAnimationTrackD1Ev
+#[doc(alias = "Ogre::NodeAnimationTrack::~NodeAnimationTrack()")]
+// was: Ogre::NodeAnimationTrack::~NodeAnimationTrack()
+pub fn stub_c539fc() -> ! {
+    todo!("0xc539fc Ogre::NodeAnimationTrack::~NodeAnimationTrack()")
+}
+
+// 0xc53a08 — __ZN4Ogre18NodeAnimationTrackD2Ev
+#[doc(alias = "Ogre::NodeAnimationTrack::~NodeAnimationTrack()")]
+// was: Ogre::NodeAnimationTrack::~NodeAnimationTrack()
+pub fn stub_c53a08() -> ! {
+    todo!("0xc53a08 Ogre::NodeAnimationTrack::~NodeAnimationTrack()")
+}
+
+// 0xc53ad4 — __ZNK4Ogre18NodeAnimationTrack23getInterpolatedKeyFrameERKNS_9TimeIndexEPNS_8KeyFrameE
+#[doc(alias = "Ogre::NodeAnimationTrack::getInterpolatedKeyFrame(Ogre::TimeIndex const&,Ogre::KeyFrame *)const")]
+// was: Ogre::NodeAnimationTrack::getInterpolatedKeyFrame(Ogre::TimeIndex const&,Ogre::KeyFrame *)const
+pub fn stub_c53ad4() -> ! {
+    todo!("0xc53ad4 Ogre::NodeAnimationTrack::getInterpolatedKeyFrame(Ogre::TimeIndex const&,Ogre::KeyFrame *)const")
+}
+
+// 0xc53d44 — __ZN4Ogre18NodeAnimationTrack5applyERKNS_9TimeIndexEff
+#[doc(alias = "Ogre::NodeAnimationTrack::apply(Ogre::TimeIndex const&,float,float)")]
+// was: Ogre::NodeAnimationTrack::apply(Ogre::TimeIndex const&,float,float)
+pub fn stub_c53d44() -> ! {
+    todo!("0xc53d44 Ogre::NodeAnimationTrack::apply(Ogre::TimeIndex const&,float,float)")
+}
