@@ -12030,3 +12030,829 @@ pub fn stub_0x32637c() -> ! {
 pub fn stub_0x32653c() -> ! {
     todo!("0x32653c RBX::Reflection::EnumDesc<RBX::KeywordFilterType>::addPair(RBX::KeywordFilterType,char const*)")
 }
+// 0x289268 — __ZN3RBX10Reflection18GenericSlotWrapperD1Ev
+#[doc(alias = "RBX::Reflection::GenericSlotWrapper::~GenericSlotWrapper()")]
+pub fn stub_0x289268() -> ! {
+    todo!("0x289268 RBX::Reflection::GenericSlotWrapper::~GenericSlotWrapper()")
+}
+
+// 0x289284 — __ZN3RBX10Reflection18GenericSlotWrapperD0Ev
+#[doc(alias = "RBX::Reflection::GenericSlotWrapper::~GenericSlotWrapper()")]
+pub fn stub_0x289284() -> ! {
+    todo!("0x289284 RBX::Reflection::GenericSlotWrapper::~GenericSlotWrapper()")
+}
+
+// 0x28932c — __ZN5boost10shared_ptrIN3RBX10Reflection19TGenericSlotWrapperINS1_3Lua14WaitScriptSlotEEEEC2IS6_N3rbx6detail13sp_ms_deleterIS6_EEEEPT_T0_
+// was: boost::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>)
+#[doc(
+    alias = "boost::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>)"
+)]
+pub fn stub_0x28932c() -> ! {
+    todo!("0x28932c boost::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>)")
+}
+
+// 0x289438 — __ZN5boost6detail12shared_countC2IPN3RBX10Reflection19TGenericSlotWrapperINS3_3Lua14WaitScriptSlotEEEN3rbx6detail13sp_ms_deleterIS8_EEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>)
+#[doc(
+    alias = "boost::detail::shared_count::shared_count<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>)"
+)]
+pub fn stub_0x289438() -> ! {
+    todo!("0x289438 boost::detail::shared_count::shared_count<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>)")
+}
+
+// 0x289540 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua14WaitScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::~sp_counted_impl_pd()
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::~sp_counted_impl_pd()"
+)]
+pub fn stub_0x289540() -> ! {
+    todo!("0x289540 boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::~sp_counted_impl_pd()")
+}
+
+// 0x28956c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua14WaitScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::~sp_counted_impl_pd()
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::~sp_counted_impl_pd()"
+)]
+pub fn stub_0x28956c() -> ! {
+    todo!("0x28956c boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::~sp_counted_impl_pd()")
+}
+
+// 0x289628 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua14WaitScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::dispose(void)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::dispose(void)"
+)]
+pub fn stub_0x289628() -> ! {
+    todo!("0x289628 boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::dispose(void)")
+}
+
+// 0x289648 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua14WaitScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::get_deleter(std::type_info const&)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::get_deleter(std::type_info const&)"
+)]
+pub fn stub_0x289648() -> ! {
+    todo!("0x289648 boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::get_deleter(std::type_info const&)")
+}
+
+// 0x289660 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua14WaitScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::get_untyped_deleter(void)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::get_untyped_deleter(void)"
+)]
+pub fn stub_0x289660() -> ! {
+    todo!("0x289660 boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::WaitScriptSlot>>>::get_untyped_deleter(void)")
+}
+
+// 0x289664 — __ZN5boost11get_deleterIN3rbx6detail13sp_ms_deleterIN3RBX10Reflection19TGenericSlotWrapperINS4_3Lua18FunctionScriptSlotEEEEES9_EEPT_RKNS_10shared_ptrIT0_EE
+// was: rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>> * boost::get_deleter<rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>,RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>(boost::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>> const&)
+#[doc(
+    alias = "rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>> * boost::get_deleter<rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>,RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>(boost::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>> const&)"
+)]
+pub fn stub_0x289664() -> ! {
+    todo!("0x289664 rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>> * boost::get_deleter<rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>,RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>(boost::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>> const&)")
+}
+
+// 0x2896c0 — __ZN3RBX10Reflection19TGenericSlotWrapperINS_3Lua18FunctionScriptSlotEEC2ERKS3_
+#[doc(
+    alias = "RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>::TGenericSlotWrapper(RBX::Lua::FunctionScriptSlot const&)"
+)]
+pub fn stub_0x2896c0() -> ! {
+    todo!("0x2896c0 RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>::TGenericSlotWrapper(RBX::Lua::FunctionScriptSlot const&)")
+}
+
+// 0x289850 — __ZN3RBX10Reflection19TGenericSlotWrapperINS_3Lua18FunctionScriptSlotEED1Ev
+#[doc(
+    alias = "RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>::~TGenericSlotWrapper()"
+)]
+pub fn stub_0x289850() -> ! {
+    todo!("0x289850 RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>::~TGenericSlotWrapper()")
+}
+
+// 0x2899b0 — __ZN3RBX10Reflection19TGenericSlotWrapperINS_3Lua18FunctionScriptSlotEED0Ev
+#[doc(
+    alias = "RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>::~TGenericSlotWrapper()"
+)]
+pub fn stub_0x2899b0() -> ! {
+    todo!("0x2899b0 RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>::~TGenericSlotWrapper()")
+}
+
+// 0x289b20 — __ZN3RBX10Reflection19TGenericSlotWrapperINS_3Lua18FunctionScriptSlotEE7executeERKSt6vectorINS0_7VariantESaIS6_EE
+#[doc(
+    alias = "RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>::execute(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)"
+)]
+pub fn stub_0x289b20() -> ! {
+    todo!("0x289b20 RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>::execute(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)")
+}
+
+// 0x289c3c — __ZN3RBX3Lua18FunctionScriptSlotclERKSt6vectorINS_10Reflection7VariantESaIS4_EE
+#[doc(
+    alias = "RBX::Lua::FunctionScriptSlot::operator()(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)"
+)]
+pub fn stub_0x289c3c() -> ! {
+    todo!("0x289c3c RBX::Lua::FunctionScriptSlot::operator()(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)")
+}
+
+// 0x28a598 — __ZN5boost10shared_ptrIN3RBX10Reflection19TGenericSlotWrapperINS1_3Lua18FunctionScriptSlotEEEEC2IS6_N3rbx6detail13sp_ms_deleterIS6_EEEEPT_T0_
+// was: boost::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>)
+#[doc(
+    alias = "boost::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>)"
+)]
+pub fn stub_0x28a598() -> ! {
+    todo!("0x28a598 boost::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>::shared_ptr<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>)")
+}
+
+// 0x28a6a4 — __ZN5boost6detail12shared_countC2IPN3RBX10Reflection19TGenericSlotWrapperINS3_3Lua18FunctionScriptSlotEEEN3rbx6detail13sp_ms_deleterIS8_EEEET_T0_
+// was: boost::detail::shared_count::shared_count<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>)
+#[doc(
+    alias = "boost::detail::shared_count::shared_count<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>)"
+)]
+pub fn stub_0x28a6a4() -> ! {
+    todo!("0x28a6a4 boost::detail::shared_count::shared_count<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>(RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>)")
+}
+
+// 0x28a7ac — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua18FunctionScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEED1Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::~sp_counted_impl_pd()
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::~sp_counted_impl_pd()"
+)]
+pub fn stub_0x28a7ac() -> ! {
+    todo!("0x28a7ac boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::~sp_counted_impl_pd()")
+}
+
+// 0x28a7d8 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua18FunctionScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEED0Ev
+// was: boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::~sp_counted_impl_pd()
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::~sp_counted_impl_pd()"
+)]
+pub fn stub_0x28a7d8() -> ! {
+    todo!("0x28a7d8 boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::~sp_counted_impl_pd()")
+}
+
+// 0x28a894 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua18FunctionScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEE7disposeEv
+// was: boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::dispose(void)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::dispose(void)"
+)]
+pub fn stub_0x28a894() -> ! {
+    todo!("0x28a894 boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::dispose(void)")
+}
+
+// 0x28a8b4 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua18FunctionScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEE11get_deleterERKSt9type_info
+// was: boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::get_deleter(std::type_info const&)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::get_deleter(std::type_info const&)"
+)]
+pub fn stub_0x28a8b4() -> ! {
+    todo!("0x28a8b4 boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::get_deleter(std::type_info const&)")
+}
+
+// 0x28a8cc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX10Reflection19TGenericSlotWrapperINS2_3Lua18FunctionScriptSlotEEEN3rbx6detail13sp_ms_deleterIS7_EEE19get_untyped_deleterEv
+// was: boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::get_untyped_deleter(void)
+#[doc(
+    alias = "boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::get_untyped_deleter(void)"
+)]
+pub fn stub_0x28a8cc() -> ! {
+    todo!("0x28a8cc boost::detail::sp_counted_impl_pd<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot> *,rbx::detail::sp_ms_deleter<RBX::Reflection::TGenericSlotWrapper<RBX::Lua::FunctionScriptSlot>>>::get_untyped_deleter(void)")
+}
+
+// 0x28d5f8 — __ZN3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEED1Ev
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::~PropDescriptor()"
+)]
+pub fn stub_0x28d5f8() -> ! {
+    todo!("0x28d5f8 RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::~PropDescriptor()")
+}
+
+// 0x28d620 — __ZN3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::~PropDescriptor()")]
+pub fn stub_0x28d620() -> ! {
+    todo!("0x28d620 RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::~PropDescriptor()")
+}
+
+// 0x28d64c — __ZN3RBX10Reflection14PropDescriptorINS_10BaseScriptEbED1Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::~PropDescriptor()")]
+pub fn stub_0x28d64c() -> ! {
+    todo!("0x28d64c RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::~PropDescriptor()")
+}
+
+// 0x28d698 — __ZN3RBX10Reflection13BoundFuncDescINS_6ScriptEFSsvELi0EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Script,std::string ()(void),0>::~BoundFuncDesc()"
+)]
+pub fn stub_0x28d698() -> ! {
+    todo!("0x28d698 RBX::Reflection::BoundFuncDesc<RBX::Script,std::string ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x28e7a8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6ScriptES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Script,RBX::Script>(boost::shared_ptr<RBX::Script> const*,RBX::Script *)const
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Script,RBX::Script>(boost::shared_ptr<RBX::Script> const*,RBX::Script *)const"
+)]
+pub fn stub_0x28e7a8() -> ! {
+    todo!("0x28e7a8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Script,RBX::Script>(boost::shared_ptr<RBX::Script> const*,RBX::Script *)const")
+}
+
+// 0x28f6f4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20RuntimeScriptServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RuntimeScriptService,RBX::RuntimeScriptService>(boost::shared_ptr<RBX::RuntimeScriptService> const*,RBX::RuntimeScriptService *)const
+#[doc(
+    alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RuntimeScriptService,RBX::RuntimeScriptService>(boost::shared_ptr<RBX::RuntimeScriptService> const*,RBX::RuntimeScriptService *)const"
+)]
+pub fn stub_0x28f6f4() -> ! {
+    todo!("0x28f6f4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RuntimeScriptService,RBX::RuntimeScriptService>(boost::shared_ptr<RBX::RuntimeScriptService> const*,RBX::RuntimeScriptService *)const")
+}
+
+// 0x292fd8 — __ZN3RBX10Reflection13BoundFuncDescINS_6ScriptEFSsvELi0EEC2EMS2_FSsvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Script,std::string ()(void),0>::BoundFuncDesc(std::string (RBX::Script::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)"
+)]
+pub fn stub_0x292fd8() -> ! {
+    todo!("0x292fd8 RBX::Reflection::BoundFuncDesc<RBX::Script,std::string ()(void),0>::BoundFuncDesc(std::string (RBX::Script::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x2930dc — __ZN3RBX10Reflection13BoundFuncDescINS_6ScriptEFSsvELi0EED0Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Script,std::string ()(void),0>::~BoundFuncDesc()"
+)]
+pub fn stub_0x2930dc() -> ! {
+    todo!("0x2930dc RBX::Reflection::BoundFuncDesc<RBX::Script,std::string ()(void),0>::~BoundFuncDesc()")
+}
+
+// 0x293190 — __ZNK3RBX10Reflection13BoundFuncDescINS_6ScriptEFSsvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::Script,std::string ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const"
+)]
+pub fn stub_0x293190() -> ! {
+    todo!("0x293190 RBX::Reflection::BoundFuncDesc<RBX::Script,std::string ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x2931b4 — __ZN3RBX10Reflection11Call0HelperINS_6ScriptEMS2_FSsvESsE4callEPS2_S4_RNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::Call0Helper<RBX::Script,std::string (RBX::Script::*)(void),std::string>::call(RBX::Script*,std::string (RBX::Script::*)(void),RBX::Reflection::Variant &)"
+)]
+pub fn stub_0x2931b4() -> ! {
+    todo!("0x2931b4 RBX::Reflection::Call0Helper<RBX::Script,std::string (RBX::Script::*)(void),std::string>::call(RBX::Script*,std::string (RBX::Script::*)(void),RBX::Reflection::Variant &)")
+}
+
+// 0x2932f0 — __ZN3RBX10Reflection14PropDescriptorINS_10BaseScriptEbEC2IMS2_KFbvEMS2_FvbEEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::PropDescriptor<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>(char const*,char const*,bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x2932f0() -> ! {
+    todo!("0x2932f0 RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::PropDescriptor<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>(char const*,char const*,bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x293404 — __ZN3RBX10Reflection14PropDescriptorINS_10BaseScriptEbED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::~PropDescriptor()")]
+pub fn stub_0x293404() -> ! {
+    todo!("0x293404 RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::~PropDescriptor()")
+}
+
+// 0x293430 — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptEbE10GetSetImplIMS2_KFbvEMS2_FvbEE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::isReadOnly(void)const"
+)]
+pub fn stub_0x293430() -> ! {
+    todo!("0x293430 RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::isReadOnly(void)const")
+}
+
+// 0x293434 — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptEbE10GetSetImplIMS2_KFbvEMS2_FvbEE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x293434() -> ! {
+    todo!("0x293434 RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::isWriteOnly(void)const")
+}
+
+// 0x293438 — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x293438() -> ! {
+    todo!("0x293438 RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x29345c — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptEbE10GetSetImplIMS2_KFbvEMS2_FvbEE8setValueEPNS0_13DescribedBaseERKb
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const"
+)]
+pub fn stub_0x29345c() -> ! {
+    todo!("0x29345c RBX::Reflection::PropDescriptor<RBX::BaseScript,bool>::GetSetImpl<bool (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(bool)>::setValue(RBX::Reflection::DescribedBase *,bool const&)const")
+}
+
+// 0x293480 — __ZN3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEEC2IMS2_KFRKS3_vEMS2_FvS7_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::PropDescriptor<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>(char const*,char const*,RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x293480() -> ! {
+    todo!("0x293480 RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::PropDescriptor<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>(char const*,char const*,RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x293594 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEEC2ERNS0_15ClassDescriptorEPKcS7_St8auto_ptrINS3_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x293594() -> ! {
+    todo!("0x293594 RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x2936b8 — __ZN3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEED0Ev
+#[doc(alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::~PropDescriptor()")]
+pub fn stub_0x2936b8() -> ! {
+    todo!("0x2936b8 RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::~PropDescriptor()")
+}
+
+// 0x2936e4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE10isReadOnlyEv
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::isReadOnly(void)const")]
+pub fn stub_0x2936e4() -> ! {
+    todo!("0x2936e4 RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::isReadOnly(void)const")
+}
+
+// 0x2936f4 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE11isWriteOnlyEv
+#[doc(alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::isWriteOnly(void)const")]
+pub fn stub_0x2936f4() -> ! {
+    todo!("0x2936f4 RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::isWriteOnly(void)const")
+}
+
+// 0x293704 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE11equalValuesEPKNS0_13DescribedBaseES6_
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x293704() -> ! {
+    todo!("0x293704 RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x2938b0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x2938b0() -> ! {
+    todo!("0x2938b0 RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x2939dc — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x2939dc() -> ! {
+    todo!("0x2939dc RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x293bd8 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEE9copyValueEPKNS0_13DescribedBaseEPS4_
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const"
+)]
+pub fn stub_0x293bd8() -> ! {
+    todo!("0x293bd8 RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x293d00 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEED1Ev
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::~TypedPropertyDescriptor()"
+)]
+pub fn stub_0x293d00() -> ! {
+    todo!("0x293d00 RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::~TypedPropertyDescriptor()")
+}
+
+// 0x293d24 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_9ContentIdEED0Ev
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::~TypedPropertyDescriptor()"
+)]
+pub fn stub_0x293d24() -> ! {
+    todo!("0x293d24 RBX::Reflection::TypedPropertyDescriptor<RBX::ContentId>::~TypedPropertyDescriptor()")
+}
+
+// 0x293d50 — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::isReadOnly(void)const"
+)]
+pub fn stub_0x293d50() -> ! {
+    todo!("0x293d50 RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::isReadOnly(void)const")
+}
+
+// 0x293d54 — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x293d54() -> ! {
+    todo!("0x293d54 RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::isWriteOnly(void)const")
+}
+
+// 0x293d58 — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x293d58() -> ! {
+    todo!("0x293d58 RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x293d8c — __ZNK3RBX10Reflection14PropDescriptorINS_10BaseScriptENS_9ContentIdEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8setValueEPNS0_13DescribedBaseES7_
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::ContentId const&)const"
+)]
+pub fn stub_0x293d8c() -> ! {
+    todo!("0x293d8c RBX::Reflection::PropDescriptor<RBX::BaseScript,RBX::ContentId>::GetSetImpl<RBX::ContentId const& (RBX::BaseScript::*)(void)const,void (RBX::BaseScript::*)(RBX::ContentId const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::ContentId const&)const")
+}
+
+// 0x293db0 — __ZN3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEEC2IMS2_KFRKS3_vEMS2_FvS7_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::PropDescriptor<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>(char const*,char const*,RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x293db0() -> ! {
+    todo!("0x293db0 RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::PropDescriptor<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>(char const*,char const*,RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&),RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x293ec4 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEEC2ERNS0_15ClassDescriptorEPKcS7_St8auto_ptrINS3_6GetSetEENS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)"
+)]
+pub fn stub_0x293ec4() -> ! {
+    todo!("0x293ec4 RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::TypedPropertyDescriptor(RBX::Reflection::ClassDescriptor &,char const*,char const*,std::auto_ptr<RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::GetSet>,RBX::Reflection::PropertyDescriptor::Attributes,RBX::Security::Permissions)")
+}
+
+// 0x293fe8 — __ZN3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEED0Ev
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::~PropDescriptor()"
+)]
+pub fn stub_0x293fe8() -> ! {
+    todo!("0x293fe8 RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::~PropDescriptor()")
+}
+
+// 0x294014 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::isReadOnly(void)const"
+)]
+pub fn stub_0x294014() -> ! {
+    todo!("0x294014 RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::isReadOnly(void)const")
+}
+
+// 0x294024 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::isWriteOnly(void)const"
+)]
+pub fn stub_0x294024() -> ! {
+    todo!("0x294024 RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::isWriteOnly(void)const")
+}
+
+// 0x294034 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE11equalValuesEPKNS0_13DescribedBaseES6_
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x294034() -> ! {
+    todo!("0x294034 RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x294314 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE10getVariantEPKNS0_13DescribedBaseERNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const"
+)]
+pub fn stub_0x294314() -> ! {
+    todo!("0x294314 RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::getVariant(RBX::Reflection::DescribedBase const*,RBX::Reflection::Variant &)const")
+}
+
+// 0x2944f0 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE10setVariantEPNS0_13DescribedBaseERKNS0_7VariantE
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const"
+)]
+pub fn stub_0x2944f0() -> ! {
+    todo!("0x2944f0 RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::setVariant(RBX::Reflection::DescribedBase *,RBX::Reflection::Variant const&)const")
+}
+
+// 0x294770 — __ZNK3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEE9copyValueEPKNS0_13DescribedBaseEPS4_
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const"
+)]
+pub fn stub_0x294770() -> ! {
+    todo!("0x294770 RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::copyValue(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase*)const")
+}
+
+// 0x294930 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEED1Ev
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::~TypedPropertyDescriptor()"
+)]
+pub fn stub_0x294930() -> ! {
+    todo!("0x294930 RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::~TypedPropertyDescriptor()")
+}
+
+// 0x294954 — __ZN3RBX10Reflection23TypedPropertyDescriptorINS_15ProtectedStringEED0Ev
+#[doc(
+    alias = "RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::~TypedPropertyDescriptor()"
+)]
+pub fn stub_0x294954() -> ! {
+    todo!("0x294954 RBX::Reflection::TypedPropertyDescriptor<RBX::ProtectedString>::~TypedPropertyDescriptor()")
+}
+
+// 0x294980 — __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE10isReadOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isReadOnly(void)const"
+)]
+pub fn stub_0x294980() -> ! {
+    todo!("0x294980 RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isReadOnly(void)const")
+}
+
+// 0x294984 — __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE11isWriteOnlyEv
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isWriteOnly(void)const"
+)]
+pub fn stub_0x294984() -> ! {
+    todo!("0x294984 RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::isWriteOnly(void)const")
+}
+
+// 0x294988 — __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8getValueEPKNS0_13DescribedBaseE
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::getValue(RBX::Reflection::DescribedBase const*)const"
+)]
+pub fn stub_0x294988() -> ! {
+    todo!("0x294988 RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::getValue(RBX::Reflection::DescribedBase const*)const")
+}
+
+// 0x2949b8 — __ZNK3RBX10Reflection14PropDescriptorINS_6ScriptENS_15ProtectedStringEE10GetSetImplIMS2_KFRKS3_vEMS2_FvS7_EE8setValueEPNS0_13DescribedBaseES7_
+#[doc(
+    alias = "RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::ProtectedString const&)const"
+)]
+pub fn stub_0x2949b8() -> ! {
+    todo!("0x2949b8 RBX::Reflection::PropDescriptor<RBX::Script,RBX::ProtectedString>::GetSetImpl<RBX::ProtectedString const& (RBX::Script::*)(void)const,void (RBX::Script::*)(RBX::ProtectedString const&)>::setValue(RBX::Reflection::DescribedBase *,RBX::ProtectedString const&)const")
+}
+
+// 0x295dfc — __ZN3RBX13ScriptContext22onChangedScriptEnabledERKNS_10Reflection18PropertyDescriptorE
+#[doc(
+    alias = "RBX::ScriptContext::onChangedScriptEnabled(RBX::Reflection::PropertyDescriptor const&)"
+)]
+pub fn stub_0x295dfc() -> ! {
+    todo!("0x295dfc RBX::ScriptContext::onChangedScriptEnabled(RBX::Reflection::PropertyDescriptor const&)")
+}
+
+// 0x29db1c — __ZN3RBX13ScriptContext4callERNS_3Lua15WeakFunctionRefERKNS_10Reflection5TupleE
+#[doc(
+    alias = "RBX::ScriptContext::call(RBX::Lua::WeakFunctionRef &,RBX::Reflection::Tuple const&)"
+)]
+pub fn stub_0x29db1c() -> ! {
+    todo!("0x29db1c RBX::ScriptContext::call(RBX::Lua::WeakFunctionRef &,RBX::Reflection::Tuple const&)")
+}
+
+// 0x29dc5c — __ZL11readResultsRSt8auto_ptrIN3RBX10Reflection5TupleEEP9lua_Statem
+#[doc(alias = "readResults(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long)")]
+pub fn stub_0x29dc5c() -> ! {
+    todo!("0x29dc5c readResults(std::auto_ptr<RBX::Reflection::Tuple> &,lua_State *,unsigned long)")
+}
+
+// 0x29df1c — __ZN3RBX3Lua13Continuations16onSuccessHandlerEP9lua_StateN5boost8functionIFvNS4_10shared_ptrIKNS_10Reflection5TupleEEEEEE
+// was: RBX::Lua::Continuations::onSuccessHandler(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>)
+#[doc(
+    alias = "RBX::Lua::Continuations::onSuccessHandler(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>)"
+)]
+pub fn stub_0x29df1c() -> ! {
+    todo!("0x29df1c RBX::Lua::Continuations::onSuccessHandler(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>)")
+}
+
+// 0x29fcc0 — __ZN3RBX13ScriptContext14resumeWithArgsENS_3Lua9ThreadRefEN5boost10shared_ptrIKNS_10Reflection5TupleEEE
+// was: RBX::ScriptContext::resumeWithArgs(RBX::Lua::ThreadRef,boost::shared_ptr<RBX::Reflection::Tuple const>)
+#[doc(
+    alias = "RBX::ScriptContext::resumeWithArgs(RBX::Lua::ThreadRef,boost::shared_ptr<RBX::Reflection::Tuple const>)"
+)]
+pub fn stub_0x29fcc0() -> ! {
+    todo!("0x29fcc0 RBX::ScriptContext::resumeWithArgs(RBX::Lua::ThreadRef,boost::shared_ptr<RBX::Reflection::Tuple const>)")
+}
+
+// 0x2a279c — __ZN3RBX13ScriptContext14scheduleResumeENS_3Lua9ThreadRefEN5boost10shared_ptrIKNS_10Reflection5TupleEEE
+// was: RBX::ScriptContext::scheduleResume(RBX::Lua::ThreadRef,boost::shared_ptr<RBX::Reflection::Tuple const>)
+#[doc(
+    alias = "RBX::ScriptContext::scheduleResume(RBX::Lua::ThreadRef,boost::shared_ptr<RBX::Reflection::Tuple const>)"
+)]
+pub fn stub_0x2a279c() -> ! {
+    todo!("0x2a279c RBX::ScriptContext::scheduleResume(RBX::Lua::ThreadRef,boost::shared_ptr<RBX::Reflection::Tuple const>)")
+}
+
+// 0x2a3818 — __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_ED1Ev
+// was: RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()
+#[doc(
+    alias = "RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()"
+)]
+pub fn stub_0x2a3818() -> ! {
+    todo!("0x2a3818 RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()")
+}
+
+// 0x2a3858 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviELi1EED1Ev
+#[doc(
+    alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int),1>::~BoundFuncDesc()"
+)]
+pub fn stub_0x2a3858() -> ! {
+    todo!("0x2a3858 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int),1>::~BoundFuncDesc()")
+}
+
+// 0x34636c — __ZN3RBX13LuaWebService12asyncRequestERKSsfN5boost8functionIFvNS3_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS8_EEEEEEENS4_IFvSsEEE
+// was: RBX::LuaWebService::asyncRequest(std::string const&,float,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
+#[doc(
+    alias = "RBX::LuaWebService::asyncRequest(std::string const&,float,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)"
+)]
+pub fn stub_0x34636c() -> ! {
+    todo!("0x34636c RBX::LuaWebService::asyncRequest(std::string const&,float,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0x346620 — __ZN3RBX13LuaWebService19asyncRequestNoCacheERKSsfN5boost8functionIFvNS3_10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIS1_S8_EEEEEEEENS_14AsyncHttpQueue9ResultJobE
+// was: RBX::LuaWebService::asyncRequestNoCache(std::string const&,float,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,RBX::AsyncHttpQueue::ResultJob)
+#[doc(
+    alias = "RBX::LuaWebService::asyncRequestNoCache(std::string const&,float,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,RBX::AsyncHttpQueue::ResultJob)"
+)]
+pub fn stub_0x346620() -> ! {
+    todo!("0x346620 RBX::LuaWebService::asyncRequestNoCache(std::string const&,float,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,RBX::AsyncHttpQueue::ResultJob)")
+}
+
+// 0x347418 — __ZN3RBX13LuaWebService10checkCacheIN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEbRKSsNS2_8functionIFvT_EEENSD_IFvSsEEE
+// was: bool RBX::LuaWebService::checkCache<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(std::string const&,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
+#[doc(
+    alias = "bool RBX::LuaWebService::checkCache<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(std::string const&,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)"
+)]
+pub fn stub_0x347418() -> ! {
+    todo!("0x347418 bool RBX::LuaWebService::checkCache<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(std::string const&,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0x347518 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS2_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt6vectorINS2_10Reflection7VariantESaISB_EEEEEEENS7_IFvSsEEES4_NS_3argILi1EEESsSH_SJ_EENS_3_bi6bind_tIT_PFSO_T0_T1_T2_T3_T4_ENSM_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESV_SX_SY_SZ_S10_S11_
+// was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)"
+)]
+pub fn stub_0x347518() -> ! {
+    todo!("0x347518 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0x347a14 — __ZN3RBX13LuaWebService8CallbackIN5boost10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEvNS2_8weak_ptrIS0_EENS_14AsyncHttpQueue13RequestResultESsNS2_8functionIFvT_EEENSF_IFvSsEEE
+// was: void RBX::LuaWebService::Callback<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)
+#[doc(
+    alias = "void RBX::LuaWebService::Callback<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)"
+)]
+pub fn stub_0x347a14() -> ! {
+    todo!("0x347a14 void RBX::LuaWebService::Callback<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0x347e10 — __ZN5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS3_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt6vectorINS3_10Reflection7VariantESaISC_EEEEEEENS8_IFvSsEEEENS0_5list5INS0_5valueIS5_EENS_3argILi1EEENSO_ISsEENSO_ISI_EENSO_ISK_EEEEED1Ev
+// was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::~bind_t()
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::~bind_t()"
+)]
+pub fn stub_0x347e10() -> ! {
+    todo!("0x347e10 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::~bind_t()")
+}
+
+// 0x347fc8 — __ZN5boost4bindINS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEEESF_EENS_3_bi6bind_tINSI_11unspecifiedET_NSI_9list_av_1IT0_E4typeEEESL_SN_
+// was: boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::_bi::list_av_1<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::type> boost::bind<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)
+#[doc(
+    alias = "boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::_bi::list_av_1<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::type> boost::bind<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)"
+)]
+pub fn stub_0x347fc8() -> ! {
+    todo!("0x347fc8 boost::_bi::bind_t<boost::_bi::unspecified,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::_bi::list_av_1<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::type> boost::bind<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
+}
+
+// 0x3480fc — __ZN5boost4bindIvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS2_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt3mapISsNS2_10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS7_IFvSsEEES4_NS_3argILi1EEESsSM_SO_EENS_3_bi6bind_tIT_PFST_T0_T1_T2_T3_T4_ENSR_9list_av_5IT5_T6_T7_T8_T9_E4typeEEES10_S12_S13_S14_S15_S16_
+// was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)"
+)]
+pub fn stub_0x3480fc() -> ! {
+    todo!("0x3480fc boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list_av_5<boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::LuaWebService>,boost::arg<1>,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0x3485f8 — __ZN3RBX13LuaWebService8CallbackIN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEEvNS2_8weak_ptrIS0_EENS_14AsyncHttpQueue13RequestResultESsNS2_8functionIFvT_EEENSK_IFvSsEEE
+// was: void RBX::LuaWebService::Callback<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)
+#[doc(
+    alias = "void RBX::LuaWebService::Callback<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)"
+)]
+pub fn stub_0x3485f8() -> ! {
+    todo!("0x3485f8 void RBX::LuaWebService::Callback<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0x3487fc — __ZN5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS3_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt3mapISsNS3_10Reflection7VariantESt4lessISsESaISt4pairIKSsSC_EEEEEEEENS8_IFvSsEEEENS0_5list5INS0_5valueIS5_EENS_3argILi1EEENST_ISsEENST_ISN_EENST_ISP_EEEEED1Ev
+// was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::~bind_t()
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::~bind_t()"
+)]
+pub fn stub_0x3487fc() -> ! {
+    todo!("0x3487fc boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::~bind_t()")
+}
+
+// 0x34ef60 — __ZN3RBX13LuaWebService18TryDispatchRequestIN5boost10shared_ptrIKSt3mapISsNS_10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEEbPNS_14AsyncHttpCacheINS0_23CachedLuaWebServiceInfoELb1EEERSA_NS2_8functionIFvT_EEENSL_IFvSsEEE
+// was: bool RBX::LuaWebService::TryDispatchRequest<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)
+#[doc(
+    alias = "bool RBX::LuaWebService::TryDispatchRequest<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)"
+)]
+pub fn stub_0x34ef60() -> ! {
+    todo!("0x34ef60 bool RBX::LuaWebService::TryDispatchRequest<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(RBX::AsyncHttpCache<RBX::LuaWebService::CachedLuaWebServiceInfo,true> *,std::string const&,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0x34f17c — __ZNK5boost9function1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEEclESE_
+// was: boost::function1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::operator()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)const
+#[doc(
+    alias = "boost::function1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::operator()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)const"
+)]
+pub fn stub_0x34f17c() -> ! {
+    todo!("0x34f17c boost::function1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::operator()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)const")
+}
+
+// 0x34f28c — __ZN3rbx8any_castIN5boost10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
+// was: boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> &)
+#[doc(
+    alias = "boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> &)"
+)]
+pub fn stub_0x34f28c() -> ! {
+    todo!("0x34f28c boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
+}
+
+// 0x34f51c — __ZN5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS3_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt3mapISsNS3_10Reflection7VariantESt4lessISsESaISt4pairIKSsSC_EEEEEEEENS8_IFvSsEEEENS0_5list5INS0_5valueIS5_EENS_3argILi1EEENST_ISsEENST_ISN_EENST_ISP_EEEEEC1ERKS11_
+// was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::bind_t(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>> const&)
+#[doc(
+    alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::bind_t(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>> const&)"
+)]
+pub fn stub_0x34f51c() -> ! {
+    todo!("0x34f51c boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>::bind_t(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>> const&)")
+}
+
+// 0x34f674 — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX13LuaWebServiceEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS_10shared_ptrIKSt3mapISsNS4_10Reflection7VariantESt4lessISsESaISt4pairIKSsSF_EEEEEEEEEEEC2ERKSS_
+// was: boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>>::storage4(boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>> const&)
+#[doc(
+    alias = "boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>>::storage4(boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>> const&)"
+)]
+pub fn stub_0x34f674() -> ! {
+    todo!("0x34f674 boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>>::storage4(boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>> const&)")
+}
+
+// 0x34f7ec — __ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13LuaWebServiceEEES3_SsNS_8functionIFvNS5_IKSt3mapISsNS1_10Reflection7VariantESt4lessISsESaISt4pairIS6_SI_EEEEEEEENSF_IFvSsEEEENSA_5list5INSA_5valueISE_EENS_3argILi1EEENSY_ISsEENSY_ISS_EENSY_ISU_EEEEEEEEvT_
+// was: void boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>)
+#[doc(
+    alias = "void boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>)"
+)]
+pub fn stub_0x34f7ec() -> ! {
+    todo!("0x34f7ec void boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>)")
+}
+
+// 0x34f8c0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt3mapISsNS6_10Reflection7VariantESt4lessISsESaISt4pairIKSsSF_EEEEEEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSW_ISsEENSW_ISQ_EENSW_ISS_EEEEEEE6manageERKNS1_15function_bufferERS16_NS1_30functor_manager_operation_typeE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+#[doc(
+    alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)"
+)]
+pub fn stub_0x34f8c0() -> ! {
+    todo!("0x34f8c0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x34f8dc — __ZN5boost6detail8function26void_function_obj_invoker3INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt3mapISsNS6_10Reflection7VariantESt4lessISsESaISt4pairIKSsSF_EEEEEEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSW_ISsEENSW_ISQ_EENSW_ISS_EEEEEEvSA_PSiNSC_ISJ_EEE6invokeERNS1_15function_bufferESA_S15_S16_
+// was: boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)
+#[doc(
+    alias = "boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)"
+)]
+pub fn stub_0x34f8dc() -> ! {
+    todo!("0x34f8dc boost::detail::function::void_function_obj_invoker3<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>)")
+}
+
+// 0x34f900 — __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13LuaWebServiceEEES5_SsNS_8functionIFvNS7_IKSt3mapISsNS3_10Reflection7VariantESt4lessISsESaISt4pairIS8_SK_EEEEEEEENSH_IFvSsEEEENSC_5list5INSC_5valueISG_EENS_3argILi1EEENS10_ISsEENS10_ISU_EENS10_ISW_EEEEEEEEbT_RNS1_15function_bufferE
+// was: bool boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &)const
+#[doc(
+    alias = "bool boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &)const"
+)]
+pub fn stub_0x34f900() -> ! {
+    todo!("0x34f900 bool boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0x34f9c4 — __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13LuaWebServiceEEES5_SsNS_8functionIFvNS7_IKSt3mapISsNS3_10Reflection7VariantESt4lessISsESaISt4pairIS8_SK_EEEEEEEENSH_IFvSsEEEENSC_5list5INSC_5valueISG_EENS_3argILi1EEENS10_ISsEENS10_ISU_EENS10_ISW_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// was: bool boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+#[doc(
+    alias = "bool boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const"
+)]
+pub fn stub_0x34f9c4() -> ! {
+    todo!("0x34f9c4 bool boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0x34fa84 — __ZNK5boost6detail8function13basic_vtable3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13LuaWebServiceEEES5_SsNS_8functionIFvNS7_IKSt3mapISsNS3_10Reflection7VariantESt4lessISsESaISt4pairIS8_SK_EEEEEEEENSH_IFvSsEEEENSC_5list5INSC_5valueISG_EENS_3argILi1EEENS10_ISsEENS10_ISU_EENS10_ISW_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// was: void boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
+#[doc(
+    alias = "void boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const"
+)]
+pub fn stub_0x34fa84() -> ! {
+    todo!("0x34fa84 void boost::detail::function::basic_vtable3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,boost::shared_ptr<std::string const>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+// 0x34fb30 — __ZN5boost3_bi5list5INS0_5valueINS_8weak_ptrIN3RBX13LuaWebServiceEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS_10shared_ptrIKSt3mapISsNS4_10Reflection7VariantESt4lessISsESaISt4pairIKSsSF_EEEEEEEEEENS2_INSB_IFvSsEEEEEEclIPFvS6_NS4_14AsyncHttpQueue13RequestResultESsSQ_ST_ENS0_5list3IRSY_RPSiRNSC_ISJ_EEEEEEvNS0_4typeIvEERT_RT0_i
+// was: void boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::operator()<void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list3<RBX::AsyncHttpQueue::RequestResult&,std::istream *&,boost::shared_ptr<std::string const> &>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>) &,boost::_bi::list3<RBX::AsyncHttpQueue::RequestResult&,std::istream *&,boost::shared_ptr<std::string const> &> &,int)
+#[doc(
+    alias = "void boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::operator()<void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list3<RBX::AsyncHttpQueue::RequestResult&,std::istream *&,boost::shared_ptr<std::string const> &>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>) &,boost::_bi::list3<RBX::AsyncHttpQueue::RequestResult&,std::istream *&,boost::shared_ptr<std::string const> &> &,int)"
+)]
+pub fn stub_0x34fb30() -> ! {
+    todo!("0x34fb30 void boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::operator()<void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list3<RBX::AsyncHttpQueue::RequestResult&,std::istream *&,boost::shared_ptr<std::string const> &>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>) &,boost::_bi::list3<RBX::AsyncHttpQueue::RequestResult&,std::istream *&,boost::shared_ptr<std::string const> &> &,int)")
+}
+
+// 0x34fd50 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt3mapISsNS6_10Reflection7VariantESt4lessISsESaISt4pairIKSsSF_EEEEEEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSW_ISsEENSW_ISQ_EENSW_ISS_EEEEEEE7managerERKNS1_15function_bufferERS16_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+#[doc(
+    alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)"
+)]
+pub fn stub_0x34fd50() -> ! {
+    todo!("0x34fd50 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::LuaWebService>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>,boost::function<void ()(std::string)>),boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0x34fe7c — __ZN5boost3_bi5list5INS0_5valueINS_8weak_ptrIN3RBX13LuaWebServiceEEEEENS_3argILi1EEENS2_ISsEENS2_INS_8functionIFvNS_10shared_ptrIKSt3mapISsNS4_10Reflection7VariantESt4lessISsESaISt4pairIKSsSF_EEEEEEEEEENS2_INSB_IFvSsEEEEEEC2ES7_S9_SA_SR_SU_
+// was: boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list5(boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>)
+#[doc(
+    alias = "boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list5(boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>)"
+)]
+pub fn stub_0x34fe7c() -> ! {
+    todo!("0x34fe7c boost::_bi::list5<boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>>::list5(boost::_bi::value<boost::weak_ptr<RBX::LuaWebService>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)>>,boost::_bi::value<boost::function<void ()(std::string)>>)")
+}
