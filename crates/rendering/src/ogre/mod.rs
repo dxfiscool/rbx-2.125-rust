@@ -20230,3 +20230,689 @@ pub fn stub_be0ba8() -> ! {
 pub fn stub_be0ffc() -> ! {
     todo!("0xbe0ffc Ogre::TexturePtr * std::__copy_backward_normal<false,false>::__copy_b_n<Ogre::TexturePtr *,Ogre::TexturePtr *>(Ogre::TexturePtr *,Ogre::TexturePtr *,Ogre::TexturePtr *)")
 }
+
+// 0xbe552c — __ZN3RBX15RbxTextureProxyC1ERKN4Ogre10TexturePtrEii
+#[doc(alias = "RBX::RbxTextureProxy::RbxTextureProxy(Ogre::TexturePtr const&,int,int)")]
+// was: RBX::RbxTextureProxy::RbxTextureProxy(Ogre::TexturePtr const&,int,int)
+pub fn stub_be552c() -> ! {
+    todo!("0xbe552c RBX::RbxTextureProxy::RbxTextureProxy(Ogre::TexturePtr const&,int,int)")
+}
+
+// 0xbe5530 — __ZN3RBX15RbxTextureProxyC2ERKN4Ogre10TexturePtrEii
+#[doc(alias = "RBX::RbxTextureProxy::RbxTextureProxy(Ogre::TexturePtr const&,int,int)")]
+// was: RBX::RbxTextureProxy::RbxTextureProxy(Ogre::TexturePtr const&,int,int)
+pub fn stub_be5530() -> ! {
+    todo!("0xbe5530 RBX::RbxTextureProxy::RbxTextureProxy(Ogre::TexturePtr const&,int,int)")
+}
+
+// 0xbe618c — __ZN4Ogre17SaveTextureToFileEPNS_7TextureERKSs
+#[doc(alias = "Ogre::SaveTextureToFile(Ogre::Texture *,std::string const&)")]
+// was: Ogre::SaveTextureToFile(Ogre::Texture *,std::string const&)
+pub fn stub_be618c() -> ! {
+    todo!("0xbe618c Ogre::SaveTextureToFile(Ogre::Texture *,std::string const&)")
+}
+
+// 0xbe63e8 — __ZN4Ogre17Frustum_IntersectEPKNS_7FrustumERKNS_14AxisAlignedBoxEPNS_12FrustumPlaneE
+#[doc(alias = "Ogre::Frustum_Intersect(Ogre::Frustum const*,Ogre::AxisAlignedBox const&,Ogre::FrustumPlane *)")]
+// was: Ogre::Frustum_Intersect(Ogre::Frustum const*,Ogre::AxisAlignedBox const&,Ogre::FrustumPlane *)
+pub fn stub_be63e8() -> ! {
+    todo!("0xbe63e8 Ogre::Frustum_Intersect(Ogre::Frustum const*,Ogre::AxisAlignedBox const&,Ogre::FrustumPlane *)")
+}
+
+// 0xbe6554 — __ZN4Ogre16ToAxisAlignedBoxERKN3RBX7ExtentsE
+#[doc(alias = "Ogre::ToAxisAlignedBox(RBX::Extents const&)")]
+// was: Ogre::ToAxisAlignedBox(RBX::Extents const&)
+pub fn stub_be6554() -> ! {
+    todo!("0xbe6554 Ogre::ToAxisAlignedBox(RBX::Extents const&)")
+}
+
+// 0xbe65b4 — __ZN4Ogre9ToExtentsERKNS_14AxisAlignedBoxE
+#[doc(alias = "Ogre::ToExtents(Ogre::AxisAlignedBox const&)")]
+// was: Ogre::ToExtents(Ogre::AxisAlignedBox const&)
+pub fn stub_be65b4() -> ! {
+    todo!("0xbe65b4 Ogre::ToExtents(Ogre::AxisAlignedBox const&)")
+}
+
+// 0xbe65d0 — __ZN4Ogre9ToVector3ERKNS_7Vector3E
+#[doc(alias = "Ogre::ToVector3(Ogre::Vector3 const&)")]
+// was: Ogre::ToVector3(Ogre::Vector3 const&)
+pub fn stub_be65d0() -> ! {
+    todo!("0xbe65d0 Ogre::ToVector3(Ogre::Vector3 const&)")
+}
+
+// 0xbe65d4 — __ZN4Ogre9ToVector3ERKN3G3D7Vector3E
+#[doc(alias = "Ogre::ToVector3(G3D::Vector3 const&)")]
+// was: Ogre::ToVector3(G3D::Vector3 const&)
+pub fn stub_be65d4() -> ! {
+    todo!("0xbe65d4 Ogre::ToVector3(G3D::Vector3 const&)")
+}
+
+// 0xbe65d8 — __ZN4Ogre19CircumscribedSphereERKN3RBX7ExtentsE
+#[doc(alias = "Ogre::CircumscribedSphere(RBX::Extents const&)")]
+// was: Ogre::CircumscribedSphere(RBX::Extents const&)
+pub fn stub_be65d8() -> ! {
+    todo!("0xbe65d8 Ogre::CircumscribedSphere(RBX::Extents const&)")
+}
+
+// 0xbe6648 — __ZN4Ogre12ToColorValueERKN3G3D6Color4E
+#[doc(alias = "Ogre::ToColorValue(G3D::Color4 const&)")]
+// was: Ogre::ToColorValue(G3D::Color4 const&)
+pub fn stub_be6648() -> ! {
+    todo!("0xbe6648 Ogre::ToColorValue(G3D::Color4 const&)")
+}
+
+// 0xbe6684 — __ZN4Ogre12ToColorValueERKN3G3D6Color3E
+#[doc(alias = "Ogre::ToColorValue(G3D::Color3 const&)")]
+// was: Ogre::ToColorValue(G3D::Color3 const&)
+pub fn stub_be6684() -> ! {
+    todo!("0xbe6684 Ogre::ToColorValue(G3D::Color3 const&)")
+}
+
+// 0xbe66b8 — __ZN4Ogre8MaxCoordERKNS_7Vector3E
+#[doc(alias = "Ogre::MaxCoord(Ogre::Vector3 const&)")]
+// was: Ogre::MaxCoord(Ogre::Vector3 const&)
+pub fn stub_be66b8() -> ! {
+    todo!("0xbe66b8 Ogre::MaxCoord(Ogre::Vector3 const&)")
+}
+
+// 0xbe8f80 — __ZN3RBX10ViewRbxGfx14presetLightingEPNS_8LightingERKN3G3D6Color3Ef
+#[doc(alias = "RBX::ViewRbxGfx::presetLighting(RBX::Lighting *,G3D::Color3 const&,float)")]
+// was: RBX::ViewRbxGfx::presetLighting(RBX::Lighting *,G3D::Color3 const&,float)
+pub fn stub_be8f80() -> ! {
+    todo!("0xbe8f80 RBX::ViewRbxGfx::presetLighting(RBX::Lighting *,G3D::Color3 const&,float)")
+}
+
+// 0xbec248 — __ZN3RBX14visitPrintNodeEPN4Ogre9SceneNodeERSs
+#[doc(alias = "RBX::visitPrintNode(Ogre::SceneNode *,std::string &)")]
+// was: RBX::visitPrintNode(Ogre::SceneNode *,std::string &)
+pub fn stub_bec248() -> ! {
+    todo!("0xbec248 RBX::visitPrintNode(Ogre::SceneNode *,std::string &)")
+}
+
+// 0xbef0f8 — __ZN3RBX10ViewRbxGfx13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE
+#[doc(alias = "RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+// was: RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)
+pub fn stub_bef0f8() -> ! {
+    todo!("0xbef0f8 RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xbef138 — __ZThn8_N3RBX10ViewRbxGfx13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE
+#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
+// was: `non-virtual thunk to'RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)
+pub fn stub_bef138() -> ! {
+    todo!("0xbef138 `non-virtual thunk to'RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+}
+
+// 0xbef328 — __ZN4Ogre9SharedPtrINS_8ResourceEED1Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::Resource>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::Resource>::~SharedPtr()
+pub fn stub_bef328() -> ! {
+    todo!("0xbef328 Ogre::SharedPtr<Ogre::Resource>::~SharedPtr()")
+}
+
+// 0xbf29a8 — __ZN4Ogre9SharedPtrINS_8ResourceEED0Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::Resource>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::Resource>::~SharedPtr()
+pub fn stub_bf29a8() -> ! {
+    todo!("0xbf29a8 Ogre::SharedPtr<Ogre::Resource>::~SharedPtr()")
+}
+
+// 0xbf2a48 — __ZN4Ogre9SharedPtrINS_8ResourceEE7destroyEv
+#[doc(alias = "Ogre::SharedPtr<Ogre::Resource>::destroy(void)")]
+// was: Ogre::SharedPtr<Ogre::Resource>::destroy(void)
+pub fn stub_bf2a48() -> ! {
+    todo!("0xbf2a48 Ogre::SharedPtr<Ogre::Resource>::destroy(void)")
+}
+
+// 0xbf2a80 — __ZN4Ogre9SharedPtrINS_8ResourceEE4swapERS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::Resource>::swap(Ogre::SharedPtr<Ogre::Resource>&)")]
+// was: Ogre::SharedPtr<Ogre::Resource>::swap(Ogre::SharedPtr<Ogre::Resource>&)
+pub fn stub_bf2a80() -> ! {
+    todo!("0xbf2a80 Ogre::SharedPtr<Ogre::Resource>::swap(Ogre::SharedPtr<Ogre::Resource>&)")
+}
+
+// 0xbf2c80 — __ZN4Ogre9SharedPtrINS_8MaterialEED1Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::Material>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::Material>::~SharedPtr()
+pub fn stub_bf2c80() -> ! {
+    todo!("0xbf2c80 Ogre::SharedPtr<Ogre::Material>::~SharedPtr()")
+}
+
+// 0xbf2cb0 — __ZN4Ogre11MaterialPtrD0Ev
+#[doc(alias = "Ogre::MaterialPtr::~MaterialPtr()")]
+// was: Ogre::MaterialPtr::~MaterialPtr()
+pub fn stub_bf2cb0() -> ! {
+    todo!("0xbf2cb0 Ogre::MaterialPtr::~MaterialPtr()")
+}
+
+// 0xbf5b30 — __ZN5boost6detail17sp_counted_impl_pIN4Ogre13RbxTypesetterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::~sp_counted_impl_p()
+pub fn stub_bf5b30() -> ! {
+    todo!("0xbf5b30 boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::~sp_counted_impl_p()")
+}
+
+// 0xbf5b34 — __ZN5boost6detail17sp_counted_impl_pIN4Ogre13RbxTypesetterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::~sp_counted_impl_p()
+pub fn stub_bf5b34() -> ! {
+    todo!("0xbf5b34 boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::~sp_counted_impl_p()")
+}
+
+// 0xbf5b38 — __ZN5boost6detail17sp_counted_impl_pIN4Ogre13RbxTypesetterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::dispose(void)
+pub fn stub_bf5b38() -> ! {
+    todo!("0xbf5b38 boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::dispose(void)")
+}
+
+// 0xbf5b48 — __ZN5boost6detail17sp_counted_impl_pIN4Ogre13RbxTypesetterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::get_deleter(std::type_info const&)
+pub fn stub_bf5b48() -> ! {
+    todo!("0xbf5b48 boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::get_deleter(std::type_info const&)")
+}
+
+// 0xbf5b4c — __ZN5boost6detail17sp_counted_impl_pIN4Ogre13RbxTypesetterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::get_untyped_deleter(void)
+pub fn stub_bf5b4c() -> ! {
+    todo!("0xbf5b4c boost::detail::sp_counted_impl_p<Ogre::RbxTypesetter>::get_untyped_deleter(void)")
+}
+
+// 0xbf61f4 — __ZN4Ogre13RbxTypesetterC1ENS_7FontPtrES1_fff
+#[doc(alias = "Ogre::RbxTypesetter::RbxTypesetter(Ogre::FontPtr,Ogre::FontPtr,float,float,float)")]
+// was: Ogre::RbxTypesetter::RbxTypesetter(Ogre::FontPtr,Ogre::FontPtr,float,float,float)
+pub fn stub_bf61f4() -> ! {
+    todo!("0xbf61f4 Ogre::RbxTypesetter::RbxTypesetter(Ogre::FontPtr,Ogre::FontPtr,float,float,float)")
+}
+
+// 0xbf62a8 — __ZNK4Ogre13RbxTypesetter12computeArrayERKSsfffN3RBX4Text6XAlignEPN3G3D7Vector2EmiN9__gnu_cxx17__normal_iteratorIPKSt4pairIiNS0_7SpacingEESt6vectorISD_SaISD_EEEESJ_RKNS_7FontPtrEb
+#[doc(alias = "Ogre::RbxTypesetter::computeArray(std::string const&,float,float,float,RBX::Text::XAlign,G3D::Vector2 *,unsigned long,int,__gnu_cxx::__normal_iterator<std::pair<int,Ogre::RbxTypesetter::Spacing> const*,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>>,__gnu_cxx::__normal_iterator<std::pair<int,Ogre::RbxTypesetter::Spacing> const*,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>>,Ogre::FontPtr const&,bool)const")]
+// was: Ogre::RbxTypesetter::computeArray(std::string const&,float,float,float,RBX::Text::XAlign,G3D::Vector2 *,unsigned long,int,__gnu_cxx::__normal_iterator<std::pair<int,Ogre::RbxTypesetter::Spacing> const*,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>>,__gnu_cxx::__normal_iterator<std::pair<int,Ogre::RbxTypesetter::Spacing> const*,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>>,Ogre::FontPtr const&,bool)const
+pub fn stub_bf62a8() -> ! {
+    todo!("0xbf62a8 Ogre::RbxTypesetter::computeArray(std::string const&,float,float,float,RBX::Text::XAlign,G3D::Vector2 *,unsigned long,int,__gnu_cxx::__normal_iterator<std::pair<int,Ogre::RbxTypesetter::Spacing> const*,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>>,__gnu_cxx::__normal_iterator<std::pair<int,Ogre::RbxTypesetter::Spacing> const*,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>>,Ogre::FontPtr const&,bool)const")
+}
+
+// 0xbf66dc — __ZNK4Ogre13RbxTypesetter13getTexturePtrEf
+#[doc(alias = "Ogre::RbxTypesetter::getTexturePtr(float)const")]
+// was: Ogre::RbxTypesetter::getTexturePtr(float)const
+pub fn stub_bf66dc() -> ! {
+    todo!("0xbf66dc Ogre::RbxTypesetter::getTexturePtr(float)const")
+}
+
+// 0xbf6790 — __ZNK4Ogre13RbxTypesetter4drawEPN3RBX5AdornERKSsRKN3G3D7Vector2EfRKNS6_6Color4ESC_NS1_4Text6XAlignENSD_6YAlignES9_RKNS6_6Rect2DE
+#[doc(alias = "Ogre::RbxTypesetter::draw(RBX::Adorn *,std::string const&,G3D::Vector2 const&,float,G3D::Color4 const&,G3D::Color4 const&,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Rect2D const&)const")]
+// was: Ogre::RbxTypesetter::draw(RBX::Adorn *,std::string const&,G3D::Vector2 const&,float,G3D::Color4 const&,G3D::Color4 const&,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Rect2D const&)const
+pub fn stub_bf6790() -> ! {
+    todo!("0xbf6790 Ogre::RbxTypesetter::draw(RBX::Adorn *,std::string const&,G3D::Vector2 const&,float,G3D::Color4 const&,G3D::Color4 const&,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Rect2D const&)const")
+}
+
+// 0xbf7268 — __ZNK4Ogre13RbxTypesetter15measureInternalERKSsfRKN3G3D7Vector2EPSt6vectorISt4pairIiNS0_7SpacingEESaISA_EEPb
+#[doc(alias = "Ogre::RbxTypesetter::measureInternal(std::string const&,float,G3D::Vector2 const&,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>> *,bool *)const")]
+// was: Ogre::RbxTypesetter::measureInternal(std::string const&,float,G3D::Vector2 const&,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>> *,bool *)const
+pub fn stub_bf7268() -> ! {
+    todo!("0xbf7268 Ogre::RbxTypesetter::measureInternal(std::string const&,float,G3D::Vector2 const&,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>> *,bool *)const")
+}
+
+// 0xbf7794 — __ZNK4Ogre13RbxTypesetter23getCursorPositionInTextERKSsRKN3G3D7Vector2EfN3RBX4Text6XAlignENS8_6YAlignES6_S4_
+#[doc(alias = "Ogre::RbxTypesetter::getCursorPositionInText(std::string const&,G3D::Vector2 const&,float,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Vector2)const")]
+// was: Ogre::RbxTypesetter::getCursorPositionInText(std::string const&,G3D::Vector2 const&,float,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Vector2)const
+pub fn stub_bf7794() -> ! {
+    todo!("0xbf7794 Ogre::RbxTypesetter::getCursorPositionInText(std::string const&,G3D::Vector2 const&,float,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Vector2)const")
+}
+
+// 0xbf7dcc — __ZNK4Ogre13RbxTypesetter7measureERKSsfRKN3G3D7Vector2EPb
+#[doc(alias = "Ogre::RbxTypesetter::measure(std::string const&,float,G3D::Vector2 const&,bool *)const")]
+// was: Ogre::RbxTypesetter::measure(std::string const&,float,G3D::Vector2 const&,bool *)const
+pub fn stub_bf7dcc() -> ! {
+    todo!("0xbf7dcc Ogre::RbxTypesetter::measure(std::string const&,float,G3D::Vector2 const&,bool *)const")
+}
+
+// 0xbf8504 — __ZNK3RBX16TypesetterBitmap4drawEPNS_5AdornERKSsRKN3G3D7Vector2EfRKNS5_6Color4ESB_NS_4Text6XAlignENSC_6YAlignES8_RKNS5_6Rect2DE
+#[doc(alias = "RBX::TypesetterBitmap::draw(RBX::Adorn *,std::string const&,G3D::Vector2 const&,float,G3D::Color4 const&,G3D::Color4 const&,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Rect2D const&)const")]
+// was: RBX::TypesetterBitmap::draw(RBX::Adorn *,std::string const&,G3D::Vector2 const&,float,G3D::Color4 const&,G3D::Color4 const&,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Rect2D const&)const
+pub fn stub_bf8504() -> ! {
+    todo!("0xbf8504 RBX::TypesetterBitmap::draw(RBX::Adorn *,std::string const&,G3D::Vector2 const&,float,G3D::Color4 const&,G3D::Color4 const&,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Rect2D const&)const")
+}
+
+// 0xbf8a1c — __ZNK3RBX16TypesetterBitmap6layoutERKSsPSt6vectorINS0_9GlyphLineESaIS4_EEiRKN3G3D12Vector2int16EbPb
+#[doc(alias = "RBX::TypesetterBitmap::layout(std::string const&,std::vector<RBX::TypesetterBitmap::GlyphLine,std::allocator<RBX::TypesetterBitmap::GlyphLine>> *,int,G3D::Vector2int16 const&,bool,bool *)const")]
+// was: RBX::TypesetterBitmap::layout(std::string const&,std::vector<RBX::TypesetterBitmap::GlyphLine,std::allocator<RBX::TypesetterBitmap::GlyphLine>> *,int,G3D::Vector2int16 const&,bool,bool *)const
+pub fn stub_bf8a1c() -> ! {
+    todo!("0xbf8a1c RBX::TypesetterBitmap::layout(std::string const&,std::vector<RBX::TypesetterBitmap::GlyphLine,std::allocator<RBX::TypesetterBitmap::GlyphLine>> *,int,G3D::Vector2int16 const&,bool,bool *)const")
+}
+
+// 0xbf8d24 — __ZN3RBXL8drawRectEPNS_5AdornEbRKN3G3D6Rect2DES5_RKNS2_7Vector2ES8_RKNS2_6Color4E
+#[doc(alias = "RBX::drawRect(RBX::Adorn *,bool,G3D::Rect2D const&,G3D::Rect2D const&,G3D::Vector2 const&,G3D::Vector2 const&,G3D::Color4 const&)")]
+// was: RBX::drawRect(RBX::Adorn *,bool,G3D::Rect2D const&,G3D::Rect2D const&,G3D::Vector2 const&,G3D::Vector2 const&,G3D::Color4 const&)
+pub fn stub_bf8d24() -> ! {
+    todo!("0xbf8d24 RBX::drawRect(RBX::Adorn *,bool,G3D::Rect2D const&,G3D::Rect2D const&,G3D::Vector2 const&,G3D::Vector2 const&,G3D::Color4 const&)")
+}
+
+// 0xbf8ecc — __ZNK3RBX16TypesetterBitmap23getCursorPositionInTextERKSsRKN3G3D7Vector2EfNS_4Text6XAlignENS7_6YAlignES6_S4_
+#[doc(alias = "RBX::TypesetterBitmap::getCursorPositionInText(std::string const&,G3D::Vector2 const&,float,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Vector2)const")]
+// was: RBX::TypesetterBitmap::getCursorPositionInText(std::string const&,G3D::Vector2 const&,float,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Vector2)const
+pub fn stub_bf8ecc() -> ! {
+    todo!("0xbf8ecc RBX::TypesetterBitmap::getCursorPositionInText(std::string const&,G3D::Vector2 const&,float,RBX::Text::XAlign,RBX::Text::YAlign,G3D::Vector2 const&,G3D::Vector2)const")
+}
+
+// 0xbf9194 — __ZNK3RBX16TypesetterBitmap7measureERKSsfRKN3G3D7Vector2EPb
+#[doc(alias = "RBX::TypesetterBitmap::measure(std::string const&,float,G3D::Vector2 const&,bool *)const")]
+// was: RBX::TypesetterBitmap::measure(std::string const&,float,G3D::Vector2 const&,bool *)const
+pub fn stub_bf9194() -> ! {
+    todo!("0xbf9194 RBX::TypesetterBitmap::measure(std::string const&,float,G3D::Vector2 const&,bool *)const")
+}
+
+// 0xbf9278 — __ZN4Ogre13RbxTypesetter12getCharWidthERKNS_7FontPtrEfcf
+#[doc(alias = "Ogre::RbxTypesetter::getCharWidth(Ogre::FontPtr const&,float,char,float)")]
+// was: Ogre::RbxTypesetter::getCharWidth(Ogre::FontPtr const&,float,char,float)
+pub fn stub_bf9278() -> ! {
+    todo!("0xbf9278 Ogre::RbxTypesetter::getCharWidth(Ogre::FontPtr const&,float,char,float)")
+}
+
+// 0xbf93d0 — __ZN4Ogre13RbxTypesetterD1Ev
+#[doc(alias = "Ogre::RbxTypesetter::~RbxTypesetter()")]
+// was: Ogre::RbxTypesetter::~RbxTypesetter()
+pub fn stub_bf93d0() -> ! {
+    todo!("0xbf93d0 Ogre::RbxTypesetter::~RbxTypesetter()")
+}
+
+// 0xbf94a8 — __ZN4Ogre13RbxTypesetterD0Ev
+#[doc(alias = "Ogre::RbxTypesetter::~RbxTypesetter()")]
+// was: Ogre::RbxTypesetter::~RbxTypesetter()
+pub fn stub_bf94a8() -> ! {
+    todo!("0xbf94a8 Ogre::RbxTypesetter::~RbxTypesetter()")
+}
+
+// 0xbf9bd4 — __ZNSt6vectorISt4pairIiN4Ogre13RbxTypesetter7SpacingEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
+#[doc(alias = "std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::pair<int,Ogre::RbxTypesetter::Spacing>*,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>>,std::pair<int,Ogre::RbxTypesetter::Spacing> const&)")]
+// was: std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::pair<int,Ogre::RbxTypesetter::Spacing>*,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>>,std::pair<int,Ogre::RbxTypesetter::Spacing> const&)
+pub fn stub_bf9bd4() -> ! {
+    todo!("0xbf9bd4 std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::pair<int,Ogre::RbxTypesetter::Spacing>*,std::vector<std::pair<int,Ogre::RbxTypesetter::Spacing>,std::allocator<std::pair<int,Ogre::RbxTypesetter::Spacing>>>>,std::pair<int,Ogre::RbxTypesetter::Spacing> const&)")
+}
+
+// 0xbfa404 — __ZN4Ogre8RbxImage8allocateERSiRKSsib
+#[doc(alias = "Ogre::RbxImage::allocate(std::istream &,std::string const&,int,bool)")]
+// was: Ogre::RbxImage::allocate(std::istream &,std::string const&,int,bool)
+pub fn stub_bfa404() -> ! {
+    todo!("0xbfa404 Ogre::RbxImage::allocate(std::istream &,std::string const&,int,bool)")
+}
+
+// 0xbfa5ac — __ZN4Ogre8RbxImageD1Ev
+#[doc(alias = "Ogre::RbxImage::~RbxImage()")]
+// was: Ogre::RbxImage::~RbxImage()
+pub fn stub_bfa5ac() -> ! {
+    todo!("0xbfa5ac Ogre::RbxImage::~RbxImage()")
+}
+
+// 0xbfa5d0 — __ZN4Ogre8RbxImageD0Ev
+#[doc(alias = "Ogre::RbxImage::~RbxImage()")]
+// was: Ogre::RbxImage::~RbxImage()
+pub fn stub_bfa5d0() -> ! {
+    todo!("0xbfa5d0 Ogre::RbxImage::~RbxImage()")
+}
+
+// 0xbfa684 — __ZNK4Ogre8RbxImage7getSizeEv
+#[doc(alias = "Ogre::RbxImage::getSize(void)const")]
+// was: Ogre::RbxImage::getSize(void)const
+pub fn stub_bfa684() -> ! {
+    todo!("0xbfa684 Ogre::RbxImage::getSize(void)const")
+}
+
+// 0xbfa68c — __ZNK4Ogre8RbxImage16getOriginalWidthEv
+#[doc(alias = "Ogre::RbxImage::getOriginalWidth(void)const")]
+// was: Ogre::RbxImage::getOriginalWidth(void)const
+pub fn stub_bfa68c() -> ! {
+    todo!("0xbfa68c Ogre::RbxImage::getOriginalWidth(void)const")
+}
+
+// 0xbfa690 — __ZNK4Ogre8RbxImage17getOriginalHeightEv
+#[doc(alias = "Ogre::RbxImage::getOriginalHeight(void)const")]
+// was: Ogre::RbxImage::getOriginalHeight(void)const
+pub fn stub_bfa690() -> ! {
+    todo!("0xbfa690 Ogre::RbxImage::getOriginalHeight(void)const")
+}
+
+// 0xbfad1c — __ZN4Ogre25RbxSpatialHashedSceneNodeC1EPNS_12SceneManagerE
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::RbxSpatialHashedSceneNode(Ogre::SceneManager *)")]
+// was: Ogre::RbxSpatialHashedSceneNode::RbxSpatialHashedSceneNode(Ogre::SceneManager *)
+pub fn stub_bfad1c() -> ! {
+    todo!("0xbfad1c Ogre::RbxSpatialHashedSceneNode::RbxSpatialHashedSceneNode(Ogre::SceneManager *)")
+}
+
+// 0xbfad20 — __ZN4Ogre25RbxSpatialHashedSceneNodeC2EPNS_12SceneManagerE
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::RbxSpatialHashedSceneNode(Ogre::SceneManager *)")]
+// was: Ogre::RbxSpatialHashedSceneNode::RbxSpatialHashedSceneNode(Ogre::SceneManager *)
+pub fn stub_bfad20() -> ! {
+    todo!("0xbfad20 Ogre::RbxSpatialHashedSceneNode::RbxSpatialHashedSceneNode(Ogre::SceneManager *)")
+}
+
+// 0xbfae34 — __ZN4Ogre25RbxSpatialHashedSceneNodeD0Ev
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()")]
+// was: Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()
+pub fn stub_bfae34() -> ! {
+    todo!("0xbfae34 Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()")
+}
+
+// 0xbfaee8 — __ZN4Ogre25RbxSpatialHashedSceneNodeD1Ev
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()")]
+// was: Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()
+pub fn stub_bfaee8() -> ! {
+    todo!("0xbfaee8 Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()")
+}
+
+// 0xbfaeec — __ZN4Ogre25RbxSpatialHashedSceneNodeD2Ev
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()")]
+// was: Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()
+pub fn stub_bfaeec() -> ! {
+    todo!("0xbfaeec Ogre::RbxSpatialHashedSceneNode::~RbxSpatialHashedSceneNode()")
+}
+
+// 0xbfaff0 — __ZN4Ogre25RbxSpatialHashedSceneNode8addChildEPNS_4NodeE
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::addChild(Ogre::Node *)")]
+// was: Ogre::RbxSpatialHashedSceneNode::addChild(Ogre::Node *)
+pub fn stub_bfaff0() -> ! {
+    todo!("0xbfaff0 Ogre::RbxSpatialHashedSceneNode::addChild(Ogre::Node *)")
+}
+
+// 0xbfb0c0 — __ZN4Ogre25RbxSpatialHashedSceneNode12isAdmissibleEPNS_20RbxCullableSceneNodeE
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::isAdmissible(Ogre::RbxCullableSceneNode *)")]
+// was: Ogre::RbxSpatialHashedSceneNode::isAdmissible(Ogre::RbxCullableSceneNode *)
+pub fn stub_bfb0c0() -> ! {
+    todo!("0xbfb0c0 Ogre::RbxSpatialHashedSceneNode::isAdmissible(Ogre::RbxCullableSceneNode *)")
+}
+
+// 0xbfb14c — __ZN4Ogre25RbxSpatialHashedSceneNode25RemoveFromSpatialInternalEPNS_20RbxCullableSceneNodeE
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::RemoveFromSpatialInternal(Ogre::RbxCullableSceneNode *)")]
+// was: Ogre::RbxSpatialHashedSceneNode::RemoveFromSpatialInternal(Ogre::RbxCullableSceneNode *)
+pub fn stub_bfb14c() -> ! {
+    todo!("0xbfb14c Ogre::RbxSpatialHashedSceneNode::RemoveFromSpatialInternal(Ogre::RbxCullableSceneNode *)")
+}
+
+// 0xbfb1fc — __ZN4Ogre25RbxSpatialHashedSceneNode11removeChildEt
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::removeChild(unsigned short)")]
+// was: Ogre::RbxSpatialHashedSceneNode::removeChild(unsigned short)
+pub fn stub_bfb1fc() -> ! {
+    todo!("0xbfb1fc Ogre::RbxSpatialHashedSceneNode::removeChild(unsigned short)")
+}
+
+// 0xbfb214 — __ZN4Ogre25RbxSpatialHashedSceneNode11removeChildEPNS_4NodeE
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::removeChild(Ogre::Node *)")]
+// was: Ogre::RbxSpatialHashedSceneNode::removeChild(Ogre::Node *)
+pub fn stub_bfb214() -> ! {
+    todo!("0xbfb214 Ogre::RbxSpatialHashedSceneNode::removeChild(Ogre::Node *)")
+}
+
+// 0xbfb22c — __ZN4Ogre25RbxSpatialHashedSceneNode11removeChildERKSs
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::removeChild(std::string const&)")]
+// was: Ogre::RbxSpatialHashedSceneNode::removeChild(std::string const&)
+pub fn stub_bfb22c() -> ! {
+    todo!("0xbfb22c Ogre::RbxSpatialHashedSceneNode::removeChild(std::string const&)")
+}
+
+// 0xbfb244 — __ZN4Ogre25RbxSpatialHashedSceneNode17removeAllChildrenEv
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::removeAllChildren(void)")]
+// was: Ogre::RbxSpatialHashedSceneNode::removeAllChildren(void)
+pub fn stub_bfb244() -> ! {
+    todo!("0xbfb244 Ogre::RbxSpatialHashedSceneNode::removeAllChildren(void)")
+}
+
+// 0xbfb278 — __ZN4Ogre25RbxSpatialHashedSceneNode13_updateBoundsEv
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::_updateBounds(void)")]
+// was: Ogre::RbxSpatialHashedSceneNode::_updateBounds(void)
+pub fn stub_bfb278() -> ! {
+    todo!("0xbfb278 Ogre::RbxSpatialHashedSceneNode::_updateBounds(void)")
+}
+
+// 0xbfb280 — __ZN4Ogre25RbxSpatialHashedSceneNode11updateChildEPNS_20RbxCullableSceneNodeE
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::updateChild(Ogre::RbxCullableSceneNode *)")]
+// was: Ogre::RbxSpatialHashedSceneNode::updateChild(Ogre::RbxCullableSceneNode *)
+pub fn stub_bfb280() -> ! {
+    todo!("0xbfb280 Ogre::RbxSpatialHashedSceneNode::updateChild(Ogre::RbxCullableSceneNode *)")
+}
+
+// 0xbfb48c — __ZN4Ogre25RbxSpatialHashedSceneNode19_findVisibleObjectsEPNS_6CameraEPNS_11RenderQueueEPNS_24VisibleObjectsBoundsInfoEbbb
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)")]
+// was: Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)
+pub fn stub_bfb48c() -> ! {
+    todo!("0xbfb48c Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)")
+}
+
+// 0xbfb554 — __ZN4Ogre25RbxSpatialHashedSceneNode12getHashedNumEv
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::getHashedNum(void)")]
+// was: Ogre::RbxSpatialHashedSceneNode::getHashedNum(void)
+pub fn stub_bfb554() -> ! {
+    todo!("0xbfb554 Ogre::RbxSpatialHashedSceneNode::getHashedNum(void)")
+}
+
+// 0xbfb55c — __ZN4Ogre25RbxSpatialHashedSceneNode14getUnhashedNumEv
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::getUnhashedNum(void)")]
+// was: Ogre::RbxSpatialHashedSceneNode::getUnhashedNum(void)
+pub fn stub_bfb55c() -> ! {
+    todo!("0xbfb55c Ogre::RbxSpatialHashedSceneNode::getUnhashedNum(void)")
+}
+
+// 0xbfb568 — __ZZN4Ogre25RbxSpatialHashedSceneNode19_findVisibleObjectsEPNS_6CameraEPNS_11RenderQueueEPNS_24VisibleObjectsBoundsInfoEbbbEN11NodeVisiter10IntersectsERKN3RBX7ExtentsE
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)::NodeVisiter::Intersects(RBX::Extents const&)")]
+// was: Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)::NodeVisiter::Intersects(RBX::Extents const&)
+pub fn stub_bfb568() -> ! {
+    todo!("0xbfb568 Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)::NodeVisiter::Intersects(RBX::Extents const&)")
+}
+
+// 0xbfb69c — __ZZN4Ogre25RbxSpatialHashedSceneNode19_findVisibleObjectsEPNS_6CameraEPNS_11RenderQueueEPNS_24VisibleObjectsBoundsInfoEbbbEN11NodeVisiter8DistanceERKN3RBX7ExtentsE
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)::NodeVisiter::Distance(RBX::Extents const&)")]
+// was: Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)::NodeVisiter::Distance(RBX::Extents const&)
+pub fn stub_bfb69c() -> ! {
+    todo!("0xbfb69c Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)::NodeVisiter::Distance(RBX::Extents const&)")
+}
+
+// 0xbfb6a8 — __ZZN4Ogre25RbxSpatialHashedSceneNode19_findVisibleObjectsEPNS_6CameraEPNS_11RenderQueueEPNS_24VisibleObjectsBoundsInfoEbbbEN11NodeVisiter11onPrimitiveEPNS_20RbxCullableSceneNodeEN3RBX15IntersectResultEf
+#[doc(alias = "Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)::NodeVisiter::onPrimitive(Ogre::RbxCullableSceneNode *,RBX::IntersectResult,float)")]
+// was: Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)::NodeVisiter::onPrimitive(Ogre::RbxCullableSceneNode *,RBX::IntersectResult,float)
+pub fn stub_bfb6a8() -> ! {
+    todo!("0xbfb6a8 Ogre::RbxSpatialHashedSceneNode::_findVisibleObjects(Ogre::Camera *,Ogre::RenderQueue *,Ogre::VisibleObjectsBoundsInfo *,bool,bool,bool)::NodeVisiter::onPrimitive(Ogre::RbxCullableSceneNode *,RBX::IntersectResult,float)")
+}
+
+// 0xbfb710 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EEC2EPNS_5WorldEPS4_i
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHash(RBX::World *,RBX::ContactManager*,int)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHash(RBX::World *,RBX::ContactManager*,int)
+pub fn stub_bfb710() -> ! {
+    todo!("0xbfb710 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHash(RBX::World *,RBX::ContactManager*,int)")
+}
+
+// 0xbfb900 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE5setupEv
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::setup(void)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::setup(void)
+pub fn stub_bfb900() -> ! {
+    todo!("0xbfb900 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::setup(void)")
+}
+
+// 0xbfb9f4 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EED2Ev
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::~SpatialHash()")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::~SpatialHash()
+pub fn stub_bfb9f4() -> ! {
+    todo!("0xbfb9f4 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::~SpatialHash()")
+}
+
+// 0xbfbbe4 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE22visitPrimitivesInSpaceEPNS5_11SpaceFilterE
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::visitPrimitivesInSpace(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpaceFilter *)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::visitPrimitivesInSpace(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpaceFilter *)
+pub fn stub_bfbbe4() -> ! {
+    todo!("0xbfbbe4 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::visitPrimitivesInSpace(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpaceFilter *)")
+}
+
+// 0xbfc380 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE12findTreeNodeEiiRKNS_12Vector3int32E
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::findTreeNode(int,int,RBX::Vector3int32 const&)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::findTreeNode(int,int,RBX::Vector3int32 const&)
+pub fn stub_bfc380() -> ! {
+    todo!("0xbfc380 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::findTreeNode(int,int,RBX::Vector3int32 const&)")
+}
+
+// 0xbfc480 — __ZN3RBX9AllocatorINS_11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE11SpatialNodeEE13releaseMemoryEv
+#[doc(alias = "RBX::Allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode>::releaseMemory(void)")]
+// was: RBX::Allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode>::releaseMemory(void)
+pub fn stub_bfc480() -> ! {
+    todo!("0xbfc480 RBX::Allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode>::releaseMemory(void)")
+}
+
+// 0xbfc4f0 — __ZN3RBX9AllocatorINS_11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE8TreeNodeEE13releaseMemoryEv
+#[doc(alias = "RBX::Allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode>::releaseMemory(void)")]
+// was: RBX::Allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode>::releaseMemory(void)
+pub fn stub_bfc4f0() -> ! {
+    todo!("0xbfc4f0 RBX::Allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode>::releaseMemory(void)")
+}
+
+// 0xbfc568 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE16onPrimitiveAddedEPS2_b
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::onPrimitiveAdded(Ogre::RbxCullableSceneNode*,bool)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::onPrimitiveAdded(Ogre::RbxCullableSceneNode*,bool)
+pub fn stub_bfc568() -> ! {
+    todo!("0xbfc568 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::onPrimitiveAdded(Ogre::RbxCullableSceneNode*,bool)")
+}
+
+// 0xbfc644 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE14primitiveAddedEPS2_b
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::primitiveAdded(Ogre::RbxCullableSceneNode*,bool)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::primitiveAdded(Ogre::RbxCullableSceneNode*,bool)
+pub fn stub_bfc644() -> ! {
+    todo!("0xbfc644 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::primitiveAdded(Ogre::RbxCullableSceneNode*,bool)")
+}
+
+// 0xbfc890 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE16primitiveRemovedEPS2_
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::primitiveRemoved(Ogre::RbxCullableSceneNode*)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::primitiveRemoved(Ogre::RbxCullableSceneNode*)
+pub fn stub_bfc890() -> ! {
+    todo!("0xbfc890 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::primitiveRemoved(Ogre::RbxCullableSceneNode*)")
+}
+
+// 0xbfc9b4 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE25onPrimitiveExtentsChangedEPS2_
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::onPrimitiveExtentsChanged(Ogre::RbxCullableSceneNode*)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::onPrimitiveExtentsChanged(Ogre::RbxCullableSceneNode*)
+pub fn stub_bfc9b4() -> ! {
+    todo!("0xbfc9b4 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::onPrimitiveExtentsChanged(Ogre::RbxCullableSceneNode*)")
+}
+
+// 0xbfcc2c — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE23primitiveExtentsChangedEPS2_RKNS_7ExtentsE
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::primitiveExtentsChanged(Ogre::RbxCullableSceneNode*,RBX::Extents const&)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::primitiveExtentsChanged(Ogre::RbxCullableSceneNode*,RBX::Extents const&)
+pub fn stub_bfcc2c() -> ! {
+    todo!("0xbfcc2c RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::primitiveExtentsChanged(Ogre::RbxCullableSceneNode*,RBX::Extents const&)")
+}
+
+// 0xbfce78 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE14createTreeNodeEiiRKNS_12Vector3int32E
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::createTreeNode(int,int,RBX::Vector3int32 const&)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::createTreeNode(int,int,RBX::Vector3int32 const&)
+pub fn stub_bfce78() -> ! {
+    todo!("0xbfce78 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::createTreeNode(int,int,RBX::Vector3int32 const&)")
+}
+
+// 0xbfd0c8 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE10returnNodeEPNS5_11SpatialNodeE
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::returnNode(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::returnNode(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *)
+pub fn stub_bfd0c8() -> ! {
+    todo!("0xbfd0c8 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::returnNode(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *)")
+}
+
+// 0xbfd1a0 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE15_retireTreeNodeEPNS5_8TreeNodeE
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::_retireTreeNode(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode *)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::_retireTreeNode(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode *)
+pub fn stub_bfd1a0() -> ! {
+    todo!("0xbfd1a0 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::_retireTreeNode(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode *)")
+}
+
+// 0xbfd478 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE19removeTreeNodeChildEiRNS_12Vector3int32E
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::removeTreeNodeChild(int,RBX::Vector3int32 &)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::removeTreeNodeChild(int,RBX::Vector3int32 &)
+pub fn stub_bfd478() -> ! {
+    todo!("0xbfd478 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::removeTreeNodeChild(int,RBX::Vector3int32 &)")
+}
+
+// 0xbfd5f0 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE7addNodeEPS2_RKNS_12Vector3int32Eb
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::addNode(Ogre::RbxCullableSceneNode*,RBX::Vector3int32 const&,bool)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::addNode(Ogre::RbxCullableSceneNode*,RBX::Vector3int32 const&,bool)
+pub fn stub_bfd5f0() -> ! {
+    todo!("0xbfd5f0 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::addNode(Ogre::RbxCullableSceneNode*,RBX::Vector3int32 const&,bool)")
+}
+
+// 0xbfd978 — __ZN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS_7ContactENS_14ContactManagerELi4EE11destroyNodeEPNS5_11SpatialNodeE
+#[doc(alias = "RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::destroyNode(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *)")]
+// was: RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::destroyNode(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *)
+pub fn stub_bfd978() -> ! {
+    todo!("0xbfd978 RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::destroyNode(RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode *)")
+}
+
+// 0xbfdae4 — __ZNSt6vectorIPN4Ogre20RbxCullableSceneNodeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "std::vector<Ogre::RbxCullableSceneNode *,std::allocator<Ogre::RbxCullableSceneNode *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::RbxCullableSceneNode **,std::vector<Ogre::RbxCullableSceneNode *,std::allocator<Ogre::RbxCullableSceneNode *>>>,Ogre::RbxCullableSceneNode * const&)")]
+// was: std::vector<Ogre::RbxCullableSceneNode *,std::allocator<Ogre::RbxCullableSceneNode *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::RbxCullableSceneNode **,std::vector<Ogre::RbxCullableSceneNode *,std::allocator<Ogre::RbxCullableSceneNode *>>>,Ogre::RbxCullableSceneNode * const&)
+pub fn stub_bfdae4() -> ! {
+    todo!("0xbfdae4 std::vector<Ogre::RbxCullableSceneNode *,std::allocator<Ogre::RbxCullableSceneNode *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::RbxCullableSceneNode **,std::vector<Ogre::RbxCullableSceneNode *,std::allocator<Ogre::RbxCullableSceneNode *>>>,Ogre::RbxCullableSceneNode * const&)")
+}
+
+// 0xbfdbdc — __ZNSt6vectorIN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS0_7ContactENS0_14ContactManagerELi4EE21SpatialHashTableEntryESaIS7_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS7_S9_EEmRKS7_
+#[doc(alias = "std::vector<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry,std::allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry*,std::vector<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry,std::allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry>>>,unsigned long,RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry const&)")]
+// was: std::vector<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry,std::allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry*,std::vector<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry,std::allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry>>>,unsigned long,RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry const&)
+pub fn stub_bfdbdc() -> ! {
+    todo!("0xbfdbdc std::vector<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry,std::allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry>>::_M_fill_insert(__gnu_cxx::__normal_iterator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry*,std::vector<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry,std::allocator<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry>>>,unsigned long,RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialHashTableEntry const&)")
+}
+
+// 0xbfde44 — __ZN3G3D5ArrayIPN4Ogre20RbxCullableSceneNodeELi10ELm32EED2Ev
+#[doc(alias = "G3D::Array<Ogre::RbxCullableSceneNode *,10,32ul>::~Array()")]
+// was: G3D::Array<Ogre::RbxCullableSceneNode *,10,32ul>::~Array()
+pub fn stub_bfde44() -> ! {
+    todo!("0xbfde44 G3D::Array<Ogre::RbxCullableSceneNode *,10,32ul>::~Array()")
+}
+
+// 0xbfdf64 — __ZN3G3D5ArrayIPN4Ogre20RbxCullableSceneNodeELi10ELm32EEC2Ev
+#[doc(alias = "G3D::Array<Ogre::RbxCullableSceneNode *,10,32ul>::Array(void)")]
+// was: G3D::Array<Ogre::RbxCullableSceneNode *,10,32ul>::Array(void)
+pub fn stub_bfdf64() -> ! {
+    todo!("0xbfdf64 G3D::Array<Ogre::RbxCullableSceneNode *,10,32ul>::Array(void)")
+}
+
+// 0xbfe120 — __ZN5boost11object_poolIN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS1_7ContactENS1_14ContactManagerELi4EE8TreeNodeENS1_16roblox_allocatorEED2Ev
+#[doc(alias = "boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::~object_pool()")]
+// was: boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::~object_pool()
+pub fn stub_bfe120() -> ! {
+    todo!("0xbfe120 boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::TreeNode,RBX::roblox_allocator>::~object_pool()")
+}
+
+// 0xbfe3b4 — __ZN5boost11object_poolIN3RBX11SpatialHashIN4Ogre20RbxCullableSceneNodeENS1_7ContactENS1_14ContactManagerELi4EE11SpatialNodeENS1_16roblox_allocatorEED2Ev
+#[doc(alias = "boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::~object_pool()")]
+// was: boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::~object_pool()
+pub fn stub_bfe3b4() -> ! {
+    todo!("0xbfe3b4 boost::object_pool<RBX::SpatialHash<Ogre::RbxCullableSceneNode,RBX::Contact,RBX::ContactManager,4>::SpatialNode,RBX::roblox_allocator>::~object_pool()")
+}
+
+// 0xbfecc4 — __ZN4Ogre7RBXSSAOC1EPNS_12VisualEngineE
+#[doc(alias = "Ogre::RBXSSAO::RBXSSAO(Ogre::VisualEngine *)")]
+// was: Ogre::RBXSSAO::RBXSSAO(Ogre::VisualEngine *)
+pub fn stub_bfecc4() -> ! {
+    todo!("0xbfecc4 Ogre::RBXSSAO::RBXSSAO(Ogre::VisualEngine *)")
+}
+
+// 0xbfecc8 — __ZN4Ogre7RBXSSAOC2EPNS_12VisualEngineE
+#[doc(alias = "Ogre::RBXSSAO::RBXSSAO(Ogre::VisualEngine *)")]
+// was: Ogre::RBXSSAO::RBXSSAO(Ogre::VisualEngine *)
+pub fn stub_bfecc8() -> ! {
+    todo!("0xbfecc8 Ogre::RBXSSAO::RBXSSAO(Ogre::VisualEngine *)")
+}
+
+// 0xbfee1c — __ZN4Ogre7RBXSSAO18createDummyGBufferEv
+#[doc(alias = "Ogre::RBXSSAO::createDummyGBuffer(void)")]
+// was: Ogre::RBXSSAO::createDummyGBuffer(void)
+pub fn stub_bfee1c() -> ! {
+    todo!("0xbfee1c Ogre::RBXSSAO::createDummyGBuffer(void)")
+}
+
+// 0xbfefcc — __ZN4Ogre7RBXSSAOD1Ev
+#[doc(alias = "Ogre::RBXSSAO::~RBXSSAO()")]
+// was: Ogre::RBXSSAO::~RBXSSAO()
+pub fn stub_bfefcc() -> ! {
+    todo!("0xbfefcc Ogre::RBXSSAO::~RBXSSAO()")
+}
+
+// 0xbfefd0 — __ZN4Ogre7RBXSSAOD2Ev
+#[doc(alias = "Ogre::RBXSSAO::~RBXSSAO()")]
+// was: Ogre::RBXSSAO::~RBXSSAO()
+pub fn stub_bfefd0() -> ! {
+    todo!("0xbfefd0 Ogre::RBXSSAO::~RBXSSAO()")
+}

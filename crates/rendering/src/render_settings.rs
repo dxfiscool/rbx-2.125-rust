@@ -3565,3 +3565,16 @@ pub fn stub_93d760() -> ! {
     todo!("0x93d760 RBX::SceneUpdater::SceneUpdater(boost::shared_ptr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)")
 }
 
+// 0xbe6e54 — __ZN3RBX10ViewRbxGfxC2ENS_15CRenderSettings12GraphicsModeEPNS_9OSContextEPS1_
+#[doc(alias = "RBX::ViewRbxGfx::ViewRbxGfx(RBX::CRenderSettings::GraphicsMode,RBX::OSContext *,RBX::CRenderSettings*)")]
+// was: RBX::ViewRbxGfx::ViewRbxGfx(RBX::CRenderSettings::GraphicsMode,RBX::OSContext *,RBX::CRenderSettings*)
+pub fn stub_be6e54() -> ! {
+    todo!("0xbe6e54 RBX::ViewRbxGfx::ViewRbxGfx(RBX::CRenderSettings::GraphicsMode,RBX::OSContext *,RBX::CRenderSettings*)")
+}
+
+// 0xbef270 — __ZZN3RBX21ViewRbxGfx_InitModuleEvEN17ViewRbxGfxFactory6CreateENS_15CRenderSettings12GraphicsModeEPNS_9OSContextEPS1_
+#[doc(alias = "RBX::ViewRbxGfx_InitModule(void)::ViewRbxGfxFactory::Create(RBX::CRenderSettings::GraphicsMode,RBX::OSContext *,RBX::CRenderSettings*)")]
+// was: RBX::ViewRbxGfx_InitModule(void)::ViewRbxGfxFactory::Create(RBX::CRenderSettings::GraphicsMode,RBX::OSContext *,RBX::CRenderSettings*)
+pub fn stub_bef270() -> ! {
+    todo!("0xbef270 RBX::ViewRbxGfx_InitModule(void)::ViewRbxGfxFactory::Create(RBX::CRenderSettings::GraphicsMode,RBX::OSContext *,RBX::CRenderSettings*)")
+}
