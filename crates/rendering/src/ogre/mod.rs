@@ -18830,3 +18830,703 @@ pub fn stub_bb8cb8() -> ! {
 pub fn stub_bb8f2c() -> ! {
     todo!("0xbb8f2c Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::~VertexBufferBatch()")
 }
+
+// 0xbb9178 — __ZN4Ogre14VertexStreamer17VertexBufferBatchINS0_8Vertex3DEED1Ev
+#[doc(alias = "Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::~VertexBufferBatch()")]
+// was: Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::~VertexBufferBatch()
+pub fn stub_bb9178() -> ! {
+    todo!("0xbb9178 Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::~VertexBufferBatch()")
+}
+
+// 0xbb93c4 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer11VertexChunkELi10ELm32EE6resizeEib
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::resize(int,bool)")]
+// was: G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::resize(int,bool)
+pub fn stub_bb93c4() -> ! {
+    todo!("0xbb93c4 G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::resize(int,bool)")
+}
+
+// 0xbb9540 — __ZN4Ogre14VertexStreamer17VertexBufferBatchINS0_8Vertex3DEE5setupEPNS_12RenderSystemE
+#[doc(alias = "Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::setup(Ogre::RenderSystem *)")]
+// was: Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::setup(Ogre::RenderSystem *)
+pub fn stub_bb9540() -> ! {
+    todo!("0xbb9540 Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::setup(Ogre::RenderSystem *)")
+}
+
+// 0xbb97fc — __ZN4Ogre14VertexStreamer17VertexBufferBatchINS0_15Vertex3DTextureEE5setupEPNS_12RenderSystemE
+#[doc(alias = "Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::setup(Ogre::RenderSystem *)")]
+// was: Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::setup(Ogre::RenderSystem *)
+pub fn stub_bb97fc() -> ! {
+    todo!("0xbb97fc Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::setup(Ogre::RenderSystem *)")
+}
+
+// 0xbb9abc — __ZN3G3D5ArrayIN4Ogre14VertexStreamer11VertexChunkELi10ELm32EE6appendERKS3_
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::append(Ogre::VertexStreamer::VertexChunk const&)")]
+// was: G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::append(Ogre::VertexStreamer::VertexChunk const&)
+pub fn stub_bb9abc() -> ! {
+    todo!("0xbb9abc G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::append(Ogre::VertexStreamer::VertexChunk const&)")
+}
+
+// 0xbb9dc4 — __ZN4Ogre14VertexStreamer17VertexBufferBatchINS0_15Vertex3DTextureEE20createHardwareBufferEj
+#[doc(alias = "Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::createHardwareBuffer(unsigned int)")]
+// was: Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::createHardwareBuffer(unsigned int)
+pub fn stub_bb9dc4() -> ! {
+    todo!("0xbb9dc4 Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3DTexture>::createHardwareBuffer(unsigned int)")
+}
+
+// 0xbba0b8 — __ZN4Ogre14VertexStreamer17VertexBufferBatchINS0_8Vertex3DEE20createHardwareBufferEj
+#[doc(alias = "Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::createHardwareBuffer(unsigned int)")]
+// was: Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::createHardwareBuffer(unsigned int)
+pub fn stub_bba0b8() -> ! {
+    todo!("0xbba0b8 Ogre::VertexStreamer::VertexBufferBatch<Ogre::VertexStreamer::Vertex3D>::createHardwareBuffer(unsigned int)")
+}
+
+// 0xbba388 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer15Vertex3DTextureELi10ELm32EE6resizeEib
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::resize(int,bool)")]
+// was: G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::resize(int,bool)
+pub fn stub_bba388() -> ! {
+    todo!("0xbba388 G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::resize(int,bool)")
+}
+
+// 0xbba45c — __ZN3G3D5ArrayIN4Ogre14VertexStreamer15Vertex3DTextureELi10ELm32EE7reallocEi
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::realloc(int)")]
+// was: G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::realloc(int)
+pub fn stub_bba45c() -> ! {
+    todo!("0xbba45c G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::realloc(int)")
+}
+
+// 0xbba670 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer8Vertex3DELi10ELm32EE6resizeEib
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::resize(int,bool)")]
+// was: G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::resize(int,bool)
+pub fn stub_bba670() -> ! {
+    todo!("0xbba670 G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::resize(int,bool)")
+}
+
+// 0xbba734 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer8Vertex3DELi10ELm32EE7reallocEi
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::realloc(int)")]
+// was: G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::realloc(int)
+pub fn stub_bba734() -> ! {
+    todo!("0xbba734 G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::realloc(int)")
+}
+
+// 0xbba920 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer11VertexChunkELi10ELm32EE7reallocEi
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::realloc(int)")]
+// was: G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::realloc(int)
+pub fn stub_bba920() -> ! {
+    todo!("0xbba920 G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::realloc(int)")
+}
+
+// 0xbbabe8 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer11VertexChunkELi10ELm32EED2Ev
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::~Array()")]
+// was: G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::~Array()
+pub fn stub_bbabe8() -> ! {
+    todo!("0xbbabe8 G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::~Array()")
+}
+
+// 0xbbadc4 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer11VertexChunkELi10ELm32EEC2Ev
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::Array(void)")]
+// was: G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::Array(void)
+pub fn stub_bbadc4() -> ! {
+    todo!("0xbbadc4 G3D::Array<Ogre::VertexStreamer::VertexChunk,10,32ul>::Array(void)")
+}
+
+// 0xbbaf7c — __ZN3G3D5ArrayIN4Ogre14VertexStreamer8Vertex3DELi10ELm32EE6appendERKS3_
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::append(Ogre::VertexStreamer::Vertex3D const&)")]
+// was: G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::append(Ogre::VertexStreamer::Vertex3D const&)
+pub fn stub_bbaf7c() -> ! {
+    todo!("0xbbaf7c G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::append(Ogre::VertexStreamer::Vertex3D const&)")
+}
+
+// 0xbbb000 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer15Vertex3DTextureELi10ELm32EE6appendERKS3_
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::append(Ogre::VertexStreamer::Vertex3DTexture const&)")]
+// was: G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::append(Ogre::VertexStreamer::Vertex3DTexture const&)
+pub fn stub_bbb000() -> ! {
+    todo!("0xbbb000 G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::append(Ogre::VertexStreamer::Vertex3DTexture const&)")
+}
+
+// 0xbbb0a8 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer8Vertex3DELi10ELm32EED2Ev
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::~Array()")]
+// was: G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::~Array()
+pub fn stub_bbb0a8() -> ! {
+    todo!("0xbbb0a8 G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::~Array()")
+}
+
+// 0xbbb1c8 — __ZN3G3D5ArrayIiLi10ELm32EED2Ev
+#[doc(alias = "G3D::Array<int,10,32ul>::~Array()")]
+// was: G3D::Array<int,10,32ul>::~Array()
+pub fn stub_bbb1c8() -> ! {
+    todo!("0xbbb1c8 G3D::Array<int,10,32ul>::~Array()")
+}
+
+// 0xbbb2e8 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer15Vertex3DTextureELi10ELm32EED2Ev
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::~Array()")]
+// was: G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::~Array()
+pub fn stub_bbb2e8() -> ! {
+    todo!("0xbbb2e8 G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::~Array()")
+}
+
+// 0xbbb408 — __ZN3G3D5ArrayIiLi10ELm32EEC2Ev
+#[doc(alias = "G3D::Array<int,10,32ul>::Array(void)")]
+// was: G3D::Array<int,10,32ul>::Array(void)
+pub fn stub_bbb408() -> ! {
+    todo!("0xbbb408 G3D::Array<int,10,32ul>::Array(void)")
+}
+
+// 0xbbb5c0 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer15Vertex3DTextureELi10ELm32EEC2Ev
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::Array(void)")]
+// was: G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::Array(void)
+pub fn stub_bbb5c0() -> ! {
+    todo!("0xbbb5c0 G3D::Array<Ogre::VertexStreamer::Vertex3DTexture,10,32ul>::Array(void)")
+}
+
+// 0xbbb778 — __ZN3G3D5ArrayIN4Ogre14VertexStreamer8Vertex3DELi10ELm32EEC2Ev
+#[doc(alias = "G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::Array(void)")]
+// was: G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::Array(void)
+pub fn stub_bbb778() -> ! {
+    todo!("0xbbb778 G3D::Array<Ogre::VertexStreamer::Vertex3D,10,32ul>::Array(void)")
+}
+
+// 0xbbbfb8 — __ZN4Ogre28RbxManualResourceLoaderChainC2EPNS_12VisualEngineEPPS0_
+#[doc(alias = "Ogre::RbxManualResourceLoaderChain::RbxManualResourceLoaderChain(Ogre::VisualEngine *,Ogre::RbxManualResourceLoaderChain**)")]
+// was: Ogre::RbxManualResourceLoaderChain::RbxManualResourceLoaderChain(Ogre::VisualEngine *,Ogre::RbxManualResourceLoaderChain**)
+pub fn stub_bbbfb8() -> ! {
+    todo!("0xbbbfb8 Ogre::RbxManualResourceLoaderChain::RbxManualResourceLoaderChain(Ogre::VisualEngine *,Ogre::RbxManualResourceLoaderChain**)")
+}
+
+// 0xbbbfdc — __ZN4Ogre28RbxManualResourceLoaderChain12loadResourceEPNS_8ResourceE
+#[doc(alias = "Ogre::RbxManualResourceLoaderChain::loadResource(Ogre::Resource *)")]
+// was: Ogre::RbxManualResourceLoaderChain::loadResource(Ogre::Resource *)
+pub fn stub_bbbfdc() -> ! {
+    todo!("0xbbbfdc Ogre::RbxManualResourceLoaderChain::loadResource(Ogre::Resource *)")
+}
+
+// 0xbbc010 — __ZN4Ogre28RbxManualResourceLoaderChain11DeleteChainEv
+#[doc(alias = "Ogre::RbxManualResourceLoaderChain::DeleteChain(void)")]
+// was: Ogre::RbxManualResourceLoaderChain::DeleteChain(void)
+pub fn stub_bbc010() -> ! {
+    todo!("0xbbc010 Ogre::RbxManualResourceLoaderChain::DeleteChain(void)")
+}
+
+// 0xbbc048 — __ZN4Ogre28RbxManualResourceLoaderChain7ZombifyEv
+#[doc(alias = "Ogre::RbxManualResourceLoaderChain::Zombify(void)")]
+// was: Ogre::RbxManualResourceLoaderChain::Zombify(void)
+pub fn stub_bbc048() -> ! {
+    todo!("0xbbc048 Ogre::RbxManualResourceLoaderChain::Zombify(void)")
+}
+
+// 0xbbc050 — __ZN4Ogre28RbxManualResourceLoaderChainD1Ev
+#[doc(alias = "Ogre::RbxManualResourceLoaderChain::~RbxManualResourceLoaderChain()")]
+// was: Ogre::RbxManualResourceLoaderChain::~RbxManualResourceLoaderChain()
+pub fn stub_bbc050() -> ! {
+    todo!("0xbbc050 Ogre::RbxManualResourceLoaderChain::~RbxManualResourceLoaderChain()")
+}
+
+// 0xbbc054 — __ZN4Ogre28RbxManualResourceLoaderChainD0Ev
+#[doc(alias = "Ogre::RbxManualResourceLoaderChain::~RbxManualResourceLoaderChain()")]
+// was: Ogre::RbxManualResourceLoaderChain::~RbxManualResourceLoaderChain()
+pub fn stub_bbc054() -> ! {
+    todo!("0xbbc054 Ogre::RbxManualResourceLoaderChain::~RbxManualResourceLoaderChain()")
+}
+
+// 0xbbc058 — __ZN4Ogre15TextureLoaderOpclEPNS_28RbxManualResourceLoaderChainE
+#[doc(alias = "Ogre::TextureLoaderOp::operator()(Ogre::RbxManualResourceLoaderChain *)")]
+// was: Ogre::TextureLoaderOp::operator()(Ogre::RbxManualResourceLoaderChain *)
+pub fn stub_bbc058() -> ! {
+    todo!("0xbbc058 Ogre::TextureLoaderOp::operator()(Ogre::RbxManualResourceLoaderChain *)")
+}
+
+// 0xbbca30 — __ZN4Ogre22RbxManualTextureLoaderC1EPNS_12VisualEngineE
+#[doc(alias = "Ogre::RbxManualTextureLoader::RbxManualTextureLoader(Ogre::VisualEngine *)")]
+// was: Ogre::RbxManualTextureLoader::RbxManualTextureLoader(Ogre::VisualEngine *)
+pub fn stub_bbca30() -> ! {
+    todo!("0xbbca30 Ogre::RbxManualTextureLoader::RbxManualTextureLoader(Ogre::VisualEngine *)")
+}
+
+// 0xbbca54 — __ZN4Ogre22RbxManualTextureLoader12tryLoadImageERSiRNS_5ImageEPKcibPiS6_
+#[doc(alias = "Ogre::RbxManualTextureLoader::tryLoadImage(std::istream &,Ogre::Image &,char const*,int,bool,int *,int *)")]
+// was: Ogre::RbxManualTextureLoader::tryLoadImage(std::istream &,Ogre::Image &,char const*,int,bool,int *,int *)
+pub fn stub_bbca54() -> ! {
+    todo!("0xbbca54 Ogre::RbxManualTextureLoader::tryLoadImage(std::istream &,Ogre::Image &,char const*,int,bool,int *,int *)")
+}
+
+// 0xbbd5c4 — __ZN4Ogre22RbxManualTextureLoader15loadRbxResourceEPNS_8ResourceE
+#[doc(alias = "Ogre::RbxManualTextureLoader::loadRbxResource(Ogre::Resource *)")]
+// was: Ogre::RbxManualTextureLoader::loadRbxResource(Ogre::Resource *)
+pub fn stub_bbd5c4() -> ! {
+    todo!("0xbbd5c4 Ogre::RbxManualTextureLoader::loadRbxResource(Ogre::Resource *)")
+}
+
+// 0xbbdf98 — __ZN4Ogre22RbxManualTextureLoaderD1Ev
+#[doc(alias = "Ogre::RbxManualTextureLoader::~RbxManualTextureLoader()")]
+// was: Ogre::RbxManualTextureLoader::~RbxManualTextureLoader()
+pub fn stub_bbdf98() -> ! {
+    todo!("0xbbdf98 Ogre::RbxManualTextureLoader::~RbxManualTextureLoader()")
+}
+
+// 0xbbdf9c — __ZN4Ogre22RbxManualTextureLoaderD0Ev
+#[doc(alias = "Ogre::RbxManualTextureLoader::~RbxManualTextureLoader()")]
+// was: Ogre::RbxManualTextureLoader::~RbxManualTextureLoader()
+pub fn stub_bbdf9c() -> ! {
+    todo!("0xbbdf9c Ogre::RbxManualTextureLoader::~RbxManualTextureLoader()")
+}
+
+// 0xbbe624 — __ZN3RBX18RbxParticleEmitterC1EPN4Ogre12SceneManagerE
+#[doc(alias = "RBX::RbxParticleEmitter::RbxParticleEmitter(Ogre::SceneManager *)")]
+// was: RBX::RbxParticleEmitter::RbxParticleEmitter(Ogre::SceneManager *)
+pub fn stub_bbe624() -> ! {
+    todo!("0xbbe624 RBX::RbxParticleEmitter::RbxParticleEmitter(Ogre::SceneManager *)")
+}
+
+// 0xbc0408 — __ZN3RBX18RbxParticleFactoryC1EPN4Ogre12VisualEngineE
+#[doc(alias = "RBX::RbxParticleFactory::RbxParticleFactory(Ogre::VisualEngine *)")]
+// was: RBX::RbxParticleFactory::RbxParticleFactory(Ogre::VisualEngine *)
+pub fn stub_bc0408() -> ! {
+    todo!("0xbc0408 RBX::RbxParticleFactory::RbxParticleFactory(Ogre::VisualEngine *)")
+}
+
+// 0xbc1ab8 — __ZN3RBX18RbxParticleFactory7restoreEPN4Ogre14ParticleSystemEN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::RbxParticleFactory::restore(Ogre::ParticleSystem *,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::RbxParticleFactory::restore(Ogre::ParticleSystem *,boost::shared_ptr<RBX::Instance>)
+pub fn stub_bc1ab8() -> ! {
+    todo!("0xbc1ab8 RBX::RbxParticleFactory::restore(Ogre::ParticleSystem *,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0xbc1d2c — __ZN3RBX18RbxParticleFactory20removeParticleSystemEPN4Ogre14ParticleSystemE
+#[doc(alias = "RBX::RbxParticleFactory::removeParticleSystem(Ogre::ParticleSystem *)")]
+// was: RBX::RbxParticleFactory::removeParticleSystem(Ogre::ParticleSystem *)
+pub fn stub_bc1d2c() -> ! {
+    todo!("0xbc1d2c RBX::RbxParticleFactory::removeParticleSystem(Ogre::ParticleSystem *)")
+}
+
+// 0xbc1d80 — __ZN3RBX18RbxParticleFactory17updateSmokeSystemEPN4Ogre14ParticleSystemEPNS_11SmokeParamsE
+#[doc(alias = "RBX::RbxParticleFactory::updateSmokeSystem(Ogre::ParticleSystem *,RBX::SmokeParams *)")]
+// was: RBX::RbxParticleFactory::updateSmokeSystem(Ogre::ParticleSystem *,RBX::SmokeParams *)
+pub fn stub_bc1d80() -> ! {
+    todo!("0xbc1d80 RBX::RbxParticleFactory::updateSmokeSystem(Ogre::ParticleSystem *,RBX::SmokeParams *)")
+}
+
+// 0xbc3114 — __ZN3RBX18RbxParticleFactory16updateFireSystemEPN4Ogre14ParticleSystemEPNS_10FireParamsE
+#[doc(alias = "RBX::RbxParticleFactory::updateFireSystem(Ogre::ParticleSystem *,RBX::FireParams *)")]
+// was: RBX::RbxParticleFactory::updateFireSystem(Ogre::ParticleSystem *,RBX::FireParams *)
+pub fn stub_bc3114() -> ! {
+    todo!("0xbc3114 RBX::RbxParticleFactory::updateFireSystem(Ogre::ParticleSystem *,RBX::FireParams *)")
+}
+
+// 0xbc3b90 — __ZNSt6vectorIPN4Ogre14ParticleSystemESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+#[doc(alias = "std::vector<Ogre::ParticleSystem *,std::allocator<Ogre::ParticleSystem *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ParticleSystem **,std::vector<Ogre::ParticleSystem *,std::allocator<Ogre::ParticleSystem *>>>,Ogre::ParticleSystem * const&)")]
+// was: std::vector<Ogre::ParticleSystem *,std::allocator<Ogre::ParticleSystem *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ParticleSystem **,std::vector<Ogre::ParticleSystem *,std::allocator<Ogre::ParticleSystem *>>>,Ogre::ParticleSystem * const&)
+pub fn stub_bc3b90() -> ! {
+    todo!("0xbc3b90 std::vector<Ogre::ParticleSystem *,std::allocator<Ogre::ParticleSystem *>>::_M_insert_aux(__gnu_cxx::__normal_iterator<Ogre::ParticleSystem **,std::vector<Ogre::ParticleSystem *,std::allocator<Ogre::ParticleSystem *>>>,Ogre::ParticleSystem * const&)")
+}
+
+// 0xbc3c88 — __ZNSt6vectorISt4pairIPN4Ogre14ParticleSystemEfESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
+#[doc(alias = "std::vector<std::pair<Ogre::ParticleSystem *,float>,std::allocator<std::pair<Ogre::ParticleSystem *,float>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::pair<Ogre::ParticleSystem *,float>*,std::vector<std::pair<Ogre::ParticleSystem *,float>,std::allocator<std::pair<Ogre::ParticleSystem *,float>>>>,std::pair<Ogre::ParticleSystem *,float> const&)")]
+// was: std::vector<std::pair<Ogre::ParticleSystem *,float>,std::allocator<std::pair<Ogre::ParticleSystem *,float>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::pair<Ogre::ParticleSystem *,float>*,std::vector<std::pair<Ogre::ParticleSystem *,float>,std::allocator<std::pair<Ogre::ParticleSystem *,float>>>>,std::pair<Ogre::ParticleSystem *,float> const&)
+pub fn stub_bc3c88() -> ! {
+    todo!("0xbc3c88 std::vector<std::pair<Ogre::ParticleSystem *,float>,std::allocator<std::pair<Ogre::ParticleSystem *,float>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::pair<Ogre::ParticleSystem *,float>*,std::vector<std::pair<Ogre::ParticleSystem *,float>,std::allocator<std::pair<Ogre::ParticleSystem *,float>>>>,std::pair<Ogre::ParticleSystem *,float> const&)")
+}
+
+// 0xbc44a8 — __ZN3RBX18RbxParticleManagerC1EPN4Ogre12VisualEngineE
+#[doc(alias = "RBX::RbxParticleManager::RbxParticleManager(Ogre::VisualEngine *)")]
+// was: RBX::RbxParticleManager::RbxParticleManager(Ogre::VisualEngine *)
+pub fn stub_bc44a8() -> ! {
+    todo!("0xbc44a8 RBX::RbxParticleManager::RbxParticleManager(Ogre::VisualEngine *)")
+}
+
+// 0xbc45b0 — __ZN3RBX18RbxParticleManager19FirstThrottleSystemEPN4Ogre14ParticleSystemE
+#[doc(alias = "RBX::RbxParticleManager::FirstThrottleSystem(Ogre::ParticleSystem *)")]
+// was: RBX::RbxParticleManager::FirstThrottleSystem(Ogre::ParticleSystem *)
+pub fn stub_bc45b0() -> ! {
+    todo!("0xbc45b0 RBX::RbxParticleManager::FirstThrottleSystem(Ogre::ParticleSystem *)")
+}
+
+// 0xbc4cb4 — __ZN4Ogre15RbxSceneManagerC2ERKSs
+#[doc(alias = "Ogre::RbxSceneManager::RbxSceneManager(std::string const&)")]
+// was: Ogre::RbxSceneManager::RbxSceneManager(std::string const&)
+pub fn stub_bc4cb4() -> ! {
+    todo!("0xbc4cb4 Ogre::RbxSceneManager::RbxSceneManager(std::string const&)")
+}
+
+// 0xbc57b0 — __ZN4Ogre15RbxSceneManagerD0Ev
+#[doc(alias = "Ogre::RbxSceneManager::~RbxSceneManager()")]
+// was: Ogre::RbxSceneManager::~RbxSceneManager()
+pub fn stub_bc57b0() -> ! {
+    todo!("0xbc57b0 Ogre::RbxSceneManager::~RbxSceneManager()")
+}
+
+// 0xbc5864 — __ZN4Ogre15RbxSceneManagerD1Ev
+#[doc(alias = "Ogre::RbxSceneManager::~RbxSceneManager()")]
+// was: Ogre::RbxSceneManager::~RbxSceneManager()
+pub fn stub_bc5864() -> ! {
+    todo!("0xbc5864 Ogre::RbxSceneManager::~RbxSceneManager()")
+}
+
+// 0xbc5868 — __ZThn17800_N4Ogre15RbxSceneManagerD0Ev
+#[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
+// was: `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()
+pub fn stub_bc5868() -> ! {
+    todo!("0xbc5868 `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()")
+}
+
+// 0xbc5924 — __ZN4Ogre15RbxSceneManagerD2Ev
+#[doc(alias = "Ogre::RbxSceneManager::~RbxSceneManager()")]
+// was: Ogre::RbxSceneManager::~RbxSceneManager()
+pub fn stub_bc5924() -> ! {
+    todo!("0xbc5924 Ogre::RbxSceneManager::~RbxSceneManager()")
+}
+
+// 0xbc5fbc — __ZThn17800_N4Ogre15RbxSceneManagerD1Ev
+#[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
+// was: `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()
+pub fn stub_bc5fbc() -> ! {
+    todo!("0xbc5fbc `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()")
+}
+
+// 0xbc5fc8 — __ZN4Ogre15RbxSceneManager15initSpatialHashEv
+#[doc(alias = "Ogre::RbxSceneManager::initSpatialHash(void)")]
+// was: Ogre::RbxSceneManager::initSpatialHash(void)
+pub fn stub_bc5fc8() -> ! {
+    todo!("0xbc5fc8 Ogre::RbxSceneManager::initSpatialHash(void)")
+}
+
+// 0xbc6110 — __ZN4Ogre15RbxSceneManager10clearSceneEv
+#[doc(alias = "Ogre::RbxSceneManager::clearScene(void)")]
+// was: Ogre::RbxSceneManager::clearScene(void)
+pub fn stub_bc6110() -> ! {
+    todo!("0xbc6110 Ogre::RbxSceneManager::clearScene(void)")
+}
+
+// 0xbc61cc — __ZN4Ogre15RbxSceneManager17clearMegaClustersEv
+#[doc(alias = "Ogre::RbxSceneManager::clearMegaClusters(void)")]
+// was: Ogre::RbxSceneManager::clearMegaClusters(void)
+pub fn stub_bc61cc() -> ! {
+    todo!("0xbc61cc Ogre::RbxSceneManager::clearMegaClusters(void)")
+}
+
+// 0xbc6300 — __ZN4Ogre15RbxSceneManager17getSceneNodeCountEv
+#[doc(alias = "Ogre::RbxSceneManager::getSceneNodeCount(void)")]
+// was: Ogre::RbxSceneManager::getSceneNodeCount(void)
+pub fn stub_bc6300() -> ! {
+    todo!("0xbc6300 Ogre::RbxSceneManager::getSceneNodeCount(void)")
+}
+
+// 0xbc6308 — __ZN4Ogre15RbxSceneManager24createRbxParticleEmitterEv
+#[doc(alias = "Ogre::RbxSceneManager::createRbxParticleEmitter(void)")]
+// was: Ogre::RbxSceneManager::createRbxParticleEmitter(void)
+pub fn stub_bc6308() -> ! {
+    todo!("0xbc6308 Ogre::RbxSceneManager::createRbxParticleEmitter(void)")
+}
+
+// 0xbc63e4 — __ZN4Ogre15RbxSceneManager20createRbxMegaClusterERKN5boost10shared_ptrIN3RBX12PartInstanceEEE
+#[doc(alias = "Ogre::RbxSceneManager::createRbxMegaCluster(boost::shared_ptr<RBX::PartInstance> const&)")]
+// was: Ogre::RbxSceneManager::createRbxMegaCluster(boost::shared_ptr<RBX::PartInstance> const&)
+pub fn stub_bc63e4() -> ! {
+    todo!("0xbc63e4 Ogre::RbxSceneManager::createRbxMegaCluster(boost::shared_ptr<RBX::PartInstance> const&)")
+}
+
+// 0xbc6718 — __ZN4Ogre15RbxSceneManager16numSharedIBQuadsEv
+#[doc(alias = "Ogre::RbxSceneManager::numSharedIBQuads(void)")]
+// was: Ogre::RbxSceneManager::numSharedIBQuads(void)
+pub fn stub_bc6718() -> ! {
+    todo!("0xbc6718 Ogre::RbxSceneManager::numSharedIBQuads(void)")
+}
+
+// 0xbc67d8 — __ZN4Ogre15RbxSceneManager23getOrCreateSharedQuadIBEv
+#[doc(alias = "Ogre::RbxSceneManager::getOrCreateSharedQuadIB(void)")]
+// was: Ogre::RbxSceneManager::getOrCreateSharedQuadIB(void)
+pub fn stub_bc67d8() -> ! {
+    todo!("0xbc67d8 Ogre::RbxSceneManager::getOrCreateSharedQuadIB(void)")
+}
+
+// 0xbc6c68 — __ZN4Ogre15RbxSceneManager8_setPassEPKNS_4PassEbb
+#[doc(alias = "Ogre::RbxSceneManager::_setPass(Ogre::Pass const*,bool,bool)")]
+// was: Ogre::RbxSceneManager::_setPass(Ogre::Pass const*,bool,bool)
+pub fn stub_bc6c68() -> ! {
+    todo!("0xbc6c68 Ogre::RbxSceneManager::_setPass(Ogre::Pass const*,bool,bool)")
+}
+
+// 0xbc70b4 — __ZN4Ogre15RbxSceneManager28renderShadowVolumesToStencilEPKNS_5LightEPKNS_6CameraEb
+#[doc(alias = "Ogre::RbxSceneManager::renderShadowVolumesToStencil(Ogre::Light const*,Ogre::Camera const*,bool)")]
+// was: Ogre::RbxSceneManager::renderShadowVolumesToStencil(Ogre::Light const*,Ogre::Camera const*,bool)
+pub fn stub_bc70b4() -> ! {
+    todo!("0xbc70b4 Ogre::RbxSceneManager::renderShadowVolumesToStencil(Ogre::Light const*,Ogre::Camera const*,bool)")
+}
+
+// 0xbc7404 — __ZN4Ogre15RbxSceneManager28findShadowCastersForLightRecERSt6vectorIPN3RBX27FastClusterShadowRenderableESaIS4_EEPNS_4NodeEPKNS_6CameraE
+#[doc(alias = "Ogre::RbxSceneManager::findShadowCastersForLightRec(std::vector<RBX::FastClusterShadowRenderable *,std::allocator<RBX::FastClusterShadowRenderable *>> &,Ogre::Node *,Ogre::Camera const*)")]
+// was: Ogre::RbxSceneManager::findShadowCastersForLightRec(std::vector<RBX::FastClusterShadowRenderable *,std::allocator<RBX::FastClusterShadowRenderable *>> &,Ogre::Node *,Ogre::Camera const*)
+pub fn stub_bc7404() -> ! {
+    todo!("0xbc7404 Ogre::RbxSceneManager::findShadowCastersForLightRec(std::vector<RBX::FastClusterShadowRenderable *,std::allocator<RBX::FastClusterShadowRenderable *>> &,Ogre::Node *,Ogre::Camera const*)")
+}
+
+// 0xbc74d8 — __ZN4Ogre15RbxSceneManager32renderFastShadowVolumesToStencilERKSt6vectorIPN3RBX27FastClusterShadowRenderableESaIS4_EEPKNS_4PassEPKNS_5LightEPKNS_6CameraE
+#[doc(alias = "Ogre::RbxSceneManager::renderFastShadowVolumesToStencil(std::vector<RBX::FastClusterShadowRenderable *,std::allocator<RBX::FastClusterShadowRenderable *>> const&,Ogre::Pass const*,Ogre::Light const*,Ogre::Camera const*)")]
+// was: Ogre::RbxSceneManager::renderFastShadowVolumesToStencil(std::vector<RBX::FastClusterShadowRenderable *,std::allocator<RBX::FastClusterShadowRenderable *>> const&,Ogre::Pass const*,Ogre::Light const*,Ogre::Camera const*)
+pub fn stub_bc74d8() -> ! {
+    todo!("0xbc74d8 Ogre::RbxSceneManager::renderFastShadowVolumesToStencil(std::vector<RBX::FastClusterShadowRenderable *,std::allocator<RBX::FastClusterShadowRenderable *>> const&,Ogre::Pass const*,Ogre::Light const*,Ogre::Camera const*)")
+}
+
+// 0xbc7d74 — __ZN4Ogre15RbxSceneManager16getDebugMaterialEPKvb
+#[doc(alias = "Ogre::RbxSceneManager::getDebugMaterial(void const*,bool)")]
+// was: Ogre::RbxSceneManager::getDebugMaterial(void const*,bool)
+pub fn stub_bc7d74() -> ! {
+    todo!("0xbc7d74 Ogre::RbxSceneManager::getDebugMaterial(void const*,bool)")
+}
+
+// 0xbc8448 — __ZN4Ogre15RbxSceneManager12_renderSceneEPNS_6CameraEPNS_8ViewportEb
+#[doc(alias = "Ogre::RbxSceneManager::_renderScene(Ogre::Camera *,Ogre::Viewport *,bool)")]
+// was: Ogre::RbxSceneManager::_renderScene(Ogre::Camera *,Ogre::Viewport *,bool)
+pub fn stub_bc8448() -> ! {
+    todo!("0xbc8448 Ogre::RbxSceneManager::_renderScene(Ogre::Camera *,Ogre::Viewport *,bool)")
+}
+
+// 0xbc8c98 — __ZN4Ogre15RbxSceneManager11renderBeginEPNS_8ViewportEPNS_6CameraE
+#[doc(alias = "Ogre::RbxSceneManager::renderBegin(Ogre::Viewport *,Ogre::Camera *)")]
+// was: Ogre::RbxSceneManager::renderBegin(Ogre::Viewport *,Ogre::Camera *)
+pub fn stub_bc8c98() -> ! {
+    todo!("0xbc8c98 Ogre::RbxSceneManager::renderBegin(Ogre::Viewport *,Ogre::Camera *)")
+}
+
+// 0xbc8ebc — __ZN4Ogre15RbxSceneManager22renderQueueGroupSolidsEhNS_26QueuedRenderableCollection16OrganisationModeEb
+#[doc(alias = "Ogre::RbxSceneManager::renderQueueGroupSolids(unsigned char,Ogre::QueuedRenderableCollection::OrganisationMode,bool)")]
+// was: Ogre::RbxSceneManager::renderQueueGroupSolids(unsigned char,Ogre::QueuedRenderableCollection::OrganisationMode,bool)
+pub fn stub_bc8ebc() -> ! {
+    todo!("0xbc8ebc Ogre::RbxSceneManager::renderQueueGroupSolids(unsigned char,Ogre::QueuedRenderableCollection::OrganisationMode,bool)")
+}
+
+// 0xbc9358 — __ZN4Ogre15RbxSceneManager9renderEndEv
+#[doc(alias = "Ogre::RbxSceneManager::renderEnd(void)")]
+// was: Ogre::RbxSceneManager::renderEnd(void)
+pub fn stub_bc9358() -> ! {
+    todo!("0xbc9358 Ogre::RbxSceneManager::renderEnd(void)")
+}
+
+// 0xbc9490 — __ZN4Ogre15RbxSceneManager28renderQueueGroupTransparentsEhNS_26QueuedRenderableCollection16OrganisationModeE
+#[doc(alias = "Ogre::RbxSceneManager::renderQueueGroupTransparents(unsigned char,Ogre::QueuedRenderableCollection::OrganisationMode)")]
+// was: Ogre::RbxSceneManager::renderQueueGroupTransparents(unsigned char,Ogre::QueuedRenderableCollection::OrganisationMode)
+pub fn stub_bc9490() -> ! {
+    todo!("0xbc9490 Ogre::RbxSceneManager::renderQueueGroupTransparents(unsigned char,Ogre::QueuedRenderableCollection::OrganisationMode)")
+}
+
+// 0xbc9640 — __ZN4Ogre15RbxSceneManager10_setSkyBoxEbRKSsfhRKNS_10QuaternionES2_
+#[doc(alias = "Ogre::RbxSceneManager::_setSkyBox(bool,std::string const&,float,unsigned char,Ogre::Quaternion const&,std::string const&)")]
+// was: Ogre::RbxSceneManager::_setSkyBox(bool,std::string const&,float,unsigned char,Ogre::Quaternion const&,std::string const&)
+pub fn stub_bc9640() -> ! {
+    todo!("0xbc9640 Ogre::RbxSceneManager::_setSkyBox(bool,std::string const&,float,unsigned char,Ogre::Quaternion const&,std::string const&)")
+}
+
+// 0xbc97f4 — __ZN4Ogre15RbxSceneManager15recordPassStatsEj
+#[doc(alias = "Ogre::RbxSceneManager::recordPassStats(unsigned int)")]
+// was: Ogre::RbxSceneManager::recordPassStats(unsigned int)
+pub fn stub_bc97f4() -> ! {
+    todo!("0xbc97f4 Ogre::RbxSceneManager::recordPassStats(unsigned int)")
+}
+
+// 0xbc98e0 — __ZN4Ogre15RbxSceneManager18renderSingleObjectEPNS_10RenderableEPKNS_4PassEbbPKNS_12HashedVectorIPNS_5LightEEE
+#[doc(alias = "Ogre::RbxSceneManager::renderSingleObject(Ogre::Renderable *,Ogre::Pass const*,bool,bool,Ogre::HashedVector<Ogre::Light *> const*)")]
+// was: Ogre::RbxSceneManager::renderSingleObject(Ogre::Renderable *,Ogre::Pass const*,bool,bool,Ogre::HashedVector<Ogre::Light *> const*)
+pub fn stub_bc98e0() -> ! {
+    todo!("0xbc98e0 Ogre::RbxSceneManager::renderSingleObject(Ogre::Renderable *,Ogre::Pass const*,bool,bool,Ogre::HashedVector<Ogre::Light *> const*)")
+}
+
+// 0xbc9bd0 — __ZN4Ogre15RbxSceneManager29updateRenderQueueSplitOptionsEv
+#[doc(alias = "Ogre::RbxSceneManager::updateRenderQueueSplitOptions(void)")]
+// was: Ogre::RbxSceneManager::updateRenderQueueSplitOptions(void)
+pub fn stub_bc9bd0() -> ! {
+    todo!("0xbc9bd0 Ogre::RbxSceneManager::updateRenderQueueSplitOptions(void)")
+}
+
+// 0xbc9c0c — __ZN4Ogre15RbxSceneManager23_queueSkiesForRenderingEPNS_6CameraE
+#[doc(alias = "Ogre::RbxSceneManager::_queueSkiesForRendering(Ogre::Camera *)")]
+// was: Ogre::RbxSceneManager::_queueSkiesForRendering(Ogre::Camera *)
+pub fn stub_bc9c0c() -> ! {
+    todo!("0xbc9c0c Ogre::RbxSceneManager::_queueSkiesForRendering(Ogre::Camera *)")
+}
+
+// 0xbc9c48 — __ZN4Ogre15RbxSceneManager19createSceneNodeImplEv
+#[doc(alias = "Ogre::RbxSceneManager::createSceneNodeImpl(void)")]
+// was: Ogre::RbxSceneManager::createSceneNodeImpl(void)
+pub fn stub_bc9c48() -> ! {
+    todo!("0xbc9c48 Ogre::RbxSceneManager::createSceneNodeImpl(void)")
+}
+
+// 0xbc9d08 — __ZN4Ogre15RbxSceneManager19createSceneNodeImplERKSs
+#[doc(alias = "Ogre::RbxSceneManager::createSceneNodeImpl(std::string const&)")]
+// was: Ogre::RbxSceneManager::createSceneNodeImpl(std::string const&)
+pub fn stub_bc9d08() -> ! {
+    todo!("0xbc9d08 Ogre::RbxSceneManager::createSceneNodeImpl(std::string const&)")
+}
+
+// 0xbc9dcc — __ZNK4Ogre15RbxSceneManager11getTypeNameEv
+#[doc(alias = "Ogre::RbxSceneManager::getTypeName(void)const")]
+// was: Ogre::RbxSceneManager::getTypeName(void)const
+pub fn stub_bc9dcc() -> ! {
+    todo!("0xbc9dcc Ogre::RbxSceneManager::getTypeName(void)const")
+}
+
+// 0xbc9dd8 — __ZN4Ogre15RbxSceneManager19_findVisibleObjectsEPNS_6CameraEPNS_24VisibleObjectsBoundsInfoEb
+#[doc(alias = "Ogre::RbxSceneManager::_findVisibleObjects(Ogre::Camera *,Ogre::VisibleObjectsBoundsInfo *,bool)")]
+// was: Ogre::RbxSceneManager::_findVisibleObjects(Ogre::Camera *,Ogre::VisibleObjectsBoundsInfo *,bool)
+pub fn stub_bc9dd8() -> ! {
+    todo!("0xbc9dd8 Ogre::RbxSceneManager::_findVisibleObjects(Ogre::Camera *,Ogre::VisibleObjectsBoundsInfo *,bool)")
+}
+
+// 0xbca050 — __ZN4Ogre15RbxSceneManager21preRenderTargetUpdateERKNS_17RenderTargetEventE
+#[doc(alias = "Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
+// was: Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)
+pub fn stub_bca050() -> ! {
+    todo!("0xbca050 Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
+}
+
+// 0xbca17c — __ZThn17800_N4Ogre15RbxSceneManager21preRenderTargetUpdateERKNS_17RenderTargetEventE
+#[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
+// was: `non-virtual thunk to'Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)
+pub fn stub_bca17c() -> ! {
+    todo!("0xbca17c `non-virtual thunk to'Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
+}
+
+// 0xbca188 — __ZN4Ogre15RbxSceneManager22postRenderTargetUpdateERKNS_17RenderTargetEventE
+#[doc(alias = "Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
+// was: Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)
+pub fn stub_bca188() -> ! {
+    todo!("0xbca188 Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
+}
+
+// 0xbca240 — __ZThn17800_N4Ogre15RbxSceneManager22postRenderTargetUpdateERKNS_17RenderTargetEventE
+#[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
+// was: `non-virtual thunk to'Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)
+pub fn stub_bca240() -> ! {
+    todo!("0xbca240 `non-virtual thunk to'Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
+}
+
+// 0xbca2f4 — __ZN4Ogre15RbxSceneManager15setShadowColourERKNS_11ColourValueE
+#[doc(alias = "Ogre::RbxSceneManager::setShadowColour(Ogre::ColourValue const&)")]
+// was: Ogre::RbxSceneManager::setShadowColour(Ogre::ColourValue const&)
+pub fn stub_bca2f4() -> ! {
+    todo!("0xbca2f4 Ogre::RbxSceneManager::setShadowColour(Ogre::ColourValue const&)")
+}
+
+// 0xbca504 — __ZN4Ogre15RbxSceneManager21processSqPartDistanceEf
+#[doc(alias = "Ogre::RbxSceneManager::processSqPartDistance(float)")]
+// was: Ogre::RbxSceneManager::processSqPartDistance(float)
+pub fn stub_bca504() -> ! {
+    todo!("0xbca504 Ogre::RbxSceneManager::processSqPartDistance(float)")
+}
+
+// 0xbca528 — __ZN4Ogre15RbxSceneManager18setPointOfInterestERKN3G3D7Vector3E
+#[doc(alias = "Ogre::RbxSceneManager::setPointOfInterest(G3D::Vector3 const&)")]
+// was: Ogre::RbxSceneManager::setPointOfInterest(G3D::Vector3 const&)
+pub fn stub_bca528() -> ! {
+    todo!("0xbca528 Ogre::RbxSceneManager::setPointOfInterest(G3D::Vector3 const&)")
+}
+
+// 0xbca548 — __ZNK4Ogre22RbxSceneManagerFactory12initMetaDataEv
+#[doc(alias = "Ogre::RbxSceneManagerFactory::initMetaData(void)const")]
+// was: Ogre::RbxSceneManagerFactory::initMetaData(void)const
+pub fn stub_bca548() -> ! {
+    todo!("0xbca548 Ogre::RbxSceneManagerFactory::initMetaData(void)const")
+}
+
+// 0xbca57c — __ZN4Ogre22RbxSceneManagerFactory14createInstanceERKSs
+#[doc(alias = "Ogre::RbxSceneManagerFactory::createInstance(std::string const&)")]
+// was: Ogre::RbxSceneManagerFactory::createInstance(std::string const&)
+pub fn stub_bca57c() -> ! {
+    todo!("0xbca57c Ogre::RbxSceneManagerFactory::createInstance(std::string const&)")
+}
+
+// 0xbca63c — __ZN4Ogre22RbxSceneManagerFactory15destroyInstanceEPNS_12SceneManagerE
+#[doc(alias = "Ogre::RbxSceneManagerFactory::destroyInstance(Ogre::SceneManager *)")]
+// was: Ogre::RbxSceneManagerFactory::destroyInstance(Ogre::SceneManager *)
+pub fn stub_bca63c() -> ! {
+    todo!("0xbca63c Ogre::RbxSceneManagerFactory::destroyInstance(Ogre::SceneManager *)")
+}
+
+// 0xbca64c — __ZN5boost12scoped_arrayIN4Ogre11MaterialPtrEED1Ev
+#[doc(alias = "boost::scoped_array<Ogre::MaterialPtr>::~scoped_array()")]
+// was: boost::scoped_array<Ogre::MaterialPtr>::~scoped_array()
+pub fn stub_bca64c() -> ! {
+    todo!("0xbca64c boost::scoped_array<Ogre::MaterialPtr>::~scoped_array()")
+}
+
+// 0xbca87c — __ZN4Ogre9SharedPtrINS_6RbxSkyEED1Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::RbxSky>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::RbxSky>::~SharedPtr()
+pub fn stub_bca87c() -> ! {
+    todo!("0xbca87c Ogre::SharedPtr<Ogre::RbxSky>::~SharedPtr()")
+}
+
+// 0xbca8d0 — __ZNSt6vectorISt4pairIPN4Ogre16ShadowRenderableEbESaIS4_EE7reserveEm
+#[doc(alias = "std::vector<std::pair<Ogre::ShadowRenderable *,bool>,std::allocator<std::pair<Ogre::ShadowRenderable *,bool>>>::reserve(unsigned long)")]
+// was: std::vector<std::pair<Ogre::ShadowRenderable *,bool>,std::allocator<std::pair<Ogre::ShadowRenderable *,bool>>>::reserve(unsigned long)
+pub fn stub_bca8d0() -> ! {
+    todo!("0xbca8d0 std::vector<std::pair<Ogre::ShadowRenderable *,bool>,std::allocator<std::pair<Ogre::ShadowRenderable *,bool>>>::reserve(unsigned long)")
+}
+
+// 0xbca94c — __ZN4Ogre20RenderTargetListener17preViewportUpdateERKNS_25RenderTargetViewportEventE
+#[doc(alias = "Ogre::RenderTargetListener::preViewportUpdate(Ogre::RenderTargetViewportEvent const&)")]
+// was: Ogre::RenderTargetListener::preViewportUpdate(Ogre::RenderTargetViewportEvent const&)
+pub fn stub_bca94c() -> ! {
+    todo!("0xbca94c Ogre::RenderTargetListener::preViewportUpdate(Ogre::RenderTargetViewportEvent const&)")
+}
+
+// 0xbca950 — __ZN4Ogre20RenderTargetListener18postViewportUpdateERKNS_25RenderTargetViewportEventE
+#[doc(alias = "Ogre::RenderTargetListener::postViewportUpdate(Ogre::RenderTargetViewportEvent const&)")]
+// was: Ogre::RenderTargetListener::postViewportUpdate(Ogre::RenderTargetViewportEvent const&)
+pub fn stub_bca950() -> ! {
+    todo!("0xbca950 Ogre::RenderTargetListener::postViewportUpdate(Ogre::RenderTargetViewportEvent const&)")
+}
+
+// 0xbcaa4c — __ZNSt6vectorISt4pairIPN4Ogre16ShadowRenderableEbESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
+#[doc(alias = "std::vector<std::pair<Ogre::ShadowRenderable *,bool>,std::allocator<std::pair<Ogre::ShadowRenderable *,bool>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::pair<Ogre::ShadowRenderable *,bool>*,std::vector<std::pair<Ogre::ShadowRenderable *,bool>,std::allocator<std::pair<Ogre::ShadowRenderable *,bool>>>>,std::pair<Ogre::ShadowRenderable *,bool> const&)")]
+// was: std::vector<std::pair<Ogre::ShadowRenderable *,bool>,std::allocator<std::pair<Ogre::ShadowRenderable *,bool>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::pair<Ogre::ShadowRenderable *,bool>*,std::vector<std::pair<Ogre::ShadowRenderable *,bool>,std::allocator<std::pair<Ogre::ShadowRenderable *,bool>>>>,std::pair<Ogre::ShadowRenderable *,bool> const&)
+pub fn stub_bcaa4c() -> ! {
+    todo!("0xbcaa4c std::vector<std::pair<Ogre::ShadowRenderable *,bool>,std::allocator<std::pair<Ogre::ShadowRenderable *,bool>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<std::pair<Ogre::ShadowRenderable *,bool>*,std::vector<std::pair<Ogre::ShadowRenderable *,bool>,std::allocator<std::pair<Ogre::ShadowRenderable *,bool>>>>,std::pair<Ogre::ShadowRenderable *,bool> const&)")
+}
+
+// 0xbcab68 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvN4Ogre15RbxSceneManagerEEENSA_5list1INSA_5valueIPSF_EEEEEEED1Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()
+pub fn stub_bcab68() -> ! {
+    todo!("0xbcab68 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()")
+}
+
+// 0xbcabc4 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvN4Ogre15RbxSceneManagerEEENSA_5list1INSA_5valueIPSF_EEEEEEED0Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()
+pub fn stub_bcabc4() -> ! {
+    todo!("0xbcabc4 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()")
+}
+
+// 0xbcaccc — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvN4Ogre15RbxSceneManagerEEENSB_5list1INSB_5valueIPSG_EEEEEELi2ES8_E4callES7_S7_
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
+pub fn stub_bcaccc() -> ! {
+    todo!("0xbcaccc rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0xbcace4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvN4Ogre15RbxSceneManagerEEENSB_5list1INSB_5valueIPSG_EEEEEELi2ES8_E4callES7_S7_
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
+// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
+pub fn stub_bcace4() -> ! {
+    todo!("0xbcace4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0xbcacfc — __ZN4Ogre9SharedPtrINS_6RbxSkyEED0Ev
+#[doc(alias = "Ogre::SharedPtr<Ogre::RbxSky>::~SharedPtr()")]
+// was: Ogre::SharedPtr<Ogre::RbxSky>::~SharedPtr()
+pub fn stub_bcacfc() -> ! {
+    todo!("0xbcacfc Ogre::SharedPtr<Ogre::RbxSky>::~SharedPtr()")
+}
+
+// 0xbcad9c — __ZN4Ogre9SharedPtrINS_6RbxSkyEE7destroyEv
+#[doc(alias = "Ogre::SharedPtr<Ogre::RbxSky>::destroy(void)")]
+// was: Ogre::SharedPtr<Ogre::RbxSky>::destroy(void)
+pub fn stub_bcad9c() -> ! {
+    todo!("0xbcad9c Ogre::SharedPtr<Ogre::RbxSky>::destroy(void)")
+}
+
+// 0xbcadd4 — __ZN4Ogre9SharedPtrINS_6RbxSkyEE4swapERS2_
+#[doc(alias = "Ogre::SharedPtr<Ogre::RbxSky>::swap(Ogre::SharedPtr<Ogre::RbxSky>&)")]
+// was: Ogre::SharedPtr<Ogre::RbxSky>::swap(Ogre::SharedPtr<Ogre::RbxSky>&)
+pub fn stub_bcadd4() -> ! {
+    todo!("0xbcadd4 Ogre::SharedPtr<Ogre::RbxSky>::swap(Ogre::SharedPtr<Ogre::RbxSky>&)")
+}
