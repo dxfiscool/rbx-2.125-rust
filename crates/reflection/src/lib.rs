@@ -23,3 +23,4 @@ pub mod generated_shard_n;
 pub mod generated_shard_o;
 pub mod generated_shard_p;
 pub mod generated_shard_q;
+pub mod generated_shard_r;
