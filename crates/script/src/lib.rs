@@ -5,3 +5,4 @@ pub mod generated;
 pub mod generated_03;
 pub mod generated_04;
 pub mod generated_05;
+pub mod generated_08;
