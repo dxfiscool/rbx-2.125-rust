@@ -11,3 +11,4 @@ pub mod model;
 pub mod generated_b;
 pub mod generated_a;
 pub mod generated_c;
+pub mod generated_d;
