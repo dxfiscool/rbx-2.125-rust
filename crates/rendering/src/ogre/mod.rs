@@ -11843,3 +11843,702 @@ pub fn stub_727b04() -> ! {
 pub fn stub_727e04() -> ! {
     todo!("0x727e04 G3D::Array<RBX::Primitive const*,10,32ul>::operator=(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> const&)")
 }
+// 0x727e40 — __ZN3RBX11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EE19getPrimitivesInGridERKNS_12Vector3int32ERN3G3D5ArrayIPS1_Li10ELm32EEE
+#[doc(alias = "RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::getPrimitivesInGrid(RBX::Vector3int32 const&,G3D::Array<RBX::Primitive*,10,32ul> &)")]
+// was: RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::getPrimitivesInGrid(RBX::Vector3int32 const&,G3D::Array<RBX::Primitive*,10,32ul> &)
+pub fn stub_727e40() -> ! {
+    todo!("0x727e40 RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::getPrimitivesInGrid(RBX::Vector3int32 const&,G3D::Array<RBX::Primitive*,10,32ul> &)")
+}
+
+// 0x727ee8 — __ZNK3RBX7Extents13fuzzyContainsERKN3G3D7Vector3Ef
+#[doc(alias = "RBX::Extents::fuzzyContains(G3D::Vector3 const&,float)const")]
+// was: RBX::Extents::fuzzyContains(G3D::Vector3 const&,float)const
+pub fn stub_727ee8() -> ! {
+    todo!("0x727ee8 RBX::Extents::fuzzyContains(G3D::Vector3 const&,float)const")
+}
+
+// 0x728250 — __ZN3RBX7Extents16fromCenterCornerERKN3G3D7Vector3ES4_
+#[doc(alias = "RBX::Extents::fromCenterCorner(G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: RBX::Extents::fromCenterCorner(G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_728250() -> ! {
+    todo!("0x728250 RBX::Extents::fromCenterCorner(G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0x728900 — __ZN3G3D5ArrayIPKN3RBX9PrimitiveELi10ELm32EE6appendERKS4_
+#[doc(alias = "G3D::Array<RBX::Primitive const*,10,32ul>::append(RBX::Primitive const* const&)")]
+// was: G3D::Array<RBX::Primitive const*,10,32ul>::append(RBX::Primitive const* const&)
+pub fn stub_728900() -> ! {
+    todo!("0x728900 G3D::Array<RBX::Primitive const*,10,32ul>::append(RBX::Primitive const* const&)")
+}
+
+// 0x728bd8 — __ZN3RBX14ContactManager35checkMegaClusterSmallTerrainContactINS_5Voxel4GridEEEbPNS_9PrimitiveERKN3G3D12Vector3int16ES9_S9_b
+#[doc(alias = "bool RBX::ContactManager::checkMegaClusterSmallTerrainContact<RBX::Voxel::Grid>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&,bool)")]
+// was: bool RBX::ContactManager::checkMegaClusterSmallTerrainContact<RBX::Voxel::Grid>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&,bool)
+pub fn stub_728bd8() -> ! {
+    todo!("0x728bd8 bool RBX::ContactManager::checkMegaClusterSmallTerrainContact<RBX::Voxel::Grid>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&,bool)")
+}
+
+// 0x72918c — __ZN3RBX14ContactManager35checkMegaClusterSmallTerrainContactINS_19MegaClusterInstanceEEEbPNS_9PrimitiveERKN3G3D12Vector3int16ES8_S8_b
+#[doc(alias = "bool RBX::ContactManager::checkMegaClusterSmallTerrainContact<RBX::MegaClusterInstance>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&,bool)")]
+// was: bool RBX::ContactManager::checkMegaClusterSmallTerrainContact<RBX::MegaClusterInstance>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&,bool)
+pub fn stub_72918c() -> ! {
+    todo!("0x72918c bool RBX::ContactManager::checkMegaClusterSmallTerrainContact<RBX::MegaClusterInstance>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&,bool)")
+}
+
+// 0x729738 — __ZN3RBX14ContactManager28checkMegaClusterWaterContactINS_5Voxel4GridEEEbPNS_9PrimitiveERKN3G3D12Vector3int16ES9_S9_
+#[doc(alias = "bool RBX::ContactManager::checkMegaClusterWaterContact<RBX::Voxel::Grid>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&)")]
+// was: bool RBX::ContactManager::checkMegaClusterWaterContact<RBX::Voxel::Grid>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&)
+pub fn stub_729738() -> ! {
+    todo!("0x729738 bool RBX::ContactManager::checkMegaClusterWaterContact<RBX::Voxel::Grid>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&)")
+}
+
+// 0x72998c — __ZN3RBX14ContactManager28checkMegaClusterWaterContactINS_19MegaClusterInstanceEEEbPNS_9PrimitiveERKN3G3D12Vector3int16ES8_S8_
+#[doc(alias = "bool RBX::ContactManager::checkMegaClusterWaterContact<RBX::MegaClusterInstance>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&)")]
+// was: bool RBX::ContactManager::checkMegaClusterWaterContact<RBX::MegaClusterInstance>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&)
+pub fn stub_72998c() -> ! {
+    todo!("0x72998c bool RBX::ContactManager::checkMegaClusterWaterContact<RBX::MegaClusterInstance>(RBX::Primitive *,G3D::Vector3int16 const&,G3D::Vector3int16 const&,G3D::Vector3int16 const&)")
+}
+
+// 0x729ca8 — __ZN3G3D5ArrayIPN3RBX9PrimitiveELi10ELm32EE5_copyERKS4_
+#[doc(alias = "G3D::Array<RBX::Primitive *,10,32ul>::_copy(G3D::Array<RBX::Primitive *,10,32ul> const&)")]
+// was: G3D::Array<RBX::Primitive *,10,32ul>::_copy(G3D::Array<RBX::Primitive *,10,32ul> const&)
+pub fn stub_729ca8() -> ! {
+    todo!("0x729ca8 G3D::Array<RBX::Primitive *,10,32ul>::_copy(G3D::Array<RBX::Primitive *,10,32ul> const&)")
+}
+
+// 0x72a3c8 — __ZN3G3D5ArrayIPKN3RBX9PrimitiveELi10ELm32EE6resizeEib
+#[doc(alias = "G3D::Array<RBX::Primitive const*,10,32ul>::resize(int,bool)")]
+// was: G3D::Array<RBX::Primitive const*,10,32ul>::resize(int,bool)
+pub fn stub_72a3c8() -> ! {
+    todo!("0x72a3c8 G3D::Array<RBX::Primitive const*,10,32ul>::resize(int,bool)")
+}
+
+// 0x72a480 — __ZN3G3D5ArrayIPKN3RBX9PrimitiveELi10ELm32EE7reallocEi
+#[doc(alias = "G3D::Array<RBX::Primitive const*,10,32ul>::realloc(int)")]
+// was: G3D::Array<RBX::Primitive const*,10,32ul>::realloc(int)
+pub fn stub_72a480() -> ! {
+    todo!("0x72a480 G3D::Array<RBX::Primitive const*,10,32ul>::realloc(int)")
+}
+
+// 0x72c9c4 — __ZN3RBX11SpatialHashINS_9PrimitiveENS_7ContactENS_14ContactManagerELi4EE19getPrimitivesInGridEiRKNS_12Vector3int32ERN3G3D5ArrayIPS1_Li10ELm32EEE
+#[doc(alias = "RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::getPrimitivesInGrid(int,RBX::Vector3int32 const&,G3D::Array<RBX::Primitive*,10,32ul> &)")]
+// was: RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::getPrimitivesInGrid(int,RBX::Vector3int32 const&,G3D::Array<RBX::Primitive*,10,32ul> &)
+pub fn stub_72c9c4() -> ! {
+    todo!("0x72c9c4 RBX::SpatialHash<RBX::Primitive,RBX::Contact,RBX::ContactManager,4>::getPrimitivesInGrid(int,RBX::Vector3int32 const&,G3D::Array<RBX::Primitive*,10,32ul> &)")
+}
+
+// 0x72ca1c — __ZN3G3D5ArrayIPKN3RBX9PrimitiveELi10ELm32EED2Ev
+#[doc(alias = "G3D::Array<RBX::Primitive const*,10,32ul>::~Array()")]
+// was: G3D::Array<RBX::Primitive const*,10,32ul>::~Array()
+pub fn stub_72ca1c() -> ! {
+    todo!("0x72ca1c G3D::Array<RBX::Primitive const*,10,32ul>::~Array()")
+}
+
+// 0x72caf0 — __ZN3G3D5ArrayIPKN3RBX9PrimitiveELi10ELm32EEC2Ev
+#[doc(alias = "G3D::Array<RBX::Primitive const*,10,32ul>::Array(void)")]
+// was: G3D::Array<RBX::Primitive const*,10,32ul>::Array(void)
+pub fn stub_72caf0() -> ! {
+    todo!("0x72caf0 G3D::Array<RBX::Primitive const*,10,32ul>::Array(void)")
+}
+
+// 0x72d8d4 — __ZNSt8_Rb_treeIiSt4pairIKiPN3G3D12Vector3int16EESt10_Select1stIS5_ESt4lessIiESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
+#[doc(alias = "std::_Rb_tree<int,std::pair<int const,G3D::Vector3int16 *>,std::_Select1st<std::pair<int const,G3D::Vector3int16 *>>,std::less<int>,std::allocator<std::pair<int const,G3D::Vector3int16 *>>>::_M_erase(std::_Rb_tree_node<std::pair<int const,G3D::Vector3int16 *>> *)")]
+// was: std::_Rb_tree<int,std::pair<int const,G3D::Vector3int16 *>,std::_Select1st<std::pair<int const,G3D::Vector3int16 *>>,std::less<int>,std::allocator<std::pair<int const,G3D::Vector3int16 *>>>::_M_erase(std::_Rb_tree_node<std::pair<int const,G3D::Vector3int16 *>> *)
+pub fn stub_72d8d4() -> ! {
+    todo!("0x72d8d4 std::_Rb_tree<int,std::pair<int const,G3D::Vector3int16 *>,std::_Select1st<std::pair<int const,G3D::Vector3int16 *>>,std::less<int>,std::allocator<std::pair<int const,G3D::Vector3int16 *>>>::_M_erase(std::_Rb_tree_node<std::pair<int const,G3D::Vector3int16 *>> *)")
+}
+
+// 0x72e038 — __ZN3RBX12Vector3int325floorERKN3G3D7Vector3E
+#[doc(alias = "RBX::Vector3int32::floor(G3D::Vector3 const&)")]
+// was: RBX::Vector3int32::floor(G3D::Vector3 const&)
+pub fn stub_72e038() -> ! {
+    todo!("0x72e038 RBX::Vector3int32::floor(G3D::Vector3 const&)")
+}
+
+// 0x731354 — __ZNK3RBX15CornerWedgePoly17getCenterToCornerERKN3G3D7Matrix3E
+#[doc(alias = "RBX::CornerWedgePoly::getCenterToCorner(G3D::Matrix3 const&)const")]
+// was: RBX::CornerWedgePoly::getCenterToCorner(G3D::Matrix3 const&)const
+pub fn stub_731354() -> ! {
+    todo!("0x731354 RBX::CornerWedgePoly::getCenterToCorner(G3D::Matrix3 const&)const")
+}
+
+// 0x7314a4 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY15CornerWedgeMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_
+#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)")]
+// was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)
+pub fn stub_7314a4() -> ! {
+    todo!("0x7314a4 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)")
+}
+
+// 0x7314dc — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY15CornerWedgeMeshENS_15Vector3ComparerEE8getTokenERKS2_
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::getToken(G3D::Vector3 const&)")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::getToken(G3D::Vector3 const&)
+pub fn stub_7314dc() -> ! {
+    todo!("0x7314dc RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::getToken(G3D::Vector3 const&)")
+}
+
+// 0x731718 — __ZNSt3mapIN3G3D7Vector3EPN3RBX12GeometryPoolIS1_NS2_4POLY15CornerWedgeMeshENS2_15Vector3ComparerEE10ValueCountES6_SaISt4pairIKS1_S9_EEEixERSB_
+#[doc(alias = "std::map<G3D::Vector3,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::operator[](G3D::Vector3 const&)")]
+// was: std::map<G3D::Vector3,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::operator[](G3D::Vector3 const&)
+pub fn stub_731718() -> ! {
+    todo!("0x731718 std::map<G3D::Vector3,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::operator[](G3D::Vector3 const&)")
+}
+
+// 0x73178c — __ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY15CornerWedgeMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_
+#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)")]
+// was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)
+pub fn stub_73178c() -> ! {
+    todo!("0x73178c boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)")
+}
+
+// 0x731860 — __ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolIN3G3D7Vector3ENS3_4POLY15CornerWedgeMeshENS3_15Vector3ComparerEE5TokenEEEPT_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)")]
+// was: boost::detail::shared_count::shared_count<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)
+pub fn stub_731860() -> ! {
+    todo!("0x731860 boost::detail::shared_count::shared_count<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)")
+}
+
+// 0x731970 — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY15CornerWedgeMeshENS_15Vector3ComparerEE11returnTokenERKS2_PNS6_10ValueCountE
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::returnToken(G3D::Vector3 const&,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *)")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::returnToken(G3D::Vector3 const&,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *)
+pub fn stub_731970() -> ! {
+    todo!("0x731970 RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::returnToken(G3D::Vector3 const&,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *)")
+}
+
+// 0x731b4c — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY15CornerWedgeMeshENS_15Vector3ComparerEE10ValueCountD2Ev
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount::~ValueCount()")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount::~ValueCount()
+pub fn stub_731b4c() -> ! {
+    todo!("0x731b4c RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount::~ValueCount()")
+}
+
+// 0x731ce4 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY15CornerWedgeMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE5eraseERS3_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(G3D::Vector3 const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(G3D::Vector3 const&)
+pub fn stub_731ce4() -> ! {
+    todo!("0x731ce4 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(G3D::Vector3 const&)")
+}
+
+// 0x731d0c — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY15CornerWedgeMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE5eraseESt17_Rb_tree_iteratorISC_ESI_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>)
+pub fn stub_731d0c() -> ! {
+    todo!("0x731d0c std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>)")
+}
+
+// 0x731d6c — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY15CornerWedgeMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_erase(std::_Rb_tree_node<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>> *)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_erase(std::_Rb_tree_node<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>> *)
+pub fn stub_731d6c() -> ! {
+    todo!("0x731d6c std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_erase(std::_Rb_tree_node<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>> *)")
+}
+
+// 0x731d94 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY15CornerWedgeMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11lower_boundERS3_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::lower_bound(G3D::Vector3 const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::lower_bound(G3D::Vector3 const&)
+pub fn stub_731d94() -> ! {
+    todo!("0x731d94 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::lower_bound(G3D::Vector3 const&)")
+}
+
+// 0x731df0 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY15CornerWedgeMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11upper_boundERS3_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::upper_bound(G3D::Vector3 const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::upper_bound(G3D::Vector3 const&)
+pub fn stub_731df0() -> ! {
+    todo!("0x731df0 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::upper_bound(G3D::Vector3 const&)")
+}
+
+// 0x731e4c — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolIN3G3D7Vector3ENS2_4POLY15CornerWedgeMeshENS2_15Vector3ComparerEE5TokenEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()
+pub fn stub_731e4c() -> ! {
+    todo!("0x731e4c boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()")
+}
+
+// 0x731e50 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolIN3G3D7Vector3ENS2_4POLY15CornerWedgeMeshENS2_15Vector3ComparerEE5TokenEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()
+pub fn stub_731e50() -> ! {
+    todo!("0x731e50 boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()")
+}
+
+// 0x731e54 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolIN3G3D7Vector3ENS2_4POLY15CornerWedgeMeshENS2_15Vector3ComparerEE5TokenEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::dispose(void)
+pub fn stub_731e54() -> ! {
+    todo!("0x731e54 boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::dispose(void)")
+}
+
+// 0x731efc — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolIN3G3D7Vector3ENS2_4POLY15CornerWedgeMeshENS2_15Vector3ComparerEE5TokenEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::get_deleter(std::type_info const&)
+pub fn stub_731efc() -> ! {
+    todo!("0x731efc boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::get_deleter(std::type_info const&)")
+}
+
+// 0x731f00 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolIN3G3D7Vector3ENS2_4POLY15CornerWedgeMeshENS2_15Vector3ComparerEE5TokenEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::get_untyped_deleter(void)
+pub fn stub_731f00() -> ! {
+    todo!("0x731f00 boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::get_untyped_deleter(void)")
+}
+
+// 0x731f04 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY15CornerWedgeMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISC_ERKSC_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *> const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *> const&)
+pub fn stub_731f04() -> ! {
+    todo!("0x731f04 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *> const&)")
+}
+
+// 0x7320ac — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY15CornerWedgeMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSC_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *> const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *> const&)
+pub fn stub_7320ac() -> ! {
+    todo!("0x7320ac std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *> const&)")
+}
+
+// 0x732150 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY15CornerWedgeMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE16_M_insert_uniqueERKSC_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *> const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *> const&)
+pub fn stub_732150() -> ! {
+    todo!("0x732150 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *> const&)")
+}
+
+// 0x732224 — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY15CornerWedgeMeshENS_15Vector3ComparerEE10ValueCountC2ERKS2_
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount::ValueCount(G3D::Vector3 const&)")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount::ValueCount(G3D::Vector3 const&)
+pub fn stub_732224() -> ! {
+    todo!("0x732224 RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount::ValueCount(G3D::Vector3 const&)")
+}
+
+// 0x732354 — __ZN3RBX4POLY15CornerWedgeMeshC2ERKN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::CornerWedgeMesh::CornerWedgeMesh(G3D::Vector3 const&)")]
+// was: RBX::POLY::CornerWedgeMesh::CornerWedgeMesh(G3D::Vector3 const&)
+pub fn stub_732354() -> ! {
+    todo!("0x732354 RBX::POLY::CornerWedgeMesh::CornerWedgeMesh(G3D::Vector3 const&)")
+}
+
+// 0x732558 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY15CornerWedgeMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE4findERS3_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::find(G3D::Vector3 const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::find(G3D::Vector3 const&)
+pub fn stub_732558() -> ! {
+    todo!("0x732558 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::ValueCount *>>>::find(G3D::Vector3 const&)")
+}
+
+// 0x7325fc — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY15CornerWedgeMeshENS_15Vector3ComparerEE27safe_static_init_staticDataEv
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::safe_static_init_staticData(void)")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::safe_static_init_staticData(void)
+pub fn stub_7325fc() -> ! {
+    todo!("0x7325fc RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::safe_static_init_staticData(void)")
+}
+
+// 0x732600 — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY15CornerWedgeMeshENS_15Vector3ComparerEE29safe_static_do_get_staticDataEv
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::safe_static_do_get_staticData(void)")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::safe_static_do_get_staticData(void)
+pub fn stub_732600() -> ! {
+    todo!("0x732600 RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::safe_static_do_get_staticData(void)")
+}
+
+// 0x732710 — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY15CornerWedgeMeshENS_15Vector3ComparerEE10StaticDataD1Ev
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::StaticData::~StaticData()")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::StaticData::~StaticData()
+pub fn stub_732710() -> ! {
+    todo!("0x732710 RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::StaticData::~StaticData()")
+}
+
+// 0x7344ac — __ZN3RBX9GlueJoint12setFacePointEiRKN3G3D7Vector3E
+#[doc(alias = "RBX::GlueJoint::setFacePoint(int,G3D::Vector3 const&)")]
+// was: RBX::GlueJoint::setFacePoint(int,G3D::Vector3 const&)
+pub fn stub_7344ac() -> ! {
+    todo!("0x7344ac RBX::GlueJoint::setFacePoint(int,G3D::Vector3 const&)")
+}
+
+// 0x737168 — __ZN3RBX5JointC2EPNS_9PrimitiveES2_RKN3G3D15CoordinateFrameES6_
+#[doc(alias = "RBX::Joint::Joint(RBX::Primitive *,RBX::Primitive *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&)")]
+// was: RBX::Joint::Joint(RBX::Primitive *,RBX::Primitive *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&)
+pub fn stub_737168() -> ! {
+    todo!("0x737168 RBX::Joint::Joint(RBX::Primitive *,RBX::Primitive *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&)")
+}
+
+// 0x737b98 — __ZN3RBX5Joint13setJointCoordEiRKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::Joint::setJointCoord(int,G3D::CoordinateFrame const&)")]
+// was: RBX::Joint::setJointCoord(int,G3D::CoordinateFrame const&)
+pub fn stub_737b98() -> ! {
+    todo!("0x737b98 RBX::Joint::setJointCoord(int,G3D::CoordinateFrame const&)")
+}
+
+// 0x73cd50 — __ZN3RBX4POLY4Mesh9makeBlockERKN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::Mesh::makeBlock(G3D::Vector3 const&)")]
+// was: RBX::POLY::Mesh::makeBlock(G3D::Vector3 const&)
+pub fn stub_73cd50() -> ! {
+    todo!("0x73cd50 RBX::POLY::Mesh::makeBlock(G3D::Vector3 const&)")
+}
+
+// 0x73d0cc — __ZN3RBX4POLY4Mesh8makeCellERKN3G3D7Vector3ES5_
+#[doc(alias = "RBX::POLY::Mesh::makeCell(G3D::Vector3 const&,G3D::Vector3 const&)")]
+// was: RBX::POLY::Mesh::makeCell(G3D::Vector3 const&,G3D::Vector3 const&)
+pub fn stub_73d0cc() -> ! {
+    todo!("0x73d0cc RBX::POLY::Mesh::makeCell(G3D::Vector3 const&,G3D::Vector3 const&)")
+}
+
+// 0x73d250 — __ZN3RBX4POLY4Mesh21makeVerticalWedgeCellERKN3G3D7Vector3ES5_RKi
+#[doc(alias = "RBX::POLY::Mesh::makeVerticalWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)")]
+// was: RBX::POLY::Mesh::makeVerticalWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)
+pub fn stub_73d250() -> ! {
+    todo!("0x73d250 RBX::POLY::Mesh::makeVerticalWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)")
+}
+
+// 0x73d5d4 — __ZN3RBX4POLY4Mesh23makeHorizontalWedgeCellERKN3G3D7Vector3ES5_RKi
+#[doc(alias = "RBX::POLY::Mesh::makeHorizontalWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)")]
+// was: RBX::POLY::Mesh::makeHorizontalWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)
+pub fn stub_73d5d4() -> ! {
+    todo!("0x73d5d4 RBX::POLY::Mesh::makeHorizontalWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)")
+}
+
+// 0x73d7f4 — __ZN3RBX4POLY4Mesh19makeCornerWedgeCellERKN3G3D7Vector3ES5_RKi
+#[doc(alias = "RBX::POLY::Mesh::makeCornerWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)")]
+// was: RBX::POLY::Mesh::makeCornerWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)
+pub fn stub_73d7f4() -> ! {
+    todo!("0x73d7f4 RBX::POLY::Mesh::makeCornerWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)")
+}
+
+// 0x73d9b8 — __ZN3RBX4POLY4Mesh26makeInverseCornerWedgeCellERKN3G3D7Vector3ES5_RKi
+#[doc(alias = "RBX::POLY::Mesh::makeInverseCornerWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)")]
+// was: RBX::POLY::Mesh::makeInverseCornerWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)
+pub fn stub_73d9b8() -> ! {
+    todo!("0x73d9b8 RBX::POLY::Mesh::makeInverseCornerWedgeCell(G3D::Vector3 const&,G3D::Vector3 const&,int const&)")
+}
+
+// 0x73dc04 — __ZN3RBX4POLY4Mesh9makeWedgeERKN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::Mesh::makeWedge(G3D::Vector3 const&)")]
+// was: RBX::POLY::Mesh::makeWedge(G3D::Vector3 const&)
+pub fn stub_73dc04() -> ! {
+    todo!("0x73dc04 RBX::POLY::Mesh::makeWedge(G3D::Vector3 const&)")
+}
+
+// 0x73dd30 — __ZN3RBX4POLY4Mesh9makePrismERKNS_13Vector3_2IntsERN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::Mesh::makePrism(RBX::Vector3_2Ints const&,G3D::Vector3 &)")]
+// was: RBX::POLY::Mesh::makePrism(RBX::Vector3_2Ints const&,G3D::Vector3 &)
+pub fn stub_73dd30() -> ! {
+    todo!("0x73dd30 RBX::POLY::Mesh::makePrism(RBX::Vector3_2Ints const&,G3D::Vector3 &)")
+}
+
+// 0x73e3f8 — __ZN3RBX4POLY4Mesh11makePyramidERKNS_13Vector3_2IntsERN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::Mesh::makePyramid(RBX::Vector3_2Ints const&,G3D::Vector3 &)")]
+// was: RBX::POLY::Mesh::makePyramid(RBX::Vector3_2Ints const&,G3D::Vector3 &)
+pub fn stub_73e3f8() -> ! {
+    todo!("0x73e3f8 RBX::POLY::Mesh::makePyramid(RBX::Vector3_2Ints const&,G3D::Vector3 &)")
+}
+
+// 0x73e790 — __ZN3RBX4POLY4Mesh16makeParallelRampERKN3G3D7Vector3ERS3_
+#[doc(alias = "RBX::POLY::Mesh::makeParallelRamp(G3D::Vector3 const&,G3D::Vector3&)")]
+// was: RBX::POLY::Mesh::makeParallelRamp(G3D::Vector3 const&,G3D::Vector3&)
+pub fn stub_73e790() -> ! {
+    todo!("0x73e790 RBX::POLY::Mesh::makeParallelRamp(G3D::Vector3 const&,G3D::Vector3&)")
+}
+
+// 0x73e900 — __ZN3RBX4POLY4Mesh18makeRightAngleRampERKN3G3D7Vector3ERS3_
+#[doc(alias = "RBX::POLY::Mesh::makeRightAngleRamp(G3D::Vector3 const&,G3D::Vector3&)")]
+// was: RBX::POLY::Mesh::makeRightAngleRamp(G3D::Vector3 const&,G3D::Vector3&)
+pub fn stub_73e900() -> ! {
+    todo!("0x73e900 RBX::POLY::Mesh::makeRightAngleRamp(G3D::Vector3 const&,G3D::Vector3&)")
+}
+
+// 0x73ea68 — __ZN3RBX4POLY4Mesh15makeCornerWedgeERKN3G3D7Vector3ERS3_
+#[doc(alias = "RBX::POLY::Mesh::makeCornerWedge(G3D::Vector3 const&,G3D::Vector3&)")]
+// was: RBX::POLY::Mesh::makeCornerWedge(G3D::Vector3 const&,G3D::Vector3&)
+pub fn stub_73ea68() -> ! {
+    todo!("0x73ea68 RBX::POLY::Mesh::makeCornerWedge(G3D::Vector3 const&,G3D::Vector3&)")
+}
+
+// 0x73ee84 — __ZNK3RBX4POLY4Mesh11pointInMeshERKN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::Mesh::pointInMesh(G3D::Vector3 const&)const")]
+// was: RBX::POLY::Mesh::pointInMesh(G3D::Vector3 const&)const
+pub fn stub_73ee84() -> ! {
+    todo!("0x73ee84 RBX::POLY::Mesh::pointInMesh(G3D::Vector3 const&)const")
+}
+
+// 0x73eed8 — __ZNK3RBX4POLY4Mesh17rayIntersectsFaceERKNS_6RbxRayEPKNS0_4FaceERN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::Mesh::rayIntersectsFace(RBX::RbxRay const&,RBX::POLY::Face const*,G3D::Vector3 &)const")]
+// was: RBX::POLY::Mesh::rayIntersectsFace(RBX::RbxRay const&,RBX::POLY::Face const*,G3D::Vector3 &)const
+pub fn stub_73eed8() -> ! {
+    todo!("0x73eed8 RBX::POLY::Mesh::rayIntersectsFace(RBX::RbxRay const&,RBX::POLY::Face const*,G3D::Vector3 &)const")
+}
+
+// 0x73ef60 — __ZNK3RBX4POLY4Face18pointInFaceBordersERKN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::Face::pointInFaceBorders(G3D::Vector3 const&)const")]
+// was: RBX::POLY::Face::pointInFaceBorders(G3D::Vector3 const&)const
+pub fn stub_73ef60() -> ! {
+    todo!("0x73ef60 RBX::POLY::Face::pointInFaceBorders(G3D::Vector3 const&)const")
+}
+
+// 0x73ef9c — __ZNK3RBX4POLY4Mesh14farthestVertexERKN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::Mesh::farthestVertex(G3D::Vector3 const&)const")]
+// was: RBX::POLY::Mesh::farthestVertex(G3D::Vector3 const&)const
+pub fn stub_73ef9c() -> ! {
+    todo!("0x73ef9c RBX::POLY::Mesh::farthestVertex(G3D::Vector3 const&)const")
+}
+
+// 0x73f004 — __ZNK3RBX4POLY4Mesh7hitTestERKNS_6RbxRayERN3G3D7Vector3ERb
+#[doc(alias = "RBX::POLY::Mesh::hitTest(RBX::RbxRay const&,G3D::Vector3 &,bool &)const")]
+// was: RBX::POLY::Mesh::hitTest(RBX::RbxRay const&,G3D::Vector3 &,bool &)const
+pub fn stub_73f004() -> ! {
+    todo!("0x73f004 RBX::POLY::Mesh::hitTest(RBX::RbxRay const&,G3D::Vector3 &,bool &)const")
+}
+
+// 0x73f4b4 — __ZNK3RBX4POLY4Face33findInternalExtrusionIntersectionERKN3G3D7Vector3ES5_
+#[doc(alias = "RBX::POLY::Face::findInternalExtrusionIntersection(G3D::Vector3 const&,G3D::Vector3 const&)const")]
+// was: RBX::POLY::Face::findInternalExtrusionIntersection(G3D::Vector3 const&,G3D::Vector3 const&)const
+pub fn stub_73f4b4() -> ! {
+    todo!("0x73f4b4 RBX::POLY::Face::findInternalExtrusionIntersection(G3D::Vector3 const&,G3D::Vector3 const&)const")
+}
+
+// 0x73f4f0 — __ZNK3RBX4POLY4Face29lineCrossesExtrusionSideBelowERKN3G3D7Vector3ES5_m
+#[doc(alias = "RBX::POLY::Face::lineCrossesExtrusionSideBelow(G3D::Vector3 const&,G3D::Vector3 const&,unsigned long)const")]
+// was: RBX::POLY::Face::lineCrossesExtrusionSideBelow(G3D::Vector3 const&,G3D::Vector3 const&,unsigned long)const
+pub fn stub_73f4f0() -> ! {
+    todo!("0x73f4f0 RBX::POLY::Face::lineCrossesExtrusionSideBelow(G3D::Vector3 const&,G3D::Vector3 const&,unsigned long)const")
+}
+
+// 0x73f610 — __ZNK3RBX4POLY4Face32getInternalExtrusionIntersectionERKN3G3D7Vector3ES5_
+#[doc(alias = "RBX::POLY::Face::getInternalExtrusionIntersection(G3D::Vector3 const&,G3D::Vector3 const&)const")]
+// was: RBX::POLY::Face::getInternalExtrusionIntersection(G3D::Vector3 const&,G3D::Vector3 const&)const
+pub fn stub_73f610() -> ! {
+    todo!("0x73f610 RBX::POLY::Face::getInternalExtrusionIntersection(G3D::Vector3 const&,G3D::Vector3 const&)const")
+}
+
+// 0x73f6f0 — __ZNK3RBX4POLY4Face24lineCrossesExtrusionSideERKN3G3D7Vector3ES5_m
+#[doc(alias = "RBX::POLY::Face::lineCrossesExtrusionSide(G3D::Vector3 const&,G3D::Vector3 const&,unsigned long)const")]
+// was: RBX::POLY::Face::lineCrossesExtrusionSide(G3D::Vector3 const&,G3D::Vector3 const&,unsigned long)const
+pub fn stub_73f6f0() -> ! {
+    todo!("0x73f6f0 RBX::POLY::Face::lineCrossesExtrusionSide(G3D::Vector3 const&,G3D::Vector3 const&,unsigned long)const")
+}
+
+// 0x73f7f4 — __ZNK3RBX4POLY4Face34findInternalExtrusionIntersectionsERKN3G3D7Vector3ES5_RiS6_
+#[doc(alias = "RBX::POLY::Face::findInternalExtrusionIntersections(G3D::Vector3 const&,G3D::Vector3 const&,int &,int &)const")]
+// was: RBX::POLY::Face::findInternalExtrusionIntersections(G3D::Vector3 const&,G3D::Vector3 const&,int &,int &)const
+pub fn stub_73f7f4() -> ! {
+    todo!("0x73f7f4 RBX::POLY::Face::findInternalExtrusionIntersections(G3D::Vector3 const&,G3D::Vector3 const&,int &,int &)const")
+}
+
+// 0x73f8f4 — __ZNK3RBX4POLY4Face20pointInExtrusionSideERKN3G3D7Vector3ERKNS2_5PlaneEm
+#[doc(alias = "RBX::POLY::Face::pointInExtrusionSide(G3D::Vector3 const&,G3D::Plane const&,unsigned long)const")]
+// was: RBX::POLY::Face::pointInExtrusionSide(G3D::Vector3 const&,G3D::Plane const&,unsigned long)const
+pub fn stub_73f8f4() -> ! {
+    todo!("0x73f8f4 RBX::POLY::Face::pointInExtrusionSide(G3D::Vector3 const&,G3D::Plane const&,unsigned long)const")
+}
+
+// 0x73fb54 — __ZNK3RBX4POLY4Face22getOrientedBoundingBoxERKN3G3D7Vector3ES5_RS3_S6_S6_
+#[doc(alias = "RBX::POLY::Face::getOrientedBoundingBox(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3&,G3D::Vector3&,G3D::Vector3&)const")]
+// was: RBX::POLY::Face::getOrientedBoundingBox(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3&,G3D::Vector3&,G3D::Vector3&)const
+pub fn stub_73fb54() -> ! {
+    todo!("0x73fb54 RBX::POLY::Face::getOrientedBoundingBox(G3D::Vector3 const&,G3D::Vector3 const&,G3D::Vector3&,G3D::Vector3&,G3D::Vector3&)const")
+}
+
+// 0x73ffe0 — __ZNK3RBX4POLY4Edge14pointInVaronoiERKN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::Edge::pointInVaronoi(G3D::Vector3 const&)const")]
+// was: RBX::POLY::Edge::pointInVaronoi(G3D::Vector3 const&)const
+pub fn stub_73ffe0() -> ! {
+    todo!("0x73ffe0 RBX::POLY::Edge::pointInVaronoi(G3D::Vector3 const&)const")
+}
+
+// 0x740574 — __ZNK3RBX4POLY4Face24pointInInternalExtrusionERKN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::Face::pointInInternalExtrusion(G3D::Vector3 const&)const")]
+// was: RBX::POLY::Face::pointInInternalExtrusion(G3D::Vector3 const&)const
+pub fn stub_740574() -> ! {
+    todo!("0x740574 RBX::POLY::Face::pointInInternalExtrusion(G3D::Vector3 const&)const")
+}
+
+// 0x741b44 — __ZN3RBX12Motor6DJoint20setJointOffsetCFrameEN3G3D7Vector3ES2_
+#[doc(alias = "RBX::Motor6DJoint::setJointOffsetCFrame(G3D::Vector3,G3D::Vector3)")]
+// was: RBX::Motor6DJoint::setJointOffsetCFrame(G3D::Vector3,G3D::Vector3)
+pub fn stub_741b44() -> ! {
+    todo!("0x741b44 RBX::Motor6DJoint::setJointOffsetCFrame(G3D::Vector3,G3D::Vector3)")
+}
+
+// 0x741f34 — __ZN3RBX12Motor6DJoint21setCurrentOffsetAngleEN3G3D7Vector3ES2_
+#[doc(alias = "RBX::Motor6DJoint::setCurrentOffsetAngle(G3D::Vector3,G3D::Vector3)")]
+// was: RBX::Motor6DJoint::setCurrentOffsetAngle(G3D::Vector3,G3D::Vector3)
+pub fn stub_741f34() -> ! {
+    todo!("0x741f34 RBX::Motor6DJoint::setCurrentOffsetAngle(G3D::Vector3,G3D::Vector3)")
+}
+
+// 0x742080 — __ZN3RBX12Motor6DJoint9applyPoseERKN3G3D7Vector3ES4_ff
+#[doc(alias = "RBX::Motor6DJoint::applyPose(G3D::Vector3 const&,G3D::Vector3 const&,float,float)")]
+// was: RBX::Motor6DJoint::applyPose(G3D::Vector3 const&,G3D::Vector3 const&,float,float)
+pub fn stub_742080() -> ! {
+    todo!("0x742080 RBX::Motor6DJoint::applyPose(G3D::Vector3 const&,G3D::Vector3 const&,float,float)")
+}
+
+// 0x742284 — __ZN3RBX6D6Link20setJointOffsetCFrameERKN3G3D15CoordinateFrameE
+#[doc(alias = "RBX::D6Link::setJointOffsetCFrame(G3D::CoordinateFrame const&)")]
+// was: RBX::D6Link::setJointOffsetCFrame(G3D::CoordinateFrame const&)
+pub fn stub_742284() -> ! {
+    todo!("0x742284 RBX::D6Link::setJointOffsetCFrame(G3D::CoordinateFrame const&)")
+}
+
+// 0x743b4c — __ZN3RBX10MultiJointC2EPNS_9PrimitiveES2_RKN3G3D15CoordinateFrameES6_i
+#[doc(alias = "RBX::MultiJoint::MultiJoint(RBX::Primitive *,RBX::Primitive *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&,int)")]
+// was: RBX::MultiJoint::MultiJoint(RBX::Primitive *,RBX::Primitive *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&,int)
+pub fn stub_743b4c() -> ! {
+    todo!("0x743b4c RBX::MultiJoint::MultiJoint(RBX::Primitive *,RBX::Primitive *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&,int)")
+}
+
+// 0x7445ac — __ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY16ParallelRampMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_
+#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token> const&)")]
+// was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token> const&)
+pub fn stub_7445ac() -> ! {
+    todo!("0x7445ac boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token> const&)")
+}
+
+// 0x7445e4 — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE8getTokenERKS2_
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::getToken(G3D::Vector3 const&)")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::getToken(G3D::Vector3 const&)
+pub fn stub_7445e4() -> ! {
+    todo!("0x7445e4 RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::getToken(G3D::Vector3 const&)")
+}
+
+// 0x744820 — __ZNSt3mapIN3G3D7Vector3EPN3RBX12GeometryPoolIS1_NS2_4POLY16ParallelRampMeshENS2_15Vector3ComparerEE10ValueCountES6_SaISt4pairIKS1_S9_EEEixERSB_
+#[doc(alias = "std::map<G3D::Vector3,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::operator[](G3D::Vector3 const&)")]
+// was: std::map<G3D::Vector3,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::operator[](G3D::Vector3 const&)
+pub fn stub_744820() -> ! {
+    todo!("0x744820 std::map<G3D::Vector3,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::operator[](G3D::Vector3 const&)")
+}
+
+// 0x744894 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY16ParallelRampMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_
+#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token *)")]
+// was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token *)
+pub fn stub_744894() -> ! {
+    todo!("0x744894 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token *)")
+}
+
+// 0x744968 — __ZN5boost6detail12shared_countC2IN3RBX12GeometryPoolIN3G3D7Vector3ENS3_4POLY16ParallelRampMeshENS3_15Vector3ComparerEE5TokenEEEPT_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token *)")]
+// was: boost::detail::shared_count::shared_count<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token *)
+pub fn stub_744968() -> ! {
+    todo!("0x744968 boost::detail::shared_count::shared_count<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token *)")
+}
+
+// 0x744a78 — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE11returnTokenERKS2_PNS6_10ValueCountE
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::returnToken(G3D::Vector3 const&,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *)")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::returnToken(G3D::Vector3 const&,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *)
+pub fn stub_744a78() -> ! {
+    todo!("0x744a78 RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::returnToken(G3D::Vector3 const&,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *)")
+}
+
+// 0x744c54 — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE10ValueCountD2Ev
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount::~ValueCount()")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount::~ValueCount()
+pub fn stub_744c54() -> ! {
+    todo!("0x744c54 RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount::~ValueCount()")
+}
+
+// 0x744dec — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE5eraseERS3_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(G3D::Vector3 const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(G3D::Vector3 const&)
+pub fn stub_744dec() -> ! {
+    todo!("0x744dec std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(G3D::Vector3 const&)")
+}
+
+// 0x744e14 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE5eraseESt17_Rb_tree_iteratorISC_ESI_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>)
+pub fn stub_744e14() -> ! {
+    todo!("0x744e14 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::erase(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>)")
+}
+
+// 0x744e74 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_erase(std::_Rb_tree_node<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>> *)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_erase(std::_Rb_tree_node<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>> *)
+pub fn stub_744e74() -> ! {
+    todo!("0x744e74 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_erase(std::_Rb_tree_node<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>> *)")
+}
+
+// 0x744e9c — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11lower_boundERS3_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::lower_bound(G3D::Vector3 const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::lower_bound(G3D::Vector3 const&)
+pub fn stub_744e9c() -> ! {
+    todo!("0x744e9c std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::lower_bound(G3D::Vector3 const&)")
+}
+
+// 0x744ef8 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE11upper_boundERS3_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::upper_bound(G3D::Vector3 const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::upper_bound(G3D::Vector3 const&)
+pub fn stub_744ef8() -> ! {
+    todo!("0x744ef8 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::upper_bound(G3D::Vector3 const&)")
+}
+
+// 0x744f54 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolIN3G3D7Vector3ENS2_4POLY16ParallelRampMeshENS2_15Vector3ComparerEE5TokenEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()
+pub fn stub_744f54() -> ! {
+    todo!("0x744f54 boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()")
+}
+
+// 0x744f58 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolIN3G3D7Vector3ENS2_4POLY16ParallelRampMeshENS2_15Vector3ComparerEE5TokenEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()")]
+// was: boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()
+pub fn stub_744f58() -> ! {
+    todo!("0x744f58 boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::~sp_counted_impl_p()")
+}
+
+// 0x744f5c — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolIN3G3D7Vector3ENS2_4POLY16ParallelRampMeshENS2_15Vector3ComparerEE5TokenEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::dispose(void)
+pub fn stub_744f5c() -> ! {
+    todo!("0x744f5c boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::dispose(void)")
+}
+
+// 0x745004 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolIN3G3D7Vector3ENS2_4POLY16ParallelRampMeshENS2_15Vector3ComparerEE5TokenEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::get_deleter(std::type_info const&)
+pub fn stub_745004() -> ! {
+    todo!("0x745004 boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::get_deleter(std::type_info const&)")
+}
+
+// 0x745008 — __ZN5boost6detail17sp_counted_impl_pIN3RBX12GeometryPoolIN3G3D7Vector3ENS2_4POLY16ParallelRampMeshENS2_15Vector3ComparerEE5TokenEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::get_untyped_deleter(void)
+pub fn stub_745008() -> ! {
+    todo!("0x745008 boost::detail::sp_counted_impl_p<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::get_untyped_deleter(void)")
+}
+
+// 0x74500c — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISC_ERKSC_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *> const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *> const&)
+pub fn stub_74500c() -> ! {
+    todo!("0x74500c std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *> const&)")
+}
+
+// 0x7451b4 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSC_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *> const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *> const&)
+pub fn stub_7451b4() -> ! {
+    todo!("0x7451b4 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *> const&)")
+}
+
+// 0x745258 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE16_M_insert_uniqueERKSC_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *> const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *> const&)
+pub fn stub_745258() -> ! {
+    todo!("0x745258 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::_M_insert_unique(std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *> const&)")
+}
+
+// 0x74532c — __ZN3RBX12GeometryPoolIN3G3D7Vector3ENS_4POLY16ParallelRampMeshENS_15Vector3ComparerEE10ValueCountC2ERKS2_
+#[doc(alias = "RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount::ValueCount(G3D::Vector3 const&)")]
+// was: RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount::ValueCount(G3D::Vector3 const&)
+pub fn stub_74532c() -> ! {
+    todo!("0x74532c RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount::ValueCount(G3D::Vector3 const&)")
+}
+
+// 0x74545c — __ZN3RBX4POLY16ParallelRampMeshC2ERKN3G3D7Vector3E
+#[doc(alias = "RBX::POLY::ParallelRampMesh::ParallelRampMesh(G3D::Vector3 const&)")]
+// was: RBX::POLY::ParallelRampMesh::ParallelRampMesh(G3D::Vector3 const&)
+pub fn stub_74545c() -> ! {
+    todo!("0x74545c RBX::POLY::ParallelRampMesh::ParallelRampMesh(G3D::Vector3 const&)")
+}
+
+// 0x745660 — __ZNSt8_Rb_treeIN3G3D7Vector3ESt4pairIKS1_PN3RBX12GeometryPoolIS1_NS4_4POLY16ParallelRampMeshENS4_15Vector3ComparerEE10ValueCountEESt10_Select1stISC_ES8_SaISC_EE4findERS3_
+#[doc(alias = "std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::find(G3D::Vector3 const&)")]
+// was: std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::find(G3D::Vector3 const&)
+pub fn stub_745660() -> ! {
+    todo!("0x745660 std::_Rb_tree<G3D::Vector3,std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>,std::_Select1st<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>,RBX::Vector3Comparer,std::allocator<std::pair<G3D::Vector3 const,RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::ValueCount *>>>::find(G3D::Vector3 const&)")
+}
