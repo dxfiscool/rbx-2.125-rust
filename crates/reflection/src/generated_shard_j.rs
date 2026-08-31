@@ -1,5 +1,5 @@
 // Auto-generated shard J — next 100 RBX::Reflection stubs — EA-sorted from earliest gap 0x4a15b0
-// Source: ida/export.json filtered demangled contains RBX::Reflection (16171 total, 7483 stubbed -> 7583 total, showing next 100)
+// Source: ida/export.json filtered demangled contains RBX::Reflection (16171 total, 7363 stubbed -> 7463 total, showing next 100)
 // Format: // 0xADDR — mangled + #[doc(alias = "RBX::...")] + todo!("0xADDR") using rbx_core::SharedPtr
 #![allow(unused_imports)]
 use rbx_core::SharedPtr;
