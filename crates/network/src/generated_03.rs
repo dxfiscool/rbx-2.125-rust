@@ -604,28 +604,28 @@ pub fn stub_ad14a4() -> ! {
 // type: void __fastcall(RBX::Network::Marker *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Marker::~Marker()")]
 pub fn stub_ad1640() -> ! {
-    todo!("0xad1640 `non-virtual thunk to'RBX::Network::Marker::~Marker()")
+    todo!("0xad1640 non-virtual thunk to RBX::Network::Marker::~Marker()")
 }
 
 // 0xad164c — __ZThn32_N3RBX7Network6MarkerD0Ev
 // type: void __fastcall(RBX::Network::Marker *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Marker::~Marker()")]
 pub fn stub_ad164c() -> ! {
-    todo!("0xad164c `non-virtual thunk to'RBX::Network::Marker::~Marker()")
+    todo!("0xad164c non-virtual thunk to RBX::Network::Marker::~Marker()")
 }
 
 // 0xad17ec — __ZThn36_N3RBX7Network6MarkerD1Ev
 // type: void __fastcall(RBX::Network::Marker *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Marker::~Marker()")]
 pub fn stub_ad17ec() -> ! {
-    todo!("0xad17ec `non-virtual thunk to'RBX::Network::Marker::~Marker()")
+    todo!("0xad17ec non-virtual thunk to RBX::Network::Marker::~Marker()")
 }
 
 // 0xad17f8 — __ZThn36_N3RBX7Network6MarkerD0Ev
 // type: void __fastcall(RBX::Network::Marker *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Marker::~Marker()")]
 pub fn stub_ad17f8() -> ! {
-    todo!("0xad17f8 `non-virtual thunk to'RBX::Network::Marker::~Marker()")
+    todo!("0xad17f8 non-virtual thunk to RBX::Network::Marker::~Marker()")
 }
 
 // 0xad1b78 — __ZN3RBX10Reflection9EventDescINS_7Network6MarkerEFvvEN3rbx6signalIS4_EEMS3_S7_ED0Ev
@@ -694,21 +694,21 @@ pub fn stub_ad3290() -> ! {
 // type: void __fastcall(RBX::Network::Peer *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Peer::~Peer()")]
 pub fn stub_ad329c() -> ! {
-    todo!("0xad329c `non-virtual thunk to'RBX::Network::Peer::~Peer()")
+    todo!("0xad329c non-virtual thunk to RBX::Network::Peer::~Peer()")
 }
 
 // 0xad3340 — __ZThn36_N3RBX7Network4PeerD0Ev
 // type: void __fastcall(RBX::Network::Peer *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Peer::~Peer()")]
 pub fn stub_ad3340() -> ! {
-    todo!("0xad3340 `non-virtual thunk to'RBX::Network::Peer::~Peer()")
+    todo!("0xad3340 non-virtual thunk to RBX::Network::Peer::~Peer()")
 }
 
 // 0xad33e4 — __ZThn92_N3RBX7Network4PeerD0Ev
 // type: void __fastcall(RBX::Network::Peer *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Peer::~Peer()")]
 pub fn stub_ad33e4() -> ! {
-    todo!("0xad33e4 `non-virtual thunk to'RBX::Network::Peer::~Peer()")
+    todo!("0xad33e4 non-virtual thunk to RBX::Network::Peer::~Peer()")
 }
 
 // 0xad3488 — __ZN3RBX7Network4PeerD2Ev
@@ -722,21 +722,21 @@ pub fn stub_ad3488() -> ! {
 // type: void __fastcall(RBX::Network::Peer *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Peer::~Peer()")]
 pub fn stub_ad365c() -> ! {
-    todo!("0xad365c `non-virtual thunk to'RBX::Network::Peer::~Peer()")
+    todo!("0xad365c non-virtual thunk to RBX::Network::Peer::~Peer()")
 }
 
 // 0xad3668 — __ZThn36_N3RBX7Network4PeerD1Ev
 // type: void __fastcall(RBX::Network::Peer *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Peer::~Peer()")]
 pub fn stub_ad3668() -> ! {
-    todo!("0xad3668 `non-virtual thunk to'RBX::Network::Peer::~Peer()")
+    todo!("0xad3668 non-virtual thunk to RBX::Network::Peer::~Peer()")
 }
 
 // 0xad3674 — __ZThn92_N3RBX7Network4PeerD1Ev
 // type: void __fastcall(RBX::Network::Peer *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Peer::~Peer()")]
 pub fn stub_ad3674() -> ! {
-    todo!("0xad3674 `non-virtual thunk to'RBX::Network::Peer::~Peer()")
+    todo!("0xad3674 non-virtual thunk to RBX::Network::Peer::~Peer()")
 }
 
 // 0xad3680 — __ZN3RBX7Network4Peer15onCreateRakPeerEv
@@ -806,28 +806,28 @@ pub fn stub_ad5790() -> ! {
 // type: void __fastcall(RBX::Network::PeerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::PeerStatsItem::~PeerStatsItem()")]
 pub fn stub_ad5a58() -> ! {
-    todo!("0xad5a58 `non-virtual thunk to'RBX::Network::PeerStatsItem::~PeerStatsItem()")
+    todo!("0xad5a58 non-virtual thunk to RBX::Network::PeerStatsItem::~PeerStatsItem()")
 }
 
 // 0xad5ad8 — __ZThn32_N3RBX7Network13PeerStatsItemD0Ev
 // type: void __fastcall(RBX::Network::PeerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::PeerStatsItem::~PeerStatsItem()")]
 pub fn stub_ad5ad8() -> ! {
-    todo!("0xad5ad8 `non-virtual thunk to'RBX::Network::PeerStatsItem::~PeerStatsItem()")
+    todo!("0xad5ad8 non-virtual thunk to RBX::Network::PeerStatsItem::~PeerStatsItem()")
 }
 
 // 0xad5be8 — __ZThn36_N3RBX7Network13PeerStatsItemD1Ev
 // type: void __fastcall(RBX::Network::PeerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::PeerStatsItem::~PeerStatsItem()")]
 pub fn stub_ad5be8() -> ! {
-    todo!("0xad5be8 `non-virtual thunk to'RBX::Network::PeerStatsItem::~PeerStatsItem()")
+    todo!("0xad5be8 non-virtual thunk to RBX::Network::PeerStatsItem::~PeerStatsItem()")
 }
 
 // 0xad5c68 — __ZThn36_N3RBX7Network13PeerStatsItemD0Ev
 // type: void __fastcall(RBX::Network::PeerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::PeerStatsItem::~PeerStatsItem()")]
 pub fn stub_ad5c68() -> ! {
-    todo!("0xad5c68 `non-virtual thunk to'RBX::Network::PeerStatsItem::~PeerStatsItem()")
+    todo!("0xad5c68 non-virtual thunk to RBX::Network::PeerStatsItem::~PeerStatsItem()")
 }
 
 // 0xad5d78 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network13PeerStatsItemES7_EEvPKNS_10shared_ptrIT_EEPT0_

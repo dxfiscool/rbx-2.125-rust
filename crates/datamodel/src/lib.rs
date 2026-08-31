@@ -17,3 +17,5 @@ pub mod generated_f;
 pub mod generated_g;
 pub mod generated_h;
 pub mod generated_i;
+pub mod generated_04;
+pub mod generated_05;
