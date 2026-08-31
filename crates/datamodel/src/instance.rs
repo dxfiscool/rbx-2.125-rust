@@ -6,7 +6,7 @@
 
 use rbx_core::SharedPtr;
 
-// 3403 stubs in this file | batch range 0xef04..0x57568c
+// 3503 stubs in this file | batch range 0xef04..0x5906f8
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
@@ -23390,4 +23390,705 @@ pub fn stub_0x574f80() -> ! {
 // was: boost::shared_ptr<RBX::HopperBin> RBX::Creatable<RBX::Instance>::create<RBX::HopperBin>(void)
 pub fn stub_0x57568c() -> ! {
     todo!("0x57568c boost::shared_ptr<RBX::HopperBin> RBX::Creatable<RBX::Instance>::create<RBX::HopperBin>(void)")
+}
+
+
+// 0x575740 — __ZN5boost10shared_ptrIN3RBX9HopperBinEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
+#[doc(alias = "boost::shared_ptr<RBX::HopperBin>::shared_ptr<RBX::HopperBin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::shared_ptr<RBX::HopperBin>::shared_ptr<RBX::HopperBin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x575740() -> ! {
+    todo!("0x575740 boost::shared_ptr<RBX::HopperBin>::shared_ptr<RBX::HopperBin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x5758f4 — __ZN5boost6detail12shared_countC2IPN3RBX9HopperBinENS3_9CreatableINS3_8InstanceEE7DeleterEEET_T0_
+#[doc(alias = "boost::detail::shared_count::shared_count<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter)")]
+// was: boost::detail::shared_count::shared_count<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter)
+pub fn stub_0x5758f4() -> ! {
+    todo!("0x5758f4 boost::detail::shared_count::shared_count<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter)")
+}
+
+// 0x5759fc — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9HopperBinENS2_9CreatableINS2_8InstanceEE7DeleterEED1Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x5759fc() -> ! {
+    todo!("0x5759fc boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x575a00 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9HopperBinENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x575a00() -> ! {
+    todo!("0x575a00 boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x575a04 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9HopperBinENS2_9CreatableINS2_8InstanceEE7DeleterEE7disposeEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)
+pub fn stub_0x575a04() -> ! {
+    todo!("0x575a04 boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::dispose(void)")
+}
+
+// 0x575a24 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9HopperBinENS2_9CreatableINS2_8InstanceEE7DeleterEE11get_deleterERKSt9type_info
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)
+pub fn stub_0x575a24() -> ! {
+    todo!("0x575a24 boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::get_deleter(std::type_info const&)")
+}
+
+// 0x575a3c — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX9HopperBinENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")]
+// was: boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)
+pub fn stub_0x575a3c() -> ! {
+    todo!("0x575a3c boost::detail::sp_counted_impl_pd<RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter>::get_untyped_deleter(void)")
+}
+
+// 0x5762b0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>> const&)")]
+// was: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>> const&)
+pub fn stub_0x5762b0() -> ! {
+    todo!("0x5762b0 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>> const&)")
+}
+
+// 0x576324 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED1Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()
+pub fn stub_0x576324() -> ! {
+    todo!("0x576324 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x576350 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED0Ev
+#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()")]
+// was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()
+pub fn stub_0x576350() -> ! {
+    todo!("0x576350 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()")
+}
+
+// 0x576424 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x576424() -> ! {
+    todo!("0x576424 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x57642c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+// was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x57642c() -> ! {
+    todo!("0x57642c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x576434 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX9HopperBinERNS_10shared_ptrINS4_8InstanceEEEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS8_EEvRT_
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance> &>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>::operator()<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> &)")]
+// was: void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance> &>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>::operator()<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> &)
+pub fn stub_0x576434() -> ! {
+    todo!("0x576434 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance> &>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>::operator()<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> &)")
+}
+
+// 0x57644c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_ED1Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")]
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()
+pub fn stub_0x57644c() -> ! {
+    todo!("0x57644c rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")
+}
+
+// 0x576478 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_ED0Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")]
+// was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()
+pub fn stub_0x576478() -> ! {
+    todo!("0x576478 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")
+}
+
+// 0x5767e8 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEEC2Ev
+#[doc(alias = "rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::remote_signal(void)")]
+// was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::remote_signal(void)
+pub fn stub_0x5767e8() -> ! {
+    todo!("0x5767e8 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::remote_signal(void)")
+}
+
+// 0x577fa8 — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_EC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+// was: RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+pub fn stub_0x577fa8() -> ! {
+    todo!("0x577fa8 RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::EventDesc(rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x57812c — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED0Ev
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")]
+// was: RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()
+pub fn stub_0x57812c() -> ! {
+    todo!("0x57812c RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")
+}
+
+// 0x5781e0 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+// was: RBX::Reflection::EventDescImpl<1,RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
+pub fn stub_0x5781e0() -> ! {
+    todo!("0x5781e0 RBX::Reflection::EventDescImpl<1,RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x578344 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+// was: RBX::Reflection::EventDescImpl<1,RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const
+pub fn stub_0x578344() -> ! {
+    todo!("0x578344 RBX::Reflection::EventDescImpl<1,RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
+}
+
+// 0x5784a4 — __ZNK3RBX10Reflection13EventDescBaseINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E13disconnectAllEPNS0_11EventSourceE
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+// was: RBX::Reflection::EventDescBase<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::disconnectAll(RBX::Reflection::EventSource *)const
+pub fn stub_0x5784a4() -> ! {
+    todo!("0x5784a4 RBX::Reflection::EventDescBase<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::disconnectAll(RBX::Reflection::EventSource *)const")
+}
+
+// 0x579878 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEED2Ev
+#[doc(alias = "rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::~remote_signal()")]
+// was: rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::~remote_signal()
+pub fn stub_0x579878() -> ! {
+    todo!("0x579878 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>::~remote_signal()")
+}
+
+// 0x57c17c — __ZN3RBX10IEquipable9buildWeldEPNS_12PartInstanceES2_RKN3G3D15CoordinateFrameES6_RKSs
+#[doc(alias = "RBX::IEquipable::buildWeld(RBX::PartInstance *,RBX::PartInstance *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&,std::string const&)")]
+// was: RBX::IEquipable::buildWeld(RBX::PartInstance *,RBX::PartInstance *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&,std::string const&)
+pub fn stub_0x57c17c() -> ! {
+    todo!("0x57c17c RBX::IEquipable::buildWeld(RBX::PartInstance *,RBX::PartInstance *,G3D::CoordinateFrame const&,G3D::CoordinateFrame const&,std::string const&)")
+}
+
+// 0x57d5f8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_14GuiImageButtonEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::GuiImageButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiImageButton>(void)")]
+// was: boost::shared_ptr<RBX::GuiImageButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiImageButton>(void)
+pub fn stub_0x57d5f8() -> ! {
+    todo!("0x57d5f8 boost::shared_ptr<RBX::GuiImageButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiImageButton>(void)")
+}
+
+// 0x581250 — __ZN3RBX13InsertService9loadAssetEiN5boost8functionIFvNS1_10shared_ptrINS_8InstanceEEEEEENS2_IFvSsEEE
+#[doc(alias = "RBX::InsertService::loadAsset(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)")]
+// was: RBX::InsertService::loadAsset(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)
+pub fn stub_0x581250() -> ! {
+    todo!("0x581250 RBX::InsertService::loadAsset(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0x58134c — __ZN3RBX13InsertService16loadAssetVersionEiN5boost8functionIFvNS1_10shared_ptrINS_8InstanceEEEEEENS2_IFvSsEEE
+#[doc(alias = "RBX::InsertService::loadAssetVersion(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)")]
+// was: RBX::InsertService::loadAssetVersion(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)
+pub fn stub_0x58134c() -> ! {
+    todo!("0x58134c RBX::InsertService::loadAssetVersion(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0x581448 — __ZN3RBX13InsertService6insertEN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::InsertService::insert(boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::InsertService::insert(boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x581448() -> ! {
+    todo!("0x581448 RBX::InsertService::insert(boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x582ab8 — __ZN3RBX13InsertService18insertResultsReadyESsN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::InsertService::insertResultsReady(std::string,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::InsertService::insertResultsReady(std::string,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x582ab8() -> ! {
+    todo!("0x582ab8 RBX::InsertService::insertResultsReady(std::string,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x582e5c — __ZN3RBX13InsertService16privateLoadAssetEibN5boost8functionIFvNS1_10shared_ptrINS_8InstanceEEEEEENS2_IFvSsEEE
+#[doc(alias = "RBX::InsertService::privateLoadAsset(int,bool,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)")]
+// was: RBX::InsertService::privateLoadAsset(int,bool,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)
+pub fn stub_0x582e5c() -> ! {
+    todo!("0x582e5c RBX::InsertService::privateLoadAsset(int,bool,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)")
+}
+
+// 0x583644 — __ZN3RBX13InsertService18backendInsertReadyESsN5boost10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::InsertService::backendInsertReady(std::string,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::InsertService::backendInsertReady(std::string,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x583644() -> ! {
+    todo!("0x583644 RBX::InsertService::backendInsertReady(std::string,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x583850 — __ZN3RBX13InsertService24BackendInsertReadyHelperEN5boost8weak_ptrIS0_EESsNS1_10shared_ptrINS_8InstanceEEE
+#[doc(alias = "RBX::InsertService::BackendInsertReadyHelper(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::InsertService::BackendInsertReadyHelper(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x583850() -> ! {
+    todo!("0x583850 RBX::InsertService::BackendInsertReadyHelper(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x5839f0 — __ZN3RBX13InsertService10safeInsertENS_9ContentIdEN5boost8functionIFvNS2_10shared_ptrINS_8InstanceEEEEEE
+#[doc(alias = "RBX::InsertService::safeInsert(RBX::ContentId,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")]
+// was: RBX::InsertService::safeInsert(RBX::ContentId,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
+pub fn stub_0x5839f0() -> ! {
+    todo!("0x5839f0 RBX::InsertService::safeInsert(RBX::ContentId,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")
+}
+
+// 0x583d54 — __ZN3RBX13InsertService29RemoteInsertItemsLoadedHelperEN5boost8weak_ptrIS0_EENS_14AsyncHttpQueue13RequestResultENS1_10shared_ptrISt6vectorINS6_INS_8InstanceEEESaIS9_EEEENS1_8functionIFvS9_EEE
+#[doc(alias = "RBX::InsertService::RemoteInsertItemsLoadedHelper(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")]
+// was: RBX::InsertService::RemoteInsertItemsLoadedHelper(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
+pub fn stub_0x583d54() -> ! {
+    todo!("0x583d54 RBX::InsertService::RemoteInsertItemsLoadedHelper(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")
+}
+
+// 0x583e90 — __ZN3RBX13InsertService23remoteInsertItemsLoadedENS_14AsyncHttpQueue13RequestResultEN5boost10shared_ptrISt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS3_8functionIFvS7_EEE
+#[doc(alias = "RBX::InsertService::remoteInsertItemsLoaded(RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")]
+// was: RBX::InsertService::remoteInsertItemsLoaded(RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
+pub fn stub_0x583e90() -> ! {
+    todo!("0x583e90 RBX::InsertService::remoteInsertItemsLoaded(RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")
+}
+
+// 0x5841e8 — __ZN3RBXL29UnsafeScriptStripperCollectorEPSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS4_EEPNS_25ScriptInformationProviderES4_
+#[doc(alias = "RBX::UnsafeScriptStripperCollector(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *,RBX::ScriptInformationProvider *,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::UnsafeScriptStripperCollector(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *,RBX::ScriptInformationProvider *,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x5841e8() -> ! {
+    todo!("0x5841e8 RBX::UnsafeScriptStripperCollector(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *,RBX::ScriptInformationProvider *,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x584390 — __ZN3RBXL20unsafeScriptStripperEN5boost8weak_ptrINS_9DataModelEEEN9__gnu_cxx17__normal_iteratorIPNS0_10shared_ptrINS_8InstanceEEESt6vectorIS8_SaIS8_EEEEfNS6_ISC_EENS0_8functionIFvS8_EEENS1_INS_25ScriptInformationProviderEEES8_
+#[doc(alias = "RBX::unsafeScriptStripper(boost::weak_ptr<RBX::DataModel>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,float,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::weak_ptr<RBX::ScriptInformationProvider>,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::unsafeScriptStripper(boost::weak_ptr<RBX::DataModel>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,float,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::weak_ptr<RBX::ScriptInformationProvider>,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x584390() -> ! {
+    todo!("0x584390 RBX::unsafeScriptStripper(boost::weak_ptr<RBX::DataModel>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,float,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::weak_ptr<RBX::ScriptInformationProvider>,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x584e40 — __ZN3RBX10ReflectionL14resume_adapterIN5boost10shared_ptrINS_8InstanceEEEEEvNS2_8functionIFvNS0_7VariantEEEET_
+#[doc(alias = "void RBX::Reflection::resume_adapter<boost::shared_ptr<RBX::Instance>>(boost::function<void ()(RBX::Reflection::Variant)>,boost::shared_ptr<RBX::Instance>)")]
+// was: void RBX::Reflection::resume_adapter<boost::shared_ptr<RBX::Instance>>(boost::function<void ()(RBX::Reflection::Variant)>,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x584e40() -> ! {
+    todo!("0x584e40 void RBX::Reflection::resume_adapter<boost::shared_ptr<RBX::Instance>>(boost::function<void ()(RBX::Reflection::Variant)>,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x585108 — __ZN3RBXL24handleScriptInfoResponseENS_25ScriptInformationProvider13RequestResultEfN5boost8weak_ptrINS_9DataModelEEEN9__gnu_cxx17__normal_iteratorIPNS2_10shared_ptrINS_8InstanceEEESt6vectorISA_SaISA_EEEEfNS8_ISE_EENS2_8functionIFvSA_EEENS3_IS0_EESA_
+#[doc(alias = "RBX::handleScriptInfoResponse(RBX::ScriptInformationProvider::RequestResult,float,boost::weak_ptr<RBX::DataModel>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,float,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::weak_ptr<RBX::ScriptInformationProvider>,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::handleScriptInfoResponse(RBX::ScriptInformationProvider::RequestResult,float,boost::weak_ptr<RBX::DataModel>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,float,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::weak_ptr<RBX::ScriptInformationProvider>,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x585108() -> ! {
+    todo!("0x585108 RBX::handleScriptInfoResponse(RBX::ScriptInformationProvider::RequestResult,float,boost::weak_ptr<RBX::DataModel>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,float,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::weak_ptr<RBX::ScriptInformationProvider>,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x585a10 — __ZN3RBXL18CallResultFunctionEN5boost8functionIFvNS0_10shared_ptrINS_8InstanceEEEEEES4_
+#[doc(alias = "RBX::CallResultFunction(boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::CallResultFunction(boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x585a10() -> ! {
+    todo!("0x585a10 RBX::CallResultFunction(boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x585b24 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED1Ev
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")]
+// was: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()
+pub fn stub_0x585b24() -> ! {
+    todo!("0x585b24 RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")
+}
+
+// 0x585d20 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()")]
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()
+pub fn stub_0x585d20() -> ! {
+    todo!("0x585d20 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()")
+}
+
+// 0x585d60 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
+pub fn stub_0x585d60() -> ! {
+    todo!("0x585d60 RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+}
+
+// 0x585e6c — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX8InstanceEEEEEaSERKS6_
+#[doc(alias = "boost::function<void ()(boost::shared_ptr<RBX::Instance>)>::operator=(boost::function<void ()(boost::shared_ptr<RBX::Instance>)> const&)")]
+// was: boost::function<void ()(boost::shared_ptr<RBX::Instance>)>::operator=(boost::function<void ()(boost::shared_ptr<RBX::Instance>)> const&)
+pub fn stub_0x585e6c() -> ! {
+    todo!("0x585e6c boost::function<void ()(boost::shared_ptr<RBX::Instance>)>::operator=(boost::function<void ()(boost::shared_ptr<RBX::Instance>)> const&)")
+}
+
+// 0x5864b4 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13ModelInstanceEEERS3_RKNS0_IT_EE
+#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ModelInstance>(boost::shared_ptr<RBX::ModelInstance> const&)")]
+// was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ModelInstance>(boost::shared_ptr<RBX::ModelInstance> const&)
+pub fn stub_0x5864b4() -> ! {
+    todo!("0x5864b4 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ModelInstance>(boost::shared_ptr<RBX::ModelInstance> const&)")
+}
+
+// 0x5864e8 — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE21fireAndReplicateEventEPS2_SsS6_
+#[doc(alias = "RBX::Reflection::RemoteEventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::fireAndReplicateEvent(RBX::InsertService*,std::string,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::Reflection::RemoteEventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::fireAndReplicateEvent(RBX::InsertService*,std::string,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x5864e8() -> ! {
+    todo!("0x5864e8 RBX::Reflection::RemoteEventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::fireAndReplicateEvent(RBX::InsertService*,std::string,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x58673c — __ZN5boost4bindIvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS2_8InstanceEEES4_SsNS_3argILi1EEEEENS_3_bi6bind_tIT_PFSC_T0_T1_T2_ENSA_9list_av_3IT3_T4_T5_E4typeEEESH_SJ_SK_SL_
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list_av_3<boost::weak_ptr<RBX::InsertService>,std::string,boost::arg<1>>::type> boost::bind<void,boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>,boost::weak_ptr<RBX::InsertService>,std::string,boost::arg<1>>(void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::weak_ptr<RBX::InsertService>,std::string,boost::arg<1>)")]
+// was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list_av_3<boost::weak_ptr<RBX::InsertService>,std::string,boost::arg<1>>::type> boost::bind<void,boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>,boost::weak_ptr<RBX::InsertService>,std::string,boost::arg<1>>(void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::weak_ptr<RBX::InsertService>,std::string,boost::arg<1>)
+pub fn stub_0x58673c() -> ! {
+    todo!("0x58673c boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list_av_3<boost::weak_ptr<RBX::InsertService>,std::string,boost::arg<1>>::type> boost::bind<void,boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>,boost::weak_ptr<RBX::InsertService>,std::string,boost::arg<1>>(void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::weak_ptr<RBX::InsertService>,std::string,boost::arg<1>)")
+}
+
+// 0x586fc8 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX13InsertServiceEEENS2_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS7_INS2_8InstanceEEESaISA_EEEENS_8functionIFvSA_EEES4_NS_3argILi1EEENSH_ILi2EEESG_EENS_3_bi6bind_tIT_PFSM_T0_T1_T2_T3_ENSK_9list_av_4IT4_T5_T6_T7_E4typeEEESS_SU_SV_SW_SX_
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list_av_4<boost::weak_ptr<RBX::InsertService>,boost::arg<1>,boost::arg<2>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>::type> boost::bind<void,boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::weak_ptr<RBX::InsertService>,boost::arg<1>,boost::arg<2>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>(void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::weak_ptr<RBX::InsertService>,boost::arg<1>,boost::arg<2>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")]
+// was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list_av_4<boost::weak_ptr<RBX::InsertService>,boost::arg<1>,boost::arg<2>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>::type> boost::bind<void,boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::weak_ptr<RBX::InsertService>,boost::arg<1>,boost::arg<2>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>(void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::weak_ptr<RBX::InsertService>,boost::arg<1>,boost::arg<2>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)
+pub fn stub_0x586fc8() -> ! {
+    todo!("0x586fc8 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list_av_4<boost::weak_ptr<RBX::InsertService>,boost::arg<1>,boost::arg<2>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>::type> boost::bind<void,boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::weak_ptr<RBX::InsertService>,boost::arg<1>,boost::arg<2>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>(void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::weak_ptr<RBX::InsertService>,boost::arg<1>,boost::arg<2>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")
+}
+
+// 0x587678 — __ZN5boost9function2IvN3RBX14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS4_INS1_8InstanceEEESaIS7_EEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13InsertServiceEEES3_SA_NS_8functionIFvS7_EEEENSD_5list4INSD_5valueISH_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEEEvT_
+#[doc(alias = "void boost::function2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>)")]
+// was: void boost::function2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>)
+pub fn stub_0x587678() -> ! {
+    todo!("0x587678 void boost::function2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>)")
+}
+
+// 0x5877e8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSB_INS6_8InstanceEEESaISE_EEEENS_8functionIFvSE_EEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEE6manageERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_0x5877e8() -> ! {
+    todo!("0x5877e8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x587804 — __ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSB_INS6_8InstanceEEESaISE_EEEENS_8functionIFvSE_EEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEvSA_SH_E6invokeERNS1_15function_bufferESA_SH_
+#[doc(alias = "boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>)")]
+// was: boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>)
+pub fn stub_0x587804() -> ! {
+    todo!("0x587804 boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::invoke(boost::detail::function::function_buffer &,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>)")
+}
+
+// 0x587820 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS6_INS3_8InstanceEEESaIS9_EEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13InsertServiceEEES5_SC_NS_8functionIFvS9_EEEENSF_5list4INSF_5valueISJ_EENS_3argILi1EEENSS_ILi2EEENSQ_ISM_EEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,boost::detail::function::function_buffer &)const")]
+// was: bool boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,boost::detail::function::function_buffer &)const
+pub fn stub_0x587820() -> ! {
+    todo!("0x587820 bool boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0x587980 — __ZNK5boost6detail8function13basic_vtable2IvN3RBX14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS6_INS3_8InstanceEEESaIS9_EEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13InsertServiceEEES5_SC_NS_8functionIFvS9_EEEENSF_5list4INSF_5valueISJ_EENS_3argILi1EEENSS_ILi2EEENSQ_ISM_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// was: bool boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn stub_0x587980() -> ! {
+    todo!("0x587980 bool boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0x587adc — __ZNK5boost6detail8function13basic_vtable2IvN3RBX14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS6_INS3_8InstanceEEESaIS9_EEEEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13InsertServiceEEES5_SC_NS_8functionIFvS9_EEEENSF_5list4INSF_5valueISJ_EENS_3argILi1EEENSS_ILi2EEENSQ_ISM_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+#[doc(alias = "void boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+// was: void boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
+pub fn stub_0x587adc() -> ! {
+    todo!("0x587adc void boost::detail::function::basic_vtable2<void,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+// 0x587be8 — __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS_3argILi1EEENS8_ILi2EEENS2_INS_8functionIFvNS_10shared_ptrINS4_8InstanceEEEEEEEEEclIPFvS6_NS4_14AsyncHttpQueue13RequestResultENSC_ISt6vectorISE_SaISE_EEEESG_ENS0_5list2IRSL_RSP_EEEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "void boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::operator()<void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&> &,int)")]
+// was: void boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::operator()<void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&> &,int)
+pub fn stub_0x587be8() -> ! {
+    todo!("0x587be8 void boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::operator()<void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>) &,boost::_bi::list2<RBX::AsyncHttpQueue::RequestResult&,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>&> &,int)")
+}
+
+// 0x587d3c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEENS6_14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINSB_INS6_8InstanceEEESaISE_EEEENS_8functionIFvSE_EEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEE7managerERKNS1_15function_bufferERSX_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+pub fn stub_0x587d3c() -> ! {
+    todo!("0x587d3c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,RBX::AsyncHttpQueue::RequestResult,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0x587ef0 — __ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS_3argILi1EEENS8_ILi2EEENS2_INS_8functionIFvNS_10shared_ptrINS4_8InstanceEEEEEEEEEC2ES7_S9_SA_SH_
+#[doc(alias = "boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::list4(boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>)")]
+// was: boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::list4(boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>)
+pub fn stub_0x587ef0() -> ! {
+    todo!("0x587ef0 boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::list4(boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>)")
+}
+
+// 0x587ff4 — __ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS_3argILi1EEENS8_ILi2EEENS2_INS_8functionIFvNS_10shared_ptrINS4_8InstanceEEEEEEEEEC2ES7_S9_SA_SH_
+#[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>)")]
+// was: boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>)
+pub fn stub_0x587ff4() -> ! {
+    todo!("0x587ff4 boost::_bi::storage4<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::storage4(boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>)")
+}
+
+// 0x5888cc — __ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_13InsertServiceEEESsS4_ENS7_5list3INS7_5valueISB_EENSF_ISsEENS_3argILi1EEEEEEEEEvT_
+#[doc(alias = "void boost::function1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>)")]
+// was: void boost::function1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>)
+pub fn stub_0x5888cc() -> ! {
+    todo!("0x5888cc void boost::function1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>)")
+}
+
+// 0x588a64 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS6_8InstanceEEEENS3_5list3INS3_5valueIS8_EENSF_ISsEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
+pub fn stub_0x588a64() -> ! {
+    todo!("0x588a64 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+}
+
+// 0x588a80 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS6_8InstanceEEEENS3_5list3INS3_5valueIS8_EENSF_ISsEENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")]
+// was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x588a80() -> ! {
+    todo!("0x588a80 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x588a98 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_13InsertServiceEEESsS6_ENS9_5list3INS9_5valueISD_EENSH_ISsEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
+// was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,boost::detail::function::function_buffer &)const
+pub fn stub_0x588a98() -> ! {
+    todo!("0x588a98 bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")
+}
+
+// 0x588c20 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_13InsertServiceEEESsS6_ENS9_5list3INS9_5valueISD_EENSH_ISsEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+// was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
+pub fn stub_0x588c20() -> ! {
+    todo!("0x588c20 bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
+}
+
+// 0x588da4 — __ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX8InstanceEEEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_13InsertServiceEEESsS6_ENS9_5list3INS9_5valueISD_EENSH_ISsEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+#[doc(alias = "void boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+// was: void boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
+pub fn stub_0x588da4() -> ! {
+    todo!("0x588da4 void boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
+}
+
+// 0x588eac — __ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX13InsertServiceEEEEENS2_ISsEENS_3argILi1EEEEclIPFvS6_SsNS_10shared_ptrINS4_8InstanceEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>::operator()<void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")]
+// was: void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>::operator()<void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)
+pub fn stub_0x588eac() -> ! {
+    todo!("0x588eac void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>::operator()<void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")
+}
+
+// 0x58905c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13InsertServiceEEESsNS_10shared_ptrINS6_8InstanceEEEENS3_5list3INS3_5valueIS8_EENSF_ISsEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+// was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
+pub fn stub_0x58905c() -> ! {
+    todo!("0x58905c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::InsertService>,std::string,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::InsertService>>,boost::_bi::value<std::string>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
+}
+
+// 0x589654 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E9fireEventEPS2_SsS6_
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::InsertService::*>::fireEvent(RBX::InsertService*,std::string,boost::shared_ptr<RBX::Instance>)const")]
+// was: RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::InsertService::*>::fireEvent(RBX::InsertService*,std::string,boost::shared_ptr<RBX::Instance>)const
+pub fn stub_0x589654() -> ! {
+    todo!("0x589654 RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::InsertService::*>::fireEvent(RBX::InsertService*,std::string,boost::shared_ptr<RBX::Instance>)const")
+}
+
+// 0x5897c8 — __ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE14replicateEventEPNS0_11EventSourceESsS6_
+#[doc(alias = "RBX::Reflection::RemoteEventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::replicateEvent(RBX::Reflection::EventSource *,std::string,boost::shared_ptr<RBX::Instance>)")]
+// was: RBX::Reflection::RemoteEventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::replicateEvent(RBX::Reflection::EventSource *,std::string,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x5897c8() -> ! {
+    todo!("0x5897c8 RBX::Reflection::RemoteEventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::replicateEvent(RBX::Reflection::EventSource *,std::string,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x589934 — __ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE24safe_static_do_get_mutexEv
+#[doc(alias = "rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::safe_static_do_get_mutex(void)")]
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::safe_static_do_get_mutex(void)
+pub fn stub_0x589934() -> ! {
+    todo!("0x589934 rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::safe_static_do_get_mutex(void)")
+}
+
+// 0x58a570 — __ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_13InsertServiceESsS6_EENSA_5list3INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEEEEEEEENS0_10connectionERKT_
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>> const&)")]
+// was: rbx::signals::connection rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>> const&)
+pub fn stub_0x58a570() -> ! {
+    todo!("0x58a570 rbx::signals::connection rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>> const&)")
+}
+
+// 0x58a5e4 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsNS_10shared_ptrIN3RBX8InstanceEEEEE4slotEEaSEPSA_
+#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot*)")]
+// was: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot*)
+pub fn stub_0x58a5e4() -> ! {
+    todo!("0x58a5e4 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot>::operator=(rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot*)")
+}
+
+// 0x58a608 — __ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_13InsertServiceESsS6_EENSA_5list3INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEEEEEEED1Ev
+#[doc(alias = "rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()
+pub fn stub_0x58a608() -> ! {
+    todo!("0x58a608 rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+}
+
+// 0x58a634 — __ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_13InsertServiceESsS6_EENSA_5list3INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEEEEEEED0Ev
+#[doc(alias = "rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()
+pub fn stub_0x58a634() -> ! {
+    todo!("0x58a634 rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
+}
+
+// 0x58a708 — __ZNK3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot9connectedEv
+#[doc(alias = "rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::connected(void)const")]
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::connected(void)const
+pub fn stub_0x58a708() -> ! {
+    todo!("0x58a708 rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::connected(void)const")
+}
+
+// 0x58a714 — __ZN3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_13InsertServiceESsS7_EENSB_5list3INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEEEEEELi2ES8_E4callESsS7_
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)")]
+// was: rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x58a714() -> ! {
+    todo!("0x58a714 rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x58a730 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_13InsertServiceESsS7_EENSB_5list3INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEEEEEELi2ES8_E4callESsS7_
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)")]
+// was: non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)
+pub fn stub_0x58a730() -> ! {
+    todo!("0x58a730 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x58a74c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX13InsertServiceEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_SsNS_10shared_ptrINS3_8InstanceEEEEENS0_5list2IRSsRSG_EEEEvNS0_4typeIvEERT_RT0_i
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::InsertService *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<std::string &,boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list2<std::string &,boost::shared_ptr<RBX::Instance>&> &,int)")]
+// was: void boost::_bi::list3<boost::_bi::value<RBX::InsertService *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<std::string &,boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list2<std::string &,boost::shared_ptr<RBX::Instance>&> &,int)
+pub fn stub_0x58a74c() -> ! {
+    todo!("0x58a74c void boost::_bi::list3<boost::_bi::value<RBX::InsertService *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<std::string &,boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list2<std::string &,boost::shared_ptr<RBX::Instance>&> &,int)")
+}
+
+// 0x58a8c0 — __ZNK5boost4_mfi3mf2IvN3RBX13InsertServiceESsNS_10shared_ptrINS2_8InstanceEEEEclEPS3_SsS6_
+#[doc(alias = "boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>::operator()(RBX::InsertService*,std::string,boost::shared_ptr<RBX::Instance>)const")]
+// was: boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>::operator()(RBX::InsertService*,std::string,boost::shared_ptr<RBX::Instance>)const
+pub fn stub_0x58a8c0() -> ! {
+    todo!("0x58a8c0 boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>::operator()(RBX::InsertService*,std::string,boost::shared_ptr<RBX::Instance>)const")
+}
+
+// 0x58aa4c — __ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot22safe_static_init_mutexEv
+#[doc(alias = "rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_init_mutex(void)")]
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_init_mutex(void)
+pub fn stub_0x58aa4c() -> ! {
+    todo!("0x58aa4c rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_init_mutex(void)")
+}
+
+// 0x58aa50 — __ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slot24safe_static_do_get_mutexEv
+#[doc(alias = "rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_do_get_mutex(void)")]
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_do_get_mutex(void)
+pub fn stub_0x58aa50() -> ! {
+    todo!("0x58aa50 rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::safe_static_do_get_mutex(void)")
+}
+
+// 0x58ab40 — __ZN3rbx7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotD0Ev
+#[doc(alias = "rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::~slot()")]
+// was: rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::~slot()
+pub fn stub_0x58ab40() -> ! {
+    todo!("0x58ab40 rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot::~slot()")
+}
+
+// 0x58ac14 — __ZN3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_13InsertServiceESsS7_EENSB_5list3INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEEEEEELi2ES8_ED1Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::~callable()")]
+// was: rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
+pub fn stub_0x58ac14() -> ! {
+    todo!("0x58ac14 rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::~callable()")
+}
+
+// 0x58ac40 — __ZN3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_13InsertServiceESsS7_EENSB_5list3INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEEEEEELi2ES8_ED0Ev
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::~callable()")]
+// was: rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::~callable()
+pub fn stub_0x58ac40() -> ! {
+    todo!("0x58ac40 rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::~callable()")
+}
+
+// 0x58b120 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEE5dummy7nonnullEv
+#[doc(alias = "boost::function1<void,boost::shared_ptr<RBX::Instance>>::dummy::nonnull(void)")]
+// was: boost::function1<void,boost::shared_ptr<RBX::Instance>>::dummy::nonnull(void)
+pub fn stub_0x58b120() -> ! {
+    todo!("0x58b120 boost::function1<void,boost::shared_ptr<RBX::Instance>>::dummy::nonnull(void)")
+}
+
+// 0x58c788 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13LuaWebServiceEEEN5boost10shared_ptrIT_EEv
+#[doc(alias = "boost::shared_ptr<RBX::LuaWebService> RBX::Creatable<RBX::Instance>::create<RBX::LuaWebService>(void)")]
+// was: boost::shared_ptr<RBX::LuaWebService> RBX::Creatable<RBX::Instance>::create<RBX::LuaWebService>(void)
+pub fn stub_0x58c788() -> ! {
+    todo!("0x58c788 boost::shared_ptr<RBX::LuaWebService> RBX::Creatable<RBX::Instance>::create<RBX::LuaWebService>(void)")
+}
+
+// 0x58c838 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13LuaWebServiceEEERS3_RKNS0_IT_EE
+#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::LuaWebService>(boost::shared_ptr<RBX::LuaWebService> const&)")]
+// was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::LuaWebService>(boost::shared_ptr<RBX::LuaWebService> const&)
+pub fn stub_0x58c838() -> ! {
+    todo!("0x58c838 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::LuaWebService>(boost::shared_ptr<RBX::LuaWebService> const&)")
+}
+
+// 0x58c870 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX13LuaWebServiceENS2_9CreatableINS2_8InstanceEE7DeleterEED0Ev
+#[doc(alias = "boost::detail::sp_counted_impl_pd<RBX::LuaWebService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")]
+// was: boost::detail::sp_counted_impl_pd<RBX::LuaWebService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()
+pub fn stub_0x58c870() -> ! {
+    todo!("0x58c870 boost::detail::sp_counted_impl_pd<RBX::LuaWebService *,RBX::Creatable<RBX::Instance>::Deleter>::~sp_counted_impl_pd()")
+}
+
+// 0x58ca70 — __ZN3rbx13remote_signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEEC2Ev
+#[doc(alias = "rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::remote_signal(void)")]
+// was: rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::remote_signal(void)
+pub fn stub_0x58ca70() -> ! {
+    todo!("0x58ca70 rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::remote_signal(void)")
+}
+
+// 0x58d1f8 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS2_FvS6_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+pub fn stub_0x58d1f8() -> ! {
+    todo!("0x58d1f8 RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::BoundFuncDesc(void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x58d390 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE16declareSignatureEPKcNS0_7VariantE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)
+pub fn stub_0x58d390() -> ! {
+    todo!("0x58d390 RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0x58d3c0 — __ZN3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED0Ev
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
+pub fn stub_0x58d3c0() -> ! {
+    todo!("0x58d3c0 RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
+}
+
+// 0x58d4dc — __ZNK3RBX10Reflection13BoundFuncDescINS_13InsertServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+// was: RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const
+pub fn stub_0x58d4dc() -> ! {
+    todo!("0x58d4dc RBX::Reflection::BoundFuncDesc<RBX::InsertService,void ()(boost::shared_ptr<RBX::Instance>),1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
+}
+
+// 0x58d5c0 — __ZN3RBX10Reflection11Call1HelperINS_13InsertServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEES6_vE4callEPS2_S8_RNS0_7VariantERKS6_
+#[doc(alias = "RBX::Reflection::Call1Helper<RBX::InsertService,void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::InsertService*,void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)")]
+// was: RBX::Reflection::Call1Helper<RBX::InsertService,void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::InsertService*,void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)
+pub fn stub_0x58d5c0() -> ! {
+    todo!("0x58d5c0 RBX::Reflection::Call1Helper<RBX::InsertService,void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),boost::shared_ptr<RBX::Instance>,void>::call(RBX::InsertService*,void (RBX::InsertService::*)(boost::shared_ptr<RBX::Instance>),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&)")
+}
+
+// 0x58d6a8 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EEC2EMS2_FviNS3_8functionIFvS6_EEENS9_IFvSsEEEEPKcSH_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::BoundYieldFuncDesc(void (RBX::InsertService::*)(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::BoundYieldFuncDesc(void (RBX::InsertService::*)(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
+pub fn stub_0x58d6a8() -> ! {
+    todo!("0x58d6a8 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::BoundYieldFuncDesc(void (RBX::InsertService::*)(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x58d820 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EE16declareSignatureEPKcNS0_7VariantE
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::declareSignature(char const*,RBX::Reflection::Variant)
+pub fn stub_0x58d820() -> ! {
+    todo!("0x58d820 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0x58d850 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EED0Ev
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()")]
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()
+pub fn stub_0x58d850() -> ! {
+    todo!("0x58d850 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::~BoundYieldFuncDesc()")
+}
+
+// 0x58d924 — __ZNK3RBX10Reflection18BoundYieldFuncDescINS_13InsertServiceEFN5boost10shared_ptrINS_8InstanceEEEiES6_Li1EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsENS3_8functionIFvNS0_7VariantEEEENSE_IFvSsEEE
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")]
+// was: RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const
+pub fn stub_0x58d924() -> ! {
+    todo!("0x58d924 RBX::Reflection::BoundYieldFuncDesc<RBX::InsertService,boost::shared_ptr<RBX::Instance> ()(int),boost::shared_ptr<RBX::Instance>,1>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &,boost::function<void ()(RBX::Reflection::Variant)>,boost::function<void ()(std::string)>)const")
+}
+
+// 0x5904d8 — __ZN3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEED0Ev
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")]
+// was: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()
+pub fn stub_0x5904d8() -> ! {
+    todo!("0x5904d8 RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::~RemoteEventDesc()")
+}
+
+// 0x59058c — __ZNK3RBX10Reflection13EventDescImplILi2ENS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::InsertService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+// was: RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::InsertService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const
+pub fn stub_0x59058c() -> ! {
+    todo!("0x59058c RBX::Reflection::EventDescImpl<2,RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::InsertService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
+}
+
+// 0x5906f0 — __ZNK3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE12isScriptableEv
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const")]
+// was: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const
+pub fn stub_0x5906f0() -> ! {
+    todo!("0x5906f0 RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::isScriptable(void)const")
+}
+
+// 0x5906f8 — __ZNK3RBX10Reflection15RemoteEventDescINS_13InsertServiceEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEE11isBroadcastEv
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::isBroadcast(void)const")]
+// was: RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::isBroadcast(void)const
+pub fn stub_0x5906f8() -> ! {
+    todo!("0x5906f8 RBX::Reflection::RemoteEventDesc<RBX::InsertService,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>>::isBroadcast(void)const")
 }
