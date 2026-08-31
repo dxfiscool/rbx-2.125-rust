@@ -19,6 +19,7 @@ pub mod generated_14;
 pub mod generated_15;
 pub mod generated_16;
 pub mod generated_17;
+pub mod generated_18;
 pub mod generated_shard_a;
 pub mod generated_shard_b;
 pub mod high;
