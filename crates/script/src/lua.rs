@@ -1,7 +1,7 @@
 //! RBX::Script Lua VM skeletons — auto-generated from ida/export.json
-//! Filter: Script|Lua|Yield (case-sensitive, plus lua lower) — 3280 stubs, sorted by EA
+//! Filter: Script|Lua|Yield (case-sensitive, plus lua lower) — 3380 stubs, sorted by EA
 //! Source: ida/export.json (85545 funcs), DAG: script crate (RBX::Script, Lua, Yield)
-//! Batch range 0x267ec..0x82e1e4
+//! Batch range 0x267ec..0x8942e4
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports)]
 
@@ -21877,3 +21877,644 @@ pub fn stub_0x82e1e4() -> ! {
     todo!("0x82e1e4 f_luaopen(lua_State *,void *)")
 }
 
+
+// 0x82e258 — __ZL11close_stateP9lua_State
+#[doc(alias = "close_state(lua_State *)")]
+pub fn stub_0x82e258() -> ! {
+    todo!("0x82e258 close_state(lua_State *)")
+}
+
+// 0x82e2b0 — __Z9lua_closeP9lua_State
+#[doc(alias = "lua_close(lua_State *)")]
+pub fn stub_0x82e2b0() -> ! {
+    todo!("0x82e2b0 lua_close(lua_State *)")
+}
+
+// 0x82e304 — __ZL11callallgcTMP9lua_StatePv
+#[doc(alias = "callallgcTM(lua_State *,void *)")]
+pub fn stub_0x82e304() -> ! {
+    todo!("0x82e304 callallgcTM(lua_State *,void *)")
+}
+
+// 0x82eaf4 — __Z11luaS_resizeP9lua_Statei
+#[doc(alias = "luaS_resize(lua_State *,int)")]
+pub fn stub_0x82eaf4() -> ! {
+    todo!("0x82eaf4 luaS_resize(lua_State *,int)")
+}
+
+// 0x82eb98 — __Z12luaS_newlstrP9lua_StatePKcm
+// type: int __fastcall(int, void *__s1, size_t __n)
+#[doc(alias = "luaS_newlstr(lua_State *,char const*,unsigned long)")]
+pub fn stub_0x82eb98() -> ! {
+    todo!("0x82eb98 luaS_newlstr(lua_State *,char const*,unsigned long)")
+}
+
+// 0x82eca8 — __Z13luaS_newudataP9lua_StatemP5Table
+#[doc(alias = "luaS_newudata(lua_State *,unsigned long,Table *)")]
+pub fn stub_0x82eca8() -> ! {
+    todo!("0x82eca8 luaS_newudata(lua_State *,unsigned long,Table *)")
+}
+
+// 0x82edcc — __Z14luaopen_stringP9lua_State
+#[doc(alias = "luaopen_string(lua_State *)")]
+pub fn stub_0x82edcc() -> ! {
+    todo!("0x82edcc luaopen_string(lua_State *)")
+}
+
+// 0x82ee50 — __ZL8str_byteP9lua_State
+#[doc(alias = "str_byte(lua_State *)")]
+pub fn stub_0x82ee50() -> ! {
+    todo!("0x82ee50 str_byte(lua_State *)")
+}
+
+// 0x82ef58 — __ZL8str_charP9lua_State
+#[doc(alias = "str_char(lua_State *)")]
+pub fn stub_0x82ef58() -> ! {
+    todo!("0x82ef58 str_char(lua_State *)")
+}
+
+// 0x82f000 — __ZL8str_dumpP9lua_State
+#[doc(alias = "str_dump(lua_State *)")]
+pub fn stub_0x82f000() -> ! {
+    todo!("0x82f000 str_dump(lua_State *)")
+}
+
+// 0x82f078 — __ZL8str_findP9lua_State
+#[doc(alias = "str_find(lua_State *)")]
+pub fn stub_0x82f078() -> ! {
+    todo!("0x82f078 str_find(lua_State *)")
+}
+
+// 0x82f080 — __ZL10str_formatP9lua_State
+#[doc(alias = "str_format(lua_State *)")]
+pub fn stub_0x82f080() -> ! {
+    todo!("0x82f080 str_format(lua_State *)")
+}
+
+// 0x82f4b4 — __ZL11gfind_nodefP9lua_State
+#[doc(alias = "gfind_nodef(lua_State *)")]
+pub fn stub_0x82f4b4() -> ! {
+    todo!("0x82f4b4 gfind_nodef(lua_State *)")
+}
+
+// 0x82f4c8 — __ZL6gmatchP9lua_State
+#[doc(alias = "gmatch(lua_State *)")]
+pub fn stub_0x82f4c8() -> ! {
+    todo!("0x82f4c8 gmatch(lua_State *)")
+}
+
+// 0x82f508 — __ZL8str_gsubP9lua_State
+#[doc(alias = "str_gsub(lua_State *)")]
+pub fn stub_0x82f508() -> ! {
+    todo!("0x82f508 str_gsub(lua_State *)")
+}
+
+// 0x82f79c — __ZL7str_lenP9lua_State
+#[doc(alias = "str_len(lua_State *)")]
+pub fn stub_0x82f79c() -> ! {
+    todo!("0x82f79c str_len(lua_State *)")
+}
+
+// 0x82f7bc — __ZL9str_lowerP9lua_State
+#[doc(alias = "str_lower(lua_State *)")]
+pub fn stub_0x82f7bc() -> ! {
+    todo!("0x82f7bc str_lower(lua_State *)")
+}
+
+// 0x82f854 — __ZL9str_matchP9lua_State
+#[doc(alias = "str_match(lua_State *)")]
+pub fn stub_0x82f854() -> ! {
+    todo!("0x82f854 str_match(lua_State *)")
+}
+
+// 0x82f85c — __ZL7str_repP9lua_State
+#[doc(alias = "str_rep(lua_State *)")]
+pub fn stub_0x82f85c() -> ! {
+    todo!("0x82f85c str_rep(lua_State *)")
+}
+
+// 0x82f8e0 — __ZL11str_reverseP9lua_State
+#[doc(alias = "str_reverse(lua_State *)")]
+pub fn stub_0x82f8e0() -> ! {
+    todo!("0x82f8e0 str_reverse(lua_State *)")
+}
+
+// 0x82f97c — __ZL7str_subP9lua_State
+#[doc(alias = "str_sub(lua_State *)")]
+pub fn stub_0x82f97c() -> ! {
+    todo!("0x82f97c str_sub(lua_State *)")
+}
+
+// 0x82fa00 — __ZL9str_upperP9lua_State
+#[doc(alias = "str_upper(lua_State *)")]
+pub fn stub_0x82fa00() -> ! {
+    todo!("0x82fa00 str_upper(lua_State *)")
+}
+
+// 0x82fa98 — __ZL12str_find_auxP9lua_Statei
+#[doc(alias = "str_find_aux(lua_State *,int)")]
+pub fn stub_0x82fa98() -> ! {
+    todo!("0x82fa98 str_find_aux(lua_State *,int)")
+}
+
+// 0x830358 — __ZL10gmatch_auxP9lua_State
+#[doc(alias = "gmatch_aux(lua_State *)")]
+pub fn stub_0x830358() -> ! {
+    todo!("0x830358 gmatch_aux(lua_State *)")
+}
+
+// 0x830400 — __ZL6writerP9lua_StatePKvmPv
+#[doc(alias = "writer(lua_State *,void const*,unsigned long,void *)")]
+pub fn stub_0x830400() -> ! {
+    todo!("0x830400 writer(lua_State *,void const*,unsigned long,void *)")
+}
+
+// 0x8304d8 — __Z9luaH_nextP9lua_StateP5TableP10lua_TValue
+// type: int __fastcall(int, int, double *)
+#[doc(alias = "luaH_next(lua_State *,Table *,lua_TValue *)")]
+pub fn stub_0x8304d8() -> ! {
+    todo!("0x8304d8 luaH_next(lua_State *,Table *,lua_TValue *)")
+}
+
+// 0x83061c — __Z16luaH_resizearrayP9lua_StateP5Tablei
+#[doc(alias = "luaH_resizearray(lua_State *,Table *,int)")]
+pub fn stub_0x83061c() -> ! {
+    todo!("0x83061c luaH_resizearray(lua_State *,Table *,int)")
+}
+
+// 0x830640 — __ZL6resizeP9lua_StateP5Tableii
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "resize(lua_State *,Table *,int,int)")]
+pub fn stub_0x830640() -> ! {
+    todo!("0x830640 resize(lua_State *,Table *,int,int)")
+}
+
+// 0x830768 — __Z8luaH_newP9lua_Stateii
+#[doc(alias = "luaH_new(lua_State *,int,int)")]
+pub fn stub_0x830768() -> ! {
+    todo!("0x830768 luaH_new(lua_State *,int,int)")
+}
+
+// 0x8307c4 — __ZL14setarrayvectorP9lua_StateP5Tablei
+#[doc(alias = "setarrayvector(lua_State *,Table *,int)")]
+pub fn stub_0x8307c4() -> ! {
+    todo!("0x8307c4 setarrayvector(lua_State *,Table *,int)")
+}
+
+// 0x830828 — __ZL13setnodevectorP9lua_StateP5Tablei
+#[doc(alias = "setnodevector(lua_State *,Table *,int)")]
+pub fn stub_0x830828() -> ! {
+    todo!("0x830828 setnodevector(lua_State *,Table *,int)")
+}
+
+// 0x8308cc — __Z9luaH_freeP9lua_StateP5Table
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "luaH_free(lua_State *,Table *)")]
+pub fn stub_0x8308cc() -> ! {
+    todo!("0x8308cc luaH_free(lua_State *,Table *)")
+}
+
+// 0x830914 — __Z11luaH_getnumP5Tablei
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "luaH_getnum(Table *,int)")]
+pub fn stub_0x830914() -> ! {
+    todo!("0x830914 luaH_getnum(Table *,int)")
+}
+
+// 0x8309d0 — __Z11luaH_getstrP5TableP7TString
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "luaH_getstr(Table *,TString *)")]
+pub fn stub_0x8309d0() -> ! {
+    todo!("0x8309d0 luaH_getstr(Table *,TString *)")
+}
+
+// 0x830a0c — __Z8luaH_getP5TablePK10lua_TValue
+// type: void *__fastcall(int, _DWORD *)
+#[doc(alias = "luaH_get(Table *,lua_TValue const*)")]
+pub fn stub_0x830a0c() -> ! {
+    todo!("0x830a0c luaH_get(Table *,lua_TValue const*)")
+}
+
+// 0x830a78 — __ZL12mainpositionPK5TablePK10lua_TValue
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "mainposition(Table const*,lua_TValue const*)")]
+pub fn stub_0x830a78() -> ! {
+    todo!("0x830a78 mainposition(Table const*,lua_TValue const*)")
+}
+
+// 0x830ae4 — __Z8luaH_setP9lua_StateP5TablePK10lua_TValue
+// type: void *__fastcall(int, int, int)
+#[doc(alias = "luaH_set(lua_State *,Table *,lua_TValue const*)")]
+pub fn stub_0x830ae4() -> ! {
+    todo!("0x830ae4 luaH_set(lua_State *,Table *,lua_TValue const*)")
+}
+
+// 0x830b4c — __ZL6newkeyP9lua_StateP5TablePK10lua_TValue
+// type: void *__fastcall(int, int, _DWORD *)
+#[doc(alias = "newkey(lua_State *,Table *,lua_TValue const*)")]
+pub fn stub_0x830b4c() -> ! {
+    todo!("0x830b4c newkey(lua_State *,Table *,lua_TValue const*)")
+}
+
+// 0x830d84 — __Z11luaH_setnumP9lua_StateP5Tablei
+#[doc(alias = "luaH_setnum(lua_State *,Table *,int)")]
+pub fn stub_0x830d84() -> ! {
+    todo!("0x830d84 luaH_setnum(lua_State *,Table *,int)")
+}
+
+// 0x830dc8 — __Z11luaH_setstrP9lua_StateP5TableP7TString
+#[doc(alias = "luaH_setstr(lua_State *,Table *,TString *)")]
+pub fn stub_0x830dc8() -> ! {
+    todo!("0x830dc8 luaH_setstr(lua_State *,Table *,TString *)")
+}
+
+// 0x830e00 — __Z9luaH_getnP5Table
+#[doc(alias = "luaH_getn(Table *)")]
+pub fn stub_0x830e00() -> ! {
+    todo!("0x830e00 luaH_getn(Table *)")
+}
+
+// 0x830ecc — __ZL8countintPK10lua_TValuePi
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "countint(lua_TValue const*,int *)")]
+pub fn stub_0x830ecc() -> ! {
+    todo!("0x830ecc countint(lua_TValue const*,int *)")
+}
+
+// 0x830fe0 — __Z13luaopen_tableP9lua_State
+#[doc(alias = "luaopen_table(lua_State *)")]
+pub fn stub_0x830fe0() -> ! {
+    todo!("0x830fe0 luaopen_table(lua_State *)")
+}
+
+// 0x831000 — __ZL7tconcatP9lua_State
+#[doc(alias = "tconcat(lua_State *)")]
+pub fn stub_0x831000() -> ! {
+    todo!("0x831000 tconcat(lua_State *)")
+}
+
+// 0x8310d0 — __ZL7foreachP9lua_State
+#[doc(alias = "foreach(lua_State *)")]
+pub fn stub_0x8310d0() -> ! {
+    todo!("0x8310d0 foreach(lua_State *)")
+}
+
+// 0x831140 — __ZL8foreachiP9lua_State
+#[doc(alias = "foreachi(lua_State *)")]
+pub fn stub_0x831140() -> ! {
+    todo!("0x831140 foreachi(lua_State *)")
+}
+
+// 0x8311bc — __ZL4getnP9lua_State
+#[doc(alias = "getn(lua_State *)")]
+pub fn stub_0x8311bc() -> ! {
+    todo!("0x8311bc getn(lua_State *)")
+}
+
+// 0x8311e0 — __ZL4maxnP9lua_State
+#[doc(alias = "maxn(lua_State *)")]
+pub fn stub_0x8311e0() -> ! {
+    todo!("0x8311e0 maxn(lua_State *)")
+}
+
+// 0x831280 — __ZL7tinsertP9lua_State
+#[doc(alias = "tinsert(lua_State *)")]
+pub fn stub_0x831280() -> ! {
+    todo!("0x831280 tinsert(lua_State *)")
+}
+
+// 0x831304 — __ZL7tremoveP9lua_State
+#[doc(alias = "tremove(lua_State *)")]
+pub fn stub_0x831304() -> ! {
+    todo!("0x831304 tremove(lua_State *)")
+}
+
+// 0x831380 — __ZL4setnP9lua_State
+#[doc(alias = "setn(lua_State *)")]
+pub fn stub_0x831380() -> ! {
+    todo!("0x831380 setn(lua_State *)")
+}
+
+// 0x8313ac — __ZL4sortP9lua_State
+#[doc(alias = "sort(lua_State *)")]
+pub fn stub_0x8313ac() -> ! {
+    todo!("0x8313ac sort(lua_State *)")
+}
+
+// 0x831404 — __ZL7auxsortP9lua_Stateii
+#[doc(alias = "auxsort(lua_State *,int,int)")]
+pub fn stub_0x831404() -> ! {
+    todo!("0x831404 auxsort(lua_State *,int,int)")
+}
+
+// 0x831690 — __ZL9sort_compP9lua_Stateii
+#[doc(alias = "sort_comp(lua_State *,int,int)")]
+pub fn stub_0x831690() -> ! {
+    todo!("0x831690 sort_comp(lua_State *,int,int)")
+}
+
+// 0x8316ec — __ZL8addfieldP9lua_StateP11luaL_Bufferi
+#[doc(alias = "addfield(lua_State *,luaL_Buffer *,int)")]
+pub fn stub_0x8316ec() -> ! {
+    todo!("0x8316ec addfield(lua_State *,luaL_Buffer *,int)")
+}
+
+// 0x831800 — __Z9luaT_initP9lua_State
+#[doc(alias = "luaT_init(lua_State *)")]
+pub fn stub_0x831800() -> ! {
+    todo!("0x831800 luaT_init(lua_State *)")
+}
+
+// 0x831854 — __Z10luaT_gettmP5Table3TMSP7TString
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "luaT_gettm(Table *,TMS,TString *)")]
+pub fn stub_0x831854() -> ! {
+    todo!("0x831854 luaT_gettm(Table *,TMS,TString *)")
+}
+
+// 0x831878 — __Z15luaT_gettmbyobjP9lua_StatePK10lua_TValue3TMS
+// type: void *__fastcall(int, _DWORD *, int)
+#[doc(alias = "luaT_gettmbyobj(lua_State *,lua_TValue const*,TMS)")]
+pub fn stub_0x831878() -> ! {
+    todo!("0x831878 luaT_gettmbyobj(lua_State *,lua_TValue const*,TMS)")
+}
+
+// 0x831984 — __Z11luaU_undumpP9lua_StateP3ZioP7MbufferPKc
+#[doc(alias = "luaU_undump(lua_State *,Zio *,Mbuffer *,char const*)")]
+pub fn stub_0x831984() -> ! {
+    todo!("0x831984 luaU_undump(lua_State *,Zio *,Mbuffer *,char const*)")
+}
+
+// 0x831e50 — __Z11luaU_headerPc
+// type: _DWORD __fastcall(char *)
+#[doc(alias = "luaU_header(char *)")]
+pub fn stub_0x831e50() -> ! {
+    todo!("0x831e50 luaU_header(char *)")
+}
+
+// 0x831ff4 — __Z13luaV_tonumberPK10lua_TValuePS_
+// type: _DWORD *__fastcall(_DWORD *, int)
+#[doc(alias = "luaV_tonumber(lua_TValue const*,lua_TValue*)")]
+pub fn stub_0x831ff4() -> ! {
+    todo!("0x831ff4 luaV_tonumber(lua_TValue const*,lua_TValue*)")
+}
+
+// 0x832038 — __Z13luaV_tostringP9lua_StateP10lua_TValue
+// type: int __fastcall(int, int)
+#[doc(alias = "luaV_tostring(lua_State *,lua_TValue *)")]
+pub fn stub_0x832038() -> ! {
+    todo!("0x832038 luaV_tostring(lua_State *,lua_TValue *)")
+}
+
+// 0x8320a4 — __Z13luaV_gettableP9lua_StatePK10lua_TValuePS1_S4_
+// type: int __fastcall(int, _DWORD *, int, _DWORD *)
+#[doc(alias = "luaV_gettable(lua_State *,lua_TValue const*,lua_TValue*,lua_TValue*)")]
+pub fn stub_0x8320a4() -> ! {
+    todo!("0x8320a4 luaV_gettable(lua_State *,lua_TValue const*,lua_TValue*,lua_TValue*)")
+}
+
+// 0x832164 — __ZL9callTMresP9lua_StateP10lua_TValuePKS1_S4_S4_
+// type: int __fastcall(_DWORD *, int, int *, int *, int *)
+#[doc(alias = "callTMres(lua_State *,lua_TValue *,lua_TValue const*,lua_TValue const*,lua_TValue const*)")]
+pub fn stub_0x832164() -> ! {
+    todo!("0x832164 callTMres(lua_State *,lua_TValue *,lua_TValue const*,lua_TValue const*,lua_TValue const*)")
+}
+
+// 0x8321e8 — __Z13luaV_settableP9lua_StatePK10lua_TValuePS1_S4_
+// type: int __fastcall(_DWORD *, int *, int *, _DWORD *)
+#[doc(alias = "luaV_settable(lua_State *,lua_TValue const*,lua_TValue*,lua_TValue*)")]
+pub fn stub_0x8321e8() -> ! {
+    todo!("0x8321e8 luaV_settable(lua_State *,lua_TValue const*,lua_TValue*,lua_TValue*)")
+}
+
+// 0x83234c — __Z13luaV_lessthanP9lua_StatePK10lua_TValueS3_
+// type: unsigned int __fastcall(int, _DWORD *, _DWORD *)
+#[doc(alias = "luaV_lessthan(lua_State *,lua_TValue const*,lua_TValue const*)")]
+pub fn stub_0x83234c() -> ! {
+    todo!("0x83234c luaV_lessthan(lua_State *,lua_TValue const*,lua_TValue const*)")
+}
+
+// 0x83240c — __ZL12call_orderTMP9lua_StatePK10lua_TValueS3_3TMS
+// type: int __fastcall(_DWORD *, int *, int *, int)
+#[doc(alias = "call_orderTM(lua_State *,lua_TValue const*,lua_TValue const*,TMS)")]
+pub fn stub_0x83240c() -> ! {
+    todo!("0x83240c call_orderTM(lua_State *,lua_TValue const*,lua_TValue const*,TMS)")
+}
+
+// 0x832478 — __Z13luaV_equalvalP9lua_StatePK10lua_TValueS3_
+// type: int __fastcall(int, double *, int)
+#[doc(alias = "luaV_equalval(lua_State *,lua_TValue const*,lua_TValue const*)")]
+pub fn stub_0x832478() -> ! {
+    todo!("0x832478 luaV_equalval(lua_State *,lua_TValue const*,lua_TValue const*)")
+}
+
+// 0x832514 — __ZL10get_compTMP9lua_StateP5TableS2_3TMS
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "get_compTM(lua_State *,Table *,Table *,TMS)")]
+pub fn stub_0x832514() -> ! {
+    todo!("0x832514 get_compTM(lua_State *,Table *,Table *,TMS)")
+}
+
+// 0x832584 — __Z11luaV_concatP9lua_Stateii
+#[doc(alias = "luaV_concat(lua_State *,int,int)")]
+pub fn stub_0x832584() -> ! {
+    todo!("0x832584 luaV_concat(lua_State *,int,int)")
+}
+
+// 0x8326f8 — __ZL10call_binTMP9lua_StatePK10lua_TValueS3_PS1_3TMS
+// type: int __fastcall(_DWORD *, int *, int *, int, int)
+#[doc(alias = "call_binTM(lua_State *,lua_TValue const*,lua_TValue const*,lua_TValue*,TMS)")]
+pub fn stub_0x8326f8() -> ! {
+    todo!("0x8326f8 call_binTM(lua_State *,lua_TValue const*,lua_TValue const*,lua_TValue*,TMS)")
+}
+
+// 0x832744 — __Z12luaV_executeP9lua_Statei
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "luaV_execute(lua_State *,int)")]
+pub fn stub_0x832744() -> ! {
+    todo!("0x832744 luaV_execute(lua_State *,int)")
+}
+
+// 0x833730 — __ZL5ArithP9lua_StateP10lua_TValuePKS1_S4_3TMS
+// type: int __fastcall(_DWORD *, int, int *, int *, int)
+#[doc(alias = "Arith(lua_State *,lua_TValue *,lua_TValue const*,lua_TValue const*,TMS)")]
+pub fn stub_0x833730() -> ! {
+    todo!("0x833730 Arith(lua_State *,lua_TValue *,lua_TValue const*,lua_TValue const*,TMS)")
+}
+
+// 0x8338c8 — __Z9luaZ_fillP3Zio
+#[doc(alias = "luaZ_fill(Zio *)")]
+pub fn stub_0x8338c8() -> ! {
+    todo!("0x8338c8 luaZ_fill(Zio *)")
+}
+
+// 0x8338fc — __Z14luaZ_lookaheadP3Zio
+#[doc(alias = "luaZ_lookahead(Zio *)")]
+pub fn stub_0x8338fc() -> ! {
+    todo!("0x8338fc luaZ_lookahead(Zio *)")
+}
+
+// 0x833930 — __Z9luaZ_initP9lua_StateP3ZioPFPKcS0_PvPmES5_
+#[doc(alias = "luaZ_init(lua_State *,Zio *,char const* (*)(lua_State *,void *,unsigned long *),void *)")]
+pub fn stub_0x833930() -> ! {
+    todo!("0x833930 luaZ_init(lua_State *,Zio *,char const* (*)(lua_State *,void *,unsigned long *),void *)")
+}
+
+// 0x833940 — __Z9luaZ_readP3ZioPvm
+#[doc(alias = "luaZ_read(Zio *,void *,unsigned long)")]
+pub fn stub_0x833940() -> ! {
+    todo!("0x833940 luaZ_read(Zio *,void *,unsigned long)")
+}
+
+// 0x8339a0 — __Z14luaZ_openspaceP9lua_StateP7Mbufferm
+#[doc(alias = "luaZ_openspace(lua_State *,Mbuffer *,unsigned long)")]
+pub fn stub_0x8339a0() -> ! {
+    todo!("0x8339a0 luaZ_openspace(lua_State *,Mbuffer *,unsigned long)")
+}
+
+// 0x84527c — __ZNK3RBX10Reflection15RemoteEventDescINS_13FriendServiceEFviiNS2_12FriendStatusEEN3rbx13remote_signalIS4_EEE12isScriptableEv
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::FriendService,void ()(int,int,RBX::FriendService::FriendStatus),rbx::remote_signal<void ()(int,int,RBX::FriendService::FriendStatus)>>::isScriptable(void)const")]
+pub fn stub_0x84527c() -> ! {
+    todo!("0x84527c RBX::Reflection::RemoteEventDesc<RBX::FriendService,void ()(int,int,RBX::FriendService::FriendStatus),rbx::remote_signal<void ()(int,int,RBX::FriendService::FriendStatus)>>::isScriptable(void)const")
+}
+
+// 0x846a1c — __ZNK3RBX10Reflection15RemoteEventDescINS_13FriendServiceEFviiNS2_15FriendEventTypeEEN3rbx13remote_signalIS4_EEE12isScriptableEv
+// type: int __fastcall(int)
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::FriendService,void ()(int,int,RBX::FriendService::FriendEventType),rbx::remote_signal<void ()(int,int,RBX::FriendService::FriendEventType)>>::isScriptable(void)const")]
+pub fn stub_0x846a1c() -> ! {
+    todo!("0x846a1c RBX::Reflection::RemoteEventDesc<RBX::FriendService,void ()(int,int,RBX::FriendService::FriendEventType),rbx::remote_signal<void ()(int,int,RBX::FriendService::FriendEventType)>>::isScriptable(void)const")
+}
+
+// 0x8560a8 — __ZN3RBX17ClientAppSettings44ReadValueMinNumberScriptExecutionsToGetPrizeEPKc
+// type: _DWORD __fastcall(RBX::ClientAppSettings *__hidden this, const char *)
+#[doc(alias = "RBX::ClientAppSettings::ReadValueMinNumberScriptExecutionsToGetPrize(char const*)")]
+pub fn stub_0x8560a8() -> ! {
+    todo!("0x8560a8 RBX::ClientAppSettings::ReadValueMinNumberScriptExecutionsToGetPrize(char const*)")
+}
+
+// 0x86be0c — __ZN3RBX19MegaClusterInstance13getCellScriptEiii
+// type: _DWORD __fastcall(RBX::MegaClusterInstance *__hidden this, RBX::MegaClusterInstance *, int, int)
+#[doc(alias = "RBX::MegaClusterInstance::getCellScript(int,int,int)")]
+pub fn stub_0x86be0c() -> ! {
+    todo!("0x86be0c RBX::MegaClusterInstance::getCellScript(int,int,int)")
+}
+
+// 0x86c0b4 — __ZN3RBX19MegaClusterInstance13setCellScriptEiiiNS_5Voxel12CellMaterialENS1_9CellBlockENS1_15CellOrientationE
+#[doc(alias = "RBX::MegaClusterInstance::setCellScript(int,int,int,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation)")]
+pub fn stub_0x86c0b4() -> ! {
+    todo!("0x86c0b4 RBX::MegaClusterInstance::setCellScript(int,int,int,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation)")
+}
+
+// 0x86c178 — __ZN3RBX19MegaClusterInstance14setCellsScriptENS_12Region3int16ENS_5Voxel12CellMaterialENS2_9CellBlockENS2_15CellOrientationE
+#[doc(alias = "RBX::MegaClusterInstance::setCellsScript(RBX::Region3int16,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation)")]
+pub fn stub_0x86c178() -> ! {
+    todo!("0x86c178 RBX::MegaClusterInstance::setCellsScript(RBX::Region3int16,RBX::Voxel::CellMaterial,RBX::Voxel::CellBlock,RBX::Voxel::CellOrientation)")
+}
+
+// 0x86c21c — __ZN3RBX19MegaClusterInstance18getWaterCellScriptEiii
+// type: _DWORD __fastcall(RBX::MegaClusterInstance *__hidden this, RBX::MegaClusterInstance *, int, int)
+#[doc(alias = "RBX::MegaClusterInstance::getWaterCellScript(int,int,int)")]
+pub fn stub_0x86c21c() -> ! {
+    todo!("0x86c21c RBX::MegaClusterInstance::getWaterCellScript(int,int,int)")
+}
+
+// 0x86c490 — __ZN3RBX19MegaClusterInstance18setWaterCellScriptEiiiNS_5Voxel14WaterCellForceENS1_18WaterCellDirectionE
+#[doc(alias = "RBX::MegaClusterInstance::setWaterCellScript(int,int,int,RBX::Voxel::WaterCellForce,RBX::Voxel::WaterCellDirection)")]
+pub fn stub_0x86c490() -> ! {
+    todo!("0x86c490 RBX::MegaClusterInstance::setWaterCellScript(int,int,int,RBX::Voxel::WaterCellForce,RBX::Voxel::WaterCellDirection)")
+}
+
+// 0x86c528 — __ZN3RBX19MegaClusterInstance19autoWedgeCellScriptEiii
+// type: _DWORD __fastcall(RBX::MegaClusterInstance *__hidden this, int, int, int)
+#[doc(alias = "RBX::MegaClusterInstance::autoWedgeCellScript(int,int,int)")]
+pub fn stub_0x86c528() -> ! {
+    todo!("0x86c528 RBX::MegaClusterInstance::autoWedgeCellScript(int,int,int)")
+}
+
+// 0x86c9b8 — __ZN3RBX19MegaClusterInstance20autoWedgeCellsScriptENS_12Region3int16E
+#[doc(alias = "RBX::MegaClusterInstance::autoWedgeCellsScript(RBX::Region3int16)")]
+pub fn stub_0x86c9b8() -> ! {
+    todo!("0x86c9b8 RBX::MegaClusterInstance::autoWedgeCellsScript(RBX::Region3int16)")
+}
+
+// 0x86ca30 — __ZN3RBX19MegaClusterInstance23cellCenterToWorldScriptEiii
+// type: _DWORD __fastcall(RBX::MegaClusterInstance *__hidden this, int, int, int)
+#[doc(alias = "RBX::MegaClusterInstance::cellCenterToWorldScript(int,int,int)")]
+pub fn stub_0x86ca30() -> ! {
+    todo!("0x86ca30 RBX::MegaClusterInstance::cellCenterToWorldScript(int,int,int)")
+}
+
+// 0x86ca80 — __ZN3RBX19MegaClusterInstance28worldToCellPreferSolidScriptEN3G3D7Vector3E
+#[doc(alias = "RBX::MegaClusterInstance::worldToCellPreferSolidScript(G3D::Vector3)")]
+pub fn stub_0x86ca80() -> ! {
+    todo!("0x86ca80 RBX::MegaClusterInstance::worldToCellPreferSolidScript(G3D::Vector3)")
+}
+
+// 0x86caec — __ZN3RBX19MegaClusterInstance28worldToCellPreferEmptyScriptEN3G3D7Vector3E
+#[doc(alias = "RBX::MegaClusterInstance::worldToCellPreferEmptyScript(G3D::Vector3)")]
+pub fn stub_0x86caec() -> ! {
+    todo!("0x86caec RBX::MegaClusterInstance::worldToCellPreferEmptyScript(G3D::Vector3)")
+}
+
+// 0x86cb58 — __ZN3RBX19MegaClusterInstance17worldToCellScriptEN3G3D7Vector3E
+#[doc(alias = "RBX::MegaClusterInstance::worldToCellScript(G3D::Vector3)")]
+pub fn stub_0x86cb58() -> ! {
+    todo!("0x86cb58 RBX::MegaClusterInstance::worldToCellScript(G3D::Vector3)")
+}
+
+// 0x86cc5c — __ZN3RBX19MegaClusterInstance16countCellsScriptEv
+// type: _DWORD __fastcall(RBX::MegaClusterInstance *__hidden this)
+#[doc(alias = "RBX::MegaClusterInstance::countCellsScript(void)")]
+pub fn stub_0x86cc5c() -> ! {
+    todo!("0x86cc5c RBX::MegaClusterInstance::countCellsScript(void)")
+}
+
+// 0x86cdc8 — __ZN3RBX19MegaClusterInstance8luaCloneEv
+// type: _DWORD __fastcall(RBX::MegaClusterInstance *__hidden this)
+#[doc(alias = "RBX::MegaClusterInstance::luaClone(void)")]
+pub fn stub_0x86cdc8() -> ! {
+    todo!("0x86cdc8 RBX::MegaClusterInstance::luaClone(void)")
+}
+
+// 0x8714e8 — __ZN3RBX19MegaClusterInstance23cellCornerToWorldScriptEiii
+// type: _DWORD __fastcall(RBX::MegaClusterInstance *__hidden this, int, int, int)
+#[doc(alias = "RBX::MegaClusterInstance::cellCornerToWorldScript(int,int,int)")]
+pub fn stub_0x8714e8() -> ! {
+    todo!("0x8714e8 RBX::MegaClusterInstance::cellCornerToWorldScript(int,int,int)")
+}
+
+// 0x885014 — __ZN3RBX6Plugin11getMouseLuaEv
+// type: _DWORD __fastcall(RBX::Plugin *__hidden this)
+#[doc(alias = "RBX::Plugin::getMouseLua(void)")]
+pub fn stub_0x885014() -> ! {
+    todo!("0x885014 RBX::Plugin::getMouseLua(void)")
+}
+
+// 0x892a54 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EED1Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")]
+pub fn stub_0x892a54() -> ! {
+    todo!("0x892a54 RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")
+}
+
+// 0x89413c — __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EEC2EMS2_FviN5boost8functionIFvSsEEES8_EPKcSC_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: _DWORD *__fastcall(_DWORD *, unsigned int, int, int, int, int, int, int)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::BoundYieldFuncDesc(void (RBX::PersonalServerService::*)(int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+pub fn stub_0x89413c() -> ! {
+    todo!("0x89413c RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::BoundYieldFuncDesc(void (RBX::PersonalServerService::*)(int,boost::function<void ()(std::string)>,boost::function<void ()(std::string)>),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
+}
+
+// 0x8942b4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EE16declareSignatureEPKcNS0_7VariantE
+// type: int __fastcall(int, int, int *)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+pub fn stub_0x8942b4() -> ! {
+    todo!("0x8942b4 RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::declareSignature(char const*,RBX::Reflection::Variant)")
+}
+
+// 0x8942e4 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_21PersonalServerServiceEFSsiESsLi1EED0Ev
+// type: void __fastcall(_DWORD *)
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")]
+pub fn stub_0x8942e4() -> ! {
+    todo!("0x8942e4 RBX::Reflection::BoundYieldFuncDesc<RBX::PersonalServerService,std::string ()(int),std::string,1>::~BoundYieldFuncDesc()")
+}
