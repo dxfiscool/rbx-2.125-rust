@@ -170,3 +170,4 @@ pub mod generated_shard_fd;
 pub mod generated_shard_fe;
 pub mod generated_gap_low;
 pub mod generated_bg_1;
+pub mod generated_bg_2;
