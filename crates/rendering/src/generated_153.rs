@@ -16,27 +16,27 @@ pub fn stub_2656b0() -> ! {
 }
 
 // 0x265768 — __ZThn20_N5boost16exception_detail10bad_alloc_D1Ev
-#[doc(alias = "non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")]
-// was: `non-virtual thunk to'boost::exception_detail::bad_alloc_::~bad_alloc_()
+#[doc(alias = "non-virtual thunk to boost::exception_detail::bad_alloc_::~bad_alloc_()")]
+// was: non-virtual thunk to boost::exception_detail::bad_alloc_::~bad_alloc_()
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
 pub fn stub_265768() -> ! {
-    todo!("0x265768 non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")
+    todo!("0x265768 non-virtual thunk to boost::exception_detail::bad_alloc_::~bad_alloc_()")
 }
 
 // 0x265770 — __ZThn20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
+#[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
 // type: int __fastcall(int)
 pub fn stub_265770() -> ! {
-    todo!("0x265770 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+    todo!("0x265770 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
 }
 
 // 0x265778 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED1Ev
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
 // type: int __fastcall(_DWORD *)
 pub fn stub_265778() -> ! {
-    todo!("0x265778 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+    todo!("0x265778 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
 }
 
 // 0x265788 — __ZN5boost16exception_detail10bad_alloc_D0Ev
@@ -296,11 +296,11 @@ pub fn stub_2665e8() -> ! {
 }
 
 // 0x2665f8 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
+#[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()
 // type: int __fastcall(int)
 pub fn stub_2665f8() -> ! {
-    todo!("0x2665f8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+    todo!("0x2665f8 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
 }
 
 // 0x266600 — __ZN12XmlAttributeC2IPKN3RBX4NameEEERS3_T_

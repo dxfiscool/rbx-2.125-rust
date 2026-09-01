@@ -56,37 +56,37 @@ pub fn stub_64c5f0() -> ! {
 // 0x64c638 — __ZThn32_N3RBX5Stats16TypedPercentItemD1Ev
 // type: void __fastcall(RBX::Stats::TypedPercentItem *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5Stats16TypedPercentItemD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 // was: __ZThn32_N3RBX5Stats16TypedPercentItemD1Ev
 pub fn stub_64c638() -> ! {
-    todo!("0x64c638 `non-virtual thunk to'RBX::Stats::TypedPercentItem::~TypedPercentItem()")
+    todo!("0x64c638 non-virtual thunk to RBX::Stats::TypedPercentItem::~TypedPercentItem()")
 }
 
 // 0x64c77c — __ZThn32_N3RBX5Stats16TypedPercentItemD0Ev
 // type: void __fastcall(RBX::Stats::TypedPercentItem *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5Stats16TypedPercentItemD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 // was: __ZThn32_N3RBX5Stats16TypedPercentItemD0Ev
 pub fn stub_64c77c() -> ! {
-    todo!("0x64c77c `non-virtual thunk to'RBX::Stats::TypedPercentItem::~TypedPercentItem()")
+    todo!("0x64c77c non-virtual thunk to RBX::Stats::TypedPercentItem::~TypedPercentItem()")
 }
 
 // 0x64c8d4 — __ZThn36_N3RBX5Stats16TypedPercentItemD1Ev
 // type: void __fastcall(RBX::Stats::TypedPercentItem *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5Stats16TypedPercentItemD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 // was: __ZThn36_N3RBX5Stats16TypedPercentItemD1Ev
 pub fn stub_64c8d4() -> ! {
-    todo!("0x64c8d4 `non-virtual thunk to'RBX::Stats::TypedPercentItem::~TypedPercentItem()")
+    todo!("0x64c8d4 non-virtual thunk to RBX::Stats::TypedPercentItem::~TypedPercentItem()")
 }
 
 // 0x64ca18 — __ZThn36_N3RBX5Stats16TypedPercentItemD0Ev
 // type: void __fastcall(RBX::Stats::TypedPercentItem *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5Stats16TypedPercentItemD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 // was: __ZThn36_N3RBX5Stats16TypedPercentItemD0Ev
 pub fn stub_64ca18() -> ! {
-    todo!("0x64ca18 `non-virtual thunk to'RBX::Stats::TypedPercentItem::~TypedPercentItem()")
+    todo!("0x64ca18 non-virtual thunk to RBX::Stats::TypedPercentItem::~TypedPercentItem()")
 }
 
 // 0x64cb70 — __ZN3RBX5Stats14TypedStatsItemIfED1Ev
@@ -101,19 +101,19 @@ pub fn stub_64cb70() -> ! {
 // 0x64ccb8 — __ZThn32_N3RBX5Stats14TypedStatsItemIfED1Ev
 // type: 
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemIfED1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemIfED1Ev
 pub fn stub_64ccb8() -> ! {
-    todo!("0x64ccb8 `non-virtual thunk to'RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
+    todo!("0x64ccb8 non-virtual thunk to RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
 }
 
 // 0x64ce00 — __ZThn36_N3RBX5Stats14TypedStatsItemIfED0Ev
 // type: 
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemIfED0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 // was: __ZThn36_N3RBX5Stats14TypedStatsItemIfED0Ev
 pub fn stub_64ce00() -> ! {
-    todo!("0x64ce00 `non-virtual thunk to'RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
+    todo!("0x64ce00 non-virtual thunk to RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
 }
 
 // 0x64cf58 — __ZNK5boost9function0IfEclEv
@@ -245,37 +245,37 @@ pub fn stub_64d5f8() -> ! {
 // 0x64d614 — __ZThn32_N3RBX5Stats12TypedMemItemD1Ev
 // type: void __fastcall(RBX::Stats::TypedMemItem *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5Stats12TypedMemItemD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedMemItem::~TypedMemItem()")]
 // was: __ZThn32_N3RBX5Stats12TypedMemItemD1Ev
 pub fn stub_64d614() -> ! {
-    todo!("0x64d614 `non-virtual thunk to'RBX::Stats::TypedMemItem::~TypedMemItem()")
+    todo!("0x64d614 non-virtual thunk to RBX::Stats::TypedMemItem::~TypedMemItem()")
 }
 
 // 0x64d758 — __ZThn32_N3RBX5Stats12TypedMemItemD0Ev
 // type: void __fastcall(RBX::Stats::TypedMemItem *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5Stats12TypedMemItemD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedMemItem::~TypedMemItem()")]
 // was: __ZThn32_N3RBX5Stats12TypedMemItemD0Ev
 pub fn stub_64d758() -> ! {
-    todo!("0x64d758 `non-virtual thunk to'RBX::Stats::TypedMemItem::~TypedMemItem()")
+    todo!("0x64d758 non-virtual thunk to RBX::Stats::TypedMemItem::~TypedMemItem()")
 }
 
 // 0x64d8b0 — __ZThn36_N3RBX5Stats12TypedMemItemD1Ev
 // type: void __fastcall(RBX::Stats::TypedMemItem *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5Stats12TypedMemItemD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedMemItem::~TypedMemItem()")]
 // was: __ZThn36_N3RBX5Stats12TypedMemItemD1Ev
 pub fn stub_64d8b0() -> ! {
-    todo!("0x64d8b0 `non-virtual thunk to'RBX::Stats::TypedMemItem::~TypedMemItem()")
+    todo!("0x64d8b0 non-virtual thunk to RBX::Stats::TypedMemItem::~TypedMemItem()")
 }
 
 // 0x64d9f4 — __ZThn36_N3RBX5Stats12TypedMemItemD0Ev
 // type: void __fastcall(RBX::Stats::TypedMemItem *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5Stats12TypedMemItemD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedMemItem::~TypedMemItem()")]
 // was: __ZThn36_N3RBX5Stats12TypedMemItemD0Ev
 pub fn stub_64d9f4() -> ! {
-    todo!("0x64d9f4 `non-virtual thunk to'RBX::Stats::TypedMemItem::~TypedMemItem()")
+    todo!("0x64d9f4 non-virtual thunk to RBX::Stats::TypedMemItem::~TypedMemItem()")
 }
 
 // 0x64db4c — __ZN3RBX5Stats14TypedStatsItemImED1Ev
@@ -308,37 +308,37 @@ pub fn stub_64dde8() -> ! {
 // 0x64de1c — __ZThn32_N3RBX5Stats14TypedStatsItemImED1Ev
 // type: 
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemImED1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemImED1Ev
 pub fn stub_64de1c() -> ! {
-    todo!("0x64de1c `non-virtual thunk to'RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
+    todo!("0x64de1c non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
 }
 
 // 0x64df60 — __ZThn32_N3RBX5Stats14TypedStatsItemImED0Ev
 // type: void __fastcall(_DWORD *)
 #[doc(alias = "__ZThn32_N3RBX5Stats14TypedStatsItemImED0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
 // was: __ZThn32_N3RBX5Stats14TypedStatsItemImED0Ev
 pub fn stub_64df60() -> ! {
-    todo!("0x64df60 `non-virtual thunk to'RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
+    todo!("0x64df60 non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
 }
 
 // 0x64e0b8 — __ZThn36_N3RBX5Stats14TypedStatsItemImED1Ev
 // type: 
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemImED1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
 // was: __ZThn36_N3RBX5Stats14TypedStatsItemImED1Ev
 pub fn stub_64e0b8() -> ! {
-    todo!("0x64e0b8 `non-virtual thunk to'RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
+    todo!("0x64e0b8 non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
 }
 
 // 0x64e1fc — __ZThn36_N3RBX5Stats14TypedStatsItemImED0Ev
 // type: 
 #[doc(alias = "__ZThn36_N3RBX5Stats14TypedStatsItemImED0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
 // was: __ZThn36_N3RBX5Stats14TypedStatsItemImED0Ev
 pub fn stub_64e1fc() -> ! {
-    todo!("0x64e1fc `non-virtual thunk to'RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
+    todo!("0x64e1fc non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
 }
 
 // 0x64e354 — __ZNK5boost9function0ImEclEv
@@ -499,7 +499,7 @@ pub fn stub_64e8e8() -> ! {
 #[doc(alias = "non-virtual thunk toProfilingItem::~ProfilingItem()")]
 // was: __ZThn32_N13ProfilingItemD1Ev
 pub fn stub_64eb20() -> ! {
-    todo!("0x64eb20 `non-virtual thunk to'ProfilingItem::~ProfilingItem()")
+    todo!("0x64eb20 non-virtual thunk to ProfilingItem::~ProfilingItem()")
 }
 
 // 0x64eb5c — __ZThn32_N13ProfilingItemD0Ev
@@ -508,7 +508,7 @@ pub fn stub_64eb20() -> ! {
 #[doc(alias = "non-virtual thunk toProfilingItem::~ProfilingItem()")]
 // was: __ZThn32_N13ProfilingItemD0Ev
 pub fn stub_64eb5c() -> ! {
-    todo!("0x64eb5c `non-virtual thunk to'ProfilingItem::~ProfilingItem()")
+    todo!("0x64eb5c non-virtual thunk to ProfilingItem::~ProfilingItem()")
 }
 
 // 0x64ec30 — __ZThn32_NK3RBX17NonFactoryProductINS_5Stats4ItemELZ14sProfilingItemEE12getClassNameEv
@@ -525,7 +525,7 @@ pub fn stub_64ec30() -> ! {
 #[doc(alias = "non-virtual thunk toProfilingItem::~ProfilingItem()")]
 // was: __ZThn36_N13ProfilingItemD1Ev
 pub fn stub_64ec58() -> ! {
-    todo!("0x64ec58 `non-virtual thunk to'ProfilingItem::~ProfilingItem()")
+    todo!("0x64ec58 non-virtual thunk to ProfilingItem::~ProfilingItem()")
 }
 
 // 0x64ec94 — __ZThn36_N13ProfilingItemD0Ev
@@ -534,7 +534,7 @@ pub fn stub_64ec58() -> ! {
 #[doc(alias = "non-virtual thunk toProfilingItem::~ProfilingItem()")]
 // was: __ZThn36_N13ProfilingItemD0Ev
 pub fn stub_64ec94() -> ! {
-    todo!("0x64ec94 `non-virtual thunk to'ProfilingItem::~ProfilingItem()")
+    todo!("0x64ec94 non-virtual thunk to ProfilingItem::~ProfilingItem()")
 }
 
 // 0x64ed68 — __ZN3RBX4Name13callDoDeclareILZ14sProfilingItemEEEvv
@@ -714,7 +714,7 @@ pub fn stub_64f5a8() -> ! {
 #[doc(alias = "non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble()")]
 // was: __ZThn32_N24RunningAverageItemDoubleD1Ev
 pub fn stub_64f718() -> ! {
-    todo!("0x64f718 `non-virtual thunk to'RunningAverageItemDouble::~RunningAverageItemDouble()")
+    todo!("0x64f718 non-virtual thunk to RunningAverageItemDouble::~RunningAverageItemDouble()")
 }
 
 // 0x64f754 — __ZThn32_N24RunningAverageItemDoubleD0Ev
@@ -723,7 +723,7 @@ pub fn stub_64f718() -> ! {
 #[doc(alias = "non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble()")]
 // was: __ZThn32_N24RunningAverageItemDoubleD0Ev
 pub fn stub_64f754() -> ! {
-    todo!("0x64f754 `non-virtual thunk to'RunningAverageItemDouble::~RunningAverageItemDouble()")
+    todo!("0x64f754 non-virtual thunk to RunningAverageItemDouble::~RunningAverageItemDouble()")
 }
 
 // 0x64f828 — __ZThn32_NK3RBX17NonFactoryProductI18RunningAverageItemIdELZ25sRunningAverageItemDoubleEE12getClassNameEv
@@ -740,7 +740,7 @@ pub fn stub_64f828() -> ! {
 #[doc(alias = "non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble()")]
 // was: __ZThn36_N24RunningAverageItemDoubleD1Ev
 pub fn stub_64f850() -> ! {
-    todo!("0x64f850 `non-virtual thunk to'RunningAverageItemDouble::~RunningAverageItemDouble()")
+    todo!("0x64f850 non-virtual thunk to RunningAverageItemDouble::~RunningAverageItemDouble()")
 }
 
 // 0x64f88c — __ZThn36_N24RunningAverageItemDoubleD0Ev
@@ -749,7 +749,7 @@ pub fn stub_64f850() -> ! {
 #[doc(alias = "non-virtual thunk toRunningAverageItemDouble::~RunningAverageItemDouble()")]
 // was: __ZThn36_N24RunningAverageItemDoubleD0Ev
 pub fn stub_64f88c() -> ! {
-    todo!("0x64f88c `non-virtual thunk to'RunningAverageItemDouble::~RunningAverageItemDouble()")
+    todo!("0x64f88c non-virtual thunk to RunningAverageItemDouble::~RunningAverageItemDouble()")
 }
 
 // 0x64f960 — __ZN3RBX4Name13callDoDeclareILZ25sRunningAverageItemDoubleEEEvv

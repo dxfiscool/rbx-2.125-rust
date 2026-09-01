@@ -13,12 +13,12 @@ const _: () = {
 
 
 // 0x47fe30 — __ZThn36_N3RBX21TaskSchedulerSettingsD0Ev
-// demangled: `non-virtual thunk to'RBX::TaskSchedulerSettings::~TaskSchedulerSettings()
+// demangled: non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn36_N3RBX21TaskSchedulerSettingsD0Ev")]
 pub fn stub_47fe30() -> ! {
-    todo!("0x47fe30 non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+    todo!("0x47fe30 non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
 }
 
 // 0x47ff10 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE17static_getCreatorEv
@@ -610,12 +610,12 @@ pub fn stub_482dd8() -> ! {
 }
 
 // 0x482de8 — __ZThn36_N3RBX9BlockMeshD0Ev
-// demangled: `non-virtual thunk to'RBX::BlockMesh::~BlockMesh()
+// demangled: non-virtual thunk to RBX::BlockMesh::~BlockMesh()
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BlockMesh::~BlockMesh()")]
+#[doc(alias = "non-virtual thunk to RBX::BlockMesh::~BlockMesh()")]
 #[doc(alias = "__ZThn36_N3RBX9BlockMeshD0Ev")]
 pub fn stub_482de8() -> ! {
-    todo!("0x482de8 non-virtual thunk toRBX::BlockMesh::~BlockMesh()")
+    todo!("0x482de8 non-virtual thunk to RBX::BlockMesh::~BlockMesh()")
 }
 
 // 0x482e8c — __ZN3RBX14FactoryProductINS_9BlockMeshENS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEE17static_getCreatorEv

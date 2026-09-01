@@ -22,10 +22,10 @@ pub fn stub_0x68b04c() -> ! {
 }
 
 // 0x68b060 — __ZThn4_N3RBX8PartTool13render3dAdornEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::PartTool::render3dAdorn(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::PartTool::render3dAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::PartTool::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::PartTool::render3dAdorn(RBX::Adorn *)
 pub fn stub_0x68b060() -> ! {
-    todo!("0x68b060 non-virtual thunk toRBX::PartTool::render3dAdorn(RBX::Adorn *)")
+    todo!("0x68b060 non-virtual thunk to RBX::PartTool::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x7bdbc0 — __ZNK3RBX8Humanoid13getWalkToPartEv
@@ -389,10 +389,10 @@ pub fn stub_0xb6f16c() -> ! {
 }
 
 // 0xb6f178 — __ZThn392_N3RBX11FastCluster12getPartCountEv
-#[doc(alias = "non-virtual thunk toRBX::FastCluster::getPartCount(void)")]
-// was: `non-virtual thunk to'RBX::FastCluster::getPartCount(void)
+#[doc(alias = "non-virtual thunk to RBX::FastCluster::getPartCount(void)")]
+// was: non-virtual thunk to RBX::FastCluster::getPartCount(void)
 pub fn stub_0xb6f178() -> ! {
-    todo!("0xb6f178 non-virtual thunk toRBX::FastCluster::getPartCount(void)")
+    todo!("0xb6f178 non-virtual thunk to RBX::FastCluster::getPartCount(void)")
 }
 
 // 0xb6f548 — __ZSt9remove_ifIN9__gnu_cxx17__normal_iteratorIPN3RBX11FastCluster4PartESt6vectorIS4_SaIS4_EEEENS2_24PartBindingNullPredicateEET_SB_SB_T0_
@@ -480,10 +480,10 @@ pub fn stub_0xbbe8c4() -> ! {
 }
 
 // 0xbbe9e8 — __ZThn392_N3RBX18RbxParticleEmitter17onSleepingChangedEb
-#[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::onSleepingChanged(bool)")]
-// was: `non-virtual thunk to'RBX::RbxParticleEmitter::onSleepingChanged(bool)
+#[doc(alias = "non-virtual thunk to RBX::RbxParticleEmitter::onSleepingChanged(bool)")]
+// was: non-virtual thunk to RBX::RbxParticleEmitter::onSleepingChanged(bool)
 pub fn stub_0xbbe9e8() -> ! {
-    todo!("0xbbe9e8 non-virtual thunk toRBX::RbxParticleEmitter::onSleepingChanged(bool)")
+    todo!("0xbbe9e8 non-virtual thunk to RBX::RbxParticleEmitter::onSleepingChanged(bool)")
 }
 
 // 0xbbe9f0 — __ZN3RBX18RbxParticleEmitter21updateCoordinateFrameEb
@@ -493,10 +493,10 @@ pub fn stub_0xbbe9f0() -> ! {
 }
 
 // 0xbbea40 — __ZThn392_N3RBX18RbxParticleEmitter21updateCoordinateFrameEb
-#[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::updateCoordinateFrame(bool)")]
-// was: `non-virtual thunk to'RBX::RbxParticleEmitter::updateCoordinateFrame(bool)
+#[doc(alias = "non-virtual thunk to RBX::RbxParticleEmitter::updateCoordinateFrame(bool)")]
+// was: non-virtual thunk to RBX::RbxParticleEmitter::updateCoordinateFrame(bool)
 pub fn stub_0xbbea40() -> ! {
-    todo!("0xbbea40 non-virtual thunk toRBX::RbxParticleEmitter::updateCoordinateFrame(bool)")
+    todo!("0xbbea40 non-virtual thunk to RBX::RbxParticleEmitter::updateCoordinateFrame(bool)")
 }
 
 // 0xbbeab4 — __ZN3RBX18RbxParticleEmitter19onAncestorChangedExEv
@@ -512,10 +512,10 @@ pub fn stub_0xbbf390() -> ! {
 }
 
 // 0xbbf398 — __ZThn392_N3RBX18RbxParticleEmitter6unbindEv
-#[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::unbind(void)")]
-// was: `non-virtual thunk to'RBX::RbxParticleEmitter::unbind(void)
+#[doc(alias = "non-virtual thunk to RBX::RbxParticleEmitter::unbind(void)")]
+// was: non-virtual thunk to RBX::RbxParticleEmitter::unbind(void)
 pub fn stub_0xbbf398() -> ! {
-    todo!("0xbbf398 non-virtual thunk toRBX::RbxParticleEmitter::unbind(void)")
+    todo!("0xbbf398 non-virtual thunk to RBX::RbxParticleEmitter::unbind(void)")
 }
 
 // 0xbbf39c — __ZN3RBX18RbxParticleEmitter16invalidateEntityEv
@@ -525,10 +525,10 @@ pub fn stub_0xbbf39c() -> ! {
 }
 
 // 0xbbf3d0 — __ZThn392_N3RBX18RbxParticleEmitter16invalidateEntityEv
-#[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::invalidateEntity(void)")]
-// was: `non-virtual thunk to'RBX::RbxParticleEmitter::invalidateEntity(void)
+#[doc(alias = "non-virtual thunk to RBX::RbxParticleEmitter::invalidateEntity(void)")]
+// was: non-virtual thunk to RBX::RbxParticleEmitter::invalidateEntity(void)
 pub fn stub_0xbbf3d0() -> ! {
-    todo!("0xbbf3d0 non-virtual thunk toRBX::RbxParticleEmitter::invalidateEntity(void)")
+    todo!("0xbbf3d0 non-virtual thunk to RBX::RbxParticleEmitter::invalidateEntity(void)")
 }
 
 // 0xbbf404 — __ZN3RBX18RbxParticleEmitter12updateEntityEb
@@ -538,10 +538,10 @@ pub fn stub_0xbbf404() -> ! {
 }
 
 // 0xbbf8b0 — __ZThn392_N3RBX18RbxParticleEmitter12updateEntityEb
-#[doc(alias = "non-virtual thunk toRBX::RbxParticleEmitter::updateEntity(bool)")]
-// was: `non-virtual thunk to'RBX::RbxParticleEmitter::updateEntity(bool)
+#[doc(alias = "non-virtual thunk to RBX::RbxParticleEmitter::updateEntity(bool)")]
+// was: non-virtual thunk to RBX::RbxParticleEmitter::updateEntity(bool)
 pub fn stub_0xbbf8b0() -> ! {
-    todo!("0xbbf8b0 non-virtual thunk toRBX::RbxParticleEmitter::updateEntity(bool)")
+    todo!("0xbbf8b0 non-virtual thunk to RBX::RbxParticleEmitter::updateEntity(bool)")
 }
 
 // 0xbbfa58 — __ZN3rbx7signals6signalIFvbEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEED1Ev
@@ -563,10 +563,10 @@ pub fn stub_0xbbfbbc() -> ! {
 }
 
 // 0xbbfbd4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX18RbxParticleEmitterEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)
 pub fn stub_0xbbfbd4() -> ! {
-    todo!("0xbbfbd4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
+    todo!("0xbbfbd4 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RbxParticleEmitter,bool>,boost::_bi::list2<boost::_bi::value<RBX::RbxParticleEmitter*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
 }
 
 // 0xbbfbec — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev
@@ -588,10 +588,10 @@ pub fn stub_0xbbfd50() -> ! {
 }
 
 // 0xbbfd68 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX18RbxParticleEmitterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")]
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")]
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)
 pub fn stub_0xbbfd68() -> ! {
-    todo!("0xbbfd68 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")
+    todo!("0xbbfd68 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::RbxParticleEmitter>,boost::_bi::list1<boost::_bi::value<RBX::RbxParticleEmitter*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0xbc0408 — __ZN3RBX18RbxParticleFactoryC1EPN4Ogre12VisualEngineE

@@ -32,9 +32,9 @@ pub fn stub_632c84() -> ! {
 }
 
 // 0x632c8c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES5_EE4slotEN5boost8functionIS6_EELi2ES6_E4callES5_S5_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)
+// demangled: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)
 // type: int()
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")]
 pub fn stub_632c8c() -> ! {
     todo!("0x632c8c __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX18SkateboardPlatform9MoveStateES5_EE4slotEN5boost8functionIS6_EELi2ES6_E4callES5_S5_")
 }
@@ -488,17 +488,17 @@ pub fn stub_6359f4() -> ! {
 }
 
 // 0x635a04 — __ZThn32_N3RBX3SkyD1Ev
-// demangled: `non-virtual thunk to'RBX::Sky::~Sky()
+// demangled: non-virtual thunk to RBX::Sky::~Sky()
 // type: void __fastcall(RBX::Sky *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 pub fn stub_635a04() -> ! {
     todo!("0x635a04 __ZThn32_N3RBX3SkyD1Ev")
 }
 
 // 0x635a70 — __ZThn32_N3RBX3SkyD0Ev
-// demangled: `non-virtual thunk to'RBX::Sky::~Sky()
+// demangled: non-virtual thunk to RBX::Sky::~Sky()
 // type: void __fastcall(RBX::Sky *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 pub fn stub_635a70() -> ! {
     todo!("0x635a70 __ZThn32_N3RBX3SkyD0Ev")
 }
@@ -512,17 +512,17 @@ pub fn stub_635b6c() -> ! {
 }
 
 // 0x635b7c — __ZThn36_N3RBX3SkyD1Ev
-// demangled: `non-virtual thunk to'RBX::Sky::~Sky()
+// demangled: non-virtual thunk to RBX::Sky::~Sky()
 // type: void __fastcall(RBX::Sky *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 pub fn stub_635b7c() -> ! {
     todo!("0x635b7c __ZThn36_N3RBX3SkyD1Ev")
 }
 
 // 0x635be8 — __ZThn36_N3RBX3SkyD0Ev
-// demangled: `non-virtual thunk to'RBX::Sky::~Sky()
+// demangled: non-virtual thunk to RBX::Sky::~Sky()
 // type: void __fastcall(RBX::Sky *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 pub fn stub_635be8() -> ! {
     todo!("0x635be8 __ZThn36_N3RBX3SkyD0Ev")
 }

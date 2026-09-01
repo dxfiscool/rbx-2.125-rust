@@ -206,9 +206,9 @@ pub fn stub_8d5c84() -> ! {
     todo!("0x8d5c84 __ZN3rbx8callableINS_7signals6signalIFviibEE4slotEN5boost8functionIS3_EELi3ES3_E4callEiib")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,int,bool)>::slot,boost::function<void ()(int,int,bool)>,3,void ()(int,int,bool)>::call(int,int,bool)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int,int,bool)>::slot,boost::function<void ()(int,int,bool)>,3,void ()(int,int,bool)>::call(int,int,bool)")]
 // 0x8d5c8c — __ZThn4_N3rbx8callableINS_7signals6signalIFviibEE4slotEN5boost8functionIS3_EELi3ES3_E4callEiib
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,int,bool)>::slot,boost::function<void ()(int,int,bool)>,3,void ()(int,int,bool)>::call(int,int,bool)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int,int,bool)>::slot,boost::function<void ()(int,int,bool)>,3,void ()(int,int,bool)>::call(int,int,bool)
 pub fn stub_8d5c8c() -> ! {
     todo!("0x8d5c8c __ZThn4_N3rbx8callableINS_7signals6signalIFviibEE4slotEN5boost8functionIS3_EELi3ES3_E4callEiib")
 }
@@ -381,37 +381,37 @@ pub fn stub_8e19bc() -> ! {
     todo!("0x8e19bc __ZNK3RBX9GuiBase2d26canProcessMeAndDescendantsEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
+#[doc(alias = "non-virtual thunk to RBX::GuiBase2d::~GuiBase2d()")]
 // 0x8e19c0 — __ZThn32_N3RBX9GuiBase2dD1Ev
-// was: `non-virtual thunk to'RBX::GuiBase2d::~GuiBase2d()
+// was: non-virtual thunk to RBX::GuiBase2d::~GuiBase2d()
 pub fn stub_8e19c0() -> ! {
     todo!("0x8e19c0 __ZThn32_N3RBX9GuiBase2dD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
+#[doc(alias = "non-virtual thunk to RBX::GuiBase2d::~GuiBase2d()")]
 // 0x8e1a78 — __ZThn32_N3RBX9GuiBase2dD0Ev
-// was: `non-virtual thunk to'RBX::GuiBase2d::~GuiBase2d()
+// was: non-virtual thunk to RBX::GuiBase2d::~GuiBase2d()
 pub fn stub_8e1a78() -> ! {
     todo!("0x8e1a78 __ZThn32_N3RBX9GuiBase2dD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
+#[doc(alias = "non-virtual thunk to RBX::GuiBase2d::~GuiBase2d()")]
 // 0x8e1b70 — __ZThn36_N3RBX9GuiBase2dD1Ev
-// was: `non-virtual thunk to'RBX::GuiBase2d::~GuiBase2d()
+// was: non-virtual thunk to RBX::GuiBase2d::~GuiBase2d()
 pub fn stub_8e1b70() -> ! {
     todo!("0x8e1b70 __ZThn36_N3RBX9GuiBase2dD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::~GuiBase2d()")]
+#[doc(alias = "non-virtual thunk to RBX::GuiBase2d::~GuiBase2d()")]
 // 0x8e1c28 — __ZThn36_N3RBX9GuiBase2dD0Ev
-// was: `non-virtual thunk to'RBX::GuiBase2d::~GuiBase2d()
+// was: non-virtual thunk to RBX::GuiBase2d::~GuiBase2d()
 pub fn stub_8e1c28() -> ! {
     todo!("0x8e1c28 __ZThn36_N3RBX9GuiBase2dD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiBase::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk to RBX::GuiBase::process(RBX::GuiEvent const&)")]
 // 0x8e1cf8 — __ZThn92_N3RBX7GuiBase7processERKNS_8GuiEventE
-// was: `non-virtual thunk to'RBX::GuiBase::process(RBX::GuiEvent const&)
+// was: non-virtual thunk to RBX::GuiBase::process(RBX::GuiEvent const&)
 pub fn stub_8e1cf8() -> ! {
     todo!("0x8e1cf8 __ZThn92_N3RBX7GuiBase7processERKNS_8GuiEventE")
 }
@@ -434,16 +434,16 @@ pub fn stub_8e2c3c() -> ! {
     todo!("0x8e2c3c __ZN3RBX17GuiLayerCollectorD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
+#[doc(alias = "non-virtual thunk to RBX::GuiLayerCollector::~GuiLayerCollector()")]
 // 0x8e2c40 — __ZThn32_N3RBX17GuiLayerCollectorD0Ev
-// was: `non-virtual thunk to'RBX::GuiLayerCollector::~GuiLayerCollector()
+// was: non-virtual thunk to RBX::GuiLayerCollector::~GuiLayerCollector()
 pub fn stub_8e2c40() -> ! {
     todo!("0x8e2c40 __ZThn32_N3RBX17GuiLayerCollectorD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
+#[doc(alias = "non-virtual thunk to RBX::GuiLayerCollector::~GuiLayerCollector()")]
 // 0x8e2c48 — __ZThn36_N3RBX17GuiLayerCollectorD0Ev
-// was: `non-virtual thunk to'RBX::GuiLayerCollector::~GuiLayerCollector()
+// was: non-virtual thunk to RBX::GuiLayerCollector::~GuiLayerCollector()
 pub fn stub_8e2c48() -> ! {
     todo!("0x8e2c48 __ZThn36_N3RBX17GuiLayerCollectorD0Ev")
 }
@@ -454,16 +454,16 @@ pub fn stub_8e2c50() -> ! {
     todo!("0x8e2c50 __ZN3RBX17GuiLayerCollectorD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
+#[doc(alias = "non-virtual thunk to RBX::GuiLayerCollector::~GuiLayerCollector()")]
 // 0x8e2e20 — __ZThn32_N3RBX17GuiLayerCollectorD1Ev
-// was: `non-virtual thunk to'RBX::GuiLayerCollector::~GuiLayerCollector()
+// was: non-virtual thunk to RBX::GuiLayerCollector::~GuiLayerCollector()
 pub fn stub_8e2e20() -> ! {
     todo!("0x8e2e20 __ZThn32_N3RBX17GuiLayerCollectorD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::~GuiLayerCollector()")]
+#[doc(alias = "non-virtual thunk to RBX::GuiLayerCollector::~GuiLayerCollector()")]
 // 0x8e2e28 — __ZThn36_N3RBX17GuiLayerCollectorD1Ev
-// was: `non-virtual thunk to'RBX::GuiLayerCollector::~GuiLayerCollector()
+// was: non-virtual thunk to RBX::GuiLayerCollector::~GuiLayerCollector()
 pub fn stub_8e2e28() -> ! {
     todo!("0x8e2e28 __ZThn36_N3RBX17GuiLayerCollectorD1Ev")
 }
@@ -480,9 +480,9 @@ pub fn stub_8e32c8() -> ! {
     todo!("0x8e32c8 __ZN3RBX17GuiLayerCollector8render2dEPNS_5AdornE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk to RBX::GuiLayerCollector::render2d(RBX::Adorn *)")]
 // 0x8e32d4 — __ZThn96_N3RBX17GuiLayerCollector8render2dEPNS_5AdornE
-// was: `non-virtual thunk to'RBX::GuiLayerCollector::render2d(RBX::Adorn *)
+// was: non-virtual thunk to RBX::GuiLayerCollector::render2d(RBX::Adorn *)
 pub fn stub_8e32d4() -> ! {
     todo!("0x8e32d4 __ZThn96_N3RBX17GuiLayerCollector8render2dEPNS_5AdornE")
 }
@@ -499,9 +499,9 @@ pub fn stub_8e3534() -> ! {
     todo!("0x8e3534 __ZN3RBX17GuiLayerCollector18processDescendantsERKNS_8GuiEventE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk to RBX::GuiLayerCollector::process(RBX::GuiEvent const&)")]
 // 0x8e365c — __ZThn92_N3RBX17GuiLayerCollector7processERKNS_8GuiEventE
-// was: `non-virtual thunk to'RBX::GuiLayerCollector::process(RBX::GuiEvent const&)
+// was: non-virtual thunk to RBX::GuiLayerCollector::process(RBX::GuiEvent const&)
 pub fn stub_8e365c() -> ! {
     todo!("0x8e365c __ZThn92_N3RBX17GuiLayerCollector7processERKNS_8GuiEventE")
 }

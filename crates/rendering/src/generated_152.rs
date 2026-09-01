@@ -720,27 +720,27 @@ pub fn stub_2650e8() -> ! {
 }
 
 // 0x2652b0 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE7rethrowEv
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const")]
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const
 // type: void __fastcall __noreturn(_DWORD *)
 pub fn stub_2652b0() -> ! {
-    todo!("0x2652b0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const")
+    todo!("0x2652b0 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::rethrow(void)const")
 }
 
 // 0x2652c0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()
 // type: int __fastcall(_DWORD *)
 pub fn stub_2652c0() -> ! {
-    todo!("0x2652c0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+    todo!("0x2652c0 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
 }
 
 // 0x2652e0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED0Ev
-#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
-// was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
+#[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
+// was: non-virtual thunk to boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()
 // type: int __fastcall(int)
 pub fn stub_2652e0() -> ! {
-    todo!("0x2652e0 non-virtual thunk toboost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")
+    todo!("0x2652e0 non-virtual thunk to boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")
 }
 
 // 0x2652f8 — __ZN5boost16exception_detail10clone_baseD1Ev
@@ -768,27 +768,27 @@ pub fn stub_2654d8() -> ! {
 }
 
 // 0x265590 — __ZThn20_N5boost16exception_detail14bad_exception_D1Ev
-#[doc(alias = "non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()")]
-// was: `non-virtual thunk to'boost::exception_detail::bad_exception_::~bad_exception_()
+#[doc(alias = "non-virtual thunk to boost::exception_detail::bad_exception_::~bad_exception_()")]
+// was: non-virtual thunk to boost::exception_detail::bad_exception_::~bad_exception_()
 // type: void __fastcall(boost::exception_detail::bad_exception_ *__hidden this)
 pub fn stub_265590() -> ! {
-    todo!("0x265590 non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()")
+    todo!("0x265590 non-virtual thunk to boost::exception_detail::bad_exception_::~bad_exception_()")
 }
 
 // 0x265598 — __ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()
+#[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()
 // type: void __fastcall(int)
 pub fn stub_265598() -> ! {
-    todo!("0x265598 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+    todo!("0x265598 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
 }
 
 // 0x2655a0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED1Ev
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()
 // type: void __fastcall(_DWORD *)
 pub fn stub_2655a0() -> ! {
-    todo!("0x2655a0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+    todo!("0x2655a0 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
 }
 
 // 0x2655b0 — __ZN5boost6detail12shared_countC2INS_16exception_detail10clone_implINS3_14bad_exception_EEEEEPT_

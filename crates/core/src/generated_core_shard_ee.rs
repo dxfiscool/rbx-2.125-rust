@@ -70,9 +70,9 @@ pub fn stub_8c5140() -> ! {
     todo!("0x8c5140 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost8functionIS3_EELi0ES3_E4callEv")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::function<void ()(void)>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::function<void ()(void)>,0,void ()(void)>::call(void)")]
 // 0x8c5148 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost8functionIS3_EELi0ES3_E4callEv
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::function<void ()(void)>,0,void ()(void)>::call(void)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::function<void ()(void)>,0,void ()(void)>::call(void)
 pub fn stub_8c5148() -> ! {
     todo!("0x8c5148 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost8functionIS3_EELi0ES3_E4callEv")
 }
@@ -317,16 +317,16 @@ pub fn stub_8c9120() -> ! {
     todo!("0x8c9120 __ZN3RBX9FWServiceD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::FWService::~FWService()")]
+#[doc(alias = "non-virtual thunk to RBX::FWService::~FWService()")]
 // 0x8c9124 — __ZThn32_N3RBX9FWServiceD0Ev
-// was: `non-virtual thunk to'RBX::FWService::~FWService()
+// was: non-virtual thunk to RBX::FWService::~FWService()
 pub fn stub_8c9124() -> ! {
     todo!("0x8c9124 __ZThn32_N3RBX9FWServiceD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::FWService::~FWService()")]
+#[doc(alias = "non-virtual thunk to RBX::FWService::~FWService()")]
 // 0x8c912c — __ZThn36_N3RBX9FWServiceD0Ev
-// was: `non-virtual thunk to'RBX::FWService::~FWService()
+// was: non-virtual thunk to RBX::FWService::~FWService()
 pub fn stub_8c912c() -> ! {
     todo!("0x8c912c __ZThn36_N3RBX9FWServiceD0Ev")
 }
@@ -337,16 +337,16 @@ pub fn stub_8c9134() -> ! {
     todo!("0x8c9134 __ZN3RBX9FWServiceD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::FWService::~FWService()")]
+#[doc(alias = "non-virtual thunk to RBX::FWService::~FWService()")]
 // 0x8c9210 — __ZThn32_N3RBX9FWServiceD1Ev
-// was: `non-virtual thunk to'RBX::FWService::~FWService()
+// was: non-virtual thunk to RBX::FWService::~FWService()
 pub fn stub_8c9210() -> ! {
     todo!("0x8c9210 __ZThn32_N3RBX9FWServiceD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::FWService::~FWService()")]
+#[doc(alias = "non-virtual thunk to RBX::FWService::~FWService()")]
 // 0x8c9218 — __ZThn36_N3RBX9FWServiceD1Ev
-// was: `non-virtual thunk to'RBX::FWService::~FWService()
+// was: non-virtual thunk to RBX::FWService::~FWService()
 pub fn stub_8c9218() -> ! {
     todo!("0x8c9218 __ZThn36_N3RBX9FWServiceD1Ev")
 }
@@ -357,9 +357,9 @@ pub fn stub_8c9220() -> ! {
     todo!("0x8c9220 __ZN3RBX9FWService18getUniqueSharedPtrEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::FWService::getUniqueSharedPtr(void)")]
+#[doc(alias = "non-virtual thunk to RBX::FWService::getUniqueSharedPtr(void)")]
 // 0x8c92ec — __ZThn96_N3RBX9FWService18getUniqueSharedPtrEv
-// was: `non-virtual thunk to'RBX::FWService::getUniqueSharedPtr(void)
+// was: non-virtual thunk to RBX::FWService::getUniqueSharedPtr(void)
 pub fn stub_8c92ec() -> ! {
     todo!("0x8c92ec __ZThn96_N3RBX9FWService18getUniqueSharedPtrEv")
 }
@@ -494,30 +494,30 @@ pub fn stub_8ce4a4() -> ! {
     todo!("0x8ce4a4 __ZN3RBX18MarketplaceServiceD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
+#[doc(alias = "non-virtual thunk to RBX::MarketplaceService::~MarketplaceService()")]
 // 0x8ce55c — __ZThn32_N3RBX18MarketplaceServiceD1Ev
-// was: `non-virtual thunk to'RBX::MarketplaceService::~MarketplaceService()
+// was: non-virtual thunk to RBX::MarketplaceService::~MarketplaceService()
 pub fn stub_8ce55c() -> ! {
     todo!("0x8ce55c __ZThn32_N3RBX18MarketplaceServiceD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
+#[doc(alias = "non-virtual thunk to RBX::MarketplaceService::~MarketplaceService()")]
 // 0x8ce564 — __ZThn32_N3RBX18MarketplaceServiceD0Ev
-// was: `non-virtual thunk to'RBX::MarketplaceService::~MarketplaceService()
+// was: non-virtual thunk to RBX::MarketplaceService::~MarketplaceService()
 pub fn stub_8ce564() -> ! {
     todo!("0x8ce564 __ZThn32_N3RBX18MarketplaceServiceD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
+#[doc(alias = "non-virtual thunk to RBX::MarketplaceService::~MarketplaceService()")]
 // 0x8ce618 — __ZThn36_N3RBX18MarketplaceServiceD1Ev
-// was: `non-virtual thunk to'RBX::MarketplaceService::~MarketplaceService()
+// was: non-virtual thunk to RBX::MarketplaceService::~MarketplaceService()
 pub fn stub_8ce618() -> ! {
     todo!("0x8ce618 __ZThn36_N3RBX18MarketplaceServiceD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::MarketplaceService::~MarketplaceService()")]
+#[doc(alias = "non-virtual thunk to RBX::MarketplaceService::~MarketplaceService()")]
 // 0x8ce620 — __ZThn36_N3RBX18MarketplaceServiceD0Ev
-// was: `non-virtual thunk to'RBX::MarketplaceService::~MarketplaceService()
+// was: non-virtual thunk to RBX::MarketplaceService::~MarketplaceService()
 pub fn stub_8ce620() -> ! {
     todo!("0x8ce620 __ZThn36_N3RBX18MarketplaceServiceD0Ev")
 }

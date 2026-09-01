@@ -823,10 +823,10 @@ pub fn stub_64bbc0() -> ! {
 // 0x64bc00 — __ZThn32_N3RBX5Stats4ItemD0Ev
 // type: void __fastcall(RBX::Stats::Item *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5Stats4ItemD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::Item::~Item()")]
 // was: __ZThn32_N3RBX5Stats4ItemD0Ev
 pub fn stub_64bc00() -> ! {
-    todo!("0x64bc00 `non-virtual thunk to'RBX::Stats::Item::~Item()")
+    todo!("0x64bc00 non-virtual thunk to RBX::Stats::Item::~Item()")
 }
 
 // 0x64bcd8 — __ZN3RBX5Stats12StatsServiceD1Ev
@@ -850,37 +850,37 @@ pub fn stub_64bcdc() -> ! {
 // 0x64bd80 — __ZThn32_N3RBX5Stats12StatsServiceD1Ev
 // type: void __fastcall(RBX::Stats::StatsService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5Stats12StatsServiceD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::StatsService::~StatsService()")]
 // was: __ZThn32_N3RBX5Stats12StatsServiceD1Ev
 pub fn stub_64bd80() -> ! {
-    todo!("0x64bd80 `non-virtual thunk to'RBX::Stats::StatsService::~StatsService()")
+    todo!("0x64bd80 non-virtual thunk to RBX::Stats::StatsService::~StatsService()")
 }
 
 // 0x64bd88 — __ZThn32_N3RBX5Stats12StatsServiceD0Ev
 // type: void __fastcall(RBX::Stats::StatsService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5Stats12StatsServiceD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::StatsService::~StatsService()")]
 // was: __ZThn32_N3RBX5Stats12StatsServiceD0Ev
 pub fn stub_64bd88() -> ! {
-    todo!("0x64bd88 `non-virtual thunk to'RBX::Stats::StatsService::~StatsService()")
+    todo!("0x64bd88 non-virtual thunk to RBX::Stats::StatsService::~StatsService()")
 }
 
 // 0x64be2c — __ZThn36_N3RBX5Stats12StatsServiceD1Ev
 // type: void __fastcall(RBX::Stats::StatsService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5Stats12StatsServiceD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::StatsService::~StatsService()")]
 // was: __ZThn36_N3RBX5Stats12StatsServiceD1Ev
 pub fn stub_64be2c() -> ! {
-    todo!("0x64be2c `non-virtual thunk to'RBX::Stats::StatsService::~StatsService()")
+    todo!("0x64be2c non-virtual thunk to RBX::Stats::StatsService::~StatsService()")
 }
 
 // 0x64be34 — __ZThn36_N3RBX5Stats12StatsServiceD0Ev
 // type: void __fastcall(RBX::Stats::StatsService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5Stats12StatsServiceD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::StatsService::~StatsService()")]
 // was: __ZThn36_N3RBX5Stats12StatsServiceD0Ev
 pub fn stub_64be34() -> ! {
-    todo!("0x64be34 `non-virtual thunk to'RBX::Stats::StatsService::~StatsService()")
+    todo!("0x64be34 non-virtual thunk to RBX::Stats::StatsService::~StatsService()")
 }
 
 // 0x64bed8 — __ZN3RBX4Name13callDoDeclareILZNS_5Stats10sStatsItemEEEEvv

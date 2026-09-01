@@ -162,7 +162,7 @@ pub fn stub_e2fcc8() -> ! {
 
 // 0xe2fcd4 — __ZThn4_N4Ogre14StaticGeometry6RegionD0Ev
 #[doc(alias = "non-virtual thunk toOgre::StaticGeometry::Region::~Region()")]
-// was: `non-virtual thunk to'Ogre::StaticGeometry::Region::~Region()
+// was: non-virtual thunk to Ogre::StaticGeometry::Region::~Region()
 pub fn stub_e2fcd4() -> ! {
     todo!("0xe2fcd4 non-virtual thunk toOgre::StaticGeometry::Region::~Region()")
 }
@@ -176,7 +176,7 @@ pub fn stub_e2fd68() -> ! {
 
 // 0xe2ff6c — __ZThn4_N4Ogre14StaticGeometry6RegionD1Ev
 #[doc(alias = "non-virtual thunk toOgre::StaticGeometry::Region::~Region()")]
-// was: `non-virtual thunk to'Ogre::StaticGeometry::Region::~Region()
+// was: non-virtual thunk to Ogre::StaticGeometry::Region::~Region()
 pub fn stub_e2ff6c() -> ! {
     todo!("0xe2ff6c non-virtual thunk toOgre::StaticGeometry::Region::~Region()")
 }

@@ -93,7 +93,7 @@ pub fn stub_c642dc() -> ! {
 
 // 0xc642ec — __ZThn188_NK4Ogre12BillboardSet19getSquaredViewDepthEPKNS_6CameraE
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")]
-// was: `non-virtual thunk to'Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const
+// was: non-virtual thunk to Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const
 pub fn stub_c642ec() -> ! {
     todo!("0xc642ec non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")
 }
@@ -114,7 +114,7 @@ pub fn stub_c64308() -> ! {
 
 // 0xc64318 — __ZThn188_NK4Ogre12BillboardSet9getLightsEv
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getLights(void)const")]
-// was: `non-virtual thunk to'Ogre::BillboardSet::getLights(void)const
+// was: non-virtual thunk to Ogre::BillboardSet::getLights(void)const
 pub fn stub_c64318() -> ! {
     todo!("0xc64318 non-virtual thunk toOgre::BillboardSet::getLights(void)const")
 }
@@ -450,7 +450,7 @@ pub fn stub_c662a8() -> ! {
 
 // 0xc662b4 — __ZThn12_N4Ogre25BorderPanelOverlayElementD0Ev
 #[doc(alias = "non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
-// was: `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
+// was: non-virtual thunk to Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
 pub fn stub_c662b4() -> ! {
     todo!("0xc662b4 non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
 }
@@ -464,7 +464,7 @@ pub fn stub_c66348() -> ! {
 
 // 0xc664ec — __ZThn12_N4Ogre25BorderPanelOverlayElementD1Ev
 #[doc(alias = "non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
-// was: `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
+// was: non-virtual thunk to Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
 pub fn stub_c664ec() -> ! {
     todo!("0xc664ec non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
 }

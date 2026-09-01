@@ -43,10 +43,10 @@ pub fn stub_c35f64() -> ! {
 }
 
 // 0xc35f74 — __ZThn392_N3RBX10RenderNode19getFastFuzzyExtentsEv
-#[doc(alias = "non-virtual thunk toRBX::RenderNode::getFastFuzzyExtents(void)")]
-// was: `non-virtual thunk to'RBX::RenderNode::getFastFuzzyExtents(void)
+#[doc(alias = "non-virtual thunk to RBX::RenderNode::getFastFuzzyExtents(void)")]
+// was: non-virtual thunk to RBX::RenderNode::getFastFuzzyExtents(void)
 pub fn stub_c35f74() -> ! {
-    todo!("0xc35f74 non-virtual thunk toRBX::RenderNode::getFastFuzzyExtents(void)")
+    todo!("0xc35f74 non-virtual thunk to RBX::RenderNode::getFastFuzzyExtents(void)")
 }
 
 // 0xc35f80 — __ZN3RBX10RenderNode13_updateBoundsEv

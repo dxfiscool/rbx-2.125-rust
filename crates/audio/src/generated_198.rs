@@ -173,35 +173,35 @@ pub fn stub_49fc84() -> ! {
 }
 
 // 0x49fc88 — __ZThn32_N3RBX9ExplosionD0Ev
-// demangled: `non-virtual thunk to'RBX::Explosion::~Explosion()
-#[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()")]
+// demangled: non-virtual thunk to RBX::Explosion::~Explosion()
+#[doc(alias = "non-virtual thunk to RBX::Explosion::~Explosion()")]
 #[doc(alias = "__ZThn32_N3RBX9ExplosionD0Ev")]
 pub fn stub_49fc88() -> ! {
-    todo!("0x49fc88 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fc88 non-virtual thunk to RBX::Explosion::~Explosion()")
 }
 
 // 0x49fc90 — __ZThn36_N3RBX9ExplosionD0Ev
-// demangled: `non-virtual thunk to'RBX::Explosion::~Explosion()
-#[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()_dup1")]
+// demangled: non-virtual thunk to RBX::Explosion::~Explosion()
+#[doc(alias = "non-virtual thunk to RBX::Explosion::~Explosion()_dup1")]
 #[doc(alias = "__ZThn36_N3RBX9ExplosionD0Ev")]
 pub fn stub_49fc90() -> ! {
-    todo!("0x49fc90 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fc90 non-virtual thunk to RBX::Explosion::~Explosion()")
 }
 
 // 0x49fc98 — __ZThn116_N3RBX9ExplosionD0Ev
-// demangled: `non-virtual thunk to'RBX::Explosion::~Explosion()
-#[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()_dup2")]
+// demangled: non-virtual thunk to RBX::Explosion::~Explosion()
+#[doc(alias = "non-virtual thunk to RBX::Explosion::~Explosion()_dup2")]
 #[doc(alias = "__ZThn116_N3RBX9ExplosionD0Ev")]
 pub fn stub_49fc98() -> ! {
-    todo!("0x49fc98 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fc98 non-virtual thunk to RBX::Explosion::~Explosion()")
 }
 
 // 0x49fca0 — __ZThn128_N3RBX9ExplosionD0Ev
-// demangled: `non-virtual thunk to'RBX::Explosion::~Explosion()
-#[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()_dup3")]
+// demangled: non-virtual thunk to RBX::Explosion::~Explosion()
+#[doc(alias = "non-virtual thunk to RBX::Explosion::~Explosion()_dup3")]
 #[doc(alias = "__ZThn128_N3RBX9ExplosionD0Ev")]
 pub fn stub_49fca0() -> ! {
-    todo!("0x49fca0 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fca0 non-virtual thunk to RBX::Explosion::~Explosion()")
 }
 
 // 0x49fca8 — __ZN3RBX9ExplosionD2Ev
@@ -213,35 +213,35 @@ pub fn stub_49fca8() -> ! {
 }
 
 // 0x49fee8 — __ZThn32_N3RBX9ExplosionD1Ev
-// demangled: `non-virtual thunk to'RBX::Explosion::~Explosion()
-#[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()_dup4")]
+// demangled: non-virtual thunk to RBX::Explosion::~Explosion()
+#[doc(alias = "non-virtual thunk to RBX::Explosion::~Explosion()_dup4")]
 #[doc(alias = "__ZThn32_N3RBX9ExplosionD1Ev")]
 pub fn stub_49fee8() -> ! {
-    todo!("0x49fee8 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fee8 non-virtual thunk to RBX::Explosion::~Explosion()")
 }
 
 // 0x49fef0 — __ZThn36_N3RBX9ExplosionD1Ev
-// demangled: `non-virtual thunk to'RBX::Explosion::~Explosion()
-#[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()_dup5")]
+// demangled: non-virtual thunk to RBX::Explosion::~Explosion()
+#[doc(alias = "non-virtual thunk to RBX::Explosion::~Explosion()_dup5")]
 #[doc(alias = "__ZThn36_N3RBX9ExplosionD1Ev")]
 pub fn stub_49fef0() -> ! {
-    todo!("0x49fef0 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fef0 non-virtual thunk to RBX::Explosion::~Explosion()")
 }
 
 // 0x49fef8 — __ZThn116_N3RBX9ExplosionD1Ev
-// demangled: `non-virtual thunk to'RBX::Explosion::~Explosion()
-#[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()_dup6")]
+// demangled: non-virtual thunk to RBX::Explosion::~Explosion()
+#[doc(alias = "non-virtual thunk to RBX::Explosion::~Explosion()_dup6")]
 #[doc(alias = "__ZThn116_N3RBX9ExplosionD1Ev")]
 pub fn stub_49fef8() -> ! {
-    todo!("0x49fef8 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fef8 non-virtual thunk to RBX::Explosion::~Explosion()")
 }
 
 // 0x49ff00 — __ZThn128_N3RBX9ExplosionD1Ev
-// demangled: `non-virtual thunk to'RBX::Explosion::~Explosion()
-#[doc(alias = "non-virtual thunk toRBX::Explosion::~Explosion()_dup7")]
+// demangled: non-virtual thunk to RBX::Explosion::~Explosion()
+#[doc(alias = "non-virtual thunk to RBX::Explosion::~Explosion()_dup7")]
 #[doc(alias = "__ZThn128_N3RBX9ExplosionD1Ev")]
 pub fn stub_49ff00() -> ! {
-    todo!("0x49ff00 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49ff00 non-virtual thunk to RBX::Explosion::~Explosion()")
 }
 
 // 0x49ff08 — __ZN3RBX9Explosion11signalBlastERKSt6vectorIN5boost10shared_ptrINS_12PartInstanceEEESaIS5_EE
@@ -270,11 +270,11 @@ pub fn stub_4a0098() -> ! {
 }
 
 // 0x4a0318 — __ZThn116_N3RBX9Explosion9onSteppedERKNS_7SteppedE
-// demangled: `non-virtual thunk to'RBX::Explosion::onStepped(RBX::Stepped const&)
-#[doc(alias = "non-virtual thunk toRBX::Explosion::onStepped(RBX::Stepped const&)")]
+// demangled: non-virtual thunk to RBX::Explosion::onStepped(RBX::Stepped const&)
+#[doc(alias = "non-virtual thunk to RBX::Explosion::onStepped(RBX::Stepped const&)")]
 #[doc(alias = "__ZThn116_N3RBX9Explosion9onSteppedERKNS_7SteppedE")]
 pub fn stub_4a0318() -> ! {
-    todo!("0x4a0318 `non-virtual thunk to'RBX::Explosion::onStepped(RBX::Stepped const&)")
+    todo!("0x4a0318 non-virtual thunk to RBX::Explosion::onStepped(RBX::Stepped const&)")
 }
 
 // 0x4a0320 — __ZN3RBX9Explosion13render3dAdornEPNS_5AdornE
@@ -286,11 +286,11 @@ pub fn stub_4a0320() -> ! {
 }
 
 // 0x4a0430 — __ZThn92_N3RBX9Explosion13render3dAdornEPNS_5AdornE
-// demangled: `non-virtual thunk to'RBX::Explosion::render3dAdorn(RBX::Adorn *)
-#[doc(alias = "non-virtual thunk toRBX::Explosion::render3dAdorn(RBX::Adorn *)")]
+// demangled: non-virtual thunk to RBX::Explosion::render3dAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::Explosion::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn92_N3RBX9Explosion13render3dAdornEPNS_5AdornE")]
 pub fn stub_4a0430() -> ! {
-    todo!("0x4a0430 `non-virtual thunk to'RBX::Explosion::render3dAdorn(RBX::Adorn *)")
+    todo!("0x4a0430 non-virtual thunk to RBX::Explosion::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x4a0438 — __ZNK3RBX9Explosion14getBlastRadiusEv
@@ -423,11 +423,11 @@ pub fn stub_4a1358() -> ! {
 }
 
 // 0x4a1368 — __ZThn92_NK3RBX9Explosion19shouldRender3dAdornEv
-// demangled: `non-virtual thunk to'RBX::Explosion::shouldRender3dAdorn(void)const
-#[doc(alias = "non-virtual thunk toRBX::Explosion::shouldRender3dAdorn(void)const")]
+// demangled: non-virtual thunk to RBX::Explosion::shouldRender3dAdorn(void)const
+#[doc(alias = "non-virtual thunk to RBX::Explosion::shouldRender3dAdorn(void)const")]
 #[doc(alias = "__ZThn92_NK3RBX9Explosion19shouldRender3dAdornEv")]
 pub fn stub_4a1368() -> ! {
-    todo!("0x4a1368 `non-virtual thunk to'RBX::Explosion::shouldRender3dAdorn(void)const")
+    todo!("0x4a1368 non-virtual thunk to RBX::Explosion::shouldRender3dAdorn(void)const")
 }
 
 // 0x4a1370 — __ZN3RBX10IAdornable14render3dSelectEPNS_5AdornENS_11SelectStateE
@@ -1179,12 +1179,12 @@ pub fn stub_4a50e4() -> ! {
 }
 
 // 0x4a51bc — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot,Box<dyn Fn><void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::call(rbx_core::SharedPtr<RBX::Instance>,float)
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot,Box<dyn Fn><void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::call(rbx_core::SharedPtr<RBX::Instance>,float)")]
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")]
+// demangled: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot,Box<dyn Fn><void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::call(rbx_core::SharedPtr<RBX::Instance>,float)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot,Box<dyn Fn><void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::call(rbx_core::SharedPtr<RBX::Instance>,float)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f")]
 pub fn stub_4a51bc() -> ! {
-    todo!("0x4a51bc `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot,Box<dyn Fn><void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::call(rbx_core::SharedPtr<RBX::Instance>,float)")
+    todo!("0x4a51bc non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot,Box<dyn Fn><void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::call(rbx_core::SharedPtr<RBX::Instance>,float)")
 }
 
 // 0x4a51c4 — __ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfEclES4_f

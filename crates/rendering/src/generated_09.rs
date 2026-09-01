@@ -16,10 +16,10 @@ pub fn stub_3f110c() -> ! {
 }
 
 // 0x3f1110 — __ZThn92_N3RBX13ClickDetector13render3dAdornEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::ClickDetector::render3dAdorn(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::ClickDetector::render3dAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::ClickDetector::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::ClickDetector::render3dAdorn(RBX::Adorn *)
 pub fn stub_3f1110() -> ! {
-    todo!("0x3f1110 non-virtual thunk toRBX::ClickDetector::render3dAdorn(RBX::Adorn *)")
+    todo!("0x3f1110 non-virtual thunk to RBX::ClickDetector::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x421b60 — __ZN3RBX9DataModel16startCoreScriptsEPNS_5AdornEb
@@ -142,10 +142,10 @@ pub fn stub_4a0320() -> ! {
 }
 
 // 0x4a0430 — __ZThn92_N3RBX9Explosion13render3dAdornEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::Explosion::render3dAdorn(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::Explosion::render3dAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::Explosion::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::Explosion::render3dAdorn(RBX::Adorn *)
 pub fn stub_4a0430() -> ! {
-    todo!("0x4a0430 non-virtual thunk toRBX::Explosion::render3dAdorn(RBX::Adorn *)")
+    todo!("0x4a0430 non-virtual thunk to RBX::Explosion::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x4a1370 — __ZN3RBX10IAdornable14render3dSelectEPNS_5AdornENS_11SelectStateE
@@ -163,10 +163,10 @@ pub fn stub_4a96a4() -> ! {
 }
 
 // 0x4a971c — __ZThn92_N3RBX12FaceInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
-#[doc(alias = "non-virtual thunk toRBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
-// was: `non-virtual thunk to'RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
+#[doc(alias = "non-virtual thunk to RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+// was: non-virtual thunk to RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
 pub fn stub_4a971c() -> ! {
-    todo!("0x4a971c non-virtual thunk toRBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+    todo!("0x4a971c non-virtual thunk to RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
 // 0x4d7658 — __ZN3RBX10Reflection9DescribedINS_16SurfaceSelectionELZNS_17sSurfaceSelectionEENS_14FactoryProductIS2_NS_13PartAdornmentELZNS_17sSurfaceSelectionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
@@ -219,10 +219,10 @@ pub fn stub_4e555c() -> ! {
 }
 
 // 0x4e55ac — __ZThn92_N3RBX7Feature14render3dSelectEPNS_5AdornENS_11SelectStateE
-#[doc(alias = "non-virtual thunk toRBX::Feature::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
-// was: `non-virtual thunk to'RBX::Feature::render3dSelect(RBX::Adorn *,RBX::SelectState)
+#[doc(alias = "non-virtual thunk to RBX::Feature::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+// was: non-virtual thunk to RBX::Feature::render3dSelect(RBX::Adorn *,RBX::SelectState)
 pub fn stub_4e55ac() -> ! {
-    todo!("0x4e55ac non-virtual thunk toRBX::Feature::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+    todo!("0x4e55ac non-virtual thunk to RBX::Feature::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
 // 0x4e57b4 — __ZN3RBX4Hole13render3dAdornEPNS_5AdornE
@@ -233,10 +233,10 @@ pub fn stub_4e57b4() -> ! {
 }
 
 // 0x4e5810 — __ZThn92_N3RBX4Hole13render3dAdornEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::Hole::render3dAdorn(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::Hole::render3dAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::Hole::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::Hole::render3dAdorn(RBX::Adorn *)
 pub fn stub_4e5810() -> ! {
-    todo!("0x4e5810 non-virtual thunk toRBX::Hole::render3dAdorn(RBX::Adorn *)")
+    todo!("0x4e5810 non-virtual thunk to RBX::Hole::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x4e5a18 — __ZN3RBX12MotorFeature13render3dAdornEPNS_5AdornE
@@ -247,10 +247,10 @@ pub fn stub_4e5a18() -> ! {
 }
 
 // 0x4e5a70 — __ZThn92_N3RBX12MotorFeature13render3dAdornEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::MotorFeature::render3dAdorn(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::MotorFeature::render3dAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::MotorFeature::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::MotorFeature::render3dAdorn(RBX::Adorn *)
 pub fn stub_4e5a70() -> ! {
-    todo!("0x4e5a70 non-virtual thunk toRBX::MotorFeature::render3dAdorn(RBX::Adorn *)")
+    todo!("0x4e5a70 non-virtual thunk to RBX::MotorFeature::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x4f80a0 — __ZN3RBX16renderForceFieldEN5boost10shared_ptrINS_8InstanceEEEPNS_5AdornEii
@@ -268,10 +268,10 @@ pub fn stub_4f842c() -> ! {
 }
 
 // 0x4f8778 — __ZThn92_N3RBX10ForceField13render3dAdornEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::ForceField::render3dAdorn(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::ForceField::render3dAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::ForceField::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::ForceField::render3dAdorn(RBX::Adorn *)
 pub fn stub_4f8778() -> ! {
-    todo!("0x4f8778 non-virtual thunk toRBX::ForceField::render3dAdorn(RBX::Adorn *)")
+    todo!("0x4f8778 non-virtual thunk to RBX::ForceField::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x4f956c — __ZN3RBX5Frame8render2dEPNS_5AdornE
@@ -282,10 +282,10 @@ pub fn stub_4f956c() -> ! {
 }
 
 // 0x4f9978 — __ZThn96_N3RBX5Frame8render2dEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::Frame::render2d(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::Frame::render2d(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::Frame::render2d(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::Frame::render2d(RBX::Adorn *)
 pub fn stub_4f9978() -> ! {
-    todo!("0x4f9978 non-virtual thunk toRBX::Frame::render2d(RBX::Adorn *)")
+    todo!("0x4f9978 non-virtual thunk to RBX::Frame::render2d(RBX::Adorn *)")
 }
 
 // 0x512308 — __ZN3RBX10GuiBuilder8buildGuiEPNS_5AdornEPNS_9WorkspaceEb
@@ -338,10 +338,10 @@ pub fn stub_5298dc() -> ! {
 }
 
 // 0x529960 — __ZThn96_N3RBX9GuiObject8render2dEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::GuiObject::render2d(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::GuiObject::render2d(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::GuiObject::render2d(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::GuiObject::render2d(RBX::Adorn *)
 pub fn stub_529960() -> ! {
-    todo!("0x529960 non-virtual thunk toRBX::GuiObject::render2d(RBX::Adorn *)")
+    todo!("0x529960 non-virtual thunk to RBX::GuiObject::render2d(RBX::Adorn *)")
 }
 
 // 0x529a50 — __ZN3RBX9GuiObject18renderSelectionBoxEPNS_5AdornE

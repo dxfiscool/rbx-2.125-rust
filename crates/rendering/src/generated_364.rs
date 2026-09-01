@@ -375,17 +375,17 @@ pub fn stub_4f8824() -> ! {
 }
 
 // 0x4f8838 — __ZThn32_N3RBX10ForceFieldD1Ev
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
-// was: `non-virtual thunk to'RBX::ForceField::~ForceField()
+#[doc(alias = "non-virtual thunk to RBX::ForceField::~ForceField()")]
+// was: non-virtual thunk to RBX::ForceField::~ForceField()
 pub fn stub_4f8838() -> ! {
-    todo!("0x4f8838 non-virtual thunk toRBX::ForceField::~ForceField()")
+    todo!("0x4f8838 non-virtual thunk to RBX::ForceField::~ForceField()")
 }
 
 // 0x4f8840 — __ZThn32_N3RBX10ForceFieldD0Ev
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
-// was: `non-virtual thunk to'RBX::ForceField::~ForceField()
+#[doc(alias = "non-virtual thunk to RBX::ForceField::~ForceField()")]
+// was: non-virtual thunk to RBX::ForceField::~ForceField()
 pub fn stub_4f8840() -> ! {
-    todo!("0x4f8840 non-virtual thunk toRBX::ForceField::~ForceField()")
+    todo!("0x4f8840 non-virtual thunk to RBX::ForceField::~ForceField()")
 }
 
 // 0x4f8848 — __ZThn32_NK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E12getClassNameEv
@@ -396,31 +396,31 @@ pub fn stub_4f8848() -> ! {
 }
 
 // 0x4f8858 — __ZThn36_N3RBX10ForceFieldD1Ev
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
-// was: `non-virtual thunk to'RBX::ForceField::~ForceField()
+#[doc(alias = "non-virtual thunk to RBX::ForceField::~ForceField()")]
+// was: non-virtual thunk to RBX::ForceField::~ForceField()
 pub fn stub_4f8858() -> ! {
-    todo!("0x4f8858 non-virtual thunk toRBX::ForceField::~ForceField()")
+    todo!("0x4f8858 non-virtual thunk to RBX::ForceField::~ForceField()")
 }
 
 // 0x4f8860 — __ZThn36_N3RBX10ForceFieldD0Ev
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
-// was: `non-virtual thunk to'RBX::ForceField::~ForceField()
+#[doc(alias = "non-virtual thunk to RBX::ForceField::~ForceField()")]
+// was: non-virtual thunk to RBX::ForceField::~ForceField()
 pub fn stub_4f8860() -> ! {
-    todo!("0x4f8860 non-virtual thunk toRBX::ForceField::~ForceField()")
+    todo!("0x4f8860 non-virtual thunk to RBX::ForceField::~ForceField()")
 }
 
 // 0x4f886c — __ZThn116_N3RBX10ForceFieldD1Ev
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
-// was: `non-virtual thunk to'RBX::ForceField::~ForceField()
+#[doc(alias = "non-virtual thunk to RBX::ForceField::~ForceField()")]
+// was: non-virtual thunk to RBX::ForceField::~ForceField()
 pub fn stub_4f886c() -> ! {
-    todo!("0x4f886c non-virtual thunk toRBX::ForceField::~ForceField()")
+    todo!("0x4f886c non-virtual thunk to RBX::ForceField::~ForceField()")
 }
 
 // 0x4f8874 — __ZThn116_N3RBX10ForceFieldD0Ev
-#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
-// was: `non-virtual thunk to'RBX::ForceField::~ForceField()
+#[doc(alias = "non-virtual thunk to RBX::ForceField::~ForceField()")]
+// was: non-virtual thunk to RBX::ForceField::~ForceField()
 pub fn stub_4f8874() -> ! {
-    todo!("0x4f8874 non-virtual thunk toRBX::ForceField::~ForceField()")
+    todo!("0x4f8874 non-virtual thunk to RBX::ForceField::~ForceField()")
 }
 
 // 0x4f887c — __ZN3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E17static_getCreatorEv

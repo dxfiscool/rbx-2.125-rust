@@ -88,16 +88,16 @@ pub fn stub_801120() -> ! {
     todo!("0x801120 __ZN3RBX11TestServiceD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::TestService::~TestService()")]
+#[doc(alias = "non-virtual thunk to RBX::TestService::~TestService()")]
 // 0x801124 — __ZThn32_N3RBX11TestServiceD0Ev
-// was: `non-virtual thunk to'RBX::TestService::~TestService()
+// was: non-virtual thunk to RBX::TestService::~TestService()
 pub fn stub_801124() -> ! {
     todo!("0x801124 __ZThn32_N3RBX11TestServiceD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::TestService::~TestService()")]
+#[doc(alias = "non-virtual thunk to RBX::TestService::~TestService()")]
 // 0x80112c — __ZThn36_N3RBX11TestServiceD0Ev
-// was: `non-virtual thunk to'RBX::TestService::~TestService()
+// was: non-virtual thunk to RBX::TestService::~TestService()
 pub fn stub_80112c() -> ! {
     todo!("0x80112c __ZThn36_N3RBX11TestServiceD0Ev")
 }
@@ -108,16 +108,16 @@ pub fn stub_801134() -> ! {
     todo!("0x801134 __ZN3RBX11TestServiceD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::TestService::~TestService()")]
+#[doc(alias = "non-virtual thunk to RBX::TestService::~TestService()")]
 // 0x80143c — __ZThn32_N3RBX11TestServiceD1Ev
-// was: `non-virtual thunk to'RBX::TestService::~TestService()
+// was: non-virtual thunk to RBX::TestService::~TestService()
 pub fn stub_80143c() -> ! {
     todo!("0x80143c __ZThn32_N3RBX11TestServiceD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::TestService::~TestService()")]
+#[doc(alias = "non-virtual thunk to RBX::TestService::~TestService()")]
 // 0x801444 — __ZThn36_N3RBX11TestServiceD1Ev
-// was: `non-virtual thunk to'RBX::TestService::~TestService()
+// was: non-virtual thunk to RBX::TestService::~TestService()
 pub fn stub_801444() -> ! {
     todo!("0x801444 __ZThn36_N3RBX11TestServiceD1Ev")
 }
@@ -216,30 +216,30 @@ pub fn stub_804d18() -> ! {
     todo!("0x804d18 __ZN3RBX14FunctionalTestD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
+#[doc(alias = "non-virtual thunk to RBX::FunctionalTest::~FunctionalTest()")]
 // 0x804e4c — __ZThn32_N3RBX14FunctionalTestD1Ev
-// was: `non-virtual thunk to'RBX::FunctionalTest::~FunctionalTest()
+// was: non-virtual thunk to RBX::FunctionalTest::~FunctionalTest()
 pub fn stub_804e4c() -> ! {
     todo!("0x804e4c __ZThn32_N3RBX14FunctionalTestD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
+#[doc(alias = "non-virtual thunk to RBX::FunctionalTest::~FunctionalTest()")]
 // 0x804f54 — __ZThn32_N3RBX14FunctionalTestD0Ev
-// was: `non-virtual thunk to'RBX::FunctionalTest::~FunctionalTest()
+// was: non-virtual thunk to RBX::FunctionalTest::~FunctionalTest()
 pub fn stub_804f54() -> ! {
     todo!("0x804f54 __ZThn32_N3RBX14FunctionalTestD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
+#[doc(alias = "non-virtual thunk to RBX::FunctionalTest::~FunctionalTest()")]
 // 0x805084 — __ZThn36_N3RBX14FunctionalTestD1Ev
-// was: `non-virtual thunk to'RBX::FunctionalTest::~FunctionalTest()
+// was: non-virtual thunk to RBX::FunctionalTest::~FunctionalTest()
 pub fn stub_805084() -> ! {
     todo!("0x805084 __ZThn36_N3RBX14FunctionalTestD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::FunctionalTest::~FunctionalTest()")]
+#[doc(alias = "non-virtual thunk to RBX::FunctionalTest::~FunctionalTest()")]
 // 0x80518c — __ZThn36_N3RBX14FunctionalTestD0Ev
-// was: `non-virtual thunk to'RBX::FunctionalTest::~FunctionalTest()
+// was: non-virtual thunk to RBX::FunctionalTest::~FunctionalTest()
 pub fn stub_80518c() -> ! {
     todo!("0x80518c __ZThn36_N3RBX14FunctionalTestD0Ev")
 }

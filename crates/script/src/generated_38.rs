@@ -10,10 +10,10 @@ use rbx_core::SharedPtr;
 
 // 0x3f3970 — __ZThn36_N3RBX17CollectionServiceD0Ev
 // type: void __fastcall(RBX::CollectionService *__hidden this)
-// was: `non-virtual thunk to'RBX::CollectionService::~CollectionService()
-#[doc(alias = "non-virtual thunk toRBX::CollectionService::~CollectionService()")]
+// was: non-virtual thunk to RBX::CollectionService::~CollectionService()
+#[doc(alias = "non-virtual thunk to RBX::CollectionService::~CollectionService()")]
 pub fn stub_0x3f3970() -> ! {
-    todo!("0x3f3970 non-virtual thunk toRBX::CollectionService::~CollectionService()")
+    todo!("0x3f3970 non-virtual thunk to RBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f3a14 — __ZN3RBX17CollectionServiceD2Ev

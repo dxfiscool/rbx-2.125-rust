@@ -200,19 +200,19 @@ pub fn stub_6359f4() -> ! {
 // 0x635a04 — __ZThn32_N3RBX3SkyD1Ev
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX3SkyD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 // was: __ZThn32_N3RBX3SkyD1Ev
 pub fn stub_635a04() -> ! {
-    todo!("0x635a04 `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x635a04 non-virtual thunk to RBX::Sky::~Sky()")
 }
 
 // 0x635a70 — __ZThn32_N3RBX3SkyD0Ev
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX3SkyD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 // was: __ZThn32_N3RBX3SkyD0Ev
 pub fn stub_635a70() -> ! {
-    todo!("0x635a70 `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x635a70 non-virtual thunk to RBX::Sky::~Sky()")
 }
 
 // 0x635b6c — __ZThn32_NK3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E12getClassNameEv
@@ -226,19 +226,19 @@ pub fn stub_635b6c() -> ! {
 // 0x635b7c — __ZThn36_N3RBX3SkyD1Ev
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX3SkyD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 // was: __ZThn36_N3RBX3SkyD1Ev
 pub fn stub_635b7c() -> ! {
-    todo!("0x635b7c `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x635b7c non-virtual thunk to RBX::Sky::~Sky()")
 }
 
 // 0x635be8 — __ZThn36_N3RBX3SkyD0Ev
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX3SkyD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 // was: __ZThn36_N3RBX3SkyD0Ev
 pub fn stub_635be8() -> ! {
-    todo!("0x635be8 `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x635be8 non-virtual thunk to RBX::Sky::~Sky()")
 }
 
 // 0x635ce4 — __ZN3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E17static_getCreatorEv
@@ -663,28 +663,28 @@ pub fn stub_637708() -> ! {
 // 0x63770c — __ZThn32_N3RBX5SmokeD0Ev
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5SmokeD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
+#[doc(alias = "non-virtual thunk to RBX::Smoke::~Smoke()")]
 // was: __ZThn32_N3RBX5SmokeD0Ev
 pub fn stub_63770c() -> ! {
-    todo!("0x63770c `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x63770c non-virtual thunk to RBX::Smoke::~Smoke()")
 }
 
 // 0x637714 — __ZThn36_N3RBX5SmokeD0Ev
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5SmokeD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
+#[doc(alias = "non-virtual thunk to RBX::Smoke::~Smoke()")]
 // was: __ZThn36_N3RBX5SmokeD0Ev
 pub fn stub_637714() -> ! {
-    todo!("0x637714 `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x637714 non-virtual thunk to RBX::Smoke::~Smoke()")
 }
 
 // 0x63771c — __ZThn92_N3RBX5SmokeD0Ev
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX5SmokeD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
+#[doc(alias = "non-virtual thunk to RBX::Smoke::~Smoke()")]
 // was: __ZThn92_N3RBX5SmokeD0Ev
 pub fn stub_63771c() -> ! {
-    todo!("0x63771c `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x63771c non-virtual thunk to RBX::Smoke::~Smoke()")
 }
 
 // 0x637724 — __ZN3RBX5SmokeD2Ev
@@ -699,28 +699,28 @@ pub fn stub_637724() -> ! {
 // 0x6377e0 — __ZThn32_N3RBX5SmokeD1Ev
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX5SmokeD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
+#[doc(alias = "non-virtual thunk to RBX::Smoke::~Smoke()")]
 // was: __ZThn32_N3RBX5SmokeD1Ev
 pub fn stub_6377e0() -> ! {
-    todo!("0x6377e0 `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x6377e0 non-virtual thunk to RBX::Smoke::~Smoke()")
 }
 
 // 0x6377e8 — __ZThn36_N3RBX5SmokeD1Ev
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX5SmokeD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
+#[doc(alias = "non-virtual thunk to RBX::Smoke::~Smoke()")]
 // was: __ZThn36_N3RBX5SmokeD1Ev
 pub fn stub_6377e8() -> ! {
-    todo!("0x6377e8 `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x6377e8 non-virtual thunk to RBX::Smoke::~Smoke()")
 }
 
 // 0x6377f0 — __ZThn92_N3RBX5SmokeD1Ev
 // type: void __fastcall(RBX::Smoke *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX5SmokeD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
+#[doc(alias = "non-virtual thunk to RBX::Smoke::~Smoke()")]
 // was: __ZThn92_N3RBX5SmokeD1Ev
 pub fn stub_6377f0() -> ! {
-    todo!("0x6377f0 `non-virtual thunk to'RBX::Smoke::~Smoke()")
+    todo!("0x6377f0 non-virtual thunk to RBX::Smoke::~Smoke()")
 }
 
 // 0x6377f8 — __ZNK3RBX5Smoke14getClampedSizeEv

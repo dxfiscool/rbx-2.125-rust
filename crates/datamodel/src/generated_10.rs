@@ -126,17 +126,17 @@ pub fn stub_701f98() -> ! {
 }
 
 // 0x701f9c — __ZThn32_N3RBX8InstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::Instance::~Instance()")]
-// was: `non-virtual thunk to'RBX::Instance::~Instance()
+#[doc(alias = "non-virtual thunk to RBX::Instance::~Instance()")]
+// was: non-virtual thunk to RBX::Instance::~Instance()
 pub fn stub_701f9c() -> ! {
-    todo!("0x701f9c non-virtual thunk toRBX::Instance::~Instance()")
+    todo!("0x701f9c non-virtual thunk to RBX::Instance::~Instance()")
 }
 
 // 0x701fa4 — __ZThn36_N3RBX8InstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::Instance::~Instance()")]
-// was: `non-virtual thunk to'RBX::Instance::~Instance()
+#[doc(alias = "non-virtual thunk to RBX::Instance::~Instance()")]
+// was: non-virtual thunk to RBX::Instance::~Instance()
 pub fn stub_701fa4() -> ! {
-    todo!("0x701fa4 non-virtual thunk toRBX::Instance::~Instance()")
+    todo!("0x701fa4 non-virtual thunk to RBX::Instance::~Instance()")
 }
 
 // 0x701fac — __ZN3RBX8InstanceD2Ev
@@ -146,17 +146,17 @@ pub fn stub_701fac() -> ! {
 }
 
 // 0x7023a8 — __ZThn32_N3RBX8InstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::Instance::~Instance()")]
-// was: `non-virtual thunk to'RBX::Instance::~Instance()
+#[doc(alias = "non-virtual thunk to RBX::Instance::~Instance()")]
+// was: non-virtual thunk to RBX::Instance::~Instance()
 pub fn stub_7023a8() -> ! {
-    todo!("0x7023a8 non-virtual thunk toRBX::Instance::~Instance()")
+    todo!("0x7023a8 non-virtual thunk to RBX::Instance::~Instance()")
 }
 
 // 0x7023b0 — __ZThn36_N3RBX8InstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::Instance::~Instance()")]
-// was: `non-virtual thunk to'RBX::Instance::~Instance()
+#[doc(alias = "non-virtual thunk to RBX::Instance::~Instance()")]
+// was: non-virtual thunk to RBX::Instance::~Instance()
 pub fn stub_7023b0() -> ! {
-    todo!("0x7023b0 non-virtual thunk toRBX::Instance::~Instance()")
+    todo!("0x7023b0 non-virtual thunk to RBX::Instance::~Instance()")
 }
 
 // 0x7023b8 — __ZN3RBX8Instance7destroyEv

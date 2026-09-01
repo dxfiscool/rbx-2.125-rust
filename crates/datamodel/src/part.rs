@@ -521,24 +521,24 @@ pub fn stub_0x5cc504() -> ! {
 }
 
 // 0x5cc514 — __ZThn32_N3RBX13ModelInstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
-// was: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::~ModelInstance()")]
+// was: non-virtual thunk to RBX::ModelInstance::~ModelInstance()
 pub fn stub_0x5cc514() -> ! {
-    todo!("0x5cc514 non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc514 non-virtual thunk to RBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc51c — __ZThn36_N3RBX13ModelInstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
-// was: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::~ModelInstance()")]
+// was: non-virtual thunk to RBX::ModelInstance::~ModelInstance()
 pub fn stub_0x5cc51c() -> ! {
-    todo!("0x5cc51c non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc51c non-virtual thunk to RBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc524 — __ZThn120_N3RBX13ModelInstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
-// was: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::~ModelInstance()")]
+// was: non-virtual thunk to RBX::ModelInstance::~ModelInstance()
 pub fn stub_0x5cc524() -> ! {
-    todo!("0x5cc524 non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc524 non-virtual thunk to RBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc52c — __ZN3RBX13ModelInstanceD2Ev
@@ -549,24 +549,24 @@ pub fn stub_0x5cc52c() -> ! {
 }
 
 // 0x5cc6b0 — __ZThn32_N3RBX13ModelInstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
-// was: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::~ModelInstance()")]
+// was: non-virtual thunk to RBX::ModelInstance::~ModelInstance()
 pub fn stub_0x5cc6b0() -> ! {
-    todo!("0x5cc6b0 non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc6b0 non-virtual thunk to RBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc6c0 — __ZThn36_N3RBX13ModelInstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
-// was: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::~ModelInstance()")]
+// was: non-virtual thunk to RBX::ModelInstance::~ModelInstance()
 pub fn stub_0x5cc6c0() -> ! {
-    todo!("0x5cc6c0 non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc6c0 non-virtual thunk to RBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc6d0 — __ZThn120_N3RBX13ModelInstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
-// was: non-virtual thunk toRBX::ModelInstance::~ModelInstance()
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::~ModelInstance()")]
+// was: non-virtual thunk to RBX::ModelInstance::~ModelInstance()
 pub fn stub_0x5cc6d0() -> ! {
-    todo!("0x5cc6d0 non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc6d0 non-virtual thunk to RBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc6e0 — __ZN3RBX13ModelInstance21hackPhysicalCharacterEv
@@ -605,10 +605,10 @@ pub fn stub_0x5ccca4() -> ! {
 }
 
 // 0x5cce34 — __ZThn92_N3RBX13ModelInstance14getPrimaryPartEv
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::getPrimaryPart(void)")]
-// was: non-virtual thunk toRBX::ModelInstance::getPrimaryPart(void)
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::getPrimaryPart(void)")]
+// was: non-virtual thunk to RBX::ModelInstance::getPrimaryPart(void)
 pub fn stub_0x5cce34() -> ! {
-    todo!("0x5cce34 non-virtual thunk toRBX::ModelInstance::getPrimaryPart(void)")
+    todo!("0x5cce34 non-virtual thunk to RBX::ModelInstance::getPrimaryPart(void)")
 }
 
 // 0x5cd060 — __ZN3RBX13ModelInstance11getLocationEv
@@ -619,10 +619,10 @@ pub fn stub_0x5cd060() -> ! {
 }
 
 // 0x5cd1f4 — __ZTv0_n12_N3RBX13ModelInstance11getLocationEv
-#[doc(alias = "virtual thunk toRBX::ModelInstance::getLocation(void)")]
-// was: `virtual thunk to'RBX::ModelInstance::getLocation(void)
+#[doc(alias = "virtual thunk to RBX::ModelInstance::getLocation(void)")]
+// was: virtual thunk to RBX::ModelInstance::getLocation(void)
 pub fn stub_0x5cd1f4() -> ! {
-    todo!("0x5cd1f4 virtual thunk toRBX::ModelInstance::getLocation(void)")
+    todo!("0x5cd1f4 virtual thunk to RBX::ModelInstance::getLocation(void)")
 }
 
 // 0x5cd254 — __ZNK3RBX13ModelInstance19shouldRender3dAdornEv
@@ -633,10 +633,10 @@ pub fn stub_0x5cd254() -> ! {
 }
 
 // 0x5cd274 — __ZThn96_NK3RBX13ModelInstance19shouldRender3dAdornEv
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::shouldRender3dAdorn(void)const")]
-// was: non-virtual thunk toRBX::ModelInstance::shouldRender3dAdorn(void)const
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::shouldRender3dAdorn(void)const")]
+// was: non-virtual thunk to RBX::ModelInstance::shouldRender3dAdorn(void)const
 pub fn stub_0x5cd274() -> ! {
-    todo!("0x5cd274 non-virtual thunk toRBX::ModelInstance::shouldRender3dAdorn(void)const")
+    todo!("0x5cd274 non-virtual thunk to RBX::ModelInstance::shouldRender3dAdorn(void)const")
 }
 
 // 0x5cd294 — __ZN3RBX13ModelInstance13render3dAdornEPNS_5AdornE
@@ -647,10 +647,10 @@ pub fn stub_0x5cd294() -> ! {
 }
 
 // 0x5cd2c8 — __ZThn96_N3RBX13ModelInstance13render3dAdornEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::render3dAdorn(RBX::Adorn *)")]
-// was: non-virtual thunk toRBX::ModelInstance::render3dAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::ModelInstance::render3dAdorn(RBX::Adorn *)
 pub fn stub_0x5cd2c8() -> ! {
-    todo!("0x5cd2c8 non-virtual thunk toRBX::ModelInstance::render3dAdorn(RBX::Adorn *)")
+    todo!("0x5cd2c8 non-virtual thunk to RBX::ModelInstance::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x5cd2d0 — __ZNK3RBX13ModelInstance19computeExtentsWorldEv
@@ -675,10 +675,10 @@ pub fn stub_0x5cda08() -> ! {
 }
 
 // 0x5cda34 — __ZThn96_N3RBX13ModelInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
-// was: non-virtual thunk toRBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+// was: non-virtual thunk to RBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
 pub fn stub_0x5cda34() -> ! {
-    todo!("0x5cda34 non-virtual thunk toRBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+    todo!("0x5cda34 non-virtual thunk to RBX::ModelInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
 // 0x5cda60 — __ZN3RBX13ModelInstance12onCameraNearEf
@@ -689,10 +689,10 @@ pub fn stub_0x5cda60() -> ! {
 }
 
 // 0x5cda9c — __ZThn120_N3RBX13ModelInstance12onCameraNearEf
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::onCameraNear(float)")]
-// was: non-virtual thunk toRBX::ModelInstance::onCameraNear(float)
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::onCameraNear(float)")]
+// was: non-virtual thunk to RBX::ModelInstance::onCameraNear(float)
 pub fn stub_0x5cda9c() -> ! {
-    todo!("0x5cda9c non-virtual thunk toRBX::ModelInstance::onCameraNear(float)")
+    todo!("0x5cda9c non-virtual thunk to RBX::ModelInstance::onCameraNear(float)")
 }
 
 // 0x5cdaa4 — __ZN3RBX13ModelInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
@@ -703,10 +703,10 @@ pub fn stub_0x5cdaa4() -> ! {
 }
 
 // 0x5cdacc — __ZThn120_N3RBX13ModelInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
-#[doc(alias = "non-virtual thunk toRBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
-// was: non-virtual thunk toRBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
+#[doc(alias = "non-virtual thunk to RBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
+// was: non-virtual thunk to RBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
 pub fn stub_0x5cdacc() -> ! {
-    todo!("0x5cdacc non-virtual thunk toRBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
+    todo!("0x5cdacc non-virtual thunk to RBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
 }
 
 // 0x5cdad4 — __ZNK3RBX13ModelInstance17getModelInPrimaryEv
@@ -1284,24 +1284,24 @@ pub fn stub_0x5da4a4() -> ! {
 }
 
 // 0x5da4b4 — __ZThn32_N3RBX12PartInstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
-// was: non-virtual thunk toRBX::PartInstance::~PartInstance()
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::~PartInstance()")]
+// was: non-virtual thunk to RBX::PartInstance::~PartInstance()
 pub fn stub_0x5da4b4() -> ! {
-    todo!("0x5da4b4 non-virtual thunk toRBX::PartInstance::~PartInstance()")
+    todo!("0x5da4b4 non-virtual thunk to RBX::PartInstance::~PartInstance()")
 }
 
 // 0x5da4bc — __ZThn36_N3RBX12PartInstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
-// was: non-virtual thunk toRBX::PartInstance::~PartInstance()
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::~PartInstance()")]
+// was: non-virtual thunk to RBX::PartInstance::~PartInstance()
 pub fn stub_0x5da4bc() -> ! {
-    todo!("0x5da4bc non-virtual thunk toRBX::PartInstance::~PartInstance()")
+    todo!("0x5da4bc non-virtual thunk to RBX::PartInstance::~PartInstance()")
 }
 
 // 0x5da4c4 — __ZThn132_N3RBX12PartInstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
-// was: non-virtual thunk toRBX::PartInstance::~PartInstance()
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::~PartInstance()")]
+// was: non-virtual thunk to RBX::PartInstance::~PartInstance()
 pub fn stub_0x5da4c4() -> ! {
-    todo!("0x5da4c4 non-virtual thunk toRBX::PartInstance::~PartInstance()")
+    todo!("0x5da4c4 non-virtual thunk to RBX::PartInstance::~PartInstance()")
 }
 
 // 0x5da4cc — __ZN3RBX12PartInstanceD2Ev
@@ -1312,24 +1312,24 @@ pub fn stub_0x5da4cc() -> ! {
 }
 
 // 0x5da890 — __ZThn32_N3RBX12PartInstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
-// was: non-virtual thunk toRBX::PartInstance::~PartInstance()
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::~PartInstance()")]
+// was: non-virtual thunk to RBX::PartInstance::~PartInstance()
 pub fn stub_0x5da890() -> ! {
-    todo!("0x5da890 non-virtual thunk toRBX::PartInstance::~PartInstance()")
+    todo!("0x5da890 non-virtual thunk to RBX::PartInstance::~PartInstance()")
 }
 
 // 0x5da8a0 — __ZThn36_N3RBX12PartInstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
-// was: non-virtual thunk toRBX::PartInstance::~PartInstance()
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::~PartInstance()")]
+// was: non-virtual thunk to RBX::PartInstance::~PartInstance()
 pub fn stub_0x5da8a0() -> ! {
-    todo!("0x5da8a0 non-virtual thunk toRBX::PartInstance::~PartInstance()")
+    todo!("0x5da8a0 non-virtual thunk to RBX::PartInstance::~PartInstance()")
 }
 
 // 0x5da8b0 — __ZThn132_N3RBX12PartInstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
-// was: non-virtual thunk toRBX::PartInstance::~PartInstance()
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::~PartInstance()")]
+// was: non-virtual thunk to RBX::PartInstance::~PartInstance()
 pub fn stub_0x5da8b0() -> ! {
-    todo!("0x5da8b0 non-virtual thunk toRBX::PartInstance::~PartInstance()")
+    todo!("0x5da8b0 non-virtual thunk to RBX::PartInstance::~PartInstance()")
 }
 
 // 0x5da8c0 — __ZNK3RBX12PartInstance2fwEv
@@ -1375,10 +1375,10 @@ pub fn stub_0x5daa58() -> ! {
 }
 
 // 0x5daac0 — __ZThn12_N3RBX12PartInstance13onGuidChangedEv
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::onGuidChanged(void)")]
-// was: non-virtual thunk toRBX::PartInstance::onGuidChanged(void)
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::onGuidChanged(void)")]
+// was: non-virtual thunk to RBX::PartInstance::onGuidChanged(void)
 pub fn stub_0x5daac0() -> ! {
-    todo!("0x5daac0 non-virtual thunk toRBX::PartInstance::onGuidChanged(void)")
+    todo!("0x5daac0 non-virtual thunk to RBX::PartInstance::onGuidChanged(void)")
 }
 
 // 0x5daac8 — __ZNK3RBX12PartInstance17worldSnapLocationEv
@@ -1410,10 +1410,10 @@ pub fn stub_0x5dadb8() -> ! {
 }
 
 // 0x5dae34 — __ZThn96_NK3RBX12PartInstance13reportTouchesEv
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::reportTouches(void)const")]
-// was: non-virtual thunk toRBX::PartInstance::reportTouches(void)const
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::reportTouches(void)const")]
+// was: non-virtual thunk to RBX::PartInstance::reportTouches(void)const
 pub fn stub_0x5dae34() -> ! {
-    todo!("0x5dae34 non-virtual thunk toRBX::PartInstance::reportTouches(void)const")
+    todo!("0x5dae34 non-virtual thunk to RBX::PartInstance::reportTouches(void)const")
 }
 
 // 0x5daf38 — __ZN3RBX12PartInstance13fromPrimitiveEPNS_9PrimitiveE
@@ -1445,10 +1445,10 @@ pub fn stub_0x5db334() -> ! {
 }
 
 // 0x5db36c — __ZThn132_N3RBX12PartInstance12onCameraNearEf
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::onCameraNear(float)")]
-// was: non-virtual thunk toRBX::PartInstance::onCameraNear(float)
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::onCameraNear(float)")]
+// was: non-virtual thunk to RBX::PartInstance::onCameraNear(float)
 pub fn stub_0x5db36c() -> ! {
-    todo!("0x5db36c non-virtual thunk toRBX::PartInstance::onCameraNear(float)")
+    todo!("0x5db36c non-virtual thunk to RBX::PartInstance::onCameraNear(float)")
 }
 
 // 0x5db374 — __ZN3RBX12PartInstance14onClumpChangedEv
@@ -1459,10 +1459,10 @@ pub fn stub_0x5db374() -> ! {
 }
 
 // 0x5db3a0 — __ZThn96_N3RBX12PartInstance14onClumpChangedEv
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::onClumpChanged(void)")]
-// was: non-virtual thunk toRBX::PartInstance::onClumpChanged(void)
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::onClumpChanged(void)")]
+// was: non-virtual thunk to RBX::PartInstance::onClumpChanged(void)
 pub fn stub_0x5db3a0() -> ! {
-    todo!("0x5db3a0 non-virtual thunk toRBX::PartInstance::onClumpChanged(void)")
+    todo!("0x5db3a0 non-virtual thunk to RBX::PartInstance::onClumpChanged(void)")
 }
 
 // 0x5db3a8 — __ZN3RBX12PartInstance17onSleepingChangedEb
@@ -1473,8 +1473,8 @@ pub fn stub_0x5db3a8() -> ! {
 }
 
 // 0x5db564 — __ZThn96_N3RBX12PartInstance17onSleepingChangedEb
-#[doc(alias = "non-virtual thunk toRBX::PartInstance::onSleepingChanged(bool)")]
-// was: non-virtual thunk toRBX::PartInstance::onSleepingChanged(bool)
+#[doc(alias = "non-virtual thunk to RBX::PartInstance::onSleepingChanged(bool)")]
+// was: non-virtual thunk to RBX::PartInstance::onSleepingChanged(bool)
 pub fn stub_0x5db564() -> ! {
-    todo!("0x5db564 non-virtual thunk toRBX::PartInstance::onSleepingChanged(bool)")
+    todo!("0x5db564 non-virtual thunk to RBX::PartInstance::onSleepingChanged(bool)")
 }

@@ -385,9 +385,9 @@ pub fn stub_673924() -> ! {
 }
 
 // 0x673b74 — __ZThn96_N3RBX13GuiTextButton15render2dContextEPNS_5AdornEPKNS_8InstanceE
-#[doc(alias = "non-virtual thunk toRBX::GuiTextButton::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
+#[doc(alias = "non-virtual thunk to RBX::GuiTextButton::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
 pub fn stub_673b74() -> ! {
-    todo!("0x673b74 non-virtual thunk toRBX::GuiTextButton::render2dContext(RBX::Adorn *,RBX::Instance const*)")
+    todo!("0x673b74 non-virtual thunk to RBX::GuiTextButton::render2dContext(RBX::Adorn *,RBX::Instance const*)")
 }
 
 // 0x6741c4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13GuiTextButtonEEEN5boost10shared_ptrIT_EEv
@@ -447,9 +447,9 @@ pub fn stub_678eb0() -> ! {
 }
 
 // 0x67912c — __ZThn96_N3RBX9TextLabel15render2dContextEPNS_5AdornEPKNS_8InstanceE
-#[doc(alias = "non-virtual thunk toRBX::TextLabel::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
+#[doc(alias = "non-virtual thunk to RBX::TextLabel::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
 pub fn stub_67912c() -> ! {
-    todo!("0x67912c non-virtual thunk toRBX::TextLabel::render2dContext(RBX::Adorn *,RBX::Instance const*)")
+    todo!("0x67912c non-virtual thunk to RBX::TextLabel::render2dContext(RBX::Adorn *,RBX::Instance const*)")
 }
 
 // 0x67ef78 — __ZN3RBX4Tool23special_equipped_signalclEN5boost10shared_ptrINS_8InstanceEEE
@@ -652,10 +652,10 @@ pub fn stub_684c70() -> ! {
 }
 
 // 0x684c8c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_4ToolES7_EENSB_5list2INSB_5valueINS4_ISF_EEEENS3_3argILi1EEEEEEELi1ES8_E4callES7_
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Tool>>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Tool>>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Tool>>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Tool>>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
 pub fn stub_684c8c() -> ! {
-    todo!("0x684c8c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Tool>>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")
+    todo!("0x684c8c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Tool,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Tool>>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")
 }
 
 // 0x684ca8 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX4ToolEEEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS5_NS3_INS4_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i

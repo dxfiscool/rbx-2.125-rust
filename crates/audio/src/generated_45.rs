@@ -575,7 +575,7 @@ pub fn stub_449368() -> ! {
 }
 
 // 0x44936c — __ZThn32_N3RBX13ScriptServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::ScriptService::~ScriptService()
+// demangled: non-virtual thunk to RBX::ScriptService::~ScriptService()
 // type: void __fastcall(RBX::ScriptService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13ScriptServiceD1Ev")]
 pub fn stub_44936c() -> ! {
@@ -583,7 +583,7 @@ pub fn stub_44936c() -> ! {
 }
 
 // 0x449450 — __ZThn32_N3RBX13ScriptServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::ScriptService::~ScriptService()
+// demangled: non-virtual thunk to RBX::ScriptService::~ScriptService()
 // type: void __fastcall(RBX::ScriptService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13ScriptServiceD0Ev")]
 pub fn stub_449450() -> ! {
@@ -598,7 +598,7 @@ pub fn stub_449548() -> ! {
 }
 
 // 0x44954c — __ZThn36_N3RBX13ScriptServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::ScriptService::~ScriptService()
+// demangled: non-virtual thunk to RBX::ScriptService::~ScriptService()
 // type: void __fastcall(RBX::ScriptService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13ScriptServiceD1Ev")]
 pub fn stub_44954c() -> ! {
@@ -606,7 +606,7 @@ pub fn stub_44954c() -> ! {
 }
 
 // 0x449630 — __ZThn36_N3RBX13ScriptServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::ScriptService::~ScriptService()
+// demangled: non-virtual thunk to RBX::ScriptService::~ScriptService()
 // type: void __fastcall(RBX::ScriptService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13ScriptServiceD0Ev")]
 pub fn stub_449630() -> ! {

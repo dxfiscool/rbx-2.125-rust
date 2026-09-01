@@ -215,30 +215,30 @@ pub fn stub_8f8e3c() -> ! {
     todo!("0x8f8e3c __ZN3RBX12LoginServiceD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::LoginService::~LoginService()")]
+#[doc(alias = "non-virtual thunk to RBX::LoginService::~LoginService()")]
 // 0x8f8f04 — __ZThn32_N3RBX12LoginServiceD1Ev
-// was: `non-virtual thunk to'RBX::LoginService::~LoginService()
+// was: non-virtual thunk to RBX::LoginService::~LoginService()
 pub fn stub_8f8f04() -> ! {
     todo!("0x8f8f04 __ZThn32_N3RBX12LoginServiceD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::LoginService::~LoginService()")]
+#[doc(alias = "non-virtual thunk to RBX::LoginService::~LoginService()")]
 // 0x8f8f0c — __ZThn32_N3RBX12LoginServiceD0Ev
-// was: `non-virtual thunk to'RBX::LoginService::~LoginService()
+// was: non-virtual thunk to RBX::LoginService::~LoginService()
 pub fn stub_8f8f0c() -> ! {
     todo!("0x8f8f0c __ZThn32_N3RBX12LoginServiceD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::LoginService::~LoginService()")]
+#[doc(alias = "non-virtual thunk to RBX::LoginService::~LoginService()")]
 // 0x8f8fd8 — __ZThn36_N3RBX12LoginServiceD1Ev
-// was: `non-virtual thunk to'RBX::LoginService::~LoginService()
+// was: non-virtual thunk to RBX::LoginService::~LoginService()
 pub fn stub_8f8fd8() -> ! {
     todo!("0x8f8fd8 __ZThn36_N3RBX12LoginServiceD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::LoginService::~LoginService()")]
+#[doc(alias = "non-virtual thunk to RBX::LoginService::~LoginService()")]
 // 0x8f8fe0 — __ZThn36_N3RBX12LoginServiceD0Ev
-// was: `non-virtual thunk to'RBX::LoginService::~LoginService()
+// was: non-virtual thunk to RBX::LoginService::~LoginService()
 pub fn stub_8f8fe0() -> ! {
     todo!("0x8f8fe0 __ZThn36_N3RBX12LoginServiceD0Ev")
 }
@@ -507,30 +507,30 @@ pub fn stub_90df18() -> ! {
     todo!("0x90df18 __ZN3RBX17ReplicatedStorageD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ReplicatedStorage::~ReplicatedStorage()")]
+#[doc(alias = "non-virtual thunk to RBX::ReplicatedStorage::~ReplicatedStorage()")]
 // 0x90dfc8 — __ZThn32_N3RBX17ReplicatedStorageD1Ev
-// was: `non-virtual thunk to'RBX::ReplicatedStorage::~ReplicatedStorage()
+// was: non-virtual thunk to RBX::ReplicatedStorage::~ReplicatedStorage()
 pub fn stub_90dfc8() -> ! {
     todo!("0x90dfc8 __ZThn32_N3RBX17ReplicatedStorageD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ReplicatedStorage::~ReplicatedStorage()")]
+#[doc(alias = "non-virtual thunk to RBX::ReplicatedStorage::~ReplicatedStorage()")]
 // 0x90dfd0 — __ZThn32_N3RBX17ReplicatedStorageD0Ev
-// was: `non-virtual thunk to'RBX::ReplicatedStorage::~ReplicatedStorage()
+// was: non-virtual thunk to RBX::ReplicatedStorage::~ReplicatedStorage()
 pub fn stub_90dfd0() -> ! {
     todo!("0x90dfd0 __ZThn32_N3RBX17ReplicatedStorageD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ReplicatedStorage::~ReplicatedStorage()")]
+#[doc(alias = "non-virtual thunk to RBX::ReplicatedStorage::~ReplicatedStorage()")]
 // 0x90e084 — __ZThn36_N3RBX17ReplicatedStorageD1Ev
-// was: `non-virtual thunk to'RBX::ReplicatedStorage::~ReplicatedStorage()
+// was: non-virtual thunk to RBX::ReplicatedStorage::~ReplicatedStorage()
 pub fn stub_90e084() -> ! {
     todo!("0x90e084 __ZThn36_N3RBX17ReplicatedStorageD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ReplicatedStorage::~ReplicatedStorage()")]
+#[doc(alias = "non-virtual thunk to RBX::ReplicatedStorage::~ReplicatedStorage()")]
 // 0x90e08c — __ZThn36_N3RBX17ReplicatedStorageD0Ev
-// was: `non-virtual thunk to'RBX::ReplicatedStorage::~ReplicatedStorage()
+// was: non-virtual thunk to RBX::ReplicatedStorage::~ReplicatedStorage()
 pub fn stub_90e08c() -> ! {
     todo!("0x90e08c __ZThn36_N3RBX17ReplicatedStorageD0Ev")
 }
@@ -559,30 +559,30 @@ pub fn stub_90f138() -> ! {
     todo!("0x90f138 __ZN3RBX13ServerStorageD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ServerStorage::~ServerStorage()")]
+#[doc(alias = "non-virtual thunk to RBX::ServerStorage::~ServerStorage()")]
 // 0x90f1e8 — __ZThn32_N3RBX13ServerStorageD1Ev
-// was: `non-virtual thunk to'RBX::ServerStorage::~ServerStorage()
+// was: non-virtual thunk to RBX::ServerStorage::~ServerStorage()
 pub fn stub_90f1e8() -> ! {
     todo!("0x90f1e8 __ZThn32_N3RBX13ServerStorageD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ServerStorage::~ServerStorage()")]
+#[doc(alias = "non-virtual thunk to RBX::ServerStorage::~ServerStorage()")]
 // 0x90f1f0 — __ZThn32_N3RBX13ServerStorageD0Ev
-// was: `non-virtual thunk to'RBX::ServerStorage::~ServerStorage()
+// was: non-virtual thunk to RBX::ServerStorage::~ServerStorage()
 pub fn stub_90f1f0() -> ! {
     todo!("0x90f1f0 __ZThn32_N3RBX13ServerStorageD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ServerStorage::~ServerStorage()")]
+#[doc(alias = "non-virtual thunk to RBX::ServerStorage::~ServerStorage()")]
 // 0x90f2a4 — __ZThn36_N3RBX13ServerStorageD1Ev
-// was: `non-virtual thunk to'RBX::ServerStorage::~ServerStorage()
+// was: non-virtual thunk to RBX::ServerStorage::~ServerStorage()
 pub fn stub_90f2a4() -> ! {
     todo!("0x90f2a4 __ZThn36_N3RBX13ServerStorageD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ServerStorage::~ServerStorage()")]
+#[doc(alias = "non-virtual thunk to RBX::ServerStorage::~ServerStorage()")]
 // 0x90f2ac — __ZThn36_N3RBX13ServerStorageD0Ev
-// was: `non-virtual thunk to'RBX::ServerStorage::~ServerStorage()
+// was: non-virtual thunk to RBX::ServerStorage::~ServerStorage()
 pub fn stub_90f2ac() -> ! {
     todo!("0x90f2ac __ZThn36_N3RBX13ServerStorageD0Ev")
 }

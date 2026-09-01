@@ -584,19 +584,19 @@ pub fn stub_0x28bd74() -> ! {
 }
 
 // 0x28bd78 — __ZThn32_N3RBX10BaseScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// demangled: non-virtual thunk to RBX::BaseScript::~BaseScript()
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk to RBX::BaseScript::~BaseScript()")]
 pub fn stub_0x28bd78() -> ! {
-    todo!("0x28bd78 `non-virtual thunk to'RBX::BaseScript::~BaseScript()")
+    todo!("0x28bd78 non-virtual thunk to RBX::BaseScript::~BaseScript()")
 }
 
 // 0x28bd80 — __ZThn36_N3RBX10BaseScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// demangled: non-virtual thunk to RBX::BaseScript::~BaseScript()
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk to RBX::BaseScript::~BaseScript()")]
 pub fn stub_0x28bd80() -> ! {
-    todo!("0x28bd80 `non-virtual thunk to'RBX::BaseScript::~BaseScript()")
+    todo!("0x28bd80 non-virtual thunk to RBX::BaseScript::~BaseScript()")
 }
 
 // 0x28bd88 — __ZN3RBX10BaseScriptD2Ev
@@ -608,19 +608,19 @@ pub fn stub_0x28bd88() -> ! {
 }
 
 // 0x28bf98 — __ZThn32_N3RBX10BaseScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// demangled: non-virtual thunk to RBX::BaseScript::~BaseScript()
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk to RBX::BaseScript::~BaseScript()")]
 pub fn stub_0x28bf98() -> ! {
-    todo!("0x28bf98 `non-virtual thunk to'RBX::BaseScript::~BaseScript()")
+    todo!("0x28bf98 non-virtual thunk to RBX::BaseScript::~BaseScript()")
 }
 
 // 0x28bfa0 — __ZThn36_N3RBX10BaseScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// demangled: non-virtual thunk to RBX::BaseScript::~BaseScript()
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk to RBX::BaseScript::~BaseScript()")]
 pub fn stub_0x28bfa0() -> ! {
-    todo!("0x28bfa0 `non-virtual thunk to'RBX::BaseScript::~BaseScript()")
+    todo!("0x28bfa0 non-virtual thunk to RBX::BaseScript::~BaseScript()")
 }
 
 // 0x28bfa8 — __ZN3RBX6ScriptD0Ev
@@ -640,19 +640,19 @@ pub fn stub_0x28c048() -> ! {
 }
 
 // 0x28c04c — __ZThn32_N3RBX6ScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::Script::~Script()
+// demangled: non-virtual thunk to RBX::Script::~Script()
 // type: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk to RBX::Script::~Script()")]
 pub fn stub_0x28c04c() -> ! {
-    todo!("0x28c04c `non-virtual thunk to'RBX::Script::~Script()")
+    todo!("0x28c04c non-virtual thunk to RBX::Script::~Script()")
 }
 
 // 0x28c054 — __ZThn36_N3RBX6ScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::Script::~Script()
+// demangled: non-virtual thunk to RBX::Script::~Script()
 // type: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk to RBX::Script::~Script()")]
 pub fn stub_0x28c054() -> ! {
-    todo!("0x28c054 `non-virtual thunk to'RBX::Script::~Script()")
+    todo!("0x28c054 non-virtual thunk to RBX::Script::~Script()")
 }
 
 // 0x28c05c — __ZN3RBX6ScriptD2Ev
@@ -664,19 +664,19 @@ pub fn stub_0x28c05c() -> ! {
 }
 
 // 0x28c1c8 — __ZThn32_N3RBX6ScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::Script::~Script()
+// demangled: non-virtual thunk to RBX::Script::~Script()
 // type: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk to RBX::Script::~Script()")]
 pub fn stub_0x28c1c8() -> ! {
-    todo!("0x28c1c8 `non-virtual thunk to'RBX::Script::~Script()")
+    todo!("0x28c1c8 non-virtual thunk to RBX::Script::~Script()")
 }
 
 // 0x28c1d0 — __ZThn36_N3RBX6ScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::Script::~Script()
+// demangled: non-virtual thunk to RBX::Script::~Script()
 // type: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk to RBX::Script::~Script()")]
 pub fn stub_0x28c1d0() -> ! {
-    todo!("0x28c1d0 `non-virtual thunk to'RBX::Script::~Script()")
+    todo!("0x28c1d0 non-virtual thunk to RBX::Script::~Script()")
 }
 
 // 0x28c1d8 — __ZNK3RBX6Script15getEmbeddedCodeEv
@@ -1005,19 +1005,19 @@ pub fn stub_0x28e22c() -> ! {
 }
 
 // 0x28e23c — __ZThn32_N3RBX11LocalScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::LocalScript::~LocalScript()
+// demangled: non-virtual thunk to RBX::LocalScript::~LocalScript()
 // type: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk to RBX::LocalScript::~LocalScript()")]
 pub fn stub_0x28e23c() -> ! {
-    todo!("0x28e23c `non-virtual thunk to'RBX::LocalScript::~LocalScript()")
+    todo!("0x28e23c non-virtual thunk to RBX::LocalScript::~LocalScript()")
 }
 
 // 0x28e244 — __ZThn32_N3RBX11LocalScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::LocalScript::~LocalScript()
+// demangled: non-virtual thunk to RBX::LocalScript::~LocalScript()
 // type: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk to RBX::LocalScript::~LocalScript()")]
 pub fn stub_0x28e244() -> ! {
-    todo!("0x28e244 `non-virtual thunk to'RBX::LocalScript::~LocalScript()")
+    todo!("0x28e244 non-virtual thunk to RBX::LocalScript::~LocalScript()")
 }
 
 // 0x28e24c — __ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv
@@ -1027,19 +1027,19 @@ pub fn stub_0x28e24c() -> ! {
 }
 
 // 0x28e25c — __ZThn36_N3RBX11LocalScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::LocalScript::~LocalScript()
+// demangled: non-virtual thunk to RBX::LocalScript::~LocalScript()
 // type: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk to RBX::LocalScript::~LocalScript()")]
 pub fn stub_0x28e25c() -> ! {
-    todo!("0x28e25c `non-virtual thunk to'RBX::LocalScript::~LocalScript()")
+    todo!("0x28e25c non-virtual thunk to RBX::LocalScript::~LocalScript()")
 }
 
 // 0x28e264 — __ZThn36_N3RBX11LocalScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::LocalScript::~LocalScript()
+// demangled: non-virtual thunk to RBX::LocalScript::~LocalScript()
 // type: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk to RBX::LocalScript::~LocalScript()")]
 pub fn stub_0x28e264() -> ! {
-    todo!("0x28e264 `non-virtual thunk to'RBX::LocalScript::~LocalScript()")
+    todo!("0x28e264 non-virtual thunk to RBX::LocalScript::~LocalScript()")
 }
 
 // 0x28e26c — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD1Ev

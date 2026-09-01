@@ -275,16 +275,16 @@ pub fn stub_258150() -> ! {
 
 // 0x258160 — __ZThn32_N3RBX11HttpServiceD1Ev
 // type: void __fastcall(RBX::HttpService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
+#[doc(alias = "non-virtual thunk to RBX::HttpService::~HttpService()")]
 pub fn stub_258160() -> ! {
-    todo!("0x258160 `non-virtual thunk to'RBX::HttpService::~HttpService()")
+    todo!("0x258160 non-virtual thunk to RBX::HttpService::~HttpService()")
 }
 
 // 0x258168 — __ZThn32_N3RBX11HttpServiceD0Ev
 // type: void __fastcall(RBX::HttpService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
+#[doc(alias = "non-virtual thunk to RBX::HttpService::~HttpService()")]
 pub fn stub_258168() -> ! {
-    todo!("0x258168 `non-virtual thunk to'RBX::HttpService::~HttpService()")
+    todo!("0x258168 non-virtual thunk to RBX::HttpService::~HttpService()")
 }
 
 // 0x25820c — __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
@@ -296,16 +296,16 @@ pub fn stub_25820c() -> ! {
 
 // 0x25821c — __ZThn36_N3RBX11HttpServiceD1Ev
 // type: void __fastcall(RBX::HttpService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
+#[doc(alias = "non-virtual thunk to RBX::HttpService::~HttpService()")]
 pub fn stub_25821c() -> ! {
-    todo!("0x25821c `non-virtual thunk to'RBX::HttpService::~HttpService()")
+    todo!("0x25821c non-virtual thunk to RBX::HttpService::~HttpService()")
 }
 
 // 0x258224 — __ZThn36_N3RBX11HttpServiceD0Ev
 // type: void __fastcall(RBX::HttpService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
+#[doc(alias = "non-virtual thunk to RBX::HttpService::~HttpService()")]
 pub fn stub_258224() -> ! {
-    todo!("0x258224 `non-virtual thunk to'RBX::HttpService::~HttpService()")
+    todo!("0x258224 non-virtual thunk to RBX::HttpService::~HttpService()")
 }
 
 // 0x2582c8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv
@@ -833,23 +833,23 @@ pub fn stub_25bb48() -> ! {
 
 // 0x25bb4c — __ZThn32_N3RBX5LightD0Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk to RBX::Light::~Light()")]
 pub fn stub_25bb4c() -> ! {
-    todo!("0x25bb4c `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bb4c non-virtual thunk to RBX::Light::~Light()")
 }
 
 // 0x25bb54 — __ZThn36_N3RBX5LightD0Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk to RBX::Light::~Light()")]
 pub fn stub_25bb54() -> ! {
-    todo!("0x25bb54 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bb54 non-virtual thunk to RBX::Light::~Light()")
 }
 
 // 0x25bb5c — __ZThn92_N3RBX5LightD0Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk to RBX::Light::~Light()")]
 pub fn stub_25bb5c() -> ! {
-    todo!("0x25bb5c `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bb5c non-virtual thunk to RBX::Light::~Light()")
 }
 
 // 0x25bb64 — __ZN3RBX5LightD2Ev
@@ -861,23 +861,23 @@ pub fn stub_25bb64() -> ! {
 
 // 0x25bc20 — __ZThn32_N3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk to RBX::Light::~Light()")]
 pub fn stub_25bc20() -> ! {
-    todo!("0x25bc20 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bc20 non-virtual thunk to RBX::Light::~Light()")
 }
 
 // 0x25bc28 — __ZThn36_N3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk to RBX::Light::~Light()")]
 pub fn stub_25bc28() -> ! {
-    todo!("0x25bc28 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bc28 non-virtual thunk to RBX::Light::~Light()")
 }
 
 // 0x25bc30 — __ZThn92_N3RBX5LightD1Ev
 // type: void __fastcall(RBX::Light *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Light::~Light()")]
+#[doc(alias = "non-virtual thunk to RBX::Light::~Light()")]
 pub fn stub_25bc30() -> ! {
-    todo!("0x25bc30 `non-virtual thunk to'RBX::Light::~Light()")
+    todo!("0x25bc30 non-virtual thunk to RBX::Light::~Light()")
 }
 
 // 0x25bc38 — __ZNK3RBX5Light12askSetParentEPKNS_8InstanceE
@@ -917,44 +917,44 @@ pub fn stub_25be58() -> ! {
 
 // 0x25be5c — __ZThn32_N3RBX10PointLightD0Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk to RBX::PointLight::~PointLight()")]
 pub fn stub_25be5c() -> ! {
-    todo!("0x25be5c `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be5c non-virtual thunk to RBX::PointLight::~PointLight()")
 }
 
 // 0x25be64 — __ZThn36_N3RBX10PointLightD0Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk to RBX::PointLight::~PointLight()")]
 pub fn stub_25be64() -> ! {
-    todo!("0x25be64 `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be64 non-virtual thunk to RBX::PointLight::~PointLight()")
 }
 
 // 0x25be6c — __ZThn92_N3RBX10PointLightD0Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk to RBX::PointLight::~PointLight()")]
 pub fn stub_25be6c() -> ! {
-    todo!("0x25be6c `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be6c non-virtual thunk to RBX::PointLight::~PointLight()")
 }
 
 // 0x25be74 — __ZThn32_N3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk to RBX::PointLight::~PointLight()")]
 pub fn stub_25be74() -> ! {
-    todo!("0x25be74 `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be74 non-virtual thunk to RBX::PointLight::~PointLight()")
 }
 
 // 0x25be7c — __ZThn36_N3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk to RBX::PointLight::~PointLight()")]
 pub fn stub_25be7c() -> ! {
-    todo!("0x25be7c `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be7c non-virtual thunk to RBX::PointLight::~PointLight()")
 }
 
 // 0x25be84 — __ZThn92_N3RBX10PointLightD1Ev
 // type: void __fastcall(RBX::PointLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::PointLight::~PointLight()")]
+#[doc(alias = "non-virtual thunk to RBX::PointLight::~PointLight()")]
 pub fn stub_25be84() -> ! {
-    todo!("0x25be84 `non-virtual thunk to'RBX::PointLight::~PointLight()")
+    todo!("0x25be84 non-virtual thunk to RBX::PointLight::~PointLight()")
 }
 
 // 0x25be8c — __ZN3RBX9SpotLightC2Ev
@@ -980,44 +980,44 @@ pub fn stub_25c090() -> ! {
 
 // 0x25c094 — __ZThn32_N3RBX9SpotLightD0Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk to RBX::SpotLight::~SpotLight()")]
 pub fn stub_25c094() -> ! {
-    todo!("0x25c094 `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c094 non-virtual thunk to RBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c09c — __ZThn36_N3RBX9SpotLightD0Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk to RBX::SpotLight::~SpotLight()")]
 pub fn stub_25c09c() -> ! {
-    todo!("0x25c09c `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c09c non-virtual thunk to RBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0a4 — __ZThn92_N3RBX9SpotLightD0Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk to RBX::SpotLight::~SpotLight()")]
 pub fn stub_25c0a4() -> ! {
-    todo!("0x25c0a4 `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0a4 non-virtual thunk to RBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0ac — __ZThn32_N3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk to RBX::SpotLight::~SpotLight()")]
 pub fn stub_25c0ac() -> ! {
-    todo!("0x25c0ac `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0ac non-virtual thunk to RBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0b4 — __ZThn36_N3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk to RBX::SpotLight::~SpotLight()")]
 pub fn stub_25c0b4() -> ! {
-    todo!("0x25c0b4 `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0b4 non-virtual thunk to RBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0bc — __ZThn92_N3RBX9SpotLightD1Ev
 // type: void __fastcall(RBX::SpotLight *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk to RBX::SpotLight::~SpotLight()")]
 pub fn stub_25c0bc() -> ! {
-    todo!("0x25c0bc `non-virtual thunk to'RBX::SpotLight::~SpotLight()")
+    todo!("0x25c0bc non-virtual thunk to RBX::SpotLight::~SpotLight()")
 }
 
 // 0x25c0c4 — __ZNK3RBX5Light10getEnabledEv

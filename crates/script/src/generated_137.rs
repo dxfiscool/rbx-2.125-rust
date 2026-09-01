@@ -174,7 +174,7 @@ pub fn stub_0x9ac8() -> ! {
 
 // 0x9ae8 — __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi
 // type: int __fastcall(int this, int)
-// was: `non-virtual thunk to'CRenderSettingsItem::setAutoQualityLevel(int)
+// was: non-virtual thunk to CRenderSettingsItem::setAutoQualityLevel(int)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
 pub fn stub_0x9ae8() -> ! {
     todo!("0x9ae8 __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi")
@@ -413,7 +413,7 @@ pub fn stub_0xb8d0() -> ! {
 
 // 0xb8e0 — __ZThn32_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-// was: `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()
+// was: non-virtual thunk to CRenderSettingsItem::~CRenderSettingsItem()
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_0xb8e0() -> ! {
     todo!("0xb8e0 __ZThn32_N19CRenderSettingsItemD1Ev")
@@ -421,7 +421,7 @@ pub fn stub_0xb8e0() -> ! {
 
 // 0xb8e8 — __ZThn32_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-// was: `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()
+// was: non-virtual thunk to CRenderSettingsItem::~CRenderSettingsItem()
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_0xb8e8() -> ! {
     todo!("0xb8e8 __ZThn32_N19CRenderSettingsItemD0Ev")
@@ -436,7 +436,7 @@ pub fn stub_0xb900() -> ! {
 
 // 0xb910 — __ZThn36_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-// was: `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()
+// was: non-virtual thunk to CRenderSettingsItem::~CRenderSettingsItem()
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_0xb910() -> ! {
     todo!("0xb910 __ZThn36_N19CRenderSettingsItemD1Ev")
@@ -444,7 +444,7 @@ pub fn stub_0xb910() -> ! {
 
 // 0xb918 — __ZThn36_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-// was: `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()
+// was: non-virtual thunk to CRenderSettingsItem::~CRenderSettingsItem()
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_0xb918() -> ! {
     todo!("0xb918 __ZThn36_N19CRenderSettingsItemD0Ev")

@@ -83,23 +83,23 @@ pub fn stub_0x4b0b9c() -> ! { todo!("0x4b0b9c __ZN3RBX11CustomEventD0Ev") }
 // type: _DWORD __fastcall(RBX::CustomEvent *__hidden this, RBX::ServiceProvider *, RBX::ServiceProvider *)
 pub fn stub_0x4b0c3c() -> ! { todo!("0x4b0c3c __ZN3RBX11CustomEvent17onServiceProviderEPNS_15ServiceProviderES2_") }
 
-#[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent() [0x4b0ea4]")]
-// 0x4b0ea4 — __ZThn32_N3RBX11CustomEventD1Ev — `non-virtual thunk to'RBX::CustomEvent::~CustomEvent()
+#[doc(alias = "non-virtual thunk to RBX::CustomEvent::~CustomEvent() [0x4b0ea4]")]
+// 0x4b0ea4 — __ZThn32_N3RBX11CustomEventD1Ev — non-virtual thunk to RBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 pub fn stub_0x4b0ea4() -> ! { todo!("0x4b0ea4 __ZThn32_N3RBX11CustomEventD1Ev") }
 
-#[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent() [0x4b0eac]")]
-// 0x4b0eac — __ZThn32_N3RBX11CustomEventD0Ev — `non-virtual thunk to'RBX::CustomEvent::~CustomEvent()
+#[doc(alias = "non-virtual thunk to RBX::CustomEvent::~CustomEvent() [0x4b0eac]")]
+// 0x4b0eac — __ZThn32_N3RBX11CustomEventD0Ev — non-virtual thunk to RBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 pub fn stub_0x4b0eac() -> ! { todo!("0x4b0eac __ZThn32_N3RBX11CustomEventD0Ev") }
 
-#[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent() [0x4b0f60]")]
-// 0x4b0f60 — __ZThn36_N3RBX11CustomEventD1Ev — `non-virtual thunk to'RBX::CustomEvent::~CustomEvent()
+#[doc(alias = "non-virtual thunk to RBX::CustomEvent::~CustomEvent() [0x4b0f60]")]
+// 0x4b0f60 — __ZThn36_N3RBX11CustomEventD1Ev — non-virtual thunk to RBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 pub fn stub_0x4b0f60() -> ! { todo!("0x4b0f60 __ZThn36_N3RBX11CustomEventD1Ev") }
 
-#[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent() [0x4b0f68]")]
-// 0x4b0f68 — __ZThn36_N3RBX11CustomEventD0Ev — `non-virtual thunk to'RBX::CustomEvent::~CustomEvent()
+#[doc(alias = "non-virtual thunk to RBX::CustomEvent::~CustomEvent() [0x4b0f68]")]
+// 0x4b0f68 — __ZThn36_N3RBX11CustomEventD0Ev — non-virtual thunk to RBX::CustomEvent::~CustomEvent()
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
 pub fn stub_0x4b0f68() -> ! { todo!("0x4b0f68 __ZThn36_N3RBX11CustomEventD0Ev") }
 
@@ -208,8 +208,8 @@ pub fn stub_0x4b2f14() -> ! { todo!("0x4b2f14 __ZNK3rbx7signals6signalIFvfEE4slo
 // type: 
 pub fn stub_0x4b2f20() -> ! { todo!("0x4b2f20 __ZN3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEf") }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::call(float) [0x4b2f34]")]
-// 0x4b2f34 — __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEf — `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::call(float)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::call(float) [0x4b2f34]")]
+// 0x4b2f34 — __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEf — non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::CustomEventReceiver,float>,boost::_bi::list2<boost::_bi::value<RBX::CustomEventReceiver*>,boost::arg<1>>>,1,void ()(float)>::call(float)
 // type: 
 pub fn stub_0x4b2f34() -> ! { todo!("0x4b2f34 __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEf") }
 

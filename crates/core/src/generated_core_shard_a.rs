@@ -149,9 +149,9 @@ pub fn stub_0x4b97c() -> ! {
     todo!("0x4b97c __ZN3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
-// 0x4b984 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_ — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
+// 0x4b984 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
 pub fn stub_0x4b984() -> ! {
     todo!("0x4b984 __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")
 }
@@ -1210,9 +1210,9 @@ pub fn stub_0x6b4260() -> ! {
     todo!("0x6b4260 __ZN3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")]
-// 0x6b428c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
-// was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")]
+// 0x6b428c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
+// was: `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
 pub fn stub_0x6b428c() -> ! {
     todo!("0x6b428c __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
 }
@@ -1349,9 +1349,9 @@ pub fn stub_0x6b668c() -> ! {
     todo!("0x6b668c __ZN3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)")]
-// 0x6b66c4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
-// was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)")]
+// 0x6b66c4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
+// was: `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::RbxRay)>::slot,boost::function<void ()(RBX::RbxRay)>,1,void ()(RBX::RbxRay)>::call(RBX::RbxRay)
 pub fn stub_0x6b66c4() -> ! {
     todo!("0x6b66c4 __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX6RbxRayEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
 }

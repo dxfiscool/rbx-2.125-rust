@@ -350,7 +350,7 @@ pub fn stub_d5afd8() -> ! {
 // 0xd5b09c — __ZThn4_N4Ogre11Rectangle2DD0Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
-// was: `non-virtual thunk to'Ogre::Rectangle2D::~Rectangle2D()
+// was: non-virtual thunk to Ogre::Rectangle2D::~Rectangle2D()
 pub fn stub_d5b09c() -> ! {
     todo!("0xd5b09c non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")
 }
@@ -358,7 +358,7 @@ pub fn stub_d5b09c() -> ! {
 // 0xd5b170 — __ZThn188_N4Ogre11Rectangle2DD0Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
-// was: `non-virtual thunk to'Ogre::Rectangle2D::~Rectangle2D()
+// was: non-virtual thunk to Ogre::Rectangle2D::~Rectangle2D()
 pub fn stub_d5b170() -> ! {
     todo!("0xd5b170 non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")
 }
@@ -366,7 +366,7 @@ pub fn stub_d5b170() -> ! {
 // 0xd5b240 — __ZThn4_N4Ogre11Rectangle2DD1Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
-// was: `non-virtual thunk to'Ogre::Rectangle2D::~Rectangle2D()
+// was: non-virtual thunk to Ogre::Rectangle2D::~Rectangle2D()
 pub fn stub_d5b240() -> ! {
     todo!("0xd5b240 non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")
 }
@@ -374,7 +374,7 @@ pub fn stub_d5b240() -> ! {
 // 0xd5b304 — __ZThn188_N4Ogre11Rectangle2DD1Ev
 // type: void __fastcall(Ogre::Rectangle2D *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")]
-// was: `non-virtual thunk to'Ogre::Rectangle2D::~Rectangle2D()
+// was: non-virtual thunk to Ogre::Rectangle2D::~Rectangle2D()
 pub fn stub_d5b304() -> ! {
     todo!("0xd5b304 non-virtual thunk toOgre::Rectangle2D::~Rectangle2D()")
 }
@@ -406,7 +406,7 @@ pub fn stub_d5b814() -> ! {
 // 0xd5b858 — __ZThn188_NK4Ogre11Rectangle2D18getWorldTransformsEPNS_7Matrix4E
 // type: char *__fastcall(Ogre::Rectangle2D *this, Ogre::Matrix4 *)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::getWorldTransforms(Ogre::Matrix4 *)const")]
-// was: `non-virtual thunk to'Ogre::Rectangle2D::getWorldTransforms(Ogre::Matrix4 *)const
+// was: non-virtual thunk to Ogre::Rectangle2D::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_d5b858() -> ! {
     todo!("0xd5b858 non-virtual thunk toOgre::Rectangle2D::getWorldTransforms(Ogre::Matrix4 *)const")
 }
@@ -430,7 +430,7 @@ pub fn stub_d5b8a0() -> ! {
 // 0xd5b8a4 — __ZThn188_NK4Ogre11Rectangle2D19getSquaredViewDepthEPKNS_6CameraE
 // type: _DWORD __fastcall(Ogre::Rectangle2D *__hidden this, const Ogre::Camera *)
 #[doc(alias = "non-virtual thunk toOgre::Rectangle2D::getSquaredViewDepth(Ogre::Camera const*)const")]
-// was: `non-virtual thunk to'Ogre::Rectangle2D::getSquaredViewDepth(Ogre::Camera const*)const
+// was: non-virtual thunk to Ogre::Rectangle2D::getSquaredViewDepth(Ogre::Camera const*)const
 pub fn stub_d5b8a4() -> ! {
     todo!("0xd5b8a4 non-virtual thunk toOgre::Rectangle2D::getSquaredViewDepth(Ogre::Camera const*)const")
 }

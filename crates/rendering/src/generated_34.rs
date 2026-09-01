@@ -207,10 +207,10 @@ pub fn stub_6b4260() -> ! {
 }
 
 // 0x6b428c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")]
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")]
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
 pub fn stub_6b428c() -> ! {
-    todo!("0x6b428c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")
+    todo!("0x6b428c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")
 }
 
 // 0x6b42b8 — __ZNK5boost9function1IvN3G3D15CoordinateFrameEEclES2_
@@ -432,10 +432,10 @@ pub fn stub_6b8bd4() -> ! {
 }
 
 // 0x6b8bdc — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector3EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")]
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")]
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)
 pub fn stub_6b8bdc() -> ! {
-    todo!("0x6b8bdc non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")
+    todo!("0x6b8bdc non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")
 }
 
 // 0x6b8be4 — __ZNK5boost9function1IvN3G3D7Vector3EEclES2_
@@ -498,10 +498,10 @@ pub fn stub_6be0cc() -> ! {
 
 // 0x6be23c — __ZThn132_N3RBX11VehicleSeat4zoomEfRN3G3D15CoordinateFrameES3_
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, float, G3D::CoordinateFrame *, G3D::CoordinateFrame *)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
-// was: `non-virtual thunk to'RBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)
+#[doc(alias = "non-virtual thunk to RBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
+// was: non-virtual thunk to RBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)
 pub fn stub_6be23c() -> ! {
-    todo!("0x6be23c non-virtual thunk toRBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
+    todo!("0x6be23c non-virtual thunk to RBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
 }
 
 // 0x6be248 — __ZN3RBX11VehicleSeat20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
@@ -514,10 +514,10 @@ pub fn stub_6be248() -> ! {
 
 // 0x6be4ac — __ZThn132_N3RBX11VehicleSeat20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, G3D::Vector3 *, G3D::CoordinateFrame *, double)
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
-// was: `non-virtual thunk to'RBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)
+#[doc(alias = "non-virtual thunk to RBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
+// was: non-virtual thunk to RBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)
 pub fn stub_6be4ac() -> ! {
-    todo!("0x6be4ac non-virtual thunk toRBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
+    todo!("0x6be4ac non-virtual thunk to RBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
 }
 
 // 0x6be770 — __ZN3G3D5ArrayIPN3RBX11RotateJointELi10ELm32EE6appendERKS3_

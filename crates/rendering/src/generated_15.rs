@@ -297,7 +297,7 @@ pub fn stub_cce020() -> ! {
 
 // 0xcce02c — __ZThn4_N4Ogre5LightD0Ev
 #[doc(alias = "non-virtual thunk toOgre::Light::~Light()")]
-// was: `non-virtual thunk to'Ogre::Light::~Light()
+// was: non-virtual thunk to Ogre::Light::~Light()
 pub fn stub_cce02c() -> ! {
     todo!("0xcce02c non-virtual thunk toOgre::Light::~Light()")
 }
@@ -311,7 +311,7 @@ pub fn stub_cce0c0() -> ! {
 
 // 0xcce24c — __ZThn4_N4Ogre5LightD1Ev
 #[doc(alias = "non-virtual thunk toOgre::Light::~Light()")]
-// was: `non-virtual thunk to'Ogre::Light::~Light()
+// was: non-virtual thunk to Ogre::Light::~Light()
 pub fn stub_cce24c() -> ! {
     todo!("0xcce24c non-virtual thunk toOgre::Light::~Light()")
 }
@@ -556,7 +556,7 @@ pub fn stub_ccf140() -> ! {
 
 // 0xccf14c — __ZThn4_NK4Ogre5Light25getAnimableDictionaryNameEv
 #[doc(alias = "non-virtual thunk toOgre::Light::getAnimableDictionaryName(void)const")]
-// was: `non-virtual thunk to'Ogre::Light::getAnimableDictionaryName(void)const
+// was: non-virtual thunk to Ogre::Light::getAnimableDictionaryName(void)const
 pub fn stub_ccf14c() -> ! {
     todo!("0xccf14c non-virtual thunk toOgre::Light::getAnimableDictionaryName(void)const")
 }
@@ -570,7 +570,7 @@ pub fn stub_ccf158() -> ! {
 
 // 0xccf684 — __ZThn4_NK4Ogre5Light28initialiseAnimableDictionaryERSt6vectorISsNS_12STLAllocatorISsNS_22CategorisedAllocPolicyILNS_14MemoryCategoryE0EEEEEE
 #[doc(alias = "non-virtual thunk toOgre::Light::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")]
-// was: `non-virtual thunk to'Ogre::Light::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const
+// was: non-virtual thunk to Ogre::Light::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const
 pub fn stub_ccf684() -> ! {
     todo!("0xccf684 non-virtual thunk toOgre::Light::initialiseAnimableDictionary(std::vector<std::string,Ogre::STLAllocator<std::string,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> &)const")
 }
@@ -584,7 +584,7 @@ pub fn stub_ccf690() -> ! {
 
 // 0xccf824 — __ZThn4_N4Ogre5Light19createAnimableValueERKSs
 #[doc(alias = "non-virtual thunk toOgre::Light::createAnimableValue(std::string const&)")]
-// was: `non-virtual thunk to'Ogre::Light::createAnimableValue(std::string const&)
+// was: non-virtual thunk to Ogre::Light::createAnimableValue(std::string const&)
 pub fn stub_ccf824() -> ! {
     todo!("0xccf824 non-virtual thunk toOgre::Light::createAnimableValue(std::string const&)")
 }

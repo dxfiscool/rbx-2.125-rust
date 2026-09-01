@@ -15,7 +15,7 @@ pub fn stub_e27a78() -> ! {
 
 // 0xe27a90 — __ZThn88_NK4Ogre8Skeleton12getAnimationEt
 #[doc(alias = "non-virtual thunk toOgre::Skeleton::getAnimation(unsigned short)const")]
-// was: `non-virtual thunk to'Ogre::Skeleton::getAnimation(unsigned short)const
+// was: non-virtual thunk to Ogre::Skeleton::getAnimation(unsigned short)const
 pub fn stub_e27a90() -> ! {
     todo!("0xe27a90 non-virtual thunk toOgre::Skeleton::getAnimation(unsigned short)const")
 }
@@ -337,7 +337,7 @@ pub fn stub_e2b080() -> ! {
 
 // 0xe2b094 — __ZThn88_NK4Ogre16SkeletonInstance16getNumAnimationsEv
 #[doc(alias = "non-virtual thunk toOgre::SkeletonInstance::getNumAnimations(void)const")]
-// was: `non-virtual thunk to'Ogre::SkeletonInstance::getNumAnimations(void)const
+// was: non-virtual thunk to Ogre::SkeletonInstance::getNumAnimations(void)const
 pub fn stub_e2b094() -> ! {
     todo!("0xe2b094 non-virtual thunk toOgre::SkeletonInstance::getNumAnimations(void)const")
 }
@@ -351,7 +351,7 @@ pub fn stub_e2b0a8() -> ! {
 
 // 0xe2b0bc — __ZThn88_NK4Ogre16SkeletonInstance12getAnimationEt
 #[doc(alias = "non-virtual thunk toOgre::SkeletonInstance::getAnimation(unsigned short)const")]
-// was: `non-virtual thunk to'Ogre::SkeletonInstance::getAnimation(unsigned short)const
+// was: non-virtual thunk to Ogre::SkeletonInstance::getAnimation(unsigned short)const
 pub fn stub_e2b0bc() -> ! {
     todo!("0xe2b0bc non-virtual thunk toOgre::SkeletonInstance::getAnimation(unsigned short)const")
 }
@@ -365,7 +365,7 @@ pub fn stub_e2b0d0() -> ! {
 
 // 0xe2b0e4 — __ZThn88_N4Ogre16SkeletonInstance15createAnimationERKSsf
 #[doc(alias = "non-virtual thunk toOgre::SkeletonInstance::createAnimation(std::string const&,float)")]
-// was: `non-virtual thunk to'Ogre::SkeletonInstance::createAnimation(std::string const&,float)
+// was: non-virtual thunk to Ogre::SkeletonInstance::createAnimation(std::string const&,float)
 pub fn stub_e2b0e4() -> ! {
     todo!("0xe2b0e4 non-virtual thunk toOgre::SkeletonInstance::createAnimation(std::string const&,float)")
 }
@@ -393,7 +393,7 @@ pub fn stub_e2b120() -> ! {
 
 // 0xe2b134 — __ZThn88_N4Ogre16SkeletonInstance15removeAnimationERKSs
 #[doc(alias = "non-virtual thunk toOgre::SkeletonInstance::removeAnimation(std::string const&)")]
-// was: `non-virtual thunk to'Ogre::SkeletonInstance::removeAnimation(std::string const&)
+// was: non-virtual thunk to Ogre::SkeletonInstance::removeAnimation(std::string const&)
 pub fn stub_e2b134() -> ! {
     todo!("0xe2b134 non-virtual thunk toOgre::SkeletonInstance::removeAnimation(std::string const&)")
 }

@@ -16,10 +16,10 @@ pub fn stub_86f86c() -> ! {
 }
 
 // 0x86f870 — __ZThn108_N3RBX19MegaClusterInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
-#[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
-// was: `non-virtual thunk to'RBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
+#[doc(alias = "non-virtual thunk to RBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+// was: non-virtual thunk to RBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
 pub fn stub_86f870() -> ! {
-    todo!("0x86f870 non-virtual thunk toRBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+    todo!("0x86f870 non-virtual thunk to RBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
 // 0x8a90d8 — __ZN3RBX17ManualJointHelper13render3dAdornEPNS_5AdornE
@@ -100,10 +100,10 @@ pub fn stub_8e32c8() -> ! {
 }
 
 // 0x8e32d4 — __ZThn96_N3RBX17GuiLayerCollector8render2dEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::render2d(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::GuiLayerCollector::render2d(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::GuiLayerCollector::render2d(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::GuiLayerCollector::render2d(RBX::Adorn *)
 pub fn stub_8e32d4() -> ! {
-    todo!("0x8e32d4 non-virtual thunk toRBX::GuiLayerCollector::render2d(RBX::Adorn *)")
+    todo!("0x8e32d4 non-virtual thunk to RBX::GuiLayerCollector::render2d(RBX::Adorn *)")
 }
 
 // 0x8e32e0 — __ZN3RBX17GuiLayerCollector15render2dContextEPNS_5AdornEPKNS_8InstanceE
@@ -114,10 +114,10 @@ pub fn stub_8e32e0() -> ! {
 }
 
 // 0x8e3484 — __ZThn96_N3RBX17GuiLayerCollector15render2dContextEPNS_5AdornEPKNS_8InstanceE
-#[doc(alias = "non-virtual thunk toRBX::GuiLayerCollector::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
-// was: `non-virtual thunk to'RBX::GuiLayerCollector::render2dContext(RBX::Adorn *,RBX::Instance const*)
+#[doc(alias = "non-virtual thunk to RBX::GuiLayerCollector::render2dContext(RBX::Adorn *,RBX::Instance const*)")]
+// was: non-virtual thunk to RBX::GuiLayerCollector::render2dContext(RBX::Adorn *,RBX::Instance const*)
 pub fn stub_8e3484() -> ! {
-    todo!("0x8e3484 non-virtual thunk toRBX::GuiLayerCollector::render2dContext(RBX::Adorn *,RBX::Instance const*)")
+    todo!("0x8e3484 non-virtual thunk to RBX::GuiLayerCollector::render2dContext(RBX::Adorn *,RBX::Instance const*)")
 }
 
 // 0x8ed908 — __ZN3RBX16OnScreenProfiler15DrawProfilerBarEPNS_5AdornE

@@ -71,19 +71,19 @@ pub fn stub_a242b8() -> ! {
 }
 
 // 0xa24538 — __ZThn32_N3RBX12CylinderMeshD1Ev
-// demangled: `non-virtual thunk to'RBX::CylinderMesh::~CylinderMesh()
+// demangled: non-virtual thunk to RBX::CylinderMesh::~CylinderMesh()
 // type: void __fastcall(RBX::CylinderMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")]
+#[doc(alias = "non-virtual thunk to RBX::CylinderMesh::~CylinderMesh()")]
 pub fn stub_a24538() -> ! {
-    todo!("0xa24538 non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")
+    todo!("0xa24538 non-virtual thunk to RBX::CylinderMesh::~CylinderMesh()")
 }
 
 // 0xa24548 — __ZThn36_N3RBX12CylinderMeshD0Ev
-// demangled: `non-virtual thunk to'RBX::CylinderMesh::~CylinderMesh()
+// demangled: non-virtual thunk to RBX::CylinderMesh::~CylinderMesh()
 // type: void __fastcall(RBX::CylinderMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")]
+#[doc(alias = "non-virtual thunk to RBX::CylinderMesh::~CylinderMesh()")]
 pub fn stub_a24548() -> ! {
-    todo!("0xa24548 non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")
+    todo!("0xa24548 non-virtual thunk to RBX::CylinderMesh::~CylinderMesh()")
 }
 
 // 0xa246b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12CylinderMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
@@ -103,11 +103,11 @@ pub fn stub_a24bc8() -> ! {
 }
 
 // 0xa24cd8 — __ZThn32_N3RBX9BlockMeshD0Ev
-// demangled: `non-virtual thunk to'RBX::BlockMesh::~BlockMesh()
+// demangled: non-virtual thunk to RBX::BlockMesh::~BlockMesh()
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BlockMesh::~BlockMesh()")]
+#[doc(alias = "non-virtual thunk to RBX::BlockMesh::~BlockMesh()")]
 pub fn stub_a24cd8() -> ! {
-    todo!("0xa24cd8 non-virtual thunk toRBX::BlockMesh::~BlockMesh()")
+    todo!("0xa24cd8 non-virtual thunk to RBX::BlockMesh::~BlockMesh()")
 }
 
 // 0xa25aa8 — __ZN21AppendOtherCharactersclEN5boost10shared_ptrIN3RBX8InstanceEEE

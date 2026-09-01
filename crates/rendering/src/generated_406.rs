@@ -456,10 +456,10 @@ pub fn stub_60f244() -> ! {
 // 0x60f26c — __ZThn32_N3RBX11Scale9FrameD1Ev
 // type: void __fastcall(RBX::Scale9Frame *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX11Scale9FrameD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Scale9Frame::~Scale9Frame()")]
+#[doc(alias = "non-virtual thunk to RBX::Scale9Frame::~Scale9Frame()")]
 // was: __ZThn32_N3RBX11Scale9FrameD1Ev
 pub fn stub_60f26c() -> ! {
-    todo!("0x60f26c `non-virtual thunk to'RBX::Scale9Frame::~Scale9Frame()")
+    todo!("0x60f26c non-virtual thunk to RBX::Scale9Frame::~Scale9Frame()")
 }
 
 // 0x60f374 — __ZThn32_N3RBX11Scale9FrameD0Ev
@@ -467,7 +467,7 @@ pub fn stub_60f26c() -> ! {
 #[doc(alias = "__ZThn32_N3RBX11Scale9FrameD0Ev")]
 // was: __ZThn32_N3RBX11Scale9FrameD0Ev
 pub fn stub_60f374() -> ! {
-    todo!("0x60f374 `non-virtual thunk to'RBX::Scale9Frame::~Scale9Frame()")
+    todo!("0x60f374 non-virtual thunk to RBX::Scale9Frame::~Scale9Frame()")
 }
 
 // 0x60f490 — __ZThn32_NK3RBX17NonFactoryProductINS_9GuiObjectELZNS_12sScale9FrameEEE12getClassNameEv
@@ -482,7 +482,7 @@ pub fn stub_60f490() -> ! {
 #[doc(alias = "__ZThn36_N3RBX11Scale9FrameD1Ev")]
 // was: __ZThn36_N3RBX11Scale9FrameD1Ev
 pub fn stub_60f4b8() -> ! {
-    todo!("0x60f4b8 `non-virtual thunk to'RBX::Scale9Frame::~Scale9Frame()")
+    todo!("0x60f4b8 non-virtual thunk to RBX::Scale9Frame::~Scale9Frame()")
 }
 
 // 0x60f5c0 — __ZThn36_N3RBX11Scale9FrameD0Ev
@@ -490,7 +490,7 @@ pub fn stub_60f4b8() -> ! {
 #[doc(alias = "__ZThn36_N3RBX11Scale9FrameD0Ev")]
 // was: __ZThn36_N3RBX11Scale9FrameD0Ev
 pub fn stub_60f5c0() -> ! {
-    todo!("0x60f5c0 `non-virtual thunk to'RBX::Scale9Frame::~Scale9Frame()")
+    todo!("0x60f5c0 non-virtual thunk to RBX::Scale9Frame::~Scale9Frame()")
 }
 
 // 0x60f6dc — __ZN3RBX4Name13callDoDeclareILZNS_12sScale9FrameEEEEvv
@@ -659,10 +659,10 @@ pub fn stub_6104fc() -> ! {
 
 // 0x610524 — __ZThn168_N3RBX9ScreenGui11onHeartbeatERKNS_9HeartbeatE
 #[doc(alias = "__ZThn168_N3RBX9ScreenGui11onHeartbeatERKNS_9HeartbeatE")]
-#[doc(alias = "non-virtual thunk toRBX::ScreenGui::onHeartbeat(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk to RBX::ScreenGui::onHeartbeat(RBX::Heartbeat const&)")]
 // was: __ZThn168_N3RBX9ScreenGui11onHeartbeatERKNS_9HeartbeatE
 pub fn stub_610524() -> ! {
-    todo!("0x610524 `non-virtual thunk to'RBX::ScreenGui::onHeartbeat(RBX::Heartbeat const&)")
+    todo!("0x610524 non-virtual thunk to RBX::ScreenGui::onHeartbeat(RBX::Heartbeat const&)")
 }
 
 // 0x610588 — __ZNK3RBX9ScreenGui26canProcessMeAndDescendantsEv
@@ -692,10 +692,10 @@ pub fn stub_610668() -> ! {
 
 // 0x610674 — __ZThn92_N3RBX9ScreenGui7processERKNS_8GuiEventE
 #[doc(alias = "__ZThn92_N3RBX9ScreenGui7processERKNS_8GuiEventE")]
-#[doc(alias = "non-virtual thunk toRBX::ScreenGui::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk to RBX::ScreenGui::process(RBX::GuiEvent const&)")]
 // was: __ZThn92_N3RBX9ScreenGui7processERKNS_8GuiEventE
 pub fn stub_610674() -> ! {
-    todo!("0x610674 `non-virtual thunk to'RBX::ScreenGui::process(RBX::GuiEvent const&)")
+    todo!("0x610674 non-virtual thunk to RBX::ScreenGui::process(RBX::GuiEvent const&)")
 }
 
 // 0x610680 — __ZN3RBX9ScreenGui17removeModalButtonEPNS_9GuiButtonE
@@ -814,10 +814,10 @@ pub fn stub_610f3c() -> ! {
 // 0x610f54 — __ZThn32_N3RBX9ScreenGuiD1Ev
 // type: void __fastcall(RBX::ScreenGui *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX9ScreenGuiD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::ScreenGui::~ScreenGui()")]
+#[doc(alias = "non-virtual thunk to RBX::ScreenGui::~ScreenGui()")]
 // was: __ZThn32_N3RBX9ScreenGuiD1Ev
 pub fn stub_610f54() -> ! {
-    todo!("0x610f54 `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()")
+    todo!("0x610f54 non-virtual thunk to RBX::ScreenGui::~ScreenGui()")
 }
 
 // 0x611098 — __ZThn32_N3RBX9ScreenGuiD0Ev
@@ -825,7 +825,7 @@ pub fn stub_610f54() -> ! {
 #[doc(alias = "__ZThn32_N3RBX9ScreenGuiD0Ev")]
 // was: __ZThn32_N3RBX9ScreenGuiD0Ev
 pub fn stub_611098() -> ! {
-    todo!("0x611098 `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()")
+    todo!("0x611098 non-virtual thunk to RBX::ScreenGui::~ScreenGui()")
 }
 
 // 0x6111f0 — __ZThn32_NK3RBX14FactoryProductINS_9ScreenGuiENS_17GuiLayerCollectorELZNS_10sScreenGuiEENS_8InstanceEE12getClassNameEv
@@ -840,5 +840,5 @@ pub fn stub_6111f0() -> ! {
 #[doc(alias = "__ZThn36_N3RBX9ScreenGuiD1Ev")]
 // was: __ZThn36_N3RBX9ScreenGuiD1Ev
 pub fn stub_611200() -> ! {
-    todo!("0x611200 `non-virtual thunk to'RBX::ScreenGui::~ScreenGui()")
+    todo!("0x611200 non-virtual thunk to RBX::ScreenGui::~ScreenGui()")
 }

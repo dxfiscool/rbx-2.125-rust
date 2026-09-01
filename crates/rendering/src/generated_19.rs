@@ -534,7 +534,7 @@ pub fn stub_d0c564() -> ! {
 
 // 0xd0c8e4 — __ZThn88_N4Ogre4Mesh15createAnimationERKSsf
 #[doc(alias = "non-virtual thunk toOgre::Mesh::createAnimation(std::string const&,float)")]
-// was: `non-virtual thunk to'Ogre::Mesh::createAnimation(std::string const&,float)
+// was: non-virtual thunk to Ogre::Mesh::createAnimation(std::string const&,float)
 pub fn stub_d0c8e4() -> ! {
     todo!("0xd0c8e4 non-virtual thunk toOgre::Mesh::createAnimation(std::string const&,float)")
 }
@@ -548,7 +548,7 @@ pub fn stub_d0c8f0() -> ! {
 
 // 0xd0cb28 — __ZThn88_NK4Ogre4Mesh12getAnimationERKSs
 #[doc(alias = "non-virtual thunk toOgre::Mesh::getAnimation(std::string const&)const")]
-// was: `non-virtual thunk to'Ogre::Mesh::getAnimation(std::string const&)const
+// was: non-virtual thunk to Ogre::Mesh::getAnimation(std::string const&)const
 pub fn stub_d0cb28() -> ! {
     todo!("0xd0cb28 non-virtual thunk toOgre::Mesh::getAnimation(std::string const&)const")
 }
@@ -562,7 +562,7 @@ pub fn stub_d0cb34() -> ! {
 
 // 0xd0cb4c — __ZThn88_NK4Ogre4Mesh12getAnimationEt
 #[doc(alias = "non-virtual thunk toOgre::Mesh::getAnimation(unsigned short)const")]
-// was: `non-virtual thunk to'Ogre::Mesh::getAnimation(unsigned short)const
+// was: non-virtual thunk to Ogre::Mesh::getAnimation(unsigned short)const
 pub fn stub_d0cb4c() -> ! {
     todo!("0xd0cb4c non-virtual thunk toOgre::Mesh::getAnimation(unsigned short)const")
 }
@@ -576,7 +576,7 @@ pub fn stub_d0cb64() -> ! {
 
 // 0xd0cb6c — __ZThn88_NK4Ogre4Mesh16getNumAnimationsEv
 #[doc(alias = "non-virtual thunk toOgre::Mesh::getNumAnimations(void)const")]
-// was: `non-virtual thunk to'Ogre::Mesh::getNumAnimations(void)const
+// was: non-virtual thunk to Ogre::Mesh::getNumAnimations(void)const
 pub fn stub_d0cb6c() -> ! {
     todo!("0xd0cb6c non-virtual thunk toOgre::Mesh::getNumAnimations(void)const")
 }
@@ -590,7 +590,7 @@ pub fn stub_d0cb74() -> ! {
 
 // 0xd0cb88 — __ZThn88_NK4Ogre4Mesh12hasAnimationERKSs
 #[doc(alias = "non-virtual thunk toOgre::Mesh::hasAnimation(std::string const&)const")]
-// was: `non-virtual thunk to'Ogre::Mesh::hasAnimation(std::string const&)const
+// was: non-virtual thunk to Ogre::Mesh::hasAnimation(std::string const&)const
 pub fn stub_d0cb88() -> ! {
     todo!("0xd0cb88 non-virtual thunk toOgre::Mesh::hasAnimation(std::string const&)const")
 }
@@ -611,7 +611,7 @@ pub fn stub_d0cbc0() -> ! {
 
 // 0xd0ce64 — __ZThn88_N4Ogre4Mesh15removeAnimationERKSs
 #[doc(alias = "non-virtual thunk toOgre::Mesh::removeAnimation(std::string const&)")]
-// was: `non-virtual thunk to'Ogre::Mesh::removeAnimation(std::string const&)
+// was: non-virtual thunk to Ogre::Mesh::removeAnimation(std::string const&)
 pub fn stub_d0ce64() -> ! {
     todo!("0xd0ce64 non-virtual thunk toOgre::Mesh::removeAnimation(std::string const&)")
 }

@@ -40,24 +40,24 @@ pub fn stub_86db20() -> ! {
 }
 
 // 0x86db30 — __ZThn32_N3RBX19MegaClusterInstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to'RBX::MegaClusterInstance::~MegaClusterInstance()
+#[doc(alias = "non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")]
+// was: non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_86db30() -> ! {
-    todo!("0x86db30 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86db30 non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86db38 — __ZThn36_N3RBX19MegaClusterInstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to'RBX::MegaClusterInstance::~MegaClusterInstance()
+#[doc(alias = "non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")]
+// was: non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_86db38() -> ! {
-    todo!("0x86db38 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86db38 non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86db40 — __ZThn132_N3RBX19MegaClusterInstanceD0Ev
-#[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to'RBX::MegaClusterInstance::~MegaClusterInstance()
+#[doc(alias = "non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")]
+// was: non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_86db40() -> ! {
-    todo!("0x86db40 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86db40 non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86db48 — __ZN3RBX19MegaClusterInstanceD2Ev
@@ -67,24 +67,24 @@ pub fn stub_86db48() -> ! {
 }
 
 // 0x86de38 — __ZThn32_N3RBX19MegaClusterInstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to'RBX::MegaClusterInstance::~MegaClusterInstance()
+#[doc(alias = "non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")]
+// was: non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_86de38() -> ! {
-    todo!("0x86de38 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86de38 non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86de48 — __ZThn36_N3RBX19MegaClusterInstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to'RBX::MegaClusterInstance::~MegaClusterInstance()
+#[doc(alias = "non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")]
+// was: non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_86de48() -> ! {
-    todo!("0x86de48 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86de48 non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86de58 — __ZThn132_N3RBX19MegaClusterInstanceD1Ev
-#[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
-// was: `non-virtual thunk to'RBX::MegaClusterInstance::~MegaClusterInstance()
+#[doc(alias = "non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")]
+// was: non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_86de58() -> ! {
-    todo!("0x86de58 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86de58 non-virtual thunk to RBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86de68 — __ZN3RBX19MegaClusterInstance11setAnchoredEb
@@ -190,10 +190,10 @@ pub fn stub_86f86c() -> ! {
 }
 
 // 0x86f870 — __ZThn108_N3RBX19MegaClusterInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
-#[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
-// was: `non-virtual thunk to'RBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
+#[doc(alias = "non-virtual thunk to RBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+// was: non-virtual thunk to RBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
 pub fn stub_86f870() -> ! {
-    todo!("0x86f870 non-virtual thunk toRBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+    todo!("0x86f870 non-virtual thunk to RBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
 // 0x8714e8 — __ZN3RBX19MegaClusterInstance23cellCornerToWorldScriptEiii
@@ -287,10 +287,10 @@ pub fn stub_87239c() -> ! {
 }
 
 // 0x8723b0 — __ZThn148_N3RBX19MegaClusterInstance14isSelectable3dEv
-#[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::isSelectable3d(void)")]
-// was: `non-virtual thunk to'RBX::MegaClusterInstance::isSelectable3d(void)
+#[doc(alias = "non-virtual thunk to RBX::MegaClusterInstance::isSelectable3d(void)")]
+// was: non-virtual thunk to RBX::MegaClusterInstance::isSelectable3d(void)
 pub fn stub_8723b0() -> ! {
-    todo!("0x8723b0 non-virtual thunk toRBX::MegaClusterInstance::isSelectable3d(void)")
+    todo!("0x8723b0 non-virtual thunk to RBX::MegaClusterInstance::isSelectable3d(void)")
 }
 
 // 0x879850 — __ZN3RBX16TerrainPartitionC2EPNS_19MegaClusterInstanceEss
@@ -610,15 +610,15 @@ pub fn stub_900f00() -> ! {
 }
 
 // 0x900f38 — __ZThn32_N3RBX16OverlayDataModelD1Ev
-#[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
-// was: `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()
+#[doc(alias = "non-virtual thunk to RBX::OverlayDataModel::~OverlayDataModel()")]
+// was: non-virtual thunk to RBX::OverlayDataModel::~OverlayDataModel()
 pub fn stub_900f38() -> ! {
-    todo!("0x900f38 non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x900f38 non-virtual thunk to RBX::OverlayDataModel::~OverlayDataModel()")
 }
 
 // 0x900f40 — __ZThn32_N3RBX16OverlayDataModelD0Ev
-#[doc(alias = "non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")]
-// was: `non-virtual thunk to'RBX::OverlayDataModel::~OverlayDataModel()
+#[doc(alias = "non-virtual thunk to RBX::OverlayDataModel::~OverlayDataModel()")]
+// was: non-virtual thunk to RBX::OverlayDataModel::~OverlayDataModel()
 pub fn stub_900f40() -> ! {
-    todo!("0x900f40 non-virtual thunk toRBX::OverlayDataModel::~OverlayDataModel()")
+    todo!("0x900f40 non-virtual thunk to RBX::OverlayDataModel::~OverlayDataModel()")
 }

@@ -636,10 +636,10 @@ pub fn stub_868ce0() -> ! {
 
 // 0x8691c8 — __ZThn96_NK3RBX9GuiBase3d19shouldRender3dAdornEv
 // type: _DWORD __fastcall(RBX::GuiBase3d *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::GuiBase3d::shouldRender3dAdorn(void)const")]
-// was: `non-virtual thunk to'RBX::GuiBase3d::shouldRender3dAdorn(void)const
+#[doc(alias = "non-virtual thunk to RBX::GuiBase3d::shouldRender3dAdorn(void)const")]
+// was: non-virtual thunk to RBX::GuiBase3d::shouldRender3dAdorn(void)const
 pub fn stub_8691c8() -> ! {
-    todo!("0x8691c8 non-virtual thunk toRBX::GuiBase3d::shouldRender3dAdorn(void)const")
+    todo!("0x8691c8 non-virtual thunk to RBX::GuiBase3d::shouldRender3dAdorn(void)const")
 }
 
 // 0x87236c — __ZN3RBX19MegaClusterInstance17setRenderMaterialENS_8MaterialE

@@ -433,10 +433,10 @@ pub fn stub_6026c0() -> ! {
 
 // 0x6026c8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX17StarterGuiService11CoreGuiTypeEbEE4slotEN5boost8functionIS6_EELi2ES6_E4callES5_b
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX17StarterGuiService11CoreGuiTypeEbEE4slotEN5boost8functionIS6_EELi2ES6_E4callES5_b")]
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>::slot,boost::function<void ()(RBX::StarterGuiService::CoreGuiType,bool)>,2,void ()(RBX::StarterGuiService::CoreGuiType,bool)>::call(RBX::StarterGuiService::CoreGuiType,bool)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>::slot,boost::function<void ()(RBX::StarterGuiService::CoreGuiType,bool)>,2,void ()(RBX::StarterGuiService::CoreGuiType,bool)>::call(RBX::StarterGuiService::CoreGuiType,bool)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX17StarterGuiService11CoreGuiTypeEbEE4slotEN5boost8functionIS6_EELi2ES6_E4callES5_b
 pub fn stub_6026c8() -> ! {
-    todo!("0x6026c8 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>::slot,boost::function<void ()(RBX::StarterGuiService::CoreGuiType,bool)>,2,void ()(RBX::StarterGuiService::CoreGuiType,bool)>::call(RBX::StarterGuiService::CoreGuiType,bool)")
+    todo!("0x6026c8 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>::slot,boost::function<void ()(RBX::StarterGuiService::CoreGuiType,bool)>,2,void ()(RBX::StarterGuiService::CoreGuiType,bool)>::call(RBX::StarterGuiService::CoreGuiType,bool)")
 }
 
 // 0x6026d0 — __ZNK5boost9function2IvN3RBX17StarterGuiService11CoreGuiTypeEbEclES3_b

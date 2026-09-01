@@ -119,11 +119,11 @@ pub fn stub_6afd88() -> ! {
 }
 
 // 0x6afd90 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX10BrickColorEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::BrickColor)>::slot,boost::function<void ()(RBX::BrickColor)>,1,void ()(RBX::BrickColor)>::call(RBX::BrickColor)
+// demangled: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::BrickColor)>::slot,boost::function<void ()(RBX::BrickColor)>,1,void ()(RBX::BrickColor)>::call(RBX::BrickColor)
 // type: int __fastcall(int)
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::BrickColor)>::slot,boost::function<void ()(RBX::BrickColor)>,1,void ()(RBX::BrickColor)>::call(RBX::BrickColor)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::BrickColor)>::slot,boost::function<void ()(RBX::BrickColor)>,1,void ()(RBX::BrickColor)>::call(RBX::BrickColor)")]
 pub fn stub_6afd90() -> ! {
-    todo!("0x6afd90 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::BrickColor)>::slot,boost::function<void ()(RBX::BrickColor)>,1,void ()(RBX::BrickColor)>::call(RBX::BrickColor)")
+    todo!("0x6afd90 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::BrickColor)>::slot,boost::function<void ()(RBX::BrickColor)>,1,void ()(RBX::BrickColor)>::call(RBX::BrickColor)")
 }
 
 // 0x6afd98 — __ZNK5boost9function1IvN3RBX10BrickColorEEclES2_
@@ -461,10 +461,10 @@ pub fn stub_6b1f80() -> ! {
 }
 
 // 0x6b1fa0 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D6Color3EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")]
+// demangled: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")]
 pub fn stub_6b1fa0() -> ! {
-    todo!("0x6b1fa0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")
+    todo!("0x6b1fa0 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")
 }
 
 // 0x6b1fc0 — __ZNK5boost9function1IvN3G3D6Color3EEclES2_

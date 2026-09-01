@@ -1185,21 +1185,21 @@ pub fn stub_47f908() -> ! {
 }
 
 // 0x47f91c — __ZThn32_N3RBX13DebugSettingsD1Ev
-// demangled: `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// demangled: non-virtual thunk to RBX::DebugSettings::~DebugSettings()
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn32_N3RBX13DebugSettingsD1Ev")]
 pub fn stub_47f91c() -> ! {
-    todo!("0x47f91c non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
+    todo!("0x47f91c non-virtual thunk to RBX::DebugSettings::~DebugSettings()")
 }
 
 // 0x47f960 — __ZThn32_N3RBX13DebugSettingsD0Ev
-// demangled: `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// demangled: non-virtual thunk to RBX::DebugSettings::~DebugSettings()
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn32_N3RBX13DebugSettingsD0Ev")]
 pub fn stub_47f960() -> ! {
-    todo!("0x47f960 non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
+    todo!("0x47f960 non-virtual thunk to RBX::DebugSettings::~DebugSettings()")
 }
 
 // 0x47fa48 — __ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv
@@ -1210,21 +1210,21 @@ pub fn stub_47fa48() -> ! {
 }
 
 // 0x47fa58 — __ZThn36_N3RBX13DebugSettingsD1Ev
-// demangled: `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// demangled: non-virtual thunk to RBX::DebugSettings::~DebugSettings()
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn36_N3RBX13DebugSettingsD1Ev")]
 pub fn stub_47fa58() -> ! {
-    todo!("0x47fa58 non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
+    todo!("0x47fa58 non-virtual thunk to RBX::DebugSettings::~DebugSettings()")
 }
 
 // 0x47fa9c — __ZThn36_N3RBX13DebugSettingsD0Ev
-// demangled: `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()
+// demangled: non-virtual thunk to RBX::DebugSettings::~DebugSettings()
 // type: void __fastcall(RBX::DebugSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::DebugSettings::~DebugSettings()")]
 #[doc(alias = "__ZThn36_N3RBX13DebugSettingsD0Ev")]
 pub fn stub_47fa9c() -> ! {
-    todo!("0x47fa9c non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
+    todo!("0x47fa9c non-virtual thunk to RBX::DebugSettings::~DebugSettings()")
 }
 
 // 0x47fb88 — __ZN3RBX21TaskSchedulerSettingsD1Ev
@@ -1253,21 +1253,21 @@ pub fn stub_47fca8() -> ! {
 }
 
 // 0x47fcb8 — __ZThn32_N3RBX21TaskSchedulerSettingsD1Ev
-// demangled: `non-virtual thunk to'RBX::TaskSchedulerSettings::~TaskSchedulerSettings()
+// demangled: non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn32_N3RBX21TaskSchedulerSettingsD1Ev")]
 pub fn stub_47fcb8() -> ! {
-    todo!("0x47fcb8 non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+    todo!("0x47fcb8 non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
 }
 
 // 0x47fcfc — __ZThn32_N3RBX21TaskSchedulerSettingsD0Ev
-// demangled: `non-virtual thunk to'RBX::TaskSchedulerSettings::~TaskSchedulerSettings()
+// demangled: non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn32_N3RBX21TaskSchedulerSettingsD0Ev")]
 pub fn stub_47fcfc() -> ! {
-    todo!("0x47fcfc non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+    todo!("0x47fcfc non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
 }
 
 // 0x47fddc — __ZThn32_NK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv
@@ -1278,10 +1278,10 @@ pub fn stub_47fddc() -> ! {
 }
 
 // 0x47fdec — __ZThn36_N3RBX21TaskSchedulerSettingsD1Ev
-// demangled: `non-virtual thunk to'RBX::TaskSchedulerSettings::~TaskSchedulerSettings()
+// demangled: non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()
 // type: void __fastcall(RBX::TaskSchedulerSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 #[doc(alias = "__ZThn36_N3RBX21TaskSchedulerSettingsD1Ev")]
 pub fn stub_47fdec() -> ! {
-    todo!("0x47fdec non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+    todo!("0x47fdec non-virtual thunk to RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
 }

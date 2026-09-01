@@ -358,14 +358,14 @@ pub fn stub_c60e50() -> ! {
 
 // 0xc60e5c — __ZThn4_N4Ogre12BillboardSetD0Ev
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
-// was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
+// was: non-virtual thunk to Ogre::BillboardSet::~BillboardSet()
 pub fn stub_c60e5c() -> ! {
     todo!("0xc60e5c non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
 }
 
 // 0xc60ef0 — __ZThn188_N4Ogre12BillboardSetD0Ev
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
-// was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
+// was: non-virtual thunk to Ogre::BillboardSet::~BillboardSet()
 pub fn stub_c60ef0() -> ! {
     todo!("0xc60ef0 non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
 }
@@ -379,14 +379,14 @@ pub fn stub_c60f84() -> ! {
 
 // 0xc614d8 — __ZThn4_N4Ogre12BillboardSetD1Ev
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
-// was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
+// was: non-virtual thunk to Ogre::BillboardSet::~BillboardSet()
 pub fn stub_c614d8() -> ! {
     todo!("0xc614d8 non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
 }
 
 // 0xc614e4 — __ZThn188_N4Ogre12BillboardSetD1Ev
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
-// was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
+// was: non-virtual thunk to Ogre::BillboardSet::~BillboardSet()
 pub fn stub_c614e4() -> ! {
     todo!("0xc614e4 non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
 }
@@ -610,7 +610,7 @@ pub fn stub_c63808() -> ! {
 
 // 0xc63810 — __ZThn188_NK4Ogre12BillboardSet11getMaterialEv
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getMaterial(void)const")]
-// was: `non-virtual thunk to'Ogre::BillboardSet::getMaterial(void)const
+// was: non-virtual thunk to Ogre::BillboardSet::getMaterial(void)const
 pub fn stub_c63810() -> ! {
     todo!("0xc63810 non-virtual thunk toOgre::BillboardSet::getMaterial(void)const")
 }
@@ -631,7 +631,7 @@ pub fn stub_c63f28() -> ! {
 
 // 0xc63f88 — __ZThn188_N4Ogre12BillboardSet18getRenderOperationERNS_15RenderOperationE
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")]
-// was: `non-virtual thunk to'Ogre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)
+// was: non-virtual thunk to Ogre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_c63f88() -> ! {
     todo!("0xc63f88 non-virtual thunk toOgre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")
 }
@@ -645,7 +645,7 @@ pub fn stub_c63fe8() -> ! {
 
 // 0xc64044 — __ZThn188_NK4Ogre12BillboardSet18getWorldTransformsEPNS_7Matrix4E
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")]
-// was: `non-virtual thunk to'Ogre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const
+// was: non-virtual thunk to Ogre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_c64044() -> ! {
     todo!("0xc64044 non-virtual thunk toOgre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")
 }

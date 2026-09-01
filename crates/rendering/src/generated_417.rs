@@ -365,19 +365,19 @@ pub fn stub_63aee4() -> ! {
 // 0x63af0c — __ZThn32_N3RBX13SocialServiceD1Ev
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13SocialServiceD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
+#[doc(alias = "non-virtual thunk to RBX::SocialService::~SocialService()")]
 // was: __ZThn32_N3RBX13SocialServiceD1Ev
 pub fn stub_63af0c() -> ! {
-    todo!("0x63af0c `non-virtual thunk to'RBX::SocialService::~SocialService()")
+    todo!("0x63af0c non-virtual thunk to RBX::SocialService::~SocialService()")
 }
 
 // 0x63af80 — __ZThn32_N3RBX13SocialServiceD0Ev
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13SocialServiceD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
+#[doc(alias = "non-virtual thunk to RBX::SocialService::~SocialService()")]
 // was: __ZThn32_N3RBX13SocialServiceD0Ev
 pub fn stub_63af80() -> ! {
-    todo!("0x63af80 `non-virtual thunk to'RBX::SocialService::~SocialService()")
+    todo!("0x63af80 non-virtual thunk to RBX::SocialService::~SocialService()")
 }
 
 // 0x63b084 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sSocialServiceEEE12getClassNameEv
@@ -391,19 +391,19 @@ pub fn stub_63b084() -> ! {
 // 0x63b0ac — __ZThn36_N3RBX13SocialServiceD1Ev
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13SocialServiceD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
+#[doc(alias = "non-virtual thunk to RBX::SocialService::~SocialService()")]
 // was: __ZThn36_N3RBX13SocialServiceD1Ev
 pub fn stub_63b0ac() -> ! {
-    todo!("0x63b0ac `non-virtual thunk to'RBX::SocialService::~SocialService()")
+    todo!("0x63b0ac non-virtual thunk to RBX::SocialService::~SocialService()")
 }
 
 // 0x63b120 — __ZThn36_N3RBX13SocialServiceD0Ev
 // type: void __fastcall(RBX::SocialService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13SocialServiceD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SocialService::~SocialService()")]
+#[doc(alias = "non-virtual thunk to RBX::SocialService::~SocialService()")]
 // was: __ZThn36_N3RBX13SocialServiceD0Ev
 pub fn stub_63b120() -> ! {
-    todo!("0x63b120 `non-virtual thunk to'RBX::SocialService::~SocialService()")
+    todo!("0x63b120 non-virtual thunk to RBX::SocialService::~SocialService()")
 }
 
 // 0x63b224 — __ZN3RBX10Reflection9DescribedINS_13SocialServiceELZNS_14sSocialServiceEENS_17NonFactoryProductINS_8InstanceELZNS_14sSocialServiceEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -636,19 +636,19 @@ pub fn stub_63c568() -> ! {
 // 0x63c578 — __ZThn32_N3RBX8SparklesD1Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX8SparklesD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk to RBX::Sparkles::~Sparkles()")]
 // was: __ZThn32_N3RBX8SparklesD1Ev
 pub fn stub_63c578() -> ! {
-    todo!("0x63c578 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x63c578 non-virtual thunk to RBX::Sparkles::~Sparkles()")
 }
 
 // 0x63c580 — __ZThn32_N3RBX8SparklesD0Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX8SparklesD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk to RBX::Sparkles::~Sparkles()")]
 // was: __ZThn32_N3RBX8SparklesD0Ev
 pub fn stub_63c580() -> ! {
-    todo!("0x63c580 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x63c580 non-virtual thunk to RBX::Sparkles::~Sparkles()")
 }
 
 // 0x63c588 — __ZThn32_NK3RBX14FactoryProductINS_8SparklesENS_8InstanceELZNS_9sSparklesEES2_E12getClassNameEv
@@ -662,37 +662,37 @@ pub fn stub_63c588() -> ! {
 // 0x63c598 — __ZThn36_N3RBX8SparklesD1Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX8SparklesD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk to RBX::Sparkles::~Sparkles()")]
 // was: __ZThn36_N3RBX8SparklesD1Ev
 pub fn stub_63c598() -> ! {
-    todo!("0x63c598 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x63c598 non-virtual thunk to RBX::Sparkles::~Sparkles()")
 }
 
 // 0x63c5a0 — __ZThn36_N3RBX8SparklesD0Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX8SparklesD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk to RBX::Sparkles::~Sparkles()")]
 // was: __ZThn36_N3RBX8SparklesD0Ev
 pub fn stub_63c5a0() -> ! {
-    todo!("0x63c5a0 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x63c5a0 non-virtual thunk to RBX::Sparkles::~Sparkles()")
 }
 
 // 0x63c5a8 — __ZThn92_N3RBX8SparklesD1Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX8SparklesD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk to RBX::Sparkles::~Sparkles()")]
 // was: __ZThn92_N3RBX8SparklesD1Ev
 pub fn stub_63c5a8() -> ! {
-    todo!("0x63c5a8 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x63c5a8 non-virtual thunk to RBX::Sparkles::~Sparkles()")
 }
 
 // 0x63c5b0 — __ZThn92_N3RBX8SparklesD0Ev
 // type: void __fastcall(RBX::Sparkles *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX8SparklesD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Sparkles::~Sparkles()")]
+#[doc(alias = "non-virtual thunk to RBX::Sparkles::~Sparkles()")]
 // was: __ZThn92_N3RBX8SparklesD0Ev
 pub fn stub_63c5b0() -> ! {
-    todo!("0x63c5b0 `non-virtual thunk to'RBX::Sparkles::~Sparkles()")
+    todo!("0x63c5b0 non-virtual thunk to RBX::Sparkles::~Sparkles()")
 }
 
 // 0x63c5b8 — __ZN3RBX8SparklesD2Ev
@@ -865,8 +865,8 @@ pub fn stub_63d5ac() -> ! {
 // 0x63d5bc — __ZThn32_N3RBX13SpawnLocationD0Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13SpawnLocationD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")]
 // was: __ZThn32_N3RBX13SpawnLocationD0Ev
 pub fn stub_63d5bc() -> ! {
-    todo!("0x63d5bc `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x63d5bc non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")
 }

@@ -202,19 +202,19 @@ pub fn stub_641af8() -> ! {
 // 0x641b08 — __ZThn32_N3RBX12SpecialShapeD1Ev
 // type: void __fastcall(RBX::SpecialShape *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX12SpecialShapeD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpecialShape::~SpecialShape()")]
+#[doc(alias = "non-virtual thunk to RBX::SpecialShape::~SpecialShape()")]
 // was: __ZThn32_N3RBX12SpecialShapeD1Ev
 pub fn stub_641b08() -> ! {
-    todo!("0x641b08 `non-virtual thunk to'RBX::SpecialShape::~SpecialShape()")
+    todo!("0x641b08 non-virtual thunk to RBX::SpecialShape::~SpecialShape()")
 }
 
 // 0x641c10 — __ZThn32_N3RBX12SpecialShapeD0Ev
 // type: void __fastcall(RBX::SpecialShape *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX12SpecialShapeD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpecialShape::~SpecialShape() [0x641c10]")]
+#[doc(alias = "non-virtual thunk to RBX::SpecialShape::~SpecialShape() [0x641c10]")]
 // was: __ZThn32_N3RBX12SpecialShapeD0Ev
 pub fn stub_641c10() -> ! {
-    todo!("0x641c10 `non-virtual thunk to'RBX::SpecialShape::~SpecialShape()")
+    todo!("0x641c10 non-virtual thunk to RBX::SpecialShape::~SpecialShape()")
 }
 
 // 0x641d2c — __ZThn32_NK3RBX14FactoryProductINS_12SpecialShapeENS_8FileMeshELZNS_13sSpecialShapeEENS_8InstanceEE12getClassNameEv
@@ -229,19 +229,19 @@ pub fn stub_641d2c() -> ! {
 // 0x641d3c — __ZThn36_N3RBX12SpecialShapeD1Ev
 // type: void __fastcall(RBX::SpecialShape *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX12SpecialShapeD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpecialShape::~SpecialShape() [0x641d3c]")]
+#[doc(alias = "non-virtual thunk to RBX::SpecialShape::~SpecialShape() [0x641d3c]")]
 // was: __ZThn36_N3RBX12SpecialShapeD1Ev
 pub fn stub_641d3c() -> ! {
-    todo!("0x641d3c `non-virtual thunk to'RBX::SpecialShape::~SpecialShape()")
+    todo!("0x641d3c non-virtual thunk to RBX::SpecialShape::~SpecialShape()")
 }
 
 // 0x641e44 — __ZThn36_N3RBX12SpecialShapeD0Ev
 // type: void __fastcall(RBX::SpecialShape *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX12SpecialShapeD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpecialShape::~SpecialShape() [0x641e44]")]
+#[doc(alias = "non-virtual thunk to RBX::SpecialShape::~SpecialShape() [0x641e44]")]
 // was: __ZThn36_N3RBX12SpecialShapeD0Ev
 pub fn stub_641e44() -> ! {
-    todo!("0x641e44 `non-virtual thunk to'RBX::SpecialShape::~SpecialShape()")
+    todo!("0x641e44 non-virtual thunk to RBX::SpecialShape::~SpecialShape()")
 }
 
 // 0x641f60 — __ZN3RBX14FactoryProductINS_8FileMeshENS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEE7CreatorD1Ev
@@ -634,19 +634,19 @@ pub fn stub_643aec() -> ! {
 // 0x643afc — __ZThn32_N3RBX8FileMeshD1Ev
 // type: void __fastcall(RBX::FileMesh *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX8FileMeshD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::FileMesh::~FileMesh()")]
+#[doc(alias = "non-virtual thunk to RBX::FileMesh::~FileMesh()")]
 // was: __ZThn32_N3RBX8FileMeshD1Ev
 pub fn stub_643afc() -> ! {
-    todo!("0x643afc `non-virtual thunk to'RBX::FileMesh::~FileMesh()")
+    todo!("0x643afc non-virtual thunk to RBX::FileMesh::~FileMesh()")
 }
 
 // 0x643c04 — __ZThn32_N3RBX8FileMeshD0Ev
 // type: void __fastcall(RBX::FileMesh *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX8FileMeshD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::FileMesh::~FileMesh() [0x643c04]")]
+#[doc(alias = "non-virtual thunk to RBX::FileMesh::~FileMesh() [0x643c04]")]
 // was: __ZThn32_N3RBX8FileMeshD0Ev
 pub fn stub_643c04() -> ! {
-    todo!("0x643c04 `non-virtual thunk to'RBX::FileMesh::~FileMesh()")
+    todo!("0x643c04 non-virtual thunk to RBX::FileMesh::~FileMesh()")
 }
 
 // 0x643d20 — __ZThn32_NK3RBX14FactoryProductINS_8FileMeshENS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEE12getClassNameEv
@@ -661,19 +661,19 @@ pub fn stub_643d20() -> ! {
 // 0x643d30 — __ZThn36_N3RBX8FileMeshD1Ev
 // type: void __fastcall(RBX::FileMesh *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX8FileMeshD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::FileMesh::~FileMesh() [0x643d30]")]
+#[doc(alias = "non-virtual thunk to RBX::FileMesh::~FileMesh() [0x643d30]")]
 // was: __ZThn36_N3RBX8FileMeshD1Ev
 pub fn stub_643d30() -> ! {
-    todo!("0x643d30 `non-virtual thunk to'RBX::FileMesh::~FileMesh()")
+    todo!("0x643d30 non-virtual thunk to RBX::FileMesh::~FileMesh()")
 }
 
 // 0x643e38 — __ZThn36_N3RBX8FileMeshD0Ev
 // type: void __fastcall(RBX::FileMesh *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX8FileMeshD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::FileMesh::~FileMesh() [0x643e38]")]
+#[doc(alias = "non-virtual thunk to RBX::FileMesh::~FileMesh() [0x643e38]")]
 // was: __ZThn36_N3RBX8FileMeshD0Ev
 pub fn stub_643e38() -> ! {
-    todo!("0x643e38 `non-virtual thunk to'RBX::FileMesh::~FileMesh()")
+    todo!("0x643e38 non-virtual thunk to RBX::FileMesh::~FileMesh()")
 }
 
 // 0x643f54 — __ZN3RBX14FactoryProductINS_8FileMeshENS_13DataModelMeshELZNS_9sFileMeshEENS_8InstanceEE17static_getCreatorEv

@@ -198,14 +198,14 @@ pub fn stub_c6c3c8() -> ! {
 
 // 0xc6c3d4 — __ZThn4_N4Ogre6CameraD0Ev
 #[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
-// was: `non-virtual thunk to'Ogre::Camera::~Camera()
+// was: non-virtual thunk to Ogre::Camera::~Camera()
 pub fn stub_c6c3d4() -> ! {
     todo!("0xc6c3d4 non-virtual thunk toOgre::Camera::~Camera()")
 }
 
 // 0xc6c468 — __ZThn188_N4Ogre6CameraD0Ev
 #[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
-// was: `non-virtual thunk to'Ogre::Camera::~Camera()
+// was: non-virtual thunk to Ogre::Camera::~Camera()
 pub fn stub_c6c468() -> ! {
     todo!("0xc6c468 non-virtual thunk toOgre::Camera::~Camera()")
 }
@@ -219,14 +219,14 @@ pub fn stub_c6c4fc() -> ! {
 
 // 0xc6c63c — __ZThn4_N4Ogre6CameraD1Ev
 #[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
-// was: `non-virtual thunk to'Ogre::Camera::~Camera()
+// was: non-virtual thunk to Ogre::Camera::~Camera()
 pub fn stub_c6c63c() -> ! {
     todo!("0xc6c63c non-virtual thunk toOgre::Camera::~Camera()")
 }
 
 // 0xc6c648 — __ZThn188_N4Ogre6CameraD1Ev
 #[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
-// was: `non-virtual thunk to'Ogre::Camera::~Camera()
+// was: non-virtual thunk to Ogre::Camera::~Camera()
 pub fn stub_c6c648() -> ! {
     todo!("0xc6c648 non-virtual thunk toOgre::Camera::~Camera()")
 }
@@ -429,7 +429,7 @@ pub fn stub_c6d370() -> ! {
 
 // 0xc6d3bc — __ZThn188_NK4Ogre6Camera18getWorldTransformsEPNS_7Matrix4E
 #[doc(alias = "non-virtual thunk toOgre::Camera::getWorldTransforms(Ogre::Matrix4 *)const")]
-// was: `non-virtual thunk to'Ogre::Camera::getWorldTransforms(Ogre::Matrix4 *)const
+// was: non-virtual thunk to Ogre::Camera::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_c6d3bc() -> ! {
     todo!("0xc6d3bc non-virtual thunk toOgre::Camera::getWorldTransforms(Ogre::Matrix4 *)const")
 }

@@ -89,9 +89,9 @@ pub fn stub_0x2d45b8() -> ! {
     todo!("0x2d45b8 __ZNK3RBX15AdvMoveToolBase10getExtentsERNS_7ExtentsE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk to RBX::AdvMoveToolBase::render2d(RBX::Adorn *)")]
 // 0x2d470c — __ZThn4_N3RBX15AdvMoveToolBase8render2dEPNS_5AdornE
-// was: `non-virtual thunk to'RBX::AdvMoveToolBase::render2d(RBX::Adorn *)
+// was: non-virtual thunk to RBX::AdvMoveToolBase::render2d(RBX::Adorn *)
 pub fn stub_0x2d470c() -> ! {
     todo!("0x2d470c __ZThn4_N3RBX15AdvMoveToolBase8render2dEPNS_5AdornE")
 }
@@ -102,9 +102,9 @@ pub fn stub_0x2d4714() -> ! {
     todo!("0x2d4714 __ZN3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk to RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")]
 // 0x2d4874 — __ZThn4_N3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE
-// was: `non-virtual thunk to'RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)
+// was: non-virtual thunk to RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)
 pub fn stub_0x2d4874() -> ! {
     todo!("0x2d4874 __ZThn4_N3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE")
 }
@@ -121,9 +121,9 @@ pub fn stub_0x2d4ac4() -> ! {
     todo!("0x2d4ac4 __ZN3RBX11AdvMoveTool8render2dEPNS_5AdornE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvMoveTool::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk to RBX::AdvMoveTool::render2d(RBX::Adorn *)")]
 // 0x2d504c — __ZThn4_N3RBX11AdvMoveTool8render2dEPNS_5AdornE
-// was: `non-virtual thunk to'RBX::AdvMoveTool::render2d(RBX::Adorn *)
+// was: non-virtual thunk to RBX::AdvMoveTool::render2d(RBX::Adorn *)
 pub fn stub_0x2d504c() -> ! {
     todo!("0x2d504c __ZThn4_N3RBX11AdvMoveTool8render2dEPNS_5AdornE")
 }
@@ -140,9 +140,9 @@ pub fn stub_0x2d5890() -> ! {
     todo!("0x2d5890 __ZN3RBX13AdvRotateTool8render2dEPNS_5AdornE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk to RBX::AdvRotateTool::render2d(RBX::Adorn *)")]
 // 0x2d5a28 — __ZThn4_N3RBX13AdvRotateTool8render2dEPNS_5AdornE
-// was: `non-virtual thunk to'RBX::AdvRotateTool::render2d(RBX::Adorn *)
+// was: non-virtual thunk to RBX::AdvRotateTool::render2d(RBX::Adorn *)
 pub fn stub_0x2d5a28() -> ! {
     todo!("0x2d5a28 __ZThn4_N3RBX13AdvRotateTool8render2dEPNS_5AdornE")
 }
@@ -153,9 +153,9 @@ pub fn stub_0x2d5a30() -> ! {
     todo!("0x2d5a30 __ZN3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk to RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")]
 // 0x2d5d98 — __ZThn4_N3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE
-// was: `non-virtual thunk to'RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)
+// was: non-virtual thunk to RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)
 pub fn stub_0x2d5d98() -> ! {
     todo!("0x2d5d98 __ZThn4_N3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE")
 }
@@ -172,16 +172,16 @@ pub fn stub_0x2d5fd4() -> ! {
     todo!("0x2d5fd4 __ZN3RBX13AdvRotateToolD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
+#[doc(alias = "non-virtual thunk to RBX::AdvRotateTool::~AdvRotateTool()")]
 // 0x2d6074 — __ZThn36_N3RBX13AdvRotateToolD1Ev
-// was: `non-virtual thunk to'RBX::AdvRotateTool::~AdvRotateTool()
+// was: non-virtual thunk to RBX::AdvRotateTool::~AdvRotateTool()
 pub fn stub_0x2d6074() -> ! {
     todo!("0x2d6074 __ZThn36_N3RBX13AdvRotateToolD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
+#[doc(alias = "non-virtual thunk to RBX::AdvRotateTool::~AdvRotateTool()")]
 // 0x2d607c — __ZThn36_N3RBX13AdvRotateToolD0Ev
-// was: `non-virtual thunk to'RBX::AdvRotateTool::~AdvRotateTool()
+// was: non-virtual thunk to RBX::AdvRotateTool::~AdvRotateTool()
 pub fn stub_0x2d607c() -> ! {
     todo!("0x2d607c __ZThn36_N3RBX13AdvRotateToolD0Ev")
 }
@@ -348,9 +348,9 @@ pub fn stub_0x2dad94() -> ! {
     todo!("0x2dad94 __ZNK3RBX12AxisToolBase10getExtentsERNS_7ExtentsE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AxisToolBase::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk to RBX::AxisToolBase::render2d(RBX::Adorn *)")]
 // 0x2daee8 — __ZThn4_N3RBX12AxisToolBase8render2dEPNS_5AdornE
-// was: `non-virtual thunk to'RBX::AxisToolBase::render2d(RBX::Adorn *)
+// was: non-virtual thunk to RBX::AxisToolBase::render2d(RBX::Adorn *)
 pub fn stub_0x2daee8() -> ! {
     todo!("0x2daee8 __ZThn4_N3RBX12AxisToolBase8render2dEPNS_5AdornE")
 }
@@ -361,9 +361,9 @@ pub fn stub_0x2daef0() -> ! {
     todo!("0x2daef0 __ZN3RBX12AxisToolBase13render3dAdornEPNS_5AdornE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk to RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)")]
 // 0x2db050 — __ZThn4_N3RBX12AxisToolBase13render3dAdornEPNS_5AdornE
-// was: `non-virtual thunk to'RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)
+// was: non-virtual thunk to RBX::AxisToolBase::render3dAdorn(RBX::Adorn *)
 pub fn stub_0x2db050() -> ! {
     todo!("0x2db050 __ZThn4_N3RBX12AxisToolBase13render3dAdornEPNS_5AdornE")
 }
@@ -386,9 +386,9 @@ pub fn stub_0x2db950() -> ! {
     todo!("0x2db950 __ZN3RBX9CloneToolD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::CloneTool::~CloneTool()")]
+#[doc(alias = "non-virtual thunk to RBX::CloneTool::~CloneTool()")]
 // 0x2db954 — __ZThn36_N3RBX9CloneToolD0Ev
-// was: `non-virtual thunk to'RBX::CloneTool::~CloneTool()
+// was: non-virtual thunk to RBX::CloneTool::~CloneTool()
 pub fn stub_0x2db954() -> ! {
     todo!("0x2db954 __ZThn36_N3RBX9CloneToolD0Ev")
 }
@@ -399,9 +399,9 @@ pub fn stub_0x2db95c() -> ! {
     todo!("0x2db95c __ZN3RBX9CloneToolD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::CloneTool::~CloneTool()")]
+#[doc(alias = "non-virtual thunk to RBX::CloneTool::~CloneTool()")]
 // 0x2dba78 — __ZThn36_N3RBX9CloneToolD1Ev
-// was: `non-virtual thunk to'RBX::CloneTool::~CloneTool()
+// was: non-virtual thunk to RBX::CloneTool::~CloneTool()
 pub fn stub_0x2dba78() -> ! {
     todo!("0x2dba78 __ZThn36_N3RBX9CloneToolD1Ev")
 }
@@ -514,9 +514,9 @@ pub fn stub_0x2e32d4() -> ! {
     todo!("0x2e32d4 __ZN3RBX8GameToolD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GameTool::~GameTool()")]
+#[doc(alias = "non-virtual thunk to RBX::GameTool::~GameTool()")]
 // 0x2e32d8 — __ZThn36_N3RBX8GameToolD0Ev
-// was: `non-virtual thunk to'RBX::GameTool::~GameTool()
+// was: non-virtual thunk to RBX::GameTool::~GameTool()
 pub fn stub_0x2e32d8() -> ! {
     todo!("0x2e32d8 __ZThn36_N3RBX8GameToolD0Ev")
 }
@@ -527,9 +527,9 @@ pub fn stub_0x2e32e0() -> ! {
     todo!("0x2e32e0 __ZN3RBX8GameToolD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GameTool::~GameTool()")]
+#[doc(alias = "non-virtual thunk to RBX::GameTool::~GameTool()")]
 // 0x2e33e4 — __ZThn36_N3RBX8GameToolD1Ev
-// was: `non-virtual thunk to'RBX::GameTool::~GameTool()
+// was: non-virtual thunk to RBX::GameTool::~GameTool()
 pub fn stub_0x2e33e4() -> ! {
     todo!("0x2e33e4 __ZThn36_N3RBX8GameToolD1Ev")
 }
@@ -582,9 +582,9 @@ pub fn stub_0x2e3b48() -> ! {
     todo!("0x2e3b48 __ZN3RBX8GrabToolD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GrabTool::~GrabTool()")]
+#[doc(alias = "non-virtual thunk to RBX::GrabTool::~GrabTool()")]
 // 0x2e3b4c — __ZThn36_N3RBX8GrabToolD0Ev
-// was: `non-virtual thunk to'RBX::GrabTool::~GrabTool()
+// was: non-virtual thunk to RBX::GrabTool::~GrabTool()
 pub fn stub_0x2e3b4c() -> ! {
     todo!("0x2e3b4c __ZThn36_N3RBX8GrabToolD0Ev")
 }
@@ -595,9 +595,9 @@ pub fn stub_0x2e3b54() -> ! {
     todo!("0x2e3b54 __ZN3RBX8GrabToolD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GrabTool::~GrabTool()")]
+#[doc(alias = "non-virtual thunk to RBX::GrabTool::~GrabTool()")]
 // 0x2e3c58 — __ZThn36_N3RBX8GrabToolD1Ev
-// was: `non-virtual thunk to'RBX::GrabTool::~GrabTool()
+// was: non-virtual thunk to RBX::GrabTool::~GrabTool()
 pub fn stub_0x2e3c58() -> ! {
     todo!("0x2e3c58 __ZThn36_N3RBX8GrabToolD1Ev")
 }

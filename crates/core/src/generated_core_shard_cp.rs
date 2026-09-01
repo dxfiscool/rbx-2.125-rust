@@ -10,9 +10,9 @@ pub fn stub_6bd00c() -> ! {
     todo!("0x6bd00c __ZNK3RBX11VehicleSeat14shouldRender2dEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::shouldRender2d(void)const")]
+#[doc(alias = "non-virtual thunk to RBX::VehicleSeat::shouldRender2d(void)const")]
 // 0x6bd020 — __ZThn108_NK3RBX11VehicleSeat14shouldRender2dEv
-// was: `non-virtual thunk to'RBX::VehicleSeat::shouldRender2d(void)const
+// was: non-virtual thunk to RBX::VehicleSeat::shouldRender2d(void)const
 pub fn stub_6bd020() -> ! {
     todo!("0x6bd020 __ZThn108_NK3RBX11VehicleSeat14shouldRender2dEv")
 }
@@ -59,30 +59,30 @@ pub fn stub_6c4c80() -> ! {
     todo!("0x6c4c80 __ZN3RBX11VirtualUserD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
+#[doc(alias = "non-virtual thunk to RBX::VirtualUser::~VirtualUser()")]
 // 0x6c4d30 — __ZThn32_N3RBX11VirtualUserD1Ev
-// was: `non-virtual thunk to'RBX::VirtualUser::~VirtualUser()
+// was: non-virtual thunk to RBX::VirtualUser::~VirtualUser()
 pub fn stub_6c4d30() -> ! {
     todo!("0x6c4d30 __ZThn32_N3RBX11VirtualUserD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
+#[doc(alias = "non-virtual thunk to RBX::VirtualUser::~VirtualUser()")]
 // 0x6c4e84 — __ZThn32_N3RBX11VirtualUserD0Ev
-// was: `non-virtual thunk to'RBX::VirtualUser::~VirtualUser()
+// was: non-virtual thunk to RBX::VirtualUser::~VirtualUser()
 pub fn stub_6c4e84() -> ! {
     todo!("0x6c4e84 __ZThn32_N3RBX11VirtualUserD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
+#[doc(alias = "non-virtual thunk to RBX::VirtualUser::~VirtualUser()")]
 // 0x6c5000 — __ZThn36_N3RBX11VirtualUserD1Ev
-// was: `non-virtual thunk to'RBX::VirtualUser::~VirtualUser()
+// was: non-virtual thunk to RBX::VirtualUser::~VirtualUser()
 pub fn stub_6c5000() -> ! {
     todo!("0x6c5000 __ZThn36_N3RBX11VirtualUserD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::VirtualUser::~VirtualUser()")]
+#[doc(alias = "non-virtual thunk to RBX::VirtualUser::~VirtualUser()")]
 // 0x6c5154 — __ZThn36_N3RBX11VirtualUserD0Ev
-// was: `non-virtual thunk to'RBX::VirtualUser::~VirtualUser()
+// was: non-virtual thunk to RBX::VirtualUser::~VirtualUser()
 pub fn stub_6c5154() -> ! {
     todo!("0x6c5154 __ZThn36_N3RBX11VirtualUserD0Ev")
 }
@@ -159,16 +159,16 @@ pub fn stub_6c84b0() -> ! {
     todo!("0x6c84b0 __ZN3RBX5VisitD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Visit::~Visit()")]
+#[doc(alias = "non-virtual thunk to RBX::Visit::~Visit()")]
 // 0x6c84b4 — __ZThn32_N3RBX5VisitD0Ev
-// was: `non-virtual thunk to'RBX::Visit::~Visit()
+// was: non-virtual thunk to RBX::Visit::~Visit()
 pub fn stub_6c84b4() -> ! {
     todo!("0x6c84b4 __ZThn32_N3RBX5VisitD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Visit::~Visit()")]
+#[doc(alias = "non-virtual thunk to RBX::Visit::~Visit()")]
 // 0x6c84bc — __ZThn36_N3RBX5VisitD0Ev
-// was: `non-virtual thunk to'RBX::Visit::~Visit()
+// was: non-virtual thunk to RBX::Visit::~Visit()
 pub fn stub_6c84bc() -> ! {
     todo!("0x6c84bc __ZThn36_N3RBX5VisitD0Ev")
 }
@@ -179,16 +179,16 @@ pub fn stub_6c84c4() -> ! {
     todo!("0x6c84c4 __ZN3RBX5VisitD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Visit::~Visit()")]
+#[doc(alias = "non-virtual thunk to RBX::Visit::~Visit()")]
 // 0x6c85b8 — __ZThn32_N3RBX5VisitD1Ev
-// was: `non-virtual thunk to'RBX::Visit::~Visit()
+// was: non-virtual thunk to RBX::Visit::~Visit()
 pub fn stub_6c85b8() -> ! {
     todo!("0x6c85b8 __ZThn32_N3RBX5VisitD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Visit::~Visit()")]
+#[doc(alias = "non-virtual thunk to RBX::Visit::~Visit()")]
 // 0x6c85c0 — __ZThn36_N3RBX5VisitD1Ev
-// was: `non-virtual thunk to'RBX::Visit::~Visit()
+// was: non-virtual thunk to RBX::Visit::~Visit()
 pub fn stub_6c85c0() -> ! {
     todo!("0x6c85c0 __ZThn36_N3RBX5VisitD1Ev")
 }
@@ -439,16 +439,16 @@ pub fn stub_6dd050() -> ! {
     todo!("0x6dd050 __ZN3RBX12AdvArrowTool9setCursorESs")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvArrowTool::~AdvArrowTool()")]
+#[doc(alias = "non-virtual thunk to RBX::AdvArrowTool::~AdvArrowTool()")]
 // 0x6dd054 — __ZThn36_N3RBX12AdvArrowToolD1Ev
-// was: `non-virtual thunk to'RBX::AdvArrowTool::~AdvArrowTool()
+// was: non-virtual thunk to RBX::AdvArrowTool::~AdvArrowTool()
 pub fn stub_6dd054() -> ! {
     todo!("0x6dd054 __ZThn36_N3RBX12AdvArrowToolD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvArrowTool::~AdvArrowTool()")]
+#[doc(alias = "non-virtual thunk to RBX::AdvArrowTool::~AdvArrowTool()")]
 // 0x6dd05c — __ZThn36_N3RBX12AdvArrowToolD0Ev
-// was: `non-virtual thunk to'RBX::AdvArrowTool::~AdvArrowTool()
+// was: non-virtual thunk to RBX::AdvArrowTool::~AdvArrowTool()
 pub fn stub_6dd05c() -> ! {
     todo!("0x6dd05c __ZThn36_N3RBX12AdvArrowToolD0Ev")
 }
@@ -483,16 +483,16 @@ pub fn stub_6dd374() -> ! {
     todo!("0x6dd374 __ZN3RBX16AdvArrowToolBase9setCursorESs")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")]
+#[doc(alias = "non-virtual thunk to RBX::AdvArrowToolBase::~AdvArrowToolBase()")]
 // 0x6dd378 — __ZThn36_N3RBX16AdvArrowToolBaseD1Ev
-// was: `non-virtual thunk to'RBX::AdvArrowToolBase::~AdvArrowToolBase()
+// was: non-virtual thunk to RBX::AdvArrowToolBase::~AdvArrowToolBase()
 pub fn stub_6dd378() -> ! {
     todo!("0x6dd378 __ZThn36_N3RBX16AdvArrowToolBaseD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AdvArrowToolBase::~AdvArrowToolBase()")]
+#[doc(alias = "non-virtual thunk to RBX::AdvArrowToolBase::~AdvArrowToolBase()")]
 // 0x6dd380 — __ZThn36_N3RBX16AdvArrowToolBaseD0Ev
-// was: `non-virtual thunk to'RBX::AdvArrowToolBase::~AdvArrowToolBase()
+// was: non-virtual thunk to RBX::AdvArrowToolBase::~AdvArrowToolBase()
 pub fn stub_6dd380() -> ! {
     todo!("0x6dd380 __ZThn36_N3RBX16AdvArrowToolBaseD0Ev")
 }
@@ -509,16 +509,16 @@ pub fn stub_6dd38c() -> ! {
     todo!("0x6dd38c __ZN3RBX13ArrowToolBaseD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ArrowToolBase::~ArrowToolBase()")]
+#[doc(alias = "non-virtual thunk to RBX::ArrowToolBase::~ArrowToolBase()")]
 // 0x6dd42c — __ZThn36_N3RBX13ArrowToolBaseD1Ev
-// was: `non-virtual thunk to'RBX::ArrowToolBase::~ArrowToolBase()
+// was: non-virtual thunk to RBX::ArrowToolBase::~ArrowToolBase()
 pub fn stub_6dd42c() -> ! {
     todo!("0x6dd42c __ZThn36_N3RBX13ArrowToolBaseD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ArrowToolBase::~ArrowToolBase()")]
+#[doc(alias = "non-virtual thunk to RBX::ArrowToolBase::~ArrowToolBase()")]
 // 0x6dd434 — __ZThn36_N3RBX13ArrowToolBaseD0Ev
-// was: `non-virtual thunk to'RBX::ArrowToolBase::~ArrowToolBase()
+// was: non-virtual thunk to RBX::ArrowToolBase::~ArrowToolBase()
 pub fn stub_6dd434() -> ! {
     todo!("0x6dd434 __ZThn36_N3RBX13ArrowToolBaseD0Ev")
 }
@@ -571,30 +571,30 @@ pub fn stub_6ded30() -> ! {
     todo!("0x6ded30 __ZN3RBX5Stats14TypedStatsItemIiE6updateEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 // 0x6ded50 — __ZThn32_N3RBX5Stats14TypedStatsItemIiED1Ev
-// was: `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()
 pub fn stub_6ded50() -> ! {
     todo!("0x6ded50 __ZThn32_N3RBX5Stats14TypedStatsItemIiED1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 // 0x6dee98 — __ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev
-// was: `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()
 pub fn stub_6dee98() -> ! {
     todo!("0x6dee98 __ZThn32_N3RBX5Stats14TypedStatsItemIiED0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 // 0x6deff8 — __ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev
-// was: `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()
 pub fn stub_6deff8() -> ! {
     todo!("0x6deff8 __ZThn36_N3RBX5Stats14TypedStatsItemIiED1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()")]
 // 0x6df140 — __ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev
-// was: `non-virtual thunk to'RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<int>::~TypedStatsItem()
 pub fn stub_6df140() -> ! {
     todo!("0x6df140 __ZThn36_N3RBX5Stats14TypedStatsItemIiED0Ev")
 }
@@ -605,9 +605,9 @@ pub fn stub_6df7f8() -> ! {
     todo!("0x6df7f8 __ZN3RBX5Stats14TypedStatsItemIfE6updateEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 // 0x6df818 — __ZThn32_N3RBX5Stats14TypedStatsItemIfED0Ev
-// was: `non-virtual thunk to'RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()
 pub fn stub_6df818() -> ! {
     todo!("0x6df818 __ZThn32_N3RBX5Stats14TypedStatsItemIfED0Ev")
 }

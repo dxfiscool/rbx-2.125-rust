@@ -249,10 +249,10 @@ pub fn stub_c0def0() -> ! {
 }
 
 // 0xc0df08 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11MegaClusterEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)")]
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_c0df08() -> ! {
-    todo!("0xc0df08 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)")
+    todo!("0xc0df08 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::MegaCluster>,boost::_bi::list1<boost::_bi::value<RBX::MegaCluster*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0xc0df20 — __ZNSt6vectorIN3RBX11MegaCluster9ChunkDataESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_

@@ -192,7 +192,7 @@ pub fn stub_cda1c0() -> ! {
 
 // 0xcda1cc — __ZThn4_N4Ogre12ManualObjectD0Ev
 #[doc(alias = "non-virtual thunk toOgre::ManualObject::~ManualObject()")]
-// was: `non-virtual thunk to'Ogre::ManualObject::~ManualObject()
+// was: non-virtual thunk to Ogre::ManualObject::~ManualObject()
 pub fn stub_cda1cc() -> ! {
     todo!("0xcda1cc non-virtual thunk toOgre::ManualObject::~ManualObject()")
 }
@@ -206,7 +206,7 @@ pub fn stub_cda260() -> ! {
 
 // 0xcda394 — __ZThn4_N4Ogre12ManualObjectD1Ev
 #[doc(alias = "non-virtual thunk toOgre::ManualObject::~ManualObject()")]
-// was: `non-virtual thunk to'Ogre::ManualObject::~ManualObject()
+// was: non-virtual thunk to Ogre::ManualObject::~ManualObject()
 pub fn stub_cda394() -> ! {
     todo!("0xcda394 non-virtual thunk toOgre::ManualObject::~ManualObject()")
 }

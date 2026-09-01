@@ -4,16 +4,16 @@
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 // 0x6e0130 — __ZThn32_N3RBX5Stats14TypedStatsItemIdED1Ev
-// was: `non-virtual thunk to'RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()
 pub fn stub_6e0130() -> ! {
     todo!("0x6e0130 __ZThn32_N3RBX5Stats14TypedStatsItemIdED1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 // 0x6e0278 — __ZThn32_N3RBX5Stats14TypedStatsItemIdED0Ev
-// was: `non-virtual thunk to'RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()
+// was: non-virtual thunk to RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()
 pub fn stub_6e0278() -> ! {
     todo!("0x6e0278 __ZThn32_N3RBX5Stats14TypedStatsItemIdED0Ev")
 }

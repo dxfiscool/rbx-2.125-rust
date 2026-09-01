@@ -379,7 +379,7 @@ pub fn stub_6648cc() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5TeamsD0Ev")]
 // was: __ZThn32_N3RBX5TeamsD0Ev
 pub fn stub_6648d0() -> ! {
-    todo!("0x6648d0 `non-virtual thunk to'RBX::Teams::~Teams()")
+    todo!("0x6648d0 non-virtual thunk to RBX::Teams::~Teams()")
 }
 
 // 0x6648d8 — __ZThn36_N3RBX5TeamsD0Ev
@@ -387,7 +387,7 @@ pub fn stub_6648d0() -> ! {
 #[doc(alias = "__ZThn36_N3RBX5TeamsD0Ev")]
 // was: __ZThn36_N3RBX5TeamsD0Ev
 pub fn stub_6648d8() -> ! {
-    todo!("0x6648d8 `non-virtual thunk to'RBX::Teams::~Teams()")
+    todo!("0x6648d8 non-virtual thunk to RBX::Teams::~Teams()")
 }
 
 // 0x6648e0 — __ZN3RBX5TeamsD2Ev
@@ -404,7 +404,7 @@ pub fn stub_6648e0() -> ! {
 #[doc(alias = "__ZThn32_N3RBX5TeamsD1Ev")]
 // was: __ZThn32_N3RBX5TeamsD1Ev
 pub fn stub_6649c4() -> ! {
-    todo!("0x6649c4 `non-virtual thunk to'RBX::Teams::~Teams()")
+    todo!("0x6649c4 non-virtual thunk to RBX::Teams::~Teams()")
 }
 
 // 0x6649cc — __ZThn36_N3RBX5TeamsD1Ev
@@ -412,7 +412,7 @@ pub fn stub_6649c4() -> ! {
 #[doc(alias = "__ZThn36_N3RBX5TeamsD1Ev")]
 // was: __ZThn36_N3RBX5TeamsD1Ev
 pub fn stub_6649cc() -> ! {
-    todo!("0x6649cc `non-virtual thunk to'RBX::Teams::~Teams()")
+    todo!("0x6649cc non-virtual thunk to RBX::Teams::~Teams()")
 }
 
 // 0x6649d4 — __ZN3RBX5Teams10isTeamGameEv

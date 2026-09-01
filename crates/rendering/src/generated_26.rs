@@ -135,14 +135,14 @@ pub fn stub_d3fda8() -> ! {
 
 // 0xd3fdb4 — __ZThn12_N4Ogre14ParticleSystemD0Ev
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()
+// was: non-virtual thunk to Ogre::ParticleSystem::~ParticleSystem()
 pub fn stub_d3fdb4() -> ! {
     todo!("0xd3fdb4 non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")
 }
 
 // 0xd3fe48 — __ZThn16_N4Ogre14ParticleSystemD0Ev
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()
+// was: non-virtual thunk to Ogre::ParticleSystem::~ParticleSystem()
 pub fn stub_d3fe48() -> ! {
     todo!("0xd3fe48 non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")
 }
@@ -156,14 +156,14 @@ pub fn stub_d3fedc() -> ! {
 
 // 0xd406d4 — __ZThn12_N4Ogre14ParticleSystemD1Ev
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()
+// was: non-virtual thunk to Ogre::ParticleSystem::~ParticleSystem()
 pub fn stub_d406d4() -> ! {
     todo!("0xd406d4 non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")
 }
 
 // 0xd406e0 — __ZThn16_N4Ogre14ParticleSystemD1Ev
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::~ParticleSystem()
+// was: non-virtual thunk to Ogre::ParticleSystem::~ParticleSystem()
 pub fn stub_d406e0() -> ! {
     todo!("0xd406e0 non-virtual thunk toOgre::ParticleSystem::~ParticleSystem()")
 }
@@ -338,7 +338,7 @@ pub fn stub_d41e64() -> ! {
 
 // 0xd41e88 — __ZThn12_N4Ogre14ParticleSystem18_updateRenderQueueEPNS_11RenderQueueE
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::_updateRenderQueue(Ogre::RenderQueue *)")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::_updateRenderQueue(Ogre::RenderQueue *)
+// was: non-virtual thunk to Ogre::ParticleSystem::_updateRenderQueue(Ogre::RenderQueue *)
 pub fn stub_d41e88() -> ! {
     todo!("0xd41e88 non-virtual thunk toOgre::ParticleSystem::_updateRenderQueue(Ogre::RenderQueue *)")
 }
@@ -352,7 +352,7 @@ pub fn stub_d41eb0() -> ! {
 
 // 0xd41ec8 — __ZThn12_N4Ogre14ParticleSystem16visitRenderablesEPNS_10Renderable7VisitorEb
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::visitRenderables(Ogre::Renderable::Visitor *,bool)")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::visitRenderables(Ogre::Renderable::Visitor *,bool)
+// was: non-virtual thunk to Ogre::ParticleSystem::visitRenderables(Ogre::Renderable::Visitor *,bool)
 pub fn stub_d41ec8() -> ! {
     todo!("0xd41ec8 non-virtual thunk toOgre::ParticleSystem::visitRenderables(Ogre::Renderable::Visitor *,bool)")
 }
@@ -366,7 +366,7 @@ pub fn stub_d41ee0() -> ! {
 
 // 0xd41ef0 — __ZThn12_NK4Ogre14ParticleSystem14getMovableTypeEv
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::getMovableType(void)const")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::getMovableType(void)const
+// was: non-virtual thunk to Ogre::ParticleSystem::getMovableType(void)const
 pub fn stub_d41ef0() -> ! {
     todo!("0xd41ef0 non-virtual thunk toOgre::ParticleSystem::getMovableType(void)const")
 }
@@ -436,7 +436,7 @@ pub fn stub_d42024() -> ! {
 
 // 0xd421a8 — __ZThn12_N4Ogre14ParticleSystem20_notifyCurrentCameraEPNS_6CameraE
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::_notifyCurrentCamera(Ogre::Camera *)")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::_notifyCurrentCamera(Ogre::Camera *)
+// was: non-virtual thunk to Ogre::ParticleSystem::_notifyCurrentCamera(Ogre::Camera *)
 pub fn stub_d421a8() -> ! {
     todo!("0xd421a8 non-virtual thunk toOgre::ParticleSystem::_notifyCurrentCamera(Ogre::Camera *)")
 }
@@ -450,7 +450,7 @@ pub fn stub_d421b4() -> ! {
 
 // 0xd423e4 — __ZThn12_N4Ogre14ParticleSystem15_notifyAttachedEPNS_4NodeEb
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::_notifyAttached(Ogre::Node *,bool)")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::_notifyAttached(Ogre::Node *,bool)
+// was: non-virtual thunk to Ogre::ParticleSystem::_notifyAttached(Ogre::Node *,bool)
 pub fn stub_d423e4() -> ! {
     todo!("0xd423e4 non-virtual thunk toOgre::ParticleSystem::_notifyAttached(Ogre::Node *,bool)")
 }
@@ -492,7 +492,7 @@ pub fn stub_d42640() -> ! {
 
 // 0xd42664 — __ZThn12_N4Ogre14ParticleSystem19setRenderQueueGroupEh
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::setRenderQueueGroup(unsigned char)")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::setRenderQueueGroup(unsigned char)
+// was: non-virtual thunk to Ogre::ParticleSystem::setRenderQueueGroup(unsigned char)
 pub fn stub_d42664() -> ! {
     todo!("0xd42664 non-virtual thunk toOgre::ParticleSystem::setRenderQueueGroup(unsigned char)")
 }
@@ -506,7 +506,7 @@ pub fn stub_d42684() -> ! {
 
 // 0xd42694 — __ZThn12_NK4Ogre14ParticleSystem12getTypeFlagsEv
 #[doc(alias = "non-virtual thunk toOgre::ParticleSystem::getTypeFlags(void)const")]
-// was: `non-virtual thunk to'Ogre::ParticleSystem::getTypeFlags(void)const
+// was: non-virtual thunk to Ogre::ParticleSystem::getTypeFlags(void)const
 pub fn stub_d42694() -> ! {
     todo!("0xd42694 non-virtual thunk toOgre::ParticleSystem::getTypeFlags(void)const")
 }

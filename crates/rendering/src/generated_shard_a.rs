@@ -233,10 +233,10 @@ pub fn stub_3af664() -> ! {
 }
 
 // 0x3af66c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)
 pub fn stub_3af66c() -> ! {
-    todo!("0x3af66c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")
+    todo!("0x3af66c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")
 }
 
 // 0x3af674 — __ZNK5boost9function1IvN3G3D7Vector34AxisEEclES3_
@@ -373,10 +373,10 @@ pub fn stub_3c0a34() -> ! {
 }
 
 // 0x3c0e90 — __ZThn96_N3RBX12BillboardGui19render3dSortedAdornEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)
 pub fn stub_3c0e90() -> ! {
-    todo!("0x3c0e90 non-virtual thunk toRBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")
+    todo!("0x3c0e90 non-virtual thunk to RBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")
 }
 
 // 0x3c0f58 — __ZNK3RBX12BillboardGui19getAdorneeDangerousEv
@@ -436,10 +436,10 @@ pub fn stub_3c1368() -> ! {
 }
 
 // 0x3c1424 — __ZThn96_NK3RBX12BillboardGui9isVisibleERKN3G3D6Rect2DE
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::isVisible(G3D::Rect2D const&)const")]
-// was: `non-virtual thunk to'RBX::BillboardGui::isVisible(G3D::Rect2D const&)const
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::isVisible(G3D::Rect2D const&)const")]
+// was: non-virtual thunk to RBX::BillboardGui::isVisible(G3D::Rect2D const&)const
 pub fn stub_3c1424() -> ! {
-    todo!("0x3c1424 non-virtual thunk toRBX::BillboardGui::isVisible(G3D::Rect2D const&)const")
+    todo!("0x3c1424 non-virtual thunk to RBX::BillboardGui::isVisible(G3D::Rect2D const&)const")
 }
 
 // 0x3c14d4 — __ZN3RBX14FactoryProductINS_12BillboardGuiENS_17GuiLayerCollectorELZNS_13sAdornmentGuiEENS_8InstanceEE7CreatorD1Ev
@@ -1657,7 +1657,7 @@ pub fn stub_d216fc() -> ! {
 
 // 0xd21708 — __ZThn4_N4Ogre13MovableObjectD0Ev
 #[doc(alias = "non-virtual thunk toOgre::MovableObject::~MovableObject()")]
-// was: `non-virtual thunk to'Ogre::MovableObject::~MovableObject()
+// was: non-virtual thunk to Ogre::MovableObject::~MovableObject()
 pub fn stub_d21708() -> ! {
     todo!("0xd21708 non-virtual thunk toOgre::MovableObject::~MovableObject()")
 }
@@ -1671,7 +1671,7 @@ pub fn stub_d2179c() -> ! {
 
 // 0xd21990 — __ZThn4_N4Ogre13MovableObjectD1Ev
 #[doc(alias = "non-virtual thunk toOgre::MovableObject::~MovableObject()")]
-// was: `non-virtual thunk to'Ogre::MovableObject::~MovableObject()
+// was: non-virtual thunk to Ogre::MovableObject::~MovableObject()
 pub fn stub_d21990() -> ! {
     todo!("0xd21990 non-virtual thunk toOgre::MovableObject::~MovableObject()")
 }

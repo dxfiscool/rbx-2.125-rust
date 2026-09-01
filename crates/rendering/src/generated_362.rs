@@ -130,10 +130,10 @@ pub fn stub_4ed4f8() -> ! {
 }
 
 // 0x4ed5d8 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-// was: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+#[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+// was: non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 pub fn stub_4ed5d8() -> ! {
-    todo!("0x4ed5d8 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x4ed5d8 non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x4ed5e0 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -697,15 +697,15 @@ pub fn stub_4efb94() -> ! {
 }
 
 // 0x4efb98 — __ZThn32_N3RBX4FireD0Ev
-#[doc(alias = "non-virtual thunk toRBX::Fire::~Fire()")]
-// was: `non-virtual thunk to'RBX::Fire::~Fire()
+#[doc(alias = "non-virtual thunk to RBX::Fire::~Fire()")]
+// was: non-virtual thunk to RBX::Fire::~Fire()
 pub fn stub_4efb98() -> ! {
-    todo!("0x4efb98 non-virtual thunk toRBX::Fire::~Fire()")
+    todo!("0x4efb98 non-virtual thunk to RBX::Fire::~Fire()")
 }
 
 // 0x4efba0 — __ZThn36_N3RBX4FireD0Ev
-#[doc(alias = "non-virtual thunk toRBX::Fire::~Fire()")]
-// was: `non-virtual thunk to'RBX::Fire::~Fire()
+#[doc(alias = "non-virtual thunk to RBX::Fire::~Fire()")]
+// was: non-virtual thunk to RBX::Fire::~Fire()
 pub fn stub_4efba0() -> ! {
-    todo!("0x4efba0 non-virtual thunk toRBX::Fire::~Fire()")
+    todo!("0x4efba0 non-virtual thunk to RBX::Fire::~Fire()")
 }

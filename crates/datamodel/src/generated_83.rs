@@ -654,10 +654,10 @@ pub fn stub_6ac8b0() -> ! {
 }
 
 // 0x6ac990 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_11ObjectValueENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::ObjectValue,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-// was: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::ObjectValue,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+#[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::ObjectValue,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+// was: non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::ObjectValue,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 pub fn stub_6ac990() -> ! {
-    todo!("0x6ac990 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::ObjectValue,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x6ac990 non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::ObjectValue,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x6ac998 — __ZNK3RBX10Reflection14PropDescriptorINS_11ObjectValueEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv

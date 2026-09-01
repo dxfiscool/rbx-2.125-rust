@@ -35,9 +35,9 @@ pub fn stub_9a9348() -> ! {
     todo!("0x9a9348 __ZN5boost9intrusive17rbtree_algorithmsINS0_18rbtree_node_traitsIPvLb0EEEE25rebalance_after_insertionERKPNS0_11rbtree_nodeIS3_EES8_")
 }
 
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
 // 0x9aa0d8 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED1Ev
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()
 pub fn stub_9aa0d8() -> ! {
     todo!("0x9aa0d8 __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED1Ev")
 }
@@ -56,30 +56,30 @@ pub fn stub_9aa250() -> ! {
     todo!("0x9aa250 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEE7rethrowEv")
 }
 
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
 // 0x9aa378 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED0Ev
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()
 pub fn stub_9aa378() -> ! {
     todo!("0x9aa378 __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED0Ev")
 }
 
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::rethrow(void)const")]
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::rethrow(void)const")]
 // 0x9aa438 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEE7rethrowEv
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::rethrow(void)const
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::rethrow(void)const
 pub fn stub_9aa438() -> ! {
     todo!("0x9aa438 __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEE7rethrowEv")
 }
 
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()")]
 // 0x9aa448 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED0Ev
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::bad_alloc>>::~clone_impl()
 pub fn stub_9aa448() -> ! {
     todo!("0x9aa448 __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt9bad_allocEEED0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()")]
 // 0x9aa520 — __ZThn4_N5boost16exception_detail19error_info_injectorISt9bad_allocED0Ev
-// was: `non-virtual thunk to'boost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()
+// was: non-virtual thunk to boost::exception_detail::error_info_injector<std::bad_alloc>::~error_info_injector()
 pub fn stub_9aa520() -> ! {
     todo!("0x9aa520 __ZThn4_N5boost16exception_detail19error_info_injectorISt9bad_allocED0Ev")
 }
@@ -454,13 +454,13 @@ pub fn stub_9ea4d0() -> ! {
     todo!("0x9ea4d0 __ZN3RBX5Stats14TypedStatsItemIjED1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
 // 0x9ea4e0 — __ZThn32_N3RBX5Stats14TypedStatsItemIjED1Ev
 pub fn stub_9ea4e0() -> ! {
     todo!("0x9ea4e0 __ZThn32_N3RBX5Stats14TypedStatsItemIjED1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned int>::~TypedStatsItem()")]
 // 0x9ea4f0 — __ZThn36_N3RBX5Stats14TypedStatsItemIjED1Ev
 pub fn stub_9ea4f0() -> ! {
     todo!("0x9ea4f0 __ZThn36_N3RBX5Stats14TypedStatsItemIjED1Ev")
@@ -498,7 +498,7 @@ pub fn stub_9eace0() -> ! {
     todo!("0x9eace0 __ZN3RBX5Stats4Item20createBoundChildItemIdEEPS1_PKcRKT_")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<double>::~TypedStatsItem()")]
 // 0x9eb338 — __ZThn36_N3RBX5Stats14TypedStatsItemIdED1Ev
 pub fn stub_9eb338() -> ! {
     todo!("0x9eb338 __ZThn36_N3RBX5Stats14TypedStatsItemIdED1Ev")
@@ -524,7 +524,7 @@ pub fn stub_9eb580() -> ! {
     todo!("0x9eb580 __ZN5boost6detail8function21function_obj_invoker0INS_3_bi6bind_tIRKdPFS6_PS5_ENS3_5list1INS3_5valueIS7_EEEEEEdE6invokeERNS1_15function_bufferE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<bool>::~TypedStatsItem()")]
 // 0x9eb5b8 — __ZThn32_N3RBX5Stats14TypedStatsItemIbED1Ev
 pub fn stub_9eb5b8() -> ! {
     todo!("0x9eb5b8 __ZThn32_N3RBX5Stats14TypedStatsItemIbED1Ev")
@@ -556,13 +556,13 @@ pub fn stub_9ebaf0() -> ! {
     todo!("0x9ebaf0 __ZN3RBX5Stats14TypedStatsItemIyED1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
 // 0x9ebb00 — __ZThn32_N3RBX5Stats14TypedStatsItemIyED1Ev
 pub fn stub_9ebb00() -> ! {
     todo!("0x9ebb00 __ZThn32_N3RBX5Stats14TypedStatsItemIyED1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::Stats::TypedStatsItem<unsigned long long>::~TypedStatsItem()")]
 // 0x9ebb10 — __ZThn36_N3RBX5Stats14TypedStatsItemIyED1Ev
 pub fn stub_9ebb10() -> ! {
     todo!("0x9ebb10 __ZThn36_N3RBX5Stats14TypedStatsItemIyED1Ev")
@@ -640,9 +640,9 @@ pub fn stub_9ef000() -> ! {
     todo!("0x9ef000 __ZN3rbx8callableINS_7signals6signalIFvibiEE4slotEN5boost8functionIS3_EELi3ES3_E4callEibi")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,bool,int)>::slot,boost::function<void ()(int,bool,int)>,3,void ()(int,bool,int)>::call(int,bool,int)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int,bool,int)>::slot,boost::function<void ()(int,bool,int)>,3,void ()(int,bool,int)>::call(int,bool,int)")]
 // 0x9ef0cc — __ZThn4_N3rbx8callableINS_7signals6signalIFvibiEE4slotEN5boost8functionIS3_EELi3ES3_E4callEibi
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,bool,int)>::slot,boost::function<void ()(int,bool,int)>,3,void ()(int,bool,int)>::call(int,bool,int)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int,bool,int)>::slot,boost::function<void ()(int,bool,int)>,3,void ()(int,bool,int)>::call(int,bool,int)
 pub fn stub_9ef0cc() -> ! {
     todo!("0x9ef0cc __ZThn4_N3rbx8callableINS_7signals6signalIFvibiEE4slotEN5boost8functionIS3_EELi3ES3_E4callEibi")
 }

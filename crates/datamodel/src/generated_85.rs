@@ -80,10 +80,10 @@ pub fn stub_6cefa4() -> ! {
 }
 
 // 0x6cefc8 — __ZThn96_N3RBX9Workspace8render2dEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::Workspace::render2d(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::Workspace::render2d(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::Workspace::render2d(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::Workspace::render2d(RBX::Adorn *)
 pub fn stub_6cefc8() -> ! {
-    todo!("0x6cefc8 non-virtual thunk toRBX::Workspace::render2d(RBX::Adorn *)")
+    todo!("0x6cefc8 non-virtual thunk to RBX::Workspace::render2d(RBX::Adorn *)")
 }
 
 // 0x6ceff0 — __ZN3RBX9Workspace9getCursorEv
@@ -108,10 +108,10 @@ pub fn stub_6cf3f4() -> ! {
 }
 
 // 0x6cf454 — __ZThn96_N3RBX9Workspace13render3dAdornEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::Workspace::render3dAdorn(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::Workspace::render3dAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::Workspace::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::Workspace::render3dAdorn(RBX::Adorn *)
 pub fn stub_6cf454() -> ! {
-    todo!("0x6cf454 non-virtual thunk toRBX::Workspace::render3dAdorn(RBX::Adorn *)")
+    todo!("0x6cf454 non-virtual thunk to RBX::Workspace::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x6cf45c — __ZN3RBX9Workspace19append3dSortedAdornERSt6vectorIPNS_10IAdornableESaIS3_EE
@@ -157,10 +157,10 @@ pub fn stub_6cf66c() -> ! {
 }
 
 // 0x6cfe54 — __ZThn320_N3RBX9Workspace7processERKNS_8GuiEventE
-#[doc(alias = "non-virtual thunk toRBX::Workspace::process(RBX::GuiEvent const&)")]
-// was: `non-virtual thunk to'RBX::Workspace::process(RBX::GuiEvent const&)
+#[doc(alias = "non-virtual thunk to RBX::Workspace::process(RBX::GuiEvent const&)")]
+// was: non-virtual thunk to RBX::Workspace::process(RBX::GuiEvent const&)
 pub fn stub_6cfe54() -> ! {
-    todo!("0x6cfe54 non-virtual thunk toRBX::Workspace::process(RBX::GuiEvent const&)")
+    todo!("0x6cfe54 non-virtual thunk to RBX::Workspace::process(RBX::GuiEvent const&)")
 }
 
 // 0x6cfe64 — __ZN3RBX9Workspace17onServiceProviderEPNS_15ServiceProviderES2_
@@ -178,10 +178,10 @@ pub fn stub_6d0138() -> ! {
 }
 
 // 0x6d02e4 — __ZThn388_N3RBX9Workspace15scriptShouldRunEPNS_10BaseScriptE
-#[doc(alias = "non-virtual thunk toRBX::Workspace::scriptShouldRun(RBX::BaseScript *)")]
-// was: `non-virtual thunk to'RBX::Workspace::scriptShouldRun(RBX::BaseScript *)
+#[doc(alias = "non-virtual thunk to RBX::Workspace::scriptShouldRun(RBX::BaseScript *)")]
+// was: non-virtual thunk to RBX::Workspace::scriptShouldRun(RBX::BaseScript *)
 pub fn stub_6d02e4() -> ! {
-    todo!("0x6d02e4 non-virtual thunk toRBX::Workspace::scriptShouldRun(RBX::BaseScript *)")
+    todo!("0x6d02e4 non-virtual thunk to RBX::Workspace::scriptShouldRun(RBX::BaseScript *)")
 }
 
 // 0x6d0328 — __ZNK3RBX9Workspace22getDistributedGameTimeEv

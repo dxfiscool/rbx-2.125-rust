@@ -199,10 +199,10 @@ pub fn stub_5673e8() -> ! {
 
 // 0x567688 — __ZThn92_N3RBX7Handles7processERKNS_8GuiEventE
 #[doc(alias = "__ZThn92_N3RBX7Handles7processERKNS_8GuiEventE")]
-#[doc(alias = "non-virtual thunk toRBX::Handles::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk to RBX::Handles::process(RBX::GuiEvent const&)")]
 // was: __ZThn92_N3RBX7Handles7processERKNS_8GuiEventE
 pub fn stub_567688() -> ! {
-    todo!("0x567688 `non-virtual thunk to'RBX::Handles::process(RBX::GuiEvent const&)")
+    todo!("0x567688 non-virtual thunk to RBX::Handles::process(RBX::GuiEvent const&)")
 }
 
 // 0x567694 — __ZNK3RBX7Handles13getHandleTypeEv
@@ -352,19 +352,19 @@ pub fn stub_567e18() -> ! {
 // 0x567e20 — __ZThn32_N3RBX7HandlesD1Ev
 // type: void __fastcall(RBX::Handles *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX7HandlesD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk to RBX::Handles::~Handles()")]
 // was: __ZThn32_N3RBX7HandlesD1Ev
 pub fn stub_567e20() -> ! {
-    todo!("0x567e20 `non-virtual thunk to'RBX::Handles::~Handles()")
+    todo!("0x567e20 non-virtual thunk to RBX::Handles::~Handles()")
 }
 
 // 0x567e28 — __ZThn32_N3RBX7HandlesD0Ev
 // type: void __fastcall(RBX::Handles *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX7HandlesD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk to RBX::Handles::~Handles()")]
 // was: __ZThn32_N3RBX7HandlesD0Ev
 pub fn stub_567e28() -> ! {
-    todo!("0x567e28 `non-virtual thunk to'RBX::Handles::~Handles()")
+    todo!("0x567e28 non-virtual thunk to RBX::Handles::~Handles()")
 }
 
 // 0x567ecc — __ZThn32_NK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv
@@ -377,19 +377,19 @@ pub fn stub_567ecc() -> ! {
 // 0x567edc — __ZThn36_N3RBX7HandlesD1Ev
 // type: void __fastcall(RBX::Handles *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX7HandlesD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk to RBX::Handles::~Handles()")]
 // was: __ZThn36_N3RBX7HandlesD1Ev
 pub fn stub_567edc() -> ! {
-    todo!("0x567edc `non-virtual thunk to'RBX::Handles::~Handles()")
+    todo!("0x567edc non-virtual thunk to RBX::Handles::~Handles()")
 }
 
 // 0x567ee4 — __ZThn36_N3RBX7HandlesD0Ev
 // type: void __fastcall(RBX::Handles *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX7HandlesD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk to RBX::Handles::~Handles()")]
 // was: __ZThn36_N3RBX7HandlesD0Ev
 pub fn stub_567ee4() -> ! {
-    todo!("0x567ee4 `non-virtual thunk to'RBX::Handles::~Handles()")
+    todo!("0x567ee4 non-virtual thunk to RBX::Handles::~Handles()")
 }
 
 // 0x567f88 — __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD1Ev
@@ -654,10 +654,10 @@ pub fn stub_569050() -> ! {
 
 // 0x569058 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEfEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEfEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv")]
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>*>>>,0,void ()(void)>::call(void)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEfEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv
 pub fn stub_569058() -> ! {
-    todo!("0x569058 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>*>>>,0,void ()(void)>::call(void)")
+    todo!("0x569058 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x569060 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_7HandlesEFvNS4_8NormalIdEfEEEEENS0_5list1INS0_5valueIPS9_EEEEEclEv
@@ -728,10 +728,10 @@ pub fn stub_569338() -> ! {
 
 // 0x569340 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv")]
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>*>>>,0,void ()(void)>::call(void)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv
 pub fn stub_569340() -> ! {
-    todo!("0x569340 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>*>>>,0,void ()(void)>::call(void)")
+    todo!("0x569340 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x569348 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_7HandlesEFvNS4_8NormalIdEEEEEENS0_5list1INS0_5valueIPS9_EEEEEclEv

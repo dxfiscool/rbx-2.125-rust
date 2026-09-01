@@ -82,16 +82,16 @@ pub fn stub_8a7418() -> ! {
     todo!("0x8a7418 __ZNK3RBX5HUMAN8Swimming12getStateTypeEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::HUMAN::Swimming::~Swimming()")]
+#[doc(alias = "non-virtual thunk to RBX::HUMAN::Swimming::~Swimming()")]
 // 0x8a741c — __ZThn4_N3RBX5HUMAN8SwimmingD1Ev
-// was: `non-virtual thunk to'RBX::HUMAN::Swimming::~Swimming()
+// was: non-virtual thunk to RBX::HUMAN::Swimming::~Swimming()
 pub fn stub_8a741c() -> ! {
     todo!("0x8a741c __ZThn4_N3RBX5HUMAN8SwimmingD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::HUMAN::Swimming::~Swimming()")]
+#[doc(alias = "non-virtual thunk to RBX::HUMAN::Swimming::~Swimming()")]
 // 0x8a7424 — __ZThn4_N3RBX5HUMAN8SwimmingD0Ev
-// was: `non-virtual thunk to'RBX::HUMAN::Swimming::~Swimming()
+// was: non-virtual thunk to RBX::HUMAN::Swimming::~Swimming()
 pub fn stub_8a7424() -> ! {
     todo!("0x8a7424 __ZThn4_N3RBX5HUMAN8SwimmingD0Ev")
 }
@@ -438,30 +438,30 @@ pub fn stub_8ad4e0() -> ! {
     todo!("0x8ad4e0 __ZN3RBX15GamePassServiceD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GamePassService::~GamePassService()")]
+#[doc(alias = "non-virtual thunk to RBX::GamePassService::~GamePassService()")]
 // 0x8ad5dc — __ZThn32_N3RBX15GamePassServiceD1Ev
-// was: `non-virtual thunk to'RBX::GamePassService::~GamePassService()
+// was: non-virtual thunk to RBX::GamePassService::~GamePassService()
 pub fn stub_8ad5dc() -> ! {
     todo!("0x8ad5dc __ZThn32_N3RBX15GamePassServiceD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GamePassService::~GamePassService()")]
+#[doc(alias = "non-virtual thunk to RBX::GamePassService::~GamePassService()")]
 // 0x8ad61c — __ZThn32_N3RBX15GamePassServiceD0Ev
-// was: `non-virtual thunk to'RBX::GamePassService::~GamePassService()
+// was: non-virtual thunk to RBX::GamePassService::~GamePassService()
 pub fn stub_8ad61c() -> ! {
     todo!("0x8ad61c __ZThn32_N3RBX15GamePassServiceD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GamePassService::~GamePassService()")]
+#[doc(alias = "non-virtual thunk to RBX::GamePassService::~GamePassService()")]
 // 0x8ad718 — __ZThn36_N3RBX15GamePassServiceD1Ev
-// was: `non-virtual thunk to'RBX::GamePassService::~GamePassService()
+// was: non-virtual thunk to RBX::GamePassService::~GamePassService()
 pub fn stub_8ad718() -> ! {
     todo!("0x8ad718 __ZThn36_N3RBX15GamePassServiceD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::GamePassService::~GamePassService()")]
+#[doc(alias = "non-virtual thunk to RBX::GamePassService::~GamePassService()")]
 // 0x8ad758 — __ZThn36_N3RBX15GamePassServiceD0Ev
-// was: `non-virtual thunk to'RBX::GamePassService::~GamePassService()
+// was: non-virtual thunk to RBX::GamePassService::~GamePassService()
 pub fn stub_8ad758() -> ! {
     todo!("0x8ad758 __ZThn36_N3RBX15GamePassServiceD0Ev")
 }
@@ -556,9 +556,9 @@ pub fn stub_8b0380() -> ! {
     todo!("0x8b0380 __ZN3RBX16UserInputService9onSteppedERKNS_7SteppedE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::UserInputService::onStepped(RBX::Stepped const&)")]
+#[doc(alias = "non-virtual thunk to RBX::UserInputService::onStepped(RBX::Stepped const&)")]
 // 0x8b0784 — __ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE
-// was: `non-virtual thunk to'RBX::UserInputService::onStepped(RBX::Stepped const&)
+// was: non-virtual thunk to RBX::UserInputService::onStepped(RBX::Stepped const&)
 pub fn stub_8b0784() -> ! {
     todo!("0x8b0784 __ZThn96_N3RBX16UserInputService9onSteppedERKNS_7SteppedE")
 }

@@ -38,9 +38,9 @@ pub fn stub_0x6b8bd4() -> ! {
     todo!("0x6b8bd4 __ZN3rbx8callableINS_7signals6signalIFvN3G3D7Vector3EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")]
-// 0x6b8bdc — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector3EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")]
+// 0x6b8bdc — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector3EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)
 pub fn stub_0x6b8bdc() -> ! {
     todo!("0x6b8bdc __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector3EEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")
 }
@@ -118,9 +118,9 @@ pub fn stub_0x6c60c4() -> ! {
     todo!("0x6c60c4 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX7UIEventEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_11VirtualUserES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::VirtualUser,RBX::UIEvent const&>,boost::_bi::list2<boost::_bi::value<RBX::VirtualUser*>,boost::arg<1>>>,1,void ()(RBX::UIEvent const&)>::call(RBX::UIEvent const&)")]
-// 0x6c60cc — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7UIEventEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_11VirtualUserES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_ — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::VirtualUser,RBX::UIEvent const&>,boost::_bi::list2<boost::_bi::value<RBX::VirtualUser*>,boost::arg<1>>>,1,void ()(RBX::UIEvent const&)>::call(RBX::UIEvent const&)
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::VirtualUser,RBX::UIEvent const&>,boost::_bi::list2<boost::_bi::value<RBX::VirtualUser*>,boost::arg<1>>>,1,void ()(RBX::UIEvent const&)>::call(RBX::UIEvent const&)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::VirtualUser,RBX::UIEvent const&>,boost::_bi::list2<boost::_bi::value<RBX::VirtualUser*>,boost::arg<1>>>,1,void ()(RBX::UIEvent const&)>::call(RBX::UIEvent const&)")]
+// 0x6c60cc — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7UIEventEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_11VirtualUserES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::VirtualUser,RBX::UIEvent const&>,boost::_bi::list2<boost::_bi::value<RBX::VirtualUser*>,boost::arg<1>>>,1,void ()(RBX::UIEvent const&)>::call(RBX::UIEvent const&)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::VirtualUser,RBX::UIEvent const&>,boost::_bi::list2<boost::_bi::value<RBX::VirtualUser*>,boost::arg<1>>>,1,void ()(RBX::UIEvent const&)>::call(RBX::UIEvent const&)
 pub fn stub_0x6c60cc() -> ! {
     todo!("0x6c60cc __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7UIEventEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_11VirtualUserES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
 }
@@ -326,9 +326,9 @@ pub fn stub_0x6d3dac() -> ! {
     todo!("0x6d3dac __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9WorkspaceEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)")]
-// 0x6d3db4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9WorkspaceEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)")]
+// 0x6d3db4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9WorkspaceEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)
 pub fn stub_0x6d3db4() -> ! {
     todo!("0x6d3db4 __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9WorkspaceEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")
 }
@@ -369,9 +369,9 @@ pub fn stub_0x6d43dc() -> ! {
     todo!("0x6d43dc __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9WorkspaceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Workspace,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Workspace*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
-// 0x6d43e4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9WorkspaceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_ — `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Workspace,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Workspace*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Workspace,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Workspace*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Workspace,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Workspace*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
+// 0x6d43e4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9WorkspaceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_ — `non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Workspace,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Workspace*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Workspace,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::Workspace*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)
 pub fn stub_0x6d43e4() -> ! {
     todo!("0x6d43e4 __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9WorkspaceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")
 }

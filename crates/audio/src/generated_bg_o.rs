@@ -292,11 +292,11 @@ pub fn stub_3c2a28() -> ! {
 }
 
 // 0x3c2b08 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-// demangled: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+// demangled: non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 // type: int __fastcall(int)
-#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_3c2b08() -> ! {
-    todo!("0x3c2b08 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x3c2b08 non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x3c2b10 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -610,11 +610,11 @@ pub fn stub_3c5690() -> ! {
 }
 
 // 0x3c58a8 — __ZThn92_N3RBX6Camera11onHeartbeatERKNS_9HeartbeatE
-// demangled: `non-virtual thunk to'RBX::Camera::onHeartbeat(RBX::Heartbeat const&)
+// demangled: non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)
 // type: int __fastcall(int)
-#[doc(alias = "non-virtual thunk toRBX::Camera::onHeartbeat(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)")]
 pub fn stub_3c58a8() -> ! {
-    todo!("0x3c58a8 non-virtual thunk toRBX::Camera::onHeartbeat(RBX::Heartbeat const&)")
+    todo!("0x3c58a8 non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)")
 }
 
 // 0x3c58b0 — __ZN3RBX6Camera14getCameraOwnerEv

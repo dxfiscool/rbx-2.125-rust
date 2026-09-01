@@ -65,7 +65,7 @@ pub fn stub_c7f2cc() -> ! {
 
 // 0xc85874 — __ZThn188_N4Ogre6Entity25backgroundLoadingCompleteEPNS_8ResourceE
 #[doc(alias = "non-virtual thunk toOgre::Entity::backgroundLoadingComplete(Ogre::Resource *)")]
-// was: `non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)
+// was: non-virtual thunk to Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)
 pub fn stub_c85874() -> ! {
     todo!("0xc85874 non-virtual thunk toOgre::Entity::backgroundLoadingComplete(Ogre::Resource *)")
 }

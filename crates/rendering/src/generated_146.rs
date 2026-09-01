@@ -582,24 +582,24 @@ pub fn stub_24b070() -> ! {
 }
 
 // 0x24b120 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE7rethrowEv
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")]
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const
 pub fn stub_24b120() -> ! {
-    todo!("0x24b120 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")
+    todo!("0x24b120 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::rethrow(void)const")
 }
 
 // 0x24b130 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()
 pub fn stub_24b130() -> ! {
-    todo!("0x24b130 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
+    todo!("0x24b130 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
 }
 
 // 0x24b208 — __ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED0Ev
-#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
-// was: `non-virtual thunk to'boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()
+#[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
+// was: non-virtual thunk to boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()
 pub fn stub_24b208() -> ! {
-    todo!("0x24b208 non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")
+    todo!("0x24b208 non-virtual thunk to boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")
 }
 
 // 0x24b45c — __ZN3RBX14RunningAverageIddEC2Eddj

@@ -209,10 +209,10 @@ pub fn stub_0x2f12c0() -> ! {
 }
 
 // 0x2f13d0 — __ZThn4_N3RBX12PartDragTool13render3dAdornEPNS_5AdornE
-#[doc(alias = "non-virtual thunk toRBX::PartDragTool::render3dAdorn(RBX::Adorn *)")]
-// was: `non-virtual thunk to'RBX::PartDragTool::render3dAdorn(RBX::Adorn *)
+#[doc(alias = "non-virtual thunk to RBX::PartDragTool::render3dAdorn(RBX::Adorn *)")]
+// was: non-virtual thunk to RBX::PartDragTool::render3dAdorn(RBX::Adorn *)
 pub fn stub_0x2f13d0() -> ! {
-    todo!("0x2f13d0 non-virtual thunk toRBX::PartDragTool::render3dAdorn(RBX::Adorn *)")
+    todo!("0x2f13d0 non-virtual thunk to RBX::PartDragTool::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x2f13d8 — __ZN3RBX12PartDragToolD0Ev
@@ -228,10 +228,10 @@ pub fn stub_0x2f1478() -> ! {
 }
 
 // 0x2f147c — __ZThn36_N3RBX12PartDragToolD0Ev
-#[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
-// was: `non-virtual thunk to'RBX::PartDragTool::~PartDragTool()
+#[doc(alias = "non-virtual thunk to RBX::PartDragTool::~PartDragTool()")]
+// was: non-virtual thunk to RBX::PartDragTool::~PartDragTool()
 pub fn stub_0x2f147c() -> ! {
-    todo!("0x2f147c non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
+    todo!("0x2f147c non-virtual thunk to RBX::PartDragTool::~PartDragTool()")
 }
 
 // 0x2f1484 — __ZN3RBX12PartDragToolD2Ev
@@ -241,10 +241,10 @@ pub fn stub_0x2f1484() -> ! {
 }
 
 // 0x2f15e4 — __ZThn36_N3RBX12PartDragToolD1Ev
-#[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
-// was: `non-virtual thunk to'RBX::PartDragTool::~PartDragTool()
+#[doc(alias = "non-virtual thunk to RBX::PartDragTool::~PartDragTool()")]
+// was: non-virtual thunk to RBX::PartDragTool::~PartDragTool()
 pub fn stub_0x2f15e4() -> ! {
-    todo!("0x2f15e4 non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
+    todo!("0x2f15e4 non-virtual thunk to RBX::PartDragTool::~PartDragTool()")
 }
 
 // 0x2f15ec — __ZN3RBX11shared_fromINS_12PartDragToolEEEN5boost10shared_ptrIT_EEPS4_
@@ -363,31 +363,31 @@ pub fn stub_0x3ac510() -> ! {
 }
 
 // 0x3ac5b4 — __ZThn32_N3RBX13PartAdornmentD1Ev
-#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
-// was: `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
+#[doc(alias = "non-virtual thunk to RBX::PartAdornment::~PartAdornment()")]
+// was: non-virtual thunk to RBX::PartAdornment::~PartAdornment()
 pub fn stub_0x3ac5b4() -> ! {
-    todo!("0x3ac5b4 non-virtual thunk toRBX::PartAdornment::~PartAdornment()")
+    todo!("0x3ac5b4 non-virtual thunk to RBX::PartAdornment::~PartAdornment()")
 }
 
 // 0x3ac6fc — __ZThn32_N3RBX13PartAdornmentD0Ev
-#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
-// was: `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
+#[doc(alias = "non-virtual thunk to RBX::PartAdornment::~PartAdornment()")]
+// was: non-virtual thunk to RBX::PartAdornment::~PartAdornment()
 pub fn stub_0x3ac6fc() -> ! {
-    todo!("0x3ac6fc non-virtual thunk toRBX::PartAdornment::~PartAdornment()")
+    todo!("0x3ac6fc non-virtual thunk to RBX::PartAdornment::~PartAdornment()")
 }
 
 // 0x3ac85c — __ZThn36_N3RBX13PartAdornmentD1Ev
-#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
-// was: `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
+#[doc(alias = "non-virtual thunk to RBX::PartAdornment::~PartAdornment()")]
+// was: non-virtual thunk to RBX::PartAdornment::~PartAdornment()
 pub fn stub_0x3ac85c() -> ! {
-    todo!("0x3ac85c non-virtual thunk toRBX::PartAdornment::~PartAdornment()")
+    todo!("0x3ac85c non-virtual thunk to RBX::PartAdornment::~PartAdornment()")
 }
 
 // 0x3ac9a4 — __ZThn36_N3RBX13PartAdornmentD0Ev
-#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
-// was: `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
+#[doc(alias = "non-virtual thunk to RBX::PartAdornment::~PartAdornment()")]
+// was: non-virtual thunk to RBX::PartAdornment::~PartAdornment()
 pub fn stub_0x3ac9a4() -> ! {
-    todo!("0x3ac9a4 non-virtual thunk toRBX::PartAdornment::~PartAdornment()")
+    todo!("0x3ac9a4 non-virtual thunk to RBX::PartAdornment::~PartAdornment()")
 }
 
 // 0x3bb99c — __ZN3RBX14FormFactorPartC2Ev
@@ -409,24 +409,24 @@ pub fn stub_0x3bbc68() -> ! {
 }
 
 // 0x3bbc78 — __ZThn32_N3RBX14FormFactorPartD0Ev
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
-// was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
+#[doc(alias = "non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")]
+// was: non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbc78() -> ! {
-    todo!("0x3bbc78 non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbc78 non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")
 }
 
 // 0x3bbc80 — __ZThn36_N3RBX14FormFactorPartD0Ev
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
-// was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
+#[doc(alias = "non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")]
+// was: non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbc80() -> ! {
-    todo!("0x3bbc80 non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbc80 non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")
 }
 
 // 0x3bbc88 — __ZThn132_N3RBX14FormFactorPartD0Ev
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
-// was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
+#[doc(alias = "non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")]
+// was: non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbc88() -> ! {
-    todo!("0x3bbc88 non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbc88 non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")
 }
 
 // 0x3bbc90 — __ZN3RBX14FormFactorPartD2Ev
@@ -436,24 +436,24 @@ pub fn stub_0x3bbc90() -> ! {
 }
 
 // 0x3bbc98 — __ZThn32_N3RBX14FormFactorPartD1Ev
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
-// was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
+#[doc(alias = "non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")]
+// was: non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbc98() -> ! {
-    todo!("0x3bbc98 non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbc98 non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")
 }
 
 // 0x3bbcac — __ZThn36_N3RBX14FormFactorPartD1Ev
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
-// was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
+#[doc(alias = "non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")]
+// was: non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbcac() -> ! {
-    todo!("0x3bbcac non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbcac non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")
 }
 
 // 0x3bbcc0 — __ZThn132_N3RBX14FormFactorPartD1Ev
-#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
-// was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
+#[doc(alias = "non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")]
+// was: non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbcc0() -> ! {
-    todo!("0x3bbcc0 non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbcc0 non-virtual thunk to RBX::FormFactorPart::~FormFactorPart()")
 }
 
 // 0x3bbcd4 — __ZN3RBX14FormFactorPart12readPropertyEPK10XmlElementRNS_16IReferenceBinderE

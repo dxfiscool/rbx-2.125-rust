@@ -61,21 +61,21 @@ pub fn stub_28e22c() -> ! {
 }
 
 // 0x28e23c — __ZThn32_N3RBX11LocalScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::LocalScript::~LocalScript()
+// demangled: non-virtual thunk to RBX::LocalScript::~LocalScript()
 // type: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk to RBX::LocalScript::~LocalScript()")]
 #[doc(alias = "__ZThn32_N3RBX11LocalScriptD1Ev")]
 pub fn stub_28e23c() -> ! {
-    todo!("0x28e23c non-virtual thunk toRBX::LocalScript::~LocalScript()")
+    todo!("0x28e23c non-virtual thunk to RBX::LocalScript::~LocalScript()")
 }
 
 // 0x28e244 — __ZThn32_N3RBX11LocalScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::LocalScript::~LocalScript()
+// demangled: non-virtual thunk to RBX::LocalScript::~LocalScript()
 // type: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk to RBX::LocalScript::~LocalScript()")]
 #[doc(alias = "__ZThn32_N3RBX11LocalScriptD0Ev")]
 pub fn stub_28e244() -> ! {
-    todo!("0x28e244 non-virtual thunk toRBX::LocalScript::~LocalScript()")
+    todo!("0x28e244 non-virtual thunk to RBX::LocalScript::~LocalScript()")
 }
 
 // 0x28e24c — __ZThn32_NK3RBX14FactoryProductINS_11LocalScriptENS_6ScriptELZNS_12sLocalScriptEENS_8InstanceEE12getClassNameEv
@@ -85,21 +85,21 @@ pub fn stub_28e24c() -> ! {
 }
 
 // 0x28e25c — __ZThn36_N3RBX11LocalScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::LocalScript::~LocalScript()
+// demangled: non-virtual thunk to RBX::LocalScript::~LocalScript()
 // type: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk to RBX::LocalScript::~LocalScript()")]
 #[doc(alias = "__ZThn36_N3RBX11LocalScriptD1Ev")]
 pub fn stub_28e25c() -> ! {
-    todo!("0x28e25c non-virtual thunk toRBX::LocalScript::~LocalScript()")
+    todo!("0x28e25c non-virtual thunk to RBX::LocalScript::~LocalScript()")
 }
 
 // 0x28e264 — __ZThn36_N3RBX11LocalScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::LocalScript::~LocalScript()
+// demangled: non-virtual thunk to RBX::LocalScript::~LocalScript()
 // type: void __fastcall(RBX::LocalScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LocalScript::~LocalScript()")]
+#[doc(alias = "non-virtual thunk to RBX::LocalScript::~LocalScript()")]
 #[doc(alias = "__ZThn36_N3RBX11LocalScriptD0Ev")]
 pub fn stub_28e264() -> ! {
-    todo!("0x28e264 non-virtual thunk toRBX::LocalScript::~LocalScript()")
+    todo!("0x28e264 non-virtual thunk to RBX::LocalScript::~LocalScript()")
 }
 
 // 0x28e26c — __ZN3RBX14FactoryProductINS_6ScriptENS_10BaseScriptELZNS_7sScriptEENS_8InstanceEE7CreatorD1Ev

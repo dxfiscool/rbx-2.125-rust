@@ -420,9 +420,9 @@ pub fn stub_be75bc() -> ! {
     todo!("0xbe75bc __ZN3RBX10ViewRbxGfx12enableAdornsEb")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::enableAdorns(bool)")]
+#[doc(alias = "non-virtual thunk to RBX::ViewRbxGfx::enableAdorns(bool)")]
 // 0xbe75c4 — __ZThn4_N3RBX10ViewRbxGfx12enableAdornsEb
-// was: `non-virtual thunk to'RBX::ViewRbxGfx::enableAdorns(bool)
+// was: non-virtual thunk to RBX::ViewRbxGfx::enableAdorns(bool)
 pub fn stub_be75c4() -> ! {
     todo!("0xbe75c4 __ZThn4_N3RBX10ViewRbxGfx12enableAdornsEb")
 }
@@ -469,9 +469,9 @@ pub fn stub_be8794() -> ! {
     todo!("0xbe8794 __ZN3RBX10ViewRbxGfxD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()")]
+#[doc(alias = "non-virtual thunk to RBX::ViewRbxGfx::~ViewRbxGfx()")]
 // 0xbe8798 — __ZThn8_N3RBX10ViewRbxGfxD0Ev
-// was: `non-virtual thunk to'RBX::ViewRbxGfx::~ViewRbxGfx()
+// was: non-virtual thunk to RBX::ViewRbxGfx::~ViewRbxGfx()
 pub fn stub_be8798() -> ! {
     todo!("0xbe8798 __ZThn8_N3RBX10ViewRbxGfxD0Ev")
 }
@@ -482,9 +482,9 @@ pub fn stub_be883c() -> ! {
     todo!("0xbe883c __ZN3RBX10ViewRbxGfxD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::~ViewRbxGfx()")]
+#[doc(alias = "non-virtual thunk to RBX::ViewRbxGfx::~ViewRbxGfx()")]
 // 0xbe8e20 — __ZThn8_N3RBX10ViewRbxGfxD1Ev
-// was: `non-virtual thunk to'RBX::ViewRbxGfx::~ViewRbxGfx()
+// was: non-virtual thunk to RBX::ViewRbxGfx::~ViewRbxGfx()
 pub fn stub_be8e20() -> ! {
     todo!("0xbe8e20 __ZThn8_N3RBX10ViewRbxGfxD1Ev")
 }
@@ -567,9 +567,9 @@ pub fn stub_bec1a0() -> ! {
     todo!("0xbec1a0 __ZN3RBX10ViewRbxGfx14captureMetricsERNS_13RenderMetricsE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::captureMetrics(RBX::RenderMetrics &)")]
+#[doc(alias = "non-virtual thunk to RBX::ViewRbxGfx::captureMetrics(RBX::RenderMetrics &)")]
 // 0xbec240 — __ZThn4_N3RBX10ViewRbxGfx14captureMetricsERNS_13RenderMetricsE
-// was: `non-virtual thunk to'RBX::ViewRbxGfx::captureMetrics(RBX::RenderMetrics &)
+// was: non-virtual thunk to RBX::ViewRbxGfx::captureMetrics(RBX::RenderMetrics &)
 pub fn stub_bec240() -> ! {
     todo!("0xbec240 __ZThn4_N3RBX10ViewRbxGfx14captureMetricsERNS_13RenderMetricsE")
 }
@@ -580,9 +580,9 @@ pub fn stub_bec65c() -> ! {
     todo!("0xbec65c __ZN3RBX10ViewRbxGfx10printSceneEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::printScene(void)")]
+#[doc(alias = "non-virtual thunk to RBX::ViewRbxGfx::printScene(void)")]
 // 0xbec7fc — __ZThn4_N3RBX10ViewRbxGfx10printSceneEv
-// was: `non-virtual thunk to'RBX::ViewRbxGfx::printScene(void)
+// was: non-virtual thunk to RBX::ViewRbxGfx::printScene(void)
 pub fn stub_bec7fc() -> ! {
     todo!("0xbec7fc __ZThn4_N3RBX10ViewRbxGfx10printSceneEv")
 }

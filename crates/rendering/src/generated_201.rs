@@ -137,10 +137,10 @@ pub fn stub_3c5690() -> ! {
 
 // 0x3c58a8 — __ZThn92_N3RBX6Camera11onHeartbeatERKNS_9HeartbeatE
 // type: int __fastcall(int)
-#[doc(alias = "non-virtual thunk toRBX::Camera::onHeartbeat(RBX::Heartbeat const&)")]
-// was: `non-virtual thunk to'RBX::Camera::onHeartbeat(RBX::Heartbeat const&)
+#[doc(alias = "non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)")]
+// was: non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)
 pub fn stub_3c58a8() -> ! {
-    todo!("0x3c58a8 non-virtual thunk toRBX::Camera::onHeartbeat(RBX::Heartbeat const&)")
+    todo!("0x3c58a8 non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)")
 }
 
 // 0x3c58b0 — __ZN3RBX6Camera14getCameraOwnerEv
@@ -569,18 +569,18 @@ pub fn stub_3c9d7c() -> ! {
 
 // 0x3c9d8c — __ZThn32_N3RBX6CameraD1Ev
 // type: void __fastcall(RBX::Camera *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_3c9d8c() -> ! {
-    todo!("0x3c9d8c non-virtual thunk toRBX::Camera::~Camera()")
+    todo!("0x3c9d8c non-virtual thunk to RBX::Camera::~Camera()")
 }
 
 // 0x3c9d94 — __ZThn32_N3RBX6CameraD0Ev
 // type: void __fastcall(RBX::Camera *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_3c9d94() -> ! {
-    todo!("0x3c9d94 non-virtual thunk toRBX::Camera::~Camera()")
+    todo!("0x3c9d94 non-virtual thunk to RBX::Camera::~Camera()")
 }
 
 // 0x3c9d9c — __ZThn32_NK3RBX14FactoryProductINS_6CameraENS_8InstanceELZNS_7sCameraEES2_E12getClassNameEv
@@ -593,34 +593,34 @@ pub fn stub_3c9d9c() -> ! {
 
 // 0x3c9dac — __ZThn36_N3RBX6CameraD1Ev
 // type: void __fastcall(RBX::Camera *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_3c9dac() -> ! {
-    todo!("0x3c9dac non-virtual thunk toRBX::Camera::~Camera()")
+    todo!("0x3c9dac non-virtual thunk to RBX::Camera::~Camera()")
 }
 
 // 0x3c9db4 — __ZThn36_N3RBX6CameraD0Ev
 // type: void __fastcall(RBX::Camera *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_3c9db4() -> ! {
-    todo!("0x3c9db4 non-virtual thunk toRBX::Camera::~Camera()")
+    todo!("0x3c9db4 non-virtual thunk to RBX::Camera::~Camera()")
 }
 
 // 0x3c9dbc — __ZThn92_N3RBX6CameraD1Ev
 // type: void __fastcall(RBX::Camera *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_3c9dbc() -> ! {
-    todo!("0x3c9dbc non-virtual thunk toRBX::Camera::~Camera()")
+    todo!("0x3c9dbc non-virtual thunk to RBX::Camera::~Camera()")
 }
 
 // 0x3c9dc4 — __ZThn92_N3RBX6CameraD0Ev
 // type: void __fastcall(RBX::Camera *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_3c9dc4() -> ! {
-    todo!("0x3c9dc4 non-virtual thunk toRBX::Camera::~Camera()")
+    todo!("0x3c9dc4 non-virtual thunk to RBX::Camera::~Camera()")
 }
 
 // 0x3c9dcc — __ZN3RBX10Reflection8EnumDescINS_6Camera10CameraTypeEED1Ev

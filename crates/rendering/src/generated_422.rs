@@ -49,7 +49,7 @@ pub fn stub_6501a0() -> ! {
 #[doc(alias = "non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt()")]
 // was: __ZThn32_N21RunningAverageItemIntD1Ev
 pub fn stub_650310() -> ! {
-    todo!("0x650310 `non-virtual thunk to'RunningAverageItemInt::~RunningAverageItemInt()")
+    todo!("0x650310 non-virtual thunk to RunningAverageItemInt::~RunningAverageItemInt()")
 }
 
 // 0x65034c — __ZThn32_N21RunningAverageItemIntD0Ev
@@ -58,7 +58,7 @@ pub fn stub_650310() -> ! {
 #[doc(alias = "non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt()")]
 // was: __ZThn32_N21RunningAverageItemIntD0Ev
 pub fn stub_65034c() -> ! {
-    todo!("0x65034c `non-virtual thunk to'RunningAverageItemInt::~RunningAverageItemInt()")
+    todo!("0x65034c non-virtual thunk to RunningAverageItemInt::~RunningAverageItemInt()")
 }
 
 // 0x650420 — __ZThn32_NK3RBX17NonFactoryProductI18RunningAverageItemIiELZ22sRunningAverageItemIntEE12getClassNameEv
@@ -74,7 +74,7 @@ pub fn stub_650420() -> ! {
 #[doc(alias = "non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt()")]
 // was: __ZThn36_N21RunningAverageItemIntD1Ev
 pub fn stub_650448() -> ! {
-    todo!("0x650448 `non-virtual thunk to'RunningAverageItemInt::~RunningAverageItemInt()")
+    todo!("0x650448 non-virtual thunk to RunningAverageItemInt::~RunningAverageItemInt()")
 }
 
 // 0x650484 — __ZThn36_N21RunningAverageItemIntD0Ev
@@ -83,7 +83,7 @@ pub fn stub_650448() -> ! {
 #[doc(alias = "non-virtual thunk toRunningAverageItemInt::~RunningAverageItemInt()")]
 // was: __ZThn36_N21RunningAverageItemIntD0Ev
 pub fn stub_650484() -> ! {
-    todo!("0x650484 `non-virtual thunk to'RunningAverageItemInt::~RunningAverageItemInt()")
+    todo!("0x650484 non-virtual thunk to RunningAverageItemInt::~RunningAverageItemInt()")
 }
 
 // 0x650558 — __ZN3RBX4Name13callDoDeclareILZ22sRunningAverageItemIntEEEvv
@@ -248,7 +248,7 @@ pub fn stub_650d98() -> ! {
 #[doc(alias = "non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")]
 // was: __ZThn32_N26TotalCountTimeIntervalItemD1Ev
 pub fn stub_650ee8() -> ! {
-    todo!("0x650ee8 `non-virtual thunk to'TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
+    todo!("0x650ee8 non-virtual thunk to TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
 }
 
 // 0x650f24 — __ZThn32_N26TotalCountTimeIntervalItemD0Ev
@@ -257,7 +257,7 @@ pub fn stub_650ee8() -> ! {
 #[doc(alias = "non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")]
 // was: __ZThn32_N26TotalCountTimeIntervalItemD0Ev
 pub fn stub_650f24() -> ! {
-    todo!("0x650f24 `non-virtual thunk to'TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
+    todo!("0x650f24 non-virtual thunk to TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
 }
 
 // 0x650ff8 — __ZThn32_NK3RBX17NonFactoryProductINS_5Stats4ItemELZ27sTotalCountTimeIntervalItemEE12getClassNameEv
@@ -273,7 +273,7 @@ pub fn stub_650ff8() -> ! {
 #[doc(alias = "non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")]
 // was: __ZThn36_N26TotalCountTimeIntervalItemD1Ev
 pub fn stub_651020() -> ! {
-    todo!("0x651020 `non-virtual thunk to'TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
+    todo!("0x651020 non-virtual thunk to TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
 }
 
 // 0x65105c — __ZThn36_N26TotalCountTimeIntervalItemD0Ev
@@ -282,7 +282,7 @@ pub fn stub_651020() -> ! {
 #[doc(alias = "non-virtual thunk toTotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")]
 // was: __ZThn36_N26TotalCountTimeIntervalItemD0Ev
 pub fn stub_65105c() -> ! {
-    todo!("0x65105c `non-virtual thunk to'TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
+    todo!("0x65105c non-virtual thunk to TotalCountTimeIntervalItem::~TotalCountTimeIntervalItem()")
 }
 
 // 0x651130 — __ZN3RBX4Name13callDoDeclareILZ27sTotalCountTimeIntervalItemEEEvv
@@ -506,10 +506,10 @@ pub fn stub_651c74() -> ! {
 
 // 0x651c8c — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIbNSB_4_mfi3mf0IbNS3_5Stats12StatsServiceEEENSC_5list1INSC_5valueIPSH_EEEEEELi1ES8_E4callES7_
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIbNSB_4_mfi3mf0IbNS3_5Stats12StatsServiceEEENSC_5list1INSC_5valueIPSH_EEEEEELi1ES8_E4callES7_")]
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIbNSB_4_mfi3mf0IbNS3_5Stats12StatsServiceEEENSC_5list1INSC_5valueIPSH_EEEEEELi1ES8_E4callES7_
 pub fn stub_651c8c() -> ! {
-    todo!("0x651c8c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+    todo!("0x651c8c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf0<bool,RBX::Stats::StatsService>,boost::_bi::list1<boost::_bi::value<RBX::Stats::StatsService*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
 // 0x651ca8 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slot24safe_static_do_get_mutexEv

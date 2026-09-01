@@ -320,37 +320,37 @@ pub fn stub_5871a8() -> ! {
 // 0x587258 — __ZThn32_N3RBX13InsertServiceD1Ev
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13InsertServiceD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
+#[doc(alias = "non-virtual thunk to RBX::InsertService::~InsertService()")]
 // was: __ZThn32_N3RBX13InsertServiceD1Ev
 pub fn stub_587258() -> ! {
-    todo!("0x587258 `non-virtual thunk to'RBX::InsertService::~InsertService()")
+    todo!("0x587258 non-virtual thunk to RBX::InsertService::~InsertService()")
 }
 
 // 0x587260 — __ZThn32_N3RBX13InsertServiceD0Ev
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13InsertServiceD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
+#[doc(alias = "non-virtual thunk to RBX::InsertService::~InsertService()")]
 // was: __ZThn32_N3RBX13InsertServiceD0Ev
 pub fn stub_587260() -> ! {
-    todo!("0x587260 `non-virtual thunk to'RBX::InsertService::~InsertService()")
+    todo!("0x587260 non-virtual thunk to RBX::InsertService::~InsertService()")
 }
 
 // 0x587314 — __ZThn36_N3RBX13InsertServiceD1Ev
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13InsertServiceD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
+#[doc(alias = "non-virtual thunk to RBX::InsertService::~InsertService()")]
 // was: __ZThn36_N3RBX13InsertServiceD1Ev
 pub fn stub_587314() -> ! {
-    todo!("0x587314 `non-virtual thunk to'RBX::InsertService::~InsertService()")
+    todo!("0x587314 non-virtual thunk to RBX::InsertService::~InsertService()")
 }
 
 // 0x58731c — __ZThn36_N3RBX13InsertServiceD0Ev
 // type: void __fastcall(RBX::InsertService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13InsertServiceD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::InsertService::~InsertService()")]
+#[doc(alias = "non-virtual thunk to RBX::InsertService::~InsertService()")]
 // was: __ZThn36_N3RBX13InsertServiceD0Ev
 pub fn stub_58731c() -> ! {
-    todo!("0x58731c `non-virtual thunk to'RBX::InsertService::~InsertService()")
+    todo!("0x58731c non-virtual thunk to RBX::InsertService::~InsertService()")
 }
 
 // 0x5873c0 — __ZN5boost8functionIFvN3RBX14AsyncHttpQueue13RequestResultENS_10shared_ptrISt6vectorINS4_INS1_8InstanceEEESaIS7_EEEEEEC2INS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13InsertServiceEEES3_SA_NS0_IFvS7_EEEENSE_5list4INSE_5valueISI_EENS_3argILi1EEENSQ_ILi2EEENSO_ISK_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISW_EE5valueEEE5valueEiE4typeE
@@ -725,10 +725,10 @@ pub fn stub_58a0cc() -> ! {
 
 // 0x58a0e8 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callESsSs
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callESsSs")]
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf2IvN3RBX13InsertServiceESsSsEENS7_5list3INS7_5valueIPSC_EENS6_3argILi1EEENSI_ILi2EEEEEEELi2ES3_E4callESsSs
 pub fn stub_58a0e8() -> ! {
-    todo!("0x58a0e8 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)")
+    todo!("0x58a0e8 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(std::string,std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,std::string>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,std::string)>::call(std::string,std::string)")
 }
 
 // 0x58a104 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX13InsertServiceEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_SsSsEENS0_5list2IRSsSG_EEEEvNS0_4typeIvEERT_RT0_i
@@ -817,10 +817,10 @@ pub fn stub_58a714() -> ! {
 
 // 0x58a730 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_13InsertServiceESsS7_EENSB_5list3INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEEEEEELi2ES8_E4callESsS7_
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_13InsertServiceESsS7_EENSB_5list3INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEEEEEELi2ES8_E4callESsS7_")]
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(std::string,rbx_core::SharedPtr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>::call(std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_13InsertServiceESsS7_EENSB_5list3INSB_5valueIPSF_EENS3_3argILi1EEENSL_ILi2EEEEEEELi2ES8_E4callESsS7_
 pub fn stub_58a730() -> ! {
-    todo!("0x58a730 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)")
+    todo!("0x58a730 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::InsertService,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::InsertService*>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0x58a74c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX13InsertServiceEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_SsNS_10shared_ptrINS3_8InstanceEEEEENS0_5list2IRSsRSG_EEEEvNS0_4typeIvEERT_RT0_i

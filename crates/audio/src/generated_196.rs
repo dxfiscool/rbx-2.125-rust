@@ -202,14 +202,14 @@ pub fn stub_493d58() -> ! {
 }
 
 // 0x493d68 — __ZThn32_N3RBX12DialogChoiceD1Ev
-// demangled: `non-virtual thunk to'RBX::DialogChoice::~DialogChoice()
+// demangled: non-virtual thunk to RBX::DialogChoice::~DialogChoice()
 #[doc(alias = "__ZThn32_N3RBX12DialogChoiceD1Ev")]
 pub fn stub_493d68() -> ! {
     todo!("0x493d68 __ZThn32_N3RBX12DialogChoiceD1Ev")
 }
 
 // 0x493ebc — __ZThn32_N3RBX12DialogChoiceD0Ev
-// demangled: `non-virtual thunk to'RBX::DialogChoice::~DialogChoice()
+// demangled: non-virtual thunk to RBX::DialogChoice::~DialogChoice()
 #[doc(alias = "__ZThn32_N3RBX12DialogChoiceD0Ev")]
 pub fn stub_493ebc() -> ! {
     todo!("0x493ebc __ZThn32_N3RBX12DialogChoiceD0Ev")
@@ -223,14 +223,14 @@ pub fn stub_494028() -> ! {
 }
 
 // 0x494038 — __ZThn36_N3RBX12DialogChoiceD1Ev
-// demangled: `non-virtual thunk to'RBX::DialogChoice::~DialogChoice()
+// demangled: non-virtual thunk to RBX::DialogChoice::~DialogChoice()
 #[doc(alias = "__ZThn36_N3RBX12DialogChoiceD1Ev")]
 pub fn stub_494038() -> ! {
     todo!("0x494038 __ZThn36_N3RBX12DialogChoiceD1Ev")
 }
 
 // 0x49418c — __ZThn36_N3RBX12DialogChoiceD0Ev
-// demangled: `non-virtual thunk to'RBX::DialogChoice::~DialogChoice()
+// demangled: non-virtual thunk to RBX::DialogChoice::~DialogChoice()
 #[doc(alias = "__ZThn36_N3RBX12DialogChoiceD0Ev")]
 pub fn stub_49418c() -> ! {
     todo!("0x49418c __ZThn36_N3RBX12DialogChoiceD0Ev")
@@ -717,14 +717,14 @@ pub fn stub_496dec() -> ! {
 }
 
 // 0x496dfc — __ZThn32_N3RBX10DialogRootD1Ev
-// demangled: `non-virtual thunk to'RBX::DialogRoot::~DialogRoot()
+// demangled: non-virtual thunk to RBX::DialogRoot::~DialogRoot()
 #[doc(alias = "__ZThn32_N3RBX10DialogRootD1Ev")]
 pub fn stub_496dfc() -> ! {
     todo!("0x496dfc __ZThn32_N3RBX10DialogRootD1Ev")
 }
 
 // 0x496e04 — __ZThn32_N3RBX10DialogRootD0Ev
-// demangled: `non-virtual thunk to'RBX::DialogRoot::~DialogRoot()
+// demangled: non-virtual thunk to RBX::DialogRoot::~DialogRoot()
 #[doc(alias = "__ZThn32_N3RBX10DialogRootD0Ev")]
 pub fn stub_496e04() -> ! {
     todo!("0x496e04 __ZThn32_N3RBX10DialogRootD0Ev")
@@ -738,14 +738,14 @@ pub fn stub_496ea8() -> ! {
 }
 
 // 0x496eb8 — __ZThn36_N3RBX10DialogRootD1Ev
-// demangled: `non-virtual thunk to'RBX::DialogRoot::~DialogRoot()
+// demangled: non-virtual thunk to RBX::DialogRoot::~DialogRoot()
 #[doc(alias = "__ZThn36_N3RBX10DialogRootD1Ev")]
 pub fn stub_496eb8() -> ! {
     todo!("0x496eb8 __ZThn36_N3RBX10DialogRootD1Ev")
 }
 
 // 0x496ec0 — __ZThn36_N3RBX10DialogRootD0Ev
-// demangled: `non-virtual thunk to'RBX::DialogRoot::~DialogRoot()
+// demangled: non-virtual thunk to RBX::DialogRoot::~DialogRoot()
 #[doc(alias = "__ZThn36_N3RBX10DialogRootD0Ev")]
 pub fn stub_496ec0() -> ! {
     todo!("0x496ec0 __ZThn36_N3RBX10DialogRootD0Ev")

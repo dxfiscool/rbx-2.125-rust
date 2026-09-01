@@ -125,9 +125,9 @@ pub fn stub_bf10f4() -> ! {
     todo!("0xbf10f4 __ZN3rbx8callableINS_7signals6signalIFviEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEiEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEi")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,int>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(int)>::call(int)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,int>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(int)>::call(int)")]
 // 0xbf110c — __ZThn4_N3rbx8callableINS_7signals6signalIFviEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEiEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEi
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,int>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(int)>::call(int)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,int>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(int)>::call(int)
 pub fn stub_bf110c() -> ! {
     todo!("0xbf110c __ZThn4_N3rbx8callableINS_7signals6signalIFviEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEiEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEi")
 }
@@ -180,9 +180,9 @@ pub fn stub_bf1a14() -> ! {
     todo!("0xbf1a14 __ZN3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX10ViewRbxGfxEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ViewRbxGfx>,boost::_bi::list1<boost::_bi::value<RBX::ViewRbxGfx*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ViewRbxGfx>,boost::_bi::list1<boost::_bi::value<RBX::ViewRbxGfx*>>>,0,void ()(void)>::call(void)")]
 // 0xbf1a2c — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX10ViewRbxGfxEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ViewRbxGfx>,boost::_bi::list1<boost::_bi::value<RBX::ViewRbxGfx*>>>,0,void ()(void)>::call(void)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ViewRbxGfx>,boost::_bi::list1<boost::_bi::value<RBX::ViewRbxGfx*>>>,0,void ()(void)>::call(void)
 pub fn stub_bf1a2c() -> ! {
     todo!("0xbf1a2c __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX10ViewRbxGfxEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv")
 }
@@ -224,9 +224,9 @@ pub fn stub_bf1d5c() -> ! {
     todo!("0xbf1d5c __ZN3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,bool>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,bool>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
 // 0xbf1d74 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,bool>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ViewRbxGfx,bool>,boost::_bi::list2<boost::_bi::value<RBX::ViewRbxGfx*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)
 pub fn stub_bf1d74() -> ! {
     todo!("0xbf1d74 __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX10ViewRbxGfxEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb")
 }
@@ -514,9 +514,9 @@ pub fn stub_c0642c() -> ! {
     todo!("0xc0642c __ZN3RBX17MegaClusterLegacy18terrainCellChangedERKNS_5Voxel14CellChangeInfoE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::MegaClusterLegacy::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")]
+#[doc(alias = "non-virtual thunk to RBX::MegaClusterLegacy::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")]
 // 0xc06a90 — __ZThn56_N3RBX17MegaClusterLegacy18terrainCellChangedERKNS_5Voxel14CellChangeInfoE
-// was: `non-virtual thunk to'RBX::MegaClusterLegacy::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)
+// was: non-virtual thunk to RBX::MegaClusterLegacy::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)
 pub fn stub_c06a90() -> ! {
     todo!("0xc06a90 __ZThn56_N3RBX17MegaClusterLegacy18terrainCellChangedERKNS_5Voxel14CellChangeInfoE")
 }
@@ -587,9 +587,9 @@ pub fn stub_c08c24() -> ! {
     todo!("0xc08c24 __ZN3RBX11MegaCluster9markDirtyERKNS_13SpatialRegion2IdEbb")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::MegaCluster::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")]
+#[doc(alias = "non-virtual thunk to RBX::MegaCluster::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)")]
 // 0xc08dc8 — __ZThn56_N3RBX11MegaCluster18terrainCellChangedERKNS_5Voxel14CellChangeInfoE
-// was: `non-virtual thunk to'RBX::MegaCluster::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)
+// was: non-virtual thunk to RBX::MegaCluster::terrainCellChanged(RBX::Voxel::CellChangeInfo const&)
 pub fn stub_c08dc8() -> ! {
     todo!("0xc08dc8 __ZThn56_N3RBX11MegaCluster18terrainCellChangedERKNS_5Voxel14CellChangeInfoE")
 }

@@ -28,9 +28,9 @@ pub fn stub_624f08() -> ! {
     todo!("0x624f08 __ZN3RBX20SkateboardController9onSteppedERKNS_7SteppedE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardController::onStepped(RBX::Stepped const&)")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardController::onStepped(RBX::Stepped const&)")]
 // 0x624f38 — __ZThn92_N3RBX20SkateboardController9onSteppedERKNS_7SteppedE
-// was: `non-virtual thunk to'RBX::SkateboardController::onStepped(RBX::Stepped const&)
+// was: non-virtual thunk to RBX::SkateboardController::onStepped(RBX::Stepped const&)
 pub fn stub_624f38() -> ! {
     todo!("0x624f38 __ZThn92_N3RBX20SkateboardController9onSteppedERKNS_7SteppedE")
 }
@@ -65,44 +65,44 @@ pub fn stub_625384() -> ! {
     todo!("0x625384 __ZN3RBX20SkateboardControllerD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardController::~SkateboardController()")]
 // 0x625434 — __ZThn32_N3RBX20SkateboardControllerD1Ev
-// was: `non-virtual thunk to'RBX::SkateboardController::~SkateboardController()
+// was: non-virtual thunk to RBX::SkateboardController::~SkateboardController()
 pub fn stub_625434() -> ! {
     todo!("0x625434 __ZThn32_N3RBX20SkateboardControllerD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardController::~SkateboardController()")]
 // 0x625574 — __ZThn32_N3RBX20SkateboardControllerD0Ev
-// was: `non-virtual thunk to'RBX::SkateboardController::~SkateboardController()
+// was: non-virtual thunk to RBX::SkateboardController::~SkateboardController()
 pub fn stub_625574() -> ! {
     todo!("0x625574 __ZThn32_N3RBX20SkateboardControllerD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardController::~SkateboardController()")]
 // 0x6256dc — __ZThn36_N3RBX20SkateboardControllerD1Ev
-// was: `non-virtual thunk to'RBX::SkateboardController::~SkateboardController()
+// was: non-virtual thunk to RBX::SkateboardController::~SkateboardController()
 pub fn stub_6256dc() -> ! {
     todo!("0x6256dc __ZThn36_N3RBX20SkateboardControllerD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardController::~SkateboardController()")]
 // 0x62581c — __ZThn36_N3RBX20SkateboardControllerD0Ev
-// was: `non-virtual thunk to'RBX::SkateboardController::~SkateboardController()
+// was: non-virtual thunk to RBX::SkateboardController::~SkateboardController()
 pub fn stub_62581c() -> ! {
     todo!("0x62581c __ZThn36_N3RBX20SkateboardControllerD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardController::~SkateboardController()")]
 // 0x625974 — __ZThn92_N3RBX20SkateboardControllerD1Ev
-// was: `non-virtual thunk to'RBX::SkateboardController::~SkateboardController()
+// was: non-virtual thunk to RBX::SkateboardController::~SkateboardController()
 pub fn stub_625974() -> ! {
     todo!("0x625974 __ZThn92_N3RBX20SkateboardControllerD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardController::~SkateboardController()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardController::~SkateboardController()")]
 // 0x625ab4 — __ZThn92_N3RBX20SkateboardControllerD0Ev
-// was: `non-virtual thunk to'RBX::SkateboardController::~SkateboardController()
+// was: non-virtual thunk to RBX::SkateboardController::~SkateboardController()
 pub fn stub_625ab4() -> ! {
     todo!("0x625ab4 __ZThn92_N3RBX20SkateboardControllerD0Ev")
 }
@@ -149,44 +149,44 @@ pub fn stub_627ae4() -> ! {
     todo!("0x627ae4 __ZN3RBX18SkateboardPlatformD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x627af4 — __ZThn32_N3RBX18SkateboardPlatformD0Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_627af4() -> ! {
     todo!("0x627af4 __ZThn32_N3RBX18SkateboardPlatformD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x627afc — __ZThn36_N3RBX18SkateboardPlatformD0Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_627afc() -> ! {
     todo!("0x627afc __ZThn36_N3RBX18SkateboardPlatformD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x627b04 — __ZThn132_N3RBX18SkateboardPlatformD0Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_627b04() -> ! {
     todo!("0x627b04 __ZThn132_N3RBX18SkateboardPlatformD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x627b0c — __ZThn352_N3RBX18SkateboardPlatformD0Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_627b0c() -> ! {
     todo!("0x627b0c __ZThn352_N3RBX18SkateboardPlatformD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x627b14 — __ZThn384_N3RBX18SkateboardPlatformD0Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_627b14() -> ! {
     todo!("0x627b14 __ZThn384_N3RBX18SkateboardPlatformD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x627b1c — __ZThn504_N3RBX18SkateboardPlatformD0Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_627b1c() -> ! {
     todo!("0x627b1c __ZThn504_N3RBX18SkateboardPlatformD0Ev")
 }
@@ -197,44 +197,44 @@ pub fn stub_627b24() -> ! {
     todo!("0x627b24 __ZN3RBX18SkateboardPlatformD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x627fbc — __ZThn32_N3RBX18SkateboardPlatformD1Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_627fbc() -> ! {
     todo!("0x627fbc __ZThn32_N3RBX18SkateboardPlatformD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x627fcc — __ZThn36_N3RBX18SkateboardPlatformD1Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_627fcc() -> ! {
     todo!("0x627fcc __ZThn36_N3RBX18SkateboardPlatformD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x627fdc — __ZThn132_N3RBX18SkateboardPlatformD1Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_627fdc() -> ! {
     todo!("0x627fdc __ZThn132_N3RBX18SkateboardPlatformD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x627fec — __ZThn352_N3RBX18SkateboardPlatformD1Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_627fec() -> ! {
     todo!("0x627fec __ZThn352_N3RBX18SkateboardPlatformD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x628000 — __ZThn384_N3RBX18SkateboardPlatformD1Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_628000() -> ! {
     todo!("0x628000 __ZThn384_N3RBX18SkateboardPlatformD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::~SkateboardPlatform()")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()")]
 // 0x628014 — __ZThn504_N3RBX18SkateboardPlatformD1Ev
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::~SkateboardPlatform()
+// was: non-virtual thunk to RBX::SkateboardPlatform::~SkateboardPlatform()
 pub fn stub_628014() -> ! {
     todo!("0x628014 __ZThn504_N3RBX18SkateboardPlatformD1Ev")
 }
@@ -275,9 +275,9 @@ pub fn stub_628828() -> ! {
     todo!("0x628828 __ZN3RBX18SkateboardPlatform13getEngineBodyEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::getEngineBody(void)")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::getEngineBody(void)")]
 // 0x628834 — __ZThn352_N3RBX18SkateboardPlatform13getEngineBodyEv
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::getEngineBody(void)
+// was: non-virtual thunk to RBX::SkateboardPlatform::getEngineBody(void)
 pub fn stub_628834() -> ! {
     todo!("0x628834 __ZThn352_N3RBX18SkateboardPlatform13getEngineBodyEv")
 }
@@ -300,9 +300,9 @@ pub fn stub_628afc() -> ! {
     todo!("0x628afc __ZN3RBX18SkateboardPlatform10loadWheelsEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::stepUi(double)")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::stepUi(double)")]
 // 0x628b9c — __ZThn352_N3RBX18SkateboardPlatform6stepUiEd
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::stepUi(double)
+// was: non-virtual thunk to RBX::SkateboardPlatform::stepUi(double)
 pub fn stub_628b9c() -> ! {
     todo!("0x628b9c __ZThn352_N3RBX18SkateboardPlatform6stepUiEd")
 }
@@ -331,9 +331,9 @@ pub fn stub_628fb8() -> ! {
     todo!("0x628fb8 __ZN3RBX18SkateboardPlatform6doTurnEf")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::computeForce(bool)")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::computeForce(bool)")]
 // 0x629084 — __ZThn504_N3RBX18SkateboardPlatform12computeForceEb
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::computeForce(bool)
+// was: non-virtual thunk to RBX::SkateboardPlatform::computeForce(bool)
 pub fn stub_629084() -> ! {
     todo!("0x629084 __ZThn504_N3RBX18SkateboardPlatform12computeForceEb")
 }
@@ -350,9 +350,9 @@ pub fn stub_6290fc() -> ! {
     todo!("0x6290fc __ZNK3RBX18SkateboardPlatform14shouldRender2dEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::shouldRender2d(void)const")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::shouldRender2d(void)const")]
 // 0x629100 — __ZThn108_NK3RBX18SkateboardPlatform14shouldRender2dEv
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::shouldRender2d(void)const
+// was: non-virtual thunk to RBX::SkateboardPlatform::shouldRender2d(void)const
 pub fn stub_629100() -> ! {
     todo!("0x629100 __ZThn108_NK3RBX18SkateboardPlatform14shouldRender2dEv")
 }
@@ -363,9 +363,9 @@ pub fn stub_629104() -> ! {
     todo!("0x629104 __ZN3RBX18SkateboardPlatform8render2dEPNS_5AdornE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::render2d(RBX::Adorn *)")]
 // 0x629108 — __ZThn108_N3RBX18SkateboardPlatform8render2dEPNS_5AdornE
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::render2d(RBX::Adorn *)
+// was: non-virtual thunk to RBX::SkateboardPlatform::render2d(RBX::Adorn *)
 pub fn stub_629108() -> ! {
     todo!("0x629108 __ZThn108_N3RBX18SkateboardPlatform8render2dEPNS_5AdornE")
 }
@@ -382,9 +382,9 @@ pub fn stub_6291a4() -> ! {
     todo!("0x6291a4 __ZN3RBXL30gatherPrimitivesInSeatAssemblyEPNS_9PrimitiveERSt6vectorIPKS0_SaIS4_EE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 // 0x6291bc — __ZThn132_N3RBX18SkateboardPlatform25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
+// was: non-virtual thunk to RBX::SkateboardPlatform::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)
 pub fn stub_6291bc() -> ! {
     todo!("0x6291bc __ZThn132_N3RBX18SkateboardPlatform25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE")
 }
@@ -431,9 +431,9 @@ pub fn stub_62a720() -> ! {
     todo!("0x62a720 __ZNK3RBX18SkateboardPlatform9canStepUiEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::canStepUi(void)const")]
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::canStepUi(void)const")]
 // 0x62a734 — __ZThn352_NK3RBX18SkateboardPlatform9canStepUiEv
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::canStepUi(void)const
+// was: non-virtual thunk to RBX::SkateboardPlatform::canStepUi(void)const
 pub fn stub_62a734() -> ! {
     todo!("0x62a734 __ZThn352_NK3RBX18SkateboardPlatform9canStepUiEv")
 }
@@ -528,30 +528,30 @@ pub fn stub_6358f8() -> ! {
     todo!("0x6358f8 __ZN3RBX3SkyD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 // 0x635a04 — __ZThn32_N3RBX3SkyD1Ev
-// was: `non-virtual thunk to'RBX::Sky::~Sky()
+// was: non-virtual thunk to RBX::Sky::~Sky()
 pub fn stub_635a04() -> ! {
     todo!("0x635a04 __ZThn32_N3RBX3SkyD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 // 0x635a70 — __ZThn32_N3RBX3SkyD0Ev
-// was: `non-virtual thunk to'RBX::Sky::~Sky()
+// was: non-virtual thunk to RBX::Sky::~Sky()
 pub fn stub_635a70() -> ! {
     todo!("0x635a70 __ZThn32_N3RBX3SkyD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 // 0x635b7c — __ZThn36_N3RBX3SkyD1Ev
-// was: `non-virtual thunk to'RBX::Sky::~Sky()
+// was: non-virtual thunk to RBX::Sky::~Sky()
 pub fn stub_635b7c() -> ! {
     todo!("0x635b7c __ZThn36_N3RBX3SkyD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
+#[doc(alias = "non-virtual thunk to RBX::Sky::~Sky()")]
 // 0x635be8 — __ZThn36_N3RBX3SkyD0Ev
-// was: `non-virtual thunk to'RBX::Sky::~Sky()
+// was: non-virtual thunk to RBX::Sky::~Sky()
 pub fn stub_635be8() -> ! {
     todo!("0x635be8 __ZThn36_N3RBX3SkyD0Ev")
 }
@@ -610,23 +610,23 @@ pub fn stub_637708() -> ! {
     todo!("0x637708 __ZN3RBX5SmokeD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
+#[doc(alias = "non-virtual thunk to RBX::Smoke::~Smoke()")]
 // 0x63770c — __ZThn32_N3RBX5SmokeD0Ev
-// was: `non-virtual thunk to'RBX::Smoke::~Smoke()
+// was: non-virtual thunk to RBX::Smoke::~Smoke()
 pub fn stub_63770c() -> ! {
     todo!("0x63770c __ZThn32_N3RBX5SmokeD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
+#[doc(alias = "non-virtual thunk to RBX::Smoke::~Smoke()")]
 // 0x637714 — __ZThn36_N3RBX5SmokeD0Ev
-// was: `non-virtual thunk to'RBX::Smoke::~Smoke()
+// was: non-virtual thunk to RBX::Smoke::~Smoke()
 pub fn stub_637714() -> ! {
     todo!("0x637714 __ZThn36_N3RBX5SmokeD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Smoke::~Smoke()")]
+#[doc(alias = "non-virtual thunk to RBX::Smoke::~Smoke()")]
 // 0x63771c — __ZThn92_N3RBX5SmokeD0Ev
-// was: `non-virtual thunk to'RBX::Smoke::~Smoke()
+// was: non-virtual thunk to RBX::Smoke::~Smoke()
 pub fn stub_63771c() -> ! {
     todo!("0x63771c __ZThn92_N3RBX5SmokeD0Ev")
 }

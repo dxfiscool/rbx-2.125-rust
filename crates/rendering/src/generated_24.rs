@@ -356,10 +356,10 @@ pub fn stub_6291c4() -> ! {
 }
 
 // 0x629334 — __ZThn132_N3RBX18SkateboardPlatform4zoomEfRN3G3D15CoordinateFrameES3_
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
+// was: non-virtual thunk to RBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)
 pub fn stub_629334() -> ! {
-    todo!("0x629334 non-virtual thunk toRBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
+    todo!("0x629334 non-virtual thunk to RBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
 }
 
 // 0x629340 — __ZN3RBX18SkateboardPlatform20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
@@ -370,10 +370,10 @@ pub fn stub_629340() -> ! {
 }
 
 // 0x6295a4 — __ZThn132_N3RBX18SkateboardPlatform20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
-#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
-// was: `non-virtual thunk to'RBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)
+#[doc(alias = "non-virtual thunk to RBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
+// was: non-virtual thunk to RBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)
 pub fn stub_6295a4() -> ! {
-    todo!("0x6295a4 non-virtual thunk toRBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
+    todo!("0x6295a4 non-virtual thunk to RBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
 }
 
 // 0x6295bc — __ZN3RBX18SkateboardPlatform20applySpecificImpulseEN3G3D7Vector3ES2_
@@ -650,10 +650,10 @@ pub fn stub_668d2c() -> ! {
 }
 
 // 0x668efc — __ZThn96_NK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE
-#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")]
-// was: `non-virtual thunk to'RBX::GuiBase2d::isVisible(G3D::Rect2D const&)const
+#[doc(alias = "non-virtual thunk to RBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")]
+// was: non-virtual thunk to RBX::GuiBase2d::isVisible(G3D::Rect2D const&)const
 pub fn stub_668efc() -> ! {
-    todo!("0x668efc non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")
+    todo!("0x668efc non-virtual thunk to RBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")
 }
 
 // 0x66c418 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EEC2IMS2_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE

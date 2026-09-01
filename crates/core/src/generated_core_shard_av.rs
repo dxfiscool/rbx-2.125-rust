@@ -12,9 +12,9 @@ pub fn stub_0x3c057c() -> ! {
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::shouldRender3dSortedAdorn(void)const")]
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::shouldRender3dSortedAdorn(void)const")]
 // 0x3c066c — __ZThn96_NK3RBX12BillboardGui25shouldRender3dSortedAdornEv
-// was: `non-virtual thunk to'RBX::BillboardGui::shouldRender3dSortedAdorn(void)const
+// was: non-virtual thunk to RBX::BillboardGui::shouldRender3dSortedAdorn(void)const
 pub fn stub_0x3c066c() -> ! {
     todo!("0x3c066c __ZThn96_NK3RBX12BillboardGui25shouldRender3dSortedAdornEv")
 }
@@ -41,9 +41,9 @@ pub fn stub_0x3c0850() -> ! {
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::render3dSortedPosition(void)const")]
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::render3dSortedPosition(void)const")]
 // 0x3c0a28 — __ZThn96_NK3RBX12BillboardGui22render3dSortedPositionEv
-// was: `non-virtual thunk to'RBX::BillboardGui::render3dSortedPosition(void)const
+// was: non-virtual thunk to RBX::BillboardGui::render3dSortedPosition(void)const
 pub fn stub_0x3c0a28() -> ! {
     todo!("0x3c0a28 __ZThn96_NK3RBX12BillboardGui22render3dSortedPositionEv")
 }
@@ -56,9 +56,9 @@ pub fn stub_0x3c0a34() -> ! {
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)")]
 // 0x3c0e90 — __ZThn96_N3RBX12BillboardGui19render3dSortedAdornEPNS_5AdornE
-// was: `non-virtual thunk to'RBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)
+// was: non-virtual thunk to RBX::BillboardGui::render3dSortedAdorn(RBX::Adorn *)
 pub fn stub_0x3c0e90() -> ! {
     todo!("0x3c0e90 __ZThn96_N3RBX12BillboardGui19render3dSortedAdornEPNS_5AdornE")
 }
@@ -71,9 +71,9 @@ pub fn stub_0x3c0e98() -> ! {
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::process(RBX::GuiEvent const&)")]
 // 0x3c0f34 — __ZThn92_N3RBX12BillboardGui7processERKNS_8GuiEventE
-// was: `non-virtual thunk to'RBX::BillboardGui::process(RBX::GuiEvent const&)
+// was: non-virtual thunk to RBX::BillboardGui::process(RBX::GuiEvent const&)
 pub fn stub_0x3c0f34() -> ! {
     todo!("0x3c0f34 __ZThn92_N3RBX12BillboardGui7processERKNS_8GuiEventE")
 }
@@ -156,49 +156,49 @@ pub fn stub_0x3c12b4() -> ! {
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::~BillboardGui()")]
 // 0x3c12bc — __ZThn32_N3RBX12BillboardGuiD1Ev
-// was: `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()
+// was: non-virtual thunk to RBX::BillboardGui::~BillboardGui()
 pub fn stub_0x3c12bc() -> ! {
     todo!("0x3c12bc __ZThn32_N3RBX12BillboardGuiD1Ev")
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::~BillboardGui()")]
 // 0x3c12c4 — __ZThn32_N3RBX12BillboardGuiD0Ev
-// was: `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()
+// was: non-virtual thunk to RBX::BillboardGui::~BillboardGui()
 pub fn stub_0x3c12c4() -> ! {
     todo!("0x3c12c4 __ZThn32_N3RBX12BillboardGuiD0Ev")
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::~BillboardGui()")]
 // 0x3c1378 — __ZThn36_N3RBX12BillboardGuiD1Ev
-// was: `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()
+// was: non-virtual thunk to RBX::BillboardGui::~BillboardGui()
 pub fn stub_0x3c1378() -> ! {
     todo!("0x3c1378 __ZThn36_N3RBX12BillboardGuiD1Ev")
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::~BillboardGui()")]
 // 0x3c1380 — __ZThn36_N3RBX12BillboardGuiD0Ev
-// was: `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()
+// was: non-virtual thunk to RBX::BillboardGui::~BillboardGui()
 pub fn stub_0x3c1380() -> ! {
     todo!("0x3c1380 __ZThn36_N3RBX12BillboardGuiD0Ev")
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::~BillboardGui()")]
 // 0x3c1428 — __ZThn168_N3RBX12BillboardGuiD1Ev
-// was: `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()
+// was: non-virtual thunk to RBX::BillboardGui::~BillboardGui()
 pub fn stub_0x3c1428() -> ! {
     todo!("0x3c1428 __ZThn168_N3RBX12BillboardGuiD1Ev")
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::BillboardGui::~BillboardGui()")]
+#[doc(alias = "non-virtual thunk to RBX::BillboardGui::~BillboardGui()")]
 // 0x3c1430 — __ZThn168_N3RBX12BillboardGuiD0Ev
-// was: `non-virtual thunk to'RBX::BillboardGui::~BillboardGui()
+// was: non-virtual thunk to RBX::BillboardGui::~BillboardGui()
 pub fn stub_0x3c1430() -> ! {
     todo!("0x3c1430 __ZThn168_N3RBX12BillboardGuiD0Ev")
 }
@@ -365,9 +365,9 @@ pub fn stub_0x3c5690() -> ! {
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::Camera::onHeartbeat(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)")]
 // 0x3c58a8 — __ZThn92_N3RBX6Camera11onHeartbeatERKNS_9HeartbeatE
-// was: `non-virtual thunk to'RBX::Camera::onHeartbeat(RBX::Heartbeat const&)
+// was: non-virtual thunk to RBX::Camera::onHeartbeat(RBX::Heartbeat const&)
 pub fn stub_0x3c58a8() -> ! {
     todo!("0x3c58a8 __ZThn92_N3RBX6Camera11onHeartbeatERKNS_9HeartbeatE")
 }
@@ -611,49 +611,49 @@ pub fn stub_0x3c9d74() -> ! {
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
 // 0x3c9d8c — __ZThn32_N3RBX6CameraD1Ev
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_0x3c9d8c() -> ! {
     todo!("0x3c9d8c __ZThn32_N3RBX6CameraD1Ev")
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
 // 0x3c9d94 — __ZThn32_N3RBX6CameraD0Ev
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_0x3c9d94() -> ! {
     todo!("0x3c9d94 __ZThn32_N3RBX6CameraD0Ev")
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
 // 0x3c9dac — __ZThn36_N3RBX6CameraD1Ev
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_0x3c9dac() -> ! {
     todo!("0x3c9dac __ZThn36_N3RBX6CameraD1Ev")
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
 // 0x3c9db4 — __ZThn36_N3RBX6CameraD0Ev
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_0x3c9db4() -> ! {
     todo!("0x3c9db4 __ZThn36_N3RBX6CameraD0Ev")
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
 // 0x3c9dbc — __ZThn92_N3RBX6CameraD1Ev
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_0x3c9dbc() -> ! {
     todo!("0x3c9dbc __ZThn92_N3RBX6CameraD1Ev")
 }
 
 
-#[doc(alias = "non-virtual thunk toRBX::Camera::~Camera()")]
+#[doc(alias = "non-virtual thunk to RBX::Camera::~Camera()")]
 // 0x3c9dc4 — __ZThn92_N3RBX6CameraD0Ev
-// was: `non-virtual thunk to'RBX::Camera::~Camera()
+// was: non-virtual thunk to RBX::Camera::~Camera()
 pub fn stub_0x3c9dc4() -> ! {
     todo!("0x3c9dc4 __ZThn92_N3RBX6CameraD0Ev")
 }

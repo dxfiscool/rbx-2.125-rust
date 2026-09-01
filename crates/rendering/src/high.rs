@@ -544,10 +544,10 @@ pub fn stub_c35f64() -> ! {
 }
 
 // 0xc35f74 — __ZThn392_N3RBX10RenderNode19getFastFuzzyExtentsEv
-#[doc(alias = "non-virtual thunk toRBX::RenderNode::getFastFuzzyExtents(void)")]
-// was: `non-virtual thunk to'RBX::RenderNode::getFastFuzzyExtents(void)
+#[doc(alias = "non-virtual thunk to RBX::RenderNode::getFastFuzzyExtents(void)")]
+// was: non-virtual thunk to RBX::RenderNode::getFastFuzzyExtents(void)
 pub fn stub_c35f74() -> ! {
-    todo!("0xc35f74 non-virtual thunk toRBX::RenderNode::getFastFuzzyExtents(void)")
+    todo!("0xc35f74 non-virtual thunk to RBX::RenderNode::getFastFuzzyExtents(void)")
 }
 
 // 0xc35f80 — __ZN3RBX10RenderNode13_updateBoundsEv
@@ -703,10 +703,10 @@ pub fn stub_c7f2cc() -> ! {
 
 // 0xc85874 — __ZThn188_N4Ogre6Entity25backgroundLoadingCompleteEPNS_8ResourceE
 #[doc(alias = "non-virtual thunk toOgre::Entity::backgroundLoadingComplete(Ogre::Resource *)")]
-// was: `non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)
+// was: non-virtual thunk to Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)
 pub fn stub_c85874() -> ! {
     todo!(
-        "0xc85874 `non-virtual thunk to'Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)"
+        "0xc85874 non-virtual thunk to Ogre::Entity::backgroundLoadingComplete(Ogre::Resource *)"
     )
 }
 

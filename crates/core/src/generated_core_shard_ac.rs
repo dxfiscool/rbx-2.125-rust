@@ -727,16 +727,16 @@ pub fn stub_0x25afd8() -> ! {
     todo!("0x25afd8 __GLOBAL__I_a_55")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk to RBX::SpotLight::~SpotLight()")]
 // 0x25c0b4 — __ZThn36_N3RBX9SpotLightD1Ev
-// was: `non-virtual thunk to'RBX::SpotLight::~SpotLight()
+// was: non-virtual thunk to RBX::SpotLight::~SpotLight()
 pub fn stub_0x25c0b4() -> ! {
     todo!("0x25c0b4 __ZThn36_N3RBX9SpotLightD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SpotLight::~SpotLight()")]
+#[doc(alias = "non-virtual thunk to RBX::SpotLight::~SpotLight()")]
 // 0x25c0bc — __ZThn92_N3RBX9SpotLightD1Ev
-// was: `non-virtual thunk to'RBX::SpotLight::~SpotLight()
+// was: non-virtual thunk to RBX::SpotLight::~SpotLight()
 pub fn stub_0x25c0bc() -> ! {
     todo!("0x25c0bc __ZThn92_N3RBX9SpotLightD1Ev")
 }

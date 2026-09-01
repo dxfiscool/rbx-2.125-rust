@@ -29,21 +29,21 @@ pub fn stub_475948() -> ! {
 }
 
 // 0x475970 — __ZThn32_N3RBX13DataModelMeshD1Ev
-// demangled: `non-virtual thunk to'RBX::DataModelMesh::~DataModelMesh()
+// demangled: non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()
 // type: void __fastcall(RBX::DataModelMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
+#[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 #[doc(alias = "__ZThn32_N3RBX13DataModelMeshD1Ev")]
 pub fn stub_475970() -> ! {
-    todo!("0x475970 non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")
+    todo!("0x475970 non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
 }
 
 // 0x475978 — __ZThn32_N3RBX13DataModelMeshD0Ev
-// demangled: `non-virtual thunk to'RBX::DataModelMesh::~DataModelMesh()
+// demangled: non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()
 // type: void __fastcall(RBX::DataModelMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
+#[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 #[doc(alias = "__ZThn32_N3RBX13DataModelMeshD0Ev")]
 pub fn stub_475978() -> ! {
-    todo!("0x475978 non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")
+    todo!("0x475978 non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
 }
 
 // 0x475a1c — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDataModelMeshEEE12getClassNameEv
@@ -54,21 +54,21 @@ pub fn stub_475a1c() -> ! {
 }
 
 // 0x475a44 — __ZThn36_N3RBX13DataModelMeshD1Ev
-// demangled: `non-virtual thunk to'RBX::DataModelMesh::~DataModelMesh()
+// demangled: non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()
 // type: void __fastcall(RBX::DataModelMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
+#[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 #[doc(alias = "__ZThn36_N3RBX13DataModelMeshD1Ev")]
 pub fn stub_475a44() -> ! {
-    todo!("0x475a44 non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")
+    todo!("0x475a44 non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
 }
 
 // 0x475a4c — __ZThn36_N3RBX13DataModelMeshD0Ev
-// demangled: `non-virtual thunk to'RBX::DataModelMesh::~DataModelMesh()
+// demangled: non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()
 // type: void __fastcall(RBX::DataModelMesh *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
+#[doc(alias = "non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")]
 #[doc(alias = "__ZThn36_N3RBX13DataModelMeshD0Ev")]
 pub fn stub_475a4c() -> ! {
-    todo!("0x475a4c non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")
+    todo!("0x475a4c non-virtual thunk to RBX::DataModelMesh::~DataModelMesh()")
 }
 
 // 0x475af0 — __ZN3RBX4Name13callDoDeclareILZNS_14sDataModelMeshEEEEvv
@@ -620,21 +620,21 @@ pub fn stub_478100() -> ! {
 }
 
 // 0x478128 — __ZThn32_N3RBX13DebrisServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::DebrisService::~DebrisService()
+// demangled: non-virtual thunk to RBX::DebrisService::~DebrisService()
 // type: void __fastcall(RBX::DebrisService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DebrisService::~DebrisService()")]
+#[doc(alias = "non-virtual thunk to RBX::DebrisService::~DebrisService()")]
 #[doc(alias = "__ZThn32_N3RBX13DebrisServiceD1Ev")]
 pub fn stub_478128() -> ! {
-    todo!("0x478128 non-virtual thunk toRBX::DebrisService::~DebrisService()")
+    todo!("0x478128 non-virtual thunk to RBX::DebrisService::~DebrisService()")
 }
 
 // 0x478234 — __ZThn32_N3RBX13DebrisServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::DebrisService::~DebrisService()
+// demangled: non-virtual thunk to RBX::DebrisService::~DebrisService()
 // type: void __fastcall(RBX::DebrisService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DebrisService::~DebrisService()")]
+#[doc(alias = "non-virtual thunk to RBX::DebrisService::~DebrisService()")]
 #[doc(alias = "__ZThn32_N3RBX13DebrisServiceD0Ev")]
 pub fn stub_478234() -> ! {
-    todo!("0x478234 non-virtual thunk toRBX::DebrisService::~DebrisService()")
+    todo!("0x478234 non-virtual thunk to RBX::DebrisService::~DebrisService()")
 }
 
 // 0x478354 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv
@@ -645,21 +645,21 @@ pub fn stub_478354() -> ! {
 }
 
 // 0x47837c — __ZThn36_N3RBX13DebrisServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::DebrisService::~DebrisService()
+// demangled: non-virtual thunk to RBX::DebrisService::~DebrisService()
 // type: void __fastcall(RBX::DebrisService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DebrisService::~DebrisService()")]
+#[doc(alias = "non-virtual thunk to RBX::DebrisService::~DebrisService()")]
 #[doc(alias = "__ZThn36_N3RBX13DebrisServiceD1Ev")]
 pub fn stub_47837c() -> ! {
-    todo!("0x47837c non-virtual thunk toRBX::DebrisService::~DebrisService()")
+    todo!("0x47837c non-virtual thunk to RBX::DebrisService::~DebrisService()")
 }
 
 // 0x478484 — __ZThn36_N3RBX13DebrisServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::DebrisService::~DebrisService()
+// demangled: non-virtual thunk to RBX::DebrisService::~DebrisService()
 // type: void __fastcall(RBX::DebrisService *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::DebrisService::~DebrisService()")]
+#[doc(alias = "non-virtual thunk to RBX::DebrisService::~DebrisService()")]
 #[doc(alias = "__ZThn36_N3RBX13DebrisServiceD0Ev")]
 pub fn stub_478484() -> ! {
-    todo!("0x478484 non-virtual thunk toRBX::DebrisService::~DebrisService()")
+    todo!("0x478484 non-virtual thunk to RBX::DebrisService::~DebrisService()")
 }
 
 // 0x4785a0 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE9push_backERKS4_

@@ -5,37 +5,37 @@
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
 
 
-#[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
+#[doc(alias = "non-virtual thunk to RBX::Hat::~Hat()")]
 // 0x390898 — __ZThn36_N3RBX3HatD0Ev
-// was: `non-virtual thunk to'RBX::Hat::~Hat()
+// was: non-virtual thunk to RBX::Hat::~Hat()
 pub fn stub_0x390898() -> ! {
     todo!("0x390898 __ZThn36_N3RBX3HatD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
+#[doc(alias = "non-virtual thunk to RBX::Hat::~Hat()")]
 // 0x39094c — __ZThn92_N3RBX3HatD1Ev
-// was: `non-virtual thunk to'RBX::Hat::~Hat()
+// was: non-virtual thunk to RBX::Hat::~Hat()
 pub fn stub_0x39094c() -> ! {
     todo!("0x39094c __ZThn92_N3RBX3HatD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
+#[doc(alias = "non-virtual thunk to RBX::Hat::~Hat()")]
 // 0x390960 — __ZThn92_N3RBX3HatD0Ev
-// was: `non-virtual thunk to'RBX::Hat::~Hat()
+// was: non-virtual thunk to RBX::Hat::~Hat()
 pub fn stub_0x390960() -> ! {
     todo!("0x390960 __ZThn92_N3RBX3HatD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
+#[doc(alias = "non-virtual thunk to RBX::Hat::~Hat()")]
 // 0x390a14 — __ZThn128_N3RBX3HatD1Ev
-// was: `non-virtual thunk to'RBX::Hat::~Hat()
+// was: non-virtual thunk to RBX::Hat::~Hat()
 pub fn stub_0x390a14() -> ! {
     todo!("0x390a14 __ZThn128_N3RBX3HatD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Hat::~Hat()")]
+#[doc(alias = "non-virtual thunk to RBX::Hat::~Hat()")]
 // 0x390a28 — __ZThn128_N3RBX3HatD0Ev
-// was: `non-virtual thunk to'RBX::Hat::~Hat()
+// was: non-virtual thunk to RBX::Hat::~Hat()
 pub fn stub_0x390a28() -> ! {
     todo!("0x390a28 __ZThn128_N3RBX3HatD0Ev")
 }
@@ -76,30 +76,30 @@ pub fn stub_0x3943c4() -> ! {
     todo!("0x3943c4 __ZN3RBX11PVAdornmentD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
+#[doc(alias = "non-virtual thunk to RBX::PVAdornment::~PVAdornment()")]
 // 0x39448c — __ZThn32_N3RBX11PVAdornmentD1Ev
-// was: `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()
+// was: non-virtual thunk to RBX::PVAdornment::~PVAdornment()
 pub fn stub_0x39448c() -> ! {
     todo!("0x39448c __ZThn32_N3RBX11PVAdornmentD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
+#[doc(alias = "non-virtual thunk to RBX::PVAdornment::~PVAdornment()")]
 // 0x3945d4 — __ZThn32_N3RBX11PVAdornmentD0Ev
-// was: `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()
+// was: non-virtual thunk to RBX::PVAdornment::~PVAdornment()
 pub fn stub_0x3945d4() -> ! {
     todo!("0x3945d4 __ZThn32_N3RBX11PVAdornmentD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
+#[doc(alias = "non-virtual thunk to RBX::PVAdornment::~PVAdornment()")]
 // 0x394758 — __ZThn36_N3RBX11PVAdornmentD1Ev
-// was: `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()
+// was: non-virtual thunk to RBX::PVAdornment::~PVAdornment()
 pub fn stub_0x394758() -> ! {
     todo!("0x394758 __ZThn36_N3RBX11PVAdornmentD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::PVAdornment::~PVAdornment()")]
+#[doc(alias = "non-virtual thunk to RBX::PVAdornment::~PVAdornment()")]
 // 0x3948a0 — __ZThn36_N3RBX11PVAdornmentD0Ev
-// was: `non-virtual thunk to'RBX::PVAdornment::~PVAdornment()
+// was: non-virtual thunk to RBX::PVAdornment::~PVAdornment()
 pub fn stub_0x3948a0() -> ! {
     todo!("0x3948a0 __ZThn36_N3RBX11PVAdornmentD0Ev")
 }
@@ -170,30 +170,30 @@ pub fn stub_0x397038() -> ! {
     todo!("0x397038 __ZNK3RBX9Animation21getPersistentDataCostEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
+#[doc(alias = "non-virtual thunk to RBX::Animation::~Animation()")]
 // 0x3970d0 — __ZThn32_N3RBX9AnimationD1Ev
-// was: `non-virtual thunk to'RBX::Animation::~Animation()
+// was: non-virtual thunk to RBX::Animation::~Animation()
 pub fn stub_0x3970d0() -> ! {
     todo!("0x3970d0 __ZThn32_N3RBX9AnimationD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
+#[doc(alias = "non-virtual thunk to RBX::Animation::~Animation()")]
 // 0x3971b4 — __ZThn32_N3RBX9AnimationD0Ev
-// was: `non-virtual thunk to'RBX::Animation::~Animation()
+// was: non-virtual thunk to RBX::Animation::~Animation()
 pub fn stub_0x3971b4() -> ! {
     todo!("0x3971b4 __ZThn32_N3RBX9AnimationD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
+#[doc(alias = "non-virtual thunk to RBX::Animation::~Animation()")]
 // 0x3972bc — __ZThn36_N3RBX9AnimationD1Ev
-// was: `non-virtual thunk to'RBX::Animation::~Animation()
+// was: non-virtual thunk to RBX::Animation::~Animation()
 pub fn stub_0x3972bc() -> ! {
     todo!("0x3972bc __ZThn36_N3RBX9AnimationD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animation::~Animation()")]
+#[doc(alias = "non-virtual thunk to RBX::Animation::~Animation()")]
 // 0x3973a0 — __ZThn36_N3RBX9AnimationD0Ev
-// was: `non-virtual thunk to'RBX::Animation::~Animation()
+// was: non-virtual thunk to RBX::Animation::~Animation()
 pub fn stub_0x3973a0() -> ! {
     todo!("0x3973a0 __ZThn36_N3RBX9AnimationD0Ev")
 }
@@ -246,16 +246,16 @@ pub fn stub_0x398f20() -> ! {
     todo!("0x398f20 __ZN3RBX14AnimationTrackD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
+#[doc(alias = "non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()")]
 // 0x398f24 — __ZThn32_N3RBX14AnimationTrackD0Ev
-// was: `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()
+// was: non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()
 pub fn stub_0x398f24() -> ! {
     todo!("0x398f24 __ZThn32_N3RBX14AnimationTrackD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
+#[doc(alias = "non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()")]
 // 0x398f2c — __ZThn36_N3RBX14AnimationTrackD0Ev
-// was: `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()
+// was: non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()
 pub fn stub_0x398f2c() -> ! {
     todo!("0x398f2c __ZThn36_N3RBX14AnimationTrackD0Ev")
 }
@@ -266,16 +266,16 @@ pub fn stub_0x398f34() -> ! {
     todo!("0x398f34 __ZN3RBX14AnimationTrackD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
+#[doc(alias = "non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()")]
 // 0x3991a8 — __ZThn32_N3RBX14AnimationTrackD1Ev
-// was: `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()
+// was: non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()
 pub fn stub_0x3991a8() -> ! {
     todo!("0x3991a8 __ZThn32_N3RBX14AnimationTrackD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")]
+#[doc(alias = "non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()")]
 // 0x3991b0 — __ZThn36_N3RBX14AnimationTrackD1Ev
-// was: `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()
+// was: non-virtual thunk to RBX::AnimationTrack::~AnimationTrack()
 pub fn stub_0x3991b0() -> ! {
     todo!("0x3991b0 __ZThn36_N3RBX14AnimationTrackD1Ev")
 }
@@ -364,30 +364,30 @@ pub fn stub_0x39c374() -> ! {
     todo!("0x39c374 __ZN3RBX19AnimationTrackStateD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
+#[doc(alias = "non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()")]
 // 0x39c43c — __ZThn32_N3RBX19AnimationTrackStateD1Ev
-// was: `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()
+// was: non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()
 pub fn stub_0x39c43c() -> ! {
     todo!("0x39c43c __ZThn32_N3RBX19AnimationTrackStateD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
+#[doc(alias = "non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()")]
 // 0x39c444 — __ZThn32_N3RBX19AnimationTrackStateD0Ev
-// was: `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()
+// was: non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()
 pub fn stub_0x39c444() -> ! {
     todo!("0x39c444 __ZThn32_N3RBX19AnimationTrackStateD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
+#[doc(alias = "non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()")]
 // 0x39c474 — __ZThn36_N3RBX19AnimationTrackStateD1Ev
-// was: `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()
+// was: non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()
 pub fn stub_0x39c474() -> ! {
     todo!("0x39c474 __ZThn36_N3RBX19AnimationTrackStateD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::AnimationTrackState::~AnimationTrackState()")]
+#[doc(alias = "non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()")]
 // 0x39c47c — __ZThn36_N3RBX19AnimationTrackStateD0Ev
-// was: `non-virtual thunk to'RBX::AnimationTrackState::~AnimationTrackState()
+// was: non-virtual thunk to RBX::AnimationTrackState::~AnimationTrackState()
 pub fn stub_0x39c47c() -> ! {
     todo!("0x39c47c __ZThn36_N3RBX19AnimationTrackStateD0Ev")
 }
@@ -410,23 +410,23 @@ pub fn stub_0x3a4158() -> ! {
     todo!("0x3a4158 __ZN3RBX8AnimatorD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
+#[doc(alias = "non-virtual thunk to RBX::Animator::~Animator()")]
 // 0x3a415c — __ZThn32_N3RBX8AnimatorD0Ev
-// was: `non-virtual thunk to'RBX::Animator::~Animator()
+// was: non-virtual thunk to RBX::Animator::~Animator()
 pub fn stub_0x3a415c() -> ! {
     todo!("0x3a415c __ZThn32_N3RBX8AnimatorD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
+#[doc(alias = "non-virtual thunk to RBX::Animator::~Animator()")]
 // 0x3a4164 — __ZThn36_N3RBX8AnimatorD0Ev
-// was: `non-virtual thunk to'RBX::Animator::~Animator()
+// was: non-virtual thunk to RBX::Animator::~Animator()
 pub fn stub_0x3a4164() -> ! {
     todo!("0x3a4164 __ZThn36_N3RBX8AnimatorD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
+#[doc(alias = "non-virtual thunk to RBX::Animator::~Animator()")]
 // 0x3a416c — __ZThn92_N3RBX8AnimatorD0Ev
-// was: `non-virtual thunk to'RBX::Animator::~Animator()
+// was: non-virtual thunk to RBX::Animator::~Animator()
 pub fn stub_0x3a416c() -> ! {
     todo!("0x3a416c __ZThn92_N3RBX8AnimatorD0Ev")
 }
@@ -437,23 +437,23 @@ pub fn stub_0x3a4174() -> ! {
     todo!("0x3a4174 __ZN3RBX8AnimatorD2Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
+#[doc(alias = "non-virtual thunk to RBX::Animator::~Animator()")]
 // 0x3a434c — __ZThn32_N3RBX8AnimatorD1Ev
-// was: `non-virtual thunk to'RBX::Animator::~Animator()
+// was: non-virtual thunk to RBX::Animator::~Animator()
 pub fn stub_0x3a434c() -> ! {
     todo!("0x3a434c __ZThn32_N3RBX8AnimatorD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
+#[doc(alias = "non-virtual thunk to RBX::Animator::~Animator()")]
 // 0x3a4354 — __ZThn36_N3RBX8AnimatorD1Ev
-// was: `non-virtual thunk to'RBX::Animator::~Animator()
+// was: non-virtual thunk to RBX::Animator::~Animator()
 pub fn stub_0x3a4354() -> ! {
     todo!("0x3a4354 __ZThn36_N3RBX8AnimatorD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
+#[doc(alias = "non-virtual thunk to RBX::Animator::~Animator()")]
 // 0x3a435c — __ZThn92_N3RBX8AnimatorD1Ev
-// was: `non-virtual thunk to'RBX::Animator::~Animator()
+// was: non-virtual thunk to RBX::Animator::~Animator()
 pub fn stub_0x3a435c() -> ! {
     todo!("0x3a435c __ZThn92_N3RBX8AnimatorD1Ev")
 }
@@ -482,9 +482,9 @@ pub fn stub_0x3a4870() -> ! {
     todo!("0x3a4870 __ZN3RBX8Animator9onSteppedERKNS_7SteppedE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)")]
+#[doc(alias = "non-virtual thunk to RBX::Animator::onStepped(RBX::Stepped const&)")]
 // 0x3a4e98 — __ZThn92_N3RBX8Animator9onSteppedERKNS_7SteppedE
-// was: `non-virtual thunk to'RBX::Animator::onStepped(RBX::Stepped const&)
+// was: non-virtual thunk to RBX::Animator::onStepped(RBX::Stepped const&)
 pub fn stub_0x3a4e98() -> ! {
     todo!("0x3a4e98 __ZThn92_N3RBX8Animator9onSteppedERKNS_7SteppedE")
 }
@@ -591,9 +591,9 @@ pub fn stub_0x3a7b94() -> ! {
     todo!("0x3a7b94 __ZN3RBX10ArcHandles7processERKNS_8GuiEventE")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ArcHandles::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk to RBX::ArcHandles::process(RBX::GuiEvent const&)")]
 // 0x3a7ee4 — __ZThn92_N3RBX10ArcHandles7processERKNS_8GuiEventE
-// was: `non-virtual thunk to'RBX::ArcHandles::process(RBX::GuiEvent const&)
+// was: non-virtual thunk to RBX::ArcHandles::process(RBX::GuiEvent const&)
 pub fn stub_0x3a7ee4() -> ! {
     todo!("0x3a7ee4 __ZThn92_N3RBX10ArcHandles7processERKNS_8GuiEventE")
 }
@@ -628,9 +628,9 @@ pub fn stub_0x3a8664() -> ! {
     todo!("0x3a8664 __ZNK3RBX11HandlesBase14shouldRender2dEv")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
+#[doc(alias = "non-virtual thunk to RBX::ArcHandles::~ArcHandles()")]
 // 0x3a8674 — __ZThn32_N3RBX10ArcHandlesD1Ev
-// was: `non-virtual thunk to'RBX::ArcHandles::~ArcHandles()
+// was: non-virtual thunk to RBX::ArcHandles::~ArcHandles()
 pub fn stub_0x3a8674() -> ! {
     todo!("0x3a8674 __ZThn32_N3RBX10ArcHandlesD1Ev")
 }

@@ -278,34 +278,34 @@ pub fn stub_0x6e0890() -> ! {
     todo!("0x6e0890 __ZN3RBX18WorkspaceStatsItemD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 // 0x6e0964 — __ZThn32_N3RBX18WorkspaceStatsItemD1Ev
 // type: void __fastcall(RBX::WorkspaceStatsItem *__hidden this)
-// was: `non-virtual thunk to'RBX::WorkspaceStatsItem::~WorkspaceStatsItem()
+// was: non-virtual thunk to RBX::WorkspaceStatsItem::~WorkspaceStatsItem()
 pub fn stub_0x6e0964() -> ! {
     todo!("0x6e0964 __ZThn32_N3RBX18WorkspaceStatsItemD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 // 0x6e09a4 — __ZThn32_N3RBX18WorkspaceStatsItemD0Ev
 // type: void __fastcall(RBX::WorkspaceStatsItem *__hidden this)
-// was: `non-virtual thunk to'RBX::WorkspaceStatsItem::~WorkspaceStatsItem()
+// was: non-virtual thunk to RBX::WorkspaceStatsItem::~WorkspaceStatsItem()
 pub fn stub_0x6e09a4() -> ! {
     todo!("0x6e09a4 __ZThn32_N3RBX18WorkspaceStatsItemD0Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 // 0x6e0a78 — __ZThn36_N3RBX18WorkspaceStatsItemD1Ev
 // type: void __fastcall(RBX::WorkspaceStatsItem *__hidden this)
-// was: `non-virtual thunk to'RBX::WorkspaceStatsItem::~WorkspaceStatsItem()
+// was: non-virtual thunk to RBX::WorkspaceStatsItem::~WorkspaceStatsItem()
 pub fn stub_0x6e0a78() -> ! {
     todo!("0x6e0a78 __ZThn36_N3RBX18WorkspaceStatsItemD1Ev")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
+#[doc(alias = "non-virtual thunk to RBX::WorkspaceStatsItem::~WorkspaceStatsItem()")]
 // 0x6e0ab8 — __ZThn36_N3RBX18WorkspaceStatsItemD0Ev
 // type: void __fastcall(RBX::WorkspaceStatsItem *__hidden this)
-// was: `non-virtual thunk to'RBX::WorkspaceStatsItem::~WorkspaceStatsItem()
+// was: non-virtual thunk to RBX::WorkspaceStatsItem::~WorkspaceStatsItem()
 pub fn stub_0x6e0ab8() -> ! {
     todo!("0x6e0ab8 __ZThn36_N3RBX18WorkspaceStatsItemD0Ev")
 }

@@ -13,19 +13,19 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 // 0x63d5c4 — __ZThn36_N3RBX13SpawnLocationD0Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13SpawnLocationD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")]
 // was: __ZThn36_N3RBX13SpawnLocationD0Ev
 pub fn stub_63d5c4() -> ! {
-    todo!("0x63d5c4 `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x63d5c4 non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x63d5cc — __ZThn132_N3RBX13SpawnLocationD0Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "__ZThn132_N3RBX13SpawnLocationD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")]
 // was: __ZThn132_N3RBX13SpawnLocationD0Ev
 pub fn stub_63d5cc() -> ! {
-    todo!("0x63d5cc `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x63d5cc non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x63d5d4 — __ZN3RBX13SpawnLocationD2Ev
@@ -40,28 +40,28 @@ pub fn stub_63d5d4() -> ! {
 // 0x63d788 — __ZThn32_N3RBX13SpawnLocationD1Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13SpawnLocationD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")]
 // was: __ZThn32_N3RBX13SpawnLocationD1Ev
 pub fn stub_63d788() -> ! {
-    todo!("0x63d788 `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x63d788 non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x63d798 — __ZThn36_N3RBX13SpawnLocationD1Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13SpawnLocationD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")]
 // was: __ZThn36_N3RBX13SpawnLocationD1Ev
 pub fn stub_63d798() -> ! {
-    todo!("0x63d798 `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x63d798 non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x63d7a8 — __ZThn132_N3RBX13SpawnLocationD1Ev
 // type: void __fastcall(RBX::SpawnLocation *__hidden this)
 #[doc(alias = "__ZThn132_N3RBX13SpawnLocationD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpawnLocation::~SpawnLocation()")]
+#[doc(alias = "non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")]
 // was: __ZThn132_N3RBX13SpawnLocationD1Ev
 pub fn stub_63d7a8() -> ! {
-    todo!("0x63d7a8 `non-virtual thunk to'RBX::SpawnLocation::~SpawnLocation()")
+    todo!("0x63d7a8 non-virtual thunk to RBX::SpawnLocation::~SpawnLocation()")
 }
 
 // 0x63d7b8 — __ZN3RBX13SpawnLocation22onEvent_spawnerTouchedEN5boost10shared_ptrINS_8InstanceEEE
@@ -121,19 +121,19 @@ pub fn stub_63de78() -> ! {
 // 0x63de7c — __ZThn32_N3RBX14SpawnerServiceD0Ev
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX14SpawnerServiceD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
+#[doc(alias = "non-virtual thunk to RBX::SpawnerService::~SpawnerService()")]
 // was: __ZThn32_N3RBX14SpawnerServiceD0Ev
 pub fn stub_63de7c() -> ! {
-    todo!("0x63de7c `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()")
+    todo!("0x63de7c non-virtual thunk to RBX::SpawnerService::~SpawnerService()")
 }
 
 // 0x63de84 — __ZThn36_N3RBX14SpawnerServiceD0Ev
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX14SpawnerServiceD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
+#[doc(alias = "non-virtual thunk to RBX::SpawnerService::~SpawnerService()")]
 // was: __ZThn36_N3RBX14SpawnerServiceD0Ev
 pub fn stub_63de84() -> ! {
-    todo!("0x63de84 `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()")
+    todo!("0x63de84 non-virtual thunk to RBX::SpawnerService::~SpawnerService()")
 }
 
 // 0x63de8c — __ZN3RBX14SpawnerServiceD2Ev
@@ -148,19 +148,19 @@ pub fn stub_63de8c() -> ! {
 // 0x63ded4 — __ZThn32_N3RBX14SpawnerServiceD1Ev
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX14SpawnerServiceD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
+#[doc(alias = "non-virtual thunk to RBX::SpawnerService::~SpawnerService()")]
 // was: __ZThn32_N3RBX14SpawnerServiceD1Ev
 pub fn stub_63ded4() -> ! {
-    todo!("0x63ded4 `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()")
+    todo!("0x63ded4 non-virtual thunk to RBX::SpawnerService::~SpawnerService()")
 }
 
 // 0x63dedc — __ZThn36_N3RBX14SpawnerServiceD1Ev
 // type: void __fastcall(RBX::SpawnerService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX14SpawnerServiceD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::SpawnerService::~SpawnerService()")]
+#[doc(alias = "non-virtual thunk to RBX::SpawnerService::~SpawnerService()")]
 // was: __ZThn36_N3RBX14SpawnerServiceD1Ev
 pub fn stub_63dedc() -> ! {
-    todo!("0x63dedc `non-virtual thunk to'RBX::SpawnerService::~SpawnerService()")
+    todo!("0x63dedc non-virtual thunk to RBX::SpawnerService::~SpawnerService()")
 }
 
 // 0x63dee4 — __ZN3RBX14SpawnerService13ClearContentsEv

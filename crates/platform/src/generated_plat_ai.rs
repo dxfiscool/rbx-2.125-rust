@@ -18,7 +18,7 @@ pub fn stub_d4980() -> ! {
     todo!("0xd4980 FMOD::OutputPolled::start(void)")
 }
 
-// 0xd4ac0 — __ZThn360_N4FMOD12OutputPolled10threadFuncEv / `non-virtual thunk to'FMOD::OutputPolled::threadFunc(void)
+// 0xd4ac0 — __ZThn360_N4FMOD12OutputPolled10threadFuncEv / non-virtual thunk to FMOD::OutputPolled::threadFunc(void)
 // type: _DWORD __fastcall(FMOD::OutputPolled *__hidden this)
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::threadFunc(void)")]
 pub fn stub_d4ac0() -> ! {
@@ -32,7 +32,7 @@ pub fn stub_d4ac8() -> ! {
     todo!("0xd4ac8 FMOD::OutputPolled::threadFunc(void)")
 }
 
-// 0xd4ff8 — __ZThn360_N4FMOD12OutputPolledD0Ev / `non-virtual thunk to'FMOD::OutputPolled::~OutputPolled()
+// 0xd4ff8 — __ZThn360_N4FMOD12OutputPolledD0Ev / non-virtual thunk to FMOD::OutputPolled::~OutputPolled()
 // type: void __fastcall(FMOD::OutputPolled *__hidden this)
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")]
 pub fn stub_d4ff8() -> ! {
@@ -46,7 +46,7 @@ pub fn stub_d5000() -> ! {
     todo!("0xd5000 FMOD::OutputPolled::~OutputPolled()")
 }
 
-// 0xd5038 — __ZThn360_N4FMOD12OutputPolledD1Ev / `non-virtual thunk to'FMOD::OutputPolled::~OutputPolled()
+// 0xd5038 — __ZThn360_N4FMOD12OutputPolledD1Ev / non-virtual thunk to FMOD::OutputPolled::~OutputPolled()
 // type: void __fastcall(FMOD::OutputPolled *__hidden this)
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")]
 pub fn stub_d5038() -> ! {

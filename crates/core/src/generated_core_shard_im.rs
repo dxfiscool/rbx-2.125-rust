@@ -520,18 +520,18 @@ pub fn stub_6bf038() -> ! {
     todo!("0x6bf038 RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk to RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 // 0x6bf0e4 — __ZThn132_N3RBX8SeatImplINS_12PartInstanceEED1Ev
-// was: `non-virtual thunk to'RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()
+// was: non-virtual thunk to RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()
 pub fn stub_6bf0e4() -> ! {
-    todo!("0x6bf0e4 non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
+    todo!("0x6bf0e4 non-virtual thunk to RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk to RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 // 0x6bf0f8 — __ZThn132_N3RBX8SeatImplINS_12PartInstanceEED0Ev
-// was: `non-virtual thunk to'RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()
+// was: non-virtual thunk to RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()
 pub fn stub_6bf0f8() -> ! {
-    todo!("0x6bf0f8 non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
+    todo!("0x6bf0f8 non-virtual thunk to RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
 }
 
 #[doc(alias = "RBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
@@ -548,46 +548,46 @@ pub fn stub_6bf1bc() -> ! {
     todo!("0x6bf1bc RBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 // 0x6bf26c — __ZThn132_N3RBX13ActionStationINS_12PartInstanceEED1Ev
-// was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
+// was: non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()
 pub fn stub_6bf26c() -> ! {
-    todo!("0x6bf26c non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
+    todo!("0x6bf26c non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 // 0x6bf280 — __ZThn132_N3RBX13ActionStationINS_12PartInstanceEED0Ev
-// was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
+// was: non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()
 pub fn stub_6bf280() -> ! {
-    todo!("0x6bf280 non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
+    todo!("0x6bf280 non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 // 0x6bf28c — __ZThn32_N3RBX13ActionStationINS_12PartInstanceEED1Ev
-// was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
+// was: non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()
 pub fn stub_6bf28c() -> ! {
-    todo!("0x6bf28c non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
+    todo!("0x6bf28c non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 // 0x6bf2a0 — __ZThn36_N3RBX13ActionStationINS_12PartInstanceEED1Ev
-// was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
+// was: non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()
 pub fn stub_6bf2a0() -> ! {
-    todo!("0x6bf2a0 non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
+    todo!("0x6bf2a0 non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 // 0x6bf2b4 — __ZThn32_N3RBX13ActionStationINS_12PartInstanceEED0Ev
-// was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
+// was: non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()
 pub fn stub_6bf2b4() -> ! {
-    todo!("0x6bf2b4 non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
+    todo!("0x6bf2b4 non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
-#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 // 0x6bf2bc — __ZThn36_N3RBX13ActionStationINS_12PartInstanceEED0Ev
-// was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
+// was: non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()
 pub fn stub_6bf2bc() -> ! {
-    todo!("0x6bf2bc non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
+    todo!("0x6bf2bc non-virtual thunk to RBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
 #[doc(alias = "RBX::SeatImpl<RBX::PartInstance>::isChildSeatWeld(RBX::Instance *)")]
@@ -649,11 +649,11 @@ pub fn stub_6bf4ec() -> ! {
     todo!("0x6bf4ec rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)")
 }
 
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)")]
 // 0x6bf4f4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_12PartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)
 pub fn stub_6bf4f4() -> ! {
-    todo!("0x6bf4f4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)")
+    todo!("0x6bf4f4 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)")
 }
 
 #[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>::operator()(void)")]

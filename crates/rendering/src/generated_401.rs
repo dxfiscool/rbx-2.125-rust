@@ -226,19 +226,19 @@ pub fn stub_5f9510() -> ! {
 // 0x5f9520 — __ZThn32_N3RBX15PhysicsSettingsD1Ev
 // type: void __fastcall(RBX::PhysicsSettings *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15PhysicsSettingsD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::PhysicsSettings::~PhysicsSettings()")]
 // was: __ZThn32_N3RBX15PhysicsSettingsD1Ev
 pub fn stub_5f9520() -> ! {
-    todo!("0x5f9520 `non-virtual thunk to'RBX::PhysicsSettings::~PhysicsSettings()")
+    todo!("0x5f9520 non-virtual thunk to RBX::PhysicsSettings::~PhysicsSettings()")
 }
 
 // 0x5f9564 — __ZThn32_N3RBX15PhysicsSettingsD0Ev
 // type: void __fastcall(RBX::PhysicsSettings *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX15PhysicsSettingsD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::PhysicsSettings::~PhysicsSettings()")]
 // was: __ZThn32_N3RBX15PhysicsSettingsD0Ev
 pub fn stub_5f9564() -> ! {
-    todo!("0x5f9564 `non-virtual thunk to'RBX::PhysicsSettings::~PhysicsSettings()")
+    todo!("0x5f9564 non-virtual thunk to RBX::PhysicsSettings::~PhysicsSettings()")
 }
 
 // 0x5f9644 — __ZThn32_NK3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE12getClassNameEv
@@ -251,19 +251,19 @@ pub fn stub_5f9644() -> ! {
 // 0x5f9654 — __ZThn36_N3RBX15PhysicsSettingsD1Ev
 // type: void __fastcall(RBX::PhysicsSettings *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15PhysicsSettingsD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::PhysicsSettings::~PhysicsSettings()")]
 // was: __ZThn36_N3RBX15PhysicsSettingsD1Ev
 pub fn stub_5f9654() -> ! {
-    todo!("0x5f9654 `non-virtual thunk to'RBX::PhysicsSettings::~PhysicsSettings()")
+    todo!("0x5f9654 non-virtual thunk to RBX::PhysicsSettings::~PhysicsSettings()")
 }
 
 // 0x5f9698 — __ZThn36_N3RBX15PhysicsSettingsD0Ev
 // type: void __fastcall(RBX::PhysicsSettings *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX15PhysicsSettingsD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::PhysicsSettings::~PhysicsSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::PhysicsSettings::~PhysicsSettings()")]
 // was: __ZThn36_N3RBX15PhysicsSettingsD0Ev
 pub fn stub_5f9698() -> ! {
-    todo!("0x5f9698 `non-virtual thunk to'RBX::PhysicsSettings::~PhysicsSettings()")
+    todo!("0x5f9698 non-virtual thunk to RBX::PhysicsSettings::~PhysicsSettings()")
 }
 
 // 0x5f9778 — __ZN3RBX14FactoryProductINS_15PhysicsSettingsENS_22GlobalAdvancedSettings4ItemELZNS_16sPhysicsSettingsEENS_8InstanceEE17static_getCreatorEv
@@ -427,19 +427,19 @@ pub fn stub_5fb654() -> ! {
 // 0x5fb658 — __ZThn32_N3RBX13BasePlayerGuiD0Ev
 // type: void __fastcall(RBX::BasePlayerGui *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13BasePlayerGuiD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()")]
+#[doc(alias = "non-virtual thunk to RBX::BasePlayerGui::~BasePlayerGui()")]
 // was: __ZThn32_N3RBX13BasePlayerGuiD0Ev
 pub fn stub_5fb658() -> ! {
-    todo!("0x5fb658 `non-virtual thunk to'RBX::BasePlayerGui::~BasePlayerGui()")
+    todo!("0x5fb658 non-virtual thunk to RBX::BasePlayerGui::~BasePlayerGui()")
 }
 
 // 0x5fb660 — __ZThn36_N3RBX13BasePlayerGuiD0Ev
 // type: void __fastcall(RBX::BasePlayerGui *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13BasePlayerGuiD0Ev")]
-#[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()")]
+#[doc(alias = "non-virtual thunk to RBX::BasePlayerGui::~BasePlayerGui()")]
 // was: __ZThn36_N3RBX13BasePlayerGuiD0Ev
 pub fn stub_5fb660() -> ! {
-    todo!("0x5fb660 `non-virtual thunk to'RBX::BasePlayerGui::~BasePlayerGui()")
+    todo!("0x5fb660 non-virtual thunk to RBX::BasePlayerGui::~BasePlayerGui()")
 }
 
 // 0x5fb668 — __ZN3RBX13BasePlayerGuiD2Ev
@@ -454,19 +454,19 @@ pub fn stub_5fb668() -> ! {
 // 0x5fb7a4 — __ZThn32_N3RBX13BasePlayerGuiD1Ev
 // type: void __fastcall(RBX::BasePlayerGui *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX13BasePlayerGuiD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()")]
+#[doc(alias = "non-virtual thunk to RBX::BasePlayerGui::~BasePlayerGui()")]
 // was: __ZThn32_N3RBX13BasePlayerGuiD1Ev
 pub fn stub_5fb7a4() -> ! {
-    todo!("0x5fb7a4 `non-virtual thunk to'RBX::BasePlayerGui::~BasePlayerGui()")
+    todo!("0x5fb7a4 non-virtual thunk to RBX::BasePlayerGui::~BasePlayerGui()")
 }
 
 // 0x5fb7ac — __ZThn36_N3RBX13BasePlayerGuiD1Ev
 // type: void __fastcall(RBX::BasePlayerGui *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13BasePlayerGuiD1Ev")]
-#[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::~BasePlayerGui()")]
+#[doc(alias = "non-virtual thunk to RBX::BasePlayerGui::~BasePlayerGui()")]
 // was: __ZThn36_N3RBX13BasePlayerGuiD1Ev
 pub fn stub_5fb7ac() -> ! {
-    todo!("0x5fb7ac `non-virtual thunk to'RBX::BasePlayerGui::~BasePlayerGui()")
+    todo!("0x5fb7ac non-virtual thunk to RBX::BasePlayerGui::~BasePlayerGui()")
 }
 
 // 0x5fb7b4 — __ZN3RBX13BasePlayerGui18findModalGuiObjectEv
@@ -490,10 +490,10 @@ pub fn stub_5fb8e0() -> ! {
 // 0x5fba7c — __ZThn92_N3RBX13BasePlayerGui15scriptShouldRunEPNS_10BaseScriptE
 // type: _DWORD __fastcall(RBX::BasePlayerGui *__hidden this, RBX::BaseScript *)
 #[doc(alias = "__ZThn92_N3RBX13BasePlayerGui15scriptShouldRunEPNS_10BaseScriptE")]
-#[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::scriptShouldRun(RBX::BaseScript *)")]
+#[doc(alias = "non-virtual thunk to RBX::BasePlayerGui::scriptShouldRun(RBX::BaseScript *)")]
 // was: __ZThn92_N3RBX13BasePlayerGui15scriptShouldRunEPNS_10BaseScriptE
 pub fn stub_5fba7c() -> ! {
-    todo!("0x5fba7c `non-virtual thunk to'RBX::BasePlayerGui::scriptShouldRun(RBX::BaseScript *)")
+    todo!("0x5fba7c non-virtual thunk to RBX::BasePlayerGui::scriptShouldRun(RBX::BaseScript *)")
 }
 
 // 0x5fba88 — __ZNK3RBX13BasePlayerGui11askAddChildEPKNS_8InstanceE
@@ -532,10 +532,10 @@ pub fn stub_5fbb30() -> ! {
 
 // 0x5fbcc4 — __ZThn96_N3RBX13BasePlayerGui7processERKNS_8GuiEventE
 #[doc(alias = "__ZThn96_N3RBX13BasePlayerGui7processERKNS_8GuiEventE")]
-#[doc(alias = "non-virtual thunk toRBX::BasePlayerGui::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk to RBX::BasePlayerGui::process(RBX::GuiEvent const&)")]
 // was: __ZThn96_N3RBX13BasePlayerGui7processERKNS_8GuiEventE
 pub fn stub_5fbcc4() -> ! {
-    todo!("0x5fbcc4 `non-virtual thunk to'RBX::BasePlayerGui::process(RBX::GuiEvent const&)")
+    todo!("0x5fbcc4 non-virtual thunk to RBX::BasePlayerGui::process(RBX::GuiEvent const&)")
 }
 
 // 0x5fbcd0 — __ZN3RBX9PlayerGuiC1Ev
@@ -662,10 +662,10 @@ pub fn stub_5fc784() -> ! {
 
 // 0x5fc7a0 — __ZThn96_N3RBX17StarterGuiService7processERKNS_8GuiEventE
 #[doc(alias = "__ZThn96_N3RBX17StarterGuiService7processERKNS_8GuiEventE")]
-#[doc(alias = "non-virtual thunk toRBX::StarterGuiService::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk to RBX::StarterGuiService::process(RBX::GuiEvent const&)")]
 // was: __ZThn96_N3RBX17StarterGuiService7processERKNS_8GuiEventE
 pub fn stub_5fc7a0() -> ! {
-    todo!("0x5fc7a0 `non-virtual thunk to'RBX::StarterGuiService::process(RBX::GuiEvent const&)")
+    todo!("0x5fc7a0 non-virtual thunk to RBX::StarterGuiService::process(RBX::GuiEvent const&)")
 }
 
 // 0x5fc7bc — __ZNK3RBX14CoreGuiService13getGuiVersionEv

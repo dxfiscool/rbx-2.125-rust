@@ -63,21 +63,21 @@ pub fn stub_2868bc() -> ! {
 }
 
 // 0x2868cc — __ZThn32_N3RBX11LuaSettingsD1Ev
-// demangled: `non-virtual thunk to'RBX::LuaSettings::~LuaSettings()
+// demangled: non-virtual thunk to RBX::LuaSettings::~LuaSettings()
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::LuaSettings::~LuaSettings()")]
 #[doc(alias = "__ZThn32_N3RBX11LuaSettingsD1Ev")]
 pub fn stub_2868cc() -> ! {
-    todo!("0x2868cc non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
+    todo!("0x2868cc non-virtual thunk to RBX::LuaSettings::~LuaSettings()")
 }
 
 // 0x286910 — __ZThn32_N3RBX11LuaSettingsD0Ev
-// demangled: `non-virtual thunk to'RBX::LuaSettings::~LuaSettings()
+// demangled: non-virtual thunk to RBX::LuaSettings::~LuaSettings()
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::LuaSettings::~LuaSettings()")]
 #[doc(alias = "__ZThn32_N3RBX11LuaSettingsD0Ev")]
 pub fn stub_286910() -> ! {
-    todo!("0x286910 non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
+    todo!("0x286910 non-virtual thunk to RBX::LuaSettings::~LuaSettings()")
 }
 
 // 0x2869f0 — __ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv
@@ -88,21 +88,21 @@ pub fn stub_2869f0() -> ! {
 }
 
 // 0x286a00 — __ZThn36_N3RBX11LuaSettingsD1Ev
-// demangled: `non-virtual thunk to'RBX::LuaSettings::~LuaSettings()
+// demangled: non-virtual thunk to RBX::LuaSettings::~LuaSettings()
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::LuaSettings::~LuaSettings()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaSettingsD1Ev")]
 pub fn stub_286a00() -> ! {
-    todo!("0x286a00 non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
+    todo!("0x286a00 non-virtual thunk to RBX::LuaSettings::~LuaSettings()")
 }
 
 // 0x286a44 — __ZThn36_N3RBX11LuaSettingsD0Ev
-// demangled: `non-virtual thunk to'RBX::LuaSettings::~LuaSettings()
+// demangled: non-virtual thunk to RBX::LuaSettings::~LuaSettings()
 // type: void __fastcall(RBX::LuaSettings *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
+#[doc(alias = "non-virtual thunk to RBX::LuaSettings::~LuaSettings()")]
 #[doc(alias = "__ZThn36_N3RBX11LuaSettingsD0Ev")]
 pub fn stub_286a44() -> ! {
-    todo!("0x286a44 non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
+    todo!("0x286a44 non-virtual thunk to RBX::LuaSettings::~LuaSettings()")
 }
 
 // 0x286b24 — __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE17static_getCreatorEv
@@ -821,21 +821,21 @@ pub fn stub_28bd74() -> ! {
 }
 
 // 0x28bd78 — __ZThn32_N3RBX10BaseScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// demangled: non-virtual thunk to RBX::BaseScript::~BaseScript()
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk to RBX::BaseScript::~BaseScript()")]
 #[doc(alias = "__ZThn32_N3RBX10BaseScriptD0Ev")]
 pub fn stub_28bd78() -> ! {
-    todo!("0x28bd78 non-virtual thunk toRBX::BaseScript::~BaseScript()")
+    todo!("0x28bd78 non-virtual thunk to RBX::BaseScript::~BaseScript()")
 }
 
 // 0x28bd80 — __ZThn36_N3RBX10BaseScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// demangled: non-virtual thunk to RBX::BaseScript::~BaseScript()
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk to RBX::BaseScript::~BaseScript()")]
 #[doc(alias = "__ZThn36_N3RBX10BaseScriptD0Ev")]
 pub fn stub_28bd80() -> ! {
-    todo!("0x28bd80 non-virtual thunk toRBX::BaseScript::~BaseScript()")
+    todo!("0x28bd80 non-virtual thunk to RBX::BaseScript::~BaseScript()")
 }
 
 // 0x28bd88 — __ZN3RBX10BaseScriptD2Ev
@@ -848,21 +848,21 @@ pub fn stub_28bd88() -> ! {
 }
 
 // 0x28bf98 — __ZThn32_N3RBX10BaseScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// demangled: non-virtual thunk to RBX::BaseScript::~BaseScript()
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk to RBX::BaseScript::~BaseScript()")]
 #[doc(alias = "__ZThn32_N3RBX10BaseScriptD1Ev")]
 pub fn stub_28bf98() -> ! {
-    todo!("0x28bf98 non-virtual thunk toRBX::BaseScript::~BaseScript()")
+    todo!("0x28bf98 non-virtual thunk to RBX::BaseScript::~BaseScript()")
 }
 
 // 0x28bfa0 — __ZThn36_N3RBX10BaseScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::BaseScript::~BaseScript()
+// demangled: non-virtual thunk to RBX::BaseScript::~BaseScript()
 // type: void __fastcall(RBX::BaseScript *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::BaseScript::~BaseScript()")]
+#[doc(alias = "non-virtual thunk to RBX::BaseScript::~BaseScript()")]
 #[doc(alias = "__ZThn36_N3RBX10BaseScriptD1Ev")]
 pub fn stub_28bfa0() -> ! {
-    todo!("0x28bfa0 non-virtual thunk toRBX::BaseScript::~BaseScript()")
+    todo!("0x28bfa0 non-virtual thunk to RBX::BaseScript::~BaseScript()")
 }
 
 // 0x28bfa8 — __ZN3RBX6ScriptD0Ev
@@ -884,21 +884,21 @@ pub fn stub_28c048() -> ! {
 }
 
 // 0x28c04c — __ZThn32_N3RBX6ScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::Script::~Script()
+// demangled: non-virtual thunk to RBX::Script::~Script()
 // type: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk to RBX::Script::~Script()")]
 #[doc(alias = "__ZThn32_N3RBX6ScriptD0Ev")]
 pub fn stub_28c04c() -> ! {
-    todo!("0x28c04c non-virtual thunk toRBX::Script::~Script()")
+    todo!("0x28c04c non-virtual thunk to RBX::Script::~Script()")
 }
 
 // 0x28c054 — __ZThn36_N3RBX6ScriptD0Ev
-// demangled: `non-virtual thunk to'RBX::Script::~Script()
+// demangled: non-virtual thunk to RBX::Script::~Script()
 // type: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk to RBX::Script::~Script()")]
 #[doc(alias = "__ZThn36_N3RBX6ScriptD0Ev")]
 pub fn stub_28c054() -> ! {
-    todo!("0x28c054 non-virtual thunk toRBX::Script::~Script()")
+    todo!("0x28c054 non-virtual thunk to RBX::Script::~Script()")
 }
 
 // 0x28c05c — __ZN3RBX6ScriptD2Ev
@@ -911,21 +911,21 @@ pub fn stub_28c05c() -> ! {
 }
 
 // 0x28c1c8 — __ZThn32_N3RBX6ScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::Script::~Script()
+// demangled: non-virtual thunk to RBX::Script::~Script()
 // type: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk to RBX::Script::~Script()")]
 #[doc(alias = "__ZThn32_N3RBX6ScriptD1Ev")]
 pub fn stub_28c1c8() -> ! {
-    todo!("0x28c1c8 non-virtual thunk toRBX::Script::~Script()")
+    todo!("0x28c1c8 non-virtual thunk to RBX::Script::~Script()")
 }
 
 // 0x28c1d0 — __ZThn36_N3RBX6ScriptD1Ev
-// demangled: `non-virtual thunk to'RBX::Script::~Script()
+// demangled: non-virtual thunk to RBX::Script::~Script()
 // type: void __fastcall(RBX::Script *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::Script::~Script()")]
+#[doc(alias = "non-virtual thunk to RBX::Script::~Script()")]
 #[doc(alias = "__ZThn36_N3RBX6ScriptD1Ev")]
 pub fn stub_28c1d0() -> ! {
-    todo!("0x28c1d0 non-virtual thunk toRBX::Script::~Script()")
+    todo!("0x28c1d0 non-virtual thunk to RBX::Script::~Script()")
 }
 
 // 0x28c1d8 — __ZNK3RBX6Script15getEmbeddedCodeEv

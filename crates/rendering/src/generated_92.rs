@@ -218,7 +218,7 @@ pub fn stub_e6e540() -> ! {
 
 // 0xe6e54c — __ZThn4_N4Ogre15InstancedEntityD0Ev
 #[doc(alias = "non-virtual thunk toOgre::InstancedEntity::~InstancedEntity()")]
-// was: `non-virtual thunk to'Ogre::InstancedEntity::~InstancedEntity()
+// was: non-virtual thunk to Ogre::InstancedEntity::~InstancedEntity()
 pub fn stub_e6e54c() -> ! {
     todo!("0xe6e54c non-virtual thunk toOgre::InstancedEntity::~InstancedEntity()")
 }
@@ -232,7 +232,7 @@ pub fn stub_e6e5e0() -> ! {
 
 // 0xe6e718 — __ZThn4_N4Ogre15InstancedEntityD1Ev
 #[doc(alias = "non-virtual thunk toOgre::InstancedEntity::~InstancedEntity()")]
-// was: `non-virtual thunk to'Ogre::InstancedEntity::~InstancedEntity()
+// was: non-virtual thunk to Ogre::InstancedEntity::~InstancedEntity()
 pub fn stub_e6e718() -> ! {
     todo!("0xe6e718 non-virtual thunk toOgre::InstancedEntity::~InstancedEntity()")
 }

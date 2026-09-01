@@ -381,7 +381,7 @@ pub fn stub_d7f604() -> ! {
 
 // 0xd7f610 — __ZThn4_N4Ogre23ResourceBackgroundQueueD0Ev
 #[doc(alias = "non-virtual thunk toOgre::ResourceBackgroundQueue::~ResourceBackgroundQueue()")]
-// was: `non-virtual thunk to'Ogre::ResourceBackgroundQueue::~ResourceBackgroundQueue()
+// was: non-virtual thunk to Ogre::ResourceBackgroundQueue::~ResourceBackgroundQueue()
 pub fn stub_d7f610() -> ! {
     todo!("0xd7f610 non-virtual thunk toOgre::ResourceBackgroundQueue::~ResourceBackgroundQueue()")
 }
@@ -395,7 +395,7 @@ pub fn stub_d7f6a4() -> ! {
 
 // 0xd7f7d4 — __ZThn4_N4Ogre23ResourceBackgroundQueueD1Ev
 #[doc(alias = "non-virtual thunk toOgre::ResourceBackgroundQueue::~ResourceBackgroundQueue()")]
-// was: `non-virtual thunk to'Ogre::ResourceBackgroundQueue::~ResourceBackgroundQueue()
+// was: non-virtual thunk to Ogre::ResourceBackgroundQueue::~ResourceBackgroundQueue()
 pub fn stub_d7f7d4() -> ! {
     todo!("0xd7f7d4 non-virtual thunk toOgre::ResourceBackgroundQueue::~ResourceBackgroundQueue()")
 }
@@ -507,7 +507,7 @@ pub fn stub_d80a8c() -> ! {
 
 // 0xd80a90 — __ZThn4_N4Ogre23ResourceBackgroundQueue17canHandleResponseEPKNS_9WorkQueue8ResponseEPKS1_
 #[doc(alias = "non-virtual thunk toOgre::ResourceBackgroundQueue::canHandleResponse(Ogre::WorkQueue::Response const*,Ogre::WorkQueue const*)")]
-// was: `non-virtual thunk to'Ogre::ResourceBackgroundQueue::canHandleResponse(Ogre::WorkQueue::Response const*,Ogre::WorkQueue const*)
+// was: non-virtual thunk to Ogre::ResourceBackgroundQueue::canHandleResponse(Ogre::WorkQueue::Response const*,Ogre::WorkQueue const*)
 pub fn stub_d80a90() -> ! {
     todo!("0xd80a90 non-virtual thunk toOgre::ResourceBackgroundQueue::canHandleResponse(Ogre::WorkQueue::Response const*,Ogre::WorkQueue const*)")
 }
@@ -521,7 +521,7 @@ pub fn stub_d80a94() -> ! {
 
 // 0xd80c90 — __ZThn4_N4Ogre23ResourceBackgroundQueue14handleResponseEPKNS_9WorkQueue8ResponseEPKS1_
 #[doc(alias = "non-virtual thunk toOgre::ResourceBackgroundQueue::handleResponse(Ogre::WorkQueue::Response const*,Ogre::WorkQueue const*)")]
-// was: `non-virtual thunk to'Ogre::ResourceBackgroundQueue::handleResponse(Ogre::WorkQueue::Response const*,Ogre::WorkQueue const*)
+// was: non-virtual thunk to Ogre::ResourceBackgroundQueue::handleResponse(Ogre::WorkQueue::Response const*,Ogre::WorkQueue const*)
 pub fn stub_d80c90() -> ! {
     todo!("0xd80c90 non-virtual thunk toOgre::ResourceBackgroundQueue::handleResponse(Ogre::WorkQueue::Response const*,Ogre::WorkQueue const*)")
 }

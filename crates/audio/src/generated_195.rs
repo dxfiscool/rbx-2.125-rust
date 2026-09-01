@@ -689,14 +689,14 @@ pub fn stub_490bd4() -> ! {
 }
 
 // 0x490be4 — __ZThn32_N3RBX5DecalD1Ev
-// demangled: `non-virtual thunk to'RBX::Decal::~Decal()
+// demangled: non-virtual thunk to RBX::Decal::~Decal()
 #[doc(alias = "__ZThn32_N3RBX5DecalD1Ev")]
 pub fn stub_490be4() -> ! {
     todo!("0x490be4 __ZThn32_N3RBX5DecalD1Ev")
 }
 
 // 0x490c28 — __ZThn32_N3RBX5DecalD0Ev
-// demangled: `non-virtual thunk to'RBX::Decal::~Decal()
+// demangled: non-virtual thunk to RBX::Decal::~Decal()
 #[doc(alias = "__ZThn32_N3RBX5DecalD0Ev")]
 pub fn stub_490c28() -> ! {
     todo!("0x490c28 __ZThn32_N3RBX5DecalD0Ev")
@@ -710,14 +710,14 @@ pub fn stub_490d04() -> ! {
 }
 
 // 0x490d14 — __ZThn36_N3RBX5DecalD1Ev
-// demangled: `non-virtual thunk to'RBX::Decal::~Decal()
+// demangled: non-virtual thunk to RBX::Decal::~Decal()
 #[doc(alias = "__ZThn36_N3RBX5DecalD1Ev")]
 pub fn stub_490d14() -> ! {
     todo!("0x490d14 __ZThn36_N3RBX5DecalD1Ev")
 }
 
 // 0x490d58 — __ZThn36_N3RBX5DecalD0Ev
-// demangled: `non-virtual thunk to'RBX::Decal::~Decal()
+// demangled: non-virtual thunk to RBX::Decal::~Decal()
 #[doc(alias = "__ZThn36_N3RBX5DecalD0Ev")]
 pub fn stub_490d58() -> ! {
     todo!("0x490d58 __ZThn36_N3RBX5DecalD0Ev")
@@ -747,14 +747,14 @@ pub fn stub_490f50() -> ! {
 }
 
 // 0x490f60 — __ZThn32_N3RBX7TextureD1Ev
-// demangled: `non-virtual thunk to'RBX::Texture::~Texture()
+// demangled: non-virtual thunk to RBX::Texture::~Texture()
 #[doc(alias = "__ZThn32_N3RBX7TextureD1Ev")]
 pub fn stub_490f60() -> ! {
     todo!("0x490f60 __ZThn32_N3RBX7TextureD1Ev")
 }
 
 // 0x490fa4 — __ZThn32_N3RBX7TextureD0Ev
-// demangled: `non-virtual thunk to'RBX::Texture::~Texture()
+// demangled: non-virtual thunk to RBX::Texture::~Texture()
 #[doc(alias = "__ZThn32_N3RBX7TextureD0Ev")]
 pub fn stub_490fa4() -> ! {
     todo!("0x490fa4 __ZThn32_N3RBX7TextureD0Ev")
@@ -768,14 +768,14 @@ pub fn stub_491080() -> ! {
 }
 
 // 0x491090 — __ZThn36_N3RBX7TextureD1Ev
-// demangled: `non-virtual thunk to'RBX::Texture::~Texture()
+// demangled: non-virtual thunk to RBX::Texture::~Texture()
 #[doc(alias = "__ZThn36_N3RBX7TextureD1Ev")]
 pub fn stub_491090() -> ! {
     todo!("0x491090 __ZThn36_N3RBX7TextureD1Ev")
 }
 
 // 0x4910d4 — __ZThn36_N3RBX7TextureD0Ev
-// demangled: `non-virtual thunk to'RBX::Texture::~Texture()
+// demangled: non-virtual thunk to RBX::Texture::~Texture()
 #[doc(alias = "__ZThn36_N3RBX7TextureD0Ev")]
 pub fn stub_4910d4() -> ! {
     todo!("0x4910d4 __ZThn36_N3RBX7TextureD0Ev")

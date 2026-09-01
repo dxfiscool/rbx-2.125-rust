@@ -59,7 +59,7 @@ pub fn stub_bc5864() -> ! {
 // 0xbc5868 — __ZThn17800_N4Ogre15RbxSceneManagerD0Ev
 // type: void __fastcall(Ogre::RbxSceneManager *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
-// was: `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()
+// was: non-virtual thunk to Ogre::RbxSceneManager::~RbxSceneManager()
 pub fn stub_bc5868() -> ! {
     todo!("0xbc5868 non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")
 }
@@ -75,7 +75,7 @@ pub fn stub_bc5924() -> ! {
 // 0xbc5fbc — __ZThn17800_N4Ogre15RbxSceneManagerD1Ev
 // type: void __fastcall(Ogre::RbxSceneManager *__hidden this)
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
-// was: `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()
+// was: non-virtual thunk to Ogre::RbxSceneManager::~RbxSceneManager()
 pub fn stub_bc5fbc() -> ! {
     todo!("0xbc5fbc non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")
 }
@@ -303,7 +303,7 @@ pub fn stub_bca050() -> ! {
 
 // 0xbca17c — __ZThn17800_N4Ogre15RbxSceneManager21preRenderTargetUpdateERKNS_17RenderTargetEventE
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
-// was: `non-virtual thunk to'Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)
+// was: non-virtual thunk to Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)
 pub fn stub_bca17c() -> ! {
     todo!("0xbca17c non-virtual thunk toOgre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
 }
@@ -317,7 +317,7 @@ pub fn stub_bca188() -> ! {
 
 // 0xbca240 — __ZThn17800_N4Ogre15RbxSceneManager22postRenderTargetUpdateERKNS_17RenderTargetEventE
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
-// was: `non-virtual thunk to'Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)
+// was: non-virtual thunk to Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)
 pub fn stub_bca240() -> ! {
     todo!("0xbca240 non-virtual thunk toOgre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
 }
@@ -436,10 +436,10 @@ pub fn stub_bcaccc() -> ! {
 }
 
 // 0xbcace4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvN4Ogre15RbxSceneManagerEEENSB_5list1INSB_5valueIPSG_EEEEEELi2ES8_E4callES7_S7_
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
 pub fn stub_bcace4() -> ! {
-    todo!("0xbcace4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
+    todo!("0xbcace4 non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xbcacfc — __ZN4Ogre9SharedPtrINS_6RbxSkyEED0Ev

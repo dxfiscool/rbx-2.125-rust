@@ -672,10 +672,10 @@ pub fn stub_7bd338() -> ! {
 }
 
 // 0x7bd574 — __ZThn292_N3RBX8Humanoid32setFirstPersonRotationalVelocityERKN3G3D7Vector3Eb
-#[doc(alias = "non-virtual thunk toRBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)")]
-// was: `non-virtual thunk to'RBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)
+#[doc(alias = "non-virtual thunk to RBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)")]
+// was: non-virtual thunk to RBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)
 pub fn stub_7bd574() -> ! {
-    todo!("0x7bd574 non-virtual thunk toRBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)")
+    todo!("0x7bd574 non-virtual thunk to RBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)")
 }
 
 // 0x7bdbd0 — __ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEN3G3D7Vector3EED1Ev

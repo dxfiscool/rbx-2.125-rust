@@ -212,14 +212,14 @@ pub fn stub_d36e2c() -> ! {
 
 // 0xd36e30 — __ZThn12_NK4Ogre14OverlayElement19getSquaredViewDepthEPKNS_6CameraE
 #[doc(alias = "non-virtual thunk toOgre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const")]
-// was: `non-virtual thunk to'Ogre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const
+// was: non-virtual thunk to Ogre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const
 pub fn stub_d36e30() -> ! {
     todo!("0xd36e30 non-virtual thunk toOgre::OverlayElement::getSquaredViewDepth(Ogre::Camera const*)const")
 }
 
 // 0xd36e50 — __ZThn12_NK4Ogre14OverlayElement9getLightsEv
 #[doc(alias = "non-virtual thunk toOgre::OverlayElement::getLights(void)const")]
-// was: `non-virtual thunk to'Ogre::OverlayElement::getLights(void)const
+// was: non-virtual thunk to Ogre::OverlayElement::getLights(void)const
 pub fn stub_d36e50() -> ! {
     todo!("0xd36e50 non-virtual thunk toOgre::OverlayElement::getLights(void)const")
 }

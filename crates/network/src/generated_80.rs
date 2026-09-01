@@ -271,7 +271,7 @@ pub fn stub_6ac8b0() -> ! {
 }
 
 // 0x6ac990 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_11ObjectValueENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
-// demangled: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::ObjectValue,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
+// demangled: non-virtual thunk to RBX::Reflection::RefPropDescriptor<RBX::ObjectValue,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_11ObjectValueENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 pub fn stub_6ac990() -> ! {
@@ -559,7 +559,7 @@ pub fn stub_6ade30() -> ! {
 }
 
 // 0x6ade38 — __ZThn4_N3rbx8callableINS_7signals6signalIFviEE4slotEN5boost8functionIS3_EELi1ES3_E4callEi
-// demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::function<void ()(int)>,1,void ()(int)>::call(int)
+// demangled: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int)>::slot,boost::function<void ()(int)>,1,void ()(int)>::call(int)
 // type: int __fastcall(int)
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviEE4slotEN5boost8functionIS3_EELi1ES3_E4callEi")]
 pub fn stub_6ade38() -> ! {

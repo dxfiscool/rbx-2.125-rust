@@ -12,21 +12,21 @@ const _: () = {
 };
 
 // 0x3f1c2c — __ZThn36_N3RBX13ClickDetectorD0Ev
-// demangled: `non-virtual thunk to'RBX::ClickDetector::~ClickDetector()
+// demangled: non-virtual thunk to RBX::ClickDetector::~ClickDetector()
 // type: void __fastcall(RBX::ClickDetector *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX13ClickDetectorD0Ev")]
 #[doc(alias = "__ZThn36_N3RBX13ClickDetectorD0Ev")]
 pub fn stub_3f1c2c() -> ! {
-    todo!("0x3f1c2c non-virtual thunk toRBX::ClickDetector::~ClickDetector()")
+    todo!("0x3f1c2c non-virtual thunk to RBX::ClickDetector::~ClickDetector()")
 }
 
 // 0x3f1c34 — __ZThn92_NK3RBX13ClickDetector19shouldRender3dAdornEv
-// demangled: `non-virtual thunk to'RBX::ClickDetector::shouldRender3dAdorn(void)const
+// demangled: non-virtual thunk to RBX::ClickDetector::shouldRender3dAdorn(void)const
 // type: int __fastcall(RBX::ClickDetector *this)
 #[doc(alias = "__ZThn92_NK3RBX13ClickDetector19shouldRender3dAdornEv")]
 #[doc(alias = "__ZThn92_NK3RBX13ClickDetector19shouldRender3dAdornEv")]
 pub fn stub_3f1c34() -> ! {
-    todo!("0x3f1c34 non-virtual thunk toRBX::ClickDetector::shouldRender3dAdorn(void)const")
+    todo!("0x3f1c34 non-virtual thunk to RBX::ClickDetector::shouldRender3dAdorn(void)const")
 }
 
 // 0x3f1c38 — __ZN3RBX14FactoryProductINS_13ClickDetectorENS_8InstanceELZNS_14sClickDetectorEES2_E17static_getCreatorEv
@@ -381,21 +381,21 @@ pub fn stub_3f386c() -> ! {
 }
 
 // 0x3f3894 — __ZThn32_N3RBX17CollectionServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::CollectionService::~CollectionService()
+// demangled: non-virtual thunk to RBX::CollectionService::~CollectionService()
 // type: void __fastcall(RBX::CollectionService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX17CollectionServiceD1Ev")]
 #[doc(alias = "__ZThn32_N3RBX17CollectionServiceD1Ev")]
 pub fn stub_3f3894() -> ! {
-    todo!("0x3f3894 non-virtual thunk toRBX::CollectionService::~CollectionService()")
+    todo!("0x3f3894 non-virtual thunk to RBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f389c — __ZThn32_N3RBX17CollectionServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::CollectionService::~CollectionService()
+// demangled: non-virtual thunk to RBX::CollectionService::~CollectionService()
 // type: void __fastcall(RBX::CollectionService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX17CollectionServiceD0Ev")]
 #[doc(alias = "__ZThn32_N3RBX17CollectionServiceD0Ev")]
 pub fn stub_3f389c() -> ! {
-    todo!("0x3f389c non-virtual thunk toRBX::CollectionService::~CollectionService()")
+    todo!("0x3f389c non-virtual thunk to RBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f3940 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEE12getClassNameEv
@@ -408,21 +408,21 @@ pub fn stub_3f3940() -> ! {
 }
 
 // 0x3f3968 — __ZThn36_N3RBX17CollectionServiceD1Ev
-// demangled: `non-virtual thunk to'RBX::CollectionService::~CollectionService()
+// demangled: non-virtual thunk to RBX::CollectionService::~CollectionService()
 // type: void __fastcall(RBX::CollectionService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX17CollectionServiceD1Ev")]
 #[doc(alias = "__ZThn36_N3RBX17CollectionServiceD1Ev")]
 pub fn stub_3f3968() -> ! {
-    todo!("0x3f3968 non-virtual thunk toRBX::CollectionService::~CollectionService()")
+    todo!("0x3f3968 non-virtual thunk to RBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f3970 — __ZThn36_N3RBX17CollectionServiceD0Ev
-// demangled: `non-virtual thunk to'RBX::CollectionService::~CollectionService()
+// demangled: non-virtual thunk to RBX::CollectionService::~CollectionService()
 // type: void __fastcall(RBX::CollectionService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX17CollectionServiceD0Ev")]
 #[doc(alias = "__ZThn36_N3RBX17CollectionServiceD0Ev")]
 pub fn stub_3f3970() -> ! {
-    todo!("0x3f3970 non-virtual thunk toRBX::CollectionService::~CollectionService()")
+    todo!("0x3f3970 non-virtual thunk to RBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f3a14 — __ZN3RBX17CollectionServiceD2Ev

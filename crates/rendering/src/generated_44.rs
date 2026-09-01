@@ -22,10 +22,10 @@ pub fn stub_b6b680() -> ! {
 }
 
 // 0xb6b718 — __ZThn96_NK3RBX27FastClusterShadowRenderable16getDarkCapBoundsERKN4Ogre5LightEf
-#[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getDarkCapBounds(Ogre::Light const&,float)const")]
-// was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::getDarkCapBounds(Ogre::Light const&,float)const
+#[doc(alias = "non-virtual thunk to RBX::FastClusterShadowRenderable::getDarkCapBounds(Ogre::Light const&,float)const")]
+// was: non-virtual thunk to RBX::FastClusterShadowRenderable::getDarkCapBounds(Ogre::Light const&,float)const
 pub fn stub_b6b718() -> ! {
-    todo!("0xb6b718 non-virtual thunk toRBX::FastClusterShadowRenderable::getDarkCapBounds(Ogre::Light const&,float)const")
+    todo!("0xb6b718 non-virtual thunk to RBX::FastClusterShadowRenderable::getDarkCapBounds(Ogre::Light const&,float)const")
 }
 
 // 0xb6b7b0 — __ZN3RBX27FastClusterShadowRenderable33getShadowVolumeRenderableIteratorEN4Ogre15ShadowTechniqueEPKNS1_5LightEPNS1_28HardwareIndexBufferSharedPtrEbfm
@@ -36,10 +36,10 @@ pub fn stub_b6b7b0() -> ! {
 }
 
 // 0xb6b824 — __ZThn96_N3RBX27FastClusterShadowRenderable33getShadowVolumeRenderableIteratorEN4Ogre15ShadowTechniqueEPKNS1_5LightEPNS1_28HardwareIndexBufferSharedPtrEbfm
-#[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")]
-// was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)
+#[doc(alias = "non-virtual thunk to RBX::FastClusterShadowRenderable::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")]
+// was: non-virtual thunk to RBX::FastClusterShadowRenderable::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)
 pub fn stub_b6b824() -> ! {
-    todo!("0xb6b824 non-virtual thunk toRBX::FastClusterShadowRenderable::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")
+    todo!("0xb6b824 non-virtual thunk to RBX::FastClusterShadowRenderable::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")
 }
 
 // 0xb6b898 — __ZNK3RBX27FastClusterShadowRenderable25getPointExtrusionDistanceEPKN4Ogre5LightE
@@ -50,10 +50,10 @@ pub fn stub_b6b898() -> ! {
 }
 
 // 0xb6b89c — __ZThn96_NK3RBX27FastClusterShadowRenderable25getPointExtrusionDistanceEPKN4Ogre5LightE
-#[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getPointExtrusionDistance(Ogre::Light const*)const")]
-// was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::getPointExtrusionDistance(Ogre::Light const*)const
+#[doc(alias = "non-virtual thunk to RBX::FastClusterShadowRenderable::getPointExtrusionDistance(Ogre::Light const*)const")]
+// was: non-virtual thunk to RBX::FastClusterShadowRenderable::getPointExtrusionDistance(Ogre::Light const*)const
 pub fn stub_b6b89c() -> ! {
-    todo!("0xb6b89c non-virtual thunk toRBX::FastClusterShadowRenderable::getPointExtrusionDistance(Ogre::Light const*)const")
+    todo!("0xb6b89c non-virtual thunk to RBX::FastClusterShadowRenderable::getPointExtrusionDistance(Ogre::Light const*)const")
 }
 
 // 0xb6b8a0 — __ZN3RBX27FastClusterShadowRenderable17rebindIndexBufferERKN4Ogre28HardwareIndexBufferSharedPtrE

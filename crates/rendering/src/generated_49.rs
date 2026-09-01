@@ -241,21 +241,21 @@ pub fn stub_d8fb18() -> ! {
 
 // 0xd8fb24 — __ZThn4_N4Ogre11RibbonTrailD0Ev
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
-// was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
+// was: non-virtual thunk to Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d8fb24() -> ! {
     todo!("0xd8fb24 non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
 
 // 0xd8fbb8 — __ZThn188_N4Ogre11RibbonTrailD0Ev
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
-// was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
+// was: non-virtual thunk to Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d8fbb8() -> ! {
     todo!("0xd8fbb8 non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
 
 // 0xd8fc4c — __ZThn376_N4Ogre11RibbonTrailD0Ev
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
-// was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
+// was: non-virtual thunk to Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d8fc4c() -> ! {
     todo!("0xd8fc4c non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
@@ -269,21 +269,21 @@ pub fn stub_d8fce0() -> ! {
 
 // 0xd9003c — __ZThn4_N4Ogre11RibbonTrailD1Ev
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
-// was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
+// was: non-virtual thunk to Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d9003c() -> ! {
     todo!("0xd9003c non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
 
 // 0xd90048 — __ZThn188_N4Ogre11RibbonTrailD1Ev
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
-// was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
+// was: non-virtual thunk to Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d90048() -> ! {
     todo!("0xd90048 non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
 
 // 0xd90054 — __ZThn376_N4Ogre11RibbonTrailD1Ev
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")]
-// was: `non-virtual thunk to'Ogre::RibbonTrail::~RibbonTrail()
+// was: non-virtual thunk to Ogre::RibbonTrail::~RibbonTrail()
 pub fn stub_d90054() -> ! {
     todo!("0xd90054 non-virtual thunk toOgre::RibbonTrail::~RibbonTrail()")
 }
@@ -430,7 +430,7 @@ pub fn stub_d91f48() -> ! {
 
 // 0xd91f6c — __ZThn376_N4Ogre11RibbonTrail11nodeUpdatedEPKNS_4NodeE
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::nodeUpdated(Ogre::Node const*)")]
-// was: `non-virtual thunk to'Ogre::RibbonTrail::nodeUpdated(Ogre::Node const*)
+// was: non-virtual thunk to Ogre::RibbonTrail::nodeUpdated(Ogre::Node const*)
 pub fn stub_d91f6c() -> ! {
     todo!("0xd91f6c non-virtual thunk toOgre::RibbonTrail::nodeUpdated(Ogre::Node const*)")
 }
@@ -444,7 +444,7 @@ pub fn stub_d91fa8() -> ! {
 
 // 0xd91fb8 — __ZThn376_N4Ogre11RibbonTrail13nodeDestroyedEPKNS_4NodeE
 #[doc(alias = "non-virtual thunk toOgre::RibbonTrail::nodeDestroyed(Ogre::Node const*)")]
-// was: `non-virtual thunk to'Ogre::RibbonTrail::nodeDestroyed(Ogre::Node const*)
+// was: non-virtual thunk to Ogre::RibbonTrail::nodeDestroyed(Ogre::Node const*)
 pub fn stub_d91fb8() -> ! {
     todo!("0xd91fb8 non-virtual thunk toOgre::RibbonTrail::nodeDestroyed(Ogre::Node const*)")
 }

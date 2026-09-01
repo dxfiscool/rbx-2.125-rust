@@ -78,33 +78,33 @@ pub fn stub_c2c410() -> ! {
 
 // 0xc2c4c0 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
+#[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 pub fn stub_c2c4c0() -> ! {
-    todo!("0xc2c4c0 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
+    todo!("0xc2c4c0 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
 }
 
 // 0xc2c580 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEE7rethrowEv
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::rethrow(void)const
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::rethrow(void)const")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::rethrow(void)const
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::rethrow(void)const")]
 pub fn stub_c2c580() -> ! {
-    todo!("0xc2c580 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::rethrow(void)const")
+    todo!("0xc2c580 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::rethrow(void)const")
 }
 
 // 0xc2c590 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_17bad_function_callEEEED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")]
 pub fn stub_c2c590() -> ! {
-    todo!("0xc2c590 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
+    todo!("0xc2c590 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_function_call>>::~clone_impl()")
 }
 
 // 0xc2c670 — __ZThn8_N5boost16exception_detail19error_info_injectorINS_17bad_function_callEED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
-// was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()
-#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
+// was: non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()
+#[doc(alias = "non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")]
 pub fn stub_c2c670() -> ! {
-    todo!("0xc2c670 non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")
+    todo!("0xc2c670 non-virtual thunk to boost::exception_detail::error_info_injector<boost::bad_function_call>::~error_info_injector()")
 }
 
 // 0xc2c730 — __ZN5boost16exception_detail10clone_baseD0Ev
@@ -133,10 +133,10 @@ pub fn stub_c2c8b0() -> ! {
 }
 
 // 0xc2c9c0 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE5cloneEv
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")]
 pub fn stub_c2c9c0() -> ! {
-    todo!("0xc2c9c0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")
+    todo!("0xc2c9c0 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::clone(void)const")
 }
 
 // 0xc2c9d0 — __ZN5boost5mutexC2Ev
@@ -207,18 +207,18 @@ pub fn stub_c2d670() -> ! {
 
 // 0xc2d7f0 — __ZThn32_N3RBX9BlockMeshD1Ev
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
-// was: `non-virtual thunk to'RBX::BlockMesh::~BlockMesh()
-#[doc(alias = "non-virtual thunk toRBX::BlockMesh::~BlockMesh()")]
+// was: non-virtual thunk to RBX::BlockMesh::~BlockMesh()
+#[doc(alias = "non-virtual thunk to RBX::BlockMesh::~BlockMesh()")]
 pub fn stub_c2d7f0() -> ! {
-    todo!("0xc2d7f0 non-virtual thunk toRBX::BlockMesh::~BlockMesh()")
+    todo!("0xc2d7f0 non-virtual thunk to RBX::BlockMesh::~BlockMesh()")
 }
 
 // 0xc2d800 — __ZThn36_N3RBX9BlockMeshD1Ev
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
-// was: `non-virtual thunk to'RBX::BlockMesh::~BlockMesh()
-#[doc(alias = "non-virtual thunk toRBX::BlockMesh::~BlockMesh()")]
+// was: non-virtual thunk to RBX::BlockMesh::~BlockMesh()
+#[doc(alias = "non-virtual thunk to RBX::BlockMesh::~BlockMesh()")]
 pub fn stub_c2d800() -> ! {
-    todo!("0xc2d800 non-virtual thunk toRBX::BlockMesh::~BlockMesh()")
+    todo!("0xc2d800 non-virtual thunk to RBX::BlockMesh::~BlockMesh()")
 }
 
 // 0xc2d810 — __ZN3RBX10Reflection9DescribedINS_9BlockMeshELZNS_10sBlockMeshEENS_14FactoryProductIS2_NS_9BevelMeshELZNS_10sBlockMeshEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
@@ -300,18 +300,18 @@ pub fn stub_c30650() -> ! {
 }
 
 // 0xc307a0 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE7rethrowEv
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::rethrow(void)const
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::rethrow(void)const")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::rethrow(void)const
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::rethrow(void)const")]
 pub fn stub_c307a0() -> ! {
-    todo!("0xc307a0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::rethrow(void)const")
+    todo!("0xc307a0 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::rethrow(void)const")
 }
 
 // 0xc307b0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
-// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()
-#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
+// was: virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()
+#[doc(alias = "virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
 pub fn stub_c307b0() -> ! {
-    todo!("0xc307b0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+    todo!("0xc307b0 virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
 }
 
 // 0xc30870 — __ZN5boost16exception_detail14bad_exception_D0Ev
@@ -348,10 +348,10 @@ pub fn stub_c30a10() -> ! {
 
 // 0xc30b20 — __ZThn20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev
 // type: int __fastcall(int, int, int, int, void *, int)
-// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
-#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
+// was: non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
+#[doc(alias = "non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
 pub fn stub_c30b20() -> ! {
-    todo!("0xc30b20 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+    todo!("0xc30b20 non-virtual thunk to boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
 }
 
 // 0xc30be0 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEED1Ev
@@ -418,10 +418,10 @@ pub fn stub_c3282c() -> ! {
 
 // 0xc3283c — __ZThn392_N3RBX11LightObject21updateCoordinateFrameEb
 // type: _DWORD __fastcall(RBX::LightObject *__hidden this, bool)
-// was: `non-virtual thunk to'RBX::LightObject::updateCoordinateFrame(bool)
-#[doc(alias = "non-virtual thunk toRBX::LightObject::updateCoordinateFrame(bool)")]
+// was: non-virtual thunk to RBX::LightObject::updateCoordinateFrame(bool)
+#[doc(alias = "non-virtual thunk to RBX::LightObject::updateCoordinateFrame(bool)")]
 pub fn stub_c3283c() -> ! {
-    todo!("0xc3283c non-virtual thunk toRBX::LightObject::updateCoordinateFrame(bool)")
+    todo!("0xc3283c non-virtual thunk to RBX::LightObject::updateCoordinateFrame(bool)")
 }
 
 // 0xc32860 — __ZN3RBX11LightObject19onAncestorChangedExEv
@@ -440,10 +440,10 @@ pub fn stub_c331b4() -> ! {
 
 // 0xc331f4 — __ZThn392_N3RBX11LightObject6unbindEv
 // type: _DWORD __fastcall(RBX::LightObject *__hidden this)
-// was: `non-virtual thunk to'RBX::LightObject::unbind(void)
-#[doc(alias = "non-virtual thunk toRBX::LightObject::unbind(void)")]
+// was: non-virtual thunk to RBX::LightObject::unbind(void)
+#[doc(alias = "non-virtual thunk to RBX::LightObject::unbind(void)")]
 pub fn stub_c331f4() -> ! {
-    todo!("0xc331f4 non-virtual thunk toRBX::LightObject::unbind(void)")
+    todo!("0xc331f4 non-virtual thunk to RBX::LightObject::unbind(void)")
 }
 
 // 0xc3322c — __ZN3RBX11LightObject16invalidateEntityEv
@@ -455,10 +455,10 @@ pub fn stub_c3322c() -> ! {
 
 // 0xc3325c — __ZThn392_N3RBX11LightObject16invalidateEntityEv
 // type: _DWORD __fastcall(RBX::LightObject *__hidden this)
-// was: `non-virtual thunk to'RBX::LightObject::invalidateEntity(void)
-#[doc(alias = "non-virtual thunk toRBX::LightObject::invalidateEntity(void)")]
+// was: non-virtual thunk to RBX::LightObject::invalidateEntity(void)
+#[doc(alias = "non-virtual thunk to RBX::LightObject::invalidateEntity(void)")]
 pub fn stub_c3325c() -> ! {
-    todo!("0xc3325c non-virtual thunk toRBX::LightObject::invalidateEntity(void)")
+    todo!("0xc3325c non-virtual thunk to RBX::LightObject::invalidateEntity(void)")
 }
 
 // 0xc33290 — __ZN3RBX11LightObject12updateEntityEb
@@ -476,10 +476,10 @@ pub fn stub_c334e4() -> ! {
 
 // 0xc33680 — __ZThn392_N3RBX11LightObject12updateEntityEb
 // type: _DWORD __fastcall(RBX::LightObject *__hidden this, bool)
-// was: `non-virtual thunk to'RBX::LightObject::updateEntity(bool)
-#[doc(alias = "non-virtual thunk toRBX::LightObject::updateEntity(bool)")]
+// was: non-virtual thunk to RBX::LightObject::updateEntity(bool)
+#[doc(alias = "non-virtual thunk to RBX::LightObject::updateEntity(bool)")]
 pub fn stub_c33680() -> ! {
-    todo!("0xc33680 non-virtual thunk toRBX::LightObject::updateEntity(bool)")
+    todo!("0xc33680 non-virtual thunk to RBX::LightObject::updateEntity(bool)")
 }
 
 // 0xc3368c — __ZN3RBX11LightObject13_updateBoundsEv
@@ -515,10 +515,10 @@ pub fn stub_c33804() -> ! {
 }
 
 // 0xc3381c — __ZThn4_N3rbx8callableINS_7signals6signalIFvbEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX11LightObjectEbEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callEb
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")]
 pub fn stub_c3381c() -> ! {
-    todo!("0xc3381c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
+    todo!("0xc3381c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(bool)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::LightObject,bool>,boost::_bi::list2<boost::_bi::value<RBX::LightObject*>,boost::arg<1>>>,1,void ()(bool)>::call(bool)")
 }
 
 // 0xc339d0 — __ZN3rbx7signals6signalIFvvEE13callable_slotIN5boost3_bi6bind_tIvNS5_4_mfi3mf0IvN3RBX11LightObjectEEENS6_5list1INS6_5valueIPSB_EEEEEEED1Ev
@@ -540,10 +540,10 @@ pub fn stub_c33b34() -> ! {
 }
 
 // 0xc33b4c — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX11LightObjectEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
-// was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)")]
+// was: non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_c33b4c() -> ! {
-    todo!("0xc33b4c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)")
+    todo!("0xc33b4c non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::LightObject>,boost::_bi::list1<boost::_bi::value<RBX::LightObject*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0xc3491c — __ZN5boost10scoped_ptrIN3RBX14LightShadowMapEED2Ev
