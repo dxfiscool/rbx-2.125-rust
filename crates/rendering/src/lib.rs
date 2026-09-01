@@ -59,5 +59,6 @@ pub mod generated_52;
 pub mod generated_53;
 pub mod generated_54;
 pub mod generated_55;
+pub mod generated_56;
 pub mod high;
 pub mod next_batch;
