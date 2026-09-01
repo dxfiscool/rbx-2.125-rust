@@ -219,3 +219,5 @@ pub mod generated_next_u;
 pub mod generated_next_v;
 pub mod generated_next_w;
 pub mod generated_next_x;
+pub mod generated_next_y;
+pub mod generated_next_z;
