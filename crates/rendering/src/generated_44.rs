@@ -330,7 +330,7 @@ pub fn stub_b8ab5c() -> ! {
 }
 
 // 0xb8caa0 — __ZNSt4pairIN4Ogre10TexturePtrEN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEED1Ev
-#[doc(alias = "std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::~pair()")]
+#[doc(alias = "std::pair<Ogre::TexturePtr,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>::~pair()")]
 // was: std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::~pair()
 pub fn stub_b8caa0() -> ! {
     todo!("0xb8caa0 std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::~pair()")
@@ -344,7 +344,7 @@ pub fn stub_b8d3ac() -> ! {
 }
 
 // 0xb8d6f4 — __ZNSt4pairIN4Ogre10TexturePtrEN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEEC2ERKS1_RKS7_
-#[doc(alias = "std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::pair(Ogre::TexturePtr const&,boost::shared_ptr<RBX::TextureCompositor::Job> const&)")]
+#[doc(alias = "std::pair<Ogre::TexturePtr,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>::pair(Ogre::TexturePtr const&,rbx_core::SharedPtr<RBX::TextureCompositor::Job> const&)")]
 // was: std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::pair(Ogre::TexturePtr const&,boost::shared_ptr<RBX::TextureCompositor::Job> const&)
 pub fn stub_b8d6f4() -> ! {
     todo!("0xb8d6f4 std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::pair(Ogre::TexturePtr const&,boost::shared_ptr<RBX::TextureCompositor::Job> const&)")

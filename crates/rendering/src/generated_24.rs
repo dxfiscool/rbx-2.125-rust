@@ -27,56 +27,56 @@ pub fn stub_60b95c() -> ! {
 }
 
 // 0x60bb4c — __ZN3RBX12RootInstance8moveSafeERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EEN3G3D7Vector3ENS_4DRAG8MoveTypeE
-#[doc(alias = "RBX::RootInstance::moveSafe(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3,RBX::DRAG::MoveType)")]
+#[doc(alias = "RBX::RootInstance::moveSafe(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> &,G3D::Vector3,RBX::DRAG::MoveType)")]
 // was: RBX::RootInstance::moveSafe(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3,RBX::DRAG::MoveType)
 pub fn stub_60bb4c() -> ! {
     todo!("0x60bb4c RBX::RootInstance::moveSafe(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3,RBX::DRAG::MoveType)")
 }
 
 // 0x60be8c — __ZN3RBX12RootInstance19movePartsToLocationERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EEN3G3D7Vector3ENS_4DRAG8JoinTypeE
-#[doc(alias = "RBX::RootInstance::movePartsToLocation(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3,RBX::DRAG::JoinType)")]
+#[doc(alias = "RBX::RootInstance::movePartsToLocation(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> &,G3D::Vector3,RBX::DRAG::JoinType)")]
 // was: RBX::RootInstance::movePartsToLocation(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3,RBX::DRAG::JoinType)
 pub fn stub_60be8c() -> ! {
     todo!("0x60be8c RBX::RootInstance::movePartsToLocation(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3,RBX::DRAG::JoinType)")
 }
 
 // 0x60c1ac — __ZN3RBX12RootInstance23moveToRemoteInsertPointERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EEN3G3D7Vector3E
-#[doc(alias = "RBX::RootInstance::moveToRemoteInsertPoint(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3)")]
+#[doc(alias = "RBX::RootInstance::moveToRemoteInsertPoint(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> &,G3D::Vector3)")]
 // was: RBX::RootInstance::moveToRemoteInsertPoint(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3)
 pub fn stub_60c1ac() -> ! {
     todo!("0x60c1ac RBX::RootInstance::moveToRemoteInsertPoint(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3)")
 }
 
 // 0x60c31c — __ZN3RBX12RootInstance20moveToIdeInsertPointERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERKN3G3D7Vector3E
-#[doc(alias = "RBX::RootInstance::moveToIdeInsertPoint(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3 const&)")]
+#[doc(alias = "RBX::RootInstance::moveToIdeInsertPoint(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> &,G3D::Vector3 const&)")]
 // was: RBX::RootInstance::moveToIdeInsertPoint(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3 const&)
 pub fn stub_60c31c() -> ! {
     todo!("0x60c31c RBX::RootInstance::moveToIdeInsertPoint(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &,G3D::Vector3 const&)")
 }
 
 // 0x60c7dc — __ZN3RBX12RootInstance25insertRemoteCharacterViewERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EERS1_INS2_8weak_ptrINS_12PartInstanceEEESaISC_EEPKN3G3D7Vector3E
-#[doc(alias = "RBX::RootInstance::insertRemoteCharacterView(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,G3D::Vector3 const*)")]
+#[doc(alias = "RBX::RootInstance::insertRemoteCharacterView(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,std::vector&<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,G3D::Vector3 const*)")]
 // was: RBX::RootInstance::insertRemoteCharacterView(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,G3D::Vector3 const*)
 pub fn stub_60c7dc() -> ! {
     todo!("0x60c7dc RBX::RootInstance::insertRemoteCharacterView(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,G3D::Vector3 const*)")
 }
 
 // 0x60ca5c — __ZN3RBX12RootInstance12insert3dViewERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EENS_10PromptModeEbPKN3G3D7Vector3E
-#[doc(alias = "RBX::RootInstance::insert3dView(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::PromptMode,bool,G3D::Vector3 const*)")]
+#[doc(alias = "RBX::RootInstance::insert3dView(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,RBX::PromptMode,bool,G3D::Vector3 const*)")]
 // was: RBX::RootInstance::insert3dView(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::PromptMode,bool,G3D::Vector3 const*)
 pub fn stub_60ca5c() -> ! {
     todo!("0x60ca5c RBX::RootInstance::insert3dView(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::PromptMode,bool,G3D::Vector3 const*)")
 }
 
 // 0x60cf60 — __ZN3RBX12RootInstance17doInsertInstancesERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EEPS4_NS_10InsertModeENS_10PromptModeEPKN3G3D7Vector3EPS7_b
-#[doc(alias = "RBX::RootInstance::doInsertInstances(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::Instance*,RBX::InsertMode,RBX::PromptMode,G3D::Vector3 const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>*,bool)")]
+#[doc(alias = "RBX::RootInstance::doInsertInstances(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,RBX::Instance*,RBX::InsertMode,RBX::PromptMode,G3D::Vector3 const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>*,bool)")]
 // was: RBX::RootInstance::doInsertInstances(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::Instance*,RBX::InsertMode,RBX::PromptMode,G3D::Vector3 const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>*,bool)
 pub fn stub_60cf60() -> ! {
     todo!("0x60cf60 RBX::RootInstance::doInsertInstances(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::Instance*,RBX::InsertMode,RBX::PromptMode,G3D::Vector3 const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>*,bool)")
 }
 
 // 0x60d564 — __ZN3RBX12RootInstance15insertInstancesERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EEPS4_NS_10InsertModeENS_10PromptModeEPKN3G3D7Vector3EPS7_
-#[doc(alias = "RBX::RootInstance::insertInstances(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::Instance*,RBX::InsertMode,RBX::PromptMode,G3D::Vector3 const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>*)")]
+#[doc(alias = "RBX::RootInstance::insertInstances(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,RBX::Instance*,RBX::InsertMode,RBX::PromptMode,G3D::Vector3 const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>*)")]
 // was: RBX::RootInstance::insertInstances(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::Instance*,RBX::InsertMode,RBX::PromptMode,G3D::Vector3 const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>*)
 pub fn stub_60d564() -> ! {
     todo!("0x60d564 RBX::RootInstance::insertInstances(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::Instance*,RBX::InsertMode,RBX::PromptMode,G3D::Vector3 const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>*)")
@@ -594,7 +594,7 @@ pub fn stub_63cc50() -> ! {
 }
 
 // 0x63e090 — __ZN3RBX14SpawnerService11SpawnPlayerEPNS_9WorkspaceEN5boost10shared_ptrINS_13ModelInstanceEEEN3G3D7Vector3Ei
-#[doc(alias = "RBX::SpawnerService::SpawnPlayer(RBX::Workspace *,boost::shared_ptr<RBX::ModelInstance>,G3D::Vector3,int)")]
+#[doc(alias = "RBX::SpawnerService::SpawnPlayer(RBX::Workspace *,rbx_core::SharedPtr<RBX::ModelInstance>,G3D::Vector3,int)")]
 // was: RBX::SpawnerService::SpawnPlayer(RBX::Workspace *,boost::shared_ptr<RBX::ModelInstance>,G3D::Vector3,int)
 pub fn stub_63e090() -> ! {
     todo!("0x63e090 RBX::SpawnerService::SpawnPlayer(RBX::Workspace *,boost::shared_ptr<RBX::ModelInstance>,G3D::Vector3,int)")

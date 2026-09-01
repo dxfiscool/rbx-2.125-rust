@@ -732,21 +732,21 @@ pub fn stub_3e3084() -> ! {
 
 // 0x3e31c8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10BodyColorsEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::BodyColors> RBX::Creatable<RBX::Instance>::create<RBX::BodyColors>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BodyColors> RBX::Creatable<RBX::Instance>::create<RBX::BodyColors>(void)")]
 pub fn stub_3e31c8() -> ! {
     todo!("0x3e31c8 boost::shared_ptr<RBX::BodyColors> RBX::Creatable<RBX::Instance>::create<RBX::BodyColors>(void)")
 }
 
 // 0x3e3278 — __ZN5boost10shared_ptrIN3RBX10BodyColorsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::BodyColors>::shared_ptr<RBX::BodyColors,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BodyColors>::shared_ptr<RBX::BodyColors,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_3e3278() -> ! {
     todo!("0x3e3278 boost::shared_ptr<RBX::BodyColors>::shared_ptr<RBX::BodyColors,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BodyColors *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x3e3340 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10BodyColorsES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BodyColors,RBX::BodyColors>(boost::shared_ptr<RBX::BodyColors> const*,RBX::BodyColors *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BodyColors,RBX::BodyColors>(rbx_core::SharedPtr<RBX::BodyColors> const*,RBX::BodyColors *)const")]
 pub fn stub_3e3340() -> ! {
     todo!("0x3e3340 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BodyColors,RBX::BodyColors>(boost::shared_ptr<RBX::BodyColors> const*,RBX::BodyColors *)const")
 }

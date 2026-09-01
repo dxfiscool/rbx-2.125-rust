@@ -348,14 +348,14 @@ pub fn stub_4f4528() -> ! {
 }
 
 
-#[doc(alias = "boost::shared_ptr<RBX::Flag>::operator=(boost::shared_ptr<RBX::Flag> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Flag>::operator=(rbx_core::SharedPtr<RBX::Flag> const&)")]
 // 0x4f4934 — __ZN5boost10shared_ptrIN3RBX4FlagEEaSERKS3_ — boost::shared_ptr<RBX::Flag>::operator=(boost::shared_ptr<RBX::Flag> const&)
 pub fn stub_4f4934() -> ! {
     todo!("0x4f4934 __ZN5boost10shared_ptrIN3RBX4FlagEEaSERKS3_")
 }
 
 
-#[doc(alias = "boost::shared_ptr<RBX::Flag> RBX::shared_from<RBX::Flag>(RBX::Flag*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Flag> RBX::shared_from<RBX::Flag>(RBX::Flag*)")]
 // 0x4f496c — __ZN3RBX11shared_fromINS_4FlagEEEN5boost10shared_ptrIT_EEPS4_ — boost::shared_ptr<RBX::Flag> RBX::shared_from<RBX::Flag>(RBX::Flag*)
 pub fn stub_4f496c() -> ! {
     todo!("0x4f496c __ZN3RBX11shared_fromINS_4FlagEEEN5boost10shared_ptrIT_EEPS4_")

@@ -40,35 +40,35 @@ pub fn stub_f63794() -> ! {
 
 // 0xf63784 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsbEE4slotEEaSERKS7_
 // type: int32_t **__fastcall(int32_t **, int32_t **)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,bool)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,bool)>::slot> const&)")]
 pub fn stub_f63784() -> ! {
     todo!("0xf63784 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot> const&)")
 }
 
 // 0xf63774 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsbEE4slotEEaSEPS6_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot>::operator=(rbx::signals::signal<void ()(std::string,bool)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,bool)>::slot>::operator=(rbx::signals::signal<void ()(std::string,bool)>::slot*)")]
 pub fn stub_f63774() -> ! {
     todo!("0xf63774 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot>::operator=(rbx::signals::signal<void ()(std::string,bool)>::slot*)")
 }
 
 // 0xf63764 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSERKSI_
 // type: int32_t **__fastcall(int32_t **, int32_t **)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")]
 pub fn stub_f63764() -> ! {
     todo!("0xf63764 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot> const&)")
 }
 
 // 0xf63754 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_EE4slotEEaSEPSH_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")]
 pub fn stub_f63754() -> ! {
     todo!("0xf63754 boost::intrusive_ptr<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot>::operator=(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot*)")
 }
 
 // 0xf63744 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS5_19ICombinedSignalDataEEE4slotEEaSEPSC_
 // type: int32_t **__fastcall(int32_t **, int32_t *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot*)")]
 pub fn stub_f63744() -> ! {
     todo!("0xf63744 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot*)")
 }
@@ -88,84 +88,84 @@ pub fn stub_f63724() -> ! {
 }
 
 // 0xf63714 — j___ZN5boost10shared_ptrIN3RBX8GuidItemINS1_8InstanceEE8RegistryEE5resetEv
-#[doc(alias = "boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GuidItem<RBX::Instance>::Registry>::reset(void)")]
 pub fn stub_f63714() -> ! {
     todo!("0xf63714 boost::shared_ptr<RBX::GuidItem<RBX::Instance>::Registry>::reset(void)")
 }
 
 // 0xf63704 — j___ZN5boost10shared_ptrIN3RBX7Network22SharedStringDictionaryEEaSERKS4_
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
-#[doc(alias = "boost::shared_ptr<RBX::Network::SharedStringDictionary>::operator=(boost::shared_ptr<RBX::Network::SharedStringDictionary> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::SharedStringDictionary>::operator=(rbx_core::SharedPtr<RBX::Network::SharedStringDictionary> const&)")]
 pub fn stub_f63704() -> ! {
     todo!("0xf63704 boost::shared_ptr<RBX::Network::SharedStringDictionary>::operator=(boost::shared_ptr<RBX::Network::SharedStringDictionary> const&)")
 }
 
 // 0xf636f4 — j___ZN5boost10shared_ptrIN3RBX7Network22SharedStringDictionaryEEC1IS3_EEPT_
 // type: int __fastcall(int, int, int, int, void *, boost::detail::shared_count *, int, int, void *, int)
-#[doc(alias = "boost::shared_ptr<RBX::Network::SharedStringDictionary>::shared_ptr<RBX::Network::SharedStringDictionary>(RBX::Network::SharedStringDictionary *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::SharedStringDictionary>::shared_ptr<RBX::Network::SharedStringDictionary>(RBX::Network::SharedStringDictionary *)")]
 pub fn stub_f636f4() -> ! {
     todo!("0xf636f4 boost::shared_ptr<RBX::Network::SharedStringDictionary>::shared_ptr<RBX::Network::SharedStringDictionary>(RBX::Network::SharedStringDictionary *)")
 }
 
 // 0xf636e4 — j___ZN5boost10shared_ptrIN3RBX7Network19InstancePacketCacheEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::InstancePacketCache>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::InstancePacketCache>::reset(void)")]
 pub fn stub_f636e4() -> ! {
     todo!("0xf636e4 boost::shared_ptr<RBX::Network::InstancePacketCache>::reset(void)")
 }
 
 // 0xf636d4 — j___ZN5boost10shared_ptrIN3RBX7Network18ClusterPacketCacheEE5resetEv
 // type: int __fastcall(_DWORD)
-#[doc(alias = "boost::shared_ptr<RBX::Network::ClusterPacketCache>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClusterPacketCache>::reset(void)")]
 pub fn stub_f636d4() -> ! {
     todo!("0xf636d4 boost::shared_ptr<RBX::Network::ClusterPacketCache>::reset(void)")
 }
 
 // 0xf636c4 — j___ZN5boost10shared_ptrIN3RBX7Network17ConcurrentRakPeerEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::ConcurrentRakPeer>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer>::reset(void)")]
 pub fn stub_f636c4() -> ! {
     todo!("0xf636c4 boost::shared_ptr<RBX::Network::ConcurrentRakPeer>::reset(void)")
 }
 
 // 0xf636b4 — j___ZN5boost10shared_ptrIN3RBX7Network13PhysicsSenderEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::PhysicsSender>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::PhysicsSender>::reset(void)")]
 pub fn stub_f636b4() -> ! {
     todo!("0xf636b4 boost::shared_ptr<RBX::Network::PhysicsSender>::reset(void)")
 }
 
 // 0xf636a4 — j___ZN5boost10shared_ptrIN3RBX7Network10Replicator9StatsItemEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::StatsItem>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::StatsItem>::reset(void)")]
 pub fn stub_f636a4() -> ! {
     todo!("0xf636a4 boost::shared_ptr<RBX::Network::Replicator::StatsItem>::reset(void)")
 }
 
 // 0xf63694 — j___ZN5boost10shared_ptrIN3RBX7Network10Replicator7PingJobEE5resetEv
 // type: int __fastcall(_DWORD)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::PingJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::PingJob>::reset(void)")]
 pub fn stub_f63694() -> ! {
     todo!("0xf63694 boost::shared_ptr<RBX::Network::Replicator::PingJob>::reset(void)")
 }
 
 // 0xf63684 — j___ZN5boost10shared_ptrIN3RBX7Network10Replicator17ProcessPacketsJobEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::ProcessPacketsJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::ProcessPacketsJob>::reset(void)")]
 pub fn stub_f63684() -> ! {
     todo!("0xf63684 boost::shared_ptr<RBX::Network::Replicator::ProcessPacketsJob>::reset(void)")
 }
 
 // 0xf63674 — j___ZN5boost10shared_ptrIN3RBX7Network10Replicator14SendClusterJobEE5resetEv
 // type: int __fastcall(_DWORD)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::SendClusterJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::SendClusterJob>::reset(void)")]
 pub fn stub_f63674() -> ! {
     todo!("0xf63674 boost::shared_ptr<RBX::Network::Replicator::SendClusterJob>::reset(void)")
 }
 
 // 0xf63664 — j___ZN5boost10shared_ptrIN3RBX7Network10Replicator11SendDataJobEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::SendDataJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::SendDataJob>::reset(void)")]
 pub fn stub_f63664() -> ! {
     todo!("0xf63664 boost::shared_ptr<RBX::Network::Replicator::SendDataJob>::reset(void)")
 }
@@ -179,14 +179,14 @@ pub fn stub_f63654() -> ! {
 
 // 0xf63644 — j___ZN3rbx8callableINS_7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS3_9BitStreamEEERKSsSE_EE4slotENS7_3_bi6bind_tIvNS7_4_mfi3mf4IvN3RBX7Network10ReplicatorES6_SC_SE_SE_EENSI_5list5INSI_5valueINS8_ISO_EEEENS7_3argILi1EEENSU_ILi2EEENSU_ILi3EEENSU_ILi4EEEEEEELi4ESF_ED2Ev
 // type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")]
 pub fn stub_f63644() -> ! {
     todo!("0xf63644 rbx::callable<rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>>,4,void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::~callable()")
 }
 
 // 0xf63634 — j___ZN3rbx8callableINS_7signals6signalIFvN3RBX8Instance18CombinedSignalTypeEPKNS4_19ICombinedSignalDataEEE4slotEN5boost3_bi6bind_tIvPFvNSC_8weak_ptrINS3_7Network10ReplicatorEEEPNSH_15ReplicationDataES5_S8_ENSD_5list4INSD_5valueISI_EENSO_ISK_EENSC_3argILi1EEENSR_ILi2EEEEEEELi2ES9_ED2Ev
 // type: int __fastcall(_DWORD)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::~callable()")]
 pub fn stub_f63634() -> ! {
     todo!("0xf63634 rbx::callable<rbx::signals::signal<void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Replicator>,RBX::Network::Replicator::ReplicationData *,RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::Network::Replicator>>,boost::_bi::value<RBX::Network::Replicator::ReplicationData *>,boost::arg<1>,boost::arg<2>>>,2,void ()(RBX::Instance::CombinedSignalType,RBX::Instance::ICombinedSignalData const*)>::~callable()")
 }
@@ -207,7 +207,7 @@ pub fn stub_f63614() -> ! {
 
 // 0xf63604 — j___ZN3rbx7signals6signalIFvSsbEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int32_t **)
-#[doc(alias = "rbx::signals::signal<void ()(std::string,bool)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(std::string,bool)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,bool)>::slot> &)")]
 pub fn stub_f63604() -> ! {
     todo!("0xf63604 rbx::signals::signal<void ()(std::string,bool)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,bool)>::slot> &)")
 }
@@ -221,14 +221,14 @@ pub fn stub_f635f4() -> ! {
 
 // 0xf635e4 — j___ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6removeEPNSF_4slotE
 // type: int __fastcall(int, char *)
-#[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
+#[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
 pub fn stub_f635e4() -> ! {
     todo!("0xf635e4 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::remove(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")
 }
 
 // 0xf635d4 — j___ZN3rbx7signals6signalIFvRKN6RakNet13SystemAddressERKN5boost10shared_ptrINS2_9BitStreamEEERKSsSD_EE6insertEPNSF_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::insert(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
+#[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::insert(rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")]
 pub fn stub_f635d4() -> ! {
     todo!("0xf635d4 rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::insert(rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::slot *)")
 }
@@ -269,14 +269,14 @@ pub fn stub_f63584() -> ! {
 
 // 0xf63574 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSIN5boost10shared_ptrINS1_8InstanceEEEEERS3_RKT_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 pub fn stub_f63574() -> ! {
     todo!("0xf63574 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> const&)")
 }
 
 // 0xf63564 — j___ZN3rbx13placement_anyIN3RBX7Region3EEaSIN5boost10shared_ptrIKSt3mapISsNS1_10Reflection7VariantESt4lessISsESaISt4pairIKSsS9_EEEEEEERS3_RKT_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")]
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")]
 pub fn stub_f63564() -> ! {
     todo!("0xf63564 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&)")
 }
@@ -290,7 +290,7 @@ pub fn stub_f63554() -> ! {
 
 // 0xf63544 — j___ZN3RBX9weak_fromINS_7Network10ReplicatorEEEN5boost8weak_ptrIT_EEPS5_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::weak_ptr<RBX::Network::Replicator> RBX::weak_from<RBX::Network::Replicator>(RBX::Network::Replicator*)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::Network::Replicator> RBX::weak_from<RBX::Network::Replicator>(RBX::Network::Replicator*)")]
 pub fn stub_f63544() -> ! {
     todo!("0xf63544 boost::weak_ptr<RBX::Network::Replicator> RBX::weak_from<RBX::Network::Replicator>(RBX::Network::Replicator*)")
 }
@@ -595,27 +595,27 @@ pub fn stub_f63294() -> ! {
 
 // 0xf63284 — j___ZN3RBX13TaskScheduler6removeEN5boost10shared_ptrINS0_3JobEEE
 // type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::TaskScheduler::remove(boost::shared_ptr<RBX::TaskScheduler::Job>)")]
+#[doc(alias = "RBX::TaskScheduler::remove(rbx_core::SharedPtr<RBX::TaskScheduler::Job>)")]
 pub fn stub_f63284() -> ! {
     todo!("0xf63284 RBX::TaskScheduler::remove(boost::shared_ptr<RBX::TaskScheduler::Job>)")
 }
 
 // 0xf63274 — j___ZN3RBX11shared_fromINS_7Network19InstancePacketCacheEEEN5boost10shared_ptrIT_EEPS5_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::shared_ptr<RBX::Network::InstancePacketCache> RBX::shared_from<RBX::Network::InstancePacketCache>(RBX::Network::InstancePacketCache*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::InstancePacketCache> RBX::shared_from<RBX::Network::InstancePacketCache>(RBX::Network::InstancePacketCache*)")]
 pub fn stub_f63274() -> ! {
     todo!("0xf63274 boost::shared_ptr<RBX::Network::InstancePacketCache> RBX::shared_from<RBX::Network::InstancePacketCache>(RBX::Network::InstancePacketCache*)")
 }
 
 // 0xf63264 — j___ZN3RBX11shared_fromINS_7Network18ClusterPacketCacheEEEN5boost10shared_ptrIT_EEPS5_
-#[doc(alias = "boost::shared_ptr<RBX::Network::ClusterPacketCache> RBX::shared_from<RBX::Network::ClusterPacketCache>(RBX::Network::ClusterPacketCache*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClusterPacketCache> RBX::shared_from<RBX::Network::ClusterPacketCache>(RBX::Network::ClusterPacketCache*)")]
 pub fn stub_f63264() -> ! {
     todo!("0xf63264 boost::shared_ptr<RBX::Network::ClusterPacketCache> RBX::shared_from<RBX::Network::ClusterPacketCache>(RBX::Network::ClusterPacketCache*)")
 }
 
 // 0xf63254 — j___ZN3RBX11shared_fromINS_7Network10ReplicatorEEEN5boost10shared_ptrIT_EEPS5_
 // type: int()
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator> RBX::shared_from<RBX::Network::Replicator>(RBX::Network::Replicator*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator> RBX::shared_from<RBX::Network::Replicator>(RBX::Network::Replicator*)")]
 pub fn stub_f63254() -> ! {
     todo!("0xf63254 boost::shared_ptr<RBX::Network::Replicator> RBX::shared_from<RBX::Network::Replicator>(RBX::Network::Replicator*)")
 }
@@ -759,7 +759,7 @@ pub fn stub_f63114() -> ! {
 
 // 0xf63104 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EEC1EMS3_FS7_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, int, int, int, __guard *, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Network::Replicator::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Instance> (RBX::Network::Replicator::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 pub fn stub_f63104() -> ! {
     todo!("0xf63104 RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::BoundFuncDesc(boost::shared_ptr<RBX::Instance> (RBX::Network::Replicator::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
@@ -779,42 +779,42 @@ pub fn stub_f630e4() -> ! {
 
 // 0xf630d4 — j___ZNK5boost4_mfi3mf1IvN3RBX7Network28InterpolatingPhysicsReceiverENS_10shared_ptrIS4_EEEclEPS4_S6_
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>::operator()(RBX::Network::InterpolatingPhysicsReceiver*,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>)const")]
+#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>::operator()(RBX::Network::InterpolatingPhysicsReceiver*,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>)const")]
 pub fn stub_f630d4() -> ! {
     todo!("0xf630d4 boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>::operator()(RBX::Network::InterpolatingPhysicsReceiver*,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>)const")
 }
 
 // 0xf630c4 — j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network28InterpolatingPhysicsReceiver3JobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::InterpolatingPhysicsReceiver::Job,RBX::Network::InterpolatingPhysicsReceiver::Job>(boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver::Job> const*,RBX::Network::InterpolatingPhysicsReceiver::Job *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::InterpolatingPhysicsReceiver::Job,RBX::Network::InterpolatingPhysicsReceiver::Job>(rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver::Job> const*,RBX::Network::InterpolatingPhysicsReceiver::Job *)const")]
 pub fn stub_f630c4() -> ! {
     todo!("0xf630c4 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::InterpolatingPhysicsReceiver::Job,RBX::Network::InterpolatingPhysicsReceiver::Job>(boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver::Job> const*,RBX::Network::InterpolatingPhysicsReceiver::Job *)const")
 }
 
 // 0xf630b4 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network28InterpolatingPhysicsReceiver6Nugget7HistoryES6_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: int __fastcall(int, int, int, int, void *, int, int, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::InterpolatingPhysicsReceiver::Nugget::History,RBX::Network::InterpolatingPhysicsReceiver::Nugget::History>(boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver::Nugget::History> *,RBX::Network::InterpolatingPhysicsReceiver::Nugget::History *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::InterpolatingPhysicsReceiver::Nugget::History,RBX::Network::InterpolatingPhysicsReceiver::Nugget::History>(rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver::Nugget::History> *,RBX::Network::InterpolatingPhysicsReceiver::Nugget::History *,boost::detail::shared_count &)")]
 pub fn stub_f630b4() -> ! {
     todo!("0xf630b4 void boost::detail::sp_pointer_construct<RBX::Network::InterpolatingPhysicsReceiver::Nugget::History,RBX::Network::InterpolatingPhysicsReceiver::Nugget::History>(boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver::Nugget::History> *,RBX::Network::InterpolatingPhysicsReceiver::Nugget::History *,boost::detail::shared_count &)")
 }
 
 // 0xf630a4 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network28InterpolatingPhysicsReceiver3JobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: int __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::InterpolatingPhysicsReceiver::Job,RBX::Network::InterpolatingPhysicsReceiver::Job>(boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver::Job> *,RBX::Network::InterpolatingPhysicsReceiver::Job *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::InterpolatingPhysicsReceiver::Job,RBX::Network::InterpolatingPhysicsReceiver::Job>(rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver::Job> *,RBX::Network::InterpolatingPhysicsReceiver::Job *,boost::detail::shared_count &)")]
 pub fn stub_f630a4() -> ! {
     todo!("0xf630a4 void boost::detail::sp_pointer_construct<RBX::Network::InterpolatingPhysicsReceiver::Job,RBX::Network::InterpolatingPhysicsReceiver::Job>(boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver::Job> *,RBX::Network::InterpolatingPhysicsReceiver::Job *,boost::detail::shared_count &)")
 }
 
 // 0xf63094 — j___ZN5boost4bindIvN3RBX7Network28InterpolatingPhysicsReceiverENS_10shared_ptrIS3_EEPS3_S5_EENS_3_bi6bind_tIT_NS_4_mfi3mf1IS9_T0_T1_EENS7_9list_av_2IT2_T3_E4typeEEEMSC_FS9_SD_ESG_SH_
 // type: int __fastcall(int, int, pthread_mutex_t *, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list_av_2<RBX::Network::InterpolatingPhysicsReceiver*,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>::type> boost::bind<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>,RBX::Network::InterpolatingPhysicsReceiver*,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>(void (RBX::Network::InterpolatingPhysicsReceiver::*)(boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>),RBX::Network::InterpolatingPhysicsReceiver*,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list_av_2<RBX::Network::InterpolatingPhysicsReceiver*,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>::type> boost::bind<void,RBX::Network::InterpolatingPhysicsReceiver,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>,RBX::Network::InterpolatingPhysicsReceiver*,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>(void (RBX::Network::InterpolatingPhysicsReceiver::*)(rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>),RBX::Network::InterpolatingPhysicsReceiver*,rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>)")]
 pub fn stub_f63094() -> ! {
     todo!("0xf63094 boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>,boost::_bi::list_av_2<RBX::Network::InterpolatingPhysicsReceiver*,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>::type> boost::bind<void,RBX::Network::InterpolatingPhysicsReceiver,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>,RBX::Network::InterpolatingPhysicsReceiver*,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>(void (RBX::Network::InterpolatingPhysicsReceiver::*)(boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>),RBX::Network::InterpolatingPhysicsReceiver*,boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>)")
 }
 
 // 0xf63084 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX7Network28InterpolatingPhysicsReceiverEEENS2_INS_10shared_ptrIS5_EEEEEC2ES7_SA_
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
-#[doc(alias = "boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver *>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>::list2(boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver *>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>)")]
+#[doc(alias = "boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>>::list2(boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver *>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InterpolatingPhysicsReceiver>>)")]
 pub fn stub_f63084() -> ! {
     todo!("0xf63084 boost::_bi::list2<boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver *>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>>::list2(boost::_bi::value<RBX::Network::InterpolatingPhysicsReceiver *>,boost::_bi::value<boost::shared_ptr<RBX::Network::InterpolatingPhysicsReceiver>>)")
 }
@@ -835,14 +835,14 @@ pub fn stub_f63064() -> ! {
 
 // 0xf63054 — j___ZN5boost11multi_index6detail13ordered_indexINS0_6memberIN3RBX7Network28InterpolatingPhysicsReceiver6NuggetEyXadL_ZNS7_10lastUpdateEEEEESt4lessIyENS1_9nth_layerILi2ES7_NS0_10indexed_byINS0_13hashed_uniqueINS0_3tagINS7_8part_tagEN4mpl_2naESH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_EENS3_IS7_NS_10shared_ptrINS4_12PartInstanceEEEXadL_ZNS7_4partEEEEESH_SH_EENS0_18ordered_non_uniqueINSE_INS7_14lastUpdate_tagESH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_EES8_SH_EESH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_EESaIS7_EEENS_3mpl6v_itemISP_NSV_7vector0ISH_EELi0EEENS1_22ordered_non_unique_tagEE8in_placeERKS7_PNS1_18ordered_index_nodeINS1_15index_node_baseIS7_ST_EEEES10_
 // type: int(void)
-#[doc(alias = "boost::multi_index::detail::ordered_index<boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,std::less<unsigned long long>,boost::multi_index::detail::nth_layer<2,RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::multi_index::indexed_by<boost::multi_index::hashed_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::part_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::shared_ptr<RBX::PartInstance>,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::part>,mpl_::na,mpl_::na>,boost::multi_index::ordered_non_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,mpl_::na>,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>,boost::mpl::v_item<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,boost::mpl::vector0<mpl_::na>,0>,boost::multi_index::detail::ordered_non_unique_tag>::in_place(RBX::Network::InterpolatingPhysicsReceiver::Nugget const&,boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::Nugget,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>> *,boost::multi_index::detail::ordered_non_unique_tag)")]
+#[doc(alias = "boost::multi_index::detail::ordered_index<boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,std::less<unsigned long long>,boost::multi_index::detail::nth_layer<2,RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::multi_index::indexed_by<boost::multi_index::hashed_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::part_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,rbx_core::SharedPtr<RBX::PartInstance>,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::part>,mpl_::na,mpl_::na>,boost::multi_index::ordered_non_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,mpl_::na>,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>,boost::mpl::v_item<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,boost::mpl::vector0<mpl_::na>,0>,boost::multi_index::detail::ordered_non_unique_tag>::in_place(RBX::Network::InterpolatingPhysicsReceiver::Nugget const&,boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::Nugget,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>> *,boost::multi_index::detail::ordered_non_unique_tag)")]
 pub fn stub_f63054() -> ! {
     todo!("0xf63054 boost::multi_index::detail::ordered_index<boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,std::less<unsigned long long>,boost::multi_index::detail::nth_layer<2,RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::multi_index::indexed_by<boost::multi_index::hashed_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::part_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::shared_ptr<RBX::PartInstance>,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::part>,mpl_::na,mpl_::na>,boost::multi_index::ordered_non_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,mpl_::na>,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>,boost::mpl::v_item<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,boost::mpl::vector0<mpl_::na>,0>,boost::multi_index::detail::ordered_non_unique_tag>::in_place(RBX::Network::InterpolatingPhysicsReceiver::Nugget const&,boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::Nugget,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>> *,boost::multi_index::detail::ordered_non_unique_tag)")
 }
 
 // 0xf63044 — j___ZN5boost11multi_index6detail13ordered_indexINS0_6memberIN3RBX7Network28InterpolatingPhysicsReceiver6NuggetEyXadL_ZNS7_10lastUpdateEEEEESt4lessIyENS1_9nth_layerILi2ES7_NS0_10indexed_byINS0_13hashed_uniqueINS0_3tagINS7_8part_tagEN4mpl_2naESH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_EENS3_IS7_NS_10shared_ptrINS4_12PartInstanceEEEXadL_ZNS7_4partEEEEESH_SH_EENS0_18ordered_non_uniqueINSE_INS7_14lastUpdate_tagESH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_EES8_SH_EESH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_SH_EESaIS7_EEENS_3mpl6v_itemISP_NSV_7vector0ISH_EELi0EEENS1_22ordered_non_unique_tagEE7modify_EPNS1_18ordered_index_nodeINS1_15index_node_baseIS7_ST_EEEE
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::multi_index::detail::ordered_index<boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,std::less<unsigned long long>,boost::multi_index::detail::nth_layer<2,RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::multi_index::indexed_by<boost::multi_index::hashed_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::part_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::shared_ptr<RBX::PartInstance>,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::part>,mpl_::na,mpl_::na>,boost::multi_index::ordered_non_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,mpl_::na>,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>,boost::mpl::v_item<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,boost::mpl::vector0<mpl_::na>,0>,boost::multi_index::detail::ordered_non_unique_tag>::modify_(boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::Nugget,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>> *)")]
+#[doc(alias = "boost::multi_index::detail::ordered_index<boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,std::less<unsigned long long>,boost::multi_index::detail::nth_layer<2,RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::multi_index::indexed_by<boost::multi_index::hashed_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::part_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,rbx_core::SharedPtr<RBX::PartInstance>,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::part>,mpl_::na,mpl_::na>,boost::multi_index::ordered_non_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,mpl_::na>,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>,boost::mpl::v_item<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,boost::mpl::vector0<mpl_::na>,0>,boost::multi_index::detail::ordered_non_unique_tag>::modify_(boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::Nugget,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>> *)")]
 pub fn stub_f63044() -> ! {
     todo!("0xf63044 boost::multi_index::detail::ordered_index<boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,std::less<unsigned long long>,boost::multi_index::detail::nth_layer<2,RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::multi_index::indexed_by<boost::multi_index::hashed_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::part_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,boost::shared_ptr<RBX::PartInstance>,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::part>,mpl_::na,mpl_::na>,boost::multi_index::ordered_non_unique<boost::multi_index::tag<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,boost::multi_index::member<RBX::Network::InterpolatingPhysicsReceiver::Nugget,unsigned long long,&RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate>,mpl_::na>,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na,mpl_::na>,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>,boost::mpl::v_item<RBX::Network::InterpolatingPhysicsReceiver::Nugget::lastUpdate_tag,boost::mpl::vector0<mpl_::na>,0>,boost::multi_index::detail::ordered_non_unique_tag>::modify_(boost::multi_index::detail::ordered_index_node<boost::multi_index::detail::index_node_base<RBX::Network::InterpolatingPhysicsReceiver::Nugget,std::allocator<RBX::Network::InterpolatingPhysicsReceiver::Nugget>>> *)")
 }

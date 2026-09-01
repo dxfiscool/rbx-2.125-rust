@@ -407,7 +407,7 @@ pub fn stub_4fd0c8() -> ! {
 }
 
 // 0x4fd44c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE
-#[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> &)")]
 pub fn stub_4fd44c() -> ! {
     todo!("0x4fd44c rbx::signals::signal<void ()(RBX::DataModel *)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> &)")
 }

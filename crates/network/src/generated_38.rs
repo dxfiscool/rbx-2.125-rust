@@ -127,7 +127,7 @@ pub fn stub_3820c4() -> ! {
 
 // 0x3821f0 — __ZN5boost10shared_ptrIN3RBX11StandardOutEED1Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::StandardOut>::~shared_ptr()")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StandardOut>::~shared_ptr()")]
 pub fn stub_3821f0() -> ! {
     todo!("0x3821f0 boost::shared_ptr<RBX::StandardOut>::~shared_ptr()")
 }
@@ -141,7 +141,7 @@ pub fn stub_382204() -> ! {
 
 // 0x382348 — __ZN3rbx7signals6signalIFvRKN3RBX18StandardOutMessageEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot> &)")]
 pub fn stub_382348() -> ! {
     todo!("0x382348 rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot> &)")
 }
@@ -155,14 +155,14 @@ pub fn stub_3824a8() -> ! {
 
 // 0x3824d0 — __ZN5boost10shared_ptrIN3RBX11StandardOutEEC2IS2_EEPT_
 // type: _DWORD *__fastcall(_DWORD *, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::StandardOut>::shared_ptr<RBX::StandardOut>(RBX::StandardOut *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StandardOut>::shared_ptr<RBX::StandardOut>(RBX::StandardOut *)")]
 pub fn stub_3824d0() -> ! {
     todo!("0x3824d0 boost::shared_ptr<RBX::StandardOut>::shared_ptr<RBX::StandardOut>(RBX::StandardOut *)")
 }
 
 // 0x3825b8 — __ZNK5boost23enable_shared_from_thisIN3RBX11StandardOutEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::StandardOut>::_internal_accept_owner<RBX::StandardOut,RBX::StandardOut>(boost::shared_ptr<RBX::StandardOut> const*,RBX::StandardOut *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::StandardOut>::_internal_accept_owner<RBX::StandardOut,RBX::StandardOut>(rbx_core::SharedPtr<RBX::StandardOut> const*,RBX::StandardOut *)const")]
 pub fn stub_3825b8() -> ! {
     todo!("0x3825b8 void boost::enable_shared_from_this<RBX::StandardOut>::_internal_accept_owner<RBX::StandardOut,RBX::StandardOut>(boost::shared_ptr<RBX::StandardOut> const*,RBX::StandardOut *)const")
 }
@@ -349,7 +349,7 @@ pub fn stub_385024() -> ! {
 
 // 0x385230 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slotEEaSEPSA_
 // type: int *__fastcall(int *, int)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Stepped const&)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Stepped const&)>::slot*)")]
 pub fn stub_385230() -> ! {
     todo!("0x385230 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Stepped const&)>::slot*)")
 }
@@ -487,7 +487,7 @@ pub fn stub_385a9c() -> ! {
 
 // 0x385e28 — __ZN3RBX14BaseThreadPool4loopEN5boost10shared_ptrINS0_8PoolDataEEENS2_INS_5mutexEEE
 // type: void __fastcall(_DWORD *, int *, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, char, int, int, int, boost::mutex *, char, int, int, int, int)
-#[doc(alias = "RBX::BaseThreadPool::loop(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>)")]
+#[doc(alias = "RBX::BaseThreadPool::loop(rbx_core::SharedPtr<RBX::BaseThreadPool::PoolData>,rbx_core::SharedPtr<RBX::mutex>)")]
 pub fn stub_385e28() -> ! {
     todo!("0x385e28 RBX::BaseThreadPool::loop(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>)")
 }
@@ -522,14 +522,14 @@ pub fn stub_38608c() -> ! {
 
 // 0x386420 — __ZN3RBXL4joinEN5boost10shared_ptrINS0_6threadEEE
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "RBX::join(boost::shared_ptr<boost::thread>)")]
+#[doc(alias = "RBX::join(rbx_core::SharedPtr<boost::thread>)")]
 pub fn stub_386420() -> ! {
     todo!("0x386420 RBX::join(boost::shared_ptr<boost::thread>)")
 }
 
 // 0x386428 — __ZN3RBXL10timed_joinEN5boost10shared_ptrINS0_6threadEEENS0_9date_time18subsecond_durationINS0_10posix_time13time_durationELx1000EEE
 // type: int __fastcall(boost::thread **, int *)
-#[doc(alias = "RBX::timed_join(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>)")]
+#[doc(alias = "RBX::timed_join(rbx_core::SharedPtr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>)")]
 pub fn stub_386428() -> ! {
     todo!("0x386428 RBX::timed_join(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>)")
 }
@@ -557,7 +557,7 @@ pub fn stub_3865f8() -> ! {
 
 // 0x386774 — __ZN3RBX10ThreadPool8scheduleEN5boost8functionIFvNS1_10shared_ptrINS_5mutexEEEEEE
 // type: void __fastcall(RBX::BaseThreadPool *)
-#[doc(alias = "RBX::ThreadPool::schedule(boost::function<void ()(boost::shared_ptr<RBX::mutex>)>)")]
+#[doc(alias = "RBX::ThreadPool::schedule(boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>)")]
 pub fn stub_386774() -> ! {
     todo!("0x386774 RBX::ThreadPool::schedule(boost::function<void ()(boost::shared_ptr<RBX::mutex>)>)")
 }
@@ -578,77 +578,77 @@ pub fn stub_386790() -> ! {
 
 // 0x3868c8 — __ZN3RBX18PriorityThreadPool8scheduleEN5boost8functionIFvNS1_10shared_ptrINS_5mutexEEEEEEf
 // type: void __fastcall(pthread_mutex_t *, int, int, int, struct _Unwind_Exception *lpuexcpt, char, int, int, int, char, int, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::PriorityThreadPool::schedule(boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,float)")]
+#[doc(alias = "RBX::PriorityThreadPool::schedule(boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,float)")]
 pub fn stub_3868c8() -> ! {
     todo!("0x3868c8 RBX::PriorityThreadPool::schedule(boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,float)")
 }
 
 // 0x3869e4 — __ZN3RBX18PriorityThreadPool22PriorityThreadPoolData11getNextTaskERN5boost8functionIFvNS2_10shared_ptrINS_5mutexEEEEEE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::PriorityThreadPool::PriorityThreadPoolData::getNextTask(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> &)")]
+#[doc(alias = "RBX::PriorityThreadPool::PriorityThreadPoolData::getNextTask(boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)> &)")]
 pub fn stub_3869e4() -> ! {
     todo!("0x3869e4 RBX::PriorityThreadPool::PriorityThreadPoolData::getNextTask(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> &)")
 }
 
 // 0x386abc — __ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EE6resizeEmS3_
 // type: int __fastcall(_DWORD *, unsigned int)
-#[doc(alias = "std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>::resize(unsigned long,boost::shared_ptr<boost::thread>)")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<boost::thread>,std::allocator<rbx_core::SharedPtr<boost::thread>>>::resize(unsigned long,rbx_core::SharedPtr<boost::thread>)")]
 pub fn stub_386abc() -> ! {
     todo!("0x386abc std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>::resize(unsigned long,boost::shared_ptr<boost::thread>)")
 }
 
 // 0x386af8 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EE6resizeEmS4_
 // type: int __fastcall(_DWORD *, unsigned int)
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::mutex>,std::allocator<boost::shared_ptr<RBX::mutex>>>::resize(unsigned long,boost::shared_ptr<RBX::mutex>)")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::mutex>,std::allocator<rbx_core::SharedPtr<RBX::mutex>>>::resize(unsigned long,rbx_core::SharedPtr<RBX::mutex>)")]
 pub fn stub_386af8() -> ! {
     todo!("0x386af8 std::vector<boost::shared_ptr<RBX::mutex>,std::allocator<boost::shared_ptr<RBX::mutex>>>::resize(unsigned long,boost::shared_ptr<RBX::mutex>)")
 }
 
 // 0x386b34 — __ZN5boost10shared_ptrIN3RBX5mutexEE5resetIS2_EEvPT_
 // type: boost::detail::sp_counted_base *__fastcall(int *)
-#[doc(alias = "void boost::shared_ptr<RBX::mutex>::reset<RBX::mutex>(RBX::mutex *)")]
+#[doc(alias = "void rbx_core::SharedPtr<RBX::mutex>::reset<RBX::mutex>(RBX::mutex *)")]
 pub fn stub_386b34() -> ! {
     todo!("0x386b34 void boost::shared_ptr<RBX::mutex>::reset<RBX::mutex>(RBX::mutex *)")
 }
 
 // 0x386b60 — __ZN5boost10shared_ptrINS_6threadEE5resetIS1_EEvPT_
 // type: boost::detail::sp_counted_base *__fastcall(int *)
-#[doc(alias = "void boost::shared_ptr<boost::thread>::reset<boost::thread>(boost::thread *)")]
+#[doc(alias = "void rbx_core::SharedPtr<boost::thread>::reset<boost::thread>(boost::thread *)")]
 pub fn stub_386b60() -> ! {
     todo!("0x386b60 void boost::shared_ptr<boost::thread>::reset<boost::thread>(boost::thread *)")
 }
 
 // 0x386b8c — __ZN5boost4bindIvNS_10shared_ptrIN3RBX14BaseThreadPool8PoolDataEEENS1_INS2_5mutexEEES5_S7_EENS_3_bi6bind_tIT_PFSA_T0_T1_ENS8_9list_av_2IT2_T3_E4typeEEESE_SG_SH_
 // type: void __fastcall(boost::detail::sp_counted_base **, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list_av_2<boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>>::type> boost::bind<void,boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>,boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>>(void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::BaseThreadPool::PoolData>,rbx_core::SharedPtr<RBX::mutex>),boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::BaseThreadPool::PoolData>,rbx_core::SharedPtr<RBX::mutex>>::type> boost::bind<void,rbx_core::SharedPtr<RBX::BaseThreadPool::PoolData>,rbx_core::SharedPtr<RBX::mutex>,rbx_core::SharedPtr<RBX::BaseThreadPool::PoolData>,rbx_core::SharedPtr<RBX::mutex>>(void (*)(rbx_core::SharedPtr<RBX::BaseThreadPool::PoolData>,rbx_core::SharedPtr<RBX::mutex>),rbx_core::SharedPtr<RBX::BaseThreadPool::PoolData>,rbx_core::SharedPtr<RBX::mutex>)")]
 pub fn stub_386b8c() -> ! {
     todo!("0x386b8c boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::_bi::list_av_2<boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>>::type> boost::bind<void,boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>,boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>>(void (*)(boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>),boost::shared_ptr<RBX::BaseThreadPool::PoolData>,boost::shared_ptr<RBX::mutex>)")
 }
 
 // 0x386d74 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrINS2_6threadEEESt6vectorIS5_SaIS5_EEEENS2_3_bi6bind_tIvPFvS5_ENSB_5list1INS2_3argILi1EEEEEEEET0_T_SL_SK_
 // type: unsigned __int64 __fastcall(int, int, int, unsigned int, unsigned int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<boost::thread>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<boost::thread> *,std::vector<rbx_core::SharedPtr<boost::thread>,std::allocator<rbx_core::SharedPtr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<boost::thread>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<boost::thread> *,std::vector<rbx_core::SharedPtr<boost::thread>,std::allocator<rbx_core::SharedPtr<boost::thread>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<boost::thread> *,std::vector<rbx_core::SharedPtr<boost::thread>,std::allocator<rbx_core::SharedPtr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<boost::thread>),boost::_bi::list1<boost::arg<1>>>)")]
 pub fn stub_386d74() -> ! {
     todo!("0x386d74 boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::arg<1>>>)")
 }
 
 // 0x386db4 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrINS2_6threadEEESt6vectorIS5_SaIS5_EEEENS2_3_bi6bind_tIvPFvS5_NS2_9date_time18subsecond_durationINS2_10posix_time13time_durationELx1000EEEENSB_5list2INS2_3argILi1EEENSB_5valueISH_EEEEEEET0_T_SS_SR_
 // type: int __fastcall(int *, int, int, int *)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<boost::thread> *,std::vector<rbx_core::SharedPtr<boost::thread>,std::allocator<rbx_core::SharedPtr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<boost::thread> *,std::vector<rbx_core::SharedPtr<boost::thread>,std::allocator<rbx_core::SharedPtr<boost::thread>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<boost::thread> *,std::vector<rbx_core::SharedPtr<boost::thread>,std::allocator<rbx_core::SharedPtr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>>)")]
 pub fn stub_386db4() -> ! {
     todo!("0x386db4 boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<boost::thread> *,std::vector<boost::shared_ptr<boost::thread>,std::allocator<boost::shared_ptr<boost::thread>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>>)")
 }
 
 // 0x386df0 — __ZNK5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEEclES4_
 // type: void __fastcall(_DWORD *, const shared_count *)
-#[doc(alias = "boost::function1<void,boost::shared_ptr<RBX::mutex>>::operator()(boost::shared_ptr<RBX::mutex>)const")]
+#[doc(alias = "boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::operator()(rbx_core::SharedPtr<RBX::mutex>)const")]
 pub fn stub_386df0() -> ! {
     todo!("0x386df0 boost::function1<void,boost::shared_ptr<RBX::mutex>>::operator()(boost::shared_ptr<RBX::mutex>)const")
 }
 
 // 0x386f00 — __ZN3rbx10safe_queueIN5boost8functionIFvNS1_10shared_ptrIN3RBX5mutexEEEEEEE4pushERKS8_
 // type: void __fastcall(int, int)
-#[doc(alias = "rbx::safe_queue<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>::push(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")]
+#[doc(alias = "rbx::safe_queue<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>::push(boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)> const&)")]
 pub fn stub_386f00() -> ! {
     todo!("0x386f00 rbx::safe_queue<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>::push(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")
 }
@@ -669,7 +669,7 @@ pub fn stub_3870ec() -> ! {
 
 // 0x387290 — __ZN5boost8functionIFvNS_10shared_ptrIN3RBX5mutexEEEEEaSERKS6_
 // type: int __fastcall(int)
-#[doc(alias = "boost::function<void ()(boost::shared_ptr<RBX::mutex>)>::operator=(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")]
+#[doc(alias = "boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>::operator=(boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)> const&)")]
 pub fn stub_387290() -> ! {
     todo!("0x387290 boost::function<void ()(boost::shared_ptr<RBX::mutex>)>::operator=(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")
 }
@@ -718,14 +718,14 @@ pub fn stub_3875f4() -> ! {
 
 // 0x387694 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE4swapERS5_
 // type: void __fastcall(int, int, int, int)
-#[doc(alias = "boost::function1<void,boost::shared_ptr<RBX::mutex>>::swap(boost::function1<void,boost::shared_ptr<RBX::mutex>>&)")]
+#[doc(alias = "boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::swap(boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>&)")]
 pub fn stub_387694() -> ! {
     todo!("0x387694 boost::function1<void,boost::shared_ptr<RBX::mutex>>::swap(boost::function1<void,boost::shared_ptr<RBX::mutex>>&)")
 }
 
 // 0x387770 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX5mutexEEEE11move_assignERS5_
 // type: void __fastcall(int, int *, int, int, void *, int)
-#[doc(alias = "boost::function1<void,boost::shared_ptr<RBX::mutex>>::move_assign(boost::function1<void,boost::shared_ptr<RBX::mutex>>&)")]
+#[doc(alias = "boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>::move_assign(boost::function1<void,rbx_core::SharedPtr<RBX::mutex>>&)")]
 pub fn stub_387770() -> ! {
     todo!("0x387770 boost::function1<void,boost::shared_ptr<RBX::mutex>>::move_assign(boost::function1<void,boost::shared_ptr<RBX::mutex>>&)")
 }
@@ -774,49 +774,49 @@ pub fn stub_387e88() -> ! {
 
 // 0x387ee8 — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE9push_backERKS7_
 // type: int __fastcall(int)
-#[doc(alias = "std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::push_back(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")]
+#[doc(alias = "std::deque<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::push_back(boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)> const&)")]
 pub fn stub_387ee8() -> ! {
     todo!("0x387ee8 std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::push_back(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")
 }
 
 // 0x387f18 — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE16_M_push_back_auxERKS7_
 // type: void __fastcall(_DWORD *, int, int, int, int, int, int, int, void *, int)
-#[doc(alias = "std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_push_back_aux(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")]
+#[doc(alias = "std::deque<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::_M_push_back_aux(boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)> const&)")]
 pub fn stub_387f18() -> ! {
     todo!("0x387f18 std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_push_back_aux(boost::function<void ()(boost::shared_ptr<RBX::mutex>)> const&)")
 }
 
 // 0x388050 — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE22_M_reserve_map_at_backEm
 // type: _DWORD *__fastcall(_DWORD *result, int)
-#[doc(alias = "std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_reserve_map_at_back(unsigned long)")]
+#[doc(alias = "std::deque<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::_M_reserve_map_at_back(unsigned long)")]
 pub fn stub_388050() -> ! {
     todo!("0x388050 std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_reserve_map_at_back(unsigned long)")
 }
 
 // 0x38806c — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE17_M_reallocate_mapEmb
 // type: int __fastcall(int, unsigned int, int)
-#[doc(alias = "std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_reallocate_map(unsigned long,bool)")]
+#[doc(alias = "std::deque<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::_M_reallocate_map(unsigned long,bool)")]
 pub fn stub_38806c() -> ! {
     todo!("0x38806c std::deque<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_reallocate_map(unsigned long,bool)")
 }
 
 // 0x388144 — __ZNSt11_Deque_baseIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE15_M_allocate_mapEm
 // type: int __fastcall(int, unsigned int)
-#[doc(alias = "std::_Deque_base<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_allocate_map(unsigned long)")]
+#[doc(alias = "std::_Deque_base<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>,std::allocator<boost::function<void ()(rbx_core::SharedPtr<RBX::mutex>)>>>::_M_allocate_map(unsigned long)")]
 pub fn stub_388144() -> ! {
     todo!("0x388144 std::_Deque_base<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>,std::allocator<boost::function<void ()(boost::shared_ptr<RBX::mutex>)>>>::_M_allocate_map(unsigned long)")
 }
 
 // 0x38815c — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueINS_9date_time18subsecond_durationINS_10posix_time13time_durationELx1000EEEEEEclIPFvNS_10shared_ptrINS_6threadEEES9_ENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(__int64 *, void (__fastcall **)(sp_counted_base **, __int64 *), const shared_count **, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>::operator()<void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list1<boost::shared_ptr<boost::thread>&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>) &,boost::_bi::list1<boost::shared_ptr<boost::thread>&> &,int)")]
+#[doc(alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>::operator()<void (*)(rbx_core::SharedPtr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list1<rbx_core::SharedPtr<boost::thread>&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>) &,boost::_bi::list1<rbx_core::SharedPtr<boost::thread>&> &,int)")]
 pub fn stub_38815c() -> ! {
     todo!("0x38815c void boost::_bi::list2<boost::arg<1>,boost::_bi::value<boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>>>::operator()<void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>),boost::_bi::list1<boost::shared_ptr<boost::thread>&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<boost::thread>,boost::date_time::subsecond_duration<boost::posix_time::time_duration,1000ll>) &,boost::_bi::list1<boost::shared_ptr<boost::thread>&> &,int)")
 }
 
 // 0x388238 — __ZN5boost3_bi5list1INS_3argILi1EEEEclIPFvNS_10shared_ptrINS_6threadEEEENS1_IRS8_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int, void (__fastcall **)(sp_counted_base **), const shared_count **)
-#[doc(alias = "void boost::_bi::list1<boost::arg<1>>::operator()<void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::shared_ptr<boost::thread>&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<boost::thread>) &,boost::_bi::list1<boost::shared_ptr<boost::thread>&> &,int)")]
+#[doc(alias = "void boost::_bi::list1<boost::arg<1>>::operator()<void (*)(rbx_core::SharedPtr<boost::thread>),boost::_bi::list1<rbx_core::SharedPtr<boost::thread>&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<boost::thread>) &,boost::_bi::list1<rbx_core::SharedPtr<boost::thread>&> &,int)")]
 pub fn stub_388238() -> ! {
     todo!("0x388238 void boost::_bi::list1<boost::arg<1>>::operator()<void (*)(boost::shared_ptr<boost::thread>),boost::_bi::list1<boost::shared_ptr<boost::thread>&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<boost::thread>) &,boost::_bi::list1<boost::shared_ptr<boost::thread>&> &,int)")
 }
@@ -837,7 +837,7 @@ pub fn stub_38845c() -> ! {
 
 // 0x38850c — __ZN5boost10shared_ptrINS_6threadEEC2IS1_EEPT_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<boost::thread>::shared_ptr<boost::thread>(boost::thread *)")]
+#[doc(alias = "rbx_core::SharedPtr<boost::thread>::shared_ptr<boost::thread>(boost::thread *)")]
 pub fn stub_38850c() -> ! {
     todo!("0x38850c boost::shared_ptr<boost::thread>::shared_ptr<boost::thread>(boost::thread *)")
 }

@@ -184,56 +184,56 @@ pub fn stub_beaf88() -> ! {
 }
 
 // 0xbef510 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEERKSsS4_SsEENS_3_bi6bind_tIT_PFS9_T0_T1_ENS7_9list_av_2IT2_T3_E4typeEEESD_SF_SG_
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list_av_2<boost::weak_ptr<RBX::DataModel>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,std::string const&,boost::weak_ptr<RBX::DataModel>,std::string>(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::weak_ptr<RBX::DataModel>,std::string)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list_av_2<rbx_core::WeakPtr<RBX::DataModel>,std::string>::type> boost::bind<void,rbx_core::WeakPtr<RBX::DataModel>,std::string const&,rbx_core::WeakPtr<RBX::DataModel>,std::string>(void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),rbx_core::WeakPtr<RBX::DataModel>,std::string)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list_av_2<boost::weak_ptr<RBX::DataModel>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,std::string const&,boost::weak_ptr<RBX::DataModel>,std::string>(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::weak_ptr<RBX::DataModel>,std::string)
 pub fn stub_bef510() -> ! {
     todo!("0xbef510 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list_av_2<boost::weak_ptr<RBX::DataModel>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,std::string const&,boost::weak_ptr<RBX::DataModel>,std::string>(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::weak_ptr<RBX::DataModel>,std::string)")
 }
 
 // 0xbef9fc — __ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EERKSsENS6_5list2INS6_5valueIS9_EENSF_ISsEEEEEEEEvT_
-#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")]
+#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")]
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>)
 pub fn stub_bef9fc() -> ! {
     todo!("0xbef9fc void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")
 }
 
 // 0xbf026c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS3_5list2INS3_5valueIS8_EENSE_ISsEEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 pub fn stub_bf026c() -> ! {
     todo!("0xbf026c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
 }
 
 // 0xbf0288 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS3_5list2INS3_5valueIS8_EENSE_ISsEEEEEEvPS7_E6invokeERNS1_15function_bufferESJ_
-#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
 // was: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)
 pub fn stub_bf0288() -> ! {
     todo!("0xbf0288 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
 }
 
 // 0xbf02a4 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_ISsEEEclIPFvS6_RKSsENS0_5list1IRPS5_EEEEvNS0_4typeIvEERT_RT0_i
-#[doc(alias = "void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
 // was: void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&) &,boost::_bi::list1<RBX::DataModel*&> &,int)
 pub fn stub_bf02a4() -> ! {
     todo!("0xbf02a4 void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&) &,boost::_bi::list1<RBX::DataModel*&> &,int)")
 }
 
 // 0xbf0460 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS3_5list2INS3_5valueIS8_EENSE_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 pub fn stub_bf0460() -> ! {
     todo!("0xbf0460 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
 }
 
 // 0xbf0728 — __ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_ISsEEEC2ES7_S8_
-#[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>)")]
+#[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>)")]
 // was: boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>)
 pub fn stub_bf0728() -> ! {
     todo!("0xbf0728 boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>)")
 }
 
 // 0xbf0980 — __ZN5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS0_5list2INS0_5valueIS5_EENSB_ISsEEEEEC2ES9_RKSE_
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>::bind_t(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>> const&)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>::bind_t(void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>> const&)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>::bind_t(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>> const&)
 pub fn stub_bf0980() -> ! {
     todo!("0xbf0980 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>::bind_t(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>> const&)")
@@ -667,7 +667,7 @@ pub fn stub_f27214() -> ! {
 }
 
 // 0xf27234 — j___ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
-#[doc(alias = "boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")]
 // was: boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)
 pub fn stub_f27234() -> ! {
     todo!("0xf27234 boost::weak_ptr<RBX::DataModel>::weak_ptr<RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const&,boost::detail::sp_enable_if_convertible<RBX::DataModel,RBX::DataModel>::type)")

@@ -208,21 +208,21 @@ pub fn stub_0x6f3654() -> ! {
 }
 
 // 0x6f36fc — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrINS0_13DescribedBaseEEEEERKS1_v
-#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<RBX::Reflection::DescribedBase>>(void)")]
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>(void)")]
 #[doc(alias = "__ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrINS0_13DescribedBaseEEEEERKS1_v")]
 pub fn stub_0x6f36fc() -> ! {
     todo!("0x6f36fc RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<RBX::Reflection::DescribedBase>>(void)")
 }
 
 // 0x6f37e0 — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrINS_8InstanceEEEEERKS1_v
-#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<RBX::Instance>>(void)")]
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<rbx_core::SharedPtr<RBX::Instance>>(void)")]
 #[doc(alias = "__ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrINS_8InstanceEEEEERKS1_v")]
 pub fn stub_0x6f37e0() -> ! {
     todo!("0x6f37e0 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<RBX::Instance>>(void)")
 }
 
 // 0x6f38c8 — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEEERKS1_v
-#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>(void)")]
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>(void)")]
 #[doc(alias = "__ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEEERKS1_v")]
 pub fn stub_0x6f38c8() -> ! {
     todo!("0x6f38c8 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>(void)")
@@ -369,7 +369,7 @@ pub fn stub_0x6f4758() -> ! {
 }
 
 // 0x6f4840 — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKNS0_5TupleEEEEERKS1_v
-#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<RBX::Reflection::Tuple const>>(void)")]
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>(void)")]
 #[doc(alias = "__ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKNS0_5TupleEEEEERKS1_v")]
 pub fn stub_0x6f4840() -> ! {
     todo!("0x6f4840 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<RBX::Reflection::Tuple const>>(void)")
@@ -383,28 +383,28 @@ pub fn stub_0x6f4928() -> ! {
 }
 
 // 0x6f55f0 — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrINS_8InstanceEEEEERT_v
-#[doc(alias = "boost::shared_ptr<RBX::Instance> & RBX::Reflection::Variant::convert<boost::shared_ptr<RBX::Instance>>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance> & RBX::Reflection::Variant::convert<rbx_core::SharedPtr<RBX::Instance>>(void)")]
 #[doc(alias = "__ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrINS_8InstanceEEEEERT_v")]
 pub fn stub_0x6f55f0() -> ! {
     todo!("0x6f55f0 boost::shared_ptr<RBX::Instance> & RBX::Reflection::Variant::convert<boost::shared_ptr<RBX::Instance>>(void)")
 }
 
 // 0x6f592c — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEEERT_v
-#[doc(alias = "boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> & RBX::Reflection::Variant::convert<rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>(void)")]
 #[doc(alias = "__ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEEERT_v")]
 pub fn stub_0x6f592c() -> ! {
     todo!("0x6f592c boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>(void)")
 }
 
 // 0x6f5be4 — __ZL12CastInstanceN3RBX10Reflection7VariantEN5boost10shared_ptrISt6vectorINS3_INS_8InstanceEEESaIS6_EEEE
-#[doc(alias = "CastInstance(RBX::Reflection::Variant,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>)")]
+#[doc(alias = "CastInstance(RBX::Reflection::Variant,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>)")]
 #[doc(alias = "__ZL12CastInstanceN3RBX10Reflection7VariantEN5boost10shared_ptrISt6vectorINS3_INS_8InstanceEEESaIS6_EEEE")]
 pub fn stub_0x6f5be4() -> ! {
     todo!("0x6f5be4 CastInstance(RBX::Reflection::Variant,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>)")
 }
 
 // 0x6f5bfc — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrINS0_13DescribedBaseEEEEERT_v
-#[doc(alias = "boost::shared_ptr<RBX::Reflection::DescribedBase> & RBX::Reflection::Variant::convert<boost::shared_ptr<RBX::Reflection::DescribedBase>>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::DescribedBase> & RBX::Reflection::Variant::convert<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>(void)")]
 #[doc(alias = "__ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrINS0_13DescribedBaseEEEEERT_v")]
 pub fn stub_0x6f5bfc() -> ! {
     todo!("0x6f5bfc boost::shared_ptr<RBX::Reflection::DescribedBase> & RBX::Reflection::Variant::convert<boost::shared_ptr<RBX::Reflection::DescribedBase>>(void)")

@@ -371,7 +371,7 @@ pub fn stub_0x279fe4() -> ! {
 // 0x27a4f8 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE13registerClassEP9lua_StatePFiS8_ESA_
 // type: int __fastcall(int, int, int)
 // was: int __fastcall(int, int, int)
-#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
 pub fn stub_0x27a4f8() -> ! {
     todo!("0x27a4f8 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE13registerClassEP9lua_StatePFiS8_ESA_")
 }
@@ -379,7 +379,7 @@ pub fn stub_0x27a4f8() -> ! {
 // 0x27a5e0 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE5on_gcEP9lua_State
 // type: int __fastcall(int)
 // was: int __fastcall(int)
-#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_gc(lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_gc(lua_State *)")]
 pub fn stub_0x27a5e0() -> ! {
     todo!("0x27a5e0 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE5on_gcEP9lua_State")
 }
@@ -387,7 +387,7 @@ pub fn stub_0x27a5e0() -> ! {
 // 0x27a608 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringEP9lua_State
 // type: int __fastcall(int)
 // was: int __fastcall(int)
-#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_tostring(lua_State *)")]
 pub fn stub_0x27a608() -> ! {
     todo!("0x27a608 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringEP9lua_State")
 }
@@ -623,7 +623,7 @@ pub fn stub_0x27c254() -> ! {
 // 0x27c258 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexERKS5_PKcP9lua_State
 // type: int __fastcall(int, int, int)
 // was: int __fastcall(int, int, int)
-#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_index(boost::shared_ptr<RBX::Instance> const&,char const*,lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_index(rbx_core::SharedPtr<RBX::Instance> const&,char const*,lua_State *)")]
 pub fn stub_0x27c258() -> ! {
     todo!("0x27c258 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexERKS5_PKcP9lua_State")
 }
@@ -631,7 +631,7 @@ pub fn stub_0x27c258() -> ! {
 // 0x27dbc8 — __ZL22PropertyNameCorrectionRKN5boost10shared_ptrIN3RBX8InstanceEEEPKcP9lua_State
 // type: const char *__fastcall(int, const char *, int)
 // was: const char *__fastcall(int, const char *, int)
-#[doc(alias = "PropertyNameCorrection(boost::shared_ptr<RBX::Instance> const&,char const*,lua_State *)")]
+#[doc(alias = "PropertyNameCorrection(rbx_core::SharedPtr<RBX::Instance> const&,char const*,lua_State *)")]
 pub fn stub_0x27dbc8() -> ! {
     todo!("0x27dbc8 __ZL22PropertyNameCorrectionRKN5boost10shared_ptrIN3RBX8InstanceEEEPKcP9lua_State")
 }
@@ -655,7 +655,7 @@ pub fn stub_0x27e110() -> ! {
 // 0x27ef18 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_newindexERS5_PKcP9lua_State
 // type: void __fastcall(RBX::Security::Context *, const char *, int)
 // was: void __fastcall(RBX::Security::Context *, const char *, int)
-#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_newindex(boost::shared_ptr<RBX::Instance>&,char const*,lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_newindex(rbx_core::SharedPtr<RBX::Instance>&,char const*,lua_State *)")]
 pub fn stub_0x27ef18() -> ! {
     todo!("0x27ef18 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_newindexERS5_PKcP9lua_State")
 }
@@ -663,7 +663,7 @@ pub fn stub_0x27ef18() -> ! {
 // 0x280b90 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringERKS5_P9lua_State
 // type: int __fastcall(RBX::Instance **, int)
 // was: int __fastcall(RBX::Instance **, int)
-#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(boost::shared_ptr<RBX::Instance> const&,lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_tostring(rbx_core::SharedPtr<RBX::Instance> const&,lua_State *)")]
 pub fn stub_0x280b90() -> ! {
     todo!("0x280b90 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringERKS5_P9lua_State")
 }
@@ -679,7 +679,7 @@ pub fn stub_0x280bac() -> ! {
 // 0x280c4c — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrIS2_EEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 // was: int __fastcall(int, int, int)
-#[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)")]
+#[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<rbx_core::SharedPtr<RBX::Instance>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Instance> &)")]
 pub fn stub_0x280c4c() -> ! {
     todo!("0x280c4c __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrIS2_EEEEbP9lua_StatejRT_")
 }
@@ -695,7 +695,7 @@ pub fn stub_0x280d34() -> ! {
 // 0x281494 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueIS5_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
 // was: int __fastcall(int, int, int)
-#[doc(alias = "bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)")]
+#[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<rbx_core::SharedPtr<RBX::Instance>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Instance> &)")]
 pub fn stub_0x281494() -> ! {
     todo!("0x281494 __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueIS5_EEbP9lua_StatejRT_")
 }

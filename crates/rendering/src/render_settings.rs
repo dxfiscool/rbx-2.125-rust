@@ -1252,14 +1252,14 @@ pub fn stub_ee84() -> ! {
 }
 
 // 0xef04 — __ZN3RBX9CreatableINS_8InstanceEE6createI19CRenderSettingsItemEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")]
 // was: boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)
 pub fn stub_ef04() -> ! {
     todo!("0xef04 boost::shared_ptr<CRenderSettingsItem> RBX::Creatable<RBX::Instance>::create<CRenderSettingsItem>(void)")
 }
 
 // 0xefb4 — __ZN5boost10shared_ptrI19CRenderSettingsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn stub_efb4() -> ! {
     todo!("0xefb4 boost::shared_ptr<CRenderSettingsItem>::shared_ptr<CRenderSettingsItem,RBX::Creatable<RBX::Instance>::Deleter>(CRenderSettingsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -3544,7 +3544,7 @@ pub fn stub_3a408() -> ! {
 }
 
 // 0x3e0b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI19CRenderSettingsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(rbx_core::SharedPtr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")]
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const
 pub fn stub_3e0b0() -> ! {
     todo!("0x3e0b0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")
@@ -3559,7 +3559,7 @@ pub fn stub_3e190() -> ! {
 
 
 // 0x93d760 — __ZN3RBX12SceneUpdaterC2EN5boost10shared_ptrINS_9DataModelEEEPNS_15CRenderSettingsEPKNS_10RenderCapsEPNS_11RenderStatsE
-#[doc(alias = "RBX::SceneUpdater::SceneUpdater(boost::shared_ptr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)")]
+#[doc(alias = "RBX::SceneUpdater::SceneUpdater(rbx_core::SharedPtr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)")]
 // was: RBX::SceneUpdater::SceneUpdater(boost::shared_ptr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)
 pub fn stub_93d760() -> ! {
     todo!("0x93d760 RBX::SceneUpdater::SceneUpdater(boost::shared_ptr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)")

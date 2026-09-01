@@ -254,7 +254,7 @@ pub fn stub_4e5a70() -> ! {
 }
 
 // 0x4f80a0 — __ZN3RBX16renderForceFieldEN5boost10shared_ptrINS_8InstanceEEEPNS_5AdornEii
-#[doc(alias = "RBX::renderForceField(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,int,int)")]
+#[doc(alias = "RBX::renderForceField(rbx_core::SharedPtr<RBX::Instance>,RBX::Adorn *,int,int)")]
 // was: RBX::renderForceField(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,int,int)
 pub fn stub_4f80a0() -> ! {
     todo!("0x4f80a0 RBX::renderForceField(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,int,int)")
@@ -310,7 +310,7 @@ pub fn stub_51da14() -> ! {
 }
 
 // 0x5213fc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10ChatButtonEPNS_5AdornEPKciEEN5boost10shared_ptrIT_EET0_T1_T2_
-#[doc(alias = "boost::shared_ptr<RBX::ChatButton> RBX::Creatable<RBX::Instance>::create<RBX::ChatButton,RBX::Adorn *,char const*,int>(RBX::Adorn *,char const*,int)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ChatButton> RBX::Creatable<RBX::Instance>::create<RBX::ChatButton,RBX::Adorn *,char const*,int>(RBX::Adorn *,char const*,int)")]
 // was: boost::shared_ptr<RBX::ChatButton> RBX::Creatable<RBX::Instance>::create<RBX::ChatButton,RBX::Adorn *,char const*,int>(RBX::Adorn *,char const*,int)
 pub fn stub_5213fc() -> ! {
     todo!("0x5213fc boost::shared_ptr<RBX::ChatButton> RBX::Creatable<RBX::Instance>::create<RBX::ChatButton,RBX::Adorn *,char const*,int>(RBX::Adorn *,char const*,int)")

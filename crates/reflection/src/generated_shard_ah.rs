@@ -149,7 +149,7 @@ pub fn stub_871314() -> ! {
 }
 
 // 0x871338 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN5boost10shared_ptrIKNS0_5TupleEEEiiiELi3EED1Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(int,int,int),3>::~BoundFuncDesc()")]
 pub fn stub_871338() -> ! {
     todo!("0x871338 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::~BoundFuncDesc()")
 }
@@ -281,7 +281,7 @@ pub fn stub_873d40() -> ! {
 }
 
 // 0x873d7c — __ZN3RBX10Reflection9ArgHelper6getArgIN3G3D7Vector3ELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_873d7c() -> ! {
     todo!("0x873d7c G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
@@ -341,7 +341,7 @@ pub fn stub_8745dc() -> ! {
 }
 
 // 0x874620 — __ZN3RBX10Reflection9ArgHelper6getArgINS_12Region3int16ELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "RBX::Region3int16 RBX::Reflection::ArgHelper::getArg<RBX::Region3int16,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Region3int16> const&,boost::disable_if<boost::is_same<RBX::Region3int16,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Region3int16 RBX::Reflection::ArgHelper::getArg<RBX::Region3int16,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Region3int16> const&,boost::disable_if<boost::is_same<RBX::Region3int16,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_874620() -> ! {
     todo!("0x874620 RBX::Region3int16 RBX::Reflection::ArgHelper::getArg<RBX::Region3int16,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Region3int16> const&,boost::disable_if<boost::is_same<RBX::Region3int16,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
@@ -401,13 +401,13 @@ pub fn stub_875068() -> ! {
 }
 
 // 0x8750e8 — __ZN3RBX10Reflection9ArgHelper6getArgINS_5Voxel14WaterCellForceELi4EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "RBX::Voxel::WaterCellForce RBX::Reflection::ArgHelper::getArg<RBX::Voxel::WaterCellForce,4>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::WaterCellForce> const&,boost::disable_if<boost::is_same<RBX::Voxel::WaterCellForce,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Voxel::WaterCellForce RBX::Reflection::ArgHelper::getArg<RBX::Voxel::WaterCellForce,4>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::WaterCellForce> const&,boost::disable_if<boost::is_same<RBX::Voxel::WaterCellForce,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_8750e8() -> ! {
     todo!("0x8750e8 RBX::Voxel::WaterCellForce RBX::Reflection::ArgHelper::getArg<RBX::Voxel::WaterCellForce,4>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::WaterCellForce> const&,boost::disable_if<boost::is_same<RBX::Voxel::WaterCellForce,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
 
 // 0x87527c — __ZN3RBX10Reflection9ArgHelper6getArgINS_5Voxel18WaterCellDirectionELi5EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "RBX::Voxel::WaterCellDirection RBX::Reflection::ArgHelper::getArg<RBX::Voxel::WaterCellDirection,5>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::WaterCellDirection> const&,boost::disable_if<boost::is_same<RBX::Voxel::WaterCellDirection,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Voxel::WaterCellDirection RBX::Reflection::ArgHelper::getArg<RBX::Voxel::WaterCellDirection,5>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::WaterCellDirection> const&,boost::disable_if<boost::is_same<RBX::Voxel::WaterCellDirection,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_87527c() -> ! {
     todo!("0x87527c RBX::Voxel::WaterCellDirection RBX::Reflection::ArgHelper::getArg<RBX::Voxel::WaterCellDirection,5>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::WaterCellDirection> const&,boost::disable_if<boost::is_same<RBX::Voxel::WaterCellDirection,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
@@ -449,19 +449,19 @@ pub fn stub_8758a0() -> ! {
 }
 
 // 0x87591c — __ZN3RBX10Reflection9ArgHelper6getArgINS_5Voxel12CellMaterialELi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "RBX::Voxel::CellMaterial RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellMaterial,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellMaterial> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellMaterial,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Voxel::CellMaterial RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellMaterial,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellMaterial> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellMaterial,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_87591c() -> ! {
     todo!("0x87591c RBX::Voxel::CellMaterial RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellMaterial,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellMaterial> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellMaterial,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
 
 // 0x875ab0 — __ZN3RBX10Reflection9ArgHelper6getArgINS_5Voxel9CellBlockELi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "RBX::Voxel::CellBlock RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellBlock,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellBlock> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellBlock,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Voxel::CellBlock RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellBlock,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellBlock> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellBlock,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_875ab0() -> ! {
     todo!("0x875ab0 RBX::Voxel::CellBlock RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellBlock,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellBlock> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellBlock,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
 
 // 0x875c44 — __ZN3RBX10Reflection9ArgHelper6getArgINS_5Voxel15CellOrientationELi4EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "RBX::Voxel::CellOrientation RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellOrientation,4>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellOrientation> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellOrientation,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Voxel::CellOrientation RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellOrientation,4>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellOrientation> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellOrientation,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_875c44() -> ! {
     todo!("0x875c44 RBX::Voxel::CellOrientation RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellOrientation,4>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellOrientation> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellOrientation,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
@@ -509,19 +509,19 @@ pub fn stub_87634c() -> ! {
 }
 
 // 0x8763d8 — __ZN3RBX10Reflection9ArgHelper6getArgINS_5Voxel12CellMaterialELi4EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "RBX::Voxel::CellMaterial RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellMaterial,4>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellMaterial> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellMaterial,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Voxel::CellMaterial RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellMaterial,4>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellMaterial> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellMaterial,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_8763d8() -> ! {
     todo!("0x8763d8 RBX::Voxel::CellMaterial RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellMaterial,4>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellMaterial> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellMaterial,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
 
 // 0x87656c — __ZN3RBX10Reflection9ArgHelper6getArgINS_5Voxel9CellBlockELi5EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "RBX::Voxel::CellBlock RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellBlock,5>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellBlock> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellBlock,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Voxel::CellBlock RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellBlock,5>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellBlock> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellBlock,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_87656c() -> ! {
     todo!("0x87656c RBX::Voxel::CellBlock RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellBlock,5>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellBlock> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellBlock,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
 
 // 0x876700 — __ZN3RBX10Reflection9ArgHelper6getArgINS_5Voxel15CellOrientationELi6EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "RBX::Voxel::CellOrientation RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellOrientation,6>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellOrientation> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellOrientation,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Voxel::CellOrientation RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellOrientation,6>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellOrientation> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellOrientation,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_876700() -> ! {
     todo!("0x876700 RBX::Voxel::CellOrientation RBX::Reflection::ArgHelper::getArg<RBX::Voxel::CellOrientation,6>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Voxel::CellOrientation> const&,boost::disable_if<boost::is_same<RBX::Voxel::CellOrientation,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
@@ -545,31 +545,31 @@ pub fn stub_87693c() -> ! {
 }
 
 // 0x876990 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN5boost10shared_ptrIKNS0_5TupleEEEiiiELi3EEC2EMS2_FS7_iiiEPKcSD_SD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::BoundFuncDesc(boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::MegaClusterInstance::*)(int,int,int),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(int,int,int),3>::BoundFuncDesc(rbx_core::SharedPtr<RBX::Reflection::Tuple const> (RBX::MegaClusterInstance::*)(int,int,int),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 pub fn stub_876990() -> ! {
     todo!("0x876990 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::BoundFuncDesc(boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::MegaClusterInstance::*)(int,int,int),char const*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
 
 // 0x876ba8 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN5boost10shared_ptrIKNS0_5TupleEEEiiiELi3EE16declareSignatureEPKcNS0_7VariantESB_SC_SB_SC_
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(int,int,int),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 pub fn stub_876ba8() -> ! {
     todo!("0x876ba8 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
 }
 
 // 0x876c10 — __ZN3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN5boost10shared_ptrIKNS0_5TupleEEEiiiELi3EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(int,int,int),3>::~BoundFuncDesc()")]
 pub fn stub_876c10() -> ! {
     todo!("0x876c10 RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::~BoundFuncDesc()")
 }
 
 // 0x876cfc — __ZNK3RBX10Reflection13BoundFuncDescINS_19MegaClusterInstanceEFN5boost10shared_ptrIKNS0_5TupleEEEiiiELi3EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(int,int,int),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 pub fn stub_876cfc() -> ! {
     todo!("0x876cfc RBX::Reflection::BoundFuncDesc<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int,int,int),3>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
 }
 
 // 0x876d5c — __ZN3RBX10Reflection11Call3HelperINS_19MegaClusterInstanceEMS2_FN5boost10shared_ptrIKNS0_5TupleEEEiiiEiiiS7_E4callEPS2_S9_RNS0_7VariantERKiSF_SF_
-#[doc(alias = "RBX::Reflection::Call3Helper<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::MegaClusterInstance::*)(int,int,int),int,int,int,boost::shared_ptr<RBX::Reflection::Tuple const>>::call(RBX::MegaClusterInstance*,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::MegaClusterInstance::*)(int,int,int),RBX::Reflection::Variant &,int const&,int const&,int const&)")]
+#[doc(alias = "RBX::Reflection::Call3Helper<RBX::MegaClusterInstance,rbx_core::SharedPtr<RBX::Reflection::Tuple const> (RBX::MegaClusterInstance::*)(int,int,int),int,int,int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::call(RBX::MegaClusterInstance*,rbx_core::SharedPtr<RBX::Reflection::Tuple const> (RBX::MegaClusterInstance::*)(int,int,int),RBX::Reflection::Variant &,int const&,int const&,int const&)")]
 pub fn stub_876d5c() -> ! {
     todo!("0x876d5c RBX::Reflection::Call3Helper<RBX::MegaClusterInstance,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::MegaClusterInstance::*)(int,int,int),int,int,int,boost::shared_ptr<RBX::Reflection::Tuple const>>::call(RBX::MegaClusterInstance*,boost::shared_ptr<RBX::Reflection::Tuple const> (RBX::MegaClusterInstance::*)(int,int,int),RBX::Reflection::Variant &,int const&,int const&,int const&)")
 }

@@ -572,13 +572,13 @@ pub fn stub_0x4000f4() -> ! {
 }
 // 0x4002d4 — __ZN5boost10shared_ptrIN3RBX9SelectionEEaSERKS3_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Selection>::operator=(boost::shared_ptr<RBX::Selection> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Selection>::operator=(rbx_core::SharedPtr<RBX::Selection> const&)")]
 pub fn stub_0x4002d4() -> ! {
     todo!("0x4002d4 boost::shared_ptr<RBX::Selection>::operator=(boost::shared_ptr<RBX::Selection> const&)")
 }
 // 0x40030c — __ZN3RBX11shared_fromINS_9SelectionEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_DWORD *, int)
-#[doc(alias = "boost::shared_ptr<RBX::Selection> RBX::shared_from<RBX::Selection>(RBX::Selection*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Selection> RBX::shared_from<RBX::Selection>(RBX::Selection*)")]
 pub fn stub_0x40030c() -> ! {
     todo!("0x40030c boost::shared_ptr<RBX::Selection> RBX::shared_from<RBX::Selection>(RBX::Selection*)")
 }

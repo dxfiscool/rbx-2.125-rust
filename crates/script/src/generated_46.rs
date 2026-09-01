@@ -10,20 +10,20 @@ use rbx_core::SharedPtr;
 
 // 0x49ff08 — __ZN3RBX9Explosion11signalBlastERKSt6vectorIN5boost10shared_ptrINS_12PartInstanceEEESaIS5_EE
 // type: int __fastcall(int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::Explosion::signalBlast(std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>> const&)")]
+#[doc(alias = "RBX::Explosion::signalBlast(std::vector<rbx_core::SharedPtr<RBX::PartInstance>,std::allocator<rbx_core::SharedPtr<RBX::PartInstance>>> const&)")]
 pub fn stub_0x49ff08() -> ! {
     todo!("0x49ff08 RBX::Explosion::signalBlast(std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>> const&)")
 }
 
 // 0x4a0a30 — __ZN3RBX9Explosion7doBlastINS_19MegaClusterInstanceEEEvPT_RKSt6vectorIN5boost10shared_ptrINS_12PartInstanceEEESaIS9_EE
-#[doc(alias = "void RBX::Explosion::doBlast<RBX::MegaClusterInstance>(RBX::MegaClusterInstance *,std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>> const&)")]
+#[doc(alias = "void RBX::Explosion::doBlast<RBX::MegaClusterInstance>(RBX::MegaClusterInstance *,std::vector<rbx_core::SharedPtr<RBX::PartInstance>,std::allocator<rbx_core::SharedPtr<RBX::PartInstance>>> const&)")]
 pub fn stub_0x4a0a30() -> ! {
     todo!("0x4a0a30 void RBX::Explosion::doBlast<RBX::MegaClusterInstance>(RBX::MegaClusterInstance *,std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>> const&)")
 }
 
 // 0x4a11c4 — __ZN3RBX11shared_fromINS_9ExplosionEEEN5boost10shared_ptrIT_EEPS4_
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::Explosion> RBX::shared_from<RBX::Explosion>(RBX::Explosion*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Explosion> RBX::shared_from<RBX::Explosion>(RBX::Explosion*)")]
 pub fn stub_0x4a11c4() -> ! {
     todo!("0x4a11c4 boost::shared_ptr<RBX::Explosion> RBX::shared_from<RBX::Explosion>(RBX::Explosion*)")
 }
@@ -142,7 +142,7 @@ pub fn stub_0x4a2bd0() -> ! {
 }
 
 // 0x4a2c38 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX12PartInstanceEEESaIS4_EED2Ev
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>::~vector()")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::PartInstance>,std::allocator<rbx_core::SharedPtr<RBX::PartInstance>>>::~vector()")]
 pub fn stub_0x4a2c38() -> ! {
     todo!("0x4a2c38 std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>::~vector()")
 }

@@ -70,52 +70,52 @@ pub fn stub_f659b4() -> ! {
 }
 
 // 0xf659a4 — j___ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EERKSsENS6_5list2INS6_5valueIS9_EENSF_ISsEEEEEEEEvT_
-#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")]
+#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")]
 pub fn stub_f659a4() -> ! {
     todo!("0xf659a4 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>)")
 }
 
 // 0xf65994 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS3_5list2INS3_5valueIS8_EENSE_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int(void)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 pub fn stub_f65994() -> ! {
     todo!("0xf65994 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
 }
 
 // 0xf65984 — j___ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEERKSsS4_SsEENS_3_bi6bind_tIT_PFS9_T0_T1_ENS7_9list_av_2IT2_T3_E4typeEEESD_SF_SG_
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list_av_2<boost::weak_ptr<RBX::DataModel>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,std::string const&,boost::weak_ptr<RBX::DataModel>,std::string>(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::weak_ptr<RBX::DataModel>,std::string)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list_av_2<rbx_core::WeakPtr<RBX::DataModel>,std::string>::type> boost::bind<void,rbx_core::WeakPtr<RBX::DataModel>,std::string const&,rbx_core::WeakPtr<RBX::DataModel>,std::string>(void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),rbx_core::WeakPtr<RBX::DataModel>,std::string)")]
 pub fn stub_f65984() -> ! {
     todo!("0xf65984 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list_av_2<boost::weak_ptr<RBX::DataModel>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,std::string const&,boost::weak_ptr<RBX::DataModel>,std::string>(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::weak_ptr<RBX::DataModel>,std::string)")
 }
 
 // 0xf65974 — j___ZN5boost3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEERKSsENS0_5list2INS0_5valueIS5_EENSB_ISsEEEEEC2ES9_RKSE_
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>::bind_t(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>> const&)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>>::bind_t(void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>> const&)")]
 pub fn stub_f65974() -> ! {
     todo!("0xf65974 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>>::bind_t(void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>> const&)")
 }
 
 // 0xf65964 — j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_ISsEEEclIPFvS6_RKSsENS0_5list1IRPS5_EEEEvNS0_4typeIvEERT_RT0_i
-#[doc(alias = "void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string const&) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
 pub fn stub_f65964() -> ! {
     todo!("0xf65964 void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,std::string const&) &,boost::_bi::list1<RBX::DataModel*&> &,int)")
 }
 
 // 0xf65954 — j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_ISsEEEC2ES7_S8_
 // type: int __fastcall(int)
-#[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>)")]
+#[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<std::string>)")]
 pub fn stub_f65954() -> ! {
     todo!("0xf65954 boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<std::string>)")
 }
 
 // 0xf65944 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviEE4slotEEaSEPS6_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot>::operator=(rbx::signals::signal<void ()(int)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(int)>::slot>::operator=(rbx::signals::signal<void ()(int)>::slot*)")]
 pub fn stub_f65944() -> ! {
     todo!("0xf65944 boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot>::operator=(rbx::signals::signal<void ()(int)>::slot*)")
 }
 
 // 0xf65934 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbEE4slotEEaSEPS6_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot>::operator=(rbx::signals::signal<void ()(bool)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool)>::slot>::operator=(rbx::signals::signal<void ()(bool)>::slot*)")]
 pub fn stub_f65934() -> ! {
     todo!("0xf65934 boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot>::operator=(rbx::signals::signal<void ()(bool)>::slot*)")
 }
@@ -162,14 +162,14 @@ pub fn stub_f658b4() -> ! {
 
 // 0xf658a4 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_8LightingEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "boost::shared_ptr<RBX::Lighting> RBX::Creatable<RBX::Instance>::create<RBX::Lighting>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Lighting> RBX::Creatable<RBX::Instance>::create<RBX::Lighting>(void)")]
 pub fn stub_f658a4() -> ! {
     todo!("0xf658a4 boost::shared_ptr<RBX::Lighting> RBX::Creatable<RBX::Instance>::create<RBX::Lighting>(void)")
 }
 
 // 0xf65894 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_22TextureContentProviderEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "boost::shared_ptr<RBX::TextureContentProvider> RBX::Creatable<RBX::Instance>::create<RBX::TextureContentProvider>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextureContentProvider> RBX::Creatable<RBX::Instance>::create<RBX::TextureContentProvider>(void)")]
 pub fn stub_f65894() -> ! {
     todo!("0xf65894 boost::shared_ptr<RBX::TextureContentProvider> RBX::Creatable<RBX::Instance>::create<RBX::TextureContentProvider>(void)")
 }
@@ -221,62 +221,62 @@ pub fn stub_f65824() -> ! {
 
 // 0xf65814 — j___ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEESt10_Select1stIS8_ESt4lessISsESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
 // type: int __fastcall(int, int, int, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>> const&)")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>> const&)")]
 pub fn stub_f65814() -> ! {
     todo!("0xf65814 std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>> const&)")
 }
 
 // 0xf65804 — j___ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEESt10_Select1stIS8_ESt4lessISsESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
 // type: int __fastcall(int, int, int, int, char, int, int, int, struct _Unwind_Exception *lpuexcpt)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>> *)")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>> *)")]
 pub fn stub_f65804() -> ! {
     todo!("0xf65804 std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>> *)")
 }
 
 // 0xf657f4 — j___ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEESt10_Select1stIS8_ESt4lessISsESaIS8_EE5eraseESt17_Rb_tree_iteratorIS8_E
 // type: int __fastcall(int, _Rb_tree_node_base *)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::erase(std::_Rb_tree_iterator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>)")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>::erase(std::_Rb_tree_iterator<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>)")]
 pub fn stub_f657f4() -> ! {
     todo!("0xf657f4 std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::erase(std::_Rb_tree_iterator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>)")
 }
 
 // 0xf657e4 — j___ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEESt10_Select1stIS8_ESt4lessISsESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
 // type: int __fastcall(int, int, void *)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>> const&)")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>,std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>> const&)")]
 pub fn stub_f657e4() -> ! {
     todo!("0xf657e4 std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>> const&)")
 }
 
 // 0xf657d4 — j___ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEESt10_Select1stIS8_ESt4lessISsESaIS8_EE16_M_insert_uniqueERKS8_
 // type: int __fastcall(int, int, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::_M_insert_unique(std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>> const&)")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>::_M_insert_unique(std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>> const&)")]
 pub fn stub_f657d4() -> ! {
     todo!("0xf657d4 std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::_M_insert_unique(std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>> const&)")
 }
 
 // 0xf657c4 — j___ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEESt10_Select1stIS8_ESt4lessISsESaIS8_EE14_M_create_nodeERKS8_
 // type: int __fastcall(int, int, int, int, void *, int, int, int, void *, int)
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::_M_create_node(std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>> const&)")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>::_M_create_node(std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>> const&)")]
 pub fn stub_f657c4() -> ! {
     todo!("0xf657c4 std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::_M_create_node(std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>> const&)")
 }
 
 // 0xf657b4 — j___ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE8_M_eraseEPSt13_Rb_tree_nodeIS5_E
-#[doc(alias = "std::_Rb_tree<boost::shared_ptr<RBX::TextureCompositor::Job>,boost::shared_ptr<RBX::TextureCompositor::Job>,std::_Identity<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::less<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_erase(std::_Rb_tree_node<boost::shared_ptr<RBX::TextureCompositor::Job>> *)")]
+#[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::_Identity<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::less<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>::_M_erase(std::_Rb_tree_node<rbx_core::SharedPtr<RBX::TextureCompositor::Job>> *)")]
 pub fn stub_f657b4() -> ! {
     todo!("0xf657b4 std::_Rb_tree<boost::shared_ptr<RBX::TextureCompositor::Job>,boost::shared_ptr<RBX::TextureCompositor::Job>,std::_Identity<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::less<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_erase(std::_Rb_tree_node<boost::shared_ptr<RBX::TextureCompositor::Job>> *)")
 }
 
 // 0xf657a4 — j___ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE16_M_insert_uniqueERKS5_
 // type: int __fastcall(int, int, int)
-#[doc(alias = "std::_Rb_tree<boost::shared_ptr<RBX::TextureCompositor::Job>,boost::shared_ptr<RBX::TextureCompositor::Job>,std::_Identity<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::less<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_insert_unique(boost::shared_ptr<RBX::TextureCompositor::Job> const&)")]
+#[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::_Identity<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::less<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>::_M_insert_unique(rbx_core::SharedPtr<RBX::TextureCompositor::Job> const&)")]
 pub fn stub_f657a4() -> ! {
     todo!("0xf657a4 std::_Rb_tree<boost::shared_ptr<RBX::TextureCompositor::Job>,boost::shared_ptr<RBX::TextureCompositor::Job>,std::_Identity<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::less<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_insert_unique(boost::shared_ptr<RBX::TextureCompositor::Job> const&)")
 }
 
 // 0xf65794 — j___ZNSt8_Rb_treeIN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEES5_St9_IdentityIS5_ESt4lessIS5_ESaIS5_EE14_M_create_nodeERKS5_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, void *, int, int, void *, int)
-#[doc(alias = "std::_Rb_tree<boost::shared_ptr<RBX::TextureCompositor::Job>,boost::shared_ptr<RBX::TextureCompositor::Job>,std::_Identity<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::less<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_create_node(boost::shared_ptr<RBX::TextureCompositor::Job> const&)")]
+#[doc(alias = "std::_Rb_tree<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::_Identity<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::less<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>::_M_create_node(rbx_core::SharedPtr<RBX::TextureCompositor::Job> const&)")]
 pub fn stub_f65794() -> ! {
     todo!("0xf65794 std::_Rb_tree<boost::shared_ptr<RBX::TextureCompositor::Job>,boost::shared_ptr<RBX::TextureCompositor::Job>,std::_Identity<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::less<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_create_node(boost::shared_ptr<RBX::TextureCompositor::Job> const&)")
 }
@@ -289,46 +289,46 @@ pub fn stub_f65784() -> ! {
 }
 
 // 0xf65774 — j___ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE5eraseEN9__gnu_cxx17__normal_iteratorIPS4_S6_EESA_
-#[doc(alias = "std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::erase(__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance>*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>,__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance>*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>)")]
+#[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::erase(__gnu_cxx::__normal_iterator<rbx_core::WeakPtr<RBX::PartInstance>*,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>>,__gnu_cxx::__normal_iterator<rbx_core::WeakPtr<RBX::PartInstance>*,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>>)")]
 pub fn stub_f65774() -> ! {
     todo!("0xf65774 std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::erase(__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance>*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>,__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance>*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>)")
 }
 
 // 0xf65764 — j___ZNSt6vectorIN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEESaIS5_EE9push_backERKS5_
 // type: int()
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::push_back(boost::shared_ptr<RBX::TextureCompositor::Job> const&)")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>::push_back(rbx_core::SharedPtr<RBX::TextureCompositor::Job> const&)")]
 pub fn stub_f65764() -> ! {
     todo!("0xf65764 std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::push_back(boost::shared_ptr<RBX::TextureCompositor::Job> const&)")
 }
 
 // 0xf65754 — j___ZNSt6vectorIN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEESaIS5_EE7reserveEm
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::reserve(unsigned long)")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>::reserve(unsigned long)")]
 pub fn stub_f65754() -> ! {
     todo!("0xf65754 std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::reserve(unsigned long)")
 }
 
 // 0xf65744 — j___ZNSt6vectorIN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEESaIS5_EE20_M_allocate_and_copyIPS5_EES9_mT_SA_
-#[doc(alias = "boost::shared_ptr<RBX::TextureCompositor::Job>* std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_allocate_and_copy<boost::shared_ptr<RBX::TextureCompositor::Job>*>(unsigned long,boost::shared_ptr<RBX::TextureCompositor::Job>*,boost::shared_ptr<RBX::TextureCompositor::Job>*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextureCompositor::Job>* std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>::_M_allocate_and_copy<rbx_core::SharedPtr<RBX::TextureCompositor::Job>*>(unsigned long,rbx_core::SharedPtr<RBX::TextureCompositor::Job>*,rbx_core::SharedPtr<RBX::TextureCompositor::Job>*)")]
 pub fn stub_f65744() -> ! {
     todo!("0xf65744 boost::shared_ptr<RBX::TextureCompositor::Job>* std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_allocate_and_copy<boost::shared_ptr<RBX::TextureCompositor::Job>*>(unsigned long,boost::shared_ptr<RBX::TextureCompositor::Job>*,boost::shared_ptr<RBX::TextureCompositor::Job>*)")
 }
 
 // 0xf65734 — j___ZNSt6vectorIN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEESaIS5_EE15_M_range_insertISt23_Rb_tree_const_iteratorIS5_EEEvN9__gnu_cxx17__normal_iteratorIPS5_S7_EET_SF_St20forward_iterator_tag
-#[doc(alias = "void std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_range_insert<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::forward_iterator_tag)")]
+#[doc(alias = "void std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>::_M_range_insert<std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>*,std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::forward_iterator_tag)")]
 pub fn stub_f65734() -> ! {
     todo!("0xf65734 void std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_range_insert<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::forward_iterator_tag)")
 }
 
 // 0xf65724 — j___ZNSt6vectorIN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEESaIS5_EE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPS5_S7_EEEEvSC_T_SD_St20forward_iterator_tag
 // type: int()
-#[doc(alias = "void std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_range_insert<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>,std::forward_iterator_tag)")]
+#[doc(alias = "void std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>::_M_range_insert<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>*,std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>*,std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>*,std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>*,std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>,std::forward_iterator_tag)")]
 pub fn stub_f65724() -> ! {
     todo!("0xf65724 void std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_range_insert<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>,std::forward_iterator_tag)")
 }
 
 // 0xf65714 — j___ZNSt6vectorIN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEESaIS5_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS5_S7_EERKS5_
 // type: int(void)
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>,boost::shared_ptr<RBX::TextureCompositor::Job> const&)")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>*,std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>,rbx_core::SharedPtr<RBX::TextureCompositor::Job> const&)")]
 pub fn stub_f65714() -> ! {
     todo!("0xf65714 std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>,boost::shared_ptr<RBX::TextureCompositor::Job> const&)")
 }
@@ -360,26 +360,26 @@ pub fn stub_f656c4() -> ! {
 }
 
 // 0xf656b4 — j___ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEES9_EET0_T_SB_SA_
-#[doc(alias = "boost::shared_ptr<RBX::TextureCompositor::Job> * std::__copy<false,std::random_access_iterator_tag>::copy<boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *>(boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextureCompositor::Job> * std::__copy<false,std::random_access_iterator_tag>::copy<rbx_core::SharedPtr<RBX::TextureCompositor::Job> *,rbx_core::SharedPtr<RBX::TextureCompositor::Job> *>(rbx_core::SharedPtr<RBX::TextureCompositor::Job> *,rbx_core::SharedPtr<RBX::TextureCompositor::Job> *,rbx_core::SharedPtr<RBX::TextureCompositor::Job> *)")]
 pub fn stub_f656b4() -> ! {
     todo!("0xf656b4 boost::shared_ptr<RBX::TextureCompositor::Job> * std::__copy<false,std::random_access_iterator_tag>::copy<boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *>(boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *)")
 }
 
 // 0xf656a4 — j___ZNSt3mapISsN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEESt4lessISsESaISt4pairIKSsS5_EEEixERS9_
 // type: int()
-#[doc(alias = "std::map<std::string,boost::shared_ptr<RBX::TextureCompositor::Job>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::operator[](std::string const&)")]
+#[doc(alias = "std::map<std::string,rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>::operator[](std::string const&)")]
 pub fn stub_f656a4() -> ! {
     todo!("0xf656a4 std::map<std::string,boost::shared_ptr<RBX::TextureCompositor::Job>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::TextureCompositor::Job>>>>::operator[](std::string const&)")
 }
 
 // 0xf65684 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEES9_EET0_T_SB_SA_
-#[doc(alias = "boost::shared_ptr<RBX::TextureCompositor::Job> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *>(boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextureCompositor::Job> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<rbx_core::SharedPtr<RBX::TextureCompositor::Job> *,rbx_core::SharedPtr<RBX::TextureCompositor::Job> *>(rbx_core::SharedPtr<RBX::TextureCompositor::Job> *,rbx_core::SharedPtr<RBX::TextureCompositor::Job> *,rbx_core::SharedPtr<RBX::TextureCompositor::Job> *)")]
 pub fn stub_f65684() -> ! {
     todo!("0xf65684 boost::shared_ptr<RBX::TextureCompositor::Job> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *>(boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *,boost::shared_ptr<RBX::TextureCompositor::Job> *)")
 }
 
 // 0xf65674 — j___ZNSt13__copy_normalILb0ELb1EE8__copy_nISt23_Rb_tree_const_iteratorIN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEEN9__gnu_cxx17__normal_iteratorIPS8_St6vectorIS8_SaIS8_EEEEEET0_T_SI_SH_
-#[doc(alias = "__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>> std::__copy_normal<false,true>::__copy_n<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>)")]
+#[doc(alias = "__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>*,std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>> std::__copy_normal<false,true>::__copy_n<std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>*,std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>>(std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,std::_Rb_tree_const_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>*,std::vector<rbx_core::SharedPtr<RBX::TextureCompositor::Job>,std::allocator<rbx_core::SharedPtr<RBX::TextureCompositor::Job>>>>)")]
 pub fn stub_f65674() -> ! {
     todo!("0xf65674 __gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>> std::__copy_normal<false,true>::__copy_n<std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>>(std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>,std::_Rb_tree_const_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TextureCompositor::Job>*,std::vector<boost::shared_ptr<RBX::TextureCompositor::Job>,std::allocator<boost::shared_ptr<RBX::TextureCompositor::Job>>>>)")
 }
@@ -570,7 +570,7 @@ pub fn stub_f651f4() -> ! {
 
 // 0xf651a4 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_19MeshContentProviderEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "boost::shared_ptr<RBX::MeshContentProvider> RBX::Creatable<RBX::Instance>::create<RBX::MeshContentProvider>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MeshContentProvider> RBX::Creatable<RBX::Instance>::create<RBX::MeshContentProvider>(void)")]
 pub fn stub_f651a4() -> ! {
     todo!("0xf651a4 boost::shared_ptr<RBX::MeshContentProvider> RBX::Creatable<RBX::Instance>::create<RBX::MeshContentProvider>(void)")
 }
@@ -583,7 +583,7 @@ pub fn stub_f65194() -> ! {
 
 // 0xf65064 — j___ZNK5boost23enable_shared_from_thisIN3RBX16TextureProxyBaseEE22_internal_accept_ownerIS2_NS1_15RbxTextureProxyEEEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TextureProxyBase>::_internal_accept_owner<RBX::TextureProxyBase,RBX::RbxTextureProxy>(boost::shared_ptr<RBX::TextureProxyBase> const*,RBX::RbxTextureProxy *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TextureProxyBase>::_internal_accept_owner<RBX::TextureProxyBase,RBX::RbxTextureProxy>(rbx_core::SharedPtr<RBX::TextureProxyBase> const*,RBX::RbxTextureProxy *)const")]
 pub fn stub_f65064() -> ! {
     todo!("0xf65064 void boost::enable_shared_from_this<RBX::TextureProxyBase>::_internal_accept_owner<RBX::TextureProxyBase,RBX::RbxTextureProxy>(boost::shared_ptr<RBX::TextureProxyBase> const*,RBX::RbxTextureProxy *)const")
 }

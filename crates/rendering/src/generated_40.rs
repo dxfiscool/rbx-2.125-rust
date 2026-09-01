@@ -42,7 +42,7 @@ pub fn stub_85df88() -> ! {
 }
 
 // 0x85e380 — __ZN3RBX12TextureTrail11getPositionERKN5boost8weak_ptrINS_12PartInstanceEEEPN3G3D7Vector3E
-#[doc(alias = "RBX::TextureTrail::getPosition(boost::weak_ptr<RBX::PartInstance> const&,G3D::Vector3 *)")]
+#[doc(alias = "RBX::TextureTrail::getPosition(rbx_core::WeakPtr<RBX::PartInstance> const&,G3D::Vector3 *)")]
 // was: RBX::TextureTrail::getPosition(boost::weak_ptr<RBX::PartInstance> const&,G3D::Vector3 *)
 pub fn stub_85e380() -> ! {
     todo!("0x85e380 RBX::TextureTrail::getPosition(boost::weak_ptr<RBX::PartInstance> const&,G3D::Vector3 *)")
@@ -112,7 +112,7 @@ pub fn stub_867a90() -> ! {
 }
 
 // 0x867f68 — __ZN3RBX9FloorWire18buildTrailSegmentsEPKNS_9WorkspaceERKN5boost10shared_ptrINS_12PartInstanceEEES9_PSt6vectorIN3G3D7Vector3ESaISC_EE
-#[doc(alias = "RBX::FloorWire::buildTrailSegments(RBX::Workspace const*,boost::shared_ptr<RBX::PartInstance> const&,boost::shared_ptr<RBX::PartInstance> const&,std::vector<G3D::Vector3,std::allocator<G3D::Vector3>> *)")]
+#[doc(alias = "RBX::FloorWire::buildTrailSegments(RBX::Workspace const*,rbx_core::SharedPtr<RBX::PartInstance> const&,rbx_core::SharedPtr<RBX::PartInstance> const&,std::vector<G3D::Vector3,std::allocator<G3D::Vector3>> *)")]
 // was: RBX::FloorWire::buildTrailSegments(RBX::Workspace const*,boost::shared_ptr<RBX::PartInstance> const&,boost::shared_ptr<RBX::PartInstance> const&,std::vector<G3D::Vector3,std::allocator<G3D::Vector3>> *)
 pub fn stub_867f68() -> ! {
     todo!("0x867f68 RBX::FloorWire::buildTrailSegments(RBX::Workspace const*,boost::shared_ptr<RBX::PartInstance> const&,boost::shared_ptr<RBX::PartInstance> const&,std::vector<G3D::Vector3,std::allocator<G3D::Vector3>> *)")
@@ -126,7 +126,7 @@ pub fn stub_868290() -> ! {
 }
 
 // 0x8685e0 — __ZN3RBX9FloorWire22computeSurfacePositionERKN5boost10shared_ptrINS_12PartInstanceEEERKNS_6RbxRayEPN3G3D7Vector3E
-#[doc(alias = "RBX::FloorWire::computeSurfacePosition(boost::shared_ptr<RBX::PartInstance> const&,RBX::RbxRay const&,G3D::Vector3 *)")]
+#[doc(alias = "RBX::FloorWire::computeSurfacePosition(rbx_core::SharedPtr<RBX::PartInstance> const&,RBX::RbxRay const&,G3D::Vector3 *)")]
 // was: RBX::FloorWire::computeSurfacePosition(boost::shared_ptr<RBX::PartInstance> const&,RBX::RbxRay const&,G3D::Vector3 *)
 pub fn stub_8685e0() -> ! {
     todo!("0x8685e0 RBX::FloorWire::computeSurfacePosition(boost::shared_ptr<RBX::PartInstance> const&,RBX::RbxRay const&,G3D::Vector3 *)")
@@ -413,7 +413,7 @@ pub fn stub_873d40() -> ! {
 }
 
 // 0x873d7c — __ZN3RBX10Reflection9ArgHelper6getArgIN3G3D7Vector3ELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // was: G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
 pub fn stub_873d7c() -> ! {
     todo!("0x873d7c G3D::Vector3 RBX::Reflection::ArgHelper::getArg<G3D::Vector3,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector3> const&,boost::disable_if<boost::is_same<G3D::Vector3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
@@ -553,7 +553,7 @@ pub fn stub_87e758() -> ! {
 }
 
 // 0x87edc4 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY15MegaClusterMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token> const&)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token> const&)
 pub fn stub_87edc4() -> ! {
     todo!("0x87edc4 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token> const&)")
@@ -623,7 +623,7 @@ pub fn stub_8800ec() -> ! {
 }
 
 // 0x880160 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY15MegaClusterMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token *)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token *)
 pub fn stub_880160() -> ! {
     todo!("0x880160 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::MegaClusterMesh,RBX::Vector3Comparer>::Token *)")

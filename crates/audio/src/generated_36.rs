@@ -531,21 +531,21 @@ pub fn stub_3e96a0() -> ! {
 
 // 0x3e97e4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13CharacterMeshEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::CharacterMesh> RBX::Creatable<RBX::Instance>::create<RBX::CharacterMesh>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CharacterMesh> RBX::Creatable<RBX::Instance>::create<RBX::CharacterMesh>(void)")]
 pub fn stub_3e97e4() -> ! {
     todo!("0x3e97e4 boost::shared_ptr<RBX::CharacterMesh> RBX::Creatable<RBX::Instance>::create<RBX::CharacterMesh>(void)")
 }
 
 // 0x3e9894 — __ZN5boost10shared_ptrIN3RBX13CharacterMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::CharacterMesh>::shared_ptr<RBX::CharacterMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CharacterMesh>::shared_ptr<RBX::CharacterMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_3e9894() -> ! {
     todo!("0x3e9894 boost::shared_ptr<RBX::CharacterMesh>::shared_ptr<RBX::CharacterMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x3e995c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13CharacterMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CharacterMesh,RBX::CharacterMesh>(boost::shared_ptr<RBX::CharacterMesh> const*,RBX::CharacterMesh *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CharacterMesh,RBX::CharacterMesh>(rbx_core::SharedPtr<RBX::CharacterMesh> const*,RBX::CharacterMesh *)const")]
 pub fn stub_3e995c() -> ! {
     todo!("0x3e995c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CharacterMesh,RBX::CharacterMesh>(boost::shared_ptr<RBX::CharacterMesh> const*,RBX::CharacterMesh *)const")
 }

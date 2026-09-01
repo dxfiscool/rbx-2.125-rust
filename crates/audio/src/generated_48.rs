@@ -135,7 +135,7 @@ pub fn stub_451038() -> ! {
 // demangled: boost::shared_ptr<RBX::PhysicsService>::shared_ptr<RBX::PhysicsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PhysicsService *,RBX::Creatable<RBX::Instance>::Deleter)
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr<RBX::PhysicsService>::shared_ptr<RBX::PhysicsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PhysicsService *,RBX::Creatable<RBX::Instance>::Deleter) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::PhysicsService>::shared_ptr<RBX::PhysicsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PhysicsService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PhysicsService>::shared_ptr<RBX::PhysicsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PhysicsService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_4510dc() -> ! {
     todo!("0x4510dc boost::shared_ptr<RBX::PhysicsService>::shared_ptr<RBX::PhysicsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PhysicsService *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -144,7 +144,7 @@ pub fn stub_4510dc() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PhysicsService,RBX::PhysicsService>(boost::shared_ptr<RBX::PhysicsService> const*,RBX::PhysicsService *)const
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PhysicsService,RBX::PhysicsService>(boost::shared_ptr<RBX::PhysicsService> const*,RBX::PhysicsService *)const -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PhysicsService,RBX::PhysicsService>(boost::shared_ptr<RBX::PhysicsService> const*,RBX::PhysicsService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PhysicsService,RBX::PhysicsService>(rbx_core::SharedPtr<RBX::PhysicsService> const*,RBX::PhysicsService *)const")]
 pub fn stub_4511a4() -> ! {
     todo!("0x4511a4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PhysicsService,RBX::PhysicsService>(boost::shared_ptr<RBX::PhysicsService> const*,RBX::PhysicsService *)const")
 }
@@ -223,7 +223,7 @@ pub fn stub_45147c() -> ! {
 // demangled: boost::shared_ptr<RBX::CollectionService> RBX::Creatable<RBX::Instance>::create<RBX::CollectionService>(void)
 // type: void __fastcall(int)
 // was: boost::shared_ptr<RBX::CollectionService> RBX::Creatable<RBX::Instance>::create<RBX::CollectionService>(void) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::CollectionService> RBX::Creatable<RBX::Instance>::create<RBX::CollectionService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CollectionService> RBX::Creatable<RBX::Instance>::create<RBX::CollectionService>(void)")]
 pub fn stub_4515f0() -> ! {
     todo!("0x4515f0 boost::shared_ptr<RBX::CollectionService> RBX::Creatable<RBX::Instance>::create<RBX::CollectionService>(void)")
 }
@@ -232,7 +232,7 @@ pub fn stub_4515f0() -> ! {
 // demangled: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const&)
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const&) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::CollectionService>(rbx_core::SharedPtr<RBX::CollectionService> const&)")]
 pub fn stub_4516a0() -> ! {
     todo!("0x4516a0 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const&)")
 }
@@ -276,7 +276,7 @@ pub fn stub_451804() -> ! {
 // demangled: boost::shared_ptr<RBX::CollectionService>::shared_ptr<RBX::CollectionService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CollectionService *,RBX::Creatable<RBX::Instance>::Deleter)
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr<RBX::CollectionService>::shared_ptr<RBX::CollectionService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CollectionService *,RBX::Creatable<RBX::Instance>::Deleter) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::CollectionService>::shared_ptr<RBX::CollectionService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CollectionService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CollectionService>::shared_ptr<RBX::CollectionService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CollectionService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_4518dc() -> ! {
     todo!("0x4518dc boost::shared_ptr<RBX::CollectionService>::shared_ptr<RBX::CollectionService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CollectionService *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -285,7 +285,7 @@ pub fn stub_4518dc() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CollectionService,RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const*,RBX::CollectionService *)const
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CollectionService,RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const*,RBX::CollectionService *)const -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CollectionService,RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const*,RBX::CollectionService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CollectionService,RBX::CollectionService>(rbx_core::SharedPtr<RBX::CollectionService> const*,RBX::CollectionService *)const")]
 pub fn stub_4519a4() -> ! {
     todo!("0x4519a4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CollectionService,RBX::CollectionService>(boost::shared_ptr<RBX::CollectionService> const*,RBX::CollectionService *)const")
 }
@@ -355,7 +355,7 @@ pub fn stub_451bdc() -> ! {
 // demangled: boost::shared_ptr<RBX::JointsService> RBX::Creatable<RBX::Instance>::create<RBX::JointsService>(void)
 // type: void __fastcall(int)
 // was: boost::shared_ptr<RBX::JointsService> RBX::Creatable<RBX::Instance>::create<RBX::JointsService>(void) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::JointsService> RBX::Creatable<RBX::Instance>::create<RBX::JointsService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::JointsService> RBX::Creatable<RBX::Instance>::create<RBX::JointsService>(void)")]
 pub fn stub_451c7c() -> ! {
     todo!("0x451c7c boost::shared_ptr<RBX::JointsService> RBX::Creatable<RBX::Instance>::create<RBX::JointsService>(void)")
 }
@@ -364,7 +364,7 @@ pub fn stub_451c7c() -> ! {
 // demangled: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const&)
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const&) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::JointsService>(rbx_core::SharedPtr<RBX::JointsService> const&)")]
 pub fn stub_451d2c() -> ! {
     todo!("0x451d2c boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const&)")
 }
@@ -373,7 +373,7 @@ pub fn stub_451d2c() -> ! {
 // demangled: boost::shared_ptr<RBX::JointsService>::shared_ptr<RBX::JointsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::JointsService *,RBX::Creatable<RBX::Instance>::Deleter)
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr<RBX::JointsService>::shared_ptr<RBX::JointsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::JointsService *,RBX::Creatable<RBX::Instance>::Deleter) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::JointsService>::shared_ptr<RBX::JointsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::JointsService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::JointsService>::shared_ptr<RBX::JointsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::JointsService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_451d60() -> ! {
     todo!("0x451d60 boost::shared_ptr<RBX::JointsService>::shared_ptr<RBX::JointsService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::JointsService *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -382,7 +382,7 @@ pub fn stub_451d60() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::JointsService,RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const*,RBX::JointsService *)const
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::JointsService,RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const*,RBX::JointsService *)const -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::JointsService,RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const*,RBX::JointsService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::JointsService,RBX::JointsService>(rbx_core::SharedPtr<RBX::JointsService> const*,RBX::JointsService *)const")]
 pub fn stub_451e28() -> ! {
     todo!("0x451e28 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::JointsService,RBX::JointsService>(boost::shared_ptr<RBX::JointsService> const*,RBX::JointsService *)const")
 }
@@ -546,7 +546,7 @@ pub fn stub_4527d8() -> ! {
 // demangled: boost::shared_ptr<RBX::RunService> RBX::Creatable<RBX::Instance>::create<RBX::RunService>(void)
 // type: void __fastcall(int)
 // was: boost::shared_ptr<RBX::RunService> RBX::Creatable<RBX::Instance>::create<RBX::RunService>(void) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::RunService> RBX::Creatable<RBX::Instance>::create<RBX::RunService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RunService> RBX::Creatable<RBX::Instance>::create<RBX::RunService>(void)")]
 pub fn stub_452f48() -> ! {
     todo!("0x452f48 boost::shared_ptr<RBX::RunService> RBX::Creatable<RBX::Instance>::create<RBX::RunService>(void)")
 }
@@ -555,7 +555,7 @@ pub fn stub_452f48() -> ! {
 // demangled: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RunService>(boost::shared_ptr<RBX::RunService> const&)
 // type: int(void)
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RunService>(boost::shared_ptr<RBX::RunService> const&) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RunService>(boost::shared_ptr<RBX::RunService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::RunService>(rbx_core::SharedPtr<RBX::RunService> const&)")]
 pub fn stub_452ff8() -> ! {
     todo!("0x452ff8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RunService>(boost::shared_ptr<RBX::RunService> const&)")
 }
@@ -576,7 +576,7 @@ pub fn stub_453038() -> ! {
 // 0x453040 — __ZN5boost10shared_ptrIN3RBX14CoreGuiServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::CoreGuiService>::shared_ptr<RBX::CoreGuiService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter)
 // was: boost::shared_ptr<RBX::CoreGuiService>::shared_ptr<RBX::CoreGuiService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::CoreGuiService>::shared_ptr<RBX::CoreGuiService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CoreGuiService>::shared_ptr<RBX::CoreGuiService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_453040() -> ! {
     todo!("0x453040 boost::shared_ptr<RBX::CoreGuiService>::shared_ptr<RBX::CoreGuiService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CoreGuiService *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -584,7 +584,7 @@ pub fn stub_453040() -> ! {
 // 0x453108 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14CoreGuiServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreGuiService,RBX::CoreGuiService>(boost::shared_ptr<RBX::CoreGuiService> const*,RBX::CoreGuiService *)const
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreGuiService,RBX::CoreGuiService>(boost::shared_ptr<RBX::CoreGuiService> const*,RBX::CoreGuiService *)const -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreGuiService,RBX::CoreGuiService>(boost::shared_ptr<RBX::CoreGuiService> const*,RBX::CoreGuiService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreGuiService,RBX::CoreGuiService>(rbx_core::SharedPtr<RBX::CoreGuiService> const*,RBX::CoreGuiService *)const")]
 pub fn stub_453108() -> ! {
     todo!("0x453108 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CoreGuiService,RBX::CoreGuiService>(boost::shared_ptr<RBX::CoreGuiService> const*,RBX::CoreGuiService *)const")
 }
@@ -610,7 +610,7 @@ pub fn stub_453200() -> ! {
 // demangled: boost::shared_ptr<RBX::StarterGuiService> RBX::Creatable<RBX::Instance>::create<RBX::StarterGuiService>(void)
 // type: void __fastcall(int)
 // was: boost::shared_ptr<RBX::StarterGuiService> RBX::Creatable<RBX::Instance>::create<RBX::StarterGuiService>(void) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::StarterGuiService> RBX::Creatable<RBX::Instance>::create<RBX::StarterGuiService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterGuiService> RBX::Creatable<RBX::Instance>::create<RBX::StarterGuiService>(void)")]
 pub fn stub_453374() -> ! {
     todo!("0x453374 boost::shared_ptr<RBX::StarterGuiService> RBX::Creatable<RBX::Instance>::create<RBX::StarterGuiService>(void)")
 }
@@ -619,7 +619,7 @@ pub fn stub_453374() -> ! {
 // demangled: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const&)
 // type: int __fastcall(_DWORD, _DWORD)
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const&) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::StarterGuiService>(rbx_core::SharedPtr<RBX::StarterGuiService> const&)")]
 pub fn stub_453424() -> ! {
     todo!("0x453424 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const&)")
 }
@@ -654,7 +654,7 @@ pub fn stub_453588() -> ! {
 // 0x453660 — __ZN5boost10shared_ptrIN3RBX17StarterGuiServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::StarterGuiService>::shared_ptr<RBX::StarterGuiService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterGuiService *,RBX::Creatable<RBX::Instance>::Deleter)
 // was: boost::shared_ptr<RBX::StarterGuiService>::shared_ptr<RBX::StarterGuiService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterGuiService *,RBX::Creatable<RBX::Instance>::Deleter) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::StarterGuiService>::shared_ptr<RBX::StarterGuiService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterGuiService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterGuiService>::shared_ptr<RBX::StarterGuiService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterGuiService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_453660() -> ! {
     todo!("0x453660 boost::shared_ptr<RBX::StarterGuiService>::shared_ptr<RBX::StarterGuiService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterGuiService *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -662,7 +662,7 @@ pub fn stub_453660() -> ! {
 // 0x453728 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17StarterGuiServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterGuiService,RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const*,RBX::StarterGuiService *)const
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterGuiService,RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const*,RBX::StarterGuiService *)const -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterGuiService,RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const*,RBX::StarterGuiService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterGuiService,RBX::StarterGuiService>(rbx_core::SharedPtr<RBX::StarterGuiService> const*,RBX::StarterGuiService *)const")]
 pub fn stub_453728() -> ! {
     todo!("0x453728 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterGuiService,RBX::StarterGuiService>(boost::shared_ptr<RBX::StarterGuiService> const*,RBX::StarterGuiService *)const")
 }
@@ -740,7 +740,7 @@ pub fn stub_453c88() -> ! {
 // 0x453d60 — __ZN5boost10shared_ptrIN3RBX18StarterPackServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::StarterPackService>::shared_ptr<RBX::StarterPackService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterPackService *,RBX::Creatable<RBX::Instance>::Deleter)
 // was: boost::shared_ptr<RBX::StarterPackService>::shared_ptr<RBX::StarterPackService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterPackService *,RBX::Creatable<RBX::Instance>::Deleter) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::StarterPackService>::shared_ptr<RBX::StarterPackService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterPackService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterPackService>::shared_ptr<RBX::StarterPackService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterPackService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_453d60() -> ! {
     todo!("0x453d60 boost::shared_ptr<RBX::StarterPackService>::shared_ptr<RBX::StarterPackService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterPackService *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -748,7 +748,7 @@ pub fn stub_453d60() -> ! {
 // 0x453e28 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18StarterPackServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterPackService,RBX::StarterPackService>(boost::shared_ptr<RBX::StarterPackService> const*,RBX::StarterPackService *)const
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterPackService,RBX::StarterPackService>(boost::shared_ptr<RBX::StarterPackService> const*,RBX::StarterPackService *)const -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterPackService,RBX::StarterPackService>(boost::shared_ptr<RBX::StarterPackService> const*,RBX::StarterPackService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterPackService,RBX::StarterPackService>(rbx_core::SharedPtr<RBX::StarterPackService> const*,RBX::StarterPackService *)const")]
 pub fn stub_453e28() -> ! {
     todo!("0x453e28 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::StarterPackService,RBX::StarterPackService>(boost::shared_ptr<RBX::StarterPackService> const*,RBX::StarterPackService *)const")
 }
@@ -771,7 +771,7 @@ pub fn stub_453f20() -> ! {
 // 0x453fc0 — __ZN5boost10shared_ptrIN3RBX9PlayerHUDEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::PlayerHUD>::shared_ptr<RBX::PlayerHUD,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerHUD *,RBX::Creatable<RBX::Instance>::Deleter)
 // was: boost::shared_ptr<RBX::PlayerHUD>::shared_ptr<RBX::PlayerHUD,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerHUD *,RBX::Creatable<RBX::Instance>::Deleter) -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::PlayerHUD>::shared_ptr<RBX::PlayerHUD,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerHUD *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PlayerHUD>::shared_ptr<RBX::PlayerHUD,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerHUD *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_453fc0() -> ! {
     todo!("0x453fc0 boost::shared_ptr<RBX::PlayerHUD>::shared_ptr<RBX::PlayerHUD,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerHUD *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -779,7 +779,7 @@ pub fn stub_453fc0() -> ! {
 // 0x454088 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9PlayerHUDES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerHUD,RBX::PlayerHUD>(boost::shared_ptr<RBX::PlayerHUD> const*,RBX::PlayerHUD *)const
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerHUD,RBX::PlayerHUD>(boost::shared_ptr<RBX::PlayerHUD> const*,RBX::PlayerHUD *)const -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerHUD,RBX::PlayerHUD>(boost::shared_ptr<RBX::PlayerHUD> const*,RBX::PlayerHUD *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerHUD,RBX::PlayerHUD>(rbx_core::SharedPtr<RBX::PlayerHUD> const*,RBX::PlayerHUD *)const")]
 pub fn stub_454088() -> ! {
     todo!("0x454088 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerHUD,RBX::PlayerHUD>(boost::shared_ptr<RBX::PlayerHUD> const*,RBX::PlayerHUD *)const")
 }

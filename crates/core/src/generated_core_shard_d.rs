@@ -94,7 +94,7 @@ pub fn stub_0x6c4ab4() -> ! {
     todo!("0x6c4ab4 __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE7connectIN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS2_11VirtualUserES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEEEENS0_10connectionERKT_")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot*)")]
 // 0x6c5e84 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotEEaSEPSA_ — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot*)
 pub fn stub_0x6c5e84() -> ! {
     todo!("0x6c5e84 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotEEaSEPSA_")
@@ -394,7 +394,7 @@ pub fn stub_0x6d4434() -> ! {
     todo!("0x6d4434 __ZN3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_9WorkspaceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_ED0Ev")
 }
 
-#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot> &)")]
 // 0x6d465c — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE — rbx::signals::signal<void ()(RBX::TouchPair const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot> &)
 pub fn stub_0x6d465c() -> ! {
     todo!("0x6d465c __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE")

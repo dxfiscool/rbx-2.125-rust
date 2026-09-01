@@ -552,7 +552,7 @@ pub fn stub_f3ea44() -> ! {
 }
 
 // 0xf3ea54 — j___ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE
-#[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> &)")]
 pub fn stub_f3ea54() -> ! {
     todo!("0xf3ea54 rbx::signals::signal<void ()(RBX::DataModel *)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> &)")
 }

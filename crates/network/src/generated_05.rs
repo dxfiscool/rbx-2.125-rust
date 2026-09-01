@@ -8,56 +8,56 @@ use rbx_core::SharedPtr;
 
 // 0xb06c30 — __ZN3RBX7Network10Replicator12JoinDataItem11addInstanceEN5boost10shared_ptrIKNS_8InstanceEEE
 // type: void __fastcall(int, _DWORD *, int, int, int, pthread_mutex_t *, int, int, int, int)
-#[doc(alias = "RBX::Network::Replicator::JoinDataItem::addInstance(boost::shared_ptr<RBX::Instance const>)")]
+#[doc(alias = "RBX::Network::Replicator::JoinDataItem::addInstance(rbx_core::SharedPtr<RBX::Instance const>)")]
 pub fn stub_b06c30() -> ! {
     todo!("0xb06c30 RBX::Network::Replicator::JoinDataItem::addInstance(boost::shared_ptr<RBX::Instance const>)")
 }
 
 // 0xb06d38 — __ZN5boost10shared_ptrIN3RBX7Network19InstancePacketCacheEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::InstancePacketCache>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::InstancePacketCache>::reset(void)")]
 pub fn stub_b06d38() -> ! {
     todo!("0xb06d38 boost::shared_ptr<RBX::Network::InstancePacketCache>::reset(void)")
 }
 
 // 0xb06dd8 — __ZN5boost10shared_ptrIN3RBX7Network18ClusterPacketCacheEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::ClusterPacketCache>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::ClusterPacketCache>::reset(void)")]
 pub fn stub_b06dd8() -> ! {
     todo!("0xb06dd8 boost::shared_ptr<RBX::Network::ClusterPacketCache>::reset(void)")
 }
 
 // 0xb06e78 — __ZN5boost10shared_ptrIN3RBX7Network13PhysicsSenderEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::PhysicsSender>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::PhysicsSender>::reset(void)")]
 pub fn stub_b06e78() -> ! {
     todo!("0xb06e78 boost::shared_ptr<RBX::Network::PhysicsSender>::reset(void)")
 }
 
 // 0xb071d8 — __ZN5boost10shared_ptrIN3RBX7Network10Replicator11SendDataJobEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::SendDataJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::SendDataJob>::reset(void)")]
 pub fn stub_b071d8() -> ! {
     todo!("0xb071d8 boost::shared_ptr<RBX::Network::Replicator::SendDataJob>::reset(void)")
 }
 
 // 0xb07278 — __ZN5boost10shared_ptrIN3RBX7Network10Replicator14SendClusterJobEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::SendClusterJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::SendClusterJob>::reset(void)")]
 pub fn stub_b07278() -> ! {
     todo!("0xb07278 boost::shared_ptr<RBX::Network::Replicator::SendClusterJob>::reset(void)")
 }
 
 // 0xb07318 — __ZN5boost10shared_ptrIN3RBX7Network10Replicator17ProcessPacketsJobEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::ProcessPacketsJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::ProcessPacketsJob>::reset(void)")]
 pub fn stub_b07318() -> ! {
     todo!("0xb07318 boost::shared_ptr<RBX::Network::Replicator::ProcessPacketsJob>::reset(void)")
 }
 
 // 0xb073b8 — __ZN5boost10shared_ptrIN3RBX7Network10Replicator7PingJobEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::PingJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::PingJob>::reset(void)")]
 pub fn stub_b073b8() -> ! {
     todo!("0xb073b8 boost::shared_ptr<RBX::Network::Replicator::PingJob>::reset(void)")
 }
@@ -82,14 +82,14 @@ pub fn stub_b076ec() -> ! {
 
 // 0xb07dec — __ZN5boost10shared_ptrIN3RBX7Network17ConcurrentRakPeerEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::ConcurrentRakPeer>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer>::reset(void)")]
 pub fn stub_b07dec() -> ! {
     todo!("0xb07dec boost::shared_ptr<RBX::Network::ConcurrentRakPeer>::reset(void)")
 }
 
 // 0xb07e8c — __ZN5boost10shared_ptrIN3RBX7Network10Replicator9StatsItemEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::StatsItem>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::StatsItem>::reset(void)")]
 pub fn stub_b07e8c() -> ! {
     todo!("0xb07e8c boost::shared_ptr<RBX::Network::Replicator::StatsItem>::reset(void)")
 }
@@ -150,7 +150,7 @@ pub fn stub_b0a3e0() -> ! {
 
 // 0xb0a6e8 — __ZN3RBX9weak_fromINS_7Network10ReplicatorEEEN5boost8weak_ptrIT_EEPS5_
 // type: void __fastcall(int, int)
-#[doc(alias = "boost::weak_ptr<RBX::Network::Replicator> RBX::weak_from<RBX::Network::Replicator>(RBX::Network::Replicator*)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::Network::Replicator> RBX::weak_from<RBX::Network::Replicator>(RBX::Network::Replicator*)")]
 pub fn stub_b0a6e8() -> ! {
     todo!("0xb0a6e8 boost::weak_ptr<RBX::Network::Replicator> RBX::weak_from<RBX::Network::Replicator>(RBX::Network::Replicator*)")
 }
@@ -215,7 +215,7 @@ pub fn stub_b0ce90() -> ! {
 
 // 0xb0ce98 — __ZN3RBX7Network10Replicator24shouldDelayAddingToWorldEN5boost10shared_ptrINS_8InstanceEEE
 // type: int()
-#[doc(alias = "RBX::Network::Replicator::shouldDelayAddingToWorld(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Network::Replicator::shouldDelayAddingToWorld(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b0ce98() -> ! {
     todo!("0xb0ce98 RBX::Network::Replicator::shouldDelayAddingToWorld(boost::shared_ptr<RBX::Instance>)")
 }

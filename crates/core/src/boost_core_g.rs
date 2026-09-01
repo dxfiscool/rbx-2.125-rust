@@ -498,7 +498,7 @@ pub fn stub_52f83c() -> ! {
     todo!("0x52f83c __ZN3rbx7signals6signalIFviiEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf2IvN3RBX19EventReplicatorImplILi2ENSA_9GuiButtonES2_EEiiEENS6_5list3INS6_5valueIPSD_EENS5_3argILi1EEENSJ_ILi2EEEEEEEEENS0_10connectionERKT_")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int,int)>::slot>::operator=(rbx::signals::signal<void ()(int,int)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(int,int)>::slot>::operator=(rbx::signals::signal<void ()(int,int)>::slot*)")]
 // 0x52fabc — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviiEE4slotEEaSEPS6_
 pub fn stub_52fabc() -> ! {
     todo!("0x52fabc __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviiEE4slotEEaSEPS6_")
@@ -749,13 +749,13 @@ pub fn stub_533110() -> ! {
     todo!("0x533110 __ZNK3RBX10Reflection13EventDescImplILi0ENS_9GuiButtonEFvvEN3rbx13remote_signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")
 }
 
-#[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UDim2)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UDim2)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UDim2)>::slot> &)")]
 // 0x5338ec — __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 pub fn stub_5338ec() -> ! {
     todo!("0x5338ec __ZN3rbx7signals6signalIFvN3RBX5UDim2EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
 }
 
-#[doc(alias = "rbx::signals::signal<void ()(int,int)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(int,int)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(int,int)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(int,int)>::slot> &)")]
 // 0x533a74 — __ZN3rbx7signals6signalIFviiEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 pub fn stub_533a74() -> ! {
     todo!("0x533a74 __ZN3rbx7signals6signalIFviiEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")

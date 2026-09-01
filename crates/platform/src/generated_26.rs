@@ -93,13 +93,13 @@ pub fn stub_f65a34() -> ! {
 }
 
 // 0xf65a24 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_22TextureContentProviderES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextureContentProvider,RBX::TextureContentProvider>(boost::shared_ptr<RBX::TextureContentProvider> const*,RBX::TextureContentProvider *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextureContentProvider,RBX::TextureContentProvider>(rbx_core::SharedPtr<RBX::TextureContentProvider> const*,RBX::TextureContentProvider *)const")]
 pub fn stub_f65a24() -> ! {
     todo!("0xf65a24 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextureContentProvider,RBX::TextureContentProvider>(boost::shared_ptr<RBX::TextureContentProvider> const*,RBX::TextureContentProvider *)const")
 }
 
 // 0xf65a14 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11TextServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextService,RBX::TextService>(boost::shared_ptr<RBX::TextService> const*,RBX::TextService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextService,RBX::TextService>(rbx_core::SharedPtr<RBX::TextService> const*,RBX::TextService *)const")]
 pub fn stub_f65a14() -> ! {
     todo!("0xf65a14 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextService,RBX::TextService>(boost::shared_ptr<RBX::TextService> const*,RBX::TextService *)const")
 }
@@ -216,21 +216,21 @@ pub fn stub_f65404() -> ! {
 
 // 0xf653f4 — j___ZN3RBX10Reflection13DescribedBase21fastSharedDynamicCastINS_8SparklesENS_8InstanceEEEN5boost10shared_ptrIT_EERKNS6_IT0_EE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, __guard *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Sparkles> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Sparkles,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Sparkles> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Sparkles,RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 pub fn stub_f653f4() -> ! {
     todo!("0xf653f4 boost::shared_ptr<RBX::Sparkles> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Sparkles,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
 }
 
 // 0xf653e4 — j___ZN3RBX10Reflection13DescribedBase21fastSharedDynamicCastINS_5SmokeENS_8InstanceEEEN5boost10shared_ptrIT_EERKNS6_IT0_EE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, __guard *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Smoke> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Smoke,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Smoke> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Smoke,RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 pub fn stub_f653e4() -> ! {
     todo!("0xf653e4 boost::shared_ptr<RBX::Smoke> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Smoke,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
 }
 
 // 0xf653d4 — j___ZN3RBX10Reflection13DescribedBase21fastSharedDynamicCastINS_4FireENS_8InstanceEEEN5boost10shared_ptrIT_EERKNS6_IT0_EE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, __guard *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Fire> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Fire,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Fire> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Fire,RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 pub fn stub_f653d4() -> ! {
     todo!("0xf653d4 boost::shared_ptr<RBX::Fire> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Fire,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
 }
@@ -403,7 +403,7 @@ pub fn stub_f65234() -> ! {
 
 // 0xf65224 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19MeshContentProviderES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::MeshContentProvider,RBX::MeshContentProvider>(boost::shared_ptr<RBX::MeshContentProvider> const*,RBX::MeshContentProvider *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::MeshContentProvider,RBX::MeshContentProvider>(rbx_core::SharedPtr<RBX::MeshContentProvider> const*,RBX::MeshContentProvider *)const")]
 pub fn stub_f65224() -> ! {
     todo!("0xf65224 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::MeshContentProvider,RBX::MeshContentProvider>(boost::shared_ptr<RBX::MeshContentProvider> const*,RBX::MeshContentProvider *)const")
 }
@@ -595,14 +595,14 @@ pub fn stub_f64ff4() -> ! {
 }
 
 // 0xf64fa4 — j___ZNSt4pairIN4Ogre10TexturePtrEN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEED1Ev
-#[doc(alias = "std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::~pair()")]
+#[doc(alias = "std::pair<Ogre::TexturePtr,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>::~pair()")]
 pub fn stub_f64fa4() -> ! {
     todo!("0xf64fa4 std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::~pair()")
 }
 
 // 0xf64f94 — j___ZNSt4pairIN4Ogre10TexturePtrEN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEEC2ERKS1_RKS7_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
-#[doc(alias = "std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::pair(Ogre::TexturePtr const&,boost::shared_ptr<RBX::TextureCompositor::Job> const&)")]
+#[doc(alias = "std::pair<Ogre::TexturePtr,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>::pair(Ogre::TexturePtr const&,rbx_core::SharedPtr<RBX::TextureCompositor::Job> const&)")]
 pub fn stub_f64f94() -> ! {
     todo!("0xf64f94 std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::pair(Ogre::TexturePtr const&,boost::shared_ptr<RBX::TextureCompositor::Job> const&)")
 }

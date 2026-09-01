@@ -776,7 +776,7 @@ pub fn stub_8abd80() -> ! {
 }
 
 // 0x8e1440 — __ZN3RBX9GuiBase2d23RecursiveRenderChildrenEN5boost10shared_ptrINS_8InstanceEEEPNS_5AdornE
-#[doc(alias = "RBX::GuiBase2d::RecursiveRenderChildren(boost::shared_ptr<RBX::Instance>,RBX::Adorn *)")]
+#[doc(alias = "RBX::GuiBase2d::RecursiveRenderChildren(rbx_core::SharedPtr<RBX::Instance>,RBX::Adorn *)")]
 // was: RBX::GuiBase2d::RecursiveRenderChildren(boost::shared_ptr<RBX::Instance>,RBX::Adorn *)
 pub fn stub_8e1440() -> ! {
     todo!("0x8e1440 RBX::GuiBase2d::RecursiveRenderChildren(boost::shared_ptr<RBX::Instance>,RBX::Adorn *)")

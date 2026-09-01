@@ -106,14 +106,14 @@ pub fn stub_b2ed54() -> ! {
 
 // 0xb2ed78 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")]
 pub fn stub_b2ed78() -> ! {
     todo!("0xb2ed78 RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::~BoundFuncDesc()")
 }
 
 // 0xb2ee54 — __ZNK3RBX10Reflection13BoundFuncDescINS_7Network10ReplicatorEFN5boost10shared_ptrINS_8InstanceEEEvELi0EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: void __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 pub fn stub_b2ee54() -> ! {
     todo!("0xb2ee54 RBX::Reflection::BoundFuncDesc<RBX::Network::Replicator,boost::shared_ptr<RBX::Instance> ()(void),0>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
 }
@@ -134,7 +134,7 @@ pub fn stub_b2f434() -> ! {
 
 // 0xb2f510 — __ZNK3RBX10Reflection13EventDescImplILi2ENS_7Network10ReplicatorEFvSsbEN3rbx6signalIS4_EEMS3_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // type: void __fastcall(int, int, int, int *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Replicator,void ()(std::string,bool),rbx::signal<void ()(std::string,bool)>,rbx::signal<void ()(std::string,bool)> RBX::Network::Replicator::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+#[doc(alias = "RBX::Reflection::EventDescImpl<2,RBX::Network::Replicator,void ()(std::string,bool),rbx::signal<void ()(std::string,bool)>,rbx::signal<void ()(std::string,bool)> RBX::Network::Replicator::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 pub fn stub_b2f510() -> ! {
     todo!("0xb2f510 RBX::Reflection::EventDescImpl<2,RBX::Network::Replicator,void ()(std::string,bool),rbx::signal<void ()(std::string,bool)>,rbx::signal<void ()(std::string,bool)> RBX::Network::Replicator::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
 }
@@ -253,7 +253,7 @@ pub fn stub_b33f20() -> ! {
 
 // 0xb34b1c — __ZN3RBX7Network15PhysicsReceiver5startEN5boost10shared_ptrIS1_EE
 // type: void()
-#[doc(alias = "RBX::Network::PhysicsReceiver::start(boost::shared_ptr<RBX::Network::PhysicsReceiver>)")]
+#[doc(alias = "RBX::Network::PhysicsReceiver::start(rbx_core::SharedPtr<RBX::Network::PhysicsReceiver>)")]
 pub fn stub_b34b1c() -> ! {
     todo!("0xb34b1c RBX::Network::PhysicsReceiver::start(boost::shared_ptr<RBX::Network::PhysicsReceiver>)")
 }
@@ -288,21 +288,21 @@ pub fn stub_b35228() -> ! {
 
 // 0xb353e4 — __ZNSt8_Rb_treeIPKN3RBX10Reflection18PropertyDescriptorESt4pairIKS4_N5boost10shared_ptrINS0_7Network22SharedStringDictionaryEEEESt10_Select1stISC_ESt4lessIS4_ESaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E
 // type: void __fastcall(int, _DWORD *)
-#[doc(alias = "std::_Rb_tree<RBX::Reflection::PropertyDescriptor const*,std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>,std::_Select1st<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>>,std::less<RBX::Reflection::PropertyDescriptor const*>,std::allocator<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>> *)")]
+#[doc(alias = "std::_Rb_tree<RBX::Reflection::PropertyDescriptor const*,std::pair<RBX::Reflection::PropertyDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringDictionary>>,std::_Select1st<std::pair<RBX::Reflection::PropertyDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringDictionary>>>,std::less<RBX::Reflection::PropertyDescriptor const*>,std::allocator<std::pair<RBX::Reflection::PropertyDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringDictionary>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Reflection::PropertyDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringDictionary>>> *)")]
 pub fn stub_b353e4() -> ! {
     todo!("0xb353e4 std::_Rb_tree<RBX::Reflection::PropertyDescriptor const*,std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>,std::_Select1st<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>>,std::less<RBX::Reflection::PropertyDescriptor const*>,std::allocator<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>> *)")
 }
 
 // 0xb35414 — __ZNSt8_Rb_treeIPKN3RBX10Reflection18PropertyDescriptorESt4pairIKS4_N5boost10shared_ptrINS0_7Network31SharedStringProtectedDictionaryEEEESt10_Select1stISC_ESt4lessIS4_ESaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E
 // type: void __fastcall(int, _DWORD *)
-#[doc(alias = "std::_Rb_tree<RBX::Reflection::PropertyDescriptor const*,std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringProtectedDictionary>>,std::_Select1st<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringProtectedDictionary>>>,std::less<RBX::Reflection::PropertyDescriptor const*>,std::allocator<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringProtectedDictionary>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringProtectedDictionary>>> *)")]
+#[doc(alias = "std::_Rb_tree<RBX::Reflection::PropertyDescriptor const*,std::pair<RBX::Reflection::PropertyDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringProtectedDictionary>>,std::_Select1st<std::pair<RBX::Reflection::PropertyDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringProtectedDictionary>>>,std::less<RBX::Reflection::PropertyDescriptor const*>,std::allocator<std::pair<RBX::Reflection::PropertyDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringProtectedDictionary>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Reflection::PropertyDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringProtectedDictionary>>> *)")]
 pub fn stub_b35414() -> ! {
     todo!("0xb35414 std::_Rb_tree<RBX::Reflection::PropertyDescriptor const*,std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringProtectedDictionary>>,std::_Select1st<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringProtectedDictionary>>>,std::less<RBX::Reflection::PropertyDescriptor const*>,std::allocator<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringProtectedDictionary>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Reflection::PropertyDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringProtectedDictionary>>> *)")
 }
 
 // 0xb35444 — __ZNSt8_Rb_treeIPKN3RBX10Reflection15EventDescriptorESt4pairIKS4_N5boost10shared_ptrINS0_7Network22SharedStringDictionaryEEEESt10_Select1stISC_ESt4lessIS4_ESaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E
 // type: void __fastcall(int, _DWORD *)
-#[doc(alias = "std::_Rb_tree<RBX::Reflection::EventDescriptor const*,std::pair<RBX::Reflection::EventDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>,std::_Select1st<std::pair<RBX::Reflection::EventDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>>,std::less<RBX::Reflection::EventDescriptor const*>,std::allocator<std::pair<RBX::Reflection::EventDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Reflection::EventDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>> *)")]
+#[doc(alias = "std::_Rb_tree<RBX::Reflection::EventDescriptor const*,std::pair<RBX::Reflection::EventDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringDictionary>>,std::_Select1st<std::pair<RBX::Reflection::EventDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringDictionary>>>,std::less<RBX::Reflection::EventDescriptor const*>,std::allocator<std::pair<RBX::Reflection::EventDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringDictionary>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Reflection::EventDescriptor const* const,rbx_core::SharedPtr<RBX::Network::SharedStringDictionary>>> *)")]
 pub fn stub_b35444() -> ! {
     todo!("0xb35444 std::_Rb_tree<RBX::Reflection::EventDescriptor const*,std::pair<RBX::Reflection::EventDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>,std::_Select1st<std::pair<RBX::Reflection::EventDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>>,std::less<RBX::Reflection::EventDescriptor const*>,std::allocator<std::pair<RBX::Reflection::EventDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Reflection::EventDescriptor const* const,boost::shared_ptr<RBX::Network::SharedStringDictionary>>> *)")
 }
@@ -434,7 +434,7 @@ pub fn stub_b379f4() -> ! {
 
 // 0xb37cd4 — __ZN3RBX7Network19PersistentDataStore11setInstanceERKSsN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(RBX::Network::PersistentDataStore *, const std::string *, int *, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::Network::PersistentDataStore::setInstance(std::string const&,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Network::PersistentDataStore::setInstance(std::string const&,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b37cd4() -> ! {
     todo!("0xb37cd4 RBX::Network::PersistentDataStore::setInstance(std::string const&,boost::shared_ptr<RBX::Instance>)")
 }
@@ -546,14 +546,14 @@ pub fn stub_b3bd0c() -> ! {
 
 // 0xb3bd24 — __ZN3RBX7Network18PhysicsPacketCache16onAddingAssemblyEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, _DWORD *, int, int)
-#[doc(alias = "RBX::Network::PhysicsPacketCache::onAddingAssembly(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Network::PhysicsPacketCache::onAddingAssembly(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b3bd24() -> ! {
     todo!("0xb3bd24 RBX::Network::PhysicsPacketCache::onAddingAssembly(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xb3c02c — __ZN3RBX7Network18PhysicsPacketCache17onRemovedAssemblyEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, _DWORD *, int, int)
-#[doc(alias = "RBX::Network::PhysicsPacketCache::onRemovedAssembly(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Network::PhysicsPacketCache::onRemovedAssembly(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b3c02c() -> ! {
     todo!("0xb3c02c RBX::Network::PhysicsPacketCache::onRemovedAssembly(boost::shared_ptr<RBX::Instance>)")
 }
@@ -630,7 +630,7 @@ pub fn stub_b3cabc() -> ! {
 
 // 0xb3cb4c — __ZN3RBX7Network19InstancePacketCache17onAncestorChangedEN5boost10shared_ptrINS_8InstanceEEES5_
 // type: RBX::Network::InstancePacketCache *__fastcall(RBX::Network::InstancePacketCache *result, const RBX::Instance **, _DWORD *)
-#[doc(alias = "RBX::Network::InstancePacketCache::onAncestorChanged(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Network::InstancePacketCache::onAncestorChanged(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b3cb4c() -> ! {
     todo!("0xb3cb4c RBX::Network::InstancePacketCache::onAncestorChanged(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
@@ -658,7 +658,7 @@ pub fn stub_b3e6e4() -> ! {
 
 // 0xb3e754 — __ZN5boost4bindIvN3RBX7Network19InstancePacketCache15CachedBitStreamEPKNS1_10Reflection18PropertyDescriptorENS_10shared_ptrIS4_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1ISF_T0_T1_EENSD_9list_av_2IT2_T3_E4typeEEEMSI_FSF_SJ_ESM_SN_
 // type: void __fastcall(int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list_av_2<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::arg<1>>::type> boost::bind<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::arg<1>>(void (RBX::Network::InstancePacketCache::CachedBitStream::*)(RBX::Reflection::PropertyDescriptor const*),boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::arg<1>>::type> boost::bind<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::arg<1>>(void (RBX::Network::InstancePacketCache::CachedBitStream::*)(RBX::Reflection::PropertyDescriptor const*),rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::arg<1>)")]
 pub fn stub_b3e754() -> ! {
     todo!("0xb3e754 boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list_av_2<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::arg<1>>::type> boost::bind<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::arg<1>>(void (RBX::Network::InstancePacketCache::CachedBitStream::*)(RBX::Reflection::PropertyDescriptor const*),boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::arg<1>)")
 }
@@ -672,138 +672,138 @@ pub fn stub_b3edb8() -> ! {
 
 // 0xb3f318 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS_10shared_ptrINS5_7Network19InstancePacketCache15CachedBitStreamEEEEES8_SE_NS_4hashIS8_EESt8equal_toIS8_EEEE11erase_nodesEPNS1_8ptr_nodeISF_EESP_
 // type: _DWORD *__fastcall(_DWORD *, int, int)
-#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>> *)")]
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>> *)")]
 pub fn stub_b3f318() -> ! {
     todo!("0xb3f318 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>> *,boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>> *)")
 }
 
 // 0xb3f8e8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_7Network19InstancePacketCacheES6_S6_EENSA_5list3INSA_5valueIPSF_EENS2_3argILi1EEENSL_ILi2EEEEEEEED1Ev
 // type: int __fastcall(int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 pub fn stub_b3f8e8() -> ! {
     todo!("0xb3f8e8 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
 }
 
 // 0xb3f944 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_7Network19InstancePacketCacheES6_S6_EENSA_5list3INSA_5valueIPSF_EENS2_3argILi1EEENSL_ILi2EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 pub fn stub_b3f944() -> ! {
     todo!("0xb3f944 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
 }
 
 // 0xb3fa50 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_7Network19InstancePacketCacheES7_S7_EENSB_5list3INSB_5valueIPSG_EENS3_3argILi1EEENSM_ILi2EEEEEEELi2ES8_E4callES7_S7_
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b3fa50() -> ! {
     todo!("0xb3fa50 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xb3fa6c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_7Network19InstancePacketCacheES7_S7_EENSB_5list3INSB_5valueIPSG_EENS3_3argILi1EEENSM_ILi2EEEEEEELi2ES8_E4callES7_S7_
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b3fa6c() -> ! {
     todo!("0xb3fa6c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache*>,boost::arg<1>,boost::arg<2>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xb3fa88 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX7Network19InstancePacketCacheEEENS_3argILi1EEENS8_ILi2EEEEclINS_4_mfi3mf2IvS5_NS_10shared_ptrINS3_8InstanceEEESH_EENS0_5list2IRSH_SK_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(pthread_mutex_t **, int, int **, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::shared_ptr<RBX::Instance>&,boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list2<boost::shared_ptr<RBX::Instance>&,boost::shared_ptr<RBX::Instance>&> &,int)")]
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<rbx_core::SharedPtr<RBX::Instance>&,rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>> &,boost::_bi::list2<rbx_core::SharedPtr<RBX::Instance>&,rbx_core::SharedPtr<RBX::Instance>&> &,int)")]
 pub fn stub_b3fa88() -> ! {
     todo!("0xb3fa88 void boost::_bi::list3<boost::_bi::value<RBX::Network::InstancePacketCache *>,boost::arg<1>,boost::arg<2>>::operator()<boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::shared_ptr<RBX::Instance>&,boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list2<boost::shared_ptr<RBX::Instance>&,boost::shared_ptr<RBX::Instance>&> &,int)")
 }
 
 // 0xb3fee0 — __ZNK5boost4_mfi3mf2IvN3RBX7Network19InstancePacketCacheENS_10shared_ptrINS2_8InstanceEEES7_EclEPS4_S7_S7_
 // type: void __fastcall(char **, int, int *, int *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::InstancePacketCache*,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)const")]
+#[doc(alias = "boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::InstancePacketCache*,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)const")]
 pub fn stub_b3fee0() -> ! {
     todo!("0xb3fee0 boost::_mfi::mf2<void,RBX::Network::InstancePacketCache,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::InstancePacketCache*,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)const")
 }
 
 // 0xb40350 — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network19InstancePacketCache15CachedBitStreamES6_EENSB_5list2INSB_5valueINSA_10shared_ptrISH_EEEENSA_3argILi1EEEEEEEED1Ev
 // type: int()
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()")]
 pub fn stub_b40350() -> ! {
     todo!("0xb40350 rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()")
 }
 
 // 0xb4035c — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS2_7Network19InstancePacketCache15CachedBitStreamES6_EENSB_5list2INSB_5valueINSA_10shared_ptrISH_EEEENSA_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()")]
 pub fn stub_b4035c() -> ! {
     todo!("0xb4035c rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>>::~callable_slot()")
 }
 
 // 0xb40414 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 pub fn stub_b40414() -> ! {
     todo!("0xb40414 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
 // 0xb40430 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 pub fn stub_b40430() -> ! {
     todo!("0xb40430 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
 // 0xb4044c — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_ED2Ev
 // type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
 pub fn stub_b4044c() -> ! {
     todo!("0xb4044c rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
 }
 
 // 0xb405c8 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_ED1Ev
 // type: int()
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
 pub fn stub_b405c8() -> ! {
     todo!("0xb405c8 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
 }
 
 // 0xb405d4 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvNSB_4_mfi3mf1IvNS3_7Network19InstancePacketCache15CachedBitStreamES7_EENSC_5list2INSC_5valueINSB_10shared_ptrISI_EEEENSB_3argILi1EEEEEEELi1ES8_ED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
 pub fn stub_b405d4() -> ! {
     todo!("0xb405d4 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::InstancePacketCache::CachedBitStream,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
 }
 
 // 0xb4068c — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network19InstancePacketCache15CachedBitStreamEEEEENS_3argILi1EEEEC2ES9_SB_
 // type: _DWORD *__fastcall(_DWORD *, unsigned int *, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
-#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>)")]
 pub fn stub_b4068c() -> ! {
     todo!("0xb4068c boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>,boost::arg<1>)")
 }
 
 // 0xb408dc — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS_10shared_ptrINS5_7Network19InstancePacketCache15CachedBitStreamEEEEES8_SE_NS_4hashIS8_EESt8equal_toIS8_EEEE12emplace_implINS1_13emplace_args1ISF_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISF_EEEEbERS9_RKT_
 // type: void __fastcall(_DWORD *, _DWORD *, unsigned int *, int, void *, char, int, int, int, int)
-#[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>>(RBX::Instance const* const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>> const&)")]
+#[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>>>(RBX::Instance const* const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>> const&)")]
 pub fn stub_b408dc() -> ! {
     todo!("0xb408dc std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>>(RBX::Instance const* const&,boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>> const&)")
 }
 
 // 0xb40aac — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKN3RBX8InstanceENS_10shared_ptrINS5_7Network19InstancePacketCache15CachedBitStreamEEEEEEEE20construct_with_valueINS1_13emplace_args1ISF_EEEEvRKT_
 // type: int __fastcall(int, _DWORD **)
-#[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>>(boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>> const&)")]
+#[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>>>(boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>> const&)")]
 pub fn stub_b40aac() -> ! {
     todo!("0xb40aac void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>>(boost::unordered::detail::emplace_args1<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>> const&)")
 }
 
 // 0xb40b90 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS_10shared_ptrINS5_7Network19InstancePacketCache15CachedBitStreamEEEEES8_SE_NS_4hashIS8_EESt8equal_toIS8_EEEE18reserve_for_insertEm
 // type: _DWORD *__fastcall(int, unsigned int)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::reserve_for_insert(unsigned long)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::reserve_for_insert(unsigned long)")]
 pub fn stub_b40b90() -> ! {
     todo!("0xb40b90 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::reserve_for_insert(unsigned long)")
 }
 
 // 0xb40d38 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS_10shared_ptrINS5_7Network19InstancePacketCache15CachedBitStreamEEEEES8_SE_NS_4hashIS8_EESt8equal_toIS8_EEEE14create_bucketsEm
 // type: unsigned int __fastcall(int, unsigned int)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::create_buckets(unsigned long)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::create_buckets(unsigned long)")]
 pub fn stub_b40d38() -> ! {
     todo!("0xb40d38 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::Instance const* const,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>>>,RBX::Instance const*,boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream>,boost::hash<RBX::Instance const*>,std::equal_to<RBX::Instance const*>>>::create_buckets(unsigned long)")
 }
 
 // 0xb40de8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network19InstancePacketCache15CachedBitStreamES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int, int, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::InstancePacketCache::CachedBitStream,RBX::Network::InstancePacketCache::CachedBitStream>(boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream> *,RBX::Network::InstancePacketCache::CachedBitStream *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::InstancePacketCache::CachedBitStream,RBX::Network::InstancePacketCache::CachedBitStream>(rbx_core::SharedPtr<RBX::Network::InstancePacketCache::CachedBitStream> *,RBX::Network::InstancePacketCache::CachedBitStream *,boost::detail::shared_count &)")]
 pub fn stub_b40de8() -> ! {
     todo!("0xb40de8 void boost::detail::sp_pointer_construct<RBX::Network::InstancePacketCache::CachedBitStream,RBX::Network::InstancePacketCache::CachedBitStream>(boost::shared_ptr<RBX::Network::InstancePacketCache::CachedBitStream> *,RBX::Network::InstancePacketCache::CachedBitStream *,boost::detail::shared_count &)")
 }

@@ -8,7 +8,7 @@ use rbx_core::SharedPtr;
 
 // 0xb213b8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_22ErrorCompPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::ErrorCompPhysicsSender>(boost::shared_ptr<RBX::Network::PhysicsSender> *,RBX::Network::ErrorCompPhysicsSender *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::ErrorCompPhysicsSender>(rbx_core::SharedPtr<RBX::Network::PhysicsSender> *,RBX::Network::ErrorCompPhysicsSender *,boost::detail::shared_count &)")]
 pub fn stub_b213b8() -> ! {
     todo!("0xb213b8 void boost::detail::sp_pointer_construct<RBX::Network::PhysicsSender,RBX::Network::ErrorCompPhysicsSender>(boost::shared_ptr<RBX::Network::PhysicsSender> *,RBX::Network::ErrorCompPhysicsSender *,boost::detail::shared_count &)")
 }
@@ -50,21 +50,21 @@ pub fn stub_b21578() -> ! {
 
 // 0xb221c8 — __ZN5boost3_bi5list5INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES8_SA_SB_SC_SD_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::list5(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")]
+#[doc(alias = "boost::_bi::list5<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::list5(boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")]
 pub fn stub_b221c8() -> ! {
     todo!("0xb221c8 boost::_bi::list5<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::list5(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")
 }
 
 // 0xb22618 — __ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES8_SA_SB_SC_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
+#[doc(alias = "boost::_bi::storage4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::storage4(boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
 pub fn stub_b22618() -> ! {
     todo!("0xb22618 boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")
 }
 
 // 0xb22a68 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEEEC2ES8_SA_
 // type: _DWORD *__fastcall(_DWORD *, unsigned int *, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
-#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Replicator>>,boost::arg<1>)")]
 pub fn stub_b22a68() -> ! {
     todo!("0xb22a68 boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Network::Replicator>>,boost::arg<1>)")
 }
@@ -99,14 +99,14 @@ pub fn stub_b23c10() -> ! {
 
 // 0xb23cd8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator7PingJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::Replicator::PingJob,RBX::Network::Replicator::PingJob>(boost::shared_ptr<RBX::Network::Replicator::PingJob> *,RBX::Network::Replicator::PingJob *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::Replicator::PingJob,RBX::Network::Replicator::PingJob>(rbx_core::SharedPtr<RBX::Network::Replicator::PingJob> *,RBX::Network::Replicator::PingJob *,boost::detail::shared_count &)")]
 pub fn stub_b23cd8() -> ! {
     todo!("0xb23cd8 void boost::detail::sp_pointer_construct<RBX::Network::Replicator::PingJob,RBX::Network::Replicator::PingJob>(boost::shared_ptr<RBX::Network::Replicator::PingJob> *,RBX::Network::Replicator::PingJob *,boost::detail::shared_count &)")
 }
 
 // 0xb23e88 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator7PingJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::PingJob,RBX::Network::Replicator::PingJob>(boost::shared_ptr<RBX::Network::Replicator::PingJob> const*,RBX::Network::Replicator::PingJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::PingJob,RBX::Network::Replicator::PingJob>(rbx_core::SharedPtr<RBX::Network::Replicator::PingJob> const*,RBX::Network::Replicator::PingJob *)const")]
 pub fn stub_b23e88() -> ! {
     todo!("0xb23e88 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::PingJob,RBX::Network::Replicator::PingJob>(boost::shared_ptr<RBX::Network::Replicator::PingJob> const*,RBX::Network::Replicator::PingJob *)const")
 }
@@ -148,14 +148,14 @@ pub fn stub_b2415c() -> ! {
 
 // 0xb24160 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator17ProcessPacketsJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::Replicator::ProcessPacketsJob,RBX::Network::Replicator::ProcessPacketsJob>(boost::shared_ptr<RBX::Network::Replicator::ProcessPacketsJob> *,RBX::Network::Replicator::ProcessPacketsJob *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::Replicator::ProcessPacketsJob,RBX::Network::Replicator::ProcessPacketsJob>(rbx_core::SharedPtr<RBX::Network::Replicator::ProcessPacketsJob> *,RBX::Network::Replicator::ProcessPacketsJob *,boost::detail::shared_count &)")]
 pub fn stub_b24160() -> ! {
     todo!("0xb24160 void boost::detail::sp_pointer_construct<RBX::Network::Replicator::ProcessPacketsJob,RBX::Network::Replicator::ProcessPacketsJob>(boost::shared_ptr<RBX::Network::Replicator::ProcessPacketsJob> *,RBX::Network::Replicator::ProcessPacketsJob *,boost::detail::shared_count &)")
 }
 
 // 0xb24310 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator17ProcessPacketsJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::ProcessPacketsJob,RBX::Network::Replicator::ProcessPacketsJob>(boost::shared_ptr<RBX::Network::Replicator::ProcessPacketsJob> const*,RBX::Network::Replicator::ProcessPacketsJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::ProcessPacketsJob,RBX::Network::Replicator::ProcessPacketsJob>(rbx_core::SharedPtr<RBX::Network::Replicator::ProcessPacketsJob> const*,RBX::Network::Replicator::ProcessPacketsJob *)const")]
 pub fn stub_b24310() -> ! {
     todo!("0xb24310 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::ProcessPacketsJob,RBX::Network::Replicator::ProcessPacketsJob>(boost::shared_ptr<RBX::Network::Replicator::ProcessPacketsJob> const*,RBX::Network::Replicator::ProcessPacketsJob *)const")
 }
@@ -197,14 +197,14 @@ pub fn stub_b245e4() -> ! {
 
 // 0xb245e8 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator14SendClusterJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::Replicator::SendClusterJob,RBX::Network::Replicator::SendClusterJob>(boost::shared_ptr<RBX::Network::Replicator::SendClusterJob> *,RBX::Network::Replicator::SendClusterJob *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::Replicator::SendClusterJob,RBX::Network::Replicator::SendClusterJob>(rbx_core::SharedPtr<RBX::Network::Replicator::SendClusterJob> *,RBX::Network::Replicator::SendClusterJob *,boost::detail::shared_count &)")]
 pub fn stub_b245e8() -> ! {
     todo!("0xb245e8 void boost::detail::sp_pointer_construct<RBX::Network::Replicator::SendClusterJob,RBX::Network::Replicator::SendClusterJob>(boost::shared_ptr<RBX::Network::Replicator::SendClusterJob> *,RBX::Network::Replicator::SendClusterJob *,boost::detail::shared_count &)")
 }
 
 // 0xb24798 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator14SendClusterJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::SendClusterJob,RBX::Network::Replicator::SendClusterJob>(boost::shared_ptr<RBX::Network::Replicator::SendClusterJob> const*,RBX::Network::Replicator::SendClusterJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::SendClusterJob,RBX::Network::Replicator::SendClusterJob>(rbx_core::SharedPtr<RBX::Network::Replicator::SendClusterJob> const*,RBX::Network::Replicator::SendClusterJob *)const")]
 pub fn stub_b24798() -> ! {
     todo!("0xb24798 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::SendClusterJob,RBX::Network::Replicator::SendClusterJob>(boost::shared_ptr<RBX::Network::Replicator::SendClusterJob> const*,RBX::Network::Replicator::SendClusterJob *)const")
 }
@@ -246,14 +246,14 @@ pub fn stub_b24a6c() -> ! {
 
 // 0xb24a70 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator11SendDataJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::Replicator::SendDataJob,RBX::Network::Replicator::SendDataJob>(boost::shared_ptr<RBX::Network::Replicator::SendDataJob> *,RBX::Network::Replicator::SendDataJob *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::Replicator::SendDataJob,RBX::Network::Replicator::SendDataJob>(rbx_core::SharedPtr<RBX::Network::Replicator::SendDataJob> *,RBX::Network::Replicator::SendDataJob *,boost::detail::shared_count &)")]
 pub fn stub_b24a70() -> ! {
     todo!("0xb24a70 void boost::detail::sp_pointer_construct<RBX::Network::Replicator::SendDataJob,RBX::Network::Replicator::SendDataJob>(boost::shared_ptr<RBX::Network::Replicator::SendDataJob> *,RBX::Network::Replicator::SendDataJob *,boost::detail::shared_count &)")
 }
 
 // 0xb24c20 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network10Replicator11SendDataJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::SendDataJob,RBX::Network::Replicator::SendDataJob>(boost::shared_ptr<RBX::Network::Replicator::SendDataJob> const*,RBX::Network::Replicator::SendDataJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::SendDataJob,RBX::Network::Replicator::SendDataJob>(rbx_core::SharedPtr<RBX::Network::Replicator::SendDataJob> const*,RBX::Network::Replicator::SendDataJob *)const")]
 pub fn stub_b24c20() -> ! {
     todo!("0xb24c20 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::Replicator::SendDataJob,RBX::Network::Replicator::SendDataJob>(boost::shared_ptr<RBX::Network::Replicator::SendDataJob> const*,RBX::Network::Replicator::SendDataJob *)const")
 }
@@ -323,56 +323,56 @@ pub fn stub_b29658() -> ! {
 
 // 0xb2af98 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10Replicator12JoinDataItemENS_10shared_ptrIKNS7_8InstanceEEEEENS3_5list2INS3_5valueIPSA_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSP_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(_UNKNOWN **result, int, unsigned int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::JoinDataItem,boost::shared_ptr<RBX::Instance const>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::JoinDataItem*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::JoinDataItem,rbx_core::SharedPtr<RBX::Instance const>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::JoinDataItem*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 pub fn stub_b2af98() -> ! {
     todo!("0xb2af98 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::JoinDataItem,boost::shared_ptr<RBX::Instance const>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::JoinDataItem*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
 }
 
 // 0xb2aff8 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX7Network10Replicator12JoinDataItemENS_10shared_ptrIKNS7_8InstanceEEEEENS3_5list2INS3_5valueIPSA_EENS_3argILi1EEEEEEEvNSB_ISC_EEE6invokeERNS1_15function_bufferESO_
 // type: void __fastcall(int, int *, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::JoinDataItem,boost::shared_ptr<RBX::Instance const>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::JoinDataItem*>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::JoinDataItem,rbx_core::SharedPtr<RBX::Instance const>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::JoinDataItem*>,boost::arg<1>>>,void,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_b2aff8() -> ! {
     todo!("0xb2aff8 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::Replicator::JoinDataItem,boost::shared_ptr<RBX::Instance const>>,boost::_bi::list2<boost::_bi::value<RBX::Network::Replicator::JoinDataItem*>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xb2b254 — __ZNK5boost4_mfi3mf1IvN3RBX7Network10Replicator12JoinDataItemENS_10shared_ptrIKNS2_8InstanceEEEEclEPS5_S9_
 // type: void __fastcall(char **, int, int *, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::Replicator::JoinDataItem,boost::shared_ptr<RBX::Instance const>>::operator()(RBX::Network::Replicator::JoinDataItem*,boost::shared_ptr<RBX::Instance const>)const")]
+#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::Replicator::JoinDataItem,rbx_core::SharedPtr<RBX::Instance const>>::operator()(RBX::Network::Replicator::JoinDataItem*,rbx_core::SharedPtr<RBX::Instance const>)const")]
 pub fn stub_b2b254() -> ! {
     todo!("0xb2b254 boost::_mfi::mf1<void,RBX::Network::Replicator::JoinDataItem,boost::shared_ptr<RBX::Instance const>>::operator()(RBX::Network::Replicator::JoinDataItem*,boost::shared_ptr<RBX::Instance const>)const")
 }
 
 // 0xb2b4cc — __ZNK5boost4_mfi3mf1IbN3RBX7Network10ReplicatorENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
 // type: int __fastcall(char **, int, int *, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_mfi::mf1<bool,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Replicator*,boost::shared_ptr<RBX::Instance>)const")]
+#[doc(alias = "boost::_mfi::mf1<bool,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::Replicator*,rbx_core::SharedPtr<RBX::Instance>)const")]
 pub fn stub_b2b4cc() -> ! {
     todo!("0xb2b4cc boost::_mfi::mf1<bool,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::Replicator*,boost::shared_ptr<RBX::Instance>)const")
 }
 
 // 0xb2b748 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX7Network10ReplicatorEEENS_3argILi1EEENS2_INS_8functionIFvNS_10shared_ptrINS3_8InstanceEEEEEEEEEclINS_4_mfi3mf2IvS5_SD_SF_EENS0_5list1IRKSD_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int, int, int **, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator *>,boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::operator()<boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")]
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator *>,boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>::operator()<boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
 pub fn stub_b2b748() -> ! {
     todo!("0xb2b748 void boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator *>,boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::operator()<boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")
 }
 
 // 0xb2ba44 — __ZNK5boost4_mfi3mf2IvN3RBX7Network10ReplicatorENS_10shared_ptrINS2_8InstanceEEENS_8functionIFvS7_EEEEclEPS4_S7_SA_
 // type: void __fastcall(char **, int, int *, int *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>::operator()(RBX::Network::Replicator*,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)const")]
+#[doc(alias = "boost::_mfi::mf2<void,RBX::Network::Replicator,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>::operator()(RBX::Network::Replicator*,rbx_core::SharedPtr<RBX::Instance>,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)const")]
 pub fn stub_b2ba44() -> ! {
     todo!("0xb2ba44 boost::_mfi::mf2<void,RBX::Network::Replicator,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>::operator()(RBX::Network::Replicator*,boost::shared_ptr<RBX::Instance>,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)const")
 }
 
 // 0xb2bd50 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX7Network10ReplicatorEEENS_3argILi1EEENS2_INS_8functionIFvNS_10shared_ptrINS3_8InstanceEEEEEEEEEC2ES7_S9_SG_
 // type: int __fastcall(int, int, int *)
-#[doc(alias = "boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator *>,boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::list3(boost::_bi::value<RBX::Network::Replicator *>,boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>)")]
+#[doc(alias = "boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator *>,boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>>::list3(boost::_bi::value<RBX::Network::Replicator *>,boost::arg<1>,boost::_bi::value<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>)")]
 pub fn stub_b2bd50() -> ! {
     todo!("0xb2bd50 boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator *>,boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>>::list3(boost::_bi::value<RBX::Network::Replicator *>,boost::arg<1>,boost::_bi::value<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>)")
 }
 
 // 0xb2bfa0 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_21DirectPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsReceiver,RBX::Network::DirectPhysicsReceiver>(boost::shared_ptr<RBX::Network::PhysicsReceiver> *,RBX::Network::DirectPhysicsReceiver *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsReceiver,RBX::Network::DirectPhysicsReceiver>(rbx_core::SharedPtr<RBX::Network::PhysicsReceiver> *,RBX::Network::DirectPhysicsReceiver *,boost::detail::shared_count &)")]
 pub fn stub_b2bfa0() -> ! {
     todo!("0xb2bfa0 void boost::detail::sp_pointer_construct<RBX::Network::PhysicsReceiver,RBX::Network::DirectPhysicsReceiver>(boost::shared_ptr<RBX::Network::PhysicsReceiver> *,RBX::Network::DirectPhysicsReceiver *,boost::detail::shared_count &)")
 }
@@ -414,7 +414,7 @@ pub fn stub_b2c160() -> ! {
 
 // 0xb2c164 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_28InterpolatingPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsReceiver,RBX::Network::InterpolatingPhysicsReceiver>(boost::shared_ptr<RBX::Network::PhysicsReceiver> *,RBX::Network::InterpolatingPhysicsReceiver *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::PhysicsReceiver,RBX::Network::InterpolatingPhysicsReceiver>(rbx_core::SharedPtr<RBX::Network::PhysicsReceiver> *,RBX::Network::InterpolatingPhysicsReceiver *,boost::detail::shared_count &)")]
 pub fn stub_b2c164() -> ! {
     todo!("0xb2c164 void boost::detail::sp_pointer_construct<RBX::Network::PhysicsReceiver,RBX::Network::InterpolatingPhysicsReceiver>(boost::shared_ptr<RBX::Network::PhysicsReceiver> *,RBX::Network::InterpolatingPhysicsReceiver *,boost::detail::shared_count &)")
 }
@@ -470,28 +470,28 @@ pub fn stub_b2c460() -> ! {
 
 // 0xb2c47c — __ZNSt5dequeIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EEC2ERKS7_
 // type: int __fastcall(int, _DWORD *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt)
-#[doc(alias = "std::deque<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>>::deque(std::deque<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>> const&)")]
+#[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::Network::Marker>,std::allocator<rbx_core::SharedPtr<RBX::Network::Marker>>>::deque(std::deque<rbx_core::SharedPtr<RBX::Network::Marker>,std::allocator<rbx_core::SharedPtr<RBX::Network::Marker>>> const&)")]
 pub fn stub_b2c47c() -> ! {
     todo!("0xb2c47c std::deque<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>>::deque(std::deque<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>> const&)")
 }
 
 // 0xb2c5c4 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost10shared_ptrIN3RBX7Network6MarkerEEERKS6_PS7_ES0_IS6_RS6_PS6_EET0_T_SF_SE_St12__false_type
 // type: void __fastcall(_DWORD *, _DWORD *, int, _DWORD *, int, _DWORD *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, void *, int)
-#[doc(alias = "std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker>&,boost::shared_ptr<RBX::Network::Marker>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker> const&,boost::shared_ptr<RBX::Network::Marker> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker>&,boost::shared_ptr<RBX::Network::Marker>*>>(std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker> const&,boost::shared_ptr<RBX::Network::Marker> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker> const&,boost::shared_ptr<RBX::Network::Marker> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker>&,boost::shared_ptr<RBX::Network::Marker>*>,std::__false_type)")]
+#[doc(alias = "std::_Deque_iterator<rbx_core::SharedPtr<RBX::Network::Marker>,rbx_core::SharedPtr<RBX::Network::Marker>&,rbx_core::SharedPtr<RBX::Network::Marker>*> std::__uninitialized_copy_aux<std::_Deque_iterator<rbx_core::SharedPtr<RBX::Network::Marker>,rbx_core::SharedPtr<RBX::Network::Marker> const&,rbx_core::SharedPtr<RBX::Network::Marker> const*>,std::_Deque_iterator<rbx_core::SharedPtr<RBX::Network::Marker>,rbx_core::SharedPtr<RBX::Network::Marker>&,rbx_core::SharedPtr<RBX::Network::Marker>*>>(std::_Deque_iterator<rbx_core::SharedPtr<RBX::Network::Marker>,rbx_core::SharedPtr<RBX::Network::Marker> const&,rbx_core::SharedPtr<RBX::Network::Marker> const*>,std::_Deque_iterator<rbx_core::SharedPtr<RBX::Network::Marker>,rbx_core::SharedPtr<RBX::Network::Marker> const&,rbx_core::SharedPtr<RBX::Network::Marker> const*>,std::_Deque_iterator<rbx_core::SharedPtr<RBX::Network::Marker>,rbx_core::SharedPtr<RBX::Network::Marker>&,rbx_core::SharedPtr<RBX::Network::Marker>*>,std::__false_type)")]
 pub fn stub_b2c5c4() -> ! {
     todo!("0xb2c5c4 std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker>&,boost::shared_ptr<RBX::Network::Marker>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker> const&,boost::shared_ptr<RBX::Network::Marker> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker>&,boost::shared_ptr<RBX::Network::Marker>*>>(std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker> const&,boost::shared_ptr<RBX::Network::Marker> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker> const&,boost::shared_ptr<RBX::Network::Marker> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::Network::Marker>,boost::shared_ptr<RBX::Network::Marker>&,boost::shared_ptr<RBX::Network::Marker>*>,std::__false_type)")
 }
 
 // 0xb2c7a4 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EE17_M_initialize_mapEm
 // type: void __fastcall(_DWORD *, unsigned int, int, int, int, int, int, int, void *, int)
-#[doc(alias = "std::_Deque_base<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>>::_M_initialize_map(unsigned long)")]
+#[doc(alias = "std::_Deque_base<rbx_core::SharedPtr<RBX::Network::Marker>,std::allocator<rbx_core::SharedPtr<RBX::Network::Marker>>>::_M_initialize_map(unsigned long)")]
 pub fn stub_b2c7a4() -> ! {
     todo!("0xb2c7a4 std::_Deque_base<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>>::_M_initialize_map(unsigned long)")
 }
 
 // 0xb2c960 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX7Network6MarkerEEESaIS5_EED2Ev
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "std::deque<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>>::~deque()")]
+#[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::Network::Marker>,std::allocator<rbx_core::SharedPtr<RBX::Network::Marker>>>::~deque()")]
 pub fn stub_b2c960() -> ! {
     todo!("0xb2c960 std::deque<boost::shared_ptr<RBX::Network::Marker>,std::allocator<boost::shared_ptr<RBX::Network::Marker>>>::~deque()")
 }

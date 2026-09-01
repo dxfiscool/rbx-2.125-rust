@@ -121,13 +121,13 @@ pub fn stub_4b2680() -> ! {
     todo!("0x4b2680 __ZN3rbx7signals6signalIFvfEE7connectIN5boost3_bi6bind_tIvNS5_4_mfi3mf1IvN3RBX19CustomEventReceiverEfEENS6_5list2INS6_5valueIPSB_EENS5_3argILi1EEEEEEEEENS0_10connectionERKT_")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(float)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(float)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(float)>::slot> const&)")]
 // 0x4b29b4 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfEE4slotEEaSERKS7_
 pub fn stub_4b29b4() -> ! {
     todo!("0x4b29b4 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfEE4slotEEaSERKS7_")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(float)>::slot>::operator=(rbx::signals::signal<void ()(float)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(float)>::slot>::operator=(rbx::signals::signal<void ()(float)>::slot*)")]
 // 0x4b2ce0 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfEE4slotEEaSEPS6_
 pub fn stub_4b2ce0() -> ! {
     todo!("0x4b2ce0 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfEE4slotEEaSEPS6_")
@@ -961,7 +961,7 @@ pub fn stub_4fd1e8() -> ! {
     todo!("0x4fd1e8 __ZN3RBX10shutdownDMINS_16OverlayDataModelEEEvRN5boost10shared_ptrIT_EE")
 }
 
-#[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::DataModel *)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::DataModel *)>::slot> &)")]
 // 0x4fd44c — __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE
 pub fn stub_4fd44c() -> ! {
     todo!("0x4fd44c __ZN3rbx7signals6signalIFvPN3RBX9DataModelEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE")

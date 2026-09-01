@@ -93,7 +93,7 @@ pub fn stub_3e3a34() -> ! {
 
 // 0x3e3b78 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4SkinEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::Skin> RBX::Creatable<RBX::Instance>::create<RBX::Skin>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Skin> RBX::Creatable<RBX::Instance>::create<RBX::Skin>(void)")]
 pub fn stub_3e3b78() -> ! {
     todo!("0x3e3b78 boost::shared_ptr<RBX::Skin> RBX::Creatable<RBX::Instance>::create<RBX::Skin>(void)")
 }
@@ -101,7 +101,7 @@ pub fn stub_3e3b78() -> ! {
 
 // 0x3e3c28 — __ZN5boost10shared_ptrIN3RBX4SkinEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Skin>::shared_ptr<RBX::Skin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Skin>::shared_ptr<RBX::Skin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_3e3c28() -> ! {
     todo!("0x3e3c28 boost::shared_ptr<RBX::Skin>::shared_ptr<RBX::Skin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Skin *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -109,7 +109,7 @@ pub fn stub_3e3c28() -> ! {
 
 // 0x3e3cf0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4SkinES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Skin,RBX::Skin>(boost::shared_ptr<RBX::Skin> const*,RBX::Skin *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Skin,RBX::Skin>(rbx_core::SharedPtr<RBX::Skin> const*,RBX::Skin *)const")]
 pub fn stub_3e3cf0() -> ! {
     todo!("0x3e3cf0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Skin,RBX::Skin>(boost::shared_ptr<RBX::Skin> const*,RBX::Skin *)const")
 }
@@ -234,7 +234,7 @@ pub fn stub_3e44c8() -> ! {
 
 // 0x3e460c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12ShirtGraphicEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::ShirtGraphic> RBX::Creatable<RBX::Instance>::create<RBX::ShirtGraphic>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ShirtGraphic> RBX::Creatable<RBX::Instance>::create<RBX::ShirtGraphic>(void)")]
 pub fn stub_3e460c() -> ! {
     todo!("0x3e460c boost::shared_ptr<RBX::ShirtGraphic> RBX::Creatable<RBX::Instance>::create<RBX::ShirtGraphic>(void)")
 }
@@ -242,7 +242,7 @@ pub fn stub_3e460c() -> ! {
 
 // 0x3e46bc — __ZN5boost10shared_ptrIN3RBX12ShirtGraphicEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::ShirtGraphic>::shared_ptr<RBX::ShirtGraphic,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ShirtGraphic>::shared_ptr<RBX::ShirtGraphic,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_3e46bc() -> ! {
     todo!("0x3e46bc boost::shared_ptr<RBX::ShirtGraphic>::shared_ptr<RBX::ShirtGraphic,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ShirtGraphic *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -250,7 +250,7 @@ pub fn stub_3e46bc() -> ! {
 
 // 0x3e4784 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12ShirtGraphicES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ShirtGraphic,RBX::ShirtGraphic>(boost::shared_ptr<RBX::ShirtGraphic> const*,RBX::ShirtGraphic *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ShirtGraphic,RBX::ShirtGraphic>(rbx_core::SharedPtr<RBX::ShirtGraphic> const*,RBX::ShirtGraphic *)const")]
 pub fn stub_3e4784() -> ! {
     todo!("0x3e4784 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ShirtGraphic,RBX::ShirtGraphic>(boost::shared_ptr<RBX::ShirtGraphic> const*,RBX::ShirtGraphic *)const")
 }
@@ -353,7 +353,7 @@ pub fn stub_3e4df0() -> ! {
 
 // 0x3e4f34 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5PantsEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::Pants> RBX::Creatable<RBX::Instance>::create<RBX::Pants>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Pants> RBX::Creatable<RBX::Instance>::create<RBX::Pants>(void)")]
 pub fn stub_3e4f34() -> ! {
     todo!("0x3e4f34 boost::shared_ptr<RBX::Pants> RBX::Creatable<RBX::Instance>::create<RBX::Pants>(void)")
 }
@@ -361,7 +361,7 @@ pub fn stub_3e4f34() -> ! {
 
 // 0x3e4fe4 — __ZN5boost10shared_ptrIN3RBX5PantsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Pants>::shared_ptr<RBX::Pants,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Pants *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Pants>::shared_ptr<RBX::Pants,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Pants *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_3e4fe4() -> ! {
     todo!("0x3e4fe4 boost::shared_ptr<RBX::Pants>::shared_ptr<RBX::Pants,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Pants *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -369,7 +369,7 @@ pub fn stub_3e4fe4() -> ! {
 
 // 0x3e50ac — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5PantsES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Pants,RBX::Pants>(boost::shared_ptr<RBX::Pants> const*,RBX::Pants *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Pants,RBX::Pants>(rbx_core::SharedPtr<RBX::Pants> const*,RBX::Pants *)const")]
 pub fn stub_3e50ac() -> ! {
     todo!("0x3e50ac void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Pants,RBX::Pants>(boost::shared_ptr<RBX::Pants> const*,RBX::Pants *)const")
 }
@@ -449,7 +449,7 @@ pub fn stub_3e55c0() -> ! {
 
 // 0x3e5704 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5ShirtEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::Shirt> RBX::Creatable<RBX::Instance>::create<RBX::Shirt>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Shirt> RBX::Creatable<RBX::Instance>::create<RBX::Shirt>(void)")]
 pub fn stub_3e5704() -> ! {
     todo!("0x3e5704 boost::shared_ptr<RBX::Shirt> RBX::Creatable<RBX::Instance>::create<RBX::Shirt>(void)")
 }
@@ -457,7 +457,7 @@ pub fn stub_3e5704() -> ! {
 
 // 0x3e57b4 — __ZN5boost10shared_ptrIN3RBX5ShirtEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Shirt>::shared_ptr<RBX::Shirt,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Shirt *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Shirt>::shared_ptr<RBX::Shirt,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Shirt *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_3e57b4() -> ! {
     todo!("0x3e57b4 boost::shared_ptr<RBX::Shirt>::shared_ptr<RBX::Shirt,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Shirt *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -465,7 +465,7 @@ pub fn stub_3e57b4() -> ! {
 
 // 0x3e587c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5ShirtES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Shirt,RBX::Shirt>(boost::shared_ptr<RBX::Shirt> const*,RBX::Shirt *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Shirt,RBX::Shirt>(rbx_core::SharedPtr<RBX::Shirt> const*,RBX::Shirt *)const")]
 pub fn stub_3e587c() -> ! {
     todo!("0x3e587c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Shirt,RBX::Shirt>(boost::shared_ptr<RBX::Shirt> const*,RBX::Shirt *)const")
 }

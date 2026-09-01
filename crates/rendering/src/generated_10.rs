@@ -64,14 +64,14 @@ pub fn stub_3ce94c() -> ! {
 }
 
 // 0x3cea40 — __ZN3RBX10Reflection9ArgHelper6getArgIN3G3D15CoordinateFrameELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "G3D::CoordinateFrame RBX::Reflection::ArgHelper::getArg<G3D::CoordinateFrame,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::CoordinateFrame> const&,boost::disable_if<boost::is_same<G3D::CoordinateFrame,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "G3D::CoordinateFrame RBX::Reflection::ArgHelper::getArg<G3D::CoordinateFrame,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::CoordinateFrame> const&,boost::disable_if<boost::is_same<G3D::CoordinateFrame,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // was: G3D::CoordinateFrame RBX::Reflection::ArgHelper::getArg<G3D::CoordinateFrame,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::CoordinateFrame> const&,boost::disable_if<boost::is_same<G3D::CoordinateFrame,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
 pub fn stub_3cea40() -> ! {
     todo!("0x3cea40 G3D::CoordinateFrame RBX::Reflection::ArgHelper::getArg<G3D::CoordinateFrame,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::CoordinateFrame> const&,boost::disable_if<boost::is_same<G3D::CoordinateFrame,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
 
 // 0x3cec10 — __ZN3RBX10Reflection9ArgHelper6getArgIN3G3D15CoordinateFrameELi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
-#[doc(alias = "G3D::CoordinateFrame RBX::Reflection::ArgHelper::getArg<G3D::CoordinateFrame,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::CoordinateFrame> const&,boost::disable_if<boost::is_same<G3D::CoordinateFrame,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "G3D::CoordinateFrame RBX::Reflection::ArgHelper::getArg<G3D::CoordinateFrame,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::CoordinateFrame> const&,boost::disable_if<boost::is_same<G3D::CoordinateFrame,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // was: G3D::CoordinateFrame RBX::Reflection::ArgHelper::getArg<G3D::CoordinateFrame,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::CoordinateFrame> const&,boost::disable_if<boost::is_same<G3D::CoordinateFrame,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)
 pub fn stub_3cec10() -> ! {
     todo!("0x3cec10 G3D::CoordinateFrame RBX::Reflection::ArgHelper::getArg<G3D::CoordinateFrame,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::CoordinateFrame> const&,boost::disable_if<boost::is_same<G3D::CoordinateFrame,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
@@ -673,7 +673,7 @@ pub fn stub_4f0e40() -> ! {
 }
 
 // 0x505188 — __ZN3RBX15GeometryService33getPartsTouchingExtentsWithIgnoreERKNS_7ExtentsEPKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS8_EEiRN3G3D5ArrayIPNS_12PartInstanceELi10ELm32EEE
-#[doc(alias = "RBX::GeometryService::getPartsTouchingExtentsWithIgnore(RBX::Extents const&,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const*,int,G3D::Array<RBX::PartInstance *,10,32ul> &)")]
+#[doc(alias = "RBX::GeometryService::getPartsTouchingExtentsWithIgnore(RBX::Extents const&,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const*,int,G3D::Array<RBX::PartInstance *,10,32ul> &)")]
 // was: RBX::GeometryService::getPartsTouchingExtentsWithIgnore(RBX::Extents const&,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const*,int,G3D::Array<RBX::PartInstance *,10,32ul> &)
 pub fn stub_505188() -> ! {
     todo!("0x505188 RBX::GeometryService::getPartsTouchingExtentsWithIgnore(RBX::Extents const&,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const*,int,G3D::Array<RBX::PartInstance *,10,32ul> &)")
@@ -694,14 +694,14 @@ pub fn stub_505b70() -> ! {
 }
 
 // 0x505bcc — __ZN3RBX15GeometryService35getHitLocationPartFilterDescendentsINS_8InstanceEEEN3G3D7Vector3EPT_NS_6RbxRayERN5boost10shared_ptrINS_12PartInstanceEEERNS_6CellIDEb
-#[doc(alias = "G3D::Vector3 RBX::GeometryService::getHitLocationPartFilterDescendents<RBX::Instance>(RBX::Instance *,RBX::RbxRay,boost::shared_ptr<RBX::PartInstance> &,RBX::CellID &,bool)")]
+#[doc(alias = "G3D::Vector3 RBX::GeometryService::getHitLocationPartFilterDescendents<RBX::Instance>(RBX::Instance *,RBX::RbxRay,rbx_core::SharedPtr<RBX::PartInstance> &,RBX::CellID &,bool)")]
 // was: G3D::Vector3 RBX::GeometryService::getHitLocationPartFilterDescendents<RBX::Instance>(RBX::Instance *,RBX::RbxRay,boost::shared_ptr<RBX::PartInstance> &,RBX::CellID &,bool)
 pub fn stub_505bcc() -> ! {
     todo!("0x505bcc G3D::Vector3 RBX::GeometryService::getHitLocationPartFilterDescendents<RBX::Instance>(RBX::Instance *,RBX::RbxRay,boost::shared_ptr<RBX::PartInstance> &,RBX::CellID &,bool)")
 }
 
 // 0x505d08 — __ZN3RBX15GeometryService35getHitLocationPartFilterDescendentsIKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS6_EEEEN3G3D7Vector3EPT_NS_6RbxRayERNS4_INS_12PartInstanceEEERNS_6CellIDEb
-#[doc(alias = "G3D::Vector3 RBX::GeometryService::getHitLocationPartFilterDescendents<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const *,RBX::RbxRay,boost::shared_ptr<RBX::PartInstance> &,RBX::CellID &,bool)")]
+#[doc(alias = "G3D::Vector3 RBX::GeometryService::getHitLocationPartFilterDescendents<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const *,RBX::RbxRay,rbx_core::SharedPtr<RBX::PartInstance> &,RBX::CellID &,bool)")]
 // was: G3D::Vector3 RBX::GeometryService::getHitLocationPartFilterDescendents<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const *,RBX::RbxRay,boost::shared_ptr<RBX::PartInstance> &,RBX::CellID &,bool)
 pub fn stub_505d08() -> ! {
     todo!("0x505d08 G3D::Vector3 RBX::GeometryService::getHitLocationPartFilterDescendents<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const *,RBX::RbxRay,boost::shared_ptr<RBX::PartInstance> &,RBX::CellID &,bool)")

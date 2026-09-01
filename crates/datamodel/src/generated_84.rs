@@ -178,7 +178,7 @@ pub fn stub_6c1104() -> ! {
 }
 
 // 0x6c1120 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_8SeatImplINS5_12PartInstanceEEES7_EENSB_5list2INSB_5valueIPSH_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::PartInstance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::PartInstance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::PartInstance>,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)
 pub fn stub_6c1120() -> ! {
     todo!("0x6c1120 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SeatImpl<RBX::PartInstance>,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")
@@ -451,42 +451,42 @@ pub fn stub_6cc160() -> ! {
 }
 
 // 0x6cc170 — __ZThn32_N3RBX9WorkspaceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc170() -> ! {
     todo!("0x6cc170 `non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc178 — __ZThn36_N3RBX9WorkspaceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc178() -> ! {
     todo!("0x6cc178 `non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc180 — __ZThn120_N3RBX9WorkspaceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc180() -> ! {
     todo!("0x6cc180 `non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc188 — __ZThn280_N3RBX9WorkspaceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc188() -> ! {
     todo!("0x6cc188 `non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc190 — __ZThn324_N3RBX9WorkspaceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc190() -> ! {
     todo!("0x6cc190 `non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc198 — __ZThn356_N3RBX9WorkspaceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc198() -> ! {
     todo!("0x6cc198 `non-virtual thunk toRBX::Workspace::~Workspace()")
@@ -500,42 +500,42 @@ pub fn stub_6cc1a0() -> ! {
 }
 
 // 0x6cc71c — __ZThn32_N3RBX9WorkspaceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc71c() -> ! {
     todo!("0x6cc71c `non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc72c — __ZThn36_N3RBX9WorkspaceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc72c() -> ! {
     todo!("0x6cc72c `non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc73c — __ZThn120_N3RBX9WorkspaceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc73c() -> ! {
     todo!("0x6cc73c `non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc74c — __ZThn280_N3RBX9WorkspaceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc74c() -> ! {
     todo!("0x6cc74c `non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc760 — __ZThn324_N3RBX9WorkspaceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc760() -> ! {
     todo!("0x6cc760 `non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc774 — __ZThn356_N3RBX9WorkspaceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 // was: `non-virtual thunk to'RBX::Workspace::~Workspace()
 pub fn stub_6cc774() -> ! {
     todo!("0x6cc774 `non-virtual thunk toRBX::Workspace::~Workspace()")
@@ -605,7 +605,7 @@ pub fn stub_6cd45c() -> ! {
 }
 
 // 0x6cd464 — __ZThn280_N3RBX9Workspace9getCameraEv
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::getCamera(void)")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::getCamera(void)")]
 // was: `non-virtual thunk to'RBX::Workspace::getCamera(void)
 pub fn stub_6cd464() -> ! {
     todo!("0x6cd464 `non-virtual thunk toRBX::Workspace::getCamera(void)")
@@ -619,7 +619,7 @@ pub fn stub_6cd478() -> ! {
 }
 
 // 0x6cd488 — __ZThn280_NK3RBX9Workspace14getConstCameraEv
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::getConstCamera(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::getConstCamera(void)const")]
 // was: `non-virtual thunk to'RBX::Workspace::getConstCamera(void)const
 pub fn stub_6cd488() -> ! {
     todo!("0x6cd488 `non-virtual thunk toRBX::Workspace::getConstCamera(void)const")

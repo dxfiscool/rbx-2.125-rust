@@ -83,7 +83,7 @@ pub fn stub_0x236ec0() -> ! {
 // 0x236f30 — __ZN5boost6detail16add_new_tss_nodeEPKvNS_10shared_ptrINS0_20tss_cleanup_functionEEEPv
 // type: void __fastcall(boost::_anonymous_namespace_ *, int *, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: void __fastcall(boost::_anonymous_namespace_ *, int *, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::detail::add_new_tss_node(void const*,boost::shared_ptr<boost::detail::tss_cleanup_function>,void *)")]
+#[doc(alias = "boost::detail::add_new_tss_node(void const*,rbx_core::SharedPtr<boost::detail::tss_cleanup_function>,void *)")]
 pub fn stub_0x236f30() -> ! {
     todo!("0x236f30 __ZN5boost6detail16add_new_tss_nodeEPKvNS_10shared_ptrINS0_20tss_cleanup_functionEEEPv")
 }
@@ -91,7 +91,7 @@ pub fn stub_0x236f30() -> ! {
 // 0x237130 — __ZN5boost6detail12set_tss_dataEPKvNS_10shared_ptrINS0_20tss_cleanup_functionEEEPvb
 // type: void __fastcall(boost::_anonymous_namespace_ *, int *, int, int)
 // was: void __fastcall(boost::_anonymous_namespace_ *, int *, int, int)
-#[doc(alias = "boost::detail::set_tss_data(void const*,boost::shared_ptr<boost::detail::tss_cleanup_function>,void *,bool)")]
+#[doc(alias = "boost::detail::set_tss_data(void const*,rbx_core::SharedPtr<boost::detail::tss_cleanup_function>,void *,bool)")]
 pub fn stub_0x237130() -> ! {
     todo!("0x237130 __ZN5boost6detail12set_tss_dataEPKvNS_10shared_ptrINS0_20tss_cleanup_functionEEEPvb")
 }
@@ -129,14 +129,14 @@ pub fn stub_0x23736c() -> ! {
 
 // 0x2374bc — __ZN5boost10shared_ptrINS_6detail16thread_data_baseEEaSERKS3_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *)
-#[doc(alias = "boost::shared_ptr<boost::detail::thread_data_base>::operator=(boost::shared_ptr<boost::detail::thread_data_base> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<boost::detail::thread_data_base>::operator=(rbx_core::SharedPtr<boost::detail::thread_data_base> const&)")]
 pub fn stub_0x2374bc() -> ! {
     todo!("0x2374bc __ZN5boost10shared_ptrINS_6detail16thread_data_baseEEaSERKS3_")
 }
 
 // 0x2375b0 — __ZN5boost10shared_ptrINS_6detail20tss_cleanup_functionEEaSERKS3_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, int *)
-#[doc(alias = "boost::shared_ptr<boost::detail::tss_cleanup_function>::operator=(boost::shared_ptr<boost::detail::tss_cleanup_function> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<boost::detail::tss_cleanup_function>::operator=(rbx_core::SharedPtr<boost::detail::tss_cleanup_function> const&)")]
 pub fn stub_0x2375b0() -> ! {
     todo!("0x2375b0 __ZN5boost10shared_ptrINS_6detail20tss_cleanup_functionEEaSERKS3_")
 }
@@ -171,7 +171,7 @@ pub fn stub_0x2378fc() -> ! {
 
 // 0x2379ec — __ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data_base>(boost::shared_ptr<boost::detail::thread_data_base> const*,boost::detail::thread_data_base *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<boost::detail::thread_data_base>::_internal_accept_owner<boost::detail::thread_data_base,boost::detail::thread_data_base>(rbx_core::SharedPtr<boost::detail::thread_data_base> const*,boost::detail::thread_data_base *)const")]
 pub fn stub_0x2379ec() -> ! {
     todo!("0x2379ec __ZNK5boost23enable_shared_from_thisINS_6detail16thread_data_baseEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_")
 }
@@ -351,7 +351,7 @@ pub fn stub_0x239f94() -> ! {
 // 0x23a11c — __ZN5boost6detail20sp_pointer_constructINS_10filesystem16filesystem_error5m_impES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, boost::detail::sp_counted_base **, int, void *, int)
 // was: void __fastcall(int, int, boost::detail::sp_counted_base **, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<boost::filesystem::filesystem_error::m_imp,boost::filesystem::filesystem_error::m_imp>(boost::shared_ptr<boost::filesystem::filesystem_error::m_imp> *,boost::filesystem::filesystem_error::m_imp *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<boost::filesystem::filesystem_error::m_imp,boost::filesystem::filesystem_error::m_imp>(rbx_core::SharedPtr<boost::filesystem::filesystem_error::m_imp> *,boost::filesystem::filesystem_error::m_imp *,boost::detail::shared_count &)")]
 pub fn stub_0x23a11c() -> ! {
     todo!("0x23a11c __ZN5boost6detail20sp_pointer_constructINS_10filesystem16filesystem_error5m_impES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }

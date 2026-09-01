@@ -152,7 +152,7 @@ pub fn stub_f5fb34() -> ! {
 
 // 0xf5fbd4 — j___ZN3RBX7Network13PhysicsSender3JobC2EN5boost10shared_ptrIS1_EE
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "RBX::Network::PhysicsSender::Job::Job(boost::shared_ptr<RBX::Network::PhysicsSender>)")]
+#[doc(alias = "RBX::Network::PhysicsSender::Job::Job(rbx_core::SharedPtr<RBX::Network::PhysicsSender>)")]
 pub fn stub_f5fbd4() -> ! {
     todo!("0xf5fbd4 RBX::Network::PhysicsSender::Job::Job(boost::shared_ptr<RBX::Network::PhysicsSender>)")
 }
@@ -166,7 +166,7 @@ pub fn stub_f5fbe4() -> ! {
 
 // 0xf5fbf4 — j___ZN3RBX7Network13PhysicsSender8TouchJobC2EN5boost10shared_ptrIS1_EE
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "RBX::Network::PhysicsSender::TouchJob::TouchJob(boost::shared_ptr<RBX::Network::PhysicsSender>)")]
+#[doc(alias = "RBX::Network::PhysicsSender::TouchJob::TouchJob(rbx_core::SharedPtr<RBX::Network::PhysicsSender>)")]
 pub fn stub_f5fbf4() -> ! {
     todo!("0xf5fbf4 RBX::Network::PhysicsSender::TouchJob::TouchJob(boost::shared_ptr<RBX::Network::PhysicsSender>)")
 }
@@ -180,14 +180,14 @@ pub fn stub_f5fc04() -> ! {
 
 // 0xf5fc74 — j___ZN5boost10shared_ptrIN3RBX7Network13PhysicsSender3JobEE5resetEv
 // type: int __fastcall(_DWORD)
-#[doc(alias = "boost::shared_ptr<RBX::Network::PhysicsSender::Job>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::PhysicsSender::Job>::reset(void)")]
 pub fn stub_f5fc74() -> ! {
     todo!("0xf5fc74 boost::shared_ptr<RBX::Network::PhysicsSender::Job>::reset(void)")
 }
 
 // 0xf5fc84 — j___ZN5boost10shared_ptrIN3RBX7Network13PhysicsSender8TouchJobEE5resetEv
 // type: int __fastcall(_DWORD)
-#[doc(alias = "boost::shared_ptr<RBX::Network::PhysicsSender::TouchJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::PhysicsSender::TouchJob>::reset(void)")]
 pub fn stub_f5fc84() -> ! {
     todo!("0xf5fc84 boost::shared_ptr<RBX::Network::PhysicsSender::TouchJob>::reset(void)")
 }
@@ -342,7 +342,7 @@ pub fn stub_f5fe04() -> ! {
 
 // 0xf5fe24 — j___ZN5boost10shared_ptrIN3RBX7Network7PlayersEE5resetEv
 // type: int __fastcall(_DWORD)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Players>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Players>::reset(void)")]
 pub fn stub_f5fe24() -> ! {
     todo!("0xf5fe24 boost::shared_ptr<RBX::Network::Players>::reset(void)")
 }
@@ -819,7 +819,7 @@ pub fn stub_f602a4() -> ! {
 
 // 0xf60314 — j___ZN5boost10shared_ptrIN3RBX7Network10Replicator9StreamJobEE5resetEv
 // type: int __fastcall(_DWORD)
-#[doc(alias = "boost::shared_ptr<RBX::Network::Replicator::StreamJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Replicator::StreamJob>::reset(void)")]
 pub fn stub_f60314() -> ! {
     todo!("0xf60314 boost::shared_ptr<RBX::Network::Replicator::StreamJob>::reset(void)")
 }

@@ -451,7 +451,7 @@ pub fn stub_0x430924() -> ! {
 }
 
 // 0x430930 — __ZN3RBX9DataModel19ScreenshotReadyTaskEN5boost8weak_ptrIS0_EERKSs
-#[doc(alias = "RBX::DataModel::ScreenshotReadyTask(boost::weak_ptr<RBX::DataModel>,std::string const&)")]
+#[doc(alias = "RBX::DataModel::ScreenshotReadyTask(rbx_core::WeakPtr<RBX::DataModel>,std::string const&)")]
 pub fn stub_0x430930() -> ! {
     todo!("0x430930 RBX::DataModel::ScreenshotReadyTask(boost::weak_ptr<RBX::DataModel>,std::string const&)")
 }

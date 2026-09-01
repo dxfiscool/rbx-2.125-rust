@@ -426,14 +426,14 @@ pub fn stub_f65d64() -> ! {
 
 // 0xf65d54 — j___ZN3RBX17MegaClusterLegacy14bind_templatedINS_19MegaClusterInstanceEEEvRKN5boost10shared_ptrINS_12PartInstanceEEE
 // type: int(void)
-#[doc(alias = "void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterInstance>(boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterInstance>(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 pub fn stub_f65d54() -> ! {
     todo!("0xf65d54 void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterInstance>(boost::shared_ptr<RBX::PartInstance> const&)")
 }
 
 // 0xf65d44 — j___ZN3RBX17MegaClusterLegacy14bind_templatedINS0_16VoxelGridOverlayEEEvRKN5boost10shared_ptrINS_12PartInstanceEEE
 // type: int(void)
-#[doc(alias = "void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterLegacy::VoxelGridOverlay>(boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterLegacy::VoxelGridOverlay>(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 pub fn stub_f65d44() -> ! {
     todo!("0xf65d44 void RBX::MegaClusterLegacy::bind_templated<RBX::MegaClusterLegacy::VoxelGridOverlay>(boost::shared_ptr<RBX::PartInstance> const&)")
 }

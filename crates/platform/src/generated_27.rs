@@ -488,14 +488,14 @@ pub fn stub_f64954() -> ! {
 
 // 0xf64924 — j___ZNSt4listIN5boost10shared_ptrIKN3RBX8InstanceEEESaIS5_EE9_M_insertESt14_List_iteratorIS5_ERKS5_
 // type: void __fastcall(int, std::_List_node_base *, int *, int, struct _Unwind_Exception *lpuexcpt, void *, int, int, void *, int)
-#[doc(alias = "std::list<boost::shared_ptr<RBX::Instance const>,std::allocator<boost::shared_ptr<RBX::Instance const>>>::_M_insert(std::_List_iterator<boost::shared_ptr<RBX::Instance const>>,boost::shared_ptr<RBX::Instance const> const&)")]
+#[doc(alias = "std::list<rbx_core::SharedPtr<RBX::Instance const>,std::allocator<rbx_core::SharedPtr<RBX::Instance const>>>::_M_insert(std::_List_iterator<rbx_core::SharedPtr<RBX::Instance const>>,rbx_core::SharedPtr<RBX::Instance const> const&)")]
 pub fn stub_f64924() -> ! {
     todo!("0xf64924 std::list<boost::shared_ptr<RBX::Instance const>,std::allocator<boost::shared_ptr<RBX::Instance const>>>::_M_insert(std::_List_iterator<boost::shared_ptr<RBX::Instance const>>,boost::shared_ptr<RBX::Instance const> const&)")
 }
 
 // 0xf648e4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11ObjectValueES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ObjectValue,RBX::ObjectValue>(boost::shared_ptr<RBX::ObjectValue> const*,RBX::ObjectValue *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ObjectValue,RBX::ObjectValue>(rbx_core::SharedPtr<RBX::ObjectValue> const*,RBX::ObjectValue *)const")]
 pub fn stub_f648e4() -> ! {
     todo!("0xf648e4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ObjectValue,RBX::ObjectValue>(boost::shared_ptr<RBX::ObjectValue> const*,RBX::ObjectValue *)const")
 }
@@ -544,7 +544,7 @@ pub fn stub_f64874() -> ! {
 
 // 0xf64844 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D7Vector3EEE4slotEEaSEPS8_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3)>::slot*)")]
 pub fn stub_f64844() -> ! {
     todo!("0xf64844 boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3)>::slot*)")
 }
@@ -656,14 +656,14 @@ pub fn stub_f646f4() -> ! {
 
 // 0xf646e4 — j___ZN5boost10shared_ptrIN3RBX19MegaClusterInstanceEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RBX::MegaClusterInstance>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MegaClusterInstance>::reset(void)")]
 pub fn stub_f646e4() -> ! {
     todo!("0xf646e4 boost::shared_ptr<RBX::MegaClusterInstance>::reset(void)")
 }
 
 // 0xf646c4 — j___ZN3RBX11shared_fromINS_19MegaClusterInstanceEEEN5boost10shared_ptrIT_EEPS4_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::shared_ptr<RBX::MegaClusterInstance> RBX::shared_from<RBX::MegaClusterInstance>(RBX::MegaClusterInstance*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MegaClusterInstance> RBX::shared_from<RBX::MegaClusterInstance>(RBX::MegaClusterInstance*)")]
 pub fn stub_f646c4() -> ! {
     todo!("0xf646c4 boost::shared_ptr<RBX::MegaClusterInstance> RBX::shared_from<RBX::MegaClusterInstance>(RBX::MegaClusterInstance*)")
 }
@@ -677,7 +677,7 @@ pub fn stub_f646b4() -> ! {
 
 // 0xf64674 — j___ZNSt4listIN5boost10shared_ptrIN3RBX12PartInstanceEEENS0_19fast_pool_allocatorIS4_NS0_33default_user_allocator_new_deleteENS0_5mutexELj32ELj0EEEE14_M_create_nodeERKS4_
 // type: int(void)
-#[doc(alias = "std::list<boost::shared_ptr<RBX::PartInstance>,boost::fast_pool_allocator<boost::shared_ptr<RBX::PartInstance>,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::_M_create_node(boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "std::list<rbx_core::SharedPtr<RBX::PartInstance>,boost::fast_pool_allocator<rbx_core::SharedPtr<RBX::PartInstance>,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::_M_create_node(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 pub fn stub_f64674() -> ! {
     todo!("0xf64674 std::list<boost::shared_ptr<RBX::PartInstance>,boost::fast_pool_allocator<boost::shared_ptr<RBX::PartInstance>,boost::default_user_allocator_new_delete,boost::mutex,32u,0u>>::_M_create_node(boost::shared_ptr<RBX::PartInstance> const&)")
 }

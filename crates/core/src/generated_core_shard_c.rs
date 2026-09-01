@@ -49,7 +49,7 @@ pub fn stub_0x697b38() -> ! {
     todo!("0x697b38 __ZN5boost10shared_ptrIN3RBX11VehicleSeatEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
 }
 
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Controller::Button)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Controller::Button)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> &)")]
 // 0x698370 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE — rbx::signals::signal<void ()(RBX::Controller::Button)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> &)
 pub fn stub_0x698370() -> ! {
     todo!("0x698370 __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE")
@@ -61,7 +61,7 @@ pub fn stub_0x6984d0() -> ! {
     todo!("0x6984d0 __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE8on_errorERSt9exception")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> const&)")]
 // 0x6984f8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEEaSERKSA_ — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> const&)
 pub fn stub_0x6984f8() -> ! {
     todo!("0x6984f8 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEEaSERKSA_")
@@ -194,7 +194,7 @@ pub fn stub_0x69b154() -> ! {
     todo!("0x69b154 __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE6insertEPNS6_4slotE")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Controller::Button)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Controller::Button)>::slot*)")]
 // 0x69b360 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEEaSEPS9_ — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Controller::Button)>::slot*)
 pub fn stub_0x69b360() -> ! {
     todo!("0x69b360 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEEaSEPS9_")
@@ -303,7 +303,7 @@ pub fn stub_0x6a1c5c() -> ! {
     todo!("0x6a1c5c __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE13disconnectAllEv")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> const&)")]
 // 0x6a1dd4 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slotEEaSERKS9_ — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> const&)
 pub fn stub_0x6a1dd4() -> ! {
     todo!("0x6a1dd4 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slotEEaSERKS9_")
@@ -327,7 +327,7 @@ pub fn stub_0x6a335c() -> ! {
     todo!("0x6a335c __ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE13disconnectAllEv")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot> const&)")]
 // 0x6a34d4 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10BrickColorEEE4slotEEaSERKS9_ — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot> const&)
 pub fn stub_0x6a34d4() -> ! {
     todo!("0x6a34d4 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10BrickColorEEE4slotEEaSERKS9_")
@@ -351,7 +351,7 @@ pub fn stub_0x6a4a78() -> ! {
     todo!("0x6a4a78 __ZN3rbx7signals6signalIFvN3G3D6Color3EEE13disconnectAllEv")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Color3)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Color3)>::slot> const&)")]
 // 0x6a4bf0 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D6Color3EEE4slotEEaSERKS9_ — boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot> const&)
 pub fn stub_0x6a4bf0() -> ! {
     todo!("0x6a4bf0 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D6Color3EEE4slotEEaSERKS9_")
@@ -375,7 +375,7 @@ pub fn stub_0x6a61b4() -> ! {
     todo!("0x6a61b4 __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE13disconnectAllEv")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot> const&)")]
 // 0x6a632c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEEaSERKS9_ — boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot> const&)
 pub fn stub_0x6a632c() -> ! {
     todo!("0x6a632c __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEEaSERKS9_")
@@ -399,7 +399,7 @@ pub fn stub_0x6a78bc() -> ! {
     todo!("0x6a78bc __ZN3rbx7signals6signalIFvN3G3D7Vector3EEE13disconnectAllEv")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3)>::slot> const&)")]
 // 0x6a7a34 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D7Vector3EEE4slotEEaSERKS9_ — boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot> const&)
 pub fn stub_0x6a7a34() -> ! {
     todo!("0x6a7a34 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D7Vector3EEE4slotEEaSERKS9_")
@@ -417,7 +417,7 @@ pub fn stub_0x6ad758() -> ! {
     todo!("0x6ad758 __ZN3rbx7signals16signal_with_argsILi1EFviEEclEi")
 }
 
-#[doc(alias = "rbx::signals::signal<void ()(int)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(int)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(int)>::slot> &)")]
 // 0x6ad89c — __ZN3rbx7signals6signalIFviEE4nextERN5boost13intrusive_ptrINS3_4slotEEE — rbx::signals::signal<void ()(int)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot> &)
 pub fn stub_0x6ad89c() -> ! {
     todo!("0x6ad89c __ZN3rbx7signals6signalIFviEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")
@@ -466,7 +466,7 @@ pub fn stub_0x6ae9b0() -> ! {
     todo!("0x6ae9b0 __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX10BrickColorEEEclES3_")
 }
 
-#[doc(alias = "rbx::signals::signal<void ()(RBX::BrickColor)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::BrickColor)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot> &)")]
 // 0x6aeaf4 — __ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE — rbx::signals::signal<void ()(RBX::BrickColor)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot> &)
 pub fn stub_0x6aeaf4() -> ! {
     todo!("0x6aeaf4 __ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
@@ -496,7 +496,7 @@ pub fn stub_0x6af700() -> ! {
     todo!("0x6af700 __ZN3rbx7signals6signalIFvN3RBX10BrickColorEEE6insertEPNS5_4slotE")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(rbx::signals::signal<void ()(RBX::BrickColor)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(rbx::signals::signal<void ()(RBX::BrickColor)>::slot*)")]
 // 0x6af90c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10BrickColorEEE4slotEEaSEPS8_ — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(rbx::signals::signal<void ()(RBX::BrickColor)>::slot*)
 pub fn stub_0x6af90c() -> ! {
     todo!("0x6af90c __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10BrickColorEEE4slotEEaSEPS8_")
@@ -605,7 +605,7 @@ pub fn stub_0x6b0b90() -> ! {
     todo!("0x6b0b90 __ZN3rbx7signals16signal_with_argsILi1EFvN3G3D6Color3EEEclES3_")
 }
 
-#[doc(alias = "rbx::signals::signal<void ()(G3D::Color3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(G3D::Color3)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Color3)>::slot> &)")]
 // 0x6b0cf8 — __ZN3rbx7signals6signalIFvN3G3D6Color3EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE — rbx::signals::signal<void ()(G3D::Color3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot> &)
 pub fn stub_0x6b0cf8() -> ! {
     todo!("0x6b0cf8 __ZN3rbx7signals6signalIFvN3G3D6Color3EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
@@ -635,7 +635,7 @@ pub fn stub_0x6b18f8() -> ! {
     todo!("0x6b18f8 __ZN3rbx7signals6signalIFvN3G3D6Color3EEE6insertEPNS5_4slotE")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Color3)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Color3)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Color3)>::slot*)")]
 // 0x6b1b04 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D6Color3EEE4slotEEaSEPS8_ — boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Color3)>::slot*)
 pub fn stub_0x6b1b04() -> ! {
     todo!("0x6b1b04 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D6Color3EEE4slotEEaSEPS8_")

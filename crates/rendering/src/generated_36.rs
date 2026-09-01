@@ -135,7 +135,7 @@ pub fn stub_71d49c() -> ! {
 }
 
 // 0x71d510 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY9BlockMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token *)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token *)
 pub fn stub_71d510() -> ! {
     todo!("0x71d510 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::BlockMesh,RBX::Vector3Comparer>::Token *)")
@@ -583,7 +583,7 @@ pub fn stub_731354() -> ! {
 }
 
 // 0x7314a4 — __ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY15CornerWedgeMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)
 pub fn stub_7314a4() -> ! {
     todo!("0x7314a4 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)")
@@ -606,7 +606,7 @@ pub fn stub_731718() -> ! {
 }
 
 // 0x73178c — __ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY15CornerWedgeMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)
 pub fn stub_73178c() -> ! {
     todo!("0x73178c boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)")

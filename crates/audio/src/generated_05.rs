@@ -122,13 +122,13 @@ pub fn stub_6418b4() -> ! {
 }
 
 // 0x642348 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12SpecialShapeES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpecialShape,RBX::SpecialShape>(boost::shared_ptr<RBX::SpecialShape> const*,RBX::SpecialShape *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpecialShape,RBX::SpecialShape>(rbx_core::SharedPtr<RBX::SpecialShape> const*,RBX::SpecialShape *)const")]
 pub fn stub_642348() -> ! {
     todo!("0x642348 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpecialShape,RBX::SpecialShape>(boost::shared_ptr<RBX::SpecialShape> const*,RBX::SpecialShape *)const")
 }
 
 // 0x642cdc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8FileMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FileMesh,RBX::FileMesh>(boost::shared_ptr<RBX::FileMesh> const*,RBX::FileMesh *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FileMesh,RBX::FileMesh>(rbx_core::SharedPtr<RBX::FileMesh> const*,RBX::FileMesh *)const")]
 pub fn stub_642cdc() -> ! {
     todo!("0x642cdc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FileMesh,RBX::FileMesh>(boost::shared_ptr<RBX::FileMesh> const*,RBX::FileMesh *)const")
 }
@@ -289,7 +289,7 @@ pub fn stub_64481c() -> ! {
 
 // 0x645080 — __ZN3RBX5Stats12StatsService6reportESsN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, void *, int, int, int, int)
-#[doc(alias = "RBX::Stats::StatsService::report(std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
+#[doc(alias = "RBX::Stats::StatsService::report(std::string,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")]
 pub fn stub_645080() -> ! {
     todo!("0x645080 RBX::Stats::StatsService::report(std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>)")
 }
@@ -326,14 +326,14 @@ pub fn stub_645fec() -> ! {
 }
 
 // 0x6466e0 — __ZN3RBX5Stats12StatsService19addCategoryAndTableERKSsRKN5boost9unordered13unordered_mapISsNS_10Reflection7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIS2_S8_EEEENS4_10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEE
-#[doc(alias = "RBX::Stats::StatsService::addCategoryAndTable(std::string const&,boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const&,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")]
+#[doc(alias = "RBX::Stats::StatsService::addCategoryAndTable(std::string const&,boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const&,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")]
 pub fn stub_6466e0() -> ! {
     todo!("0x6466e0 RBX::Stats::StatsService::addCategoryAndTable(std::string const&,boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const&,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")
 }
 
 // 0x647730 — __ZN3RBX5Stats12StatsService6reportESsN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS_10Reflection7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEi
 // type: int __fastcall(boost::detail::sp_counted_base *)
-#[doc(alias = "RBX::Stats::StatsService::report(std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,int)")]
+#[doc(alias = "RBX::Stats::StatsService::report(std::string,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,int)")]
 pub fn stub_647730() -> ! {
     todo!("0x647730 RBX::Stats::StatsService::report(std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,int)")
 }
@@ -346,19 +346,19 @@ pub fn stub_6478e8() -> ! {
 }
 
 // 0x64a140 — __ZN3RBX10Reflection13BoundFuncDescI13ProfilingItemFN5boost10shared_ptrIKNS0_5TupleEEEdELi1EED1Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<ProfilingItem,boost::shared_ptr<RBX::Reflection::Tuple const> ()(double),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<ProfilingItem,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(double),1>::~BoundFuncDesc()")]
 pub fn stub_64a140() -> ! {
     todo!("0x64a140 RBX::Reflection::BoundFuncDesc<ProfilingItem,boost::shared_ptr<RBX::Reflection::Tuple const> ()(double),1>::~BoundFuncDesc()")
 }
 
 // 0x64a2f8 — __ZN3RBX10Reflection13BoundFuncDescI13ProfilingItemFN5boost10shared_ptrIKNS0_5TupleEEEiELi1EED1Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<ProfilingItem,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<ProfilingItem,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(int),1>::~BoundFuncDesc()")]
 pub fn stub_64a2f8() -> ! {
     todo!("0x64a2f8 RBX::Reflection::BoundFuncDesc<ProfilingItem,boost::shared_ptr<RBX::Reflection::Tuple const> ()(int),1>::~BoundFuncDesc()")
 }
 
 // 0x64a338 — __ZN3RBX10Reflection13BoundFuncDescINS_5Stats12StatsServiceEFvSsN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEELi2EED1Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),2>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(std::string,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),2>::~BoundFuncDesc()")]
 pub fn stub_64a338() -> ! {
     todo!("0x64a338 RBX::Reflection::BoundFuncDesc<RBX::Stats::StatsService,void ()(std::string,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>),2>::~BoundFuncDesc()")
 }
@@ -426,14 +426,14 @@ pub fn stub_64a670() -> ! {
 
 // 0x64a6fc — __ZNK3RBX10Reflection7Variant3getIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsS1_NS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS1_EEEEEEEET_v
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::Variant::get<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)const")]
+#[doc(alias = "rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::Variant::get<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)const")]
 pub fn stub_64a6fc() -> ! {
     todo!("0x64a6fc boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> RBX::Reflection::Variant::get<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)const")
 }
 
 // 0x64a874 — __ZNK3RBX10Reflection7Variant3getIN5boost10shared_ptrIKSt6vectorIS1_SaIS1_EEEEEET_v
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> RBX::Reflection::Variant::get<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)const")]
+#[doc(alias = "rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> RBX::Reflection::Variant::get<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)const")]
 pub fn stub_64a874() -> ! {
     todo!("0x64a874 boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> RBX::Reflection::Variant::get<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)const")
 }
@@ -446,43 +446,43 @@ pub fn stub_64b114() -> ! {
 }
 
 // 0x64d120 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats16TypedPercentItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedPercentItem,RBX::Stats::TypedPercentItem>(boost::shared_ptr<RBX::Stats::TypedPercentItem> const*,RBX::Stats::TypedPercentItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedPercentItem,RBX::Stats::TypedPercentItem>(rbx_core::SharedPtr<RBX::Stats::TypedPercentItem> const*,RBX::Stats::TypedPercentItem *)const")]
 pub fn stub_64d120() -> ! {
     todo!("0x64d120 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedPercentItem,RBX::Stats::TypedPercentItem>(boost::shared_ptr<RBX::Stats::TypedPercentItem> const*,RBX::Stats::TypedPercentItem *)const")
 }
 
 // 0x64e580 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats12TypedMemItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedMemItem,RBX::Stats::TypedMemItem>(boost::shared_ptr<RBX::Stats::TypedMemItem> const*,RBX::Stats::TypedMemItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedMemItem,RBX::Stats::TypedMemItem>(rbx_core::SharedPtr<RBX::Stats::TypedMemItem> const*,RBX::Stats::TypedMemItem *)const")]
 pub fn stub_64e580() -> ! {
     todo!("0x64e580 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedMemItem,RBX::Stats::TypedMemItem>(boost::shared_ptr<RBX::Stats::TypedMemItem> const*,RBX::Stats::TypedMemItem *)const")
 }
 
 // 0x64f240 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI13ProfilingItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ProfilingItem,ProfilingItem>(boost::shared_ptr<ProfilingItem> const*,ProfilingItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ProfilingItem,ProfilingItem>(rbx_core::SharedPtr<ProfilingItem> const*,ProfilingItem *)const")]
 pub fn stub_64f240() -> ! {
     todo!("0x64f240 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ProfilingItem,ProfilingItem>(boost::shared_ptr<ProfilingItem> const*,ProfilingItem *)const")
 }
 
 // 0x64fe38 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI24RunningAverageItemDoubleS6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemDouble,RunningAverageItemDouble>(boost::shared_ptr<RunningAverageItemDouble> const*,RunningAverageItemDouble *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemDouble,RunningAverageItemDouble>(rbx_core::SharedPtr<RunningAverageItemDouble> const*,RunningAverageItemDouble *)const")]
 pub fn stub_64fe38() -> ! {
     todo!("0x64fe38 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemDouble,RunningAverageItemDouble>(boost::shared_ptr<RunningAverageItemDouble> const*,RunningAverageItemDouble *)const")
 }
 
 // 0x650a30 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21RunningAverageItemIntS6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemInt,RunningAverageItemInt>(boost::shared_ptr<RunningAverageItemInt> const*,RunningAverageItemInt *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemInt,RunningAverageItemInt>(rbx_core::SharedPtr<RunningAverageItemInt> const*,RunningAverageItemInt *)const")]
 pub fn stub_650a30() -> ! {
     todo!("0x650a30 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemInt,RunningAverageItemInt>(boost::shared_ptr<RunningAverageItemInt> const*,RunningAverageItemInt *)const")
 }
 
 // 0x65163c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI26TotalCountTimeIntervalItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<TotalCountTimeIntervalItem,TotalCountTimeIntervalItem>(boost::shared_ptr<TotalCountTimeIntervalItem> const*,TotalCountTimeIntervalItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<TotalCountTimeIntervalItem,TotalCountTimeIntervalItem>(rbx_core::SharedPtr<TotalCountTimeIntervalItem> const*,TotalCountTimeIntervalItem *)const")]
 pub fn stub_65163c() -> ! {
     todo!("0x65163c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<TotalCountTimeIntervalItem,TotalCountTimeIntervalItem>(boost::shared_ptr<TotalCountTimeIntervalItem> const*,TotalCountTimeIntervalItem *)const")
 }
 
 // 0x651938 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats4ItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::Item,RBX::Stats::Item>(boost::shared_ptr<RBX::Stats::Item> const*,RBX::Stats::Item *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::Item,RBX::Stats::Item>(rbx_core::SharedPtr<RBX::Stats::Item> const*,RBX::Stats::Item *)const")]
 pub fn stub_651938() -> ! {
     todo!("0x651938 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::Item,RBX::Stats::Item>(boost::shared_ptr<RBX::Stats::Item> const*,RBX::Stats::Item *)const")
 }
@@ -531,14 +531,14 @@ pub fn stub_651dc8() -> ! {
 
 // 0x653744 — __ZN3rbx8any_castIRKN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS6_EEEENS4_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const& rbx::any_cast<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+#[doc(alias = "rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const& rbx::any_cast<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 pub fn stub_653744() -> ! {
     todo!("0x653744 boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const& rbx::any_cast<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
 }
 
 // 0x653838 — __ZN3rbx8any_castIRKN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEENS5_7Region3EEET_RNS_13placement_anyIT0_EE
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const& rbx::any_cast<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
+#[doc(alias = "rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const& rbx::any_cast<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
 pub fn stub_653838() -> ! {
     todo!("0x653838 boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const& rbx::any_cast<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
 }
