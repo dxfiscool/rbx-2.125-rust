@@ -356,3 +356,4 @@ pub mod generated_core_shard_kz;
 pub mod generated_core_shard_la;
 pub mod generated_core_shard_lb;
 pub mod generated_core_shard_lc;
+pub mod generated_core_shard_ld;
