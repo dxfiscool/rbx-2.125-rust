@@ -1,14 +1,13 @@
 // Auto-generated skeletons for rbx-datamodel — from ida/export.json
-// Filter: EA-sorted asc next 100 not yet in datamodel (strict RBX::Instance|RBX::DataModel|RBX::Workspace 0 remaining, fallback gap filler)
+// Filter: EA-sorted asc next 150 not yet in datamodel (strict RBX::Instance|RBX::DataModel|RBX::Workspace 0 remaining, fallback gap filler)
 // Source: ida/export.json (85545 funcs, base 0x4000)
-// Batch: 100 stubs | range 0x234a5c..0x23b564 | strict 10215 complete (0 remaining), datamodel distinct 29352->29452
+// Batch: 150 stubs | range 0x234a5c..0x23e5c0 | strict 10215 complete (0 remaining), datamodel distinct 29352->29502
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias where needed
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
-
 // 0x234a5c — ___zzip_fetch_disk_trailer
 // type: int __fastcall(int, unsigned int, int, unsigned __int8 **, int)
 #[doc(alias = "___zzip_fetch_disk_trailer")]
@@ -355,6 +354,7 @@ pub fn stub_0x237b6c() -> ! {
 
 // 0x237c98 — __GLOBAL__I_a_38
 // type: (unknown)
+// was: `global constructor keyed to'_a_38
 #[doc(alias = "global constructor keyed to_a_38")]
 pub fn stub_0x237c98() -> ! {
     todo!("0x237c98 global constructor keyed to_a_38")
@@ -562,6 +562,7 @@ pub fn stub_0x23a394() -> ! {
 
 // 0x23a570 — __GLOBAL__I_a_39
 // type: int *()
+// was: `global constructor keyed to'_a_39
 #[doc(alias = "global constructor keyed to_a_39")]
 pub fn stub_0x23a570() -> ! {
     todo!("0x23a570 global constructor keyed to_a_39")
@@ -697,6 +698,7 @@ pub fn stub_0x23afa4() -> ! {
 
 // 0x23afa8 — __GLOBAL__I_a_40
 // type: void __fastcall(int, int, int, int, char, void *, int, int, int, int)
+// was: `global constructor keyed to'_a_40
 #[doc(alias = "global constructor keyed to_a_40")]
 pub fn stub_0x23afa8() -> ! {
     todo!("0x23afa8 global constructor keyed to_a_40")
@@ -760,6 +762,7 @@ pub fn stub_0x23b508() -> ! {
 
 // 0x23b544 — __ZN12_GLOBAL__N_121system_error_categoryD1Ev
 // type: void __fastcall(_anonymous_namespace_::system_error_category *__hidden this)
+// was: `anonymous namespace'::system_error_category::~system_error_category()
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
 pub fn stub_0x23b544() -> ! {
     todo!("0x23b544 anonymous namespace::system_error_category::~system_error_category()")
@@ -767,6 +770,7 @@ pub fn stub_0x23b544() -> ! {
 
 // 0x23b548 — __ZN12_GLOBAL__N_122generic_error_categoryD1Ev
 // type: void __fastcall(_anonymous_namespace_::generic_error_category *__hidden this)
+// was: `anonymous namespace'::generic_error_category::~generic_error_category()
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
 pub fn stub_0x23b548() -> ! {
     todo!("0x23b548 anonymous namespace::generic_error_category::~generic_error_category()")
@@ -774,6 +778,7 @@ pub fn stub_0x23b548() -> ! {
 
 // 0x23b54c — __ZN12_GLOBAL__N_122generic_error_categoryD0Ev
 // type: void __fastcall(_anonymous_namespace_::generic_error_category *__hidden this)
+// was: `anonymous namespace'::generic_error_category::~generic_error_category()
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
 pub fn stub_0x23b54c() -> ! {
     todo!("0x23b54c anonymous namespace::generic_error_category::~generic_error_category()")
@@ -781,6 +786,7 @@ pub fn stub_0x23b54c() -> ! {
 
 // 0x23b558 — __ZNK12_GLOBAL__N_122generic_error_category4nameEv
 // type: const char *__fastcall(_anonymous_namespace_::generic_error_category *this)
+// was: `anonymous namespace'::generic_error_category::name(void)const
 #[doc(alias = "anonymous namespace::generic_error_category::name(void)const")]
 pub fn stub_0x23b558() -> ! {
     todo!("0x23b558 anonymous namespace::generic_error_category::name(void)const")
@@ -788,7 +794,408 @@ pub fn stub_0x23b558() -> ! {
 
 // 0x23b564 — __ZNK12_GLOBAL__N_122generic_error_category7messageEi
 // type: int __fastcall(_anonymous_namespace_::generic_error_category *this, int, int)
+// was: `anonymous namespace'::generic_error_category::message(int)const
 #[doc(alias = "anonymous namespace::generic_error_category::message(int)const")]
 pub fn stub_0x23b564() -> ! {
     todo!("0x23b564 anonymous namespace::generic_error_category::message(int)const")
+}
+
+// 0x23b7cc — __ZN12_GLOBAL__N_121system_error_categoryD0Ev
+// type: void __fastcall(_anonymous_namespace_::system_error_category *__hidden this)
+// was: `anonymous namespace'::system_error_category::~system_error_category()
+#[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
+pub fn stub_0x23b7cc() -> ! {
+    todo!("0x23b7cc anonymous namespace::system_error_category::~system_error_category()")
+}
+
+// 0x23b7d8 — __ZNK12_GLOBAL__N_121system_error_category4nameEv
+// type: const char *__fastcall(_anonymous_namespace_::system_error_category *this)
+// was: `anonymous namespace'::system_error_category::name(void)const
+#[doc(alias = "anonymous namespace::system_error_category::name(void)const")]
+pub fn stub_0x23b7d8() -> ! {
+    todo!("0x23b7d8 anonymous namespace::system_error_category::name(void)const")
+}
+
+// 0x23b7e4 — __ZNK12_GLOBAL__N_121system_error_category7messageEi
+// type: int __fastcall(_anonymous_namespace_::system_error_category *this, int, int)
+// was: `anonymous namespace'::system_error_category::message(int)const
+#[doc(alias = "anonymous namespace::system_error_category::message(int)const")]
+pub fn stub_0x23b7e4() -> ! {
+    todo!("0x23b7e4 anonymous namespace::system_error_category::message(int)const")
+}
+
+// 0x23b838 — __ZNK12_GLOBAL__N_121system_error_category23default_error_conditionEi
+// type: void __fastcall(_anonymous_namespace_::system_error_category *this, int, int)
+// was: `anonymous namespace'::system_error_category::default_error_condition(int)const
+#[doc(alias = "anonymous namespace::system_error_category::default_error_condition(int)const")]
+pub fn stub_0x23b838() -> ! {
+    todo!("0x23b838 anonymous namespace::system_error_category::default_error_condition(int)const")
+}
+
+// 0x23ca3c — __ZNK5boost6system14error_category23default_error_conditionEi
+// type: _QWORD *__fastcall(_QWORD *this, int, __int64)
+// was: boost::system::error_category::default_error_condition(int)const
+#[doc(alias = "boost::system::error_category::default_error_condition(int)const")]
+pub fn stub_0x23ca3c() -> ! {
+    todo!("0x23ca3c boost::system::error_category::default_error_condition(int)const")
+}
+
+// 0x23ca44 — __ZNK5boost6system14error_category10equivalentEiRKNS0_15error_conditionE
+// type: bool __fastcall(int, int, _DWORD *)
+// was: boost::system::error_category::equivalent(int,boost::system::error_condition const&)const
+#[doc(alias = "boost::system::error_category::equivalent(int,boost::system::error_condition const&)const")]
+pub fn stub_0x23ca44() -> ! {
+    todo!("0x23ca44 boost::system::error_category::equivalent(int,boost::system::error_condition const&)const")
+}
+
+// 0x23ca70 — __ZNK5boost6system14error_category10equivalentERKNS0_10error_codeEi
+// type: bool __fastcall(int, _DWORD *, int)
+// was: boost::system::error_category::equivalent(boost::system::error_code const&,int)const
+#[doc(alias = "boost::system::error_category::equivalent(boost::system::error_code const&,int)const")]
+pub fn stub_0x23ca70() -> ! {
+    todo!("0x23ca70 boost::system::error_category::equivalent(boost::system::error_code const&,int)const")
+}
+
+// 0x23ca88 — __GLOBAL__I_a_41
+// type: void()
+// was: `global constructor keyed to'_a_41
+#[doc(alias = "global constructor keyed to_a_41")]
+pub fn stub_0x23ca88() -> ! {
+    todo!("0x23ca88 global constructor keyed to_a_41")
+}
+
+// 0x23cb64 — __ZN5boost9iostreams6detail11gzip_header7processEc
+// type: void __fastcall(boost::iostreams::detail::gzip_header *this, unsigned __int8)
+// was: boost::iostreams::detail::gzip_header::process(char)
+#[doc(alias = "boost::iostreams::detail::gzip_header::process(char)")]
+pub fn stub_0x23cb64() -> ! {
+    todo!("0x23cb64 boost::iostreams::detail::gzip_header::process(char)")
+}
+
+// 0x23cef0 — __ZN5boost9iostreams6detail11gzip_header5resetEv
+// type: int __fastcall(boost::iostreams::detail::gzip_header *this)
+// was: boost::iostreams::detail::gzip_header::reset(void)
+#[doc(alias = "boost::iostreams::detail::gzip_header::reset(void)")]
+pub fn stub_0x23cef0() -> ! {
+    todo!("0x23cef0 boost::iostreams::detail::gzip_header::reset(void)")
+}
+
+// 0x23cf2c — __ZN5boost9iostreams6detail11gzip_footer7processEc
+// type: _DWORD *__fastcall(_DWORD *this, unsigned __int8)
+// was: boost::iostreams::detail::gzip_footer::process(char)
+#[doc(alias = "boost::iostreams::detail::gzip_footer::process(char)")]
+pub fn stub_0x23cf2c() -> ! {
+    todo!("0x23cf2c boost::iostreams::detail::gzip_footer::process(char)")
+}
+
+// 0x23cf7c — __ZN5boost9iostreams6detail11gzip_footer5resetEv
+// type: _DWORD *__fastcall(_DWORD *this)
+// was: boost::iostreams::detail::gzip_footer::reset(void)
+#[doc(alias = "boost::iostreams::detail::gzip_footer::reset(void)")]
+pub fn stub_0x23cf7c() -> ! {
+    todo!("0x23cf7c boost::iostreams::detail::gzip_footer::reset(void)")
+}
+
+// 0x23cf8c — __ZN5boost9iostreams10zlib_error5checkEi
+// type: void __fastcall(boost::iostreams::zlib_error *this, int)
+// was: boost::iostreams::zlib_error::check(int)
+#[doc(alias = "boost::iostreams::zlib_error::check(int)")]
+pub fn stub_0x23cf8c() -> ! {
+    todo!("0x23cf8c boost::iostreams::zlib_error::check(int)")
+}
+
+// 0x23d0c8 — __ZN5boost9iostreams6detail9zlib_baseC2Ev
+// type: boost::iostreams::detail::zlib_base *__fastcall(boost::iostreams::detail::zlib_base *this)
+// was: boost::iostreams::detail::zlib_base::zlib_base(void)
+#[doc(alias = "boost::iostreams::detail::zlib_base::zlib_base(void)")]
+pub fn stub_0x23d0c8() -> ! {
+    todo!("0x23d0c8 boost::iostreams::detail::zlib_base::zlib_base(void)")
+}
+
+// 0x23d0e8 — __ZN5boost9iostreams6detail9zlib_baseD2Ev
+// type: void __fastcall(void **this)
+// was: boost::iostreams::detail::zlib_base::~zlib_base()
+#[doc(alias = "boost::iostreams::detail::zlib_base::~zlib_base()")]
+pub fn stub_0x23d0e8() -> ! {
+    todo!("0x23d0e8 boost::iostreams::detail::zlib_base::~zlib_base()")
+}
+
+// 0x23d0fc — __ZN5boost9iostreams6detail9zlib_base6beforeERPKcS4_RPcS6_
+// type: int __fastcall(boost::iostreams::detail::zlib_base *this, const char **, const char *, char **, char *)
+// was: boost::iostreams::detail::zlib_base::before(char const*&,char const*,char *&,char *)
+#[doc(alias = "boost::iostreams::detail::zlib_base::before(char const*&,char const*,char *&,char *)")]
+pub fn stub_0x23d0fc() -> ! {
+    todo!("0x23d0fc boost::iostreams::detail::zlib_base::before(char const*&,char const*,char *&,char *)")
+}
+
+// 0x23d120 — __ZN5boost9iostreams6detail9zlib_base5afterERPKcRPcb
+// type: const char *__fastcall(boost::iostreams::detail::zlib_base *this, const char **, char **, int)
+// was: boost::iostreams::detail::zlib_base::after(char const*&,char *&,bool)
+#[doc(alias = "boost::iostreams::detail::zlib_base::after(char const*&,char *&,bool)")]
+pub fn stub_0x23d120() -> ! {
+    todo!("0x23d120 boost::iostreams::detail::zlib_base::after(char const*&,char *&,bool)")
+}
+
+// 0x23d180 — __ZN5boost9iostreams6detail9zlib_base8xdeflateEi
+// type: int __fastcall(z_streamp *this, int)
+// was: boost::iostreams::detail::zlib_base::xdeflate(int)
+#[doc(alias = "boost::iostreams::detail::zlib_base::xdeflate(int)")]
+pub fn stub_0x23d180() -> ! {
+    todo!("0x23d180 boost::iostreams::detail::zlib_base::xdeflate(int)")
+}
+
+// 0x23d18c — __ZN5boost9iostreams6detail9zlib_base8xinflateEi
+// type: int __fastcall(z_streamp *this, int)
+// was: boost::iostreams::detail::zlib_base::xinflate(int)
+#[doc(alias = "boost::iostreams::detail::zlib_base::xinflate(int)")]
+pub fn stub_0x23d18c() -> ! {
+    todo!("0x23d18c boost::iostreams::detail::zlib_base::xinflate(int)")
+}
+
+// 0x23d198 — __ZN5boost9iostreams6detail9zlib_base5resetEbb
+// type: int __fastcall(z_stream **this, int, int)
+// was: boost::iostreams::detail::zlib_base::reset(bool,bool)
+#[doc(alias = "boost::iostreams::detail::zlib_base::reset(bool,bool)")]
+pub fn stub_0x23d198() -> ! {
+    todo!("0x23d198 boost::iostreams::detail::zlib_base::reset(bool,bool)")
+}
+
+// 0x23d1c8 — __ZN5boost9iostreams6detail9zlib_base7do_initERKNS0_11zlib_paramsEbPFPvS6_jjEPFvS6_S6_ES6_
+// type: void __fastcall(int, int, int, int, int, void *)
+// was: boost::iostreams::detail::zlib_base::do_init(boost::iostreams::zlib_params const&,bool,void * (*)(void *,unsigned int,unsigned int),void (*)(void *,void *),void *)
+#[doc(alias = "boost::iostreams::detail::zlib_base::do_init(boost::iostreams::zlib_params const&,bool,void * (*)(void *,unsigned int,unsigned int),void (*)(void *,void *),void *)")]
+pub fn stub_0x23d1c8() -> ! {
+    todo!("0x23d1c8 boost::iostreams::detail::zlib_base::do_init(boost::iostreams::zlib_params const&,bool,void * (*)(void *,unsigned int,unsigned int),void (*)(void *,void *),void *)")
+}
+
+// 0x23d238 — __ZN5boost15throw_exceptionINS_9iostreams10zlib_errorEEEvRKT_
+// type: void __fastcall __noreturn(int)
+// was: void boost::throw_exception<boost::iostreams::zlib_error>(boost::iostreams::zlib_error const&)
+#[doc(alias = "void boost::throw_exception<boost::iostreams::zlib_error>(boost::iostreams::zlib_error const&)")]
+pub fn stub_0x23d238() -> ! {
+    todo!("0x23d238 void boost::throw_exception<boost::iostreams::zlib_error>(boost::iostreams::zlib_error const&)")
+}
+
+// 0x23d390 — __ZN5boost9iostreams10zlib_errorD1Ev
+// type: void __fastcall(boost::iostreams::zlib_error *__hidden this)
+// was: boost::iostreams::zlib_error::~zlib_error()
+#[doc(alias = "boost::iostreams::zlib_error::~zlib_error()")]
+pub fn stub_0x23d390() -> ! {
+    todo!("0x23d390 boost::iostreams::zlib_error::~zlib_error()")
+}
+
+// 0x23d39c — __ZN5boost9iostreams10zlib_errorD0Ev
+// type: void __fastcall(boost::iostreams::zlib_error *__hidden this)
+// was: boost::iostreams::zlib_error::~zlib_error()
+#[doc(alias = "boost::iostreams::zlib_error::~zlib_error()")]
+pub fn stub_0x23d39c() -> ! {
+    todo!("0x23d39c boost::iostreams::zlib_error::~zlib_error()")
+}
+
+// 0x23d3b0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
+// type: std::ios_base::failure *__fastcall(std::ios_base::failure *)
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_0x23d3b0() -> ! {
+    todo!("0x23d3b0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23d468 — __ZN5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev
+// type: int __fastcall(std::ios_base::failure *)
+// was: boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
+#[doc(alias = "boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
+pub fn stub_0x23d468() -> ! {
+    todo!("0x23d468 boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+}
+
+// 0x23d520 — __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev
+// type: void __fastcall(_DWORD *)
+// was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
+pub fn stub_0x23d520() -> ! {
+    todo!("0x23d520 non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+}
+
+// 0x23d5d8 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
+// type: void __fastcall(_DWORD *)
+// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_0x23d5d8() -> ! {
+    todo!("0x23d5d8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23d690 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
+// type: void __fastcall(_DWORD *)
+// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_0x23d690() -> ! {
+    todo!("0x23d690 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23d75c — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
+// type: void __fastcall(std::ios_base::failure *)
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_0x23d75c() -> ! {
+    todo!("0x23d75c boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23d818 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE5cloneEv
+// type: char *__fastcall(int)
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")]
+pub fn stub_0x23d818() -> ! {
+    todo!("0x23d818 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")
+}
+
+// 0x23d8d4 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE7rethrowEv
+// type: void __fastcall __noreturn(int)
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")]
+pub fn stub_0x23d8d4() -> ! {
+    todo!("0x23d8d4 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")
+}
+
+// 0x23d984 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
+// type: void __fastcall(_DWORD *)
+// was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_0x23d984() -> ! {
+    todo!("0x23d984 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23da40 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE5cloneEv
+// type: char *__fastcall(_DWORD *)
+// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")]
+pub fn stub_0x23da40() -> ! {
+    todo!("0x23da40 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")
+}
+
+// 0x23db04 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE7rethrowEv
+// type: void __fastcall __noreturn(_DWORD *)
+// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")]
+pub fn stub_0x23db04() -> ! {
+    todo!("0x23db04 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")
+}
+
+// 0x23db14 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
+// type: void __fastcall(_DWORD *)
+// was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
+pub fn stub_0x23db14() -> ! {
+    todo!("0x23db14 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")
+}
+
+// 0x23dbe8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_
+// type: int __fastcall(int, int)
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&)")]
+pub fn stub_0x23dbe8() -> ! {
+    todo!("0x23dbe8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&)")
+}
+
+// 0x23dd30 — __ZN5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
+// type: void __fastcall(std::ios_base::failure *)
+// was: boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
+#[doc(alias = "boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
+pub fn stub_0x23dd30() -> ! {
+    todo!("0x23dd30 boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+}
+
+// 0x23ddec — __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
+// type: void __fastcall(_DWORD *)
+// was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
+pub fn stub_0x23ddec() -> ! {
+    todo!("0x23ddec non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+}
+
+// 0x23dea8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_NS6_9clone_tagE
+// type: int __fastcall(int, int)
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_tag)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_tag)")]
+pub fn stub_0x23dea8() -> ! {
+    todo!("0x23dea8 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_tag)")
+}
+
+// 0x23e044 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS5_
+// type: int __fastcall(int, int)
+// was: boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::iostreams::zlib_error> const&)
+#[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::iostreams::zlib_error> const&)")]
+pub fn stub_0x23e044() -> ! {
+    todo!("0x23e044 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone_impl(boost::exception_detail::error_info_injector<boost::iostreams::zlib_error> const&)")
+}
+
+// 0x23e1e0 — __Z23RbxTotalUsableCoreCountj
+// type: RBX::MacSystemUtil *__fastcall(RBX::MacSystemUtil *)
+// was: RbxTotalUsableCoreCount(unsigned int)
+#[doc(alias = "RbxTotalUsableCoreCount(unsigned int)")]
+pub fn stub_0x23e1e0() -> ! {
+    todo!("0x23e1e0 RbxTotalUsableCoreCount(unsigned int)")
+}
+
+// 0x23e1f8 — __ZN3RBX13runtime_errorEPKcz
+// type: void(std::runtime_error *this, const char *, ...)
+// was: RBX::runtime_error(char const*,...)
+#[doc(alias = "RBX::runtime_error(char const*,...)")]
+pub fn stub_0x23e1f8() -> ! {
+    todo!("0x23e1f8 RBX::runtime_error(char const*,...)")
+}
+
+// 0x23e324 — __ZN3RBX7vformatEPKcPv
+// type: int __fastcall(RBX *this, const char *, va_list)
+// was: RBX::vformat(char const*,void *)
+#[doc(alias = "RBX::vformat(char const*,void *)")]
+pub fn stub_0x23e324() -> ! {
+    todo!("0x23e324 RBX::vformat(char const*,void *)")
+}
+
+// 0x23e50c — __ZN3RBX6formatEPKcz
+// type: int(RBX *this, const char *, ...)
+// was: RBX::format(char const*,...)
+#[doc(alias = "RBX::format(char const*,...)")]
+pub fn stub_0x23e50c() -> ! {
+    todo!("0x23e50c RBX::format(char const*,...)")
+}
+
+// 0x23e52c — __ZN3RBX21trim_trailing_slashesERKSs
+// type: int __fastcall(RBX *this, const std::string *)
+// was: RBX::trim_trailing_slashes(std::string const&)
+#[doc(alias = "RBX::trim_trailing_slashes(std::string const&)")]
+pub fn stub_0x23e52c() -> ! {
+    todo!("0x23e52c RBX::trim_trailing_slashes(std::string const&)")
+}
+
+// 0x23e568 — __Z20GetDXVideoMemorySizev
+// type: int __fastcall(RBX::MacSystemUtil *)
+// was: GetDXVideoMemorySize(void)
+#[doc(alias = "GetDXVideoMemorySize(void)")]
+pub fn stub_0x23e568() -> ! {
+    todo!("0x23e568 GetDXVideoMemorySize(void)")
+}
+
+// 0x23e574 — __GLOBAL__I_a_42
+// type: int()
+// was: `global constructor keyed to'_a_42
+#[doc(alias = "global constructor keyed to_a_42")]
+pub fn stub_0x23e574() -> ! {
+    todo!("0x23e574 global constructor keyed to_a_42")
+}
+
+// 0x23e5a4 — __Z13ReleaseAssertiPKc
+// type: int __fastcall(int, const char *, int, const void *)
+// was: ReleaseAssert(int,char const*)
+#[doc(alias = "ReleaseAssert(int,char const*)")]
+pub fn stub_0x23e5a4() -> ! {
+    todo!("0x23e5a4 ReleaseAssert(int,char const*)")
+}
+
+// 0x23e5c0 — __ZN3RBX9Debugable7doCrashEv
+// type: int __fastcall(RBX::Debugable *this)
+// was: RBX::Debugable::doCrash(void)
+#[doc(alias = "RBX::Debugable::doCrash(void)")]
+pub fn stub_0x23e5c0() -> ! {
+    todo!("0x23e5c0 RBX::Debugable::doCrash(void)")
 }
