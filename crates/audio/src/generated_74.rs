@@ -124,44 +124,44 @@ pub fn stub_6cc160() -> ! {
 
 // 0x6cc170 — __ZThn32_N3RBX9WorkspaceD0Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc170() -> ! {
-    todo!("0x6cc170 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc170 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc178 — __ZThn36_N3RBX9WorkspaceD0Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc178() -> ! {
-    todo!("0x6cc178 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc178 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc180 — __ZThn120_N3RBX9WorkspaceD0Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc180() -> ! {
-    todo!("0x6cc180 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc180 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc188 — __ZThn280_N3RBX9WorkspaceD0Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc188() -> ! {
-    todo!("0x6cc188 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc188 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc190 — __ZThn324_N3RBX9WorkspaceD0Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc190() -> ! {
-    todo!("0x6cc190 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc190 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc198 — __ZThn356_N3RBX9WorkspaceD0Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc198() -> ! {
-    todo!("0x6cc198 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc198 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc1a0 — __ZN3RBX9WorkspaceD2Ev
@@ -173,44 +173,44 @@ pub fn stub_6cc1a0() -> ! {
 
 // 0x6cc71c — __ZThn32_N3RBX9WorkspaceD1Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc71c() -> ! {
-    todo!("0x6cc71c `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc71c non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc72c — __ZThn36_N3RBX9WorkspaceD1Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc72c() -> ! {
-    todo!("0x6cc72c `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc72c non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc73c — __ZThn120_N3RBX9WorkspaceD1Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc73c() -> ! {
-    todo!("0x6cc73c `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc73c non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc74c — __ZThn280_N3RBX9WorkspaceD1Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc74c() -> ! {
-    todo!("0x6cc74c `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc74c non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc760 — __ZThn324_N3RBX9WorkspaceD1Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc760() -> ! {
-    todo!("0x6cc760 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc760 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc774 — __ZThn356_N3RBX9WorkspaceD1Ev
 // type: void __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::~Workspace()")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::~Workspace()")]
 pub fn stub_6cc774() -> ! {
-    todo!("0x6cc774 `non-virtual thunk to'RBX::Workspace::~Workspace()")
+    todo!("0x6cc774 non-virtual thunk toRBX::Workspace::~Workspace()")
 }
 
 // 0x6cc788 — __ZN3RBX9Workspace23computeExtentsWorldFastEv
@@ -277,9 +277,9 @@ pub fn stub_6cd45c() -> ! {
 
 // 0x6cd464 — __ZThn280_N3RBX9Workspace9getCameraEv
 // type: _DWORD __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::getCamera(void)")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::getCamera(void)")]
 pub fn stub_6cd464() -> ! {
-    todo!("0x6cd464 `non-virtual thunk to'RBX::Workspace::getCamera(void)")
+    todo!("0x6cd464 non-virtual thunk toRBX::Workspace::getCamera(void)")
 }
 
 // 0x6cd478 — __ZNK3RBX9Workspace14getConstCameraEv
@@ -291,9 +291,9 @@ pub fn stub_6cd478() -> ! {
 
 // 0x6cd488 — __ZThn280_NK3RBX9Workspace14getConstCameraEv
 // type: _DWORD __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::getConstCamera(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::getConstCamera(void)const")]
 pub fn stub_6cd488() -> ! {
-    todo!("0x6cd488 `non-virtual thunk to'RBX::Workspace::getConstCamera(void)const")
+    todo!("0x6cd488 non-virtual thunk toRBX::Workspace::getConstCamera(void)const")
 }
 
 // 0x6cd498 — __ZN3RBX19destroyIfNotCurrentEN5boost10shared_ptrINS_8InstanceEEEPKNS_6CameraE
@@ -447,9 +447,9 @@ pub fn stub_6cefa4() -> ! {
 
 // 0x6cefc8 — __ZThn96_N3RBX9Workspace8render2dEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::Workspace *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::render2d(RBX::Adorn *)")]
 pub fn stub_6cefc8() -> ! {
-    todo!("0x6cefc8 `non-virtual thunk to'RBX::Workspace::render2d(RBX::Adorn *)")
+    todo!("0x6cefc8 non-virtual thunk toRBX::Workspace::render2d(RBX::Adorn *)")
 }
 
 // 0x6ceff0 — __ZN3RBX9Workspace9getCursorEv
@@ -474,9 +474,9 @@ pub fn stub_6cf3f4() -> ! {
 
 // 0x6cf454 — __ZThn96_N3RBX9Workspace13render3dAdornEPNS_5AdornE
 // type: _DWORD __fastcall(RBX::Workspace *__hidden this, RBX::Adorn *)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::render3dAdorn(RBX::Adorn *)")]
 pub fn stub_6cf454() -> ! {
-    todo!("0x6cf454 `non-virtual thunk to'RBX::Workspace::render3dAdorn(RBX::Adorn *)")
+    todo!("0x6cf454 non-virtual thunk toRBX::Workspace::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x6cf45c — __ZN3RBX9Workspace19append3dSortedAdornERSt6vectorIPNS_10IAdornableESaIS3_EE
@@ -522,9 +522,9 @@ pub fn stub_6cf66c() -> ! {
 }
 
 // 0x6cfe54 — __ZThn320_N3RBX9Workspace7processERKNS_8GuiEventE
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::process(RBX::GuiEvent const&)")]
 pub fn stub_6cfe54() -> ! {
-    todo!("0x6cfe54 `non-virtual thunk to'RBX::Workspace::process(RBX::GuiEvent const&)")
+    todo!("0x6cfe54 non-virtual thunk toRBX::Workspace::process(RBX::GuiEvent const&)")
 }
 
 // 0x6cfe64 — __ZN3RBX9Workspace17onServiceProviderEPNS_15ServiceProviderES2_
@@ -543,9 +543,9 @@ pub fn stub_6d0138() -> ! {
 
 // 0x6d02e4 — __ZThn388_N3RBX9Workspace15scriptShouldRunEPNS_10BaseScriptE
 // type: int __fastcall(RBX::Workspace *this, RBX::BaseScript *)
-#[doc(alias = "`non-virtual thunk to'RBX::Workspace::scriptShouldRun(RBX::BaseScript *)")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::scriptShouldRun(RBX::BaseScript *)")]
 pub fn stub_6d02e4() -> ! {
-    todo!("0x6d02e4 `non-virtual thunk to'RBX::Workspace::scriptShouldRun(RBX::BaseScript *)")
+    todo!("0x6d02e4 non-virtual thunk toRBX::Workspace::scriptShouldRun(RBX::BaseScript *)")
 }
 
 // 0x6d02f4 — __ZN3RBX10hash_valueERKNS_9TouchPairE

@@ -98,7 +98,7 @@ pub fn stub_e433bc() -> ! {
 }
 
 // 0xe433c8 — __ZThn12_N4Ogre22TextAreaOverlayElementD0Ev
-#[doc(alias = "`non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")]
+#[doc(alias = "non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")]
 // was: `non-virtual thunk to'Ogre::TextAreaOverlayElement::~TextAreaOverlayElement()
 pub fn stub_e433c8() -> ! {
     todo!("0xe433c8 `non-virtual thunk to'Ogre::TextAreaOverlayElement::~TextAreaOverlayElement()")
@@ -112,7 +112,7 @@ pub fn stub_e4345c() -> ! {
 }
 
 // 0xe43594 — __ZThn12_N4Ogre22TextAreaOverlayElementD1Ev
-#[doc(alias = "`non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")]
+#[doc(alias = "non-virtual thunk toOgre::TextAreaOverlayElement::~TextAreaOverlayElement()")]
 // was: `non-virtual thunk to'Ogre::TextAreaOverlayElement::~TextAreaOverlayElement()
 pub fn stub_e43594() -> ! {
     todo!("0xe43594 `non-virtual thunk to'Ogre::TextAreaOverlayElement::~TextAreaOverlayElement()")
@@ -133,7 +133,7 @@ pub fn stub_e435ac() -> ! {
 }
 
 // 0xe435ec — __ZThn12_NK4Ogre22TextAreaOverlayElement11getMaterialEv
-#[doc(alias = "`non-virtual thunk toOgre::TextAreaOverlayElement::getMaterial(void)const")]
+#[doc(alias = "non-virtual thunk toOgre::TextAreaOverlayElement::getMaterial(void)const")]
 // was: `non-virtual thunk to'Ogre::TextAreaOverlayElement::getMaterial(void)const
 pub fn stub_e435ec() -> ! {
     todo!("0xe435ec `non-virtual thunk to'Ogre::TextAreaOverlayElement::getMaterial(void)const")
@@ -147,7 +147,7 @@ pub fn stub_e4362c() -> ! {
 }
 
 // 0xe4364c — __ZThn12_N4Ogre22TextAreaOverlayElement18getRenderOperationERNS_15RenderOperationE
-#[doc(alias = "`non-virtual thunk toOgre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
+#[doc(alias = "non-virtual thunk toOgre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)")]
 // was: `non-virtual thunk to'Ogre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_e4364c() -> ! {
     todo!("0xe4364c `non-virtual thunk to'Ogre::TextAreaOverlayElement::getRenderOperation(Ogre::RenderOperation &)")

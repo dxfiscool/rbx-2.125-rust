@@ -233,9 +233,9 @@ pub fn stub_6c78c0() -> ! {
 }
 
 // 0x6c78c4 — __GLOBAL__I_a_283
-#[doc(alias = "`global constructor keyed to_a_283")]
+#[doc(alias = "global constructor keyed to_a_283")]
 pub fn stub_6c78c4() -> ! {
-    todo!("0x6c78c4 `global constructor keyed to'_a_283")
+    todo!("0x6c78c4 global constructor keyed to_a_283")
 }
 
 // 0x6c7f30 — __ZN3RBX5Visit12setUploadUrlESs
@@ -280,16 +280,16 @@ pub fn stub_6c84b0() -> ! {
 
 // 0x6c84b4 — __ZThn32_N3RBX5VisitD0Ev
 // type: void __fastcall(RBX::Visit *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Visit::~Visit()")]
+#[doc(alias = "non-virtual thunk toRBX::Visit::~Visit()")]
 pub fn stub_6c84b4() -> ! {
-    todo!("0x6c84b4 `non-virtual thunk to'RBX::Visit::~Visit()")
+    todo!("0x6c84b4 non-virtual thunk toRBX::Visit::~Visit()")
 }
 
 // 0x6c84bc — __ZThn36_N3RBX5VisitD0Ev
 // type: void __fastcall(RBX::Visit *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Visit::~Visit()")]
+#[doc(alias = "non-virtual thunk toRBX::Visit::~Visit()")]
 pub fn stub_6c84bc() -> ! {
-    todo!("0x6c84bc `non-virtual thunk to'RBX::Visit::~Visit()")
+    todo!("0x6c84bc non-virtual thunk toRBX::Visit::~Visit()")
 }
 
 // 0x6c84c4 — __ZN3RBX5VisitD2Ev
@@ -301,16 +301,16 @@ pub fn stub_6c84c4() -> ! {
 
 // 0x6c85b8 — __ZThn32_N3RBX5VisitD1Ev
 // type: void __fastcall(RBX::Visit *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Visit::~Visit()")]
+#[doc(alias = "non-virtual thunk toRBX::Visit::~Visit()")]
 pub fn stub_6c85b8() -> ! {
-    todo!("0x6c85b8 `non-virtual thunk to'RBX::Visit::~Visit()")
+    todo!("0x6c85b8 non-virtual thunk toRBX::Visit::~Visit()")
 }
 
 // 0x6c85c0 — __ZThn36_N3RBX5VisitD1Ev
 // type: void __fastcall(RBX::Visit *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Visit::~Visit()")]
+#[doc(alias = "non-virtual thunk toRBX::Visit::~Visit()")]
 pub fn stub_6c85c0() -> ! {
-    todo!("0x6c85c0 `non-virtual thunk to'RBX::Visit::~Visit()")
+    todo!("0x6c85c0 non-virtual thunk toRBX::Visit::~Visit()")
 }
 
 // 0x6c85c8 — __ZN3RBX5Visit4pingESsi
@@ -567,9 +567,9 @@ pub fn stub_6ca590() -> ! {
 }
 
 // 0x6ca6c0 — __GLOBAL__I_a_284
-#[doc(alias = "`global constructor keyed to_a_284")]
+#[doc(alias = "global constructor keyed to_a_284")]
 pub fn stub_6ca6c0() -> ! {
-    todo!("0x6ca6c0 `global constructor keyed to'_a_284")
+    todo!("0x6ca6c0 global constructor keyed to_a_284")
 }
 
 // 0x6ca9b8 — __ZN3RBX9Workspace22setDistributedGameTimeEd
