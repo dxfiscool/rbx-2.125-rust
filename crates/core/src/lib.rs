@@ -31,6 +31,7 @@ pub mod task_scheduler;
 /// Re-export for `use rbx_core::SharedPtr`
 pub use parking_lot::{Mutex as PLMutex, RwLock};
 pub mod boost_core_l;
+pub mod boost_core_m;
 pub mod boost_high;
 pub mod generated;
 pub mod generated_core_h;
@@ -175,3 +176,4 @@ pub mod generated_core_shard_ed;
 pub mod generated_core_shard_ee;
 pub mod generated_core_shard_ef;
 pub mod generated_core_shard_eg;
+pub mod generated_core_shard_eh;
