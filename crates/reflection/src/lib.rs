@@ -112,3 +112,4 @@ pub mod generated_shard_cy;
 pub mod generated_shard_cz;
 pub mod generated_shard_da;
 pub mod generated_shard_db;
+pub mod generated_shard_dc;
