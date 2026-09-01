@@ -58,3 +58,4 @@ pub mod generated_shard_aw;
 pub mod generated_shard_ax;
 pub mod generated_shard_ay;
 pub mod generated_shard_az;
+pub mod generated_shard_ba;
