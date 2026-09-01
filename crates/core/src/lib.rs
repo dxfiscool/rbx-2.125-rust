@@ -237,3 +237,4 @@ pub mod generated_core_shard_gm;
 pub mod generated_core_shard_gn;
 pub mod generated_core_shard_go;
 pub mod generated_core_shard_gp;
+pub mod generated_core_shard_gq;
