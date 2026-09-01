@@ -58,7 +58,7 @@ pub fn stub_79ca70() -> ! {
 
 // 0x79d364 — __GLOBAL__I_a_363
 // type: 
-#[doc(alias = "`global constructor keyed to_a_363")]
+#[doc(alias = "global constructor keyed to_a_363")]
 pub fn stub_79d364() -> ! {
     todo!("0x79d364 `global constructor keyed to_a_363")
 }
@@ -352,7 +352,7 @@ pub fn stub_7a9584() -> ! {
 
 // 0x7a958c — __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_10ChatOutputES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 // type: 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
 pub fn stub_7a958c() -> ! {
     todo!("0x7a958c `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChatOutput,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::ChatOutput*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
 }
@@ -443,21 +443,21 @@ pub fn stub_7a9c98() -> ! {
 
 // 0x7aa43c — __GLOBAL__I_a_364
 // type: 
-#[doc(alias = "`global constructor keyed to_a_364")]
+#[doc(alias = "global constructor keyed to_a_364")]
 pub fn stub_7aa43c() -> ! {
     todo!("0x7aa43c `global constructor keyed to_a_364")
 }
 
 // 0x7ab8c4 — __GLOBAL__I_a_365
 // type: 
-#[doc(alias = "`global constructor keyed to_a_365")]
+#[doc(alias = "global constructor keyed to_a_365")]
 pub fn stub_7ab8c4() -> ! {
     todo!("0x7ab8c4 `global constructor keyed to_a_365")
 }
 
 // 0x7ac888 — __GLOBAL__I_a_366
 // type: 
-#[doc(alias = "`global constructor keyed to_a_366")]
+#[doc(alias = "global constructor keyed to_a_366")]
 pub fn stub_7ac888() -> ! {
     todo!("0x7ac888 `global constructor keyed to_a_366")
 }
@@ -590,7 +590,7 @@ pub fn stub_7afb80() -> ! {
 
 // 0x7afc24 — __GLOBAL__I_a_367
 // type: 
-#[doc(alias = "`global constructor keyed to_a_367")]
+#[doc(alias = "global constructor keyed to_a_367")]
 pub fn stub_7afc24() -> ! {
     todo!("0x7afc24 `global constructor keyed to_a_367")
 }
@@ -632,7 +632,7 @@ pub fn stub_7b1e70() -> ! {
 
 // 0x7b1e78 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX12GuiDrawImageEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 // type: 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::GuiDrawImage>,boost::_bi::list1<boost::_bi::value<RBX::GuiDrawImage*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::GuiDrawImage>,boost::_bi::list1<boost::_bi::value<RBX::GuiDrawImage*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_7b1e78() -> ! {
     todo!("0x7b1e78 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::GuiDrawImage>,boost::_bi::list1<boost::_bi::value<RBX::GuiDrawImage*>>>,0,void ()(void)>::call(void)")
 }
@@ -660,7 +660,7 @@ pub fn stub_7b1ec4() -> ! {
 
 // 0x7b1f98 — __GLOBAL__I_a_368
 // type: 
-#[doc(alias = "`global constructor keyed to_a_368")]
+#[doc(alias = "global constructor keyed to_a_368")]
 pub fn stub_7b1f98() -> ! {
     todo!("0x7b1f98 `global constructor keyed to_a_368")
 }
@@ -695,14 +695,14 @@ pub fn stub_7b2e60() -> ! {
 
 // 0x7b2eac — __GLOBAL__I_a_369
 // type: 
-#[doc(alias = "`global constructor keyed to_a_369")]
+#[doc(alias = "global constructor keyed to_a_369")]
 pub fn stub_7b2eac() -> ! {
     todo!("0x7b2eac `global constructor keyed to_a_369")
 }
 
 // 0x7b3734 — __GLOBAL__I_a_370
 // type: 
-#[doc(alias = "`global constructor keyed to_a_370")]
+#[doc(alias = "global constructor keyed to_a_370")]
 pub fn stub_7b3734() -> ! {
     todo!("0x7b3734 `global constructor keyed to_a_370")
 }

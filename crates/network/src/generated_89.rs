@@ -9,7 +9,7 @@ use rbx_core::SharedPtr;
 
 // 0x7b3fa0 — __GLOBAL__I_a_371
 // type: 
-#[doc(alias = "`global constructor keyed to_a_371")]
+#[doc(alias = "global constructor keyed to_a_371")]
 pub fn stub_7b3fa0() -> ! {
     todo!("0x7b3fa0 `global constructor keyed to_a_371")
 }
@@ -58,7 +58,7 @@ pub fn stub_7b46a4() -> ! {
 
 // 0x7b4784 — __GLOBAL__I_a_372
 // type: 
-#[doc(alias = "`global constructor keyed to_a_372")]
+#[doc(alias = "global constructor keyed to_a_372")]
 pub fn stub_7b4784() -> ! {
     todo!("0x7b4784 `global constructor keyed to_a_372")
 }
@@ -86,7 +86,7 @@ pub fn stub_7b4bd0() -> ! {
 
 // 0x7b4cb0 — __GLOBAL__I_a_373
 // type: 
-#[doc(alias = "`global constructor keyed to_a_373")]
+#[doc(alias = "global constructor keyed to_a_373")]
 pub fn stub_7b4cb0() -> ! {
     todo!("0x7b4cb0 `global constructor keyed to_a_373")
 }
@@ -114,7 +114,7 @@ pub fn stub_7b584c() -> ! {
 
 // 0x7b592c — __GLOBAL__I_a_374
 // type: 
-#[doc(alias = "`global constructor keyed to_a_374")]
+#[doc(alias = "global constructor keyed to_a_374")]
 pub fn stub_7b592c() -> ! {
     todo!("0x7b592c `global constructor keyed to_a_374")
 }
@@ -142,7 +142,7 @@ pub fn stub_7b5dc8() -> ! {
 
 // 0x7b5ea8 — __GLOBAL__I_a_375
 // type: 
-#[doc(alias = "`global constructor keyed to_a_375")]
+#[doc(alias = "global constructor keyed to_a_375")]
 pub fn stub_7b5ea8() -> ! {
     todo!("0x7b5ea8 `global constructor keyed to_a_375")
 }
@@ -268,7 +268,7 @@ pub fn stub_7c0184() -> ! {
 
 // 0x7c018c — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8HumanoidEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
 // type: 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_7c018c() -> ! {
     todo!("0x7c018c `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Humanoid>,boost::_bi::list1<boost::_bi::value<RBX::Humanoid*>>>,0,void ()(void)>::call(void)")
 }
@@ -513,7 +513,7 @@ pub fn stub_7c6850() -> ! {
 
 // 0x7c6858 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8Humanoid6StatusEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
 // type: 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Humanoid::Status)>::slot,boost::function<void ()(RBX::Humanoid::Status)>,1,void ()(RBX::Humanoid::Status)>::call(RBX::Humanoid::Status)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Humanoid::Status)>::slot,boost::function<void ()(RBX::Humanoid::Status)>,1,void ()(RBX::Humanoid::Status)>::call(RBX::Humanoid::Status)")]
 pub fn stub_7c6858() -> ! {
     todo!("0x7c6858 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Humanoid::Status)>::slot,boost::function<void ()(RBX::Humanoid::Status)>,1,void ()(RBX::Humanoid::Status)>::call(RBX::Humanoid::Status)")
 }
@@ -604,7 +604,7 @@ pub fn stub_7c9800() -> ! {
 
 // 0x7c9808 — __ZThn4_N3rbx8callableINS_7signals6signalIFvfEE4slotEN5boost8functionIS3_EELi1ES3_E4callEf
 // type: 
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")]
 pub fn stub_7c9808() -> ! {
     todo!("0x7c9808 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float)>::slot,boost::function<void ()(float)>,1,void ()(float)>::call(float)")
 }
