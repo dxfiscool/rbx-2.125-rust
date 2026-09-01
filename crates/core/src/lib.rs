@@ -402,3 +402,4 @@ pub mod generated_core_shard_mq;
 pub mod generated_core_shard_mr;
 pub mod generated_core_shard_ms;
 pub mod generated_core_shard_mt;
+pub mod generated_core_shard_mu;
