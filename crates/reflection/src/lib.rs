@@ -193,3 +193,5 @@ pub mod generated_shard_fn;
 pub mod generated_shard_fo;
 pub mod generated_shard_fp;
 pub mod generated_shard_fq;
+pub mod generated_shard_fr;
+pub mod generated_shard_fs;
