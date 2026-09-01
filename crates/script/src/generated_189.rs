@@ -1,7 +1,7 @@
 // Auto-generated skeletons for rbx-script — gap filler (global EA-sorted)
-// Filter: Lua|Script|lua (5041 filtered, 0 remaining) -> global gap filler EA-sorted asc next 100 not yet in script crate
+// Filter: Lua|Script|lua (5041 filtered, 0 remaining) -> global gap filler EA-sorted asc next 120 not yet in script crate
 // Source: ida/export.json (85545 funcs, base 0x4000)
-// Batch: +100 stubs | range 0x1caa44..0x1d7a64 | script 18972->19072 distinct
+// Batch: +120 stubs | range 0x1caa44..0x1d8690 | script 18972->19092 distinct
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
@@ -618,4 +618,129 @@ pub fn stub_0x1d712c() -> ! {
 #[doc(alias = "_af_loader_done")]
 pub fn stub_0x1d7a64() -> ! {
     todo!("0x1d7a64 _af_loader_done")
+}
+
+// 0x1d7a94 — _af_loader_reset
+#[doc(alias = "_af_loader_reset")]
+pub fn stub_0x1d7a94() -> ! {
+    todo!("0x1d7a94 _af_loader_reset")
+}
+
+// 0x1d7afc — _af_loader_load_glyph
+#[doc(alias = "_af_loader_load_glyph")]
+pub fn stub_0x1d7afc() -> ! {
+    todo!("0x1d7afc _af_loader_load_glyph")
+}
+
+// 0x1d7c20 — _af_loader_init
+#[doc(alias = "_af_loader_init")]
+pub fn stub_0x1d7c20() -> ! {
+    todo!("0x1d7c20 _af_loader_init")
+}
+
+// 0x1d7c58 — _af_autofitter_done
+#[doc(alias = "_af_autofitter_done")]
+pub fn stub_0x1d7c58() -> ! {
+    todo!("0x1d7c58 _af_autofitter_done")
+}
+
+// 0x1d7c6c — _af_autofitter_init
+#[doc(alias = "_af_autofitter_init")]
+pub fn stub_0x1d7c6c() -> ! {
+    todo!("0x1d7c6c _af_autofitter_init")
+}
+
+// 0x1d7c88 — _af_autofitter_load_glyph
+#[doc(alias = "_af_autofitter_load_glyph")]
+pub fn stub_0x1d7c88() -> ! {
+    todo!("0x1d7c88 _af_autofitter_load_glyph")
+}
+
+// 0x1d7ca8 — _FT_RoundFix
+// type: int __fastcall(_DWORD)
+#[doc(alias = "_FT_RoundFix")]
+pub fn stub_0x1d7ca8() -> ! {
+    todo!("0x1d7ca8 _FT_RoundFix")
+}
+
+// 0x1d7cd0 — _ft_multo64
+#[doc(alias = "_ft_multo64")]
+pub fn stub_0x1d7cd0() -> ! {
+    todo!("0x1d7cd0 _ft_multo64")
+}
+
+// 0x1d7d28 — _ft_div64by32
+#[doc(alias = "_ft_div64by32")]
+pub fn stub_0x1d7d28() -> ! {
+    todo!("0x1d7d28 _ft_div64by32")
+}
+
+// 0x1d7e9c — _FT_Add64
+#[doc(alias = "_FT_Add64")]
+pub fn stub_0x1d7e9c() -> ! {
+    todo!("0x1d7e9c _FT_Add64")
+}
+
+// 0x1d7ec4 — _FT_MulDiv
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "_FT_MulDiv")]
+pub fn stub_0x1d7ec4() -> ! {
+    todo!("0x1d7ec4 _FT_MulDiv")
+}
+
+// 0x1d7fb4 — __ft_face_scale_advances
+#[doc(alias = "__ft_face_scale_advances")]
+pub fn stub_0x1d7fb4() -> ! {
+    todo!("0x1d7fb4 __ft_face_scale_advances")
+}
+
+// 0x1d81b0 — _FT_MulDiv_No_Round
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "_FT_MulDiv_No_Round")]
+pub fn stub_0x1d81b0() -> ! {
+    todo!("0x1d81b0 _FT_MulDiv_No_Round")
+}
+
+// 0x1d8264 — _FT_MulFix
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "_FT_MulFix")]
+pub fn stub_0x1d8264() -> ! {
+    todo!("0x1d8264 _FT_MulFix")
+}
+
+// 0x1d82d8 — _FT_DivFix
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "_FT_DivFix")]
+pub fn stub_0x1d82d8() -> ! {
+    todo!("0x1d82d8 _FT_DivFix")
+}
+
+// 0x1d836c — _FT_Matrix_Invert
+#[doc(alias = "_FT_Matrix_Invert")]
+pub fn stub_0x1d836c() -> ! {
+    todo!("0x1d836c _FT_Matrix_Invert")
+}
+
+// 0x1d8400 — _FT_Matrix_Multiply_Scaled
+#[doc(alias = "_FT_Matrix_Multiply_Scaled")]
+pub fn stub_0x1d8400() -> ! {
+    todo!("0x1d8400 _FT_Matrix_Multiply_Scaled")
+}
+
+// 0x1d84fc — _FT_Vector_Transform_Scaled
+#[doc(alias = "_FT_Vector_Transform_Scaled")]
+pub fn stub_0x1d84fc() -> ! {
+    todo!("0x1d84fc _FT_Vector_Transform_Scaled")
+}
+
+// 0x1d8584 — _FT_SqrtFixed
+#[doc(alias = "_FT_SqrtFixed")]
+pub fn stub_0x1d8584() -> ! {
+    todo!("0x1d8584 _FT_SqrtFixed")
+}
+
+// 0x1d8690 — _ft_corner_orientation
+#[doc(alias = "_ft_corner_orientation")]
+pub fn stub_0x1d8690() -> ! {
+    todo!("0x1d8690 _ft_corner_orientation")
 }
