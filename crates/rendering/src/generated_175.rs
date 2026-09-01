@@ -249,7 +249,7 @@ pub fn stub_320bc() -> ! {
 
 
 // 0x32194 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_E4callESs
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_E4callESs
 pub fn stub_32194() -> ! {
     todo!("0x32194 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")
@@ -744,7 +744,7 @@ pub fn stub_35438() -> ! {
 
 
 // 0x355c8 — __GLOBAL__I_a_8
-#[doc(alias = "`global constructor keyed to_a_8")]
+#[doc(alias = "global constructor keyed to_a_8")]
 // was: __GLOBAL__I_a_8
 pub fn stub_355c8() -> ! {
     todo!("0x355c8 `global constructor keyed to'_a_8")
