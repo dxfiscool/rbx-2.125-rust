@@ -1,3 +1,4 @@
+#![allow(unused_attributes, dead_code, unused_variables, non_snake_case, non_camel_case_types, clippy::all)]
 //! core — rbx:: primitives, zero RBX deps. Builds in <1s.
 //! Mirrors Client/Base/rbx/* and boost replacements.
 
@@ -391,3 +392,4 @@ pub mod generated_core_shard_mg;
 pub mod generated_core_shard_mh;
 pub mod generated_core_shard_mi;
 pub mod generated_core_shard_mj;
+pub mod generated_core_shard_mk;
