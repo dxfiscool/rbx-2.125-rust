@@ -177,3 +177,4 @@ pub mod generated_core_shard_ee;
 pub mod generated_core_shard_ef;
 pub mod generated_core_shard_eg;
 pub mod generated_core_shard_eh;
+pub mod generated_core_shard_ei;
