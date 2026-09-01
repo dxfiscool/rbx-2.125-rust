@@ -53,7 +53,7 @@ pub fn stub_4ee0c() -> ! {
 }
 
 // 0x4ef74 — __GLOBAL__I_a_22
-#[doc(alias = "`global constructor keyed to_a_22")]
+#[doc(alias = "global constructor keyed to_a_22")]
 pub fn stub_4ef74() -> ! {
     todo!("0x4ef74 `global constructor keyed to_a_22")
 }
@@ -130,7 +130,7 @@ pub fn stub_4f640() -> ! {
 
 // 0x4f650 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 pub fn stub_4f650() -> ! {
     todo!("0x4f650 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
@@ -150,7 +150,7 @@ pub fn stub_4f70c() -> ! {
 }
 
 // 0x4f7bc — __GLOBAL__I_a_23
-#[doc(alias = "`global constructor keyed to_a_23")]
+#[doc(alias = "global constructor keyed to_a_23")]
 pub fn stub_4f7bc() -> ! {
     todo!("0x4f7bc `global constructor keyed to_a_23")
 }
@@ -310,7 +310,7 @@ pub fn stub_50c90() -> ! {
 }
 
 // 0x50c98 — __GLOBAL__I_a_24
-#[doc(alias = "`global constructor keyed to_a_24")]
+#[doc(alias = "global constructor keyed to_a_24")]
 pub fn stub_50c98() -> ! {
     todo!("0x50c98 `global constructor keyed to_a_24")
 }
@@ -442,7 +442,7 @@ pub fn stub_517ec() -> ! {
 }
 
 // 0x517f0 — __GLOBAL__I_a_25
-#[doc(alias = "`global constructor keyed to_a_25")]
+#[doc(alias = "global constructor keyed to_a_25")]
 pub fn stub_517f0() -> ! {
     todo!("0x517f0 `global constructor keyed to_a_25")
 }
@@ -469,7 +469,7 @@ pub fn stub_51b44() -> ! {
 }
 
 // 0x51bb0 — __GLOBAL__I_a_26
-#[doc(alias = "`global constructor keyed to_a_26")]
+#[doc(alias = "global constructor keyed to_a_26")]
 pub fn stub_51bb0() -> ! {
     todo!("0x51bb0 `global constructor keyed to_a_26")
 }
@@ -594,7 +594,7 @@ pub fn stub_51fd0() -> ! {
 }
 
 // 0x51fe0 — __GLOBAL__I_a_27
-#[doc(alias = "`global constructor keyed to_a_27")]
+#[doc(alias = "global constructor keyed to_a_27")]
 pub fn stub_51fe0() -> ! {
     todo!("0x51fe0 `global constructor keyed to_a_27")
 }

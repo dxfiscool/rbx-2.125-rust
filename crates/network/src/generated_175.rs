@@ -121,7 +121,7 @@ pub fn stub_a86d98() -> ! {
 // 0xa86da4 — __ZThn32_N3RBX7Network6PlayerD0Ev
 // demangled: `non-virtual thunk to'RBX::Network::Player::~Player()
 // type: void __fastcall(RBX::Network::Player *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Network::Player::~Player()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a86da4() -> ! {
     todo!("0xa86da4 `non-virtual thunk to'RBX::Network::Player::~Player()")
 }
@@ -129,7 +129,7 @@ pub fn stub_a86da4() -> ! {
 // 0xa86e48 — __ZThn36_N3RBX7Network6PlayerD0Ev
 // demangled: `non-virtual thunk to'RBX::Network::Player::~Player()
 // type: void __fastcall(RBX::Network::Player *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Network::Player::~Player()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a86e48() -> ! {
     todo!("0xa86e48 `non-virtual thunk to'RBX::Network::Player::~Player()")
 }
@@ -145,7 +145,7 @@ pub fn stub_a86eec() -> ! {
 // 0xa87d2c — __ZThn32_N3RBX7Network6PlayerD1Ev
 // demangled: `non-virtual thunk to'RBX::Network::Player::~Player()
 // type: void __fastcall(RBX::Network::Player *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Network::Player::~Player()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a87d2c() -> ! {
     todo!("0xa87d2c `non-virtual thunk to'RBX::Network::Player::~Player()")
 }
@@ -153,7 +153,7 @@ pub fn stub_a87d2c() -> ! {
 // 0xa87d38 — __ZThn36_N3RBX7Network6PlayerD1Ev
 // demangled: `non-virtual thunk to'RBX::Network::Player::~Player()
 // type: void __fastcall(RBX::Network::Player *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Network::Player::~Player()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Player::~Player()")]
 pub fn stub_a87d38() -> ! {
     todo!("0xa87d38 `non-virtual thunk to'RBX::Network::Player::~Player()")
 }
