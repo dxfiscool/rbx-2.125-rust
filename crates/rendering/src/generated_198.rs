@@ -65,7 +65,7 @@ pub fn stub_a6aac() -> ! {
 
 // 0xa6af8 — __GLOBAL__I__ZN4FMOD8tagcodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::tagcodec")]
+#[doc(alias = "global constructor keyed toFMOD::tagcodec")]
 // was: `global constructor keyed to'FMOD::tagcodec
 pub fn stub_a6af8() -> ! {
     todo!("0xa6af8 `global constructor keyed to'FMOD::tagcodec")
@@ -153,7 +153,7 @@ pub fn stub_a6ecc() -> ! {
 
 // 0xa6f18 — __GLOBAL__I__ZN4FMOD9usercodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::usercodec")]
+#[doc(alias = "global constructor keyed toFMOD::usercodec")]
 // was: `global constructor keyed to'FMOD::usercodec
 pub fn stub_a6f18() -> ! {
     todo!("0xa6f18 `global constructor keyed to'FMOD::usercodec")
@@ -273,7 +273,7 @@ pub fn stub_a8400() -> ! {
 
 // 0xa844c — __GLOBAL__I__ZN4FMOD8wavcodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::wavcodec")]
+#[doc(alias = "global constructor keyed toFMOD::wavcodec")]
 // was: `global constructor keyed to'FMOD::wavcodec
 pub fn stub_a844c() -> ! {
     todo!("0xa844c `global constructor keyed to'FMOD::wavcodec")
@@ -505,7 +505,7 @@ pub fn stub_ad88c() -> ! {
 
 // 0xad8d8 — __GLOBAL__I__ZN4FMOD7xmcodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::xmcodec")]
+#[doc(alias = "global constructor keyed toFMOD::xmcodec")]
 // was: `global constructor keyed to'FMOD::xmcodec
 pub fn stub_ad8d8() -> ! {
     todo!("0xad8d8 `global constructor keyed to'FMOD::xmcodec")
@@ -641,7 +641,7 @@ pub fn stub_ae6a4() -> ! {
 
 // 0xae6e8 — __GLOBAL__I__ZN4FMOD9dspchorusE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::dspchorus")]
+#[doc(alias = "global constructor keyed toFMOD::dspchorus")]
 // was: `global constructor keyed to'FMOD::dspchorus
 pub fn stub_ae6e8() -> ! {
     todo!("0xae6e8 `global constructor keyed to'FMOD::dspchorus")
@@ -793,7 +793,7 @@ pub fn stub_aef14() -> ! {
 
 // 0xaef58 — __GLOBAL__I__ZN4FMOD8dspcodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::dspcodec")]
+#[doc(alias = "global constructor keyed toFMOD::dspcodec")]
 // was: `global constructor keyed to'FMOD::dspcodec
 pub fn stub_aef58() -> ! {
     todo!("0xaef58 `global constructor keyed to'FMOD::dspcodec")

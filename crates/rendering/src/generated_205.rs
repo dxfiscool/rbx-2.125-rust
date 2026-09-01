@@ -96,7 +96,7 @@ pub fn stub_0xbb77c() -> ! {
 }
 
 // 0xbb7c0 — __GLOBAL__I__ZN4FMOD10dspparameqE
-#[doc(alias = "`global constructor keyed toFMOD::dspparameq")]
+#[doc(alias = "global constructor keyed toFMOD::dspparameq")]
 pub fn stub_0xbb7c0() -> ! {
     todo!("0xbb7c0 `global constructor keyed to'FMOD::dspparameq")
 }
@@ -286,7 +286,7 @@ pub fn stub_0xbf318() -> ! {
 }
 
 // 0xbf35c — __GLOBAL__I__ZN4FMOD13dsppitchshiftE
-#[doc(alias = "`global constructor keyed toFMOD::dsppitchshift")]
+#[doc(alias = "global constructor keyed toFMOD::dsppitchshift")]
 pub fn stub_0xbf35c() -> ! {
     todo!("0xbf35c `global constructor keyed to'FMOD::dsppitchshift")
 }
@@ -477,7 +477,7 @@ pub fn stub_0xc1ac0() -> ! {
 }
 
 // 0xc1b04 — __GLOBAL__I__ZN4FMOD9dspreverbE
-#[doc(alias = "`global constructor keyed toFMOD::dspreverb")]
+#[doc(alias = "global constructor keyed toFMOD::dspreverb")]
 pub fn stub_0xc1b04() -> ! {
     todo!("0xc1b04 `global constructor keyed to'FMOD::dspreverb")
 }

@@ -643,7 +643,7 @@ pub fn stub_62fd78() -> ! {
 // 0x62fe58 — `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 // mangled: __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_8HumanoidEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 // type: 
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_62fe58() -> ! {
     todo!("0x62fe58 `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::Humanoid>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
@@ -797,7 +797,7 @@ pub fn stub_63061c() -> ! {
 // 0x6306fc — `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 // mangled: __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_18SkateboardPlatformENS_20SkateboardControllerEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 // type: int __fastcall(int)
-#[doc(alias = "`non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_6306fc() -> ! {
     todo!("0x6306fc `non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::SkateboardPlatform,RBX::SkateboardController>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }

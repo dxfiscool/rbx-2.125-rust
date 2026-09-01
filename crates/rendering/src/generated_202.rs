@@ -10,14 +10,14 @@ use rbx_core::SharedPtr;
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x16e4c — __GLOBAL__I_a
-#[doc(alias = "`global constructor keyed to_a")]
+#[doc(alias = "global constructor keyed to_a")]
 // was: `global constructor keyed to_a
 pub fn stub_0x16e4c() -> ! {
     todo!("0x16e4c `global constructor keyed to_a")
 }
 
 // 0x17c58 — __GLOBAL__I_a_0
-#[doc(alias = "`global constructor keyed to_a_0")]
+#[doc(alias = "global constructor keyed to_a_0")]
 // was: `global constructor keyed to_a_0
 pub fn stub_0x17c58() -> ! {
     todo!("0x17c58 `global constructor keyed to_a_0")
@@ -90,7 +90,7 @@ pub fn stub_0x1a124() -> ! {
 }
 
 // 0x1a5d0 — __GLOBAL__I_a_1
-#[doc(alias = "`global constructor keyed to_a_1")]
+#[doc(alias = "global constructor keyed to_a_1")]
 // was: `global constructor keyed to_a_1
 pub fn stub_0x1a5d0() -> ! {
     todo!("0x1a5d0 `global constructor keyed to_a_1")
@@ -105,7 +105,7 @@ pub fn stub_0x1a768() -> ! {
 }
 
 // 0x1a7d4 — __GLOBAL__I_a_2
-#[doc(alias = "`global constructor keyed to_a_2")]
+#[doc(alias = "global constructor keyed to_a_2")]
 // was: `global constructor keyed to_a_2
 pub fn stub_0x1a7d4() -> ! {
     todo!("0x1a7d4 `global constructor keyed to_a_2")
@@ -141,7 +141,7 @@ pub fn stub_0x1b14c() -> ! {
 }
 
 // 0x1b308 — __GLOBAL__I_a_3
-#[doc(alias = "`global constructor keyed to_a_3")]
+#[doc(alias = "global constructor keyed to_a_3")]
 // was: `global constructor keyed to_a_3
 pub fn stub_0x1b308() -> ! {
     todo!("0x1b308 `global constructor keyed to_a_3")
@@ -218,7 +218,7 @@ pub fn stub_0x1c880() -> ! {
 }
 
 // 0x1d870 — __GLOBAL__I_a_4
-#[doc(alias = "`global constructor keyed to_a_4")]
+#[doc(alias = "global constructor keyed to_a_4")]
 // was: `global constructor keyed to_a_4
 pub fn stub_0x1d870() -> ! {
     todo!("0x1d870 `global constructor keyed to_a_4")
@@ -503,7 +503,7 @@ pub fn stub_0x1fd30() -> ! {
 }
 
 // 0x202d0 — __GLOBAL__I_a_5
-#[doc(alias = "`global constructor keyed to_a_5")]
+#[doc(alias = "global constructor keyed to_a_5")]
 // was: `global constructor keyed to_a_5
 pub fn stub_0x202d0() -> ! {
     todo!("0x202d0 `global constructor keyed to_a_5")
@@ -552,14 +552,14 @@ pub fn stub_0x21b1c() -> ! {
 }
 
 // 0x21c18 — __GLOBAL__I_a_6
-#[doc(alias = "`global constructor keyed to_a_6")]
+#[doc(alias = "global constructor keyed to_a_6")]
 // was: `global constructor keyed to_a_6
 pub fn stub_0x21c18() -> ! {
     todo!("0x21c18 `global constructor keyed to_a_6")
 }
 
 // 0x24540 — __GLOBAL__I_a_7
-#[doc(alias = "`global constructor keyed to_a_7")]
+#[doc(alias = "global constructor keyed to_a_7")]
 // was: `global constructor keyed to_a_7
 pub fn stub_0x24540() -> ! {
     todo!("0x24540 `global constructor keyed to_a_7")
@@ -837,7 +837,7 @@ pub fn stub_0x345b0() -> ! {
 }
 
 // 0x355c8 — __GLOBAL__I_a_8
-#[doc(alias = "`global constructor keyed to_a_8")]
+#[doc(alias = "global constructor keyed to_a_8")]
 // was: `global constructor keyed to_a_8
 pub fn stub_0x355c8() -> ! {
     todo!("0x355c8 `global constructor keyed to_a_8")
@@ -895,7 +895,7 @@ pub fn stub_0x3603c() -> ! {
 }
 
 // 0x36e80 — __GLOBAL__I_a_9
-#[doc(alias = "`global constructor keyed to_a_9")]
+#[doc(alias = "global constructor keyed to_a_9")]
 // was: `global constructor keyed to_a_9
 pub fn stub_0x36e80() -> ! {
     todo!("0x36e80 `global constructor keyed to_a_9")
@@ -1042,7 +1042,7 @@ pub fn stub_0x3ecec() -> ! {
 }
 
 // 0x4070c — __GLOBAL__I_a_10
-#[doc(alias = "`global constructor keyed to_a_10")]
+#[doc(alias = "global constructor keyed to_a_10")]
 // was: `global constructor keyed to_a_10
 pub fn stub_0x4070c() -> ! {
     todo!("0x4070c `global constructor keyed to_a_10")
@@ -1071,14 +1071,14 @@ pub fn stub_0x411a0() -> ! {
 }
 
 // 0x41bfc — __GLOBAL__I_a_11
-#[doc(alias = "`global constructor keyed to_a_11")]
+#[doc(alias = "global constructor keyed to_a_11")]
 // was: `global constructor keyed to_a_11
 pub fn stub_0x41bfc() -> ! {
     todo!("0x41bfc `global constructor keyed to_a_11")
 }
 
 // 0x42580 — __GLOBAL__I_a_12
-#[doc(alias = "`global constructor keyed to_a_12")]
+#[doc(alias = "global constructor keyed to_a_12")]
 // was: `global constructor keyed to_a_12
 pub fn stub_0x42580() -> ! {
     todo!("0x42580 `global constructor keyed to_a_12")
