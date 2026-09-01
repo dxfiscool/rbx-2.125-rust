@@ -431,3 +431,4 @@ pub mod generated_244;
 pub mod generated_245;
 pub mod generated_246;
 pub mod generated_247;
+pub mod generated_next_f;
