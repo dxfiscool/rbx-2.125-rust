@@ -64,3 +64,4 @@ pub mod generated_shard_bc;
 pub mod generated_shard_bd;
 pub mod generated_shard_be;
 pub mod generated_shard_bf;
+pub mod generated_shard_bg;
