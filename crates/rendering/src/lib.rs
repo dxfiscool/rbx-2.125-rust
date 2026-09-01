@@ -322,3 +322,4 @@ pub mod generated_302;
 pub mod generated_303;
 pub mod generated_304;
 pub mod generated_305;
+pub mod generated_306;
