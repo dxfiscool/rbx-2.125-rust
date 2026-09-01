@@ -209,3 +209,4 @@ pub mod generated_121;
 pub mod generated_122;
 
 pub mod generated_123;
+pub mod generated_124;
