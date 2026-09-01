@@ -228,3 +228,4 @@ pub mod generated_plat_ad;
 pub mod generated_plat_ae;
 pub mod generated_plat_af;
 pub mod generated_plat_ag;
+pub mod generated_plat_ah;
