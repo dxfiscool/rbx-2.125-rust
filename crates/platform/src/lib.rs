@@ -241,3 +241,4 @@ pub mod generated_plat_aq;
 pub mod generated_plat_ar;
 pub mod generated_plat_10;
 pub mod generated_plat_as;
+pub mod generated_plat_at;
