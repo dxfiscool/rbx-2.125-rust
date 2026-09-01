@@ -453,7 +453,7 @@ pub fn stub_2e998c() -> ! {
 // 0x2e9b08 — __GLOBAL__I_a_95
 #[doc(alias = "global constructor keyed to_a_95")]
 pub fn stub_2e9b08() -> ! {
-    todo!("0x2e9b08 `global constructor keyed to'_a_95")
+    todo!("0x2e9b08 `global constructor keyed to_a_95")
 }
 
 // 0x2e9f50 — __ZNK3RBX11LuaDragTool13getCursorNameEv
@@ -571,7 +571,7 @@ pub fn stub_2eab50() -> ! {
 // 0x2eac30 — __GLOBAL__I_a_96
 #[doc(alias = "global constructor keyed to_a_96")]
 pub fn stub_2eac30() -> ! {
-    todo!("0x2eac30 `global constructor keyed to'_a_96")
+    todo!("0x2eac30 `global constructor keyed to_a_96")
 }
 
 // 0x2eaea0 — __ZN3RBX11MegaDraggerC1EPNS_12PartInstanceERKSt6vectorIPNS_10PVInstanceESaIS5_EEPNS_12RootInstanceENS_4DRAG8JoinTypeE
@@ -705,7 +705,7 @@ pub fn stub_2ebf7c() -> ! {
 // 0x2ebf88 — __GLOBAL__I_a_97
 #[doc(alias = "global constructor keyed to_a_97")]
 pub fn stub_2ebf88() -> ! {
-    todo!("0x2ebf88 `global constructor keyed to'_a_97")
+    todo!("0x2ebf88 `global constructor keyed to_a_97")
 }
 
 // 0x2ec2fc — __ZN3RBX18MoveResizeJoinTool12findTargetPVERKNS_7UIEventE
@@ -820,7 +820,7 @@ pub fn stub_2eeadc() -> ! {
 // 0x2eebd8 — __GLOBAL__I_a_98
 #[doc(alias = "global constructor keyed to_a_98")]
 pub fn stub_2eebd8() -> ! {
-    todo!("0x2eebd8 `global constructor keyed to'_a_98")
+    todo!("0x2eebd8 `global constructor keyed to_a_98")
 }
 
 // 0x2eee88 — __ZN3RBX8NullToolC1EPNS_9WorkspaceE

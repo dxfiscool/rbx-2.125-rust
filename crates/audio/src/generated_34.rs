@@ -15,7 +15,7 @@ const _: () = {
 // 0x3df948 — __GLOBAL__I_a_167
 #[doc(alias = "global constructor keyed to_a_167")]
 pub fn stub_3df948() -> ! {
-    todo!("0x3df948 `global constructor keyed to'_a_167")
+    todo!("0x3df948 `global constructor keyed to_a_167")
 }
 
 // 0x3e0048 — __ZN3RBX5Shirt11setTemplateENS_9TextureIdE

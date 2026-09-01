@@ -27,7 +27,7 @@ pub fn stub_56f2c0() -> ! {
 // 0x56f3f0 — __GLOBAL__I_a_210
 #[doc(alias = "global constructor keyed to_a_210")]
 pub fn stub_56f3f0() -> ! {
-    todo!("0x56f3f0 `global constructor keyed to'_a_210")
+    todo!("0x56f3f0 `global constructor keyed to_a_210")
 }
 
 // 0x56f9fc — __ZN3RBX11HandlesBaseC2EPKc
@@ -141,7 +141,7 @@ pub fn stub_570db0() -> ! {
 // 0x570f0c — __GLOBAL__I_a_211
 #[doc(alias = "global constructor keyed to_a_211")]
 pub fn stub_570f0c() -> ! {
-    todo!("0x570f0c `global constructor keyed to'_a_211")
+    todo!("0x570f0c `global constructor keyed to_a_211")
 }
 
 // 0x57117c — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEEC1Ev
@@ -283,7 +283,7 @@ pub fn stub_572714() -> ! {
 }
 
 // 0x5728a4 — __ZN3RBX9HopperBin37reverseSelectedConnectionShimFunctionERN5boost10shared_ptrINS_8InstanceEEE
-#[doc(alias = "RBX::HopperBin::reverseSelectedConnectionShimFunction(boost::shared_ptr<RBX::Instance> &)")]
+#[doc(alias = "RBX::HopperBin::reverseSelectedConnectionShimFunction(rbx_core::SharedPtr<RBX::Instance> &)")]
 pub fn stub_5728a4() -> ! {
     todo!("0x5728a4 RBX::HopperBin::reverseSelectedConnectionShimFunction(boost::shared_ptr<RBX::Instance> &)")
 }
@@ -385,7 +385,7 @@ pub fn stub_573690() -> ! {
 }
 
 // 0x5736b4 — __ZN3RBX10Reflection9EventDescINS_9HopperBinEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx13remote_signalIS7_EEMS2_SA_ED1Ev
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::HopperBin,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")]
 pub fn stub_5736b4() -> ! {
     todo!("0x5736b4 RBX::Reflection::EventDesc<RBX::HopperBin,void ()(boost::shared_ptr<RBX::Instance>),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::HopperBin::*>::~EventDesc()")
 }
@@ -421,7 +421,7 @@ pub fn stub_573768() -> ! {
 }
 
 // 0x573890 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18ScriptMouseCommandEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RBX::ScriptMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ScriptMouseCommand,RBX::Workspace *>(RBX::Workspace *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ScriptMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ScriptMouseCommand,RBX::Workspace *>(RBX::Workspace *)")]
 pub fn stub_573890() -> ! {
     todo!("0x573890 boost::shared_ptr<RBX::ScriptMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ScriptMouseCommand,RBX::Workspace *>(RBX::Workspace *)")
 }

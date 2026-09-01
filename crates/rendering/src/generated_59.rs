@@ -122,7 +122,7 @@ pub fn stub_bc6308() -> ! {
 
 // 0xbc63e4 — __ZN4Ogre15RbxSceneManager20createRbxMegaClusterERKN5boost10shared_ptrIN3RBX12PartInstanceEEE
 // type: int __fastcall(int, char, int, int, int, void *, int, int, int, int)
-#[doc(alias = "Ogre::RbxSceneManager::createRbxMegaCluster(boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "Ogre::RbxSceneManager::createRbxMegaCluster(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 // was: Ogre::RbxSceneManager::createRbxMegaCluster(boost::shared_ptr<RBX::PartInstance> const&)
 pub fn stub_bc63e4() -> ! {
     todo!("0xbc63e4 Ogre::RbxSceneManager::createRbxMegaCluster(boost::shared_ptr<RBX::PartInstance> const&)")
@@ -415,28 +415,28 @@ pub fn stub_bcaa4c() -> ! {
 }
 
 // 0xbcab68 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvN4Ogre15RbxSceneManagerEEENSA_5list1INSA_5valueIPSF_EEEEEEED1Ev
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()
 pub fn stub_bcab68() -> ! {
     todo!("0xbcab68 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()")
 }
 
 // 0xbcabc4 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvN4Ogre15RbxSceneManagerEEENSA_5list1INSA_5valueIPSF_EEEEEEED0Ev
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()")]
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()
 pub fn stub_bcabc4() -> ! {
     todo!("0xbcabc4 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>>::~callable_slot()")
 }
 
 // 0xbcaccc — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvN4Ogre15RbxSceneManagerEEENSB_5list1INSB_5valueIPSG_EEEEEELi2ES8_E4callES7_S7_
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
 pub fn stub_bcaccc() -> ! {
     todo!("0xbcaccc rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xbcace4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES7_EE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf0IvN4Ogre15RbxSceneManagerEEENSB_5list1INSB_5valueIPSG_EEEEEELi2ES8_E4callES7_S7_
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
 pub fn stub_bcace4() -> ! {
     todo!("0xbcace4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
@@ -551,7 +551,7 @@ pub fn stub_bcbb68() -> ! {
 
 // 0xbcc2e0 — __ZN4Ogre15RbxSceneUpdaterC1EN5boost10shared_ptrIN3RBX9DataModelEEEPNS_12VisualEngineE
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
-#[doc(alias = "Ogre::RbxSceneUpdater::RbxSceneUpdater(boost::shared_ptr<RBX::DataModel>,Ogre::VisualEngine *)")]
+#[doc(alias = "Ogre::RbxSceneUpdater::RbxSceneUpdater(rbx_core::SharedPtr<RBX::DataModel>,Ogre::VisualEngine *)")]
 // was: Ogre::RbxSceneUpdater::RbxSceneUpdater(boost::shared_ptr<RBX::DataModel>,Ogre::VisualEngine *)
 pub fn stub_bcc2e0() -> ! {
     todo!("0xbcc2e0 Ogre::RbxSceneUpdater::RbxSceneUpdater(boost::shared_ptr<RBX::DataModel>,Ogre::VisualEngine *)")
@@ -559,7 +559,7 @@ pub fn stub_bcc2e0() -> ! {
 
 // 0xbcc2e4 — __ZN4Ogre15RbxSceneUpdaterC2EN5boost10shared_ptrIN3RBX9DataModelEEEPNS_12VisualEngineE
 // type: int __fastcall(rbx::signals::scoped_connection *, int, int, int, int, void *, int, int, int, int)
-#[doc(alias = "Ogre::RbxSceneUpdater::RbxSceneUpdater(boost::shared_ptr<RBX::DataModel>,Ogre::VisualEngine *)")]
+#[doc(alias = "Ogre::RbxSceneUpdater::RbxSceneUpdater(rbx_core::SharedPtr<RBX::DataModel>,Ogre::VisualEngine *)")]
 // was: Ogre::RbxSceneUpdater::RbxSceneUpdater(boost::shared_ptr<RBX::DataModel>,Ogre::VisualEngine *)
 pub fn stub_bcc2e4() -> ! {
     todo!("0xbcc2e4 Ogre::RbxSceneUpdater::RbxSceneUpdater(boost::shared_ptr<RBX::DataModel>,Ogre::VisualEngine *)")
@@ -645,7 +645,7 @@ pub fn stub_bcd68c() -> ! {
 }
 
 // 0xbcd6f8 — __ZN4Ogre15RbxSceneUpdater14addMegaClusterERKN5boost10shared_ptrIN3RBX12PartInstanceEEE
-#[doc(alias = "Ogre::RbxSceneUpdater::addMegaCluster(boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "Ogre::RbxSceneUpdater::addMegaCluster(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 // was: Ogre::RbxSceneUpdater::addMegaCluster(boost::shared_ptr<RBX::PartInstance> const&)
 pub fn stub_bcd6f8() -> ! {
     todo!("0xbcd6f8 Ogre::RbxSceneUpdater::addMegaCluster(boost::shared_ptr<RBX::PartInstance> const&)")
@@ -677,7 +677,7 @@ pub fn stub_bcda30() -> ! {
 
 // 0xbcda54 — __ZN4Ogre15RbxSceneUpdater11addFastPartERKN5boost10shared_ptrIN3RBX12PartInstanceEEEbb
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, Ogre::NedPoolingImpl *, Ogre::NedPoolingImpl *, int, int, int, int)
-#[doc(alias = "Ogre::RbxSceneUpdater::addFastPart(boost::shared_ptr<RBX::PartInstance> const&,bool,bool)")]
+#[doc(alias = "Ogre::RbxSceneUpdater::addFastPart(rbx_core::SharedPtr<RBX::PartInstance> const&,bool,bool)")]
 // was: Ogre::RbxSceneUpdater::addFastPart(boost::shared_ptr<RBX::PartInstance> const&,bool,bool)
 pub fn stub_bcda54() -> ! {
     todo!("0xbcda54 Ogre::RbxSceneUpdater::addFastPart(boost::shared_ptr<RBX::PartInstance> const&,bool,bool)")
@@ -692,7 +692,7 @@ pub fn stub_bcdc54() -> ! {
 }
 
 // 0xbcdd84 — __ZN4Ogre15RbxSceneUpdater17createAttachementERKN5boost10shared_ptrIN3RBX8InstanceEEE
-#[doc(alias = "Ogre::RbxSceneUpdater::createAttachement(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "Ogre::RbxSceneUpdater::createAttachement(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: Ogre::RbxSceneUpdater::createAttachement(boost::shared_ptr<RBX::Instance> const&)
 pub fn stub_bcdd84() -> ! {
     todo!("0xbcdd84 Ogre::RbxSceneUpdater::createAttachement(boost::shared_ptr<RBX::Instance> const&)")

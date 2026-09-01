@@ -417,7 +417,7 @@ pub fn stub_579878() -> ! {
 // 0x5799c4 — __GLOBAL__I_a_212
 #[doc(alias = "global constructor keyed to_a_212")]
 pub fn stub_5799c4() -> ! {
-    todo!("0x5799c4 `global constructor keyed to'_a_212")
+    todo!("0x5799c4 `global constructor keyed to_a_212")
 }
 
 // 0x579f70 — __ZN3RBX17ICharacterSubjectC2Ev
@@ -495,7 +495,7 @@ pub fn stub_57bd7c() -> ! {
 // 0x57bd94 — __GLOBAL__I_a_213
 #[doc(alias = "global constructor keyed to_a_213")]
 pub fn stub_57bd94() -> ! {
-    todo!("0x57bd94 `global constructor keyed to'_a_213")
+    todo!("0x57bd94 `global constructor keyed to_a_213")
 }
 
 // 0x57bf9c — __ZN3RBX10IEquipableC2Ev
@@ -537,7 +537,7 @@ pub fn stub_57c39c() -> ! {
 // 0x57c3d4 — __GLOBAL__I_a_214
 #[doc(alias = "global constructor keyed to_a_214")]
 pub fn stub_57c3d4() -> ! {
-    todo!("0x57c3d4 `global constructor keyed to'_a_214")
+    todo!("0x57c3d4 `global constructor keyed to_a_214")
 }
 
 // 0x57c644 — __ZN3RBX14GuiImageButtonC2Ev

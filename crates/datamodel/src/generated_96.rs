@@ -178,7 +178,7 @@ pub fn stub_4ab1d0() -> ! {
 }
 
 // 0x4afb78 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17BasicPartInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BasicPartInstance,RBX::BasicPartInstance>(boost::shared_ptr<RBX::BasicPartInstance> const*,RBX::BasicPartInstance *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BasicPartInstance,RBX::BasicPartInstance>(rbx_core::SharedPtr<RBX::BasicPartInstance> const*,RBX::BasicPartInstance *)const")]
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BasicPartInstance,RBX::BasicPartInstance>(boost::shared_ptr<RBX::BasicPartInstance> const*,RBX::BasicPartInstance *)const
 pub fn stub_4afb78() -> ! {
     todo!("0x4afb78 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::BasicPartInstance,RBX::BasicPartInstance>(boost::shared_ptr<RBX::BasicPartInstance> const*,RBX::BasicPartInstance *)const")

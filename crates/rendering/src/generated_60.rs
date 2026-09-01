@@ -364,7 +364,7 @@ pub fn stub_bda788() -> ! {
 }
 
 // 0xbdae14 — __ZN3RBX17TextureCompositor14attachMaterialERKN5boost10shared_ptrINS0_3JobEEERKN4Ogre11MaterialPtrE
-#[doc(alias = "RBX::TextureCompositor::attachMaterial(boost::shared_ptr<RBX::TextureCompositor::Job> const&,Ogre::MaterialPtr const&)")]
+#[doc(alias = "RBX::TextureCompositor::attachMaterial(rbx_core::SharedPtr<RBX::TextureCompositor::Job> const&,Ogre::MaterialPtr const&)")]
 // was: RBX::TextureCompositor::attachMaterial(boost::shared_ptr<RBX::TextureCompositor::Job> const&,Ogre::MaterialPtr const&)
 pub fn stub_bdae14() -> ! {
     todo!("0xbdae14 RBX::TextureCompositor::attachMaterial(boost::shared_ptr<RBX::TextureCompositor::Job> const&,Ogre::MaterialPtr const&)")

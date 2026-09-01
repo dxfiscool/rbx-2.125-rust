@@ -87,7 +87,7 @@ pub fn stub_2e02d0() -> ! {
 // 0x2e02d4 — __GLOBAL__I_a_86
 #[doc(alias = "global constructor keyed to_a_86")]
 pub fn stub_2e02d4() -> ! {
-    todo!("0x2e02d4 `global constructor keyed to'_a_86")
+    todo!("0x2e02d4 `global constructor keyed to_a_86")
 }
 
 // 0x2e06d0 — __ZN3RBX8DragTool11onMouseDownEPNS_12PartInstanceERKN3G3D7Vector3ERKSt6vectorIPNS_8InstanceESaIS9_EERKNS_7UIEventEPNS_9WorkspaceEN5boost10shared_ptrIS8_EE
@@ -153,7 +153,7 @@ pub fn stub_2e0cc0() -> ! {
 // 0x2e0cc4 — __GLOBAL__I_a_87
 #[doc(alias = "global constructor keyed to_a_87")]
 pub fn stub_2e0cc4() -> ! {
-    todo!("0x2e0cc4 `global constructor keyed to'_a_87")
+    todo!("0x2e0cc4 `global constructor keyed to_a_87")
 }
 
 // 0x2e0f38 — __ZN3RBX13DragUtilities13safeMoveYDropERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERKN3G3D7Vector3ERNS_14ContactManagerEf
@@ -309,13 +309,13 @@ pub fn stub_2e28bc() -> ! {
 // 0x2e2948 — __GLOBAL__I_a_88
 #[doc(alias = "global constructor keyed to_a_88")]
 pub fn stub_2e2948() -> ! {
-    todo!("0x2e2948 `global constructor keyed to'_a_88")
+    todo!("0x2e2948 `global constructor keyed to_a_88")
 }
 
 // 0x2e2cbc — __GLOBAL__I_a_89
 #[doc(alias = "global constructor keyed to_a_89")]
 pub fn stub_2e2cbc() -> ! {
-    todo!("0x2e2cbc `global constructor keyed to'_a_89")
+    todo!("0x2e2cbc `global constructor keyed to_a_89")
 }
 
 // 0x2e2f2c — __ZN3RBX8GameToolC1EPNS_9WorkspaceE
@@ -411,7 +411,7 @@ pub fn stub_2e34e0() -> ! {
 // 0x2e34ec — __GLOBAL__I_a_90
 #[doc(alias = "global constructor keyed to_a_90")]
 pub fn stub_2e34ec() -> ! {
-    todo!("0x2e34ec `global constructor keyed to'_a_90")
+    todo!("0x2e34ec `global constructor keyed to_a_90")
 }
 
 // 0x2e37c4 — __ZN3RBX8GrabToolC1EPNS_9WorkspaceE
@@ -501,19 +501,19 @@ pub fn stub_2e3d54() -> ! {
 // 0x2e3d60 — __GLOBAL__I_a_91
 #[doc(alias = "global constructor keyed to_a_91")]
 pub fn stub_2e3d60() -> ! {
-    todo!("0x2e3d60 `global constructor keyed to'_a_91")
+    todo!("0x2e3d60 `global constructor keyed to_a_91")
 }
 
 // 0x2e3fd0 — __GLOBAL__I_a_92
 #[doc(alias = "global constructor keyed to_a_92")]
 pub fn stub_2e3fd0() -> ! {
-    todo!("0x2e3fd0 `global constructor keyed to'_a_92")
+    todo!("0x2e3fd0 `global constructor keyed to_a_92")
 }
 
 // 0x2e4240 — __GLOBAL__I_a_93
 #[doc(alias = "global constructor keyed to_a_93")]
 pub fn stub_2e4240() -> ! {
-    todo!("0x2e4240 `global constructor keyed to'_a_93")
+    todo!("0x2e4240 `global constructor keyed to_a_93")
 }
 
 // 0x2e4518 — __ZN3RBX10HammerToolC1EPNS_9WorkspaceE
@@ -651,7 +651,7 @@ pub fn stub_2e4f1c() -> ! {
 // 0x2e4f20 — __GLOBAL__I_a_94
 #[doc(alias = "global constructor keyed to_a_94")]
 pub fn stub_2e4f20() -> ! {
-    todo!("0x2e4f20 `global constructor keyed to'_a_94")
+    todo!("0x2e4f20 `global constructor keyed to_a_94")
 }
 
 // 0x2e51d0 — __ZN3RBX10LuaDragger15mouseDownPublicEN5boost10shared_ptrINS_8InstanceEEEN3G3D7Vector3ENS2_IKSt6vectorIS4_SaIS4_EEEE

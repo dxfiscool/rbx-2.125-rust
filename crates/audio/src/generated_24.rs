@@ -189,7 +189,7 @@ pub fn stub_2d9d4c() -> ! {
 // 0x2d9d50 — __GLOBAL__I_a_82
 #[doc(alias = "global constructor keyed to__a_82")]
 pub fn stub_2d9d50() -> ! {
-    todo!("0x2d9d50 `global constructor keyed to'_a_82")
+    todo!("0x2d9d50 `global constructor keyed to_a_82")
 }
 
 // 0x2da160 — __ZN3RBX12AxisToolBaseC2EPNS_9WorkspaceE
@@ -291,13 +291,13 @@ pub fn stub_2db2bc() -> ! {
 // 0x2db2c4 — __GLOBAL__I_a_83
 #[doc(alias = "global constructor keyed to__a_83")]
 pub fn stub_2db2c4() -> ! {
-    todo!("0x2db2c4 `global constructor keyed to'_a_83")
+    todo!("0x2db2c4 `global constructor keyed to_a_83")
 }
 
 // 0x2db534 — __GLOBAL__I_a_84
 #[doc(alias = "global constructor keyed to__a_84")]
 pub fn stub_2db534() -> ! {
-    todo!("0x2db534 `global constructor keyed to'_a_84")
+    todo!("0x2db534 `global constructor keyed to_a_84")
 }
 
 // 0x2db7a4 — __ZN3RBX9CloneToolC1EPNS_9WorkspaceE
@@ -435,7 +435,7 @@ pub fn stub_2dc350() -> ! {
 // 0x2dc354 — __GLOBAL__I_a_85
 #[doc(alias = "global constructor keyed to__a_85")]
 pub fn stub_2dc354() -> ! {
-    todo!("0x2dc354 `global constructor keyed to'_a_85")
+    todo!("0x2dc354 `global constructor keyed to_a_85")
 }
 
 // 0x2dc604 — __ZN3RBX7Dragger14computeExtentsERKSt6vectorIPNS_9PrimitiveESaIS3_EE

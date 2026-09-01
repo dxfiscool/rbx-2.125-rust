@@ -111,7 +111,7 @@ pub fn stub_2f8b9c() -> ! {
 // 0x2f8c2c — __GLOBAL__I_a_103
 #[doc(alias = "global constructor keyed to_a_103")]
 pub fn stub_2f8c2c() -> ! {
-    todo!("0x2f8c2c global constructor keyed to'_a_103")
+    todo!("0x2f8c2c global constructor keyed to_a_103")
 }
 
 // 0x2f8f04 — __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEEC1Ev
@@ -195,7 +195,7 @@ pub fn stub_2f97cc() -> ! {
 // 0x2f995c — __GLOBAL__I_a_104
 #[doc(alias = "global constructor keyed to_a_104")]
 pub fn stub_2f995c() -> ! {
-    todo!("0x2f995c global constructor keyed to'_a_104")
+    todo!("0x2f995c global constructor keyed to_a_104")
 }
 
 // 0x2f9a24 — __ZN3RBX15StringConverterINS_11AnimationIdEE14convertToValueERKSsRS1_
@@ -297,7 +297,7 @@ pub fn stub_2fa878() -> ! {
 // 0x2fa87c — __GLOBAL__I_a_105
 #[doc(alias = "global constructor keyed to_a_105")]
 pub fn stub_2fa87c() -> ! {
-    todo!("0x2fa87c global constructor keyed to'_a_105")
+    todo!("0x2fa87c global constructor keyed to_a_105")
 }
 
 // 0x2faa84 — __ZN3RBX14AsyncHttpQueueC2EPNS_8InstanceEN5boost8functionIFbRKSsPSsEEEi

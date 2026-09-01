@@ -40,7 +40,7 @@ pub fn stub_399330() -> ! {
 // 0x39b100 — __GLOBAL__I_a_156
 #[doc(alias = "global constructor keyed to_a_156")]
 pub fn stub_39b100() -> ! {
-    todo!("0x39b100 `global constructor keyed to'_a_156")
+    todo!("0x39b100 `global constructor keyed to_a_156")
 }
 
 // 0x39b950 — __ZN3RBX19AnimationTrackState6onPlayEffff
@@ -204,7 +204,7 @@ pub fn stub_39c644() -> ! {
 // 0x3a35a4 — __GLOBAL__I_a_157
 #[doc(alias = "global constructor keyed to_a_157")]
 pub fn stub_3a35a4() -> ! {
-    todo!("0x3a35a4 `global constructor keyed to'_a_157")
+    todo!("0x3a35a4 `global constructor keyed to_a_157")
 }
 
 // 0x3a40b8 — __ZN3RBX8AnimatorD0Ev
@@ -410,7 +410,7 @@ pub fn stub_3a6160() -> ! {
 // 0x3a72e0 — __GLOBAL__I_a_158
 #[doc(alias = "global constructor keyed to_a_158")]
 pub fn stub_3a72e0() -> ! {
-    todo!("0x3a72e0 `global constructor keyed to'_a_158")
+    todo!("0x3a72e0 `global constructor keyed to_a_158")
 }
 
 // 0x3a7640 — __ZN3RBX10ArcHandles7setAxesENS_4AxesE
@@ -671,7 +671,7 @@ pub fn stub_3b00f0() -> ! {
 // 0x3b081c — __GLOBAL__I_a_159
 #[doc(alias = "global constructor keyed to_a_159")]
 pub fn stub_3b081c() -> ! {
-    todo!("0x3b081c `global constructor keyed to'_a_159")
+    todo!("0x3b081c `global constructor keyed to_a_159")
 }
 
 // 0x3b0e04 — __ZN3RBX8BackpackC1Ev

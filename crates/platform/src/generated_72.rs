@@ -12,35 +12,35 @@ const _: () = {
 
 // 0xf4bd14 — j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSINS1_12AdvArrowToolEEERS3_RKNS0_IT_EE
 // was: boost (now rbx_core)
-#[doc(alias = "boost::shared_ptr<RBX::MouseCommand>& boost::shared_ptr<RBX::MouseCommand>::operator=<RBX::AdvArrowTool>(boost::shared_ptr<RBX::AdvArrowTool> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MouseCommand>& rbx_core::SharedPtr<RBX::MouseCommand>::operator=<RBX::AdvArrowTool>(rbx_core::SharedPtr<RBX::AdvArrowTool> const&)")]
 pub fn stub_f4bd14() -> ! {
     todo!("0xf4bd14 boost::shared_ptr<RBX::MouseCommand>& boost::shared_ptr<RBX::MouseCommand>::operator=<RBX::AdvArrowTool>(boost::shared_ptr<RBX::AdvArrowTool> const&)")
 }
 
 // 0xf4bd04 — j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSINS1_11NewNullToolEEERS3_RKNS0_IT_EE
 // was: boost (now rbx_core)
-#[doc(alias = "boost::shared_ptr<RBX::MouseCommand>& boost::shared_ptr<RBX::MouseCommand>::operator=<RBX::NewNullTool>(boost::shared_ptr<RBX::NewNullTool> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MouseCommand>& rbx_core::SharedPtr<RBX::MouseCommand>::operator=<RBX::NewNullTool>(rbx_core::SharedPtr<RBX::NewNullTool> const&)")]
 pub fn stub_f4bd04() -> ! {
     todo!("0xf4bd04 boost::shared_ptr<RBX::MouseCommand>& boost::shared_ptr<RBX::MouseCommand>::operator=<RBX::NewNullTool>(boost::shared_ptr<RBX::NewNullTool> const&)")
 }
 
 // 0xf4bcf4 — j___ZN5boost10shared_ptrIN3RBX12MouseCommandEEaSERKS3_
 // was: boost (now rbx_core)
-#[doc(alias = "boost::shared_ptr<RBX::MouseCommand>::operator=(boost::shared_ptr<RBX::MouseCommand> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MouseCommand>::operator=(rbx_core::SharedPtr<RBX::MouseCommand> const&)")]
 pub fn stub_f4bcf4() -> ! {
     todo!("0xf4bcf4 boost::shared_ptr<RBX::MouseCommand>::operator=(boost::shared_ptr<RBX::MouseCommand> const&)")
 }
 
 // 0xf4bce4 — j___ZN5boost10shared_ptrIN3RBX12AdvArrowToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // was: boost (now rbx_core)
-#[doc(alias = "boost::shared_ptr<RBX::AdvArrowTool>::shared_ptr<RBX::AdvArrowTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvArrowTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::AdvArrowTool>::shared_ptr<RBX::AdvArrowTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvArrowTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f4bce4() -> ! {
     todo!("0xf4bce4 boost::shared_ptr<RBX::AdvArrowTool>::shared_ptr<RBX::AdvArrowTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvArrowTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
 
 // 0xf4bcd4 — j___ZN5boost10shared_ptrIN3RBX11NewNullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // was: boost (now rbx_core)
-#[doc(alias = "boost::shared_ptr<RBX::NewNullTool>::shared_ptr<RBX::NewNullTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NewNullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::NewNullTool>::shared_ptr<RBX::NewNullTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NewNullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f4bcd4() -> ! {
     todo!("0xf4bcd4 boost::shared_ptr<RBX::NewNullTool>::shared_ptr<RBX::NewNullTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NewNullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
@@ -54,7 +54,7 @@ pub fn stub_f4bc94() -> ! {
 // 0xf4bc84 — j___ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 // was: boost (now rbx_core)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot> &)")]
 pub fn stub_f4bc84() -> ! {
     todo!("0xf4bc84 rbx::signals::signal<void ()(RBX::TouchPair const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot> &)")
 }
@@ -261,14 +261,14 @@ pub fn stub_f4b934() -> ! {
 
 // 0xf4b914 — j___ZN3RBX11shared_fromINS_6CameraEEEN5boost10shared_ptrIT_EEPS4_
 // was: boost (now rbx_core)
-#[doc(alias = "boost::shared_ptr<RBX::Camera> RBX::shared_from<RBX::Camera>(RBX::Camera*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Camera> RBX::shared_from<RBX::Camera>(RBX::Camera*)")]
 pub fn stub_f4b914() -> ! {
     todo!("0xf4b914 boost::shared_ptr<RBX::Camera> RBX::shared_from<RBX::Camera>(RBX::Camera*)")
 }
 
 // 0xf4b904 — j___ZN3RBX11shared_fromINS_5DecalEEEN5boost10shared_ptrIT_EEPS4_
 // was: boost (now rbx_core)
-#[doc(alias = "boost::shared_ptr<RBX::Decal> RBX::shared_from<RBX::Decal>(RBX::Decal*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Decal> RBX::shared_from<RBX::Decal>(RBX::Decal*)")]
 pub fn stub_f4b904() -> ! {
     todo!("0xf4b904 boost::shared_ptr<RBX::Decal> RBX::shared_from<RBX::Decal>(RBX::Decal*)")
 }
@@ -276,7 +276,7 @@ pub fn stub_f4b904() -> ! {
 // 0xf4b8f4 — j___ZN3RBX11shared_fromINS_12MouseCommandEEEN5boost10shared_ptrIT_EEPS4_
 // type: int __fastcall(int, int)
 // was: boost (now rbx_core)
-#[doc(alias = "boost::shared_ptr<RBX::MouseCommand> RBX::shared_from<RBX::MouseCommand>(RBX::MouseCommand*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MouseCommand> RBX::shared_from<RBX::MouseCommand>(RBX::MouseCommand*)")]
 pub fn stub_f4b8f4() -> ! {
     todo!("0xf4b8f4 boost::shared_ptr<RBX::MouseCommand> RBX::shared_from<RBX::MouseCommand>(RBX::MouseCommand*)")
 }
@@ -312,21 +312,21 @@ pub fn stub_f4b8b4() -> ! {
 // 0xf4b8a4 — j___ZN3RBX10Reflection9ArgHelper6getArgIbLi3EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int __fastcall(_DWORD, _DWORD)
 // was: boost (now rbx_core)
-#[doc(alias = "bool RBX::Reflection::ArgHelper::getArg<bool,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<bool> const&,boost::disable_if<boost::is_same<bool,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "bool RBX::Reflection::ArgHelper::getArg<bool,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<bool> const&,boost::disable_if<boost::is_same<bool,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_f4b8a4() -> ! {
     todo!("0xf4b8a4 bool RBX::Reflection::ArgHelper::getArg<bool,3>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<bool> const&,boost::disable_if<boost::is_same<bool,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
 
 // 0xf4b894 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_7Region3ELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // was: boost (now rbx_core)
-#[doc(alias = "RBX::Region3 RBX::Reflection::ArgHelper::getArg<RBX::Region3,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Region3> const&,boost::disable_if<boost::is_same<RBX::Region3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Region3 RBX::Reflection::ArgHelper::getArg<RBX::Region3,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Region3> const&,boost::disable_if<boost::is_same<RBX::Region3,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_f4b894() -> ! {
     todo!("0xf4b894 RBX::Region3 RBX::Reflection::ArgHelper::getArg<RBX::Region3,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Region3> const&,boost::disable_if<boost::is_same<RBX::Region3,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
 
 // 0xf4b884 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_6RbxRayELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // was: boost (now rbx_core)
-#[doc(alias = "RBX::RbxRay RBX::Reflection::ArgHelper::getArg<RBX::RbxRay,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::RbxRay> const&,boost::disable_if<boost::is_same<RBX::RbxRay,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::RbxRay RBX::Reflection::ArgHelper::getArg<RBX::RbxRay,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::RbxRay> const&,boost::disable_if<boost::is_same<RBX::RbxRay,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_f4b884() -> ! {
     todo!("0xf4b884 RBX::RbxRay RBX::Reflection::ArgHelper::getArg<RBX::RbxRay,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::RbxRay> const&,boost::disable_if<boost::is_same<RBX::RbxRay,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
@@ -518,7 +518,7 @@ pub fn stub_f4b484() -> ! {
 
 // 0xf4b474 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11VirtualUserES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: boost (now rbx_core)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VirtualUser,RBX::VirtualUser>(boost::shared_ptr<RBX::VirtualUser> const*,RBX::VirtualUser *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VirtualUser,RBX::VirtualUser>(rbx_core::SharedPtr<RBX::VirtualUser> const*,RBX::VirtualUser *)const")]
 pub fn stub_f4b474() -> ! {
     todo!("0xf4b474 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VirtualUser,RBX::VirtualUser>(boost::shared_ptr<RBX::VirtualUser> const*,RBX::VirtualUser *)const")
 }
@@ -540,7 +540,7 @@ pub fn stub_f4b444() -> ! {
 
 // 0xf4b434 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotEEaSEPSA_
 // was: boost (now rbx_core)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot*)")]
 pub fn stub_f4b434() -> ! {
     todo!("0xf4b434 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot*)")
 }
@@ -624,7 +624,7 @@ pub fn stub_f4b364() -> ! {
 // 0xf4b354 — j___ZN3RBX10Reflection9ArgHelper6getArgIN3G3D7Vector2ELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int()
 // was: boost (now rbx_core)
-#[doc(alias = "G3D::Vector2 RBX::Reflection::ArgHelper::getArg<G3D::Vector2,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector2> const&,boost::disable_if<boost::is_same<G3D::Vector2,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "G3D::Vector2 RBX::Reflection::ArgHelper::getArg<G3D::Vector2,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector2> const&,boost::disable_if<boost::is_same<G3D::Vector2,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_f4b354() -> ! {
     todo!("0xf4b354 G3D::Vector2 RBX::Reflection::ArgHelper::getArg<G3D::Vector2,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<G3D::Vector2> const&,boost::disable_if<boost::is_same<G3D::Vector2,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
@@ -691,14 +691,14 @@ pub fn stub_f4b2c4() -> ! {
 
 // 0xf4b294 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4WeldES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: boost (now rbx_core)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Weld,RBX::Weld>(boost::shared_ptr<RBX::Weld> const*,RBX::Weld *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Weld,RBX::Weld>(rbx_core::SharedPtr<RBX::Weld> const*,RBX::Weld *)const")]
 pub fn stub_f4b294() -> ! {
     todo!("0xf4b294 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Weld,RBX::Weld>(boost::shared_ptr<RBX::Weld> const*,RBX::Weld *)const")
 }
 
 // 0xf4b284 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11VehicleSeatES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // was: boost (now rbx_core)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VehicleSeat,RBX::VehicleSeat>(boost::shared_ptr<RBX::VehicleSeat> const*,RBX::VehicleSeat *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VehicleSeat,RBX::VehicleSeat>(rbx_core::SharedPtr<RBX::VehicleSeat> const*,RBX::VehicleSeat *)const")]
 pub fn stub_f4b284() -> ! {
     todo!("0xf4b284 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::VehicleSeat,RBX::VehicleSeat>(boost::shared_ptr<RBX::VehicleSeat> const*,RBX::VehicleSeat *)const")
 }

@@ -423,7 +423,7 @@ pub fn stub_302cf8() -> ! {
 // 0x302d20 — __GLOBAL__I_a_106
 #[doc(alias = "global constructor keyed to_a_106")]
 pub fn stub_302d20() -> ! {
-    todo!("0x302d20 `global constructor keyed to'_a_106")
+    todo!("0x302d20 `global constructor keyed to_a_106")
 }
 
 // 0x302eb8 — __ZN3RBX4AxesC1Ei
@@ -585,7 +585,7 @@ pub fn stub_304070() -> ! {
 // 0x304200 — __GLOBAL__I_a_107
 #[doc(alias = "global constructor keyed to_a_107")]
 pub fn stub_304200() -> ! {
-    todo!("0x304200 `global constructor keyed to'_a_107")
+    todo!("0x304200 `global constructor keyed to_a_107")
 }
 
 // 0x3042c8 — __ZN3RBX10BrickColor8BrickMap9singletonEv

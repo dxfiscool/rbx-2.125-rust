@@ -260,7 +260,7 @@ pub fn stub_3d199c() -> ! {
 // 0x3d19c4 — __GLOBAL__I_a_166
 #[doc(alias = "global constructor keyed to_a_166")]
 pub fn stub_3d19c4() -> ! {
-    todo!("0x3d19c4 `global constructor keyed to'_a_166")
+    todo!("0x3d19c4 `global constructor keyed to_a_166")
 }
 
 // 0x3d249c — __ZN3RBX20ChangeHistoryService10setEnabledEb

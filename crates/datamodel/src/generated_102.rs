@@ -361,31 +361,31 @@ pub fn stub_5e2b64() -> ! {
 }
 
 // 0x5e2b94 — __ZThn92_N3RBX12PartInstance14getPrimaryPartEv
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::getPrimaryPart(void)")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::getPrimaryPart(void)")]
 pub fn stub_5e2b94() -> ! {
     todo!("0x5e2b94 `non-virtual thunk toRBX::PartInstance::getPrimaryPart(void)")
 }
 
 // 0x5e2bd0 — __ZTv0_n12_N3RBX12PartInstance11getLocationEv
-#[doc(alias = "`virtual thunk toRBX::PartInstance::getLocation(void)")]
+#[doc(alias = "virtual thunk toRBX::PartInstance::getLocation(void)")]
 pub fn stub_5e2bd0() -> ! {
     todo!("0x5e2bd0 `virtual thunk toRBX::PartInstance::getLocation(void)")
 }
 
 // 0x5e2c08 — __ZThn132_N3RBX12PartInstance17getRenderLocationEv
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::getRenderLocation(void)")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::getRenderLocation(void)")]
 pub fn stub_5e2c08() -> ! {
     todo!("0x5e2c08 `non-virtual thunk toRBX::PartInstance::getRenderLocation(void)")
 }
 
 // 0x5e2c14 — __ZThn132_N3RBX12PartInstance13getRenderSizeEv
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::getRenderSize(void)")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::getRenderSize(void)")]
 pub fn stub_5e2c14() -> ! {
     todo!("0x5e2c14 `non-virtual thunk toRBX::PartInstance::getRenderSize(void)")
 }
 
 // 0x5e2c30 — __ZThn132_N3RBX12PartInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 pub fn stub_5e2c30() -> ! {
     todo!("0x5e2c30 `non-virtual thunk toRBX::PartInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
 }

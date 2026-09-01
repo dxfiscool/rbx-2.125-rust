@@ -251,7 +251,7 @@ pub fn stub_bb4e7c() -> ! {
 }
 
 // 0xbb4edc — __ZN5boost8weak_ptrIN4Ogre11RootManagerEED1Ev
-#[doc(alias = "boost::weak_ptr<Ogre::RootManager>::~weak_ptr()")]
+#[doc(alias = "rbx_core::WeakPtr<Ogre::RootManager>::~weak_ptr()")]
 // was: boost::weak_ptr<Ogre::RootManager>::~weak_ptr()
 pub fn stub_bb4edc() -> ! {
     todo!("0xbb4edc boost::weak_ptr<Ogre::RootManager>::~weak_ptr()")
@@ -742,7 +742,7 @@ pub fn stub_bc0408() -> ! {
 
 // 0xbc1ab8 — __ZN3RBX18RbxParticleFactory7restoreEPN4Ogre14ParticleSystemEN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::RbxParticleFactory::restore(Ogre::ParticleSystem *,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::RbxParticleFactory::restore(Ogre::ParticleSystem *,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::RbxParticleFactory::restore(Ogre::ParticleSystem *,boost::shared_ptr<RBX::Instance>)
 pub fn stub_bc1ab8() -> ! {
     todo!("0xbc1ab8 RBX::RbxParticleFactory::restore(Ogre::ParticleSystem *,boost::shared_ptr<RBX::Instance>)")

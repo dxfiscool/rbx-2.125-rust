@@ -345,7 +345,7 @@ pub fn stub_3e7ed0() -> ! {
 // 0x3e7f44 — __GLOBAL__I_a_168
 #[doc(alias = "global constructor keyed to_a_168")]
 pub fn stub_3e7f44() -> ! {
-    todo!("0x3e7f44 `global constructor keyed to'_a_168")
+    todo!("0x3e7f44 `global constructor keyed to_a_168")
 }
 
 // 0x3e8668 — __ZN3RBX13CharacterMesh11setBodyPartENS0_8BodyPartE

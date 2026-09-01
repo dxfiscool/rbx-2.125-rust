@@ -105,7 +105,7 @@ pub fn stub_2f04fc() -> ! {
 // 0x2f0664 — __GLOBAL__I_a_99
 #[doc(alias = "global constructor keyed to_a_99")]
 pub fn stub_2f0664() -> ! {
-    todo!("0x2f0664 `global constructor keyed to'_a_99")
+    todo!("0x2f0664 `global constructor keyed to_a_99")
 }
 
 // 0x2f0948 — __ZN3RBX12PartDragToolC1EPNS_12PartInstanceERKN3G3D7Vector3EPNS_9WorkspaceEN5boost10shared_ptrINS_8InstanceEEE
@@ -243,13 +243,13 @@ pub fn stub_2f1868() -> ! {
 // 0x2f1948 — __GLOBAL__I_a_100
 #[doc(alias = "global constructor keyed to_a_100")]
 pub fn stub_2f1948() -> ! {
-    todo!("0x2f1948 `global constructor keyed to'_a_100")
+    todo!("0x2f1948 `global constructor keyed to_a_100")
 }
 
 // 0x2f1c20 — __GLOBAL__I_a_101
 #[doc(alias = "global constructor keyed to_a_101")]
 pub fn stub_2f1c20() -> ! {
-    todo!("0x2f1c20 `global constructor keyed to'_a_101")
+    todo!("0x2f1c20 `global constructor keyed to_a_101")
 }
 
 // 0x2f1ef8 — __ZN3RBX10RunDragger8SnapInfo20updateSurfaceFromHitEv
@@ -465,7 +465,7 @@ pub fn stub_2f5c4c() -> ! {
 // 0x2f5d3c — __GLOBAL__I_a_102
 #[doc(alias = "global constructor keyed to_a_102")]
 pub fn stub_2f5d3c() -> ! {
-    todo!("0x2f5d3c `global constructor keyed to'_a_102")
+    todo!("0x2f5d3c `global constructor keyed to_a_102")
 }
 
 // 0x2f614c — __ZN3RBX13ArrowToolBase12onMouseHoverERKNS_7UIEventE

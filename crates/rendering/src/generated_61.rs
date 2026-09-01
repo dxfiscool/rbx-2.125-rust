@@ -497,14 +497,14 @@ pub fn stub_c06ea8() -> ! {
 }
 
 // 0xc0727c — __ZN3RBX11MegaClusterC1EPN4Ogre15RbxSceneManagerERKN5boost10shared_ptrINS_12PartInstanceEEE
-#[doc(alias = "RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 // was: RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)
 pub fn stub_c0727c() -> ! {
     todo!("0xc0727c RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)")
 }
 
 // 0xc07280 — __ZN3RBX11MegaClusterC2EPN4Ogre15RbxSceneManagerERKN5boost10shared_ptrINS_12PartInstanceEEE
-#[doc(alias = "RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 // was: RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)
 pub fn stub_c07280() -> ! {
     todo!("0xc07280 RBX::MegaCluster::MegaCluster(Ogre::RbxSceneManager *,boost::shared_ptr<RBX::PartInstance> const&)")
