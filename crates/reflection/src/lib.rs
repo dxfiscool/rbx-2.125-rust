@@ -91,3 +91,5 @@ pub mod generated_shard_cd;
 pub mod generated_shard_ce;
 pub mod generated_shard_cf;
 pub mod generated_shard_cg;
+pub mod generated_shard_ch;
+pub mod generated_shard_ci;
