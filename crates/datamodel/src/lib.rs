@@ -106,3 +106,7 @@ pub mod generated_65;
 pub mod generated_66;
 
 pub mod generated_67;
+
+pub mod generated_68;
+
+pub mod generated_69;
