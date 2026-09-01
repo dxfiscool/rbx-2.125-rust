@@ -98,3 +98,4 @@ pub mod generated_core_shard_be;
 pub mod generated_core_shard_bf;
 pub mod generated_core_shard_bg;
 pub mod generated_core_shard_bh;
+pub mod generated_core_shard_bi;
