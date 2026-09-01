@@ -1,1051 +1,1056 @@
 //! network generated_179 — RakNet + RBX::Network + global gap filler (auto-generated, do not edit manually)
-//! Filter: RakNet|Network|Replicator -> 5109 funcs, 5109 remaining before batch (filtered gap filler) + -4959 global gap filler; batch EA-sorted asc 150 not yet in network
+//! Filter: RakNet|Network|Replicator -> 5109 funcs, 0 remaining before batch (filtered gap filler) + 150 global gap filler; batch EA-sorted asc 150 not yet in network
 //! Source: ida/export.json (85545 funcs, base 0x4000)
-//! Batch: +150 stubs | range 0x84e0..0xda28 | existing 0 -> 150 total (rbx_core::SharedPtr not boost)
+//! Batch: +150 stubs | range 0x66cb8..0x6f67c | existing 20119 -> 20269 total (rbx_core::SharedPtr not boost)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
 
-// 0x84e0 — start
-// type: void __fastcall __noreturn(int, int, int, int, int argc, char *argv)
-#[doc(alias = "start")]
-pub fn stub_84e0() -> ! {
-    todo!("0x84e0 start")
+// 0x66cb8 — -[AppController processResponseToGameConnect:data:error:]
+// type: void __cdecl(AppController *self, SEL, id, id, id)
+#[doc(alias = "-[AppController processResponseToGameConnect:data:error:]")]
+pub fn stub_66cb8() -> ! {
+    todo!("0x66cb8 -[AppController processResponseToGameConnect:data:error:]")
 }
 
-// 0x850c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEEC2Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::EnumDesc(void)")]
-pub fn stub_850c() -> ! {
-    todo!("0x850c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::EnumDesc(void)")
+// 0x66e48 — -[AppController performPollingToLoad:]
+// type: void __cdecl(AppController *self, SEL, id)
+#[doc(alias = "-[AppController performPollingToLoad:]")]
+pub fn stub_66e48() -> ! {
+    todo!("0x66e48 -[AppController performPollingToLoad:]")
 }
 
-// 0x86d0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEEC2Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::EnumDesc(void)")]
-pub fn stub_86d0() -> ! {
-    todo!("0x86d0 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::EnumDesc(void)")
+// 0x67034 — ___38-[AppController performPollingToLoad:]_block_invoke
+// type: id __fastcall(int, int, int, int)
+#[doc(alias = "___38-[AppController performPollingToLoad:]_block_invoke")]
+pub fn stub_67034() -> ! {
+    todo!("0x67034 ___38-[AppController performPollingToLoad:]_block_invoke")
 }
 
-// 0x88c4 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEEC2Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::EnumDesc(void)")]
-pub fn stub_88c4() -> ! {
-    todo!("0x88c4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::EnumDesc(void)")
+// 0x67070 — ___copy_helper_block_131
+// type: void __fastcall(int, int)
+#[doc(alias = "___copy_helper_block_131")]
+pub fn stub_67070() -> ! {
+    todo!("0x67070 ___copy_helper_block_131")
 }
 
-// 0x8a88 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEEC2Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::EnumDesc(void)")]
-pub fn stub_8a88() -> ! {
-    todo!("0x8a88 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::EnumDesc(void)")
+// 0x67094 — ___destroy_helper_block_132
+// type: void __fastcall(int)
+#[doc(alias = "___destroy_helper_block_132")]
+pub fn stub_67094() -> ! {
+    todo!("0x67094 ___destroy_helper_block_132")
 }
 
-// 0x8c4c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEEC2Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::EnumDesc(void)")]
-pub fn stub_8c4c() -> ! {
-    todo!("0x8c4c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::EnumDesc(void)")
+// 0x670b0 — -[AppController launchAppLocal:]
+// type: void __cdecl(AppController *self, SEL, id)
+#[doc(alias = "-[AppController launchAppLocal:]")]
+pub fn stub_670b0() -> ! {
+    todo!("0x670b0 -[AppController launchAppLocal:]")
 }
 
-// 0x8e24 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEEC2Ev
-// type: RBX::Reflection::EnumDescriptor *__fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::EnumDesc(void)")]
-pub fn stub_8e24() -> ! {
-    todo!("0x8e24 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::EnumDesc(void)")
+// 0x670f8 — -[AppController launchApp:appId:]
+// type: void __cdecl(AppController *self, SEL, id, int)
+#[doc(alias = "-[AppController launchApp:appId:]")]
+pub fn stub_670f8() -> ! {
+    todo!("0x670f8 -[AppController launchApp:appId:]")
 }
 
-// 0x9100 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEEC2Ev
-// type: RBX::Reflection::EnumDescriptor *__fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::EnumDesc(void)")]
-pub fn stub_9100() -> ! {
-    todo!("0x9100 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::EnumDesc(void)")
+// 0x67148 — -[AppController launchGameFromOverlayDataModel:]
+// type: void __cdecl(AppController *self, SEL, int)
+#[doc(alias = "-[AppController launchGameFromOverlayDataModel:]")]
+pub fn stub_67148() -> ! {
+    todo!("0x67148 -[AppController launchGameFromOverlayDataModel:]")
 }
 
-// 0x9608 — __ZN19CRenderSettingsItem15setGraphicsModeEN3RBX15CRenderSettings12GraphicsModeE
-// type: int __fastcall(int result, int)
-#[doc(alias = "CRenderSettingsItem::setGraphicsMode(RBX::CRenderSettings::GraphicsMode)")]
-pub fn stub_9608() -> ! {
-    todo!("0x9608 CRenderSettingsItem::setGraphicsMode(RBX::CRenderSettings::GraphicsMode)")
+// 0x67200 — -[AppController launchGame:]
+// type: void __cdecl(AppController *self, SEL, int)
+#[doc(alias = "-[AppController launchGame:]")]
+pub fn stub_67200() -> ! {
+    todo!("0x67200 -[AppController launchGame:]")
 }
 
-// 0x9628 — __ZN19CRenderSettingsItem23setFrameRateManagerModeEN3RBX15CRenderSettings20FrameRateManagerModeE
-// type: int __fastcall(int result, int)
-#[doc(alias = "CRenderSettingsItem::setFrameRateManagerMode(RBX::CRenderSettings::FrameRateManagerMode)")]
-pub fn stub_9628() -> ! {
-    todo!("0x9628 CRenderSettingsItem::setFrameRateManagerMode(RBX::CRenderSettings::FrameRateManagerMode)")
+// 0x67354 — __GLOBAL__I_a_36
+#[doc(alias = "`global constructor keyed to_a_36")]
+pub fn stub_67354() -> ! {
+    todo!("0x67354 `global constructor keyed to_a_36")
 }
 
-// 0x9648 — __ZN19CRenderSettingsItem15setQualityLevelEN3RBX15CRenderSettings12QualityLevelE
-// type: int __fastcall(int result, int)
-#[doc(alias = "CRenderSettingsItem::setQualityLevel(RBX::CRenderSettings::QualityLevel)")]
-pub fn stub_9648() -> ! {
-    todo!("0x9648 CRenderSettingsItem::setQualityLevel(RBX::CRenderSettings::QualityLevel)")
+// 0x674f0 — +[SessionReporter sharedInstance]
+// type: id __cdecl(id, SEL)
+#[doc(alias = "+[SessionReporter sharedInstance]")]
+pub fn stub_674f0() -> ! {
+    todo!("0x674f0 +[SessionReporter sharedInstance]")
 }
 
-// 0x9668 — __ZN19CRenderSettingsItem23setAlwaysDrawConnectorsEb
-// type: int __fastcall(int this, int)
-#[doc(alias = "CRenderSettingsItem::setAlwaysDrawConnectors(bool)")]
-pub fn stub_9668() -> ! {
-    todo!("0x9668 CRenderSettingsItem::setAlwaysDrawConnectors(bool)")
+// 0x6754c — ___33+[SessionReporter sharedInstance]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___33+[SessionReporter sharedInstance]_block_invoke")]
+pub fn stub_6754c() -> ! {
+    todo!("0x6754c ___33+[SessionReporter sharedInstance]_block_invoke")
 }
 
-// 0x96ac — __ZN19CRenderSettingsItem18setShowAggregationEb
-// type: int __fastcall(int this, int)
-#[doc(alias = "CRenderSettingsItem::setShowAggregation(bool)")]
-pub fn stub_96ac() -> ! {
-    todo!("0x96ac CRenderSettingsItem::setShowAggregation(bool)")
+// 0x67580 — ___copy_helper_block__26
+// type: void __fastcall(int, int)
+#[doc(alias = "___copy_helper_block__26")]
+pub fn stub_67580() -> ! {
+    todo!("0x67580 ___copy_helper_block__26")
 }
 
-// 0x96d0 — __ZN19CRenderSettingsItem12setAASamplesEN3RBX15CRenderSettings9AASamplesE
-// type: int __fastcall(int result, int)
-#[doc(alias = "CRenderSettingsItem::setAASamples(RBX::CRenderSettings::AASamples)")]
-pub fn stub_96d0() -> ! {
-    todo!("0x96d0 CRenderSettingsItem::setAASamples(RBX::CRenderSettings::AASamples)")
+// 0x6758c — ___destroy_helper_block__26
+// type: void __fastcall(int)
+#[doc(alias = "___destroy_helper_block__26")]
+pub fn stub_6758c() -> ! {
+    todo!("0x6758c ___destroy_helper_block__26")
 }
 
-// 0x96fc — __ZN19CRenderSettingsItem13setShadowModeEN3RBX15CRenderSettings10ShadowModeE
-// type: int __fastcall(int result, int)
-#[doc(alias = "CRenderSettingsItem::setShadowMode(RBX::CRenderSettings::ShadowMode)")]
-pub fn stub_96fc() -> ! {
-    todo!("0x96fc CRenderSettingsItem::setShadowMode(RBX::CRenderSettings::ShadowMode)")
+// 0x67594 — -[SessionReporter init]
+// type: SessionReporter *__cdecl(SessionReporter *self, SEL)
+#[doc(alias = "-[SessionReporter init]")]
+pub fn stub_67594() -> ! {
+    todo!("0x67594 -[SessionReporter init]")
 }
 
-// 0x971c — __ZN19CRenderSettingsItem19setAntialiasingModeEN3RBX15CRenderSettings16AntialiasingModeE
-// type: int __fastcall(int result, int)
-#[doc(alias = "CRenderSettingsItem::setAntialiasingMode(RBX::CRenderSettings::AntialiasingMode)")]
-pub fn stub_971c() -> ! {
-    todo!("0x971c CRenderSettingsItem::setAntialiasingMode(RBX::CRenderSettings::AntialiasingMode)")
+// 0x675c0 — -[SessionReporter dealloc]
+// type: void __cdecl(SessionReporter *self, SEL)
+#[doc(alias = "-[SessionReporter dealloc]")]
+pub fn stub_675c0() -> ! {
+    todo!("0x675c0 -[SessionReporter dealloc]")
 }
 
-// 0x973c — __ZN19CRenderSettingsItem25setDebugShowBoundingBoxesEb
-// type: int __fastcall(int this, int)
-#[doc(alias = "CRenderSettingsItem::setDebugShowBoundingBoxes(bool)")]
-pub fn stub_973c() -> ! {
-    todo!("0x973c CRenderSettingsItem::setDebugShowBoundingBoxes(bool)")
+// 0x675ec — -[SessionReporter pushSessionData:PlaceId:GamePlayTime:]
+// type: void __cdecl(SessionReporter *self, SEL, id, int, int)
+#[doc(alias = "-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]")]
+pub fn stub_675ec() -> ! {
+    todo!("0x675ec -[SessionReporter pushSessionData:PlaceId:GamePlayTime:]")
 }
 
-// 0x9760 — __ZN19CRenderSettingsItem12setEnableFRMEb
-// type: int __fastcall(int this, int)
-#[doc(alias = "CRenderSettingsItem::setEnableFRM(bool)")]
-pub fn stub_9760() -> ! {
-    todo!("0x9760 CRenderSettingsItem::setEnableFRM(bool)")
+// 0x67934 — ___56-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]_block_invoke
+// type: void __cdecl(id, NSURLResponse *, NSData *, NSError *)
+#[doc(alias = "___56-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]_block_invoke")]
+pub fn stub_67934() -> ! {
+    todo!("0x67934 ___56-[SessionReporter pushSessionData:PlaceId:GamePlayTime:]_block_invoke")
 }
 
-// 0x9784 — __ZNK19CRenderSettingsItem28getDebugDisableInterpolationEv
-// type: int __fastcall(CRenderSettingsItem *this)
-#[doc(alias = "CRenderSettingsItem::getDebugDisableInterpolation(void)const")]
-pub fn stub_9784() -> ! {
-    todo!("0x9784 CRenderSettingsItem::getDebugDisableInterpolation(void)const")
+// 0x67964 — -[SessionReporter getPlayData:PlayTime:CalculateNow:]
+// type: char __cdecl(SessionReporter *self, SEL, int *, int *, char)
+#[doc(alias = "-[SessionReporter getPlayData:PlayTime:CalculateNow:]")]
+pub fn stub_67964() -> ! {
+    todo!("0x67964 -[SessionReporter getPlayData:PlayTime:CalculateNow:]")
 }
 
-// 0x9794 — __ZN19CRenderSettingsItem28setDebugDisableInterpolationEb
-// type: char *__fastcall(CRenderSettingsItem *this, char)
-#[doc(alias = "CRenderSettingsItem::setDebugDisableInterpolation(bool)")]
-pub fn stub_9794() -> ! {
-    todo!("0x9794 CRenderSettingsItem::setDebugDisableInterpolation(bool)")
+// 0x67aec — -[SessionReporter callTimerFn]
+// type: void __cdecl(SessionReporter *self, SEL)
+#[doc(alias = "-[SessionReporter callTimerFn]")]
+pub fn stub_67aec() -> ! {
+    todo!("0x67aec -[SessionReporter callTimerFn]")
 }
 
-// 0x97a4 — __ZN19CRenderSettingsItem23setResolutionPreferenceEN3RBX15CRenderSettings16ResolutionPresetE
-// type: int __fastcall(int result, int)
-#[doc(alias = "CRenderSettingsItem::setResolutionPreference(RBX::CRenderSettings::ResolutionPreset)")]
-pub fn stub_97a4() -> ! {
-    todo!("0x97a4 CRenderSettingsItem::setResolutionPreference(RBX::CRenderSettings::ResolutionPreset)")
+// 0x67b6c — -[SessionReporter reportSessionFor:]
+// type: void __cdecl(SessionReporter *self, SEL, int)
+#[doc(alias = "-[SessionReporter reportSessionFor:]")]
+pub fn stub_67b6c() -> ! {
+    todo!("0x67b6c -[SessionReporter reportSessionFor:]")
 }
 
-// 0x97c0 — __ZN19CRenderSettingsItem19setTextureCacheSizeEj
-// type: int __fastcall(int this, unsigned int)
-#[doc(alias = "CRenderSettingsItem::setTextureCacheSize(unsigned int)")]
-pub fn stub_97c0() -> ! {
-    todo!("0x97c0 CRenderSettingsItem::setTextureCacheSize(unsigned int)")
+// 0x67b80 — -[SessionReporter reportSessionFor:PlaceId:]
+// type: void __cdecl(SessionReporter *self, SEL, int, int)
+#[doc(alias = "-[SessionReporter reportSessionFor:PlaceId:]")]
+pub fn stub_67b80() -> ! {
+    todo!("0x67b80 -[SessionReporter reportSessionFor:PlaceId:]")
 }
 
-// 0x97c8 — __ZN19CRenderSettingsItem16setMeshCacheSizeEj
-// type: int __fastcall(int this, unsigned int)
-#[doc(alias = "CRenderSettingsItem::setMeshCacheSize(unsigned int)")]
-pub fn stub_97c8() -> ! {
-    todo!("0x97c8 CRenderSettingsItem::setMeshCacheSize(unsigned int)")
+// 0x68434 — ___44-[SessionReporter reportSessionFor:PlaceId:]_block_invoke
+// type: id __fastcall(int)
+#[doc(alias = "___44-[SessionReporter reportSessionFor:PlaceId:]_block_invoke")]
+pub fn stub_68434() -> ! {
+    todo!("0x68434 ___44-[SessionReporter reportSessionFor:PlaceId:]_block_invoke")
 }
 
-// 0x97d0 — __ZN19CRenderSettingsItemC2Ev
-// type: void __fastcall(CRenderSettingsItem *this)
-#[doc(alias = "CRenderSettingsItem::CRenderSettingsItem(void)")]
-pub fn stub_97d0() -> ! {
-    todo!("0x97d0 CRenderSettingsItem::CRenderSettingsItem(void)")
+// 0x6846c — ___copy_helper_block_157
+// type: void __fastcall(int, int)
+#[doc(alias = "___copy_helper_block_157")]
+pub fn stub_6846c() -> ! {
+    todo!("0x6846c ___copy_helper_block_157")
 }
 
-// 0x9ac8 — __ZN19CRenderSettingsItem19setAutoQualityLevelEi
-// type: int __fastcall(int this, int)
-#[doc(alias = "CRenderSettingsItem::setAutoQualityLevel(int)")]
-pub fn stub_9ac8() -> ! {
-    todo!("0x9ac8 CRenderSettingsItem::setAutoQualityLevel(int)")
+// 0x68478 — ___destroy_helper_block_158
+// type: void __fastcall(int)
+#[doc(alias = "___destroy_helper_block_158")]
+pub fn stub_68478() -> ! {
+    todo!("0x68478 ___destroy_helper_block_158")
 }
 
-// 0x9ae8 — __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi
-// type: int __fastcall(int this, int)
-#[doc(alias = "non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
-pub fn stub_9ae8() -> ! {
-    todo!("0x9ae8 `non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")
+// 0x68480 — -[SessionReporter clearSession]
+// type: void __cdecl(SessionReporter *self, SEL)
+#[doc(alias = "-[SessionReporter clearSession]")]
+pub fn stub_68480() -> ! {
+    todo!("0x68480 -[SessionReporter clearSession]")
 }
 
-// 0x9b08 — __ZN19CRenderSettingsItem21setEagerBulkExecutionEb
-// type: int __fastcall(int this, int)
-#[doc(alias = "CRenderSettingsItem::setEagerBulkExecution(bool)")]
-pub fn stub_9b08() -> ! {
-    todo!("0x9b08 CRenderSettingsItem::setEagerBulkExecution(bool)")
+// 0x6850c — __GLOBAL__I_a_37
+#[doc(alias = "`global constructor keyed to_a_37")]
+pub fn stub_6850c() -> ! {
+    todo!("0x6850c `global constructor keyed to_a_37")
 }
 
-// 0x9b2c — __ZNSt12length_errorD1Ev
-// type: void __cdecl(std::length_error *__hidden this)
-#[doc(alias = "std::length_error::~length_error()")]
-pub fn stub_9b2c() -> ! {
-    todo!("0x9b2c std::length_error::~length_error()")
+// 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
+// type: int __fastcall(FMOD::ProfileCpu *this)
+#[doc(alias = "FMOD::ProfileCpu::init(void)")]
+pub fn stub_686a4() -> ! {
+    todo!("0x686a4 FMOD::ProfileCpu::init(void)")
 }
 
-// 0x9b30 — __ZNSt12out_of_rangeD0Ev
-// type: void __cdecl(std::out_of_range *__hidden this)
-#[doc(alias = "std::out_of_range::~out_of_range()")]
-pub fn stub_9b30() -> ! {
-    todo!("0x9b30 std::out_of_range::~out_of_range()")
+// 0x686ac — __ZN4FMOD10ProfileCpu6updateEPNS_7SystemIEj
+// type: int __fastcall(FMOD::ProfileCpu *this, FMOD::SystemI *, unsigned int)
+#[doc(alias = "FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")]
+pub fn stub_686ac() -> ! {
+    todo!("0x686ac FMOD::ProfileCpu::update(FMOD::SystemI *,unsigned int)")
 }
 
-// 0x9b44 — __ZNSt12out_of_rangeD2Ev
-// type: void __cdecl(std::out_of_range *__hidden this)
-#[doc(alias = "std::out_of_range::~out_of_range()")]
-pub fn stub_9b44() -> ! {
-    todo!("0x9b44 std::out_of_range::~out_of_range()")
+// 0x68758 — __ZN4FMOD10ProfileCpu7releaseEv
+// type: int __fastcall(FMOD::ProfileCpu *this)
+#[doc(alias = "FMOD::ProfileCpu::release(void)")]
+pub fn stub_68758() -> ! {
+    todo!("0x68758 FMOD::ProfileCpu::release(void)")
 }
 
-// 0x9b48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::addPair(RBX::CRenderSettings::AASamples,char const*)")]
-pub fn stub_9b48() -> ! {
-    todo!("0x9b48 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::addPair(RBX::CRenderSettings::AASamples,char const*)")
+// 0x68794 — __ZN4FMOD10ProfileCpuC2Ev
+// type: int __fastcall(FMOD::ProfileCpu *this)
+#[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
+pub fn stub_68794() -> ! {
+    todo!("0x68794 FMOD::ProfileCpu::ProfileCpu(void)")
 }
 
-// 0x9ea8 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addPair(RBX::CRenderSettings::GraphicsMode,char const*)")]
-pub fn stub_9ea8() -> ! {
-    todo!("0x9ea8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addPair(RBX::CRenderSettings::GraphicsMode,char const*)")
+// 0x687bc — __ZN4FMOD10ProfileCpuC1Ev
+// type: int __fastcall(FMOD::ProfileCpu *this)
+#[doc(alias = "FMOD::ProfileCpu::ProfileCpu(void)")]
+pub fn stub_687bc() -> ! {
+    todo!("0x687bc FMOD::ProfileCpu::ProfileCpu(void)")
 }
 
-// 0xa208 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE9addLegacyEiPKcS3_
-// type: _DWORD *__fastcall(int, unsigned int, int, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addLegacy(int,char const*,RBX::CRenderSettings::GraphicsMode)")]
-pub fn stub_a208() -> ! {
-    todo!("0xa208 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::addLegacy(int,char const*,RBX::CRenderSettings::GraphicsMode)")
+// 0x687c0 — __ZN4FMOD22FMOD_ProfileCpu_CreateEv
+// type: int __fastcall(FMOD *this)
+#[doc(alias = "FMOD::FMOD_ProfileCpu_Create(void)")]
+pub fn stub_687c0() -> ! {
+    todo!("0x687c0 FMOD::FMOD_ProfileCpu_Create(void)")
 }
 
-// 0xa25c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::addPair(RBX::CRenderSettings::FrameRateManagerMode,char const*)")]
-pub fn stub_a25c() -> ! {
-    todo!("0xa25c RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::addPair(RBX::CRenderSettings::FrameRateManagerMode,char const*)")
+// 0x68864 — __ZN4FMOD10ProfileDsp15isNodeDuplicateEy
+// type: int __fastcall(FMOD::ProfileDsp *this, unsigned __int64)
+#[doc(alias = "FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")]
+pub fn stub_68864() -> ! {
+    todo!("0x68864 FMOD::ProfileDsp::isNodeDuplicate(unsigned long long)")
 }
 
-// 0xa5bc — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::addPair(RBX::CRenderSettings::AntialiasingMode,char const*)")]
-pub fn stub_a5bc() -> ! {
-    todo!("0xa5bc RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::addPair(RBX::CRenderSettings::AntialiasingMode,char const*)")
+// 0x68944 — __ZN4FMOD10ProfileDsp10sendPacketEPNS_7SystemIE
+// type: int __fastcall(FMOD::ProfileDsp *this, FMOD::SystemI *)
+#[doc(alias = "FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")]
+pub fn stub_68944() -> ! {
+    todo!("0x68944 FMOD::ProfileDsp::sendPacket(FMOD::SystemI *)")
 }
 
-// 0xa91c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::addPair(RBX::CRenderSettings::ShadowMode,char const*)")]
-pub fn stub_a91c() -> ! {
-    todo!("0xa91c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::addPair(RBX::CRenderSettings::ShadowMode,char const*)")
+// 0x68a6c — __ZN4FMOD10ProfileDsp18growNodeStackSpaceEv
+// type: int __fastcall(FMOD::ProfileDsp *this)
+#[doc(alias = "FMOD::ProfileDsp::growNodeStackSpace(void)")]
+pub fn stub_68a6c() -> ! {
+    todo!("0x68a6c FMOD::ProfileDsp::growNodeStackSpace(void)")
 }
 
-// 0xac7c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::addPair(RBX::CRenderSettings::QualityLevel,char const*)")]
-pub fn stub_ac7c() -> ! {
-    todo!("0xac7c RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::addPair(RBX::CRenderSettings::QualityLevel,char const*)")
+// 0x68adc — __ZN4FMOD10ProfileDsp15growPacketSpaceEv
+// type: int __fastcall(FMOD::ProfileDsp *this)
+#[doc(alias = "FMOD::ProfileDsp::growPacketSpace(void)")]
+pub fn stub_68adc() -> ! {
+    todo!("0x68adc FMOD::ProfileDsp::growPacketSpace(void)")
 }
 
-// 0xafdc — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE7addPairES3_PKc
-// type: void __fastcall(_DWORD *, int, const char *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::addPair(RBX::CRenderSettings::ResolutionPreset,char const*)")]
-pub fn stub_afdc() -> ! {
-    todo!("0xafdc RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::addPair(RBX::CRenderSettings::ResolutionPreset,char const*)")
+// 0x68b68 — __ZN4FMOD10ProfileDsp6updateEPNS_7SystemIEj
+// type: int __fastcall(FMOD::ProfileDsp *this, FMOD::SystemI *, unsigned int)
+#[doc(alias = "FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")]
+pub fn stub_68b68() -> ! {
+    todo!("0x68b68 FMOD::ProfileDsp::update(FMOD::SystemI *,unsigned int)")
 }
 
-// 0xb33c — __ZNK3RBX15CRenderSettings15getGraphicsModeEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getGraphicsMode(void)const")]
-pub fn stub_b33c() -> ! {
-    todo!("0xb33c RBX::CRenderSettings::getGraphicsMode(void)const")
+// 0x68dfc — __ZN4FMOD10ProfileDsp7releaseEv
+// type: int __fastcall(FMOD::ProfileDsp *this)
+#[doc(alias = "FMOD::ProfileDsp::release(void)")]
+pub fn stub_68dfc() -> ! {
+    todo!("0x68dfc FMOD::ProfileDsp::release(void)")
 }
 
-// 0xb340 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12GraphicsModeEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::~EnumPropDescriptor()")]
-pub fn stub_b340() -> ! {
-    todo!("0xb340 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::GraphicsMode>::~EnumPropDescriptor()")
+// 0x68ebc — __ZN4FMOD10ProfileDsp4initEv
+// type: int __fastcall(FMOD::ProfileDsp *this)
+#[doc(alias = "FMOD::ProfileDsp::init(void)")]
+pub fn stub_68ebc() -> ! {
+    todo!("0x68ebc FMOD::ProfileDsp::init(void)")
 }
 
-// 0xb364 — __ZNK3RBX15CRenderSettings23getFrameRateManagerModeEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getFrameRateManagerMode(void)const")]
-pub fn stub_b364() -> ! {
-    todo!("0xb364 RBX::CRenderSettings::getFrameRateManagerMode(void)const")
+// 0x69028 — __ZN4FMOD10ProfileDspC2Ev
+// type: int __fastcall(FMOD::ProfileDsp *this)
+#[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
+pub fn stub_69028() -> ! {
+    todo!("0x69028 FMOD::ProfileDsp::ProfileDsp(void)")
 }
 
-// 0xb368 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings20FrameRateManagerModeEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::~EnumPropDescriptor()")]
-pub fn stub_b368() -> ! {
-    todo!("0xb368 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::FrameRateManagerMode>::~EnumPropDescriptor()")
+// 0x69078 — __ZN4FMOD10ProfileDspC1Ev
+// type: int __fastcall(FMOD::ProfileDsp *this)
+#[doc(alias = "FMOD::ProfileDsp::ProfileDsp(void)")]
+pub fn stub_69078() -> ! {
+    todo!("0x69078 FMOD::ProfileDsp::ProfileDsp(void)")
 }
 
-// 0xb38c — __ZNK3RBX15CRenderSettings15getQualityLevelEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getQualityLevel(void)const")]
-pub fn stub_b38c() -> ! {
-    todo!("0xb38c RBX::CRenderSettings::getQualityLevel(void)const")
+// 0x6907c — __ZN4FMOD22FMOD_ProfileDsp_CreateEv
+// type: int __fastcall(FMOD *this)
+#[doc(alias = "FMOD::FMOD_ProfileDsp_Create(void)")]
+pub fn stub_6907c() -> ! {
+    todo!("0x6907c FMOD::FMOD_ProfileDsp_Create(void)")
 }
 
-// 0xb390 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings12QualityLevelEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::~EnumPropDescriptor()")]
-pub fn stub_b390() -> ! {
-    todo!("0xb390 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::QualityLevel>::~EnumPropDescriptor()")
+// 0x6914c — __ZN4FMOD7ProfileC2Ev
+// type: _DWORD *__fastcall(_DWORD *this)
+#[doc(alias = "FMOD::Profile::Profile(void)")]
+pub fn stub_6914c() -> ! {
+    todo!("0x6914c FMOD::Profile::Profile(void)")
 }
 
-// 0xb3b4 — __ZNK3RBX15CRenderSettings23getAlwaysDrawConnectorsEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getAlwaysDrawConnectors(void)const")]
-pub fn stub_b3b4() -> ! {
-    todo!("0xb3b4 RBX::CRenderSettings::getAlwaysDrawConnectors(void)const")
+// 0x6919c — __ZN4FMOD7ProfileC1Ev
+// type: _DWORD *__fastcall(_DWORD *this)
+#[doc(alias = "FMOD::Profile::Profile(void)")]
+pub fn stub_6919c() -> ! {
+    todo!("0x6919c FMOD::Profile::Profile(void)")
 }
 
-// 0xb3bc — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItembED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::~PropDescriptor()")]
-pub fn stub_b3bc() -> ! {
-    todo!("0xb3bc RBX::Reflection::PropDescriptor<CRenderSettingsItem,bool>::~PropDescriptor()")
-}
-
-// 0xb3e0 — __ZNK3RBX15CRenderSettings18getShowAggregationEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getShowAggregation(void)const")]
-pub fn stub_b3e0() -> ! {
-    todo!("0xb3e0 RBX::CRenderSettings::getShowAggregation(void)const")
-}
-
-// 0xb3e8 — __ZNK3RBX15CRenderSettings12getAASamplesEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getAASamples(void)const")]
-pub fn stub_b3e8() -> ! {
-    todo!("0xb3e8 RBX::CRenderSettings::getAASamples(void)const")
-}
-
-// 0xb3f8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings9AASamplesEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::~EnumPropDescriptor()")]
-pub fn stub_b3f8() -> ! {
-    todo!("0xb3f8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AASamples>::~EnumPropDescriptor()")
-}
-
-// 0xb41c — __ZNK3RBX15CRenderSettings13getShadowModeEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getShadowMode(void)const")]
-pub fn stub_b41c() -> ! {
-    todo!("0xb41c RBX::CRenderSettings::getShadowMode(void)const")
-}
-
-// 0xb420 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings10ShadowModeEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::~EnumPropDescriptor()")]
-pub fn stub_b420() -> ! {
-    todo!("0xb420 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ShadowMode>::~EnumPropDescriptor()")
-}
-
-// 0xb444 — __ZNK3RBX15CRenderSettings19getAntialiasingModeEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getAntialiasingMode(void)const")]
-pub fn stub_b444() -> ! {
-    todo!("0xb444 RBX::CRenderSettings::getAntialiasingMode(void)const")
-}
-
-// 0xb448 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16AntialiasingModeEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::~EnumPropDescriptor()")]
-pub fn stub_b448() -> ! {
-    todo!("0xb448 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::AntialiasingMode>::~EnumPropDescriptor()")
-}
-
-// 0xb46c — __ZNK3RBX15CRenderSettings25getDebugShowBoundingBoxesEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const")]
-pub fn stub_b46c() -> ! {
-    todo!("0xb46c RBX::CRenderSettings::getDebugShowBoundingBoxes(void)const")
-}
-
-// 0xb474 — __ZNK3RBX15CRenderSettings19getAutoQualityLevelEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getAutoQualityLevel(void)const")]
-pub fn stub_b474() -> ! {
-    todo!("0xb474 RBX::CRenderSettings::getAutoQualityLevel(void)const")
-}
-
-// 0xb478 — __ZN3RBX10Reflection14PropDescriptorI19CRenderSettingsItemiED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::~PropDescriptor()")]
-pub fn stub_b478() -> ! {
-    todo!("0xb478 RBX::Reflection::PropDescriptor<CRenderSettingsItem,int>::~PropDescriptor()")
-}
-
-// 0xb49c — __ZNK3RBX15CRenderSettings12getEnableFRMEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getEnableFRM(void)const")]
-pub fn stub_b49c() -> ! {
-    todo!("0xb49c RBX::CRenderSettings::getEnableFRM(void)const")
-}
-
-// 0xb4a4 — __ZNK3RBX15CRenderSettings23getResolutionPreferenceEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getResolutionPreference(void)const")]
-pub fn stub_b4a4() -> ! {
-    todo!("0xb4a4 RBX::CRenderSettings::getResolutionPreference(void)const")
-}
-
-// 0xb4a8 — __ZN3RBX10Reflection18EnumPropDescriptorI19CRenderSettingsItemNS_15CRenderSettings16ResolutionPresetEED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::~EnumPropDescriptor()")]
-pub fn stub_b4a8() -> ! {
-    todo!("0xb4a8 RBX::Reflection::EnumPropDescriptor<CRenderSettingsItem,RBX::CRenderSettings::ResolutionPreset>::~EnumPropDescriptor()")
-}
-
-// 0xb4cc — __ZN3RBX15CRenderSettings18getMaxQualityLevelEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getMaxQualityLevel(void)")]
-pub fn stub_b4cc() -> ! {
-    todo!("0xb4cc RBX::CRenderSettings::getMaxQualityLevel(void)")
-}
-
-// 0xb4d0 — __ZN3RBX10Reflection13BoundFuncDescI19CRenderSettingsItemFivELi0EED1Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc()")]
-pub fn stub_b4d0() -> ! {
-    todo!("0xb4d0 RBX::Reflection::BoundFuncDesc<CRenderSettingsItem,int ()(void),0>::~BoundFuncDesc()")
-}
-
-// 0xb4f4 — __ZNK3RBX15CRenderSettings19getTextureCacheSizeEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getTextureCacheSize(void)const")]
-pub fn stub_b4f4() -> ! {
-    todo!("0xb4f4 RBX::CRenderSettings::getTextureCacheSize(void)const")
-}
-
-// 0xb4f8 — __ZNK3RBX15CRenderSettings16getMeshCacheSizeEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getMeshCacheSize(void)const")]
-pub fn stub_b4f8() -> ! {
-    todo!("0xb4f8 RBX::CRenderSettings::getMeshCacheSize(void)const")
-}
-
-// 0xb4fc — __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev
-// type: RBX::Instance *__fastcall(RBX::Instance *)
-#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")]
-pub fn stub_b4fc() -> ! {
-    todo!("0xb4fc __ZN3RBX26GlobalAdvancedSettingsItemI19CRenderSettingsItemLZ15sRenderSettingsEEC2Ev")
-}
-
-// 0xb740 — __ZNSt6vectorIN3G3D12Vector2int16ESaIS1_EE9push_backERKS1_
-// type: int __fastcall(int result, _DWORD *)
-#[doc(alias = "std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")]
-pub fn stub_b740() -> ! {
-    todo!("0xb740 std::vector<G3D::Vector2int16,std::allocator<G3D::Vector2int16>>::push_back(G3D::Vector2int16 const&)")
-}
-
-// 0xb76c — __ZN3rbx7signals16signal_with_argsILi1EFvPKN3RBX10Reflection18PropertyDescriptorEEEclES6_
-// type: void __fastcall(_DWORD *, int, int, const void *, int, int, int, int, void *, int)
-#[doc(alias = "rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")]
-pub fn stub_b76c() -> ! {
-    todo!("0xb76c rbx::signals::signal_with_args<1,void ()(RBX::Reflection::PropertyDescriptor const*)>::operator()(RBX::Reflection::PropertyDescriptor const*)")
-}
-
-// 0xb8b0 — __ZNK3RBX15CRenderSettings21getEagerBulkExecutionEv
-// type: int __fastcall(RBX::CRenderSettings *this)
-#[doc(alias = "RBX::CRenderSettings::getEagerBulkExecution(void)const")]
-pub fn stub_b8b0() -> ! {
-    todo!("0xb8b0 RBX::CRenderSettings::getEagerBulkExecution(void)const")
-}
-
-// 0xb8b8 — __ZN19CRenderSettingsItemD1Ev
-// type: void __fastcall(CRenderSettingsItem *__hidden this)
-#[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b8b8() -> ! {
-    todo!("0xb8b8 CRenderSettingsItem::~CRenderSettingsItem()")
-}
-
-// 0xb8bc — __ZN19CRenderSettingsItemD0Ev
-// type: void __fastcall(CRenderSettingsItem *__hidden this)
-#[doc(alias = "CRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b8bc() -> ! {
-    todo!("0xb8bc CRenderSettingsItem::~CRenderSettingsItem()")
-}
-
-// 0xb8d0 — __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
-// type: int()
-#[doc(alias = "__ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_b8d0() -> ! {
-    todo!("0xb8d0 __ZNK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
-}
-
-// 0xb8e0 — __ZThn32_N19CRenderSettingsItemD1Ev
-// type: void __fastcall(CRenderSettingsItem *__hidden this)
-#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b8e0() -> ! {
-    todo!("0xb8e0 `non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
-}
-
-// 0xb8e8 — __ZThn32_N19CRenderSettingsItemD0Ev
-// type: void __fastcall(CRenderSettingsItem *__hidden this)
-#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b8e8() -> ! {
-    todo!("0xb8e8 `non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
-}
-
-// 0xb900 — __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
-// type: int()
-#[doc(alias = "__ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")]
-pub fn stub_b900() -> ! {
-    todo!("0xb900 __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv")
-}
-
-// 0xb910 — __ZThn36_N19CRenderSettingsItemD1Ev
-// type: void __fastcall(CRenderSettingsItem *__hidden this)
-#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b910() -> ! {
-    todo!("0xb910 `non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
-}
-
-// 0xb918 — __ZThn36_N19CRenderSettingsItemD0Ev
-// type: void __fastcall(CRenderSettingsItem *__hidden this)
-#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
-pub fn stub_b918() -> ! {
-    todo!("0xb918 `non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
-}
-
-// 0xb930 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev
-// type: int()
-#[doc(alias = "__ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")]
-pub fn stub_b930() -> ! {
-    todo!("0xb930 __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev")
-}
-
-// 0xb934 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED1Ev
-// type: int()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
-pub fn stub_b934() -> ! {
-    todo!("0xb934 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")
-}
-
-// 0xb938 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEED0Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")]
-pub fn stub_b938() -> ! {
-    todo!("0xb938 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::~EnumDesc()")
-}
-
-// 0xb94c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(char const*)const")]
-pub fn stub_b94c() -> ! {
-    todo!("0xb94c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(char const*)const")
-}
-
-// 0xb97c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE6lookupERKNS0_7VariantE
+// 0x691a0 — __ZN4FMOD7Profile14registerModuleEPNS_13ProfileModuleE
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_b97c() -> ! {
-    todo!("0xb97c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::lookup(RBX::Reflection::Variant const&)const")
+#[doc(alias = "FMOD::Profile::registerModule(FMOD::ProfileModule *)")]
+pub fn stub_691a0() -> ! {
+    todo!("0x691a0 FMOD::Profile::registerModule(FMOD::ProfileModule *)")
 }
 
-// 0xb99c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE14convertToValueEmRNS0_7VariantE
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_b99c() -> ! {
-    todo!("0xb99c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+// 0x691c8 — __ZN4FMOD13ProfileModuleC2Ev
+// type: _DWORD *__fastcall(_DWORD *this)
+#[doc(alias = "FMOD::ProfileModule::ProfileModule(void)")]
+pub fn stub_691c8() -> ! {
+    todo!("0x691c8 FMOD::ProfileModule::ProfileModule(void)")
 }
 
-// 0xb9f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings9AASamplesEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_b9f8() -> ! {
-    todo!("0xb9f8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AASamples>::convertToString(unsigned long,std::string &)const")
+// 0x691fc — __ZN4FMOD13ProfileModule4initEv
+// type: int __fastcall(FMOD::ProfileModule *this)
+#[doc(alias = "FMOD::ProfileModule::init(void)")]
+pub fn stub_691fc() -> ! {
+    todo!("0x691fc FMOD::ProfileModule::init(void)")
 }
 
-// 0xbb3c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED1Ev
+// 0x69204 — __ZN4FMOD13ProfileModule7releaseEv
+// type: int __fastcall(FMOD::ProfileModule *this)
+#[doc(alias = "FMOD::ProfileModule::release(void)")]
+pub fn stub_69204() -> ! {
+    todo!("0x69204 FMOD::ProfileModule::release(void)")
+}
+
+// 0x6920c — __ZN4FMOD13ProfileModule6updateEPNS_7SystemIEj
 // type: int()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")]
-pub fn stub_bb3c() -> ! {
-    todo!("0xbb3c RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")
+#[doc(alias = "FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")]
+pub fn stub_6920c() -> ! {
+    todo!("0x6920c FMOD::ProfileModule::update(FMOD::SystemI *,unsigned int)")
 }
 
-// 0xbb40 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEED0Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")]
-pub fn stub_bb40() -> ! {
-    todo!("0xbb40 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::~EnumDesc()")
+// 0x69214 — __ZN4FMOD13ProfileClientC2Ev
+// type: char *__fastcall(FMOD::ProfileClient *this)
+#[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
+pub fn stub_69214() -> ! {
+    todo!("0x69214 FMOD::ProfileClient::ProfileClient(void)")
 }
 
-// 0xbb54 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(char const*)const")]
-pub fn stub_bb54() -> ! {
-    todo!("0xbb54 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(char const*)const")
+// 0x69280 — __ZN4FMOD13ProfileClientC1Ev
+// type: char *__fastcall(FMOD::ProfileClient *this)
+#[doc(alias = "FMOD::ProfileClient::ProfileClient(void)")]
+pub fn stub_69280() -> ! {
+    todo!("0x69280 FMOD::ProfileClient::ProfileClient(void)")
 }
 
-// 0xbb84 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE6lookupERKNS0_7VariantE
+// 0x69284 — __ZN4FMOD13ProfileClient15requestDataTypeEhhj
+// type: int __fastcall(FMOD::ProfileClient *this, int, int, unsigned int)
+#[doc(alias = "FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")]
+pub fn stub_69284() -> ! {
+    todo!("0x69284 FMOD::ProfileClient::requestDataType(unsigned char,unsigned char,unsigned int)")
+}
+
+// 0x69358 — __ZN4FMOD13ProfileClient9wantsDataEPNS_19ProfilePacketHeaderE
+// type: bool __fastcall(int, unsigned __int8 *)
+#[doc(alias = "FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")]
+pub fn stub_69358() -> ! {
+    todo!("0x69358 FMOD::ProfileClient::wantsData(FMOD::ProfilePacketHeader *)")
+}
+
+// 0x693f4 — __ZN4FMOD13ProfileClient8sendDataEv
+// type: int __fastcall(FMOD::ProfileClient *this)
+#[doc(alias = "FMOD::ProfileClient::sendData(void)")]
+pub fn stub_693f4() -> ! {
+    todo!("0x693f4 FMOD::ProfileClient::sendData(void)")
+}
+
+// 0x69480 — __ZN4FMOD13ProfileClient8readDataEv
+// type: int __fastcall(const void **this)
+#[doc(alias = "FMOD::ProfileClient::readData(void)")]
+pub fn stub_69480() -> ! {
+    todo!("0x69480 FMOD::ProfileClient::readData(void)")
+}
+
+// 0x695dc — __ZN4FMOD13ProfileClient6updateEj
+// type: int __fastcall(FMOD::ProfileClient *this, unsigned int)
+#[doc(alias = "FMOD::ProfileClient::update(unsigned int)")]
+pub fn stub_695dc() -> ! {
+    todo!("0x695dc FMOD::ProfileClient::update(unsigned int)")
+}
+
+// 0x69634 — __ZN4FMOD13ProfileClient9addPacketEPNS_19ProfilePacketHeaderE
+// type: int __fastcall(FMOD::ProfileClient *this, unsigned __int8 *__src)
+#[doc(alias = "FMOD::ProfileClient::addPacket(FMOD::ProfilePacketHeader *)")]
+pub fn stub_69634() -> ! {
+    todo!("0x69634 FMOD::ProfileClient::addPacket(FMOD::ProfilePacketHeader *)")
+}
+
+// 0x69820 — __ZN4FMOD13ProfileClient7releaseEv
+// type: int __fastcall(const void **this)
+#[doc(alias = "FMOD::ProfileClient::release(void)")]
+pub fn stub_69820() -> ! {
+    todo!("0x69820 FMOD::ProfileClient::release(void)")
+}
+
+// 0x6989c — __ZN4FMOD13ProfileClient4initEPv
+// type: int __fastcall(FMOD::ProfileClient *this, void *)
+#[doc(alias = "FMOD::ProfileClient::init(void *)")]
+pub fn stub_6989c() -> ! {
+    todo!("0x6989c FMOD::ProfileClient::init(void *)")
+}
+
+// 0x69910 — __ZN4FMOD7Profile17getMemoryUsedImplEPNS_13MemoryTrackerE
+// type: int __fastcall(FMOD::Profile *this, FMOD::MemoryTracker *)
+#[doc(alias = "FMOD::Profile::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
+pub fn stub_69910() -> ! {
+    todo!("0x69910 FMOD::Profile::getMemoryUsedImpl(FMOD::MemoryTracker *)")
+}
+
+// 0x69a78 — __ZN4FMOD7Profile7releaseEv
+// type: int __fastcall(FMOD::Profile *this)
+#[doc(alias = "FMOD::Profile::release(void)")]
+pub fn stub_69a78() -> ! {
+    todo!("0x69a78 FMOD::Profile::release(void)")
+}
+
+// 0x69be8 — __ZN4FMOD20FMOD_Profile_ReleaseEv
+// type: int __fastcall(FMOD *this)
+#[doc(alias = "FMOD::FMOD_Profile_Release(void)")]
+pub fn stub_69be8() -> ! {
+    todo!("0x69be8 FMOD::FMOD_Profile_Release(void)")
+}
+
+// 0x69c20 — __ZN4FMOD7Profile4initEt
+// type: int __fastcall(FMOD::Profile *this, unsigned __int16)
+#[doc(alias = "FMOD::Profile::init(unsigned short)")]
+pub fn stub_69c20() -> ! {
+    todo!("0x69c20 FMOD::Profile::init(unsigned short)")
+}
+
+// 0x69c9c — __ZN4FMOD19FMOD_Profile_CreateEt
+// type: int __fastcall(FMOD *this, unsigned __int16)
+#[doc(alias = "FMOD::FMOD_Profile_Create(unsigned short)")]
+pub fn stub_69c9c() -> ! {
+    todo!("0x69c9c FMOD::FMOD_Profile_Create(unsigned short)")
+}
+
+// 0x69d50 — __ZN4FMOD7Profile9addPacketEPNS_19ProfilePacketHeaderE
+// type: int __fastcall(_DWORD *, int)
+#[doc(alias = "FMOD::Profile::addPacket(FMOD::ProfilePacketHeader *)")]
+pub fn stub_69d50() -> ! {
+    todo!("0x69d50 FMOD::Profile::addPacket(FMOD::ProfilePacketHeader *)")
+}
+
+// 0x69e0c — __ZN4FMOD7Profile6updateEPNS_7SystemIEj
+// type: int __fastcall(FMOD::Profile *this, FMOD::SystemI *, unsigned int)
+#[doc(alias = "FMOD::Profile::update(FMOD::SystemI *,unsigned int)")]
+pub fn stub_69e0c() -> ! {
+    todo!("0x69e0c FMOD::Profile::update(FMOD::SystemI *,unsigned int)")
+}
+
+// 0x6a018 — __ZN4FMOD19FMOD_Profile_UpdateEPNS_7SystemIEj
+// type: int __fastcall(FMOD *this, FMOD::SystemI *, unsigned int)
+#[doc(alias = "FMOD::FMOD_Profile_Update(FMOD::SystemI *,unsigned int)")]
+pub fn stub_6a018() -> ! {
+    todo!("0x6a018 FMOD::FMOD_Profile_Update(FMOD::SystemI *,unsigned int)")
+}
+
+// 0x6a04c — __ZN4FMOD7Profile13getMemoryUsedEPNS_13MemoryTrackerE
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_bb84() -> ! {
-    todo!("0xbb84 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::lookup(RBX::Reflection::Variant const&)const")
+#[doc(alias = "FMOD::Profile::getMemoryUsed(FMOD::MemoryTracker *)")]
+pub fn stub_6a04c() -> ! {
+    todo!("0x6a04c FMOD::Profile::getMemoryUsed(FMOD::MemoryTracker *)")
 }
 
-// 0xbba4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE14convertToValueEmRNS0_7VariantE
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_bba4() -> ! {
-    todo!("0xbba4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+// 0x6a0a4 — __ZN7allpassC2Ev
+// type: void __fastcall(allpass *this)
+#[doc(alias = "allpass::allpass(void)")]
+pub fn stub_6a0a4() -> ! {
+    todo!("0x6a0a4 allpass::allpass(void)")
 }
 
-// 0xbc00 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12GraphicsModeEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_bc00() -> ! {
-    todo!("0xbc00 RBX::Reflection::EnumDesc<RBX::CRenderSettings::GraphicsMode>::convertToString(unsigned long,std::string &)const")
+// 0x6a0b0 — __ZN7allpassC1Ev
+// type: void __fastcall(allpass *this)
+#[doc(alias = "allpass::allpass(void)")]
+pub fn stub_6a0b0() -> ! {
+    todo!("0x6a0b0 allpass::allpass(void)")
 }
 
-// 0xbd44 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED1Ev
-// type: int()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
-pub fn stub_bd44() -> ! {
-    todo!("0xbd44 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")
+// 0x6a0b4 — __ZN7allpass9setbufferEPfi
+// type: int __fastcall(int this, float *, int)
+#[doc(alias = "allpass::setbuffer(float *,int)")]
+pub fn stub_6a0b4() -> ! {
+    todo!("0x6a0b4 allpass::setbuffer(float *,int)")
 }
 
-// 0xbd48 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEED0Ev
+// 0x6a0bc — __ZN7allpass4muteEv
+// type: int __fastcall(int this)
+#[doc(alias = "allpass::mute(void)")]
+pub fn stub_6a0bc() -> ! {
+    todo!("0x6a0bc allpass::mute(void)")
+}
+
+// 0x6a0f4 — __ZN7allpass11setfeedbackEf
+// type: float *__fastcall(float *this, float)
+#[doc(alias = "allpass::setfeedback(float)")]
+pub fn stub_6a0f4() -> ! {
+    todo!("0x6a0f4 allpass::setfeedback(float)")
+}
+
+// 0x6a0fc — __ZN7ASfxDsp11ClearInBuffEv
+// type: int __fastcall(int this)
+#[doc(alias = "ASfxDsp::ClearInBuff(void)")]
+pub fn stub_6a0fc() -> ! {
+    todo!("0x6a0fc ASfxDsp::ClearInBuff(void)")
+}
+
+// 0x6a144 — __ZN7ASfxDsp26SetLate_EarlyLateDelayTapsEffff
+// type: char *__fastcall(ASfxDsp *this, float, float32_t, float32_t, float32_t)
+#[doc(alias = "ASfxDsp::SetLate_EarlyLateDelayTaps(float,float,float,float)")]
+pub fn stub_6a144() -> ! {
+    todo!("0x6a144 ASfxDsp::SetLate_EarlyLateDelayTaps(float,float,float,float)")
+}
+
+// 0x6a1dc — __ZN7ASfxDsp16SetAllpassDelaysEf
+// type: _DWORD *__fastcall(_DWORD *this, float32_t)
+#[doc(alias = "ASfxDsp::SetAllpassDelays(float)")]
+pub fn stub_6a1dc() -> ! {
+    todo!("0x6a1dc ASfxDsp::SetAllpassDelays(float)")
+}
+
+// 0x6a23c — __ZN7ASfxDsp13SetEarlyDelayEfff
+// type: _DWORD *__fastcall(ASfxDsp *this, float, float32_t, float32_t)
+#[doc(alias = "ASfxDsp::SetEarlyDelay(float,float,float)")]
+pub fn stub_6a23c() -> ! {
+    todo!("0x6a23c ASfxDsp::SetEarlyDelay(float,float,float)")
+}
+
+// 0x6a2b4 — __ZN7ASfxDsp13SetLateDelaysEfffff
+// type: _DWORD *__fastcall(_DWORD *this, float32_t, float32_t, float32_t, float32_t, float32_t)
+#[doc(alias = "ASfxDsp::SetLateDelays(float,float,float,float,float)")]
+pub fn stub_6a2b4() -> ! {
+    todo!("0x6a2b4 ASfxDsp::SetLateDelays(float,float,float,float,float)")
+}
+
+// 0x6a344 — __ZN7ASfxDsp17ZeroWritePointersEv
+// type: _DWORD *__fastcall(_DWORD *this)
+#[doc(alias = "ASfxDsp::ZeroWritePointers(void)")]
+pub fn stub_6a344() -> ! {
+    todo!("0x6a344 ASfxDsp::ZeroWritePointers(void)")
+}
+
+// 0x6a37c — __ZN7ASfxDsp17BlockProcessInputEjiPff
+// type: void **__fastcall(void **this, unsigned int, int, float *__src, float)
+#[doc(alias = "ASfxDsp::BlockProcessInput(unsigned int,int,float *,float)")]
+pub fn stub_6a37c() -> ! {
+    todo!("0x6a37c ASfxDsp::BlockProcessInput(unsigned int,int,float *,float)")
+}
+
+// 0x6a648 — __ZN7ASfxDsp15DoDSPProcessingEPfS0_ijfft
+// type: unsigned int __fastcall(void **this, float *, float *, int, unsigned int, float, float32_t, unsigned __int16)
+#[doc(alias = "ASfxDsp::DoDSPProcessing(float *,float *,int,unsigned int,float,float,unsigned short)")]
+pub fn stub_6a648() -> ! {
+    todo!("0x6a648 ASfxDsp::DoDSPProcessing(float *,float *,int,unsigned int,float,float,unsigned short)")
+}
+
+// 0x6b360 — __ZN7ASfxDsp26ClearReverbInternalBuffersEv
+// type: void *__fastcall(ASfxDsp *this)
+#[doc(alias = "ASfxDsp::ClearReverbInternalBuffers(void)")]
+pub fn stub_6b360() -> ! {
+    todo!("0x6b360 ASfxDsp::ClearReverbInternalBuffers(void)")
+}
+
+// 0x6b4dc — __ZN7ASfxDsp12ClearBuffersEv
+// type: void *__fastcall(ASfxDsp *this)
+#[doc(alias = "ASfxDsp::ClearBuffers(void)")]
+pub fn stub_6b4dc() -> ! {
+    todo!("0x6b4dc ASfxDsp::ClearBuffers(void)")
+}
+
+// 0x6b4f8 — __ZN7ASfxDsp24DeallocateEarlyLateDelayEv
+// type: int __fastcall(int this)
+#[doc(alias = "ASfxDsp::DeallocateEarlyLateDelay(void)")]
+pub fn stub_6b4f8() -> ! {
+    todo!("0x6b4f8 ASfxDsp::DeallocateEarlyLateDelay(void)")
+}
+
+// 0x6b544 — __ZN7ASfxDsp20DeallocateEarlyDelayEv
+// type: int __fastcall(int this)
+#[doc(alias = "ASfxDsp::DeallocateEarlyDelay(void)")]
+pub fn stub_6b544() -> ! {
+    todo!("0x6b544 ASfxDsp::DeallocateEarlyDelay(void)")
+}
+
+// 0x6b590 — __ZN7ASfxDsp23DeallocateAllpassDelaysEv
+// type: int __fastcall(int this)
+#[doc(alias = "ASfxDsp::DeallocateAllpassDelays(void)")]
+pub fn stub_6b590() -> ! {
+    todo!("0x6b590 ASfxDsp::DeallocateAllpassDelays(void)")
+}
+
+// 0x6b5f0 — __ZN7ASfxDsp20DeallocateLateDelaysEv
+// type: int __fastcall(int this)
+#[doc(alias = "ASfxDsp::DeallocateLateDelays(void)")]
+pub fn stub_6b5f0() -> ! {
+    todo!("0x6b5f0 ASfxDsp::DeallocateLateDelays(void)")
+}
+
+// 0x6b650 — __ZN7ASfxDsp5closeEv
+// type: int __fastcall(void **this)
+#[doc(alias = "ASfxDsp::close(void)")]
+pub fn stub_6b650() -> ! {
+    todo!("0x6b650 ASfxDsp::close(void)")
+}
+
+// 0x6b6c0 — __ZN7ASfxDsp16UpdateBufferSizeEi
+// type: unsigned int __fastcall(ASfxDsp *this, int)
+#[doc(alias = "ASfxDsp::UpdateBufferSize(int)")]
+pub fn stub_6b6c0() -> ! {
+    todo!("0x6b6c0 ASfxDsp::UpdateBufferSize(int)")
+}
+
+// 0x6b77c — __ZN7ASfxDsp12NextPowerOf2Ei
+// type: int __fastcall(ASfxDsp *this, int)
+#[doc(alias = "ASfxDsp::NextPowerOf2(int)")]
+pub fn stub_6b77c() -> ! {
+    todo!("0x6b77c ASfxDsp::NextPowerOf2(int)")
+}
+
+// 0x6b7d4 — __ZN7ASfxDsp18AllocateEarlyDelayEff
+// type: int __fastcall(ASfxDsp *this, float32_t, float32_t)
+#[doc(alias = "ASfxDsp::AllocateEarlyDelay(float,float)")]
+pub fn stub_6b7d4() -> ! {
+    todo!("0x6b7d4 ASfxDsp::AllocateEarlyDelay(float,float)")
+}
+
+// 0x6b864 — __ZN7ASfxDsp21AllocateAllpassDelaysEiPff
+// type: int __fastcall(ASfxDsp *this, int, float *, float32_t)
+#[doc(alias = "ASfxDsp::AllocateAllpassDelays(int,float *,float)")]
+pub fn stub_6b864() -> ! {
+    todo!("0x6b864 ASfxDsp::AllocateAllpassDelays(int,float *,float)")
+}
+
+// 0x6b944 — __ZN7ASfxDsp22AllocateEarlyLateDelayEPff
+// type: int __fastcall(ASfxDsp *this, float *, float32_t)
+#[doc(alias = "ASfxDsp::AllocateEarlyLateDelay(float *,float)")]
+pub fn stub_6b944() -> ! {
+    todo!("0x6b944 ASfxDsp::AllocateEarlyLateDelay(float *,float)")
+}
+
+// 0x6b9e8 — __ZN7ASfxDsp18AllocateLateDelaysEiPff
+// type: int __fastcall(ASfxDsp *this, int, float *, float32_t)
+#[doc(alias = "ASfxDsp::AllocateLateDelays(int,float *,float)")]
+pub fn stub_6b9e8() -> ! {
+    todo!("0x6b9e8 ASfxDsp::AllocateLateDelays(int,float *,float)")
+}
+
+// 0x6bac8 — __ZN7ASfxDsp4initEf
+// type: int __fastcall(ASfxDsp *this, float32_t)
+#[doc(alias = "ASfxDsp::init(float)")]
+pub fn stub_6bac8() -> ! {
+    todo!("0x6bac8 ASfxDsp::init(float)")
+}
+
+// 0x6bdcc — _FLAC__bitmath_ilog2
+// type: int __fastcall(unsigned int)
+#[doc(alias = "_FLAC__bitmath_ilog2")]
+pub fn stub_6bdcc() -> ! {
+    todo!("0x6bdcc _FLAC__bitmath_ilog2")
+}
+
+// 0x6bdf0 — _crc16_update_word_
+// type: int __fastcall(int result, unsigned int)
+#[doc(alias = "_crc16_update_word_")]
+pub fn stub_6bdf0() -> ! {
+    todo!("0x6bdf0 _crc16_update_word_")
+}
+
+// 0x6bf10 — _FLAC__bitreader_clear
+// type: int __fastcall(_DWORD *)
+#[doc(alias = "_FLAC__bitreader_clear")]
+pub fn stub_6bf10() -> ! {
+    todo!("0x6bf10 _FLAC__bitreader_clear")
+}
+
+// 0x6bf2c — _FLAC__bitreader_reset_read_crc16
+// type: _DWORD *__fastcall(_DWORD *result, unsigned __int16)
+#[doc(alias = "_FLAC__bitreader_reset_read_crc16")]
+pub fn stub_6bf2c() -> ! {
+    todo!("0x6bf2c _FLAC__bitreader_reset_read_crc16")
+}
+
+// 0x6bf40 — _FLAC__bitreader_get_read_crc16
+// type: unsigned int __fastcall(_DWORD *)
+#[doc(alias = "_FLAC__bitreader_get_read_crc16")]
+pub fn stub_6bf40() -> ! {
+    todo!("0x6bf40 _FLAC__bitreader_get_read_crc16")
+}
+
+// 0x6bfc8 — _FLAC__bitreader_is_consumed_byte_aligned
+// type: bool __fastcall(int)
+#[doc(alias = "_FLAC__bitreader_is_consumed_byte_aligned")]
+pub fn stub_6bfc8() -> ! {
+    todo!("0x6bfc8 _FLAC__bitreader_is_consumed_byte_aligned")
+}
+
+// 0x6bfdc — _FLAC__bitreader_bits_left_for_byte_alignment
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")]
-pub fn stub_bd48() -> ! {
-    todo!("0xbd48 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::~EnumDesc()")
+#[doc(alias = "_FLAC__bitreader_bits_left_for_byte_alignment")]
+pub fn stub_6bfdc() -> ! {
+    todo!("0x6bfdc _FLAC__bitreader_bits_left_for_byte_alignment")
 }
 
-// 0xbd5c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(char const*)const")]
-pub fn stub_bd5c() -> ! {
-    todo!("0xbd5c RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(char const*)const")
+// 0x6bfec — _FLAC__bitreader_get_input_bits_unconsumed
+// type: int __fastcall(_DWORD *)
+#[doc(alias = "_FLAC__bitreader_get_input_bits_unconsumed")]
+pub fn stub_6bfec() -> ! {
+    todo!("0x6bfec _FLAC__bitreader_get_input_bits_unconsumed")
 }
 
-// 0xbd8c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE6lookupERKNS0_7VariantE
+// 0x6c014 — _FLAC__bitreader_free
+// type: void __fastcall(int)
+#[doc(alias = "_FLAC__bitreader_free")]
+pub fn stub_6c014() -> ! {
+    todo!("0x6c014 _FLAC__bitreader_free")
+}
+
+// 0x6c058 — _FLAC__bitreader_delete
+// type: void __fastcall(void *)
+#[doc(alias = "_FLAC__bitreader_delete")]
+pub fn stub_6c058() -> ! {
+    todo!("0x6c058 _FLAC__bitreader_delete")
+}
+
+// 0x6c074 — _FLAC__bitreader_init
+// type: int __fastcall(int, int *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "_FLAC__bitreader_init")]
+pub fn stub_6c074() -> ! {
+    todo!("0x6c074 _FLAC__bitreader_init")
+}
+
+// 0x6c104 — _FLAC__bitreader_new
+// type: void *()
+#[doc(alias = "_FLAC__bitreader_new")]
+pub fn stub_6c104() -> ! {
+    todo!("0x6c104 _FLAC__bitreader_new")
+}
+
+// 0x6c11c — _bitreader_read_from_client_
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_bd8c() -> ! {
-    todo!("0xbd8c RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::lookup(RBX::Reflection::Variant const&)const")
+#[doc(alias = "_bitreader_read_from_client_")]
+pub fn stub_6c11c() -> ! {
+    todo!("0x6c11c _bitreader_read_from_client_")
 }
 
-// 0xbdac — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE14convertToValueEmRNS0_7VariantE
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_bdac() -> ! {
-    todo!("0xbdac RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+// 0x6c28c — _FLAC__bitreader_read_rice_signed_block
+// type: int __fastcall(int, _DWORD *, unsigned int *, int, unsigned int)
+#[doc(alias = "_FLAC__bitreader_read_rice_signed_block")]
+pub fn stub_6c28c() -> ! {
+    todo!("0x6c28c _FLAC__bitreader_read_rice_signed_block")
 }
 
-// 0xbe08 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings20FrameRateManagerModeEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_be08() -> ! {
-    todo!("0xbe08 RBX::Reflection::EnumDesc<RBX::CRenderSettings::FrameRateManagerMode>::convertToString(unsigned long,std::string &)const")
+// 0x6c688 — _FLAC__bitreader_read_unary_unsigned
+// type: int __fastcall(int, _DWORD *, _DWORD *)
+#[doc(alias = "_FLAC__bitreader_read_unary_unsigned")]
+pub fn stub_6c688() -> ! {
+    todo!("0x6c688 _FLAC__bitreader_read_unary_unsigned")
 }
 
-// 0xbf4c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED1Ev
-// type: int()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
-pub fn stub_bf4c() -> ! {
-    todo!("0xbf4c RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")
+// 0x6c8d0 — _FLAC__bitreader_read_raw_uint32
+// type: int __fastcall(int, _DWORD *, _DWORD *, unsigned int)
+#[doc(alias = "_FLAC__bitreader_read_raw_uint32")]
+pub fn stub_6c8d0() -> ! {
+    todo!("0x6c8d0 _FLAC__bitreader_read_raw_uint32")
 }
 
-// 0xbf50 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEED0Ev
+// 0x6ca70 — _FLAC__bitreader_read_utf8_uint64
+// type: int __fastcall(int, _DWORD *, int, int, int *)
+#[doc(alias = "_FLAC__bitreader_read_utf8_uint64")]
+pub fn stub_6ca70() -> ! {
+    todo!("0x6ca70 _FLAC__bitreader_read_utf8_uint64")
+}
+
+// 0x6cc88 — _FLAC__bitreader_read_utf8_uint32
+// type: int __fastcall(int, _DWORD *, int *, int, int *)
+#[doc(alias = "_FLAC__bitreader_read_utf8_uint32")]
+pub fn stub_6cc88() -> ! {
+    todo!("0x6cc88 _FLAC__bitreader_read_utf8_uint32")
+}
+
+// 0x6cdf4 — _FLAC__bitreader_read_byte_block_aligned_no_crc
+// type: int __fastcall(int, _DWORD *, _BYTE *, unsigned int)
+#[doc(alias = "_FLAC__bitreader_read_byte_block_aligned_no_crc")]
+pub fn stub_6cdf4() -> ! {
+    todo!("0x6cdf4 _FLAC__bitreader_read_byte_block_aligned_no_crc")
+}
+
+// 0x6cf18 — _FLAC__bitreader_skip_byte_block_aligned_no_crc
+// type: int __fastcall(int, _DWORD *, unsigned int)
+#[doc(alias = "_FLAC__bitreader_skip_byte_block_aligned_no_crc")]
+pub fn stub_6cf18() -> ! {
+    todo!("0x6cf18 _FLAC__bitreader_skip_byte_block_aligned_no_crc")
+}
+
+// 0x6cff0 — _FLAC__bitreader_skip_bits_no_crc
+// type: bool __fastcall(int, _DWORD *, unsigned int)
+#[doc(alias = "_FLAC__bitreader_skip_bits_no_crc")]
+pub fn stub_6cff0() -> ! {
+    todo!("0x6cff0 _FLAC__bitreader_skip_bits_no_crc")
+}
+
+// 0x6d0b8 — _FLAC__bitreader_read_uint32_little_endian
+// type: int __fastcall(int, _DWORD *, _DWORD *)
+#[doc(alias = "_FLAC__bitreader_read_uint32_little_endian")]
+pub fn stub_6d0b8() -> ! {
+    todo!("0x6d0b8 _FLAC__bitreader_read_uint32_little_endian")
+}
+
+// 0x6d17c — _FLAC__bitreader_read_raw_uint64
+// type: int __fastcall(int, _DWORD *, _DWORD *, unsigned int)
+#[doc(alias = "_FLAC__bitreader_read_raw_uint64")]
+pub fn stub_6d17c() -> ! {
+    todo!("0x6d17c _FLAC__bitreader_read_raw_uint64")
+}
+
+// 0x6d234 — _FLAC__bitreader_read_raw_int32
+// type: int __fastcall(int, _DWORD *, int *, unsigned int)
+#[doc(alias = "_FLAC__bitreader_read_raw_int32")]
+pub fn stub_6d234() -> ! {
+    todo!("0x6d234 _FLAC__bitreader_read_raw_int32")
+}
+
+// 0x6d26c — _FMOD_oggpack_look
+// type: int __fastcall(int *, int)
+#[doc(alias = "_FMOD_oggpack_look")]
+pub fn stub_6d26c() -> ! {
+    todo!("0x6d26c _FMOD_oggpack_look")
+}
+
+// 0x6d318 — _FMOD_oggpack_adv
+// type: _DWORD *__fastcall(_DWORD *result, int)
+#[doc(alias = "_FMOD_oggpack_adv")]
+pub fn stub_6d318() -> ! {
+    todo!("0x6d318 _FMOD_oggpack_adv")
+}
+
+// 0x6d354 — _FMOD_oggpack_read
+// type: int __fastcall(int *, int)
+#[doc(alias = "_FMOD_oggpack_read")]
+pub fn stub_6d354() -> ! {
+    todo!("0x6d354 _FMOD_oggpack_read")
+}
+
+// 0x6d434 — _FMOD_oggpack_bytes
+// type: int __fastcall(int *)
+#[doc(alias = "_FMOD_oggpack_bytes")]
+pub fn stub_6d434() -> ! {
+    todo!("0x6d434 _FMOD_oggpack_bytes")
+}
+
+// 0x6d44c — _FMOD_oggpack_readinit
+// type: _DWORD *__fastcall(_DWORD *result, int, int)
+#[doc(alias = "_FMOD_oggpack_readinit")]
+pub fn stub_6d44c() -> ! {
+    todo!("0x6d44c _FMOD_oggpack_readinit")
+}
+
+// 0x6d47c — _ilog2
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")]
-pub fn stub_bf50() -> ! {
-    todo!("0xbf50 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::~EnumDesc()")
+#[doc(alias = "_ilog2")]
+pub fn stub_6d47c() -> ! {
+    todo!("0x6d47c _ilog2")
 }
 
-// 0xbf64 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(char const*)const")]
-pub fn stub_bf64() -> ! {
-    todo!("0xbf64 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(char const*)const")
+// 0x6d4b4 — _FMOD_vorbis_synthesis_restart
+// type: int __fastcall(int **)
+#[doc(alias = "_FMOD_vorbis_synthesis_restart")]
+pub fn stub_6d4b4() -> ! {
+    todo!("0x6d4b4 _FMOD_vorbis_synthesis_restart")
 }
 
-// 0xbf94 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE6lookupERKNS0_7VariantE
+// 0x6d538 — _FMOD_vorbis_synthesis_pcmout
+// type: int __fastcall(int *, _DWORD *)
+#[doc(alias = "_FMOD_vorbis_synthesis_pcmout")]
+pub fn stub_6d538() -> ! {
+    todo!("0x6d538 _FMOD_vorbis_synthesis_pcmout")
+}
+
+// 0x6d5c8 — _FMOD_vorbis_synthesis_read
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_bf94() -> ! {
-    todo!("0xbf94 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::lookup(RBX::Reflection::Variant const&)const")
+#[doc(alias = "_FMOD_vorbis_synthesis_read")]
+pub fn stub_6d5c8() -> ! {
+    todo!("0x6d5c8 _FMOD_vorbis_synthesis_read")
 }
 
-// 0xbfb4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE14convertToValueEmRNS0_7VariantE
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_bfb4() -> ! {
-    todo!("0xbfb4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
+// 0x6d600 — _FMOD_vorbis_synthesis_blockin
+// type: int __fastcall(int *, int)
+#[doc(alias = "_FMOD_vorbis_synthesis_blockin")]
+pub fn stub_6d600() -> ! {
+    todo!("0x6d600 _FMOD_vorbis_synthesis_blockin")
 }
 
-// 0xc010 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c010() -> ! {
-    todo!("0xc010 RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(unsigned long,std::string &)const")
+// 0x6dee8 — __FMOD_vorbis_block_alloc
+// type: int __fastcall(int, _DWORD *, int)
+#[doc(alias = "__FMOD_vorbis_block_alloc")]
+pub fn stub_6dee8() -> ! {
+    todo!("0x6dee8 __FMOD_vorbis_block_alloc")
 }
 
-// 0xc154 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED1Ev
-// type: int()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")]
-pub fn stub_c154() -> ! {
-    todo!("0xc154 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")
+// 0x6df94 — __FMOD_vorbis_block_ripcord
+// type: int __fastcall(int, _DWORD *)
+#[doc(alias = "__FMOD_vorbis_block_ripcord")]
+pub fn stub_6df94() -> ! {
+    todo!("0x6df94 __FMOD_vorbis_block_ripcord")
 }
 
-// 0xc158 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED0Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")]
-pub fn stub_c158() -> ! {
-    todo!("0xc158 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")
+// 0x6e044 — _FMOD_vorbis_block_init
+// type: int __fastcall(int, int, void *__b)
+#[doc(alias = "_FMOD_vorbis_block_init")]
+pub fn stub_6e044() -> ! {
+    todo!("0x6e044 _FMOD_vorbis_block_init")
 }
 
-// 0xc16c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::lookup(char const*)const")]
-pub fn stub_c16c() -> ! {
-    todo!("0xc16c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::lookup(char const*)const")
+// 0x6e078 — _FMOD_vorbis_dsp_clear
+// type: void *__fastcall(void *result, int *, int, int)
+#[doc(alias = "_FMOD_vorbis_dsp_clear")]
+pub fn stub_6e078() -> ! {
+    todo!("0x6e078 _FMOD_vorbis_dsp_clear")
 }
 
-// 0xc19c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE6lookupERKNS0_7VariantE
+// 0x6e2c4 — _FMOD_vorbis_synthesis_init
+// type: int __fastcall(void *, int *__b, int, int)
+#[doc(alias = "_FMOD_vorbis_synthesis_init")]
+pub fn stub_6e2c4() -> ! {
+    todo!("0x6e2c4 _FMOD_vorbis_synthesis_init")
+}
+
+// 0x6e6c0 — _FMOD_vorbis_block_clear
+// type: int __fastcall(int, _DWORD *)
+#[doc(alias = "_FMOD_vorbis_block_clear")]
+pub fn stub_6e6c0() -> ! {
+    todo!("0x6e6c0 _FMOD_vorbis_block_clear")
+}
+
+// 0x6e708 — _bitreverse
+// type: unsigned int __fastcall(int)
+#[doc(alias = "_bitreverse")]
+pub fn stub_6e708() -> ! {
+    todo!("0x6e708 _bitreverse")
+}
+
+// 0x6e778 — _FMOD_vorbis_book_decode
+// type: int __fastcall(int *, int *)
+#[doc(alias = "_FMOD_vorbis_book_decode")]
+pub fn stub_6e778() -> ! {
+    todo!("0x6e778 _FMOD_vorbis_book_decode")
+}
+
+// 0x6e8c4 — _FMOD_vorbis_staticbook_unpack
+// type: int __fastcall(int, int *, int *)
+#[doc(alias = "_FMOD_vorbis_staticbook_unpack")]
+pub fn stub_6e8c4() -> ! {
+    todo!("0x6e8c4 _FMOD_vorbis_staticbook_unpack")
+}
+
+// 0x6ec78 — _FMOD_vorbis_book_decodevv_add
+// type: int __fastcall(int *, int, int, int, int *, int)
+#[doc(alias = "_FMOD_vorbis_book_decodevv_add")]
+pub fn stub_6ec78() -> ! {
+    todo!("0x6ec78 _FMOD_vorbis_book_decodevv_add")
+}
+
+// 0x6ee98 — _FMOD_vorbis_book_decodev_add
+// type: int __fastcall(int *, int, int *, int)
+#[doc(alias = "_FMOD_vorbis_book_decodev_add")]
+pub fn stub_6ee98() -> ! {
+    todo!("0x6ee98 _FMOD_vorbis_book_decodev_add")
+}
+
+// 0x6f37c — _FMOD_vorbis_book_decodevs_add
+// type: int __fastcall(int *, __int32 *, int *, int)
+#[doc(alias = "_FMOD_vorbis_book_decodevs_add")]
+pub fn stub_6f37c() -> ! {
+    todo!("0x6f37c _FMOD_vorbis_book_decodevs_add")
+}
+
+// 0x6f5ec — __ZN4combC2Ev
+// type: void __fastcall(comb *this)
+#[doc(alias = "comb::comb(void)")]
+pub fn stub_6f5ec() -> ! {
+    todo!("0x6f5ec comb::comb(void)")
+}
+
+// 0x6f600 — __ZN4combC1Ev
+// type: void __fastcall(comb *this)
+#[doc(alias = "comb::comb(void)")]
+pub fn stub_6f600() -> ! {
+    todo!("0x6f600 comb::comb(void)")
+}
+
+// 0x6f604 — __ZN4comb9setbufferEPfi
+// type: int __fastcall(int this, float *, int)
+#[doc(alias = "comb::setbuffer(float *,int)")]
+pub fn stub_6f604() -> ! {
+    todo!("0x6f604 comb::setbuffer(float *,int)")
+}
+
+// 0x6f610 — __ZN4comb4muteEv
+// type: int __fastcall(int this)
+#[doc(alias = "comb::mute(void)")]
+pub fn stub_6f610() -> ! {
+    todo!("0x6f610 comb::mute(void)")
+}
+
+// 0x6f648 — __ZN4comb7setdampEf
+// type: int __fastcall(int this, float)
+#[doc(alias = "comb::setdamp(float)")]
+pub fn stub_6f648() -> ! {
+    todo!("0x6f648 comb::setdamp(float)")
+}
+
+// 0x6f660 — __ZN4comb11setfeedbackEf
+// type: float *__fastcall(float *this, float)
+#[doc(alias = "comb::setfeedback(float)")]
+pub fn stub_6f660() -> ! {
+    todo!("0x6f660 comb::setfeedback(float)")
+}
+
+// 0x6f668 — _FLAC__cpu_info
+// type: _DWORD *__fastcall(_DWORD *result)
+#[doc(alias = "_FLAC__cpu_info")]
+pub fn stub_6f668() -> ! {
+    todo!("0x6f668 _FLAC__cpu_info")
+}
+
+// 0x6f67c — _FLAC__crc8
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_c19c() -> ! {
-    todo!("0xc19c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::lookup(RBX::Reflection::Variant const&)const")
-}
-
-// 0xc1bc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueEmRNS0_7VariantE
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_c1bc() -> ! {
-    todo!("0xc1bc RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
-}
-
-// 0xc218 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c218() -> ! {
-    todo!("0xc218 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(unsigned long,std::string &)const")
-}
-
-// 0xc35c — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED1Ev
-// type: int()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")]
-pub fn stub_c35c() -> ! {
-    todo!("0xc35c RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")
-}
-
-// 0xc360 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED0Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")]
-pub fn stub_c360() -> ! {
-    todo!("0xc360 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")
-}
-
-// 0xc374 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::lookup(char const*)const")]
-pub fn stub_c374() -> ! {
-    todo!("0xc374 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::lookup(char const*)const")
-}
-
-// 0xc3a4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE6lookupERKNS0_7VariantE
-// type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_c3a4() -> ! {
-    todo!("0xc3a4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::lookup(RBX::Reflection::Variant const&)const")
-}
-
-// 0xc3c4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueEmRNS0_7VariantE
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_c3c4() -> ! {
-    todo!("0xc3c4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
-}
-
-// 0xc420 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c420() -> ! {
-    todo!("0xc420 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(unsigned long,std::string &)const")
-}
-
-// 0xc564 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED1Ev
-// type: int()
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
-pub fn stub_c564() -> ! {
-    todo!("0xc564 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")
-}
-
-// 0xc568 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED0Ev
-// type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
-pub fn stub_c568() -> ! {
-    todo!("0xc568 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")
-}
-
-// 0xc57c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupEPKc
-// type: int __fastcall(int, const char *const *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(char const*)const")]
-pub fn stub_c57c() -> ! {
-    todo!("0xc57c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(char const*)const")
-}
-
-// 0xc5ac — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE6lookupERKNS0_7VariantE
-// type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(RBX::Reflection::Variant const&)const")]
-pub fn stub_c5ac() -> ! {
-    todo!("0xc5ac RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::lookup(RBX::Reflection::Variant const&)const")
-}
-
-// 0xc5cc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueEmRNS0_7VariantE
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")]
-pub fn stub_c5cc() -> ! {
-    todo!("0xc5cc RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(unsigned long,RBX::Reflection::Variant &)const")
-}
-
-// 0xc628 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringEmRSs
-// type: int __fastcall(int, unsigned int, std::string *, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(unsigned long,std::string &)const")]
-pub fn stub_c628() -> ! {
-    todo!("0xc628 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(unsigned long,std::string &)const")
-}
-
-// 0xc76c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE15convertToStringERKS3_
-// type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(RBX::CRenderSettings::ResolutionPreset const&)const")]
-pub fn stub_c76c() -> ! {
-    todo!("0xc76c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToString(RBX::CRenderSettings::ResolutionPreset const&)const")
-}
-
-// 0xc90c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16ResolutionPresetEEERS3_RKT_
-// type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
-#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ResolutionPreset>(RBX::CRenderSettings::ResolutionPreset const&)")]
-pub fn stub_c90c() -> ! {
-    todo!("0xc90c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ResolutionPreset>(RBX::CRenderSettings::ResolutionPreset const&)")
-}
-
-// 0xc95c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE9singletonEv
-// type: _DWORD *()
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::singleton(void)")]
-pub fn stub_c95c() -> ! {
-    todo!("0xc95c rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::singleton(void)")
-}
-
-// 0xc9c8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE14construct_funcEPKcPc
-// type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::construct_func(char const*,char *)")]
-pub fn stub_c9c8() -> ! {
-    todo!("0xc9c8 rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::construct_func(char const*,char *)")
-}
-
-// 0xc9d4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16ResolutionPresetEE13destruct_funcEPc
-// type: void()
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::destruct_func(char *)")]
-pub fn stub_c9d4() -> ! {
-    todo!("0xc9d4 rbx::implementation::typed_holder<RBX::CRenderSettings::ResolutionPreset>::destruct_func(char *)")
-}
-
-// 0xc9d8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE13convertToItemERKS3_
-// type: int __fastcall(int, int *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToItem(RBX::CRenderSettings::ResolutionPreset const&)const")]
-pub fn stub_c9d8() -> ! {
-    todo!("0xc9d8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToItem(RBX::CRenderSettings::ResolutionPreset const&)const")
-}
-
-// 0xcaa4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings16ResolutionPresetENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: char ****__fastcall(char ****)
-#[doc(alias = "RBX::CRenderSettings::ResolutionPreset const& rbx::any_cast<RBX::CRenderSettings::ResolutionPreset const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_caa4() -> ! {
-    todo!("0xcaa4 RBX::CRenderSettings::ResolutionPreset const& rbx::any_cast<RBX::CRenderSettings::ResolutionPreset const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
-}
-
-// 0xcb94 — __ZN5boost16exception_detail12refcount_ptrINS0_20error_info_containerEED2Ev
-// type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::~refcount_ptr()")]
-pub fn stub_cb94() -> ! {
-    todo!("0xcb94 boost::exception_detail::refcount_ptr<boost::exception_detail::error_info_container>::~refcount_ptr()")
-}
-
-// 0xcc34 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEE14convertToValueERKNS_4NameERS3_
-// type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ResolutionPreset&)const")]
-pub fn stub_cc34() -> ! {
-    todo!("0xcc34 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ResolutionPreset&)const")
-}
-
-// 0xccb0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings16ResolutionPresetEED2Ev
-// type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")]
-pub fn stub_ccb0() -> ! {
-    todo!("0xccb0 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ResolutionPreset>::~EnumDesc()")
-}
-
-// 0xcd4c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE15convertToStringERKS3_
-// type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(RBX::CRenderSettings::QualityLevel const&)const")]
-pub fn stub_cd4c() -> ! {
-    todo!("0xcd4c RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToString(RBX::CRenderSettings::QualityLevel const&)const")
-}
-
-// 0xceec — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings12QualityLevelEEERS3_RKT_
-// type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
-#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::QualityLevel>(RBX::CRenderSettings::QualityLevel const&)")]
-pub fn stub_ceec() -> ! {
-    todo!("0xceec rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::QualityLevel>(RBX::CRenderSettings::QualityLevel const&)")
-}
-
-// 0xcf3c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE9singletonEv
-// type: _DWORD *()
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::singleton(void)")]
-pub fn stub_cf3c() -> ! {
-    todo!("0xcf3c rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::singleton(void)")
-}
-
-// 0xcfa8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE14construct_funcEPKcPc
-// type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::construct_func(char const*,char *)")]
-pub fn stub_cfa8() -> ! {
-    todo!("0xcfa8 rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::construct_func(char const*,char *)")
-}
-
-// 0xcfb4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings12QualityLevelEE13destruct_funcEPc
-// type: void()
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::destruct_func(char *)")]
-pub fn stub_cfb4() -> ! {
-    todo!("0xcfb4 rbx::implementation::typed_holder<RBX::CRenderSettings::QualityLevel>::destruct_func(char *)")
-}
-
-// 0xcfb8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE13convertToItemERKS3_
-// type: int __fastcall(int, int *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToItem(RBX::CRenderSettings::QualityLevel const&)const")]
-pub fn stub_cfb8() -> ! {
-    todo!("0xcfb8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToItem(RBX::CRenderSettings::QualityLevel const&)const")
-}
-
-// 0xd084 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings12QualityLevelENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: char ****__fastcall(char ****)
-#[doc(alias = "RBX::CRenderSettings::QualityLevel const& rbx::any_cast<RBX::CRenderSettings::QualityLevel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_d084() -> ! {
-    todo!("0xd084 RBX::CRenderSettings::QualityLevel const& rbx::any_cast<RBX::CRenderSettings::QualityLevel const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
-}
-
-// 0xd174 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEE14convertToValueERKNS_4NameERS3_
-// type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(RBX::Name const&,RBX::CRenderSettings::QualityLevel&)const")]
-pub fn stub_d174() -> ! {
-    todo!("0xd174 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::convertToValue(RBX::Name const&,RBX::CRenderSettings::QualityLevel&)const")
-}
-
-// 0xd1f0 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings12QualityLevelEED2Ev
-// type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")]
-pub fn stub_d1f0() -> ! {
-    todo!("0xd1f0 RBX::Reflection::EnumDesc<RBX::CRenderSettings::QualityLevel>::~EnumDesc()")
-}
-
-// 0xd28c — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE15convertToStringERKS3_
-// type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(RBX::CRenderSettings::ShadowMode const&)const")]
-pub fn stub_d28c() -> ! {
-    todo!("0xd28c RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToString(RBX::CRenderSettings::ShadowMode const&)const")
-}
-
-// 0xd42c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings10ShadowModeEEERS3_RKT_
-// type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
-#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ShadowMode>(RBX::CRenderSettings::ShadowMode const&)")]
-pub fn stub_d42c() -> ! {
-    todo!("0xd42c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::ShadowMode>(RBX::CRenderSettings::ShadowMode const&)")
-}
-
-// 0xd47c — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE9singletonEv
-// type: _DWORD *()
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::singleton(void)")]
-pub fn stub_d47c() -> ! {
-    todo!("0xd47c rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::singleton(void)")
-}
-
-// 0xd4e8 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE14construct_funcEPKcPc
-// type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::construct_func(char const*,char *)")]
-pub fn stub_d4e8() -> ! {
-    todo!("0xd4e8 rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::construct_func(char const*,char *)")
-}
-
-// 0xd4f4 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings10ShadowModeEE13destruct_funcEPc
-// type: void()
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::destruct_func(char *)")]
-pub fn stub_d4f4() -> ! {
-    todo!("0xd4f4 rbx::implementation::typed_holder<RBX::CRenderSettings::ShadowMode>::destruct_func(char *)")
-}
-
-// 0xd4f8 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE13convertToItemERKS3_
-// type: int __fastcall(int, int *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToItem(RBX::CRenderSettings::ShadowMode const&)const")]
-pub fn stub_d4f8() -> ! {
-    todo!("0xd4f8 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToItem(RBX::CRenderSettings::ShadowMode const&)const")
-}
-
-// 0xd5c4 — __ZN3rbx8any_castIRKN3RBX15CRenderSettings10ShadowModeENS1_7Region3EEET_RNS_13placement_anyIT0_EE
-// type: char ****__fastcall(char ****)
-#[doc(alias = "RBX::CRenderSettings::ShadowMode const& rbx::any_cast<RBX::CRenderSettings::ShadowMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")]
-pub fn stub_d5c4() -> ! {
-    todo!("0xd5c4 RBX::CRenderSettings::ShadowMode const& rbx::any_cast<RBX::CRenderSettings::ShadowMode const&,RBX::Region3>(rbx::placement_any<RBX::Region3> &)")
-}
-
-// 0xd6b4 — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEE14convertToValueERKNS_4NameERS3_
-// type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ShadowMode&)const")]
-pub fn stub_d6b4() -> ! {
-    todo!("0xd6b4 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::convertToValue(RBX::Name const&,RBX::CRenderSettings::ShadowMode&)const")
-}
-
-// 0xd730 — __ZN3RBX10Reflection8EnumDescINS_15CRenderSettings10ShadowModeEED2Ev
-// type: void __fastcall(RBX::Reflection::EnumDescriptor *)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")]
-pub fn stub_d730() -> ! {
-    todo!("0xd730 RBX::Reflection::EnumDesc<RBX::CRenderSettings::ShadowMode>::~EnumDesc()")
-}
-
-// 0xd7cc — __ZNK3RBX10Reflection8EnumDescINS_15CRenderSettings16AntialiasingModeEE15convertToStringERKS3_
-// type: void __fastcall(std::string *, int, int *, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(RBX::CRenderSettings::AntialiasingMode const&)const")]
-pub fn stub_d7cc() -> ! {
-    todo!("0xd7cc RBX::Reflection::EnumDesc<RBX::CRenderSettings::AntialiasingMode>::convertToString(RBX::CRenderSettings::AntialiasingMode const&)const")
-}
-
-// 0xd96c — __ZN3rbx13placement_anyIN3RBX7Region3EEaSINS1_15CRenderSettings16AntialiasingModeEEERS3_RKT_
-// type: void (__fastcall ***__fastcall(void (__fastcall ***)(int), void (__fastcall ***)(int)))(int)
-#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AntialiasingMode>(RBX::CRenderSettings::AntialiasingMode const&)")]
-pub fn stub_d96c() -> ! {
-    todo!("0xd96c rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<RBX::CRenderSettings::AntialiasingMode>(RBX::CRenderSettings::AntialiasingMode const&)")
-}
-
-// 0xd9bc — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE9singletonEv
-// type: _DWORD *()
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::singleton(void)")]
-pub fn stub_d9bc() -> ! {
-    todo!("0xd9bc rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::singleton(void)")
-}
-
-// 0xda28 — __ZN3rbx14implementation12typed_holderIN3RBX15CRenderSettings16AntialiasingModeEE14construct_funcEPKcPc
-// type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
-#[doc(alias = "rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::construct_func(char const*,char *)")]
-pub fn stub_da28() -> ! {
-    todo!("0xda28 rbx::implementation::typed_holder<RBX::CRenderSettings::AntialiasingMode>::construct_func(char const*,char *)")
+#[doc(alias = "_FLAC__crc8")]
+pub fn stub_6f67c() -> ! {
+    todo!("0x6f67c _FLAC__crc8")
 }
