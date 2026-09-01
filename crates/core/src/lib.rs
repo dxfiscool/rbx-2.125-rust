@@ -405,3 +405,4 @@ pub mod generated_core_shard_mt;
 pub mod generated_core_shard_mu;
 pub mod generated_core_shard_mv;
 pub mod generated_core_shard_mw;
+pub mod generated_core_shard_mx;
