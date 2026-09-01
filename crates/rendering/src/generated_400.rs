@@ -117,7 +117,7 @@ pub fn stub_5f4948() -> ! {
 
 // 0x5f4a00 — __ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED1Ev
 #[doc(alias = "__ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED1Ev")]
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")]
 // was: __ZThn8_N5boost16exception_detail19error_info_injectorISt12length_errorED1Ev
 pub fn stub_5f4a00() -> ! {
     todo!("0x5f4a00 `non-virtual thunk to'boost::exception_detail::error_info_injector<std::length_error>::~error_info_injector()")
@@ -125,7 +125,7 @@ pub fn stub_5f4a00() -> ! {
 
 // 0x5f4a08 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev
 #[doc(alias = "__ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev")]
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 // was: __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev
 pub fn stub_5f4a08() -> ! {
     todo!("0x5f4a08 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
@@ -133,7 +133,7 @@ pub fn stub_5f4a08() -> ! {
 
 // 0x5f4a10 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev")]
-#[doc(alias = "`virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 // was: __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED1Ev
 pub fn stub_5f4a10() -> ! {
     todo!("0x5f4a10 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
@@ -149,7 +149,7 @@ pub fn stub_5f4a20() -> ! {
 
 // 0x5f4ae0 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev
 #[doc(alias = "__ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev")]
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")]
 // was: __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEED0Ev
 pub fn stub_5f4ae0() -> ! {
     todo!("0x5f4ae0 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::~clone_impl()")
@@ -157,7 +157,7 @@ pub fn stub_5f4ae0() -> ! {
 
 // 0x5f4af8 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE5cloneEv
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE5cloneEv")]
-#[doc(alias = "`virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::clone(void)const")]
+#[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::clone(void)const")]
 // was: __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorISt12length_errorEEE5cloneEv
 pub fn stub_5f4af8() -> ! {
     todo!("0x5f4af8 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::length_error>>::clone(void)const")
@@ -304,7 +304,7 @@ pub fn stub_5f565c() -> ! {
 
 // 0x5f5684 — __GLOBAL__I_a_233
 #[doc(alias = "__GLOBAL__I_a_233")]
-#[doc(alias = "`global constructor keyed to'_a_233")]
+#[doc(alias = "global constructor keyed to_a_233")]
 // was: __GLOBAL__I_a_233
 pub fn stub_5f5684() -> ! {
     todo!("0x5f5684 `global constructor keyed to'_a_233")
@@ -401,7 +401,7 @@ pub fn stub_5f6cf8() -> ! {
 
 // 0x5f6d3c — __GLOBAL__I_a_234
 #[doc(alias = "__GLOBAL__I_a_234")]
-#[doc(alias = "`global constructor keyed to'_a_234")]
+#[doc(alias = "global constructor keyed to_a_234")]
 // was: __GLOBAL__I_a_234
 pub fn stub_5f6d3c() -> ! {
     todo!("0x5f6d3c `global constructor keyed to'_a_234")
@@ -428,7 +428,7 @@ pub fn stub_5f704c() -> ! {
 // 0x5f7050 — __ZThn32_N3RBX14PhysicsServiceD0Ev
 // type: void __fastcall(RBX::PhysicsService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX14PhysicsServiceD0Ev")]
-#[doc(alias = "`non-virtual thunk to'RBX::PhysicsService::~PhysicsService()")]
+#[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 // was: __ZThn32_N3RBX14PhysicsServiceD0Ev
 pub fn stub_5f7050() -> ! {
     todo!("0x5f7050 `non-virtual thunk to'RBX::PhysicsService::~PhysicsService()")
@@ -437,7 +437,7 @@ pub fn stub_5f7050() -> ! {
 // 0x5f7058 — __ZThn36_N3RBX14PhysicsServiceD0Ev
 // type: void __fastcall(RBX::PhysicsService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX14PhysicsServiceD0Ev")]
-#[doc(alias = "`non-virtual thunk to'RBX::PhysicsService::~PhysicsService()")]
+#[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 // was: __ZThn36_N3RBX14PhysicsServiceD0Ev
 pub fn stub_5f7058() -> ! {
     todo!("0x5f7058 `non-virtual thunk to'RBX::PhysicsService::~PhysicsService()")
@@ -455,7 +455,7 @@ pub fn stub_5f7060() -> ! {
 // 0x5f7410 — __ZThn32_N3RBX14PhysicsServiceD1Ev
 // type: void __fastcall(RBX::PhysicsService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX14PhysicsServiceD1Ev")]
-#[doc(alias = "`non-virtual thunk to'RBX::PhysicsService::~PhysicsService()")]
+#[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 // was: __ZThn32_N3RBX14PhysicsServiceD1Ev
 pub fn stub_5f7410() -> ! {
     todo!("0x5f7410 `non-virtual thunk to'RBX::PhysicsService::~PhysicsService()")
@@ -464,7 +464,7 @@ pub fn stub_5f7410() -> ! {
 // 0x5f7418 — __ZThn36_N3RBX14PhysicsServiceD1Ev
 // type: void __fastcall(RBX::PhysicsService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX14PhysicsServiceD1Ev")]
-#[doc(alias = "`non-virtual thunk to'RBX::PhysicsService::~PhysicsService()")]
+#[doc(alias = "non-virtual thunk toRBX::PhysicsService::~PhysicsService()")]
 // was: __ZThn36_N3RBX14PhysicsServiceD1Ev
 pub fn stub_5f7418() -> ! {
     todo!("0x5f7418 `non-virtual thunk to'RBX::PhysicsService::~PhysicsService()")
@@ -600,7 +600,7 @@ pub fn stub_5f83d0() -> ! {
 
 // 0x5f83e4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_")]
-#[doc(alias = "`non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9PrimitiveEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_14PhysicsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_
 pub fn stub_5f83e4() -> ! {
     todo!("0x5f83e4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Primitive *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::PhysicsService,RBX::Primitive *>,boost::_bi::list2<boost::_bi::value<RBX::PhysicsService*>,boost::arg<1>>>,1,void ()(RBX::Primitive *)>::call(RBX::Primitive *)")
@@ -674,7 +674,7 @@ pub fn stub_5f8720() -> ! {
 
 // 0x5f87f4 — __GLOBAL__I_a_235
 #[doc(alias = "__GLOBAL__I_a_235")]
-#[doc(alias = "`global constructor keyed to'_a_235")]
+#[doc(alias = "global constructor keyed to_a_235")]
 // was: __GLOBAL__I_a_235
 pub fn stub_5f87f4() -> ! {
     todo!("0x5f87f4 `global constructor keyed to'_a_235")
