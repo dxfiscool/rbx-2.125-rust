@@ -224,3 +224,4 @@ pub mod generated_next_z;
 pub mod generated_next_aa;
 pub mod generated_next_ab;
 pub mod generated_next_ac;
+pub mod generated_plat_ad;
