@@ -52,3 +52,4 @@ pub mod generated_shard_aq;
 pub mod generated_shard_ar;
 pub mod generated_shard_as;
 pub mod generated_shard_at;
+pub mod generated_shard_au;
