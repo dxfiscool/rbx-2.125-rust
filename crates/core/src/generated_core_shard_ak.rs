@@ -1,4 +1,4 @@
-//! core shard AK — 100 core stubs EA-sorted, next uncovered (lowest EA first after global deduplication).
+//! core shard AK — 120 core stubs EA-sorted ascending earliest gap after 0x326a04, 0x381334..0x38e9c8 (was 100, extended +20).
 //! Source: `ida/export.json` filtered where demangled/mangled excludes Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted, next 100 uncovered after 0x326a04 (lowest EA first).
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes removed.
 
@@ -603,3 +603,124 @@ pub fn stub_0x38cfa0() -> ! {
 pub fn stub_0x38cff0() -> ! {
     todo!("0x38cff0 __ZN3RBX15StringConverterIjE15convertToStringERKj")
 }
+
+#[doc(alias = "RBX::StringConverter<unsigned int>::convertToValue(std::string const&,unsigned int &)")]
+// 0x38d038 — __ZN3RBX15StringConverterIjE14convertToValueERKSsRj
+pub fn stub_0x38d038() -> ! {
+    todo!("0x38d038 __ZN3RBX15StringConverterIjE14convertToValueERKSsRj")
+}
+
+#[doc(alias = "RBX::StringConverter<long>::convertToValue(std::string const&,long &)")]
+// 0x38d14c — __ZN3RBX15StringConverterIlE14convertToValueERKSsRl
+pub fn stub_0x38d14c() -> ! {
+    todo!("0x38d14c __ZN3RBX15StringConverterIlE14convertToValueERKSsRl")
+}
+
+#[doc(alias = "RBX::StringConverter<double>::convertToValue(std::string const&,double &)")]
+// 0x38d260 — __ZN3RBX15StringConverterIdE14convertToValueERKSsRd
+pub fn stub_0x38d260() -> ! {
+    todo!("0x38d260 __ZN3RBX15StringConverterIdE14convertToValueERKSsRd")
+}
+
+#[doc(alias = "RBX::StringConverter<double>::convertToString(double const&)")]
+// 0x38d2e0 — __ZN3RBX15StringConverterIdE15convertToStringERKd
+pub fn stub_0x38d2e0() -> ! {
+    todo!("0x38d2e0 __ZN3RBX15StringConverterIdE15convertToStringERKd")
+}
+
+#[doc(alias = "RBX::StringConverter<float>::convertToValue(std::string const&,float &)")]
+// 0x38d440 — __ZN3RBX15StringConverterIfE14convertToValueERKSsRf
+pub fn stub_0x38d440() -> ! {
+    todo!("0x38d440 __ZN3RBX15StringConverterIfE14convertToValueERKSsRf")
+}
+
+#[doc(alias = "RBX::StringConverter<float>::convertToString(float const&)")]
+// 0x38d4c4 — __ZN3RBX15StringConverterIfE15convertToStringERKf
+pub fn stub_0x38d4c4() -> ! {
+    todo!("0x38d4c4 __ZN3RBX15StringConverterIfE15convertToStringERKf")
+}
+
+#[doc(alias = "bool boost::detail::lexical_stream_limited_src<char,std::char_traits<char>,false>::shr_signed<long>(long &)")]
+// 0x38d61c — __ZN5boost6detail26lexical_stream_limited_srcIcSt11char_traitsIcELb0EE10shr_signedIlEEbRT_
+pub fn stub_0x38d61c() -> ! {
+    todo!("0x38d61c __ZN5boost6detail26lexical_stream_limited_srcIcSt11char_traitsIcELb0EE10shr_signedIlEEbRT_")
+}
+
+#[doc(alias = "bool boost::detail::lcast_ret_unsigned<std::char_traits<char>,unsigned long,char>(unsigned long &,char const*,char const*)")]
+// 0x38d67c — __ZN5boost6detail18lcast_ret_unsignedISt11char_traitsIcEmcEEbRT0_PKT1_S8_
+pub fn stub_0x38d67c() -> ! {
+    todo!("0x38d67c __ZN5boost6detail18lcast_ret_unsignedISt11char_traitsIcEmcEEbRT0_PKT1_S8_")
+}
+
+#[doc(alias = "bool boost::detail::lexical_stream_limited_src<char,std::char_traits<char>,false>::shr_unsigned<unsigned int>(unsigned int &)")]
+// 0x38da14 — __ZN5boost6detail26lexical_stream_limited_srcIcSt11char_traitsIcELb0EE12shr_unsignedIjEEbRT_
+pub fn stub_0x38da14() -> ! {
+    todo!("0x38da14 __ZN5boost6detail26lexical_stream_limited_srcIcSt11char_traitsIcELb0EE12shr_unsignedIjEEbRT_")
+}
+
+#[doc(alias = "`global constructor keyed to_a_151")]
+// 0x38da58 — __GLOBAL__I_a_151
+pub fn stub_0x38da58() -> ! {
+    todo!("0x38da58 __GLOBAL__I_a_151")
+}
+
+#[doc(alias = "RBX::Accoutrement::getAttachmentPos(void)const")]
+// 0x38dc30 — __ZNK3RBX12Accoutrement16getAttachmentPosEv
+pub fn stub_0x38dc30() -> ! {
+    todo!("0x38dc30 __ZNK3RBX12Accoutrement16getAttachmentPosEv")
+}
+
+#[doc(alias = "RBX::Accoutrement::getAttachmentForward(void)const")]
+// 0x38dc70 — __ZNK3RBX12Accoutrement20getAttachmentForwardEv
+pub fn stub_0x38dc70() -> ! {
+    todo!("0x38dc70 __ZNK3RBX12Accoutrement20getAttachmentForwardEv")
+}
+
+#[doc(alias = "RBX::Accoutrement::getAttachmentUp(void)const")]
+// 0x38ddfc — __ZNK3RBX12Accoutrement15getAttachmentUpEv
+pub fn stub_0x38ddfc() -> ! {
+    todo!("0x38ddfc __ZNK3RBX12Accoutrement15getAttachmentUpEv")
+}
+
+#[doc(alias = "RBX::Accoutrement::getAttachmentRight(void)const")]
+// 0x38df30 — __ZNK3RBX12Accoutrement18getAttachmentRightEv
+pub fn stub_0x38df30() -> ! {
+    todo!("0x38df30 __ZNK3RBX12Accoutrement18getAttachmentRightEv")
+}
+
+#[doc(alias = "RBX::Accoutrement::setBackendAccoutrementState(int)")]
+// 0x38e064 — __ZN3RBX12Accoutrement27setBackendAccoutrementStateEi
+pub fn stub_0x38e064() -> ! {
+    todo!("0x38e064 __ZN3RBX12Accoutrement27setBackendAccoutrementStateEi")
+}
+
+#[doc(alias = "RBX::Accoutrement::Accoutrement(void)")]
+// 0x38e084 — __ZN3RBX12AccoutrementC1Ev
+pub fn stub_0x38e084() -> ! {
+    todo!("0x38e084 __ZN3RBX12AccoutrementC1Ev")
+}
+
+#[doc(alias = "RBX::Accoutrement::Accoutrement(void)")]
+// 0x38e4b4 — __ZN3RBX12AccoutrementC2Ev
+pub fn stub_0x38e4b4() -> ! {
+    todo!("0x38e4b4 __ZN3RBX12AccoutrementC2Ev")
+}
+
+#[doc(alias = "RBX::Accoutrement::~Accoutrement()")]
+// 0x38e90c — __ZN3RBX12AccoutrementD0Ev
+pub fn stub_0x38e90c() -> ! {
+    todo!("0x38e90c __ZN3RBX12AccoutrementD0Ev")
+}
+
+#[doc(alias = "RBX::Accoutrement::~Accoutrement()")]
+// 0x38e9b8 — __ZN3RBX12AccoutrementD1Ev
+pub fn stub_0x38e9b8() -> ! {
+    todo!("0x38e9b8 __ZN3RBX12AccoutrementD1Ev")
+}
+
+#[doc(alias = "`non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
+// 0x38e9c8 — __ZThn32_N3RBX12AccoutrementD0Ev
+pub fn stub_0x38e9c8() -> ! {
+    todo!("0x38e9c8 __ZThn32_N3RBX12AccoutrementD0Ev")
+}
+
