@@ -171,3 +171,4 @@ pub mod generated_167;
 pub mod generated_168;
 pub mod generated_169;
 pub mod generated_bg_1;
+pub mod generated_bg_2;
