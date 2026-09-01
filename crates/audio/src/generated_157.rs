@@ -98,7 +98,7 @@ pub fn stub_5b150() -> ! {
 // 0x5b3d8 — __GLOBAL__I_a_31
 #[doc(alias = "global constructor keyed to_a_31")]
 pub fn stub_5b3d8() -> ! {
-    todo!("0x5b3d8 `global constructor keyed to'_a_31")
+    todo!("0x5b3d8 global constructor keyed to_a_31")
 }
 
 // 0x5b4a0 — -[AgreementController initWithCoder:]

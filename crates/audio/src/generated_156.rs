@@ -377,7 +377,7 @@ pub fn stub_57fc8() -> ! {
 // 0x57fec — __GLOBAL__I_a_29
 #[doc(alias = "global constructor keyed to_a_29")]
 pub fn stub_57fec() -> ! {
-    todo!("0x57fec `global constructor keyed to'_a_29")
+    todo!("0x57fec global constructor keyed to_a_29")
 }
 
 // 0x58184 — -[UIWebViewCacheManager init]
@@ -537,7 +537,7 @@ pub fn stub_58a08() -> ! {
 // 0x58bb0 — __GLOBAL__I_a_30
 #[doc(alias = "global constructor keyed to_a_30")]
 pub fn stub_58bb0() -> ! {
-    todo!("0x58bb0 `global constructor keyed to'_a_30")
+    todo!("0x58bb0 global constructor keyed to_a_30")
 }
 
 // 0x58d48 — -[RobloxPageViewController handleStartGameFailure]
