@@ -144,3 +144,4 @@ pub mod generated_shard_ee;
 pub mod generated_shard_ef;
 pub mod generated_shard_eg;
 pub mod generated_shard_eh;
+pub mod generated_shard_ei;
