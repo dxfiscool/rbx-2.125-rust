@@ -408,3 +408,4 @@ pub mod generated_core_shard_mw;
 pub mod generated_core_shard_mx;
 pub mod generated_core_shard_my;
 pub mod generated_core_shard_mz;
+pub mod generated_core_shard_na;
