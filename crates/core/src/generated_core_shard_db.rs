@@ -4,602 +4,602 @@
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
 
-#[doc(alias = "RBX::Primitive::calculateSortSize(void)")]
-// 0x74cb38 — __ZN3RBX9Primitive17calculateSortSizeEv
-pub fn stub_74cb38() -> ! {
-    todo!("0x74cb38 __ZN3RBX9Primitive17calculateSortSizeEv")
+#[doc(alias = "RBX::FaceFacePair::newFaceEdgeConnector(unsigned long,RBX::POLY::Vertex const*,RBX::POLY::Vertex const*)")]
+// 0x7494ec — __ZN3RBX12FaceFacePair20newFaceEdgeConnectorEmPKNS_4POLY6VertexES4_
+pub fn stub_7494ec() -> ! {
+    todo!("0x7494ec __ZN3RBX12FaceFacePair20newFaceEdgeConnectorEmPKNS_4POLY6VertexES4_")
 }
 
-#[doc(alias = "RBX::Primitive::setSpecificGravity(float)")]
-// 0x74cc78 — __ZN3RBX9Primitive18setSpecificGravityEf
-pub fn stub_74cc78() -> ! {
-    todo!("0x74cc78 __ZN3RBX9Primitive18setSpecificGravityEf")
+#[doc(alias = "RBX::EdgeEdgePair::allocateClone(void)")]
+// 0x74979c — __ZN3RBX12EdgeEdgePair13allocateCloneEv
+pub fn stub_74979c() -> ! {
+    todo!("0x74979c __ZN3RBX12EdgeEdgePair13allocateCloneEv")
 }
 
-#[doc(alias = "RBX::Primitive::computeIsGrounded(void)const")]
-// 0x74cc90 — __ZNK3RBX9Primitive17computeIsGroundedEv
-pub fn stub_74cc90() -> ! {
-    todo!("0x74cc90 __ZNK3RBX9Primitive17computeIsGroundedEv")
+#[doc(alias = "RBX::EdgeEdgePair::test(void)")]
+// 0x7497d0 — __ZN3RBX12EdgeEdgePair4testEv
+pub fn stub_7497d0() -> ! {
+    todo!("0x7497d0 __ZN3RBX12EdgeEdgePair4testEv")
 }
 
-#[doc(alias = "RBX::Allocator<RBX::Body>::operator new(unsigned long)")]
-// 0x74ccb8 — __ZN3RBX9AllocatorINS_4BodyEEnwEm
-pub fn stub_74ccb8() -> ! {
-    todo!("0x74ccb8 __ZN3RBX9AllocatorINS_4BodyEEnwEm")
+#[doc(alias = "RBX::EdgeEdgePair::loadConnectors(RBX::FixedArray<RBX::PolyConnector *,40ul> &)")]
+// 0x749cc8 — __ZN3RBX12EdgeEdgePair14loadConnectorsERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE
+pub fn stub_749cc8() -> ! {
+    todo!("0x749cc8 __ZN3RBX12EdgeEdgePair14loadConnectorsERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE")
 }
 
-#[doc(alias = "RBX::BasicSpatialHashPrimitive::~BasicSpatialHashPrimitive()")]
-// 0x74cd28 — __ZN3RBX25BasicSpatialHashPrimitiveD2Ev
-pub fn stub_74cd28() -> ! {
-    todo!("0x74cd28 __ZN3RBX25BasicSpatialHashPrimitiveD2Ev")
+#[doc(alias = "RBX::EdgeEdgePair::newEdgeEdgeConnector(void)")]
+// 0x749d3c — __ZN3RBX12EdgeEdgePair20newEdgeEdgeConnectorEv
+pub fn stub_749d3c() -> ! {
+    todo!("0x749d3c __ZN3RBX12EdgeEdgePair20newEdgeEdgeConnectorEv")
 }
 
-#[doc(alias = "RBX::EdgeList::getEdge(int)const")]
-// 0x74cd8c — __ZNK3RBX8EdgeList7getEdgeEi
-pub fn stub_74cd8c() -> ! {
-    todo!("0x74cd8c __ZNK3RBX8EdgeList7getEdgeEi")
+#[doc(alias = "RBX::Allocator<RBX::PolyPolyContact>::Allocator(void)")]
+// 0x749f78 — __ZN3RBX9AllocatorINS_15PolyPolyContactEEC2Ev
+pub fn stub_749f78() -> ! {
+    todo!("0x749f78 __ZN3RBX9AllocatorINS_15PolyPolyContactEEC2Ev")
 }
 
-#[doc(alias = "RBX::SurfaceData::isEmpty(void)const")]
-// 0x74ce50 — __ZNK3RBX11SurfaceData7isEmptyEv
-pub fn stub_74ce50() -> ! {
-    todo!("0x74ce50 __ZNK3RBX11SurfaceData7isEmptyEv")
+#[doc(alias = "RBX::EdgeEdgePair::~EdgeEdgePair()")]
+// 0x749fdc — __ZN3RBX12EdgeEdgePairD1Ev
+pub fn stub_749fdc() -> ! {
+    todo!("0x749fdc __ZN3RBX12EdgeEdgePairD1Ev")
 }
 
-#[doc(alias = "RBX::Joint::isSpanningTreeJoint(RBX::Edge const*)")]
-// 0x74ce9c — __ZN3RBX5Joint19isSpanningTreeJointEPKNS_4EdgeE
-pub fn stub_74ce9c() -> ! {
-    todo!("0x74ce9c __ZN3RBX5Joint19isSpanningTreeJointEPKNS_4EdgeE")
+#[doc(alias = "RBX::FaceFacePair::~FaceFacePair()")]
+// 0x749fe0 — __ZN3RBX12FaceFacePairD1Ev
+pub fn stub_749fe0() -> ! {
+    todo!("0x749fe0 __ZN3RBX12FaceFacePairD1Ev")
 }
 
-#[doc(alias = "RBX::Primitive::getRadius(void)const")]
-// 0x74cf08 — __ZNK3RBX9Primitive9getRadiusEv
-pub fn stub_74cf08() -> ! {
-    todo!("0x74cf08 __ZNK3RBX9Primitive9getRadiusEv")
+#[doc(alias = "RBX::FixedArray<RBX::FaceFacePair::VertexStatus,40ul>::operator[](unsigned long)")]
+// 0x749fe4 — __ZN3RBX10FixedArrayINS_12FaceFacePair12VertexStatusELm40EEixEm
+pub fn stub_749fe4() -> ! {
+    todo!("0x749fe4 __ZN3RBX10FixedArrayINS_12FaceFacePair12VertexStatusELm40EEixEm")
 }
 
-#[doc(alias = "RBX::Body::getPV_Spin_Lock(void)")]
-// 0x74cf9c — __ZN3RBX4Body15getPV_Spin_LockEv
-pub fn stub_74cf9c() -> ! {
-    todo!("0x74cf9c __ZN3RBX4Body15getPV_Spin_LockEv")
+#[doc(alias = "RBX::FixedArray<RBX::FaceFacePair::VertexStatus,40ul>::push_back(RBX::FaceFacePair::VertexStatus const&)")]
+// 0x74a044 — __ZN3RBX10FixedArrayINS_12FaceFacePair12VertexStatusELm40EE9push_backERKS2_
+pub fn stub_74a044() -> ! {
+    todo!("0x74a044 __ZN3RBX10FixedArrayINS_12FaceFacePair12VertexStatusELm40EE9push_backERKS2_")
 }
 
-#[doc(alias = "RBX::MegaClusterPoly::getGeometryType(void)const")]
-// 0x74d060 — __ZNK3RBX15MegaClusterPoly15getGeometryTypeEv
-pub fn stub_74d060() -> ! {
-    todo!("0x74d060 __ZNK3RBX15MegaClusterPoly15getGeometryTypeEv")
+#[doc(alias = "RBX::FaceFacePair::isFaceFace(void)const")]
+// 0x74a0b4 — __ZNK3RBX12FaceFacePair10isFaceFaceEv
+pub fn stub_74a0b4() -> ! {
+    todo!("0x74a0b4 __ZNK3RBX12FaceFacePair10isFaceFaceEv")
 }
 
-#[doc(alias = "RBX::Poly::getCollideType(void)const")]
-// 0x74d064 — __ZNK3RBX4Poly14getCollideTypeEv
-pub fn stub_74d064() -> ! {
-    todo!("0x74d064 __ZNK3RBX4Poly14getCollideTypeEv")
+#[doc(alias = "RBX::FaceFacePair::~FaceFacePair()")]
+// 0x74a0b8 — __ZN3RBX12FaceFacePairD0Ev
+pub fn stub_74a0b8() -> ! {
+    todo!("0x74a0b8 __ZN3RBX12FaceFacePairD0Ev")
 }
 
-#[doc(alias = "RBX::MegaClusterPoly::isGeometryOrthogonal(void)const")]
-// 0x74d068 — __ZNK3RBX15MegaClusterPoly20isGeometryOrthogonalEv
-pub fn stub_74d068() -> ! {
-    todo!("0x74d068 __ZNK3RBX15MegaClusterPoly20isGeometryOrthogonalEv")
+#[doc(alias = "RBX::EdgeEdgePair::isFaceFace(void)const")]
+// 0x74a0bc — __ZNK3RBX12EdgeEdgePair10isFaceFaceEv
+pub fn stub_74a0bc() -> ! {
+    todo!("0x74a0bc __ZNK3RBX12EdgeEdgePair10isFaceFaceEv")
 }
 
-#[doc(alias = "RBX::MegaClusterPoly::getCofmOffset(void)const")]
-// 0x74d084 — __ZNK3RBX15MegaClusterPoly13getCofmOffsetEv
-pub fn stub_74d084() -> ! {
-    todo!("0x74d084 __ZNK3RBX15MegaClusterPoly13getCofmOffsetEv")
+#[doc(alias = "RBX::EdgeEdgePair::~EdgeEdgePair()")]
+// 0x74a0c0 — __ZN3RBX12EdgeEdgePairD0Ev
+pub fn stub_74a0c0() -> ! {
+    todo!("0x74a0c0 __ZN3RBX12EdgeEdgePairD0Ev")
 }
 
-#[doc(alias = "RBX::MegaClusterPoly::getMoment(float)const")]
-// 0x74d09c — __ZNK3RBX15MegaClusterPoly9getMomentEf
-pub fn stub_74d09c() -> ! {
-    todo!("0x74d09c __ZNK3RBX15MegaClusterPoly9getMomentEf")
+#[doc(alias = "RBX::Allocator<RBX::PolyPolyContact>::releaseMemory(void)")]
+// 0x74a0c4 — __ZN3RBX9AllocatorINS_15PolyPolyContactEE13releaseMemoryEv
+pub fn stub_74a0c4() -> ! {
+    todo!("0x74a0c4 __ZN3RBX9AllocatorINS_15PolyPolyContactEE13releaseMemoryEv")
 }
 
-#[doc(alias = "RBX::Geometry::getVolume(void)const")]
-// 0x74d0b0 — __ZNK3RBX8Geometry9getVolumeEv
-pub fn stub_74d0b0() -> ! {
-    todo!("0x74d0b0 __ZNK3RBX8Geometry9getVolumeEv")
+#[doc(alias = "RBX::PolyPair::~PolyPair()")]
+// 0x74a110 — __ZN3RBX8PolyPairD1Ev
+pub fn stub_74a110() -> ! {
+    todo!("0x74a110 __ZN3RBX8PolyPairD1Ev")
 }
 
-#[doc(alias = "RBX::MegaClusterPoly::getSize(void)const")]
-// 0x74d0cc — __ZNK3RBX15MegaClusterPoly7getSizeEv
-pub fn stub_74d0cc() -> ! {
-    todo!("0x74d0cc __ZNK3RBX15MegaClusterPoly7getSizeEv")
+#[doc(alias = "RBX::PolyPair::~PolyPair()")]
+// 0x74a114 — __ZN3RBX8PolyPairD0Ev
+pub fn stub_74a114() -> ! {
+    todo!("0x74a114 __ZN3RBX8PolyPairD0Ev")
 }
 
-#[doc(alias = "RBX::Geometry::getCofmOffset(void)const")]
-// 0x74d0d0 — __ZNK3RBX8Geometry13getCofmOffsetEv
-pub fn stub_74d0d0() -> ! {
-    todo!("0x74d0d0 __ZNK3RBX8Geometry13getCofmOffsetEv")
+#[doc(alias = "RBX::Primitive::Primitive(RBX::Geometry::GeometryType)")]
+// 0x74a4b8 — __ZN3RBX9PrimitiveC1ENS_8Geometry12GeometryTypeE
+pub fn stub_74a4b8() -> ! {
+    todo!("0x74a4b8 __ZN3RBX9PrimitiveC1ENS_8Geometry12GeometryTypeE")
 }
 
-#[doc(alias = "RBX::CornerWedgePoly::getGeometryType(void)const")]
-// 0x74d12c — __ZNK3RBX15CornerWedgePoly15getGeometryTypeEv
-pub fn stub_74d12c() -> ! {
-    todo!("0x74d12c __ZNK3RBX15CornerWedgePoly15getGeometryTypeEv")
+#[doc(alias = "RBX::Primitive::Primitive(RBX::Geometry::GeometryType)")]
+// 0x74a4bc — __ZN3RBX9PrimitiveC2ENS_8Geometry12GeometryTypeE
+pub fn stub_74a4bc() -> ! {
+    todo!("0x74a4bc __ZN3RBX9PrimitiveC2ENS_8Geometry12GeometryTypeE")
 }
 
-#[doc(alias = "RBX::CornerWedgePoly::isGeometryOrthogonal(void)const")]
-// 0x74d130 — __ZNK3RBX15CornerWedgePoly20isGeometryOrthogonalEv
-pub fn stub_74d130() -> ! {
-    todo!("0x74d130 __ZNK3RBX15CornerWedgePoly20isGeometryOrthogonalEv")
+#[doc(alias = "RBX::Primitive::newGeometry(RBX::Geometry::GeometryType)")]
+// 0x74a8c8 — __ZN3RBX9Primitive11newGeometryENS_8Geometry12GeometryTypeE
+pub fn stub_74a8c8() -> ! {
+    todo!("0x74a8c8 __ZN3RBX9Primitive11newGeometryENS_8Geometry12GeometryTypeE")
 }
 
-#[doc(alias = "RBX::RightAngleRampPoly::getGeometryType(void)const")]
-// 0x74d134 — __ZNK3RBX18RightAngleRampPoly15getGeometryTypeEv
-pub fn stub_74d134() -> ! {
-    todo!("0x74d134 __ZNK3RBX18RightAngleRampPoly15getGeometryTypeEv")
+#[doc(alias = "RBX::Primitive::computeJointK(void)")]
+// 0x74aa18 — __ZN3RBX9Primitive13computeJointKEv
+pub fn stub_74aa18() -> ! {
+    todo!("0x74aa18 __ZN3RBX9Primitive13computeJointKEv")
 }
 
-#[doc(alias = "RBX::RightAngleRampPoly::isGeometryOrthogonal(void)const")]
-// 0x74d138 — __ZNK3RBX18RightAngleRampPoly20isGeometryOrthogonalEv
-pub fn stub_74d138() -> ! {
-    todo!("0x74d138 __ZNK3RBX18RightAngleRampPoly20isGeometryOrthogonalEv")
+#[doc(alias = "RBX::Primitive::~Primitive()")]
+// 0x74aa5c — __ZN3RBX9PrimitiveD0Ev
+pub fn stub_74aa5c() -> ! {
+    todo!("0x74aa5c __ZN3RBX9PrimitiveD0Ev")
 }
 
-#[doc(alias = "RBX::ParallelRampPoly::getGeometryType(void)const")]
-// 0x74d13c — __ZNK3RBX16ParallelRampPoly15getGeometryTypeEv
-pub fn stub_74d13c() -> ! {
-    todo!("0x74d13c __ZNK3RBX16ParallelRampPoly15getGeometryTypeEv")
+#[doc(alias = "RBX::Primitive::~Primitive()")]
+// 0x74aafc — __ZN3RBX9PrimitiveD1Ev
+pub fn stub_74aafc() -> ! {
+    todo!("0x74aafc __ZN3RBX9PrimitiveD1Ev")
 }
 
-#[doc(alias = "RBX::ParallelRampPoly::isGeometryOrthogonal(void)const")]
-// 0x74d140 — __ZNK3RBX16ParallelRampPoly20isGeometryOrthogonalEv
-pub fn stub_74d140() -> ! {
-    todo!("0x74d140 __ZNK3RBX16ParallelRampPoly20isGeometryOrthogonalEv")
+#[doc(alias = "non-virtual thunk toRBX::Primitive::~Primitive()")]
+// 0x74ab00 — __ZThn8_N3RBX9PrimitiveD0Ev
+pub fn stub_74ab00() -> ! {
+    todo!("0x74ab00 __ZThn8_N3RBX9PrimitiveD0Ev")
 }
 
-#[doc(alias = "RBX::PyramidPoly::getGeometryType(void)const")]
-// 0x74d144 — __ZNK3RBX11PyramidPoly15getGeometryTypeEv
-pub fn stub_74d144() -> ! {
-    todo!("0x74d144 __ZNK3RBX11PyramidPoly15getGeometryTypeEv")
+#[doc(alias = "RBX::Primitive::~Primitive()")]
+// 0x74ab08 — __ZN3RBX9PrimitiveD2Ev
+pub fn stub_74ab08() -> ! {
+    todo!("0x74ab08 __ZN3RBX9PrimitiveD2Ev")
 }
 
-#[doc(alias = "RBX::PyramidPoly::isGeometryOrthogonal(void)const")]
-// 0x74d148 — __ZNK3RBX11PyramidPoly20isGeometryOrthogonalEv
-pub fn stub_74d148() -> ! {
-    todo!("0x74d148 __ZNK3RBX11PyramidPoly20isGeometryOrthogonalEv")
+#[doc(alias = "non-virtual thunk toRBX::Primitive::~Primitive()")]
+// 0x74ae0c — __ZThn8_N3RBX9PrimitiveD1Ev
+pub fn stub_74ae0c() -> ! {
+    todo!("0x74ae0c __ZThn8_N3RBX9PrimitiveD1Ev")
 }
 
-#[doc(alias = "RBX::PrismPoly::getGeometryType(void)const")]
-// 0x74d14c — __ZNK3RBX9PrismPoly15getGeometryTypeEv
-pub fn stub_74d14c() -> ! {
-    todo!("0x74d14c __ZNK3RBX9PrismPoly15getGeometryTypeEv")
+#[doc(alias = "RBX::Primitive::onBuoyancyChanged(bool)")]
+// 0x74ae2c — __ZN3RBX9Primitive17onBuoyancyChangedEb
+pub fn stub_74ae2c() -> ! {
+    todo!("0x74ae2c __ZN3RBX9Primitive17onBuoyancyChangedEb")
 }
 
-#[doc(alias = "RBX::PrismPoly::isGeometryOrthogonal(void)const")]
-// 0x74d150 — __ZNK3RBX9PrismPoly20isGeometryOrthogonalEv
-pub fn stub_74d150() -> ! {
-    todo!("0x74d150 __ZNK3RBX9PrismPoly20isGeometryOrthogonalEv")
+#[doc(alias = "RBX::Primitive::getSizeMultiplier(void)const")]
+// 0x74ae38 — __ZNK3RBX9Primitive17getSizeMultiplierEv
+pub fn stub_74ae38() -> ! {
+    todo!("0x74ae38 __ZNK3RBX9Primitive17getSizeMultiplierEv")
 }
 
-#[doc(alias = "RBX::WedgePoly::getGeometryType(void)const")]
-// 0x74d154 — __ZNK3RBX9WedgePoly15getGeometryTypeEv
-pub fn stub_74d154() -> ! {
-    todo!("0x74d154 __ZNK3RBX9WedgePoly15getGeometryTypeEv")
+#[doc(alias = "RBX::Primitive::setSizeMultiplier(RBX::Primitive::SizeMultiplier)")]
+// 0x74aeb4 — __ZN3RBX9Primitive17setSizeMultiplierENS0_14SizeMultiplierE
+pub fn stub_74aeb4() -> ! {
+    todo!("0x74aeb4 __ZN3RBX9Primitive17setSizeMultiplierENS0_14SizeMultiplierE")
 }
 
-#[doc(alias = "RBX::WedgePoly::isGeometryOrthogonal(void)const")]
-// 0x74d158 — __ZNK3RBX9WedgePoly20isGeometryOrthogonalEv
-pub fn stub_74d158() -> ! {
-    todo!("0x74d158 __ZNK3RBX9WedgePoly20isGeometryOrthogonalEv")
+#[doc(alias = "RBX::Primitive::getGuid(void)const")]
+// 0x74af24 — __ZNK3RBX9Primitive7getGuidEv
+pub fn stub_74af24() -> ! {
+    todo!("0x74af24 __ZNK3RBX9Primitive7getGuidEv")
 }
 
-#[doc(alias = "RBX::Ball::~Ball()")]
-// 0x74d15c — __ZN3RBX4BallD1Ev
-pub fn stub_74d15c() -> ! {
-    todo!("0x74d15c __ZN3RBX4BallD1Ev")
+#[doc(alias = "RBX::Primitive::setGuid(RBX::Guid const&)")]
+// 0x74af80 — __ZN3RBX9Primitive7setGuidERKNS_4GuidE
+pub fn stub_74af80() -> ! {
+    todo!("0x74af80 __ZN3RBX9Primitive7setGuidERKNS_4GuidE")
 }
 
-#[doc(alias = "RBX::Ball::~Ball()")]
-// 0x74d160 — __ZN3RBX4BallD0Ev
-pub fn stub_74d160() -> ! {
-    todo!("0x74d160 __ZN3RBX4BallD0Ev")
+#[doc(alias = "RBX::Primitive::computeFuzzyExtents(void)")]
+// 0x74aff4 — __ZN3RBX9Primitive19computeFuzzyExtentsEv
+pub fn stub_74aff4() -> ! {
+    todo!("0x74aff4 __ZN3RBX9Primitive19computeFuzzyExtentsEv")
 }
 
-#[doc(alias = "RBX::Ball::getGeometryType(void)const")]
-// 0x74d164 — __ZNK3RBX4Ball15getGeometryTypeEv
-pub fn stub_74d164() -> ! {
-    todo!("0x74d164 __ZNK3RBX4Ball15getGeometryTypeEv")
+#[doc(alias = "RBX::Primitive::getFastFuzzyExtents(void)")]
+// 0x74b104 — __ZN3RBX9Primitive19getFastFuzzyExtentsEv
+pub fn stub_74b104() -> ! {
+    todo!("0x74b104 __ZN3RBX9Primitive19getFastFuzzyExtentsEv")
 }
 
-#[doc(alias = "RBX::Ball::getCollideType(void)const")]
-// 0x74d168 — __ZNK3RBX4Ball14getCollideTypeEv
-pub fn stub_74d168() -> ! {
-    todo!("0x74d168 __ZNK3RBX4Ball14getCollideTypeEv")
+#[doc(alias = "RBX::Primitive::countNumAutoJoints(void)const")]
+// 0x74b168 — __ZNK3RBX9Primitive18countNumAutoJointsEv
+pub fn stub_74b168() -> ! {
+    todo!("0x74b168 __ZNK3RBX9Primitive18countNumAutoJointsEv")
 }
 
-#[doc(alias = "RBX::Ball::getRadius(void)const")]
-// 0x74d16c — __ZNK3RBX4Ball9getRadiusEv
-pub fn stub_74d16c() -> ! {
-    todo!("0x74d16c __ZNK3RBX4Ball9getRadiusEv")
+#[doc(alias = "RBX::Primitive::getConstFirstJoint(void)const")]
+// 0x74b1b4 — __ZNK3RBX9Primitive18getConstFirstJointEv
+pub fn stub_74b1b4() -> ! {
+    todo!("0x74b1b4 __ZNK3RBX9Primitive18getConstFirstJointEv")
 }
 
-#[doc(alias = "RBX::Ball::getNumSurfaces(void)const")]
-// 0x74d170 — __ZNK3RBX4Ball14getNumSurfacesEv
-pub fn stub_74d170() -> ! {
-    todo!("0x74d170 __ZNK3RBX4Ball14getNumSurfacesEv")
+#[doc(alias = "RBX::Primitive::getConstNextJoint(RBX::Joint const*)const")]
+// 0x74b1c8 — __ZNK3RBX9Primitive17getConstNextJointEPKNS_5JointE
+pub fn stub_74b1c8() -> ! {
+    todo!("0x74b1c8 __ZNK3RBX9Primitive17getConstNextJointEPKNS_5JointE")
 }
 
-#[doc(alias = "RBX::Ball::getMoment(float)const")]
-// 0x74d28c — __ZNK3RBX4Ball9getMomentEf
-pub fn stub_74d28c() -> ! {
-    todo!("0x74d28c __ZNK3RBX4Ball9getMomentEf")
+#[doc(alias = "RBX::EdgeList::getNext(RBX::Primitive const*,RBX::Edge *)const")]
+// 0x74b1d4 — __ZNK3RBX8EdgeList7getNextEPKNS_9PrimitiveEPNS_4EdgeE
+pub fn stub_74b1d4() -> ! {
+    todo!("0x74b1d4 __ZNK3RBX8EdgeList7getNextEPKNS_9PrimitiveEPNS_4EdgeE")
 }
 
-#[doc(alias = "RBX::EdgeList::~EdgeList()")]
-// 0x74d298 — __ZN3RBX8EdgeListD2Ev
-pub fn stub_74d298() -> ! {
-    todo!("0x74d298 __ZN3RBX8EdgeListD2Ev")
+#[doc(alias = "RBX::EdgeList::insertEdge(RBX::Edge *)")]
+// 0x74b2a4 — __ZN3RBX8EdgeList10insertEdgeEPNS_4EdgeE
+pub fn stub_74b2a4() -> ! {
+    todo!("0x74b2a4 __ZN3RBX8EdgeList10insertEdgeEPNS_4EdgeE")
 }
 
-#[doc(alias = "RBX::EdgeList::EdgeList(RBX::Primitive *)")]
-// 0x74d420 — __ZN3RBX8EdgeListC2EPNS_9PrimitiveE
-pub fn stub_74d420() -> ! {
-    todo!("0x74d420 __ZN3RBX8EdgeListC2EPNS_9PrimitiveE")
+#[doc(alias = "RBX::EdgeList::removeEdge(RBX::Edge *)")]
+// 0x74b348 — __ZN3RBX8EdgeList10removeEdgeEPNS_4EdgeE
+pub fn stub_74b348() -> ! {
+    todo!("0x74b348 __ZN3RBX8EdgeList10removeEdgeEPNS_4EdgeE")
 }
 
-#[doc(alias = "RBX::SpanningNode::~SpanningNode()")]
-// 0x74d4d8 — __ZN3RBX12SpanningNodeD1Ev
-pub fn stub_74d4d8() -> ! {
-    todo!("0x74d4d8 __ZN3RBX12SpanningNodeD1Ev")
+#[doc(alias = "RBX::Primitive::getJoint(int)")]
+// 0x74b47c — __ZN3RBX9Primitive8getJointEi
+pub fn stub_74b47c() -> ! {
+    todo!("0x74b47c __ZN3RBX9Primitive8getJointEi")
 }
 
-#[doc(alias = "RBX::SpanningNode::~SpanningNode()")]
-// 0x74d4dc — __ZN3RBX12SpanningNodeD0Ev
-pub fn stub_74d4dc() -> ! {
-    todo!("0x74d4dc __ZN3RBX12SpanningNodeD0Ev")
+#[doc(alias = "RBX::Primitive::getConstJoint(int)const")]
+// 0x74b484 — __ZNK3RBX9Primitive13getConstJointEi
+pub fn stub_74b484() -> ! {
+    todo!("0x74b484 __ZNK3RBX9Primitive13getConstJointEi")
 }
 
-#[doc(alias = "RBX::PrismPoly::buildMesh(void)")]
-// 0x74da88 — __ZN3RBX9PrismPoly9buildMeshEv
-pub fn stub_74da88() -> ! {
-    todo!("0x74da88 __ZN3RBX9PrismPoly9buildMeshEv")
+#[doc(alias = "RBX::Primitive::getContact(int)")]
+// 0x74b48c — __ZN3RBX9Primitive10getContactEi
+pub fn stub_74b48c() -> ! {
+    todo!("0x74b48c __ZN3RBX9Primitive10getContactEi")
 }
 
-#[doc(alias = "RBX::PrismPoly::setGeometryParameter(std::string const&,int)")]
-// 0x74db6c — __ZN3RBX9PrismPoly20setGeometryParameterERKSsi
-pub fn stub_74db6c() -> ! {
-    todo!("0x74db6c __ZN3RBX9PrismPoly20setGeometryParameterERKSsi")
+#[doc(alias = "RBX::Primitive::insertEdge(RBX::Edge *)")]
+// 0x74b494 — __ZN3RBX9Primitive10insertEdgeEPNS_4EdgeE
+pub fn stub_74b494() -> ! {
+    todo!("0x74b494 __ZN3RBX9Primitive10insertEdgeEPNS_4EdgeE")
 }
 
-#[doc(alias = "RBX::PrismPoly::getGeometryParameter(std::string const&)const")]
-// 0x74dc10 — __ZNK3RBX9PrismPoly20getGeometryParameterERKSs
-pub fn stub_74dc10() -> ! {
-    todo!("0x74dc10 __ZNK3RBX9PrismPoly20getGeometryParameterERKSs")
+#[doc(alias = "RBX::Primitive::removeEdge(RBX::Edge *)")]
+// 0x74b5f8 — __ZN3RBX9Primitive10removeEdgeEPNS_4EdgeE
+pub fn stub_74b5f8() -> ! {
+    todo!("0x74b5f8 __ZN3RBX9Primitive10removeEdgeEPNS_4EdgeE")
 }
 
-#[doc(alias = "RBX::PrismPoly::getMoment(float)const")]
-// 0x74dc9c — __ZNK3RBX9PrismPoly9getMomentEf
-pub fn stub_74dc9c() -> ! {
-    todo!("0x74dc9c __ZNK3RBX9PrismPoly9getMomentEf")
+#[doc(alias = "RBX::Primitive::getFirstEdge(void)const")]
+// 0x74b75c — __ZNK3RBX9Primitive12getFirstEdgeEv
+pub fn stub_74b75c() -> ! {
+    todo!("0x74b75c __ZNK3RBX9Primitive12getFirstEdgeEv")
 }
 
-#[doc(alias = "RBX::PrismPoly::getCofmOffset(void)const")]
-// 0x74ddd0 — __ZNK3RBX9PrismPoly13getCofmOffsetEv
-pub fn stub_74ddd0() -> ! {
-    todo!("0x74ddd0 __ZNK3RBX9PrismPoly13getCofmOffsetEv")
+#[doc(alias = "RBX::Primitive::getNextEdge(RBX::Edge *)const")]
+// 0x74b780 — __ZNK3RBX9Primitive11getNextEdgeEPNS_4EdgeE
+pub fn stub_74b780() -> ! {
+    todo!("0x74b780 __ZNK3RBX9Primitive11getNextEdgeEPNS_4EdgeE")
 }
 
-#[doc(alias = "RBX::PrismPoly::getSurfaceCoordInBody(unsigned long)const")]
-// 0x74de04 — __ZNK3RBX9PrismPoly21getSurfaceCoordInBodyEm
-pub fn stub_74de04() -> ! {
-    todo!("0x74de04 __ZNK3RBX9PrismPoly21getSurfaceCoordInBodyEm")
+#[doc(alias = "RBX::Primitive::getFirstJoint(void)")]
+// 0x74b7c8 — __ZN3RBX9Primitive13getFirstJointEv
+pub fn stub_74b7c8() -> ! {
+    todo!("0x74b7c8 __ZN3RBX9Primitive13getFirstJointEv")
 }
 
-#[doc(alias = "RBX::PrismPoly::getFaceFromLegacyNormalId(RBX::NormalId)const")]
-// 0x74e174 — __ZNK3RBX9PrismPoly25getFaceFromLegacyNormalIdENS_8NormalIdE
-pub fn stub_74e174() -> ! {
-    todo!("0x74e174 __ZNK3RBX9PrismPoly25getFaceFromLegacyNormalIdENS_8NormalIdE")
+#[doc(alias = "RBX::Primitive::getNextJoint(RBX::Joint *)")]
+// 0x74b7dc — __ZN3RBX9Primitive12getNextJointEPNS_5JointE
+pub fn stub_74b7dc() -> ! {
+    todo!("0x74b7dc __ZN3RBX9Primitive12getNextJointEPNS_5JointE")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::getToken(RBX::Vector3_2Ints const&)")]
-// 0x74e2cc — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE8getTokenERKS1_
-pub fn stub_74e2cc() -> ! {
-    todo!("0x74e2cc __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE8getTokenERKS1_")
+#[doc(alias = "RBX::Primitive::getFirstContact(void)")]
+// 0x74b7e8 — __ZN3RBX9Primitive15getFirstContactEv
+pub fn stub_74b7e8() -> ! {
+    todo!("0x74b7e8 __ZN3RBX9Primitive15getFirstContactEv")
 }
 
-#[doc(alias = "RBX::PrismPoly::~PrismPoly()")]
-// 0x74e430 — __ZN3RBX9PrismPolyD1Ev
-pub fn stub_74e430() -> ! {
-    todo!("0x74e430 __ZN3RBX9PrismPolyD1Ev")
+#[doc(alias = "RBX::Primitive::getNextContact(RBX::Contact *)")]
+// 0x74b7fc — __ZN3RBX9Primitive14getNextContactEPNS_7ContactE
+pub fn stub_74b7fc() -> ! {
+    todo!("0x74b7fc __ZN3RBX9Primitive14getNextContactEPNS_7ContactE")
 }
 
-#[doc(alias = "RBX::PrismPoly::~PrismPoly()")]
-// 0x74e454 — __ZN3RBX9PrismPolyD0Ev
-pub fn stub_74e454() -> ! {
-    todo!("0x74e454 __ZN3RBX9PrismPolyD0Ev")
+#[doc(alias = "RBX::Primitive::getFirstRigidAt(RBX::Joint *)")]
+// 0x74b808 — __ZN3RBX9Primitive15getFirstRigidAtEPNS_5JointE
+pub fn stub_74b808() -> ! {
+    todo!("0x74b808 __ZN3RBX9Primitive15getFirstRigidAtEPNS_5JointE")
 }
 
-#[doc(alias = "std::map<RBX::Vector3_2Ints,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::operator[](RBX::Vector3_2Ints const&)")]
-// 0x74e508 — __ZNSt3mapIN3RBX13Vector3_2IntsEPNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountES5_SaISt4pairIKS1_S8_EEEixERSA_
-pub fn stub_74e508() -> ! {
-    todo!("0x74e508 __ZNSt3mapIN3RBX13Vector3_2IntsEPNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountES5_SaISt4pairIKS1_S8_EEEixERSA_")
+#[doc(alias = "RBX::Primitive::getFirstRigid(void)")]
+// 0x74b858 — __ZN3RBX9Primitive13getFirstRigidEv
+pub fn stub_74b858() -> ! {
+    todo!("0x74b858 __ZN3RBX9Primitive13getFirstRigidEv")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::returnToken(RBX::Vector3_2Ints const&,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *)")]
-// 0x74e734 — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE11returnTokenERKS1_PNS5_10ValueCountE
-pub fn stub_74e734() -> ! {
-    todo!("0x74e734 __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE11returnTokenERKS1_PNS5_10ValueCountE")
+#[doc(alias = "RBX::Primitive::getNextRigid(RBX::RigidJoint *)")]
+// 0x74b86c — __ZN3RBX9Primitive12getNextRigidEPNS_10RigidJointE
+pub fn stub_74b86c() -> ! {
+    todo!("0x74b86c __ZN3RBX9Primitive12getNextRigidEPNS_10RigidJointE")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount::~ValueCount()")]
-// 0x74e910 — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10ValueCountD2Ev
-pub fn stub_74e910() -> ! {
-    todo!("0x74e910 __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10ValueCountD2Ev")
+#[doc(alias = "RBX::Primitive::getJoint(RBX::Primitive*,RBX::Primitive*,int)")]
+// 0x74b88c — __ZN3RBX9Primitive8getJointEPS0_S1_i
+pub fn stub_74b88c() -> ! {
+    todo!("0x74b88c __ZN3RBX9Primitive8getJointEPS0_S1_i")
 }
 
-#[doc(alias = "RBX::Allocator<RBX::POLY::PrismMesh>::operator delete(void *)")]
-// 0x74ea6c — __ZN3RBX9AllocatorINS_4POLY9PrismMeshEEdlEPv
-pub fn stub_74ea6c() -> ! {
-    todo!("0x74ea6c __ZN3RBX9AllocatorINS_4POLY9PrismMeshEEdlEPv")
+#[doc(alias = "RBX::Primitive::getContact(RBX::Primitive*,RBX::Primitive*)")]
+// 0x74b9cc — __ZN3RBX9Primitive10getContactEPS0_S1_
+pub fn stub_74b9cc() -> ! {
+    todo!("0x74b9cc __ZN3RBX9Primitive10getContactEPS0_S1_")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::erase(RBX::Vector3_2Ints const&)")]
-// 0x74eaa8 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseERS3_
-pub fn stub_74eaa8() -> ! {
-    todo!("0x74eaa8 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseERS3_")
+#[doc(alias = "RBX::Primitive::onNewOverlap(RBX::Primitive*,RBX::Primitive*)")]
+// 0x74baf8 — __ZN3RBX9Primitive12onNewOverlapEPS0_S1_
+pub fn stub_74baf8() -> ! {
+    todo!("0x74baf8 __ZN3RBX9Primitive12onNewOverlapEPS0_S1_")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,std::_Rb_tree_iterator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>)")]
-// 0x74ead0 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseESt17_Rb_tree_iteratorISB_ESH_
-pub fn stub_74ead0() -> ! {
-    todo!("0x74ead0 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseESt17_Rb_tree_iteratorISB_ESH_")
+#[doc(alias = "void RBX::reportOverlap<(RBX::World::TouchInfo::Type)0>(RBX::Primitive *,RBX::Primitive *)")]
+// 0x74bb10 — __ZN3RBXL13reportOverlapILNS_5World9TouchInfo4TypeE0EEEvPNS_9PrimitiveES5_
+pub fn stub_74bb10() -> ! {
+    todo!("0x74bb10 __ZN3RBXL13reportOverlapILNS_5World9TouchInfo4TypeE0EEEvPNS_9PrimitiveES5_")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>> *)")]
-// 0x74eb30 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E
-pub fn stub_74eb30() -> ! {
-    todo!("0x74eb30 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E")
+#[doc(alias = "RBX::Primitive::onStopOverlap(RBX::Primitive*,RBX::Primitive*)")]
+// 0x74bc08 — __ZN3RBX9Primitive13onStopOverlapEPS0_S1_
+pub fn stub_74bc08() -> ! {
+    todo!("0x74bc08 __ZN3RBX9Primitive13onStopOverlapEPS0_S1_")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::lower_bound(RBX::Vector3_2Ints const&)")]
-// 0x74eb58 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11lower_boundERS3_
-pub fn stub_74eb58() -> ! {
-    todo!("0x74eb58 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11lower_boundERS3_")
+#[doc(alias = "void RBX::reportOverlap<(RBX::World::TouchInfo::Type)1>(RBX::Primitive *,RBX::Primitive *)")]
+// 0x74bc20 — __ZN3RBXL13reportOverlapILNS_5World9TouchInfo4TypeE1EEEvPNS_9PrimitiveES5_
+pub fn stub_74bc20() -> ! {
+    todo!("0x74bc20 __ZN3RBXL13reportOverlapILNS_5World9TouchInfo4TypeE1EEEvPNS_9PrimitiveES5_")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::upper_bound(RBX::Vector3_2Ints const&)")]
-// 0x74eb88 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11upper_boundERS3_
-pub fn stub_74eb88() -> ! {
-    todo!("0x74eb88 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11upper_boundERS3_")
+#[doc(alias = "RBX::Primitive::getClump(void)")]
+// 0x74bd18 — __ZN3RBX9Primitive8getClumpEv
+pub fn stub_74bd18() -> ! {
+    todo!("0x74bd18 __ZN3RBX9Primitive8getClumpEv")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *> const&)")]
-// 0x74ec70 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_
-pub fn stub_74ec70() -> ! {
-    todo!("0x74ec70 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_")
+#[doc(alias = "RBX::Primitive::getConstClump(void)const")]
+// 0x74bd1c — __ZNK3RBX9Primitive13getConstClumpEv
+pub fn stub_74bd1c() -> ! {
+    todo!("0x74bd1c __ZNK3RBX9Primitive13getConstClumpEv")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *> const&)")]
-// 0x74ed50 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKSB_
-pub fn stub_74ed50() -> ! {
-    todo!("0x74ed50 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKSB_")
+#[doc(alias = "RBX::Primitive::getAssembly(void)")]
+// 0x74bd20 — __ZN3RBX9Primitive11getAssemblyEv
+pub fn stub_74bd20() -> ! {
+    todo!("0x74bd20 __ZN3RBX9Primitive11getAssemblyEv")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::_M_insert_unique(std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *> const&)")]
-// 0x74edb4 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueERKSB_
-pub fn stub_74edb4() -> ! {
-    todo!("0x74edb4 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueERKSB_")
+#[doc(alias = "RBX::Primitive::getConstAssembly(void)const")]
+// 0x74bd24 — __ZNK3RBX9Primitive16getConstAssemblyEv
+pub fn stub_74bd24() -> ! {
+    todo!("0x74bd24 __ZNK3RBX9Primitive16getConstAssemblyEv")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount::ValueCount(RBX::Vector3_2Ints const&)")]
-// 0x74ee34 — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10ValueCountC2ERKS1_
-pub fn stub_74ee34() -> ! {
-    todo!("0x74ee34 __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10ValueCountC2ERKS1_")
+#[doc(alias = "RBX::Primitive::getMechanism(void)")]
+// 0x74bd28 — __ZN3RBX9Primitive12getMechanismEv
+pub fn stub_74bd28() -> ! {
+    todo!("0x74bd28 __ZN3RBX9Primitive12getMechanismEv")
 }
 
-#[doc(alias = "RBX::Allocator<RBX::POLY::PrismMesh>::operator new(unsigned long)")]
-// 0x74eef4 — __ZN3RBX9AllocatorINS_4POLY9PrismMeshEEnwEm
-pub fn stub_74eef4() -> ! {
-    todo!("0x74eef4 __ZN3RBX9AllocatorINS_4POLY9PrismMeshEEnwEm")
+#[doc(alias = "RBX::Primitive::getConstMechanism(void)const")]
+// 0x74bd2c — __ZNK3RBX9Primitive17getConstMechanismEv
+pub fn stub_74bd2c() -> ! {
+    todo!("0x74bd2c __ZNK3RBX9Primitive17getConstMechanismEv")
 }
 
-#[doc(alias = "RBX::POLY::PrismMesh::PrismMesh(RBX::Vector3_2Ints const&)")]
-// 0x74ef64 — __ZN3RBX4POLY9PrismMeshC2ERKNS_13Vector3_2IntsE
-pub fn stub_74ef64() -> ! {
-    todo!("0x74ef64 __ZN3RBX4POLY9PrismMeshC2ERKNS_13Vector3_2IntsE")
+#[doc(alias = "RBX::Primitive::getGeometryType(void)const")]
+// 0x74bd30 — __ZNK3RBX9Primitive15getGeometryTypeEv
+pub fn stub_74bd30() -> ! {
+    todo!("0x74bd30 __ZNK3RBX9Primitive15getGeometryTypeEv")
 }
 
-#[doc(alias = "RBX::Allocator<RBX::POLY::PrismMesh>::Allocator(void)")]
-// 0x74f0b4 — __ZN3RBX9AllocatorINS_4POLY9PrismMeshEEC2Ev
-pub fn stub_74f0b4() -> ! {
-    todo!("0x74f0b4 __ZN3RBX9AllocatorINS_4POLY9PrismMeshEEC2Ev")
+#[doc(alias = "RBX::Primitive::getCollideType(void)const")]
+// 0x74bda0 — __ZNK3RBX9Primitive14getCollideTypeEv
+pub fn stub_74bda0() -> ! {
+    todo!("0x74bda0 __ZNK3RBX9Primitive14getCollideTypeEv")
 }
 
-#[doc(alias = "RBX::Allocator<RBX::POLY::PrismMesh>::releaseMemory(void)")]
-// 0x74f118 — __ZN3RBX9AllocatorINS_4POLY9PrismMeshEE13releaseMemoryEv
-pub fn stub_74f118() -> ! {
-    todo!("0x74f118 __ZN3RBX9AllocatorINS_4POLY9PrismMeshEE13releaseMemoryEv")
+#[doc(alias = "RBX::Primitive::getSize(void)const")]
+// 0x74be08 — __ZNK3RBX9Primitive7getSizeEv
+pub fn stub_74be08() -> ! {
+    todo!("0x74be08 __ZNK3RBX9Primitive7getSizeEv")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::find(RBX::Vector3_2Ints const&)")]
-// 0x74f19c — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE4findERS3_
-pub fn stub_74f19c() -> ! {
-    todo!("0x74f19c __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY9PrismMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE4findERS3_")
+#[doc(alias = "RBX::Primitive::getGeometryParameter(std::string const&)const")]
+// 0x74be10 — __ZNK3RBX9Primitive20getGeometryParameterERKSs
+pub fn stub_74be10() -> ! {
+    todo!("0x74be10 __ZNK3RBX9Primitive20getGeometryParameterERKSs")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::safe_static_init_staticData(void)")]
-// 0x74f1ec — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE27safe_static_init_staticDataEv
-pub fn stub_74f1ec() -> ! {
-    todo!("0x74f1ec __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE27safe_static_init_staticDataEv")
+#[doc(alias = "RBX::Primitive::setGeometryType(RBX::Geometry::GeometryType)")]
+// 0x74be1c — __ZN3RBX9Primitive15setGeometryTypeENS_8Geometry12GeometryTypeE
+pub fn stub_74be1c() -> ! {
+    todo!("0x74be1c __ZN3RBX9Primitive15setGeometryTypeENS_8Geometry12GeometryTypeE")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::safe_static_do_get_staticData(void)")]
-// 0x74f1f0 — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE29safe_static_do_get_staticDataEv
-pub fn stub_74f1f0() -> ! {
-    todo!("0x74f1f0 __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE29safe_static_do_get_staticDataEv")
+#[doc(alias = "RBX::Primitive::setMassInertia(float)")]
+// 0x74bfe8 — __ZN3RBX9Primitive14setMassInertiaEf
+pub fn stub_74bfe8() -> ! {
+    todo!("0x74bfe8 __ZN3RBX9Primitive14setMassInertiaEf")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PrismMesh,RBX::Vector3_2IntsComparer>::StaticData::~StaticData()")]
-// 0x74f300 — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10StaticDataD1Ev
-pub fn stub_74f300() -> ! {
-    todo!("0x74f300 __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY9PrismMeshENS_21Vector3_2IntsComparerEE10StaticDataD1Ev")
+#[doc(alias = "RBX::Primitive::setGeometryParameter(std::string const&,int)")]
+// 0x74c044 — __ZN3RBX9Primitive20setGeometryParameterERKSsi
+pub fn stub_74c044() -> ! {
+    todo!("0x74c044 __ZN3RBX9Primitive20setGeometryParameterERKSsi")
 }
 
-#[doc(alias = "RBX::PyramidPoly::buildMesh(void)")]
-// 0x74f4e0 — __ZN3RBX11PyramidPoly9buildMeshEv
-pub fn stub_74f4e0() -> ! {
-    todo!("0x74f4e0 __ZN3RBX11PyramidPoly9buildMeshEv")
+#[doc(alias = "RBX::Primitive::getCanThrottle(void)const")]
+// 0x74c190 — __ZNK3RBX9Primitive14getCanThrottleEv
+pub fn stub_74c190() -> ! {
+    todo!("0x74c190 __ZNK3RBX9Primitive14getCanThrottleEv")
 }
 
-#[doc(alias = "RBX::PyramidPoly::setGeometryParameter(std::string const&,int)")]
-// 0x74f5c4 — __ZN3RBX11PyramidPoly20setGeometryParameterERKSsi
-pub fn stub_74f5c4() -> ! {
-    todo!("0x74f5c4 __ZN3RBX11PyramidPoly20setGeometryParameterERKSsi")
+#[doc(alias = "RBX::Primitive::setCanThrottle(bool)")]
+// 0x74c19c — __ZN3RBX9Primitive14setCanThrottleEb
+pub fn stub_74c19c() -> ! {
+    todo!("0x74c19c __ZN3RBX9Primitive14setCanThrottleEb")
 }
 
-#[doc(alias = "RBX::PyramidPoly::getGeometryParameter(std::string const&)const")]
-// 0x74f668 — __ZNK3RBX11PyramidPoly20getGeometryParameterERKSs
-pub fn stub_74f668() -> ! {
-    todo!("0x74f668 __ZNK3RBX11PyramidPoly20getGeometryParameterERKSs")
+#[doc(alias = "RBX::Primitive::setEngineType(RBX::Primitive::EngineType)")]
+// 0x74c24c — __ZN3RBX9Primitive13setEngineTypeENS0_10EngineTypeE
+pub fn stub_74c24c() -> ! {
+    todo!("0x74c24c __ZN3RBX9Primitive13setEngineTypeENS0_10EngineTypeE")
 }
 
-#[doc(alias = "RBX::PyramidPoly::getMoment(float)const")]
-// 0x74f6f4 — __ZNK3RBX11PyramidPoly9getMomentEf
-pub fn stub_74f6f4() -> ! {
-    todo!("0x74f6f4 __ZNK3RBX11PyramidPoly9getMomentEf")
+#[doc(alias = "RBX::Primitive::setOwner(RBX::IMoving *)")]
+// 0x74c288 — __ZN3RBX9Primitive8setOwnerEPNS_7IMovingE
+pub fn stub_74c288() -> ! {
+    todo!("0x74c288 __ZN3RBX9Primitive8setOwnerEPNS_7IMovingE")
 }
 
-#[doc(alias = "RBX::PyramidPoly::getCofmOffset(void)const")]
-// 0x74f828 — __ZNK3RBX11PyramidPoly13getCofmOffsetEv
-pub fn stub_74f828() -> ! {
-    todo!("0x74f828 __ZNK3RBX11PyramidPoly13getCofmOffsetEv")
+#[doc(alias = "RBX::Primitive::setDragging(bool)")]
+// 0x74c2bc — __ZN3RBX9Primitive11setDraggingEb
+pub fn stub_74c2bc() -> ! {
+    todo!("0x74c2bc __ZN3RBX9Primitive11setDraggingEb")
 }
 
-#[doc(alias = "RBX::PyramidPoly::getSurfaceCoordInBody(unsigned long)const")]
-// 0x74f85c — __ZNK3RBX11PyramidPoly21getSurfaceCoordInBodyEm
-pub fn stub_74f85c() -> ! {
-    todo!("0x74f85c __ZNK3RBX11PyramidPoly21getSurfaceCoordInBodyEm")
+#[doc(alias = "RBX::Primitive::setFixed(bool,bool)")]
+// 0x74c2c8 — __ZN3RBX9Primitive8setFixedEbb
+pub fn stub_74c2c8() -> ! {
+    todo!("0x74c2c8 __ZN3RBX9Primitive8setFixedEbb")
 }
 
-#[doc(alias = "RBX::PyramidPoly::getFaceFromLegacyNormalId(RBX::NormalId)const")]
-// 0x74fbc8 — __ZNK3RBX11PyramidPoly25getFaceFromLegacyNormalIdENS_8NormalIdE
-pub fn stub_74fbc8() -> ! {
-    todo!("0x74fbc8 __ZNK3RBX11PyramidPoly25getFaceFromLegacyNormalIdENS_8NormalIdE")
+#[doc(alias = "RBX::Primitive::setAnchoredProperty(bool)")]
+// 0x74c328 — __ZN3RBX9Primitive19setAnchoredPropertyEb
+pub fn stub_74c328() -> ! {
+    todo!("0x74c328 __ZN3RBX9Primitive19setAnchoredPropertyEb")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::getToken(RBX::Vector3_2Ints const&)")]
-// 0x74fd08 — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE8getTokenERKS1_
-pub fn stub_74fd08() -> ! {
-    todo!("0x74fd08 __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE8getTokenERKS1_")
+#[doc(alias = "RBX::Primitive::setPreventCollide(bool)")]
+// 0x74c330 — __ZN3RBX9Primitive17setPreventCollideEb
+pub fn stub_74c330() -> ! {
+    todo!("0x74c330 __ZN3RBX9Primitive17setPreventCollideEb")
 }
 
-#[doc(alias = "RBX::PyramidPoly::~PyramidPoly()")]
-// 0x74fe6c — __ZN3RBX11PyramidPolyD1Ev
-pub fn stub_74fe6c() -> ! {
-    todo!("0x74fe6c __ZN3RBX11PyramidPolyD1Ev")
+#[doc(alias = "RBX::Primitive::setFriction(float)")]
+// 0x74c350 — __ZN3RBX9Primitive11setFrictionEf
+pub fn stub_74c350() -> ! {
+    todo!("0x74c350 __ZN3RBX9Primitive11setFrictionEf")
 }
 
-#[doc(alias = "RBX::PyramidPoly::~PyramidPoly()")]
-// 0x74fe90 — __ZN3RBX11PyramidPolyD0Ev
-pub fn stub_74fe90() -> ! {
-    todo!("0x74fe90 __ZN3RBX11PyramidPolyD0Ev")
+#[doc(alias = "RBX::Primitive::setElasticity(float)")]
+// 0x74c37c — __ZN3RBX9Primitive13setElasticityEf
+pub fn stub_74c37c() -> ! {
+    todo!("0x74c37c __ZN3RBX9Primitive13setElasticityEf")
 }
 
-#[doc(alias = "std::map<RBX::Vector3_2Ints,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::operator[](RBX::Vector3_2Ints const&)")]
-// 0x74ff44 — __ZNSt3mapIN3RBX13Vector3_2IntsEPNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountES5_SaISt4pairIKS1_S8_EEEixERSA_
-pub fn stub_74ff44() -> ! {
-    todo!("0x74ff44 __ZNSt3mapIN3RBX13Vector3_2IntsEPNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountES5_SaISt4pairIKS1_S8_EEEixERSA_")
+#[doc(alias = "RBX::Primitive::getFaceCoordInObject(RBX::NormalId)const")]
+// 0x74c3a8 — __ZNK3RBX9Primitive20getFaceCoordInObjectENS_8NormalIdE
+pub fn stub_74c3a8() -> ! {
+    todo!("0x74c3a8 __ZNK3RBX9Primitive20getFaceCoordInObjectENS_8NormalIdE")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::returnToken(RBX::Vector3_2Ints const&,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *)")]
-// 0x750170 — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE11returnTokenERKS1_PNS5_10ValueCountE
-pub fn stub_750170() -> ! {
-    todo!("0x750170 __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE11returnTokenERKS1_PNS5_10ValueCountE")
+#[doc(alias = "RBX::Primitive::getFaceInObject(RBX::NormalId)const")]
+// 0x74c43c — __ZNK3RBX9Primitive15getFaceInObjectENS_8NormalIdE
+pub fn stub_74c43c() -> ! {
+    todo!("0x74c43c __ZNK3RBX9Primitive15getFaceInObjectENS_8NormalIdE")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount::~ValueCount()")]
-// 0x75034c — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10ValueCountD2Ev
-pub fn stub_75034c() -> ! {
-    todo!("0x75034c __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10ValueCountD2Ev")
+#[doc(alias = "RBX::Primitive::getFaceInWorld(RBX::NormalId)")]
+// 0x74c498 — __ZN3RBX9Primitive14getFaceInWorldENS_8NormalIdE
+pub fn stub_74c498() -> ! {
+    todo!("0x74c498 __ZN3RBX9Primitive14getFaceInWorldENS_8NormalIdE")
 }
 
-#[doc(alias = "RBX::Allocator<RBX::POLY::PyramidMesh>::operator delete(void *)")]
-// 0x7504a8 — __ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEdlEPv
-pub fn stub_7504a8() -> ! {
-    todo!("0x7504a8 __ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEdlEPv")
+#[doc(alias = "RBX::Primitive::setPV(RBX::PV const&)")]
+// 0x74c638 — __ZN3RBX9Primitive5setPVERKNS_2PVE
+pub fn stub_74c638() -> ! {
+    todo!("0x74c638 __ZN3RBX9Primitive5setPVERKNS_2PVE")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::erase(RBX::Vector3_2Ints const&)")]
-// 0x7504e4 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseERS3_
-pub fn stub_7504e4() -> ! {
-    todo!("0x7504e4 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseERS3_")
+#[doc(alias = "RBX::Primitive::zeroVelocity(void)")]
+// 0x74c7b0 — __ZN3RBX9Primitive12zeroVelocityEv
+pub fn stub_74c7b0() -> ! {
+    todo!("0x74c7b0 __ZN3RBX9Primitive12zeroVelocityEv")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::erase(std::_Rb_tree_iterator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,std::_Rb_tree_iterator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>)")]
-// 0x75050c — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseESt17_Rb_tree_iteratorISB_ESH_
-pub fn stub_75050c() -> ! {
-    todo!("0x75050c __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE5eraseESt17_Rb_tree_iteratorISB_ESH_")
+#[doc(alias = "RBX::Primitive::setVelocity(RBX::Velocity const&)")]
+// 0x74c7e8 — __ZN3RBX9Primitive11setVelocityERKNS_8VelocityE
+pub fn stub_74c7e8() -> ! {
+    todo!("0x74c7e8 __ZN3RBX9Primitive11setVelocityERKNS_8VelocityE")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>> *)")]
-// 0x75056c — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E
-pub fn stub_75056c() -> ! {
-    todo!("0x75056c __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE8_M_eraseEPSt13_Rb_tree_nodeISB_E")
+#[doc(alias = "RBX::Primitive::getCoordinateFrame(void)const")]
+// 0x74c840 — __ZNK3RBX9Primitive18getCoordinateFrameEv
+pub fn stub_74c840() -> ! {
+    todo!("0x74c840 __ZNK3RBX9Primitive18getCoordinateFrameEv")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::lower_bound(RBX::Vector3_2Ints const&)")]
-// 0x750594 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11lower_boundERS3_
-pub fn stub_750594() -> ! {
-    todo!("0x750594 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11lower_boundERS3_")
+#[doc(alias = "RBX::Primitive::getPV(void)const")]
+// 0x74c848 — __ZNK3RBX9Primitive5getPVEv
+pub fn stub_74c848() -> ! {
+    todo!("0x74c848 __ZNK3RBX9Primitive5getPVEv")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::upper_bound(RBX::Vector3_2Ints const&)")]
-// 0x7505c4 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11upper_boundERS3_
-pub fn stub_7505c4() -> ! {
-    todo!("0x7505c4 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE11upper_boundERS3_")
+#[doc(alias = "RBX::Primitive::getGridCorner(void)const")]
+// 0x74c850 — __ZNK3RBX9Primitive13getGridCornerEv
+pub fn stub_74c850() -> ! {
+    todo!("0x74c850 __ZNK3RBX9Primitive13getGridCornerEv")
 }
 
-#[doc(alias = "RBX::Vector3_2IntsComparer::operator()(RBX::Vector3_2Ints const&,RBX::Vector3_2Ints const&)const")]
-// 0x7505f4 — __ZNK3RBX21Vector3_2IntsComparerclERKNS_13Vector3_2IntsES3_
-pub fn stub_7505f4() -> ! {
-    todo!("0x7505f4 __ZNK3RBX21Vector3_2IntsComparerclERKNS_13Vector3_2IntsES3_")
+#[doc(alias = "RBX::Primitive::setSurfaceData(RBX::NormalId,RBX::SurfaceData const&)")]
+// 0x74c980 — __ZN3RBX9Primitive14setSurfaceDataENS_8NormalIdERKNS_11SurfaceDataE
+pub fn stub_74c980() -> ! {
+    todo!("0x74c980 __ZN3RBX9Primitive14setSurfaceDataENS_8NormalIdERKNS_11SurfaceDataE")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *> const&)")]
-// 0x75072c — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_
-pub fn stub_75072c() -> ! {
-    todo!("0x75072c __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISB_ERKSB_")
+#[doc(alias = "RBX::Primitive::setSurfaceType(RBX::NormalId,RBX::SurfaceType)")]
+// 0x74ca64 — __ZN3RBX9Primitive14setSurfaceTypeENS_8NormalIdENS_11SurfaceTypeE
+pub fn stub_74ca64() -> ! {
+    todo!("0x74ca64 __ZN3RBX9Primitive14setSurfaceTypeENS_8NormalIdENS_11SurfaceTypeE")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *> const&)")]
-// 0x75080c — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKSB_
-pub fn stub_75080c() -> ! {
-    todo!("0x75080c __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE9_M_insertEPSt18_Rb_tree_node_baseSH_RKSB_")
+#[doc(alias = "RBX::Primitive::nextSpanningEdgeFromJoint(RBX::Joint *)")]
+// 0x74ca78 — __ZN3RBX9Primitive25nextSpanningEdgeFromJointEPNS_5JointE
+pub fn stub_74ca78() -> ! {
+    todo!("0x74ca78 __ZN3RBX9Primitive25nextSpanningEdgeFromJointEPNS_5JointE")
 }
 
-#[doc(alias = "std::_Rb_tree<RBX::Vector3_2Ints,std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>,std::_Select1st<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>,RBX::Vector3_2IntsComparer,std::allocator<std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *>>>::_M_insert_unique(std::pair<RBX::Vector3_2Ints const,RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount *> const&)")]
-// 0x750870 — __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueERKSB_
-pub fn stub_750870() -> ! {
-    todo!("0x750870 __ZNSt8_Rb_treeIN3RBX13Vector3_2IntsESt4pairIKS1_PNS0_12GeometryPoolIS1_NS0_4POLY11PyramidMeshENS0_21Vector3_2IntsComparerEE10ValueCountEESt10_Select1stISB_ES7_SaISB_EE16_M_insert_uniqueERKSB_")
+#[doc(alias = "RBX::Primitive::getFirstSpanningEdge(void)")]
+// 0x74cab0 — __ZN3RBX9Primitive20getFirstSpanningEdgeEv
+pub fn stub_74cab0() -> ! {
+    todo!("0x74cab0 __ZN3RBX9Primitive20getFirstSpanningEdgeEv")
 }
 
-#[doc(alias = "RBX::GeometryPool<RBX::Vector3_2Ints,RBX::POLY::PyramidMesh,RBX::Vector3_2IntsComparer>::ValueCount::ValueCount(RBX::Vector3_2Ints const&)")]
-// 0x7508f0 — __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10ValueCountC2ERKS1_
-pub fn stub_7508f0() -> ! {
-    todo!("0x7508f0 __ZN3RBX12GeometryPoolINS_13Vector3_2IntsENS_4POLY11PyramidMeshENS_21Vector3_2IntsComparerEE10ValueCountC2ERKS1_")
+#[doc(alias = "non-virtual thunk toRBX::Primitive::getFirstSpanningEdge(void)")]
+// 0x74cac4 — __ZThn8_N3RBX9Primitive20getFirstSpanningEdgeEv
+pub fn stub_74cac4() -> ! {
+    todo!("0x74cac4 __ZThn8_N3RBX9Primitive20getFirstSpanningEdgeEv")
 }
 
-#[doc(alias = "RBX::Allocator<RBX::POLY::PyramidMesh>::operator new(unsigned long)")]
-// 0x7509b0 — __ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEnwEm
-pub fn stub_7509b0() -> ! {
-    todo!("0x7509b0 __ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEnwEm")
+#[doc(alias = "RBX::Primitive::getNextSpanningEdge(RBX::SpanningEdge *)")]
+// 0x74cae0 — __ZN3RBX9Primitive19getNextSpanningEdgeEPNS_12SpanningEdgeE
+pub fn stub_74cae0() -> ! {
+    todo!("0x74cae0 __ZN3RBX9Primitive19getNextSpanningEdgeEPNS_12SpanningEdgeE")
 }
 
-#[doc(alias = "RBX::POLY::PyramidMesh::PyramidMesh(RBX::Vector3_2Ints const&)")]
-// 0x750a20 — __ZN3RBX4POLY11PyramidMeshC2ERKNS_13Vector3_2IntsE
-pub fn stub_750a20() -> ! {
-    todo!("0x750a20 __ZN3RBX4POLY11PyramidMeshC2ERKNS_13Vector3_2IntsE")
+#[doc(alias = "non-virtual thunk toRBX::Primitive::getNextSpanningEdge(RBX::SpanningEdge *)")]
+// 0x74cb08 — __ZThn8_N3RBX9Primitive19getNextSpanningEdgeEPNS_12SpanningEdgeE
+pub fn stub_74cb08() -> ! {
+    todo!("0x74cb08 __ZThn8_N3RBX9Primitive19getNextSpanningEdgeEPNS_12SpanningEdgeE")
 }
 
-#[doc(alias = "RBX::Allocator<RBX::POLY::PyramidMesh>::Allocator(void)")]
-// 0x750b70 — __ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEC2Ev
-pub fn stub_750b70() -> ! {
-    todo!("0x750b70 __ZN3RBX9AllocatorINS_4POLY11PyramidMeshEEC2Ev")
+#[doc(alias = "RBX::Primitive::isGeometryOrthogonal(void)const")]
+// 0x74cb10 — __ZNK3RBX9Primitive20isGeometryOrthogonalEv
+pub fn stub_74cb10() -> ! {
+    todo!("0x74cb10 __ZNK3RBX9Primitive20isGeometryOrthogonalEv")
 }
 
-#[doc(alias = "RBX::Allocator<RBX::POLY::PyramidMesh>::releaseMemory(void)")]
-// 0x750bd4 — __ZN3RBX9AllocatorINS_4POLY11PyramidMeshEE13releaseMemoryEv
-pub fn stub_750bd4() -> ! {
-    todo!("0x750bd4 __ZN3RBX9AllocatorINS_4POLY11PyramidMeshEE13releaseMemoryEv")
+#[doc(alias = "RBX::Primitive::getSortSize(void)")]
+// 0x74cb20 — __ZN3RBX9Primitive11getSortSizeEv
+pub fn stub_74cb20() -> ! {
+    todo!("0x74cb20 __ZN3RBX9Primitive11getSortSizeEv")
 }
