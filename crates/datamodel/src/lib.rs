@@ -395,4 +395,7 @@ pub mod generated_dm_n;
 pub mod generated_dm_o;
 pub mod generated_dm_p;
 pub mod generated_dm_q;
-pub mod generated_next_d;
+pub mod generated_dm_r;
+pub mod generated_dm_s;
+pub mod generated_dm_t;
+ pub mod generated_next_d;
