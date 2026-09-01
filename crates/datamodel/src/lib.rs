@@ -383,3 +383,5 @@ pub mod generated_dm_d;
 pub mod generated_dm_e;
 
 pub mod generated_dm_f;
+pub mod generated_dm_g;
+pub mod generated_dm_h;
