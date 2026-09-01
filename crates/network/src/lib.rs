@@ -199,3 +199,4 @@ pub mod generated_net_01;
 pub mod generated_net_02;
 pub mod generated_net_03;
 pub mod generated_net_04;
+pub mod generated_net_05;
