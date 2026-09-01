@@ -1,4 +1,4 @@
-//! platform — generated_plat_bd — 150 stubs EA-sorted asc global gap filler | Source ida/export.json | range 0x1fcf38..0x20c93c | rbx_core::SharedPtr not boost | ObjC doc aliases
+//! platform — generated_plat_bd — 150 stubs EA-sorted asc global gap filler | Source ida/export.json | range 0x1fcf38..0x20c93c | rbx_core::SharedPtr not boost | excludes above namespaces
 //! Source: ida/export.json (85545 funcs) global gap filler next 150 EA-sorted asc not yet stubbed in platform
 //! Distinct stub_ 30101/85545 -> 30251/85545 | uncovered 55444 -> 55294 (platform)
 //! Batch: 150 stubs | range 0x1fcf38..0x20c93c | rbx_core::SharedPtr not boost
