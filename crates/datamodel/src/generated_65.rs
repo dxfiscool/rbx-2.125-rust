@@ -65,25 +65,25 @@ pub fn stub_4758a8() -> ! {
 }
 
 // 0x475970 — __ZThn32_N3RBX13DataModelMeshD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
 pub fn stub_475970() -> ! {
     todo!("0x475970 `non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")
 }
 
 // 0x475978 — __ZThn32_N3RBX13DataModelMeshD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
 pub fn stub_475978() -> ! {
     todo!("0x475978 `non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")
 }
 
 // 0x475a44 — __ZThn36_N3RBX13DataModelMeshD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
 pub fn stub_475a44() -> ! {
     todo!("0x475a44 `non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")
 }
 
 // 0x475a4c — __ZThn36_N3RBX13DataModelMeshD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")]
 pub fn stub_475a4c() -> ! {
     todo!("0x475a4c `non-virtual thunk toRBX::DataModelMesh::~DataModelMesh()")
 }
