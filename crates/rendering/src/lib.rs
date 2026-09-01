@@ -76,3 +76,4 @@ pub mod generated_69;
 pub mod high;
 pub mod next_batch;
 pub mod generated_70;
+pub mod generated_71;
