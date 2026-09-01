@@ -1,4 +1,4 @@
-// Auto-generated shard FN — 150 stubs EA-sorted asc 0x3e3a8..0x43c70 (global gap filler not yet in reflection, RBX::Reflection filtered 16171 total already covered)
+// Auto-generated shard FN — 150 stubs EA-sorted asc 0x3e3a8..0x43c70 (global gap filler not yet in reflection)
 // Source: ida/export.json (85545 funcs) EA asc not in crates/reflection/src/*.rs, next 150
 // Format: // 0xADDR - mangled + doc alias + stub using rbx_core::SharedPtr not boost
 
@@ -13,12 +13,12 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_tag)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_14bad_exception_EEC1ERKS3_NS3_9clone_tagE")]
 pub fn stub_3e3a8() -> ! {
-    todo!("0x3e3a8 boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_tag)")
+    todo!("0x3e3a8 boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> const&,boost::exception_detail::cl")
 }
 
 // 0x3e528 — __ZThn20_N5boost16exception_detail14bad_exception_D0Ev
 // type: void __fastcall(boost::exception_detail::bad_exception_ *__hidden this)
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::bad_exception_::~bad_exception_()")]
+#[doc(alias = ""non-virtual thunk to"boost::exception_detail::bad_exception_::~bad_exception_()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail14bad_exception_D0Ev")]
 pub fn stub_3e528() -> ! {
     todo!("0x3e528 `non-virtual thunk to'boost::exception_detail::bad_exception_::~bad_exception_()")
@@ -28,7 +28,7 @@ pub fn stub_3e528() -> ! {
 #[doc(alias = "boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")]
 #[doc(alias = "__ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_14bad_exception_EEEEEPT_")]
 pub fn stub_3e558() -> ! {
-    todo!("0x3e558 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")
+    todo!("0x3e558 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::except")
 }
 
 // 0x3e640 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_14bad_exception_EEEED1Ev
@@ -62,14 +62,14 @@ pub fn stub_3e7f8() -> ! {
 }
 
 // 0x3e8b8 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv
-#[doc(alias = "`virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")]
+#[doc(alias = ""virtual thunk to"boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv")]
 pub fn stub_3e8b8() -> ! {
     todo!("0x3e8b8 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")
 }
 
 // 0x3e8c8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev
-#[doc(alias = "`virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
+#[doc(alias = ""virtual thunk to"boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev")]
 pub fn stub_3e8c8() -> ! {
     todo!("0x3e8c8 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
@@ -80,12 +80,12 @@ pub fn stub_3e8c8() -> ! {
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS3_NS3_9clone_tagE")]
 pub fn stub_3e900() -> ! {
-    todo!("0x3e900 boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_tag)")
+    todo!("0x3e900 boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> const&,boost::exception_detail::clone_impl")
 }
 
 // 0x3ea80 — __ZThn20_N5boost16exception_detail10bad_alloc_D0Ev
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::bad_alloc_::~bad_alloc_()")]
+#[doc(alias = ""non-virtual thunk to"boost::exception_detail::bad_alloc_::~bad_alloc_()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10bad_alloc_D0Ev")]
 pub fn stub_3ea80() -> ! {
     todo!("0x3ea80 `non-virtual thunk to'boost::exception_detail::bad_alloc_::~bad_alloc_()")
@@ -95,7 +95,7 @@ pub fn stub_3ea80() -> ! {
 #[doc(alias = "boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")]
 #[doc(alias = "__ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_10bad_alloc_EEEEEPT_")]
 pub fn stub_3eab0() -> ! {
-    todo!("0x3eab0 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")
+    todo!("0x3eab0 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_")
 }
 
 // 0x3eb98 — __ZN5boost6detail17sp_counted_impl_pINS_16exception_detail10clone_implINS2_10bad_alloc_EEEE7disposeEv
@@ -272,7 +272,7 @@ pub fn stub_3f700() -> ! {
 
 // 0x3f904 — __ZThn480_N10RobloxView9RenderJobD1Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")]
+#[doc(alias = ""non-virtual thunk to"RobloxView::RenderJob::~RenderJob()")]
 #[doc(alias = "__ZThn480_N10RobloxView9RenderJobD1Ev")]
 pub fn stub_3f904() -> ! {
     todo!("0x3f904 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
@@ -280,7 +280,7 @@ pub fn stub_3f904() -> ! {
 
 // 0x3f9c8 — __ZThn480_N10RobloxView9RenderJobD0Ev
 // type: void __fastcall(RobloxView::RenderJob *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")]
+#[doc(alias = ""non-virtual thunk to"RobloxView::RenderJob::~RenderJob()")]
 #[doc(alias = "__ZThn480_N10RobloxView9RenderJobD0Ev")]
 pub fn stub_3f9c8() -> ! {
     todo!("0x3f9c8 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
@@ -288,7 +288,7 @@ pub fn stub_3f9c8() -> ! {
 
 // 0x3fa94 — __ZThn480_NK10RobloxView9RenderJob9getMetricERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
-#[doc(alias = "`non-virtual thunk to'RobloxView::RenderJob::getMetric(std::string const&)const")]
+#[doc(alias = ""non-virtual thunk to"RobloxView::RenderJob::getMetric(std::string const&)const")]
 #[doc(alias = "__ZThn480_NK10RobloxView9RenderJob9getMetricERKSs")]
 pub fn stub_3fa94() -> ! {
     todo!("0x3fa94 `non-virtual thunk to'RobloxView::RenderJob::getMetric(std::string const&)const")
@@ -296,7 +296,7 @@ pub fn stub_3fa94() -> ! {
 
 // 0x3faa4 — __ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs
 // type: _DWORD __fastcall(RobloxView::RenderJob *__hidden this, const std::string *)
-#[doc(alias = "`non-virtual thunk to'RobloxView::RenderJob::getMetricValue(std::string const&)const")]
+#[doc(alias = ""non-virtual thunk to"RobloxView::RenderJob::getMetricValue(std::string const&)const")]
 #[doc(alias = "__ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs")]
 pub fn stub_3faa4() -> ! {
     todo!("0x3faa4 `non-virtual thunk to'RobloxView::RenderJob::getMetricValue(std::string const&)const")
@@ -349,14 +349,14 @@ pub fn stub_3fd38() -> ! {
 }
 
 // 0x3fd60 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
+#[doc(alias = ""non-virtual thunk to"boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev")]
 pub fn stub_3fd60() -> ! {
     todo!("0x3fd60 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
 }
 
 // 0x3fd88 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
+#[doc(alias = ""non-virtual thunk to"boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev")]
 pub fn stub_3fd88() -> ! {
     todo!("0x3fd88 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
@@ -371,21 +371,21 @@ pub fn stub_3fdb8() -> ! {
 }
 
 // 0x3fee0 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
+#[doc(alias = ""non-virtual thunk to"boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev")]
 pub fn stub_3fee0() -> ! {
     todo!("0x3fee0 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
 }
 
 // 0x3ff18 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
-#[doc(alias = "`virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
+#[doc(alias = ""virtual thunk to"boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv")]
 pub fn stub_3ff18() -> ! {
     todo!("0x3ff18 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
 }
 
 // 0x3ff28 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
-#[doc(alias = "`virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
+#[doc(alias = ""virtual thunk to"boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev")]
 pub fn stub_3ff28() -> ! {
     todo!("0x3ff28 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
@@ -399,7 +399,7 @@ pub fn stub_3ff60() -> ! {
 }
 
 // 0x3ff90 — __ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
-#[doc(alias = "`non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
+#[doc(alias = ""non-virtual thunk to"boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev")]
 pub fn stub_3ff90() -> ! {
     todo!("0x3ff90 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
@@ -410,35 +410,35 @@ pub fn stub_3ff90() -> ! {
 #[doc(alias = "boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)")]
 #[doc(alias = "__ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEEC1ERKS5_NS5_9clone_tagE")]
 pub fn stub_3ffc0() -> ! {
-    todo!("0x3ffc0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>> const&,boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_tag)")
+    todo!("0x3ffc0 boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::clone_impl(boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boos")
 }
 
 // 0x40160 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEE6manageERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeE")]
 pub fn stub_40160() -> ! {
-    todo!("0x40160 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+    todo!("0x40160 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value")
 }
 
 // 0x401dc — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEdENS3_5list3INS3_5valueIS7_EENSE_ISA_EENSE_IdEEEEEEvE6invokeERNS1_15function_bufferE")]
 pub fn stub_401dc() -> ! {
-    todo!("0x401dc boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+    todo!("0x401dc boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *,double),boost::_bi::list3<boost::_bi::value<RobloxView::RenderJob *>,boost:")
 }
 
 // 0x401f0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE")]
 pub fn stub_401f0() -> ! {
-    todo!("0x401f0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+    todo!("0x401f0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<Roblox")
 }
 
 // 0x40270 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX8ViewBaseEPNS7_7IMetricEdEENS3_5list3INS3_5valueIPS8_EENSD_IPN10RobloxView9RenderJobEEENSD_IdEEEEEEvE6invokeERNS1_15function_bufferE")]
 pub fn stub_40270() -> ! {
-    todo!("0x40270 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>>,void>::invoke(boost::detail::function::function_buffer &)")
+    todo!("0x40270 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list3<boost::_bi::value<RBX::ViewBase*>,boost::_bi::v")
 }
 
 // 0x4027c — __ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
@@ -446,21 +446,21 @@ pub fn stub_40270() -> ! {
 #[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")]
 #[doc(alias = "__ZN5boost3_bi5list3INS0_5valueIPN3RBX8ViewBaseEEENS2_IPN10RobloxView9RenderJobEEENS2_IdEEEclINS_4_mfi3mf2IvS4_PNS3_7IMetricEdEENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
 pub fn stub_4027c() -> ! {
-    todo!("0x4027c void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double> &,boost::_bi::list0 &,int)")
+    todo!("0x4027c void boost::_bi::list3<boost::_bi::value<RBX::ViewBase *>,boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<double>>::operator()<boost::_mfi::mf2<void,RBX::ViewBase,RBX::IMetric *,double>,b")
 }
 
 // 0x402a8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 #[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")]
 pub fn stub_402a8() -> ! {
-    todo!("0x402a8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
+    todo!("0x402a8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::V")
 }
 
 // 0x40308 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE
 #[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvPN10RobloxView9RenderJobEPN3RBX8ViewBaseEENS3_5list2INS3_5valueIS7_EENSE_ISA_EEEEEEvE6invokeERNS1_15function_bufferE")]
 pub fn stub_40308() -> ! {
-    todo!("0x40308 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::value<RBX::ViewBase *>>>,void>::invoke(boost::detail::function::function_buffer &)")
+    todo!("0x40308 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(RobloxView::RenderJob *,RBX::ViewBase *),boost::_bi::list2<boost::_bi::value<RobloxView::RenderJob *>,boost::_bi::v")
 }
 
 // 0x40318 — __ZN5boost8weak_ptrIN3RBX9DataModelEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
@@ -534,7 +534,7 @@ pub fn stub_406e0() -> ! {
 }
 
 // 0x4070c — __GLOBAL__I_a_10
-#[doc(alias = "`global constructor keyed to'_a_10")]
+#[doc(alias = ""global constructor keyed to"_a_10")]
 #[doc(alias = "__GLOBAL__I_a_10")]
 pub fn stub_4070c() -> ! {
     todo!("0x4070c `global constructor keyed to'_a_10")
@@ -777,7 +777,7 @@ pub fn stub_41bd8() -> ! {
 }
 
 // 0x41bfc — __GLOBAL__I_a_11
-#[doc(alias = "`global constructor keyed to'_a_11")]
+#[doc(alias = ""global constructor keyed to"_a_11")]
 #[doc(alias = "__GLOBAL__I_a_11")]
 pub fn stub_41bfc() -> ! {
     todo!("0x41bfc `global constructor keyed to'_a_11")
@@ -861,7 +861,7 @@ pub fn stub_424cc() -> ! {
 }
 
 // 0x42580 — __GLOBAL__I_a_12
-#[doc(alias = "`global constructor keyed to'_a_12")]
+#[doc(alias = ""global constructor keyed to"_a_12")]
 #[doc(alias = "__GLOBAL__I_a_12")]
 pub fn stub_42580() -> ! {
     todo!("0x42580 `global constructor keyed to'_a_12")
@@ -1041,11 +1041,11 @@ pub fn stub_43360() -> ! {
 #[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,void (*)(char const*)>> *)")]
 #[doc(alias = "__ZNSt8_Rb_treeISsSt4pairIKSsPFvPKcEESt10_Select1stIS6_ESt4lessISsESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E")]
 pub fn stub_43364() -> ! {
-    todo!("0x43364 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::string const,void (*)(char const*)>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,void (*)(char const*)>> *)")
+    todo!("0x43364 std::_Rb_tree<std::string,std::pair<std::string const,void (*)(char const*)>,std::_Select1st<std::pair<std::string const,void (*)(char const*)>>,std::less<std::string>,std::allocator<std::pair<std::st")
 }
 
 // 0x43394 — __GLOBAL__I_a_13
-#[doc(alias = "`global constructor keyed to'_a_13")]
+#[doc(alias = ""global constructor keyed to"_a_13")]
 #[doc(alias = "__GLOBAL__I_a_13")]
 pub fn stub_43394() -> ! {
     todo!("0x43394 `global constructor keyed to'_a_13")
