@@ -68,7 +68,7 @@ pub fn stub_530564() -> ! {
 
 // 0x53056c — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorImplILi0ENSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorImplILi0ENSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")]
-#[doc(alias = "`non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorImpl<0,RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorImpl<0,RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorImpl<0,RBX::GuiButton,void ()(void)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorImpl<0,RBX::GuiButton,void ()(void)>*>>>,0,void ()(void)>::call(void)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorImplILi0ENSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
 pub fn stub_53056c() -> ! {
     todo!("0x53056c __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorImplILi0ENSB_9GuiButtonES3_EEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv")
@@ -733,7 +733,7 @@ pub fn stub_532a4c() -> ! {
 
 // 0x532a54 — __ZThn4_N3rbx8callableINS_7signals6signalIFviiEE4slotEN5boost8functionIS3_EELi2ES3_E4callEii
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviiEE4slotEN5boost8functionIS3_EELi2ES3_E4callEii")]
-#[doc(alias = "`non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,int)>::slot,boost::function<void ()(int,int)>,2,void ()(int,int)>::call(int,int)")]
+#[doc(alias = "non-virtual thunk to rbx::callable<rbx::signals::signal<void ()(int,int)>::slot,boost::function<void ()(int,int)>,2,void ()(int,int)>::call(int,int)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFviiEE4slotEN5boost8functionIS3_EELi2ES3_E4callEii
 pub fn stub_532a54() -> ! {
     todo!("0x532a54 __ZThn4_N3rbx8callableINS_7signals6signalIFviiEE4slotEN5boost8functionIS3_EELi2ES3_E4callEii")
