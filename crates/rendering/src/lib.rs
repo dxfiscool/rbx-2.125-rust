@@ -330,3 +330,4 @@ pub mod generated_rend_a_02;
 pub mod generated_rend_b_01;
 pub mod generated_310;
 pub mod generated_311;
+pub mod generated_312;
