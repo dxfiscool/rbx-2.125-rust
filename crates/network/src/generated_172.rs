@@ -348,7 +348,7 @@ pub fn stub_b02e30() -> ! {
 // type: int __fastcall(int, RakNet::SystemAddress *)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::OnReceive(RakNet::Packet *)")]
 pub fn stub_b04818() -> ! {
-    todo!("0xb04818 non-virtual thunk to'RBX::Network::Replicator::OnReceive(RakNet::Packet *)")
+    todo!("0xb04818 non-virtual thunk toRBX::Network::Replicator::OnReceive(RakNet::Packet *)")
 }
 
 // 0xb04828 — __ZN3RBX7Network10Replicator16OnInternalPacketEPN6RakNet14InternalPacketEjNS2_13SystemAddressEji
@@ -364,7 +364,7 @@ pub fn stub_b04828() -> ! {
 // type: void __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::OnInternalPacket(RakNet::InternalPacket *,unsigned int,RakNet::SystemAddress,unsigned int,int)")]
 pub fn stub_b04a98() -> ! {
-    todo!("0xb04a98 non-virtual thunk to'RBX::Network::Replicator::OnInternalPacket(RakNet::InternalPacket *,unsigned in")
+    todo!("0xb04a98 non-virtual thunk toRBX::Network::Replicator::OnInternalPacket(RakNet::InternalPacket *,unsigned in")
 }
 
 // 0xb055f0 — __ZN3RBX7Network10Replicator15NewInstanceItem5writeERN6RakNet9BitStreamE

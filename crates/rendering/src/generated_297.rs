@@ -125,7 +125,7 @@ pub fn stub_4176a0() -> ! {
 #[doc(alias = "global constructor keyed to_a_175")]
 // was: __GLOBAL__I_a_175
 pub fn stub_417744() -> ! {
-    todo!("0x417744 `global constructor keyed to'_a_175")
+    todo!("0x417744 global constructor keyed to_a_175")
 }
 
 // 0x417a70 — __ZN3RBX19CornerWedgeInstanceC1Ev
@@ -157,7 +157,7 @@ pub fn stub_417e28() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 // was: __ZThn32_N3RBX19CornerWedgeInstanceD0Ev
 pub fn stub_417e38() -> ! {
-    todo!("0x417e38 `non-virtual thunk to'RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+    todo!("0x417e38 non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e40 — __ZThn36_N3RBX19CornerWedgeInstanceD0Ev
@@ -165,7 +165,7 @@ pub fn stub_417e38() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 // was: __ZThn36_N3RBX19CornerWedgeInstanceD0Ev
 pub fn stub_417e40() -> ! {
-    todo!("0x417e40 `non-virtual thunk to'RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+    todo!("0x417e40 non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e48 — __ZThn132_N3RBX19CornerWedgeInstanceD0Ev
@@ -173,7 +173,7 @@ pub fn stub_417e40() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 // was: __ZThn132_N3RBX19CornerWedgeInstanceD0Ev
 pub fn stub_417e48() -> ! {
-    todo!("0x417e48 `non-virtual thunk to'RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+    todo!("0x417e48 non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e50 — __ZThn32_N3RBX19CornerWedgeInstanceD1Ev
@@ -181,7 +181,7 @@ pub fn stub_417e48() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 // was: __ZThn32_N3RBX19CornerWedgeInstanceD1Ev
 pub fn stub_417e50() -> ! {
-    todo!("0x417e50 `non-virtual thunk to'RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+    todo!("0x417e50 non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e64 — __ZThn36_N3RBX19CornerWedgeInstanceD1Ev
@@ -189,7 +189,7 @@ pub fn stub_417e50() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 // was: __ZThn36_N3RBX19CornerWedgeInstanceD1Ev
 pub fn stub_417e64() -> ! {
-    todo!("0x417e64 `non-virtual thunk to'RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+    todo!("0x417e64 non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e78 — __ZThn132_N3RBX19CornerWedgeInstanceD1Ev
@@ -197,7 +197,7 @@ pub fn stub_417e64() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 // was: __ZThn132_N3RBX19CornerWedgeInstanceD1Ev
 pub fn stub_417e78() -> ! {
-    todo!("0x417e78 `non-virtual thunk to'RBX::CornerWedgeInstance::~CornerWedgeInstance()")
+    todo!("0x417e78 non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e8c — __ZNK3RBX14FactoryProductINS_19CornerWedgeInstanceENS_12PartInstanceELZNS_12sCornerWedgeEENS_8InstanceEE12getClassNameEv
@@ -555,14 +555,14 @@ pub fn stub_418f70() -> ! {
 #[doc(alias = "global constructor keyed to_a_176")]
 // was: __GLOBAL__I_a_176
 pub fn stub_419024() -> ! {
-    todo!("0x419024 `global constructor keyed to'_a_176")
+    todo!("0x419024 global constructor keyed to_a_176")
 }
 
 // 0x419344 — __GLOBAL__I_a_177
 #[doc(alias = "global constructor keyed to_a_177")]
 // was: __GLOBAL__I_a_177
 pub fn stub_419344() -> ! {
-    todo!("0x419344 `global constructor keyed to'_a_177")
+    todo!("0x419344 global constructor keyed to_a_177")
 }
 
 // 0x419518 — __ZN3RBXL11dummyLoaderEPNS_9DataModelE

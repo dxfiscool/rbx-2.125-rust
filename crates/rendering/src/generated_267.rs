@@ -46,7 +46,7 @@ pub fn stub_37e16c() -> ! {
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 // was: __ZThn32_N21SoundServiceStatsItemD1Ev
 pub fn stub_37e344() -> ! {
-    todo!("0x37e344 `non-virtual thunk to'SoundServiceStatsItem::~SoundServiceStatsItem()")
+    todo!("0x37e344 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
 }
 
 // 0x37e384 — __ZThn32_N21SoundServiceStatsItemD0Ev
@@ -54,7 +54,7 @@ pub fn stub_37e344() -> ! {
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 // was: __ZThn32_N21SoundServiceStatsItemD0Ev
 pub fn stub_37e384() -> ! {
-    todo!("0x37e384 `non-virtual thunk to'SoundServiceStatsItem::~SoundServiceStatsItem()")
+    todo!("0x37e384 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
 }
 
 // 0x37e458 — __ZThn36_N21SoundServiceStatsItemD1Ev
@@ -62,7 +62,7 @@ pub fn stub_37e384() -> ! {
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 // was: __ZThn36_N21SoundServiceStatsItemD1Ev
 pub fn stub_37e458() -> ! {
-    todo!("0x37e458 `non-virtual thunk to'SoundServiceStatsItem::~SoundServiceStatsItem()")
+    todo!("0x37e458 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
 }
 
 // 0x37e498 — __ZThn36_N21SoundServiceStatsItemD0Ev
@@ -70,7 +70,7 @@ pub fn stub_37e458() -> ! {
 #[doc(alias = "non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")]
 // was: __ZThn36_N21SoundServiceStatsItemD0Ev
 pub fn stub_37e498() -> ! {
-    todo!("0x37e498 `non-virtual thunk to'SoundServiceStatsItem::~SoundServiceStatsItem()")
+    todo!("0x37e498 non-virtual thunk toSoundServiceStatsItem::~SoundServiceStatsItem()")
 }
 
 // 0x37e56c — __ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
@@ -197,7 +197,7 @@ pub fn stub_37eab0() -> ! {
 #[doc(alias = "global constructor keyed to_a_138")]
 // was: __GLOBAL__I_a_138
 pub fn stub_37ead8() -> ! {
-    todo!("0x37ead8 `global constructor keyed to'_a_138")
+    todo!("0x37ead8 global constructor keyed to_a_138")
 }
 
 // 0x37f4d8 — __ZN3RBX10Reflection8EnumDescINS_9SoundTypeEEC1Ev
@@ -348,7 +348,7 @@ pub fn stub_38020c() -> ! {
 #[doc(alias = "global constructor keyed to_a_139")]
 // was: __GLOBAL__I_a_139
 pub fn stub_38039c() -> ! {
-    todo!("0x38039c `global constructor keyed to'_a_139")
+    todo!("0x38039c global constructor keyed to_a_139")
 }
 
 // 0x380464 — __ZNK3RBX12SpanningEdge25getConstChildSpanningNodeEv
@@ -403,7 +403,7 @@ pub fn stub_3806bc() -> ! {
 #[doc(alias = "global constructor keyed to_a_140")]
 // was: __GLOBAL__I_a_140
 pub fn stub_3806e4() -> ! {
-    todo!("0x3806e4 `global constructor keyed to'_a_140")
+    todo!("0x3806e4 global constructor keyed to_a_140")
 }
 
 // 0x3807ac — __ZN3RBX12SpanningNode15setEdgeToParentEPNS_12SpanningEdgeE
@@ -418,7 +418,7 @@ pub fn stub_3807ac() -> ! {
 #[doc(alias = "global constructor keyed to_a_141")]
 // was: __GLOBAL__I_a_141
 pub fn stub_3807b0() -> ! {
-    todo!("0x3807b0 `global constructor keyed to'_a_141")
+    todo!("0x3807b0 global constructor keyed to_a_141")
 }
 
 // 0x380878 — __ZN3RBX12SpanningTreeC2Ev
@@ -601,7 +601,7 @@ pub fn stub_3818e0() -> ! {
 #[doc(alias = "global constructor keyed to_a_142")]
 // was: __GLOBAL__I_a_142
 pub fn stub_381908() -> ! {
-    todo!("0x381908 `global constructor keyed to'_a_142")
+    todo!("0x381908 global constructor keyed to_a_142")
 }
 
 // 0x3819d0 — __ZN3RBX11StandardOut9singletonEv
@@ -784,7 +784,7 @@ pub fn stub_382bfc() -> ! {
 #[doc(alias = "global constructor keyed to_a_143")]
 // was: __GLOBAL__I_a_143
 pub fn stub_382d18() -> ! {
-    todo!("0x382d18 `global constructor keyed to'_a_143")
+    todo!("0x382d18 global constructor keyed to_a_143")
 }
 
 // 0x382de0 — __Z10SetBaseURLRKSs

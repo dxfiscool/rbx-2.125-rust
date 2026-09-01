@@ -461,7 +461,7 @@ pub fn stub_371250() -> ! {
 #[doc(alias = "global constructor keyed to_a_137")]
 // was: __GLOBAL__I_a_137
 pub fn stub_371254() -> ! {
-    todo!("0x371254 `global constructor keyed to'_a_137")
+    todo!("0x371254 global constructor keyed to_a_137")
 }
 
 // 0x37148c — __ZN3RBX10Reflection8EnumDescINS_10Soundscape10ReverbTypeEEC2Ev
@@ -549,7 +549,7 @@ pub fn stub_372500() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 // was: __ZThn32_N3RBX10Soundscape12SoundServiceD0Ev
 pub fn stub_372504() -> ! {
-    todo!("0x372504 `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+    todo!("0x372504 non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
 }
 
 // 0x37250c — __ZThn36_N3RBX10Soundscape12SoundServiceD0Ev
@@ -557,7 +557,7 @@ pub fn stub_372504() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 // was: __ZThn36_N3RBX10Soundscape12SoundServiceD0Ev
 pub fn stub_37250c() -> ! {
-    todo!("0x37250c `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+    todo!("0x37250c non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
 }
 
 // 0x372514 — __ZN3RBX10Soundscape12SoundServiceD2Ev
@@ -573,7 +573,7 @@ pub fn stub_372514() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 // was: __ZThn32_N3RBX10Soundscape12SoundServiceD1Ev
 pub fn stub_3728b0() -> ! {
-    todo!("0x3728b0 `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+    todo!("0x3728b0 non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
 }
 
 // 0x3728b8 — __ZThn36_N3RBX10Soundscape12SoundServiceD1Ev
@@ -581,7 +581,7 @@ pub fn stub_3728b0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 // was: __ZThn36_N3RBX10Soundscape12SoundServiceD1Ev
 pub fn stub_3728b8() -> ! {
-    todo!("0x3728b8 `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()")
+    todo!("0x3728b8 non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
 }
 
 // 0x3728c0 — __ZN3RBX10Soundscape12SoundService9closeFmodEv
@@ -885,7 +885,7 @@ pub fn stub_375094() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 // was: __ZThn32_N3RBX10Soundscape12SoundChannelD0Ev
 pub fn stub_375098() -> ! {
-    todo!("0x375098 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+    todo!("0x375098 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
 }
 
 // 0x3750a0 — __ZThn36_N3RBX10Soundscape12SoundChannelD0Ev
@@ -893,7 +893,7 @@ pub fn stub_375098() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 // was: __ZThn36_N3RBX10Soundscape12SoundChannelD0Ev
 pub fn stub_3750a0() -> ! {
-    todo!("0x3750a0 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+    todo!("0x3750a0 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
 }
 
 // 0x3750a8 — __ZN3RBX10Soundscape12SoundChannelD2Ev
@@ -909,7 +909,7 @@ pub fn stub_3750a8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 // was: __ZThn32_N3RBX10Soundscape12SoundChannelD1Ev
 pub fn stub_375330() -> ! {
-    todo!("0x375330 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+    todo!("0x375330 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
 }
 
 // 0x375338 — __ZThn36_N3RBX10Soundscape12SoundChannelD1Ev
@@ -917,7 +917,7 @@ pub fn stub_375330() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 // was: __ZThn36_N3RBX10Soundscape12SoundChannelD1Ev
 pub fn stub_375338() -> ! {
-    todo!("0x375338 `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()")
+    todo!("0x375338 non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
 }
 
 // 0x375340 — __ZNK3RBX10Soundscape12SoundService11getCpuStatsERNS1_8CpuStatsE

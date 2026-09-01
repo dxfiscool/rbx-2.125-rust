@@ -134,7 +134,7 @@ pub fn stub_63028() -> ! {
 // demangled: `global constructor keyed to'_a_32
 #[doc(alias = "global constructor keyed to_a_32")]
 pub fn stub_63040() -> ! {
-    todo!("0x63040 `global constructor keyed to'_a_32")
+    todo!("0x63040 global constructor keyed to_a_32")
 }
 
 // 0x631f8 — -[CameraMove init:]
@@ -183,7 +183,7 @@ pub fn stub_63528() -> ! {
 // demangled: `global constructor keyed to'_a_33
 #[doc(alias = "global constructor keyed to_a_33")]
 pub fn stub_637a0() -> ! {
-    todo!("0x637a0 `global constructor keyed to'_a_33")
+    todo!("0x637a0 global constructor keyed to_a_33")
 }
 
 // 0x639b8 — -[FunctionMarshaller marshallFunction]
@@ -235,7 +235,7 @@ pub fn stub_63b28() -> ! {
 // demangled: `global constructor keyed to'_a_34
 #[doc(alias = "global constructor keyed to_a_34")]
 pub fn stub_63b58() -> ! {
-    todo!("0x63b58 `global constructor keyed to'_a_34")
+    todo!("0x63b58 global constructor keyed to_a_34")
 }
 
 // 0x63d30 — +[RobloxCachedFlags sharedInstance]
@@ -577,7 +577,7 @@ pub fn stub_654c0() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")]
 pub fn stub_654c8() -> ! {
-    todo!("0x654c8 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::f")
+    todo!("0x654c8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::f")
 }
 
 // 0x654d0 — __ZNK5boost9function1IvRKN3RBX18StandardOutMessageEEclES4_
@@ -679,7 +679,7 @@ pub fn stub_65b20() -> ! {
 // demangled: `global constructor keyed to'_a_35
 #[doc(alias = "global constructor keyed to_a_35")]
 pub fn stub_65b4c() -> ! {
-    todo!("0x65b4c `global constructor keyed to'_a_35")
+    todo!("0x65b4c global constructor keyed to_a_35")
 }
 
 // 0x65ce4 — -[ExternalLoginViewController initWithCoder:]

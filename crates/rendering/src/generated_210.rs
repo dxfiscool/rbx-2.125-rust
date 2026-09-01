@@ -341,7 +341,7 @@ pub fn stub_cef20() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::gDummySample")]
 // was: __GLOBAL__I__ZN4FMOD12gDummySampleE
 pub fn stub_cf00c() -> ! {
-    todo!("0xcf00c `global constructor keyed to'FMOD::gDummySample")
+    todo!("0xcf00c global constructor keyed toFMOD::gDummySample")
 }
 
 // 0xcf018 — __Z21FMOD_Net_EncodeBase64PcS_i

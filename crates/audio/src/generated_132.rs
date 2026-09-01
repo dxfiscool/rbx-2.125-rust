@@ -225,7 +225,7 @@ pub fn stub_235d7c() -> ! {
 // type: int __fastcall(boost::detail::_anonymous_namespace_ *this)
 #[doc(alias = "boost::detail::anonymous namespace::create_current_thread_tls_key(void)")]
 pub fn stub_235da4() -> ! {
-    todo!("0x235da4 boost::detail::`anonymous namespace'::create_current_thread_tls_key(void)")
+    todo!("0x235da4 boost::detail::anonymous namespace::create_current_thread_tls_key(void)")
 }
 
 // 0x235dc4 — __ZN5boost6thread21start_thread_noexceptEv
@@ -302,7 +302,7 @@ pub fn stub_236c14() -> ! {
 // type: void *__fastcall(boost::_anonymous_namespace_ *this, int, int, int)
 #[doc(alias = "boost::anonymous namespace::get_or_make_current_thread_data(void)")]
 pub fn stub_236d04() -> ! {
-    todo!("0x236d04 boost::`anonymous namespace'::get_or_make_current_thread_data(void)")
+    todo!("0x236d04 boost::anonymous namespace::get_or_make_current_thread_data(void)")
 }
 
 // 0x236ec0 — __ZN5boost6detail12get_tss_dataEPKv
@@ -330,28 +330,28 @@ pub fn stub_237130() -> ! {
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *__hidden this)
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
 pub fn stub_237348() -> ! {
-    todo!("0x237348 boost::`anonymous namespace'::externally_launched_thread::~externally_launched_thread()")
+    todo!("0x237348 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
 }
 
 // 0x237354 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *__hidden this)
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
 pub fn stub_237354() -> ! {
-    todo!("0x237354 boost::`anonymous namespace'::externally_launched_thread::~externally_launched_thread()")
+    todo!("0x237354 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
 }
 
 // 0x237368 — __ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv
 // type: void __fastcall(boost::_anonymous_namespace_::externally_launched_thread *this)
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::run(void)")]
 pub fn stub_237368() -> ! {
-    todo!("0x237368 boost::`anonymous namespace'::externally_launched_thread::run(void)")
+    todo!("0x237368 boost::anonymous namespace::externally_launched_thread::run(void)")
 }
 
 // 0x23736c — __ZN5boost12_GLOBAL__N_126externally_launched_thread25notify_all_at_thread_exitEPNS_18condition_variableEPNS_5mutexE
 // type: void()
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")]
 pub fn stub_23736c() -> ! {
-    todo!("0x23736c boost::`anonymous namespace'::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")
+    todo!("0x23736c boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")
 }
 
 // 0x237370 — _tls_destructor
@@ -455,7 +455,7 @@ pub fn stub_237b6c() -> ! {
 // 0x237c98 — __GLOBAL__I_a_38
 #[doc(alias = "global constructor keyed to_a_38")]
 pub fn stub_237c98() -> ! {
-    todo!("0x237c98 `global constructor keyed to'_a_38")
+    todo!("0x237c98 global constructor keyed to_a_38")
 }
 
 // 0x237d60 — __ZN5boost10filesystem6detail14symlink_statusERKNS0_4pathEPNS_6system10error_codeE
@@ -476,7 +476,7 @@ pub fn stub_237fa4() -> ! {
 // type: int __fastcall(int, void *, int, int)
 #[doc(alias = "anonymous namespace::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)")]
 pub fn stub_238258() -> ! {
-    todo!("0x238258 `anonymous namespace'::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)")
+    todo!("0x238258 anonymous namespace::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)")
 }
 
 // 0x23837c — __ZN5boost10filesystem6detail12initial_pathEPNS_6system10error_codeE
@@ -504,7 +504,7 @@ pub fn stub_2386d4() -> ! {
 // type: bool __fastcall(const char **, int, _DWORD *)
 #[doc(alias = "anonymous namespace::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)")]
 pub fn stub_2388a8() -> ! {
-    todo!("0x2388a8 `anonymous namespace'::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)")
+    todo!("0x2388a8 anonymous namespace::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)")
 }
 
 // 0x238adc — __ZN5boost10filesystem6detail6statusERKNS0_4pathEPNS_6system10error_codeE
@@ -637,7 +637,7 @@ pub fn stub_23a394() -> ! {
 // type: int *()
 #[doc(alias = "global constructor keyed to_a_39")]
 pub fn stub_23a570() -> ! {
-    todo!("0x23a570 `global constructor keyed to'_a_39")
+    todo!("0x23a570 global constructor keyed to_a_39")
 }
 
 // 0x23a630 — __ZN5boost10filesystem4pathdVERKS1_

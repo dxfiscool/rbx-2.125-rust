@@ -430,7 +430,7 @@ pub fn stub_0x928170() -> ! {
 // 0x928194 — __ZThn4_N3rbx8callableINS_7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf2IvNS5_14RemoteFunctionEiS9_EENSD_5list3INSD_5valueIPSH_EENS3_3argILi1EEENSN_ILi2EEEEEEELi2ESA_E4callEiS9_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 pub fn stub_0x928194() -> ! {
-    todo!("0x928194 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,boost::shared_ptr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(int,boost::shared_ptr<RBX::Reflection::Tuple const>)")
+    todo!("0x928194 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::RemoteFunction,int,boost::shared_ptr<RBX::Reflection::Tuple const>>,boost::_bi::list3<boost::_bi::value<RBX::RemoteFunction*>,boost::arg<1>,boost::arg<2>>>,2,void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(int,boost::shared_ptr<RBX::Reflection::Tuple const>)")
 }
 
 // 0x9281b8 — __ZN5boost3_bi5list3INS0_5valueIPN3RBX14RemoteFunctionEEENS_3argILi1EEENS7_ILi2EEEEclINS_4_mfi3mf2IvS4_iNS_10shared_ptrIKNS3_10Reflection5TupleEEEEENS0_5list2IRiRSI_EEEEvNS0_4typeIvEERT_RT0_i
@@ -710,7 +710,7 @@ pub fn stub_0x92acbc() -> ! {
 // 0x92ad8c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotENS3_8functionISA_EELi1ESA_E4callES9_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,1,void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 pub fn stub_0x92ad8c() -> ! {
-    todo!("0x92ad8c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,1,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(boost::shared_ptr<RBX::Reflection::Tuple const>)")
+    todo!("0x92ad8c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,1,void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(boost::shared_ptr<RBX::Reflection::Tuple const>)")
 }
 
 // 0x92ad94 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE6removeEPNSA_4slotE
@@ -958,7 +958,7 @@ pub fn stub_0x92cae8() -> ! {
 // 0x92cc00 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotENS3_8functionISC_EELi2ESC_E4callES7_SB_
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::call(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 pub fn stub_0x92cc00() -> ! {
-    todo!("0x92cc00 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)")
+    todo!("0x92cc00 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)")
 }
 
 // 0x92cc08 — __ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEENS1_IKNS2_10Reflection5TupleEEEEclES4_S8_

@@ -11,7 +11,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
 // was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()
 pub fn stub_3e8c8() -> ! {
-    todo!("0x3e8c8 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+    todo!("0x3e8c8 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
 }
 
 
@@ -29,7 +29,7 @@ pub fn stub_3e900() -> ! {
 // was: `non-virtual thunk to'boost::exception_detail::bad_alloc_::~bad_alloc_()
 // type: void __fastcall(boost::exception_detail::bad_alloc_ *__hidden this)
 pub fn stub_3ea80() -> ! {
-    todo!("0x3ea80 `non-virtual thunk to'boost::exception_detail::bad_alloc_::~bad_alloc_()")
+    todo!("0x3ea80 non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")
 }
 
 
@@ -131,7 +131,7 @@ pub fn stub_3fd38() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 // was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()
 pub fn stub_3fd60() -> ! {
-    todo!("0x3fd60 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+    todo!("0x3fd60 non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
 }
 
 
@@ -139,7 +139,7 @@ pub fn stub_3fd60() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 // was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
 pub fn stub_3fd88() -> ! {
-    todo!("0x3fd88 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+    todo!("0x3fd88 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
 }
 
 
@@ -156,7 +156,7 @@ pub fn stub_3fdb8() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 // was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
 pub fn stub_3fee0() -> ! {
-    todo!("0x3fee0 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+    todo!("0x3fee0 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
 }
 
 
@@ -164,7 +164,7 @@ pub fn stub_3fee0() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 // was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const
 pub fn stub_3ff18() -> ! {
-    todo!("0x3ff18 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
+    todo!("0x3ff18 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
 }
 
 
@@ -172,7 +172,7 @@ pub fn stub_3ff18() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 // was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()
 pub fn stub_3ff28() -> ! {
-    todo!("0x3ff28 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+    todo!("0x3ff28 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
 }
 
 
@@ -188,7 +188,7 @@ pub fn stub_3ff60() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 // was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()
 pub fn stub_3ff90() -> ! {
-    todo!("0x3ff90 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+    todo!("0x3ff90 non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
 }
 
 
@@ -284,7 +284,7 @@ pub fn stub_406e0() -> ! {
 #[doc(alias = "global constructor keyed to_a_10")]
 // was: `global constructor keyed to'_a_10
 pub fn stub_4070c() -> ! {
-    todo!("0x4070c `global constructor keyed to'_a_10")
+    todo!("0x4070c global constructor keyed to_a_10")
 }
 
 
@@ -595,7 +595,7 @@ pub fn stub_41bd8() -> ! {
 #[doc(alias = "global constructor keyed to_a_11")]
 // was: `global constructor keyed to'_a_11
 pub fn stub_41bfc() -> ! {
-    todo!("0x41bfc `global constructor keyed to'_a_11")
+    todo!("0x41bfc global constructor keyed to_a_11")
 }
 
 
@@ -702,7 +702,7 @@ pub fn stub_424cc() -> ! {
 #[doc(alias = "global constructor keyed to_a_12")]
 // was: `global constructor keyed to'_a_12
 pub fn stub_42580() -> ! {
-    todo!("0x42580 `global constructor keyed to'_a_12")
+    todo!("0x42580 global constructor keyed to_a_12")
 }
 
 

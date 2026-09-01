@@ -326,7 +326,7 @@ pub fn stub_0x554a8() -> ! {
 // 0x554cc — __GLOBAL__I_a_28
 #[doc(alias = "global constructor keyed to_a_28")]
 pub fn stub_0x554cc() -> ! {
-    todo!("0x554cc `global constructor keyed to'_a_28")
+    todo!("0x554cc global constructor keyed to_a_28")
 }
 
 // 0x55664 — -[StoreManager init]
@@ -598,7 +598,7 @@ pub fn stub_0x57fc8() -> ! {
 // 0x57fec — __GLOBAL__I_a_29
 #[doc(alias = "global constructor keyed to_a_29")]
 pub fn stub_0x57fec() -> ! {
-    todo!("0x57fec `global constructor keyed to'_a_29")
+    todo!("0x57fec global constructor keyed to_a_29")
 }
 
 // 0x58184 — -[UIWebViewCacheManager init]

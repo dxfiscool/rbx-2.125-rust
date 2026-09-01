@@ -53,7 +53,7 @@ pub fn stub_a6aac() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD8tagcodecE")]
 pub fn stub_a6af8() -> ! {
-    todo!("0xa6af8 `global constructor keyed to'FMOD::tagcodec")
+    todo!("0xa6af8 global constructor keyed toFMOD::tagcodec")
 }
 
 // 0xa6b04 — __ZN4FMOD9CodecUser13closeInternalEv
@@ -130,7 +130,7 @@ pub fn stub_a6ecc() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD9usercodecE")]
 pub fn stub_a6f18() -> ! {
-    todo!("0xa6f18 `global constructor keyed to'FMOD::usercodec")
+    todo!("0xa6f18 global constructor keyed toFMOD::usercodec")
 }
 
 // 0xa6f24 — __ZN4FMOD8CodecWav16canPointInternalEv
@@ -235,7 +235,7 @@ pub fn stub_a8400() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD8wavcodecE")]
 pub fn stub_a844c() -> ! {
-    todo!("0xa844c `global constructor keyed to'FMOD::wavcodec")
+    todo!("0xa844c global constructor keyed toFMOD::wavcodec")
 }
 
 // 0xa8458 — __ZN4FMOD18IMAAdpcm_DecodeS16EPhPsjjj
@@ -438,7 +438,7 @@ pub fn stub_ad88c() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD7xmcodecE")]
 pub fn stub_ad8d8() -> ! {
-    todo!("0xad8d8 `global constructor keyed to'FMOD::xmcodec")
+    todo!("0xad8d8 global constructor keyed toFMOD::xmcodec")
 }
 
 // 0xad8e4 — __ZN4FMOD9DSPChorus17getMemoryUsedImplEPNS_13MemoryTrackerE
@@ -557,7 +557,7 @@ pub fn stub_ae6a4() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD9dspchorusE")]
 pub fn stub_ae6e8() -> ! {
-    todo!("0xae6e8 `global constructor keyed to'FMOD::dspchorus")
+    todo!("0xae6e8 global constructor keyed toFMOD::dspchorus")
 }
 
 // 0xae6f4 — __ZN4FMOD8DSPCodec14createInternalEv
@@ -690,7 +690,7 @@ pub fn stub_aef14() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD8dspcodecE")]
 pub fn stub_aef58() -> ! {
-    todo!("0xaef58 `global constructor keyed to'FMOD::dspcodec")
+    todo!("0xaef58 global constructor keyed toFMOD::dspcodec")
 }
 
 // 0xaef64 — __ZN4FMOD12DSPCodecPool10areAnyFreeEv
@@ -816,7 +816,7 @@ pub fn stub_afd50() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD13dspcompressorE")]
 pub fn stub_afd94() -> ! {
-    todo!("0xafd94 `global constructor keyed to'FMOD::dspcompressor")
+    todo!("0xafd94 global constructor keyed toFMOD::dspcompressor")
 }
 
 // 0xafda0 — __ZN4FMOD17DSPConnectionPool17getMemoryUsedImplEPNS_13MemoryTrackerE

@@ -394,7 +394,7 @@ pub fn stub_29bce4() -> ! {
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 pub fn stub_29bce8() -> ! {
-    todo!("0x29bce8 `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29bce8 non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29bcf0 — __ZThn36_N3RBX13ScriptContextD0Ev
@@ -402,7 +402,7 @@ pub fn stub_29bce8() -> ! {
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 pub fn stub_29bcf0() -> ! {
-    todo!("0x29bcf0 `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29bcf0 non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29bcf8 — __ZN3RBX13ScriptContextD2Ev
@@ -418,7 +418,7 @@ pub fn stub_29bcf8() -> ! {
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 pub fn stub_29c364() -> ! {
-    todo!("0x29c364 `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29c364 non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29c36c — __ZThn36_N3RBX13ScriptContextD1Ev
@@ -426,7 +426,7 @@ pub fn stub_29c364() -> ! {
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
 pub fn stub_29c36c() -> ! {
-    todo!("0x29c36c `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29c36c non-virtual thunk toRBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29c378 — __ZN3RBX13ScriptContext14onCheckTimeoutEv
@@ -658,7 +658,7 @@ pub fn stub_2a1430() -> ! {
 // type: _DWORD __fastcall(RBX::ScriptContext *__hidden this, RBX::BaseScript *)
 #[doc(alias = "non-virtual thunk toRBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")]
 pub fn stub_2a146c() -> ! {
-    todo!("0x2a146c `non-virtual thunk to'RBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")
+    todo!("0x2a146c non-virtual thunk toRBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")
 }
 
 // 0x2a1478 — __ZN3RBX13ScriptContext9addScriptEPNS_10BaseScriptENS0_18ScriptStartOptionsE

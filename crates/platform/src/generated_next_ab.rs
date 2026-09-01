@@ -64,7 +64,7 @@ pub fn stub_ad88c() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::xmcodec")]
 pub fn stub_ad8d8() -> ! {
-    todo!("0xad8d8 `global constructor keyed to'FMOD::xmcodec")
+    todo!("0xad8d8 global constructor keyed toFMOD::xmcodec")
 }
 
 // 0xad8e4 - __ZN4FMOD9DSPChorus17getMemoryUsedImplEPNS_13MemoryTrackerE
@@ -183,7 +183,7 @@ pub fn stub_ae6a4() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dspchorus")]
 pub fn stub_ae6e8() -> ! {
-    todo!("0xae6e8 `global constructor keyed to'FMOD::dspchorus")
+    todo!("0xae6e8 global constructor keyed toFMOD::dspchorus")
 }
 
 // 0xae6f4 - __ZN4FMOD8DSPCodec14createInternalEv
@@ -316,7 +316,7 @@ pub fn stub_aef14() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dspcodec")]
 pub fn stub_aef58() -> ! {
-    todo!("0xaef58 `global constructor keyed to'FMOD::dspcodec")
+    todo!("0xaef58 global constructor keyed toFMOD::dspcodec")
 }
 
 // 0xaef64 - __ZN4FMOD12DSPCodecPool10areAnyFreeEv
@@ -442,7 +442,7 @@ pub fn stub_afd50() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dspcompressor")]
 pub fn stub_afd94() -> ! {
-    todo!("0xafd94 `global constructor keyed to'FMOD::dspcompressor")
+    todo!("0xafd94 global constructor keyed toFMOD::dspcompressor")
 }
 
 // 0xafda0 - __ZN4FMOD17DSPConnectionPool17getMemoryUsedImplEPNS_13MemoryTrackerE
@@ -589,7 +589,7 @@ pub fn stub_b0f30() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dspdistortion")]
 pub fn stub_b0f74() -> ! {
-    todo!("0xb0f74 `global constructor keyed to'FMOD::dspdistortion")
+    todo!("0xb0f74 global constructor keyed toFMOD::dspdistortion")
 }
 
 // 0xb0f80 - __ZN4FMOD7DSPEcho14createInternalEv
@@ -722,7 +722,7 @@ pub fn stub_b2430() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dspecho_desc")]
 pub fn stub_b2474() -> ! {
-    todo!("0xb2474 `global constructor keyed to'FMOD::dspecho_desc")
+    todo!("0xb2474 global constructor keyed toFMOD::dspecho_desc")
 }
 
 // 0xb2480 - __ZN4FMOD6DSPFFT7processEi
@@ -904,7 +904,7 @@ pub fn stub_b4230() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dspflange")]
 pub fn stub_b4274() -> ! {
-    todo!("0xb4274 `global constructor keyed to'FMOD::dspflange")
+    todo!("0xb4274 global constructor keyed toFMOD::dspflange")
 }
 
 // 0xb4280 - __ZN4FMOD11DSPHighPass13resetInternalEv
@@ -1023,7 +1023,7 @@ pub fn stub_b53b0() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dsphighpass")]
 pub fn stub_b53f4() -> ! {
-    todo!("0xb53f4 `global constructor keyed to'FMOD::dsphighpass")
+    todo!("0xb53f4 global constructor keyed toFMOD::dsphighpass")
 }
 
 // 0xb5400 - __ZN4FMOD9DSPITEcho14createInternalEv

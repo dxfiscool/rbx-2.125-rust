@@ -65,7 +65,7 @@ pub fn stub_5cf59c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::ModelInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_13ModelInstanceENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 pub fn stub_5cf67c() -> ! {
-    todo!("0x5cf67c `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::ModelInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x5cf67c non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::ModelInstance,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x5cf684 — __ZNK3RBX10Reflection14PropDescriptorINS_13ModelInstanceEPNS_12PartInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -130,7 +130,7 @@ pub fn stub_5cf92c() -> ! {
 #[doc(alias = "global constructor keyed to_a_228")]
 // was: __GLOBAL__I_a_228
 pub fn stub_5cf958() -> ! {
-    todo!("0x5cf958 `global constructor keyed to'_a_228")
+    todo!("0x5cf958 global constructor keyed to_a_228")
 }
 
 // 0x5cfffc — __ZN3RBX5MouseC1Ev
@@ -170,7 +170,7 @@ pub fn stub_5d0744() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Mouse::~Mouse()")]
 // was: __ZThn32_N3RBX5MouseD0Ev
 pub fn stub_5d0748() -> ! {
-    todo!("0x5d0748 `non-virtual thunk to'RBX::Mouse::~Mouse()")
+    todo!("0x5d0748 non-virtual thunk toRBX::Mouse::~Mouse()")
 }
 
 // 0x5d0750 — __ZThn36_N3RBX5MouseD0Ev
@@ -178,7 +178,7 @@ pub fn stub_5d0748() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Mouse::~Mouse()")]
 // was: __ZThn36_N3RBX5MouseD0Ev
 pub fn stub_5d0750() -> ! {
-    todo!("0x5d0750 `non-virtual thunk to'RBX::Mouse::~Mouse()")
+    todo!("0x5d0750 non-virtual thunk toRBX::Mouse::~Mouse()")
 }
 
 // 0x5d0758 — __ZN3RBX5MouseD2Ev
@@ -194,7 +194,7 @@ pub fn stub_5d0758() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Mouse::~Mouse()")]
 // was: __ZThn32_N3RBX5MouseD1Ev
 pub fn stub_5d0dac() -> ! {
-    todo!("0x5d0dac `non-virtual thunk to'RBX::Mouse::~Mouse()")
+    todo!("0x5d0dac non-virtual thunk toRBX::Mouse::~Mouse()")
 }
 
 // 0x5d0db4 — __ZThn36_N3RBX5MouseD1Ev
@@ -202,7 +202,7 @@ pub fn stub_5d0dac() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Mouse::~Mouse()")]
 // was: __ZThn36_N3RBX5MouseD1Ev
 pub fn stub_5d0db4() -> ! {
-    todo!("0x5d0db4 `non-virtual thunk to'RBX::Mouse::~Mouse()")
+    todo!("0x5d0db4 non-virtual thunk toRBX::Mouse::~Mouse()")
 }
 
 // 0x5d0dbc — __ZNK3RBX5Mouse6getHitEv

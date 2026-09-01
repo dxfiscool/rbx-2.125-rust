@@ -16,7 +16,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "non-virtual thunk toRBX::KeyframeSequence::~KeyframeSequence()")]
 // was: __ZThn32_N3RBX16KeyframeSequenceD0Ev
 pub fn stub_5b61fc() -> ! {
-    todo!("0x5b61fc `non-virtual thunk to'RBX::KeyframeSequence::~KeyframeSequence()")
+    todo!("0x5b61fc non-virtual thunk toRBX::KeyframeSequence::~KeyframeSequence()")
 }
 
 // 0x5b62a0 — __ZThn32_NK3RBX14FactoryProductINS_16KeyframeSequenceENS_8InstanceELZNS_17sKeyframeSequenceEES2_E12getClassNameEv
@@ -32,7 +32,7 @@ pub fn stub_5b62a0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::KeyframeSequence::~KeyframeSequence()")]
 // was: __ZThn36_N3RBX16KeyframeSequenceD1Ev
 pub fn stub_5b62b0() -> ! {
-    todo!("0x5b62b0 `non-virtual thunk to'RBX::KeyframeSequence::~KeyframeSequence()")
+    todo!("0x5b62b0 non-virtual thunk toRBX::KeyframeSequence::~KeyframeSequence()")
 }
 
 // 0x5b62b8 — __ZThn36_N3RBX16KeyframeSequenceD0Ev
@@ -40,7 +40,7 @@ pub fn stub_5b62b0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::KeyframeSequence::~KeyframeSequence()")]
 // was: __ZThn36_N3RBX16KeyframeSequenceD0Ev
 pub fn stub_5b62b8() -> ! {
-    todo!("0x5b62b8 `non-virtual thunk to'RBX::KeyframeSequence::~KeyframeSequence()")
+    todo!("0x5b62b8 non-virtual thunk toRBX::KeyframeSequence::~KeyframeSequence()")
 }
 
 // 0x5b635c — __ZN3RBX14FactoryProductINS_16KeyframeSequenceENS_8InstanceELZNS_17sKeyframeSequenceEES2_E7CreatorD1Ev
@@ -763,5 +763,5 @@ pub fn stub_5b9800() -> ! {
 #[doc(alias = "global constructor keyed to_a_221")]
 // was: __GLOBAL__I_a_221
 pub fn stub_5b9838() -> ! {
-    todo!("0x5b9838 `global constructor keyed to'_a_221")
+    todo!("0x5b9838 global constructor keyed to_a_221")
 }

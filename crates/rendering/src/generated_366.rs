@@ -147,14 +147,14 @@ pub fn stub_501aa0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 // was: `non-virtual thunk to'RBX::GameSettings::~GameSettings()
 pub fn stub_501ab0() -> ! {
-    todo!("0x501ab0 `non-virtual thunk to'RBX::GameSettings::~GameSettings()")
+    todo!("0x501ab0 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
 
 // 0x501c34 — __ZThn32_N3RBX12GameSettingsD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 // was: `non-virtual thunk to'RBX::GameSettings::~GameSettings()
 pub fn stub_501c34() -> ! {
-    todo!("0x501c34 `non-virtual thunk to'RBX::GameSettings::~GameSettings()")
+    todo!("0x501c34 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
 
 // 0x501dd0 — __ZThn32_NK3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE12getClassNameEv
@@ -168,14 +168,14 @@ pub fn stub_501dd0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 // was: `non-virtual thunk to'RBX::GameSettings::~GameSettings()
 pub fn stub_501de0() -> ! {
-    todo!("0x501de0 `non-virtual thunk to'RBX::GameSettings::~GameSettings()")
+    todo!("0x501de0 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
 
 // 0x501f64 — __ZThn36_N3RBX12GameSettingsD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GameSettings::~GameSettings()")]
 // was: `non-virtual thunk to'RBX::GameSettings::~GameSettings()
 pub fn stub_501f64() -> ! {
-    todo!("0x501f64 `non-virtual thunk to'RBX::GameSettings::~GameSettings()")
+    todo!("0x501f64 non-virtual thunk toRBX::GameSettings::~GameSettings()")
 }
 
 // 0x502100 — __ZN3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE17static_getCreatorEv
@@ -896,7 +896,7 @@ pub fn stub_50487c() -> ! {
 #[doc(alias = "global constructor keyed to_a_201")]
 // was: `global constructor keyed to'_a_201
 pub fn stub_504a0c() -> ! {
-    todo!("0x504a0c `global constructor keyed to'_a_201")
+    todo!("0x504a0c global constructor keyed to_a_201")
 }
 
 // 0x505018 — __ZN3RBX15GeometryServiceC1Ev
@@ -987,14 +987,14 @@ pub fn stub_50603c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 // was: `non-virtual thunk to'RBX::GeometryService::~GeometryService()
 pub fn stub_506068() -> ! {
-    todo!("0x506068 `non-virtual thunk to'RBX::GeometryService::~GeometryService()")
+    todo!("0x506068 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }
 
 // 0x506148 — __ZThn32_N3RBX15GeometryServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 // was: `non-virtual thunk to'RBX::GeometryService::~GeometryService()
 pub fn stub_506148() -> ! {
-    todo!("0x506148 `non-virtual thunk to'RBX::GeometryService::~GeometryService()")
+    todo!("0x506148 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }
 
 // 0x506240 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_16sGeometryServiceEEE12getClassNameEv
@@ -1008,14 +1008,14 @@ pub fn stub_506240() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 // was: `non-virtual thunk to'RBX::GeometryService::~GeometryService()
 pub fn stub_506268() -> ! {
-    todo!("0x506268 `non-virtual thunk to'RBX::GeometryService::~GeometryService()")
+    todo!("0x506268 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }
 
 // 0x506348 — __ZThn36_N3RBX15GeometryServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::GeometryService::~GeometryService()")]
 // was: `non-virtual thunk to'RBX::GeometryService::~GeometryService()
 pub fn stub_506348() -> ! {
-    todo!("0x506348 `non-virtual thunk to'RBX::GeometryService::~GeometryService()")
+    todo!("0x506348 non-virtual thunk toRBX::GeometryService::~GeometryService()")
 }
 
 // 0x506440 — __ZN3RBX4Name9doDeclareILZNS_16sGeometryServiceEEEERKS0_v

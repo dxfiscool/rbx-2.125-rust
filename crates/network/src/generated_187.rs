@@ -109,7 +109,7 @@ pub fn stub_c36d4() -> ! {
 // 0xc3718 — __GLOBAL__I__ZN4FMOD12dspsfxreverbE
 #[doc(alias = "__GLOBAL__I__ZN4FMOD12dspsfxreverbE")]
 pub fn stub_c3718() -> ! {
-    todo!("0xc3718 `global constructor keyed to'FMOD::dspsfxreverb")
+    todo!("0xc3718 global constructor keyed toFMOD::dspsfxreverb")
 }
 
 // 0xc3724 — __ZN4FMOD12DSPSoundCard5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE

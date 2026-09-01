@@ -17,7 +17,7 @@ const _: () = {
 #[doc(alias = "__ZThn36_N3RBX13ClickDetectorD0Ev")]
 #[doc(alias = "__ZThn36_N3RBX13ClickDetectorD0Ev")]
 pub fn stub_3f1c2c() -> ! {
-    todo!("0x3f1c2c `non-virtual thunk to'RBX::ClickDetector::~ClickDetector()")
+    todo!("0x3f1c2c non-virtual thunk toRBX::ClickDetector::~ClickDetector()")
 }
 
 // 0x3f1c34 — __ZThn92_NK3RBX13ClickDetector19shouldRender3dAdornEv
@@ -26,7 +26,7 @@ pub fn stub_3f1c2c() -> ! {
 #[doc(alias = "__ZThn92_NK3RBX13ClickDetector19shouldRender3dAdornEv")]
 #[doc(alias = "__ZThn92_NK3RBX13ClickDetector19shouldRender3dAdornEv")]
 pub fn stub_3f1c34() -> ! {
-    todo!("0x3f1c34 `non-virtual thunk to'RBX::ClickDetector::shouldRender3dAdorn(void)const")
+    todo!("0x3f1c34 non-virtual thunk toRBX::ClickDetector::shouldRender3dAdorn(void)const")
 }
 
 // 0x3f1c38 — __ZN3RBX14FactoryProductINS_13ClickDetectorENS_8InstanceELZNS_14sClickDetectorEES2_E17static_getCreatorEv
@@ -269,7 +269,7 @@ pub fn stub_3f2938() -> ! {
 #[doc(alias = "__GLOBAL__I_a_171")]
 #[doc(alias = "__GLOBAL__I_a_171")]
 pub fn stub_3f2ab4() -> ! {
-    todo!("0x3f2ab4 `global constructor keyed to'_a_171")
+    todo!("0x3f2ab4 global constructor keyed to_a_171")
 }
 
 // 0x3f2f00 — __ZN3RBX17CollectionService13getCollectionESs
@@ -386,7 +386,7 @@ pub fn stub_3f386c() -> ! {
 #[doc(alias = "__ZThn32_N3RBX17CollectionServiceD1Ev")]
 #[doc(alias = "__ZThn32_N3RBX17CollectionServiceD1Ev")]
 pub fn stub_3f3894() -> ! {
-    todo!("0x3f3894 `non-virtual thunk to'RBX::CollectionService::~CollectionService()")
+    todo!("0x3f3894 non-virtual thunk toRBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f389c — __ZThn32_N3RBX17CollectionServiceD0Ev
@@ -395,7 +395,7 @@ pub fn stub_3f3894() -> ! {
 #[doc(alias = "__ZThn32_N3RBX17CollectionServiceD0Ev")]
 #[doc(alias = "__ZThn32_N3RBX17CollectionServiceD0Ev")]
 pub fn stub_3f389c() -> ! {
-    todo!("0x3f389c `non-virtual thunk to'RBX::CollectionService::~CollectionService()")
+    todo!("0x3f389c non-virtual thunk toRBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f3940 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_18sCollectionServiceEEE12getClassNameEv
@@ -413,7 +413,7 @@ pub fn stub_3f3940() -> ! {
 #[doc(alias = "__ZThn36_N3RBX17CollectionServiceD1Ev")]
 #[doc(alias = "__ZThn36_N3RBX17CollectionServiceD1Ev")]
 pub fn stub_3f3968() -> ! {
-    todo!("0x3f3968 `non-virtual thunk to'RBX::CollectionService::~CollectionService()")
+    todo!("0x3f3968 non-virtual thunk toRBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f3970 — __ZThn36_N3RBX17CollectionServiceD0Ev
@@ -422,7 +422,7 @@ pub fn stub_3f3968() -> ! {
 #[doc(alias = "__ZThn36_N3RBX17CollectionServiceD0Ev")]
 #[doc(alias = "__ZThn36_N3RBX17CollectionServiceD0Ev")]
 pub fn stub_3f3970() -> ! {
-    todo!("0x3f3970 `non-virtual thunk to'RBX::CollectionService::~CollectionService()")
+    todo!("0x3f3970 non-virtual thunk toRBX::CollectionService::~CollectionService()")
 }
 
 // 0x3f3a14 — __ZN3RBX17CollectionServiceD2Ev
@@ -728,7 +728,7 @@ pub fn stub_3f4e2c() -> ! {
 #[doc(alias = "__GLOBAL__I_a_172")]
 #[doc(alias = "__GLOBAL__I_a_172")]
 pub fn stub_3f4fac() -> ! {
-    todo!("0x3f4fac `global constructor keyed to'_a_172")
+    todo!("0x3f4fac global constructor keyed to_a_172")
 }
 
 // 0x3f5208 — __ZN3RBX16BoolPropertyVerbC2ERKSsPNS_9DataModelEPKc

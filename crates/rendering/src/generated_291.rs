@@ -22,7 +22,7 @@ pub fn stub_40336c() -> ! {
 #[doc(alias = "global constructor keyed to _a_173")]
 // was: __GLOBAL__I_a_173
 pub fn stub_403444() -> ! {
-    todo!("0x403444 `global constructor keyed to _a_173")
+    todo!("0x403444 global constructor keyed to _a_173")
 }
 
 // 0x403820 — __ZN3RBX11CommonVerbsC1EPNS_9DataModelE

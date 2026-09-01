@@ -215,7 +215,7 @@ pub fn stub_9ac8() -> ! {
 // type: int __fastcall(int this, int)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
 pub fn stub_9ae8() -> ! {
-    todo!("0x9ae8 `non-virtual thunk to'CRenderSettingsItem::setAutoQualityLevel(int)")
+    todo!("0x9ae8 non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")
 }
 
 // 0x9b08 — __ZN19CRenderSettingsItem21setEagerBulkExecutionEb
@@ -575,7 +575,7 @@ pub fn stub_b8d0() -> ! {
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_b8e0() -> ! {
-    todo!("0xb8e0 `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()")
+    todo!("0xb8e0 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
 }
 
 // 0xb8e8 — __ZThn32_N19CRenderSettingsItemD0Ev
@@ -583,7 +583,7 @@ pub fn stub_b8e0() -> ! {
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_b8e8() -> ! {
-    todo!("0xb8e8 `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()")
+    todo!("0xb8e8 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
 }
 
 // 0xb900 — __ZThn32_NK3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE12getClassNameEv
@@ -599,7 +599,7 @@ pub fn stub_b900() -> ! {
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_b910() -> ! {
-    todo!("0xb910 `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()")
+    todo!("0xb910 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
 }
 
 // 0xb918 — __ZThn36_N19CRenderSettingsItemD0Ev
@@ -607,7 +607,7 @@ pub fn stub_b910() -> ! {
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_b918() -> ! {
-    todo!("0xb918 `non-virtual thunk to'CRenderSettingsItem::~CRenderSettingsItem()")
+    todo!("0xb918 non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
 }
 
 // 0xb930 — __ZN3RBX14FactoryProductI19CRenderSettingsItemNS_22GlobalAdvancedSettings4ItemELZ15sRenderSettingsENS_8InstanceEE7CreatorD1Ev

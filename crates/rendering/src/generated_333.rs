@@ -85,7 +85,7 @@ pub fn stub_5b2174() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Keyframe::~Keyframe()")]
 // was: __ZThn32_N3RBX8KeyframeD1Ev
 pub fn stub_5b2184() -> ! {
-    todo!("0x5b2184 `non-virtual thunk to'RBX::Keyframe::~Keyframe()")
+    todo!("0x5b2184 non-virtual thunk toRBX::Keyframe::~Keyframe()")
 }
 
 // 0x5b218c — __ZThn32_N3RBX8KeyframeD0Ev
@@ -93,7 +93,7 @@ pub fn stub_5b2184() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Keyframe::~Keyframe()")]
 // was: __ZThn32_N3RBX8KeyframeD0Ev
 pub fn stub_5b218c() -> ! {
-    todo!("0x5b218c `non-virtual thunk to'RBX::Keyframe::~Keyframe()")
+    todo!("0x5b218c non-virtual thunk toRBX::Keyframe::~Keyframe()")
 }
 
 // 0x5b2230 — __ZThn32_NK3RBX14FactoryProductINS_8KeyframeENS_8InstanceELZNS_9sKeyframeEES2_E12getClassNameEv
@@ -108,7 +108,7 @@ pub fn stub_5b2230() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Keyframe::~Keyframe()")]
 // was: __ZThn36_N3RBX8KeyframeD1Ev
 pub fn stub_5b2240() -> ! {
-    todo!("0x5b2240 `non-virtual thunk to'RBX::Keyframe::~Keyframe()")
+    todo!("0x5b2240 non-virtual thunk toRBX::Keyframe::~Keyframe()")
 }
 
 // 0x5b2248 — __ZThn36_N3RBX8KeyframeD0Ev
@@ -116,7 +116,7 @@ pub fn stub_5b2240() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Keyframe::~Keyframe()")]
 // was: __ZThn36_N3RBX8KeyframeD0Ev
 pub fn stub_5b2248() -> ! {
-    todo!("0x5b2248 `non-virtual thunk to'RBX::Keyframe::~Keyframe()")
+    todo!("0x5b2248 non-virtual thunk toRBX::Keyframe::~Keyframe()")
 }
 
 // 0x5b22ec — __ZN3RBX14FactoryProductINS_8KeyframeENS_8InstanceELZNS_9sKeyframeEES2_E7CreatorD1Ev
@@ -398,7 +398,7 @@ pub fn stub_5b36b4() -> ! {
 #[doc(alias = "global constructor keyed to_a_220")]
 // was: __GLOBAL__I_a_220
 pub fn stub_5b379c() -> ! {
-    todo!("0x5b379c `global constructor keyed to'_a_220")
+    todo!("0x5b379c global constructor keyed to_a_220")
 }
 
 // 0x5b3b08 — __ZN3RBX16KeyframeSequence12getKeyframesEv
@@ -761,5 +761,5 @@ pub fn stub_5b61e4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::KeyframeSequence::~KeyframeSequence()")]
 // was: __ZThn32_N3RBX16KeyframeSequenceD1Ev
 pub fn stub_5b61f4() -> ! {
-    todo!("0x5b61f4 `non-virtual thunk to'RBX::KeyframeSequence::~KeyframeSequence()")
+    todo!("0x5b61f4 non-virtual thunk toRBX::KeyframeSequence::~KeyframeSequence()")
 }

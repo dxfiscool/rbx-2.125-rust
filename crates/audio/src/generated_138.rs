@@ -237,7 +237,7 @@ pub fn stub_1a5bc() -> ! {
 // 0x1a5d0 — __GLOBAL__I_a_1
 #[doc(alias = "__GLOBAL__I_a_1")]
 pub fn stub_1a5d0() -> ! {
-    todo!("0x1a5d0 `global constructor keyed to'_a_1")
+    todo!("0x1a5d0 global constructor keyed to_a_1")
 }
 
 // 0x1a768 — _main
@@ -249,7 +249,7 @@ pub fn stub_1a768() -> ! {
 // 0x1a7d4 — __GLOBAL__I_a_2
 #[doc(alias = "__GLOBAL__I_a_2")]
 pub fn stub_1a7d4() -> ! {
-    todo!("0x1a7d4 `global constructor keyed to'_a_2")
+    todo!("0x1a7d4 global constructor keyed to_a_2")
 }
 
 // 0x1a970 — -[DebugSettingsViewController initWithCoder:]
@@ -387,7 +387,7 @@ pub fn stub_1b304() -> ! {
 // 0x1b308 — __GLOBAL__I_a_3
 #[doc(alias = "__GLOBAL__I_a_3")]
 pub fn stub_1b308() -> ! {
-    todo!("0x1b308 `global constructor keyed to'_a_3")
+    todo!("0x1b308 global constructor keyed to_a_3")
 }
 
 // 0x1b3d0 — -[HomeViewController initWithCoder:]

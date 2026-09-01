@@ -216,7 +216,7 @@ pub fn stub_a53e38() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_510")]
 pub fn stub_a54018() -> ! {
-    todo!("0xa54018 `global constructor keyed to'_a_510")
+    todo!("0xa54018 global constructor keyed to_a_510")
 }
 
 // 0xa5533c — __ZN6RakNet9BitStreamC1Ev
@@ -519,7 +519,7 @@ pub fn stub_a5653c() -> ! {
 // demangled: `global constructor keyed to'_a_511
 #[doc(alias = "global constructor keyed to_a_511")]
 pub fn stub_a565f0() -> ! {
-    todo!("0xa565f0 `global constructor keyed to'_a_511")
+    todo!("0xa565f0 global constructor keyed to_a_511")
 }
 
 // 0xa56c10 — __ZN8CheckSum3AddEPhj
@@ -534,14 +534,14 @@ pub fn stub_a56c10() -> ! {
 // demangled: `global constructor keyed to'_a_512
 #[doc(alias = "global constructor keyed to_a_512")]
 pub fn stub_a56c4c() -> ! {
-    todo!("0xa56c4c `global constructor keyed to'_a_512")
+    todo!("0xa56c4c global constructor keyed to_a_512")
 }
 
 // 0xa57260 — __GLOBAL__I_a_513
 // demangled: `global constructor keyed to'_a_513
 #[doc(alias = "global constructor keyed to_a_513")]
 pub fn stub_a57260() -> ! {
-    todo!("0xa57260 `global constructor keyed to'_a_513")
+    todo!("0xa57260 global constructor keyed to_a_513")
 }
 
 // 0xa57874 — __ZN6RakNet19HuffmanEncodingTreeC1Ev
@@ -604,7 +604,7 @@ pub fn stub_a58150() -> ! {
 // demangled: `global constructor keyed to'_a_514
 #[doc(alias = "global constructor keyed to_a_514")]
 pub fn stub_a58224() -> ! {
-    todo!("0xa58224 `global constructor keyed to'_a_514")
+    todo!("0xa58224 global constructor keyed to_a_514")
 }
 
 // 0xa58844 — __ZN6RakNet7GetTimeEv
@@ -635,7 +635,7 @@ pub fn stub_a58938() -> ! {
 // demangled: `global constructor keyed to'_a_515
 #[doc(alias = "global constructor keyed to_a_515")]
 pub fn stub_a589b8() -> ! {
-    todo!("0xa589b8 `global constructor keyed to'_a_515")
+    todo!("0xa589b8 global constructor keyed to_a_515")
 }
 
 // 0xa58fcc — _Itoa
@@ -650,21 +650,21 @@ pub fn stub_a58fcc() -> ! {
 // demangled: `global constructor keyed to'_a_516
 #[doc(alias = "global constructor keyed to_a_516")]
 pub fn stub_a59064() -> ! {
-    todo!("0xa59064 `global constructor keyed to'_a_516")
+    todo!("0xa59064 global constructor keyed to_a_516")
 }
 
 // 0xa59678 — __GLOBAL__I_a_517
 // demangled: `global constructor keyed to'_a_517
 #[doc(alias = "global constructor keyed to_a_517")]
 pub fn stub_a59678() -> ! {
-    todo!("0xa59678 `global constructor keyed to'_a_517")
+    todo!("0xa59678 global constructor keyed to_a_517")
 }
 
 // 0xa59c8c — __GLOBAL__I_a_518
 // demangled: `global constructor keyed to'_a_518
 #[doc(alias = "global constructor keyed to_a_518")]
 pub fn stub_a59c8c() -> ! {
-    todo!("0xa59c8c `global constructor keyed to'_a_518")
+    todo!("0xa59c8c global constructor keyed to_a_518")
 }
 
 // 0xa5a2ac — __ZN6RakNet16PluginInterface2C2Ev
@@ -711,7 +711,7 @@ pub fn stub_a5a2d8() -> ! {
 // demangled: `global constructor keyed to'_a_519
 #[doc(alias = "global constructor keyed to_a_519")]
 pub fn stub_a5a2dc() -> ! {
-    todo!("0xa5a2dc `global constructor keyed to'_a_519")
+    todo!("0xa5a2dc global constructor keyed to_a_519")
 }
 
 // 0xa5a8fc — __Z25DefaultOutOfMemoryHandlerPKcl
@@ -750,7 +750,7 @@ pub fn stub_a5a918() -> ! {
 // demangled: `global constructor keyed to'_a_520
 #[doc(alias = "global constructor keyed to_a_520")]
 pub fn stub_a5a924() -> ! {
-    todo!("0xa5a924 `global constructor keyed to'_a_520")
+    todo!("0xa5a924 global constructor keyed to_a_520")
 }
 
 // 0xa5af38 — __ZN6RakNet12RakNetSocketC1Ev
@@ -773,7 +773,7 @@ pub fn stub_a5af50() -> ! {
 // demangled: `global constructor keyed to'_a_521
 #[doc(alias = "global constructor keyed to_a_521")]
 pub fn stub_a5af7c() -> ! {
-    todo!("0xa5af7c `global constructor keyed to'_a_521")
+    todo!("0xa5af7c global constructor keyed to_a_521")
 }
 
 // 0xa5b5b0 — __ZN6RakNet18StatisticsToStringEPKNS_16RakNetStatisticsEPci
@@ -788,7 +788,7 @@ pub fn stub_a5b5b0() -> ! {
 // demangled: `global constructor keyed to'_a_522
 #[doc(alias = "global constructor keyed to_a_522")]
 pub fn stub_a5b9cc() -> ! {
-    todo!("0xa5b9cc `global constructor keyed to'_a_522")
+    todo!("0xa5b9cc global constructor keyed to_a_522")
 }
 
 // 0xa5bfec — __ZN6RakNet13SystemAddressC1Ev

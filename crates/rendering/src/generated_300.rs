@@ -118,7 +118,7 @@ pub fn stub_3e7ed0() -> ! {
 #[doc(alias = "global constructor keyed to_a_168")]
 // was: __GLOBAL__I_a_168
 pub fn stub_3e7f44() -> ! {
-    todo!("0x3e7f44 `global constructor keyed to'_a_168")
+    todo!("0x3e7f44 global constructor keyed to_a_168")
 }
 
 // 0x3e8668 — __ZN3RBX13CharacterMesh11setBodyPartENS0_8BodyPartE
@@ -246,7 +246,7 @@ pub fn stub_3e9354() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 // was: __ZThn32_N3RBX13CharacterMeshD1Ev
 pub fn stub_3e9364() -> ! {
-    todo!("0x3e9364 `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e9364 non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e936c — __ZThn32_N3RBX13CharacterMeshD0Ev
@@ -254,7 +254,7 @@ pub fn stub_3e9364() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 // was: __ZThn32_N3RBX13CharacterMeshD0Ev
 pub fn stub_3e936c() -> ! {
-    todo!("0x3e936c `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e936c non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e9410 — __ZThn32_NK3RBX14FactoryProductINS_13CharacterMeshENS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEE12getClassNameEv
@@ -270,7 +270,7 @@ pub fn stub_3e9410() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 // was: __ZThn36_N3RBX13CharacterMeshD1Ev
 pub fn stub_3e9420() -> ! {
-    todo!("0x3e9420 `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e9420 non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e9428 — __ZThn36_N3RBX13CharacterMeshD0Ev
@@ -278,7 +278,7 @@ pub fn stub_3e9420() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 // was: __ZThn36_N3RBX13CharacterMeshD0Ev
 pub fn stub_3e9428() -> ! {
-    todo!("0x3e9428 `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e9428 non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e94cc — __ZThn92_N3RBX13CharacterMeshD1Ev
@@ -286,7 +286,7 @@ pub fn stub_3e9428() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 // was: __ZThn92_N3RBX13CharacterMeshD1Ev
 pub fn stub_3e94cc() -> ! {
-    todo!("0x3e94cc `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e94cc non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e94d4 — __ZThn92_N3RBX13CharacterMeshD0Ev
@@ -294,7 +294,7 @@ pub fn stub_3e94cc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")]
 // was: __ZThn92_N3RBX13CharacterMeshD0Ev
 pub fn stub_3e94d4() -> ! {
-    todo!("0x3e94d4 `non-virtual thunk to'RBX::CharacterMesh::~CharacterMesh()")
+    todo!("0x3e94d4 non-virtual thunk toRBX::CharacterMesh::~CharacterMesh()")
 }
 
 // 0x3e9578 — __ZN3RBX14FactoryProductINS_13CharacterMeshENS_19CharacterAppearanceELZNS_14sCharacterMeshEENS_8InstanceEE7CreatorD1Ev
@@ -604,7 +604,7 @@ pub fn stub_41e84c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getSyncronizationArbiter(void)")]
 // was: __ZThn184_N3RBX9DataModel24getSyncronizationArbiterEv
 pub fn stub_41e860() -> ! {
-    todo!("0x41e860 `non-virtual thunk to'RBX::DataModel::getSyncronizationArbiter(void)")
+    todo!("0x41e860 non-virtual thunk toRBX::DataModel::getSyncronizationArbiter(void)")
 }
 
 // 0x41e878 — __ZN3RBX9DataModel16doDataModelSetupEN5boost10shared_ptrIS0_EEb
@@ -724,7 +724,7 @@ pub fn stub_421c20() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // was: __ZThn32_N3RBX9DataModelD0Ev
 pub fn stub_421c24() -> ! {
-    todo!("0x421c24 `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x421c24 non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x421c2c — __ZThn36_N3RBX9DataModelD0Ev
@@ -732,7 +732,7 @@ pub fn stub_421c24() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // was: __ZThn36_N3RBX9DataModelD0Ev
 pub fn stub_421c2c() -> ! {
-    todo!("0x421c2c `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x421c2c non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x421c34 — __ZThn144_N3RBX9DataModelD0Ev
@@ -740,7 +740,7 @@ pub fn stub_421c2c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // was: __ZThn144_N3RBX9DataModelD0Ev
 pub fn stub_421c34() -> ! {
-    todo!("0x421c34 `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x421c34 non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x421c3c — __ZThn180_N3RBX9DataModelD0Ev
@@ -748,7 +748,7 @@ pub fn stub_421c34() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // was: __ZThn180_N3RBX9DataModelD0Ev
 pub fn stub_421c3c() -> ! {
-    todo!("0x421c3c `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x421c3c non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x421c44 — __ZThn184_N3RBX9DataModelD0Ev
@@ -756,7 +756,7 @@ pub fn stub_421c3c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // was: __ZThn184_N3RBX9DataModelD0Ev
 pub fn stub_421c44() -> ! {
-    todo!("0x421c44 `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x421c44 non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x421c4c — __ZN3RBX9DataModelD2Ev
@@ -772,7 +772,7 @@ pub fn stub_421c4c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // was: __ZThn32_N3RBX9DataModelD1Ev
 pub fn stub_4228ac() -> ! {
-    todo!("0x4228ac `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x4228ac non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x4228b4 — __ZThn36_N3RBX9DataModelD1Ev
@@ -780,7 +780,7 @@ pub fn stub_4228ac() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // was: __ZThn36_N3RBX9DataModelD1Ev
 pub fn stub_4228b4() -> ! {
-    todo!("0x4228b4 `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x4228b4 non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x4228bc — __ZThn144_N3RBX9DataModelD1Ev
@@ -788,7 +788,7 @@ pub fn stub_4228b4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // was: __ZThn144_N3RBX9DataModelD1Ev
 pub fn stub_4228bc() -> ! {
-    todo!("0x4228bc `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x4228bc non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x4228c4 — __ZThn180_N3RBX9DataModelD1Ev
@@ -796,7 +796,7 @@ pub fn stub_4228bc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // was: __ZThn180_N3RBX9DataModelD1Ev
 pub fn stub_4228c4() -> ! {
-    todo!("0x4228c4 `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x4228c4 non-virtual thunk toRBX::DataModel::~DataModel()")
 }
 
 // 0x4228cc — __ZThn184_N3RBX9DataModelD1Ev
@@ -804,5 +804,5 @@ pub fn stub_4228c4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // was: __ZThn184_N3RBX9DataModelD1Ev
 pub fn stub_4228cc() -> ! {
-    todo!("0x4228cc `non-virtual thunk to'RBX::DataModel::~DataModel()")
+    todo!("0x4228cc non-virtual thunk toRBX::DataModel::~DataModel()")
 }

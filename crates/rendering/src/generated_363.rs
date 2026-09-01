@@ -14,7 +14,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "non-virtual thunk toRBX::Fire::~Fire()")]
 // was: `non-virtual thunk to'RBX::Fire::~Fire()
 pub fn stub_4efba8() -> ! {
-    todo!("0x4efba8 `non-virtual thunk to'RBX::Fire::~Fire()")
+    todo!("0x4efba8 non-virtual thunk toRBX::Fire::~Fire()")
 }
 
 // 0x4efbb0 — __ZN3RBX4FireD2Ev
@@ -28,21 +28,21 @@ pub fn stub_4efbb0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Fire::~Fire()")]
 // was: `non-virtual thunk to'RBX::Fire::~Fire()
 pub fn stub_4efc6c() -> ! {
-    todo!("0x4efc6c `non-virtual thunk to'RBX::Fire::~Fire()")
+    todo!("0x4efc6c non-virtual thunk toRBX::Fire::~Fire()")
 }
 
 // 0x4efc74 — __ZThn36_N3RBX4FireD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Fire::~Fire()")]
 // was: `non-virtual thunk to'RBX::Fire::~Fire()
 pub fn stub_4efc74() -> ! {
-    todo!("0x4efc74 `non-virtual thunk to'RBX::Fire::~Fire()")
+    todo!("0x4efc74 non-virtual thunk toRBX::Fire::~Fire()")
 }
 
 // 0x4efc7c — __ZThn92_N3RBX4FireD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Fire::~Fire()")]
 // was: `non-virtual thunk to'RBX::Fire::~Fire()
 pub fn stub_4efc7c() -> ! {
-    todo!("0x4efc7c `non-virtual thunk to'RBX::Fire::~Fire()")
+    todo!("0x4efc7c non-virtual thunk toRBX::Fire::~Fire()")
 }
 
 // 0x4efc84 — __ZNK3RBX4Fire14getClampedSizeEv
@@ -406,7 +406,7 @@ pub fn stub_4f1020() -> ! {
 #[doc(alias = "global constructor keyed to_a_195")]
 // was: `global constructor keyed to'_a_195
 pub fn stub_4f1070() -> ! {
-    todo!("0x4f1070 `global constructor keyed to'_a_195")
+    todo!("0x4f1070 global constructor keyed to_a_195")
 }
 
 // 0x4f15f0 — __ZNK3RBX4Flag12getTeamColorEv
@@ -448,21 +448,21 @@ pub fn stub_4f19cc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Flag::~Flag()")]
 // was: `non-virtual thunk to'RBX::Flag::~Flag()
 pub fn stub_4f19d0() -> ! {
-    todo!("0x4f19d0 `non-virtual thunk to'RBX::Flag::~Flag()")
+    todo!("0x4f19d0 non-virtual thunk toRBX::Flag::~Flag()")
 }
 
 // 0x4f19d8 — __ZThn36_N3RBX4FlagD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Flag::~Flag()")]
 // was: `non-virtual thunk to'RBX::Flag::~Flag()
 pub fn stub_4f19d8() -> ! {
-    todo!("0x4f19d8 `non-virtual thunk to'RBX::Flag::~Flag()")
+    todo!("0x4f19d8 non-virtual thunk toRBX::Flag::~Flag()")
 }
 
 // 0x4f19e0 — __ZThn292_N3RBX4FlagD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Flag::~Flag()")]
 // was: `non-virtual thunk to'RBX::Flag::~Flag()
 pub fn stub_4f19e0() -> ! {
-    todo!("0x4f19e0 `non-virtual thunk to'RBX::Flag::~Flag()")
+    todo!("0x4f19e0 non-virtual thunk toRBX::Flag::~Flag()")
 }
 
 // 0x4f19e8 — __ZN3RBX4FlagD2Ev
@@ -476,21 +476,21 @@ pub fn stub_4f19e8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Flag::~Flag()")]
 // was: `non-virtual thunk to'RBX::Flag::~Flag()
 pub fn stub_4f1b84() -> ! {
-    todo!("0x4f1b84 `non-virtual thunk to'RBX::Flag::~Flag()")
+    todo!("0x4f1b84 non-virtual thunk toRBX::Flag::~Flag()")
 }
 
 // 0x4f1b8c — __ZThn36_N3RBX4FlagD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Flag::~Flag()")]
 // was: `non-virtual thunk to'RBX::Flag::~Flag()
 pub fn stub_4f1b8c() -> ! {
-    todo!("0x4f1b8c `non-virtual thunk to'RBX::Flag::~Flag()")
+    todo!("0x4f1b8c non-virtual thunk toRBX::Flag::~Flag()")
 }
 
 // 0x4f1b94 — __ZThn292_N3RBX4FlagD1Ev
 #[doc(alias = "non-virtual thunk toRBX::Flag::~Flag()")]
 // was: `non-virtual thunk to'RBX::Flag::~Flag()
 pub fn stub_4f1b94() -> ! {
-    todo!("0x4f1b94 `non-virtual thunk to'RBX::Flag::~Flag()")
+    todo!("0x4f1b94 non-virtual thunk toRBX::Flag::~Flag()")
 }
 
 // 0x4f1b9c — __ZN3RBX4Flag17onServiceProviderEPNS_15ServiceProviderES2_

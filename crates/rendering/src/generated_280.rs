@@ -761,7 +761,7 @@ pub fn stub_3d0904() -> ! {
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 // was: __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_6CameraENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 pub fn stub_3d09e4() -> ! {
-    todo!("0x3d09e4 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x3d09e4 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Camera,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 
@@ -1137,7 +1137,7 @@ pub fn stub_3d199c() -> ! {
 #[doc(alias = "__GLOBAL__I_a_166")]
 // was: __GLOBAL__I_a_166
 pub fn stub_3d19c4() -> ! {
-    todo!("0x3d19c4 `global constructor keyed to'_a_166")
+    todo!("0x3d19c4 global constructor keyed to_a_166")
 }
 
 
@@ -1281,7 +1281,7 @@ pub fn stub_3d3a6c() -> ! {
 #[doc(alias = "__ZThn32_N3RBX20ChangeHistoryServiceD0Ev")]
 // was: __ZThn32_N3RBX20ChangeHistoryServiceD0Ev
 pub fn stub_3d3a70() -> ! {
-    todo!("0x3d3a70 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3a70 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 
@@ -1290,7 +1290,7 @@ pub fn stub_3d3a70() -> ! {
 #[doc(alias = "__ZThn36_N3RBX20ChangeHistoryServiceD0Ev")]
 // was: __ZThn36_N3RBX20ChangeHistoryServiceD0Ev
 pub fn stub_3d3a78() -> ! {
-    todo!("0x3d3a78 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3a78 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 
@@ -1308,7 +1308,7 @@ pub fn stub_3d3a80() -> ! {
 #[doc(alias = "__ZThn32_N3RBX20ChangeHistoryServiceD1Ev")]
 // was: __ZThn32_N3RBX20ChangeHistoryServiceD1Ev
 pub fn stub_3d3f08() -> ! {
-    todo!("0x3d3f08 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3f08 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 
@@ -1317,7 +1317,7 @@ pub fn stub_3d3f08() -> ! {
 #[doc(alias = "__ZThn36_N3RBX20ChangeHistoryServiceD1Ev")]
 // was: __ZThn36_N3RBX20ChangeHistoryServiceD1Ev
 pub fn stub_3d3f10() -> ! {
-    todo!("0x3d3f10 `non-virtual thunk to'RBX::ChangeHistoryService::~ChangeHistoryService()")
+    todo!("0x3d3f10 non-virtual thunk toRBX::ChangeHistoryService::~ChangeHistoryService()")
 }
 
 

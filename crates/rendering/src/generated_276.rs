@@ -51,7 +51,7 @@ pub fn stub_3a2ab4() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::function<void ()(float,float,float,float)>,4,void ()(float,float,float,float)>::call(float,float,float,float)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvffffEE4slotEN5boost8functionIS3_EELi4ES3_E4callEffff
 pub fn stub_3a2abc() -> ! {
-    todo!("0x3a2abc `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::function<void ()(float,float,float,float)>,4,void ()(float,float,float,float)>::call(float,float,float,float)")
+    todo!("0x3a2abc non-virtual thunk torbx::callable<rbx::signals::signal<void ()(float,float,float,float)>::slot,boost::function<void ()(float,float,float,float)>,4,void ()(float,float,float,float)>::call(float,float,float,float)")
 }
 
 
@@ -149,7 +149,7 @@ pub fn stub_3a3458() -> ! {
 #[doc(alias = "global constructor keyed to_a_157")]
 // was: __GLOBAL__I_a_157
 pub fn stub_3a35a4() -> ! {
-    todo!("0x3a35a4 `global constructor keyed to'_a_157")
+    todo!("0x3a35a4 global constructor keyed to_a_157")
 }
 
 
@@ -203,7 +203,7 @@ pub fn stub_3a4158() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 // was: __ZThn32_N3RBX8AnimatorD0Ev
 pub fn stub_3a415c() -> ! {
-    todo!("0x3a415c `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a415c non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 
@@ -212,7 +212,7 @@ pub fn stub_3a415c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 // was: __ZThn36_N3RBX8AnimatorD0Ev
 pub fn stub_3a4164() -> ! {
-    todo!("0x3a4164 `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a4164 non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 
@@ -221,7 +221,7 @@ pub fn stub_3a4164() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 // was: __ZThn92_N3RBX8AnimatorD0Ev
 pub fn stub_3a416c() -> ! {
-    todo!("0x3a416c `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a416c non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 
@@ -239,7 +239,7 @@ pub fn stub_3a4174() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 // was: __ZThn32_N3RBX8AnimatorD1Ev
 pub fn stub_3a434c() -> ! {
-    todo!("0x3a434c `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a434c non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 
@@ -248,7 +248,7 @@ pub fn stub_3a434c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 // was: __ZThn36_N3RBX8AnimatorD1Ev
 pub fn stub_3a4354() -> ! {
-    todo!("0x3a4354 `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a4354 non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 
@@ -257,7 +257,7 @@ pub fn stub_3a4354() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Animator::~Animator()")]
 // was: __ZThn92_N3RBX8AnimatorD1Ev
 pub fn stub_3a435c() -> ! {
-    todo!("0x3a435c `non-virtual thunk to'RBX::Animator::~Animator()")
+    todo!("0x3a435c non-virtual thunk toRBX::Animator::~Animator()")
 }
 
 
@@ -329,7 +329,7 @@ pub fn stub_3a4870() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)")]
 // was: __ZThn92_N3RBX8Animator9onSteppedERKNS_7SteppedE
 pub fn stub_3a4e98() -> ! {
-    todo!("0x3a4e98 `non-virtual thunk to'RBX::Animator::onStepped(RBX::Stepped const&)")
+    todo!("0x3a4e98 non-virtual thunk toRBX::Animator::onStepped(RBX::Stepped const&)")
 }
 
 
@@ -937,7 +937,7 @@ pub fn stub_3a72b8() -> ! {
 #[doc(alias = "global constructor keyed to_a_158")]
 // was: __GLOBAL__I_a_158
 pub fn stub_3a72e0() -> ! {
-    todo!("0x3a72e0 `global constructor keyed to'_a_158")
+    todo!("0x3a72e0 global constructor keyed to_a_158")
 }
 
 
@@ -1000,7 +1000,7 @@ pub fn stub_3a7b94() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::process(RBX::GuiEvent const&)")]
 // was: __ZThn92_N3RBX10ArcHandles7processERKNS_8GuiEventE
 pub fn stub_3a7ee4() -> ! {
-    todo!("0x3a7ee4 `non-virtual thunk to'RBX::ArcHandles::process(RBX::GuiEvent const&)")
+    todo!("0x3a7ee4 non-virtual thunk toRBX::ArcHandles::process(RBX::GuiEvent const&)")
 }
 
 
@@ -1072,7 +1072,7 @@ pub fn stub_3a8654() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 // was: __ZThn32_N3RBX10ArcHandlesD1Ev
 pub fn stub_3a8674() -> ! {
-    todo!("0x3a8674 `non-virtual thunk to'RBX::ArcHandles::~ArcHandles()")
+    todo!("0x3a8674 non-virtual thunk toRBX::ArcHandles::~ArcHandles()")
 }
 
 
@@ -1081,7 +1081,7 @@ pub fn stub_3a8674() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 // was: __ZThn32_N3RBX10ArcHandlesD0Ev
 pub fn stub_3a867c() -> ! {
-    todo!("0x3a867c `non-virtual thunk to'RBX::ArcHandles::~ArcHandles()")
+    todo!("0x3a867c non-virtual thunk toRBX::ArcHandles::~ArcHandles()")
 }
 
 
@@ -1099,7 +1099,7 @@ pub fn stub_3a8720() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 // was: __ZThn36_N3RBX10ArcHandlesD1Ev
 pub fn stub_3a8730() -> ! {
-    todo!("0x3a8730 `non-virtual thunk to'RBX::ArcHandles::~ArcHandles()")
+    todo!("0x3a8730 non-virtual thunk toRBX::ArcHandles::~ArcHandles()")
 }
 
 
@@ -1108,7 +1108,7 @@ pub fn stub_3a8730() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 // was: __ZThn36_N3RBX10ArcHandlesD0Ev
 pub fn stub_3a8738() -> ! {
-    todo!("0x3a8738 `non-virtual thunk to'RBX::ArcHandles::~ArcHandles()")
+    todo!("0x3a8738 non-virtual thunk toRBX::ArcHandles::~ArcHandles()")
 }
 
 

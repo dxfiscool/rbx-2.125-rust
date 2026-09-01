@@ -79,7 +79,7 @@ pub fn stub_3ac09c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 // was: __ZThn32_N3RBX11HandlesBaseD1Ev
 pub fn stub_3ac140() -> ! {
-    todo!("0x3ac140 `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()")
+    todo!("0x3ac140 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
 }
 
 // 0x3ac148 — __ZThn32_N3RBX11HandlesBaseD0Ev
@@ -87,7 +87,7 @@ pub fn stub_3ac140() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 // was: __ZThn32_N3RBX11HandlesBaseD0Ev
 pub fn stub_3ac148() -> ! {
-    todo!("0x3ac148 `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()")
+    todo!("0x3ac148 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
 }
 
 // 0x3ac1f0 — __ZThn36_N3RBX11HandlesBaseD1Ev
@@ -95,7 +95,7 @@ pub fn stub_3ac148() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 // was: __ZThn36_N3RBX11HandlesBaseD1Ev
 pub fn stub_3ac1f0() -> ! {
-    todo!("0x3ac1f0 `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()")
+    todo!("0x3ac1f0 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
 }
 
 // 0x3ac1f8 — __ZThn36_N3RBX11HandlesBaseD0Ev
@@ -103,7 +103,7 @@ pub fn stub_3ac1f0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 // was: __ZThn36_N3RBX11HandlesBaseD0Ev
 pub fn stub_3ac1f8() -> ! {
-    todo!("0x3ac1f8 `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()")
+    todo!("0x3ac1f8 non-virtual thunk toRBX::HandlesBase::~HandlesBase()")
 }
 
 // 0x3ac29c — __ZN3RBX4Name7declareILZNS_12sHandlesBaseEEEERKS0_v
@@ -300,7 +300,7 @@ pub fn stub_3b00f0() -> ! {
 #[doc(alias = "global constructor keyed to_a_159")]
 // was: __GLOBAL__I_a_159
 pub fn stub_3b081c() -> ! {
-    todo!("0x3b081c `global constructor keyed to'_a_159")
+    todo!("0x3b081c global constructor keyed to_a_159")
 }
 
 // 0x3b0e04 — __ZN3RBX8BackpackC1Ev
@@ -332,7 +332,7 @@ pub fn stub_3b1014() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Backpack::scriptShouldRun(RBX::BaseScript *)")]
 // was: __ZThn148_N3RBX8Backpack15scriptShouldRunEPNS_10BaseScriptE
 pub fn stub_3b1218() -> ! {
-    todo!("0x3b1218 `non-virtual thunk to'RBX::Backpack::scriptShouldRun(RBX::BaseScript *)")
+    todo!("0x3b1218 non-virtual thunk toRBX::Backpack::scriptShouldRun(RBX::BaseScript *)")
 }
 
 // 0x3b1224 — __ZN3RBX8BackpackD1Ev
@@ -364,7 +364,7 @@ pub fn stub_3b12c8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 // was: __ZThn32_N3RBX8BackpackD1Ev
 pub fn stub_3b12d8() -> ! {
-    todo!("0x3b12d8 `non-virtual thunk to'RBX::Backpack::~Backpack()")
+    todo!("0x3b12d8 non-virtual thunk toRBX::Backpack::~Backpack()")
 }
 
 // 0x3b12e0 — __ZThn32_N3RBX8BackpackD0Ev
@@ -372,7 +372,7 @@ pub fn stub_3b12d8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 // was: __ZThn32_N3RBX8BackpackD0Ev
 pub fn stub_3b12e0() -> ! {
-    todo!("0x3b12e0 `non-virtual thunk to'RBX::Backpack::~Backpack()")
+    todo!("0x3b12e0 non-virtual thunk toRBX::Backpack::~Backpack()")
 }
 
 // 0x3b1384 — __ZThn32_NK3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE12getClassNameEv
@@ -388,7 +388,7 @@ pub fn stub_3b1384() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 // was: __ZThn36_N3RBX8BackpackD1Ev
 pub fn stub_3b1394() -> ! {
-    todo!("0x3b1394 `non-virtual thunk to'RBX::Backpack::~Backpack()")
+    todo!("0x3b1394 non-virtual thunk toRBX::Backpack::~Backpack()")
 }
 
 // 0x3b139c — __ZThn36_N3RBX8BackpackD0Ev
@@ -396,7 +396,7 @@ pub fn stub_3b1394() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 // was: __ZThn36_N3RBX8BackpackD0Ev
 pub fn stub_3b139c() -> ! {
-    todo!("0x3b139c `non-virtual thunk to'RBX::Backpack::~Backpack()")
+    todo!("0x3b139c non-virtual thunk toRBX::Backpack::~Backpack()")
 }
 
 // 0x3b1440 — __ZN3RBX14FactoryProductINS_8BackpackENS_6HopperELZNS_9sBackpackEENS_8InstanceEE7CreatorD1Ev
@@ -536,7 +536,7 @@ pub fn stub_3b1e20() -> ! {
 #[doc(alias = "global constructor keyed to_a_160")]
 // was: __GLOBAL__I_a_160
 pub fn stub_3b1ec4() -> ! {
-    todo!("0x3b1ec4 `global constructor keyed to'_a_160")
+    todo!("0x3b1ec4 global constructor keyed to_a_160")
 }
 
 // 0x3b21a4 — __ZN3RBX12BadgeService12userHasBadgeEiiN5boost8functionIFvbEEENS2_IFvSsEEE

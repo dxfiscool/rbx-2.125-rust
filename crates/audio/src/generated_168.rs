@@ -16,7 +16,7 @@ const _: () = {
 #[doc(alias = "anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")]
 #[doc(alias = "__ZN12_GLOBAL__N_111createIdUrlERSsRKSsS2_")]
 pub fn stub_314f94() -> ! {
-    todo!("0x314f94 `anonymous namespace'::createIdUrl(std::string &,std::string const&,std::string const&)")
+    todo!("0x314f94 anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")
 }
 
 // 0x315004 — __ZN3RBX9ContentId22convertToLegacyContentERKSs
@@ -71,7 +71,7 @@ pub fn stub_315564() -> ! {
 #[doc(alias = "global constructor keyed to_a_111")]
 #[doc(alias = "__GLOBAL__I_a_111")]
 pub fn stub_315594() -> ! {
-    todo!("0x315594 `global constructor keyed to'_a_111")
+    todo!("0x315594 global constructor keyed to_a_111")
 }
 
 // 0x315680 — __ZN3RBX10FileSystem16getUserDirectoryEbNS_13FileSystemDirEPKc
@@ -193,7 +193,7 @@ pub fn stub_3164c4() -> ! {
 #[doc(alias = "global constructor keyed to_a_112")]
 #[doc(alias = "__GLOBAL__I_a_112")]
 pub fn stub_3164c8() -> ! {
-    todo!("0x3164c8 `global constructor keyed to'_a_112")
+    todo!("0x3164c8 global constructor keyed to_a_112")
 }
 
 // 0x316590 — __ZN3RBX4Http21getRobloxResponceLockEv
@@ -760,7 +760,7 @@ pub fn stub_31e63c() -> ! {
 #[doc(alias = "global constructor keyed to_a_113")]
 #[doc(alias = "__GLOBAL__I_a_113")]
 pub fn stub_31e658() -> ! {
-    todo!("0x31e658 `global constructor keyed to'_a_113")
+    todo!("0x31e658 global constructor keyed to_a_113")
 }
 
 // 0x31e8b0 — __ZNK3RBX7Extents13clampInsideOfERKS0_
@@ -854,7 +854,7 @@ pub fn stub_31f68c() -> ! {
 #[doc(alias = "global constructor keyed to_a_114")]
 #[doc(alias = "__GLOBAL__I_a_114")]
 pub fn stub_31f738() -> ! {
-    todo!("0x31f738 `global constructor keyed to'_a_114")
+    todo!("0x31f738 global constructor keyed to_a_114")
 }
 
 // 0x31f90c — __ZNK3RBX4FaceixEi
@@ -963,7 +963,7 @@ pub fn stub_3201f4() -> ! {
 #[doc(alias = "global constructor keyed to_a_115")]
 #[doc(alias = "__GLOBAL__I_a_115")]
 pub fn stub_3202dc() -> ! {
-    todo!("0x3202dc `global constructor keyed to'_a_115")
+    todo!("0x3202dc global constructor keyed to_a_115")
 }
 
 // 0x320314 — __ZN3RBX5FacesC1Ei
@@ -1010,7 +1010,7 @@ pub fn stub_32059c() -> ! {
 #[doc(alias = "global constructor keyed to_a_116")]
 #[doc(alias = "__GLOBAL__I_a_116")]
 pub fn stub_3207f8() -> ! {
-    todo!("0x3207f8 `global constructor keyed to'_a_116")
+    todo!("0x3207f8 global constructor keyed to_a_116")
 }
 
 // 0x3208c0 — _gpc_free_polygon

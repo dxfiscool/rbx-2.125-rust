@@ -30,7 +30,7 @@ pub fn stub_384c3c() -> ! {
 #[doc(alias = "_global constructor keyed to__a_144")]
 // was: __GLOBAL__I_a_144
 pub fn stub_384c44() -> ! {
-    todo!("0x384c44 `global constructor keyed to'_a_144")
+    todo!("0x384c44 global constructor keyed to_a_144")
 }
 
 // 0x384d34 — __ZN3RBX8IStepped25onServiceProviderISteppedEPNS_15ServiceProviderES2_
@@ -110,7 +110,7 @@ pub fn stub_385470() -> ! {
 #[doc(alias = "_non-virtual thunk to_rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX7SteppedEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_8ISteppedES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_
 pub fn stub_385478() -> ! {
-    todo!("0x385478 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")
+    todo!("0x385478 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::IStepped,RBX::Stepped const&>,boost::_bi::list2<boost::_bi::value<RBX::IStepped*>,boost::arg<1>>>,1,void ()(RBX::Stepped const&)>::call(RBX::Stepped const&)")
 }
 
 // 0x385480 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8ISteppedERKNS4_7SteppedEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_
@@ -182,7 +182,7 @@ pub fn stub_3857a8() -> ! {
 #[doc(alias = "_global constructor keyed to__a_145")]
 // was: __GLOBAL__I_a_145
 pub fn stub_38587c() -> ! {
-    todo!("0x38587c `global constructor keyed to'_a_145")
+    todo!("0x38587c global constructor keyed to_a_145")
 }
 
 // 0x385a3c — __ZNK3RBX13SystemAddresseqERKS0_

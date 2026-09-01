@@ -988,7 +988,7 @@ pub fn stub_70ef8() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::AsyncThread::gAsyncHead")]
 pub fn stub_70f2c() -> ! {
-    todo!("0x70f2c `global constructor keyed to'FMOD::AsyncThread::gAsyncHead")
+    todo!("0x70f2c global constructor keyed toFMOD::AsyncThread::gAsyncHead")
 }
 
 // 0x70f38 — __ZN4FMOD7Channel11getUserDataEPPv

@@ -92,7 +92,7 @@ pub fn stub_b5e58() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dspitecho")]
 pub fn stub_b5e9c() -> ! {
-    todo!("0xb5e9c `global constructor keyed to'FMOD::dspitecho")
+    todo!("0xb5e9c global constructor keyed toFMOD::dspitecho")
 }
 
 // 0xb5ea8 - __ZN4FMOD10DSPLowPass8bilinearEffffffPffS1_
@@ -218,7 +218,7 @@ pub fn stub_b79ec() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed toFMOD::dsplowpass")]
 pub fn stub_b7a30() -> ! {
-    todo!("0xb7a30 `global constructor keyed to'FMOD::dsplowpass")
+    todo!("0xb7a30 global constructor keyed toFMOD::dsplowpass")
 }
 
 // 0xb7a3c - __ZN4FMOD11DSPLowPass213resetInternalEv
@@ -330,7 +330,7 @@ pub fn stub_b8928() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::dsplowpass2")]
 pub fn stub_b896c() -> ! {
-    todo!("0xb896c `global constructor keyed to'FMOD::dsplowpass2")
+    todo!("0xb896c global constructor keyed toFMOD::dsplowpass2")
 }
 
 // 0xb8978 - __ZN4FMOD16DSPLowPassSimple13resetInternalEv
@@ -442,7 +442,7 @@ pub fn stub_b9690() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::dsplowpass_simple")]
 pub fn stub_b96d4() -> ! {
-    todo!("0xb96d4 `global constructor keyed to'FMOD::dsplowpass_simple")
+    todo!("0xb96d4 global constructor keyed toFMOD::dsplowpass_simple")
 }
 
 // 0xb96e0 - __ZN4FMOD12DSPNormalize14createInternalEv
@@ -561,7 +561,7 @@ pub fn stub_b9ba8() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::dspnormalize")]
 pub fn stub_b9bec() -> ! {
-    todo!("0xb9bec `global constructor keyed to'FMOD::dspnormalize")
+    todo!("0xb9bec global constructor keyed toFMOD::dspnormalize")
 }
 
 // 0xb9bf8 - __ZN4FMOD13DSPOscillator14createInternalEv
@@ -659,7 +659,7 @@ pub fn stub_ba22c() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::dsposcillator")]
 pub fn stub_ba270() -> ! {
-    todo!("0xba270 `global constructor keyed to'FMOD::dsposcillator")
+    todo!("0xba270 global constructor keyed toFMOD::dsposcillator")
 }
 
 // 0xba27c - __ZN4FMOD10DSPParamEq13resetInternalEv

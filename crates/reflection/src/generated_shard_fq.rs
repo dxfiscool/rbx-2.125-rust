@@ -130,7 +130,7 @@ pub fn stub_51fd0() -> ! {
 // 0x51fe0 — __GLOBAL__I_a_27
 #[doc(alias = "__GLOBAL__I_a_27")]
 pub fn stub_51fe0() -> ! {
-    todo!("0x51fe0 `global constructor keyed to'_a_27")
+    todo!("0x51fe0 global constructor keyed to_a_27")
 }
 
 // 0x52178 — -[RobloxAnimatingPageViewController initWithCoder:]
@@ -941,7 +941,7 @@ pub fn stub_554a8() -> ! {
 // 0x554cc — __GLOBAL__I_a_28
 #[doc(alias = "__GLOBAL__I_a_28")]
 pub fn stub_554cc() -> ! {
-    todo!("0x554cc `global constructor keyed to'_a_28")
+    todo!("0x554cc global constructor keyed to_a_28")
 }
 
 // 0x55664 — -[StoreManager init]

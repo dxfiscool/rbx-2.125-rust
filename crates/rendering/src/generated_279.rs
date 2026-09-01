@@ -392,7 +392,7 @@ pub fn stub_3beb14() -> ! {
 #[doc(alias = "__GLOBAL__I_a_162")]
 // was: __GLOBAL__I_a_162
 pub fn stub_3beb38() -> ! {
-    todo!("0x3beb38 `global constructor keyed to'_a_162")
+    todo!("0x3beb38 global constructor keyed to_a_162")
 }
 
 
@@ -550,7 +550,7 @@ pub fn stub_3bf844() -> ! {
 #[doc(alias = "__GLOBAL__I_a_163")]
 // was: __GLOBAL__I_a_163
 pub fn stub_3bf868() -> ! {
-    todo!("0x3bf868 `global constructor keyed to'_a_163")
+    todo!("0x3bf868 global constructor keyed to_a_163")
 }
 
 
@@ -847,7 +847,7 @@ pub fn stub_3c2a28() -> ! {
 #[doc(alias = "__ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE")]
 // was: __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_12BillboardGuiENS_8InstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 pub fn stub_3c2b08() -> ! {
-    todo!("0x3c2b08 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x3c2b08 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 
@@ -891,7 +891,7 @@ pub fn stub_3c2b38() -> ! {
 #[doc(alias = "__GLOBAL__I_a_164")]
 // was: __GLOBAL__I_a_164
 pub fn stub_3c2d40() -> ! {
-    todo!("0x3c2d40 `global constructor keyed to'_a_164")
+    todo!("0x3c2d40 global constructor keyed to_a_164")
 }
 
 
@@ -899,7 +899,7 @@ pub fn stub_3c2d40() -> ! {
 #[doc(alias = "__GLOBAL__I_a_165")]
 // was: __GLOBAL__I_a_165
 pub fn stub_3c333c() -> ! {
-    todo!("0x3c333c `global constructor keyed to'_a_165")
+    todo!("0x3c333c global constructor keyed to_a_165")
 }
 
 

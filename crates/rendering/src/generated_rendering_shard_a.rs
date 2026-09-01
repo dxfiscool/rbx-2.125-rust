@@ -14,7 +14,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "boost::anonymous namespace::get_or_make_current_thread_data(void)")]
 // was: __ZN5boost12_GLOBAL__N_131get_or_make_current_thread_dataEv
 pub fn stub_236d04() -> ! {
-    todo!("0x236d04 boost::`anonymous namespace'::get_or_make_current_thread_data(void)")
+    todo!("0x236d04 boost::anonymous namespace::get_or_make_current_thread_data(void)")
 }
 
 // 0x236ec0 — __ZN5boost6detail12get_tss_dataEPKv
@@ -46,7 +46,7 @@ pub fn stub_237130() -> ! {
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
 // was: __ZN5boost12_GLOBAL__N_126externally_launched_threadD1Ev
 pub fn stub_237348() -> ! {
-    todo!("0x237348 boost::`anonymous namespace'::externally_launched_thread::~externally_launched_thread()")
+    todo!("0x237348 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
 }
 
 // 0x237354 — __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev
@@ -54,7 +54,7 @@ pub fn stub_237348() -> ! {
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")]
 // was: __ZN5boost12_GLOBAL__N_126externally_launched_threadD0Ev
 pub fn stub_237354() -> ! {
-    todo!("0x237354 boost::`anonymous namespace'::externally_launched_thread::~externally_launched_thread()")
+    todo!("0x237354 boost::anonymous namespace::externally_launched_thread::~externally_launched_thread()")
 }
 
 // 0x237368 — __ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv
@@ -62,7 +62,7 @@ pub fn stub_237354() -> ! {
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::run(void)")]
 // was: __ZN5boost12_GLOBAL__N_126externally_launched_thread3runEv
 pub fn stub_237368() -> ! {
-    todo!("0x237368 boost::`anonymous namespace'::externally_launched_thread::run(void)")
+    todo!("0x237368 boost::anonymous namespace::externally_launched_thread::run(void)")
 }
 
 // 0x23736c — __ZN5boost12_GLOBAL__N_126externally_launched_thread25notify_all_at_thread_exitEPNS_18condition_variableEPNS_5mutexE
@@ -70,7 +70,7 @@ pub fn stub_237368() -> ! {
 #[doc(alias = "boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")]
 // was: __ZN5boost12_GLOBAL__N_126externally_launched_thread25notify_all_at_thread_exitEPNS_18condition_variableEPNS_5mutexE
 pub fn stub_23736c() -> ! {
-    todo!("0x23736c boost::`anonymous namespace'::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")
+    todo!("0x23736c boost::anonymous namespace::externally_launched_thread::notify_all_at_thread_exit(boost::condition_variable *,boost::mutex *)")
 }
 
 // 0x237370 — _tls_destructor
@@ -189,7 +189,7 @@ pub fn stub_237b6c() -> ! {
 #[doc(alias = "global constructor keyed to_a_38")]
 // was: __GLOBAL__I_a_38
 pub fn stub_237c98() -> ! {
-    todo!("0x237c98 `global constructor keyed to'_a_38")
+    todo!("0x237c98 global constructor keyed to_a_38")
 }
 
 // 0x237d60 — __ZN5boost10filesystem6detail14symlink_statusERKNS0_4pathEPNS_6system10error_codeE
@@ -213,7 +213,7 @@ pub fn stub_237fa4() -> ! {
 #[doc(alias = "anonymous namespace::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)")]
 // was: __ZN12_GLOBAL__N_15errorEbRKN5boost10filesystem4pathEPNS0_6system10error_codeERKSs
 pub fn stub_238258() -> ! {
-    todo!("0x238258 `anonymous namespace'::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)")
+    todo!("0x238258 anonymous namespace::error(bool,boost::filesystem::path const&,boost::system::error_code *,std::string const&)")
 }
 
 // 0x23837c — __ZN5boost10filesystem6detail12initial_pathEPNS_6system10error_codeE
@@ -245,7 +245,7 @@ pub fn stub_2386d4() -> ! {
 #[doc(alias = "anonymous namespace::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)")]
 // was: __ZN12_GLOBAL__N_124remove_file_or_directoryERKN5boost10filesystem4pathENS1_9file_typeEPNS0_6system10error_codeE
 pub fn stub_2388a8() -> ! {
-    todo!("0x2388a8 `anonymous namespace'::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)")
+    todo!("0x2388a8 anonymous namespace::remove_file_or_directory(boost::filesystem::path const&,boost::filesystem::file_type,boost::system::error_code *)")
 }
 
 // 0x238adc — __ZN5boost10filesystem6detail6statusERKNS0_4pathEPNS_6system10error_codeE
@@ -397,7 +397,7 @@ pub fn stub_23a394() -> ! {
 #[doc(alias = "global constructor keyed to_a_39")]
 // was: __GLOBAL__I_a_39
 pub fn stub_23a570() -> ! {
-    todo!("0x23a570 `global constructor keyed to'_a_39")
+    todo!("0x23a570 global constructor keyed to_a_39")
 }
 
 // 0x23a630 — __ZN5boost10filesystem4pathdVERKS1_
@@ -533,7 +533,7 @@ pub fn stub_23afa4() -> ! {
 #[doc(alias = "global constructor keyed to_a_40")]
 // was: __GLOBAL__I_a_40
 pub fn stub_23afa8() -> ! {
-    todo!("0x23afa8 `global constructor keyed to'_a_40")
+    todo!("0x23afa8 global constructor keyed to_a_40")
 }
 
 // 0x23b14c — __ZNK5boost10filesystem6detail18utf8_codecvt_facet5do_inER11__mbstate_tPKcS6_RS6_PwS8_RS8_
@@ -597,7 +597,7 @@ pub fn stub_23b508() -> ! {
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
 // was: __ZN12_GLOBAL__N_121system_error_categoryD1Ev
 pub fn stub_23b544() -> ! {
-    todo!("0x23b544 `anonymous namespace'::system_error_category::~system_error_category()")
+    todo!("0x23b544 anonymous namespace::system_error_category::~system_error_category()")
 }
 
 // 0x23b548 — __ZN12_GLOBAL__N_122generic_error_categoryD1Ev
@@ -605,7 +605,7 @@ pub fn stub_23b544() -> ! {
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
 // was: __ZN12_GLOBAL__N_122generic_error_categoryD1Ev
 pub fn stub_23b548() -> ! {
-    todo!("0x23b548 `anonymous namespace'::generic_error_category::~generic_error_category()")
+    todo!("0x23b548 anonymous namespace::generic_error_category::~generic_error_category()")
 }
 
 // 0x23b54c — __ZN12_GLOBAL__N_122generic_error_categoryD0Ev
@@ -613,7 +613,7 @@ pub fn stub_23b548() -> ! {
 #[doc(alias = "anonymous namespace::generic_error_category::~generic_error_category()")]
 // was: __ZN12_GLOBAL__N_122generic_error_categoryD0Ev
 pub fn stub_23b54c() -> ! {
-    todo!("0x23b54c `anonymous namespace'::generic_error_category::~generic_error_category()")
+    todo!("0x23b54c anonymous namespace::generic_error_category::~generic_error_category()")
 }
 
 // 0x23b558 — __ZNK12_GLOBAL__N_122generic_error_category4nameEv
@@ -621,7 +621,7 @@ pub fn stub_23b54c() -> ! {
 #[doc(alias = "anonymous namespace::generic_error_category::name(void)const")]
 // was: __ZNK12_GLOBAL__N_122generic_error_category4nameEv
 pub fn stub_23b558() -> ! {
-    todo!("0x23b558 `anonymous namespace'::generic_error_category::name(void)const")
+    todo!("0x23b558 anonymous namespace::generic_error_category::name(void)const")
 }
 
 // 0x23b564 — __ZNK12_GLOBAL__N_122generic_error_category7messageEi
@@ -629,7 +629,7 @@ pub fn stub_23b558() -> ! {
 #[doc(alias = "anonymous namespace::generic_error_category::message(int)const")]
 // was: __ZNK12_GLOBAL__N_122generic_error_category7messageEi
 pub fn stub_23b564() -> ! {
-    todo!("0x23b564 `anonymous namespace'::generic_error_category::message(int)const")
+    todo!("0x23b564 anonymous namespace::generic_error_category::message(int)const")
 }
 
 // 0x23b7cc — __ZN12_GLOBAL__N_121system_error_categoryD0Ev
@@ -637,7 +637,7 @@ pub fn stub_23b564() -> ! {
 #[doc(alias = "anonymous namespace::system_error_category::~system_error_category()")]
 // was: __ZN12_GLOBAL__N_121system_error_categoryD0Ev
 pub fn stub_23b7cc() -> ! {
-    todo!("0x23b7cc `anonymous namespace'::system_error_category::~system_error_category()")
+    todo!("0x23b7cc anonymous namespace::system_error_category::~system_error_category()")
 }
 
 // 0x23b7d8 — __ZNK12_GLOBAL__N_121system_error_category4nameEv
@@ -645,7 +645,7 @@ pub fn stub_23b7cc() -> ! {
 #[doc(alias = "anonymous namespace::system_error_category::name(void)const")]
 // was: __ZNK12_GLOBAL__N_121system_error_category4nameEv
 pub fn stub_23b7d8() -> ! {
-    todo!("0x23b7d8 `anonymous namespace'::system_error_category::name(void)const")
+    todo!("0x23b7d8 anonymous namespace::system_error_category::name(void)const")
 }
 
 // 0x23b7e4 — __ZNK12_GLOBAL__N_121system_error_category7messageEi
@@ -653,7 +653,7 @@ pub fn stub_23b7d8() -> ! {
 #[doc(alias = "anonymous namespace::system_error_category::message(int)const")]
 // was: __ZNK12_GLOBAL__N_121system_error_category7messageEi
 pub fn stub_23b7e4() -> ! {
-    todo!("0x23b7e4 `anonymous namespace'::system_error_category::message(int)const")
+    todo!("0x23b7e4 anonymous namespace::system_error_category::message(int)const")
 }
 
 // 0x23b838 — __ZNK12_GLOBAL__N_121system_error_category23default_error_conditionEi
@@ -661,7 +661,7 @@ pub fn stub_23b7e4() -> ! {
 #[doc(alias = "anonymous namespace::system_error_category::default_error_condition(int)const")]
 // was: __ZNK12_GLOBAL__N_121system_error_category23default_error_conditionEi
 pub fn stub_23b838() -> ! {
-    todo!("0x23b838 `anonymous namespace'::system_error_category::default_error_condition(int)const")
+    todo!("0x23b838 anonymous namespace::system_error_category::default_error_condition(int)const")
 }
 
 // 0x23ca3c — __ZNK5boost6system14error_category23default_error_conditionEi
@@ -693,7 +693,7 @@ pub fn stub_23ca70() -> ! {
 #[doc(alias = "global constructor keyed to_a_41")]
 // was: __GLOBAL__I_a_41
 pub fn stub_23ca88() -> ! {
-    todo!("0x23ca88 `global constructor keyed to'_a_41")
+    todo!("0x23ca88 global constructor keyed to_a_41")
 }
 
 // 0x23cb64 — __ZN5boost9iostreams6detail11gzip_header7processEc
@@ -847,7 +847,7 @@ pub fn stub_2ba328() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,3,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,std::string,boost::shared_ptr<RBX::Instance>)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvSsSsN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_8functionIS8_EELi3ES8_E4callESsSsS7_
 pub fn stub_2ba518() -> ! {
-    todo!("0x2ba518 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,3,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,std::string,boost::shared_ptr<RBX::Instance>)")
+    todo!("0x2ba518 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::slot,boost::function<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,3,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>::call(std::string,std::string,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0x2ba520 — __ZNK5boost9function3IvSsSsNS_10shared_ptrIN3RBX8InstanceEEEEclESsSsS4_
@@ -1083,7 +1083,7 @@ pub fn stub_7bcc68() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::render3dSortedPosition(void)const")]
 // was: __ZThn268_NK3RBX8Humanoid22render3dSortedPositionEv
 pub fn stub_7bcc9c() -> ! {
-    todo!("0x7bcc9c `non-virtual thunk to'RBX::Humanoid::render3dSortedPosition(void)const")
+    todo!("0x7bcc9c non-virtual thunk toRBX::Humanoid::render3dSortedPosition(void)const")
 }
 
 // 0xa63bd8 — __ZN6RakNet7RakPeer31SetSplitMessageProgressIntervalEi

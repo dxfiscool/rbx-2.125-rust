@@ -10,7 +10,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "global constructor keyed toFMOD::dspsfxreverb")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD12dspsfxreverbE")]
 pub fn stub_0xc3718() -> ! {
-    todo!("0xc3718 `global constructor keyed to'FMOD::dspsfxreverb")
+    todo!("0xc3718 global constructor keyed toFMOD::dspsfxreverb")
 }
 
 // 0xc3724 — __ZN4FMOD12DSPSoundCard5allocEPNS_23FMOD_DSP_DESCRIPTION_EXE

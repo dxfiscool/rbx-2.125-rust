@@ -234,14 +234,14 @@ pub fn stub_49aabc() -> ! {
 // demangled: `global constructor keyed to'_a_185
 #[doc(alias = "global constructor keyed to_a_185")]
 pub fn stub_49aee0() -> ! {
-    todo!("0x49aee0 `global constructor keyed to'_a_185")
+    todo!("0x49aee0 global constructor keyed to_a_185")
 }
 
 // 0x49b3fc — __GLOBAL__I_a_186
 // demangled: `global constructor keyed to'_a_186
 #[doc(alias = "global constructor keyed to_a_186")]
 pub fn stub_49b3fc() -> ! {
-    todo!("0x49b3fc `global constructor keyed to'_a_186")
+    todo!("0x49b3fc global constructor keyed to_a_186")
 }
 
 // 0x49bdbc — __ZN3RBX10Reflection8EnumDescINS_7Handles11VisualStyleEEC1Ev
@@ -293,7 +293,7 @@ pub fn stub_49d23c() -> ! {
 // demangled: `global constructor keyed to'_a_187
 #[doc(alias = "global constructor keyed to_a_187")]
 pub fn stub_49f33c() -> ! {
-    todo!("0x49f33c `global constructor keyed to'_a_187")
+    todo!("0x49f33c global constructor keyed to_a_187")
 }
 
 // 0x49f610 — __ZN3RBX10Reflection8EnumDescINS_9Explosion13ExplosionTypeEEC1Ev
@@ -700,7 +700,7 @@ pub fn stub_4a6844() -> ! {
 // demangled: `global constructor keyed to'_a_188
 #[doc(alias = "global constructor keyed to_a_188")]
 pub fn stub_4a6898() -> ! {
-    todo!("0x4a6898 `global constructor keyed to'_a_188")
+    todo!("0x4a6898 global constructor keyed to_a_188")
 }
 
 // 0x4a7758 — __ZNK3RBX14FactoryProductINS_20ExtrudedPartInstanceENS_12PartInstanceELZNS_13sExtrudedPartEENS_8InstanceEE12getClassNameEv

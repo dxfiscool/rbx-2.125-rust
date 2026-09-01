@@ -20,7 +20,7 @@ pub fn stub_0x3e3a8() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail14bad_exception_D0Ev")]
 pub fn stub_0x3e528() -> ! {
-    todo!("0x3e528 `non-virtual thunk to'boost::exception_detail::bad_exception_::~bad_exception_()")
+    todo!("0x3e528 non-virtual thunk toboost::exception_detail::bad_exception_::~bad_exception_()")
 }
 
 // 0x3e558 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_14bad_exception_EEEEEPT_
@@ -64,14 +64,14 @@ pub fn stub_0x3e7f8() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_10bad_alloc_EE7rethrowEv")]
 pub fn stub_0x3e8b8() -> ! {
-    todo!("0x3e8b8 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")
+    todo!("0x3e8b8 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::rethrow(void)const")
 }
 
 // 0x3e8c8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_10bad_alloc_EED0Ev")]
 pub fn stub_0x3e8c8() -> ! {
-    todo!("0x3e8c8 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
+    todo!("0x3e8c8 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>::~clone_impl()")
 }
 
 // 0x3e900 — __ZN5boost16exception_detail10clone_implINS0_10bad_alloc_EEC1ERKS3_NS3_9clone_tagE
@@ -87,7 +87,7 @@ pub fn stub_0x3e900() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10bad_alloc_D0Ev")]
 pub fn stub_0x3ea80() -> ! {
-    todo!("0x3ea80 `non-virtual thunk to'boost::exception_detail::bad_alloc_::~bad_alloc_()")
+    todo!("0x3ea80 non-virtual thunk toboost::exception_detail::bad_alloc_::~bad_alloc_()")
 }
 
 // 0x3eab0 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_10bad_alloc_EEEEEPT_
@@ -274,7 +274,7 @@ pub fn stub_0x3f700() -> ! {
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
 #[doc(alias = "__ZThn480_N10RobloxView9RenderJobD1Ev")]
 pub fn stub_0x3f904() -> ! {
-    todo!("0x3f904 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
+    todo!("0x3f904 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
 }
 
 // 0x3f9c8 — __ZThn480_N10RobloxView9RenderJobD0Ev
@@ -282,7 +282,7 @@ pub fn stub_0x3f904() -> ! {
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::~RenderJob()")]
 #[doc(alias = "__ZThn480_N10RobloxView9RenderJobD0Ev")]
 pub fn stub_0x3f9c8() -> ! {
-    todo!("0x3f9c8 `non-virtual thunk to'RobloxView::RenderJob::~RenderJob()")
+    todo!("0x3f9c8 non-virtual thunk toRobloxView::RenderJob::~RenderJob()")
 }
 
 // 0x3fa94 — __ZThn480_NK10RobloxView9RenderJob9getMetricERKSs
@@ -290,7 +290,7 @@ pub fn stub_0x3f9c8() -> ! {
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")]
 #[doc(alias = "__ZThn480_NK10RobloxView9RenderJob9getMetricERKSs")]
 pub fn stub_0x3fa94() -> ! {
-    todo!("0x3fa94 `non-virtual thunk to'RobloxView::RenderJob::getMetric(std::string const&)const")
+    todo!("0x3fa94 non-virtual thunk toRobloxView::RenderJob::getMetric(std::string const&)const")
 }
 
 // 0x3faa4 — __ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs
@@ -298,7 +298,7 @@ pub fn stub_0x3fa94() -> ! {
 #[doc(alias = "non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")]
 #[doc(alias = "__ZThn480_NK10RobloxView9RenderJob14getMetricValueERKSs")]
 pub fn stub_0x3faa4() -> ! {
-    todo!("0x3faa4 `non-virtual thunk to'RobloxView::RenderJob::getMetricValue(std::string const&)const")
+    todo!("0x3faa4 non-virtual thunk toRobloxView::RenderJob::getMetricValue(std::string const&)const")
 }
 
 // 0x3faac — __ZN10RobloxView9RenderJob21scheduleRenderPrepareEPS0_PN3RBX8ViewBaseE
@@ -351,14 +351,14 @@ pub fn stub_0x3fd38() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED1Ev")]
 pub fn stub_0x3fd60() -> ! {
-    todo!("0x3fd60 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+    todo!("0x3fd60 non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
 }
 
 // 0x3fd88 — __ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED1Ev")]
 pub fn stub_0x3fd88() -> ! {
-    todo!("0x3fd88 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+    todo!("0x3fd88 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
 }
 
 // 0x3fdb8 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
@@ -373,21 +373,21 @@ pub fn stub_0x3fdb8() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev")]
 pub fn stub_0x3fee0() -> ! {
-    todo!("0x3fee0 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+    todo!("0x3fee0 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
 }
 
 // 0x3ff18 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE7rethrowEv")]
 pub fn stub_0x3ff18() -> ! {
-    todo!("0x3ff18 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
+    todo!("0x3ff18 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::rethrow(void)const")
 }
 
 // 0x3ff28 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEED0Ev")]
 pub fn stub_0x3ff28() -> ! {
-    todo!("0x3ff28 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
+    todo!("0x3ff28 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::bad_weak_ptr>>::~clone_impl()")
 }
 
 // 0x3ff60 — __ZN5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev
@@ -401,7 +401,7 @@ pub fn stub_0x3ff60() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")]
 #[doc(alias = "__ZThn4_N5boost16exception_detail19error_info_injectorINS_12bad_weak_ptrEED0Ev")]
 pub fn stub_0x3ff90() -> ! {
-    todo!("0x3ff90 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
+    todo!("0x3ff90 non-virtual thunk toboost::exception_detail::error_info_injector<boost::bad_weak_ptr>::~error_info_injector()")
 }
 
 // 0x3ffc0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEEC1ERKS5_NS5_9clone_tagE
@@ -536,7 +536,7 @@ pub fn stub_0x406e0() -> ! {
 #[doc(alias = "global constructor keyed to_a_10")]
 #[doc(alias = "__GLOBAL__I_a_10")]
 pub fn stub_0x4070c() -> ! {
-    todo!("0x4070c `global constructor keyed to'_a_10")
+    todo!("0x4070c global constructor keyed to_a_10")
 }
 
 // 0x40984 — -[UserInfo init]
@@ -779,7 +779,7 @@ pub fn stub_0x41bd8() -> ! {
 #[doc(alias = "global constructor keyed to_a_11")]
 #[doc(alias = "__GLOBAL__I_a_11")]
 pub fn stub_0x41bfc() -> ! {
-    todo!("0x41bfc `global constructor keyed to'_a_11")
+    todo!("0x41bfc global constructor keyed to_a_11")
 }
 
 // 0x41cc4 — +[RobloxGoogleAnalytics initialize]
@@ -863,7 +863,7 @@ pub fn stub_0x424cc() -> ! {
 #[doc(alias = "global constructor keyed to_a_12")]
 #[doc(alias = "__GLOBAL__I_a_12")]
 pub fn stub_0x42580() -> ! {
-    todo!("0x42580 `global constructor keyed to'_a_12")
+    todo!("0x42580 global constructor keyed to_a_12")
 }
 
 // 0x42718 — +[RobloxWebUtility sharedInstance]

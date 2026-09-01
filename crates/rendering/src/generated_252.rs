@@ -168,7 +168,7 @@ pub fn stub_2d13b8() -> ! {
 #[doc(alias = "global constructor keyed to_a_78")]
 // was: __GLOBAL__I_a_78
 pub fn stub_2d145c() -> ! {
-    todo!("0x2d145c `global constructor keyed to'_a_78")
+    todo!("0x2d145c global constructor keyed to_a_78")
 }
 
 // 0x2d1a5c — __ZN3RBX14AdvLuaDragToolD0Ev
@@ -192,7 +192,7 @@ pub fn stub_2d1afc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 // was: __ZThn36_N3RBX14AdvLuaDragToolD0Ev
 pub fn stub_2d1b00() -> ! {
-    todo!("0x2d1b00 `non-virtual thunk to'RBX::AdvLuaDragTool::~AdvLuaDragTool()")
+    todo!("0x2d1b00 non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")
 }
 
 // 0x2d1b08 — __ZN3RBX14AdvLuaDragToolD2Ev
@@ -208,7 +208,7 @@ pub fn stub_2d1b08() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")]
 // was: __ZThn36_N3RBX14AdvLuaDragToolD1Ev
 pub fn stub_2d1c48() -> ! {
-    todo!("0x2d1c48 `non-virtual thunk to'RBX::AdvLuaDragTool::~AdvLuaDragTool()")
+    todo!("0x2d1c48 non-virtual thunk toRBX::AdvLuaDragTool::~AdvLuaDragTool()")
 }
 
 // 0x2d1c50 — __ZN3RBX14AdvLuaDragTool11onMouseDownERKNS_7UIEventE
@@ -305,7 +305,7 @@ pub fn stub_2d2554() -> ! {
 #[doc(alias = "global constructor keyed to_a_79")]
 // was: __GLOBAL__I_a_79
 pub fn stub_2d2634() -> ! {
-    todo!("0x2d2634 `global constructor keyed to'_a_79")
+    todo!("0x2d2634 global constructor keyed to_a_79")
 }
 
 // 0x2d28a4 — __ZN3RBX15AdvMoveToolBaseC2EPNS_9WorkspaceE
@@ -440,7 +440,7 @@ pub fn stub_2d54d0() -> ! {
 #[doc(alias = "global constructor keyed to_a_80")]
 // was: __GLOBAL__I_a_80
 pub fn stub_2d55f8() -> ! {
-    todo!("0x2d55f8 `global constructor keyed to'_a_80")
+    todo!("0x2d55f8 global constructor keyed to_a_80")
 }
 
 // 0x2d5fd0 — __ZN3RBX13AdvRotateToolD1Ev
@@ -464,7 +464,7 @@ pub fn stub_2d5fd4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
 // was: __ZThn36_N3RBX13AdvRotateToolD1Ev
 pub fn stub_2d6074() -> ! {
-    todo!("0x2d6074 `non-virtual thunk to'RBX::AdvRotateTool::~AdvRotateTool()")
+    todo!("0x2d6074 non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
 }
 
 // 0x2d607c — __ZThn36_N3RBX13AdvRotateToolD0Ev
@@ -472,14 +472,14 @@ pub fn stub_2d6074() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")]
 // was: __ZThn36_N3RBX13AdvRotateToolD0Ev
 pub fn stub_2d607c() -> ! {
-    todo!("0x2d607c `non-virtual thunk to'RBX::AdvRotateTool::~AdvRotateTool()")
+    todo!("0x2d607c non-virtual thunk toRBX::AdvRotateTool::~AdvRotateTool()")
 }
 
 // 0x2d6120 — __GLOBAL__I_a_81
 #[doc(alias = "global constructor keyed to_a_81")]
 // was: __GLOBAL__I_a_81
 pub fn stub_2d6120() -> ! {
-    todo!("0x2d6120 `global constructor keyed to'_a_81")
+    todo!("0x2d6120 global constructor keyed to_a_81")
 }
 
 // 0x2d6390 — __ZN3RBX13AdvRunDragger8SnapInfo20updateSurfaceFromHitEv
@@ -638,7 +638,7 @@ pub fn stub_2d9ae0() -> ! {
 #[doc(alias = "global constructor keyed to_a_82")]
 // was: __GLOBAL__I_a_82
 pub fn stub_2d9d50() -> ! {
-    todo!("0x2d9d50 `global constructor keyed to'_a_82")
+    todo!("0x2d9d50 global constructor keyed to_a_82")
 }
 
 // 0x2da160 — __ZN3RBX12AxisToolBaseC2EPNS_9WorkspaceE
@@ -729,14 +729,14 @@ pub fn stub_2db2bc() -> ! {
 #[doc(alias = "global constructor keyed to_a_83")]
 // was: __GLOBAL__I_a_83
 pub fn stub_2db2c4() -> ! {
-    todo!("0x2db2c4 `global constructor keyed to'_a_83")
+    todo!("0x2db2c4 global constructor keyed to_a_83")
 }
 
 // 0x2db534 — __GLOBAL__I_a_84
 #[doc(alias = "global constructor keyed to_a_84")]
 // was: __GLOBAL__I_a_84
 pub fn stub_2db534() -> ! {
-    todo!("0x2db534 `global constructor keyed to'_a_84")
+    todo!("0x2db534 global constructor keyed to_a_84")
 }
 
 // 0x2db7a4 — __ZN3RBX9CloneToolC1EPNS_9WorkspaceE

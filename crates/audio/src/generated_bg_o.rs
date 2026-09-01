@@ -296,7 +296,7 @@ pub fn stub_3c2a28() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 pub fn stub_3c2b08() -> ! {
-    todo!("0x3c2b08 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x3c2b08 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::BillboardGui,RBX::Instance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x3c2b10 — __ZNK3RBX10Reflection14PropDescriptorINS_12BillboardGuiEPNS_8InstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -343,14 +343,14 @@ pub fn stub_3c2b5c() -> ! {
 // demangled: `global constructor keyed to'_a_164
 #[doc(alias = "global constructor keyed to_a_164")]
 pub fn stub_3c2d40() -> ! {
-    todo!("0x3c2d40 `global constructor keyed to'_a_164")
+    todo!("0x3c2d40 global constructor keyed to_a_164")
 }
 
 // 0x3c333c — __GLOBAL__I_a_165
 // demangled: `global constructor keyed to'_a_165
 #[doc(alias = "global constructor keyed to_a_165")]
 pub fn stub_3c333c() -> ! {
-    todo!("0x3c333c `global constructor keyed to'_a_165")
+    todo!("0x3c333c global constructor keyed to_a_165")
 }
 
 // 0x3c3510 — __ZN3RBX6Camera13setCameraTypeENS0_10CameraTypeE
@@ -614,7 +614,7 @@ pub fn stub_3c5690() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::Camera::onHeartbeat(RBX::Heartbeat const&)")]
 pub fn stub_3c58a8() -> ! {
-    todo!("0x3c58a8 `non-virtual thunk to'RBX::Camera::onHeartbeat(RBX::Heartbeat const&)")
+    todo!("0x3c58a8 non-virtual thunk toRBX::Camera::onHeartbeat(RBX::Heartbeat const&)")
 }
 
 // 0x3c58b0 — __ZN3RBX6Camera14getCameraOwnerEv

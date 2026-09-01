@@ -267,7 +267,7 @@ pub fn stub_cce0c() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::gGlobal")]
 pub fn stub_cceb8() -> ! {
-    todo!("0xcceb8 `global constructor keyed to'FMOD::gGlobal")
+    todo!("0xcceb8 global constructor keyed toFMOD::gGlobal")
 }
 
 // 0xccec4 - __ZN4FMOD8ListenerC2Ev / FMOD::Listener::Listener(void)
@@ -694,7 +694,7 @@ pub fn stub_cef20() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::gDummySample")]
 pub fn stub_cf00c() -> ! {
-    todo!("0xcf00c `global constructor keyed to'FMOD::gDummySample")
+    todo!("0xcf00c global constructor keyed toFMOD::gDummySample")
 }
 
 // 0xcf018 - __Z21FMOD_Net_EncodeBase64PcS_i / FMOD_Net_EncodeBase64(char *,char *,int)

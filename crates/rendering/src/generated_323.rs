@@ -244,7 +244,7 @@ pub fn stub_48dd88() -> ! {
 #[doc(alias = "global constructor keyed to_a_182")]
 // was: __GLOBAL__I_a_182
 pub fn stub_48ddb0() -> ! {
-    todo!("0x48ddb0 `global constructor keyed to'_a_182")
+    todo!("0x48ddb0 global constructor keyed to_a_182")
 }
 
 // 0x48f7f4 — __ZN3RBX5Decal10setTextureENS_9TextureIdE
@@ -497,7 +497,7 @@ pub fn stub_490bd4() -> ! {
 #[doc(alias = "non-virtual thunk to RBX::Decal::~Decal()")]
 // was: __ZThn32_N3RBX5DecalD1Ev
 pub fn stub_490be4() -> ! {
-    todo!("0x490be4 `non-virtual thunk to'RBX::Decal::~Decal()")
+    todo!("0x490be4 non-virtual thunk toRBX::Decal::~Decal()")
 }
 
 // 0x490c28 — __ZThn32_N3RBX5DecalD0Ev
@@ -505,7 +505,7 @@ pub fn stub_490be4() -> ! {
 #[doc(alias = "non-virtual thunk to RBX::Decal::~Decal()")]
 // was: __ZThn32_N3RBX5DecalD0Ev
 pub fn stub_490c28() -> ! {
-    todo!("0x490c28 `non-virtual thunk to'RBX::Decal::~Decal()")
+    todo!("0x490c28 non-virtual thunk toRBX::Decal::~Decal()")
 }
 
 // 0x490d04 — __ZThn32_NK3RBX14FactoryProductINS_5DecalENS_12FaceInstanceELZNS_6sDecalEENS_8InstanceEE12getClassNameEv
@@ -520,7 +520,7 @@ pub fn stub_490d04() -> ! {
 #[doc(alias = "non-virtual thunk to RBX::Decal::~Decal()")]
 // was: __ZThn36_N3RBX5DecalD1Ev
 pub fn stub_490d14() -> ! {
-    todo!("0x490d14 `non-virtual thunk to'RBX::Decal::~Decal()")
+    todo!("0x490d14 non-virtual thunk toRBX::Decal::~Decal()")
 }
 
 // 0x490d58 — __ZThn36_N3RBX5DecalD0Ev
@@ -528,7 +528,7 @@ pub fn stub_490d14() -> ! {
 #[doc(alias = "non-virtual thunk to RBX::Decal::~Decal()")]
 // was: __ZThn36_N3RBX5DecalD0Ev
 pub fn stub_490d58() -> ! {
-    todo!("0x490d58 `non-virtual thunk to'RBX::Decal::~Decal()")
+    todo!("0x490d58 non-virtual thunk toRBX::Decal::~Decal()")
 }
 
 // 0x490e34 — __ZN3RBX7TextureD1Ev
@@ -559,7 +559,7 @@ pub fn stub_490f50() -> ! {
 #[doc(alias = "non-virtual thunk to RBX::Texture::~Texture()")]
 // was: __ZThn32_N3RBX7TextureD1Ev
 pub fn stub_490f60() -> ! {
-    todo!("0x490f60 `non-virtual thunk to'RBX::Texture::~Texture()")
+    todo!("0x490f60 non-virtual thunk toRBX::Texture::~Texture()")
 }
 
 // 0x490fa4 — __ZThn32_N3RBX7TextureD0Ev
@@ -567,7 +567,7 @@ pub fn stub_490f60() -> ! {
 #[doc(alias = "non-virtual thunk to RBX::Texture::~Texture()")]
 // was: __ZThn32_N3RBX7TextureD0Ev
 pub fn stub_490fa4() -> ! {
-    todo!("0x490fa4 `non-virtual thunk to'RBX::Texture::~Texture()")
+    todo!("0x490fa4 non-virtual thunk toRBX::Texture::~Texture()")
 }
 
 // 0x491080 — __ZThn32_NK3RBX14FactoryProductINS_7TextureENS_5DecalELZNS_8sTextureEENS_8InstanceEE12getClassNameEv
@@ -582,7 +582,7 @@ pub fn stub_491080() -> ! {
 #[doc(alias = "non-virtual thunk to RBX::Texture::~Texture()")]
 // was: __ZThn36_N3RBX7TextureD1Ev
 pub fn stub_491090() -> ! {
-    todo!("0x491090 `non-virtual thunk to'RBX::Texture::~Texture()")
+    todo!("0x491090 non-virtual thunk toRBX::Texture::~Texture()")
 }
 
 // 0x4910d4 — __ZThn36_N3RBX7TextureD0Ev
@@ -590,7 +590,7 @@ pub fn stub_491090() -> ! {
 #[doc(alias = "non-virtual thunk to RBX::Texture::~Texture()")]
 // was: __ZThn36_N3RBX7TextureD0Ev
 pub fn stub_4910d4() -> ! {
-    todo!("0x4910d4 `non-virtual thunk to'RBX::Texture::~Texture()")
+    todo!("0x4910d4 non-virtual thunk toRBX::Texture::~Texture()")
 }
 
 // 0x4911b0 — __ZN3RBX14FactoryProductINS_7TextureENS_5DecalELZNS_8sTextureEENS_8InstanceEE17static_getCreatorEv

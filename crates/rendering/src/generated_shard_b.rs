@@ -96,7 +96,7 @@ pub fn stub_0x57cb3c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")]
 // was: __ZThn800_N3RBX14GuiImageButton18setImageRectOffsetEN3G3D7Vector2E
 pub fn stub_0x57cb88() -> ! {
-    todo!("0x57cb88 `non-virtual thunk to'RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
+    todo!("0x57cb88 non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
 }
 
 // 0x57cb90 — __ZN3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
@@ -110,7 +110,7 @@ pub fn stub_0x57cb90() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")]
 // was: __ZThn800_N3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
 pub fn stub_0x57cbdc() -> ! {
-    todo!("0x57cbdc `non-virtual thunk to'RBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
+    todo!("0x57cbdc non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
 }
 
 // 0x57e610 — __ZN3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E
@@ -124,7 +124,7 @@ pub fn stub_0x57e610() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImageRectOffset(G3D::Vector2)")]
 // was: __ZThn536_N3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E
 pub fn stub_0x57e65c() -> ! {
-    todo!("0x57e65c `non-virtual thunk to'RBX::ImageLabel::setImageRectOffset(G3D::Vector2)")
+    todo!("0x57e65c non-virtual thunk toRBX::ImageLabel::setImageRectOffset(G3D::Vector2)")
 }
 
 // 0x57e664 — __ZN3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E
@@ -138,7 +138,7 @@ pub fn stub_0x57e664() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ImageLabel::setImageRectSize(G3D::Vector2)")]
 // was: __ZThn536_N3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E
 pub fn stub_0x57e6b0() -> ! {
-    todo!("0x57e6b0 `non-virtual thunk to'RBX::ImageLabel::setImageRectSize(G3D::Vector2)")
+    todo!("0x57e6b0 non-virtual thunk toRBX::ImageLabel::setImageRectSize(G3D::Vector2)")
 }
 
 // 0x59f290 — __ZN3RBX13JointInstance5setC0ERKN3G3D15CoordinateFrameE

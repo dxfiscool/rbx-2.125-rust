@@ -109,7 +109,7 @@ pub fn stub_49f1ac() -> ! {
 // 0x49f33c — __GLOBAL__I_a_187
 #[doc(alias = "__GLOBAL__I_a_187")]
 pub fn stub_49f33c() -> ! {
-    todo!("0x49f33c `global constructor keyed to'_a_187")
+    todo!("0x49f33c global constructor keyed to_a_187")
 }
 
 // 0x49f5ac — __ZN3RBX9Explosion14setBlastRadiusEf
@@ -163,25 +163,25 @@ pub fn stub_49fc84() -> ! {
 // 0x49fc88 — __ZThn32_N3RBX9ExplosionD0Ev
 #[doc(alias = "__ZThn32_N3RBX9ExplosionD0Ev")]
 pub fn stub_49fc88() -> ! {
-    todo!("0x49fc88 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fc88 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
 
 // 0x49fc90 — __ZThn36_N3RBX9ExplosionD0Ev
 #[doc(alias = "__ZThn36_N3RBX9ExplosionD0Ev")]
 pub fn stub_49fc90() -> ! {
-    todo!("0x49fc90 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fc90 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
 
 // 0x49fc98 — __ZThn116_N3RBX9ExplosionD0Ev
 #[doc(alias = "__ZThn116_N3RBX9ExplosionD0Ev")]
 pub fn stub_49fc98() -> ! {
-    todo!("0x49fc98 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fc98 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
 
 // 0x49fca0 — __ZThn128_N3RBX9ExplosionD0Ev
 #[doc(alias = "__ZThn128_N3RBX9ExplosionD0Ev")]
 pub fn stub_49fca0() -> ! {
-    todo!("0x49fca0 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fca0 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
 
 // 0x49fca8 — __ZN3RBX9ExplosionD2Ev
@@ -193,25 +193,25 @@ pub fn stub_49fca8() -> ! {
 // 0x49fee8 — __ZThn32_N3RBX9ExplosionD1Ev
 #[doc(alias = "__ZThn32_N3RBX9ExplosionD1Ev")]
 pub fn stub_49fee8() -> ! {
-    todo!("0x49fee8 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fee8 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
 
 // 0x49fef0 — __ZThn36_N3RBX9ExplosionD1Ev
 #[doc(alias = "__ZThn36_N3RBX9ExplosionD1Ev")]
 pub fn stub_49fef0() -> ! {
-    todo!("0x49fef0 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fef0 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
 
 // 0x49fef8 — __ZThn116_N3RBX9ExplosionD1Ev
 #[doc(alias = "__ZThn116_N3RBX9ExplosionD1Ev")]
 pub fn stub_49fef8() -> ! {
-    todo!("0x49fef8 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49fef8 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
 
 // 0x49ff00 — __ZThn128_N3RBX9ExplosionD1Ev
 #[doc(alias = "__ZThn128_N3RBX9ExplosionD1Ev")]
 pub fn stub_49ff00() -> ! {
-    todo!("0x49ff00 `non-virtual thunk to'RBX::Explosion::~Explosion()")
+    todo!("0x49ff00 non-virtual thunk toRBX::Explosion::~Explosion()")
 }
 
 // 0x49ff08 — __ZN3RBX9Explosion11signalBlastERKSt6vectorIN5boost10shared_ptrINS_12PartInstanceEEESaIS5_EE
@@ -236,7 +236,7 @@ pub fn stub_4a0098() -> ! {
 // 0x4a0318 — __ZThn116_N3RBX9Explosion9onSteppedERKNS_7SteppedE
 #[doc(alias = "__ZThn116_N3RBX9Explosion9onSteppedERKNS_7SteppedE")]
 pub fn stub_4a0318() -> ! {
-    todo!("0x4a0318 `non-virtual thunk to'RBX::Explosion::onStepped(RBX::Stepped const&)")
+    todo!("0x4a0318 non-virtual thunk toRBX::Explosion::onStepped(RBX::Stepped const&)")
 }
 
 // 0x4a0438 — __ZNK3RBX9Explosion14getBlastRadiusEv

@@ -137,7 +137,7 @@ pub fn stub_4b97c() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)
 pub fn stub_4b984() -> ! {
-    todo!("0x4b984 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")
+    todo!("0x4b984 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")
 }
 
 // 0x4b98c — __ZNK5boost9function1IvPN3RBX9DataModelEEclES3_
@@ -235,7 +235,7 @@ pub fn stub_4c008() -> ! {
 #[doc(alias = "global constructor keyed to_a_18")]
 // was: `global constructor keyed to'_a_18
 pub fn stub_4c034() -> ! {
-    todo!("0x4c034 `global constructor keyed to'_a_18")
+    todo!("0x4c034 global constructor keyed to_a_18")
 }
 
 // 0x4c248 — -[GameInputViewController init:withBundle:withGame:overlayDataModel:]
@@ -270,7 +270,7 @@ pub fn stub_4c46c() -> ! {
 #[doc(alias = "global constructor keyed to_a_19")]
 // was: `global constructor keyed to'_a_19
 pub fn stub_4c498() -> ! {
-    todo!("0x4c498 `global constructor keyed to'_a_19")
+    todo!("0x4c498 global constructor keyed to_a_19")
 }
 
 // 0x4c6ac — +[GameKeyboard sharedInstance]
@@ -466,7 +466,7 @@ pub fn stub_4d2dc() -> ! {
 #[doc(alias = "global constructor keyed to_a_20")]
 // was: `global constructor keyed to'_a_20
 pub fn stub_4d398() -> ! {
-    todo!("0x4d398 `global constructor keyed to'_a_20")
+    todo!("0x4d398 global constructor keyed to_a_20")
 }
 
 // 0x4d5ac — -[GameView initWithFrame:]
@@ -487,7 +487,7 @@ pub fn stub_4d5e4() -> ! {
 #[doc(alias = "global constructor keyed to_a_21")]
 // was: `global constructor keyed to'_a_21
 pub fn stub_4d6d4() -> ! {
-    todo!("0x4d6d4 `global constructor keyed to'_a_21")
+    todo!("0x4d6d4 global constructor keyed to_a_21")
 }
 
 // 0x4d70c — -[GameViewController initWithNibName:bundle:]

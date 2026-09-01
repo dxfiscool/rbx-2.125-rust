@@ -13,7 +13,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "non-virtual thunk toRBX::CloneTool::~CloneTool()")]
 // was: __ZThn36_N3RBX9CloneToolD0Ev
 pub fn stub_2db954() -> ! {
-    todo!("0x2db954 `non-virtual thunk to'RBX::CloneTool::~CloneTool()")
+    todo!("0x2db954 non-virtual thunk toRBX::CloneTool::~CloneTool()")
 }
 
 // 0x2db95c — __ZN3RBX9CloneToolD2Ev
@@ -29,7 +29,7 @@ pub fn stub_2db95c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::CloneTool::~CloneTool()")]
 // was: __ZThn36_N3RBX9CloneToolD1Ev
 pub fn stub_2dba78() -> ! {
-    todo!("0x2dba78 `non-virtual thunk to'RBX::CloneTool::~CloneTool()")
+    todo!("0x2dba78 non-virtual thunk toRBX::CloneTool::~CloneTool()")
 }
 
 // 0x2dba80 — __ZN3RBX9CloneTool11onMouseIdleERKNS_7UIEventE
@@ -140,7 +140,7 @@ pub fn stub_2dc350() -> ! {
 #[doc(alias = "global constructor keyed to_a_85")]
 // was: __GLOBAL__I_a_85
 pub fn stub_2dc354() -> ! {
-    todo!("0x2dc354 `global constructor keyed to'_a_85")
+    todo!("0x2dc354 global constructor keyed to_a_85")
 }
 
 // 0x2dc604 — __ZN3RBX7Dragger14computeExtentsERKSt6vectorIPNS_9PrimitiveESaIS3_EE
@@ -226,7 +226,7 @@ pub fn stub_2e01b0() -> ! {
 #[doc(alias = "global constructor keyed to_a_86")]
 // was: __GLOBAL__I_a_86
 pub fn stub_2e02d4() -> ! {
-    todo!("0x2e02d4 `global constructor keyed to'_a_86")
+    todo!("0x2e02d4 global constructor keyed to_a_86")
 }
 
 // 0x2e09ec — __ZN5boost10shared_ptrIN3RBX11LuaDragToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
@@ -297,7 +297,7 @@ pub fn stub_2e0cc0() -> ! {
 #[doc(alias = "global constructor keyed to_a_87")]
 // was: __GLOBAL__I_a_87
 pub fn stub_2e0cc4() -> ! {
-    todo!("0x2e0cc4 `global constructor keyed to'_a_87")
+    todo!("0x2e0cc4 global constructor keyed to_a_87")
 }
 
 // 0x2e1308 — __ZN3RBX13DragUtilities16hitObjectOrPlaneERKSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EERKNS_6RbxRayERKNS_14ContactManagerEb
@@ -440,14 +440,14 @@ pub fn stub_2e28bc() -> ! {
 #[doc(alias = "global constructor keyed to_a_88")]
 // was: __GLOBAL__I_a_88
 pub fn stub_2e2948() -> ! {
-    todo!("0x2e2948 `global constructor keyed to'_a_88")
+    todo!("0x2e2948 global constructor keyed to_a_88")
 }
 
 // 0x2e2cbc — __GLOBAL__I_a_89
 #[doc(alias = "global constructor keyed to_a_89")]
 // was: __GLOBAL__I_a_89
 pub fn stub_2e2cbc() -> ! {
-    todo!("0x2e2cbc `global constructor keyed to'_a_89")
+    todo!("0x2e2cbc global constructor keyed to_a_89")
 }
 
 // 0x2e2f2c — __ZN3RBX8GameToolC1EPNS_9WorkspaceE
@@ -511,7 +511,7 @@ pub fn stub_2e32d4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GameTool::~GameTool()")]
 // was: __ZThn36_N3RBX8GameToolD0Ev
 pub fn stub_2e32d8() -> ! {
-    todo!("0x2e32d8 `non-virtual thunk to'RBX::GameTool::~GameTool()")
+    todo!("0x2e32d8 non-virtual thunk toRBX::GameTool::~GameTool()")
 }
 
 // 0x2e32e0 — __ZN3RBX8GameToolD2Ev
@@ -527,7 +527,7 @@ pub fn stub_2e32e0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GameTool::~GameTool()")]
 // was: __ZThn36_N3RBX8GameToolD1Ev
 pub fn stub_2e33e4() -> ! {
-    todo!("0x2e33e4 `non-virtual thunk to'RBX::GameTool::~GameTool()")
+    todo!("0x2e33e4 non-virtual thunk toRBX::GameTool::~GameTool()")
 }
 
 // 0x2e33ec — __ZNK3RBX5NamedINS_12MouseCommandELZNS_9sGameToolEEE7getNameEv
@@ -565,7 +565,7 @@ pub fn stub_2e34e0() -> ! {
 #[doc(alias = "global constructor keyed to_a_90")]
 // was: __GLOBAL__I_a_90
 pub fn stub_2e34ec() -> ! {
-    todo!("0x2e34ec `global constructor keyed to'_a_90")
+    todo!("0x2e34ec global constructor keyed to_a_90")
 }
 
 // 0x2e37c4 — __ZN3RBX8GrabToolC1EPNS_9WorkspaceE
@@ -629,7 +629,7 @@ pub fn stub_2e3b48() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GrabTool::~GrabTool()")]
 // was: __ZThn36_N3RBX8GrabToolD0Ev
 pub fn stub_2e3b4c() -> ! {
-    todo!("0x2e3b4c `non-virtual thunk to'RBX::GrabTool::~GrabTool()")
+    todo!("0x2e3b4c non-virtual thunk toRBX::GrabTool::~GrabTool()")
 }
 
 // 0x2e3b54 — __ZN3RBX8GrabToolD2Ev
@@ -645,7 +645,7 @@ pub fn stub_2e3b54() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GrabTool::~GrabTool()")]
 // was: __ZThn36_N3RBX8GrabToolD1Ev
 pub fn stub_2e3c58() -> ! {
-    todo!("0x2e3c58 `non-virtual thunk to'RBX::GrabTool::~GrabTool()")
+    todo!("0x2e3c58 non-virtual thunk toRBX::GrabTool::~GrabTool()")
 }
 
 // 0x2e3c60 — __ZNK3RBX5NamedINS_12MouseCommandELZNS_9sGrabToolEEE7getNameEv
@@ -683,21 +683,21 @@ pub fn stub_2e3d54() -> ! {
 #[doc(alias = "global constructor keyed to_a_91")]
 // was: __GLOBAL__I_a_91
 pub fn stub_2e3d60() -> ! {
-    todo!("0x2e3d60 `global constructor keyed to'_a_91")
+    todo!("0x2e3d60 global constructor keyed to_a_91")
 }
 
 // 0x2e3fd0 — __GLOBAL__I_a_92
 #[doc(alias = "global constructor keyed to_a_92")]
 // was: __GLOBAL__I_a_92
 pub fn stub_2e3fd0() -> ! {
-    todo!("0x2e3fd0 `global constructor keyed to'_a_92")
+    todo!("0x2e3fd0 global constructor keyed to_a_92")
 }
 
 // 0x2e4240 — __GLOBAL__I_a_93
 #[doc(alias = "global constructor keyed to_a_93")]
 // was: __GLOBAL__I_a_93
 pub fn stub_2e4240() -> ! {
-    todo!("0x2e4240 `global constructor keyed to'_a_93")
+    todo!("0x2e4240 global constructor keyed to_a_93")
 }
 
 // 0x2e4518 — __ZN3RBX10HammerToolC1EPNS_9WorkspaceE
@@ -737,7 +737,7 @@ pub fn stub_2e46c4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HammerTool::~HammerTool()")]
 // was: __ZThn36_N3RBX10HammerToolD0Ev
 pub fn stub_2e46c8() -> ! {
-    todo!("0x2e46c8 `non-virtual thunk to'RBX::HammerTool::~HammerTool()")
+    todo!("0x2e46c8 non-virtual thunk toRBX::HammerTool::~HammerTool()")
 }
 
 // 0x2e46d0 — __ZN3RBX10HammerToolD2Ev
@@ -753,7 +753,7 @@ pub fn stub_2e46d0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::HammerTool::~HammerTool()")]
 // was: __ZThn36_N3RBX10HammerToolD1Ev
 pub fn stub_2e47ec() -> ! {
-    todo!("0x2e47ec `non-virtual thunk to'RBX::HammerTool::~HammerTool()")
+    todo!("0x2e47ec non-virtual thunk toRBX::HammerTool::~HammerTool()")
 }
 
 // 0x2e47f4 — __ZN3RBX10HammerTool11onMouseIdleERKNS_7UIEventE

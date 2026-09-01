@@ -28,14 +28,14 @@ pub fn stub_400090() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: __ZThn32_N3RBX17FilteredSelectionINS_8InstanceEED1Ev
 pub fn stub_4000e4() -> ! {
-    todo!("0x4000e4 `non-virtual thunk to'RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+    todo!("0x4000e4 non-virtual thunk toRBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
 }
 // 0x4000ec — __ZThn32_N3RBX17FilteredSelectionINS_8InstanceEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: __ZThn32_N3RBX17FilteredSelectionINS_8InstanceEED0Ev
 pub fn stub_4000ec() -> ! {
-    todo!("0x4000ec `non-virtual thunk to'RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+    todo!("0x4000ec non-virtual thunk toRBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
 }
 // 0x4000f4 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_18sFilteredSelectionEEE12getClassNameEv
 // type: int()
@@ -49,21 +49,21 @@ pub fn stub_4000f4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: __ZThn36_N3RBX17FilteredSelectionINS_8InstanceEED1Ev
 pub fn stub_4000f8() -> ! {
-    todo!("0x4000f8 `non-virtual thunk to'RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+    todo!("0x4000f8 non-virtual thunk toRBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
 }
 // 0x400100 — __ZThn36_N3RBX17FilteredSelectionINS_8InstanceEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")]
 // was: __ZThn36_N3RBX17FilteredSelectionINS_8InstanceEED0Ev
 pub fn stub_400100() -> ! {
-    todo!("0x400100 `non-virtual thunk to'RBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
+    todo!("0x400100 non-virtual thunk toRBX::FilteredSelection<RBX::Instance>::~FilteredSelection()")
 }
 // 0x400108 — __ZThn96_N3RBX17FilteredSelectionINS_8InstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 // type: int()
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::Instance>::onSelectionChanged(RBX::SelectionChanged const&)")]
 // was: __ZThn96_N3RBX17FilteredSelectionINS_8InstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 pub fn stub_400108() -> ! {
-    todo!("0x400108 `non-virtual thunk to'RBX::FilteredSelection<RBX::Instance>::onSelectionChanged(RBX::SelectionChanged const&)")
+    todo!("0x400108 non-virtual thunk toRBX::FilteredSelection<RBX::Instance>::onSelectionChanged(RBX::SelectionChanged const&)")
 }
 // 0x400110 — __ZSt6__findIN9__gnu_cxx17__normal_iteratorIPPN3RBX8InstanceESt6vectorIS4_SaIS4_EEEES4_ET_SA_SA_RKT0_St26random_access_iterator_tag
 // type: _DWORD *__fastcall(_DWORD *, int, int *)
@@ -245,35 +245,35 @@ pub fn stub_401088() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: __ZThn32_N3RBX17FilteredSelectionINS_13ModelInstanceEED1Ev
 pub fn stub_401104() -> ! {
-    todo!("0x401104 `non-virtual thunk to'RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+    todo!("0x401104 non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
 }
 // 0x40110c — __ZThn32_N3RBX17FilteredSelectionINS_13ModelInstanceEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: __ZThn32_N3RBX17FilteredSelectionINS_13ModelInstanceEED0Ev
 pub fn stub_40110c() -> ! {
-    todo!("0x40110c `non-virtual thunk to'RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+    todo!("0x40110c non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
 }
 // 0x401114 — __ZThn36_N3RBX17FilteredSelectionINS_13ModelInstanceEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: __ZThn36_N3RBX17FilteredSelectionINS_13ModelInstanceEED1Ev
 pub fn stub_401114() -> ! {
-    todo!("0x401114 `non-virtual thunk to'RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+    todo!("0x401114 non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
 }
 // 0x40111c — __ZThn36_N3RBX17FilteredSelectionINS_13ModelInstanceEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 // was: __ZThn36_N3RBX17FilteredSelectionINS_13ModelInstanceEED0Ev
 pub fn stub_40111c() -> ! {
-    todo!("0x40111c `non-virtual thunk to'RBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
+    todo!("0x40111c non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
 }
 // 0x401124 — __ZThn96_N3RBX17FilteredSelectionINS_13ModelInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)")]
 // was: __ZThn96_N3RBX17FilteredSelectionINS_13ModelInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 pub fn stub_401124() -> ! {
-    todo!("0x401124 `non-virtual thunk to'RBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
+    todo!("0x401124 non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
 }
 // 0x40112c — __ZNSt6vectorIPN3RBX13ModelInstanceESaIS2_EE9push_backERKS2_
 // type: int __fastcall(int result, _DWORD *)
@@ -546,35 +546,35 @@ pub fn stub_4027ac() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
 // was: __ZThn32_N3RBX17FilteredSelectionINS_10PVInstanceEED1Ev
 pub fn stub_402828() -> ! {
-    todo!("0x402828 `non-virtual thunk to'RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
+    todo!("0x402828 non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
 }
 // 0x402830 — __ZThn32_N3RBX17FilteredSelectionINS_10PVInstanceEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
 // was: __ZThn32_N3RBX17FilteredSelectionINS_10PVInstanceEED0Ev
 pub fn stub_402830() -> ! {
-    todo!("0x402830 `non-virtual thunk to'RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
+    todo!("0x402830 non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
 }
 // 0x402838 — __ZThn36_N3RBX17FilteredSelectionINS_10PVInstanceEED1Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
 // was: __ZThn36_N3RBX17FilteredSelectionINS_10PVInstanceEED1Ev
 pub fn stub_402838() -> ! {
-    todo!("0x402838 `non-virtual thunk to'RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
+    todo!("0x402838 non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
 }
 // 0x402840 — __ZThn36_N3RBX17FilteredSelectionINS_10PVInstanceEED0Ev
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
 // was: __ZThn36_N3RBX17FilteredSelectionINS_10PVInstanceEED0Ev
 pub fn stub_402840() -> ! {
-    todo!("0x402840 `non-virtual thunk to'RBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
+    todo!("0x402840 non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
 }
 // 0x402848 — __ZThn96_N3RBX17FilteredSelectionINS_10PVInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&)")]
 // was: __ZThn96_N3RBX17FilteredSelectionINS_10PVInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
 pub fn stub_402848() -> ! {
-    todo!("0x402848 `non-virtual thunk to'RBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
+    todo!("0x402848 non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
 }
 // 0x402850 — __ZNSt6vectorIPN3RBX10PVInstanceESaIS2_EE9push_backERKS2_
 // type: int __fastcall(int result, _DWORD *)

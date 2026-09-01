@@ -85,7 +85,7 @@ pub fn stub_4a908() -> ! {
 // was: `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::TextBox>)>,1,void ()(boost::shared_ptr<RBX::TextBox>)>::call(boost::shared_ptr<RBX::TextBox>)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::TextBox>)>,1,void ()(rbx_core::SharedPtr<RBX::TextBox>)>::call(rbx_core::SharedPtr<RBX::TextBox>)")]
 pub fn stub_4a9dc() -> ! {
-    todo!("0x4a9dc `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::TextBox>)>,1,void ()(rbx_core::SharedPtr<RBX::TextBox>)>::call(rbx_core::SharedPtr<RBX::TextBox>)")
+    todo!("0x4a9dc non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::TextBox>)>,1,void ()(rbx_core::SharedPtr<RBX::TextBox>)>::call(rbx_core::SharedPtr<RBX::TextBox>)")
 }
 
 // 0x4a9e4 — __ZNK5boost9function1IvNS_10shared_ptrIN3RBX7TextBoxEEEEclES4_
@@ -197,7 +197,7 @@ pub fn stub_4c008() -> ! {
 // 0x4c034 — __GLOBAL__I_a_18
 #[doc(alias = "global constructor keyed to_a_18")]
 pub fn stub_4c034() -> ! {
-    todo!("0x4c034 `global constructor keyed to_a_18")
+    todo!("0x4c034 global constructor keyed to_a_18")
 }
 
 // 0x4c3f4 — -[GameInputViewController dealloc]
@@ -224,7 +224,7 @@ pub fn stub_4c46c() -> ! {
 // 0x4c498 — __GLOBAL__I_a_19
 #[doc(alias = "global constructor keyed to_a_19")]
 pub fn stub_4c498() -> ! {
-    todo!("0x4c498 `global constructor keyed to_a_19")
+    todo!("0x4c498 global constructor keyed to_a_19")
 }
 
 // 0x4c71c — -[GameKeyboard init]
@@ -407,7 +407,7 @@ pub fn stub_4d2dc() -> ! {
 // 0x4d398 — __GLOBAL__I_a_20
 #[doc(alias = "global constructor keyed to_a_20")]
 pub fn stub_4d398() -> ! {
-    todo!("0x4d398 `global constructor keyed to_a_20")
+    todo!("0x4d398 global constructor keyed to_a_20")
 }
 
 // 0x4d5ac — -[GameView initWithFrame:]
@@ -428,7 +428,7 @@ pub fn stub_4d5e4() -> ! {
 // type: int()
 #[doc(alias = "global constructor keyed to_a_21")]
 pub fn stub_4d6d4() -> ! {
-    todo!("0x4d6d4 `global constructor keyed to_a_21")
+    todo!("0x4d6d4 global constructor keyed to_a_21")
 }
 
 // 0x4d70c — -[GameViewController initWithNibName:bundle:]

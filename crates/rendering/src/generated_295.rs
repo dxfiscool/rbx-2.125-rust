@@ -493,7 +493,7 @@ pub fn stub_411c18() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()")]
 // was: __ZThn36_N3RBX15AdvMoveToolBaseD1Ev
 pub fn stub_411cb8() -> ! {
-    todo!("0x411cb8 `non-virtual thunk to'RBX::AdvMoveToolBase::~AdvMoveToolBase()")
+    todo!("0x411cb8 non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()")
 }
 
 // 0x411cc0 — __ZThn36_N3RBX15AdvMoveToolBaseD0Ev
@@ -501,7 +501,7 @@ pub fn stub_411cb8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()")]
 // was: __ZThn36_N3RBX15AdvMoveToolBaseD0Ev
 pub fn stub_411cc0() -> ! {
-    todo!("0x411cc0 `non-virtual thunk to'RBX::AdvMoveToolBase::~AdvMoveToolBase()")
+    todo!("0x411cc0 non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()")
 }
 
 // 0x411cc8 — __ZNSt8auto_ptrIN3RBX11MegaDraggerEED2Ev
@@ -716,7 +716,7 @@ pub fn stub_41286c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveTool::~AdvMoveTool()")]
 // was: __ZThn36_N3RBX11AdvMoveToolD1Ev
 pub fn stub_412870() -> ! {
-    todo!("0x412870 `non-virtual thunk to'RBX::AdvMoveTool::~AdvMoveTool()")
+    todo!("0x412870 non-virtual thunk toRBX::AdvMoveTool::~AdvMoveTool()")
 }
 
 // 0x412878 — __ZThn36_N3RBX11AdvMoveToolD0Ev
@@ -724,7 +724,7 @@ pub fn stub_412870() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveTool::~AdvMoveTool()")]
 // was: __ZThn36_N3RBX11AdvMoveToolD0Ev
 pub fn stub_412878() -> ! {
-    todo!("0x412878 `non-virtual thunk to'RBX::AdvMoveTool::~AdvMoveTool()")
+    todo!("0x412878 non-virtual thunk toRBX::AdvMoveTool::~AdvMoveTool()")
 }
 
 // 0x412880 — __ZN5boost10shared_ptrIN3RBX11AdvMoveToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_

@@ -541,7 +541,7 @@ pub fn stub_0x86db20() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
 // was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86db30() -> ! {
-    todo!("0x86db30 `non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86db30 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86db38 — __ZThn36_N3RBX19MegaClusterInstanceD0Ev
@@ -549,7 +549,7 @@ pub fn stub_0x86db30() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
 // was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86db38() -> ! {
-    todo!("0x86db38 `non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86db38 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86db40 — __ZThn132_N3RBX19MegaClusterInstanceD0Ev
@@ -557,7 +557,7 @@ pub fn stub_0x86db38() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
 // was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86db40() -> ! {
-    todo!("0x86db40 `non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86db40 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86db48 — __ZN3RBX19MegaClusterInstanceD2Ev
@@ -572,7 +572,7 @@ pub fn stub_0x86db48() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
 // was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86de38() -> ! {
-    todo!("0x86de38 `non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86de38 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86de48 — __ZThn36_N3RBX19MegaClusterInstanceD1Ev
@@ -580,7 +580,7 @@ pub fn stub_0x86de38() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
 // was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86de48() -> ! {
-    todo!("0x86de48 `non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86de48 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86de58 — __ZThn132_N3RBX19MegaClusterInstanceD1Ev
@@ -588,7 +588,7 @@ pub fn stub_0x86de48() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")]
 // was: `non-virtual thunk to`RBX::MegaClusterInstance::~MegaClusterInstance()
 pub fn stub_0x86de58() -> ! {
-    todo!("0x86de58 `non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
+    todo!("0x86de58 non-virtual thunk toRBX::MegaClusterInstance::~MegaClusterInstance()")
 }
 
 // 0x86de68 — __ZN3RBX19MegaClusterInstance11setAnchoredEb
@@ -820,7 +820,7 @@ pub fn stub_0x86f86c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 // was: `non-virtual thunk to`RBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
 pub fn stub_0x86f870() -> ! {
-    todo!("0x86f870 `non-virtual thunk toRBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+    todo!("0x86f870 non-virtual thunk toRBX::MegaClusterInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
 // 0x8716d4 — __ZNK3RBX19MegaClusterInstance25encodeChunkDataIntoStreamINS_17StringWriteBufferEEEvRKNS_7CellBoxERT_
@@ -963,7 +963,7 @@ pub fn stub_0x87239c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MegaClusterInstance::isSelectable3d(void)")]
 // was: `non-virtual thunk to`RBX::MegaClusterInstance::isSelectable3d(void)
 pub fn stub_0x8723b0() -> ! {
-    todo!("0x8723b0 `non-virtual thunk toRBX::MegaClusterInstance::isSelectable3d(void)")
+    todo!("0x8723b0 non-virtual thunk toRBX::MegaClusterInstance::isSelectable3d(void)")
 }
 
 // 0x879850 — __ZN3RBX16TerrainPartitionC2EPNS_19MegaClusterInstanceEss

@@ -36,7 +36,7 @@ pub fn stub_359ed0() -> ! {
 #[doc(alias = "global constructor keyed to_a_127")]
 // was: __GLOBAL__I_a_127
 pub fn stub_35a44c() -> ! {
-    todo!("0x35a44c `global constructor keyed to'_a_127")
+    todo!("0x35a44c global constructor keyed to_a_127")
 }
 
 // 0x35a620 — __ZN3RBX9MD5Hasher6createEv
@@ -106,7 +106,7 @@ pub fn stub_35a7f4() -> ! {
 #[doc(alias = "global constructor keyed to_a_128")]
 // was: __GLOBAL__I_a_128
 pub fn stub_35a970() -> ! {
-    todo!("0x35a970 `global constructor keyed to'_a_128")
+    todo!("0x35a970 global constructor keyed to_a_128")
 }
 
 // 0x35aa38 — __ZN3RBX15StringConverterINS_6MeshIdEE14convertToValueERKSsRS1_
@@ -229,7 +229,7 @@ pub fn stub_35b88c() -> ! {
 #[doc(alias = "global constructor keyed to_a_129")]
 // was: __GLOBAL__I_a_129
 pub fn stub_35b890() -> ! {
-    todo!("0x35b890 `global constructor keyed to'_a_129")
+    todo!("0x35b890 global constructor keyed to_a_129")
 }
 
 // 0x35ba98 — __ZN3RBX4NameC2ERKPKc
@@ -493,7 +493,7 @@ pub fn stub_35ccd0() -> ! {
 #[doc(alias = "global constructor keyed to_a_130")]
 // was: __GLOBAL__I_a_130
 pub fn stub_35ce18() -> ! {
-    todo!("0x35ce18 `global constructor keyed to'_a_130")
+    todo!("0x35ce18 global constructor keyed to_a_130")
 }
 
 // 0x35cee0 — __ZN3RBX14normalIdToMaskENS_8NormalIdE
@@ -561,7 +561,7 @@ pub fn stub_35d5f4() -> ! {
 #[doc(alias = "global constructor keyed to_a_131")]
 // was: __GLOBAL__I_a_131
 pub fn stub_35db54() -> ! {
-    todo!("0x35db54 `global constructor keyed to'_a_131")
+    todo!("0x35db54 global constructor keyed to_a_131")
 }
 
 // 0x35db90 — __ZN3RBX9Profiling4initEb
@@ -727,7 +727,7 @@ pub fn stub_35e0dc() -> ! {
 #[doc(alias = "global constructor keyed to_a_132")]
 // was: __GLOBAL__I_a_132
 pub fn stub_35e0f4() -> ! {
-    todo!("0x35e0f4 `global constructor keyed to'_a_132")
+    todo!("0x35e0f4 global constructor keyed to_a_132")
 }
 
 // 0x35e2c8 — __ZN3RBX15ProtectedStringC1Ev

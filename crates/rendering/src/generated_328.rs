@@ -435,7 +435,7 @@ pub fn stub_57ff50() -> ! {
 #[doc(alias = "global constructor keyed to_a_216")]
 // was: __GLOBAL__I_a_216
 pub fn stub_580490() -> ! {
-    todo!("0x580490 `global constructor keyed to'_a_216")
+    todo!("0x580490 global constructor keyed to_a_216")
 }
 
 // 0x5809a0 — __ZN3RBX13InsertService13getFreeDecalsESsiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE
@@ -526,7 +526,7 @@ pub fn stub_587304() -> ! {
 #[doc(alias = "global constructor keyed to_a_217")]
 // was: __GLOBAL__I_a_217
 pub fn stub_59e530() -> ! {
-    todo!("0x59e530 `global constructor keyed to'_a_217")
+    todo!("0x59e530 global constructor keyed to_a_217")
 }
 
 // 0x5a3394 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_14sJointInstanceEEE12getClassNameEv

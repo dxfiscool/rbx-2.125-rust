@@ -47,7 +47,7 @@ pub fn stub_23d468() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
 // was: __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED1Ev
 pub fn stub_23d520() -> ! {
-    todo!("0x23d520 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+    todo!("0x23d520 non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
 }
 
 // 0x23d5d8 — __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
@@ -55,7 +55,7 @@ pub fn stub_23d520() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 // was: __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
 pub fn stub_23d5d8() -> ! {
-    todo!("0x23d5d8 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams:")
+    todo!("0x23d5d8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams:")
 }
 
 // 0x23d690 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
@@ -63,7 +63,7 @@ pub fn stub_23d5d8() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 // was: __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED1Ev
 pub fn stub_23d690() -> ! {
-    todo!("0x23d690 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zli")
+    todo!("0x23d690 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zli")
 }
 
 // 0x23d75c — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
@@ -95,7 +95,7 @@ pub fn stub_23d8d4() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 // was: __ZThn12_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 pub fn stub_23d984() -> ! {
-    todo!("0x23d984 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams:")
+    todo!("0x23d984 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams:")
 }
 
 // 0x23da40 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE5cloneEv
@@ -103,7 +103,7 @@ pub fn stub_23d984() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::clone(void)const")]
 // was: __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE5cloneEv
 pub fn stub_23da40() -> ! {
-    todo!("0x23da40 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zli")
+    todo!("0x23da40 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zli")
 }
 
 // 0x23db04 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE7rethrowEv
@@ -111,7 +111,7 @@ pub fn stub_23da40() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::rethrow(void)const")]
 // was: __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEE7rethrowEv
 pub fn stub_23db04() -> ! {
-    todo!("0x23db04 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zli")
+    todo!("0x23db04 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zli")
 }
 
 // 0x23db14 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
@@ -119,7 +119,7 @@ pub fn stub_23db04() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>>::~clone_impl()")]
 // was: __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEED0Ev
 pub fn stub_23db14() -> ! {
-    todo!("0x23db14 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zli")
+    todo!("0x23db14 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::zli")
 }
 
 // 0x23dbe8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_
@@ -143,7 +143,7 @@ pub fn stub_23dd30() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")]
 // was: __ZThn12_N5boost16exception_detail19error_info_injectorINS_9iostreams10zlib_errorEED0Ev
 pub fn stub_23ddec() -> ! {
-    todo!("0x23ddec `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
+    todo!("0x23ddec non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::zlib_error>::~error_info_injector()")
 }
 
 // 0x23dea8 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10zlib_errorEEEEC1ERKS6_NS6_9clone_tagE
@@ -215,7 +215,7 @@ pub fn stub_23e568() -> ! {
 #[doc(alias = "global constructor keyed to_a_42")]
 // was: __GLOBAL__I_a_42
 pub fn stub_23e574() -> ! {
-    todo!("0x23e574 `global constructor keyed to'_a_42")
+    todo!("0x23e574 global constructor keyed to_a_42")
 }
 
 // 0x23e5a4 — __Z13ReleaseAssertiPKc
@@ -343,7 +343,7 @@ pub fn stub_23ef20() -> ! {
 #[doc(alias = "global constructor keyed to_a_43")]
 // was: __GLOBAL__I_a_43
 pub fn stub_23f068() -> ! {
-    todo!("0x23f068 `global constructor keyed to'_a_43")
+    todo!("0x23f068 global constructor keyed to_a_43")
 }
 
 // 0x23f294 — __Z8RBXCRASHv
@@ -757,7 +757,7 @@ pub fn stub_270008() -> ! {
 #[doc(alias = "global constructor keyed to_a_63")]
 // was: __GLOBAL__I_a_63
 pub fn stub_270078() -> ! {
-    todo!("0x270078 `global constructor keyed to'_a_63")
+    todo!("0x270078 global constructor keyed to_a_63")
 }
 
 // 0x270210 — __ZN3RBX3Lua17safe_lua_tostringEP9lua_Statei

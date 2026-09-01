@@ -12,17 +12,17 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x4a725c — __ZThn32_N3RBX20ExtrudedPartInstanceD1Ev
 pub fn stub_4a725c() -> ! {
-    todo!("0x4a725c `non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+    todo!("0x4a725c non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7270 — __ZThn36_N3RBX20ExtrudedPartInstanceD1Ev
 pub fn stub_4a7270() -> ! {
-    todo!("0x4a7270 `non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+    todo!("0x4a7270 non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7284 — __ZThn132_N3RBX20ExtrudedPartInstanceD1Ev
 pub fn stub_4a7284() -> ! {
-    todo!("0x4a7284 `non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
+    todo!("0x4a7284 non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7298 — __ZNK3RBX20ExtrudedPartInstance16getMinimumUiSizeEv
@@ -480,7 +480,7 @@ pub fn stub_4a9144() -> ! {
 
 // 0x4a9168 — __GLOBAL__I_a_189
 pub fn stub_4a9168() -> ! {
-    todo!("0x4a9168 `global constructor keyed to_a_189")
+    todo!("0x4a9168 global constructor keyed to_a_189")
 }
 
 // 0x4a94fc — __ZN3RBX12FaceInstance7setFaceENS_8NormalIdE
@@ -527,22 +527,22 @@ pub fn stub_4a9808() -> ! {
 
 // 0x4a98d4 — __ZThn32_N3RBX12FaceInstanceD1Ev
 pub fn stub_4a98d4() -> ! {
-    todo!("0x4a98d4 `non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
+    todo!("0x4a98d4 non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
 
 // 0x4a998c — __ZThn32_N3RBX12FaceInstanceD0Ev
 pub fn stub_4a998c() -> ! {
-    todo!("0x4a998c `non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
+    todo!("0x4a998c non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
 
 // 0x4a9a5c — __ZThn36_N3RBX12FaceInstanceD1Ev
 pub fn stub_4a9a5c() -> ! {
-    todo!("0x4a9a5c `non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
+    todo!("0x4a9a5c non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
 
 // 0x4a9b14 — __ZThn36_N3RBX12FaceInstanceD0Ev
 pub fn stub_4a9b14() -> ! {
-    todo!("0x4a9b14 `non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
+    todo!("0x4a9b14 non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
 
 // 0x4a9be4 — __ZN3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -727,5 +727,5 @@ pub fn stub_4aa5c4() -> ! {
 
 // 0x4aa5e8 — __GLOBAL__I_a_190
 pub fn stub_4aa5e8() -> ! {
-    todo!("0x4aa5e8 `global constructor keyed to_a_190")
+    todo!("0x4aa5e8 global constructor keyed to_a_190")
 }

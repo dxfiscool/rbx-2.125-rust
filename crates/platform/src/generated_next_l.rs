@@ -120,7 +120,7 @@ pub fn stub_4a883c() -> ! {
 // 0x4a9168 — __GLOBAL__I_a_189
 #[doc(alias = "global constructor keyed to_a_189")]
 pub fn stub_4a9168() -> ! {
-    todo!("0x4a9168 `global constructor keyed to'_a_189")
+    todo!("0x4a9168 global constructor keyed to_a_189")
 }
 
 // 0x4a9be4 — __ZN3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -163,7 +163,7 @@ pub fn stub_4a9d3c() -> ! {
 // 0x4aa5e8 — __GLOBAL__I_a_190
 #[doc(alias = "global constructor keyed to_a_190")]
 pub fn stub_4aa5e8() -> ! {
-    todo!("0x4aa5e8 `global constructor keyed to'_a_190")
+    todo!("0x4aa5e8 global constructor keyed to_a_190")
 }
 
 // 0x4ab26c — __ZN3RBX10Reflection4Type12getSingletonINS_4Time12SampleMethodEEERKS1_v

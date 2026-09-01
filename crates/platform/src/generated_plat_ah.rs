@@ -722,7 +722,7 @@ pub fn stub_d44a4() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::nosoundoutput")]
 pub fn stub_d44e8() -> ! {
-    todo!("0xd44e8 `global constructor keyed to'FMOD::nosoundoutput")
+    todo!("0xd44e8 global constructor keyed toFMOD::nosoundoutput")
 }
 
 // 0xd44f4 - __ZN4FMOD17OutputNoSound_NRT13getNumDriversEPi / FMOD::OutputNoSound_NRT::getNumDrivers(int *)
@@ -827,7 +827,7 @@ pub fn stub_d48a8() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::nosoundoutput_nrt")]
 pub fn stub_d48ec() -> ! {
-    todo!("0xd48ec `global constructor keyed to'FMOD::nosoundoutput_nrt")
+    todo!("0xd48ec global constructor keyed toFMOD::nosoundoutput_nrt")
 }
 
 // 0xd48f8 - __ZN4FMOD12OutputPolled4stopEv / FMOD::OutputPolled::stop(void)

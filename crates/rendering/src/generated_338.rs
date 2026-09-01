@@ -15,7 +15,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "non-virtual thunk toRBX::Hint::~Hint()")]
 // was: __ZThn36_N3RBX4HintD1Ev
 pub fn stub_5c92a0() -> ! {
-    todo!("0x5c92a0 `non-virtual thunk to'RBX::Hint::~Hint()")
+    todo!("0x5c92a0 non-virtual thunk toRBX::Hint::~Hint()")
 }
 
 // 0x5c9390 — __ZThn36_N3RBX4HintD0Ev
@@ -23,7 +23,7 @@ pub fn stub_5c92a0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Hint::~Hint()")]
 // was: __ZThn36_N3RBX4HintD0Ev
 pub fn stub_5c9390() -> ! {
-    todo!("0x5c9390 `non-virtual thunk to'RBX::Hint::~Hint()")
+    todo!("0x5c9390 non-virtual thunk toRBX::Hint::~Hint()")
 }
 
 // 0x5c9498 — __ZN3RBX14FactoryProductINS_7MessageENS_8InstanceELZNS_8sMessageEES2_E7CreatorD1Ev
@@ -406,7 +406,7 @@ pub fn stub_5cb2c0() -> ! {
 #[doc(alias = "global constructor keyed to_a_227")]
 // was: __GLOBAL__I_a_227
 pub fn stub_5cb2e4() -> ! {
-    todo!("0x5cb2e4 `global constructor keyed to'_a_227")
+    todo!("0x5cb2e4 global constructor keyed to_a_227")
 }
 
 // 0x5cb594 — __ZNK3RBX13ModelInstance23getPrimaryPartSetByUserEv
@@ -510,7 +510,7 @@ pub fn stub_5cc504() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 // was: __ZThn32_N3RBX13ModelInstanceD0Ev
 pub fn stub_5cc514() -> ! {
-    todo!("0x5cc514 `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc514 non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc51c — __ZThn36_N3RBX13ModelInstanceD0Ev
@@ -518,7 +518,7 @@ pub fn stub_5cc514() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 // was: __ZThn36_N3RBX13ModelInstanceD0Ev
 pub fn stub_5cc51c() -> ! {
-    todo!("0x5cc51c `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc51c non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc524 — __ZThn120_N3RBX13ModelInstanceD0Ev
@@ -526,7 +526,7 @@ pub fn stub_5cc51c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 // was: __ZThn120_N3RBX13ModelInstanceD0Ev
 pub fn stub_5cc524() -> ! {
-    todo!("0x5cc524 `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc524 non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc52c — __ZN3RBX13ModelInstanceD2Ev
@@ -542,7 +542,7 @@ pub fn stub_5cc52c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 // was: __ZThn32_N3RBX13ModelInstanceD1Ev
 pub fn stub_5cc6b0() -> ! {
-    todo!("0x5cc6b0 `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc6b0 non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc6c0 — __ZThn36_N3RBX13ModelInstanceD1Ev
@@ -550,7 +550,7 @@ pub fn stub_5cc6b0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 // was: __ZThn36_N3RBX13ModelInstanceD1Ev
 pub fn stub_5cc6c0() -> ! {
-    todo!("0x5cc6c0 `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc6c0 non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc6d0 — __ZThn120_N3RBX13ModelInstanceD1Ev
@@ -558,7 +558,7 @@ pub fn stub_5cc6c0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::~ModelInstance()")]
 // was: __ZThn120_N3RBX13ModelInstanceD1Ev
 pub fn stub_5cc6d0() -> ! {
-    todo!("0x5cc6d0 `non-virtual thunk to'RBX::ModelInstance::~ModelInstance()")
+    todo!("0x5cc6d0 non-virtual thunk toRBX::ModelInstance::~ModelInstance()")
 }
 
 // 0x5cc6e0 — __ZN3RBX13ModelInstance21hackPhysicalCharacterEv
@@ -652,7 +652,7 @@ pub fn stub_5ccca4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::getPrimaryPart(void)")]
 // was: __ZThn92_N3RBX13ModelInstance14getPrimaryPartEv
 pub fn stub_5cce34() -> ! {
-    todo!("0x5cce34 `non-virtual thunk to'RBX::ModelInstance::getPrimaryPart(void)")
+    todo!("0x5cce34 non-virtual thunk toRBX::ModelInstance::getPrimaryPart(void)")
 }
 
 // 0x5cce3c — __ZN3RBX21VisitModelDescendantsEN5boost10shared_ptrINS_8InstanceEEEPPNS_12PartInstanceEPf
@@ -689,7 +689,7 @@ pub fn stub_5cd060() -> ! {
 #[doc(alias = "virtual thunk toRBX::ModelInstance::getLocation(void)")]
 // was: __ZTv0_n12_N3RBX13ModelInstance11getLocationEv
 pub fn stub_5cd1f4() -> ! {
-    todo!("0x5cd1f4 `virtual thunk to'RBX::ModelInstance::getLocation(void)")
+    todo!("0x5cd1f4 virtual thunk toRBX::ModelInstance::getLocation(void)")
 }
 
 // 0x5cd2d0 — __ZNK3RBX13ModelInstance19computeExtentsWorldEv
@@ -728,7 +728,7 @@ pub fn stub_5cda60() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::onCameraNear(float)")]
 // was: __ZThn120_N3RBX13ModelInstance12onCameraNearEf
 pub fn stub_5cda9c() -> ! {
-    todo!("0x5cda9c `non-virtual thunk to'RBX::ModelInstance::onCameraNear(float)")
+    todo!("0x5cda9c non-virtual thunk toRBX::ModelInstance::onCameraNear(float)")
 }
 
 // 0x5cdaa4 — __ZN3RBX13ModelInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
@@ -742,7 +742,7 @@ pub fn stub_5cdaa4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")]
 // was: __ZThn120_N3RBX13ModelInstance25getCameraIgnorePrimitivesERSt6vectorIPKNS_9PrimitiveESaIS4_EE
 pub fn stub_5cdacc() -> ! {
-    todo!("0x5cdacc `non-virtual thunk to'RBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
+    todo!("0x5cdacc non-virtual thunk toRBX::ModelInstance::getCameraIgnorePrimitives(std::vector<RBX::Primitive const*,std::allocator<RBX::Primitive const*>> &)")
 }
 
 // 0x5cdad4 — __ZNK3RBX13ModelInstance17getModelInPrimaryEv

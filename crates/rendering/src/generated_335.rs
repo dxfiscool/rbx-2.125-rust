@@ -190,7 +190,7 @@ pub fn stub_5bc5d8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")]
 // was: __ZThn32_N3RBX24KeyframeSequenceProviderD1Ev
 pub fn stub_5bc604() -> ! {
-    todo!("0x5bc604 `non-virtual thunk to'RBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
+    todo!("0x5bc604 non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
 }
 
 // 0x5bc748 — __ZThn32_N3RBX24KeyframeSequenceProviderD0Ev
@@ -198,7 +198,7 @@ pub fn stub_5bc604() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")]
 // was: __ZThn32_N3RBX24KeyframeSequenceProviderD0Ev
 pub fn stub_5bc748() -> ! {
-    todo!("0x5bc748 `non-virtual thunk to'RBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
+    todo!("0x5bc748 non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
 }
 
 // 0x5bc8a0 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEE12getClassNameEv
@@ -213,7 +213,7 @@ pub fn stub_5bc8a0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")]
 // was: __ZThn36_N3RBX24KeyframeSequenceProviderD1Ev
 pub fn stub_5bc8c8() -> ! {
-    todo!("0x5bc8c8 `non-virtual thunk to'RBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
+    todo!("0x5bc8c8 non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
 }
 
 // 0x5bca0c — __ZThn36_N3RBX24KeyframeSequenceProviderD0Ev
@@ -221,7 +221,7 @@ pub fn stub_5bc8c8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")]
 // was: __ZThn36_N3RBX24KeyframeSequenceProviderD0Ev
 pub fn stub_5bca0c() -> ! {
-    todo!("0x5bca0c `non-virtual thunk to'RBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
+    todo!("0x5bca0c non-virtual thunk toRBX::KeyframeSequenceProvider::~KeyframeSequenceProvider()")
 }
 
 // 0x5bcb68 — __ZN3RBX8LRUCacheISsN5boost10shared_ptrINS_16KeyframeSequenceEEEED2Ev

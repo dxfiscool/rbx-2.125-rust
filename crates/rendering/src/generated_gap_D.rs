@@ -198,7 +198,7 @@ pub fn stub_ea7378() -> ! {
 #[doc(alias = "anonymous namespace::computeAABB(RBX::FileMeshData *)")]
 // was: __ZN12_GLOBAL__N_111computeAABBEPN3RBX12FileMeshDataE
 pub fn stub_ea7dac() -> ! {
-    todo!("0xea7dac `anonymous namespace'::computeAABB(RBX::FileMeshData *)")
+    todo!("0xea7dac anonymous namespace::computeAABB(RBX::FileMeshData *)")
 }
 
 // 0xea7f00 — __ZN12_GLOBAL__N_114readMeshFromV1ERSif
@@ -206,21 +206,21 @@ pub fn stub_ea7dac() -> ! {
 #[doc(alias = "anonymous namespace::readMeshFromV1(std::istream &,float)")]
 // was: __ZN12_GLOBAL__N_114readMeshFromV1ERSif
 pub fn stub_ea7f00() -> ! {
-    todo!("0xea7f00 `anonymous namespace'::readMeshFromV1(std::istream &,float)")
+    todo!("0xea7f00 anonymous namespace::readMeshFromV1(std::istream &,float)")
 }
 
 // 0xea85d8 — __ZN12_GLOBAL__N_112optimizeMeshERN3RBX12FileMeshDataE
 #[doc(alias = "anonymous namespace::optimizeMesh(RBX::FileMeshData &)")]
 // was: __ZN12_GLOBAL__N_112optimizeMeshERN3RBX12FileMeshDataE
 pub fn stub_ea85d8() -> ! {
-    todo!("0xea85d8 `anonymous namespace'::optimizeMesh(RBX::FileMeshData &)")
+    todo!("0xea85d8 anonymous namespace::optimizeMesh(RBX::FileMeshData &)")
 }
 
 // 0xea8a30 — __ZNSt8_Rb_treeIN3RBX29FileMeshVertexNormalTexture3dESt4pairIKS1_jESt10_Select1stIS4_EN12_GLOBAL__N_120MeshVertexComparatorESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
 #[doc(alias = "std::_Rb_tree<RBX::FileMeshVertexNormalTexture3d,std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>,std::_Select1st<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>,anonymous namespace::MeshVertexComparator,std::allocator<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>> *)")]
 // was: __ZNSt8_Rb_treeIN3RBX29FileMeshVertexNormalTexture3dESt4pairIKS1_jESt10_Select1stIS4_EN12_GLOBAL__N_120MeshVertexComparatorESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
 pub fn stub_ea8a30() -> ! {
-    todo!("0xea8a30 std::_Rb_tree<RBX::FileMeshVertexNormalTexture3d,std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>,std::_Select1st<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>,`anonymous name")
+    todo!("0xea8a30 std::_Rb_tree<RBX::FileMeshVertexNormalTexture3d,std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>,std::_Select1st<std::pair<RBX::FileMeshVertexNormalTexture3d const,unsigned int>>,anonymous name")
 }
 
 // 0xea8a58 — __ZN12_GLOBAL__N_114readFloatTokenEPccPf
@@ -228,7 +228,7 @@ pub fn stub_ea8a30() -> ! {
 #[doc(alias = "anonymous namespace::readFloatToken(char *,char,float *)")]
 // was: __ZN12_GLOBAL__N_114readFloatTokenEPccPf
 pub fn stub_ea8a58() -> ! {
-    todo!("0xea8a58 `anonymous namespace'::readFloatToken(char *,char,float *)")
+    todo!("0xea8a58 anonymous namespace::readFloatToken(char *,char,float *)")
 }
 
 // 0xea8bb8 — __ZNSt6vectorIN3RBX29FileMeshVertexNormalTexture3dESaIS1_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS1_S3_EEmRKS1_

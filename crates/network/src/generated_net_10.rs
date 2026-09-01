@@ -200,7 +200,7 @@ pub fn stub_5d3070() -> ! { todo!("0x5d3070 RBX::Reflection::RefPropDescriptor<R
 
 // 0x5d3150 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_5d3150() -> ! { todo!("0x5d3150 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const") }
+pub fn stub_5d3150() -> ! { todo!("0x5d3150 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const") }
 
 // 0x5d3158 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_12PartInstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PartInstance *>::GetImpl<RBX::PartInstance * (RBX::Mouse::*)(void)const>::isReadOnly(void)const")]
@@ -279,7 +279,7 @@ pub fn stub_5d3768() -> ! { todo!("0x5d3768 RBX::Reflection::RefPropDescriptor<R
 
 // 0x5d3848 — __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
-pub fn stub_5d3848() -> ! { todo!("0x5d3848 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const") }
+pub fn stub_5d3848() -> ! { todo!("0x5d3848 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const") }
 
 // 0x5d3850 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
 #[doc(alias = "RBX::Reflection::PropDescriptor<RBX::Mouse,RBX::PVInstance *>::GetSetImpl<RBX::PVInstance * (RBX::Mouse::*)(void)const,void (RBX::Mouse::*)(RBX::PVInstance *)>::isReadOnly(void)const")]
@@ -407,7 +407,7 @@ pub fn stub_5d511c() -> ! { todo!("0x5d511c RBX::MouseCommand::~MouseCommand()")
 // 0x5d5120 — __ZThn36_N3RBX12MouseCommandD0Ev
 // type: void __fastcall(RBX::MouseCommand *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MouseCommand::~MouseCommand()")]
-pub fn stub_5d5120() -> ! { todo!("0x5d5120 `non-virtual thunk to'RBX::MouseCommand::~MouseCommand()") }
+pub fn stub_5d5120() -> ! { todo!("0x5d5120 non-virtual thunk toRBX::MouseCommand::~MouseCommand()") }
 
 // 0x5d5128 — __ZN3RBX12MouseCommandD2Ev
 // type: void __fastcall(RBX::MouseCommand *__hidden this)
@@ -417,7 +417,7 @@ pub fn stub_5d5128() -> ! { todo!("0x5d5128 RBX::MouseCommand::~MouseCommand()")
 // 0x5d5258 — __ZThn36_N3RBX12MouseCommandD1Ev
 // type: void __fastcall(RBX::MouseCommand *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::MouseCommand::~MouseCommand()")]
-pub fn stub_5d5258() -> ! { todo!("0x5d5258 `non-virtual thunk to'RBX::MouseCommand::~MouseCommand()") }
+pub fn stub_5d5258() -> ! { todo!("0x5d5258 non-virtual thunk toRBX::MouseCommand::~MouseCommand()") }
 
 // 0x5d5260 — __ZNK3RBX12MouseCommand18getTopSelectable3dEPNS_12PartInstanceE
 // type: _DWORD __fastcall(RBX::MouseCommand *__hidden this, RBX::PartInstance *)

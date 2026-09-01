@@ -371,7 +371,7 @@ pub fn stub_632c84() -> ! {
 // type: int()
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")]
 pub fn stub_632c8c() -> ! {
-    todo!("0x632c8c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")
+    todo!("0x632c8c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::slot,boost::function<void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>,2,void ()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)>::call(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)")
 }
 
 // 0x632c94 — boost::function2<void,RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState>::operator()(RBX::SkateboardPlatform::MoveState,RBX::SkateboardPlatform::MoveState)const
@@ -754,7 +754,7 @@ pub fn stub_633e44() -> ! {
 // mangled: __GLOBAL__I_a_256
 #[doc(alias = "global constructor keyed to_a_256")]
 pub fn stub_633f10() -> ! {
-    todo!("0x633f10 `global constructor keyed to'_a_256")
+    todo!("0x633f10 global constructor keyed to_a_256")
 }
 
 // 0x634630 — RBX::Sky::setNumStars(int)
@@ -826,7 +826,7 @@ pub fn stub_6359f4() -> ! {
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
 pub fn stub_635a04() -> ! {
-    todo!("0x635a04 `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x635a04 non-virtual thunk toRBX::Sky::~Sky()")
 }
 
 // 0x635a70 — `non-virtual thunk to'RBX::Sky::~Sky()
@@ -834,7 +834,7 @@ pub fn stub_635a04() -> ! {
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
 pub fn stub_635a70() -> ! {
-    todo!("0x635a70 `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x635a70 non-virtual thunk toRBX::Sky::~Sky()")
 }
 
 // 0x635b6c — __ZThn32_NK3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E12getClassNameEv
@@ -850,7 +850,7 @@ pub fn stub_635b6c() -> ! {
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
 pub fn stub_635b7c() -> ! {
-    todo!("0x635b7c `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x635b7c non-virtual thunk toRBX::Sky::~Sky()")
 }
 
 // 0x635be8 — `non-virtual thunk to'RBX::Sky::~Sky()
@@ -858,7 +858,7 @@ pub fn stub_635b7c() -> ! {
 // type: void __fastcall(RBX::Sky *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Sky::~Sky()")]
 pub fn stub_635be8() -> ! {
-    todo!("0x635be8 `non-virtual thunk to'RBX::Sky::~Sky()")
+    todo!("0x635be8 non-virtual thunk toRBX::Sky::~Sky()")
 }
 
 // 0x635ce4 — __ZN3RBX14FactoryProductINS_3SkyENS_8InstanceELZNS_4sSkyEES2_E17static_getCreatorEv
@@ -1142,7 +1142,7 @@ pub fn stub_636e0c() -> ! {
 // mangled: __GLOBAL__I_a_257
 #[doc(alias = "global constructor keyed to_a_257")]
 pub fn stub_636e80() -> ! {
-    todo!("0x636e80 `global constructor keyed to'_a_257")
+    todo!("0x636e80 global constructor keyed to_a_257")
 }
 
 // 0x637264 — RBX::Smoke::setColor(G3D::Color3)

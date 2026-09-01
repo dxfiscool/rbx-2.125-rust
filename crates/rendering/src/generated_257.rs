@@ -60,7 +60,7 @@ pub fn stub_30e908() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 // was: __ZThn32_N3RBX13ContentFilterD0Ev
 pub fn stub_30e90c() -> ! {
-    todo!("0x30e90c `non-virtual thunk to'RBX::ContentFilter::~ContentFilter()")
+    todo!("0x30e90c non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
 }
 
 // 0x30e914 — __ZThn36_N3RBX13ContentFilterD0Ev
@@ -68,7 +68,7 @@ pub fn stub_30e90c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 // was: __ZThn36_N3RBX13ContentFilterD0Ev
 pub fn stub_30e914() -> ! {
-    todo!("0x30e914 `non-virtual thunk to'RBX::ContentFilter::~ContentFilter()")
+    todo!("0x30e914 non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
 }
 
 // 0x30e91c — __ZN3RBX13ContentFilterD2Ev
@@ -84,7 +84,7 @@ pub fn stub_30e91c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 // was: __ZThn32_N3RBX13ContentFilterD1Ev
 pub fn stub_30e96c() -> ! {
-    todo!("0x30e96c `non-virtual thunk to'RBX::ContentFilter::~ContentFilter()")
+    todo!("0x30e96c non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
 }
 
 // 0x30e974 — __ZThn36_N3RBX13ContentFilterD1Ev
@@ -92,7 +92,7 @@ pub fn stub_30e96c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 // was: __ZThn36_N3RBX13ContentFilterD1Ev
 pub fn stub_30e974() -> ! {
-    todo!("0x30e974 `non-virtual thunk to'RBX::ContentFilter::~ContentFilter()")
+    todo!("0x30e974 non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
 }
 
 // 0x30e97c — __ZN3RBX13ContentFilter14truncateStringERSs
@@ -528,7 +528,7 @@ pub fn stub_314a10() -> ! {
 #[doc(alias = "global constructor keyed to_a_110")]
 // was: __GLOBAL__I_a_110
 pub fn stub_314a40() -> ! {
-    todo!("0x314a40 `global constructor keyed to'_a_110")
+    todo!("0x314a40 global constructor keyed to_a_110")
 }
 
 // 0x314c84 — __ZN3RBXltERKNS_9ContentIdES2_
@@ -584,7 +584,7 @@ pub fn stub_314d14() -> ! {
 #[doc(alias = "anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")]
 // was: __ZN12_GLOBAL__N_111createIdUrlERSsRKSsS2_
 pub fn stub_314f94() -> ! {
-    todo!("0x314f94 `anonymous namespace'::createIdUrl(std::string &,std::string const&,std::string const&)")
+    todo!("0x314f94 anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")
 }
 
 // 0x315004 — __ZN3RBX9ContentId22convertToLegacyContentERKSs
@@ -623,7 +623,7 @@ pub fn stub_315514() -> ! {
 #[doc(alias = "global constructor keyed to_a_111")]
 // was: __GLOBAL__I_a_111
 pub fn stub_315594() -> ! {
-    todo!("0x315594 `global constructor keyed to'_a_111")
+    todo!("0x315594 global constructor keyed to_a_111")
 }
 
 // 0x315680 — __ZN3RBX10FileSystem16getUserDirectoryEbNS_13FileSystemDirEPKc
@@ -662,7 +662,7 @@ pub fn stub_315dd4() -> ! {
 #[doc(alias = "global constructor keyed to_a_112")]
 // was: __GLOBAL__I_a_112
 pub fn stub_3164c8() -> ! {
-    todo!("0x3164c8 `global constructor keyed to'_a_112")
+    todo!("0x3164c8 global constructor keyed to_a_112")
 }
 
 // 0x316590 — __ZN3RBX4Http21getRobloxResponceLockEv

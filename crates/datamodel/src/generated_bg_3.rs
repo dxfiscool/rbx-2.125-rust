@@ -111,7 +111,7 @@ pub fn stub_1d84c() -> ! {
 // 0x1d870 — __GLOBAL__I_a_4
 #[doc(alias = "global constructor keyed to_a_4")]
 pub fn stub_1d870() -> ! {
-    todo!("0x1d870 `global constructor keyed to'_a_4")
+    todo!("0x1d870 global constructor keyed to_a_4")
 }
 
 // 0x1da08 — -[NSString stringWithPercentEscape]

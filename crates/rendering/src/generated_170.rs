@@ -39,7 +39,7 @@ pub fn stub_1b304() -> ! {
 // was: __GLOBAL__I_a_3
 // type: 
 pub fn stub_1b308() -> ! {
-    todo!("0x1b308 `global constructor keyed to'_a_3")
+    todo!("0x1b308 global constructor keyed to_a_3")
 }
 
 

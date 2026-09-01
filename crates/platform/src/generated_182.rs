@@ -175,21 +175,21 @@ pub fn stub_98d6b0() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::gzip_error>::~error_info_injector()")]
 pub fn stub_98d768() -> ! {
-    todo!("0x98d768 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>::~error_info_injector()")
+    todo!("0x98d768 non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::gzip_error>::~error_info_injector()")
 }
 
 // 0x98d820 — __ZThn16_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED1Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")]
 pub fn stub_98d820() -> ! {
-    todo!("0x98d820 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")
+    todo!("0x98d820 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")
 }
 
 // 0x98d8d8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED1Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")]
 pub fn stub_98d8d8() -> ! {
-    todo!("0x98d8d8 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")
+    todo!("0x98d8d8 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")
 }
 
 // 0x98d9a4 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED0Ev
@@ -217,28 +217,28 @@ pub fn stub_98db1c() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")]
 pub fn stub_98dbcc() -> ! {
-    todo!("0x98dbcc `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")
+    todo!("0x98dbcc non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")
 }
 
 // 0x98dc88 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEE5cloneEv
 // type: char *__fastcall(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone(void)const")]
 pub fn stub_98dc88() -> ! {
-    todo!("0x98dc88 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone(void)const")
+    todo!("0x98dc88 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::clone(void)const")
 }
 
 // 0x98dd4c — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEE7rethrowEv
 // type: void __fastcall __noreturn(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::rethrow(void)const")]
 pub fn stub_98dd4c() -> ! {
-    todo!("0x98dd4c `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::rethrow(void)const")
+    todo!("0x98dd4c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::rethrow(void)const")
 }
 
 // 0x98dd5c — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")]
 pub fn stub_98dd5c() -> ! {
-    todo!("0x98dd5c `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")
+    todo!("0x98dd5c virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>>::~clone_impl()")
 }
 
 // 0x98de30 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEEC1ERKS6_
@@ -259,7 +259,7 @@ pub fn stub_98df7c() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::gzip_error>::~error_info_injector()")]
 pub fn stub_98e038() -> ! {
-    todo!("0x98e038 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::iostreams::gzip_error>::~error_info_injector()")
+    todo!("0x98e038 non-virtual thunk toboost::exception_detail::error_info_injector<boost::iostreams::gzip_error>::~error_info_injector()")
 }
 
 // 0x98e0f4 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_9iostreams10gzip_errorEEEEC1ERKS6_NS6_9clone_tagE
@@ -308,28 +308,28 @@ pub fn stub_98eb18() -> ! {
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")]
 pub fn stub_98ec58() -> ! {
-    todo!("0x98ec58 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")
+    todo!("0x98ec58 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")
 }
 
 // 0x98ed18 — __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEE7rethrowEv
 // type: void __fastcall __noreturn(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::rethrow(void)const")]
 pub fn stub_98ed18() -> ! {
-    todo!("0x98ed18 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::rethrow(void)const")
+    todo!("0x98ed18 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::rethrow(void)const")
 }
 
 // 0x98ed28 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")]
 pub fn stub_98ed28() -> ! {
-    todo!("0x98ed28 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")
+    todo!("0x98ed28 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")
 }
 
 // 0x98ee00 — __ZThn8_N5boost16exception_detail19error_info_injectorINSt8ios_base7failureEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int, void *, int)
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::ios_base::failure>::~error_info_injector()")]
 pub fn stub_98ee00() -> ! {
-    todo!("0x98ee00 `non-virtual thunk to'boost::exception_detail::error_info_injector<std::ios_base::failure>::~error_info_injector()")
+    todo!("0x98ee00 non-virtual thunk toboost::exception_detail::error_info_injector<std::ios_base::failure>::~error_info_injector()")
 }
 
 // 0x98eec0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEEC1ERKS5_
@@ -511,14 +511,14 @@ pub fn stub_991af4() -> ! {
 // type: void __fastcall(_DWORD *, int, int)
 #[doc(alias = "virtual thunk toboost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")]
 pub fn stub_991be4() -> ! {
-    todo!("0x991be4 `virtual thunk to'boost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")
+    todo!("0x991be4 virtual thunk toboost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")
 }
 
 // 0x991cc0 — __ZTv0_n12_N5boost9iostreams6streamINS0_18basic_array_sourceIcEESt11char_traitsIcESaIcEED0Ev
 // type: void __fastcall(_DWORD *, int, int, int)
 #[doc(alias = "virtual thunk toboost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")]
 pub fn stub_991cc0() -> ! {
-    todo!("0x991cc0 `virtual thunk to'boost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")
+    todo!("0x991cc0 virtual thunk toboost::iostreams::stream<boost::iostreams::basic_array_source<char>,std::char_traits<char>,std::allocator<char>>::~stream()")
 }
 
 // 0x991db8 — __ZN5boost9iostreams13stream_bufferINS0_18basic_array_sourceIcEESt11char_traitsIcESaIcENS0_14input_seekableEED1Ev

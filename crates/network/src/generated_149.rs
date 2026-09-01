@@ -476,7 +476,7 @@ pub fn stub_16e24() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a")]
 pub fn stub_16e4c() -> ! {
-    todo!("0x16e4c `global constructor keyed to'_a")
+    todo!("0x16e4c global constructor keyed to_a")
 }
 
 // 0x179e8 — __ZN3RBX9DataModel10serverSaveEv
@@ -535,7 +535,7 @@ pub fn stub_17b80() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_0")]
 pub fn stub_17c58() -> ! {
-    todo!("0x17c58 `global constructor keyed to'_a_0")
+    todo!("0x17c58 global constructor keyed to_a_0")
 }
 
 // 0x17df0 — +[Appirater setAppId:]

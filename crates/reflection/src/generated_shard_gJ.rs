@@ -80,7 +80,7 @@ pub fn stub_0xbb77c() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspparameq")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD10dspparameqE")]
 pub fn stub_0xbb7c0() -> ! {
-    todo!("0xbb7c0 `global constructor keyed to'FMOD::dspparameq")
+    todo!("0xbb7c0 global constructor keyed toFMOD::dspparameq")
 }
 
 // 0xbb7cc — __ZN4FMOD16DSPPitchShiftSMB6bitrv2EPfi
@@ -298,7 +298,7 @@ pub fn stub_0xbf318() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsppitchshift")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD13dsppitchshiftE")]
 pub fn stub_0xbf35c() -> ! {
-    todo!("0xbf35c `global constructor keyed to'FMOD::dsppitchshift")
+    todo!("0xbf35c global constructor keyed toFMOD::dsppitchshift")
 }
 
 // 0xbf368 — __ZN4FMOD12DSPResampler8addInputEPNS_4DSPIE
@@ -518,7 +518,7 @@ pub fn stub_0xc1ac0() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspreverb")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD9dspreverbE")]
 pub fn stub_0xc1b04() -> ! {
-    todo!("0xc1b04 `global constructor keyed to'FMOD::dspreverb")
+    todo!("0xc1b04 global constructor keyed toFMOD::dspreverb")
 }
 
 // 0xc1b10 — __ZN4FMOD12DSPSfxReverb20SetRoomRolloffFactorEP25_I3DL2_LISTENERPROPERTIES

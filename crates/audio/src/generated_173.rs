@@ -39,7 +39,7 @@ pub fn stub_0x35ccd0() -> ! {
 #[doc(alias = "global constructor keyed to_a_130")]
 #[doc(alias = "__GLOBAL__I_a_130")]
 pub fn stub_0x35ce18() -> ! {
-    todo!("0x35ce18 `global constructor keyed to'_a_130")
+    todo!("0x35ce18 global constructor keyed to_a_130")
 }
 
 // 0x35cee0 — __ZN3RBX14normalIdToMaskENS_8NormalIdE
@@ -137,7 +137,7 @@ pub fn stub_0x35db38() -> ! {
 #[doc(alias = "global constructor keyed to_a_131")]
 #[doc(alias = "__GLOBAL__I_a_131")]
 pub fn stub_0x35db54() -> ! {
-    todo!("0x35db54 `global constructor keyed to'_a_131")
+    todo!("0x35db54 global constructor keyed to_a_131")
 }
 
 // 0x35db90 — __ZN3RBX9Profiling4initEb
@@ -303,7 +303,7 @@ pub fn stub_0x35e0dc() -> ! {
 #[doc(alias = "global constructor keyed to_a_132")]
 #[doc(alias = "__GLOBAL__I_a_132")]
 pub fn stub_0x35e0f4() -> ! {
-    todo!("0x35e0f4 `global constructor keyed to'_a_132")
+    todo!("0x35e0f4 global constructor keyed to_a_132")
 }
 
 // 0x35e2c8 — __ZN3RBX15ProtectedStringC1Ev
@@ -558,7 +558,7 @@ pub fn stub_0x360150() -> ! {
 #[doc(alias = "global constructor keyed to_a_133")]
 #[doc(alias = "__GLOBAL__I_a_133")]
 pub fn stub_0x360154() -> ! {
-    todo!("0x360154 `global constructor keyed to'_a_133")
+    todo!("0x360154 global constructor keyed to_a_133")
 }
 
 // 0x3602a8 — __ZN3RBX10QuaternionaSERKS0_
@@ -595,7 +595,7 @@ pub fn stub_0x360478() -> ! {
 #[doc(alias = "global constructor keyed to_a_134")]
 #[doc(alias = "__GLOBAL__I_a_134")]
 pub fn stub_0x360528() -> ! {
-    todo!("0x360528 `global constructor keyed to'_a_134")
+    todo!("0x360528 global constructor keyed to_a_134")
 }
 
 // 0x360560 — __ZNK3RBX4Rect13positionPointENS0_8LocationES1_
@@ -617,7 +617,7 @@ pub fn stub_0x360678() -> ! {
 #[doc(alias = "global constructor keyed to_a_135")]
 #[doc(alias = "__GLOBAL__I_a_135")]
 pub fn stub_0x3607f4() -> ! {
-    todo!("0x3607f4 `global constructor keyed to'_a_135")
+    todo!("0x3607f4 global constructor keyed to_a_135")
 }
 
 // 0x36082c — __ZN3RBX10RunServiceC1Ev
@@ -673,7 +673,7 @@ pub fn stub_0x36128c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn32_N3RBX10RunServiceD0Ev")]
 pub fn stub_0x361290() -> ! {
-    todo!("0x361290 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x361290 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x361298 — __ZThn36_N3RBX10RunServiceD0Ev
@@ -681,7 +681,7 @@ pub fn stub_0x361290() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn36_N3RBX10RunServiceD0Ev")]
 pub fn stub_0x361298() -> ! {
-    todo!("0x361298 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x361298 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3612a0 — __ZN3RBX10RunServiceD2Ev
@@ -697,7 +697,7 @@ pub fn stub_0x3612a0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn32_N3RBX10RunServiceD1Ev")]
 pub fn stub_0x3616a8() -> ! {
-    todo!("0x3616a8 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x3616a8 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3616b0 — __ZThn36_N3RBX10RunServiceD1Ev
@@ -705,7 +705,7 @@ pub fn stub_0x3616a8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 #[doc(alias = "__ZThn36_N3RBX10RunServiceD1Ev")]
 pub fn stub_0x3616b0() -> ! {
-    todo!("0x3616b0 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x3616b0 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3616b8 — __ZN3RBX10RunService13getPhysicsJobEv
@@ -1083,21 +1083,21 @@ pub fn stub_0x362dc0() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")]
 #[doc(alias = "__ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE7rethrowEv")]
 pub fn stub_0x362f88() -> ! {
-    todo!("0x362f88 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")
+    todo!("0x362f88 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")
 }
 
 // 0x362f98 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 #[doc(alias = "__ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev")]
 pub fn stub_0x362f98() -> ! {
-    todo!("0x362f98 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+    todo!("0x362f98 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
 }
 
 // 0x362fb8 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev")]
 pub fn stub_0x362fb8() -> ! {
-    todo!("0x362fb8 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
+    todo!("0x362fb8 non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
 }
 
 // 0x362fd0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS5_NS5_9clone_tagE

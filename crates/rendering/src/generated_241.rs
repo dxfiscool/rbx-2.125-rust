@@ -102,7 +102,7 @@ pub fn stub_285898() -> ! {
 #[doc(alias = "global constructor keyed to_a_67")]
 // was: __GLOBAL__I_a_67
 pub fn stub_2858c0() -> ! {
-    todo!("0x2858c0 `global constructor keyed to'_a_67")
+    todo!("0x2858c0 global constructor keyed to_a_67")
 }
 
 // 0x285c30 — __ZN3RBX12LuaAllocatorC1Eb
@@ -181,7 +181,7 @@ pub fn stub_285e14() -> ! {
 #[doc(alias = "global constructor keyed to_a_68")]
 // was: __GLOBAL__I_a_68
 pub fn stub_286268() -> ! {
-    todo!("0x286268 `global constructor keyed to'_a_68")
+    todo!("0x286268 global constructor keyed to_a_68")
 }
 
 // 0x286330 — __ZN3RBX11LuaSettingsC1Ev
@@ -235,7 +235,7 @@ pub fn stub_2868bc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 // was: __ZThn32_N3RBX11LuaSettingsD1Ev
 pub fn stub_2868cc() -> ! {
-    todo!("0x2868cc `non-virtual thunk to'RBX::LuaSettings::~LuaSettings()")
+    todo!("0x2868cc non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
 }
 
 // 0x286910 — __ZThn32_N3RBX11LuaSettingsD0Ev
@@ -243,7 +243,7 @@ pub fn stub_2868cc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 // was: __ZThn32_N3RBX11LuaSettingsD0Ev
 pub fn stub_286910() -> ! {
-    todo!("0x286910 `non-virtual thunk to'RBX::LuaSettings::~LuaSettings()")
+    todo!("0x286910 non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
 }
 
 // 0x2869f0 — __ZThn32_NK3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE12getClassNameEv
@@ -258,7 +258,7 @@ pub fn stub_2869f0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 // was: __ZThn36_N3RBX11LuaSettingsD1Ev
 pub fn stub_286a00() -> ! {
-    todo!("0x286a00 `non-virtual thunk to'RBX::LuaSettings::~LuaSettings()")
+    todo!("0x286a00 non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
 }
 
 // 0x286a44 — __ZThn36_N3RBX11LuaSettingsD0Ev
@@ -266,7 +266,7 @@ pub fn stub_286a00() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::LuaSettings::~LuaSettings()")]
 // was: __ZThn36_N3RBX11LuaSettingsD0Ev
 pub fn stub_286a44() -> ! {
-    todo!("0x286a44 `non-virtual thunk to'RBX::LuaSettings::~LuaSettings()")
+    todo!("0x286a44 non-virtual thunk toRBX::LuaSettings::~LuaSettings()")
 }
 
 // 0x286b24 — __ZN3RBX14FactoryProductINS_11LuaSettingsENS_22GlobalAdvancedSettings4ItemELZNS_12sLuaSettingsEENS_8InstanceEE17static_getCreatorEv
@@ -505,7 +505,7 @@ pub fn stub_2876e8() -> ! {
 #[doc(alias = "global constructor keyed to_a_69")]
 // was: __GLOBAL__I_a_69
 pub fn stub_287738() -> ! {
-    todo!("0x287738 `global constructor keyed to'_a_69")
+    todo!("0x287738 global constructor keyed to_a_69")
 }
 
 // 0x287acc — __ZN3RBX3Lua6BridgeINS0_13EventInstanceELb1EE8on_indexERKS2_PKcP9lua_State

@@ -160,14 +160,14 @@ pub fn stub_2a7d20() -> ! {
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService() [non-virtual thunk]")]
 pub fn stub_2a7d4c() -> ! {
-    todo!("0x2a7d4c `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
+    todo!("0x2a7d4c non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
 }
 
 // 0x2a7d54 — __ZThn32_N3RBX20RuntimeScriptServiceD0Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService() [non-virtual thunk]")]
 pub fn stub_2a7d54() -> ! {
-    todo!("0x2a7d54 `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
+    todo!("0x2a7d54 non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
 }
 
 // 0x2a7df8 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_21sRuntimeScriptServiceEEE12getClassNameEv
@@ -180,14 +180,14 @@ pub fn stub_2a7df8() -> ! {
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService() [non-virtual thunk]")]
 pub fn stub_2a7e20() -> ! {
-    todo!("0x2a7e20 `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
+    todo!("0x2a7e20 non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
 }
 
 // 0x2a7e28 — __ZThn36_N3RBX20RuntimeScriptServiceD0Ev
 // type: void __fastcall(RBX::RuntimeScriptService *__hidden this)
 #[doc(alias = "RBX::RuntimeScriptService::~RuntimeScriptService() [non-virtual thunk]")]
 pub fn stub_2a7e28() -> ! {
-    todo!("0x2a7e28 `non-virtual thunk to'RBX::RuntimeScriptService::~RuntimeScriptService()")
+    todo!("0x2a7e28 non-virtual thunk toRBX::RuntimeScriptService::~RuntimeScriptService()")
 }
 
 // 0x2a7ed0 — __ZNK3RBX14FactoryProductINS_13ScriptContextENS_8InstanceELZNS_14sScriptContextEES2_E12getClassNameEv
@@ -814,7 +814,7 @@ pub fn stub_2ac2e8() -> ! {
 // 0x2ac30c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX13RunTransitionEEE4slotEN5boost3_bi6bind_tIvNS8_4_mfi3mf1IvNS3_20RuntimeScriptServiceES4_EENS9_5list2INS9_5valueIPSD_EENS8_3argILi1EEEEEEELi1ES5_E4callES4_
 #[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::RunTransition)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>,1,void ()(RBX::RunTransition)>::call(RBX::RunTransition) [non-virtual thunk]")]
 pub fn stub_2ac30c() -> ! {
-    todo!("0x2ac30c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::RunTransition)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>,1,void ()(RBX::RunTransition)>::call(RBX::RunTransition)")
+    todo!("0x2ac30c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::RunTransition)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::RuntimeScriptService,RBX::RunTransition>,boost::_bi::list2<boost::_bi::value<RBX::RuntimeScriptService*>,boost::arg<1>>>,1,void ()(RBX::RunTransition)>::call(RBX::RunTransition)")
 }
 
 // 0x2ac330 — __ZN5boost3_bi5list2INS0_5valueIPN3RBX20RuntimeScriptServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS3_13RunTransitionEEENS0_5list1IRSD_EEEEvNS0_4typeIvEERT_RT0_i

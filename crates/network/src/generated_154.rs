@@ -251,7 +251,7 @@ pub fn stub_202ac() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_5")]
 pub fn stub_202d0() -> ! {
-    todo!("0x202d0 `global constructor keyed to'_a_5")
+    todo!("0x202d0 global constructor keyed to_a_5")
 }
 
 // 0x20468 — -[AboutController initWithCoder:]
@@ -611,7 +611,7 @@ pub fn stub_21ba0() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_6")]
 pub fn stub_21c18() -> ! {
-    todo!("0x21c18 `global constructor keyed to'_a_6")
+    todo!("0x21c18 global constructor keyed to_a_6")
 }
 
 // 0x21ce0 — __ZN18iOSSettingsService4InitEv

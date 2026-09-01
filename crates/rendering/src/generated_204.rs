@@ -142,7 +142,7 @@ pub fn stub_0xb5e58() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspitecho")]
 // was: `global constructor keyed to'FMOD::dspitecho
 pub fn stub_0xb5e9c() -> ! {
-    todo!("0xb5e9c `global constructor keyed to'FMOD::dspitecho")
+    todo!("0xb5e9c global constructor keyed toFMOD::dspitecho")
 }
 
 // 0xb5ea8 — __ZN4FMOD10DSPLowPass8bilinearEffffffPffS1_
@@ -286,7 +286,7 @@ pub fn stub_0xb79ec() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsplowpass")]
 // was: `global constructor keyed to'FMOD::dsplowpass
 pub fn stub_0xb7a30() -> ! {
-    todo!("0xb7a30 `global constructor keyed to'FMOD::dsplowpass")
+    todo!("0xb7a30 global constructor keyed toFMOD::dsplowpass")
 }
 
 // 0xb7a3c — __ZN4FMOD11DSPLowPass213resetInternalEv
@@ -414,7 +414,7 @@ pub fn stub_0xb8928() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsplowpass2")]
 // was: `global constructor keyed to'FMOD::dsplowpass2
 pub fn stub_0xb896c() -> ! {
-    todo!("0xb896c `global constructor keyed to'FMOD::dsplowpass2")
+    todo!("0xb896c global constructor keyed toFMOD::dsplowpass2")
 }
 
 // 0xb8978 — __ZN4FMOD16DSPLowPassSimple13resetInternalEv
@@ -542,7 +542,7 @@ pub fn stub_0xb9690() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsplowpass_simple")]
 // was: `global constructor keyed to'FMOD::dsplowpass_simple
 pub fn stub_0xb96d4() -> ! {
-    todo!("0xb96d4 `global constructor keyed to'FMOD::dsplowpass_simple")
+    todo!("0xb96d4 global constructor keyed toFMOD::dsplowpass_simple")
 }
 
 // 0xb96e0 — __ZN4FMOD12DSPNormalize14createInternalEv
@@ -678,7 +678,7 @@ pub fn stub_0xb9ba8() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspnormalize")]
 // was: `global constructor keyed to'FMOD::dspnormalize
 pub fn stub_0xb9bec() -> ! {
-    todo!("0xb9bec `global constructor keyed to'FMOD::dspnormalize")
+    todo!("0xb9bec global constructor keyed toFMOD::dspnormalize")
 }
 
 // 0xb9bf8 — __ZN4FMOD13DSPOscillator14createInternalEv
@@ -790,7 +790,7 @@ pub fn stub_0xba22c() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsposcillator")]
 // was: `global constructor keyed to'FMOD::dsposcillator
 pub fn stub_0xba270() -> ! {
-    todo!("0xba270 `global constructor keyed to'FMOD::dsposcillator")
+    todo!("0xba270 global constructor keyed toFMOD::dsposcillator")
 }
 
 // 0xba27c — __ZN4FMOD10DSPParamEq13resetInternalEv

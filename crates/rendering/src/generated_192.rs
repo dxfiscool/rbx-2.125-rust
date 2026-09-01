@@ -284,21 +284,21 @@ pub fn stub_241108() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")]
 // was: `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()
 pub fn stub_241214() -> ! {
-    todo!("0x241214 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")
+    todo!("0x241214 non-virtual thunk toboost::exception_detail::error_info_injector<boost::condition_error>::~error_info_injector()")
 }
 
 // 0x241324 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")]
 // was: `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()
 pub fn stub_241324() -> ! {
-    todo!("0x241324 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")
+    todo!("0x241324 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::~clone_impl()")
 }
 
 // 0x241430 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_15condition_errorEEEE5cloneEv
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const")]
 // was: `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const
 pub fn stub_241430() -> ! {
-    todo!("0x241430 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const")
+    todo!("0x241430 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::condition_error>>::clone(void)const")
 }
 
 // 0x241444 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX13worker_thread4dataEEERKNS0_INS7_11work_resultEEEENS3_5list2INS3_5valueIS9_EENSH_ISB_EEEEEEEEvT_
@@ -529,7 +529,7 @@ pub fn stub_243304() -> ! {
 #[doc(alias = "global constructor keyed to_a_44")]
 // was: `global constructor keyed to'_a_44
 pub fn stub_2434dc() -> ! {
-    todo!("0x2434dc `global constructor keyed to'_a_44")
+    todo!("0x2434dc global constructor keyed to_a_44")
 }
 
 // 0x2435a4 — __ZN3RBX6CEvent4WaitEv
@@ -592,7 +592,7 @@ pub fn stub_243b84() -> ! {
 #[doc(alias = "global constructor keyed to_a_45")]
 // was: `global constructor keyed to'_a_45
 pub fn stub_243dd0() -> ! {
-    todo!("0x243dd0 `global constructor keyed to'_a_45")
+    todo!("0x243dd0 global constructor keyed to_a_45")
 }
 
 // 0x243e98 — __ZN3RBX6Limits9CountableC2Ev

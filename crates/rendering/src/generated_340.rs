@@ -88,7 +88,7 @@ pub fn stub_5d3070() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 pub fn stub_5d3150() -> ! {
-    todo!("0x5d3150 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x5d3150 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PartInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x5d3158 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_12PartInstanceEE7GetImplIMS2_KFS4_vEE10isReadOnlyEv
@@ -224,7 +224,7 @@ pub fn stub_5d3768() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: __ZThn40_NK3RBX10Reflection17RefPropDescriptorINS_5MouseENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE
 pub fn stub_5d3848() -> ! {
-    todo!("0x5d3848 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x5d3848 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::Mouse,RBX::PVInstance>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x5d3850 — __ZNK3RBX10Reflection14PropDescriptorINS_5MouseEPNS_10PVInstanceEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -374,7 +374,7 @@ pub fn stub_5d47a0() -> ! {
 #[doc(alias = "global constructor keyed to_a_229")]
 // was: __GLOBAL__I_a_229
 pub fn stub_5d47b4() -> ! {
-    todo!("0x5d47b4 `global constructor keyed to'_a_229")
+    todo!("0x5d47b4 global constructor keyed to_a_229")
 }
 
 // 0x5d5038 — __ZN3RBX12MouseCommandC2EPNS_9WorkspaceE
@@ -406,7 +406,7 @@ pub fn stub_5d511c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MouseCommand::~MouseCommand()")]
 // was: __ZThn36_N3RBX12MouseCommandD0Ev
 pub fn stub_5d5120() -> ! {
-    todo!("0x5d5120 `non-virtual thunk to'RBX::MouseCommand::~MouseCommand()")
+    todo!("0x5d5120 non-virtual thunk toRBX::MouseCommand::~MouseCommand()")
 }
 
 // 0x5d5128 — __ZN3RBX12MouseCommandD2Ev
@@ -422,7 +422,7 @@ pub fn stub_5d5128() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::MouseCommand::~MouseCommand()")]
 // was: __ZThn36_N3RBX12MouseCommandD1Ev
 pub fn stub_5d5258() -> ! {
-    todo!("0x5d5258 `non-virtual thunk to'RBX::MouseCommand::~MouseCommand()")
+    todo!("0x5d5258 non-virtual thunk toRBX::MouseCommand::~MouseCommand()")
 }
 
 // 0x5d5260 — __ZNK3RBX12MouseCommand18getTopSelectable3dEPNS_12PartInstanceE
@@ -555,14 +555,14 @@ pub fn stub_5d655c() -> ! {
 #[doc(alias = "global constructor keyed to_a_230")]
 // was: __GLOBAL__I_a_230
 pub fn stub_5d6644() -> ! {
-    todo!("0x5d6644 `global constructor keyed to'_a_230")
+    todo!("0x5d6644 global constructor keyed to_a_230")
 }
 
 // 0x5d6900 — __GLOBAL__I_a_231
 #[doc(alias = "global constructor keyed to_a_231")]
 // was: __GLOBAL__I_a_231
 pub fn stub_5d6900() -> ! {
-    todo!("0x5d6900 `global constructor keyed to'_a_231")
+    todo!("0x5d6900 global constructor keyed to_a_231")
 }
 
 // 0x5d6be8 — __ZN3RBX4PART22ParametricPartInstanceD0Ev
@@ -586,7 +586,7 @@ pub fn stub_5d6c94() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 // was: __ZThn32_N3RBX4PART22ParametricPartInstanceD0Ev
 pub fn stub_5d6ca4() -> ! {
-    todo!("0x5d6ca4 `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
+    todo!("0x5d6ca4 non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
 // 0x5d6cac — __ZThn36_N3RBX4PART22ParametricPartInstanceD0Ev
@@ -594,7 +594,7 @@ pub fn stub_5d6ca4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 // was: __ZThn36_N3RBX4PART22ParametricPartInstanceD0Ev
 pub fn stub_5d6cac() -> ! {
-    todo!("0x5d6cac `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
+    todo!("0x5d6cac non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
 // 0x5d6cb4 — __ZThn132_N3RBX4PART22ParametricPartInstanceD0Ev
@@ -602,7 +602,7 @@ pub fn stub_5d6cac() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 // was: __ZThn132_N3RBX4PART22ParametricPartInstanceD0Ev
 pub fn stub_5d6cb4() -> ! {
-    todo!("0x5d6cb4 `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
+    todo!("0x5d6cb4 non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
 // 0x5d6cbc — __ZThn32_N3RBX4PART22ParametricPartInstanceD1Ev
@@ -610,7 +610,7 @@ pub fn stub_5d6cb4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 // was: __ZThn32_N3RBX4PART22ParametricPartInstanceD1Ev
 pub fn stub_5d6cbc() -> ! {
-    todo!("0x5d6cbc `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
+    todo!("0x5d6cbc non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
 // 0x5d6cd0 — __ZThn36_N3RBX4PART22ParametricPartInstanceD1Ev
@@ -618,7 +618,7 @@ pub fn stub_5d6cbc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 // was: __ZThn36_N3RBX4PART22ParametricPartInstanceD1Ev
 pub fn stub_5d6cd0() -> ! {
-    todo!("0x5d6cd0 `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
+    todo!("0x5d6cd0 non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
 // 0x5d6ce4 — __ZThn132_N3RBX4PART22ParametricPartInstanceD1Ev
@@ -626,7 +626,7 @@ pub fn stub_5d6cd0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")]
 // was: __ZThn132_N3RBX4PART22ParametricPartInstanceD1Ev
 pub fn stub_5d6ce4() -> ! {
-    todo!("0x5d6ce4 `non-virtual thunk to'RBX::PART::ParametricPartInstance::~ParametricPartInstance()")
+    todo!("0x5d6ce4 non-virtual thunk toRBX::PART::ParametricPartInstance::~ParametricPartInstance()")
 }
 
 // 0x5d6cf8 — __ZN3RBX4PART5WedgeC1Ev
@@ -658,7 +658,7 @@ pub fn stub_5d704c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 // was: __ZThn32_N3RBX4PART5WedgeD0Ev
 pub fn stub_5d705c() -> ! {
-    todo!("0x5d705c `non-virtual thunk to'RBX::PART::Wedge::~Wedge()")
+    todo!("0x5d705c non-virtual thunk toRBX::PART::Wedge::~Wedge()")
 }
 
 // 0x5d7064 — __ZThn36_N3RBX4PART5WedgeD0Ev
@@ -666,7 +666,7 @@ pub fn stub_5d705c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 // was: __ZThn36_N3RBX4PART5WedgeD0Ev
 pub fn stub_5d7064() -> ! {
-    todo!("0x5d7064 `non-virtual thunk to'RBX::PART::Wedge::~Wedge()")
+    todo!("0x5d7064 non-virtual thunk toRBX::PART::Wedge::~Wedge()")
 }
 
 // 0x5d706c — __ZThn132_N3RBX4PART5WedgeD0Ev
@@ -674,7 +674,7 @@ pub fn stub_5d7064() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 // was: __ZThn132_N3RBX4PART5WedgeD0Ev
 pub fn stub_5d706c() -> ! {
-    todo!("0x5d706c `non-virtual thunk to'RBX::PART::Wedge::~Wedge()")
+    todo!("0x5d706c non-virtual thunk toRBX::PART::Wedge::~Wedge()")
 }
 
 // 0x5d7074 — __ZThn32_N3RBX4PART5WedgeD1Ev
@@ -682,7 +682,7 @@ pub fn stub_5d706c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 // was: __ZThn32_N3RBX4PART5WedgeD1Ev
 pub fn stub_5d7074() -> ! {
-    todo!("0x5d7074 `non-virtual thunk to'RBX::PART::Wedge::~Wedge()")
+    todo!("0x5d7074 non-virtual thunk toRBX::PART::Wedge::~Wedge()")
 }
 
 // 0x5d7088 — __ZThn36_N3RBX4PART5WedgeD1Ev
@@ -690,7 +690,7 @@ pub fn stub_5d7074() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 // was: __ZThn36_N3RBX4PART5WedgeD1Ev
 pub fn stub_5d7088() -> ! {
-    todo!("0x5d7088 `non-virtual thunk to'RBX::PART::Wedge::~Wedge()")
+    todo!("0x5d7088 non-virtual thunk toRBX::PART::Wedge::~Wedge()")
 }
 
 // 0x5d709c — __ZThn132_N3RBX4PART5WedgeD1Ev
@@ -698,7 +698,7 @@ pub fn stub_5d7088() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PART::Wedge::~Wedge()")]
 // was: __ZThn132_N3RBX4PART5WedgeD1Ev
 pub fn stub_5d709c() -> ! {
-    todo!("0x5d709c `non-virtual thunk to'RBX::PART::Wedge::~Wedge()")
+    todo!("0x5d709c non-virtual thunk toRBX::PART::Wedge::~Wedge()")
 }
 
 // 0x5d70b0 — __ZNK3RBX14FactoryProductINS_4PART5WedgeENS1_22ParametricPartInstanceELZNS1_6sWedgeEENS_8InstanceEE12getClassNameEv

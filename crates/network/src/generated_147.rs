@@ -75,7 +75,7 @@ pub fn stub_a242b8() -> ! {
 // type: void __fastcall(RBX::CylinderMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")]
 pub fn stub_a24538() -> ! {
-    todo!("0xa24538 `non-virtual thunk to'RBX::CylinderMesh::~CylinderMesh()")
+    todo!("0xa24538 non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")
 }
 
 // 0xa24548 — __ZThn36_N3RBX12CylinderMeshD0Ev
@@ -83,7 +83,7 @@ pub fn stub_a24538() -> ! {
 // type: void __fastcall(RBX::CylinderMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")]
 pub fn stub_a24548() -> ! {
-    todo!("0xa24548 `non-virtual thunk to'RBX::CylinderMesh::~CylinderMesh()")
+    todo!("0xa24548 non-virtual thunk toRBX::CylinderMesh::~CylinderMesh()")
 }
 
 // 0xa246b0 — __ZN5boost6detail18sp_counted_impl_pdIPN3RBX12CylinderMeshENS2_9CreatableINS2_8InstanceEE7DeleterEE19get_untyped_deleterEv
@@ -107,7 +107,7 @@ pub fn stub_a24bc8() -> ! {
 // type: void __fastcall(RBX::BlockMesh *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::BlockMesh::~BlockMesh()")]
 pub fn stub_a24cd8() -> ! {
-    todo!("0xa24cd8 `non-virtual thunk to'RBX::BlockMesh::~BlockMesh()")
+    todo!("0xa24cd8 non-virtual thunk toRBX::BlockMesh::~BlockMesh()")
 }
 
 // 0xa25aa8 — __ZN21AppendOtherCharactersclEN5boost10shared_ptrIN3RBX8InstanceEEE

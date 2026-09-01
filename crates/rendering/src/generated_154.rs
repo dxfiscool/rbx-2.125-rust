@@ -67,7 +67,7 @@ pub fn stub_268bec() -> ! {
 #[doc(alias = "global constructor keyed to_a_61")]
 // was: `global constructor keyed to'_a_61
 pub fn stub_268bf0() -> ! {
-    todo!("0x268bf0 'global constructor keyed to'_a_61")
+    todo!("0x268bf0 global constructor keyed to_a_61")
 }
 
 // 0x268cb8 — __ZN3RBX10CoreScriptC1ERKNS_9ContentIdE
@@ -154,7 +154,7 @@ pub fn stub_26a104() -> ! {
 // was: `non-virtual thunk to'RBX::CoreScript::~CoreScript()
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 pub fn stub_26a12c() -> ! {
-    todo!("0x26a12c 'non-virtual thunk to'RBX::CoreScript::~CoreScript()")
+    todo!("0x26a12c non-virtual thunk toRBX::CoreScript::~CoreScript()")
 }
 
 // 0x26a134 — __ZThn32_N3RBX10CoreScriptD0Ev
@@ -162,7 +162,7 @@ pub fn stub_26a12c() -> ! {
 // was: `non-virtual thunk to'RBX::CoreScript::~CoreScript()
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 pub fn stub_26a134() -> ! {
-    todo!("0x26a134 'non-virtual thunk to'RBX::CoreScript::~CoreScript()")
+    todo!("0x26a134 non-virtual thunk toRBX::CoreScript::~CoreScript()")
 }
 
 // 0x26a1d8 — __ZThn32_NK3RBX17NonFactoryProductINS_10BaseScriptELZNS_11sCoreScriptEEE12getClassNameEv
@@ -177,7 +177,7 @@ pub fn stub_26a1d8() -> ! {
 // was: `non-virtual thunk to'RBX::CoreScript::~CoreScript()
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 pub fn stub_26a200() -> ! {
-    todo!("0x26a200 'non-virtual thunk to'RBX::CoreScript::~CoreScript()")
+    todo!("0x26a200 non-virtual thunk toRBX::CoreScript::~CoreScript()")
 }
 
 // 0x26a208 — __ZThn36_N3RBX10CoreScriptD0Ev
@@ -185,7 +185,7 @@ pub fn stub_26a200() -> ! {
 // was: `non-virtual thunk to'RBX::CoreScript::~CoreScript()
 // type: void __fastcall(RBX::CoreScript *__hidden this)
 pub fn stub_26a208() -> ! {
-    todo!("0x26a208 'non-virtual thunk to'RBX::CoreScript::~CoreScript()")
+    todo!("0x26a208 non-virtual thunk toRBX::CoreScript::~CoreScript()")
 }
 
 // 0x26a2ac — __ZN3RBX13StarterScriptD1Ev
@@ -216,7 +216,7 @@ pub fn stub_26a350() -> ! {
 // was: `non-virtual thunk to'RBX::StarterScript::~StarterScript()
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 pub fn stub_26a378() -> ! {
-    todo!("0x26a378 'non-virtual thunk to'RBX::StarterScript::~StarterScript()")
+    todo!("0x26a378 non-virtual thunk toRBX::StarterScript::~StarterScript()")
 }
 
 // 0x26a380 — __ZThn32_N3RBX13StarterScriptD0Ev
@@ -224,7 +224,7 @@ pub fn stub_26a378() -> ! {
 // was: `non-virtual thunk to'RBX::StarterScript::~StarterScript()
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 pub fn stub_26a380() -> ! {
-    todo!("0x26a380 'non-virtual thunk to'RBX::StarterScript::~StarterScript()")
+    todo!("0x26a380 non-virtual thunk toRBX::StarterScript::~StarterScript()")
 }
 
 // 0x26a424 — __ZThn32_NK3RBX17NonFactoryProductINS_10CoreScriptELZNS_14sStarterScriptEEE12getClassNameEv
@@ -239,7 +239,7 @@ pub fn stub_26a424() -> ! {
 // was: `non-virtual thunk to'RBX::StarterScript::~StarterScript()
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 pub fn stub_26a44c() -> ! {
-    todo!("0x26a44c 'non-virtual thunk to'RBX::StarterScript::~StarterScript()")
+    todo!("0x26a44c non-virtual thunk toRBX::StarterScript::~StarterScript()")
 }
 
 // 0x26a454 — __ZThn36_N3RBX13StarterScriptD0Ev
@@ -247,7 +247,7 @@ pub fn stub_26a44c() -> ! {
 // was: `non-virtual thunk to'RBX::StarterScript::~StarterScript()
 // type: void __fastcall(RBX::StarterScript *__hidden this)
 pub fn stub_26a454() -> ! {
-    todo!("0x26a454 'non-virtual thunk to'RBX::StarterScript::~StarterScript()")
+    todo!("0x26a454 non-virtual thunk toRBX::StarterScript::~StarterScript()")
 }
 
 // 0x26a4f8 — __ZN3RBX4Name13callDoDeclareILZNS_14sStarterScriptEEEEvv
@@ -516,7 +516,7 @@ pub fn stub_26b150() -> ! {
 #[doc(alias = "global constructor keyed to_a_62")]
 // was: `global constructor keyed to'_a_62
 pub fn stub_26b1f4() -> ! {
-    todo!("0x26b1f4 'global constructor keyed to'_a_62")
+    todo!("0x26b1f4 global constructor keyed to_a_62")
 }
 
 // 0x26b464 — __ZNK3RBX3Lua12LuaArguments9getStringEiRSs

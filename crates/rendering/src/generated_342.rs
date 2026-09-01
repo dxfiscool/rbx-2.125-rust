@@ -78,7 +78,7 @@ pub fn stub_5de570() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PartInstance::onNetworkIsSleepingChanged(void)")]
 // was: __ZThn96_N3RBX12PartInstance26onNetworkIsSleepingChangedEv
 pub fn stub_5de59c() -> ! {
-    todo!("0x5de59c `non-virtual thunk toRBX::PartInstance::onNetworkIsSleepingChanged(void)")
+    todo!("0x5de59c non-virtual thunk toRBX::PartInstance::onNetworkIsSleepingChanged(void)")
 }
 
 // 0x5de5a4 — __ZN3RBX12PartInstance13setCanCollideEb

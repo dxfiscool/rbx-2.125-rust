@@ -561,7 +561,7 @@ pub fn stub_202ac() -> ! {
 // 0x202d0 — __GLOBAL__I_a_5
 #[doc(alias = "global constructor keyed to_a_5")]
 pub fn stub_202d0() -> ! {
-    todo!("0x202d0 `global constructor keyed to`_a_5")
+    todo!("0x202d0 global constructor keyed to_a_5")
 }
 
 // 0x20468 — -[AboutController initWithCoder:]

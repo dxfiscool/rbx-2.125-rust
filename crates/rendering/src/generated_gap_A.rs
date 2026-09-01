@@ -645,7 +645,7 @@ pub fn stub_cce0c() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::gGlobal")]
 // was: __GLOBAL__I__ZN4FMOD7gGlobalE
 pub fn stub_cceb8() -> ! {
-    todo!("0xcceb8 `global constructor keyed to'FMOD::gGlobal")
+    todo!("0xcceb8 global constructor keyed toFMOD::gGlobal")
 }
 
 // 0xccec4 — __ZN4FMOD8ListenerC2Ev

@@ -70,7 +70,7 @@ pub fn stub_39079c() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Hat::~Hat()")]
 // was: __ZThn32_N3RBX3HatD1Ev
 pub fn stub_3907ac() -> ! {
-    todo!("0x3907ac `non-virtual thunk to'RBX::Hat::~Hat()")
+    todo!("0x3907ac non-virtual thunk toRBX::Hat::~Hat()")
 }
 
 // 0x3907c0 — __ZThn32_N3RBX3HatD0Ev
@@ -78,7 +78,7 @@ pub fn stub_3907ac() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Hat::~Hat()")]
 // was: __ZThn32_N3RBX3HatD0Ev
 pub fn stub_3907c0() -> ! {
-    todo!("0x3907c0 `non-virtual thunk to'RBX::Hat::~Hat()")
+    todo!("0x3907c0 non-virtual thunk toRBX::Hat::~Hat()")
 }
 
 // 0x390874 — __ZThn32_NK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE12getClassNameEv
@@ -94,7 +94,7 @@ pub fn stub_390874() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Hat::~Hat()")]
 // was: __ZThn36_N3RBX3HatD1Ev
 pub fn stub_390884() -> ! {
-    todo!("0x390884 `non-virtual thunk to'RBX::Hat::~Hat()")
+    todo!("0x390884 non-virtual thunk toRBX::Hat::~Hat()")
 }
 
 // 0x390898 — __ZThn36_N3RBX3HatD0Ev
@@ -102,7 +102,7 @@ pub fn stub_390884() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Hat::~Hat()")]
 // was: __ZThn36_N3RBX3HatD0Ev
 pub fn stub_390898() -> ! {
-    todo!("0x390898 `non-virtual thunk to'RBX::Hat::~Hat()")
+    todo!("0x390898 non-virtual thunk toRBX::Hat::~Hat()")
 }
 
 // 0x39094c — __ZThn92_N3RBX3HatD1Ev
@@ -110,7 +110,7 @@ pub fn stub_390898() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Hat::~Hat()")]
 // was: __ZThn92_N3RBX3HatD1Ev
 pub fn stub_39094c() -> ! {
-    todo!("0x39094c `non-virtual thunk to'RBX::Hat::~Hat()")
+    todo!("0x39094c non-virtual thunk toRBX::Hat::~Hat()")
 }
 
 // 0x390960 — __ZThn92_N3RBX3HatD0Ev
@@ -118,7 +118,7 @@ pub fn stub_39094c() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Hat::~Hat()")]
 // was: __ZThn92_N3RBX3HatD0Ev
 pub fn stub_390960() -> ! {
-    todo!("0x390960 `non-virtual thunk to'RBX::Hat::~Hat()")
+    todo!("0x390960 non-virtual thunk toRBX::Hat::~Hat()")
 }
 
 // 0x390a14 — __ZThn128_N3RBX3HatD1Ev
@@ -126,7 +126,7 @@ pub fn stub_390960() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Hat::~Hat()")]
 // was: __ZThn128_N3RBX3HatD1Ev
 pub fn stub_390a14() -> ! {
-    todo!("0x390a14 `non-virtual thunk to'RBX::Hat::~Hat()")
+    todo!("0x390a14 non-virtual thunk toRBX::Hat::~Hat()")
 }
 
 // 0x390a28 — __ZThn128_N3RBX3HatD0Ev
@@ -134,7 +134,7 @@ pub fn stub_390a14() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Hat::~Hat()")]
 // was: __ZThn128_N3RBX3HatD0Ev
 pub fn stub_390a28() -> ! {
-    todo!("0x390a28 `non-virtual thunk to'RBX::Hat::~Hat()")
+    todo!("0x390a28 non-virtual thunk toRBX::Hat::~Hat()")
 }
 
 // 0x390adc — __ZN3RBX18DescribedCreatableINS_3HatENS_12AccoutrementELZNS_4sHatEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
@@ -499,7 +499,7 @@ pub fn stub_3980f8() -> ! {
 #[doc(alias = "_global constructor keyed to__a_155")]
 // was: __GLOBAL__I_a_155
 pub fn stub_398240() -> ! {
-    todo!("0x398240 `global constructor keyed to'_a_155")
+    todo!("0x398240 global constructor keyed to_a_155")
 }
 
 // 0x398554 — __ZN3RBX14AnimationTrack4playEfff
@@ -579,7 +579,7 @@ pub fn stub_398f20() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::AnimationTrack::~AnimationTrack()")]
 // was: __ZThn32_N3RBX14AnimationTrackD0Ev
 pub fn stub_398f24() -> ! {
-    todo!("0x398f24 `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()")
+    todo!("0x398f24 non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")
 }
 
 // 0x398f2c — __ZThn36_N3RBX14AnimationTrackD0Ev
@@ -587,7 +587,7 @@ pub fn stub_398f24() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::AnimationTrack::~AnimationTrack()")]
 // was: __ZThn36_N3RBX14AnimationTrackD0Ev
 pub fn stub_398f2c() -> ! {
-    todo!("0x398f2c `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()")
+    todo!("0x398f2c non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")
 }
 
 // 0x398f34 — __ZN3RBX14AnimationTrackD2Ev
@@ -603,7 +603,7 @@ pub fn stub_398f34() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::AnimationTrack::~AnimationTrack()")]
 // was: __ZThn32_N3RBX14AnimationTrackD1Ev
 pub fn stub_3991a8() -> ! {
-    todo!("0x3991a8 `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()")
+    todo!("0x3991a8 non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")
 }
 
 // 0x3991b0 — __ZThn36_N3RBX14AnimationTrackD1Ev
@@ -611,7 +611,7 @@ pub fn stub_3991a8() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::AnimationTrack::~AnimationTrack()")]
 // was: __ZThn36_N3RBX14AnimationTrackD1Ev
 pub fn stub_3991b0() -> ! {
-    todo!("0x3991b0 `non-virtual thunk to'RBX::AnimationTrack::~AnimationTrack()")
+    todo!("0x3991b0 non-virtual thunk toRBX::AnimationTrack::~AnimationTrack()")
 }
 
 // 0x3991b8 — __ZN3RBX10Reflection13BoundFuncDescINS_14AnimationTrackEFvfffELi3EED1Ev
@@ -728,7 +728,7 @@ pub fn stub_399600() -> ! {
 #[doc(alias = "_non-virtual thunk to_rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AnimationTrack,std::string>,boost::_bi::list2<boost::_bi::value<RBX::AnimationTrack*>,boost::arg<1>>>,1,void ()(std::string)>::call(std::string)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf1IvN3RBX14AnimationTrackESsEENS7_5list2INS7_5valueIPSC_EENS6_3argILi1EEEEEEELi1ES3_E4callESs
 pub fn stub_39961c() -> ! {
-    todo!("0x39961c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AnimationTrack,std::string>,boost::_bi::list2<boost::_bi::value<RBX::AnimationTrack*>,boost::arg<1>>>,1,void ()(std::string)>::call(std::string)")
+    todo!("0x39961c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::AnimationTrack,std::string>,boost::_bi::list2<boost::_bi::value<RBX::AnimationTrack*>,boost::arg<1>>>,1,void ()(std::string)>::call(std::string)")
 }
 
 // 0x399638 — __ZN5boost3_bi5list2INS0_5valueIPN3RBX14AnimationTrackEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_SsEENS0_5list1IRSsEEEEvNS0_4typeIvEERT_RT0_i

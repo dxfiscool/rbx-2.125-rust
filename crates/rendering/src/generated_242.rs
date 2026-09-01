@@ -71,7 +71,7 @@ pub fn stub_28a98c() -> ! {
 #[doc(alias = "global constructor keyed to_a_70")]
 // was: __GLOBAL__I_a_70
 pub fn stub_28aa88() -> ! {
-    todo!("0x28aa88 `global constructor keyed to'_a_70")
+    todo!("0x28aa88 global constructor keyed to_a_70")
 }
 
 // 0x28ace0 — __ZNK3RBX6Script19getEmbeddedCodeSafeEv

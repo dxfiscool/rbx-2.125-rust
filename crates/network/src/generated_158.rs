@@ -163,7 +163,7 @@ pub fn stub_36e04() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_9")]
 pub fn stub_36e80() -> ! {
-    todo!("0x36e80 `global constructor keyed to'_a_9")
+    todo!("0x36e80 global constructor keyed to_a_9")
 }
 
 // 0x37068 — __ZN10RobloxView37requestStopRenderingForBackgroundModeEv

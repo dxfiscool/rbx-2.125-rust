@@ -244,7 +244,7 @@ pub fn stub_81110() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::aiffcodec")]
 // was: `global constructor keyed to'FMOD::aiffcodec
 pub fn stub_8115c() -> ! {
-    todo!("0x8115c `global constructor keyed to'FMOD::aiffcodec")
+    todo!("0x8115c global constructor keyed toFMOD::aiffcodec")
 }
 
 // 0x81168 — __ZN4FMOD8CodecDLS19setPositionInternalEijj
@@ -340,7 +340,7 @@ pub fn stub_8297c() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dlscodec")]
 // was: `global constructor keyed to'FMOD::dlscodec
 pub fn stub_829c8() -> ! {
-    todo!("0x829c8 `global constructor keyed to'FMOD::dlscodec")
+    todo!("0x829c8 global constructor keyed toFMOD::dlscodec")
 }
 
 // 0x829d4 — __ZN4FMODL24FMOD_FLAC_LengthCallbackEPK19FLAC__StreamDecoderPyPv
@@ -492,7 +492,7 @@ pub fn stub_833c0() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::flaccodec")]
 // was: `global constructor keyed to'FMOD::flaccodec
 pub fn stub_8340c() -> ! {
-    todo!("0x8340c `global constructor keyed to'FMOD::flaccodec")
+    todo!("0x8340c global constructor keyed toFMOD::flaccodec")
 }
 
 // 0x83418 — __ZN4FMOD8CodecFSB16getNumSyncPointsEiPi
@@ -692,7 +692,7 @@ pub fn stub_86aac() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::fsbcodec")]
 // was: `global constructor keyed to'FMOD::fsbcodec
 pub fn stub_86b10() -> ! {
-    todo!("0x86b10 `global constructor keyed to'FMOD::fsbcodec")
+    todo!("0x86b10 global constructor keyed toFMOD::fsbcodec")
 }
 
 // 0x86b1c — __ZN4FMOD7CodecIT8readBitsEhPj

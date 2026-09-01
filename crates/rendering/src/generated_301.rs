@@ -215,7 +215,7 @@ pub fn stub_427dc0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getMetricValue(std::string const&)const")]
 // was: __ZThn180_NK3RBX9DataModel14getMetricValueERKSs
 pub fn stub_4288b0() -> ! {
-    todo!("0x4288b0 `non-virtual thunk to'RBX::DataModel::getMetricValue(std::string const&)const")
+    todo!("0x4288b0 non-virtual thunk toRBX::DataModel::getMetricValue(std::string const&)const")
 }
 
 // 0x4288b8 — __ZNK3RBX9DataModel9getMetricERKSs
@@ -231,7 +231,7 @@ pub fn stub_4288b8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getMetric(std::string const&)const")]
 // was: __ZThn180_NK3RBX9DataModel9getMetricERKSs
 pub fn stub_42fb24() -> ! {
-    todo!("0x42fb24 `non-virtual thunk to'RBX::DataModel::getMetric(std::string const&)const")
+    todo!("0x42fb24 non-virtual thunk toRBX::DataModel::getMetric(std::string const&)const")
 }
 
 // 0x42fb30 — __ZN3RBX9DataModel3getEPNS_8InstanceE
@@ -319,7 +319,7 @@ pub fn stub_430900() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DataModel::getNumPlayers(void)const")]
 // was: __ZThn184_NK3RBX9DataModel13getNumPlayersEv
 pub fn stub_430924() -> ! {
-    todo!("0x430924 `non-virtual thunk to'RBX::DataModel::getNumPlayers(void)const")
+    todo!("0x430924 non-virtual thunk toRBX::DataModel::getNumPlayers(void)const")
 }
 
 // 0x430930 — __ZN3RBX9DataModel19ScreenshotReadyTaskEN5boost8weak_ptrIS0_EERKSs

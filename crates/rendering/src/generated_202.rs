@@ -13,14 +13,14 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 #[doc(alias = "global constructor keyed to_a")]
 // was: `global constructor keyed to_a
 pub fn stub_0x16e4c() -> ! {
-    todo!("0x16e4c `global constructor keyed to_a")
+    todo!("0x16e4c global constructor keyed to_a")
 }
 
 // 0x17c58 — __GLOBAL__I_a_0
 #[doc(alias = "global constructor keyed to_a_0")]
 // was: `global constructor keyed to_a_0
 pub fn stub_0x17c58() -> ! {
-    todo!("0x17c58 `global constructor keyed to_a_0")
+    todo!("0x17c58 global constructor keyed to_a_0")
 }
 
 // 0x17f80 — +[Appirater sharedInstance]
@@ -93,7 +93,7 @@ pub fn stub_0x1a124() -> ! {
 #[doc(alias = "global constructor keyed to_a_1")]
 // was: `global constructor keyed to_a_1
 pub fn stub_0x1a5d0() -> ! {
-    todo!("0x1a5d0 `global constructor keyed to_a_1")
+    todo!("0x1a5d0 global constructor keyed to_a_1")
 }
 
 // 0x1a768 — _main
@@ -108,7 +108,7 @@ pub fn stub_0x1a768() -> ! {
 #[doc(alias = "global constructor keyed to_a_2")]
 // was: `global constructor keyed to_a_2
 pub fn stub_0x1a7d4() -> ! {
-    todo!("0x1a7d4 `global constructor keyed to_a_2")
+    todo!("0x1a7d4 global constructor keyed to_a_2")
 }
 
 // 0x1ae78 — ___copy_helper_block__0
@@ -144,7 +144,7 @@ pub fn stub_0x1b14c() -> ! {
 #[doc(alias = "global constructor keyed to_a_3")]
 // was: `global constructor keyed to_a_3
 pub fn stub_0x1b308() -> ! {
-    todo!("0x1b308 `global constructor keyed to_a_3")
+    todo!("0x1b308 global constructor keyed to_a_3")
 }
 
 // 0x1bb88 — ___copy_helper_block__1
@@ -221,7 +221,7 @@ pub fn stub_0x1c880() -> ! {
 #[doc(alias = "global constructor keyed to_a_4")]
 // was: `global constructor keyed to_a_4
 pub fn stub_0x1d870() -> ! {
-    todo!("0x1d870 `global constructor keyed to_a_4")
+    todo!("0x1d870 global constructor keyed to_a_4")
 }
 
 // 0x1da5c — +[LoginViewController sharedInstance]
@@ -506,7 +506,7 @@ pub fn stub_0x1fd30() -> ! {
 #[doc(alias = "global constructor keyed to_a_5")]
 // was: `global constructor keyed to_a_5
 pub fn stub_0x202d0() -> ! {
-    todo!("0x202d0 `global constructor keyed to_a_5")
+    todo!("0x202d0 global constructor keyed to_a_5")
 }
 
 // 0x20f08 — ___copy_helper_block__3
@@ -555,14 +555,14 @@ pub fn stub_0x21b1c() -> ! {
 #[doc(alias = "global constructor keyed to_a_6")]
 // was: `global constructor keyed to_a_6
 pub fn stub_0x21c18() -> ! {
-    todo!("0x21c18 `global constructor keyed to_a_6")
+    todo!("0x21c18 global constructor keyed to_a_6")
 }
 
 // 0x24540 — __GLOBAL__I_a_7
 #[doc(alias = "global constructor keyed to_a_7")]
 // was: `global constructor keyed to_a_7
 pub fn stub_0x24540() -> ! {
-    todo!("0x24540 `global constructor keyed to_a_7")
+    todo!("0x24540 global constructor keyed to_a_7")
 }
 
 // 0x24974 — +[PlaceLauncher sharedInstance]
@@ -840,7 +840,7 @@ pub fn stub_0x345b0() -> ! {
 #[doc(alias = "global constructor keyed to_a_8")]
 // was: `global constructor keyed to_a_8
 pub fn stub_0x355c8() -> ! {
-    todo!("0x355c8 `global constructor keyed to_a_8")
+    todo!("0x355c8 global constructor keyed to_a_8")
 }
 
 // 0x358ec — _ReachabilityCallback
@@ -898,7 +898,7 @@ pub fn stub_0x3603c() -> ! {
 #[doc(alias = "global constructor keyed to_a_9")]
 // was: `global constructor keyed to_a_9
 pub fn stub_0x36e80() -> ! {
-    todo!("0x36e80 `global constructor keyed to_a_9")
+    todo!("0x36e80 global constructor keyed to_a_9")
 }
 
 // 0x375b4 — __Z13macBundlePathv
@@ -1045,7 +1045,7 @@ pub fn stub_0x3ecec() -> ! {
 #[doc(alias = "global constructor keyed to_a_10")]
 // was: `global constructor keyed to_a_10
 pub fn stub_0x4070c() -> ! {
-    todo!("0x4070c `global constructor keyed to_a_10")
+    todo!("0x4070c global constructor keyed to_a_10")
 }
 
 // 0x41104 — ___copy_helper_block__6
@@ -1074,14 +1074,14 @@ pub fn stub_0x411a0() -> ! {
 #[doc(alias = "global constructor keyed to_a_11")]
 // was: `global constructor keyed to_a_11
 pub fn stub_0x41bfc() -> ! {
-    todo!("0x41bfc `global constructor keyed to_a_11")
+    todo!("0x41bfc global constructor keyed to_a_11")
 }
 
 // 0x42580 — __GLOBAL__I_a_12
 #[doc(alias = "global constructor keyed to_a_12")]
 // was: `global constructor keyed to_a_12
 pub fn stub_0x42580() -> ! {
-    todo!("0x42580 `global constructor keyed to_a_12")
+    todo!("0x42580 global constructor keyed to_a_12")
 }
 
 // 0x42718 — +[RobloxWebUtility sharedInstance]

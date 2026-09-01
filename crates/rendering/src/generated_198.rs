@@ -68,7 +68,7 @@ pub fn stub_a6aac() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::tagcodec")]
 // was: `global constructor keyed to'FMOD::tagcodec
 pub fn stub_a6af8() -> ! {
-    todo!("0xa6af8 `global constructor keyed to'FMOD::tagcodec")
+    todo!("0xa6af8 global constructor keyed toFMOD::tagcodec")
 }
 
 // 0xa6b04 — __ZN4FMOD9CodecUser13closeInternalEv
@@ -156,7 +156,7 @@ pub fn stub_a6ecc() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::usercodec")]
 // was: `global constructor keyed to'FMOD::usercodec
 pub fn stub_a6f18() -> ! {
-    todo!("0xa6f18 `global constructor keyed to'FMOD::usercodec")
+    todo!("0xa6f18 global constructor keyed toFMOD::usercodec")
 }
 
 // 0xa6f24 — __ZN4FMOD8CodecWav16canPointInternalEv
@@ -276,7 +276,7 @@ pub fn stub_a8400() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::wavcodec")]
 // was: `global constructor keyed to'FMOD::wavcodec
 pub fn stub_a844c() -> ! {
-    todo!("0xa844c `global constructor keyed to'FMOD::wavcodec")
+    todo!("0xa844c global constructor keyed toFMOD::wavcodec")
 }
 
 // 0xa8458 — __ZN4FMOD18IMAAdpcm_DecodeS16EPhPsjjj
@@ -508,7 +508,7 @@ pub fn stub_ad88c() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::xmcodec")]
 // was: `global constructor keyed to'FMOD::xmcodec
 pub fn stub_ad8d8() -> ! {
-    todo!("0xad8d8 `global constructor keyed to'FMOD::xmcodec")
+    todo!("0xad8d8 global constructor keyed toFMOD::xmcodec")
 }
 
 // 0xad8e4 — __ZN4FMOD9DSPChorus17getMemoryUsedImplEPNS_13MemoryTrackerE
@@ -644,7 +644,7 @@ pub fn stub_ae6a4() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspchorus")]
 // was: `global constructor keyed to'FMOD::dspchorus
 pub fn stub_ae6e8() -> ! {
-    todo!("0xae6e8 `global constructor keyed to'FMOD::dspchorus")
+    todo!("0xae6e8 global constructor keyed toFMOD::dspchorus")
 }
 
 // 0xae6f4 — __ZN4FMOD8DSPCodec14createInternalEv
@@ -796,7 +796,7 @@ pub fn stub_aef14() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspcodec")]
 // was: `global constructor keyed to'FMOD::dspcodec
 pub fn stub_aef58() -> ! {
-    todo!("0xaef58 `global constructor keyed to'FMOD::dspcodec")
+    todo!("0xaef58 global constructor keyed toFMOD::dspcodec")
 }
 
 // 0xaef64 — __ZN4FMOD12DSPCodecPool10areAnyFreeEv

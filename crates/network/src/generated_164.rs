@@ -208,7 +208,7 @@ pub fn stub_258150() -> ! {
 // type: void __fastcall(RBX::HttpService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
 pub fn stub_258160() -> ! {
-    todo!("0x258160 `non-virtual thunk to'RBX::HttpService::~HttpService()")
+    todo!("0x258160 non-virtual thunk toRBX::HttpService::~HttpService()")
 }
 
 // 0x258168 — __ZThn32_N3RBX11HttpServiceD0Ev
@@ -216,7 +216,7 @@ pub fn stub_258160() -> ! {
 // type: void __fastcall(RBX::HttpService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
 pub fn stub_258168() -> ! {
-    todo!("0x258168 `non-virtual thunk to'RBX::HttpService::~HttpService()")
+    todo!("0x258168 non-virtual thunk toRBX::HttpService::~HttpService()")
 }
 
 // 0x25820c — __ZThn32_NK3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E12getClassNameEv
@@ -231,7 +231,7 @@ pub fn stub_25820c() -> ! {
 // type: void __fastcall(RBX::HttpService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
 pub fn stub_25821c() -> ! {
-    todo!("0x25821c `non-virtual thunk to'RBX::HttpService::~HttpService()")
+    todo!("0x25821c non-virtual thunk toRBX::HttpService::~HttpService()")
 }
 
 // 0x258224 — __ZThn36_N3RBX11HttpServiceD0Ev
@@ -239,7 +239,7 @@ pub fn stub_25821c() -> ! {
 // type: void __fastcall(RBX::HttpService *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HttpService::~HttpService()")]
 pub fn stub_258224() -> ! {
-    todo!("0x258224 `non-virtual thunk to'RBX::HttpService::~HttpService()")
+    todo!("0x258224 non-virtual thunk toRBX::HttpService::~HttpService()")
 }
 
 // 0x2582c8 — __ZN3RBX14FactoryProductINS_11HttpServiceENS_8InstanceELZNS_12sHttpServiceEES2_E17static_getCreatorEv

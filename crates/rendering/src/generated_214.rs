@@ -538,14 +538,14 @@ pub fn stub_110538() -> ! {
 #[doc(alias = "global destructor keyed toFreeImage_SO_Initialise(void)")]
 // was: __GLOBAL__D__Z23FreeImage_SO_Initialisev
 pub fn stub_110578() -> ! {
-    todo!("0x110578 `global destructor keyed to'FreeImage_SO_Initialise(void)")
+    todo!("0x110578 global destructor keyed toFreeImage_SO_Initialise(void)")
 }
 
 // 0x110588 — __GLOBAL__I__Z23FreeImage_SO_Initialisev
 #[doc(alias = "global constructor keyed toFreeImage_SO_Initialise(void)")]
 // was: __GLOBAL__I__Z23FreeImage_SO_Initialisev
 pub fn stub_110588() -> ! {
-    todo!("0x110588 `global constructor keyed to'FreeImage_SO_Initialise(void)")
+    todo!("0x110588 global constructor keyed toFreeImage_SO_Initialise(void)")
 }
 
 // 0x11059c — __Z12SetDefaultIOP11FreeImageIO

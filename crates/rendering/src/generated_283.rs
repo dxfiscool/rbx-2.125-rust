@@ -200,7 +200,7 @@ pub fn stub_3de4b8() -> ! {
 #[doc(alias = "__ZThn32_N22ChangeHistoryStatsItemD1Ev")]
 // was: __ZThn32_N22ChangeHistoryStatsItemD1Ev
 pub fn stub_3de58c() -> ! {
-    todo!("0x3de58c `non-virtual thunk to'ChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
+    todo!("0x3de58c non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
 }
 
 // 0x3de5cc — __ZThn32_N22ChangeHistoryStatsItemD0Ev
@@ -208,7 +208,7 @@ pub fn stub_3de58c() -> ! {
 #[doc(alias = "__ZThn32_N22ChangeHistoryStatsItemD0Ev")]
 // was: __ZThn32_N22ChangeHistoryStatsItemD0Ev
 pub fn stub_3de5cc() -> ! {
-    todo!("0x3de5cc `non-virtual thunk to'ChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
+    todo!("0x3de5cc non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
 }
 
 // 0x3de6a0 — __ZThn36_N22ChangeHistoryStatsItemD1Ev
@@ -216,7 +216,7 @@ pub fn stub_3de5cc() -> ! {
 #[doc(alias = "__ZThn36_N22ChangeHistoryStatsItemD1Ev")]
 // was: __ZThn36_N22ChangeHistoryStatsItemD1Ev
 pub fn stub_3de6a0() -> ! {
-    todo!("0x3de6a0 `non-virtual thunk to'ChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
+    todo!("0x3de6a0 non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
 }
 
 // 0x3de6e0 — __ZThn36_N22ChangeHistoryStatsItemD0Ev
@@ -224,7 +224,7 @@ pub fn stub_3de6a0() -> ! {
 #[doc(alias = "__ZThn36_N22ChangeHistoryStatsItemD0Ev")]
 // was: __ZThn36_N22ChangeHistoryStatsItemD0Ev
 pub fn stub_3de6e0() -> ! {
-    todo!("0x3de6e0 `non-virtual thunk to'ChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
+    todo!("0x3de6e0 non-virtual thunk toChangeHistoryStatsItem::~ChangeHistoryStatsItem()")
 }
 
 // 0x3de7b4 — __ZN5boost10shared_ptrI22ChangeHistoryStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
@@ -464,7 +464,7 @@ pub fn stub_3df920() -> ! {
 #[doc(alias = "__GLOBAL__I_a_167")]
 // was: __GLOBAL__I_a_167
 pub fn stub_3df948() -> ! {
-    todo!("0x3df948 `global constructor keyed to'_a_167")
+    todo!("0x3df948 global constructor keyed to_a_167")
 }
 
 // 0x3e0048 — __ZN3RBX5Shirt11setTemplateENS_9TextureIdE
@@ -688,7 +688,7 @@ pub fn stub_3e1344() -> ! {
 #[doc(alias = "__ZThn32_N3RBX12ShirtGraphicD1Ev")]
 // was: __ZThn32_N3RBX12ShirtGraphicD1Ev
 pub fn stub_3e1354() -> ! {
-    todo!("0x3e1354 `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e1354 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e1394 — __ZThn32_N3RBX12ShirtGraphicD0Ev
@@ -696,7 +696,7 @@ pub fn stub_3e1354() -> ! {
 #[doc(alias = "__ZThn32_N3RBX12ShirtGraphicD0Ev")]
 // was: __ZThn32_N3RBX12ShirtGraphicD0Ev
 pub fn stub_3e1394() -> ! {
-    todo!("0x3e1394 `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e1394 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e1470 — __ZThn32_NK3RBX14FactoryProductINS_12ShirtGraphicENS_25LegacyCharacterAppearanceELZNS_13sShirtGraphicEENS_8InstanceEE12getClassNameEv
@@ -712,7 +712,7 @@ pub fn stub_3e1470() -> ! {
 #[doc(alias = "__ZThn36_N3RBX12ShirtGraphicD1Ev")]
 // was: __ZThn36_N3RBX12ShirtGraphicD1Ev
 pub fn stub_3e1480() -> ! {
-    todo!("0x3e1480 `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e1480 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e14c0 — __ZThn36_N3RBX12ShirtGraphicD0Ev
@@ -720,7 +720,7 @@ pub fn stub_3e1480() -> ! {
 #[doc(alias = "__ZThn36_N3RBX12ShirtGraphicD0Ev")]
 // was: __ZThn36_N3RBX12ShirtGraphicD0Ev
 pub fn stub_3e14c0() -> ! {
-    todo!("0x3e14c0 `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e14c0 non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e159c — __ZThn92_N3RBX12ShirtGraphicD1Ev
@@ -728,7 +728,7 @@ pub fn stub_3e14c0() -> ! {
 #[doc(alias = "__ZThn92_N3RBX12ShirtGraphicD1Ev")]
 // was: __ZThn92_N3RBX12ShirtGraphicD1Ev
 pub fn stub_3e159c() -> ! {
-    todo!("0x3e159c `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e159c non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e15dc — __ZThn92_N3RBX12ShirtGraphicD0Ev
@@ -736,7 +736,7 @@ pub fn stub_3e159c() -> ! {
 #[doc(alias = "__ZThn92_N3RBX12ShirtGraphicD0Ev")]
 // was: __ZThn92_N3RBX12ShirtGraphicD0Ev
 pub fn stub_3e15dc() -> ! {
-    todo!("0x3e15dc `non-virtual thunk to'RBX::ShirtGraphic::~ShirtGraphic()")
+    todo!("0x3e15dc non-virtual thunk toRBX::ShirtGraphic::~ShirtGraphic()")
 }
 
 // 0x3e16b8 — __ZN3RBX8ClothingD1Ev
@@ -776,7 +776,7 @@ pub fn stub_3e1808() -> ! {
 #[doc(alias = "__ZThn32_N3RBX8ClothingD1Ev")]
 // was: __ZThn32_N3RBX8ClothingD1Ev
 pub fn stub_3e1864() -> ! {
-    todo!("0x3e1864 `non-virtual thunk to'RBX::Clothing::~Clothing()")
+    todo!("0x3e1864 non-virtual thunk toRBX::Clothing::~Clothing()")
 }
 
 // 0x3e18b0 — __ZThn32_N3RBX8ClothingD0Ev
@@ -784,7 +784,7 @@ pub fn stub_3e1864() -> ! {
 #[doc(alias = "__ZThn32_N3RBX8ClothingD0Ev")]
 // was: __ZThn32_N3RBX8ClothingD0Ev
 pub fn stub_3e18b0() -> ! {
-    todo!("0x3e18b0 `non-virtual thunk to'RBX::Clothing::~Clothing()")
+    todo!("0x3e18b0 non-virtual thunk toRBX::Clothing::~Clothing()")
 }
 
 // 0x3e1994 — __ZThn32_NK3RBX17NonFactoryProductINS_19CharacterAppearanceELZNS_9sClothingEEE12getClassNameEv
@@ -800,7 +800,7 @@ pub fn stub_3e1994() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8ClothingD1Ev")]
 // was: __ZThn36_N3RBX8ClothingD1Ev
 pub fn stub_3e19bc() -> ! {
-    todo!("0x3e19bc `non-virtual thunk to'RBX::Clothing::~Clothing()")
+    todo!("0x3e19bc non-virtual thunk toRBX::Clothing::~Clothing()")
 }
 
 // 0x3e1a08 — __ZThn36_N3RBX8ClothingD0Ev
@@ -808,5 +808,5 @@ pub fn stub_3e19bc() -> ! {
 #[doc(alias = "__ZThn36_N3RBX8ClothingD0Ev")]
 // was: __ZThn36_N3RBX8ClothingD0Ev
 pub fn stub_3e1a08() -> ! {
-    todo!("0x3e1a08 `non-virtual thunk to'RBX::Clothing::~Clothing()")
+    todo!("0x3e1a08 non-virtual thunk toRBX::Clothing::~Clothing()")
 }

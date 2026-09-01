@@ -371,7 +371,7 @@ pub fn stub_0x24510() -> ! {
 #[doc(alias = "global constructor keyed to_a_7")]
 #[doc(alias = "__GLOBAL__I_a_7")]
 pub fn stub_0x24540() -> ! {
-    todo!("0x24540 `global constructor keyed to'_a_7")
+    todo!("0x24540 global constructor keyed to_a_7")
 }
 
 // 0x246d8 — -[PlaceLauncher init]

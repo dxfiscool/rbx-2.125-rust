@@ -54,7 +54,7 @@ pub fn stub_7d6ffc() -> ! {
 // type: void __fastcall(RBX::HUMAN::PlatformStanding *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")]
 pub fn stub_7d7000() -> ! {
-    todo!("0x7d7000 `non-virtual thunk to'RBX::HUMAN::PlatformStanding::~PlatformStanding()")
+    todo!("0x7d7000 non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")
 }
 
 // 0x7d7008 — __ZN3RBX5HUMAN16PlatformStandingD2Ev
@@ -68,7 +68,7 @@ pub fn stub_7d7008() -> ! {
 // type: void __fastcall(RBX::HUMAN::PlatformStanding *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")]
 pub fn stub_7d70fc() -> ! {
-    todo!("0x7d70fc `non-virtual thunk to'RBX::HUMAN::PlatformStanding::~PlatformStanding()")
+    todo!("0x7d70fc non-virtual thunk toRBX::HUMAN::PlatformStanding::~PlatformStanding()")
 }
 
 // 0x7d713c — __ZNK3RBX5NamedINS_5HUMAN13HumanoidStateELZNS1_17sPlatformStandingEEE7getNameEv
@@ -321,19 +321,19 @@ pub fn stub_7ded20() -> ! {
 // 0x7dedd8 — __ZThn8_N5boost16exception_detail19error_info_injectorINSt8ios_base7failureEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<std::ios_base::failure>::~error_info_injector()")]
 pub fn stub_7dedd8() -> ! {
-    todo!("0x7dedd8 `non-virtual thunk to'boost::exception_detail::error_info_injector<std::ios_base::failure>::~error_info_injector()")
+    todo!("0x7dedd8 non-virtual thunk toboost::exception_detail::error_info_injector<std::ios_base::failure>::~error_info_injector()")
 }
 
 // 0x7dede0 — __ZThn8_N5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEED1Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")]
 pub fn stub_7dede0() -> ! {
-    todo!("0x7dede0 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")
+    todo!("0x7dede0 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")
 }
 
 // 0x7dede8 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEED1Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")]
 pub fn stub_7dede8() -> ! {
-    todo!("0x7dede8 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")
+    todo!("0x7dede8 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::~clone_impl()")
 }
 
 // 0x7dedf4 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINSt8ios_base7failureEEEE5cloneEv
@@ -346,7 +346,7 @@ pub fn stub_7dedf4() -> ! {
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::clone(void)const")]
 pub fn stub_7deeb0() -> ! {
-    todo!("0x7deeb0 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::clone(void)const")
+    todo!("0x7deeb0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<std::ios_base::failure>>::clone(void)const")
 }
 
 // 0x7deebc — __ZN5boost16exception_detail19error_info_injectorINSt8ios_base7failureEED0Ev

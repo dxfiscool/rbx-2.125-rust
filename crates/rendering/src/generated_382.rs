@@ -20,7 +20,7 @@ pub fn stub_55b624() -> ! {
 // 0x55b634 — __ZThn36_N3RBX9BodyForceD1Ev
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9BodyForceD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyForce::~BodyForce()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 // was: __ZThn36_N3RBX9BodyForceD1Ev
 pub fn stub_55b634() -> ! {
     todo!("0x55b634 __ZThn36_N3RBX9BodyForceD1Ev")
@@ -29,7 +29,7 @@ pub fn stub_55b634() -> ! {
 // 0x55b63c — __ZThn36_N3RBX9BodyForceD0Ev
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9BodyForceD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyForce::~BodyForce()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 // was: __ZThn36_N3RBX9BodyForceD0Ev
 pub fn stub_55b63c() -> ! {
     todo!("0x55b63c __ZThn36_N3RBX9BodyForceD0Ev")
@@ -38,7 +38,7 @@ pub fn stub_55b63c() -> ! {
 // 0x55b6e0 — __ZThn92_N3RBX9BodyForceD1Ev
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX9BodyForceD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyForce::~BodyForce()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 // was: __ZThn92_N3RBX9BodyForceD1Ev
 pub fn stub_55b6e0() -> ! {
     todo!("0x55b6e0 __ZThn92_N3RBX9BodyForceD1Ev")
@@ -47,7 +47,7 @@ pub fn stub_55b6e0() -> ! {
 // 0x55b6e8 — __ZThn92_N3RBX9BodyForceD0Ev
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX9BodyForceD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyForce::~BodyForce()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 // was: __ZThn92_N3RBX9BodyForceD0Ev
 pub fn stub_55b6e8() -> ! {
     todo!("0x55b6e8 __ZThn92_N3RBX9BodyForceD0Ev")
@@ -56,7 +56,7 @@ pub fn stub_55b6e8() -> ! {
 // 0x55b78c — __ZThn124_N3RBX9BodyForceD1Ev
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "__ZThn124_N3RBX9BodyForceD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyForce::~BodyForce()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 // was: __ZThn124_N3RBX9BodyForceD1Ev
 pub fn stub_55b78c() -> ! {
     todo!("0x55b78c __ZThn124_N3RBX9BodyForceD1Ev")
@@ -65,7 +65,7 @@ pub fn stub_55b78c() -> ! {
 // 0x55b794 — __ZThn124_N3RBX9BodyForceD0Ev
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "__ZThn124_N3RBX9BodyForceD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyForce::~BodyForce()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 // was: __ZThn124_N3RBX9BodyForceD0Ev
 pub fn stub_55b794() -> ! {
     todo!("0x55b794 __ZThn124_N3RBX9BodyForceD0Ev")
@@ -74,7 +74,7 @@ pub fn stub_55b794() -> ! {
 // 0x55b838 — __ZThn244_N3RBX9BodyForceD1Ev
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "__ZThn244_N3RBX9BodyForceD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyForce::~BodyForce()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 // was: __ZThn244_N3RBX9BodyForceD1Ev
 pub fn stub_55b838() -> ! {
     todo!("0x55b838 __ZThn244_N3RBX9BodyForceD1Ev")
@@ -83,7 +83,7 @@ pub fn stub_55b838() -> ! {
 // 0x55b840 — __ZThn244_N3RBX9BodyForceD0Ev
 // type: void __fastcall(RBX::BodyForce *__hidden this)
 #[doc(alias = "__ZThn244_N3RBX9BodyForceD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyForce::~BodyForce()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyForce::~BodyForce()")]
 // was: __ZThn244_N3RBX9BodyForceD0Ev
 pub fn stub_55b840() -> ! {
     todo!("0x55b840 __ZThn244_N3RBX9BodyForceD0Ev")
@@ -125,7 +125,7 @@ pub fn stub_55b998() -> ! {
 // 0x55b99c — __ZThn32_N3RBX10BodyThrustD1Ev
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX10BodyThrustD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 // was: __ZThn32_N3RBX10BodyThrustD1Ev
 pub fn stub_55b99c() -> ! {
     todo!("0x55b99c __ZThn32_N3RBX10BodyThrustD1Ev")
@@ -134,7 +134,7 @@ pub fn stub_55b99c() -> ! {
 // 0x55b9a4 — __ZThn32_N3RBX10BodyThrustD0Ev
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX10BodyThrustD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 // was: __ZThn32_N3RBX10BodyThrustD0Ev
 pub fn stub_55b9a4() -> ! {
     todo!("0x55b9a4 __ZThn32_N3RBX10BodyThrustD0Ev")
@@ -150,7 +150,7 @@ pub fn stub_55ba48() -> ! {
 // 0x55ba58 — __ZThn36_N3RBX10BodyThrustD1Ev
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX10BodyThrustD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 // was: __ZThn36_N3RBX10BodyThrustD1Ev
 pub fn stub_55ba58() -> ! {
     todo!("0x55ba58 __ZThn36_N3RBX10BodyThrustD1Ev")
@@ -159,7 +159,7 @@ pub fn stub_55ba58() -> ! {
 // 0x55ba60 — __ZThn36_N3RBX10BodyThrustD0Ev
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX10BodyThrustD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 // was: __ZThn36_N3RBX10BodyThrustD0Ev
 pub fn stub_55ba60() -> ! {
     todo!("0x55ba60 __ZThn36_N3RBX10BodyThrustD0Ev")
@@ -168,7 +168,7 @@ pub fn stub_55ba60() -> ! {
 // 0x55bb04 — __ZThn92_N3RBX10BodyThrustD1Ev
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX10BodyThrustD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 // was: __ZThn92_N3RBX10BodyThrustD1Ev
 pub fn stub_55bb04() -> ! {
     todo!("0x55bb04 __ZThn92_N3RBX10BodyThrustD1Ev")
@@ -177,7 +177,7 @@ pub fn stub_55bb04() -> ! {
 // 0x55bb0c — __ZThn92_N3RBX10BodyThrustD0Ev
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "__ZThn92_N3RBX10BodyThrustD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 // was: __ZThn92_N3RBX10BodyThrustD0Ev
 pub fn stub_55bb0c() -> ! {
     todo!("0x55bb0c __ZThn92_N3RBX10BodyThrustD0Ev")
@@ -186,7 +186,7 @@ pub fn stub_55bb0c() -> ! {
 // 0x55bbb0 — __ZThn124_N3RBX10BodyThrustD1Ev
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "__ZThn124_N3RBX10BodyThrustD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 // was: __ZThn124_N3RBX10BodyThrustD1Ev
 pub fn stub_55bbb0() -> ! {
     todo!("0x55bbb0 __ZThn124_N3RBX10BodyThrustD1Ev")
@@ -195,7 +195,7 @@ pub fn stub_55bbb0() -> ! {
 // 0x55bbb8 — __ZThn124_N3RBX10BodyThrustD0Ev
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "__ZThn124_N3RBX10BodyThrustD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 // was: __ZThn124_N3RBX10BodyThrustD0Ev
 pub fn stub_55bbb8() -> ! {
     todo!("0x55bbb8 __ZThn124_N3RBX10BodyThrustD0Ev")
@@ -204,7 +204,7 @@ pub fn stub_55bbb8() -> ! {
 // 0x55bc5c — __ZThn244_N3RBX10BodyThrustD1Ev
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "__ZThn244_N3RBX10BodyThrustD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 // was: __ZThn244_N3RBX10BodyThrustD1Ev
 pub fn stub_55bc5c() -> ! {
     todo!("0x55bc5c __ZThn244_N3RBX10BodyThrustD1Ev")
@@ -213,7 +213,7 @@ pub fn stub_55bc5c() -> ! {
 // 0x55bc64 — __ZThn244_N3RBX10BodyThrustD0Ev
 // type: void __fastcall(RBX::BodyThrust *__hidden this)
 #[doc(alias = "__ZThn244_N3RBX10BodyThrustD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
+#[doc(alias = "non-virtual thunk toRBX::BodyThrust::~BodyThrust()")]
 // was: __ZThn244_N3RBX10BodyThrustD0Ev
 pub fn stub_55bc64() -> ! {
     todo!("0x55bc64 __ZThn244_N3RBX10BodyThrustD0Ev")

@@ -710,7 +710,7 @@ pub fn stub_50eff0() -> ! {
 #[doc(alias = "global constructor keyed to_a_203")]
 // was: __GLOBAL__I_a_203
 pub fn stub_50f020() -> ! {
-    todo!("0x50f020 `global constructor keyed to'_a_203")
+    todo!("0x50f020 global constructor keyed to_a_203")
 }
 
 
@@ -754,7 +754,7 @@ pub fn stub_50f61c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiBase::~GuiBase()")]
 // was: __ZThn32_N3RBX7GuiBaseD1Ev
 pub fn stub_50f644() -> ! {
-    todo!("0x50f644 `non-virtual thunk to'RBX::GuiBase::~GuiBase()")
+    todo!("0x50f644 non-virtual thunk toRBX::GuiBase::~GuiBase()")
 }
 
 
@@ -763,7 +763,7 @@ pub fn stub_50f644() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiBase::~GuiBase()")]
 // was: __ZThn32_N3RBX7GuiBaseD0Ev
 pub fn stub_50f6fc() -> ! {
-    todo!("0x50f6fc `non-virtual thunk to'RBX::GuiBase::~GuiBase()")
+    todo!("0x50f6fc non-virtual thunk toRBX::GuiBase::~GuiBase()")
 }
 
 
@@ -780,7 +780,7 @@ pub fn stub_50f7cc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiBase::~GuiBase()")]
 // was: __ZThn36_N3RBX7GuiBaseD1Ev
 pub fn stub_50f7f4() -> ! {
-    todo!("0x50f7f4 `non-virtual thunk to'RBX::GuiBase::~GuiBase()")
+    todo!("0x50f7f4 non-virtual thunk toRBX::GuiBase::~GuiBase()")
 }
 
 
@@ -789,7 +789,7 @@ pub fn stub_50f7f4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiBase::~GuiBase()")]
 // was: __ZThn36_N3RBX7GuiBaseD0Ev
 pub fn stub_50f8ac() -> ! {
-    todo!("0x50f8ac `non-virtual thunk to'RBX::GuiBase::~GuiBase()")
+    todo!("0x50f8ac non-virtual thunk toRBX::GuiBase::~GuiBase()")
 }
 
 
@@ -862,7 +862,7 @@ pub fn stub_50fbb8() -> ! {
 #[doc(alias = "global constructor keyed to_a_204")]
 // was: __GLOBAL__I_a_204
 pub fn stub_50fc5c() -> ! {
-    todo!("0x50fc5c `global constructor keyed to'_a_204")
+    todo!("0x50fc5c global constructor keyed to_a_204")
 }
 
 

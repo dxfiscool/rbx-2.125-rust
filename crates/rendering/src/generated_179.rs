@@ -424,7 +424,7 @@ pub fn stub_43364() -> ! {
 #[doc(alias = "global_constructor_keyed_to_a_13")]
 // was: `global constructor keyed to'_a_13
 pub fn stub_43394() -> ! {
-    todo!("0x43394 `global constructor keyed to'_a_13")
+    todo!("0x43394 global constructor keyed to_a_13")
 }
 
 
@@ -674,7 +674,7 @@ pub fn stub_44888() -> ! {
 #[doc(alias = "global_constructor_keyed_to_a_14")]
 // was: `global constructor keyed to'_a_14
 pub fn stub_44924() -> ! {
-    todo!("0x44924 `global constructor keyed to'_a_14")
+    todo!("0x44924 global constructor keyed to_a_14")
 }
 
 

@@ -22,7 +22,7 @@ pub fn stub_d4980() -> ! {
 // type: _DWORD __fastcall(FMOD::OutputPolled *__hidden this)
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::threadFunc(void)")]
 pub fn stub_d4ac0() -> ! {
-    todo!("0xd4ac0 `non-virtual thunk to'FMOD::OutputPolled::threadFunc(void)")
+    todo!("0xd4ac0 non-virtual thunk toFMOD::OutputPolled::threadFunc(void)")
 }
 
 // 0xd4ac8 — __ZN4FMOD12OutputPolled10threadFuncEv / FMOD::OutputPolled::threadFunc(void)
@@ -36,7 +36,7 @@ pub fn stub_d4ac8() -> ! {
 // type: void __fastcall(FMOD::OutputPolled *__hidden this)
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")]
 pub fn stub_d4ff8() -> ! {
-    todo!("0xd4ff8 `non-virtual thunk to'FMOD::OutputPolled::~OutputPolled()")
+    todo!("0xd4ff8 non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")
 }
 
 // 0xd5000 — __ZN4FMOD12OutputPolledD0Ev / FMOD::OutputPolled::~OutputPolled()
@@ -50,7 +50,7 @@ pub fn stub_d5000() -> ! {
 // type: void __fastcall(FMOD::OutputPolled *__hidden this)
 #[doc(alias = "non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")]
 pub fn stub_d5038() -> ! {
-    todo!("0xd5038 `non-virtual thunk to'FMOD::OutputPolled::~OutputPolled()")
+    todo!("0xd5038 non-virtual thunk toFMOD::OutputPolled::~OutputPolled()")
 }
 
 // 0xd5040 — __ZN4FMOD12OutputPolledD1Ev / FMOD::OutputPolled::~OutputPolled()
@@ -260,7 +260,7 @@ pub fn stub_d6100() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::wavwriteroutput")]
 pub fn stub_d6144() -> ! {
-    todo!("0xd6144 `global constructor keyed to'FMOD::wavwriteroutput")
+    todo!("0xd6144 global constructor keyed toFMOD::wavwriteroutput")
 }
 
 // 0xd6150 — __ZN4FMOD19OutputWavWriter_NRT13getNumDriversEPi / FMOD::OutputWavWriter_NRT::getNumDrivers(int *)
@@ -414,7 +414,7 @@ pub fn stub_d6978() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed toFMOD::wavwriteroutput_nrt")]
 pub fn stub_d69bc() -> ! {
-    todo!("0xd69bc `global constructor keyed to'FMOD::wavwriteroutput_nrt")
+    todo!("0xd69bc global constructor keyed toFMOD::wavwriteroutput_nrt")
 }
 
 // 0xd69c8 — __ZN4FMOD6Plugin7releaseEv / FMOD::Plugin::release(void)

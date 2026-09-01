@@ -69,7 +69,7 @@ pub fn stub_2f1478() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
 // was: __ZThn36_N3RBX12PartDragToolD0Ev
 pub fn stub_2f147c() -> ! {
-    todo!("0x2f147c `non-virtual thunk to'RBX::PartDragTool::~PartDragTool()")
+    todo!("0x2f147c non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
 }
 
 // 0x2f1484 — __ZN3RBX12PartDragToolD2Ev
@@ -85,7 +85,7 @@ pub fn stub_2f1484() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
 // was: __ZThn36_N3RBX12PartDragToolD1Ev
 pub fn stub_2f15e4() -> ! {
-    todo!("0x2f15e4 `non-virtual thunk to'RBX::PartDragTool::~PartDragTool()")
+    todo!("0x2f15e4 non-virtual thunk toRBX::PartDragTool::~PartDragTool()")
 }
 
 // 0x2f15ec — __ZN3RBX11shared_fromINS_12PartDragToolEEEN5boost10shared_ptrIT_EEPS4_
@@ -145,14 +145,14 @@ pub fn stub_2f1868() -> ! {
 #[doc(alias = "global constructor keyed to_a_100")]
 // was: __GLOBAL__I_a_100
 pub fn stub_2f1948() -> ! {
-    todo!("0x2f1948 `global constructor keyed to'_a_100")
+    todo!("0x2f1948 global constructor keyed to_a_100")
 }
 
 // 0x2f1c20 — __GLOBAL__I_a_101
 #[doc(alias = "global constructor keyed to_a_101")]
 // was: __GLOBAL__I_a_101
 pub fn stub_2f1c20() -> ! {
-    todo!("0x2f1c20 `global constructor keyed to'_a_101")
+    todo!("0x2f1c20 global constructor keyed to_a_101")
 }
 
 // 0x2f1ef8 — __ZN3RBX10RunDragger8SnapInfo20updateSurfaceFromHitEv
@@ -319,7 +319,7 @@ pub fn stub_2f5610() -> ! {
 #[doc(alias = "global constructor keyed to_a_102")]
 // was: __GLOBAL__I_a_102
 pub fn stub_2f5d3c() -> ! {
-    todo!("0x2f5d3c `global constructor keyed to'_a_102")
+    todo!("0x2f5d3c global constructor keyed to_a_102")
 }
 
 // 0x2f614c — __ZN3RBX13ArrowToolBase12onMouseHoverERKNS_7UIEventE
@@ -447,7 +447,7 @@ pub fn stub_2f71d4() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
 // was: __ZThn36_N3RBX16BoxSelectCommandD0Ev
 pub fn stub_2f71d8() -> ! {
-    todo!("0x2f71d8 `non-virtual thunk to'RBX::BoxSelectCommand::~BoxSelectCommand()")
+    todo!("0x2f71d8 non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")
 }
 
 // 0x2f71e0 — __ZN3RBX16BoxSelectCommandD2Ev
@@ -463,7 +463,7 @@ pub fn stub_2f71e0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")]
 // was: __ZThn36_N3RBX16BoxSelectCommandD1Ev
 pub fn stub_2f7324() -> ! {
-    todo!("0x2f7324 `non-virtual thunk to'RBX::BoxSelectCommand::~BoxSelectCommand()")
+    todo!("0x2f7324 non-virtual thunk toRBX::BoxSelectCommand::~BoxSelectCommand()")
 }
 
 // 0x2f732c — __ZN3RBX16BoxSelectCommand9selectAndERKSt3setIN5boost10shared_ptrINS_8InstanceEEESt4lessIS5_ESaIS5_EE
@@ -738,7 +738,7 @@ pub fn stub_2f8b9c() -> ! {
 #[doc(alias = "global constructor keyed to_a_103")]
 // was: __GLOBAL__I_a_103
 pub fn stub_2f8c2c() -> ! {
-    todo!("0x2f8c2c `global constructor keyed to'_a_103")
+    todo!("0x2f8c2c global constructor keyed to_a_103")
 }
 
 // 0x2f8f04 — __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEEC1Ev

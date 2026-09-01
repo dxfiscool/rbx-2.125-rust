@@ -46,7 +46,7 @@ pub fn stub_92fb8() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD9midicodecE")]
 pub fn stub_9301c() -> ! {
-    todo!("0x9301c 'global constructor keyed to'FMOD::midicodec")
+    todo!("0x9301c global constructor keyed toFMOD::midicodec")
 }
 
 // 0x93028 — __ZN4FMOD15MusicChannelMOD10portamentoEv
@@ -172,7 +172,7 @@ pub fn stub_95e70() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD8modcodecE")]
 pub fn stub_95ebc() -> ! {
-    todo!("0x95ebc 'global constructor keyed to'FMOD::modcodec")
+    todo!("0x95ebc global constructor keyed toFMOD::modcodec")
 }
 
 // 0x95ec8 — __ZN4FMOD9CodecMPEG13resetCallbackEP16FMOD_CODEC_STATE
@@ -291,7 +291,7 @@ pub fn stub_9767c() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD9mpegcodecE")]
 pub fn stub_976c8() -> ! {
-    todo!("0x976c8 'global constructor keyed to'FMOD::mpegcodec")
+    todo!("0x976c8 global constructor keyed toFMOD::mpegcodec")
 }
 
 // 0x976d4 — __ZN4FMOD9CodecMPEG7getBitsEi
@@ -627,7 +627,7 @@ pub fn stub_a05c8() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I_FMOD_OggVorbis_Malloc")]
 pub fn stub_a0614() -> ! {
-    todo!("0xa0614 'global constructor keyed to'_FMOD_OggVorbis_Malloc")
+    todo!("0xa0614 global constructor keyed to_FMOD_OggVorbis_Malloc")
 }
 
 // 0xa0620 — __ZN4FMOD13CodecPlaylist12getQuoteDataEPKcPcPi
@@ -781,7 +781,7 @@ pub fn stub_a1e00() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD13playlistcodecE")]
 pub fn stub_a1e4c() -> ! {
-    todo!("0xa1e4c 'global constructor keyed to'FMOD::playlistcodec")
+    todo!("0xa1e4c global constructor keyed toFMOD::playlistcodec")
 }
 
 // 0xa1e58 — __ZN4FMOD8CodecRaw13closeInternalEv
@@ -872,7 +872,7 @@ pub fn stub_a2328() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD8rawcodecE")]
 pub fn stub_a2374() -> ! {
-    todo!("0xa2374 'global constructor keyed to'FMOD::rawcodec")
+    todo!("0xa2374 global constructor keyed toFMOD::rawcodec")
 }
 
 // 0xa2380 — __ZN4FMOD15MusicChannelS3M11volumeSlideEv
@@ -1012,7 +1012,7 @@ pub fn stub_a5c98() -> ! {
 // type: int()
 #[doc(alias = "__GLOBAL__I__ZN4FMOD8s3mcodecE")]
 pub fn stub_a5ce4() -> ! {
-    todo!("0xa5ce4 'global constructor keyed to'FMOD::s3mcodec")
+    todo!("0xa5ce4 global constructor keyed toFMOD::s3mcodec")
 }
 
 // 0xa5cf0 — __ZN4FMOD8CodecTag13closeInternalEv

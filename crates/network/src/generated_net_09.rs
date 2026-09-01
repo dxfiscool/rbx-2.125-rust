@@ -10,7 +10,7 @@ use rbx_core::SharedPtr;
 // 0x5b16c0 — __GLOBAL__I_a_219
 #[doc(alias = "__GLOBAL__I_a_219")]
 pub fn stub_5b16c0() -> ! {
-    todo!("0x5b16c0 `global constructor keyed to'_a_219")
+    todo!("0x5b16c0 global constructor keyed to_a_219")
 }
 
 // 0x5b22ec — __ZN3RBX14FactoryProductINS_8KeyframeENS_8InstanceELZNS_9sKeyframeEES2_E7CreatorD1Ev
@@ -68,7 +68,7 @@ pub fn stub_5b2c2c() -> ! {
 // 0x5b379c — __GLOBAL__I_a_220
 #[doc(alias = "__GLOBAL__I_a_220")]
 pub fn stub_5b379c() -> ! {
-    todo!("0x5b379c `global constructor keyed to'_a_220")
+    todo!("0x5b379c global constructor keyed to_a_220")
 }
 
 // 0x5b61e4 — __ZNK3RBX14FactoryProductINS_16KeyframeSequenceENS_8InstanceELZNS_17sKeyframeSequenceEES2_E12getClassNameEv
@@ -176,7 +176,7 @@ pub fn stub_5b9068() -> ! {
 // 0x5b9838 — __GLOBAL__I_a_221
 #[doc(alias = "__GLOBAL__I_a_221")]
 pub fn stub_5b9838() -> ! {
-    todo!("0x5b9838 `global constructor keyed to'_a_221")
+    todo!("0x5b9838 global constructor keyed to_a_221")
 }
 
 // 0x5bc5d8 — __ZNK3RBX17NonFactoryProductINS_8InstanceELZNS_25sKeyframeSequenceProviderEEE12getClassNameEv
@@ -200,13 +200,13 @@ pub fn stub_5bdb50() -> ! {
 // 0x5c13bc — __GLOBAL__I_a_222
 #[doc(alias = "__GLOBAL__I_a_222")]
 pub fn stub_5c13bc() -> ! {
-    todo!("0x5c13bc `global constructor keyed to'_a_222")
+    todo!("0x5c13bc global constructor keyed to_a_222")
 }
 
 // 0x5c2130 — __GLOBAL__I_a_223
 #[doc(alias = "__GLOBAL__I_a_223")]
 pub fn stub_5c2130() -> ! {
-    todo!("0x5c2130 `global constructor keyed to'_a_223")
+    todo!("0x5c2130 global constructor keyed to_a_223")
 }
 
 // 0x5c2350 — __ZN3RBX8Lighting9setFogEndEf
@@ -317,14 +317,14 @@ pub fn stub_5c3100() -> ! {
 // type: void __fastcall(RBX::Lighting *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX8LightingD1Ev")]
 pub fn stub_5c3110() -> ! {
-    todo!("0x5c3110 `non-virtual thunk to'RBX::Lighting::~Lighting()")
+    todo!("0x5c3110 non-virtual thunk toRBX::Lighting::~Lighting()")
 }
 
 // 0x5c3118 — __ZThn32_N3RBX8LightingD0Ev
 // type: void __fastcall(RBX::Lighting *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX8LightingD0Ev")]
 pub fn stub_5c3118() -> ! {
-    todo!("0x5c3118 `non-virtual thunk to'RBX::Lighting::~Lighting()")
+    todo!("0x5c3118 non-virtual thunk toRBX::Lighting::~Lighting()")
 }
 
 // 0x5c31bc — __ZThn32_NK3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E12getClassNameEv
@@ -337,14 +337,14 @@ pub fn stub_5c31bc() -> ! {
 // type: void __fastcall(RBX::Lighting *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX8LightingD1Ev")]
 pub fn stub_5c31cc() -> ! {
-    todo!("0x5c31cc `non-virtual thunk to'RBX::Lighting::~Lighting()")
+    todo!("0x5c31cc non-virtual thunk toRBX::Lighting::~Lighting()")
 }
 
 // 0x5c31d4 — __ZThn36_N3RBX8LightingD0Ev
 // type: void __fastcall(RBX::Lighting *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX8LightingD0Ev")]
 pub fn stub_5c31d4() -> ! {
-    todo!("0x5c31d4 `non-virtual thunk to'RBX::Lighting::~Lighting()")
+    todo!("0x5c31d4 non-virtual thunk toRBX::Lighting::~Lighting()")
 }
 
 // 0x5c4a50 — __ZNK3RBX10Reflection14PropDescriptorINS_8LightingESsE10GetSetImplIMS2_KFSsvEMS2_FvRKSsEE8setValueEPNS0_13DescribedBaseES8_
@@ -394,7 +394,7 @@ pub fn stub_5c4ea0() -> ! {
 // 0x5c6848 — __GLOBAL__I_a_224
 #[doc(alias = "__GLOBAL__I_a_224")]
 pub fn stub_5c6848() -> ! {
-    todo!("0x5c6848 `global constructor keyed to'_a_224")
+    todo!("0x5c6848 global constructor keyed to_a_224")
 }
 
 // 0x5c7230 — __ZN3RBX10Reflection13BoundFuncDescINS_13LocalBackpackEFvbELi1EED1Ev
@@ -475,13 +475,13 @@ pub fn stub_5c7b6c() -> ! {
 // 0x5c7ba0 — __GLOBAL__I_a_225
 #[doc(alias = "__GLOBAL__I_a_225")]
 pub fn stub_5c7ba0() -> ! {
-    todo!("0x5c7ba0 `global constructor keyed to'_a_225")
+    todo!("0x5c7ba0 global constructor keyed to_a_225")
 }
 
 // 0x5c7e0c — __GLOBAL__I_a_226
 #[doc(alias = "__GLOBAL__I_a_226")]
 pub fn stub_5c7e0c() -> ! {
-    todo!("0x5c7e0c `global constructor keyed to'_a_226")
+    todo!("0x5c7e0c global constructor keyed to_a_226")
 }
 
 // 0x5c8820 — __ZN3RBX10Reflection14PropDescriptorINS_7MessageESsED1Ev

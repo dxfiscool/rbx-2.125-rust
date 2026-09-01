@@ -214,7 +214,7 @@ pub fn stub_654c0() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)
 pub fn stub_654c8() -> ! {
-    todo!("0x654c8 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")
+    todo!("0x654c8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")
 }
 
 // 0x654d0 — __ZNK5boost9function1IvRKN3RBX18StandardOutMessageEEclES4_
@@ -305,7 +305,7 @@ pub fn stub_65b20() -> ! {
 #[doc(alias = "global constructor keyed to_a_35")]
 // was: `global constructor keyed to'_a_35
 pub fn stub_65b4c() -> ! {
-    todo!("0x65b4c `global constructor keyed to'_a_35")
+    todo!("0x65b4c global constructor keyed to_a_35")
 }
 
 // 0x65ce4 — -[ExternalLoginViewController initWithCoder:]

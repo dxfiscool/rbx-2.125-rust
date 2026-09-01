@@ -144,7 +144,7 @@ pub fn stub_496dec() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
 // was: __ZThn32_N3RBX10DialogRootD1Ev
 pub fn stub_496dfc() -> ! {
-    todo!("0x496dfc `non-virtual thunk to'RBX::DialogRoot::~DialogRoot()")
+    todo!("0x496dfc non-virtual thunk toRBX::DialogRoot::~DialogRoot()")
 }
 
 // 0x496e04 — __ZThn32_N3RBX10DialogRootD0Ev
@@ -152,7 +152,7 @@ pub fn stub_496dfc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
 // was: __ZThn32_N3RBX10DialogRootD0Ev
 pub fn stub_496e04() -> ! {
-    todo!("0x496e04 `non-virtual thunk to'RBX::DialogRoot::~DialogRoot()")
+    todo!("0x496e04 non-virtual thunk toRBX::DialogRoot::~DialogRoot()")
 }
 
 // 0x496ea8 — __ZThn32_NK3RBX14FactoryProductINS_10DialogRootENS_8InstanceELZNS_11sDialogRootEES2_E12getClassNameEv
@@ -167,7 +167,7 @@ pub fn stub_496ea8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
 // was: __ZThn36_N3RBX10DialogRootD1Ev
 pub fn stub_496eb8() -> ! {
-    todo!("0x496eb8 `non-virtual thunk to'RBX::DialogRoot::~DialogRoot()")
+    todo!("0x496eb8 non-virtual thunk toRBX::DialogRoot::~DialogRoot()")
 }
 
 // 0x496ec0 — __ZThn36_N3RBX10DialogRootD0Ev
@@ -175,7 +175,7 @@ pub fn stub_496eb8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DialogRoot::~DialogRoot()")]
 // was: __ZThn36_N3RBX10DialogRootD0Ev
 pub fn stub_496ec0() -> ! {
-    todo!("0x496ec0 `non-virtual thunk to'RBX::DialogRoot::~DialogRoot()")
+    todo!("0x496ec0 non-virtual thunk toRBX::DialogRoot::~DialogRoot()")
 }
 
 // 0x496f64 — __ZN3RBX14FactoryProductINS_10DialogRootENS_8InstanceELZNS_11sDialogRootEES2_E7CreatorD1Ev

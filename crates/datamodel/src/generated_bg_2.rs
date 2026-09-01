@@ -76,7 +76,7 @@ pub fn stub_1b304() -> ! {
 // 0x1b308 — __GLOBAL__I_a_3
 #[doc(alias = "global constructor keyed to_a_3")]
 pub fn stub_1b308() -> ! {
-    todo!("0x1b308 `global constructor keyed to_a_3")
+    todo!("0x1b308 global constructor keyed to_a_3")
 }
 
 // 0x1b3d0 — -[HomeViewController initWithCoder:]

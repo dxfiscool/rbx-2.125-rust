@@ -39,7 +39,7 @@ pub fn stub_478100() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DebrisService::~DebrisService()")]
 // was: __ZThn32_N3RBX13DebrisServiceD1Ev
 pub fn stub_478128() -> ! {
-    todo!("0x478128 `non-virtual thunk to'RBX::DebrisService::~DebrisService()")
+    todo!("0x478128 non-virtual thunk toRBX::DebrisService::~DebrisService()")
 }
 
 // 0x478234 — __ZThn32_N3RBX13DebrisServiceD0Ev
@@ -47,7 +47,7 @@ pub fn stub_478128() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DebrisService::~DebrisService()")]
 // was: __ZThn32_N3RBX13DebrisServiceD0Ev
 pub fn stub_478234() -> ! {
-    todo!("0x478234 `non-virtual thunk to'RBX::DebrisService::~DebrisService()")
+    todo!("0x478234 non-virtual thunk toRBX::DebrisService::~DebrisService()")
 }
 
 // 0x478354 — __ZThn32_NK3RBX17NonFactoryProductINS_8InstanceELZNS_14sDebrisServiceEEE12getClassNameEv
@@ -62,7 +62,7 @@ pub fn stub_478354() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DebrisService::~DebrisService()")]
 // was: __ZThn36_N3RBX13DebrisServiceD1Ev
 pub fn stub_47837c() -> ! {
-    todo!("0x47837c `non-virtual thunk to'RBX::DebrisService::~DebrisService()")
+    todo!("0x47837c non-virtual thunk toRBX::DebrisService::~DebrisService()")
 }
 
 // 0x478484 — __ZThn36_N3RBX13DebrisServiceD0Ev
@@ -70,7 +70,7 @@ pub fn stub_47837c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DebrisService::~DebrisService()")]
 // was: __ZThn36_N3RBX13DebrisServiceD0Ev
 pub fn stub_478484() -> ! {
-    todo!("0x478484 `non-virtual thunk to'RBX::DebrisService::~DebrisService()")
+    todo!("0x478484 non-virtual thunk toRBX::DebrisService::~DebrisService()")
 }
 
 // 0x4785a0 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE9push_backERKS4_
@@ -407,7 +407,7 @@ pub fn stub_47a528() -> ! {
 #[doc(alias = "global constructor keyed to_a_181")]
 // was: __GLOBAL__I_a_181
 pub fn stub_47a54c() -> ! {
-    todo!("0x47a54c `global constructor keyed to'_a_181")
+    todo!("0x47a54c global constructor keyed to_a_181")
 }
 
 // 0x47a87c — __ZN3RBX10Reflection8EnumDescINS_13TaskScheduler16ThreadPoolConfigEEC2Ev

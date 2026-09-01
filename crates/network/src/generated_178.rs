@@ -405,7 +405,7 @@ pub fn stub_4a9144() -> ! {
 // demangled: `global constructor keyed to'_a_189
 #[doc(alias = "global constructor keyed to_a_189")]
 pub fn stub_4a9168() -> ! {
-    todo!("0x4a9168 `global constructor keyed to'_a_189")
+    todo!("0x4a9168 global constructor keyed to_a_189")
 }
 
 // 0x4a94fc — __ZN3RBX12FaceInstance7setFaceENS_8NormalIdE
@@ -442,7 +442,7 @@ pub fn stub_4a96a4() -> ! {
 // demangled: `non-virtual thunk to'RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)
 #[doc(alias = "non-virtual thunk toRBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 pub fn stub_4a971c() -> ! {
-    todo!("0x4a971c `non-virtual thunk to'RBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
+    todo!("0x4a971c non-virtual thunk toRBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
 
 // 0x4a9724 — __ZNK3RBX12FaceInstance7getFaceEv
@@ -481,7 +481,7 @@ pub fn stub_4a9808() -> ! {
 // type: void __fastcall(RBX::FaceInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
 pub fn stub_4a98d4() -> ! {
-    todo!("0x4a98d4 `non-virtual thunk to'RBX::FaceInstance::~FaceInstance()")
+    todo!("0x4a98d4 non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
 
 // 0x4a998c — __ZThn32_N3RBX12FaceInstanceD0Ev
@@ -489,7 +489,7 @@ pub fn stub_4a98d4() -> ! {
 // type: void __fastcall(RBX::FaceInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
 pub fn stub_4a998c() -> ! {
-    todo!("0x4a998c `non-virtual thunk to'RBX::FaceInstance::~FaceInstance()")
+    todo!("0x4a998c non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
 
 // 0x4a9a5c — __ZThn36_N3RBX12FaceInstanceD1Ev
@@ -497,7 +497,7 @@ pub fn stub_4a998c() -> ! {
 // type: void __fastcall(RBX::FaceInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
 pub fn stub_4a9a5c() -> ! {
-    todo!("0x4a9a5c `non-virtual thunk to'RBX::FaceInstance::~FaceInstance()")
+    todo!("0x4a9a5c non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
 
 // 0x4a9b14 — __ZThn36_N3RBX12FaceInstanceD0Ev
@@ -505,7 +505,7 @@ pub fn stub_4a9a5c() -> ! {
 // type: void __fastcall(RBX::FaceInstance *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
 pub fn stub_4a9b14() -> ! {
-    todo!("0x4a9b14 `non-virtual thunk to'RBX::FaceInstance::~FaceInstance()")
+    todo!("0x4a9b14 non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
 
 // 0x4a9be4 — __ZN3RBX10Reflection9DescribedINS_12FaceInstanceELZNS_13sFaceInstanceEENS_8InstanceELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev

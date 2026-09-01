@@ -24,7 +24,7 @@ pub fn stub_3bbc68() -> ! {
 #[doc(alias = "__ZThn32_N3RBX14FormFactorPartD0Ev")]
 // was: __ZThn32_N3RBX14FormFactorPartD0Ev
 pub fn stub_3bbc78() -> ! {
-    todo!("0x3bbc78 `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbc78 non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
 }
 
 
@@ -33,7 +33,7 @@ pub fn stub_3bbc78() -> ! {
 #[doc(alias = "__ZThn36_N3RBX14FormFactorPartD0Ev")]
 // was: __ZThn36_N3RBX14FormFactorPartD0Ev
 pub fn stub_3bbc80() -> ! {
-    todo!("0x3bbc80 `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbc80 non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
 }
 
 
@@ -42,7 +42,7 @@ pub fn stub_3bbc80() -> ! {
 #[doc(alias = "__ZThn132_N3RBX14FormFactorPartD0Ev")]
 // was: __ZThn132_N3RBX14FormFactorPartD0Ev
 pub fn stub_3bbc88() -> ! {
-    todo!("0x3bbc88 `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbc88 non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
 }
 
 
@@ -60,7 +60,7 @@ pub fn stub_3bbc90() -> ! {
 #[doc(alias = "__ZThn32_N3RBX14FormFactorPartD1Ev")]
 // was: __ZThn32_N3RBX14FormFactorPartD1Ev
 pub fn stub_3bbc98() -> ! {
-    todo!("0x3bbc98 `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbc98 non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
 }
 
 
@@ -69,7 +69,7 @@ pub fn stub_3bbc98() -> ! {
 #[doc(alias = "__ZThn36_N3RBX14FormFactorPartD1Ev")]
 // was: __ZThn36_N3RBX14FormFactorPartD1Ev
 pub fn stub_3bbcac() -> ! {
-    todo!("0x3bbcac `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbcac non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
 }
 
 
@@ -78,7 +78,7 @@ pub fn stub_3bbcac() -> ! {
 #[doc(alias = "__ZThn132_N3RBX14FormFactorPartD1Ev")]
 // was: __ZThn132_N3RBX14FormFactorPartD1Ev
 pub fn stub_3bbcc0() -> ! {
-    todo!("0x3bbcc0 `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()")
+    todo!("0x3bbcc0 non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")
 }
 
 
@@ -150,7 +150,7 @@ pub fn stub_3bc104() -> ! {
 #[doc(alias = "__ZThn32_N3RBX17BasicPartInstanceD0Ev")]
 // was: __ZThn32_N3RBX17BasicPartInstanceD0Ev
 pub fn stub_3bc114() -> ! {
-    todo!("0x3bc114 `non-virtual thunk to'RBX::BasicPartInstance::~BasicPartInstance()")
+    todo!("0x3bc114 non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")
 }
 
 
@@ -159,7 +159,7 @@ pub fn stub_3bc114() -> ! {
 #[doc(alias = "__ZThn36_N3RBX17BasicPartInstanceD0Ev")]
 // was: __ZThn36_N3RBX17BasicPartInstanceD0Ev
 pub fn stub_3bc11c() -> ! {
-    todo!("0x3bc11c `non-virtual thunk to'RBX::BasicPartInstance::~BasicPartInstance()")
+    todo!("0x3bc11c non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")
 }
 
 
@@ -168,7 +168,7 @@ pub fn stub_3bc11c() -> ! {
 #[doc(alias = "__ZThn132_N3RBX17BasicPartInstanceD0Ev")]
 // was: __ZThn132_N3RBX17BasicPartInstanceD0Ev
 pub fn stub_3bc124() -> ! {
-    todo!("0x3bc124 `non-virtual thunk to'RBX::BasicPartInstance::~BasicPartInstance()")
+    todo!("0x3bc124 non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")
 }
 
 
@@ -186,7 +186,7 @@ pub fn stub_3bc12c() -> ! {
 #[doc(alias = "__ZThn32_N3RBX17BasicPartInstanceD1Ev")]
 // was: __ZThn32_N3RBX17BasicPartInstanceD1Ev
 pub fn stub_3bc134() -> ! {
-    todo!("0x3bc134 `non-virtual thunk to'RBX::BasicPartInstance::~BasicPartInstance()")
+    todo!("0x3bc134 non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")
 }
 
 
@@ -195,7 +195,7 @@ pub fn stub_3bc134() -> ! {
 #[doc(alias = "__ZThn36_N3RBX17BasicPartInstanceD1Ev")]
 // was: __ZThn36_N3RBX17BasicPartInstanceD1Ev
 pub fn stub_3bc148() -> ! {
-    todo!("0x3bc148 `non-virtual thunk to'RBX::BasicPartInstance::~BasicPartInstance()")
+    todo!("0x3bc148 non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")
 }
 
 
@@ -204,7 +204,7 @@ pub fn stub_3bc148() -> ! {
 #[doc(alias = "__ZThn132_N3RBX17BasicPartInstanceD1Ev")]
 // was: __ZThn132_N3RBX17BasicPartInstanceD1Ev
 pub fn stub_3bc15c() -> ! {
-    todo!("0x3bc15c `non-virtual thunk to'RBX::BasicPartInstance::~BasicPartInstance()")
+    todo!("0x3bc15c non-virtual thunk toRBX::BasicPartInstance::~BasicPartInstance()")
 }
 
 

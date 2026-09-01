@@ -93,7 +93,7 @@ pub fn stub_f6dc() -> ! {
 // was: __GLOBAL__I_a
 // type: 
 pub fn stub_16e4c() -> ! {
-    todo!("0x16e4c `global constructor keyed to'_a")
+    todo!("0x16e4c global constructor keyed to_a")
 }
 
 
@@ -156,7 +156,7 @@ pub fn stub_17b80() -> ! {
 // was: __GLOBAL__I_a_0
 // type: 
 pub fn stub_17c58() -> ! {
-    todo!("0x17c58 `global constructor keyed to'_a_0")
+    todo!("0x17c58 global constructor keyed to_a_0")
 }
 
 
@@ -714,7 +714,7 @@ pub fn stub_1a5bc() -> ! {
 // was: __GLOBAL__I_a_1
 // type: 
 pub fn stub_1a5d0() -> ! {
-    todo!("0x1a5d0 `global constructor keyed to'_a_1")
+    todo!("0x1a5d0 global constructor keyed to_a_1")
 }
 
 
@@ -732,7 +732,7 @@ pub fn stub_1a768() -> ! {
 // was: __GLOBAL__I_a_2
 // type: 
 pub fn stub_1a7d4() -> ! {
-    todo!("0x1a7d4 `global constructor keyed to'_a_2")
+    todo!("0x1a7d4 global constructor keyed to_a_2")
 }
 
 

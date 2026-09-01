@@ -44,7 +44,7 @@ pub fn stub_48dc4c() -> ! {
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, void *, int, int, int)
 #[doc(alias = "global constructor keyed to_a_182")]
 pub fn stub_48ddb0() -> ! {
-    todo!("0x48ddb0 `global constructor keyed to'_a_182")
+    todo!("0x48ddb0 global constructor keyed to_a_182")
 }
 
 // 0x48fc28 — __ZN3RBX10Reflection4Type12getSingletonINS_9TextureIdEEERKS1_v
@@ -292,7 +292,7 @@ pub fn stub_493100() -> ! {
 // demangled: `global constructor keyed to'_a_183
 #[doc(alias = "global constructor keyed to_a_183")]
 pub fn stub_493248() -> ! {
-    todo!("0x493248 `global constructor keyed to'_a_183")
+    todo!("0x493248 global constructor keyed to_a_183")
 }
 
 // 0x493b34 — __ZN3RBX10Reflection14PropDescriptorINS_12DialogChoiceESsED1Ev
@@ -362,7 +362,7 @@ pub fn stub_495058() -> ! {
 // demangled: `global constructor keyed to'_a_184
 #[doc(alias = "global constructor keyed to_a_184")]
 pub fn stub_49519c() -> ! {
-    todo!("0x49519c `global constructor keyed to'_a_184")
+    todo!("0x49519c global constructor keyed to_a_184")
 }
 
 // 0x4958dc — __ZN3RBX10Reflection8EnumDescINS_10DialogRoot13DialogPurposeEEC1Ev

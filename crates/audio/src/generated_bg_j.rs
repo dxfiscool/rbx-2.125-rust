@@ -312,7 +312,7 @@ pub fn stub_27b4b4() -> ! {
 #[doc(alias = "global constructor keyed to_a_65")]
 #[doc(alias = "__GLOBAL__I_a_65")]
 pub fn stub_27b50c() -> ! {
-    todo!("0x27b50c `global constructor keyed to'_a_65")
+    todo!("0x27b50c global constructor keyed to_a_65")
 }
 
 // 0x27b6a4 — __ZN3RBX3Lua6BridgeIPKNS0_18AllEnumDescriptorsELb1EE8on_indexERKS4_PKcP9lua_State
@@ -437,7 +437,7 @@ pub fn stub_27bea8() -> ! {
 #[doc(alias = "global constructor keyed to_a_66")]
 #[doc(alias = "__GLOBAL__I_a_66")]
 pub fn stub_27bef0() -> ! {
-    todo!("0x27bef0 `global constructor keyed to'_a_66")
+    todo!("0x27bef0 global constructor keyed to_a_66")
 }
 
 // 0x27bfb8 — __ZN3RBX3Lua12newweaktableEP9lua_StatePKc
@@ -1211,7 +1211,7 @@ pub fn stub_285898() -> ! {
 #[doc(alias = "global constructor keyed to_a_67")]
 #[doc(alias = "__GLOBAL__I_a_67")]
 pub fn stub_2858c0() -> ! {
-    todo!("0x2858c0 `global constructor keyed to'_a_67")
+    todo!("0x2858c0 global constructor keyed to_a_67")
 }
 
 // 0x285c30 — __ZN3RBX12LuaAllocatorC1Eb
@@ -1333,5 +1333,5 @@ pub fn stub_286250() -> ! {
 #[doc(alias = "global constructor keyed to_a_68")]
 #[doc(alias = "__GLOBAL__I_a_68")]
 pub fn stub_286268() -> ! {
-    todo!("0x286268 `global constructor keyed to'_a_68")
+    todo!("0x286268 global constructor keyed to_a_68")
 }

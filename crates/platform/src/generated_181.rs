@@ -386,13 +386,13 @@ pub fn stub_7e336c() -> ! {
 // 0x7e349c — __ZThn8_N5boost9iostreams16filtering_streamINS0_6outputEcSt11char_traitsIcESaIcENS0_7public_EED1Ev
 #[doc(alias = "non-virtual thunk toboost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")]
 pub fn stub_7e349c() -> ! {
-    todo!("0x7e349c `non-virtual thunk to'boost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")
+    todo!("0x7e349c non-virtual thunk toboost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")
 }
 
 // 0x7e34a4 — __ZTv0_n12_N5boost9iostreams16filtering_streamINS0_6outputEcSt11char_traitsIcESaIcENS0_7public_EED1Ev
 #[doc(alias = "virtual thunk toboost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")]
 pub fn stub_7e34a4() -> ! {
-    todo!("0x7e34a4 `virtual thunk to'boost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")
+    todo!("0x7e34a4 virtual thunk toboost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")
 }
 
 // 0x7e34b0 — __ZN5boost9iostreams16filtering_streamINS0_6outputEcSt11char_traitsIcESaIcENS0_7public_EED0Ev
@@ -410,14 +410,14 @@ pub fn stub_7e3550() -> ! {
 // 0x7e3568 — __ZThn8_N5boost9iostreams16filtering_streamINS0_6outputEcSt11char_traitsIcESaIcENS0_7public_EED0Ev
 #[doc(alias = "non-virtual thunk toboost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")]
 pub fn stub_7e3568() -> ! {
-    todo!("0x7e3568 `non-virtual thunk to'boost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")
+    todo!("0x7e3568 non-virtual thunk toboost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")
 }
 
 // 0x7e3570 — __ZTv0_n12_N5boost9iostreams16filtering_streamINS0_6outputEcSt11char_traitsIcESaIcENS0_7public_EED0Ev
 // type: int __fastcall(_DWORD *)
 #[doc(alias = "virtual thunk toboost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")]
 pub fn stub_7e3570() -> ! {
-    todo!("0x7e3570 `virtual thunk to'boost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")
+    todo!("0x7e3570 virtual thunk toboost::iostreams::filtering_stream<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>,boost::iostreams::public_>::~filtering_stream()")
 }
 
 // 0x7e357c — __ZN5boost9iostreams6detail21filtering_stream_baseINS0_5chainINS0_6outputEcSt11char_traitsIcESaIcEEENS0_7public_EED1Ev
@@ -435,25 +435,25 @@ pub fn stub_7e3660() -> ! {
 // 0x7e3754 — __ZThn8_N5boost9iostreams6detail21filtering_stream_baseINS0_5chainINS0_6outputEcSt11char_traitsIcESaIcEEENS0_7public_EED1Ev
 #[doc(alias = "non-virtual thunk toboost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")]
 pub fn stub_7e3754() -> ! {
-    todo!("0x7e3754 `non-virtual thunk to'boost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")
+    todo!("0x7e3754 non-virtual thunk toboost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")
 }
 
 // 0x7e3830 — __ZThn8_N5boost9iostreams6detail21filtering_stream_baseINS0_5chainINS0_6outputEcSt11char_traitsIcESaIcEEENS0_7public_EED0Ev
 #[doc(alias = "non-virtual thunk toboost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")]
 pub fn stub_7e3830() -> ! {
-    todo!("0x7e3830 `non-virtual thunk to'boost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")
+    todo!("0x7e3830 non-virtual thunk toboost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")
 }
 
 // 0x7e3928 — __ZTv0_n12_N5boost9iostreams6detail21filtering_stream_baseINS0_5chainINS0_6outputEcSt11char_traitsIcESaIcEEENS0_7public_EED1Ev
 #[doc(alias = "virtual thunk toboost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")]
 pub fn stub_7e3928() -> ! {
-    todo!("0x7e3928 `virtual thunk to'boost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")
+    todo!("0x7e3928 virtual thunk toboost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")
 }
 
 // 0x7e3a08 — __ZTv0_n12_N5boost9iostreams6detail21filtering_stream_baseINS0_5chainINS0_6outputEcSt11char_traitsIcESaIcEEENS0_7public_EED0Ev
 #[doc(alias = "virtual thunk toboost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")]
 pub fn stub_7e3a08() -> ! {
-    todo!("0x7e3a08 `virtual thunk to'boost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")
+    todo!("0x7e3a08 virtual thunk toboost::iostreams::detail::filtering_stream_base<boost::iostreams::chain<boost::iostreams::output,char,std::char_traits<char>,std::allocator<char>>,boost::iostreams::public_>::~filtering_stream_base()")
 }
 
 // 0x7e3b04 — __ZN5boost9iostreams6detail21filtering_stream_baseINS0_5chainINS0_6outputEcSt11char_traitsIcESaIcEEENS0_7public_EEC2Ev

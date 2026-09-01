@@ -53,7 +53,7 @@ pub fn stub_9e9728() -> ! {
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
 pub fn stub_9e9b30() -> ! {
-    todo!("0x9e9b30 `non-virtual thunk to'RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
+    todo!("0x9e9b30 non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
 }
 
 // 0x9e9b3c — __ZThn32_N3RBX7Network16ServerReplicator15ServerStatsItemD0Ev
@@ -61,7 +61,7 @@ pub fn stub_9e9b30() -> ! {
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
 pub fn stub_9e9b3c() -> ! {
-    todo!("0x9e9b3c `non-virtual thunk to'RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
+    todo!("0x9e9b3c non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
 }
 
 // 0x9e9be4 — __ZThn36_N3RBX7Network16ServerReplicator15ServerStatsItemD1Ev
@@ -69,7 +69,7 @@ pub fn stub_9e9b3c() -> ! {
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
 pub fn stub_9e9be4() -> ! {
-    todo!("0x9e9be4 `non-virtual thunk to'RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
+    todo!("0x9e9be4 non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
 }
 
 // 0x9e9bf0 — __ZThn36_N3RBX7Network16ServerReplicator15ServerStatsItemD0Ev
@@ -77,7 +77,7 @@ pub fn stub_9e9be4() -> ! {
 // type: void __fastcall(RBX::Network::ServerReplicator::ServerStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")]
 pub fn stub_9e9bf0() -> ! {
-    todo!("0x9e9bf0 `non-virtual thunk to'RBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
+    todo!("0x9e9bf0 non-virtual thunk toRBX::Network::ServerReplicator::ServerStatsItem::~ServerStatsItem()")
 }
 
 // 0x9e9c98 — __ZN3RBX7Network10Replicator9StatsItem6updateEv
@@ -109,7 +109,7 @@ pub fn stub_9ea2c4() -> ! {
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
 pub fn stub_9ea364() -> ! {
-    todo!("0x9ea364 `non-virtual thunk to'RBX::Network::Replicator::StatsItem::~StatsItem()")
+    todo!("0x9ea364 non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")
 }
 
 // 0x9ea370 — __ZThn32_N3RBX7Network10Replicator9StatsItemD0Ev
@@ -117,7 +117,7 @@ pub fn stub_9ea364() -> ! {
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
 pub fn stub_9ea370() -> ! {
-    todo!("0x9ea370 `non-virtual thunk to'RBX::Network::Replicator::StatsItem::~StatsItem()")
+    todo!("0x9ea370 non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")
 }
 
 // 0x9ea414 — __ZThn36_N3RBX7Network10Replicator9StatsItemD1Ev
@@ -125,7 +125,7 @@ pub fn stub_9ea370() -> ! {
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
 pub fn stub_9ea414() -> ! {
-    todo!("0x9ea414 `non-virtual thunk to'RBX::Network::Replicator::StatsItem::~StatsItem()")
+    todo!("0x9ea414 non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")
 }
 
 // 0x9ea420 — __ZThn36_N3RBX7Network10Replicator9StatsItemD0Ev
@@ -133,7 +133,7 @@ pub fn stub_9ea414() -> ! {
 // type: void __fastcall(RBX::Network::Replicator::StatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")]
 pub fn stub_9ea420() -> ! {
-    todo!("0x9ea420 `non-virtual thunk to'RBX::Network::Replicator::StatsItem::~StatsItem()")
+    todo!("0x9ea420 non-virtual thunk toRBX::Network::Replicator::StatsItem::~StatsItem()")
 }
 
 // 0x9eaa38 — __ZN3RBX7Network12RakStatsItemD1Ev
@@ -149,7 +149,7 @@ pub fn stub_9eaa38() -> ! {
 // type: void __fastcall(RBX::Network::RakStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
 pub fn stub_9eaab0() -> ! {
-    todo!("0x9eaab0 `non-virtual thunk to'RBX::Network::RakStatsItem::~RakStatsItem()")
+    todo!("0x9eaab0 non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")
 }
 
 // 0x9eab30 — __ZThn32_N3RBX7Network12RakStatsItemD0Ev
@@ -157,7 +157,7 @@ pub fn stub_9eaab0() -> ! {
 // type: void __fastcall(RBX::Network::RakStatsItem *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
 pub fn stub_9eab30() -> ! {
-    todo!("0x9eab30 `non-virtual thunk to'RBX::Network::RakStatsItem::~RakStatsItem()")
+    todo!("0x9eab30 non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")
 }
 
 // 0x9ebd98 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network12RakStatsItemES7_EEvPKNS_10shared_ptrIT_EEPT0_

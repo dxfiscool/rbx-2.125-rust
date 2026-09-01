@@ -568,7 +568,7 @@ pub fn stub_25f028() -> ! {
 #[doc(alias = "global constructor keyed to_a_56")]
 #[doc(alias = "__GLOBAL__I_a_56")]
 pub fn stub_25f04c() -> ! {
-    todo!("0x25f04c `global constructor keyed to'_a_56")
+    todo!("0x25f04c global constructor keyed to_a_56")
 }
 
 // 0x25f54c — __ZN3RBX10Reflection15EventDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
@@ -696,7 +696,7 @@ pub fn stub_25fdc0() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev")]
 pub fn stub_25fdc8() -> ! {
-    todo!("0x25fdc8 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
+    todo!("0x25fdc8 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
 }
 
 // 0x25fdd0 — __ZN5boost16exception_detail20copy_boost_exceptionEPNS_9exceptionEPKS1_
@@ -744,7 +744,7 @@ pub fn stub_25ff88() -> ! {
 #[doc(alias = "non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")]
 #[doc(alias = "__ZThn20_N5boost16exception_detail10clone_implINS0_14bad_exception_EED0Ev")]
 pub fn stub_260098() -> ! {
-    todo!("0x260098 `non-virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
+    todo!("0x260098 non-virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::~clone_impl()")
 }
 
 // 0x2600b0 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv
@@ -752,7 +752,7 @@ pub fn stub_260098() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")]
 #[doc(alias = "__ZTv0_n12_NK5boost16exception_detail10clone_implINS0_14bad_exception_EE5cloneEv")]
 pub fn stub_2600b0() -> ! {
-    todo!("0x2600b0 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")
+    todo!("0x2600b0 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>::clone(void)const")
 }
 
 // 0x2600c0 — __ZN5boost6detail12shared_countC1ERKS1_
@@ -784,7 +784,7 @@ pub fn stub_260140() -> ! {
 #[doc(alias = "global constructor keyed to_a_57")]
 #[doc(alias = "__GLOBAL__I_a_57")]
 pub fn stub_260144() -> ! {
-    todo!("0x260144 `global constructor keyed to'_a_57")
+    todo!("0x260144 global constructor keyed to_a_57")
 }
 
 // 0x260274 — __ZN3RBX10Reflection18FunctionDescriptorC2ERNS0_15ClassDescriptorEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE

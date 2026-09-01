@@ -98,7 +98,7 @@ pub fn stub_4f305c() -> ! {
 // 0x4f3080 - __GLOBAL__I_a_196
 #[doc(alias = "global constructor keyed to_a_196")]
 pub fn stub_4f3080() -> ! {
-    todo!("0x4f3080 `global constructor keyed to_a_196")
+    todo!("0x4f3080 global constructor keyed to_a_196")
 }
 
 // 0x4f33c4 - __ZNK3RBX9FlagStand12getTeamColorEv
@@ -176,19 +176,19 @@ pub fn stub_4f422c() -> ! {
 // 0x4f4230 - __ZThn32_N3RBX16FlagStandServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStandService::~FlagStandService()")]
 pub fn stub_4f4230() -> ! {
-    todo!("0x4f4230 `non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
+    todo!("0x4f4230 non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
 }
 
 // 0x4f4238 - __ZThn36_N3RBX16FlagStandServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStandService::~FlagStandService()")]
 pub fn stub_4f4238() -> ! {
-    todo!("0x4f4238 `non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
+    todo!("0x4f4238 non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
 }
 
 // 0x4f4240 - __ZThn92_N3RBX16FlagStandServiceD0Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStandService::~FlagStandService()")]
 pub fn stub_4f4240() -> ! {
-    todo!("0x4f4240 `non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
+    todo!("0x4f4240 non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
 }
 
 // 0x4f4248 - __ZN3RBX16FlagStandServiceD2Ev
@@ -200,19 +200,19 @@ pub fn stub_4f4248() -> ! {
 // 0x4f439c - __ZThn32_N3RBX16FlagStandServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStandService::~FlagStandService()")]
 pub fn stub_4f439c() -> ! {
-    todo!("0x4f439c `non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
+    todo!("0x4f439c non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
 }
 
 // 0x4f43a4 - __ZThn36_N3RBX16FlagStandServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStandService::~FlagStandService()")]
 pub fn stub_4f43a4() -> ! {
-    todo!("0x4f43a4 `non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
+    todo!("0x4f43a4 non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
 }
 
 // 0x4f43ac - __ZThn92_N3RBX16FlagStandServiceD1Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStandService::~FlagStandService()")]
 pub fn stub_4f43ac() -> ! {
-    todo!("0x4f43ac `non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
+    todo!("0x4f43ac non-virtual thunk toRBX::FlagStandService::~FlagStandService()")
 }
 
 // 0x4f43b4 - __ZN3RBX16FlagStandService9onSteppedERKNS_7SteppedE
@@ -224,7 +224,7 @@ pub fn stub_4f43b4() -> ! {
 // 0x4f43d0 - __ZThn92_N3RBX16FlagStandService9onSteppedERKNS_7SteppedE
 #[doc(alias = "non-virtual thunk toRBX::FlagStandService::onStepped(RBX::Stepped const&)")]
 pub fn stub_4f43d0() -> ! {
-    todo!("0x4f43d0 `non-virtual thunk toRBX::FlagStandService::onStepped(RBX::Stepped const&)")
+    todo!("0x4f43d0 non-virtual thunk toRBX::FlagStandService::onStepped(RBX::Stepped const&)")
 }
 
 // 0x4f43ec - __ZN3RBX16FlagStandService27findRandomEmptyStandForFlagEPNS_4FlagE
@@ -332,13 +332,13 @@ pub fn stub_4f4c6c() -> ! {
 // 0x4f4c7c - __ZThn32_N3RBX9FlagStandD1Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStand::~FlagStand()")]
 pub fn stub_4f4c7c() -> ! {
-    todo!("0x4f4c7c `non-virtual thunk toRBX::FlagStand::~FlagStand()")
+    todo!("0x4f4c7c non-virtual thunk toRBX::FlagStand::~FlagStand()")
 }
 
 // 0x4f4c8c - __ZThn32_N3RBX9FlagStandD0Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStand::~FlagStand()")]
 pub fn stub_4f4c8c() -> ! {
-    todo!("0x4f4c8c `non-virtual thunk toRBX::FlagStand::~FlagStand()")
+    todo!("0x4f4c8c non-virtual thunk toRBX::FlagStand::~FlagStand()")
 }
 
 // 0x4f4d38 - __ZThn32_NK3RBX14FactoryProductINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEE12getClassNameEv
@@ -350,25 +350,25 @@ pub fn stub_4f4d38() -> ! {
 // 0x4f4d48 - __ZThn36_N3RBX9FlagStandD1Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStand::~FlagStand()")]
 pub fn stub_4f4d48() -> ! {
-    todo!("0x4f4d48 `non-virtual thunk toRBX::FlagStand::~FlagStand()")
+    todo!("0x4f4d48 non-virtual thunk toRBX::FlagStand::~FlagStand()")
 }
 
 // 0x4f4d58 - __ZThn36_N3RBX9FlagStandD0Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStand::~FlagStand()")]
 pub fn stub_4f4d58() -> ! {
-    todo!("0x4f4d58 `non-virtual thunk toRBX::FlagStand::~FlagStand()")
+    todo!("0x4f4d58 non-virtual thunk toRBX::FlagStand::~FlagStand()")
 }
 
 // 0x4f4e04 - __ZThn132_N3RBX9FlagStandD1Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStand::~FlagStand()")]
 pub fn stub_4f4e04() -> ! {
-    todo!("0x4f4e04 `non-virtual thunk toRBX::FlagStand::~FlagStand()")
+    todo!("0x4f4e04 non-virtual thunk toRBX::FlagStand::~FlagStand()")
 }
 
 // 0x4f4e14 - __ZThn132_N3RBX9FlagStandD0Ev
 #[doc(alias = "non-virtual thunk toRBX::FlagStand::~FlagStand()")]
 pub fn stub_4f4e14() -> ! {
-    todo!("0x4f4e14 `non-virtual thunk toRBX::FlagStand::~FlagStand()")
+    todo!("0x4f4e14 non-virtual thunk toRBX::FlagStand::~FlagStand()")
 }
 
 // 0x4f4ec0 - __ZN3RBX18DescribedCreatableINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev

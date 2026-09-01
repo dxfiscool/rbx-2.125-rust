@@ -152,7 +152,7 @@ pub fn stub_47f908() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 // was: __ZThn32_N3RBX13DebugSettingsD1Ev
 pub fn stub_47f91c() -> ! {
-    todo!("0x47f91c `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+    todo!("0x47f91c non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
 }
 
 // 0x47f960 — __ZThn32_N3RBX13DebugSettingsD0Ev
@@ -160,7 +160,7 @@ pub fn stub_47f91c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 // was: __ZThn32_N3RBX13DebugSettingsD0Ev
 pub fn stub_47f960() -> ! {
-    todo!("0x47f960 `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+    todo!("0x47f960 non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
 }
 
 // 0x47fa48 — __ZThn32_NK3RBX14FactoryProductINS_13DebugSettingsENS_22GlobalAdvancedSettings4ItemELZNS_14sDebugSettingsEENS_8InstanceEE12getClassNameEv
@@ -175,7 +175,7 @@ pub fn stub_47fa48() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 // was: __ZThn36_N3RBX13DebugSettingsD1Ev
 pub fn stub_47fa58() -> ! {
-    todo!("0x47fa58 `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+    todo!("0x47fa58 non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
 }
 
 // 0x47fa9c — __ZThn36_N3RBX13DebugSettingsD0Ev
@@ -183,7 +183,7 @@ pub fn stub_47fa58() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::DebugSettings::~DebugSettings()")]
 // was: __ZThn36_N3RBX13DebugSettingsD0Ev
 pub fn stub_47fa9c() -> ! {
-    todo!("0x47fa9c `non-virtual thunk to'RBX::DebugSettings::~DebugSettings()")
+    todo!("0x47fa9c non-virtual thunk toRBX::DebugSettings::~DebugSettings()")
 }
 
 // 0x47fb88 — __ZN3RBX21TaskSchedulerSettingsD1Ev
@@ -214,7 +214,7 @@ pub fn stub_47fca8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 // was: __ZThn32_N3RBX21TaskSchedulerSettingsD1Ev
 pub fn stub_47fcb8() -> ! {
-    todo!("0x47fcb8 `non-virtual thunk to'RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+    todo!("0x47fcb8 non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
 }
 
 // 0x47fcfc — __ZThn32_N3RBX21TaskSchedulerSettingsD0Ev
@@ -222,7 +222,7 @@ pub fn stub_47fcb8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 // was: __ZThn32_N3RBX21TaskSchedulerSettingsD0Ev
 pub fn stub_47fcfc() -> ! {
-    todo!("0x47fcfc `non-virtual thunk to'RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+    todo!("0x47fcfc non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
 }
 
 // 0x47fddc — __ZThn32_NK3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE12getClassNameEv
@@ -237,7 +237,7 @@ pub fn stub_47fddc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 // was: __ZThn36_N3RBX21TaskSchedulerSettingsD1Ev
 pub fn stub_47fdec() -> ! {
-    todo!("0x47fdec `non-virtual thunk to'RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+    todo!("0x47fdec non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
 }
 
 // 0x47fe30 — __ZThn36_N3RBX21TaskSchedulerSettingsD0Ev
@@ -245,7 +245,7 @@ pub fn stub_47fdec() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")]
 // was: __ZThn36_N3RBX21TaskSchedulerSettingsD0Ev
 pub fn stub_47fe30() -> ! {
-    todo!("0x47fe30 `non-virtual thunk to'RBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
+    todo!("0x47fe30 non-virtual thunk toRBX::TaskSchedulerSettings::~TaskSchedulerSettings()")
 }
 
 // 0x47ff10 — __ZN3RBX14FactoryProductINS_21TaskSchedulerSettingsENS_22GlobalAdvancedSettings4ItemELZNS_22sTaskSchedulerSettingsEENS_8InstanceEE17static_getCreatorEv

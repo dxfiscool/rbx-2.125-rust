@@ -2815,7 +2815,7 @@ pub fn stub_3a9a90() -> ! {
 #[doc(alias = "RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>>>,0,void ()(void)>::call(void)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>>>,0,void ()(void)>::call(void)  // boost::shared_ptr -> rbx_core::SharedPtr
 pub fn stub_3a9a98() -> ! {
-    todo!("0x3a9a98 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>>>,0,void ()(void)>::call(void)")
+    todo!("0x3a9a98 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x3a9aa0 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv
@@ -2878,7 +2878,7 @@ pub fn stub_3a9d78() -> ! {
 #[doc(alias = "RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>>>,0,void ()(void)>::call(void)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>>>,0,void ()(void)>::call(void)  // boost::shared_ptr -> rbx_core::SharedPtr
 pub fn stub_3a9d80() -> ! {
-    todo!("0x3a9d80 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>>>,0,void ()(void)>::call(void)")
+    todo!("0x3a9d80 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>>>,0,void ()(void)>::call(void)")
 }
 
 // 0x3a9d88 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX19EventReplicatorBaseINS4_10ArcHandlesEFvN3G3D7Vector34AxisEEEEEENS0_5list1INS0_5valueIPSB_EEEEEclEv
@@ -3018,7 +3018,7 @@ pub fn stub_3aac24() -> ! {
 #[doc(alias = "RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>,G3D::Vector3::Axis,float,float>,boost::_bi::list4<boost::_bi::value<RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>,G3D::Vector3::Axis,float,float>,boost::_bi::list4<boost::_bi::value<RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)  // boost::shared_ptr -> rbx_core::SharedPtr
 pub fn stub_3aac50() -> ! {
-    todo!("0x3aac50 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>,G3D::Vector3::Axis,float,float>,boost::_bi::list4<boost::_bi::value<RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")
+    todo!("0x3aac50 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>,G3D::Vector3::Axis,float,float>,boost::_bi::list4<boost::_bi::value<RBX::EventReplicatorImpl<3,RBX::ArcHandles,void ()(G3D::Vector3::Axis,float,float)>*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")
 }
 
 // 0x3aac7c — __ZN5boost3_bi5list4INS0_5valueIPN3RBX19EventReplicatorImplILi3ENS3_10ArcHandlesEFvN3G3D7Vector34AxisEffEEEEENS_3argILi1EEENSD_ILi2EEENSD_ILi3EEEEclINS_4_mfi3mf3IvSA_S8_ffEENS0_5list3IRS8_RfSO_EEEEvNS0_4typeIvEERT_RT0_i
@@ -3172,7 +3172,7 @@ pub fn stub_3ab820() -> ! {
 #[doc(alias = "RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>,G3D::Vector3::Axis>,boost::_bi::list2<boost::_bi::value<RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>,boost::arg<1>>>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>,G3D::Vector3::Axis>,boost::_bi::list2<boost::_bi::value<RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>,boost::arg<1>>>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)  // boost::shared_ptr -> rbx_core::SharedPtr
 pub fn stub_3ab834() -> ! {
-    todo!("0x3ab834 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>,G3D::Vector3::Axis>,boost::_bi::list2<boost::_bi::value<RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>,boost::arg<1>>>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")
+    todo!("0x3ab834 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>,G3D::Vector3::Axis>,boost::_bi::list2<boost::_bi::value<RBX::EventReplicatorImpl<1,RBX::ArcHandles,void ()(G3D::Vector3::Axis)>*>,boost::arg<1>>>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")
 }
 
 // 0x3ab848 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX19EventReplicatorImplILi1ENS4_10ArcHandlesEFvN3G3D7Vector34AxisEEEES9_EENS0_5list2INS0_5valueIPSB_EENS_3argILi1EEEEEEclIS9_EEvRT_
@@ -3417,7 +3417,7 @@ pub fn stub_3adf40() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)  // boost::shared_ptr -> rbx_core::SharedPtr
 pub fn stub_3adf48() -> ! {
-    todo!("0x3adf48 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")
+    todo!("0x3adf48 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")
 }
 
 // 0x3adf50 — __ZNK5boost9function3IvN3G3D7Vector34AxisEffEclES3_ff
@@ -3648,7 +3648,7 @@ pub fn stub_3af664() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)
 pub fn stub_3af66c() -> ! {
-    todo!("0x3af66c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")
+    todo!("0x3af66c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")
 }
 
 // 0x3af674 — __ZNK5boost9function1IvN3G3D7Vector34AxisEEclES3_
@@ -3774,7 +3774,7 @@ pub fn stub_3c12b8() -> ! {
 #[doc(alias = "RBX::BillboardGui::isVisible(G3D::Rect2D const&)const")]
 // was: `non-virtual thunk to'RBX::BillboardGui::isVisible(G3D::Rect2D const&)const
 pub fn stub_3c1424() -> ! {
-    todo!("0x3c1424 `non-virtual thunk to'RBX::BillboardGui::isVisible(G3D::Rect2D const&)const")
+    todo!("0x3c1424 non-virtual thunk toRBX::BillboardGui::isVisible(G3D::Rect2D const&)const")
 }
 
 // 0x3c2224 — __ZN3RBX10Reflection14PropDescriptorINS_12BillboardGuiEN3G3D7Vector2EEC2IMS2_KFRKS4_vEMS2_FvS8_EEEPKcSE_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -5496,7 +5496,7 @@ pub fn stub_57cb3c() -> ! {
 #[doc(alias = "RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")]
 // was: `non-virtual thunk to'RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)
 pub fn stub_57cb88() -> ! {
-    todo!("0x57cb88 `non-virtual thunk to'RBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
+    todo!("0x57cb88 non-virtual thunk toRBX::GuiImageButton::setImageRectOffset(G3D::Vector2)")
 }
 
 // 0x57cb90 — __ZN3RBX14GuiImageButton16setImageRectSizeEN3G3D7Vector2E
@@ -5510,7 +5510,7 @@ pub fn stub_57cb90() -> ! {
 #[doc(alias = "RBX::GuiImageButton::setImageRectSize(G3D::Vector2)")]
 // was: `non-virtual thunk to'RBX::GuiImageButton::setImageRectSize(G3D::Vector2)
 pub fn stub_57cbdc() -> ! {
-    todo!("0x57cbdc `non-virtual thunk to'RBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
+    todo!("0x57cbdc non-virtual thunk toRBX::GuiImageButton::setImageRectSize(G3D::Vector2)")
 }
 
 // 0x57e610 — __ZN3RBX10ImageLabel18setImageRectOffsetEN3G3D7Vector2E
@@ -5524,7 +5524,7 @@ pub fn stub_57e610() -> ! {
 #[doc(alias = "RBX::ImageLabel::setImageRectOffset(G3D::Vector2)")]
 // was: `non-virtual thunk to'RBX::ImageLabel::setImageRectOffset(G3D::Vector2)
 pub fn stub_57e65c() -> ! {
-    todo!("0x57e65c `non-virtual thunk to'RBX::ImageLabel::setImageRectOffset(G3D::Vector2)")
+    todo!("0x57e65c non-virtual thunk toRBX::ImageLabel::setImageRectOffset(G3D::Vector2)")
 }
 
 // 0x57e664 — __ZN3RBX10ImageLabel16setImageRectSizeEN3G3D7Vector2E
@@ -5538,7 +5538,7 @@ pub fn stub_57e664() -> ! {
 #[doc(alias = "RBX::ImageLabel::setImageRectSize(G3D::Vector2)")]
 // was: `non-virtual thunk to'RBX::ImageLabel::setImageRectSize(G3D::Vector2)
 pub fn stub_57e6b0() -> ! {
-    todo!("0x57e6b0 `non-virtual thunk to'RBX::ImageLabel::setImageRectSize(G3D::Vector2)")
+    todo!("0x57e6b0 non-virtual thunk toRBX::ImageLabel::setImageRectSize(G3D::Vector2)")
 }
 
 // 0x59f290 — __ZN3RBX13JointInstance5setC0ERKN3G3D15CoordinateFrameE
@@ -7447,7 +7447,7 @@ pub fn stub_6291c4() -> ! {
 #[doc(alias = "RBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
 // was: `non-virtual thunk to'RBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)
 pub fn stub_629334() -> ! {
-    todo!("0x629334 `non-virtual thunk to'RBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
+    todo!("0x629334 non-virtual thunk toRBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
 }
 
 // 0x629340 — __ZN3RBX18SkateboardPlatform20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
@@ -7461,7 +7461,7 @@ pub fn stub_629340() -> ! {
 #[doc(alias = "RBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
 // was: `non-virtual thunk to'RBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)
 pub fn stub_6295a4() -> ! {
-    todo!("0x6295a4 `non-virtual thunk to'RBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
+    todo!("0x6295a4 non-virtual thunk toRBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
 }
 
 // 0x6295bc — __ZN3RBX18SkateboardPlatform20applySpecificImpulseEN3G3D7Vector3ES2_
@@ -7741,7 +7741,7 @@ pub fn stub_668d2c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")]
 // was: `non-virtual thunk to'RBX::GuiBase2d::isVisible(G3D::Rect2D const&)const
 pub fn stub_668efc() -> ! {
-    todo!("0x668efc `non-virtual thunk to'RBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")
+    todo!("0x668efc non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")
 }
 
 // 0x66c418 — __ZN3RBX10Reflection14PropDescriptorINS_7TextBoxEN3G3D7Vector2EEC2IMS2_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
@@ -9232,7 +9232,7 @@ pub fn stub_6b1f80() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)
 pub fn stub_6b1fa0() -> ! {
-    todo!("0x6b1fa0 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")
+    todo!("0x6b1fa0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Color3)>::slot,boost::function<void ()(G3D::Color3)>,1,void ()(G3D::Color3)>::call(G3D::Color3)")
 }
 
 // 0x6b1fc0 — __ZNK5boost9function1IvN3G3D6Color3EEclES2_
@@ -9561,7 +9561,7 @@ pub fn stub_6b4260() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)
 pub fn stub_6b428c() -> ! {
-    todo!("0x6b428c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")
+    todo!("0x6b428c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot,boost::function<void ()(G3D::CoordinateFrame)>,1,void ()(G3D::CoordinateFrame)>::call(G3D::CoordinateFrame)")
 }
 
 // 0x6b42b8 — __ZNK5boost9function1IvN3G3D15CoordinateFrameEEclES2_
@@ -9869,7 +9869,7 @@ pub fn stub_6b8bd4() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)
 pub fn stub_6b8bdc() -> ! {
-    todo!("0x6b8bdc `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")
+    todo!("0x6b8bdc non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::function<void ()(G3D::Vector3)>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")
 }
 
 // 0x6b8be4 — __ZNK5boost9function1IvN3G3D7Vector3EEclES2_
@@ -9974,7 +9974,7 @@ pub fn stub_6be0cc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
 // was: `non-virtual thunk to'RBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)
 pub fn stub_6be23c() -> ! {
-    todo!("0x6be23c `non-virtual thunk to'RBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
+    todo!("0x6be23c non-virtual thunk toRBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")
 }
 
 // 0x6be248 — __ZN3RBX11VehicleSeat20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
@@ -9988,7 +9988,7 @@ pub fn stub_6be248() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
 // was: `non-virtual thunk to'RBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)
 pub fn stub_6be4ac() -> ! {
-    todo!("0x6be4ac `non-virtual thunk to'RBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
+    todo!("0x6be4ac non-virtual thunk toRBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")
 }
 
 // 0x6be770 — __ZN3G3D5ArrayIPN3RBX11RotateJointELi10ELm32EE6appendERKS3_
@@ -13630,7 +13630,7 @@ pub fn stub_7bd338() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)")]
 // was: `non-virtual thunk to'RBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)
 pub fn stub_7bd574() -> ! {
-    todo!("0x7bd574 `non-virtual thunk to'RBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)")
+    todo!("0x7bd574 non-virtual thunk toRBX::Humanoid::setFirstPersonRotationalVelocity(G3D::Vector3 const&,bool)")
 }
 
 // 0x7bdbd0 — __ZN3RBX10Reflection14PropDescriptorINS_8HumanoidEN3G3D7Vector3EED1Ev
@@ -15392,7 +15392,7 @@ pub fn stub_8c4220() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector2)>::slot,boost::function<void ()(G3D::Vector2)>,1,void ()(G3D::Vector2)>::call(G3D::Vector2)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector2)>::slot,boost::function<void ()(G3D::Vector2)>,1,void ()(G3D::Vector2)>::call(G3D::Vector2)  // boost::function/bind -> Box<dyn Fn>
 pub fn stub_8c423c() -> ! {
-    todo!("0x8c423c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector2)>::slot,boost::function<void ()(G3D::Vector2)>,1,void ()(G3D::Vector2)>::call(G3D::Vector2)")
+    todo!("0x8c423c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector2)>::slot,boost::function<void ()(G3D::Vector2)>,1,void ()(G3D::Vector2)>::call(G3D::Vector2)")
 }
 
 // 0x8c4258 — __ZNK5boost9function1IvN3G3D7Vector2EEclES2_
@@ -16232,7 +16232,7 @@ pub fn stub_a29d68() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)
 pub fn stub_a29d90() -> ! {
-    todo!("0xa29d90 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")
+    todo!("0xa29d90 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,int,std::string,G3D::Vector3>,boost::_bi::list4<boost::_bi::value<RBX::Network::Players*>,boost::_bi::value<int>,boost::arg<1>,boost::arg<2>>>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")
 }
 
 // 0xa29db8 — __ZN5boost3_bi5list4INS0_5valueIPN3RBX7Network7PlayersEEENS2_IiEENS_3argILi1EEENS9_ILi2EEEEclINS_4_mfi3mf3IvS5_iSsN3G3D7Vector3EEENS0_5list2IRSsRSH_EEEEvNS0_4typeIvEERT_RT0_i
@@ -16547,7 +16547,7 @@ pub fn stub_ab0c24() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::function<void ()(std::string,G3D::Vector3)>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::function<void ()(std::string,G3D::Vector3)>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)
 pub fn stub_ab0d4c() -> ! {
-    todo!("0xab0d4c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::function<void ()(std::string,G3D::Vector3)>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")
+    todo!("0xab0d4c non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot,boost::function<void ()(std::string,G3D::Vector3)>,2,void ()(std::string,G3D::Vector3)>::call(std::string,G3D::Vector3)")
 }
 
 // 0xab0e74 — __ZNK5boost9function2IvSsN3G3D7Vector3EEclESsS2_
@@ -16926,7 +16926,7 @@ pub fn stub_b61da4() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf2<bool,RBX::Network::Replicator::StreamJob,G3D::Vector3 const&,bool>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>,boost::_bi::value<bool>>>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf2<bool,RBX::Network::Replicator::StreamJob,G3D::Vector3 const&,bool>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>,boost::_bi::value<bool>>>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)
 pub fn stub_b61dd0() -> ! {
-    todo!("0xb61dd0 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf2<bool,RBX::Network::Replicator::StreamJob,G3D::Vector3 const&,bool>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>,boost::_bi::value<bool>>>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")
+    todo!("0xb61dd0 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3)>::slot,boost::_bi::bind_t<bool,boost::_mfi::mf2<bool,RBX::Network::Replicator::StreamJob,G3D::Vector3 const&,bool>,boost::_bi::list3<boost::_bi::value<RBX::Network::Replicator::StreamJob*>,boost::arg<1>,boost::_bi::value<bool>>>,1,void ()(G3D::Vector3)>::call(G3D::Vector3)")
 }
 
 // 0xb61e00 — __ZN3rbx7signals6signalIFvN3G3D7Vector3EEE4slot22safe_static_init_mutexEv
@@ -17024,7 +17024,7 @@ pub fn stub_b6b680() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getDarkCapBounds(Ogre::Light const&,float)const")]
 // was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::getDarkCapBounds(Ogre::Light const&,float)const
 pub fn stub_b6b718() -> ! {
-    todo!("0xb6b718 `non-virtual thunk to'RBX::FastClusterShadowRenderable::getDarkCapBounds(Ogre::Light const&,float)const")
+    todo!("0xb6b718 non-virtual thunk toRBX::FastClusterShadowRenderable::getDarkCapBounds(Ogre::Light const&,float)const")
 }
 
 // 0xb6b7b0 — __ZN3RBX27FastClusterShadowRenderable33getShadowVolumeRenderableIteratorEN4Ogre15ShadowTechniqueEPKNS1_5LightEPNS1_28HardwareIndexBufferSharedPtrEbfm
@@ -17038,7 +17038,7 @@ pub fn stub_b6b7b0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")]
 // was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)
 pub fn stub_b6b824() -> ! {
-    todo!("0xb6b824 `non-virtual thunk to'RBX::FastClusterShadowRenderable::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")
+    todo!("0xb6b824 non-virtual thunk toRBX::FastClusterShadowRenderable::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")
 }
 
 // 0xb6b898 — __ZNK3RBX27FastClusterShadowRenderable25getPointExtrusionDistanceEPKN4Ogre5LightE
@@ -17052,7 +17052,7 @@ pub fn stub_b6b898() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::FastClusterShadowRenderable::getPointExtrusionDistance(Ogre::Light const*)const")]
 // was: `non-virtual thunk to'RBX::FastClusterShadowRenderable::getPointExtrusionDistance(Ogre::Light const*)const
 pub fn stub_b6b89c() -> ! {
-    todo!("0xb6b89c `non-virtual thunk to'RBX::FastClusterShadowRenderable::getPointExtrusionDistance(Ogre::Light const*)const")
+    todo!("0xb6b89c non-virtual thunk toRBX::FastClusterShadowRenderable::getPointExtrusionDistance(Ogre::Light const*)const")
 }
 
 // 0xb6b8a0 — __ZN3RBX27FastClusterShadowRenderable17rebindIndexBufferERKN4Ogre28HardwareIndexBufferSharedPtrE
@@ -17325,7 +17325,7 @@ pub fn stub_b87738() -> ! {
 #[doc(alias = "anonymous namespace::createHumanoidTextureComposit(Ogre::VisualEngine *,RBX::HumanoidIdentifier const&,anonymous namespace::AccoutrementMesh const(&)[4],RBX::CharacterMesh *)")]
 // was: `anonymous namespace'::createHumanoidTextureComposit(Ogre::VisualEngine *,RBX::HumanoidIdentifier const&,`anonymous namespace'::AccoutrementMesh const(&)[4],RBX::CharacterMesh *)
 pub fn stub_b8ab5c() -> ! {
-    todo!("0xb8ab5c `anonymous namespace'::createHumanoidTextureComposit(Ogre::VisualEngine *,RBX::HumanoidIdentifier const&,`anonymous namespace'::AccoutrementMesh const(&)[4],RBX::CharacterMesh *)")
+    todo!("0xb8ab5c anonymous namespace::createHumanoidTextureComposit(Ogre::VisualEngine *,RBX::HumanoidIdentifier const&,anonymous namespace::AccoutrementMesh const(&)[4],RBX::CharacterMesh *)")
 }
 
 // 0xb8caa0 — __ZNSt4pairIN4Ogre10TexturePtrEN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEED1Ev
@@ -18226,7 +18226,7 @@ pub fn stub_ba8750() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxCullableSceneNode::getFastFuzzyExtents(void)")]
 // was: `non-virtual thunk to'Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)
 pub fn stub_ba876c() -> ! {
-    todo!("0xba876c `non-virtual thunk to'Ogre::RbxCullableSceneNode::getFastFuzzyExtents(void)")
+    todo!("0xba876c non-virtual thunk toOgre::RbxCullableSceneNode::getFastFuzzyExtents(void)")
 }
 
 // 0xba8e18 — __ZN4Ogre9RbxEntityC1Ev
@@ -18303,14 +18303,14 @@ pub fn stub_ba936c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 // was: `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()
 pub fn stub_ba9370() -> ! {
-    todo!("0xba9370 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+    todo!("0xba9370 non-virtual thunk toOgre::RbxEntity::~RbxEntity()")
 }
 
 // 0xba9428 — __ZThn188_N4Ogre9RbxEntityD0Ev
 #[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 // was: `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()
 pub fn stub_ba9428() -> ! {
-    todo!("0xba9428 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+    todo!("0xba9428 non-virtual thunk toOgre::RbxEntity::~RbxEntity()")
 }
 
 // 0xba94e0 — __ZN4Ogre9RbxEntityD2Ev
@@ -18324,14 +18324,14 @@ pub fn stub_ba94e0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 // was: `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()
 pub fn stub_ba9694() -> ! {
-    todo!("0xba9694 `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+    todo!("0xba9694 non-virtual thunk toOgre::RbxEntity::~RbxEntity()")
 }
 
 // 0xba969c — __ZThn188_N4Ogre9RbxEntityD1Ev
 #[doc(alias = "non-virtual thunk toOgre::RbxEntity::~RbxEntity()")]
 // was: `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()
 pub fn stub_ba969c() -> ! {
-    todo!("0xba969c `non-virtual thunk to'Ogre::RbxEntity::~RbxEntity()")
+    todo!("0xba969c non-virtual thunk toOgre::RbxEntity::~RbxEntity()")
 }
 
 // 0xba96a4 — __ZNSt6vectorIN4Ogre9BlockSortESaIS1_EE7reserveEm
@@ -19164,7 +19164,7 @@ pub fn stub_bc5864() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
 // was: `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()
 pub fn stub_bc5868() -> ! {
-    todo!("0xbc5868 `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()")
+    todo!("0xbc5868 non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")
 }
 
 // 0xbc5924 — __ZN4Ogre15RbxSceneManagerD2Ev
@@ -19178,7 +19178,7 @@ pub fn stub_bc5924() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")]
 // was: `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()
 pub fn stub_bc5fbc() -> ! {
-    todo!("0xbc5fbc `non-virtual thunk to'Ogre::RbxSceneManager::~RbxSceneManager()")
+    todo!("0xbc5fbc non-virtual thunk toOgre::RbxSceneManager::~RbxSceneManager()")
 }
 
 // 0xbc5fc8 — __ZN4Ogre15RbxSceneManager15initSpatialHashEv
@@ -19381,7 +19381,7 @@ pub fn stub_bca050() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
 // was: `non-virtual thunk to'Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)
 pub fn stub_bca17c() -> ! {
-    todo!("0xbca17c `non-virtual thunk to'Ogre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
+    todo!("0xbca17c non-virtual thunk toOgre::RbxSceneManager::preRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
 }
 
 // 0xbca188 — __ZN4Ogre15RbxSceneManager22postRenderTargetUpdateERKNS_17RenderTargetEventE
@@ -19395,7 +19395,7 @@ pub fn stub_bca188() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")]
 // was: `non-virtual thunk to'Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)
 pub fn stub_bca240() -> ! {
-    todo!("0xbca240 `non-virtual thunk to'Ogre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
+    todo!("0xbca240 non-virtual thunk toOgre::RbxSceneManager::postRenderTargetUpdate(Ogre::RenderTargetEvent const&)")
 }
 
 // 0xbca2f4 — __ZN4Ogre15RbxSceneManager15setShadowColourERKNS_11ColourValueE
@@ -19507,7 +19507,7 @@ pub fn stub_bcaccc() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
 pub fn stub_bcace4() -> ! {
-    todo!("0xbcace4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
+    todo!("0xbcace4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,Ogre::RbxSceneManager>,boost::_bi::list1<boost::_bi::value<Ogre::RbxSceneManager*>>>,2,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0xbcacfc — __ZN4Ogre9SharedPtrINS_6RbxSkyEED0Ev
@@ -19892,7 +19892,7 @@ pub fn stub_bd5064() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getWorldBoundingBox(bool)const")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getWorldBoundingBox(bool)const
 pub fn stub_bd5188() -> ! {
-    todo!("0xbd5188 `non-virtual thunk to'Ogre::RbxSubEntity::getWorldBoundingBox(bool)const")
+    todo!("0xbd5188 non-virtual thunk toOgre::RbxSubEntity::getWorldBoundingBox(bool)const")
 }
 
 // 0xbd51a4 — __ZNK4Ogre12RbxSubEntity17getLightCapBoundsEv
@@ -19906,7 +19906,7 @@ pub fn stub_bd51a4() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getLightCapBounds(void)const")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getLightCapBounds(void)const
 pub fn stub_bd51b0() -> ! {
-    todo!("0xbd51b0 `non-virtual thunk to'Ogre::RbxSubEntity::getLightCapBounds(void)const")
+    todo!("0xbd51b0 non-virtual thunk toOgre::RbxSubEntity::getLightCapBounds(void)const")
 }
 
 // 0xbd51c8 — __ZNK4Ogre12RbxSubEntity16getDarkCapBoundsERKNS_5LightEf
@@ -19920,7 +19920,7 @@ pub fn stub_bd51c8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getDarkCapBounds(Ogre::Light const&,float)const")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getDarkCapBounds(Ogre::Light const&,float)const
 pub fn stub_bd5300() -> ! {
-    todo!("0xbd5300 `non-virtual thunk to'Ogre::RbxSubEntity::getDarkCapBounds(Ogre::Light const&,float)const")
+    todo!("0xbd5300 non-virtual thunk toOgre::RbxSubEntity::getDarkCapBounds(Ogre::Light const&,float)const")
 }
 
 // 0xbd5318 — __ZNK4Ogre12RbxSubEntity25getPointExtrusionDistanceEPKNS_5LightE
@@ -19934,7 +19934,7 @@ pub fn stub_bd5318() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getPointExtrusionDistance(Ogre::Light const*)const")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getPointExtrusionDistance(Ogre::Light const*)const
 pub fn stub_bd534c() -> ! {
-    todo!("0xbd534c `non-virtual thunk to'Ogre::RbxSubEntity::getPointExtrusionDistance(Ogre::Light const*)const")
+    todo!("0xbd534c non-virtual thunk toOgre::RbxSubEntity::getPointExtrusionDistance(Ogre::Light const*)const")
 }
 
 // 0xbd537c — __ZN4Ogre12RbxSubEntity11getEdgeListEv
@@ -19948,7 +19948,7 @@ pub fn stub_bd537c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getEdgeList(void)")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getEdgeList(void)
 pub fn stub_bd549c() -> ! {
-    todo!("0xbd549c `non-virtual thunk to'Ogre::RbxSubEntity::getEdgeList(void)")
+    todo!("0xbd549c non-virtual thunk toOgre::RbxSubEntity::getEdgeList(void)")
 }
 
 // 0xbd54a4 — __ZN4Ogre12RbxSubEntity11hasEdgeListEv
@@ -19962,7 +19962,7 @@ pub fn stub_bd54a4() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::hasEdgeList(void)")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::hasEdgeList(void)
 pub fn stub_bd55c4() -> ! {
-    todo!("0xbd55c4 `non-virtual thunk to'Ogre::RbxSubEntity::hasEdgeList(void)")
+    todo!("0xbd55c4 non-virtual thunk toOgre::RbxSubEntity::hasEdgeList(void)")
 }
 
 // 0xbd55cc — __ZN4Ogre12RbxSubEntity33getShadowVolumeRenderableIteratorENS_15ShadowTechniqueEPKNS_5LightEPNS_28HardwareIndexBufferSharedPtrEbfm
@@ -19976,7 +19976,7 @@ pub fn stub_bd55cc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)
 pub fn stub_bd59e8() -> ! {
-    todo!("0xbd59e8 `non-virtual thunk to'Ogre::RbxSubEntity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")
+    todo!("0xbd59e8 non-virtual thunk toOgre::RbxSubEntity::getShadowVolumeRenderableIterator(Ogre::ShadowTechnique,Ogre::Light const*,Ogre::HardwareIndexBufferSharedPtr *,bool,float,unsigned long)")
 }
 
 // 0xbd5a18 — __ZN4Ogre12RbxSubEntityD0Ev
@@ -19997,7 +19997,7 @@ pub fn stub_bd5acc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::~RbxSubEntity()")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::~RbxSubEntity()
 pub fn stub_bd5ad0() -> ! {
-    todo!("0xbd5ad0 `non-virtual thunk to'Ogre::RbxSubEntity::~RbxSubEntity()")
+    todo!("0xbd5ad0 non-virtual thunk toOgre::RbxSubEntity::~RbxSubEntity()")
 }
 
 // 0xbd5b88 — __ZN4Ogre12RbxSubEntityD2Ev
@@ -20011,7 +20011,7 @@ pub fn stub_bd5b88() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::~RbxSubEntity()")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::~RbxSubEntity()
 pub fn stub_bd5cbc() -> ! {
-    todo!("0xbd5cbc `non-virtual thunk to'Ogre::RbxSubEntity::~RbxSubEntity()")
+    todo!("0xbd5cbc non-virtual thunk toOgre::RbxSubEntity::~RbxSubEntity()")
 }
 
 // 0xbd5cc4 — __ZN4Ogre12RbxSubEntity28RbxSubEntityShadowRenderableC2EPNS_6EntityEPNS_28HardwareIndexBufferSharedPtrEPKNS_10VertexDataEbPNS_9SubEntityEb
@@ -20095,7 +20095,7 @@ pub fn stub_bd6788() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::RbxSubEntity::getCastShadows(void)const")]
 // was: `non-virtual thunk to'Ogre::RbxSubEntity::getCastShadows(void)const
 pub fn stub_bd6790() -> ! {
-    todo!("0xbd6790 `non-virtual thunk to'Ogre::RbxSubEntity::getCastShadows(void)const")
+    todo!("0xbd6790 non-virtual thunk toOgre::RbxSubEntity::getCastShadows(void)const")
 }
 
 // 0xbd6e1c — __ZN4Ogre10RbxSubMesh22prepareForShadowVolumeEv
@@ -20207,7 +20207,7 @@ pub fn stub_bdd9d4() -> ! {
 #[doc(alias = "anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")]
 // was: `anonymous namespace'::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)
 pub fn stub_bde2d4() -> ! {
-    todo!("0xbde2d4 `anonymous namespace'::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")
+    todo!("0xbde2d4 anonymous namespace::replaceMaterialTextures(unsigned long long const&,Ogre::TexturePtr)")
 }
 
 // 0xbdee88 — __ZN3RBX17TextureCompositor13eventOccurredERKSsPKSt3mapISsSsSt4lessISsEN4Ogre12STLAllocatorISt4pairIS1_SsENS6_22CategorisedAllocPolicyILNS6_14MemoryCategoryE0EEEEEE
@@ -20340,7 +20340,7 @@ pub fn stub_bef0f8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")]
 // was: `non-virtual thunk to'RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)
 pub fn stub_bef138() -> ! {
-    todo!("0xbef138 `non-virtual thunk to'RBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
+    todo!("0xbef138 non-virtual thunk toRBX::ViewRbxGfx::eventOccurred(std::string const&,std::map<std::string,std::string,std::less<std::string>,Ogre::STLAllocator<std::pair<std::string const,std::string>,Ogre::CategorisedAllocPolicy<(Ogre::MemoryCategory)0>>> const*)")
 }
 
 // 0xbef328 — __ZN4Ogre9SharedPtrINS_8ResourceEED1Ev
@@ -25736,14 +25736,14 @@ pub fn stub_c5a2ac() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 // was: `non-virtual thunk to'Ogre::BillboardChain::~BillboardChain()
 pub fn stub_c5a2b8() -> ! {
-    todo!("0xc5a2b8 `non-virtual thunk to'Ogre::BillboardChain::~BillboardChain()")
+    todo!("0xc5a2b8 non-virtual thunk toOgre::BillboardChain::~BillboardChain()")
 }
 
 // 0xc5a34c — __ZThn188_N4Ogre14BillboardChainD0Ev
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 // was: `non-virtual thunk to'Ogre::BillboardChain::~BillboardChain()
 pub fn stub_c5a34c() -> ! {
-    todo!("0xc5a34c `non-virtual thunk to'Ogre::BillboardChain::~BillboardChain()")
+    todo!("0xc5a34c non-virtual thunk toOgre::BillboardChain::~BillboardChain()")
 }
 
 // 0xc5a3e0 — __ZN4Ogre14BillboardChainD2Ev
@@ -25757,14 +25757,14 @@ pub fn stub_c5a3e0() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 // was: `non-virtual thunk to'Ogre::BillboardChain::~BillboardChain()
 pub fn stub_c5a600() -> ! {
-    todo!("0xc5a600 `non-virtual thunk to'Ogre::BillboardChain::~BillboardChain()")
+    todo!("0xc5a600 non-virtual thunk toOgre::BillboardChain::~BillboardChain()")
 }
 
 // 0xc5a60c — __ZThn188_N4Ogre14BillboardChainD1Ev
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::~BillboardChain()")]
 // was: `non-virtual thunk to'Ogre::BillboardChain::~BillboardChain()
 pub fn stub_c5a60c() -> ! {
-    todo!("0xc5a60c `non-virtual thunk to'Ogre::BillboardChain::~BillboardChain()")
+    todo!("0xc5a60c non-virtual thunk toOgre::BillboardChain::~BillboardChain()")
 }
 
 // 0xc5a618 — __ZN4Ogre14BillboardChain20setupChainContainersEv
@@ -25925,7 +25925,7 @@ pub fn stub_c5c4e8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getSquaredViewDepth(Ogre::Camera const*)const")]
 // was: `non-virtual thunk to'Ogre::BillboardChain::getSquaredViewDepth(Ogre::Camera const*)const
 pub fn stub_c5c590() -> ! {
-    todo!("0xc5c590 `non-virtual thunk to'Ogre::BillboardChain::getSquaredViewDepth(Ogre::Camera const*)const")
+    todo!("0xc5c590 non-virtual thunk toOgre::BillboardChain::getSquaredViewDepth(Ogre::Camera const*)const")
 }
 
 // 0xc5c638 — __ZNK4Ogre14BillboardChain17getBoundingRadiusEv
@@ -25953,7 +25953,7 @@ pub fn stub_c5c658() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getMaterial(void)const")]
 // was: `non-virtual thunk to'Ogre::BillboardChain::getMaterial(void)const
 pub fn stub_c5c660() -> ! {
-    todo!("0xc5c660 `non-virtual thunk to'Ogre::BillboardChain::getMaterial(void)const")
+    todo!("0xc5c660 non-virtual thunk toOgre::BillboardChain::getMaterial(void)const")
 }
 
 // 0xc5c664 — __ZN4Ogre14BillboardChain15setMaterialNameERKSsS2_
@@ -25988,7 +25988,7 @@ pub fn stub_c5d138() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getRenderOperation(Ogre::RenderOperation &)")]
 // was: `non-virtual thunk to'Ogre::BillboardChain::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_c5d154() -> ! {
-    todo!("0xc5d154 `non-virtual thunk to'Ogre::BillboardChain::getRenderOperation(Ogre::RenderOperation &)")
+    todo!("0xc5d154 non-virtual thunk toOgre::BillboardChain::getRenderOperation(Ogre::RenderOperation &)")
 }
 
 // 0xc5d168 — __ZNK4Ogre14BillboardChain18getWorldTransformsEPNS_7Matrix4E
@@ -26002,7 +26002,7 @@ pub fn stub_c5d168() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getWorldTransforms(Ogre::Matrix4 *)const")]
 // was: `non-virtual thunk to'Ogre::BillboardChain::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_c5d1b0() -> ! {
-    todo!("0xc5d1b0 `non-virtual thunk to'Ogre::BillboardChain::getWorldTransforms(Ogre::Matrix4 *)const")
+    todo!("0xc5d1b0 non-virtual thunk toOgre::BillboardChain::getWorldTransforms(Ogre::Matrix4 *)const")
 }
 
 // 0xc5d1f8 — __ZNK4Ogre14BillboardChain9getLightsEv
@@ -26016,7 +26016,7 @@ pub fn stub_c5d1f8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardChain::getLights(void)const")]
 // was: `non-virtual thunk to'Ogre::BillboardChain::getLights(void)const
 pub fn stub_c5d208() -> ! {
-    todo!("0xc5d208 `non-virtual thunk to'Ogre::BillboardChain::getLights(void)const")
+    todo!("0xc5d208 non-virtual thunk toOgre::BillboardChain::getLights(void)const")
 }
 
 // 0xc5d218 — __ZN4Ogre14BillboardChain16visitRenderablesEPNS_10Renderable7VisitorEb
@@ -26505,14 +26505,14 @@ pub fn stub_c60e50() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
 pub fn stub_c60e5c() -> ! {
-    todo!("0xc60e5c `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()")
+    todo!("0xc60e5c non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
 }
 
 // 0xc60ef0 — __ZThn188_N4Ogre12BillboardSetD0Ev
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
 pub fn stub_c60ef0() -> ! {
-    todo!("0xc60ef0 `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()")
+    todo!("0xc60ef0 non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
 }
 
 // 0xc60f84 — __ZN4Ogre12BillboardSetD2Ev
@@ -26526,14 +26526,14 @@ pub fn stub_c60f84() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
 pub fn stub_c614d8() -> ! {
-    todo!("0xc614d8 `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()")
+    todo!("0xc614d8 non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
 }
 
 // 0xc614e4 — __ZThn188_N4Ogre12BillboardSetD1Ev
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::~BillboardSet()")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()
 pub fn stub_c614e4() -> ! {
-    todo!("0xc614e4 `non-virtual thunk to'Ogre::BillboardSet::~BillboardSet()")
+    todo!("0xc614e4 non-virtual thunk toOgre::BillboardSet::~BillboardSet()")
 }
 
 // 0xc614f0 — __ZN4Ogre12BillboardSet15_destroyBuffersEv
@@ -26757,7 +26757,7 @@ pub fn stub_c63808() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getMaterial(void)const")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::getMaterial(void)const
 pub fn stub_c63810() -> ! {
-    todo!("0xc63810 `non-virtual thunk to'Ogre::BillboardSet::getMaterial(void)const")
+    todo!("0xc63810 non-virtual thunk toOgre::BillboardSet::getMaterial(void)const")
 }
 
 // 0xc63814 — __ZN4Ogre12BillboardSet11setMaterialERKNS_11MaterialPtrE
@@ -26778,7 +26778,7 @@ pub fn stub_c63f28() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_c63f88() -> ! {
-    todo!("0xc63f88 `non-virtual thunk to'Ogre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")
+    todo!("0xc63f88 non-virtual thunk toOgre::BillboardSet::getRenderOperation(Ogre::RenderOperation &)")
 }
 
 // 0xc63fe8 — __ZNK4Ogre12BillboardSet18getWorldTransformsEPNS_7Matrix4E
@@ -26792,7 +26792,7 @@ pub fn stub_c63fe8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_c64044() -> ! {
-    todo!("0xc64044 `non-virtual thunk to'Ogre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")
+    todo!("0xc64044 non-virtual thunk toOgre::BillboardSet::getWorldTransforms(Ogre::Matrix4 *)const")
 }
 
 // 0xc640a0 — __ZN4Ogre12BillboardSet13setAutoextendEb
@@ -26939,7 +26939,7 @@ pub fn stub_c642dc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const
 pub fn stub_c642ec() -> ! {
-    todo!("0xc642ec `non-virtual thunk to'Ogre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")
+    todo!("0xc642ec non-virtual thunk toOgre::BillboardSet::getSquaredViewDepth(Ogre::Camera const*)const")
 }
 
 // 0xc64300 — __ZNK4Ogre12BillboardSet17getBoundingRadiusEv
@@ -26960,7 +26960,7 @@ pub fn stub_c64308() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BillboardSet::getLights(void)const")]
 // was: `non-virtual thunk to'Ogre::BillboardSet::getLights(void)const
 pub fn stub_c64318() -> ! {
-    todo!("0xc64318 `non-virtual thunk to'Ogre::BillboardSet::getLights(void)const")
+    todo!("0xc64318 non-virtual thunk toOgre::BillboardSet::getLights(void)const")
 }
 
 // 0xc64328 — __ZN4Ogre12BillboardSet16visitRenderablesEPNS_10Renderable7VisitorEb
@@ -27295,7 +27295,7 @@ pub fn stub_c662a8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
 // was: `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
 pub fn stub_c662b4() -> ! {
-    todo!("0xc662b4 `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+    todo!("0xc662b4 non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
 }
 
 // 0xc66348 — __ZN4Ogre25BorderPanelOverlayElementD2Ev
@@ -27309,7 +27309,7 @@ pub fn stub_c66348() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")]
 // was: `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()
 pub fn stub_c664ec() -> ! {
-    todo!("0xc664ec `non-virtual thunk to'Ogre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
+    todo!("0xc664ec non-virtual thunk toOgre::BorderPanelOverlayElement::~BorderPanelOverlayElement()")
 }
 
 // 0xc664f8 — __ZN4Ogre25BorderPanelOverlayElement10initialiseEv
@@ -27778,14 +27778,14 @@ pub fn stub_c6c3c8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
 // was: `non-virtual thunk to'Ogre::Camera::~Camera()
 pub fn stub_c6c3d4() -> ! {
-    todo!("0xc6c3d4 `non-virtual thunk to'Ogre::Camera::~Camera()")
+    todo!("0xc6c3d4 non-virtual thunk toOgre::Camera::~Camera()")
 }
 
 // 0xc6c468 — __ZThn188_N4Ogre6CameraD0Ev
 #[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
 // was: `non-virtual thunk to'Ogre::Camera::~Camera()
 pub fn stub_c6c468() -> ! {
-    todo!("0xc6c468 `non-virtual thunk to'Ogre::Camera::~Camera()")
+    todo!("0xc6c468 non-virtual thunk toOgre::Camera::~Camera()")
 }
 
 // 0xc6c4fc — __ZN4Ogre6CameraD2Ev
@@ -27799,14 +27799,14 @@ pub fn stub_c6c4fc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
 // was: `non-virtual thunk to'Ogre::Camera::~Camera()
 pub fn stub_c6c63c() -> ! {
-    todo!("0xc6c63c `non-virtual thunk to'Ogre::Camera::~Camera()")
+    todo!("0xc6c63c non-virtual thunk toOgre::Camera::~Camera()")
 }
 
 // 0xc6c648 — __ZThn188_N4Ogre6CameraD1Ev
 #[doc(alias = "non-virtual thunk toOgre::Camera::~Camera()")]
 // was: `non-virtual thunk to'Ogre::Camera::~Camera()
 pub fn stub_c6c648() -> ! {
-    todo!("0xc6c648 `non-virtual thunk to'Ogre::Camera::~Camera()")
+    todo!("0xc6c648 non-virtual thunk toOgre::Camera::~Camera()")
 }
 
 // 0xc6c654 — __ZNK4Ogre6Camera15getSceneManagerEv
@@ -28009,7 +28009,7 @@ pub fn stub_c6d370() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Camera::getWorldTransforms(Ogre::Matrix4 *)const")]
 // was: `non-virtual thunk to'Ogre::Camera::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_c6d3bc() -> ! {
-    todo!("0xc6d3bc `non-virtual thunk to'Ogre::Camera::getWorldTransforms(Ogre::Matrix4 *)const")
+    todo!("0xc6d3bc non-virtual thunk toOgre::Camera::getWorldTransforms(Ogre::Matrix4 *)const")
 }
 
 // 0xc6d40c — __ZNK4Ogre6Camera14getMovableTypeEv
@@ -28415,7 +28415,7 @@ pub fn stub_c90074() -> ! {
 #[doc(alias = "non-virtual thunk to Ogre::Font::~Font()")]
 // was: `non-virtual thunk to'Ogre::Font::~Font()
 pub fn stub_c90080() -> ! {
-    todo!("0xc90080 `non-virtual thunk to'Ogre::Font::~Font()")
+    todo!("0xc90080 non-virtual thunk toOgre::Font::~Font()")
 }
 
 // 0xc90114 — __ZN4Ogre4FontD2Ev
@@ -28429,7 +28429,7 @@ pub fn stub_c90114() -> ! {
 #[doc(alias = "non-virtual thunk to Ogre::Font::~Font()")]
 // was: `non-virtual thunk to'Ogre::Font::~Font()
 pub fn stub_c90534() -> ! {
-    todo!("0xc90534 `non-virtual thunk to'Ogre::Font::~Font()")
+    todo!("0xc90534 non-virtual thunk toOgre::Font::~Font()")
 }
 
 // 0xc90540 — __ZN4Ogre4Font7setTypeENS_8FontTypeE
@@ -28506,7 +28506,7 @@ pub fn stub_c913ac() -> ! {
 #[doc(alias = "non-virtual thunk to Ogre::Font::loadResource(Ogre::Resource *)")]
 // was: `non-virtual thunk to'Ogre::Font::loadResource(Ogre::Resource *)
 pub fn stub_c92bf8() -> ! {
-    todo!("0xc92bf8 `non-virtual thunk to'Ogre::Font::loadResource(Ogre::Resource *)")
+    todo!("0xc92bf8 non-virtual thunk toOgre::Font::loadResource(Ogre::Resource *)")
 }
 
 // 0xc92c04 — __ZNK4Ogre4Font7CmdType5doGetEPKv
@@ -29227,14 +29227,14 @@ pub fn stub_c99428() -> ! {
 #[doc(alias = "non-virtual thunk to Ogre::Frustum::~Frustum()")]
 // was: `non-virtual thunk to'Ogre::Frustum::~Frustum()
 pub fn stub_c99434() -> ! {
-    todo!("0xc99434 `non-virtual thunk to'Ogre::Frustum::~Frustum()")
+    todo!("0xc99434 non-virtual thunk toOgre::Frustum::~Frustum()")
 }
 
 // 0xc994c8 — __ZThn188_N4Ogre7FrustumD0Ev
 #[doc(alias = "non-virtual thunk to Ogre::Frustum::~Frustum()")]
 // was: `non-virtual thunk to'Ogre::Frustum::~Frustum()
 pub fn stub_c994c8() -> ! {
-    todo!("0xc994c8 `non-virtual thunk to'Ogre::Frustum::~Frustum()")
+    todo!("0xc994c8 non-virtual thunk toOgre::Frustum::~Frustum()")
 }
 
 // 0xc9955c — __ZN4Ogre7FrustumD2Ev
@@ -29248,14 +29248,14 @@ pub fn stub_c9955c() -> ! {
 #[doc(alias = "non-virtual thunk to Ogre::Frustum::~Frustum()")]
 // was: `non-virtual thunk to'Ogre::Frustum::~Frustum()
 pub fn stub_c996e0() -> ! {
-    todo!("0xc996e0 `non-virtual thunk to'Ogre::Frustum::~Frustum()")
+    todo!("0xc996e0 non-virtual thunk toOgre::Frustum::~Frustum()")
 }
 
 // 0xc996ec — __ZThn188_N4Ogre7FrustumD1Ev
 #[doc(alias = "non-virtual thunk to Ogre::Frustum::~Frustum()")]
 // was: `non-virtual thunk to'Ogre::Frustum::~Frustum()
 pub fn stub_c996ec() -> ! {
-    todo!("0xc996ec `non-virtual thunk to'Ogre::Frustum::~Frustum()")
+    todo!("0xc996ec non-virtual thunk toOgre::Frustum::~Frustum()")
 }
 
 // 0xc996f8 — __ZN4Ogre7Frustum7setFOVyERKNS_6RadianE
@@ -29549,7 +29549,7 @@ pub fn stub_c9b4cc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getMaterial(void)const")]
 // was: `non-virtual thunk to'Ogre::Frustum::getMaterial(void)const
 pub fn stub_c9b4d4() -> ! {
-    todo!("0xc9b4d4 `non-virtual thunk to'Ogre::Frustum::getMaterial(void)const")
+    todo!("0xc9b4d4 non-virtual thunk toOgre::Frustum::getMaterial(void)const")
 }
 
 // 0xc9b4dc — __ZN4Ogre7Frustum18getRenderOperationERNS_15RenderOperationE
@@ -29563,7 +29563,7 @@ pub fn stub_c9b4dc() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getRenderOperation(Ogre::RenderOperation &)")]
 // was: `non-virtual thunk to'Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)
 pub fn stub_c9b500() -> ! {
-    todo!("0xc9b500 `non-virtual thunk to'Ogre::Frustum::getRenderOperation(Ogre::RenderOperation &)")
+    todo!("0xc9b500 non-virtual thunk toOgre::Frustum::getRenderOperation(Ogre::RenderOperation &)")
 }
 
 // 0xc9b524 — __ZNK4Ogre7Frustum18getWorldTransformsEPNS_7Matrix4E
@@ -29577,7 +29577,7 @@ pub fn stub_c9b524() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")]
 // was: `non-virtual thunk to'Ogre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const
 pub fn stub_c9b57c() -> ! {
-    todo!("0xc9b57c `non-virtual thunk to'Ogre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")
+    todo!("0xc9b57c non-virtual thunk toOgre::Frustum::getWorldTransforms(Ogre::Matrix4 *)const")
 }
 
 // 0xc9b5d8 — __ZNK4Ogre7Frustum19getSquaredViewDepthEPKNS_6CameraE
@@ -29591,7 +29591,7 @@ pub fn stub_c9b5d8() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")]
 // was: `non-virtual thunk to'Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const
 pub fn stub_c9b638() -> ! {
-    todo!("0xc9b638 `non-virtual thunk to'Ogre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")
+    todo!("0xc9b638 non-virtual thunk toOgre::Frustum::getSquaredViewDepth(Ogre::Camera const*)const")
 }
 
 // 0xc9b69c — __ZNK4Ogre7Frustum9getLightsEv
@@ -29605,7 +29605,7 @@ pub fn stub_c9b69c() -> ! {
 #[doc(alias = "non-virtual thunk toOgre::Frustum::getLights(void)const")]
 // was: `non-virtual thunk to'Ogre::Frustum::getLights(void)const
 pub fn stub_c9b784() -> ! {
-    todo!("0xc9b784 `non-virtual thunk to'Ogre::Frustum::getLights(void)const")
+    todo!("0xc9b784 non-virtual thunk toOgre::Frustum::getLights(void)const")
 }
 
 // 0xc9b86c — __ZN4Ogre7Frustum20_notifyCurrentCameraEPNS_6CameraE

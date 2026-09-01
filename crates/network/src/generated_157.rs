@@ -248,7 +248,7 @@ pub fn stub_320bc() -> ! {
 // was: boost::shared_ptr
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")]
 pub fn stub_32194() -> ! {
-    todo!("0x32194 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")
+    todo!("0x32194 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")
 }
 
 // 0x3219c — __ZN3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_ED1Ev
@@ -727,7 +727,7 @@ pub fn stub_35438() -> ! {
 // type: 
 #[doc(alias = "global constructor keyed to_a_8")]
 pub fn stub_355c8() -> ! {
-    todo!("0x355c8 `global constructor keyed to'_a_8")
+    todo!("0x355c8 global constructor keyed to_a_8")
 }
 
 // 0x3588c — -[Reachability startNotifier]

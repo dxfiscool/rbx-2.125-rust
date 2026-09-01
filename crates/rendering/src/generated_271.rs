@@ -270,7 +270,7 @@ pub fn stub_392904() -> ! {
 #[doc(alias = "_non-virtual thunk to_rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 pub fn stub_392920() -> ! {
-    todo!("0x392920 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
+    todo!("0x392920 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0x39293c — __ZN5boost3_bi5list2INS0_5valueIPN3RBX12AccoutrementEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
@@ -478,7 +478,7 @@ pub fn stub_393240() -> ! {
 #[doc(alias = "_global constructor keyed to__a_152")]
 // was: __GLOBAL__I_a_152
 pub fn stub_3935a0() -> ! {
-    todo!("0x3935a0 `global constructor keyed to'_a_152")
+    todo!("0x3935a0 global constructor keyed to_a_152")
 }
 
 // 0x39410c — __ZN3RBX11shared_fromINS_10PVInstanceEEEN5boost10shared_ptrIT_EEPS4_
@@ -534,7 +534,7 @@ pub fn stub_3961b4() -> ! {
 #[doc(alias = "_global constructor keyed to__a_153")]
 // was: __GLOBAL__I_a_153
 pub fn stub_396230() -> ! {
-    todo!("0x396230 `global constructor keyed to'_a_153")
+    todo!("0x396230 global constructor keyed to_a_153")
 }
 
 // 0x396554 — __ZN3RBX19AnimatableRootJoint13getParentNameEv
@@ -566,7 +566,7 @@ pub fn stub_396574() -> ! {
 #[doc(alias = "_global constructor keyed to__a_154")]
 // was: __GLOBAL__I_a_154
 pub fn stub_39672c() -> ! {
-    todo!("0x39672c `global constructor keyed to'_a_154")
+    todo!("0x39672c global constructor keyed to_a_154")
 }
 
 // 0x39699c — __ZN3RBX9Animation10setAssetIdENS_11AnimationIdE
@@ -678,7 +678,7 @@ pub fn stub_3970c0() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Animation::~Animation()")]
 // was: __ZThn32_N3RBX9AnimationD1Ev
 pub fn stub_3970d0() -> ! {
-    todo!("0x3970d0 `non-virtual thunk to'RBX::Animation::~Animation()")
+    todo!("0x3970d0 non-virtual thunk toRBX::Animation::~Animation()")
 }
 
 // 0x3971b4 — __ZThn32_N3RBX9AnimationD0Ev
@@ -686,7 +686,7 @@ pub fn stub_3970d0() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Animation::~Animation()")]
 // was: __ZThn32_N3RBX9AnimationD0Ev
 pub fn stub_3971b4() -> ! {
-    todo!("0x3971b4 `non-virtual thunk to'RBX::Animation::~Animation()")
+    todo!("0x3971b4 non-virtual thunk toRBX::Animation::~Animation()")
 }
 
 // 0x3972ac — __ZThn32_NK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E12getClassNameEv
@@ -702,7 +702,7 @@ pub fn stub_3972ac() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Animation::~Animation()")]
 // was: __ZThn36_N3RBX9AnimationD1Ev
 pub fn stub_3972bc() -> ! {
-    todo!("0x3972bc `non-virtual thunk to'RBX::Animation::~Animation()")
+    todo!("0x3972bc non-virtual thunk toRBX::Animation::~Animation()")
 }
 
 // 0x3973a0 — __ZThn36_N3RBX9AnimationD0Ev
@@ -710,7 +710,7 @@ pub fn stub_3972bc() -> ! {
 #[doc(alias = "_non-virtual thunk to_RBX::Animation::~Animation()")]
 // was: __ZThn36_N3RBX9AnimationD0Ev
 pub fn stub_3973a0() -> ! {
-    todo!("0x3973a0 `non-virtual thunk to'RBX::Animation::~Animation()")
+    todo!("0x3973a0 non-virtual thunk toRBX::Animation::~Animation()")
 }
 
 // 0x397498 — __ZN3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E17static_getCreatorEv

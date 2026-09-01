@@ -231,7 +231,7 @@ pub fn stub_21ba0() -> ! {
 // 0x21c18 — __GLOBAL__I_a_6
 #[doc(alias = "global constructor keyed to_a_6")]
 pub fn stub_21c18() -> ! {
-    todo!("0x21c18 `global constructor keyed to'_a_6")
+    todo!("0x21c18 global constructor keyed to_a_6")
 }
 
 // 0x21ce0 — __ZN18iOSSettingsService4InitEv
@@ -513,7 +513,7 @@ pub fn stub_24510() -> ! {
 // 0x24540 — __GLOBAL__I_a_7
 #[doc(alias = "global constructor keyed to_a_7")]
 pub fn stub_24540() -> ! {
-    todo!("0x24540 `global constructor keyed to'_a_7")
+    todo!("0x24540 global constructor keyed to_a_7")
 }
 
 // 0x246d8 — -[PlaceLauncher init]

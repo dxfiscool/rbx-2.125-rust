@@ -133,7 +133,7 @@ pub fn stub_4ed4f8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")]
 // was: `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const
 pub fn stub_4ed5d8() -> ! {
-    todo!("0x4ed5d8 `non-virtual thunk to'RBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
+    todo!("0x4ed5d8 non-virtual thunk toRBX::Reflection::RefPropDescriptor<RBX::VelocityMotor,RBX::Hole>::assignIDREF(RBX::Reflection::DescribedBase *,RBX::InstanceHandle const&)const")
 }
 
 // 0x4ed5e0 — __ZNK3RBX10Reflection14PropDescriptorINS_13VelocityMotorEPNS_4HoleEE10GetSetImplIMS2_KFS4_vEMS2_FvS4_EE10isReadOnlyEv
@@ -189,7 +189,7 @@ pub fn stub_4ed6dc() -> ! {
 #[doc(alias = "global constructor keyed to_a_192")]
 // was: `global constructor keyed to'_a_192
 pub fn stub_4ed6e0() -> ! {
-    todo!("0x4ed6e0 `global constructor keyed to'_a_192")
+    todo!("0x4ed6e0 global constructor keyed to_a_192")
 }
 
 // 0x4edc88 — __ZN3RBX8FileMeshC1Ev
@@ -448,7 +448,7 @@ pub fn stub_4eec94() -> ! {
 #[doc(alias = "global constructor keyed to_a_193")]
 // was: `global constructor keyed to'_a_193
 pub fn stub_4eecb8() -> ! {
-    todo!("0x4eecb8 `global constructor keyed to'_a_193")
+    todo!("0x4eecb8 global constructor keyed to_a_193")
 }
 
 // 0x4eef38 — __ZN3RBX27FilterInvisibleNonCollidingC1Ev
@@ -644,7 +644,7 @@ pub fn stub_4ef448() -> ! {
 #[doc(alias = "global constructor keyed to_a_194")]
 // was: `global constructor keyed to'_a_194
 pub fn stub_4ef44c() -> ! {
-    todo!("0x4ef44c `global constructor keyed to'_a_194")
+    todo!("0x4ef44c global constructor keyed to_a_194")
 }
 
 // 0x4ef7c0 — __ZN3RBX4Fire9setSizeUiEf
@@ -700,12 +700,12 @@ pub fn stub_4efb94() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Fire::~Fire()")]
 // was: `non-virtual thunk to'RBX::Fire::~Fire()
 pub fn stub_4efb98() -> ! {
-    todo!("0x4efb98 `non-virtual thunk to'RBX::Fire::~Fire()")
+    todo!("0x4efb98 non-virtual thunk toRBX::Fire::~Fire()")
 }
 
 // 0x4efba0 — __ZThn36_N3RBX4FireD0Ev
 #[doc(alias = "non-virtual thunk toRBX::Fire::~Fire()")]
 // was: `non-virtual thunk to'RBX::Fire::~Fire()
 pub fn stub_4efba0() -> ! {
-    todo!("0x4efba0 `non-virtual thunk to'RBX::Fire::~Fire()")
+    todo!("0x4efba0 non-virtual thunk toRBX::Fire::~Fire()")
 }

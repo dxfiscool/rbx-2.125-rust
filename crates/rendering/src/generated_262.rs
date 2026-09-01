@@ -220,7 +220,7 @@ pub fn stub_360150() -> ! {
 #[doc(alias = "global constructor keyed to_a_133")]
 // was: __GLOBAL__I_a_133
 pub fn stub_360154() -> ! {
-    todo!("0x360154 `global constructor keyed to'_a_133")
+    todo!("0x360154 global constructor keyed to_a_133")
 }
 
 // 0x3602a8 — __ZN3RBX10QuaternionaSERKS0_
@@ -234,7 +234,7 @@ pub fn stub_3602a8() -> ! {
 #[doc(alias = "global constructor keyed to_a_134")]
 // was: __GLOBAL__I_a_134
 pub fn stub_360528() -> ! {
-    todo!("0x360528 `global constructor keyed to'_a_134")
+    todo!("0x360528 global constructor keyed to_a_134")
 }
 
 // 0x360560 — __ZNK3RBX4Rect13positionPointENS0_8LocationES1_
@@ -256,7 +256,7 @@ pub fn stub_360678() -> ! {
 #[doc(alias = "global constructor keyed to_a_135")]
 // was: __GLOBAL__I_a_135
 pub fn stub_3607f4() -> ! {
-    todo!("0x3607f4 `global constructor keyed to'_a_135")
+    todo!("0x3607f4 global constructor keyed to_a_135")
 }
 
 // 0x36082c — __ZN3RBX10RunServiceC1Ev
@@ -312,7 +312,7 @@ pub fn stub_36128c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 // was: __ZThn32_N3RBX10RunServiceD0Ev
 pub fn stub_361290() -> ! {
-    todo!("0x361290 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x361290 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x361298 — __ZThn36_N3RBX10RunServiceD0Ev
@@ -320,7 +320,7 @@ pub fn stub_361290() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 // was: __ZThn36_N3RBX10RunServiceD0Ev
 pub fn stub_361298() -> ! {
-    todo!("0x361298 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x361298 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3612a0 — __ZN3RBX10RunServiceD2Ev
@@ -336,7 +336,7 @@ pub fn stub_3612a0() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 // was: __ZThn32_N3RBX10RunServiceD1Ev
 pub fn stub_3616a8() -> ! {
-    todo!("0x3616a8 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x3616a8 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3616b0 — __ZThn36_N3RBX10RunServiceD1Ev
@@ -344,7 +344,7 @@ pub fn stub_3616a8() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 // was: __ZThn36_N3RBX10RunServiceD1Ev
 pub fn stub_3616b0() -> ! {
-    todo!("0x3616b0 `non-virtual thunk to'RBX::RunService::~RunService()")
+    todo!("0x3616b0 non-virtual thunk toRBX::RunService::~RunService()")
 }
 
 // 0x3616b8 — __ZN3RBX10RunService13getPhysicsJobEv
@@ -727,21 +727,21 @@ pub fn stub_362dc0() -> ! {
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")]
 // was: __ZTv0_n16_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEE7rethrowEv
 pub fn stub_362f88() -> ! {
-    todo!("0x362f88 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")
+    todo!("0x362f88 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::rethrow(void)const")
 }
 
 // 0x362f98 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 #[doc(alias = "virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 // was: __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
 pub fn stub_362f98() -> ! {
-    todo!("0x362f98 `virtual thunk to'boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
+    todo!("0x362f98 virtual thunk toboost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
 }
 
 // 0x362fb8 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
 #[doc(alias = "non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 // was: __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED0Ev
 pub fn stub_362fb8() -> ! {
-    todo!("0x362fb8 `non-virtual thunk to'boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
+    todo!("0x362fb8 non-virtual thunk toboost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
 }
 
 // 0x362fd0 — __ZN5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEEC1ERKS5_NS5_9clone_tagE

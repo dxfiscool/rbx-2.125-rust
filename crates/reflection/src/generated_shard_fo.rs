@@ -171,7 +171,7 @@ pub fn stub_44888() -> ! {
 #[doc(alias = "global constructor keyed to_a_14")]
 #[doc(alias = "__GLOBAL__I_a_14")]
 pub fn stub_44924() -> ! {
-    todo!("0x44924 `global constructor keyed to'_a_14")
+    todo!("0x44924 global constructor keyed to_a_14")
 }
 
 // 0x44abc — -[CameraControl init:delegate:]
@@ -342,7 +342,7 @@ pub fn stub_45d68() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_")]
 pub fn stub_45d98() -> ! {
-    todo!("0x45d98 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
+    todo!("0x45d98 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
 }
 
 // 0x45dc8 — __ZNK5boost9function3IvbPvN3RBX7UIEventEEclEbS1_S3_
@@ -438,7 +438,7 @@ pub fn stub_46464() -> ! {
 #[doc(alias = "global constructor keyed to_a_15")]
 #[doc(alias = "__GLOBAL__I_a_15")]
 pub fn stub_46490() -> ! {
-    todo!("0x46490 `global constructor keyed to'_a_15")
+    todo!("0x46490 global constructor keyed to_a_15")
 }
 
 // 0x466cc — -[CharacterMove init:]
@@ -494,7 +494,7 @@ pub fn stub_469e8() -> ! {
 #[doc(alias = "global constructor keyed to_a_16")]
 #[doc(alias = "__GLOBAL__I_a_16")]
 pub fn stub_46f64() -> ! {
-    todo!("0x46f64 `global constructor keyed to'_a_16")
+    todo!("0x46f64 global constructor keyed to_a_16")
 }
 
 // 0x47178 — -[ControlComponent init]
@@ -529,7 +529,7 @@ pub fn stub_47338() -> ! {
 #[doc(alias = "global constructor keyed to_a_17")]
 #[doc(alias = "__GLOBAL__I_a_17")]
 pub fn stub_47424() -> ! {
-    todo!("0x47424 `global constructor keyed to'_a_17")
+    todo!("0x47424 global constructor keyed to_a_17")
 }
 
 // 0x47638 — -[ControlView init:withGame:]
@@ -893,7 +893,7 @@ pub fn stub_4a908() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::TextBox>)>,1,void ()(boost::shared_ptr<RBX::TextBox>)>::call(boost::shared_ptr<RBX::TextBox>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4slotENS3_8functionIS8_EELi1ES8_E4callES7_")]
 pub fn stub_4a9dc() -> ! {
-    todo!("0x4a9dc `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::TextBox>)>,1,void ()(boost::shared_ptr<RBX::TextBox>)>::call(boost::shared_ptr<RBX::TextBox>)")
+    todo!("0x4a9dc non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot,boost::function<void ()(boost::shared_ptr<RBX::TextBox>)>,1,void ()(boost::shared_ptr<RBX::TextBox>)>::call(boost::shared_ptr<RBX::TextBox>)")
 }
 
 // 0x4a9e4 — __ZNK5boost9function1IvNS_10shared_ptrIN3RBX7TextBoxEEEEclES4_
@@ -1076,7 +1076,7 @@ pub fn stub_4b97c() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX9DataModelEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_")]
 pub fn stub_4b984() -> ! {
-    todo!("0x4b984 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")
+    todo!("0x4b984 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::DataModel *)>::slot,boost::function<void ()(RBX::DataModel *)>,1,void ()(RBX::DataModel *)>::call(RBX::DataModel *)")
 }
 
 // 0x4b98c — __ZNK5boost9function1IvPN3RBX9DataModelEEclES3_

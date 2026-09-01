@@ -24,7 +24,7 @@ pub fn stub_2d4714() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX15AdvMoveToolBase13render3dAdornEPNS_5AdornE")]
 pub fn stub_2d4874() -> ! {
-    todo!("0x2d4874 `non-virtual thunk to'RBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")
+    todo!("0x2d4874 non-virtual thunk toRBX::AdvMoveToolBase::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x2d487c — __ZNK3RBX15AdvMoveToolBase13getOverHandleERKNS_7UIEventERN3G3D7Vector3ERNS_8NormalIdE
@@ -55,7 +55,7 @@ pub fn stub_2d4d38() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvMoveTool::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX11AdvMoveTool8render2dEPNS_5AdornE")]
 pub fn stub_2d504c() -> ! {
-    todo!("0x2d504c `non-virtual thunk to'RBX::AdvMoveTool::render2d(RBX::Adorn *)")
+    todo!("0x2d504c non-virtual thunk toRBX::AdvMoveTool::render2d(RBX::Adorn *)")
 }
 
 // 0x2d5054 — __ZN3RBX11shared_fromINS_15AdvMoveToolBaseEEEN5boost10shared_ptrIT_EEPS4_
@@ -126,7 +126,7 @@ pub fn stub_2d5890() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::render2d(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX13AdvRotateTool8render2dEPNS_5AdornE")]
 pub fn stub_2d5a28() -> ! {
-    todo!("0x2d5a28 `non-virtual thunk to'RBX::AdvRotateTool::render2d(RBX::Adorn *)")
+    todo!("0x2d5a28 non-virtual thunk toRBX::AdvRotateTool::render2d(RBX::Adorn *)")
 }
 
 // 0x2d5a30 — __ZN3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE
@@ -142,7 +142,7 @@ pub fn stub_2d5a30() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")]
 #[doc(alias = "__ZThn4_N3RBX13AdvRotateTool13render3dAdornEPNS_5AdornE")]
 pub fn stub_2d5d98() -> ! {
-    todo!("0x2d5d98 `non-virtual thunk to'RBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")
+    todo!("0x2d5d98 non-virtual thunk toRBX::AdvRotateTool::render3dAdorn(RBX::Adorn *)")
 }
 
 // 0x2d5da0 — __ZNK3RBX13AdvRotateTool13getOverHandleERKNS_7UIEventERN3G3D7Vector3ERNS_8NormalIdE
@@ -340,7 +340,7 @@ pub fn stub_30e130() -> ! {
 #[doc(alias = "global constructor keyed to_a_108")]
 #[doc(alias = "__GLOBAL__I_a_108")]
 pub fn stub_30e1b0() -> ! {
-    todo!("0x30e1b0 `global constructor keyed to'_a_108")
+    todo!("0x30e1b0 global constructor keyed to_a_108")
 }
 
 // 0x30e3b8 — __ZN3RBX5Color15getColorByIndexEi
@@ -379,7 +379,7 @@ pub fn stub_30e670() -> ! {
 #[doc(alias = "global constructor keyed to_a_109")]
 #[doc(alias = "__GLOBAL__I_a_109")]
 pub fn stub_30e67c() -> ! {
-    todo!("0x30e67c `global constructor keyed to'_a_109")
+    todo!("0x30e67c global constructor keyed to_a_109")
 }
 
 // 0x30e6b4 — __ZN3RBX13ContentFilter12setFilterUrlESs
@@ -434,7 +434,7 @@ pub fn stub_30e908() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn32_N3RBX13ContentFilterD0Ev")]
 pub fn stub_30e90c() -> ! {
-    todo!("0x30e90c `non-virtual thunk to'RBX::ContentFilter::~ContentFilter()")
+    todo!("0x30e90c non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
 }
 
 // 0x30e914 — __ZThn36_N3RBX13ContentFilterD0Ev
@@ -442,7 +442,7 @@ pub fn stub_30e90c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn36_N3RBX13ContentFilterD0Ev")]
 pub fn stub_30e914() -> ! {
-    todo!("0x30e914 `non-virtual thunk to'RBX::ContentFilter::~ContentFilter()")
+    todo!("0x30e914 non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
 }
 
 // 0x30e91c — __ZN3RBX13ContentFilterD2Ev
@@ -458,7 +458,7 @@ pub fn stub_30e91c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn32_N3RBX13ContentFilterD1Ev")]
 pub fn stub_30e96c() -> ! {
-    todo!("0x30e96c `non-virtual thunk to'RBX::ContentFilter::~ContentFilter()")
+    todo!("0x30e96c non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
 }
 
 // 0x30e974 — __ZThn36_N3RBX13ContentFilterD1Ev
@@ -466,7 +466,7 @@ pub fn stub_30e96c() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 #[doc(alias = "__ZThn36_N3RBX13ContentFilterD1Ev")]
 pub fn stub_30e974() -> ! {
-    todo!("0x30e974 `non-virtual thunk to'RBX::ContentFilter::~ContentFilter()")
+    todo!("0x30e974 non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
 }
 
 // 0x30e97c — __ZN3RBX13ContentFilter14truncateStringERSs
@@ -1113,7 +1113,7 @@ pub fn stub_314a10() -> ! {
 #[doc(alias = "global constructor keyed to_a_110")]
 #[doc(alias = "__GLOBAL__I_a_110")]
 pub fn stub_314a40() -> ! {
-    todo!("0x314a40 `global constructor keyed to'_a_110")
+    todo!("0x314a40 global constructor keyed to_a_110")
 }
 
 // 0x314c84 — __ZN3RBXltERKNS_9ContentIdES2_

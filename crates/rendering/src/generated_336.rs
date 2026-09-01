@@ -201,7 +201,7 @@ pub fn stub_5c1318() -> ! {
 #[doc(alias = "global constructor keyed to_a_222")]
 // was: __GLOBAL__I_a_222
 pub fn stub_5c13bc() -> ! {
-    todo!("0x5c13bc `global constructor keyed to'_a_222")
+    todo!("0x5c13bc global constructor keyed to_a_222")
 }
 
 // 0x5c16f0 — __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEEC1Ev
@@ -311,7 +311,7 @@ pub fn stub_5c1fa0() -> ! {
 #[doc(alias = "global constructor keyed to_a_223")]
 // was: __GLOBAL__I_a_223
 pub fn stub_5c2130() -> ! {
-    todo!("0x5c2130 `global constructor keyed to'_a_223")
+    todo!("0x5c2130 global constructor keyed to_a_223")
 }
 
 // 0x5c21f8 — __ZNK3RBX8Lighting10getTimeStrEv
@@ -613,7 +613,7 @@ pub fn stub_5c3100() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Lighting::~Lighting()")]
 // was: __ZThn32_N3RBX8LightingD1Ev
 pub fn stub_5c3110() -> ! {
-    todo!("0x5c3110 `non-virtual thunk to'RBX::Lighting::~Lighting()")
+    todo!("0x5c3110 non-virtual thunk toRBX::Lighting::~Lighting()")
 }
 
 // 0x5c3118 — __ZThn32_N3RBX8LightingD0Ev
@@ -621,7 +621,7 @@ pub fn stub_5c3110() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Lighting::~Lighting()")]
 // was: __ZThn32_N3RBX8LightingD0Ev
 pub fn stub_5c3118() -> ! {
-    todo!("0x5c3118 `non-virtual thunk to'RBX::Lighting::~Lighting()")
+    todo!("0x5c3118 non-virtual thunk toRBX::Lighting::~Lighting()")
 }
 
 // 0x5c31bc — __ZThn32_NK3RBX14FactoryProductINS_8LightingENS_8InstanceELZNS_9sLightingEES2_E12getClassNameEv
@@ -636,7 +636,7 @@ pub fn stub_5c31bc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Lighting::~Lighting()")]
 // was: __ZThn36_N3RBX8LightingD1Ev
 pub fn stub_5c31cc() -> ! {
-    todo!("0x5c31cc `non-virtual thunk to'RBX::Lighting::~Lighting()")
+    todo!("0x5c31cc non-virtual thunk toRBX::Lighting::~Lighting()")
 }
 
 // 0x5c31d4 — __ZThn36_N3RBX8LightingD0Ev
@@ -644,7 +644,7 @@ pub fn stub_5c31cc() -> ! {
 #[doc(alias = "non-virtual thunk toRBX::Lighting::~Lighting()")]
 // was: __ZThn36_N3RBX8LightingD0Ev
 pub fn stub_5c31d4() -> ! {
-    todo!("0x5c31d4 `non-virtual thunk to'RBX::Lighting::~Lighting()")
+    todo!("0x5c31d4 non-virtual thunk toRBX::Lighting::~Lighting()")
 }
 
 // 0x5c3278 — __ZNK3RBX8Instance25findConstFirstChildOfTypeINS_3SkyEEEPKT_v

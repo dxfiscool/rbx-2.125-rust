@@ -151,7 +151,7 @@ pub fn stub_35438() -> ! {
 // 0x355c8 — __GLOBAL__I_a_8
 #[doc(alias = "global constructor keyed to_a_8")]
 pub fn stub_355c8() -> ! {
-    todo!("0x355c8 `global constructor keyed to_a_8")
+    todo!("0x355c8 global constructor keyed to_a_8")
 }
 
 // 0x3588c — -[Reachability startNotifier]
@@ -409,7 +409,7 @@ pub fn stub_36e04() -> ! {
 // 0x36e80 — __GLOBAL__I_a_9
 #[doc(alias = "global constructor keyed to_a_9")]
 pub fn stub_36e80() -> ! {
-    todo!("0x36e80 `global constructor keyed to_a_9")
+    todo!("0x36e80 global constructor keyed to_a_9")
 }
 
 // 0x37068 — __ZN10RobloxView37requestStopRenderingForBackgroundModeEv

@@ -571,7 +571,7 @@ pub fn stub_3eb43c() -> ! {
 #[doc(alias = "__GLOBAL__I_a_169")]
 // was: __GLOBAL__I_a_169
 pub fn stub_3eb460() -> ! {
-    todo!("0x3eb460 `global constructor keyed to'_a_169")
+    todo!("0x3eb460 global constructor keyed to_a_169")
 }
 
 
@@ -706,7 +706,7 @@ pub fn stub_3ecdb0() -> ! {
 #[doc(alias = "__ZThn32_N3RBX11ChatServiceD1Ev")]
 // was: __ZThn32_N3RBX11ChatServiceD1Ev
 pub fn stub_3ecdc0() -> ! {
-    todo!("0x3ecdc0 `non-virtual thunk to'RBX::ChatService::~ChatService()")
+    todo!("0x3ecdc0 non-virtual thunk toRBX::ChatService::~ChatService()")
 }
 
 
@@ -715,7 +715,7 @@ pub fn stub_3ecdc0() -> ! {
 #[doc(alias = "__ZThn32_N3RBX11ChatServiceD0Ev")]
 // was: __ZThn32_N3RBX11ChatServiceD0Ev
 pub fn stub_3ecea4() -> ! {
-    todo!("0x3ecea4 `non-virtual thunk to'RBX::ChatService::~ChatService()")
+    todo!("0x3ecea4 non-virtual thunk toRBX::ChatService::~ChatService()")
 }
 
 
@@ -733,7 +733,7 @@ pub fn stub_3ecf9c() -> ! {
 #[doc(alias = "__ZThn36_N3RBX11ChatServiceD1Ev")]
 // was: __ZThn36_N3RBX11ChatServiceD1Ev
 pub fn stub_3ecfac() -> ! {
-    todo!("0x3ecfac `non-virtual thunk to'RBX::ChatService::~ChatService()")
+    todo!("0x3ecfac non-virtual thunk toRBX::ChatService::~ChatService()")
 }
 
 
@@ -742,7 +742,7 @@ pub fn stub_3ecfac() -> ! {
 #[doc(alias = "__ZThn36_N3RBX11ChatServiceD0Ev")]
 // was: __ZThn36_N3RBX11ChatServiceD0Ev
 pub fn stub_3ed090() -> ! {
-    todo!("0x3ed090 `non-virtual thunk to'RBX::ChatService::~ChatService()")
+    todo!("0x3ed090 non-virtual thunk toRBX::ChatService::~ChatService()")
 }
 
 

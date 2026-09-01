@@ -292,14 +292,14 @@ pub fn stub_413f78() -> ! {
 // type: void __fastcall(RBX::AxisRotateTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")]
 pub fn stub_413f7c() -> ! {
-    todo!("0x413f7c `non-virtual thunk to'RBX::AxisRotateTool::~AxisRotateTool()")
+    todo!("0x413f7c non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")
 }
 
 // 0x414060 — __ZThn36_N3RBX14AxisRotateToolD0Ev
 // type: void __fastcall(RBX::AxisRotateTool *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")]
 pub fn stub_414060() -> ! {
-    todo!("0x414060 `non-virtual thunk to'RBX::AxisRotateTool::~AxisRotateTool()")
+    todo!("0x414060 non-virtual thunk toRBX::AxisRotateTool::~AxisRotateTool()")
 }
 
 // 0x414158 — __ZN3RBX12AxisToolBaseD1Ev
@@ -320,14 +320,14 @@ pub fn stub_41423c() -> ! {
 // type: void __fastcall(RBX::AxisToolBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")]
 pub fn stub_414334() -> ! {
-    todo!("0x414334 `non-virtual thunk to'RBX::AxisToolBase::~AxisToolBase()")
+    todo!("0x414334 non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")
 }
 
 // 0x414418 — __ZThn36_N3RBX12AxisToolBaseD0Ev
 // type: void __fastcall(RBX::AxisToolBase *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")]
 pub fn stub_414418() -> ! {
-    todo!("0x414418 `non-virtual thunk to'RBX::AxisToolBase::~AxisToolBase()")
+    todo!("0x414418 non-virtual thunk toRBX::AxisToolBase::~AxisToolBase()")
 }
 
 // 0x414510 — __ZN5boost10shared_ptrIN3RBX14AxisRotateToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
@@ -563,7 +563,7 @@ pub fn stub_416044() -> ! {
 // 0x4160e4 — __GLOBAL__I_a_174
 #[doc(alias = "global constructor keyed to_a_174")]
 pub fn stub_4160e4() -> ! {
-    todo!("0x4160e4 `global constructor keyed to'_a_174")
+    todo!("0x4160e4 global constructor keyed to_a_174")
 }
 
 // 0x416388 — __ZN3RBX13ConfigurationC2Ev
@@ -626,14 +626,14 @@ pub fn stub_416a1c() -> ! {
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 pub fn stub_416a2c() -> ! {
-    todo!("0x416a2c `non-virtual thunk to'RBX::Configuration::~Configuration()")
+    todo!("0x416a2c non-virtual thunk toRBX::Configuration::~Configuration()")
 }
 
 // 0x416a34 — __ZThn32_N3RBX13ConfigurationD0Ev
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 pub fn stub_416a34() -> ! {
-    todo!("0x416a34 `non-virtual thunk to'RBX::Configuration::~Configuration()")
+    todo!("0x416a34 non-virtual thunk toRBX::Configuration::~Configuration()")
 }
 
 // 0x416ad8 — __ZThn32_NK3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E12getClassNameEv
@@ -647,14 +647,14 @@ pub fn stub_416ad8() -> ! {
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 pub fn stub_416ae8() -> ! {
-    todo!("0x416ae8 `non-virtual thunk to'RBX::Configuration::~Configuration()")
+    todo!("0x416ae8 non-virtual thunk toRBX::Configuration::~Configuration()")
 }
 
 // 0x416af0 — __ZThn36_N3RBX13ConfigurationD0Ev
 // type: void __fastcall(RBX::Configuration *__hidden this)
 #[doc(alias = "non-virtual thunk toRBX::Configuration::~Configuration()")]
 pub fn stub_416af0() -> ! {
-    todo!("0x416af0 `non-virtual thunk to'RBX::Configuration::~Configuration()")
+    todo!("0x416af0 non-virtual thunk toRBX::Configuration::~Configuration()")
 }
 
 // 0x416b94 — __ZN3RBX14FactoryProductINS_13ConfigurationENS_8InstanceELZNS_14sConfigurationEES2_E7CreatorD1Ev

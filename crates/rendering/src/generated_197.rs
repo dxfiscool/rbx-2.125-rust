@@ -324,7 +324,7 @@ pub fn stub_a05c8() -> ! {
 #[doc(alias = "global constructor keyed to_FMOD_OggVorbis_Malloc")]
 // was: `global constructor keyed to'_FMOD_OggVorbis_Malloc
 pub fn stub_a0614() -> ! {
-    todo!("0xa0614 `global constructor keyed to'_FMOD_OggVorbis_Malloc")
+    todo!("0xa0614 global constructor keyed to_FMOD_OggVorbis_Malloc")
 }
 
 // 0xa0620 — __ZN4FMOD13CodecPlaylist12getQuoteDataEPKcPcPi
@@ -500,7 +500,7 @@ pub fn stub_a1e00() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::playlistcodec")]
 // was: `global constructor keyed to'FMOD::playlistcodec
 pub fn stub_a1e4c() -> ! {
-    todo!("0xa1e4c `global constructor keyed to'FMOD::playlistcodec")
+    todo!("0xa1e4c global constructor keyed toFMOD::playlistcodec")
 }
 
 // 0xa1e58 — __ZN4FMOD8CodecRaw13closeInternalEv
@@ -604,7 +604,7 @@ pub fn stub_a2328() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::rawcodec")]
 // was: `global constructor keyed to'FMOD::rawcodec
 pub fn stub_a2374() -> ! {
-    todo!("0xa2374 `global constructor keyed to'FMOD::rawcodec")
+    todo!("0xa2374 global constructor keyed toFMOD::rawcodec")
 }
 
 // 0xa2380 — __ZN4FMOD15MusicChannelS3M11volumeSlideEv
@@ -764,7 +764,7 @@ pub fn stub_a5c98() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::s3mcodec")]
 // was: `global constructor keyed to'FMOD::s3mcodec
 pub fn stub_a5ce4() -> ! {
-    todo!("0xa5ce4 `global constructor keyed to'FMOD::s3mcodec")
+    todo!("0xa5ce4 global constructor keyed toFMOD::s3mcodec")
 }
 
 // 0xa5cf0 — __ZN4FMOD8CodecTag13closeInternalEv

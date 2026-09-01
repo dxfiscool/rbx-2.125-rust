@@ -726,7 +726,7 @@ pub fn stub_235d7c() -> ! {
 #[doc(alias = "boost::detail::anonymous namespace::create_current_thread_tls_key(void)")]
 // was: boost::detail::`anonymous namespace'::create_current_thread_tls_key(void)
 pub fn stub_235da4() -> ! {
-    todo!("0x235da4 boost::detail::`anonymous namespace'::create_current_thread_tls_key(void)")
+    todo!("0x235da4 boost::detail::anonymous namespace::create_current_thread_tls_key(void)")
 }
 
 // 0x235dc4 — __ZN5boost6thread21start_thread_noexceptEv

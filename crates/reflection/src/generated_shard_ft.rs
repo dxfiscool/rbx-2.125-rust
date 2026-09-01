@@ -529,7 +529,7 @@ pub fn stub_63028() -> ! {
 // 0x63040 — __GLOBAL__I_a_32
 #[doc(alias = "global constructor keyed to_a_32")]
 pub fn stub_63040() -> ! {
-    todo!("0x63040 'global constructor keyed to'_a_32")
+    todo!("0x63040 global constructor keyed to_a_32")
 }
 
 // 0x631f8 — -[CameraMove init:]
@@ -577,7 +577,7 @@ pub fn stub_63528() -> ! {
 // 0x637a0 — __GLOBAL__I_a_33
 #[doc(alias = "global constructor keyed to_a_33")]
 pub fn stub_637a0() -> ! {
-    todo!("0x637a0 'global constructor keyed to'_a_33")
+    todo!("0x637a0 global constructor keyed to_a_33")
 }
 
 // 0x639b8 — -[FunctionMarshaller marshallFunction]
@@ -625,7 +625,7 @@ pub fn stub_63b28() -> ! {
 // 0x63b58 — __GLOBAL__I_a_34
 #[doc(alias = "global constructor keyed to_a_34")]
 pub fn stub_63b58() -> ! {
-    todo!("0x63b58 'global constructor keyed to'_a_34")
+    todo!("0x63b58 global constructor keyed to_a_34")
 }
 
 // 0x63d30 — +[RobloxCachedFlags sharedInstance]

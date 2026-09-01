@@ -537,7 +537,7 @@ pub fn stub_5b0794() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Joint *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::JointsService,RBX::Joint *>,boost::_bi::list2<boost::_bi::value<RBX::JointsService*>,boost::arg<1>>>,1,void ()(RBX::Joint *)>::call(RBX::Joint *)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvPN3RBX5JointEEE4slotEN5boost3_bi6bind_tIvNS9_4_mfi3mf1IvNS3_13JointsServiceES5_EENSA_5list2INSA_5valueIPSE_EENS9_3argILi1EEEEEEELi1ES6_E4callES5_
 pub fn stub_5b07a8() -> ! {
-    todo!("0x5b07a8 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Joint *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::JointsService,RBX::Joint *>,boost::_bi::list2<boost::_bi::value<RBX::JointsService*>,boost::arg<1>>>,1,void ()(RBX::Joint *)>::call(RBX::Joint *)")
+    todo!("0x5b07a8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Joint *)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::JointsService,RBX::Joint *>,boost::_bi::list2<boost::_bi::value<RBX::JointsService*>,boost::arg<1>>>,1,void ()(RBX::Joint *)>::call(RBX::Joint *)")
 }
 
 // 0x5b07bc — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13JointsServiceEPNS4_5JointEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS7_EEvRT_
@@ -711,7 +711,7 @@ pub fn stub_5b143c() -> ! {
 #[doc(alias = "global constructor keyed to_a_219")]
 // was: __GLOBAL__I_a_219
 pub fn stub_5b16c0() -> ! {
-    todo!("0x5b16c0 `global constructor keyed to'_a_219")
+    todo!("0x5b16c0 global constructor keyed to_a_219")
 }
 
 // 0x5b1b9c — __ZN3RBX8Keyframe8getPosesEv

@@ -154,7 +154,7 @@ pub fn stub_16e24() -> ! {
 // 0x16e4c — __GLOBAL__I_a
 #[doc(alias = "global constructor keyed to_a")]
 pub fn stub_16e4c() -> ! {
-    todo!("0x16e4c `global constructor keyed to_a")
+    todo!("0x16e4c global constructor keyed to_a")
 }
 
 // 0x17aac — __ZN5boost10shared_ptrIN3RBX10Reflection5TupleEEC1IS3_EEPT_
@@ -174,7 +174,7 @@ pub fn stub_17b80() -> ! {
 // 0x17c58 — __GLOBAL__I_a_0
 #[doc(alias = "global constructor keyed to_a_0")]
 pub fn stub_17c58() -> ! {
-    todo!("0x17c58 `global constructor keyed to_a_0")
+    todo!("0x17c58 global constructor keyed to_a_0")
 }
 
 // 0x17df0 — +[Appirater setAppId:]
@@ -583,7 +583,7 @@ pub fn stub_1a5bc() -> ! {
 // 0x1a5d0 — __GLOBAL__I_a_1
 #[doc(alias = "global constructor keyed to_a_1")]
 pub fn stub_1a5d0() -> ! {
-    todo!("0x1a5d0 `global constructor keyed to_a_1")
+    todo!("0x1a5d0 global constructor keyed to_a_1")
 }
 
 // 0x1a768 — _main
@@ -596,7 +596,7 @@ pub fn stub_1a768() -> ! {
 // 0x1a7d4 — __GLOBAL__I_a_2
 #[doc(alias = "global constructor keyed to_a_2")]
 pub fn stub_1a7d4() -> ! {
-    todo!("0x1a7d4 `global constructor keyed to_a_2")
+    todo!("0x1a7d4 global constructor keyed to_a_2")
 }
 
 // 0x1a970 — -[DebugSettingsViewController initWithCoder:]

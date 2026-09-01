@@ -142,7 +142,7 @@ pub fn stub_0xafd50() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspcompressor")]
 // was: `global constructor keyed to'FMOD::dspcompressor
 pub fn stub_0xafd94() -> ! {
-    todo!("0xafd94 `global constructor keyed to'FMOD::dspcompressor")
+    todo!("0xafd94 global constructor keyed toFMOD::dspcompressor")
 }
 
 // 0xafda0 — __ZN4FMOD17DSPConnectionPool17getMemoryUsedImplEPNS_13MemoryTrackerE
@@ -310,7 +310,7 @@ pub fn stub_0xb0f30() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspdistortion")]
 // was: `global constructor keyed to'FMOD::dspdistortion
 pub fn stub_0xb0f74() -> ! {
-    todo!("0xb0f74 `global constructor keyed to'FMOD::dspdistortion")
+    todo!("0xb0f74 global constructor keyed toFMOD::dspdistortion")
 }
 
 // 0xb0f80 — __ZN4FMOD7DSPEcho14createInternalEv
@@ -462,7 +462,7 @@ pub fn stub_0xb2430() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspecho_desc")]
 // was: `global constructor keyed to'FMOD::dspecho_desc
 pub fn stub_0xb2474() -> ! {
-    todo!("0xb2474 `global constructor keyed to'FMOD::dspecho_desc")
+    todo!("0xb2474 global constructor keyed toFMOD::dspecho_desc")
 }
 
 // 0xb2480 — __ZN4FMOD6DSPFFT7processEi
@@ -670,7 +670,7 @@ pub fn stub_0xb4230() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dspflange")]
 // was: `global constructor keyed to'FMOD::dspflange
 pub fn stub_0xb4274() -> ! {
-    todo!("0xb4274 `global constructor keyed to'FMOD::dspflange")
+    todo!("0xb4274 global constructor keyed toFMOD::dspflange")
 }
 
 // 0xb4280 — __ZN4FMOD11DSPHighPass13resetInternalEv
@@ -806,5 +806,5 @@ pub fn stub_0xb53b0() -> ! {
 #[doc(alias = "global constructor keyed toFMOD::dsphighpass")]
 // was: `global constructor keyed to'FMOD::dsphighpass
 pub fn stub_0xb53f4() -> ! {
-    todo!("0xb53f4 `global constructor keyed to'FMOD::dsphighpass")
+    todo!("0xb53f4 global constructor keyed toFMOD::dsphighpass")
 }

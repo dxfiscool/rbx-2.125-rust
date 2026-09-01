@@ -81,7 +81,7 @@ pub fn stub_424cc() -> ! {
 // demangled: `global constructor keyed to'_a_12
 #[doc(alias = "global constructor keyed to_a_12")]
 pub fn stub_42580() -> ! {
-    todo!("0x42580 `global constructor keyed to'_a_12")
+    todo!("0x42580 global constructor keyed to_a_12")
 }
 
 // 0x42718 — +[RobloxWebUtility sharedInstance]
@@ -265,7 +265,7 @@ pub fn stub_43364() -> ! {
 // demangled: `global constructor keyed to'_a_13
 #[doc(alias = "global constructor keyed to_a_13")]
 pub fn stub_43394() -> ! {
-    todo!("0x43394 `global constructor keyed to'_a_13")
+    todo!("0x43394 global constructor keyed to_a_13")
 }
 
 // 0x4352c — __ZN3RBX18FunctionMarshallerC2Ej
@@ -487,7 +487,7 @@ pub fn stub_44888() -> ! {
 // demangled: `global constructor keyed to'_a_14
 #[doc(alias = "global constructor keyed to_a_14")]
 pub fn stub_44924() -> ! {
-    todo!("0x44924 `global constructor keyed to'_a_14")
+    todo!("0x44924 global constructor keyed to_a_14")
 }
 
 // 0x44abc — -[CameraControl init:delegate:]
@@ -658,7 +658,7 @@ pub fn stub_45d68() -> ! {
 // demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
 pub fn stub_45d98() -> ! {
-    todo!("0x45d98 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
+    todo!("0x45d98 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
 }
 
 // 0x45dc8 — __ZNK5boost9function3IvbPvN3RBX7UIEventEEclEbS1_S3_

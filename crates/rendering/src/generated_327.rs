@@ -390,7 +390,7 @@ pub fn stub_49ad94() -> ! {
 #[doc(alias = "global constructor keyed to_a_185")]
 // was: __GLOBAL__I_a_185
 pub fn stub_49aee0() -> ! {
-    todo!("0x49aee0 `global constructor keyed to'_a_185")
+    todo!("0x49aee0 global constructor keyed to_a_185")
 }
 
 // 0x49b3e0 — __ZN3RBX6EffectC2Ev
@@ -429,7 +429,7 @@ pub fn stub_49b3f8() -> ! {
 #[doc(alias = "global constructor keyed to_a_186")]
 // was: __GLOBAL__I_a_186
 pub fn stub_49b3fc() -> ! {
-    todo!("0x49b3fc `global constructor keyed to'_a_186")
+    todo!("0x49b3fc global constructor keyed to_a_186")
 }
 
 // 0x49b52c — __ZN3RBX10Reflection8EnumDescINS_17BasicPartInstance14LegacyPartTypeEEC1Ev

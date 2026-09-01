@@ -84,7 +84,7 @@ pub fn stub_55098() -> ! {
 // 0x554cc — __GLOBAL__I_a_28
 #[doc(alias = "global constructor keyed to_a_28")]
 pub fn stub_554cc() -> ! {
-    todo!("0x554cc `global constructor keyed to'_a_28")
+    todo!("0x554cc global constructor keyed to_a_28")
 }
 
 // 0x557c8 — ___copy_helper_block__16
@@ -174,7 +174,7 @@ pub fn stub_57fc8() -> ! {
 // 0x57fec — __GLOBAL__I_a_29
 #[doc(alias = "global constructor keyed to_a_29")]
 pub fn stub_57fec() -> ! {
-    todo!("0x57fec `global constructor keyed to'_a_29")
+    todo!("0x57fec global constructor keyed to_a_29")
 }
 
 // 0x58334 — ___copy_helper_block__17
@@ -236,7 +236,7 @@ pub fn stub_58a00() -> ! {
 // 0x58bb0 — __GLOBAL__I_a_30
 #[doc(alias = "global constructor keyed to_a_30")]
 pub fn stub_58bb0() -> ! {
-    todo!("0x58bb0 `global constructor keyed to'_a_30")
+    todo!("0x58bb0 global constructor keyed to_a_30")
 }
 
 // 0x59024 — ___copy_helper_block__18
@@ -284,7 +284,7 @@ pub fn stub_5a0b0() -> ! {
 // 0x5b3d8 — __GLOBAL__I_a_31
 #[doc(alias = "global constructor keyed to_a_31")]
 pub fn stub_5b3d8() -> ! {
-    todo!("0x5b3d8 `global constructor keyed to'_a_31")
+    todo!("0x5b3d8 global constructor keyed to_a_31")
 }
 
 // 0x5c4f4 — ___copy_helper_block__19
@@ -619,19 +619,19 @@ pub fn stub_63028() -> ! {
 // 0x63040 — __GLOBAL__I_a_32
 #[doc(alias = "global constructor keyed to_a_32")]
 pub fn stub_63040() -> ! {
-    todo!("0x63040 `global constructor keyed to'_a_32")
+    todo!("0x63040 global constructor keyed to_a_32")
 }
 
 // 0x637a0 — __GLOBAL__I_a_33
 #[doc(alias = "global constructor keyed to_a_33")]
 pub fn stub_637a0() -> ! {
-    todo!("0x637a0 `global constructor keyed to'_a_33")
+    todo!("0x637a0 global constructor keyed to_a_33")
 }
 
 // 0x63b58 — __GLOBAL__I_a_34
 #[doc(alias = "global constructor keyed to_a_34")]
 pub fn stub_63b58() -> ! {
-    todo!("0x63b58 `global constructor keyed to'_a_34")
+    todo!("0x63b58 global constructor keyed to_a_34")
 }
 
 // 0x63dc8 — ___copy_helper_block__22
@@ -770,7 +770,7 @@ pub fn stub_654c0() -> ! {
 // type: int __fastcall(int)
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")]
 pub fn stub_654c8() -> ! {
-    todo!("0x654c8 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")
+    todo!("0x654c8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::StandardOutMessage const&)>::slot,boost::function<void ()(RBX::StandardOutMessage const&)>,1,void ()(RBX::StandardOutMessage const&)>::call(RBX::StandardOutMessage const&)")
 }
 
 // 0x654d0 — __ZNK5boost9function1IvRKN3RBX18StandardOutMessageEEclES4_
@@ -845,7 +845,7 @@ pub fn stub_65b20() -> ! {
 // 0x65b4c — __GLOBAL__I_a_35
 #[doc(alias = "global constructor keyed to_a_35")]
 pub fn stub_65b4c() -> ! {
-    todo!("0x65b4c `global constructor keyed to'_a_35")
+    todo!("0x65b4c global constructor keyed to_a_35")
 }
 
 // 0x661b0 — ___copy_helper_block__24
@@ -963,7 +963,7 @@ pub fn stub_67094() -> ! {
 // 0x67354 — __GLOBAL__I_a_36
 #[doc(alias = "global constructor keyed to_a_36")]
 pub fn stub_67354() -> ! {
-    todo!("0x67354 `global constructor keyed to'_a_36")
+    todo!("0x67354 global constructor keyed to_a_36")
 }
 
 // 0x67580 — ___copy_helper_block__26
@@ -997,7 +997,7 @@ pub fn stub_68478() -> ! {
 // 0x6850c — __GLOBAL__I_a_37
 #[doc(alias = "global constructor keyed to_a_37")]
 pub fn stub_6850c() -> ! {
-    todo!("0x6850c `global constructor keyed to'_a_37")
+    todo!("0x6850c global constructor keyed to_a_37")
 }
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv

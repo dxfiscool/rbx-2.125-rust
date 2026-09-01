@@ -518,7 +518,7 @@ pub fn stub_0x9316d0() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>,2,void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(int,boost::shared_ptr<RBX::Reflection::Tuple const>)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFviN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotENS3_8functionISA_EELi2ESA_E4callEiS9_")]
 pub fn stub_0x9317a8() -> ! {
-    todo!("0x9317a8 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>,2,void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(int,boost::shared_ptr<RBX::Reflection::Tuple const>)")
+    todo!("0x9317a8 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot,boost::function<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>,2,void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::call(int,boost::shared_ptr<RBX::Reflection::Tuple const>)")
 }
 
 // 0x9317b0 — __ZNK5boost9function2IviNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEclEiS6_

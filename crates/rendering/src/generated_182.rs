@@ -130,7 +130,7 @@ pub fn stub_4ee0c() -> ! {
 #[doc(alias = "global constructor keyed to_a_22")]
 // was: `global constructor keyed to'_a_22
 pub fn stub_4ef74() -> ! {
-    todo!("0x4ef74 `global constructor keyed to'_a_22")
+    todo!("0x4ef74 global constructor keyed to_a_22")
 }
 
 // 0x4f188 — -[JumpButton initWithFrame:]
@@ -207,7 +207,7 @@ pub fn stub_4f640() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")]
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)
 pub fn stub_4f650() -> ! {
-    todo!("0x4f650 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
+    todo!("0x4f650 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(objc_object *,objc_selector *,void const*),boost::_bi::list3<boost::_bi::value<JumpButton *>,boost::_bi::list3<objc_selector>,boost::arg<1>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::call(RBX::Reflection::PropertyDescriptor const*)")
 }
 
 // 0x4f660 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvP11objc_objectP13objc_selectorPKvENSC_5list3INSC_5valueIP10JumpButtonEENSM_ISG_EENSB_3argILi1EEEEEEELi1ES8_ED1Ev
@@ -228,7 +228,7 @@ pub fn stub_4f70c() -> ! {
 #[doc(alias = "global constructor keyed to_a_23")]
 // was: `global constructor keyed to'_a_23
 pub fn stub_4f7bc() -> ! {
-    todo!("0x4f7bc `global constructor keyed to'_a_23")
+    todo!("0x4f7bc global constructor keyed to_a_23")
 }
 
 // 0x4f9d0 — -[ThumbStickControl init:]
@@ -389,7 +389,7 @@ pub fn stub_50c90() -> ! {
 #[doc(alias = "global constructor keyed to_a_24")]
 // was: `global constructor keyed to'_a_24
 pub fn stub_50c98() -> ! {
-    todo!("0x50c98 `global constructor keyed to'_a_24")
+    todo!("0x50c98 global constructor keyed to_a_24")
 }
 
 // 0x50eb0 — -[GameMenu init:]
@@ -522,7 +522,7 @@ pub fn stub_517ec() -> ! {
 #[doc(alias = "global constructor keyed to_a_25")]
 // was: `global constructor keyed to'_a_25
 pub fn stub_517f0() -> ! {
-    todo!("0x517f0 `global constructor keyed to'_a_25")
+    todo!("0x517f0 global constructor keyed to_a_25")
 }
 
 // 0x51a04 — -[MenuButton init:]
@@ -550,7 +550,7 @@ pub fn stub_51b44() -> ! {
 #[doc(alias = "global constructor keyed to_a_26")]
 // was: `global constructor keyed to'_a_26
 pub fn stub_51bb0() -> ! {
-    todo!("0x51bb0 `global constructor keyed to'_a_26")
+    todo!("0x51bb0 global constructor keyed to_a_26")
 }
 
 // 0x51dc4 — +[MainViewController sharedInstance]
@@ -648,7 +648,7 @@ pub fn stub_51fd0() -> ! {
 #[doc(alias = "global constructor keyed to_a_27")]
 // was: `global constructor keyed to'_a_27
 pub fn stub_51fe0() -> ! {
-    todo!("0x51fe0 `global constructor keyed to'_a_27")
+    todo!("0x51fe0 global constructor keyed to_a_27")
 }
 
 // 0x52178 — -[RobloxAnimatingPageViewController initWithCoder:]

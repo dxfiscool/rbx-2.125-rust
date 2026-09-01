@@ -615,7 +615,7 @@ pub fn stub_3565b8() -> ! {
 #[doc(alias = "global constructor keyed to_a_126")]
 // was: __GLOBAL__I_a_126
 pub fn stub_3565e4() -> ! {
-    todo!("0x3565e4 `global constructor keyed to'_a_126")
+    todo!("0x3565e4 global constructor keyed to_a_126")
 }
 
 // 0x3568e0 — __ZN3RBX4Math18deltaRotationCloseEff

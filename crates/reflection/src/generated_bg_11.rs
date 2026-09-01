@@ -169,7 +169,7 @@ pub fn stub_0x43364() -> ! {
 #[doc(alias = "global constructor keyed to_a_13")]
 #[doc(alias = "__GLOBAL__I_a_13")]
 pub fn stub_0x43394() -> ! {
-    todo!("0x43394 `global constructor keyed to'_a_13")
+    todo!("0x43394 global constructor keyed to_a_13")
 }
 
 // 0x4352c — __ZN3RBX18FunctionMarshallerC2Ej
@@ -391,7 +391,7 @@ pub fn stub_0x44888() -> ! {
 #[doc(alias = "global constructor keyed to_a_14")]
 #[doc(alias = "__GLOBAL__I_a_14")]
 pub fn stub_0x44924() -> ! {
-    todo!("0x44924 `global constructor keyed to'_a_14")
+    todo!("0x44924 global constructor keyed to_a_14")
 }
 
 // 0x44abc — -[CameraControl init:delegate:]
@@ -562,7 +562,7 @@ pub fn stub_0x45d68() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_")]
 pub fn stub_0x45d98() -> ! {
-    todo!("0x45d98 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
+    todo!("0x45d98 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
 }
 
 // 0x45dc8 — __ZNK5boost9function3IvbPvN3RBX7UIEventEEclEbS1_S3_
@@ -658,7 +658,7 @@ pub fn stub_0x46464() -> ! {
 #[doc(alias = "global constructor keyed to_a_15")]
 #[doc(alias = "__GLOBAL__I_a_15")]
 pub fn stub_0x46490() -> ! {
-    todo!("0x46490 `global constructor keyed to'_a_15")
+    todo!("0x46490 global constructor keyed to_a_15")
 }
 
 // 0x466cc — -[CharacterMove init:]
@@ -714,7 +714,7 @@ pub fn stub_0x469e8() -> ! {
 #[doc(alias = "global constructor keyed to_a_16")]
 #[doc(alias = "__GLOBAL__I_a_16")]
 pub fn stub_0x46f64() -> ! {
-    todo!("0x46f64 `global constructor keyed to'_a_16")
+    todo!("0x46f64 global constructor keyed to_a_16")
 }
 
 // 0x47178 — -[ControlComponent init]
@@ -749,7 +749,7 @@ pub fn stub_0x47338() -> ! {
 #[doc(alias = "global constructor keyed to_a_17")]
 #[doc(alias = "__GLOBAL__I_a_17")]
 pub fn stub_0x47424() -> ! {
-    todo!("0x47424 `global constructor keyed to'_a_17")
+    todo!("0x47424 global constructor keyed to_a_17")
 }
 
 // 0x47638 — -[ControlView init:withGame:]

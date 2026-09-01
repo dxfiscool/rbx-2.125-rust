@@ -80,7 +80,7 @@ pub fn stub_322bdc() -> ! {
 #[doc(alias = "global constructor keyed to_a_117")]
 #[doc(alias = "__GLOBAL__I_a_117")]
 pub fn stub_322e00() -> ! {
-    todo!("0x322e00 `global constructor keyed to'_a_117")
+    todo!("0x322e00 global constructor keyed to_a_117")
 }
 
 // 0x322ec8 — __ZN3RBX14InstanceHandleC1EPNS_10Reflection13DescribedBaseE
@@ -124,7 +124,7 @@ pub fn stub_322ef4() -> ! {
 #[doc(alias = "global constructor keyed to_a_118")]
 #[doc(alias = "__GLOBAL__I_a_118")]
 pub fn stub_322ef8() -> ! {
-    todo!("0x322ef8 `global constructor keyed to'_a_118")
+    todo!("0x322ef8 global constructor keyed to_a_118")
 }
 
 // 0x323028 — __ZN3RBX4Hash4hashERKSs
@@ -182,7 +182,7 @@ pub fn stub_3233ac() -> ! {
 #[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")]
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEN5boost3_bi6bind_tIvNSA_4_mfi3mf1IvNS3_17HeartbeatInstanceES6_EENSB_5list2INSB_5valueIPSF_EENSA_3argILi1EEEEEEELi1ES7_E4callES6_")]
 pub fn stub_3233b4() -> ! {
-    todo!("0x3233b4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
+    todo!("0x3233b4 non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HeartbeatInstance,RBX::Heartbeat const&>,boost::_bi::list2<boost::_bi::value<RBX::HeartbeatInstance*>,boost::arg<1>>>,1,void ()(RBX::Heartbeat const&)>::call(RBX::Heartbeat const&)")
 }
 
 // 0x3233bc — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX17HeartbeatInstanceERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_
@@ -214,7 +214,7 @@ pub fn stub_323400() -> ! {
 #[doc(alias = "global constructor keyed to_a_119")]
 #[doc(alias = "__GLOBAL__I_a_119")]
 pub fn stub_3234d4() -> ! {
-    todo!("0x3234d4 `global constructor keyed to'_a_119")
+    todo!("0x3234d4 global constructor keyed to_a_119")
 }
 
 // 0x32366c — __ZN3RBX13HandleHitTest18hitTestHandleWorldERKNS_7ExtentsENS_10HandleTypeERKNS_6RbxRayERN3G3D7Vector3ERNS_8NormalIdEi
@@ -247,7 +247,7 @@ pub fn stub_3238e8() -> ! {
 #[doc(alias = "global constructor keyed to_a_120")]
 #[doc(alias = "__GLOBAL__I_a_120")]
 pub fn stub_323b78() -> ! {
-    todo!("0x323b78 `global constructor keyed to'_a_120")
+    todo!("0x323b78 global constructor keyed to_a_120")
 }
 
 // 0x323de8 — __ZN3RBX8IndexBoxC1ERKN3G3D7Vector3ES4_
@@ -300,7 +300,7 @@ pub fn stub_323fdc() -> ! {
 #[doc(alias = "global constructor keyed to_a_121")]
 #[doc(alias = "__GLOBAL__I_a_121")]
 pub fn stub_323fe0() -> ! {
-    todo!("0x323fe0 `global constructor keyed to'_a_121")
+    todo!("0x323fe0 global constructor keyed to_a_121")
 }
 
 // 0x324018 — __ZN3RBX11IndexedMeshC2Ev
@@ -460,7 +460,7 @@ pub fn stub_3246ec() -> ! {
 #[doc(alias = "global constructor keyed to_a_122")]
 #[doc(alias = "__GLOBAL__I_a_122")]
 pub fn stub_324710() -> ! {
-    todo!("0x324710 `global constructor keyed to'_a_122")
+    todo!("0x324710 global constructor keyed to_a_122")
 }
 
 // 0x3247d8 — __ZN3RBX11IndexedTreeC2Ev
@@ -570,7 +570,7 @@ pub fn stub_3250bc() -> ! {
 #[doc(alias = "global constructor keyed to_a_123")]
 #[doc(alias = "__GLOBAL__I_a_123")]
 pub fn stub_3251ac() -> ! {
-    todo!("0x3251ac `global constructor keyed to'_a_123")
+    todo!("0x3251ac global constructor keyed to_a_123")
 }
 
 // 0x325278 — __ZN3RBX18InterpolatedCFrame12clearHistoryEv
@@ -730,7 +730,7 @@ pub fn stub_3260d8() -> ! {
 #[doc(alias = "global constructor keyed to_a_124")]
 #[doc(alias = "__GLOBAL__I_a_124")]
 pub fn stub_326108() -> ! {
-    todo!("0x326108 `global constructor keyed to'_a_124")
+    todo!("0x326108 global constructor keyed to_a_124")
 }
 
 // 0x326378 — __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEEC1Ev
@@ -845,7 +845,7 @@ pub fn stub_326bfc() -> ! {
 #[doc(alias = "global constructor keyed to_a_125")]
 #[doc(alias = "__GLOBAL__I_a_125")]
 pub fn stub_326d8c() -> ! {
-    todo!("0x326d8c `global constructor keyed to'_a_125")
+    todo!("0x326d8c global constructor keyed to_a_125")
 }
 
 // 0x326e54 — __ZN3RBX18LegacyContentTableC1Ev
