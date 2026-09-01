@@ -185,3 +185,5 @@ pub mod generated_core_shard_em;
 pub mod generated_core_shard_en;
 pub mod generated_core_shard_eo;
 pub mod generated_core_shard_ep;
+pub mod generated_core_shard_eq;
+pub mod generated_core_shard_er;
