@@ -1,709 +1,709 @@
 // Auto-generated skeletons for rbx-script — filler EA-sorted asc (global holes)
 // Filter: Script|Lua|Yield|lua (case-sensitive, lua lower) -> 5401 filtered, all stubbed (0 remaining)
 // Source: ida/export.json (85545 funcs, base 0x4000)
-// Batch: +100 stubs | range 0xb075c..0xb7aa4 | filtered 5401 done, script 12087->12187 total, global 81098->81198 covered, 4347 remaining, rbx_core::SharedPtr not boost
+// Batch: +100 stubs | range 0xf21b68..0xf22030 | filtered 5401 done, script 12185->12285 total, global 84637->84737 covered, 809 remaining, rbx_core::SharedPtr not boost
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; ` and ' stripped from alias
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
 use rbx_core::SharedPtr;
 
-// 0xb075c — __ZN4FMOD13DSPDistortion20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
-// type: int __fastcall(FMOD::DSPDistortion *, int, float *, char *)
-#[doc(alias = "FMOD::DSPDistortion::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")]
-pub fn stub_0xb075c() -> ! {
-    todo!("0xb075c __ZN4FMOD13DSPDistortion20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")
+// 0xf21b68 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid13NameOcclusionEEEE14doGetSingletonEv$shim
+// type: void *()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid13NameOcclusionEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21b68() -> ! {
+    todo!("0xf21b68 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid13NameOcclusionEEEE14doGetSingletonEv$shim")
 }
 
-// 0xb0768 — __ZN4FMOD13DSPDistortion12readInternalEPfS1_jii
-// type: int __fastcall(FMOD::DSPDistortion *this, float *, float *__dst, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPDistortion::readInternal(float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb0768() -> ! {
-    todo!("0xb0768 __ZN4FMOD13DSPDistortion12readInternalEPfS1_jii")
+// 0xf21b74 — __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEED2Ev$shim
+// type: int __fastcall(RBX::Reflection::EnumDescriptor *)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEED2Ev$shim")]
+pub fn stub_0xf21b74() -> ! {
+    todo!("0xf21b74 __ZN3RBX10Reflection8EnumDescINS_8Humanoid13NameOcclusionEED2Ev$shim")
 }
 
-// 0xb0e2c — __ZN4FMOD13DSPDistortion12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-// type: int __fastcall(FMOD::DSPDistortion *, float *, float *, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPDistortion::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb0e2c() -> ! {
-    todo!("0xb0e2c __ZN4FMOD13DSPDistortion12readCallbackEP14FMOD_DSP_STATEPfS3_jii")
+// 0xf21b80 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid6StatusEEEE14doGetSingletonEv$shim
+// type: _UNKNOWN **()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid6StatusEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21b80() -> ! {
+    todo!("0xf21b80 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_8Humanoid6StatusEEEE14doGetSingletonEv$shim")
 }
 
-// 0xb0e54 — __ZN4FMOD13DSPDistortion16getDescriptionExEv
-// type: void *__fastcall(FMOD::DSPDistortion *this)
-#[doc(alias = "FMOD::DSPDistortion::getDescriptionEx(void)")]
-pub fn stub_0xb0e54() -> ! {
-    todo!("0xb0e54 __ZN4FMOD13DSPDistortion16getDescriptionExEv")
+// 0xf21b8c — __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEED2Ev$shim
+// type: int __fastcall(RBX::Reflection::EnumDescriptor *)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEED2Ev$shim")]
+pub fn stub_0xf21b8c() -> ! {
+    todo!("0xf21b8c __ZN3RBX10Reflection8EnumDescINS_8Humanoid6StatusEED2Ev$shim")
 }
 
-// 0xb0f74 — __GLOBAL__I__ZN4FMOD13dspdistortionE
+// 0xf21bb0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Legacy17SurfaceConstraintEEEE14doGetSingletonEv$shim
+// type: void *()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Legacy17SurfaceConstraintEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21bb0() -> ! {
+    todo!("0xf21bb0 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Legacy17SurfaceConstraintEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21bbc — __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED2Ev$shim
+// type: int __fastcall(RBX::Reflection::EnumDescriptor *)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED2Ev$shim")]
+pub fn stub_0xf21bbc() -> ! {
+    todo!("0xf21bbc __ZN3RBX10Reflection8EnumDescINS_6Legacy17SurfaceConstraintEED2Ev$shim")
+}
+
+// 0xf21bc8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17KeywordFilterTypeEEEE14doGetSingletonEv$shim
+// type: void *()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17KeywordFilterTypeEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21bc8() -> ! {
+    todo!("0xf21bc8 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_17KeywordFilterTypeEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21bd4 — __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED2Ev$shim
+// type: int __fastcall(RBX::Reflection::EnumDescriptor *)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED2Ev$shim")]
+pub fn stub_0xf21bd4() -> ! {
+    todo!("0xf21bd4 __ZN3RBX10Reflection8EnumDescINS_17KeywordFilterTypeEED2Ev$shim")
+}
+
+// 0xf21be0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Joint9JointTypeEEEE14doGetSingletonEv$shim
 // type: int()
-#[doc(alias = "global constructor keyed toFMOD::dspdistortion")]
-pub fn stub_0xb0f74() -> ! {
-    todo!("0xb0f74 __GLOBAL__I__ZN4FMOD13dspdistortionE")
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Joint9JointTypeEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21be0() -> ! {
+    todo!("0xf21be0 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_5Joint9JointTypeEEEE14doGetSingletonEv$shim")
 }
 
-// 0xb0f80 — __ZN4FMOD7DSPEcho14createInternalEv
-// type: int __fastcall(FMOD::DSPEcho *this)
-#[doc(alias = "FMOD::DSPEcho::createInternal(void)")]
-pub fn stub_0xb0f80() -> ! {
-    todo!("0xb0f80 __ZN4FMOD7DSPEcho14createInternalEv")
+// 0xf21bec — __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED2Ev$shim
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED2Ev$shim")]
+pub fn stub_0xf21bec() -> ! {
+    todo!("0xf21bec __ZN3RBX10Reflection8EnumDescINS_5Joint9JointTypeEED2Ev$shim")
 }
 
-// 0xb1034 — __ZN4FMOD7DSPEcho14createCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPEcho *)
-#[doc(alias = "FMOD::DSPEcho::createCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb1034() -> ! {
-    todo!("0xb1034 __ZN4FMOD7DSPEcho14createCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb1040 — __ZN4FMOD7DSPEcho17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: int __fastcall(FMOD::DSPEcho *this, FMOD::MemoryTracker *)
-#[doc(alias = "FMOD::DSPEcho::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xb1040() -> ! {
-    todo!("0xb1040 __ZN4FMOD7DSPEcho17getMemoryUsedImplEPNS_13MemoryTrackerE")
-}
-
-// 0xb1074 — __ZN4FMOD7DSPEcho21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
-// type: int __fastcall(FMOD::DSPEcho *this, FMOD::MemoryTracker *)
-#[doc(alias = "FMOD::DSPEcho::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
-pub fn stub_0xb1074() -> ! {
-    todo!("0xb1074 __ZN4FMOD7DSPEcho21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE")
-}
-
-// 0xb10cc — __ZN4FMOD7DSPEcho20getParameterInternalEiPfPc
-// type: int __fastcall(FMOD::DSPEcho *this, int, float *, char *)
-#[doc(alias = "FMOD::DSPEcho::getParameterInternal(int,float *,char *)")]
-pub fn stub_0xb10cc() -> ! {
-    todo!("0xb10cc __ZN4FMOD7DSPEcho20getParameterInternalEiPfPc")
-}
-
-// 0xb11f4 — __ZN4FMOD7DSPEcho20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
-// type: int __fastcall(FMOD::DSPEcho *, int, float *, char *)
-#[doc(alias = "FMOD::DSPEcho::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")]
-pub fn stub_0xb11f4() -> ! {
-    todo!("0xb11f4 __ZN4FMOD7DSPEcho20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")
-}
-
-// 0xb1200 — __ZN4FMOD7DSPEcho15releaseInternalEv
-// type: int __fastcall(FMOD::DSPEcho *this)
-#[doc(alias = "FMOD::DSPEcho::releaseInternal(void)")]
-pub fn stub_0xb1200() -> ! {
-    todo!("0xb1200 __ZN4FMOD7DSPEcho15releaseInternalEv")
-}
-
-// 0xb1254 — __ZN4FMOD7DSPEcho15releaseCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPEcho *)
-#[doc(alias = "FMOD::DSPEcho::releaseCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb1254() -> ! {
-    todo!("0xb1254 __ZN4FMOD7DSPEcho15releaseCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb1260 — __ZN4FMOD7DSPEcho12readInternalEPfS1_jii
-// type: int __fastcall(FMOD::DSPEcho *this, float *, float *__dst, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPEcho::readInternal(float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb1260() -> ! {
-    todo!("0xb1260 __ZN4FMOD7DSPEcho12readInternalEPfS1_jii")
-}
-
-// 0xb1fec — __ZN4FMOD7DSPEcho12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-// type: int __fastcall(FMOD::DSPEcho *, float *, float *, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPEcho::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb1fec() -> ! {
-    todo!("0xb1fec __ZN4FMOD7DSPEcho12readCallbackEP14FMOD_DSP_STATEPfS3_jii")
-}
-
-// 0xb2014 — __ZN4FMOD7DSPEcho13resetInternalEv
-// type: int __fastcall(FMOD::DSPEcho *this)
-#[doc(alias = "FMOD::DSPEcho::resetInternal(void)")]
-pub fn stub_0xb2014() -> ! {
-    todo!("0xb2014 __ZN4FMOD7DSPEcho13resetInternalEv")
-}
-
-// 0xb2048 — __ZN4FMOD7DSPEcho13resetCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPEcho *)
-#[doc(alias = "FMOD::DSPEcho::resetCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb2048() -> ! {
-    todo!("0xb2048 __ZN4FMOD7DSPEcho13resetCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb2054 — __ZN4FMOD7DSPEcho14updateInternalEv
-// type: int __fastcall(FMOD::DSPEcho *this)
-#[doc(alias = "FMOD::DSPEcho::updateInternal(void)")]
-pub fn stub_0xb2054() -> ! {
-    todo!("0xb2054 __ZN4FMOD7DSPEcho14updateInternalEv")
-}
-
-// 0xb21e8 — __ZN4FMOD7DSPEcho14updateCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPEcho *)
-#[doc(alias = "FMOD::DSPEcho::updateCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb21e8() -> ! {
-    todo!("0xb21e8 __ZN4FMOD7DSPEcho14updateCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb21f4 — __ZN4FMOD7DSPEcho16getDescriptionExEv
-// type: void *__fastcall(FMOD::DSPEcho *this)
-#[doc(alias = "FMOD::DSPEcho::getDescriptionEx(void)")]
-pub fn stub_0xb21f4() -> ! {
-    todo!("0xb21f4 __ZN4FMOD7DSPEcho16getDescriptionExEv")
-}
-
-// 0xb22f0 — __ZN4FMOD7DSPEcho20setParameterInternalEif
-// type: int __fastcall(FMOD::DSPEcho *this, int, float)
-#[doc(alias = "FMOD::DSPEcho::setParameterInternal(int,float)")]
-pub fn stub_0xb22f0() -> ! {
-    todo!("0xb22f0 __ZN4FMOD7DSPEcho20setParameterInternalEif")
-}
-
-// 0xb2424 — __ZN4FMOD7DSPEcho20setParameterCallbackEP14FMOD_DSP_STATEif
-// type: int __fastcall(FMOD::DSPEcho *, int, float)
-#[doc(alias = "FMOD::DSPEcho::setParameterCallback(FMOD_DSP_STATE *,int,float)")]
-pub fn stub_0xb2424() -> ! {
-    todo!("0xb2424 __ZN4FMOD7DSPEcho20setParameterCallbackEP14FMOD_DSP_STATEif")
-}
-
-// 0xb2474 — __GLOBAL__I__ZN4FMOD12dspecho_descE
+// 0xf21bf8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9TopBottomEEEE14doGetSingletonEv$shim
 // type: int()
-#[doc(alias = "global constructor keyed toFMOD::dspecho_desc")]
-pub fn stub_0xb2474() -> ! {
-    todo!("0xb2474 __GLOBAL__I__ZN4FMOD12dspecho_descE")
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9TopBottomEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21bf8() -> ! {
+    todo!("0xf21bf8 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9TopBottomEEEE14doGetSingletonEv$shim")
 }
 
-// 0xb2480 — __ZN4FMOD6DSPFFT7processEi
-// type: int __fastcall(FMOD::DSPFFT *this, int)
-#[doc(alias = "FMOD::DSPFFT::process(int)")]
-pub fn stub_0xb2480() -> ! {
-    todo!("0xb2480 __ZN4FMOD6DSPFFT7processEi")
+// 0xf21c04 — __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED2Ev$shim
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED2Ev$shim")]
+pub fn stub_0xf21c04() -> ! {
+    todo!("0xf21c04 __ZN3RBX10Reflection8EnumDescINS_7Feature9TopBottomEED2Ev$shim")
 }
 
-// 0xb2764 — __ZN4FMOD6DSPFFTC2Ev
-// type: float __fastcall(FMOD::DSPFFT *this)
-#[doc(alias = "FMOD::DSPFFT::DSPFFT(void)")]
-pub fn stub_0xb2764() -> ! {
-    todo!("0xb2764 __ZN4FMOD6DSPFFTC2Ev")
-}
-
-// 0xb27bc — __ZN4FMOD6DSPFFTC1Ev
-// type: float __fastcall(FMOD::DSPFFT *this)
-#[doc(alias = "FMOD::DSPFFT::DSPFFT(void)")]
-pub fn stub_0xb27bc() -> ! {
-    todo!("0xb27bc __ZN4FMOD6DSPFFTC1Ev")
-}
-
-// 0xb27c0 — __ZN4FMOD6DSPFFT11getSpectrumEPfjjS1_iii19FMOD_DSP_FFT_WINDOW
-// type: int __fastcall(FMOD::DSPFFT *this, int, unsigned int, unsigned int, int, int, int, int, int)
-#[doc(alias = "FMOD::DSPFFT::getSpectrum(float *,unsigned int,unsigned int,float *,int,int,int,FMOD_DSP_FFT_WINDOW)")]
-pub fn stub_0xb27c0() -> ! {
-    todo!("0xb27c0 __ZN4FMOD6DSPFFT11getSpectrumEPfjjS1_iii19FMOD_DSP_FFT_WINDOW")
-}
-
-// 0xb308c — __ZN4FMOD9DSPFilter16getHistoryBufferEPPfPjS3_
-// type: int __fastcall(FMOD::DSPFilter *this, float **, unsigned int *, unsigned int *)
-#[doc(alias = "FMOD::DSPFilter::getHistoryBuffer(float **,unsigned int *,unsigned int *)")]
-pub fn stub_0xb308c() -> ! {
-    todo!("0xb308c __ZN4FMOD9DSPFilter16getHistoryBufferEPPfPjS3_")
-}
-
-// 0xb30b8 — __ZN4FMOD9DSPFilter7releaseEb
-// type: int __fastcall(FMOD::DSPFilter *this, bool)
-#[doc(alias = "FMOD::DSPFilter::release(bool)")]
-pub fn stub_0xb30b8() -> ! {
-    todo!("0xb30b8 __ZN4FMOD9DSPFilter7releaseEb")
-}
-
-// 0xb30e4 — __ZN4FMOD9DSPFilter4readEPPfPiPj16FMOD_SPEAKERMODEij
-// type: int __fastcall(int, float **, int *, unsigned int *, int, int, int)
-#[doc(alias = "FMOD::DSPFilter::read(float **,int *,unsigned int *,FMOD_SPEAKERMODE,int,unsigned int)")]
-pub fn stub_0xb30e4() -> ! {
-    todo!("0xb30e4 __ZN4FMOD9DSPFilter4readEPPfPiPj16FMOD_SPEAKERMODEij")
-}
-
-// 0xb37c0 — __ZN4FMOD9DSPFilter13stopBufferingEv
-// type: int __fastcall(FMOD::DSPFilter *this)
-#[doc(alias = "FMOD::DSPFilter::stopBuffering(void)")]
-pub fn stub_0xb37c0() -> ! {
-    todo!("0xb37c0 __ZN4FMOD9DSPFilter13stopBufferingEv")
-}
-
-// 0xb3810 — __ZN4FMOD9DSPFilter14startBufferingEv
-// type: int __fastcall(FMOD::DSPFilter *this)
-#[doc(alias = "FMOD::DSPFilter::startBuffering(void)")]
-pub fn stub_0xb3810() -> ! {
-    todo!("0xb3810 __ZN4FMOD9DSPFilter14startBufferingEv")
-}
-
-// 0xb38a8 — __ZN4FMOD9DSPFlange20setParameterInternalEif
-// type: int __fastcall(FMOD::DSPFlange *this, int, float)
-#[doc(alias = "FMOD::DSPFlange::setParameterInternal(int,float)")]
-pub fn stub_0xb38a8() -> ! {
-    todo!("0xb38a8 __ZN4FMOD9DSPFlange20setParameterInternalEif")
-}
-
-// 0xb38f4 — __ZN4FMOD9DSPFlange20setParameterCallbackEP14FMOD_DSP_STATEif
-// type: int __fastcall(FMOD::DSPFlange *, int, float)
-#[doc(alias = "FMOD::DSPFlange::setParameterCallback(FMOD_DSP_STATE *,int,float)")]
-pub fn stub_0xb38f4() -> ! {
-    todo!("0xb38f4 __ZN4FMOD9DSPFlange20setParameterCallbackEP14FMOD_DSP_STATEif")
-}
-
-// 0xb3900 — __ZN4FMOD9DSPFlange17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: int __fastcall(FMOD::DSPFlange *this, FMOD::MemoryTracker *)
-#[doc(alias = "FMOD::DSPFlange::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xb3900() -> ! {
-    todo!("0xb3900 __ZN4FMOD9DSPFlange17getMemoryUsedImplEPNS_13MemoryTrackerE")
-}
-
-// 0xb3934 — __ZN4FMOD9DSPFlange21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
-// type: int __fastcall(FMOD::DSPFlange *this, FMOD::MemoryTracker *)
-#[doc(alias = "FMOD::DSPFlange::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
-pub fn stub_0xb3934() -> ! {
-    todo!("0xb3934 __ZN4FMOD9DSPFlange21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE")
-}
-
-// 0xb398c — __ZN4FMOD9DSPFlange20getParameterInternalEiPfPc
-// type: int __fastcall(FMOD::DSPFlange *this, int, float *, char *)
-#[doc(alias = "FMOD::DSPFlange::getParameterInternal(int,float *,char *)")]
-pub fn stub_0xb398c() -> ! {
-    todo!("0xb398c __ZN4FMOD9DSPFlange20getParameterInternalEiPfPc")
-}
-
-// 0xb3a84 — __ZN4FMOD9DSPFlange20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
-// type: int __fastcall(FMOD::DSPFlange *, int, float *, char *)
-#[doc(alias = "FMOD::DSPFlange::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")]
-pub fn stub_0xb3a84() -> ! {
-    todo!("0xb3a84 __ZN4FMOD9DSPFlange20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")
-}
-
-// 0xb3a90 — __ZN4FMOD9DSPFlange13resetInternalEv
-// type: int __fastcall(FMOD::DSPFlange *this)
-#[doc(alias = "FMOD::DSPFlange::resetInternal(void)")]
-pub fn stub_0xb3a90() -> ! {
-    todo!("0xb3a90 __ZN4FMOD9DSPFlange13resetInternalEv")
-}
-
-// 0xb3ac4 — __ZN4FMOD9DSPFlange13resetCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPFlange *)
-#[doc(alias = "FMOD::DSPFlange::resetCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb3ac4() -> ! {
-    todo!("0xb3ac4 __ZN4FMOD9DSPFlange13resetCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb3ad0 — __ZN4FMOD9DSPFlange12readInternalEPfS1_jii
-// type: int __fastcall(FMOD::DSPFlange *this, float *, float *, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPFlange::readInternal(float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb3ad0() -> ! {
-    todo!("0xb3ad0 __ZN4FMOD9DSPFlange12readInternalEPfS1_jii")
-}
-
-// 0xb3ec0 — __ZN4FMOD9DSPFlange12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-// type: int __fastcall(FMOD::DSPFlange *, float *, float *, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPFlange::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb3ec0() -> ! {
-    todo!("0xb3ec0 __ZN4FMOD9DSPFlange12readCallbackEP14FMOD_DSP_STATEPfS3_jii")
-}
-
-// 0xb3ee8 — __ZN4FMOD9DSPFlange15releaseInternalEv
-// type: int __fastcall(FMOD::DSPFlange *this)
-#[doc(alias = "FMOD::DSPFlange::releaseInternal(void)")]
-pub fn stub_0xb3ee8() -> ! {
-    todo!("0xb3ee8 __ZN4FMOD9DSPFlange15releaseInternalEv")
-}
-
-// 0xb3f38 — __ZN4FMOD9DSPFlange15releaseCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPFlange *)
-#[doc(alias = "FMOD::DSPFlange::releaseCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb3f38() -> ! {
-    todo!("0xb3f38 __ZN4FMOD9DSPFlange15releaseCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb3f44 — __ZN4FMOD9DSPFlange14createInternalEv
-// type: int __fastcall(FMOD::DSPFlange *this)
-#[doc(alias = "FMOD::DSPFlange::createInternal(void)")]
-pub fn stub_0xb3f44() -> ! {
-    todo!("0xb3f44 __ZN4FMOD9DSPFlange14createInternalEv")
-}
-
-// 0xb4138 — __ZN4FMOD9DSPFlange14createCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPFlange *)
-#[doc(alias = "FMOD::DSPFlange::createCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb4138() -> ! {
-    todo!("0xb4138 __ZN4FMOD9DSPFlange14createCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb4144 — __ZN4FMOD9DSPFlange16getDescriptionExEv
-// type: void *__fastcall(FMOD::DSPFlange *this)
-#[doc(alias = "FMOD::DSPFlange::getDescriptionEx(void)")]
-pub fn stub_0xb4144() -> ! {
-    todo!("0xb4144 __ZN4FMOD9DSPFlange16getDescriptionExEv")
-}
-
-// 0xb4274 — __GLOBAL__I__ZN4FMOD9dspflangeE
+// 0xf21c10 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9LeftRightEEEE14doGetSingletonEv$shim
 // type: int()
-#[doc(alias = "global constructor keyed toFMOD::dspflange")]
-pub fn stub_0xb4274() -> ! {
-    todo!("0xb4274 __GLOBAL__I__ZN4FMOD9dspflangeE")
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9LeftRightEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21c10() -> ! {
+    todo!("0xf21c10 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature9LeftRightEEEE14doGetSingletonEv$shim")
 }
 
-// 0xb4280 — __ZN4FMOD11DSPHighPass13resetInternalEv
-// type: int __fastcall(FMOD::DSPHighPass *this)
-#[doc(alias = "FMOD::DSPHighPass::resetInternal(void)")]
-pub fn stub_0xb4280() -> ! {
-    todo!("0xb4280 __ZN4FMOD11DSPHighPass13resetInternalEv")
+// 0xf21c1c — __ZN3RBX10Reflection8EnumDescINS_7Feature9LeftRightEED2Ev$shim
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Feature9LeftRightEED2Ev$shim")]
+pub fn stub_0xf21c1c() -> ! {
+    todo!("0xf21c1c __ZN3RBX10Reflection8EnumDescINS_7Feature9LeftRightEED2Ev$shim")
 }
 
-// 0xb42c8 — __ZN4FMOD11DSPHighPass7processEPfS1_ji
-// type: int __fastcall(FMOD::DSPHighPass *this, float *, float *, unsigned int, int)
-#[doc(alias = "FMOD::DSPHighPass::process(float *,float *,unsigned int,int)")]
-pub fn stub_0xb42c8() -> ! {
-    todo!("0xb42c8 __ZN4FMOD11DSPHighPass7processEPfS1_ji")
-}
-
-// 0xb4dd0 — __ZN4FMOD11DSPHighPass20setParameterInternalEif
-// type: int __fastcall(FMOD::DSPHighPass *this, int, float)
-#[doc(alias = "FMOD::DSPHighPass::setParameterInternal(int,float)")]
-pub fn stub_0xb4dd0() -> ! {
-    todo!("0xb4dd0 __ZN4FMOD11DSPHighPass20setParameterInternalEif")
-}
-
-// 0xb4e0c — __ZN4FMOD11DSPHighPass17getMemoryUsedImplEPNS_13MemoryTrackerE
+// 0xf21c28 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature5InOutEEEE14doGetSingletonEv$shim
 // type: int()
-#[doc(alias = "FMOD::DSPHighPass::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xb4e0c() -> ! {
-    todo!("0xb4e0c __ZN4FMOD11DSPHighPass17getMemoryUsedImplEPNS_13MemoryTrackerE")
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature5InOutEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21c28() -> ! {
+    todo!("0xf21c28 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_7Feature5InOutEEEE14doGetSingletonEv$shim")
 }
 
-// 0xb4e14 — __ZN4FMOD11DSPHighPass13resetCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPHighPass *)
-#[doc(alias = "FMOD::DSPHighPass::resetCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb4e14() -> ! {
-    todo!("0xb4e14 __ZN4FMOD11DSPHighPass13resetCallbackEP14FMOD_DSP_STATE")
+// 0xf21c34 — __ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEED2Ev$shim
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEED2Ev$shim")]
+pub fn stub_0xf21c34() -> ! {
+    todo!("0xf21c34 __ZN3RBX10Reflection8EnumDescINS_7Feature5InOutEED2Ev$shim")
 }
 
-// 0xb4e20 — __ZN4FMOD11DSPHighPass20setParameterCallbackEP14FMOD_DSP_STATEif
-// type: int __fastcall(FMOD::DSPHighPass *, int, float)
-#[doc(alias = "FMOD::DSPHighPass::setParameterCallback(FMOD_DSP_STATE *,int,float)")]
-pub fn stub_0xb4e20() -> ! {
-    todo!("0xb4e20 __ZN4FMOD11DSPHighPass20setParameterCallbackEP14FMOD_DSP_STATEif")
+// 0xf21c40 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9EThrottle13EThrottleTypeEEEE14doGetSingletonEv$shim
+// type: int __fastcall(int)
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9EThrottle13EThrottleTypeEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21c40() -> ! {
+    todo!("0xf21c40 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9EThrottle13EThrottleTypeEEEE14doGetSingletonEv$shim")
 }
 
-// 0xb4e84 — __ZN4FMOD11DSPHighPass20getParameterInternalEiPfPc
-// type: int __fastcall(FMOD::DSPHighPass *this, int, float *, char *)
-#[doc(alias = "FMOD::DSPHighPass::getParameterInternal(int,float *,char *)")]
-pub fn stub_0xb4e84() -> ! {
-    todo!("0xb4e84 __ZN4FMOD11DSPHighPass20getParameterInternalEiPfPc")
-}
-
-// 0xb4efc — __ZN4FMOD11DSPHighPass20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
-// type: int __fastcall(FMOD::DSPHighPass *, int, float *, char *)
-#[doc(alias = "FMOD::DSPHighPass::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")]
-pub fn stub_0xb4efc() -> ! {
-    todo!("0xb4efc __ZN4FMOD11DSPHighPass20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")
-}
-
-// 0xb4f08 — __ZN4FMOD11DSPHighPass16getDescriptionExEv
-// type: void *__fastcall(FMOD::DSPHighPass *this)
-#[doc(alias = "FMOD::DSPHighPass::getDescriptionEx(void)")]
-pub fn stub_0xb4f08() -> ! {
-    todo!("0xb4f08 __ZN4FMOD11DSPHighPass16getDescriptionExEv")
-}
-
-// 0xb4fe4 — __ZN4FMOD11DSPHighPass18updateCoefficientsEff
-// type: int __fastcall(FMOD::DSPHighPass *this, float32_t, float32_t)
-#[doc(alias = "FMOD::DSPHighPass::updateCoefficients(float,float)")]
-pub fn stub_0xb4fe4() -> ! {
-    todo!("0xb4fe4 __ZN4FMOD11DSPHighPass18updateCoefficientsEff")
-}
-
-// 0xb5098 — __ZN4FMOD11DSPHighPass12readInternalEPfS1_jii
-// type: int __fastcall(FMOD::DSPHighPass *this, float *, float *, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPHighPass::readInternal(float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb5098() -> ! {
-    todo!("0xb5098 __ZN4FMOD11DSPHighPass12readInternalEPfS1_jii")
-}
-
-// 0xb52c0 — __ZN4FMOD11DSPHighPass12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-// type: int __fastcall(FMOD::DSPHighPass *, float *, float *, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPHighPass::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb52c0() -> ! {
-    todo!("0xb52c0 __ZN4FMOD11DSPHighPass12readCallbackEP14FMOD_DSP_STATEPfS3_jii")
-}
-
-// 0xb52e8 — __ZN4FMOD11DSPHighPass14createInternalEv
-// type: int __fastcall(FMOD::DSPHighPass *this)
-#[doc(alias = "FMOD::DSPHighPass::createInternal(void)")]
-pub fn stub_0xb52e8() -> ! {
-    todo!("0xb52e8 __ZN4FMOD11DSPHighPass14createInternalEv")
-}
-
-// 0xb53a4 — __ZN4FMOD11DSPHighPass14createCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPHighPass *)
-#[doc(alias = "FMOD::DSPHighPass::createCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb53a4() -> ! {
-    todo!("0xb53a4 __ZN4FMOD11DSPHighPass14createCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb53f4 — __GLOBAL__I__ZN4FMOD11dsphighpassE
+// 0xf21c4c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DataModelMesh7LODTypeEEEE14doGetSingletonEv$shim
 // type: int()
-#[doc(alias = "global constructor keyed toFMOD::dsphighpass")]
-pub fn stub_0xb53f4() -> ! {
-    todo!("0xb53f4 __GLOBAL__I__ZN4FMOD11dsphighpassE")
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DataModelMesh7LODTypeEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21c4c() -> ! {
+    todo!("0xf21c4c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_13DataModelMesh7LODTypeEEEE14doGetSingletonEv$shim")
 }
 
-// 0xb5400 — __ZN4FMOD9DSPITEcho14createInternalEv
-// type: int __fastcall(FMOD::DSPITEcho *this)
-#[doc(alias = "FMOD::DSPITEcho::createInternal(void)")]
-pub fn stub_0xb5400() -> ! {
-    todo!("0xb5400 __ZN4FMOD9DSPITEcho14createInternalEv")
-}
-
-// 0xb5484 — __ZN4FMOD9DSPITEcho14createCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPITEcho *)
-#[doc(alias = "FMOD::DSPITEcho::createCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb5484() -> ! {
-    todo!("0xb5484 __ZN4FMOD9DSPITEcho14createCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb5490 — __ZN4FMOD9DSPITEcho17getMemoryUsedImplEPNS_13MemoryTrackerE
-// type: int __fastcall(FMOD::DSPITEcho *this, FMOD::MemoryTracker *)
-#[doc(alias = "FMOD::DSPITEcho::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xb5490() -> ! {
-    todo!("0xb5490 __ZN4FMOD9DSPITEcho17getMemoryUsedImplEPNS_13MemoryTrackerE")
-}
-
-// 0xb54dc — __ZN4FMOD9DSPITEcho21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
-// type: int __fastcall(FMOD::DSPITEcho *this, FMOD::MemoryTracker *)
-#[doc(alias = "FMOD::DSPITEcho::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
-pub fn stub_0xb54dc() -> ! {
-    todo!("0xb54dc __ZN4FMOD9DSPITEcho21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE")
-}
-
-// 0xb5534 — __ZN4FMOD9DSPITEcho20getParameterInternalEiPfPc
-// type: int __fastcall(FMOD::DSPITEcho *this, int, float *, char *__dst)
-#[doc(alias = "FMOD::DSPITEcho::getParameterInternal(int,float *,char *)")]
-pub fn stub_0xb5534() -> ! {
-    todo!("0xb5534 __ZN4FMOD9DSPITEcho20getParameterInternalEiPfPc")
-}
-
-// 0xb568c — __ZN4FMOD9DSPITEcho20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
-// type: int __fastcall(FMOD::DSPITEcho *, int, float *, char *)
-#[doc(alias = "FMOD::DSPITEcho::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")]
-pub fn stub_0xb568c() -> ! {
-    todo!("0xb568c __ZN4FMOD9DSPITEcho20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")
-}
-
-// 0xb5698 — __ZN4FMOD9DSPITEcho15releaseInternalEv
-// type: int __fastcall(FMOD::DSPITEcho *this)
-#[doc(alias = "FMOD::DSPITEcho::releaseInternal(void)")]
-pub fn stub_0xb5698() -> ! {
-    todo!("0xb5698 __ZN4FMOD9DSPITEcho15releaseInternalEv")
-}
-
-// 0xb5700 — __ZN4FMOD9DSPITEcho15releaseCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPITEcho *)
-#[doc(alias = "FMOD::DSPITEcho::releaseCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb5700() -> ! {
-    todo!("0xb5700 __ZN4FMOD9DSPITEcho15releaseCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb570c — __ZN4FMOD9DSPITEcho13resetInternalEv
-// type: int __fastcall(FMOD::DSPITEcho *this)
-#[doc(alias = "FMOD::DSPITEcho::resetInternal(void)")]
-pub fn stub_0xb570c() -> ! {
-    todo!("0xb570c __ZN4FMOD9DSPITEcho13resetInternalEv")
-}
-
-// 0xb575c — __ZN4FMOD9DSPITEcho13resetCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPITEcho *)
-#[doc(alias = "FMOD::DSPITEcho::resetCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb575c() -> ! {
-    todo!("0xb575c __ZN4FMOD9DSPITEcho13resetCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb5768 — __ZN4FMOD9DSPITEcho20setParameterInternalEif
-// type: int __fastcall(FMOD::DSPITEcho *this, int, float)
-#[doc(alias = "FMOD::DSPITEcho::setParameterInternal(int,float)")]
-pub fn stub_0xb5768() -> ! {
-    todo!("0xb5768 __ZN4FMOD9DSPITEcho20setParameterInternalEif")
-}
-
-// 0xb5960 — __ZN4FMOD9DSPITEcho20setParameterCallbackEP14FMOD_DSP_STATEif
-// type: int __fastcall(FMOD::DSPITEcho *, int, float)
-#[doc(alias = "FMOD::DSPITEcho::setParameterCallback(FMOD_DSP_STATE *,int,float)")]
-pub fn stub_0xb5960() -> ! {
-    todo!("0xb5960 __ZN4FMOD9DSPITEcho20setParameterCallbackEP14FMOD_DSP_STATEif")
-}
-
-// 0xb596c — __ZN4FMOD9DSPITEcho12readInternalEPfS1_jii
-// type: int __fastcall(FMOD::DSPITEcho *this, float *, float *, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPITEcho::readInternal(float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb596c() -> ! {
-    todo!("0xb596c __ZN4FMOD9DSPITEcho12readInternalEPfS1_jii")
-}
-
-// 0xb5d44 — __ZN4FMOD9DSPITEcho12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-// type: int __fastcall(FMOD::DSPITEcho *, float *, float *, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPITEcho::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb5d44() -> ! {
-    todo!("0xb5d44 __ZN4FMOD9DSPITEcho12readCallbackEP14FMOD_DSP_STATEPfS3_jii")
-}
-
-// 0xb5d6c — __ZN4FMOD9DSPITEcho16getDescriptionExEv
-// type: void *__fastcall(FMOD::DSPITEcho *this)
-#[doc(alias = "FMOD::DSPITEcho::getDescriptionEx(void)")]
-pub fn stub_0xb5d6c() -> ! {
-    todo!("0xb5d6c __ZN4FMOD9DSPITEcho16getDescriptionExEv")
-}
-
-// 0xb5e9c — __GLOBAL__I__ZN4FMOD9dspitechoE
+// 0xf21c58 — __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEED2Ev$shim
 // type: int()
-#[doc(alias = "global constructor keyed toFMOD::dspitecho")]
-pub fn stub_0xb5e9c() -> ! {
-    todo!("0xb5e9c __GLOBAL__I__ZN4FMOD9dspitechoE")
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEED2Ev$shim")]
+pub fn stub_0xf21c58() -> ! {
+    todo!("0xf21c58 __ZN3RBX10Reflection8EnumDescINS_13DataModelMesh7LODTypeEED2Ev$shim")
 }
 
-// 0xb5ea8 — __ZN4FMOD10DSPLowPass8bilinearEffffffPffS1_
-// type: int __fastcall(FMOD::DSPLowPass *this, float32_t, float32_t, float32_t, float32_t, float32_t, float32_t, float *, float32_t, float *)
-#[doc(alias = "FMOD::DSPLowPass::bilinear(float,float,float,float,float,float,float *,float,float *)")]
-pub fn stub_0xb5ea8() -> ! {
-    todo!("0xb5ea8 __ZN4FMOD10DSPLowPass8bilinearEffffffPffS1_")
-}
-
-// 0xb5fac — __ZN4FMOD10DSPLowPass20setParameterInternalEif
-// type: int __fastcall(FMOD::DSPLowPass *this, int, float)
-#[doc(alias = "FMOD::DSPLowPass::setParameterInternal(int,float)")]
-pub fn stub_0xb5fac() -> ! {
-    todo!("0xb5fac __ZN4FMOD10DSPLowPass20setParameterInternalEif")
-}
-
-// 0xb5fe4 — __ZN4FMOD10DSPLowPass17getMemoryUsedImplEPNS_13MemoryTrackerE
+// 0xf21c64 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16LegacyController9InputTypeEEEE14doGetSingletonEv$shim
 // type: int()
-#[doc(alias = "FMOD::DSPLowPass::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xb5fe4() -> ! {
-    todo!("0xb5fe4 __ZN4FMOD10DSPLowPass17getMemoryUsedImplEPNS_13MemoryTrackerE")
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16LegacyController9InputTypeEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21c64() -> ! {
+    todo!("0xf21c64 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_16LegacyController9InputTypeEEEE14doGetSingletonEv$shim")
 }
 
-// 0xb5fec — __ZN4FMOD10DSPLowPass20setParameterCallbackEP14FMOD_DSP_STATEif
-// type: int __fastcall(FMOD::DSPLowPass *, int, float)
-#[doc(alias = "FMOD::DSPLowPass::setParameterCallback(FMOD_DSP_STATE *,int,float)")]
-pub fn stub_0xb5fec() -> ! {
-    todo!("0xb5fec __ZN4FMOD10DSPLowPass20setParameterCallbackEP14FMOD_DSP_STATEif")
+// 0xf21c70 — __ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEED2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEED2Ev$shim")]
+pub fn stub_0xf21c70() -> ! {
+    todo!("0xf21c70 __ZN3RBX10Reflection8EnumDescINS_16LegacyController9InputTypeEED2Ev$shim")
 }
 
-// 0xb5ff8 — __ZN4FMOD10DSPLowPass21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE
+// 0xf21c7c — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera10CameraModeEEEE14doGetSingletonEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera10CameraModeEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21c7c() -> ! {
+    todo!("0xf21c7c __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Camera10CameraModeEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21c88 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject20TweenEasingDirectionEEEE14doGetSingletonEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject20TweenEasingDirectionEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21c88() -> ! {
+    todo!("0xf21c88 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject20TweenEasingDirectionEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21c94 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEED2Ev$shim
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEED2Ev$shim")]
+pub fn stub_0xf21c94() -> ! {
+    todo!("0xf21c94 __ZN3RBX10Reflection8EnumDescINS_9GuiObject20TweenEasingDirectionEED2Ev$shim")
+}
+
+// 0xf21ca0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject11TweenStatusEEEE14doGetSingletonEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject11TweenStatusEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21ca0() -> ! {
+    todo!("0xf21ca0 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject11TweenStatusEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21cac — __ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEED2Ev$shim
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEED2Ev$shim")]
+pub fn stub_0xf21cac() -> ! {
+    todo!("0xf21cac __ZN3RBX10Reflection8EnumDescINS_9GuiObject11TweenStatusEED2Ev$shim")
+}
+
+// 0xf21cb8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject16TweenEasingStyleEEEE14doGetSingletonEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject16TweenEasingStyleEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21cb8() -> ! {
+    todo!("0xf21cb8 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject16TweenEasingStyleEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21cc4 — __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED2Ev$shim
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED2Ev$shim")]
+pub fn stub_0xf21cc4() -> ! {
+    todo!("0xf21cc4 __ZN3RBX10Reflection8EnumDescINS_9GuiObject16TweenEasingStyleEED2Ev$shim")
+}
+
+// 0xf21cd0 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject14SizeConstraintEEEE14doGetSingletonEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject14SizeConstraintEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21cd0() -> ! {
+    todo!("0xf21cd0 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9GuiObject14SizeConstraintEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21cdc — __ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED2Ev$shim
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED2Ev$shim")]
+pub fn stub_0xf21cdc() -> ! {
+    todo!("0xf21cdc __ZN3RBX10Reflection8EnumDescINS_9GuiObject14SizeConstraintEED2Ev$shim")
+}
+
+// 0xf21ce8 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9HopperBin7BinTypeEEEE14doGetSingletonEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9HopperBin7BinTypeEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21ce8() -> ! {
+    todo!("0xf21ce8 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_9HopperBin7BinTypeEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21cf4 — __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED2Ev$shim
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED2Ev$shim")]
+pub fn stub_0xf21cf4() -> ! {
+    todo!("0xf21cf4 __ZN3RBX10Reflection8EnumDescINS_9HopperBin7BinTypeEED2Ev$shim")
+}
+
+// 0xf21d00 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Action10ActionTypeEEEE14doGetSingletonEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Action10ActionTypeEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21d00() -> ! {
+    todo!("0xf21d00 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_6Action10ActionTypeEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21d0c — __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED2Ev$shim
+// type: int __fastcall(int, int, int, int, int, int)
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED2Ev$shim")]
+pub fn stub_0xf21d0c() -> ! {
+    todo!("0xf21d0c __ZN3RBX10Reflection8EnumDescINS_6Action10ActionTypeEED2Ev$shim")
+}
+
+// 0xf21d18 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_14FunctionalTest6ResultEEEE14doGetSingletonEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_14FunctionalTest6ResultEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21d18() -> ! {
+    todo!("0xf21d18 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_14FunctionalTest6ResultEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21d24 — __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED2Ev$shim")]
+pub fn stub_0xf21d24() -> ! {
+    todo!("0xf21d24 __ZN3RBX10Reflection8EnumDescINS_14FunctionalTest6ResultEED2Ev$shim")
+}
+
+// 0xf21d30 — __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEEE14doGetSingletonEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEEE14doGetSingletonEv$shim")]
+pub fn stub_0xf21d30() -> ! {
+    todo!("0xf21d30 __ZN3RBX10Reflection9SingletonIKNS0_8EnumDescINS_20ChangeHistoryService19RuntimeUndoBehaviorEEEE14doGetSingletonEv$shim")
+}
+
+// 0xf21d3c — __ZN3RBX4Name9doDeclareILZNS_8sFeatureEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_8sFeatureEEEERKS0_v$shim")]
+pub fn stub_0xf21d3c() -> ! {
+    todo!("0xf21d3c __ZN3RBX4Name9doDeclareILZNS_8sFeatureEEEERKS0_v$shim")
+}
+
+// 0xf21d48 — __ZNK3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7Creator12getClassNameEv$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_0xf21d48() -> ! {
+    todo!("0xf21d48 __ZNK3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf21d54 — __ZNK3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7Creator12getClassNameEv$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_0xf21d54() -> ! {
+    todo!("0xf21d54 __ZNK3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf21d60 — __ZNK3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7Creator12getClassNameEv$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_0xf21d60() -> ! {
+    todo!("0xf21d60 __ZNK3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf21d6c — __ZN3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_0xf21d6c() -> ! {
+    todo!("0xf21d6c __ZN3RBX14FactoryProductINS_4HoleENS_7FeatureELZNS_5sHoleEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf21d78 — __ZN3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_0xf21d78() -> ! {
+    todo!("0xf21d78 __ZN3RBX14FactoryProductINS_12MotorFeatureENS_7FeatureELZNS_13sMotorFeatureEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf21d84 — __ZN3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_0xf21d84() -> ! {
+    todo!("0xf21d84 __ZN3RBX14FactoryProductINS_13VelocityMotorENS_13JointInstanceELZNS_14sVelocityMotorEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf21d90 — __ZN3RBX4Name9doDeclareILZNS_14sVelocityMotorEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sVelocityMotorEEEERKS0_v$shim")]
+pub fn stub_0xf21d90() -> ! {
+    todo!("0xf21d90 __ZN3RBX4Name9doDeclareILZNS_14sVelocityMotorEEEERKS0_v$shim")
+}
+
+// 0xf21d9c — __ZN3RBX4Name9doDeclareILZNS_13sMotorFeatureEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sMotorFeatureEEEERKS0_v$shim")]
+pub fn stub_0xf21d9c() -> ! {
+    todo!("0xf21d9c __ZN3RBX4Name9doDeclareILZNS_13sMotorFeatureEEEERKS0_v$shim")
+}
+
+// 0xf21da8 — __ZN3RBX4Name9doDeclareILZNS_5sHoleEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5sHoleEEEERKS0_v$shim")]
+pub fn stub_0xf21da8() -> ! {
+    todo!("0xf21da8 __ZN3RBX4Name9doDeclareILZNS_5sHoleEEEERKS0_v$shim")
+}
+
+// 0xf21db4 — __ZNK3RBX10Reflection8EnumDescINS_7Feature5InOutEE14convertToIndexES3_$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Feature5InOutEE14convertToIndexES3_$shim")]
+pub fn stub_0xf21db4() -> ! {
+    todo!("0xf21db4 __ZNK3RBX10Reflection8EnumDescINS_7Feature5InOutEE14convertToIndexES3_$shim")
+}
+
+// 0xf21dc0 — __ZNK3RBX10Reflection8EnumDescINS_7Feature9LeftRightEE14convertToIndexES3_$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Feature9LeftRightEE14convertToIndexES3_$shim")]
+pub fn stub_0xf21dc0() -> ! {
+    todo!("0xf21dc0 __ZNK3RBX10Reflection8EnumDescINS_7Feature9LeftRightEE14convertToIndexES3_$shim")
+}
+
+// 0xf21dcc — __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE14convertToIndexES3_$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE14convertToIndexES3_$shim")]
+pub fn stub_0xf21dcc() -> ! {
+    todo!("0xf21dcc __ZNK3RBX10Reflection8EnumDescINS_7Feature9TopBottomEE14convertToIndexES3_$shim")
+}
+
+// 0xf21dd8 — __ZNSt6vectorIN3RBX7Feature5InOutESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int()
+#[doc(alias = "__ZNSt6vectorIN3RBX7Feature5InOutESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_0xf21dd8() -> ! {
+    todo!("0xf21dd8 __ZNSt6vectorIN3RBX7Feature5InOutESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf21de4 — __ZNSt6vectorIN3RBX7Feature9LeftRightESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int()
+#[doc(alias = "__ZNSt6vectorIN3RBX7Feature9LeftRightESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_0xf21de4() -> ! {
+    todo!("0xf21de4 __ZNSt6vectorIN3RBX7Feature9LeftRightESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf21df0 — __ZNSt6vectorIN3RBX7Feature9TopBottomESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int()
+#[doc(alias = "__ZNSt6vectorIN3RBX7Feature9TopBottomESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_0xf21df0() -> ! {
+    todo!("0xf21df0 __ZNSt6vectorIN3RBX7Feature9TopBottomESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf21dfc — __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+#[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim")]
+pub fn stub_0xf21dfc() -> ! {
+    todo!("0xf21dfc __ZNK3RBX10Reflection17RefPropDescriptorINS_13VelocityMotorENS_4HoleEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim")
+}
+
+// 0xf21e08 — __ZNK3RBX14FactoryProductINS_4FireENS_8InstanceELZNS_5sFireEES2_E7Creator12getClassNameEv$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_4FireENS_8InstanceELZNS_5sFireEES2_E7Creator12getClassNameEv$shim")]
+pub fn stub_0xf21e08() -> ! {
+    todo!("0xf21e08 __ZNK3RBX14FactoryProductINS_4FireENS_8InstanceELZNS_5sFireEES2_E7Creator12getClassNameEv$shim")
+}
+
+// 0xf21e14 — __ZN3RBX14FactoryProductINS_4FireENS_8InstanceELZNS_5sFireEES2_E7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_4FireENS_8InstanceELZNS_5sFireEES2_E7CreatorD2Ev$shim")]
+pub fn stub_0xf21e14() -> ! {
+    todo!("0xf21e14 __ZN3RBX14FactoryProductINS_4FireENS_8InstanceELZNS_5sFireEES2_E7CreatorD2Ev$shim")
+}
+
+// 0xf21e20 — __ZN3RBX4Name9doDeclareILZNS_5sFireEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5sFireEEEERKS0_v$shim")]
+pub fn stub_0xf21e20() -> ! {
+    todo!("0xf21e20 __ZN3RBX4Name9doDeclareILZNS_5sFireEEEERKS0_v$shim")
+}
+
+// 0xf21e2c — __ZNK3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7Creator12getClassNameEv$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_0xf21e2c() -> ! {
+    todo!("0xf21e2c __ZNK3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf21e38 — __ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_0xf21e38() -> ! {
+    todo!("0xf21e38 __ZN3RBX14FactoryProductINS_4FlagENS_4ToolELZNS_5sFlagEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf21e44 — __ZN3RBX4Name9doDeclareILZNS_5sFlagEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_5sFlagEEEERKS0_v$shim")]
+pub fn stub_0xf21e44() -> ! {
+    todo!("0xf21e44 __ZN3RBX4Name9doDeclareILZNS_5sFlagEEEERKS0_v$shim")
+}
+
+// 0xf21e50 — __ZNK3RBX15ServiceProvider6createINS_16FlagStandServiceEEEPT_v$shim
+// type: int __fastcall(int, int, int, int, int, int, int, struct _Unwind_Exception *, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_16FlagStandServiceEEEPT_v$shim")]
+pub fn stub_0xf21e50() -> ! {
+    todo!("0xf21e50 __ZNK3RBX15ServiceProvider6createINS_16FlagStandServiceEEEPT_v$shim")
+}
+
+// 0xf21e5c — __ZNSt6vectorIPN3RBX9FlagStandESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int __fastcall(int, void *)
+#[doc(alias = "__ZNSt6vectorIPN3RBX9FlagStandESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_0xf21e5c() -> ! {
+    todo!("0xf21e5c __ZNSt6vectorIPN3RBX9FlagStandESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf21e68 — __ZN3RBX4Name9doDeclareILZNS_17sFlagStandServiceEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_17sFlagStandServiceEEEERKS0_v$shim")]
+pub fn stub_0xf21e68() -> ! {
+    todo!("0xf21e68 __ZN3RBX4Name9doDeclareILZNS_17sFlagStandServiceEEEERKS0_v$shim")
+}
+
+// 0xf21e74 — __ZN3RBX9FlagStandD2Ev$shim
+// type: void __fastcall(RBX::FlagStand *)
+#[doc(alias = "__ZN3RBX9FlagStandD2Ev$shim")]
+pub fn stub_0xf21e74() -> ! {
+    todo!("0xf21e74 __ZN3RBX9FlagStandD2Ev$shim")
+}
+
+// 0xf21e80 — __ZNK3RBX14FactoryProductINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEE7Creator12getClassNameEv$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_0xf21e80() -> ! {
+    todo!("0xf21e80 __ZNK3RBX14FactoryProductINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf21e8c — __ZN3RBX14FactoryProductINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEED0Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEED0Ev$shim")]
+pub fn stub_0xf21e8c() -> ! {
+    todo!("0xf21e8c __ZN3RBX14FactoryProductINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEED0Ev$shim")
+}
+
+// 0xf21e98 — __ZN3RBX14FactoryProductINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEE7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_0xf21e98() -> ! {
+    todo!("0xf21e98 __ZN3RBX14FactoryProductINS_9FlagStandENS_17BasicPartInstanceELZNS_10sFlagStandEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf21ea4 — __ZN3RBX4Name9doDeclareILZNS_10sFlagStandEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sFlagStandEEEERKS0_v$shim")]
+pub fn stub_0xf21ea4() -> ! {
+    todo!("0xf21ea4 __ZN3RBX4Name9doDeclareILZNS_10sFlagStandEEEERKS0_v$shim")
+}
+
+// 0xf21eb0 — __ZN3RBX15ServiceProvider15doGetClassIndexINS_16FlagStandServiceEEEmv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX15ServiceProvider15doGetClassIndexINS_16FlagStandServiceEEEmv$shim")]
+pub fn stub_0xf21eb0() -> ! {
+    todo!("0xf21eb0 __ZN3RBX15ServiceProvider15doGetClassIndexINS_16FlagStandServiceEEEmv$shim")
+}
+
+// 0xf21ebc — __ZN3RBX10ForceFieldD2Ev$shim
+// type: void __fastcall(RBX::ForceField *)
+#[doc(alias = "__ZN3RBX10ForceFieldD2Ev$shim")]
+pub fn stub_0xf21ebc() -> ! {
+    todo!("0xf21ebc __ZN3RBX10ForceFieldD2Ev$shim")
+}
+
+// 0xf21ec8 — __ZNK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7Creator12getClassNameEv$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7Creator12getClassNameEv$shim")]
+pub fn stub_0xf21ec8() -> ! {
+    todo!("0xf21ec8 __ZNK3RBX14FactoryProductINS_10ForceFieldENS_8InstanceELZNS_11sForceFieldEES2_E7Creator12getClassNameEv$shim")
+}
+
+// 0xf21ed4 — __ZN3RBX10ForceFieldD0Ev$shim
+// type: void __fastcall(RBX::ForceField *)
+#[doc(alias = "__ZN3RBX10ForceFieldD0Ev$shim")]
+pub fn stub_0xf21ed4() -> ! {
+    todo!("0xf21ed4 __ZN3RBX10ForceFieldD0Ev$shim")
+}
+
+// 0xf21ee0 — __ZN3RBX9GuiObjectD2Ev$shim
+// type: void __fastcall(RBX::GuiObject *)
+#[doc(alias = "__ZN3RBX9GuiObjectD2Ev$shim")]
+pub fn stub_0xf21ee0() -> ! {
+    todo!("0xf21ee0 __ZN3RBX9GuiObjectD2Ev$shim")
+}
+
+// 0xf21eec — __ZNSt6vectorIN3RBX5Frame5StyleESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int()
+#[doc(alias = "__ZNSt6vectorIN3RBX5Frame5StyleESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_0xf21eec() -> ! {
+    todo!("0xf21eec __ZNSt6vectorIN3RBX5Frame5StyleESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf21ef8 — __ZNK3RBX10Reflection8EnumDescINS_5Frame5StyleEE14convertToIndexES3_$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_5Frame5StyleEE14convertToIndexES3_$shim")]
+pub fn stub_0xf21ef8() -> ! {
+    todo!("0xf21ef8 __ZNK3RBX10Reflection8EnumDescINS_5Frame5StyleEE14convertToIndexES3_$shim")
+}
+
+// 0xf21f04 — __ZN3RBX10shutdownDMINS_16OverlayDataModelEEEvRN5boost10shared_ptrIT_EE$shim
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int)
+#[doc(alias = "__ZN3RBX10shutdownDMINS_16OverlayDataModelEEEvRN5boost10shared_ptrIT_EE$shim")]
+pub fn stub_0xf21f04() -> ! {
+    todo!("0xf21f04 __ZN3RBX10shutdownDMINS_16OverlayDataModelEEEvRN5boost10shared_ptrIT_EE$shim")
+}
+
+// 0xf21f10 — __ZNSt6vectorIPN3RBX4VerbESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int __fastcall(int, void *)
+#[doc(alias = "__ZNSt6vectorIPN3RBX4VerbESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_0xf21f10() -> ! {
+    todo!("0xf21f10 __ZNSt6vectorIPN3RBX4VerbESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf21f1c — __ZN3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE7CreatorD2Ev$shim
+// type: int __fastcall(pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_0xf21f1c() -> ! {
+    todo!("0xf21f1c __ZN3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf21f28 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int()
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_0xf21f28() -> ! {
+    todo!("0xf21f28 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX4GameERKSsEENS3_5list2INS3_5valueIPS8_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf21f34 — __ZN3RBX4Name7declareILZNS_13sGameSettingsEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name7declareILZNS_13sGameSettingsEEEERKS0_v$shim")]
+pub fn stub_0xf21f34() -> ! {
+    todo!("0xf21f34 __ZN3RBX4Name7declareILZNS_13sGameSettingsEEEERKS0_v$shim")
+}
+
+// 0xf21f40 — __ZN3RBX4Name9doDeclareILZNS_13sGameSettingsEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sGameSettingsEEEERKS0_v$shim")]
+pub fn stub_0xf21f40() -> ! {
+    todo!("0xf21f40 __ZN3RBX4Name9doDeclareILZNS_13sGameSettingsEEEERKS0_v$shim")
+}
+
+// 0xf21f4c — __ZN3RBX15ScopedSingletonINS_15ProfanityFilterEE29safe_static_do_get_s_instanceEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX15ScopedSingletonINS_15ProfanityFilterEE29safe_static_do_get_s_instanceEv$shim")]
+pub fn stub_0xf21f4c() -> ! {
+    todo!("0xf21f4c __ZN3RBX15ScopedSingletonINS_15ProfanityFilterEE29safe_static_do_get_s_instanceEv$shim")
+}
+
+// 0xf21f58 — __ZN3RBX15ScopedSingletonINS_15ProfanityFilterEE23safe_static_do_get_syncEv$shim
+// type: int()
+#[doc(alias = "__ZN3RBX15ScopedSingletonINS_15ProfanityFilterEE23safe_static_do_get_syncEv$shim")]
+pub fn stub_0xf21f58() -> ! {
+    todo!("0xf21f58 __ZN3RBX15ScopedSingletonINS_15ProfanityFilterEE23safe_static_do_get_syncEv$shim")
+}
+
+// 0xf21f64 — __ZNK3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE7Creator12getClassNameEv$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_0xf21f64() -> ! {
+    todo!("0xf21f64 __ZNK3RBX14FactoryProductINS_12GameSettingsENS_22GlobalAdvancedSettings4ItemELZNS_13sGameSettingsEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf21f70 — __ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev$shim")]
+pub fn stub_0xf21f70() -> ! {
+    todo!("0xf21f70 __ZN3RBX26GlobalAdvancedSettingsItemINS_12GameSettingsELZNS_13sGameSettingsEEED0Ev$shim")
+}
+
+// 0xf21f7c — __ZNK3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEE14convertToIndexES3_$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEE14convertToIndexES3_$shim")]
+pub fn stub_0xf21f7c() -> ! {
+    todo!("0xf21f7c __ZNK3RBX10Reflection8EnumDescINS_12GameSettings13UploadSettingEE14convertToIndexES3_$shim")
+}
+
+// 0xf21f88 — __ZNK3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE14convertToIndexES3_$shim
+// type: int()
+#[doc(alias = "__ZNK3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE14convertToIndexES3_$shim")]
+pub fn stub_0xf21f88() -> ! {
+    todo!("0xf21f88 __ZNK3RBX10Reflection8EnumDescINS_12GameSettings12VideoQualityEE14convertToIndexES3_$shim")
+}
+
+// 0xf21f94 — __ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int()
+#[doc(alias = "__ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_0xf21f94() -> ! {
+    todo!("0xf21f94 __ZNSt6vectorIN3RBX12GameSettings13UploadSettingESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf21fa0 — __ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int()
+#[doc(alias = "__ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_0xf21fa0() -> ! {
+    todo!("0xf21fa0 __ZNSt6vectorIN3RBX12GameSettings12VideoQualityESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf21fb8 — __ZN5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm$shim
+// type: int()
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm$shim")]
+pub fn stub_0xf21fb8() -> ! {
+    todo!("0xf21fb8 __ZN5boost9unordered6detail10table_implINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm$shim")
+}
+
+// 0xf21fc4 — __ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm$shim
+// type: int()
+#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm$shim")]
+pub fn stub_0xf21fc4() -> ! {
+    todo!("0xf21fc4 __ZN5boost9unordered6detail5tableINS1_3setISaIPKN3RBX9PrimitiveEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm$shim")
+}
+
+// 0xf21fd0 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSISsEERS3_RKT_$shim
 // type: int __fastcall(int, int)
-#[doc(alias = "FMOD::DSPLowPass::getMemoryUsedCallback(FMOD_DSP_STATE *,FMOD::MemoryTracker *)")]
-pub fn stub_0xb5ff8() -> ! {
-    todo!("0xb5ff8 __ZN4FMOD10DSPLowPass21getMemoryUsedCallbackEP14FMOD_DSP_STATEPNS_13MemoryTrackerE")
+#[doc(alias = "__ZN3rbx13placement_anyIN3RBX7Region3EEaSISsEERS3_RKT_$shim")]
+pub fn stub_0xf21fd0() -> ! {
+    todo!("0xf21fd0 __ZN3rbx13placement_anyIN3RBX7Region3EEaSISsEERS3_RKT_$shim")
 }
 
-// 0xb6050 — __ZN4FMOD10DSPLowPass20getParameterInternalEiPfPc
-// type: int __fastcall(FMOD::DSPLowPass *this, int, float *, char *)
-#[doc(alias = "FMOD::DSPLowPass::getParameterInternal(int,float *,char *)")]
-pub fn stub_0xb6050() -> ! {
-    todo!("0xb6050 __ZN4FMOD10DSPLowPass20getParameterInternalEiPfPc")
-}
-
-// 0xb60c8 — __ZN4FMOD10DSPLowPass20getParameterCallbackEP14FMOD_DSP_STATEiPfPc
-// type: int __fastcall(FMOD::DSPLowPass *, int, float *, char *)
-#[doc(alias = "FMOD::DSPLowPass::getParameterCallback(FMOD_DSP_STATE *,int,float *,char *)")]
-pub fn stub_0xb60c8() -> ! {
-    todo!("0xb60c8 __ZN4FMOD10DSPLowPass20getParameterCallbackEP14FMOD_DSP_STATEiPfPc")
-}
-
-// 0xb60d4 — __ZN4FMOD10DSPLowPass7prewarpEPfS1_S1_ff
-// type: int __fastcall(FMOD::DSPLowPass *this, float *, float *, float *, float32_t, float32_t)
-#[doc(alias = "FMOD::DSPLowPass::prewarp(float *,float *,float *,float,float)")]
-pub fn stub_0xb60d4() -> ! {
-    todo!("0xb60d4 __ZN4FMOD10DSPLowPass7prewarpEPfS1_S1_ff")
-}
-
-// 0xb6144 — __ZN4FMOD10DSPLowPass7szxformEPfS1_S1_S1_S1_S1_ffS1_S1_
-// type: int __fastcall(FMOD::DSPLowPass *this, float *, float *, float *, float *, float *, float *, float32_t, float32_t, float *, float *)
-#[doc(alias = "FMOD::DSPLowPass::szxform(float *,float *,float *,float *,float *,float *,float,float,float *,float *)")]
-pub fn stub_0xb6144() -> ! {
-    todo!("0xb6144 __ZN4FMOD10DSPLowPass7szxformEPfS1_S1_S1_S1_S1_ffS1_S1_")
-}
-
-// 0xb61ec — __ZN4FMOD10DSPLowPass16getDescriptionExEv
-// type: void *__fastcall(FMOD::DSPLowPass *this)
-#[doc(alias = "FMOD::DSPLowPass::getDescriptionEx(void)")]
-pub fn stub_0xb61ec() -> ! {
-    todo!("0xb61ec __ZN4FMOD10DSPLowPass16getDescriptionExEv")
-}
-
-// 0xb62b8 — __ZN4FMOD10DSPLowPass11updateStateEff
-// type: int __fastcall(FMOD::DSPLowPass *this, float, float32_t)
-#[doc(alias = "FMOD::DSPLowPass::updateState(float,float)")]
-pub fn stub_0xb62b8() -> ! {
-    todo!("0xb62b8 __ZN4FMOD10DSPLowPass11updateStateEff")
-}
-
-// 0xb648c — __ZN4FMOD10DSPLowPass14createInternalEv
-// type: int __fastcall(FMOD::DSPLowPass *this)
-#[doc(alias = "FMOD::DSPLowPass::createInternal(void)")]
-pub fn stub_0xb648c() -> ! {
-    todo!("0xb648c __ZN4FMOD10DSPLowPass14createInternalEv")
-}
-
-// 0xb6590 — __ZN4FMOD10DSPLowPass14createCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPLowPass *)
-#[doc(alias = "FMOD::DSPLowPass::createCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb6590() -> ! {
-    todo!("0xb6590 __ZN4FMOD10DSPLowPass14createCallbackEP14FMOD_DSP_STATE")
-}
-
-// 0xb659c — __ZN4FMOD10DSPLowPass7processEPfS1_ji
-// type: int __fastcall(FMOD::DSPLowPass *this, float *, float *, unsigned int, int)
-#[doc(alias = "FMOD::DSPLowPass::process(float *,float *,unsigned int,int)")]
-pub fn stub_0xb659c() -> ! {
-    todo!("0xb659c __ZN4FMOD10DSPLowPass7processEPfS1_ji")
-}
-
-// 0xb779c — __ZN4FMOD10DSPLowPass12readInternalEPfS1_jii
-// type: int __fastcall(FMOD::DSPLowPass *this, float *, float *, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPLowPass::readInternal(float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb779c() -> ! {
-    todo!("0xb779c __ZN4FMOD10DSPLowPass12readInternalEPfS1_jii")
-}
-
-// 0xb79c4 — __ZN4FMOD10DSPLowPass12readCallbackEP14FMOD_DSP_STATEPfS3_jii
-// type: int __fastcall(FMOD::DSPLowPass *, float *, float *, unsigned int, int, int)
-#[doc(alias = "FMOD::DSPLowPass::readCallback(FMOD_DSP_STATE *,float *,float *,unsigned int,int,int)")]
-pub fn stub_0xb79c4() -> ! {
-    todo!("0xb79c4 __ZN4FMOD10DSPLowPass12readCallbackEP14FMOD_DSP_STATEPfS3_jii")
-}
-
-// 0xb7a30 — __GLOBAL__I__ZN4FMOD10dsplowpassE
+// 0xf21fdc — __ZN3RBX4Name9doDeclareILZNS_9sSettingsEEEERKS0_v$shim
 // type: int()
-#[doc(alias = "global constructor keyed toFMOD::dsplowpass")]
-pub fn stub_0xb7a30() -> ! {
-    todo!("0xb7a30 __GLOBAL__I__ZN4FMOD10dsplowpassE")
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_9sSettingsEEEERKS0_v$shim")]
+pub fn stub_0xf21fdc() -> ! {
+    todo!("0xf21fdc __ZN3RBX4Name9doDeclareILZNS_9sSettingsEEEERKS0_v$shim")
 }
 
-// 0xb7a3c — __ZN4FMOD11DSPLowPass213resetInternalEv
-// type: int __fastcall(FMOD::DSPLowPass2 *this)
-#[doc(alias = "FMOD::DSPLowPass2::resetInternal(void)")]
-pub fn stub_0xb7a3c() -> ! {
-    todo!("0xb7a3c __ZN4FMOD11DSPLowPass213resetInternalEv")
-}
-
-// 0xb7a74 — __ZN4FMOD11DSPLowPass220setParameterInternalEif
-// type: int __fastcall(FMOD::DSPLowPass2 *this, int, float)
-#[doc(alias = "FMOD::DSPLowPass2::setParameterInternal(int,float)")]
-pub fn stub_0xb7a74() -> ! {
-    todo!("0xb7a74 __ZN4FMOD11DSPLowPass220setParameterInternalEif")
-}
-
-// 0xb7a9c — __ZN4FMOD11DSPLowPass217getMemoryUsedImplEPNS_13MemoryTrackerE
+// 0xf21fe8 — __ZN3RBX4Name9doDeclareILZNS_23sGlobalAdvancedSettingsEEEERKS0_v$shim
 // type: int()
-#[doc(alias = "FMOD::DSPLowPass2::getMemoryUsedImpl(FMOD::MemoryTracker *)")]
-pub fn stub_0xb7a9c() -> ! {
-    todo!("0xb7a9c __ZN4FMOD11DSPLowPass217getMemoryUsedImplEPNS_13MemoryTrackerE")
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_23sGlobalAdvancedSettingsEEEERKS0_v$shim")]
+pub fn stub_0xf21fe8() -> ! {
+    todo!("0xf21fe8 __ZN3RBX4Name9doDeclareILZNS_23sGlobalAdvancedSettingsEEEERKS0_v$shim")
 }
 
-// 0xb7aa4 — __ZN4FMOD11DSPLowPass213resetCallbackEP14FMOD_DSP_STATE
-// type: int __fastcall(FMOD::DSPLowPass2 *)
-#[doc(alias = "FMOD::DSPLowPass2::resetCallback(FMOD_DSP_STATE *)")]
-pub fn stub_0xb7aa4() -> ! {
-    todo!("0xb7aa4 __ZN4FMOD11DSPLowPass213resetCallbackEP14FMOD_DSP_STATE")
+// 0xf21ff4 — __ZN3RBX4Name9doDeclareILZNS_20sGlobalBasicSettingsEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_20sGlobalBasicSettingsEEEERKS0_v$shim")]
+pub fn stub_0xf21ff4() -> ! {
+    todo!("0xf21ff4 __ZN3RBX4Name9doDeclareILZNS_20sGlobalBasicSettingsEEEERKS0_v$shim")
+}
+
+// 0xf22000 — __ZN3RBX4Name9doDeclareILZNS_10sSelectionEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_10sSelectionEEEERKS0_v$shim")]
+pub fn stub_0xf22000() -> ! {
+    todo!("0xf22000 __ZN3RBX4Name9doDeclareILZNS_10sSelectionEEEERKS0_v$shim")
+}
+
+// 0xf2200c — __ZN3RBX4Name7declareILZNS_16sServiceProviderEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name7declareILZNS_16sServiceProviderEEEERKS0_v$shim")]
+pub fn stub_0xf2200c() -> ! {
+    todo!("0xf2200c __ZN3RBX4Name7declareILZNS_16sServiceProviderEEEERKS0_v$shim")
+}
+
+// 0xf22018 — __ZN3RBX10Reflection11Call0HelperINS_22GlobalAdvancedSettingsEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEvESI_E4callEPS2_SK_RS7_$shim
+// type: int()
+#[doc(alias = "__ZN3RBX10Reflection11Call0HelperINS_22GlobalAdvancedSettingsEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEvESI_E4callEPS2_SK_RS7_$shim")]
+pub fn stub_0xf22018() -> ! {
+    todo!("0xf22018 __ZN3RBX10Reflection11Call0HelperINS_22GlobalAdvancedSettingsEMS2_FN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEvESI_E4callEPS2_SK_RS7_$shim")
+}
+
+// 0xf22024 — __ZNSt6vectorIN3RBX11MergeBinder9IDREFItemESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int __fastcall(int, int, int, int, int, int, int, struct _Unwind_Exception *, int, int, int, boost::detail::sp_counted_base *, void *, int, int, int, int, int, int, int, void *, int)
+#[doc(alias = "__ZNSt6vectorIN3RBX11MergeBinder9IDREFItemESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_0xf22024() -> ! {
+    todo!("0xf22024 __ZNSt6vectorIN3RBX11MergeBinder9IDREFItemESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf22030 — __ZN3RBX4Name9doDeclareILZNS_8sGuiBaseEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_8sGuiBaseEEEERKS0_v$shim")]
+pub fn stub_0xf22030() -> ! {
+    todo!("0xf22030 __ZN3RBX4Name9doDeclareILZNS_8sGuiBaseEEEERKS0_v$shim")
 }
