@@ -1163,4 +1163,3 @@ pub fn stub_4e7e78() -> ! {
 pub fn stub_4e7f28() -> ! {
     todo!("0x4e7f28 boost::shared_ptr<RBX::MotorFeature>::shared_ptr<RBX::MotorFeature,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
-

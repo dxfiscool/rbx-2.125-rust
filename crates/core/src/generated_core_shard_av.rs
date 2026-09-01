@@ -720,4 +720,3 @@ pub fn stub_0x3cade4() -> ! {
 pub fn stub_0x3cadf0() -> ! {
     todo!("0x3cadf0 __ZN3rbx14implementation12typed_holderIN3RBX6Camera10CameraModeEE13destruct_funcEPc")
 }
-

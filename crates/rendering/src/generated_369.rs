@@ -890,4 +890,3 @@ pub fn stub_50fe10() -> ! {
 pub fn stub_50fe38() -> ! {
     todo!("0x50fe38 RBX::GuiBase3d::setVisible(bool)")
 }
-

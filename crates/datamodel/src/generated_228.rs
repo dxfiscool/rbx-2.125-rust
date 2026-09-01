@@ -180,7 +180,7 @@ pub fn stub_0xb4230() -> ! {
 
 // 0xb4274 — __GLOBAL__I__ZN4FMOD9dspflangeE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::dspflange")]
+#[doc(alias = "global constructor keyed toFMOD::dspflange")]
 pub fn stub_0xb4274() -> ! {
     todo!("0xb4274 __GLOBAL__I__ZN4FMOD9dspflangeE")
 }
@@ -299,7 +299,7 @@ pub fn stub_0xb53b0() -> ! {
 
 // 0xb53f4 — __GLOBAL__I__ZN4FMOD11dsphighpassE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::dsphighpass")]
+#[doc(alias = "global constructor keyed toFMOD::dsphighpass")]
 pub fn stub_0xb53f4() -> ! {
     todo!("0xb53f4 __GLOBAL__I__ZN4FMOD11dsphighpassE")
 }
@@ -418,7 +418,7 @@ pub fn stub_0xb5e58() -> ! {
 
 // 0xb5e9c — __GLOBAL__I__ZN4FMOD9dspitechoE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::dspitecho")]
+#[doc(alias = "global constructor keyed toFMOD::dspitecho")]
 pub fn stub_0xb5e9c() -> ! {
     todo!("0xb5e9c __GLOBAL__I__ZN4FMOD9dspitechoE")
 }
@@ -544,7 +544,7 @@ pub fn stub_0xb79ec() -> ! {
 
 // 0xb7a30 — __GLOBAL__I__ZN4FMOD10dsplowpassE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::dsplowpass")]
+#[doc(alias = "global constructor keyed toFMOD::dsplowpass")]
 pub fn stub_0xb7a30() -> ! {
     todo!("0xb7a30 __GLOBAL__I__ZN4FMOD10dsplowpassE")
 }
@@ -656,7 +656,7 @@ pub fn stub_0xb8928() -> ! {
 
 // 0xb896c — __GLOBAL__I__ZN4FMOD11dsplowpass2E
 // type: (unknown)
-#[doc(alias = "`global constructor keyed toFMOD::dsplowpass2")]
+#[doc(alias = "global constructor keyed toFMOD::dsplowpass2")]
 pub fn stub_0xb896c() -> ! {
     todo!("0xb896c __GLOBAL__I__ZN4FMOD11dsplowpass2E")
 }
@@ -768,7 +768,7 @@ pub fn stub_0xb9690() -> ! {
 
 // 0xb96d4 — __GLOBAL__I__ZN4FMOD17dsplowpass_simpleE
 // type: (unknown)
-#[doc(alias = "`global constructor keyed toFMOD::dsplowpass_simple")]
+#[doc(alias = "global constructor keyed toFMOD::dsplowpass_simple")]
 pub fn stub_0xb96d4() -> ! {
     todo!("0xb96d4 __GLOBAL__I__ZN4FMOD17dsplowpass_simpleE")
 }
@@ -887,7 +887,7 @@ pub fn stub_0xb9ba8() -> ! {
 
 // 0xb9bec — __GLOBAL__I__ZN4FMOD12dspnormalizeE
 // type: (unknown)
-#[doc(alias = "`global constructor keyed toFMOD::dspnormalize")]
+#[doc(alias = "global constructor keyed toFMOD::dspnormalize")]
 pub fn stub_0xb9bec() -> ! {
     todo!("0xb9bec __GLOBAL__I__ZN4FMOD12dspnormalizeE")
 }
@@ -985,7 +985,7 @@ pub fn stub_0xba22c() -> ! {
 
 // 0xba270 — __GLOBAL__I__ZN4FMOD13dsposcillatorE
 // type: (unknown)
-#[doc(alias = "`global constructor keyed toFMOD::dsposcillator")]
+#[doc(alias = "global constructor keyed toFMOD::dsposcillator")]
 pub fn stub_0xba270() -> ! {
     todo!("0xba270 __GLOBAL__I__ZN4FMOD13dsposcillatorE")
 }

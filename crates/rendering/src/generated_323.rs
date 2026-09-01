@@ -776,4 +776,3 @@ pub fn stub_491fd0() -> ! {
 pub fn stub_492098() -> ! {
     todo!("0x492098 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Decal,RBX::Decal>(boost::shared_ptr<RBX::Decal> const*,RBX::Decal *)const")
 }
-

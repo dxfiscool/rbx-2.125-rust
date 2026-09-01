@@ -802,4 +802,3 @@ pub fn stub_36eef0() -> ! {
 pub fn stub_36f018() -> ! {
     todo!("0x36f018 boost::detail::shared_count::shared_count<RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false>>(RBX::AsyncHttpCache<RBX::ScriptInformationProvider::CachedScriptInfo,false> *)")
 }
-

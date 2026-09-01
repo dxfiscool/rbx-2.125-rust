@@ -800,4 +800,3 @@ pub fn stub_3c3db4() -> ! {
 pub fn stub_3c3e64() -> ! {
     todo!("0x3c3e64 RBX::Camera::panUnits(int)")
 }
-

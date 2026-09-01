@@ -691,4 +691,3 @@ pub fn stub_c3bb5c() -> ! {
 pub fn stub_c3bf2c() -> ! {
     todo!("0xc3bf2c global constructor keyed to_a_610")
 }
-

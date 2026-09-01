@@ -39,7 +39,7 @@ pub fn stub_0x6291c4() -> ! {
     todo!("0x6291c4 __ZN3RBX18SkateboardPlatform4zoomEfRN3G3D15CoordinateFrameES3_")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
+#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
 #[doc(alias = "__ZThn132_N3RBX18SkateboardPlatform4zoomEfRN3G3D15CoordinateFrameES3_")]
 // 0x629334 — __ZThn132_N3RBX18SkateboardPlatform4zoomEfRN3G3D15CoordinateFrameES3_
 // type: _DWORD __fastcall(RBX::SkateboardPlatform *__hidden this, float, G3D::CoordinateFrame *, G3D::CoordinateFrame *)
@@ -56,7 +56,7 @@ pub fn stub_0x629340() -> ! {
     todo!("0x629340 __ZN3RBX18SkateboardPlatform20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
+#[doc(alias = "non-virtual thunk toRBX::SkateboardPlatform::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
 #[doc(alias = "__ZThn132_N3RBX18SkateboardPlatform20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd")]
 // 0x6295a4 — __ZThn132_N3RBX18SkateboardPlatform20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
 // type: _DWORD __fastcall(RBX::SkateboardPlatform *__hidden this, G3D::Vector3 *, G3D::CoordinateFrame *, double)
@@ -184,7 +184,7 @@ pub fn stub_0x668d2c() -> ! {
     todo!("0x668d2c __ZNK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::GuiBase2d::isVisible(G3D::Rect2D const&)const")]
 #[doc(alias = "__ZThn96_NK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE")]
 // 0x668efc — __ZThn96_NK3RBX9GuiBase2d9isVisibleERKN3G3D6Rect2DE
 // was: `non-virtual thunk to'RBX::GuiBase2d::isVisible(G3D::Rect2D const&)const
@@ -453,7 +453,7 @@ pub fn stub_0x6be0cc() -> ! {
     todo!("0x6be0cc __ZN3RBX11VehicleSeat4zoomEfRN3G3D15CoordinateFrameES3_")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::zoom(float,G3D::CoordinateFrame &,G3D::CoordinateFrame &)")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeat4zoomEfRN3G3D15CoordinateFrameES3_")]
 // 0x6be23c — __ZThn132_N3RBX11VehicleSeat4zoomEfRN3G3D15CoordinateFrameES3_
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, float, G3D::CoordinateFrame *, G3D::CoordinateFrame *)
@@ -470,7 +470,7 @@ pub fn stub_0x6be248() -> ! {
     todo!("0x6be248 __ZN3RBX11VehicleSeat20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
+#[doc(alias = "non-virtual thunk toRBX::VehicleSeat::stepLocationAndFocus(G3D::Vector3 &,G3D::CoordinateFrame &,double)")]
 #[doc(alias = "__ZThn132_N3RBX11VehicleSeat20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd")]
 // 0x6be4ac — __ZThn132_N3RBX11VehicleSeat20stepLocationAndFocusERN3G3D7Vector3ERNS1_15CoordinateFrameEd
 // type: _DWORD __fastcall(RBX::VehicleSeat *__hidden this, G3D::Vector3 *, G3D::CoordinateFrame *, double)
@@ -616,7 +616,7 @@ pub fn stub_0x6d0138() -> ! {
     todo!("0x6d0138 __ZN3RBX9Workspace15scriptShouldRunEPNS_10BaseScriptE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::scriptShouldRun(RBX::BaseScript *)")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::scriptShouldRun(RBX::BaseScript *)")]
 #[doc(alias = "__ZThn388_N3RBX9Workspace15scriptShouldRunEPNS_10BaseScriptE")]
 // 0x6d02e4 — __ZThn388_N3RBX9Workspace15scriptShouldRunEPNS_10BaseScriptE
 // type: int __fastcall(RBX::Workspace *this, RBX::BaseScript *)

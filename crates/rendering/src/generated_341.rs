@@ -271,7 +271,7 @@ pub fn stub_5d81d0() -> ! {
 }
 
 // 0x5d8284 — __GLOBAL__I_a_232
-#[doc(alias = "`global constructor keyed to_a_232")]
+#[doc(alias = "global constructor keyed to_a_232")]
 // was: __GLOBAL__I_a_232
 pub fn stub_5d8284() -> ! {
     todo!("0x5d8284 `global constructor keyed to_a_232")
@@ -509,21 +509,21 @@ pub fn stub_5da4a4() -> ! {
 }
 
 // 0x5da4b4 — __ZThn32_N3RBX12PartInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 // was: __ZThn32_N3RBX12PartInstanceD0Ev
 pub fn stub_5da4b4() -> ! {
     todo!("0x5da4b4 `non-virtual thunk toRBX::PartInstance::~PartInstance()")
 }
 
 // 0x5da4bc — __ZThn36_N3RBX12PartInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 // was: __ZThn36_N3RBX12PartInstanceD0Ev
 pub fn stub_5da4bc() -> ! {
     todo!("0x5da4bc `non-virtual thunk toRBX::PartInstance::~PartInstance()")
 }
 
 // 0x5da4c4 — __ZThn132_N3RBX12PartInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 // was: __ZThn132_N3RBX12PartInstanceD0Ev
 pub fn stub_5da4c4() -> ! {
     todo!("0x5da4c4 `non-virtual thunk toRBX::PartInstance::~PartInstance()")
@@ -537,21 +537,21 @@ pub fn stub_5da4cc() -> ! {
 }
 
 // 0x5da890 — __ZThn32_N3RBX12PartInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 // was: __ZThn32_N3RBX12PartInstanceD1Ev
 pub fn stub_5da890() -> ! {
     todo!("0x5da890 `non-virtual thunk toRBX::PartInstance::~PartInstance()")
 }
 
 // 0x5da8a0 — __ZThn36_N3RBX12PartInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 // was: __ZThn36_N3RBX12PartInstanceD1Ev
 pub fn stub_5da8a0() -> ! {
     todo!("0x5da8a0 `non-virtual thunk toRBX::PartInstance::~PartInstance()")
 }
 
 // 0x5da8b0 — __ZThn132_N3RBX12PartInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::~PartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::~PartInstance()")]
 // was: __ZThn132_N3RBX12PartInstanceD1Ev
 pub fn stub_5da8b0() -> ! {
     todo!("0x5da8b0 `non-virtual thunk toRBX::PartInstance::~PartInstance()")
@@ -600,7 +600,7 @@ pub fn stub_5daa58() -> ! {
 }
 
 // 0x5daac0 — __ZThn12_N3RBX12PartInstance13onGuidChangedEv
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::onGuidChanged(void)")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::onGuidChanged(void)")]
 // was: __ZThn12_N3RBX12PartInstance13onGuidChangedEv
 pub fn stub_5daac0() -> ! {
     todo!("0x5daac0 `non-virtual thunk toRBX::PartInstance::onGuidChanged(void)")
@@ -635,7 +635,7 @@ pub fn stub_5dadb8() -> ! {
 }
 
 // 0x5dae34 — __ZThn96_NK3RBX12PartInstance13reportTouchesEv
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::reportTouches(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::reportTouches(void)const")]
 // was: __ZThn96_NK3RBX12PartInstance13reportTouchesEv
 pub fn stub_5dae34() -> ! {
     todo!("0x5dae34 `non-virtual thunk toRBX::PartInstance::reportTouches(void)const")
@@ -671,7 +671,7 @@ pub fn stub_5db334() -> ! {
 }
 
 // 0x5db36c — __ZThn132_N3RBX12PartInstance12onCameraNearEf
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::onCameraNear(float)")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::onCameraNear(float)")]
 // was: __ZThn132_N3RBX12PartInstance12onCameraNearEf
 pub fn stub_5db36c() -> ! {
     todo!("0x5db36c `non-virtual thunk toRBX::PartInstance::onCameraNear(float)")
@@ -685,7 +685,7 @@ pub fn stub_5db374() -> ! {
 }
 
 // 0x5db3a0 — __ZThn96_N3RBX12PartInstance14onClumpChangedEv
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::onClumpChanged(void)")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::onClumpChanged(void)")]
 // was: __ZThn96_N3RBX12PartInstance14onClumpChangedEv
 pub fn stub_5db3a0() -> ! {
     todo!("0x5db3a0 `non-virtual thunk toRBX::PartInstance::onClumpChanged(void)")
@@ -699,7 +699,7 @@ pub fn stub_5db3a8() -> ! {
 }
 
 // 0x5db564 — __ZThn96_N3RBX12PartInstance17onSleepingChangedEb
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::onSleepingChanged(bool)")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::onSleepingChanged(bool)")]
 // was: __ZThn96_N3RBX12PartInstance17onSleepingChangedEb
 pub fn stub_5db564() -> ! {
     todo!("0x5db564 `non-virtual thunk toRBX::PartInstance::onSleepingChanged(bool)")
@@ -713,7 +713,7 @@ pub fn stub_5db56c() -> ! {
 }
 
 // 0x5db574 — __ZThn96_N3RBX12PartInstance17onBuoyancyChangedEb
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::onBuoyancyChanged(bool)")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::onBuoyancyChanged(bool)")]
 // was: __ZThn96_N3RBX12PartInstance17onBuoyancyChangedEb
 pub fn stub_5db574() -> ! {
     todo!("0x5db574 `non-virtual thunk toRBX::PartInstance::onBuoyancyChanged(bool)")
@@ -727,7 +727,7 @@ pub fn stub_5db57c() -> ! {
 }
 
 // 0x5db584 — __ZThn96_N3RBX12PartInstance19isInContinousMotionEv
-#[doc(alias = "`non-virtual thunk toRBX::PartInstance::isInContinousMotion(void)")]
+#[doc(alias = "non-virtual thunk toRBX::PartInstance::isInContinousMotion(void)")]
 // was: __ZThn96_N3RBX12PartInstance19isInContinousMotionEv
 pub fn stub_5db584() -> ! {
     todo!("0x5db584 `non-virtual thunk toRBX::PartInstance::isInContinousMotion(void)")
@@ -825,7 +825,7 @@ pub fn stub_5dbc80() -> ! {
 }
 
 // 0x5dbca8 — __ZN12_GLOBAL__N_136computeNetworkOwnerIsSomeoneElseImplERKN3RBX13SystemAddressES3_
-#[doc(alias = "`anonymous namespace::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)")]
+#[doc(alias = "anonymous namespace::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)")]
 // was: __ZN12_GLOBAL__N_136computeNetworkOwnerIsSomeoneElseImplERKN3RBX13SystemAddressES3_
 pub fn stub_5dbca8() -> ! {
     todo!("0x5dbca8 `anonymous namespace::computeNetworkOwnerIsSomeoneElseImpl(RBX::SystemAddress const&,RBX::SystemAddress const&)")

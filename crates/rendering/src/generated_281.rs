@@ -908,4 +908,3 @@ pub fn stub_3d9c20() -> ! {
 pub fn stub_3d9d30() -> ! {
     todo!("0x3d9d30 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::connected(void)const")
 }
-

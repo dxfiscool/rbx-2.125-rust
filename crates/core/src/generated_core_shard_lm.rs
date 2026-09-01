@@ -431,7 +431,7 @@ pub fn stub_0xcef08() -> ! {
     todo!("0xcef08 __ZN4FMOD12ChannelMusicD1Ev")
 }
 
-#[doc(alias = "`global constructor keyed toFMOD::gDummySample")]
+#[doc(alias = "global constructor keyed toFMOD::gDummySample")]
 #[doc(alias = "__GLOBAL__I__ZN4FMOD12gDummySampleE")]
 // 0xcf00c — __GLOBAL__I__ZN4FMOD12gDummySampleE
 pub fn stub_0xcf00c() -> ! {

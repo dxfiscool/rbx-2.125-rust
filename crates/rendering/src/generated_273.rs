@@ -802,4 +802,3 @@ pub fn stub_399a38() -> ! {
 pub fn stub_399adc() -> ! {
     todo!("0x399adc __ZThn36_N3RBX10Reflection9DescribedINS_14AnimationTrackELZNS_15sAnimationTrackEENS_17NonFactoryProductINS_8InstanceELZNS_15sAnimationTrackEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
-

@@ -1351,4 +1351,3 @@ pub fn stub_3abc4c() -> ! {
 pub fn stub_3abc50() -> ! {
     todo!("0x3abc50 __ZN3RBX10Reflection9DescribedINS_10ArcHandlesELZNS_11sArcHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_11sArcHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
 }
-

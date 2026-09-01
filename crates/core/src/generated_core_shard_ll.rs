@@ -57,35 +57,35 @@ pub fn stub_0x421c20() -> ! {
     todo!("0x421c20 __ZN3RBX9DataModelD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::~DataModel()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // 0x421c24 — __ZThn32_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 pub fn stub_0x421c24() -> ! {
     todo!("0x421c24 __ZThn32_N3RBX9DataModelD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::~DataModel()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // 0x421c2c — __ZThn36_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 pub fn stub_0x421c2c() -> ! {
     todo!("0x421c2c __ZThn36_N3RBX9DataModelD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::~DataModel()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // 0x421c34 — __ZThn144_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 pub fn stub_0x421c34() -> ! {
     todo!("0x421c34 __ZThn144_N3RBX9DataModelD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::~DataModel()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // 0x421c3c — __ZThn180_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 pub fn stub_0x421c3c() -> ! {
     todo!("0x421c3c __ZThn180_N3RBX9DataModelD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::~DataModel()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // 0x421c44 — __ZThn184_N3RBX9DataModelD0Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 pub fn stub_0x421c44() -> ! {
@@ -99,35 +99,35 @@ pub fn stub_0x421c4c() -> ! {
     todo!("0x421c4c __ZN3RBX9DataModelD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::~DataModel()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // 0x4228ac — __ZThn32_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 pub fn stub_0x4228ac() -> ! {
     todo!("0x4228ac __ZThn32_N3RBX9DataModelD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::~DataModel()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // 0x4228b4 — __ZThn36_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 pub fn stub_0x4228b4() -> ! {
     todo!("0x4228b4 __ZThn36_N3RBX9DataModelD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::~DataModel()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // 0x4228bc — __ZThn144_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 pub fn stub_0x4228bc() -> ! {
     todo!("0x4228bc __ZThn144_N3RBX9DataModelD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::~DataModel()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // 0x4228c4 — __ZThn180_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 pub fn stub_0x4228c4() -> ! {
     todo!("0x4228c4 __ZThn180_N3RBX9DataModelD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::~DataModel()")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::~DataModel()")]
 // 0x4228cc — __ZThn184_N3RBX9DataModelD1Ev
 // type: void __fastcall(RBX::DataModel *__hidden this)
 pub fn stub_0x4228cc() -> ! {
@@ -316,7 +316,7 @@ pub fn stub_0x427dc0() -> ! {
     todo!("0x427dc0 __ZNK3RBX9DataModel14getMetricValueERKSs")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::getMetricValue(std::string const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::getMetricValue(std::string const&)const")]
 // 0x4288b0 — __ZThn180_NK3RBX9DataModel14getMetricValueERKSs
 // type: __int64 __fastcall(RBX::DataModel *this, const std::string *)
 pub fn stub_0x4288b0() -> ! {
@@ -330,7 +330,7 @@ pub fn stub_0x4288b8() -> ! {
     todo!("0x4288b8 __ZNK3RBX9DataModel9getMetricERKSs")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::getMetric(std::string const&)const")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::getMetric(std::string const&)const")]
 // 0x42fb24 — __ZThn180_NK3RBX9DataModel9getMetricERKSs
 // type: void __fastcall(RBX::DataModel *this, const std::string *, std::string *)
 pub fn stub_0x42fb24() -> ! {
@@ -351,7 +351,7 @@ pub fn stub_0x430900() -> ! {
     todo!("0x430900 __ZNK3RBX9DataModel13getNumPlayersEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::getNumPlayers(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::getNumPlayers(void)const")]
 // 0x430924 — __ZThn184_NK3RBX9DataModel13getNumPlayersEv
 // type: int __fastcall(RBX::DataModel *this)
 pub fn stub_0x430924() -> ! {
@@ -744,28 +744,28 @@ pub fn stub_0x449270() -> ! {
     todo!("0x449270 __ZN3RBX13ScriptServiceD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::ScriptService::~ScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptService::~ScriptService()")]
 // 0x44936c — __ZThn32_N3RBX13ScriptServiceD1Ev
 // type: void __fastcall(RBX::ScriptService *__hidden this)
 pub fn stub_0x44936c() -> ! {
     todo!("0x44936c __ZThn32_N3RBX13ScriptServiceD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::ScriptService::~ScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptService::~ScriptService()")]
 // 0x449450 — __ZThn32_N3RBX13ScriptServiceD0Ev
 // type: void __fastcall(RBX::ScriptService *__hidden this)
 pub fn stub_0x449450() -> ! {
     todo!("0x449450 __ZThn32_N3RBX13ScriptServiceD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::ScriptService::~ScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptService::~ScriptService()")]
 // 0x44954c — __ZThn36_N3RBX13ScriptServiceD1Ev
 // type: void __fastcall(RBX::ScriptService *__hidden this)
 pub fn stub_0x44954c() -> ! {
     todo!("0x44954c __ZThn36_N3RBX13ScriptServiceD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::ScriptService::~ScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ScriptService::~ScriptService()")]
 // 0x449630 — __ZThn36_N3RBX13ScriptServiceD0Ev
 // type: void __fastcall(RBX::ScriptService *__hidden this)
 pub fn stub_0x449630() -> ! {

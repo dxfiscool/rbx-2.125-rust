@@ -802,4 +802,3 @@ pub fn stub_0xf4ba54() -> ! {
 pub fn stub_0xf4bb74() -> ! {
     todo!("0xf4bb74 j___ZN3RBX9CreatableINS_12MouseCommandEE6createINS_11NewNullToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")
 }
-

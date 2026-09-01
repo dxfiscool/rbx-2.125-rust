@@ -805,4 +805,3 @@ pub fn stub_6af1cc() -> ! {
 pub fn stub_6af1e8() -> ! {
     todo!("0x6af1e8 __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKNS7_10BrickColorEEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_")
 }
-

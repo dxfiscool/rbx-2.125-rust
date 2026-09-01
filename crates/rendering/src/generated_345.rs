@@ -636,7 +636,7 @@ pub fn stub_4b0e94() -> ! {
 
 // 0x4b0ea4 — __ZThn32_N3RBX11CustomEventD1Ev
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
+#[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 // was: __ZThn32_N3RBX11CustomEventD1Ev
 pub fn stub_4b0ea4() -> ! {
     todo!("0x4b0ea4 `non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
@@ -644,7 +644,7 @@ pub fn stub_4b0ea4() -> ! {
 
 // 0x4b0eac — __ZThn32_N3RBX11CustomEventD0Ev
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
+#[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 // was: __ZThn32_N3RBX11CustomEventD0Ev
 pub fn stub_4b0eac() -> ! {
     todo!("0x4b0eac `non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
@@ -659,7 +659,7 @@ pub fn stub_4b0f50() -> ! {
 
 // 0x4b0f60 — __ZThn36_N3RBX11CustomEventD1Ev
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
+#[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 // was: __ZThn36_N3RBX11CustomEventD1Ev
 pub fn stub_4b0f60() -> ! {
     todo!("0x4b0f60 `non-virtual thunk toRBX::CustomEvent::~CustomEvent()")
@@ -667,7 +667,7 @@ pub fn stub_4b0f60() -> ! {
 
 // 0x4b0f68 — __ZThn36_N3RBX11CustomEventD0Ev
 // type: void __fastcall(RBX::CustomEvent *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
+#[doc(alias = "non-virtual thunk toRBX::CustomEvent::~CustomEvent()")]
 // was: __ZThn36_N3RBX11CustomEventD0Ev
 pub fn stub_4b0f68() -> ! {
     todo!("0x4b0f68 `non-virtual thunk toRBX::CustomEvent::~CustomEvent()")

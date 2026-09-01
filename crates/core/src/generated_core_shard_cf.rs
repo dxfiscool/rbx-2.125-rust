@@ -636,4 +636,3 @@ pub fn stub_63771c() -> ! {
 pub fn stub_637724() -> ! {
     todo!("0x637724 __ZN3RBX5SmokeD2Ev")
 }
-
