@@ -360,3 +360,4 @@ pub mod generated_core_shard_ld;
 pub mod generated_core_shard_le;
 pub mod generated_core_shard_lf;
 pub mod generated_core_10;
+pub mod generated_core_shard_lg;
