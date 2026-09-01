@@ -564,7 +564,7 @@ pub fn stub_0x8e8e24() -> ! {
 
 // 0x8e8e40 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_13ScriptServiceES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 pub fn stub_0x8e8e40() -> ! {
     todo!("0x8e8e40 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ScriptService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ScriptService*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
 }
@@ -707,7 +707,7 @@ pub fn stub_0x90e76c() -> ! {
 
 // 0x90e830 — __ZThn96_N3RBX19ServerScriptService15scriptShouldRunEPNS_10BaseScriptE
 // type: _DWORD __fastcall(RBX::ServerScriptService *__hidden this, RBX::BaseScript *)
-#[doc(alias = "`non-virtual thunk toRBX::ServerScriptService::scriptShouldRun(RBX::BaseScript *)")]
+#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::scriptShouldRun(RBX::BaseScript *)")]
 pub fn stub_0x90e830() -> ! {
     todo!("0x90e830 `non-virtual thunk toRBX::ServerScriptService::scriptShouldRun(RBX::BaseScript *)")
 }
@@ -734,14 +734,14 @@ pub fn stub_0x90e904() -> ! {
 
 // 0x90e914 — __ZThn32_N3RBX19ServerScriptServiceD1Ev
 // type: void __fastcall(RBX::ServerScriptService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
 pub fn stub_0x90e914() -> ! {
     todo!("0x90e914 `non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")
 }
 
 // 0x90e91c — __ZThn32_N3RBX19ServerScriptServiceD0Ev
 // type: void __fastcall(RBX::ServerScriptService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
 pub fn stub_0x90e91c() -> ! {
     todo!("0x90e91c `non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")
 }
@@ -754,14 +754,14 @@ pub fn stub_0x90e9c0() -> ! {
 
 // 0x90e9d0 — __ZThn36_N3RBX19ServerScriptServiceD1Ev
 // type: void __fastcall(RBX::ServerScriptService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
 pub fn stub_0x90e9d0() -> ! {
     todo!("0x90e9d0 `non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")
 }
 
 // 0x90e9d8 — __ZThn36_N3RBX19ServerScriptServiceD0Ev
 // type: void __fastcall(RBX::ServerScriptService *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
+#[doc(alias = "non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")]
 pub fn stub_0x90e9d8() -> ! {
     todo!("0x90e9d8 `non-virtual thunk toRBX::ServerScriptService::~ServerScriptService()")
 }
