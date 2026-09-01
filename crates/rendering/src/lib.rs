@@ -393,3 +393,4 @@ pub mod generated_368;
 pub mod generated_369;
 pub mod generated_370;
 pub mod generated_371;
+pub mod generated_372;
