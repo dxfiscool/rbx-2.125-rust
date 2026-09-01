@@ -1,0 +1,696 @@
+//! platform generated_139 — next 100 stubs EA-sorted desc high-EA filler continuation after 0xf63e44
+//! Filter: high-EA filler EA-sorted desc, rbx_core::SharedPtr not boost
+//! Batch: 100 stubs EA-sorted desc | skeleton batch | range 0xf61f04..0xf63e34 (rbx_core::SharedPtr not boost)
+
+#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+
+use rbx_core::SharedPtr;
+
+// 0xf63e34 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
+// type: int __fastcall(int, int, int, int, int, int, int, RakNet::BitStream *)
+#[doc(alias = "j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_")]
+pub fn stub_f63e34() -> ! {
+    todo!("0xf63e34 j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_")
+}
+
+// 0xf63e24 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_
+// type: unsigned int __fastcall(int, int, __int16 *, unsigned __int16 *, RBX::MegaClusterInstance::CellChunk **, int, _DWORD *, RakNet::BitStream *)
+#[doc(alias = "j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_")]
+pub fn stub_f63e24() -> ! {
+    todo!("0xf63e24 j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE18encodeFromPositionINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RN3G3D12Vector3int16ERKNS_13SpatialRegion2IdERKNS0_6RegionINS2_9CellChunkEEERNS_23FixedSizeCircularBufferIjLi8EEERT_PT0_")
+}
+
+// 0xf63e14 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
+// type: unsigned int __fastcall(int, const G3D::Vector3int16 *, RBX::Network::ClusterUpdateBuffer *, RakNet::BitStream *, signed int)
+#[doc(alias = "j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i")]
+pub fn stub_f63e14() -> ! {
+    todo!("0xf63e14 j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_7Network19ClusterUpdateBufferEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i")
+}
+
+// 0xf63e04 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
+// type: unsigned int __fastcall(int, const G3D::Vector3int16 *, int, RakNet::BitStream *, signed int)
+#[doc(alias = "j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i")]
+pub fn stub_f63e04() -> ! {
+    todo!("0xf63e04 j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_34OneQuarterClusterChunkCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i")
+}
+
+// 0xf63df4 — j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i")]
+pub fn stub_f63df4() -> ! {
+    todo!("0xf63df4 j___ZNK3RBX5Voxel10SerializerINS_19MegaClusterInstanceEE11encodeCellsINS_19ClusterCellIteratorEN6RakNet9BitStreamEEEvPKS2_RT_PT0_i")
+}
+
+// 0xf63d74 — j___ZNK3RBX15ServiceProvider6createINS_7Network7PlayersEEEPT_v
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, RBX::Instance *, int, int, void *, int)
+#[doc(alias = "j___ZNK3RBX15ServiceProvider6createINS_7Network7PlayersEEEPT_v")]
+pub fn stub_f63d74() -> ! {
+    todo!("0xf63d74 j___ZNK3RBX15ServiceProvider6createINS_7Network7PlayersEEEPT_v")
+}
+
+// 0xf63d14 — j___ZNK3RBX15ServiceProvider4findINS_7Network19InstancePacketCacheEEEPT_v
+// type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZNK3RBX15ServiceProvider4findINS_7Network19InstancePacketCacheEEEPT_v")]
+pub fn stub_f63d14() -> ! {
+    todo!("0xf63d14 j___ZNK3RBX15ServiceProvider4findINS_7Network19InstancePacketCacheEEEPT_v")
+}
+
+// 0xf63d04 — j___ZNK3RBX15ServiceProvider4findINS_7Network18ClusterPacketCacheEEEPT_v
+// type: __guard *__fastcall(_DWORD *, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZNK3RBX15ServiceProvider4findINS_7Network18ClusterPacketCacheEEEPT_v")]
+pub fn stub_f63d04() -> ! {
+    todo!("0xf63d04 j___ZNK3RBX15ServiceProvider4findINS_7Network18ClusterPacketCacheEEEPT_v")
+}
+
+// 0xf63c64 — j___ZNK3RBX10Reflection13EventDescBaseINS_7Network10ReplicatorEFvSsbEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE
+// type: void __fastcall(int *, int, int, int *, int, void *, int, int, int, int)
+#[doc(alias = "j___ZNK3RBX10Reflection13EventDescBaseINS_7Network10ReplicatorEFvSsbEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE")]
+pub fn stub_f63c64() -> ! {
+    todo!("0xf63c64 j___ZNK3RBX10Reflection13EventDescBaseINS_7Network10ReplicatorEFvSsbEN3rbx6signalIS4_EEMS3_S7_E7connectEPNS0_11EventSourceERKN5boost8functionIS4_EE")
+}
+
+// 0xf63b94 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE18reserve_for_insertEm
+// type: int(void)
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE18reserve_for_insertEm")]
+pub fn stub_f63b94() -> ! {
+    todo!("0xf63b94 j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE18reserve_for_insertEm")
+}
+
+// 0xf63b84 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE14create_bucketsEm
+// type: unsigned int __fastcall(int, unsigned int)
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE14create_bucketsEm")]
+pub fn stub_f63b84() -> ! {
+    todo!("0xf63b84 j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE14create_bucketsEm")
+}
+
+// 0xf63b74 — j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE12delete_nodesEPNS1_10ptr_bucketESM_
+// type: int __fastcall(int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE12delete_nodesEPNS1_10ptr_bucketESM_")]
+pub fn stub_f63b74() -> ! {
+    todo!("0xf63b74 j___ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE12delete_nodesEPNS1_10ptr_bucketESM_")
+}
+
+// 0xf63b64 — j___ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX10Reflection13ConstPropertyENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES7_NS_9intrusive13list_iteratorINSB_9list_implINSB_7listoptINSB_6detail16base_hook_traitsINS5_7Network4ItemENSB_16list_node_traitsIPvEELNSB_14link_mode_typeE1ENSH_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm
+// type: _DWORD *__fastcall(int, unsigned int)
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX10Reflection13ConstPropertyENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES7_NS_9intrusive13list_iteratorINSB_9list_implINSB_7listoptINSB_6detail16base_hook_traitsINS5_7Network4ItemENSB_16list_node_traitsIPvEELNSB_14link_mode_typeE1ENSH_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm")]
+pub fn stub_f63b64() -> ! {
+    todo!("0xf63b64 j___ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX10Reflection13ConstPropertyENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES7_NS_9intrusive13list_iteratorINSB_9list_implINSB_7listoptINSB_6detail16base_hook_traitsINS5_7Network4ItemENSB_16list_node_traitsIPvEELNSB_14link_mode_typeE1ENSH_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm")
+}
+
+// 0xf63b54 — j___ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX10Reflection13ConstPropertyENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES7_NS_9intrusive13list_iteratorINSB_9list_implINSB_7listoptINSB_6detail16base_hook_traitsINS5_7Network4ItemENSB_16list_node_traitsIPvEELNSB_14link_mode_typeE1ENSH_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm
+// type: void __fastcall(int, unsigned int)
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX10Reflection13ConstPropertyENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES7_NS_9intrusive13list_iteratorINSB_9list_implINSB_7listoptINSB_6detail16base_hook_traitsINS5_7Network4ItemENSB_16list_node_traitsIPvEELNSB_14link_mode_typeE1ENSH_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm")]
+pub fn stub_f63b54() -> ! {
+    todo!("0xf63b54 j___ZN5boost9unordered6detail5tableINS1_3mapINS_19fast_pool_allocatorIN3RBX10Reflection13ConstPropertyENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES7_NS_9intrusive13list_iteratorINSB_9list_implINSB_7listoptINSB_6detail16base_hook_traitsINS5_7Network4ItemENSB_16list_node_traitsIPvEELNSB_14link_mode_typeE1ENSH_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm")
+}
+
+// 0xf63b34 — j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEEEEE9constructEv
+// type: int(void)
+#[doc(alias = "j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEEEEE9constructEv")]
+pub fn stub_f63b34() -> ! {
+    todo!("0xf63b34 j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEEEEE9constructEv")
+}
+
+// 0xf63b24 — j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEEEEE20construct_with_valueINS1_13emplace_args1ISD_EEEEvRKT_
+// type: void __fastcall(int, int *, int, int, struct _Unwind_Exception *lpuexcpt, boost::detail::shared_count *, int, int, int, int)
+#[doc(alias = "j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEEEEE20construct_with_valueINS1_13emplace_args1ISD_EEEEvRKT_")]
+pub fn stub_f63b24() -> ! {
+    todo!("0xf63b24 j___ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEEEEE20construct_with_valueINS1_13emplace_args1ISD_EEEEvRKT_")
+}
+
+// 0xf63b14 — j___ZN5boost9unordered6detail16node_constructorINS_19fast_pool_allocatorINS1_8ptr_nodeISt4pairIKN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINSA_9list_implINSA_7listoptINSA_6detail16base_hook_traitsINS6_7Network4ItemENSA_16list_node_traitsIPvEELNSA_14link_mode_typeE1ENSG_7ItemTagELi1EEEmLb1EEEEELb0EEEEEENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEE9constructEv
+// type: int __fastcall(_DWORD)
+#[doc(alias = "j___ZN5boost9unordered6detail16node_constructorINS_19fast_pool_allocatorINS1_8ptr_nodeISt4pairIKN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINSA_9list_implINSA_7listoptINSA_6detail16base_hook_traitsINS6_7Network4ItemENSA_16list_node_traitsIPvEELNSA_14link_mode_typeE1ENSG_7ItemTagELi1EEEmLb1EEEEELb0EEEEEENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEE9constructEv")]
+pub fn stub_f63b14() -> ! {
+    todo!("0xf63b14 j___ZN5boost9unordered6detail16node_constructorINS_19fast_pool_allocatorINS1_8ptr_nodeISt4pairIKN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINSA_9list_implINSA_7listoptINSA_6detail16base_hook_traitsINS6_7Network4ItemENSA_16list_node_traitsIPvEELNSA_14link_mode_typeE1ENSG_7ItemTagELi1EEEmLb1EEEEELb0EEEEEENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEE9constructEv")
+}
+
+// 0xf63ae4 — j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS9_RKT_
+// type: void __fastcall(boost::detail::shared_count *, struct _Unwind_Exception *, unsigned int *, int, char, void *, int, int, int, int)
+#[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS9_RKT_")]
+pub fn stub_f63ae4() -> ! {
+    todo!("0xf63ae4 j___ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPKN3RBX8InstanceENS5_7Network10Replicator15ReplicationDataEEES8_SC_NS_4hashIS8_EESt8equal_toIS8_EEEE12emplace_implINS1_13emplace_args1ISD_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEbERS9_RKT_")
+}
+
+// 0xf63ad4 — j___ZN5boost9unordered6detail10table_implINS1_3mapINS_19fast_pool_allocatorIN3RBX10Reflection13ConstPropertyENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES7_NS_9intrusive13list_iteratorINSB_9list_implINSB_7listoptINSB_6detail16base_hook_traitsINS5_7Network4ItemENSB_16list_node_traitsIPvEELNSB_14link_mode_typeE1ENSH_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1ISt4pairIKS7_SR_EEEEES10_INS0_15iterator_detail8iteratorINS1_8ptr_nodeIS12_EEEEbERS11_RKT_
+// type: void __fastcall(int, _DWORD *, int, _DWORD **)
+#[doc(alias = "j___ZN5boost9unordered6detail10table_implINS1_3mapINS_19fast_pool_allocatorIN3RBX10Reflection13ConstPropertyENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES7_NS_9intrusive13list_iteratorINSB_9list_implINSB_7listoptINSB_6detail16base_hook_traitsINS5_7Network4ItemENSB_16list_node_traitsIPvEELNSB_14link_mode_typeE1ENSH_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1ISt4pairIKS7_SR_EEEEES10_INS0_15iterator_detail8iteratorINS1_8ptr_nodeIS12_EEEEbERS11_RKT_")]
+pub fn stub_f63ad4() -> ! {
+    todo!("0xf63ad4 j___ZN5boost9unordered6detail10table_implINS1_3mapINS_19fast_pool_allocatorIN3RBX10Reflection13ConstPropertyENS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEES7_NS_9intrusive13list_iteratorINSB_9list_implINSB_7listoptINSB_6detail16base_hook_traitsINS5_7Network4ItemENSB_16list_node_traitsIPvEELNSB_14link_mode_typeE1ENSH_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1ISt4pairIKS7_SR_EEEEES10_INS0_15iterator_detail8iteratorINS1_8ptr_nodeIS12_EEEEbERS11_RKT_")
+}
+
+// 0xf63ac4 — j___ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEED1Ev
+// type: int __fastcall(int)
+#[doc(alias = "j___ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEED1Ev")]
+pub fn stub_f63ac4() -> ! {
+    todo!("0xf63ac4 j___ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEED1Ev")
+}
+
+// 0xf63ab4 — j___ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEEC2EmRKSN_RKSP_RKST_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEEC2EmRKSN_RKSP_RKST_")]
+pub fn stub_f63ab4() -> ! {
+    todo!("0xf63ab4 j___ZN5boost9unordered13unordered_mapIN3RBX10Reflection13ConstPropertyENS_9intrusive13list_iteratorINS5_9list_implINS5_7listoptINS5_6detail16base_hook_traitsINS2_7Network4ItemENS5_16list_node_traitsIPvEELNS5_14link_mode_typeE1ENSB_7ItemTagELi1EEEmLb1EEEEELb0EEENS_4hashIS4_EESt8equal_toIS4_ENS_19fast_pool_allocatorIS4_NS_33default_user_allocator_new_deleteENS_5mutexELj32ELj0EEEEC2EmRKSN_RKSP_RKST_")
+}
+
+// 0xf63a84 — j___ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS1_8InstanceEEEENS6_5list1INS6_5valueINS8_INS1_7Network10ReplicatorEEEEEEEEEEEvT_
+// type: void __fastcall(pthread_mutex_t *, int *, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS1_8InstanceEEEENS6_5list1INS6_5valueINS8_INS1_7Network10ReplicatorEEEEEEEEEEEvT_")]
+pub fn stub_f63a84() -> ! {
+    todo!("0xf63a84 j___ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS1_8InstanceEEEENS6_5list1INS6_5valueINS8_INS1_7Network10ReplicatorEEEEEEEEEEEvT_")
+}
+
+// 0xf63a54 — j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS1_8InstanceEEEENS7_5list1INS7_5valueINS9_INS1_7Network10ReplicatorEEEEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS1_8InstanceEEEENS7_5list1INS7_5valueINS9_INS1_7Network10ReplicatorEEEEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f63a54() -> ! {
+    todo!("0xf63a54 j___ZN5boost8functionIFvPN3RBX9DataModelEEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrINS1_8InstanceEEEENS7_5list1INS7_5valueINS9_INS1_7Network10ReplicatorEEEEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf63a44 — j___ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueINS5_INS6_7Network10ReplicatorEEEEEEEEEE12manage_smallERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
+// type: void __fastcall(_DWORD *, _WORD *, unsigned int)
+#[doc(alias = "j___ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueINS5_INS6_7Network10ReplicatorEEEEEEEEEE12manage_smallERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")]
+pub fn stub_f63a44() -> ! {
+    todo!("0xf63a44 j___ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueINS5_INS6_7Network10ReplicatorEEEEEEEEEE12manage_smallERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE")
+}
+
+// 0xf639f4 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network31SharedStringProtectedDictionaryES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network31SharedStringProtectedDictionaryES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f639f4() -> ! {
+    todo!("0xf639f4 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network31SharedStringProtectedDictionaryES4_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf639e4 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_28InterpolatingPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: void __fastcall(int, int, _DWORD **, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_28InterpolatingPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f639e4() -> ! {
+    todo!("0xf639e4 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_28InterpolatingPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf639d4 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_21DirectPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_21DirectPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f639d4() -> ! {
+    todo!("0xf639d4 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network15PhysicsReceiverENS3_21DirectPhysicsReceiverEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf639c4 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23TopNErrorsPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: void __fastcall(int, int, _DWORD **, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23TopNErrorsPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f639c4() -> ! {
+    todo!("0xf639c4 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23TopNErrorsPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf639b4 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23RoundRobinPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23RoundRobinPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f639b4() -> ! {
+    todo!("0xf639b4 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23RoundRobinPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf639a4 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23ErrorCompPhysicsSender2EEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: void __fastcall(int, int, _DWORD **, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23ErrorCompPhysicsSender2EEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f639a4() -> ! {
+    todo!("0xf639a4 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_23ErrorCompPhysicsSender2EEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf63994 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_22ErrorCompPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_22ErrorCompPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f63994() -> ! {
+    todo!("0xf63994 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network13PhysicsSenderENS3_22ErrorCompPhysicsSenderEEEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf63984 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator7PingJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator7PingJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f63984() -> ! {
+    todo!("0xf63984 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator7PingJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf63974 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator17ProcessPacketsJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator17ProcessPacketsJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f63974() -> ! {
+    todo!("0xf63974 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator17ProcessPacketsJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf63964 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator14SendClusterJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator14SendClusterJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f63964() -> ! {
+    todo!("0xf63964 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator14SendClusterJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf63954 — j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator11SendDataJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
+// type: int __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
+#[doc(alias = "j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator11SendDataJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")]
+pub fn stub_f63954() -> ! {
+    todo!("0xf63954 j___ZN5boost6detail20sp_pointer_constructIN3RBX7Network10Replicator11SendDataJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
+}
+
+// 0xf638f4 — j___ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network10ReplicatorEEEPNS4_15ReplicationDataENS2_8Instance18CombinedSignalTypeEPKNS8_19ICombinedSignalDataES5_S7_NS_3argILi1EEENSD_ILi2EEEEENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_ENSG_9list_av_4IT4_T5_T6_T7_E4typeEEESO_SQ_SR_SS_ST_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network10ReplicatorEEEPNS4_15ReplicationDataENS2_8Instance18CombinedSignalTypeEPKNS8_19ICombinedSignalDataES5_S7_NS_3argILi1EEENSD_ILi2EEEEENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_ENSG_9list_av_4IT4_T5_T6_T7_E4typeEEESO_SQ_SR_SS_ST_")]
+pub fn stub_f638f4() -> ! {
+    todo!("0xf638f4 j___ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network10ReplicatorEEEPNS4_15ReplicationDataENS2_8Instance18CombinedSignalTypeEPKNS8_19ICombinedSignalDataES5_S7_NS_3argILi1EEENSD_ILi2EEEEENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_ENSG_9list_av_4IT4_T5_T6_T7_E4typeEEESO_SQ_SR_SS_ST_")
+}
+
+// 0xf638e4 — j___ZN5boost4bindIvNS_10shared_ptrIN3RBX8InstanceEEENS1_INS2_7Network10ReplicatorEEEEENS_3_bi6bind_tIT_PFSA_T0_ENS8_9list_av_1IT1_E4typeEEESD_SF_
+// type: void __fastcall(pthread_mutex_t *, int, int *, int)
+#[doc(alias = "j___ZN5boost4bindIvNS_10shared_ptrIN3RBX8InstanceEEENS1_INS2_7Network10ReplicatorEEEEENS_3_bi6bind_tIT_PFSA_T0_ENS8_9list_av_1IT1_E4typeEEESD_SF_")]
+pub fn stub_f638e4() -> ! {
+    todo!("0xf638e4 j___ZN5boost4bindIvNS_10shared_ptrIN3RBX8InstanceEEENS1_INS2_7Network10ReplicatorEEEEENS_3_bi6bind_tIT_PFSA_T0_ENS8_9list_av_1IT1_E4typeEEESD_SF_")
+}
+
+// 0xf638c4 — j___ZN5boost4bindIvN3RBX7Network10ReplicatorENS_10shared_ptrINS1_8InstanceEEENS_8functionIFvS6_EEEPS3_NS_3argILi1EEES9_EENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_
+// type: void __fastcall(int, int, int, int, int *)
+#[doc(alias = "j___ZN5boost4bindIvN3RBX7Network10ReplicatorENS_10shared_ptrINS1_8InstanceEEENS_8functionIFvS6_EEEPS3_NS_3argILi1EEES9_EENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_")]
+pub fn stub_f638c4() -> ! {
+    todo!("0xf638c4 j___ZN5boost4bindIvN3RBX7Network10ReplicatorENS_10shared_ptrINS1_8InstanceEEENS_8functionIFvS6_EEEPS3_NS_3argILi1EEES9_EENS_3_bi6bind_tIT_NS_4_mfi3mf2ISF_T0_T1_T2_EENSD_9list_av_3IT3_T4_T5_E4typeEEEMSI_FSF_SJ_SK_ESN_SO_SP_")
+}
+
+// 0xf638a4 — j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEC2ES8_SB_SD_SE_
+// type: int __fastcall(int, int *, int)
+#[doc(alias = "j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEC2ES8_SB_SD_SE_")]
+pub fn stub_f638a4() -> ! {
+    todo!("0xf638a4 j___ZN5boost3_bi8storage4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEC2ES8_SB_SD_SE_")
+}
+
+// 0xf63894 — j___ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES8_SA_SB_SC_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES8_SA_SB_SC_")]
+pub fn stub_f63894() -> ! {
+    todo!("0xf63894 j___ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES8_SA_SB_SC_")
+}
+
+// 0xf63884 — j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEEEC2ES8_SB_SD_
+// type: int __fastcall(int, int *, int, int)
+#[doc(alias = "j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEEEC2ES8_SB_SD_")]
+pub fn stub_f63884() -> ! {
+    todo!("0xf63884 j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEEEC2ES8_SB_SD_")
+}
+
+// 0xf63874 — j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEEEC2ES8_SB_
+// type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEEEC2ES8_SB_")]
+pub fn stub_f63874() -> ! {
+    todo!("0xf63874 j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEEEC2ES8_SB_")
+}
+
+// 0xf63864 — j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEEEC2ES8_SA_
+// type: _DWORD *__fastcall(_DWORD *, unsigned int *, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEEEC2ES8_SA_")]
+pub fn stub_f63864() -> ! {
+    todo!("0xf63864 j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEEEC2ES8_SA_")
+}
+
+// 0xf63854 — j___ZN5boost3_bi5list5INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES8_SA_SB_SC_SD_
+// type: int __fastcall(int, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZN5boost3_bi5list5INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES8_SA_SB_SC_SD_")]
+pub fn stub_f63854() -> ! {
+    todo!("0xf63854 j___ZN5boost3_bi5list5INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES8_SA_SB_SC_SD_")
+}
+
+// 0xf63844 — j___ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEclIPFvS7_SA_NS4_8Instance18CombinedSignalTypeEPKNSH_19ICombinedSignalDataEENS0_5list2IRSI_RSL_EEEEvNS0_4typeIvEERT_RT0_i
+// type: void __fastcall(int *, void (__fastcall **)(int *, int, _DWORD, _DWORD), _DWORD **)
+#[doc(alias = "j___ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEclIPFvS7_SA_NS4_8Instance18CombinedSignalTypeEPKNSH_19ICombinedSignalDataEENS0_5list2IRSI_RSL_EEEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_f63844() -> ! {
+    todo!("0xf63844 j___ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEclIPFvS7_SA_NS4_8Instance18CombinedSignalTypeEPKNSH_19ICombinedSignalDataEENS0_5list2IRSI_RSL_EEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf63834 — j___ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEC2ES8_SB_SD_SE_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEC2ES8_SB_SD_SE_")]
+pub fn stub_f63834() -> ! {
+    todo!("0xf63834 j___ZN5boost3_bi5list4INS0_5valueINS_8weak_ptrIN3RBX7Network10ReplicatorEEEEENS2_IPNS6_15ReplicationDataEEENS_3argILi1EEENSC_ILi2EEEEC2ES8_SB_SD_SE_")
+}
+
+// 0xf63824 — j___ZN5boost3_bi5list3INS0_5valueIPN3RBX7Network10ReplicatorEEENS_3argILi1EEENS2_INS_8functionIFvNS_10shared_ptrINS3_8InstanceEEEEEEEEEclINS_4_mfi3mf2IvS5_SD_SF_EENS0_5list1IRKSD_EEEEvNS0_4typeIvEERT_RT0_i
+// type: void __fastcall(int, int, int **, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueIPN3RBX7Network10ReplicatorEEENS_3argILi1EEENS2_INS_8functionIFvNS_10shared_ptrINS3_8InstanceEEEEEEEEEclINS_4_mfi3mf2IvS5_SD_SF_EENS0_5list1IRKSD_EEEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_f63824() -> ! {
+    todo!("0xf63824 j___ZN5boost3_bi5list3INS0_5valueIPN3RBX7Network10ReplicatorEEENS_3argILi1EEENS2_INS_8functionIFvNS_10shared_ptrINS3_8InstanceEEEEEEEEEclINS_4_mfi3mf2IvS5_SD_SF_EENS0_5list1IRKSD_EEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf63814 — j___ZN5boost3_bi5list3INS0_5valueIPN3RBX7Network10ReplicatorEEENS_3argILi1EEENS2_INS_8functionIFvNS_10shared_ptrINS3_8InstanceEEEEEEEEEC2ES7_S9_SG_
+// type: int __fastcall(int, int, int *)
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueIPN3RBX7Network10ReplicatorEEENS_3argILi1EEENS2_INS_8functionIFvNS_10shared_ptrINS3_8InstanceEEEEEEEEEC2ES7_S9_SG_")]
+pub fn stub_f63814() -> ! {
+    todo!("0xf63814 j___ZN5boost3_bi5list3INS0_5valueIPN3RBX7Network10ReplicatorEEENS_3argILi1EEENS2_INS_8functionIFvNS_10shared_ptrINS3_8InstanceEEEEEEEEEC2ES7_S9_SG_")
+}
+
+// 0xf63804 — j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEEEC2ES8_
+// type: _DWORD *__fastcall(_DWORD *, unsigned int *, int, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
+#[doc(alias = "j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEEEC2ES8_")]
+pub fn stub_f63804() -> ! {
+    todo!("0xf63804 j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX7Network10ReplicatorEEEEEEC2ES8_")
+}
+
+// 0xf62274 — j___ZN3rbx13remote_signalIFvSsEED1Ev
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZN3rbx13remote_signalIFvSsEED1Ev")]
+pub fn stub_f62274() -> ! {
+    todo!("0xf62274 j___ZN3rbx13remote_signalIFvSsEED1Ev")
+}
+
+// 0xf62264 — j___ZN3rbx13remote_signalIFvSsEE7connectIN5boost8functionIS1_EEEENS_7signals10connectionERKT_
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "j___ZN3rbx13remote_signalIFvSsEE7connectIN5boost8functionIS1_EEEENS_7signals10connectionERKT_")]
+pub fn stub_f62264() -> ! {
+    todo!("0xf62264 j___ZN3rbx13remote_signalIFvSsEE7connectIN5boost8functionIS1_EEEENS_7signals10connectionERKT_")
+}
+
+// 0xf62254 — j___ZN3RBX14FactoryProductINS_7Network6PlayerENS_8InstanceELZNS1_7sPlayerEES3_E7CreatorD2Ev
+// type: int(void)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_7Network6PlayerENS_8InstanceELZNS1_7sPlayerEES3_E7CreatorD2Ev")]
+pub fn stub_f62254() -> ! {
+    todo!("0xf62254 j___ZN3RBX14FactoryProductINS_7Network6PlayerENS_8InstanceELZNS1_7sPlayerEES3_E7CreatorD2Ev")
+}
+
+// 0xf62244 — j___ZN3RBX14FactoryProductINS_7Network6PlayerENS_8InstanceELZNS1_7sPlayerEES3_E7CreatorC2Ev
+// type: int __fastcall(int, int, int, int, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_7Network6PlayerENS_8InstanceELZNS1_7sPlayerEES3_E7CreatorC2Ev")]
+pub fn stub_f62244() -> ! {
+    todo!("0xf62244 j___ZN3RBX14FactoryProductINS_7Network6PlayerENS_8InstanceELZNS1_7sPlayerEES3_E7CreatorC2Ev")
+}
+
+// 0xf621f4 — j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f621f4() -> ! {
+    todo!("0xf621f4 j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_SF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf621e4 — j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_EC2ESA_PKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_EC2ESA_PKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f621e4() -> ! {
+    todo!("0xf621e4 j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsN3G3D7Vector3EEN3rbx13remote_signalIS6_EEMS3_S9_EC2ESA_PKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf621d4 — j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f621d4() -> ! {
+    todo!("0xf621d4 j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEMS3_S7_EC2ES8_PKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf621c4 — j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEENS_13FriendService12FriendStatusEEN3rbx6signalISA_EEMS3_SD_EC2ESE_PKcSH_SH_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEENS_13FriendService12FriendStatusEEN3rbx6signalISA_EEMS3_SD_EC2ESE_PKcSH_SH_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f621c4() -> ! {
+    todo!("0xf621c4 j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEENS_13FriendService12FriendStatusEEN3rbx6signalISA_EEMS3_SD_EC2ESE_PKcSH_SH_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf621b4 — j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f621b4() -> ! {
+    todo!("0xf621b4 j___ZN3RBX10Reflection9EventDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_EC2ESC_PKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf621a4 — j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_7Network6PlayerEEEPKcS8_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, __guard *, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_7Network6PlayerEEEPKcS8_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f621a4() -> ! {
+    todo!("0xf621a4 j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_7Network6PlayerEEEPKcS8_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf62194 — j___ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2INS_7Network6PlayerEEEPKcS8_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, __guard *, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2INS_7Network6PlayerEEEPKcS8_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f62194() -> ! {
+    todo!("0xf62194 j___ZN3RBX10Reflection9BoundPropISsLNS0_10MutabilityE1EEC2INS_7Network6PlayerEEEPKcS8_MT_SsNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf62184 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_7Network6Player14MembershipTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS6_EEPNSA_10disable_ifINSA_7is_sameIS6_NSA_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
+// type: int __fastcall(int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9ArgHelper6getArgINS_7Network6Player14MembershipTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS6_EEPNSA_10disable_ifINSA_7is_sameIS6_NSA_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")]
+pub fn stub_f62184() -> ! {
+    todo!("0xf62184 j___ZN3RBX10Reflection9ArgHelper6getArgINS_7Network6Player14MembershipTypeELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS6_EEPNSA_10disable_ifINSA_7is_sameIS6_NSA_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")
+}
+
+// 0xf62174 — j___ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE7addPairES4_PKc
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE7addPairES4_PKc")]
+pub fn stub_f62174() -> ! {
+    todo!("0xf62174 j___ZN3RBX10Reflection8EnumDescINS_7Network6Player8ChatModeEE7addPairES4_PKc")
+}
+
+// 0xf62164 — j___ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE7addPairES4_PKc
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE7addPairES4_PKc")]
+pub fn stub_f62164() -> ! {
+    todo!("0xf62164 j___ZN3RBX10Reflection8EnumDescINS_7Network6Player14MembershipTypeEE7addPairES4_PKc")
+}
+
+// 0xf62154 — j___ZN3RBX10Reflection7Variant14genericConvertINS_7Network6Player14MembershipTypeEEERT_v
+// type: int __fastcall(_DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection7Variant14genericConvertINS_7Network6Player14MembershipTypeEEERT_v")]
+pub fn stub_f62154() -> ! {
+    todo!("0xf62154 j___ZN3RBX10Reflection7Variant14genericConvertINS_7Network6Player14MembershipTypeEEERT_v")
+}
+
+// 0xf62134 — j___ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceEbi
+// type: int __fastcall(_DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceEbi")]
+pub fn stub_f62134() -> ! {
+    todo!("0xf62134 j___ZN3RBX10Reflection19RemoteEventDescImplILi2ENS_7Network6PlayerEFvbiEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceEbi")
+}
+
+// 0xf62124 — j___ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE21fireAndReplicateEventEPS3_Ss
+// type: int __fastcall(int, int, std::string *)
+#[doc(alias = "j___ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE21fireAndReplicateEventEPS3_Ss")]
+pub fn stub_f62124() -> ! {
+    todo!("0xf62124 j___ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE21fireAndReplicateEventEPS3_Ss")
+}
+
+// 0xf62114 — j___ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceESs
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceESs")]
+pub fn stub_f62114() -> ! {
+    todo!("0xf62114 j___ZN3RBX10Reflection19RemoteEventDescImplILi1ENS_7Network6PlayerEFvSsEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceESs")
+}
+
+// 0xf62104 — j___ZN3RBX10Reflection19RemoteEventDescImplILi0ENS_7Network6PlayerEFvvEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection19RemoteEventDescImplILi0ENS_7Network6PlayerEFvvEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceE")]
+pub fn stub_f62104() -> ! {
+    todo!("0xf62104 j___ZN3RBX10Reflection19RemoteEventDescImplILi0ENS_7Network6PlayerEFvvEN3rbx13remote_signalIS4_EEE14replicateEventEPNS0_11EventSourceE")
+}
+
+// 0xf620f4 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEEC2IMS3_KFS5_vEMS3_FvS5_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEEC2IMS3_KFS5_vEMS3_FvS5_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f620f4() -> ! {
+    todo!("0xf620f4 j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS_6Camera10CameraModeEEC2IMS3_KFS5_vEMS3_FvS5_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf620e4 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEEC2IMS3_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEEC2IMS3_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f620e4() -> ! {
+    todo!("0xf620e4 j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_8ChatModeEEC2IMS3_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf620d4 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEEC2IMS3_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEEC2IMS3_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f620d4() -> ! {
+    todo!("0xf620d4 j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEEC2IMS3_KFS4_vEiEEPKcSA_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf620c4 — j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f620c4() -> ! {
+    todo!("0xf620c4 j___ZN3RBX10Reflection18EnumPropDescriptorINS_7Network6PlayerENS3_14MembershipTypeEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf620b4 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EEC2EMS3_FviN5boost8functionIFviEEENS7_IFvSsEEEEPKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EEC2EMS3_FviN5boost8functionIFviEEENS7_IFvSsEEEEPKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f620b4() -> ! {
+    todo!("0xf620b4 j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFiiEiLi1EEC2EMS3_FviN5boost8functionIFviEEENS7_IFvSsEEEEPKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf620a4 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbvEbLi0EEC1EMS3_FvN5boost8functionIFvbEEENS7_IFvSsEEEEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(int, int, int, int, __guard *, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbvEbLi0EEC1EMS3_FvN5boost8functionIFvbEEENS7_IFvSsEEEEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f620a4() -> ! {
+    todo!("0xf620a4 j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbvEbLi0EEC1EMS3_FvN5boost8functionIFvbEEENS7_IFvSsEEEEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf62094 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbiEbLi1EEC2EMS3_FviN5boost8functionIFvbEEENS7_IFvSsEEEEPKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbiEbLi1EEC2EMS3_FviN5boost8functionIFvbEEENS7_IFvSsEEEEPKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f62094() -> ! {
+    todo!("0xf62094 j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFbiEbLi1EEC2EMS3_FviN5boost8functionIFvbEEENS7_IFvSsEEEEPKcSF_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf62084 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsiESsLi1EEC2EMS3_FviN5boost8functionIFvSsEEES9_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsiESsLi1EEC2EMS3_FviN5boost8functionIFvSsEEES9_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f62084() -> ! {
+    todo!("0xf62084 j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFSsiESsLi1EEC2EMS3_FviN5boost8functionIFvSsEEES9_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf62074 — j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EEC2EMS3_FviNS4_8functionIFvSJ_EEENSM_IFvSsEEEEPKcSU_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EEC2EMS3_FviNS4_8functionIFvSJ_EEENSM_IFvSsEEEEPKcSU_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f62074() -> ! {
+    todo!("0xf62074 j___ZN3RBX10Reflection18BoundYieldFuncDescINS_7Network6PlayerEFN5boost10shared_ptrIKNS4_9unordered13unordered_mapISsNS0_7VariantENS4_4hashISsEESt8equal_toISsESaISt4pairIKSsS8_EEEEEEiESJ_Li1EEC2EMS3_FviNS4_8functionIFvSJ_EEENSM_IFvSsEEEEPKcSU_iNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf62064 — j___ZN3RBX10Reflection17RefPropDescriptorINS_7Network6PlayerENS_13ModelInstanceEEC2IMS3_KFPS4_vEMS3_FvS7_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection17RefPropDescriptorINS_7Network6PlayerENS_13ModelInstanceEEC2IMS3_KFPS4_vEMS3_FvS7_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f62064() -> ! {
+    todo!("0xf62064 j___ZN3RBX10Reflection17RefPropDescriptorINS_7Network6PlayerENS_13ModelInstanceEEC2IMS3_KFPS4_vEMS3_FvS7_EEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf62054 — j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiEC2IMS3_KFivEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, void *, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiEC2IMS3_KFivEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f62054() -> ! {
+    todo!("0xf62054 j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiEC2IMS3_KFivEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf62044 — j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiEC2IMS3_KFivEMS3_FviEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, void *, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiEC2IMS3_KFivEMS3_FviEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f62044() -> ! {
+    todo!("0xf62044 j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEiEC2IMS3_KFivEMS3_FviEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf62034 — j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEfEC2IMS3_KFfvEMS3_FvfEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, void *, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEfEC2IMS3_KFfvEMS3_FvfEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f62034() -> ! {
+    todo!("0xf62034 j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEfEC2IMS3_KFfvEMS3_FvfEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf62024 — j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbEC2IMS3_KFbvEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, void *, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbEC2IMS3_KFbvEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f62024() -> ! {
+    todo!("0xf62024 j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbEC2IMS3_KFbvEiEEPKcS9_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf62014 — j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbEC2IMS3_KFbvEMS3_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, void *, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbEC2IMS3_KFbvEMS3_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f62014() -> ! {
+    todo!("0xf62014 j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerEbEC2IMS3_KFbvEMS3_FvbEEEPKcSB_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf62004 — j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsEC2IMS3_KFSsvEMS3_FvRKSsEEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, void *, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsEC2IMS3_KFSsvEMS3_FvRKSsEEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f62004() -> ! {
+    todo!("0xf62004 j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerESsEC2IMS3_KFSsvEMS3_FvRKSsEEEPKcSD_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf61ff4 — j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, __guard *, int, void *, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f61ff4() -> ! {
+    todo!("0xf61ff4 j___ZN3RBX10Reflection14PropDescriptorINS_7Network6PlayerENS_10BrickColorEEC2IMS3_KFS4_vEMS3_FvS4_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf61fe4 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvvELi0EEC1EMS3_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(int, int, int, int, __guard *, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvvELi0EEC1EMS3_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61fe4() -> ! {
+    todo!("0xf61fe4 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvvELi0EEC1EMS3_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61fd4 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFviELi1EEC2EMS3_FviEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFviELi1EEC2EMS3_FviEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61fd4() -> ! {
+    todo!("0xf61fd4 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFviELi1EEC2EMS3_FviEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61fc4 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvbELi1EEC2EMS3_FvbEPKcS9_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvbELi1EEC2EMS3_FvbEPKcS9_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61fc4() -> ! {
+    todo!("0xf61fc4 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvbELi1EEC2EMS3_FvbEPKcS9_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61fb4 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvbELi1EEC2EMS3_FvbEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvbELi1EEC2EMS3_FvbEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61fb4() -> ! {
+    todo!("0xf61fb4 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvbELi1EEC2EMS3_FvbEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61fa4 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsdELi2EEC2EMS3_FvSsdEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsdELi2EEC2EMS3_FvSsdEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61fa4() -> ! {
+    todo!("0xf61fa4 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsdELi2EEC2EMS3_FvSsdEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61f94 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsbELi2EEC2EMS3_FvSsbEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsbELi2EEC2EMS3_FvSsbEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61f94() -> ! {
+    todo!("0xf61f94 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsbELi2EEC2EMS3_FvSsbEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61f84 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EED2Ev
+// type: int __fastcall(_DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EED2Ev")]
+pub fn stub_f61f84() -> ! {
+    todo!("0xf61f84 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EED2Ev")
+}
+
+// 0xf61f74 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EEC2EMS3_FvSsSsEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EEC2EMS3_FvSsSsEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61f74() -> ! {
+    todo!("0xf61f74 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsSsELi2EEC2EMS3_FvSsSsEPKcS9_S9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61f64 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED2Ev
+// type: int __fastcall(_DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED2Ev")]
+pub fn stub_f61f64() -> ! {
+    todo!("0xf61f64 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED2Ev")
+}
+
+// 0xf61f54 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EEC2EMS3_FvSsS7_EPKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EEC2EMS3_FvSsS7_EPKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61f54() -> ! {
+    todo!("0xf61f54 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EEC2EMS3_FvSsS7_EPKcSD_SD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61f44 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvNS3_14MembershipTypeEELi1EEC2EMS3_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvNS3_14MembershipTypeEELi1EEC2EMS3_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61f44() -> ! {
+    todo!("0xf61f44 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvNS3_14MembershipTypeEELi1EEC2EMS3_FvS4_EPKcSA_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61f34 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED2Ev
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED2Ev")]
+pub fn stub_f61f34() -> ! {
+    todo!("0xf61f34 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED2Ev")
+}
+
+// 0xf61f24 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS3_FvS7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS3_FvS7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61f24() -> ! {
+    todo!("0xf61f24 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFvN5boost10shared_ptrINS_8InstanceEEEELi1EEC2EMS3_FvS7_EPKcSD_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61f14 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFfN3G3D7Vector3EELi1EEC2EMS3_FfS5_EPKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFfN3G3D7Vector3EELi1EEC2EMS3_FfS5_EPKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61f14() -> ! {
+    todo!("0xf61f14 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFfN3G3D7Vector3EELi1EEC2EMS3_FfS5_EPKcSB_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf61f04 — j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFdSsELi1EEC2EMS3_FdSsEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFdSsELi1EEC2EMS3_FdSsEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f61f04() -> ! {
+    todo!("0xf61f04 j___ZN3RBX10Reflection13BoundFuncDescINS_7Network6PlayerEFdSsELi1EEC2EMS3_FdSsEPKcS9_NS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
