@@ -297,3 +297,4 @@ pub mod generated_gap_low;
 pub mod generated_core_shard_it;
 pub mod generated_core_shard_iu;
 pub mod generated_core_shard_iv;
+pub mod generated_core_shard_iw;
