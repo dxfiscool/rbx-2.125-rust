@@ -147,3 +147,4 @@ pub mod generated_core_shard_db;
 pub mod generated_core_shard_dc;
 pub mod generated_core_shard_dd;
 pub mod generated_core_shard_de;
+pub mod generated_core_shard_df;
