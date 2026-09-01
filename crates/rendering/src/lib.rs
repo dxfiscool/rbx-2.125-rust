@@ -83,3 +83,4 @@ pub mod generated_74;
 pub mod generated_75;
 pub mod generated_76;
 pub mod generated_77;
+pub mod generated_78;
