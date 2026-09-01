@@ -49,3 +49,4 @@ pub mod generated_48;
 pub mod generated_49;
 pub mod generated_50;
 pub mod generated_51;
+pub mod generated_52;
