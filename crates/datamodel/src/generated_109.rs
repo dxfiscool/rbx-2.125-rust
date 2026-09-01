@@ -11,61 +11,61 @@ use rbx_core::SharedPtr;
 
 
 // 0x943664 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKPN3RBX12PartInstanceENS_8weak_ptrIS6_EEEEEEE9constructEv
-#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>>::construct(void)")]
+#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>>>::construct(void)")]
 pub fn stub_943664() -> ! {
     todo!("0x943664 boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>>::construct(void)")
 }
 
 // 0x94372c — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPN3RBX12PartInstanceENS_8weak_ptrIS6_EEEES7_SA_NS_4hashIS7_EESt8equal_toIS7_EEEE4initERKSI_
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::init(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>> const&)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>,RBX::PartInstance *,rbx_core::WeakPtr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::init(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>,RBX::PartInstance *,rbx_core::WeakPtr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>> const&)")]
 pub fn stub_94372c() -> ! {
     todo!("0x94372c boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::init(boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>> const&)")
 }
 
 // 0x943900 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPN3RBX12PartInstanceENS_8weak_ptrIS6_EEEES7_SA_NS_4hashIS7_EESt8equal_toIS7_EEEED2Ev
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::~table()")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>,RBX::PartInstance *,rbx_core::WeakPtr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::~table()")]
 pub fn stub_943900() -> ! {
     todo!("0x943900 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::~table()")
 }
 
 // 0x9439bc — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPN3RBX12PartInstanceENS_8weak_ptrIS6_EEEES7_SA_NS_4hashIS7_EESt8equal_toIS7_EEEE12fill_bucketsINS1_10copy_nodesISaINS1_8ptr_nodeISB_EEEEEEEvNS0_15iterator_detail8iteratorISM_EERNS1_5tableISH_EERT_
-#[doc(alias = "void boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::fill_buckets<boost::unordered::detail::copy_nodes<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>>>(boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>,boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>> &,boost::unordered::detail::copy_nodes<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>> &)")]
+#[doc(alias = "void boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>,RBX::PartInstance *,rbx_core::WeakPtr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::fill_buckets<boost::unordered::detail::copy_nodes<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>>>>(boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>>,boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>,RBX::PartInstance *,rbx_core::WeakPtr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>> &,boost::unordered::detail::copy_nodes<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>>> &)")]
 pub fn stub_9439bc() -> ! {
     todo!("0x9439bc void boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::fill_buckets<boost::unordered::detail::copy_nodes<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>>>(boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>,boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>> &,boost::unordered::detail::copy_nodes<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>> &)")
 }
 
 // 0x943a6c — __ZN5boost9unordered6detail10copy_nodesISaINS1_8ptr_nodeISt4pairIKPN3RBX12PartInstanceENS_8weak_ptrIS6_EEEEEEE6createERKSB_
-#[doc(alias = "boost::unordered::detail::copy_nodes<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>>::create(std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>> const&)")]
+#[doc(alias = "boost::unordered::detail::copy_nodes<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>>>::create(std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>> const&)")]
 pub fn stub_943a6c() -> ! {
     todo!("0x943a6c boost::unordered::detail::copy_nodes<std::allocator<boost::unordered::detail::ptr_node<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>>>::create(std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>> const&)")
 }
 
 // 0x947fa0 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX19MegaClusterInstanceEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
-#[doc(alias = "std::vector<boost::weak_ptr<RBX::MegaClusterInstance>,std::allocator<boost::weak_ptr<RBX::MegaClusterInstance>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::MegaClusterInstance>*,std::vector<boost::weak_ptr<RBX::MegaClusterInstance>,std::allocator<boost::weak_ptr<RBX::MegaClusterInstance>>>>,boost::weak_ptr<RBX::MegaClusterInstance> const&)")]
+#[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::MegaClusterInstance>,std::allocator<rbx_core::WeakPtr<RBX::MegaClusterInstance>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<rbx_core::WeakPtr<RBX::MegaClusterInstance>*,std::vector<rbx_core::WeakPtr<RBX::MegaClusterInstance>,std::allocator<rbx_core::WeakPtr<RBX::MegaClusterInstance>>>>,rbx_core::WeakPtr<RBX::MegaClusterInstance> const&)")]
 pub fn stub_947fa0() -> ! {
     todo!("0x947fa0 std::vector<boost::weak_ptr<RBX::MegaClusterInstance>,std::allocator<boost::weak_ptr<RBX::MegaClusterInstance>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::MegaClusterInstance>*,std::vector<boost::weak_ptr<RBX::MegaClusterInstance>,std::allocator<boost::weak_ptr<RBX::MegaClusterInstance>>>>,boost::weak_ptr<RBX::MegaClusterInstance> const&)")
 }
 
 // 0x9484b4 — __ZSt24__uninitialized_copy_auxIPN5boost8weak_ptrIN3RBX19MegaClusterInstanceEEES5_ET0_T_S7_S6_St12__false_type
-#[doc(alias = "boost::weak_ptr<RBX::MegaClusterInstance> * std::__uninitialized_copy_aux<boost::weak_ptr<RBX::MegaClusterInstance> *,boost::weak_ptr<RBX::MegaClusterInstance> *>(boost::weak_ptr<RBX::MegaClusterInstance> *,boost::weak_ptr<RBX::MegaClusterInstance> *,boost::weak_ptr<RBX::MegaClusterInstance> *,std::__false_type)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::MegaClusterInstance> * std::__uninitialized_copy_aux<rbx_core::WeakPtr<RBX::MegaClusterInstance> *,rbx_core::WeakPtr<RBX::MegaClusterInstance> *>(rbx_core::WeakPtr<RBX::MegaClusterInstance> *,rbx_core::WeakPtr<RBX::MegaClusterInstance> *,rbx_core::WeakPtr<RBX::MegaClusterInstance> *,std::__false_type)")]
 pub fn stub_9484b4() -> ! {
     todo!("0x9484b4 boost::weak_ptr<RBX::MegaClusterInstance> * std::__uninitialized_copy_aux<boost::weak_ptr<RBX::MegaClusterInstance> *,boost::weak_ptr<RBX::MegaClusterInstance> *>(boost::weak_ptr<RBX::MegaClusterInstance> *,boost::weak_ptr<RBX::MegaClusterInstance> *,boost::weak_ptr<RBX::MegaClusterInstance> *,std::__false_type)")
 }
 
 // 0x948758 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKPN3RBX12PartInstanceENS_8weak_ptrIS6_EEEES7_SA_NS_4hashIS7_EESt8equal_toIS7_EEEEixERS8_
-#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::operator[](RBX::PartInstance * const&)")]
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>,RBX::PartInstance *,rbx_core::WeakPtr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::operator[](RBX::PartInstance * const&)")]
 pub fn stub_948758() -> ! {
     todo!("0x948758 boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::operator[](RBX::PartInstance * const&)")
 }
 
 // 0x9489a0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKPN3RBX12PartInstanceENS_8weak_ptrIS6_EEEES7_SA_NS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::reserve_for_insert(unsigned long)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,rbx_core::WeakPtr<RBX::PartInstance>>>,RBX::PartInstance *,rbx_core::WeakPtr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::reserve_for_insert(unsigned long)")]
 pub fn stub_9489a0() -> ! {
     todo!("0x9489a0 boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<RBX::PartInstance * const,boost::weak_ptr<RBX::PartInstance>>>,RBX::PartInstance *,boost::weak_ptr<RBX::PartInstance>,boost::hash<RBX::PartInstance *>,std::equal_to<RBX::PartInstance *>>>::reserve_for_insert(unsigned long)")
 }
 
 // 0x949034 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX19MegaClusterInstanceEEESaIS4_EED2Ev
-#[doc(alias = "std::vector<boost::weak_ptr<RBX::MegaClusterInstance>,std::allocator<boost::weak_ptr<RBX::MegaClusterInstance>>>::~vector()")]
+#[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::MegaClusterInstance>,std::allocator<rbx_core::WeakPtr<RBX::MegaClusterInstance>>>::~vector()")]
 pub fn stub_949034() -> ! {
     todo!("0x949034 std::vector<boost::weak_ptr<RBX::MegaClusterInstance>,std::allocator<boost::weak_ptr<RBX::MegaClusterInstance>>>::~vector()")
 }

@@ -203,7 +203,7 @@ pub fn stub_f44f24() -> ! {
 // 0xf44f14 — j___ZN3RBX12PartInstance13TouchedSignalclEN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(int, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::PartInstance::TouchedSignal::operator()(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::PartInstance::TouchedSignal::operator()(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_f44f14() -> ! {
     todo!("0xf44f14 RBX::PartInstance::TouchedSignal::operator()(boost::shared_ptr<RBX::Instance>)")
 }
@@ -211,7 +211,7 @@ pub fn stub_f44f14() -> ! {
 // 0xf44f04 — j___ZN3RBX12PartInstance13TouchedSignal7connectIN5boost8functionIFvNS3_10shared_ptrINS_8InstanceEEEEEEEEN3rbx7signals10connectionET_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")]
+#[doc(alias = "rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>)")]
 pub fn stub_f44f04() -> ! {
     todo!("0xf44f04 rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>)>)")
 }
@@ -219,7 +219,7 @@ pub fn stub_f44f04() -> ! {
 // 0xf44ef4 — j___ZN3RBX12PartInstance13TouchedSignal11TouchedSlotclEN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(int, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::PartInstance::TouchedSignal::TouchedSlot::operator()(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::PartInstance::TouchedSignal::TouchedSlot::operator()(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_f44ef4() -> ! {
     todo!("0xf44ef4 RBX::PartInstance::TouchedSignal::TouchedSlot::operator()(boost::shared_ptr<RBX::Instance>)")
 }
@@ -241,7 +241,7 @@ pub fn stub_f44ed4() -> ! {
 // 0xf44ec4 — j___ZN3RBX12PartInstance13TouchedSignal11TouchedSlotC2ERKN5boost8functionIFvNS3_10shared_ptrINS_8InstanceEEEEEEPS0_
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::PartInstance::TouchedSignal::TouchedSlot::TouchedSlot(boost::function<void ()(boost::shared_ptr<RBX::Instance>)> const&,RBX::PartInstance*)")]
+#[doc(alias = "RBX::PartInstance::TouchedSignal::TouchedSlot::TouchedSlot(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)> const&,RBX::PartInstance*)")]
 pub fn stub_f44ec4() -> ! {
     todo!("0xf44ec4 RBX::PartInstance::TouchedSignal::TouchedSlot::TouchedSlot(boost::function<void ()(boost::shared_ptr<RBX::Instance>)> const&,RBX::PartInstance*)")
 }
@@ -249,7 +249,7 @@ pub fn stub_f44ec4() -> ! {
 // 0xf44eb4 — j___ZN3RBX11shared_fromINS_14FWPartInstanceEEEN5boost10shared_ptrIT_EEPS4_
 // type: int()
 // was: int() (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "boost::shared_ptr<RBX::FWPartInstance> RBX::shared_from<RBX::FWPartInstance>(RBX::FWPartInstance*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::FWPartInstance> RBX::shared_from<RBX::FWPartInstance>(RBX::FWPartInstance*)")]
 pub fn stub_f44eb4() -> ! {
     todo!("0xf44eb4 boost::shared_ptr<RBX::FWPartInstance> RBX::shared_from<RBX::FWPartInstance>(RBX::FWPartInstance*)")
 }
@@ -257,7 +257,7 @@ pub fn stub_f44eb4() -> ! {
 // 0xf44ea4 — j___ZN3RBX11shared_fromINS_12PartInstanceEEEN5boost10shared_ptrIT_EEPS4_
 // type: int __fastcall(int, int)
 // was: int __fastcall(int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "boost::shared_ptr<RBX::PartInstance> RBX::shared_from<RBX::PartInstance>(RBX::PartInstance*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PartInstance> RBX::shared_from<RBX::PartInstance>(RBX::PartInstance*)")]
 pub fn stub_f44ea4() -> ! {
     todo!("0xf44ea4 boost::shared_ptr<RBX::PartInstance> RBX::shared_from<RBX::PartInstance>(RBX::PartInstance*)")
 }
@@ -293,7 +293,7 @@ pub fn stub_f44e64() -> ! {
 // 0xf44e54 — j___ZN3RBX10Reflection9EventDescINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEENS2_13TouchedSignalEMS2_FRS8_vEEC2ESB_PKcSE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, int, int, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 pub fn stub_f44e54() -> ! {
     todo!("0xf44e54 RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
@@ -301,7 +301,7 @@ pub fn stub_f44e54() -> ! {
 // 0xf44e44 — j___ZN3RBX10Reflection9EventDescINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEENS2_13TouchedSignalEMS2_FRS8_vEEC2ESB_PKcSE_NS0_10Descriptor10AttributesE
 // type: int __fastcall(int, int, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Reflection::Descriptor::Attributes)")]
 pub fn stub_f44e44() -> ! {
     todo!("0xf44e44 RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),RBX::PartInstance::TouchedSignal,RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void)>::EventDesc(RBX::PartInstance::TouchedSignal& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Reflection::Descriptor::Attributes)")
 }
@@ -309,7 +309,7 @@ pub fn stub_f44e44() -> ! {
 // 0xf44e34 — j___ZN3RBX10Reflection9EventDescINS_12PartInstanceEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_FRSA_vEEC2ESD_PKcSG_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, int, int, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::PartInstance,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 pub fn stub_f44e34() -> ! {
     todo!("0xf44e34 RBX::Reflection::EventDesc<RBX::PartInstance,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void)>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>& (RBX::PartInstance::*)(void),char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
@@ -360,7 +360,7 @@ pub fn stub_f44dd4() -> ! {
 // 0xf44dc4 — j___ZN3RBX10Reflection9ArgHelper6getArgIiLi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int __fastcall(int, int)
 // was: int __fastcall(int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "int RBX::Reflection::ArgHelper::getArg<int,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<int> const&,boost::disable_if<boost::is_same<int,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "int RBX::Reflection::ArgHelper::getArg<int,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<int> const&,boost::disable_if<boost::is_same<int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_f44dc4() -> ! {
     todo!("0xf44dc4 int RBX::Reflection::ArgHelper::getArg<int,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<int> const&,boost::disable_if<boost::is_same<int,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
@@ -368,7 +368,7 @@ pub fn stub_f44dc4() -> ! {
 // 0xf44db4 — j___ZN3RBX10Reflection9ArgHelper6getArgIbLi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int __fastcall(int, int)
 // was: int __fastcall(int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "bool RBX::Reflection::ArgHelper::getArg<bool,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<bool> const&,boost::disable_if<boost::is_same<bool,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "bool RBX::Reflection::ArgHelper::getArg<bool,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<bool> const&,boost::disable_if<boost::is_same<bool,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_f44db4() -> ! {
     todo!("0xf44db4 bool RBX::Reflection::ArgHelper::getArg<bool,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<bool> const&,boost::disable_if<boost::is_same<bool,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
@@ -376,7 +376,7 @@ pub fn stub_f44db4() -> ! {
 // 0xf44da4 — j___ZN3RBX10Reflection9ArgHelper6getArgINS_8NormalIdELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS4_EEPNS8_10disable_ifINS8_7is_sameIS4_NS8_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int()
 // was: int() (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::NormalId RBX::Reflection::ArgHelper::getArg<RBX::NormalId,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::NormalId> const&,boost::disable_if<boost::is_same<RBX::NormalId,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::NormalId RBX::Reflection::ArgHelper::getArg<RBX::NormalId,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::NormalId> const&,boost::disable_if<boost::is_same<RBX::NormalId,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_f44da4() -> ! {
     todo!("0xf44da4 RBX::NormalId RBX::Reflection::ArgHelper::getArg<RBX::NormalId,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::NormalId> const&,boost::disable_if<boost::is_same<RBX::NormalId,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
 }
@@ -608,7 +608,7 @@ pub fn stub_f44ba4() -> ! {
 // 0xf44b94 — j___ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EEC2EMS2_FSB_bEPKcSH_bNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, int, int, int, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(bool),1>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 pub fn stub_f44b94() -> ! {
     todo!("0xf44b94 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),char const*,char const*,bool,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
@@ -616,7 +616,7 @@ pub fn stub_f44b94() -> ! {
 // 0xf44b84 — j___ZN3RBX10Reflection13BoundFuncDescINS_12PartInstanceEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbELi1EE16declareSignatureEPKcNS0_7VariantE
 // type: int()
 // was: int() (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")]
 pub fn stub_f44b84() -> ! {
     todo!("0xf44b84 RBX::Reflection::BoundFuncDesc<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(bool),1>::declareSignature(char const*,RBX::Reflection::Variant)")
 }
@@ -631,7 +631,7 @@ pub fn stub_f44b74() -> ! {
 // 0xf44b64 — j___ZN3RBX10Reflection11Call1HelperINS_12PartInstanceEMS2_FN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEEbEbSB_E4callEPS2_SD_RNS0_7VariantERKb
 // type: int __fastcall(int, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::Reflection::Call1Helper<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),bool,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>::call(RBX::PartInstance*,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),RBX::Reflection::Variant &,bool const&)")]
+#[doc(alias = "RBX::Reflection::Call1Helper<RBX::PartInstance,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),bool,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const>>::call(RBX::PartInstance*,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),RBX::Reflection::Variant &,bool const&)")]
 pub fn stub_f44b64() -> ! {
     todo!("0xf44b64 RBX::Reflection::Call1Helper<RBX::PartInstance,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),bool,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const>>::call(RBX::PartInstance*,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::PartInstance::*)(bool),RBX::Reflection::Variant &,bool const&)")
 }
@@ -688,7 +688,7 @@ pub fn stub_f44af4() -> ! {
 // 0xf44ae4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4PART5WedgeES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(int, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PART::Wedge,RBX::PART::Wedge>(boost::shared_ptr<RBX::PART::Wedge> const*,RBX::PART::Wedge *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PART::Wedge,RBX::PART::Wedge>(rbx_core::SharedPtr<RBX::PART::Wedge> const*,RBX::PART::Wedge *)const")]
 pub fn stub_f44ae4() -> ! {
     todo!("0xf44ae4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PART::Wedge,RBX::PART::Wedge>(boost::shared_ptr<RBX::PART::Wedge> const*,RBX::PART::Wedge *)const")
 }
@@ -711,7 +711,7 @@ pub fn stub_f44ac4() -> ! {
 // 0xf44ab4 — j___ZN5boost10shared_ptrIN3RBX4PART5WedgeEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(int, int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "boost::shared_ptr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_f44ab4() -> ! {
     todo!("0xf44ab4 boost::shared_ptr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -719,7 +719,7 @@ pub fn stub_f44ab4() -> ! {
 // 0xf44aa4 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_4PART5WedgeEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(int, int, int, int, int)
 // was: int __fastcall(int, int, int, int, int) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "boost::shared_ptr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)")]
 pub fn stub_f44aa4() -> ! {
     todo!("0xf44aa4 boost::shared_ptr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)")
 }

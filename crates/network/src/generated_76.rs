@@ -578,7 +578,7 @@ pub fn stub_635f60() -> ! {
 // 0x6360a4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_3SkyEEEN5boost10shared_ptrIT_EEv
 // demangled: boost::shared_ptr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)
 // type: 
-#[doc(alias = "boost::shared_ptr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)")]
 pub fn stub_6360a4() -> ! {
     todo!("0x6360a4 __ZN3RBX9CreatableINS_8InstanceEE6createINS_3SkyEEEN5boost10shared_ptrIT_EEv")
 }
@@ -586,7 +586,7 @@ pub fn stub_6360a4() -> ! {
 // 0x636154 — __ZN5boost10shared_ptrIN3RBX3SkyEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::Sky>::shared_ptr<RBX::Sky,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Sky *,RBX::Creatable<RBX::Instance>::Deleter)
 // type: 
-#[doc(alias = "boost::shared_ptr<RBX::Sky>::shared_ptr<RBX::Sky,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Sky *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Sky>::shared_ptr<RBX::Sky,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Sky *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_636154() -> ! {
     todo!("0x636154 __ZN5boost10shared_ptrIN3RBX3SkyEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
 }
@@ -594,7 +594,7 @@ pub fn stub_636154() -> ! {
 // 0x63621c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_3SkyES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Sky,RBX::Sky>(boost::shared_ptr<RBX::Sky> const*,RBX::Sky *)const
 // type: 
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Sky,RBX::Sky>(boost::shared_ptr<RBX::Sky> const*,RBX::Sky *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Sky,RBX::Sky>(rbx_core::SharedPtr<RBX::Sky> const*,RBX::Sky *)const")]
 pub fn stub_63621c() -> ! {
     todo!("0x63621c __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_3SkyES6_EEvPKNS_10shared_ptrIT_EEPT0_")
 }

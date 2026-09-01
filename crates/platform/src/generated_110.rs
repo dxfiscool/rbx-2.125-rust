@@ -327,7 +327,7 @@ pub fn stub_f39c04() -> ! {
 // 0xf39be4 — void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<DummyJob,DummyJob>(boost::shared_ptr<DummyJob> const*,DummyJob *)const
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerI8DummyJobS6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<DummyJob,DummyJob>(boost::shared_ptr<DummyJob> const*,DummyJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<DummyJob,DummyJob>(rbx_core::SharedPtr<DummyJob> const*,DummyJob *)const")]
 pub fn stub_f39be4() -> ! {
     todo!("0xf39be4 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<DummyJob,DummyJob>(boost::shared_ptr<DummyJob> const*,DummyJob *)const")
 }
@@ -607,7 +607,7 @@ pub fn stub_f39954() -> ! {
 // 0xf39944 — boost::shared_ptr<RBX::BlockMesh>::shared_ptr<RBX::BlockMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)
 // mangled: j___ZN5boost10shared_ptrIN3RBX9BlockMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::BlockMesh>::shared_ptr<RBX::BlockMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BlockMesh>::shared_ptr<RBX::BlockMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_f39944() -> ! {
     todo!("0xf39944 boost::shared_ptr<RBX::BlockMesh>::shared_ptr<RBX::BlockMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -615,7 +615,7 @@ pub fn stub_f39944() -> ! {
 // 0xf39934 — boost::shared_ptr<RBX::Reflection::Tuple const>::operator=(boost::shared_ptr<RBX::Reflection::Tuple const> const&)
 // mangled: j___ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEaSERKS5_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Reflection::Tuple const>::operator=(boost::shared_ptr<RBX::Reflection::Tuple const> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple const>::operator=(rbx_core::SharedPtr<RBX::Reflection::Tuple const> const&)")]
 pub fn stub_f39934() -> ! {
     todo!("0xf39934 boost::shared_ptr<RBX::Reflection::Tuple const>::operator=(boost::shared_ptr<RBX::Reflection::Tuple const> const&)")
 }
@@ -623,7 +623,7 @@ pub fn stub_f39934() -> ! {
 // 0xf39924 — boost::shared_ptr<DummyJob>::shared_ptr<DummyJob>(DummyJob *)
 // mangled: j___ZN5boost10shared_ptrI8DummyJobEC2IS1_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<DummyJob>::shared_ptr<DummyJob>(DummyJob *)")]
+#[doc(alias = "rbx_core::SharedPtr<DummyJob>::shared_ptr<DummyJob>(DummyJob *)")]
 pub fn stub_f39924() -> ! {
     todo!("0xf39924 boost::shared_ptr<DummyJob>::shared_ptr<DummyJob>(DummyJob *)")
 }
@@ -631,7 +631,7 @@ pub fn stub_f39924() -> ! {
 // 0xf39914 — boost::shared_ptr<DummyArbiter>::shared_ptr<DummyArbiter>(DummyArbiter *)
 // mangled: j___ZN5boost10shared_ptrI12DummyArbiterEC2IS1_EEPT_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<DummyArbiter>::shared_ptr<DummyArbiter>(DummyArbiter *)")]
+#[doc(alias = "rbx_core::SharedPtr<DummyArbiter>::shared_ptr<DummyArbiter>(DummyArbiter *)")]
 pub fn stub_f39914() -> ! {
     todo!("0xf39914 boost::shared_ptr<DummyArbiter>::shared_ptr<DummyArbiter>(DummyArbiter *)")
 }
@@ -799,7 +799,7 @@ pub fn stub_f397b4() -> ! {
 // 0xf39794 — rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::shared_ptr<RBX::Reflection::Tuple const> const&)
 // mangled: j___ZN3rbx13placement_anyIN3RBX7Region3EEaSIN5boost10shared_ptrIKNS1_10Reflection5TupleEEEEERS3_RKT_
 // type: _DWORD *__fastcall(_DWORD *, const shared_count *)
-#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::shared_ptr<RBX::Reflection::Tuple const> const&)")]
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>(rbx_core::SharedPtr<RBX::Reflection::Tuple const> const&)")]
 pub fn stub_f39794() -> ! {
     todo!("0xf39794 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::shared_ptr<RBX::Reflection::Tuple const> const&)")
 }

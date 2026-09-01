@@ -401,7 +401,7 @@ pub fn stub_77ecd4() -> ! {
 }
 
 // 0x77ed18 — __ZN5boost10shared_ptrIN3RBX10BaseScriptEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
-#[doc(alias = "rbx_core::SharedPtr<RBX::BaseScript>::shared_ptr<RBX::BaseScript>(boost::weak_ptr<RBX::BaseScript> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BaseScript>::shared_ptr<RBX::BaseScript>(rbx_core::WeakPtr<RBX::BaseScript> const&,boost::detail::sp_nothrow_tag)")]
 pub fn stub_77ed18() -> ! {
     todo!("0x77ed18 __ZN5boost10shared_ptrIN3RBX10BaseScriptEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
 }

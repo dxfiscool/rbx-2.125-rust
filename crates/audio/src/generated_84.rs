@@ -109,7 +109,7 @@ pub fn stub_897070() -> ! {
 }
 
 // 0x897144 — __GLOBAL__I_a_444
-#[doc(alias = "`global constructor keyed to_a_444")]
+#[doc(alias = "global constructor keyed to_a_444")]
 pub fn stub_897144() -> ! {
     todo!("0x897144 `global constructor keyed to_a_444")
 }
@@ -163,7 +163,7 @@ pub fn stub_89773c() -> ! {
 }
 
 // 0x897740 — __GLOBAL__I_a_445
-#[doc(alias = "`global constructor keyed to_a_445")]
+#[doc(alias = "global constructor keyed to_a_445")]
 pub fn stub_897740() -> ! {
     todo!("0x897740 `global constructor keyed to_a_445")
 }
@@ -217,7 +217,7 @@ pub fn stub_897aac() -> ! {
 }
 
 // 0x897ab0 — __GLOBAL__I_a_446
-#[doc(alias = "`global constructor keyed to_a_446")]
+#[doc(alias = "global constructor keyed to_a_446")]
 pub fn stub_897ab0() -> ! {
     todo!("0x897ab0 `global constructor keyed to_a_446")
 }
@@ -241,19 +241,19 @@ pub fn stub_897f9c() -> ! {
 }
 
 // 0x897fa0 — __ZThn32_N3RBX24CacheableContentProviderD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 pub fn stub_897fa0() -> ! {
     todo!("0x897fa0 `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
 }
 
 // 0x897fa8 — __ZThn36_N3RBX24CacheableContentProviderD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 pub fn stub_897fa8() -> ! {
     todo!("0x897fa8 `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
 }
 
 // 0x897fb0 — __ZThn96_N3RBX24CacheableContentProviderD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 pub fn stub_897fb0() -> ! {
     todo!("0x897fb0 `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
 }
@@ -265,19 +265,19 @@ pub fn stub_897fb8() -> ! {
 }
 
 // 0x8981cc — __ZThn32_N3RBX24CacheableContentProviderD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 pub fn stub_8981cc() -> ! {
     todo!("0x8981cc `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
 }
 
 // 0x8981d4 — __ZThn36_N3RBX24CacheableContentProviderD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 pub fn stub_8981d4() -> ! {
     todo!("0x8981d4 `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
 }
 
 // 0x8981dc — __ZThn96_N3RBX24CacheableContentProviderD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")]
 pub fn stub_8981dc() -> ! {
     todo!("0x8981dc `non-virtual thunk toRBX::CacheableContentProvider::~CacheableContentProvider()")
 }
@@ -289,7 +289,7 @@ pub fn stub_8981e4() -> ! {
 }
 
 // 0x898324 — __ZThn96_N3RBX24CacheableContentProvider11onHeartbeatERKNS_9HeartbeatE
-#[doc(alias = "`non-virtual thunk toRBX::CacheableContentProvider::onHeartbeat(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk toRBX::CacheableContentProvider::onHeartbeat(RBX::Heartbeat const&)")]
 pub fn stub_898324() -> ! {
     todo!("0x898324 `non-virtual thunk toRBX::CacheableContentProvider::onHeartbeat(RBX::Heartbeat const&)")
 }

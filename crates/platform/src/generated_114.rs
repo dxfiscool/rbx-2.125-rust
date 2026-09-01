@@ -13,7 +13,7 @@ const _: () = {
 // 0xf647b4 — j___ZN5boost6detail20sp_pointer_constructIN6RakNet9BitStreamES3_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // mangled: j___ZN5boost6detail20sp_pointer_constructIN6RakNet9BitStreamES3_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RakNet::BitStream,RakNet::BitStream>(boost::shared_ptr<RakNet::BitStream> *,RakNet::BitStream *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RakNet::BitStream,RakNet::BitStream>(rbx_core::SharedPtr<RakNet::BitStream> *,RakNet::BitStream *,boost::detail::shared_count &)")]
 pub fn stub_f647b4() -> ! {
     todo!("0xf647b4 j___ZN5boost6detail20sp_pointer_constructIN6RakNet9BitStreamES3_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
@@ -29,7 +29,7 @@ pub fn stub_f647a4() -> ! {
 // 0xf643f4 — j___ZN5boost10shared_ptrIN6RakNet9BitStreamEE5resetIS2_EEvPT_
 // mangled: j___ZN5boost10shared_ptrIN6RakNet9BitStreamEE5resetIS2_EEvPT_
 // type: int __fastcall(int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::shared_ptr<RakNet::BitStream>::reset<RakNet::BitStream>(RakNet::BitStream *)")]
+#[doc(alias = "void rbx_core::SharedPtr<RakNet::BitStream>::reset<RakNet::BitStream>(RakNet::BitStream *)")]
 pub fn stub_f643f4() -> ! {
     todo!("0xf643f4 j___ZN5boost10shared_ptrIN6RakNet9BitStreamEE5resetIS2_EEvPT_")
 }
@@ -149,7 +149,7 @@ pub fn stub_f63d94() -> ! {
 // 0xf638d4 — j___ZN5boost4bindIvN3RBX7Network10ReplicatorERKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_NS8_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEENSG_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISN_T0_T1_T2_T3_T4_EENSL_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSQ_FSN_SR_SS_ST_SU_ESX_SY_SZ_S10_S11_
 // mangled: j___ZN5boost4bindIvN3RBX7Network10ReplicatorERKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_NS8_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEENSG_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISN_T0_T1_T2_T3_T4_EENSL_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSQ_FSN_SR_SS_ST_SU_ESX_SY_SZ_S10_S11_
 // type: int __fastcall(int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list_av_5<boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Network::Replicator,RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&,boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Network::Replicator::*)(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&),boost::shared_ptr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf4<void,RBX::Network::Replicator,RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&>,boost::_bi::list_av_5<rbx_core::SharedPtr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>::type> boost::bind<void,RBX::Network::Replicator,RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&,rbx_core::SharedPtr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>>(void (RBX::Network::Replicator::*)(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&),rbx_core::SharedPtr<RBX::Network::Replicator>,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<4>)")]
 pub fn stub_f638d4() -> ! {
     todo!("0xf638d4 j___ZN5boost4bindIvN3RBX7Network10ReplicatorERKN6RakNet13SystemAddressERKNS_10shared_ptrINS4_9BitStreamEEERKSsSE_NS8_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEENSG_ILi4EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf4ISN_T0_T1_T2_T3_T4_EENSL_9list_av_5IT5_T6_T7_T8_T9_E4typeEEEMSQ_FSN_SR_SS_ST_SU_ESX_SY_SZ_S10_S11_")
 }
@@ -627,7 +627,7 @@ pub fn stub_f61a54() -> ! {
 // 0xf616f4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS5_5list4INS5_5valueINS_10shared_ptrISB_EEEENSH_ISsEESL_NSH_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // mangled: j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS5_5list4INS5_5valueINS_10shared_ptrISB_EEEENSH_ISsEESL_NSH_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int(void)
-#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 pub fn stub_f616f4() -> ! {
     todo!("0xf616f4 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS5_5list4INS5_5valueINS_10shared_ptrISB_EEEENSH_ISsEESL_NSH_ISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
 }
@@ -635,7 +635,7 @@ pub fn stub_f616f4() -> ! {
 // 0xf616a4 — j___ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEE4callINS_10shared_ptrIS4_EESsSsS7_EEvRT_PKvRT0_RT1_RT2_
 // mangled: j___ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEE4callINS_10shared_ptrIS4_EESsSsS7_EEvRT_PKvRT0_RT1_RT2_
 // type: int __fastcall(_DWORD)
-#[doc(alias = "void boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>::call<boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(boost::shared_ptr<RBX::Network::Players> &,void const*,std::string &,std::string &,RakNet::Packet * &)const")]
+#[doc(alias = "void boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>::call<rbx_core::SharedPtr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(rbx_core::SharedPtr<RBX::Network::Players> &,void const*,std::string &,std::string &,RakNet::Packet * &)const")]
 pub fn stub_f616a4() -> ! {
     todo!("0xf616a4 j___ZNK5boost4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEE4callINS_10shared_ptrIS4_EESsSsS7_EEvRT_PKvRT0_RT1_RT2_")
 }
@@ -643,7 +643,7 @@ pub fn stub_f616a4() -> ! {
 // 0xf61384 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEEEvT_
 // mangled: j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEEEvT_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>)")]
+#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>)")]
 pub fn stub_f61384() -> ! {
     todo!("0xf61384 j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEEEvT_")
 }
@@ -651,7 +651,7 @@ pub fn stub_f61384() -> ! {
 // 0xf612e4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // mangled: j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int(void)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 pub fn stub_f612e4() -> ! {
     todo!("0xf612e4 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf3IvN3RBX7Network7PlayersESsSsPN6RakNet6PacketEEENS3_5list4INS3_5valueINS_10shared_ptrIS9_EEEENSF_ISsEESJ_NSF_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
 }
@@ -659,7 +659,7 @@ pub fn stub_f612e4() -> ! {
 // 0xf61244 — j___ZN5boost4bindIvN3RBX7Network7PlayersESsSsPN6RakNet6PacketENS_10shared_ptrIS3_EESsSsS6_EENS_3_bi6bind_tIT_NS_4_mfi3mf3ISB_T0_T1_T2_T3_EENS9_9list_av_4IT4_T5_T6_T7_E4typeEEEMSE_FSB_SF_SG_SH_ESK_SL_SM_SN_
 // mangled: j___ZN5boost4bindIvN3RBX7Network7PlayersESsSsPN6RakNet6PacketENS_10shared_ptrIS3_EESsSsS6_EENS_3_bi6bind_tIT_NS_4_mfi3mf3ISB_T0_T1_T2_T3_EENS9_9list_av_4IT4_T5_T6_T7_E4typeEEEMSE_FSB_SF_SG_SH_ESK_SL_SM_SN_
 // type: int __fastcall(int, int, int, int, std::string *, std::string *, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>::type> boost::bind<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *,boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(void (RBX::Network::Players::*)(std::string,std::string,RakNet::Packet *),boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list_av_4<rbx_core::SharedPtr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>::type> boost::bind<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *,rbx_core::SharedPtr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(void (RBX::Network::Players::*)(std::string,std::string,RakNet::Packet *),rbx_core::SharedPtr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *)")]
 pub fn stub_f61244() -> ! {
     todo!("0xf61244 j___ZN5boost4bindIvN3RBX7Network7PlayersESsSsPN6RakNet6PacketENS_10shared_ptrIS3_EESsSsS6_EENS_3_bi6bind_tIT_NS_4_mfi3mf3ISB_T0_T1_T2_T3_EENS9_9list_av_4IT4_T5_T6_T7_E4typeEEEMSE_FSB_SF_SG_SH_ESK_SL_SM_SN_")
 }
@@ -667,7 +667,7 @@ pub fn stub_f61244() -> ! {
 // 0xf611e4 — j___ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEC2ES8_S9_S9_SD_
 // mangled: j___ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEC2ES8_S9_S9_SD_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
-#[doc(alias = "boost::_bi::storage4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::storage4(boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")]
+#[doc(alias = "boost::_bi::storage4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::storage4(boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")]
 pub fn stub_f611e4() -> ! {
     todo!("0xf611e4 j___ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEC2ES8_S9_S9_SD_")
 }
@@ -675,7 +675,7 @@ pub fn stub_f611e4() -> ! {
 // 0xf610e4 — j___ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEclINS_4_mfi3mf3IvS6_SsSsSC_EENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // mangled: j___ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEclINS_4_mfi3mf3IvS6_SsSsSC_EENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
-#[doc(alias = "void boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::operator()<boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *> &,boost::_bi::list0 &,int)")]
+#[doc(alias = "void boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::operator()<boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list0>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *> &,boost::_bi::list0 &,int)")]
 pub fn stub_f610e4() -> ! {
     todo!("0xf610e4 j___ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEclINS_4_mfi3mf3IvS6_SsSsSC_EENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
 }
@@ -683,7 +683,7 @@ pub fn stub_f610e4() -> ! {
 // 0xf610d4 — j___ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEC2ES8_S9_S9_SD_
 // mangled: j___ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEC2ES8_S9_S9_SD_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD, _DWORD)
-#[doc(alias = "boost::_bi::list4<boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::list4(boost::_bi::value<boost::shared_ptr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")]
+#[doc(alias = "boost::_bi::list4<boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>>::list4(boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Players>>,boost::_bi::value<std::string>,boost::_bi::value<std::string>,boost::_bi::value<RakNet::Packet *>)")]
 pub fn stub_f610d4() -> ! {
     todo!("0xf610d4 j___ZN5boost3_bi5list4INS0_5valueINS_10shared_ptrIN3RBX7Network7PlayersEEEEENS2_ISsEES9_NS2_IPN6RakNet6PacketEEEEC2ES8_S9_S9_SD_")
 }
@@ -699,7 +699,7 @@ pub fn stub_f5fb54() -> ! {
 // 0xf5f724 — j___ZN5boost10shared_ptrIN6RakNet9BitStreamEE5resetEv
 // mangled: j___ZN5boost10shared_ptrIN6RakNet9BitStreamEE5resetEv
 // type: int __fastcall(_DWORD)
-#[doc(alias = "boost::shared_ptr<RakNet::BitStream>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RakNet::BitStream>::reset(void)")]
 pub fn stub_f5f724() -> ! {
     todo!("0xf5f724 j___ZN5boost10shared_ptrIN6RakNet9BitStreamEE5resetEv")
 }

@@ -217,14 +217,14 @@ pub fn stub_f4ecd4() -> ! {
 }
 
 // 0xf4ed14 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY15CornerWedgeMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)
 pub fn stub_f4ed14() -> ! {
     todo!("0xf4ed14 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token *)")
 }
 
 // 0xf4ed24 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY15CornerWedgeMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)
 pub fn stub_f4ed24() -> ! {
     todo!("0xf4ed24 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::CornerWedgeMesh,RBX::Vector3Comparer>::Token> const&)")
@@ -371,14 +371,14 @@ pub fn stub_f4f4a4() -> ! {
 }
 
 // 0xf4f4e4 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY16ParallelRampMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token *)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token *)
 pub fn stub_f4f4e4() -> ! {
     todo!("0xf4f4e4 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token *)")
 }
 
 // 0xf4f4f4 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY16ParallelRampMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token> const&)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token> const&)
 pub fn stub_f4f4f4() -> ! {
     todo!("0xf4f4f4 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::ParallelRampMesh,RBX::Vector3Comparer>::Token> const&)")
@@ -504,14 +504,14 @@ pub fn stub_f4fa14() -> ! {
 }
 
 // 0xf4fa54 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY18RightAngleRampMeshENS1_15Vector3ComparerEE5TokenEEC2IS9_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token *)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token *)
 pub fn stub_f4fa54() -> ! {
     todo!("0xf4fa54 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>(RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token *)")
 }
 
 // 0xf4fa64 — j___ZN5boost10shared_ptrIN3RBX12GeometryPoolIN3G3D7Vector3ENS1_4POLY18RightAngleRampMeshENS1_15Vector3ComparerEE5TokenEEaSERKSA_
-#[doc(alias = "boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>::operator=(rbx_core::SharedPtr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token> const&)")]
 // was: boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token> const&)
 pub fn stub_f4fa64() -> ! {
     todo!("0xf4fa64 boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token>::operator=(boost::shared_ptr<RBX::GeometryPool<G3D::Vector3,RBX::POLY::RightAngleRampMesh,RBX::Vector3Comparer>::Token> const&)")

@@ -434,14 +434,14 @@ pub fn stub_b8f3f8() -> ! {
 }
 
 // 0xb8f414 — __ZN3RBX11AdornRbxGfx10setTextureEiRKN5boost10shared_ptrINS_16TextureProxyBaseEEE
-#[doc(alias = "RBX::AdornRbxGfx::setTexture(int,boost::shared_ptr<RBX::TextureProxyBase> const&)")]
+#[doc(alias = "RBX::AdornRbxGfx::setTexture(int,rbx_core::SharedPtr<RBX::TextureProxyBase> const&)")]
 // was: RBX::AdornRbxGfx::setTexture(int,boost::shared_ptr<RBX::TextureProxyBase> const&)
 pub fn stub_b8f414() -> ! {
     todo!("0xb8f414 RBX::AdornRbxGfx::setTexture(int,boost::shared_ptr<RBX::TextureProxyBase> const&)")
 }
 
 // 0xb8f560 — __ZNK3RBX11AdornRbxGfx14getTextureSizeERKN5boost10shared_ptrINS_16TextureProxyBaseEEE
-#[doc(alias = "RBX::AdornRbxGfx::getTextureSize(boost::shared_ptr<RBX::TextureProxyBase> const&)const")]
+#[doc(alias = "RBX::AdornRbxGfx::getTextureSize(rbx_core::SharedPtr<RBX::TextureProxyBase> const&)const")]
 // was: RBX::AdornRbxGfx::getTextureSize(boost::shared_ptr<RBX::TextureProxyBase> const&)const
 pub fn stub_b8f560() -> ! {
     todo!("0xb8f560 RBX::AdornRbxGfx::getTextureSize(boost::shared_ptr<RBX::TextureProxyBase> const&)const")
@@ -560,14 +560,14 @@ pub fn stub_be75cc() -> ! {
 }
 
 // 0xbe77c8 — __ZN3RBX10ViewRbxGfx11bindOverlayEN5boost10shared_ptrINS_9DataModelEEE
-#[doc(alias = "RBX::ViewRbxGfx::bindOverlay(boost::shared_ptr<RBX::DataModel>)")]
+#[doc(alias = "RBX::ViewRbxGfx::bindOverlay(rbx_core::SharedPtr<RBX::DataModel>)")]
 // was: RBX::ViewRbxGfx::bindOverlay(boost::shared_ptr<RBX::DataModel>)
 pub fn stub_be77c8() -> ! {
     todo!("0xbe77c8 RBX::ViewRbxGfx::bindOverlay(boost::shared_ptr<RBX::DataModel>)")
 }
 
 // 0xbe7a4c — __ZN3RBX10ViewRbxGfx13bindWorkspaceEN5boost10shared_ptrINS_9DataModelEEE
-#[doc(alias = "RBX::ViewRbxGfx::bindWorkspace(boost::shared_ptr<RBX::DataModel>)")]
+#[doc(alias = "RBX::ViewRbxGfx::bindWorkspace(rbx_core::SharedPtr<RBX::DataModel>)")]
 // was: RBX::ViewRbxGfx::bindWorkspace(boost::shared_ptr<RBX::DataModel>)
 pub fn stub_be7a4c() -> ! {
     todo!("0xbe7a4c RBX::ViewRbxGfx::bindWorkspace(boost::shared_ptr<RBX::DataModel>)")

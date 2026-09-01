@@ -145,7 +145,7 @@ pub fn stub_f46f74() -> ! {
 
 // 0xf46f64 — j___ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: int()
-#[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(boost::weak_ptr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(rbx_core::WeakPtr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)")]
 pub fn stub_f46f64() -> ! {
     todo!("0xf46f64 boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(boost::weak_ptr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)")
 }
@@ -264,7 +264,7 @@ pub fn stub_f46e64() -> ! {
 
 // 0xf46e54 — j___ZN5boost10shared_ptrIN3RBX8HumanoidEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: int()
-#[doc(alias = "rbx_core::SharedPtr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(boost::weak_ptr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(rbx_core::WeakPtr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)")]
 pub fn stub_f46e54() -> ! {
     todo!("0xf46e54 boost::shared_ptr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(boost::weak_ptr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)")
 }
