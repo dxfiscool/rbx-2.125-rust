@@ -262,25 +262,25 @@ pub fn stub_680310() -> ! {
 }
 
 // 0x688f6c — __ZN3RBX16ToolMouseCommand12tryClickableERKNS_7UIEventEN5boost10shared_ptrINS_12PartInstanceEEE
-#[doc(alias = "RBX::ToolMouseCommand::tryClickable(RBX::UIEvent const&,boost::shared_ptr<RBX::PartInstance>)")]
+#[doc(alias = "RBX::ToolMouseCommand::tryClickable(RBX::UIEvent const&,rbx_core::SharedPtr<RBX::PartInstance>)")]
 pub fn stub_688f6c() -> ! {
     todo!("0x688f6c RBX::ToolMouseCommand::tryClickable(RBX::UIEvent const&,boost::shared_ptr<RBX::PartInstance>)")
 }
 
 // 0x68e068 — __ZN3RBX16TouchTransmitter10checkTouchERKN5boost10shared_ptrINS_12PartInstanceEEE
-#[doc(alias = "RBX::TouchTransmitter::checkTouch(boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "RBX::TouchTransmitter::checkTouch(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 pub fn stub_68e068() -> ! {
     todo!("0x68e068 RBX::TouchTransmitter::checkTouch(boost::shared_ptr<RBX::PartInstance> const&)")
 }
 
 // 0x68e078 — __ZN3RBX16TouchTransmitter12checkUntouchERKN5boost10shared_ptrINS_12PartInstanceEEE
-#[doc(alias = "RBX::TouchTransmitter::checkUntouch(boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "RBX::TouchTransmitter::checkUntouch(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 pub fn stub_68e078() -> ! {
     todo!("0x68e078 RBX::TouchTransmitter::checkUntouch(boost::shared_ptr<RBX::PartInstance> const&)")
 }
 
 // 0x68e088 — __ZN3RBX14TouchDebouncer5checkERKN5boost10shared_ptrINS_12PartInstanceEEENS_9TouchPair4TypeE
-#[doc(alias = "RBX::TouchDebouncer::check(boost::shared_ptr<RBX::PartInstance> const&,RBX::TouchPair::Type)")]
+#[doc(alias = "RBX::TouchDebouncer::check(rbx_core::SharedPtr<RBX::PartInstance> const&,RBX::TouchPair::Type)")]
 pub fn stub_68e088() -> ! {
     todo!("0x68e088 RBX::TouchDebouncer::check(boost::shared_ptr<RBX::PartInstance> const&,RBX::TouchPair::Type)")
 }
@@ -329,14 +329,14 @@ pub fn stub_6bf038() -> ! {
 
 // 0x6bf0e4 — __ZThn132_N3RBX8SeatImplINS_12PartInstanceEED1Ev
 // was: `non-virtual thunk to'RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()
-#[doc(alias = "`non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 pub fn stub_6bf0e4() -> ! {
     todo!("0x6bf0e4 `non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
 }
 
 // 0x6bf0f8 — __ZThn132_N3RBX8SeatImplINS_12PartInstanceEED0Ev
 // was: `non-virtual thunk to'RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()
-#[doc(alias = "`non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 pub fn stub_6bf0f8() -> ! {
     todo!("0x6bf0f8 `non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
 }
@@ -355,42 +355,42 @@ pub fn stub_6bf1bc() -> ! {
 
 // 0x6bf26c — __ZThn132_N3RBX13ActionStationINS_12PartInstanceEED1Ev
 // was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
-#[doc(alias = "`non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 pub fn stub_6bf26c() -> ! {
     todo!("0x6bf26c `non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
 // 0x6bf280 — __ZThn132_N3RBX13ActionStationINS_12PartInstanceEED0Ev
 // was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
-#[doc(alias = "`non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 pub fn stub_6bf280() -> ! {
     todo!("0x6bf280 `non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
 // 0x6bf28c — __ZThn32_N3RBX13ActionStationINS_12PartInstanceEED1Ev
 // was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
-#[doc(alias = "`non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 pub fn stub_6bf28c() -> ! {
     todo!("0x6bf28c `non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
 // 0x6bf2a0 — __ZThn36_N3RBX13ActionStationINS_12PartInstanceEED1Ev
 // was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
-#[doc(alias = "`non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 pub fn stub_6bf2a0() -> ! {
     todo!("0x6bf2a0 `non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
 // 0x6bf2b4 — __ZThn32_N3RBX13ActionStationINS_12PartInstanceEED0Ev
 // was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
-#[doc(alias = "`non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 pub fn stub_6bf2b4() -> ! {
     todo!("0x6bf2b4 `non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
 
 // 0x6bf2bc — __ZThn36_N3RBX13ActionStationINS_12PartInstanceEED0Ev
 // was: `non-virtual thunk to'RBX::ActionStation<RBX::PartInstance>::~ActionStation()
-#[doc(alias = "`non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
+#[doc(alias = "non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")]
 pub fn stub_6bf2bc() -> ! {
     todo!("0x6bf2bc `non-virtual thunk toRBX::ActionStation<RBX::PartInstance>::~ActionStation()")
 }
@@ -439,7 +439,7 @@ pub fn stub_6bf4ec() -> ! {
 
 // 0x6bf4f4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX8SeatImplINSB_12PartInstanceEEEEENS7_5list1INS7_5valueIPSE_EEEEEELi0ES3_E4callEv
 // was: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_6bf4f4() -> ! {
     todo!("0x6bf4f4 `non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::SeatImpl<RBX::PartInstance>>,boost::_bi::list1<boost::_bi::value<RBX::SeatImpl<RBX::PartInstance>*>>>,0,void ()(void)>::call(void)")
 }
@@ -476,28 +476,28 @@ pub fn stub_6c14b0() -> ! {
 
 // 0x6c169c — __ZThn32_N3RBX8SeatImplINS_12PartInstanceEED1Ev
 // was: `non-virtual thunk to'RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()
-#[doc(alias = "`non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 pub fn stub_6c169c() -> ! {
     todo!("0x6c169c `non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
 }
 
 // 0x6c16b0 — __ZThn32_N3RBX8SeatImplINS_12PartInstanceEED0Ev
 // was: `non-virtual thunk to'RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()
-#[doc(alias = "`non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 pub fn stub_6c16b0() -> ! {
     todo!("0x6c16b0 `non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
 }
 
 // 0x6c1760 — __ZThn36_N3RBX8SeatImplINS_12PartInstanceEED1Ev
 // was: `non-virtual thunk to'RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()
-#[doc(alias = "`non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 pub fn stub_6c1760() -> ! {
     todo!("0x6c1760 `non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
 }
 
 // 0x6c1774 — __ZThn36_N3RBX8SeatImplINS_12PartInstanceEED0Ev
 // was: `non-virtual thunk to'RBX::SeatImpl<RBX::PartInstance>::~SeatImpl()
-#[doc(alias = "`non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
+#[doc(alias = "non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")]
 pub fn stub_6c1774() -> ! {
     todo!("0x6c1774 `non-virtual thunk toRBX::SeatImpl<RBX::PartInstance>::~SeatImpl()")
 }
@@ -551,13 +551,13 @@ pub fn stub_6d1588() -> ! {
 }
 
 // 0x6d1b14 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX12PartInstanceEEESaIS4_EE6resizeEmS4_
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>::resize(unsigned long,boost::shared_ptr<RBX::PartInstance>)")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::PartInstance>,std::allocator<rbx_core::SharedPtr<RBX::PartInstance>>>::resize(unsigned long,rbx_core::SharedPtr<RBX::PartInstance>)")]
 pub fn stub_6d1b14() -> ! {
     todo!("0x6d1b14 std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>::resize(unsigned long,boost::shared_ptr<RBX::PartInstance>)")
 }
 
 // 0x6d1c80 — __ZN5boost10shared_ptrIN3RBX12PartInstanceEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::PartInstance>::operator=(boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PartInstance>::operator=(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 pub fn stub_6d1c80() -> ! {
     todo!("0x6d1c80 boost::shared_ptr<RBX::PartInstance>::operator=(boost::shared_ptr<RBX::PartInstance> const&)")
 }
@@ -582,44 +582,44 @@ pub fn stub_6d2d0c() -> ! {
 
 // 0x6d2d64 — __ZThn120_N3RBX13ModelInstance17getRenderLocationEv
 // was: `non-virtual thunk to'RBX::ModelInstance::getRenderLocation(void)
-#[doc(alias = "`non-virtual thunk toRBX::ModelInstance::getRenderLocation(void)")]
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::getRenderLocation(void)")]
 pub fn stub_6d2d64() -> ! {
     todo!("0x6d2d64 `non-virtual thunk toRBX::ModelInstance::getRenderLocation(void)")
 }
 
 // 0x6d2d74 — __ZThn120_N3RBX13ModelInstance13getRenderSizeEv
 // was: `non-virtual thunk to'RBX::ModelInstance::getRenderSize(void)
-#[doc(alias = "`non-virtual thunk toRBX::ModelInstance::getRenderSize(void)")]
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::getRenderSize(void)")]
 pub fn stub_6d2d74() -> ! {
     todo!("0x6d2d74 `non-virtual thunk toRBX::ModelInstance::getRenderSize(void)")
 }
 
 // 0x6d5248 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX12PartInstanceEEESaIS4_EE15_M_erase_at_endEPS4_
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>::_M_erase_at_end(boost::shared_ptr<RBX::PartInstance>*)")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::PartInstance>,std::allocator<rbx_core::SharedPtr<RBX::PartInstance>>>::_M_erase_at_end(rbx_core::SharedPtr<RBX::PartInstance>*)")]
 pub fn stub_6d5248() -> ! {
     todo!("0x6d5248 std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>::_M_erase_at_end(boost::shared_ptr<RBX::PartInstance>*)")
 }
 
 // 0x6d5278 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX12PartInstanceEEESaIS4_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS4_S6_EEmRKS4_
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::PartInstance>*,std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>>,unsigned long,boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::PartInstance>,std::allocator<rbx_core::SharedPtr<RBX::PartInstance>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::PartInstance>*,std::vector<rbx_core::SharedPtr<RBX::PartInstance>,std::allocator<rbx_core::SharedPtr<RBX::PartInstance>>>>,unsigned long,rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 pub fn stub_6d5278() -> ! {
     todo!("0x6d5278 std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>::_M_fill_insert(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::PartInstance>*,std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>>,unsigned long,boost::shared_ptr<RBX::PartInstance> const&)")
 }
 
 // 0x6d5878 — __ZNSt12_Vector_baseIN5boost10shared_ptrIN3RBX12PartInstanceEEESaIS4_EE11_M_allocateEm
-#[doc(alias = "std::_Vector_base<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>::_M_allocate(unsigned long)")]
+#[doc(alias = "std::_Vector_base<rbx_core::SharedPtr<RBX::PartInstance>,std::allocator<rbx_core::SharedPtr<RBX::PartInstance>>>::_M_allocate(unsigned long)")]
 pub fn stub_6d5878() -> ! {
     todo!("0x6d5878 std::_Vector_base<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>>::_M_allocate(unsigned long)")
 }
 
 // 0x6d5890 — __ZSt26__uninitialized_fill_n_auxIPN5boost10shared_ptrIN3RBX12PartInstanceEEEmS4_EvT_T0_RKT1_St12__false_type
-#[doc(alias = "void std::__uninitialized_fill_n_aux<boost::shared_ptr<RBX::PartInstance> *,unsigned long,boost::shared_ptr<RBX::PartInstance>>(boost::shared_ptr<RBX::PartInstance> *,unsigned long,boost::shared_ptr<RBX::PartInstance> const&,std::__false_type)")]
+#[doc(alias = "void std::__uninitialized_fill_n_aux<rbx_core::SharedPtr<RBX::PartInstance> *,unsigned long,rbx_core::SharedPtr<RBX::PartInstance>>(rbx_core::SharedPtr<RBX::PartInstance> *,unsigned long,rbx_core::SharedPtr<RBX::PartInstance> const&,std::__false_type)")]
 pub fn stub_6d5890() -> ! {
     todo!("0x6d5890 void std::__uninitialized_fill_n_aux<boost::shared_ptr<RBX::PartInstance> *,unsigned long,boost::shared_ptr<RBX::PartInstance>>(boost::shared_ptr<RBX::PartInstance> *,unsigned long,boost::shared_ptr<RBX::PartInstance> const&,std::__false_type)")
 }
 
 // 0x6d59b8 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN5boost10shared_ptrIN3RBX12PartInstanceEEES8_EET0_T_SA_S9_
-#[doc(alias = "boost::shared_ptr<RBX::PartInstance> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<boost::shared_ptr<RBX::PartInstance> *,boost::shared_ptr<RBX::PartInstance> *>(boost::shared_ptr<RBX::PartInstance> *,boost::shared_ptr<RBX::PartInstance> *,boost::shared_ptr<RBX::PartInstance> *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PartInstance> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<rbx_core::SharedPtr<RBX::PartInstance> *,rbx_core::SharedPtr<RBX::PartInstance> *>(rbx_core::SharedPtr<RBX::PartInstance> *,rbx_core::SharedPtr<RBX::PartInstance> *,rbx_core::SharedPtr<RBX::PartInstance> *)")]
 pub fn stub_6d59b8() -> ! {
     todo!("0x6d59b8 boost::shared_ptr<RBX::PartInstance> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<boost::shared_ptr<RBX::PartInstance> *,boost::shared_ptr<RBX::PartInstance> *>(boost::shared_ptr<RBX::PartInstance> *,boost::shared_ptr<RBX::PartInstance> *,boost::shared_ptr<RBX::PartInstance> *)")
 }
