@@ -1,6 +1,6 @@
-//! rendering — generated_226 — 100 stubs EA-sorted asc global gap filler 0x1c183c..0x1c9184
-//! Source: ida/export.json (85545 funcs) EA-sorted global filler not yet in rbx_rendering (rendering 24300 before, 24400 after distinct; Ogre|G3D complete 13663/13663)
-//! Filter: next 100 EA-sorted ascending after 0x1c173c not yet in rendering (global filler, Ogre|G3D already complete)
+//! rendering — generated_226 — 120 stubs EA-sorted asc global gap filler 0x1c922c..0x1d87c8
+//! Source: ida/export.json (85545 funcs) EA-sorted global filler not yet in rbx_rendering (rendering 24400 before, 24520 after distinct; Ogre|G3D complete 13663/13663)
+//! Filter: next 120 EA-sorted ascending after 0x1c173c not yet in rendering (global filler, Ogre|G3D already complete)
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 //! Uses rbx_core::SharedPtr (not boost::shared_ptr).
 
@@ -10,729 +10,864 @@ use rbx_core::SharedPtr;
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
-// 0x1c183c — _scan_tree
-#[doc(alias = "_scan_tree")]
-// was: _scan_tree
-pub fn stub_1c183c() -> ! {
-    todo!("0x1c183c _scan_tree")
+// 0x1c922c — __ZN9__gnu_cxx13new_allocatorIPPhE8allocateEmPKv
+// type: int __fastcall(int, unsigned int)
+#[doc(alias = "__gnu_cxx::new_allocator<unsigned char **>::allocate(unsigned long,void const*)")]
+// was: __ZN9__gnu_cxx13new_allocatorIPPhE8allocateEmPKv
+pub fn stub_1c922c() -> ! {
+    todo!("0x1c922c __gnu_cxx::new_allocator<unsigned char **>::allocate(unsigned long,void const*)")
 }
 
-// 0x1c1b68 — _send_tree
-#[doc(alias = "_send_tree")]
-// was: _send_tree
-pub fn stub_1c1b68() -> ! {
-    todo!("0x1c1b68 _send_tree")
+// 0x1c924c — __ZNSt11_Deque_baseIPhSaIS0_EE15_M_allocate_mapEm
+#[doc(alias = "std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_allocate_map(unsigned long)")]
+// was: __ZNSt11_Deque_baseIPhSaIS0_EE15_M_allocate_mapEm
+pub fn stub_1c924c() -> ! {
+    todo!("0x1c924c std::_Deque_base<unsigned char *,std::allocator<unsigned char *>>::_M_allocate_map(unsigned long)")
 }
 
-// 0x1c2304 — _compress_block
-#[doc(alias = "_compress_block")]
-// was: _compress_block
-pub fn stub_1c2304() -> ! {
-    todo!("0x1c2304 _compress_block")
+// 0x1c92f4 — __ZN9__gnu_cxx13new_allocatorIPtE8allocateEmPKv
+#[doc(alias = "__gnu_cxx::new_allocator<unsigned short *>::allocate(unsigned long,void const*)")]
+// was: __ZN9__gnu_cxx13new_allocatorIPtE8allocateEmPKv
+pub fn stub_1c92f4() -> ! {
+    todo!("0x1c92f4 __gnu_cxx::new_allocator<unsigned short *>::allocate(unsigned long,void const*)")
 }
 
-// 0x1c2794 — _build_tree
-#[doc(alias = "_build_tree")]
-// was: _build_tree
-pub fn stub_1c2794() -> ! {
-    todo!("0x1c2794 _build_tree")
+// 0x1c9314 — __ZNSt11_Deque_baseItSaItEE15_M_allocate_mapEm
+#[doc(alias = "std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_M_allocate_map(unsigned long)")]
+// was: __ZNSt11_Deque_baseItSaItEE15_M_allocate_mapEm
+pub fn stub_1c9314() -> ! {
+    todo!("0x1c9314 std::_Deque_base<unsigned short,std::allocator<unsigned short>>::_M_allocate_map(unsigned long)")
 }
 
-// 0x1c347c — _bi_flush
-#[doc(alias = "_bi_flush")]
-// was: _bi_flush
-pub fn stub_1c347c() -> ! {
-    todo!("0x1c347c _bi_flush")
+// 0x1c93bc — __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EE16_M_destroy_nodesEPPS1_S5_
+#[doc(alias = "std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_destroy_nodes(TagLib::MDMODEL**,TagLib::MDMODEL**)")]
+// was: __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EE16_M_destroy_nodesEPPS1_S5_
+pub fn stub_1c93bc() -> ! {
+    todo!("0x1c93bc std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_destroy_nodes(TagLib::MDMODEL**,TagLib::MDMODEL**)")
 }
 
-// 0x1c3514 — __tr_align
-// type: int __fastcall(_DWORD)
-#[doc(alias = "__tr_align")]
-// was: __tr_align
-pub fn stub_1c3514() -> ! {
-    todo!("0x1c3514 __tr_align")
+// 0x1c94ac — __ZNSt5dequeItSaItEE15_M_pop_back_auxEv
+#[doc(alias = "std::deque<unsigned short,std::allocator<unsigned short>>::_M_pop_back_aux(void)")]
+// was: __ZNSt5dequeItSaItEE15_M_pop_back_auxEv
+pub fn stub_1c94ac() -> ! {
+    todo!("0x1c94ac std::deque<unsigned short,std::allocator<unsigned short>>::_M_pop_back_aux(void)")
 }
 
-// 0x1c37a0 — _bi_windup
-#[doc(alias = "_bi_windup")]
-// was: _bi_windup
-pub fn stub_1c37a0() -> ! {
-    todo!("0x1c37a0 _bi_windup")
+// 0x1c94e0 — __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
+#[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned int const,int>> *)")]
+// was: __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
+pub fn stub_1c94e0() -> ! {
+    todo!("0x1c94e0 std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned int const,int>> *)")
 }
 
-// 0x1c3818 — __tr_stored_block
-// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
-#[doc(alias = "__tr_stored_block")]
-// was: __tr_stored_block
-pub fn stub_1c3818() -> ! {
-    todo!("0x1c3818 __tr_stored_block")
+// 0x1c951c — __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EED2Ev
+#[doc(alias = "std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::~_Deque_base()")]
+// was: __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EED2Ev
+pub fn stub_1c951c() -> ! {
+    todo!("0x1c951c std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::~_Deque_base()")
 }
 
-// 0x1c3ac4 — __tr_flush_block
-#[doc(alias = "__tr_flush_block")]
-// was: __tr_flush_block
-pub fn stub_1c3ac4() -> ! {
-    todo!("0x1c3ac4 __tr_flush_block")
+// 0x1c9550 — __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE9_M_insertEPSt18_Rb_tree_node_baseSA_RKS2_
+#[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned int const,int> const&)")]
+// was: __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE9_M_insertEPSt18_Rb_tree_node_baseSA_RKS2_
+pub fn stub_1c9550() -> ! {
+    todo!("0x1c9550 std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned int const,int> const&)")
 }
 
-// 0x1c4270 — _uncompress
-// type: int __cdecl(Bytef *dest, uLongf *destLen, const Bytef *source, uLong sourceLen)
-#[doc(alias = "_uncompress")]
-// was: _uncompress
-pub fn stub_1c4270() -> ! {
-    todo!("0x1c4270 _uncompress")
+// 0x1c95d4 — __ZNSt15__copy_backwardILb1ESt26random_access_iterator_tagE8__copy_bIPN6TagLib7MDMODELEEEPT_PKS6_S9_S7_
+// type: int __fastcall(void *__src)
+#[doc(alias = "TagLib::MDMODEL * * std::__copy_backward<true,std::random_access_iterator_tag>::__copy_b<TagLib::MDMODEL *>(TagLib::MDMODEL * const*,TagLib::MDMODEL * const*,TagLib::MDMODEL * *)")]
+// was: __ZNSt15__copy_backwardILb1ESt26random_access_iterator_tagE8__copy_bIPN6TagLib7MDMODELEEEPT_PKS6_S9_S7_
+pub fn stub_1c95d4() -> ! {
+    todo!("0x1c95d4 TagLib::MDMODEL * * std::__copy_backward<true,std::random_access_iterator_tag>::__copy_b<TagLib::MDMODEL *>(TagLib::MDMODEL * const*,TagLib::MDMODEL * const*,TagLib::MDMODEL * *)")
 }
 
-// 0x1c4324 — _zError
-// type: const char *__cdecl(int)
-#[doc(alias = "_zError")]
-// was: _zError
-pub fn stub_1c4324() -> ! {
-    todo!("0x1c4324 _zError")
+// 0x1c9604 — __ZNSt6__copyILb1ESt26random_access_iterator_tagE4copyIPN6TagLib7MDMODELEEEPT_PKS6_S9_S7_
+// type: int __fastcall(void *__src, int, void *__dst)
+#[doc(alias = "TagLib::MDMODEL * * std::__copy<true,std::random_access_iterator_tag>::copy<TagLib::MDMODEL *>(TagLib::MDMODEL * const*,TagLib::MDMODEL * const*,TagLib::MDMODEL * *)")]
+// was: __ZNSt6__copyILb1ESt26random_access_iterator_tagE4copyIPN6TagLib7MDMODELEEEPT_PKS6_S9_S7_
+pub fn stub_1c9604() -> ! {
+    todo!("0x1c9604 TagLib::MDMODEL * * std::__copy<true,std::random_access_iterator_tag>::copy<TagLib::MDMODEL *>(TagLib::MDMODEL * const*,TagLib::MDMODEL * const*,TagLib::MDMODEL * *)")
 }
 
-// 0x1c433c — _zcfree
-// type: int __fastcall(int, void *)
-#[doc(alias = "_zcfree")]
-// was: _zcfree
-pub fn stub_1c433c() -> ! {
-    todo!("0x1c433c _zcfree")
+// 0x1c9630 — __ZNSt15__copy_backwardILb1ESt26random_access_iterator_tagE8__copy_bIPtEEPT_PKS4_S7_S5_
+// type: int __fastcall(void *__src)
+#[doc(alias = "unsigned short * * std::__copy_backward<true,std::random_access_iterator_tag>::__copy_b<unsigned short *>(unsigned short * const*,unsigned short * const*,unsigned short * *)")]
+// was: __ZNSt15__copy_backwardILb1ESt26random_access_iterator_tagE8__copy_bIPtEEPT_PKS4_S7_S5_
+pub fn stub_1c9630() -> ! {
+    todo!("0x1c9630 unsigned short * * std::__copy_backward<true,std::random_access_iterator_tag>::__copy_b<unsigned short *>(unsigned short * const*,unsigned short * const*,unsigned short * *)")
 }
 
-// 0x1c4350 — _zcalloc
-#[doc(alias = "_zcalloc")]
-// was: _zcalloc
-pub fn stub_1c4350() -> ! {
-    todo!("0x1c4350 _zcalloc")
+// 0x1c9660 — __ZNSt6__copyILb1ESt26random_access_iterator_tagE4copyIPtEEPT_PKS4_S7_S5_
+// type: int __fastcall(void *__src, int, void *__dst)
+#[doc(alias = "unsigned short * * std::__copy<true,std::random_access_iterator_tag>::copy<unsigned short *>(unsigned short * const*,unsigned short * const*,unsigned short * *)")]
+// was: __ZNSt6__copyILb1ESt26random_access_iterator_tagE4copyIPtEEPT_PKS4_S7_S5_
+pub fn stub_1c9660() -> ! {
+    todo!("0x1c9660 unsigned short * * std::__copy<true,std::random_access_iterator_tag>::copy<unsigned short *>(unsigned short * const*,unsigned short * const*,unsigned short * *)")
 }
 
-// 0x1c4364 — __ZN6TagLib17getFreeImageModelENS_7MDMODELE
-#[doc(alias = "TagLib::getFreeImageModel(TagLib::MDMODEL)")]
-// was: __ZN6TagLib17getFreeImageModelENS_7MDMODELE
-pub fn stub_1c4364() -> ! {
-    todo!("0x1c4364 TagLib::getFreeImageModel(TagLib::MDMODEL)")
+// 0x1c968c — __ZNSt5dequeItSaItEE17_M_reallocate_mapEmb
+#[doc(alias = "std::deque<unsigned short,std::allocator<unsigned short>>::_M_reallocate_map(unsigned long,bool)")]
+// was: __ZNSt5dequeItSaItEE17_M_reallocate_mapEmb
+pub fn stub_1c968c() -> ! {
+    todo!("0x1c968c std::deque<unsigned short,std::allocator<unsigned short>>::_M_reallocate_map(unsigned long,bool)")
 }
 
-// 0x1c4410 — __ZN6TagLib8getTagIDENS_7MDMODELEPKc
-#[doc(alias = "TagLib::getTagID(TagLib::MDMODEL,char const*)")]
-// was: __ZN6TagLib8getTagIDENS_7MDMODELEPKc
-pub fn stub_1c4410() -> ! {
-    todo!("0x1c4410 TagLib::getTagID(TagLib::MDMODEL,char const*)")
+// 0x1c97b4 — __ZNSt5dequeItSaItEE22_M_reserve_map_at_backEm
+#[doc(alias = "std::deque<unsigned short,std::allocator<unsigned short>>::_M_reserve_map_at_back(unsigned long)")]
+// was: __ZNSt5dequeItSaItEE22_M_reserve_map_at_backEm
+pub fn stub_1c97b4() -> ! {
+    todo!("0x1c97b4 std::deque<unsigned short,std::allocator<unsigned short>>::_M_reserve_map_at_back(unsigned long)")
 }
 
-// 0x1c4494 — __ZN6TagLib10getTagInfoENS_7MDMODELEt
-#[doc(alias = "TagLib::getTagInfo(TagLib::MDMODEL,unsigned short)")]
-// was: __ZN6TagLib10getTagInfoENS_7MDMODELEt
-pub fn stub_1c4494() -> ! {
-    todo!("0x1c4494 TagLib::getTagInfo(TagLib::MDMODEL,unsigned short)")
+// 0x1c97e8 — __ZNSt15__copy_backwardILb1ESt26random_access_iterator_tagE8__copy_bIPPhEEPT_PKS5_S8_S6_
+// type: int __fastcall(void *__src)
+#[doc(alias = "unsigned char ** * std::__copy_backward<true,std::random_access_iterator_tag>::__copy_b<unsigned char **>(unsigned char ** const*,unsigned char ** const*,unsigned char ** *)")]
+// was: __ZNSt15__copy_backwardILb1ESt26random_access_iterator_tagE8__copy_bIPPhEEPT_PKS5_S8_S6_
+pub fn stub_1c97e8() -> ! {
+    todo!("0x1c97e8 unsigned char ** * std::__copy_backward<true,std::random_access_iterator_tag>::__copy_b<unsigned char **>(unsigned char ** const*,unsigned char ** const*,unsigned char ** *)")
 }
 
-// 0x1c44d4 — __ZN6TagLib17getTagDescriptionENS_7MDMODELEt
-#[doc(alias = "TagLib::getTagDescription(TagLib::MDMODEL,unsigned short)")]
-// was: __ZN6TagLib17getTagDescriptionENS_7MDMODELEt
-pub fn stub_1c44d4() -> ! {
-    todo!("0x1c44d4 TagLib::getTagDescription(TagLib::MDMODEL,unsigned short)")
+// 0x1c9818 — __ZNSt6__copyILb1ESt26random_access_iterator_tagE4copyIPPhEEPT_PKS5_S8_S6_
+// type: int __fastcall(void *__src, int, void *__dst)
+#[doc(alias = "unsigned char ** * std::__copy<true,std::random_access_iterator_tag>::copy<unsigned char **>(unsigned char ** const*,unsigned char ** const*,unsigned char ** *)")]
+// was: __ZNSt6__copyILb1ESt26random_access_iterator_tagE4copyIPPhEEPT_PKS5_S8_S6_
+pub fn stub_1c9818() -> ! {
+    todo!("0x1c9818 unsigned char ** * std::__copy<true,std::random_access_iterator_tag>::copy<unsigned char **>(unsigned char ** const*,unsigned char ** const*,unsigned char ** *)")
 }
 
-// 0x1c44f0 — __ZN6TagLib15getTagFieldNameENS_7MDMODELEtPc
-#[doc(alias = "TagLib::getTagFieldName(TagLib::MDMODEL,unsigned short,char *)")]
-// was: __ZN6TagLib15getTagFieldNameENS_7MDMODELEtPc
-pub fn stub_1c44f0() -> ! {
-    todo!("0x1c44f0 TagLib::getTagFieldName(TagLib::MDMODEL,unsigned short,char *)")
+// 0x1c9844 — __ZNSt5dequeItSaItEE4backEv
+#[doc(alias = "std::deque<unsigned short,std::allocator<unsigned short>>::back(void)")]
+// was: __ZNSt5dequeItSaItEE4backEv
+pub fn stub_1c9844() -> ! {
+    todo!("0x1c9844 std::deque<unsigned short,std::allocator<unsigned short>>::back(void)")
 }
 
-// 0x1c4540 — __ZN6TagLib16addMetadataModelENS_7MDMODELEP10tagTagInfo
-#[doc(alias = "TagLib::addMetadataModel(TagLib::MDMODEL,tagTagInfo *)")]
-// was: __ZN6TagLib16addMetadataModelENS_7MDMODELEP10tagTagInfo
-pub fn stub_1c4540() -> ! {
-    todo!("0x1c4540 TagLib::addMetadataModel(TagLib::MDMODEL,tagTagInfo *)")
+// 0x1c9884 — __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE16_M_insert_uniqueERKS2_
+#[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_M_insert_unique(std::pair<unsigned int const,int> const&)")]
+// was: __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE16_M_insert_uniqueERKS2_
+pub fn stub_1c9884() -> ! {
+    todo!("0x1c9884 std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_M_insert_unique(std::pair<unsigned int const,int> const&)")
 }
 
-// 0x1c45f0 — __ZN6TagLibC2Ev
-// type: TagLib *__fastcall(TagLib *__hidden this)
-#[doc(alias = "TagLib::TagLib(void)")]
-// was: __ZN6TagLibC2Ev
-pub fn stub_1c45f0() -> ! {
-    todo!("0x1c45f0 TagLib::TagLib(void)")
-}
-
-// 0x1c48c4 — __ZN6TagLib8instanceEv
-// type: _DWORD __fastcall(TagLib *__hidden this)
-#[doc(alias = "TagLib::instance(void)")]
-// was: __ZN6TagLib8instanceEv
-pub fn stub_1c48c4() -> ! {
-    todo!("0x1c48c4 TagLib::instance(void)")
-}
-
-// 0x1c49e4 — __ZN6TagLibD2Ev
-// type: void __fastcall(TagLib *__hidden this)
-#[doc(alias = "TagLib::~TagLib()")]
-// was: __ZN6TagLibD2Ev
-pub fn stub_1c49e4() -> ! {
-    todo!("0x1c49e4 TagLib::~TagLib()")
-}
-
-// 0x1c4b38 — ___tcf_0_0
-#[doc(alias = "___tcf_0_0")]
-// was: ___tcf_0_0
-pub fn stub_1c4b38() -> ! {
-    todo!("0x1c4b38 ___tcf_0_0")
-}
-
-// 0x1c4b48 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE13_Rb_tree_implISF_Lb0EEC2ERKSaISt13_Rb_tree_nodeISC_EERKSF_
-#[doc(alias = "std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_Rb_tree_impl<std::less<int>,false>::_Rb_tree_impl(std::allocator<std::_Rb_tree_node<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>> const&,std::less<int> const&)")]
-// was: __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE13_Rb_tree_implISF_Lb0EEC2ERKSaISt13_Rb_tree_nodeISC_EERKSF_
-pub fn stub_1c4b48() -> ! {
-    todo!("0x1c4b48 std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_Rb_tree_impl<std::less<int>,false>::_Rb_tree_impl(std::allocator<std::_Rb_tree_node<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>> const&,std::less<int> const&)")
-}
-
-// 0x1c4b88 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE11lower_boundERS1_
-#[doc(alias = "std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::lower_bound(int const&)")]
-// was: __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE11lower_boundERS1_
-pub fn stub_1c4b88() -> ! {
-    todo!("0x1c4b88 std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::lower_bound(int const&)")
-}
-
-// 0x1c4bbc — __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE13_Rb_tree_implIS8_Lb0EEC2ERKSaISt13_Rb_tree_nodeIS4_EERKS8_
-#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_Rb_tree_impl<std::less<unsigned short>,false>::_Rb_tree_impl(std::allocator<std::_Rb_tree_node<std::pair<unsigned short const,tagTagInfo *>>> const&,std::less<unsigned short> const&)")]
-// was: __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE13_Rb_tree_implIS8_Lb0EEC2ERKSaISt13_Rb_tree_nodeIS4_EERKS8_
-pub fn stub_1c4bbc() -> ! {
-    todo!("0x1c4bbc std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_Rb_tree_impl<std::less<unsigned short>,false>::_Rb_tree_impl(std::allocator<std::_Rb_tree_node<std::pair<unsigned short const,tagTagInfo *>>> const&,std::less<unsigned short> const&)")
-}
-
-// 0x1c4bfc — __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE11lower_boundERS1_
-// type: int(void)
-#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::lower_bound(unsigned short const&)")]
-// was: __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE11lower_boundERS1_
-pub fn stub_1c4bfc() -> ! {
-    todo!("0x1c4bfc std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::lower_bound(unsigned short const&)")
-}
-
-// 0x1c4c30 — __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKtP10tagTagInfoEEE8allocateEmPKv
-#[doc(alias = "__gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<unsigned short const,tagTagInfo *>>>::allocate(unsigned long,void const*)")]
-// was: __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKtP10tagTagInfoEEE8allocateEmPKv
-pub fn stub_1c4c30() -> ! {
-    todo!("0x1c4c30 __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<unsigned short const,tagTagInfo *>>>::allocate(unsigned long,void const*)")
-}
-
-// 0x1c4c60 — __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE14_M_create_nodeERKS4_
-#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_M_create_node(std::pair<unsigned short const,tagTagInfo *> const&)")]
-// was: __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE14_M_create_nodeERKS4_
-pub fn stub_1c4c60() -> ! {
-    todo!("0x1c4c60 std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_M_create_node(std::pair<unsigned short const,tagTagInfo *> const&)")
-}
-
-// 0x1c4c90 — __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE9_M_insertEPSt18_Rb_tree_node_baseSC_RKS4_
-#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned short const,tagTagInfo *> const&)")]
-// was: __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE9_M_insertEPSt18_Rb_tree_node_baseSC_RKS4_
-pub fn stub_1c4c90() -> ! {
-    todo!("0x1c4c90 std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<unsigned short const,tagTagInfo *> const&)")
-}
-
-// 0x1c4d14 — __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS2_IKtS6_EEEEEE8allocateEmPKv
-#[doc(alias = "__gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::allocate(unsigned long,void const*)")]
-// was: __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS2_IKtS6_EEEEEE8allocateEmPKv
-pub fn stub_1c4d14() -> ! {
-    todo!("0x1c4d14 __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::allocate(unsigned long,void const*)")
-}
-
-// 0x1c4d44 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE14_M_create_nodeERKSC_
-#[doc(alias = "std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_M_create_node(std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *> const&)")]
-// was: __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE14_M_create_nodeERKSC_
-pub fn stub_1c4d44() -> ! {
-    todo!("0x1c4d44 std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_M_create_node(std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *> const&)")
-}
-
-// 0x1c4d74 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE9_M_insertEPSt18_Rb_tree_node_baseSJ_RKSC_
-#[doc(alias = "std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *> const&)")]
-// was: __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE9_M_insertEPSt18_Rb_tree_node_baseSJ_RKSC_
-pub fn stub_1c4d74() -> ! {
-    todo!("0x1c4d74 std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_M_insert(std::_Rb_tree_node_base *,std::_Rb_tree_node_base *,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *> const&)")
-}
-
-// 0x1c4df8 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE16_M_insert_uniqueERKSC_
-#[doc(alias = "std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_M_insert_unique(std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *> const&)")]
-// was: __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE16_M_insert_uniqueERKSC_
-pub fn stub_1c4df8() -> ! {
-    todo!("0x1c4df8 std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_M_insert_unique(std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *> const&)")
-}
-
-// 0x1c4eb8 — __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
-#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,tagTagInfo *>> *)")]
-// was: __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE8_M_eraseEPSt13_Rb_tree_nodeIS4_E
-pub fn stub_1c4eb8() -> ! {
-    todo!("0x1c4eb8 std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_M_erase(std::_Rb_tree_node<std::pair<unsigned short const,tagTagInfo *>> *)")
-}
-
-// 0x1c4ef4 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E
-#[doc(alias = "std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_M_erase(std::_Rb_tree_node<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>> *)")]
-// was: __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E
-pub fn stub_1c4ef4() -> ! {
-    todo!("0x1c4ef4 std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_M_erase(std::_Rb_tree_node<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>> *)")
-}
-
-// 0x1c4f30 — __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISC_ERKSC_
+// 0x1c9944 — __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS2_ERKS2_
 // type: int __fastcall(int, _Rb_tree_node_base *)
-#[doc(alias = "std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *> const&)")]
-// was: __ZNSt8_Rb_treeIiSt4pairIKiPSt3mapItP10tagTagInfoSt4lessItESaIS0_IKtS4_EEEESt10_Select1stISC_ES5_IiESaISC_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISC_ERKSC_
-pub fn stub_1c4f30() -> ! {
-    todo!("0x1c4f30 std::_Rb_tree<int,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>,std::_Select1st<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::less<int>,std::allocator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *>>,std::pair<int const,std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>> *> const&)")
+#[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned int const,int>>,std::pair<unsigned int const,int> const&)")]
+// was: __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS2_ERKS2_
+pub fn stub_1c9944() -> ! {
+    todo!("0x1c9944 std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned int const,int>>,std::pair<unsigned int const,int> const&)")
 }
 
-// 0x1c5054 — __ZNSt3mapIiPS_ItP10tagTagInfoSt4lessItESaISt4pairIKtS1_EEES2_IiESaIS4_IKiS9_EEEixERSB_
-#[doc(alias = "std::map<int,std::map*<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo>>>,tagTagInfo *<int>,std::allocator<std::less<unsigned short><int const,std::map*<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo>>>>>>::operator[](int const&)")]
-// was: __ZNSt3mapIiPS_ItP10tagTagInfoSt4lessItESaISt4pairIKtS1_EEES2_IiESaIS4_IKiS9_EEEixERSB_
-pub fn stub_1c5054() -> ! {
-    todo!("0x1c5054 std::map<int,std::map*<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo>>>,tagTagInfo *<int>,std::allocator<std::less<unsigned short><int const,std::map*<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo>>>>>>::operator[](int const&)")
+// 0x1c9a68 — __ZNSt15_Deque_iteratorIN6TagLib7MDMODELERS1_PS1_E11_M_set_nodeEPS3_
+// type: int __fastcall(_DWORD *, int *)
+#[doc(alias = "std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>::_M_set_node(TagLib::MDMODEL**)")]
+// was: __ZNSt15_Deque_iteratorIN6TagLib7MDMODELERS1_PS1_E11_M_set_nodeEPS3_
+pub fn stub_1c9a68() -> ! {
+    todo!("0x1c9a68 std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>::_M_set_node(TagLib::MDMODEL**)")
 }
 
-// 0x1c50c0 — __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE16_M_insert_uniqueERKS4_
-#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_M_insert_unique(std::pair<unsigned short const,tagTagInfo *> const&)")]
-// was: __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE16_M_insert_uniqueERKS4_
-pub fn stub_1c50c0() -> ! {
-    todo!("0x1c50c0 std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_M_insert_unique(std::pair<unsigned short const,tagTagInfo *> const&)")
+// 0x1c9a98 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE17_M_reallocate_mapEmb
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_reallocate_map(unsigned long,bool)")]
+// was: __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE17_M_reallocate_mapEmb
+pub fn stub_1c9a98() -> ! {
+    todo!("0x1c9a98 std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_reallocate_map(unsigned long,bool)")
 }
 
-// 0x1c5180 — __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_
-// type: int __fastcall(int, _Rb_tree_node_base *)
-#[doc(alias = "std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,tagTagInfo *>>,std::pair<unsigned short const,tagTagInfo *> const&)")]
-// was: __ZNSt8_Rb_treeItSt4pairIKtP10tagTagInfoESt10_Select1stIS4_ESt4lessItESaIS4_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS4_ERKS4_
-pub fn stub_1c5180() -> ! {
-    todo!("0x1c5180 std::_Rb_tree<unsigned short,std::pair<unsigned short const,tagTagInfo *>,std::_Select1st<std::pair<unsigned short const,tagTagInfo *>>,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::_M_insert_unique(std::_Rb_tree_iterator<std::pair<unsigned short const,tagTagInfo *>>,std::pair<unsigned short const,tagTagInfo *> const&)")
+// 0x1c9bc0 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE22_M_reserve_map_at_backEm
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_reserve_map_at_back(unsigned long)")]
+// was: __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE22_M_reserve_map_at_backEm
+pub fn stub_1c9bc0() -> ! {
+    todo!("0x1c9bc0 std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_reserve_map_at_back(unsigned long)")
 }
 
-// 0x1c52a4 — __ZNSt3mapItP10tagTagInfoSt4lessItESaISt4pairIKtS1_EEEixERS5_
-// type: int __fastcall(int, unsigned __int16 *)
-#[doc(alias = "std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::operator[](unsigned short const&)")]
-// was: __ZNSt3mapItP10tagTagInfoSt4lessItESaISt4pairIKtS1_EEEixERS5_
-pub fn stub_1c52a4() -> ! {
-    todo!("0x1c52a4 std::map<unsigned short,tagTagInfo *,std::less<unsigned short>,std::allocator<std::pair<unsigned short const,tagTagInfo *>>>::operator[](unsigned short const&)")
+// 0x1c9bf4 — __ZNSt15_Deque_iteratorIN6TagLib7MDMODELERS1_PS1_EppEv
+#[doc(alias = "std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>::operator++(void)")]
+// was: __ZNSt15_Deque_iteratorIN6TagLib7MDMODELERS1_PS1_EppEv
+pub fn stub_1c9bf4() -> ! {
+    todo!("0x1c9bf4 std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>::operator++(void)")
 }
 
-// 0x1c5310 — __Z18tiff_read_exif_tagP4tiffN6TagLib7MDMODELEP8FIBITMAPRS1_P13TIFFDirectoryj
-#[doc(alias = "tiff_read_exif_tag(tiff *,TagLib::MDMODEL,FIBITMAP *,TagLib&,TIFFDirectory *,unsigned int)")]
-// was: __Z18tiff_read_exif_tagP4tiffN6TagLib7MDMODELEP8FIBITMAPRS1_P13TIFFDirectoryj
-pub fn stub_1c5310() -> ! {
-    todo!("0x1c5310 tiff_read_exif_tag(tiff *,TagLib::MDMODEL,FIBITMAP *,TagLib&,TIFFDirectory *,unsigned int)")
+// 0x1c9c34 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN6TagLib7MDMODELERKS2_PS3_ES0_IS2_RS2_PS2_EET0_T_SB_SA_St12__false_type
+#[doc(alias = "std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*> std::__uninitialized_copy_aux<std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>>(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::__false_type)")]
+// was: __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN6TagLib7MDMODELERKS2_PS3_ES0_IS2_RS2_PS2_EET0_T_SB_SA_St12__false_type
+pub fn stub_1c9c34() -> ! {
+    todo!("0x1c9c34 std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*> std::__uninitialized_copy_aux<std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>>(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::__false_type)")
 }
 
-// 0x1c59bc — __Z19tiff_read_exif_tagsP4tiffN6TagLib7MDMODELEP8FIBITMAP
-#[doc(alias = "tiff_read_exif_tags(tiff *,TagLib::MDMODEL,FIBITMAP *)")]
-// was: __Z19tiff_read_exif_tagsP4tiffN6TagLib7MDMODELEP8FIBITMAP
-pub fn stub_1c59bc() -> ! {
-    todo!("0x1c59bc tiff_read_exif_tags(tiff *,TagLib::MDMODEL,FIBITMAP *)")
+// 0x1c9ca4 — __ZSt18uninitialized_copyISt15_Deque_iteratorIN6TagLib7MDMODELERKS2_PS3_ES0_IS2_RS2_PS2_EET0_T_SB_SA_
+#[doc(alias = "std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*> std::uninitialized_copy<std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>>(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>)")]
+// was: __ZSt18uninitialized_copyISt15_Deque_iteratorIN6TagLib7MDMODELERKS2_PS3_ES0_IS2_RS2_PS2_EET0_T_SB_SA_
+pub fn stub_1c9ca4() -> ! {
+    todo!("0x1c9ca4 std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*> std::uninitialized_copy<std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>>(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>)")
 }
 
-// 0x1c5bf8 — __Z26tiff_write_geotiff_profileP4tiffP8FIBITMAP
-#[doc(alias = "tiff_write_geotiff_profile(tiff *,FIBITMAP *)")]
-// was: __Z26tiff_write_geotiff_profileP4tiffP8FIBITMAP
-pub fn stub_1c5bf8() -> ! {
-    todo!("0x1c5bf8 tiff_write_geotiff_profile(tiff *,FIBITMAP *)")
+// 0x1c9d24 — __ZSt22__uninitialized_copy_aISt15_Deque_iteratorIN6TagLib7MDMODELERKS2_PS3_ES0_IS2_RS2_PS2_ES2_ET0_T_SB_SA_SaIT1_E
+#[doc(alias = "std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*> std::__uninitialized_copy_a<std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,TagLib::MDMODEL>(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::allocator<TagLib::MDMODEL>)")]
+// was: __ZSt22__uninitialized_copy_aISt15_Deque_iteratorIN6TagLib7MDMODELERKS2_PS3_ES0_IS2_RS2_PS2_ES2_ET0_T_SB_SA_SaIT1_E
+pub fn stub_1c9d24() -> ! {
+    todo!("0x1c9d24 std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*> std::__uninitialized_copy_a<std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,TagLib::MDMODEL>(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>,std::allocator<TagLib::MDMODEL>)")
 }
 
-// 0x1c610c — __Z25tiff_read_geotiff_profileP4tiffP8FIBITMAP
-#[doc(alias = "tiff_read_geotiff_profile(tiff *,FIBITMAP *)")]
-// was: __Z25tiff_read_geotiff_profileP4tiffP8FIBITMAP
-pub fn stub_1c610c() -> ! {
-    todo!("0x1c610c tiff_read_geotiff_profile(tiff *,FIBITMAP *)")
+// 0x1c9da0 — __ZNSt15_Deque_iteratorIN6TagLib7MDMODELERS1_PS1_EmmEv
+#[doc(alias = "std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>::operator--(void)")]
+// was: __ZNSt15_Deque_iteratorIN6TagLib7MDMODELERS1_PS1_EmmEv
+pub fn stub_1c9da0() -> ! {
+    todo!("0x1c9da0 std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>::operator--(void)")
 }
 
-// 0x1c630c — __Z15XTIFFInitializev
+// 0x1c9de0 — __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE4backEv
+#[doc(alias = "std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::back(void)")]
+// was: __ZNSt5dequeIN6TagLib7MDMODELESaIS1_EE4backEv
+pub fn stub_1c9de0() -> ! {
+    todo!("0x1c9de0 std::deque<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::back(void)")
+}
+
+// 0x1c9e20 — __ZNSt15_Deque_iteratorItRKtPS0_EppEv
+#[doc(alias = "std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>::operator++(void)")]
+// was: __ZNSt15_Deque_iteratorItRKtPS0_EppEv
+pub fn stub_1c9e20() -> ! {
+    todo!("0x1c9e20 std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>::operator++(void)")
+}
+
+// 0x1c9e78 — __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorItRKtPS4_ES3_ItRtPtEEET0_T_SC_SB_
+#[doc(alias = "std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>>(std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>)")]
+// was: __ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyISt15_Deque_iteratorItRKtPS4_ES3_ItRtPtEEET0_T_SC_SB_
+pub fn stub_1c9e78() -> ! {
+    todo!("0x1c9e78 std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *> std::__copy<false,std::random_access_iterator_tag>::copy<std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>>(std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>)")
+}
+
+// 0x1ca124 — __ZSt10__copy_auxISt15_Deque_iteratorItRKtPS1_ES0_ItRtPtEET0_T_S9_S8_
+#[doc(alias = "std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *> std::__copy_aux<std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>>(std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>)")]
+// was: __ZSt10__copy_auxISt15_Deque_iteratorItRKtPS1_ES0_ItRtPtEET0_T_S9_S8_
+pub fn stub_1ca124() -> ! {
+    todo!("0x1ca124 std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *> std::__copy_aux<std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>>(std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>)")
+}
+
+// 0x1ca1a0 — __ZNSt13__copy_normalILb0ELb0EE8__copy_nISt15_Deque_iteratorItRKtPS3_ES2_ItRtPtEEET0_T_SB_SA_
+#[doc(alias = "std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *> std::__copy_normal<false,false>::__copy_n<std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>>(std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>)")]
+// was: __ZNSt13__copy_normalILb0ELb0EE8__copy_nISt15_Deque_iteratorItRKtPS3_ES2_ItRtPtEEET0_T_SB_SA_
+pub fn stub_1ca1a0() -> ! {
+    todo!("0x1ca1a0 std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *> std::__copy_normal<false,false>::__copy_n<std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>>(std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>)")
+}
+
+// 0x1cc578 — __ZL15cacheIO_getByteP10tagCacheIO
+#[doc(alias = "cacheIO_getByte(tagCacheIO *)")]
+// was: __ZL15cacheIO_getByteP10tagCacheIO
+pub fn stub_1cc578() -> ! {
+    todo!("0x1cc578 cacheIO_getByte(tagCacheIO *)")
+}
+
+// 0x1cc5dc — __ZL16cacheIO_getBytesP10tagCacheIOm
+#[doc(alias = "cacheIO_getBytes(tagCacheIO *,unsigned long)")]
+// was: __ZL16cacheIO_getBytesP10tagCacheIOm
+pub fn stub_1cc5dc() -> ! {
+    todo!("0x1cc5dc cacheIO_getBytes(tagCacheIO *,unsigned long)")
+}
+
+// 0x1cc684 — __ZL6Formatv_2
+// type: const char *__fastcall()
+#[doc(alias = "__ZL6Formatv_2")]
+// was: __ZL6Formatv_2
+pub fn stub_1cc684() -> ! {
+    todo!("0x1cc684 __ZL6Formatv_2")
+}
+
+// 0x1cc694 — __ZL11Descriptionv_2
 // type: _DWORD __fastcall()
-#[doc(alias = "XTIFFInitialize(void)")]
-// was: __Z15XTIFFInitializev
-pub fn stub_1c630c() -> ! {
-    todo!("0x1c630c XTIFFInitialize(void)")
+#[doc(alias = "__ZL11Descriptionv_2")]
+// was: __ZL11Descriptionv_2
+pub fn stub_1cc694() -> ! {
+    todo!("0x1cc694 __ZL11Descriptionv_2")
 }
 
-// 0x1c6354 — __ZL22_XTIFFDefaultDirectoryP4tiff
-#[doc(alias = "_XTIFFDefaultDirectory(tiff *)")]
-// was: __ZL22_XTIFFDefaultDirectoryP4tiff
-pub fn stub_1c6354() -> ! {
-    todo!("0x1c6354 _XTIFFDefaultDirectory(tiff *)")
+// 0x1cc6a4 — __ZL9Extensionv_2
+// type: _DWORD __fastcall()
+#[doc(alias = "__ZL9Extensionv_2")]
+// was: __ZL9Extensionv_2
+pub fn stub_1cc6a4() -> ! {
+    todo!("0x1cc6a4 __ZL9Extensionv_2")
 }
 
-// 0x1c6394 — __ZL15append_iptc_tagPhPjtjPKv
-// type: _DWORD __fastcall(unsigned __int8 *, unsigned int *, unsigned __int16, unsigned int, const void *__src)
-#[doc(alias = "append_iptc_tag(unsigned char *,unsigned int *,unsigned short,unsigned int,void const*)")]
-// was: __ZL15append_iptc_tagPhPjtjPKv
-pub fn stub_1c6394() -> ! {
-    todo!("0x1c6394 append_iptc_tag(unsigned char *,unsigned int *,unsigned short,unsigned int,void const*)")
+// 0x1cc6b4 — __ZL7RegExprv_2
+// type: _DWORD __fastcall()
+#[doc(alias = "__ZL7RegExprv_2")]
+// was: __ZL7RegExprv_2
+pub fn stub_1cc6b4() -> ! {
+    todo!("0x1cc6b4 __ZL7RegExprv_2")
 }
 
-// 0x1c6448 — _write_iptc_profile
-#[doc(alias = "_write_iptc_profile")]
-// was: _write_iptc_profile
-pub fn stub_1c6448() -> ! {
-    todo!("0x1c6448 _write_iptc_profile")
+// 0x1cc6bc — __ZL8MimeTypev_2
+// type: _DWORD __fastcall()
+#[doc(alias = "__ZL8MimeTypev_2")]
+// was: __ZL8MimeTypev_2
+pub fn stub_1cc6bc() -> ! {
+    todo!("0x1cc6bc __ZL8MimeTypev_2")
 }
 
-// 0x1c6910 — _read_iptc_profile
-#[doc(alias = "_read_iptc_profile")]
-// was: _read_iptc_profile
-pub fn stub_1c6910() -> ! {
-    todo!("0x1c6910 _read_iptc_profile")
+// 0x1cc6cc — __ZL8ValidateP11FreeImageIOPv_2
+#[doc(alias = "__ZL8ValidateP11FreeImageIOPv_2")]
+// was: __ZL8ValidateP11FreeImageIOPv_2
+pub fn stub_1cc6cc() -> ! {
+    todo!("0x1cc6cc __ZL8ValidateP11FreeImageIOPv_2")
 }
 
-// 0x1c7340 — __ZNKSt6vectorISsSaISsEE4sizeEv
-#[doc(alias = "std::vector<std::string,std::allocator<std::string>>::size(void)const")]
-// was: __ZNKSt6vectorISsSaISsEE4sizeEv
-pub fn stub_1c7340() -> ! {
-    todo!("0x1c7340 std::vector<std::string,std::allocator<std::string>>::size(void)const")
+// 0x1cc838 — __ZL19SupportsExportDepthi_2
+// type: _DWORD __fastcall(int)
+#[doc(alias = "__ZL19SupportsExportDepthi_2")]
+// was: __ZL19SupportsExportDepthi_2
+pub fn stub_1cc838() -> ! {
+    todo!("0x1cc838 __ZL19SupportsExportDepthi_2")
 }
 
-// 0x1c7350 — _FreeImage_GetTagKey
-#[doc(alias = "_FreeImage_GetTagKey")]
-// was: _FreeImage_GetTagKey
-pub fn stub_1c7350() -> ! {
-    todo!("0x1c7350 _FreeImage_GetTagKey")
+// 0x1cc85c — __ZL18SupportsExportType15FREE_IMAGE_TYPE_2
+// type: bool __fastcall(int)
+#[doc(alias = "__ZL18SupportsExportType15FREE_IMAGE_TYPE_2")]
+// was: __ZL18SupportsExportType15FREE_IMAGE_TYPE_2
+pub fn stub_1cc85c() -> ! {
+    todo!("0x1cc85c __ZL18SupportsExportType15FREE_IMAGE_TYPE_2")
 }
 
-// 0x1c7360 — _FreeImage_GetTagID
-// type: int __fastcall(int result)
-#[doc(alias = "_FreeImage_GetTagID")]
-// was: _FreeImage_GetTagID
-pub fn stub_1c7360() -> ! {
-    todo!("0x1c7360 _FreeImage_GetTagID")
+// 0x1cc86c — __Z9InitTARGAP6Plugini
+#[doc(alias = "InitTARGA(Plugin *,int)")]
+// was: __Z9InitTARGAP6Plugini
+pub fn stub_1cc86c() -> ! {
+    todo!("0x1cc86c InitTARGA(Plugin *,int)")
 }
 
-// 0x1c7370 — _FreeImage_GetTagType
-#[doc(alias = "_FreeImage_GetTagType")]
-// was: _FreeImage_GetTagType
-pub fn stub_1c7370() -> ! {
-    todo!("0x1c7370 _FreeImage_GetTagType")
+// 0x1cc934 — __ZL13cacheIO_allocP10tagCacheIOP11FreeImageIOPvm
+// type: int __fastcall(int, int, int, size_t __size)
+#[doc(alias = "cacheIO_alloc(tagCacheIO *,FreeImageIO *,void *,unsigned long)")]
+// was: __ZL13cacheIO_allocP10tagCacheIOP11FreeImageIOPvm
+pub fn stub_1cc934() -> ! {
+    todo!("0x1cc934 cacheIO_alloc(tagCacheIO *,FreeImageIO *,void *,unsigned long)")
 }
 
-// 0x1c7380 — _FreeImage_GetTagCount
-#[doc(alias = "_FreeImage_GetTagCount")]
-// was: _FreeImage_GetTagCount
-pub fn stub_1c7380() -> ! {
-    todo!("0x1c7380 _FreeImage_GetTagCount")
+// 0x1cc990 — __ZL12cacheIO_freeP10tagCacheIO
+#[doc(alias = "cacheIO_free(tagCacheIO *)")]
+// was: __ZL12cacheIO_freeP10tagCacheIO
+pub fn stub_1cc990() -> ! {
+    todo!("0x1cc990 cacheIO_free(tagCacheIO *)")
 }
 
-// 0x1c7390 — _FreeImage_GetTagLength
-#[doc(alias = "_FreeImage_GetTagLength")]
-// was: _FreeImage_GetTagLength
-pub fn stub_1c7390() -> ! {
-    todo!("0x1c7390 _FreeImage_GetTagLength")
+// 0x1cc9ac — __ZL20Internal_GetScanLineP8FIBITMAPii
+#[doc(alias = "Internal_GetScanLine(FIBITMAP *,int,int)")]
+// was: __ZL20Internal_GetScanLineP8FIBITMAPii
+pub fn stub_1cc9ac() -> ! {
+    todo!("0x1cc9ac Internal_GetScanLine(FIBITMAP *,int,int)")
 }
 
-// 0x1c73a0 — _FreeImage_GetTagValue
-#[doc(alias = "_FreeImage_GetTagValue")]
-// was: _FreeImage_GetTagValue
-pub fn stub_1c73a0() -> ! {
-    todo!("0x1c73a0 _FreeImage_GetTagValue")
+// 0x1cc9e4 — __ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__2
+#[doc(alias = "__ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__2")]
+// was: __ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__2
+pub fn stub_1cc9e4() -> ! {
+    todo!("0x1cc9e4 __ZL4SaveP11FreeImageIOP8FIBITMAPPviiS3__2")
 }
 
-// 0x1c73b0 — _FreeImage_SetTagID
-#[doc(alias = "_FreeImage_SetTagID")]
-// was: _FreeImage_SetTagID
-pub fn stub_1c73b0() -> ! {
-    todo!("0x1c73b0 _FreeImage_SetTagID")
+// 0x1cd15c — __ZL4LoadP11FreeImageIOPviiS1__2
+#[doc(alias = "__ZL4LoadP11FreeImageIOPviiS1__2")]
+// was: __ZL4LoadP11FreeImageIOPviiS1__2
+pub fn stub_1cd15c() -> ! {
+    todo!("0x1cd15c __ZL4LoadP11FreeImageIOPviiS1__2")
 }
 
-// 0x1c73c8 — _FreeImage_SetTagType
-#[doc(alias = "_FreeImage_SetTagType")]
-// was: _FreeImage_SetTagType
-pub fn stub_1c73c8() -> ! {
-    todo!("0x1c73c8 _FreeImage_SetTagType")
+// 0x1d0c8c — _af_sort_pos
+#[doc(alias = "_af_sort_pos")]
+// was: _af_sort_pos
+pub fn stub_1d0c8c() -> ! {
+    todo!("0x1d0c8c _af_sort_pos")
 }
 
-// 0x1c73dc — _FreeImage_SetTagCount
-#[doc(alias = "_FreeImage_SetTagCount")]
-// was: _FreeImage_SetTagCount
-pub fn stub_1c73dc() -> ! {
-    todo!("0x1c73dc _FreeImage_SetTagCount")
+// 0x1d0e90 — _af_sort_widths
+#[doc(alias = "_af_sort_widths")]
+// was: _af_sort_widths
+pub fn stub_1d0e90() -> ! {
+    todo!("0x1d0e90 _af_sort_widths")
 }
 
-// 0x1c73f0 — _FreeImage_SetTagLength
-#[doc(alias = "_FreeImage_SetTagLength")]
-// was: _FreeImage_SetTagLength
-pub fn stub_1c73f0() -> ! {
-    todo!("0x1c73f0 _FreeImage_SetTagLength")
+// 0x1d1060 — _af_cjk_metrics_scale_dim
+#[doc(alias = "_af_cjk_metrics_scale_dim")]
+// was: _af_cjk_metrics_scale_dim
+pub fn stub_1d1060() -> ! {
+    todo!("0x1d1060 _af_cjk_metrics_scale_dim")
 }
 
-// 0x1c7404 — __Z22FreeImage_TagDataWidtht
-// type: _DWORD __fastcall(unsigned __int16)
-#[doc(alias = "FreeImage_TagDataWidth(unsigned short)")]
-// was: __Z22FreeImage_TagDataWidtht
-pub fn stub_1c7404() -> ! {
-    todo!("0x1c7404 FreeImage_TagDataWidth(unsigned short)")
+// 0x1d10a0 — _af_cjk_metrics_scale
+#[doc(alias = "_af_cjk_metrics_scale")]
+// was: _af_cjk_metrics_scale
+pub fn stub_1d10a0() -> ! {
+    todo!("0x1d10a0 _af_cjk_metrics_scale")
 }
 
-// 0x1c7428 — _FreeImage_DeleteTag
-#[doc(alias = "_FreeImage_DeleteTag")]
-// was: _FreeImage_DeleteTag
-pub fn stub_1c7428() -> ! {
-    todo!("0x1c7428 _FreeImage_DeleteTag")
+// 0x1d10ec — _af_cjk_compute_stem_width
+#[doc(alias = "_af_cjk_compute_stem_width")]
+// was: _af_cjk_compute_stem_width
+pub fn stub_1d10ec() -> ! {
+    todo!("0x1d10ec _af_cjk_compute_stem_width")
 }
 
-// 0x1c7470 — _FreeImage_SetTagDescription
-#[doc(alias = "_FreeImage_SetTagDescription")]
-// was: _FreeImage_SetTagDescription
-pub fn stub_1c7470() -> ! {
-    todo!("0x1c7470 _FreeImage_SetTagDescription")
+// 0x1d14e0 — _af_hint_normal_stem
+#[doc(alias = "_af_hint_normal_stem")]
+// was: _af_hint_normal_stem
+pub fn stub_1d14e0() -> ! {
+    todo!("0x1d14e0 _af_hint_normal_stem")
 }
 
-// 0x1c74cc — _FreeImage_SetTagKey
-#[doc(alias = "_FreeImage_SetTagKey")]
-// was: _FreeImage_SetTagKey
-pub fn stub_1c74cc() -> ! {
-    todo!("0x1c74cc _FreeImage_SetTagKey")
+// 0x1d16b8 — _af_cjk_hints_detect_features
+#[doc(alias = "_af_cjk_hints_detect_features")]
+// was: _af_cjk_hints_detect_features
+pub fn stub_1d16b8() -> ! {
+    todo!("0x1d16b8 _af_cjk_hints_detect_features")
 }
 
-// 0x1c7528 — _FreeImage_CreateTag
-#[doc(alias = "_FreeImage_CreateTag")]
-// was: _FreeImage_CreateTag
-pub fn stub_1c7528() -> ! {
-    todo!("0x1c7528 _FreeImage_CreateTag")
+// 0x1d1e8c — _af_cjk_hints_apply
+#[doc(alias = "_af_cjk_hints_apply")]
+// was: _af_cjk_hints_apply
+pub fn stub_1d1e8c() -> ! {
+    todo!("0x1d1e8c _af_cjk_hints_apply")
 }
 
-// 0x1c7580 — _FreeImage_CloneTag
-#[doc(alias = "_FreeImage_CloneTag")]
-// was: _FreeImage_CloneTag
-pub fn stub_1c7580() -> ! {
-    todo!("0x1c7580 _FreeImage_CloneTag")
+// 0x1d2428 — _af_cjk_hints_init
+#[doc(alias = "_af_cjk_hints_init")]
+// was: _af_cjk_hints_init
+pub fn stub_1d2428() -> ! {
+    todo!("0x1d2428 _af_cjk_hints_init")
 }
 
-// 0x1c7658 — _FreeImage_SetTagValue
-#[doc(alias = "_FreeImage_SetTagValue")]
-// was: _FreeImage_SetTagValue
-pub fn stub_1c7658() -> ! {
-    todo!("0x1c7658 _FreeImage_SetTagValue")
+// 0x1d24b0 — _af_cjk_metrics_init
+#[doc(alias = "_af_cjk_metrics_init")]
+// was: _af_cjk_metrics_init
+pub fn stub_1d24b0() -> ! {
+    todo!("0x1d24b0 _af_cjk_metrics_init")
 }
 
-// 0x1c7724 — __ZN10FIRationalD1Ev
-// type: void __fastcall(FIRational *__hidden this)
-#[doc(alias = "FIRational::~FIRational()")]
-// was: __ZN10FIRationalD1Ev
-pub fn stub_1c7724() -> ! {
-    todo!("0x1c7724 FIRational::~FIRational()")
+// 0x1d251c — _af_dummy_hints_apply
+#[doc(alias = "_af_dummy_hints_apply")]
+// was: _af_dummy_hints_apply
+pub fn stub_1d251c() -> ! {
+    todo!("0x1d251c _af_dummy_hints_apply")
 }
 
-// 0x1c7728 — __ZN10FIRational12getNumeratorEv
-// type: _DWORD __fastcall(FIRational *__hidden this)
-#[doc(alias = "FIRational::getNumerator(void)")]
-// was: __ZN10FIRational12getNumeratorEv
-pub fn stub_1c7728() -> ! {
-    todo!("0x1c7728 FIRational::getNumerator(void)")
+// 0x1d2524 — _af_dummy_hints_init
+#[doc(alias = "_af_dummy_hints_init")]
+// was: _af_dummy_hints_init
+pub fn stub_1d2524() -> ! {
+    todo!("0x1d2524 _af_dummy_hints_init")
 }
 
-// 0x1c7730 — __ZN10FIRational14getDenominatorEv
-// type: _DWORD __fastcall(FIRational *__hidden this)
-#[doc(alias = "FIRational::getDenominator(void)")]
-// was: __ZN10FIRational14getDenominatorEv
-pub fn stub_1c7730() -> ! {
-    todo!("0x1c7730 FIRational::getDenominator(void)")
+// 0x1d2538 — _af_face_globals_is_digit
+#[doc(alias = "_af_face_globals_is_digit")]
+// was: _af_face_globals_is_digit
+pub fn stub_1d2538() -> ! {
+    todo!("0x1d2538 _af_face_globals_is_digit")
 }
 
-// 0x1c7738 — __ZN10FIRationalC2Ef
-// type: FIRational *__fastcall(FIRational *__hidden this, float)
-#[doc(alias = "FIRational::FIRational(float)")]
-// was: __ZN10FIRationalC2Ef
-pub fn stub_1c7738() -> ! {
-    todo!("0x1c7738 FIRational::FIRational(float)")
+// 0x1d2554 — _af_face_globals_get_metrics
+#[doc(alias = "_af_face_globals_get_metrics")]
+// was: _af_face_globals_get_metrics
+pub fn stub_1d2554() -> ! {
+    todo!("0x1d2554 _af_face_globals_get_metrics")
 }
 
-// 0x1c7988 — __ZN10FIRationalC1Ef
-// type: FIRational *__fastcall(FIRational *__hidden this, float)
-#[doc(alias = "FIRational::FIRational(float)")]
-// was: __ZN10FIRationalC1Ef
-pub fn stub_1c7988() -> ! {
-    todo!("0x1c7988 FIRational::FIRational(float)")
+// 0x1d267c — _af_face_globals_free
+#[doc(alias = "_af_face_globals_free")]
+// was: _af_face_globals_free
+pub fn stub_1d267c() -> ! {
+    todo!("0x1d267c _af_face_globals_free")
 }
 
-// 0x1c798c — __ZL9ReadInt32iPv
-// type: _DWORD __fastcall(int, void *)
-#[doc(alias = "ReadInt32(int,void *)")]
-// was: __ZL9ReadInt32iPv
-pub fn stub_1c798c() -> ! {
-    todo!("0x1c798c ReadInt32(int,void *)")
+// 0x1d27cc — _af_face_globals_new
+#[doc(alias = "_af_face_globals_new")]
+// was: _af_face_globals_new
+pub fn stub_1d27cc() -> ! {
+    todo!("0x1d27cc _af_face_globals_new")
 }
 
-// 0x1c79d8 — __ZL10ReadUint16iPv
-// type: _DWORD __fastcall(int, void *)
-#[doc(alias = "ReadUint16(int,void *)")]
-// was: __ZL10ReadUint16iPv
-pub fn stub_1c79d8() -> ! {
-    todo!("0x1c79d8 ReadUint16(int,void *)")
+// 0x1d2b28 — _af_direction_compute
+#[doc(alias = "_af_direction_compute")]
+// was: _af_direction_compute
+pub fn stub_1d2b28() -> ! {
+    todo!("0x1d2b28 _af_direction_compute")
 }
 
-// 0x1c79f8 — __ZL10ReadUint32iPv
-// type: _DWORD __fastcall(int, void *)
-#[doc(alias = "ReadUint32(int,void *)")]
-// was: __ZL10ReadUint32iPv
-pub fn stub_1c79f8() -> ! {
-    todo!("0x1c79f8 ReadUint32(int,void *)")
+// 0x1d2ba4 — _af_glyph_hints_rescale
+#[doc(alias = "_af_glyph_hints_rescale")]
+// was: _af_glyph_hints_rescale
+pub fn stub_1d2ba4() -> ! {
+    todo!("0x1d2ba4 _af_glyph_hints_rescale")
 }
 
-// 0x1c79fc — __ZL18FreeImage_strnicmpPKcS0_m
-// type: _DWORD __fastcall(const char *, const char *, unsigned int)
-#[doc(alias = "FreeImage_strnicmp(char const*,char const*,unsigned long)")]
-// was: __ZL18FreeImage_strnicmpPKcS0_m
-pub fn stub_1c79fc() -> ! {
-    todo!("0x1c79fc FreeImage_strnicmp(char const*,char const*,unsigned long)")
+// 0x1d2bb4 — _af_glyph_hints_save
+#[doc(alias = "_af_glyph_hints_save")]
+// was: _af_glyph_hints_save
+pub fn stub_1d2bb4() -> ! {
+    todo!("0x1d2bb4 _af_glyph_hints_save")
 }
 
-// 0x1c7d28 — __ZL14processExifTagP8FIBITMAPP5FITAGPciN6TagLib7MDMODELE
-#[doc(alias = "processExifTag(FIBITMAP *,FITAG *,char *,int,TagLib::MDMODEL)")]
-// was: __ZL14processExifTagP8FIBITMAPP5FITAGPciN6TagLib7MDMODELE
-pub fn stub_1c7d28() -> ! {
-    todo!("0x1c7d28 processExifTag(FIBITMAP *,FITAG *,char *,int,TagLib::MDMODEL)")
+// 0x1d2c1c — _af_glyph_hints_align_edge_points
+#[doc(alias = "_af_glyph_hints_align_edge_points")]
+// was: _af_glyph_hints_align_edge_points
+pub fn stub_1d2c1c() -> ! {
+    todo!("0x1d2c1c _af_glyph_hints_align_edge_points")
 }
 
-// 0x1c81a4 — _jpeg_read_exif_profile
-#[doc(alias = "_jpeg_read_exif_profile")]
-// was: _jpeg_read_exif_profile
-pub fn stub_1c81a4() -> ! {
-    todo!("0x1c81a4 _jpeg_read_exif_profile")
+// 0x1d2ce8 — _af_iup_interp
+#[doc(alias = "_af_iup_interp")]
+// was: _af_iup_interp
+pub fn stub_1d2ce8() -> ! {
+    todo!("0x1d2ce8 _af_iup_interp")
 }
 
-// 0x1c8d60 — __ZSt16__deque_buf_sizem
-// type: _DWORD __fastcall(unsigned int)
-#[doc(alias = "std::__deque_buf_size(unsigned long)")]
-// was: __ZSt16__deque_buf_sizem
-pub fn stub_1c8d60() -> ! {
-    todo!("0x1c8d60 std::__deque_buf_size(unsigned long)")
+// 0x1d2e1c — _af_glyph_hints_align_weak_points
+#[doc(alias = "_af_glyph_hints_align_weak_points")]
+// was: _af_glyph_hints_align_weak_points
+pub fn stub_1d2e1c() -> ! {
+    todo!("0x1d2e1c _af_glyph_hints_align_weak_points")
 }
 
-// 0x1c8d84 — __ZNSt5dequeItSaItEE15_M_destroy_dataESt15_Deque_iteratorItRtPtES5_RKS0_
-// type: void()
-#[doc(alias = "std::deque<unsigned short,std::allocator<unsigned short>>::_M_destroy_data(std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>,std::allocator<unsigned short> const&)")]
-// was: __ZNSt5dequeItSaItEE15_M_destroy_dataESt15_Deque_iteratorItRtPtES5_RKS0_
-pub fn stub_1c8d84() -> ! {
-    todo!("0x1c8d84 std::deque<unsigned short,std::allocator<unsigned short>>::_M_destroy_data(std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>,std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>,std::allocator<unsigned short> const&)")
+// 0x1d3060 — _af_glyph_hints_align_strong_points
+#[doc(alias = "_af_glyph_hints_align_strong_points")]
+// was: _af_glyph_hints_align_strong_points
+pub fn stub_1d3060() -> ! {
+    todo!("0x1d3060 _af_glyph_hints_align_strong_points")
 }
 
-// 0x1c8d88 — __ZNSt5dequeIPhSaIS0_EE15_M_destroy_dataESt15_Deque_iteratorIS0_RS0_PS0_ES6_RKS1_
-#[doc(alias = "std::deque<unsigned char *,std::allocator<unsigned char *>>::_M_destroy_data(std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>,std::allocator<unsigned char *> const&)")]
-// was: __ZNSt5dequeIPhSaIS0_EE15_M_destroy_dataESt15_Deque_iteratorIS0_RS0_PS0_ES6_RKS1_
-pub fn stub_1c8d88() -> ! {
-    todo!("0x1c8d88 std::deque<unsigned char *,std::allocator<unsigned char *>>::_M_destroy_data(std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>,std::allocator<unsigned char *> const&)")
+// 0x1d3418 — _af_axis_hints_new_segment
+#[doc(alias = "_af_axis_hints_new_segment")]
+// was: _af_axis_hints_new_segment
+pub fn stub_1d3418() -> ! {
+    todo!("0x1d3418 _af_axis_hints_new_segment")
 }
 
-// 0x1c8d8c — __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE4findERS1_
-#[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::find(unsigned int const&)")]
-// was: __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE4findERS1_
-pub fn stub_1c8d8c() -> ! {
-    todo!("0x1c8d8c std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::find(unsigned int const&)")
+// 0x1d34f8 — _af_glyph_hints_reload
+#[doc(alias = "_af_glyph_hints_reload")]
+// was: _af_glyph_hints_reload
+pub fn stub_1d34f8() -> ! {
+    todo!("0x1d34f8 _af_glyph_hints_reload")
 }
 
-// 0x1c8de8 — __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE13_Rb_tree_implIS6_Lb0EEC2ERKSaISt13_Rb_tree_nodeIS2_EERKS6_
-#[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_Rb_tree_impl<std::less<unsigned int>,false>::_Rb_tree_impl(std::allocator<std::_Rb_tree_node<std::pair<unsigned int const,int>>> const&,std::less<unsigned int> const&)")]
-// was: __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE13_Rb_tree_implIS6_Lb0EEC2ERKSaISt13_Rb_tree_nodeIS2_EERKS6_
-pub fn stub_1c8de8() -> ! {
-    todo!("0x1c8de8 std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_Rb_tree_impl<std::less<unsigned int>,false>::_Rb_tree_impl(std::allocator<std::_Rb_tree_node<std::pair<unsigned int const,int>>> const&,std::less<unsigned int> const&)")
+// 0x1d3ad0 — _af_glyph_hints_done
+#[doc(alias = "_af_glyph_hints_done")]
+// was: _af_glyph_hints_done
+pub fn stub_1d3ad0() -> ! {
+    todo!("0x1d3ad0 _af_glyph_hints_done")
 }
 
-// 0x1c8e28 — __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE11lower_boundERS1_
-#[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::lower_bound(unsigned int const&)")]
-// was: __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE11lower_boundERS1_
-pub fn stub_1c8e28() -> ! {
-    todo!("0x1c8e28 std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::lower_bound(unsigned int const&)")
+// 0x1d3b88 — _af_glyph_hints_init
+#[doc(alias = "_af_glyph_hints_init")]
+// was: _af_glyph_hints_init
+pub fn stub_1d3b88() -> ! {
+    todo!("0x1d3b88 _af_glyph_hints_init")
 }
 
-// 0x1c8e5c — __ZNSt15_Deque_iteratorItRtPtE11_M_set_nodeEPS1_
-#[doc(alias = "std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>::_M_set_node(unsigned short **)")]
-// was: __ZNSt15_Deque_iteratorItRtPtE11_M_set_nodeEPS1_
-pub fn stub_1c8e5c() -> ! {
-    todo!("0x1c8e5c std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>::_M_set_node(unsigned short **)")
+// 0x1d3bac — _af_axis_hints_new_edge
+#[doc(alias = "_af_axis_hints_new_edge")]
+// was: _af_axis_hints_new_edge
+pub fn stub_1d3bac() -> ! {
+    todo!("0x1d3bac _af_axis_hints_new_edge")
 }
 
-// 0x1c8e8c — __ZNSt15_Deque_iteratorItRtPtEmmEv
-#[doc(alias = "std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>::operator--(void)")]
-// was: __ZNSt15_Deque_iteratorItRtPtEmmEv
-pub fn stub_1c8e8c() -> ! {
-    todo!("0x1c8e8c std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>::operator--(void)")
+// 0x1d3d4c — _af_indic_hints_apply
+#[doc(alias = "_af_indic_hints_apply")]
+// was: _af_indic_hints_apply
+pub fn stub_1d3d4c() -> ! {
+    todo!("0x1d3d4c _af_indic_hints_apply")
 }
 
-// 0x1c8ecc — __ZStmiIPhRS0_PS0_ENSt15_Deque_iteratorIT_T0_T1_E15difference_typeERKS7_SA_
-#[doc(alias = "std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>::difference_type std::operator-<unsigned char *,unsigned char *&,unsigned char **>(std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> const&,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> const&)")]
-// was: __ZStmiIPhRS0_PS0_ENSt15_Deque_iteratorIT_T0_T1_E15difference_typeERKS7_SA_
-pub fn stub_1c8ecc() -> ! {
-    todo!("0x1c8ecc std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **>::difference_type std::operator-<unsigned char *,unsigned char *&,unsigned char **>(std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> const&,std::_Deque_iterator<unsigned char *,unsigned char *&,unsigned char **> const&)")
+// 0x1d3d5c — _af_indic_hints_init
+#[doc(alias = "_af_indic_hints_init")]
+// was: _af_indic_hints_init
+pub fn stub_1d3d5c() -> ! {
+    todo!("0x1d3d5c _af_indic_hints_init")
 }
 
-// 0x1c8f1c — __ZStmiIN6TagLib7MDMODELERS1_PS1_ENSt15_Deque_iteratorIT_T0_T1_E15difference_typeERKS8_SB_
-#[doc(alias = "std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>::difference_type std::operator-<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*> const&,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*> const&)")]
-// was: __ZStmiIN6TagLib7MDMODELERS1_PS1_ENSt15_Deque_iteratorIT_T0_T1_E15difference_typeERKS8_SB_
-pub fn stub_1c8f1c() -> ! {
-    todo!("0x1c8f1c std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>::difference_type std::operator-<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*>(std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*> const&,std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL&,TagLib::MDMODEL*> const&)")
+// 0x1d3d6c — _af_indic_metrics_scale
+#[doc(alias = "_af_indic_metrics_scale")]
+// was: _af_indic_metrics_scale
+pub fn stub_1d3d6c() -> ! {
+    todo!("0x1d3d6c _af_indic_metrics_scale")
 }
 
-// 0x1c8f6c — __ZNSt15_Deque_iteratorIN6TagLib7MDMODELERKS1_PS2_EppEv
-#[doc(alias = "std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>::operator++(void)")]
-// was: __ZNSt15_Deque_iteratorIN6TagLib7MDMODELERKS1_PS2_EppEv
-pub fn stub_1c8f6c() -> ! {
-    todo!("0x1c8f6c std::_Deque_iterator<TagLib::MDMODEL,TagLib::MDMODEL const&,TagLib::MDMODEL const*>::operator++(void)")
+// 0x1d3d7c — _af_indic_metrics_init
+#[doc(alias = "_af_indic_metrics_init")]
+// was: _af_indic_metrics_init
+pub fn stub_1d3d7c() -> ! {
+    todo!("0x1d3d7c _af_indic_metrics_init")
 }
 
-// 0x1c8fc4 — __ZNSt15_Deque_iteratorItRtPtEppEv
-#[doc(alias = "std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>::operator++(void)")]
-// was: __ZNSt15_Deque_iteratorItRtPtEppEv
-pub fn stub_1c8fc4() -> ! {
-    todo!("0x1c8fc4 std::_Deque_iterator<unsigned short,unsigned short &,unsigned short *>::operator++(void)")
+// 0x1d3d8c — _af_latin_hints_link_segments
+#[doc(alias = "_af_latin_hints_link_segments")]
+// was: _af_latin_hints_link_segments
+pub fn stub_1d3d8c() -> ! {
+    todo!("0x1d3d8c _af_latin_hints_link_segments")
 }
 
-// 0x1c9004 — __ZStmiItRKtPS0_ENSt15_Deque_iteratorIT_T0_T1_E15difference_typeERKS7_SA_
-#[doc(alias = "std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>::difference_type std::operator-<unsigned short,unsigned short const&,unsigned short const*>(std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*> const&,std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*> const&)")]
-// was: __ZStmiItRKtPS0_ENSt15_Deque_iteratorIT_T0_T1_E15difference_typeERKS7_SA_
-pub fn stub_1c9004() -> ! {
-    todo!("0x1c9004 std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*>::difference_type std::operator-<unsigned short,unsigned short const&,unsigned short const*>(std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*> const&,std::_Deque_iterator<unsigned short,unsigned short const&,unsigned short const*> const&)")
+// 0x1d3f40 — _af_latin_compute_stem_width
+#[doc(alias = "_af_latin_compute_stem_width")]
+// was: _af_latin_compute_stem_width
+pub fn stub_1d3f40() -> ! {
+    todo!("0x1d3f40 _af_latin_compute_stem_width")
 }
 
-// 0x1c9054 — __ZStmiIPhRKS0_PS1_ENSt15_Deque_iteratorIT_T0_T1_E15difference_typeERKS8_SB_
-#[doc(alias = "std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>::difference_type std::operator-<unsigned char *,unsigned char * const&,unsigned char * const*>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*> const&,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*> const&)")]
-// was: __ZStmiIPhRKS0_PS1_ENSt15_Deque_iteratorIT_T0_T1_E15difference_typeERKS8_SB_
-pub fn stub_1c9054() -> ! {
-    todo!("0x1c9054 std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*>::difference_type std::operator-<unsigned char *,unsigned char * const&,unsigned char * const*>(std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*> const&,std::_Deque_iterator<unsigned char *,unsigned char * const&,unsigned char * const*> const&)")
+// 0x1d4398 — _af_latin_align_linked_edge
+#[doc(alias = "_af_latin_align_linked_edge")]
+// was: _af_latin_align_linked_edge
+pub fn stub_1d4398() -> ! {
+    todo!("0x1d4398 _af_latin_align_linked_edge")
 }
 
-// 0x1c90a4 — __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjiEEE8allocateEmPKv
-#[doc(alias = "__gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<unsigned int const,int>>>::allocate(unsigned long,void const*)")]
-// was: __ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKjiEEE8allocateEmPKv
-pub fn stub_1c90a4() -> ! {
-    todo!("0x1c90a4 __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<unsigned int const,int>>>::allocate(unsigned long,void const*)")
+// 0x1d43dc — _af_latin_hints_init
+#[doc(alias = "_af_latin_hints_init")]
+// was: _af_latin_hints_init
+pub fn stub_1d43dc() -> ! {
+    todo!("0x1d43dc _af_latin_hints_init")
 }
 
-// 0x1c90d4 — __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE14_M_create_nodeERKS2_
-#[doc(alias = "std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_M_create_node(std::pair<unsigned int const,int> const&)")]
-// was: __ZNSt8_Rb_treeIjSt4pairIKjiESt10_Select1stIS2_ESt4lessIjESaIS2_EE14_M_create_nodeERKS2_
-pub fn stub_1c90d4() -> ! {
-    todo!("0x1c90d4 std::_Rb_tree<unsigned int,std::pair<unsigned int const,int>,std::_Select1st<std::pair<unsigned int const,int>>,std::less<unsigned int>,std::allocator<std::pair<unsigned int const,int>>>::_M_create_node(std::pair<unsigned int const,int> const&)")
+// 0x1d447c — _af_latin_hint_edges
+#[doc(alias = "_af_latin_hint_edges")]
+// was: _af_latin_hint_edges
+pub fn stub_1d447c() -> ! {
+    todo!("0x1d447c _af_latin_hint_edges")
 }
 
-// 0x1c9104 — __ZN9__gnu_cxx13new_allocatorIN6TagLib7MDMODELEE8allocateEmPKv
-#[doc(alias = "__gnu_cxx::new_allocator<TagLib::MDMODEL>::allocate(unsigned long,void const*)")]
-// was: __ZN9__gnu_cxx13new_allocatorIN6TagLib7MDMODELEE8allocateEmPKv
-pub fn stub_1c9104() -> ! {
-    todo!("0x1c9104 __gnu_cxx::new_allocator<TagLib::MDMODEL>::allocate(unsigned long,void const*)")
+// 0x1d4b38 — _af_latin_hints_compute_blue_edges
+#[doc(alias = "_af_latin_hints_compute_blue_edges")]
+// was: _af_latin_hints_compute_blue_edges
+pub fn stub_1d4b38() -> ! {
+    todo!("0x1d4b38 _af_latin_hints_compute_blue_edges")
 }
 
-// 0x1c9124 — __ZN9__gnu_cxx13new_allocatorItE8allocateEmPKv
-#[doc(alias = "__gnu_cxx::new_allocator<unsigned short>::allocate(unsigned long,void const*)")]
-// was: __ZN9__gnu_cxx13new_allocatorItE8allocateEmPKv
-pub fn stub_1c9124() -> ! {
-    todo!("0x1c9124 __gnu_cxx::new_allocator<unsigned short>::allocate(unsigned long,void const*)")
+// 0x1d5024 — _af_latin_metrics_scale_dim
+#[doc(alias = "_af_latin_metrics_scale_dim")]
+// was: _af_latin_metrics_scale_dim
+pub fn stub_1d5024() -> ! {
+    todo!("0x1d5024 _af_latin_metrics_scale_dim")
 }
 
-// 0x1c9144 — __ZN9__gnu_cxx13new_allocatorIPhE8allocateEmPKv
-#[doc(alias = "__gnu_cxx::new_allocator<unsigned char *>::allocate(unsigned long,void const*)")]
-// was: __ZN9__gnu_cxx13new_allocatorIPhE8allocateEmPKv
-pub fn stub_1c9144() -> ! {
-    todo!("0x1c9144 __gnu_cxx::new_allocator<unsigned char *>::allocate(unsigned long,void const*)")
+// 0x1d5430 — _af_latin_metrics_scale
+#[doc(alias = "_af_latin_metrics_scale")]
+// was: _af_latin_metrics_scale
+pub fn stub_1d5430() -> ! {
+    todo!("0x1d5430 _af_latin_metrics_scale")
 }
 
-// 0x1c9164 — __ZN9__gnu_cxx13new_allocatorIPN6TagLib7MDMODELEE8allocateEmPKv
-#[doc(alias = "__gnu_cxx::new_allocator<TagLib::MDMODEL *>::allocate(unsigned long,void const*)")]
-// was: __ZN9__gnu_cxx13new_allocatorIPN6TagLib7MDMODELEE8allocateEmPKv
-pub fn stub_1c9164() -> ! {
-    todo!("0x1c9164 __gnu_cxx::new_allocator<TagLib::MDMODEL *>::allocate(unsigned long,void const*)")
+// 0x1d546c — _af_latin_hints_compute_edges
+#[doc(alias = "_af_latin_hints_compute_edges")]
+// was: _af_latin_hints_compute_edges
+pub fn stub_1d546c() -> ! {
+    todo!("0x1d546c _af_latin_hints_compute_edges")
 }
 
-// 0x1c9184 — __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EE15_M_allocate_mapEm
-#[doc(alias = "std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_allocate_map(unsigned long)")]
-// was: __ZNSt11_Deque_baseIN6TagLib7MDMODELESaIS1_EE15_M_allocate_mapEm
-pub fn stub_1c9184() -> ! {
-    todo!("0x1c9184 std::_Deque_base<TagLib::MDMODEL,std::allocator<TagLib::MDMODEL>>::_M_allocate_map(unsigned long)")
+// 0x1d599c — _af_latin_hints_compute_segments
+#[doc(alias = "_af_latin_hints_compute_segments")]
+// was: _af_latin_hints_compute_segments
+pub fn stub_1d599c() -> ! {
+    todo!("0x1d599c _af_latin_hints_compute_segments")
+}
+
+// 0x1d5df8 — _af_latin_hints_detect_features
+#[doc(alias = "_af_latin_hints_detect_features")]
+// was: _af_latin_hints_detect_features
+pub fn stub_1d5df8() -> ! {
+    todo!("0x1d5df8 _af_latin_hints_detect_features")
+}
+
+// 0x1d5e30 — _af_latin_hints_apply
+#[doc(alias = "_af_latin_hints_apply")]
+// was: _af_latin_hints_apply
+pub fn stub_1d5e30() -> ! {
+    todo!("0x1d5e30 _af_latin_hints_apply")
+}
+
+// 0x1d5f28 — _af_latin_metrics_check_digits
+#[doc(alias = "_af_latin_metrics_check_digits")]
+// was: _af_latin_metrics_check_digits
+pub fn stub_1d5f28() -> ! {
+    todo!("0x1d5f28 _af_latin_metrics_check_digits")
+}
+
+// 0x1d6218 — _af_latin_metrics_init_widths
+#[doc(alias = "_af_latin_metrics_init_widths")]
+// was: _af_latin_metrics_init_widths
+pub fn stub_1d6218() -> ! {
+    todo!("0x1d6218 _af_latin_metrics_init_widths")
+}
+
+// 0x1d64dc — _af_latin_metrics_init
+#[doc(alias = "_af_latin_metrics_init")]
+// was: _af_latin_metrics_init
+pub fn stub_1d64dc() -> ! {
+    todo!("0x1d64dc _af_latin_metrics_init")
+}
+
+// 0x1d712c — _af_loader_load_g
+#[doc(alias = "_af_loader_load_g")]
+// was: _af_loader_load_g
+pub fn stub_1d712c() -> ! {
+    todo!("0x1d712c _af_loader_load_g")
+}
+
+// 0x1d7a64 — _af_loader_done
+#[doc(alias = "_af_loader_done")]
+// was: _af_loader_done
+pub fn stub_1d7a64() -> ! {
+    todo!("0x1d7a64 _af_loader_done")
+}
+
+// 0x1d7a94 — _af_loader_reset
+#[doc(alias = "_af_loader_reset")]
+// was: _af_loader_reset
+pub fn stub_1d7a94() -> ! {
+    todo!("0x1d7a94 _af_loader_reset")
+}
+
+// 0x1d7afc — _af_loader_load_glyph
+#[doc(alias = "_af_loader_load_glyph")]
+// was: _af_loader_load_glyph
+pub fn stub_1d7afc() -> ! {
+    todo!("0x1d7afc _af_loader_load_glyph")
+}
+
+// 0x1d7c20 — _af_loader_init
+#[doc(alias = "_af_loader_init")]
+// was: _af_loader_init
+pub fn stub_1d7c20() -> ! {
+    todo!("0x1d7c20 _af_loader_init")
+}
+
+// 0x1d7c58 — _af_autofitter_done
+#[doc(alias = "_af_autofitter_done")]
+// was: _af_autofitter_done
+pub fn stub_1d7c58() -> ! {
+    todo!("0x1d7c58 _af_autofitter_done")
+}
+
+// 0x1d7c6c — _af_autofitter_init
+#[doc(alias = "_af_autofitter_init")]
+// was: _af_autofitter_init
+pub fn stub_1d7c6c() -> ! {
+    todo!("0x1d7c6c _af_autofitter_init")
+}
+
+// 0x1d7c88 — _af_autofitter_load_glyph
+#[doc(alias = "_af_autofitter_load_glyph")]
+// was: _af_autofitter_load_glyph
+pub fn stub_1d7c88() -> ! {
+    todo!("0x1d7c88 _af_autofitter_load_glyph")
+}
+
+// 0x1d7ca8 — _FT_RoundFix
+// type: int __fastcall(_DWORD)
+#[doc(alias = "_FT_RoundFix")]
+// was: _FT_RoundFix
+pub fn stub_1d7ca8() -> ! {
+    todo!("0x1d7ca8 _FT_RoundFix")
+}
+
+// 0x1d7cd0 — _ft_multo64
+#[doc(alias = "_ft_multo64")]
+// was: _ft_multo64
+pub fn stub_1d7cd0() -> ! {
+    todo!("0x1d7cd0 _ft_multo64")
+}
+
+// 0x1d7d28 — _ft_div64by32
+#[doc(alias = "_ft_div64by32")]
+// was: _ft_div64by32
+pub fn stub_1d7d28() -> ! {
+    todo!("0x1d7d28 _ft_div64by32")
+}
+
+// 0x1d7e9c — _FT_Add64
+#[doc(alias = "_FT_Add64")]
+// was: _FT_Add64
+pub fn stub_1d7e9c() -> ! {
+    todo!("0x1d7e9c _FT_Add64")
+}
+
+// 0x1d7ec4 — _FT_MulDiv
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "_FT_MulDiv")]
+// was: _FT_MulDiv
+pub fn stub_1d7ec4() -> ! {
+    todo!("0x1d7ec4 _FT_MulDiv")
+}
+
+// 0x1d7fb4 — __ft_face_scale_advances
+#[doc(alias = "__ft_face_scale_advances")]
+// was: __ft_face_scale_advances
+pub fn stub_1d7fb4() -> ! {
+    todo!("0x1d7fb4 __ft_face_scale_advances")
+}
+
+// 0x1d81b0 — _FT_MulDiv_No_Round
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "_FT_MulDiv_No_Round")]
+// was: _FT_MulDiv_No_Round
+pub fn stub_1d81b0() -> ! {
+    todo!("0x1d81b0 _FT_MulDiv_No_Round")
+}
+
+// 0x1d8264 — _FT_MulFix
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "_FT_MulFix")]
+// was: _FT_MulFix
+pub fn stub_1d8264() -> ! {
+    todo!("0x1d8264 _FT_MulFix")
+}
+
+// 0x1d82d8 — _FT_DivFix
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "_FT_DivFix")]
+// was: _FT_DivFix
+pub fn stub_1d82d8() -> ! {
+    todo!("0x1d82d8 _FT_DivFix")
+}
+
+// 0x1d836c — _FT_Matrix_Invert
+#[doc(alias = "_FT_Matrix_Invert")]
+// was: _FT_Matrix_Invert
+pub fn stub_1d836c() -> ! {
+    todo!("0x1d836c _FT_Matrix_Invert")
+}
+
+// 0x1d8400 — _FT_Matrix_Multiply_Scaled
+#[doc(alias = "_FT_Matrix_Multiply_Scaled")]
+// was: _FT_Matrix_Multiply_Scaled
+pub fn stub_1d8400() -> ! {
+    todo!("0x1d8400 _FT_Matrix_Multiply_Scaled")
+}
+
+// 0x1d84fc — _FT_Vector_Transform_Scaled
+#[doc(alias = "_FT_Vector_Transform_Scaled")]
+// was: _FT_Vector_Transform_Scaled
+pub fn stub_1d84fc() -> ! {
+    todo!("0x1d84fc _FT_Vector_Transform_Scaled")
+}
+
+// 0x1d8584 — _FT_SqrtFixed
+#[doc(alias = "_FT_SqrtFixed")]
+// was: _FT_SqrtFixed
+pub fn stub_1d8584() -> ! {
+    todo!("0x1d8584 _FT_SqrtFixed")
+}
+
+// 0x1d8690 — _ft_corner_orientation
+#[doc(alias = "_ft_corner_orientation")]
+// was: _ft_corner_orientation
+pub fn stub_1d8690() -> ! {
+    todo!("0x1d8690 _ft_corner_orientation")
+}
+
+// 0x1d8764 — _ft_corner_is_flat
+#[doc(alias = "_ft_corner_is_flat")]
+// was: _ft_corner_is_flat
+pub fn stub_1d8764() -> ! {
+    todo!("0x1d8764 _ft_corner_is_flat")
+}
+
+// 0x1d87c8 — _FT_GlyphLoader_Rewind
+#[doc(alias = "_FT_GlyphLoader_Rewind")]
+// was: _FT_GlyphLoader_Rewind
+pub fn stub_1d87c8() -> ! {
+    todo!("0x1d87c8 _FT_GlyphLoader_Rewind")
 }
