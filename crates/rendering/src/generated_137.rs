@@ -1,4 +1,4 @@
-//! rendering shard 137 — 100 stubs EA-sorted filtered wide (15586 total, 15246 prior, 100 this batch) — 0x5704c4..0xf6ad44
+//! rendering shard 137 — 100 stubs EA-sorted filtered wide (15586 total, 15247->15347 covered, 239 remaining) — 0x5704c4..0xf6ad44
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
