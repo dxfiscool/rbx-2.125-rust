@@ -73,3 +73,5 @@ pub mod generated_67;
 pub mod generated_68;
 pub mod generated_69;
 pub mod generated_70;
+pub mod generated_71;
+pub mod generated_72;
