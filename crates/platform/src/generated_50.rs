@@ -1,0 +1,764 @@
+//! platform generated_50 — next 100 stubs EA-sorted desc high-EA filler after 0xf559a4
+//! Filter: high-EA filler EA-sorted desc, rbx_core::SharedPtr not boost
+//! Batch: 100 stubs EA-sorted desc | skeleton batch | range 0xf55994..0xf54fb4 (rbx_core::SharedPtr not boost)
+
+#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+
+use rbx_core::SharedPtr;
+
+const _: () = {
+    let _ = core::marker::PhantomData::<SharedPtr<u8>>;
+};
+
+// 0xf55994 — j___ZNSt3mapISsN3RBX14LibraryService17LibraryDefinitionESt4lessISsESaISt4pairIKSsS2_EEEixERS6_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZNSt3mapISsN3RBX14LibraryService17LibraryDefinitionESt4lessISsESaISt4pairIKSsS2_EEEixERS6_")]
+pub fn stub_f55994() -> ! {
+    todo!("0xf55994 j___ZNSt3mapISsN3RBX14LibraryService17LibraryDefinitionESt4lessISsESaISt4pairIKSsS2_EEEixERS6_")
+}
+
+// 0xf55984 — j___ZNSt10_List_baseISsSaISsEE8_M_clearEv
+#[doc(alias = "j___ZNSt10_List_baseISsSaISsEE8_M_clearEv")]
+pub fn stub_f55984() -> ! {
+    todo!("0xf55984 j___ZNSt10_List_baseISsSaISsEE8_M_clearEv")
+}
+
+// 0xf55974 — j___ZNSt10_List_baseIN5boost8functionIFvvEEESaIS3_EE8_M_clearEv
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNSt10_List_baseIN5boost8functionIFvvEEESaIS3_EE8_M_clearEv")]
+pub fn stub_f55974() -> ! {
+    todo!("0xf55974 j___ZNSt10_List_baseIN5boost8functionIFvvEEESaIS3_EE8_M_clearEv")
+}
+
+// 0xf55964 — j___ZNK5boost9unordered6detail5tableINS1_3setISaISsESsNS_4hashISsEESt8equal_toISsEEEE9find_nodeERKSs
+// type: int __fastcall(_DWORD, _DWORD)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost9unordered6detail5tableINS1_3setISaISsESsNS_4hashISsEESt8equal_toISsEEEE9find_nodeERKSs")]
+pub fn stub_f55964() -> ! {
+    todo!("0xf55964 j___ZNK5boost9unordered6detail5tableINS1_3setISaISsESsNS_4hashISsEESt8equal_toISsEEEE9find_nodeERKSs")
+}
+
+// 0xf55954 — j___ZNK5boost9unordered6detail10table_implINS1_3setISaISsESsNS_4hashISsEESt8equal_toISsEEEE14find_node_implISsS8_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISsEEEEmRKT_RKT0_
+// type: int(void)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost9unordered6detail10table_implINS1_3setISaISsESsNS_4hashISsEESt8equal_toISsEEEE14find_node_implISsS8_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISsEEEEmRKT_RKT0_")]
+pub fn stub_f55954() -> ! {
+    todo!("0xf55954 j___ZNK5boost9unordered6detail10table_implINS1_3setISaISsESsNS_4hashISsEESt8equal_toISsEEEE14find_node_implISsS8_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISsEEEEmRKT_RKT0_")
+}
+
+// 0xf55914 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS5_5list2INS5_5valueISB_EENSF_IiEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS5_5list2INS5_5valueISB_EENSF_IiEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_f55914() -> ! {
+    todo!("0xf55914 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS5_5list2INS5_5valueISB_EENSF_IiEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf55904 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS5_5list2INS5_5valueISB_EENSF_IiEEEEEEEEbT_RNS1_15function_bufferE
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS5_5list2INS5_5valueISB_EENSF_IiEEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_f55904() -> ! {
+    todo!("0xf55904 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS5_5list2INS5_5valueISB_EENSF_IiEEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf558f4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS5_5list2INS5_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, void *, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS5_5list2INS5_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_f558f4() -> ! {
+    todo!("0xf558f4 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS5_5list2INS5_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf558e4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS5_5list2INS5_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferE
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS5_5list2INS5_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_f558e4() -> ! {
+    todo!("0xf558e4 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS5_5list2INS5_5valueISB_EENSF_ISsEEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf558d4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS5_5list1INS5_5valueISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS5_5list1INS5_5valueISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_f558d4() -> ! {
+    todo!("0xf558d4 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS5_5list1INS5_5valueISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf558c4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS5_5list1INS5_5valueISB_EEEEEEEEbT_RNS1_15function_bufferE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS5_5list1INS5_5valueISB_EEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_f558c4() -> ! {
+    todo!("0xf558c4 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS5_5list1INS5_5valueISB_EEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf558b4 — j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS5_5list2INS5_5valueISB_EENSF_IiEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS5_5list2INS5_5valueISB_EENSF_IiEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
+pub fn stub_f558b4() -> ! {
+    todo!("0xf558b4 j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS5_5list2INS5_5valueISB_EENSF_IiEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf558a4 — j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS5_5list2INS5_5valueISB_EENSF_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, void *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS5_5list2INS5_5valueISB_EENSF_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
+pub fn stub_f558a4() -> ! {
+    todo!("0xf558a4 j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS5_5list2INS5_5valueISB_EENSF_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf55894 — j___ZNK5boost4hashIN3RBX15ProtectedStringEEclERKS2_
+// type: int __fastcall(int, RBX::ProtectedString *this)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost4hashIN3RBX15ProtectedStringEEclERKS2_")]
+pub fn stub_f55894() -> ! {
+    todo!("0xf55894 j___ZNK5boost4hashIN3RBX15ProtectedStringEEclERKS2_")
+}
+
+// 0xf55884 — j___ZNK5boost4_mfi3mf2IvN3RBX14LibraryServiceENS_10shared_ptrINS3_18LibraryStateObjectEEERKSsEclEPS3_S6_S8_
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost4_mfi3mf2IvN3RBX14LibraryServiceENS_10shared_ptrINS3_18LibraryStateObjectEEERKSsEclEPS3_S6_S8_")]
+pub fn stub_f55884() -> ! {
+    todo!("0xf55884 j___ZNK5boost4_mfi3mf2IvN3RBX14LibraryServiceENS_10shared_ptrINS3_18LibraryStateObjectEEERKSsEclEPS3_S6_S8_")
+}
+
+// 0xf55874 — j___ZNK5boost4_mfi3mf1IvN3RBX14LibraryServiceENS_10shared_ptrINS3_18LibraryStateObjectEEEEclEPS3_S6_
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost4_mfi3mf1IvN3RBX14LibraryServiceENS_10shared_ptrINS3_18LibraryStateObjectEEEEclEPS3_S6_")]
+pub fn stub_f55874() -> ! {
+    todo!("0xf55874 j___ZNK5boost4_mfi3mf1IvN3RBX14LibraryServiceENS_10shared_ptrINS3_18LibraryStateObjectEEEEclEPS3_S6_")
+}
+
+// 0xf55864 — j___ZN9__gnu_cxx13new_allocatorISt4pairIKSsSt4listIN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESaIS9_EEEE7destroyEPSC_
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN9__gnu_cxx13new_allocatorISt4pairIKSsSt4listIN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESaIS9_EEEE7destroyEPSC_")]
+pub fn stub_f55864() -> ! {
+    todo!("0xf55864 j___ZN9__gnu_cxx13new_allocatorISt4pairIKSsSt4listIN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESaIS9_EEEE7destroyEPSC_")
+}
+
+// 0xf55854 — j___ZN5boost9unordered6detail5tableINS1_3setISaISsESsNS_4hashISsEESt8equal_toISsEEEEC2EmRKS6_RKS8_RKSaINS1_8ptr_nodeISsEEE
+// type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9unordered6detail5tableINS1_3setISaISsESsNS_4hashISsEESt8equal_toISsEEEEC2EmRKS6_RKS8_RKSaINS1_8ptr_nodeISsEEE")]
+pub fn stub_f55854() -> ! {
+    todo!("0xf55854 j___ZN5boost9unordered6detail5tableINS1_3setISaISsESsNS_4hashISsEESt8equal_toISsEEEEC2EmRKS6_RKS8_RKSaINS1_8ptr_nodeISsEEE")
+}
+
+// 0xf55824 — j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f55824() -> ! {
+    todo!("0xf55824 j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf55814 — j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f55814() -> ! {
+    todo!("0xf55814 j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf55804 — j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS3_5list1INS3_5valueIS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS3_5list1INS3_5valueIS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f55804() -> ! {
+    todo!("0xf55804 j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS3_5list1INS3_5valueIS9_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISH_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf557f4 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEEEvT_
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEEEvT_")]
+pub fn stub_f557f4() -> ! {
+    todo!("0xf557f4 j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEEEvT_")
+}
+
+// 0xf557e4 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEEEvT_
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEEEvT_")]
+pub fn stub_f557e4() -> ! {
+    todo!("0xf557e4 j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEEEvT_")
+}
+
+// 0xf557d4 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS3_5list1INS3_5valueIS9_EEEEEEEEvT_
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS3_5list1INS3_5valueIS9_EEEEEEEEvT_")]
+pub fn stub_f557d4() -> ! {
+    todo!("0xf557d4 j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS3_5list1INS3_5valueIS9_EEEEEEEEvT_")
+}
+
+// 0xf557b4 — j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS4_5list2INS4_5valueISA_EENSE_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS4_5list2INS4_5valueISA_EENSE_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f557b4() -> ! {
+    todo!("0xf557b4 j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS4_5list2INS4_5valueISA_EENSE_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf557a4 — j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS4_5list2INS4_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS4_5list2INS4_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f557a4() -> ! {
+    todo!("0xf557a4 j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS4_5list2INS4_5valueISA_EENSE_ISsEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf55794 — j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS4_5list1INS4_5valueISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS4_5list1INS4_5valueISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f55794() -> ! {
+    todo!("0xf55794 j___ZN5boost8functionIFvvEEC2INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS4_5list1INS4_5valueISA_EEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISI_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf55774 — j___ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS3_5list1INS3_5valueIS9_EEEEEEE12manage_smallERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
+// type: int(void)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS3_5list1INS3_5valueIS9_EEEEEEE12manage_smallERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE")]
+pub fn stub_f55774() -> ! {
+    todo!("0xf55774 j___ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEENS3_5list1INS3_5valueIS9_EEEEEEE12manage_smallERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE")
+}
+
+// 0xf55754 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_f55754() -> ! {
+    todo!("0xf55754 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiENS3_5list2INS3_5valueIS9_EENSD_IiEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf55744 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_f55744() -> ! {
+    todo!("0xf55744 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsENS3_5list2INS3_5valueIS9_EENSD_ISsEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf55734 — j___ZN5boost6detail12shared_countC2IN3RBX14LibraryService18LibraryStateObjectEEEPT_
+// type: int __fastcall(int, int, int, int, void *, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost6detail12shared_countC2IN3RBX14LibraryService18LibraryStateObjectEEEPT_")]
+pub fn stub_f55734() -> ! {
+    todo!("0xf55734 j___ZN5boost6detail12shared_countC2IN3RBX14LibraryService18LibraryStateObjectEEEPT_")
+}
+
+// 0xf55714 — j___ZN5boost4bindIvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiS5_iEENS_3_bi6bind_tIT_PFS8_T0_T1_ENS6_9list_av_2IT2_T3_E4typeEEESC_SE_SF_
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost4bindIvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiS5_iEENS_3_bi6bind_tIT_PFS8_T0_T1_ENS6_9list_av_2IT2_T3_E4typeEEESC_SE_SF_")]
+pub fn stub_f55714() -> ! {
+    todo!("0xf55714 j___ZN5boost4bindIvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEiS5_iEENS_3_bi6bind_tIT_PFS8_T0_T1_ENS6_9list_av_2IT2_T3_E4typeEEESC_SE_SF_")
+}
+
+// 0xf55704 — j___ZN5boost4bindIvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsS5_SsEENS_3_bi6bind_tIT_PFS8_T0_T1_ENS6_9list_av_2IT2_T3_E4typeEEESC_SE_SF_
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost4bindIvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsS5_SsEENS_3_bi6bind_tIT_PFS8_T0_T1_ENS6_9list_av_2IT2_T3_E4typeEEESC_SE_SF_")]
+pub fn stub_f55704() -> ! {
+    todo!("0xf55704 j___ZN5boost4bindIvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESsS5_SsEENS_3_bi6bind_tIT_PFS8_T0_T1_ENS6_9list_av_2IT2_T3_E4typeEEESC_SE_SF_")
+}
+
+// 0xf556f4 — j___ZN5boost4bindIvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEES5_EENS_3_bi6bind_tIT_PFS8_T0_ENS6_9list_av_1IT1_E4typeEEESB_SD_
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost4bindIvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEES5_EENS_3_bi6bind_tIT_PFS8_T0_ENS6_9list_av_1IT1_E4typeEEESB_SD_")]
+pub fn stub_f556f4() -> ! {
+    todo!("0xf556f4 j___ZN5boost4bindIvNS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEES5_EENS_3_bi6bind_tIT_PFS8_T0_ENS6_9list_av_1IT1_E4typeEEESB_SD_")
+}
+
+// 0xf556e4 — j___ZN5boost4bindIvN3RBX14LibraryServiceENS_10shared_ptrINS2_18LibraryStateObjectEEERKSsPS2_NS_3argILi1EEESsEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISD_T0_T1_T2_EENSB_9list_av_3IT3_T4_T5_E4typeEEEMSG_FSD_SH_SI_ESL_SM_SN_
+// type: int __fastcall(int, int, int, int, std::string *)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost4bindIvN3RBX14LibraryServiceENS_10shared_ptrINS2_18LibraryStateObjectEEERKSsPS2_NS_3argILi1EEESsEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISD_T0_T1_T2_EENSB_9list_av_3IT3_T4_T5_E4typeEEEMSG_FSD_SH_SI_ESL_SM_SN_")]
+pub fn stub_f556e4() -> ! {
+    todo!("0xf556e4 j___ZN5boost4bindIvN3RBX14LibraryServiceENS_10shared_ptrINS2_18LibraryStateObjectEEERKSsPS2_NS_3argILi1EEESsEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISD_T0_T1_T2_EENSB_9list_av_3IT3_T4_T5_E4typeEEEMSG_FSD_SH_SI_ESL_SM_SN_")
+}
+
+// 0xf55674 — j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEC2ES8_S9_
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEC2ES8_S9_")]
+pub fn stub_f55674() -> ! {
+    todo!("0xf55674 j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEC2ES8_S9_")
+}
+
+// 0xf55664 — j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_ISsEEEC2ES8_S9_
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_ISsEEEC2ES8_S9_")]
+pub fn stub_f55664() -> ! {
+    todo!("0xf55664 j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_ISsEEEC2ES8_S9_")
+}
+
+// 0xf55634 — j___ZN5boost3_bi5list3INS0_5valueIPN3RBX14LibraryServiceEEENS_3argILi1EEENS2_ISsEEEclINS_4_mfi3mf2IvS4_NS_10shared_ptrINS4_18LibraryStateObjectEEERKSsEENS0_5list1IRSG_EEEEvNS0_4typeIvEERT_RT0_i
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueIPN3RBX14LibraryServiceEEENS_3argILi1EEENS2_ISsEEEclINS_4_mfi3mf2IvS4_NS_10shared_ptrINS4_18LibraryStateObjectEEERKSsEENS0_5list1IRSG_EEEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_f55634() -> ! {
+    todo!("0xf55634 j___ZN5boost3_bi5list3INS0_5valueIPN3RBX14LibraryServiceEEENS_3argILi1EEENS2_ISsEEEclINS_4_mfi3mf2IvS4_NS_10shared_ptrINS4_18LibraryStateObjectEEERKSsEENS0_5list1IRSG_EEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf55624 — j___ZN5boost3_bi5list3INS0_5valueIPN3RBX14LibraryServiceEEENS_3argILi1EEENS2_ISsEEEC2ES6_S8_S9_
+// type: int __fastcall(int, int, std::string *)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi5list3INS0_5valueIPN3RBX14LibraryServiceEEENS_3argILi1EEENS2_ISsEEEC2ES6_S8_S9_")]
+pub fn stub_f55624() -> ! {
+    todo!("0xf55624 j___ZN5boost3_bi5list3INS0_5valueIPN3RBX14LibraryServiceEEENS_3argILi1EEENS2_ISsEEEC2ES6_S8_S9_")
+}
+
+// 0xf55614 — j___ZN5boost3_bi5list2INS0_5valueIPN3RBX14LibraryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS4_18LibraryStateObjectEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueIPN3RBX14LibraryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS4_18LibraryStateObjectEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_f55614() -> ! {
+    todo!("0xf55614 j___ZN5boost3_bi5list2INS0_5valueIPN3RBX14LibraryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS4_18LibraryStateObjectEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf55604 — j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEclIPFvS7_iENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEclIPFvS7_iENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_f55604() -> ! {
+    todo!("0xf55604 j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEclIPFvS7_iENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf555f4 — j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEC2ES8_S9_
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEC2ES8_S9_")]
+pub fn stub_f555f4() -> ! {
+    todo!("0xf555f4 j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_IiEEEC2ES8_S9_")
+}
+
+// 0xf555e4 — j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_ISsEEEclIPFvS7_SsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_ISsEEEclIPFvS7_SsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_f555e4() -> ! {
+    todo!("0xf555e4 j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_ISsEEEclIPFvS7_SsENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf555d4 — j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_ISsEEEC2ES8_S9_
+// type: int __fastcall(int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_ISsEEEC2ES8_S9_")]
+pub fn stub_f555d4() -> ! {
+    todo!("0xf555d4 j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEENS2_ISsEEEC2ES8_S9_")
+}
+
+// 0xf555c4 — j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEEEclIPFvS7_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
+// type: int(void)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEEEclIPFvS7_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")]
+pub fn stub_f555c4() -> ! {
+    todo!("0xf555c4 j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEEEclIPFvS7_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i")
+}
+
+// 0xf555b4 — j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEEEC2ES8_
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEEEC2ES8_")]
+pub fn stub_f555b4() -> ! {
+    todo!("0xf555b4 j___ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEEEEEC2ES8_")
+}
+
+// 0xf55594 — j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE7reserveEm
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE7reserveEm")]
+pub fn stub_f55594() -> ! {
+    todo!("0xf55594 j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE7reserveEm")
+}
+
+// 0xf55584 — j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE7insert_ERKSC_PNS1_17hashed_index_nodeINS1_15index_node_baseISC_SO_EEEE
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE7insert_ERKSC_PNS1_17hashed_index_nodeINS1_15index_node_baseISC_SO_EEEE")]
+pub fn stub_f55584() -> ! {
+    todo!("0xf55584 j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE7insert_ERKSC_PNS1_17hashed_index_nodeINS1_15index_node_baseISC_SO_EEEE")
+}
+
+// 0xf55574 — j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE6erase_EPNS1_17hashed_index_nodeINS1_15index_node_baseISC_SO_EEEE
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE6erase_EPNS1_17hashed_index_nodeINS1_15index_node_baseISC_SO_EEEE")]
+pub fn stub_f55574() -> ! {
+    todo!("0xf55574 j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE6erase_EPNS1_17hashed_index_nodeINS1_15index_node_baseISC_SO_EEEE")
+}
+
+// 0xf55564 — j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE5eraseENS1_21hashed_index_iteratorINS1_17hashed_index_nodeINS1_15index_node_baseISC_SO_EEEENS1_12bucket_arrayISO_EEEE
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE5eraseENS1_21hashed_index_iteratorINS1_17hashed_index_nodeINS1_15index_node_baseISC_SO_EEEENS1_12bucket_arrayISO_EEEE")]
+pub fn stub_f55564() -> ! {
+    todo!("0xf55564 j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE5eraseENS1_21hashed_index_iteratorINS1_17hashed_index_nodeINS1_15index_node_baseISC_SO_EEEENS1_12bucket_arrayISO_EEEE")
+}
+
+// 0xf55554 — j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE16unchecked_rehashEm
+// type: int __fastcall(int, int, int, int, int, int, int, int, void *, int, int, int, int, void *, int, int, struct _Unwind_Exception *lpuexcpt, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE16unchecked_rehashEm")]
+pub fn stub_f55554() -> ! {
+    todo!("0xf55554 j___ZN5boost11multi_index6detail12hashed_indexINS0_8identityINS_10flyweights6detail16refcounted_valueINS5_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES9_EEEENS_4hashIS9_EESt8equal_toIS9_ENS1_9nth_layerILi1ESC_NS4_20hashed_factory_classISC_S9_N4mpl_2naESL_SL_E10index_listESaISC_EEENS_3mpl7vector0ISL_EENS1_17hashed_unique_tagEE16unchecked_rehashEm")
+}
+
+// 0xf55544 — j___ZN5boost11multi_index21multi_index_containerINS_10flyweights6detail16refcounted_valueINS3_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES7_EENS2_20hashed_factory_classISA_S7_N4mpl_2naESD_SD_E10index_listESaISA_EE7insert_ERKSA_
+// type: int __fastcall(int, int, int, int, void *, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost11multi_index21multi_index_containerINS_10flyweights6detail16refcounted_valueINS3_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES7_EENS2_20hashed_factory_classISA_S7_N4mpl_2naESD_SD_E10index_listESaISA_EE7insert_ERKSA_")]
+pub fn stub_f55544() -> ! {
+    todo!("0xf55544 j___ZN5boost11multi_index21multi_index_containerINS_10flyweights6detail16refcounted_valueINS3_20default_value_policyIN3RBX15ProtectedStringEE8rep_typeES7_EENS2_20hashed_factory_classISA_S7_N4mpl_2naESD_SD_E10index_listESaISA_EE7insert_ERKSA_")
+}
+
+// 0xf55524 — j___ZN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEC2IS3_EEPT_
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEC2IS3_EEPT_")]
+pub fn stub_f55524() -> ! {
+    todo!("0xf55524 j___ZN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEC2IS3_EEPT_")
+}
+
+// 0xf55514 — j___ZN5boost10flyweights6detail30flyweight_core_tracking_helperINS1_20default_value_policyIN3RBX15ProtectedStringEEEN4mpl_2naENS0_10refcountedENS0_14hashed_factoryIS8_S8_S8_Li0EEENS0_14simple_lockingENS0_13static_holderEE5eraseIPFbRKNS1_17refcounted_handleIPKNS1_16refcounted_valueINS6_8rep_typeES5_EESE_EEEEEvSO_T_
+// type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost10flyweights6detail30flyweight_core_tracking_helperINS1_20default_value_policyIN3RBX15ProtectedStringEEEN4mpl_2naENS0_10refcountedENS0_14hashed_factoryIS8_S8_S8_Li0EEENS0_14simple_lockingENS0_13static_holderEE5eraseIPFbRKNS1_17refcounted_handleIPKNS1_16refcounted_valueINS6_8rep_typeES5_EESE_EEEEEvSO_T_")]
+pub fn stub_f55514() -> ! {
+    todo!("0xf55514 j___ZN5boost10flyweights6detail30flyweight_core_tracking_helperINS1_20default_value_policyIN3RBX15ProtectedStringEEEN4mpl_2naENS0_10refcountedENS0_14hashed_factoryIS8_S8_S8_Li0EEENS0_14simple_lockingENS0_13static_holderEE5eraseIPFbRKNS1_17refcounted_handleIPKNS1_16refcounted_valueINS6_8rep_typeES5_EESE_EEEEEvSO_T_")
+}
+
+// 0xf55504 — j___ZN5boost10flyweights6detail14flyweight_coreINS1_20default_value_policyIN3RBX15ProtectedStringEEEN4mpl_2naENS0_10refcountedENS0_14hashed_factoryIS8_S8_S8_Li0EEENS0_14simple_lockingENS0_13static_holderEE12insert_valueERKS5_
+// type: int __fastcall(_DWORD, _DWORD)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost10flyweights6detail14flyweight_coreINS1_20default_value_policyIN3RBX15ProtectedStringEEEN4mpl_2naENS0_10refcountedENS0_14hashed_factoryIS8_S8_S8_Li0EEENS0_14simple_lockingENS0_13static_holderEE12insert_valueERKS5_")]
+pub fn stub_f55504() -> ! {
+    todo!("0xf55504 j___ZN5boost10flyweights6detail14flyweight_coreINS1_20default_value_policyIN3RBX15ProtectedStringEEEN4mpl_2naENS0_10refcountedENS0_14hashed_factoryIS8_S8_S8_Li0EEENS0_14simple_lockingENS0_13static_holderEE12insert_valueERKS5_")
+}
+
+// 0xf554f4 — j___ZN5boost10filesystem4path6appendISsEERS1_RKT_RKSt7codecvtIwc11__mbstate_tE
+// type: int __fastcall(boost::filesystem::path *this)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost10filesystem4path6appendISsEERS1_RKT_RKSt7codecvtIwc11__mbstate_tE")]
+pub fn stub_f554f4() -> ! {
+    todo!("0xf554f4 j___ZN5boost10filesystem4path6appendISsEERS1_RKT_RKSt7codecvtIwc11__mbstate_tE")
+}
+
+// 0xf55494 — j___ZN3RBX10Reflection4TypeC2INS_7Region3EEEPKcPT_
+#[doc(alias = "j___ZN3RBX10Reflection4TypeC2INS_7Region3EEEPKcPT_")]
+pub fn stub_f55494() -> ! {
+    todo!("0xf55494 j___ZN3RBX10Reflection4TypeC2INS_7Region3EEEPKcPT_")
+}
+
+// 0xf55474 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
+pub fn stub_f55474() -> ! {
+    todo!("0xf55474 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
+}
+
+// 0xf55464 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+// type: int __fastcall(int, _Rb_tree_node_base *)
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
+pub fn stub_f55464() -> ! {
+    todo!("0xf55464 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
+}
+
+// 0xf55454 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
+pub fn stub_f55454() -> ! {
+    todo!("0xf55454 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_14FunctionalTest6ResultEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")
+}
+
+// 0xf55444 — j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE9push_backERKS2_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE9push_backERKS2_")]
+pub fn stub_f55444() -> ! {
+    todo!("0xf55444 j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE9push_backERKS2_")
+}
+
+// 0xf55434 — j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE6resizeEmS2_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE6resizeEmS2_")]
+pub fn stub_f55434() -> ! {
+    todo!("0xf55434 j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE6resizeEmS2_")
+}
+
+// 0xf55424 — j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+#[doc(alias = "j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+pub fn stub_f55424() -> ! {
+    todo!("0xf55424 j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+}
+
+// 0xf55414 — j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+// type: int(void)
+#[doc(alias = "j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+pub fn stub_f55414() -> ! {
+    todo!("0xf55414 j___ZNSt6vectorIN3RBX14FunctionalTest6ResultESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+}
+
+// 0xf55404 — j___ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPKcSt16ostream_iteratorIccSt11char_traitsIcEEEET0_T_SA_S9_
+#[doc(alias = "j___ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPKcSt16ostream_iteratorIccSt11char_traitsIcEEEET0_T_SA_S9_")]
+pub fn stub_f55404() -> ! {
+    todo!("0xf55404 j___ZNSt6__copyILb0ESt26random_access_iterator_tagE4copyIPKcSt16ostream_iteratorIccSt11char_traitsIcEEEET0_T_SA_S9_")
+}
+
+// 0xf553f4 — j___ZNSt3mapIPKN3RBX4NameENS0_14FunctionalTest6ResultESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_14FunctionalTest6ResultESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
+pub fn stub_f553f4() -> ! {
+    todo!("0xf553f4 j___ZNSt3mapIPKN3RBX4NameENS0_14FunctionalTest6ResultESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+}
+
+// 0xf553e4 — j___ZNSt16ostream_iteratorIccSt11char_traitsIcEEaSERKc
+#[doc(alias = "j___ZNSt16ostream_iteratorIccSt11char_traitsIcEEaSERKc")]
+pub fn stub_f553e4() -> ! {
+    todo!("0xf553e4 j___ZNSt16ostream_iteratorIccSt11char_traitsIcEEaSERKc")
+}
+
+// 0xf553d4 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX14FunctionalTest6ResultES6_EET0_T_S8_S7_
+#[doc(alias = "j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX14FunctionalTest6ResultES6_EET0_T_S8_S7_")]
+pub fn stub_f553d4() -> ! {
+    todo!("0xf553d4 j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX14FunctionalTest6ResultES6_EET0_T_S8_S7_")
+}
+
+// 0xf553c4 — j___ZNSt12_Vector_baseIN3RBX14FunctionalTest6ResultESaIS2_EE11_M_allocateEm
+#[doc(alias = "j___ZNSt12_Vector_baseIN3RBX14FunctionalTest6ResultESaIS2_EE11_M_allocateEm")]
+pub fn stub_f553c4() -> ! {
+    todo!("0xf553c4 j___ZNSt12_Vector_baseIN3RBX14FunctionalTest6ResultESaIS2_EE11_M_allocateEm")
+}
+
+// 0xf55304 — j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_f55304() -> ! {
+    todo!("0xf55304 j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf552f4 — j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEbT_RNS1_15function_bufferE
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_f552f4() -> ! {
+    todo!("0xf552f4 j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf552e4 — j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// type: int(void)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
+pub fn stub_f552e4() -> ! {
+    todo!("0xf552e4 j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS4_11TestServiceEiEENSB_5list2INSB_5valueINS3_ISF_EEEENSI_IiEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf552d4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS5_5list3INS5_5valueINS_10shared_ptrISA_EEEENSD_IiEENSD_IdEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS5_5list3INS5_5valueINS_10shared_ptrISA_EEEENSD_IiEENSD_IdEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_f552d4() -> ! {
+    todo!("0xf552d4 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS5_5list3INS5_5valueINS_10shared_ptrISA_EEEENSD_IiEENSD_IdEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf552c4 — j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS5_5list3INS5_5valueINS_10shared_ptrISA_EEEENSD_IiEENSD_IdEEEEEEEEbT_RNS1_15function_bufferE
+// type: int __fastcall(int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS5_5list3INS5_5valueINS_10shared_ptrISA_EEEENSD_IiEENSD_IdEEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_f552c4() -> ! {
+    todo!("0xf552c4 j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS5_5list3INS5_5valueINS_10shared_ptrISA_EEEENSD_IiEENSD_IdEEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf552b4 — j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS5_5list3INS5_5valueINS_10shared_ptrISA_EEEENSD_IiEENSD_IdEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS5_5list3INS5_5valueINS_10shared_ptrISA_EEEENSD_IiEENSD_IdEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
+pub fn stub_f552b4() -> ! {
+    todo!("0xf552b4 j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS5_5list3INS5_5valueINS_10shared_ptrISA_EEEENSD_IiEENSD_IdEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf55264 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14FunctionalTestES6_EEvPKNS_10shared_ptrIT_EEPT0_
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14FunctionalTestES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
+pub fn stub_f55264() -> ! {
+    todo!("0xf55264 j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14FunctionalTestES6_EEvPKNS_10shared_ptrIT_EEPT0_")
+}
+
+// 0xf55254 — j___ZNK3RBX14FactoryProductINS_14FunctionalTestENS_8InstanceELZNS_15sFunctionalTestEES2_E7Creator12getClassNameEv
+// type: int __fastcall(_DWORD)
+#[doc(alias = "j___ZNK3RBX14FactoryProductINS_14FunctionalTestENS_8InstanceELZNS_15sFunctionalTestEES2_E7Creator12getClassNameEv")]
+pub fn stub_f55254() -> ! {
+    todo!("0xf55254 j___ZNK3RBX14FactoryProductINS_14FunctionalTestENS_8InstanceELZNS_15sFunctionalTestEES2_E7Creator12getClassNameEv")
+}
+
+// 0xf55224 — j___ZN5boost9function4IvbSsNS_10shared_ptrIN3RBX8InstanceEEEiEC2INS_3_bi6bind_tIvNS_4_mfi3mf4IvNS2_10Reflection18GenericSlotWrapperERKbRKSsRKS4_RKiEENS7_5list5INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEENSQ_ILi4EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISX_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function4IvbSsNS_10shared_ptrIN3RBX8InstanceEEEiEC2INS_3_bi6bind_tIvNS_4_mfi3mf4IvNS2_10Reflection18GenericSlotWrapperERKbRKSsRKS4_RKiEENS7_5list5INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEENSQ_ILi4EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISX_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f55224() -> ! {
+    todo!("0xf55224 j___ZN5boost9function4IvbSsNS_10shared_ptrIN3RBX8InstanceEEEiEC2INS_3_bi6bind_tIvNS_4_mfi3mf4IvNS2_10Reflection18GenericSlotWrapperERKbRKSsRKS4_RKiEENS7_5list5INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSQ_ILi2EEENSQ_ILi3EEENSQ_ILi4EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISX_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf551c4 — j___ZN5boost9function3IvSsNS_10shared_ptrIN3RBX8InstanceEEEiEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsRKS4_RKiEENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function3IvSsNS_10shared_ptrIN3RBX8InstanceEEEiEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsRKS4_RKiEENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f551c4() -> ! {
+    todo!("0xf551c4 j___ZN5boost9function3IvSsNS_10shared_ptrIN3RBX8InstanceEEEiEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsRKS4_RKiEENS7_5list4INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSO_ILi2EEENSO_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISU_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf55184 — j___ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENS9_5list2INS9_5valueINS1_ISD_EEEENSG_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENS9_5list2INS9_5valueINS1_ISD_EEEENSG_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f55184() -> ! {
+    todo!("0xf55184 j___ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENS9_5list2INS9_5valueINS1_ISD_EEEENSG_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISM_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf55174 — j___ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENS9_5list2INS9_5valueINS1_ISD_EEEENSG_IiEEEEEEEEvT_
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENS9_5list2INS9_5valueINS1_ISD_EEEENSG_IiEEEEEEEEvT_")]
+pub fn stub_f55174() -> ! {
+    todo!("0xf55174 j___ZN5boost9function1IvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENS9_5list2INS9_5valueINS1_ISD_EEEENSG_IiEEEEEEEEvT_")
+}
+
+// 0xf55164 — j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEENSB_IdEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEENSB_IdEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f55164() -> ! {
+    todo!("0xf55164 j___ZN5boost9function0IvEC2INS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEENSB_IdEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISJ_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf55154 — j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEENSB_IdEEEEEEEEvT_
+// type: int __fastcall(int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEENSB_IdEEEEEEEEvT_")]
+pub fn stub_f55154() -> ! {
+    todo!("0xf55154 j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEENSB_IdEEEEEEEEvT_")
+}
+
+// 0xf55144 — j___ZN5boost8functionIFvbSsNS_10shared_ptrIN3RBX8InstanceEEEiEEC2INS_3_bi6bind_tIvNS_4_mfi3mf4IvNS2_10Reflection18GenericSlotWrapperERKbRKSsRKS4_RKiEENS8_5list5INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSR_ILi2EEENSR_ILi3EEENSR_ILi4EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISY_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost8functionIFvbSsNS_10shared_ptrIN3RBX8InstanceEEEiEEC2INS_3_bi6bind_tIvNS_4_mfi3mf4IvNS2_10Reflection18GenericSlotWrapperERKbRKSsRKS4_RKiEENS8_5list5INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSR_ILi2EEENSR_ILi3EEENSR_ILi4EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISY_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f55144() -> ! {
+    todo!("0xf55144 j___ZN5boost8functionIFvbSsNS_10shared_ptrIN3RBX8InstanceEEEiEEC2INS_3_bi6bind_tIvNS_4_mfi3mf4IvNS2_10Reflection18GenericSlotWrapperERKbRKSsRKS4_RKiEENS8_5list5INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSR_ILi2EEENSR_ILi3EEENSR_ILi4EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISY_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf55134 — j___ZN5boost8functionIFvSsNS_10shared_ptrIN3RBX8InstanceEEEiEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsRKS4_RKiEENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSP_ILi2EEENSP_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISV_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost8functionIFvSsNS_10shared_ptrIN3RBX8InstanceEEEiEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsRKS4_RKiEENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSP_ILi2EEENSP_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISV_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f55134() -> ! {
+    todo!("0xf55134 j___ZN5boost8functionIFvSsNS_10shared_ptrIN3RBX8InstanceEEEiEEC2INS_3_bi6bind_tIvNS_4_mfi3mf3IvNS2_10Reflection18GenericSlotWrapperERKSsRKS4_RKiEENS8_5list4INS8_5valueINS1_ISD_EEEENS_3argILi1EEENSP_ILi2EEENSP_ILi3EEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISV_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf55104 — j___ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEaSINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENSA_5list2INSA_5valueINS1_ISE_EEEENSH_IiEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS8_E4typeESO_
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, char, int, int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEaSINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENSA_5list2INSA_5valueINS1_ISE_EEEENSH_IiEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS8_E4typeESO_")]
+pub fn stub_f55104() -> ! {
+    todo!("0xf55104 j___ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEaSINS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENSA_5list2INSA_5valueINS1_ISE_EEEENSH_IiEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS8_E4typeESO_")
+}
+
+// 0xf550f4 — j___ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENSA_5list2INSA_5valueINS1_ISE_EEEENSH_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENSA_5list2INSA_5valueINS1_ISE_EEEENSH_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")]
+pub fn stub_f550f4() -> ! {
+    todo!("0xf550f4 j___ZN5boost8functionIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEEC2INS_3_bi6bind_tIvNS_4_mfi3mf1IvNS2_11TestServiceEiEENSA_5list2INSA_5valueINS1_ISE_EEEENSH_IiEEEEEEEET_NS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralISN_EE5valueEEE5valueEiE4typeE")
+}
+
+// 0xf550e4 — j___ZN5boost8functionIFSsRKSsEEaSINS_3_bi6bind_tISsNS_4_mfi3mf1ISsN3RBX11TestServiceES2_EENS6_5list2INS6_5valueIPSB_EENS_3argILi1EEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESM_
+// type: int(void)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost8functionIFSsRKSsEEaSINS_3_bi6bind_tISsNS_4_mfi3mf1ISsN3RBX11TestServiceES2_EENS6_5list2INS6_5valueIPSB_EENS_3argILi1EEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESM_")]
+pub fn stub_f550e4() -> ! {
+    todo!("0xf550e4 j___ZN5boost8functionIFSsRKSsEEaSINS_3_bi6bind_tISsNS_4_mfi3mf1ISsN3RBX11TestServiceES2_EENS6_5list2INS6_5valueIPSB_EENS_3argILi1EEEEEEEEENS_11enable_if_cIXsr5boost11type_traits7ice_notIXsr11is_integralIT_EE5valueEEE5valueERS4_E4typeESM_")
+}
+
+// 0xf550a4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEENSB_IdEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEENSB_IdEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_f550a4() -> ! {
+    todo!("0xf550a4 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX11TestServiceEidEENS3_5list3INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEENSB_IdEEEEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf55094 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX11TestServiceEiEENS3_5list2INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
+// type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX11TestServiceEiEENS3_5list2INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")]
+pub fn stub_f55094() -> ! {
+    todo!("0xf55094 j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX11TestServiceEiEENS3_5list2INS3_5valueINS_10shared_ptrIS8_EEEENSB_IiEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf55074 — j___ZN5boost4bindIvN3RBX11TestServiceEidNS_10shared_ptrIS2_EEidEENS_3_bi6bind_tIT_NS_4_mfi3mf2IS7_T0_T1_T2_EENS5_9list_av_3IT3_T4_T5_E4typeEEEMSA_FS7_SB_SC_ESF_SG_SH_
+// type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost4bindIvN3RBX11TestServiceEidNS_10shared_ptrIS2_EEidEENS_3_bi6bind_tIT_NS_4_mfi3mf2IS7_T0_T1_T2_EENS5_9list_av_3IT3_T4_T5_E4typeEEEMSA_FS7_SB_SC_ESF_SG_SH_")]
+pub fn stub_f55074() -> ! {
+    todo!("0xf55074 j___ZN5boost4bindIvN3RBX11TestServiceEidNS_10shared_ptrIS2_EEidEENS_3_bi6bind_tIT_NS_4_mfi3mf2IS7_T0_T1_T2_EENS5_9list_av_3IT3_T4_T5_E4typeEEEMSA_FS7_SB_SC_ESF_SG_SH_")
+}
+
+// 0xf55054 — j___ZN5boost4bindIvN3RBX11TestServiceEiNS_10shared_ptrIS2_EEiEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS7_T0_T1_EENS5_9list_av_2IT2_T3_E4typeEEEMSA_FS7_SB_ESE_SF_
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost4bindIvN3RBX11TestServiceEiNS_10shared_ptrIS2_EEiEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS7_T0_T1_EENS5_9list_av_2IT2_T3_E4typeEEEMSA_FS7_SB_ESE_SF_")]
+pub fn stub_f55054() -> ! {
+    todo!("0xf55054 j___ZN5boost4bindIvN3RBX11TestServiceEiNS_10shared_ptrIS2_EEiEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS7_T0_T1_EENS5_9list_av_2IT2_T3_E4typeEEEMSA_FS7_SB_ESE_SF_")
+}
+
+// 0xf55024 — j___ZN5boost3_bi8storage6INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES7_S8_SA_SB_SC_SD_
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi8storage6INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES7_S8_SA_SB_SC_SD_")]
+pub fn stub_f55024() -> ! {
+    todo!("0xf55024 j___ZN5boost3_bi8storage6INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi4EEEEC2ES7_S8_SA_SB_SC_SD_")
+}
+
+// 0xf55014 — j___ZN5boost3_bi8storage5INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES7_S8_SA_SB_SC_
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi8storage5INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES7_S8_SA_SB_SC_")]
+pub fn stub_f55014() -> ! {
+    todo!("0xf55014 j___ZN5boost3_bi8storage5INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEENS9_ILi3EEEEC2ES7_S8_SA_SB_SC_")
+}
+
+// 0xf55004 — j___ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEEEC2ES7_S8_SA_SB_
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEEEC2ES7_S8_SA_SB_")]
+pub fn stub_f55004() -> ! {
+    todo!("0xf55004 j___ZN5boost3_bi8storage4INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEENS9_ILi2EEEEC2ES7_S8_SA_SB_")
+}
+
+// 0xf54ff4 — j___ZN5boost3_bi8storage3INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEEEC2ES7_S8_SA_
+// type: int __fastcall(int, int, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi8storage3INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEEEC2ES7_S8_SA_")]
+pub fn stub_f54ff4() -> ! {
+    todo!("0xf54ff4 j___ZN5boost3_bi8storage3INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS_3argILi1EEEEC2ES7_S8_SA_")
+}
+
+// 0xf54fe4 — j___ZN5boost3_bi8storage3INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS2_IdEEEC2ES7_S8_S9_
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi8storage3INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS2_IdEEEC2ES7_S8_S9_")]
+pub fn stub_f54fe4() -> ! {
+    todo!("0xf54fe4 j___ZN5boost3_bi8storage3INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEENS2_IdEEEC2ES7_S8_S9_")
+}
+
+// 0xf54fd4 — j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEEEC2ES7_S8_
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEEEC2ES7_S8_")]
+pub fn stub_f54fd4() -> ! {
+    todo!("0xf54fd4 j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX11TestServiceEEEEENS2_IiEEEC2ES7_S8_")
+}
+
+// 0xf54fc4 — j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX11TestServiceEiEENS0_5list2INS0_5valueINS_10shared_ptrIS5_EEEENS8_IiEEEEEclINS9_IKNS4_10Reflection5TupleEEEEEvRT_
+// type: int(void)
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX11TestServiceEiEENS0_5list2INS0_5valueINS_10shared_ptrIS5_EEEENS8_IiEEEEEclINS9_IKNS4_10Reflection5TupleEEEEEvRT_")]
+pub fn stub_f54fc4() -> ! {
+    todo!("0xf54fc4 j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX11TestServiceEiEENS0_5list2INS0_5valueINS_10shared_ptrIS5_EEEENS8_IiEEEEEclINS9_IKNS4_10Reflection5TupleEEEEEvRT_")
+}
+
+// 0xf54fb4 — j___ZN5boost3_bi6bind_tISsNS_4_mfi3mf1ISsN3RBX11TestServiceERKSsEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclISsEESsRKT_
+// was: boost (now rbx_core)
+#[doc(alias = "j___ZN5boost3_bi6bind_tISsNS_4_mfi3mf1ISsN3RBX11TestServiceERKSsEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclISsEESsRKT_")]
+pub fn stub_f54fb4() -> ! {
+    todo!("0xf54fb4 j___ZN5boost3_bi6bind_tISsNS_4_mfi3mf1ISsN3RBX11TestServiceERKSsEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclISsEESsRKT_")
+}
