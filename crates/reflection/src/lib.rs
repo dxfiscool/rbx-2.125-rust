@@ -128,3 +128,4 @@ pub mod generated_shard_do;
 pub mod generated_shard_dp;
 pub mod generated_shard_dq;
 pub mod generated_shard_dr;
+pub mod generated_shard_ds;
