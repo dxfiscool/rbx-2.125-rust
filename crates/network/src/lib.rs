@@ -232,3 +232,4 @@ pub mod generated_net_23;
 pub mod generated_net_24;
 pub mod generated_net_25;
 pub mod generated_net_26;
+pub mod generated_net_27;
