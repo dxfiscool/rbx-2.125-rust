@@ -400,6 +400,7 @@ pub mod generated_dm_s;
 pub mod generated_dm_t;
 pub mod generated_dm_u;
 pub mod generated_dm_v;
+pub mod generated_dm_w;
 pub mod generated_dm_10;
 pub mod generated_next_d;
 pub mod generated_next_e;
