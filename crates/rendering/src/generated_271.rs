@@ -267,7 +267,7 @@ pub fn stub_392904() -> ! {
 
 // 0x392920 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: int __fastcall(int, int)
-#[doc(alias = "`non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "_non-virtual thunk to_rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_12AccoutrementES7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 pub fn stub_392920() -> ! {
     todo!("0x392920 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Accoutrement,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Accoutrement*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
@@ -475,7 +475,7 @@ pub fn stub_393240() -> ! {
 
 // 0x3935a0 — __GLOBAL__I_a_152
 // type: 
-#[doc(alias = "`global constructor keyed to'_a_152")]
+#[doc(alias = "_global constructor keyed to__a_152")]
 // was: __GLOBAL__I_a_152
 pub fn stub_3935a0() -> ! {
     todo!("0x3935a0 `global constructor keyed to'_a_152")
@@ -531,7 +531,7 @@ pub fn stub_3961b4() -> ! {
 
 // 0x396230 — __GLOBAL__I_a_153
 // type: 
-#[doc(alias = "`global constructor keyed to'_a_153")]
+#[doc(alias = "_global constructor keyed to__a_153")]
 // was: __GLOBAL__I_a_153
 pub fn stub_396230() -> ! {
     todo!("0x396230 `global constructor keyed to'_a_153")
@@ -563,7 +563,7 @@ pub fn stub_396574() -> ! {
 
 // 0x39672c — __GLOBAL__I_a_154
 // type: 
-#[doc(alias = "`global constructor keyed to'_a_154")]
+#[doc(alias = "_global constructor keyed to__a_154")]
 // was: __GLOBAL__I_a_154
 pub fn stub_39672c() -> ! {
     todo!("0x39672c `global constructor keyed to'_a_154")
@@ -675,7 +675,7 @@ pub fn stub_3970c0() -> ! {
 
 // 0x3970d0 — __ZThn32_N3RBX9AnimationD1Ev
 // type: void __fastcall(RBX::Animation *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Animation::~Animation()")]
+#[doc(alias = "_non-virtual thunk to_RBX::Animation::~Animation()")]
 // was: __ZThn32_N3RBX9AnimationD1Ev
 pub fn stub_3970d0() -> ! {
     todo!("0x3970d0 `non-virtual thunk to'RBX::Animation::~Animation()")
@@ -683,7 +683,7 @@ pub fn stub_3970d0() -> ! {
 
 // 0x3971b4 — __ZThn32_N3RBX9AnimationD0Ev
 // type: void __fastcall(RBX::Animation *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Animation::~Animation()")]
+#[doc(alias = "_non-virtual thunk to_RBX::Animation::~Animation()")]
 // was: __ZThn32_N3RBX9AnimationD0Ev
 pub fn stub_3971b4() -> ! {
     todo!("0x3971b4 `non-virtual thunk to'RBX::Animation::~Animation()")
@@ -699,7 +699,7 @@ pub fn stub_3972ac() -> ! {
 
 // 0x3972bc — __ZThn36_N3RBX9AnimationD1Ev
 // type: void __fastcall(RBX::Animation *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Animation::~Animation()")]
+#[doc(alias = "_non-virtual thunk to_RBX::Animation::~Animation()")]
 // was: __ZThn36_N3RBX9AnimationD1Ev
 pub fn stub_3972bc() -> ! {
     todo!("0x3972bc `non-virtual thunk to'RBX::Animation::~Animation()")
@@ -707,7 +707,7 @@ pub fn stub_3972bc() -> ! {
 
 // 0x3973a0 — __ZThn36_N3RBX9AnimationD0Ev
 // type: void __fastcall(RBX::Animation *__hidden this)
-#[doc(alias = "`non-virtual thunk to'RBX::Animation::~Animation()")]
+#[doc(alias = "_non-virtual thunk to_RBX::Animation::~Animation()")]
 // was: __ZThn36_N3RBX9AnimationD0Ev
 pub fn stub_3973a0() -> ! {
     todo!("0x3973a0 `non-virtual thunk to'RBX::Animation::~Animation()")
