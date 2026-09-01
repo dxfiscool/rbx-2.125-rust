@@ -199,3 +199,4 @@ pub mod generated_shard_ft;
 pub mod generated_shard_fu;
 pub mod generated_shard_fv;
 pub mod generated_shard_fw;
+pub mod generated_shard_fx;
