@@ -160,3 +160,4 @@ pub mod generated_core_shard_do;
 pub mod generated_core_shard_dp;
 pub mod generated_core_shard_dq;
 pub mod generated_core_shard_dr;
+pub mod generated_core_shard_ds;
