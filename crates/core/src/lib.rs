@@ -183,3 +183,4 @@ pub mod generated_core_shard_ek;
 pub mod generated_core_shard_el;
 pub mod generated_core_shard_em;
 pub mod generated_core_shard_en;
+pub mod generated_core_shard_eo;
