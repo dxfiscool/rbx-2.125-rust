@@ -367,4 +367,5 @@ pub mod generated_core_shard_lj;
 pub mod generated_core_shard_lk;
 pub mod generated_core_shard_ll;
 pub mod generated_core_shard_lm;
+pub mod generated_core_shard_ln;
 pub mod generated_core_gap_10;
