@@ -130,3 +130,4 @@ pub mod generated_shard_dq;
 pub mod generated_shard_dr;
 pub mod generated_shard_ds;
 pub mod generated_shard_dt;
+pub mod generated_shard_du;
