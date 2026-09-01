@@ -222,3 +222,4 @@ pub mod generated_core_shard_fx;
 pub mod generated_core_shard_fy;
 pub mod generated_core_shard_fz;
 pub mod generated_core_shard_ga;
+pub mod generated_core_shard_gb;
