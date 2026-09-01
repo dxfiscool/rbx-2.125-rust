@@ -1,0 +1,711 @@
+//! platform generated_98 — next 100 stubs EA-sorted desc high-EA filler after 0xf416b4
+//! Filter: high-EA filler EA-sorted desc, rbx_core::SharedPtr not boost
+//! Batch: 100 stubs EA-sorted desc | skeleton batch | range 0xf41074..0xf416a4 (rbx_core::SharedPtr not boost)
+
+#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+
+use rbx_core::SharedPtr;
+
+const _: () = {
+    let _ = core::marker::PhantomData::<SharedPtr<u8>>;
+};
+
+// 0xf416a4 — j___ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorD2Ev
+// type: int(void)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_f416a4() -> ! {
+    todo!("0xf416a4 j___ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0xf41694 — j___ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_f41694() -> ! {
+    todo!("0xf41694 j___ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf41684 — j___ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE17static_getCreatorEv
+// type: 
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_f41684() -> ! {
+    todo!("0xf41684 j___ZN3RBX14FactoryProductINS_6RocketENS_9BodyMoverELZNS_7sRocketEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0xf41674 — j___ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD2Ev
+// type: int(void)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_f41674() -> ! {
+    todo!("0xf41674 j___ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0xf41664 — j___ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_f41664() -> ! {
+    todo!("0xf41664 j___ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf41654 — j___ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE17static_getCreatorEv
+// type: 
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_f41654() -> ! {
+    todo!("0xf41654 j___ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0xf41644 — j___ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD2Ev
+// type: int(void)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_f41644() -> ! {
+    todo!("0xf41644 j___ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0xf41634 — j___ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_f41634() -> ! {
+    todo!("0xf41634 j___ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf41624 — j___ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE17static_getCreatorEv
+// type: 
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_f41624() -> ! {
+    todo!("0xf41624 j___ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0xf41614 — j___ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD2Ev
+// type: int(void)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_f41614() -> ! {
+    todo!("0xf41614 j___ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0xf41604 — j___ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_f41604() -> ! {
+    todo!("0xf41604 j___ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf415f4 — j___ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE17static_getCreatorEv
+// type: 
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_f415f4() -> ! {
+    todo!("0xf415f4 j___ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0xf415e4 — j___ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD2Ev
+// type: int(void)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_f415e4() -> ! {
+    todo!("0xf415e4 j___ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0xf415d4 — j___ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_f415d4() -> ! {
+    todo!("0xf415d4 j___ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0xf415c4 — j___ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE17static_getCreatorEv
+// type: 
+#[doc(alias = "j___ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_f415c4() -> ! {
+    todo!("0xf415c4 j___ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0xf415b4 — j___ZN3RBX10Reflection9DescribedINS_9BodyForceELZNS_10sBodyForceEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_9BodyForceELZNS_10sBodyForceEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_f415b4() -> ! {
+    todo!("0xf415b4 j___ZN3RBX10Reflection9DescribedINS_9BodyForceELZNS_10sBodyForceEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+}
+
+// 0xf415a4 — j___ZN3RBX10Reflection9DescribedINS_8BodyGyroELZNS_9sBodyGyroEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_8BodyGyroELZNS_9sBodyGyroEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_f415a4() -> ! {
+    todo!("0xf415a4 j___ZN3RBX10Reflection9DescribedINS_8BodyGyroELZNS_9sBodyGyroEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+}
+
+// 0xf41594 — j___ZN3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_f41594() -> ! {
+    todo!("0xf41594 j___ZN3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+}
+
+// 0xf41584 — j___ZN3RBX10Reflection9DescribedINS_19BodyAngularVelocityELZNS_20sBodyAngularVelocityEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_19BodyAngularVelocityELZNS_20sBodyAngularVelocityEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_f41584() -> ! {
+    todo!("0xf41584 j___ZN3RBX10Reflection9DescribedINS_19BodyAngularVelocityELZNS_20sBodyAngularVelocityEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+}
+
+// 0xf41574 — j___ZN3RBX10Reflection9DescribedINS_12BodyVelocityELZNS_13sBodyVelocityEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_12BodyVelocityELZNS_13sBodyVelocityEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_f41574() -> ! {
+    todo!("0xf41574 j___ZN3RBX10Reflection9DescribedINS_12BodyVelocityELZNS_13sBodyVelocityEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+}
+
+// 0xf41564 — j___ZN3RBX10Reflection9DescribedINS_12BodyPositionELZNS_13sBodyPositionEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_12BodyPositionELZNS_13sBodyPositionEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_f41564() -> ! {
+    todo!("0xf41564 j___ZN3RBX10Reflection9DescribedINS_12BodyPositionELZNS_13sBodyPositionEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+}
+
+// 0xf41554 — j___ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv
+// type: int __fastcall(int, int, int, int, int, __guard *, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")]
+pub fn stub_f41554() -> ! {
+    todo!("0xf41554 j___ZN3RBX10Reflection9DescribedINS_10BodyThrustELZNS_11sBodyThrustEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EE15classDescriptorEv")
+}
+
+// 0xf41544 — j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41544() -> ! {
+    todo!("0xf41544 j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41534 — j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41534() -> ! {
+    todo!("0xf41534 j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41524 — j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_fMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_fMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41524() -> ! {
+    todo!("0xf41524 j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_fMS8_FvRKNS0_18PropertyDescriptorEENSA_10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41514 — j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_19BodyAngularVelocityEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_19BodyAngularVelocityEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41514() -> ! {
+    todo!("0xf41514 j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_19BodyAngularVelocityEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41504 — j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12BodyVelocityEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12BodyVelocityEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41504() -> ! {
+    todo!("0xf41504 j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12BodyVelocityEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf414f4 — j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f414f4() -> ! {
+    todo!("0xf414f4 j___ZN3RBX10Reflection9BoundPropIfLNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS7_MT_fNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf414e4 — j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f414e4() -> ! {
+    todo!("0xf414e4 j___ZN3RBX10Reflection9BoundPropIbLNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS7_MT_bNS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf414d4 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_9BodyForceEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_9BodyForceEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f414d4() -> ! {
+    todo!("0xf414d4 j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_9BodyForceEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf414c4 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f414c4() -> ! {
+    todo!("0xf414c4 j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf414b4 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f414b4() -> ! {
+    todo!("0xf414b4 j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf414a4 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f414a4() -> ! {
+    todo!("0xf414a4 j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_6RocketEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41494 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_19BodyAngularVelocityEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_19BodyAngularVelocityEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41494() -> ! {
+    todo!("0xf41494 j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_19BodyAngularVelocityEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41484 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyVelocityEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyVelocityEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41484() -> ! {
+    todo!("0xf41484 j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyVelocityEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41474 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41474() -> ! {
+    todo!("0xf41474 j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41464 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41464() -> ! {
+    todo!("0xf41464 j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_12BodyPositionEEEPKcS9_MT_S3_MSA_FvRKNS0_18PropertyDescriptorEENSC_10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41454 — j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_10BodyThrustEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_10BodyThrustEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41454() -> ! {
+    todo!("0xf41454 j___ZN3RBX10Reflection9BoundPropIN3G3D7Vector3ELNS0_10MutabilityE1EEC2INS_10BodyThrustEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41444 — j___ZN3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41444() -> ! {
+    todo!("0xf41444 j___ZN3RBX10Reflection9BoundPropIN3G3D15CoordinateFrameELNS0_10MutabilityE1EEC2INS_8BodyGyroEEEPKcS9_MT_S3_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41434 — j___ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE
+// type: 
+#[doc(alias = "j___ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")]
+pub fn stub_f41434() -> ! {
+    todo!("0xf41434 j___ZN3RBX10Reflection17RefPropDescriptorINS_6RocketENS_12PartInstanceEEC2IMS2_KFPS3_vEMS2_FvS6_EEEPKcSC_T_T0_NS0_18PropertyDescriptor10AttributesENS_8Security11PermissionsE")
+}
+
+// 0xf41424 — j___ZN3RBX10Reflection13BoundFuncDescINS_6RocketEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_6RocketEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f41424() -> ! {
+    todo!("0xf41424 j___ZN3RBX10Reflection13BoundFuncDescINS_6RocketEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf41414 — j___ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f41414() -> ! {
+    todo!("0xf41414 j___ZN3RBX10Reflection13BoundFuncDescINS_12BodyVelocityEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf41404 — j___ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
+#[doc(alias = "j___ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")]
+pub fn stub_f41404() -> ! {
+    todo!("0xf41404 j___ZN3RBX10Reflection13BoundFuncDescINS_12BodyPositionEFN3G3D7Vector3EvELi0EEC2EMS2_FS4_vEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE")
+}
+
+// 0xf413f4 — j___ZN3RBX10Reflection11Call0HelperINS_12BodyVelocityEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE
+// type: int(void)
+#[doc(alias = "j___ZN3RBX10Reflection11Call0HelperINS_12BodyVelocityEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE")]
+pub fn stub_f413f4() -> ! {
+    todo!("0xf413f4 j___ZN3RBX10Reflection11Call0HelperINS_12BodyVelocityEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE")
+}
+
+// 0xf413e4 — j___ZN3RBX10Reflection11Call0HelperINS_12BodyPositionEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE
+// type: int(void)
+#[doc(alias = "j___ZN3RBX10Reflection11Call0HelperINS_12BodyPositionEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE")]
+pub fn stub_f413e4() -> ! {
+    todo!("0xf413e4 j___ZN3RBX10Reflection11Call0HelperINS_12BodyPositionEMS2_FN3G3D7Vector3EvES4_E4callEPS2_S6_RNS0_7VariantE")
+}
+
+// 0xf413d4 — j___ZNSt8auto_ptrIN3RBX10Reflection5TupleEED2Ev
+// type: 
+#[doc(alias = "j___ZNSt8auto_ptrIN3RBX10Reflection5TupleEED2Ev")]
+pub fn stub_f413d4() -> ! {
+    todo!("0xf413d4 j___ZNSt8auto_ptrIN3RBX10Reflection5TupleEED2Ev")
+}
+
+// 0xf413c4 — j___ZNSt8_Rb_treeIccSt9_IdentityIcESt4lessIcESaIcEE9_M_insertEPSt18_Rb_tree_node_baseS7_RKc
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIccSt9_IdentityIcESt4lessIcESaIcEE9_M_insertEPSt18_Rb_tree_node_baseS7_RKc")]
+pub fn stub_f413c4() -> ! {
+    todo!("0xf413c4 j___ZNSt8_Rb_treeIccSt9_IdentityIcESt4lessIcESaIcEE9_M_insertEPSt18_Rb_tree_node_baseS7_RKc")
+}
+
+// 0xf413b4 — j___ZNSt8_Rb_treeIccSt9_IdentityIcESt4lessIcESaIcEE8_M_eraseEPSt13_Rb_tree_nodeIcE
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIccSt9_IdentityIcESt4lessIcESaIcEE8_M_eraseEPSt13_Rb_tree_nodeIcE")]
+pub fn stub_f413b4() -> ! {
+    todo!("0xf413b4 j___ZNSt8_Rb_treeIccSt9_IdentityIcESt4lessIcESaIcEE8_M_eraseEPSt13_Rb_tree_nodeIcE")
+}
+
+// 0xf413a4 — j___ZNSt8_Rb_treeIccSt9_IdentityIcESt4lessIcESaIcEE16_M_insert_uniqueERKc
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIccSt9_IdentityIcESt4lessIcESaIcEE16_M_insert_uniqueERKc")]
+pub fn stub_f413a4() -> ! {
+    todo!("0xf413a4 j___ZNSt8_Rb_treeIccSt9_IdentityIcESt4lessIcESaIcEE16_M_insert_uniqueERKc")
+}
+
+// 0xf41394 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
+pub fn stub_f41394() -> ! {
+    todo!("0xf41394 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
+}
+
+// 0xf41384 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_f41384() -> ! {
+    todo!("0xf41384 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+}
+
+// 0xf41374 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+// type: int __fastcall(int, _Rb_tree_node_base *)
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
+pub fn stub_f41374() -> ! {
+    todo!("0xf41374 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
+}
+
+// 0xf41364 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
+pub fn stub_f41364() -> ! {
+    todo!("0xf41364 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService16CenterDialogTypeEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")
+}
+
+// 0xf41354 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")]
+pub fn stub_f41354() -> ! {
+    todo!("0xf41354 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE9_M_insertEPSt18_Rb_tree_node_baseSG_RKS8_")
+}
+
+// 0xf41344 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")]
+pub fn stub_f41344() -> ! {
+    todo!("0xf41344 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E")
+}
+
+// 0xf41334 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_
+// type: int __fastcall(int, _Rb_tree_node_base *)
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")]
+pub fn stub_f41334() -> ! {
+    todo!("0xf41334 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueESt17_Rb_tree_iteratorIS8_ERKS8_")
+}
+
+// 0xf41324 — j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")]
+pub fn stub_f41324() -> ! {
+    todo!("0xf41324 j___ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_NS0_10GuiService10SpecialKeyEESt10_Select1stIS8_ESt4lessIS3_ESaIS8_EE16_M_insert_uniqueERKS8_")
+}
+
+// 0xf41314 — j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSA_
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSA_")]
+pub fn stub_f41314() -> ! {
+    todo!("0xf41314 j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSA_")
+}
+
+// 0xf41304 — j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E")]
+pub fn stub_f41304() -> ! {
+    todo!("0xf41304 j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E")
+}
+
+// 0xf412f4 — j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE5eraseESt17_Rb_tree_iteratorISA_ESI_
+// type: int __fastcall(int, _Rb_tree_node_base *)
+#[doc(alias = "j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE5eraseESt17_Rb_tree_iteratorISA_ESI_")]
+pub fn stub_f412f4() -> ! {
+    todo!("0xf412f4 j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE5eraseESt17_Rb_tree_iteratorISA_ESI_")
+}
+
+// 0xf412e4 — j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE5eraseERS6_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE5eraseERS6_")]
+pub fn stub_f412e4() -> ! {
+    todo!("0xf412e4 j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE5eraseERS6_")
+}
+
+// 0xf412d4 — j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISA_ERKSA_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISA_ERKSA_")]
+pub fn stub_f412d4() -> ! {
+    todo!("0xf412d4 j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISA_ERKSA_")
+}
+
+// 0xf412c4 — j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE16_M_insert_uniqueERKSA_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE16_M_insert_uniqueERKSA_")]
+pub fn stub_f412c4() -> ! {
+    todo!("0xf412c4 j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE16_M_insert_uniqueERKSA_")
+}
+
+// 0xf412b4 — j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeISA_E
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeISA_E")]
+pub fn stub_f412b4() -> ! {
+    todo!("0xf412b4 j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeISA_E")
+}
+
+// 0xf412a4 — j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE14_M_create_nodeERKSA_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE14_M_create_nodeERKSA_")]
+pub fn stub_f412a4() -> ! {
+    todo!("0xf412a4 j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE14_M_create_nodeERKSA_")
+}
+
+// 0xf41294 — j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE11equal_rangeERS6_
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE11equal_rangeERS6_")]
+pub fn stub_f41294() -> ! {
+    todo!("0xf41294 j___ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX9GuiObjectEEESt4pairIKS4_PNS2_10GuiService13DialogWrapperEESt10_Select1stISA_ESt4lessIS4_ESaISA_EE11equal_rangeERS6_")
+}
+
+// 0xf41284 — j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSA_
+// type: int __fastcall(int, int, int, int)
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSA_")]
+pub fn stub_f41284() -> ! {
+    todo!("0xf41284 j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE9_M_insertEPSt18_Rb_tree_node_baseSI_RKSA_")
+}
+
+// 0xf41274 — j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E")]
+pub fn stub_f41274() -> ! {
+    todo!("0xf41274 j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E")
+}
+
+// 0xf41264 — j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISA_ERKSA_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISA_ERKSA_")]
+pub fn stub_f41264() -> ! {
+    todo!("0xf41264 j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE16_M_insert_uniqueESt17_Rb_tree_iteratorISA_ERKSA_")
+}
+
+// 0xf41254 — j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE16_M_insert_uniqueERKSA_
+// type: int __fastcall(int, int, int)
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE16_M_insert_uniqueERKSA_")]
+pub fn stub_f41254() -> ! {
+    todo!("0xf41254 j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE16_M_insert_uniqueERKSA_")
+}
+
+// 0xf41244 — j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeISA_E
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeISA_E")]
+pub fn stub_f41244() -> ! {
+    todo!("0xf41244 j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeISA_E")
+}
+
+// 0xf41234 — j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE14_M_create_nodeERKSA_
+// type: int __fastcall(int, int, int, int, void *, int)
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE14_M_create_nodeERKSA_")]
+pub fn stub_f41234() -> ! {
+    todo!("0xf41234 j___ZNSt8_Rb_treeIN3RBX10GuiService16CenterDialogTypeESt4pairIKS2_St4listIPNS1_13DialogWrapperESaIS7_EEESt10_Select1stISA_ESt4lessIS2_ESaISA_EE14_M_create_nodeERKSA_")
+}
+
+// 0xf41224 — j___ZNSt8_Rb_treeIN3RBX10GuiService10SpecialKeyES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE9_M_insertEPSt18_Rb_tree_node_baseSA_RKS2_
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10GuiService10SpecialKeyES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE9_M_insertEPSt18_Rb_tree_node_baseSA_RKS2_")]
+pub fn stub_f41224() -> ! {
+    todo!("0xf41224 j___ZNSt8_Rb_treeIN3RBX10GuiService10SpecialKeyES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE9_M_insertEPSt18_Rb_tree_node_baseSA_RKS2_")
+}
+
+// 0xf41214 — j___ZNSt8_Rb_treeIN3RBX10GuiService10SpecialKeyES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10GuiService10SpecialKeyES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E")]
+pub fn stub_f41214() -> ! {
+    todo!("0xf41214 j___ZNSt8_Rb_treeIN3RBX10GuiService10SpecialKeyES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E")
+}
+
+// 0xf41204 — j___ZNSt8_Rb_treeIN3RBX10GuiService10SpecialKeyES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE16_M_insert_uniqueERKS2_
+// type: 
+#[doc(alias = "j___ZNSt8_Rb_treeIN3RBX10GuiService10SpecialKeyES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE16_M_insert_uniqueERKS2_")]
+pub fn stub_f41204() -> ! {
+    todo!("0xf41204 j___ZNSt8_Rb_treeIN3RBX10GuiService10SpecialKeyES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE16_M_insert_uniqueERKS2_")
+}
+
+// 0xf411f4 — j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE9push_backERKS2_
+// type: 
+#[doc(alias = "j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE9push_backERKS2_")]
+pub fn stub_f411f4() -> ! {
+    todo!("0xf411f4 j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE9push_backERKS2_")
+}
+
+// 0xf411e4 — j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE6resizeEmS2_
+// type: 
+#[doc(alias = "j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE6resizeEmS2_")]
+pub fn stub_f411e4() -> ! {
+    todo!("0xf411e4 j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE6resizeEmS2_")
+}
+
+// 0xf411d4 — j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+// type: 
+#[doc(alias = "j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+pub fn stub_f411d4() -> ! {
+    todo!("0xf411d4 j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+}
+
+// 0xf411c4 — j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+// type: int(void)
+#[doc(alias = "j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+pub fn stub_f411c4() -> ! {
+    todo!("0xf411c4 j___ZNSt6vectorIN3RBX10GuiService16CenterDialogTypeESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+}
+
+// 0xf411b4 — j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE9push_backERKS2_
+// type: 
+#[doc(alias = "j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE9push_backERKS2_")]
+pub fn stub_f411b4() -> ! {
+    todo!("0xf411b4 j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE9push_backERKS2_")
+}
+
+// 0xf411a4 — j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE6resizeEmS2_
+// type: 
+#[doc(alias = "j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE6resizeEmS2_")]
+pub fn stub_f411a4() -> ! {
+    todo!("0xf411a4 j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE6resizeEmS2_")
+}
+
+// 0xf41194 — j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_
+// type: 
+#[doc(alias = "j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")]
+pub fn stub_f41194() -> ! {
+    todo!("0xf41194 j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS2_S4_EEmRKS2_")
+}
+
+// 0xf41184 — j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_
+// type: int(void)
+#[doc(alias = "j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")]
+pub fn stub_f41184() -> ! {
+    todo!("0xf41184 j___ZNSt6vectorIN3RBX10GuiService10SpecialKeyESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_")
+}
+
+// 0xf41174 — j___ZNSt4listIPN3RBX10GuiService13DialogWrapperESaIS3_EEC2ERKS5_
+// type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt)
+#[doc(alias = "j___ZNSt4listIPN3RBX10GuiService13DialogWrapperESaIS3_EEC2ERKS5_")]
+pub fn stub_f41174() -> ! {
+    todo!("0xf41174 j___ZNSt4listIPN3RBX10GuiService13DialogWrapperESaIS3_EEC2ERKS5_")
+}
+
+// 0xf41164 — j___ZNSt4listIPN3RBX10GuiService13DialogWrapperESaIS3_EE6removeERKS3_
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "j___ZNSt4listIPN3RBX10GuiService13DialogWrapperESaIS3_EE6removeERKS3_")]
+pub fn stub_f41164() -> ! {
+    todo!("0xf41164 j___ZNSt4listIPN3RBX10GuiService13DialogWrapperESaIS3_EE6removeERKS3_")
+}
+
+// 0xf41154 — j___ZNSt4listIPN3RBX10GuiService13DialogWrapperESaIS3_EE22_M_initialize_dispatchISt20_List_const_iteratorIS3_EEEvT_S9_St12__false_type
+// type: 
+#[doc(alias = "j___ZNSt4listIPN3RBX10GuiService13DialogWrapperESaIS3_EE22_M_initialize_dispatchISt20_List_const_iteratorIS3_EEEvT_S9_St12__false_type")]
+pub fn stub_f41154() -> ! {
+    todo!("0xf41154 j___ZNSt4listIPN3RBX10GuiService13DialogWrapperESaIS3_EE22_M_initialize_dispatchISt20_List_const_iteratorIS3_EEEvT_S9_St12__false_type")
+}
+
+// 0xf41144 — j___ZNSt3mapIPKN3RBX4NameENS0_10GuiService16CenterDialogTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+// type: 
+#[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_10GuiService16CenterDialogTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
+pub fn stub_f41144() -> ! {
+    todo!("0xf41144 j___ZNSt3mapIPKN3RBX4NameENS0_10GuiService16CenterDialogTypeESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+}
+
+// 0xf41134 — j___ZNSt3mapIPKN3RBX4NameENS0_10GuiService10SpecialKeyESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_
+// type: 
+#[doc(alias = "j___ZNSt3mapIPKN3RBX4NameENS0_10GuiService10SpecialKeyESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")]
+pub fn stub_f41134() -> ! {
+    todo!("0xf41134 j___ZNSt3mapIPKN3RBX4NameENS0_10GuiService10SpecialKeyESt4lessIS3_ESaISt4pairIKS3_S5_EEEixERS9_")
+}
+
+// 0xf41124 — j___ZNSt3mapIN5boost8weak_ptrIN3RBX9GuiObjectEEEPNS2_10GuiService13DialogWrapperESt4lessIS4_ESaISt4pairIKS4_S7_EEEixERSB_
+// type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
+#[doc(alias = "j___ZNSt3mapIN5boost8weak_ptrIN3RBX9GuiObjectEEEPNS2_10GuiService13DialogWrapperESt4lessIS4_ESaISt4pairIKS4_S7_EEEixERSB_")]
+pub fn stub_f41124() -> ! {
+    todo!("0xf41124 j___ZNSt3mapIN5boost8weak_ptrIN3RBX9GuiObjectEEEPNS2_10GuiService13DialogWrapperESt4lessIS4_ESaISt4pairIKS4_S7_EEEixERSB_")
+}
+
+// 0xf41114 — j___ZNSt3mapIN3RBX10GuiService16CenterDialogTypeESt4listIPNS1_13DialogWrapperESaIS5_EESt4lessIS2_ESaISt4pairIKS2_S7_EEEixERSB_
+// type: int __fastcall(int, int, int, int, void *, int, int, void *, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
+#[doc(alias = "j___ZNSt3mapIN3RBX10GuiService16CenterDialogTypeESt4listIPNS1_13DialogWrapperESaIS5_EESt4lessIS2_ESaISt4pairIKS2_S7_EEEixERSB_")]
+pub fn stub_f41114() -> ! {
+    todo!("0xf41114 j___ZNSt3mapIN3RBX10GuiService16CenterDialogTypeESt4listIPNS1_13DialogWrapperESaIS5_EESt4lessIS2_ESaISt4pairIKS2_S7_EEEixERSB_")
+}
+
+// 0xf41104 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX10GuiService16CenterDialogTypeES6_EET0_T_S8_S7_
+// type: 
+#[doc(alias = "j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX10GuiService16CenterDialogTypeES6_EET0_T_S8_S7_")]
+pub fn stub_f41104() -> ! {
+    todo!("0xf41104 j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX10GuiService16CenterDialogTypeES6_EET0_T_S8_S7_")
+}
+
+// 0xf410f4 — j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX10GuiService10SpecialKeyES6_EET0_T_S8_S7_
+// type: 
+#[doc(alias = "j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX10GuiService10SpecialKeyES6_EET0_T_S8_S7_")]
+pub fn stub_f410f4() -> ! {
+    todo!("0xf410f4 j___ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN3RBX10GuiService10SpecialKeyES6_EET0_T_S8_S7_")
+}
+
+// 0xf410e4 — j___ZNSt12_Vector_baseIN3RBX10GuiService16CenterDialogTypeESaIS2_EE11_M_allocateEm
+// type: 
+#[doc(alias = "j___ZNSt12_Vector_baseIN3RBX10GuiService16CenterDialogTypeESaIS2_EE11_M_allocateEm")]
+pub fn stub_f410e4() -> ! {
+    todo!("0xf410e4 j___ZNSt12_Vector_baseIN3RBX10GuiService16CenterDialogTypeESaIS2_EE11_M_allocateEm")
+}
+
+// 0xf410d4 — j___ZNSt12_Vector_baseIN3RBX10GuiService10SpecialKeyESaIS2_EE11_M_allocateEm
+// type: 
+#[doc(alias = "j___ZNSt12_Vector_baseIN3RBX10GuiService10SpecialKeyESaIS2_EE11_M_allocateEm")]
+pub fn stub_f410d4() -> ! {
+    todo!("0xf410d4 j___ZNSt12_Vector_baseIN3RBX10GuiService10SpecialKeyESaIS2_EE11_M_allocateEm")
+}
+
+// 0xf410c4 — j___ZNK5boost9function2IvSsSsEclESsSs
+// type: 
+#[doc(alias = "j___ZNK5boost9function2IvSsSsEclESsSs")]
+pub fn stub_f410c4() -> ! {
+    todo!("0xf410c4 j___ZNK5boost9function2IvSsSsEclESsSs")
+}
+
+// 0xf410b4 — j___ZNK5boost9function2IvN3RBX10GuiService10SpecialKeyESsEclES3_Ss
+// type: 
+#[doc(alias = "j___ZNK5boost9function2IvN3RBX10GuiService10SpecialKeyESsEclES3_Ss")]
+pub fn stub_f410b4() -> ! {
+    todo!("0xf410b4 j___ZNK5boost9function2IvN3RBX10GuiService10SpecialKeyESsEclES3_Ss")
+}
+
+// 0xf410a4 — j___ZNK5boost6detail8function13basic_vtable2IvSsSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable2IvSsSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_f410a4() -> ! {
+    todo!("0xf410a4 j___ZNK5boost6detail8function13basic_vtable2IvSsSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
+
+// 0xf41094 — j___ZNK5boost6detail8function13basic_vtable2IvSsSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable2IvSsSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferE")]
+pub fn stub_f41094() -> ! {
+    todo!("0xf41094 j___ZNK5boost6detail8function13basic_vtable2IvSsSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEbT_RNS1_15function_bufferE")
+}
+
+// 0xf41084 — j___ZNK5boost6detail8function13basic_vtable2IvSsSsE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
+// type: 
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable2IvSsSsE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")]
+pub fn stub_f41084() -> ! {
+    todo!("0xf41084 j___ZNK5boost6detail8function13basic_vtable2IvSsSsE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKSsSD_EENS5_5list3INS5_5valueINS_10shared_ptrISB_EEEENS_3argILi1EEENSK_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE")
+}
+
+// 0xf41074 — j___ZNK5boost6detail8function13basic_vtable2IvN3RBX10GuiService10SpecialKeyESsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_RKSsEENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "j___ZNK5boost6detail8function13basic_vtable2IvN3RBX10GuiService10SpecialKeyESsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_RKSsEENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")]
+pub fn stub_f41074() -> ! {
+    todo!("0xf41074 j___ZNK5boost6detail8function13basic_vtable2IvN3RBX10GuiService10SpecialKeyESsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS3_10Reflection18GenericSlotWrapperERKS5_RKSsEENS8_5list3INS8_5valueINS_10shared_ptrISD_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE")
+}
