@@ -218,3 +218,4 @@ pub mod generated_core_shard_ft;
 pub mod generated_core_shard_fu;
 pub mod generated_core_shard_fv;
 pub mod generated_core_shard_fw;
+pub mod generated_core_shard_fx;
