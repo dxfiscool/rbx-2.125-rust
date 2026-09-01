@@ -119,3 +119,4 @@ pub mod generated_core_shard_bz;
 pub mod generated_core_shard_ca;
 pub mod generated_core_shard_cb;
 pub mod generated_core_shard_cc;
+pub mod generated_core_shard_cd;
