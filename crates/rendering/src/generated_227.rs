@@ -1,6 +1,6 @@
-//! rendering — generated_227 — 100 stubs EA-sorted asc global gap filler 0x1c922c..0x1d7afc
-//! Source: ida/export.json (85545 funcs) EA-sorted global filler not yet in rbx_rendering (rendering 24400 before, 24500 after distinct; Ogre|G3D complete 13663/13663)
-//! Filter: next 100 EA-sorted ascending after 0x1c9184 not yet in rendering (global filler, Ogre|G3D already complete)
+//! rendering — generated_227 — 120 stubs EA-sorted asc global gap filler 0x1c922c..0x1d87c8
+//! Source: ida/export.json (85545 funcs) EA-sorted global filler not yet in rbx_rendering (rendering 24400 before, 24520 after distinct; Ogre|G3D complete 13663/13663)
+//! Filter: next 120 EA-sorted ascending after 0x1c9184 not yet in rendering (global filler, Ogre|G3D already complete)
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 //! Uses rbx_core::SharedPtr (not boost::shared_ptr).
 
@@ -9,7 +9,6 @@
 use rbx_core::SharedPtr;
 
 const _SHARED_PTR: Option<SharedPtr<u8>> = None;
-
 
 // 0x1c922c — __ZN9__gnu_cxx13new_allocatorIPPhE8allocateEmPKv
 // type: int __fastcall(int, unsigned int)
@@ -726,4 +725,149 @@ pub fn stub_1d7a94() -> ! {
 // was: _af_loader_load_glyph
 pub fn stub_1d7afc() -> ! {
     todo!("0x1d7afc _af_loader_load_glyph")
+}
+
+// 0x1d7c20 — _af_loader_init
+#[doc(alias = "_af_loader_init")]
+// was: _af_loader_init
+pub fn stub_1d7c20() -> ! {
+    todo!("0x1d7c20 _af_loader_init")
+}
+
+// 0x1d7c58 — _af_autofitter_done
+#[doc(alias = "_af_autofitter_done")]
+// was: _af_autofitter_done
+pub fn stub_1d7c58() -> ! {
+    todo!("0x1d7c58 _af_autofitter_done")
+}
+
+// 0x1d7c6c — _af_autofitter_init
+#[doc(alias = "_af_autofitter_init")]
+// was: _af_autofitter_init
+pub fn stub_1d7c6c() -> ! {
+    todo!("0x1d7c6c _af_autofitter_init")
+}
+
+// 0x1d7c88 — _af_autofitter_load_glyph
+#[doc(alias = "_af_autofitter_load_glyph")]
+// was: _af_autofitter_load_glyph
+pub fn stub_1d7c88() -> ! {
+    todo!("0x1d7c88 _af_autofitter_load_glyph")
+}
+
+// 0x1d7ca8 — _FT_RoundFix
+// type: int __fastcall(_DWORD)
+#[doc(alias = "_FT_RoundFix")]
+// was: _FT_RoundFix
+pub fn stub_1d7ca8() -> ! {
+    todo!("0x1d7ca8 _FT_RoundFix")
+}
+
+// 0x1d7cd0 — _ft_multo64
+#[doc(alias = "_ft_multo64")]
+// was: _ft_multo64
+pub fn stub_1d7cd0() -> ! {
+    todo!("0x1d7cd0 _ft_multo64")
+}
+
+// 0x1d7d28 — _ft_div64by32
+#[doc(alias = "_ft_div64by32")]
+// was: _ft_div64by32
+pub fn stub_1d7d28() -> ! {
+    todo!("0x1d7d28 _ft_div64by32")
+}
+
+// 0x1d7e9c — _FT_Add64
+#[doc(alias = "_FT_Add64")]
+// was: _FT_Add64
+pub fn stub_1d7e9c() -> ! {
+    todo!("0x1d7e9c _FT_Add64")
+}
+
+// 0x1d7ec4 — _FT_MulDiv
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "_FT_MulDiv")]
+// was: _FT_MulDiv
+pub fn stub_1d7ec4() -> ! {
+    todo!("0x1d7ec4 _FT_MulDiv")
+}
+
+// 0x1d7fb4 — __ft_face_scale_advances
+#[doc(alias = "__ft_face_scale_advances")]
+// was: __ft_face_scale_advances
+pub fn stub_1d7fb4() -> ! {
+    todo!("0x1d7fb4 __ft_face_scale_advances")
+}
+
+// 0x1d81b0 — _FT_MulDiv_No_Round
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "_FT_MulDiv_No_Round")]
+// was: _FT_MulDiv_No_Round
+pub fn stub_1d81b0() -> ! {
+    todo!("0x1d81b0 _FT_MulDiv_No_Round")
+}
+
+// 0x1d8264 — _FT_MulFix
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "_FT_MulFix")]
+// was: _FT_MulFix
+pub fn stub_1d8264() -> ! {
+    todo!("0x1d8264 _FT_MulFix")
+}
+
+// 0x1d82d8 — _FT_DivFix
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "_FT_DivFix")]
+// was: _FT_DivFix
+pub fn stub_1d82d8() -> ! {
+    todo!("0x1d82d8 _FT_DivFix")
+}
+
+// 0x1d836c — _FT_Matrix_Invert
+#[doc(alias = "_FT_Matrix_Invert")]
+// was: _FT_Matrix_Invert
+pub fn stub_1d836c() -> ! {
+    todo!("0x1d836c _FT_Matrix_Invert")
+}
+
+// 0x1d8400 — _FT_Matrix_Multiply_Scaled
+#[doc(alias = "_FT_Matrix_Multiply_Scaled")]
+// was: _FT_Matrix_Multiply_Scaled
+pub fn stub_1d8400() -> ! {
+    todo!("0x1d8400 _FT_Matrix_Multiply_Scaled")
+}
+
+// 0x1d84fc — _FT_Vector_Transform_Scaled
+#[doc(alias = "_FT_Vector_Transform_Scaled")]
+// was: _FT_Vector_Transform_Scaled
+pub fn stub_1d84fc() -> ! {
+    todo!("0x1d84fc _FT_Vector_Transform_Scaled")
+}
+
+// 0x1d8584 — _FT_SqrtFixed
+#[doc(alias = "_FT_SqrtFixed")]
+// was: _FT_SqrtFixed
+pub fn stub_1d8584() -> ! {
+    todo!("0x1d8584 _FT_SqrtFixed")
+}
+
+// 0x1d8690 — _ft_corner_orientation
+#[doc(alias = "_ft_corner_orientation")]
+// was: _ft_corner_orientation
+pub fn stub_1d8690() -> ! {
+    todo!("0x1d8690 _ft_corner_orientation")
+}
+
+// 0x1d8764 — _ft_corner_is_flat
+#[doc(alias = "_ft_corner_is_flat")]
+// was: _ft_corner_is_flat
+pub fn stub_1d8764() -> ! {
+    todo!("0x1d8764 _ft_corner_is_flat")
+}
+
+// 0x1d87c8 — _FT_GlyphLoader_Rewind
+#[doc(alias = "_FT_GlyphLoader_Rewind")]
+// was: _FT_GlyphLoader_Rewind
+pub fn stub_1d87c8() -> ! {
+    todo!("0x1d87c8 _FT_GlyphLoader_Rewind")
 }
