@@ -265,3 +265,4 @@ pub mod generated_plat_bn;
 pub mod generated_plat_bo;
 pub mod generated_plat_bp;
 pub mod generated_plat_bq;
+pub mod generated_plat_br;
