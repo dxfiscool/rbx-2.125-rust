@@ -329,6 +329,7 @@ pub mod generated_189;
 pub mod generated_190;
 pub mod generated_191;
 pub mod generated_bg_1;
+pub mod generated_bg_2;
 pub mod generated_next;
 
 pub mod generated_next_b;
