@@ -98,3 +98,4 @@ pub mod generated_shard_ck;
 pub mod generated_shard_cl;
 pub mod generated_shard_cm;
 pub mod generated_shard_cn;
+pub mod generated_shard_co;
