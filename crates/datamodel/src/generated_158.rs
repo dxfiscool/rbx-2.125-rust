@@ -59,7 +59,7 @@ pub fn stub_833c0() -> ! {
 
 // 0x8340c — __GLOBAL__I__ZN4FMOD9flaccodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::flaccodec")]
+#[doc(alias = "global constructor keyed toFMOD::flaccodec")]
 pub fn stub_8340c() -> ! {
     todo!("0x8340c `global constructor keyed toFMOD::flaccodec")
 }
@@ -234,7 +234,7 @@ pub fn stub_86aac() -> ! {
 
 // 0x86b10 — __GLOBAL__I__ZN4FMOD8fsbcodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::fsbcodec")]
+#[doc(alias = "global constructor keyed toFMOD::fsbcodec")]
 pub fn stub_86b10() -> ! {
     todo!("0x86b10 `global constructor keyed toFMOD::fsbcodec")
 }
@@ -458,7 +458,7 @@ pub fn stub_8ebcc() -> ! {
 
 // 0x8ec18 — __GLOBAL__I__ZN4FMOD7itcodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::itcodec")]
+#[doc(alias = "global constructor keyed toFMOD::itcodec")]
 pub fn stub_8ec18() -> ! {
     todo!("0x8ec18 `global constructor keyed toFMOD::itcodec")
 }

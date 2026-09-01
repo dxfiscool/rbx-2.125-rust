@@ -31,7 +31,7 @@ pub fn stub_92fb8() -> ! {
 
 // 0x9301c — __GLOBAL__I__ZN4FMOD9midicodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::midicodec")]
+#[doc(alias = "global constructor keyed toFMOD::midicodec")]
 pub fn stub_9301c() -> ! {
     todo!("0x9301c `global constructor keyed toFMOD::midicodec")
 }
@@ -157,7 +157,7 @@ pub fn stub_95e70() -> ! {
 
 // 0x95ebc — __GLOBAL__I__ZN4FMOD8modcodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::modcodec")]
+#[doc(alias = "global constructor keyed toFMOD::modcodec")]
 pub fn stub_95ebc() -> ! {
     todo!("0x95ebc `global constructor keyed toFMOD::modcodec")
 }
@@ -276,7 +276,7 @@ pub fn stub_9767c() -> ! {
 
 // 0x976c8 — __GLOBAL__I__ZN4FMOD9mpegcodecE
 // type: int()
-#[doc(alias = "`global constructor keyed toFMOD::mpegcodec")]
+#[doc(alias = "global constructor keyed toFMOD::mpegcodec")]
 pub fn stub_976c8() -> ! {
     todo!("0x976c8 `global constructor keyed toFMOD::mpegcodec")
 }
@@ -612,7 +612,7 @@ pub fn stub_a05c8() -> ! {
 
 // 0xa0614 — __GLOBAL__I_FMOD_OggVorbis_Malloc
 // type: int()
-#[doc(alias = "`global constructor keyed to_FMOD_OggVorbis_Malloc")]
+#[doc(alias = "global constructor keyed to_FMOD_OggVorbis_Malloc")]
 pub fn stub_a0614() -> ! {
     todo!("0xa0614 `global constructor keyed to_FMOD_OggVorbis_Malloc")
 }
