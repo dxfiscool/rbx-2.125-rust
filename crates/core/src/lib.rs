@@ -324,3 +324,4 @@ pub mod generated_core_shard_jt;
 pub mod generated_core_shard_ju;
 pub mod generated_core_shard_jv;
 pub mod generated_core_shard_jw;
+pub mod generated_core_shard_jx;
