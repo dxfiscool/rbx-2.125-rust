@@ -380,3 +380,4 @@ pub mod generated_dm_a;
 pub mod generated_dm_b_01;
 pub mod generated_dm_c;
 pub mod generated_dm_d;
+pub mod generated_dm_e;
