@@ -705,7 +705,7 @@ pub fn stub_5f2c50() -> ! {
 // 0x5f3818 — __ZN3rbx7signals6signalIFvvEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvvEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")]
-#[doc(alias = "rbx::signals::signal<void ()(void)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(void)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvvEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 pub fn stub_5f3818() -> ! {
     todo!("0x5f3818 rbx::signals::signal<void ()(void)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> &)")
@@ -775,7 +775,7 @@ pub fn stub_5f3ae0() -> ! {
 // 0x5f3c08 — __ZN5boost8weak_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 // type: int(void)
 #[doc(alias = "__ZN5boost8weak_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")]
-#[doc(alias = "boost::weak_ptr<RBX::PartInstance>::weak_ptr<RBX::PartInstance>(rbx_core::SharedPtr<RBX::PartInstance> const&,boost::detail::sp_enable_if_convertible<RBX::PartInstance,RBX::PartInstance>::type)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::PartInstance>::weak_ptr<RBX::PartInstance>(rbx_core::SharedPtr<RBX::PartInstance> const&,boost::detail::sp_enable_if_convertible<RBX::PartInstance,RBX::PartInstance>::type)")]
 // was: __ZN5boost8weak_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 pub fn stub_5f3c08() -> ! {
     todo!("0x5f3c08 boost::weak_ptr<RBX::PartInstance>::weak_ptr<RBX::PartInstance>(boost::shared_ptr<RBX::PartInstance> const&,boost::detail::sp_enable_if_convertible<RBX::PartInstance,RBX::PartInstance>::type)")

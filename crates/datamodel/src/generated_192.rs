@@ -12,7 +12,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x39674 — __ZN10RobloxView11create_viewEN5boost10shared_ptrIN3RBX4GameEEEjjSsSsSs
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, std::string *, std::string *)
-#[doc(alias = "RobloxView::create_view(boost::shared_ptr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")]
+#[doc(alias = "RobloxView::create_view(rbx_core::SharedPtr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")]
 pub fn stub_0x39674() -> ! {
     todo!("0x39674 RobloxView::create_view(boost::shared_ptr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")
 }
@@ -96,45 +96,45 @@ pub fn stub_0x39c68() -> ! {
 
 // 0x39c6c — __ZN3RBX13TaskScheduler14removeBlockingEN5boost10shared_ptrINS0_3JobEEENS1_8functionIFvvEEE
 // type: void __fastcall(int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")]
+#[doc(alias = "RBX::TaskScheduler::removeBlocking(rbx_core::SharedPtr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")]
 pub fn stub_0x39c6c() -> ! {
     todo!("0x39c6c RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")
 }
 
 // 0x39d7c — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEE5resetEv
-#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::reset(void)")]
 pub fn stub_0x39d7c() -> ! {
     todo!("0x39d7c boost::shared_ptr<RobloxView::RenderJob>::reset(void)")
 }
 
 // 0x39e10 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEE5resetEv
-#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::reset(void)")]
 pub fn stub_0x39e10() -> ! {
     todo!("0x39e10 boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")
 }
 
 // 0x39ea8 — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEaSEOS3_
-#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::operator=(rbx_core::SharedPtr<RobloxView::ViewUpdateJob>&&)")]
 pub fn stub_0x39ea8() -> ! {
     todo!("0x39ea8 boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")
 }
 
 // 0x39f4c — __ZN5boost10shared_ptrIN10RobloxView13ViewUpdateJobEEC1IS2_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
 pub fn stub_0x39f4c() -> ! {
     todo!("0x39f4c boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
 }
 
 // 0x3a030 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_
-#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::operator=(rbx_core::SharedPtr<RobloxView::RenderJob>&&)")]
 pub fn stub_0x3a030() -> ! {
     todo!("0x3a030 boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")
 }
 
 // 0x3a0d4 — __ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
 pub fn stub_0x3a0d4() -> ! {
     todo!("0x3a0d4 boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")
 }
@@ -147,7 +147,7 @@ pub fn stub_0x3a1b8() -> ! {
 }
 
 // 0x3a1bc — __ZN5boost10shared_ptrIN3RBX4GameEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::Game>::operator=(boost::shared_ptr<RBX::Game> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Game>::operator=(rbx_core::SharedPtr<RBX::Game> const&)")]
 pub fn stub_0x3a1bc() -> ! {
     todo!("0x3a1bc boost::shared_ptr<RBX::Game>::operator=(boost::shared_ptr<RBX::Game> const&)")
 }
@@ -174,13 +174,13 @@ pub fn stub_0x3a408() -> ! {
 }
 
 // 0x3a5bc — __ZN5boost10shared_ptrIN3RBX5Tasks8SequenceEE5resetIS3_EEvPT_
-#[doc(alias = "void boost::shared_ptr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
+#[doc(alias = "void rbx_core::SharedPtr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
 pub fn stub_0x3a5bc() -> ! {
     todo!("0x3a5bc void boost::shared_ptr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")
 }
 
 // 0x3a660 — __ZN5boost10shared_ptrIN3RBX8ViewBaseEE5resetEv
-#[doc(alias = "boost::shared_ptr<RBX::ViewBase>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ViewBase>::reset(void)")]
 pub fn stub_0x3a660() -> ! {
     todo!("0x3a660 boost::shared_ptr<RBX::ViewBase>::reset(void)")
 }
@@ -200,7 +200,7 @@ pub fn stub_0x3a850() -> ! {
 }
 
 // 0x3a930 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6CameraES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(boost::shared_ptr<RBX::Camera> const*,RBX::Camera *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(rbx_core::SharedPtr<RBX::Camera> const*,RBX::Camera *)const")]
 pub fn stub_0x3a930() -> ! {
     todo!("0x3a930 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(boost::shared_ptr<RBX::Camera> const*,RBX::Camera *)const")
 }
@@ -381,13 +381,13 @@ pub fn stub_0x3be00() -> ! {
 
 // 0x3c010 — __ZN5boost26intrusive_ptr_add_weak_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 // type: int __fastcall(_DWORD)
-#[doc(alias = "void boost::intrusive_ptr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
+#[doc(alias = "void rbx_core::SharedPtr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
 pub fn stub_0x3c010() -> ! {
     todo!("0x3c010 void boost::intrusive_ptr_add_weak_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")
 }
 
 // 0x3c0c8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSEPS6_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)")]
 pub fn stub_0x3c0c8() -> ! {
     todo!("0x3c0c8 boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx::signals::signal<void ()(void)>::slot*)")
 }
@@ -619,7 +619,7 @@ pub fn stub_0x3d2f4() -> ! {
 }
 
 // 0x3d508 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEEaSERKSC_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")]
 pub fn stub_0x3d508() -> ! {
     todo!("0x3d508 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")
 }
@@ -730,7 +730,7 @@ pub fn stub_0x3dc5c() -> ! {
 }
 
 // 0x3dc60 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView9RenderJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(rbx_core::SharedPtr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
 pub fn stub_0x3dc60() -> ! {
     todo!("0x3dc60 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")
 }
@@ -773,7 +773,7 @@ pub fn stub_0x3de44() -> ! {
 }
 
 // 0x3de48 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView13ViewUpdateJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(boost::shared_ptr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(rbx_core::SharedPtr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")]
 pub fn stub_0x3de48() -> ! {
     todo!("0x3de48 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::ViewUpdateJob,RobloxView::ViewUpdateJob>(boost::shared_ptr<RobloxView::ViewUpdateJob> const*,RobloxView::ViewUpdateJob *)const")
 }
@@ -835,7 +835,7 @@ pub fn stub_0x3e094() -> ! {
 }
 
 // 0x3e0b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI19CRenderSettingsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(rbx_core::SharedPtr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")]
 pub fn stub_0x3e0b0() -> ! {
     todo!("0x3e0b0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")
 }
@@ -889,7 +889,7 @@ pub fn stub_0x3e528() -> ! {
 }
 
 // 0x3e558 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_14bad_exception_EEEEEPT_
-#[doc(alias = "boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")]
+#[doc(alias = "rbx_core::SharedPtr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")]
 pub fn stub_0x3e558() -> ! {
     todo!("0x3e558 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_exception_> *)")
 }
@@ -947,7 +947,7 @@ pub fn stub_0x3ea80() -> ! {
 }
 
 // 0x3eab0 — __ZN5boost10shared_ptrIKNS_16exception_detail10clone_baseEEC2INS1_10clone_implINS1_10bad_alloc_EEEEEPT_
-#[doc(alias = "boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")]
+#[doc(alias = "rbx_core::SharedPtr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")]
 pub fn stub_0x3eab0() -> ! {
     todo!("0x3eab0 boost::shared_ptr<boost::exception_detail::clone_base const>::shared_ptr<boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_>>(boost::exception_detail::clone_impl<boost::exception_detail::bad_alloc_> *)")
 }

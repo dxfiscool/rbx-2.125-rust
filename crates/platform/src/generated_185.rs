@@ -175,7 +175,7 @@ pub fn stub_489ae0() -> ! {
 
 // 0x489b38 — __ZN3RBX10Reflection9ArgHelper6getArgIdLi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: __int64 __fastcall(int, int)
-#[doc(alias = "double RBX::Reflection::ArgHelper::getArg<double,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<double> const&,boost::disable_if<boost::is_same<double,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "double RBX::Reflection::ArgHelper::getArg<double,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<double> const&,boost::disable_if<boost::is_same<double,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 pub fn stub_489b38() -> ! {
     todo!("0x489b38 double RBX::Reflection::ArgHelper::getArg<double,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<d")
 }
@@ -259,21 +259,21 @@ pub fn stub_48a08c() -> ! {
 
 // 0x48a470 — __ZN3rbx13placement_anyIN3RBX7Region3EEaSIN5boost10shared_ptrIKNS1_10Reflection5TupleEEEEERS3_RKT_
 // type: _DWORD *__fastcall(_DWORD *, const shared_count *)
-#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::shared_ptr<RBX::Reflection::Tuple const> const&)")]
+#[doc(alias = "rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>(rbx_core::SharedPtr<RBX::Reflection::Tuple const> const&)")]
 pub fn stub_48a470() -> ! {
     todo!("0x48a470 rbx::placement_any<RBX::Region3>& rbx::placement_any<RBX::Region3>::operator=<boost::shared_ptr<RBX::Reflection::Tuple c")
 }
 
 // 0x48a4d8 — __ZN5boost10shared_ptrIKN3RBX10Reflection5TupleEEaSERKS5_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Reflection::Tuple const>::operator=(boost::shared_ptr<RBX::Reflection::Tuple const> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Reflection::Tuple const>::operator=(rbx_core::SharedPtr<RBX::Reflection::Tuple const> const&)")]
 pub fn stub_48a4d8() -> ! {
     todo!("0x48a4d8 boost::shared_ptr<RBX::Reflection::Tuple const>::operator=(boost::shared_ptr<RBX::Reflection::Tuple const> const&)")
 }
 
 // 0x48a510 — __ZN3rbx14implementation12typed_holderIN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEE14construct_funcEPKcPc
 // type: const shared_count *__fastcall(const shared_count *result, _DWORD *)
-#[doc(alias = "rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::Tuple const>>::construct_func(char const*,char *)")]
+#[doc(alias = "rbx::implementation::typed_holder<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::construct_func(char const*,char *)")]
 pub fn stub_48a510() -> ! {
     todo!("0x48a510 rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::Tuple const>>::construct_func(char const*,char *)")
 }

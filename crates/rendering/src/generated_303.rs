@@ -531,7 +531,7 @@ pub fn stub_43b7a0() -> ! {
 
 // 0x43b7a4 — __ZN3rbx7signals6signalIFvRKSsEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(std::string const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(std::string const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string const&)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvRKSsEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 pub fn stub_43b7a4() -> ! {
     todo!("0x43b7a4 rbx::signals::signal<void ()(std::string const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot> &)")
@@ -547,7 +547,7 @@ pub fn stub_43b904() -> ! {
 
 // 0x43b92c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKSsEE4slotEEaSERKS9_
 // type: int *__fastcall(int *, _DWORD *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string const&)>::slot> const&)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKSsEE4slotEEaSERKS9_
 pub fn stub_43b92c() -> ! {
     todo!("0x43b92c boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot> const&)")
@@ -570,7 +570,7 @@ pub fn stub_43b954() -> ! {
 
 // 0x43ba50 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4nextERNS2_13intrusive_ptrINSC_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4nextERNS2_13intrusive_ptrINSC_4slotEEE
 pub fn stub_43ba50() -> ! {
     todo!("0x43ba50 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> &)")
@@ -586,7 +586,7 @@ pub fn stub_43bbb0() -> ! {
 
 // 0x43bbd8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotEEaSERKSF_
 // type: int *__fastcall(int *, _DWORD *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEPKNS5_10Reflection18PropertyDescriptorEEE4slotEEaSERKSF_
 pub fn stub_43bbd8() -> ! {
     todo!("0x43bbd8 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot> const&)")

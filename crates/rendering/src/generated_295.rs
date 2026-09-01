@@ -514,7 +514,7 @@ pub fn stub_411cc8() -> ! {
 
 // 0x411d70 — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 // type: int __fastcall(int result, int)
-#[doc(alias = "std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_erase(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)")]
+#[doc(alias = "std::_Rb_tree<rbx_core::WeakPtr<RBX::PartInstance>,std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>,std::less<rbx_core::WeakPtr<RBX::PartInstance>>,std::allocator<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>>::_M_erase(std::_Rb_tree_node<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>> *)")]
 // was: __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 pub fn stub_411d70() -> ! {
     todo!("0x411d70 std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_erase(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)")
@@ -522,7 +522,7 @@ pub fn stub_411d70() -> ! {
 
 // 0x411d98 — __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS7_E
 // type: int __fastcall(int, int)
-#[doc(alias = "std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)")]
+#[doc(alias = "std::_Rb_tree<rbx_core::WeakPtr<RBX::PartInstance>,std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>,std::less<rbx_core::WeakPtr<RBX::PartInstance>>,std::allocator<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<rbx_core::WeakPtr<RBX::PartInstance> const,float>> *)")]
 // was: __ZNSt8_Rb_treeIN5boost8weak_ptrIN3RBX12PartInstanceEEESt4pairIKS4_fESt10_Select1stIS7_ESt4lessIS4_ESaIS7_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeIS7_E
 pub fn stub_411d98() -> ! {
     todo!("0x411d98 std::_Rb_tree<boost::weak_ptr<RBX::PartInstance>,std::pair<boost::weak_ptr<RBX::PartInstance> const,float>,std::_Select1st<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>,std::less<boost::weak_ptr<RBX::PartInstance>>,std::allocator<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<boost::weak_ptr<RBX::PartInstance> const,float>> *)")

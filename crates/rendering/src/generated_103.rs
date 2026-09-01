@@ -364,7 +364,7 @@ pub fn stub_f31d84() -> ! {
 }
 
 // 0xf31d94 — j___ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE
-#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3::Axis)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3::Axis)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> &)")]
 // was: rbx::signals::signal<void ()(G3D::Vector3::Axis)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> &)
 pub fn stub_f31d94() -> ! {
     todo!("0xf31d94 rbx::signals::signal<void ()(G3D::Vector3::Axis)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> &)")
@@ -427,7 +427,7 @@ pub fn stub_f31e14() -> ! {
 }
 
 // 0xf31e24 — j___ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE4nextERN5boost13intrusive_ptrINS6_4slotEEE
-#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot> &)")]
 // was: rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot> &)
 pub fn stub_f31e24() -> ! {
     todo!("0xf31e24 rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot> &)")
@@ -504,28 +504,28 @@ pub fn stub_f31ec4() -> ! {
 }
 
 // 0xf31f04 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE4slotEEaSEPS9_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot*)
 pub fn stub_f31f04() -> ! {
     todo!("0xf31f04 boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot*)")
 }
 
 // 0xf31f14 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE4slotEEaSERKSA_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> const&)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> const&)
 pub fn stub_f31f14() -> ! {
     todo!("0xf31f14 boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> const&)")
 }
 
 // 0xf31f24 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEEaSEPS9_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot*)
 pub fn stub_f31f24() -> ! {
     todo!("0xf31f24 boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot*)")
 }
 
 // 0xf31f34 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEEaSERKSA_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot> const&)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot> const&)
 pub fn stub_f31f34() -> ! {
     todo!("0xf31f34 boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot> const&)")

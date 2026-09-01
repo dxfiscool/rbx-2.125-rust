@@ -610,7 +610,7 @@ pub fn stub_5e4b30() -> ! {
 // 0x5e4c10 — __ZNK5boost8weak_ptrIN3RBX10Reflection13DescribedBaseEE7expiredEv
 // type: int(void)
 #[doc(alias = "__ZNK5boost8weak_ptrIN3RBX10Reflection13DescribedBaseEE7expiredEv")]
-#[doc(alias = "boost::weak_ptr<RBX::Reflection::DescribedBase>::expired(void)const")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::Reflection::DescribedBase>::expired(void)const")]
 // was: __ZNK5boost8weak_ptrIN3RBX10Reflection13DescribedBaseEE7expiredEv
 pub fn stub_5e4c10() -> ! {
     todo!("0x5e4c10 boost::weak_ptr<RBX::Reflection::DescribedBase>::expired(void)const")

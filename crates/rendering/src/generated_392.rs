@@ -651,7 +651,7 @@ pub fn stub_592fe4() -> ! {
 // 0x59324c — __ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")]
-#[doc(alias = "rbx::signals::signal<void ()(std::string,RBX::ContentId)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(std::string,RBX::ContentId)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvSsN3RBX9ContentIdEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 pub fn stub_59324c() -> ! {
     todo!("0x59324c rbx::signals::signal<void ()(std::string,RBX::ContentId)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,RBX::ContentId)>::slot> &)")

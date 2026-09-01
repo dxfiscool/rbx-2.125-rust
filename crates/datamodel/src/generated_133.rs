@@ -518,14 +518,14 @@ pub fn stub_805ed0() -> ! {
 }
 
 // 0x8060dc — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbSsNS_10shared_ptrIN3RBX8InstanceEEEiEE4slotEEaSEPSA_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot>::operator=(rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot>::operator=(rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(bool,std::string,boost::shared_ptr<RBX::Instance>,int)>::slot>::operator=(rbx::signals::signal<void ()(bool,std::string,boost::shared_ptr<RBX::Instance>,int)>::slot*)
 pub fn stub_8060dc() -> ! {
     todo!("0x8060dc boost::intrusive_ptr<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot>::operator=(rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot*)")
 }
 
 // 0x806100 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbSsNS_10shared_ptrIN3RBX8InstanceEEEiEE4slotEEaSERKSB_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot> const&)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(bool,std::string,boost::shared_ptr<RBX::Instance>,int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,std::string,boost::shared_ptr<RBX::Instance>,int)>::slot> const&)
 pub fn stub_806100() -> ! {
     todo!("0x806100 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,std::string,rbx_core::SharedPtr<RBX::Instance>,int)>::slot> const&)")

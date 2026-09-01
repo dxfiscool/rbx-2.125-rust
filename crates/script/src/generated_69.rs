@@ -302,7 +302,7 @@ pub fn stub_0x2ac4b4() -> ! {
 
 // 0x2ac58c — __ZN3rbx7signals6signalIFvP9lua_StateEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(lua_State *)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(lua_State *)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(lua_State *)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(lua_State *)>::slot> &)")]
 pub fn stub_0x2ac58c() -> ! {
     todo!("0x2ac58c __ZN3rbx7signals6signalIFvP9lua_StateEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
 }
@@ -314,7 +314,7 @@ pub fn stub_0x2ac6ec() -> ! {
 }
 
 // 0x2ac718 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvP9lua_StateEE4slotEEaSERKS9_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(lua_State *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(lua_State *)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(lua_State *)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(lua_State *)>::slot> const&)")]
 pub fn stub_0x2ac718() -> ! {
     todo!("0x2ac718 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvP9lua_StateEE4slotEEaSERKS9_")
 }
@@ -442,7 +442,7 @@ pub fn stub_0x2aebd0() -> ! {
 }
 
 // 0x2aec28 — __ZN5boost21intrusive_ptr_releaseIN3RBX3Lua13WeakThreadRef4NodeEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE
-#[doc(alias = "void boost::intrusive_ptr_release<RBX::Lua::WeakThreadRef::Node,int,0>(rbx::quick_intrusive_ptr_target<RBX::Lua::WeakThreadRef::Node,int,0> const*)")]
+#[doc(alias = "void rbx_core::SharedPtr_release<RBX::Lua::WeakThreadRef::Node,int,0>(rbx::quick_intrusive_ptr_target<RBX::Lua::WeakThreadRef::Node,int,0> const*)")]
 pub fn stub_0x2aec28() -> ! {
     todo!("0x2aec28 __ZN5boost21intrusive_ptr_releaseIN3RBX3Lua13WeakThreadRef4NodeEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE")
 }

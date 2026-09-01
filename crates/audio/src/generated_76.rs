@@ -123,7 +123,7 @@ pub fn stub_6d4658() -> ! {
 
 // 0x6d465c — __ZN3rbx7signals6signalIFvRKN3RBX9TouchPairEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::TouchPair const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot> &)")]
 pub fn stub_6d465c() -> ! {
     todo!("0x6d465c rbx::signals::signal<void ()(RBX::TouchPair const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::TouchPair const&)>::slot> &)")
 }

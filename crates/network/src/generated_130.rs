@@ -674,7 +674,7 @@ pub fn stub_9bb4ec() -> ! {
 
 // 0x9bb95c — __ZN3RBX7Network15PhysicsReceiver11receivePartERN5boost10shared_ptrINS_12PartInstanceEEERN6RakNet9BitStreamE
 // type: int __fastcall(int, struct _Unwind_Exception *, RakNet::BitStream *)
-#[doc(alias = "RBX::Network::PhysicsReceiver::receivePart(boost::shared_ptr<RBX::PartInstance> &,RakNet::BitStream &)")]
+#[doc(alias = "RBX::Network::PhysicsReceiver::receivePart(rbx_core::SharedPtr<RBX::PartInstance> &,RakNet::BitStream &)")]
 pub fn stub_9bb95c() -> ! {
     todo!("0x9bb95c __ZN3RBX7Network15PhysicsReceiver11receivePartERN5boost10shared_ptrINS_12PartInstanceEEERN6RakNet9BitStreamE")
 }

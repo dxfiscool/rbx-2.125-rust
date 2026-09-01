@@ -65,7 +65,7 @@ pub fn stub_6af700() -> ! {
 // 0x6af90c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10BrickColorEEE4slotEEaSEPS8_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(rbx::signals::signal<void ()(RBX::BrickColor)>::slot*)
 // type: int *__fastcall(int *, int)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(rbx::signals::signal<void ()(RBX::BrickColor)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(rbx::signals::signal<void ()(RBX::BrickColor)>::slot*)")]
 pub fn stub_6af90c() -> ! {
     todo!("0x6af90c boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(rbx::signals::signal<void ()(RBX::BrickColor)>::slot*)")
 }
@@ -286,7 +286,7 @@ pub fn stub_6b0b90() -> ! {
 // 0x6b0cf8 — __ZN3rbx7signals6signalIFvN3G3D6Color3EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // demangled: rbx::signals::signal<void ()(G3D::Color3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot> &)
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(G3D::Color3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(G3D::Color3)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Color3)>::slot> &)")]
 pub fn stub_6b0cf8() -> ! {
     todo!("0x6b0cf8 rbx::signals::signal<void ()(G3D::Color3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot> &)")
 }
@@ -413,7 +413,7 @@ pub fn stub_6b18f8() -> ! {
 
 // 0x6b1b04 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D6Color3EEE4slotEEaSEPS8_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Color3)>::slot*)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Color3)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Color3)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Color3)>::slot*)")]
 pub fn stub_6b1b04() -> ! {
     todo!("0x6b1b04 boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Color3)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Color3)>::slot*)")
 }
@@ -617,7 +617,7 @@ pub fn stub_6b2e38() -> ! {
 // 0x6b2fd8 — __ZN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // demangled: rbx::signals::signal<void ()(G3D::CoordinateFrame)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot> &)
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(G3D::CoordinateFrame)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot> &)")]
 pub fn stub_6b2fd8() -> ! {
     todo!("0x6b2fd8 rbx::signals::signal<void ()(G3D::CoordinateFrame)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot> &)")
 }

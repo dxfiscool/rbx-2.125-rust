@@ -55,7 +55,7 @@ pub fn stub_28d6fc() -> ! {
 
 // 0x29276c — __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEEEC2ES7_S8_SB_
 // type: int __fastcall(int, int, int, boost::detail::sp_counted_base *)
-#[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>)")]
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>)")]
 // was: __ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEENS2_INS4_25ScriptInformationProvider13RequestResultEEEEC2ES7_S8_SB_
 pub fn stub_29276c() -> ! {
     todo!("0x29276c boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>,boost::_bi::value<RBX::ScriptInformationProvider::RequestResult>)")
@@ -63,21 +63,21 @@ pub fn stub_29276c() -> ! {
 
 // 0x2928dc — __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEEEC2ES7_S8_
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>)")]
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::Script>>,boost::_bi::value<std::string>)")]
 // was: __ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX6ScriptEEEEENS2_ISsEEEC2ES7_S8_
 pub fn stub_2928dc() -> ! {
     todo!("0x2928dc boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::Script>>,boost::_bi::value<std::string>)")
 }
 
 // 0x2a4644 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE8on_indexEP9lua_State
-#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(lua_State *)")]
 // was: __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE8on_indexEP9lua_State
 pub fn stub_2a4644() -> ! {
     todo!("0x2a4644 RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(lua_State *)")
 }
 
 // 0x2a4678 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_newindexEP9lua_State
-#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(lua_State *)")]
 // was: __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_newindexEP9lua_State
 pub fn stub_2a4678() -> ! {
     todo!("0x2a4678 RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(lua_State *)")
@@ -254,7 +254,7 @@ pub fn stub_2a7220() -> ! {
 
 // 0x2a7324 — __ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRef4NodeEEaSEPS4_
 // type: int __fastcall(int, int32_t *__theValue)
-#[doc(alias = "boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>::operator=(RBX::Lua::WeakThreadRef::Node*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>::operator=(RBX::Lua::WeakThreadRef::Node*)")]
 // was: __ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRef4NodeEEaSEPS4_
 pub fn stub_2a7324() -> ! {
     todo!("0x2a7324 boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>::operator=(RBX::Lua::WeakThreadRef::Node*)")
@@ -304,14 +304,14 @@ pub fn stub_2a9450() -> ! {
 }
 
 // 0x2a947c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviEE4slotEEaSERKS7_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(int)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(int)>::slot> const&)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviEE4slotEEaSERKS7_
 pub fn stub_2a947c() -> ! {
     todo!("0x2a947c boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot> const&)")
 }
 
 // 0x2a9710 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSERKS7_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot> const&)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSERKS7_
 pub fn stub_2a9710() -> ! {
     todo!("0x2a9710 boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> const&)")

@@ -418,11 +418,11 @@ pub fn stub_0x2ce1fc() -> ! { todo!("0x2ce1fc global constructor keyed to_a_76")
 pub fn stub_0x2ce2c4() -> ! { todo!("0x2ce2c4 RBX::AdvDragTool::onMouseDown(RBX::PartInstance *,G3D::Vector3 const&,std::vector<RBX::Instance *,std::allocator<RBX::Instance *>> const&,RBX::UIEvent const&,RBX::Workspace *,rbx_core::SharedPtr<RBX::Instance>)") }
 
 // 0x2ce618 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EEC2ERKS6_
-#[doc(alias = "std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::vector(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)")]
+#[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::vector(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> const&)")]
 pub fn stub_0x2ce618() -> ! { todo!("0x2ce618 std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::vector(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> const&)") }
 
 // 0x2ce7d4 — __ZNSt12_Vector_baseIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EEC2EmRKS5_
-#[doc(alias = "std::_Vector_base<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_Vector_base(unsigned long,std::allocator<boost::weak_ptr<RBX::PartInstance>> const&)")]
+#[doc(alias = "std::_Vector_base<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::_Vector_base(unsigned long,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>> const&)")]
 pub fn stub_0x2ce7d4() -> ! { todo!("0x2ce7d4 std::_Vector_base<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_Vector_base(unsigned long,std::allocator<boost::weak_ptr<RBX::PartInstance>> const&)") }
 
 // 0x2ceadc — __GLOBAL__I_a_77

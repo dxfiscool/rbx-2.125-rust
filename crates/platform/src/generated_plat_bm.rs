@@ -129,21 +129,21 @@ pub fn stub_25c38c() -> ! {
 
 // 0x25c4d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9SpotLightEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::SpotLight> RBX::Creatable<RBX::Instance>::create<RBX::SpotLight>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SpotLight> RBX::Creatable<RBX::Instance>::create<RBX::SpotLight>(void)")]
 pub fn stub_25c4d0() -> ! {
     todo!("0x25c4d0 boost::shared_ptr<RBX::SpotLight> RBX::Creatable<RBX::Instance>::create<RBX::SpotLight>(void)")
 }
 
 // 0x25c580 — __ZN5boost10shared_ptrIN3RBX9SpotLightEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::SpotLight>::shared_ptr<RBX::SpotLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SpotLight>::shared_ptr<RBX::SpotLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_25c580() -> ! {
     todo!("0x25c580 boost::shared_ptr<RBX::SpotLight>::shared_ptr<RBX::SpotLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpotLight *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x25c648 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9SpotLightES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpotLight,RBX::SpotLight>(boost::shared_ptr<RBX::SpotLight> const*,RBX::SpotLight *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpotLight,RBX::SpotLight>(rbx_core::SharedPtr<RBX::SpotLight> const*,RBX::SpotLight *)const")]
 pub fn stub_25c648() -> ! {
     todo!("0x25c648 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpotLight,RBX::SpotLight>(boost::shared_ptr<RBX::SpotLight> const*,RBX::SpotLight *)const")
 }
@@ -239,21 +239,21 @@ pub fn stub_25cd3c() -> ! {
 
 // 0x25ce80 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10PointLightEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::PointLight> RBX::Creatable<RBX::Instance>::create<RBX::PointLight>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PointLight> RBX::Creatable<RBX::Instance>::create<RBX::PointLight>(void)")]
 pub fn stub_25ce80() -> ! {
     todo!("0x25ce80 boost::shared_ptr<RBX::PointLight> RBX::Creatable<RBX::Instance>::create<RBX::PointLight>(void)")
 }
 
 // 0x25cf30 — __ZN5boost10shared_ptrIN3RBX10PointLightEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::PointLight>::shared_ptr<RBX::PointLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PointLight>::shared_ptr<RBX::PointLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_25cf30() -> ! {
     todo!("0x25cf30 boost::shared_ptr<RBX::PointLight>::shared_ptr<RBX::PointLight,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PointLight *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x25cff8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10PointLightES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PointLight,RBX::PointLight>(boost::shared_ptr<RBX::PointLight> const*,RBX::PointLight *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PointLight,RBX::PointLight>(rbx_core::SharedPtr<RBX::PointLight> const*,RBX::PointLight *)const")]
 pub fn stub_25cff8() -> ! {
     todo!("0x25cff8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PointLight,RBX::PointLight>(boost::shared_ptr<RBX::PointLight> const*,RBX::PointLight *)const")
 }

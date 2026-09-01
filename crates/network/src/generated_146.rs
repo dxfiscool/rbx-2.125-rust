@@ -115,7 +115,7 @@ pub fn stub_a14074() -> ! {
 // demangled: RBX::Network::Players::friendServiceRequest(bool,boost::weak_ptr<RBX::Network::Player>,int)
 // type: void __fastcall(RBX::ServiceProvider *, int, int *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::Players::friendServiceRequest(bool,boost::weak_ptr<RBX::Network::Player>,int)")]
+#[doc(alias = "RBX::Network::Players::friendServiceRequest(bool,rbx_core::WeakPtr<RBX::Network::Player>,int)")]
 pub fn stub_a14640() -> ! {
     todo!("0xa14640 RBX::Network::Players::friendServiceRequest(bool,boost::weak_ptr<RBX::Network::Player>,int)")
 }
@@ -180,7 +180,7 @@ pub fn stub_a1526c() -> ! {
 // demangled: RBX::Network::Players::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)
 // type: void __fastcall(RBX::ServiceProvider *, const RBX::Instance *, int, int, int, int, int, int, __guard *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::Players::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "RBX::Network::Players::onDescendantRemoving(rbx_core::SharedPtr<RBX::Instance> const&)")]
 pub fn stub_a15560() -> ! {
     todo!("0xa15560 RBX::Network::Players::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")
 }
@@ -204,7 +204,7 @@ pub fn stub_a16238() -> ! {
 // demangled: RBX::Network::Players::remoteInsertResultHelper(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3)
 // type: void __fastcall(int, int *, int, int, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::Players::remoteInsertResultHelper(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3)")]
+#[doc(alias = "RBX::Network::Players::remoteInsertResultHelper(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3)")]
 pub fn stub_a1624c() -> ! {
     todo!("0xa1624c RBX::Network::Players::remoteInsertResultHelper(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3)")
 }
@@ -213,7 +213,7 @@ pub fn stub_a1624c() -> ! {
 // demangled: RBX::Network::Players::remoteInsertResult(boost::shared_ptr<RBX::Instance>,G3D::Vector3)
 // type: void __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::Players::remoteInsertResult(boost::shared_ptr<RBX::Instance>,G3D::Vector3)")]
+#[doc(alias = "RBX::Network::Players::remoteInsertResult(rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3)")]
 pub fn stub_a16648() -> ! {
     todo!("0xa16648 RBX::Network::Players::remoteInsertResult(boost::shared_ptr<RBX::Instance>,G3D::Vector3)")
 }
@@ -366,7 +366,7 @@ pub fn stub_a1ae48() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(int),1>::~BoundFuncDesc()")]
 pub fn stub_a1ae74() -> ! {
     todo!("0xa1ae74 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(int),1>::~BoundFuncDesc()")
 }
@@ -399,7 +399,7 @@ pub fn stub_a1af08() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
 // type: int()
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 pub fn stub_a1afb0() -> ! {
     todo!("0xa1afb0 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
 }
@@ -408,7 +408,7 @@ pub fn stub_a1afb0() -> ! {
 // demangled: RBX::Reflection::EventDesc<RBX::Network::Players,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Players,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Players,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()")]
 pub fn stub_a1afbc() -> ! {
     todo!("0xa1afbc RBX::Reflection::EventDesc<RBX::Network::Players,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()")
 }
@@ -425,7 +425,7 @@ pub fn stub_a1b004() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()
 // type: int()
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")]
 pub fn stub_a1b04c() -> ! {
     todo!("0xa1b04c RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")
 }
@@ -434,7 +434,7 @@ pub fn stub_a1b04c() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Network::Players::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, __guard *, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Network::Players::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> (RBX::Network::Players::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 pub fn stub_a1b058() -> ! {
     todo!("0xa1b058 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::BoundFuncDesc(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> (RBX::Network::Players::*)(void),char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
@@ -451,7 +451,7 @@ pub fn stub_a1b218() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")]
 pub fn stub_a1b26c() -> ! {
     todo!("0xa1b26c RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(void),0>::~BoundFuncDesc()")
 }
@@ -459,7 +459,7 @@ pub fn stub_a1b26c() -> ! {
 // 0xa1b2b4 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network7PlayersEFN5boost10shared_ptrINS_8InstanceEEES7_ELi1EED1Ev
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 pub fn stub_a1b2b4() -> ! {
     todo!("0xa1b2b4 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
 }
@@ -468,7 +468,7 @@ pub fn stub_a1b2b4() -> ! {
 // demangled: RBX::Reflection::EventDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)> RBX::Network::Players::*>::~EventDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)> RBX::Network::Players::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Players,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,RBX::FriendService::FriendEventType)> RBX::Network::Players::*>::~EventDesc()")]
 pub fn stub_a1b2c0() -> ! {
     todo!("0xa1b2c0 RBX::Reflection::EventDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,RBX::FriendService::FriendEventType)> RBX::Network::Players::*>::~EventDesc()")
 }
@@ -477,7 +477,7 @@ pub fn stub_a1b2c0() -> ! {
 // demangled: RBX::Reflection::EventDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Players,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()")]
 pub fn stub_a1b308() -> ! {
     todo!("0xa1b308 RBX::Reflection::EventDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::Network::Players::*>::~EventDesc()")
 }
@@ -518,7 +518,7 @@ pub fn stub_a1b3e0() -> ! {
 // demangled: boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list_av_2<boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string>::type> boost::bind<RBX::worker_thread::work_result,boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string,boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string>(RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string)
 // type: void __fastcall(int, int, int *, const std::string *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list_av_2<boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string>::type> boost::bind<RBX::worker_thread::work_result,boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string,boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string>(RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string)")]
+#[doc(alias = "boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string>::type> boost::bind<RBX::worker_thread::work_result,rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string,rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string>(RBX::worker_thread::work_result (*)(rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string),rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string)")]
 pub fn stub_a1b6b0() -> ! {
     todo!("0xa1b6b0 boost::_bi::bind_t<RBX::worker_thread::work_result,RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::_bi::list_av_2<boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string>::type> boost::bind<RBX::worker_thread::work_result,boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string,boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string>(RBX::worker_thread::work_result (*)(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string),boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string)")
 }
@@ -527,7 +527,7 @@ pub fn stub_a1b6b0() -> ! {
 // demangled: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>> std::for_each<std::_List_const_iterator<RBX::Network::ChatMessage>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>>>(std::_List_const_iterator<RBX::Network::ChatMessage>,std::_List_const_iterator<RBX::Network::ChatMessage>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>>)
 // type: void __fastcall(int *, int, int, int *, pthread_mutex_t *, int, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>> std::for_each<std::_List_const_iterator<RBX::Network::ChatMessage>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>>>(std::_List_const_iterator<RBX::Network::ChatMessage>,std::_List_const_iterator<RBX::Network::ChatMessage>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,rbx_core::SharedPtr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Player>>,boost::arg<1>>> std::for_each<std::_List_const_iterator<RBX::Network::ChatMessage>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,rbx_core::SharedPtr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Player>>,boost::arg<1>>>>(std::_List_const_iterator<RBX::Network::ChatMessage>,std::_List_const_iterator<RBX::Network::ChatMessage>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,rbx_core::SharedPtr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<rbx_core::SharedPtr<RBX::Network::Player>>,boost::arg<1>>>)")]
 pub fn stub_a1bc50() -> ! {
     todo!("0xa1bc50 boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>> std::for_each<std::_List_const_iterator<RBX::Network::ChatMessage>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>>>(std::_List_const_iterator<RBX::Network::ChatMessage>,std::_List_const_iterator<RBX::Network::ChatMessage>,boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::_bi::value<boost::shared_ptr<RBX::Network::Player>>,boost::arg<1>>>)")
 }
@@ -536,7 +536,7 @@ pub fn stub_a1bc50() -> ! {
 // demangled: boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list_av_3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::shared_ptr<RBX::Network::Player>,boost::arg<1>>::type> boost::bind<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&,boost::reference_wrapper<RBX::Network::AbuseReport>,boost::shared_ptr<RBX::Network::Player>,boost::arg<1>>(void (RBX::Network::AbuseReport::*)(boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&),boost::reference_wrapper<RBX::Network::AbuseReport>,boost::shared_ptr<RBX::Network::Player>,boost::arg<1>)
 // type: void __fastcall(int, pthread_mutex_t *, int, int, pthread_mutex_t **)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list_av_3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::shared_ptr<RBX::Network::Player>,boost::arg<1>>::type> boost::bind<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&,boost::reference_wrapper<RBX::Network::AbuseReport>,boost::shared_ptr<RBX::Network::Player>,boost::arg<1>>(void (RBX::Network::AbuseReport::*)(boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&),boost::reference_wrapper<RBX::Network::AbuseReport>,boost::shared_ptr<RBX::Network::Player>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,rbx_core::SharedPtr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list_av_3<boost::reference_wrapper<RBX::Network::AbuseReport>,rbx_core::SharedPtr<RBX::Network::Player>,boost::arg<1>>::type> boost::bind<void,RBX::Network::AbuseReport,rbx_core::SharedPtr<RBX::Network::Player>,RBX::Network::ChatMessage const&,boost::reference_wrapper<RBX::Network::AbuseReport>,rbx_core::SharedPtr<RBX::Network::Player>,boost::arg<1>>(void (RBX::Network::AbuseReport::*)(rbx_core::SharedPtr<RBX::Network::Player>,RBX::Network::ChatMessage const&),boost::reference_wrapper<RBX::Network::AbuseReport>,rbx_core::SharedPtr<RBX::Network::Player>,boost::arg<1>)")]
 pub fn stub_a1bf30() -> ! {
     todo!("0xa1bf30 boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&>,boost::_bi::list_av_3<boost::reference_wrapper<RBX::Network::AbuseReport>,boost::shared_ptr<RBX::Network::Player>,boost::arg<1>>::type> boost::bind<void,RBX::Network::AbuseReport,boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&,boost::reference_wrapper<RBX::Network::AbuseReport>,boost::shared_ptr<RBX::Network::Player>,boost::arg<1>>(void (RBX::Network::AbuseReport::*)(boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&),boost::reference_wrapper<RBX::Network::AbuseReport>,boost::shared_ptr<RBX::Network::Player>,boost::arg<1>)")
 }
@@ -545,7 +545,7 @@ pub fn stub_a1bf30() -> ! {
 // demangled: boost::shared_ptr<RBX::Network::Player> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Network::Player,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)
 // type: void __fastcall(_DWORD *, _DWORD *, int, int, int, int, int, int, int, __guard *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::Network::Player> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Network::Player,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Player> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Network::Player,RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 pub fn stub_a1c8e8() -> ! {
     todo!("0xa1c8e8 boost::shared_ptr<RBX::Network::Player> RBX::Reflection::DescribedBase::fastSharedDynamicCast<RBX::Network::Player,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
 }
@@ -554,7 +554,7 @@ pub fn stub_a1c8e8() -> ! {
 // demangled: rbx::signals::signal_with_args<4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::operator()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
 // type: void __fastcall(_DWORD *, int, int *, std::string *, int *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "rbx::signals::signal_with_args<4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::operator()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "rbx::signals::signal_with_args<4,void ()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)>::operator()(RBX::Network::Players::PlayerChatType,rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_a1ced4() -> ! {
     todo!("0xa1ced4 rbx::signals::signal_with_args<4,void ()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::operator()(RBX::Network::Players::PlayerChatType,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")
 }
@@ -571,7 +571,7 @@ pub fn stub_a1d83c() -> ! {
 // demangled: boost::shared_ptr<RBX::Network::Player> RBX::shared_from<RBX::Network::Player>(RBX::Network::Player*)
 // type: void __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::Network::Player> RBX::shared_from<RBX::Network::Player>(RBX::Network::Player*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Player> RBX::shared_from<RBX::Network::Player>(RBX::Network::Player*)")]
 pub fn stub_a1daf8() -> ! {
     todo!("0xa1daf8 boost::shared_ptr<RBX::Network::Player> RBX::shared_from<RBX::Network::Player>(RBX::Network::Player*)")
 }
@@ -580,7 +580,7 @@ pub fn stub_a1daf8() -> ! {
 // demangled: boost::shared_ptr<RBX::Network::Player> RBX::shared_from_polymorphic_downcast<RBX::Network::Player,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)
 // type: void __fastcall(int, _DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::Network::Player> RBX::shared_from_polymorphic_downcast<RBX::Network::Player,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Player> RBX::shared_from_polymorphic_downcast<RBX::Network::Player,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)")]
 pub fn stub_a1dd8c() -> ! {
     todo!("0xa1dd8c boost::shared_ptr<RBX::Network::Player> RBX::shared_from_polymorphic_downcast<RBX::Network::Player,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)")
 }
@@ -589,7 +589,7 @@ pub fn stub_a1dd8c() -> ! {
 // demangled: boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>::type> boost::bind<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *,boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(void (RBX::Network::Players::*)(std::string,std::string,RakNet::Packet *),boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *)
 // type: void __fastcall(_DWORD *, int, int, int *, std::string *, std::string *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>::type> boost::bind<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *,boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(void (RBX::Network::Players::*)(std::string,std::string,RakNet::Packet *),boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list_av_4<rbx_core::SharedPtr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>::type> boost::bind<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *,rbx_core::SharedPtr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(void (RBX::Network::Players::*)(std::string,std::string,RakNet::Packet *),rbx_core::SharedPtr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *)")]
 pub fn stub_a1e020() -> ! {
     todo!("0xa1e020 boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>::type> boost::bind<void,RBX::Network::Players,std::string,std::string,RakNet::Packet *,boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *>(void (RBX::Network::Players::*)(std::string,std::string,RakNet::Packet *),boost::shared_ptr<RBX::Network::Players>,std::string,std::string,RakNet::Packet *)")
 }
@@ -598,7 +598,7 @@ pub fn stub_a1e020() -> ! {
 // demangled: boost::shared_ptr<RBX::Network::Players> RBX::shared_from<RBX::Network::Players>(RBX::Network::Players*)
 // type: void __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::Network::Players> RBX::shared_from<RBX::Network::Players>(RBX::Network::Players*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::Players> RBX::shared_from<RBX::Network::Players>(RBX::Network::Players*)")]
 pub fn stub_a1e654() -> ! {
     todo!("0xa1e654 boost::shared_ptr<RBX::Network::Players> RBX::shared_from<RBX::Network::Players>(RBX::Network::Players*)")
 }
@@ -623,7 +623,7 @@ pub fn stub_a1f558() -> ! {
 // demangled: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list_av_3<boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>(void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3)
 // type: void __fastcall(int, int, int *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list_av_3<boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>(void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list_av_3<rbx_core::WeakPtr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>::type> boost::bind<void,rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::WeakPtr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>(void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),rbx_core::WeakPtr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3)")]
 pub fn stub_a1ff60() -> ! {
     todo!("0xa1ff60 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list_av_3<boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>(void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3)")
 }
@@ -632,7 +632,7 @@ pub fn stub_a1ff60() -> ! {
 // demangled: boost::weak_ptr<RBX::Network::Players> RBX::weak_from<RBX::Network::Players>(RBX::Network::Players*)
 // type: void __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::weak_ptr<RBX::Network::Players> RBX::weak_from<RBX::Network::Players>(RBX::Network::Players*)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::Network::Players> RBX::weak_from<RBX::Network::Players>(RBX::Network::Players*)")]
 pub fn stub_a20280() -> ! {
     todo!("0xa20280 boost::weak_ptr<RBX::Network::Players> RBX::weak_from<RBX::Network::Players>(RBX::Network::Players*)")
 }
@@ -641,7 +641,7 @@ pub fn stub_a20280() -> ! {
 // demangled: boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,bool,boost::weak_ptr<RBX::Network::Player>,int>,boost::_bi::list_av_4<RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>>::type> boost::bind<void,RBX::Network::Players,bool,boost::weak_ptr<RBX::Network::Player>,int,RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>>(void (RBX::Network::Players::*)(bool,boost::weak_ptr<RBX::Network::Player>,int),RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>)
 // type: void __fastcall(_DWORD *, int, int, int, int *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,bool,boost::weak_ptr<RBX::Network::Player>,int>,boost::_bi::list_av_4<RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>>::type> boost::bind<void,RBX::Network::Players,bool,boost::weak_ptr<RBX::Network::Player>,int,RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>>(void (RBX::Network::Players::*)(bool,boost::weak_ptr<RBX::Network::Player>,int),RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,bool,rbx_core::WeakPtr<RBX::Network::Player>,int>,boost::_bi::list_av_4<RBX::Network::Players*,boost::arg<1>,rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<2>>::type> boost::bind<void,RBX::Network::Players,bool,rbx_core::WeakPtr<RBX::Network::Player>,int,RBX::Network::Players*,boost::arg<1>,rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<2>>(void (RBX::Network::Players::*)(bool,rbx_core::WeakPtr<RBX::Network::Player>,int),RBX::Network::Players*,boost::arg<1>,rbx_core::WeakPtr<RBX::Network::Player>,boost::arg<2>)")]
 pub fn stub_a207bc() -> ! {
     todo!("0xa207bc boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Network::Players,bool,boost::weak_ptr<RBX::Network::Player>,int>,boost::_bi::list_av_4<RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>>::type> boost::bind<void,RBX::Network::Players,bool,boost::weak_ptr<RBX::Network::Player>,int,RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>>(void (RBX::Network::Players::*)(bool,boost::weak_ptr<RBX::Network::Player>,int),RBX::Network::Players*,boost::arg<1>,boost::weak_ptr<RBX::Network::Player>,boost::arg<2>)")
 }
@@ -650,7 +650,7 @@ pub fn stub_a207bc() -> ! {
 // demangled: boost::weak_ptr<RBX::Network::Player> RBX::weak_from<RBX::Network::Player>(RBX::Network::Player*)
 // type: void __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::weak_ptr<RBX::Network::Player> RBX::weak_from<RBX::Network::Player>(RBX::Network::Player*)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::Network::Player> RBX::weak_from<RBX::Network::Player>(RBX::Network::Player*)")]
 pub fn stub_a20ac8() -> ! {
     todo!("0xa20ac8 boost::weak_ptr<RBX::Network::Player> RBX::weak_from<RBX::Network::Player>(RBX::Network::Player*)")
 }

@@ -688,7 +688,7 @@ pub fn stub_27bd78() -> ! {
 
 // 0x27e448 — __ZN3RBX3Lua12callCallbackENS0_15WeakFunctionRefEN5boost10shared_ptrIKNS_10Reflection5TupleEEENS2_13intrusive_ptrINS0_13WeakThreadRefEEE
 // was: RBX::Lua::callCallback(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)
-#[doc(alias = "RBX::Lua::callCallback(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)")]
+#[doc(alias = "RBX::Lua::callCallback(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>)")]
 #[doc(alias = "__ZN3RBX3Lua12callCallbackENS0_15WeakFunctionRefEN5boost10shared_ptrIKNS_10Reflection5TupleEEENS2_13intrusive_ptrINS0_13WeakThreadRefEEE")]
 pub fn stub_27e448() -> ! {
     todo!("0x27e448 RBX::Lua::callCallback(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)")

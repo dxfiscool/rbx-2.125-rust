@@ -171,7 +171,7 @@ pub fn stub_a53764() -> ! {
 // demangled: rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)
 // type: void __fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")]
+#[doc(alias = "rbx::signals::signal<void ()(RakNet::SystemAddress const&,rbx_core::SharedPtr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")]
 pub fn stub_a5391c() -> ! {
     todo!("0xa5391c rbx::signals::signal<void ()(RakNet::SystemAddress const&,boost::shared_ptr<RakNet::BitStream> const&,std::string const&,std::string const&)>::disconnectAll(void)")
 }
@@ -188,7 +188,7 @@ pub fn stub_a53ad4() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,rbx_core::SharedPtr<RBX::Instance> ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 pub fn stub_a53b04() -> ! {
     todo!("0xa53b04 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,boost::shared_ptr<RBX::Instance> ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
 }
@@ -197,7 +197,7 @@ pub fn stub_a53b04() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")]
 pub fn stub_a53c54() -> ! {
     todo!("0xa53c54 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(boost::shared_ptr<RBX::Instance>,std::string,std::string),3>::~BoundFuncDesc()")
 }
@@ -206,7 +206,7 @@ pub fn stub_a53c54() -> ! {
 // demangled: RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),2>::~BoundFuncDesc()")]
 pub fn stub_a53e38() -> ! {
     todo!("0xa53e38 RBX::Reflection::BoundFuncDesc<RBX::Network::Players,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
 }

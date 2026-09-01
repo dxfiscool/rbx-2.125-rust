@@ -617,7 +617,7 @@ pub fn stub_63ab30() -> ! {
     todo!("0x63ab30 void RBX::SocialService::dispatchRequest<bool>(std::string const&,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
 }
 
-#[doc(alias = "boost::shared_ptr<RBX::Team> RBX::shared_from<RBX::Team>(RBX::Team*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Team> RBX::shared_from<RBX::Team>(RBX::Team*)")]
 // 0x665064 — __ZN3RBX11shared_fromINS_4TeamEEEN5boost10shared_ptrIT_EEPS4_
 // type: int(void)
 // was: boost::shared_ptr<RBX::Team> RBX::shared_from<RBX::Team>(RBX::Team*)
@@ -633,7 +633,7 @@ pub fn stub_668884() -> ! {
     todo!("0x668884 rbx::signals::connection rbx::signals::signal<void ()(char const*,bool)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::TextBox,char const*,bool>,boost::_bi::list3<boost::_bi::value<RBX::TextBox*>,boost::arg<1>,boost::arg<2>>> const&)")
 }
 
-#[doc(alias = "rbx::signals::signal_with_args<1,void ()(boost::shared_ptr<RBX::TextBox>)>::operator()(boost::shared_ptr<RBX::TextBox>)")]
+#[doc(alias = "rbx::signals::signal_with_args<1,void ()(rbx_core::SharedPtr<RBX::TextBox>)>::operator()(rbx_core::SharedPtr<RBX::TextBox>)")]
 // 0x6688f8 — __ZN3rbx7signals16signal_with_argsILi1EFvN5boost10shared_ptrIN3RBX7TextBoxEEEEEclES6_
 // type: int(void)
 // was: rbx::signals::signal_with_args<1,void ()(boost::shared_ptr<RBX::TextBox>)>::operator()(boost::shared_ptr<RBX::TextBox>)
@@ -641,7 +641,7 @@ pub fn stub_6688f8() -> ! {
     todo!("0x6688f8 rbx::signals::signal_with_args<1,void ()(boost::shared_ptr<RBX::TextBox>)>::operator()(boost::shared_ptr<RBX::TextBox>)")
 }
 
-#[doc(alias = "boost::shared_ptr<RBX::TextBox> RBX::shared_from<RBX::TextBox>(RBX::TextBox*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextBox> RBX::shared_from<RBX::TextBox>(RBX::TextBox*)")]
 // 0x668adc — __ZN3RBX11shared_fromINS_7TextBoxEEEN5boost10shared_ptrIT_EEPS4_
 // type: int(void)
 // was: boost::shared_ptr<RBX::TextBox> RBX::shared_from<RBX::TextBox>(RBX::TextBox*)
@@ -649,7 +649,7 @@ pub fn stub_668adc() -> ! {
     todo!("0x668adc boost::shared_ptr<RBX::TextBox> RBX::shared_from<RBX::TextBox>(RBX::TextBox*)")
 }
 
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot> &)")]
 // 0x66996c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4nextERNS2_13intrusive_ptrINS8_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot> &)
@@ -657,7 +657,7 @@ pub fn stub_66996c() -> ! {
     todo!("0x66996c rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot> &)")
 }
 
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::on_error(std::exception &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::on_error(std::exception &)")]
 // 0x669acc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE8on_errorERSt9exception
 // type: int(void)
 // was: rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::on_error(std::exception &)
@@ -665,7 +665,7 @@ pub fn stub_669acc() -> ! {
     todo!("0x669acc rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::on_error(std::exception &)")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(char const*,bool)>::slot>::operator=(rbx::signals::signal<void ()(char const*,bool)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(char const*,bool)>::slot>::operator=(rbx::signals::signal<void ()(char const*,bool)>::slot*)")]
 // 0x669d00 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPKcbEE4slotEEaSEPS8_
 // type: int(void)
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(char const*,bool)>::slot>::operator=(rbx::signals::signal<void ()(char const*,bool)>::slot*)
@@ -745,7 +745,7 @@ pub fn stub_66b068() -> ! {
     todo!("0x66b068 boost::function1<void,RBX::GuiObject::TweenStatus>::clear(void)")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int,int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int,int)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(int,int)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(int,int)>::slot> const&)")]
 // 0x66b358 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviiEE4slotEEaSERKS7_
 // type: int(void)
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(int,int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int,int)>::slot> const&)
@@ -761,7 +761,7 @@ pub fn stub_66b5c4() -> ! {
     todo!("0x66b5c4 rbx::signals::signal<void ()(RBX::UDim2)>::disconnectAll(void)")
 }
 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UDim2)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UDim2)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UDim2)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UDim2)>::slot> const&)")]
 // 0x66b73c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX5UDim2EEE4slotEEaSERKS9_
 // type: int(void)
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UDim2)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UDim2)>::slot> const&)
@@ -801,7 +801,7 @@ pub fn stub_67d8fc() -> ! {
     todo!("0x67d8fc boost::function0<void>::operator=(boost::function0<void> const&)")
 }
 
-#[doc(alias = "boost::shared_ptr<RBX::Mouse>::operator=(boost::shared_ptr<RBX::Mouse> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Mouse>::operator=(rbx_core::SharedPtr<RBX::Mouse> const&)")]
 // 0x682a28 — __ZN5boost10shared_ptrIN3RBX5MouseEEaSERKS3_
 // type: 
 // was: boost::shared_ptr<RBX::Mouse>::operator=(boost::shared_ptr<RBX::Mouse> const&)

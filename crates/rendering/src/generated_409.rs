@@ -254,7 +254,7 @@ pub fn stub_61aaf0() -> ! {
 // 0x61ab18 — __ZN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE")]
-#[doc(alias = "rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 pub fn stub_61ab18() -> ! {
     todo!("0x61ab18 rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot> &)")
@@ -272,7 +272,7 @@ pub fn stub_61ac78() -> ! {
 // 0x61aca0 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEEaSERKSB_
 // type: int(void)
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEEaSERKSB_")]
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot> const&)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEEaSERKSB_
 pub fn stub_61aca0() -> ! {
     todo!("0x61aca0 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot> const&)")
@@ -407,7 +407,7 @@ pub fn stub_61b224() -> ! {
 // 0x61b430 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEEaSEPSA_
 // type: int(void)
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEEaSEPSA_")]
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot*)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX16SelectionChangedEEE4slotEEaSEPSA_
 pub fn stub_61b430() -> ! {
     todo!("0x61b430 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::SelectionChanged const&)>::slot*)")

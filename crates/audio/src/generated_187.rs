@@ -113,7 +113,7 @@ pub fn stub_322ee8() -> ! {
 // 0x322ef4 — __ZN3RBX14InstanceHandle6linkToEN5boost10shared_ptrINS_10Reflection13DescribedBaseEEE
 // demangled: RBX::InstanceHandle::linkTo(boost::shared_ptr<RBX::Reflection::DescribedBase>)
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "RBX::InstanceHandle::linkTo(boost::shared_ptr<RBX::Reflection::DescribedBase>)")]
+#[doc(alias = "RBX::InstanceHandle::linkTo(rbx_core::SharedPtr<RBX::Reflection::DescribedBase>)")]
 #[doc(alias = "__ZN3RBX14InstanceHandle6linkToEN5boost10shared_ptrINS_10Reflection13DescribedBaseEEE")]
 pub fn stub_322ef4() -> ! {
     todo!("0x322ef4 RBX::InstanceHandle::linkTo(boost::shared_ptr<RBX::Reflection::DescribedBase>)")

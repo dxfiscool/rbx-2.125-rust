@@ -126,7 +126,7 @@ pub fn stub_4f3740() -> ! {
 }
 
 // 0x4f39a4 - __ZN3RBX9FlagStand20onEvent_standTouchedEN5boost10shared_ptrINS_8InstanceEEE
-#[doc(alias = "RBX::FlagStand::onEvent_standTouched(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::FlagStand::onEvent_standTouched(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_4f39a4() -> ! {
     todo!("0x4f39a4 RBX::FlagStand::onEvent_standTouched(boost::shared_ptr<RBX::Instance>)")
 }
@@ -246,7 +246,7 @@ pub fn stub_4f4550() -> ! {
 }
 
 // 0x4f4574 - __ZN3RBX10Reflection9EventDescINS_9FlagStandEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::FlagStand,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::FlagStand::*>::~EventDesc()")]
 pub fn stub_4f4574() -> ! {
     todo!("0x4f4574 RBX::Reflection::EventDesc<RBX::FlagStand,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::FlagStand::*>::~EventDesc()")
 }
@@ -258,19 +258,19 @@ pub fn stub_4f4598() -> ! {
 }
 
 // 0x4f47b4 - __ZN3RBX12PartInstance13TouchedSignal7connectIN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_9FlagStandENS3_10shared_ptrINS_8InstanceEEEEENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEN3rbx7signals10connectionET_
-#[doc(alias = "rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>)")]
+#[doc(alias = "rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>)")]
 pub fn stub_4f47b4() -> ! {
     todo!("0x4f47b4 rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>)")
 }
 
 // 0x4f4934 - __ZN5boost10shared_ptrIN3RBX4FlagEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::Flag>::operator=(boost::shared_ptr<RBX::Flag> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Flag>::operator=(rbx_core::SharedPtr<RBX::Flag> const&)")]
 pub fn stub_4f4934() -> ! {
     todo!("0x4f4934 boost::shared_ptr<RBX::Flag>::operator=(boost::shared_ptr<RBX::Flag> const&)")
 }
 
 // 0x4f496c - __ZN3RBX11shared_fromINS_4FlagEEEN5boost10shared_ptrIT_EEPS4_
-#[doc(alias = "boost::shared_ptr<RBX::Flag> RBX::shared_from<RBX::Flag>(RBX::Flag*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Flag> RBX::shared_from<RBX::Flag>(RBX::Flag*)")]
 pub fn stub_4f496c() -> ! {
     todo!("0x4f496c boost::shared_ptr<RBX::Flag> RBX::shared_from<RBX::Flag>(RBX::Flag*)")
 }
@@ -468,19 +468,19 @@ pub fn stub_4f53e0() -> ! {
 }
 
 // 0x4f5524 - __ZN3RBX9CreatableINS_8InstanceEE6createINS_9FlagStandEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::FlagStand> RBX::Creatable<RBX::Instance>::create<RBX::FlagStand>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::FlagStand> RBX::Creatable<RBX::Instance>::create<RBX::FlagStand>(void)")]
 pub fn stub_4f5524() -> ! {
     todo!("0x4f5524 boost::shared_ptr<RBX::FlagStand> RBX::Creatable<RBX::Instance>::create<RBX::FlagStand>(void)")
 }
 
 // 0x4f55d8 - __ZN5boost10shared_ptrIN3RBX9FlagStandEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::FlagStand>::shared_ptr<RBX::FlagStand,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FlagStand *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::FlagStand>::shared_ptr<RBX::FlagStand,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FlagStand *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_4f55d8() -> ! {
     todo!("0x4f55d8 boost::shared_ptr<RBX::FlagStand>::shared_ptr<RBX::FlagStand,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FlagStand *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x4f56a0 - __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9FlagStandES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FlagStand,RBX::FlagStand>(boost::shared_ptr<RBX::FlagStand> const*,RBX::FlagStand *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FlagStand,RBX::FlagStand>(rbx_core::SharedPtr<RBX::FlagStand> const*,RBX::FlagStand *)const")]
 pub fn stub_4f56a0() -> ! {
     todo!("0x4f56a0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FlagStand,RBX::FlagStand>(boost::shared_ptr<RBX::FlagStand> const*,RBX::FlagStand *)const")
 }
@@ -624,13 +624,13 @@ pub fn stub_4f62ac() -> ! {
 }
 
 // 0x4f6440 - __ZN3RBX9CreatableINS_8InstanceEE6createINS_16FlagStandServiceEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::FlagStandService> RBX::Creatable<RBX::Instance>::create<RBX::FlagStandService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::FlagStandService> RBX::Creatable<RBX::Instance>::create<RBX::FlagStandService>(void)")]
 pub fn stub_4f6440() -> ! {
     todo!("0x4f6440 boost::shared_ptr<RBX::FlagStandService> RBX::Creatable<RBX::Instance>::create<RBX::FlagStandService>(void)")
 }
 
 // 0x4f64f0 - __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_16FlagStandServiceEEERS3_RKNS0_IT_EE
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FlagStandService>(boost::shared_ptr<RBX::FlagStandService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::FlagStandService>(rbx_core::SharedPtr<RBX::FlagStandService> const&)")]
 pub fn stub_4f64f0() -> ! {
     todo!("0x4f64f0 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FlagStandService>(boost::shared_ptr<RBX::FlagStandService> const&)")
 }
@@ -648,13 +648,13 @@ pub fn stub_4f6528() -> ! {
 }
 
 // 0x4f6600 - __ZN5boost10shared_ptrIN3RBX16FlagStandServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::FlagStandService>::shared_ptr<RBX::FlagStandService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FlagStandService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::FlagStandService>::shared_ptr<RBX::FlagStandService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FlagStandService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_4f6600() -> ! {
     todo!("0x4f6600 boost::shared_ptr<RBX::FlagStandService>::shared_ptr<RBX::FlagStandService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FlagStandService *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x4f66c8 - __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16FlagStandServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FlagStandService,RBX::FlagStandService>(boost::shared_ptr<RBX::FlagStandService> const*,RBX::FlagStandService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FlagStandService,RBX::FlagStandService>(rbx_core::SharedPtr<RBX::FlagStandService> const*,RBX::FlagStandService *)const")]
 pub fn stub_4f66c8() -> ! {
     todo!("0x4f66c8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FlagStandService,RBX::FlagStandService>(boost::shared_ptr<RBX::FlagStandService> const*,RBX::FlagStandService *)const")
 }
@@ -702,25 +702,25 @@ pub fn stub_4f68fc() -> ! {
 }
 
 // 0x4f697c - __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX9FlagStandENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS8_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 pub fn stub_4f697c() -> ! {
     todo!("0x4f697c boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
 }
 
 // 0x4f69dc - __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX9FlagStandENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS8_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
-#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>,void,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_4f69dc() -> ! {
     todo!("0x4f69dc boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::FlagStand*>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0x4f69f8 - __ZN5boost3_bi5list2INS0_5valueIPN3RBX9FlagStandEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
-#[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::FlagStand *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")]
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::FlagStand *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::FlagStand,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::FlagStand,rbx_core::SharedPtr<RBX::Instance>> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&> &,int)")]
 pub fn stub_4f69f8() -> ! {
     todo!("0x4f69f8 void boost::_bi::list2<boost::_bi::value<RBX::FlagStand *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")
 }
 
 // 0x4f6ad0 - __ZNK5boost4_mfi3mf1IvN3RBX9FlagStandENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_
-#[doc(alias = "boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>::operator()(RBX::FlagStand*,boost::shared_ptr<RBX::Instance>)const")]
+#[doc(alias = "boost::_mfi::mf1<void,RBX::FlagStand,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::FlagStand*,rbx_core::SharedPtr<RBX::Instance>)const")]
 pub fn stub_4f6ad0() -> ! {
     todo!("0x4f6ad0 boost::_mfi::mf1<void,RBX::FlagStand,boost::shared_ptr<RBX::Instance>>::operator()(RBX::FlagStand*,boost::shared_ptr<RBX::Instance>)const")
 }

@@ -223,7 +223,7 @@ pub fn stub_5e6e20() -> ! {
 // 0x5e6f20 — __ZN3rbx7signals6signalIFvbEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvbEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")]
-#[doc(alias = "rbx::signals::signal<void ()(bool)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(bool)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvbEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 pub fn stub_5e6f20() -> ! {
     todo!("0x5e6f20 rbx::signals::signal<void ()(bool)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot> &)")
@@ -243,7 +243,7 @@ pub fn stub_5e7080() -> ! {
 // 0x5e70a8 — __ZN5boost21intrusive_ptr_releaseIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 // type: int __fastcall(_DWORD)
 #[doc(alias = "__ZN5boost21intrusive_ptr_releaseIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE")]
-#[doc(alias = "void boost::intrusive_ptr_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
+#[doc(alias = "void rbx_core::SharedPtr_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
 // was: __ZN5boost21intrusive_ptr_releaseIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 pub fn stub_5e70a8() -> ! {
     todo!("0x5e70a8 void boost::intrusive_ptr_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")
@@ -337,7 +337,7 @@ pub fn stub_5e7370() -> ! {
 // 0x5e7388 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbEE4slotEEaSERKS7_
 // type: int(void)
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbEE4slotEEaSERKS7_")]
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool)>::slot> const&)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbEE4slotEEaSERKS7_
 pub fn stub_5e7388() -> ! {
     todo!("0x5e7388 boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot> const&)")
@@ -366,7 +366,7 @@ pub fn stub_5e74a8() -> ! {
 // 0x5e75dc — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, void *, int, int, int, int, int, int, int, void *, int)
 #[doc(alias = "__ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_")]
-#[doc(alias = "std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance>*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>,boost::weak_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<rbx_core::WeakPtr<RBX::PartInstance>*,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>>,rbx_core::WeakPtr<RBX::PartInstance> const&)")]
 // was: __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS4_S6_EERKS4_
 pub fn stub_5e75dc() -> ! {
     todo!("0x5e75dc std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::weak_ptr<RBX::PartInstance>*,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>>,boost::weak_ptr<RBX::PartInstance> const&)")
@@ -376,7 +376,7 @@ pub fn stub_5e75dc() -> ! {
 // 0x5e7b24 — __ZNSt12_Vector_baseIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE11_M_allocateEm
 // type: int(void)
 #[doc(alias = "__ZNSt12_Vector_baseIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE11_M_allocateEm")]
-#[doc(alias = "std::_Vector_base<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_M_allocate(unsigned long)")]
+#[doc(alias = "std::_Vector_base<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::_M_allocate(unsigned long)")]
 // was: __ZNSt12_Vector_baseIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE11_M_allocateEm
 pub fn stub_5e7b24() -> ! {
     todo!("0x5e7b24 std::_Vector_base<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::_M_allocate(unsigned long)")
@@ -386,7 +386,7 @@ pub fn stub_5e7b24() -> ! {
 // 0x5e7b40 — __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN5boost8weak_ptrIN3RBX12PartInstanceEEES8_EET0_T_SA_S9_
 // type: int(void)
 #[doc(alias = "__ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN5boost8weak_ptrIN3RBX12PartInstanceEEES8_EET0_T_SA_S9_")]
-#[doc(alias = "boost::weak_ptr<RBX::PartInstance> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *>(boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::PartInstance> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<rbx_core::WeakPtr<RBX::PartInstance> *,rbx_core::WeakPtr<RBX::PartInstance> *>(rbx_core::WeakPtr<RBX::PartInstance> *,rbx_core::WeakPtr<RBX::PartInstance> *,rbx_core::WeakPtr<RBX::PartInstance> *)")]
 // was: __ZNSt15__copy_backwardILb0ESt26random_access_iterator_tagE8__copy_bIPN5boost8weak_ptrIN3RBX12PartInstanceEEES8_EET0_T_SA_S9_
 pub fn stub_5e7b40() -> ! {
     todo!("0x5e7b40 boost::weak_ptr<RBX::PartInstance> * std::__copy_backward<false,std::random_access_iterator_tag>::__copy_b<boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *>(boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *,boost::weak_ptr<RBX::PartInstance> *)")

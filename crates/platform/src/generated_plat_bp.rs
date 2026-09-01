@@ -249,7 +249,7 @@ pub fn stub_2674b0() -> ! {
 
 // 0x2675e0 — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEEERKS1_v
 // type: int *()
-#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")]
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")]
 pub fn stub_2675e0() -> ! {
     todo!("0x2675e0 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")
 }
@@ -270,35 +270,35 @@ pub fn stub_2677a8() -> ! {
 
 // 0x2677ac — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt6vectorIS1_SaIS1_EEEEEERT_v
 // type: int __fastcall(int)
-#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> & RBX::Reflection::Variant::convert<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")]
 pub fn stub_2677ac() -> ! {
     todo!("0x2677ac boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(void)")
 }
 
 // 0x26796c — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEERKS1_v
 // type: int *()
-#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
 pub fn stub_26796c() -> ! {
     todo!("0x26796c RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")
 }
 
 // 0x267a50 — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsS1_NS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS1_EEEEEEEERT_v
 // type: int __fastcall(int)
-#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
 pub fn stub_267a50() -> ! {
     todo!("0x267a50 boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")
 }
 
 // 0x267c30 — __ZN3RBX10Reflection4Type12getSingletonIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEERKS1_v
 // type: int *()
-#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
+#[doc(alias = "RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
 pub fn stub_267c30() -> ! {
     todo!("0x267c30 RBX::Reflection::Type const& RBX::Reflection::Type::getSingleton<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")
 }
 
 // 0x267d18 — __ZN3RBX10Reflection7Variant7convertIN5boost10shared_ptrIKSt3mapISsS1_St4lessISsESaISt4pairIKSsS1_EEEEEEERT_v
 // type: int __fastcall(int)
-#[doc(alias = "boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")]
 pub fn stub_267d18() -> ! {
     todo!("0x267d18 boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> & RBX::Reflection::Variant::convert<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(void)")
 }
@@ -361,35 +361,35 @@ pub fn stub_2682e8() -> ! {
 
 // 0x268484 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED1Ev
 // type: void()
-#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
 pub fn stub_268484() -> ! {
     todo!("0x268484 RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")
 }
 
 // 0x268488 — __ZN3rbx8any_castIN5boost10shared_ptrIKNS1_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS1_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEENS5_7Region3EEEPT_PNS_13placement_anyIT0_EE
 // type: _UNKNOWN ****__fastcall(_UNKNOWN ****)
-#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
+#[doc(alias = "rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
 pub fn stub_268488() -> ! {
     todo!("0x268488 boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")
 }
 
 // 0x2684e0 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED1Ev
 // type: void()
-#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
 pub fn stub_2684e0() -> ! {
     todo!("0x2684e0 RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
 }
 
 // 0x2684e4 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED1Ev
 // type: void()
-#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
 pub fn stub_2684e4() -> ! {
     todo!("0x2684e4 RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
 }
 
 // 0x2684e8 — __ZN3rbx8any_castIN5boost10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS6_EEEEENS4_7Region3EEEPT_PNS_13placement_anyIT0_EE
 // type: _UNKNOWN ****__fastcall(_UNKNOWN ****)
-#[doc(alias = "boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
+#[doc(alias = "rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")]
 pub fn stub_2684e8() -> ! {
     todo!("0x2684e8 boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> * rbx::any_cast<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>,RBX::Region3>(rbx::placement_any<RBX::Region3> *)")
 }
@@ -445,42 +445,42 @@ pub fn stub_268728() -> ! {
 
 // 0x26872c — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS6_EEEEEEEPKcPT_
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::Type::Type<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")]
+#[doc(alias = "RBX::Reflection::Type::Type<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")]
 pub fn stub_26872c() -> ! {
     todo!("0x26872c RBX::Reflection::Type::Type<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")
 }
 
 // 0x2687d8 — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt3mapISsNS0_7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
 pub fn stub_2687d8() -> ! {
     todo!("0x2687d8 RBX::Reflection::TType<boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
 }
 
 // 0x2687dc — __ZN5boost10shared_ptrIKNS_9unordered13unordered_mapISsN3RBX10Reflection7VariantENS_4hashISsEESt8equal_toISsESaISt4pairIKSsS5_EEEEEC2ISE_EEPT_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)")]
+#[doc(alias = "rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)")]
 pub fn stub_2687dc() -> ! {
     todo!("0x2687dc boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>>>(boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> *)")
 }
 
 // 0x2688b0 — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKNS3_9unordered13unordered_mapISsNS0_7VariantENS3_4hashISsEESt8equal_toISsESaISt4pairIKSsS7_EEEEEEEEPKcPT_
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::Type::Type<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")]
+#[doc(alias = "RBX::Reflection::Type::Type<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")]
 pub fn stub_2688b0() -> ! {
     todo!("0x2688b0 RBX::Reflection::Type::Type<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>(char const*,boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const> *)")
 }
 
 // 0x26895c — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKNS2_9unordered13unordered_mapISsNS0_7VariantENS2_4hashISsEESt8equal_toISsESaISt4pairIKSsS6_EEEEEEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")]
 pub fn stub_26895c() -> ! {
     todo!("0x26895c RBX::Reflection::TType<boost::shared_ptr<boost::unordered::unordered_map<std::string,RBX::Reflection::Variant,boost::hash<std::string>,std::equal_to<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::~TType()")
 }
 
 // 0x268960 — __ZN5boost10shared_ptrIKSt6vectorIN3RBX10Reflection7VariantESaIS4_EEEC2IS6_EEPT_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
+#[doc(alias = "rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
 pub fn stub_268960() -> ! {
     todo!("0x268960 boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")
 }
@@ -494,14 +494,14 @@ pub fn stub_268a34() -> ! {
 
 // 0x268b40 — __ZN3RBX10Reflection4TypeC2IN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEEEPKcPT_
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::Type::Type<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(char const*,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> *)")]
+#[doc(alias = "RBX::Reflection::Type::Type<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(char const*,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> *)")]
 pub fn stub_268b40() -> ! {
     todo!("0x268b40 RBX::Reflection::Type::Type<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>(char const*,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> *)")
 }
 
 // 0x268bec — __ZN3RBX10Reflection5TTypeIN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS5_EEEEED0Ev
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
+#[doc(alias = "RBX::Reflection::TType<rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")]
 pub fn stub_268bec() -> ! {
     todo!("0x268bec RBX::Reflection::TType<boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>>::~TType()")
 }

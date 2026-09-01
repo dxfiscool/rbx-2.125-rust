@@ -616,7 +616,7 @@ pub fn stub_5e1610() -> ! {
 }
 
 // 0x5e1780 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE9push_backERKS4_
-#[doc(alias = "std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::push_back(boost::weak_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::push_back(rbx_core::WeakPtr<RBX::PartInstance> const&)")]
 // was: __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EE9push_backERKS4_
 pub fn stub_5e1780() -> ! {
     todo!("0x5e1780 std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::push_back(boost::weak_ptr<RBX::PartInstance> const&)")

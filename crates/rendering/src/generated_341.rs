@@ -650,7 +650,7 @@ pub fn stub_5daf38() -> ! {
 
 // 0x5daf54 — __ZN3RBX12PartInstance9findPartsEPNS_8InstanceERSt6vectorIN5boost8weak_ptrIS0_EESaIS6_EE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::PartInstance::findParts(RBX::Instance *,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")]
+#[doc(alias = "RBX::PartInstance::findParts(RBX::Instance *,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> &)")]
 // was: __ZN3RBX12PartInstance9findPartsEPNS_8InstanceERSt6vectorIN5boost8weak_ptrIS0_EESaIS6_EE
 pub fn stub_5daf54() -> ! {
     todo!("0x5daf54 RBX::PartInstance::findParts(RBX::Instance *,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")

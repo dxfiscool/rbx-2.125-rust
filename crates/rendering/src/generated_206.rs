@@ -680,7 +680,7 @@ pub fn stub_0x3a8440() -> ! {
 
 // 0x3a9380 — __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3::Axis)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3::Axis)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvN3G3D7Vector34AxisEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE
 pub fn stub_0x3a9380() -> ! {
     todo!("0x3a9380 rbx::signals::signal<void ()(G3D::Vector3::Axis)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot> &)")

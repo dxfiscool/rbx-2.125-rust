@@ -62,7 +62,7 @@ pub fn stub_f45d84() -> ! {
 // 0xf45d74 — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot> const&)
 // mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE4slotEEaSERKSA_
 // type: int()
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot> const&)")]
 pub fn stub_f45d74() -> ! {
     todo!("0xf45d74 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot> const&)")
 }
@@ -70,7 +70,7 @@ pub fn stub_f45d74() -> ! {
 // 0xf45d64 — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Primitive *)>::slot*)
 // mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX9PrimitiveEEE4slotEEaSEPS9_
 // type: int()
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Primitive *)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Primitive *)>::slot*)")]
 pub fn stub_f45d64() -> ! {
     todo!("0xf45d64 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Primitive *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Primitive *)>::slot*)")
 }
@@ -164,7 +164,7 @@ pub fn stub_f45694() -> ! {
 // 0xf45614 — void boost::intrusive_ptr_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)
 // mangled: j___ZN5boost21intrusive_ptr_releaseIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
 // type: int __fastcall(int)
-#[doc(alias = "void boost::intrusive_ptr_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
+#[doc(alias = "void rbx_core::SharedPtr_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
 pub fn stub_f45614() -> ! {
     todo!("0xf45614 void boost::intrusive_ptr_release<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")
 }
@@ -292,7 +292,7 @@ pub fn stub_f454e4() -> ! {
 // 0xf454a4 — boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot> const&)
 // mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbEE4slotEEaSERKS7_
 // type: int()
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool)>::slot> const&)")]
 pub fn stub_f454a4() -> ! {
     todo!("0xf454a4 boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot> const&)")
 }
@@ -325,7 +325,7 @@ pub fn stub_f45364() -> ! {
 // 0xf45344 — rbx::signals::signal<void ()(void)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> &)
 // mangled: j___ZN3rbx7signals6signalIFvvEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(void)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(void)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot> &)")]
 pub fn stub_f45344() -> ! {
     todo!("0xf45344 rbx::signals::signal<void ()(void)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> &)")
 }
@@ -333,7 +333,7 @@ pub fn stub_f45344() -> ! {
 // 0xf45324 — rbx::signals::signal<void ()(bool)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot> &)
 // mangled: j___ZN3rbx7signals6signalIFvbEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(bool)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(bool)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool)>::slot> &)")]
 pub fn stub_f45324() -> ! {
     todo!("0xf45324 rbx::signals::signal<void ()(bool)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(bool)>::slot> &)")
 }

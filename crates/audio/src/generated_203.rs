@@ -31,7 +31,7 @@ pub fn stub_4b18e0() -> ! {
 
 // 0x4b1984 — __ZN5boost10shared_ptrIN3RBX11CustomEventEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::CustomEvent>::shared_ptr<RBX::CustomEvent,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter)
-#[doc(alias = "boost::shared_ptr<RBX::CustomEvent>::shared_ptr<RBX::CustomEvent,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CustomEvent>::shared_ptr<RBX::CustomEvent,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEvent *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX11CustomEventEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
 pub fn stub_4b1984() -> ! {
     todo!("0x4b1984 __ZN5boost10shared_ptrIN3RBX11CustomEventEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
@@ -39,7 +39,7 @@ pub fn stub_4b1984() -> ! {
 
 // 0x4b1a4c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11CustomEventES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEvent,RBX::CustomEvent>(boost::shared_ptr<RBX::CustomEvent> const*,RBX::CustomEvent *)const
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEvent,RBX::CustomEvent>(boost::shared_ptr<RBX::CustomEvent> const*,RBX::CustomEvent *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEvent,RBX::CustomEvent>(rbx_core::SharedPtr<RBX::CustomEvent> const*,RBX::CustomEvent *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11CustomEventES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
 pub fn stub_4b1a4c() -> ! {
     todo!("0x4b1a4c __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_11CustomEventES6_EEvPKNS_10shared_ptrIT_EEPT0_")
@@ -139,7 +139,7 @@ pub fn stub_4b20dc() -> ! {
 
 // 0x4b2220 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_19CustomEventReceiverEEEN5boost10shared_ptrIT_EEv
 // demangled: boost::shared_ptr<RBX::CustomEventReceiver> RBX::Creatable<RBX::Instance>::create<RBX::CustomEventReceiver>(void)
-#[doc(alias = "boost::shared_ptr<RBX::CustomEventReceiver> RBX::Creatable<RBX::Instance>::create<RBX::CustomEventReceiver>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CustomEventReceiver> RBX::Creatable<RBX::Instance>::create<RBX::CustomEventReceiver>(void)")]
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_19CustomEventReceiverEEEN5boost10shared_ptrIT_EEv")]
 pub fn stub_4b2220() -> ! {
     todo!("0x4b2220 __ZN3RBX9CreatableINS_8InstanceEE6createINS_19CustomEventReceiverEEEN5boost10shared_ptrIT_EEv")
@@ -219,7 +219,7 @@ pub fn stub_4b283c() -> ! {
 // 0x4b29b4 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfEE4slotEEaSERKS7_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(float)>::slot> const&)
 // type: int *__fastcall(int *, int *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(float)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(float)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(float)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfEE4slotEEaSERKS7_")]
 pub fn stub_4b29b4() -> ! {
     todo!("0x4b29b4 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfEE4slotEEaSERKS7_")
@@ -252,7 +252,7 @@ pub fn stub_4b2ad4() -> ! {
 
 // 0x4b2ce0 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfEE4slotEEaSEPS6_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(float)>::slot>::operator=(rbx::signals::signal<void ()(float)>::slot*)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(float)>::slot>::operator=(rbx::signals::signal<void ()(float)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(float)>::slot>::operator=(rbx::signals::signal<void ()(float)>::slot*)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfEE4slotEEaSEPS6_")]
 pub fn stub_4b2ce0() -> ! {
     todo!("0x4b2ce0 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfEE4slotEEaSEPS6_")
@@ -416,7 +416,7 @@ pub fn stub_4b35c4() -> ! {
 
 // 0x4b3668 — __ZN5boost10shared_ptrIN3RBX19CustomEventReceiverEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // demangled: boost::shared_ptr<RBX::CustomEventReceiver>::shared_ptr<RBX::CustomEventReceiver,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter)
-#[doc(alias = "boost::shared_ptr<RBX::CustomEventReceiver>::shared_ptr<RBX::CustomEventReceiver,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CustomEventReceiver>::shared_ptr<RBX::CustomEventReceiver,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CustomEventReceiver *,RBX::Creatable<RBX::Instance>::Deleter)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX19CustomEventReceiverEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
 pub fn stub_4b3668() -> ! {
     todo!("0x4b3668 __ZN5boost10shared_ptrIN3RBX19CustomEventReceiverEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
@@ -424,7 +424,7 @@ pub fn stub_4b3668() -> ! {
 
 // 0x4b3730 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19CustomEventReceiverES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEventReceiver,RBX::CustomEventReceiver>(boost::shared_ptr<RBX::CustomEventReceiver> const*,RBX::CustomEventReceiver *)const
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEventReceiver,RBX::CustomEventReceiver>(boost::shared_ptr<RBX::CustomEventReceiver> const*,RBX::CustomEventReceiver *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CustomEventReceiver,RBX::CustomEventReceiver>(rbx_core::SharedPtr<RBX::CustomEventReceiver> const*,RBX::CustomEventReceiver *)const")]
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19CustomEventReceiverES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
 pub fn stub_4b3730() -> ! {
     todo!("0x4b3730 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19CustomEventReceiverES6_EEvPKNS_10shared_ptrIT_EEPT0_")

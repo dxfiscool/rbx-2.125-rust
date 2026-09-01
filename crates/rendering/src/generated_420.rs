@@ -301,7 +301,7 @@ pub fn stub_647bd4() -> ! {
 // 0x6482a0 — __ZN3RBX5StatsL14onGatherScriptEN5boost8weak_ptrINS_9DataModelEEEPSsPSt9exception
 // type: 
 #[doc(alias = "__ZN3RBX5StatsL14onGatherScriptEN5boost8weak_ptrINS_9DataModelEEEPSsPSt9exception")]
-#[doc(alias = "RBX::Stats::onGatherScript(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *)")]
+#[doc(alias = "RBX::Stats::onGatherScript(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *)")]
 // was: __ZN3RBX5StatsL14onGatherScriptEN5boost8weak_ptrINS_9DataModelEEEPSsPSt9exception
 pub fn stub_6482a0() -> ! {
     todo!("0x6482a0 RBX::Stats::onGatherScript(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *)")
@@ -724,7 +724,7 @@ pub fn stub_64ae00() -> ! {
 // 0x64af70 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionS4_NS_3argILi1EEENS8_ILi2EEEEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_ENSB_9list_av_3IT3_T4_T5_E4typeEEESI_SK_SL_SM_
 // type: int(void)
 #[doc(alias = "__ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionS4_NS_3argILi1EEENS8_ILi2EEEEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_ENSB_9list_av_3IT3_T4_T5_E4typeEEESI_SK_SL_SM_")]
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list_av_3<boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *,boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>(void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list_av_3<rbx_core::WeakPtr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *,rbx_core::WeakPtr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>(void (*)(rbx_core::WeakPtr<RBX::DataModel>,std::string *,std::exception *),rbx_core::WeakPtr<RBX::DataModel>,boost::arg<1>,boost::arg<2>)")]
 // was: __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEEPSsPSt9exceptionS4_NS_3argILi1EEENS8_ILi2EEEEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_ENSB_9list_av_3IT3_T4_T5_E4typeEEESI_SK_SL_SM_
 pub fn stub_64af70() -> ! {
     todo!("0x64af70 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::_bi::list_av_3<boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *,boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>>(void (*)(boost::weak_ptr<RBX::DataModel>,std::string *,std::exception *),boost::weak_ptr<RBX::DataModel>,boost::arg<1>,boost::arg<2>)")

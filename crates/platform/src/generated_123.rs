@@ -123,7 +123,7 @@ pub fn stub_f35e04() -> ! {
 // mangled: j___ZN3RBX13TaskScheduler14removeBlockingEN5boost10shared_ptrINS0_3JobEEE
 // type: void __fastcall(int, const shared_count *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>)")]
+#[doc(alias = "RBX::TaskScheduler::removeBlocking(rbx_core::SharedPtr<RBX::TaskScheduler::Job>)")]
 pub fn stub_f35db4() -> ! {
     todo!("0xf35db4 RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>)")
 }
@@ -132,7 +132,7 @@ pub fn stub_f35db4() -> ! {
 // mangled: j___ZN3RBX11shared_fromINS_18StarterPackServiceEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_DWORD *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::StarterPackService> RBX::shared_from<RBX::StarterPackService>(RBX::StarterPackService*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterPackService> RBX::shared_from<RBX::StarterPackService>(RBX::StarterPackService*)")]
 pub fn stub_f35da4() -> ! {
     todo!("0xf35da4 boost::shared_ptr<RBX::StarterPackService> RBX::shared_from<RBX::StarterPackService>(RBX::StarterPackService*)")
 }
@@ -141,7 +141,7 @@ pub fn stub_f35da4() -> ! {
 // mangled: j___ZN3RBX11shared_fromINS_17StarterGuiServiceEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_DWORD *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::StarterGuiService> RBX::shared_from<RBX::StarterGuiService>(RBX::StarterGuiService*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterGuiService> RBX::shared_from<RBX::StarterGuiService>(RBX::StarterGuiService*)")]
 pub fn stub_f35d94() -> ! {
     todo!("0xf35d94 boost::shared_ptr<RBX::StarterGuiService> RBX::shared_from<RBX::StarterGuiService>(RBX::StarterGuiService*)")
 }
@@ -150,7 +150,7 @@ pub fn stub_f35d94() -> ! {
 // mangled: j___ZN3RBX11shared_fromINS_14CoreGuiServiceEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_DWORD *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::CoreGuiService> RBX::shared_from<RBX::CoreGuiService>(RBX::CoreGuiService*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CoreGuiService> RBX::shared_from<RBX::CoreGuiService>(RBX::CoreGuiService*)")]
 pub fn stub_f35d84() -> ! {
     todo!("0xf35d84 boost::shared_ptr<RBX::CoreGuiService> RBX::shared_from<RBX::CoreGuiService>(RBX::CoreGuiService*)")
 }
@@ -159,7 +159,7 @@ pub fn stub_f35d84() -> ! {
 // mangled: j___ZN3RBX11shared_fromINS_13LocalBackpackEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_DWORD *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::LocalBackpack> RBX::shared_from<RBX::LocalBackpack>(RBX::LocalBackpack*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::LocalBackpack> RBX::shared_from<RBX::LocalBackpack>(RBX::LocalBackpack*)")]
 pub fn stub_f35d74() -> ! {
     todo!("0xf35d74 boost::shared_ptr<RBX::LocalBackpack> RBX::shared_from<RBX::LocalBackpack>(RBX::LocalBackpack*)")
 }
@@ -289,7 +289,7 @@ pub fn stub_f35504() -> ! {
 // mangled: j___ZN3RBX11shared_fromINS_13ConfigurationEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_QWORD *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::Configuration> RBX::shared_from<RBX::Configuration>(RBX::Configuration*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Configuration> RBX::shared_from<RBX::Configuration>(RBX::Configuration*)")]
 pub fn stub_f354f4() -> ! {
     todo!("0xf354f4 boost::shared_ptr<RBX::Configuration> RBX::shared_from<RBX::Configuration>(RBX::Configuration*)")
 }
@@ -306,7 +306,7 @@ pub fn stub_f354e4() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9StudsToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::StudsTool,RBX::StudsTool>(boost::shared_ptr<RBX::StudsTool> const*,RBX::StudsTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::StudsTool,RBX::StudsTool>(rbx_core::SharedPtr<RBX::StudsTool> const*,RBX::StudsTool *)const")]
 pub fn stub_f354b4() -> ! {
     todo!("0xf354b4 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::StudsTool,RBX::StudsTool>(boost::shared_ptr<RBX::StudsTool> const*,RBX::StudsTool *)const")
 }
@@ -315,7 +315,7 @@ pub fn stub_f354b4() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9InletToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::InletTool,RBX::InletTool>(boost::shared_ptr<RBX::InletTool> const*,RBX::InletTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::InletTool,RBX::InletTool>(rbx_core::SharedPtr<RBX::InletTool> const*,RBX::InletTool *)const")]
 pub fn stub_f354a4() -> ! {
     todo!("0xf354a4 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::InletTool,RBX::InletTool>(boost::shared_ptr<RBX::InletTool> const*,RBX::InletTool *)const")
 }
@@ -324,7 +324,7 @@ pub fn stub_f354a4() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9HingeToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::HingeTool,RBX::HingeTool>(boost::shared_ptr<RBX::HingeTool> const*,RBX::HingeTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::HingeTool,RBX::HingeTool>(rbx_core::SharedPtr<RBX::HingeTool> const*,RBX::HingeTool *)const")]
 pub fn stub_f35494() -> ! {
     todo!("0xf35494 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::HingeTool,RBX::HingeTool>(boost::shared_ptr<RBX::HingeTool> const*,RBX::HingeTool *)const")
 }
@@ -333,7 +333,7 @@ pub fn stub_f35494() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_9CloneToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::CloneTool,RBX::CloneTool>(boost::shared_ptr<RBX::CloneTool> const*,RBX::CloneTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::CloneTool,RBX::CloneTool>(rbx_core::SharedPtr<RBX::CloneTool> const*,RBX::CloneTool *)const")]
 pub fn stub_f35484() -> ! {
     todo!("0xf35484 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::CloneTool,RBX::CloneTool>(boost::shared_ptr<RBX::CloneTool> const*,RBX::CloneTool *)const")
 }
@@ -342,7 +342,7 @@ pub fn stub_f35484() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8WeldToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::WeldTool,RBX::WeldTool>(boost::shared_ptr<RBX::WeldTool> const*,RBX::WeldTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::WeldTool,RBX::WeldTool>(rbx_core::SharedPtr<RBX::WeldTool> const*,RBX::WeldTool *)const")]
 pub fn stub_f35474() -> ! {
     todo!("0xf35474 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::WeldTool,RBX::WeldTool>(boost::shared_ptr<RBX::WeldTool> const*,RBX::WeldTool *)const")
 }
@@ -351,7 +351,7 @@ pub fn stub_f35474() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8NullToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::NullTool,RBX::NullTool>(boost::shared_ptr<RBX::NullTool> const*,RBX::NullTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::NullTool,RBX::NullTool>(rbx_core::SharedPtr<RBX::NullTool> const*,RBX::NullTool *)const")]
 pub fn stub_f35464() -> ! {
     todo!("0xf35464 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::NullTool,RBX::NullTool>(boost::shared_ptr<RBX::NullTool> const*,RBX::NullTool *)const")
 }
@@ -360,7 +360,7 @@ pub fn stub_f35464() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8LockToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LockTool,RBX::LockTool>(boost::shared_ptr<RBX::LockTool> const*,RBX::LockTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LockTool,RBX::LockTool>(rbx_core::SharedPtr<RBX::LockTool> const*,RBX::LockTool *)const")]
 pub fn stub_f35454() -> ! {
     todo!("0xf35454 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LockTool,RBX::LockTool>(boost::shared_ptr<RBX::LockTool> const*,RBX::LockTool *)const")
 }
@@ -369,7 +369,7 @@ pub fn stub_f35454() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GrabToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GrabTool,RBX::GrabTool>(boost::shared_ptr<RBX::GrabTool> const*,RBX::GrabTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GrabTool,RBX::GrabTool>(rbx_core::SharedPtr<RBX::GrabTool> const*,RBX::GrabTool *)const")]
 pub fn stub_f35444() -> ! {
     todo!("0xf35444 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GrabTool,RBX::GrabTool>(boost::shared_ptr<RBX::GrabTool> const*,RBX::GrabTool *)const")
 }
@@ -378,7 +378,7 @@ pub fn stub_f35444() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GlueToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GlueTool,RBX::GlueTool>(boost::shared_ptr<RBX::GlueTool> const*,RBX::GlueTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GlueTool,RBX::GlueTool>(rbx_core::SharedPtr<RBX::GlueTool> const*,RBX::GlueTool *)const")]
 pub fn stub_f35434() -> ! {
     todo!("0xf35434 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GlueTool,RBX::GlueTool>(boost::shared_ptr<RBX::GlueTool> const*,RBX::GlueTool *)const")
 }
@@ -387,7 +387,7 @@ pub fn stub_f35434() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8GameToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GameTool,RBX::GameTool>(boost::shared_ptr<RBX::GameTool> const*,RBX::GameTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GameTool,RBX::GameTool>(rbx_core::SharedPtr<RBX::GameTool> const*,RBX::GameTool *)const")]
 pub fn stub_f35424() -> ! {
     todo!("0xf35424 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::GameTool,RBX::GameTool>(boost::shared_ptr<RBX::GameTool> const*,RBX::GameTool *)const")
 }
@@ -396,7 +396,7 @@ pub fn stub_f35424() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FlatToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::FlatTool,RBX::FlatTool>(boost::shared_ptr<RBX::FlatTool> const*,RBX::FlatTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::FlatTool,RBX::FlatTool>(rbx_core::SharedPtr<RBX::FlatTool> const*,RBX::FlatTool *)const")]
 pub fn stub_f35414() -> ! {
     todo!("0xf35414 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::FlatTool,RBX::FlatTool>(boost::shared_ptr<RBX::FlatTool> const*,RBX::FlatTool *)const")
 }
@@ -405,7 +405,7 @@ pub fn stub_f35414() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_8FillToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::FillTool,RBX::FillTool>(boost::shared_ptr<RBX::FillTool> const*,RBX::FillTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::FillTool,RBX::FillTool>(rbx_core::SharedPtr<RBX::FillTool> const*,RBX::FillTool *)const")]
 pub fn stub_f35404() -> ! {
     todo!("0xf35404 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::FillTool,RBX::FillTool>(boost::shared_ptr<RBX::FillTool> const*,RBX::FillTool *)const")
 }
@@ -414,7 +414,7 @@ pub fn stub_f35404() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_20SmoothNoOutlinesToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::SmoothNoOutlinesTool,RBX::SmoothNoOutlinesTool>(boost::shared_ptr<RBX::SmoothNoOutlinesTool> const*,RBX::SmoothNoOutlinesTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::SmoothNoOutlinesTool,RBX::SmoothNoOutlinesTool>(rbx_core::SharedPtr<RBX::SmoothNoOutlinesTool> const*,RBX::SmoothNoOutlinesTool *)const")]
 pub fn stub_f353f4() -> ! {
     todo!("0xf353f4 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::SmoothNoOutlinesTool,RBX::SmoothNoOutlinesTool>(boost::shared_ptr<RBX::SmoothNoOutlinesTool> const*,RBX::SmoothNoOutlinesTool *)const")
 }
@@ -423,7 +423,7 @@ pub fn stub_f353f4() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18OscillateMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::OscillateMotorTool,RBX::OscillateMotorTool>(boost::shared_ptr<RBX::OscillateMotorTool> const*,RBX::OscillateMotorTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::OscillateMotorTool,RBX::OscillateMotorTool>(rbx_core::SharedPtr<RBX::OscillateMotorTool> const*,RBX::OscillateMotorTool *)const")]
 pub fn stub_f353e4() -> ! {
     todo!("0xf353e4 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::OscillateMotorTool,RBX::OscillateMotorTool>(boost::shared_ptr<RBX::OscillateMotorTool> const*,RBX::OscillateMotorTool *)const")
 }
@@ -432,7 +432,7 @@ pub fn stub_f353e4() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18MoveResizeJoinToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MoveResizeJoinTool,RBX::MoveResizeJoinTool>(boost::shared_ptr<RBX::MoveResizeJoinTool> const*,RBX::MoveResizeJoinTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MoveResizeJoinTool,RBX::MoveResizeJoinTool>(rbx_core::SharedPtr<RBX::MoveResizeJoinTool> const*,RBX::MoveResizeJoinTool *)const")]
 pub fn stub_f353d4() -> ! {
     todo!("0xf353d4 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MoveResizeJoinTool,RBX::MoveResizeJoinTool>(boost::shared_ptr<RBX::MoveResizeJoinTool> const*,RBX::MoveResizeJoinTool *)const")
 }
@@ -441,7 +441,7 @@ pub fn stub_f353d4() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14RightMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::RightMotorTool,RBX::RightMotorTool>(boost::shared_ptr<RBX::RightMotorTool> const*,RBX::RightMotorTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::RightMotorTool,RBX::RightMotorTool>(rbx_core::SharedPtr<RBX::RightMotorTool> const*,RBX::RightMotorTool *)const")]
 pub fn stub_f353c4() -> ! {
     todo!("0xf353c4 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::RightMotorTool,RBX::RightMotorTool>(boost::shared_ptr<RBX::RightMotorTool> const*,RBX::RightMotorTool *)const")
 }
@@ -450,7 +450,7 @@ pub fn stub_f353c4() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AxisRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AxisRotateTool,RBX::AxisRotateTool>(boost::shared_ptr<RBX::AxisRotateTool> const*,RBX::AxisRotateTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AxisRotateTool,RBX::AxisRotateTool>(rbx_core::SharedPtr<RBX::AxisRotateTool> const*,RBX::AxisRotateTool *)const")]
 pub fn stub_f353b4() -> ! {
     todo!("0xf353b4 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AxisRotateTool,RBX::AxisRotateTool>(boost::shared_ptr<RBX::AxisRotateTool> const*,RBX::AxisRotateTool *)const")
 }
@@ -459,7 +459,7 @@ pub fn stub_f353b4() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13UniversalToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::UniversalTool,RBX::UniversalTool>(boost::shared_ptr<RBX::UniversalTool> const*,RBX::UniversalTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::UniversalTool,RBX::UniversalTool>(rbx_core::SharedPtr<RBX::UniversalTool> const*,RBX::UniversalTool *)const")]
 pub fn stub_f353a4() -> ! {
     todo!("0xf353a4 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::UniversalTool,RBX::UniversalTool>(boost::shared_ptr<RBX::UniversalTool> const*,RBX::UniversalTool *)const")
 }
@@ -468,7 +468,7 @@ pub fn stub_f353a4() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13LeftMotorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LeftMotorTool,RBX::LeftMotorTool>(boost::shared_ptr<RBX::LeftMotorTool> const*,RBX::LeftMotorTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LeftMotorTool,RBX::LeftMotorTool>(rbx_core::SharedPtr<RBX::LeftMotorTool> const*,RBX::LeftMotorTool *)const")]
 pub fn stub_f35394() -> ! {
     todo!("0xf35394 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LeftMotorTool,RBX::LeftMotorTool>(boost::shared_ptr<RBX::LeftMotorTool> const*,RBX::LeftMotorTool *)const")
 }
@@ -477,7 +477,7 @@ pub fn stub_f35394() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_13AdvRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvRotateTool,RBX::AdvRotateTool>(boost::shared_ptr<RBX::AdvRotateTool> const*,RBX::AdvRotateTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvRotateTool,RBX::AdvRotateTool>(rbx_core::SharedPtr<RBX::AdvRotateTool> const*,RBX::AdvRotateTool *)const")]
 pub fn stub_f35384() -> ! {
     todo!("0xf35384 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvRotateTool,RBX::AdvRotateTool>(boost::shared_ptr<RBX::AdvRotateTool> const*,RBX::AdvRotateTool *)const")
 }
@@ -486,7 +486,7 @@ pub fn stub_f35384() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_12MaterialToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MaterialTool,RBX::MaterialTool>(boost::shared_ptr<RBX::MaterialTool> const*,RBX::MaterialTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MaterialTool,RBX::MaterialTool>(rbx_core::SharedPtr<RBX::MaterialTool> const*,RBX::MaterialTool *)const")]
 pub fn stub_f35374() -> ! {
     todo!("0xf35374 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MaterialTool,RBX::MaterialTool>(boost::shared_ptr<RBX::MaterialTool> const*,RBX::MaterialTool *)const")
 }
@@ -495,7 +495,7 @@ pub fn stub_f35374() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11DropperToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::DropperTool,RBX::DropperTool>(boost::shared_ptr<RBX::DropperTool> const*,RBX::DropperTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::DropperTool,RBX::DropperTool>(rbx_core::SharedPtr<RBX::DropperTool> const*,RBX::DropperTool *)const")]
 pub fn stub_f35364() -> ! {
     todo!("0xf35364 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::DropperTool,RBX::DropperTool>(boost::shared_ptr<RBX::DropperTool> const*,RBX::DropperTool *)const")
 }
@@ -504,7 +504,7 @@ pub fn stub_f35364() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11AdvMoveToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvMoveTool,RBX::AdvMoveTool>(boost::shared_ptr<RBX::AdvMoveTool> const*,RBX::AdvMoveTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvMoveTool,RBX::AdvMoveTool>(rbx_core::SharedPtr<RBX::AdvMoveTool> const*,RBX::AdvMoveTool *)const")]
 pub fn stub_f35354() -> ! {
     todo!("0xf35354 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvMoveTool,RBX::AdvMoveTool>(boost::shared_ptr<RBX::AdvMoveTool> const*,RBX::AdvMoveTool *)const")
 }
@@ -513,7 +513,7 @@ pub fn stub_f35354() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10HammerToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::HammerTool,RBX::HammerTool>(boost::shared_ptr<RBX::HammerTool> const*,RBX::HammerTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::HammerTool,RBX::HammerTool>(rbx_core::SharedPtr<RBX::HammerTool> const*,RBX::HammerTool *)const")]
 pub fn stub_f35344() -> ! {
     todo!("0xf35344 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::HammerTool,RBX::HammerTool>(boost::shared_ptr<RBX::HammerTool> const*,RBX::HammerTool *)const")
 }
@@ -522,7 +522,7 @@ pub fn stub_f35344() -> ! {
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_10AnchorToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AnchorTool,RBX::AnchorTool>(boost::shared_ptr<RBX::AnchorTool> const*,RBX::AnchorTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AnchorTool,RBX::AnchorTool>(rbx_core::SharedPtr<RBX::AnchorTool> const*,RBX::AnchorTool *)const")]
 pub fn stub_f35334() -> ! {
     todo!("0xf35334 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AnchorTool,RBX::AnchorTool>(boost::shared_ptr<RBX::AnchorTool> const*,RBX::AnchorTool *)const")
 }
@@ -731,7 +731,7 @@ pub fn stub_f351a4() -> ! {
 // mangled: j___ZN5boost10shared_ptrIN3RBX9StudsToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::StudsTool>::shared_ptr<RBX::StudsTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::StudsTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StudsTool>::shared_ptr<RBX::StudsTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::StudsTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f35194() -> ! {
     todo!("0xf35194 boost::shared_ptr<RBX::StudsTool>::shared_ptr<RBX::StudsTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::StudsTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
@@ -740,7 +740,7 @@ pub fn stub_f35194() -> ! {
 // mangled: j___ZN5boost10shared_ptrIN3RBX9InletToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::InletTool>::shared_ptr<RBX::InletTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::InletTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::InletTool>::shared_ptr<RBX::InletTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::InletTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f35184() -> ! {
     todo!("0xf35184 boost::shared_ptr<RBX::InletTool>::shared_ptr<RBX::InletTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::InletTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
@@ -749,7 +749,7 @@ pub fn stub_f35184() -> ! {
 // mangled: j___ZN5boost10shared_ptrIN3RBX9HingeToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::HingeTool>::shared_ptr<RBX::HingeTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::HingeTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::HingeTool>::shared_ptr<RBX::HingeTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::HingeTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f35174() -> ! {
     todo!("0xf35174 boost::shared_ptr<RBX::HingeTool>::shared_ptr<RBX::HingeTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::HingeTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
@@ -758,7 +758,7 @@ pub fn stub_f35174() -> ! {
 // mangled: j___ZN5boost10shared_ptrIN3RBX9CloneToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::CloneTool>::shared_ptr<RBX::CloneTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CloneTool>::shared_ptr<RBX::CloneTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f35164() -> ! {
     todo!("0xf35164 boost::shared_ptr<RBX::CloneTool>::shared_ptr<RBX::CloneTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::CloneTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
@@ -767,7 +767,7 @@ pub fn stub_f35164() -> ! {
 // mangled: j___ZN5boost10shared_ptrIN3RBX8WeldToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::WeldTool>::shared_ptr<RBX::WeldTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::WeldTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::WeldTool>::shared_ptr<RBX::WeldTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::WeldTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f35154() -> ! {
     todo!("0xf35154 boost::shared_ptr<RBX::WeldTool>::shared_ptr<RBX::WeldTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::WeldTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
@@ -776,7 +776,7 @@ pub fn stub_f35154() -> ! {
 // mangled: j___ZN5boost10shared_ptrIN3RBX8NullToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::NullTool>::shared_ptr<RBX::NullTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::NullTool>::shared_ptr<RBX::NullTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f35144() -> ! {
     todo!("0xf35144 boost::shared_ptr<RBX::NullTool>::shared_ptr<RBX::NullTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::NullTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
@@ -785,7 +785,7 @@ pub fn stub_f35144() -> ! {
 // mangled: j___ZN5boost10shared_ptrIN3RBX8LockToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::LockTool>::shared_ptr<RBX::LockTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::LockTool>::shared_ptr<RBX::LockTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f35134() -> ! {
     todo!("0xf35134 boost::shared_ptr<RBX::LockTool>::shared_ptr<RBX::LockTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LockTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
@@ -794,7 +794,7 @@ pub fn stub_f35134() -> ! {
 // mangled: j___ZN5boost10shared_ptrIN3RBX8GrabToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::GrabTool>::shared_ptr<RBX::GrabTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GrabTool>::shared_ptr<RBX::GrabTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f35124() -> ! {
     todo!("0xf35124 boost::shared_ptr<RBX::GrabTool>::shared_ptr<RBX::GrabTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GrabTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
@@ -803,7 +803,7 @@ pub fn stub_f35124() -> ! {
 // mangled: j___ZN5boost10shared_ptrIN3RBX8GlueToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::GlueTool>::shared_ptr<RBX::GlueTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GlueTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GlueTool>::shared_ptr<RBX::GlueTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GlueTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_f35114() -> ! {
     todo!("0xf35114 boost::shared_ptr<RBX::GlueTool>::shared_ptr<RBX::GlueTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::GlueTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }

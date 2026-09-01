@@ -20,7 +20,7 @@ pub fn stub_0x703230() -> ! {
 }
 
 // 0x767950 — __ZN3RBX9Scripting15DebuggerManager22addDebugger_ReflectionEN5boost10shared_ptrINS_8InstanceEEE
-#[doc(alias = "RBX::Scripting::DebuggerManager::addDebugger_Reflection(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Scripting::DebuggerManager::addDebugger_Reflection(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_0x767950() -> ! {
     todo!("0x767950")
 }
@@ -56,7 +56,7 @@ pub fn stub_0x767fe0() -> ! {
 }
 
 // 0x768120 — __ZN3RBX9Scripting14ScriptDebugger24getWatchValue_ReflectionEN5boost10shared_ptrINS_8InstanceEEE
-#[doc(alias = "RBX::Scripting::ScriptDebugger::getWatchValue_Reflection(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Scripting::ScriptDebugger::getWatchValue_Reflection(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_0x768120() -> ! {
     todo!("0x768120")
 }

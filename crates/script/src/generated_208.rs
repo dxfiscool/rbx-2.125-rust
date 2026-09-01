@@ -797,7 +797,7 @@ pub fn stub_0x3626e0() -> ! {
 
 // 0x3627c4 — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::RunTransition)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::RunTransition)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot> &)")]
 pub fn stub_0x3627c4() -> ! {
     todo!("0x3627c4 rbx::signals::signal<void ()(RBX::RunTransition)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot> &)")
 }
@@ -847,7 +847,7 @@ pub fn stub_0x362c30() -> ! {
 
 // 0x362d98 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotEEaSERKS9_
 // type: int *__fastcall(int *, int *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot> const&)")]
 pub fn stub_0x362d98() -> ! {
     todo!("0x362d98 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot> const&)")
 }
@@ -890,14 +890,14 @@ pub fn stub_0x3631a8() -> ! {
 }
 
 // 0x3631b0 — __ZN5boost21intrusive_ptr_add_refIN3rbx7signals10connection5islotEiLi0ELi0EEEvPKNS1_20intrusive_ptr_targetIT_T0_XT1_EXT2_EEE
-#[doc(alias = "void boost::intrusive_ptr_add_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
+#[doc(alias = "void rbx_core::SharedPtr_add_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")]
 pub fn stub_0x3631b0() -> ! {
     todo!("0x3631b0 void boost::intrusive_ptr_add_ref<rbx::signals::connection::islot,int,0,0>(rbx::intrusive_ptr_target<rbx::signals::connection::islot,int,0,0> const*)")
 }
 
 // 0x363224 — __ZN3rbx7signals6signalIFvddEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(double,double)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(double,double)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(double,double)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(double,double)>::slot> &)")]
 pub fn stub_0x363224() -> ! {
     todo!("0x363224 rbx::signals::signal<void ()(double,double)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(double,double)>::slot> &)")
 }
@@ -909,7 +909,7 @@ pub fn stub_0x363384() -> ! {
 }
 
 // 0x3633ac — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvddEE4slotEEaSERKS7_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(double,double)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(double,double)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(double,double)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(double,double)>::slot> const&)")]
 pub fn stub_0x3633ac() -> ! {
     todo!("0x3633ac boost::intrusive_ptr<rbx::signals::signal<void ()(double,double)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(double,double)>::slot> const&)")
 }
@@ -929,7 +929,7 @@ pub fn stub_0x3633d4() -> ! {
 
 // 0x3634cc — __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Stepped const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Stepped const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot> &)")]
 pub fn stub_0x3634cc() -> ! {
     todo!("0x3634cc rbx::signals::signal<void ()(RBX::Stepped const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot> &)")
 }
@@ -941,7 +941,7 @@ pub fn stub_0x36362c() -> ! {
 }
 
 // 0x363654 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slotEEaSERKSB_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot> const&)")]
 pub fn stub_0x363654() -> ! {
     todo!("0x363654 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot> const&)")
 }
@@ -961,7 +961,7 @@ pub fn stub_0x36367c() -> ! {
 
 // 0x363774 — __ZN3rbx7signals6signalIFvdEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(double)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(double)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(double)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(double)>::slot> &)")]
 pub fn stub_0x363774() -> ! {
     todo!("0x363774 rbx::signals::signal<void ()(double)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(double)>::slot> &)")
 }
@@ -973,7 +973,7 @@ pub fn stub_0x3638d4() -> ! {
 }
 
 // 0x3638fc — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvdEE4slotEEaSERKS7_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(double)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(double)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(double)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(double)>::slot> const&)")]
 pub fn stub_0x3638fc() -> ! {
     todo!("0x3638fc boost::intrusive_ptr<rbx::signals::signal<void ()(double)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(double)>::slot> const&)")
 }

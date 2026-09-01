@@ -419,7 +419,7 @@ pub fn stub_674080() -> ! {
 // 0x6741c4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13GuiTextButtonEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int *)
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_13GuiTextButtonEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::GuiTextButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiTextButton>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GuiTextButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiTextButton>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_13GuiTextButtonEEEN5boost10shared_ptrIT_EEv
 pub fn stub_6741c4() -> ! {
     todo!("0x6741c4 boost::shared_ptr<RBX::GuiTextButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiTextButton>(void)")
@@ -428,7 +428,7 @@ pub fn stub_6741c4() -> ! {
 // 0x674278 — __ZN5boost10shared_ptrIN3RBX13GuiTextButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX13GuiTextButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::GuiTextButton>::shared_ptr<RBX::GuiTextButton,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GuiTextButton>::shared_ptr<RBX::GuiTextButton,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX13GuiTextButtonEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_674278() -> ! {
     todo!("0x674278 boost::shared_ptr<RBX::GuiTextButton>::shared_ptr<RBX::GuiTextButton,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiTextButton *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -437,7 +437,7 @@ pub fn stub_674278() -> ! {
 // 0x674340 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13GuiTextButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13GuiTextButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiTextButton,RBX::GuiTextButton>(boost::shared_ptr<RBX::GuiTextButton> const*,RBX::GuiTextButton *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiTextButton,RBX::GuiTextButton>(rbx_core::SharedPtr<RBX::GuiTextButton> const*,RBX::GuiTextButton *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13GuiTextButtonES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_674340() -> ! {
     todo!("0x674340 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiTextButton,RBX::GuiTextButton>(boost::shared_ptr<RBX::GuiTextButton> const*,RBX::GuiTextButton *)const")

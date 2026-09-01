@@ -16,7 +16,7 @@ pub fn stub_6b3bd8() -> ! {
 // 0x6b3de4 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D15CoordinateFrameEEE4slotEEaSEPS8_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot>::operator=(rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot*)
 // type: int(void)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot>::operator=(rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot>::operator=(rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot*)")]
 pub fn stub_6b3de4() -> ! {
     todo!("0x6b3de4 boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot>::operator=(rbx::signals::signal<void ()(G3D::CoordinateFrame)>::slot*)")
 }
@@ -233,7 +233,7 @@ pub fn stub_6b5314() -> ! {
 // 0x6b5404 — __ZN3rbx7signals6signalIFvN3RBX6RbxRayEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // demangled: rbx::signals::signal<void ()(RBX::RbxRay)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> &)
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::RbxRay)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> &)")]
 pub fn stub_6b5404() -> ! {
     todo!("0x6b5404 rbx::signals::signal<void ()(RBX::RbxRay)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> &)")
 }
@@ -352,7 +352,7 @@ pub fn stub_6b6004() -> ! {
 // 0x6b6210 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slotEEaSEPS8_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(rbx::signals::signal<void ()(RBX::RbxRay)>::slot*)
 // type: void __fastcall()
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(rbx::signals::signal<void ()(RBX::RbxRay)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(rbx::signals::signal<void ()(RBX::RbxRay)>::slot*)")]
 pub fn stub_6b6210() -> ! {
     todo!("0x6b6210 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(rbx::signals::signal<void ()(RBX::RbxRay)>::slot*)")
 }
@@ -632,7 +632,7 @@ pub fn stub_6b7a0c() -> ! {
 // 0x6b7b7c — __ZN3rbx7signals6signalIFvN3G3D7Vector3EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // demangled: rbx::signals::signal<void ()(G3D::Vector3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot> &)
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector3)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector3)>::slot> &)")]
 pub fn stub_6b7b7c() -> ! {
     todo!("0x6b7b7c rbx::signals::signal<void ()(G3D::Vector3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector3)>::slot> &)")
 }

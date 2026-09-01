@@ -615,13 +615,13 @@ pub fn stub_0x2a4610() -> ! {
 }
 
 // 0x2a4644 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE8on_indexEP9lua_State
-#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(lua_State *)")]
 pub fn stub_0x2a4644() -> ! {
     todo!("0x2a4644 __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE8on_indexEP9lua_State")
 }
 
 // 0x2a4678 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_newindexEP9lua_State
-#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(lua_State *)")]
 pub fn stub_0x2a4678() -> ! {
     todo!("0x2a4678 __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_newindexEP9lua_State")
 }

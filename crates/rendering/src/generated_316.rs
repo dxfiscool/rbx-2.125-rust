@@ -75,7 +75,7 @@ pub fn stub_478484() -> ! {
 
 // 0x4785a0 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE9push_backERKS4_
 // type: int(void)
-#[doc(alias = "std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::push_back(boost::weak_ptr<RBX::Instance> const&)")]
+#[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::push_back(rbx_core::WeakPtr<RBX::Instance> const&)")]
 // was: __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE9push_backERKS4_
 pub fn stub_4785a0() -> ! {
     todo!("0x4785a0 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::push_back(boost::weak_ptr<RBX::Instance> const&)")
@@ -83,7 +83,7 @@ pub fn stub_4785a0() -> ! {
 
 // 0x478630 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE16_M_push_back_auxERKS4_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, void *, int)
-#[doc(alias = "std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_push_back_aux(boost::weak_ptr<RBX::Instance> const&)")]
+#[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_push_back_aux(rbx_core::WeakPtr<RBX::Instance> const&)")]
 // was: __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE16_M_push_back_auxERKS4_
 pub fn stub_478630() -> ! {
     todo!("0x478630 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_push_back_aux(boost::weak_ptr<RBX::Instance> const&)")
@@ -91,7 +91,7 @@ pub fn stub_478630() -> ! {
 
 // 0x478814 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE22_M_reserve_map_at_backEm
 // type: int(void)
-#[doc(alias = "std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_reserve_map_at_back(unsigned long)")]
+#[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_reserve_map_at_back(unsigned long)")]
 // was: __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE22_M_reserve_map_at_backEm
 pub fn stub_478814() -> ! {
     todo!("0x478814 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_reserve_map_at_back(unsigned long)")
@@ -99,7 +99,7 @@ pub fn stub_478814() -> ! {
 
 // 0x478830 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE17_M_reallocate_mapEmb
 // type: int(void)
-#[doc(alias = "std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_reallocate_map(unsigned long,bool)")]
+#[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_reallocate_map(unsigned long,bool)")]
 // was: __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE17_M_reallocate_mapEmb
 pub fn stub_478830() -> ! {
     todo!("0x478830 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_reallocate_map(unsigned long,bool)")
@@ -107,7 +107,7 @@ pub fn stub_478830() -> ! {
 
 // 0x478908 — __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE15_M_allocate_mapEm
 // type: int(void)
-#[doc(alias = "std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_allocate_map(unsigned long)")]
+#[doc(alias = "std::_Deque_base<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_allocate_map(unsigned long)")]
 // was: __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE15_M_allocate_mapEm
 pub fn stub_478908() -> ! {
     todo!("0x478908 std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_allocate_map(unsigned long)")
@@ -123,21 +123,21 @@ pub fn stub_478920() -> ! {
 
 // 0x478a4c — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEEEvT_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>)")]
+#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>)")]
 // was: __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEEEvT_
 pub fn stub_478a4c() -> ! {
     todo!("0x478a4c void boost::function0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>)")
 }
 
 // 0x478b84 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEE6manageERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 pub fn stub_478b84() -> ! {
     todo!("0x478b84 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
 }
 
 // 0x478ba0 — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEvE6invokeERNS1_15function_bufferE
-#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 // was: __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEvE6invokeERNS1_15function_bufferE
 pub fn stub_478ba0() -> ! {
     todo!("0x478ba0 boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,void>::invoke(boost::detail::function::function_buffer &)")
@@ -145,7 +145,7 @@ pub fn stub_478ba0() -> ! {
 
 // 0x478bb4 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS5_5list1INS5_5valueISA_EEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>,boost::detail::function::function_buffer &)const")]
 // was: __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS5_5list1INS5_5valueISA_EEEEEEEEbT_RNS1_15function_bufferE
 pub fn stub_478bb4() -> ! {
     todo!("0x478bb4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,boost::detail::function::function_buffer &)const")
@@ -153,14 +153,14 @@ pub fn stub_478bb4() -> ! {
 
 // 0x478cd4 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS5_5list1INS5_5valueISA_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS5_5list1INS5_5valueISA_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 pub fn stub_478cd4() -> ! {
     todo!("0x478cd4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
 }
 
 // 0x478e50 — __ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX8InstanceEEEEEEclIPFvS6_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
-#[doc(alias = "void boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>::operator()<void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Instance>) &,boost::_bi::list0 &,int)")]
+#[doc(alias = "void boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>::operator()<void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::Instance>) &,boost::_bi::list0 &,int)")]
 // was: __ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX8InstanceEEEEEEclIPFvS6_ENS0_5list0EEEvNS0_4typeIvEERT_RT0_i
 pub fn stub_478e50() -> ! {
     todo!("0x478e50 void boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>::operator()<void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list0>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Instance>) &,boost::_bi::list0 &,int)")
@@ -168,7 +168,7 @@ pub fn stub_478e50() -> ! {
 
 // 0x478f60 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEE12manage_smallERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 // type: int(void)
-#[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX8InstanceEEEENS3_5list1INS3_5valueIS8_EEEEEEE12manage_smallERKNS1_15function_bufferERSH_NS1_30functor_manager_operation_typeE
 pub fn stub_478f60() -> ! {
     todo!("0x478f60 boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Instance>),boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
@@ -176,7 +176,7 @@ pub fn stub_478f60() -> ! {
 
 // 0x479038 — __ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX8InstanceEEEEEEC2ES7_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>::list1(boost::_bi::value<boost::weak_ptr<RBX::Instance>>)")]
+#[doc(alias = "boost::_bi::list1<boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>>::list1(boost::_bi::value<rbx_core::WeakPtr<RBX::Instance>>)")]
 // was: __ZN5boost3_bi5list1INS0_5valueINS_8weak_ptrIN3RBX8InstanceEEEEEEC2ES7_
 pub fn stub_479038() -> ! {
     todo!("0x479038 boost::_bi::list1<boost::_bi::value<boost::weak_ptr<RBX::Instance>>>::list1(boost::_bi::value<boost::weak_ptr<RBX::Instance>>)")
@@ -184,7 +184,7 @@ pub fn stub_479038() -> ! {
 
 // 0x479180 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE9pop_frontEv
 // type: int(void)
-#[doc(alias = "std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::pop_front(void)")]
+#[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::pop_front(void)")]
 // was: __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE9pop_frontEv
 pub fn stub_479180() -> ! {
     todo!("0x479180 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::pop_front(void)")
@@ -192,14 +192,14 @@ pub fn stub_479180() -> ! {
 
 // 0x4791ac — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE16_M_pop_front_auxEv
 // type: int(void)
-#[doc(alias = "std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_pop_front_aux(void)")]
+#[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_pop_front_aux(void)")]
 // was: __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE16_M_pop_front_auxEv
 pub fn stub_4791ac() -> ! {
     todo!("0x4791ac std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_pop_front_aux(void)")
 }
 
 // 0x4791d8 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EEC2ERKS6_
-#[doc(alias = "std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::deque(std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>> const&)")]
+#[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::deque(std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>> const&)")]
 // was: __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EEC2ERKS6_
 pub fn stub_4791d8() -> ! {
     todo!("0x4791d8 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::deque(std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>> const&)")
@@ -207,7 +207,7 @@ pub fn stub_4791d8() -> ! {
 
 // 0x4792fc — __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EED2Ev
 // type: int(void)
-#[doc(alias = "std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::~_Deque_base()")]
+#[doc(alias = "std::_Deque_base<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::~_Deque_base()")]
 // was: __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EED2Ev
 pub fn stub_4792fc() -> ! {
     todo!("0x4792fc std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::~_Deque_base()")
@@ -215,7 +215,7 @@ pub fn stub_4792fc() -> ! {
 
 // 0x479328 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost8weak_ptrIN3RBX8InstanceEEERKS5_PS6_ES0_IS5_RS5_PS5_EET0_T_SE_SD_St12__false_type
 // type: int __fastcall(int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, void *, int)
-#[doc(alias = "std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>>(std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>,std::__false_type)")]
+#[doc(alias = "std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*> std::__uninitialized_copy_aux<std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance> const&,rbx_core::WeakPtr<RBX::Instance> const*>,std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*>>(std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance> const&,rbx_core::WeakPtr<RBX::Instance> const*>,std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance> const&,rbx_core::WeakPtr<RBX::Instance> const*>,std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*>,std::__false_type)")]
 // was: __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost8weak_ptrIN3RBX8InstanceEEERKS5_PS6_ES0_IS5_RS5_PS5_EET0_T_SE_SD_St12__false_type
 pub fn stub_479328() -> ! {
     todo!("0x479328 std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>>(std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance> const&,boost::weak_ptr<RBX::Instance> const*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>,std::__false_type)")
@@ -223,7 +223,7 @@ pub fn stub_479328() -> ! {
 
 // 0x479510 — __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE17_M_initialize_mapEm
 // type: void __fastcall(int *, unsigned int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
-#[doc(alias = "std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_initialize_map(unsigned long)")]
+#[doc(alias = "std::_Deque_base<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_initialize_map(unsigned long)")]
 // was: __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE17_M_initialize_mapEm
 pub fn stub_479510() -> ! {
     todo!("0x479510 std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_initialize_map(unsigned long)")
@@ -231,14 +231,14 @@ pub fn stub_479510() -> ! {
 
 // 0x479668 — __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE15_M_create_nodesEPPS4_S8_
 // type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_create_nodes(boost::weak_ptr<RBX::Instance>**,boost::weak_ptr<RBX::Instance>**)")]
+#[doc(alias = "std::_Deque_base<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_create_nodes(rbx_core::WeakPtr<RBX::Instance>**,rbx_core::WeakPtr<RBX::Instance>**)")]
 // was: __ZNSt11_Deque_baseIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE15_M_create_nodesEPPS4_S8_
 pub fn stub_479668() -> ! {
     todo!("0x479668 std::_Deque_base<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_create_nodes(boost::weak_ptr<RBX::Instance>**,boost::weak_ptr<RBX::Instance>**)")
 }
 
 // 0x47975c — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EED2Ev
-#[doc(alias = "std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::~deque()")]
+#[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::~deque()")]
 // was: __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EED2Ev
 pub fn stub_47975c() -> ! {
     todo!("0x47975c std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::~deque()")
@@ -246,7 +246,7 @@ pub fn stub_47975c() -> ! {
 
 // 0x479844 — __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE19_M_destroy_data_auxESt15_Deque_iteratorIS4_RS4_PS4_ESA_
 // type: int __fastcall(int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_destroy_data_aux(std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>)")]
+#[doc(alias = "std::deque<rbx_core::WeakPtr<RBX::Instance>,std::allocator<rbx_core::WeakPtr<RBX::Instance>>>::_M_destroy_data_aux(std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*>,std::_Deque_iterator<rbx_core::WeakPtr<RBX::Instance>,rbx_core::WeakPtr<RBX::Instance>&,rbx_core::WeakPtr<RBX::Instance>*>)")]
 // was: __ZNSt5dequeIN5boost8weak_ptrIN3RBX8InstanceEEESaIS4_EE19_M_destroy_data_auxESt15_Deque_iteratorIS4_RS4_PS4_ESA_
 pub fn stub_479844() -> ! {
     todo!("0x479844 std::deque<boost::weak_ptr<RBX::Instance>,std::allocator<boost::weak_ptr<RBX::Instance>>>::_M_destroy_data_aux(std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>,std::_Deque_iterator<boost::weak_ptr<RBX::Instance>,boost::weak_ptr<RBX::Instance>&,boost::weak_ptr<RBX::Instance>*>)")

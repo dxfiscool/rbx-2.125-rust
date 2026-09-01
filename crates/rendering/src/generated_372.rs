@@ -346,7 +346,7 @@ pub fn stub_527f50() -> ! {
 
 // 0x528060 — __ZN3RBXL25InvokeTweenStatusCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefENS2_11TweenStatusE
 #[doc(alias = "__ZN3RBXL25InvokeTweenStatusCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefENS2_11TweenStatusE")]
-#[doc(alias = "RBX::InvokeTweenStatusCallback(boost::weak_ptr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,RBX::GuiObject::TweenStatus)")]
+#[doc(alias = "RBX::InvokeTweenStatusCallback(rbx_core::WeakPtr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,RBX::GuiObject::TweenStatus)")]
 // was: __ZN3RBXL25InvokeTweenStatusCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefENS2_11TweenStatusE
 pub fn stub_528060() -> ! {
     todo!("0x528060 __ZN3RBXL25InvokeTweenStatusCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefENS2_11TweenStatusE")
@@ -372,7 +372,7 @@ pub fn stub_5288b0() -> ! {
 
 // 0x528c4c — __ZN3RBXL22InvokeRemoveOnTweenEndEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefE
 #[doc(alias = "__ZN3RBXL22InvokeRemoveOnTweenEndEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefE")]
-#[doc(alias = "RBX::InvokeRemoveOnTweenEnd(boost::weak_ptr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef)")]
+#[doc(alias = "RBX::InvokeRemoveOnTweenEnd(rbx_core::WeakPtr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef)")]
 // was: __ZN3RBXL22InvokeRemoveOnTweenEndEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefE
 pub fn stub_528c4c() -> ! {
     todo!("0x528c4c __ZN3RBXL22InvokeRemoveOnTweenEndEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefE")

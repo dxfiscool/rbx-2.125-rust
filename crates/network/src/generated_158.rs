@@ -202,7 +202,7 @@ pub fn stub_37628() -> ! {
 // demangled: RobloxView::completeViewPrep(boost::shared_ptr<RBX::Game>)
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, boost::detail::sp_counted_base *, int, 
 // was: boost::shared_ptr
-#[doc(alias = "RobloxView::completeViewPrep(boost::shared_ptr<RBX::Game>)")]
+#[doc(alias = "RobloxView::completeViewPrep(rbx_core::SharedPtr<RBX::Game>)")]
 pub fn stub_37b3c() -> ! {
     todo!("0x37b3c RobloxView::completeViewPrep(boost::shared_ptr<RBX::Game>)")
 }
@@ -219,7 +219,7 @@ pub fn stub_380a0() -> ! {
 // demangled: RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int)
 // was: boost::shared_ptr
-#[doc(alias = "RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)")]
+#[doc(alias = "RobloxView::bindWorkspace(rbx_core::SharedPtr<RBX::ViewBase>,rbx_core::SharedPtr<RBX::DataModel>,rbx_core::SharedPtr<RBX::OverlayDataModel>)")]
 pub fn stub_380a4() -> ! {
     todo!("0x380a4 RobloxView::bindWorkspace(boost::shared_ptr<RBX::ViewBase>,boost::shared_ptr<RBX::DataModel>,boost::shared_ptr<RBX::OverlayDataModel>)")
 }
@@ -293,7 +293,7 @@ pub fn stub_39024() -> ! {
 // demangled: RobloxView::create_view(boost::shared_ptr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)
 // type: int __fastcall(boost::detail::sp_counted_base *, int, int, int, std::string *, std::string *)
 // was: boost::shared_ptr
-#[doc(alias = "RobloxView::create_view(boost::shared_ptr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")]
+#[doc(alias = "RobloxView::create_view(rbx_core::SharedPtr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")]
 pub fn stub_39674() -> ! {
     todo!("0x39674 RobloxView::create_view(boost::shared_ptr<RBX::Game>,unsigned int,unsigned int,std::string,std::string,std::string)")
 }
@@ -390,7 +390,7 @@ pub fn stub_39c68() -> ! {
 // demangled: RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)
 // type: void __fastcall(int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: boost::shared_ptr
-#[doc(alias = "RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")]
+#[doc(alias = "RBX::TaskScheduler::removeBlocking(rbx_core::SharedPtr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")]
 pub fn stub_39c6c() -> ! {
     todo!("0x39c6c RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>,boost::function<void ()(void)>)")
 }
@@ -399,7 +399,7 @@ pub fn stub_39c6c() -> ! {
 // demangled: boost::shared_ptr<RobloxView::RenderJob>::reset(void)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::reset(void)")]
 pub fn stub_39d7c() -> ! {
     todo!("0x39d7c boost::shared_ptr<RobloxView::RenderJob>::reset(void)")
 }
@@ -408,7 +408,7 @@ pub fn stub_39d7c() -> ! {
 // demangled: boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::reset(void)")]
 pub fn stub_39e10() -> ! {
     todo!("0x39e10 boost::shared_ptr<RobloxView::ViewUpdateJob>::reset(void)")
 }
@@ -417,7 +417,7 @@ pub fn stub_39e10() -> ! {
 // demangled: boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::operator=(rbx_core::SharedPtr<RobloxView::ViewUpdateJob>&&)")]
 pub fn stub_39ea8() -> ! {
     todo!("0x39ea8 boost::shared_ptr<RobloxView::ViewUpdateJob>::operator=(boost::shared_ptr<RobloxView::ViewUpdateJob>&&)")
 }
@@ -426,7 +426,7 @@ pub fn stub_39ea8() -> ! {
 // demangled: boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)
 // type: int __fastcall(int, void *, int, int, int, int)
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")]
 pub fn stub_39f4c() -> ! {
     todo!("0x39f4c boost::shared_ptr<RobloxView::ViewUpdateJob>::shared_ptr<RobloxView::ViewUpdateJob>(RobloxView::ViewUpdateJob *)")
 }
@@ -435,7 +435,7 @@ pub fn stub_39f4c() -> ! {
 // demangled: boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::operator=(rbx_core::SharedPtr<RobloxView::RenderJob>&&)")]
 pub fn stub_3a030() -> ! {
     todo!("0x3a030 boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")
 }
@@ -444,7 +444,7 @@ pub fn stub_3a030() -> ! {
 // demangled: boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)
 // type: int __fastcall(int, void *, int, int, int, int)
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
 pub fn stub_3a0d4() -> ! {
     todo!("0x3a0d4 boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")
 }
@@ -461,7 +461,7 @@ pub fn stub_3a1b8() -> ! {
 // demangled: boost::shared_ptr<RBX::Game>::operator=(boost::shared_ptr<RBX::Game> const&)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RBX::Game>::operator=(boost::shared_ptr<RBX::Game> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Game>::operator=(rbx_core::SharedPtr<RBX::Game> const&)")]
 pub fn stub_3a1bc() -> ! {
     todo!("0x3a1bc boost::shared_ptr<RBX::Game>::operator=(boost::shared_ptr<RBX::Game> const&)")
 }
@@ -479,7 +479,7 @@ pub fn stub_3a278() -> ! {
 // demangled: boost::shared_ptr<RBX::DataModel>& boost::shared_ptr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(boost::shared_ptr<RBX::OverlayDataModel> &&)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RBX::DataModel>& boost::shared_ptr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(boost::shared_ptr<RBX::OverlayDataModel> &&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::DataModel>& rbx_core::SharedPtr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(rbx_core::SharedPtr<RBX::OverlayDataModel> &&)")]
 pub fn stub_3a2ec() -> ! {
     todo!("0x3a2ec boost::shared_ptr<RBX::DataModel>& boost::shared_ptr<RBX::DataModel>::operator=<RBX::OverlayDataModel>(boost::shared_ptr<RBX::OverlayDataModel> &&)")
 }
@@ -506,7 +506,7 @@ pub fn stub_3a408() -> ! {
 // demangled: void boost::shared_ptr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "void boost::shared_ptr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
+#[doc(alias = "void rbx_core::SharedPtr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")]
 pub fn stub_3a5bc() -> ! {
     todo!("0x3a5bc void boost::shared_ptr<RBX::Tasks::Sequence>::reset<RBX::Tasks::Sequence>(RBX::Tasks::Sequence *)")
 }
@@ -515,7 +515,7 @@ pub fn stub_3a5bc() -> ! {
 // demangled: boost::shared_ptr<RBX::ViewBase>::reset(void)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RBX::ViewBase>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ViewBase>::reset(void)")]
 pub fn stub_3a660() -> ! {
     todo!("0x3a660 boost::shared_ptr<RBX::ViewBase>::reset(void)")
 }
@@ -541,7 +541,7 @@ pub fn stub_3a790() -> ! {
 // demangled: boost::shared_ptr<RBX::Camera> RBX::Creatable<RBX::Instance>::create<RBX::Camera>(void)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RBX::Camera> RBX::Creatable<RBX::Instance>::create<RBX::Camera>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Camera> RBX::Creatable<RBX::Instance>::create<RBX::Camera>(void)")]
 pub fn stub_3a798() -> ! {
     todo!("0x3a798 boost::shared_ptr<RBX::Camera> RBX::Creatable<RBX::Instance>::create<RBX::Camera>(void)")
 }
@@ -559,7 +559,7 @@ pub fn stub_3a850() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(boost::shared_ptr<RBX::Camera> const*,RBX::Camera *)const
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(boost::shared_ptr<RBX::Camera> const*,RBX::Camera *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(rbx_core::SharedPtr<RBX::Camera> const*,RBX::Camera *)const")]
 pub fn stub_3a930() -> ! {
     todo!("0x3a930 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Camera,RBX::Camera>(boost::shared_ptr<RBX::Camera> const*,RBX::Camera *)const")
 }
@@ -650,7 +650,7 @@ pub fn stub_3af08() -> ! {
 // demangled: boost::shared_ptr<RBX::RunService>::shared_ptr<RBX::RunService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)
 // type: int __fastcall(_DWORD, _DWORD)
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RBX::RunService>::shared_ptr<RBX::RunService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RunService>::shared_ptr<RBX::RunService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_3afe0() -> ! {
     todo!("0x3afe0 boost::shared_ptr<RBX::RunService>::shared_ptr<RBX::RunService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RunService *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -837,7 +837,7 @@ pub fn stub_3b518() -> ! {
 // demangled: boost::shared_ptr<RBX::ControllerService> RBX::Creatable<RBX::Instance>::create<RBX::ControllerService>(void)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RBX::ControllerService> RBX::Creatable<RBX::Instance>::create<RBX::ControllerService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ControllerService> RBX::Creatable<RBX::Instance>::create<RBX::ControllerService>(void)")]
 pub fn stub_3b674() -> ! {
     todo!("0x3b674 boost::shared_ptr<RBX::ControllerService> RBX::Creatable<RBX::Instance>::create<RBX::ControllerService>(void)")
 }
@@ -846,7 +846,7 @@ pub fn stub_3b674() -> ! {
 // demangled: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ControllerService>(boost::shared_ptr<RBX::ControllerService> const&)
 // type: 
 // was: boost::shared_ptr
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ControllerService>(boost::shared_ptr<RBX::ControllerService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ControllerService>(rbx_core::SharedPtr<RBX::ControllerService> const&)")]
 pub fn stub_3b724() -> ! {
     todo!("0x3b724 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ControllerService>(boost::shared_ptr<RBX::ControllerService> const&)")
 }

@@ -665,14 +665,14 @@ pub fn stub_9e7664() -> ! {
 
 // 0x9e7668 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE4nextERNS2_13intrusive_ptrINSA_4slotEEE
 // type: int __fastcall(int, int32_t **)
-#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::slot> &)")]
 pub fn stub_9e7668() -> ! {
     todo!("0x9e7668 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS4_7Network12FilterResultES6_SsEE4nextERNS2_13intrusive_ptrINSA_4slotEEE")
 }
 
 // 0x9e7870 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEENS5_7Network12FilterResultES7_SsEE4slotEEaSERKSD_
 // type: int32_t **__fastcall(int32_t **, int32_t **)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,std::string)>::slot> const&)")]
 pub fn stub_9e7870() -> ! {
     todo!("0x9e7870 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEENS5_7Network12FilterResultES7_SsEE4slotEEaSERKSD_")
 }

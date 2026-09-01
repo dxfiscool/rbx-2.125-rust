@@ -67,7 +67,7 @@ pub fn stub_412ff4() -> ! {
 
 // 0x4130c0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18MoveResizeJoinToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 // type: void __fastcall(int, RBX::Workspace *)
-#[doc(alias = "boost::shared_ptr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)")]
 pub fn stub_4130c0() -> ! {
     todo!("0x4130c0 boost::shared_ptr<RBX::MoveResizeJoinTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::MoveResizeJoinTool,RBX::Workspace *>(RBX::Workspace *)")
 }
@@ -116,14 +116,14 @@ pub fn stub_41338c() -> ! {
 
 // 0x413394 — __ZN5boost10shared_ptrIN3RBX18MoveResizeJoinToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::MoveResizeJoinTool>::shared_ptr<RBX::MoveResizeJoinTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MoveResizeJoinTool>::shared_ptr<RBX::MoveResizeJoinTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_413394() -> ! {
     todo!("0x413394 boost::shared_ptr<RBX::MoveResizeJoinTool>::shared_ptr<RBX::MoveResizeJoinTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::MoveResizeJoinTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
 
 // 0x41345c — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18MoveResizeJoinToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MoveResizeJoinTool,RBX::MoveResizeJoinTool>(boost::shared_ptr<RBX::MoveResizeJoinTool> const*,RBX::MoveResizeJoinTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MoveResizeJoinTool,RBX::MoveResizeJoinTool>(rbx_core::SharedPtr<RBX::MoveResizeJoinTool> const*,RBX::MoveResizeJoinTool *)const")]
 pub fn stub_41345c() -> ! {
     todo!("0x41345c void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::MoveResizeJoinTool,RBX::MoveResizeJoinTool>(boost::shared_ptr<RBX::MoveResizeJoinTool> const*,RBX::MoveResizeJoinTool *)const")
 }
@@ -227,7 +227,7 @@ pub fn stub_413b04() -> ! {
 
 // 0x413bd0 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_14AxisRotateToolEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 // type: void __fastcall(int, RBX::Workspace *)
-#[doc(alias = "boost::shared_ptr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)")]
 pub fn stub_413bd0() -> ! {
     todo!("0x413bd0 boost::shared_ptr<RBX::AxisRotateTool> RBX::Creatable<RBX::MouseCommand>::create<RBX::AxisRotateTool,RBX::Workspace *>(RBX::Workspace *)")
 }
@@ -332,14 +332,14 @@ pub fn stub_414418() -> ! {
 
 // 0x414510 — __ZN5boost10shared_ptrIN3RBX14AxisRotateToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::AxisRotateTool>::shared_ptr<RBX::AxisRotateTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::AxisRotateTool>::shared_ptr<RBX::AxisRotateTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_414510() -> ! {
     todo!("0x414510 boost::shared_ptr<RBX::AxisRotateTool>::shared_ptr<RBX::AxisRotateTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AxisRotateTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
 
 // 0x4145d8 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AxisRotateToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AxisRotateTool,RBX::AxisRotateTool>(boost::shared_ptr<RBX::AxisRotateTool> const*,RBX::AxisRotateTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AxisRotateTool,RBX::AxisRotateTool>(rbx_core::SharedPtr<RBX::AxisRotateTool> const*,RBX::AxisRotateTool *)const")]
 pub fn stub_4145d8() -> ! {
     todo!("0x4145d8 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AxisRotateTool,RBX::AxisRotateTool>(boost::shared_ptr<RBX::AxisRotateTool> const*,RBX::AxisRotateTool *)const")
 }
@@ -596,7 +596,7 @@ pub fn stub_416674() -> ! {
 
 // 0x416808 — __ZN3RBX11shared_fromINS_13ConfigurationEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_QWORD *, int)
-#[doc(alias = "boost::shared_ptr<RBX::Configuration> RBX::shared_from<RBX::Configuration>(RBX::Configuration*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Configuration> RBX::shared_from<RBX::Configuration>(RBX::Configuration*)")]
 pub fn stub_416808() -> ! {
     todo!("0x416808 boost::shared_ptr<RBX::Configuration> RBX::shared_from<RBX::Configuration>(RBX::Configuration*)")
 }
@@ -687,21 +687,21 @@ pub fn stub_416cbc() -> ! {
 
 // 0x416e00 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13ConfigurationEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)")]
 pub fn stub_416e00() -> ! {
     todo!("0x416e00 boost::shared_ptr<RBX::Configuration> RBX::Creatable<RBX::Instance>::create<RBX::Configuration>(void)")
 }
 
 // 0x416eb0 — __ZN5boost10shared_ptrIN3RBX13ConfigurationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_416eb0() -> ! {
     todo!("0x416eb0 boost::shared_ptr<RBX::Configuration>::shared_ptr<RBX::Configuration,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Configuration *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x416f78 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ConfigurationES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Configuration,RBX::Configuration>(boost::shared_ptr<RBX::Configuration> const*,RBX::Configuration *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Configuration,RBX::Configuration>(rbx_core::SharedPtr<RBX::Configuration> const*,RBX::Configuration *)const")]
 pub fn stub_416f78() -> ! {
     todo!("0x416f78 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Configuration,RBX::Configuration>(boost::shared_ptr<RBX::Configuration> const*,RBX::Configuration *)const")
 }

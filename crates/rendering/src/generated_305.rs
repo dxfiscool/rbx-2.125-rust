@@ -107,7 +107,7 @@ pub fn stub_441ac8() -> ! {
 
 // 0x441cf0 — __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 pub fn stub_441cf0() -> ! {
     todo!("0x441cf0 rbx::signals::signal<void ()(RBX::UIEvent const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> &)")
@@ -123,7 +123,7 @@ pub fn stub_441e50() -> ! {
 
 // 0x441e78 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotEEaSERKSB_
 // type: int *__fastcall(int *, _DWORD *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> const&)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotEEaSERKSB_
 pub fn stub_441e78() -> ! {
     todo!("0x441e78 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> const&)")
@@ -177,7 +177,7 @@ pub fn stub_442184() -> ! {
 
 // 0x4421cc — __ZN5boost10shared_ptrIN3RBX8InstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
-#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>::shared_ptr<RBX::Instance>(boost::weak_ptr<RBX::Instance> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>::shared_ptr<RBX::Instance>(rbx_core::WeakPtr<RBX::Instance> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_4421cc() -> ! {
     todo!("0x4421cc boost::shared_ptr<RBX::Instance>::shared_ptr<RBX::Instance>(boost::weak_ptr<RBX::Instance> const&,boost::detail::sp_nothrow_tag)")

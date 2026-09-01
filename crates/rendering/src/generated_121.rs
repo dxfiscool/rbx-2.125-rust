@@ -19,7 +19,7 @@ pub fn stub_f59a74() -> ! {
 
 // 0xf59ac4 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX9DataModelEEEN3G3D7Vector2EfENS3_5list3INS3_5valueIS8_EENSE_ISA_EENSE_IfEEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f59ac4() -> ! {
@@ -82,7 +82,7 @@ pub fn stub_f59c64() -> ! {
 
 // 0xf59d24 — j___ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS2_EEN3G3D7Vector2EfENS6_5list3INS6_5valueIS9_EENSF_ISB_EENSF_IfEEEEEEEEvT_
 // type: int __fastcall(int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>)")]
+#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>)")]
 // was: void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f59d24() -> ! {
@@ -127,7 +127,7 @@ pub fn stub_f59f14() -> ! {
 
 // 0xf59f94 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrIS4_EEN3G3D7Vector2EfENS8_5list3INS8_5valueISB_EENSH_ISD_EENSH_IfEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int)
-#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // was: void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f59f94() -> ! {
@@ -136,7 +136,7 @@ pub fn stub_f59f94() -> ! {
 
 // 0xf5a034 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS4_EEN3G3D7Vector2EfENS8_5list3INS8_5valueISB_EENSH_ISD_EENSH_IfEEEEEEEEbT_RNS1_15function_bufferE
 // type: int(void)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>,boost::detail::function::function_buffer &)const")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>,boost::detail::function::function_buffer &)const
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f5a034() -> ! {
@@ -145,7 +145,7 @@ pub fn stub_f5a034() -> ! {
 
 // 0xf5a044 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrIS4_EEN3G3D7Vector2EfENS8_5list3INS8_5valueISB_EENSH_ISD_EENSH_IfEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f5a044() -> ! {
@@ -598,7 +598,7 @@ pub fn stub_f60e54() -> ! {
 
 // 0xf61004 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsN3G3D7Vector3EEE4slotEEaSEPS8_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot*)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f61004() -> ! {
@@ -607,7 +607,7 @@ pub fn stub_f61004() -> ! {
 
 // 0xf61014 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsN3G3D7Vector3EEE4slotEEaSERKS9_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot> const&)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot> const&)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f61014() -> ! {
@@ -616,7 +616,7 @@ pub fn stub_f61014() -> ! {
 
 // 0xf610b4 — j___ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX7Network7PlayersEEEEENS_3argILi1EEENS2_IN3G3D7Vector3EEEEC2ES8_SA_SD_
 // type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, int, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::list3(boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>)")]
+#[doc(alias = "boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::list3(boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>)")]
 // was: boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::list3(boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f610b4() -> ! {
@@ -625,7 +625,7 @@ pub fn stub_f610b4() -> ! {
 
 // 0xf610c4 — j___ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX7Network7PlayersEEEEENS_3argILi1EEENS2_IN3G3D7Vector3EEEEclIPFvS7_NS_10shared_ptrINS4_8InstanceEEESC_ENS0_5list1IRSI_EEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::operator()<void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&> &,int)")]
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::operator()<void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&> &,int)")]
 // was: void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::operator()<void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f610c4() -> ! {
@@ -643,7 +643,7 @@ pub fn stub_f610f4() -> ! {
 
 // 0xf611a4 — j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX7Network7PlayersEEEEENS_3argILi1EEENS2_IN3G3D7Vector3EEEEC2ES8_SA_SD_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>)")]
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>)")]
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f611a4() -> ! {
@@ -652,7 +652,7 @@ pub fn stub_f611a4() -> ! {
 
 // 0xf61264 — j___ZN5boost4bindIvNS_8weak_ptrIN3RBX7Network7PlayersEEENS_10shared_ptrINS2_8InstanceEEEN3G3D7Vector3ES5_NS_3argILi1EEESA_EENS_3_bi6bind_tIT_PFSF_T0_T1_T2_ENSD_9list_av_3IT3_T4_T5_E4typeEEESK_SM_SN_SO_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list_av_3<boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>(void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list_av_3<rbx_core::WeakPtr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>::type> boost::bind<void,rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3,rbx_core::WeakPtr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>(void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),rbx_core::WeakPtr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list_av_3<boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>::type> boost::bind<void,boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3,boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3>(void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::weak_ptr<RBX::Network::Players>,boost::arg<1>,G3D::Vector3)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f61264() -> ! {
@@ -661,7 +661,7 @@ pub fn stub_f61264() -> ! {
 
 // 0xf61304 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX7Network7PlayersEEENS_10shared_ptrINS6_8InstanceEEEN3G3D7Vector3EENS3_5list3INS3_5valueIS9_EENS_3argILi1EEENSI_ISE_EEEEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f61304() -> ! {
@@ -679,7 +679,7 @@ pub fn stub_f61344() -> ! {
 
 // 0xf613b4 — j___ZN5boost9function1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS2_7Network7PlayersEEES4_N3G3D7Vector3EENS7_5list3INS7_5valueISC_EENS_3argILi1EEENSI_ISE_EEEEEEEEvT_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>)")]
+#[doc(alias = "void boost::function1<void,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>)")]
 // was: void boost::function1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f613b4() -> ! {
@@ -697,7 +697,7 @@ pub fn stub_f613c4() -> ! {
 
 // 0xf61734 — j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_7Network7PlayersEEES6_N3G3D7Vector3EENS9_5list3INS9_5valueISE_EENS_3argILi1EEENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferE
 // type: int(void)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>,boost::detail::function::function_buffer &)const")]
 // was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>,boost::detail::function::function_buffer &)const
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f61734() -> ! {
@@ -706,7 +706,7 @@ pub fn stub_f61734() -> ! {
 
 // 0xf61744 — j___ZNK5boost6detail8function13basic_vtable1IvNS_10shared_ptrIN3RBX8InstanceEEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS4_7Network7PlayersEEES6_N3G3D7Vector3EENS9_5list3INS9_5valueISE_EENS_3argILi1EEENSK_ISG_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, void *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Players>,rbx_core::SharedPtr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: bool boost::detail::function::basic_vtable1<void,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Players>,boost::shared_ptr<RBX::Instance>,G3D::Vector3),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::Network::Players>>,boost::arg<1>,boost::_bi::value<G3D::Vector3>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f61744() -> ! {
@@ -771,7 +771,7 @@ pub fn stub_f623d4() -> ! {
 
 // 0xf623e4 — j___ZN3rbx7signals6signalIFvSsN3G3D7Vector3EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "rbx::signals::signal<void ()(std::string,G3D::Vector3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(std::string,G3D::Vector3)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot> &)")]
 // was: rbx::signals::signal<void ()(std::string,G3D::Vector3)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot> &)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f623e4() -> ! {

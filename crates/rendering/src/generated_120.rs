@@ -696,7 +696,7 @@ pub fn stub_f59654() -> ! {
 
 // 0xf596f4 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D7Vector2EEE4slotEEaSEPS8_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector2)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector2)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector2)>::slot*)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector2)>::slot*)
 pub fn stub_f596f4() -> ! {
     todo!("0xf596f4 boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot>::operator=(rbx::signals::signal<void ()(G3D::Vector2)>::slot*)")
@@ -704,7 +704,7 @@ pub fn stub_f596f4() -> ! {
 
 // 0xf59704 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3G3D7Vector2EEE4slotEEaSERKS9_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector2)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector2)>::slot> const&)")]
 // was: boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot> const&)
 pub fn stub_f59704() -> ! {
     todo!("0xf59704 boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot> const&)")
@@ -712,7 +712,7 @@ pub fn stub_f59704() -> ! {
 
 // 0xf59844 — j___ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_IN3G3D7Vector2EEENS2_IfEEEC2ES7_SA_SB_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::list3(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>)")]
+#[doc(alias = "boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::list3(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>)")]
 // was: boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::list3(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>)
 pub fn stub_f59844() -> ! {
     todo!("0xf59844 boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::list3(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>)")
@@ -720,7 +720,7 @@ pub fn stub_f59844() -> ! {
 
 // 0xf59854 — j___ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_IN3G3D7Vector2EEENS2_IfEEEclIPFvS6_S9_fENS0_5list1IRPS5_EEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::operator()<void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
 // was: void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float) &,boost::_bi::list1<RBX::DataModel*&> &,int)
 pub fn stub_f59854() -> ! {
     todo!("0xf59854 void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::operator()<void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float) &,boost::_bi::list1<RBX::DataModel*&> &,int)")
@@ -735,7 +735,7 @@ pub fn stub_f598d4() -> ! {
 
 // 0xf59924 — j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_IN3G3D7Vector2EEEEC2ES7_SA_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>)")]
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>)")]
 // was: boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>)
 pub fn stub_f59924() -> ! {
     todo!("0xf59924 boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>)")
@@ -743,7 +743,7 @@ pub fn stub_f59924() -> ! {
 
 // 0xf59974 — j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX9DataModelEEEEENS2_IN3G3D7Vector2EEENS2_IfEEEC2ES7_SA_SB_
 // type: int __fastcall(int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>)")]
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>)")]
 // was: boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>)
 pub fn stub_f59974() -> ! {
     todo!("0xf59974 boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::DataModel>>,boost::_bi::value<G3D::Vector2>,boost::_bi::value<float>)")
@@ -759,7 +759,7 @@ pub fn stub_f59994() -> ! {
 
 // 0xf599e4 — j___ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEEN3G3D7Vector2EfS4_S6_fEENS_3_bi6bind_tIT_PFS9_T0_T1_T2_ENS7_9list_av_3IT3_T4_T5_E4typeEEESE_SG_SH_SI_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list_av_3<boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float,boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float>(void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list_av_3<rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float>::type> boost::bind<void,rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float,rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float>(void (*)(rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float),rbx_core::WeakPtr<RBX::DataModel>,G3D::Vector2,float)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list_av_3<boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float,boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float>(void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float)
 pub fn stub_f599e4() -> ! {
     todo!("0xf599e4 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::_bi::list_av_3<boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float,boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float>(void (*)(boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float),boost::weak_ptr<RBX::DataModel>,G3D::Vector2,float)")

@@ -526,7 +526,7 @@ pub fn stub_5688cc() -> ! {
 // 0x568940 — __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")]
-#[doc(alias = "rbx::signals::signal<void ()(RBX::NormalId)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::NormalId)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::NormalId)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvN3RBX8NormalIdEEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 pub fn stub_568940() -> ! {
     todo!("0x568940 rbx::signals::signal<void ()(RBX::NormalId)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId)>::slot> &)")
@@ -544,7 +544,7 @@ pub fn stub_568aa0() -> ! {
 // 0x568ac8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8NormalIdEEE4slotEEaSERKS9_
 // type: int(void)
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8NormalIdEEE4slotEEaSERKS9_")]
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::NormalId)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::NormalId)>::slot> const&)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8NormalIdEEE4slotEEaSERKS9_
 pub fn stub_568ac8() -> ! {
     todo!("0x568ac8 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId)>::slot> const&)")
@@ -569,7 +569,7 @@ pub fn stub_568af0() -> ! {
 // 0x568be8 — __ZN3rbx7signals6signalIFvN3RBX8NormalIdEfEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX8NormalIdEfEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")]
-#[doc(alias = "rbx::signals::signal<void ()(RBX::NormalId,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId,float)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::NormalId,float)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::NormalId,float)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvN3RBX8NormalIdEfEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 pub fn stub_568be8() -> ! {
     todo!("0x568be8 rbx::signals::signal<void ()(RBX::NormalId,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId,float)>::slot> &)")
@@ -587,7 +587,7 @@ pub fn stub_568d48() -> ! {
 // 0x568d70 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8NormalIdEfEE4slotEEaSERKS9_
 // type: int(void)
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8NormalIdEfEE4slotEEaSERKS9_")]
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId,float)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::NormalId,float)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::NormalId,float)>::slot> const&)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX8NormalIdEfEE4slotEEaSERKS9_
 pub fn stub_568d70() -> ! {
     todo!("0x568d70 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::NormalId,float)>::slot> const&)")

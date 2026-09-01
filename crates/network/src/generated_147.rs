@@ -65,7 +65,7 @@ pub fn stub_a23af0() -> ! {
 // demangled: boost::shared_ptr<RBX::CylinderMesh> RBX::Creatable<RBX::Instance>::create<RBX::CylinderMesh>(void)
 // type: void __fastcall(RBX::BevelMesh **, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, RBX::Instance *, boost::detail::shared_count *, int, int, void *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::shared_ptr<RBX::CylinderMesh> RBX::Creatable<RBX::Instance>::create<RBX::CylinderMesh>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CylinderMesh> RBX::Creatable<RBX::Instance>::create<RBX::CylinderMesh>(void)")]
 pub fn stub_a242b8() -> ! {
     todo!("0xa242b8 boost::shared_ptr<RBX::CylinderMesh> RBX::Creatable<RBX::Instance>::create<RBX::CylinderMesh>(void)")
 }
@@ -114,7 +114,7 @@ pub fn stub_a24cd8() -> ! {
 // demangled: AppendOtherCharacters::operator()(boost::shared_ptr<RBX::Instance>)
 // type: int __fastcall(int *, int *, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "AppendOtherCharacters::operator()(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "AppendOtherCharacters::operator()(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_a25aa8() -> ! {
     todo!("0xa25aa8 AppendOtherCharacters::operator()(boost::shared_ptr<RBX::Instance>)")
 }
@@ -202,7 +202,7 @@ pub fn stub_a27404() -> ! {
 // 0xa27518 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbiEE4slotEEaSEPS6_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(bool,int)>::slot>::operator=(rbx::signals::signal<void ()(bool,int)>::slot*)
 // type: int32_t **__fastcall(int32_t **, int32_t *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(bool,int)>::slot>::operator=(rbx::signals::signal<void ()(bool,int)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,int)>::slot>::operator=(rbx::signals::signal<void ()(bool,int)>::slot*)")]
 pub fn stub_a27518() -> ! {
     todo!("0xa27518 boost::intrusive_ptr<rbx::signals::signal<void ()(bool,int)>::slot>::operator=(rbx::signals::signal<void ()(bool,int)>::slot*)")
 }
@@ -210,7 +210,7 @@ pub fn stub_a27518() -> ! {
 // 0xa275cc — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvbiEE4slotEEaSERKS7_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(bool,int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,int)>::slot> const&)
 // type: int32_t **__fastcall(int32_t **, int32_t **)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(bool,int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,int)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,int)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(bool,int)>::slot> const&)")]
 pub fn stub_a275cc() -> ! {
     todo!("0xa275cc boost::intrusive_ptr<rbx::signals::signal<void ()(bool,int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(bool,int)>::slot> const&)")
 }
@@ -298,7 +298,7 @@ pub fn stub_a28b08() -> ! {
 // 0xa28c20 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsEE4slotEEaSERKS7_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot> const&)
 // type: int32_t **__fastcall(int32_t **, int32_t **)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string)>::slot> const&)")]
 pub fn stub_a28c20() -> ! {
     todo!("0xa28c20 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot> const&)")
 }
@@ -354,7 +354,7 @@ pub fn stub_a29714() -> ! {
 // 0xa29828 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsN3G3D7Vector3EEE4slotEEaSEPS8_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot*)
 // type: int32_t **__fastcall(int32_t **, int32_t *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot*)")]
 pub fn stub_a29828() -> ! {
     todo!("0xa29828 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot*)")
 }
@@ -362,7 +362,7 @@ pub fn stub_a29828() -> ! {
 // 0xa298dc — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsN3G3D7Vector3EEE4slotEEaSERKS9_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot> const&)
 // type: int32_t **__fastcall(int32_t **, int32_t **)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot> const&)")]
 pub fn stub_a298dc() -> ! {
     todo!("0xa298dc boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,G3D::Vector3)>::slot> const&)")
 }
@@ -442,7 +442,7 @@ pub fn stub_a2a584() -> ! {
 // 0xa2a698 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsSsSsEE4slotEEaSEPS6_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot*)
 // type: int32_t **__fastcall(int32_t **, int32_t *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot*)")]
 pub fn stub_a2a698() -> ! {
     todo!("0xa2a698 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot>::operator=(rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot*)")
 }
@@ -450,7 +450,7 @@ pub fn stub_a2a698() -> ! {
 // 0xa2a74c — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvSsSsSsEE4slotEEaSERKS7_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot> const&)
 // type: int32_t **__fastcall(int32_t **, int32_t **)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot> const&)")]
 pub fn stub_a2a74c() -> ! {
     todo!("0xa2a74c boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string,std::string,std::string)>::slot> const&)")
 }
@@ -515,7 +515,7 @@ pub fn stub_a2b2c8() -> ! {
 // demangled: std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance>*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance> const&)
 // type: void __fastcall(pthread_mutex_t **, pthread_mutex_t *, __int32 *, int, int, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, boost::detail::shared_count *, int, int, void *, int, int, int, int, int, int, int, void *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance>*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance>*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,rbx_core::SharedPtr<RBX::Instance> const&)")]
 pub fn stub_a2b3d0() -> ! {
     todo!("0xa2b3d0 std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_insert_aux(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance>*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::shared_ptr<RBX::Instance> const&)")
 }
@@ -540,7 +540,7 @@ pub fn stub_a2bae0() -> ! {
 // demangled: boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::CrispResponse> const&),boost::_bi::list1<boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // type: int __fastcall(__int64, unsigned int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::CrispResponse> const&),boost::_bi::list1<boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::CrispResponse> const&),boost::_bi::list1<boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 pub fn stub_a2baf0() -> ! {
     todo!("0xa2baf0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::CrispResponse> const&),boost::_bi::list1<boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
 }
@@ -549,7 +549,7 @@ pub fn stub_a2baf0() -> ! {
 // demangled: boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::CrispResponse> const&),boost::_bi::list1<boost::arg<1>>>,void,boost::shared_ptr<RBX::CrispResponse>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::CrispResponse>)
 // type: int __fastcall(int (__fastcall **)(int), int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::CrispResponse> const&),boost::_bi::list1<boost::arg<1>>>,void,boost::shared_ptr<RBX::CrispResponse>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::CrispResponse>)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::CrispResponse> const&),boost::_bi::list1<boost::arg<1>>>,void,rbx_core::SharedPtr<RBX::CrispResponse>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::CrispResponse>)")]
 pub fn stub_a2bb50() -> ! {
     todo!("0xa2bb50 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::CrispResponse> const&),boost::_bi::list1<boost::arg<1>>>,void,boost::shared_ptr<RBX::CrispResponse>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::CrispResponse>)")
 }
@@ -662,7 +662,7 @@ pub fn stub_a2f1b0() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::InsertService,RBX::InsertService>(boost::shared_ptr<RBX::InsertService> const*,RBX::InsertService *)const
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::InsertService,RBX::InsertService>(boost::shared_ptr<RBX::InsertService> const*,RBX::InsertService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::InsertService,RBX::InsertService>(rbx_core::SharedPtr<RBX::InsertService> const*,RBX::InsertService *)const")]
 pub fn stub_a30ee0() -> ! {
     todo!("0xa30ee0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::InsertService,RBX::InsertService>(boost::shared_ptr<RBX::InsertService> const*,RBX::InsertService *)const")
 }
@@ -735,7 +735,7 @@ pub fn stub_a32418() -> ! {
 // demangled: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ScriptInformationProvider,RBX::ScriptInformationProvider>(boost::shared_ptr<RBX::ScriptInformationProvider> const*,RBX::ScriptInformationProvider *)const
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ScriptInformationProvider,RBX::ScriptInformationProvider>(boost::shared_ptr<RBX::ScriptInformationProvider> const*,RBX::ScriptInformationProvider *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ScriptInformationProvider,RBX::ScriptInformationProvider>(rbx_core::SharedPtr<RBX::ScriptInformationProvider> const*,RBX::ScriptInformationProvider *)const")]
 pub fn stub_a324e0() -> ! {
     todo!("0xa324e0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ScriptInformationProvider,RBX::ScriptInformationProvider>(boost::shared_ptr<RBX::ScriptInformationProvider> const*,RBX::ScriptInformationProvider *)const")
 }
@@ -768,7 +768,7 @@ pub fn stub_a327c8() -> ! {
 // demangled: void boost::detail::sp_pointer_construct<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *,boost::detail::shared_count &)
 // type: void __fastcall(int, int, _DWORD **, int, void *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::detail::sp_pointer_construct<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>(rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>> *,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> *,boost::detail::shared_count &)")]
 pub fn stub_a327cc() -> ! {
     todo!("0xa327cc void boost::detail::sp_pointer_construct<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>(boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>> *,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> *,boost::detail::shared_count &)")
 }
@@ -785,7 +785,7 @@ pub fn stub_a4fd48() -> ! {
 // demangled: rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::DescribedBase>>::construct_func(char const*,char *)
 // type: _DWORD *__fastcall(_DWORD *result, _DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::DescribedBase>>::construct_func(char const*,char *)")]
+#[doc(alias = "rbx::implementation::typed_holder<rbx_core::SharedPtr<RBX::Reflection::DescribedBase>>::construct_func(char const*,char *)")]
 pub fn stub_a50350() -> ! {
     todo!("0xa50350 rbx::implementation::typed_holder<boost::shared_ptr<RBX::Reflection::DescribedBase>>::construct_func(char const*,char *)")
 }

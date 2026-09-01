@@ -268,7 +268,7 @@ pub fn stub_6240e8() -> ! {
 // 0x62410c — __ZN5boost10shared_ptrIN3RBX8HumanoidEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: int(void)
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8HumanoidEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-#[doc(alias = "rbx_core::SharedPtr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(boost::weak_ptr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(rbx_core::WeakPtr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX8HumanoidEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_62410c() -> ! {
     todo!("0x62410c boost::shared_ptr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(boost::weak_ptr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)")
@@ -564,7 +564,7 @@ pub fn stub_6261a0() -> ! {
 // 0x626214 — __ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: int(void)
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-#[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(boost::weak_ptr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(rbx_core::WeakPtr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_626214() -> ! {
     todo!("0x626214 boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(boost::weak_ptr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)")

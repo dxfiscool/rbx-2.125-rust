@@ -283,14 +283,14 @@ pub fn stub_28c200() -> ! {
 
 // 0x28c2f4 — __ZN3RBX6Script20SaveScriptInfoHelperEN5boost8weak_ptrINS_9DataModelEEENS2_IS0_EESsNS_25ScriptInformationProvider13RequestResultEbbb
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int)
-#[doc(alias = "RBX::Script::SaveScriptInfoHelper(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")]
+#[doc(alias = "RBX::Script::SaveScriptInfoHelper(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")]
 // was: __ZN3RBX6Script20SaveScriptInfoHelperEN5boost8weak_ptrINS_9DataModelEEENS2_IS0_EESsNS_25ScriptInformationProvider13RequestResultEbbb
 pub fn stub_28c2f4() -> ! {
     todo!("0x28c2f4 RBX::Script::SaveScriptInfoHelper(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")
 }
 
 // 0x28c6b4 — __ZN3RBX6Script14SaveScriptInfoEN5boost8weak_ptrIS0_EESsNS_25ScriptInformationProvider13RequestResultEbbb
-#[doc(alias = "RBX::Script::SaveScriptInfo(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")]
+#[doc(alias = "RBX::Script::SaveScriptInfo(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")]
 // was: __ZN3RBX6Script14SaveScriptInfoEN5boost8weak_ptrIS0_EESsNS_25ScriptInformationProvider13RequestResultEbbb
 pub fn stub_28c6b4() -> ! {
     todo!("0x28c6b4 RBX::Script::SaveScriptInfo(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")
@@ -319,7 +319,7 @@ pub fn stub_28ca74() -> ! {
 }
 
 // 0x28cc94 — __ZL17RemoteCheatHelperN5boost8weak_ptrIN3RBX9DataModelEEE
-#[doc(alias = "RemoteCheatHelper(boost::weak_ptr<RBX::DataModel>)")]
+#[doc(alias = "RemoteCheatHelper(rbx_core::WeakPtr<RBX::DataModel>)")]
 // was: __ZL17RemoteCheatHelperN5boost8weak_ptrIN3RBX9DataModelEEE
 pub fn stub_28cc94() -> ! {
     todo!("0x28cc94 RemoteCheatHelper(boost::weak_ptr<RBX::DataModel>)")
@@ -488,7 +488,7 @@ pub fn stub_28d698() -> ! {
 }
 
 // 0x28d764 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX6ScriptEEESsNS2_25ScriptInformationProvider13RequestResultEbbbS4_SsS6_bbbEENS_3_bi6bind_tIT_PFS9_T0_T1_T2_T3_T4_T5_ENS7_9list_av_6IT6_T7_T8_T9_T10_T11_E4typeEEESH_SJ_SK_SL_SM_SN_SO_
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_6<boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>::type> boost::bind<void,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>(void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_6<rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>::type> boost::bind<void,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>(void (*)(rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")]
 // was: __ZN5boost4bindIvNS_8weak_ptrIN3RBX6ScriptEEESsNS2_25ScriptInformationProvider13RequestResultEbbbS4_SsS6_bbbEENS_3_bi6bind_tIT_PFS9_T0_T1_T2_T3_T4_T5_ENS7_9list_av_6IT6_T7_T8_T9_T10_T11_E4typeEEESH_SJ_SK_SL_SM_SN_SO_
 pub fn stub_28d764() -> ! {
     todo!("0x28d764 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_6<boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>::type> boost::bind<void,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool>(void (*)(boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool)")
@@ -496,21 +496,21 @@ pub fn stub_28d764() -> ! {
 
 // 0x28da08 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEENS1_INS2_6ScriptEEESsNS2_25ScriptInformationProvider13RequestResultEbbbS4_S6_SsNS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi5EEEEENS_3_bi6bind_tIT_PFSG_T0_T1_T2_T3_T4_T5_T6_ENSE_9list_av_7IT7_T8_T9_T10_T11_T12_T13_E4typeEEESP_SR_SS_ST_SU_SV_SW_SX_
 // type: int __fastcall(int, int, int, int, std::string *)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_7<boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>(void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_7<rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>(void (*)(rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),rbx_core::WeakPtr<RBX::DataModel>,rbx_core::WeakPtr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)")]
 // was: __ZN5boost4bindIvNS_8weak_ptrIN3RBX9DataModelEEENS1_INS2_6ScriptEEESsNS2_25ScriptInformationProvider13RequestResultEbbbS4_S6_SsNS_3argILi1EEENS9_ILi2EEENS9_ILi3EEENS9_ILi5EEEEENS_3_bi6bind_tIT_PFSG_T0_T1_T2_T3_T4_T5_T6_ENSE_9list_av_7IT7_T8_T9_T10_T11_T12_T13_E4typeEEESP_SR_SS_ST_SU_SV_SW_SX_
 pub fn stub_28da08() -> ! {
     todo!("0x28da08 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::_bi::list_av_7<boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>::type> boost::bind<void,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool,boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>>(void (*)(boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,RBX::ScriptInformationProvider::RequestResult,bool,bool,bool),boost::weak_ptr<RBX::DataModel>,boost::weak_ptr<RBX::Script>,std::string,boost::arg<1>,boost::arg<2>,boost::arg<3>,boost::arg<5>)")
 }
 
 // 0x28dcb8 — __ZN3RBX9weak_fromINS_9DataModelEEEN5boost8weak_ptrIT_EEPS4_
-#[doc(alias = "boost::weak_ptr<RBX::DataModel> RBX::weak_from<RBX::DataModel>(RBX::DataModel*)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::DataModel> RBX::weak_from<RBX::DataModel>(RBX::DataModel*)")]
 // was: __ZN3RBX9weak_fromINS_9DataModelEEEN5boost8weak_ptrIT_EEPS4_
 pub fn stub_28dcb8() -> ! {
     todo!("0x28dcb8 boost::weak_ptr<RBX::DataModel> RBX::weak_from<RBX::DataModel>(RBX::DataModel*)")
 }
 
 // 0x28dec0 — __ZN3RBX9weak_fromINS_6ScriptEEEN5boost8weak_ptrIT_EEPS4_
-#[doc(alias = "boost::weak_ptr<RBX::Script> RBX::weak_from<RBX::Script>(RBX::Script*)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::Script> RBX::weak_from<RBX::Script>(RBX::Script*)")]
 // was: __ZN3RBX9weak_fromINS_6ScriptEEEN5boost8weak_ptrIT_EEPS4_
 pub fn stub_28dec0() -> ! {
     todo!("0x28dec0 boost::weak_ptr<RBX::Script> RBX::weak_from<RBX::Script>(RBX::Script*)")

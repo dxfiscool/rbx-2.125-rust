@@ -206,20 +206,20 @@ pub fn stub_f2b8b4() -> ! {
 
 // 0xf2b904 — j___ZN5boost10shared_ptrIN3RBX10RunServiceEEaSERKS3_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::shared_ptr<RBX::RunService>::operator=(boost::shared_ptr<RBX::RunService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RunService>::operator=(rbx_core::SharedPtr<RBX::RunService> const&)")]
 pub fn stub_f2b904() -> ! {
     todo!("0xf2b904 j___ZN5boost10shared_ptrIN3RBX10RunServiceEEaSERKS3_")
 }
 
 // 0xf2b9c4 — j___ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEC2INS1_5GcJobEEEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::TaskScheduler::Job>::shared_ptr<RBX::GcJob>(RBX::GcJob *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TaskScheduler::Job>::shared_ptr<RBX::GcJob>(RBX::GcJob *)")]
 pub fn stub_f2b9c4() -> ! {
     todo!("0xf2b9c4 j___ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEC2INS1_5GcJobEEEPT_")
 }
 
 // 0xf2b9d4 — j___ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEaSERKS4_
-#[doc(alias = "boost::shared_ptr<RBX::TaskScheduler::Job>::operator=(boost::shared_ptr<RBX::TaskScheduler::Job> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TaskScheduler::Job>::operator=(rbx_core::SharedPtr<RBX::TaskScheduler::Job> const&)")]
 pub fn stub_f2b9d4() -> ! {
     todo!("0xf2b9d4 j___ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEaSERKS4_")
 }
@@ -245,34 +245,34 @@ pub fn stub_f2ba94() -> ! {
 
 // 0xf2bac4 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotEEaSEPS8_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot>::operator=(rbx::signals::signal<void ()(RBX::RunTransition)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RunTransition)>::slot>::operator=(rbx::signals::signal<void ()(RBX::RunTransition)>::slot*)")]
 pub fn stub_f2bac4() -> ! {
     todo!("0xf2bac4 j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX13RunTransitionEEE4slotEEaSEPS8_")
 }
 
 // 0xf2bb14 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEEaSEPSA_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot*)")]
 pub fn stub_f2bb14() -> ! {
     todo!("0xf2bb14 j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEEaSEPSA_")
 }
 
 // 0xf2bb24 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEEaSERKSB_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Heartbeat const&)>::slot> const&)")]
 pub fn stub_f2bb24() -> ! {
     todo!("0xf2bb24 j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE4slotEEaSERKSB_")
 }
 
 // 0xf2bb54 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviEE4slotEEaSERKS7_
 // type: int(void)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(int)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(int)>::slot> const&)")]
 pub fn stub_f2bb54() -> ! {
     todo!("0xf2bb54 j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviEE4slotEEaSERKS7_")
 }
 
 // 0xf2bb64 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSERKS7_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(void)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(void)>::slot> const&)")]
 pub fn stub_f2bb64() -> ! {
     todo!("0xf2bb64 j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvvEE4slotEEaSERKS7_")
 }
@@ -466,7 +466,7 @@ pub fn stub_f2c374() -> ! {
 }
 
 // 0xf2c434 — j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIS3_NS1_5GcJobEEEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::TaskScheduler::Job,RBX::GcJob>(boost::shared_ptr<RBX::TaskScheduler::Job> const*,RBX::GcJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::TaskScheduler::Job,RBX::GcJob>(rbx_core::SharedPtr<RBX::TaskScheduler::Job> const*,RBX::GcJob *)const")]
 pub fn stub_f2c434() -> ! {
     todo!("0xf2c434 j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIS3_NS1_5GcJobEEEvPKNS_10shared_ptrIT_EEPT0_")
 }
@@ -504,7 +504,7 @@ pub fn stub_f2c674() -> ! {
 }
 
 // 0xf2c684 — j___ZNSt10_List_baseIN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESaIS5_EE8_M_clearEv
-#[doc(alias = "std::_List_base<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,std::allocator<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>>::_M_clear(void)")]
+#[doc(alias = "std::_List_base<rbx_core::SharedPtr<RBX::LibraryService::LibraryStateObject>,std::allocator<rbx_core::SharedPtr<RBX::LibraryService::LibraryStateObject>>>::_M_clear(void)")]
 pub fn stub_f2c684() -> ! {
     todo!("0xf2c684 j___ZNSt10_List_baseIN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESaIS5_EE8_M_clearEv")
 }
@@ -602,25 +602,25 @@ pub fn stub_f2cc44() -> ! {
 }
 
 // 0xf2cc64 — j___ZN5boost10shared_ptrIN3RBX13ActivityMeterILi2EEEEC2IS3_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::ActivityMeter<2>>::shared_ptr<RBX::ActivityMeter<2>>(RBX::ActivityMeter<2> *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ActivityMeter<2>>::shared_ptr<RBX::ActivityMeter<2>>(RBX::ActivityMeter<2> *)")]
 pub fn stub_f2cc64() -> ! {
     todo!("0xf2cc64 j___ZN5boost10shared_ptrIN3RBX13ActivityMeterILi2EEEEC2IS3_EEPT_")
 }
 
 // 0xf2cc74 — j___ZN5boost10shared_ptrIN3RBX13ActivityMeterILi2EEEEaSERKS4_
-#[doc(alias = "boost::shared_ptr<RBX::ActivityMeter<2>>::operator=(boost::shared_ptr<RBX::ActivityMeter<2>> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ActivityMeter<2>>::operator=(rbx_core::SharedPtr<RBX::ActivityMeter<2>> const&)")]
 pub fn stub_f2cc74() -> ! {
     todo!("0xf2cc74 j___ZN5boost10shared_ptrIN3RBX13ActivityMeterILi2EEEEaSERKS4_")
 }
 
 // 0xf2cc84 — j___ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEC2IS3_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::InvocationMeter<2>>::shared_ptr<RBX::InvocationMeter<2>>(RBX::InvocationMeter<2> *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::InvocationMeter<2>>::shared_ptr<RBX::InvocationMeter<2>>(RBX::InvocationMeter<2> *)")]
 pub fn stub_f2cc84() -> ! {
     todo!("0xf2cc84 j___ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEC2IS3_EEPT_")
 }
 
 // 0xf2cc94 — j___ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEaSERKS4_
-#[doc(alias = "boost::shared_ptr<RBX::InvocationMeter<2>>::operator=(boost::shared_ptr<RBX::InvocationMeter<2>> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::InvocationMeter<2>>::operator=(rbx_core::SharedPtr<RBX::InvocationMeter<2>> const&)")]
 pub fn stub_f2cc94() -> ! {
     todo!("0xf2cc94 j___ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEaSERKS4_")
 }

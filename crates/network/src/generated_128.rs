@@ -37,7 +37,7 @@ pub fn stub_99e6f8() -> ! {
 
 // 0x99e8f8 — __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobC2EN5boost10shared_ptrIN6RakNet16RakPeerInterfaceEEEPNS_9DataModelE
 // type: int __fastcall(int, _DWORD *, int, int, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, RBX::TaskScheduler::Job *, int, pthread_mutex_t *, int, int, int, int, int, int)
-#[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::StatsUpdateJob(boost::shared_ptr<RakNet::RakPeerInterface>,RBX::DataModel *)")]
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::StatsUpdateJob::StatsUpdateJob(rbx_core::SharedPtr<RakNet::RakPeerInterface>,RBX::DataModel *)")]
 pub fn stub_99e8f8() -> ! {
     todo!("0x99e8f8 __ZN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobC2EN5boost10shared_ptrIN6RakNet16RakPeerInterfaceEEEPNS_9DataModelE")
 }
@@ -114,7 +114,7 @@ pub fn stub_99f938() -> ! {
 
 // 0x99f9b8 — __ZN3RBX7Network17ConcurrentRakPeer9PacketJobC2EN5boost10shared_ptrIN6RakNet16RakPeerInterfaceEEEPNS_9DataModelE
 // type: int __fastcall(int, void *, int, int, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, char, int, int, int, int, int, int, int, int, int, RBX::TaskScheduler::Job *, int, int, int, int, int, int)
-#[doc(alias = "RBX::Network::ConcurrentRakPeer::PacketJob::PacketJob(boost::shared_ptr<RakNet::RakPeerInterface>,RBX::DataModel *)")]
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::PacketJob::PacketJob(rbx_core::SharedPtr<RakNet::RakPeerInterface>,RBX::DataModel *)")]
 pub fn stub_99f9b8() -> ! {
     todo!("0x99f9b8 __ZN3RBX7Network17ConcurrentRakPeer9PacketJobC2EN5boost10shared_ptrIN6RakNet16RakPeerInterfaceEEEPNS_9DataModelE")
 }
@@ -366,21 +366,21 @@ pub fn stub_9a5d8c() -> ! {
 
 // 0x9a5fa0 — __ZN3RBX7Network22ErrorCompPhysicsSender16onAddingAssemblyEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, _DWORD *, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::Network::ErrorCompPhysicsSender::onAddingAssembly(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Network::ErrorCompPhysicsSender::onAddingAssembly(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_9a5fa0() -> ! {
     todo!("0x9a5fa0 __ZN3RBX7Network22ErrorCompPhysicsSender16onAddingAssemblyEN5boost10shared_ptrINS_8InstanceEEE")
 }
 
 // 0x9a629c — __ZN3RBX7Network22ErrorCompPhysicsSender10addNugget2EN5boost10shared_ptrINS_12PartInstanceEEE
 // type: void __fastcall(int, pthread_mutex_t **)
-#[doc(alias = "RBX::Network::ErrorCompPhysicsSender::addNugget2(boost::shared_ptr<RBX::PartInstance>)")]
+#[doc(alias = "RBX::Network::ErrorCompPhysicsSender::addNugget2(rbx_core::SharedPtr<RBX::PartInstance>)")]
 pub fn stub_9a629c() -> ! {
     todo!("0x9a629c __ZN3RBX7Network22ErrorCompPhysicsSender10addNugget2EN5boost10shared_ptrINS_12PartInstanceEEE")
 }
 
 // 0x9a74a4 — __ZN3RBX7Network22ErrorCompPhysicsSender12removeNuggetEN5boost10shared_ptrIKNS_12PartInstanceEEE
 // type: int __fastcall(_DWORD *, unsigned int *, int)
-#[doc(alias = "RBX::Network::ErrorCompPhysicsSender::removeNugget(boost::shared_ptr<RBX::PartInstance const>)")]
+#[doc(alias = "RBX::Network::ErrorCompPhysicsSender::removeNugget(rbx_core::SharedPtr<RBX::PartInstance const>)")]
 pub fn stub_9a74a4() -> ! {
     todo!("0x9a74a4 __ZN3RBX7Network22ErrorCompPhysicsSender12removeNuggetEN5boost10shared_ptrIKNS_12PartInstanceEEE")
 }
@@ -408,7 +408,7 @@ pub fn stub_9a88ec() -> ! {
 
 // 0x9a8bd8 — __ZN3RBX11shared_fromINS_7Network18PhysicsPacketCacheEEEN5boost10shared_ptrIT_EEPS5_
 // type: void __fastcall(int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Network::PhysicsPacketCache> RBX::shared_from<RBX::Network::PhysicsPacketCache>(RBX::Network::PhysicsPacketCache*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Network::PhysicsPacketCache> RBX::shared_from<RBX::Network::PhysicsPacketCache>(RBX::Network::PhysicsPacketCache*)")]
 pub fn stub_9a8bd8() -> ! {
     todo!("0x9a8bd8 __ZN3RBX11shared_fromINS_7Network18PhysicsPacketCacheEEEN5boost10shared_ptrIT_EEPS5_")
 }
@@ -422,14 +422,14 @@ pub fn stub_9a8e70() -> ! {
 
 // 0x9a9048 — __ZN5boost10shared_ptrIN6RakNet9BitStreamEE5resetEv
 // type: _DWORD *__fastcall(_DWORD *result)
-#[doc(alias = "boost::shared_ptr<RakNet::BitStream>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RakNet::BitStream>::reset(void)")]
 pub fn stub_9a9048() -> ! {
     todo!("0x9a9048 __ZN5boost10shared_ptrIN6RakNet9BitStreamEE5resetEv")
 }
 
 // 0x9a90ec — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE11erase_nodesEPNS1_8ptr_nodeISE_EESO_
 // type: void __fastcall(_DWORD *, int, int)
-#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,boost::shared_ptr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<boost::shared_ptr<RBX::PartInstance const>>,std::equal_to<boost::shared_ptr<RBX::PartInstance const>>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>> *,boost::unordered::detail::ptr_node<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>> *)")]
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,rbx_core::SharedPtr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<rbx_core::SharedPtr<RBX::PartInstance const>>,std::equal_to<rbx_core::SharedPtr<RBX::PartInstance const>>>>::erase_nodes(boost::unordered::detail::ptr_node<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>> *,boost::unordered::detail::ptr_node<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>> *)")]
 pub fn stub_9a90ec() -> ! {
     todo!("0x9a90ec __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE11erase_nodesEPNS1_8ptr_nodeISE_EESO_")
 }
@@ -450,91 +450,91 @@ pub fn stub_9a9474() -> ! {
 
 // 0x9a9604 — __ZNSt4pairIKN5boost10shared_ptrIKN3RBX12PartInstanceEEENS2_7Network22ErrorCompPhysicsSender6NuggetEEC2INS1_IS3_EES9_EERKS_IT_T0_E
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
-#[doc(alias = "std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>::pair<boost::shared_ptr<RBX::PartInstance>,RBX::Network::ErrorCompPhysicsSender::Nugget>(std::pair const&<boost::shared_ptr<RBX::PartInstance>,RBX::Network::ErrorCompPhysicsSender::Nugget>)")]
+#[doc(alias = "std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>::pair<rbx_core::SharedPtr<RBX::PartInstance>,RBX::Network::ErrorCompPhysicsSender::Nugget>(std::pair const&<rbx_core::SharedPtr<RBX::PartInstance>,RBX::Network::ErrorCompPhysicsSender::Nugget>)")]
 pub fn stub_9a9604() -> ! {
     todo!("0x9a9604 __ZNSt4pairIKN5boost10shared_ptrIKN3RBX12PartInstanceEEENS2_7Network22ErrorCompPhysicsSender6NuggetEEC2INS1_IS3_EES9_EERKS_IT_T0_E")
 }
 
 // 0x9a97b8 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE12emplace_implINS1_13emplace_args1ISE_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISE_EEEEbERSA_RKT_
 // type: void __fastcall(_DWORD *, _DWORD *, unsigned int *, int, char, void *, int, int, int, int)
-#[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,boost::shared_ptr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<boost::shared_ptr<RBX::PartInstance const>>,std::equal_to<boost::shared_ptr<RBX::PartInstance const>>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>>(boost::shared_ptr<RBX::PartInstance const> const&,boost::unordered::detail::emplace_args1<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>> const&)")]
+#[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::map<std::allocator<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,rbx_core::SharedPtr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<rbx_core::SharedPtr<RBX::PartInstance const>>,std::equal_to<rbx_core::SharedPtr<RBX::PartInstance const>>>>::emplace_impl<boost::unordered::detail::emplace_args1<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>>(rbx_core::SharedPtr<RBX::PartInstance const> const&,boost::unordered::detail::emplace_args1<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>> const&)")]
 pub fn stub_9a97b8() -> ! {
     todo!("0x9a97b8 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE12emplace_implINS1_13emplace_args1ISE_EEEES4_INS0_15iterator_detail8iteratorINS1_8ptr_nodeISE_EEEEbERSA_RKT_")
 }
 
 // 0x9a99c0 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEEEEE20construct_with_valueINS1_13emplace_args1ISE_EEEEvRKT_
 // type: int __fastcall(int, int *, int, int)
-#[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>>(boost::unordered::detail::emplace_args1<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>> const&)")]
+#[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>>>::construct_with_value<boost::unordered::detail::emplace_args1<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>>(boost::unordered::detail::emplace_args1<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>> const&)")]
 pub fn stub_9a99c0() -> ! {
     todo!("0x9a99c0 __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEEEEE20construct_with_valueINS1_13emplace_args1ISE_EEEEvRKT_")
 }
 
 // 0x9a9b00 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE18reserve_for_insertEm
 // type: _DWORD *__fastcall(int, unsigned int)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,boost::shared_ptr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<boost::shared_ptr<RBX::PartInstance const>>,std::equal_to<boost::shared_ptr<RBX::PartInstance const>>>>::reserve_for_insert(unsigned long)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,rbx_core::SharedPtr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<rbx_core::SharedPtr<RBX::PartInstance const>>,std::equal_to<rbx_core::SharedPtr<RBX::PartInstance const>>>>::reserve_for_insert(unsigned long)")]
 pub fn stub_9a9b00() -> ! {
     todo!("0x9a9b00 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE18reserve_for_insertEm")
 }
 
 // 0x9a9ca8 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE14create_bucketsEm
 // type: unsigned int __fastcall(int, unsigned int)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,boost::shared_ptr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<boost::shared_ptr<RBX::PartInstance const>>,std::equal_to<boost::shared_ptr<RBX::PartInstance const>>>>::create_buckets(unsigned long)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,rbx_core::SharedPtr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<rbx_core::SharedPtr<RBX::PartInstance const>>,std::equal_to<rbx_core::SharedPtr<RBX::PartInstance const>>>>::create_buckets(unsigned long)")]
 pub fn stub_9a9ca8() -> ! {
     todo!("0x9a9ca8 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEE14create_bucketsEm")
 }
 
 // 0x9a9d58 — __ZNSt4pairIKN5boost10shared_ptrIKN3RBX12PartInstanceEEENS2_7Network22ErrorCompPhysicsSender6NuggetEEC2ERKSA_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
-#[doc(alias = "std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>::pair(std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget> const&)")]
+#[doc(alias = "std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>::pair(std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget> const&)")]
 pub fn stub_9a9d58() -> ! {
     todo!("0x9a9d58 __ZNSt4pairIKN5boost10shared_ptrIKN3RBX12PartInstanceEEENS2_7Network22ErrorCompPhysicsSender6NuggetEEC2ERKSA_")
 }
 
 // 0x9a9f14 — __ZNSt4pairIN5boost10shared_ptrIN3RBX12PartInstanceEEENS2_7Network22ErrorCompPhysicsSender6NuggetEEC2ERKS4_RKS7_
 // type: int __fastcall(int, _DWORD *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
-#[doc(alias = "std::pair<boost::shared_ptr<RBX::PartInstance>,RBX::Network::ErrorCompPhysicsSender::Nugget>::pair(boost::shared_ptr<RBX::PartInstance> const&,RBX::Network::ErrorCompPhysicsSender::Nugget const&)")]
+#[doc(alias = "std::pair<rbx_core::SharedPtr<RBX::PartInstance>,RBX::Network::ErrorCompPhysicsSender::Nugget>::pair(rbx_core::SharedPtr<RBX::PartInstance> const&,RBX::Network::ErrorCompPhysicsSender::Nugget const&)")]
 pub fn stub_9a9f14() -> ! {
     todo!("0x9a9f14 __ZNSt4pairIN5boost10shared_ptrIN3RBX12PartInstanceEEENS2_7Network22ErrorCompPhysicsSender6NuggetEEC2ERKS4_RKS7_")
 }
 
 // 0x9aa9f4 — __ZNK5boost4_mfi3mf1IvN3RBX7Network22ErrorCompPhysicsSenderENS_10shared_ptrINS2_12PartInstanceEEEEclEPS4_S7_
 // type: void __fastcall(char **, int, int *, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,boost::shared_ptr<RBX::PartInstance>>::operator()(RBX::Network::ErrorCompPhysicsSender*,boost::shared_ptr<RBX::PartInstance>)const")]
+#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,rbx_core::SharedPtr<RBX::PartInstance>>::operator()(RBX::Network::ErrorCompPhysicsSender*,rbx_core::SharedPtr<RBX::PartInstance>)const")]
 pub fn stub_9aa9f4() -> ! {
     todo!("0x9aa9f4 __ZNK5boost4_mfi3mf1IvN3RBX7Network22ErrorCompPhysicsSenderENS_10shared_ptrINS2_12PartInstanceEEEEclEPS4_S7_")
 }
 
 // 0x9aac70 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network22ErrorCompPhysicsSenderES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED1Ev
 // type: int __fastcall(int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
 pub fn stub_9aac70() -> ! {
     todo!("0x9aac70 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network22ErrorCompPhysicsSenderES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED1Ev")
 }
 
 // 0x9aaccc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network22ErrorCompPhysicsSenderES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>>::~callable_slot()")]
 pub fn stub_9aaccc() -> ! {
     todo!("0x9aaccc __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_7Network22ErrorCompPhysicsSenderES6_EENSA_5list2INSA_5valueIPSF_EENS2_3argILi1EEEEEEEED0Ev")
 }
 
 // 0x9aadd8 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network22ErrorCompPhysicsSenderES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: void __fastcall(int, int, int, int)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_9aadd8() -> ! {
     todo!("0x9aadd8 __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network22ErrorCompPhysicsSenderES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")
 }
 
 // 0x9aaef4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network22ErrorCompPhysicsSenderES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 // type: void __fastcall(int, int *, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::Network::ErrorCompPhysicsSender*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_9aaef4() -> ! {
     todo!("0x9aaef4 __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_7Network22ErrorCompPhysicsSenderES7_EENSB_5list2INSB_5valueIPSG_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")
 }
 
 // 0x9ab160 — __ZNK5boost4_mfi3mf1IvN3RBX7Network22ErrorCompPhysicsSenderENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_
 // type: void __fastcall(char **, int, int *, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,boost::shared_ptr<RBX::Instance>>::operator()(RBX::Network::ErrorCompPhysicsSender*,boost::shared_ptr<RBX::Instance>)const")]
+#[doc(alias = "boost::_mfi::mf1<void,RBX::Network::ErrorCompPhysicsSender,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::Network::ErrorCompPhysicsSender*,rbx_core::SharedPtr<RBX::Instance>)const")]
 pub fn stub_9ab160() -> ! {
     todo!("0x9ab160 __ZNK5boost4_mfi3mf1IvN3RBX7Network22ErrorCompPhysicsSenderENS_10shared_ptrINS2_8InstanceEEEEclEPS4_S7_")
 }
@@ -555,7 +555,7 @@ pub fn stub_9abb18() -> ! {
 
 // 0x9abbe0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEED2Ev
 // type: _DWORD *__fastcall(_DWORD *, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<boost::shared_ptr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,boost::shared_ptr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<boost::shared_ptr<RBX::PartInstance const>>,std::equal_to<boost::shared_ptr<RBX::PartInstance const>>>>::~table()")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::map<std::allocator<std::pair<rbx_core::SharedPtr<RBX::PartInstance const> const,RBX::Network::ErrorCompPhysicsSender::Nugget>>,rbx_core::SharedPtr<RBX::PartInstance const>,RBX::Network::ErrorCompPhysicsSender::Nugget,boost::hash<rbx_core::SharedPtr<RBX::PartInstance const>>,std::equal_to<rbx_core::SharedPtr<RBX::PartInstance const>>>>::~table()")]
 pub fn stub_9abbe0() -> ! {
     todo!("0x9abbe0 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKNS_10shared_ptrIKN3RBX12PartInstanceEEENS6_7Network22ErrorCompPhysicsSender6NuggetEEES9_SD_NS_4hashIS9_EESt8equal_toIS9_EEEED2Ev")
 }
@@ -695,14 +695,14 @@ pub fn stub_9ae1bc() -> ! {
 
 // 0x9b0060 — __ZN3RBX7Network15NetworkOwnerJobC1EN5boost10shared_ptrINS_9DataModelEEE
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "RBX::Network::NetworkOwnerJob::NetworkOwnerJob(boost::shared_ptr<RBX::DataModel>)")]
+#[doc(alias = "RBX::Network::NetworkOwnerJob::NetworkOwnerJob(rbx_core::SharedPtr<RBX::DataModel>)")]
 pub fn stub_9b0060() -> ! {
     todo!("0x9b0060 __ZN3RBX7Network15NetworkOwnerJobC1EN5boost10shared_ptrINS_9DataModelEEE")
 }
 
 // 0x9b006c — __ZN3RBX7Network15NetworkOwnerJobC2EN5boost10shared_ptrINS_9DataModelEEE
 // type: int __fastcall(int, __int32 *, int, int, int, int, pthread_mutex_t *, pthread_mutex_t *, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, RBX::TaskScheduler::Job *, int, int, int, int)
-#[doc(alias = "RBX::Network::NetworkOwnerJob::NetworkOwnerJob(boost::shared_ptr<RBX::DataModel>)")]
+#[doc(alias = "RBX::Network::NetworkOwnerJob::NetworkOwnerJob(rbx_core::SharedPtr<RBX::DataModel>)")]
 pub fn stub_9b006c() -> ! {
     todo!("0x9b006c __ZN3RBX7Network15NetworkOwnerJobC2EN5boost10shared_ptrINS_9DataModelEEE")
 }

@@ -514,7 +514,7 @@ pub fn stub_6a1c5c() -> ! {
 // 0x6a1dd4 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX6RbxRayEEE4slotEEaSERKS9_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> const&)
 // type: 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> const&)")]
 pub fn stub_6a1dd4() -> ! {
     todo!("0x6a1dd4 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::RbxRay)>::slot> const&)")
 }
@@ -794,7 +794,7 @@ pub fn stub_6a335c() -> ! {
 // 0x6a34d4 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10BrickColorEEE4slotEEaSERKS9_
 // demangled: boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot> const&)
 // type: 
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot> const&)")]
 pub fn stub_6a34d4() -> ! {
     todo!("0x6a34d4 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::BrickColor)>::slot> const&)")
 }

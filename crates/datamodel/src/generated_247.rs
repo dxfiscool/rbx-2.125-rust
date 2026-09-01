@@ -11,21 +11,21 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0xaa4bfc — __ZN3rbx7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE13callable_slotIN5boost3_bi6bind_tIvPFvRNSA_8weak_ptrINS2_7Network6PlayerEEEPKNS2_15ServiceProviderEENSB_5list2INSB_5valueISG_EENSO_ISK_EEEEEEED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::~callable_slot()")]
 pub fn stub_0xaa4bfc() -> ! {
     todo!("0xaa4bfc rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>>::~callable_slot()")
 }
 
 // 0xaa4ea8 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_ED1Ev
 // type: int __fastcall(int)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
 pub fn stub_0xaa4ea8() -> ! {
     todo!("0xaa4ea8 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
 }
 
 // 0xaa4eb4 — __ZN3rbx8callableINS_7signals6signalIFvPKN3RBX10Reflection18PropertyDescriptorEEE4slotEN5boost3_bi6bind_tIvPFvRNSB_8weak_ptrINS3_7Network6PlayerEEEPKNS3_15ServiceProviderEENSC_5list2INSC_5valueISH_EENSP_ISL_EEEEEELi1ES8_ED0Ev
 // type: void __fastcall(void *)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")]
 pub fn stub_0xaa4eb4() -> ! {
     todo!("0xaa4eb4 rbx::callable<rbx::signals::signal<void ()(RBX::Reflection::PropertyDescriptor const*)>::slot,boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::Network::Player> &,RBX::ServiceProvider const*),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::Network::Player>>,boost::_bi::value<RBX::ServiceProvider const*>>>,1,void ()(RBX::Reflection::PropertyDescriptor const*)>::~callable()")
 }

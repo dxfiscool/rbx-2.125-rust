@@ -344,14 +344,14 @@ pub fn stub_3f1114() -> ! {
 
 // 0x3f1234 — __ZN3RBX13ClickDetector11isClickableEN5boost10shared_ptrINS_12PartInstanceEEEfbPNS_7Network6PlayerE
 // type: int __fastcall(int *, float, int, RBX::Network::Player *)
-#[doc(alias = "RBX::ClickDetector::isClickable(boost::shared_ptr<RBX::PartInstance>,float,bool,RBX::Network::Player *)")]
+#[doc(alias = "RBX::ClickDetector::isClickable(rbx_core::SharedPtr<RBX::PartInstance>,float,bool,RBX::Network::Player *)")]
 pub fn stub_3f1234() -> ! {
     todo!("0x3f1234 RBX::ClickDetector::isClickable(boost::shared_ptr<RBX::PartInstance>,float,bool,RBX::Network::Player *)")
 }
 
 // 0x3f12e0 — __ZN3RBX13ClickDetector19updateLastHoverPartEN5boost10shared_ptrINS_8InstanceEEEPNS_7Network6PlayerE
 // type: int __fastcall(RBX::ClickDetector *, int *, RBX::Network::Player *)
-#[doc(alias = "RBX::ClickDetector::updateLastHoverPart(boost::shared_ptr<RBX::Instance>,RBX::Network::Player *)")]
+#[doc(alias = "RBX::ClickDetector::updateLastHoverPart(rbx_core::SharedPtr<RBX::Instance>,RBX::Network::Player *)")]
 pub fn stub_3f12e0() -> ! {
     todo!("0x3f12e0 RBX::ClickDetector::updateLastHoverPart(boost::shared_ptr<RBX::Instance>,RBX::Network::Player *)")
 }
@@ -372,7 +372,7 @@ pub fn stub_3f1410() -> ! {
 
 // 0x3f154c — __ZN3RBX13ClickDetector9stopHoverEN5boost10shared_ptrINS_12PartInstanceEEEPNS_7Network6PlayerE
 // type: void __fastcall(int *, RBX::Network::Player *, int, int)
-#[doc(alias = "RBX::ClickDetector::stopHover(boost::shared_ptr<RBX::PartInstance>,RBX::Network::Player *)")]
+#[doc(alias = "RBX::ClickDetector::stopHover(rbx_core::SharedPtr<RBX::PartInstance>,RBX::Network::Player *)")]
 pub fn stub_3f154c() -> ! {
     todo!("0x3f154c RBX::ClickDetector::stopHover(boost::shared_ptr<RBX::PartInstance>,RBX::Network::Player *)")
 }
@@ -476,7 +476,7 @@ pub fn stub_427db8() -> ! {
 
 // 0x44ab28 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network7PlayersES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Players,RBX::Network::Players>(boost::shared_ptr<RBX::Network::Players> const*,RBX::Network::Players *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Players,RBX::Network::Players>(rbx_core::SharedPtr<RBX::Network::Players> const*,RBX::Network::Players *)const")]
 pub fn stub_44ab28() -> ! {
     todo!("0x44ab28 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Players,RBX::Network::Players>(boost::shared_ptr<RBX::Network::Players> const*,RBX::Network::Players *)const")
 }

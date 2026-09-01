@@ -469,7 +469,7 @@ pub fn stub_2c5994() -> ! {
 
 // 0x2c59b0 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_tostringERKS6_P9lua_State
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_tostring(boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node> const&,lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_tostring(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node> const&,lua_State *)")]
 // was: __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_tostringERKS6_P9lua_State
 pub fn stub_2c59b0() -> ! {
     todo!("0x2c59b0 RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_tostring(boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node> const&,lua_State *)")
@@ -528,7 +528,7 @@ pub fn stub_2c5e44() -> ! {
 }
 
 // 0x2c5ec8 — __ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEaSERKS4_
-#[doc(alias = "boost::intrusive_ptr<RBX::Lua::WeakThreadRef>::operator=(boost::intrusive_ptr<RBX::Lua::WeakThreadRef> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Lua::WeakThreadRef>::operator=(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef> const&)")]
 // was: __ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRefEEaSERKS4_
 pub fn stub_2c5ec8() -> ! {
     todo!("0x2c5ec8 boost::intrusive_ptr<RBX::Lua::WeakThreadRef>::operator=(boost::intrusive_ptr<RBX::Lua::WeakThreadRef> const&)")

@@ -22,7 +22,7 @@ pub fn stub_60b634() -> ! {
 // 0x60bc20 — __ZN3RBX12RootInstance17gatherPartExtentsERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // type: int __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN3RBX12RootInstance17gatherPartExtentsERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")]
-#[doc(alias = "RBX::RootInstance::gatherPartExtents(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")]
+#[doc(alias = "RBX::RootInstance::gatherPartExtents(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> &)")]
 // was: __ZN3RBX12RootInstance17gatherPartExtentsERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 pub fn stub_60bc20() -> ! {
     todo!("0x60bc20 RBX::RootInstance::gatherPartExtents(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")
@@ -31,7 +31,7 @@ pub fn stub_60bc20() -> ! {
 // 0x60c24c — __ZN3RBX12RootInstance26moveToCharacterInsertPointERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // type: int __fastcall(int, int)
 #[doc(alias = "__ZN3RBX12RootInstance26moveToCharacterInsertPointERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")]
-#[doc(alias = "RBX::RootInstance::moveToCharacterInsertPoint(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")]
+#[doc(alias = "RBX::RootInstance::moveToCharacterInsertPoint(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> &)")]
 // was: __ZN3RBX12RootInstance26moveToCharacterInsertPointERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 pub fn stub_60c24c() -> ! {
     todo!("0x60c24c RBX::RootInstance::moveToCharacterInsertPoint(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")
@@ -40,7 +40,7 @@ pub fn stub_60c24c() -> ! {
 // 0x60c3b0 — __ZN3RBX12RootInstance9insertRawERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EEPS4_RS1_INS2_8weak_ptrINS_12PartInstanceEEESaISD_EEb
 // type: int __fastcall(RBX::Instance *this, int, RBX::Instance *, int, int)
 #[doc(alias = "__ZN3RBX12RootInstance9insertRawERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EEPS4_RS1_INS2_8weak_ptrINS_12PartInstanceEEESaISD_EEb")]
-#[doc(alias = "RBX::RootInstance::insertRaw(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,RBX::Instance*,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,bool)")]
+#[doc(alias = "RBX::RootInstance::insertRaw(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,RBX::Instance*,std::vector&<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,bool)")]
 // was: __ZN3RBX12RootInstance9insertRawERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EEPS4_RS1_INS2_8weak_ptrINS_12PartInstanceEEESaISD_EEb
 pub fn stub_60c3b0() -> ! {
     todo!("0x60c3b0 RBX::RootInstance::insertRaw(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::Instance*,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,bool)")
@@ -49,7 +49,7 @@ pub fn stub_60c3b0() -> ! {
 // 0x60c438 — __ZN3RBX12RootInstance15publicInsertRawERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EEPS4_RS1_INS2_8weak_ptrINS_12PartInstanceEEESaISD_EEbb
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "__ZN3RBX12RootInstance15publicInsertRawERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EEPS4_RS1_INS2_8weak_ptrINS_12PartInstanceEEESaISD_EEbb")]
-#[doc(alias = "RBX::RootInstance::publicInsertRaw(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,RBX::Instance*,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,bool,bool)")]
+#[doc(alias = "RBX::RootInstance::publicInsertRaw(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,RBX::Instance*,std::vector&<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,bool,bool)")]
 // was: __ZN3RBX12RootInstance15publicInsertRawERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EEPS4_RS1_INS2_8weak_ptrINS_12PartInstanceEEESaISD_EEbb
 pub fn stub_60c438() -> ! {
     todo!("0x60c438 RBX::RootInstance::publicInsertRaw(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,RBX::Instance*,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,bool,bool)")
@@ -58,7 +58,7 @@ pub fn stub_60c438() -> ! {
 // 0x60c4c4 — __ZN3RBX12RootInstance18focusCameraOnPartsERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 // type: int __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN3RBX12RootInstance18focusCameraOnPartsERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")]
-#[doc(alias = "RBX::RootInstance::focusCameraOnParts(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")]
+#[doc(alias = "RBX::RootInstance::focusCameraOnParts(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> &)")]
 // was: __ZN3RBX12RootInstance18focusCameraOnPartsERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 pub fn stub_60c4c4() -> ! {
     todo!("0x60c4c4 RBX::RootInstance::focusCameraOnParts(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")
@@ -66,7 +66,7 @@ pub fn stub_60c4c4() -> ! {
 
 // 0x60c698 — __ZN3RBX12RootInstance22movePartsToCameraFocusERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 #[doc(alias = "__ZN3RBX12RootInstance22movePartsToCameraFocusERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE")]
-#[doc(alias = "RBX::RootInstance::movePartsToCameraFocus(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")]
+#[doc(alias = "RBX::RootInstance::movePartsToCameraFocus(std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>> &)")]
 // was: __ZN3RBX12RootInstance22movePartsToCameraFocusERSt6vectorIN5boost8weak_ptrINS_12PartInstanceEEESaIS5_EE
 pub fn stub_60c698() -> ! {
     todo!("0x60c698 RBX::RootInstance::movePartsToCameraFocus(std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>> &)")
@@ -84,7 +84,7 @@ pub fn stub_60c6d8() -> ! {
 // 0x60c86c — __ZN3RBX12RootInstance19insertCharacterViewERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EERS1_INS2_8weak_ptrINS_12PartInstanceEEESaISC_EE
 // type: int __fastcall(RBX::Instance *this, int, int)
 #[doc(alias = "__ZN3RBX12RootInstance19insertCharacterViewERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EERS1_INS2_8weak_ptrINS_12PartInstanceEEESaISC_EE")]
-#[doc(alias = "RBX::RootInstance::insertCharacterView(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>)")]
+#[doc(alias = "RBX::RootInstance::insertCharacterView(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,std::vector&<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>)")]
 // was: __ZN3RBX12RootInstance19insertCharacterViewERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EERS1_INS2_8weak_ptrINS_12PartInstanceEEESaISC_EE
 pub fn stub_60c86c() -> ! {
     todo!("0x60c86c RBX::RootInstance::insertCharacterView(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>)")
@@ -92,7 +92,7 @@ pub fn stub_60c86c() -> ! {
 
 // 0x60c94c — __ZN3RBX12RootInstance13insertIdeViewERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EERS1_INS2_8weak_ptrINS_12PartInstanceEEESaISC_EENS_10PromptModeEb
 #[doc(alias = "__ZN3RBX12RootInstance13insertIdeViewERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EERS1_INS2_8weak_ptrINS_12PartInstanceEEESaISC_EENS_10PromptModeEb")]
-#[doc(alias = "RBX::RootInstance::insertIdeView(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,RBX::PromptMode,bool)")]
+#[doc(alias = "RBX::RootInstance::insertIdeView(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const&,std::vector&<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,RBX::PromptMode,bool)")]
 // was: __ZN3RBX12RootInstance13insertIdeViewERKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EERS1_INS2_8weak_ptrINS_12PartInstanceEEESaISC_EENS_10PromptModeEb
 pub fn stub_60c94c() -> ! {
     todo!("0x60c94c RBX::RootInstance::insertIdeView(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const&,std::vector&<boost::weak_ptr<RBX::PartInstance>,std::allocator<RBX::PartInstance>>,RBX::PromptMode,bool)")

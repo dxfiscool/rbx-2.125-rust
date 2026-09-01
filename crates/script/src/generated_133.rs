@@ -70,13 +70,13 @@ pub fn stub_2c9f1c() -> ! {
 }
 
 // 0x2c9f54 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE8on_indexERKS6_PKcP9lua_State
-#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node> const&,char const*,lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node> const&,char const*,lua_State *)")]
 pub fn stub_2c9f54() -> ! {
     todo!("0x2c9f54 RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node> const&,char const*,lua_State *)")
 }
 
 // 0x2ca00c — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_newindexERS6_PKcP9lua_State
-#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>&,char const*,lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>&,char const*,lua_State *)")]
 pub fn stub_2ca00c() -> ! {
     todo!("0x2ca00c RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>&,char const*,lua_State *)")
 }
@@ -171,14 +171,14 @@ pub fn stub_2cb3fc() -> ! {
 
 // 0x2cb958 — __ZL13onAsyncResultN3RBX3Lua9ThreadRefEN5boost8weak_ptrINS_13ScriptContextEEEPNS0_12IAsyncResultE
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "onAsyncResult(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *)")]
+#[doc(alias = "onAsyncResult(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *)")]
 pub fn stub_2cb958() -> ! {
     todo!("0x2cb958 onAsyncResult(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *)")
 }
 
 // 0x2cbc1c — __ZN5boost13intrusive_ptrIN3RBX3Lua6detail13LiveThreadRefEEaSEPS4_
 // type: int __fastcall(int, int32_t *__theValue)
-#[doc(alias = "boost::intrusive_ptr<RBX::Lua::detail::LiveThreadRef>::operator=(RBX::Lua::detail::LiveThreadRef*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Lua::detail::LiveThreadRef>::operator=(RBX::Lua::detail::LiveThreadRef*)")]
 pub fn stub_2cbc1c() -> ! {
     todo!("0x2cbc1c boost::intrusive_ptr<RBX::Lua::detail::LiveThreadRef>::operator=(RBX::Lua::detail::LiveThreadRef*)")
 }
@@ -197,7 +197,7 @@ pub fn stub_2cbfb8() -> ! {
 
 // 0x2cc210 — __ZN5boost4bindIvN3RBX3Lua9ThreadRefENS_8weak_ptrINS1_13ScriptContextEEEPNS2_12IAsyncResultES3_S6_NS_3argILi1EEEEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_ENSB_9list_av_3IT3_T4_T5_E4typeEEESI_SK_SL_SM_
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list_av_3<RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,boost::arg<1>>::type> boost::bind<void,RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *,RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,boost::arg<1>>(void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list_av_3<RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,boost::arg<1>>::type> boost::bind<void,RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *,RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,boost::arg<1>>(void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,boost::arg<1>)")]
 pub fn stub_2cc210() -> ! {
     todo!("0x2cc210 boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list_av_3<RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,boost::arg<1>>::type> boost::bind<void,RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *,RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,boost::arg<1>>(void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,boost::arg<1>)")
 }
@@ -216,20 +216,20 @@ pub fn stub_2cc634() -> ! {
 
 // 0x2cc6f0 — __ZN5boost3_bi5list3INS0_5valueIN3RBX3Lua9ThreadRefEEENS2_INS_8weak_ptrINS3_13ScriptContextEEEEENS_3argILi1EEEEC2ES6_SA_SC_
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>::list3(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>::list3(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>)")]
 pub fn stub_2cc6f0() -> ! {
     todo!("0x2cc6f0 boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>::list3(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>)")
 }
 
 // 0x2cc8d0 — __ZN5boost3_bi8storage3INS0_5valueIN3RBX3Lua9ThreadRefEEENS2_INS_8weak_ptrINS3_13ScriptContextEEEEENS_3argILi1EEEEC2ES6_SA_SC_
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "boost::_bi::storage3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>::storage3(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>::storage3(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>)")]
 pub fn stub_2cc8d0() -> ! {
     todo!("0x2cc8d0 boost::_bi::storage3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>::storage3(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>)")
 }
 
 // 0x2ccab0 — __ZN5boost3_bi8storage2INS0_5valueIN3RBX3Lua9ThreadRefEEENS2_INS_8weak_ptrINS3_13ScriptContextEEEEEEC2ES6_SA_
-#[doc(alias = "boost::_bi::storage2<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>>::storage2(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>)")]
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>>::storage2(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>)")]
 pub fn stub_2ccab0() -> ! {
     todo!("0x2ccab0 boost::_bi::storage2<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>>::storage2(boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>)")
 }
@@ -256,59 +256,59 @@ pub fn stub_2ccf68() -> ! {
 
 // 0x2cd154 — __ZN5boost3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS2_13ScriptContextEEEPNS3_12IAsyncResultEENS0_5list3INS0_5valueIS4_EENSD_IS7_EENS_3argILi1EEEEEEC2ERKSJ_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>::bind_t(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>> const&)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>::bind_t(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>> const&)")]
 pub fn stub_2cd154() -> ! {
     todo!("0x2cd154 boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>::bind_t(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>> const&)")
 }
 
 // 0x2cd2dc — __ZN5boost9function1IvPN3RBX3Lua12IAsyncResultEE9assign_toINS_3_bi6bind_tIvPFvNS2_9ThreadRefENS_8weak_ptrINS1_13ScriptContextEEES4_ENS7_5list3INS7_5valueIS9_EENSG_ISC_EENS_3argILi1EEEEEEEEEvT_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "void boost::function1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>)")]
+#[doc(alias = "void boost::function1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>)")]
 pub fn stub_2cd2dc() -> ! {
     todo!("0x2cd2dc void boost::function1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>)")
 }
 
 // 0x2cd4d4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS5_13ScriptContextEEEPNS6_12IAsyncResultEENS3_5list3INS3_5valueIS7_EENSG_ISA_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeE
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 pub fn stub_2cd4d4() -> ! {
     todo!("0x2cd4d4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
 }
 
 // 0x2cd4f0 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS5_13ScriptContextEEEPNS6_12IAsyncResultEENS3_5list3INS3_5valueIS7_EENSG_ISA_EENS_3argILi1EEEEEEEvSC_E6invokeERNS1_15function_bufferESC_
-#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,void,RBX::Lua::IAsyncResult *>::invoke(boost::detail::function::function_buffer &,RBX::Lua::IAsyncResult *)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>,void,RBX::Lua::IAsyncResult *>::invoke(boost::detail::function::function_buffer &,RBX::Lua::IAsyncResult *)")]
 pub fn stub_2cd4f0() -> ! {
     todo!("0x2cd4f0 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,void,RBX::Lua::IAsyncResult *>::invoke(boost::detail::function::function_buffer &,RBX::Lua::IAsyncResult *)")
 }
 
 // 0x2cd50c — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX3Lua12IAsyncResultEE9assign_toINS_3_bi6bind_tIvPFvNS4_9ThreadRefENS_8weak_ptrINS3_13ScriptContextEEES6_ENS9_5list3INS9_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
 pub fn stub_2cd50c() -> ! {
     todo!("0x2cd50c bool boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")
 }
 
 // 0x2cd6f4 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX3Lua12IAsyncResultEE9assign_toINS_3_bi6bind_tIvPFvNS4_9ThreadRefENS_8weak_ptrINS3_13ScriptContextEEES6_ENS9_5list3INS9_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 pub fn stub_2cd6f4() -> ! {
     todo!("0x2cd6f4 bool boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_to<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
 }
 
 // 0x2cd8d8 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX3Lua12IAsyncResultEE14assign_functorINS_3_bi6bind_tIvPFvNS4_9ThreadRefENS_8weak_ptrINS3_13ScriptContextEEES6_ENS9_5list3INS9_5valueISB_EENSI_ISE_EENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
-#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_functor<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_functor<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 pub fn stub_2cd8d8() -> ! {
     todo!("0x2cd8d8 void boost::detail::function::basic_vtable1<void,RBX::Lua::IAsyncResult *>::assign_functor<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>(boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
 }
 
 // 0x2cd984 — __ZN5boost3_bi5list3INS0_5valueIN3RBX3Lua9ThreadRefEEENS2_INS_8weak_ptrINS3_13ScriptContextEEEEENS_3argILi1EEEEclIPFvS5_S9_PNS4_12IAsyncResultEENS0_5list1IRSG_EEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>::operator()<void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list1<RBX::Lua::IAsyncResult *&>>(boost::_bi::type<void>,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *) &,boost::_bi::list1<RBX::Lua::IAsyncResult *&> &,int)")]
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>::operator()<void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list1<RBX::Lua::IAsyncResult *&>>(boost::_bi::type<void>,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *) &,boost::_bi::list1<RBX::Lua::IAsyncResult *&> &,int)")]
 pub fn stub_2cd984() -> ! {
     todo!("0x2cd984 void boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>::operator()<void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list1<RBX::Lua::IAsyncResult *&>>(boost::_bi::type<void>,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *) &,boost::_bi::list1<RBX::Lua::IAsyncResult *&> &,int)")
 }
 
 // 0x2cdb6c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvN3RBX3Lua9ThreadRefENS_8weak_ptrINS5_13ScriptContextEEEPNS6_12IAsyncResultEENS3_5list3INS3_5valueIS7_EENSG_ISA_EENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,rbx_core::WeakPtr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptContext>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 pub fn stub_2cdb6c() -> ! {
     todo!("0x2cdb6c boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(RBX::Lua::ThreadRef,boost::weak_ptr<RBX::ScriptContext>,RBX::Lua::IAsyncResult *),boost::_bi::list3<boost::_bi::value<RBX::Lua::ThreadRef>,boost::_bi::value<boost::weak_ptr<RBX::ScriptContext>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
 }
@@ -320,13 +320,13 @@ pub fn stub_2cdd44() -> ! {
 }
 
 // 0x2ce804 — __ZN5boost10shared_ptrIN3RBX14AdvLuaDragToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::AdvLuaDragTool>::shared_ptr<RBX::AdvLuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::AdvLuaDragTool>::shared_ptr<RBX::AdvLuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_2ce804() -> ! {
     todo!("0x2ce804 boost::shared_ptr<RBX::AdvLuaDragTool>::shared_ptr<RBX::AdvLuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::AdvLuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
 
 // 0x2ce8cc — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_14AdvLuaDragToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvLuaDragTool,RBX::AdvLuaDragTool>(boost::shared_ptr<RBX::AdvLuaDragTool> const*,RBX::AdvLuaDragTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvLuaDragTool,RBX::AdvLuaDragTool>(rbx_core::SharedPtr<RBX::AdvLuaDragTool> const*,RBX::AdvLuaDragTool *)const")]
 pub fn stub_2ce8cc() -> ! {
     todo!("0x2ce8cc void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::AdvLuaDragTool,RBX::AdvLuaDragTool>(boost::shared_ptr<RBX::AdvLuaDragTool> const*,RBX::AdvLuaDragTool *)const")
 }
@@ -425,7 +425,7 @@ pub fn stub_2cf170() -> ! {
 }
 
 // 0x2cf178 — __ZN3RBX13AdvLuaDragger9mouseDownEN5boost10shared_ptrINS_12PartInstanceEEERKN3G3D7Vector3ESt6vectorINS1_8weak_ptrIS3_EESaISB_EE
-#[doc(alias = "RBX::AdvLuaDragger::mouseDown(boost::shared_ptr<RBX::PartInstance>,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>)")]
+#[doc(alias = "RBX::AdvLuaDragger::mouseDown(rbx_core::SharedPtr<RBX::PartInstance>,G3D::Vector3 const&,std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>)")]
 pub fn stub_2cf178() -> ! {
     todo!("0x2cf178 RBX::AdvLuaDragger::mouseDown(boost::shared_ptr<RBX::PartInstance>,G3D::Vector3 const&,std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>)")
 }
@@ -611,13 +611,13 @@ pub fn stub_2d21d8() -> ! {
 }
 
 // 0x2d2374 — __ZN5boost10shared_ptrIN3RBX13AdvLuaDraggerEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::AdvLuaDragger>::operator=(boost::shared_ptr<RBX::AdvLuaDragger> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::AdvLuaDragger>::operator=(rbx_core::SharedPtr<RBX::AdvLuaDragger> const&)")]
 pub fn stub_2d2374() -> ! {
     todo!("0x2d2374 boost::shared_ptr<RBX::AdvLuaDragger>::operator=(boost::shared_ptr<RBX::AdvLuaDragger> const&)")
 }
 
 // 0x2d23ac — __ZN3RBX11shared_fromINS_14AdvLuaDragToolEEEN5boost10shared_ptrIT_EEPS4_
-#[doc(alias = "boost::shared_ptr<RBX::AdvLuaDragTool> RBX::shared_from<RBX::AdvLuaDragTool>(RBX::AdvLuaDragTool*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::AdvLuaDragTool> RBX::shared_from<RBX::AdvLuaDragTool>(RBX::AdvLuaDragTool*)")]
 pub fn stub_2d23ac() -> ! {
     todo!("0x2d23ac boost::shared_ptr<RBX::AdvLuaDragTool> RBX::shared_from<RBX::AdvLuaDragTool>(RBX::AdvLuaDragTool*)")
 }
@@ -655,14 +655,14 @@ pub fn stub_2d2554() -> ! {
 
 // 0x2e09ec — __ZN5boost10shared_ptrIN3RBX11LuaDragToolEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::LuaDragTool>::shared_ptr<RBX::LuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::LuaDragTool>::shared_ptr<RBX::LuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 pub fn stub_2e09ec() -> ! {
     todo!("0x2e09ec boost::shared_ptr<RBX::LuaDragTool>::shared_ptr<RBX::LuaDragTool,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::LuaDragTool *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
 }
 
 // 0x2e0ab4 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_11LuaDragToolES5_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LuaDragTool,RBX::LuaDragTool>(boost::shared_ptr<RBX::LuaDragTool> const*,RBX::LuaDragTool *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LuaDragTool,RBX::LuaDragTool>(rbx_core::SharedPtr<RBX::LuaDragTool> const*,RBX::LuaDragTool *)const")]
 pub fn stub_2e0ab4() -> ! {
     todo!("0x2e0ab4 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::LuaDragTool,RBX::LuaDragTool>(boost::shared_ptr<RBX::LuaDragTool> const*,RBX::LuaDragTool *)const")
 }

@@ -13,7 +13,7 @@ const _: () = {
 // 0xf438a4 — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot> const&)
 // mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX5JointEEE4slotEEaSERKSA_
 // type: int()
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Joint *)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Joint *)>::slot> const&)")]
 pub fn stub_f438a4() -> ! {
     todo!("0xf438a4 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot> const&)")
 }
@@ -21,7 +21,7 @@ pub fn stub_f438a4() -> ! {
 // 0xf43894 — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Joint *)>::slot*)
 // mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvPN3RBX5JointEEE4slotEEaSEPS9_
 // type: int()
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Joint *)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Joint *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Joint *)>::slot*)")]
 pub fn stub_f43894() -> ! {
     todo!("0xf43894 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Joint *)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Joint *)>::slot*)")
 }
@@ -29,7 +29,7 @@ pub fn stub_f43894() -> ! {
 // 0xf43834 — boost::shared_ptr<RBX::IAdornableCollector>::operator=(boost::shared_ptr<RBX::IAdornableCollector> const&)
 // mangled: j___ZN5boost10shared_ptrIN3RBX19IAdornableCollectorEEaSERKS3_
 // type: int()
-#[doc(alias = "boost::shared_ptr<RBX::IAdornableCollector>::operator=(boost::shared_ptr<RBX::IAdornableCollector> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::IAdornableCollector>::operator=(rbx_core::SharedPtr<RBX::IAdornableCollector> const&)")]
 pub fn stub_f43834() -> ! {
     todo!("0xf43834 boost::shared_ptr<RBX::IAdornableCollector>::operator=(boost::shared_ptr<RBX::IAdornableCollector> const&)")
 }
@@ -69,7 +69,7 @@ pub fn stub_f38ef4() -> ! {
 // 0xf38ee4 — boost::shared_ptr<RBX::Limits::Counter>::shared_ptr<RBX::Limits::Counter>(RBX::Limits::Counter *)
 // mangled: j___ZN5boost10shared_ptrIN3RBX6Limits7CounterEEC2IS3_EEPT_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Limits::Counter>::shared_ptr<RBX::Limits::Counter>(RBX::Limits::Counter *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Limits::Counter>::shared_ptr<RBX::Limits::Counter>(RBX::Limits::Counter *)")]
 pub fn stub_f38ee4() -> ! {
     todo!("0xf38ee4 boost::shared_ptr<RBX::Limits::Counter>::shared_ptr<RBX::Limits::Counter>(RBX::Limits::Counter *)")
 }
@@ -250,7 +250,7 @@ pub fn stub_f38be4() -> ! {
 // 0xf38bd4 — std::vector<boost::shared_ptr<RBX::ScriptService::Info>,std::allocator<boost::shared_ptr<RBX::ScriptService::Info>>>::~vector()
 // mangled: j___ZNSt6vectorIN5boost10shared_ptrIN3RBX13ScriptService4InfoEEESaIS5_EED2Ev
 // type: int __fastcall(int)
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::ScriptService::Info>,std::allocator<boost::shared_ptr<RBX::ScriptService::Info>>>::~vector()")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::ScriptService::Info>,std::allocator<rbx_core::SharedPtr<RBX::ScriptService::Info>>>::~vector()")]
 pub fn stub_f38bd4() -> ! {
     todo!("0xf38bd4 std::vector<boost::shared_ptr<RBX::ScriptService::Info>,std::allocator<boost::shared_ptr<RBX::ScriptService::Info>>>::~vector()")
 }
@@ -258,7 +258,7 @@ pub fn stub_f38bd4() -> ! {
 // 0xf38bc4 — std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>::~vector()
 // mangled: j___ZNSt6vectorIN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESaIS6_EED2Ev
 // type: int __fastcall(int, int, int, int, int)
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>::~vector()")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>::~vector()")]
 pub fn stub_f38bc4() -> ! {
     todo!("0xf38bc4 std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>::~vector()")
 }

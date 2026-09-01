@@ -11,7 +11,7 @@ use rbx_core::SharedPtr;
 // demangled: RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()
 // type: void()
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
+#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
 pub fn stub_9fab00() -> ! {
     todo!("0x9fab00 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")
 }
@@ -20,7 +20,7 @@ pub fn stub_9fab00() -> ! {
 // demangled: RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()
 // type: void __fastcall(void *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
+#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
 pub fn stub_9fab04() -> ! {
     todo!("0x9fab04 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")
 }
@@ -29,7 +29,7 @@ pub fn stub_9fab04() -> ! {
 // demangled: RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)> const&)const
 // type: int __fastcall(_DWORD *, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)> const&)const")]
+#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>)> const&)const")]
 pub fn stub_9fab10() -> ! {
     todo!("0x9fab10 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)> const&)const")
 }
@@ -38,7 +38,7 @@ pub fn stub_9fab10() -> ! {
 // demangled: boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::operator=(boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)> const&)
 // type: int *__fastcall(int *, int *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::operator=(boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)> const&)")]
+#[doc(alias = "boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>)>::operator=(boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>)> const&)")]
 pub fn stub_9fab4c() -> ! {
     todo!("0x9fab4c boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)>::operator=(boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>)> const&)")
 }
@@ -47,7 +47,7 @@ pub fn stub_9fab4c() -> ! {
 // demangled: RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>),1>::~CallbackDescImpl()
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>),1>::~CallbackDescImpl()")]
+#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>),1>::~CallbackDescImpl()")]
 pub fn stub_9fae44() -> ! {
     todo!("0x9fae44 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>),1>::~CallbackDescImpl()")
 }
@@ -56,7 +56,7 @@ pub fn stub_9fae44() -> ! {
 // demangled: RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>),1>::~CallbackDescImpl()
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>),1>::~CallbackDescImpl()")]
+#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>),1>::~CallbackDescImpl()")]
 pub fn stub_9faf84() -> ! {
     todo!("0x9faf84 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>),1>::~CallbackDescImpl()")
 }
@@ -65,7 +65,7 @@ pub fn stub_9faf84() -> ! {
 // demangled: RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::CallbackDescImpl(RBX::Reflection::ClassDescriptor &,char const*,char const*,char const*,RBX::Reflection::Descriptor::Attributes,RBX::Security::Permissions)
 // type: char **__fastcall(char **, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::CallbackDescImpl(RBX::Reflection::ClassDescriptor &,char const*,char const*,char const*,RBX::Reflection::Descriptor::Attributes,RBX::Security::Permissions)")]
+#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::CallbackDescImpl(RBX::Reflection::ClassDescriptor &,char const*,char const*,char const*,RBX::Reflection::Descriptor::Attributes,RBX::Security::Permissions)")]
 pub fn stub_9fb0e0() -> ! {
     todo!("0x9fb0e0 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::CallbackDescImpl(RBX::Reflection::ClassDescriptor &,char const*,char const*,char const*,RBX::Reflection::Descriptor::Attributes,RBX::Security::Permissions)")
 }
@@ -74,7 +74,7 @@ pub fn stub_9fb0e0() -> ! {
 // demangled: RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~BoundCallbackDesc()
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~BoundCallbackDesc()")]
+#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~BoundCallbackDesc()")]
 pub fn stub_9fb45c() -> ! {
     todo!("0x9fb45c RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~BoundCallbackDesc()")
 }
@@ -83,7 +83,7 @@ pub fn stub_9fb45c() -> ! {
 // demangled: RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::setGenericCallback(RBX::Reflection::DescribedBase *,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)const
 // type: void __fastcall(int, int, int *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::setGenericCallback(RBX::Reflection::DescribedBase *,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)const")]
+#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::setGenericCallback(RBX::Reflection::DescribedBase *,rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>)const")]
 pub fn stub_9fb5b8() -> ! {
     todo!("0x9fb5b8 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::setGenericCallback(RBX::Reflection::DescribedBase *,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>)const")
 }
@@ -92,7 +92,7 @@ pub fn stub_9fb5b8() -> ! {
 // demangled: RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::clearCallback(RBX::Reflection::DescribedBase *)const
 // type: void __fastcall(int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::clearCallback(RBX::Reflection::DescribedBase *)const")]
+#[doc(alias = "RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::clearCallback(RBX::Reflection::DescribedBase *)const")]
 pub fn stub_9fba3c() -> ! {
     todo!("0x9fba3c RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::clearCallback(RBX::Reflection::DescribedBase *)const")
 }
@@ -101,7 +101,7 @@ pub fn stub_9fba3c() -> ! {
 // demangled: boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list_av_3<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>>::type> boost::bind<RBX::Network::FilterResult,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>>(RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>)
 // type: void __fastcall(int, int, int *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list_av_3<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>>::type> boost::bind<RBX::Network::FilterResult,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>>(RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>)")]
+#[doc(alias = "boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list_av_3<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>>::type> boost::bind<RBX::Network::FilterResult,rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>>(RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>)")]
 pub fn stub_9fbb30() -> ! {
     todo!("0x9fbb30 boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list_av_3<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>>::type> boost::bind<RBX::Network::FilterResult,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>>(RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::arg<1>,boost::arg<2>)")
 }
@@ -110,7 +110,7 @@ pub fn stub_9fbb30() -> ! {
 // demangled: RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::callGeneric(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
 // type: pthread_mutex_t *__fastcall(int *, int *, int *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::callGeneric(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::callGeneric(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_9fbf98() -> ! {
     todo!("0x9fbf98 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::callGeneric(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
@@ -119,7 +119,7 @@ pub fn stub_9fbf98() -> ! {
 // demangled: boost::disable_if<boost::is_void<RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callGeneric<RBX::Network::FilterResult>(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Reflection::Tuple>)
 // type: pthread_mutex_t *__fastcall(int *, int *, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::disable_if<boost::is_void<RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callGeneric<RBX::Network::FilterResult>(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Reflection::Tuple>)")]
+#[doc(alias = "boost::disable_if<boost::is_void<RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::callGeneric<RBX::Network::FilterResult>(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Reflection::Tuple>)")]
 pub fn stub_9fc950() -> ! {
     todo!("0x9fc950 boost::disable_if<boost::is_void<RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::callGeneric<RBX::Network::FilterResult>(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Reflection::Tuple>)")
 }
@@ -128,7 +128,7 @@ pub fn stub_9fc950() -> ! {
 // demangled: boost::disable_if<boost::is_same<boost::shared_ptr<RBX::Reflection::Tuple const>,RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::convertResult<RBX::Network::FilterResult>(boost::shared_ptr<RBX::Reflection::Tuple>)
 // type: int __fastcall(int **)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::disable_if<boost::is_same<boost::shared_ptr<RBX::Reflection::Tuple const>,RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::convertResult<RBX::Network::FilterResult>(boost::shared_ptr<RBX::Reflection::Tuple>)")]
+#[doc(alias = "boost::disable_if<boost::is_same<rbx_core::SharedPtr<RBX::Reflection::Tuple const>,RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::convertResult<RBX::Network::FilterResult>(rbx_core::SharedPtr<RBX::Reflection::Tuple>)")]
 pub fn stub_9fcf30() -> ! {
     todo!("0x9fcf30 boost::disable_if<boost::is_same<boost::shared_ptr<RBX::Reflection::Tuple const>,RBX::Network::FilterResult>,RBX::Network::FilterResult>::type RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::convertResult<RBX::Network::FilterResult>(boost::shared_ptr<RBX::Reflection::Tuple>)")
 }
@@ -137,7 +137,7 @@ pub fn stub_9fcf30() -> ! {
 // demangled: void boost::function2<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>)
 // type: void __fastcall(pthread_mutex_t *, int *, int, int, struct _Unwind_Exception *lpuexcpt, pthread_mutex_t *, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "void boost::function2<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>)")]
+#[doc(alias = "void boost::function2<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>)")]
 pub fn stub_9fd4e0() -> ! {
     todo!("0x9fd4e0 void boost::function2<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>)")
 }
@@ -146,7 +146,7 @@ pub fn stub_9fd4e0() -> ! {
 // demangled: boost::detail::function::functor_manager<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // type: _UNKNOWN **__fastcall(int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 pub fn stub_9fd950() -> ! {
     todo!("0x9fd950 boost::detail::function::functor_manager<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
 }
@@ -155,7 +155,7 @@ pub fn stub_9fd950() -> ! {
 // demangled: boost::detail::function::function_obj_invoker2<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)
 // type: int __fastcall(int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::detail::function::function_obj_invoker2<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "boost::detail::function::function_obj_invoker2<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>,RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_9fd974() -> ! {
     todo!("0x9fd974 boost::detail::function::function_obj_invoker2<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>,RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)")
 }
@@ -164,7 +164,7 @@ pub fn stub_9fd974() -> ! {
 // demangled: bool boost::detail::function::basic_vtable2<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 // type: int __fastcall(int, int *, int *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, int, int, pthread_mutex_t *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "bool boost::detail::function::basic_vtable2<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable2<RBX::Network::FilterResult,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 pub fn stub_9fd990() -> ! {
     todo!("0x9fd990 bool boost::detail::function::basic_vtable2<RBX::Network::FilterResult,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>>::assign_to<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
 }
@@ -173,7 +173,7 @@ pub fn stub_9fd990() -> ! {
 // demangled: RBX::Network::FilterResult boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>::operator()<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::shared_ptr<RBX::Instance>&,boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<RBX::Network::FilterResult>,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list2<boost::shared_ptr<RBX::Instance>&,boost::shared_ptr<RBX::Instance>&> &,long)
 // type: int __fastcall(int *, int (__fastcall **)(int *, __int32 *, int *), pthread_mutex_t **, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::FilterResult boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>::operator()<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::shared_ptr<RBX::Instance>&,boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<RBX::Network::FilterResult>,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list2<boost::shared_ptr<RBX::Instance>&,boost::shared_ptr<RBX::Instance>&> &,long)")]
+#[doc(alias = "RBX::Network::FilterResult boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>::operator()<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list2<rbx_core::SharedPtr<RBX::Instance>&,rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<RBX::Network::FilterResult>,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>) &,boost::_bi::list2<rbx_core::SharedPtr<RBX::Instance>&,rbx_core::SharedPtr<RBX::Instance>&> &,long)")]
 pub fn stub_9fdc30() -> ! {
     todo!("0x9fdc30 RBX::Network::FilterResult boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>::operator()<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list2<boost::shared_ptr<RBX::Instance>&,boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<RBX::Network::FilterResult>,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>) &,boost::_bi::list2<boost::shared_ptr<RBX::Instance>&,boost::shared_ptr<RBX::Instance>&> &,long)")
 }
@@ -182,7 +182,7 @@ pub fn stub_9fdc30() -> ! {
 // demangled: boost::detail::function::functor_manager_common<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)
 // type: void __fastcall(_DWORD *, _WORD *, unsigned int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<boost::function<rbx_core::SharedPtr<RBX::Reflection::Tuple> ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 pub fn stub_9fe290() -> ! {
     todo!("0x9fe290 boost::detail::function::functor_manager_common<boost::_bi::bind_t<RBX::Network::FilterResult,RBX::Network::FilterResult (*)(boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),boost::_bi::list3<boost::_bi::value<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>>,boost::arg<1>,boost::arg<2>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
 }
@@ -191,7 +191,7 @@ pub fn stub_9fe290() -> ! {
 // demangled: RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~CallbackDesc()
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~CallbackDesc()")]
+#[doc(alias = "RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~CallbackDesc()")]
 pub fn stub_9fe368() -> ! {
     todo!("0x9fe368 RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~CallbackDesc()")
 }
@@ -200,7 +200,7 @@ pub fn stub_9fe368() -> ! {
 // demangled: RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~CallbackDesc()
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~CallbackDesc()")]
+#[doc(alias = "RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::~CallbackDesc()")]
 pub fn stub_9fe4a8() -> ! {
     todo!("0x9fe4a8 RBX::Reflection::CallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::~CallbackDesc()")
 }
@@ -209,7 +209,7 @@ pub fn stub_9fe4a8() -> ! {
 // demangled: RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()
 // type: void()
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
+#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
 pub fn stub_9fe604() -> ! {
     todo!("0x9fe604 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")
 }
@@ -218,7 +218,7 @@ pub fn stub_9fe604() -> ! {
 // demangled: RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()
 // type: void __fastcall(void *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
+#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")]
 pub fn stub_9fe608() -> ! {
     todo!("0x9fe608 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::~Setter()")
 }
@@ -227,7 +227,7 @@ pub fn stub_9fe608() -> ! {
 // demangled: RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> const&)const
 // type: int __fastcall(_DWORD *, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> const&)const")]
+#[doc(alias = "RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> const&)const")]
 pub fn stub_9fe614() -> ! {
     todo!("0x9fe614 RBX::Reflection::BoundCallbackDesc<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::Setter<RBX::Network::ServerReplicator>::setCallback(RBX::Reflection::DescribedBase *,boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> const&)const")
 }
@@ -236,7 +236,7 @@ pub fn stub_9fe614() -> ! {
 // demangled: boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::operator=(boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> const&)
 // type: int *__fastcall(int *, int *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::operator=(boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> const&)")]
+#[doc(alias = "boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::operator=(boost::function<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> const&)")]
 pub fn stub_9fe650() -> ! {
     todo!("0x9fe650 boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::operator=(boost::function<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> const&)")
 }
@@ -245,7 +245,7 @@ pub fn stub_9fe650() -> ! {
 // demangled: RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~CallbackDescImpl()
 // type: _DWORD *__fastcall(_DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~CallbackDescImpl()")]
+#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::~CallbackDescImpl()")]
 pub fn stub_9fe948() -> ! {
     todo!("0x9fe948 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~CallbackDescImpl()")
 }
@@ -254,7 +254,7 @@ pub fn stub_9fe948() -> ! {
 // demangled: RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~CallbackDescImpl()
 // type: void __fastcall(_DWORD *, int, int, int, int, void *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~CallbackDescImpl()")]
+#[doc(alias = "RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),2>::~CallbackDescImpl()")]
 pub fn stub_9fea88() -> ! {
     todo!("0x9fea88 RBX::Reflection::CallbackDescImpl<RBX::Network::FilterResult ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),2>::~CallbackDescImpl()")
 }
@@ -359,7 +359,7 @@ pub fn stub_9ffadc() -> ! {
 // demangled: RBX::Network::Replicator::NewInstanceItem::NewInstanceItem(RBX::Network::Replicator*,boost::shared_ptr<RBX::Instance const>)
 // type: int __fastcall(int, int, const RBX::Instance **, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, pthread_mutex_t *, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::Replicator::NewInstanceItem::NewInstanceItem(RBX::Network::Replicator*,boost::shared_ptr<RBX::Instance const>)")]
+#[doc(alias = "RBX::Network::Replicator::NewInstanceItem::NewInstanceItem(RBX::Network::Replicator*,rbx_core::SharedPtr<RBX::Instance const>)")]
 pub fn stub_9ffbc0() -> ! {
     todo!("0x9ffbc0 RBX::Network::Replicator::NewInstanceItem::NewInstanceItem(RBX::Network::Replicator*,boost::shared_ptr<RBX::Instance const>)")
 }
@@ -464,7 +464,7 @@ pub fn stub_a02d08() -> ! {
 // demangled: RBX::Network::Players::whisperChat(std::string,boost::shared_ptr<RBX::Instance>)
 // type: void __fastcall(RBX::Network::Players *, const std::string *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::Players::whisperChat(std::string,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Network::Players::whisperChat(std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_a03878() -> ! {
     todo!("0xa03878 RBX::Network::Players::whisperChat(std::string,boost::shared_ptr<RBX::Instance>)")
 }
@@ -473,7 +473,7 @@ pub fn stub_a03878() -> ! {
 // demangled: RBX::Network::Players::reportAbuseLua(boost::shared_ptr<RBX::Instance>,std::string,std::string)
 // type: void __fastcall(RBX::Network::Players *, _DWORD *, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::Players::reportAbuseLua(boost::shared_ptr<RBX::Instance>,std::string,std::string)")]
+#[doc(alias = "RBX::Network::Players::reportAbuseLua(rbx_core::SharedPtr<RBX::Instance>,std::string,std::string)")]
 pub fn stub_a04c10() -> ! {
     todo!("0xa04c10 RBX::Network::Players::reportAbuseLua(boost::shared_ptr<RBX::Instance>,std::string,std::string)")
 }
@@ -514,7 +514,7 @@ pub fn stub_a0658c() -> ! {
 // demangled: RBX::Network::Players::playerFromCharacter(boost::shared_ptr<RBX::Instance>)
 // type: void __fastcall(int, int, _DWORD *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::Players::playerFromCharacter(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::Network::Players::playerFromCharacter(rbx_core::SharedPtr<RBX::Instance>)")]
 pub fn stub_a06598() -> ! {
     todo!("0xa06598 RBX::Network::Players::playerFromCharacter(boost::shared_ptr<RBX::Instance>)")
 }
@@ -721,7 +721,7 @@ pub fn stub_a0979c() -> ! {
 // demangled: RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>)
 // type: RBX::Guid *__fastcall(RBX::Guid *, int, int, _DWORD *, struct _Unwind_Exception *lpuexcpt, int, char, char, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>)")]
+#[doc(alias = "RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,rbx_core::SharedPtr<RBX::Network::Player>)")]
 pub fn stub_a097a4() -> ! {
     todo!("0xa097a4 RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>)")
 }
@@ -738,7 +738,7 @@ pub fn stub_a0997c() -> ! {
 // demangled: RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>,boost::shared_ptr<RBX::Network::Player>)
 // type: RBX::Guid *__fastcall(RBX::Guid *, int, int, _DWORD *, struct _Unwind_Exception *lpuexcpt, int, char, char, int, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>,boost::shared_ptr<RBX::Network::Player>)")]
+#[doc(alias = "RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,rbx_core::SharedPtr<RBX::Network::Player>,rbx_core::SharedPtr<RBX::Network::Player>)")]
 pub fn stub_a09b94() -> ! {
     todo!("0xa09b94 RBX::Network::ChatMessage::ChatMessage(char const*,RBX::Network::ChatMessage::ChatType,boost::shared_ptr<RBX::Network::Player>,boost::shared_ptr<RBX::Network::Player>)")
 }
@@ -755,7 +755,7 @@ pub fn stub_a09dcc() -> ! {
 // demangled: RBX::Network::AbuseReport::addMessage(boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&)
 // type: void __fastcall(int, int *, const std::string *, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::AbuseReport::addMessage(boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&)")]
+#[doc(alias = "RBX::Network::AbuseReport::addMessage(rbx_core::SharedPtr<RBX::Network::Player>,RBX::Network::ChatMessage const&)")]
 pub fn stub_a0a15c() -> ! {
     todo!("0xa0a15c RBX::Network::AbuseReport::addMessage(boost::shared_ptr<RBX::Network::Player>,RBX::Network::ChatMessage const&)")
 }
@@ -772,7 +772,7 @@ pub fn stub_a0a4ec() -> ! {
 // demangled: RBX::Network::AbuseReporter::processRequests(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string)
 // type: int __fastcall(struct _Unwind_Exception **, std::string *)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::AbuseReporter::processRequests(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string)")]
+#[doc(alias = "RBX::Network::AbuseReporter::processRequests(rbx_core::SharedPtr<RBX::Network::AbuseReporter::data>,std::string)")]
 pub fn stub_a0ac84() -> ! {
     todo!("0xa0ac84 RBX::Network::AbuseReporter::processRequests(boost::shared_ptr<RBX::Network::AbuseReporter::data>,std::string)")
 }
@@ -781,7 +781,7 @@ pub fn stub_a0ac84() -> ! {
 // demangled: RBX::Network::AbuseReporter::add(RBX::Network::AbuseReport &,boost::shared_ptr<RBX::Network::Player>,std::list<RBX::Network::ChatMessage,std::allocator<RBX::Network::ChatMessage>> const&)
 // type: void __fastcall(int, _QWORD *, __int32 *, pthread_mutex_t **, int, pthread_mutex_t *, int, pthread_mutex_t *, int, struct _Unwind_Exception *lpuexcpt, boost::mutex *, char, int, int, int, int, int, int, int, int, int, int, int, int, char, int, int, int, int, int)
 // was: boost::shared_ptr -> rbx_core::SharedPtr
-#[doc(alias = "RBX::Network::AbuseReporter::add(RBX::Network::AbuseReport &,boost::shared_ptr<RBX::Network::Player>,std::list<RBX::Network::ChatMessage,std::allocator<RBX::Network::ChatMessage>> const&)")]
+#[doc(alias = "RBX::Network::AbuseReporter::add(RBX::Network::AbuseReport &,rbx_core::SharedPtr<RBX::Network::Player>,std::list<RBX::Network::ChatMessage,std::allocator<RBX::Network::ChatMessage>> const&)")]
 pub fn stub_a0ba5c() -> ! {
     todo!("0xa0ba5c RBX::Network::AbuseReporter::add(RBX::Network::AbuseReport &,boost::shared_ptr<RBX::Network::Player>,std::list<RBX::Network::ChatMessage,std::allocator<RBX::Network::ChatMessage>> const&)")
 }

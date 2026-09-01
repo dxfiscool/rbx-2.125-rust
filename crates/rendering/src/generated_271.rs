@@ -235,7 +235,7 @@ pub fn stub_3926c4() -> ! {
 
 // 0x392738 — __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EED2Ev
 // type: int __fastcall(int)
-#[doc(alias = "std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::~vector()")]
+#[doc(alias = "std::vector<rbx_core::WeakPtr<RBX::PartInstance>,std::allocator<rbx_core::WeakPtr<RBX::PartInstance>>>::~vector()")]
 // was: __ZNSt6vectorIN5boost8weak_ptrIN3RBX12PartInstanceEEESaIS4_EED2Ev
 pub fn stub_392738() -> ! {
     todo!("0x392738 std::vector<boost::weak_ptr<RBX::PartInstance>,std::allocator<boost::weak_ptr<RBX::PartInstance>>>::~vector()")
@@ -523,7 +523,7 @@ pub fn stub_39571c() -> ! {
 
 // 0x3961b4 — __ZN5boost10shared_ptrIN3RBX10PVInstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
-#[doc(alias = "rbx_core::SharedPtr<RBX::PVInstance>::shared_ptr<RBX::PVInstance>(boost::weak_ptr<RBX::PVInstance> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PVInstance>::shared_ptr<RBX::PVInstance>(rbx_core::WeakPtr<RBX::PVInstance> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX10PVInstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_3961b4() -> ! {
     todo!("0x3961b4 boost::shared_ptr<RBX::PVInstance>::shared_ptr<RBX::PVInstance>(boost::weak_ptr<RBX::PVInstance> const&,boost::detail::sp_nothrow_tag)")

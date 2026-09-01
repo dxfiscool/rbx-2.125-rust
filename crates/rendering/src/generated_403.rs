@@ -377,7 +377,7 @@ pub fn stub_602038() -> ! {
 // 0x602244 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX17StarterGuiService11CoreGuiTypeEbEE4slotEEaSEPS9_
 // type: int(void)
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX17StarterGuiService11CoreGuiTypeEbEE4slotEEaSEPS9_")]
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>::slot>::operator=(rbx::signals::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>::slot>::operator=(rbx::signals::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>::slot*)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX17StarterGuiService11CoreGuiTypeEbEE4slotEEaSEPS9_
 pub fn stub_602244() -> ! {
     todo!("0x602244 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>::slot>::operator=(rbx::signals::signal<void ()(RBX::StarterGuiService::CoreGuiType,bool)>::slot*)")

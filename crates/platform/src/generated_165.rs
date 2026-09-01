@@ -447,7 +447,7 @@ pub fn stub_f3b6b4() -> ! {
 // 0xf3ad84 — boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::operator()(boost::shared_ptr<RBX::Instance>,float)const
 // mangled: j___ZNK5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfEclES4_f
 // type: int()
-#[doc(alias = "boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::operator()(boost::shared_ptr<RBX::Instance>,float)const")]
+#[doc(alias = "boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,float>::operator()(rbx_core::SharedPtr<RBX::Instance>,float)const")]
 pub fn stub_f3ad84() -> ! {
     todo!("0xf3ad84 boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::operator()(boost::shared_ptr<RBX::Instance>,float)const")
 }
@@ -455,7 +455,7 @@ pub fn stub_f3ad84() -> ! {
 // 0xf3ad74 — bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 // mangled: j___ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,rbx_core::SharedPtr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 pub fn stub_f3ad74() -> ! {
     todo!("0xf3ad74 bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
 }
@@ -463,7 +463,7 @@ pub fn stub_f3ad74() -> ! {
 // 0xf3ad64 — bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const
 // mangled: j___ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,rbx_core::SharedPtr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")]
 pub fn stub_f3ad64() -> ! {
     todo!("0xf3ad64 bool boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &)const")
 }
@@ -471,7 +471,7 @@ pub fn stub_f3ad64() -> ! {
 // 0xf3ad54 — void boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 // mangled: j___ZNK5boost6detail8function13basic_vtable2IvNS_10shared_ptrIN3RBX8InstanceEEEfE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS4_10Reflection18GenericSlotWrapperERKS6_RKfEENS9_5list3INS9_5valueINS3_ISE_EEEENS_3argILi1EEENSO_ILi2EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int)
-#[doc(alias = "void boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+#[doc(alias = "void boost::detail::function::basic_vtable2<void,rbx_core::SharedPtr<RBX::Instance>,float>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 pub fn stub_f3ad54() -> ! {
     todo!("0xf3ad54 void boost::detail::function::basic_vtable2<void,boost::shared_ptr<RBX::Instance>,float>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
 }
@@ -479,7 +479,7 @@ pub fn stub_f3ad54() -> ! {
 // 0xf3ad44 — bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const
 // mangled: j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8InstanceEPSA_EENS5_5list2INS5_5valueINS_10shared_ptrINS9_9ExplosionEEEEENSE_ISB_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 pub fn stub_f3ad44() -> ! {
     todo!("0xf3ad44 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
 }
@@ -487,7 +487,7 @@ pub fn stub_f3ad44() -> ! {
 // 0xf3ad34 — bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &)const
 // mangled: j___ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8InstanceEPSA_EENS5_5list2INS5_5valueINS_10shared_ptrINS9_9ExplosionEEEEENSE_ISB_EEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &)const")]
 pub fn stub_f3ad34() -> ! {
     todo!("0xf3ad34 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &)const")
 }
@@ -495,7 +495,7 @@ pub fn stub_f3ad34() -> ! {
 // 0xf3ad24 — void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const
 // mangled: j___ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8InstanceEPSA_EENS5_5list2INS5_5valueINS_10shared_ptrINS9_9ExplosionEEEEENSE_ISB_EEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int)
-#[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+#[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 pub fn stub_f3ad24() -> ! {
     todo!("0xf3ad24 void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
 }
@@ -503,7 +503,7 @@ pub fn stub_f3ad24() -> ! {
 // 0xf3ad14 — void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TimerService,RBX::TimerService>(boost::shared_ptr<RBX::TimerService> const*,RBX::TimerService *)const
 // mangled: j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12TimerServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TimerService,RBX::TimerService>(boost::shared_ptr<RBX::TimerService> const*,RBX::TimerService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TimerService,RBX::TimerService>(rbx_core::SharedPtr<RBX::TimerService> const*,RBX::TimerService *)const")]
 pub fn stub_f3ad14() -> ! {
     todo!("0xf3ad14 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TimerService,RBX::TimerService>(boost::shared_ptr<RBX::TimerService> const*,RBX::TimerService *)const")
 }
@@ -535,7 +535,7 @@ pub fn stub_f3acb4() -> ! {
 // 0xf3ac94 — void boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)
 // mangled: j___ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf2IvNS2_10Reflection18GenericSlotWrapperERKS4_RKfEENS7_5list3INS7_5valueINS1_ISC_EEEENS_3argILi1EEENSM_ILi2EEEEEEEEEvT_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "void boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
+#[doc(alias = "void boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")]
 pub fn stub_f3ac94() -> ! {
     todo!("0xf3ac94 void boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>)")
 }
@@ -543,7 +543,7 @@ pub fn stub_f3ac94() -> ! {
 // 0xf3ac84 — boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::clear(void)
 // mangled: j___ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfE5clearEv
 // type: int()
-#[doc(alias = "boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::clear(void)")]
+#[doc(alias = "boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,float>::clear(void)")]
 pub fn stub_f3ac84() -> ! {
     todo!("0xf3ac84 boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::clear(void)")
 }
@@ -551,7 +551,7 @@ pub fn stub_f3ac84() -> ! {
 // 0xf3ac74 — boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,float> const&)
 // mangled: j___ZN5boost9function2IvNS_10shared_ptrIN3RBX8InstanceEEEfE13assign_to_ownERKS5_
 // type: int()
-#[doc(alias = "boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,float> const&)")]
+#[doc(alias = "boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,float>::assign_to_own(boost::function2<void,rbx_core::SharedPtr<RBX::Instance>,float> const&)")]
 pub fn stub_f3ac74() -> ! {
     todo!("0xf3ac74 boost::function2<void,boost::shared_ptr<RBX::Instance>,float>::assign_to_own(boost::function2<void,boost::shared_ptr<RBX::Instance>,float> const&)")
 }
@@ -559,7 +559,7 @@ pub fn stub_f3ac74() -> ! {
 // 0xf3ac54 — void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>)
 // mangled: j___ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8InstanceEPS8_EENS3_5list2INS3_5valueINS_10shared_ptrINS7_9ExplosionEEEEENSC_IS9_EEEEEEEEvT_
 // type: int __fastcall(int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>)")]
+#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>)")]
 pub fn stub_f3ac54() -> ! {
     todo!("0xf3ac54 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>)")
 }
@@ -567,7 +567,7 @@ pub fn stub_f3ac54() -> ! {
 // 0xf3ac34 — boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 // mangled: j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS7_8InstanceEEERKfEENS3_5list3INS3_5valueINSA_IS9_EEEENS_3argILi1EEENSM_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 pub fn stub_f3ac34() -> ! {
     todo!("0xf3ac34 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
 }
@@ -575,7 +575,7 @@ pub fn stub_f3ac34() -> ! {
 // 0xf3ac24 — boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)
 // mangled: j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8InstanceEPS8_EENS3_5list2INS3_5valueINS_10shared_ptrINS7_9ExplosionEEEEENSC_IS9_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 pub fn stub_f3ac24() -> ! {
     todo!("0xf3ac24 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
 }
@@ -583,7 +583,7 @@ pub fn stub_f3ac24() -> ! {
 // 0xf3ac14 — boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list_av_2<boost::shared_ptr<RBX::Explosion>,RBX::Instance*>::type> boost::bind<void,RBX::Instance,RBX::Instance*,boost::shared_ptr<RBX::Explosion>,RBX::Instance*>(void (RBX::Instance::*)(RBX::Instance*),boost::shared_ptr<RBX::Explosion>,RBX::Instance*)
 // mangled: j___ZN5boost4bindIvN3RBX8InstanceEPS2_NS_10shared_ptrINS1_9ExplosionEEES3_EENS_3_bi6bind_tIT_NS_4_mfi3mf1IS9_T0_T1_EENS7_9list_av_2IT2_T3_E4typeEEEMSC_FS9_SD_ESG_SH_
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list_av_2<boost::shared_ptr<RBX::Explosion>,RBX::Instance*>::type> boost::bind<void,RBX::Instance,RBX::Instance*,boost::shared_ptr<RBX::Explosion>,RBX::Instance*>(void (RBX::Instance::*)(RBX::Instance*),boost::shared_ptr<RBX::Explosion>,RBX::Instance*)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list_av_2<rbx_core::SharedPtr<RBX::Explosion>,RBX::Instance*>::type> boost::bind<void,RBX::Instance,RBX::Instance*,rbx_core::SharedPtr<RBX::Explosion>,RBX::Instance*>(void (RBX::Instance::*)(RBX::Instance*),rbx_core::SharedPtr<RBX::Explosion>,RBX::Instance*)")]
 pub fn stub_f3ac14() -> ! {
     todo!("0xf3ac14 boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list_av_2<boost::shared_ptr<RBX::Explosion>,RBX::Instance*>::type> boost::bind<void,RBX::Instance,RBX::Instance*,boost::shared_ptr<RBX::Explosion>,RBX::Instance*>(void (RBX::Instance::*)(RBX::Instance*),boost::shared_ptr<RBX::Explosion>,RBX::Instance*)")
 }
@@ -591,7 +591,7 @@ pub fn stub_f3ac14() -> ! {
 // 0xf3ac04 — boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,float const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)
 // mangled: j___ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKfNS4_IS3_EENS_3argILi1EEENSC_ILi2EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf2ISH_T0_T1_T2_EENSF_9list_av_3IT3_T4_T5_E4typeEEEMSK_FSH_SL_SM_ESP_SQ_SR_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,float const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list_av_3<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,float const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")]
 pub fn stub_f3ac04() -> ! {
     todo!("0xf3ac04 boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list_av_3<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,float const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>)")
 }
@@ -599,7 +599,7 @@ pub fn stub_f3ac04() -> ! {
 // 0xf3abf4 — boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>)
 // mangled: j___ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrIN3RBX9ExplosionEEEEENS2_IPNS4_8InstanceEEEEC2ES7_SA_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>)")]
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>>::storage2(boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>)")]
 pub fn stub_f3abf4() -> ! {
     todo!("0xf3abf4 boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>>::storage2(boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>)")
 }
@@ -607,7 +607,7 @@ pub fn stub_f3abf4() -> ! {
 // 0xf3abe4 — void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<boost::shared_ptr<RBX::Instance>,float>(boost::shared_ptr<RBX::Instance> &,float &)
 // mangled: j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS4_8InstanceEEERKfEENS0_5list3INS0_5valueINS7_IS6_EEEENS_3argILi1EEENSJ_ILi2EEEEEEclIS9_fEEvRT_RT0_
 // type: int()
-#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<boost::shared_ptr<RBX::Instance>,float>(boost::shared_ptr<RBX::Instance> &,float &)")]
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<rbx_core::SharedPtr<RBX::Instance>,float>(rbx_core::SharedPtr<RBX::Instance> &,float &)")]
 pub fn stub_f3abe4() -> ! {
     todo!("0xf3abe4 void boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,float const&>,boost::_bi::list3<boost::_bi::value<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>>,boost::arg<1>,boost::arg<2>>>::operator()<boost::shared_ptr<RBX::Instance>,float>(boost::shared_ptr<RBX::Instance> &,float &)")
 }
@@ -615,7 +615,7 @@ pub fn stub_f3abe4() -> ! {
 // 0xf3abd4 — boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>::operator()(void)
 // mangled: j___ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8InstanceEPS5_EENS0_5list2INS0_5valueINS_10shared_ptrINS4_9ExplosionEEEEENS9_IS6_EEEEEclEv
 // type: int()
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>::operator()(void)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>::operator()(void)")]
 pub fn stub_f3abd4() -> ! {
     todo!("0xf3abd4 boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::Instance,RBX::Instance*>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance*>>>::operator()(void)")
 }
@@ -623,7 +623,7 @@ pub fn stub_f3abd4() -> ! {
 // 0xf3abc4 — boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>>::list2(boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>)
 // mangled: j___ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrIN3RBX9ExplosionEEEEENS2_IPNS4_8InstanceEEEEC2ES7_SA_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>>::list2(boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>)")]
+#[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>>::list2(boost::_bi::value<rbx_core::SharedPtr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>)")]
 pub fn stub_f3abc4() -> ! {
     todo!("0xf3abc4 boost::_bi::list2<boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>>::list2(boost::_bi::value<boost::shared_ptr<RBX::Explosion>>,boost::_bi::value<RBX::Instance *>)")
 }
@@ -631,7 +631,7 @@ pub fn stub_f3abc4() -> ! {
 // 0xf3abb4 — boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot> const&)
 // mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEfEE4slotEEaSERKSB_
 // type: int()
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot> const&)")]
 pub fn stub_f3abb4() -> ! {
     todo!("0xf3abb4 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot> const&)")
 }
@@ -639,7 +639,7 @@ pub fn stub_f3abb4() -> ! {
 // 0xf3aba4 — boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot*)
 // mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEEfEE4slotEEaSEPSA_
 // type: int()
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot*)")]
 pub fn stub_f3aba4() -> ! {
     todo!("0xf3aba4 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot*)")
 }
@@ -647,7 +647,7 @@ pub fn stub_f3aba4() -> ! {
 // 0xf3ab94 — boost::shared_ptr<RBX::TimerService>::shared_ptr<RBX::TimerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TimerService *,RBX::Creatable<RBX::Instance>::Deleter)
 // mangled: j___ZN5boost10shared_ptrIN3RBX12TimerServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::TimerService>::shared_ptr<RBX::TimerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TimerService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TimerService>::shared_ptr<RBX::TimerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TimerService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_f3ab94() -> ! {
     todo!("0xf3ab94 boost::shared_ptr<RBX::TimerService>::shared_ptr<RBX::TimerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TimerService *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -655,7 +655,7 @@ pub fn stub_f3ab94() -> ! {
 // 0xf3ab84 — rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*)
 // mangled: j___ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_EC2IPS9_EERKSC_T_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*)")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>*>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,float)> const&,rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>*)")]
 pub fn stub_f3ab84() -> ! {
     todo!("0xf3ab84 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&,rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>*)")
 }
@@ -663,7 +663,7 @@ pub fn stub_f3ab84() -> ! {
 // 0xf3ab74 — rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)
 // mangled: j___ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slotENS3_8functionIS8_EELi2ES8_E4callES7_f
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::call(rbx_core::SharedPtr<RBX::Instance>,float)")]
 pub fn stub_f3ab74() -> ! {
     todo!("0xf3ab74 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot,boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>,2,void ()(boost::shared_ptr<RBX::Instance>,float)>::call(boost::shared_ptr<RBX::Instance>,float)")
 }
@@ -671,7 +671,7 @@ pub fn stub_f3ab74() -> ! {
 // 0xf3ab54 — rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::on_error(std::exception &)
 // mangled: j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE8on_errorERSt9exception
 // type: int()
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::on_error(std::exception &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::on_error(std::exception &)")]
 pub fn stub_f3ab54() -> ! {
     todo!("0xf3ab54 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::on_error(std::exception &)")
 }
@@ -679,7 +679,7 @@ pub fn stub_f3ab54() -> ! {
 // 0xf3ab44 — rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&)
 // mangled: j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE7connectINS2_8functionIS7_EEEENS0_10connectionERKT_
 // type: int __fastcall(char, boost::mutex *, int, int, int, int)
-#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&)")]
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::connect<boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>>(boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>,float)> const&)")]
 pub fn stub_f3ab44() -> ! {
     todo!("0xf3ab44 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::connect<boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)>>(boost::function<void ()(boost::shared_ptr<RBX::Instance>,float)> const&)")
 }
@@ -687,7 +687,7 @@ pub fn stub_f3ab44() -> ! {
 // 0xf3ab34 — rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)
 // mangled: j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE6removeEPNS8_4slotE
 // type: int __fastcall(int, char *)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::remove(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot *)")]
 pub fn stub_f3ab34() -> ! {
     todo!("0xf3ab34 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::remove(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)")
 }
@@ -695,7 +695,7 @@ pub fn stub_f3ab34() -> ! {
 // 0xf3ab24 — rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)
 // mangled: j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE6insertEPNS8_4slotE
 // type: int __fastcall(int, int, int, int, boost::mutex *, char, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::insert(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot *)")]
 pub fn stub_f3ab24() -> ! {
     todo!("0xf3ab24 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::insert(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot *)")
 }
@@ -703,7 +703,7 @@ pub fn stub_f3ab24() -> ! {
 // 0xf3ab14 — rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::safe_static_do_get_mutex(void)
 // mangled: j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4slot24safe_static_do_get_mutexEv
 // type: int __fastcall(int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::safe_static_do_get_mutex(void)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot::safe_static_do_get_mutex(void)")]
 pub fn stub_f3ab14() -> ! {
     todo!("0xf3ab14 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot::safe_static_do_get_mutex(void)")
 }
@@ -711,7 +711,7 @@ pub fn stub_f3ab14() -> ! {
 // 0xf3ab04 — rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot> &)
 // mangled: j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE4nextERNS2_13intrusive_ptrINS8_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::slot> &)")]
 pub fn stub_f3ab04() -> ! {
     todo!("0xf3ab04 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::slot> &)")
 }
@@ -719,7 +719,7 @@ pub fn stub_f3ab04() -> ! {
 // 0xf3aaf4 — rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::safe_static_do_get_mutex(void)
 // mangled: j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE24safe_static_do_get_mutexEv
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::safe_static_do_get_mutex(void)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::safe_static_do_get_mutex(void)")]
 pub fn stub_f3aaf4() -> ! {
     todo!("0xf3aaf4 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::safe_static_do_get_mutex(void)")
 }
@@ -727,7 +727,7 @@ pub fn stub_f3aaf4() -> ! {
 // 0xf3aae4 — rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::disconnectAll(void)
 // mangled: j___ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEfEE13disconnectAllEv
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::disconnectAll(void)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::disconnectAll(void)")]
 pub fn stub_f3aae4() -> ! {
     todo!("0xf3aae4 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>::disconnectAll(void)")
 }
@@ -735,7 +735,7 @@ pub fn stub_f3aae4() -> ! {
 // 0xf3aad4 — rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,float)>::operator()(boost::shared_ptr<RBX::Instance>,float)
 // mangled: j___ZN3rbx7signals16signal_with_argsILi2EFvN5boost10shared_ptrIN3RBX8InstanceEEEfEEclES6_f
 // type: int()
-#[doc(alias = "rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,float)>::operator()(boost::shared_ptr<RBX::Instance>,float)")]
+#[doc(alias = "rbx::signals::signal_with_args<2,void ()(rbx_core::SharedPtr<RBX::Instance>,float)>::operator()(rbx_core::SharedPtr<RBX::Instance>,float)")]
 pub fn stub_f3aad4() -> ! {
     todo!("0xf3aad4 rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,float)>::operator()(boost::shared_ptr<RBX::Instance>,float)")
 }
@@ -743,7 +743,7 @@ pub fn stub_f3aad4() -> ! {
 // 0xf3aac4 — void RBX::Explosion::doBlast<RBX::MegaClusterInstance>(RBX::MegaClusterInstance *,std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>> const&)
 // mangled: j___ZN3RBX9Explosion7doBlastINS_19MegaClusterInstanceEEEvPT_RKSt6vectorIN5boost10shared_ptrINS_12PartInstanceEEESaIS9_EE
 // type: int __fastcall(RBX::Workspace *this)
-#[doc(alias = "void RBX::Explosion::doBlast<RBX::MegaClusterInstance>(RBX::MegaClusterInstance *,std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>> const&)")]
+#[doc(alias = "void RBX::Explosion::doBlast<RBX::MegaClusterInstance>(RBX::MegaClusterInstance *,std::vector<rbx_core::SharedPtr<RBX::PartInstance>,std::allocator<rbx_core::SharedPtr<RBX::PartInstance>>> const&)")]
 pub fn stub_f3aac4() -> ! {
     todo!("0xf3aac4 void RBX::Explosion::doBlast<RBX::MegaClusterInstance>(RBX::MegaClusterInstance *,std::vector<boost::shared_ptr<RBX::PartInstance>,std::allocator<boost::shared_ptr<RBX::PartInstance>>> const&)")
 }
@@ -751,7 +751,7 @@ pub fn stub_f3aac4() -> ! {
 // 0xf3aab4 — boost::shared_ptr<RBX::TimerService> RBX::Creatable<RBX::Instance>::create<RBX::TimerService>(void)
 // mangled: j___ZN3RBX9CreatableINS_8InstanceEE6createINS_12TimerServiceEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(int, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::TimerService> RBX::Creatable<RBX::Instance>::create<RBX::TimerService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TimerService> RBX::Creatable<RBX::Instance>::create<RBX::TimerService>(void)")]
 pub fn stub_f3aab4() -> ! {
     todo!("0xf3aab4 boost::shared_ptr<RBX::TimerService> RBX::Creatable<RBX::Instance>::create<RBX::TimerService>(void)")
 }
@@ -759,7 +759,7 @@ pub fn stub_f3aab4() -> ! {
 // 0xf3aaa4 — boost::shared_ptr<RBX::ForceField> RBX::Creatable<RBX::Instance>::create<RBX::ForceField>(void)
 // mangled: j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10ForceFieldEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(int, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::ForceField> RBX::Creatable<RBX::Instance>::create<RBX::ForceField>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ForceField> RBX::Creatable<RBX::Instance>::create<RBX::ForceField>(void)")]
 pub fn stub_f3aaa4() -> ! {
     todo!("0xf3aaa4 boost::shared_ptr<RBX::ForceField> RBX::Creatable<RBX::Instance>::create<RBX::ForceField>(void)")
 }
@@ -775,7 +775,7 @@ pub fn stub_f3aa84() -> ! {
 // 0xf3aa14 — RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)
 // mangled: j___ZN3RBX10Reflection9EventDescINS_9ExplosionEFvN5boost10shared_ptrINS_8InstanceEEEfEN3rbx6signalIS7_EEMS2_SA_EC2ESB_PKcSE_SE_NS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Explosion,void ()(rbx_core::SharedPtr<RBX::Instance>,float),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)> RBX::Explosion::*>::EventDesc(rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,float)> RBX::Explosion::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 pub fn stub_f3aa14() -> ! {
     todo!("0xf3aa14 RBX::Reflection::EventDesc<RBX::Explosion,void ()(boost::shared_ptr<RBX::Instance>,float),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*>::EventDesc(rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,float)> RBX::Explosion::*,char const*,char const*,char const*,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }

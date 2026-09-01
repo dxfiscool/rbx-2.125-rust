@@ -625,7 +625,7 @@ pub fn stub_668748() -> ! {
 
 // 0x66939c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7TextBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: unknown
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextBox,RBX::TextBox>(boost::shared_ptr<RBX::TextBox> const*,RBX::TextBox *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextBox,RBX::TextBox>(rbx_core::SharedPtr<RBX::TextBox> const*,RBX::TextBox *)const")]
 pub fn stub_66939c() -> ! {
     todo!("0x66939c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextBox,RBX::TextBox>(boost::shared_ptr<RBX::TextBox> const*,RBX::TextBox *)const")
 }

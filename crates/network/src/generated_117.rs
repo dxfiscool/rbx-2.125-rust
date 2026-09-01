@@ -154,7 +154,7 @@ pub fn stub_9610e0() -> ! {
 // 0x961178 — __ZN3RBX7Network12IdSerializer13addPendingRefEPKNS_10Reflection21RefPropertyDescriptorEN5boost10shared_ptrINS_8InstanceEEENS_4Guid4DataE // was: boost::shared_ptr
 // type: int __fastcall(int, int, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int, int, int, int)
 #[doc(alias = "__ZN3RBX7Network12IdSerializer13addPendingRefEPKNS_10Reflection21RefPropertyDescriptorEN5boost10shared_ptrINS_8InstanceEEENS_4Guid4DataE")]
-#[doc(alias = "RBX::Network::IdSerializer::addPendingRef(RBX::Reflection::RefPropertyDescriptor const*,boost::shared_ptr<RBX::Instance>,RBX::Guid::Data)")]
+#[doc(alias = "RBX::Network::IdSerializer::addPendingRef(RBX::Reflection::RefPropertyDescriptor const*,rbx_core::SharedPtr<RBX::Instance>,RBX::Guid::Data)")]
 pub fn stub_961178() -> ! {
     todo!("0x961178 RBX::Network::IdSerializer::addPendingRef(RBX::Reflection::RefPropertyDescriptor const*,boost::shared_ptr<RBX::Instance>,RBX::Guid::Data)")
 }
@@ -610,7 +610,7 @@ pub fn stub_96c474() -> ! {
 // 0x96c484 — __ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED1Ev // was: boost::shared_ptr
 // type: int()
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_7Network6ClientEFN5boost10shared_ptrINS_8InstanceEEEiSsiiiELi5EED1Ev")]
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::Network::Client,rbx_core::SharedPtr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")]
 pub fn stub_96c484() -> ! {
     todo!("0x96c484 RBX::Reflection::BoundFuncDesc<RBX::Network::Client,boost::shared_ptr<RBX::Instance> ()(int,std::string,int,int,int),5>::~BoundFuncDesc()")
 }
@@ -626,7 +626,7 @@ pub fn stub_96c490() -> ! {
 // 0x96c4f8 — __ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev // was: boost::shared_ptr
 // type: _DWORD *__fastcall(_DWORD *)
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_7Network6ClientEFvSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS8_EEMS3_SB_ED1Ev")]
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(std::string,rbx_core::SharedPtr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")]
 pub fn stub_96c4f8() -> ! {
     todo!("0x96c4f8 RBX::Reflection::EventDesc<RBX::Network::Client,void ()(std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,boost::shared_ptr<RBX::Instance>)> RBX::Network::Client::*>::~EventDesc()")
 }
@@ -674,7 +674,7 @@ pub fn stub_96d260() -> ! {
 // 0x96fd88 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicatorES7_EEvPKNS_10shared_ptrIT_EEPT0_ // was: boost::shared_ptr
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicatorES7_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(boost::shared_ptr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(rbx_core::SharedPtr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const")]
 pub fn stub_96fd88() -> ! {
     todo!("0x96fd88 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator,RBX::Network::ClientReplicator>(boost::shared_ptr<RBX::Network::ClientReplicator> const*,RBX::Network::ClientReplicator *)const")
 }
@@ -754,7 +754,7 @@ pub fn stub_970484() -> ! {
 // 0x9709b0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network6ClientES7_EEvPKNS_10shared_ptrIT_EEPT0_ // was: boost::shared_ptr
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network6ClientES7_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(boost::shared_ptr<RBX::Network::Client> const*,RBX::Network::Client *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(rbx_core::SharedPtr<RBX::Network::Client> const*,RBX::Network::Client *)const")]
 pub fn stub_9709b0() -> ! {
     todo!("0x9709b0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::Client,RBX::Network::Client>(boost::shared_ptr<RBX::Network::Client> const*,RBX::Network::Client *)const")
 }

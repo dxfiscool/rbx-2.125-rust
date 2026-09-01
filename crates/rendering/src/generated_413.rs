@@ -94,7 +94,7 @@ pub fn stub_628364() -> ! {
 // 0x628660 — __ZN3RBX18SkateboardPlatform26delayedReparentToWorkspaceEN5boost8weak_ptrINS_13ModelInstanceEEES4_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN3RBX18SkateboardPlatform26delayedReparentToWorkspaceEN5boost8weak_ptrINS_13ModelInstanceEEES4_")]
-#[doc(alias = "RBX::SkateboardPlatform::delayedReparentToWorkspace(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>)")]
+#[doc(alias = "RBX::SkateboardPlatform::delayedReparentToWorkspace(rbx_core::WeakPtr<RBX::ModelInstance>,rbx_core::WeakPtr<RBX::ModelInstance>)")]
 // was: __ZN3RBX18SkateboardPlatform26delayedReparentToWorkspaceEN5boost8weak_ptrINS_13ModelInstanceEEES4_
 pub fn stub_628660() -> ! {
     todo!("0x628660 RBX::SkateboardPlatform::delayedReparentToWorkspace(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>)")
@@ -409,7 +409,7 @@ pub fn stub_629b2c() -> ! {
 // 0x629bdc — __ZN5boost4bindIvNS_8weak_ptrIN3RBX13ModelInstanceEEES4_S4_S4_EENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_
 // type: int __fastcall(int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
 #[doc(alias = "__ZN5boost4bindIvNS_8weak_ptrIN3RBX13ModelInstanceEEES4_S4_S4_EENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_")]
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>),boost::_bi::list_av_2<boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>>::type> boost::bind<void,boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>>(void (*)(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>),boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ModelInstance>,rbx_core::WeakPtr<RBX::ModelInstance>),boost::_bi::list_av_2<rbx_core::WeakPtr<RBX::ModelInstance>,rbx_core::WeakPtr<RBX::ModelInstance>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::ModelInstance>,rbx_core::WeakPtr<RBX::ModelInstance>,rbx_core::WeakPtr<RBX::ModelInstance>,rbx_core::WeakPtr<RBX::ModelInstance>>(void (*)(rbx_core::WeakPtr<RBX::ModelInstance>,rbx_core::WeakPtr<RBX::ModelInstance>),rbx_core::WeakPtr<RBX::ModelInstance>,rbx_core::WeakPtr<RBX::ModelInstance>)")]
 // was: __ZN5boost4bindIvNS_8weak_ptrIN3RBX13ModelInstanceEEES4_S4_S4_EENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_
 pub fn stub_629bdc() -> ! {
     todo!("0x629bdc boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>),boost::_bi::list_av_2<boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>>::type> boost::bind<void,boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>>(void (*)(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>),boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>)")
@@ -418,7 +418,7 @@ pub fn stub_629bdc() -> ! {
 // 0x629eec — __ZN3RBX9weak_fromINS_13ModelInstanceEEEN5boost8weak_ptrIT_EEPS4_
 // type: int(void)
 #[doc(alias = "__ZN3RBX9weak_fromINS_13ModelInstanceEEEN5boost8weak_ptrIT_EEPS4_")]
-#[doc(alias = "boost::weak_ptr<RBX::ModelInstance> RBX::weak_from<RBX::ModelInstance>(RBX::ModelInstance*)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::ModelInstance> RBX::weak_from<RBX::ModelInstance>(RBX::ModelInstance*)")]
 // was: __ZN3RBX9weak_fromINS_13ModelInstanceEEEN5boost8weak_ptrIT_EEPS4_
 pub fn stub_629eec() -> ! {
     todo!("0x629eec boost::weak_ptr<RBX::ModelInstance> RBX::weak_from<RBX::ModelInstance>(RBX::ModelInstance*)")

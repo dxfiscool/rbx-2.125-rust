@@ -383,14 +383,14 @@ pub fn stub_f49b14() -> ! {
 
 // 0xf49b04 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEEaSERKSA_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> const&)")]
 pub fn stub_f49b04() -> ! {
     todo!("0xf49b04 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> const&)")
 }
 
 // 0xf49af4 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEEaSEPS9_
 // type: int()
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Controller::Button)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Controller::Button)>::slot*)")]
 pub fn stub_f49af4() -> ! {
     todo!("0xf49af4 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Controller::Button)>::slot*)")
 }
@@ -474,7 +474,7 @@ pub fn stub_f499f4() -> ! {
 
 // 0xf499e4 — j___ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Controller::Button)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Controller::Button)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> &)")]
 pub fn stub_f499e4() -> ! {
     todo!("0xf499e4 rbx::signals::signal<void ()(RBX::Controller::Button)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> &)")
 }

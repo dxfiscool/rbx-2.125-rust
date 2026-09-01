@@ -251,7 +251,7 @@ pub fn stub_0x2a72e4() -> ! {
 
 // 0x2a7324 — __ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRef4NodeEEaSEPS4_
 // type: int __fastcall(int, int32_t *__theValue)
-#[doc(alias = "boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>::operator=(RBX::Lua::WeakThreadRef::Node*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>::operator=(RBX::Lua::WeakThreadRef::Node*)")]
 pub fn stub_0x2a7324() -> ! {
     todo!("0x2a7324 __ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRef4NodeEEaSEPS4_")
 }

@@ -628,7 +628,7 @@ pub fn stub_543c3c() -> ! {
 
 // 0x543c90 — __ZN3RBXL14InvokeCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefEb
 #[doc(alias = "__ZN3RBXL14InvokeCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefEb")]
-#[doc(alias = "RBX::InvokeCallback(boost::weak_ptr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool)")]
+#[doc(alias = "RBX::InvokeCallback(rbx_core::WeakPtr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool)")]
 // was: __ZN3RBXL14InvokeCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefEb
 pub fn stub_543c90() -> ! {
     todo!("0x543c90 __ZN3RBXL14InvokeCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefEb")
@@ -660,7 +660,7 @@ pub fn stub_5442e4() -> ! {
 
 // 0x5446a8 — __ZN3RBXL26InvokeNotificationCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefE
 #[doc(alias = "__ZN3RBXL26InvokeNotificationCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefE")]
-#[doc(alias = "RBX::InvokeNotificationCallback(boost::weak_ptr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef)")]
+#[doc(alias = "RBX::InvokeNotificationCallback(rbx_core::WeakPtr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef)")]
 // was: __ZN3RBXL26InvokeNotificationCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefE
 pub fn stub_5446a8() -> ! {
     todo!("0x5446a8 __ZN3RBXL26InvokeNotificationCallbackEN5boost8weak_ptrINS_9GuiObjectEEENS_3Lua15WeakFunctionRefE")
@@ -740,7 +740,7 @@ pub fn stub_545758() -> ! {
 
 // 0x5458b0 — __ZN3RBX9weak_fromINS_9GuiObjectEEEN5boost8weak_ptrIT_EEPS4_
 #[doc(alias = "__ZN3RBX9weak_fromINS_9GuiObjectEEEN5boost8weak_ptrIT_EEPS4_")]
-#[doc(alias = "boost::weak_ptr<RBX::GuiObject> RBX::weak_from<RBX::GuiObject>(RBX::GuiObject*)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::GuiObject> RBX::weak_from<RBX::GuiObject>(RBX::GuiObject*)")]
 // was: __ZN3RBX9weak_fromINS_9GuiObjectEEEN5boost8weak_ptrIT_EEPS4_
 pub fn stub_5458b0() -> ! {
     todo!("0x5458b0 __ZN3RBX9weak_fromINS_9GuiObjectEEEN5boost8weak_ptrIT_EEPS4_")
@@ -755,7 +755,7 @@ pub fn stub_545ab8() -> ! {
 
 // 0x545c48 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX9GuiObjectEEENS2_3Lua15WeakFunctionRefEbS4_S6_bEENS_3_bi6bind_tIT_PFS9_T0_T1_T2_ENS7_9list_av_3IT3_T4_T5_E4typeEEESE_SG_SH_SI_
 #[doc(alias = "__ZN5boost4bindIvNS_8weak_ptrIN3RBX9GuiObjectEEENS2_3Lua15WeakFunctionRefEbS4_S6_bEENS_3_bi6bind_tIT_PFS9_T0_T1_T2_ENS7_9list_av_3IT3_T4_T5_E4typeEEESE_SG_SH_SI_")]
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool),boost::_bi::list_av_3<boost::weak_ptr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool>::type> boost::bind<void,boost::weak_ptr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool,boost::weak_ptr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool>(void (*)(boost::weak_ptr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool),boost::weak_ptr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool),boost::_bi::list_av_3<rbx_core::WeakPtr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool>::type> boost::bind<void,rbx_core::WeakPtr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool,rbx_core::WeakPtr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool>(void (*)(rbx_core::WeakPtr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool),rbx_core::WeakPtr<RBX::GuiObject>,RBX::Lua::WeakFunctionRef,bool)")]
 // was: __ZN5boost4bindIvNS_8weak_ptrIN3RBX9GuiObjectEEENS2_3Lua15WeakFunctionRefEbS4_S6_bEENS_3_bi6bind_tIT_PFS9_T0_T1_T2_ENS7_9list_av_3IT3_T4_T5_E4typeEEESE_SG_SH_SI_
 pub fn stub_545c48() -> ! {
     todo!("0x545c48 __ZN5boost4bindIvNS_8weak_ptrIN3RBX9GuiObjectEEENS2_3Lua15WeakFunctionRefEbS4_S6_bEENS_3_bi6bind_tIT_PFS9_T0_T1_T2_ENS7_9list_av_3IT3_T4_T5_E4typeEEESE_SG_SH_SI_")
@@ -763,7 +763,7 @@ pub fn stub_545c48() -> ! {
 
 // 0x545e28 — __ZNSt3mapIN5boost8weak_ptrIN3RBX9GuiObjectEEEPNS2_10GuiService13DialogWrapperESt4lessIS4_ESaISt4pairIKS4_S7_EEEixERSB_
 #[doc(alias = "__ZNSt3mapIN5boost8weak_ptrIN3RBX9GuiObjectEEEPNS2_10GuiService13DialogWrapperESt4lessIS4_ESaISt4pairIKS4_S7_EEEixERSB_")]
-#[doc(alias = "std::map<boost::weak_ptr<RBX::GuiObject>,RBX::GuiService::DialogWrapper *,std::less<boost::weak_ptr<RBX::GuiObject>>,std::allocator<std::pair<boost::weak_ptr<RBX::GuiObject> const,RBX::GuiService::DialogWrapper *>>>::operator[](boost::weak_ptr<RBX::GuiObject> const&)")]
+#[doc(alias = "std::map<rbx_core::WeakPtr<RBX::GuiObject>,RBX::GuiService::DialogWrapper *,std::less<rbx_core::WeakPtr<RBX::GuiObject>>,std::allocator<std::pair<rbx_core::WeakPtr<RBX::GuiObject> const,RBX::GuiService::DialogWrapper *>>>::operator[](rbx_core::WeakPtr<RBX::GuiObject> const&)")]
 // was: __ZNSt3mapIN5boost8weak_ptrIN3RBX9GuiObjectEEEPNS2_10GuiService13DialogWrapperESt4lessIS4_ESaISt4pairIKS4_S7_EEEixERSB_
 pub fn stub_545e28() -> ! {
     todo!("0x545e28 __ZNSt3mapIN5boost8weak_ptrIN3RBX9GuiObjectEEEPNS2_10GuiService13DialogWrapperESt4lessIS4_ESaISt4pairIKS4_S7_EEEixERSB_")

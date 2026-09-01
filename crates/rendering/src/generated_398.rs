@@ -150,7 +150,7 @@ pub fn stub_5eb0bc() -> ! {
 // 0x5eb1d0 — __ZN5boost10shared_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: int __fastcall(_DWORD, _DWORD)
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-#[doc(alias = "rbx_core::SharedPtr<RBX::PartInstance>::shared_ptr<RBX::PartInstance>(boost::weak_ptr<RBX::PartInstance> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PartInstance>::shared_ptr<RBX::PartInstance>(rbx_core::WeakPtr<RBX::PartInstance> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX12PartInstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_5eb1d0() -> ! {
     todo!("0x5eb1d0 boost::shared_ptr<RBX::PartInstance>::shared_ptr<RBX::PartInstance>(boost::weak_ptr<RBX::PartInstance> const&,boost::detail::sp_nothrow_tag)")

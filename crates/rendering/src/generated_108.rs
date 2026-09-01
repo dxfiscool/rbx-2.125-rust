@@ -701,7 +701,7 @@ pub fn stub_f593a4() -> ! {
 }
 
 // 0xf593b4 — j___ZN3rbx7signals6signalIFvN3G3D7Vector2EEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
-#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector2)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(G3D::Vector2)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(G3D::Vector2)>::slot> &)")]
 // was: rbx::signals::signal<void ()(G3D::Vector2)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot> &)
 pub fn stub_f593b4() -> ! {
     todo!("0xf593b4 rbx::signals::signal<void ()(G3D::Vector2)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(G3D::Vector2)>::slot> &)")

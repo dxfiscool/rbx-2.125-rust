@@ -349,7 +349,7 @@ pub fn stub_f373f4() -> ! {
 // 0xf373e4 — boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot> const&)
 // mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKSsEE4slotEEaSERKS9_
 // type: int *__fastcall(int *, _DWORD *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string const&)>::slot> const&)")]
 pub fn stub_f373e4() -> ! {
     todo!("0xf373e4 boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot> const&)")
 }
@@ -357,7 +357,7 @@ pub fn stub_f373e4() -> ! {
 // 0xf373d4 — boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> const&)
 // mangled: j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4slotEEaSERKSB_
 // type: int *__fastcall(int *, _DWORD *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> const&)")]
 pub fn stub_f373d4() -> ! {
     todo!("0xf373d4 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> const&)")
 }
@@ -483,7 +483,7 @@ pub fn stub_f36d54() -> ! {
 // 0xf36d44 — rbx::signals::signal<void ()(std::string const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot> &)
 // mangled: j___ZN3rbx7signals6signalIFvRKSsEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(std::string const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(std::string const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string const&)>::slot> &)")]
 pub fn stub_f36d44() -> ! {
     todo!("0xf36d44 rbx::signals::signal<void ()(std::string const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string const&)>::slot> &)")
 }
@@ -515,7 +515,7 @@ pub fn stub_f36d14() -> ! {
 // 0xf36d04 — rbx::signals::signal<void ()(RBX::UIEvent const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> &)
 // mangled: j___ZN3rbx7signals6signalIFvRKN3RBX7UIEventEEE4nextERN5boost13intrusive_ptrINS7_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::UIEvent const&)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> &)")]
 pub fn stub_f36d04() -> ! {
     todo!("0xf36d04 rbx::signals::signal<void ()(RBX::UIEvent const&)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::UIEvent const&)>::slot> &)")
 }

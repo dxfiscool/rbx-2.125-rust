@@ -50,56 +50,56 @@ pub fn stub_f5d104() -> ! {
 }
 
 // 0xf5d134 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSEPSC_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")]
 #[doc(alias = "j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSEPSC_")]
 pub fn stub_f5d134() -> ! {
     todo!("0xf5d134 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot*)")
 }
 
 // 0xf5d144 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSERKSD_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
 #[doc(alias = "j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSERKSD_")]
 pub fn stub_f5d144() -> ! {
     todo!("0xf5d144 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot> const&)")
 }
 
 // 0xf5d154 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotEEaSEPSE_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")]
 #[doc(alias = "j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotEEaSEPSE_")]
 pub fn stub_f5d154() -> ! {
     todo!("0xf5d154 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot*)")
 }
 
 // 0xf5d164 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotEEaSERKSF_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
 #[doc(alias = "j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotEEaSERKSF_")]
 pub fn stub_f5d164() -> ! {
     todo!("0xf5d164 boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot> const&)")
 }
 
 // 0xf5d174 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSEPSC_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")]
 #[doc(alias = "j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSEPSC_")]
 pub fn stub_f5d174() -> ! {
     todo!("0xf5d174 boost::intrusive_ptr<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot*)")
 }
 
 // 0xf5d184 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSERKSD_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
 #[doc(alias = "j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSERKSD_")]
 pub fn stub_f5d184() -> ! {
     todo!("0xf5d184 boost::intrusive_ptr<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot> const&)")
 }
 
 // 0xf5d194 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviNS_10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotEEaSEPSE_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot*)")]
 #[doc(alias = "j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviNS_10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotEEaSEPSE_")]
 pub fn stub_f5d194() -> ! {
     todo!("0xf5d194 boost::intrusive_ptr<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot*)")
 }
 
 // 0xf5d1a4 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviNS_10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotEEaSERKSF_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(int,rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
 #[doc(alias = "j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFviNS_10shared_ptrIN3RBX8InstanceEEENS4_IKNS5_10Reflection5TupleEEEEE4slotEEaSERKSF_")]
 pub fn stub_f5d1a4() -> ! {
     todo!("0xf5d1a4 boost::intrusive_ptr<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(int,boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Reflection::Tuple const>)>::slot> const&)")

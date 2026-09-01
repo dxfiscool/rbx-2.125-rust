@@ -59,7 +59,7 @@ pub fn stub_385024() -> ! {
 
 // 0x385230 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slotEEaSEPSA_
 // type: int *__fastcall(int *, int)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Stepped const&)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Stepped const&)>::slot*)")]
 // was: __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slotEEaSEPSA_
 pub fn stub_385230() -> ! {
     todo!("0x385230 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Stepped const&)>::slot>::operator=(rbx::signals::signal<void ()(RBX::Stepped const&)>::slot*)")

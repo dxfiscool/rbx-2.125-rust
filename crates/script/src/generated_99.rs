@@ -658,7 +658,7 @@ pub fn stub_f2a124() -> ! {
 }
 
 // 0xf2a164 — j___ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE13registerClassEP9lua_StatePFiS9_ESB_
-#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>,true>::registerClass(lua_State *,int (*)(lua_State *),int (*)(lua_State *))")]
 pub fn stub_f2a164() -> ! {
     todo!("0xf2a164 j___ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE13registerClassEP9lua_StatePFiS9_ESB_")
 }

@@ -74,7 +74,7 @@ pub fn stub_4bfcc() -> ! {
 
 // 0x4c008 — __ZN5boost9function1IvNS_10shared_ptrIN3RBX7TextBoxEEEE5clearEv
 // type: int __fastcall(int *)
-#[doc(alias = "boost::function1<void,boost::shared_ptr<RBX::TextBox>>::clear(void)")]
+#[doc(alias = "boost::function1<void,rbx_core::SharedPtr<RBX::TextBox>>::clear(void)")]
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIN3RBX7TextBoxEEEE5clearEv")]
 pub fn stub_4c008() -> ! {
     todo!("0x4c008 boost::function1<void,boost::shared_ptr<RBX::TextBox>>::clear(void)")
@@ -299,7 +299,7 @@ pub fn stub_4d220() -> ! {
 
 // 0x4d238 — __ZN5boost10shared_ptrIN3RBX7TextBoxEEaSEOS3_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(_DWORD *, __int64 *)
-#[doc(alias = "boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox>&&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextBox>::operator=(rbx_core::SharedPtr<RBX::TextBox>&&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX7TextBoxEEaSEOS3_")]
 pub fn stub_4d238() -> ! {
     todo!("0x4d238 boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox>&&)")
@@ -307,7 +307,7 @@ pub fn stub_4d238() -> ! {
 
 // 0x4d2dc — __ZN5boost10shared_ptrIN3RBX7TextBoxEEaSERKS3_
 // type: void __fastcall __spoils<R1,R2,R3,R12,LR>(int, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextBox>::operator=(rbx_core::SharedPtr<RBX::TextBox> const&)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX7TextBoxEEaSERKS3_")]
 pub fn stub_4d2dc() -> ! {
     todo!("0x4d2dc boost::shared_ptr<RBX::TextBox>::operator=(boost::shared_ptr<RBX::TextBox> const&)")
@@ -673,7 +673,7 @@ pub fn stub_4edf0() -> ! {
 
 // 0x4ee0c — __ZN3rbx7signals6signalIFvSsEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(std::string)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(std::string)>::slot> &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvSsEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")]
 pub fn stub_4ee0c() -> ! {
     todo!("0x4ee0c rbx::signals::signal<void ()(std::string)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(std::string)>::slot> &)")

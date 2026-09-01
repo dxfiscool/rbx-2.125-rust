@@ -408,7 +408,7 @@ pub fn stub_628364() -> ! {
 // mangled: __ZN3RBX18SkateboardPlatform26delayedReparentToWorkspaceEN5boost8weak_ptrINS_13ModelInstanceEEES4_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 // was: RBX::SkateboardPlatform::delayedReparentToWorkspace(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>) (boost::shared_ptr -> rbx_core::SharedPtr)
-#[doc(alias = "RBX::SkateboardPlatform::delayedReparentToWorkspace(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>)")]
+#[doc(alias = "RBX::SkateboardPlatform::delayedReparentToWorkspace(rbx_core::WeakPtr<RBX::ModelInstance>,rbx_core::WeakPtr<RBX::ModelInstance>)")]
 pub fn stub_628660() -> ! {
     todo!("0x628660 RBX::SkateboardPlatform::delayedReparentToWorkspace(boost::weak_ptr<RBX::ModelInstance>,boost::weak_ptr<RBX::ModelInstance>)")
 }

@@ -637,7 +637,7 @@ pub fn stub_3b3f08() -> ! {
 
 // 0x3b42f4 — __ZN3RBX12BadgeService20hasBadgeResultHelperEN5boost8weak_ptrIS0_EEiiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
 // type: void __fastcall(int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, char, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::BadgeService::hasBadgeResultHelper(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "RBX::BadgeService::hasBadgeResultHelper(rbx_core::WeakPtr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
 // was: __ZN3RBX12BadgeService20hasBadgeResultHelperEN5boost8weak_ptrIS0_EEiiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
 pub fn stub_3b42f4() -> ! {
     todo!("0x3b42f4 RBX::BadgeService::hasBadgeResultHelper(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
@@ -661,7 +661,7 @@ pub fn stub_3b45f4() -> ! {
 
 // 0x3b4720 — __ZN3RBX12BadgeService21isDiabledResultHelperEN5boost8weak_ptrIS0_EEiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
 // type: void __fastcall(int, pthread_mutex_t *, int, int, int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::BadgeService::isDiabledResultHelper(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "RBX::BadgeService::isDiabledResultHelper(rbx_core::WeakPtr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
 // was: __ZN3RBX12BadgeService21isDiabledResultHelperEN5boost8weak_ptrIS0_EEiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
 pub fn stub_3b4720() -> ! {
     todo!("0x3b4720 RBX::BadgeService::isDiabledResultHelper(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
@@ -677,7 +677,7 @@ pub fn stub_3b484c() -> ! {
 
 // 0x3b4a20 — __ZN3RBX12BadgeService19isLegalResultHelperEN5boost8weak_ptrIS0_EEiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
 // type: void __fastcall(int, pthread_mutex_t *, int, int, int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::BadgeService::isLegalResultHelper(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "RBX::BadgeService::isLegalResultHelper(rbx_core::WeakPtr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
 // was: __ZN3RBX12BadgeService19isLegalResultHelperEN5boost8weak_ptrIS0_EEiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
 pub fn stub_3b4a20() -> ! {
     todo!("0x3b4a20 RBX::BadgeService::isLegalResultHelper(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
@@ -693,7 +693,7 @@ pub fn stub_3b4b4c() -> ! {
 
 // 0x3b4d20 — __ZN3RBX12BadgeService22awardBadgeResultHelperEN5boost8weak_ptrIS0_EEiiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
 // type: void __fastcall(int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, char, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::BadgeService::awardBadgeResultHelper(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "RBX::BadgeService::awardBadgeResultHelper(rbx_core::WeakPtr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
 // was: __ZN3RBX12BadgeService22awardBadgeResultHelperEN5boost8weak_ptrIS0_EEiiPSsPSt9exceptionNS1_8functionIFvbEEENS7_IFvSsEEE
 pub fn stub_3b4d20() -> ! {
     todo!("0x3b4d20 RBX::BadgeService::awardBadgeResultHelper(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
@@ -773,7 +773,7 @@ pub fn stub_3b5460() -> ! {
 
 // 0x3b5484 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENS8_IFvSsEEES4_iiNS_3argILi1EEENSD_ILi2EEESA_SC_EENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_T4_T5_T6_ENSG_9list_av_7IT7_T8_T9_T10_T11_T12_T13_E4typeEEESR_ST_SU_SV_SW_SX_SY_SZ_
 // type: void __fastcall(char, int, int, int, int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, char, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list_av_7<boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list_av_7<rbx_core::WeakPtr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>,rbx_core::WeakPtr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>(void (*)(rbx_core::WeakPtr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),rbx_core::WeakPtr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
 // was: __ZN5boost4bindIvNS_8weak_ptrIN3RBX12BadgeServiceEEEiiPSsPSt9exceptionNS_8functionIFvbEEENS8_IFvSsEEES4_iiNS_3argILi1EEENSD_ILi2EEESA_SC_EENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_T4_T5_T6_ENSG_9list_av_7IT7_T8_T9_T10_T11_T12_T13_E4typeEEESR_ST_SU_SV_SW_SX_SY_SZ_
 pub fn stub_3b5484() -> ! {
     todo!("0x3b5484 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list_av_7<boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::BadgeService>,int,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::BadgeService>,int,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")
@@ -781,7 +781,7 @@ pub fn stub_3b5484() -> ! {
 
 // 0x3b5728 — __ZN3RBX9weak_fromINS_12BadgeServiceEEEN5boost8weak_ptrIT_EEPS4_
 // type: void __fastcall(int, int)
-#[doc(alias = "boost::weak_ptr<RBX::BadgeService> RBX::weak_from<RBX::BadgeService>(RBX::BadgeService*)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::BadgeService> RBX::weak_from<RBX::BadgeService>(RBX::BadgeService*)")]
 // was: __ZN3RBX9weak_fromINS_12BadgeServiceEEEN5boost8weak_ptrIT_EEPS4_
 pub fn stub_3b5728() -> ! {
     todo!("0x3b5728 boost::weak_ptr<RBX::BadgeService> RBX::weak_from<RBX::BadgeService>(RBX::BadgeService*)")
@@ -797,7 +797,7 @@ pub fn stub_3b5920() -> ! {
 
 // 0x3b5978 — __ZN5boost4bindIvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENS8_IFvSsEEES4_iNS_3argILi1EEENSD_ILi2EEESA_SC_EENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_T4_T5_ENSG_9list_av_6IT6_T7_T8_T9_T10_T11_E4typeEEESQ_SS_ST_SU_SV_SW_SX_
 // type: void __fastcall(int, char, int *, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, char, int, int, int, int, boost::detail::sp_counted_base *, char, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list_av_6<boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list_av_6<rbx_core::WeakPtr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>::type> boost::bind<void,rbx_core::WeakPtr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>,rbx_core::WeakPtr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>(void (*)(rbx_core::WeakPtr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),rbx_core::WeakPtr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")]
 // was: __ZN5boost4bindIvNS_8weak_ptrIN3RBX12BadgeServiceEEEiPSsPSt9exceptionNS_8functionIFvbEEENS8_IFvSsEEES4_iNS_3argILi1EEENSD_ILi2EEESA_SC_EENS_3_bi6bind_tIT_PFSI_T0_T1_T2_T3_T4_T5_ENSG_9list_av_6IT6_T7_T8_T9_T10_T11_E4typeEEESQ_SS_ST_SU_SV_SW_SX_
 pub fn stub_3b5978() -> ! {
     todo!("0x3b5978 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::_bi::list_av_6<boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>::type> boost::bind<void,boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>,boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>>(void (*)(boost::weak_ptr<RBX::BadgeService>,int,std::string *,std::exception *,boost::function<void ()(bool)>,boost::function<void ()(std::string)>),boost::weak_ptr<RBX::BadgeService>,int,boost::arg<1>,boost::arg<2>,boost::function<void ()(bool)>,boost::function<void ()(std::string)>)")

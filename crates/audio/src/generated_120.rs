@@ -235,119 +235,119 @@ pub fn stub_f2e034() -> ! {
 
 // 0xf2e044 — j___ZN3RBX9weak_fromINS_13ContentFilterEEEN5boost8weak_ptrIT_EEPS4_
 // type: int()
-#[doc(alias = "boost::weak_ptr<RBX::ContentFilter> RBX::weak_from<RBX::ContentFilter>(RBX::ContentFilter*)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::ContentFilter> RBX::weak_from<RBX::ContentFilter>(RBX::ContentFilter*)")]
 pub fn stub_f2e044() -> ! {
     todo!("0xf2e044 boost::weak_ptr<RBX::ContentFilter> RBX::weak_from<RBX::ContentFilter>(RBX::ContentFilter*)")
 }
 
 // 0xf2e054 — j___ZN5boost10shared_ptrIN3RBX13ContentFilterEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: int()
-#[doc(alias = "boost::shared_ptr<RBX::ContentFilter>::shared_ptr<RBX::ContentFilter>(boost::weak_ptr<RBX::ContentFilter> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ContentFilter>::shared_ptr<RBX::ContentFilter>(rbx_core::WeakPtr<RBX::ContentFilter> const&,boost::detail::sp_nothrow_tag)")]
 pub fn stub_f2e054() -> ! {
     todo!("0xf2e054 boost::shared_ptr<RBX::ContentFilter>::shared_ptr<RBX::ContentFilter>(boost::weak_ptr<RBX::ContentFilter> const&,boost::detail::sp_nothrow_tag)")
 }
 
 // 0xf2e064 — j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEEEC2ES7_S8_
 // type: int __fastcall(rbx_core::detail::sp_counted_base *)
-#[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
+#[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
 pub fn stub_f2e064() -> ! {
     todo!("0xf2e064 boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::list2(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")
 }
 
 // 0xf2e074 — j___ZN5boost3_bi5list2INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEEEclIPFvS6_SsENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i
 // type: int()
-#[doc(alias = "void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::operator()<void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
 pub fn stub_f2e074() -> ! {
     todo!("0xf2e074 void boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::operator()<void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string) &,boost::_bi::list1<RBX::DataModel *&> &,int)")
 }
 
 // 0xf2e084 — j___ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEENS2_IbEEEC2ES7_S8_S9_
 // type: int()
-#[doc(alias = "boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::list3(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")]
+#[doc(alias = "boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::list3(boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")]
 pub fn stub_f2e084() -> ! {
     todo!("0xf2e084 boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::list3(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")
 }
 
 // 0xf2e094 — j___ZN5boost3_bi5list3INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEENS2_IbEEEclIPFvS6_SsbENS0_5list1IRPNS4_9DataModelEEEEEvNS0_4typeIvEERT_RT0_i
 // type: int()
-#[doc(alias = "void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::operator()<void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::operator()<void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool) &,boost::_bi::list1<RBX::DataModel *&> &,int)")]
 pub fn stub_f2e094() -> ! {
     todo!("0xf2e094 void boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::operator()<void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list1<RBX::DataModel *&>>(boost::_bi::type<void>,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool) &,boost::_bi::list1<RBX::DataModel *&> &,int)")
 }
 
 // 0xf2e0a4 — j___ZN5boost3_bi5list4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS5_ISsEEEC2ES3_S4_SA_SB_
 // type: int __fastcall(rbx_core::detail::sp_counted_base *)
-#[doc(alias = "boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::list4(boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
+#[doc(alias = "boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::list4(boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
 pub fn stub_f2e0a4() -> ! {
     todo!("0xf2e0a4 boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::list4(boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")
 }
 
 // 0xf2e0b4 — j___ZN5boost3_bi5list4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS5_ISsEEEclIPFvPSsPSt9exceptionS9_SsENS0_5list2IRSE_RSG_EEEEvNS0_4typeIvEERT_RT0_i
 // type: int()
-#[doc(alias = "void boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::operator()<void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)")]
+#[doc(alias = "void boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::operator()<void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)")]
 pub fn stub_f2e0b4() -> ! {
     todo!("0xf2e0b4 void boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::operator()<void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<std::string *&,std::exception *&>>(boost::_bi::type<void>,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string) &,boost::_bi::list2<std::string *&,std::exception *&> &,int)")
 }
 
 // 0xf2e0c4 — j___ZN5boost3_bi8storage2INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEEEC2ES7_S8_
 // type: int *__fastcall(int *, int *, const std::string *, int, int, rbx_core::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
 pub fn stub_f2e0c4() -> ! {
     todo!("0xf2e0c4 boost::_bi::storage2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::storage2(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")
 }
 
 // 0xf2e0d4 — j___ZN5boost3_bi8storage3INS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS2_ISsEENS2_IbEEEC2ES7_S8_S9_
 // type: int __fastcall(rbx_core::detail::sp_counted_base *, int, int, int)
-#[doc(alias = "boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")]
+#[doc(alias = "boost::_bi::storage3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::storage3(boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")]
 pub fn stub_f2e0d4() -> ! {
     todo!("0xf2e0d4 boost::_bi::storage3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>::storage3(boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>)")
 }
 
 // 0xf2e0e4 — j___ZN5boost3_bi8storage4INS_3argILi1EEENS2_ILi2EEENS0_5valueINS_8weak_ptrIN3RBX13ContentFilterEEEEENS5_ISsEEEC2ES3_S4_SA_SB_
 // type: int __fastcall(int, int, int, int, int, rbx_core::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::storage4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::storage4(boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
+#[doc(alias = "boost::_bi::storage4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::storage4(boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")]
 pub fn stub_f2e0e4() -> ! {
     todo!("0xf2e0e4 boost::_bi::storage4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>::storage4(boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>)")
 }
 
 // 0xf2e0f4 — j___ZN5boost4bindIvNS_8weak_ptrIN3RBX13ContentFilterEEESsS4_SsEENS_3_bi6bind_tIT_PFS7_T0_T1_ENS5_9list_av_2IT2_T3_E4typeEEESB_SD_SE_
 // type: int()
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list_av_2<boost::weak_ptr<RBX::ContentFilter>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::ContentFilter>,std::string,boost::weak_ptr<RBX::ContentFilter>,std::string>(void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::weak_ptr<RBX::ContentFilter>,std::string)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list_av_2<rbx_core::WeakPtr<RBX::ContentFilter>,std::string>::type> boost::bind<void,rbx_core::WeakPtr<RBX::ContentFilter>,std::string,rbx_core::WeakPtr<RBX::ContentFilter>,std::string>(void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),rbx_core::WeakPtr<RBX::ContentFilter>,std::string)")]
 pub fn stub_f2e0f4() -> ! {
     todo!("0xf2e0f4 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list_av_2<boost::weak_ptr<RBX::ContentFilter>,std::string>::type> boost::bind<void,boost::weak_ptr<RBX::ContentFilter>,std::string,boost::weak_ptr<RBX::ContentFilter>,std::string>(void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::weak_ptr<RBX::ContentFilter>,std::string)")
 }
 
 // 0xf2e104 — j___ZN5boost4bindIvNS_8weak_ptrIN3RBX13ContentFilterEEESsbS4_SsbEENS_3_bi6bind_tIT_PFS7_T0_T1_T2_ENS5_9list_av_3IT3_T4_T5_E4typeEEESC_SE_SF_SG_
 // type: int __fastcall(int, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list_av_3<boost::weak_ptr<RBX::ContentFilter>,std::string,bool>::type> boost::bind<void,boost::weak_ptr<RBX::ContentFilter>,std::string,bool,boost::weak_ptr<RBX::ContentFilter>,std::string,bool>(void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::weak_ptr<RBX::ContentFilter>,std::string,bool)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list_av_3<rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool>::type> boost::bind<void,rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool,rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool>(void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool)")]
 pub fn stub_f2e104() -> ! {
     todo!("0xf2e104 boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list_av_3<boost::weak_ptr<RBX::ContentFilter>,std::string,bool>::type> boost::bind<void,boost::weak_ptr<RBX::ContentFilter>,std::string,bool,boost::weak_ptr<RBX::ContentFilter>,std::string,bool>(void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::weak_ptr<RBX::ContentFilter>,std::string,bool)")
 }
 
 // 0xf2e114 — j___ZN5boost4bindIvPSsPSt9exceptionNS_8weak_ptrIN3RBX13ContentFilterEEESsNS_3argILi1EEENS8_ILi2EEES7_SsEENS_3_bi6bind_tIT_PFSD_T0_T1_T2_T3_ENSB_9list_av_4IT4_T5_T6_T7_E4typeEEESJ_SL_SM_SN_SO_
 // type: int()
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list_av_4<boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::ContentFilter>,std::string>::type> boost::bind<void,std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string,boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::ContentFilter>,std::string>(void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::ContentFilter>,std::string)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list_av_4<boost::arg<1>,boost::arg<2>,rbx_core::WeakPtr<RBX::ContentFilter>,std::string>::type> boost::bind<void,std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string,boost::arg<1>,boost::arg<2>,rbx_core::WeakPtr<RBX::ContentFilter>,std::string>(void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::arg<1>,boost::arg<2>,rbx_core::WeakPtr<RBX::ContentFilter>,std::string)")]
 pub fn stub_f2e114() -> ! {
     todo!("0xf2e114 boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list_av_4<boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::ContentFilter>,std::string>::type> boost::bind<void,std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string,boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::ContentFilter>,std::string>(void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::arg<1>,boost::arg<2>,boost::weak_ptr<RBX::ContentFilter>,std::string)")
 }
 
 // 0xf2e124 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, void *, void *, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 pub fn stub_f2e124() -> ! {
     todo!("0xf2e124 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
 }
 
 // 0xf2e134 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, void *, void *, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 pub fn stub_f2e134() -> ! {
     todo!("0xf2e134 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
 }
 
 // 0xf2e144 — j___ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvPSsPSt9exceptionNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list4INS_3argILi1EEENSF_ILi2EEENS3_5valueISB_EENSI_ISsEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, void *, void *, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 pub fn stub_f2e144() -> ! {
     todo!("0xf2e144 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
 }
@@ -375,21 +375,21 @@ pub fn stub_f2e174() -> ! {
 
 // 0xf2e184 — j___ZN5boost8weak_ptrIN3RBX13ContentFilterEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 // type: int()
-#[doc(alias = "boost::weak_ptr<RBX::ContentFilter>::weak_ptr<RBX::ContentFilter>(boost::shared_ptr<RBX::ContentFilter> const&,boost::detail::sp_enable_if_convertible<RBX::ContentFilter,RBX::ContentFilter>::type)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::ContentFilter>::weak_ptr<RBX::ContentFilter>(rbx_core::SharedPtr<RBX::ContentFilter> const&,boost::detail::sp_enable_if_convertible<RBX::ContentFilter,RBX::ContentFilter>::type)")]
 pub fn stub_f2e184() -> ! {
     todo!("0xf2e184 boost::weak_ptr<RBX::ContentFilter>::weak_ptr<RBX::ContentFilter>(boost::shared_ptr<RBX::ContentFilter> const&,boost::detail::sp_enable_if_convertible<RBX::ContentFilter,RBX::ContentFilter>::type)")
 }
 
 // 0xf2e194 — j___ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13ContentFilterEEESsENS6_5list2INS6_5valueISA_EENSE_ISsEEEEEEEEvT_
 // type: int()
-#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>)")]
+#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>)")]
 pub fn stub_f2e194() -> ! {
     todo!("0xf2e194 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>)")
 }
 
 // 0xf2e1a4 — j___ZN5boost9function1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_13ContentFilterEEESsbENS6_5list3INS6_5valueISA_EENSE_ISsEENSE_IbEEEEEEEEvT_
 // type: int()
-#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>)")]
+#[doc(alias = "void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>)")]
 pub fn stub_f2e1a4() -> ! {
     todo!("0xf2e1a4 void boost::function1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>)")
 }
@@ -410,7 +410,7 @@ pub fn stub_f2e1c4() -> ! {
 
 // 0xf2e1d4 — j___ZN5boost9function2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvS1_S3_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS6_5list4INS_3argILi1EEENSF_ILi2EEENS6_5valueISB_EENSI_ISsEEEEEEEEvT_
 // type: int()
-#[doc(alias = "void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>)")]
+#[doc(alias = "void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>)")]
 pub fn stub_f2e1d4() -> ! {
     todo!("0xf2e1d4 void boost::function2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>)")
 }
@@ -424,63 +424,63 @@ pub fn stub_f2e1e4() -> ! {
 
 // 0xf2e1f4 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13ContentFilterEEESsENS8_5list2INS8_5valueISC_EENSG_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, void *, int, int, int, int)
-#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 pub fn stub_f2e1f4() -> ! {
     todo!("0xf2e1f4 void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
 }
 
 // 0xf2e204 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE14assign_functorINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13ContentFilterEEESsbENS8_5list3INS8_5valueISC_EENSG_ISsEENSG_IbEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, void *, int, int, int, int)
-#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 pub fn stub_f2e204() -> ! {
     todo!("0xf2e204 void boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_functor<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
 }
 
 // 0xf2e214 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13ContentFilterEEESsENS8_5list2INS8_5valueISC_EENSG_ISsEEEEEEEEbT_RNS1_15function_bufferE
 // type: int()
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
 pub fn stub_f2e214() -> ! {
     todo!("0xf2e214 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")
 }
 
 // 0xf2e224 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13ContentFilterEEESsENS8_5list2INS8_5valueISC_EENSG_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, void *)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 pub fn stub_f2e224() -> ! {
     todo!("0xf2e224 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list2<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
 }
 
 // 0xf2e234 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13ContentFilterEEESsbENS8_5list3INS8_5valueISC_EENSG_ISsEENSG_IbEEEEEEEEbT_RNS1_15function_bufferE
 // type: int()
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const")]
 pub fn stub_f2e234() -> ! {
     todo!("0xf2e234 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &)const")
 }
 
 // 0xf2e244 — j___ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS3_13ContentFilterEEESsbENS8_5list3INS8_5valueISC_EENSG_ISsEENSG_IbEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 pub fn stub_f2e244() -> ! {
     todo!("0xf2e244 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ContentFilter>,std::string,bool),boost::_bi::list3<boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>,boost::_bi::value<bool>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
 }
 
 // 0xf2e254 — j___ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE14assign_functorINS_3_bi6bind_tIvPFvS3_S5_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS8_5list4INS_3argILi1EEENSH_ILi2EEENS8_5valueISD_EENSK_ISsEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, void *, int, int, int, int)
-#[doc(alias = "void boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+#[doc(alias = "void boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 pub fn stub_f2e254() -> ! {
     todo!("0xf2e254 void boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_functor<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
 }
 
 // 0xf2e264 — j___ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvS3_S5_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS8_5list4INS_3argILi1EEENSH_ILi2EEENS8_5valueISD_EENSK_ISsEEEEEEEEbT_RNS1_15function_bufferE
 // type: int()
-#[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")]
 pub fn stub_f2e264() -> ! {
     todo!("0xf2e264 bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &)const")
 }
 
 // 0xf2e274 — j___ZNK5boost6detail8function13basic_vtable2IvPSsPSt9exceptionE9assign_toINS_3_bi6bind_tIvPFvS3_S5_NS_8weak_ptrIN3RBX13ContentFilterEEESsENS8_5list4INS_3argILi1EEENSH_ILi2EEENS8_5valueISD_EENSK_ISsEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, void *)
-#[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,rbx_core::WeakPtr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<rbx_core::WeakPtr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 pub fn stub_f2e274() -> ! {
     todo!("0xf2e274 bool boost::detail::function::basic_vtable2<void,std::string *,std::exception *>::assign_to<boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>>(boost::_bi::bind_t<void,void (*)(std::string *,std::exception *,boost::weak_ptr<RBX::ContentFilter>,std::string),boost::_bi::list4<boost::arg<1>,boost::arg<2>,boost::_bi::value<boost::weak_ptr<RBX::ContentFilter>>,boost::_bi::value<std::string>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
 }
@@ -633,7 +633,7 @@ pub fn stub_f2e3c4() -> ! {
 }
 
 // 0xf2e3d4 — j___ZN5boost10shared_ptrINS_10filesystem6detail11dir_itr_impEEC2IS3_EEPT_
-#[doc(alias = "boost::shared_ptr<boost::filesystem::detail::dir_itr_imp>::shared_ptr<boost::filesystem::detail::dir_itr_imp>(boost::filesystem::detail::dir_itr_imp *)")]
+#[doc(alias = "rbx_core::SharedPtr<boost::filesystem::detail::dir_itr_imp>::shared_ptr<boost::filesystem::detail::dir_itr_imp>(boost::filesystem::detail::dir_itr_imp *)")]
 pub fn stub_f2e3d4() -> ! {
     todo!("0xf2e3d4 boost::shared_ptr<boost::filesystem::detail::dir_itr_imp>::shared_ptr<boost::filesystem::detail::dir_itr_imp>(boost::filesystem::detail::dir_itr_imp *)")
 }
@@ -661,7 +661,7 @@ pub fn stub_f2e404() -> ! {
 
 // 0xf2e414 — j___ZN5boost10shared_ptrISiEC2ISt19basic_istringstreamIcSt11char_traitsIcESaIcEEEEPT_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<std::istream>::shared_ptr<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>(std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>> *)")]
+#[doc(alias = "rbx_core::SharedPtr<std::istream>::shared_ptr<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>(std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>> *)")]
 pub fn stub_f2e414() -> ! {
     todo!("0xf2e414 boost::shared_ptr<std::istream>::shared_ptr<std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>>>(std::basic_istringstream<char,std::char_traits<char>,std::allocator<char>> *)")
 }
@@ -682,21 +682,21 @@ pub fn stub_f2e434() -> ! {
 
 // 0xf2e444 — j___ZN5boost3_bi5list3INS0_5valueISsEENS2_IbEENS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(std::string *)
-#[doc(alias = "void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<boost::shared_ptr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<boost::shared_ptr<RBX::mutex> &> &,int)")]
+#[doc(alias = "void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &> &,int)")]
 pub fn stub_f2e444() -> ! {
     todo!("0xf2e444 void boost::_bi::list3<boost::_bi::value<std::string>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<boost::shared_ptr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<boost::shared_ptr<RBX::mutex> &> &,int)")
 }
 
 // 0xf2e454 — j___ZN5boost3_bi5list5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEC2ES3_S6_S7_S7_SE_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")]
+#[doc(alias = "boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")]
 pub fn stub_f2e454() -> ! {
     todo!("0xf2e454 boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::list5(boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>)")
 }
 
 // 0xf2e464 — j___ZN5boost3_bi5list5INS0_5valueISsEENS2_INS_10shared_ptrISiEEEENS2_IbEES7_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsS5_bbSD_ENS0_5list1IRNS4_IN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(std::string *)
-#[doc(alias = "void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<boost::shared_ptr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<boost::shared_ptr<RBX::mutex> &> &,int)")]
+#[doc(alias = "void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<rbx_core::SharedPtr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,rbx_core::SharedPtr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::mutex> &> &,int)")]
 pub fn stub_f2e464() -> ! {
     todo!("0xf2e464 void boost::_bi::list5<boost::_bi::value<std::string>,boost::_bi::value<boost::shared_ptr<std::istream>>,boost::_bi::value<bool>,boost::_bi::value<bool>,boost::_bi::value<boost::function<void ()(std::string *,std::exception *)>>>::operator()<void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>),boost::_bi::list1<boost::shared_ptr<RBX::mutex> &>>(boost::_bi::type<void>,void (*)(std::string,boost::shared_ptr<std::istream>,bool,bool,boost::function<void ()(std::string *,std::exception *)>) &,boost::_bi::list1<boost::shared_ptr<RBX::mutex> &> &,int)")
 }

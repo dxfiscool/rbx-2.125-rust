@@ -269,7 +269,7 @@ pub fn stub_f2b6c4() -> ! {
 
 // 0xf2b6d4 — j___ZN3rbx7signals6signalIFvP9lua_StateEE4nextERN5boost13intrusive_ptrINS5_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(lua_State *)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(lua_State *)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(lua_State *)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(lua_State *)>::slot> &)")]
 pub fn stub_f2b6d4() -> ! {
     todo!("0xf2b6d4 j___ZN3rbx7signals6signalIFvP9lua_StateEE4nextERN5boost13intrusive_ptrINS5_4slotEEE")
 }
@@ -359,7 +359,7 @@ pub fn stub_f2b974() -> ! {
 }
 
 // 0xf2b994 — j___ZN5boost10shared_ptrIN3RBX13ScriptContextEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
-#[doc(alias = "rbx_core::SharedPtr<RBX::ScriptContext>::shared_ptr<RBX::ScriptContext>(boost::weak_ptr<RBX::ScriptContext> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ScriptContext>::shared_ptr<RBX::ScriptContext>(rbx_core::WeakPtr<RBX::ScriptContext> const&,boost::detail::sp_nothrow_tag)")]
 pub fn stub_f2b994() -> ! {
     todo!("0xf2b994 j___ZN5boost10shared_ptrIN3RBX13ScriptContextEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
 }
@@ -397,34 +397,34 @@ pub fn stub_f2ba34() -> ! {
 
 // 0xf2baa4 — j___ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRef4NodeEEaSEPS4_
 // type: int __fastcall(int, int32_t *__theValue)
-#[doc(alias = "boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>::operator=(RBX::Lua::WeakThreadRef::Node*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Lua::WeakThreadRef::Node>::operator=(RBX::Lua::WeakThreadRef::Node*)")]
 pub fn stub_f2baa4() -> ! {
     todo!("0xf2baa4 j___ZN5boost13intrusive_ptrIN3RBX3Lua13WeakThreadRef4NodeEEaSEPS4_")
 }
 
 // 0xf2bab4 — j___ZN5boost13intrusive_ptrIN3RBX3Lua6detail13LiveThreadRefEEaSERKS5_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::intrusive_ptr<RBX::Lua::detail::LiveThreadRef>::operator=(boost::intrusive_ptr<RBX::Lua::detail::LiveThreadRef> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Lua::detail::LiveThreadRef>::operator=(rbx_core::SharedPtr<RBX::Lua::detail::LiveThreadRef> const&)")]
 pub fn stub_f2bab4() -> ! {
     todo!("0xf2bab4 j___ZN5boost13intrusive_ptrIN3RBX3Lua6detail13LiveThreadRefEEaSERKS5_")
 }
 
 // 0xf2bb04 — j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvP9lua_StateEE4slotEEaSERKS9_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(lua_State *)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(lua_State *)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(lua_State *)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(lua_State *)>::slot> const&)")]
 pub fn stub_f2bb04() -> ! {
     todo!("0xf2bb04 j___ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvP9lua_StateEE4slotEEaSERKS9_")
 }
 
 // 0xf2bbb4 — j___ZN5boost21intrusive_ptr_releaseIN3RBX3Lua13WeakThreadRef4NodeEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE
 // type: int(void)
-#[doc(alias = "void boost::intrusive_ptr_release<RBX::Lua::WeakThreadRef::Node,int,0>(rbx::quick_intrusive_ptr_target<RBX::Lua::WeakThreadRef::Node,int,0> const*)")]
+#[doc(alias = "void rbx_core::SharedPtr_release<RBX::Lua::WeakThreadRef::Node,int,0>(rbx::quick_intrusive_ptr_target<RBX::Lua::WeakThreadRef::Node,int,0> const*)")]
 pub fn stub_f2bbb4() -> ! {
     todo!("0xf2bbb4 j___ZN5boost21intrusive_ptr_releaseIN3RBX3Lua13WeakThreadRef4NodeEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE")
 }
 
 // 0xf2bbc4 — j___ZN5boost21intrusive_ptr_releaseIN3RBX3Lua6detail13LiveThreadRefEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE
 // type: int(void)
-#[doc(alias = "void boost::intrusive_ptr_release<RBX::Lua::detail::LiveThreadRef,int,0>(rbx::quick_intrusive_ptr_target<RBX::Lua::detail::LiveThreadRef,int,0> const*)")]
+#[doc(alias = "void rbx_core::SharedPtr_release<RBX::Lua::detail::LiveThreadRef,int,0>(rbx::quick_intrusive_ptr_target<RBX::Lua::detail::LiveThreadRef,int,0> const*)")]
 pub fn stub_f2bbc4() -> ! {
     todo!("0xf2bbc4 j___ZN5boost21intrusive_ptr_releaseIN3RBX3Lua6detail13LiveThreadRefEiLi0EEEvPKN3rbx26quick_intrusive_ptr_targetIT_T0_XT1_EEE")
 }
@@ -587,7 +587,7 @@ pub fn stub_f2ff94() -> ! {
 
 // 0xf2ffa4 — j___ZN5boost8weak_ptrIN3RBX25ScriptInformationProviderEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "boost::weak_ptr<RBX::ScriptInformationProvider>::weak_ptr<RBX::ScriptInformationProvider>(rbx_core::SharedPtr<RBX::ScriptInformationProvider> const&,boost::detail::sp_enable_if_convertible<RBX::ScriptInformationProvider,RBX::ScriptInformationProvider>::type)")]
+#[doc(alias = "rbx_core::WeakPtr<RBX::ScriptInformationProvider>::weak_ptr<RBX::ScriptInformationProvider>(rbx_core::SharedPtr<RBX::ScriptInformationProvider> const&,boost::detail::sp_enable_if_convertible<RBX::ScriptInformationProvider,RBX::ScriptInformationProvider>::type)")]
 pub fn stub_f2ffa4() -> ! {
     todo!("0xf2ffa4 j___ZN5boost8weak_ptrIN3RBX25ScriptInformationProviderEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE")
 }
@@ -608,7 +608,7 @@ pub fn stub_f2ffc4() -> ! {
 
 // 0xf2ffd4 — j___ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS_8functionIFvNSD_13RequestResultEbbfbEEEENSA_5list4INSA_5valueISE_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEEvT_
 // type: int __fastcall(_DWORD, _DWORD)
-#[doc(alias = "void boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>(boost::_bi::bind_t<void,void (*)(boost::weak_ptr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<boost::weak_ptr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>)")]
+#[doc(alias = "void boost::function3<void,RBX::AsyncHttpQueue::RequestResult,std::istream *,rbx_core::SharedPtr<std::string const>>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::WeakPtr<RBX::ScriptInformationProvider>,RBX::AsyncHttpQueue::RequestResult,std::string,boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>),boost::_bi::list4<boost::_bi::value<rbx_core::WeakPtr<RBX::ScriptInformationProvider>>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<boost::function<void ()(RBX::ScriptInformationProvider::RequestResult,bool,bool,float,bool)>>>>)")]
 pub fn stub_f2ffd4() -> ! {
     todo!("0xf2ffd4 j___ZN5boost9function3IvN3RBX14AsyncHttpQueue13RequestResultEPSiNS_10shared_ptrIKSsEEE9assign_toINS_3_bi6bind_tIvPFvNS_8weak_ptrINS1_25ScriptInformationProviderEEES3_SsNS_8functionIFvNSD_13RequestResultEbbfbEEEENSA_5list4INSA_5valueISE_EENS_3argILi1EEENSM_ISsEENSM_ISI_EEEEEEEEvT_")
 }

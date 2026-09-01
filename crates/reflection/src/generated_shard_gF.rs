@@ -751,7 +751,7 @@ pub fn stub_0x9201a8() -> ! {
 
 // 0x92038c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4nextERNS2_13intrusive_ptrINSA_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4nextERNS2_13intrusive_ptrINSA_4slotEEE")]
 pub fn stub_0x92038c() -> ! {
     todo!("0x92038c __ZN3rbx7signals6signalIFvN5boost10shared_ptrIKN3RBX10Reflection5TupleEEEEE4nextERNS2_13intrusive_ptrINSA_4slotEEE")
@@ -767,7 +767,7 @@ pub fn stub_0x9204ec() -> ! {
 
 // 0x920514 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSERKSD_
 // type: int(void)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSERKSD_")]
 pub fn stub_0x920514() -> ! {
     todo!("0x920514 __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvNS_10shared_ptrIKN3RBX10Reflection5TupleEEEEE4slotEEaSERKSD_")
@@ -873,7 +873,7 @@ pub fn stub_0x921344() -> ! {
 
 // 0x9215b8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS3_IKNS4_10Reflection5TupleEEEEE4nextERNS2_13intrusive_ptrINSC_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>::slot> &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS3_IKNS4_10Reflection5TupleEEEEE4nextERNS2_13intrusive_ptrINSC_4slotEEE")]
 pub fn stub_0x9215b8() -> ! {
     todo!("0x9215b8 __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEENS3_IKNS4_10Reflection5TupleEEEEE4nextERNS2_13intrusive_ptrINSC_4slotEEE")

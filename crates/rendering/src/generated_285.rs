@@ -775,7 +775,7 @@ pub fn stub_3ed48c() -> ! {
 
 // 0x3ed6c0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE4nextERNS2_13intrusive_ptrINSA_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE4nextERNS2_13intrusive_ptrINSA_4slotEEE
 pub fn stub_3ed6c0() -> ! {
     todo!("0x3ed6c0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot> &)")

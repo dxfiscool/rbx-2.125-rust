@@ -9,14 +9,14 @@ use rbx_core::SharedPtr;
 
 // 0x982cf8 — __ZN3RBX7Network16ClientReplicator15ClientStatsItemC2ERKN5boost10shared_ptrIKS1_EE
 // type: RBX::Stats::Item *__fastcall(RBX::Stats::Item *, int, int, int, pthread_mutex_t *, struct _Unwind_Exception *lpuexcpt, int, int, int, RBX::Network::Replicator::StatsItem *, int, int, int, int)
-#[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::ClientStatsItem(boost::shared_ptr<RBX::Network::ClientReplicator const> const&)")]
+#[doc(alias = "RBX::Network::ClientReplicator::ClientStatsItem::ClientStatsItem(rbx_core::SharedPtr<RBX::Network::ClientReplicator const> const&)")]
 pub fn stub_982cf8() -> ! {
     todo!("0x982cf8 __ZN3RBX7Network16ClientReplicator15ClientStatsItemC2ERKN5boost10shared_ptrIKS1_EE")
 }
 
 // 0x983070 — __ZN3RBX7Network10Replicator9StatsItemC2ERKN5boost10shared_ptrIKS1_EE
 // type: RBX::Stats::Item *__fastcall(RBX::Stats::Item *, int *, int, int, struct _Unwind_Exception *lpuexcpt, int, int, char, RBX::Instance *, RBX::Instance *, int, int, void *, int)
-#[doc(alias = "RBX::Network::Replicator::StatsItem::StatsItem(boost::shared_ptr<RBX::Network::Replicator const> const&)")]
+#[doc(alias = "RBX::Network::Replicator::StatsItem::StatsItem(rbx_core::SharedPtr<RBX::Network::Replicator const> const&)")]
 pub fn stub_983070() -> ! {
     todo!("0x983070 __ZN3RBX7Network10Replicator9StatsItemC2ERKN5boost10shared_ptrIKS1_EE")
 }
@@ -114,7 +114,7 @@ pub fn stub_986b20() -> ! {
 
 // 0x986b40 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicator15ClientStatsItemES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(boost::shared_ptr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Network::ClientReplicator::ClientStatsItem,RBX::Network::ClientReplicator::ClientStatsItem>(rbx_core::SharedPtr<RBX::Network::ClientReplicator::ClientStatsItem> const*,RBX::Network::ClientReplicator::ClientStatsItem *)const")]
 pub fn stub_986b40() -> ! {
     todo!("0x986b40 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7Network16ClientReplicator15ClientStatsItemES8_EEvPKNS_10shared_ptrIT_EEPT0_")
 }
@@ -373,7 +373,7 @@ pub fn stub_998490() -> ! {
 
 // 0x9985a8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NetworkSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NetworkSettings,RBX::NetworkSettings>(boost::shared_ptr<RBX::NetworkSettings> const*,RBX::NetworkSettings *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::NetworkSettings,RBX::NetworkSettings>(rbx_core::SharedPtr<RBX::NetworkSettings> const*,RBX::NetworkSettings *)const")]
 pub fn stub_9985a8() -> ! {
     todo!("0x9985a8 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15NetworkSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_")
 }
@@ -443,7 +443,7 @@ pub fn stub_99ae84() -> ! {
 
 // 0x99b398 — __ZN3RBX7Network17ConcurrentRakPeer4SendEN5boost10shared_ptrIKN6RakNet9BitStreamEEE14PacketPriority17PacketReliabilitycNS4_13SystemAddressEb
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int, char)
-#[doc(alias = "RBX::Network::ConcurrentRakPeer::Send(boost::shared_ptr<RakNet::BitStream const>,PacketPriority,PacketReliability,char,RakNet::SystemAddress,bool)")]
+#[doc(alias = "RBX::Network::ConcurrentRakPeer::Send(rbx_core::SharedPtr<RakNet::BitStream const>,PacketPriority,PacketReliability,char,RakNet::SystemAddress,bool)")]
 pub fn stub_99b398() -> ! {
     todo!("0x99b398 __ZN3RBX7Network17ConcurrentRakPeer4SendEN5boost10shared_ptrIKN6RakNet9BitStreamEEE14PacketPriority17PacketReliabilitycNS4_13SystemAddressEb")
 }
@@ -541,14 +541,14 @@ pub fn stub_99cea8() -> ! {
 
 // 0x99cf80 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> *,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> *,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *,boost::detail::shared_count &)")]
 pub fn stub_99cf80() -> ! {
     todo!("0x99cf80 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network17ConcurrentRakPeer14StatsUpdateJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
 // 0x99d130 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network17ConcurrentRakPeer14StatsUpdateJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> const*,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::StatsUpdateJob,RBX::Network::ConcurrentRakPeer::StatsUpdateJob>(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer::StatsUpdateJob> const*,RBX::Network::ConcurrentRakPeer::StatsUpdateJob *)const")]
 pub fn stub_99d130() -> ! {
     todo!("0x99d130 __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network17ConcurrentRakPeer14StatsUpdateJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")
 }
@@ -590,14 +590,14 @@ pub fn stub_99d404() -> ! {
 
 // 0x99d408 — __ZN5boost6detail20sp_pointer_constructIN3RBX7Network17ConcurrentRakPeer9PacketJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, pthread_mutex_t *, pthread_mutex_t *, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::PacketJob> *,RBX::Network::ConcurrentRakPeer::PacketJob *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer::PacketJob> *,RBX::Network::ConcurrentRakPeer::PacketJob *,boost::detail::shared_count &)")]
 pub fn stub_99d408() -> ! {
     todo!("0x99d408 __ZN5boost6detail20sp_pointer_constructIN3RBX7Network17ConcurrentRakPeer9PacketJobES5_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }
 
 // 0x99d5b8 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network17ConcurrentRakPeer9PacketJobES8_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, int, int, int, pthread_mutex_t *, int, pthread_mutex_t *, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(boost::shared_ptr<RBX::Network::ConcurrentRakPeer::PacketJob> const*,RBX::Network::ConcurrentRakPeer::PacketJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::Network::ConcurrentRakPeer::PacketJob,RBX::Network::ConcurrentRakPeer::PacketJob>(rbx_core::SharedPtr<RBX::Network::ConcurrentRakPeer::PacketJob> const*,RBX::Network::ConcurrentRakPeer::PacketJob *)const")]
 pub fn stub_99d5b8() -> ! {
     todo!("0x99d5b8 __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_7Network17ConcurrentRakPeer9PacketJobES8_EEvPKNS_10shared_ptrIT_EEPT0_")
 }
@@ -639,7 +639,7 @@ pub fn stub_99d88c() -> ! {
 
 // 0x99d890 — __ZN5boost6detail20sp_pointer_constructIN6RakNet16RakPeerInterfaceES3_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE
 // type: void __fastcall(int, int, _DWORD **, int, void *, int)
-#[doc(alias = "void boost::detail::sp_pointer_construct<RakNet::RakPeerInterface,RakNet::RakPeerInterface>(boost::shared_ptr<RakNet::RakPeerInterface> *,RakNet::RakPeerInterface *,boost::detail::shared_count &)")]
+#[doc(alias = "void boost::detail::sp_pointer_construct<RakNet::RakPeerInterface,RakNet::RakPeerInterface>(rbx_core::SharedPtr<RakNet::RakPeerInterface> *,RakNet::RakPeerInterface *,boost::detail::shared_count &)")]
 pub fn stub_99d890() -> ! {
     todo!("0x99d890 __ZN5boost6detail20sp_pointer_constructIN6RakNet16RakPeerInterfaceES3_EEvPNS_10shared_ptrIT_EEPT0_RNS0_12shared_countE")
 }

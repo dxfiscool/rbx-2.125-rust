@@ -260,7 +260,7 @@ pub fn stub_3987cc() -> ! {
 
 // 0x3988f0 — __ZN3RBX14AnimationTrackC1EN5boost10shared_ptrINS_19AnimationTrackStateEEENS1_8weak_ptrINS_8AnimatorEEE
 // type: int __fastcall(int, int, int)
-#[doc(alias = "RBX::AnimationTrack::AnimationTrack(boost::shared_ptr<RBX::AnimationTrackState>,boost::weak_ptr<RBX::Animator>)")]
+#[doc(alias = "RBX::AnimationTrack::AnimationTrack(rbx_core::SharedPtr<RBX::AnimationTrackState>,rbx_core::WeakPtr<RBX::Animator>)")]
 #[doc(alias = "__ZN3RBX14AnimationTrackC1EN5boost10shared_ptrINS_19AnimationTrackStateEEENS1_8weak_ptrINS_8AnimatorEEE")]
 pub fn stub_3988f0() -> ! {
     todo!("0x3988f0 RBX::AnimationTrack::AnimationTrack(boost::shared_ptr<RBX::AnimationTrackState>,boost::weak_ptr<RBX::Animator>)")
@@ -268,7 +268,7 @@ pub fn stub_3988f0() -> ! {
 
 // 0x3988f4 — __ZN3RBX14AnimationTrackC2EN5boost10shared_ptrINS_19AnimationTrackStateEEENS1_8weak_ptrINS_8AnimatorEEE
 // type: RBX::Instance *__fastcall(RBX::Instance *, const shared_count *, int)
-#[doc(alias = "RBX::AnimationTrack::AnimationTrack(boost::shared_ptr<RBX::AnimationTrackState>,boost::weak_ptr<RBX::Animator>)")]
+#[doc(alias = "RBX::AnimationTrack::AnimationTrack(rbx_core::SharedPtr<RBX::AnimationTrackState>,rbx_core::WeakPtr<RBX::Animator>)")]
 #[doc(alias = "__ZN3RBX14AnimationTrackC2EN5boost10shared_ptrINS_19AnimationTrackStateEEENS1_8weak_ptrINS_8AnimatorEEE")]
 pub fn stub_3988f4() -> ! {
     todo!("0x3988f4 RBX::AnimationTrack::AnimationTrack(boost::shared_ptr<RBX::AnimationTrackState>,boost::weak_ptr<RBX::Animator>)")
@@ -380,7 +380,7 @@ pub fn stub_3992b8() -> ! {
 
 // 0x399410 — __ZN5boost10shared_ptrIN3RBX8AnimatorEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
-#[doc(alias = "boost::shared_ptr<RBX::Animator>::shared_ptr<RBX::Animator>(boost::weak_ptr<RBX::Animator> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Animator>::shared_ptr<RBX::Animator>(rbx_core::WeakPtr<RBX::Animator> const&,boost::detail::sp_nothrow_tag)")]
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8AnimatorEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
 pub fn stub_399410() -> ! {
     todo!("0x399410 boost::shared_ptr<RBX::Animator>::shared_ptr<RBX::Animator>(boost::weak_ptr<RBX::Animator> const&,boost::detail::sp_nothrow_tag)")
@@ -510,7 +510,7 @@ pub fn stub_399b88() -> ! {
 
 // 0x399c3c — __ZNK3RBX10Reflection13EventDescImplILi0ENS_14AnimationTrackEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // type: void __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, char, int, int, int, boost::detail::sp_counted_base *, char, int, int, boost::detail::sp_counted_base *, int, int, int, char, int, int, int, char, int, int, int, int, int, int)
-#[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::AnimationTrack,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::AnimationTrack::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+#[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::AnimationTrack,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::AnimationTrack::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi0ENS_14AnimationTrackEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
 pub fn stub_399c3c() -> ! {
     todo!("0x399c3c RBX::Reflection::EventDescImpl<0,RBX::AnimationTrack,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::AnimationTrack::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
@@ -550,7 +550,7 @@ pub fn stub_39a04c() -> ! {
 
 // 0x39a100 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_14AnimationTrackEFvSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::AnimationTrack,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::AnimationTrack::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::AnimationTrack,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::AnimationTrack::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_14AnimationTrackEFvSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
 pub fn stub_39a100() -> ! {
     todo!("0x39a100 RBX::Reflection::EventDescImpl<1,RBX::AnimationTrack,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::AnimationTrack::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
@@ -606,7 +606,7 @@ pub fn stub_39a774() -> ! {
 
 // 0x39a7d4 — __ZN3RBX10Reflection9ArgHelper6getArgIfLi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int __fastcall(int, _DWORD **)
-#[doc(alias = "float RBX::Reflection::ArgHelper::getArg<float,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<float> const&,boost::disable_if<boost::is_same<float,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "float RBX::Reflection::ArgHelper::getArg<float,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<float> const&,boost::disable_if<boost::is_same<float,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 #[doc(alias = "__ZN3RBX10Reflection9ArgHelper6getArgIfLi2EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS3_EEPNS7_10disable_ifINS7_7is_sameIS3_NS7_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")]
 pub fn stub_39a7d4() -> ! {
     todo!("0x39a7d4 float RBX::Reflection::ArgHelper::getArg<float,2>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<float> const&,boost::disable_if<boost::is_same<float,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
@@ -678,7 +678,7 @@ pub fn stub_39b088() -> ! {
 
 // 0x39b490 — __ZN3RBX19AnimationTrackStateC1EN5boost10shared_ptrIKNS_16KeyframeSequenceEEENS1_8weak_ptrIKNS_8AnimatorEEE
 // type: int()
-#[doc(alias = "RBX::AnimationTrackState::AnimationTrackState(boost::shared_ptr<RBX::KeyframeSequence const>,boost::weak_ptr<RBX::Animator const>)")]
+#[doc(alias = "RBX::AnimationTrackState::AnimationTrackState(rbx_core::SharedPtr<RBX::KeyframeSequence const>,rbx_core::WeakPtr<RBX::Animator const>)")]
 #[doc(alias = "__ZN3RBX19AnimationTrackStateC1EN5boost10shared_ptrIKNS_16KeyframeSequenceEEENS1_8weak_ptrIKNS_8AnimatorEEE")]
 pub fn stub_39b490() -> ! {
     todo!("0x39b490 RBX::AnimationTrackState::AnimationTrackState(boost::shared_ptr<RBX::KeyframeSequence const>,boost::weak_ptr<RBX::Animator const>)")
@@ -686,7 +686,7 @@ pub fn stub_39b490() -> ! {
 
 // 0x39b494 — __ZN3RBX19AnimationTrackStateC2EN5boost10shared_ptrIKNS_16KeyframeSequenceEEENS1_8weak_ptrIKNS_8AnimatorEEE
 // type: RBX::Instance *__fastcall(RBX::Instance *, int, int)
-#[doc(alias = "RBX::AnimationTrackState::AnimationTrackState(boost::shared_ptr<RBX::KeyframeSequence const>,boost::weak_ptr<RBX::Animator const>)")]
+#[doc(alias = "RBX::AnimationTrackState::AnimationTrackState(rbx_core::SharedPtr<RBX::KeyframeSequence const>,rbx_core::WeakPtr<RBX::Animator const>)")]
 #[doc(alias = "__ZN3RBX19AnimationTrackStateC2EN5boost10shared_ptrIKNS_16KeyframeSequenceEEENS1_8weak_ptrIKNS_8AnimatorEEE")]
 pub fn stub_39b494() -> ! {
     todo!("0x39b494 RBX::AnimationTrackState::AnimationTrackState(boost::shared_ptr<RBX::KeyframeSequence const>,boost::weak_ptr<RBX::Animator const>)")
@@ -694,7 +694,7 @@ pub fn stub_39b494() -> ! {
 
 // 0x39bdb4 — __ZN3RBX19AnimationTrackState28triggerKeyframeReachedSignalERKN5boost10shared_ptrINS_8InstanceEEEdd
 // type: void __fastcall(int, int, unsigned int, unsigned int, double)
-#[doc(alias = "RBX::AnimationTrackState::triggerKeyframeReachedSignal(boost::shared_ptr<RBX::Instance> const&,double,double)")]
+#[doc(alias = "RBX::AnimationTrackState::triggerKeyframeReachedSignal(rbx_core::SharedPtr<RBX::Instance> const&,double,double)")]
 #[doc(alias = "__ZN3RBX19AnimationTrackState28triggerKeyframeReachedSignalERKN5boost10shared_ptrINS_8InstanceEEEdd")]
 pub fn stub_39bdb4() -> ! {
     todo!("0x39bdb4 RBX::AnimationTrackState::triggerKeyframeReachedSignal(boost::shared_ptr<RBX::Instance> const&,double,double)")
@@ -774,7 +774,7 @@ pub fn stub_39cb28() -> ! {
 
 // 0x39cc88 — __ZN3rbx7signals6signalIFvfffEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(float,float,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(float,float,float)>::slot> &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvfffEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")]
 pub fn stub_39cc88() -> ! {
     todo!("0x39cc88 rbx::signals::signal<void ()(float,float,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float)>::slot> &)")
@@ -790,7 +790,7 @@ pub fn stub_39cde8() -> ! {
 
 // 0x39ce10 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfffEE4slotEEaSERKS7_
 // type: int *__fastcall(int *, int *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(float,float,float)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(float,float,float)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfffEE4slotEEaSERKS7_")]
 pub fn stub_39ce10() -> ! {
     todo!("0x39ce10 boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float)>::slot> const&)")
@@ -837,7 +837,7 @@ pub fn stub_39d260() -> ! {
 
 // 0x39d3dc — __ZN3rbx7signals6signalIFvffffEE4nextERN5boost13intrusive_ptrINS3_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float,float)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(float,float,float,float)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(float,float,float,float)>::slot> &)")]
 #[doc(alias = "__ZN3rbx7signals6signalIFvffffEE4nextERN5boost13intrusive_ptrINS3_4slotEEE")]
 pub fn stub_39d3dc() -> ! {
     todo!("0x39d3dc rbx::signals::signal<void ()(float,float,float,float)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float,float)>::slot> &)")
@@ -853,7 +853,7 @@ pub fn stub_39d53c() -> ! {
 
 // 0x39d564 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvffffEE4slotEEaSERKS7_
 // type: int *__fastcall(int *, int *)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float,float)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(float,float,float,float)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(float,float,float,float)>::slot> const&)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvffffEE4slotEEaSERKS7_")]
 pub fn stub_39d564() -> ! {
     todo!("0x39d564 boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float,float)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float,float)>::slot> const&)")
@@ -877,7 +877,7 @@ pub fn stub_39d58c() -> ! {
 
 // 0x39d684 — __ZN5boost10shared_ptrIKN3RBX8AnimatorEEC2IS3_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
-#[doc(alias = "boost::shared_ptr<RBX::Animator const>::shared_ptr<RBX::Animator const>(boost::weak_ptr<RBX::Animator const> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Animator const>::shared_ptr<RBX::Animator const>(rbx_core::WeakPtr<RBX::Animator const> const&,boost::detail::sp_nothrow_tag)")]
 #[doc(alias = "__ZN5boost10shared_ptrIKN3RBX8AnimatorEEC2IS3_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
 pub fn stub_39d684() -> ! {
     todo!("0x39d684 boost::shared_ptr<RBX::Animator const>::shared_ptr<RBX::Animator const>(boost::weak_ptr<RBX::Animator const> const&,boost::detail::sp_nothrow_tag)")
@@ -901,7 +901,7 @@ pub fn stub_39d774() -> ! {
 
 // 0x39d980 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfffEE4slotEEaSEPS6_
 // type: int *__fastcall(int *, int)
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float)>::slot>::operator=(rbx::signals::signal<void ()(float,float,float)>::slot*)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(float,float,float)>::slot>::operator=(rbx::signals::signal<void ()(float,float,float)>::slot*)")]
 #[doc(alias = "__ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvfffEE4slotEEaSEPS6_")]
 pub fn stub_39d980() -> ! {
     todo!("0x39d980 boost::intrusive_ptr<rbx::signals::signal<void ()(float,float,float)>::slot>::operator=(rbx::signals::signal<void ()(float,float,float)>::slot*)")
