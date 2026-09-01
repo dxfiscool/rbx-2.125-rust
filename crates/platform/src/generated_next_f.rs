@@ -205,7 +205,7 @@ pub fn stub_320bc() -> ! {
 }
 
 // 0x32194 — __ZThn4_N3rbx8callableINS_7signals6signalIFvSsEE4slotEN5boost8functionIS3_EELi1ES3_E4callESs
-#[doc(alias = "`non-virtual thunk to_rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")]
+#[doc(alias = "non-virtual thunk to_rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")]
 pub fn stub_32194() -> ! {
     todo!("0x32194 `non-virtual thunk to_rbx::callable<rbx::signals::signal<void ()(std::string)>::slot,boost::function<void ()(std::string)>,1,void ()(std::string)>::call(std::string)")
 }
@@ -317,7 +317,7 @@ pub fn stub_3346c() -> ! {
 }
 
 // 0x355c8 — __GLOBAL__I_a_8
-#[doc(alias = "`global constructor keyed to__a_8")]
+#[doc(alias = "global constructor keyed to__a_8")]
 pub fn stub_355c8() -> ! {
     todo!("0x355c8 `global constructor keyed to__a_8")
 }
@@ -367,7 +367,7 @@ pub fn stub_3603c() -> ! {
 }
 
 // 0x36e80 — __GLOBAL__I_a_9
-#[doc(alias = "`global constructor keyed to__a_9")]
+#[doc(alias = "global constructor keyed to__a_9")]
 pub fn stub_36e80() -> ! {
     todo!("0x36e80 `global constructor keyed to__a_9")
 }
@@ -872,13 +872,13 @@ pub fn stub_3c4a0() -> ! {
 }
 
 // 0x3c4e0 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_10lock_errorEED1Ev
-#[doc(alias = "`non-virtual thunk to_boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk to_boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")]
 pub fn stub_3c4e0() -> ! {
     todo!("0x3c4e0 `non-virtual thunk to_boost::exception_detail::error_info_injector<boost::lock_error>::~error_info_injector()")
 }
 
 // 0x3c528 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED1Ev
-#[doc(alias = "`virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
+#[doc(alias = "virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 pub fn stub_3c528() -> ! {
     todo!("0x3c528 `virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
 }
@@ -897,7 +897,7 @@ pub fn stub_3c5b8() -> ! {
 }
 
 // 0x3c678 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_10lock_errorEEEED0Ev
-#[doc(alias = "`non-virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")]
 pub fn stub_3c678() -> ! {
     todo!("0x3c678 `non-virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::lock_error>>::~clone_impl()")
 }
@@ -943,13 +943,13 @@ pub fn stub_3c958() -> ! {
 }
 
 // 0x3c998 — __ZThn20_N5boost16exception_detail19error_info_injectorINS_21thread_resource_errorEED1Ev
-#[doc(alias = "`non-virtual thunk to_boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
+#[doc(alias = "non-virtual thunk to_boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")]
 pub fn stub_3c998() -> ! {
     todo!("0x3c998 `non-virtual thunk to_boost::exception_detail::error_info_injector<boost::thread_resource_error>::~error_info_injector()")
 }
 
 // 0x3c9e0 — __ZTv0_n20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED1Ev
-#[doc(alias = "`virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
+#[doc(alias = "virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 pub fn stub_3c9e0() -> ! {
     todo!("0x3c9e0 `virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
 }
@@ -968,13 +968,13 @@ pub fn stub_3ca70() -> ! {
 }
 
 // 0x3cb30 — __ZThn20_N5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEED0Ev
-#[doc(alias = "`non-virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
+#[doc(alias = "non-virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")]
 pub fn stub_3cb30() -> ! {
     todo!("0x3cb30 `non-virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::~clone_impl()")
 }
 
 // 0x3cb38 — __ZTv0_n12_NK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_21thread_resource_errorEEEE5cloneEv
-#[doc(alias = "`virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
+#[doc(alias = "virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")]
 pub fn stub_3cb38() -> ! {
     todo!("0x3cb38 `virtual thunk to_boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::thread_resource_error>>::clone(void)const")
 }
