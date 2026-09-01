@@ -178,6 +178,8 @@ pub mod generated_bg_5;
 pub mod generated_shard_next;
 pub mod generated_bg_6;
 pub mod generated_bg_7;
+pub mod generated_bg_8;
+pub mod generated_bg_9;
 
 pub mod generated_shard_ff;
 pub mod generated_shard_fg;
