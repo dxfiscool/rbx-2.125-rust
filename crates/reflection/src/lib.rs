@@ -106,3 +106,4 @@ pub mod generated_shard_cs;
 pub mod generated_shard_ct;
 pub mod generated_shard_cu;
 pub mod generated_shard_cv;
+pub mod generated_shard_cw;
