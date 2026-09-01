@@ -128,9 +128,9 @@ pub fn stub_c90074() -> ! {
 
 // 0xc90080 — __ZThn88_N4Ogre4FontD0Ev
 #[doc(alias = "non-virtual thunk toOgre::Font::~Font()")]
-// was: `non-virtual thunk to'Ogre::Font::~Font()
+// was: `non-virtual thunk to Ogre::Font::~Font()
 pub fn stub_c90080() -> ! {
-    todo!("0xc90080 `non-virtual thunk to'Ogre::Font::~Font()")
+    todo!("0xc90080 `non-virtual thunk to Ogre::Font::~Font()")
 }
 
 // 0xc90114 — __ZN4Ogre4FontD2Ev
@@ -142,9 +142,9 @@ pub fn stub_c90114() -> ! {
 
 // 0xc90534 — __ZThn88_N4Ogre4FontD1Ev
 #[doc(alias = "non-virtual thunk toOgre::Font::~Font()")]
-// was: `non-virtual thunk to'Ogre::Font::~Font()
+// was: `non-virtual thunk to Ogre::Font::~Font()
 pub fn stub_c90534() -> ! {
-    todo!("0xc90534 `non-virtual thunk to'Ogre::Font::~Font()")
+    todo!("0xc90534 `non-virtual thunk to Ogre::Font::~Font()")
 }
 
 // 0xc90540 — __ZN4Ogre4Font7setTypeENS_8FontTypeE
@@ -219,9 +219,9 @@ pub fn stub_c913ac() -> ! {
 
 // 0xc92bf8 — __ZThn88_N4Ogre4Font12loadResourceEPNS_8ResourceE
 #[doc(alias = "non-virtual thunk toOgre::Font::loadResource(Ogre::Resource *)")]
-// was: `non-virtual thunk to'Ogre::Font::loadResource(Ogre::Resource *)
+// was: `non-virtual thunk to Ogre::Font::loadResource(Ogre::Resource *)
 pub fn stub_c92bf8() -> ! {
-    todo!("0xc92bf8 `non-virtual thunk to'Ogre::Font::loadResource(Ogre::Resource *)")
+    todo!("0xc92bf8 `non-virtual thunk to Ogre::Font::loadResource(Ogre::Resource *)")
 }
 
 // 0xc92c04 — __ZNK4Ogre4Font7CmdType5doGetEPKv
