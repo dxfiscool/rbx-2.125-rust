@@ -155,5 +155,7 @@ pub mod generated_core_shard_dj;
 pub mod generated_core_shard_dk;
 pub mod generated_core_shard_dl;
 pub mod generated_core_shard_dm;
+pub mod generated_core_shard_dn;
 pub mod generated_core_shard_do;
 pub mod generated_core_shard_dp;
+pub mod generated_core_shard_dq;
