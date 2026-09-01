@@ -99,6 +99,7 @@ pub mod generated_95;
 pub mod generated_96;
 pub mod generated_97;
 pub mod generated_98;
+pub mod generated_99;
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
