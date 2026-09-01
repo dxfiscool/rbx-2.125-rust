@@ -195,3 +195,4 @@ pub mod generated_189;
 pub mod generated_190;
 pub mod generated_191;
 pub mod generated_192;
+pub mod generated_next;
