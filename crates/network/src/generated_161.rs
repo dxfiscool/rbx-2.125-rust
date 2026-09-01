@@ -79,7 +79,7 @@ pub fn stub_424cc() -> ! {
 
 // 0x42580 — __GLOBAL__I_a_12
 // demangled: `global constructor keyed to'_a_12
-#[doc(alias = "`global constructor keyed to_a_12")]
+#[doc(alias = "global constructor keyed to_a_12")]
 pub fn stub_42580() -> ! {
     todo!("0x42580 `global constructor keyed to'_a_12")
 }
@@ -263,7 +263,7 @@ pub fn stub_43364() -> ! {
 
 // 0x43394 — __GLOBAL__I_a_13
 // demangled: `global constructor keyed to'_a_13
-#[doc(alias = "`global constructor keyed to_a_13")]
+#[doc(alias = "global constructor keyed to_a_13")]
 pub fn stub_43394() -> ! {
     todo!("0x43394 `global constructor keyed to'_a_13")
 }
@@ -485,7 +485,7 @@ pub fn stub_44888() -> ! {
 
 // 0x44924 — __GLOBAL__I_a_14
 // demangled: `global constructor keyed to'_a_14
-#[doc(alias = "`global constructor keyed to_a_14")]
+#[doc(alias = "global constructor keyed to_a_14")]
 pub fn stub_44924() -> ! {
     todo!("0x44924 `global constructor keyed to'_a_14")
 }
@@ -656,7 +656,7 @@ pub fn stub_45d68() -> ! {
 
 // 0x45d98 — __ZThn4_N3rbx8callableINS_7signals6signalIFvbPvN3RBX7UIEventEEE4slotEN5boost8functionIS6_EELi3ES6_E4callEbS3_S5_
 // demangled: `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")]
 pub fn stub_45d98() -> ! {
     todo!("0x45d98 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(bool,void *,RBX::UIEvent)>::slot,boost::function<void ()(bool,void *,RBX::UIEvent)>,3,void ()(bool,void *,RBX::UIEvent)>::call(bool,void *,RBX::UIEvent)")
 }

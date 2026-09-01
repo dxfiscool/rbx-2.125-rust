@@ -186,7 +186,7 @@ pub fn stub_0x9ac8() -> ! {
 
 // 0x9ae8 — __ZThn96_N19CRenderSettingsItem19setAutoQualityLevelEi
 // type: int __fastcall(int this, int)
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")]
 pub fn stub_0x9ae8() -> ! {
     todo!("0x9ae8 `non-virtual thunk toCRenderSettingsItem::setAutoQualityLevel(int)")
 }
@@ -445,28 +445,28 @@ pub fn stub_0xb8bc() -> ! {
 
 // 0xb8e0 — __ZThn32_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_0xb8e0() -> ! {
     todo!("0xb8e0 `non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
 }
 
 // 0xb8e8 — __ZThn32_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_0xb8e8() -> ! {
     todo!("0xb8e8 `non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
 }
 
 // 0xb910 — __ZThn36_N19CRenderSettingsItemD1Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_0xb910() -> ! {
     todo!("0xb910 `non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
 }
 
 // 0xb918 — __ZThn36_N19CRenderSettingsItemD0Ev
 // type: void __fastcall(CRenderSettingsItem *__hidden this)
-#[doc(alias = "`non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
+#[doc(alias = "non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")]
 pub fn stub_0xb918() -> ! {
     todo!("0xb918 `non-virtual thunk toCRenderSettingsItem::~CRenderSettingsItem()")
 }
