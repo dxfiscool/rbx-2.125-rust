@@ -389,3 +389,4 @@ pub mod generated_core_shard_me;
 pub mod generated_core_shard_mf;
 pub mod generated_core_shard_mg;
 pub mod generated_core_shard_mh;
+pub mod generated_core_shard_mi;
