@@ -264,3 +264,4 @@ pub mod generated_core_shard_hn;
 pub mod generated_core_shard_ho;
 pub mod generated_core_shard_hp;
 pub mod generated_core_shard_hq;
+pub mod generated_core_shard_hr;
