@@ -76,3 +76,4 @@ pub mod generated_core_shard_ai;
 pub mod generated_core_shard_aj;
 pub mod generated_core_shard_ak;
 pub mod generated_core_shard_al;
+pub mod generated_core_shard_am;
