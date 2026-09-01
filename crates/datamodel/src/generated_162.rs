@@ -513,7 +513,7 @@ pub fn stub_371220() -> ! {
 }
 
 // 0x371254 — __GLOBAL__I_a_137
-#[doc(alias = "`global constructor keyed to_a_137")]
+#[doc(alias = "global constructor keyed to_a_137")]
 pub fn stub_371254() -> ! {
     todo!("0x371254 __GLOBAL__I_a_137")
 }
