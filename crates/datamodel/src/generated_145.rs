@@ -1,7 +1,7 @@
 // Auto-generated skeletons for rbx-datamodel — from ida/export.json
 // Filter: demangled contains RBX:: + Instance|DataModel|Workspace|Part|Model (13497 total, 0 remaining filtered) — global filler EA-sorted asc next 100 uncovered
 // Source: ida/export.json (85545 funcs, base 0x4000)
-// Batch: 100 stubs | range 0xc6b5c..0xcbbec | total filtered 13497, workspace 83092->83192 covered (rbx_core::SharedPtr not boost)
+// Batch: 100 stubs | range 0xc6b5c..0xcbbec | total filtered 13497, workspace 83292->83392 covered (rbx_core::SharedPtr not boost)
 // Shard: 145 EA-sorted asc global filler (next 100 uncovered after filtered done)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
