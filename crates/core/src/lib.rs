@@ -151,3 +151,4 @@ pub mod generated_core_shard_df;
 pub mod generated_core_shard_dg;
 pub mod generated_core_shard_dh;
 pub mod generated_core_shard_di;
+pub mod generated_core_shard_dj;
