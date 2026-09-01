@@ -1,5 +1,5 @@
 //! audio — FMOD (FMOD::System, FMOD::Sound, Channel, etc.)
-//! Generated from ida/export.json filtered for FMOD|Soundscape (2398 funcs, 2307 stubs here) + 530 in generated.rs = 2837 total, 2541 distinct EA.
+//! Generated from ida/export.json filtered for FMOD|Soundscape (2398 funcs, 2307 stubs here) + 530 in generated.rs = 2837 total, 2541 distinct EA. + gap-filler EA-sorted asc (20722 distinct, 5396 in lib.rs inline + remainder in generated_*), rbx_core::SharedPtr not boost.
 //! Each stub preserves IDA ea + mangled + demangled for rg.
 
 pub mod generated;
@@ -14806,3 +14806,4 @@ pub mod generated_160;
 pub mod generated_161;
 pub mod generated_bg_m;
 pub mod generated_bg_n;
+pub mod generated_162;
