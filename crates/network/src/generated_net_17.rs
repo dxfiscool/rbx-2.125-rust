@@ -501,7 +501,7 @@ pub fn stub_65df40() -> ! {
 // type: unknown
 #[doc(alias = "global constructor keyed to_a_266")]
 pub fn stub_65ff94() -> ! {
-    todo!("0x65ff94 global constructor keyed to'_a_266")
+    todo!("0x65ff94 global constructor keyed to_a_266")
 }
 
 // 0x661974 — __ZN3RBX4Name13callDoDeclareILZNS_17sSurfaceSelectionEEEEvv
@@ -522,7 +522,7 @@ pub fn stub_661978() -> ! {
 // type: unknown
 #[doc(alias = "global constructor keyed to_a_267")]
 pub fn stub_662c48() -> ! {
-    todo!("0x662c48 global constructor keyed to'_a_267")
+    todo!("0x662c48 global constructor keyed to_a_267")
 }
 
 // 0x665780 — __ZN3RBX10Reflection13BoundFuncDescINS_5TeamsEFvvELi0EEC2EMS2_FvvEPKcNS_8Security11PermissionsENS0_10Descriptor10AttributesE

@@ -225,3 +225,5 @@ pub mod generated_shard_gO;
 pub mod generated_shard_gP;
 pub mod generated_shard_gQ;
 pub mod generated_shard_gR;
+pub mod generated_shard_gS;
+pub mod generated_shard_gT;

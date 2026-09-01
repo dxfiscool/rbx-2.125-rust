@@ -1,7 +1,7 @@
-//! platform — generated_198 — 100 stubs EA-sorted asc fallback gap filler | Source ida/export.json | range 0x2982c8..0x2a4060 | rbx_core::SharedPtr not boost
-//! Source: ida/export.json (85545 funcs) global gap filler next 100 EA-sorted asc not yet stubbed in platform (fallback)
-//! Distinct stub_ 32551/85545 -> 32651/85545 | uncovered 52995 -> 52895 (platform)
-//! Batch: 100 stubs | range 0x2982c8..0x2a4060 | rbx_core::SharedPtr not boost
+//! platform — generated_198 — 150 stubs EA-sorted asc fallback gap filler | Source ida/export.json | range 0x2982c8..0x2a4fd8 | rbx_core::SharedPtr not boost
+//! Source: ida/export.json (85545 funcs) global gap filler next 150 EA-sorted asc not yet stubbed in platform (fallback)
+//! Distinct stub_ 901/85545 -> 1051/85545 | uncovered 84644 -> 84494 (platform)
+//! Batch: 150 stubs | range 0x2982c8..0x2a4fd8 | rbx_core::SharedPtr not boost
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
@@ -10,7 +10,6 @@ use rbx_core::SharedPtr;
 const _: () = {
     let _ = core::marker::PhantomData::<SharedPtr<u8>>;
 };
-
 // 0x2982c8 — __ZL4loadP9lua_StatePKcPFiS0_E
 #[doc(alias = "load(lua_State *,char const*,int (*)(lua_State *))")]
 pub fn stub_0x2982c8() -> ! {
@@ -117,6 +116,12 @@ pub fn stub_0x29a54c() -> ! {
     todo!("0x29a54c RBX::ScriptContext::loadLibrary(lua_State *)")
 }
 
+// 0x29a68c — __ZN3RBX13ScriptContext17loadRobloxLibraryEP9lua_State
+#[doc(alias = "RBX::ScriptContext::loadRobloxLibrary(lua_State *)")]
+pub fn stub_0x29a68c() -> ! {
+    todo!("0x29a68c RBX::ScriptContext::loadRobloxLibrary(lua_State *)")
+}
+
 // 0x29a7dc — __ZN3RBX13ScriptContext15debuggermanagerEP9lua_State
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "RBX::ScriptContext::debuggermanager(lua_State *)")]
@@ -137,6 +142,13 @@ pub fn stub_0x29a9e8() -> ! {
     todo!("0x29a9e8 RBX::ScriptContext::version(lua_State *)")
 }
 
+// 0x29aa08 — __ZN3RBX13ScriptContext14setRobloxPlaceEb
+// type: _DWORD __fastcall(RBX::ScriptContext *__hidden this, char *)
+#[doc(alias = "RBX::ScriptContext::setRobloxPlace(bool)")]
+pub fn stub_0x29aa08() -> ! {
+    todo!("0x29aa08 RBX::ScriptContext::setRobloxPlace(bool)")
+}
+
 // 0x29aa30 — __ZN3RBX13ScriptContext11closeStatesEb
 // type: _DWORD __fastcall(RBX::ScriptContext *__hidden this, bool)
 #[doc(alias = "RBX::ScriptContext::closeStates(bool)")]
@@ -152,6 +164,7 @@ pub fn stub_0x29aed0() -> ! {
 }
 
 // 0x29b090 — __ZN3RBX13ScriptContext20onCamelCaseViolationEN5boost10shared_ptrINS_8InstanceEEESsS4_
+// type: RBX::ScriptContext::onCamelCaseViolation(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)
 #[doc(alias = "RBX::ScriptContext::onCamelCaseViolation(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")]
 pub fn stub_0x29b090() -> ! {
     todo!("0x29b090 RBX::ScriptContext::onCamelCaseViolation(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")
@@ -180,16 +193,16 @@ pub fn stub_0x29bce4() -> ! {
 
 // 0x29bce8 — __ZThn32_N3RBX13ScriptContextD0Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
+#[doc(alias = "non-virtual thunk to RBX::ScriptContext::~ScriptContext()")]
 pub fn stub_0x29bce8() -> ! {
-    todo!("0x29bce8 `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29bce8 non-virtual thunk to RBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29bcf0 — __ZThn36_N3RBX13ScriptContextD0Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
+#[doc(alias = "non-virtual thunk to RBX::ScriptContext::~ScriptContext()")]
 pub fn stub_0x29bcf0() -> ! {
-    todo!("0x29bcf0 `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29bcf0 non-virtual thunk to RBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29bcf8 — __ZN3RBX13ScriptContextD2Ev
@@ -201,16 +214,16 @@ pub fn stub_0x29bcf8() -> ! {
 
 // 0x29c364 — __ZThn32_N3RBX13ScriptContextD1Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
+#[doc(alias = "non-virtual thunk to RBX::ScriptContext::~ScriptContext()")]
 pub fn stub_0x29c364() -> ! {
-    todo!("0x29c364 `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29c364 non-virtual thunk to RBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29c36c — __ZThn36_N3RBX13ScriptContextD1Ev
 // type: void __fastcall(RBX::ScriptContext *__hidden this)
-#[doc(alias = "non-virtual thunk toRBX::ScriptContext::~ScriptContext()")]
+#[doc(alias = "non-virtual thunk to RBX::ScriptContext::~ScriptContext()")]
 pub fn stub_0x29c36c() -> ! {
-    todo!("0x29c36c `non-virtual thunk to'RBX::ScriptContext::~ScriptContext()")
+    todo!("0x29c36c non-virtual thunk to RBX::ScriptContext::~ScriptContext()")
 }
 
 // 0x29c378 — __ZN3RBX13ScriptContext14onCheckTimeoutEv
@@ -227,6 +240,7 @@ pub fn stub_0x29c508() -> ! {
 }
 
 // 0x29c588 — __ZN3RBX13ScriptContext17setThreadIdentityEP9lua_StateNS_8Security10IdentitiesEN5boost10shared_ptrINS_10BaseScriptEEE
+// type: RBX::ScriptContext::setThreadIdentity(lua_State *,RBX::Security::Identities,boost::shared_ptr<RBX::BaseScript>)
 #[doc(alias = "RBX::ScriptContext::setThreadIdentity(lua_State *,RBX::Security::Identities,boost::shared_ptr<RBX::BaseScript>)")]
 pub fn stub_0x29c588() -> ! {
     todo!("0x29c588 RBX::ScriptContext::setThreadIdentity(lua_State *,RBX::Security::Identities,boost::shared_ptr<RBX::BaseScript>)")
@@ -252,6 +266,7 @@ pub fn stub_0x29c69c() -> ! {
 }
 
 // 0x29c798 — __ZN3RBX13ScriptContext4callERNS_3Lua15WeakFunctionRefEN5boost9function1ImP9lua_StateEENS4_9function2IvS7_mEE
+// type: RBX::ScriptContext::call(RBX::Lua::WeakFunctionRef &,boost::function1<unsigned long,lua_State *>,boost::function2<void,lua_State *,unsigned long>)
 #[doc(alias = "RBX::ScriptContext::call(RBX::Lua::WeakFunctionRef &,boost::function1<unsigned long,lua_State *>,boost::function2<void,lua_State *,unsigned long>)")]
 pub fn stub_0x29c798() -> ! {
     todo!("0x29c798 RBX::ScriptContext::call(RBX::Lua::WeakFunctionRef &,boost::function1<unsigned long,lua_State *>,boost::function2<void,lua_State *,unsigned long>)")
@@ -304,6 +319,7 @@ pub fn stub_0x29df1c() -> ! {
 }
 
 // 0x29e080 — __ZN3RBX3Lua13Continuations14onErrorHandlerEP9lua_StateN5boost8functionIFvPKcS7_NS4_10shared_ptrINS_10BaseScriptEEEiEEE
+// type: RBX::Lua::Continuations::onErrorHandler(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>)
 #[doc(alias = "RBX::Lua::Continuations::onErrorHandler(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>)")]
 pub fn stub_0x29e080() -> ! {
     todo!("0x29e080 RBX::Lua::Continuations::onErrorHandler(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>)")
@@ -324,6 +340,7 @@ pub fn stub_0x29e5dc() -> ! {
 }
 
 // 0x29e978 — __ZN3RBX13ScriptContext6resumeENS_3Lua9ThreadRefEN5boost9function1ImP9lua_StateEENS3_9function2IvS6_mEE
+// type: RBX::ScriptContext::resume(RBX::Lua::ThreadRef,boost::function1<unsigned long,lua_State *>,boost::function2<void,lua_State *,unsigned long>)
 #[doc(alias = "RBX::ScriptContext::resume(RBX::Lua::ThreadRef,boost::function1<unsigned long,lua_State *>,boost::function2<void,lua_State *,unsigned long>)")]
 pub fn stub_0x29e978() -> ! {
     todo!("0x29e978 RBX::ScriptContext::resume(RBX::Lua::ThreadRef,boost::function1<unsigned long,lua_State *>,boost::function2<void,lua_State *,unsigned long>)")
@@ -412,9 +429,9 @@ pub fn stub_0x2a1430() -> ! {
 
 // 0x2a146c — __ZThn96_N3RBX13ScriptContext15scriptShouldRunEPNS_10BaseScriptE
 // type: _DWORD __fastcall(RBX::ScriptContext *__hidden this, RBX::BaseScript *)
-#[doc(alias = "non-virtual thunk toRBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")]
+#[doc(alias = "non-virtual thunk to RBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")]
 pub fn stub_0x2a146c() -> ! {
-    todo!("0x2a146c `non-virtual thunk to'RBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")
+    todo!("0x2a146c non-virtual thunk to RBX::ScriptContext::scriptShouldRun(RBX::BaseScript *)")
 }
 
 // 0x2a1478 — __ZN3RBX13ScriptContext9addScriptEPNS_10BaseScriptENS0_18ScriptStartOptionsE
@@ -499,6 +516,7 @@ pub fn stub_0x2a36f8() -> ! {
 }
 
 // 0x2a3818 — __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvN5boost10shared_ptrINS_8InstanceEEESsS6_EN3rbx6signalIS7_EEMS2_SA_ED1Ev
+// type: RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()")]
 pub fn stub_0x2a3818() -> ! {
     todo!("0x2a3818 RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()")
@@ -524,6 +542,7 @@ pub fn stub_0x2a3898() -> ! {
 }
 
 // 0x2a38e0 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFvSsN5boost10shared_ptrINS_8InstanceEEEELi2EED1Ev
+// type: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")]
 pub fn stub_0x2a38e0() -> ! {
     todo!("0x2a38e0 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(std::string,boost::shared_ptr<RBX::Instance>),2>::~BoundFuncDesc()")
@@ -536,6 +555,7 @@ pub fn stub_0x2a39e4() -> ! {
 }
 
 // 0x2a3a08 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFviN5boost10shared_ptrINS_8InstanceEEESsELi3EED1Ev
+// type: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,boost::shared_ptr<RBX::Instance>,std::string),3>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,boost::shared_ptr<RBX::Instance>,std::string),3>::~BoundFuncDesc()")]
 pub fn stub_0x2a3a08() -> ! {
     todo!("0x2a3a08 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,void ()(int,boost::shared_ptr<RBX::Instance>,std::string),3>::~BoundFuncDesc()")
@@ -548,12 +568,14 @@ pub fn stub_0x2a3b20() -> ! {
 }
 
 // 0x2a3b60 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKNS0_5TupleEEEbELi1EED1Ev
+// type: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> ()(bool),1>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> ()(bool),1>::~BoundFuncDesc()")]
 pub fn stub_0x2a3b60() -> ! {
     todo!("0x2a3b60 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<RBX::Reflection::Tuple const> ()(bool),1>::~BoundFuncDesc()")
 }
 
 // 0x2a3ba0 — __ZN3RBX10Reflection13BoundFuncDescINS_13ScriptContextEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED1Ev
+// type: RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()
 #[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")]
 pub fn stub_0x2a3ba0() -> ! {
     todo!("0x2a3ba0 RBX::Reflection::BoundFuncDesc<RBX::ScriptContext,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")
@@ -572,6 +594,7 @@ pub fn stub_0x2a3be8() -> ! {
 }
 
 // 0x2a3c28 — __ZN3RBX10Reflection9EventDescINS_13ScriptContextEFvSsSsN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
+// type: RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()
 #[doc(alias = "RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()")]
 pub fn stub_0x2a3c28() -> ! {
     todo!("0x2a3c28 RBX::Reflection::EventDesc<RBX::ScriptContext,void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(std::string,std::string,boost::shared_ptr<RBX::Instance>)> RBX::ScriptContext::*>::~EventDesc()")
@@ -655,4 +678,305 @@ pub fn stub_0x2a402c() -> ! {
 #[doc(alias = "RBX::Lua::Bridge<RBX::Region3,true>::on_newindex(lua_State *)")]
 pub fn stub_0x2a4060() -> ! {
     todo!("0x2a4060 RBX::Lua::Bridge<RBX::Region3,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a4094 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::Region3int16,true>::on_index(lua_State *)")]
+pub fn stub_0x2a4094() -> ! {
+    todo!("0x2a4094 RBX::Lua::Bridge<RBX::Region3int16,true>::on_index(lua_State *)")
+}
+
+// 0x2a40c8 — __ZN3RBX3Lua6BridgeINS_12Region3int16ELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::Region3int16,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a40c8() -> ! {
+    todo!("0x2a40c8 RBX::Lua::Bridge<RBX::Region3int16,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a40fc — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::on_index(lua_State *)")]
+pub fn stub_0x2a40fc() -> ! {
+    todo!("0x2a40fc RBX::Lua::Bridge<G3D::Vector3int16,true>::on_index(lua_State *)")
+}
+
+// 0x2a4130 — __ZN3RBX3Lua6BridgeIN3G3D12Vector3int16ELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3int16,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4130() -> ! {
+    todo!("0x2a4130 RBX::Lua::Bridge<G3D::Vector3int16,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a4164 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_index(lua_State *)")]
+pub fn stub_0x2a4164() -> ! {
+    todo!("0x2a4164 RBX::Lua::Bridge<G3D::Vector2int16,true>::on_index(lua_State *)")
+}
+
+// 0x2a4198 — __ZN3RBX3Lua6BridgeIN3G3D12Vector2int16ELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2int16,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4198() -> ! {
+    todo!("0x2a4198 RBX::Lua::Bridge<G3D::Vector2int16,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a41cc — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_index(lua_State *)")]
+pub fn stub_0x2a41cc() -> ! {
+    todo!("0x2a41cc RBX::Lua::Bridge<G3D::Vector3,true>::on_index(lua_State *)")
+}
+
+// 0x2a4200 — __ZN3RBX3Lua6BridgeIN3G3D7Vector3ELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector3,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4200() -> ! {
+    todo!("0x2a4200 RBX::Lua::Bridge<G3D::Vector3,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a4234 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_index(lua_State *)")]
+pub fn stub_0x2a4234() -> ! {
+    todo!("0x2a4234 RBX::Lua::Bridge<G3D::Vector2,true>::on_index(lua_State *)")
+}
+
+// 0x2a4268 — __ZN3RBX3Lua6BridgeIN3G3D7Vector2ELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Vector2,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4268() -> ! {
+    todo!("0x2a4268 RBX::Lua::Bridge<G3D::Vector2,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a429c — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::RbxRay,true>::on_index(lua_State *)")]
+pub fn stub_0x2a429c() -> ! {
+    todo!("0x2a429c RBX::Lua::Bridge<RBX::RbxRay,true>::on_index(lua_State *)")
+}
+
+// 0x2a42d0 — __ZN3RBX3Lua6BridgeINS_6RbxRayELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::RbxRay,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a42d0() -> ! {
+    todo!("0x2a42d0 RBX::Lua::Bridge<RBX::RbxRay,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a4304 — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_index(lua_State *)")]
+pub fn stub_0x2a4304() -> ! {
+    todo!("0x2a4304 RBX::Lua::Bridge<G3D::Color3,true>::on_index(lua_State *)")
+}
+
+// 0x2a4338 — __ZN3RBX3Lua6BridgeIN3G3D6Color3ELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<G3D::Color3,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4338() -> ! {
+    todo!("0x2a4338 RBX::Lua::Bridge<G3D::Color3,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a436c — __ZN3RBX3Lua6BridgeINS_10BrickColorELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::BrickColor,true>::on_index(lua_State *)")]
+pub fn stub_0x2a436c() -> ! {
+    todo!("0x2a436c RBX::Lua::Bridge<RBX::BrickColor,true>::on_index(lua_State *)")
+}
+
+// 0x2a43a0 — __ZN3RBX3Lua6BridgeINS_10BrickColorELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::BrickColor,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a43a0() -> ! {
+    todo!("0x2a43a0 RBX::Lua::Bridge<RBX::BrickColor,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a43d4 — __ZN3RBX3Lua6BridgeINS_4UDimELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::UDim,true>::on_index(lua_State *)")]
+pub fn stub_0x2a43d4() -> ! {
+    todo!("0x2a43d4 RBX::Lua::Bridge<RBX::UDim,true>::on_index(lua_State *)")
+}
+
+// 0x2a4408 — __ZN3RBX3Lua6BridgeINS_4UDimELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::UDim,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4408() -> ! {
+    todo!("0x2a4408 RBX::Lua::Bridge<RBX::UDim,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a443c — __ZN3RBX3Lua6BridgeINS_5UDim2ELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::UDim2,true>::on_index(lua_State *)")]
+pub fn stub_0x2a443c() -> ! {
+    todo!("0x2a443c RBX::Lua::Bridge<RBX::UDim2,true>::on_index(lua_State *)")
+}
+
+// 0x2a4470 — __ZN3RBX3Lua6BridgeINS_5UDim2ELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::UDim2,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4470() -> ! {
+    todo!("0x2a4470 RBX::Lua::Bridge<RBX::UDim2,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a44a4 — __ZN3RBX3Lua6BridgeINS_5FacesELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::Faces,true>::on_index(lua_State *)")]
+pub fn stub_0x2a44a4() -> ! {
+    todo!("0x2a44a4 RBX::Lua::Bridge<RBX::Faces,true>::on_index(lua_State *)")
+}
+
+// 0x2a44d8 — __ZN3RBX3Lua6BridgeINS_5FacesELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::Faces,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a44d8() -> ! {
+    todo!("0x2a44d8 RBX::Lua::Bridge<RBX::Faces,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a450c — __ZN3RBX3Lua6BridgeINS_4AxesELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::Axes,true>::on_index(lua_State *)")]
+pub fn stub_0x2a450c() -> ! {
+    todo!("0x2a450c RBX::Lua::Bridge<RBX::Axes,true>::on_index(lua_State *)")
+}
+
+// 0x2a4540 — __ZN3RBX3Lua6BridgeINS_4AxesELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::Axes,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4540() -> ! {
+    todo!("0x2a4540 RBX::Lua::Bridge<RBX::Axes,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a4574 — __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::CellID,true>::on_index(lua_State *)")]
+pub fn stub_0x2a4574() -> ! {
+    todo!("0x2a4574 RBX::Lua::Bridge<RBX::CellID,true>::on_index(lua_State *)")
+}
+
+// 0x2a45a8 — __ZN3RBX3Lua6BridgeINS_6CellIDELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::CellID,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a45a8() -> ! {
+    todo!("0x2a45a8 RBX::Lua::Bridge<RBX::CellID,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a45dc — __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE8on_indexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::InputObject,true>::on_index(lua_State *)")]
+pub fn stub_0x2a45dc() -> ! {
+    todo!("0x2a45dc RBX::Lua::Bridge<RBX::InputObject,true>::on_index(lua_State *)")
+}
+
+// 0x2a4610 — __ZN3RBX3Lua6BridgeINS_11InputObjectELb1EE11on_newindexEP9lua_State
+#[doc(alias = "RBX::Lua::Bridge<RBX::InputObject,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4610() -> ! {
+    todo!("0x2a4610 RBX::Lua::Bridge<RBX::InputObject,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a4644 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE8on_indexEP9lua_State
+// type: RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(lua_State *)
+#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(lua_State *)")]
+pub fn stub_0x2a4644() -> ! {
+    todo!("0x2a4644 RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_index(lua_State *)")
+}
+
+// 0x2a4678 — __ZN3RBX3Lua6BridgeIN5boost13intrusive_ptrINS0_13WeakThreadRef4NodeEEELb1EE11on_newindexEP9lua_State
+// type: RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(lua_State *)
+#[doc(alias = "RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4678() -> ! {
+    todo!("0x2a4678 RBX::Lua::Bridge<boost::intrusive_ptr<RBX::Lua::WeakThreadRef::Node>,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a46ac — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE8on_indexEP9lua_State
+// type: RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_index(lua_State *)
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_index(lua_State *)")]
+pub fn stub_0x2a46ac() -> ! {
+    todo!("0x2a46ac RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_index(lua_State *)")
+}
+
+// 0x2a46e0 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFNS3_IKNS_10Reflection5TupleEEES8_EEEEELb1EE11on_newindexEP9lua_State
+// type: RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_newindex(lua_State *)
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a46e0() -> ! {
+    todo!("0x2a46e0 RBX::Lua::Bridge<boost::shared_ptr<boost::function<boost::shared_ptr<RBX::Reflection::Tuple const> ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>>,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a4714 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE8on_indexEP9lua_State
+// type: RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_index(lua_State *)
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_index(lua_State *)")]
+pub fn stub_0x2a4714() -> ! {
+    todo!("0x2a4714 RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_index(lua_State *)")
+}
+
+// 0x2a4748 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS2_8functionIFvNS3_IKNS_10Reflection5TupleEEENS4_IFvPNS0_12IAsyncResultEEEEEEEEELb1EE11on_newindexEP9lua_State
+// type: RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_newindex(lua_State *)
+#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_newindex(lua_State *)")]
+pub fn stub_0x2a4748() -> ! {
+    todo!("0x2a4748 RBX::Lua::Bridge<boost::shared_ptr<boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>,boost::function<void ()(RBX::Lua::IAsyncResult *)>)>>,true>::on_newindex(lua_State *)")
+}
+
+// 0x2a477c — __ZN3RBX3Lua15SingletonBridgeIPKNS0_18AllEnumDescriptorsELb1EE20registerClassLibraryEP9lua_State
+#[doc(alias = "RBX::Lua::SingletonBridge<RBX::Lua::AllEnumDescriptors const*,true>::registerClassLibrary(lua_State *)")]
+pub fn stub_0x2a477c() -> ! {
+    todo!("0x2a477c RBX::Lua::SingletonBridge<RBX::Lua::AllEnumDescriptors const*,true>::registerClassLibrary(lua_State *)")
+}
+
+// 0x2a47b0 — __ZN3RBX3Lua15SingletonBridgeIPKNS_10Reflection14EnumDescriptorELb1EE20registerClassLibraryEP9lua_State
+#[doc(alias = "RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor const*,true>::registerClassLibrary(lua_State *)")]
+pub fn stub_0x2a47b0() -> ! {
+    todo!("0x2a47b0 RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor const*,true>::registerClassLibrary(lua_State *)")
+}
+
+// 0x2a47e4 — __ZN3RBX3Lua15SingletonBridgeIPKNS_10Reflection14EnumDescriptor4ItemELb1EE20registerClassLibraryEP9lua_State
+#[doc(alias = "RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor::Item const*,true>::registerClassLibrary(lua_State *)")]
+pub fn stub_0x2a47e4() -> ! {
+    todo!("0x2a47e4 RBX::Lua::SingletonBridge<RBX::Reflection::EnumDescriptor::Item const*,true>::registerClassLibrary(lua_State *)")
+}
+
+// 0x2a4818 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE20registerClassLibraryEP9lua_State
+#[doc(alias = "RBX::Lua::SharedPtrBridge<RBX::Instance>::registerClassLibrary(lua_State *)")]
+pub fn stub_0x2a4818() -> ! {
+    todo!("0x2a4818 RBX::Lua::SharedPtrBridge<RBX::Instance>::registerClassLibrary(lua_State *)")
+}
+
+// 0x2a4854 — __ZN3RBX3Lua12ObjectBridge28registerInstanceClassLibraryEP9lua_State
+#[doc(alias = "RBX::Lua::ObjectBridge::registerInstanceClassLibrary(lua_State *)")]
+pub fn stub_0x2a4854() -> ! {
+    todo!("0x2a4854 RBX::Lua::ObjectBridge::registerInstanceClassLibrary(lua_State *)")
+}
+
+// 0x2a4890 — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE4pushEP9lua_StateN5boost10shared_ptrIS2_EE
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "RBX::Lua::SharedPtrBridge<RBX::Instance>::push(lua_State *,boost::shared_ptr<RBX::Instance>)")]
+pub fn stub_0x2a4890() -> ! {
+    todo!("0x2a4890 RBX::Lua::SharedPtrBridge<RBX::Instance>::push(lua_State *,boost::shared_ptr<RBX::Instance>)")
+}
+
+// 0x2a4a7c — __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEaSERKS4_
+// type: boost::shared_ptr<RBX::TaskScheduler::Job>::operator=(boost::shared_ptr<RBX::TaskScheduler::Job> const&)
+#[doc(alias = "boost::shared_ptr<RBX::TaskScheduler::Job>::operator=(boost::shared_ptr<RBX::TaskScheduler::Job> const&)")]
+pub fn stub_0x2a4a7c() -> ! {
+    todo!("0x2a4a7c boost::shared_ptr<RBX::TaskScheduler::Job>::operator=(boost::shared_ptr<RBX::TaskScheduler::Job> const&)")
+}
+
+// 0x2a4ab4 — __ZN3RBX11shared_fromINS_13ScriptContextEEEN5boost10shared_ptrIT_EEPS4_
+// type: boost::shared_ptr<RBX::ScriptContext> RBX::shared_from<RBX::ScriptContext>(RBX::ScriptContext*)
+#[doc(alias = "boost::shared_ptr<RBX::ScriptContext> RBX::shared_from<RBX::ScriptContext>(RBX::ScriptContext*)")]
+pub fn stub_0x2a4ab4() -> ! {
+    todo!("0x2a4ab4 boost::shared_ptr<RBX::ScriptContext> RBX::shared_from<RBX::ScriptContext>(RBX::ScriptContext*)")
+}
+
+// 0x2a4ba0 — __ZN3rbx10safe_queueIN3RBX13ScriptContext13WaitingThreadEE5clearEv
+#[doc(alias = "rbx::safe_queue<RBX::ScriptContext::WaitingThread>::clear(void)")]
+pub fn stub_0x2a4ba0() -> ! {
+    todo!("0x2a4ba0 rbx::safe_queue<RBX::ScriptContext::WaitingThread>::clear(void)")
+}
+
+// 0x2a4c6c — __ZN16RobloxExtraSpace21eraseRefsFromAllNodesEv
+// type: _DWORD __fastcall(RobloxExtraSpace *__hidden this)
+#[doc(alias = "RobloxExtraSpace::eraseRefsFromAllNodes(void)")]
+pub fn stub_0x2a4c6c() -> ! {
+    todo!("0x2a4c6c RobloxExtraSpace::eraseRefsFromAllNodes(void)")
+}
+
+// 0x2a4ca0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsS6_EE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_13ScriptContextES6_SsS6_EENSA_5list4INSA_5valueIPSE_EENS2_3argILi1EEENSK_ILi2EEENSK_ILi3EEEEEEEEENS0_10connectionERKT_
+// type: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>> const&)
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>> const&)")]
+pub fn stub_0x2a4ca0() -> ! {
+    todo!("0x2a4ca0 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>>>(boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::ScriptContext,boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>>,boost::_bi::list4<boost::_bi::value<RBX::ScriptContext*>,boost::arg<1>,boost::arg<2>,boost::arg<3>>> const&)")
+}
+
+// 0x2a4d18 — __ZN3rbx11make_sharedISt6vectorIN3RBX10Reflection7VariantESaIS4_EEmEEN5boost10shared_ptrIT_EERKT0_
+// type: boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,unsigned long>(unsigned long const&)
+#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,unsigned long>(unsigned long const&)")]
+pub fn stub_0x2a4d18() -> ! {
+    todo!("0x2a4d18 boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>,unsigned long>(unsigned long const&)")
+}
+
+// 0x2a4ebc — __ZN5boost4bindIvN3RBX13ScriptContextENS_10shared_ptrIS2_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS7_T0_EENS5_9list_av_1IT1_E4typeEEEMSA_FS7_vESD_
+// type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list_av_1<boost::shared_ptr<RBX::ScriptContext>>::type> boost::bind<void,RBX::ScriptContext,boost::shared_ptr<RBX::ScriptContext>>(void (RBX::ScriptContext::*)(void),boost::shared_ptr<RBX::ScriptContext>)")]
+pub fn stub_0x2a4ebc() -> ! {
+    todo!("0x2a4ebc boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list_av_1<boost::shared_ptr<RBX::ScriptContext>>::type> boost::bind<void,RBX::ScriptContext,boost::shared_ptr<RBX::ScriptContext>>(void (RBX::ScriptContext::*)(void),boost::shared_ptr<RBX::ScriptContext>)")
+}
+
+// 0x2a4fd8 — __ZN3RBX3Lua12LuaArguments9pushTupleERKNS_10Reflection5TupleEP9lua_State
+#[doc(alias = "RBX::Lua::LuaArguments::pushTuple(RBX::Reflection::Tuple const&,lua_State *)")]
+pub fn stub_0x2a4fd8() -> ! {
+    todo!("0x2a4fd8 RBX::Lua::LuaArguments::pushTuple(RBX::Reflection::Tuple const&,lua_State *)")
 }
