@@ -1,7 +1,7 @@
 // Auto-generated skeletons for rbx-datamodel — from ida/export.json
 // Filter: RBX::Instance|RBX::DataModel|RBX::Workspace (10215 filtered, 0 remaining) — EA-sorted asc next 100 DM gaps alternate range not yet in crates/datamodel/src
 // Source: ida/export.json (85545 funcs, base 0x4000)
-// Batch: 100 stubs | range 0xb8d0..0x52384 | dm distinct before 20080, after 20180, dm missing 65465->65365
+// Batch: 100 stubs | range 0xb8d0..0x52384 | dm distinct before 19980, after 20080, dm missing 65565->65465
 // Shard: 195 EA-sorted asc next 100 DM gaps alternate range (filtered exhausted, global filler EA-sorted asc lowest gaps)
 // SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
 
