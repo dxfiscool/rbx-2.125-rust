@@ -170,3 +170,4 @@ pub mod generated_core_shard_dy;
 pub mod generated_core_shard_dz;
 pub mod generated_core_shard_ea;
 pub mod generated_core_shard_eb;
+pub mod generated_core_shard_ec;
