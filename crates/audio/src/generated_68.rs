@@ -20,7 +20,7 @@ pub fn stub_6971f0() -> ! {
 }
 
 // 0x697230 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_16UserInputServiceEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::UserInputService> RBX::Creatable<RBX::Instance>::create<RBX::UserInputService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::UserInputService> RBX::Creatable<RBX::Instance>::create<RBX::UserInputService>(void)")]
 pub fn stub_697230() -> ! {
     todo!("0x697230 boost::shared_ptr<RBX::UserInputService> RBX::Creatable<RBX::Instance>::create<RBX::UserInputService>(void)")
 }
@@ -39,19 +39,19 @@ pub fn stub_697330() -> ! {
 }
 
 // 0x6973e8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_17GameBasicSettingsEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::GameBasicSettings> RBX::Creatable<RBX::Instance>::create<RBX::GameBasicSettings>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GameBasicSettings> RBX::Creatable<RBX::Instance>::create<RBX::GameBasicSettings>(void)")]
 pub fn stub_6973e8() -> ! {
     todo!("0x6973e8 boost::shared_ptr<RBX::GameBasicSettings> RBX::Creatable<RBX::Instance>::create<RBX::GameBasicSettings>(void)")
 }
 
 // 0x697498 — __ZN5boost10shared_ptrIN3RBX17GameBasicSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::GameBasicSettings>::shared_ptr<RBX::GameBasicSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GameBasicSettings>::shared_ptr<RBX::GameBasicSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_697498() -> ! {
     todo!("0x697498 boost::shared_ptr<RBX::GameBasicSettings>::shared_ptr<RBX::GameBasicSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GameBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x697560 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17GameBasicSettingsES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GameBasicSettings,RBX::GameBasicSettings>(boost::shared_ptr<RBX::GameBasicSettings> const*,RBX::GameBasicSettings *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GameBasicSettings,RBX::GameBasicSettings>(rbx_core::SharedPtr<RBX::GameBasicSettings> const*,RBX::GameBasicSettings *)const")]
 pub fn stub_697560() -> ! {
     todo!("0x697560 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GameBasicSettings,RBX::GameBasicSettings>(boost::shared_ptr<RBX::GameBasicSettings> const*,RBX::GameBasicSettings *)const")
 }
@@ -126,7 +126,7 @@ pub fn stub_697a1c() -> ! {
 }
 
 // 0x697b38 — __ZN5boost10shared_ptrIN3RBX11VehicleSeatEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
-#[doc(alias = "boost::shared_ptr<RBX::VehicleSeat>::shared_ptr<RBX::VehicleSeat>(boost::weak_ptr<RBX::VehicleSeat> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::VehicleSeat>::shared_ptr<RBX::VehicleSeat>(rbx_core::Weak<RBX::VehicleSeat> const&,boost::detail::sp_nothrow_tag)")]
 pub fn stub_697b38() -> ! {
     todo!("0x697b38 boost::shared_ptr<RBX::VehicleSeat>::shared_ptr<RBX::VehicleSeat>(boost::weak_ptr<RBX::VehicleSeat> const&,boost::detail::sp_nothrow_tag)")
 }
@@ -199,13 +199,13 @@ pub fn stub_697f80() -> ! {
 }
 
 // 0x698070 — __ZN5boost10shared_ptrIN3RBX19ButtonBindingWidgetEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::ButtonBindingWidget>::shared_ptr<RBX::ButtonBindingWidget,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ButtonBindingWidget *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ButtonBindingWidget>::shared_ptr<RBX::ButtonBindingWidget,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ButtonBindingWidget *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_698070() -> ! {
     todo!("0x698070 boost::shared_ptr<RBX::ButtonBindingWidget>::shared_ptr<RBX::ButtonBindingWidget,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ButtonBindingWidget *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x698138 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19ButtonBindingWidgetES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ButtonBindingWidget,RBX::ButtonBindingWidget>(boost::shared_ptr<RBX::ButtonBindingWidget> const*,RBX::ButtonBindingWidget *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ButtonBindingWidget,RBX::ButtonBindingWidget>(rbx_core::SharedPtr<RBX::ButtonBindingWidget> const*,RBX::ButtonBindingWidget *)const")]
 pub fn stub_698138() -> ! {
     todo!("0x698138 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ButtonBindingWidget,RBX::ButtonBindingWidget>(boost::shared_ptr<RBX::ButtonBindingWidget> const*,RBX::ButtonBindingWidget *)const")
 }
@@ -249,7 +249,7 @@ pub fn stub_69836c() -> ! {
 
 // 0x698370 — __ZN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4nextERN5boost13intrusive_ptrINS6_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(RBX::Controller::Button)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(RBX::Controller::Button)>::next(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> &)")]
 pub fn stub_698370() -> ! {
     todo!("0x698370 rbx::signals::signal<void ()(RBX::Controller::Button)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> &)")
 }
@@ -261,7 +261,7 @@ pub fn stub_6984d0() -> ! {
 }
 
 // 0x6984f8 — __ZN5boost13intrusive_ptrIN3rbx7signals6signalIFvN3RBX10Controller6ButtonEEE4slotEEaSERKSA_
-#[doc(alias = "boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(rbx_core::SharedPtr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> const&)")]
 pub fn stub_6984f8() -> ! {
     todo!("0x6984f8 boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot>::operator=(boost::intrusive_ptr<rbx::signals::signal<void ()(RBX::Controller::Button)>::slot> const&)")
 }
@@ -422,7 +422,7 @@ pub fn stub_6992a0() -> ! {
 }
 
 // 0x6992a4 — __ZN5boost10shared_ptrIN3RBX10ControllerEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
-#[doc(alias = "boost::shared_ptr<RBX::Controller>::shared_ptr<RBX::Controller>(boost::weak_ptr<RBX::Controller> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Controller>::shared_ptr<RBX::Controller>(rbx_core::Weak<RBX::Controller> const&,boost::detail::sp_nothrow_tag)")]
 pub fn stub_6992a4() -> ! {
     todo!("0x6992a4 boost::shared_ptr<RBX::Controller>::shared_ptr<RBX::Controller>(boost::weak_ptr<RBX::Controller> const&,boost::detail::sp_nothrow_tag)")
 }
@@ -625,7 +625,7 @@ pub fn stub_69a2b0() -> ! {
 
 // 0x69a364 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_10ControllerEFvNS2_6ButtonEEN3rbx6signalIS4_EEMS2_S7_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Controller,void ()(RBX::Controller::Button),rbx::signal<void ()(RBX::Controller::Button)>,rbx::signal<void ()(RBX::Controller::Button)> RBX::Controller::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::Controller,void ()(RBX::Controller::Button),rbx::signal<void ()(RBX::Controller::Button)>,rbx::signal<void ()(RBX::Controller::Button)> RBX::Controller::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 pub fn stub_69a364() -> ! {
     todo!("0x69a364 RBX::Reflection::EventDescImpl<1,RBX::Controller,void ()(RBX::Controller::Button),rbx::signal<void ()(RBX::Controller::Button)>,rbx::signal<void ()(RBX::Controller::Button)> RBX::Controller::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
 }
