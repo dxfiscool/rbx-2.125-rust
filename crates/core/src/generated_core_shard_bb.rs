@@ -586,14 +586,14 @@ pub fn stub_0x411c18() -> ! {
     todo!("0x411c18 __ZN3RBX15AdvMoveToolBaseD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()")]
 // 0x411cb8 — __ZThn36_N3RBX15AdvMoveToolBaseD1Ev — `non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
 // was: `non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
 pub fn stub_0x411cb8() -> ! {
     todo!("0x411cb8 __ZThn36_N3RBX15AdvMoveToolBaseD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()")]
+#[doc(alias = "non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()")]
 // 0x411cc0 — __ZThn36_N3RBX15AdvMoveToolBaseD0Ev — `non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
 // was: `non-virtual thunk toRBX::AdvMoveToolBase::~AdvMoveToolBase()
 pub fn stub_0x411cc0() -> ! {
