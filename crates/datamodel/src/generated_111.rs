@@ -194,7 +194,7 @@ pub fn stub_b8ab2c() -> ! {
 
 // 0xb8c108 — __ZN12_GLOBAL__N_118getExtraSlotMeshIdEPN3RBX12PartInstanceERKNS0_18HumanoidIdentifierERA4_KNS_16AccoutrementMeshE
 // was: `anonymous namespace'::getExtraSlotMeshId(RBX::PartInstance *,RBX::HumanoidIdentifier const&,`anonymous namespace'::AccoutrementMesh const(&)[4])
-#[doc(alias = "`anonymous namespace::getExtraSlotMeshId(RBX::PartInstance *,RBX::HumanoidIdentifier const&,`anonymous namespace::AccoutrementMesh const(&)[4])")]
+#[doc(alias = "anonymous namespace::getExtraSlotMeshId(RBX::PartInstance *,RBX::HumanoidIdentifier const&,anonymous namespace::AccoutrementMesh const(&)[4])")]
 pub fn stub_b8c108() -> ! {
     todo!("0xb8c108 `anonymous namespace::getExtraSlotMeshId(RBX::PartInstance *,RBX::HumanoidIdentifier const&,`anonymous namespace::AccoutrementMesh const(&)[4])")
 }
@@ -247,7 +247,7 @@ pub fn stub_bdaf9c() -> ! {
 
 // 0xbe0334 — __ZNK12_GLOBAL__N_123DistanceUpdatePredicateclERKN5boost8weak_ptrIN3RBX12PartInstanceEEE
 // was: `anonymous namespace'::DistanceUpdatePredicate::operator()(boost::weak_ptr<RBX::PartInstance> const&)const
-#[doc(alias = "`anonymous namespace::DistanceUpdatePredicate::operator()(boost::weak_ptr<RBX::PartInstance> const&)const")]
+#[doc(alias = "anonymous namespace::DistanceUpdatePredicate::operator()(boost::weak_ptr<RBX::PartInstance> const&)const")]
 pub fn stub_be0334() -> ! {
     todo!("0xbe0334 `anonymous namespace::DistanceUpdatePredicate::operator()(boost::weak_ptr<RBX::PartInstance> const&)const")
 }
