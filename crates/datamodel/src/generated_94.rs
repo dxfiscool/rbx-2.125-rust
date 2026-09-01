@@ -236,31 +236,31 @@ pub fn stub_401088() -> ! {
 }
 
 // 0x401104 — __ZThn32_N3RBX17FilteredSelectionINS_13ModelInstanceEED1Ev
-#[doc(alias = "`non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 pub fn stub_401104() -> ! {
     todo!("0x401104 `non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
 }
 
 // 0x40110c — __ZThn32_N3RBX17FilteredSelectionINS_13ModelInstanceEED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 pub fn stub_40110c() -> ! {
     todo!("0x40110c `non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
 }
 
 // 0x401114 — __ZThn36_N3RBX17FilteredSelectionINS_13ModelInstanceEED1Ev
-#[doc(alias = "`non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 pub fn stub_401114() -> ! {
     todo!("0x401114 `non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
 }
 
 // 0x40111c — __ZThn36_N3RBX17FilteredSelectionINS_13ModelInstanceEED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")]
 pub fn stub_40111c() -> ! {
     todo!("0x40111c `non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::~FilteredSelection()")
 }
 
 // 0x401124 — __ZThn96_N3RBX17FilteredSelectionINS_13ModelInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
-#[doc(alias = "`non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)")]
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)")]
 pub fn stub_401124() -> ! {
     todo!("0x401124 `non-virtual thunk toRBX::FilteredSelection<RBX::ModelInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
 }
@@ -364,31 +364,31 @@ pub fn stub_4027ac() -> ! {
 }
 
 // 0x402828 — __ZThn32_N3RBX17FilteredSelectionINS_10PVInstanceEED1Ev
-#[doc(alias = "`non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
 pub fn stub_402828() -> ! {
     todo!("0x402828 `non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
 }
 
 // 0x402830 — __ZThn32_N3RBX17FilteredSelectionINS_10PVInstanceEED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
 pub fn stub_402830() -> ! {
     todo!("0x402830 `non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
 }
 
 // 0x402838 — __ZThn36_N3RBX17FilteredSelectionINS_10PVInstanceEED1Ev
-#[doc(alias = "`non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
 pub fn stub_402838() -> ! {
     todo!("0x402838 `non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
 }
 
 // 0x402840 — __ZThn36_N3RBX17FilteredSelectionINS_10PVInstanceEED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")]
 pub fn stub_402840() -> ! {
     todo!("0x402840 `non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::~FilteredSelection()")
 }
 
 // 0x402848 — __ZThn96_N3RBX17FilteredSelectionINS_10PVInstanceEE18onSelectionChangedERKNS_16SelectionChangedE
-#[doc(alias = "`non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&)")]
+#[doc(alias = "non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&)")]
 pub fn stub_402848() -> ! {
     todo!("0x402848 `non-virtual thunk toRBX::FilteredSelection<RBX::PVInstance>::onSelectionChanged(RBX::SelectionChanged const&)")
 }
@@ -477,37 +477,37 @@ pub fn stub_417e28() -> ! {
 }
 
 // 0x417e38 — __ZThn32_N3RBX19CornerWedgeInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 pub fn stub_417e38() -> ! {
     todo!("0x417e38 `non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e40 — __ZThn36_N3RBX19CornerWedgeInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 pub fn stub_417e40() -> ! {
     todo!("0x417e40 `non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e48 — __ZThn132_N3RBX19CornerWedgeInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 pub fn stub_417e48() -> ! {
     todo!("0x417e48 `non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e50 — __ZThn32_N3RBX19CornerWedgeInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 pub fn stub_417e50() -> ! {
     todo!("0x417e50 `non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e64 — __ZThn36_N3RBX19CornerWedgeInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 pub fn stub_417e64() -> ! {
     todo!("0x417e64 `non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
 
 // 0x417e78 — __ZThn132_N3RBX19CornerWedgeInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")]
 pub fn stub_417e78() -> ! {
     todo!("0x417e78 `non-virtual thunk toRBX::CornerWedgeInstance::~CornerWedgeInstance()")
 }
@@ -620,4 +620,3 @@ pub fn stub_49b968() -> ! {
 pub fn stub_49bb84() -> ! {
     todo!("0x49bb84 RBX::Reflection::EnumDesc<RBX::PyramidInstance::NumSidesEnum>::EnumDesc(void)")
 }
-

@@ -325,37 +325,37 @@ pub fn stub_4a7234() -> ! {
 }
 
 // 0x4a7244 — __ZThn32_N3RBX20ExtrudedPartInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 pub fn stub_4a7244() -> ! {
     todo!("0x4a7244 `non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a724c — __ZThn36_N3RBX20ExtrudedPartInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 pub fn stub_4a724c() -> ! {
     todo!("0x4a724c `non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7254 — __ZThn132_N3RBX20ExtrudedPartInstanceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 pub fn stub_4a7254() -> ! {
     todo!("0x4a7254 `non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a725c — __ZThn32_N3RBX20ExtrudedPartInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 pub fn stub_4a725c() -> ! {
     todo!("0x4a725c `non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7270 — __ZThn36_N3RBX20ExtrudedPartInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 pub fn stub_4a7270() -> ! {
     todo!("0x4a7270 `non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
 
 // 0x4a7284 — __ZThn132_N3RBX20ExtrudedPartInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")]
 pub fn stub_4a7284() -> ! {
     todo!("0x4a7284 `non-virtual thunk toRBX::ExtrudedPartInstance::~ExtrudedPartInstance()")
 }
@@ -578,7 +578,7 @@ pub fn stub_4a96a4() -> ! {
 }
 
 // 0x4a971c — __ZThn92_N3RBX12FaceInstance14render3dSelectEPNS_5AdornENS_11SelectStateE
-#[doc(alias = "`non-virtual thunk toRBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+#[doc(alias = "non-virtual thunk toRBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 pub fn stub_4a971c() -> ! {
     todo!("0x4a971c `non-virtual thunk toRBX::FaceInstance::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
@@ -608,7 +608,7 @@ pub fn stub_4a9808() -> ! {
 }
 
 // 0x4a98d4 — __ZThn32_N3RBX12FaceInstanceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
+#[doc(alias = "non-virtual thunk toRBX::FaceInstance::~FaceInstance()")]
 pub fn stub_4a98d4() -> ! {
     todo!("0x4a98d4 `non-virtual thunk toRBX::FaceInstance::~FaceInstance()")
 }
