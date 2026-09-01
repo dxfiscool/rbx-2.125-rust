@@ -516,7 +516,7 @@ pub fn stub_5fba8c() -> ! {
 
 // 0x5fbad4 — __ZN3RBX13BasePlayerGui20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "__ZN3RBX13BasePlayerGui20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE")]
-#[doc(alias = "RBX::BasePlayerGui::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "RBX::BasePlayerGui::onDescendantRemoving(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: __ZN3RBX13BasePlayerGui20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_5fbad4() -> ! {
     todo!("0x5fbad4 RBX::BasePlayerGui::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")
@@ -810,7 +810,7 @@ pub fn stub_5fd3ac() -> ! {
 // 0x5fd3d4 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_9ScreenGuiEEERS3_RKNS0_IT_EE
 // type: int(void)
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_9ScreenGuiEEERS3_RKNS0_IT_EE")]
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScreenGui>(boost::shared_ptr<RBX::ScreenGui> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::ScreenGui>(rbx_core::SharedPtr<RBX::ScreenGui> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_9ScreenGuiEEERS3_RKNS0_IT_EE
 pub fn stub_5fd3d4() -> ! {
     todo!("0x5fd3d4 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::ScreenGui>(boost::shared_ptr<RBX::ScreenGui> const&)")
@@ -818,7 +818,7 @@ pub fn stub_5fd3d4() -> ! {
 
 // 0x5fd408 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9ScreenGuiEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_9ScreenGuiEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::ScreenGui> RBX::Creatable<RBX::Instance>::create<RBX::ScreenGui>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ScreenGui> RBX::Creatable<RBX::Instance>::create<RBX::ScreenGui>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_9ScreenGuiEEEN5boost10shared_ptrIT_EEv
 pub fn stub_5fd408() -> ! {
     todo!("0x5fd408 boost::shared_ptr<RBX::ScreenGui> RBX::Creatable<RBX::Instance>::create<RBX::ScreenGui>(void)")
@@ -826,7 +826,7 @@ pub fn stub_5fd408() -> ! {
 
 // 0x5fd4bc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9TextLabelEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_9TextLabelEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::TextLabel> RBX::Creatable<RBX::Instance>::create<RBX::TextLabel>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextLabel> RBX::Creatable<RBX::Instance>::create<RBX::TextLabel>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_9TextLabelEEEN5boost10shared_ptrIT_EEv
 pub fn stub_5fd4bc() -> ! {
     todo!("0x5fd4bc boost::shared_ptr<RBX::TextLabel> RBX::Creatable<RBX::Instance>::create<RBX::TextLabel>(void)")

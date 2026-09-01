@@ -280,7 +280,7 @@ pub fn stub_50c9b8() -> ! {
 
 // 0x50caa0 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N5boost10shared_ptrINS0_8InstanceEEEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E
 // type: int __fastcall(int result, int)
-#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>> *)")]
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>> *)")]
 // was: __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N5boost10shared_ptrINS0_8InstanceEEEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E
 pub fn stub_50caa0() -> ! {
     todo!("0x50caa0 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>>::_M_erase(std::_Rb_tree_node<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>> *)")
@@ -289,7 +289,7 @@ pub fn stub_50caa0() -> ! {
 
 // 0x50cac8 — __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N5boost10shared_ptrINS0_8InstanceEEEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeISA_E
 // type: int __fastcall(int, int)
-#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>> *)")]
+#[doc(alias = "std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::Name const* const,rbx_core::SharedPtr<RBX::Instance>>> *)")]
 // was: __ZNSt8_Rb_treeIPKN3RBX4NameESt4pairIKS3_N5boost10shared_ptrINS0_8InstanceEEEESt10_Select1stISA_ESt4lessIS3_ESaISA_EE15_M_destroy_nodeEPSt13_Rb_tree_nodeISA_E
 pub fn stub_50cac8() -> ! {
     todo!("0x50cac8 std::_Rb_tree<RBX::Name const*,std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>,std::_Select1st<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>,std::less<RBX::Name const*>,std::allocator<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>>>::_M_destroy_node(std::_Rb_tree_node<std::pair<RBX::Name const* const,boost::shared_ptr<RBX::Instance>>> *)")
@@ -451,7 +451,7 @@ pub fn stub_50dbb0() -> ! {
 
 // 0x50dd7c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_19GlobalBasicSettingsEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::GlobalBasicSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalBasicSettings>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GlobalBasicSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalBasicSettings>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_19GlobalBasicSettingsEEEN5boost10shared_ptrIT_EEv
 pub fn stub_50dd7c() -> ! {
     todo!("0x50dd7c boost::shared_ptr<RBX::GlobalBasicSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalBasicSettings>(void)")
@@ -460,7 +460,7 @@ pub fn stub_50dd7c() -> ! {
 
 // 0x50de2c — __ZN5boost10shared_ptrIN3RBX19GlobalBasicSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::GlobalBasicSettings>::shared_ptr<RBX::GlobalBasicSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GlobalBasicSettings>::shared_ptr<RBX::GlobalBasicSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX19GlobalBasicSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_50de2c() -> ! {
     todo!("0x50de2c boost::shared_ptr<RBX::GlobalBasicSettings>::shared_ptr<RBX::GlobalBasicSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalBasicSettings *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -523,7 +523,7 @@ pub fn stub_50e124() -> ! {
 
 // 0x50e12c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_22GlobalAdvancedSettingsEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::GlobalAdvancedSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalAdvancedSettings>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GlobalAdvancedSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalAdvancedSettings>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_22GlobalAdvancedSettingsEEEN5boost10shared_ptrIT_EEv
 pub fn stub_50e12c() -> ! {
     todo!("0x50e12c boost::shared_ptr<RBX::GlobalAdvancedSettings> RBX::Creatable<RBX::Instance>::create<RBX::GlobalAdvancedSettings>(void)")
@@ -532,7 +532,7 @@ pub fn stub_50e12c() -> ! {
 
 // 0x50e1dc — __ZN5boost10shared_ptrIN3RBX22GlobalAdvancedSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::GlobalAdvancedSettings>::shared_ptr<RBX::GlobalAdvancedSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GlobalAdvancedSettings>::shared_ptr<RBX::GlobalAdvancedSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX22GlobalAdvancedSettingsEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_50e1dc() -> ! {
     todo!("0x50e1dc boost::shared_ptr<RBX::GlobalAdvancedSettings>::shared_ptr<RBX::GlobalAdvancedSettings,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GlobalAdvancedSettings *,RBX::Creatable<RBX::Instance>::Deleter)")

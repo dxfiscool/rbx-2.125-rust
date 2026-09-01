@@ -13,7 +13,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x44d114 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_15GamePassServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::GamePassService>(boost::shared_ptr<RBX::GamePassService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::GamePassService>(rbx_core::SharedPtr<RBX::GamePassService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_15GamePassServiceEEERS3_RKNS0_IT_EE
 pub fn stub_44d114() -> ! {
     todo!("0x44d114 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::GamePassService>(boost::shared_ptr<RBX::GamePassService> const&)")
@@ -59,7 +59,7 @@ pub fn stub_44d278() -> ! {
 
 // 0x44d350 — __ZN5boost10shared_ptrIN3RBX15GamePassServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::GamePassService>::shared_ptr<RBX::GamePassService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GamePassService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GamePassService>::shared_ptr<RBX::GamePassService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GamePassService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX15GamePassServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_44d350() -> ! {
     todo!("0x44d350 boost::shared_ptr<RBX::GamePassService>::shared_ptr<RBX::GamePassService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GamePassService *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -67,7 +67,7 @@ pub fn stub_44d350() -> ! {
 
 // 0x44d418 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15GamePassServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GamePassService,RBX::GamePassService>(boost::shared_ptr<RBX::GamePassService> const*,RBX::GamePassService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GamePassService,RBX::GamePassService>(rbx_core::SharedPtr<RBX::GamePassService> const*,RBX::GamePassService *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15GamePassServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_44d418() -> ! {
     todo!("0x44d418 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GamePassService,RBX::GamePassService>(boost::shared_ptr<RBX::GamePassService> const*,RBX::GamePassService *)const")
@@ -139,7 +139,7 @@ pub fn stub_44d6f0() -> ! {
 
 // 0x44d864 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13SocialServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::SocialService> RBX::Creatable<RBX::Instance>::create<RBX::SocialService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SocialService> RBX::Creatable<RBX::Instance>::create<RBX::SocialService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_13SocialServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_44d864() -> ! {
     todo!("0x44d864 boost::shared_ptr<RBX::SocialService> RBX::Creatable<RBX::Instance>::create<RBX::SocialService>(void)")
@@ -147,7 +147,7 @@ pub fn stub_44d864() -> ! {
 
 // 0x44d914 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13SocialServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::SocialService>(boost::shared_ptr<RBX::SocialService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::SocialService>(rbx_core::SharedPtr<RBX::SocialService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13SocialServiceEEERS3_RKNS0_IT_EE
 pub fn stub_44d914() -> ! {
     todo!("0x44d914 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::SocialService>(boost::shared_ptr<RBX::SocialService> const&)")
@@ -193,7 +193,7 @@ pub fn stub_44da78() -> ! {
 
 // 0x44db50 — __ZN5boost10shared_ptrIN3RBX13SocialServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::SocialService>::shared_ptr<RBX::SocialService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SocialService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SocialService>::shared_ptr<RBX::SocialService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SocialService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX13SocialServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_44db50() -> ! {
     todo!("0x44db50 boost::shared_ptr<RBX::SocialService>::shared_ptr<RBX::SocialService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SocialService *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -201,7 +201,7 @@ pub fn stub_44db50() -> ! {
 
 // 0x44dc18 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13SocialServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SocialService,RBX::SocialService>(boost::shared_ptr<RBX::SocialService> const*,RBX::SocialService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SocialService,RBX::SocialService>(rbx_core::SharedPtr<RBX::SocialService> const*,RBX::SocialService *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13SocialServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_44dc18() -> ! {
     todo!("0x44dc18 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SocialService,RBX::SocialService>(boost::shared_ptr<RBX::SocialService> const*,RBX::SocialService *)const")
@@ -265,7 +265,7 @@ pub fn stub_44de50() -> ! {
 
 // 0x44def4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13InsertServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::InsertService> RBX::Creatable<RBX::Instance>::create<RBX::InsertService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::InsertService> RBX::Creatable<RBX::Instance>::create<RBX::InsertService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_13InsertServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_44def4() -> ! {
     todo!("0x44def4 boost::shared_ptr<RBX::InsertService> RBX::Creatable<RBX::Instance>::create<RBX::InsertService>(void)")
@@ -273,7 +273,7 @@ pub fn stub_44def4() -> ! {
 
 // 0x44dfa8 — __ZN5boost10shared_ptrIN3RBX13InsertServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::InsertService>::shared_ptr<RBX::InsertService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::InsertService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::InsertService>::shared_ptr<RBX::InsertService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::InsertService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX13InsertServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_44dfa8() -> ! {
     todo!("0x44dfa8 boost::shared_ptr<RBX::InsertService>::shared_ptr<RBX::InsertService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::InsertService *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -289,7 +289,7 @@ pub fn stub_44e074() -> ! {
 
 // 0x44e180 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13InsertServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::InsertService>(boost::shared_ptr<RBX::InsertService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::InsertService>(rbx_core::SharedPtr<RBX::InsertService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13InsertServiceEEERS3_RKNS0_IT_EE
 pub fn stub_44e180() -> ! {
     todo!("0x44e180 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::InsertService>(boost::shared_ptr<RBX::InsertService> const&)")
@@ -328,7 +328,7 @@ pub fn stub_44e8f8() -> ! {
 
 // 0x44e968 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13FriendServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::FriendService> RBX::Creatable<RBX::Instance>::create<RBX::FriendService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::FriendService> RBX::Creatable<RBX::Instance>::create<RBX::FriendService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_13FriendServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_44e968() -> ! {
     todo!("0x44e968 boost::shared_ptr<RBX::FriendService> RBX::Creatable<RBX::Instance>::create<RBX::FriendService>(void)")
@@ -336,7 +336,7 @@ pub fn stub_44e968() -> ! {
 
 // 0x44ea18 — __ZN5boost10shared_ptrIN3RBX13FriendServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::FriendService>::shared_ptr<RBX::FriendService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FriendService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::FriendService>::shared_ptr<RBX::FriendService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FriendService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX13FriendServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_44ea18() -> ! {
     todo!("0x44ea18 boost::shared_ptr<RBX::FriendService>::shared_ptr<RBX::FriendService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FriendService *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -368,7 +368,7 @@ pub fn stub_44ec38() -> ! {
 
 // 0x44ed20 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13FriendServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FriendService>(boost::shared_ptr<RBX::FriendService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::FriendService>(rbx_core::SharedPtr<RBX::FriendService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_13FriendServiceEEERS3_RKNS0_IT_EE
 pub fn stub_44ed20() -> ! {
     todo!("0x44ed20 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FriendService>(boost::shared_ptr<RBX::FriendService> const&)")
@@ -407,7 +407,7 @@ pub fn stub_44eea4() -> ! {
 
 // 0x44f018 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_15GeometryServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::GeometryService> RBX::Creatable<RBX::Instance>::create<RBX::GeometryService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryService> RBX::Creatable<RBX::Instance>::create<RBX::GeometryService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_15GeometryServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_44f018() -> ! {
     todo!("0x44f018 boost::shared_ptr<RBX::GeometryService> RBX::Creatable<RBX::Instance>::create<RBX::GeometryService>(void)")
@@ -415,7 +415,7 @@ pub fn stub_44f018() -> ! {
 
 // 0x44f0c8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_15GeometryServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::GeometryService>(boost::shared_ptr<RBX::GeometryService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::GeometryService>(rbx_core::SharedPtr<RBX::GeometryService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_15GeometryServiceEEERS3_RKNS0_IT_EE
 pub fn stub_44f0c8() -> ! {
     todo!("0x44f0c8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::GeometryService>(boost::shared_ptr<RBX::GeometryService> const&)")
@@ -453,7 +453,7 @@ pub fn stub_44f14c() -> ! {
 
 // 0x44f224 — __ZN5boost10shared_ptrIN3RBX15GeometryServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::GeometryService>::shared_ptr<RBX::GeometryService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GeometryService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GeometryService>::shared_ptr<RBX::GeometryService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GeometryService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX15GeometryServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_44f224() -> ! {
     todo!("0x44f224 boost::shared_ptr<RBX::GeometryService>::shared_ptr<RBX::GeometryService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GeometryService *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -461,7 +461,7 @@ pub fn stub_44f224() -> ! {
 
 // 0x44f2ec — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15GeometryServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GeometryService,RBX::GeometryService>(boost::shared_ptr<RBX::GeometryService> const*,RBX::GeometryService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GeometryService,RBX::GeometryService>(rbx_core::SharedPtr<RBX::GeometryService> const*,RBX::GeometryService *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_15GeometryServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_44f2ec() -> ! {
     todo!("0x44f2ec void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GeometryService,RBX::GeometryService>(boost::shared_ptr<RBX::GeometryService> const*,RBX::GeometryService *)const")
@@ -533,7 +533,7 @@ pub fn stub_44f5c8() -> ! {
 
 // 0x44f638 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12BadgeServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::BadgeService> RBX::Creatable<RBX::Instance>::create<RBX::BadgeService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BadgeService> RBX::Creatable<RBX::Instance>::create<RBX::BadgeService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_12BadgeServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_44f638() -> ! {
     todo!("0x44f638 boost::shared_ptr<RBX::BadgeService> RBX::Creatable<RBX::Instance>::create<RBX::BadgeService>(void)")
@@ -541,7 +541,7 @@ pub fn stub_44f638() -> ! {
 
 // 0x44f6ec — __ZN5boost10shared_ptrIN3RBX12BadgeServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::BadgeService>::shared_ptr<RBX::BadgeService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BadgeService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BadgeService>::shared_ptr<RBX::BadgeService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BadgeService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX12BadgeServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_44f6ec() -> ! {
     todo!("0x44f6ec boost::shared_ptr<RBX::BadgeService>::shared_ptr<RBX::BadgeService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BadgeService *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -628,7 +628,7 @@ pub fn stub_44fc58() -> ! {
 
 // 0x44fdcc — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12BadgeServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::BadgeService>(boost::shared_ptr<RBX::BadgeService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::BadgeService>(rbx_core::SharedPtr<RBX::BadgeService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12BadgeServiceEEERS3_RKNS0_IT_EE
 pub fn stub_44fdcc() -> ! {
     todo!("0x44fdcc boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::BadgeService>(boost::shared_ptr<RBX::BadgeService> const&)")
@@ -675,7 +675,7 @@ pub fn stub_44ffb8() -> ! {
 
 // 0x45012c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_14PhysicsServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::PhysicsService> RBX::Creatable<RBX::Instance>::create<RBX::PhysicsService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PhysicsService> RBX::Creatable<RBX::Instance>::create<RBX::PhysicsService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_14PhysicsServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_45012c() -> ! {
     todo!("0x45012c boost::shared_ptr<RBX::PhysicsService> RBX::Creatable<RBX::Instance>::create<RBX::PhysicsService>(void)")
@@ -683,7 +683,7 @@ pub fn stub_45012c() -> ! {
 
 // 0x4501dc — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_14PhysicsServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::PhysicsService>(boost::shared_ptr<RBX::PhysicsService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::PhysicsService>(rbx_core::SharedPtr<RBX::PhysicsService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_14PhysicsServiceEEERS3_RKNS0_IT_EE
 pub fn stub_4501dc() -> ! {
     todo!("0x4501dc boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::PhysicsService>(boost::shared_ptr<RBX::PhysicsService> const&)")

@@ -325,21 +325,21 @@ pub fn stub_479dfc() -> ! {
 
 // 0x479e30 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EEC2EMS2_FvS6_dEPKcSC_SC_dNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 // type: int __fastcall(int, int, int, int, int, int, double, int, int, int)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EEC2EMS2_FvS6_dEPKcSC_SC_dNS_8Security11PermissionsENS0_10Descriptor10AttributesE
 pub fn stub_479e30() -> ! {
     todo!("0x479e30 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::BoundFuncDesc(void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),char const*,char const*,char const*,double,RBX::Security::Permissions,RBX::Reflection::Descriptor::Attributes)")
 }
 
 // 0x47a050 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE16declareSignatureEPKcNS0_7VariantESA_SB_
 pub fn stub_47a050() -> ! {
     todo!("0x47a050 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::declareSignature(char const*,RBX::Reflection::Variant,char const*,RBX::Reflection::Variant)")
 }
 
 // 0x47a09c — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED0Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED0Ev
 pub fn stub_47a09c() -> ! {
     todo!("0x47a09c RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()")
@@ -347,14 +347,14 @@ pub fn stub_47a09c() -> ! {
 
 // 0x47a1c8 — __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")]
 // was: __ZNK3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EE7executeEPNS0_13DescribedBaseERNS0_18FunctionDescriptor9ArgumentsE
 pub fn stub_47a1c8() -> ! {
     todo!("0x47a1c8 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::execute(RBX::Reflection::DescribedBase *,RBX::Reflection::FunctionDescriptor::Arguments &)const")
 }
 
 // 0x47a2cc — __ZN3RBX10Reflection11Call2HelperINS_13DebrisServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEdES6_dvE4callEPS2_S8_RNS0_7VariantERKS6_RKd
-#[doc(alias = "RBX::Reflection::Call2Helper<RBX::DebrisService,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),boost::shared_ptr<RBX::Instance>,double,void>::call(RBX::DebrisService*,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,double const&)")]
+#[doc(alias = "RBX::Reflection::Call2Helper<RBX::DebrisService,void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),rbx_core::SharedPtr<RBX::Instance>,double,void>::call(RBX::DebrisService*,void (RBX::DebrisService::*)(rbx_core::SharedPtr<RBX::Instance>,double),RBX::Reflection::Variant &,rbx_core::SharedPtr<RBX::Instance> const&,double const&)")]
 // was: __ZN3RBX10Reflection11Call2HelperINS_13DebrisServiceEMS2_FvN5boost10shared_ptrINS_8InstanceEEEdES6_dvE4callEPS2_S8_RNS0_7VariantERKS6_RKd
 pub fn stub_47a2cc() -> ! {
     todo!("0x47a2cc RBX::Reflection::Call2Helper<RBX::DebrisService,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),boost::shared_ptr<RBX::Instance>,double,void>::call(RBX::DebrisService*,void (RBX::DebrisService::*)(boost::shared_ptr<RBX::Instance>,double),RBX::Reflection::Variant &,boost::shared_ptr<RBX::Instance> const&,double const&)")

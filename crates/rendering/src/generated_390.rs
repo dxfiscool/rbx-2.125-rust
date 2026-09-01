@@ -92,7 +92,7 @@ pub fn stub_57c058() -> ! {
 // 0x57c39c — __ZN5boost10shared_ptrIN3RBX4WeldEEaSERKS3_
 // type: int(void)
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX4WeldEEaSERKS3_")]
-#[doc(alias = "boost::shared_ptr<RBX::Weld>::operator=(boost::shared_ptr<RBX::Weld> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Weld>::operator=(rbx_core::SharedPtr<RBX::Weld> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX4WeldEEaSERKS3_
 pub fn stub_57c39c() -> ! {
     todo!("0x57c39c boost::shared_ptr<RBX::Weld>::operator=(boost::shared_ptr<RBX::Weld> const&)")
@@ -257,7 +257,7 @@ pub fn stub_57d4b4() -> ! {
 
 // 0x57d5f8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_14GuiImageButtonEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_14GuiImageButtonEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::GuiImageButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiImageButton>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GuiImageButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiImageButton>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_14GuiImageButtonEEEN5boost10shared_ptrIT_EEv
 pub fn stub_57d5f8() -> ! {
     todo!("0x57d5f8 boost::shared_ptr<RBX::GuiImageButton> RBX::Creatable<RBX::Instance>::create<RBX::GuiImageButton>(void)")
@@ -735,7 +735,7 @@ pub fn stub_58074c() -> ! {
 
 // 0x580750 — __ZN3RBX13InsertService13getFreeModelsESsiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE
 #[doc(alias = "__ZN3RBX13InsertService13getFreeModelsESsiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE")]
-#[doc(alias = "RBX::InsertService::getFreeModels(std::string,int,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "RBX::InsertService::getFreeModels(std::string,int,boost::function<void ()(rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")]
 // was: __ZN3RBX13InsertService13getFreeModelsESsiN5boost8functionIFvNS1_10shared_ptrIKSt6vectorINS_10Reflection7VariantESaIS6_EEEEEEENS2_IFvSsEEE
 pub fn stub_580750() -> ! {
     todo!("0x580750 RBX::InsertService::getFreeModels(std::string,int,boost::function<void ()(boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const>)>,boost::function<void ()(std::string)>)")
@@ -752,7 +752,7 @@ pub fn stub_581000() -> ! {
 
 // 0x581250 — __ZN3RBX13InsertService9loadAssetEiN5boost8functionIFvNS1_10shared_ptrINS_8InstanceEEEEEENS2_IFvSsEEE
 #[doc(alias = "__ZN3RBX13InsertService9loadAssetEiN5boost8functionIFvNS1_10shared_ptrINS_8InstanceEEEEEENS2_IFvSsEEE")]
-#[doc(alias = "RBX::InsertService::loadAsset(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "RBX::InsertService::loadAsset(int,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>,boost::function<void ()(std::string)>)")]
 // was: __ZN3RBX13InsertService9loadAssetEiN5boost8functionIFvNS1_10shared_ptrINS_8InstanceEEEEEENS2_IFvSsEEE
 pub fn stub_581250() -> ! {
     todo!("0x581250 RBX::InsertService::loadAsset(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)")
@@ -760,7 +760,7 @@ pub fn stub_581250() -> ! {
 
 // 0x58134c — __ZN3RBX13InsertService16loadAssetVersionEiN5boost8functionIFvNS1_10shared_ptrINS_8InstanceEEEEEENS2_IFvSsEEE
 #[doc(alias = "__ZN3RBX13InsertService16loadAssetVersionEiN5boost8functionIFvNS1_10shared_ptrINS_8InstanceEEEEEENS2_IFvSsEEE")]
-#[doc(alias = "RBX::InsertService::loadAssetVersion(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "RBX::InsertService::loadAssetVersion(int,boost::function<void ()(rbx_core::SharedPtr<RBX::Instance>)>,boost::function<void ()(std::string)>)")]
 // was: __ZN3RBX13InsertService16loadAssetVersionEiN5boost8functionIFvNS1_10shared_ptrINS_8InstanceEEEEEENS2_IFvSsEEE
 pub fn stub_58134c() -> ! {
     todo!("0x58134c RBX::InsertService::loadAssetVersion(int,boost::function<void ()(boost::shared_ptr<RBX::Instance>)>,boost::function<void ()(std::string)>)")
@@ -768,7 +768,7 @@ pub fn stub_58134c() -> ! {
 
 // 0x581448 — __ZN3RBX13InsertService6insertEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "__ZN3RBX13InsertService6insertEN5boost10shared_ptrINS_8InstanceEEE")]
-#[doc(alias = "RBX::InsertService::insert(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::InsertService::insert(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX13InsertService6insertEN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_581448() -> ! {
     todo!("0x581448 RBX::InsertService::insert(boost::shared_ptr<RBX::Instance>)")

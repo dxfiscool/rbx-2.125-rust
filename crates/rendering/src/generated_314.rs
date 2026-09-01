@@ -12,7 +12,7 @@ const _SHARED_PTR: Option<SharedPtr<u8>> = None;
 
 // 0x46dff8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 // type: void
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE6manageERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 pub fn stub_46dff8() -> ! {
     todo!("0x46dff8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
@@ -20,7 +20,7 @@ pub fn stub_46dff8() -> ! {
 
 // 0x46e014 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEvPS7_E6invokeERNS1_15function_bufferESJ_
 // type: void
-#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")]
 // was: __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEvPS7_E6invokeERNS1_15function_bufferESJ_
 pub fn stub_46e014() -> ! {
     todo!("0x46e014 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,void,RBX::DataModel*>::invoke(boost::detail::function::function_buffer &,RBX::DataModel*)")
@@ -28,7 +28,7 @@ pub fn stub_46e014() -> ! {
 
 // 0x46e030 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const")]
 // was: __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferE
 pub fn stub_46e030() -> ! {
     todo!("0x46e030 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &)const")
@@ -36,7 +36,7 @@ pub fn stub_46e030() -> ! {
 
 // 0x46e110 — __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: __ZNK5boost6detail8function13basic_vtable1IvPN3RBX9DataModelEE9assign_toINS_3_bi6bind_tIvPFvNS_10shared_ptrINS4_10LegacyLock14Implementation6EventsEEEENS8_5list1INS8_5valueISE_EEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 pub fn stub_46e110() -> ! {
     todo!("0x46e110 bool boost::detail::function::basic_vtable1<void,RBX::DataModel *>::assign_to<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>(boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
@@ -44,7 +44,7 @@ pub fn stub_46e110() -> ! {
 
 // 0x46e208 — __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEEEEclIPFvS9_ENS1_IRPS5_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void
-#[doc(alias = "void boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::operator()<void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
+#[doc(alias = "void boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::operator()<void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")]
 // was: __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEEEEclIPFvS9_ENS1_IRPS5_EEEEvNS0_4typeIvEERT_RT0_i
 pub fn stub_46e208() -> ! {
     todo!("0x46e208 void boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::operator()<void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<RBX::DataModel*&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>) &,boost::_bi::list1<RBX::DataModel*&> &,int)")
@@ -52,7 +52,7 @@ pub fn stub_46e208() -> ! {
 
 // 0x46e2d4 — __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE12manage_smallERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 // type: int(void)
-#[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: __ZN5boost6detail8function22functor_manager_commonINS_3_bi6bind_tIvPFvNS_10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEENS3_5list1INS3_5valueISB_EEEEEEE12manage_smallERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeE
 pub fn stub_46e2d4() -> ! {
     todo!("0x46e2d4 boost::detail::function::functor_manager_common<boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>),boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>>>::manage_small(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
@@ -68,7 +68,7 @@ pub fn stub_46e358() -> ! {
 
 // 0x46e404 — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEC2IS5_EEPT_
 // type: void
-#[doc(alias = "boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")]
 // was: __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEC2IS5_EEPT_
 pub fn stub_46e404() -> ! {
     todo!("0x46e404 boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>(RBX::DataModel::LegacyLock::Implementation::Events *)")
@@ -124,7 +124,7 @@ pub fn stub_46e608() -> ! {
 
 // 0x46e60c — __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEaSERKS6_
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::operator=(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>::operator=(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEaSERKS6_
 pub fn stub_46e60c() -> ! {
     todo!("0x46e60c boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>::operator=(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&)")
@@ -132,7 +132,7 @@ pub fn stub_46e60c() -> ! {
 
 // 0x46e644 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE9pop_frontEv
 // type: int(void)
-#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)")]
+#[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)")]
 // was: __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE9pop_frontEv
 pub fn stub_46e644() -> ! {
     todo!("0x46e644 std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::pop_front(void)")
@@ -140,7 +140,7 @@ pub fn stub_46e644() -> ! {
 
 // 0x46e670 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE16_M_pop_front_auxEv
 // type: int(void)
-#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)")]
+#[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)")]
 // was: __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE16_M_pop_front_auxEv
 pub fn stub_46e670() -> ! {
     todo!("0x46e670 std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_pop_front_aux(void)")
@@ -164,7 +164,7 @@ pub fn stub_46e6a0() -> ! {
 
 // 0x46e808 — __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEED1Ev
 // type: void
-#[doc(alias = "rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::~safe_queue()")]
+#[doc(alias = "rbx::safe_queue<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>::~safe_queue()")]
 // was: __ZN3rbx10safe_queueIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEEED1Ev
 pub fn stub_46e808() -> ! {
     todo!("0x46e808 rbx::safe_queue<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>::~safe_queue()")
@@ -172,7 +172,7 @@ pub fn stub_46e808() -> ! {
 
 // 0x46e8cc — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EED2Ev
 // type: void
-#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~deque()")]
+#[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~deque()")]
 // was: __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EED2Ev
 pub fn stub_46e8cc() -> ! {
     todo!("0x46e8cc std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~deque()")
@@ -180,7 +180,7 @@ pub fn stub_46e8cc() -> ! {
 
 // 0x46e9b4 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EED2Ev
 // type: int(void)
-#[doc(alias = "std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~_Deque_base()")]
+#[doc(alias = "std::_Deque_base<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~_Deque_base()")]
 // was: __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EED2Ev
 pub fn stub_46e9b4() -> ! {
     todo!("0x46e9b4 std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::~_Deque_base()")
@@ -188,7 +188,7 @@ pub fn stub_46e9b4() -> ! {
 
 // 0x46e9e0 — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE19_M_destroy_data_auxESt15_Deque_iteratorIS7_RS7_PS7_ESD_
 // type: int __fastcall(int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int)
-#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_destroy_data_aux(std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>)")]
+#[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_destroy_data_aux(std::_Deque_iterator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>&,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::_Deque_iterator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>&,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>*>)")]
 // was: __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE19_M_destroy_data_auxESt15_Deque_iteratorIS7_RS7_PS7_ESD_
 pub fn stub_46e9e0() -> ! {
     todo!("0x46e9e0 std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_destroy_data_aux(std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>)")
@@ -196,7 +196,7 @@ pub fn stub_46e9e0() -> ! {
 
 // 0x46eb20 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE17_M_initialize_mapEm
 // type: int __fastcall(int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, void *, int)
-#[doc(alias = "std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_initialize_map(unsigned long)")]
+#[doc(alias = "std::_Deque_base<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_initialize_map(unsigned long)")]
 // was: __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE17_M_initialize_mapEm
 pub fn stub_46eb20() -> ! {
     todo!("0x46eb20 std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_initialize_map(unsigned long)")
@@ -204,7 +204,7 @@ pub fn stub_46eb20() -> ! {
 
 // 0x46ec78 — __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE15_M_create_nodesEPPS7_SB_
 // type: int __fastcall(int, int, int, int, void *, int)
-#[doc(alias = "std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_create_nodes(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>**,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>**)")]
+#[doc(alias = "std::_Deque_base<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_create_nodes(rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>**,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>**)")]
 // was: __ZNSt11_Deque_baseIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EE15_M_create_nodesEPPS7_SB_
 pub fn stub_46ec78() -> ! {
     todo!("0x46ec78 std::_Deque_base<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::_M_create_nodes(boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>**,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>**)")
@@ -212,7 +212,7 @@ pub fn stub_46ec78() -> ! {
 
 // 0x46ed6c — __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EEC2ERKS9_
 // type: void
-#[doc(alias = "std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::deque(std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>> const&)")]
+#[doc(alias = "std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>>::deque(std::deque<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>>> const&)")]
 // was: __ZNSt5dequeIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEESaIS7_EEC2ERKS9_
 pub fn stub_46ed6c() -> ! {
     todo!("0x46ed6c std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>>::deque(std::deque<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,std::allocator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>>> const&)")
@@ -220,7 +220,7 @@ pub fn stub_46ed6c() -> ! {
 
 // 0x46ee90 — __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEERKS8_PS9_ES0_IS8_RS8_PS8_EET0_T_SH_SG_St12__false_type
 // type: int __fastcall(int, int, int, int, int, int, int, int, void *, int)
-#[doc(alias = "std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>>(std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::__false_type)")]
+#[doc(alias = "std::_Deque_iterator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>&,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>*> std::__uninitialized_copy_aux<std::_Deque_iterator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const&,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>&,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>*>>(std::_Deque_iterator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const&,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const&,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>&,rbx_core::SharedPtr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::__false_type)")]
 // was: __ZSt24__uninitialized_copy_auxISt15_Deque_iteratorIN5boost10shared_ptrIN3RBX9DataModel10LegacyLock14Implementation6EventsEEERKS8_PS9_ES0_IS8_RS8_PS8_EET0_T_SH_SG_St12__false_type
 pub fn stub_46ee90() -> ! {
     todo!("0x46ee90 std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*> std::__uninitialized_copy_aux<std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>>(std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events> const*>,std::_Deque_iterator<boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>&,boost::shared_ptr<RBX::DataModel::LegacyLock::Implementation::Events>*>,std::__false_type)")
@@ -412,7 +412,7 @@ pub fn stub_46feb8() -> ! {
 
 // 0x46ff84 — __ZN3RBX9DataModel10GenericJobC2EN5boost10shared_ptrIS0_EEPKcNS_12DataModelJob8TaskTypeE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int, int, int, RBX::TaskScheduler::Job *, int, int, int, int, int)
-#[doc(alias = "RBX::DataModel::GenericJob::GenericJob(boost::shared_ptr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)")]
+#[doc(alias = "RBX::DataModel::GenericJob::GenericJob(rbx_core::SharedPtr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)")]
 // was: __ZN3RBX9DataModel10GenericJobC2EN5boost10shared_ptrIS0_EEPKcNS_12DataModelJob8TaskTypeE
 pub fn stub_46ff84() -> ! {
     todo!("0x46ff84 RBX::DataModel::GenericJob::GenericJob(boost::shared_ptr<RBX::DataModel>,char const*,RBX::DataModelJob::TaskType)")
@@ -564,7 +564,7 @@ pub fn stub_4727f0() -> ! {
 
 // 0x4729dc — __ZN3RBX12DataModelJobC2EPKcNS0_8TaskTypeEbN5boost10shared_ptrINS_16DataModelArbiterEEENS_4Time8IntervalE
 // type: int __fastcall(char, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
-#[doc(alias = "RBX::DataModelJob::DataModelJob(char const*,RBX::DataModelJob::TaskType,bool,boost::shared_ptr<RBX::DataModelArbiter>,RBX::Time::Interval)")]
+#[doc(alias = "RBX::DataModelJob::DataModelJob(char const*,RBX::DataModelJob::TaskType,bool,rbx_core::SharedPtr<RBX::DataModelArbiter>,RBX::Time::Interval)")]
 // was: __ZN3RBX12DataModelJobC2EPKcNS0_8TaskTypeEbN5boost10shared_ptrINS_16DataModelArbiterEEENS_4Time8IntervalE
 pub fn stub_4729dc() -> ! {
     todo!("0x4729dc RBX::DataModelJob::DataModelJob(char const*,RBX::DataModelJob::TaskType,bool,boost::shared_ptr<RBX::DataModelArbiter>,RBX::Time::Interval)")
@@ -732,7 +732,7 @@ pub fn stub_473b80() -> ! {
 
 // 0x473d54 — __ZN5boost10shared_ptrIN3RBX6Limits7CounterEEC2IS3_EEPT_
 // type: void
-#[doc(alias = "boost::shared_ptr<RBX::Limits::Counter>::shared_ptr<RBX::Limits::Counter>(RBX::Limits::Counter *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Limits::Counter>::shared_ptr<RBX::Limits::Counter>(RBX::Limits::Counter *)")]
 // was: __ZN5boost10shared_ptrIN3RBX6Limits7CounterEEC2IS3_EEPT_
 pub fn stub_473d54() -> ! {
     todo!("0x473d54 boost::shared_ptr<RBX::Limits::Counter>::shared_ptr<RBX::Limits::Counter>(RBX::Limits::Counter *)")

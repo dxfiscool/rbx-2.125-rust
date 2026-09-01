@@ -315,7 +315,7 @@ pub fn stub_47e008() -> ! {
 }
 
 // 0x47e018 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_13DebugSettingsEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev
 pub fn stub_47e018() -> ! {
     todo!("0x47e018 RBX::Reflection::BoundFuncDesc<RBX::DebugSettings,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")
@@ -556,7 +556,7 @@ pub fn stub_47e388() -> ! {
 }
 
 // 0x47e640 — __ZN5boost10shared_ptrI12DummyArbiterED1Ev
-#[doc(alias = "boost::shared_ptr<DummyArbiter>::~shared_ptr()")]
+#[doc(alias = "rbx_core::SharedPtr<DummyArbiter>::~shared_ptr()")]
 // was: __ZN5boost10shared_ptrI12DummyArbiterED1Ev
 pub fn stub_47e640() -> ! {
     todo!("0x47e640 boost::shared_ptr<DummyArbiter>::~shared_ptr()")

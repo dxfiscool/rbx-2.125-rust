@@ -42,14 +42,14 @@ pub fn stub_28ef40() -> ! {
 }
 
 // 0x28f0b4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_20RuntimeScriptServiceEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::RuntimeScriptService> RBX::Creatable<RBX::Instance>::create<RBX::RuntimeScriptService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RuntimeScriptService> RBX::Creatable<RBX::Instance>::create<RBX::RuntimeScriptService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_20RuntimeScriptServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_28f0b4() -> ! {
     todo!("0x28f0b4 boost::shared_ptr<RBX::RuntimeScriptService> RBX::Creatable<RBX::Instance>::create<RBX::RuntimeScriptService>(void)")
 }
 
 // 0x28f164 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_20RuntimeScriptServiceEEERS3_RKNS0_IT_EE
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RuntimeScriptService>(boost::shared_ptr<RBX::RuntimeScriptService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::RuntimeScriptService>(rbx_core::SharedPtr<RBX::RuntimeScriptService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_20RuntimeScriptServiceEEERS3_RKNS0_IT_EE
 pub fn stub_28f164() -> ! {
     todo!("0x28f164 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RuntimeScriptService>(boost::shared_ptr<RBX::RuntimeScriptService> const&)")
@@ -128,14 +128,14 @@ pub fn stub_28f588() -> ! {
 }
 
 // 0x28f62c — __ZN5boost10shared_ptrIN3RBX20RuntimeScriptServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::RuntimeScriptService>::shared_ptr<RBX::RuntimeScriptService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RuntimeScriptService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RuntimeScriptService>::shared_ptr<RBX::RuntimeScriptService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RuntimeScriptService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX20RuntimeScriptServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_28f62c() -> ! {
     todo!("0x28f62c boost::shared_ptr<RBX::RuntimeScriptService>::shared_ptr<RBX::RuntimeScriptService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RuntimeScriptService *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x28f6f4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20RuntimeScriptServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RuntimeScriptService,RBX::RuntimeScriptService>(boost::shared_ptr<RBX::RuntimeScriptService> const*,RBX::RuntimeScriptService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RuntimeScriptService,RBX::RuntimeScriptService>(rbx_core::SharedPtr<RBX::RuntimeScriptService> const*,RBX::RuntimeScriptService *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20RuntimeScriptServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_28f6f4() -> ! {
     todo!("0x28f6f4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RuntimeScriptService,RBX::RuntimeScriptService>(boost::shared_ptr<RBX::RuntimeScriptService> const*,RBX::RuntimeScriptService *)const")
@@ -330,7 +330,7 @@ pub fn stub_291268() -> ! {
 }
 
 // 0x291384 — __ZN5boost10shared_ptrIN3RBX6ScriptEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
-#[doc(alias = "boost::shared_ptr<RBX::Script>::shared_ptr<RBX::Script>(boost::weak_ptr<RBX::Script> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Script>::shared_ptr<RBX::Script>(boost::weak_ptr<RBX::Script> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX6ScriptEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_291384() -> ! {
     todo!("0x291384 boost::shared_ptr<RBX::Script>::shared_ptr<RBX::Script>(boost::weak_ptr<RBX::Script> const&,boost::detail::sp_nothrow_tag)")

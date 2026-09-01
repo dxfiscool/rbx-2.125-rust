@@ -343,21 +343,21 @@ pub fn stub_5a57dc() -> ! {
 }
 
 // 0x5a5920 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10ManualGlueEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::ManualGlue> RBX::Creatable<RBX::Instance>::create<RBX::ManualGlue>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ManualGlue> RBX::Creatable<RBX::Instance>::create<RBX::ManualGlue>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_10ManualGlueEEEN5boost10shared_ptrIT_EEv
 pub fn stub_5a5920() -> ! {
     todo!("0x5a5920 boost::shared_ptr<RBX::ManualGlue> RBX::Creatable<RBX::Instance>::create<RBX::ManualGlue>(void)")
 }
 
 // 0x5a59d0 — __ZN5boost10shared_ptrIN3RBX10ManualGlueEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::ManualGlue>::shared_ptr<RBX::ManualGlue,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ManualGlue>::shared_ptr<RBX::ManualGlue,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX10ManualGlueEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_5a59d0() -> ! {
     todo!("0x5a59d0 boost::shared_ptr<RBX::ManualGlue>::shared_ptr<RBX::ManualGlue,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualGlue *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x5a5a98 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10ManualGlueES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualGlue,RBX::ManualGlue>(boost::shared_ptr<RBX::ManualGlue> const*,RBX::ManualGlue *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualGlue,RBX::ManualGlue>(rbx_core::SharedPtr<RBX::ManualGlue> const*,RBX::ManualGlue *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10ManualGlueES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5a5a98() -> ! {
     todo!("0x5a5a98 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualGlue,RBX::ManualGlue>(boost::shared_ptr<RBX::ManualGlue> const*,RBX::ManualGlue *)const")
@@ -460,21 +460,21 @@ pub fn stub_5a618c() -> ! {
 }
 
 // 0x5a62d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_10ManualWeldEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::ManualWeld> RBX::Creatable<RBX::Instance>::create<RBX::ManualWeld>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ManualWeld> RBX::Creatable<RBX::Instance>::create<RBX::ManualWeld>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_10ManualWeldEEEN5boost10shared_ptrIT_EEv
 pub fn stub_5a62d0() -> ! {
     todo!("0x5a62d0 boost::shared_ptr<RBX::ManualWeld> RBX::Creatable<RBX::Instance>::create<RBX::ManualWeld>(void)")
 }
 
 // 0x5a6380 — __ZN5boost10shared_ptrIN3RBX10ManualWeldEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::ManualWeld>::shared_ptr<RBX::ManualWeld,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ManualWeld>::shared_ptr<RBX::ManualWeld,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX10ManualWeldEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_5a6380() -> ! {
     todo!("0x5a6380 boost::shared_ptr<RBX::ManualWeld>::shared_ptr<RBX::ManualWeld,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualWeld *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x5a6448 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10ManualWeldES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualWeld,RBX::ManualWeld>(boost::shared_ptr<RBX::ManualWeld> const*,RBX::ManualWeld *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualWeld,RBX::ManualWeld>(rbx_core::SharedPtr<RBX::ManualWeld> const*,RBX::ManualWeld *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_10ManualWeldES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5a6448() -> ! {
     todo!("0x5a6448 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualWeld,RBX::ManualWeld>(boost::shared_ptr<RBX::ManualWeld> const*,RBX::ManualWeld *)const")
@@ -577,21 +577,21 @@ pub fn stub_5a6b3c() -> ! {
 }
 
 // 0x5a6c80 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_26ManualSurfaceJointInstanceEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::ManualSurfaceJointInstance> RBX::Creatable<RBX::Instance>::create<RBX::ManualSurfaceJointInstance>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ManualSurfaceJointInstance> RBX::Creatable<RBX::Instance>::create<RBX::ManualSurfaceJointInstance>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_26ManualSurfaceJointInstanceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_5a6c80() -> ! {
     todo!("0x5a6c80 boost::shared_ptr<RBX::ManualSurfaceJointInstance> RBX::Creatable<RBX::Instance>::create<RBX::ManualSurfaceJointInstance>(void)")
 }
 
 // 0x5a6d30 — __ZN5boost10shared_ptrIN3RBX26ManualSurfaceJointInstanceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::ManualSurfaceJointInstance>::shared_ptr<RBX::ManualSurfaceJointInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ManualSurfaceJointInstance>::shared_ptr<RBX::ManualSurfaceJointInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX26ManualSurfaceJointInstanceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_5a6d30() -> ! {
     todo!("0x5a6d30 boost::shared_ptr<RBX::ManualSurfaceJointInstance>::shared_ptr<RBX::ManualSurfaceJointInstance,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ManualSurfaceJointInstance *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x5a6df8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_26ManualSurfaceJointInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualSurfaceJointInstance,RBX::ManualSurfaceJointInstance>(boost::shared_ptr<RBX::ManualSurfaceJointInstance> const*,RBX::ManualSurfaceJointInstance *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualSurfaceJointInstance,RBX::ManualSurfaceJointInstance>(rbx_core::SharedPtr<RBX::ManualSurfaceJointInstance> const*,RBX::ManualSurfaceJointInstance *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_26ManualSurfaceJointInstanceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5a6df8() -> ! {
     todo!("0x5a6df8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ManualSurfaceJointInstance,RBX::ManualSurfaceJointInstance>(boost::shared_ptr<RBX::ManualSurfaceJointInstance> const*,RBX::ManualSurfaceJointInstance *)const")
@@ -748,21 +748,21 @@ pub fn stub_5a7af0() -> ! {
 }
 
 // 0x5a7c34 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5MotorEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::Motor> RBX::Creatable<RBX::Instance>::create<RBX::Motor>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Motor> RBX::Creatable<RBX::Instance>::create<RBX::Motor>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_5MotorEEEN5boost10shared_ptrIT_EEv
 pub fn stub_5a7c34() -> ! {
     todo!("0x5a7c34 boost::shared_ptr<RBX::Motor> RBX::Creatable<RBX::Instance>::create<RBX::Motor>(void)")
 }
 
 // 0x5a7ce4 — __ZN5boost10shared_ptrIN3RBX5MotorEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::Motor>::shared_ptr<RBX::Motor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Motor>::shared_ptr<RBX::Motor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX5MotorEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_5a7ce4() -> ! {
     todo!("0x5a7ce4 boost::shared_ptr<RBX::Motor>::shared_ptr<RBX::Motor,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Motor *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x5a7dac — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5MotorES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Motor,RBX::Motor>(boost::shared_ptr<RBX::Motor> const*,RBX::Motor *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Motor,RBX::Motor>(rbx_core::SharedPtr<RBX::Motor> const*,RBX::Motor *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5MotorES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5a7dac() -> ! {
     todo!("0x5a7dac void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Motor,RBX::Motor>(boost::shared_ptr<RBX::Motor> const*,RBX::Motor *)const")

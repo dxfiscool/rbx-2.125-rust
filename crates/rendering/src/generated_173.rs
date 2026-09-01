@@ -513,7 +513,7 @@ pub fn stub_267ec() -> ! {
 
 
 // 0x26990 — __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE
-#[doc(alias = "joinGameWithJoinScript(std::string const&,boost::shared_ptr<RBX::Game>)")]
+#[doc(alias = "joinGameWithJoinScript(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
 // was: __ZL22joinGameWithJoinScriptRKSsN5boost10shared_ptrIN3RBX4GameEEE
 pub fn stub_26990() -> ! {
     todo!("0x26990 joinGameWithJoinScript(std::string const&,boost::shared_ptr<RBX::Game>)")
@@ -530,7 +530,7 @@ pub fn stub_26bb8() -> ! {
 
 
 // 0x26dd4 — __ZL13joinLocalGameiRKSsN5boost10shared_ptrIN3RBX4GameEEE
-#[doc(alias = "joinLocalGame(int,std::string const&,boost::shared_ptr<RBX::Game>)")]
+#[doc(alias = "joinLocalGame(int,std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
 // was: __ZL13joinLocalGameiRKSsN5boost10shared_ptrIN3RBX4GameEEE
 pub fn stub_26dd4() -> ! {
     todo!("0x26dd4 joinLocalGame(int,std::string const&,boost::shared_ptr<RBX::Game>)")
@@ -547,7 +547,7 @@ pub fn stub_27054() -> ! {
 
 
 // 0x27268 — __ZL12loadLocalAppRKSsN5boost10shared_ptrIN3RBX4GameEEE
-#[doc(alias = "loadLocalApp(std::string const&,boost::shared_ptr<RBX::Game>)")]
+#[doc(alias = "loadLocalApp(std::string const&,rbx_core::SharedPtr<RBX::Game>)")]
 // was: __ZL12loadLocalAppRKSsN5boost10shared_ptrIN3RBX4GameEEE
 pub fn stub_27268() -> ! {
     todo!("0x27268 loadLocalApp(std::string const&,boost::shared_ptr<RBX::Game>)")
@@ -564,7 +564,7 @@ pub fn stub_276b0() -> ! {
 
 
 // 0x278a8 — __ZL15joinGamePlaceIdiN5boost10shared_ptrIN3RBX4GameEEE15JoinGameRequest
-#[doc(alias = "joinGamePlaceId(int,boost::shared_ptr<RBX::Game>,JoinGameRequest)")]
+#[doc(alias = "joinGamePlaceId(int,rbx_core::SharedPtr<RBX::Game>,JoinGameRequest)")]
 // was: __ZL15joinGamePlaceIdiN5boost10shared_ptrIN3RBX4GameEEE15JoinGameRequest
 pub fn stub_278a8() -> ! {
     todo!("0x278a8 joinGamePlaceId(int,boost::shared_ptr<RBX::Game>,JoinGameRequest)")
@@ -590,7 +590,7 @@ pub fn stub_28ba8() -> ! {
 
 
 // 0x28d98 — __ZL19joinGamePlaceIdSoloiN5boost10shared_ptrIN3RBX4GameEEE
-#[doc(alias = "joinGamePlaceIdSolo(int,boost::shared_ptr<RBX::Game>)")]
+#[doc(alias = "joinGamePlaceIdSolo(int,rbx_core::SharedPtr<RBX::Game>)")]
 // was: __ZL19joinGamePlaceIdSoloiN5boost10shared_ptrIN3RBX4GameEEE
 pub fn stub_28d98() -> ! {
     todo!("0x28d98 joinGamePlaceIdSolo(int,boost::shared_ptr<RBX::Game>)")
@@ -734,7 +734,7 @@ pub fn stub_29ccc() -> ! {
 
 
 // 0x2a350 — __ZL16joinGameTeleportSsSsSsP8NSObjectN5boost10shared_ptrIN3RBX4GameEEE
-#[doc(alias = "joinGameTeleport(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>)")]
+#[doc(alias = "joinGameTeleport(std::string,std::string,std::string,NSObject *,rbx_core::SharedPtr<RBX::Game>)")]
 // was: __ZL16joinGameTeleportSsSsSsP8NSObjectN5boost10shared_ptrIN3RBX4GameEEE
 pub fn stub_2a350() -> ! {
     todo!("0x2a350 joinGameTeleport(std::string,std::string,std::string,NSObject *,boost::shared_ptr<RBX::Game>)")
@@ -776,7 +776,7 @@ pub fn stub_2a99c() -> ! {
 
 
 // 0x2aba4 — __ZL14finishTeleportP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEEPNS3_18FunctionMarshallerE
-#[doc(alias = "finishTeleport(RobloxView *,boost::shared_ptr<RBX::Game>,RBX::FunctionMarshaller *)")]
+#[doc(alias = "finishTeleport(RobloxView *,rbx_core::SharedPtr<RBX::Game>,RBX::FunctionMarshaller *)")]
 // was: __ZL14finishTeleportP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEEPNS3_18FunctionMarshallerE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 // was: boost::shared_ptr — now rbx_core::SharedPtr
@@ -868,7 +868,7 @@ pub fn stub_2b724() -> ! {
 
 
 // 0x2b754 — __ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE
-#[doc(alias = "finishTeleportHelper(RobloxView *,boost::shared_ptr<RBX::Game>)")]
+#[doc(alias = "finishTeleportHelper(RobloxView *,rbx_core::SharedPtr<RBX::Game>)")]
 // was: __ZL20finishTeleportHelperP10RobloxViewN5boost10shared_ptrIN3RBX4GameEEE
 pub fn stub_2b754() -> ! {
     todo!("0x2b754 finishTeleportHelper(RobloxView *,boost::shared_ptr<RBX::Game>)")

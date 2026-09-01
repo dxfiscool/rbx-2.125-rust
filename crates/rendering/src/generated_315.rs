@@ -700,7 +700,7 @@ pub fn stub_4770dc() -> ! {
 
 // 0x477264 — __ZN3RBX13DebrisService7addItemEN5boost10shared_ptrINS_8InstanceEEEd
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::DebrisService::addItem(boost::shared_ptr<RBX::Instance>,double)")]
+#[doc(alias = "RBX::DebrisService::addItem(rbx_core::SharedPtr<RBX::Instance>,double)")]
 // was: __ZN3RBX13DebrisService7addItemEN5boost10shared_ptrINS_8InstanceEEEd
 pub fn stub_477264() -> ! {
     todo!("0x477264 RBX::DebrisService::addItem(boost::shared_ptr<RBX::Instance>,double)")
@@ -772,7 +772,7 @@ pub fn stub_477a14() -> ! {
 
 // 0x477a38 — __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED1Ev
 // type: void
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(rbx_core::SharedPtr<RBX::Instance>,double),2>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_13DebrisServiceEFvN5boost10shared_ptrINS_8InstanceEEEdELi2EED1Ev
 pub fn stub_477a38() -> ! {
     todo!("0x477a38 RBX::Reflection::BoundFuncDesc<RBX::DebrisService,void ()(boost::shared_ptr<RBX::Instance>,double),2>::~BoundFuncDesc()")
@@ -796,7 +796,7 @@ pub fn stub_477b90() -> ! {
 
 // 0x477d30 — __ZN5boost10shared_ptrIN3RBX12TimerServiceEEaSERKS3_
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::TimerService>::operator=(boost::shared_ptr<RBX::TimerService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TimerService>::operator=(rbx_core::SharedPtr<RBX::TimerService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX12TimerServiceEEaSERKS3_
 pub fn stub_477d30() -> ! {
     todo!("0x477d30 boost::shared_ptr<RBX::TimerService>::operator=(boost::shared_ptr<RBX::TimerService> const&)")
@@ -804,7 +804,7 @@ pub fn stub_477d30() -> ! {
 
 // 0x477d68 — __ZN3RBX11shared_fromINS_12TimerServiceEEEN5boost10shared_ptrIT_EEPS4_
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::TimerService> RBX::shared_from<RBX::TimerService>(RBX::TimerService*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TimerService> RBX::shared_from<RBX::TimerService>(RBX::TimerService*)")]
 // was: __ZN3RBX11shared_fromINS_12TimerServiceEEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_477d68() -> ! {
     todo!("0x477d68 boost::shared_ptr<RBX::TimerService> RBX::shared_from<RBX::TimerService>(RBX::TimerService*)")

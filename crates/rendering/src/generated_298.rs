@@ -404,7 +404,7 @@ pub fn stub_3b9100() -> ! {
 
 // 0x3b9224 — __ZN5boost8weak_ptrIN3RBX12BadgeServiceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
-#[doc(alias = "boost::weak_ptr<RBX::BadgeService>::weak_ptr<RBX::BadgeService>(boost::shared_ptr<RBX::BadgeService> const&,boost::detail::sp_enable_if_convertible<RBX::BadgeService,RBX::BadgeService>::type)")]
+#[doc(alias = "boost::weak_ptr<RBX::BadgeService>::weak_ptr<RBX::BadgeService>(rbx_core::SharedPtr<RBX::BadgeService> const&,boost::detail::sp_enable_if_convertible<RBX::BadgeService,RBX::BadgeService>::type)")]
 // was: __ZN5boost8weak_ptrIN3RBX12BadgeServiceEEC2IS2_EERKNS_10shared_ptrIT_EENS_6detail24sp_enable_if_convertibleIS6_S2_E4typeE
 pub fn stub_3b9224() -> ! {
     todo!("0x3b9224 boost::weak_ptr<RBX::BadgeService>::weak_ptr<RBX::BadgeService>(boost::shared_ptr<RBX::BadgeService> const&,boost::detail::sp_enable_if_convertible<RBX::BadgeService,RBX::BadgeService>::type)")
@@ -483,7 +483,7 @@ pub fn stub_3b9654() -> ! {
 
 // 0x3b9738 — __ZN5boost10shared_ptrIN3RBX12BadgeServiceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
-#[doc(alias = "boost::shared_ptr<RBX::BadgeService>::shared_ptr<RBX::BadgeService>(boost::weak_ptr<RBX::BadgeService> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BadgeService>::shared_ptr<RBX::BadgeService>(boost::weak_ptr<RBX::BadgeService> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX12BadgeServiceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_3b9738() -> ! {
     todo!("0x3b9738 boost::shared_ptr<RBX::BadgeService>::shared_ptr<RBX::BadgeService>(boost::weak_ptr<RBX::BadgeService> const&,boost::detail::sp_nothrow_tag)")
@@ -555,7 +555,7 @@ pub fn stub_3b9b0c() -> ! {
 
 // 0x3b9bc0 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_12BadgeServiceEFvSsEN3rbx13remote_signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::BadgeService,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::BadgeService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::BadgeService,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::BadgeService::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi1ENS_12BadgeServiceEFvSsEN3rbx13remote_signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 pub fn stub_3b9bc0() -> ! {
     todo!("0x3b9bc0 RBX::Reflection::EventDescImpl<1,RBX::BadgeService,void ()(std::string),rbx::remote_signal<void ()(std::string)>,rbx::remote_signal<void ()(std::string)> RBX::BadgeService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")

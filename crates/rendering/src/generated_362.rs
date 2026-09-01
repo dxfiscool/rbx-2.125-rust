@@ -494,14 +494,14 @@ pub fn stub_4ef164() -> ! {
 }
 
 // 0x4ef18c — __ZN3RBX17FilterDescendentsC1EN5boost10shared_ptrINS_8InstanceEEE
-#[doc(alias = "RBX::FilterDescendents::FilterDescendents(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::FilterDescendents::FilterDescendents(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::FilterDescendents::FilterDescendents(boost::shared_ptr<RBX::Instance>)
 pub fn stub_4ef18c() -> ! {
     todo!("0x4ef18c RBX::FilterDescendents::FilterDescendents(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0x4ef190 — __ZN3RBX17FilterDescendentsC2EN5boost10shared_ptrINS_8InstanceEEE
-#[doc(alias = "RBX::FilterDescendents::FilterDescendents(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::FilterDescendents::FilterDescendents(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: RBX::FilterDescendents::FilterDescendents(boost::shared_ptr<RBX::Instance>)
 pub fn stub_4ef190() -> ! {
     todo!("0x4ef190 RBX::FilterDescendents::FilterDescendents(boost::shared_ptr<RBX::Instance>)")
@@ -515,7 +515,7 @@ pub fn stub_4ef260() -> ! {
 }
 
 // 0x4ef28c — __ZN3RBX21FilterDescendentsListC1EPKSt6vectorIN5boost10shared_ptrINS_8InstanceEEESaIS5_EE
-#[doc(alias = "RBX::FilterDescendentsList::FilterDescendentsList(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const*)")]
+#[doc(alias = "RBX::FilterDescendentsList::FilterDescendentsList(std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const*)")]
 // was: RBX::FilterDescendentsList::FilterDescendentsList(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const*)
 pub fn stub_4ef28c() -> ! {
     todo!("0x4ef28c RBX::FilterDescendentsList::FilterDescendentsList(std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const*)")
@@ -564,7 +564,7 @@ pub fn stub_4ef3b8() -> ! {
 }
 
 // 0x4ef3ec — __ZN5boost10shared_ptrIN3RBX13ModelInstanceEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::ModelInstance>::operator=(boost::shared_ptr<RBX::ModelInstance> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ModelInstance>::operator=(rbx_core::SharedPtr<RBX::ModelInstance> const&)")]
 // was: boost::shared_ptr<RBX::ModelInstance>::operator=(boost::shared_ptr<RBX::ModelInstance> const&)
 pub fn stub_4ef3ec() -> ! {
     todo!("0x4ef3ec boost::shared_ptr<RBX::ModelInstance>::operator=(boost::shared_ptr<RBX::ModelInstance> const&)")

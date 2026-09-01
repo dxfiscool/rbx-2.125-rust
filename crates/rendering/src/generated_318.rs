@@ -703,7 +703,7 @@ pub fn stub_482840() -> ! {
 }
 
 // 0x4828e0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_21TaskSchedulerSettingsEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::TaskSchedulerSettings> RBX::Creatable<RBX::Instance>::create<RBX::TaskSchedulerSettings>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TaskSchedulerSettings> RBX::Creatable<RBX::Instance>::create<RBX::TaskSchedulerSettings>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_21TaskSchedulerSettingsEEEN5boost10shared_ptrIT_EEv
 pub fn stub_4828e0() -> ! {
     todo!("0x4828e0 boost::shared_ptr<RBX::TaskSchedulerSettings> RBX::Creatable<RBX::Instance>::create<RBX::TaskSchedulerSettings>(void)")
@@ -754,7 +754,7 @@ pub fn stub_482c08() -> ! {
 }
 
 // 0x482c78 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9BlockMeshEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::BlockMesh> RBX::Creatable<RBX::Instance>::create<RBX::BlockMesh>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BlockMesh> RBX::Creatable<RBX::Instance>::create<RBX::BlockMesh>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_9BlockMeshEEEN5boost10shared_ptrIT_EEv
 pub fn stub_482c78() -> ! {
     todo!("0x482c78 boost::shared_ptr<RBX::BlockMesh> RBX::Creatable<RBX::Instance>::create<RBX::BlockMesh>(void)")

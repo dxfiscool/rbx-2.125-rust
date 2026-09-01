@@ -67,7 +67,7 @@ pub fn stub_44175c() -> ! {
 
 // 0x441838 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5TeamsES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Teams,RBX::Teams>(boost::shared_ptr<RBX::Teams> const*,RBX::Teams *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Teams,RBX::Teams>(rbx_core::SharedPtr<RBX::Teams> const*,RBX::Teams *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5TeamsES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_441838() -> ! {
     todo!("0x441838 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Teams,RBX::Teams>(boost::shared_ptr<RBX::Teams> const*,RBX::Teams *)const")
@@ -169,7 +169,7 @@ pub fn stub_442180() -> ! {
 
 // 0x442184 — __ZN5boost20dynamic_pointer_castIN3RBX9GuiTargetENS1_8InstanceEEENS_10shared_ptrIT_EERKNS4_IT0_EE
 // type: void *__fastcall(_DWORD *, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::GuiTarget> boost::dynamic_pointer_cast<RBX::GuiTarget,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GuiTarget> boost::dynamic_pointer_cast<RBX::GuiTarget,RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: __ZN5boost20dynamic_pointer_castIN3RBX9GuiTargetENS1_8InstanceEEENS_10shared_ptrIT_EERKNS4_IT0_EE
 pub fn stub_442184() -> ! {
     todo!("0x442184 boost::shared_ptr<RBX::GuiTarget> boost::dynamic_pointer_cast<RBX::GuiTarget,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
@@ -177,7 +177,7 @@ pub fn stub_442184() -> ! {
 
 // 0x4421cc — __ZN5boost10shared_ptrIN3RBX8InstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>::shared_ptr<RBX::Instance>(boost::weak_ptr<RBX::Instance> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>::shared_ptr<RBX::Instance>(boost::weak_ptr<RBX::Instance> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_4421cc() -> ! {
     todo!("0x4421cc boost::shared_ptr<RBX::Instance>::shared_ptr<RBX::Instance>(boost::weak_ptr<RBX::Instance> const&,boost::detail::sp_nothrow_tag)")
@@ -265,7 +265,7 @@ pub fn stub_442de0() -> ! {
 
 // 0x442fa8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17ControllerServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ControllerService,RBX::ControllerService>(boost::shared_ptr<RBX::ControllerService> const*,RBX::ControllerService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ControllerService,RBX::ControllerService>(rbx_core::SharedPtr<RBX::ControllerService> const*,RBX::ControllerService *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17ControllerServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_442fa8() -> ! {
     todo!("0x442fa8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ControllerService,RBX::ControllerService>(boost::shared_ptr<RBX::ControllerService> const*,RBX::ControllerService *)const")
@@ -321,7 +321,7 @@ pub fn stub_443388() -> ! {
 
 // 0x4434cc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_19ServerScriptServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::ServerScriptService> RBX::Creatable<RBX::Instance>::create<RBX::ServerScriptService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ServerScriptService> RBX::Creatable<RBX::Instance>::create<RBX::ServerScriptService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_19ServerScriptServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_4434cc() -> ! {
     todo!("0x4434cc boost::shared_ptr<RBX::ServerScriptService> RBX::Creatable<RBX::Instance>::create<RBX::ServerScriptService>(void)")
@@ -329,7 +329,7 @@ pub fn stub_4434cc() -> ! {
 
 // 0x44357c — __ZN5boost10shared_ptrIN3RBX19ServerScriptServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::ServerScriptService>::shared_ptr<RBX::ServerScriptService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ServerScriptService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ServerScriptService>::shared_ptr<RBX::ServerScriptService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ServerScriptService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX19ServerScriptServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_44357c() -> ! {
     todo!("0x44357c boost::shared_ptr<RBX::ServerScriptService>::shared_ptr<RBX::ServerScriptService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ServerScriptService *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -337,7 +337,7 @@ pub fn stub_44357c() -> ! {
 
 // 0x443644 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19ServerScriptServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ServerScriptService,RBX::ServerScriptService>(boost::shared_ptr<RBX::ServerScriptService> const*,RBX::ServerScriptService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ServerScriptService,RBX::ServerScriptService>(rbx_core::SharedPtr<RBX::ServerScriptService> const*,RBX::ServerScriptService *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19ServerScriptServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_443644() -> ! {
     todo!("0x443644 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ServerScriptService,RBX::ServerScriptService>(boost::shared_ptr<RBX::ServerScriptService> const*,RBX::ServerScriptService *)const")
@@ -487,7 +487,7 @@ pub fn stub_444004() -> ! {
 
 // 0x444148 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_17ReplicatedStorageEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::ReplicatedStorage> RBX::Creatable<RBX::Instance>::create<RBX::ReplicatedStorage>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ReplicatedStorage> RBX::Creatable<RBX::Instance>::create<RBX::ReplicatedStorage>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_17ReplicatedStorageEEEN5boost10shared_ptrIT_EEv
 pub fn stub_444148() -> ! {
     todo!("0x444148 boost::shared_ptr<RBX::ReplicatedStorage> RBX::Creatable<RBX::Instance>::create<RBX::ReplicatedStorage>(void)")
@@ -495,7 +495,7 @@ pub fn stub_444148() -> ! {
 
 // 0x4441f8 — __ZN5boost10shared_ptrIN3RBX17ReplicatedStorageEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::ReplicatedStorage>::shared_ptr<RBX::ReplicatedStorage,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ReplicatedStorage *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ReplicatedStorage>::shared_ptr<RBX::ReplicatedStorage,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ReplicatedStorage *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX17ReplicatedStorageEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_4441f8() -> ! {
     todo!("0x4441f8 boost::shared_ptr<RBX::ReplicatedStorage>::shared_ptr<RBX::ReplicatedStorage,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ReplicatedStorage *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -503,7 +503,7 @@ pub fn stub_4441f8() -> ! {
 
 // 0x4442c0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17ReplicatedStorageES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ReplicatedStorage,RBX::ReplicatedStorage>(boost::shared_ptr<RBX::ReplicatedStorage> const*,RBX::ReplicatedStorage *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ReplicatedStorage,RBX::ReplicatedStorage>(rbx_core::SharedPtr<RBX::ReplicatedStorage> const*,RBX::ReplicatedStorage *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_17ReplicatedStorageES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_4442c0() -> ! {
     todo!("0x4442c0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ReplicatedStorage,RBX::ReplicatedStorage>(boost::shared_ptr<RBX::ReplicatedStorage> const*,RBX::ReplicatedStorage *)const")
@@ -607,7 +607,7 @@ pub fn stub_444a18() -> ! {
 
 // 0x444b5c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13ServerStorageEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::ServerStorage> RBX::Creatable<RBX::Instance>::create<RBX::ServerStorage>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ServerStorage> RBX::Creatable<RBX::Instance>::create<RBX::ServerStorage>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_13ServerStorageEEEN5boost10shared_ptrIT_EEv
 pub fn stub_444b5c() -> ! {
     todo!("0x444b5c boost::shared_ptr<RBX::ServerStorage> RBX::Creatable<RBX::Instance>::create<RBX::ServerStorage>(void)")
@@ -615,7 +615,7 @@ pub fn stub_444b5c() -> ! {
 
 // 0x444c0c — __ZN5boost10shared_ptrIN3RBX13ServerStorageEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::ServerStorage>::shared_ptr<RBX::ServerStorage,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ServerStorage *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ServerStorage>::shared_ptr<RBX::ServerStorage,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ServerStorage *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX13ServerStorageEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_444c0c() -> ! {
     todo!("0x444c0c boost::shared_ptr<RBX::ServerStorage>::shared_ptr<RBX::ServerStorage,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ServerStorage *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -623,7 +623,7 @@ pub fn stub_444c0c() -> ! {
 
 // 0x444cd4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ServerStorageES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ServerStorage,RBX::ServerStorage>(boost::shared_ptr<RBX::ServerStorage> const*,RBX::ServerStorage *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ServerStorage,RBX::ServerStorage>(rbx_core::SharedPtr<RBX::ServerStorage> const*,RBX::ServerStorage *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13ServerStorageES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_444cd4() -> ! {
     todo!("0x444cd4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ServerStorage,RBX::ServerStorage>(boost::shared_ptr<RBX::ServerStorage> const*,RBX::ServerStorage *)const")

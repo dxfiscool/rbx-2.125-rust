@@ -330,7 +330,7 @@ pub fn stub_3e96a0() -> ! {
 
 // 0x3e97e4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13CharacterMeshEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::CharacterMesh> RBX::Creatable<RBX::Instance>::create<RBX::CharacterMesh>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CharacterMesh> RBX::Creatable<RBX::Instance>::create<RBX::CharacterMesh>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_13CharacterMeshEEEN5boost10shared_ptrIT_EEv
 pub fn stub_3e97e4() -> ! {
     todo!("0x3e97e4 boost::shared_ptr<RBX::CharacterMesh> RBX::Creatable<RBX::Instance>::create<RBX::CharacterMesh>(void)")
@@ -338,7 +338,7 @@ pub fn stub_3e97e4() -> ! {
 
 // 0x3e9894 — __ZN5boost10shared_ptrIN3RBX13CharacterMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::CharacterMesh>::shared_ptr<RBX::CharacterMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CharacterMesh>::shared_ptr<RBX::CharacterMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX13CharacterMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_3e9894() -> ! {
     todo!("0x3e9894 boost::shared_ptr<RBX::CharacterMesh>::shared_ptr<RBX::CharacterMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::CharacterMesh *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -346,7 +346,7 @@ pub fn stub_3e9894() -> ! {
 
 // 0x3e995c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13CharacterMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CharacterMesh,RBX::CharacterMesh>(boost::shared_ptr<RBX::CharacterMesh> const*,RBX::CharacterMesh *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CharacterMesh,RBX::CharacterMesh>(rbx_core::SharedPtr<RBX::CharacterMesh> const*,RBX::CharacterMesh *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13CharacterMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_3e995c() -> ! {
     todo!("0x3e995c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::CharacterMesh,RBX::CharacterMesh>(boost::shared_ptr<RBX::CharacterMesh> const*,RBX::CharacterMesh *)const")
@@ -577,7 +577,7 @@ pub fn stub_41dfdc() -> ! {
 
 // 0x41e040 — __ZN3RBX9DataModel15serverSavePlaceENS_8Instance10SaveFilterEN5boost8functionIFvNS3_10shared_ptrIKNS_10Reflection5TupleEEEEEENS4_IFvSsEEE
 // type: int __fastcall(int, int, int, int, int)
-#[doc(alias = "RBX::DataModel::serverSavePlace(RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "RBX::DataModel::serverSavePlace(RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")]
 // was: __ZN3RBX9DataModel15serverSavePlaceENS_8Instance10SaveFilterEN5boost8functionIFvNS3_10shared_ptrIKNS_10Reflection5TupleEEEEEENS4_IFvSsEEE
 pub fn stub_41e040() -> ! {
     todo!("0x41e040 RBX::DataModel::serverSavePlace(RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")
@@ -585,7 +585,7 @@ pub fn stub_41e040() -> ! {
 
 // 0x41e51c — __ZN3RBX9DataModel14savePlaceAsyncENS_8Instance10SaveFilterEN5boost8functionIFvNS3_10shared_ptrIKNS_10Reflection5TupleEEEEEENS4_IFvSsEEE
 // type: void __fastcall(int *, int, _BOOL4, int)
-#[doc(alias = "RBX::DataModel::savePlaceAsync(RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")]
+#[doc(alias = "RBX::DataModel::savePlaceAsync(RBX::Instance::SaveFilter,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")]
 // was: __ZN3RBX9DataModel14savePlaceAsyncENS_8Instance10SaveFilterEN5boost8functionIFvNS3_10shared_ptrIKNS_10Reflection5TupleEEEEEENS4_IFvSsEEE
 pub fn stub_41e51c() -> ! {
     todo!("0x41e51c RBX::DataModel::savePlaceAsync(RBX::Instance::SaveFilter,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>,boost::function<void ()(std::string)>)")
@@ -609,7 +609,7 @@ pub fn stub_41e860() -> ! {
 
 // 0x41e878 — __ZN3RBX9DataModel16doDataModelSetupEN5boost10shared_ptrIS0_EEb
 // type: void __fastcall(const shared_count *, char, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, char, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, void *, void *, void *, char, char, char, int, int, int, int)
-#[doc(alias = "RBX::DataModel::doDataModelSetup(boost::shared_ptr<RBX::DataModel>,bool)")]
+#[doc(alias = "RBX::DataModel::doDataModelSetup(rbx_core::SharedPtr<RBX::DataModel>,bool)")]
 // was: __ZN3RBX9DataModel16doDataModelSetupEN5boost10shared_ptrIS0_EEb
 pub fn stub_41e878() -> ! {
     todo!("0x41e878 RBX::DataModel::doDataModelSetup(boost::shared_ptr<RBX::DataModel>,bool)")
@@ -617,7 +617,7 @@ pub fn stub_41e878() -> ! {
 
 // 0x41ede0 — __ZN3RBX9DataModel10LegacyLockC1EN5boost10shared_ptrIS0_EENS_12DataModelJob8TaskTypeE
 // type: int __fastcall(int, int, int)
-#[doc(alias = "RBX::DataModel::LegacyLock::LegacyLock(boost::shared_ptr<RBX::DataModel>,RBX::DataModelJob::TaskType)")]
+#[doc(alias = "RBX::DataModel::LegacyLock::LegacyLock(rbx_core::SharedPtr<RBX::DataModel>,RBX::DataModelJob::TaskType)")]
 // was: __ZN3RBX9DataModel10LegacyLockC1EN5boost10shared_ptrIS0_EENS_12DataModelJob8TaskTypeE
 pub fn stub_41ede0() -> ! {
     todo!("0x41ede0 RBX::DataModel::LegacyLock::LegacyLock(boost::shared_ptr<RBX::DataModel>,RBX::DataModelJob::TaskType)")
@@ -657,7 +657,7 @@ pub fn stub_41f360() -> ! {
 
 // 0x41f518 — __ZN3RBX9DataModel16doCloseDataModelEN5boost10shared_ptrIS0_EE
 // type: void __fastcall(const char **, int, int, const void *, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "RBX::DataModel::doCloseDataModel(boost::shared_ptr<RBX::DataModel>)")]
+#[doc(alias = "RBX::DataModel::doCloseDataModel(rbx_core::SharedPtr<RBX::DataModel>)")]
 // was: __ZN3RBX9DataModel16doCloseDataModelEN5boost10shared_ptrIS0_EE
 pub fn stub_41f518() -> ! {
     todo!("0x41f518 RBX::DataModel::doCloseDataModel(boost::shared_ptr<RBX::DataModel>)")
@@ -665,7 +665,7 @@ pub fn stub_41f518() -> ! {
 
 // 0x41fba0 — __ZN3RBX9DataModel14closeDataModelEN5boost10shared_ptrIS0_EEb
 // type: void __fastcall(int, int, int, const void *, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, char, int, int, int, int)
-#[doc(alias = "RBX::DataModel::closeDataModel(boost::shared_ptr<RBX::DataModel>,bool)")]
+#[doc(alias = "RBX::DataModel::closeDataModel(rbx_core::SharedPtr<RBX::DataModel>,bool)")]
 // was: __ZN3RBX9DataModel14closeDataModelEN5boost10shared_ptrIS0_EEb
 pub fn stub_41fba0() -> ! {
     todo!("0x41fba0 RBX::DataModel::closeDataModel(boost::shared_ptr<RBX::DataModel>,bool)")

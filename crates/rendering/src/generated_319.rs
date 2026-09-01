@@ -73,7 +73,7 @@ pub fn stub_4830d4() -> ! {
 }
 
 // 0x4831f4 — __ZN5boost10shared_ptrIN3RBX9BlockMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::BlockMesh>::shared_ptr<RBX::BlockMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BlockMesh>::shared_ptr<RBX::BlockMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX9BlockMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_4831f4() -> ! {
     todo!("0x4831f4 boost::shared_ptr<RBX::BlockMesh>::shared_ptr<RBX::BlockMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::BlockMesh *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -231,14 +231,14 @@ pub fn stub_48394c() -> ! {
 
 // 0x4839f0 — __ZN5boost10shared_ptrI8DummyJobEC2IS1_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<DummyJob>::shared_ptr<DummyJob>(DummyJob *)")]
+#[doc(alias = "rbx_core::SharedPtr<DummyJob>::shared_ptr<DummyJob>(DummyJob *)")]
 // was: __ZN5boost10shared_ptrI8DummyJobEC2IS1_EEPT_
 pub fn stub_4839f0() -> ! {
     todo!("0x4839f0 boost::shared_ptr<DummyJob>::shared_ptr<DummyJob>(DummyJob *)")
 }
 
 // 0x483ad8 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerI8DummyJobS6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<DummyJob,DummyJob>(boost::shared_ptr<DummyJob> const*,DummyJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<DummyJob,DummyJob>(rbx_core::SharedPtr<DummyJob> const*,DummyJob *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerI8DummyJobS6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_483ad8() -> ! {
     todo!("0x483ad8 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<DummyJob,DummyJob>(boost::shared_ptr<DummyJob> const*,DummyJob *)const")
@@ -288,7 +288,7 @@ pub fn stub_483cd0() -> ! {
 }
 
 // 0x483cd4 — __ZN5boost10shared_ptrI12DummyArbiterEC2IS1_EEPT_
-#[doc(alias = "boost::shared_ptr<DummyArbiter>::shared_ptr<DummyArbiter>(DummyArbiter *)")]
+#[doc(alias = "rbx_core::SharedPtr<DummyArbiter>::shared_ptr<DummyArbiter>(DummyArbiter *)")]
 // was: __ZN5boost10shared_ptrI12DummyArbiterEC2IS1_EEPT_
 pub fn stub_483cd4() -> ! {
     todo!("0x483cd4 boost::shared_ptr<DummyArbiter>::shared_ptr<DummyArbiter>(DummyArbiter *)")

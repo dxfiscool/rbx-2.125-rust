@@ -272,7 +272,7 @@ pub fn stub_548ae8() -> ! {
 
 // 0x548b18 — __ZN5boost10shared_ptrIN3RBX18NotificationObjectEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX18NotificationObjectEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-#[doc(alias = "boost::shared_ptr<RBX::NotificationObject>::shared_ptr<RBX::NotificationObject>(boost::weak_ptr<RBX::NotificationObject> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::NotificationObject>::shared_ptr<RBX::NotificationObject>(boost::weak_ptr<RBX::NotificationObject> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX18NotificationObjectEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_548b18() -> ! {
     todo!("0x548b18 __ZN5boost10shared_ptrIN3RBX18NotificationObjectEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")
@@ -304,7 +304,7 @@ pub fn stub_548e44() -> ! {
 
 // 0x548f4c — __ZN5boost10shared_ptrIN3RBX18NotificationObjectEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX18NotificationObjectEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::NotificationObject>::shared_ptr<RBX::NotificationObject,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::NotificationObject>::shared_ptr<RBX::NotificationObject,RBX::Creatable<RBX::Instance>::Deleter>(RBX::NotificationObject *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX18NotificationObjectEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_548f4c() -> ! {
     todo!("0x548f4c __ZN5boost10shared_ptrIN3RBX18NotificationObjectEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")

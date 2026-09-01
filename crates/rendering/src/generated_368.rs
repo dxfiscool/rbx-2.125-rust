@@ -241,7 +241,7 @@ pub fn stub_508958() -> ! {
 
 
 // 0x508cd4 — __ZL10resetChildN5boost10shared_ptrIN3RBX8InstanceEEE
-#[doc(alias = "resetChild(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "resetChild(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZL10resetChildN5boost10shared_ptrIN3RBX8InstanceEEE
 pub fn stub_508cd4() -> ! {
     todo!("0x508cd4 resetChild(boost::shared_ptr<RBX::Instance>)")
@@ -310,7 +310,7 @@ pub fn stub_508f18() -> ! {
 
 
 // 0x509048 — __ZN5boost10shared_ptrIN3RBX22GlobalAdvancedSettingsEED1Ev
-#[doc(alias = "boost::shared_ptr<RBX::GlobalAdvancedSettings>::~shared_ptr()")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GlobalAdvancedSettings>::~shared_ptr()")]
 // was: __ZN5boost10shared_ptrIN3RBX22GlobalAdvancedSettingsEED1Ev
 pub fn stub_509048() -> ! {
     todo!("0x509048 boost::shared_ptr<RBX::GlobalAdvancedSettings>::~shared_ptr()")
@@ -318,7 +318,7 @@ pub fn stub_509048() -> ! {
 
 
 // 0x50905c — __ZN5boost10shared_ptrIN3RBX19GlobalBasicSettingsEED1Ev
-#[doc(alias = "boost::shared_ptr<RBX::GlobalBasicSettings>::~shared_ptr()")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GlobalBasicSettings>::~shared_ptr()")]
 // was: __ZN5boost10shared_ptrIN3RBX19GlobalBasicSettingsEED1Ev
 pub fn stub_50905c() -> ! {
     todo!("0x50905c boost::shared_ptr<RBX::GlobalBasicSettings>::~shared_ptr()")
@@ -335,7 +335,7 @@ pub fn stub_509070() -> ! {
 
 // 0x509094 — __ZNK3RBX8Instance13visitChildrenIPFvN5boost10shared_ptrIS0_EEEEEvRKT_
 // type: int __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "void RBX::Instance::visitChildren<void (*)(boost::shared_ptr<RBX::Instance>)>(void (*)(boost::shared_ptr<RBX::Instance>) const&)const")]
+#[doc(alias = "void RBX::Instance::visitChildren<void (*)(rbx_core::SharedPtr<RBX::Instance>)>(void (*)(rbx_core::SharedPtr<RBX::Instance>) const&)const")]
 // was: __ZNK3RBX8Instance13visitChildrenIPFvN5boost10shared_ptrIS0_EEEEEvRKT_
 pub fn stub_509094() -> ! {
     todo!("0x509094 void RBX::Instance::visitChildren<void (*)(boost::shared_ptr<RBX::Instance>)>(void (*)(boost::shared_ptr<RBX::Instance>) const&)const")
@@ -752,7 +752,7 @@ pub fn stub_50b228() -> ! {
 
 
 // 0x50b39c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9SelectionEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::Selection> RBX::Creatable<RBX::Instance>::create<RBX::Selection>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Selection> RBX::Creatable<RBX::Instance>::create<RBX::Selection>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_9SelectionEEEN5boost10shared_ptrIT_EEv
 pub fn stub_50b39c() -> ! {
     todo!("0x50b39c boost::shared_ptr<RBX::Selection> RBX::Creatable<RBX::Instance>::create<RBX::Selection>(void)")
@@ -760,7 +760,7 @@ pub fn stub_50b39c() -> ! {
 
 
 // 0x50b44c — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_9SelectionEEERS3_RKNS0_IT_EE
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Selection>(boost::shared_ptr<RBX::Selection> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::Selection>(rbx_core::SharedPtr<RBX::Selection> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_9SelectionEEERS3_RKNS0_IT_EE
 pub fn stub_50b44c() -> ! {
     todo!("0x50b44c boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::Selection>(boost::shared_ptr<RBX::Selection> const&)")
@@ -792,7 +792,7 @@ pub fn stub_50b5b0() -> ! {
 
 
 // 0x50b688 — __ZN5boost10shared_ptrIN3RBX9SelectionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::Selection>::shared_ptr<RBX::Selection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Selection>::shared_ptr<RBX::Selection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX9SelectionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_50b688() -> ! {
     todo!("0x50b688 boost::shared_ptr<RBX::Selection>::shared_ptr<RBX::Selection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Selection *,RBX::Creatable<RBX::Instance>::Deleter)")

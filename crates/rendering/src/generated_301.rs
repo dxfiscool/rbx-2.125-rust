@@ -20,7 +20,7 @@ pub fn stub_4228d4() -> ! {
 
 // 0x422ae8 — __ZN3RBX9DataModel10LegacyLockC2EN5boost10shared_ptrIS0_EENS_12DataModelJob8TaskTypeE
 // type: boost::detail::sp_counted_base **__fastcall(boost::detail::sp_counted_base **, struct _Unwind_Exception **, int)
-#[doc(alias = "RBX::DataModel::LegacyLock::LegacyLock(boost::shared_ptr<RBX::DataModel>,RBX::DataModelJob::TaskType)")]
+#[doc(alias = "RBX::DataModel::LegacyLock::LegacyLock(rbx_core::SharedPtr<RBX::DataModel>,RBX::DataModelJob::TaskType)")]
 // was: __ZN3RBX9DataModel10LegacyLockC2EN5boost10shared_ptrIS0_EENS_12DataModelJob8TaskTypeE
 pub fn stub_422ae8() -> ! {
     todo!("0x422ae8 RBX::DataModel::LegacyLock::LegacyLock(boost::shared_ptr<RBX::DataModel>,RBX::DataModelJob::TaskType)")
@@ -244,7 +244,7 @@ pub fn stub_42fb30() -> ! {
 
 // 0x42fb68 — __ZN3RBXL13appendJobInfoEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEEPSt6vectorINS_10Reflection7VariantESaISA_EE
 // type: int __fastcall(int, RBX::TaskScheduler::Job **, int)
-#[doc(alias = "RBX::appendJobInfo(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
+#[doc(alias = "RBX::appendJobInfo(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
 // was: __ZN3RBXL13appendJobInfoEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEEPSt6vectorINS_10Reflection7VariantESaISA_EE
 pub fn stub_42fb68() -> ! {
     todo!("0x42fb68 RBX::appendJobInfo(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")
@@ -260,7 +260,7 @@ pub fn stub_430004() -> ! {
 
 // 0x43001c — __ZN3RBXL22appendJobExtendedStatsEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEEPSt6vectorINS_10Reflection7VariantESaISA_EE
 // type: int __fastcall(sp_counted_base *, const shared_count **, int)
-#[doc(alias = "RBX::appendJobExtendedStats(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
+#[doc(alias = "RBX::appendJobExtendedStats(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")]
 // was: __ZN3RBXL22appendJobExtendedStatsEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEEPSt6vectorINS_10Reflection7VariantESaISA_EE
 pub fn stub_43001c() -> ! {
     todo!("0x43001c RBX::appendJobExtendedStats(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> *)")
@@ -268,7 +268,7 @@ pub fn stub_43001c() -> ! {
 
 // 0x43053c — __ZN3RBXL26getJobTimePeakFractionFuncEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEERSsdPd
 // type: boost::detail::sp_counted_base *__fastcall(sp_counted_base *, const shared_count **, int, unsigned int, unsigned int, double *)
-#[doc(alias = "RBX::getJobTimePeakFractionFunc(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *)")]
+#[doc(alias = "RBX::getJobTimePeakFractionFunc(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::string &,double,double *)")]
 // was: __ZN3RBXL26getJobTimePeakFractionFuncEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEERSsdPd
 pub fn stub_43053c() -> ! {
     todo!("0x43053c RBX::getJobTimePeakFractionFunc(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *)")
@@ -276,7 +276,7 @@ pub fn stub_43053c() -> ! {
 
 // 0x4305b4 — __ZN3RBXL30getJobIntervalPeakFractionFuncEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEERSsdPd
 // type: boost::detail::sp_counted_base *__fastcall(sp_counted_base *, const shared_count **, int, unsigned int, unsigned int, double *)
-#[doc(alias = "RBX::getJobIntervalPeakFractionFunc(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *)")]
+#[doc(alias = "RBX::getJobIntervalPeakFractionFunc(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::string &,double,double *)")]
 // was: __ZN3RBXL30getJobIntervalPeakFractionFuncEPNS_9DataModelEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEERSsdPd
 pub fn stub_4305b4() -> ! {
     todo!("0x4305b4 RBX::getJobIntervalPeakFractionFunc(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *)")
@@ -300,7 +300,7 @@ pub fn stub_43077c() -> ! {
 
 // 0x430840 — __ZN3RBX9DataModel20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
 // type: int __fastcall(_DWORD *, int, int, int)
-#[doc(alias = "RBX::DataModel::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "RBX::DataModel::onDescendantRemoving(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: __ZN3RBX9DataModel20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_430840() -> ! {
     todo!("0x430840 RBX::DataModel::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")
@@ -428,7 +428,7 @@ pub fn stub_430fa8() -> ! {
 
 // 0x431100 — __ZN3RBX10ReflectionL14resume_adapterIN5boost10shared_ptrIKNS0_5TupleEEEEEvNS2_8functionIFvNS0_7VariantEEEET_
 // type: int __fastcall(int, const shared_count *)
-#[doc(alias = "void RBX::Reflection::resume_adapter<boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::function<void ()(RBX::Reflection::Variant)>,boost::shared_ptr<RBX::Reflection::Tuple const>)")]
+#[doc(alias = "void RBX::Reflection::resume_adapter<rbx_core::SharedPtr<RBX::Reflection::Tuple const>>(boost::function<void ()(RBX::Reflection::Variant)>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 // was: __ZN3RBX10ReflectionL14resume_adapterIN5boost10shared_ptrIKNS0_5TupleEEEEEvNS2_8functionIFvNS0_7VariantEEEET_
 pub fn stub_431100() -> ! {
     todo!("0x431100 void RBX::Reflection::resume_adapter<boost::shared_ptr<RBX::Reflection::Tuple const>>(boost::function<void ()(RBX::Reflection::Variant)>,boost::shared_ptr<RBX::Reflection::Tuple const>)")
@@ -460,7 +460,7 @@ pub fn stub_431288() -> ! {
 
 // 0x4312ac — __ZN3RBX10Reflection9EventDescINS_9DataModelEFvN5boost10shared_ptrINS_8InstanceEEEPKNS0_18PropertyDescriptorEEN3rbx6signalISA_EEMS2_SD_ED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::DataModel,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()")]
 // was: __ZN3RBX10Reflection9EventDescINS_9DataModelEFvN5boost10shared_ptrINS_8InstanceEEEPKNS0_18PropertyDescriptorEEN3rbx6signalISA_EEMS2_SD_ED1Ev
 pub fn stub_4312ac() -> ! {
     todo!("0x4312ac RBX::Reflection::EventDesc<RBX::DataModel,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)> RBX::DataModel::*>::~EventDesc()")
@@ -468,7 +468,7 @@ pub fn stub_4312ac() -> ! {
 
 // 0x4312d0 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_9ContentIdEELi1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,rbx_core::SharedPtr<std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFN5boost10shared_ptrIKSt6vectorINS4_INS_8InstanceEEESaIS7_EEEENS_9ContentIdEELi1EED1Ev
 pub fn stub_4312d0() -> ! {
     todo!("0x4312d0 RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>> const> ()(RBX::ContentId),1>::~BoundFuncDesc()")
@@ -476,7 +476,7 @@ pub fn stub_4312d0() -> ! {
 
 // 0x431310 — __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFN5boost10shared_ptrIKNS0_5TupleEEENS_8Instance10SaveFilterEES7_Li1EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),boost::shared_ptr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),rbx_core::SharedPtr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()")]
 // was: __ZN3RBX10Reflection18BoundYieldFuncDescINS_9DataModelEFN5boost10shared_ptrIKNS0_5TupleEEENS_8Instance10SaveFilterEES7_Li1EED1Ev
 pub fn stub_431310() -> ! {
     todo!("0x431310 RBX::Reflection::BoundYieldFuncDesc<RBX::DataModel,boost::shared_ptr<RBX::Reflection::Tuple const> ()(RBX::Instance::SaveFilter),boost::shared_ptr<RBX::Reflection::Tuple const>,1>::~BoundYieldFuncDesc()")
@@ -556,7 +556,7 @@ pub fn stub_431544() -> ! {
 
 // 0x431594 — __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::DataModel,rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_9DataModelEFN5boost10shared_ptrIKSt6vectorINS0_7VariantESaIS6_EEEEvELi0EED1Ev
 pub fn stub_431594() -> ! {
     todo!("0x431594 RBX::Reflection::BoundFuncDesc<RBX::DataModel,boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const> ()(void),0>::~BoundFuncDesc()")

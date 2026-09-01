@@ -364,7 +364,7 @@ pub fn stub_53dc24() -> ! {
 
 // 0x53e574 — __ZN3RBX10Reflection9ArgHelper6getArgINS_3Lua15WeakFunctionRefELi6EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 #[doc(alias = "__ZN3RBX10Reflection9ArgHelper6getArgINS_3Lua15WeakFunctionRefELi6EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")]
-#[doc(alias = "RBX::Lua::WeakFunctionRef RBX::Reflection::ArgHelper::getArg<RBX::Lua::WeakFunctionRef,6>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Lua::WeakFunctionRef> const&,boost::disable_if<boost::is_same<RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Lua::WeakFunctionRef RBX::Reflection::ArgHelper::getArg<RBX::Lua::WeakFunctionRef,6>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Lua::WeakFunctionRef> const&,boost::disable_if<boost::is_same<RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // was: __ZN3RBX10Reflection9ArgHelper6getArgINS_3Lua15WeakFunctionRefELi6EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 pub fn stub_53e574() -> ! {
     todo!("0x53e574 __ZN3RBX10Reflection9ArgHelper6getArgINS_3Lua15WeakFunctionRefELi6EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")
@@ -412,7 +412,7 @@ pub fn stub_53ef64() -> ! {
 
 // 0x53f8dc — __ZN3RBX10Reflection9ArgHelper6getArgINS_3Lua15WeakFunctionRefELi7EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 #[doc(alias = "__ZN3RBX10Reflection9ArgHelper6getArgINS_3Lua15WeakFunctionRefELi7EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")]
-#[doc(alias = "RBX::Lua::WeakFunctionRef RBX::Reflection::ArgHelper::getArg<RBX::Lua::WeakFunctionRef,7>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Lua::WeakFunctionRef> const&,boost::disable_if<boost::is_same<RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::Lua::WeakFunctionRef RBX::Reflection::ArgHelper::getArg<RBX::Lua::WeakFunctionRef,7>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::Lua::WeakFunctionRef> const&,boost::disable_if<boost::is_same<RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // was: __ZN3RBX10Reflection9ArgHelper6getArgINS_3Lua15WeakFunctionRefELi7EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 pub fn stub_53f8dc() -> ! {
     todo!("0x53f8dc __ZN3RBX10Reflection9ArgHelper6getArgINS_3Lua15WeakFunctionRefELi7EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE")
@@ -532,7 +532,7 @@ pub fn stub_541f8c() -> ! {
 
 // 0x5424e0 — __ZN3RBX10GuiService15addCenterDialogEN5boost10shared_ptrINS_8InstanceEEENS0_16CenterDialogTypeENS_3Lua15WeakFunctionRefES7_
 #[doc(alias = "__ZN3RBX10GuiService15addCenterDialogEN5boost10shared_ptrINS_8InstanceEEENS0_16CenterDialogTypeENS_3Lua15WeakFunctionRefES7_")]
-#[doc(alias = "RBX::GuiService::addCenterDialog(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef)")]
+#[doc(alias = "RBX::GuiService::addCenterDialog(rbx_core::SharedPtr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef)")]
 // was: __ZN3RBX10GuiService15addCenterDialogEN5boost10shared_ptrINS_8InstanceEEENS0_16CenterDialogTypeENS_3Lua15WeakFunctionRefES7_
 pub fn stub_5424e0() -> ! {
     todo!("0x5424e0 __ZN3RBX10GuiService15addCenterDialogEN5boost10shared_ptrINS_8InstanceEEENS0_16CenterDialogTypeENS_3Lua15WeakFunctionRefES7_")
@@ -540,7 +540,7 @@ pub fn stub_5424e0() -> ! {
 
 // 0x542c84 — __ZN3RBX10GuiService18removeCenterDialogEN5boost10shared_ptrINS_8InstanceEEE
 #[doc(alias = "__ZN3RBX10GuiService18removeCenterDialogEN5boost10shared_ptrINS_8InstanceEEE")]
-#[doc(alias = "RBX::GuiService::removeCenterDialog(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::GuiService::removeCenterDialog(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX10GuiService18removeCenterDialogEN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_542c84() -> ! {
     todo!("0x542c84 __ZN3RBX10GuiService18removeCenterDialogEN5boost10shared_ptrINS_8InstanceEEE")
@@ -700,7 +700,7 @@ pub fn stub_544b48() -> ! {
 
 // 0x544b4c — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EED1Ev")]
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::GuiService::CenterDialogType,RBX::Lua::WeakFunctionRef,RBX::Lua::WeakFunctionRef),4>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EED1Ev
 pub fn stub_544b4c() -> ! {
     todo!("0x544b4c __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEENS2_16CenterDialogTypeENS_3Lua15WeakFunctionRefES9_ELi4EED1Ev")
@@ -708,7 +708,7 @@ pub fn stub_544b4c() -> ! {
 
 // 0x544b50 — __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
 #[doc(alias = "__ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev")]
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::GuiService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
 pub fn stub_544b50() -> ! {
     todo!("0x544b50 __ZN3RBX10Reflection13BoundFuncDescINS_10GuiServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev")
@@ -803,7 +803,7 @@ pub fn stub_5462a4() -> ! {
 
 // 0x546504 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_18NotificationObjectEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_18NotificationObjectEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::NotificationObject> RBX::Creatable<RBX::Instance>::create<RBX::NotificationObject>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::NotificationObject> RBX::Creatable<RBX::Instance>::create<RBX::NotificationObject>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_18NotificationObjectEEEN5boost10shared_ptrIT_EEv
 pub fn stub_546504() -> ! {
     todo!("0x546504 __ZN3RBX9CreatableINS_8InstanceEE6createINS_18NotificationObjectEEEN5boost10shared_ptrIT_EEv")

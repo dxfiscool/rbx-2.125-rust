@@ -268,7 +268,7 @@ pub fn stub_6240e8() -> ! {
 // 0x62410c — __ZN5boost10shared_ptrIN3RBX8HumanoidEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: int(void)
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8HumanoidEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-#[doc(alias = "boost::shared_ptr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(boost::weak_ptr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(boost::weak_ptr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX8HumanoidEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_62410c() -> ! {
     todo!("0x62410c boost::shared_ptr<RBX::Humanoid>::shared_ptr<RBX::Humanoid>(boost::weak_ptr<RBX::Humanoid> const&,boost::detail::sp_nothrow_tag)")
@@ -403,7 +403,7 @@ pub fn stub_6250ac() -> ! {
 // 0x6250d0 — __ZN3RBX11shared_fromINS_18SkateboardPlatformEEEN5boost10shared_ptrIT_EEPS4_
 // type: int(void)
 #[doc(alias = "__ZN3RBX11shared_fromINS_18SkateboardPlatformEEEN5boost10shared_ptrIT_EEPS4_")]
-#[doc(alias = "boost::shared_ptr<RBX::SkateboardPlatform> RBX::shared_from<RBX::SkateboardPlatform>(RBX::SkateboardPlatform*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardPlatform> RBX::shared_from<RBX::SkateboardPlatform>(RBX::SkateboardPlatform*)")]
 // was: __ZN3RBX11shared_fromINS_18SkateboardPlatformEEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_6250d0() -> ! {
     todo!("0x6250d0 boost::shared_ptr<RBX::SkateboardPlatform> RBX::shared_from<RBX::SkateboardPlatform>(RBX::SkateboardPlatform*)")
@@ -564,7 +564,7 @@ pub fn stub_6261a0() -> ! {
 // 0x626214 — __ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: int(void)
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE")]
-#[doc(alias = "boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(boost::weak_ptr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(boost::weak_ptr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_626214() -> ! {
     todo!("0x626214 boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform>(boost::weak_ptr<RBX::SkateboardPlatform> const&,boost::detail::sp_nothrow_tag)")
@@ -655,7 +655,7 @@ pub fn stub_6266bc() -> ! {
 // 0x626770 — __ZNK3RBX10Reflection13EventDescImplILi1ENS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi1ENS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
-#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+#[doc(alias = "RBX::Reflection::EventDescImpl<1,RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi1ENS_20SkateboardControllerEFvSsEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 pub fn stub_626770() -> ! {
     todo!("0x626770 RBX::Reflection::EventDescImpl<1,RBX::SkateboardController,void ()(std::string),rbx::signal<void ()(std::string)>,rbx::signal<void ()(std::string)> RBX::SkateboardController::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")

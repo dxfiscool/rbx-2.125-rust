@@ -681,7 +681,7 @@ pub fn stub_461884() -> ! {
 
 // 0x4618d8 — __ZN3RBX10Reflection9ArgHelper6getArgINS_9DataModel16GearGenreSettingELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int(void)
-#[doc(alias = "RBX::DataModel::GearGenreSetting RBX::Reflection::ArgHelper::getArg<RBX::DataModel::GearGenreSetting,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::DataModel::GearGenreSetting> const&,boost::disable_if<boost::is_same<RBX::DataModel::GearGenreSetting,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::DataModel::GearGenreSetting RBX::Reflection::ArgHelper::getArg<RBX::DataModel::GearGenreSetting,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::DataModel::GearGenreSetting> const&,boost::disable_if<boost::is_same<RBX::DataModel::GearGenreSetting,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // was: __ZN3RBX10Reflection9ArgHelper6getArgINS_9DataModel16GearGenreSettingELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 pub fn stub_4618d8() -> ! {
     todo!("0x4618d8 RBX::DataModel::GearGenreSetting RBX::Reflection::ArgHelper::getArg<RBX::DataModel::GearGenreSetting,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::DataModel::GearGenreSetting> const&,boost::disable_if<boost::is_same<RBX::DataModel::GearGenreSetting,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")
@@ -726,7 +726,7 @@ pub fn stub_461d38() -> ! {
 
 // 0x461d6c — __ZN3RBX10Reflection9ArgHelper6getArgINS_9DataModel5GenreELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 // type: int(void)
-#[doc(alias = "RBX::DataModel::Genre RBX::Reflection::ArgHelper::getArg<RBX::DataModel::Genre,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::DataModel::Genre> const&,boost::disable_if<boost::is_same<RBX::DataModel::Genre,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")]
+#[doc(alias = "RBX::DataModel::Genre RBX::Reflection::ArgHelper::getArg<RBX::DataModel::Genre,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::DataModel::Genre> const&,boost::disable_if<boost::is_same<RBX::DataModel::Genre,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>,void>::type *)")]
 // was: __ZN3RBX10Reflection9ArgHelper6getArgINS_9DataModel5GenreELi1EEET_RNS0_18FunctionDescriptor9ArgumentsERKN5boost10scoped_ptrIS5_EEPNS9_10disable_ifINS9_7is_sameIS5_NS9_10shared_ptrIKNS0_5TupleEEEEEvE4typeE
 pub fn stub_461d6c() -> ! {
     todo!("0x461d6c RBX::DataModel::Genre RBX::Reflection::ArgHelper::getArg<RBX::DataModel::Genre,1>(RBX::Reflection::FunctionDescriptor::Arguments &,boost::scoped_ptr<RBX::DataModel::Genre> const&,boost::disable_if<boost::is_same<RBX::DataModel::Genre,boost::shared_ptr<RBX::Reflection::Tuple const>>,void>::type *)")

@@ -146,7 +146,7 @@ pub fn stub_64d050() -> ! {
 // 0x64d058 — __ZN5boost10shared_ptrIN3RBX5Stats16TypedPercentItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX5Stats16TypedPercentItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::Stats::TypedPercentItem>::shared_ptr<RBX::Stats::TypedPercentItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Stats::TypedPercentItem>::shared_ptr<RBX::Stats::TypedPercentItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX5Stats16TypedPercentItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_64d058() -> ! {
     todo!("0x64d058 boost::shared_ptr<RBX::Stats::TypedPercentItem>::shared_ptr<RBX::Stats::TypedPercentItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -155,7 +155,7 @@ pub fn stub_64d058() -> ! {
 // 0x64d120 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats16TypedPercentItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats16TypedPercentItemES7_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedPercentItem,RBX::Stats::TypedPercentItem>(boost::shared_ptr<RBX::Stats::TypedPercentItem> const*,RBX::Stats::TypedPercentItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedPercentItem,RBX::Stats::TypedPercentItem>(rbx_core::SharedPtr<RBX::Stats::TypedPercentItem> const*,RBX::Stats::TypedPercentItem *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats16TypedPercentItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_64d120() -> ! {
     todo!("0x64d120 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedPercentItem,RBX::Stats::TypedPercentItem>(boost::shared_ptr<RBX::Stats::TypedPercentItem> const*,RBX::Stats::TypedPercentItem *)const")
@@ -389,7 +389,7 @@ pub fn stub_64e4a8() -> ! {
 // 0x64e4b8 — __ZN5boost10shared_ptrIN3RBX5Stats12TypedMemItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX5Stats12TypedMemItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::Stats::TypedMemItem>::shared_ptr<RBX::Stats::TypedMemItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedMemItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Stats::TypedMemItem>::shared_ptr<RBX::Stats::TypedMemItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedMemItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX5Stats12TypedMemItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_64e4b8() -> ! {
     todo!("0x64e4b8 boost::shared_ptr<RBX::Stats::TypedMemItem>::shared_ptr<RBX::Stats::TypedMemItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedMemItem *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -398,7 +398,7 @@ pub fn stub_64e4b8() -> ! {
 // 0x64e580 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats12TypedMemItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats12TypedMemItemES7_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedMemItem,RBX::Stats::TypedMemItem>(boost::shared_ptr<RBX::Stats::TypedMemItem> const*,RBX::Stats::TypedMemItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedMemItem,RBX::Stats::TypedMemItem>(rbx_core::SharedPtr<RBX::Stats::TypedMemItem> const*,RBX::Stats::TypedMemItem *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats12TypedMemItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_64e580() -> ! {
     todo!("0x64e580 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::TypedMemItem,RBX::Stats::TypedMemItem>(boost::shared_ptr<RBX::Stats::TypedMemItem> const*,RBX::Stats::TypedMemItem *)const")
@@ -604,7 +604,7 @@ pub fn stub_64f0a4() -> ! {
 // 0x64f178 — __ZN5boost10shared_ptrI13ProfilingItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrI13ProfilingItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<ProfilingItem>::shared_ptr<ProfilingItem,RBX::Creatable<RBX::Instance>::Deleter>(ProfilingItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<ProfilingItem>::shared_ptr<ProfilingItem,RBX::Creatable<RBX::Instance>::Deleter>(ProfilingItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrI13ProfilingItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_64f178() -> ! {
     todo!("0x64f178 boost::shared_ptr<ProfilingItem>::shared_ptr<ProfilingItem,RBX::Creatable<RBX::Instance>::Deleter>(ProfilingItem *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -613,7 +613,7 @@ pub fn stub_64f178() -> ! {
 // 0x64f240 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI13ProfilingItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI13ProfilingItemS6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ProfilingItem,ProfilingItem>(boost::shared_ptr<ProfilingItem> const*,ProfilingItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ProfilingItem,ProfilingItem>(rbx_core::SharedPtr<ProfilingItem> const*,ProfilingItem *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI13ProfilingItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_64f240() -> ! {
     todo!("0x64f240 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ProfilingItem,ProfilingItem>(boost::shared_ptr<ProfilingItem> const*,ProfilingItem *)const")
@@ -819,7 +819,7 @@ pub fn stub_64fc9c() -> ! {
 // 0x64fd70 — __ZN5boost10shared_ptrI24RunningAverageItemDoubleEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrI24RunningAverageItemDoubleEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RunningAverageItemDouble>::shared_ptr<RunningAverageItemDouble,RBX::Creatable<RBX::Instance>::Deleter>(RunningAverageItemDouble *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RunningAverageItemDouble>::shared_ptr<RunningAverageItemDouble,RBX::Creatable<RBX::Instance>::Deleter>(RunningAverageItemDouble *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrI24RunningAverageItemDoubleEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_64fd70() -> ! {
     todo!("0x64fd70 boost::shared_ptr<RunningAverageItemDouble>::shared_ptr<RunningAverageItemDouble,RBX::Creatable<RBX::Instance>::Deleter>(RunningAverageItemDouble *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -828,7 +828,7 @@ pub fn stub_64fd70() -> ! {
 // 0x64fe38 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI24RunningAverageItemDoubleS6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI24RunningAverageItemDoubleS6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemDouble,RunningAverageItemDouble>(boost::shared_ptr<RunningAverageItemDouble> const*,RunningAverageItemDouble *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemDouble,RunningAverageItemDouble>(rbx_core::SharedPtr<RunningAverageItemDouble> const*,RunningAverageItemDouble *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI24RunningAverageItemDoubleS6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_64fe38() -> ! {
     todo!("0x64fe38 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemDouble,RunningAverageItemDouble>(boost::shared_ptr<RunningAverageItemDouble> const*,RunningAverageItemDouble *)const")

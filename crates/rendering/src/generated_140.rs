@@ -106,14 +106,14 @@ pub fn stub_eab2ec() -> ! {
 }
 
 // 0xeab30c — __ZN3RBX16AdornBillboarder10setTextureEiRKN5boost10shared_ptrINS_16TextureProxyBaseEEE
-#[doc(alias = "RBX::AdornBillboarder::setTexture(int,boost::shared_ptr<RBX::TextureProxyBase> const&)")]
+#[doc(alias = "RBX::AdornBillboarder::setTexture(int,rbx_core::SharedPtr<RBX::TextureProxyBase> const&)")]
 // was: RBX::AdornBillboarder::setTexture(int,boost::shared_ptr<RBX::TextureProxyBase> const&)
 pub fn stub_eab30c() -> ! {
     todo!("0xeab30c RBX::AdornBillboarder::setTexture(int,boost::shared_ptr<RBX::TextureProxyBase> const&)")
 }
 
 // 0xeab31c — __ZNK3RBX16AdornBillboarder14getTextureSizeERKN5boost10shared_ptrINS_16TextureProxyBaseEEE
-#[doc(alias = "RBX::AdornBillboarder::getTextureSize(boost::shared_ptr<RBX::TextureProxyBase> const&)const")]
+#[doc(alias = "RBX::AdornBillboarder::getTextureSize(rbx_core::SharedPtr<RBX::TextureProxyBase> const&)const")]
 // was: RBX::AdornBillboarder::getTextureSize(boost::shared_ptr<RBX::TextureProxyBase> const&)const
 pub fn stub_eab31c() -> ! {
     todo!("0xeab31c RBX::AdornBillboarder::getTextureSize(boost::shared_ptr<RBX::TextureProxyBase> const&)const")
@@ -554,7 +554,7 @@ pub fn stub_f3f414() -> ! {
 }
 
 // 0xf3f484 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_10ChatButtonEPNS_5AdornEPKciEEN5boost10shared_ptrIT_EET0_T1_T2_
-#[doc(alias = "boost::shared_ptr<RBX::ChatButton> RBX::Creatable<RBX::Instance>::create<RBX::ChatButton,RBX::Adorn *,char const*,int>(RBX::Adorn *,char const*,int)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ChatButton> RBX::Creatable<RBX::Instance>::create<RBX::ChatButton,RBX::Adorn *,char const*,int>(RBX::Adorn *,char const*,int)")]
 // was: boost::shared_ptr<RBX::ChatButton> RBX::Creatable<RBX::Instance>::create<RBX::ChatButton,RBX::Adorn *,char const*,int>(RBX::Adorn *,char const*,int)
 pub fn stub_f3f484() -> ! {
     todo!("0xf3f484 boost::shared_ptr<RBX::ChatButton> RBX::Creatable<RBX::Instance>::create<RBX::ChatButton,RBX::Adorn *,char const*,int>(RBX::Adorn *,char const*,int)")
@@ -568,7 +568,7 @@ pub fn stub_f41fa4() -> ! {
 }
 
 // 0xf43834 — j___ZN5boost10shared_ptrIN3RBX19IAdornableCollectorEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::IAdornableCollector>::operator=(boost::shared_ptr<RBX::IAdornableCollector> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::IAdornableCollector>::operator=(rbx_core::SharedPtr<RBX::IAdornableCollector> const&)")]
 // was: boost::shared_ptr<RBX::IAdornableCollector>::operator=(boost::shared_ptr<RBX::IAdornableCollector> const&)
 pub fn stub_f43834() -> ! {
     todo!("0xf43834 boost::shared_ptr<RBX::IAdornableCollector>::operator=(boost::shared_ptr<RBX::IAdornableCollector> const&)")
@@ -666,21 +666,21 @@ pub fn stub_f48744() -> ! {
 }
 
 // 0xf4bd44 — j___ZN5boost10shared_ptrIN3RBX19IAdornableCollectorEEC2IS2_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::IAdornableCollector>::shared_ptr<RBX::IAdornableCollector>(RBX::IAdornableCollector *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::IAdornableCollector>::shared_ptr<RBX::IAdornableCollector>(RBX::IAdornableCollector *)")]
 // was: boost::shared_ptr<RBX::IAdornableCollector>::shared_ptr<RBX::IAdornableCollector>(RBX::IAdornableCollector *)
 pub fn stub_f4bd44() -> ! {
     todo!("0xf4bd44 boost::shared_ptr<RBX::IAdornableCollector>::shared_ptr<RBX::IAdornableCollector>(RBX::IAdornableCollector *)")
 }
 
 // 0xf4be14 — j___ZN5boost3_bi5list4INS_3argILi1EEENS0_5valueIPN3RBX5AdornEEENS4_INS5_11SelectStateEEENS4_IPNS5_9WorkspaceEEEEclIPFvNS_10shared_ptrINS5_8InstanceEEES7_S9_SC_ENS0_5list1IRKSI_EEEEvNS0_4typeIvEERT_RT0_i
-#[doc(alias = "void boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")]
+#[doc(alias = "void boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
 // was: void boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
 pub fn stub_f4be14() -> ! {
     todo!("0xf4be14 void boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")
 }
 
 // 0xf4c174 — j___ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPKN5boost10shared_ptrIN3RBX8InstanceEEESt6vectorIS6_SaIS6_EEEENS2_3_bi6bind_tIvPFvS6_PNS4_5AdornENS4_11SelectStateEPNS4_9WorkspaceEENSD_5list4INS2_3argILi1EEENSD_5valueISG_EENSP_ISH_EENSP_ISJ_EEEEEEET0_T_SW_SV_
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::Instance> const*,std::vector<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>>)")]
 // was: boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>>)
 pub fn stub_f4c174() -> ! {
     todo!("0xf4c174 boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::Instance> const*,std::vector<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>>,boost::_bi::bind_t<void,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *,RBX::SelectState,RBX::Workspace *),boost::_bi::list4<boost::arg<1>,boost::_bi::value<RBX::Adorn *>,boost::_bi::value<RBX::SelectState>,boost::_bi::value<RBX::Workspace *>>>)")

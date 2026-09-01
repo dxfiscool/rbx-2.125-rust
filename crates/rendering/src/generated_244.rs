@@ -212,7 +212,7 @@ pub fn stub_295634() -> ! {
 
 // 0x295640 — __ZN3RBX13ScriptContext26registerDevelopmentLibraryESsN5boost10shared_ptrINS_8InstanceEEE
 // type: void
-#[doc(alias = "RBX::ScriptContext::registerDevelopmentLibrary(std::string,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::ScriptContext::registerDevelopmentLibrary(std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX13ScriptContext26registerDevelopmentLibraryESsN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_295640() -> ! {
     todo!("0x295640 RBX::ScriptContext::registerDevelopmentLibrary(std::string,boost::shared_ptr<RBX::Instance>)")
@@ -228,7 +228,7 @@ pub fn stub_295888() -> ! {
 
 // 0x295890 — __ZN3RBX13ScriptContext13addCoreScriptEiN5boost10shared_ptrINS_8InstanceEEESs
 // type: void
-#[doc(alias = "RBX::ScriptContext::addCoreScript(int,boost::shared_ptr<RBX::Instance>,std::string)")]
+#[doc(alias = "RBX::ScriptContext::addCoreScript(int,rbx_core::SharedPtr<RBX::Instance>,std::string)")]
 // was: __ZN3RBX13ScriptContext13addCoreScriptEiN5boost10shared_ptrINS_8InstanceEEESs
 pub fn stub_295890() -> ! {
     todo!("0x295890 RBX::ScriptContext::addCoreScript(int,boost::shared_ptr<RBX::Instance>,std::string)")
@@ -532,7 +532,7 @@ pub fn stub_29aed0() -> ! {
 
 // 0x29b090 — __ZN3RBX13ScriptContext20onCamelCaseViolationEN5boost10shared_ptrINS_8InstanceEEESsS4_
 // type: void
-#[doc(alias = "RBX::ScriptContext::onCamelCaseViolation(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::ScriptContext::onCamelCaseViolation(rbx_core::SharedPtr<RBX::Instance>,std::string,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX13ScriptContext20onCamelCaseViolationEN5boost10shared_ptrINS_8InstanceEEESsS4_
 pub fn stub_29b090() -> ! {
     todo!("0x29b090 RBX::ScriptContext::onCamelCaseViolation(boost::shared_ptr<RBX::Instance>,std::string,boost::shared_ptr<RBX::Instance>)")
@@ -620,7 +620,7 @@ pub fn stub_29c508() -> ! {
 
 // 0x29c588 — __ZN3RBX13ScriptContext17setThreadIdentityEP9lua_StateNS_8Security10IdentitiesEN5boost10shared_ptrINS_10BaseScriptEEE
 // type: void
-#[doc(alias = "RBX::ScriptContext::setThreadIdentity(lua_State *,RBX::Security::Identities,boost::shared_ptr<RBX::BaseScript>)")]
+#[doc(alias = "RBX::ScriptContext::setThreadIdentity(lua_State *,RBX::Security::Identities,rbx_core::SharedPtr<RBX::BaseScript>)")]
 // was: __ZN3RBX13ScriptContext17setThreadIdentityEP9lua_StateNS_8Security10IdentitiesEN5boost10shared_ptrINS_10BaseScriptEEE
 pub fn stub_29c588() -> ! {
     todo!("0x29c588 RBX::ScriptContext::setThreadIdentity(lua_State *,RBX::Security::Identities,boost::shared_ptr<RBX::BaseScript>)")
@@ -708,7 +708,7 @@ pub fn stub_29dd48() -> ! {
 
 // 0x29df1c — __ZN3RBX3Lua13Continuations16onSuccessHandlerEP9lua_StateN5boost8functionIFvNS4_10shared_ptrIKNS_10Reflection5TupleEEEEEE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::Lua::Continuations::onSuccessHandler(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>)")]
+#[doc(alias = "RBX::Lua::Continuations::onSuccessHandler(lua_State *,boost::function<void ()(rbx_core::SharedPtr<RBX::Reflection::Tuple const>)>)")]
 // was: __ZN3RBX3Lua13Continuations16onSuccessHandlerEP9lua_StateN5boost8functionIFvNS4_10shared_ptrIKNS_10Reflection5TupleEEEEEE
 pub fn stub_29df1c() -> ! {
     todo!("0x29df1c RBX::Lua::Continuations::onSuccessHandler(lua_State *,boost::function<void ()(boost::shared_ptr<RBX::Reflection::Tuple const>)>)")
@@ -716,7 +716,7 @@ pub fn stub_29df1c() -> ! {
 
 // 0x29e080 — __ZN3RBX3Lua13Continuations14onErrorHandlerEP9lua_StateN5boost8functionIFvPKcS7_NS4_10shared_ptrINS_10BaseScriptEEEiEEE
 // type: void
-#[doc(alias = "RBX::Lua::Continuations::onErrorHandler(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>)")]
+#[doc(alias = "RBX::Lua::Continuations::onErrorHandler(lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>)")]
 // was: __ZN3RBX3Lua13Continuations14onErrorHandlerEP9lua_StateN5boost8functionIFvPKcS7_NS4_10shared_ptrINS_10BaseScriptEEEiEEE
 pub fn stub_29e080() -> ! {
     todo!("0x29e080 RBX::Lua::Continuations::onErrorHandler(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>)")
@@ -724,7 +724,7 @@ pub fn stub_29e080() -> ! {
 
 // 0x29e2a8 — __ZN3RBX13ScriptContext16extractCallStackEP9lua_StateRN5boost10shared_ptrINS_10BaseScriptEEERi
 // type: int __fastcall(_DWORD, _DWORD, _DWORD, _DWORD)
-#[doc(alias = "RBX::ScriptContext::extractCallStack(lua_State *,boost::shared_ptr<RBX::BaseScript> &,int &)")]
+#[doc(alias = "RBX::ScriptContext::extractCallStack(lua_State *,rbx_core::SharedPtr<RBX::BaseScript> &,int &)")]
 // was: __ZN3RBX13ScriptContext16extractCallStackEP9lua_StateRN5boost10shared_ptrINS_10BaseScriptEEERi
 pub fn stub_29e2a8() -> ! {
     todo!("0x29e2a8 RBX::ScriptContext::extractCallStack(lua_State *,boost::shared_ptr<RBX::BaseScript> &,int &)")
@@ -804,7 +804,7 @@ pub fn stub_29f900() -> ! {
 
 // 0x29fcc0 — __ZN3RBX13ScriptContext14resumeWithArgsENS_3Lua9ThreadRefEN5boost10shared_ptrIKNS_10Reflection5TupleEEE
 // type: int __fastcall(char, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int)
-#[doc(alias = "RBX::ScriptContext::resumeWithArgs(RBX::Lua::ThreadRef,boost::shared_ptr<RBX::Reflection::Tuple const>)")]
+#[doc(alias = "RBX::ScriptContext::resumeWithArgs(RBX::Lua::ThreadRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 // was: __ZN3RBX13ScriptContext14resumeWithArgsENS_3Lua9ThreadRefEN5boost10shared_ptrIKNS_10Reflection5TupleEEE
 pub fn stub_29fcc0() -> ! {
     todo!("0x29fcc0 RBX::ScriptContext::resumeWithArgs(RBX::Lua::ThreadRef,boost::shared_ptr<RBX::Reflection::Tuple const>)")

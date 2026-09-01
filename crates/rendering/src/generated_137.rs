@@ -211,7 +211,7 @@ pub fn stub_5a19e8() -> ! {
 }
 
 // 0x5aca74 — __ZN5boost10shared_ptrIN3RBX19IAdornableCollectorEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::IAdornableCollector>::operator=(boost::shared_ptr<RBX::IAdornableCollector> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::IAdornableCollector>::operator=(rbx_core::SharedPtr<RBX::IAdornableCollector> const&)")]
 // was: boost::shared_ptr<RBX::IAdornableCollector>::operator=(boost::shared_ptr<RBX::IAdornableCollector> const&)
 pub fn stub_5aca74() -> ! {
     todo!("0x5aca74 boost::shared_ptr<RBX::IAdornableCollector>::operator=(boost::shared_ptr<RBX::IAdornableCollector> const&)")

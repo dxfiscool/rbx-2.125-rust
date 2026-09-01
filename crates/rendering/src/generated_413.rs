@@ -328,7 +328,7 @@ pub fn stub_629680() -> ! {
 // 0x6296a4 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_ED1Ev
 // type: 
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_ED1Ev")]
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")]
 // was: __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEES6_EN3rbx6signalIS7_EEMS2_SA_ED1Ev
 pub fn stub_6296a4() -> ! {
     todo!("0x6296a4 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")
@@ -337,7 +337,7 @@ pub fn stub_6296a4() -> ! {
 // 0x6296c8 — __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
 // type: 
 #[doc(alias = "__ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev")]
-#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")]
+#[doc(alias = "RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(rbx_core::SharedPtr<RBX::Instance>),rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>,rbx::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")]
 // was: __ZN3RBX10Reflection9EventDescINS_18SkateboardPlatformEFvN5boost10shared_ptrINS_8InstanceEEEEN3rbx6signalIS7_EEMS2_SA_ED1Ev
 pub fn stub_6296c8() -> ! {
     todo!("0x6296c8 RBX::Reflection::EventDesc<RBX::SkateboardPlatform,void ()(boost::shared_ptr<RBX::Instance>),rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)>,rbx::signal<void ()(boost::shared_ptr<RBX::Instance>)> RBX::SkateboardPlatform::*>::~EventDesc()")
@@ -391,7 +391,7 @@ pub fn stub_629794() -> ! {
 // 0x629af4 — __ZN5boost10shared_ptrIN3RBX20SkateboardControllerEEaSERKS3_
 // type: int(void)
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX20SkateboardControllerEEaSERKS3_")]
-#[doc(alias = "boost::shared_ptr<RBX::SkateboardController>::operator=(boost::shared_ptr<RBX::SkateboardController> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardController>::operator=(rbx_core::SharedPtr<RBX::SkateboardController> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX20SkateboardControllerEEaSERKS3_
 pub fn stub_629af4() -> ! {
     todo!("0x629af4 boost::shared_ptr<RBX::SkateboardController>::operator=(boost::shared_ptr<RBX::SkateboardController> const&)")
@@ -400,7 +400,7 @@ pub fn stub_629af4() -> ! {
 // 0x629b2c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_20SkateboardControllerEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_20SkateboardControllerEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::SkateboardController> RBX::Creatable<RBX::Instance>::create<RBX::SkateboardController>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardController> RBX::Creatable<RBX::Instance>::create<RBX::SkateboardController>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_20SkateboardControllerEEEN5boost10shared_ptrIT_EEv
 pub fn stub_629b2c() -> ! {
     todo!("0x629b2c boost::shared_ptr<RBX::SkateboardController> RBX::Creatable<RBX::Instance>::create<RBX::SkateboardController>(void)")
@@ -751,7 +751,7 @@ pub fn stub_62aec0() -> ! {
 // 0x62b004 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_18SkateboardPlatformEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_18SkateboardPlatformEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::SkateboardPlatform> RBX::Creatable<RBX::Instance>::create<RBX::SkateboardPlatform>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardPlatform> RBX::Creatable<RBX::Instance>::create<RBX::SkateboardPlatform>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_18SkateboardPlatformEEEN5boost10shared_ptrIT_EEv
 pub fn stub_62b004() -> ! {
     todo!("0x62b004 boost::shared_ptr<RBX::SkateboardPlatform> RBX::Creatable<RBX::Instance>::create<RBX::SkateboardPlatform>(void)")
@@ -760,7 +760,7 @@ pub fn stub_62b004() -> ! {
 // 0x62b0b8 — __ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SkateboardPlatform *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SkateboardPlatform *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX18SkateboardPlatformEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_62b0b8() -> ! {
     todo!("0x62b0b8 boost::shared_ptr<RBX::SkateboardPlatform>::shared_ptr<RBX::SkateboardPlatform,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SkateboardPlatform *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -769,7 +769,7 @@ pub fn stub_62b0b8() -> ! {
 // 0x62b180 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18SkateboardPlatformES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18SkateboardPlatformES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SkateboardPlatform,RBX::SkateboardPlatform>(boost::shared_ptr<RBX::SkateboardPlatform> const*,RBX::SkateboardPlatform *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SkateboardPlatform,RBX::SkateboardPlatform>(rbx_core::SharedPtr<RBX::SkateboardPlatform> const*,RBX::SkateboardPlatform *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18SkateboardPlatformES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_62b180() -> ! {
     todo!("0x62b180 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SkateboardPlatform,RBX::SkateboardPlatform>(boost::shared_ptr<RBX::SkateboardPlatform> const*,RBX::SkateboardPlatform *)const")

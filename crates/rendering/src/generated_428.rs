@@ -364,7 +364,7 @@ pub fn stub_668884() -> ! {
 // 0x6688f8 — __ZN3rbx7signals16signal_with_argsILi1EFvN5boost10shared_ptrIN3RBX7TextBoxEEEEEclES6_
 // type: int(void)
 #[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFvN5boost10shared_ptrIN3RBX7TextBoxEEEEEclES6_")]
-#[doc(alias = "rbx::signals::signal_with_args<1,void ()(boost::shared_ptr<RBX::TextBox>)>::operator()(boost::shared_ptr<RBX::TextBox>)")]
+#[doc(alias = "rbx::signals::signal_with_args<1,void ()(rbx_core::SharedPtr<RBX::TextBox>)>::operator()(rbx_core::SharedPtr<RBX::TextBox>)")]
 // was: __ZN3rbx7signals16signal_with_argsILi1EFvN5boost10shared_ptrIN3RBX7TextBoxEEEEEclES6_
 pub fn stub_6688f8() -> ! {
     todo!("0x6688f8 rbx::signals::signal_with_args<1,void ()(boost::shared_ptr<RBX::TextBox>)>::operator()(boost::shared_ptr<RBX::TextBox>)")
@@ -373,7 +373,7 @@ pub fn stub_6688f8() -> ! {
 // 0x668adc — __ZN3RBX11shared_fromINS_7TextBoxEEEN5boost10shared_ptrIT_EEPS4_
 // type: int(void)
 #[doc(alias = "__ZN3RBX11shared_fromINS_7TextBoxEEEN5boost10shared_ptrIT_EEPS4_")]
-#[doc(alias = "boost::shared_ptr<RBX::TextBox> RBX::shared_from<RBX::TextBox>(RBX::TextBox*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextBox> RBX::shared_from<RBX::TextBox>(RBX::TextBox*)")]
 // was: __ZN3RBX11shared_fromINS_7TextBoxEEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_668adc() -> ! {
     todo!("0x668adc boost::shared_ptr<RBX::TextBox> RBX::shared_from<RBX::TextBox>(RBX::TextBox*)")
@@ -547,7 +547,7 @@ pub fn stub_6690dc() -> ! {
 // 0x669220 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7TextBoxEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_7TextBoxEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::TextBox> RBX::Creatable<RBX::Instance>::create<RBX::TextBox>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextBox> RBX::Creatable<RBX::Instance>::create<RBX::TextBox>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_7TextBoxEEEN5boost10shared_ptrIT_EEv
 pub fn stub_669220() -> ! {
     todo!("0x669220 boost::shared_ptr<RBX::TextBox> RBX::Creatable<RBX::Instance>::create<RBX::TextBox>(void)")
@@ -556,7 +556,7 @@ pub fn stub_669220() -> ! {
 // 0x6692d4 — __ZN5boost10shared_ptrIN3RBX7TextBoxEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX7TextBoxEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::TextBox>::shared_ptr<RBX::TextBox,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextBox>::shared_ptr<RBX::TextBox,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX7TextBoxEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_6692d4() -> ! {
     todo!("0x6692d4 boost::shared_ptr<RBX::TextBox>::shared_ptr<RBX::TextBox,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextBox *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -565,7 +565,7 @@ pub fn stub_6692d4() -> ! {
 // 0x66939c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7TextBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7TextBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextBox,RBX::TextBox>(boost::shared_ptr<RBX::TextBox> const*,RBX::TextBox *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextBox,RBX::TextBox>(rbx_core::SharedPtr<RBX::TextBox> const*,RBX::TextBox *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7TextBoxES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_66939c() -> ! {
     todo!("0x66939c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextBox,RBX::TextBox>(boost::shared_ptr<RBX::TextBox> const*,RBX::TextBox *)const")
@@ -660,7 +660,7 @@ pub fn stub_6698f8() -> ! {
 // 0x66996c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4nextERNS2_13intrusive_ptrINS8_4slotEEE
 // type: int __fastcall(int, int, int, int, char, int, int, int, int, int)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4nextERNS2_13intrusive_ptrINS8_4slotEEE")]
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE4nextERNS2_13intrusive_ptrINS8_4slotEEE
 pub fn stub_66996c() -> ! {
     todo!("0x66996c rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::slot> &)")
@@ -669,7 +669,7 @@ pub fn stub_66996c() -> ! {
 // 0x669acc — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE8on_errorERSt9exception
 // type: int(void)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE8on_errorERSt9exception")]
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::on_error(std::exception &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::TextBox>)>::on_error(std::exception &)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX7TextBoxEEEEE8on_errorERSt9exception
 pub fn stub_669acc() -> ! {
     todo!("0x669acc rbx::signals::signal<void ()(boost::shared_ptr<RBX::TextBox>)>::on_error(std::exception &)")
@@ -1164,7 +1164,7 @@ pub fn stub_66babc() -> ! {
 // 0x66bc30 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11TextServiceEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_11TextServiceEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::TextService> RBX::Creatable<RBX::Instance>::create<RBX::TextService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextService> RBX::Creatable<RBX::Instance>::create<RBX::TextService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_11TextServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_66bc30() -> ! {
     todo!("0x66bc30 boost::shared_ptr<RBX::TextService> RBX::Creatable<RBX::Instance>::create<RBX::TextService>(void)")
@@ -1206,7 +1206,7 @@ pub fn stub_66be0c() -> ! {
 // 0x66bee4 — __ZN5boost10shared_ptrIN3RBX11TextServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX11TextServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::TextService>::shared_ptr<RBX::TextService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextService>::shared_ptr<RBX::TextService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX11TextServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_66bee4() -> ! {
     todo!("0x66bee4 boost::shared_ptr<RBX::TextService>::shared_ptr<RBX::TextService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextService *,RBX::Creatable<RBX::Instance>::Deleter)")

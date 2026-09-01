@@ -145,7 +145,7 @@ pub fn stub_650894() -> ! {
 
 // 0x650968 — __ZN5boost10shared_ptrI21RunningAverageItemIntEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrI21RunningAverageItemIntEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RunningAverageItemInt>::shared_ptr<RunningAverageItemInt,RBX::Creatable<RBX::Instance>::Deleter>(RunningAverageItemInt *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RunningAverageItemInt>::shared_ptr<RunningAverageItemInt,RBX::Creatable<RBX::Instance>::Deleter>(RunningAverageItemInt *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrI21RunningAverageItemIntEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_650968() -> ! {
     todo!("0x650968 boost::shared_ptr<RunningAverageItemInt>::shared_ptr<RunningAverageItemInt,RBX::Creatable<RBX::Instance>::Deleter>(RunningAverageItemInt *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -153,7 +153,7 @@ pub fn stub_650968() -> ! {
 
 // 0x650a30 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21RunningAverageItemIntS6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21RunningAverageItemIntS6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemInt,RunningAverageItemInt>(boost::shared_ptr<RunningAverageItemInt> const*,RunningAverageItemInt *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemInt,RunningAverageItemInt>(rbx_core::SharedPtr<RunningAverageItemInt> const*,RunningAverageItemInt *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21RunningAverageItemIntS6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_650a30() -> ! {
     todo!("0x650a30 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RunningAverageItemInt,RunningAverageItemInt>(boost::shared_ptr<RunningAverageItemInt> const*,RunningAverageItemInt *)const")
@@ -352,7 +352,7 @@ pub fn stub_6514a0() -> ! {
 
 // 0x651574 — __ZN5boost10shared_ptrI26TotalCountTimeIntervalItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrI26TotalCountTimeIntervalItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<TotalCountTimeIntervalItem>::shared_ptr<TotalCountTimeIntervalItem,RBX::Creatable<RBX::Instance>::Deleter>(TotalCountTimeIntervalItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<TotalCountTimeIntervalItem>::shared_ptr<TotalCountTimeIntervalItem,RBX::Creatable<RBX::Instance>::Deleter>(TotalCountTimeIntervalItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrI26TotalCountTimeIntervalItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_651574() -> ! {
     todo!("0x651574 boost::shared_ptr<TotalCountTimeIntervalItem>::shared_ptr<TotalCountTimeIntervalItem,RBX::Creatable<RBX::Instance>::Deleter>(TotalCountTimeIntervalItem *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -360,7 +360,7 @@ pub fn stub_651574() -> ! {
 
 // 0x65163c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI26TotalCountTimeIntervalItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI26TotalCountTimeIntervalItemS6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<TotalCountTimeIntervalItem,TotalCountTimeIntervalItem>(boost::shared_ptr<TotalCountTimeIntervalItem> const*,TotalCountTimeIntervalItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<TotalCountTimeIntervalItem,TotalCountTimeIntervalItem>(rbx_core::SharedPtr<TotalCountTimeIntervalItem> const*,TotalCountTimeIntervalItem *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI26TotalCountTimeIntervalItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_65163c() -> ! {
     todo!("0x65163c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<TotalCountTimeIntervalItem,TotalCountTimeIntervalItem>(boost::shared_ptr<TotalCountTimeIntervalItem> const*,TotalCountTimeIntervalItem *)const")
@@ -417,7 +417,7 @@ pub fn stub_65186c() -> ! {
 
 // 0x651870 — __ZN5boost10shared_ptrIN3RBX5Stats4ItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX5Stats4ItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::Stats::Item>::shared_ptr<RBX::Stats::Item,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::Item *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Stats::Item>::shared_ptr<RBX::Stats::Item,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::Item *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX5Stats4ItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_651870() -> ! {
     todo!("0x651870 boost::shared_ptr<RBX::Stats::Item>::shared_ptr<RBX::Stats::Item,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::Item *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -425,7 +425,7 @@ pub fn stub_651870() -> ! {
 
 // 0x651938 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats4ItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats4ItemES7_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::Item,RBX::Stats::Item>(boost::shared_ptr<RBX::Stats::Item> const*,RBX::Stats::Item *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::Item,RBX::Stats::Item>(rbx_core::SharedPtr<RBX::Stats::Item> const*,RBX::Stats::Item *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5Stats4ItemES7_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_651938() -> ! {
     todo!("0x651938 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Stats::Item,RBX::Stats::Item>(boost::shared_ptr<RBX::Stats::Item> const*,RBX::Stats::Item *)const")
@@ -745,7 +745,7 @@ pub fn stub_65304c() -> ! {
 // 0x65308c — __ZN5boost3_bi5list4INS0_5valueIPN3RBX5Stats12StatsServiceEEENS_3argILi1EEENS2_INS_10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEEEENS_17reference_wrapperIbEEEclINS_4_mfi3mf3IvS5_NSA_IKNS3_13TaskScheduler3JobEEESG_RbEENS0_5list1IRSR_EEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost3_bi5list4INS0_5valueIPN3RBX5Stats12StatsServiceEEENS_3argILi1EEENS2_INS_10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEEEENS_17reference_wrapperIbEEEclINS_4_mfi3mf3IvS5_NSA_IKNS3_13TaskScheduler3JobEEESG_RbEENS0_5list1IRSR_EEEEvNS0_4typeIvEERT_RT0_i")]
-#[doc(alias = "void boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>::operator()<boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list1<boost::shared_ptr<RBX::TaskScheduler::Job const>&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &> &,boost::_bi::list1<boost::shared_ptr<RBX::TaskScheduler::Job const>&> &,int)")]
+#[doc(alias = "void boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>::operator()<boost::_mfi::mf3<void,RBX::Stats::StatsService,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list1<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Stats::StatsService,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>&> &,int)")]
 // was: __ZN5boost3_bi5list4INS0_5valueIPN3RBX5Stats12StatsServiceEEENS_3argILi1EEENS2_INS_10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEEEENS_17reference_wrapperIbEEEclINS_4_mfi3mf3IvS5_NSA_IKNS3_13TaskScheduler3JobEEESG_RbEENS0_5list1IRSR_EEEEvNS0_4typeIvEERT_RT0_i
 pub fn stub_65308c() -> ! {
     todo!("0x65308c void boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>::operator()<boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list1<boost::shared_ptr<RBX::TaskScheduler::Job const>&>>(boost::_bi::type<void>,boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &> &,boost::_bi::list1<boost::shared_ptr<RBX::TaskScheduler::Job const>&> &,int)")
@@ -754,7 +754,7 @@ pub fn stub_65308c() -> ! {
 // 0x6531ac — __ZNK5boost4_mfi3mf3IvN3RBX5Stats12StatsServiceENS_10shared_ptrIKNS2_13TaskScheduler3JobEEENS5_ISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEERbEclEPS4_S9_SF_SG_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZNK5boost4_mfi3mf3IvN3RBX5Stats12StatsServiceENS_10shared_ptrIKNS2_13TaskScheduler3JobEEENS5_ISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEERbEclEPS4_S9_SF_SG_")]
-#[doc(alias = "boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>::operator()(RBX::Stats::StatsService*,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &)const")]
+#[doc(alias = "boost::_mfi::mf3<void,RBX::Stats::StatsService,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>::operator()(RBX::Stats::StatsService*,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &)const")]
 // was: __ZNK5boost4_mfi3mf3IvN3RBX5Stats12StatsServiceENS_10shared_ptrIKNS2_13TaskScheduler3JobEEENS5_ISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEERbEclEPS4_S9_SF_SG_
 pub fn stub_6531ac() -> ! {
     todo!("0x6531ac boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>::operator()(RBX::Stats::StatsService*,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &)const")
@@ -763,7 +763,7 @@ pub fn stub_6531ac() -> ! {
 // 0x6532e4 — __ZN5boost3_bi5list4INS0_5valueIPN3RBX5Stats12StatsServiceEEENS_3argILi1EEENS2_INS_10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEEEENS_17reference_wrapperIbEEEC2ES7_S9_SH_SJ_
 // type: int __fastcall(int, int, int, int, int, int)
 #[doc(alias = "__ZN5boost3_bi5list4INS0_5valueIPN3RBX5Stats12StatsServiceEEENS_3argILi1EEENS2_INS_10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEEEENS_17reference_wrapperIbEEEC2ES7_S9_SH_SJ_")]
-#[doc(alias = "boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>::list4(boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>)")]
+#[doc(alias = "boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>::list4(boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>)")]
 // was: __ZN5boost3_bi5list4INS0_5valueIPN3RBX5Stats12StatsServiceEEENS_3argILi1EEENS2_INS_10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEEEENS_17reference_wrapperIbEEEC2ES7_S9_SH_SJ_
 pub fn stub_6532e4() -> ! {
     todo!("0x6532e4 boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>::list4(boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>)")
@@ -772,7 +772,7 @@ pub fn stub_6532e4() -> ! {
 // 0x6533c4 — __ZN5boost3_bi8storage4INS0_5valueIPN3RBX5Stats12StatsServiceEEENS_3argILi1EEENS2_INS_10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEEEENS_17reference_wrapperIbEEEC2ES7_S9_SH_SJ_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
 #[doc(alias = "__ZN5boost3_bi8storage4INS0_5valueIPN3RBX5Stats12StatsServiceEEENS_3argILi1EEENS2_INS_10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEEEENS_17reference_wrapperIbEEEC2ES7_S9_SH_SJ_")]
-#[doc(alias = "boost::_bi::storage4<boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>::storage4(boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>)")]
+#[doc(alias = "boost::_bi::storage4<boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>::storage4(boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>)")]
 // was: __ZN5boost3_bi8storage4INS0_5valueIPN3RBX5Stats12StatsServiceEEENS_3argILi1EEENS2_INS_10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEEEENS_17reference_wrapperIbEEEC2ES7_S9_SH_SJ_
 pub fn stub_6533c4() -> ! {
     todo!("0x6533c4 boost::_bi::storage4<boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>::storage4(boost::_bi::value<RBX::Stats::StatsService *>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>)")
@@ -789,7 +789,7 @@ pub fn stub_6534b4() -> ! {
 
 // 0x6534f8 — __ZN5boost10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEC2IS5_EEPT_
 #[doc(alias = "__ZN5boost10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEC2IS5_EEPT_")]
-#[doc(alias = "boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>(std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>> *)")]
+#[doc(alias = "rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>(std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>> *)")]
 // was: __ZN5boost10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEC2IS5_EEPT_
 pub fn stub_6534f8() -> ! {
     todo!("0x6534f8 boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>(std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>> *)")

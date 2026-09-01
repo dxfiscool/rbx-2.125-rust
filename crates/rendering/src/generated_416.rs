@@ -292,7 +292,7 @@ pub fn stub_635f60() -> ! {
 // 0x6360a4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_3SkyEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_3SkyEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_3SkyEEEN5boost10shared_ptrIT_EEv
 pub fn stub_6360a4() -> ! {
     todo!("0x6360a4 boost::shared_ptr<RBX::Sky> RBX::Creatable<RBX::Instance>::create<RBX::Sky>(void)")
@@ -301,7 +301,7 @@ pub fn stub_6360a4() -> ! {
 // 0x636154 — __ZN5boost10shared_ptrIN3RBX3SkyEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX3SkyEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::Sky>::shared_ptr<RBX::Sky,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Sky *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Sky>::shared_ptr<RBX::Sky,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Sky *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX3SkyEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_636154() -> ! {
     todo!("0x636154 boost::shared_ptr<RBX::Sky>::shared_ptr<RBX::Sky,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Sky *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -310,7 +310,7 @@ pub fn stub_636154() -> ! {
 // 0x63621c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_3SkyES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_3SkyES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Sky,RBX::Sky>(boost::shared_ptr<RBX::Sky> const*,RBX::Sky *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Sky,RBX::Sky>(rbx_core::SharedPtr<RBX::Sky> const*,RBX::Sky *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_3SkyES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_63621c() -> ! {
     todo!("0x63621c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Sky,RBX::Sky>(boost::shared_ptr<RBX::Sky> const*,RBX::Sky *)const")
@@ -855,7 +855,7 @@ pub fn stub_637a4c() -> ! {
 // 0x637b90 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5SmokeEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_5SmokeEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::Smoke> RBX::Creatable<RBX::Instance>::create<RBX::Smoke>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Smoke> RBX::Creatable<RBX::Instance>::create<RBX::Smoke>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_5SmokeEEEN5boost10shared_ptrIT_EEv
 pub fn stub_637b90() -> ! {
     todo!("0x637b90 boost::shared_ptr<RBX::Smoke> RBX::Creatable<RBX::Instance>::create<RBX::Smoke>(void)")
@@ -864,7 +864,7 @@ pub fn stub_637b90() -> ! {
 // 0x637c40 — __ZN5boost10shared_ptrIN3RBX5SmokeEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX5SmokeEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::Smoke>::shared_ptr<RBX::Smoke,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Smoke>::shared_ptr<RBX::Smoke,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX5SmokeEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_637c40() -> ! {
     todo!("0x637c40 boost::shared_ptr<RBX::Smoke>::shared_ptr<RBX::Smoke,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Smoke *,RBX::Creatable<RBX::Instance>::Deleter)")

@@ -838,28 +838,28 @@ pub fn stub_4e6e44() -> ! {
 }
 
 // 0x4e6e68 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13VelocityMotorEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::VelocityMotor> RBX::Creatable<RBX::Instance>::create<RBX::VelocityMotor>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::VelocityMotor> RBX::Creatable<RBX::Instance>::create<RBX::VelocityMotor>(void)")]
 // was: boost::shared_ptr<RBX::VelocityMotor> RBX::Creatable<RBX::Instance>::create<RBX::VelocityMotor>(void)
 pub fn stub_4e6e68() -> ! {
     todo!("0x4e6e68 boost::shared_ptr<RBX::VelocityMotor> RBX::Creatable<RBX::Instance>::create<RBX::VelocityMotor>(void)")
 }
 
 // 0x4e6f18 — __ZN5boost10shared_ptrIN3RBX4HoleEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::Hole>::operator=(boost::shared_ptr<RBX::Hole> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Hole>::operator=(rbx_core::SharedPtr<RBX::Hole> const&)")]
 // was: boost::shared_ptr<RBX::Hole>::operator=(boost::shared_ptr<RBX::Hole> const&)
 pub fn stub_4e6f18() -> ! {
     todo!("0x4e6f18 boost::shared_ptr<RBX::Hole>::operator=(boost::shared_ptr<RBX::Hole> const&)")
 }
 
 // 0x4e6f50 — __ZN3RBX11shared_fromINS_4HoleEEEN5boost10shared_ptrIT_EEPS4_
-#[doc(alias = "boost::shared_ptr<RBX::Hole> RBX::shared_from<RBX::Hole>(RBX::Hole*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Hole> RBX::shared_from<RBX::Hole>(RBX::Hole*)")]
 // was: boost::shared_ptr<RBX::Hole> RBX::shared_from<RBX::Hole>(RBX::Hole*)
 pub fn stub_4e6f50() -> ! {
     todo!("0x4e6f50 boost::shared_ptr<RBX::Hole> RBX::shared_from<RBX::Hole>(RBX::Hole*)")
 }
 
 // 0x4e70c0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEES6_EE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf0IvNS4_13VelocityMotorEEENSA_5list1INSA_5valueIPSE_EEEEEEEENS0_10connectionERKT_
-#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>> const&)")]
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,rbx_core::SharedPtr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>> const&)")]
 // was: rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>> const&)
 pub fn stub_4e70c0() -> ! {
     todo!("0x4e70c0 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::VelocityMotor>,boost::_bi::list1<boost::_bi::value<RBX::VelocityMotor*>>> const&)")
@@ -1151,14 +1151,14 @@ pub fn stub_4e7d34() -> ! {
 }
 
 // 0x4e7e78 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12MotorFeatureEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::MotorFeature> RBX::Creatable<RBX::Instance>::create<RBX::MotorFeature>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MotorFeature> RBX::Creatable<RBX::Instance>::create<RBX::MotorFeature>(void)")]
 // was: boost::shared_ptr<RBX::MotorFeature> RBX::Creatable<RBX::Instance>::create<RBX::MotorFeature>(void)
 pub fn stub_4e7e78() -> ! {
     todo!("0x4e7e78 boost::shared_ptr<RBX::MotorFeature> RBX::Creatable<RBX::Instance>::create<RBX::MotorFeature>(void)")
 }
 
 // 0x4e7f28 — __ZN5boost10shared_ptrIN3RBX12MotorFeatureEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::MotorFeature>::shared_ptr<RBX::MotorFeature,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MotorFeature>::shared_ptr<RBX::MotorFeature,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::MotorFeature>::shared_ptr<RBX::MotorFeature,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn stub_4e7f28() -> ! {
     todo!("0x4e7f28 boost::shared_ptr<RBX::MotorFeature>::shared_ptr<RBX::MotorFeature,RBX::Creatable<RBX::Instance>::Deleter>(RBX::MotorFeature *,RBX::Creatable<RBX::Instance>::Deleter)")

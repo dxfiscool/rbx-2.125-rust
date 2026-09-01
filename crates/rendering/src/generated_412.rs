@@ -22,7 +22,7 @@ pub fn stub_637898() -> ! {
 // 0x637d08 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5SmokeES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5SmokeES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Smoke,RBX::Smoke>(boost::shared_ptr<RBX::Smoke> const*,RBX::Smoke *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Smoke,RBX::Smoke>(rbx_core::SharedPtr<RBX::Smoke> const*,RBX::Smoke *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5SmokeES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_637d08() -> ! {
     todo!("0x637d08 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Smoke,RBX::Smoke>(boost::shared_ptr<RBX::Smoke> const*,RBX::Smoke *)const")
@@ -211,7 +211,7 @@ pub fn stub_63bcc0() -> ! {
 // 0x63bdf0 — __ZN5boost9function1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEE5clearEv
 // type: int(void)
 #[doc(alias = "__ZN5boost9function1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEE5clearEv")]
-#[doc(alias = "boost::function1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::clear(void)")]
+#[doc(alias = "boost::function1<void,rbx_core::SharedPtr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::clear(void)")]
 // was: __ZN5boost9function1IvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsS5_EEEEEE5clearEv
 pub fn stub_63bdf0() -> ! {
     todo!("0x63bdf0 boost::function1<void,boost::shared_ptr<std::map<std::string,RBX::Reflection::Variant,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::Reflection::Variant>>> const>>::clear(void)")
@@ -283,7 +283,7 @@ pub fn stub_63e2ac() -> ! {
 // 0x63ef38 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13SpawnLocationES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13SpawnLocationES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpawnLocation,RBX::SpawnLocation>(boost::shared_ptr<RBX::SpawnLocation> const*,RBX::SpawnLocation *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpawnLocation,RBX::SpawnLocation>(rbx_core::SharedPtr<RBX::SpawnLocation> const*,RBX::SpawnLocation *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_13SpawnLocationES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_63ef38() -> ! {
     todo!("0x63ef38 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpawnLocation,RBX::SpawnLocation>(boost::shared_ptr<RBX::SpawnLocation> const*,RBX::SpawnLocation *)const")
@@ -382,7 +382,7 @@ pub fn stub_657b60() -> ! {
 // 0x657c14 — __ZNK3RBX10Reflection13EventDescImplILi0ENS_10StudioToolEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, char, int, int, int, boost::detail::sp_counted_base *, char, int, int, boost::detail::sp_counted_base *, int, int, int, char, int, int, int, char, int, int, int, int, int, int)
 #[doc(alias = "__ZNK3RBX10Reflection13EventDescImplILi0ENS_10StudioToolEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE")]
-#[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+#[doc(alias = "RBX::Reflection::EventDescImpl<0,RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi0ENS_10StudioToolEFvvEN3rbx6signalIS3_EEMS2_S6_E14connectGenericEPNS0_11EventSourceEN5boost10shared_ptrINS0_18GenericSlotWrapperEEE
 pub fn stub_657c14() -> ! {
     todo!("0x657c14 RBX::Reflection::EventDescImpl<0,RBX::StudioTool,void ()(void),rbx::signal<void ()(void)>,rbx::signal<void ()(void)> RBX::StudioTool::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")

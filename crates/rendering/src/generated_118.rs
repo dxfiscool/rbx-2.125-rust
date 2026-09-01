@@ -527,7 +527,7 @@ pub fn stub_f26db4() -> ! {
 
 // 0xf26dc4 — j___ZN10RobloxView9RenderJobC2EPN3RBX8ViewBaseEPNS1_18FunctionMarshallerEN5boost10shared_ptrINS1_9DataModelEEE
 // type: int __fastcall(int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, boost::detail::sp_counted_base *, RBX::TaskScheduler::Job *, int, int, int, int)
-#[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")]
+#[doc(alias = "RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,rbx_core::SharedPtr<RBX::DataModel>)")]
 // was: RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)
 pub fn stub_f26dc4() -> ! {
     todo!("0xf26dc4 RobloxView::RenderJob::RenderJob(RBX::ViewBase *,RBX::FunctionMarshaller *,boost::shared_ptr<RBX::DataModel>)")
@@ -543,7 +543,7 @@ pub fn stub_f26e24() -> ! {
 
 // 0xf26f84 — j___ZN5boost10shared_ptrIN10RobloxView9RenderJobEE5resetEv
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::reset(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::reset(void)")]
 // was: boost::shared_ptr<RobloxView::RenderJob>::reset(void)
 pub fn stub_f26f84() -> ! {
     todo!("0xf26f84 boost::shared_ptr<RobloxView::RenderJob>::reset(void)")
@@ -551,7 +551,7 @@ pub fn stub_f26f84() -> ! {
 
 // 0xf26f94 — j___ZN5boost10shared_ptrIN10RobloxView9RenderJobEEC1IS2_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")]
 // was: boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)
 pub fn stub_f26f94() -> ! {
     todo!("0xf26f94 boost::shared_ptr<RobloxView::RenderJob>::shared_ptr<RobloxView::RenderJob>(RobloxView::RenderJob *)")
@@ -559,7 +559,7 @@ pub fn stub_f26f94() -> ! {
 
 // 0xf26fa4 — j___ZN5boost10shared_ptrIN10RobloxView9RenderJobEEaSEOS3_
 // type: int __fastcall(int, int, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")]
+#[doc(alias = "rbx_core::SharedPtr<RobloxView::RenderJob>::operator=(rbx_core::SharedPtr<RobloxView::RenderJob>&&)")]
 // was: boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)
 pub fn stub_f26fa4() -> ! {
     todo!("0xf26fa4 boost::shared_ptr<RobloxView::RenderJob>::operator=(boost::shared_ptr<RobloxView::RenderJob>&&)")
@@ -599,7 +599,7 @@ pub fn stub_f27274() -> ! {
 
 // 0xf272e4 — j___ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI19CRenderSettingsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(rbx_core::SharedPtr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")]
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const
 pub fn stub_f272e4() -> ! {
     todo!("0xf272e4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<CRenderSettingsItem,CRenderSettingsItem>(boost::shared_ptr<CRenderSettingsItem> const*,CRenderSettingsItem *)const")
@@ -607,7 +607,7 @@ pub fn stub_f272e4() -> ! {
 
 // 0xf27314 — j___ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIN10RobloxView9RenderJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: int __fastcall(int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(rbx_core::SharedPtr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")]
 // was: void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const
 pub fn stub_f27314() -> ! {
     todo!("0xf27314 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RobloxView::RenderJob,RobloxView::RenderJob>(boost::shared_ptr<RobloxView::RenderJob> const*,RobloxView::RenderJob *)const")
@@ -773,7 +773,7 @@ pub fn stub_f36774() -> ! {
 
 // 0xf36984 — j___ZN3RBX9CreatableINS_8InstanceEE6createINS_18RenderHooksServiceEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::RenderHooksService> RBX::Creatable<RBX::Instance>::create<RBX::RenderHooksService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RenderHooksService> RBX::Creatable<RBX::Instance>::create<RBX::RenderHooksService>(void)")]
 // was: boost::shared_ptr<RBX::RenderHooksService> RBX::Creatable<RBX::Instance>::create<RBX::RenderHooksService>(void)
 pub fn stub_f36984() -> ! {
     todo!("0xf36984 boost::shared_ptr<RBX::RenderHooksService> RBX::Creatable<RBX::Instance>::create<RBX::RenderHooksService>(void)")
@@ -781,7 +781,7 @@ pub fn stub_f36984() -> ! {
 
 // 0xf37074 — j___ZN5boost10shared_ptrIN3RBX18RenderHooksServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::RenderHooksService>::shared_ptr<RBX::RenderHooksService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RenderHooksService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RenderHooksService>::shared_ptr<RBX::RenderHooksService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RenderHooksService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::RenderHooksService>::shared_ptr<RBX::RenderHooksService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RenderHooksService *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn stub_f37074() -> ! {
     todo!("0xf37074 boost::shared_ptr<RBX::RenderHooksService>::shared_ptr<RBX::RenderHooksService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RenderHooksService *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -789,7 +789,7 @@ pub fn stub_f37074() -> ! {
 
 // 0xf37284 — j___ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_18RenderHooksServiceEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RenderHooksService>(boost::shared_ptr<RBX::RenderHooksService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::RenderHooksService>(rbx_core::SharedPtr<RBX::RenderHooksService> const&)")]
 // was: boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RenderHooksService>(boost::shared_ptr<RBX::RenderHooksService> const&)
 pub fn stub_f37284() -> ! {
     todo!("0xf37284 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::RenderHooksService>(boost::shared_ptr<RBX::RenderHooksService> const&)")

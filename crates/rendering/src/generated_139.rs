@@ -86,7 +86,7 @@ pub fn stub_8ab104() -> ! {
 }
 
 // 0x8e1ec0 — __ZN5boost3_bi5list2INS_3argILi1EEENS0_5valueIPN3RBX5AdornEEEEclIPFvNS_10shared_ptrINS5_8InstanceEEES7_ENS0_5list1IRKSD_EEEEvNS0_4typeIvEERT_RT0_i
-#[doc(alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Adorn *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")]
+#[doc(alias = "void boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Adorn *>>::operator()<void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Adorn *),boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(rbx_core::SharedPtr<RBX::Instance>,RBX::Adorn *) &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
 // was: void boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Adorn *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)
 pub fn stub_8e1ec0() -> ! {
     todo!("0x8e1ec0 void boost::_bi::list2<boost::arg<1>,boost::_bi::value<RBX::Adorn *>>::operator()<void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *),boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,void (*)(boost::shared_ptr<RBX::Instance>,RBX::Adorn *) &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")
@@ -191,7 +191,7 @@ pub fn stub_8ff2b0() -> ! {
 }
 
 // 0x93d760 — __ZN3RBX12SceneUpdaterC2EN5boost10shared_ptrINS_9DataModelEEEPNS_15CRenderSettingsEPKNS_10RenderCapsEPNS_11RenderStatsE
-#[doc(alias = "RBX::SceneUpdater::SceneUpdater(boost::shared_ptr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)")]
+#[doc(alias = "RBX::SceneUpdater::SceneUpdater(rbx_core::SharedPtr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)")]
 // was: RBX::SceneUpdater::SceneUpdater(boost::shared_ptr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)
 pub fn stub_93d760() -> ! {
     todo!("0x93d760 RBX::SceneUpdater::SceneUpdater(boost::shared_ptr<RBX::DataModel>,RBX::CRenderSettings *,RBX::RenderCaps const*,RBX::RenderStats *)")

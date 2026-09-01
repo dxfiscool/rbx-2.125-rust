@@ -292,7 +292,7 @@ pub fn stub_64208c() -> ! {
 // 0x6421d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12SpecialShapeEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_12SpecialShapeEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::SpecialShape> RBX::Creatable<RBX::Instance>::create<RBX::SpecialShape>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SpecialShape> RBX::Creatable<RBX::Instance>::create<RBX::SpecialShape>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_12SpecialShapeEEEN5boost10shared_ptrIT_EEv
 pub fn stub_6421d0() -> ! {
     todo!("0x6421d0 boost::shared_ptr<RBX::SpecialShape> RBX::Creatable<RBX::Instance>::create<RBX::SpecialShape>(void)")
@@ -301,7 +301,7 @@ pub fn stub_6421d0() -> ! {
 // 0x642280 — __ZN5boost10shared_ptrIN3RBX12SpecialShapeEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX12SpecialShapeEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::SpecialShape>::shared_ptr<RBX::SpecialShape,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpecialShape *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SpecialShape>::shared_ptr<RBX::SpecialShape,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpecialShape *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX12SpecialShapeEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_642280() -> ! {
     todo!("0x642280 boost::shared_ptr<RBX::SpecialShape>::shared_ptr<RBX::SpecialShape,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpecialShape *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -310,7 +310,7 @@ pub fn stub_642280() -> ! {
 // 0x642348 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12SpecialShapeES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12SpecialShapeES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpecialShape,RBX::SpecialShape>(boost::shared_ptr<RBX::SpecialShape> const*,RBX::SpecialShape *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpecialShape,RBX::SpecialShape>(rbx_core::SharedPtr<RBX::SpecialShape> const*,RBX::SpecialShape *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12SpecialShapeES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_642348() -> ! {
     todo!("0x642348 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpecialShape,RBX::SpecialShape>(boost::shared_ptr<RBX::SpecialShape> const*,RBX::SpecialShape *)const")
@@ -436,7 +436,7 @@ pub fn stub_642a20() -> ! {
 // 0x642b64 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_8FileMeshEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_8FileMeshEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::FileMesh> RBX::Creatable<RBX::Instance>::create<RBX::FileMesh>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::FileMesh> RBX::Creatable<RBX::Instance>::create<RBX::FileMesh>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_8FileMeshEEEN5boost10shared_ptrIT_EEv
 pub fn stub_642b64() -> ! {
     todo!("0x642b64 boost::shared_ptr<RBX::FileMesh> RBX::Creatable<RBX::Instance>::create<RBX::FileMesh>(void)")
@@ -445,7 +445,7 @@ pub fn stub_642b64() -> ! {
 // 0x642c14 — __ZN5boost10shared_ptrIN3RBX8FileMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8FileMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::FileMesh>::shared_ptr<RBX::FileMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FileMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::FileMesh>::shared_ptr<RBX::FileMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FileMesh *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX8FileMeshEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_642c14() -> ! {
     todo!("0x642c14 boost::shared_ptr<RBX::FileMesh>::shared_ptr<RBX::FileMesh,RBX::Creatable<RBX::Instance>::Deleter>(RBX::FileMesh *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -454,7 +454,7 @@ pub fn stub_642c14() -> ! {
 // 0x642cdc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8FileMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8FileMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FileMesh,RBX::FileMesh>(boost::shared_ptr<RBX::FileMesh> const*,RBX::FileMesh *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FileMesh,RBX::FileMesh>(rbx_core::SharedPtr<RBX::FileMesh> const*,RBX::FileMesh *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_8FileMeshES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_642cdc() -> ! {
     todo!("0x642cdc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::FileMesh,RBX::FileMesh>(boost::shared_ptr<RBX::FileMesh> const*,RBX::FileMesh *)const")

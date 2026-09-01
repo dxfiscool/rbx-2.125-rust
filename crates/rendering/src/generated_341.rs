@@ -89,21 +89,21 @@ pub fn stub_5d75f4() -> ! {
 }
 
 // 0x5d7738 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4PART5WedgeEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_4PART5WedgeEEEN5boost10shared_ptrIT_EEv
 pub fn stub_5d7738() -> ! {
     todo!("0x5d7738 boost::shared_ptr<RBX::PART::Wedge> RBX::Creatable<RBX::Instance>::create<RBX::PART::Wedge>(void)")
 }
 
 // 0x5d77ec — __ZN5boost10shared_ptrIN3RBX4PART5WedgeEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX4PART5WedgeEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_5d77ec() -> ! {
     todo!("0x5d77ec boost::shared_ptr<RBX::PART::Wedge>::shared_ptr<RBX::PART::Wedge,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PART::Wedge *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x5d78b4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4PART5WedgeES7_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PART::Wedge,RBX::PART::Wedge>(boost::shared_ptr<RBX::PART::Wedge> const*,RBX::PART::Wedge *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PART::Wedge,RBX::PART::Wedge>(rbx_core::SharedPtr<RBX::PART::Wedge> const*,RBX::PART::Wedge *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_4PART5WedgeES7_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5d78b4() -> ! {
     todo!("0x5d78b4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PART::Wedge,RBX::PART::Wedge>(boost::shared_ptr<RBX::PART::Wedge> const*,RBX::PART::Wedge *)const")
@@ -657,7 +657,7 @@ pub fn stub_5daf54() -> ! {
 }
 
 // 0x5db0c8 — __ZN3RBX12PartInstance18nonNullInWorkspaceEN5boost10shared_ptrIS0_EE
-#[doc(alias = "RBX::PartInstance::nonNullInWorkspace(boost::shared_ptr<RBX::PartInstance>)")]
+#[doc(alias = "RBX::PartInstance::nonNullInWorkspace(rbx_core::SharedPtr<RBX::PartInstance>)")]
 // was: __ZN3RBX12PartInstance18nonNullInWorkspaceEN5boost10shared_ptrIS0_EE
 pub fn stub_5db0c8() -> ! {
     todo!("0x5db0c8 RBX::PartInstance::nonNullInWorkspace(boost::shared_ptr<RBX::PartInstance>)")
@@ -811,7 +811,7 @@ pub fn stub_5db8a8() -> ! {
 }
 
 // 0x5dbb84 — __ZN3RBX12PartInstance13reportUntouchERKN5boost10shared_ptrIS0_EE
-#[doc(alias = "RBX::PartInstance::reportUntouch(boost::shared_ptr<RBX::PartInstance> const&)")]
+#[doc(alias = "RBX::PartInstance::reportUntouch(rbx_core::SharedPtr<RBX::PartInstance> const&)")]
 // was: __ZN3RBX12PartInstance13reportUntouchERKN5boost10shared_ptrIS0_EE
 pub fn stub_5dbb84() -> ! {
     todo!("0x5dbb84 RBX::PartInstance::reportUntouch(boost::shared_ptr<RBX::PartInstance> const&)")

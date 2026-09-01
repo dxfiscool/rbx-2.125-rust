@@ -685,21 +685,21 @@ pub fn stub_28e4ec() -> ! {
 }
 
 // 0x28e630 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_6ScriptEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::Script> RBX::Creatable<RBX::Instance>::create<RBX::Script>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Script> RBX::Creatable<RBX::Instance>::create<RBX::Script>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_6ScriptEEEN5boost10shared_ptrIT_EEv
 pub fn stub_28e630() -> ! {
     todo!("0x28e630 boost::shared_ptr<RBX::Script> RBX::Creatable<RBX::Instance>::create<RBX::Script>(void)")
 }
 
 // 0x28e6e0 — __ZN5boost10shared_ptrIN3RBX6ScriptEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::Script>::shared_ptr<RBX::Script,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Script *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Script>::shared_ptr<RBX::Script,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Script *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX6ScriptEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_28e6e0() -> ! {
     todo!("0x28e6e0 boost::shared_ptr<RBX::Script>::shared_ptr<RBX::Script,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Script *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x28e7a8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6ScriptES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Script,RBX::Script>(boost::shared_ptr<RBX::Script> const*,RBX::Script *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Script,RBX::Script>(rbx_core::SharedPtr<RBX::Script> const*,RBX::Script *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_6ScriptES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_28e7a8() -> ! {
     todo!("0x28e7a8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Script,RBX::Script>(boost::shared_ptr<RBX::Script> const*,RBX::Script *)const")

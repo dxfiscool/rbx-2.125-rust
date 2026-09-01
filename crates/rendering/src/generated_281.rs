@@ -40,7 +40,7 @@ pub fn stub_3d45f0() -> ! {
 
 // 0x3d4700 — __ZN3RBX20ChangeHistoryService26reportMissedPhysicsChangesEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::reportMissedPhysicsChanges(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::ChangeHistoryService::reportMissedPhysicsChanges(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX20ChangeHistoryService26reportMissedPhysicsChangesEN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_3d4700() -> ! {
     todo!("0x3d4700 RBX::ChangeHistoryService::reportMissedPhysicsChanges(boost::shared_ptr<RBX::Instance>)")
@@ -103,7 +103,7 @@ pub fn stub_3d5358() -> ! {
 
 // 0x3d5444 — __ZN3RBX20ChangeHistoryService11onItemAddedEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, int)
-#[doc(alias = "RBX::ChangeHistoryService::onItemAdded(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::ChangeHistoryService::onItemAdded(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX20ChangeHistoryService11onItemAddedEN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_3d5444() -> ! {
     todo!("0x3d5444 RBX::ChangeHistoryService::onItemAdded(boost::shared_ptr<RBX::Instance>)")
@@ -139,7 +139,7 @@ pub fn stub_3d59b8() -> ! {
 
 // 0x3d59c0 — __ZN3RBX20ChangeHistoryService13onItemRemovedEN5boost10shared_ptrINS_8InstanceEEE
 // type: void __fastcall(int, shared_count *, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::onItemRemoved(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::ChangeHistoryService::onItemRemoved(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX20ChangeHistoryService13onItemRemovedEN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_3d59c0() -> ! {
     todo!("0x3d59c0 RBX::ChangeHistoryService::onItemRemoved(boost::shared_ptr<RBX::Instance>)")
@@ -148,7 +148,7 @@ pub fn stub_3d59c0() -> ! {
 
 // 0x3d5dbc — __ZN3RBX20ChangeHistoryService13onItemChangedEN5boost10shared_ptrINS_8InstanceEEEPKNS_10Reflection18PropertyDescriptorE
 // type: void __fastcall(int, int, void *, int)
-#[doc(alias = "RBX::ChangeHistoryService::onItemChanged(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
+#[doc(alias = "RBX::ChangeHistoryService::onItemChanged(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
 // was: __ZN3RBX20ChangeHistoryService13onItemChangedEN5boost10shared_ptrINS_8InstanceEEEPKNS_10Reflection18PropertyDescriptorE
 pub fn stub_3d5dbc() -> ! {
     todo!("0x3d5dbc RBX::ChangeHistoryService::onItemChanged(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")
@@ -238,7 +238,7 @@ pub fn stub_3d6b58() -> ! {
 
 // 0x3d6b7c — __ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChangeHistoryService,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_20ChangeHistoryServiceEFN5boost10shared_ptrIKNS0_5TupleEEEvELi0EED1Ev
 pub fn stub_3d6b7c() -> ! {
     todo!("0x3d6b7c RBX::Reflection::BoundFuncDesc<RBX::ChangeHistoryService,boost::shared_ptr<RBX::Reflection::Tuple const> ()(void),0>::~BoundFuncDesc()")
@@ -301,7 +301,7 @@ pub fn stub_3d6fc4() -> ! {
 
 // 0x3d6fe0 — __ZN3RBX11shared_fromINS_9WorkspaceEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_QWORD *, int)
-#[doc(alias = "boost::shared_ptr<RBX::Workspace> RBX::shared_from<RBX::Workspace>(RBX::Workspace*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Workspace> RBX::shared_from<RBX::Workspace>(RBX::Workspace*)")]
 // was: __ZN3RBX11shared_fromINS_9WorkspaceEEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_3d6fe0() -> ! {
     todo!("0x3d6fe0 boost::shared_ptr<RBX::Workspace> RBX::shared_from<RBX::Workspace>(RBX::Workspace*)")
@@ -337,7 +337,7 @@ pub fn stub_3d72cc() -> ! {
 
 // 0x3d72f0 — __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_20ChangeHistoryServiceENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_
 // type: void __fastcall(const shared_count *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int, int)
-#[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)const")]
+#[doc(alias = "void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)const")]
 // was: __ZNK3RBX8Instance16visitDescendantsIN5boost3_bi6bind_tIvNS2_4_mfi3mf1IvNS_20ChangeHistoryServiceENS2_10shared_ptrIS0_EEEENS3_5list2INS3_5valueIPS7_EENS2_3argILi1EEEEEEEEEvRKT_
 pub fn stub_3d72f0() -> ! {
     todo!("0x3d72f0 void RBX::Instance::visitDescendants<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)const")
@@ -346,7 +346,7 @@ pub fn stub_3d72f0() -> ! {
 
 // 0x3d73f8 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_20ChangeHistoryServiceES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
 // type: int __fastcall(int *, int, __int64 *)
-#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)")]
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_20ChangeHistoryServiceES6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
 pub fn stub_3d73f8() -> ! {
     todo!("0x3d73f8 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>>> const&)")
@@ -355,7 +355,7 @@ pub fn stub_3d73f8() -> ! {
 
 // 0x3d746c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEEENS0_10connectionERKT_
 // type: int __fastcall(int *, int, __int64 *)
-#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>> const&)")]
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>> const&)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEEENS0_10connectionERKT_
 pub fn stub_3d746c() -> ! {
     todo!("0x3d746c rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>(boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>> const&)")
@@ -373,7 +373,7 @@ pub fn stub_3d74e4() -> ! {
 
 // 0x3d7558 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI22ChangeHistoryStatsItemEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<ChangeHistoryStatsItem>(boost::shared_ptr<ChangeHistoryStatsItem> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<ChangeHistoryStatsItem>(rbx_core::SharedPtr<ChangeHistoryStatsItem> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSI22ChangeHistoryStatsItemEERS3_RKNS0_IT_EE
 pub fn stub_3d7558() -> ! {
     todo!("0x3d7558 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<ChangeHistoryStatsItem>(boost::shared_ptr<ChangeHistoryStatsItem> const&)")
@@ -391,7 +391,7 @@ pub fn stub_3d758c() -> ! {
 
 // 0x3d76f0 — __ZN3RBX20ChangeHistoryService8Waypoint7getItemEN5boost10shared_ptrINS_8InstanceEEE
 // type: _DWORD *__fastcall(_DWORD *, const shared_count *, int, int, char, int, boost::detail::sp_counted_base *, int, int, boost::detail::sp_counted_base *, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::ChangeHistoryService::Waypoint::getItem(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::ChangeHistoryService::Waypoint::getItem(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX20ChangeHistoryService8Waypoint7getItemEN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_3d76f0() -> ! {
     todo!("0x3d76f0 RBX::ChangeHistoryService::Waypoint::getItem(boost::shared_ptr<RBX::Instance>)")
@@ -409,7 +409,7 @@ pub fn stub_3d79c4() -> ! {
 
 // 0x3d7b2c — __ZN5boost10shared_ptrIN3RBX19MegaClusterInstanceEEaSERKS3_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::MegaClusterInstance>::operator=(boost::shared_ptr<RBX::MegaClusterInstance> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::MegaClusterInstance>::operator=(rbx_core::SharedPtr<RBX::MegaClusterInstance> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX19MegaClusterInstanceEEaSERKS3_
 pub fn stub_3d7b2c() -> ! {
     todo!("0x3d7b2c boost::shared_ptr<RBX::MegaClusterInstance>::operator=(boost::shared_ptr<RBX::MegaClusterInstance> const&)")
@@ -481,7 +481,7 @@ pub fn stub_3d82b0() -> ! {
 
 // 0x3d82c8 — __ZN3RBX9Selection12setSelectionISt14_List_iteratorIN5boost10shared_ptrINS_8InstanceEEEEEEvT_S8_
 // type: int __fastcall(RBX::Selection *, int *, int *)
-#[doc(alias = "void RBX::Selection::setSelection<std::_List_iterator<boost::shared_ptr<RBX::Instance>>>(std::_List_iterator<boost::shared_ptr<RBX::Instance>>,std::_List_iterator<boost::shared_ptr<RBX::Instance>>)")]
+#[doc(alias = "void RBX::Selection::setSelection<std::_List_iterator<rbx_core::SharedPtr<RBX::Instance>>>(std::_List_iterator<rbx_core::SharedPtr<RBX::Instance>>,std::_List_iterator<rbx_core::SharedPtr<RBX::Instance>>)")]
 // was: __ZN3RBX9Selection12setSelectionISt14_List_iteratorIN5boost10shared_ptrINS_8InstanceEEEEEEvT_S8_
 pub fn stub_3d82c8() -> ! {
     todo!("0x3d82c8 void RBX::Selection::setSelection<std::_List_iterator<boost::shared_ptr<RBX::Instance>>>(std::_List_iterator<boost::shared_ptr<RBX::Instance>>,std::_List_iterator<boost::shared_ptr<RBX::Instance>>)")
@@ -561,7 +561,7 @@ pub fn stub_3d8718() -> ! {
 
 // 0x3d87a4 — __ZN5boost3_bi5list2INS0_5valueIPN3RBX20ChangeHistoryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRKSF_EEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int *, int, const shared_count **)
-#[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")]
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance> const&> &,int)")]
 // was: __ZN5boost3_bi5list2INS0_5valueIPN3RBX20ChangeHistoryServiceEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRKSF_EEEEvNS0_4typeIvEERT_RT0_i
 pub fn stub_3d87a4() -> ! {
     todo!("0x3d87a4 void boost::_bi::list2<boost::_bi::value<RBX::ChangeHistoryService *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance> const&> &,int)")
@@ -570,7 +570,7 @@ pub fn stub_3d87a4() -> ! {
 
 // 0x3d887c — __ZNK5boost4_mfi3mf1IvN3RBX20ChangeHistoryServiceENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_
 // type: void __fastcall(char **, int, const shared_count *)
-#[doc(alias = "boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>::operator()(RBX::ChangeHistoryService*,boost::shared_ptr<RBX::Instance>)const")]
+#[doc(alias = "boost::_mfi::mf1<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::ChangeHistoryService*,rbx_core::SharedPtr<RBX::Instance>)const")]
 // was: __ZNK5boost4_mfi3mf1IvN3RBX20ChangeHistoryServiceENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_
 pub fn stub_3d887c() -> ! {
     todo!("0x3d887c boost::_mfi::mf1<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>>::operator()(RBX::ChangeHistoryService*,boost::shared_ptr<RBX::Instance>)const")
@@ -579,7 +579,7 @@ pub fn stub_3d887c() -> ! {
 
 // 0x3d8964 — __ZNSt4listIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE14_M_create_nodeERKS4_
 // type: shared_count *__fastcall(int, const shared_count *, int, int, void *, int)
-#[doc(alias = "std::list<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_create_node(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "std::list<rbx_core::SharedPtr<RBX::Instance>,std::allocator<rbx_core::SharedPtr<RBX::Instance>>>::_M_create_node(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: __ZNSt4listIN5boost10shared_ptrIN3RBX8InstanceEEESaIS4_EE14_M_create_nodeERKS4_
 pub fn stub_3d8964() -> ! {
     todo!("0x3d8964 std::list<boost::shared_ptr<RBX::Instance>,std::allocator<boost::shared_ptr<RBX::Instance>>>::_M_create_node(boost::shared_ptr<RBX::Instance> const&)")
@@ -660,7 +660,7 @@ pub fn stub_3d8ed0() -> ! {
 
 // 0x3d8f08 — __ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1IS7_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEbERKS7_RKT_
 // type: void __fastcall(int, int, _DWORD *, int)
-#[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::emplace_impl<boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>>>(boost::shared_ptr<RBX::Instance> const&,boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>> const&)")]
+#[doc(alias = "std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<rbx_core::SharedPtr<RBX::Instance>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>>::emplace_impl<boost::unordered::detail::emplace_args1<rbx_core::SharedPtr<RBX::Instance>>>(rbx_core::SharedPtr<RBX::Instance> const&,boost::unordered::detail::emplace_args1<rbx_core::SharedPtr<RBX::Instance>> const&)")]
 // was: __ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE12emplace_implINS1_13emplace_args1IS7_EEEESt4pairINS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEbERKS7_RKT_
 pub fn stub_3d8f08() -> ! {
     todo!("0x3d8f08 std::pair<boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>,bool> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::emplace_impl<boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>>>(boost::shared_ptr<RBX::Instance> const&,boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>> const&)")
@@ -669,7 +669,7 @@ pub fn stub_3d8f08() -> ! {
 
 // 0x3d9090 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE20construct_with_valueINS1_13emplace_args1IS7_EEEEvRKT_
 // type: int __fastcall(int, const shared_count **)
-#[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>>::construct_with_value<boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>>>(boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>> const&)")]
+#[doc(alias = "void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<rbx_core::SharedPtr<RBX::Instance>>>>::construct_with_value<boost::unordered::detail::emplace_args1<rbx_core::SharedPtr<RBX::Instance>>>(boost::unordered::detail::emplace_args1<rbx_core::SharedPtr<RBX::Instance>> const&)")]
 // was: __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE20construct_with_valueINS1_13emplace_args1IS7_EEEEvRKT_
 pub fn stub_3d9090() -> ! {
     todo!("0x3d9090 void boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>>::construct_with_value<boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>>>(boost::unordered::detail::emplace_args1<boost::shared_ptr<RBX::Instance>> const&)")
@@ -678,7 +678,7 @@ pub fn stub_3d9090() -> ! {
 
 // 0x3d90bc — __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm
 // type: unsigned int __fastcall(_DWORD *, unsigned int)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::reserve_for_insert(unsigned long)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>>::reserve_for_insert(unsigned long)")]
 // was: __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE18reserve_for_insertEm
 pub fn stub_3d90bc() -> ! {
     todo!("0x3d90bc boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::reserve_for_insert(unsigned long)")
@@ -687,7 +687,7 @@ pub fn stub_3d90bc() -> ! {
 
 // 0x3d910c — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEED2Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>>::~node_constructor()")]
+#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<rbx_core::SharedPtr<RBX::Instance>>>>::~node_constructor()")]
 // was: __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEED2Ev
 pub fn stub_3d910c() -> ! {
     todo!("0x3d910c boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>>::~node_constructor()")
@@ -696,7 +696,7 @@ pub fn stub_3d910c() -> ! {
 
 // 0x3d9138 — __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm
 // type: void __fastcall(int, unsigned int)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::create_buckets(unsigned long)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>>::create_buckets(unsigned long)")]
 // was: __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14create_bucketsEm
 pub fn stub_3d9138() -> ! {
     todo!("0x3d9138 boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::create_buckets(unsigned long)")
@@ -705,7 +705,7 @@ pub fn stub_3d9138() -> ! {
 
 // 0x3d9260 — __ZNK5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm
 // type: int __fastcall(int, unsigned int)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::min_buckets_for_size(unsigned long)const")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>>::min_buckets_for_size(unsigned long)const")]
 // was: __ZNK5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE20min_buckets_for_sizeEm
 pub fn stub_3d9260() -> ! {
     todo!("0x3d9260 boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::min_buckets_for_size(unsigned long)const")
@@ -714,7 +714,7 @@ pub fn stub_3d9260() -> ! {
 
 // 0x3d92f0 — __ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm
 // type: int __fastcall(int, unsigned int)
-#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::rehash_impl(unsigned long)")]
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>>::rehash_impl(unsigned long)")]
 // was: __ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11rehash_implEm
 pub fn stub_3d92f0() -> ! {
     todo!("0x3d92f0 boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::rehash_impl(unsigned long)")
@@ -723,7 +723,7 @@ pub fn stub_3d92f0() -> ! {
 
 // 0x3d931c — __ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE
 // type: _DWORD *__fastcall(int, _DWORD *)
-#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>> &,boost::unordered::detail::ptr_bucket *)")]
+#[doc(alias = "boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>> &,boost::unordered::detail::ptr_bucket *)")]
 // was: __ZN5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE15place_in_bucketERNS1_5tableISD_EEPNS1_10ptr_bucketE
 pub fn stub_3d931c() -> ! {
     todo!("0x3d931c boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::place_in_bucket(boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>> &,boost::unordered::detail::ptr_bucket *)")
@@ -732,7 +732,7 @@ pub fn stub_3d931c() -> ! {
 
 // 0x3d9374 — __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE9constructEv
 // type: int __fastcall(int)
-#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>>::construct(void)")]
+#[doc(alias = "boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<rbx_core::SharedPtr<RBX::Instance>>>>::construct(void)")]
 // was: __ZN5boost9unordered6detail16node_constructorISaINS1_8ptr_nodeINS_10shared_ptrIN3RBX8InstanceEEEEEEE9constructEv
 pub fn stub_3d9374() -> ! {
     todo!("0x3d9374 boost::unordered::detail::node_constructor<std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>>>::construct(void)")
@@ -741,7 +741,7 @@ pub fn stub_3d9374() -> ! {
 
 // 0x3d93b8 — __ZNK5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14find_node_implIS7_SC_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEmRKT_RKT0_
 // type: int __fastcall(_DWORD *, unsigned int, _DWORD *)
-#[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::find_node_impl<boost::shared_ptr<RBX::Instance>,std::equal_to<boost::shared_ptr<RBX::Instance>>>(unsigned long,boost::shared_ptr<RBX::Instance> const&,std::equal_to<boost::shared_ptr<RBX::Instance>> const&)const")]
+#[doc(alias = "boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<rbx_core::SharedPtr<RBX::Instance>>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>>::find_node_impl<rbx_core::SharedPtr<RBX::Instance>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>(unsigned long,rbx_core::SharedPtr<RBX::Instance> const&,std::equal_to<rbx_core::SharedPtr<RBX::Instance>> const&)const")]
 // was: __ZNK5boost9unordered6detail10table_implINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14find_node_implIS7_SC_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS7_EEEEmRKT_RKT0_
 pub fn stub_3d93b8() -> ! {
     todo!("0x3d93b8 boost::unordered::iterator_detail::iterator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>> boost::unordered::detail::table_impl<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::find_node_impl<boost::shared_ptr<RBX::Instance>,std::equal_to<boost::shared_ptr<RBX::Instance>>>(unsigned long,boost::shared_ptr<RBX::Instance> const&,std::equal_to<boost::shared_ptr<RBX::Instance>> const&)const")
@@ -768,7 +768,7 @@ pub fn stub_3d9470() -> ! {
 
 // 0x3d94dc — __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14delete_bucketsEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::delete_buckets(void)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>>::delete_buckets(void)")]
 // was: __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE14delete_bucketsEv
 pub fn stub_3d94dc() -> ! {
     todo!("0x3d94dc boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::delete_buckets(void)")
@@ -777,7 +777,7 @@ pub fn stub_3d94dc() -> ! {
 
 // 0x3d9514 — __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11delete_nodeEPNS1_10ptr_bucketE
 // type: int __fastcall(int, _DWORD *)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::delete_node(boost::unordered::detail::ptr_bucket *)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>>::delete_node(boost::unordered::detail::ptr_bucket *)")]
 // was: __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEE11delete_nodeEPNS1_10ptr_bucketE
 pub fn stub_3d9514() -> ! {
     todo!("0x3d9514 boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::delete_node(boost::unordered::detail::ptr_bucket *)")
@@ -786,7 +786,7 @@ pub fn stub_3d9514() -> ! {
 
 // 0x3d9544 — __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEEC2EmRKSA_RKSC_RKSaINS1_8ptr_nodeIS7_EEE
 // type: int __fastcall(int result, unsigned int)
-#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::table(unsigned long,boost::hash<boost::shared_ptr<RBX::Instance>> const&,std::equal_to<boost::shared_ptr<RBX::Instance>> const&,std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>> const&)")]
+#[doc(alias = "boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<rbx_core::SharedPtr<RBX::Instance>>,rbx_core::SharedPtr<RBX::Instance>,boost::hash<rbx_core::SharedPtr<RBX::Instance>>,std::equal_to<rbx_core::SharedPtr<RBX::Instance>>>>::table(unsigned long,boost::hash<rbx_core::SharedPtr<RBX::Instance>> const&,std::equal_to<rbx_core::SharedPtr<RBX::Instance>> const&,std::allocator<boost::unordered::detail::ptr_node<rbx_core::SharedPtr<RBX::Instance>>> const&)")]
 // was: __ZN5boost9unordered6detail5tableINS1_3setISaINS_10shared_ptrIN3RBX8InstanceEEEES7_NS_4hashIS7_EESt8equal_toIS7_EEEEC2EmRKSA_RKSC_RKSaINS1_8ptr_nodeIS7_EEE
 pub fn stub_3d9544() -> ! {
     todo!("0x3d9544 boost::unordered::detail::table<boost::unordered::detail::set<std::allocator<boost::shared_ptr<RBX::Instance>>,boost::shared_ptr<RBX::Instance>,boost::hash<boost::shared_ptr<RBX::Instance>>,std::equal_to<boost::shared_ptr<RBX::Instance>>>>::table(unsigned long,boost::hash<boost::shared_ptr<RBX::Instance>> const&,std::equal_to<boost::shared_ptr<RBX::Instance>> const&,std::allocator<boost::unordered::detail::ptr_node<boost::shared_ptr<RBX::Instance>>> const&)")
@@ -876,7 +876,7 @@ pub fn stub_3d9a48() -> ! {
 
 // 0x3d9b20 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEED1Ev
 // type: int __fastcall(int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEED1Ev
 pub fn stub_3d9b20() -> ! {
     todo!("0x3d9b20 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
@@ -885,7 +885,7 @@ pub fn stub_3d9b20() -> ! {
 
 // 0x3d9b4c — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf2IvNS4_20ChangeHistoryServiceES6_SA_EENSE_5list3INSE_5valueIPSI_EENS2_3argILi1EEENSO_ILi2EEEEEEEED0Ev
 pub fn stub_3d9b4c() -> ! {
     todo!("0x3d9b4c rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf2<void,RBX::ChangeHistoryService,boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*>,boost::_bi::list3<boost::_bi::value<RBX::ChangeHistoryService*>,boost::arg<1>,boost::arg<2>>>>::~callable_slot()")
@@ -894,7 +894,7 @@ pub fn stub_3d9b4c() -> ! {
 
 // 0x3d9c20 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot10disconnectEv
 // type: void __fastcall(int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::disconnect(void)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::disconnect(void)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot10disconnectEv
 pub fn stub_3d9c20() -> ! {
     todo!("0x3d9c20 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::disconnect(void)")
@@ -903,7 +903,7 @@ pub fn stub_3d9c20() -> ! {
 
 // 0x3d9d30 — __ZNK3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot9connectedEv
 // type: bool __fastcall(int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::connected(void)const")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::connected(void)const")]
 // was: __ZNK3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEE4slot9connectedEv
 pub fn stub_3d9d30() -> ! {
     todo!("0x3d9d30 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::slot::connected(void)const")

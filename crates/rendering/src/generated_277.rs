@@ -431,7 +431,7 @@ pub fn stub_3b1568() -> ! {
 
 // 0x3b16ac — __ZN3RBX9CreatableINS_8InstanceEE6createINS_8BackpackEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::Backpack> RBX::Creatable<RBX::Instance>::create<RBX::Backpack>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Backpack> RBX::Creatable<RBX::Instance>::create<RBX::Backpack>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_8BackpackEEEN5boost10shared_ptrIT_EEv
 pub fn stub_3b16ac() -> ! {
     todo!("0x3b16ac rbx_core::SharedPtr<RBX::Backpack> RBX::Creatable<RBX::Instance>::create<RBX::Backpack>(void)")
@@ -439,7 +439,7 @@ pub fn stub_3b16ac() -> ! {
 
 // 0x3b175c — __ZN5boost10shared_ptrIN3RBX8BackpackEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: int __fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Backpack>::shared_ptr<RBX::Backpack,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Backpack>::shared_ptr<RBX::Backpack,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX8BackpackEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_3b175c() -> ! {
     todo!("0x3b175c rbx_core::SharedPtr<RBX::Backpack>::shared_ptr<RBX::Backpack,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Backpack *,RBX::Creatable<RBX::Instance>::Deleter)")

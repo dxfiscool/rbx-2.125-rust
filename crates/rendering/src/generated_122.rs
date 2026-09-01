@@ -353,7 +353,7 @@ pub fn stub_f64f84() -> ! {
 
 // 0xf64f94 — j___ZNSt4pairIN4Ogre10TexturePtrEN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEEC2ERKS1_RKS7_
 // type: int __fastcall(_DWORD, _DWORD, _DWORD)
-#[doc(alias = "std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::pair(Ogre::TexturePtr const&,boost::shared_ptr<RBX::TextureCompositor::Job> const&)")]
+#[doc(alias = "std::pair<Ogre::TexturePtr,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>::pair(Ogre::TexturePtr const&,rbx_core::SharedPtr<RBX::TextureCompositor::Job> const&)")]
 // was: std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::pair(Ogre::TexturePtr const&,boost::shared_ptr<RBX::TextureCompositor::Job> const&)
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f64f94() -> ! {
@@ -361,7 +361,7 @@ pub fn stub_f64f94() -> ! {
 }
 
 // 0xf64fa4 — j___ZNSt4pairIN4Ogre10TexturePtrEN5boost10shared_ptrIN3RBX17TextureCompositor3JobEEEED1Ev
-#[doc(alias = "std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::~pair()")]
+#[doc(alias = "std::pair<Ogre::TexturePtr,rbx_core::SharedPtr<RBX::TextureCompositor::Job>>::~pair()")]
 // was: std::pair<Ogre::TexturePtr,boost::shared_ptr<RBX::TextureCompositor::Job>>::~pair()
 // was boost: use rbx_core::SharedPtr instead
 pub fn stub_f64fa4() -> ! {

@@ -21,7 +21,7 @@ pub fn stub_573768() -> ! {
 
 // 0x573890 — __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18ScriptMouseCommandEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 #[doc(alias = "__ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18ScriptMouseCommandEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_")]
-#[doc(alias = "boost::shared_ptr<RBX::ScriptMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ScriptMouseCommand,RBX::Workspace *>(RBX::Workspace *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ScriptMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ScriptMouseCommand,RBX::Workspace *>(RBX::Workspace *)")]
 // was: __ZN3RBX9CreatableINS_12MouseCommandEE6createINS_18ScriptMouseCommandEPNS_9WorkspaceEEEN5boost10shared_ptrIT_EET0_
 pub fn stub_573890() -> ! {
     todo!("0x573890 boost::shared_ptr<RBX::ScriptMouseCommand> RBX::Creatable<RBX::MouseCommand>::create<RBX::ScriptMouseCommand,RBX::Workspace *>(RBX::Workspace *)")
@@ -493,7 +493,7 @@ pub fn stub_574cc4() -> ! {
 
 // 0x574e08 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_11StarterGearEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_11StarterGearEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::StarterGear> RBX::Creatable<RBX::Instance>::create<RBX::StarterGear>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterGear> RBX::Creatable<RBX::Instance>::create<RBX::StarterGear>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_11StarterGearEEEN5boost10shared_ptrIT_EEv
 pub fn stub_574e08() -> ! {
     todo!("0x574e08 boost::shared_ptr<RBX::StarterGear> RBX::Creatable<RBX::Instance>::create<RBX::StarterGear>(void)")
@@ -501,7 +501,7 @@ pub fn stub_574e08() -> ! {
 
 // 0x574eb8 — __ZN5boost10shared_ptrIN3RBX11StarterGearEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX11StarterGearEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::StarterGear>::shared_ptr<RBX::StarterGear,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterGear *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterGear>::shared_ptr<RBX::StarterGear,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterGear *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX11StarterGearEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_574eb8() -> ! {
     todo!("0x574eb8 boost::shared_ptr<RBX::StarterGear>::shared_ptr<RBX::StarterGear,RBX::Creatable<RBX::Instance>::Deleter>(RBX::StarterGear *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -578,7 +578,7 @@ pub fn stub_575548() -> ! {
 
 // 0x57568c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9HopperBinEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_9HopperBinEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::HopperBin> RBX::Creatable<RBX::Instance>::create<RBX::HopperBin>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::HopperBin> RBX::Creatable<RBX::Instance>::create<RBX::HopperBin>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_9HopperBinEEEN5boost10shared_ptrIT_EEv
 pub fn stub_57568c() -> ! {
     todo!("0x57568c boost::shared_ptr<RBX::HopperBin> RBX::Creatable<RBX::Instance>::create<RBX::HopperBin>(void)")
@@ -586,7 +586,7 @@ pub fn stub_57568c() -> ! {
 
 // 0x575740 — __ZN5boost10shared_ptrIN3RBX9HopperBinEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX9HopperBinEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::HopperBin>::shared_ptr<RBX::HopperBin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::HopperBin>::shared_ptr<RBX::HopperBin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX9HopperBinEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_575740() -> ! {
     todo!("0x575740 boost::shared_ptr<RBX::HopperBin>::shared_ptr<RBX::HopperBin,RBX::Creatable<RBX::Instance>::Deleter>(RBX::HopperBin *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -594,7 +594,7 @@ pub fn stub_575740() -> ! {
 
 // 0x575808 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9HopperBinES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9HopperBinES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HopperBin,RBX::HopperBin>(boost::shared_ptr<RBX::HopperBin> const*,RBX::HopperBin *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HopperBin,RBX::HopperBin>(rbx_core::SharedPtr<RBX::HopperBin> const*,RBX::HopperBin *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9HopperBinES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_575808() -> ! {
     todo!("0x575808 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::HopperBin,RBX::HopperBin>(boost::shared_ptr<RBX::HopperBin> const*,RBX::HopperBin *)const")
@@ -733,7 +733,7 @@ pub fn stub_575f34() -> ! {
 
 // 0x575fd8 — __ZN5boost10shared_ptrIN3RBX18ScriptMouseCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX18ScriptMouseCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::ScriptMouseCommand>::shared_ptr<RBX::ScriptMouseCommand,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ScriptMouseCommand>::shared_ptr<RBX::ScriptMouseCommand,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX18ScriptMouseCommandEEC2IS2_NS1_9CreatableINS1_12MouseCommandEE7DeleterEEEPT_T0_
 pub fn stub_575fd8() -> ! {
     todo!("0x575fd8 boost::shared_ptr<RBX::ScriptMouseCommand>::shared_ptr<RBX::ScriptMouseCommand,RBX::Creatable<RBX::MouseCommand>::Deleter>(RBX::ScriptMouseCommand *,RBX::Creatable<RBX::MouseCommand>::Deleter)")
@@ -741,7 +741,7 @@ pub fn stub_575fd8() -> ! {
 
 // 0x5760a0 — __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18ScriptMouseCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18ScriptMouseCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::ScriptMouseCommand,RBX::ScriptMouseCommand>(boost::shared_ptr<RBX::ScriptMouseCommand> const*,RBX::ScriptMouseCommand *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::ScriptMouseCommand,RBX::ScriptMouseCommand>(rbx_core::SharedPtr<RBX::ScriptMouseCommand> const*,RBX::ScriptMouseCommand *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX12MouseCommandEE22_internal_accept_ownerINS1_18ScriptMouseCommandES5_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5760a0() -> ! {
     todo!("0x5760a0 void boost::enable_shared_from_this<RBX::MouseCommand>::_internal_accept_owner<RBX::ScriptMouseCommand,RBX::ScriptMouseCommand>(boost::shared_ptr<RBX::ScriptMouseCommand> const*,RBX::ScriptMouseCommand *)const")
@@ -799,7 +799,7 @@ pub fn stub_5762ac() -> ! {
 // 0x5762b0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
 // type: int(void)
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_")]
-#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>> const&)")]
+#[doc(alias = "rbx::signals::connection rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,rbx_core::SharedPtr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,rbx_core::SharedPtr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>> const&)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE7connectINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEEENS0_10connectionERKT_
 pub fn stub_5762b0() -> ! {
     todo!("0x5762b0 rbx::signals::connection rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>> const&)")
@@ -807,7 +807,7 @@ pub fn stub_5762b0() -> ! {
 
 // 0x576324 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED1Ev
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED1Ev")]
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,rbx_core::SharedPtr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED1Ev
 pub fn stub_576324() -> ! {
     todo!("0x576324 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()")
@@ -815,7 +815,7 @@ pub fn stub_576324() -> ! {
 
 // 0x576350 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED0Ev
 #[doc(alias = "__ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED0Ev")]
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,rbx_core::SharedPtr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE13callable_slotINS2_3_bi6bind_tIvNS2_4_mfi3mf1IvNS4_9HopperBinERS6_EENSA_5list2INSA_5valueIPSE_EENS2_3argILi1EEEEEEEED0Ev
 pub fn stub_576350() -> ! {
     todo!("0x576350 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::callable_slot<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>>::~callable_slot()")
@@ -823,7 +823,7 @@ pub fn stub_576350() -> ! {
 
 // 0x576424 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,rbx_core::SharedPtr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 pub fn stub_576424() -> ! {
     todo!("0x576424 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
@@ -831,7 +831,7 @@ pub fn stub_576424() -> ! {
 
 // 0x57642c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]
-#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,rbx_core::SharedPtr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::call(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 pub fn stub_57642c() -> ! {
     todo!("0x57642c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
@@ -840,7 +840,7 @@ pub fn stub_57642c() -> ! {
 // 0x576434 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX9HopperBinERNS_10shared_ptrINS4_8InstanceEEEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS8_EEvRT_
 // type: int(void)
 #[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX9HopperBinERNS_10shared_ptrINS4_8InstanceEEEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS8_EEvRT_")]
-#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance> &>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>::operator()<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> &)")]
+#[doc(alias = "void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,rbx_core::SharedPtr<RBX::Instance> &>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>::operator()<rbx_core::SharedPtr<RBX::Instance>>(rbx_core::SharedPtr<RBX::Instance> &)")]
 // was: __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX9HopperBinERNS_10shared_ptrINS4_8InstanceEEEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS8_EEvRT_
 pub fn stub_576434() -> ! {
     todo!("0x576434 void boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance> &>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>::operator()<boost::shared_ptr<RBX::Instance>>(boost::shared_ptr<RBX::Instance> &)")
@@ -848,7 +848,7 @@ pub fn stub_576434() -> ! {
 
 // 0x57644c — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_ED1Ev
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_ED1Ev")]
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,rbx_core::SharedPtr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_ED1Ev
 pub fn stub_57644c() -> ! {
     todo!("0x57644c rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")
@@ -856,7 +856,7 @@ pub fn stub_57644c() -> ! {
 
 // 0x576478 — __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_ED0Ev
 #[doc(alias = "__ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_ED0Ev")]
-#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")]
+#[doc(alias = "rbx::callable<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,rbx_core::SharedPtr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(rbx_core::SharedPtr<RBX::Instance>)>::~callable()")]
 // was: __ZN3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_ED0Ev
 pub fn stub_576478() -> ! {
     todo!("0x576478 rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::~callable()")

@@ -85,7 +85,7 @@ pub fn stub_3ddadc() -> ! {
 
 // 0x3ddc30 — __ZN3RBX9CreatableINS_8InstanceEE6createI22ChangeHistoryStatsItemEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<ChangeHistoryStatsItem> RBX::Creatable<RBX::Instance>::create<ChangeHistoryStatsItem>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<ChangeHistoryStatsItem> RBX::Creatable<RBX::Instance>::create<ChangeHistoryStatsItem>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createI22ChangeHistoryStatsItemEEN5boost10shared_ptrIT_EEv
 pub fn stub_3ddc30() -> ! {
     todo!("0x3ddc30 boost::shared_ptr<ChangeHistoryStatsItem> RBX::Creatable<RBX::Instance>::create<ChangeHistoryStatsItem>(void)")
@@ -229,7 +229,7 @@ pub fn stub_3de6e0() -> ! {
 
 // 0x3de7b4 — __ZN5boost10shared_ptrI22ChangeHistoryStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<ChangeHistoryStatsItem>::shared_ptr<ChangeHistoryStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(ChangeHistoryStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<ChangeHistoryStatsItem>::shared_ptr<ChangeHistoryStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(ChangeHistoryStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrI22ChangeHistoryStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_3de7b4() -> ! {
     todo!("0x3de7b4 boost::shared_ptr<ChangeHistoryStatsItem>::shared_ptr<ChangeHistoryStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(ChangeHistoryStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -237,7 +237,7 @@ pub fn stub_3de7b4() -> ! {
 
 // 0x3de87c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI22ChangeHistoryStatsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ChangeHistoryStatsItem,ChangeHistoryStatsItem>(boost::shared_ptr<ChangeHistoryStatsItem> const*,ChangeHistoryStatsItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ChangeHistoryStatsItem,ChangeHistoryStatsItem>(rbx_core::SharedPtr<ChangeHistoryStatsItem> const*,ChangeHistoryStatsItem *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI22ChangeHistoryStatsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_3de87c() -> ! {
     todo!("0x3de87c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<ChangeHistoryStatsItem,ChangeHistoryStatsItem>(boost::shared_ptr<ChangeHistoryStatsItem> const*,ChangeHistoryStatsItem *)const")

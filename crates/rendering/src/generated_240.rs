@@ -234,7 +234,7 @@ pub fn stub_27c254() -> ! {
 
 // 0x27c258 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexERKS5_PKcP9lua_State
 // type: int __fastcall(int, int, int)
-#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_index(boost::shared_ptr<RBX::Instance> const&,char const*,lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_index(rbx_core::SharedPtr<RBX::Instance> const&,char const*,lua_State *)")]
 // was: __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8on_indexERKS5_PKcP9lua_State
 pub fn stub_27c258() -> ! {
     todo!("0x27c258 RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_index(boost::shared_ptr<RBX::Instance> const&,char const*,lua_State *)")
@@ -242,7 +242,7 @@ pub fn stub_27c258() -> ! {
 
 // 0x27dbc8 — __ZL22PropertyNameCorrectionRKN5boost10shared_ptrIN3RBX8InstanceEEEPKcP9lua_State
 // type: const char *__fastcall(int, const char *, int)
-#[doc(alias = "PropertyNameCorrection(boost::shared_ptr<RBX::Instance> const&,char const*,lua_State *)")]
+#[doc(alias = "PropertyNameCorrection(rbx_core::SharedPtr<RBX::Instance> const&,char const*,lua_State *)")]
 // was: __ZL22PropertyNameCorrectionRKN5boost10shared_ptrIN3RBX8InstanceEEEPKcP9lua_State
 pub fn stub_27dbc8() -> ! {
     todo!("0x27dbc8 PropertyNameCorrection(boost::shared_ptr<RBX::Instance> const&,char const*,lua_State *)")
@@ -266,7 +266,7 @@ pub fn stub_27e110() -> ! {
 
 // 0x27e448 — __ZN3RBX3Lua12callCallbackENS0_15WeakFunctionRefEN5boost10shared_ptrIKNS_10Reflection5TupleEEENS2_13intrusive_ptrINS0_13WeakThreadRefEEE
 // type: void __fastcall(boost::detail::sp_counted_base **, int, boost::detail::sp_counted_base ***, boost::detail::sp_counted_base *)
-#[doc(alias = "RBX::Lua::callCallback(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)")]
+#[doc(alias = "RBX::Lua::callCallback(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)")]
 // was: __ZN3RBX3Lua12callCallbackENS0_15WeakFunctionRefEN5boost10shared_ptrIKNS_10Reflection5TupleEEENS2_13intrusive_ptrINS0_13WeakThreadRefEEE
 pub fn stub_27e448() -> ! {
     todo!("0x27e448 RBX::Lua::callCallback(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)")
@@ -274,7 +274,7 @@ pub fn stub_27e448() -> ! {
 
 // 0x27ef18 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_newindexERS5_PKcP9lua_State
 // type: void __fastcall(RBX::Security::Context *, const char *, int)
-#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_newindex(boost::shared_ptr<RBX::Instance>&,char const*,lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_newindex(rbx_core::SharedPtr<RBX::Instance>&,char const*,lua_State *)")]
 // was: __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_newindexERS5_PKcP9lua_State
 pub fn stub_27ef18() -> ! {
     todo!("0x27ef18 RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_newindex(boost::shared_ptr<RBX::Instance>&,char const*,lua_State *)")
@@ -282,7 +282,7 @@ pub fn stub_27ef18() -> ! {
 
 // 0x280b90 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringERKS5_P9lua_State
 // type: int __fastcall(RBX::Instance **, int)
-#[doc(alias = "RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(boost::shared_ptr<RBX::Instance> const&,lua_State *)")]
+#[doc(alias = "RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::on_tostring(rbx_core::SharedPtr<RBX::Instance> const&,lua_State *)")]
 // was: __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE11on_tostringERKS5_P9lua_State
 pub fn stub_280b90() -> ! {
     todo!("0x280b90 RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::on_tostring(boost::shared_ptr<RBX::Instance> const&,lua_State *)")
@@ -298,7 +298,7 @@ pub fn stub_280bac() -> ! {
 
 // 0x280c4c — __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrIS2_EEEEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
-#[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)")]
+#[doc(alias = "bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<rbx_core::SharedPtr<RBX::Instance>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Instance> &)")]
 // was: __ZN3RBX3Lua15SharedPtrBridgeINS_8InstanceEE6getPtrIN5boost10shared_ptrIS2_EEEEbP9lua_StatejRT_
 pub fn stub_280c4c() -> ! {
     todo!("0x280c4c bool RBX::Lua::SharedPtrBridge<RBX::Instance>::getPtr<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)")
@@ -314,7 +314,7 @@ pub fn stub_280d34() -> ! {
 
 // 0x281000 — __ZN5boost10shared_ptrI24YieldFunctionStateObjectEC2IS1_EEPT_
 // type: _DWORD *__fastcall(_DWORD *, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<YieldFunctionStateObject>::shared_ptr<YieldFunctionStateObject>(YieldFunctionStateObject *)")]
+#[doc(alias = "rbx_core::SharedPtr<YieldFunctionStateObject>::shared_ptr<YieldFunctionStateObject>(YieldFunctionStateObject *)")]
 // was: __ZN5boost10shared_ptrI24YieldFunctionStateObjectEC2IS1_EEPT_
 pub fn stub_281000() -> ! {
     todo!("0x281000 boost::shared_ptr<YieldFunctionStateObject>::shared_ptr<YieldFunctionStateObject>(YieldFunctionStateObject *)")
@@ -322,7 +322,7 @@ pub fn stub_281000() -> ! {
 
 // 0x2810e8 — __ZNK5boost23enable_shared_from_thisI24YieldFunctionStateObjectE22_internal_accept_ownerIS1_S1_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<YieldFunctionStateObject>::_internal_accept_owner<YieldFunctionStateObject,YieldFunctionStateObject>(boost::shared_ptr<YieldFunctionStateObject> const*,YieldFunctionStateObject *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<YieldFunctionStateObject>::_internal_accept_owner<YieldFunctionStateObject,YieldFunctionStateObject>(rbx_core::SharedPtr<YieldFunctionStateObject> const*,YieldFunctionStateObject *)const")]
 // was: __ZNK5boost23enable_shared_from_thisI24YieldFunctionStateObjectE22_internal_accept_ownerIS1_S1_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_2810e8() -> ! {
     todo!("0x2810e8 void boost::enable_shared_from_this<YieldFunctionStateObject>::_internal_accept_owner<YieldFunctionStateObject,YieldFunctionStateObject>(boost::shared_ptr<YieldFunctionStateObject> const*,YieldFunctionStateObject *)const")
@@ -378,7 +378,7 @@ pub fn stub_281490() -> ! {
 
 // 0x281494 — __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueIS5_EEbP9lua_StatejRT_
 // type: int __fastcall(int, int, int)
-#[doc(alias = "bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)")]
+#[doc(alias = "bool RBX::Lua::Bridge<rbx_core::SharedPtr<RBX::Instance>,false>::getValue<rbx_core::SharedPtr<RBX::Instance>>(lua_State *,unsigned int,rbx_core::SharedPtr<RBX::Instance> &)")]
 // was: __ZN3RBX3Lua6BridgeIN5boost10shared_ptrINS_8InstanceEEELb0EE8getValueIS5_EEbP9lua_StatejRT_
 pub fn stub_281494() -> ! {
     todo!("0x281494 bool RBX::Lua::Bridge<boost::shared_ptr<RBX::Instance>,false>::getValue<boost::shared_ptr<RBX::Instance>>(lua_State *,unsigned int,boost::shared_ptr<RBX::Instance> &)")
@@ -386,7 +386,7 @@ pub fn stub_281494() -> ! {
 
 // 0x281504 — __ZN5boost4bindIv24YieldFunctionStateObjectN3RBX10Reflection7VariantENS_10shared_ptrIS1_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1ISB_T0_T1_EENS9_9list_av_2IT2_T3_E4typeEEEMSE_FSB_SF_ESI_SJ_
 // type: void __fastcall(_DWORD *, int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list_av_2<boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,RBX::Reflection::Variant,boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(RBX::Reflection::Variant),boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list_av_2<rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,RBX::Reflection::Variant,rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(RBX::Reflection::Variant),rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>)")]
 // was: __ZN5boost4bindIv24YieldFunctionStateObjectN3RBX10Reflection7VariantENS_10shared_ptrIS1_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1ISB_T0_T1_EENS9_9list_av_2IT2_T3_E4typeEEEMSE_FSB_SF_ESI_SJ_
 pub fn stub_281504() -> ! {
     todo!("0x281504 boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list_av_2<boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,RBX::Reflection::Variant,boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(RBX::Reflection::Variant),boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>)")
@@ -402,7 +402,7 @@ pub fn stub_281620() -> ! {
 
 // 0x281988 — __ZN3RBX11shared_fromI24YieldFunctionStateObjectEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_QWORD *, _DWORD *)
-#[doc(alias = "boost::shared_ptr<YieldFunctionStateObject> RBX::shared_from<YieldFunctionStateObject>(YieldFunctionStateObject*)")]
+#[doc(alias = "rbx_core::SharedPtr<YieldFunctionStateObject> RBX::shared_from<YieldFunctionStateObject>(YieldFunctionStateObject*)")]
 // was: __ZN3RBX11shared_fromI24YieldFunctionStateObjectEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_281988() -> ! {
     todo!("0x281988 boost::shared_ptr<YieldFunctionStateObject> RBX::shared_from<YieldFunctionStateObject>(YieldFunctionStateObject*)")
@@ -410,7 +410,7 @@ pub fn stub_281988() -> ! {
 
 // 0x281af0 — __ZN5boost4bindIv24YieldFunctionStateObjectSsNS_10shared_ptrIS1_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_
 // type: void __fastcall(_DWORD *, int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list_av_2<boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,std::string,boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(std::string),boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list_av_2<rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,std::string,rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(std::string),rbx_core::SharedPtr<YieldFunctionStateObject>,boost::arg<1>)")]
 // was: __ZN5boost4bindIv24YieldFunctionStateObjectSsNS_10shared_ptrIS1_EENS_3argILi1EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf1IS8_T0_T1_EENS6_9list_av_2IT2_T3_E4typeEEEMSB_FS8_SC_ESF_SG_
 pub fn stub_281af0() -> ! {
     todo!("0x281af0 boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list_av_2<boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>::type> boost::bind<void,YieldFunctionStateObject,std::string,boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>>(void (YieldFunctionStateObject::*)(std::string),boost::shared_ptr<YieldFunctionStateObject>,boost::arg<1>)")
@@ -530,7 +530,7 @@ pub fn stub_2830e0() -> ! {
 
 // 0x283240 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEC2ES6_S8_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::list2(boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>::list2(boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>)")]
 // was: __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEC2ES6_S8_
 pub fn stub_283240() -> ! {
     todo!("0x283240 boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::list2(boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>)")
@@ -538,7 +538,7 @@ pub fn stub_283240() -> ! {
 
 // 0x283310 — __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEC2ES6_S8_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>)")]
+#[doc(alias = "boost::_bi::storage2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>::storage2(boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>)")]
 // was: __ZN5boost3_bi8storage2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEC2ES6_S8_
 pub fn stub_283310() -> ! {
     todo!("0x283310 boost::_bi::storage2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::storage2(boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>)")
@@ -562,7 +562,7 @@ pub fn stub_2834d4() -> ! {
 
 // 0x2835bc — __ZN5boost9function1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEEEvT_
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "void boost::function1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>)")]
+#[doc(alias = "void boost::function1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>)")]
 // was: __ZN5boost9function1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEEEvT_
 pub fn stub_2835bc() -> ! {
     todo!("0x2835bc void boost::function1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>)")
@@ -570,7 +570,7 @@ pub fn stub_2835bc() -> ! {
 
 // 0x2836b4 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeE
 pub fn stub_2836b4() -> ! {
     todo!("0x2836b4 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
@@ -578,7 +578,7 @@ pub fn stub_2836b4() -> ! {
 
 // 0x2836d0 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEvSsE6invokeERNS1_15function_bufferESs
 // type: int __fastcall(int *, int)
-#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,void,std::string>::invoke(boost::detail::function::function_buffer &,std::string)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,void,std::string>::invoke(boost::detail::function::function_buffer &,std::string)")]
 // was: __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEvSsE6invokeERNS1_15function_bufferESs
 pub fn stub_2836d0() -> ! {
     todo!("0x2836d0 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,void,std::string>::invoke(boost::detail::function::function_buffer &,std::string)")
@@ -586,7 +586,7 @@ pub fn stub_2836d0() -> ! {
 
 // 0x2836ec — __ZNK5boost6detail8function13basic_vtable1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
 // was: __ZNK5boost6detail8function13basic_vtable1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
 pub fn stub_2836ec() -> ! {
     todo!("0x2836ec bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")
@@ -594,7 +594,7 @@ pub fn stub_2836ec() -> ! {
 
 // 0x2837d4 — __ZNK5boost6detail8function13basic_vtable1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, const shared_count *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: __ZNK5boost6detail8function13basic_vtable1IvSsE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 pub fn stub_2837d4() -> ! {
     todo!("0x2837d4 bool boost::detail::function::basic_vtable1<void,std::string>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
@@ -602,7 +602,7 @@ pub fn stub_2837d4() -> ! {
 
 // 0x2838b8 — __ZNK5boost6detail8function13basic_vtable1IvSsE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int, int, _DWORD *)
-#[doc(alias = "void boost::detail::function::basic_vtable1<void,std::string>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+#[doc(alias = "void boost::detail::function::basic_vtable1<void,std::string>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // was: __ZNK5boost6detail8function13basic_vtable1IvSsE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS5_5list2INS5_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 pub fn stub_2838b8() -> ! {
     todo!("0x2838b8 void boost::detail::function::basic_vtable1<void,std::string>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
@@ -610,7 +610,7 @@ pub fn stub_2838b8() -> ! {
 
 // 0x28398c — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_SsEENS0_5list1IRSsEEEEvNS0_4typeIvEERT_RT0_i
 // type: void __fastcall(int, int, const std::string **)
-#[doc(alias = "void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list1<std::string &>>(boost::_bi::type<void>,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string> &,boost::_bi::list1<std::string &> &,int)")]
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list1<std::string &>>(boost::_bi::type<void>,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string> &,boost::_bi::list1<std::string &> &,int)")]
 // was: __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_SsEENS0_5list1IRSsEEEEvNS0_4typeIvEERT_RT0_i
 pub fn stub_28398c() -> ! {
     todo!("0x28398c void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list1<std::string &>>(boost::_bi::type<void>,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string> &,boost::_bi::list1<std::string &> &,int)")
@@ -618,7 +618,7 @@ pub fn stub_28398c() -> ! {
 
 // 0x283aac — __ZNK5boost4_mfi3mf1Iv24YieldFunctionStateObjectSsE4callINS_10shared_ptrIS2_EESsEEvRT_PKvRT0_
 // type: void __fastcall(char **, _DWORD *, int, const std::string *)
-#[doc(alias = "void boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>::call<boost::shared_ptr<YieldFunctionStateObject>,std::string>(boost::shared_ptr<YieldFunctionStateObject> &,void const*,std::string &)const")]
+#[doc(alias = "void boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>::call<rbx_core::SharedPtr<YieldFunctionStateObject>,std::string>(rbx_core::SharedPtr<YieldFunctionStateObject> &,void const*,std::string &)const")]
 // was: __ZNK5boost4_mfi3mf1Iv24YieldFunctionStateObjectSsE4callINS_10shared_ptrIS2_EESsEEvRT_PKvRT0_
 pub fn stub_283aac() -> ! {
     todo!("0x283aac void boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>::call<boost::shared_ptr<YieldFunctionStateObject>,std::string>(boost::shared_ptr<YieldFunctionStateObject> &,void const*,std::string &)const")
@@ -626,7 +626,7 @@ pub fn stub_283aac() -> ! {
 
 // 0x283be0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectSsEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 pub fn stub_283be0() -> ! {
     todo!("0x283be0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,std::string>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
@@ -650,7 +650,7 @@ pub fn stub_283e1c() -> ! {
 
 // 0x283f04 — __ZN5boost9function1IvN3RBX10Reflection7VariantEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectS3_EENS6_5list2INS6_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEEvT_
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "void boost::function1<void,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>)")]
+#[doc(alias = "void boost::function1<void,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>)")]
 // was: __ZN5boost9function1IvN3RBX10Reflection7VariantEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectS3_EENS6_5list2INS6_5valueINS_10shared_ptrISA_EEEENS_3argILi1EEEEEEEEEvT_
 pub fn stub_283f04() -> ! {
     todo!("0x283f04 void boost::function1<void,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>)")
@@ -658,7 +658,7 @@ pub fn stub_283f04() -> ! {
 
 // 0x283ffc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
 pub fn stub_283ffc() -> ! {
     todo!("0x283ffc boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
@@ -666,7 +666,7 @@ pub fn stub_283ffc() -> ! {
 
 // 0x284018 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_
 // type: int __fastcall(int *, int)
-#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,void,RBX::Reflection::Variant>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::Variant)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,void,RBX::Reflection::Variant>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::Variant)")]
 // was: __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEvSA_E6invokeERNS1_15function_bufferESA_
 pub fn stub_284018() -> ! {
     todo!("0x284018 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,void,RBX::Reflection::Variant>::invoke(boost::detail::function::function_buffer &,RBX::Reflection::Variant)")
@@ -674,7 +674,7 @@ pub fn stub_284018() -> ! {
 
 // 0x284034 — __ZNK5boost6detail8function13basic_vtable1IvN3RBX10Reflection7VariantEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectS5_EENS8_5list2INS8_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")]
 // was: __ZNK5boost6detail8function13basic_vtable1IvN3RBX10Reflection7VariantEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectS5_EENS8_5list2INS8_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferE
 pub fn stub_284034() -> ! {
     todo!("0x284034 bool boost::detail::function::basic_vtable1<void,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &)const")
@@ -682,7 +682,7 @@ pub fn stub_284034() -> ! {
 
 // 0x28411c — __ZNK5boost6detail8function13basic_vtable1IvN3RBX10Reflection7VariantEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectS5_EENS8_5list2INS8_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, const shared_count *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<void,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: __ZNK5boost6detail8function13basic_vtable1IvN3RBX10Reflection7VariantEE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectS5_EENS8_5list2INS8_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 pub fn stub_28411c() -> ! {
     todo!("0x28411c bool boost::detail::function::basic_vtable1<void,RBX::Reflection::Variant>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
@@ -690,7 +690,7 @@ pub fn stub_28411c() -> ! {
 
 // 0x284200 — __ZNK5boost6detail8function13basic_vtable1IvN3RBX10Reflection7VariantEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectS5_EENS8_5list2INS8_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int, int, _DWORD *)
-#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::Reflection::Variant>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+#[doc(alias = "void boost::detail::function::basic_vtable1<void,RBX::Reflection::Variant>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // was: __ZNK5boost6detail8function13basic_vtable1IvN3RBX10Reflection7VariantEE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectS5_EENS8_5list2INS8_5valueINS_10shared_ptrISC_EEEENS_3argILi1EEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 pub fn stub_284200() -> ! {
     todo!("0x284200 void boost::detail::function::basic_vtable1<void,RBX::Reflection::Variant>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
@@ -698,7 +698,7 @@ pub fn stub_284200() -> ! {
 
 // 0x2842d4 — __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_N3RBX10Reflection7VariantEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 // type: int __fastcall(int, int, int *)
-#[doc(alias = "void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list1<RBX::Reflection::Variant&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant> &,boost::_bi::list1<RBX::Reflection::Variant&> &,int)")]
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list1<RBX::Reflection::Variant&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant> &,boost::_bi::list1<RBX::Reflection::Variant&> &,int)")]
 // was: __ZN5boost3_bi5list2INS0_5valueINS_10shared_ptrI24YieldFunctionStateObjectEEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_N3RBX10Reflection7VariantEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 pub fn stub_2842d4() -> ! {
     todo!("0x2842d4 void boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list1<RBX::Reflection::Variant&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant> &,boost::_bi::list1<RBX::Reflection::Variant&> &,int)")
@@ -706,7 +706,7 @@ pub fn stub_2842d4() -> ! {
 
 // 0x2843e0 — __ZNK5boost4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEE4callINS_10shared_ptrIS2_EES5_EEvRT_PKvRT0_
 // type: int __fastcall(char **, _DWORD *, int, int *)
-#[doc(alias = "void boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>::call<boost::shared_ptr<YieldFunctionStateObject>,RBX::Reflection::Variant>(boost::shared_ptr<YieldFunctionStateObject> &,void const*,RBX::Reflection::Variant &)const")]
+#[doc(alias = "void boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>::call<rbx_core::SharedPtr<YieldFunctionStateObject>,RBX::Reflection::Variant>(rbx_core::SharedPtr<YieldFunctionStateObject> &,void const*,RBX::Reflection::Variant &)const")]
 // was: __ZNK5boost4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEE4callINS_10shared_ptrIS2_EES5_EEvRT_PKvRT0_
 pub fn stub_2843e0() -> ! {
     todo!("0x2843e0 void boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>::call<boost::shared_ptr<YieldFunctionStateObject>,RBX::Reflection::Variant>(boost::shared_ptr<YieldFunctionStateObject> &,void const*,RBX::Reflection::Variant &)const")
@@ -714,7 +714,7 @@ pub fn stub_2843e0() -> ! {
 
 // 0x2844f8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: void __fastcall(int *, _WORD *, int, int, int, void *, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<rbx_core::SharedPtr<YieldFunctionStateObject>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1Iv24YieldFunctionStateObjectN3RBX10Reflection7VariantEEENS3_5list2INS3_5valueINS_10shared_ptrIS7_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 pub fn stub_2844f8() -> ! {
     todo!("0x2844f8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,YieldFunctionStateObject,RBX::Reflection::Variant>,boost::_bi::list2<boost::_bi::value<boost::shared_ptr<YieldFunctionStateObject>>,boost::arg<1>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
@@ -722,7 +722,7 @@ pub fn stub_2844f8() -> ! {
 
 // 0x284650 — __ZN24YieldFunctionStateObjectC2EPKN3RBX10Reflection23YieldFunctionDescriptorEN5boost10shared_ptrINS0_8InstanceEEEP9lua_State
 // type: _DWORD *__fastcall(_DWORD *, int, const shared_count *, int, int, void *, int, int, int, int)
-#[doc(alias = "YieldFunctionStateObject::YieldFunctionStateObject(RBX::Reflection::YieldFunctionDescriptor const*,boost::shared_ptr<RBX::Instance>,lua_State *)")]
+#[doc(alias = "YieldFunctionStateObject::YieldFunctionStateObject(RBX::Reflection::YieldFunctionDescriptor const*,rbx_core::SharedPtr<RBX::Instance>,lua_State *)")]
 // was: __ZN24YieldFunctionStateObjectC2EPKN3RBX10Reflection23YieldFunctionDescriptorEN5boost10shared_ptrINS0_8InstanceEEEP9lua_State
 pub fn stub_284650() -> ! {
     todo!("0x284650 YieldFunctionStateObject::YieldFunctionStateObject(RBX::Reflection::YieldFunctionDescriptor const*,boost::shared_ptr<RBX::Instance>,lua_State *)")
@@ -730,7 +730,7 @@ pub fn stub_284650() -> ! {
 
 // 0x284820 — __ZN5boost4bindINS_10shared_ptrIN3RBX10Reflection5TupleEEENS2_3Lua15WeakFunctionRefENS1_IKS4_EENS_13intrusive_ptrINS6_13WeakThreadRefEEES7_NS_3argILi1EEESC_EENS_3_bi6bind_tIT_PFSH_T0_T1_T2_ENSF_9list_av_3IT3_T4_T5_E4typeEEESM_SO_SP_SQ_
 // type: void __fastcall(_DWORD *, int, const RBX::Lua::WeakFunctionRef *, int *)
-#[doc(alias = "boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list_av_3<RBX::Lua::WeakFunctionRef,boost::arg<1>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>::type> boost::bind<boost::shared_ptr<RBX::Reflection::Tuple>,RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,RBX::Lua::WeakFunctionRef,boost::arg<1>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>(boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),RBX::Lua::WeakFunctionRef,boost::arg<1>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)")]
+#[doc(alias = "boost::_bi::bind_t<rbx_core::SharedPtr<RBX::Reflection::Tuple>,rbx_core::SharedPtr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list_av_3<RBX::Lua::WeakFunctionRef,boost::arg<1>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>::type> boost::bind<rbx_core::SharedPtr<RBX::Reflection::Tuple>,RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,RBX::Lua::WeakFunctionRef,boost::arg<1>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>(rbx_core::SharedPtr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),RBX::Lua::WeakFunctionRef,boost::arg<1>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)")]
 // was: __ZN5boost4bindINS_10shared_ptrIN3RBX10Reflection5TupleEEENS2_3Lua15WeakFunctionRefENS1_IKS4_EENS_13intrusive_ptrINS6_13WeakThreadRefEEES7_NS_3argILi1EEESC_EENS_3_bi6bind_tIT_PFSH_T0_T1_T2_ENSF_9list_av_3IT3_T4_T5_E4typeEEESM_SO_SP_SQ_
 pub fn stub_284820() -> ! {
     todo!("0x284820 boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list_av_3<RBX::Lua::WeakFunctionRef,boost::arg<1>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>::type> boost::bind<boost::shared_ptr<RBX::Reflection::Tuple>,RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>,RBX::Lua::WeakFunctionRef,boost::arg<1>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>(boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),RBX::Lua::WeakFunctionRef,boost::arg<1>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>)")
@@ -778,7 +778,7 @@ pub fn stub_284dd8() -> ! {
 
 // 0x284f34 — __ZN5boost9function1INS_10shared_ptrIN3RBX10Reflection5TupleEEENS1_IKS4_EEE9assign_toINS_3_bi6bind_tIS5_PFS5_NS2_3Lua15WeakFunctionRefES7_NS_13intrusive_ptrINSC_13WeakThreadRefEEEENSA_5list3INSA_5valueISD_EENS_3argILi1EEENSK_ISG_EEEEEEEEvT_
 // type: void __fastcall(int, int *)
-#[doc(alias = "void boost::function1<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple const>>::assign_to<boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>>(boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>)")]
+#[doc(alias = "void boost::function1<rbx_core::SharedPtr<RBX::Reflection::Tuple>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::assign_to<boost::_bi::bind_t<rbx_core::SharedPtr<RBX::Reflection::Tuple>,rbx_core::SharedPtr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>>(boost::_bi::bind_t<rbx_core::SharedPtr<RBX::Reflection::Tuple>,rbx_core::SharedPtr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>)")]
 // was: __ZN5boost9function1INS_10shared_ptrIN3RBX10Reflection5TupleEEENS1_IKS4_EEE9assign_toINS_3_bi6bind_tIS5_PFS5_NS2_3Lua15WeakFunctionRefES7_NS_13intrusive_ptrINSC_13WeakThreadRefEEEENSA_5list3INSA_5valueISD_EENS_3argILi1EEENSK_ISG_EEEEEEEEvT_
 pub fn stub_284f34() -> ! {
     todo!("0x284f34 void boost::function1<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple const>>::assign_to<boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>>(boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>)")
@@ -786,14 +786,14 @@ pub fn stub_284f34() -> ! {
 
 // 0x2850a0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS_10shared_ptrIN3RBX10Reflection5TupleEEEPFS9_NS6_3Lua15WeakFunctionRefENS5_IKS8_EENS_13intrusive_ptrINSA_13WeakThreadRefEEEENS3_5list3INS3_5valueISB_EENS_3argILi1EEENSK_ISG_EEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE
 // type: _UNKNOWN **__fastcall(int, int, int, int, void *, int, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<rbx_core::SharedPtr<RBX::Reflection::Tuple>,rbx_core::SharedPtr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS_10shared_ptrIN3RBX10Reflection5TupleEEEPFS9_NS6_3Lua15WeakFunctionRefENS5_IKS8_EENS_13intrusive_ptrINSA_13WeakThreadRefEEEENS3_5list3INS3_5valueISB_EENS_3argILi1EEENSK_ISG_EEEEEEE6manageERKNS1_15function_bufferERSS_NS1_30functor_manager_operation_typeE
 pub fn stub_2850a0() -> ! {
     todo!("0x2850a0 boost::detail::function::functor_manager<boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
 }
 
 // 0x2850bc — __ZN5boost6detail8function21function_obj_invoker1INS_3_bi6bind_tINS_10shared_ptrIN3RBX10Reflection5TupleEEEPFS9_NS6_3Lua15WeakFunctionRefENS5_IKS8_EENS_13intrusive_ptrINSA_13WeakThreadRefEEEENS3_5list3INS3_5valueISB_EENS_3argILi1EEENSK_ISG_EEEEEES9_SD_E6invokeERNS1_15function_bufferESD_
-#[doc(alias = "boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>,boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple const>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Reflection::Tuple const>)")]
+#[doc(alias = "boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<rbx_core::SharedPtr<RBX::Reflection::Tuple>,rbx_core::SharedPtr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>,rbx_core::SharedPtr<RBX::Reflection::Tuple>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Reflection::Tuple const>)")]
 // was: __ZN5boost6detail8function21function_obj_invoker1INS_3_bi6bind_tINS_10shared_ptrIN3RBX10Reflection5TupleEEEPFS9_NS6_3Lua15WeakFunctionRefENS5_IKS8_EENS_13intrusive_ptrINSA_13WeakThreadRefEEEENS3_5list3INS3_5valueISB_EENS_3argILi1EEENSK_ISG_EEEEEES9_SD_E6invokeERNS1_15function_bufferESD_
 pub fn stub_2850bc() -> ! {
     todo!("0x2850bc boost::detail::function::function_obj_invoker1<boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>,boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple const>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Reflection::Tuple const>)")
@@ -801,7 +801,7 @@ pub fn stub_2850bc() -> ! {
 
 // 0x2850d4 — __ZNK5boost6detail8function13basic_vtable1INS_10shared_ptrIN3RBX10Reflection5TupleEEENS3_IKS6_EEE9assign_toINS_3_bi6bind_tIS7_PFS7_NS4_3Lua15WeakFunctionRefES9_NS_13intrusive_ptrINSE_13WeakThreadRefEEEENSC_5list3INSC_5valueISF_EENS_3argILi1EEENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, int, struct _Unwind_Exception *lpuexcpt, int, int, int, int, int, int, int, int, int, RBX::Lua::WeakFunctionRef *, RBX::Lua::WeakFunctionRef *, RBX::Lua::WeakFunctionRef *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable1<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple const>>::assign_to<boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>>(boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable1<rbx_core::SharedPtr<RBX::Reflection::Tuple>,rbx_core::SharedPtr<RBX::Reflection::Tuple const>>::assign_to<boost::_bi::bind_t<rbx_core::SharedPtr<RBX::Reflection::Tuple>,rbx_core::SharedPtr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>>(boost::_bi::bind_t<rbx_core::SharedPtr<RBX::Reflection::Tuple>,rbx_core::SharedPtr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,rbx_core::SharedPtr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>,boost::detail::function::function_buffer &)const")]
 // was: __ZNK5boost6detail8function13basic_vtable1INS_10shared_ptrIN3RBX10Reflection5TupleEEENS3_IKS6_EEE9assign_toINS_3_bi6bind_tIS7_PFS7_NS4_3Lua15WeakFunctionRefES9_NS_13intrusive_ptrINSE_13WeakThreadRefEEEENSC_5list3INSC_5valueISF_EENS_3argILi1EEENSM_ISI_EEEEEEEEbT_RNS1_15function_bufferE
 pub fn stub_2850d4() -> ! {
     todo!("0x2850d4 bool boost::detail::function::basic_vtable1<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple const>>::assign_to<boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>>(boost::_bi::bind_t<boost::shared_ptr<RBX::Reflection::Tuple>,boost::shared_ptr<RBX::Reflection::Tuple> (*)(RBX::Lua::WeakFunctionRef,boost::shared_ptr<RBX::Reflection::Tuple const>,boost::intrusive_ptr<RBX::Lua::WeakThreadRef>),boost::_bi::list3<boost::_bi::value<RBX::Lua::WeakFunctionRef>,boost::arg<1>,boost::_bi::value<boost::intrusive_ptr<RBX::Lua::WeakThreadRef>>>>,boost::detail::function::function_buffer &)const")

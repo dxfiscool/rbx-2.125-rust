@@ -272,14 +272,14 @@ pub fn stub_5ab31c() -> ! {
 }
 
 // 0x5abd48 — __ZN3RBX13JointsService24setJoinAfterMoveInstanceEN5boost10shared_ptrINS_8InstanceEEE
-#[doc(alias = "RBX::JointsService::setJoinAfterMoveInstance(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::JointsService::setJoinAfterMoveInstance(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX13JointsService24setJoinAfterMoveInstanceEN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_5abd48() -> ! {
     todo!("0x5abd48 RBX::JointsService::setJoinAfterMoveInstance(boost::shared_ptr<RBX::Instance>)")
 }
 
 // 0x5abe0c — __ZN3RBX13JointsService22setJoinAfterMoveTargetEN5boost10shared_ptrINS_8InstanceEEE
-#[doc(alias = "RBX::JointsService::setJoinAfterMoveTarget(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::JointsService::setJoinAfterMoveTarget(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX13JointsService22setJoinAfterMoveTargetEN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_5abe0c() -> ! {
     todo!("0x5abe0c RBX::JointsService::setJoinAfterMoveTarget(boost::shared_ptr<RBX::Instance>)")
@@ -350,7 +350,7 @@ pub fn stub_5ac808() -> ! {
 }
 
 // 0x5ac8b8 — __ZN3RBX13JointsService20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
-#[doc(alias = "RBX::JointsService::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "RBX::JointsService::onDescendantRemoving(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: __ZN3RBX13JointsService20onDescendantRemovingERKN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_5ac8b8() -> ! {
     todo!("0x5ac8b8 RBX::JointsService::onDescendantRemoving(boost::shared_ptr<RBX::Instance> const&)")
@@ -365,7 +365,7 @@ pub fn stub_5ac8fc() -> ! {
 }
 
 // 0x5ac944 — __ZN3RBX10Reflection13BoundFuncDescINS_13JointsServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::JointsService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::JointsService,void ()(rbx_core::SharedPtr<RBX::Instance>),1>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_13JointsServiceEFvN5boost10shared_ptrINS_8InstanceEEEELi1EED1Ev
 pub fn stub_5ac944() -> ! {
     todo!("0x5ac944 RBX::Reflection::BoundFuncDesc<RBX::JointsService,void ()(boost::shared_ptr<RBX::Instance>),1>::~BoundFuncDesc()")
@@ -388,14 +388,14 @@ pub fn stub_5acaac() -> ! {
 
 // 0x5acb20 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4SnapEEERS3_RKNS0_IT_EE
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Snap>(boost::shared_ptr<RBX::Snap> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Snap>(rbx_core::SharedPtr<RBX::Snap> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4SnapEEERS3_RKNS0_IT_EE
 pub fn stub_5acb20() -> ! {
     todo!("0x5acb20 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Snap>(boost::shared_ptr<RBX::Snap> const&)")
 }
 
 // 0x5acb54 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4SnapEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RBX::Snap> RBX::Creatable<RBX::Instance>::create<RBX::Snap,RBX::Joint *>(RBX::Joint *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Snap> RBX::Creatable<RBX::Instance>::create<RBX::Snap,RBX::Joint *>(RBX::Joint *)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_4SnapEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
 pub fn stub_5acb54() -> ! {
     todo!("0x5acb54 boost::shared_ptr<RBX::Snap> RBX::Creatable<RBX::Instance>::create<RBX::Snap,RBX::Joint *>(RBX::Joint *)")
@@ -403,14 +403,14 @@ pub fn stub_5acb54() -> ! {
 
 // 0x5acc08 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4WeldEEERS3_RKNS0_IT_EE
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Weld>(boost::shared_ptr<RBX::Weld> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Weld>(rbx_core::SharedPtr<RBX::Weld> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4WeldEEERS3_RKNS0_IT_EE
 pub fn stub_5acc08() -> ! {
     todo!("0x5acc08 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Weld>(boost::shared_ptr<RBX::Weld> const&)")
 }
 
 // 0x5acc3c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4WeldEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RBX::Weld> RBX::Creatable<RBX::Instance>::create<RBX::Weld,RBX::Joint *>(RBX::Joint *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Weld> RBX::Creatable<RBX::Instance>::create<RBX::Weld,RBX::Joint *>(RBX::Joint *)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_4WeldEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
 pub fn stub_5acc3c() -> ! {
     todo!("0x5acc3c boost::shared_ptr<RBX::Weld> RBX::Creatable<RBX::Instance>::create<RBX::Weld,RBX::Joint *>(RBX::Joint *)")
@@ -418,14 +418,14 @@ pub fn stub_5acc3c() -> ! {
 
 // 0x5accf0 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4GlueEEERS3_RKNS0_IT_EE
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Glue>(boost::shared_ptr<RBX::Glue> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Glue>(rbx_core::SharedPtr<RBX::Glue> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_4GlueEEERS3_RKNS0_IT_EE
 pub fn stub_5accf0() -> ! {
     todo!("0x5accf0 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Glue>(boost::shared_ptr<RBX::Glue> const&)")
 }
 
 // 0x5acd24 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_4GlueEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RBX::Glue> RBX::Creatable<RBX::Instance>::create<RBX::Glue,RBX::Joint *>(RBX::Joint *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Glue> RBX::Creatable<RBX::Instance>::create<RBX::Glue,RBX::Joint *>(RBX::Joint *)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_4GlueEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
 pub fn stub_5acd24() -> ! {
     todo!("0x5acd24 boost::shared_ptr<RBX::Glue> RBX::Creatable<RBX::Instance>::create<RBX::Glue,RBX::Joint *>(RBX::Joint *)")
@@ -433,14 +433,14 @@ pub fn stub_5acd24() -> ! {
 
 // 0x5acdd8 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_6RotateEEERS3_RKNS0_IT_EE
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Rotate>(boost::shared_ptr<RBX::Rotate> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::Rotate>(rbx_core::SharedPtr<RBX::Rotate> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_6RotateEEERS3_RKNS0_IT_EE
 pub fn stub_5acdd8() -> ! {
     todo!("0x5acdd8 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::Rotate>(boost::shared_ptr<RBX::Rotate> const&)")
 }
 
 // 0x5ace0c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_6RotateEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RBX::Rotate> RBX::Creatable<RBX::Instance>::create<RBX::Rotate,RBX::Joint *>(RBX::Joint *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Rotate> RBX::Creatable<RBX::Instance>::create<RBX::Rotate,RBX::Joint *>(RBX::Joint *)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_6RotateEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
 pub fn stub_5ace0c() -> ! {
     todo!("0x5ace0c boost::shared_ptr<RBX::Rotate> RBX::Creatable<RBX::Instance>::create<RBX::Rotate,RBX::Joint *>(RBX::Joint *)")
@@ -448,14 +448,14 @@ pub fn stub_5ace0c() -> ! {
 
 // 0x5acec0 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotatePEEERS3_RKNS0_IT_EE
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::RotateP>(boost::shared_ptr<RBX::RotateP> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::RotateP>(rbx_core::SharedPtr<RBX::RotateP> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotatePEEERS3_RKNS0_IT_EE
 pub fn stub_5acec0() -> ! {
     todo!("0x5acec0 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::RotateP>(boost::shared_ptr<RBX::RotateP> const&)")
 }
 
 // 0x5acef4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7RotatePEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RBX::RotateP> RBX::Creatable<RBX::Instance>::create<RBX::RotateP,RBX::Joint *>(RBX::Joint *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RotateP> RBX::Creatable<RBX::Instance>::create<RBX::RotateP,RBX::Joint *>(RBX::Joint *)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_7RotatePEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
 pub fn stub_5acef4() -> ! {
     todo!("0x5acef4 boost::shared_ptr<RBX::RotateP> RBX::Creatable<RBX::Instance>::create<RBX::RotateP,RBX::Joint *>(RBX::Joint *)")
@@ -463,14 +463,14 @@ pub fn stub_5acef4() -> ! {
 
 // 0x5acfa8 — __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotateVEEERS3_RKNS0_IT_EE
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::RotateV>(boost::shared_ptr<RBX::RotateV> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::JointInstance>& rbx_core::SharedPtr<RBX::JointInstance>::operator=<RBX::RotateV>(rbx_core::SharedPtr<RBX::RotateV> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX13JointInstanceEEaSINS1_7RotateVEEERS3_RKNS0_IT_EE
 pub fn stub_5acfa8() -> ! {
     todo!("0x5acfa8 boost::shared_ptr<RBX::JointInstance>& boost::shared_ptr<RBX::JointInstance>::operator=<RBX::RotateV>(boost::shared_ptr<RBX::RotateV> const&)")
 }
 
 // 0x5acfdc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7RotateVEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RBX::RotateV> RBX::Creatable<RBX::Instance>::create<RBX::RotateV,RBX::Joint *>(RBX::Joint *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RotateV> RBX::Creatable<RBX::Instance>::create<RBX::RotateV,RBX::Joint *>(RBX::Joint *)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_7RotateVEPNS_5JointEEEN5boost10shared_ptrIT_EET0_
 pub fn stub_5acfdc() -> ! {
     todo!("0x5acfdc boost::shared_ptr<RBX::RotateV> RBX::Creatable<RBX::Instance>::create<RBX::RotateV,RBX::Joint *>(RBX::Joint *)")
@@ -478,7 +478,7 @@ pub fn stub_5acfdc() -> ! {
 
 // 0x5ad090 — __ZN5boost10shared_ptrIN3RBX10PVInstanceEEaSERKS3_
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::PVInstance>::operator=(boost::shared_ptr<RBX::PVInstance> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PVInstance>::operator=(rbx_core::SharedPtr<RBX::PVInstance> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX10PVInstanceEEaSERKS3_
 pub fn stub_5ad090() -> ! {
     todo!("0x5ad090 boost::shared_ptr<RBX::PVInstance>::operator=(boost::shared_ptr<RBX::PVInstance> const&)")
@@ -591,7 +591,7 @@ pub fn stub_5ad360() -> ! {
 
 // 0x5ad364 — __ZN5boost20dynamic_pointer_castIN3RBX10PVInstanceENS1_8InstanceEEENS_10shared_ptrIT_EERKNS4_IT0_EE
 // type: int(void)
-#[doc(alias = "boost::shared_ptr<RBX::PVInstance> boost::dynamic_pointer_cast<RBX::PVInstance,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PVInstance> boost::dynamic_pointer_cast<RBX::PVInstance,RBX::Instance>(rbx_core::SharedPtr<RBX::Instance> const&)")]
 // was: __ZN5boost20dynamic_pointer_castIN3RBX10PVInstanceENS1_8InstanceEEENS_10shared_ptrIT_EERKNS4_IT0_EE
 pub fn stub_5ad364() -> ! {
     todo!("0x5ad364 boost::shared_ptr<RBX::PVInstance> boost::dynamic_pointer_cast<RBX::PVInstance,RBX::Instance>(boost::shared_ptr<RBX::Instance> const&)")
@@ -621,21 +621,21 @@ pub fn stub_5ad4b4() -> ! {
 }
 
 // 0x5ad5f8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7RotateVEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::RotateV> RBX::Creatable<RBX::Instance>::create<RBX::RotateV>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RotateV> RBX::Creatable<RBX::Instance>::create<RBX::RotateV>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_7RotateVEEEN5boost10shared_ptrIT_EEv
 pub fn stub_5ad5f8() -> ! {
     todo!("0x5ad5f8 boost::shared_ptr<RBX::RotateV> RBX::Creatable<RBX::Instance>::create<RBX::RotateV>(void)")
 }
 
 // 0x5ad6a8 — __ZN5boost10shared_ptrIN3RBX7RotateVEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::RotateV>::shared_ptr<RBX::RotateV,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RotateV *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RotateV>::shared_ptr<RBX::RotateV,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RotateV *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX7RotateVEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_5ad6a8() -> ! {
     todo!("0x5ad6a8 boost::shared_ptr<RBX::RotateV>::shared_ptr<RBX::RotateV,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RotateV *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x5ad770 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7RotateVES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RotateV,RBX::RotateV>(boost::shared_ptr<RBX::RotateV> const*,RBX::RotateV *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RotateV,RBX::RotateV>(rbx_core::SharedPtr<RBX::RotateV> const*,RBX::RotateV *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7RotateVES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5ad770() -> ! {
     todo!("0x5ad770 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RotateV,RBX::RotateV>(boost::shared_ptr<RBX::RotateV> const*,RBX::RotateV *)const")
@@ -738,21 +738,21 @@ pub fn stub_5ade00() -> ! {
 }
 
 // 0x5adf44 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7RotatePEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::RotateP> RBX::Creatable<RBX::Instance>::create<RBX::RotateP>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RotateP> RBX::Creatable<RBX::Instance>::create<RBX::RotateP>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_7RotatePEEEN5boost10shared_ptrIT_EEv
 pub fn stub_5adf44() -> ! {
     todo!("0x5adf44 boost::shared_ptr<RBX::RotateP> RBX::Creatable<RBX::Instance>::create<RBX::RotateP>(void)")
 }
 
 // 0x5adff4 — __ZN5boost10shared_ptrIN3RBX7RotatePEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::RotateP>::shared_ptr<RBX::RotateP,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RotateP *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RotateP>::shared_ptr<RBX::RotateP,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RotateP *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX7RotatePEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_5adff4() -> ! {
     todo!("0x5adff4 boost::shared_ptr<RBX::RotateP>::shared_ptr<RBX::RotateP,RBX::Creatable<RBX::Instance>::Deleter>(RBX::RotateP *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
 
 // 0x5ae0bc — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7RotatePES6_EEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RotateP,RBX::RotateP>(boost::shared_ptr<RBX::RotateP> const*,RBX::RotateP *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RotateP,RBX::RotateP>(rbx_core::SharedPtr<RBX::RotateP> const*,RBX::RotateP *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7RotatePES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5ae0bc() -> ! {
     todo!("0x5ae0bc void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::RotateP,RBX::RotateP>(boost::shared_ptr<RBX::RotateP> const*,RBX::RotateP *)const")

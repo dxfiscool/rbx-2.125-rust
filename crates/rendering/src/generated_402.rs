@@ -378,7 +378,7 @@ pub fn stub_5fe7a0() -> ! {
 
 // 0x5fe8e4 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9PlayerGuiEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_9PlayerGuiEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::PlayerGui> RBX::Creatable<RBX::Instance>::create<RBX::PlayerGui>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PlayerGui> RBX::Creatable<RBX::Instance>::create<RBX::PlayerGui>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_9PlayerGuiEEEN5boost10shared_ptrIT_EEv
 pub fn stub_5fe8e4() -> ! {
     todo!("0x5fe8e4 boost::shared_ptr<RBX::PlayerGui> RBX::Creatable<RBX::Instance>::create<RBX::PlayerGui>(void)")
@@ -386,7 +386,7 @@ pub fn stub_5fe8e4() -> ! {
 
 // 0x5fe998 — __ZN5boost10shared_ptrIN3RBX9PlayerGuiEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX9PlayerGuiEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::PlayerGui>::shared_ptr<RBX::PlayerGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PlayerGui>::shared_ptr<RBX::PlayerGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX9PlayerGuiEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_5fe998() -> ! {
     todo!("0x5fe998 boost::shared_ptr<RBX::PlayerGui>::shared_ptr<RBX::PlayerGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::PlayerGui *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -394,7 +394,7 @@ pub fn stub_5fe998() -> ! {
 
 // 0x5fea60 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9PlayerGuiES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9PlayerGuiES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerGui,RBX::PlayerGui>(boost::shared_ptr<RBX::PlayerGui> const*,RBX::PlayerGui *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerGui,RBX::PlayerGui>(rbx_core::SharedPtr<RBX::PlayerGui> const*,RBX::PlayerGui *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9PlayerGuiES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5fea60() -> ! {
     todo!("0x5fea60 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::PlayerGui,RBX::PlayerGui>(boost::shared_ptr<RBX::PlayerGui> const*,RBX::PlayerGui *)const")
@@ -528,7 +528,7 @@ pub fn stub_5ff360() -> ! {
 
 // 0x5ff480 — __ZN5boost10shared_ptrIN3RBX9TextLabelEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX9TextLabelEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::TextLabel>::shared_ptr<RBX::TextLabel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TextLabel>::shared_ptr<RBX::TextLabel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX9TextLabelEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_5ff480() -> ! {
     todo!("0x5ff480 boost::shared_ptr<RBX::TextLabel>::shared_ptr<RBX::TextLabel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TextLabel *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -536,7 +536,7 @@ pub fn stub_5ff480() -> ! {
 
 // 0x5ff548 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9TextLabelES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9TextLabelES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextLabel,RBX::TextLabel>(boost::shared_ptr<RBX::TextLabel> const*,RBX::TextLabel *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextLabel,RBX::TextLabel>(rbx_core::SharedPtr<RBX::TextLabel> const*,RBX::TextLabel *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9TextLabelES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5ff548() -> ! {
     todo!("0x5ff548 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TextLabel,RBX::TextLabel>(boost::shared_ptr<RBX::TextLabel> const*,RBX::TextLabel *)const")
@@ -593,7 +593,7 @@ pub fn stub_5ff778() -> ! {
 
 // 0x5ff77c — __ZN5boost10shared_ptrIN3RBX9ScreenGuiEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX9ScreenGuiEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::ScreenGui>::shared_ptr<RBX::ScreenGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ScreenGui>::shared_ptr<RBX::ScreenGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX9ScreenGuiEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_5ff77c() -> ! {
     todo!("0x5ff77c boost::shared_ptr<RBX::ScreenGui>::shared_ptr<RBX::ScreenGui,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ScreenGui *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -601,7 +601,7 @@ pub fn stub_5ff77c() -> ! {
 
 // 0x5ff844 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9ScreenGuiES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9ScreenGuiES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ScreenGui,RBX::ScreenGui>(boost::shared_ptr<RBX::ScreenGui> const*,RBX::ScreenGui *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ScreenGui,RBX::ScreenGui>(rbx_core::SharedPtr<RBX::ScreenGui> const*,RBX::ScreenGui *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9ScreenGuiES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_5ff844() -> ! {
     todo!("0x5ff844 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ScreenGui,RBX::ScreenGui>(boost::shared_ptr<RBX::ScreenGui> const*,RBX::ScreenGui *)const")

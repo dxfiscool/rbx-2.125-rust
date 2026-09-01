@@ -392,7 +392,7 @@ pub fn stub_661200() -> ! {
 // 0x6615c8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_16SurfaceSelectionEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_16SurfaceSelectionEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::SurfaceSelection> RBX::Creatable<RBX::Instance>::create<RBX::SurfaceSelection>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SurfaceSelection> RBX::Creatable<RBX::Instance>::create<RBX::SurfaceSelection>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_16SurfaceSelectionEEEN5boost10shared_ptrIT_EEv
 pub fn stub_6615c8() -> ! {
     todo!("0x6615c8 boost::shared_ptr<RBX::SurfaceSelection> RBX::Creatable<RBX::Instance>::create<RBX::SurfaceSelection>(void)")
@@ -401,7 +401,7 @@ pub fn stub_6615c8() -> ! {
 // 0x661678 — __ZN5boost10shared_ptrIN3RBX16SurfaceSelectionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX16SurfaceSelectionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::SurfaceSelection>::shared_ptr<RBX::SurfaceSelection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SurfaceSelection>::shared_ptr<RBX::SurfaceSelection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX16SurfaceSelectionEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_661678() -> ! {
     todo!("0x661678 boost::shared_ptr<RBX::SurfaceSelection>::shared_ptr<RBX::SurfaceSelection,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SurfaceSelection *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -410,7 +410,7 @@ pub fn stub_661678() -> ! {
 // 0x661740 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16SurfaceSelectionES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16SurfaceSelectionES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SurfaceSelection,RBX::SurfaceSelection>(boost::shared_ptr<RBX::SurfaceSelection> const*,RBX::SurfaceSelection *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SurfaceSelection,RBX::SurfaceSelection>(rbx_core::SharedPtr<RBX::SurfaceSelection> const*,RBX::SurfaceSelection *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_16SurfaceSelectionES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_661740() -> ! {
     todo!("0x661740 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SurfaceSelection,RBX::SurfaceSelection>(boost::shared_ptr<RBX::SurfaceSelection> const*,RBX::SurfaceSelection *)const")

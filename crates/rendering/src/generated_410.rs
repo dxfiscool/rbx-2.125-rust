@@ -402,7 +402,7 @@ pub fn stub_620ed0() -> ! {
 // 0x621014 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_19SelectionPointLassoEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_19SelectionPointLassoEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::SelectionPointLasso> RBX::Creatable<RBX::Instance>::create<RBX::SelectionPointLasso>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SelectionPointLasso> RBX::Creatable<RBX::Instance>::create<RBX::SelectionPointLasso>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_19SelectionPointLassoEEEN5boost10shared_ptrIT_EEv
 pub fn stub_621014() -> ! {
     todo!("0x621014 boost::shared_ptr<RBX::SelectionPointLasso> RBX::Creatable<RBX::Instance>::create<RBX::SelectionPointLasso>(void)")
@@ -411,7 +411,7 @@ pub fn stub_621014() -> ! {
 // 0x6210c4 — __ZN5boost10shared_ptrIN3RBX19SelectionPointLassoEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX19SelectionPointLassoEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::SelectionPointLasso>::shared_ptr<RBX::SelectionPointLasso,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SelectionPointLasso *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SelectionPointLasso>::shared_ptr<RBX::SelectionPointLasso,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SelectionPointLasso *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX19SelectionPointLassoEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_6210c4() -> ! {
     todo!("0x6210c4 boost::shared_ptr<RBX::SelectionPointLasso>::shared_ptr<RBX::SelectionPointLasso,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SelectionPointLasso *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -420,7 +420,7 @@ pub fn stub_6210c4() -> ! {
 // 0x62118c — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19SelectionPointLassoES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19SelectionPointLassoES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SelectionPointLasso,RBX::SelectionPointLasso>(boost::shared_ptr<RBX::SelectionPointLasso> const*,RBX::SelectionPointLasso *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SelectionPointLasso,RBX::SelectionPointLasso>(rbx_core::SharedPtr<RBX::SelectionPointLasso> const*,RBX::SelectionPointLasso *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_19SelectionPointLassoES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_62118c() -> ! {
     todo!("0x62118c void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SelectionPointLasso,RBX::SelectionPointLasso>(boost::shared_ptr<RBX::SelectionPointLasso> const*,RBX::SelectionPointLasso *)const")
@@ -515,7 +515,7 @@ pub fn stub_621728() -> ! {
 // 0x62186c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_18SelectionPartLassoEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_18SelectionPartLassoEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::SelectionPartLasso> RBX::Creatable<RBX::Instance>::create<RBX::SelectionPartLasso>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SelectionPartLasso> RBX::Creatable<RBX::Instance>::create<RBX::SelectionPartLasso>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_18SelectionPartLassoEEEN5boost10shared_ptrIT_EEv
 pub fn stub_62186c() -> ! {
     todo!("0x62186c boost::shared_ptr<RBX::SelectionPartLasso> RBX::Creatable<RBX::Instance>::create<RBX::SelectionPartLasso>(void)")
@@ -524,7 +524,7 @@ pub fn stub_62186c() -> ! {
 // 0x62191c — __ZN5boost10shared_ptrIN3RBX18SelectionPartLassoEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX18SelectionPartLassoEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::SelectionPartLasso>::shared_ptr<RBX::SelectionPartLasso,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SelectionPartLasso *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SelectionPartLasso>::shared_ptr<RBX::SelectionPartLasso,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SelectionPartLasso *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX18SelectionPartLassoEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_62191c() -> ! {
     todo!("0x62191c boost::shared_ptr<RBX::SelectionPartLasso>::shared_ptr<RBX::SelectionPartLasso,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SelectionPartLasso *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -533,7 +533,7 @@ pub fn stub_62191c() -> ! {
 // 0x6219e4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18SelectionPartLassoES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18SelectionPartLassoES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SelectionPartLasso,RBX::SelectionPartLasso>(boost::shared_ptr<RBX::SelectionPartLasso> const*,RBX::SelectionPartLasso *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SelectionPartLasso,RBX::SelectionPartLasso>(rbx_core::SharedPtr<RBX::SelectionPartLasso> const*,RBX::SelectionPartLasso *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_18SelectionPartLassoES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_6219e4() -> ! {
     todo!("0x6219e4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SelectionPartLasso,RBX::SelectionPartLasso>(boost::shared_ptr<RBX::SelectionPartLasso> const*,RBX::SelectionPartLasso *)const")

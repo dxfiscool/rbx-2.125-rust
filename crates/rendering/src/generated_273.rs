@@ -536,7 +536,7 @@ pub fn stub_3987cc() -> ! {
 
 // 0x3988f0 — __ZN3RBX14AnimationTrackC1EN5boost10shared_ptrINS_19AnimationTrackStateEEENS1_8weak_ptrINS_8AnimatorEEE
 // type: int __fastcall(int, int, int)
-#[doc(alias = "RBX::AnimationTrack::AnimationTrack(boost::shared_ptr<RBX::AnimationTrackState>,boost::weak_ptr<RBX::Animator>)")]
+#[doc(alias = "RBX::AnimationTrack::AnimationTrack(rbx_core::SharedPtr<RBX::AnimationTrackState>,boost::weak_ptr<RBX::Animator>)")]
 // was: __ZN3RBX14AnimationTrackC1EN5boost10shared_ptrINS_19AnimationTrackStateEEENS1_8weak_ptrINS_8AnimatorEEE
 pub fn stub_3988f0() -> ! {
     todo!("0x3988f0 RBX::AnimationTrack::AnimationTrack(boost::shared_ptr<RBX::AnimationTrackState>,boost::weak_ptr<RBX::Animator>)")
@@ -544,7 +544,7 @@ pub fn stub_3988f0() -> ! {
 
 // 0x3988f4 — __ZN3RBX14AnimationTrackC2EN5boost10shared_ptrINS_19AnimationTrackStateEEENS1_8weak_ptrINS_8AnimatorEEE
 // type: RBX::Instance *__fastcall(RBX::Instance *, const shared_count *, int)
-#[doc(alias = "RBX::AnimationTrack::AnimationTrack(boost::shared_ptr<RBX::AnimationTrackState>,boost::weak_ptr<RBX::Animator>)")]
+#[doc(alias = "RBX::AnimationTrack::AnimationTrack(rbx_core::SharedPtr<RBX::AnimationTrackState>,boost::weak_ptr<RBX::Animator>)")]
 // was: __ZN3RBX14AnimationTrackC2EN5boost10shared_ptrINS_19AnimationTrackStateEEENS1_8weak_ptrINS_8AnimatorEEE
 pub fn stub_3988f4() -> ! {
     todo!("0x3988f4 RBX::AnimationTrack::AnimationTrack(boost::shared_ptr<RBX::AnimationTrackState>,boost::weak_ptr<RBX::Animator>)")
@@ -685,7 +685,7 @@ pub fn stub_399330() -> ! {
 
 // 0x399410 — __ZN5boost10shared_ptrIN3RBX8AnimatorEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 // type: _DWORD *__fastcall(_DWORD *, _DWORD *)
-#[doc(alias = "boost::shared_ptr<RBX::Animator>::shared_ptr<RBX::Animator>(boost::weak_ptr<RBX::Animator> const&,boost::detail::sp_nothrow_tag)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Animator>::shared_ptr<RBX::Animator>(boost::weak_ptr<RBX::Animator> const&,boost::detail::sp_nothrow_tag)")]
 // was: __ZN5boost10shared_ptrIN3RBX8AnimatorEEC2IS2_EERKNS_8weak_ptrIT_EENS_6detail14sp_nothrow_tagE
 pub fn stub_399410() -> ! {
     todo!("0x399410 boost::shared_ptr<RBX::Animator>::shared_ptr<RBX::Animator>(boost::weak_ptr<RBX::Animator> const&,boost::detail::sp_nothrow_tag)")

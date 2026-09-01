@@ -577,7 +577,7 @@ pub fn stub_3eb460() -> ! {
 
 // 0x3eb850 — __ZN3RBX11ChatService4chatEN5boost10shared_ptrINS_8InstanceEEESsNS0_9ChatColorE
 // type: void __fastcall(RBX::ServiceProvider *, int, int, int)
-#[doc(alias = "RBX::ChatService::chat(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
+#[doc(alias = "RBX::ChatService::chat(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
 // was: __ZN3RBX11ChatService4chatEN5boost10shared_ptrINS_8InstanceEEESsNS0_9ChatColorE
 pub fn stub_3eb850() -> ! {
     todo!("0x3eb850 RBX::ChatService::chat(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")
@@ -631,7 +631,7 @@ pub fn stub_3ec0b4() -> ! {
 
 // 0x3ec2e0 — __ZN3RBX10Reflection13BoundFuncDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEELi3EED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::~BoundFuncDesc()")]
+#[doc(alias = "RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::~BoundFuncDesc()")]
 // was: __ZN3RBX10Reflection13BoundFuncDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEELi3EED1Ev
 pub fn stub_3ec2e0() -> ! {
     todo!("0x3ec2e0 RBX::Reflection::BoundFuncDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),3>::~BoundFuncDesc()")
@@ -640,7 +640,7 @@ pub fn stub_3ec2e0() -> ! {
 
 // 0x3ec400 — __ZN3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEED1Ev
 // type: _DWORD *__fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()")]
 // was: __ZN3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEED1Ev
 pub fn stub_3ec400() -> ! {
     todo!("0x3ec400 RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()")
@@ -667,7 +667,7 @@ pub fn stub_3ec784() -> ! {
 
 // 0x3ec970 — __ZN3RBX10Reflection19RemoteEventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE21fireAndReplicateEventEPS2_S6_SsS7_
 // type: void __fastcall(int, int, const shared_count *, const std::string *, int)
-#[doc(alias = "RBX::Reflection::RemoteEventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::fireAndReplicateEvent(RBX::ChatService*,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
+#[doc(alias = "RBX::Reflection::RemoteEventDescImpl<3,RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::fireAndReplicateEvent(RBX::ChatService*,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
 // was: __ZN3RBX10Reflection19RemoteEventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE21fireAndReplicateEventEPS2_S6_SsS7_
 pub fn stub_3ec970() -> ! {
     todo!("0x3ec970 RBX::Reflection::RemoteEventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::fireAndReplicateEvent(RBX::ChatService*,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")
@@ -748,7 +748,7 @@ pub fn stub_3ed090() -> ! {
 
 // 0x3ed188 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E9fireEventEPS2_S6_SsS7_
 // type: void __fastcall(int, int, const shared_count *, const std::string *, int)
-#[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::fireEvent(RBX::ChatService*,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)const")]
+#[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::fireEvent(RBX::ChatService*,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)const")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E9fireEventEPS2_S6_SsS7_
 pub fn stub_3ed188() -> ! {
     todo!("0x3ed188 RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::fireEvent(RBX::ChatService*,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)const")
@@ -757,7 +757,7 @@ pub fn stub_3ed188() -> ! {
 
 // 0x3ed2f8 — __ZN3RBX10Reflection19RemoteEventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE14replicateEventEPNS0_11EventSourceES6_SsS7_
 // type: int __fastcall(int, int, int, int, void (__fastcall **)(int))
-#[doc(alias = "RBX::Reflection::RemoteEventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::replicateEvent(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
+#[doc(alias = "RBX::Reflection::RemoteEventDescImpl<3,RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::replicateEvent(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
 // was: __ZN3RBX10Reflection19RemoteEventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE14replicateEventEPNS0_11EventSourceES6_SsS7_
 pub fn stub_3ed2f8() -> ! {
     todo!("0x3ed2f8 RBX::Reflection::RemoteEventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::replicateEvent(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")
@@ -766,7 +766,7 @@ pub fn stub_3ed2f8() -> ! {
 
 // 0x3ed48c — __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEEclES6_SsS8_
 // type: void __fastcall(_DWORD *, int, std::string *, char *, boost::detail::sp_counted_base *, int, int, char, int, int, int, int, int, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::operator()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
+#[doc(alias = "rbx::signals::signal_with_args<3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::operator()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
 // was: __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEEclES6_SsS8_
 pub fn stub_3ed48c() -> ! {
     todo!("0x3ed48c rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::operator()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")
@@ -775,7 +775,7 @@ pub fn stub_3ed48c() -> ! {
 
 // 0x3ed6c0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE4nextERNS2_13intrusive_ptrINSA_4slotEEE
 // type: int __fastcall(int, int *, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot> &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot> &)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE4nextERNS2_13intrusive_ptrINSA_4slotEEE
 pub fn stub_3ed6c0() -> ! {
     todo!("0x3ed6c0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::next(boost::intrusive_ptr<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot> &)")
@@ -784,7 +784,7 @@ pub fn stub_3ed6c0() -> ! {
 
 // 0x3ed820 — __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE8fireItemEPNS0_6signalIS9_E4slotES6_SsS8_
 // type: void __fastcall(int, const shared_count *, const std::string *, int)
-#[doc(alias = "rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::fireItem(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot *,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
+#[doc(alias = "rbx::signals::signal_with_args<3,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::fireItem(rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot *,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")]
 // was: __ZN3rbx7signals16signal_with_argsILi3EFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE8fireItemEPNS0_6signalIS9_E4slotES6_SsS8_
 pub fn stub_3ed820() -> ! {
     todo!("0x3ed820 rbx::signals::signal_with_args<3,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::fireItem(rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::slot *,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)")
@@ -793,7 +793,7 @@ pub fn stub_3ed820() -> ! {
 
 // 0x3ed9a0 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE8on_errorERSt9exception
 // type: int *()
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::on_error(std::exception &)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::on_error(std::exception &)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE8on_errorERSt9exception
 pub fn stub_3ed9a0() -> ! {
     todo!("0x3ed9a0 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::on_error(std::exception &)")
@@ -802,7 +802,7 @@ pub fn stub_3ed9a0() -> ! {
 
 // 0x3ed9c8 — __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS3_11ChatService9ChatColorEEEC2Ev
 // type: int __fastcall(_DWORD *, int, int, int, int, int)
-#[doc(alias = "rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::remote_signal(void)")]
+#[doc(alias = "rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::remote_signal(void)")]
 // was: __ZN3rbx13remote_signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS3_11ChatService9ChatColorEEEC2Ev
 pub fn stub_3ed9c8() -> ! {
     todo!("0x3ed9c8 rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::remote_signal(void)")
@@ -811,7 +811,7 @@ pub fn stub_3ed9c8() -> ! {
 
 // 0x3edb24 — __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE13disconnectAllEv
 // type: void __fastcall(_DWORD *, int, int, int, char, int, int, int, int, int)
-#[doc(alias = "rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::disconnectAll(void)")]
+#[doc(alias = "rbx::signals::signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::disconnectAll(void)")]
 // was: __ZN3rbx7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEESsNS4_11ChatService9ChatColorEEE13disconnectAllEv
 pub fn stub_3edb24() -> ! {
     todo!("0x3edb24 rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>::disconnectAll(void)")
@@ -982,7 +982,7 @@ pub fn stub_3ee340() -> ! {
 
 // 0x3ee4d0 — __ZN3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEED0Ev
 // type: void __fastcall(_DWORD *)
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()")]
 // was: __ZN3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEED0Ev
 pub fn stub_3ee4d0() -> ! {
     todo!("0x3ee4d0 RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::~RemoteEventDesc()")
@@ -991,7 +991,7 @@ pub fn stub_3ee4d0() -> ! {
 
 // 0x3ee584 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 // type: void __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, boost::detail::sp_counted_base *, char, int, int, int, int, int, int, int)
-#[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")]
+#[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::connectGeneric(RBX::Reflection::EventSource *,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>)const")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E14connectGenericEPNS0_11EventSourceENS4_INS0_18GenericSlotWrapperEEE
 pub fn stub_3ee584() -> ! {
     todo!("0x3ee584 RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::connectGeneric(RBX::Reflection::EventSource *,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>)const")
@@ -1000,7 +1000,7 @@ pub fn stub_3ee584() -> ! {
 
 // 0x3ee6e8 — __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE12isScriptableEv
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isScriptable(void)const")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isScriptable(void)const")]
 // was: __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE12isScriptableEv
 pub fn stub_3ee6e8() -> ! {
     todo!("0x3ee6e8 RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isScriptable(void)const")
@@ -1009,7 +1009,7 @@ pub fn stub_3ee6e8() -> ! {
 
 // 0x3ee6f0 — __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE11isBroadcastEv
 // type: int __fastcall(int)
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isBroadcast(void)const")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isBroadcast(void)const")]
 // was: __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE11isBroadcastEv
 pub fn stub_3ee6f0() -> ! {
     todo!("0x3ee6f0 RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::isBroadcast(void)const")
@@ -1018,7 +1018,7 @@ pub fn stub_3ee6f0() -> ! {
 
 // 0x3ee6f8 — __ZNK3RBX10Reflection13EventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISH_EE
 // type: void __fastcall(int, int, _DWORD *)
-#[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+#[doc(alias = "RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // was: __ZNK3RBX10Reflection13EventDescImplILi3ENS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E9fireEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISH_EE
 pub fn stub_3ee6f8() -> ! {
     todo!("0x3ee6f8 RBX::Reflection::EventDescImpl<3,RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::fireEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
@@ -1027,7 +1027,7 @@ pub fn stub_3ee6f8() -> ! {
 
 // 0x3ee910 — __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 // type: int __fastcall(int, int, int)
-#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
+#[doc(alias = "RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")]
 // was: __ZNK3RBX10Reflection15RemoteEventDescINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEE9sendEventEPNS0_11EventSourceERKSt6vectorINS0_7VariantESaISG_EE
 pub fn stub_3ee910() -> ! {
     todo!("0x3ee910 RBX::Reflection::RemoteEventDesc<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>>::sendEvent(RBX::Reflection::EventSource *,std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>> const&)const")
@@ -1036,7 +1036,7 @@ pub fn stub_3ee910() -> ! {
 
 // 0x3ee920 — __ZNK3RBX10Reflection13EventDescBaseINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E13disconnectAllEPNS0_11EventSourceE
 // type: int __fastcall(int, int)
-#[doc(alias = "RBX::Reflection::EventDescBase<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
+#[doc(alias = "RBX::Reflection::EventDescBase<RBX::ChatService,void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::disconnectAll(RBX::Reflection::EventSource *)const")]
 // was: __ZNK3RBX10Reflection13EventDescBaseINS_11ChatServiceEFvN5boost10shared_ptrINS_8InstanceEEESsNS2_9ChatColorEEN3rbx13remote_signalIS8_EEMS2_SB_E13disconnectAllEPNS0_11EventSourceE
 pub fn stub_3ee920() -> ! {
     todo!("0x3ee920 RBX::Reflection::EventDescBase<RBX::ChatService,void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor),rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)>,rbx::remote_signal<void ()(boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor)> RBX::ChatService::*>::disconnectAll(RBX::Reflection::EventSource *)const")
@@ -1045,7 +1045,7 @@ pub fn stub_3ee920() -> ! {
 
 // 0x3ee934 — __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKSsRKNS1_11ChatService9ChatColorENS4_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISM_T0_T1_T2_T3_EENSK_9list_av_4IT4_T5_T6_T7_E4typeEEEMSP_FSM_SQ_SR_SS_ESV_SW_SX_SY_
 // type: void __fastcall(_DWORD *, int, int, const shared_count *, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&>,boost::_bi::list_av_4<rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&,rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&),rbx_core::SharedPtr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")]
 // was: __ZN5boost4bindIvN3RBX10Reflection18GenericSlotWrapperERKNS_10shared_ptrINS1_8InstanceEEERKSsRKNS1_11ChatService9ChatColorENS4_IS3_EENS_3argILi1EEENSG_ILi2EEENSG_ILi3EEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISM_T0_T1_T2_T3_EENSK_9list_av_4IT4_T5_T6_T7_E4typeEEEMSP_FSM_SQ_SR_SS_ESV_SW_SX_SY_
 pub fn stub_3ee934() -> ! {
     todo!("0x3ee934 boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&>,boost::_bi::list_av_4<boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>::type> boost::bind<void,RBX::Reflection::GenericSlotWrapper,boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&,boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>>(void (RBX::Reflection::GenericSlotWrapper::*)(boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&),boost::shared_ptr<RBX::Reflection::GenericSlotWrapper>,boost::arg<1>,boost::arg<2>,boost::arg<3>)")
@@ -1054,7 +1054,7 @@ pub fn stub_3ee934() -> ! {
 
 // 0x3eea50 — __ZN3RBX10Reflection18GenericSlotWrapper8execute3IN5boost10shared_ptrINS_8InstanceEEESsNS_11ChatService9ChatColorEEEvRKT_RKT0_RKT1_
 // type: int __fastcall(int, int, int, void (__fastcall ***)(int))
-#[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute3<boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor>(boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&)")]
+#[doc(alias = "void RBX::Reflection::GenericSlotWrapper::execute3<rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor>(rbx_core::SharedPtr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&)")]
 // was: __ZN3RBX10Reflection18GenericSlotWrapper8execute3IN5boost10shared_ptrINS_8InstanceEEESsNS_11ChatService9ChatColorEEEvRKT_RKT0_RKT1_
 pub fn stub_3eea50() -> ! {
     todo!("0x3eea50 void RBX::Reflection::GenericSlotWrapper::execute3<boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor>(boost::shared_ptr<RBX::Instance> const&,std::string const&,RBX::ChatService::ChatColor const&)")
@@ -1063,7 +1063,7 @@ pub fn stub_3eea50() -> ! {
 
 // 0x3eebdc — __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsNS2_11ChatService9ChatColorEE5clearEv
 // type: int __fastcall(int *)
-#[doc(alias = "boost::function3<void,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor>::clear(void)")]
+#[doc(alias = "boost::function3<void,rbx_core::SharedPtr<RBX::Instance>,std::string,RBX::ChatService::ChatColor>::clear(void)")]
 // was: __ZN5boost9function3IvNS_10shared_ptrIN3RBX8InstanceEEESsNS2_11ChatService9ChatColorEE5clearEv
 pub fn stub_3eebdc() -> ! {
     todo!("0x3eebdc boost::function3<void,boost::shared_ptr<RBX::Instance>,std::string,RBX::ChatService::ChatColor>::clear(void)")

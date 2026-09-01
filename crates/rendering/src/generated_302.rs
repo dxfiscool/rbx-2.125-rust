@@ -116,7 +116,7 @@ pub fn stub_4335c4() -> ! {
 
 // 0x4335e0 — __ZN5boost10shared_ptrIN3RBX9DataModel10GenericJobEEaSERKS4_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::DataModel::GenericJob>::operator=(boost::shared_ptr<RBX::DataModel::GenericJob> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::DataModel::GenericJob>::operator=(rbx_core::SharedPtr<RBX::DataModel::GenericJob> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX9DataModel10GenericJobEEaSERKS4_
 pub fn stub_4335e0() -> ! {
     todo!("0x4335e0 boost::shared_ptr<RBX::DataModel::GenericJob>::operator=(boost::shared_ptr<RBX::DataModel::GenericJob> const&)")
@@ -124,7 +124,7 @@ pub fn stub_4335e0() -> ! {
 
 // 0x433618 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9DataModelEPNS_4VerbEPS4_EEN5boost10shared_ptrIT_EET0_T1_
 // type: void __fastcall(int, RBX::Verb *, RBX::DataModel *)
-#[doc(alias = "boost::shared_ptr<RBX::DataModel> RBX::Creatable<RBX::Instance>::create<RBX::DataModel,RBX::Verb *,RBX::DataModel*>(RBX::Verb *,RBX::DataModel*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::DataModel> RBX::Creatable<RBX::Instance>::create<RBX::DataModel,RBX::Verb *,RBX::DataModel*>(RBX::Verb *,RBX::DataModel*)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_9DataModelEPNS_4VerbEPS4_EEN5boost10shared_ptrIT_EET0_T1_
 pub fn stub_433618() -> ! {
     todo!("0x433618 boost::shared_ptr<RBX::DataModel> RBX::Creatable<RBX::Instance>::create<RBX::DataModel,RBX::Verb *,RBX::DataModel*>(RBX::Verb *,RBX::DataModel*)")
@@ -132,7 +132,7 @@ pub fn stub_433618() -> ! {
 
 // 0x4336d8 — __ZN3RBX13TaskScheduler14removeBlockingEN5boost10shared_ptrINS0_3JobEEE
 // type: void __fastcall(int, const shared_count *, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>)")]
+#[doc(alias = "RBX::TaskScheduler::removeBlocking(rbx_core::SharedPtr<RBX::TaskScheduler::Job>)")]
 // was: __ZN3RBX13TaskScheduler14removeBlockingEN5boost10shared_ptrINS0_3JobEEE
 pub fn stub_4336d8() -> ! {
     todo!("0x4336d8 RBX::TaskScheduler::removeBlocking(boost::shared_ptr<RBX::TaskScheduler::Job>)")
@@ -140,7 +140,7 @@ pub fn stub_4336d8() -> ! {
 
 // 0x4337d0 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9WorkspaceEPNS_9DataModelEEEN5boost10shared_ptrIT_EET0_
 // type: void __fastcall(int, int)
-#[doc(alias = "boost::shared_ptr<RBX::Workspace> RBX::Creatable<RBX::Instance>::create<RBX::Workspace,RBX::DataModel *>(RBX::DataModel *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Workspace> RBX::Creatable<RBX::Instance>::create<RBX::Workspace,RBX::DataModel *>(RBX::DataModel *)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_9WorkspaceEPNS_9DataModelEEEN5boost10shared_ptrIT_EET0_
 pub fn stub_4337d0() -> ! {
     todo!("0x4337d0 boost::shared_ptr<RBX::Workspace> RBX::Creatable<RBX::Instance>::create<RBX::Workspace,RBX::DataModel *>(RBX::DataModel *)")
@@ -148,7 +148,7 @@ pub fn stub_4337d0() -> ! {
 
 // 0x43388c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7GuiRootEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::GuiRoot> RBX::Creatable<RBX::Instance>::create<RBX::GuiRoot>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GuiRoot> RBX::Creatable<RBX::Instance>::create<RBX::GuiRoot>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_7GuiRootEEEN5boost10shared_ptrIT_EEv
 pub fn stub_43388c() -> ! {
     todo!("0x43388c boost::shared_ptr<RBX::GuiRoot> RBX::Creatable<RBX::Instance>::create<RBX::GuiRoot>(void)")
@@ -188,7 +188,7 @@ pub fn stub_433e98() -> ! {
 
 // 0x434078 — __ZN5boost10shared_ptrIN3RBX13LocalBackpackEEaSERKS3_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::LocalBackpack>::operator=(boost::shared_ptr<RBX::LocalBackpack> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::LocalBackpack>::operator=(rbx_core::SharedPtr<RBX::LocalBackpack> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX13LocalBackpackEEaSERKS3_
 pub fn stub_434078() -> ! {
     todo!("0x434078 boost::shared_ptr<RBX::LocalBackpack>::operator=(boost::shared_ptr<RBX::LocalBackpack> const&)")
@@ -196,7 +196,7 @@ pub fn stub_434078() -> ! {
 
 // 0x4340b0 — __ZN3RBX11shared_fromINS_13LocalBackpackEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_DWORD *, int)
-#[doc(alias = "boost::shared_ptr<RBX::LocalBackpack> RBX::shared_from<RBX::LocalBackpack>(RBX::LocalBackpack*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::LocalBackpack> RBX::shared_from<RBX::LocalBackpack>(RBX::LocalBackpack*)")]
 // was: __ZN3RBX11shared_fromINS_13LocalBackpackEEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_4340b0() -> ! {
     todo!("0x4340b0 boost::shared_ptr<RBX::LocalBackpack> RBX::shared_from<RBX::LocalBackpack>(RBX::LocalBackpack*)")
@@ -212,7 +212,7 @@ pub fn stub_434198() -> ! {
 
 // 0x434360 — __ZN5boost10shared_ptrIN3RBX9PlayerHUDEEaSERKS3_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::PlayerHUD>::operator=(boost::shared_ptr<RBX::PlayerHUD> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PlayerHUD>::operator=(rbx_core::SharedPtr<RBX::PlayerHUD> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX9PlayerHUDEEaSERKS3_
 pub fn stub_434360() -> ! {
     todo!("0x434360 boost::shared_ptr<RBX::PlayerHUD>::operator=(boost::shared_ptr<RBX::PlayerHUD> const&)")
@@ -220,7 +220,7 @@ pub fn stub_434360() -> ! {
 
 // 0x434398 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_9PlayerHUDEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::PlayerHUD> RBX::Creatable<RBX::Instance>::create<RBX::PlayerHUD>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::PlayerHUD> RBX::Creatable<RBX::Instance>::create<RBX::PlayerHUD>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_9PlayerHUDEEEN5boost10shared_ptrIT_EEv
 pub fn stub_434398() -> ! {
     todo!("0x434398 boost::shared_ptr<RBX::PlayerHUD> RBX::Creatable<RBX::Instance>::create<RBX::PlayerHUD>(void)")
@@ -228,7 +228,7 @@ pub fn stub_434398() -> ! {
 
 // 0x434448 — __ZN5boost10shared_ptrIN3RBX18StarterPackServiceEEaSERKS3_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::StarterPackService>::operator=(boost::shared_ptr<RBX::StarterPackService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterPackService>::operator=(rbx_core::SharedPtr<RBX::StarterPackService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX18StarterPackServiceEEaSERKS3_
 pub fn stub_434448() -> ! {
     todo!("0x434448 boost::shared_ptr<RBX::StarterPackService>::operator=(boost::shared_ptr<RBX::StarterPackService> const&)")
@@ -236,7 +236,7 @@ pub fn stub_434448() -> ! {
 
 // 0x434480 — __ZN3RBX11shared_fromINS_18StarterPackServiceEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_DWORD *, int)
-#[doc(alias = "boost::shared_ptr<RBX::StarterPackService> RBX::shared_from<RBX::StarterPackService>(RBX::StarterPackService*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterPackService> RBX::shared_from<RBX::StarterPackService>(RBX::StarterPackService*)")]
 // was: __ZN3RBX11shared_fromINS_18StarterPackServiceEEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_434480() -> ! {
     todo!("0x434480 boost::shared_ptr<RBX::StarterPackService> RBX::shared_from<RBX::StarterPackService>(RBX::StarterPackService*)")
@@ -252,7 +252,7 @@ pub fn stub_434568() -> ! {
 
 // 0x434730 — __ZN5boost10shared_ptrIN3RBX17StarterGuiServiceEEaSERKS3_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::StarterGuiService>::operator=(boost::shared_ptr<RBX::StarterGuiService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterGuiService>::operator=(rbx_core::SharedPtr<RBX::StarterGuiService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX17StarterGuiServiceEEaSERKS3_
 pub fn stub_434730() -> ! {
     todo!("0x434730 boost::shared_ptr<RBX::StarterGuiService>::operator=(boost::shared_ptr<RBX::StarterGuiService> const&)")
@@ -260,7 +260,7 @@ pub fn stub_434730() -> ! {
 
 // 0x434768 — __ZN3RBX11shared_fromINS_17StarterGuiServiceEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_DWORD *, int)
-#[doc(alias = "boost::shared_ptr<RBX::StarterGuiService> RBX::shared_from<RBX::StarterGuiService>(RBX::StarterGuiService*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StarterGuiService> RBX::shared_from<RBX::StarterGuiService>(RBX::StarterGuiService*)")]
 // was: __ZN3RBX11shared_fromINS_17StarterGuiServiceEEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_434768() -> ! {
     todo!("0x434768 boost::shared_ptr<RBX::StarterGuiService> RBX::shared_from<RBX::StarterGuiService>(RBX::StarterGuiService*)")
@@ -276,7 +276,7 @@ pub fn stub_434850() -> ! {
 
 // 0x434a18 — __ZN5boost10shared_ptrIN3RBX14CoreGuiServiceEEaSERKS3_
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::CoreGuiService>::operator=(boost::shared_ptr<RBX::CoreGuiService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CoreGuiService>::operator=(rbx_core::SharedPtr<RBX::CoreGuiService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX14CoreGuiServiceEEaSERKS3_
 pub fn stub_434a18() -> ! {
     todo!("0x434a18 boost::shared_ptr<RBX::CoreGuiService>::operator=(boost::shared_ptr<RBX::CoreGuiService> const&)")
@@ -284,7 +284,7 @@ pub fn stub_434a18() -> ! {
 
 // 0x434a50 — __ZN3RBX11shared_fromINS_14CoreGuiServiceEEEN5boost10shared_ptrIT_EEPS4_
 // type: void __fastcall(_DWORD *, int)
-#[doc(alias = "boost::shared_ptr<RBX::CoreGuiService> RBX::shared_from<RBX::CoreGuiService>(RBX::CoreGuiService*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::CoreGuiService> RBX::shared_from<RBX::CoreGuiService>(RBX::CoreGuiService*)")]
 // was: __ZN3RBX11shared_fromINS_14CoreGuiServiceEEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_434a50() -> ! {
     todo!("0x434a50 boost::shared_ptr<RBX::CoreGuiService> RBX::shared_from<RBX::CoreGuiService>(RBX::CoreGuiService*)")
@@ -524,7 +524,7 @@ pub fn stub_437a30() -> ! {
 
 // 0x437b50 — __ZN3RBX32shared_from_polymorphic_downcastINS_5Stats4ItemENS_10Reflection13DescribedBaseEEEN5boost10shared_ptrIT_EEPNS5_23enable_shared_from_thisIT0_EE
 // type: void __fastcall(_DWORD *, int)
-#[doc(alias = "boost::shared_ptr<RBX::Stats::Item> RBX::shared_from_polymorphic_downcast<RBX::Stats::Item,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Stats::Item> RBX::shared_from_polymorphic_downcast<RBX::Stats::Item,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)")]
 // was: __ZN3RBX32shared_from_polymorphic_downcastINS_5Stats4ItemENS_10Reflection13DescribedBaseEEEN5boost10shared_ptrIT_EEPNS5_23enable_shared_from_thisIT0_EE
 pub fn stub_437b50() -> ! {
     todo!("0x437b50 boost::shared_ptr<RBX::Stats::Item> RBX::shared_from_polymorphic_downcast<RBX::Stats::Item,RBX::Reflection::DescribedBase>(boost::enable_shared_from_this<RBX::Reflection::DescribedBase> *)")
@@ -556,7 +556,7 @@ pub fn stub_437ec8() -> ! {
 
 // 0x437ef0 — __ZN3rbx11make_sharedISt6vectorIN3RBX10Reflection7VariantESaIS4_EEEEN5boost10shared_ptrIT_EEv
 // type: int __fastcall(_DWORD *)
-#[doc(alias = "boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(void)")]
 // was: __ZN3rbx11make_sharedISt6vectorIN3RBX10Reflection7VariantESaIS4_EEEEN5boost10shared_ptrIT_EEv
 pub fn stub_437ef0() -> ! {
     todo!("0x437ef0 boost::shared_ptr<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>> rbx::make_shared<std::vector<RBX::Reflection::Variant,std::allocator<RBX::Reflection::Variant>>>(void)")
@@ -564,7 +564,7 @@ pub fn stub_437ef0() -> ! {
 
 // 0x438048 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESt6vectorIS8_SaIS8_EEEENS2_3_bi6bind_tIvPFvPNS4_9DataModelES8_PSA_INS4_10Reflection7VariantESaISJ_EEENSE_5list3INSE_5valueISH_EENS2_3argILi1EEENSQ_ISM_EEEEEEET0_T_SY_SX_
 // type: int __fastcall(int, int, int, unsigned int, unsigned int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>)")]
 // was: __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESt6vectorIS8_SaIS8_EEEENS2_3_bi6bind_tIvPFvPNS4_9DataModelES8_PSA_INS4_10Reflection7VariantESaISJ_EEENSE_5list3INSE_5valueISH_EENS2_3argILi1EEENSQ_ISM_EEEEEEET0_T_SY_SX_
 pub fn stub_438048() -> ! {
     todo!("0x438048 boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>),boost::_bi::list3<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::vector*<RBX::Reflection::Variant,std::allocator<RBX::Reflection>>>>>)")
@@ -572,7 +572,7 @@ pub fn stub_438048() -> ! {
 
 // 0x43809c — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESt6vectorIS8_SaIS8_EEEENS2_3_bi6bind_tIvPFvPNS4_9DataModelES8_RSsdPdENSE_5list5INSE_5valueISH_EENS2_3argILi1EEENSN_ISsEENSN_IdEENSN_ISJ_EEEEEEET0_T_SX_SW_
 // type: int __fastcall(int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>>)")]
 // was: __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESt6vectorIS8_SaIS8_EEEENS2_3_bi6bind_tIvPFvPNS4_9DataModelES8_RSsdPdENSE_5list5INSE_5valueISH_EENS2_3argILi1EEENSN_ISsEENSN_IdEENSN_ISJ_EEEEEEET0_T_SX_SW_
 pub fn stub_43809c() -> ! {
     todo!("0x43809c boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list5<boost::_bi::value<RBX::DataModel *>,boost::arg<1>,boost::_bi::value<std::string>,boost::_bi::value<double>,boost::_bi::value<double *>>>)")
@@ -580,7 +580,7 @@ pub fn stub_43809c() -> ! {
 
 // 0x4380fc — __ZN5boost4bindIvPN3RBX9DataModelENS_10shared_ptrIKNS1_13TaskScheduler3JobEEERSsdPdS3_NS_3argILi1EEESsdSA_EENS_3_bi6bind_tIT_PFSF_T0_T1_T2_T3_T4_ENSD_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESM_SO_SP_SQ_SR_SS_
 // type: void __fastcall(int, int, int, std::string *, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list_av_5<RBX::DataModel *,boost::arg<1>,std::string,double,double *>::type> boost::bind<void,RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *,RBX::DataModel *,boost::arg<1>,std::string,double,double *>(void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *),RBX::DataModel *,boost::arg<1>,std::string,double,double *)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list_av_5<RBX::DataModel *,boost::arg<1>,std::string,double,double *>::type> boost::bind<void,RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::string &,double,double *,RBX::DataModel *,boost::arg<1>,std::string,double,double *>(void (*)(RBX::DataModel *,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::string &,double,double *),RBX::DataModel *,boost::arg<1>,std::string,double,double *)")]
 // was: __ZN5boost4bindIvPN3RBX9DataModelENS_10shared_ptrIKNS1_13TaskScheduler3JobEEERSsdPdS3_NS_3argILi1EEESsdSA_EENS_3_bi6bind_tIT_PFSF_T0_T1_T2_T3_T4_ENSD_9list_av_5IT5_T6_T7_T8_T9_E4typeEEESM_SO_SP_SQ_SR_SS_
 pub fn stub_4380fc() -> ! {
     todo!("0x4380fc boost::_bi::bind_t<void,void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *),boost::_bi::list_av_5<RBX::DataModel *,boost::arg<1>,std::string,double,double *>::type> boost::bind<void,RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *,RBX::DataModel *,boost::arg<1>,std::string,double,double *>(void (*)(RBX::DataModel *,boost::shared_ptr<RBX::TaskScheduler::Job const>,std::string &,double,double *),RBX::DataModel *,boost::arg<1>,std::string,double,double *)")
@@ -588,7 +588,7 @@ pub fn stub_4380fc() -> ! {
 
 // 0x4382c8 — __ZN3rbx7signals16signal_with_argsILi2EFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEEclES6_SA_
 // type: void __fastcall(_DWORD *, int, int, const void *)
-#[doc(alias = "rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
+#[doc(alias = "rbx::signals::signal_with_args<2,void ()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::operator()(rbx_core::SharedPtr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")]
 // was: __ZN3rbx7signals16signal_with_argsILi2EFvN5boost10shared_ptrIN3RBX8InstanceEEEPKNS4_10Reflection18PropertyDescriptorEEEclES6_SA_
 pub fn stub_4382c8() -> ! {
     todo!("0x4382c8 rbx::signals::signal_with_args<2,void ()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)>::operator()(boost::shared_ptr<RBX::Instance>,RBX::Reflection::PropertyDescriptor const*)")

@@ -220,7 +220,7 @@ pub fn stub_6123e4() -> ! {
 // 0x612528 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_7GuiMainEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_7GuiMainEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::GuiMain> RBX::Creatable<RBX::Instance>::create<RBX::GuiMain>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GuiMain> RBX::Creatable<RBX::Instance>::create<RBX::GuiMain>(void)")]
 // was: boost::shared_ptr<RBX::GuiMain> RBX::Creatable<RBX::Instance>::create<RBX::GuiMain>(void)
 pub fn stub_612528() -> ! {
     todo!("0x612528 boost::shared_ptr<RBX::GuiMain> RBX::Creatable<RBX::Instance>::create<RBX::GuiMain>(void)")
@@ -229,7 +229,7 @@ pub fn stub_612528() -> ! {
 // 0x6125d8 — __ZN5boost10shared_ptrIN3RBX7GuiMainEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX7GuiMainEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::GuiMain>::shared_ptr<RBX::GuiMain,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiMain *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::GuiMain>::shared_ptr<RBX::GuiMain,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiMain *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: boost::shared_ptr<RBX::GuiMain>::shared_ptr<RBX::GuiMain,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiMain *,RBX::Creatable<RBX::Instance>::Deleter)
 pub fn stub_6125d8() -> ! {
     todo!("0x6125d8 boost::shared_ptr<RBX::GuiMain>::shared_ptr<RBX::GuiMain,RBX::Creatable<RBX::Instance>::Deleter>(RBX::GuiMain *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -238,7 +238,7 @@ pub fn stub_6125d8() -> ! {
 // 0x6126a0 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7GuiMainES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_7GuiMainES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiMain,RBX::GuiMain>(boost::shared_ptr<RBX::GuiMain> const*,RBX::GuiMain *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiMain,RBX::GuiMain>(rbx_core::SharedPtr<RBX::GuiMain> const*,RBX::GuiMain *)const")]
 // was: void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiMain,RBX::GuiMain>(boost::shared_ptr<RBX::GuiMain> const*,RBX::GuiMain *)const
 pub fn stub_6126a0() -> ! {
     todo!("0x6126a0 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::GuiMain,RBX::GuiMain>(boost::shared_ptr<RBX::GuiMain> const*,RBX::GuiMain *)const")
@@ -787,7 +787,7 @@ pub fn stub_615420() -> ! {
 // 0x615424 — __ZN3RBX11shared_fromINS_18ScriptMouseCommandEEEN5boost10shared_ptrIT_EEPS4_
 // type: int(void)
 #[doc(alias = "__ZN3RBX11shared_fromINS_18ScriptMouseCommandEEEN5boost10shared_ptrIT_EEPS4_")]
-#[doc(alias = "boost::shared_ptr<RBX::ScriptMouseCommand> RBX::shared_from<RBX::ScriptMouseCommand>(RBX::ScriptMouseCommand*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ScriptMouseCommand> RBX::shared_from<RBX::ScriptMouseCommand>(RBX::ScriptMouseCommand*)")]
 // was: boost::shared_ptr<RBX::ScriptMouseCommand> RBX::shared_from<RBX::ScriptMouseCommand>(RBX::ScriptMouseCommand*)
 pub fn stub_615424() -> ! {
     todo!("0x615424 boost::shared_ptr<RBX::ScriptMouseCommand> RBX::shared_from<RBX::ScriptMouseCommand>(RBX::ScriptMouseCommand*)")

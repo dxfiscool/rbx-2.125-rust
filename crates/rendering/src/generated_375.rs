@@ -396,7 +396,7 @@ pub fn stub_535410() -> ! {
 
 // 0x535584 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_12TweenServiceEEEN5boost10shared_ptrIT_EEv
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_12TweenServiceEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::TweenService> RBX::Creatable<RBX::Instance>::create<RBX::TweenService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TweenService> RBX::Creatable<RBX::Instance>::create<RBX::TweenService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_12TweenServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_535584() -> ! {
     todo!("0x535584 __ZN3RBX9CreatableINS_8InstanceEE6createINS_12TweenServiceEEEN5boost10shared_ptrIT_EEv")
@@ -404,7 +404,7 @@ pub fn stub_535584() -> ! {
 
 // 0x535634 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12TweenServiceEEERS3_RKNS0_IT_EE
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12TweenServiceEEERS3_RKNS0_IT_EE")]
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::TweenService>(boost::shared_ptr<RBX::TweenService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::TweenService>(rbx_core::SharedPtr<RBX::TweenService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12TweenServiceEEERS3_RKNS0_IT_EE
 pub fn stub_535634() -> ! {
     todo!("0x535634 __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_12TweenServiceEEERS3_RKNS0_IT_EE")
@@ -452,7 +452,7 @@ pub fn stub_535798() -> ! {
 
 // 0x535870 — __ZN5boost10shared_ptrIN3RBX12TweenServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX12TweenServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::TweenService>::shared_ptr<RBX::TweenService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TweenService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TweenService>::shared_ptr<RBX::TweenService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::TweenService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX12TweenServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_535870() -> ! {
     todo!("0x535870 __ZN5boost10shared_ptrIN3RBX12TweenServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")
@@ -460,7 +460,7 @@ pub fn stub_535870() -> ! {
 
 // 0x535938 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12TweenServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12TweenServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TweenService,RBX::TweenService>(boost::shared_ptr<RBX::TweenService> const*,RBX::TweenService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::TweenService,RBX::TweenService>(rbx_core::SharedPtr<RBX::TweenService> const*,RBX::TweenService *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12TweenServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_535938() -> ! {
     todo!("0x535938 __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_12TweenServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_")

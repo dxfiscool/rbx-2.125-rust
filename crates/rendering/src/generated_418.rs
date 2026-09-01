@@ -67,7 +67,7 @@ pub fn stub_63d7a8() -> ! {
 // 0x63d7b8 — __ZN3RBX13SpawnLocation22onEvent_spawnerTouchedEN5boost10shared_ptrINS_8InstanceEEE
 // type: 
 #[doc(alias = "__ZN3RBX13SpawnLocation22onEvent_spawnerTouchedEN5boost10shared_ptrINS_8InstanceEEE")]
-#[doc(alias = "RBX::SpawnLocation::onEvent_spawnerTouched(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "RBX::SpawnLocation::onEvent_spawnerTouched(rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN3RBX13SpawnLocation22onEvent_spawnerTouchedEN5boost10shared_ptrINS_8InstanceEEE
 pub fn stub_63d7b8() -> ! {
     todo!("0x63d7b8 RBX::SpawnLocation::onEvent_spawnerTouched(boost::shared_ptr<RBX::Instance>)")
@@ -192,7 +192,7 @@ pub fn stub_63e2d0() -> ! {
 // 0x63e4ec — __ZN3RBX12PartInstance13TouchedSignal7connectIN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_13SpawnLocationENS3_10shared_ptrINS_8InstanceEEEEENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEN3rbx7signals10connectionET_
 // type: 
 #[doc(alias = "__ZN3RBX12PartInstance13TouchedSignal7connectIN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_13SpawnLocationENS3_10shared_ptrINS_8InstanceEEEEENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEN3rbx7signals10connectionET_")]
-#[doc(alias = "rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>)")]
+#[doc(alias = "rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>)")]
 // was: __ZN3RBX12PartInstance13TouchedSignal7connectIN5boost3_bi6bind_tIvNS3_4_mfi3mf1IvNS_13SpawnLocationENS3_10shared_ptrINS_8InstanceEEEEENS4_5list2INS4_5valueIPS8_EENS3_3argILi1EEEEEEEEEN3rbx7signals10connectionET_
 pub fn stub_63e4ec() -> ! {
     todo!("0x63e4ec rbx::signals::connection RBX::PartInstance::TouchedSignal::connect<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>>(boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>)")
@@ -388,7 +388,7 @@ pub fn stub_63ec78() -> ! {
 // 0x63edbc — __ZN3RBX9CreatableINS_8InstanceEE6createINS_13SpawnLocationEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_13SpawnLocationEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::SpawnLocation> RBX::Creatable<RBX::Instance>::create<RBX::SpawnLocation>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SpawnLocation> RBX::Creatable<RBX::Instance>::create<RBX::SpawnLocation>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_13SpawnLocationEEEN5boost10shared_ptrIT_EEv
 pub fn stub_63edbc() -> ! {
     todo!("0x63edbc boost::shared_ptr<RBX::SpawnLocation> RBX::Creatable<RBX::Instance>::create<RBX::SpawnLocation>(void)")
@@ -397,7 +397,7 @@ pub fn stub_63edbc() -> ! {
 // 0x63ee70 — __ZN5boost10shared_ptrIN3RBX13SpawnLocationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX13SpawnLocationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::SpawnLocation>::shared_ptr<RBX::SpawnLocation,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpawnLocation *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SpawnLocation>::shared_ptr<RBX::SpawnLocation,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpawnLocation *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX13SpawnLocationEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_63ee70() -> ! {
     todo!("0x63ee70 boost::shared_ptr<RBX::SpawnLocation>::shared_ptr<RBX::SpawnLocation,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpawnLocation *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -567,7 +567,7 @@ pub fn stub_63f7fc() -> ! {
 // 0x63f9f8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_14SpawnerServiceEEEN5boost10shared_ptrIT_EEv
 // type: 
 #[doc(alias = "__ZN3RBX9CreatableINS_8InstanceEE6createINS_14SpawnerServiceEEEN5boost10shared_ptrIT_EEv")]
-#[doc(alias = "boost::shared_ptr<RBX::SpawnerService> RBX::Creatable<RBX::Instance>::create<RBX::SpawnerService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SpawnerService> RBX::Creatable<RBX::Instance>::create<RBX::SpawnerService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_14SpawnerServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_63f9f8() -> ! {
     todo!("0x63f9f8 boost::shared_ptr<RBX::SpawnerService> RBX::Creatable<RBX::Instance>::create<RBX::SpawnerService>(void)")
@@ -576,7 +576,7 @@ pub fn stub_63f9f8() -> ! {
 // 0x63faa8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_14SpawnerServiceEEERS3_RKNS0_IT_EE
 // type: int(void)
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_14SpawnerServiceEEERS3_RKNS0_IT_EE")]
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::SpawnerService>(boost::shared_ptr<RBX::SpawnerService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::SpawnerService>(rbx_core::SharedPtr<RBX::SpawnerService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_14SpawnerServiceEEERS3_RKNS0_IT_EE
 pub fn stub_63faa8() -> ! {
     todo!("0x63faa8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::SpawnerService>(boost::shared_ptr<RBX::SpawnerService> const&)")
@@ -585,7 +585,7 @@ pub fn stub_63faa8() -> ! {
 // 0x63fadc — __ZN5boost10shared_ptrIN3RBX14SpawnerServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: 
 #[doc(alias = "__ZN5boost10shared_ptrIN3RBX14SpawnerServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_")]
-#[doc(alias = "boost::shared_ptr<RBX::SpawnerService>::shared_ptr<RBX::SpawnerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpawnerService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::SpawnerService>::shared_ptr<RBX::SpawnerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpawnerService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX14SpawnerServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_63fadc() -> ! {
     todo!("0x63fadc boost::shared_ptr<RBX::SpawnerService>::shared_ptr<RBX::SpawnerService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::SpawnerService *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -594,7 +594,7 @@ pub fn stub_63fadc() -> ! {
 // 0x63fba4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14SpawnerServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: 
 #[doc(alias = "__ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14SpawnerServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_")]
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpawnerService,RBX::SpawnerService>(boost::shared_ptr<RBX::SpawnerService> const*,RBX::SpawnerService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpawnerService,RBX::SpawnerService>(rbx_core::SharedPtr<RBX::SpawnerService> const*,RBX::SpawnerService *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_14SpawnerServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_63fba4() -> ! {
     todo!("0x63fba4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::SpawnerService,RBX::SpawnerService>(boost::shared_ptr<RBX::SpawnerService> const*,RBX::SpawnerService *)const")
@@ -657,7 +657,7 @@ pub fn stub_63fdd4() -> ! {
 // 0x63fdd8 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13SpawnLocationENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS8_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
 // type: 
 #[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13SpawnLocationENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS8_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE")]
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13SpawnLocationENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS8_EENS_3argILi1EEEEEEEE6manageERKNS1_15function_bufferERSM_NS1_30functor_manager_operation_typeE
 pub fn stub_63fdd8() -> ! {
     todo!("0x63fdd8 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
@@ -666,7 +666,7 @@ pub fn stub_63fdd8() -> ! {
 // 0x63fe38 — __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13SpawnLocationENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS8_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
 // type: 
 #[doc(alias = "__ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13SpawnLocationENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS8_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_")]
-#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>,void,rbx_core::SharedPtr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,rbx_core::SharedPtr<RBX::Instance>)")]
 // was: __ZN5boost6detail8function26void_function_obj_invoker1INS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX13SpawnLocationENS_10shared_ptrINS7_8InstanceEEEEENS3_5list2INS3_5valueIPS8_EENS_3argILi1EEEEEEEvSB_E6invokeERNS1_15function_bufferESB_
 pub fn stub_63fe38() -> ! {
     todo!("0x63fe38 boost::detail::function::void_function_obj_invoker1<boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation*>,boost::arg<1>>>,void,boost::shared_ptr<RBX::Instance>>::invoke(boost::detail::function::function_buffer &,boost::shared_ptr<RBX::Instance>)")
@@ -675,7 +675,7 @@ pub fn stub_63fe38() -> ! {
 // 0x63fe54 — __ZN5boost3_bi5list2INS0_5valueIPN3RBX13SpawnLocationEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 // type: 
 #[doc(alias = "__ZN5boost3_bi5list2INS0_5valueIPN3RBX13SpawnLocationEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i")]
-#[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")]
+#[doc(alias = "void boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::SpawnLocation,rbx_core::SharedPtr<RBX::Instance>>,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::SpawnLocation,rbx_core::SharedPtr<RBX::Instance>> &,boost::_bi::list1<rbx_core::SharedPtr<RBX::Instance>&> &,int)")]
 // was: __ZN5boost3_bi5list2INS0_5valueIPN3RBX13SpawnLocationEEENS_3argILi1EEEEclINS_4_mfi3mf1IvS4_NS_10shared_ptrINS3_8InstanceEEEEENS0_5list1IRSF_EEEEvNS0_4typeIvEERT_RT0_i
 pub fn stub_63fe54() -> ! {
     todo!("0x63fe54 void boost::_bi::list2<boost::_bi::value<RBX::SpawnLocation *>,boost::arg<1>>::operator()<boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&>>(boost::_bi::type<void>,boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>> &,boost::_bi::list1<boost::shared_ptr<RBX::Instance>&> &,int)")
@@ -684,7 +684,7 @@ pub fn stub_63fe54() -> ! {
 // 0x63ff2c — __ZNK5boost4_mfi3mf1IvN3RBX13SpawnLocationENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_
 // type: 
 #[doc(alias = "__ZNK5boost4_mfi3mf1IvN3RBX13SpawnLocationENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_")]
-#[doc(alias = "boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>::operator()(RBX::SpawnLocation*,boost::shared_ptr<RBX::Instance>)const")]
+#[doc(alias = "boost::_mfi::mf1<void,RBX::SpawnLocation,rbx_core::SharedPtr<RBX::Instance>>::operator()(RBX::SpawnLocation*,rbx_core::SharedPtr<RBX::Instance>)const")]
 // was: __ZNK5boost4_mfi3mf1IvN3RBX13SpawnLocationENS_10shared_ptrINS2_8InstanceEEEEclEPS3_S6_
 pub fn stub_63ff2c() -> ! {
     todo!("0x63ff2c boost::_mfi::mf1<void,RBX::SpawnLocation,boost::shared_ptr<RBX::Instance>>::operator()(RBX::SpawnLocation*,boost::shared_ptr<RBX::Instance>)const")

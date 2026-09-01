@@ -84,14 +84,14 @@ pub fn stub_2a4678() -> ! {
 }
 
 // 0x2a4a7c — __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEaSERKS4_
-#[doc(alias = "boost::shared_ptr<RBX::TaskScheduler::Job>::operator=(boost::shared_ptr<RBX::TaskScheduler::Job> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TaskScheduler::Job>::operator=(rbx_core::SharedPtr<RBX::TaskScheduler::Job> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEaSERKS4_
 pub fn stub_2a4a7c() -> ! {
     todo!("0x2a4a7c boost::shared_ptr<RBX::TaskScheduler::Job>::operator=(boost::shared_ptr<RBX::TaskScheduler::Job> const&)")
 }
 
 // 0x2a4ab4 — __ZN3RBX11shared_fromINS_13ScriptContextEEEN5boost10shared_ptrIT_EEPS4_
-#[doc(alias = "boost::shared_ptr<RBX::ScriptContext> RBX::shared_from<RBX::ScriptContext>(RBX::ScriptContext*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ScriptContext> RBX::shared_from<RBX::ScriptContext>(RBX::ScriptContext*)")]
 // was: __ZN3RBX11shared_fromINS_13ScriptContextEEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_2a4ab4() -> ! {
     todo!("0x2a4ab4 boost::shared_ptr<RBX::ScriptContext> RBX::shared_from<RBX::ScriptContext>(RBX::ScriptContext*)")
@@ -99,7 +99,7 @@ pub fn stub_2a4ab4() -> ! {
 
 // 0x2a4ebc — __ZN5boost4bindIvN3RBX13ScriptContextENS_10shared_ptrIS2_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS7_T0_EENS5_9list_av_1IT1_E4typeEEEMSA_FS7_vESD_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list_av_1<boost::shared_ptr<RBX::ScriptContext>>::type> boost::bind<void,RBX::ScriptContext,boost::shared_ptr<RBX::ScriptContext>>(void (RBX::ScriptContext::*)(void),boost::shared_ptr<RBX::ScriptContext>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list_av_1<rbx_core::SharedPtr<RBX::ScriptContext>>::type> boost::bind<void,RBX::ScriptContext,rbx_core::SharedPtr<RBX::ScriptContext>>(void (RBX::ScriptContext::*)(void),rbx_core::SharedPtr<RBX::ScriptContext>)")]
 // was: __ZN5boost4bindIvN3RBX13ScriptContextENS_10shared_ptrIS2_EEEENS_3_bi6bind_tIT_NS_4_mfi3mf0IS7_T0_EENS5_9list_av_1IT1_E4typeEEEMSA_FS7_vESD_
 pub fn stub_2a4ebc() -> ! {
     todo!("0x2a4ebc boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list_av_1<boost::shared_ptr<RBX::ScriptContext>>::type> boost::bind<void,RBX::ScriptContext,boost::shared_ptr<RBX::ScriptContext>>(void (RBX::ScriptContext::*)(void),boost::shared_ptr<RBX::ScriptContext>)")
@@ -112,14 +112,14 @@ pub fn stub_2a5200() -> ! {
 }
 
 // 0x2a5300 — __ZN5boost4bindIvP9lua_StateNS_8functionIFvPKcS5_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEENS_3argILi1EEESB_EENS_3_bi6bind_tIT_PFSG_T0_T1_ENSE_9list_av_2IT2_T3_E4typeEEESK_SM_SN_
-#[doc(alias = "boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>),boost::_bi::list_av_2<boost::arg<1>,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>>::type> boost::bind<void,lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>,boost::arg<1>,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>>(void (*)(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>),boost::arg<1>,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>)")]
+#[doc(alias = "boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>),boost::_bi::list_av_2<boost::arg<1>,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>>::type> boost::bind<void,lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>,boost::arg<1>,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>>(void (*)(lua_State *,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>),boost::arg<1>,boost::function<void ()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)>)")]
 // was: __ZN5boost4bindIvP9lua_StateNS_8functionIFvPKcS5_NS_10shared_ptrIN3RBX10BaseScriptEEEiEEENS_3argILi1EEESB_EENS_3_bi6bind_tIT_PFSG_T0_T1_ENSE_9list_av_2IT2_T3_E4typeEEESK_SM_SN_
 pub fn stub_2a5300() -> ! {
     todo!("0x2a5300 boost::_bi::bind_t<void,void (*)(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>),boost::_bi::list_av_2<boost::arg<1>,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>>::type> boost::bind<void,lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>,boost::arg<1>,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>>(void (*)(lua_State *,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>),boost::arg<1>,boost::function<void ()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)>)")
 }
 
 // 0x2a5660 — __ZNK5boost9function4IvPKcS2_NS_10shared_ptrIN3RBX10BaseScriptEEEiEclES2_S2_S6_i
-#[doc(alias = "boost::function4<void,char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int>::operator()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)const")]
+#[doc(alias = "boost::function4<void,char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int>::operator()(char const*,char const*,rbx_core::SharedPtr<RBX::BaseScript>,int)const")]
 // was: __ZNK5boost9function4IvPKcS2_NS_10shared_ptrIN3RBX10BaseScriptEEEiEclES2_S2_S6_i
 pub fn stub_2a5660() -> ! {
     todo!("0x2a5660 boost::function4<void,char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int>::operator()(char const*,char const*,boost::shared_ptr<RBX::BaseScript>,int)const")
@@ -175,7 +175,7 @@ pub fn stub_2a5da0() -> ! {
 }
 
 // 0x2a5e64 — __ZN3RBX11shared_fromINS_5Stats12StatsServiceEEEN5boost10shared_ptrIT_EEPS5_
-#[doc(alias = "boost::shared_ptr<RBX::Stats::StatsService> RBX::shared_from<RBX::Stats::StatsService>(RBX::Stats::StatsService*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Stats::StatsService> RBX::shared_from<RBX::Stats::StatsService>(RBX::Stats::StatsService*)")]
 // was: __ZN3RBX11shared_fromINS_5Stats12StatsServiceEEEN5boost10shared_ptrIT_EEPS5_
 pub fn stub_2a5e64() -> ! {
     todo!("0x2a5e64 boost::shared_ptr<RBX::Stats::StatsService> RBX::shared_from<RBX::Stats::StatsService>(RBX::Stats::StatsService*)")
@@ -189,7 +189,7 @@ pub fn stub_2a6160() -> ! {
 }
 
 // 0x2a633c — __ZN5boost10shared_ptrIN3RBX11ScriptStatsEE5resetIS2_EEvPT_
-#[doc(alias = "void boost::shared_ptr<RBX::ScriptStats>::reset<RBX::ScriptStats>(RBX::ScriptStats *)")]
+#[doc(alias = "void rbx_core::SharedPtr<RBX::ScriptStats>::reset<RBX::ScriptStats>(RBX::ScriptStats *)")]
 // was: __ZN5boost10shared_ptrIN3RBX11ScriptStatsEE5resetIS2_EEvPT_
 pub fn stub_2a633c() -> ! {
     todo!("0x2a633c void boost::shared_ptr<RBX::ScriptStats>::reset<RBX::ScriptStats>(RBX::ScriptStats *)")
@@ -204,21 +204,21 @@ pub fn stub_2a6368() -> ! {
 }
 
 // 0x2a64a4 — __ZN5boost10shared_ptrIN3RBX12LuaStatsItemEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::LuaStatsItem>::operator=(boost::shared_ptr<RBX::LuaStatsItem> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::LuaStatsItem>::operator=(rbx_core::SharedPtr<RBX::LuaStatsItem> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX12LuaStatsItemEEaSERKS3_
 pub fn stub_2a64a4() -> ! {
     todo!("0x2a64a4 boost::shared_ptr<RBX::LuaStatsItem>::operator=(boost::shared_ptr<RBX::LuaStatsItem> const&)")
 }
 
 // 0x2a6590 — __ZN5boost10shared_ptrIN3RBX11ScriptStatsEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::ScriptStats>::operator=(boost::shared_ptr<RBX::ScriptStats> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ScriptStats>::operator=(rbx_core::SharedPtr<RBX::ScriptStats> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX11ScriptStatsEEaSERKS3_
 pub fn stub_2a6590() -> ! {
     todo!("0x2a6590 boost::shared_ptr<RBX::ScriptStats>::operator=(boost::shared_ptr<RBX::ScriptStats> const&)")
 }
 
 // 0x2a65c8 — __ZN5boost10shared_ptrIN3RBX10RunServiceEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::RunService>::operator=(boost::shared_ptr<RBX::RunService> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::RunService>::operator=(rbx_core::SharedPtr<RBX::RunService> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX10RunServiceEEaSERKS3_
 pub fn stub_2a65c8() -> ! {
     todo!("0x2a65c8 boost::shared_ptr<RBX::RunService>::operator=(boost::shared_ptr<RBX::RunService> const&)")
@@ -232,14 +232,14 @@ pub fn stub_2a6600() -> ! {
 }
 
 // 0x2a6810 — __ZN3RBX11shared_fromINS_10BaseScriptEEEN5boost10shared_ptrIT_EEPS4_
-#[doc(alias = "boost::shared_ptr<RBX::BaseScript> RBX::shared_from<RBX::BaseScript>(RBX::BaseScript*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BaseScript> RBX::shared_from<RBX::BaseScript>(RBX::BaseScript*)")]
 // was: __ZN3RBX11shared_fromINS_10BaseScriptEEEN5boost10shared_ptrIT_EEPS4_
 pub fn stub_2a6810() -> ! {
     todo!("0x2a6810 boost::shared_ptr<RBX::BaseScript> RBX::shared_from<RBX::BaseScript>(RBX::BaseScript*)")
 }
 
 // 0x2a6e2c — __ZN5boost10shared_ptrIN3RBX10BaseScriptEEaSERKS3_
-#[doc(alias = "boost::shared_ptr<RBX::BaseScript>::operator=(boost::shared_ptr<RBX::BaseScript> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::BaseScript>::operator=(rbx_core::SharedPtr<RBX::BaseScript> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX10BaseScriptEEaSERKS3_
 pub fn stub_2a6e2c() -> ! {
     todo!("0x2a6e2c boost::shared_ptr<RBX::BaseScript>::operator=(boost::shared_ptr<RBX::BaseScript> const&)")
@@ -347,21 +347,21 @@ pub fn stub_2b44f0() -> ! {
 
 // 0x2b45d8 — __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEEEvT_
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>)")]
+#[doc(alias = "void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>)")]
 // was: __ZN5boost9function0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEEEvT_
 pub fn stub_2b45d8() -> ! {
     todo!("0x2b45d8 void boost::function0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>)")
 }
 
 // 0x2b46d0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEE6manageERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeE
 pub fn stub_2b46d0() -> ! {
     todo!("0x2b46d0 boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>::manage(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type)")
 }
 
 // 0x2b46ec — __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEvE6invokeERNS1_15function_bufferE
-#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
+#[doc(alias = "boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>,void>::invoke(boost::detail::function::function_buffer &)")]
 // was: __ZN5boost6detail8function26void_function_obj_invoker0INS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEvE6invokeERNS1_15function_bufferE
 pub fn stub_2b46ec() -> ! {
     todo!("0x2b46ec boost::detail::function::void_function_obj_invoker0<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>,void>::invoke(boost::detail::function::function_buffer &)")
@@ -369,7 +369,7 @@ pub fn stub_2b46ec() -> ! {
 
 // 0x2b46f4 — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS5_5list1INS5_5valueINS_10shared_ptrISA_EEEEEEEEEEbT_RNS1_15function_bufferE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>,boost::detail::function::function_buffer &)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>,boost::detail::function::function_buffer &)const")]
 // was: __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS5_5list1INS5_5valueINS_10shared_ptrISA_EEEEEEEEEEbT_RNS1_15function_bufferE
 pub fn stub_2b46f4() -> ! {
     todo!("0x2b46f4 bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>,boost::detail::function::function_buffer &)const")
@@ -377,21 +377,21 @@ pub fn stub_2b46f4() -> ! {
 
 // 0x2b47dc — __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS5_5list1INS5_5valueINS_10shared_ptrISA_EEEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 // type: int __fastcall(int, int, int, int, int, boost::detail::sp_counted_base *, int, int, int, int)
-#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
+#[doc(alias = "bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")]
 // was: __ZNK5boost6detail8function13basic_vtable0IvE9assign_toINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS5_5list1INS5_5valueINS_10shared_ptrISA_EEEEEEEEEEbT_RNS1_15function_bufferENS1_16function_obj_tagE
 pub fn stub_2b47dc() -> ! {
     todo!("0x2b47dc bool boost::detail::function::basic_vtable0<void>::assign_to<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>,boost::detail::function::function_buffer &,boost::detail::function::function_obj_tag)const")
 }
 
 // 0x2b48c0 — __ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS5_5list1INS5_5valueINS_10shared_ptrISA_EEEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
-#[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
+#[doc(alias = "void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")]
 // was: __ZNK5boost6detail8function13basic_vtable0IvE14assign_functorINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS5_5list1INS5_5valueINS_10shared_ptrISA_EEEEEEEEEEvT_RNS1_15function_bufferEN4mpl_5bool_ILb0EEE
 pub fn stub_2b48c0() -> ! {
     todo!("0x2b48c0 void boost::detail::function::basic_vtable0<void>::assign_functor<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>(boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>,boost::detail::function::function_buffer &,mpl_::bool_<false>)const")
 }
 
 // 0x2b4994 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS0_5list1INS0_5valueINS_10shared_ptrIS5_EEEEEEEclEv
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>::operator()(void)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>::operator()(void)")]
 // was: __ZN5boost3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS0_5list1INS0_5valueINS_10shared_ptrIS5_EEEEEEEclEv
 pub fn stub_2b4994() -> ! {
     todo!("0x2b4994 boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>::operator()(void)")
@@ -399,14 +399,14 @@ pub fn stub_2b4994() -> ! {
 
 // 0x2b49ac — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 // type: int __fastcall(int, int, int, int, int, void *, int, int, int, int)
-#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
+#[doc(alias = "boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")]
 // was: __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf0IvN3RBX13ScriptContextEEENS3_5list1INS3_5valueINS_10shared_ptrIS8_EEEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE
 pub fn stub_2b49ac() -> ! {
     todo!("0x2b49ac boost::detail::function::functor_manager<boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::ScriptContext>,boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>>>::manager(boost::detail::function::function_buffer const&,boost::detail::function::function_buffer&,boost::detail::function::functor_manager_operation_type,mpl_::bool_<false>)")
 }
 
 // 0x2b4b04 — __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX13ScriptContextEEEEEEC2ES7_
-#[doc(alias = "boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>)")]
+#[doc(alias = "boost::_bi::list1<boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>>::list1(boost::_bi::value<rbx_core::SharedPtr<RBX::ScriptContext>>)")]
 // was: __ZN5boost3_bi5list1INS0_5valueINS_10shared_ptrIN3RBX13ScriptContextEEEEEEC2ES7_
 pub fn stub_2b4b04() -> ! {
     todo!("0x2b4b04 boost::_bi::list1<boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>>::list1(boost::_bi::value<boost::shared_ptr<RBX::ScriptContext>>)")
@@ -427,21 +427,21 @@ pub fn stub_2b6590() -> ! {
 }
 
 // 0x2b67b0 — __ZNSt10_List_baseIN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESaIS5_EE8_M_clearEv
-#[doc(alias = "std::_List_base<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,std::allocator<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>>::_M_clear(void)")]
+#[doc(alias = "std::_List_base<rbx_core::SharedPtr<RBX::LibraryService::LibraryStateObject>,std::allocator<rbx_core::SharedPtr<RBX::LibraryService::LibraryStateObject>>>::_M_clear(void)")]
 // was: __ZNSt10_List_baseIN5boost10shared_ptrIN3RBX14LibraryService18LibraryStateObjectEEESaIS5_EE8_M_clearEv
 pub fn stub_2b67b0() -> ! {
     todo!("0x2b67b0 std::_List_base<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>,std::allocator<boost::shared_ptr<RBX::LibraryService::LibraryStateObject>>>::_M_clear(void)")
 }
 
 // 0x2b6828 — __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX6ScriptEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
-#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Script>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Script>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Script>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,boost::shared_ptr<RBX::Script>>> *)")]
+#[doc(alias = "std::_Rb_tree<std::string,std::pair<std::string const,rbx_core::SharedPtr<RBX::Script>>,std::_Select1st<std::pair<std::string const,rbx_core::SharedPtr<RBX::Script>>>,std::less<std::string>,std::allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Script>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,rbx_core::SharedPtr<RBX::Script>>> *)")]
 // was: __ZNSt8_Rb_treeISsSt4pairIKSsN5boost10shared_ptrIN3RBX6ScriptEEEESt10_Select1stIS7_ESt4lessISsESaIS7_EE8_M_eraseEPSt13_Rb_tree_nodeIS7_E
 pub fn stub_2b6828() -> ! {
     todo!("0x2b6828 std::_Rb_tree<std::string,std::pair<std::string const,boost::shared_ptr<RBX::Script>>,std::_Select1st<std::pair<std::string const,boost::shared_ptr<RBX::Script>>>,std::less<std::string>,std::allocator<std::pair<std::string const,boost::shared_ptr<RBX::Script>>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,boost::shared_ptr<RBX::Script>>> *)")
 }
 
 // 0x2b6858 — __ZN9__gnu_cxx13new_allocatorISt4pairIKSsN5boost10shared_ptrIN3RBX6ScriptEEEEE7destroyEPS8_
-#[doc(alias = "__gnu_cxx::new_allocator<std::pair<std::string const,boost::shared_ptr<RBX::Script>>>::destroy(std::pair<std::string const,boost::shared_ptr<RBX::Script>>*)")]
+#[doc(alias = "__gnu_cxx::new_allocator<std::pair<std::string const,rbx_core::SharedPtr<RBX::Script>>>::destroy(std::pair<std::string const,rbx_core::SharedPtr<RBX::Script>>*)")]
 // was: __ZN9__gnu_cxx13new_allocatorISt4pairIKSsN5boost10shared_ptrIN3RBX6ScriptEEEEE7destroyEPS8_
 pub fn stub_2b6858() -> ! {
     todo!("0x2b6858 __gnu_cxx::new_allocator<std::pair<std::string const,boost::shared_ptr<RBX::Script>>>::destroy(std::pair<std::string const,boost::shared_ptr<RBX::Script>>*)")
@@ -471,14 +471,14 @@ pub fn stub_2b6a68() -> ! {
 
 // 0x2b71e0 — __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEC2INS1_5GcJobEEEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::TaskScheduler::Job>::shared_ptr<RBX::GcJob>(RBX::GcJob *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::TaskScheduler::Job>::shared_ptr<RBX::GcJob>(RBX::GcJob *)")]
 // was: __ZN5boost10shared_ptrIN3RBX13TaskScheduler3JobEEC2INS1_5GcJobEEEPT_
 pub fn stub_2b71e0() -> ! {
     todo!("0x2b71e0 boost::shared_ptr<RBX::TaskScheduler::Job>::shared_ptr<RBX::GcJob>(RBX::GcJob *)")
 }
 
 // 0x2b72c8 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIS3_NS1_5GcJobEEEvPKNS_10shared_ptrIT_EEPT0_
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::TaskScheduler::Job,RBX::GcJob>(boost::shared_ptr<RBX::TaskScheduler::Job> const*,RBX::GcJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::TaskScheduler::Job,RBX::GcJob>(rbx_core::SharedPtr<RBX::TaskScheduler::Job> const*,RBX::GcJob *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerIS3_NS1_5GcJobEEEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_2b72c8() -> ! {
     todo!("0x2b72c8 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::TaskScheduler::Job,RBX::GcJob>(boost::shared_ptr<RBX::TaskScheduler::Job> const*,RBX::GcJob *)const")
@@ -678,21 +678,21 @@ pub fn stub_2c2ca0() -> ! {
 }
 
 // 0x2c7348 — __ZN5boost10shared_ptrIN3RBX13ActivityMeterILi2EEEEaSERKS4_
-#[doc(alias = "boost::shared_ptr<RBX::ActivityMeter<2>>::operator=(boost::shared_ptr<RBX::ActivityMeter<2>> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ActivityMeter<2>>::operator=(rbx_core::SharedPtr<RBX::ActivityMeter<2>> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX13ActivityMeterILi2EEEEaSERKS4_
 pub fn stub_2c7348() -> ! {
     todo!("0x2c7348 boost::shared_ptr<RBX::ActivityMeter<2>>::operator=(boost::shared_ptr<RBX::ActivityMeter<2>> const&)")
 }
 
 // 0x2c7380 — __ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEaSERKS4_
-#[doc(alias = "boost::shared_ptr<RBX::InvocationMeter<2>>::operator=(boost::shared_ptr<RBX::InvocationMeter<2>> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::InvocationMeter<2>>::operator=(rbx_core::SharedPtr<RBX::InvocationMeter<2>> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEaSERKS4_
 pub fn stub_2c7380() -> ! {
     todo!("0x2c7380 boost::shared_ptr<RBX::InvocationMeter<2>>::operator=(boost::shared_ptr<RBX::InvocationMeter<2>> const&)")
 }
 
 // 0x2c8894 — __ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEC2IS3_EEPT_
-#[doc(alias = "boost::shared_ptr<RBX::InvocationMeter<2>>::shared_ptr<RBX::InvocationMeter<2>>(RBX::InvocationMeter<2> *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::InvocationMeter<2>>::shared_ptr<RBX::InvocationMeter<2>>(RBX::InvocationMeter<2> *)")]
 // was: __ZN5boost10shared_ptrIN3RBX15InvocationMeterILi2EEEEC2IS3_EEPT_
 pub fn stub_2c8894() -> ! {
     todo!("0x2c8894 boost::shared_ptr<RBX::InvocationMeter<2>>::shared_ptr<RBX::InvocationMeter<2>>(RBX::InvocationMeter<2> *)")

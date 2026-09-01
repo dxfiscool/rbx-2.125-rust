@@ -75,7 +75,7 @@ pub fn stub_37e498() -> ! {
 
 // 0x37e56c — __ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 // type: int *__fastcall(int *, int, int, int)
-#[doc(alias = "boost::shared_ptr<SoundServiceStatsItem>::shared_ptr<SoundServiceStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<SoundServiceStatsItem>::shared_ptr<SoundServiceStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrI21SoundServiceStatsItemEC2IS1_N3RBX9CreatableINS4_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_37e56c() -> ! {
     todo!("0x37e56c boost::shared_ptr<SoundServiceStatsItem>::shared_ptr<SoundServiceStatsItem,RBX::Creatable<RBX::Instance>::Deleter>(SoundServiceStatsItem *,RBX::Creatable<RBX::Instance>::Deleter)")
@@ -83,7 +83,7 @@ pub fn stub_37e56c() -> ! {
 
 // 0x37e634 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21SoundServiceStatsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(rbx_core::SharedPtr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerI21SoundServiceStatsItemS6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_37e634() -> ! {
     todo!("0x37e634 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<SoundServiceStatsItem,SoundServiceStatsItem>(boost::shared_ptr<SoundServiceStatsItem> const*,SoundServiceStatsItem *)const")
@@ -654,7 +654,7 @@ pub fn stub_3820c4() -> ! {
 
 // 0x3821f0 — __ZN5boost10shared_ptrIN3RBX11StandardOutEED1Ev
 // type: int __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::StandardOut>::~shared_ptr()")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StandardOut>::~shared_ptr()")]
 // was: __ZN5boost10shared_ptrIN3RBX11StandardOutEED1Ev
 pub fn stub_3821f0() -> ! {
     todo!("0x3821f0 boost::shared_ptr<RBX::StandardOut>::~shared_ptr()")
@@ -686,7 +686,7 @@ pub fn stub_3824a8() -> ! {
 
 // 0x3824d0 — __ZN5boost10shared_ptrIN3RBX11StandardOutEEC2IS2_EEPT_
 // type: _DWORD *__fastcall(_DWORD *, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::StandardOut>::shared_ptr<RBX::StandardOut>(RBX::StandardOut *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::StandardOut>::shared_ptr<RBX::StandardOut>(RBX::StandardOut *)")]
 // was: __ZN5boost10shared_ptrIN3RBX11StandardOutEEC2IS2_EEPT_
 pub fn stub_3824d0() -> ! {
     todo!("0x3824d0 boost::shared_ptr<RBX::StandardOut>::shared_ptr<RBX::StandardOut>(RBX::StandardOut *)")
@@ -694,7 +694,7 @@ pub fn stub_3824d0() -> ! {
 
 // 0x3825b8 — __ZNK5boost23enable_shared_from_thisIN3RBX11StandardOutEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: void __fastcall(_DWORD *, const shared_count *, int)
-#[doc(alias = "void boost::enable_shared_from_this<RBX::StandardOut>::_internal_accept_owner<RBX::StandardOut,RBX::StandardOut>(boost::shared_ptr<RBX::StandardOut> const*,RBX::StandardOut *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::StandardOut>::_internal_accept_owner<RBX::StandardOut,RBX::StandardOut>(rbx_core::SharedPtr<RBX::StandardOut> const*,RBX::StandardOut *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX11StandardOutEE22_internal_accept_ownerIS2_S2_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_3825b8() -> ! {
     todo!("0x3825b8 void boost::enable_shared_from_this<RBX::StandardOut>::_internal_accept_owner<RBX::StandardOut,RBX::StandardOut>(boost::shared_ptr<RBX::StandardOut> const*,RBX::StandardOut *)const")

@@ -35,13 +35,13 @@ pub fn stub_457f94() -> ! { todo!("0x457f94 boost::detail::sp_counted_impl_pd<RB
 
 // 0x457f98 — __ZN5boost10shared_ptrIN3RBX9WorkspaceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: unknown
-#[doc(alias = "boost::shared_ptr<RBX::Workspace>::shared_ptr<RBX::Workspace,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Workspace>::shared_ptr<RBX::Workspace,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX9WorkspaceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_457f98() -> ! { todo!("0x457f98 boost::shared_ptr<RBX::Workspace>::shared_ptr<RBX::Workspace,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Workspace *,RBX::Creatable<RBX::Instance>::Deleter)") }
 
 // 0x458060 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9WorkspaceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: unknown
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Workspace,RBX::Workspace>(boost::shared_ptr<RBX::Workspace> const*,RBX::Workspace *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Workspace,RBX::Workspace>(rbx_core::SharedPtr<RBX::Workspace> const*,RBX::Workspace *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9WorkspaceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_458060() -> ! { todo!("0x458060 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Workspace,RBX::Workspace>(boost::shared_ptr<RBX::Workspace> const*,RBX::Workspace *)const") }
 
@@ -95,19 +95,19 @@ pub fn stub_458338() -> ! { todo!("0x458338 __ZNK3RBX14FactoryProductINS_20Chang
 
 // 0x45847c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_20ChangeHistoryServiceEEEN5boost10shared_ptrIT_EEv
 // type: unknown
-#[doc(alias = "boost::shared_ptr<RBX::ChangeHistoryService> RBX::Creatable<RBX::Instance>::create<RBX::ChangeHistoryService>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ChangeHistoryService> RBX::Creatable<RBX::Instance>::create<RBX::ChangeHistoryService>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_20ChangeHistoryServiceEEEN5boost10shared_ptrIT_EEv
 pub fn stub_45847c() -> ! { todo!("0x45847c boost::shared_ptr<RBX::ChangeHistoryService> RBX::Creatable<RBX::Instance>::create<RBX::ChangeHistoryService>(void)") }
 
 // 0x45852c — __ZN5boost10shared_ptrIN3RBX20ChangeHistoryServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: unknown
-#[doc(alias = "boost::shared_ptr<RBX::ChangeHistoryService>::shared_ptr<RBX::ChangeHistoryService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::ChangeHistoryService>::shared_ptr<RBX::ChangeHistoryService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX20ChangeHistoryServiceEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_45852c() -> ! { todo!("0x45852c boost::shared_ptr<RBX::ChangeHistoryService>::shared_ptr<RBX::ChangeHistoryService,RBX::Creatable<RBX::Instance>::Deleter>(RBX::ChangeHistoryService *,RBX::Creatable<RBX::Instance>::Deleter)") }
 
 // 0x4585f4 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20ChangeHistoryServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: unknown
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ChangeHistoryService,RBX::ChangeHistoryService>(boost::shared_ptr<RBX::ChangeHistoryService> const*,RBX::ChangeHistoryService *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ChangeHistoryService,RBX::ChangeHistoryService>(rbx_core::SharedPtr<RBX::ChangeHistoryService> const*,RBX::ChangeHistoryService *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_20ChangeHistoryServiceES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_4585f4() -> ! { todo!("0x4585f4 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::ChangeHistoryService,RBX::ChangeHistoryService>(boost::shared_ptr<RBX::ChangeHistoryService> const*,RBX::ChangeHistoryService *)const") }
 
@@ -191,19 +191,19 @@ pub fn stub_458d6c() -> ! { todo!("0x458d6c unsigned long RBX::ServiceProvider::
 
 // 0x458e44 — __ZNSt6vectorIN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESaIS6_EED2Ev
 // type: unknown
-#[doc(alias = "std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>::~vector()")]
+#[doc(alias = "std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>::~vector()")]
 // was: __ZNSt6vectorIN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESaIS6_EED2Ev
 pub fn stub_458e44() -> ! { todo!("0x458e44 std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>::~vector()") }
 
 // 0x458f10 — __ZN5boost10shared_ptrIN3RBX9DataModelEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: unknown
-#[doc(alias = "boost::shared_ptr<RBX::DataModel>::shared_ptr<RBX::DataModel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DataModel *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::DataModel>::shared_ptr<RBX::DataModel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DataModel *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX9DataModelEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_458f10() -> ! { todo!("0x458f10 boost::shared_ptr<RBX::DataModel>::shared_ptr<RBX::DataModel,RBX::Creatable<RBX::Instance>::Deleter>(RBX::DataModel *,RBX::Creatable<RBX::Instance>::Deleter)") }
 
 // 0x458fd8 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9DataModelES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: unknown
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DataModel,RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const*,RBX::DataModel *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DataModel,RBX::DataModel>(rbx_core::SharedPtr<RBX::DataModel> const*,RBX::DataModel *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_9DataModelES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_458fd8() -> ! { todo!("0x458fd8 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::DataModel,RBX::DataModel>(boost::shared_ptr<RBX::DataModel> const*,RBX::DataModel *)const") }
 
@@ -245,13 +245,13 @@ pub fn stub_45920c() -> ! { todo!("0x45920c boost::detail::sp_counted_impl_pd<RB
 
 // 0x459210 — __ZN5boost10shared_ptrIN3RBX9DataModel10GenericJobEEC2IS3_EEPT_
 // type: int __fastcall(int, void *, int, int, int, int)
-#[doc(alias = "boost::shared_ptr<RBX::DataModel::GenericJob>::shared_ptr<RBX::DataModel::GenericJob>(RBX::DataModel::GenericJob *)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::DataModel::GenericJob>::shared_ptr<RBX::DataModel::GenericJob>(RBX::DataModel::GenericJob *)")]
 // was: __ZN5boost10shared_ptrIN3RBX9DataModel10GenericJobEEC2IS3_EEPT_
 pub fn stub_459210() -> ! { todo!("0x459210 boost::shared_ptr<RBX::DataModel::GenericJob>::shared_ptr<RBX::DataModel::GenericJob>(RBX::DataModel::GenericJob *)") }
 
 // 0x4592f8 — __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_9DataModel10GenericJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: unknown
-#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::DataModel::GenericJob,RBX::DataModel::GenericJob>(boost::shared_ptr<RBX::DataModel::GenericJob> const*,RBX::DataModel::GenericJob *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::DataModel::GenericJob,RBX::DataModel::GenericJob>(rbx_core::SharedPtr<RBX::DataModel::GenericJob> const*,RBX::DataModel::GenericJob *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX13TaskScheduler3JobEE22_internal_accept_ownerINS1_9DataModel10GenericJobES7_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_4592f8() -> ! { todo!("0x4592f8 void boost::enable_shared_from_this<RBX::TaskScheduler::Job>::_internal_accept_owner<RBX::DataModel::GenericJob,RBX::DataModel::GenericJob>(boost::shared_ptr<RBX::DataModel::GenericJob> const*,RBX::DataModel::GenericJob *)const") }
 
@@ -359,19 +359,19 @@ pub fn stub_459a58() -> ! { todo!("0x459a58 __ZNK3RBX14FactoryProductINS_5VisitE
 
 // 0x459b9c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5VisitEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::Visit> RBX::Creatable<RBX::Instance>::create<RBX::Visit>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Visit> RBX::Creatable<RBX::Instance>::create<RBX::Visit>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_5VisitEEEN5boost10shared_ptrIT_EEv
 pub fn stub_459b9c() -> ! { todo!("0x459b9c boost::shared_ptr<RBX::Visit> RBX::Creatable<RBX::Instance>::create<RBX::Visit>(void)") }
 
 // 0x459c4c — __ZN5boost10shared_ptrIN3RBX5VisitEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 // type: unknown
-#[doc(alias = "boost::shared_ptr<RBX::Visit>::shared_ptr<RBX::Visit,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Visit *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Visit>::shared_ptr<RBX::Visit,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Visit *,RBX::Creatable<RBX::Instance>::Deleter)")]
 // was: __ZN5boost10shared_ptrIN3RBX5VisitEEC2IS2_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
 pub fn stub_459c4c() -> ! { todo!("0x459c4c boost::shared_ptr<RBX::Visit>::shared_ptr<RBX::Visit,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Visit *,RBX::Creatable<RBX::Instance>::Deleter)") }
 
 // 0x459d14 — __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5VisitES6_EEvPKNS_10shared_ptrIT_EEPT0_
 // type: unknown
-#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Visit,RBX::Visit>(boost::shared_ptr<RBX::Visit> const*,RBX::Visit *)const")]
+#[doc(alias = "void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Visit,RBX::Visit>(rbx_core::SharedPtr<RBX::Visit> const*,RBX::Visit *)const")]
 // was: __ZNK5boost23enable_shared_from_thisIN3RBX10Reflection13DescribedBaseEE22_internal_accept_ownerINS1_5VisitES6_EEvPKNS_10shared_ptrIT_EEPT0_
 pub fn stub_459d14() -> ! { todo!("0x459d14 void boost::enable_shared_from_this<RBX::Reflection::DescribedBase>::_internal_accept_owner<RBX::Visit,RBX::Visit>(boost::shared_ptr<RBX::Visit> const*,RBX::Visit *)const") }
 

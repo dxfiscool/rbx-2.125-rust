@@ -761,7 +761,7 @@ pub fn stub_3ffa30() -> ! {
 
 // 0x3ffbf8 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_17FilteredSelectionIS1_EEEEN5boost10shared_ptrIT_EEv
 // type: void __fastcall(int)
-#[doc(alias = "boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> RBX::Creatable<RBX::Instance>::create<RBX::FilteredSelection<RBX::Instance>>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::FilteredSelection<RBX::Instance>> RBX::Creatable<RBX::Instance>::create<RBX::FilteredSelection<RBX::Instance>>(void)")]
 // was: __ZN3RBX9CreatableINS_8InstanceEE6createINS_17FilteredSelectionIS1_EEEEN5boost10shared_ptrIT_EEv
 pub fn stub_3ffbf8() -> ! {
     todo!("0x3ffbf8 boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> RBX::Creatable<RBX::Instance>::create<RBX::FilteredSelection<RBX::Instance>>(void)")
@@ -769,7 +769,7 @@ pub fn stub_3ffbf8() -> ! {
 
 // 0x3ffca8 — __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17FilteredSelectionIS2_EEEERS3_RKNS0_IT_EE
 // type: sp_counted_base **__fastcall(sp_counted_base **, const shared_count *)
-#[doc(alias = "boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::Instance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> const&)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Instance>& rbx_core::SharedPtr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::Instance>>(rbx_core::SharedPtr<RBX::FilteredSelection<RBX::Instance>> const&)")]
 // was: __ZN5boost10shared_ptrIN3RBX8InstanceEEaSINS1_17FilteredSelectionIS2_EEEERS3_RKNS0_IT_EE
 pub fn stub_3ffca8() -> ! {
     todo!("0x3ffca8 boost::shared_ptr<RBX::Instance>& boost::shared_ptr<RBX::Instance>::operator=<RBX::FilteredSelection<RBX::Instance>>(boost::shared_ptr<RBX::FilteredSelection<RBX::Instance>> const&)")
