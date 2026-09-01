@@ -1,7 +1,7 @@
 //! Auto-generated skeletons for rbx-network — RakNet|Network|Replicat|Socket|Upnp|HTTP EA-sorted asc (filtered 6232 ci / 5273 cs, 799 remaining after batch)
 //! Filter: RakNet|Network|Replicat|Socket|Upnp|HTTP -> 5273 funcs (cs), 6232 (ci), 919 remaining before batch; batch EA-sorted asc next 120 filtered
 //! Source: ida/export.json (85545 funcs, base 0x4000)
-//! Batch: +120 stubs | range 0x5a6a8..0x2feab0 | existing 18349 -> 18469 total (filtered EA-sorted asc, rbx_core::SharedPtr not boost)
+//! Batch: +120 stubs | range 0x5a6a8..0x2feab0 | existing 18249 -> 18369 total (filtered EA-sorted asc, rbx_core::SharedPtr not boost)
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
 
