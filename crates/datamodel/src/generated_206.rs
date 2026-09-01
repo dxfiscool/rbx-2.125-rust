@@ -1,0 +1,655 @@
+// Auto-generated skeletons for rbx-datamodel — from ida/export.json
+// Filter: demangled contains Instance|DataModel|Workspace|RBX::Instance (EA-sorted asc next 100 uncovered, shard A)
+// Source: ida/export.json (85545 funcs, base 0x4000)
+// Batch: 100 stubs | range 0x560da8..0x57f1ac | total filtered 19162, uncovered before 4160, after 4060, datamodel distinct before 21130, after 21230
+// SharedPtr = rbx_core::SharedPtr (Arc), not boost::shared_ptr; `'` stripped from alias
+
+#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+
+use rbx_core::SharedPtr;
+const _SHARED_PTR: Option<SharedPtr<u8>> = None;
+
+
+// 0x560da8 — __ZThn36_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x560da8() -> ! {
+    todo!("0x560da8 __ZThn36_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x560e4c — __ZThn92_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x560e4c() -> ! {
+    todo!("0x560e4c __ZThn92_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x560e54 — __ZThn92_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn92_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x560e54() -> ! {
+    todo!("0x560e54 __ZThn92_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x560ef8 — __ZThn124_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn124_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x560ef8() -> ! {
+    todo!("0x560ef8 __ZThn124_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x560f00 — __ZThn124_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn124_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x560f00() -> ! {
+    todo!("0x560f00 __ZThn124_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x560fa4 — __ZThn244_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn244_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x560fa4() -> ! {
+    todo!("0x560fa4 __ZThn244_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x560fac — __ZThn244_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn244_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x560fac() -> ! {
+    todo!("0x560fac __ZThn244_N3RBX10Reflection9DescribedINS_6RocketELZNS_7sRocketEENS_14FactoryProductIS2_NS_9BodyMoverELZNS_7sRocketEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x5624f8 — __ZN3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(RBX::Instance *)
+#[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x5624f8() -> ! {
+    todo!("0x5624f8 __ZN3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x5624fc — __ZN3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(RBX::Instance *)
+#[doc(alias = "__ZN3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x5624fc() -> ! {
+    todo!("0x5624fc __ZN3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x56259c — __ZThn32_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x56259c() -> ! {
+    todo!("0x56259c __ZThn32_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x5625a4 — __ZThn32_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn32_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x5625a4() -> ! {
+    todo!("0x5625a4 __ZThn32_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x562648 — __ZThn36_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x562648() -> ! {
+    todo!("0x562648 __ZThn36_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x562650 — __ZThn36_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn36_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x562650() -> ! {
+    todo!("0x562650 __ZThn36_N3RBX21DescribedNonCreatableINS_9BodyMoverENS_8InstanceELZNS_10sBodyMoverEELNS_10Reflection15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x5626f4 — __ZN3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(RBX::Instance *)
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x5626f4() -> ! {
+    todo!("0x5626f4 __ZN3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x5626f8 — __ZN3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(RBX::Instance *)
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x5626f8() -> ! {
+    todo!("0x5626f8 __ZN3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x562798 — __ZThn32_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x562798() -> ! {
+    todo!("0x562798 __ZThn32_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x5627a0 — __ZThn32_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x5627a0() -> ! {
+    todo!("0x5627a0 __ZThn32_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x562844 — __ZThn36_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x562844() -> ! {
+    todo!("0x562844 __ZThn36_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x56284c — __ZThn36_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x56284c() -> ! {
+    todo!("0x56284c __ZThn36_N3RBX10Reflection9DescribedINS_9BodyMoverELZNS_10sBodyMoverEENS_17NonFactoryProductINS_8InstanceELZNS_10sBodyMoverEEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x5630c4 — __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD2Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0x5630c4() -> ! {
+    todo!("0x5630c4 __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x563160 — __ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7Creator6createEv
+// type: void __fastcall(_DWORD *, int, int)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_0x563160() -> ! {
+    todo!("0x563160 __ZNK3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x563654 — __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorC2Ev
+// type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0x563654() -> ! {
+    todo!("0x563654 __ZN3RBX14FactoryProductINS_10BodyThrustENS_9BodyMoverELZNS_11sBodyThrustEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0x563898 — __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD2Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0x563898() -> ! {
+    todo!("0x563898 __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x563934 — __ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7Creator6createEv
+// type: void __fastcall(_DWORD *, int, int)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_0x563934() -> ! {
+    todo!("0x563934 __ZNK3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x563e28 — __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorC2Ev
+// type: pthread_mutex_t *__fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0x563e28() -> ! {
+    todo!("0x563e28 __ZN3RBX14FactoryProductINS_9BodyForceENS_9BodyMoverELZNS_10sBodyForceEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0x56406c — __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD2Ev
+// type: _DWORD *__fastcall(_DWORD *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0x56406c() -> ! {
+    todo!("0x56406c __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x564108 — __ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7Creator6createEv
+// type: void __fastcall(_DWORD *, int, int)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_0x564108() -> ! {
+    todo!("0x564108 __ZNK3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x5645fc — __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0x5645fc() -> ! {
+    todo!("0x5645fc __ZN3RBX14FactoryProductINS_19BodyAngularVelocityENS_9BodyMoverELZNS_20sBodyAngularVelocityEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0x564840 — __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0x564840() -> ! {
+    todo!("0x564840 __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x5648dc — __ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7Creator6createEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_0x5648dc() -> ! {
+    todo!("0x5648dc __ZNK3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x564dd0 — __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0x564dd0() -> ! {
+    todo!("0x564dd0 __ZN3RBX14FactoryProductINS_12BodyVelocityENS_9BodyMoverELZNS_13sBodyVelocityEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0x565014 — __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0x565014() -> ! {
+    todo!("0x565014 __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x5650b0 — __ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7Creator6createEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_0x5650b0() -> ! {
+    todo!("0x5650b0 __ZNK3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x5655a4 — __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0x5655a4() -> ! {
+    todo!("0x5655a4 __ZN3RBX14FactoryProductINS_12BodyPositionENS_9BodyMoverELZNS_13sBodyPositionEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0x5657e8 — __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0x5657e8() -> ! {
+    todo!("0x5657e8 __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x565884 — __ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7Creator6createEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_0x565884() -> ! {
+    todo!("0x565884 __ZNK3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x565d78 — __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0x565d78() -> ! {
+    todo!("0x565d78 __ZN3RBX14FactoryProductINS_8BodyGyroENS_9BodyMoverELZNS_9sBodyGyroEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0x567e08 — __ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv")]
+pub fn stub_0x567e08() -> ! {
+    todo!("0x567e08 __ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv")
+}
+
+// 0x567ecc — __ZThn32_NK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv
+#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv")]
+pub fn stub_0x567ecc() -> ! {
+    todo!("0x567ecc __ZThn32_NK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE12getClassNameEv")
+}
+
+// 0x567f88 — __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD1Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD1Ev")]
+pub fn stub_0x567f88() -> ! {
+    todo!("0x567f88 __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD1Ev")
+}
+
+// 0x567f8c — __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD2Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0x567f8c() -> ! {
+    todo!("0x567f8c __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x568028 — __ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7Creator12getClassNameEv
+// type: int(void)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7Creator12getClassNameEv")]
+pub fn stub_0x568028() -> ! {
+    todo!("0x568028 __ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7Creator12getClassNameEv")
+}
+
+// 0x5680b0 — __ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7Creator6createEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_0x5680b0() -> ! {
+    todo!("0x5680b0 __ZNK3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x568688 — __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0x568688() -> ! {
+    todo!("0x568688 __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0x5688cc — __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE17static_getCreatorEv
+#[doc(alias = "__ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_0x5688cc() -> ! {
+    todo!("0x5688cc __ZN3RBX14FactoryProductINS_7HandlesENS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0x56b1b0 — __ZN3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x56b1b0() -> ! {
+    todo!("0x56b1b0 __ZN3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x56b1b4 — __ZN3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x56b1b4() -> ! {
+    todo!("0x56b1b4 __ZN3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x56b254 — __ZThn32_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x56b254() -> ! {
+    todo!("0x56b254 __ZThn32_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x56b25c — __ZThn32_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x56b25c() -> ! {
+    todo!("0x56b25c __ZThn32_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x56b300 — __ZThn36_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x56b300() -> ! {
+    todo!("0x56b300 __ZThn36_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x56b308 — __ZThn36_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x56b308() -> ! {
+    todo!("0x56b308 __ZThn36_N3RBX10Reflection9DescribedINS_7HandlesELZNS_8sHandlesEENS_14FactoryProductIS2_NS_11HandlesBaseELZNS_8sHandlesEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x573b00 — __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv")]
+pub fn stub_0x573b00() -> ! {
+    todo!("0x573b00 __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv")
+}
+
+// 0x573bd4 — __ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv
+#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv")]
+pub fn stub_0x573bd4() -> ! {
+    todo!("0x573bd4 __ZThn32_NK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE12getClassNameEv")
+}
+
+// 0x573d38 — __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv")]
+pub fn stub_0x573d38() -> ! {
+    todo!("0x573d38 __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv")
+}
+
+// 0x573df4 — __ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv
+#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv")]
+pub fn stub_0x573df4() -> ! {
+    todo!("0x573df4 __ZThn32_NK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E12getClassNameEv")
+}
+
+// 0x574ab4 — __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD1Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD1Ev")]
+pub fn stub_0x574ab4() -> ! {
+    todo!("0x574ab4 __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD1Ev")
+}
+
+// 0x574ab8 — __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD1Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD1Ev")]
+pub fn stub_0x574ab8() -> ! {
+    todo!("0x574ab8 __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD1Ev")
+}
+
+// 0x574ba0 — __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD2Ev
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD2Ev")]
+pub fn stub_0x574ba0() -> ! {
+    todo!("0x574ba0 __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorD2Ev")
+}
+
+// 0x574c3c — __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator12getClassNameEv
+// type: int(void)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator12getClassNameEv")]
+pub fn stub_0x574c3c() -> ! {
+    todo!("0x574c3c __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator12getClassNameEv")
+}
+
+// 0x574cc4 — __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator6createEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator6createEv")]
+pub fn stub_0x574cc4() -> ! {
+    todo!("0x574cc4 __ZNK3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7Creator6createEv")
+}
+
+// 0x57516c — __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorC2Ev")]
+pub fn stub_0x57516c() -> ! {
+    todo!("0x57516c __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E7CreatorC2Ev")
+}
+
+// 0x5753b0 — __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E17static_getCreatorEv
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E17static_getCreatorEv")]
+pub fn stub_0x5753b0() -> ! {
+    todo!("0x5753b0 __ZN3RBX14FactoryProductINS_11StarterGearENS_8InstanceELZNS_12sStarterGearEES2_E17static_getCreatorEv")
+}
+
+// 0x575424 — __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD2Ev
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0x575424() -> ! {
+    todo!("0x575424 __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x5754c0 — __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator12getClassNameEv
+// type: int(void)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator12getClassNameEv")]
+pub fn stub_0x5754c0() -> ! {
+    todo!("0x5754c0 __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator12getClassNameEv")
+}
+
+// 0x575548 — __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator6createEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_0x575548() -> ! {
+    todo!("0x575548 __ZNK3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x575b24 — __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0x575b24() -> ! {
+    todo!("0x575b24 __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0x575d68 — __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE17static_getCreatorEv
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_0x575d68() -> ! {
+    todo!("0x575d68 __ZN3RBX14FactoryProductINS_9HopperBinENS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0x576944 — __ZN3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x576944() -> ! {
+    todo!("0x576944 __ZN3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x576a78 — __ZN3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x576a78() -> ! {
+    todo!("0x576a78 __ZN3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x576bbc — __ZThn32_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x576bbc() -> ! {
+    todo!("0x576bbc __ZThn32_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x576cec — __ZThn32_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x576cec() -> ! {
+    todo!("0x576cec __ZThn32_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x576e30 — __ZThn36_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x576e30() -> ! {
+    todo!("0x576e30 __ZThn36_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x576f60 — __ZThn36_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x576f60() -> ! {
+    todo!("0x576f60 __ZThn36_N3RBX10Reflection9DescribedINS_9HopperBinELZNS_10sHopperBinEENS_14FactoryProductIS2_NS_12BackpackItemELZNS_10sHopperBinEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x5772a0 — __ZN3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x5772a0() -> ! {
+    todo!("0x5772a0 __ZN3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x5772a4 — __ZN3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x5772a4() -> ! {
+    todo!("0x5772a4 __ZN3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x577344 — __ZThn32_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x577344() -> ! {
+    todo!("0x577344 __ZThn32_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x57734c — __ZThn32_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x57734c() -> ! {
+    todo!("0x57734c __ZThn32_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x5773f0 — __ZThn36_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x5773f0() -> ! {
+    todo!("0x5773f0 __ZThn36_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x5773f8 — __ZThn36_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x5773f8() -> ! {
+    todo!("0x5773f8 __ZThn36_N3RBX10Reflection9DescribedINS_11StarterGearELZNS_12sStarterGearEENS_14FactoryProductIS2_NS_8InstanceELZNS_12sStarterGearEES4_EELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x57cf64 — __ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv")]
+pub fn stub_0x57cf64() -> ! {
+    todo!("0x57cf64 __ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv")
+}
+
+// 0x57d178 — __ZThn32_NK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv
+#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv")]
+pub fn stub_0x57d178() -> ! {
+    todo!("0x57d178 __ZThn32_NK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE12getClassNameEv")
+}
+
+// 0x57d38c — __ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7CreatorD1Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7CreatorD1Ev")]
+pub fn stub_0x57d38c() -> ! {
+    todo!("0x57d38c __ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7CreatorD1Ev")
+}
+
+// 0x57d390 — __ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7CreatorD2Ev
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0x57d390() -> ! {
+    todo!("0x57d390 __ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x57d42c — __ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7Creator12getClassNameEv
+// type: int(void)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7Creator12getClassNameEv")]
+pub fn stub_0x57d42c() -> ! {
+    todo!("0x57d42c __ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7Creator12getClassNameEv")
+}
+
+// 0x57d4b4 — __ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7Creator6createEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_0x57d4b4() -> ! {
+    todo!("0x57d4b4 __ZNK3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x57d790 — __ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0x57d790() -> ! {
+    todo!("0x57d790 __ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE7CreatorC2Ev")
+}
+
+// 0x57d9d4 — __ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE17static_getCreatorEv
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE17static_getCreatorEv")]
+pub fn stub_0x57d9d4() -> ! {
+    todo!("0x57d9d4 __ZN3RBX14FactoryProductINS_14GuiImageButtonENS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEE17static_getCreatorEv")
+}
+
+// 0x57df0c — __ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x57df0c() -> ! {
+    todo!("0x57df0c __ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x57df10 — __ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x57df10() -> ! {
+    todo!("0x57df10 __ZN3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x57dfb0 — __ZThn32_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x57dfb0() -> ! {
+    todo!("0x57dfb0 __ZThn32_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x57dfb8 — __ZThn32_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+// type: void __fastcall(int)
+#[doc(alias = "__ZThn32_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x57dfb8() -> ! {
+    todo!("0x57dfb8 __ZThn32_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x57e05c — __ZThn36_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")]
+pub fn stub_0x57e05c() -> ! {
+    todo!("0x57e05c __ZThn36_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED1Ev")
+}
+
+// 0x57e064 — __ZThn36_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev
+#[doc(alias = "__ZThn36_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")]
+pub fn stub_0x57e064() -> ! {
+    todo!("0x57e064 __ZThn36_N3RBX10Reflection9DescribedINS_14GuiImageButtonELZNS_15sGuiImageButtonEENS_14FactoryProductIS2_NS_9GuiButtonELZNS_15sGuiImageButtonEENS_8InstanceEEELNS0_15ClassDescriptor13FunctionalityE27ELNS_8Security11PermissionsE0EED0Ev")
+}
+
+// 0x57ea30 — __ZNK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE12getClassNameEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE12getClassNameEv")]
+pub fn stub_0x57ea30() -> ! {
+    todo!("0x57ea30 __ZNK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE12getClassNameEv")
+}
+
+// 0x57ec48 — __ZThn32_NK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE12getClassNameEv
+#[doc(alias = "__ZThn32_NK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE12getClassNameEv")]
+pub fn stub_0x57ec48() -> ! {
+    todo!("0x57ec48 __ZThn32_NK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE12getClassNameEv")
+}
+
+// 0x57ee5c — __ZN3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7CreatorD1Ev
+#[doc(alias = "__ZN3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7CreatorD1Ev")]
+pub fn stub_0x57ee5c() -> ! {
+    todo!("0x57ee5c __ZN3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7CreatorD1Ev")
+}
+
+// 0x57ee60 — __ZN3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7CreatorD2Ev
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7CreatorD2Ev")]
+pub fn stub_0x57ee60() -> ! {
+    todo!("0x57ee60 __ZN3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7CreatorD2Ev")
+}
+
+// 0x57eefc — __ZNK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7Creator12getClassNameEv
+// type: int(void)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7Creator12getClassNameEv")]
+pub fn stub_0x57eefc() -> ! {
+    todo!("0x57eefc __ZNK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7Creator12getClassNameEv")
+}
+
+// 0x57ef84 — __ZNK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7Creator6createEv
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7Creator6createEv")]
+pub fn stub_0x57ef84() -> ! {
+    todo!("0x57ef84 __ZNK3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7Creator6createEv")
+}
+
+// 0x57f1ac — __ZN3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7CreatorC2Ev
+// type: int __fastcall(pthread_mutex_t *)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7CreatorC2Ev")]
+pub fn stub_0x57f1ac() -> ! {
+    todo!("0x57f1ac __ZN3RBX14FactoryProductINS_10ImageLabelENS_8GuiLabelELZNS_11sImageLabelEENS_8InstanceEE7CreatorC2Ev")
+}
