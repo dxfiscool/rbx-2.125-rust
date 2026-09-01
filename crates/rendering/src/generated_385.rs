@@ -140,7 +140,7 @@ pub fn stub_565fbc() -> ! {
 
 // 0x565fdc — __GLOBAL__I_a_209
 #[doc(alias = "__GLOBAL__I_a_209")]
-#[doc(alias = "`global constructor keyed to_a_209")]
+#[doc(alias = "global constructor keyed to_a_209")]
 // was: __GLOBAL__I_a_209
 pub fn stub_565fdc() -> ! {
     todo!("0x565fdc `global constructor keyed to'_a_209")
@@ -199,7 +199,7 @@ pub fn stub_5673e8() -> ! {
 
 // 0x567688 — __ZThn92_N3RBX7Handles7processERKNS_8GuiEventE
 #[doc(alias = "__ZThn92_N3RBX7Handles7processERKNS_8GuiEventE")]
-#[doc(alias = "`non-virtual thunk toRBX::Handles::process(RBX::GuiEvent const&)")]
+#[doc(alias = "non-virtual thunk toRBX::Handles::process(RBX::GuiEvent const&)")]
 // was: __ZThn92_N3RBX7Handles7processERKNS_8GuiEventE
 pub fn stub_567688() -> ! {
     todo!("0x567688 `non-virtual thunk to'RBX::Handles::process(RBX::GuiEvent const&)")
@@ -352,7 +352,7 @@ pub fn stub_567e18() -> ! {
 // 0x567e20 — __ZThn32_N3RBX7HandlesD1Ev
 // type: void __fastcall(RBX::Handles *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX7HandlesD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
 // was: __ZThn32_N3RBX7HandlesD1Ev
 pub fn stub_567e20() -> ! {
     todo!("0x567e20 `non-virtual thunk to'RBX::Handles::~Handles()")
@@ -361,7 +361,7 @@ pub fn stub_567e20() -> ! {
 // 0x567e28 — __ZThn32_N3RBX7HandlesD0Ev
 // type: void __fastcall(RBX::Handles *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX7HandlesD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
 // was: __ZThn32_N3RBX7HandlesD0Ev
 pub fn stub_567e28() -> ! {
     todo!("0x567e28 `non-virtual thunk to'RBX::Handles::~Handles()")
@@ -377,7 +377,7 @@ pub fn stub_567ecc() -> ! {
 // 0x567edc — __ZThn36_N3RBX7HandlesD1Ev
 // type: void __fastcall(RBX::Handles *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX7HandlesD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
 // was: __ZThn36_N3RBX7HandlesD1Ev
 pub fn stub_567edc() -> ! {
     todo!("0x567edc `non-virtual thunk to'RBX::Handles::~Handles()")
@@ -386,7 +386,7 @@ pub fn stub_567edc() -> ! {
 // 0x567ee4 — __ZThn36_N3RBX7HandlesD0Ev
 // type: void __fastcall(RBX::Handles *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX7HandlesD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::Handles::~Handles()")]
+#[doc(alias = "non-virtual thunk toRBX::Handles::~Handles()")]
 // was: __ZThn36_N3RBX7HandlesD0Ev
 pub fn stub_567ee4() -> ! {
     todo!("0x567ee4 `non-virtual thunk to'RBX::Handles::~Handles()")
@@ -654,7 +654,7 @@ pub fn stub_569050() -> ! {
 
 // 0x569058 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEfEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEfEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv")]
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>*>>>,0,void ()(void)>::call(void)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEfEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv
 pub fn stub_569058() -> ! {
     todo!("0x569058 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId,float)>*>>>,0,void ()(void)>::call(void)")
@@ -728,7 +728,7 @@ pub fn stub_569338() -> ! {
 
 // 0x569340 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv")]
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>*>>>,0,void ()(void)>::call(void)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX19EventReplicatorBaseINSB_7HandlesEFvNSB_8NormalIdEEEEEENS7_5list1INS7_5valueIPSG_EEEEEELi0ES3_E4callEv
 pub fn stub_569340() -> ! {
     todo!("0x569340 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>>,boost::_bi::list1<boost::_bi::value<RBX::EventReplicatorBase<RBX::Handles,void ()(RBX::NormalId)>*>>>,0,void ()(void)>::call(void)")

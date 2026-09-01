@@ -259,3 +259,5 @@ pub mod generated_plat_bh;
 pub mod generated_plat_bi;
 pub mod generated_plat_bj;
 pub mod generated_plat_bk;
+pub mod generated_plat_bl;
+pub mod generated_plat_bm;

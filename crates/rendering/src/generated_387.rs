@@ -79,7 +79,7 @@ pub fn stub_56dd20() -> ! {
 
 // 0x56dd28 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_")]
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvN3RBX8NormalIdEEE4slotEN5boost8functionIS5_EELi1ES5_E4callES4_
 pub fn stub_56dd28() -> ! {
     todo!("0x56dd28 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(RBX::NormalId)>::slot,boost::function<void ()(RBX::NormalId)>,1,void ()(RBX::NormalId)>::call(RBX::NormalId)")
@@ -441,7 +441,7 @@ pub fn stub_56f2c0() -> ! {
 
 // 0x56f3f0 — __GLOBAL__I_a_210
 #[doc(alias = "__GLOBAL__I_a_210")]
-#[doc(alias = "`global constructor keyed to_a_210")]
+#[doc(alias = "global constructor keyed to_a_210")]
 // was: __GLOBAL__I_a_210
 pub fn stub_56f3f0() -> ! {
     todo!("0x56f3f0 `global constructor keyed to'_a_210")
@@ -484,7 +484,7 @@ pub fn stub_5707ac() -> ! {
 
 // 0x570f0c — __GLOBAL__I_a_211
 #[doc(alias = "__GLOBAL__I_a_211")]
-#[doc(alias = "`global constructor keyed to_a_211")]
+#[doc(alias = "global constructor keyed to_a_211")]
 // was: __GLOBAL__I_a_211
 pub fn stub_570f0c() -> ! {
     todo!("0x570f0c `global constructor keyed to'_a_211")

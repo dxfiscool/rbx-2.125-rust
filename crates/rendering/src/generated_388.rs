@@ -92,7 +92,7 @@ pub fn stub_573b20() -> ! {
 // 0x573b28 — __ZThn32_N3RBX9HopperBinD1Ev
 // type: void __fastcall(RBX::HopperBin *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX9HopperBinD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::HopperBin::~HopperBin()")]
+#[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 // was: __ZThn32_N3RBX9HopperBinD1Ev
 pub fn stub_573b28() -> ! {
     todo!("0x573b28 `non-virtual thunk to'RBX::HopperBin::~HopperBin()")
@@ -101,7 +101,7 @@ pub fn stub_573b28() -> ! {
 // 0x573b30 — __ZThn32_N3RBX9HopperBinD0Ev
 // type: void __fastcall(RBX::HopperBin *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX9HopperBinD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::HopperBin::~HopperBin()")]
+#[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 // was: __ZThn32_N3RBX9HopperBinD0Ev
 pub fn stub_573b30() -> ! {
     todo!("0x573b30 `non-virtual thunk to'RBX::HopperBin::~HopperBin()")
@@ -118,7 +118,7 @@ pub fn stub_573bd4() -> ! {
 // 0x573be4 — __ZThn36_N3RBX9HopperBinD1Ev
 // type: void __fastcall(RBX::HopperBin *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9HopperBinD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::HopperBin::~HopperBin()")]
+#[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 // was: __ZThn36_N3RBX9HopperBinD1Ev
 pub fn stub_573be4() -> ! {
     todo!("0x573be4 `non-virtual thunk to'RBX::HopperBin::~HopperBin()")
@@ -127,7 +127,7 @@ pub fn stub_573be4() -> ! {
 // 0x573bec — __ZThn36_N3RBX9HopperBinD0Ev
 // type: void __fastcall(RBX::HopperBin *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX9HopperBinD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::HopperBin::~HopperBin()")]
+#[doc(alias = "non-virtual thunk toRBX::HopperBin::~HopperBin()")]
 // was: __ZThn36_N3RBX9HopperBinD0Ev
 pub fn stub_573bec() -> ! {
     todo!("0x573bec `non-virtual thunk to'RBX::HopperBin::~HopperBin()")
@@ -171,7 +171,7 @@ pub fn stub_573d38() -> ! {
 // 0x573d48 — __ZThn32_N3RBX11StarterGearD1Ev
 // type: void __fastcall(RBX::StarterGear *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX11StarterGearD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::StarterGear::~StarterGear()")]
+#[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 // was: __ZThn32_N3RBX11StarterGearD1Ev
 pub fn stub_573d48() -> ! {
     todo!("0x573d48 `non-virtual thunk to'RBX::StarterGear::~StarterGear()")
@@ -180,7 +180,7 @@ pub fn stub_573d48() -> ! {
 // 0x573d50 — __ZThn32_N3RBX11StarterGearD0Ev
 // type: void __fastcall(RBX::StarterGear *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX11StarterGearD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::StarterGear::~StarterGear()")]
+#[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 // was: __ZThn32_N3RBX11StarterGearD0Ev
 pub fn stub_573d50() -> ! {
     todo!("0x573d50 `non-virtual thunk to'RBX::StarterGear::~StarterGear()")
@@ -197,7 +197,7 @@ pub fn stub_573df4() -> ! {
 // 0x573e04 — __ZThn36_N3RBX11StarterGearD1Ev
 // type: void __fastcall(RBX::StarterGear *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX11StarterGearD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::StarterGear::~StarterGear()")]
+#[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 // was: __ZThn36_N3RBX11StarterGearD1Ev
 pub fn stub_573e04() -> ! {
     todo!("0x573e04 `non-virtual thunk to'RBX::StarterGear::~StarterGear()")
@@ -206,7 +206,7 @@ pub fn stub_573e04() -> ! {
 // 0x573e0c — __ZThn36_N3RBX11StarterGearD0Ev
 // type: void __fastcall(RBX::StarterGear *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX11StarterGearD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::StarterGear::~StarterGear()")]
+#[doc(alias = "non-virtual thunk toRBX::StarterGear::~StarterGear()")]
 // was: __ZThn36_N3RBX11StarterGearD0Ev
 pub fn stub_573e0c() -> ! {
     todo!("0x573e0c `non-virtual thunk to'RBX::StarterGear::~StarterGear()")
@@ -268,7 +268,7 @@ pub fn stub_574158() -> ! {
 // 0x57415c — __ZThn32_N3RBX12BackpackItemD1Ev
 // type: void __fastcall(RBX::BackpackItem *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX12BackpackItemD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
+#[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 // was: __ZThn32_N3RBX12BackpackItemD1Ev
 pub fn stub_57415c() -> ! {
     todo!("0x57415c `non-virtual thunk to'RBX::BackpackItem::~BackpackItem()")
@@ -277,7 +277,7 @@ pub fn stub_57415c() -> ! {
 // 0x57428c — __ZThn32_N3RBX12BackpackItemD0Ev
 // type: void __fastcall(RBX::BackpackItem *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX12BackpackItemD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
+#[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 // was: __ZThn32_N3RBX12BackpackItemD0Ev
 pub fn stub_57428c() -> ! {
     todo!("0x57428c `non-virtual thunk to'RBX::BackpackItem::~BackpackItem()")
@@ -294,7 +294,7 @@ pub fn stub_5743d0() -> ! {
 // 0x5743f8 — __ZThn36_N3RBX12BackpackItemD1Ev
 // type: void __fastcall(RBX::BackpackItem *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX12BackpackItemD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
+#[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 // was: __ZThn36_N3RBX12BackpackItemD1Ev
 pub fn stub_5743f8() -> ! {
     todo!("0x5743f8 `non-virtual thunk to'RBX::BackpackItem::~BackpackItem()")
@@ -303,7 +303,7 @@ pub fn stub_5743f8() -> ! {
 // 0x574528 — __ZThn36_N3RBX12BackpackItemD0Ev
 // type: void __fastcall(RBX::BackpackItem *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX12BackpackItemD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
+#[doc(alias = "non-virtual thunk toRBX::BackpackItem::~BackpackItem()")]
 // was: __ZThn36_N3RBX12BackpackItemD0Ev
 pub fn stub_574528() -> ! {
     todo!("0x574528 `non-virtual thunk to'RBX::BackpackItem::~BackpackItem()")
@@ -330,7 +330,7 @@ pub fn stub_574670() -> ! {
 // 0x574710 — __ZThn32_N3RBX6HopperD1Ev
 // type: void __fastcall(RBX::Hopper *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX6HopperD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::Hopper::~Hopper()")]
+#[doc(alias = "non-virtual thunk toRBX::Hopper::~Hopper()")]
 // was: __ZThn32_N3RBX6HopperD1Ev
 pub fn stub_574710() -> ! {
     todo!("0x574710 `non-virtual thunk to'RBX::Hopper::~Hopper()")
@@ -339,7 +339,7 @@ pub fn stub_574710() -> ! {
 // 0x574718 — __ZThn32_N3RBX6HopperD0Ev
 // type: void __fastcall(RBX::Hopper *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX6HopperD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::Hopper::~Hopper()")]
+#[doc(alias = "non-virtual thunk toRBX::Hopper::~Hopper()")]
 // was: __ZThn32_N3RBX6HopperD0Ev
 pub fn stub_574718() -> ! {
     todo!("0x574718 `non-virtual thunk to'RBX::Hopper::~Hopper()")
@@ -348,7 +348,7 @@ pub fn stub_574718() -> ! {
 // 0x5747bc — __ZThn36_N3RBX6HopperD1Ev
 // type: void __fastcall(RBX::Hopper *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX6HopperD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::Hopper::~Hopper()")]
+#[doc(alias = "non-virtual thunk toRBX::Hopper::~Hopper()")]
 // was: __ZThn36_N3RBX6HopperD1Ev
 pub fn stub_5747bc() -> ! {
     todo!("0x5747bc `non-virtual thunk to'RBX::Hopper::~Hopper()")
@@ -357,7 +357,7 @@ pub fn stub_5747bc() -> ! {
 // 0x5747c4 — __ZThn36_N3RBX6HopperD0Ev
 // type: void __fastcall(RBX::Hopper *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX6HopperD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::Hopper::~Hopper()")]
+#[doc(alias = "non-virtual thunk toRBX::Hopper::~Hopper()")]
 // was: __ZThn36_N3RBX6HopperD0Ev
 pub fn stub_5747c4() -> ! {
     todo!("0x5747c4 `non-virtual thunk to'RBX::Hopper::~Hopper()")
@@ -392,7 +392,7 @@ pub fn stub_57490c() -> ! {
 // 0x574934 — __ZThn32_N3RBX18StarterPackServiceD1Ev
 // type: void __fastcall(RBX::StarterPackService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX18StarterPackServiceD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
+#[doc(alias = "non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
 // was: __ZThn32_N3RBX18StarterPackServiceD1Ev
 pub fn stub_574934() -> ! {
     todo!("0x574934 `non-virtual thunk to'RBX::StarterPackService::~StarterPackService()")
@@ -401,7 +401,7 @@ pub fn stub_574934() -> ! {
 // 0x57493c — __ZThn32_N3RBX18StarterPackServiceD0Ev
 // type: void __fastcall(RBX::StarterPackService *__hidden this)
 #[doc(alias = "__ZThn32_N3RBX18StarterPackServiceD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
+#[doc(alias = "non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
 // was: __ZThn32_N3RBX18StarterPackServiceD0Ev
 pub fn stub_57493c() -> ! {
     todo!("0x57493c `non-virtual thunk to'RBX::StarterPackService::~StarterPackService()")
@@ -418,7 +418,7 @@ pub fn stub_5749e0() -> ! {
 // 0x574a08 — __ZThn36_N3RBX18StarterPackServiceD1Ev
 // type: void __fastcall(RBX::StarterPackService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX18StarterPackServiceD1Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
+#[doc(alias = "non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
 // was: __ZThn36_N3RBX18StarterPackServiceD1Ev
 pub fn stub_574a08() -> ! {
     todo!("0x574a08 `non-virtual thunk to'RBX::StarterPackService::~StarterPackService()")
@@ -427,7 +427,7 @@ pub fn stub_574a08() -> ! {
 // 0x574a10 — __ZThn36_N3RBX18StarterPackServiceD0Ev
 // type: void __fastcall(RBX::StarterPackService *__hidden this)
 #[doc(alias = "__ZThn36_N3RBX18StarterPackServiceD0Ev")]
-#[doc(alias = "`non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
+#[doc(alias = "non-virtual thunk toRBX::StarterPackService::~StarterPackService()")]
 // was: __ZThn36_N3RBX18StarterPackServiceD0Ev
 pub fn stub_574a10() -> ! {
     todo!("0x574a10 `non-virtual thunk to'RBX::StarterPackService::~StarterPackService()")
@@ -831,7 +831,7 @@ pub fn stub_576424() -> ! {
 
 // 0x57642c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 #[doc(alias = "__ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_")]
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")]
 // was: __ZThn4_N3rbx8callableINS_7signals6signalIFvN5boost10shared_ptrIN3RBX8InstanceEEEEE4slotENS3_3_bi6bind_tIvNS3_4_mfi3mf1IvNS5_9HopperBinERS7_EENSB_5list2INSB_5valueIPSF_EENS3_3argILi1EEEEEEELi1ES8_E4callES7_
 pub fn stub_57642c() -> ! {
     todo!("0x57642c `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(boost::shared_ptr<RBX::Instance>)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf1<void,RBX::HopperBin,boost::shared_ptr<RBX::Instance>&>,boost::_bi::list2<boost::_bi::value<RBX::HopperBin*>,boost::arg<1>>>,1,void ()(boost::shared_ptr<RBX::Instance>)>::call(boost::shared_ptr<RBX::Instance>)")
