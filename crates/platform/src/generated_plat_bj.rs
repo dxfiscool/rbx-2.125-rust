@@ -1,6 +1,6 @@
-//! platform — generated_plat_bj — 100 stubs EA-sorted asc global gap filler | Source ida/export.json | range 0x248bc4..0x250588 | rbx_core::SharedPtr not boost | excludes above namespaces
-//! Source: ida/export.json (85545 funcs) global gap filler next 100 EA-sorted asc not yet stubbed in platform
-//! Distinct stub_ 30900/85545 -> 31000/85545 | uncovered 54645 -> 54545 (platform)
+//! platform — generated_plat_bj — 100 stubs EA-sorted asc second fallback gap filler | Source ida/export.json | range 0x248bc4..0x250588 | rbx_core::SharedPtr not boost | excludes above namespaces
+//! Source: ida/export.json (85545 funcs) global gap filler next 100 EA-sorted asc not yet stubbed in platform (second fallback)
+//! Distinct stub_ 30901/85545 -> 31001/85545 | uncovered 54644 -> 54544 (platform)
 //! Batch: 100 stubs | range 0x248bc4..0x250588 | rbx_core::SharedPtr not boost
 
 #![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
