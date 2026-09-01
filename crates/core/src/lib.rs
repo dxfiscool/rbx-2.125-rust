@@ -69,4 +69,5 @@ pub mod generated_core_shard_ac;
 pub mod generated_core_shard_ad;
 pub mod generated_core_shard_ae;
 pub mod generated_core_shard_af;
+pub mod generated_core_shard_ag;
 pub mod generated_gap;
