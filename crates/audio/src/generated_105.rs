@@ -1,0 +1,664 @@
+//! audio generated_105 — next 100 stubs EA-sorted, from ida/export.json
+//! Filter: FMOD|Sound|Audio exhausted (2541 distinct) — filler workspace EA-sorted asc, skip existing, rbx_core::SharedPtr not boost
+//! Batch: 100 stubs | skeleton batch | range 0xf1fc24..0xf20194 EA-sorted asc filler after 0xf1fc18, skip existing, rbx_core::SharedPtr not boost
+//! Generated: 2026-09-01
+
+#![allow(non_snake_case, dead_code, unused_variables, unused_imports, clippy::all)]
+
+use rbx_core::SharedPtr;
+
+const _: () = {
+    let _ = core::marker::PhantomData::<SharedPtr<u8>>;
+};
+
+// 0xf1fc24 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fc24() -> ! {
+    todo!("0xf1fc24 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsENS3_5list2INS3_5valueIS8_EENSC_ISsEEEEEEE7managerERKNS1_15function_bufferERSI_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fc30 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fc30() -> ! {
+    todo!("0xf1fc30 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13ContentFilterEEESsbENS3_5list3INS3_5valueIS8_EENSC_ISsEENSC_IbEEEEEEE7managerERKNS1_15function_bufferERSJ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fc3c — __ZNSs6appendERKSs$shim
+#[doc(alias = "__ZNSs6appendERKSs$shim")]
+pub fn stub_f1fc3c() -> ! {
+    todo!("0xf1fc3c __ZNSs6appendERKSs$shim")
+}
+
+// 0xf1fc48 — __ZN3RBX4Http10MutexGuardD2Ev$shim
+#[doc(alias = "__ZN3RBX4Http10MutexGuardD2Ev$shim")]
+pub fn stub_f1fc48() -> ! {
+    todo!("0xf1fc48 __ZN3RBX4Http10MutexGuardD2Ev$shim")
+}
+
+// 0xf1fc54 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fc54() -> ! {
+    todo!("0xf1fc54 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsNS_10shared_ptrISiEEbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEENSG_IS6_EENSG_IbEESJ_NSG_ISC_EEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fc60 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEESF_NSE_IbEESG_NSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEESF_NSE_IbEESG_NSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fc60() -> ! {
+    todo!("0xf1fc60 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsSsbbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list5INS3_5valueISsEESF_NSE_IbEESG_NSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fc6c — __ZN5boost3_bi5list5INS0_5valueISsEES3_NS2_IbEES4_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsSsbbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i$shim
+// type: int __fastcall(std::string *)
+#[doc(alias = "__ZN5boost3_bi5list5INS0_5valueISsEES3_NS2_IbEES4_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsSsbbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i$shim")]
+pub fn stub_f1fc6c() -> ! {
+    todo!("0xf1fc6c __ZN5boost3_bi5list5INS0_5valueISsEES3_NS2_IbEES4_NS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsSsbbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i$shim")
+}
+
+// 0xf1fc78 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list3INS3_5valueISsEENSE_IbEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list3INS3_5valueISsEENSE_IbEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fc78() -> ! {
+    todo!("0xf1fc78 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvSsbNS_8functionIFvPSsPSt9exceptionEEEENS3_5list3INS3_5valueISsEENSE_IbEENSE_ISA_EEEEEEE7managerERKNS1_15function_bufferERSL_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fc84 — __ZN5boost3_bi5list3INS0_5valueISsEENS2_IbEENS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i$shim
+#[doc(alias = "__ZN5boost3_bi5list3INS0_5valueISsEENS2_IbEENS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i$shim")]
+pub fn stub_f1fc84() -> ! {
+    todo!("0xf1fc84 __ZN5boost3_bi5list3INS0_5valueISsEENS2_IbEENS2_INS_8functionIFvPSsPSt9exceptionEEEEEEclIPFvSsbSA_ENS0_5list1IRNS_10shared_ptrIN3RBX5mutexEEEEEEEvNS0_4typeIvEERT_RT0_i$shim")
+}
+
+// 0xf1fc90 — __ZN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEaSERKS4_$shim
+#[doc(alias = "__ZN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEaSERKS4_$shim")]
+pub fn stub_f1fc90() -> ! {
+    todo!("0xf1fc90 __ZN5boost10shared_ptrIN3RBX10Reflection13DescribedBaseEEaSERKS4_$shim")
+}
+
+// 0xf1fc9c — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX17HeartbeatInstanceERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_$shim
+#[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX17HeartbeatInstanceERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_$shim")]
+pub fn stub_f1fc9c() -> ! {
+    todo!("0xf1fc9c __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX17HeartbeatInstanceERKNS4_9HeartbeatEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_$shim")
+}
+
+// 0xf1fca8 — __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE7reallocEi$shim
+#[doc(alias = "__ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE7reallocEi$shim")]
+pub fn stub_f1fca8() -> ! {
+    todo!("0xf1fca8 __ZN3G3D5ArrayIPN3RBX11IndexedTreeELi10ELm32EE7reallocEi$shim")
+}
+
+// 0xf1fcb4 — __ZN5boost15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE12set_capacityEm$shim
+#[doc(alias = "__ZN5boost15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE12set_capacityEm$shim")]
+pub fn stub_f1fcb4() -> ! {
+    todo!("0xf1fcb4 __ZN5boost15circular_bufferIN3RBX18InterpolatedCFrame9FrameInfoESaIS3_EE12set_capacityEm$shim")
+}
+
+// 0xf1fcc0 — __ZNSt6vectorIN3RBX17KeywordFilterTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
+#[doc(alias = "__ZNSt6vectorIN3RBX17KeywordFilterTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
+pub fn stub_f1fcc0() -> ! {
+    todo!("0xf1fcc0 __ZNSt6vectorIN3RBX17KeywordFilterTypeESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")
+}
+
+// 0xf1fccc — __ZNSs6resizeEmc$shim
+#[doc(alias = "__ZNSs6resizeEmc$shim")]
+pub fn stub_f1fccc() -> ! {
+    todo!("0xf1fccc __ZNSs6resizeEmc$shim")
+}
+
+// 0xf1fcd8 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_$shim
+#[doc(alias = "__ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_$shim")]
+pub fn stub_f1fcd8() -> ! {
+    todo!("0xf1fcd8 __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSsEESsSsNS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSB_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS6_EEEEmRKT_RKT0_$shim")
+}
+
+// 0xf1fce4 — __ZN3RBX4Name9doDeclareILZNS_14sLuaWebServiceEEEERKS0_v$shim
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_14sLuaWebServiceEEEERKS0_v$shim")]
+pub fn stub_f1fce4() -> ! {
+    todo!("0xf1fce4 __ZN3RBX4Name9doDeclareILZNS_14sLuaWebServiceEEEERKS0_v$shim")
+}
+
+// 0xf1fcf0 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvSsEEESD_ENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSH_ISsEENSH_ISD_EESM_EEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvSsEEESD_ENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSH_ISsEENSH_ISD_EESM_EEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fcf0() -> ! {
+    todo!("0xf1fcf0 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvSsEEESD_ENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSH_ISsEENSH_ISD_EESM_EEEEE7managerERKNS1_15function_bufferERSQ_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fcfc — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_$shim
+#[doc(alias = "__ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_$shim")]
+pub fn stub_f1fcfc() -> ! {
+    todo!("0xf1fcfc __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_$shim")
+}
+
+// 0xf1fd08 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFviEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSJ_ISsEENSJ_ISD_EENSJ_ISF_EEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFviEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSJ_ISsEENSJ_ISD_EENSJ_ISF_EEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fd08() -> ! {
+    todo!("0xf1fd08 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFviEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSJ_ISsEENSJ_ISD_EENSJ_ISF_EEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fd14 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvbEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSJ_ISsEENSJ_ISD_EENSJ_ISF_EEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvbEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSJ_ISsEENSJ_ISD_EENSJ_ISF_EEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fd14() -> ! {
+    todo!("0xf1fd14 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvbEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSJ_ISsEENSJ_ISD_EENSJ_ISF_EEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fd20 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt3mapISsNS6_10Reflection7VariantESt4lessISsESaISt4pairIKSsSF_EEEEEEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSW_ISsEENSW_ISQ_EENSW_ISS_EEEEEEE7managerERKNS1_15function_bufferERS16_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt3mapISsNS6_10Reflection7VariantESt4lessISsESaISt4pairIKSsSF_EEEEEEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSW_ISsEENSW_ISQ_EENSW_ISS_EEEEEEE7managerERKNS1_15function_bufferERS16_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fd20() -> ! {
+    todo!("0xf1fd20 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt3mapISsNS6_10Reflection7VariantESt4lessISsESaISt4pairIKSsSF_EEEEEEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSW_ISsEENSW_ISQ_EENSW_ISS_EEEEEEE7managerERKNS1_15function_bufferERS16_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fd2c — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fd2c() -> ! {
+    todo!("0xf1fd2c __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvNS_10shared_ptrIKSt3mapISsN3RBX10Reflection7VariantESt4lessISsESaISt4pairIKSsSB_EEEEEEEENS3_5list1INS3_5valueISK_EEEEEEE7managerERKNS1_15function_bufferERST_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fd38 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt6vectorINS6_10Reflection7VariantESaISF_EEEEEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSR_ISsEENSR_ISL_EENSR_ISN_EEEEEEE7managerERKNS1_15function_bufferERS11_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt6vectorINS6_10Reflection7VariantESaISF_EEEEEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSR_ISsEENSR_ISL_EENSR_ISN_EEEEEEE7managerERKNS1_15function_bufferERS11_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fd38() -> ! {
+    todo!("0xf1fd38 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX13LuaWebServiceEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS_10shared_ptrIKSt6vectorINS6_10Reflection7VariantESaISF_EEEEEEENSB_IFvSsEEEENS3_5list5INS3_5valueIS8_EENS_3argILi1EEENSR_ISsEENSR_ISL_EENSR_ISN_EEEEEEE7managerERKNS1_15function_bufferERS11_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fd44 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_$shim
+#[doc(alias = "__ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_$shim")]
+pub fn stub_f1fd44() -> ! {
+    todo!("0xf1fd44 __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_$shim")
+}
+
+// 0xf1fd50 — __ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE23removeLeastRecentlyUsedEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE23removeLeastRecentlyUsedEv$shim")]
+pub fn stub_f1fd50() -> ! {
+    todo!("0xf1fd50 __ZN3RBX8LRUCacheISsNS_13LuaWebService26CachedRawLuaWebServiceInfoEE23removeLeastRecentlyUsedEv$shim")
+}
+
+// 0xf1fd5c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_$shim
+// type: int()
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_$shim")]
+pub fn stub_f1fd5c() -> ! {
+    todo!("0xf1fd5c __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_$shim")
+}
+
+// 0xf1fd68 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim")]
+pub fn stub_f1fd68() -> ! {
+    todo!("0xf1fd68 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim")
+}
+
+// 0xf1fd74 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim
+#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")]
+pub fn stub_f1fd74() -> ! {
+    todo!("0xf1fd74 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService26CachedRawLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")
+}
+
+// 0xf1fd80 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_$shim
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_$shim")]
+pub fn stub_f1fd80() -> ! {
+    todo!("0xf1fd80 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_$shim")
+}
+
+// 0xf1fd8c — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim")]
+pub fn stub_f1fd8c() -> ! {
+    todo!("0xf1fd8c __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim")
+}
+
+// 0xf1fd98 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim
+#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")]
+pub fn stub_f1fd98() -> ! {
+    todo!("0xf1fd98 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX13LuaWebService23CachedLuaWebServiceInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")
+}
+
+// 0xf1fda4 — _acosf$shim
+// type: float __cdecl(float)
+#[doc(alias = "_acosf$shim")]
+pub fn stub_f1fda4() -> ! {
+    todo!("0xf1fda4 _acosf$shim")
+}
+
+// 0xf1fdb0 — __ZNSt6vectorIN3G3D7Vector2ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
+#[doc(alias = "__ZNSt6vectorIN3G3D7Vector2ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
+pub fn stub_f1fdb0() -> ! {
+    todo!("0xf1fdb0 __ZNSt6vectorIN3G3D7Vector2ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")
+}
+
+// 0xf1fdbc — __ZNSt6vectorIN3G3D7Vector3ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim
+#[doc(alias = "__ZNSt6vectorIN3G3D7Vector3ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")]
+pub fn stub_f1fdbc() -> ! {
+    todo!("0xf1fdbc __ZNSt6vectorIN3G3D7Vector3ESaIS1_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS1_S3_EERKS1_$shim")
+}
+
+// 0xf1fdc8 — _CC_MD5_Update$shim
+// type: int __cdecl(CC_MD5_CTX *c, const void *data, CC_LONG len)
+#[doc(alias = "_CC_MD5_Update$shim")]
+pub fn stub_f1fdc8() -> ! {
+    todo!("0xf1fdc8 _CC_MD5_Update$shim")
+}
+
+// 0xf1fdd4 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim")]
+pub fn stub_f1fdd4() -> ! {
+    todo!("0xf1fdd4 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim")
+}
+
+// 0xf1fde0 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim
+#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")]
+pub fn stub_f1fde0() -> ! {
+    todo!("0xf1fde0 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")
+}
+
+// 0xf1fdec — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSE_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS9_EEEEmRKT_RKT0_$shim
+#[doc(alias = "__ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSE_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS9_EEEEmRKT_RKT0_$shim")]
+pub fn stub_f1fdec() -> ! {
+    todo!("0xf1fdec __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsPN3RBX4NameEEESsS8_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSE_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeIS9_EEEEmRKT_RKT0_$shim")
+}
+
+// 0xf1fdf8 — _pthread_getspecific$shim
+// type: void *__cdecl(pthread_key_t)
+#[doc(alias = "_pthread_getspecific$shim")]
+pub fn stub_f1fdf8() -> ! {
+    todo!("0xf1fdf8 _pthread_getspecific$shim")
+}
+
+// 0xf1fe04 — __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX13RunTransitionEEEclES3_$shim
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFvN3RBX13RunTransitionEEEclES3_$shim")]
+pub fn stub_f1fe04() -> ! {
+    todo!("0xf1fe04 __ZN3rbx7signals16signal_with_argsILi1EFvN3RBX13RunTransitionEEEclES3_$shim")
+}
+
+// 0xf1fe10 — __ZN3RBX4Name7declareILZNS_7sCameraEEEERKS0_v$shim
+#[doc(alias = "__ZN3RBX4Name7declareILZNS_7sCameraEEEERKS0_v$shim")]
+pub fn stub_f1fe10() -> ! {
+    todo!("0xf1fe10 __ZN3RBX4Name7declareILZNS_7sCameraEEEERKS0_v$shim")
+}
+
+// 0xf1fe1c — __ZN3RBX4Name9doDeclareILZNS_7sCameraEEEERKS0_v$shim
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_7sCameraEEEERKS0_v$shim")]
+pub fn stub_f1fe1c() -> ! {
+    todo!("0xf1fe1c __ZN3RBX4Name9doDeclareILZNS_7sCameraEEEERKS0_v$shim")
+}
+
+// 0xf1fe28 — __ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED2Ev$shim
+#[doc(alias = "__ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED2Ev$shim")]
+pub fn stub_f1fe28() -> ! {
+    todo!("0xf1fe28 __ZN5boost16exception_detail19error_info_injectorINS_17bad_function_callEED2Ev$shim")
+}
+
+// 0xf1fe34 — __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE24safe_static_do_get_mutexEv$shim
+#[doc(alias = "__ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE24safe_static_do_get_mutexEv$shim")]
+pub fn stub_f1fe34() -> ! {
+    todo!("0xf1fe34 __ZN3rbx7signals6signalIFvN3RBX13RunTransitionEEE24safe_static_do_get_mutexEv$shim")
+}
+
+// 0xf1fe40 — __ZN3rbx7signals6signalIFvddEE24safe_static_do_get_mutexEv$shim
+#[doc(alias = "__ZN3rbx7signals6signalIFvddEE24safe_static_do_get_mutexEv$shim")]
+pub fn stub_f1fe40() -> ! {
+    todo!("0xf1fe40 __ZN3rbx7signals6signalIFvddEE24safe_static_do_get_mutexEv$shim")
+}
+
+// 0xf1fe4c — __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE24safe_static_do_get_mutexEv$shim
+// type: int()
+#[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE24safe_static_do_get_mutexEv$shim")]
+pub fn stub_f1fe4c() -> ! {
+    todo!("0xf1fe4c __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE24safe_static_do_get_mutexEv$shim")
+}
+
+// 0xf1fe58 — __ZN3rbx7signals6signalIFvdEE24safe_static_do_get_mutexEv$shim
+#[doc(alias = "__ZN3rbx7signals6signalIFvdEE24safe_static_do_get_mutexEv$shim")]
+pub fn stub_f1fe58() -> ! {
+    todo!("0xf1fe58 __ZN3rbx7signals6signalIFvdEE24safe_static_do_get_mutexEv$shim")
+}
+
+// 0xf1fe64 — __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE24safe_static_do_get_mutexEv$shim
+#[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE24safe_static_do_get_mutexEv$shim")]
+pub fn stub_f1fe64() -> ! {
+    todo!("0xf1fe64 __ZN3rbx7signals6signalIFvRKN3RBX9HeartbeatEEE24safe_static_do_get_mutexEv$shim")
+}
+
+// 0xf1fe70 — __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE5cloneEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE5cloneEv$shim")]
+pub fn stub_f1fe70() -> ! {
+    todo!("0xf1fe70 __ZNK5boost16exception_detail10clone_implINS0_19error_info_injectorINS_12bad_weak_ptrEEEE5cloneEv$shim")
+}
+
+// 0xf1fe7c — __ZN3rbx7signals16signal_with_argsILi1EFvdEEclEd$shim
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "__ZN3rbx7signals16signal_with_argsILi1EFvdEEclEd$shim")]
+pub fn stub_f1fe7c() -> ! {
+    todo!("0xf1fe7c __ZN3rbx7signals16signal_with_argsILi1EFvdEEclEd$shim")
+}
+
+// 0xf1fe88 — __ZN3rbx7signals6signalIFvdEE13disconnectAllEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN3rbx7signals6signalIFvdEE13disconnectAllEv$shim")]
+pub fn stub_f1fe88() -> ! {
+    todo!("0xf1fe88 __ZN3rbx7signals6signalIFvdEE13disconnectAllEv$shim")
+}
+
+// 0xf1fe94 — __ZNSt8bad_castD2Ev$shim
+// type: void __cdecl(std::bad_cast *__hidden this)
+#[doc(alias = "__ZNSt8bad_castD2Ev$shim")]
+pub fn stub_f1fe94() -> ! {
+    todo!("0xf1fe94 __ZNSt8bad_castD2Ev$shim")
+}
+
+// 0xf1fea0 — __ZN5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED2Ev$shim
+#[doc(alias = "__ZN5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED2Ev$shim")]
+pub fn stub_f1fea0() -> ! {
+    todo!("0xf1fea0 __ZN5boost16exception_detail19error_info_injectorIN3rbx22bad_placement_any_castEED2Ev$shim")
+}
+
+// 0xf1feac — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1feac() -> ! {
+    todo!("0xf1feac __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX10Reflection18GenericSlotWrapperERKdEENS3_5list2INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEEEEEEE7managerERKNS1_15function_bufferERSN_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1feb8 — __ZNK5boost9function1IvdEclEd$shim
+#[doc(alias = "__ZNK5boost9function1IvdEclEd$shim")]
+pub fn stub_f1feb8() -> ! {
+    todo!("0xf1feb8 __ZNK5boost9function1IvdEclEd$shim")
+}
+
+// 0xf1fec4 — __ZN3rbx7signals6signalIFvdEE4slot24safe_static_do_get_mutexEv$shim
+#[doc(alias = "__ZN3rbx7signals6signalIFvdEE4slot24safe_static_do_get_mutexEv$shim")]
+pub fn stub_f1fec4() -> ! {
+    todo!("0xf1fec4 __ZN3rbx7signals6signalIFvdEE4slot24safe_static_do_get_mutexEv$shim")
+}
+
+// 0xf1fed0 — __ZN3rbx7signals6signalIFvddEE13disconnectAllEv$shim
+#[doc(alias = "__ZN3rbx7signals6signalIFvddEE13disconnectAllEv$shim")]
+pub fn stub_f1fed0() -> ! {
+    todo!("0xf1fed0 __ZN3rbx7signals6signalIFvddEE13disconnectAllEv$shim")
+}
+
+// 0xf1fedc — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1fedc() -> ! {
+    todo!("0xf1fedc __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvNS_4_mfi3mf2IvN3RBX10Reflection18GenericSlotWrapperERKdSB_EENS3_5list3INS3_5valueINS_10shared_ptrIS9_EEEENS_3argILi1EEENSI_ILi2EEEEEEEE7managerERKNS1_15function_bufferERSO_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1fee8 — __ZN3rbx7signals6signalIFvddEE4slot24safe_static_do_get_mutexEv$shim
+#[doc(alias = "__ZN3rbx7signals6signalIFvddEE4slot24safe_static_do_get_mutexEv$shim")]
+pub fn stub_f1fee8() -> ! {
+    todo!("0xf1fee8 __ZN3rbx7signals6signalIFvddEE4slot24safe_static_do_get_mutexEv$shim")
+}
+
+// 0xf1fef4 — __ZN3RBX8LRUCacheISsSsE23removeLeastRecentlyUsedEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN3RBX8LRUCacheISsSsE23removeLeastRecentlyUsedEv$shim")]
+pub fn stub_f1fef4() -> ! {
+    todo!("0xf1fef4 __ZN3RBX8LRUCacheISsSsE23removeLeastRecentlyUsedEv$shim")
+}
+
+// 0xf1ff00 — __ZN3RBX25ScriptInformationProviderD2Ev$shim
+// type: void __fastcall(RBX::ScriptInformationProvider *__hidden this)
+#[doc(alias = "__ZN3RBX25ScriptInformationProviderD2Ev$shim")]
+pub fn stub_f1ff00() -> ! {
+    todo!("0xf1ff00 __ZN3RBX25ScriptInformationProviderD2Ev$shim")
+}
+
+// 0xf1ff0c — __ZN3RBX4Name9doDeclareILZNS_26sScriptInformationProviderEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_26sScriptInformationProviderEEEERKS0_v$shim")]
+pub fn stub_f1ff0c() -> ! {
+    todo!("0xf1ff0c __ZN3RBX4Name9doDeclareILZNS_26sScriptInformationProviderEEEERKS0_v$shim")
+}
+
+// 0xf1ff18 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS7_13RequestResultEbbfbEEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSI_ISsEENSI_ISE_EEEEEEE7managerERKNS1_15function_bufferERSR_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int(void)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS7_13RequestResultEbbfbEEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSI_ISsEENSI_ISE_EEEEEEE7managerERKNS1_15function_bufferERSR_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1ff18() -> ! {
+    todo!("0xf1ff18 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tIvPFvNS_8weak_ptrIN3RBX25ScriptInformationProviderEEENS6_14AsyncHttpQueue13RequestResultESsNS_8functionIFvNS7_13RequestResultEbbfbEEEENS3_5list4INS3_5valueIS8_EENS_3argILi1EEENSI_ISsEENSI_ISE_EEEEEEE7managerERKNS1_15function_bufferERSR_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1ff24 — __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEENS3_5list5INS3_5valueIS9_EENSD_IbEESF_NSD_IfEESF_EEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim
+// type: int(void)
+#[doc(alias = "__ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEENS3_5list5INS3_5valueIS9_EENSD_IbEESF_NSD_IfEESF_EEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")]
+pub fn stub_f1ff24() -> ! {
+    todo!("0xf1ff24 __ZN5boost6detail8function15functor_managerINS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvN3RBX25ScriptInformationProvider13RequestResultEbbfbEEENS3_5list5INS3_5valueIS9_EENSD_IbEESF_NSD_IfEESF_EEEEE7managerERKNS1_15function_bufferERSK_NS1_30functor_manager_operation_typeEN4mpl_5bool_ILb0EEE$shim")
+}
+
+// 0xf1ff30 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISA_EESK_$shim
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISA_EESK_$shim")]
+pub fn stub_f1ff30() -> ! {
+    todo!("0xf1ff30 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISA_EESK_$shim")
+}
+
+// 0xf1ff3c — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISA_EEEEmRKT_RKT0_$shim
+// type: int()
+#[doc(alias = "__ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISA_EEEEmRKT_RKT0_$shim")]
+pub fn stub_f1ff3c() -> ! {
+    todo!("0xf1ff3c __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSF_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISA_EEEEmRKT_RKT0_$shim")
+}
+
+// 0xf1ff48 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim")]
+pub fn stub_f1ff48() -> ! {
+    todo!("0xf1ff48 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim")
+}
+
+// 0xf1ff54 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")]
+pub fn stub_f1ff54() -> ! {
+    todo!("0xf1ff54 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImSsEEEEESsS9_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")
+}
+
+// 0xf1ff60 — __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_$shim
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "__ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_$shim")]
+pub fn stub_f1ff60() -> ! {
+    todo!("0xf1ff60 __ZNK5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14find_node_implISsSI_EENS0_15iterator_detail8iteratorINS1_8ptr_nodeISD_EEEEmRKT_RKT0_$shim")
+}
+
+// 0xf1ff6c — __ZN3RBX8LRUCacheISsNS_25ScriptInformationProvider16CachedScriptInfoEE23removeLeastRecentlyUsedEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN3RBX8LRUCacheISsNS_25ScriptInformationProvider16CachedScriptInfoEE23removeLeastRecentlyUsedEv$shim")]
+pub fn stub_f1ff6c() -> ! {
+    todo!("0xf1ff6c __ZN3RBX8LRUCacheISsNS_25ScriptInformationProvider16CachedScriptInfoEE23removeLeastRecentlyUsedEv$shim")
+}
+
+// 0xf1ff78 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_$shim
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_$shim")]
+pub fn stub_f1ff78() -> ! {
+    todo!("0xf1ff78 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11erase_nodesEPNS1_8ptr_nodeISD_EESN_$shim")
+}
+
+// 0xf1ff84 — __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim")]
+pub fn stub_f1ff84() -> ! {
+    todo!("0xf1ff84 __ZN5boost9unordered6detail10table_implINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE11rehash_implEm$shim")
+}
+
+// 0xf1ff90 — __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim
+// type: int __fastcall(_DWORD, _DWORD)
+#[doc(alias = "__ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")]
+pub fn stub_f1ff90() -> ! {
+    todo!("0xf1ff90 __ZN5boost9unordered6detail5tableINS1_3mapISaISt4pairIKSsSt14_List_iteratorIS4_ISsS4_ImN3RBX25ScriptInformationProvider16CachedScriptInfoEEEEEESsSC_NS_4hashISsEESt8equal_toISsEEEE14create_bucketsEm$shim")
+}
+
+// 0xf1ff9c — __ZN3RBX17HeartbeatInstanceD2Ev$shim
+// type: void __fastcall(RBX::HeartbeatInstance *__hidden this)
+#[doc(alias = "__ZN3RBX17HeartbeatInstanceD2Ev$shim")]
+pub fn stub_f1ff9c() -> ! {
+    todo!("0xf1ff9c __ZN3RBX17HeartbeatInstanceD2Ev$shim")
+}
+
+// 0xf20074 — __ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EE7reallocEi$shim
+// type: int(void)
+#[doc(alias = "__ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EE7reallocEi$shim")]
+pub fn stub_f20074() -> ! {
+    todo!("0xf20074 __ZN3G3D5ArrayIPN3RBX12SpanningEdgeELi10ELm32EE7reallocEi$shim")
+}
+
+// 0xf20080 — __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8ISteppedERKNS4_7SteppedEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8ISteppedERKNS4_7SteppedEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_$shim")]
+pub fn stub_f20080() -> ! {
+    todo!("0xf20080 __ZN5boost3_bi6bind_tIvNS_4_mfi3mf1IvN3RBX8ISteppedERKNS4_7SteppedEEENS0_5list2INS0_5valueIPS5_EENS_3argILi1EEEEEEclIS6_EEvRKT_$shim")
+}
+
+// 0xf2008c — __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slot24safe_static_do_get_mutexEv$shim
+// type: int()
+#[doc(alias = "__ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slot24safe_static_do_get_mutexEv$shim")]
+pub fn stub_f2008c() -> ! {
+    todo!("0xf2008c __ZN3rbx7signals6signalIFvRKN3RBX7SteppedEEE4slot24safe_static_do_get_mutexEv$shim")
+}
+
+// 0xf20098 — __ZN5boost6thread4joinEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN5boost6thread4joinEv$shim")]
+pub fn stub_f20098() -> ! {
+    todo!("0xf20098 __ZN5boost6thread4joinEv$shim")
+}
+
+// 0xf200a4 — __ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_$shim
+// type: int(void)
+#[doc(alias = "__ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_$shim")]
+pub fn stub_f200a4() -> ! {
+    todo!("0xf200a4 __ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS3_S5_EEmRKS3_$shim")
+}
+
+// 0xf200b0 — __ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EE15_M_erase_at_endEPS3_$shim
+// type: int(void)
+#[doc(alias = "__ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EE15_M_erase_at_endEPS3_$shim")]
+pub fn stub_f200b0() -> ! {
+    todo!("0xf200b0 __ZNSt6vectorIN5boost10shared_ptrINS0_6threadEEESaIS3_EE15_M_erase_at_endEPS3_$shim")
+}
+
+// 0xf200bc — __ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS4_S6_EEmRKS4_$shim
+// type: int(void)
+#[doc(alias = "__ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS4_S6_EEmRKS4_$shim")]
+pub fn stub_f200bc() -> ! {
+    todo!("0xf200bc __ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPS4_S6_EEmRKS4_$shim")
+}
+
+// 0xf200c8 — __ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EE15_M_erase_at_endEPS4_$shim
+// type: int(void)
+#[doc(alias = "__ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EE15_M_erase_at_endEPS4_$shim")]
+pub fn stub_f200c8() -> ! {
+    todo!("0xf200c8 __ZNSt6vectorIN5boost10shared_ptrIN3RBX5mutexEEESaIS4_EE15_M_erase_at_endEPS4_$shim")
+}
+
+// 0xf200d4 — __ZNSt6vectorIN3RBX18PriorityThreadPool12PriorityTaskESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim
+// type: int __fastcall(_DWORD, _DWORD, _DWORD)
+#[doc(alias = "__ZNSt6vectorIN3RBX18PriorityThreadPool12PriorityTaskESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")]
+pub fn stub_f200d4() -> ! {
+    todo!("0xf200d4 __ZNSt6vectorIN3RBX18PriorityThreadPool12PriorityTaskESaIS2_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS2_S4_EERKS2_$shim")
+}
+
+// 0xf200e0 — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE16_M_push_back_auxERKS7_$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE16_M_push_back_auxERKS7_$shim")]
+pub fn stub_f200e0() -> ! {
+    todo!("0xf200e0 __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE16_M_push_back_auxERKS7_$shim")
+}
+
+// 0xf200ec — __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE17_M_reallocate_mapEmb$shim
+// type: int(void)
+#[doc(alias = "__ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE17_M_reallocate_mapEmb$shim")]
+pub fn stub_f200ec() -> ! {
+    todo!("0xf200ec __ZNSt5dequeIN5boost8functionIFvNS0_10shared_ptrIN3RBX5mutexEEEEEESaIS7_EE17_M_reallocate_mapEmb$shim")
+}
+
+// 0xf200f8 — __ZN3RBX14BaseThreadPool8PoolDataD2Ev$shim
+// type: void __fastcall(RBX::BaseThreadPool::PoolData *__hidden this)
+#[doc(alias = "__ZN3RBX14BaseThreadPool8PoolDataD2Ev$shim")]
+pub fn stub_f200f8() -> ! {
+    todo!("0xf200f8 __ZN3RBX14BaseThreadPool8PoolDataD2Ev$shim")
+}
+
+// 0xf20104 — __ZNK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7Creator12getClassNameEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7Creator12getClassNameEv$shim")]
+pub fn stub_f20104() -> ! {
+    todo!("0xf20104 __ZNK3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7Creator12getClassNameEv$shim")
+}
+
+// 0xf20110 — __ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD2Ev$shim
+// type: int(void)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD2Ev$shim")]
+pub fn stub_f20110() -> ! {
+    todo!("0xf20110 __ZN3RBX14FactoryProductINS_12AccoutrementENS_8InstanceELZNS_13sAccoutrementEES2_E7CreatorD2Ev$shim")
+}
+
+// 0xf2011c — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD2Ev$shim
+// type: int()
+#[doc(alias = "__ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD2Ev$shim")]
+pub fn stub_f2011c() -> ! {
+    todo!("0xf2011c __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7CreatorD2Ev$shim")
+}
+
+// 0xf20128 — __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7Creator12getClassNameEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7Creator12getClassNameEv$shim")]
+pub fn stub_f20128() -> ! {
+    todo!("0xf20128 __ZNK3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEE7Creator12getClassNameEv$shim")
+}
+
+// 0xf20134 — __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev$shim")]
+pub fn stub_f20134() -> ! {
+    todo!("0xf20134 __ZN3RBX14FactoryProductINS_3HatENS_12AccoutrementELZNS_4sHatEENS_8InstanceEED0Ev$shim")
+}
+
+// 0xf20140 — __ZN3RBX4Name9doDeclareILZNS_4sHatEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_4sHatEEEERKS0_v$shim")]
+pub fn stub_f20140() -> ! {
+    todo!("0xf20140 __ZN3RBX4Name9doDeclareILZNS_4sHatEEEERKS0_v$shim")
+}
+
+// 0xf2014c — __ZN3RBX4Name9doDeclareILZNS_13sAccoutrementEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_13sAccoutrementEEEERKS0_v$shim")]
+pub fn stub_f2014c() -> ! {
+    todo!("0xf2014c __ZN3RBX4Name9doDeclareILZNS_13sAccoutrementEEEERKS0_v$shim")
+}
+
+// 0xf20158 — __ZN3RBX4Name9doDeclareILZNS_12sPVAdornmentEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_12sPVAdornmentEEEERKS0_v$shim")]
+pub fn stub_f20158() -> ! {
+    todo!("0xf20158 __ZN3RBX4Name9doDeclareILZNS_12sPVAdornmentEEEERKS0_v$shim")
+}
+
+// 0xf20164 — __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim")]
+pub fn stub_f20164() -> ! {
+    todo!("0xf20164 __ZNK3RBX10Reflection17RefPropDescriptorINS_11PVAdornmentENS_10PVInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim")
+}
+
+// 0xf20170 — __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim")]
+pub fn stub_f20170() -> ! {
+    todo!("0xf20170 __ZNK3RBX10Reflection17RefPropDescriptorINS_13PartAdornmentENS_12PartInstanceEE11assignIDREFEPNS0_13DescribedBaseERKNS_14InstanceHandleE$shim")
+}
+
+// 0xf2017c — __ZNK3RBX15ServiceProvider6createINS_24KeyframeSequenceProviderEEEPT_v$shim
+// type: int(void)
+#[doc(alias = "__ZNK3RBX15ServiceProvider6createINS_24KeyframeSequenceProviderEEEPT_v$shim")]
+pub fn stub_f2017c() -> ! {
+    todo!("0xf2017c __ZNK3RBX15ServiceProvider6createINS_24KeyframeSequenceProviderEEEPT_v$shim")
+}
+
+// 0xf20188 — __ZNK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E7Creator12getClassNameEv$shim
+// type: int __fastcall(_DWORD)
+#[doc(alias = "__ZNK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E7Creator12getClassNameEv$shim")]
+pub fn stub_f20188() -> ! {
+    todo!("0xf20188 __ZNK3RBX14FactoryProductINS_9AnimationENS_8InstanceELZNS_10sAnimationEES2_E7Creator12getClassNameEv$shim")
+}
+
+// 0xf20194 — __ZN3RBX4Name9doDeclareILZNS_15sAnimationTrackEEEERKS0_v$shim
+// type: int()
+#[doc(alias = "__ZN3RBX4Name9doDeclareILZNS_15sAnimationTrackEEEERKS0_v$shim")]
+pub fn stub_f20194() -> ! {
+    todo!("0xf20194 __ZN3RBX4Name9doDeclareILZNS_15sAnimationTrackEEEERKS0_v$shim")
+}
