@@ -291,5 +291,6 @@ pub mod generated_core_shard_io;
 pub mod generated_core_shard_ip;
 pub mod generated_core_shard_iq;
 pub mod generated_core_shard_ir;
+pub mod generated_core_shard_is;
 pub mod generated_core_shard_B;
 pub mod generated_gap_low;
