@@ -305,7 +305,7 @@ pub fn stub_4f75a4() -> ! {
 }
 
 // 0x4f7894 — __GLOBAL__I_a_197
-#[doc(alias = "`global constructor keyed to'_a_197")]
+#[doc(alias = "global constructor keyed to_a_197")]
 // was: `global constructor keyed to'_a_197
 pub fn stub_4f7894() -> ! {
     todo!("0x4f7894 `global constructor keyed to'_a_197")
@@ -375,14 +375,14 @@ pub fn stub_4f8824() -> ! {
 }
 
 // 0x4f8838 — __ZThn32_N3RBX10ForceFieldD1Ev
-#[doc(alias = "`non-virtual thunk to'RBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 // was: `non-virtual thunk to'RBX::ForceField::~ForceField()
 pub fn stub_4f8838() -> ! {
     todo!("0x4f8838 `non-virtual thunk to'RBX::ForceField::~ForceField()")
 }
 
 // 0x4f8840 — __ZThn32_N3RBX10ForceFieldD0Ev
-#[doc(alias = "`non-virtual thunk to'RBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 // was: `non-virtual thunk to'RBX::ForceField::~ForceField()
 pub fn stub_4f8840() -> ! {
     todo!("0x4f8840 `non-virtual thunk to'RBX::ForceField::~ForceField()")
@@ -396,28 +396,28 @@ pub fn stub_4f8848() -> ! {
 }
 
 // 0x4f8858 — __ZThn36_N3RBX10ForceFieldD1Ev
-#[doc(alias = "`non-virtual thunk to'RBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 // was: `non-virtual thunk to'RBX::ForceField::~ForceField()
 pub fn stub_4f8858() -> ! {
     todo!("0x4f8858 `non-virtual thunk to'RBX::ForceField::~ForceField()")
 }
 
 // 0x4f8860 — __ZThn36_N3RBX10ForceFieldD0Ev
-#[doc(alias = "`non-virtual thunk to'RBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 // was: `non-virtual thunk to'RBX::ForceField::~ForceField()
 pub fn stub_4f8860() -> ! {
     todo!("0x4f8860 `non-virtual thunk to'RBX::ForceField::~ForceField()")
 }
 
 // 0x4f886c — __ZThn116_N3RBX10ForceFieldD1Ev
-#[doc(alias = "`non-virtual thunk to'RBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 // was: `non-virtual thunk to'RBX::ForceField::~ForceField()
 pub fn stub_4f886c() -> ! {
     todo!("0x4f886c `non-virtual thunk to'RBX::ForceField::~ForceField()")
 }
 
 // 0x4f8874 — __ZThn116_N3RBX10ForceFieldD0Ev
-#[doc(alias = "`non-virtual thunk to'RBX::ForceField::~ForceField()")]
+#[doc(alias = "non-virtual thunk toRBX::ForceField::~ForceField()")]
 // was: `non-virtual thunk to'RBX::ForceField::~ForceField()
 pub fn stub_4f8874() -> ! {
     todo!("0x4f8874 `non-virtual thunk to'RBX::ForceField::~ForceField()")
@@ -522,7 +522,7 @@ pub fn stub_4f8ce8() -> ! {
 }
 
 // 0x4f8e28 — __GLOBAL__I_a_198
-#[doc(alias = "`global constructor keyed to'_a_198")]
+#[doc(alias = "global constructor keyed to_a_198")]
 // was: `global constructor keyed to'_a_198
 pub fn stub_4f8e28() -> ! {
     todo!("0x4f8e28 `global constructor keyed to'_a_198")
