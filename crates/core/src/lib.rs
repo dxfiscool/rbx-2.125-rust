@@ -340,3 +340,5 @@ pub mod generated_core_shard_kj;
 pub mod generated_core_shard_kl;
 pub mod generated_core_shard_kk;
 pub mod generated_core_shard_km;
+pub mod generated_core_shard_kn;
+pub mod generated_core_shard_ko;

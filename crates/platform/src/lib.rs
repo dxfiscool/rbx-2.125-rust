@@ -225,3 +225,4 @@ pub mod generated_next_aa;
 pub mod generated_next_ab;
 pub mod generated_next_ac;
 pub mod generated_plat_ad;
+pub mod generated_plat_ae;
