@@ -276,3 +276,4 @@ pub mod generated_core_shard_hz;
 pub mod generated_core_shard_ia;
 pub mod generated_core_shard_ib;
 pub mod generated_core_shard_ic;
+pub mod generated_core_shard_id;
