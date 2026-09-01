@@ -142,3 +142,4 @@ pub mod generated_core_shard_cw;
 pub mod generated_core_shard_cx;
 pub mod generated_core_shard_cy;
 pub mod generated_core_shard_cz;
+pub mod generated_core_shard_da;
