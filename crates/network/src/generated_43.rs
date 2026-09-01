@@ -148,14 +148,14 @@ pub fn stub_3ac13c() -> ! {
 
 // 0x3ac140 — __ZThn32_N3RBX11HandlesBaseD1Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 pub fn stub_3ac140() -> ! {
     todo!("0x3ac140 ``non-virtual thunk to'RBX::HandlesBase::~HandlesBase()`")
 }
 
 // 0x3ac148 — __ZThn32_N3RBX11HandlesBaseD0Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 pub fn stub_3ac148() -> ! {
     todo!("0x3ac148 ``non-virtual thunk to'RBX::HandlesBase::~HandlesBase()`")
 }
@@ -169,14 +169,14 @@ pub fn stub_3ac1ec() -> ! {
 
 // 0x3ac1f0 — __ZThn36_N3RBX11HandlesBaseD1Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 pub fn stub_3ac1f0() -> ! {
     todo!("0x3ac1f0 ``non-virtual thunk to'RBX::HandlesBase::~HandlesBase()`")
 }
 
 // 0x3ac1f8 — __ZThn36_N3RBX11HandlesBaseD0Ev
 // type: void __fastcall(RBX::HandlesBase *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 pub fn stub_3ac1f8() -> ! {
     todo!("0x3ac1f8 ``non-virtual thunk to'RBX::HandlesBase::~HandlesBase()`")
 }
@@ -223,14 +223,14 @@ pub fn stub_3ac5b0() -> ! {
 
 // 0x3ac5b4 — __ZThn32_N3RBX13PartAdornmentD1Ev
 // type: void __fastcall(RBX::PartAdornment *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
+#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 pub fn stub_3ac5b4() -> ! {
     todo!("0x3ac5b4 ``non-virtual thunk to'RBX::PartAdornment::~PartAdornment()`")
 }
 
 // 0x3ac6fc — __ZThn32_N3RBX13PartAdornmentD0Ev
 // type: void __fastcall(RBX::PartAdornment *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
+#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 pub fn stub_3ac6fc() -> ! {
     todo!("0x3ac6fc ``non-virtual thunk to'RBX::PartAdornment::~PartAdornment()`")
 }
@@ -244,14 +244,14 @@ pub fn stub_3ac858() -> ! {
 
 // 0x3ac85c — __ZThn36_N3RBX13PartAdornmentD1Ev
 // type: void __fastcall(RBX::PartAdornment *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
+#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 pub fn stub_3ac85c() -> ! {
     todo!("0x3ac85c ``non-virtual thunk to'RBX::PartAdornment::~PartAdornment()`")
 }
 
 // 0x3ac9a4 — __ZThn36_N3RBX13PartAdornmentD0Ev
 // type: void __fastcall(RBX::PartAdornment *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
+#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 pub fn stub_3ac9a4() -> ! {
     todo!("0x3ac9a4 ``non-virtual thunk to'RBX::PartAdornment::~PartAdornment()`")
 }
@@ -438,7 +438,7 @@ pub fn stub_3adf40() -> ! {
 
 // 0x3adf48 — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEffEE4slotEN5boost8functionIS6_EELi3ES6_E4callES5_ff
 // type: int __fastcall(int)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)")]
 pub fn stub_3adf48() -> ! {
     todo!("0x3adf48 ``non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis,float,float)>::slot,boost::function<void ()(G3D::Vector3::Axis,float,float)>,3,void ()(G3D::Vector3::Axis,float,float)>::call(G3D::Vector3::Axis,float,float)`")
 }
@@ -599,7 +599,7 @@ pub fn stub_3af664() -> ! {
 
 // 0x3af66c — __ZThn4_N3rbx8callableINS_7signals6signalIFvN3G3D7Vector34AxisEEE4slotEN5boost8functionIS6_EELi1ES6_E4callES5_
 // type: int __fastcall(int)
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)")]
 pub fn stub_3af66c() -> ! {
     todo!("0x3af66c ``non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(G3D::Vector3::Axis)>::slot,boost::function<void ()(G3D::Vector3::Axis)>,1,void ()(G3D::Vector3::Axis)>::call(G3D::Vector3::Axis)`")
 }
@@ -745,7 +745,7 @@ pub fn stub_3b00f0() -> ! {
 }
 
 // 0x3b081c — __GLOBAL__I_a_159
-#[doc(alias = "`global constructor keyed to_a_159")]
+#[doc(alias = "global constructor keyed to_a_159")]
 pub fn stub_3b081c() -> ! {
     todo!("0x3b081c ``global constructor keyed to'_a_159`")
 }
@@ -773,7 +773,7 @@ pub fn stub_3b1014() -> ! {
 
 // 0x3b1218 — __ZThn148_N3RBX8Backpack15scriptShouldRunEPNS_10BaseScriptE
 // type: int __fastcall(RBX::Backpack *this, RBX::Reflection::ClassDescriptor **, int, int (*)(const char *, ...))
-#[doc(alias = "`non-virtual thunk toRBX::Backpack::scriptShouldRun(RBX::BaseScript *)")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::scriptShouldRun(RBX::BaseScript *)")]
 pub fn stub_3b1218() -> ! {
     todo!("0x3b1218 ``non-virtual thunk to'RBX::Backpack::scriptShouldRun(RBX::BaseScript *)`")
 }
@@ -801,14 +801,14 @@ pub fn stub_3b12c8() -> ! {
 
 // 0x3b12d8 — __ZThn32_N3RBX8BackpackD1Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 pub fn stub_3b12d8() -> ! {
     todo!("0x3b12d8 ``non-virtual thunk to'RBX::Backpack::~Backpack()`")
 }
 
 // 0x3b12e0 — __ZThn32_N3RBX8BackpackD0Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 pub fn stub_3b12e0() -> ! {
     todo!("0x3b12e0 ``non-virtual thunk to'RBX::Backpack::~Backpack()`")
 }
@@ -822,14 +822,14 @@ pub fn stub_3b1384() -> ! {
 
 // 0x3b1394 — __ZThn36_N3RBX8BackpackD1Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 pub fn stub_3b1394() -> ! {
     todo!("0x3b1394 ``non-virtual thunk to'RBX::Backpack::~Backpack()`")
 }
 
 // 0x3b139c — __ZThn36_N3RBX8BackpackD0Ev
 // type: void __fastcall(RBX::Backpack *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 pub fn stub_3b139c() -> ! {
     todo!("0x3b139c ``non-virtual thunk to'RBX::Backpack::~Backpack()`")
 }
