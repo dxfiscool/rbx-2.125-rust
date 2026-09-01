@@ -133,3 +133,4 @@ pub mod generated_shard_dt;
 pub mod generated_shard_du;
 pub mod generated_shard_dv;
 pub mod generated_shard_dw;
+pub mod generated_shard_dx;
