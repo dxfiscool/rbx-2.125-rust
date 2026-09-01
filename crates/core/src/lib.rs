@@ -197,3 +197,4 @@ pub mod generated_core_shard_ey;
 pub mod generated_core_shard_ez;
 pub mod generated_core_shard_fa;
 pub mod generated_core_shard_fb;
+pub mod generated_core_shard_fc;
