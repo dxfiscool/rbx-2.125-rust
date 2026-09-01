@@ -202,3 +202,5 @@ pub mod generated_shard_fw;
 pub mod generated_shard_fx;
 pub mod generated_shard_fy;
 pub mod generated_shard_fz;
+pub mod generated_shard_gA;
+pub mod generated_shard_gB;
