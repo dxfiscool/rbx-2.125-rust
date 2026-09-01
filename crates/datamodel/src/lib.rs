@@ -335,3 +335,4 @@ pub mod generated_bg_4;
 pub mod generated_next;
 
 pub mod generated_next_b;
+pub mod generated_next_c;
