@@ -29,14 +29,14 @@ pub fn stub_0x110538() -> ! {
     todo!("0x110538 __Z5_itoaiPci")
 }
 
-#[doc(alias = "`global destructor keyed toFreeImage_SO_Initialise(void)")]
+#[doc(alias = "global destructor keyed toFreeImage_SO_Initialise(void)")]
 // 0x110578 — __GLOBAL__D__Z23FreeImage_SO_Initialisev
 // was: `global destructor keyed to'FreeImage_SO_Initialise(void)
 pub fn stub_0x110578() -> ! {
     todo!("0x110578 __GLOBAL__D__Z23FreeImage_SO_Initialisev")
 }
 
-#[doc(alias = "`global constructor keyed toFreeImage_SO_Initialise(void)")]
+#[doc(alias = "global constructor keyed toFreeImage_SO_Initialise(void)")]
 // 0x110588 — __GLOBAL__I__Z23FreeImage_SO_Initialisev
 // was: `global constructor keyed to'FreeImage_SO_Initialise(void)
 pub fn stub_0x110588() -> ! {

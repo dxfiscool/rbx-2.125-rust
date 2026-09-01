@@ -214,7 +214,7 @@ pub fn stub_0x67200() -> ! {
     todo!("0x67200 -[AppController launchGame:]")
 }
 
-#[doc(alias = "`global constructor keyed to_a_36")]
+#[doc(alias = "global constructor keyed to_a_36")]
 // 0x67354 — __GLOBAL__I_a_36
 pub fn stub_0x67354() -> ! {
     todo!("0x67354 `global constructor keyed to_a_36")
@@ -304,7 +304,7 @@ pub fn stub_0x68480() -> ! {
     todo!("0x68480 -[SessionReporter clearSession]")
 }
 
-#[doc(alias = "`global constructor keyed to_a_37")]
+#[doc(alias = "global constructor keyed to_a_37")]
 // 0x6850c — __GLOBAL__I_a_37
 pub fn stub_0x6850c() -> ! {
     todo!("0x6850c `global constructor keyed to_a_37")
