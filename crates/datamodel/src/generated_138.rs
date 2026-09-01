@@ -178,14 +178,14 @@ pub fn stub_372500() -> ! {
 }
 
 // 0x372504 — __ZThn32_N3RBX10Soundscape12SoundServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 // was: `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()
 pub fn stub_372504() -> ! {
     todo!("0x372504 `non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
 }
 
 // 0x37250c — __ZThn36_N3RBX10Soundscape12SoundServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 // was: `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()
 pub fn stub_37250c() -> ! {
     todo!("0x37250c `non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
@@ -198,14 +198,14 @@ pub fn stub_372514() -> ! {
 }
 
 // 0x3728b0 — __ZThn32_N3RBX10Soundscape12SoundServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 // was: `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()
 pub fn stub_3728b0() -> ! {
     todo!("0x3728b0 `non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
 }
 
 // 0x3728b8 — __ZThn36_N3RBX10Soundscape12SoundServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")]
 // was: `non-virtual thunk to'RBX::Soundscape::SoundService::~SoundService()
 pub fn stub_3728b8() -> ! {
     todo!("0x3728b8 `non-virtual thunk toRBX::Soundscape::SoundService::~SoundService()")
@@ -429,14 +429,14 @@ pub fn stub_375094() -> ! {
 }
 
 // 0x375098 — __ZThn32_N3RBX10Soundscape12SoundChannelD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 // was: `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()
 pub fn stub_375098() -> ! {
     todo!("0x375098 `non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
 }
 
 // 0x3750a0 — __ZThn36_N3RBX10Soundscape12SoundChannelD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 // was: `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()
 pub fn stub_3750a0() -> ! {
     todo!("0x3750a0 `non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
@@ -449,14 +449,14 @@ pub fn stub_3750a8() -> ! {
 }
 
 // 0x375330 — __ZThn32_N3RBX10Soundscape12SoundChannelD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 // was: `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()
 pub fn stub_375330() -> ! {
     todo!("0x375330 `non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")
 }
 
 // 0x375338 — __ZThn36_N3RBX10Soundscape12SoundChannelD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
+#[doc(alias = "non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")]
 // was: `non-virtual thunk to'RBX::Soundscape::SoundChannel::~SoundChannel()
 pub fn stub_375338() -> ! {
     todo!("0x375338 `non-virtual thunk toRBX::Soundscape::SoundChannel::~SoundChannel()")

@@ -16,13 +16,13 @@ pub fn stub_9eaa38() -> ! {
 }
 
 // 0x9eaab0 — __ZThn32_N3RBX7Network12RakStatsItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
 pub fn stub_9eaab0() -> ! {
     todo!("0x9eaab0 `non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")
 }
 
 // 0x9eab30 — __ZThn32_N3RBX7Network12RakStatsItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")]
 pub fn stub_9eab30() -> ! {
     todo!("0x9eab30 `non-virtual thunk toRBX::Network::RakStatsItem::~RakStatsItem()")
 }
@@ -256,13 +256,13 @@ pub fn stub_a0811c() -> ! {
 }
 
 // 0xa08128 — __ZThn32_N3RBX7Network7PlayersD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Network::Players::~Players()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
 pub fn stub_a08128() -> ! {
     todo!("0xa08128 `non-virtual thunk toRBX::Network::Players::~Players()")
 }
 
 // 0xa081cc — __ZThn36_N3RBX7Network7PlayersD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Network::Players::~Players()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
 pub fn stub_a081cc() -> ! {
     todo!("0xa081cc `non-virtual thunk toRBX::Network::Players::~Players()")
 }
@@ -274,13 +274,13 @@ pub fn stub_a08270() -> ! {
 }
 
 // 0xa09784 — __ZThn32_N3RBX7Network7PlayersD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Network::Players::~Players()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
 pub fn stub_a09784() -> ! {
     todo!("0xa09784 `non-virtual thunk toRBX::Network::Players::~Players()")
 }
 
 // 0xa09790 — __ZThn36_N3RBX7Network7PlayersD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Network::Players::~Players()")]
+#[doc(alias = "non-virtual thunk toRBX::Network::Players::~Players()")]
 pub fn stub_a09790() -> ! {
     todo!("0xa09790 `non-virtual thunk toRBX::Network::Players::~Players()")
 }
