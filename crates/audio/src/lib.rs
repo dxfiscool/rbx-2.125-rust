@@ -111,6 +111,9 @@ pub mod generated_107;
 pub mod generated_108;
 pub mod generated_109;
 pub mod generated_110;
+pub mod generated_111;
+pub mod generated_112;
+pub mod generated_113;
 
 // 0x686a4 — __ZN4FMOD10ProfileCpu4initEv
 #[doc(alias = "FMOD::ProfileCpu::init(void)")]
@@ -14741,5 +14744,3 @@ pub fn stub_37b408() -> ! {
 pub fn stub_37b418() -> ! {
     todo!("0x37b418 RBX::Reflection::EnumPropDescriptor<RBX::Soundscape::SoundService,RBX::Soundscape::ReverbType>::equalValues(RBX::Reflection::DescribedBase const*,RBX::Reflection::DescribedBase const*)const")
 }
-pub mod generated_111;
-pub mod generated_112;
