@@ -275,3 +275,4 @@ pub mod generated_255;
 pub mod generated_256;
 pub mod generated_257;
 pub mod generated_258;
+pub mod generated_259;
