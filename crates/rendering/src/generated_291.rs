@@ -19,7 +19,7 @@ pub fn stub_40336c() -> ! {
 }
 
 // 0x403444 — __GLOBAL__I_a_173
-#[doc(alias = "`global constructor keyed to _a_173")]
+#[doc(alias = "global constructor keyed to _a_173")]
 // was: __GLOBAL__I_a_173
 pub fn stub_403444() -> ! {
     todo!("0x403444 `global constructor keyed to _a_173")
