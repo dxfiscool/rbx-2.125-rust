@@ -225,3 +225,4 @@ pub mod generated_net_16;
 pub mod generated_net_17;
 pub mod generated_net_18;
 pub mod generated_net_19;
+pub mod generated_net_20;
