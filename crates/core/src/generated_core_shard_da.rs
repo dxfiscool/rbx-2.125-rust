@@ -1,20 +1,8 @@
-//! core shard DA — 100 core stubs EA-sorted, next uncovered after CZ 0x742324 (strict RBX|boost|std|rbx earliest gap after CZ).
+//! core shard DA — 100 core stubs EA-sorted, next uncovered after CZ 0x742324 (strict RBX|boost|std|rbx excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 uncovered globally).
 //! Source: `ida/export.json` filtered where demangled/mangled contains `RBX::`|`boost::`|`std::`|`rbx::` excluding Reflection|Instance|DataModel|Workspace|Ogre|G3D|RakNet|Network|Replicator|Lua|Script|Yield|FMOD|Audio|Sound, EA-sorted ascending, next 100 uncovered.
 //! Sanitized: boost::shared_ptr -> rbx_core::SharedPtr, boost::weak_ptr -> rbx_core::WeakPtr, boost::intrusive_ptr -> rbx_core::SharedPtr, single quotes and backticks removed.
 
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
-
-#[doc(alias = "boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::get_pool(void)")]
-// 0x742328 — __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv
-pub fn stub_742328() -> ! {
-    todo!("0x742328 __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE8get_poolEv")
-}
-
-#[doc(alias = "boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
-// 0x742374 — __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
-pub fn stub_742374() -> ! {
-    todo!("0x742374 __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
-}
 
 #[doc(alias = "RBX::Allocator<RBX::D6Link>::Allocator(void)")]
 // 0x7423ac — __ZN3RBX9AllocatorINS_6D6LinkEEC2Ev
@@ -26,12 +14,6 @@ pub fn stub_7423ac() -> ! {
 // 0x742410 — __ZN3RBX9AllocatorINS_6D6LinkEE13releaseMemoryEv
 pub fn stub_742410() -> ! {
     todo!("0x742410 __ZN3RBX9AllocatorINS_6D6LinkEE13releaseMemoryEv")
-}
-
-#[doc(alias = "boost::singleton_pool<RBX::D6Link,252u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
-// 0x74242c — __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
-pub fn stub_74242c() -> ! {
-    todo!("0x74242c __ZN5boost14singleton_poolIN3RBX6D6LinkELj252ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
 }
 
 #[doc(alias = "RBX::MotorJoint::MotorJoint(void)")]
@@ -148,12 +130,6 @@ pub fn stub_742c74() -> ! {
     todo!("0x742c74 __ZNK3RBX10MotorJoint9canStepUiEv")
 }
 
-#[doc(alias = "boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
-// 0x742c78 — __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
-pub fn stub_742c78() -> ! {
-    todo!("0x742c78 __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
-}
-
 #[doc(alias = "RBX::RevoluteLink::RevoluteLink(void)")]
 // 0x742cb0 — __ZN3RBX12RevoluteLinkC2Ev
 pub fn stub_742cb0() -> ! {
@@ -170,12 +146,6 @@ pub fn stub_742d7c() -> ! {
 // 0x742de0 — __ZN3RBX9AllocatorINS_12RevoluteLinkEE13releaseMemoryEv
 pub fn stub_742de0() -> ! {
     todo!("0x742de0 __ZN3RBX9AllocatorINS_12RevoluteLinkEE13releaseMemoryEv")
-}
-
-#[doc(alias = "boost::singleton_pool<RBX::RevoluteLink,208u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
-// 0x742dfc — __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
-pub fn stub_742dfc() -> ! {
-    todo!("0x742dfc __ZN5boost14singleton_poolIN3RBX12RevoluteLinkELj208ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
 }
 
 #[doc(alias = "RBX::MovingAssemblyStage::MovingAssemblyStage(RBX::IStage *,RBX::World *)")]
@@ -424,18 +394,6 @@ pub fn stub_7455dc() -> ! {
     todo!("0x7455dc __ZN3RBX9AllocatorINS_4POLY16ParallelRampMeshEE13releaseMemoryEv")
 }
 
-#[doc(alias = "boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::release_memory(void)")]
-// 0x7455f8 — __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv
-pub fn stub_7455f8() -> ! {
-    todo!("0x7455f8 __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE14release_memoryEv")
-}
-
-#[doc(alias = "boost::singleton_pool<RBX::POLY::ParallelRampMesh,48u,boost::default_user_allocator_malloc_free,boost::mutex,32u,0u>::malloc(void)")]
-// 0x745628 — __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv
-pub fn stub_745628() -> ! {
-    todo!("0x745628 __ZN5boost14singleton_poolIN3RBX4POLY16ParallelRampMeshELj48ENS_34default_user_allocator_malloc_freeENS_5mutexELj32ELj0EE6mallocEv")
-}
-
 #[doc(alias = "RBX::Poly::getCofmOffset(void)const")]
 // 0x745a7c — __ZNK3RBX4Poly13getCofmOffsetEv
 pub fn stub_745a7c() -> ! {
@@ -602,4 +560,46 @@ pub fn stub_748038() -> ! {
 // 0x748068 — __ZN3RBX15PolyPolyContact19findClosestFeaturesERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE
 pub fn stub_748068() -> ! {
     todo!("0x748068 __ZN3RBX15PolyPolyContact19findClosestFeaturesERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE")
+}
+
+#[doc(alias = "RBX::PolyPolyContact::findBestPair(void)")]
+// 0x74813c — __ZN3RBX15PolyPolyContact12findBestPairEv
+pub fn stub_74813c() -> ! {
+    todo!("0x74813c __ZN3RBX15PolyPolyContact12findBestPairEv")
+}
+
+#[doc(alias = "RBX::PolyPolyContact::generateDataForMovingAssemblyStage(void)")]
+// 0x748344 — __ZN3RBX15PolyPolyContact34generateDataForMovingAssemblyStageEv
+pub fn stub_748344() -> ! {
+    todo!("0x748344 __ZN3RBX15PolyPolyContact34generateDataForMovingAssemblyStageEv")
+}
+
+#[doc(alias = "RBX::FaceFacePair::allocateClone(void)")]
+// 0x748348 — __ZN3RBX12FaceFacePair13allocateCloneEv
+pub fn stub_748348() -> ! {
+    todo!("0x748348 __ZN3RBX12FaceFacePair13allocateCloneEv")
+}
+
+#[doc(alias = "RBX::FaceFacePair::test(void)")]
+// 0x748380 — __ZN3RBX12FaceFacePair4testEv
+pub fn stub_748380() -> ! {
+    todo!("0x748380 __ZN3RBX12FaceFacePair4testEv")
+}
+
+#[doc(alias = "RBX::FaceFacePair::findOtherFace(RBX::POLY::Vertex const*)")]
+// 0x74870c — __ZN3RBX12FaceFacePair13findOtherFaceEPKNS_4POLY6VertexE
+pub fn stub_74870c() -> ! {
+    todo!("0x74870c __ZN3RBX12FaceFacePair13findOtherFaceEPKNS_4POLY6VertexE")
+}
+
+#[doc(alias = "RBX::FaceFacePair::loadConnectors(RBX::FixedArray<RBX::PolyConnector *,40ul> &)")]
+// 0x748934 — __ZN3RBX12FaceFacePair14loadConnectorsERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE
+pub fn stub_748934() -> ! {
+    todo!("0x748934 __ZN3RBX12FaceFacePair14loadConnectorsERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE")
+}
+
+#[doc(alias = "RBX::FaceFacePair::vertexInside(RBX::Primitive *,RBX::Primitive *,RBX::POLY::Vertex const*,RBX::POLY::Face const*,RBX::FixedArray<RBX::PolyConnector *,40ul> &)")]
+// 0x7492c0 — __ZN3RBX12FaceFacePair12vertexInsideEPNS_9PrimitiveES2_PKNS_4POLY6VertexEPKNS3_4FaceERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE
+pub fn stub_7492c0() -> ! {
+    todo!("0x7492c0 __ZN3RBX12FaceFacePair12vertexInsideEPNS_9PrimitiveES2_PKNS_4POLY6VertexEPKNS3_4FaceERNS_10FixedArrayIPNS_13PolyConnectorELm40EEE")
 }
