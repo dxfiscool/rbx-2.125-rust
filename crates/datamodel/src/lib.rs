@@ -153,3 +153,5 @@ pub mod generated_92;
 pub mod generated_93;
 pub mod generated_94;
 pub mod generated_95;
+
+pub mod generated_96;
