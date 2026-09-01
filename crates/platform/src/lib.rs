@@ -233,3 +233,4 @@ pub mod generated_plat_ai;
 pub mod generated_plat_aj;
 pub mod generated_plat_ak;
 pub mod generated_plat_al;
+pub mod generated_plat_am;
