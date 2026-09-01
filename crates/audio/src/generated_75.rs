@@ -286,7 +286,7 @@ pub fn stub_6d2d50() -> ! {
 }
 
 // 0x6d2d58 — __ZThn96_N3RBX9Workspace14render3dSelectEPNS_5AdornENS_11SelectStateE
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::render3dSelect(RBX::Adorn *,RBX::SelectState)")]
 pub fn stub_6d2d58() -> ! {
     todo!("0x6d2d58 `non-virtual thunk to'RBX::Workspace::render3dSelect(RBX::Adorn *,RBX::SelectState)")
 }
@@ -300,21 +300,21 @@ pub fn stub_6d2d60() -> ! {
 
 // 0x6d2d64 — __ZThn120_N3RBX13ModelInstance17getRenderLocationEv
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ModelInstance::getRenderLocation(void)")]
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::getRenderLocation(void)")]
 pub fn stub_6d2d64() -> ! {
     todo!("0x6d2d64 `non-virtual thunk to'RBX::ModelInstance::getRenderLocation(void)")
 }
 
 // 0x6d2d74 — __ZThn120_N3RBX13ModelInstance13getRenderSizeEv
 // type: _DWORD __fastcall(RBX::ModelInstance *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::ModelInstance::getRenderSize(void)")]
+#[doc(alias = "non-virtual thunk toRBX::ModelInstance::getRenderSize(void)")]
 pub fn stub_6d2d74() -> ! {
     todo!("0x6d2d74 `non-virtual thunk to'RBX::ModelInstance::getRenderSize(void)")
 }
 
 // 0x6d2d84 — __ZThn280_NK3RBX9Workspace19getCameraOwnerModelEv
 // type: _DWORD __fastcall(RBX::Workspace *__hidden this)
-#[doc(alias = "`non-virtual thunk toRBX::Workspace::getCameraOwnerModel(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::Workspace::getCameraOwnerModel(void)const")]
 pub fn stub_6d2d84() -> ! {
     todo!("0x6d2d84 `non-virtual thunk to'RBX::Workspace::getCameraOwnerModel(void)const")
 }
@@ -584,7 +584,7 @@ pub fn stub_6d3dac() -> ! {
 }
 
 // 0x6d3db4 — __ZThn4_N3rbx8callableINS_7signals6signalIFvvEE4slotEN5boost3_bi6bind_tIvNS6_4_mfi3mf0IvN3RBX9WorkspaceEEENS7_5list1INS7_5valueIPSC_EEEEEELi0ES3_E4callEv
-#[doc(alias = "`non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)")]
+#[doc(alias = "non-virtual thunk torbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)")]
 pub fn stub_6d3db4() -> ! {
     todo!("0x6d3db4 `non-virtual thunk to'rbx::callable<rbx::signals::signal<void ()(void)>::slot,boost::_bi::bind_t<void,boost::_mfi::mf0<void,RBX::Workspace>,boost::_bi::list1<boost::_bi::value<RBX::Workspace*>>>,0,void ()(void)>::call(void)")
 }
