@@ -226,3 +226,5 @@ pub mod generated_net_17;
 pub mod generated_net_18;
 pub mod generated_net_19;
 pub mod generated_net_20;
+pub mod generated_net_21;
+pub mod generated_net_22;

@@ -396,3 +396,5 @@ pub mod generated_core_shard_mk;
 pub mod generated_core_shard_ml;
 pub mod generated_core_shard_mm;
 pub mod generated_core_shard_mn;
+pub mod generated_core_shard_mo;
+pub mod generated_core_shard_mp;
