@@ -279,3 +279,4 @@ pub mod generated_core_shard_ic;
 pub mod generated_core_shard_id;
 pub mod generated_core_shard_ie;
 pub mod generated_core_shard_if;
+pub mod generated_core_shard_ig;
