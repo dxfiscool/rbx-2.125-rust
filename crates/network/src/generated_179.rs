@@ -71,7 +71,7 @@ pub fn stub_67200() -> ! {
 }
 
 // 0x67354 — __GLOBAL__I_a_36
-#[doc(alias = "`global constructor keyed to_a_36")]
+#[doc(alias = "global constructor keyed to_a_36")]
 pub fn stub_67354() -> ! {
     todo!("0x67354 `global constructor keyed to_a_36")
 }
@@ -189,7 +189,7 @@ pub fn stub_68480() -> ! {
 }
 
 // 0x6850c — __GLOBAL__I_a_37
-#[doc(alias = "`global constructor keyed to_a_37")]
+#[doc(alias = "global constructor keyed to_a_37")]
 pub fn stub_6850c() -> ! {
     todo!("0x6850c `global constructor keyed to_a_37")
 }

@@ -363,7 +363,7 @@ pub fn stub_37c9d8() -> ! {
 
 // 0x37c9e8 — __ZThn32_N3RBX10StockSoundD1Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
-#[doc(alias = "`non-virtual thunk toRBX::StockSound::~StockSound()")]
+#[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 // was: __ZThn32_N3RBX10StockSoundD1Ev
 pub fn stub_37c9e8() -> ! {
     todo!("0x37c9e8 `non-virtual thunk to'RBX::StockSound::~StockSound()")
@@ -371,7 +371,7 @@ pub fn stub_37c9e8() -> ! {
 
 // 0x37c9f0 — __ZThn32_N3RBX10StockSoundD0Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
-#[doc(alias = "`non-virtual thunk toRBX::StockSound::~StockSound()")]
+#[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 // was: __ZThn32_N3RBX10StockSoundD0Ev
 pub fn stub_37c9f0() -> ! {
     todo!("0x37c9f0 `non-virtual thunk to'RBX::StockSound::~StockSound()")
@@ -387,7 +387,7 @@ pub fn stub_37ca94() -> ! {
 
 // 0x37caa4 — __ZThn36_N3RBX10StockSoundD1Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
-#[doc(alias = "`non-virtual thunk toRBX::StockSound::~StockSound()")]
+#[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 // was: __ZThn36_N3RBX10StockSoundD1Ev
 pub fn stub_37caa4() -> ! {
     todo!("0x37caa4 `non-virtual thunk to'RBX::StockSound::~StockSound()")
@@ -395,7 +395,7 @@ pub fn stub_37caa4() -> ! {
 
 // 0x37caac — __ZThn36_N3RBX10StockSoundD0Ev
 // type: void __fastcall(RBX::StockSound *this, int, int)
-#[doc(alias = "`non-virtual thunk toRBX::StockSound::~StockSound()")]
+#[doc(alias = "non-virtual thunk toRBX::StockSound::~StockSound()")]
 // was: __ZThn36_N3RBX10StockSoundD0Ev
 pub fn stub_37caac() -> ! {
     todo!("0x37caac `non-virtual thunk to'RBX::StockSound::~StockSound()")
