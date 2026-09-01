@@ -110,3 +110,5 @@ pub mod generated_core_shard_bq;
 pub mod generated_core_shard_br;
 pub mod generated_core_shard_bs;
 pub mod generated_core_shard_bt;
+pub mod generated_core_shard_bu;
+pub mod generated_core_shard_bv;
