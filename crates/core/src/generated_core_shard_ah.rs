@@ -232,25 +232,25 @@ pub fn stub_0x30277c() -> ! {
     todo!("0x30277c RBX::HttpQueueStatsItem::update(void)")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 // 0x3027d0 — __ZThn32_N3RBX18HttpQueueStatsItemD1Ev
 pub fn stub_0x3027d0() -> ! {
     todo!("0x3027d0 `non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 // 0x302810 — __ZThn32_N3RBX18HttpQueueStatsItemD0Ev
 pub fn stub_0x302810() -> ! {
     todo!("0x302810 `non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 // 0x3028e8 — __ZThn36_N3RBX18HttpQueueStatsItemD1Ev
 pub fn stub_0x3028e8() -> ! {
     todo!("0x3028e8 `non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")]
 // 0x302928 — __ZThn36_N3RBX18HttpQueueStatsItemD0Ev
 pub fn stub_0x302928() -> ! {
     todo!("0x302928 `non-virtual thunk toRBX::HttpQueueStatsItem::~HttpQueueStatsItem()")
@@ -262,7 +262,7 @@ pub fn stub_0x302cf8() -> ! {
     todo!("0x302cf8 std::_List_base<RBX::AsyncHttpQueue::FailedUrl,std::allocator<RBX::AsyncHttpQueue::FailedUrl>>::_M_clear(void)")
 }
 
-#[doc(alias = "`global constructor keyed to_a_106")]
+#[doc(alias = "global constructor keyed to_a_106")]
 // 0x302d20 — __GLOBAL__I_a_106
 pub fn stub_0x302d20() -> ! {
     todo!("0x302d20 `global constructor keyed to_a_106")
@@ -298,7 +298,7 @@ pub fn stub_0x303418() -> ! {
     todo!("0x303418 RBX::StringConverter<RBX::Axes>::convertToValue(std::string const&,RBX::Axes&)")
 }
 
-#[doc(alias = "`global constructor keyed to_a_107")]
+#[doc(alias = "global constructor keyed to_a_107")]
 // 0x304200 — __GLOBAL__I_a_107
 pub fn stub_0x304200() -> ! {
     todo!("0x304200 `global constructor keyed to_a_107")
@@ -550,7 +550,7 @@ pub fn stub_0x30dd48() -> ! {
     todo!("0x30dd48 RBX::CameraSubject::getContactManager(void)")
 }
 
-#[doc(alias = "`global constructor keyed to_a_108")]
+#[doc(alias = "global constructor keyed to_a_108")]
 // 0x30e1b0 — __GLOBAL__I_a_108
 pub fn stub_0x30e1b0() -> ! {
     todo!("0x30e1b0 `global constructor keyed to_a_108")
@@ -580,7 +580,7 @@ pub fn stub_0x30e670() -> ! {
     todo!("0x30e670 RBX::Color::colorFromPointer(void *)")
 }
 
-#[doc(alias = "`global constructor keyed to_a_109")]
+#[doc(alias = "global constructor keyed to_a_109")]
 // 0x30e67c — __GLOBAL__I_a_109
 pub fn stub_0x30e67c() -> ! {
     todo!("0x30e67c `global constructor keyed to_a_109")
@@ -622,13 +622,13 @@ pub fn stub_0x30e908() -> ! {
     todo!("0x30e908 RBX::ContentFilter::~ContentFilter()")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 // 0x30e90c — __ZThn32_N3RBX13ContentFilterD0Ev
 pub fn stub_0x30e90c() -> ! {
     todo!("0x30e90c `non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 // 0x30e914 — __ZThn36_N3RBX13ContentFilterD0Ev
 pub fn stub_0x30e914() -> ! {
     todo!("0x30e914 `non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
@@ -640,13 +640,13 @@ pub fn stub_0x30e91c() -> ! {
     todo!("0x30e91c RBX::ContentFilter::~ContentFilter()")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 // 0x30e96c — __ZThn32_N3RBX13ContentFilterD1Ev
 pub fn stub_0x30e96c() -> ! {
     todo!("0x30e96c `non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
+#[doc(alias = "non-virtual thunk toRBX::ContentFilter::~ContentFilter()")]
 // 0x30e974 — __ZThn36_N3RBX13ContentFilterD1Ev
 pub fn stub_0x30e974() -> ! {
     todo!("0x30e974 `non-virtual thunk toRBX::ContentFilter::~ContentFilter()")
@@ -778,7 +778,7 @@ pub fn stub_0x314a10() -> ! {
     todo!("0x314a10 std::_Rb_tree<std::string,std::pair<std::string const,RBX::ContentFilter::ResultEntry>,std::_Select1st<std::pair<std::string const,RBX::ContentFilter::ResultEntry>>,std::less<std::string>,std::allocator<std::pair<std::string const,RBX::ContentFilter::ResultEntry>>>::_M_erase(std::_Rb_tree_node<std::pair<std::string const,RBX::ContentFilter::ResultEntry>> *)")
 }
 
-#[doc(alias = "`global constructor keyed to_a_110")]
+#[doc(alias = "global constructor keyed to_a_110")]
 // 0x314a40 — __GLOBAL__I_a_110
 pub fn stub_0x314a40() -> ! {
     todo!("0x314a40 `global constructor keyed to_a_110")
@@ -820,7 +820,7 @@ pub fn stub_0x314d14() -> ! {
     todo!("0x314d14 RBX::ContentId::convertAssetId(std::string const&)")
 }
 
-#[doc(alias = "`anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")]
+#[doc(alias = "anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")]
 // 0x314f94 — __ZN12_GLOBAL__N_111createIdUrlERSsRKSsS2_
 pub fn stub_0x314f94() -> ! {
     todo!("0x314f94 `anonymous namespace::createIdUrl(std::string &,std::string const&,std::string const&)")
@@ -850,7 +850,7 @@ pub fn stub_0x315514() -> ! {
     todo!("0x315514 RBX::LegacyContentTable::~LegacyContentTable()")
 }
 
-#[doc(alias = "`global constructor keyed to_a_111")]
+#[doc(alias = "global constructor keyed to_a_111")]
 // 0x315594 — __GLOBAL__I_a_111
 pub fn stub_0x315594() -> ! {
     todo!("0x315594 `global constructor keyed to_a_111")
@@ -880,7 +880,7 @@ pub fn stub_0x315dd4() -> ! {
     todo!("0x315dd4 RBX::FileSystem::getBaseCacheDirectory(bool)")
 }
 
-#[doc(alias = "`global constructor keyed to_a_112")]
+#[doc(alias = "global constructor keyed to_a_112")]
 // 0x3164c8 — __GLOBAL__I_a_112
 pub fn stub_0x3164c8() -> ! {
     todo!("0x3164c8 `global constructor keyed to_a_112")

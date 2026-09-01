@@ -52,7 +52,7 @@ pub fn stub_0x31e558() -> ! {
     todo!("0x31e558 __ZN3RBX4Http10MutexGuardC2Ev")
 }
 
-#[doc(alias = "`global constructor keyed to_a_113")]
+#[doc(alias = "global constructor keyed to_a_113")]
 // 0x31e658 — __GLOBAL__I_a_113
 // was: `global constructor keyed to_a_113
 pub fn stub_0x31e658() -> ! {
@@ -89,7 +89,7 @@ pub fn stub_0x31f5b4() -> ! {
     todo!("0x31f5b4 __ZNK3RBX7Extents19separatedByMoreThanERKS0_f")
 }
 
-#[doc(alias = "`global constructor keyed to_a_114")]
+#[doc(alias = "global constructor keyed to_a_114")]
 // 0x31f738 — __GLOBAL__I_a_114
 // was: `global constructor keyed to_a_114
 pub fn stub_0x31f738() -> ! {
@@ -150,7 +150,7 @@ pub fn stub_0x3201f4() -> ! {
     todo!("0x3201f4 __ZNK3RBX4Face7getAxisEi")
 }
 
-#[doc(alias = "`global constructor keyed to_a_115")]
+#[doc(alias = "global constructor keyed to_a_115")]
 // 0x3202dc — __GLOBAL__I_a_115
 // was: `global constructor keyed to_a_115
 pub fn stub_0x3202dc() -> ! {
@@ -187,7 +187,7 @@ pub fn stub_0x32059c() -> ! {
     todo!("0x32059c __ZN3RBX15StringConverterINS_5FacesEE14convertToValueERKSsRS1_")
 }
 
-#[doc(alias = "`global constructor keyed to_a_116")]
+#[doc(alias = "global constructor keyed to_a_116")]
 // 0x3207f8 — __GLOBAL__I_a_116
 // was: `global constructor keyed to_a_116
 pub fn stub_0x3207f8() -> ! {
@@ -344,14 +344,14 @@ pub fn stub_0x322bdc() -> ! {
     todo!("0x322bdc __ZNK3RBX4Guid4Data14readableStringEi")
 }
 
-#[doc(alias = "`global constructor keyed to_a_117")]
+#[doc(alias = "global constructor keyed to_a_117")]
 // 0x322e00 — __GLOBAL__I_a_117
 // was: `global constructor keyed to_a_117
 pub fn stub_0x322e00() -> ! {
     todo!("0x322e00 __GLOBAL__I_a_117")
 }
 
-#[doc(alias = "`global constructor keyed to_a_118")]
+#[doc(alias = "global constructor keyed to_a_118")]
 // 0x322ef8 — __GLOBAL__I_a_118
 // was: `global constructor keyed to_a_118
 pub fn stub_0x322ef8() -> ! {
@@ -364,14 +364,14 @@ pub fn stub_0x323028() -> ! {
     todo!("0x323028 __ZN3RBX4Hash4hashERKSs")
 }
 
-#[doc(alias = "`global constructor keyed to_a_119")]
+#[doc(alias = "global constructor keyed to_a_119")]
 // 0x3234d4 — __GLOBAL__I_a_119
 // was: `global constructor keyed to_a_119
 pub fn stub_0x3234d4() -> ! {
     todo!("0x3234d4 __GLOBAL__I_a_119")
 }
 
-#[doc(alias = "`global constructor keyed to_a_120")]
+#[doc(alias = "global constructor keyed to_a_120")]
 // 0x323b78 — __GLOBAL__I_a_120
 // was: `global constructor keyed to_a_120
 pub fn stub_0x323b78() -> ! {
@@ -390,7 +390,7 @@ pub fn stub_0x323fdc() -> ! {
     todo!("0x323fdc __ZN3RBX8IndexBoxD0Ev")
 }
 
-#[doc(alias = "`global constructor keyed to_a_121")]
+#[doc(alias = "global constructor keyed to_a_121")]
 // 0x323fe0 — __GLOBAL__I_a_121
 // was: `global constructor keyed to_a_121
 pub fn stub_0x323fe0() -> ! {
@@ -499,7 +499,7 @@ pub fn stub_0x3246ec() -> ! {
     todo!("0x3246ec __ZN3RBX11IndexedMesh13lowersChangedEv")
 }
 
-#[doc(alias = "`global constructor keyed to_a_122")]
+#[doc(alias = "global constructor keyed to_a_122")]
 // 0x324710 — __GLOBAL__I_a_122
 // was: `global constructor keyed to_a_122
 pub fn stub_0x324710() -> ! {
@@ -548,7 +548,7 @@ pub fn stub_0x324ce8() -> ! {
     todo!("0x324ce8 __ZN3RBX11IndexedTree15onParentChangedEPS0_")
 }
 
-#[doc(alias = "`global constructor keyed to_a_123")]
+#[doc(alias = "global constructor keyed to_a_123")]
 // 0x3251ac — __GLOBAL__I_a_123
 // was: `global constructor keyed to_a_123
 pub fn stub_0x3251ac() -> ! {
@@ -579,7 +579,7 @@ pub fn stub_0x325b98() -> ! {
     todo!("0x325b98 __ZNK3RBX18InterpolatedCFrame17getSampleIntervalEv")
 }
 
-#[doc(alias = "`global constructor keyed to_a_124")]
+#[doc(alias = "global constructor keyed to_a_124")]
 // 0x326108 — __GLOBAL__I_a_124
 // was: `global constructor keyed to_a_124
 pub fn stub_0x326108() -> ! {

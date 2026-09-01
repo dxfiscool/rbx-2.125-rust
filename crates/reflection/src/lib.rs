@@ -38,3 +38,5 @@ pub mod generated_shard_ac;
 pub mod generated_shard_ad;
 pub mod generated_shard_ae;
 pub mod generated_shard_af;
+pub mod generated_shard_ag;
+pub mod generated_shard_ah;
