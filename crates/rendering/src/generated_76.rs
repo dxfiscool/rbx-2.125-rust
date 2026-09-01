@@ -147,7 +147,7 @@ pub fn stub_dc69d4() -> ! {
 }
 
 // 0xdc69e0 — __ZThn48_N4Ogre22IntersectionSceneQueryD0Ev
-#[doc(alias = "`non-virtual thunk to'Ogre::IntersectionSceneQuery::~IntersectionSceneQuery()")]
+#[doc(alias = "non-virtual thunk toOgre::IntersectionSceneQuery::~IntersectionSceneQuery()")]
 // was: `non-virtual thunk to'Ogre::IntersectionSceneQuery::~IntersectionSceneQuery()
 pub fn stub_dc69e0() -> ! {
     todo!("0xdc69e0 `non-virtual thunk to'Ogre::IntersectionSceneQuery::~IntersectionSceneQuery()")
@@ -161,7 +161,7 @@ pub fn stub_dc6a74() -> ! {
 }
 
 // 0xdc6b88 — __ZThn48_N4Ogre22IntersectionSceneQueryD1Ev
-#[doc(alias = "`non-virtual thunk to'Ogre::IntersectionSceneQuery::~IntersectionSceneQuery()")]
+#[doc(alias = "non-virtual thunk toOgre::IntersectionSceneQuery::~IntersectionSceneQuery()")]
 // was: `non-virtual thunk to'Ogre::IntersectionSceneQuery::~IntersectionSceneQuery()
 pub fn stub_dc6b88() -> ! {
     todo!("0xdc6b88 `non-virtual thunk to'Ogre::IntersectionSceneQuery::~IntersectionSceneQuery()")
@@ -196,7 +196,7 @@ pub fn stub_dc6cf0() -> ! {
 }
 
 // 0xdc6d14 — __ZThn48_N4Ogre22IntersectionSceneQuery11queryResultEPNS_13MovableObjectES2_
-#[doc(alias = "`non-virtual thunk to'Ogre::IntersectionSceneQuery::queryResult(Ogre::MovableObject *,Ogre::MovableObject *)")]
+#[doc(alias = "non-virtual thunk toOgre::IntersectionSceneQuery::queryResult(Ogre::MovableObject *,Ogre::MovableObject *)")]
 // was: `non-virtual thunk to'Ogre::IntersectionSceneQuery::queryResult(Ogre::MovableObject *,Ogre::MovableObject *)
 pub fn stub_dc6d14() -> ! {
     todo!("0xdc6d14 `non-virtual thunk to'Ogre::IntersectionSceneQuery::queryResult(Ogre::MovableObject *,Ogre::MovableObject *)")
@@ -210,7 +210,7 @@ pub fn stub_dc6d38() -> ! {
 }
 
 // 0xdc6d60 — __ZThn48_N4Ogre22IntersectionSceneQuery11queryResultEPNS_13MovableObjectEPNS_10SceneQuery13WorldFragmentE
-#[doc(alias = "`non-virtual thunk to'Ogre::IntersectionSceneQuery::queryResult(Ogre::MovableObject *,Ogre::SceneQuery::WorldFragment *)")]
+#[doc(alias = "non-virtual thunk toOgre::IntersectionSceneQuery::queryResult(Ogre::MovableObject *,Ogre::SceneQuery::WorldFragment *)")]
 // was: `non-virtual thunk to'Ogre::IntersectionSceneQuery::queryResult(Ogre::MovableObject *,Ogre::SceneQuery::WorldFragment *)
 pub fn stub_dc6d60() -> ! {
     todo!("0xdc6d60 `non-virtual thunk to'Ogre::IntersectionSceneQuery::queryResult(Ogre::MovableObject *,Ogre::SceneQuery::WorldFragment *)")

@@ -19,7 +19,7 @@ pub fn stub_644ba0() -> ! {
 }
 
 // 0x644d30 — __GLOBAL__I_a_262
-#[doc(alias = "`global constructor keyed to_a_262")]
+#[doc(alias = "global constructor keyed to_a_262")]
 pub fn stub_644d30() -> ! {
     todo!("0x644d30 `global constructor keyed to'_a_262")
 }
@@ -43,7 +43,7 @@ pub fn stub_645d64() -> ! {
 }
 
 // 0x646628 — __ZN3RBX5Stats12StatsService9addHeaderEN5boost10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEE
-#[doc(alias = "RBX::Stats::StatsService::addHeader(boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")]
+#[doc(alias = "RBX::Stats::StatsService::addHeader(rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")]
 pub fn stub_646628() -> ! {
     todo!("0x646628 RBX::Stats::StatsService::addHeader(boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")
 }
@@ -61,7 +61,7 @@ pub fn stub_646a9c() -> ! {
 }
 
 // 0x646cbc — __ZN3RBX5Stats12StatsService17postReportWithUrlERKSsN5boost10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEE
-#[doc(alias = "RBX::Stats::StatsService::postReportWithUrl(std::string const&,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")]
+#[doc(alias = "RBX::Stats::StatsService::postReportWithUrl(std::string const&,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")]
 pub fn stub_646cbc() -> ! {
     todo!("0x646cbc RBX::Stats::StatsService::postReportWithUrl(std::string const&,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")
 }
@@ -73,13 +73,13 @@ pub fn stub_6470e8() -> ! {
 }
 
 // 0x6471c4 — __ZN3RBX5Stats12StatsService10postReportEN5boost10shared_ptrISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEE
-#[doc(alias = "RBX::Stats::StatsService::postReport(boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")]
+#[doc(alias = "RBX::Stats::StatsService::postReport(rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")]
 pub fn stub_6471c4() -> ! {
     todo!("0x6471c4 RBX::Stats::StatsService::postReport(boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>)")
 }
 
 // 0x64732c — __ZN3RBX5Stats12StatsService9reportJobEN5boost10shared_ptrIKNS_13TaskScheduler3JobEEENS3_ISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEERb
-#[doc(alias = "RBX::Stats::StatsService::reportJob(boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &)")]
+#[doc(alias = "RBX::Stats::StatsService::reportJob(rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &)")]
 pub fn stub_64732c() -> ! {
     todo!("0x64732c RBX::Stats::StatsService::reportJob(boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &)")
 }
@@ -223,7 +223,7 @@ pub fn stub_649cf0() -> ! {
 }
 
 // 0x649cf4 — __ZN3RBX5StatsL9runScriptEN5boost10shared_ptrINS_9DataModelEEESs
-#[doc(alias = "RBX::Stats::runScript(boost::shared_ptr<RBX::DataModel>,std::string)")]
+#[doc(alias = "RBX::Stats::runScript(rbx_core::SharedPtr<RBX::DataModel>,std::string)")]
 pub fn stub_649cf4() -> ! {
     todo!("0x649cf4 RBX::Stats::runScript(boost::shared_ptr<RBX::DataModel>,std::string)")
 }
@@ -271,19 +271,19 @@ pub fn stub_64ac28() -> ! {
 }
 
 // 0x64ac68 — __ZSt8for_eachIN9__gnu_cxx17__normal_iteratorIPN5boost10shared_ptrIKN3RBX13TaskScheduler3JobEEESt6vectorIS8_SaIS8_EEEENS2_3_bi6bind_tIvNS2_4_mfi3mf3IvNS4_5Stats12StatsServiceES8_NS3_ISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEERbEENSE_5list4INSE_5valueIPSJ_EENS2_3argILi1EEENST_ISP_EENS2_17reference_wrapperIbEEEEEEET0_T_S14_S13_
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService*>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService*>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService*>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService*>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>> std::for_each<__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService*>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>>>(__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const> *,std::vector<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,std::allocator<rbx_core::SharedPtr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService*>,boost::arg<1>,boost::_bi::value<rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>>)")]
 pub fn stub_64ac68() -> ! {
     todo!("0x64ac68 boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService*>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>> std::for_each<__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService*>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>>>(__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,__gnu_cxx::__normal_iterator<boost::shared_ptr<RBX::TaskScheduler::Job const> *,std::vector<boost::shared_ptr<RBX::TaskScheduler::Job const>,std::allocator<boost::shared_ptr<RBX::TaskScheduler::Job const>>>>,boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list4<boost::_bi::value<RBX::Stats::StatsService*>,boost::arg<1>,boost::_bi::value<boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>>,boost::reference_wrapper<bool>>>)")
 }
 
 // 0x64acd4 — __ZN5boost4bindIvN3RBX5Stats12StatsServiceENS_10shared_ptrIKNS1_13TaskScheduler3JobEEENS4_ISt18basic_stringstreamIcSt11char_traitsIcESaIcEEEERbPS3_NS_3argILi1EEESE_NS_17reference_wrapperIbEEEENS_3_bi6bind_tIT_NS_4_mfi3mf3ISN_T0_T1_T2_T3_EENSL_9list_av_4IT4_T5_T6_T7_E4typeEEEMSQ_FSN_SR_SS_ST_ESW_SX_SY_SZ_
-#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list_av_4<RBX::Stats::StatsService*,boost::arg<1>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,boost::reference_wrapper<bool>>::type> boost::bind<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &,RBX::Stats::StatsService*,boost::arg<1>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,boost::reference_wrapper<bool>>(void (RBX::Stats::StatsService::*)(boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &),RBX::Stats::StatsService*,boost::arg<1>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,boost::reference_wrapper<bool>)")]
+#[doc(alias = "boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list_av_4<RBX::Stats::StatsService*,boost::arg<1>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,boost::reference_wrapper<bool>>::type> boost::bind<void,RBX::Stats::StatsService,rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &,RBX::Stats::StatsService*,boost::arg<1>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,boost::reference_wrapper<bool>>(void (RBX::Stats::StatsService::*)(rbx_core::SharedPtr<RBX::TaskScheduler::Job const>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &),RBX::Stats::StatsService*,boost::arg<1>,rbx_core::SharedPtr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,boost::reference_wrapper<bool>)")]
 pub fn stub_64acd4() -> ! {
     todo!("0x64acd4 boost::_bi::bind_t<void,boost::_mfi::mf3<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &>,boost::_bi::list_av_4<RBX::Stats::StatsService*,boost::arg<1>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,boost::reference_wrapper<bool>>::type> boost::bind<void,RBX::Stats::StatsService,boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &,RBX::Stats::StatsService*,boost::arg<1>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,boost::reference_wrapper<bool>>(void (RBX::Stats::StatsService::*)(boost::shared_ptr<RBX::TaskScheduler::Job const>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,bool &),RBX::Stats::StatsService*,boost::arg<1>,boost::shared_ptr<std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>>,boost::reference_wrapper<bool>)")
 }
 
 // 0x64ae00 — __ZN3RBX11shared_fromINS_9DataModelEEEN5boost10shared_ptrIT_EEPS4_
-#[doc(alias = "boost::shared_ptr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)")]
 pub fn stub_64ae00() -> ! {
     todo!("0x64ae00 boost::shared_ptr<RBX::DataModel> RBX::shared_from<RBX::DataModel>(RBX::DataModel*)")
 }
@@ -295,43 +295,43 @@ pub fn stub_64af70() -> ! {
 }
 
 // 0x64b188 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5Stats4ItemEEEN5boost10shared_ptrIT_EEv
-#[doc(alias = "boost::shared_ptr<RBX::Stats::Item> RBX::Creatable<RBX::Instance>::create<RBX::Stats::Item>(void)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Stats::Item> RBX::Creatable<RBX::Instance>::create<RBX::Stats::Item>(void)")]
 pub fn stub_64b188() -> ! {
     todo!("0x64b188 boost::shared_ptr<RBX::Stats::Item> RBX::Creatable<RBX::Instance>::create<RBX::Stats::Item>(void)")
 }
 
 // 0x64b238 — __ZN3RBX9CreatableINS_8InstanceEE6createI26TotalCountTimeIntervalItemPKNS_22TotalCountTimeIntervalIiLNS_4Time12SampleMethodE1EEEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<TotalCountTimeIntervalItem> RBX::Creatable<RBX::Instance>::create<TotalCountTimeIntervalItem,RBX::TotalCountTimeInterval<int,(RBX::Time::SampleMethod)1> const*>(RBX::TotalCountTimeInterval<int,(RBX::Time::SampleMethod)1> const*)")]
+#[doc(alias = "rbx_core::SharedPtr<TotalCountTimeIntervalItem> RBX::Creatable<RBX::Instance>::create<TotalCountTimeIntervalItem,RBX::TotalCountTimeInterval<int,(RBX::Time::SampleMethod)1> const*>(RBX::TotalCountTimeInterval<int,(RBX::Time::SampleMethod)1> const*)")]
 pub fn stub_64b238() -> ! {
     todo!("0x64b238 boost::shared_ptr<TotalCountTimeIntervalItem> RBX::Creatable<RBX::Instance>::create<TotalCountTimeIntervalItem,RBX::TotalCountTimeInterval<int,(RBX::Time::SampleMethod)1> const*>(RBX::TotalCountTimeInterval<int,(RBX::Time::SampleMethod)1> const*)")
 }
 
 // 0x64b3c4 — __ZN3RBX9CreatableINS_8InstanceEE6createI21RunningAverageItemIntPKNS_14RunningAverageIidEEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RunningAverageItemInt> RBX::Creatable<RBX::Instance>::create<RunningAverageItemInt,RBX::RunningAverage<int,double> const*>(RBX::RunningAverage<int,double> const*)")]
+#[doc(alias = "rbx_core::SharedPtr<RunningAverageItemInt> RBX::Creatable<RBX::Instance>::create<RunningAverageItemInt,RBX::RunningAverage<int,double> const*>(RBX::RunningAverage<int,double> const*)")]
 pub fn stub_64b3c4() -> ! {
     todo!("0x64b3c4 boost::shared_ptr<RunningAverageItemInt> RBX::Creatable<RBX::Instance>::create<RunningAverageItemInt,RBX::RunningAverage<int,double> const*>(RBX::RunningAverage<int,double> const*)")
 }
 
 // 0x64b558 — __ZN3RBX9CreatableINS_8InstanceEE6createI24RunningAverageItemDoublePKNS_14RunningAverageIddEEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RunningAverageItemDouble> RBX::Creatable<RBX::Instance>::create<RunningAverageItemDouble,RBX::RunningAverage<double,double> const*>(RBX::RunningAverage<double,double> const*)")]
+#[doc(alias = "rbx_core::SharedPtr<RunningAverageItemDouble> RBX::Creatable<RBX::Instance>::create<RunningAverageItemDouble,RBX::RunningAverage<double,double> const*>(RBX::RunningAverage<double,double> const*)")]
 pub fn stub_64b558() -> ! {
     todo!("0x64b558 boost::shared_ptr<RunningAverageItemDouble> RBX::Creatable<RBX::Instance>::create<RunningAverageItemDouble,RBX::RunningAverage<double,double> const*>(RBX::RunningAverage<double,double> const*)")
 }
 
 // 0x64b6ec — __ZN3RBX9CreatableINS_8InstanceEE6createI13ProfilingItemPKNS_9Profiling8ProfilerEEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<ProfilingItem> RBX::Creatable<RBX::Instance>::create<ProfilingItem,RBX::Profiling::Profiler const*>(RBX::Profiling::Profiler const*)")]
+#[doc(alias = "rbx_core::SharedPtr<ProfilingItem> RBX::Creatable<RBX::Instance>::create<ProfilingItem,RBX::Profiling::Profiler const*>(RBX::Profiling::Profiler const*)")]
 pub fn stub_64b6ec() -> ! {
     todo!("0x64b6ec boost::shared_ptr<ProfilingItem> RBX::Creatable<RBX::Instance>::create<ProfilingItem,RBX::Profiling::Profiler const*>(RBX::Profiling::Profiler const*)")
 }
 
 // 0x64b878 — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5Stats12TypedMemItemEPKmEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RBX::Stats::TypedMemItem> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedMemItem,unsigned long const*>(unsigned long const*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Stats::TypedMemItem> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedMemItem,unsigned long const*>(unsigned long const*)")]
 pub fn stub_64b878() -> ! {
     todo!("0x64b878 boost::shared_ptr<RBX::Stats::TypedMemItem> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedMemItem,unsigned long const*>(unsigned long const*)")
 }
 
 // 0x64b98c — __ZN3RBX9CreatableINS_8InstanceEE6createINS_5Stats16TypedPercentItemEPKfEEN5boost10shared_ptrIT_EET0_
-#[doc(alias = "boost::shared_ptr<RBX::Stats::TypedPercentItem> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedPercentItem,float const*>(float const*)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Stats::TypedPercentItem> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedPercentItem,float const*>(float const*)")]
 pub fn stub_64b98c() -> ! {
     todo!("0x64b98c boost::shared_ptr<RBX::Stats::TypedPercentItem> RBX::Creatable<RBX::Instance>::create<RBX::Stats::TypedPercentItem,float const*>(float const*)")
 }
@@ -349,7 +349,7 @@ pub fn stub_64bbc0() -> ! {
 }
 
 // 0x64bc00 — __ZThn32_N3RBX5Stats4ItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::Item::~Item()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::Item::~Item()")]
 pub fn stub_64bc00() -> ! {
     todo!("0x64bc00 `non-virtual thunk to'RBX::Stats::Item::~Item()")
 }
@@ -367,25 +367,25 @@ pub fn stub_64bcdc() -> ! {
 }
 
 // 0x64bd80 — __ZThn32_N3RBX5Stats12StatsServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
 pub fn stub_64bd80() -> ! {
     todo!("0x64bd80 `non-virtual thunk to'RBX::Stats::StatsService::~StatsService()")
 }
 
 // 0x64bd88 — __ZThn32_N3RBX5Stats12StatsServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
 pub fn stub_64bd88() -> ! {
     todo!("0x64bd88 `non-virtual thunk to'RBX::Stats::StatsService::~StatsService()")
 }
 
 // 0x64be2c — __ZThn36_N3RBX5Stats12StatsServiceD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
 pub fn stub_64be2c() -> ! {
     todo!("0x64be2c `non-virtual thunk to'RBX::Stats::StatsService::~StatsService()")
 }
 
 // 0x64be34 — __ZThn36_N3RBX5Stats12StatsServiceD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::StatsService::~StatsService()")]
 pub fn stub_64be34() -> ! {
     todo!("0x64be34 `non-virtual thunk to'RBX::Stats::StatsService::~StatsService()")
 }
@@ -439,25 +439,25 @@ pub fn stub_64c5f0() -> ! {
 }
 
 // 0x64c638 — __ZThn32_N3RBX5Stats16TypedPercentItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 pub fn stub_64c638() -> ! {
     todo!("0x64c638 `non-virtual thunk to'RBX::Stats::TypedPercentItem::~TypedPercentItem()")
 }
 
 // 0x64c77c — __ZThn32_N3RBX5Stats16TypedPercentItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 pub fn stub_64c77c() -> ! {
     todo!("0x64c77c `non-virtual thunk to'RBX::Stats::TypedPercentItem::~TypedPercentItem()")
 }
 
 // 0x64c8d4 — __ZThn36_N3RBX5Stats16TypedPercentItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 pub fn stub_64c8d4() -> ! {
     todo!("0x64c8d4 `non-virtual thunk to'RBX::Stats::TypedPercentItem::~TypedPercentItem()")
 }
 
 // 0x64ca18 — __ZThn36_N3RBX5Stats16TypedPercentItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedPercentItem::~TypedPercentItem()")]
 pub fn stub_64ca18() -> ! {
     todo!("0x64ca18 `non-virtual thunk to'RBX::Stats::TypedPercentItem::~TypedPercentItem()")
 }
@@ -469,13 +469,13 @@ pub fn stub_64cb70() -> ! {
 }
 
 // 0x64ccb8 — __ZThn32_N3RBX5Stats14TypedStatsItemIfED1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 pub fn stub_64ccb8() -> ! {
     todo!("0x64ccb8 `non-virtual thunk to'RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
 }
 
 // 0x64ce00 — __ZThn36_N3RBX5Stats14TypedStatsItemIfED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")]
 pub fn stub_64ce00() -> ! {
     todo!("0x64ce00 `non-virtual thunk to'RBX::Stats::TypedStatsItem<float>::~TypedStatsItem()")
 }
@@ -499,7 +499,7 @@ pub fn stub_64d050() -> ! {
 }
 
 // 0x64d058 — __ZN5boost10shared_ptrIN3RBX5Stats16TypedPercentItemEEC2IS3_NS1_9CreatableINS1_8InstanceEE7DeleterEEEPT_T0_
-#[doc(alias = "boost::shared_ptr<RBX::Stats::TypedPercentItem>::shared_ptr<RBX::Stats::TypedPercentItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
+#[doc(alias = "rbx_core::SharedPtr<RBX::Stats::TypedPercentItem>::shared_ptr<RBX::Stats::TypedPercentItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter)")]
 pub fn stub_64d058() -> ! {
     todo!("0x64d058 boost::shared_ptr<RBX::Stats::TypedPercentItem>::shared_ptr<RBX::Stats::TypedPercentItem,RBX::Creatable<RBX::Instance>::Deleter>(RBX::Stats::TypedPercentItem *,RBX::Creatable<RBX::Instance>::Deleter)")
 }
@@ -559,25 +559,25 @@ pub fn stub_64d5f8() -> ! {
 }
 
 // 0x64d614 — __ZThn32_N3RBX5Stats12TypedMemItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
 pub fn stub_64d614() -> ! {
     todo!("0x64d614 `non-virtual thunk to'RBX::Stats::TypedMemItem::~TypedMemItem()")
 }
 
 // 0x64d758 — __ZThn32_N3RBX5Stats12TypedMemItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
 pub fn stub_64d758() -> ! {
     todo!("0x64d758 `non-virtual thunk to'RBX::Stats::TypedMemItem::~TypedMemItem()")
 }
 
 // 0x64d8b0 — __ZThn36_N3RBX5Stats12TypedMemItemD1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
 pub fn stub_64d8b0() -> ! {
     todo!("0x64d8b0 `non-virtual thunk to'RBX::Stats::TypedMemItem::~TypedMemItem()")
 }
 
 // 0x64d9f4 — __ZThn36_N3RBX5Stats12TypedMemItemD0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedMemItem::~TypedMemItem()")]
 pub fn stub_64d9f4() -> ! {
     todo!("0x64d9f4 `non-virtual thunk to'RBX::Stats::TypedMemItem::~TypedMemItem()")
 }
@@ -601,13 +601,13 @@ pub fn stub_64dde8() -> ! {
 }
 
 // 0x64de1c — __ZThn32_N3RBX5Stats14TypedStatsItemImED1Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
 pub fn stub_64de1c() -> ! {
     todo!("0x64de1c `non-virtual thunk to'RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
 }
 
 // 0x64df60 — __ZThn32_N3RBX5Stats14TypedStatsItemImED0Ev
-#[doc(alias = "`non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
+#[doc(alias = "non-virtual thunk toRBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")]
 pub fn stub_64df60() -> ! {
     todo!("0x64df60 `non-virtual thunk to'RBX::Stats::TypedStatsItem<unsigned long>::~TypedStatsItem()")
 }

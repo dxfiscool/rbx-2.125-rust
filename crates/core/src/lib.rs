@@ -131,3 +131,5 @@ pub mod generated_core_shard_cl;
 pub mod generated_core_shard_cm;
 pub mod generated_core_shard_cn;
 pub mod generated_core_shard_co;
+pub mod generated_core_shard_cp;
+pub mod generated_core_shard_cq;
