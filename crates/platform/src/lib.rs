@@ -245,3 +245,5 @@ pub mod generated_plat_at;
 pub mod generated_plat_au;
 pub mod generated_plat_av;
 pub mod generated_plat_aw;
+pub mod generated_plat_ax;
+pub mod generated_plat_ay;
