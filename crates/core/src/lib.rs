@@ -85,3 +85,4 @@ pub mod generated_core_shard_ar;
 pub mod generated_core_shard_as;
 pub mod generated_core_shard_at;
 pub mod generated_core_shard_au;
+pub mod generated_core_shard_av;

@@ -601,7 +601,7 @@ pub fn stub_0x41e84c() -> ! {
 }
 
 // 0x41e860 — __ZThn184_N3RBX9DataModel24getSyncronizationArbiterEv
-#[doc(alias = "`non-virtual thunk toRBX::DataModel::getSyncronizationArbiter(void)")]
+#[doc(alias = "non-virtual thunk toRBX::DataModel::getSyncronizationArbiter(void)")]
 // was: `non-virtual thunk to'RBX::DataModel::getSyncronizationArbiter(void)
 pub fn stub_0x41e860() -> ! {
     todo!("0x41e860 `non-virtual thunk toRBX::DataModel::getSyncronizationArbiter(void)")

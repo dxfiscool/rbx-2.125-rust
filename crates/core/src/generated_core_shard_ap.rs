@@ -16,7 +16,7 @@ pub fn stub_0x2e46c4() -> ! {
     todo!("0x2e46c4 __ZN3RBX10HammerToolD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HammerTool::~HammerTool()")]
+#[doc(alias = "non-virtual thunk toRBX::HammerTool::~HammerTool()")]
 // 0x2e46c8 — __ZThn36_N3RBX10HammerToolD0Ev
 pub fn stub_0x2e46c8() -> ! {
     todo!("0x2e46c8 __ZThn36_N3RBX10HammerToolD0Ev")
@@ -28,7 +28,7 @@ pub fn stub_0x2e46d0() -> ! {
     todo!("0x2e46d0 __ZN3RBX10HammerToolD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HammerTool::~HammerTool()")]
+#[doc(alias = "non-virtual thunk toRBX::HammerTool::~HammerTool()")]
 // 0x2e47ec — __ZThn36_N3RBX10HammerToolD1Ev
 pub fn stub_0x2e47ec() -> ! {
     todo!("0x2e47ec __ZThn36_N3RBX10HammerToolD1Ev")
@@ -58,7 +58,7 @@ pub fn stub_0x2e4a5c() -> ! {
     todo!("0x2e4a5c __ZN3RBX10HammerTool13render3dAdornEPNS_5AdornE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::HammerTool::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::HammerTool::render3dAdorn(RBX::Adorn *)")]
 // 0x2e4a70 — __ZThn4_N3RBX10HammerTool13render3dAdornEPNS_5AdornE
 pub fn stub_0x2e4a70() -> ! {
     todo!("0x2e4a70 __ZThn4_N3RBX10HammerTool13render3dAdornEPNS_5AdornE")
@@ -82,7 +82,7 @@ pub fn stub_0x2ec558() -> ! {
     todo!("0x2ec558 __ZN3RBX18MoveResizeJoinTool13render3dAdornEPNS_5AdornE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::render3dAdorn(RBX::Adorn *)")]
 // 0x2ec7e4 — __ZThn4_N3RBX18MoveResizeJoinTool13render3dAdornEPNS_5AdornE
 pub fn stub_0x2ec7e4() -> ! {
     todo!("0x2ec7e4 __ZThn4_N3RBX18MoveResizeJoinTool13render3dAdornEPNS_5AdornE")
@@ -94,7 +94,7 @@ pub fn stub_0x2ec7ec() -> ! {
     todo!("0x2ec7ec __ZN3RBX18MoveResizeJoinTool8render2dEPNS_5AdornE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::MoveResizeJoinTool::render2d(RBX::Adorn *)")]
 // 0x2ed9d4 — __ZThn4_N3RBX18MoveResizeJoinTool8render2dEPNS_5AdornE
 pub fn stub_0x2ed9d4() -> ! {
     todo!("0x2ed9d4 __ZThn4_N3RBX18MoveResizeJoinTool8render2dEPNS_5AdornE")
@@ -112,7 +112,7 @@ pub fn stub_0x2efef0() -> ! {
     todo!("0x2efef0 __ZN3RBX11NewNullTool13render3dAdornEPNS_5AdornE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::NewNullTool::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::NewNullTool::render3dAdorn(RBX::Adorn *)")]
 // 0x2efef4 — __ZThn4_N3RBX11NewNullTool13render3dAdornEPNS_5AdornE
 pub fn stub_0x2efef4() -> ! {
     todo!("0x2efef4 __ZThn4_N3RBX11NewNullTool13render3dAdornEPNS_5AdornE")
@@ -130,7 +130,7 @@ pub fn stub_0x2f0410() -> ! {
     todo!("0x2f0410 __ZNK3RBX11NewNullTool19shouldRender3dAdornEv")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::NewNullTool::shouldRender3dAdorn(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::NewNullTool::shouldRender3dAdorn(void)const")]
 // 0x2f0414 — __ZThn4_NK3RBX11NewNullTool19shouldRender3dAdornEv
 pub fn stub_0x2f0414() -> ! {
     todo!("0x2f0414 __ZThn4_NK3RBX11NewNullTool19shouldRender3dAdornEv")
@@ -184,7 +184,7 @@ pub fn stub_0x2f12c0() -> ! {
     todo!("0x2f12c0 __ZN3RBX12PartDragTool13render3dAdornEPNS_5AdornE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::PartDragTool::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::PartDragTool::render3dAdorn(RBX::Adorn *)")]
 // 0x2f13d0 — __ZThn4_N3RBX12PartDragTool13render3dAdornEPNS_5AdornE
 pub fn stub_0x2f13d0() -> ! {
     todo!("0x2f13d0 __ZThn4_N3RBX12PartDragTool13render3dAdornEPNS_5AdornE")
@@ -202,7 +202,7 @@ pub fn stub_0x2f1478() -> ! {
     todo!("0x2f1478 __ZN3RBX12PartDragToolD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
 // 0x2f147c — __ZThn36_N3RBX12PartDragToolD0Ev
 pub fn stub_0x2f147c() -> ! {
     todo!("0x2f147c __ZThn36_N3RBX12PartDragToolD0Ev")
@@ -214,7 +214,7 @@ pub fn stub_0x2f1484() -> ! {
     todo!("0x2f1484 __ZN3RBX12PartDragToolD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
+#[doc(alias = "non-virtual thunk toRBX::PartDragTool::~PartDragTool()")]
 // 0x2f15e4 — __ZThn36_N3RBX12PartDragToolD1Ev
 pub fn stub_0x2f15e4() -> ! {
     todo!("0x2f15e4 __ZThn36_N3RBX12PartDragToolD1Ev")
@@ -244,7 +244,7 @@ pub fn stub_0x2f6858() -> ! {
     todo!("0x2f6858 __ZN3RBX13ArrowToolBase15renderHoverOverEPNS_5AdornEb")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::ArrowToolBase::render3dAdorn(RBX::Adorn *)")]
 // 0x2f68c8 — __ZThn4_N3RBX13ArrowToolBase13render3dAdornEPNS_5AdornE
 pub fn stub_0x2f68c8() -> ! {
     todo!("0x2f68c8 __ZThn4_N3RBX13ArrowToolBase13render3dAdornEPNS_5AdornE")
@@ -256,7 +256,7 @@ pub fn stub_0x2f7818() -> ! {
     todo!("0x2f7818 __ZN3RBX16BoxSelectCommand8render2dEPNS_5AdornE")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")]
+#[doc(alias = "non-virtual thunk toRBX::BoxSelectCommand::render2d(RBX::Adorn *)")]
 // 0x2f78d0 — __ZThn4_N3RBX16BoxSelectCommand8render2dEPNS_5AdornE
 pub fn stub_0x2f78d0() -> ! {
     todo!("0x2f78d0 __ZThn4_N3RBX16BoxSelectCommand8render2dEPNS_5AdornE")

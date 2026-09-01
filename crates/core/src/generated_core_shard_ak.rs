@@ -40,7 +40,7 @@ pub fn stub_0x3818e0() -> ! {
     todo!("0x3818e0 __ZNSt8_Rb_treeIPN3RBX12SpanningNodeES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE8_M_eraseEPSt13_Rb_tree_nodeIS2_E")
 }
 
-#[doc(alias = "`global constructor keyed to_a_142")]
+#[doc(alias = "global constructor keyed to_a_142")]
 // 0x381908 — __GLOBAL__I_a_142
 pub fn stub_0x381908() -> ! {
     todo!("0x381908 __GLOBAL__I_a_142")
@@ -94,7 +94,7 @@ pub fn stub_0x382bfc() -> ! {
     todo!("0x382bfc __ZN3RBX11StandardOutC2Ev")
 }
 
-#[doc(alias = "`global constructor keyed to_a_143")]
+#[doc(alias = "global constructor keyed to_a_143")]
 // 0x382d18 — __GLOBAL__I_a_143
 pub fn stub_0x382d18() -> ! {
     todo!("0x382d18 __GLOBAL__I_a_143")
@@ -160,7 +160,7 @@ pub fn stub_0x384c38() -> ! {
     todo!("0x384c38 __Z16DontCareResponsePSsPSt9exception")
 }
 
-#[doc(alias = "`global constructor keyed to_a_144")]
+#[doc(alias = "global constructor keyed to_a_144")]
 // 0x384c44 — __GLOBAL__I_a_144
 pub fn stub_0x384c44() -> ! {
     todo!("0x384c44 __GLOBAL__I_a_144")
@@ -172,7 +172,7 @@ pub fn stub_0x384d34() -> ! {
     todo!("0x384d34 __ZN3RBX8IStepped25onServiceProviderISteppedEPNS_15ServiceProviderES2_")
 }
 
-#[doc(alias = "`global constructor keyed to_a_145")]
+#[doc(alias = "global constructor keyed to_a_145")]
 // 0x38587c — __GLOBAL__I_a_145
 pub fn stub_0x38587c() -> ! {
     todo!("0x38587c __GLOBAL__I_a_145")
@@ -382,7 +382,7 @@ pub fn stub_0x38aec4() -> ! {
     todo!("0x38aec4 __ZN3RBX10ThreadPool14ThreadPoolDataD0Ev")
 }
 
-#[doc(alias = "`global constructor keyed to_a_146")]
+#[doc(alias = "global constructor keyed to_a_146")]
 // 0x38b740 — __GLOBAL__I_a_146
 pub fn stub_0x38b740() -> ! {
     todo!("0x38b740 __GLOBAL__I_a_146")
@@ -454,7 +454,7 @@ pub fn stub_0x38c264() -> ! {
     todo!("0x38c264 __ZNK3RBX5UDim2ngEv")
 }
 
-#[doc(alias = "`global constructor keyed to_a_147")]
+#[doc(alias = "global constructor keyed to_a_147")]
 // 0x38c294 — __GLOBAL__I_a_147
 pub fn stub_0x38c294() -> ! {
     todo!("0x38c294 __GLOBAL__I_a_147")
@@ -520,7 +520,7 @@ pub fn stub_0x38c3ec() -> ! {
     todo!("0x38c3ec __ZNK3RBX7UIEvent15isRightArrowKeyEv")
 }
 
-#[doc(alias = "`global constructor keyed to_a_148")]
+#[doc(alias = "global constructor keyed to_a_148")]
 // 0x38c3fc — __GLOBAL__I_a_148
 pub fn stub_0x38c3fc() -> ! {
     todo!("0x38c3fc __GLOBAL__I_a_148")
@@ -532,7 +532,7 @@ pub fn stub_0x38c464() -> ! {
     todo!("0x38c464 __ZN3RBX5Units13kmsForceToRbxEf")
 }
 
-#[doc(alias = "`global constructor keyed to_a_149")]
+#[doc(alias = "global constructor keyed to_a_149")]
 // 0x38c478 — __GLOBAL__I_a_149
 pub fn stub_0x38c478() -> ! {
     todo!("0x38c478 __GLOBAL__I_a_149")
@@ -556,7 +556,7 @@ pub fn stub_0x38cb9c() -> ! {
     todo!("0x38cb9c __ZN3RBX13UserInputBase10removeJobsEv")
 }
 
-#[doc(alias = "`global constructor keyed to_a_150")]
+#[doc(alias = "global constructor keyed to_a_150")]
 // 0x38cba0 — __GLOBAL__I_a_150
 pub fn stub_0x38cba0() -> ! {
     todo!("0x38cba0 __GLOBAL__I_a_150")
@@ -658,7 +658,7 @@ pub fn stub_0x38da14() -> ! {
     todo!("0x38da14 __ZN5boost6detail26lexical_stream_limited_srcIcSt11char_traitsIcELb0EE12shr_unsignedIjEEbRT_")
 }
 
-#[doc(alias = "`global constructor keyed to_a_151")]
+#[doc(alias = "global constructor keyed to_a_151")]
 // 0x38da58 — __GLOBAL__I_a_151
 pub fn stub_0x38da58() -> ! {
     todo!("0x38da58 __GLOBAL__I_a_151")
@@ -718,9 +718,8 @@ pub fn stub_0x38e9b8() -> ! {
     todo!("0x38e9b8 __ZN3RBX12AccoutrementD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
+#[doc(alias = "non-virtual thunk toRBX::Accoutrement::~Accoutrement()")]
 // 0x38e9c8 — __ZThn32_N3RBX12AccoutrementD0Ev
 pub fn stub_0x38e9c8() -> ! {
     todo!("0x38e9c8 __ZThn32_N3RBX12AccoutrementD0Ev")
 }
-

@@ -34,7 +34,7 @@ pub fn stub_0x34581c() -> ! {
     todo!("0x34581c __ZN3RBX18LegacyContentTable8AddEntryERKSsS2_")
 }
 
-#[doc(alias = "`anonymous namespace::normalizeUrl(std::string &)")]
+#[doc(alias = "anonymous namespace::normalizeUrl(std::string &)")]
 // 0x345950 — __ZN12_GLOBAL__N_112normalizeUrlERSs
 pub fn stub_0x345950() -> ! {
     todo!("0x345950 __ZN12_GLOBAL__N_112normalizeUrlERSs")
@@ -700,13 +700,13 @@ pub fn stub_0x36128c() -> ! {
     todo!("0x36128c __ZN3RBX10RunServiceD1Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::RunService::~RunService()")]
+#[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 // 0x361290 — __ZThn32_N3RBX10RunServiceD0Ev
 pub fn stub_0x361290() -> ! {
     todo!("0x361290 __ZThn32_N3RBX10RunServiceD0Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::RunService::~RunService()")]
+#[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 // 0x361298 — __ZThn36_N3RBX10RunServiceD0Ev
 pub fn stub_0x361298() -> ! {
     todo!("0x361298 __ZThn36_N3RBX10RunServiceD0Ev")
@@ -718,7 +718,7 @@ pub fn stub_0x3612a0() -> ! {
     todo!("0x3612a0 __ZN3RBX10RunServiceD2Ev")
 }
 
-#[doc(alias = "`non-virtual thunk toRBX::RunService::~RunService()")]
+#[doc(alias = "non-virtual thunk toRBX::RunService::~RunService()")]
 // 0x3616a8 — __ZThn32_N3RBX10RunServiceD1Ev
 pub fn stub_0x3616a8() -> ! {
     todo!("0x3616a8 __ZThn32_N3RBX10RunServiceD1Ev")

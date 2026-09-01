@@ -5,7 +5,7 @@
 #![allow(non_camel_case_types, non_snake_case, dead_code, unused_variables, clippy::all)]
 
 
-#[doc(alias = "`non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
+#[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 // 0x3a867c — __ZThn32_N3RBX10ArcHandlesD0Ev
 // was: `non-virtual thunk to'RBX::ArcHandles::~ArcHandles()
 pub fn stub_0x3a867c() -> ! {
@@ -13,7 +13,7 @@ pub fn stub_0x3a867c() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
+#[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 // 0x3a8730 — __ZThn36_N3RBX10ArcHandlesD1Ev
 // was: `non-virtual thunk to'RBX::ArcHandles::~ArcHandles()
 pub fn stub_0x3a8730() -> ! {
@@ -21,7 +21,7 @@ pub fn stub_0x3a8730() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
+#[doc(alias = "non-virtual thunk toRBX::ArcHandles::~ArcHandles()")]
 // 0x3a8738 — __ZThn36_N3RBX10ArcHandlesD0Ev
 // was: `non-virtual thunk to'RBX::ArcHandles::~ArcHandles()
 pub fn stub_0x3a8738() -> ! {
@@ -29,7 +29,7 @@ pub fn stub_0x3a8738() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::HandlesBase::shouldRender2d(void)const")]
+#[doc(alias = "non-virtual thunk toRBX::HandlesBase::shouldRender2d(void)const")]
 // 0x3a87dc — __ZThn96_NK3RBX11HandlesBase14shouldRender2dEv
 // was: `non-virtual thunk to'RBX::HandlesBase::shouldRender2d(void)const
 pub fn stub_0x3a87dc() -> ! {
@@ -72,7 +72,7 @@ pub fn stub_0x3ac09c() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 // 0x3ac140 — __ZThn32_N3RBX11HandlesBaseD1Ev
 // was: `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()
 pub fn stub_0x3ac140() -> ! {
@@ -80,7 +80,7 @@ pub fn stub_0x3ac140() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 // 0x3ac148 — __ZThn32_N3RBX11HandlesBaseD0Ev
 // was: `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()
 pub fn stub_0x3ac148() -> ! {
@@ -88,7 +88,7 @@ pub fn stub_0x3ac148() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 // 0x3ac1f0 — __ZThn36_N3RBX11HandlesBaseD1Ev
 // was: `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()
 pub fn stub_0x3ac1f0() -> ! {
@@ -96,7 +96,7 @@ pub fn stub_0x3ac1f0() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
+#[doc(alias = "non-virtual thunk toRBX::HandlesBase::~HandlesBase()")]
 // 0x3ac1f8 — __ZThn36_N3RBX11HandlesBaseD0Ev
 // was: `non-virtual thunk to'RBX::HandlesBase::~HandlesBase()
 pub fn stub_0x3ac1f8() -> ! {
@@ -118,7 +118,7 @@ pub fn stub_0x3ac510() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
+#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 // 0x3ac5b4 — __ZThn32_N3RBX13PartAdornmentD1Ev
 // was: `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
 pub fn stub_0x3ac5b4() -> ! {
@@ -126,7 +126,7 @@ pub fn stub_0x3ac5b4() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
+#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 // 0x3ac6fc — __ZThn32_N3RBX13PartAdornmentD0Ev
 // was: `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
 pub fn stub_0x3ac6fc() -> ! {
@@ -134,7 +134,7 @@ pub fn stub_0x3ac6fc() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
+#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 // 0x3ac85c — __ZThn36_N3RBX13PartAdornmentD1Ev
 // was: `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
 pub fn stub_0x3ac85c() -> ! {
@@ -142,7 +142,7 @@ pub fn stub_0x3ac85c() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
+#[doc(alias = "non-virtual thunk toRBX::PartAdornment::~PartAdornment()")]
 // 0x3ac9a4 — __ZThn36_N3RBX13PartAdornmentD0Ev
 // was: `non-virtual thunk to'RBX::PartAdornment::~PartAdornment()
 pub fn stub_0x3ac9a4() -> ! {
@@ -185,7 +185,7 @@ pub fn stub_0x3b1228() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 // 0x3b12d8 — __ZThn32_N3RBX8BackpackD1Ev
 // was: `non-virtual thunk to'RBX::Backpack::~Backpack()
 pub fn stub_0x3b12d8() -> ! {
@@ -193,7 +193,7 @@ pub fn stub_0x3b12d8() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 // 0x3b12e0 — __ZThn32_N3RBX8BackpackD0Ev
 // was: `non-virtual thunk to'RBX::Backpack::~Backpack()
 pub fn stub_0x3b12e0() -> ! {
@@ -201,7 +201,7 @@ pub fn stub_0x3b12e0() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 // 0x3b1394 — __ZThn36_N3RBX8BackpackD1Ev
 // was: `non-virtual thunk to'RBX::Backpack::~Backpack()
 pub fn stub_0x3b1394() -> ! {
@@ -209,7 +209,7 @@ pub fn stub_0x3b1394() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::Backpack::~Backpack()")]
+#[doc(alias = "non-virtual thunk toRBX::Backpack::~Backpack()")]
 // 0x3b139c — __ZThn36_N3RBX8BackpackD0Ev
 // was: `non-virtual thunk to'RBX::Backpack::~Backpack()
 pub fn stub_0x3b139c() -> ! {
@@ -315,7 +315,7 @@ pub fn stub_0x3b5dd8() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::BadgeService::~BadgeService()")]
+#[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
 // 0x3b5e88 — __ZThn32_N3RBX12BadgeServiceD1Ev
 // was: `non-virtual thunk to'RBX::BadgeService::~BadgeService()
 pub fn stub_0x3b5e88() -> ! {
@@ -323,7 +323,7 @@ pub fn stub_0x3b5e88() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::BadgeService::~BadgeService()")]
+#[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
 // 0x3b5e90 — __ZThn32_N3RBX12BadgeServiceD0Ev
 // was: `non-virtual thunk to'RBX::BadgeService::~BadgeService()
 pub fn stub_0x3b5e90() -> ! {
@@ -331,7 +331,7 @@ pub fn stub_0x3b5e90() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::BadgeService::~BadgeService()")]
+#[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
 // 0x3b5ea8 — __ZThn36_N3RBX12BadgeServiceD1Ev
 // was: `non-virtual thunk to'RBX::BadgeService::~BadgeService()
 pub fn stub_0x3b5ea8() -> ! {
@@ -339,7 +339,7 @@ pub fn stub_0x3b5ea8() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::BadgeService::~BadgeService()")]
+#[doc(alias = "non-virtual thunk toRBX::BadgeService::~BadgeService()")]
 // 0x3b5eb0 — __ZThn36_N3RBX12BadgeServiceD0Ev
 // was: `non-virtual thunk to'RBX::BadgeService::~BadgeService()
 pub fn stub_0x3b5eb0() -> ! {
@@ -473,7 +473,7 @@ pub fn stub_0x3bbc68() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 // 0x3bbc78 — __ZThn32_N3RBX14FormFactorPartD0Ev
 // was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbc78() -> ! {
@@ -481,7 +481,7 @@ pub fn stub_0x3bbc78() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 // 0x3bbc80 — __ZThn36_N3RBX14FormFactorPartD0Ev
 // was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbc80() -> ! {
@@ -489,7 +489,7 @@ pub fn stub_0x3bbc80() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 // 0x3bbc88 — __ZThn132_N3RBX14FormFactorPartD0Ev
 // was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbc88() -> ! {
@@ -504,7 +504,7 @@ pub fn stub_0x3bbc90() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 // 0x3bbc98 — __ZThn32_N3RBX14FormFactorPartD1Ev
 // was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbc98() -> ! {
@@ -512,7 +512,7 @@ pub fn stub_0x3bbc98() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 // 0x3bbcac — __ZThn36_N3RBX14FormFactorPartD1Ev
 // was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbcac() -> ! {
@@ -520,7 +520,7 @@ pub fn stub_0x3bbcac() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
+#[doc(alias = "non-virtual thunk toRBX::FormFactorPart::~FormFactorPart()")]
 // 0x3bbcc0 — __ZThn132_N3RBX14FormFactorPartD1Ev
 // was: `non-virtual thunk to'RBX::FormFactorPart::~FormFactorPart()
 pub fn stub_0x3bbcc0() -> ! {
@@ -605,7 +605,7 @@ pub fn stub_0x3bf1b4() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 // 0x3bf27c — __ZThn32_N3RBX9BevelMeshD1Ev
 // was: `non-virtual thunk to'RBX::BevelMesh::~BevelMesh()
 pub fn stub_0x3bf27c() -> ! {
@@ -613,7 +613,7 @@ pub fn stub_0x3bf27c() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 // 0x3bf284 — __ZThn32_N3RBX9BevelMeshD0Ev
 // was: `non-virtual thunk to'RBX::BevelMesh::~BevelMesh()
 pub fn stub_0x3bf284() -> ! {
@@ -621,7 +621,7 @@ pub fn stub_0x3bf284() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 // 0x3bf350 — __ZThn36_N3RBX9BevelMeshD1Ev
 // was: `non-virtual thunk to'RBX::BevelMesh::~BevelMesh()
 pub fn stub_0x3bf350() -> ! {
@@ -629,7 +629,7 @@ pub fn stub_0x3bf350() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
+#[doc(alias = "non-virtual thunk toRBX::BevelMesh::~BevelMesh()")]
 // 0x3bf358 — __ZThn36_N3RBX9BevelMeshD0Ev
 // was: `non-virtual thunk to'RBX::BevelMesh::~BevelMesh()
 pub fn stub_0x3bf358() -> ! {
@@ -721,7 +721,7 @@ pub fn stub_0x3c0474() -> ! {
 }
 
 
-#[doc(alias = "`non-virtual thunk toRBX::BillboardGui::onHeartbeat(RBX::Heartbeat const&)")]
+#[doc(alias = "non-virtual thunk toRBX::BillboardGui::onHeartbeat(RBX::Heartbeat const&)")]
 // 0x3c048c — __ZThn168_N3RBX12BillboardGui11onHeartbeatERKNS_9HeartbeatE
 // was: `non-virtual thunk to'RBX::BillboardGui::onHeartbeat(RBX::Heartbeat const&)
 pub fn stub_0x3c048c() -> ! {
@@ -734,4 +734,3 @@ pub fn stub_0x3c048c() -> ! {
 pub fn stub_0x3c04a8() -> ! {
     todo!("0x3c04a8 __ZNK3RBX12BillboardGui25shouldRender3dSortedAdornEv")
 }
-
